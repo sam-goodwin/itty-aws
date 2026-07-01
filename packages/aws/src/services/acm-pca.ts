@@ -1287,6 +1287,7 @@ export const createCertificateAuthority: API.OperationMethod<
     InvalidTagException,
     LimitExceededException,
   ],
+  operationName: "CreateCertificateAuthority",
 }));
 export type CreateCertificateAuthorityAuditReportError =
   | InvalidArgsException
@@ -1321,6 +1322,7 @@ export const createCertificateAuthorityAuditReport: API.OperationMethod<
     RequestInProgressException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateCertificateAuthorityAuditReport",
 }));
 export type CreatePermissionError =
   | InvalidArnException
@@ -1358,6 +1360,7 @@ export const createPermission: API.OperationMethod<
     RequestFailedException,
     ResourceNotFoundException,
   ],
+  operationName: "CreatePermission",
 }));
 export type DeleteCertificateAuthorityError =
   | ConcurrentModificationException
@@ -1392,6 +1395,7 @@ export const deleteCertificateAuthority: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteCertificateAuthority",
 }));
 export type DeletePermissionError =
   | InvalidArnException
@@ -1427,6 +1431,7 @@ export const deletePermission: API.OperationMethod<
     RequestFailedException,
     ResourceNotFoundException,
   ],
+  operationName: "DeletePermission",
 }));
 export type DeletePolicyError =
   | ConcurrentModificationException
@@ -1470,6 +1475,7 @@ export const deletePolicy: API.OperationMethod<
     RequestFailedException,
     ResourceNotFoundException,
   ],
+  operationName: "DeletePolicy",
 }));
 export type DescribeCertificateAuthorityError =
   | InvalidArnException
@@ -1501,6 +1507,7 @@ export const describeCertificateAuthority: API.OperationMethod<
   input: DescribeCertificateAuthorityRequest,
   output: DescribeCertificateAuthorityResponse,
   errors: [InvalidArnException, ResourceNotFoundException],
+  operationName: "DescribeCertificateAuthority",
 }));
 export type DescribeCertificateAuthorityAuditReportError =
   | InvalidArgsException
@@ -1523,6 +1530,7 @@ export const describeCertificateAuthorityAuditReport: API.OperationMethod<
     InvalidArnException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeCertificateAuthorityAuditReport",
 }));
 export type GetCertificateError =
   | InvalidArnException
@@ -1549,6 +1557,7 @@ export const getCertificate: API.OperationMethod<
     RequestInProgressException,
     ResourceNotFoundException,
   ],
+  operationName: "GetCertificate",
 }));
 export type GetCertificateAuthorityCertificateError =
   | InvalidArnException
@@ -1571,6 +1580,7 @@ export const getCertificateAuthorityCertificate: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "GetCertificateAuthorityCertificate",
 }));
 export type GetCertificateAuthorityCsrError =
   | InvalidArnException
@@ -1597,6 +1607,7 @@ export const getCertificateAuthorityCsr: API.OperationMethod<
     RequestInProgressException,
     ResourceNotFoundException,
   ],
+  operationName: "GetCertificateAuthorityCsr",
 }));
 export type GetPolicyError =
   | InvalidArnException
@@ -1632,6 +1643,7 @@ export const getPolicy: API.OperationMethod<
     RequestFailedException,
     ResourceNotFoundException,
   ],
+  operationName: "GetPolicy",
 }));
 export type ImportCertificateAuthorityCertificateError =
   | CertificateMismatchException
@@ -1740,6 +1752,7 @@ export const importCertificateAuthorityCertificate: API.OperationMethod<
     RequestInProgressException,
     ResourceNotFoundException,
   ],
+  operationName: "ImportCertificateAuthorityCertificate",
 }));
 export type IssueCertificateError =
   | InvalidArgsException
@@ -1770,6 +1783,7 @@ export const issueCertificate: API.OperationMethod<
     MalformedCSRException,
     ResourceNotFoundException,
   ],
+  operationName: "IssueCertificate",
 }));
 export type ListCertificateAuthoritiesError =
   | InvalidNextTokenException
@@ -1801,6 +1815,7 @@ export const listCertificateAuthorities: API.OperationMethod<
   input: ListCertificateAuthoritiesRequest,
   output: ListCertificateAuthoritiesResponse,
   errors: [InvalidNextTokenException],
+  operationName: "ListCertificateAuthorities",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1859,6 +1874,7 @@ export const listPermissions: API.OperationMethod<
     RequestFailedException,
     ResourceNotFoundException,
   ],
+  operationName: "ListPermissions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1904,6 +1920,7 @@ export const listTags: API.OperationMethod<
     RequestFailedException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTags",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1953,6 +1970,7 @@ export const putPolicy: API.OperationMethod<
     RequestFailedException,
     ResourceNotFoundException,
   ],
+  operationName: "PutPolicy",
 }));
 export type RestoreCertificateAuthorityError =
   | InvalidArnException
@@ -1975,6 +1993,7 @@ export const restoreCertificateAuthority: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "RestoreCertificateAuthority",
 }));
 export type RevokeCertificateError =
   | ConcurrentModificationException
@@ -2015,6 +2034,7 @@ export const revokeCertificate: API.OperationMethod<
     RequestInProgressException,
     ResourceNotFoundException,
   ],
+  operationName: "RevokeCertificate",
 }));
 export type TagCertificateAuthorityError =
   | InvalidArnException
@@ -2043,6 +2063,7 @@ export const tagCertificateAuthority: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "TagCertificateAuthority",
 }));
 export type UntagCertificateAuthorityError =
   | InvalidArnException
@@ -2067,6 +2088,7 @@ export const untagCertificateAuthority: API.OperationMethod<
     InvalidTagException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagCertificateAuthority",
 }));
 export type UpdateCertificateAuthorityError =
   | ConcurrentModificationException
@@ -2097,4 +2119,5 @@ export const updateCertificateAuthority: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateCertificateAuthority",
 }));

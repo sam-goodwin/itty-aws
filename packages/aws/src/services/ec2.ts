@@ -75390,6 +75390,7 @@ export const acceptAddressTransfer: API.OperationMethod<
     InvalidAddressMalformed,
     InvalidAddressNotFound,
   ],
+  operationName: "AcceptAddressTransfer",
 }));
 export type AcceptCapacityReservationBillingOwnershipError =
   | RequestLimitExceeded
@@ -75409,6 +75410,7 @@ export const acceptCapacityReservationBillingOwnership: API.OperationMethod<
   input: AcceptCapacityReservationBillingOwnershipRequest,
   output: AcceptCapacityReservationBillingOwnershipResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  operationName: "AcceptCapacityReservationBillingOwnership",
 }));
 export type AcceptReservedInstancesExchangeQuoteError =
   | RequestLimitExceeded
@@ -75426,6 +75428,7 @@ export const acceptReservedInstancesExchangeQuote: API.OperationMethod<
   input: AcceptReservedInstancesExchangeQuoteRequest,
   output: AcceptReservedInstancesExchangeQuoteResult,
   errors: [RequestLimitExceeded, InvalidReservedInstancesIDNotFound],
+  operationName: "AcceptReservedInstancesExchangeQuote",
 }));
 export type AcceptTransitGatewayClientVpnAttachmentError = CommonErrors;
 /**
@@ -75440,6 +75443,7 @@ export const acceptTransitGatewayClientVpnAttachment: API.OperationMethod<
   input: AcceptTransitGatewayClientVpnAttachmentRequest,
   output: AcceptTransitGatewayClientVpnAttachmentResult,
   errors: [],
+  operationName: "AcceptTransitGatewayClientVpnAttachment",
 }));
 export type AcceptTransitGatewayMulticastDomainAssociationsError =
   | RequestLimitExceeded
@@ -75457,6 +75461,7 @@ export const acceptTransitGatewayMulticastDomainAssociations: API.OperationMetho
   input: AcceptTransitGatewayMulticastDomainAssociationsRequest,
   output: AcceptTransitGatewayMulticastDomainAssociationsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "AcceptTransitGatewayMulticastDomainAssociations",
 }));
 export type AcceptTransitGatewayPeeringAttachmentError =
   | RequestLimitExceeded
@@ -75475,6 +75480,7 @@ export const acceptTransitGatewayPeeringAttachment: API.OperationMethod<
   input: AcceptTransitGatewayPeeringAttachmentRequest,
   output: AcceptTransitGatewayPeeringAttachmentResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  operationName: "AcceptTransitGatewayPeeringAttachment",
 }));
 export type AcceptTransitGatewayVpcAttachmentError =
   | RequestLimitExceeded
@@ -75496,6 +75502,7 @@ export const acceptTransitGatewayVpcAttachment: API.OperationMethod<
   input: AcceptTransitGatewayVpcAttachmentRequest,
   output: AcceptTransitGatewayVpcAttachmentResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  operationName: "AcceptTransitGatewayVpcAttachment",
 }));
 export type AcceptVpcEndpointConnectionsError =
   | RequestLimitExceeded
@@ -75518,6 +75525,7 @@ export const acceptVpcEndpointConnections: API.OperationMethod<
     InvalidParameter,
     InvalidVpcEndpointServiceIdNotFound,
   ],
+  operationName: "AcceptVpcEndpointConnections",
 }));
 export type AcceptVpcPeeringConnectionError =
   | RequestLimitExceeded
@@ -75546,6 +75554,7 @@ export const acceptVpcPeeringConnection: API.OperationMethod<
     InvalidVpcPeeringConnectionIDNotFound,
     InvalidVpcPeeringConnectionIdNotFound,
   ],
+  operationName: "AcceptVpcPeeringConnection",
 }));
 export type AdvertiseByoipCidrError = RequestLimitExceeded | CommonErrors;
 /**
@@ -75572,6 +75581,7 @@ export const advertiseByoipCidr: API.OperationMethod<
   input: AdvertiseByoipCidrRequest,
   output: AdvertiseByoipCidrResult,
   errors: [RequestLimitExceeded],
+  operationName: "AdvertiseByoipCidr",
 }));
 export type AllocateAddressError =
   | RequestLimitExceeded
@@ -75613,6 +75623,7 @@ export const allocateAddress: API.OperationMethod<
   input: AllocateAddressRequest,
   output: AllocateAddressResult,
   errors: [RequestLimitExceeded, AddressLimitExceeded],
+  operationName: "AllocateAddress",
 }));
 export type AllocateHostsError =
   | RequestLimitExceeded
@@ -75633,6 +75644,7 @@ export const allocateHosts: API.OperationMethod<
   input: AllocateHostsRequest,
   output: AllocateHostsResult,
   errors: [RequestLimitExceeded, InvalidHostConfiguration, InvalidRequest],
+  operationName: "AllocateHosts",
 }));
 export type AllocateIpamPoolCidrError =
   | RequestLimitExceeded
@@ -75654,6 +75666,7 @@ export const allocateIpamPoolCidr: API.OperationMethod<
   input: AllocateIpamPoolCidrRequest,
   output: AllocateIpamPoolCidrResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
+  operationName: "AllocateIpamPoolCidr",
 }));
 export type ApplySecurityGroupsToClientVpnTargetNetworkError =
   | RequestLimitExceeded
@@ -75672,6 +75685,7 @@ export const applySecurityGroupsToClientVpnTargetNetwork: API.OperationMethod<
   input: ApplySecurityGroupsToClientVpnTargetNetworkRequest,
   output: ApplySecurityGroupsToClientVpnTargetNetworkResult,
   errors: [RequestLimitExceeded, InvalidVpcIdMalformed],
+  operationName: "ApplySecurityGroupsToClientVpnTargetNetwork",
 }));
 export type AssignIpv6AddressesError =
   | RequestLimitExceeded
@@ -75705,6 +75719,7 @@ export const assignIpv6Addresses: API.OperationMethod<
     InvalidNetworkInterfaceIDNotFound,
     InvalidParameterCombination,
   ],
+  operationName: "AssignIpv6Addresses",
 }));
 export type AssignPrivateIpAddressesError =
   | RequestLimitExceeded
@@ -75752,6 +75767,7 @@ export const assignPrivateIpAddresses: API.OperationMethod<
     InvalidNetworkInterfaceIdMalformed,
     InvalidParameter,
   ],
+  operationName: "AssignPrivateIpAddresses",
 }));
 export type AssignPrivateNatGatewayAddressError =
   | RequestLimitExceeded
@@ -75770,6 +75786,7 @@ export const assignPrivateNatGatewayAddress: API.OperationMethod<
   input: AssignPrivateNatGatewayAddressRequest,
   output: AssignPrivateNatGatewayAddressResult,
   errors: [RequestLimitExceeded, NatGatewayNotFound],
+  operationName: "AssignPrivateNatGatewayAddress",
 }));
 export type AssociateAddressError =
   | RequestLimitExceeded
@@ -75815,6 +75832,7 @@ export const associateAddress: API.OperationMethod<
     InvalidInstanceIDNotFound,
     MissingParameter,
   ],
+  operationName: "AssociateAddress",
 }));
 export type AssociateCapacityReservationBillingOwnerError =
   | RequestLimitExceeded
@@ -75840,6 +75858,7 @@ export const associateCapacityReservationBillingOwner: API.OperationMethod<
     InvalidCapacityReservationIdMalformed,
     MissingParameter,
   ],
+  operationName: "AssociateCapacityReservationBillingOwner",
 }));
 export type AssociateClientVpnTargetNetworkError =
   | RequestLimitExceeded
@@ -75860,6 +75879,7 @@ export const associateClientVpnTargetNetwork: API.OperationMethod<
   input: AssociateClientVpnTargetNetworkRequest,
   output: AssociateClientVpnTargetNetworkResult,
   errors: [RequestLimitExceeded, InvalidSubnetIDMalformed, MissingParameter],
+  operationName: "AssociateClientVpnTargetNetwork",
 }));
 export type AssociateDhcpOptionsError =
   | RequestLimitExceeded
@@ -75889,6 +75909,7 @@ export const associateDhcpOptions: API.OperationMethod<
     InvalidVpcIDNotFound,
     InvalidVpcIdMalformed,
   ],
+  operationName: "AssociateDhcpOptions",
 }));
 export type AssociateEnclaveCertificateIamRoleError =
   | RequestLimitExceeded
@@ -75925,6 +75946,7 @@ export const associateEnclaveCertificateIamRole: API.OperationMethod<
     InvalidCertificateArnMalformed,
     InvalidRoleArnMalformed,
   ],
+  operationName: "AssociateEnclaveCertificateIamRole",
 }));
 export type AssociateIamInstanceProfileError =
   | RequestLimitExceeded
@@ -75943,6 +75965,7 @@ export const associateIamInstanceProfile: API.OperationMethod<
   input: AssociateIamInstanceProfileRequest,
   output: AssociateIamInstanceProfileResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "AssociateIamInstanceProfile",
 }));
 export type AssociateInstanceEventWindowError =
   | RequestLimitExceeded
@@ -75964,6 +75987,7 @@ export const associateInstanceEventWindow: API.OperationMethod<
   input: AssociateInstanceEventWindowRequest,
   output: AssociateInstanceEventWindowResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "AssociateInstanceEventWindow",
 }));
 export type AssociateIpamByoasnError =
   | RequestLimitExceeded
@@ -75985,6 +76009,7 @@ export const associateIpamByoasn: API.OperationMethod<
   input: AssociateIpamByoasnRequest,
   output: AssociateIpamByoasnResult,
   errors: [RequestLimitExceeded, InvalidCidrNotFound],
+  operationName: "AssociateIpamByoasn",
 }));
 export type AssociateIpamResourceDiscoveryError =
   | RequestLimitExceeded
@@ -76007,6 +76032,7 @@ export const associateIpamResourceDiscovery: API.OperationMethod<
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
   ],
+  operationName: "AssociateIpamResourceDiscovery",
 }));
 export type AssociateNatGatewayAddressError =
   | RequestLimitExceeded
@@ -76041,6 +76067,7 @@ export const associateNatGatewayAddress: API.OperationMethod<
     NatGatewayMalformed,
     NatGatewayNotFound,
   ],
+  operationName: "AssociateNatGatewayAddress",
 }));
 export type AssociateRouteServerError =
   | RequestLimitExceeded
@@ -76062,6 +76089,7 @@ export const associateRouteServer: API.OperationMethod<
   input: AssociateRouteServerRequest,
   output: AssociateRouteServerResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  operationName: "AssociateRouteServer",
 }));
 export type AssociateRouteTableError =
   | RequestLimitExceeded
@@ -76103,6 +76131,7 @@ export const associateRouteTable: API.OperationMethod<
     InvalidSubnetIDNotFound,
     MissingParameter,
   ],
+  operationName: "AssociateRouteTable",
 }));
 export type AssociateSecurityGroupVpcError =
   | RequestLimitExceeded
@@ -76131,6 +76160,7 @@ export const associateSecurityGroupVpc: API.OperationMethod<
   input: AssociateSecurityGroupVpcRequest,
   output: AssociateSecurityGroupVpcResult,
   errors: [RequestLimitExceeded, InvalidGroupIdMalformed, MissingParameter],
+  operationName: "AssociateSecurityGroupVpc",
 }));
 export type AssociateSubnetCidrBlockError =
   | RequestLimitExceeded
@@ -76150,6 +76180,7 @@ export const associateSubnetCidrBlock: API.OperationMethod<
   input: AssociateSubnetCidrBlockRequest,
   output: AssociateSubnetCidrBlockResult,
   errors: [RequestLimitExceeded, InvalidSubnetIDNotFound, MissingParameter],
+  operationName: "AssociateSubnetCidrBlock",
 }));
 export type AssociateTransitGatewayMulticastDomainError =
   | RequestLimitExceeded
@@ -76173,6 +76204,7 @@ export const associateTransitGatewayMulticastDomain: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayMulticastDomainIdNotFound,
   ],
+  operationName: "AssociateTransitGatewayMulticastDomain",
 }));
 export type AssociateTransitGatewayPolicyTableError =
   | RequestLimitExceeded
@@ -76195,6 +76227,7 @@ export const associateTransitGatewayPolicyTable: API.OperationMethod<
     InvalidTransitGatewayPolicyTableIdMalformed,
     InvalidTransitGatewayPolicyTableIdNotFound,
   ],
+  operationName: "AssociateTransitGatewayPolicyTable",
 }));
 export type AssociateTransitGatewayRouteTableError =
   | RequestLimitExceeded
@@ -76213,6 +76246,7 @@ export const associateTransitGatewayRouteTable: API.OperationMethod<
   input: AssociateTransitGatewayRouteTableRequest,
   output: AssociateTransitGatewayRouteTableResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  operationName: "AssociateTransitGatewayRouteTable",
 }));
 export type AssociateTrunkInterfaceError =
   | RequestLimitExceeded
@@ -76235,6 +76269,7 @@ export const associateTrunkInterface: API.OperationMethod<
   input: AssociateTrunkInterfaceRequest,
   output: AssociateTrunkInterfaceResult,
   errors: [RequestLimitExceeded, OperationNotPermitted],
+  operationName: "AssociateTrunkInterface",
 }));
 export type AssociateVpcCidrBlockError =
   | RequestLimitExceeded
@@ -76272,6 +76307,7 @@ export const associateVpcCidrBlock: API.OperationMethod<
     InvalidVpcIdMalformed,
     MissingParameter,
   ],
+  operationName: "AssociateVpcCidrBlock",
 }));
 export type AttachClassicLinkVpcError =
   | RequestLimitExceeded
@@ -76300,6 +76336,7 @@ export const attachClassicLinkVpc: API.OperationMethod<
   input: AttachClassicLinkVpcRequest,
   output: AttachClassicLinkVpcResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed, MissingParameter],
+  operationName: "AttachClassicLinkVpc",
 }));
 export type AttachImageWatermarkError = CommonErrors;
 /**
@@ -76320,6 +76357,7 @@ export const attachImageWatermark: API.OperationMethod<
   input: AttachImageWatermarkRequest,
   output: AttachImageWatermarkResult,
   errors: [],
+  operationName: "AttachImageWatermark",
 }));
 export type AttachInternetGatewayError =
   | RequestLimitExceeded
@@ -76348,6 +76386,7 @@ export const attachInternetGateway: API.OperationMethod<
     InvalidInternetGatewayIdMalformed,
     InvalidVpcIdMalformed,
   ],
+  operationName: "AttachInternetGateway",
 }));
 export type AttachNetworkInterfaceError =
   | RequestLimitExceeded
@@ -76372,6 +76411,7 @@ export const attachNetworkInterface: API.OperationMethod<
     InvalidInstanceIDNotFound,
     InvalidNetworkInterfaceIDNotFound,
   ],
+  operationName: "AttachNetworkInterface",
 }));
 export type AttachVerifiedAccessTrustProviderError =
   | RequestLimitExceeded
@@ -76389,6 +76429,7 @@ export const attachVerifiedAccessTrustProvider: API.OperationMethod<
   input: AttachVerifiedAccessTrustProviderRequest,
   output: AttachVerifiedAccessTrustProviderResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  operationName: "AttachVerifiedAccessTrustProvider",
 }));
 export type AttachVolumeError =
   | RequestLimitExceeded
@@ -76439,6 +76480,7 @@ export const attachVolume: API.OperationMethod<
     InvalidParameterValue,
     InvalidVolumeNotFound,
   ],
+  operationName: "AttachVolume",
 }));
 export type AttachVpnGatewayError =
   | RequestLimitExceeded
@@ -76465,6 +76507,7 @@ export const attachVpnGateway: API.OperationMethod<
     InvalidVpcIDNotFound,
     InvalidVpnGatewayIDNotFound,
   ],
+  operationName: "AttachVpnGateway",
 }));
 export type AuthorizeClientVpnIngressError =
   | RequestLimitExceeded
@@ -76484,6 +76527,7 @@ export const authorizeClientVpnIngress: API.OperationMethod<
   input: AuthorizeClientVpnIngressRequest,
   output: AuthorizeClientVpnIngressResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "AuthorizeClientVpnIngress",
 }));
 export type AuthorizeSecurityGroupEgressError =
   | RequestLimitExceeded
@@ -76525,6 +76569,7 @@ export const authorizeSecurityGroupEgress: API.OperationMethod<
     InvalidGroupIdMalformed,
     MissingParameter,
   ],
+  operationName: "AuthorizeSecurityGroupEgress",
 }));
 export type AuthorizeSecurityGroupIngressError =
   | RequestLimitExceeded
@@ -76566,6 +76611,7 @@ export const authorizeSecurityGroupIngress: API.OperationMethod<
     InvalidGroupIdMalformed,
     MissingParameter,
   ],
+  operationName: "AuthorizeSecurityGroupIngress",
 }));
 export type BundleInstanceError =
   | RequestLimitExceeded
@@ -76591,6 +76637,7 @@ export const bundleInstance: API.OperationMethod<
   input: BundleInstanceRequest,
   output: BundleInstanceResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "BundleInstance",
 }));
 export type CancelBundleTaskError =
   | RequestLimitExceeded
@@ -76613,6 +76660,7 @@ export const cancelBundleTask: API.OperationMethod<
     InvalidBundleIDNotFound,
     InvalidInstanceIDMalformed,
   ],
+  operationName: "CancelBundleTask",
 }));
 export type CancelCapacityReservationError =
   | RequestLimitExceeded
@@ -76663,6 +76711,7 @@ export const cancelCapacityReservation: API.OperationMethod<
     InvalidCapacityReservationIdMalformed,
     MissingParameter,
   ],
+  operationName: "CancelCapacityReservation",
 }));
 export type CancelCapacityReservationFleetsError =
   | RequestLimitExceeded
@@ -76690,6 +76739,7 @@ export const cancelCapacityReservationFleets: API.OperationMethod<
   input: CancelCapacityReservationFleetsRequest,
   output: CancelCapacityReservationFleetsResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationFleetIdMalformed],
+  operationName: "CancelCapacityReservationFleets",
 }));
 export type CancelConversionTaskError =
   | RequestLimitExceeded
@@ -76709,6 +76759,7 @@ export const cancelConversionTask: API.OperationMethod<
   input: CancelConversionRequest,
   output: CancelConversionTaskResponse,
   errors: [RequestLimitExceeded, InvalidAction],
+  operationName: "CancelConversionTask",
 }));
 export type CancelDeclarativePoliciesReportError =
   | RequestLimitExceeded
@@ -76733,6 +76784,7 @@ export const cancelDeclarativePoliciesReport: API.OperationMethod<
   input: CancelDeclarativePoliciesReportRequest,
   output: CancelDeclarativePoliciesReportResult,
   errors: [RequestLimitExceeded, InvalidDeclarativePoliciesReportIdMalformed],
+  operationName: "CancelDeclarativePoliciesReport",
 }));
 export type CancelExportTaskError =
   | RequestLimitExceeded
@@ -76752,6 +76804,7 @@ export const cancelExportTask: API.OperationMethod<
   input: CancelExportTaskRequest,
   output: CancelExportTaskResponse,
   errors: [RequestLimitExceeded, InvalidID],
+  operationName: "CancelExportTask",
 }));
 export type CancelImageLaunchPermissionError =
   | RequestLimitExceeded
@@ -76771,6 +76824,7 @@ export const cancelImageLaunchPermission: API.OperationMethod<
   input: CancelImageLaunchPermissionRequest,
   output: CancelImageLaunchPermissionResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  operationName: "CancelImageLaunchPermission",
 }));
 export type CancelImportTaskError =
   | RequestLimitExceeded
@@ -76788,6 +76842,7 @@ export const cancelImportTask: API.OperationMethod<
   input: CancelImportTaskRequest,
   output: CancelImportTaskResult,
   errors: [RequestLimitExceeded, InvalidConversionTaskIdMalformed],
+  operationName: "CancelImportTask",
 }));
 export type CancelReservedInstancesListingError =
   | RequestLimitExceeded
@@ -76809,6 +76864,7 @@ export const cancelReservedInstancesListing: API.OperationMethod<
   input: CancelReservedInstancesListingRequest,
   output: CancelReservedInstancesListingResult,
   errors: [RequestLimitExceeded, InvalidInput],
+  operationName: "CancelReservedInstancesListing",
 }));
 export type CancelSpotFleetRequestsError =
   | RequestLimitExceeded
@@ -76851,6 +76907,7 @@ export const cancelSpotFleetRequests: API.OperationMethod<
   input: CancelSpotFleetRequestsRequest,
   output: CancelSpotFleetRequestsResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  operationName: "CancelSpotFleetRequests",
 }));
 export type CancelSpotInstanceRequestsError =
   | RequestLimitExceeded
@@ -76876,6 +76933,7 @@ export const cancelSpotInstanceRequests: API.OperationMethod<
     InvalidParameterCombination,
     InvalidSpotInstanceRequestIDMalformed,
   ],
+  operationName: "CancelSpotInstanceRequests",
 }));
 export type ConfirmProductInstanceError =
   | RequestLimitExceeded
@@ -76895,6 +76953,7 @@ export const confirmProductInstance: API.OperationMethod<
   input: ConfirmProductInstanceRequest,
   output: ConfirmProductInstanceResult,
   errors: [RequestLimitExceeded, AuthFailure],
+  operationName: "ConfirmProductInstance",
 }));
 export type CopyFpgaImageError =
   | RequestLimitExceeded
@@ -76912,6 +76971,7 @@ export const copyFpgaImage: API.OperationMethod<
   input: CopyFpgaImageRequest,
   output: CopyFpgaImageResult,
   errors: [RequestLimitExceeded, InvalidFpgaImageIDMalformed],
+  operationName: "CopyFpgaImage",
 }));
 export type CopyImageError =
   | RequestLimitExceeded
@@ -76999,6 +77059,7 @@ export const copyImage: API.OperationMethod<
     InvalidRegion,
     InvalidRequest,
   ],
+  operationName: "CopyImage",
 }));
 export type CopySnapshotError =
   | RequestLimitExceeded
@@ -77051,6 +77112,7 @@ export const copySnapshot: API.OperationMethod<
     InvalidRegion,
     InvalidSnapshotNotFound,
   ],
+  operationName: "CopySnapshot",
 }));
 export type CopyVolumesError =
   | RequestLimitExceeded
@@ -77070,6 +77132,7 @@ export const copyVolumes: API.OperationMethod<
   input: CopyVolumesRequest,
   output: CopyVolumesResult,
   errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
+  operationName: "CopyVolumes",
 }));
 export type CreateCapacityManagerDataExportError =
   | RequestLimitExceeded
@@ -77088,6 +77151,7 @@ export const createCapacityManagerDataExport: API.OperationMethod<
   input: CreateCapacityManagerDataExportRequest,
   output: CreateCapacityManagerDataExportResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateCapacityManagerDataExport",
 }));
 export type CreateCapacityReservationError =
   | RequestLimitExceeded
@@ -77128,6 +77192,7 @@ export const createCapacityReservation: API.OperationMethod<
   input: CreateCapacityReservationRequest,
   output: CreateCapacityReservationResult,
   errors: [RequestLimitExceeded, Unsupported],
+  operationName: "CreateCapacityReservation",
 }));
 export type CreateCapacityReservationBySplittingError =
   | RequestLimitExceeded
@@ -77153,6 +77218,7 @@ export const createCapacityReservationBySplitting: API.OperationMethod<
     InvalidCapacityReservationIdMalformed,
     InvalidCapacityReservationIdNotFound,
   ],
+  operationName: "CreateCapacityReservationBySplitting",
 }));
 export type CreateCapacityReservationCancellationQuoteError = CommonErrors;
 /**
@@ -77170,6 +77236,7 @@ export const createCapacityReservationCancellationQuote: API.OperationMethod<
   input: CreateCapacityReservationCancellationQuoteRequest,
   output: CreateCapacityReservationCancellationQuoteResult,
   errors: [],
+  operationName: "CreateCapacityReservationCancellationQuote",
 }));
 export type CreateCapacityReservationFleetError =
   | RequestLimitExceeded
@@ -77189,6 +77256,7 @@ export const createCapacityReservationFleet: API.OperationMethod<
   input: CreateCapacityReservationFleetRequest,
   output: CreateCapacityReservationFleetResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateCapacityReservationFleet",
 }));
 export type CreateCarrierGatewayError =
   | RequestLimitExceeded
@@ -77215,6 +77283,7 @@ export const createCarrierGateway: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  operationName: "CreateCarrierGateway",
 }));
 export type CreateClientVpnEndpointError =
   | RequestLimitExceeded
@@ -77234,6 +77303,7 @@ export const createClientVpnEndpoint: API.OperationMethod<
   input: CreateClientVpnEndpointRequest,
   output: CreateClientVpnEndpointResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateClientVpnEndpoint",
 }));
 export type CreateClientVpnRouteError =
   | RequestLimitExceeded
@@ -77252,6 +77322,7 @@ export const createClientVpnRoute: API.OperationMethod<
   input: CreateClientVpnRouteRequest,
   output: CreateClientVpnRouteResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  operationName: "CreateClientVpnRoute",
 }));
 export type CreateCoipCidrError =
   | RequestLimitExceeded
@@ -77276,6 +77347,7 @@ export const createCoipCidr: API.OperationMethod<
     InvalidPoolIDNotFound,
     MissingParameter,
   ],
+  operationName: "CreateCoipCidr",
 }));
 export type CreateCoipPoolError =
   | RequestLimitExceeded
@@ -77300,6 +77372,7 @@ export const createCoipPool: API.OperationMethod<
     InvalidLocalGatewayRouteTableIDNotFound,
     MissingParameter,
   ],
+  operationName: "CreateCoipPool",
 }));
 export type CreateCustomerGatewayError =
   | RequestLimitExceeded
@@ -77333,6 +77406,7 @@ export const createCustomerGateway: API.OperationMethod<
   input: CreateCustomerGatewayRequest,
   output: CreateCustomerGatewayResult,
   errors: [RequestLimitExceeded, MissingParameter, ParseError],
+  operationName: "CreateCustomerGateway",
 }));
 export type CreateDefaultSubnetError =
   | RequestLimitExceeded
@@ -77358,6 +77432,7 @@ export const createDefaultSubnet: API.OperationMethod<
     DefaultSubnetAlreadyExistsInAvailabilityZone,
     MissingParameter,
   ],
+  operationName: "CreateDefaultSubnet",
 }));
 export type CreateDefaultVpcError =
   | RequestLimitExceeded
@@ -77382,6 +77457,7 @@ export const createDefaultVpc: API.OperationMethod<
   input: CreateDefaultVpcRequest,
   output: CreateDefaultVpcResult,
   errors: [RequestLimitExceeded, DefaultVpcAlreadyExists],
+  operationName: "CreateDefaultVpc",
 }));
 export type CreateDelegateMacVolumeOwnershipTaskError =
   | RequestLimitExceeded
@@ -77400,6 +77476,7 @@ export const createDelegateMacVolumeOwnershipTask: API.OperationMethod<
   input: CreateDelegateMacVolumeOwnershipTaskRequest,
   output: CreateDelegateMacVolumeOwnershipTaskResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateDelegateMacVolumeOwnershipTask",
 }));
 export type CreateDhcpOptionsError =
   | RequestLimitExceeded
@@ -77455,6 +77532,7 @@ export const createDhcpOptions: API.OperationMethod<
   input: CreateDhcpOptionsRequest,
   output: CreateDhcpOptionsResult,
   errors: [RequestLimitExceeded, MissingParameter, ParseError],
+  operationName: "CreateDhcpOptions",
 }));
 export type CreateEgressOnlyInternetGatewayError =
   | RequestLimitExceeded
@@ -77484,6 +77562,7 @@ export const createEgressOnlyInternetGateway: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  operationName: "CreateEgressOnlyInternetGateway",
 }));
 export type CreateFleetError =
   | RequestLimitExceeded
@@ -77507,6 +77586,7 @@ export const createFleet: API.OperationMethod<
   input: CreateFleetRequest,
   output: CreateFleetResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateFleet",
 }));
 export type CreateFlowLogsError =
   | RequestLimitExceeded
@@ -77545,6 +77625,7 @@ export const createFlowLogs: API.OperationMethod<
     InvalidParameterValue,
     MissingParameter,
   ],
+  operationName: "CreateFlowLogs",
 }));
 export type CreateFpgaImageError =
   | RequestLimitExceeded
@@ -77569,6 +77650,7 @@ export const createFpgaImage: API.OperationMethod<
   input: CreateFpgaImageRequest,
   output: CreateFpgaImageResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "CreateFpgaImage",
 }));
 export type CreateImageError =
   | RequestLimitExceeded
@@ -77609,6 +77691,7 @@ export const createImage: API.OperationMethod<
     InvalidInstanceIDNotFound,
     InvalidParameterValue,
   ],
+  operationName: "CreateImage",
 }));
 export type CreateImageUsageReportError =
   | RequestLimitExceeded
@@ -77631,6 +77714,7 @@ export const createImageUsageReport: API.OperationMethod<
   input: CreateImageUsageReportRequest,
   output: CreateImageUsageReportResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateImageUsageReport",
 }));
 export type CreateInstanceConnectEndpointError =
   | RequestLimitExceeded
@@ -77660,6 +77744,7 @@ export const createInstanceConnectEndpoint: API.OperationMethod<
     InvalidSubnetIDNotFound,
     MissingParameter,
   ],
+  operationName: "CreateInstanceConnectEndpoint",
 }));
 export type CreateInstanceEventWindowError =
   | RequestLimitExceeded
@@ -77699,6 +77784,7 @@ export const createInstanceEventWindow: API.OperationMethod<
   input: CreateInstanceEventWindowRequest,
   output: CreateInstanceEventWindowResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "CreateInstanceEventWindow",
 }));
 export type CreateInstanceExportTaskError =
   | RequestLimitExceeded
@@ -77720,6 +77806,7 @@ export const createInstanceExportTask: API.OperationMethod<
   input: CreateInstanceExportTaskRequest,
   output: CreateInstanceExportTaskResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateInstanceExportTask",
 }));
 export type CreateInternetGatewayError =
   | RequestLimitExceeded
@@ -77742,6 +77829,7 @@ export const createInternetGateway: API.OperationMethod<
   input: CreateInternetGatewayRequest,
   output: CreateInternetGatewayResult,
   errors: [RequestLimitExceeded, InternetGatewayLimitExceeded, ParseError],
+  operationName: "CreateInternetGateway",
 }));
 export type CreateInterruptibleCapacityReservationAllocationError =
   | RequestLimitExceeded
@@ -77759,6 +77847,7 @@ export const createInterruptibleCapacityReservationAllocation: API.OperationMeth
   input: CreateInterruptibleCapacityReservationAllocationRequest,
   output: CreateInterruptibleCapacityReservationAllocationResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdNotFound],
+  operationName: "CreateInterruptibleCapacityReservationAllocation",
 }));
 export type CreateIpamError =
   | RequestLimitExceeded
@@ -77788,6 +77877,7 @@ export const createIpam: API.OperationMethod<
     ParseError,
     ResourceLimitExceeded,
   ],
+  operationName: "CreateIpam",
 }));
 export type CreateIpamExternalResourceVerificationTokenError =
   | RequestLimitExceeded
@@ -77808,6 +77898,7 @@ export const createIpamExternalResourceVerificationToken: API.OperationMethod<
   input: CreateIpamExternalResourceVerificationTokenRequest,
   output: CreateIpamExternalResourceVerificationTokenResult,
   errors: [RequestLimitExceeded, InvalidIpamIdNotFound, MissingParameter],
+  operationName: "CreateIpamExternalResourceVerificationToken",
 }));
 export type CreateIpamPolicyError =
   | RequestLimitExceeded
@@ -77830,6 +77921,7 @@ export const createIpamPolicy: API.OperationMethod<
   input: CreateIpamPolicyRequest,
   output: CreateIpamPolicyResult,
   errors: [RequestLimitExceeded, InvalidIpamIdNotFound, MissingParameter],
+  operationName: "CreateIpamPolicy",
 }));
 export type CreateIpamPoolError =
   | RequestLimitExceeded
@@ -77850,6 +77942,7 @@ export const createIpamPool: API.OperationMethod<
   input: CreateIpamPoolRequest,
   output: CreateIpamPoolResult,
   errors: [RequestLimitExceeded, InvalidIpamScopeIdNotFound, MissingParameter],
+  operationName: "CreateIpamPool",
 }));
 export type CreateIpamPrefixListResolverError =
   | RequestLimitExceeded
@@ -77871,6 +77964,7 @@ export const createIpamPrefixListResolver: API.OperationMethod<
   input: CreateIpamPrefixListResolverRequest,
   output: CreateIpamPrefixListResolverResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateIpamPrefixListResolver",
 }));
 export type CreateIpamPrefixListResolverTargetError =
   | RequestLimitExceeded
@@ -77899,6 +77993,7 @@ export const createIpamPrefixListResolverTarget: API.OperationMethod<
     InvalidIpamPrefixListResolverIdNotFound,
     MissingParameter,
   ],
+  operationName: "CreateIpamPrefixListResolverTarget",
 }));
 export type CreateIpamResourceDiscoveryError =
   | RequestLimitExceeded
@@ -77916,6 +78011,7 @@ export const createIpamResourceDiscovery: API.OperationMethod<
   input: CreateIpamResourceDiscoveryRequest,
   output: CreateIpamResourceDiscoveryResult,
   errors: [RequestLimitExceeded, ResourceLimitExceeded],
+  operationName: "CreateIpamResourceDiscovery",
 }));
 export type CreateIpamScopeError =
   | RequestLimitExceeded
@@ -77936,6 +78032,7 @@ export const createIpamScope: API.OperationMethod<
   input: CreateIpamScopeRequest,
   output: CreateIpamScopeResult,
   errors: [RequestLimitExceeded, InvalidIpamIdNotFound, MissingParameter],
+  operationName: "CreateIpamScope",
 }));
 export type CreateKeyPairError =
   | RequestLimitExceeded
@@ -77966,6 +78063,7 @@ export const createKeyPair: API.OperationMethod<
   input: CreateKeyPairRequest,
   output: KeyPair,
   errors: [RequestLimitExceeded, InvalidKeyPairDuplicate],
+  operationName: "CreateKeyPair",
 }));
 export type CreateLaunchTemplateError =
   | RequestLimitExceeded
@@ -77994,6 +78092,7 @@ export const createLaunchTemplate: API.OperationMethod<
   input: CreateLaunchTemplateRequest,
   output: CreateLaunchTemplateResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateLaunchTemplate",
 }));
 export type CreateLaunchTemplateVersionError = CommonErrors;
 /**
@@ -78021,6 +78120,7 @@ export const createLaunchTemplateVersion: API.OperationMethod<
   input: CreateLaunchTemplateVersionRequest,
   output: CreateLaunchTemplateVersionResult,
   errors: [],
+  operationName: "CreateLaunchTemplateVersion",
 }));
 export type CreateLocalGatewayRouteError =
   | RequestLimitExceeded
@@ -78044,6 +78144,7 @@ export const createLocalGatewayRoute: API.OperationMethod<
   input: CreateLocalGatewayRouteRequest,
   output: CreateLocalGatewayRouteResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  operationName: "CreateLocalGatewayRoute",
 }));
 export type CreateLocalGatewayRouteTableError =
   | RequestLimitExceeded
@@ -78068,6 +78169,7 @@ export const createLocalGatewayRouteTable: API.OperationMethod<
     InvalidLocalGatewayIDNotFound,
     MissingParameter,
   ],
+  operationName: "CreateLocalGatewayRouteTable",
 }));
 export type CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationError =
   | RequestLimitExceeded
@@ -78092,6 +78194,7 @@ export const createLocalGatewayRouteTableVirtualInterfaceGroupAssociation: API.O
     InvalidLocalGatewayVirtualInterfaceGroupIDMalformed,
     MissingParameter,
   ],
+  operationName: "CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociation",
 }));
 export type CreateLocalGatewayRouteTableVpcAssociationError =
   | RequestLimitExceeded
@@ -78118,6 +78221,7 @@ export const createLocalGatewayRouteTableVpcAssociation: API.OperationMethod<
     InvalidVpcIDNotFound,
     MissingParameter,
   ],
+  operationName: "CreateLocalGatewayRouteTableVpcAssociation",
 }));
 export type CreateLocalGatewayVirtualInterfaceError =
   | RequestLimitExceeded
@@ -78142,6 +78246,7 @@ export const createLocalGatewayVirtualInterface: API.OperationMethod<
     InvalidLocalGatewayVirtualInterfaceGroupIDNotFound,
     MissingParameter,
   ],
+  operationName: "CreateLocalGatewayVirtualInterface",
 }));
 export type CreateLocalGatewayVirtualInterfaceGroupError =
   | RequestLimitExceeded
@@ -78164,6 +78269,7 @@ export const createLocalGatewayVirtualInterfaceGroup: API.OperationMethod<
     InvalidLocalGatewayIDNotFound,
     MissingParameter,
   ],
+  operationName: "CreateLocalGatewayVirtualInterfaceGroup",
 }));
 export type CreateMacSystemIntegrityProtectionModificationTaskError =
   CommonErrors;
@@ -78212,6 +78318,7 @@ export const createMacSystemIntegrityProtectionModificationTask: API.OperationMe
   input: CreateMacSystemIntegrityProtectionModificationTaskRequest,
   output: CreateMacSystemIntegrityProtectionModificationTaskResult,
   errors: [],
+  operationName: "CreateMacSystemIntegrityProtectionModificationTask",
 }));
 export type CreateManagedPrefixListError =
   | RequestLimitExceeded
@@ -78231,6 +78338,7 @@ export const createManagedPrefixList: API.OperationMethod<
   input: CreateManagedPrefixListRequest,
   output: CreateManagedPrefixListResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, ParseError],
+  operationName: "CreateManagedPrefixList",
 }));
 export type CreateNatGatewayError =
   | RequestLimitExceeded
@@ -78279,6 +78387,7 @@ export const createNatGateway: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  operationName: "CreateNatGateway",
 }));
 export type CreateNetworkAclError =
   | RequestLimitExceeded
@@ -78306,6 +78415,7 @@ export const createNetworkAcl: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  operationName: "CreateNetworkAcl",
 }));
 export type CreateNetworkAclEntryError =
   | RequestLimitExceeded
@@ -78335,6 +78445,7 @@ export const createNetworkAclEntry: API.OperationMethod<
   input: CreateNetworkAclEntryRequest,
   output: CreateNetworkAclEntryResponse,
   errors: [RequestLimitExceeded, InvalidNetworkAclIDNotFound, MissingParameter],
+  operationName: "CreateNetworkAclEntry",
 }));
 export type CreateNetworkInsightsAccessScopeError = CommonErrors;
 /**
@@ -78353,6 +78464,7 @@ export const createNetworkInsightsAccessScope: API.OperationMethod<
   input: CreateNetworkInsightsAccessScopeRequest,
   output: CreateNetworkInsightsAccessScopeResult,
   errors: [],
+  operationName: "CreateNetworkInsightsAccessScope",
 }));
 export type CreateNetworkInsightsPathError =
   | RequestLimitExceeded
@@ -78375,6 +78487,7 @@ export const createNetworkInsightsPath: API.OperationMethod<
   input: CreateNetworkInsightsPathRequest,
   output: CreateNetworkInsightsPathResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  operationName: "CreateNetworkInsightsPath",
 }));
 export type CreateNetworkInterfaceError =
   | RequestLimitExceeded
@@ -78405,6 +78518,7 @@ export const createNetworkInterface: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  operationName: "CreateNetworkInterface",
 }));
 export type CreateNetworkInterfacePermissionError =
   | RequestLimitExceeded
@@ -78426,6 +78540,7 @@ export const createNetworkInterfacePermission: API.OperationMethod<
   input: CreateNetworkInterfacePermissionRequest,
   output: CreateNetworkInterfacePermissionResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateNetworkInterfacePermission",
 }));
 export type CreatePlacementGroupError =
   | RequestLimitExceeded
@@ -78457,6 +78572,7 @@ export const createPlacementGroup: API.OperationMethod<
   input: CreatePlacementGroupRequest,
   output: CreatePlacementGroupResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  operationName: "CreatePlacementGroup",
 }));
 export type CreatePublicIpv4PoolError = CommonErrors;
 /**
@@ -78471,6 +78587,7 @@ export const createPublicIpv4Pool: API.OperationMethod<
   input: CreatePublicIpv4PoolRequest,
   output: CreatePublicIpv4PoolResult,
   errors: [],
+  operationName: "CreatePublicIpv4Pool",
 }));
 export type CreateReplaceRootVolumeTaskError =
   | RequestLimitExceeded
@@ -78493,6 +78610,7 @@ export const createReplaceRootVolumeTask: API.OperationMethod<
   input: CreateReplaceRootVolumeTaskRequest,
   output: CreateReplaceRootVolumeTaskResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  operationName: "CreateReplaceRootVolumeTask",
 }));
 export type CreateReservedInstancesListingError =
   | RequestLimitExceeded
@@ -78530,6 +78648,7 @@ export const createReservedInstancesListing: API.OperationMethod<
   input: CreateReservedInstancesListingRequest,
   output: CreateReservedInstancesListingResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateReservedInstancesListing",
 }));
 export type CreateRestoreImageTaskError =
   | RequestLimitExceeded
@@ -78554,6 +78673,7 @@ export const createRestoreImageTask: API.OperationMethod<
   input: CreateRestoreImageTaskRequest,
   output: CreateRestoreImageTaskResult,
   errors: [RequestLimitExceeded, InvalidRequest],
+  operationName: "CreateRestoreImageTask",
 }));
 export type CreateRouteError =
   | RequestLimitExceeded
@@ -78608,6 +78728,7 @@ export const createRoute: API.OperationMethod<
     MissingParameter,
     RouteAlreadyExists,
   ],
+  operationName: "CreateRoute",
 }));
 export type CreateRouteServerError =
   | RequestLimitExceeded
@@ -78640,6 +78761,7 @@ export const createRouteServer: API.OperationMethod<
   input: CreateRouteServerRequest,
   output: CreateRouteServerResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateRouteServer",
 }));
 export type CreateRouteServerEndpointError =
   | RequestLimitExceeded
@@ -78670,6 +78792,7 @@ export const createRouteServerEndpoint: API.OperationMethod<
     InvalidSubnetIDMalformed,
     MissingParameter,
   ],
+  operationName: "CreateRouteServerEndpoint",
 }));
 export type CreateRouteServerPeerError =
   | RequestLimitExceeded
@@ -78697,6 +78820,7 @@ export const createRouteServerPeer: API.OperationMethod<
   input: CreateRouteServerPeerRequest,
   output: CreateRouteServerPeerResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateRouteServerPeer",
 }));
 export type CreateRouteTableError =
   | RequestLimitExceeded
@@ -78724,6 +78848,7 @@ export const createRouteTable: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  operationName: "CreateRouteTable",
 }));
 export type CreateSecondaryNetworkError = CommonErrors;
 /**
@@ -78740,6 +78865,7 @@ export const createSecondaryNetwork: API.OperationMethod<
   input: CreateSecondaryNetworkRequest,
   output: CreateSecondaryNetworkResult,
   errors: [],
+  operationName: "CreateSecondaryNetwork",
 }));
 export type CreateSecondarySubnetError = CommonErrors;
 /**
@@ -78758,6 +78884,7 @@ export const createSecondarySubnet: API.OperationMethod<
   input: CreateSecondarySubnetRequest,
   output: CreateSecondarySubnetResult,
   errors: [],
+  operationName: "CreateSecondarySubnet",
 }));
 export type CreateSecurityGroupError =
   | RequestLimitExceeded
@@ -78811,6 +78938,7 @@ export const createSecurityGroup: API.OperationMethod<
     MissingParameter,
     VPCIdNotSpecified,
   ],
+  operationName: "CreateSecurityGroup",
 }));
 export type CreateSnapshotError =
   | RequestLimitExceeded
@@ -78868,6 +78996,7 @@ export const createSnapshot: API.OperationMethod<
     InvalidVolumeNotFound,
     InvalidVolumeIDMalformed,
   ],
+  operationName: "CreateSnapshot",
 }));
 export type CreateSnapshotsError =
   | RequestLimitExceeded
@@ -78900,6 +79029,7 @@ export const createSnapshots: API.OperationMethod<
   input: CreateSnapshotsRequest,
   output: CreateSnapshotsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateSnapshots",
 }));
 export type CreateSpotDatafeedSubscriptionError =
   | RequestLimitExceeded
@@ -78920,6 +79050,7 @@ export const createSpotDatafeedSubscription: API.OperationMethod<
   input: CreateSpotDatafeedSubscriptionRequest,
   output: CreateSpotDatafeedSubscriptionResult,
   errors: [RequestLimitExceeded, InaccessibleStorageLocation],
+  operationName: "CreateSpotDatafeedSubscription",
 }));
 export type CreateStoreImageTaskError =
   | RequestLimitExceeded
@@ -78943,6 +79074,7 @@ export const createStoreImageTask: API.OperationMethod<
   input: CreateStoreImageTaskRequest,
   output: CreateStoreImageTaskResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  operationName: "CreateStoreImageTask",
 }));
 export type CreateSubnetError =
   | RequestLimitExceeded
@@ -78993,6 +79125,7 @@ export const createSubnet: API.OperationMethod<
     ParseError,
     InvalidSubnetConflict,
   ],
+  operationName: "CreateSubnet",
 }));
 export type CreateSubnetCidrReservationError =
   | RequestLimitExceeded
@@ -79019,6 +79152,7 @@ export const createSubnetCidrReservation: API.OperationMethod<
     InvalidSubnetIDMalformed,
     MissingParameter,
   ],
+  operationName: "CreateSubnetCidrReservation",
 }));
 export type CreateTagsError =
   | RequestLimitExceeded
@@ -79046,6 +79180,7 @@ export const createTags: API.OperationMethod<
   input: CreateTagsRequest,
   output: CreateTagsResponse,
   errors: [RequestLimitExceeded, InvalidID, MissingParameter],
+  operationName: "CreateTags",
 }));
 export type CreateTrafficMirrorFilterError =
   | RequestLimitExceeded
@@ -79069,6 +79204,7 @@ export const createTrafficMirrorFilter: API.OperationMethod<
   input: CreateTrafficMirrorFilterRequest,
   output: CreateTrafficMirrorFilterResult,
   errors: [RequestLimitExceeded, ParseError],
+  operationName: "CreateTrafficMirrorFilter",
 }));
 export type CreateTrafficMirrorFilterRuleError =
   | RequestLimitExceeded
@@ -79090,6 +79226,7 @@ export const createTrafficMirrorFilterRule: API.OperationMethod<
   input: CreateTrafficMirrorFilterRuleRequest,
   output: CreateTrafficMirrorFilterRuleResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateTrafficMirrorFilterRule",
 }));
 export type CreateTrafficMirrorSessionError =
   | RequestLimitExceeded
@@ -79123,6 +79260,7 @@ export const createTrafficMirrorSession: API.OperationMethod<
     InvalidParameterValue,
     MissingParameter,
   ],
+  operationName: "CreateTrafficMirrorSession",
 }));
 export type CreateTrafficMirrorTargetError =
   | RequestLimitExceeded
@@ -79148,6 +79286,7 @@ export const createTrafficMirrorTarget: API.OperationMethod<
   input: CreateTrafficMirrorTargetRequest,
   output: CreateTrafficMirrorTargetResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
+  operationName: "CreateTrafficMirrorTarget",
 }));
 export type CreateTransitGatewayError =
   | RequestLimitExceeded
@@ -79182,6 +79321,7 @@ export const createTransitGateway: API.OperationMethod<
   input: CreateTransitGatewayRequest,
   output: CreateTransitGatewayResult,
   errors: [RequestLimitExceeded, ParseError, TransitGatewayLimitExceeded],
+  operationName: "CreateTransitGateway",
 }));
 export type CreateTransitGatewayConnectError =
   | RequestLimitExceeded
@@ -79201,6 +79341,7 @@ export const createTransitGatewayConnect: API.OperationMethod<
   input: CreateTransitGatewayConnectRequest,
   output: CreateTransitGatewayConnectResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateTransitGatewayConnect",
 }));
 export type CreateTransitGatewayConnectPeerError =
   | RequestLimitExceeded
@@ -79224,6 +79365,7 @@ export const createTransitGatewayConnectPeer: API.OperationMethod<
   input: CreateTransitGatewayConnectPeerRequest,
   output: CreateTransitGatewayConnectPeerResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateTransitGatewayConnectPeer",
 }));
 export type CreateTransitGatewayMeteringPolicyError =
   | RequestLimitExceeded
@@ -79248,6 +79390,7 @@ export const createTransitGatewayMeteringPolicy: API.OperationMethod<
     InvalidTransitGatewayIDNotFound,
     MissingParameter,
   ],
+  operationName: "CreateTransitGatewayMeteringPolicy",
 }));
 export type CreateTransitGatewayMeteringPolicyEntryError =
   | RequestLimitExceeded
@@ -79265,6 +79408,7 @@ export const createTransitGatewayMeteringPolicyEntry: API.OperationMethod<
   input: CreateTransitGatewayMeteringPolicyEntryRequest,
   output: CreateTransitGatewayMeteringPolicyEntryResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateTransitGatewayMeteringPolicyEntry",
 }));
 export type CreateTransitGatewayMulticastDomainError =
   | RequestLimitExceeded
@@ -79293,6 +79437,7 @@ export const createTransitGatewayMulticastDomain: API.OperationMethod<
     InvalidTransitGatewayIDNotFound,
     MissingParameter,
   ],
+  operationName: "CreateTransitGatewayMulticastDomain",
 }));
 export type CreateTransitGatewayPeeringAttachmentError =
   | RequestLimitExceeded
@@ -79322,6 +79467,7 @@ export const createTransitGatewayPeeringAttachment: API.OperationMethod<
     InvalidTransitGatewayIDMalformed,
     MissingParameter,
   ],
+  operationName: "CreateTransitGatewayPeeringAttachment",
 }));
 export type CreateTransitGatewayPolicyTableError =
   | RequestLimitExceeded
@@ -79346,6 +79492,7 @@ export const createTransitGatewayPolicyTable: API.OperationMethod<
     InvalidTransitGatewayIDNotFound,
     MissingParameter,
   ],
+  operationName: "CreateTransitGatewayPolicyTable",
 }));
 export type CreateTransitGatewayPrefixListReferenceError =
   | RequestLimitExceeded
@@ -79363,6 +79510,7 @@ export const createTransitGatewayPrefixListReference: API.OperationMethod<
   input: CreateTransitGatewayPrefixListReferenceRequest,
   output: CreateTransitGatewayPrefixListReferenceResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateTransitGatewayPrefixListReference",
 }));
 export type CreateTransitGatewayRouteError =
   | RequestLimitExceeded
@@ -79381,6 +79529,7 @@ export const createTransitGatewayRoute: API.OperationMethod<
   input: CreateTransitGatewayRouteRequest,
   output: CreateTransitGatewayRouteResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  operationName: "CreateTransitGatewayRoute",
 }));
 export type CreateTransitGatewayRouteTableError =
   | RequestLimitExceeded
@@ -79407,6 +79556,7 @@ export const createTransitGatewayRouteTable: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  operationName: "CreateTransitGatewayRouteTable",
 }));
 export type CreateTransitGatewayRouteTableAnnouncementError =
   | RequestLimitExceeded
@@ -79431,6 +79581,7 @@ export const createTransitGatewayRouteTableAnnouncement: API.OperationMethod<
     InvalidTransitGatewayAttachmentIDMalformed,
     MissingParameter,
   ],
+  operationName: "CreateTransitGatewayRouteTableAnnouncement",
 }));
 export type CreateTransitGatewayVpcAttachmentError =
   | RequestLimitExceeded
@@ -79460,6 +79611,7 @@ export const createTransitGatewayVpcAttachment: API.OperationMethod<
     InvalidTransitGatewayIDNotFound,
     MissingParameter,
   ],
+  operationName: "CreateTransitGatewayVpcAttachment",
 }));
 export type CreateVerifiedAccessEndpointError =
   | RequestLimitExceeded
@@ -79477,6 +79629,7 @@ export const createVerifiedAccessEndpoint: API.OperationMethod<
   input: CreateVerifiedAccessEndpointRequest,
   output: CreateVerifiedAccessEndpointResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateVerifiedAccessEndpoint",
 }));
 export type CreateVerifiedAccessGroupError =
   | RequestLimitExceeded
@@ -79504,6 +79657,7 @@ export const createVerifiedAccessGroup: API.OperationMethod<
     InvalidVerifiedAccessInstanceIdNotFound,
     MissingParameter,
   ],
+  operationName: "CreateVerifiedAccessGroup",
 }));
 export type CreateVerifiedAccessInstanceError =
   | RequestLimitExceeded
@@ -79527,6 +79681,7 @@ export const createVerifiedAccessInstance: API.OperationMethod<
     ParseError,
     VerifiedAccessInstanceLimitExceeded,
   ],
+  operationName: "CreateVerifiedAccessInstance",
 }));
 export type CreateVerifiedAccessTrustProviderError =
   | RequestLimitExceeded
@@ -79547,6 +79702,7 @@ export const createVerifiedAccessTrustProvider: API.OperationMethod<
   input: CreateVerifiedAccessTrustProviderRequest,
   output: CreateVerifiedAccessTrustProviderResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateVerifiedAccessTrustProvider",
 }));
 export type CreateVolumeError =
   | RequestLimitExceeded
@@ -79579,6 +79735,7 @@ export const createVolume: API.OperationMethod<
   input: CreateVolumeRequest,
   output: Volume,
   errors: [RequestLimitExceeded, InvalidZoneNotFound, MissingParameter],
+  operationName: "CreateVolume",
 }));
 export type CreateVpcError =
   | RequestLimitExceeded
@@ -79620,6 +79777,7 @@ export const createVpc: API.OperationMethod<
     ParseError,
     VpcLimitExceeded,
   ],
+  operationName: "CreateVpc",
 }));
 export type CreateVpcBlockPublicAccessExclusionError =
   | RequestLimitExceeded
@@ -79638,6 +79796,7 @@ export const createVpcBlockPublicAccessExclusion: API.OperationMethod<
   input: CreateVpcBlockPublicAccessExclusionRequest,
   output: CreateVpcBlockPublicAccessExclusionResult,
   errors: [RequestLimitExceeded, InvalidVpcIdMalformed, MissingParameter],
+  operationName: "CreateVpcBlockPublicAccessExclusion",
 }));
 export type CreateVpcEncryptionControlError =
   | RequestLimitExceeded
@@ -79658,6 +79817,7 @@ export const createVpcEncryptionControl: API.OperationMethod<
   input: CreateVpcEncryptionControlRequest,
   output: CreateVpcEncryptionControlResult,
   errors: [RequestLimitExceeded, InvalidVpcIdMalformed, MissingParameter],
+  operationName: "CreateVpcEncryptionControl",
 }));
 export type CreateVpcEndpointError =
   | RequestLimitExceeded
@@ -79689,6 +79849,7 @@ export const createVpcEndpoint: API.OperationMethod<
     InvalidVpcIdNotFound,
     ParseError,
   ],
+  operationName: "CreateVpcEndpoint",
 }));
 export type CreateVpcEndpointConnectionNotificationError =
   | RequestLimitExceeded
@@ -79711,6 +79872,7 @@ export const createVpcEndpointConnectionNotification: API.OperationMethod<
   input: CreateVpcEndpointConnectionNotificationRequest,
   output: CreateVpcEndpointConnectionNotificationResult,
   errors: [RequestLimitExceeded, InvalidParameter],
+  operationName: "CreateVpcEndpointConnectionNotification",
 }));
 export type CreateVpcEndpointServiceConfigurationError =
   | RequestLimitExceeded
@@ -79743,6 +79905,7 @@ export const createVpcEndpointServiceConfiguration: API.OperationMethod<
   input: CreateVpcEndpointServiceConfigurationRequest,
   output: CreateVpcEndpointServiceConfigurationResult,
   errors: [RequestLimitExceeded, InvalidParameter],
+  operationName: "CreateVpcEndpointServiceConfiguration",
 }));
 export type CreateVpcPeeringConnectionError =
   | RequestLimitExceeded
@@ -79782,6 +79945,7 @@ export const createVpcPeeringConnection: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  operationName: "CreateVpcPeeringConnection",
 }));
 export type CreateVpnConcentratorError =
   | RequestLimitExceeded
@@ -79799,6 +79963,7 @@ export const createVpnConcentrator: API.OperationMethod<
   input: CreateVpnConcentratorRequest,
   output: CreateVpnConcentratorResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "CreateVpnConcentrator",
 }));
 export type CreateVpnConnectionError =
   | RequestLimitExceeded
@@ -79844,6 +80009,7 @@ export const createVpnConnection: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  operationName: "CreateVpnConnection",
 }));
 export type CreateVpnConnectionRouteError =
   | RequestLimitExceeded
@@ -79867,6 +80033,7 @@ export const createVpnConnectionRoute: API.OperationMethod<
   input: CreateVpnConnectionRouteRequest,
   output: CreateVpnConnectionRouteResponse,
   errors: [RequestLimitExceeded, InvalidParameter, MissingParameter],
+  operationName: "CreateVpnConnectionRoute",
 }));
 export type CreateVpnGatewayError =
   | RequestLimitExceeded
@@ -79890,6 +80057,7 @@ export const createVpnGateway: API.OperationMethod<
   input: CreateVpnGatewayRequest,
   output: CreateVpnGatewayResult,
   errors: [RequestLimitExceeded, MissingParameter, ParseError],
+  operationName: "CreateVpnGateway",
 }));
 export type DeleteCapacityManagerDataExportError =
   | RequestLimitExceeded
@@ -79912,6 +80080,7 @@ export const deleteCapacityManagerDataExport: API.OperationMethod<
     InvalidCapacityManagerDataExportIdMalformed,
     InvalidCapacityManagerDataExportIdNotFound,
   ],
+  operationName: "DeleteCapacityManagerDataExport",
 }));
 export type DeleteCarrierGatewayError =
   | RequestLimitExceeded
@@ -79940,6 +80109,7 @@ export const deleteCarrierGateway: API.OperationMethod<
     InvalidCarrierGatewayIDNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteCarrierGateway",
 }));
 export type DeleteClientVpnEndpointError =
   | RequestLimitExceeded
@@ -79958,6 +80128,7 @@ export const deleteClientVpnEndpoint: API.OperationMethod<
   input: DeleteClientVpnEndpointRequest,
   output: DeleteClientVpnEndpointResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  operationName: "DeleteClientVpnEndpoint",
 }));
 export type DeleteClientVpnRouteError =
   | RequestLimitExceeded
@@ -79978,6 +80149,7 @@ export const deleteClientVpnRoute: API.OperationMethod<
   input: DeleteClientVpnRouteRequest,
   output: DeleteClientVpnRouteResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  operationName: "DeleteClientVpnRoute",
 }));
 export type DeleteCoipCidrError =
   | RequestLimitExceeded
@@ -80002,6 +80174,7 @@ export const deleteCoipCidr: API.OperationMethod<
     InvalidIpv4PoolCoipIdMalformed,
     MissingParameter,
   ],
+  operationName: "DeleteCoipCidr",
 }));
 export type DeleteCoipPoolError =
   | RequestLimitExceeded
@@ -80026,6 +80199,7 @@ export const deleteCoipPool: API.OperationMethod<
     InvalidParameterValue,
     MissingParameter,
   ],
+  operationName: "DeleteCoipPool",
 }));
 export type DeleteCustomerGatewayError =
   | RequestLimitExceeded
@@ -80051,6 +80225,7 @@ export const deleteCustomerGateway: API.OperationMethod<
     InvalidCustomerGatewayIdMalformed,
     MissingParameter,
   ],
+  operationName: "DeleteCustomerGateway",
 }));
 export type DeleteDhcpOptionsError =
   | RequestLimitExceeded
@@ -80077,6 +80252,7 @@ export const deleteDhcpOptions: API.OperationMethod<
     InvalidDhcpOptionsIDNotFound,
     InvalidDhcpOptionsIdMalformed,
   ],
+  operationName: "DeleteDhcpOptions",
 }));
 export type DeleteEgressOnlyInternetGatewayError =
   | DependencyViolation
@@ -80107,6 +80283,7 @@ export const deleteEgressOnlyInternetGateway: API.OperationMethod<
     MissingParameter,
     RequestLimitExceeded,
   ],
+  operationName: "DeleteEgressOnlyInternetGateway",
 }));
 export type DeleteFleetsError =
   | RequestLimitExceeded
@@ -80166,6 +80343,7 @@ export const deleteFleets: API.OperationMethod<
   input: DeleteFleetsRequest,
   output: DeleteFleetsResult,
   errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
+  operationName: "DeleteFleets",
 }));
 export type DeleteFlowLogsError =
   | RequestLimitExceeded
@@ -80183,6 +80361,7 @@ export const deleteFlowLogs: API.OperationMethod<
   input: DeleteFlowLogsRequest,
   output: DeleteFlowLogsResult,
   errors: [RequestLimitExceeded, InvalidFlowLogIdNotFound],
+  operationName: "DeleteFlowLogs",
 }));
 export type DeleteFpgaImageError =
   | RequestLimitExceeded
@@ -80200,6 +80379,7 @@ export const deleteFpgaImage: API.OperationMethod<
   input: DeleteFpgaImageRequest,
   output: DeleteFpgaImageResult,
   errors: [RequestLimitExceeded, InvalidFpgaImageIDMalformed],
+  operationName: "DeleteFpgaImage",
 }));
 export type DeleteImageUsageReportError =
   | RequestLimitExceeded
@@ -80225,6 +80405,7 @@ export const deleteImageUsageReport: API.OperationMethod<
     InvalidImageUsageReportIdMalformed,
     MissingParameter,
   ],
+  operationName: "DeleteImageUsageReport",
 }));
 export type DeleteInstanceConnectEndpointError =
   | RequestLimitExceeded
@@ -80251,6 +80432,7 @@ export const deleteInstanceConnectEndpoint: API.OperationMethod<
     InvalidState,
     MissingParameter,
   ],
+  operationName: "DeleteInstanceConnectEndpoint",
 }));
 export type DeleteInstanceEventWindowError =
   | RequestLimitExceeded
@@ -80276,6 +80458,7 @@ export const deleteInstanceEventWindow: API.OperationMethod<
     InvalidInstanceEventWindowIDNotFound,
     InvalidParameterValue,
   ],
+  operationName: "DeleteInstanceEventWindow",
 }));
 export type DeleteInternetGatewayError =
   | RequestLimitExceeded
@@ -80301,6 +80484,7 @@ export const deleteInternetGateway: API.OperationMethod<
     InvalidInternetGatewayIDNotFound,
     InvalidInternetGatewayIdMalformed,
   ],
+  operationName: "DeleteInternetGateway",
 }));
 export type DeleteIpamError =
   | RequestLimitExceeded
@@ -80327,6 +80511,7 @@ export const deleteIpam: API.OperationMethod<
     InvalidIpamIdNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteIpam",
 }));
 export type DeleteIpamExternalResourceVerificationTokenError =
   | RequestLimitExceeded
@@ -80353,6 +80538,7 @@ export const deleteIpamExternalResourceVerificationToken: API.OperationMethod<
     InvalidIpamExternalResourceVerificationTokenIdNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteIpamExternalResourceVerificationToken",
 }));
 export type DeleteIpamPolicyError =
   | RequestLimitExceeded
@@ -80379,6 +80565,7 @@ export const deleteIpamPolicy: API.OperationMethod<
     InvalidIpamPolicyIdNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteIpamPolicy",
 }));
 export type DeleteIpamPoolError =
   | RequestLimitExceeded
@@ -80409,6 +80596,7 @@ export const deleteIpamPool: API.OperationMethod<
     InvalidIpamPoolIdNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteIpamPool",
 }));
 export type DeleteIpamPrefixListResolverError =
   | RequestLimitExceeded
@@ -80433,6 +80621,7 @@ export const deleteIpamPrefixListResolver: API.OperationMethod<
     InvalidIpamPrefixListResolverIdNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteIpamPrefixListResolver",
 }));
 export type DeleteIpamPrefixListResolverTargetError =
   | RequestLimitExceeded
@@ -80457,6 +80646,7 @@ export const deleteIpamPrefixListResolverTarget: API.OperationMethod<
     InvalidIpamPrefixListResolverTargetIdMalformed,
     MissingParameter,
   ],
+  operationName: "DeleteIpamPrefixListResolverTarget",
 }));
 export type DeleteIpamResourceDiscoveryError =
   | RequestLimitExceeded
@@ -80479,6 +80669,7 @@ export const deleteIpamResourceDiscovery: API.OperationMethod<
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
   ],
+  operationName: "DeleteIpamResourceDiscovery",
 }));
 export type DeleteIpamScopeError =
   | RequestLimitExceeded
@@ -80507,6 +80698,7 @@ export const deleteIpamScope: API.OperationMethod<
     InvalidIpamScopeIdNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteIpamScope",
 }));
 export type DeleteKeyPairError =
   | RequestLimitExceeded
@@ -80524,6 +80716,7 @@ export const deleteKeyPair: API.OperationMethod<
   input: DeleteKeyPairRequest,
   output: DeleteKeyPairResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "DeleteKeyPair",
 }));
 export type DeleteLaunchTemplateError =
   | RequestLimitExceeded
@@ -80547,6 +80740,7 @@ export const deleteLaunchTemplate: API.OperationMethod<
     InvalidLaunchTemplateNameNotFoundException,
     MissingParameter,
   ],
+  operationName: "DeleteLaunchTemplate",
 }));
 export type DeleteLaunchTemplateVersionsError =
   | RequestLimitExceeded
@@ -80575,6 +80769,7 @@ export const deleteLaunchTemplateVersions: API.OperationMethod<
   input: DeleteLaunchTemplateVersionsRequest,
   output: DeleteLaunchTemplateVersionsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "DeleteLaunchTemplateVersions",
 }));
 export type DeleteLocalGatewayRouteError =
   | RequestLimitExceeded
@@ -80592,6 +80787,7 @@ export const deleteLocalGatewayRoute: API.OperationMethod<
   input: DeleteLocalGatewayRouteRequest,
   output: DeleteLocalGatewayRouteResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "DeleteLocalGatewayRoute",
 }));
 export type DeleteLocalGatewayRouteTableError =
   | RequestLimitExceeded
@@ -80614,6 +80810,7 @@ export const deleteLocalGatewayRouteTable: API.OperationMethod<
     InvalidLocalGatewayRouteTableIDNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteLocalGatewayRouteTable",
 }));
 export type DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationError =
   | RequestLimitExceeded
@@ -80638,6 +80835,7 @@ export const deleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation: API.O
     InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation",
 }));
 export type DeleteLocalGatewayRouteTableVpcAssociationError =
   | RequestLimitExceeded
@@ -80662,6 +80860,7 @@ export const deleteLocalGatewayRouteTableVpcAssociation: API.OperationMethod<
     InvalidLocalGatewayRouteTableVpcAssociationIDNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteLocalGatewayRouteTableVpcAssociation",
 }));
 export type DeleteLocalGatewayVirtualInterfaceError =
   | RequestLimitExceeded
@@ -80686,6 +80885,7 @@ export const deleteLocalGatewayVirtualInterface: API.OperationMethod<
     InvalidLocalGatewayVirtualInterfaceIDNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteLocalGatewayVirtualInterface",
 }));
 export type DeleteLocalGatewayVirtualInterfaceGroupError =
   | RequestLimitExceeded
@@ -80710,6 +80910,7 @@ export const deleteLocalGatewayVirtualInterfaceGroup: API.OperationMethod<
     InvalidLocalGatewayVirtualInterfaceGroupIDNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteLocalGatewayVirtualInterfaceGroup",
 }));
 export type DeleteManagedPrefixListError =
   | RequestLimitExceeded
@@ -80734,6 +80935,7 @@ export const deleteManagedPrefixList: API.OperationMethod<
     InvalidPrefixListIdMalformed,
     ParseError,
   ],
+  operationName: "DeleteManagedPrefixList",
 }));
 export type DeleteNatGatewayError =
   | RequestLimitExceeded
@@ -80766,6 +80968,7 @@ export const deleteNatGateway: API.OperationMethod<
     NatGatewayMalformed,
     NatGatewayNotFound,
   ],
+  operationName: "DeleteNatGateway",
 }));
 export type DeleteNetworkAclError =
   | RequestLimitExceeded
@@ -80796,6 +80999,7 @@ export const deleteNetworkAcl: API.OperationMethod<
     InvalidParameterValue,
     MissingParameter,
   ],
+  operationName: "DeleteNetworkAcl",
 }));
 export type DeleteNetworkAclEntryError =
   | RequestLimitExceeded
@@ -80822,6 +81026,7 @@ export const deleteNetworkAclEntry: API.OperationMethod<
     InvalidNetworkAclIdMalformed,
     MissingParameter,
   ],
+  operationName: "DeleteNetworkAclEntry",
 }));
 export type DeleteNetworkInsightsAccessScopeError =
   | RequestLimitExceeded
@@ -80844,6 +81049,7 @@ export const deleteNetworkInsightsAccessScope: API.OperationMethod<
     InvalidNetworkInsightsAccessScopeIdNotFound,
     InvalidParameterValue,
   ],
+  operationName: "DeleteNetworkInsightsAccessScope",
 }));
 export type DeleteNetworkInsightsAccessScopeAnalysisError =
   | RequestLimitExceeded
@@ -80862,6 +81068,7 @@ export const deleteNetworkInsightsAccessScopeAnalysis: API.OperationMethod<
   input: DeleteNetworkInsightsAccessScopeAnalysisRequest,
   output: DeleteNetworkInsightsAccessScopeAnalysisResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  operationName: "DeleteNetworkInsightsAccessScopeAnalysis",
 }));
 export type DeleteNetworkInsightsAnalysisError =
   | RequestLimitExceeded
@@ -80880,6 +81087,7 @@ export const deleteNetworkInsightsAnalysis: API.OperationMethod<
   input: DeleteNetworkInsightsAnalysisRequest,
   output: DeleteNetworkInsightsAnalysisResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  operationName: "DeleteNetworkInsightsAnalysis",
 }));
 export type DeleteNetworkInsightsPathError =
   | RequestLimitExceeded
@@ -80898,6 +81106,7 @@ export const deleteNetworkInsightsPath: API.OperationMethod<
   input: DeleteNetworkInsightsPathRequest,
   output: DeleteNetworkInsightsPathResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  operationName: "DeleteNetworkInsightsPath",
 }));
 export type DeleteNetworkInterfaceError =
   | RequestLimitExceeded
@@ -80927,6 +81136,7 @@ export const deleteNetworkInterface: API.OperationMethod<
     InvalidParameterValue,
     MissingParameter,
   ],
+  operationName: "DeleteNetworkInterface",
 }));
 export type DeleteNetworkInterfacePermissionError =
   | RequestLimitExceeded
@@ -80954,6 +81164,7 @@ export const deleteNetworkInterfacePermission: API.OperationMethod<
     InvalidPermissionIDNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteNetworkInterfacePermission",
 }));
 export type DeletePlacementGroupError =
   | RequestLimitExceeded
@@ -80975,6 +81186,7 @@ export const deletePlacementGroup: API.OperationMethod<
   input: DeletePlacementGroupRequest,
   output: DeletePlacementGroupResponse,
   errors: [RequestLimitExceeded, InvalidPlacementGroupUnknown],
+  operationName: "DeletePlacementGroup",
 }));
 export type DeletePublicIpv4PoolError =
   | RequestLimitExceeded
@@ -80997,6 +81209,7 @@ export const deletePublicIpv4Pool: API.OperationMethod<
     InvalidPublicIpv4PoolNotFound,
     InvalidPublicIpv4PoolIDMalformed,
   ],
+  operationName: "DeletePublicIpv4Pool",
 }));
 export type DeleteQueuedReservedInstancesError =
   | RequestLimitExceeded
@@ -81014,6 +81227,7 @@ export const deleteQueuedReservedInstances: API.OperationMethod<
   input: DeleteQueuedReservedInstancesRequest,
   output: DeleteQueuedReservedInstancesResult,
   errors: [RequestLimitExceeded, InvalidReservedInstancesIDNotFound],
+  operationName: "DeleteQueuedReservedInstances",
 }));
 export type DeleteRouteError =
   | RequestLimitExceeded
@@ -81044,6 +81258,7 @@ export const deleteRoute: API.OperationMethod<
     InvalidRouteTableIdMalformed,
     MissingParameter,
   ],
+  operationName: "DeleteRoute",
 }));
 export type DeleteRouteServerError =
   | RequestLimitExceeded
@@ -81077,6 +81292,7 @@ export const deleteRouteServer: API.OperationMethod<
   input: DeleteRouteServerRequest,
   output: DeleteRouteServerResult,
   errors: [RequestLimitExceeded, IncorrectState, InvalidRouteServerIdNotFound],
+  operationName: "DeleteRouteServer",
 }));
 export type DeleteRouteServerEndpointError =
   | RequestLimitExceeded
@@ -81101,6 +81317,7 @@ export const deleteRouteServerEndpoint: API.OperationMethod<
     InvalidRouteServerEndpointIdNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteRouteServerEndpoint",
 }));
 export type DeleteRouteServerPeerError =
   | RequestLimitExceeded
@@ -81133,6 +81350,7 @@ export const deleteRouteServerPeer: API.OperationMethod<
     InvalidRouteServerPeerIdNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteRouteServerPeer",
 }));
 export type DeleteRouteTableError =
   | RequestLimitExceeded
@@ -81157,6 +81375,7 @@ export const deleteRouteTable: API.OperationMethod<
     InvalidRouteTableIDNotFound,
     InvalidRouteTableIdMalformed,
   ],
+  operationName: "DeleteRouteTable",
 }));
 export type DeleteSecondaryNetworkError = CommonErrors;
 /**
@@ -81171,6 +81390,7 @@ export const deleteSecondaryNetwork: API.OperationMethod<
   input: DeleteSecondaryNetworkRequest,
   output: DeleteSecondaryNetworkResult,
   errors: [],
+  operationName: "DeleteSecondaryNetwork",
 }));
 export type DeleteSecondarySubnetError = CommonErrors;
 /**
@@ -81185,6 +81405,7 @@ export const deleteSecondarySubnet: API.OperationMethod<
   input: DeleteSecondarySubnetRequest,
   output: DeleteSecondarySubnetResult,
   errors: [],
+  operationName: "DeleteSecondarySubnet",
 }));
 export type DeleteSecurityGroupError =
   | RequestLimitExceeded
@@ -81219,6 +81440,7 @@ export const deleteSecurityGroup: API.OperationMethod<
     MissingParameter,
     VPCIdNotSpecified,
   ],
+  operationName: "DeleteSecurityGroup",
 }));
 export type DeleteSnapshotError =
   | RequestLimitExceeded
@@ -81255,6 +81477,7 @@ export const deleteSnapshot: API.OperationMethod<
     InvalidSnapshotNotFound,
     InvalidSnapshotIDMalformed,
   ],
+  operationName: "DeleteSnapshot",
 }));
 export type DeleteSpotDatafeedSubscriptionError = CommonErrors;
 /**
@@ -81269,6 +81492,7 @@ export const deleteSpotDatafeedSubscription: API.OperationMethod<
   input: DeleteSpotDatafeedSubscriptionRequest,
   output: DeleteSpotDatafeedSubscriptionResponse,
   errors: [],
+  operationName: "DeleteSpotDatafeedSubscription",
 }));
 export type DeleteSubnetError =
   | RequestLimitExceeded
@@ -81295,6 +81519,7 @@ export const deleteSubnet: API.OperationMethod<
     InvalidSubnetIdMalformed,
     MissingParameter,
   ],
+  operationName: "DeleteSubnet",
 }));
 export type DeleteSubnetCidrReservationError =
   | RequestLimitExceeded
@@ -81319,6 +81544,7 @@ export const deleteSubnetCidrReservation: API.OperationMethod<
     InvalidSubnetCidrReservationIDNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteSubnetCidrReservation",
 }));
 export type DeleteTagsError =
   | RequestLimitExceeded
@@ -81342,6 +81568,7 @@ export const deleteTags: API.OperationMethod<
   input: DeleteTagsRequest,
   output: DeleteTagsResponse,
   errors: [RequestLimitExceeded, InvalidID, MissingParameter],
+  operationName: "DeleteTags",
 }));
 export type DeleteTrafficMirrorFilterError =
   | RequestLimitExceeded
@@ -81366,6 +81593,7 @@ export const deleteTrafficMirrorFilter: API.OperationMethod<
     InvalidParameterValue,
     InvalidTrafficMirrorFilterIdNotFound,
   ],
+  operationName: "DeleteTrafficMirrorFilter",
 }));
 export type DeleteTrafficMirrorFilterRuleError =
   | RequestLimitExceeded
@@ -81390,6 +81618,7 @@ export const deleteTrafficMirrorFilterRule: API.OperationMethod<
     InvalidTrafficMirrorFilterRuleIdNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteTrafficMirrorFilterRule",
 }));
 export type DeleteTrafficMirrorSessionError =
   | RequestLimitExceeded
@@ -81414,6 +81643,7 @@ export const deleteTrafficMirrorSession: API.OperationMethod<
     InvalidTrafficMirrorSessionIdNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteTrafficMirrorSession",
 }));
 export type DeleteTrafficMirrorTargetError =
   | RequestLimitExceeded
@@ -81440,6 +81670,7 @@ export const deleteTrafficMirrorTarget: API.OperationMethod<
     InvalidTrafficMirrorTargetIdNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteTrafficMirrorTarget",
 }));
 export type DeleteTransitGatewayError =
   | RequestLimitExceeded
@@ -81468,6 +81699,7 @@ export const deleteTransitGateway: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  operationName: "DeleteTransitGateway",
 }));
 export type DeleteTransitGatewayClientVpnAttachmentError = CommonErrors;
 /**
@@ -81482,6 +81714,7 @@ export const deleteTransitGatewayClientVpnAttachment: API.OperationMethod<
   input: DeleteTransitGatewayClientVpnAttachmentRequest,
   output: DeleteTransitGatewayClientVpnAttachmentResult,
   errors: [],
+  operationName: "DeleteTransitGatewayClientVpnAttachment",
 }));
 export type DeleteTransitGatewayConnectError =
   | RequestLimitExceeded
@@ -81500,6 +81733,7 @@ export const deleteTransitGatewayConnect: API.OperationMethod<
   input: DeleteTransitGatewayConnectRequest,
   output: DeleteTransitGatewayConnectResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  operationName: "DeleteTransitGatewayConnect",
 }));
 export type DeleteTransitGatewayConnectPeerError =
   | RequestLimitExceeded
@@ -81522,6 +81756,7 @@ export const deleteTransitGatewayConnectPeer: API.OperationMethod<
     InvalidTransitGatewayConnectPeerIDMalformed,
     InvalidTransitGatewayConnectPeerIDNotFound,
   ],
+  operationName: "DeleteTransitGatewayConnectPeer",
 }));
 export type DeleteTransitGatewayMeteringPolicyError =
   | RequestLimitExceeded
@@ -81546,6 +81781,7 @@ export const deleteTransitGatewayMeteringPolicy: API.OperationMethod<
     InvalidTransitGatewayMeteringPolicyIdMalformedException,
     MissingParameter,
   ],
+  operationName: "DeleteTransitGatewayMeteringPolicy",
 }));
 export type DeleteTransitGatewayMeteringPolicyEntryError =
   | RequestLimitExceeded
@@ -81570,6 +81806,7 @@ export const deleteTransitGatewayMeteringPolicyEntry: API.OperationMethod<
     InvalidTransitGatewayMeteringPolicyIdMalformedException,
     MissingParameter,
   ],
+  operationName: "DeleteTransitGatewayMeteringPolicyEntry",
 }));
 export type DeleteTransitGatewayMulticastDomainError =
   | RequestLimitExceeded
@@ -81592,6 +81829,7 @@ export const deleteTransitGatewayMulticastDomain: API.OperationMethod<
     InvalidTransitGatewayMulticastDomainIdMalformed,
     InvalidTransitGatewayMulticastDomainIdNotFound,
   ],
+  operationName: "DeleteTransitGatewayMulticastDomain",
 }));
 export type DeleteTransitGatewayPeeringAttachmentError =
   | RequestLimitExceeded
@@ -81609,6 +81847,7 @@ export const deleteTransitGatewayPeeringAttachment: API.OperationMethod<
   input: DeleteTransitGatewayPeeringAttachmentRequest,
   output: DeleteTransitGatewayPeeringAttachmentResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  operationName: "DeleteTransitGatewayPeeringAttachment",
 }));
 export type DeleteTransitGatewayPolicyTableError =
   | RequestLimitExceeded
@@ -81633,6 +81872,7 @@ export const deleteTransitGatewayPolicyTable: API.OperationMethod<
     InvalidTransitGatewayPolicyTableIdNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteTransitGatewayPolicyTable",
 }));
 export type DeleteTransitGatewayPrefixListReferenceError =
   | RequestLimitExceeded
@@ -81651,6 +81891,7 @@ export const deleteTransitGatewayPrefixListReference: API.OperationMethod<
   input: DeleteTransitGatewayPrefixListReferenceRequest,
   output: DeleteTransitGatewayPrefixListReferenceResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  operationName: "DeleteTransitGatewayPrefixListReference",
 }));
 export type DeleteTransitGatewayRouteError =
   | RequestLimitExceeded
@@ -81669,6 +81910,7 @@ export const deleteTransitGatewayRoute: API.OperationMethod<
   input: DeleteTransitGatewayRouteRequest,
   output: DeleteTransitGatewayRouteResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  operationName: "DeleteTransitGatewayRoute",
 }));
 export type DeleteTransitGatewayRouteTableError =
   | RequestLimitExceeded
@@ -81698,6 +81940,7 @@ export const deleteTransitGatewayRouteTable: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  operationName: "DeleteTransitGatewayRouteTable",
 }));
 export type DeleteTransitGatewayRouteTableAnnouncementError =
   | RequestLimitExceeded
@@ -81720,6 +81963,7 @@ export const deleteTransitGatewayRouteTableAnnouncement: API.OperationMethod<
     InvalidTransitGatewayRouteTableAnnouncementIdMalformed,
     MissingParameter,
   ],
+  operationName: "DeleteTransitGatewayRouteTableAnnouncement",
 }));
 export type DeleteTransitGatewayVpcAttachmentError =
   | RequestLimitExceeded
@@ -81742,6 +81986,7 @@ export const deleteTransitGatewayVpcAttachment: API.OperationMethod<
     InvalidTransitGatewayAttachmentIDMalformed,
     InvalidTransitGatewayAttachmentIDNotFound,
   ],
+  operationName: "DeleteTransitGatewayVpcAttachment",
 }));
 export type DeleteVerifiedAccessEndpointError =
   | RequestLimitExceeded
@@ -81766,6 +82011,7 @@ export const deleteVerifiedAccessEndpoint: API.OperationMethod<
     InvalidVerifiedAccessEndpointIdNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteVerifiedAccessEndpoint",
 }));
 export type DeleteVerifiedAccessGroupError =
   | RequestLimitExceeded
@@ -81788,6 +82034,7 @@ export const deleteVerifiedAccessGroup: API.OperationMethod<
     InvalidVerifiedAccessGroupIdNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteVerifiedAccessGroup",
 }));
 export type DeleteVerifiedAccessInstanceError =
   | RequestLimitExceeded
@@ -81805,6 +82052,7 @@ export const deleteVerifiedAccessInstance: API.OperationMethod<
   input: DeleteVerifiedAccessInstanceRequest,
   output: DeleteVerifiedAccessInstanceResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  operationName: "DeleteVerifiedAccessInstance",
 }));
 export type DeleteVerifiedAccessTrustProviderError =
   | RequestLimitExceeded
@@ -81822,6 +82070,7 @@ export const deleteVerifiedAccessTrustProvider: API.OperationMethod<
   input: DeleteVerifiedAccessTrustProviderRequest,
   output: DeleteVerifiedAccessTrustProviderResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessTrustProviderIdNotFound],
+  operationName: "DeleteVerifiedAccessTrustProvider",
 }));
 export type DeleteVolumeError =
   | RequestLimitExceeded
@@ -81846,6 +82095,7 @@ export const deleteVolume: API.OperationMethod<
   input: DeleteVolumeRequest,
   output: DeleteVolumeResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue, InvalidVolumeNotFound],
+  operationName: "DeleteVolume",
 }));
 export type DeleteVpcError =
   | RequestLimitExceeded
@@ -81881,6 +82131,7 @@ export const deleteVpc: API.OperationMethod<
     MissingParameter,
     RequestError,
   ],
+  operationName: "DeleteVpc",
 }));
 export type DeleteVpcBlockPublicAccessExclusionError =
   | RequestLimitExceeded
@@ -81903,6 +82154,7 @@ export const deleteVpcBlockPublicAccessExclusion: API.OperationMethod<
     MissingParameter,
     VpcBlockPublicAccessExclusionIdMalformed,
   ],
+  operationName: "DeleteVpcBlockPublicAccessExclusion",
 }));
 export type DeleteVpcEncryptionControlError =
   | RequestLimitExceeded
@@ -81929,6 +82181,7 @@ export const deleteVpcEncryptionControl: API.OperationMethod<
     InvalidVpcEncryptionControlIdNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteVpcEncryptionControl",
 }));
 export type DeleteVpcEndpointConnectionNotificationsError = CommonErrors;
 /**
@@ -81943,6 +82196,7 @@ export const deleteVpcEndpointConnectionNotifications: API.OperationMethod<
   input: DeleteVpcEndpointConnectionNotificationsRequest,
   output: DeleteVpcEndpointConnectionNotificationsResult,
   errors: [],
+  operationName: "DeleteVpcEndpointConnectionNotifications",
 }));
 export type DeleteVpcEndpointsError =
   | RequestLimitExceeded
@@ -81968,6 +82222,7 @@ export const deleteVpcEndpoints: API.OperationMethod<
   input: DeleteVpcEndpointsRequest,
   output: DeleteVpcEndpointsResult,
   errors: [RequestLimitExceeded, InvalidVpcEndpointIdNotFound, ParseError],
+  operationName: "DeleteVpcEndpoints",
 }));
 export type DeleteVpcEndpointServiceConfigurationsError = CommonErrors;
 /**
@@ -81985,6 +82240,7 @@ export const deleteVpcEndpointServiceConfigurations: API.OperationMethod<
   input: DeleteVpcEndpointServiceConfigurationsRequest,
   output: DeleteVpcEndpointServiceConfigurationsResult,
   errors: [],
+  operationName: "DeleteVpcEndpointServiceConfigurations",
 }));
 export type DeleteVpcPeeringConnectionError =
   | RequestLimitExceeded
@@ -82013,6 +82269,7 @@ export const deleteVpcPeeringConnection: API.OperationMethod<
     InvalidVpcPeeringConnectionIdNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteVpcPeeringConnection",
 }));
 export type DeleteVpnConcentratorError =
   | RequestLimitExceeded
@@ -82030,6 +82287,7 @@ export const deleteVpnConcentrator: API.OperationMethod<
   input: DeleteVpnConcentratorRequest,
   output: DeleteVpnConcentratorResult,
   errors: [RequestLimitExceeded, InvalidVpnConcentratorIDMalformed],
+  operationName: "DeleteVpnConcentrator",
 }));
 export type DeleteVpnConnectionError =
   | RequestLimitExceeded
@@ -82064,6 +82322,7 @@ export const deleteVpnConnection: API.OperationMethod<
     InvalidVpnConnectionIDNotFound,
     MissingParameter,
   ],
+  operationName: "DeleteVpnConnection",
 }));
 export type DeleteVpnConnectionRouteError =
   | RequestLimitExceeded
@@ -82085,6 +82344,7 @@ export const deleteVpnConnectionRoute: API.OperationMethod<
   input: DeleteVpnConnectionRouteRequest,
   output: DeleteVpnConnectionRouteResponse,
   errors: [RequestLimitExceeded, InvalidRouteMalformed, MissingParameter],
+  operationName: "DeleteVpnConnectionRoute",
 }));
 export type DeleteVpnGatewayError =
   | RequestLimitExceeded
@@ -82106,6 +82366,7 @@ export const deleteVpnGateway: API.OperationMethod<
   input: DeleteVpnGatewayRequest,
   output: DeleteVpnGatewayResponse,
   errors: [RequestLimitExceeded, IncorrectState, InvalidVpnGatewayIDNotFound],
+  operationName: "DeleteVpnGateway",
 }));
 export type DeprovisionByoipCidrError = RequestLimitExceeded | CommonErrors;
 /**
@@ -82124,6 +82385,7 @@ export const deprovisionByoipCidr: API.OperationMethod<
   input: DeprovisionByoipCidrRequest,
   output: DeprovisionByoipCidrResult,
   errors: [RequestLimitExceeded],
+  operationName: "DeprovisionByoipCidr",
 }));
 export type DeprovisionIpamByoasnError =
   | RequestLimitExceeded
@@ -82143,6 +82405,7 @@ export const deprovisionIpamByoasn: API.OperationMethod<
   input: DeprovisionIpamByoasnRequest,
   output: DeprovisionIpamByoasnResult,
   errors: [RequestLimitExceeded, InvalidIpamIdNotFound, MissingParameter],
+  operationName: "DeprovisionIpamByoasn",
 }));
 export type DeprovisionIpamPoolCidrError =
   | RequestLimitExceeded
@@ -82161,6 +82424,7 @@ export const deprovisionIpamPoolCidr: API.OperationMethod<
   input: DeprovisionIpamPoolCidrRequest,
   output: DeprovisionIpamPoolCidrResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
+  operationName: "DeprovisionIpamPoolCidr",
 }));
 export type DeprovisionPublicIpv4PoolCidrError =
   | RequestLimitExceeded
@@ -82185,6 +82449,7 @@ export const deprovisionPublicIpv4PoolCidr: API.OperationMethod<
     InvalidPublicIpv4PoolIDMalformed,
     MissingParameter,
   ],
+  operationName: "DeprovisionPublicIpv4PoolCidr",
 }));
 export type DeregisterImageError =
   | RequestLimitExceeded
@@ -82235,6 +82500,7 @@ export const deregisterImage: API.OperationMethod<
     InvalidAMIIDNotFound,
     MissingParameter,
   ],
+  operationName: "DeregisterImage",
 }));
 export type DeregisterInstanceEventNotificationAttributesError =
   | RequestLimitExceeded
@@ -82253,6 +82519,7 @@ export const deregisterInstanceEventNotificationAttributes: API.OperationMethod<
   input: DeregisterInstanceEventNotificationAttributesRequest,
   output: DeregisterInstanceEventNotificationAttributesResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "DeregisterInstanceEventNotificationAttributes",
 }));
 export type DeregisterTransitGatewayMulticastGroupMembersError =
   | RequestLimitExceeded
@@ -82270,6 +82537,7 @@ export const deregisterTransitGatewayMulticastGroupMembers: API.OperationMethod<
   input: DeregisterTransitGatewayMulticastGroupMembersRequest,
   output: DeregisterTransitGatewayMulticastGroupMembersResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "DeregisterTransitGatewayMulticastGroupMembers",
 }));
 export type DeregisterTransitGatewayMulticastGroupSourcesError =
   | RequestLimitExceeded
@@ -82287,6 +82555,7 @@ export const deregisterTransitGatewayMulticastGroupSources: API.OperationMethod<
   input: DeregisterTransitGatewayMulticastGroupSourcesRequest,
   output: DeregisterTransitGatewayMulticastGroupSourcesResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "DeregisterTransitGatewayMulticastGroupSources",
 }));
 export type DescribeAccountAttributesError = CommonErrors;
 /**
@@ -82321,6 +82590,7 @@ export const describeAccountAttributes: API.OperationMethod<
   input: DescribeAccountAttributesRequest,
   output: DescribeAccountAttributesResult,
   errors: [],
+  operationName: "DescribeAccountAttributes",
 }));
 export type DescribeAddressesError =
   | RequestLimitExceeded
@@ -82338,6 +82608,7 @@ export const describeAddresses: API.OperationMethod<
   input: DescribeAddressesRequest,
   output: DescribeAddressesResult,
   errors: [RequestLimitExceeded, InvalidAllocationIDNotFound],
+  operationName: "DescribeAddresses",
 }));
 export type DescribeAddressesAttributeError =
   | RequestLimitExceeded
@@ -82370,6 +82641,7 @@ export const describeAddressesAttribute: API.OperationMethod<
   input: DescribeAddressesAttributeRequest,
   output: DescribeAddressesAttributeResult,
   errors: [RequestLimitExceeded, InvalidAllocationIDNotFound],
+  operationName: "DescribeAddressesAttribute",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -82415,6 +82687,7 @@ export const describeAddressTransfers: API.OperationMethod<
   input: DescribeAddressTransfersRequest,
   output: DescribeAddressTransfersResult,
   errors: [],
+  operationName: "DescribeAddressTransfers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -82453,6 +82726,7 @@ export const describeAggregateIdFormat: API.OperationMethod<
   input: DescribeAggregateIdFormatRequest,
   output: DescribeAggregateIdFormatResult,
   errors: [],
+  operationName: "DescribeAggregateIdFormat",
 }));
 export type DescribeAvailabilityZonesError =
   | RequestLimitExceeded
@@ -82480,6 +82754,7 @@ export const describeAvailabilityZones: API.OperationMethod<
   input: DescribeAvailabilityZonesRequest,
   output: DescribeAvailabilityZonesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, ParseError],
+  operationName: "DescribeAvailabilityZones",
 }));
 export type DescribeAwsNetworkPerformanceMetricSubscriptionsError =
   CommonErrors;
@@ -82510,6 +82785,7 @@ export const describeAwsNetworkPerformanceMetricSubscriptions: API.OperationMeth
   input: DescribeAwsNetworkPerformanceMetricSubscriptionsRequest,
   output: DescribeAwsNetworkPerformanceMetricSubscriptionsResult,
   errors: [],
+  operationName: "DescribeAwsNetworkPerformanceMetricSubscriptions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -82546,6 +82822,7 @@ export const describeBundleTasks: API.OperationMethod<
     InvalidBundleIDNotFound,
     InvalidInstanceIDMalformed,
   ],
+  operationName: "DescribeBundleTasks",
 }));
 export type DescribeByoipCidrsError =
   | RequestLimitExceeded
@@ -82579,6 +82856,7 @@ export const describeByoipCidrs: API.OperationMethod<
   input: DescribeByoipCidrsRequest,
   output: DescribeByoipCidrsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "DescribeByoipCidrs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -82618,6 +82896,7 @@ export const describeCapacityBlockExtensionHistory: API.OperationMethod<
   input: DescribeCapacityBlockExtensionHistoryRequest,
   output: DescribeCapacityBlockExtensionHistoryResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  operationName: "DescribeCapacityBlockExtensionHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -82657,6 +82936,7 @@ export const describeCapacityBlockExtensionOfferings: API.OperationMethod<
   input: DescribeCapacityBlockExtensionOfferingsRequest,
   output: DescribeCapacityBlockExtensionOfferingsResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdNotFound],
+  operationName: "DescribeCapacityBlockExtensionOfferings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -82699,6 +82979,7 @@ export const describeCapacityBlockOfferings: API.OperationMethod<
   input: DescribeCapacityBlockOfferingsRequest,
   output: DescribeCapacityBlockOfferingsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "DescribeCapacityBlockOfferings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -82737,6 +83018,7 @@ export const describeCapacityBlocks: API.OperationMethod<
   input: DescribeCapacityBlocksRequest,
   output: DescribeCapacityBlocksResult,
   errors: [RequestLimitExceeded, InvalidCapacityBlockIdMalformed],
+  operationName: "DescribeCapacityBlocks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -82775,6 +83057,7 @@ export const describeCapacityBlockStatus: API.OperationMethod<
   input: DescribeCapacityBlockStatusRequest,
   output: DescribeCapacityBlockStatusResult,
   errors: [RequestLimitExceeded, InvalidCapacityBlockIdMalformed],
+  operationName: "DescribeCapacityBlockStatus",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -82813,6 +83096,7 @@ export const describeCapacityManagerDataExports: API.OperationMethod<
   input: DescribeCapacityManagerDataExportsRequest,
   output: DescribeCapacityManagerDataExportsResult,
   errors: [RequestLimitExceeded, InvalidCapacityManagerDataExportIdNotFound],
+  operationName: "DescribeCapacityManagerDataExports",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -82853,6 +83137,7 @@ export const describeCapacityReservationBillingRequests: API.OperationMethod<
   input: DescribeCapacityReservationBillingRequestsRequest,
   output: DescribeCapacityReservationBillingRequestsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "DescribeCapacityReservationBillingRequests",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -82875,6 +83160,7 @@ export const describeCapacityReservationCancellationQuotes: API.OperationMethod<
   input: DescribeCapacityReservationCancellationQuotesRequest,
   output: DescribeCapacityReservationCancellationQuotesResult,
   errors: [],
+  operationName: "DescribeCapacityReservationCancellationQuotes",
 }));
 export type DescribeCapacityReservationFleetsError =
   | RequestLimitExceeded
@@ -82907,6 +83193,7 @@ export const describeCapacityReservationFleets: API.OperationMethod<
   input: DescribeCapacityReservationFleetsRequest,
   output: DescribeCapacityReservationFleetsResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationFleetIdMalformed],
+  operationName: "DescribeCapacityReservationFleets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -82947,6 +83234,7 @@ export const describeCapacityReservations: API.OperationMethod<
   input: DescribeCapacityReservationsRequest,
   output: DescribeCapacityReservationsResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  operationName: "DescribeCapacityReservations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -82988,6 +83276,7 @@ export const describeCapacityReservationTopology: API.OperationMethod<
   input: DescribeCapacityReservationTopologyRequest,
   output: DescribeCapacityReservationTopologyResult,
   errors: [],
+  operationName: "DescribeCapacityReservationTopology",
 }));
 export type DescribeCarrierGatewaysError =
   | RequestLimitExceeded
@@ -83027,6 +83316,7 @@ export const describeCarrierGateways: API.OperationMethod<
     InvalidCarrierGatewayIDNotFound,
     ParseError,
   ],
+  operationName: "DescribeCarrierGateways",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83069,6 +83359,7 @@ export const describeClassicLinkInstances: API.OperationMethod<
   input: DescribeClassicLinkInstancesRequest,
   output: DescribeClassicLinkInstancesResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  operationName: "DescribeClassicLinkInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83107,6 +83398,7 @@ export const describeClientVpnAuthorizationRules: API.OperationMethod<
   input: DescribeClientVpnAuthorizationRulesRequest,
   output: DescribeClientVpnAuthorizationRulesResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  operationName: "DescribeClientVpnAuthorizationRules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83151,6 +83443,7 @@ export const describeClientVpnConnections: API.OperationMethod<
     InvalidClientVpnEndpointIdNotFound,
     MissingParameter,
   ],
+  operationName: "DescribeClientVpnConnections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83189,6 +83482,7 @@ export const describeClientVpnEndpoints: API.OperationMethod<
   input: DescribeClientVpnEndpointsRequest,
   output: DescribeClientVpnEndpointsResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  operationName: "DescribeClientVpnEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83232,6 +83526,7 @@ export const describeClientVpnRoutes: API.OperationMethod<
     InvalidClientVpnEndpointIdNotFound,
     MissingParameter,
   ],
+  operationName: "DescribeClientVpnRoutes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83275,6 +83570,7 @@ export const describeClientVpnTargetNetworks: API.OperationMethod<
     InvalidClientVpnEndpointIdNotFound,
     MissingParameter,
   ],
+  operationName: "DescribeClientVpnTargetNetworks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83313,6 +83609,7 @@ export const describeCoipPools: API.OperationMethod<
   input: DescribeCoipPoolsRequest,
   output: DescribeCoipPoolsResult,
   errors: [RequestLimitExceeded, InvalidPoolIDMalformed],
+  operationName: "DescribeCoipPools",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83336,6 +83633,7 @@ export const describeConversionTasks: API.OperationMethod<
   input: DescribeConversionTasksRequest,
   output: DescribeConversionTasksResult,
   errors: [],
+  operationName: "DescribeConversionTasks",
 }));
 export type DescribeCustomerGatewaysError =
   | RequestLimitExceeded
@@ -83357,6 +83655,7 @@ export const describeCustomerGateways: API.OperationMethod<
   input: DescribeCustomerGatewaysRequest,
   output: DescribeCustomerGatewaysResult,
   errors: [RequestLimitExceeded, InvalidCustomerGatewayIDNotFound, ParseError],
+  operationName: "DescribeCustomerGateways",
 }));
 export type DescribeDeclarativePoliciesReportsError =
   | RequestLimitExceeded
@@ -83385,6 +83684,7 @@ export const describeDeclarativePoliciesReports: API.OperationMethod<
   input: DescribeDeclarativePoliciesReportsRequest,
   output: DescribeDeclarativePoliciesReportsResult,
   errors: [RequestLimitExceeded, InvalidParameter],
+  operationName: "DescribeDeclarativePoliciesReports",
 }));
 export type DescribeDhcpOptionsError =
   | RequestLimitExceeded
@@ -83429,6 +83729,7 @@ export const describeDhcpOptions: API.OperationMethod<
     InvalidParameterValue,
     ParseError,
   ],
+  operationName: "DescribeDhcpOptions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83476,6 +83777,7 @@ export const describeEgressOnlyInternetGateways: API.OperationMethod<
     InvalidEgressOnlyInternetGatewayIdNotFound,
     ParseError,
   ],
+  operationName: "DescribeEgressOnlyInternetGateways",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83501,6 +83803,7 @@ export const describeElasticGpus: API.OperationMethod<
   input: DescribeElasticGpusRequest,
   output: DescribeElasticGpusResult,
   errors: [RequestLimitExceeded, UnsupportedOperation],
+  operationName: "DescribeElasticGpus",
 }));
 export type DescribeExportImageTasksError =
   | RequestLimitExceeded
@@ -83533,6 +83836,7 @@ export const describeExportImageTasks: API.OperationMethod<
   input: DescribeExportImageTasksRequest,
   output: DescribeExportImageTasksResult,
   errors: [RequestLimitExceeded, InvalidExportTaskIDMalformed],
+  operationName: "DescribeExportImageTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83556,6 +83860,7 @@ export const describeExportTasks: API.OperationMethod<
   input: DescribeExportTasksRequest,
   output: DescribeExportTasksResult,
   errors: [RequestLimitExceeded, InvalidExportTaskIDMalformed],
+  operationName: "DescribeExportTasks",
 }));
 export type DescribeFastLaunchImagesError =
   | RequestLimitExceeded
@@ -83588,6 +83893,7 @@ export const describeFastLaunchImages: API.OperationMethod<
   input: DescribeFastLaunchImagesRequest,
   output: DescribeFastLaunchImagesResult,
   errors: [RequestLimitExceeded, InvalidRequest],
+  operationName: "DescribeFastLaunchImages",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83623,6 +83929,7 @@ export const describeFastSnapshotRestores: API.OperationMethod<
   input: DescribeFastSnapshotRestoresRequest,
   output: DescribeFastSnapshotRestoresResult,
   errors: [],
+  operationName: "DescribeFastSnapshotRestores",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83653,6 +83960,7 @@ export const describeFleetHistory: API.OperationMethod<
   input: DescribeFleetHistoryRequest,
   output: DescribeFleetHistoryResult,
   errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
+  operationName: "DescribeFleetHistory",
 }));
 export type DescribeFleetInstancesError =
   | RequestLimitExceeded
@@ -83677,6 +83985,7 @@ export const describeFleetInstances: API.OperationMethod<
   input: DescribeFleetInstancesRequest,
   output: DescribeFleetInstancesResult,
   errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
+  operationName: "DescribeFleetInstances",
 }));
 export type DescribeFleetsError =
   | RequestLimitExceeded
@@ -83715,6 +84024,7 @@ export const describeFleets: API.OperationMethod<
   input: DescribeFleetsRequest,
   output: DescribeFleetsResult,
   errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
+  operationName: "DescribeFleets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83756,6 +84066,7 @@ export const describeFlowLogs: API.OperationMethod<
   input: DescribeFlowLogsRequest,
   output: DescribeFlowLogsResult,
   errors: [RequestLimitExceeded, ParseError],
+  operationName: "DescribeFlowLogs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83784,6 +84095,7 @@ export const describeFpgaImageAttribute: API.OperationMethod<
     InvalidFpgaImageIDMalformed,
     InvalidFpgaImageIDNotFound,
   ],
+  operationName: "DescribeFpgaImageAttribute",
 }));
 export type DescribeFpgaImagesError =
   | RequestLimitExceeded
@@ -83818,6 +84130,7 @@ export const describeFpgaImages: API.OperationMethod<
   input: DescribeFpgaImagesRequest,
   output: DescribeFpgaImagesResult,
   errors: [RequestLimitExceeded, InvalidFpgaImageIDMalformed],
+  operationName: "DescribeFpgaImages",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83863,6 +84176,7 @@ export const describeHostReservationOfferings: API.OperationMethod<
   input: DescribeHostReservationOfferingsRequest,
   output: DescribeHostReservationOfferingsResult,
   errors: [RequestLimitExceeded, InvalidHostReservationOfferingIdMalformed],
+  operationName: "DescribeHostReservationOfferings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83899,6 +84213,7 @@ export const describeHostReservations: API.OperationMethod<
   input: DescribeHostReservationsRequest,
   output: DescribeHostReservationsResult,
   errors: [],
+  operationName: "DescribeHostReservations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83941,6 +84256,7 @@ export const describeHosts: API.OperationMethod<
   input: DescribeHostsRequest,
   output: DescribeHostsResult,
   errors: [RequestLimitExceeded, InvalidHostIDMalformed],
+  operationName: "DescribeHosts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -83979,6 +84295,7 @@ export const describeIamInstanceProfileAssociations: API.OperationMethod<
   input: DescribeIamInstanceProfileAssociationsRequest,
   output: DescribeIamInstanceProfileAssociationsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "DescribeIamInstanceProfileAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -84022,6 +84339,7 @@ export const describeIdentityIdFormat: API.OperationMethod<
   input: DescribeIdentityIdFormatRequest,
   output: DescribeIdentityIdFormatResult,
   errors: [RequestLimitExceeded, InvalidTargetArnUnknown],
+  operationName: "DescribeIdentityIdFormat",
 }));
 export type DescribeIdFormatError = CommonErrors;
 /**
@@ -84057,6 +84375,7 @@ export const describeIdFormat: API.OperationMethod<
   input: DescribeIdFormatRequest,
   output: DescribeIdFormatResult,
   errors: [],
+  operationName: "DescribeIdFormat",
 }));
 export type DescribeImageAttributeError =
   | RequestLimitExceeded
@@ -84079,6 +84398,7 @@ export const describeImageAttribute: API.OperationMethod<
   input: DescribeImageAttributeRequest,
   output: ImageAttribute,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed, MissingParameter],
+  operationName: "DescribeImageAttribute",
 }));
 export type DescribeImageReferencesError =
   | RequestLimitExceeded
@@ -84114,6 +84434,7 @@ export const describeImageReferences: API.OperationMethod<
   input: DescribeImageReferencesRequest,
   output: DescribeImageReferencesResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  operationName: "DescribeImageReferences",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -84181,6 +84502,7 @@ export const describeImages: API.OperationMethod<
   input: DescribeImagesRequest,
   output: DescribeImagesResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed, InvalidAMIIDNotFound],
+  operationName: "DescribeImages",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -84223,6 +84545,7 @@ export const describeImageUsageReportEntries: API.OperationMethod<
   input: DescribeImageUsageReportEntriesRequest,
   output: DescribeImageUsageReportEntriesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "DescribeImageUsageReportEntries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -84265,6 +84588,7 @@ export const describeImageUsageReports: API.OperationMethod<
   input: DescribeImageUsageReportsRequest,
   output: DescribeImageUsageReportsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "DescribeImageUsageReports",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -84303,6 +84627,7 @@ export const describeImportImageTasks: API.OperationMethod<
   input: DescribeImportImageTasksRequest,
   output: DescribeImportImageTasksResult,
   errors: [RequestLimitExceeded, InvalidParameter],
+  operationName: "DescribeImportImageTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -84341,6 +84666,7 @@ export const describeImportSnapshotTasks: API.OperationMethod<
   input: DescribeImportSnapshotTasksRequest,
   output: DescribeImportSnapshotTasksResult,
   errors: [RequestLimitExceeded, InvalidParameter],
+  operationName: "DescribeImportSnapshotTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -84371,6 +84697,7 @@ export const describeInstanceAttribute: API.OperationMethod<
     InvalidInstanceIDNotFound,
     InvalidParameterValue,
   ],
+  operationName: "DescribeInstanceAttribute",
 }));
 export type DescribeInstanceConnectEndpointsError =
   | RequestLimitExceeded
@@ -84403,6 +84730,7 @@ export const describeInstanceConnectEndpoints: API.OperationMethod<
   input: DescribeInstanceConnectEndpointsRequest,
   output: DescribeInstanceConnectEndpointsResult,
   errors: [RequestLimitExceeded, InvalidInstanceConnectEndpointIdNotFound],
+  operationName: "DescribeInstanceConnectEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -84465,6 +84793,7 @@ export const describeInstanceCreditSpecifications: API.OperationMethod<
   input: DescribeInstanceCreditSpecificationsRequest,
   output: DescribeInstanceCreditSpecificationsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  operationName: "DescribeInstanceCreditSpecifications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -84486,6 +84815,7 @@ export const describeInstanceEventNotificationAttributes: API.OperationMethod<
   input: DescribeInstanceEventNotificationAttributesRequest,
   output: DescribeInstanceEventNotificationAttributesResult,
   errors: [],
+  operationName: "DescribeInstanceEventNotificationAttributes",
 }));
 export type DescribeInstanceEventWindowsError =
   | RequestLimitExceeded
@@ -84528,6 +84858,7 @@ export const describeInstanceEventWindows: API.OperationMethod<
   input: DescribeInstanceEventWindowsRequest,
   output: DescribeInstanceEventWindowsResult,
   errors: [RequestLimitExceeded, InvalidInstanceEventWindowIDNotFound],
+  operationName: "DescribeInstanceEventWindows",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -84588,6 +84919,7 @@ export const describeInstanceImageMetadata: API.OperationMethod<
   input: DescribeInstanceImageMetadataRequest,
   output: DescribeInstanceImageMetadataResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  operationName: "DescribeInstanceImageMetadata",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -84669,6 +85001,7 @@ export const describeInstances: API.OperationMethod<
     InvalidInstanceIDNotFound,
     ParseError,
   ],
+  operationName: "DescribeInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -84693,6 +85026,7 @@ export const describeInstanceSqlHaHistoryStates: API.OperationMethod<
   input: DescribeInstanceSqlHaHistoryStatesRequest,
   output: DescribeInstanceSqlHaHistoryStatesResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDNotFound],
+  operationName: "DescribeInstanceSqlHaHistoryStates",
 }));
 export type DescribeInstanceSqlHaStatesError =
   | RequestLimitExceeded
@@ -84711,6 +85045,7 @@ export const describeInstanceSqlHaStates: API.OperationMethod<
   input: DescribeInstanceSqlHaStatesRequest,
   output: DescribeInstanceSqlHaStatesResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDNotFound],
+  operationName: "DescribeInstanceSqlHaStates",
 }));
 export type DescribeInstanceStatusError =
   | RequestLimitExceeded
@@ -84780,6 +85115,7 @@ export const describeInstanceStatus: API.OperationMethod<
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
   ],
+  operationName: "DescribeInstanceStatus",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -84835,6 +85171,7 @@ export const describeInstanceTopology: API.OperationMethod<
   input: DescribeInstanceTopologyRequest,
   output: DescribeInstanceTopologyResult,
   errors: [],
+  operationName: "DescribeInstanceTopology",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -84872,6 +85209,7 @@ export const describeInstanceTypeOfferings: API.OperationMethod<
   input: DescribeInstanceTypeOfferingsRequest,
   output: DescribeInstanceTypeOfferingsResult,
   errors: [],
+  operationName: "DescribeInstanceTypeOfferings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -84910,6 +85248,7 @@ export const describeInstanceTypes: API.OperationMethod<
   input: DescribeInstanceTypesRequest,
   output: DescribeInstanceTypesResult,
   errors: [],
+  operationName: "DescribeInstanceTypes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -84951,6 +85290,7 @@ export const describeInternetGateways: API.OperationMethod<
   input: DescribeInternetGatewaysRequest,
   output: DescribeInternetGatewaysResult,
   errors: [RequestLimitExceeded, InvalidInternetGatewayIDNotFound, ParseError],
+  operationName: "DescribeInternetGateways",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -84971,6 +85311,7 @@ export const describeIpamByoasn: API.OperationMethod<
   input: DescribeIpamByoasnRequest,
   output: DescribeIpamByoasnResult,
   errors: [],
+  operationName: "DescribeIpamByoasn",
 }));
 export type DescribeIpamExternalResourceVerificationTokensError =
   | RequestLimitExceeded
@@ -84993,6 +85334,7 @@ export const describeIpamExternalResourceVerificationTokens: API.OperationMethod
     RequestLimitExceeded,
     InvalidIpamExternalResourceVerificationTokenIdNotFound,
   ],
+  operationName: "DescribeIpamExternalResourceVerificationTokens",
 }));
 export type DescribeIpamPoliciesError =
   | RequestLimitExceeded
@@ -85012,6 +85354,7 @@ export const describeIpamPolicies: API.OperationMethod<
   input: DescribeIpamPoliciesRequest,
   output: DescribeIpamPoliciesResult,
   errors: [RequestLimitExceeded, InvalidIpamPolicyIdNotFound],
+  operationName: "DescribeIpamPolicies",
 }));
 export type DescribeIpamPoolAllocationsError = CommonErrors;
 /**
@@ -85045,6 +85388,7 @@ export const describeIpamPoolAllocations: API.OperationMethod<
   input: DescribeIpamPoolAllocationsRequest,
   output: DescribeIpamPoolAllocationsResult,
   errors: [],
+  operationName: "DescribeIpamPoolAllocations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85083,6 +85427,7 @@ export const describeIpamPools: API.OperationMethod<
   input: DescribeIpamPoolsRequest,
   output: DescribeIpamPoolsResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
+  operationName: "DescribeIpamPools",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85121,6 +85466,7 @@ export const describeIpamPrefixListResolvers: API.OperationMethod<
   input: DescribeIpamPrefixListResolversRequest,
   output: DescribeIpamPrefixListResolversResult,
   errors: [RequestLimitExceeded, InvalidIpamPrefixListResolverIdNotFound],
+  operationName: "DescribeIpamPrefixListResolvers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85162,6 +85508,7 @@ export const describeIpamPrefixListResolverTargets: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamPrefixListResolverTargetIdMalformed,
   ],
+  operationName: "DescribeIpamPrefixListResolverTargets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85200,6 +85547,7 @@ export const describeIpamResourceDiscoveries: API.OperationMethod<
   input: DescribeIpamResourceDiscoveriesRequest,
   output: DescribeIpamResourceDiscoveriesResult,
   errors: [RequestLimitExceeded, InvalidIpamResourceDiscoveryIdNotFound],
+  operationName: "DescribeIpamResourceDiscoveries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85241,6 +85589,7 @@ export const describeIpamResourceDiscoveryAssociations: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamResourceDiscoveryAssociationIdNotFound,
   ],
+  operationName: "DescribeIpamResourceDiscoveryAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85281,6 +85630,7 @@ export const describeIpams: API.OperationMethod<
   input: DescribeIpamsRequest,
   output: DescribeIpamsResult,
   errors: [RequestLimitExceeded, InvalidIpamIdNotFound],
+  operationName: "DescribeIpams",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85319,6 +85669,7 @@ export const describeIpamScopes: API.OperationMethod<
   input: DescribeIpamScopesRequest,
   output: DescribeIpamScopesResult,
   errors: [RequestLimitExceeded, InvalidIpamScopeIdNotFound],
+  operationName: "DescribeIpamScopes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85357,6 +85708,7 @@ export const describeIpv6Pools: API.OperationMethod<
   input: DescribeIpv6PoolsRequest,
   output: DescribeIpv6PoolsResult,
   errors: [RequestLimitExceeded, InvalidIpv6PoolIDNotFound],
+  operationName: "DescribeIpv6Pools",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85384,6 +85736,7 @@ export const describeKeyPairs: API.OperationMethod<
   input: DescribeKeyPairsRequest,
   output: DescribeKeyPairsResult,
   errors: [RequestLimitExceeded, InvalidKeyPairNotFound, InvalidParameterValue],
+  operationName: "DescribeKeyPairs",
 }));
 export type DescribeLaunchTemplatesError =
   | RequestLimitExceeded
@@ -85425,6 +85778,7 @@ export const describeLaunchTemplates: API.OperationMethod<
     InvalidLaunchTemplateIdNotFound,
     InvalidLaunchTemplateNameNotFoundException,
   ],
+  operationName: "DescribeLaunchTemplates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85471,6 +85825,7 @@ export const describeLaunchTemplateVersions: API.OperationMethod<
     InvalidLaunchTemplateIdMalformed,
     MissingParameter,
   ],
+  operationName: "DescribeLaunchTemplateVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85507,6 +85862,7 @@ export const describeLocalGatewayRouteTables: API.OperationMethod<
   input: DescribeLocalGatewayRouteTablesRequest,
   output: DescribeLocalGatewayRouteTablesResult,
   errors: [],
+  operationName: "DescribeLocalGatewayRouteTables",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85543,6 +85899,8 @@ export const describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations: AP
   input: DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest,
   output: DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult,
   errors: [],
+  operationName:
+    "DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85578,6 +85936,7 @@ export const describeLocalGatewayRouteTableVpcAssociations: API.OperationMethod<
   input: DescribeLocalGatewayRouteTableVpcAssociationsRequest,
   output: DescribeLocalGatewayRouteTableVpcAssociationsResult,
   errors: [],
+  operationName: "DescribeLocalGatewayRouteTableVpcAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85614,6 +85973,7 @@ export const describeLocalGateways: API.OperationMethod<
   input: DescribeLocalGatewaysRequest,
   output: DescribeLocalGatewaysResult,
   errors: [],
+  operationName: "DescribeLocalGateways",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85649,6 +86009,7 @@ export const describeLocalGatewayVirtualInterfaceGroups: API.OperationMethod<
   input: DescribeLocalGatewayVirtualInterfaceGroupsRequest,
   output: DescribeLocalGatewayVirtualInterfaceGroupsResult,
   errors: [],
+  operationName: "DescribeLocalGatewayVirtualInterfaceGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85684,6 +86045,7 @@ export const describeLocalGatewayVirtualInterfaces: API.OperationMethod<
   input: DescribeLocalGatewayVirtualInterfacesRequest,
   output: DescribeLocalGatewayVirtualInterfacesResult,
   errors: [],
+  operationName: "DescribeLocalGatewayVirtualInterfaces",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85707,6 +86069,7 @@ export const describeLockedSnapshots: API.OperationMethod<
   input: DescribeLockedSnapshotsRequest,
   output: DescribeLockedSnapshotsResult,
   errors: [RequestLimitExceeded, InvalidRequest],
+  operationName: "DescribeLockedSnapshots",
 }));
 export type DescribeMacHostsError =
   | RequestLimitExceeded
@@ -85739,6 +86102,7 @@ export const describeMacHosts: API.OperationMethod<
   input: DescribeMacHostsRequest,
   output: DescribeMacHostsResult,
   errors: [RequestLimitExceeded, InvalidHostIDMalformed],
+  operationName: "DescribeMacHosts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85779,6 +86143,7 @@ export const describeMacModificationTasks: API.OperationMethod<
   input: DescribeMacModificationTasksRequest,
   output: DescribeMacModificationTasksResult,
   errors: [RequestLimitExceeded, InvalidParameter],
+  operationName: "DescribeMacModificationTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85818,6 +86183,7 @@ export const describeManagedPrefixLists: API.OperationMethod<
   input: DescribeManagedPrefixListsRequest,
   output: DescribeManagedPrefixListsResult,
   errors: [RequestLimitExceeded, InvalidPrefixListIDNotFound, ParseError],
+  operationName: "DescribeManagedPrefixLists",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85859,6 +86225,7 @@ export const describeMovingAddresses: API.OperationMethod<
   input: DescribeMovingAddressesRequest,
   output: DescribeMovingAddressesResult,
   errors: [RequestLimitExceeded, UnsupportedOperation],
+  operationName: "DescribeMovingAddresses",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85912,6 +86279,7 @@ export const describeNatGateways: API.OperationMethod<
     NatGatewayNotFound,
     ParseError,
   ],
+  operationName: "DescribeNatGateways",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -85962,6 +86330,7 @@ export const describeNetworkAcls: API.OperationMethod<
     InvalidRouteTableIDNotFound,
     ParseError,
   ],
+  operationName: "DescribeNetworkAcls",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86000,6 +86369,7 @@ export const describeNetworkInsightsAccessScopeAnalyses: API.OperationMethod<
   input: DescribeNetworkInsightsAccessScopeAnalysesRequest,
   output: DescribeNetworkInsightsAccessScopeAnalysesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "DescribeNetworkInsightsAccessScopeAnalyses",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86038,6 +86408,7 @@ export const describeNetworkInsightsAccessScopes: API.OperationMethod<
   input: DescribeNetworkInsightsAccessScopesRequest,
   output: DescribeNetworkInsightsAccessScopesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "DescribeNetworkInsightsAccessScopes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86076,6 +86447,7 @@ export const describeNetworkInsightsAnalyses: API.OperationMethod<
   input: DescribeNetworkInsightsAnalysesRequest,
   output: DescribeNetworkInsightsAnalysesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "DescribeNetworkInsightsAnalyses",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86114,6 +86486,7 @@ export const describeNetworkInsightsPaths: API.OperationMethod<
   input: DescribeNetworkInsightsPathsRequest,
   output: DescribeNetworkInsightsPathsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "DescribeNetworkInsightsPaths",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86145,6 +86518,7 @@ export const describeNetworkInterfaceAttribute: API.OperationMethod<
     InvalidNetworkInterfaceIdMalformed,
     InvalidParameterCombination,
   ],
+  operationName: "DescribeNetworkInterfaceAttribute",
 }));
 export type DescribeNetworkInterfacePermissionsError =
   | RequestLimitExceeded
@@ -86177,6 +86551,7 @@ export const describeNetworkInterfacePermissions: API.OperationMethod<
   input: DescribeNetworkInterfacePermissionsRequest,
   output: DescribeNetworkInterfacePermissionsResult,
   errors: [RequestLimitExceeded, InvalidPermissionIDNotFound],
+  operationName: "DescribeNetworkInterfacePermissions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86231,6 +86606,7 @@ export const describeNetworkInterfaces: API.OperationMethod<
     InvalidNetworkInterfaceIdMalformed,
     ParseError,
   ],
+  operationName: "DescribeNetworkInterfaces",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86256,6 +86632,7 @@ export const describeOutpostLags: API.OperationMethod<
   input: DescribeOutpostLagsRequest,
   output: DescribeOutpostLagsResult,
   errors: [RequestLimitExceeded, InvalidOutpostLagIDMalformed],
+  operationName: "DescribeOutpostLags",
 }));
 export type DescribePlacementGroupsError =
   | RequestLimitExceeded
@@ -86287,6 +86664,7 @@ export const describePlacementGroups: API.OperationMethod<
     InvalidParameterValue,
     InvalidPlacementGroupUnknown,
   ],
+  operationName: "DescribePlacementGroups",
 }));
 export type DescribePrefixListsError =
   | RequestLimitExceeded
@@ -86320,6 +86698,7 @@ export const describePrefixLists: API.OperationMethod<
   input: DescribePrefixListsRequest,
   output: DescribePrefixListsResult,
   errors: [RequestLimitExceeded, InvalidPrefixListIdNotFound],
+  operationName: "DescribePrefixLists",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86374,6 +86753,7 @@ export const describePrincipalIdFormat: API.OperationMethod<
   input: DescribePrincipalIdFormatRequest,
   output: DescribePrincipalIdFormatResult,
   errors: [],
+  operationName: "DescribePrincipalIdFormat",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86412,6 +86792,7 @@ export const describePublicIpv4Pools: API.OperationMethod<
   input: DescribePublicIpv4PoolsRequest,
   output: DescribePublicIpv4PoolsResult,
   errors: [RequestLimitExceeded, InvalidPublicIpv4PoolIDNotFound],
+  operationName: "DescribePublicIpv4Pools",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86443,6 +86824,7 @@ export const describeRegions: API.OperationMethod<
   input: DescribeRegionsRequest,
   output: DescribeRegionsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "DescribeRegions",
 }));
 export type DescribeReplaceRootVolumeTasksError =
   | RequestLimitExceeded
@@ -86476,6 +86858,7 @@ export const describeReplaceRootVolumeTasks: API.OperationMethod<
   input: DescribeReplaceRootVolumeTasksRequest,
   output: DescribeReplaceRootVolumeTasksResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "DescribeReplaceRootVolumeTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86505,6 +86888,7 @@ export const describeReservedInstances: API.OperationMethod<
   input: DescribeReservedInstancesRequest,
   output: DescribeReservedInstancesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "DescribeReservedInstances",
 }));
 export type DescribeReservedInstancesListingsError = CommonErrors;
 /**
@@ -86541,6 +86925,7 @@ export const describeReservedInstancesListings: API.OperationMethod<
   input: DescribeReservedInstancesListingsRequest,
   output: DescribeReservedInstancesListingsResult,
   errors: [],
+  operationName: "DescribeReservedInstancesListings",
 }));
 export type DescribeReservedInstancesModificationsError =
   | RequestLimitExceeded
@@ -86582,6 +86967,7 @@ export const describeReservedInstancesModifications: API.OperationMethod<
   input: DescribeReservedInstancesModificationsRequest,
   output: DescribeReservedInstancesModificationsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "DescribeReservedInstancesModifications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86632,6 +87018,7 @@ export const describeReservedInstancesOfferings: API.OperationMethod<
   input: DescribeReservedInstancesOfferingsRequest,
   output: DescribeReservedInstancesOfferingsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "DescribeReservedInstancesOfferings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86674,6 +87061,7 @@ export const describeRouteServerEndpoints: API.OperationMethod<
   input: DescribeRouteServerEndpointsRequest,
   output: DescribeRouteServerEndpointsResult,
   errors: [RequestLimitExceeded, InvalidRouteServerEndpointIdNotFound],
+  operationName: "DescribeRouteServerEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86722,6 +87110,7 @@ export const describeRouteServerPeers: API.OperationMethod<
   input: DescribeRouteServerPeersRequest,
   output: DescribeRouteServerPeersResult,
   errors: [RequestLimitExceeded, InvalidRouteServerPeerIdNotFound],
+  operationName: "DescribeRouteServerPeers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86775,6 +87164,7 @@ export const describeRouteServers: API.OperationMethod<
   input: DescribeRouteServersRequest,
   output: DescribeRouteServersResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  operationName: "DescribeRouteServers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86821,6 +87211,7 @@ export const describeRouteTables: API.OperationMethod<
   input: DescribeRouteTablesRequest,
   output: DescribeRouteTablesResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, ParseError],
+  operationName: "DescribeRouteTables",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86861,6 +87252,7 @@ export const describeScheduledInstanceAvailability: API.OperationMethod<
   input: DescribeScheduledInstanceAvailabilityRequest,
   output: DescribeScheduledInstanceAvailabilityResult,
   errors: [],
+  operationName: "DescribeScheduledInstanceAvailability",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86896,6 +87288,7 @@ export const describeScheduledInstances: API.OperationMethod<
   input: DescribeScheduledInstancesRequest,
   output: DescribeScheduledInstancesResult,
   errors: [],
+  operationName: "DescribeScheduledInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86931,6 +87324,7 @@ export const describeSecondaryInterfaces: API.OperationMethod<
   input: DescribeSecondaryInterfacesRequest,
   output: DescribeSecondaryInterfacesResult,
   errors: [],
+  operationName: "DescribeSecondaryInterfaces",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -86966,6 +87360,7 @@ export const describeSecondaryNetworks: API.OperationMethod<
   input: DescribeSecondaryNetworksRequest,
   output: DescribeSecondaryNetworksResult,
   errors: [],
+  operationName: "DescribeSecondaryNetworks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87001,6 +87396,7 @@ export const describeSecondarySubnets: API.OperationMethod<
   input: DescribeSecondarySubnetsRequest,
   output: DescribeSecondarySubnetsResult,
   errors: [],
+  operationName: "DescribeSecondarySubnets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87021,6 +87417,7 @@ export const describeSecurityGroupReferences: API.OperationMethod<
   input: DescribeSecurityGroupReferencesRequest,
   output: DescribeSecurityGroupReferencesResult,
   errors: [],
+  operationName: "DescribeSecurityGroupReferences",
 }));
 export type DescribeSecurityGroupRulesError =
   | RequestLimitExceeded
@@ -87053,6 +87450,7 @@ export const describeSecurityGroupRules: API.OperationMethod<
   input: DescribeSecurityGroupRulesRequest,
   output: DescribeSecurityGroupRulesResult,
   errors: [RequestLimitExceeded, InvalidSecurityGroupRuleIdNotFound],
+  operationName: "DescribeSecurityGroupRules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87100,6 +87498,7 @@ export const describeSecurityGroups: API.OperationMethod<
     ParseError,
     VPCIdNotSpecified,
   ],
+  operationName: "DescribeSecurityGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87135,6 +87534,7 @@ export const describeSecurityGroupVpcAssociations: API.OperationMethod<
   input: DescribeSecurityGroupVpcAssociationsRequest,
   output: DescribeSecurityGroupVpcAssociationsResult,
   errors: [],
+  operationName: "DescribeSecurityGroupVpcAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87158,6 +87558,7 @@ export const describeServiceLinkVirtualInterfaces: API.OperationMethod<
   input: DescribeServiceLinkVirtualInterfacesRequest,
   output: DescribeServiceLinkVirtualInterfacesResult,
   errors: [RequestLimitExceeded, InvalidServiceLinkVirtualInterfaceIDMalformed],
+  operationName: "DescribeServiceLinkVirtualInterfaces",
 }));
 export type DescribeSnapshotAttributeError =
   | RequestLimitExceeded
@@ -87185,6 +87586,7 @@ export const describeSnapshotAttribute: API.OperationMethod<
     InvalidSnapshotNotFound,
     MissingParameter,
   ],
+  operationName: "DescribeSnapshotAttribute",
 }));
 export type DescribeSnapshotsError =
   | RequestLimitExceeded
@@ -87266,6 +87668,7 @@ export const describeSnapshots: API.OperationMethod<
     InvalidSnapshotNotFound,
     InvalidUserIDMalformed,
   ],
+  operationName: "DescribeSnapshots",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87301,6 +87704,7 @@ export const describeSnapshotTierStatus: API.OperationMethod<
   input: DescribeSnapshotTierStatusRequest,
   output: DescribeSnapshotTierStatusResult,
   errors: [],
+  operationName: "DescribeSnapshotTierStatus",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87325,6 +87729,7 @@ export const describeSpotDatafeedSubscription: API.OperationMethod<
   input: DescribeSpotDatafeedSubscriptionRequest,
   output: DescribeSpotDatafeedSubscriptionResult,
   errors: [RequestLimitExceeded, InvalidSpotDatafeedNotFound],
+  operationName: "DescribeSpotDatafeedSubscription",
 }));
 export type DescribeSpotFleetInstancesError =
   | RequestLimitExceeded
@@ -87342,6 +87747,7 @@ export const describeSpotFleetInstances: API.OperationMethod<
   input: DescribeSpotFleetInstancesRequest,
   output: DescribeSpotFleetInstancesResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "DescribeSpotFleetInstances",
 }));
 export type DescribeSpotFleetRequestHistoryError =
   | RequestLimitExceeded
@@ -87367,6 +87773,7 @@ export const describeSpotFleetRequestHistory: API.OperationMethod<
   input: DescribeSpotFleetRequestHistoryRequest,
   output: DescribeSpotFleetRequestHistoryResponse,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "DescribeSpotFleetRequestHistory",
 }));
 export type DescribeSpotFleetRequestsError =
   | RequestLimitExceeded
@@ -87403,6 +87810,7 @@ export const describeSpotFleetRequests: API.OperationMethod<
   input: DescribeSpotFleetRequestsRequest,
   output: DescribeSpotFleetRequestsResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue, ParseError],
+  operationName: "DescribeSpotFleetRequests",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87464,6 +87872,7 @@ export const describeSpotInstanceRequests: API.OperationMethod<
     InvalidSpotInstanceRequestIDMalformed,
     ParseError,
   ],
+  operationName: "DescribeSpotInstanceRequests",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87504,6 +87913,7 @@ export const describeSpotPriceHistory: API.OperationMethod<
   input: DescribeSpotPriceHistoryRequest,
   output: DescribeSpotPriceHistoryResult,
   errors: [],
+  operationName: "DescribeSpotPriceHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87549,6 +87959,7 @@ export const describeStaleSecurityGroups: API.OperationMethod<
   input: DescribeStaleSecurityGroupsRequest,
   output: DescribeStaleSecurityGroupsResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound],
+  operationName: "DescribeStaleSecurityGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87599,6 +88010,7 @@ export const describeStoreImageTasks: API.OperationMethod<
   input: DescribeStoreImageTasksRequest,
   output: DescribeStoreImageTasksResult,
   errors: [],
+  operationName: "DescribeStoreImageTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87643,6 +88055,7 @@ export const describeSubnets: API.OperationMethod<
   input: DescribeSubnetsRequest,
   output: DescribeSubnetsResult,
   errors: [RequestLimitExceeded, InvalidSubnetIDNotFound, ParseError],
+  operationName: "DescribeSubnets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87691,6 +88104,7 @@ export const describeTags: API.OperationMethod<
   input: DescribeTagsRequest,
   output: DescribeTagsResult,
   errors: [RequestLimitExceeded, ParseError],
+  operationName: "DescribeTags",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87711,6 +88125,7 @@ export const describeTrafficMirrorFilterRules: API.OperationMethod<
   input: DescribeTrafficMirrorFilterRulesRequest,
   output: DescribeTrafficMirrorFilterRulesResult,
   errors: [],
+  operationName: "DescribeTrafficMirrorFilterRules",
 }));
 export type DescribeTrafficMirrorFiltersError =
   | RequestLimitExceeded
@@ -87743,6 +88158,7 @@ export const describeTrafficMirrorFilters: API.OperationMethod<
   input: DescribeTrafficMirrorFiltersRequest,
   output: DescribeTrafficMirrorFiltersResult,
   errors: [RequestLimitExceeded, InvalidTrafficMirrorFilterIdNotFound],
+  operationName: "DescribeTrafficMirrorFilters",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87781,6 +88197,7 @@ export const describeTrafficMirrorSessions: API.OperationMethod<
   input: DescribeTrafficMirrorSessionsRequest,
   output: DescribeTrafficMirrorSessionsResult,
   errors: [RequestLimitExceeded, InvalidTrafficMirrorSessionIdNotFound],
+  operationName: "DescribeTrafficMirrorSessions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87819,6 +88236,7 @@ export const describeTrafficMirrorTargets: API.OperationMethod<
   input: DescribeTrafficMirrorTargetsRequest,
   output: DescribeTrafficMirrorTargetsResult,
   errors: [RequestLimitExceeded, InvalidTrafficMirrorTargetIdNotFound],
+  operationName: "DescribeTrafficMirrorTargets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87863,6 +88281,7 @@ export const describeTransitGatewayAttachments: API.OperationMethod<
     InvalidTransitGatewayAttachmentIDNotFound,
     ParseError,
   ],
+  operationName: "DescribeTransitGatewayAttachments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87901,6 +88320,7 @@ export const describeTransitGatewayConnectPeers: API.OperationMethod<
   input: DescribeTransitGatewayConnectPeersRequest,
   output: DescribeTransitGatewayConnectPeersResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayConnectPeerIDNotFound],
+  operationName: "DescribeTransitGatewayConnectPeers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87939,6 +88359,7 @@ export const describeTransitGatewayConnects: API.OperationMethod<
   input: DescribeTransitGatewayConnectsRequest,
   output: DescribeTransitGatewayConnectsResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  operationName: "DescribeTransitGatewayConnects",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -87962,6 +88383,7 @@ export const describeTransitGatewayMeteringPolicies: API.OperationMethod<
   input: DescribeTransitGatewayMeteringPoliciesRequest,
   output: DescribeTransitGatewayMeteringPoliciesResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayMeteringPolicyIdNotFound],
+  operationName: "DescribeTransitGatewayMeteringPolicies",
 }));
 export type DescribeTransitGatewayMulticastDomainsError =
   | RequestLimitExceeded
@@ -87997,6 +88419,7 @@ export const describeTransitGatewayMulticastDomains: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayMulticastDomainIdNotFound,
   ],
+  operationName: "DescribeTransitGatewayMulticastDomains",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88035,6 +88458,7 @@ export const describeTransitGatewayPeeringAttachments: API.OperationMethod<
   input: DescribeTransitGatewayPeeringAttachmentsRequest,
   output: DescribeTransitGatewayPeeringAttachmentsResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  operationName: "DescribeTransitGatewayPeeringAttachments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88073,6 +88497,7 @@ export const describeTransitGatewayPolicyTables: API.OperationMethod<
   input: DescribeTransitGatewayPolicyTablesRequest,
   output: DescribeTransitGatewayPolicyTablesResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayPolicyTableIdNotFound],
+  operationName: "DescribeTransitGatewayPolicyTables",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88114,6 +88539,7 @@ export const describeTransitGatewayRouteTableAnnouncements: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayRouteTableAnnouncementIdMalformed,
   ],
+  operationName: "DescribeTransitGatewayRouteTableAnnouncements",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88154,6 +88580,7 @@ export const describeTransitGatewayRouteTables: API.OperationMethod<
   input: DescribeTransitGatewayRouteTablesRequest,
   output: DescribeTransitGatewayRouteTablesResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, ParseError],
+  operationName: "DescribeTransitGatewayRouteTables",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88194,6 +88621,7 @@ export const describeTransitGateways: API.OperationMethod<
   input: DescribeTransitGatewaysRequest,
   output: DescribeTransitGatewaysResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayIDNotFound, ParseError],
+  operationName: "DescribeTransitGateways",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88233,6 +88661,7 @@ export const describeTransitGatewayVpcAttachments: API.OperationMethod<
   input: DescribeTransitGatewayVpcAttachmentsRequest,
   output: DescribeTransitGatewayVpcAttachmentsResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  operationName: "DescribeTransitGatewayVpcAttachments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88271,6 +88700,7 @@ export const describeTrunkInterfaceAssociations: API.OperationMethod<
   input: DescribeTrunkInterfaceAssociationsRequest,
   output: DescribeTrunkInterfaceAssociationsResult,
   errors: [RequestLimitExceeded, OperationNotPermitted],
+  operationName: "DescribeTrunkInterfaceAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88309,6 +88739,7 @@ export const describeVerifiedAccessEndpoints: API.OperationMethod<
   input: DescribeVerifiedAccessEndpointsRequest,
   output: DescribeVerifiedAccessEndpointsResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
+  operationName: "DescribeVerifiedAccessEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88347,6 +88778,7 @@ export const describeVerifiedAccessGroups: API.OperationMethod<
   input: DescribeVerifiedAccessGroupsRequest,
   output: DescribeVerifiedAccessGroupsResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessGroupIdNotFound],
+  operationName: "DescribeVerifiedAccessGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88385,6 +88817,7 @@ export const describeVerifiedAccessInstanceLoggingConfigurations: API.OperationM
   input: DescribeVerifiedAccessInstanceLoggingConfigurationsRequest,
   output: DescribeVerifiedAccessInstanceLoggingConfigurationsResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  operationName: "DescribeVerifiedAccessInstanceLoggingConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88423,6 +88856,7 @@ export const describeVerifiedAccessInstances: API.OperationMethod<
   input: DescribeVerifiedAccessInstancesRequest,
   output: DescribeVerifiedAccessInstancesResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  operationName: "DescribeVerifiedAccessInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88461,6 +88895,7 @@ export const describeVerifiedAccessTrustProviders: API.OperationMethod<
   input: DescribeVerifiedAccessTrustProvidersRequest,
   output: DescribeVerifiedAccessTrustProvidersResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessTrustProviderIdNotFound],
+  operationName: "DescribeVerifiedAccessTrustProviders",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88494,6 +88929,7 @@ export const describeVolumeAttribute: API.OperationMethod<
     InvalidParameterValue,
     InvalidVolumeNotFound,
   ],
+  operationName: "DescribeVolumeAttribute",
 }));
 export type DescribeVolumesError =
   | RequestLimitExceeded
@@ -88545,6 +88981,7 @@ export const describeVolumes: API.OperationMethod<
     InvalidVolumeNotFound,
     ParseError,
   ],
+  operationName: "DescribeVolumes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88586,6 +89023,7 @@ export const describeVolumesModifications: API.OperationMethod<
   input: DescribeVolumesModificationsRequest,
   output: DescribeVolumesModificationsResult,
   errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
+  operationName: "DescribeVolumesModifications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88663,6 +89101,7 @@ export const describeVolumeStatus: API.OperationMethod<
   input: DescribeVolumeStatusRequest,
   output: DescribeVolumeStatusResult,
   errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
+  operationName: "DescribeVolumeStatus",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88691,6 +89130,7 @@ export const describeVpcAttribute: API.OperationMethod<
     InvalidParameterCombination,
     InvalidVpcIDNotFound,
   ],
+  operationName: "DescribeVpcAttribute",
 }));
 export type DescribeVpcBlockPublicAccessExclusionsError =
   | RequestLimitExceeded
@@ -88713,6 +89153,7 @@ export const describeVpcBlockPublicAccessExclusions: API.OperationMethod<
     MissingParameter,
     VpcBlockPublicAccessExclusionIdMalformed,
   ],
+  operationName: "DescribeVpcBlockPublicAccessExclusions",
 }));
 export type DescribeVpcBlockPublicAccessOptionsError = CommonErrors;
 /**
@@ -88727,6 +89168,7 @@ export const describeVpcBlockPublicAccessOptions: API.OperationMethod<
   input: DescribeVpcBlockPublicAccessOptionsRequest,
   output: DescribeVpcBlockPublicAccessOptionsResult,
   errors: [],
+  operationName: "DescribeVpcBlockPublicAccessOptions",
 }));
 export type DescribeVpcClassicLinkError =
   | RequestLimitExceeded
@@ -88747,6 +89189,7 @@ export const describeVpcClassicLink: API.OperationMethod<
   input: DescribeVpcClassicLinkRequest,
   output: DescribeVpcClassicLinkResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, InvalidVpcIdMalformed],
+  operationName: "DescribeVpcClassicLink",
 }));
 export type DescribeVpcClassicLinkDnsSupportError =
   | RequestLimitExceeded
@@ -88785,6 +89228,7 @@ export const describeVpcClassicLinkDnsSupport: API.OperationMethod<
   input: DescribeVpcClassicLinkDnsSupportRequest,
   output: DescribeVpcClassicLinkDnsSupportResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound],
+  operationName: "DescribeVpcClassicLinkDnsSupport",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88810,6 +89254,7 @@ export const describeVpcEncryptionControls: API.OperationMethod<
   input: DescribeVpcEncryptionControlsRequest,
   output: DescribeVpcEncryptionControlsResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
+  operationName: "DescribeVpcEncryptionControls",
 }));
 export type DescribeVpcEndpointAssociationsError = CommonErrors;
 /**
@@ -88825,6 +89270,7 @@ export const describeVpcEndpointAssociations: API.OperationMethod<
   input: DescribeVpcEndpointAssociationsRequest,
   output: DescribeVpcEndpointAssociationsResult,
   errors: [],
+  operationName: "DescribeVpcEndpointAssociations",
 }));
 export type DescribeVpcEndpointConnectionNotificationsError =
   | RequestLimitExceeded
@@ -88858,6 +89304,7 @@ export const describeVpcEndpointConnectionNotifications: API.OperationMethod<
   input: DescribeVpcEndpointConnectionNotificationsRequest,
   output: DescribeVpcEndpointConnectionNotificationsResult,
   errors: [RequestLimitExceeded, InvalidConnectionNotification],
+  operationName: "DescribeVpcEndpointConnectionNotifications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88894,6 +89341,7 @@ export const describeVpcEndpointConnections: API.OperationMethod<
   input: DescribeVpcEndpointConnectionsRequest,
   output: DescribeVpcEndpointConnectionsResult,
   errors: [],
+  operationName: "DescribeVpcEndpointConnections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88935,6 +89383,7 @@ export const describeVpcEndpoints: API.OperationMethod<
   input: DescribeVpcEndpointsRequest,
   output: DescribeVpcEndpointsResult,
   errors: [RequestLimitExceeded, InvalidVpcEndpointIdNotFound, ParseError],
+  operationName: "DescribeVpcEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -88973,6 +89422,7 @@ export const describeVpcEndpointServiceConfigurations: API.OperationMethod<
   input: DescribeVpcEndpointServiceConfigurationsRequest,
   output: DescribeVpcEndpointServiceConfigurationsResult,
   errors: [RequestLimitExceeded, InvalidVpcEndpointServiceIdNotFound],
+  operationName: "DescribeVpcEndpointServiceConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -89017,6 +89467,7 @@ export const describeVpcEndpointServicePermissions: API.OperationMethod<
     InvalidVpcEndpointServiceIdMalformed,
     InvalidVpcEndpointServiceIdNotFound,
   ],
+  operationName: "DescribeVpcEndpointServicePermissions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -89048,6 +89499,7 @@ export const describeVpcEndpointServices: API.OperationMethod<
   input: DescribeVpcEndpointServicesRequest,
   output: DescribeVpcEndpointServicesResult,
   errors: [RequestLimitExceeded, ParseError],
+  operationName: "DescribeVpcEndpointServices",
 }));
 export type DescribeVpcPeeringConnectionsError =
   | RequestLimitExceeded
@@ -89087,6 +89539,7 @@ export const describeVpcPeeringConnections: API.OperationMethod<
     InvalidVpcPeeringConnectionIDNotFound,
     ParseError,
   ],
+  operationName: "DescribeVpcPeeringConnections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -89134,6 +89587,7 @@ export const describeVpcs: API.OperationMethod<
     ParseError,
     RequestError,
   ],
+  operationName: "DescribeVpcs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -89172,6 +89626,7 @@ export const describeVpnConcentrators: API.OperationMethod<
   input: DescribeVpnConcentratorsRequest,
   output: DescribeVpnConcentratorsResult,
   errors: [RequestLimitExceeded, InvalidVpnConcentratorIdMalformed],
+  operationName: "DescribeVpnConcentrators",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -89198,6 +89653,7 @@ export const describeVpnConnections: API.OperationMethod<
   input: DescribeVpnConnectionsRequest,
   output: DescribeVpnConnectionsResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionIDNotFound],
+  operationName: "DescribeVpnConnections",
 }));
 export type DescribeVpnGatewaysError =
   | RequestLimitExceeded
@@ -89219,6 +89675,7 @@ export const describeVpnGateways: API.OperationMethod<
   input: DescribeVpnGatewaysRequest,
   output: DescribeVpnGatewaysResult,
   errors: [RequestLimitExceeded, InvalidVpnGatewayIDNotFound, ParseError],
+  operationName: "DescribeVpnGateways",
 }));
 export type DetachClassicLinkVpcError =
   | RequestLimitExceeded
@@ -89249,6 +89706,7 @@ export const detachClassicLinkVpc: API.OperationMethod<
     InvalidVpcIDNotFound,
     MissingParameter,
   ],
+  operationName: "DetachClassicLinkVpc",
 }));
 export type DetachImageWatermarkError = CommonErrors;
 /**
@@ -89269,6 +89727,7 @@ export const detachImageWatermark: API.OperationMethod<
   input: DetachImageWatermarkRequest,
   output: DetachImageWatermarkResult,
   errors: [],
+  operationName: "DetachImageWatermark",
 }));
 export type DetachInternetGatewayError =
   | RequestLimitExceeded
@@ -89299,6 +89758,7 @@ export const detachInternetGateway: API.OperationMethod<
     InvalidInternetGatewayIdMalformed,
     InvalidVpcIdMalformed,
   ],
+  operationName: "DetachInternetGateway",
 }));
 export type DetachNetworkInterfaceError =
   | RequestLimitExceeded
@@ -89323,6 +89783,7 @@ export const detachNetworkInterface: API.OperationMethod<
     InvalidAttachmentIDNotFound,
     InvalidNetworkInterfaceAttachmentIdMalformed,
   ],
+  operationName: "DetachNetworkInterface",
 }));
 export type DetachVerifiedAccessTrustProviderError =
   | RequestLimitExceeded
@@ -89345,6 +89806,7 @@ export const detachVerifiedAccessTrustProvider: API.OperationMethod<
     DependencyViolation,
     InvalidVerifiedAccessInstanceIdNotFound,
   ],
+  operationName: "DetachVerifiedAccessTrustProvider",
 }));
 export type DetachVolumeError =
   | RequestLimitExceeded
@@ -89387,6 +89849,7 @@ export const detachVolume: API.OperationMethod<
     InvalidParameterValue,
     InvalidVolumeNotFound,
   ],
+  operationName: "DetachVolume",
 }));
 export type DetachVpnGatewayError =
   | RequestLimitExceeded
@@ -89419,6 +89882,7 @@ export const detachVpnGateway: API.OperationMethod<
     InvalidVpnGatewayIDNotFound,
     MissingParameter,
   ],
+  operationName: "DetachVpnGateway",
 }));
 export type DisableAddressTransferError =
   | RequestLimitExceeded
@@ -89436,6 +89900,7 @@ export const disableAddressTransfer: API.OperationMethod<
   input: DisableAddressTransferRequest,
   output: DisableAddressTransferResult,
   errors: [RequestLimitExceeded, InvalidElasticIpIDNotFound],
+  operationName: "DisableAddressTransfer",
 }));
 export type DisableAllowedImagesSettingsError = CommonErrors;
 /**
@@ -89461,6 +89926,7 @@ export const disableAllowedImagesSettings: API.OperationMethod<
   input: DisableAllowedImagesSettingsRequest,
   output: DisableAllowedImagesSettingsResult,
   errors: [],
+  operationName: "DisableAllowedImagesSettings",
 }));
 export type DisableAwsNetworkPerformanceMetricSubscriptionError =
   | RequestLimitExceeded
@@ -89478,6 +89944,7 @@ export const disableAwsNetworkPerformanceMetricSubscription: API.OperationMethod
   input: DisableAwsNetworkPerformanceMetricSubscriptionRequest,
   output: DisableAwsNetworkPerformanceMetricSubscriptionResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "DisableAwsNetworkPerformanceMetricSubscription",
 }));
 export type DisableCapacityManagerError =
   | RequestLimitExceeded
@@ -89496,6 +89963,7 @@ export const disableCapacityManager: API.OperationMethod<
   input: DisableCapacityManagerRequest,
   output: DisableCapacityManagerResult,
   errors: [RequestLimitExceeded, CapacityManagerDisabled],
+  operationName: "DisableCapacityManager",
 }));
 export type DisableEbsEncryptionByDefaultError = CommonErrors;
 /**
@@ -89519,6 +89987,7 @@ export const disableEbsEncryptionByDefault: API.OperationMethod<
   input: DisableEbsEncryptionByDefaultRequest,
   output: DisableEbsEncryptionByDefaultResult,
   errors: [],
+  operationName: "DisableEbsEncryptionByDefault",
 }));
 export type DisableFastLaunchError =
   | RequestLimitExceeded
@@ -89542,6 +90011,7 @@ export const disableFastLaunch: API.OperationMethod<
   input: DisableFastLaunchRequest,
   output: DisableFastLaunchResult,
   errors: [RequestLimitExceeded, InvalidRequest],
+  operationName: "DisableFastLaunch",
 }));
 export type DisableFastSnapshotRestoresError =
   | RequestLimitExceeded
@@ -89559,6 +90029,7 @@ export const disableFastSnapshotRestores: API.OperationMethod<
   input: DisableFastSnapshotRestoresRequest,
   output: DisableFastSnapshotRestoresResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "DisableFastSnapshotRestores",
 }));
 export type DisableImageError =
   | RequestLimitExceeded
@@ -89591,6 +90062,7 @@ export const disableImage: API.OperationMethod<
   input: DisableImageRequest,
   output: DisableImageResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  operationName: "DisableImage",
 }));
 export type DisableImageBlockPublicAccessError = CommonErrors;
 /**
@@ -89611,6 +90083,7 @@ export const disableImageBlockPublicAccess: API.OperationMethod<
   input: DisableImageBlockPublicAccessRequest,
   output: DisableImageBlockPublicAccessResult,
   errors: [],
+  operationName: "DisableImageBlockPublicAccess",
 }));
 export type DisableImageDeprecationError =
   | RequestLimitExceeded
@@ -89631,6 +90104,7 @@ export const disableImageDeprecation: API.OperationMethod<
   input: DisableImageDeprecationRequest,
   output: DisableImageDeprecationResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  operationName: "DisableImageDeprecation",
 }));
 export type DisableImageDeregistrationProtectionError =
   | RequestLimitExceeded
@@ -89656,6 +90130,7 @@ export const disableImageDeregistrationProtection: API.OperationMethod<
   input: DisableImageDeregistrationProtectionRequest,
   output: DisableImageDeregistrationProtectionResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  operationName: "DisableImageDeregistrationProtection",
 }));
 export type DisableInstanceSqlHaStandbyDetectionsError =
   | RequestLimitExceeded
@@ -89676,6 +90151,7 @@ export const disableInstanceSqlHaStandbyDetections: API.OperationMethod<
   input: DisableInstanceSqlHaStandbyDetectionsRequest,
   output: DisableInstanceSqlHaStandbyDetectionsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  operationName: "DisableInstanceSqlHaStandbyDetections",
 }));
 export type DisableIpamOrganizationAdminAccountError =
   | RequestLimitExceeded
@@ -89693,6 +90169,7 @@ export const disableIpamOrganizationAdminAccount: API.OperationMethod<
   input: DisableIpamOrganizationAdminAccountRequest,
   output: DisableIpamOrganizationAdminAccountResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "DisableIpamOrganizationAdminAccount",
 }));
 export type DisableIpamPolicyError =
   | RequestLimitExceeded
@@ -89717,6 +90194,7 @@ export const disableIpamPolicy: API.OperationMethod<
     InvalidIpamPolicyIdMalformed,
     InvalidIpamPolicyIdNotFound,
   ],
+  operationName: "DisableIpamPolicy",
 }));
 export type DisableRouteServerPropagationError =
   | RequestLimitExceeded
@@ -89751,6 +90229,7 @@ export const disableRouteServerPropagation: API.OperationMethod<
   input: DisableRouteServerPropagationRequest,
   output: DisableRouteServerPropagationResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  operationName: "DisableRouteServerPropagation",
 }));
 export type DisableSerialConsoleAccessError = CommonErrors;
 /**
@@ -89768,6 +90247,7 @@ export const disableSerialConsoleAccess: API.OperationMethod<
   input: DisableSerialConsoleAccessRequest,
   output: DisableSerialConsoleAccessResult,
   errors: [],
+  operationName: "DisableSerialConsoleAccess",
 }));
 export type DisableSnapshotBlockPublicAccessError = CommonErrors;
 /**
@@ -89796,6 +90276,7 @@ export const disableSnapshotBlockPublicAccess: API.OperationMethod<
   input: DisableSnapshotBlockPublicAccessRequest,
   output: DisableSnapshotBlockPublicAccessResult,
   errors: [],
+  operationName: "DisableSnapshotBlockPublicAccess",
 }));
 export type DisableTransitGatewayRouteTablePropagationError =
   | RequestLimitExceeded
@@ -89814,6 +90295,7 @@ export const disableTransitGatewayRouteTablePropagation: API.OperationMethod<
   input: DisableTransitGatewayRouteTablePropagationRequest,
   output: DisableTransitGatewayRouteTablePropagationResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "DisableTransitGatewayRouteTablePropagation",
 }));
 export type DisableVgwRoutePropagationError =
   | RequestLimitExceeded
@@ -89832,6 +90314,7 @@ export const disableVgwRoutePropagation: API.OperationMethod<
   input: DisableVgwRoutePropagationRequest,
   output: DisableVgwRoutePropagationResponse,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  operationName: "DisableVgwRoutePropagation",
 }));
 export type DisableVpcClassicLinkError =
   | RequestLimitExceeded
@@ -89853,6 +90336,7 @@ export const disableVpcClassicLink: API.OperationMethod<
   input: DisableVpcClassicLinkRequest,
   output: DisableVpcClassicLinkResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, InvalidVpcIdMalformed],
+  operationName: "DisableVpcClassicLink",
 }));
 export type DisableVpcClassicLinkDnsSupportError =
   | RequestLimitExceeded
@@ -89877,6 +90361,7 @@ export const disableVpcClassicLinkDnsSupport: API.OperationMethod<
   input: DisableVpcClassicLinkDnsSupportRequest,
   output: DisableVpcClassicLinkDnsSupportResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, MissingParameter],
+  operationName: "DisableVpcClassicLinkDnsSupport",
 }));
 export type DisassociateAddressError =
   | RequestLimitExceeded
@@ -89909,6 +90394,7 @@ export const disassociateAddress: API.OperationMethod<
     InvalidAssociationIDNotFound,
     MissingParameter,
   ],
+  operationName: "DisassociateAddress",
 }));
 export type DisassociateCapacityReservationBillingOwnerError =
   | RequestLimitExceeded
@@ -89934,6 +90420,7 @@ export const disassociateCapacityReservationBillingOwner: API.OperationMethod<
     InvalidCapacityReservationIdMalformed,
     MissingParameter,
   ],
+  operationName: "DisassociateCapacityReservationBillingOwner",
 }));
 export type DisassociateClientVpnTargetNetworkError =
   | RequestLimitExceeded
@@ -89965,6 +90452,7 @@ export const disassociateClientVpnTargetNetwork: API.OperationMethod<
     InvalidClientVpnEndpointIdNotFound,
     MissingParameter,
   ],
+  operationName: "DisassociateClientVpnTargetNetwork",
 }));
 export type DisassociateEnclaveCertificateIamRoleError =
   | RequestLimitExceeded
@@ -89991,6 +90479,7 @@ export const disassociateEnclaveCertificateIamRole: API.OperationMethod<
     InvalidCertificateArnMalformed,
     InvalidRoleArnMalformed,
   ],
+  operationName: "DisassociateEnclaveCertificateIamRole",
 }));
 export type DisassociateIamInstanceProfileError =
   | RequestLimitExceeded
@@ -90011,6 +90500,7 @@ export const disassociateIamInstanceProfile: API.OperationMethod<
   input: DisassociateIamInstanceProfileRequest,
   output: DisassociateIamInstanceProfileResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "DisassociateIamInstanceProfile",
 }));
 export type DisassociateInstanceEventWindowError =
   | RequestLimitExceeded
@@ -90032,6 +90522,7 @@ export const disassociateInstanceEventWindow: API.OperationMethod<
   input: DisassociateInstanceEventWindowRequest,
   output: DisassociateInstanceEventWindowResult,
   errors: [RequestLimitExceeded, DependencyViolation, MissingParameter],
+  operationName: "DisassociateInstanceEventWindow",
 }));
 export type DisassociateIpamByoasnError =
   | RequestLimitExceeded
@@ -90050,6 +90541,7 @@ export const disassociateIpamByoasn: API.OperationMethod<
   input: DisassociateIpamByoasnRequest,
   output: DisassociateIpamByoasnResult,
   errors: [RequestLimitExceeded, InvalidCidrNotFound],
+  operationName: "DisassociateIpamByoasn",
 }));
 export type DisassociateIpamResourceDiscoveryError =
   | RequestLimitExceeded
@@ -90072,6 +90564,7 @@ export const disassociateIpamResourceDiscovery: API.OperationMethod<
     InvalidIpamResourceDiscoveryAssociationIdMalformed,
     InvalidIpamResourceDiscoveryAssociationIdNotFound,
   ],
+  operationName: "DisassociateIpamResourceDiscovery",
 }));
 export type DisassociateNatGatewayAddressError =
   | RequestLimitExceeded
@@ -90105,6 +90598,7 @@ export const disassociateNatGatewayAddress: API.OperationMethod<
     NatGatewayMalformed,
     NatGatewayNotFound,
   ],
+  operationName: "DisassociateNatGatewayAddress",
 }));
 export type DisassociateRouteServerError =
   | RequestLimitExceeded
@@ -90133,6 +90627,7 @@ export const disassociateRouteServer: API.OperationMethod<
     InvalidVpcIDNotFound,
     MissingParameter,
   ],
+  operationName: "DisassociateRouteServer",
 }));
 export type DisassociateRouteTableError =
   | RequestLimitExceeded
@@ -90162,6 +90657,7 @@ export const disassociateRouteTable: API.OperationMethod<
     InvalidRouteTableIDNotFound,
     MissingParameter,
   ],
+  operationName: "DisassociateRouteTable",
 }));
 export type DisassociateSecurityGroupVpcError =
   | RequestLimitExceeded
@@ -90182,6 +90678,7 @@ export const disassociateSecurityGroupVpc: API.OperationMethod<
   input: DisassociateSecurityGroupVpcRequest,
   output: DisassociateSecurityGroupVpcResult,
   errors: [RequestLimitExceeded, InvalidGroupIdMalformed, MissingParameter],
+  operationName: "DisassociateSecurityGroupVpc",
 }));
 export type DisassociateSubnetCidrBlockError =
   | RequestLimitExceeded
@@ -90204,6 +90701,7 @@ export const disassociateSubnetCidrBlock: API.OperationMethod<
     InvalidSubnetCidrBlockAssociationIDNotFound,
     InvalidSubnetCidrBlockAssociationIdMalformed,
   ],
+  operationName: "DisassociateSubnetCidrBlock",
 }));
 export type DisassociateTransitGatewayMulticastDomainError =
   | RequestLimitExceeded
@@ -90226,6 +90724,7 @@ export const disassociateTransitGatewayMulticastDomain: API.OperationMethod<
     InvalidTransitGatewayMulticastDomainIdNotFound,
     MissingParameter,
   ],
+  operationName: "DisassociateTransitGatewayMulticastDomain",
 }));
 export type DisassociateTransitGatewayPolicyTableError =
   | RequestLimitExceeded
@@ -90250,6 +90749,7 @@ export const disassociateTransitGatewayPolicyTable: API.OperationMethod<
     InvalidTransitGatewayPolicyTableIdNotFound,
     MissingParameter,
   ],
+  operationName: "DisassociateTransitGatewayPolicyTable",
 }));
 export type DisassociateTransitGatewayRouteTableError =
   | RequestLimitExceeded
@@ -90268,6 +90768,7 @@ export const disassociateTransitGatewayRouteTable: API.OperationMethod<
   input: DisassociateTransitGatewayRouteTableRequest,
   output: DisassociateTransitGatewayRouteTableResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  operationName: "DisassociateTransitGatewayRouteTable",
 }));
 export type DisassociateTrunkInterfaceError =
   | RequestLimitExceeded
@@ -90285,6 +90786,7 @@ export const disassociateTrunkInterface: API.OperationMethod<
   input: DisassociateTrunkInterfaceRequest,
   output: DisassociateTrunkInterfaceResult,
   errors: [RequestLimitExceeded, OperationNotPermitted],
+  operationName: "DisassociateTrunkInterface",
 }));
 export type DisassociateVpcCidrBlockError =
   | RequestLimitExceeded
@@ -90317,6 +90819,7 @@ export const disassociateVpcCidrBlock: API.OperationMethod<
     InvalidVpcCidrBlockAssociationIdErrorNotFound,
     OperationNotPermitted,
   ],
+  operationName: "DisassociateVpcCidrBlock",
 }));
 export type EnableAddressTransferError =
   | RequestLimitExceeded
@@ -90334,6 +90837,7 @@ export const enableAddressTransfer: API.OperationMethod<
   input: EnableAddressTransferRequest,
   output: EnableAddressTransferResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "EnableAddressTransfer",
 }));
 export type EnableAllowedImagesSettingsError = CommonErrors;
 /**
@@ -90371,6 +90875,7 @@ export const enableAllowedImagesSettings: API.OperationMethod<
   input: EnableAllowedImagesSettingsRequest,
   output: EnableAllowedImagesSettingsResult,
   errors: [],
+  operationName: "EnableAllowedImagesSettings",
 }));
 export type EnableAwsNetworkPerformanceMetricSubscriptionError =
   | RequestLimitExceeded
@@ -90388,6 +90893,7 @@ export const enableAwsNetworkPerformanceMetricSubscription: API.OperationMethod<
   input: EnableAwsNetworkPerformanceMetricSubscriptionRequest,
   output: EnableAwsNetworkPerformanceMetricSubscriptionResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "EnableAwsNetworkPerformanceMetricSubscription",
 }));
 export type EnableCapacityManagerError = CommonErrors;
 /**
@@ -90403,6 +90909,7 @@ export const enableCapacityManager: API.OperationMethod<
   input: EnableCapacityManagerRequest,
   output: EnableCapacityManagerResult,
   errors: [],
+  operationName: "EnableCapacityManager",
 }));
 export type EnableEbsEncryptionByDefaultError = CommonErrors;
 /**
@@ -90429,6 +90936,7 @@ export const enableEbsEncryptionByDefault: API.OperationMethod<
   input: EnableEbsEncryptionByDefaultRequest,
   output: EnableEbsEncryptionByDefaultResult,
   errors: [],
+  operationName: "EnableEbsEncryptionByDefault",
 }));
 export type EnableFastLaunchError =
   | RequestLimitExceeded
@@ -90454,6 +90962,7 @@ export const enableFastLaunch: API.OperationMethod<
   input: EnableFastLaunchRequest,
   output: EnableFastLaunchResult,
   errors: [RequestLimitExceeded, InvalidRequest],
+  operationName: "EnableFastLaunch",
 }));
 export type EnableFastSnapshotRestoresError =
   | RequestLimitExceeded
@@ -90476,6 +90985,7 @@ export const enableFastSnapshotRestores: API.OperationMethod<
   input: EnableFastSnapshotRestoresRequest,
   output: EnableFastSnapshotRestoresResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "EnableFastSnapshotRestores",
 }));
 export type EnableImageError =
   | RequestLimitExceeded
@@ -90502,6 +91012,7 @@ export const enableImage: API.OperationMethod<
   input: EnableImageRequest,
   output: EnableImageResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  operationName: "EnableImage",
 }));
 export type EnableImageBlockPublicAccessError =
   | RequestLimitExceeded
@@ -90529,6 +91040,7 @@ export const enableImageBlockPublicAccess: API.OperationMethod<
   input: EnableImageBlockPublicAccessRequest,
   output: EnableImageBlockPublicAccessResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "EnableImageBlockPublicAccess",
 }));
 export type EnableImageDeprecationError =
   | RequestLimitExceeded
@@ -90549,6 +91061,7 @@ export const enableImageDeprecation: API.OperationMethod<
   input: EnableImageDeprecationRequest,
   output: EnableImageDeprecationResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "EnableImageDeprecation",
 }));
 export type EnableImageDeregistrationProtectionError =
   | RequestLimitExceeded
@@ -90572,6 +91085,7 @@ export const enableImageDeregistrationProtection: API.OperationMethod<
   input: EnableImageDeregistrationProtectionRequest,
   output: EnableImageDeregistrationProtectionResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  operationName: "EnableImageDeregistrationProtection",
 }));
 export type EnableInstanceSqlHaStandbyDetectionsError =
   | RequestLimitExceeded
@@ -90599,6 +91113,7 @@ export const enableInstanceSqlHaStandbyDetections: API.OperationMethod<
   input: EnableInstanceSqlHaStandbyDetectionsRequest,
   output: EnableInstanceSqlHaStandbyDetectionsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  operationName: "EnableInstanceSqlHaStandbyDetections",
 }));
 export type EnableIpamOrganizationAdminAccountError =
   | RequestLimitExceeded
@@ -90616,6 +91131,7 @@ export const enableIpamOrganizationAdminAccount: API.OperationMethod<
   input: EnableIpamOrganizationAdminAccountRequest,
   output: EnableIpamOrganizationAdminAccountResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "EnableIpamOrganizationAdminAccount",
 }));
 export type EnableIpamPolicyError =
   | RequestLimitExceeded
@@ -90642,6 +91158,7 @@ export const enableIpamPolicy: API.OperationMethod<
     InvalidIpamPolicyIdMalformed,
     InvalidIpamPolicyIdNotFound,
   ],
+  operationName: "EnableIpamPolicy",
 }));
 export type EnableReachabilityAnalyzerOrganizationSharingError = CommonErrors;
 /**
@@ -90661,6 +91178,7 @@ export const enableReachabilityAnalyzerOrganizationSharing: API.OperationMethod<
   input: EnableReachabilityAnalyzerOrganizationSharingRequest,
   output: EnableReachabilityAnalyzerOrganizationSharingResult,
   errors: [],
+  operationName: "EnableReachabilityAnalyzerOrganizationSharing",
 }));
 export type EnableRouteServerPropagationError =
   | RequestLimitExceeded
@@ -90682,6 +91200,7 @@ export const enableRouteServerPropagation: API.OperationMethod<
   input: EnableRouteServerPropagationRequest,
   output: EnableRouteServerPropagationResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  operationName: "EnableRouteServerPropagation",
 }));
 export type EnableSerialConsoleAccessError = CommonErrors;
 /**
@@ -90698,6 +91217,7 @@ export const enableSerialConsoleAccess: API.OperationMethod<
   input: EnableSerialConsoleAccessRequest,
   output: EnableSerialConsoleAccessResult,
   errors: [],
+  operationName: "EnableSerialConsoleAccess",
 }));
 export type EnableSnapshotBlockPublicAccessError =
   | RequestLimitExceeded
@@ -90732,6 +91252,7 @@ export const enableSnapshotBlockPublicAccess: API.OperationMethod<
   input: EnableSnapshotBlockPublicAccessRequest,
   output: EnableSnapshotBlockPublicAccessResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "EnableSnapshotBlockPublicAccess",
 }));
 export type EnableTransitGatewayRouteTablePropagationError =
   | RequestLimitExceeded
@@ -90750,6 +91271,7 @@ export const enableTransitGatewayRouteTablePropagation: API.OperationMethod<
   input: EnableTransitGatewayRouteTablePropagationRequest,
   output: EnableTransitGatewayRouteTablePropagationResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "EnableTransitGatewayRouteTablePropagation",
 }));
 export type EnableVgwRoutePropagationError =
   | RequestLimitExceeded
@@ -90768,6 +91290,7 @@ export const enableVgwRoutePropagation: API.OperationMethod<
   input: EnableVgwRoutePropagationRequest,
   output: EnableVgwRoutePropagationResponse,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  operationName: "EnableVgwRoutePropagation",
 }));
 export type EnableVolumeIOError = CommonErrors;
 /**
@@ -90783,6 +91306,7 @@ export const enableVolumeIO: API.OperationMethod<
   input: EnableVolumeIORequest,
   output: EnableVolumeIOResponse,
   errors: [],
+  operationName: "EnableVolumeIO",
 }));
 export type EnableVpcClassicLinkError =
   | RequestLimitExceeded
@@ -90808,6 +91332,7 @@ export const enableVpcClassicLink: API.OperationMethod<
   input: EnableVpcClassicLinkRequest,
   output: EnableVpcClassicLinkResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, InvalidVpcIdMalformed],
+  operationName: "EnableVpcClassicLink",
 }));
 export type EnableVpcClassicLinkDnsSupportError =
   | RequestLimitExceeded
@@ -90834,6 +91359,7 @@ export const enableVpcClassicLinkDnsSupport: API.OperationMethod<
   input: EnableVpcClassicLinkDnsSupportRequest,
   output: EnableVpcClassicLinkDnsSupportResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, MissingParameter],
+  operationName: "EnableVpcClassicLinkDnsSupport",
 }));
 export type ExportClientVpnClientCertificateRevocationListError =
   | RequestLimitExceeded
@@ -90851,6 +91377,7 @@ export const exportClientVpnClientCertificateRevocationList: API.OperationMethod
   input: ExportClientVpnClientCertificateRevocationListRequest,
   output: ExportClientVpnClientCertificateRevocationListResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  operationName: "ExportClientVpnClientCertificateRevocationList",
 }));
 export type ExportClientVpnClientConfigurationError =
   | RequestLimitExceeded
@@ -90870,6 +91397,7 @@ export const exportClientVpnClientConfiguration: API.OperationMethod<
   input: ExportClientVpnClientConfigurationRequest,
   output: ExportClientVpnClientConfigurationResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  operationName: "ExportClientVpnClientConfiguration",
 }));
 export type ExportImageError =
   | RequestLimitExceeded
@@ -90889,6 +91417,7 @@ export const exportImage: API.OperationMethod<
   input: ExportImageRequest,
   output: ExportImageResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "ExportImage",
 }));
 export type ExportTransitGatewayRoutesError =
   | RequestLimitExceeded
@@ -90911,6 +91440,7 @@ export const exportTransitGatewayRoutes: API.OperationMethod<
   input: ExportTransitGatewayRoutesRequest,
   output: ExportTransitGatewayRoutesResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  operationName: "ExportTransitGatewayRoutes",
 }));
 export type ExportVerifiedAccessInstanceClientConfigurationError =
   | RequestLimitExceeded
@@ -90928,6 +91458,7 @@ export const exportVerifiedAccessInstanceClientConfiguration: API.OperationMetho
   input: ExportVerifiedAccessInstanceClientConfigurationRequest,
   output: ExportVerifiedAccessInstanceClientConfigurationResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  operationName: "ExportVerifiedAccessInstanceClientConfiguration",
 }));
 export type GetActiveVpnTunnelStatusError =
   | RequestLimitExceeded
@@ -90945,6 +91476,7 @@ export const getActiveVpnTunnelStatus: API.OperationMethod<
   input: GetActiveVpnTunnelStatusRequest,
   output: GetActiveVpnTunnelStatusResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionIDNotFound],
+  operationName: "GetActiveVpnTunnelStatus",
 }));
 export type GetAllowedImagesSettingsError = CommonErrors;
 /**
@@ -90968,6 +91500,7 @@ export const getAllowedImagesSettings: API.OperationMethod<
   input: GetAllowedImagesSettingsRequest,
   output: GetAllowedImagesSettingsResult,
   errors: [],
+  operationName: "GetAllowedImagesSettings",
 }));
 export type GetAssociatedEnclaveCertificateIamRolesError =
   | RequestLimitExceeded
@@ -90993,6 +91526,7 @@ export const getAssociatedEnclaveCertificateIamRoles: API.OperationMethod<
     InvalidCertificateArnMalformed,
     UnauthorizedOperation,
   ],
+  operationName: "GetAssociatedEnclaveCertificateIamRoles",
 }));
 export type GetAssociatedIpv6PoolCidrsError =
   | RequestLimitExceeded
@@ -91025,6 +91559,7 @@ export const getAssociatedIpv6PoolCidrs: API.OperationMethod<
   input: GetAssociatedIpv6PoolCidrsRequest,
   output: GetAssociatedIpv6PoolCidrsResult,
   errors: [RequestLimitExceeded, InvalidIpv6PoolIDMalformed],
+  operationName: "GetAssociatedIpv6PoolCidrs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -91063,6 +91598,7 @@ export const getAwsNetworkPerformanceData: API.OperationMethod<
   input: GetAwsNetworkPerformanceDataRequest,
   output: GetAwsNetworkPerformanceDataResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "GetAwsNetworkPerformanceData",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -91083,6 +91619,7 @@ export const getCapacityManagerAttributes: API.OperationMethod<
   input: GetCapacityManagerAttributesRequest,
   output: GetCapacityManagerAttributesResult,
   errors: [],
+  operationName: "GetCapacityManagerAttributes",
 }));
 export type GetCapacityManagerMetricDataError =
   | RequestLimitExceeded
@@ -91116,6 +91653,7 @@ export const getCapacityManagerMetricData: API.OperationMethod<
   input: GetCapacityManagerMetricDataRequest,
   output: GetCapacityManagerMetricDataResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "GetCapacityManagerMetricData",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -91155,6 +91693,7 @@ export const getCapacityManagerMetricDimensions: API.OperationMethod<
   input: GetCapacityManagerMetricDimensionsRequest,
   output: GetCapacityManagerMetricDimensionsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "GetCapacityManagerMetricDimensions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -91190,6 +91729,7 @@ export const getCapacityManagerMonitoredTagKeys: API.OperationMethod<
   input: GetCapacityManagerMonitoredTagKeysRequest,
   output: GetCapacityManagerMonitoredTagKeysResult,
   errors: [],
+  operationName: "GetCapacityManagerMonitoredTagKeys",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -91215,6 +91755,7 @@ export const getCapacityReservationUsage: API.OperationMethod<
   input: GetCapacityReservationUsageRequest,
   output: GetCapacityReservationUsageResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  operationName: "GetCapacityReservationUsage",
 }));
 export type GetCoipPoolUsageError =
   | RequestLimitExceeded
@@ -91232,6 +91773,7 @@ export const getCoipPoolUsage: API.OperationMethod<
   input: GetCoipPoolUsageRequest,
   output: GetCoipPoolUsageResult,
   errors: [RequestLimitExceeded, InvalidPoolIDMalformed],
+  operationName: "GetCoipPoolUsage",
 }));
 export type GetConsoleOutputError =
   | RequestLimitExceeded
@@ -91260,6 +91802,7 @@ export const getConsoleOutput: API.OperationMethod<
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
   ],
+  operationName: "GetConsoleOutput",
 }));
 export type GetConsoleScreenshotError =
   | RequestLimitExceeded
@@ -91287,6 +91830,7 @@ export const getConsoleScreenshot: API.OperationMethod<
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
   ],
+  operationName: "GetConsoleScreenshot",
 }));
 export type GetDeclarativePoliciesReportSummaryError =
   | RequestLimitExceeded
@@ -91314,6 +91858,7 @@ export const getDeclarativePoliciesReportSummary: API.OperationMethod<
   input: GetDeclarativePoliciesReportSummaryRequest,
   output: GetDeclarativePoliciesReportSummaryResult,
   errors: [RequestLimitExceeded, InvalidDeclarativePoliciesReportIdMalformed],
+  operationName: "GetDeclarativePoliciesReportSummary",
 }));
 export type GetDefaultCreditSpecificationError =
   | RequestLimitExceeded
@@ -91335,6 +91880,7 @@ export const getDefaultCreditSpecification: API.OperationMethod<
   input: GetDefaultCreditSpecificationRequest,
   output: GetDefaultCreditSpecificationResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "GetDefaultCreditSpecification",
 }));
 export type GetEbsDefaultKmsKeyIdError = CommonErrors;
 /**
@@ -91352,6 +91898,7 @@ export const getEbsDefaultKmsKeyId: API.OperationMethod<
   input: GetEbsDefaultKmsKeyIdRequest,
   output: GetEbsDefaultKmsKeyIdResult,
   errors: [],
+  operationName: "GetEbsDefaultKmsKeyId",
 }));
 export type GetEbsEncryptionByDefaultError = CommonErrors;
 /**
@@ -91370,6 +91917,7 @@ export const getEbsEncryptionByDefault: API.OperationMethod<
   input: GetEbsEncryptionByDefaultRequest,
   output: GetEbsEncryptionByDefaultResult,
   errors: [],
+  operationName: "GetEbsEncryptionByDefault",
 }));
 export type GetEnabledIpamPolicyError = CommonErrors;
 /**
@@ -91386,6 +91934,7 @@ export const getEnabledIpamPolicy: API.OperationMethod<
   input: GetEnabledIpamPolicyRequest,
   output: GetEnabledIpamPolicyResult,
   errors: [],
+  operationName: "GetEnabledIpamPolicy",
 }));
 export type GetFlowLogsIntegrationTemplateError = CommonErrors;
 /**
@@ -91414,6 +91963,7 @@ export const getFlowLogsIntegrationTemplate: API.OperationMethod<
   input: GetFlowLogsIntegrationTemplateRequest,
   output: GetFlowLogsIntegrationTemplateResult,
   errors: [],
+  operationName: "GetFlowLogsIntegrationTemplate",
 }));
 export type GetGroupsForCapacityReservationError =
   | RequestLimitExceeded
@@ -91446,6 +91996,7 @@ export const getGroupsForCapacityReservation: API.OperationMethod<
   input: GetGroupsForCapacityReservationRequest,
   output: GetGroupsForCapacityReservationResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  operationName: "GetGroupsForCapacityReservation",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -91471,6 +92022,7 @@ export const getHostReservationPurchasePreview: API.OperationMethod<
   input: GetHostReservationPurchasePreviewRequest,
   output: GetHostReservationPurchasePreviewResult,
   errors: [],
+  operationName: "GetHostReservationPurchasePreview",
 }));
 export type GetImageAncestryError =
   | RequestLimitExceeded
@@ -91490,6 +92042,7 @@ export const getImageAncestry: API.OperationMethod<
   input: GetImageAncestryRequest,
   output: GetImageAncestryResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  operationName: "GetImageAncestry",
 }));
 export type GetImageBlockPublicAccessStateError = CommonErrors;
 /**
@@ -91508,6 +92061,7 @@ export const getImageBlockPublicAccessState: API.OperationMethod<
   input: GetImageBlockPublicAccessStateRequest,
   output: GetImageBlockPublicAccessStateResult,
   errors: [],
+  operationName: "GetImageBlockPublicAccessState",
 }));
 export type GetInstanceMetadataDefaultsError = CommonErrors;
 /**
@@ -91527,6 +92081,7 @@ export const getInstanceMetadataDefaults: API.OperationMethod<
   input: GetInstanceMetadataDefaultsRequest,
   output: GetInstanceMetadataDefaultsResult,
   errors: [],
+  operationName: "GetInstanceMetadataDefaults",
 }));
 export type GetInstanceTpmEkPubError =
   | RequestLimitExceeded
@@ -91545,6 +92100,7 @@ export const getInstanceTpmEkPub: API.OperationMethod<
   input: GetInstanceTpmEkPubRequest,
   output: GetInstanceTpmEkPubResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "GetInstanceTpmEkPub",
 }));
 export type GetInstanceTypesFromInstanceRequirementsError =
   | RequestLimitExceeded
@@ -91588,6 +92144,7 @@ export const getInstanceTypesFromInstanceRequirements: API.OperationMethod<
   input: GetInstanceTypesFromInstanceRequirementsRequest,
   output: GetInstanceTypesFromInstanceRequirementsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "GetInstanceTypesFromInstanceRequirements",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -91623,6 +92180,7 @@ export const getInstanceUefiData: API.OperationMethod<
   input: GetInstanceUefiDataRequest,
   output: GetInstanceUefiDataResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  operationName: "GetInstanceUefiData",
 }));
 export type GetIpamAddressHistoryError =
   | RequestLimitExceeded
@@ -91655,6 +92213,7 @@ export const getIpamAddressHistory: API.OperationMethod<
   input: GetIpamAddressHistoryRequest,
   output: GetIpamAddressHistoryResult,
   errors: [RequestLimitExceeded, InvalidIpamScopeIdNotFound],
+  operationName: "GetIpamAddressHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -91698,6 +92257,7 @@ export const getIpamDiscoveredAccounts: API.OperationMethod<
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
   ],
+  operationName: "GetIpamDiscoveredAccounts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -91726,6 +92286,7 @@ export const getIpamDiscoveredPublicAddresses: API.OperationMethod<
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
   ],
+  operationName: "GetIpamDiscoveredPublicAddresses",
 }));
 export type GetIpamDiscoveredResourceCidrsError =
   | RequestLimitExceeded
@@ -91763,6 +92324,7 @@ export const getIpamDiscoveredResourceCidrs: API.OperationMethod<
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
   ],
+  operationName: "GetIpamDiscoveredResourceCidrs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -91795,6 +92357,7 @@ export const getIpamPolicyAllocationRules: API.OperationMethod<
     InvalidIpamPolicyIdMalformed,
     InvalidIpamPolicyIdNotFound,
   ],
+  operationName: "GetIpamPolicyAllocationRules",
 }));
 export type GetIpamPolicyOrganizationTargetsError =
   | RequestLimitExceeded
@@ -91821,6 +92384,7 @@ export const getIpamPolicyOrganizationTargets: API.OperationMethod<
     InvalidIpamPolicyIdMalformed,
     InvalidIpamPolicyIdNotFound,
   ],
+  operationName: "GetIpamPolicyOrganizationTargets",
 }));
 export type GetIpamPoolAllocationsError =
   | RequestLimitExceeded
@@ -91856,6 +92420,7 @@ export const getIpamPoolAllocations: API.OperationMethod<
   input: GetIpamPoolAllocationsRequest,
   output: GetIpamPoolAllocationsResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
+  operationName: "GetIpamPoolAllocations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -91895,6 +92460,7 @@ export const getIpamPoolCidrs: API.OperationMethod<
   input: GetIpamPoolCidrsRequest,
   output: GetIpamPoolCidrsResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
+  operationName: "GetIpamPoolCidrs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -91938,6 +92504,7 @@ export const getIpamPrefixListResolverRules: API.OperationMethod<
     InvalidIpamPrefixListResolverIdMalformed,
     InvalidIpamPrefixListResolverIdNotFound,
   ],
+  operationName: "GetIpamPrefixListResolverRules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -91976,6 +92543,7 @@ export const getIpamPrefixListResolverVersionEntries: API.OperationMethod<
   input: GetIpamPrefixListResolverVersionEntriesRequest,
   output: GetIpamPrefixListResolverVersionEntriesResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "GetIpamPrefixListResolverVersionEntries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -92046,6 +92614,7 @@ export const getIpamPrefixListResolverVersions: API.OperationMethod<
     InvalidIpamPrefixListResolverIdMalformed,
     InvalidIpamPrefixListResolverIdNotFound,
   ],
+  operationName: "GetIpamPrefixListResolverVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -92089,6 +92658,7 @@ export const getIpamResourceCidrs: API.OperationMethod<
     InvalidIpamPoolIdNotFound,
     InvalidIpamScopeIdNotFound,
   ],
+  operationName: "GetIpamResourceCidrs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -92120,6 +92690,7 @@ export const getLaunchTemplateData: API.OperationMethod<
   input: GetLaunchTemplateDataRequest,
   output: GetLaunchTemplateDataResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  operationName: "GetLaunchTemplateData",
 }));
 export type GetManagedPrefixListAssociationsError =
   | RequestLimitExceeded
@@ -92157,6 +92728,7 @@ export const getManagedPrefixListAssociations: API.OperationMethod<
     InvalidPrefixListIDNotFound,
     InvalidPrefixListIdMalformed,
   ],
+  operationName: "GetManagedPrefixListAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -92202,6 +92774,7 @@ export const getManagedPrefixListEntries: API.OperationMethod<
     InvalidPrefixListIdMalformed,
     ParseError,
   ],
+  operationName: "GetManagedPrefixListEntries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -92223,6 +92796,7 @@ export const getManagedResourceVisibility: API.OperationMethod<
   input: GetManagedResourceVisibilityRequest,
   output: GetManagedResourceVisibilityResult,
   errors: [],
+  operationName: "GetManagedResourceVisibility",
 }));
 export type GetNetworkInsightsAccessScopeAnalysisFindingsError =
   | RequestLimitExceeded
@@ -92255,6 +92829,7 @@ export const getNetworkInsightsAccessScopeAnalysisFindings: API.OperationMethod<
   input: GetNetworkInsightsAccessScopeAnalysisFindingsRequest,
   output: GetNetworkInsightsAccessScopeAnalysisFindingsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "GetNetworkInsightsAccessScopeAnalysisFindings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -92278,6 +92853,7 @@ export const getNetworkInsightsAccessScopeContent: API.OperationMethod<
   input: GetNetworkInsightsAccessScopeContentRequest,
   output: GetNetworkInsightsAccessScopeContentResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "GetNetworkInsightsAccessScopeContent",
 }));
 export type GetPasswordDataError =
   | RequestLimitExceeded
@@ -92316,6 +92892,7 @@ export const getPasswordData: API.OperationMethod<
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
   ],
+  operationName: "GetPasswordData",
 }));
 export type GetReservedInstancesExchangeQuoteError =
   | RequestLimitExceeded
@@ -92335,6 +92912,7 @@ export const getReservedInstancesExchangeQuote: API.OperationMethod<
   input: GetReservedInstancesExchangeQuoteRequest,
   output: GetReservedInstancesExchangeQuoteResult,
   errors: [RequestLimitExceeded, InvalidReservedInstancesIDNotFound],
+  operationName: "GetReservedInstancesExchangeQuote",
 }));
 export type GetRouteServerAssociationsError =
   | RequestLimitExceeded
@@ -92356,6 +92934,7 @@ export const getRouteServerAssociations: API.OperationMethod<
   input: GetRouteServerAssociationsRequest,
   output: GetRouteServerAssociationsResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  operationName: "GetRouteServerAssociations",
 }));
 export type GetRouteServerPropagationsError =
   | RequestLimitExceeded
@@ -92388,6 +92967,7 @@ export const getRouteServerPropagations: API.OperationMethod<
   input: GetRouteServerPropagationsRequest,
   output: GetRouteServerPropagationsResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  operationName: "GetRouteServerPropagations",
 }));
 export type GetRouteServerRoutingDatabaseError =
   | RequestLimitExceeded
@@ -92418,6 +92998,7 @@ export const getRouteServerRoutingDatabase: API.OperationMethod<
   input: GetRouteServerRoutingDatabaseRequest,
   output: GetRouteServerRoutingDatabaseResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  operationName: "GetRouteServerRoutingDatabase",
 }));
 export type GetSecurityGroupsForVpcError =
   | RequestLimitExceeded
@@ -92451,6 +93032,7 @@ export const getSecurityGroupsForVpc: API.OperationMethod<
   input: GetSecurityGroupsForVpcRequest,
   output: GetSecurityGroupsForVpcResult,
   errors: [RequestLimitExceeded, InvalidVpcIdMalformed, ParseError],
+  operationName: "GetSecurityGroupsForVpc",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -92474,6 +93056,7 @@ export const getSerialConsoleAccessStatus: API.OperationMethod<
   input: GetSerialConsoleAccessStatusRequest,
   output: GetSerialConsoleAccessStatusResult,
   errors: [],
+  operationName: "GetSerialConsoleAccessStatus",
 }));
 export type GetSnapshotBlockPublicAccessStateError = CommonErrors;
 /**
@@ -92492,6 +93075,7 @@ export const getSnapshotBlockPublicAccessState: API.OperationMethod<
   input: GetSnapshotBlockPublicAccessStateRequest,
   output: GetSnapshotBlockPublicAccessStateResult,
   errors: [],
+  operationName: "GetSnapshotBlockPublicAccessState",
 }));
 export type GetSpotPlacementScoresError = CommonErrors;
 /**
@@ -92530,6 +93114,7 @@ export const getSpotPlacementScores: API.OperationMethod<
   input: GetSpotPlacementScoresRequest,
   output: GetSpotPlacementScoresResult,
   errors: [],
+  operationName: "GetSpotPlacementScores",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -92554,6 +93139,7 @@ export const getSubnetCidrReservations: API.OperationMethod<
   input: GetSubnetCidrReservationsRequest,
   output: GetSubnetCidrReservationsResult,
   errors: [RequestLimitExceeded, InvalidSubnetIDNotFound, MissingParameter],
+  operationName: "GetSubnetCidrReservations",
 }));
 export type GetTransitGatewayAttachmentPropagationsError =
   | RequestLimitExceeded
@@ -92586,6 +93172,7 @@ export const getTransitGatewayAttachmentPropagations: API.OperationMethod<
   input: GetTransitGatewayAttachmentPropagationsRequest,
   output: GetTransitGatewayAttachmentPropagationsResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  operationName: "GetTransitGatewayAttachmentPropagations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -92614,6 +93201,7 @@ export const getTransitGatewayMeteringPolicyEntries: API.OperationMethod<
     InvalidTransitGatewayMeteringPolicyIdNotFound,
     InvalidTransitGatewayMeteringPolicyIdMalformedException,
   ],
+  operationName: "GetTransitGatewayMeteringPolicyEntries",
 }));
 export type GetTransitGatewayMulticastDomainAssociationsError =
   | RequestLimitExceeded
@@ -92653,6 +93241,7 @@ export const getTransitGatewayMulticastDomainAssociations: API.OperationMethod<
     InvalidTransitGatewayMulticastDomainIdNotFound,
     MissingParameter,
   ],
+  operationName: "GetTransitGatewayMulticastDomainAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -92696,6 +93285,7 @@ export const getTransitGatewayPolicyTableAssociations: API.OperationMethod<
     InvalidTransitGatewayPolicyTableIdMalformed,
     InvalidTransitGatewayPolicyTableIdNotFound,
   ],
+  operationName: "GetTransitGatewayPolicyTableAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -92724,6 +93314,7 @@ export const getTransitGatewayPolicyTableEntries: API.OperationMethod<
     InvalidTransitGatewayPolicyTableIdMalformed,
     InvalidTransitGatewayPolicyTableIdNotFound,
   ],
+  operationName: "GetTransitGatewayPolicyTableEntries",
 }));
 export type GetTransitGatewayPrefixListReferencesError =
   | RequestLimitExceeded
@@ -92757,6 +93348,7 @@ export const getTransitGatewayPrefixListReferences: API.OperationMethod<
   input: GetTransitGatewayPrefixListReferencesRequest,
   output: GetTransitGatewayPrefixListReferencesResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  operationName: "GetTransitGatewayPrefixListReferences",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -92795,6 +93387,7 @@ export const getTransitGatewayRouteTableAssociations: API.OperationMethod<
   input: GetTransitGatewayRouteTableAssociationsRequest,
   output: GetTransitGatewayRouteTableAssociationsResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  operationName: "GetTransitGatewayRouteTableAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -92833,6 +93426,7 @@ export const getTransitGatewayRouteTablePropagations: API.OperationMethod<
   input: GetTransitGatewayRouteTablePropagationsRequest,
   output: GetTransitGatewayRouteTablePropagationsResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  operationName: "GetTransitGatewayRouteTablePropagations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -92861,6 +93455,7 @@ export const getVerifiedAccessEndpointPolicy: API.OperationMethod<
     InvalidParameterValue,
     InvalidVerifiedAccessEndpointIdNotFound,
   ],
+  operationName: "GetVerifiedAccessEndpointPolicy",
 }));
 export type GetVerifiedAccessEndpointTargetsError =
   | RequestLimitExceeded
@@ -92878,6 +93473,7 @@ export const getVerifiedAccessEndpointTargets: API.OperationMethod<
   input: GetVerifiedAccessEndpointTargetsRequest,
   output: GetVerifiedAccessEndpointTargetsResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessEndpointIdNotFound],
+  operationName: "GetVerifiedAccessEndpointTargets",
 }));
 export type GetVerifiedAccessGroupPolicyError =
   | RequestLimitExceeded
@@ -92895,6 +93491,7 @@ export const getVerifiedAccessGroupPolicy: API.OperationMethod<
   input: GetVerifiedAccessGroupPolicyRequest,
   output: GetVerifiedAccessGroupPolicyResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessGroupIdNotFound],
+  operationName: "GetVerifiedAccessGroupPolicy",
 }));
 export type GetVpcResourcesBlockingEncryptionEnforcementError =
   | RequestLimitExceeded
@@ -92914,6 +93511,7 @@ export const getVpcResourcesBlockingEncryptionEnforcement: API.OperationMethod<
   input: GetVpcResourcesBlockingEncryptionEnforcementRequest,
   output: GetVpcResourcesBlockingEncryptionEnforcementResult,
   errors: [RequestLimitExceeded, InvalidVpcIdMalformed],
+  operationName: "GetVpcResourcesBlockingEncryptionEnforcement",
 }));
 export type GetVpnConnectionDeviceSampleConfigurationError =
   | RequestLimitExceeded
@@ -92932,6 +93530,7 @@ export const getVpnConnectionDeviceSampleConfiguration: API.OperationMethod<
   input: GetVpnConnectionDeviceSampleConfigurationRequest,
   output: GetVpnConnectionDeviceSampleConfigurationResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionDeviceTypeIdNotFound],
+  operationName: "GetVpnConnectionDeviceSampleConfiguration",
 }));
 export type GetVpnConnectionDeviceTypesError = CommonErrors;
 /**
@@ -92964,6 +93563,7 @@ export const getVpnConnectionDeviceTypes: API.OperationMethod<
   input: GetVpnConnectionDeviceTypesRequest,
   output: GetVpnConnectionDeviceTypesResult,
   errors: [],
+  operationName: "GetVpnConnectionDeviceTypes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -92987,6 +93587,7 @@ export const getVpnTunnelReplacementStatus: API.OperationMethod<
   input: GetVpnTunnelReplacementStatusRequest,
   output: GetVpnTunnelReplacementStatusResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionId],
+  operationName: "GetVpnTunnelReplacementStatus",
 }));
 export type ImportClientVpnClientCertificateRevocationListError =
   | RequestLimitExceeded
@@ -93006,6 +93607,7 @@ export const importClientVpnClientCertificateRevocationList: API.OperationMethod
   input: ImportClientVpnClientCertificateRevocationListRequest,
   output: ImportClientVpnClientCertificateRevocationListResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  operationName: "ImportClientVpnClientCertificateRevocationList",
 }));
 export type ImportImageError =
   | RequestLimitExceeded
@@ -93037,6 +93639,7 @@ export const importImage: API.OperationMethod<
   input: ImportImageRequest,
   output: ImportImageResult,
   errors: [RequestLimitExceeded, MissingRequiredParameter],
+  operationName: "ImportImage",
 }));
 export type ImportInstanceError =
   | RequestLimitExceeded
@@ -93067,6 +93670,7 @@ export const importInstance: API.OperationMethod<
   input: ImportInstanceRequest,
   output: ImportInstanceResult,
   errors: [RequestLimitExceeded, InvalidParameter],
+  operationName: "ImportInstance",
 }));
 export type ImportKeyPairError =
   | RequestLimitExceeded
@@ -93087,6 +93691,7 @@ export const importKeyPair: API.OperationMethod<
   input: ImportKeyPairRequest,
   output: ImportKeyPairResult,
   errors: [RequestLimitExceeded, InvalidKeyPairDuplicate],
+  operationName: "ImportKeyPair",
 }));
 export type ImportSnapshotError =
   | RequestLimitExceeded
@@ -93107,6 +93712,7 @@ export const importSnapshot: API.OperationMethod<
   input: ImportSnapshotRequest,
   output: ImportSnapshotResult,
   errors: [RequestLimitExceeded, InvalidParameter],
+  operationName: "ImportSnapshot",
 }));
 export type ImportVolumeError = CommonErrors;
 /**
@@ -93129,6 +93735,7 @@ export const importVolume: API.OperationMethod<
   input: ImportVolumeRequest,
   output: ImportVolumeResult,
   errors: [],
+  operationName: "ImportVolume",
 }));
 export type ListImagesInRecycleBinError =
   | RequestLimitExceeded
@@ -93163,6 +93770,7 @@ export const listImagesInRecycleBin: API.OperationMethod<
   input: ListImagesInRecycleBinRequest,
   output: ListImagesInRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidAMIIDNotFound],
+  operationName: "ListImagesInRecycleBin",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -93201,6 +93809,7 @@ export const listSnapshotsInRecycleBin: API.OperationMethod<
   input: ListSnapshotsInRecycleBinRequest,
   output: ListSnapshotsInRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidSnapshotIDMalformed],
+  operationName: "ListSnapshotsInRecycleBin",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -93224,6 +93833,7 @@ export const listVolumesInRecycleBin: API.OperationMethod<
   input: ListVolumesInRecycleBinRequest,
   output: ListVolumesInRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
+  operationName: "ListVolumesInRecycleBin",
 }));
 export type LockSnapshotError =
   | RequestLimitExceeded
@@ -93255,6 +93865,7 @@ export const lockSnapshot: API.OperationMethod<
   input: LockSnapshotRequest,
   output: LockSnapshotResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "LockSnapshot",
 }));
 export type ModifyAddressAttributeError =
   | RequestLimitExceeded
@@ -93277,6 +93888,7 @@ export const modifyAddressAttribute: API.OperationMethod<
     InvalidAllocationIDNotFound,
     InvalidElasticIpIDNotFound,
   ],
+  operationName: "ModifyAddressAttribute",
 }));
 export type ModifyAvailabilityZoneGroupError =
   | RequestLimitExceeded
@@ -93294,6 +93906,7 @@ export const modifyAvailabilityZoneGroup: API.OperationMethod<
   input: ModifyAvailabilityZoneGroupRequest,
   output: ModifyAvailabilityZoneGroupResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "ModifyAvailabilityZoneGroup",
 }));
 export type ModifyCapacityReservationError =
   | RequestLimitExceeded
@@ -93336,6 +93949,7 @@ export const modifyCapacityReservation: API.OperationMethod<
   input: ModifyCapacityReservationRequest,
   output: ModifyCapacityReservationResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  operationName: "ModifyCapacityReservation",
 }));
 export type ModifyCapacityReservationFleetError =
   | RequestLimitExceeded
@@ -93359,6 +93973,7 @@ export const modifyCapacityReservationFleet: API.OperationMethod<
   input: ModifyCapacityReservationFleetRequest,
   output: ModifyCapacityReservationFleetResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationFleetIdMalformed],
+  operationName: "ModifyCapacityReservationFleet",
 }));
 export type ModifyClientVpnEndpointError =
   | RequestLimitExceeded
@@ -93376,6 +93991,7 @@ export const modifyClientVpnEndpoint: API.OperationMethod<
   input: ModifyClientVpnEndpointRequest,
   output: ModifyClientVpnEndpointResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  operationName: "ModifyClientVpnEndpoint",
 }));
 export type ModifyDefaultCreditSpecificationError =
   | RequestLimitExceeded
@@ -93407,6 +94023,7 @@ export const modifyDefaultCreditSpecification: API.OperationMethod<
   input: ModifyDefaultCreditSpecificationRequest,
   output: ModifyDefaultCreditSpecificationResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "ModifyDefaultCreditSpecification",
 }));
 export type ModifyEbsDefaultKmsKeyIdError =
   | RequestLimitExceeded
@@ -93434,6 +94051,7 @@ export const modifyEbsDefaultKmsKeyId: API.OperationMethod<
   input: ModifyEbsDefaultKmsKeyIdRequest,
   output: ModifyEbsDefaultKmsKeyIdResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "ModifyEbsDefaultKmsKeyId",
 }));
 export type ModifyFleetError =
   | RequestLimitExceeded
@@ -93477,6 +94095,7 @@ export const modifyFleet: API.OperationMethod<
   input: ModifyFleetRequest,
   output: ModifyFleetResult,
   errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
+  operationName: "ModifyFleet",
 }));
 export type ModifyFpgaImageAttributeError =
   | RequestLimitExceeded
@@ -93499,6 +94118,7 @@ export const modifyFpgaImageAttribute: API.OperationMethod<
     InvalidFpgaImageIDMalformed,
     InvalidFpgaImageIDNotFound,
   ],
+  operationName: "ModifyFpgaImageAttribute",
 }));
 export type ModifyHostsError = CommonErrors;
 /**
@@ -93522,6 +94142,7 @@ export const modifyHosts: API.OperationMethod<
   input: ModifyHostsRequest,
   output: ModifyHostsResult,
   errors: [],
+  operationName: "ModifyHosts",
 }));
 export type ModifyIdentityIdFormatError = CommonErrors;
 /**
@@ -93561,6 +94182,7 @@ export const modifyIdentityIdFormat: API.OperationMethod<
   input: ModifyIdentityIdFormatRequest,
   output: ModifyIdentityIdFormatResponse,
   errors: [],
+  operationName: "ModifyIdentityIdFormat",
 }));
 export type ModifyIdFormatError = CommonErrors;
 /**
@@ -93601,6 +94223,7 @@ export const modifyIdFormat: API.OperationMethod<
   input: ModifyIdFormatRequest,
   output: ModifyIdFormatResponse,
   errors: [],
+  operationName: "ModifyIdFormat",
 }));
 export type ModifyImageAttributeError =
   | RequestLimitExceeded
@@ -93635,6 +94258,7 @@ export const modifyImageAttribute: API.OperationMethod<
     InvalidAMIIDNotFound,
     InvalidParameterCombination,
   ],
+  operationName: "ModifyImageAttribute",
 }));
 export type ModifyInstanceAttributeError =
   | RequestLimitExceeded
@@ -93668,6 +94292,7 @@ export const modifyInstanceAttribute: API.OperationMethod<
     InvalidInstanceIDNotFound,
     InvalidParameterValue,
   ],
+  operationName: "ModifyInstanceAttribute",
 }));
 export type ModifyInstanceCapacityReservationAttributesError =
   | RequestLimitExceeded
@@ -93688,6 +94313,7 @@ export const modifyInstanceCapacityReservationAttributes: API.OperationMethod<
   input: ModifyInstanceCapacityReservationAttributesRequest,
   output: ModifyInstanceCapacityReservationAttributesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "ModifyInstanceCapacityReservationAttributes",
 }));
 export type ModifyInstanceConnectEndpointError =
   | RequestLimitExceeded
@@ -93714,6 +94340,7 @@ export const modifyInstanceConnectEndpoint: API.OperationMethod<
     InvalidInstanceConnectEndpointIdMalformed,
     InvalidInstanceConnectEndpointIdNotFound,
   ],
+  operationName: "ModifyInstanceConnectEndpoint",
 }));
 export type ModifyInstanceCpuOptionsError =
   | RequestLimitExceeded
@@ -93740,6 +94367,7 @@ export const modifyInstanceCpuOptions: API.OperationMethod<
   input: ModifyInstanceCpuOptionsRequest,
   output: ModifyInstanceCpuOptionsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  operationName: "ModifyInstanceCpuOptions",
 }));
 export type ModifyInstanceCreditSpecificationError = CommonErrors;
 /**
@@ -93759,6 +94387,7 @@ export const modifyInstanceCreditSpecification: API.OperationMethod<
   input: ModifyInstanceCreditSpecificationRequest,
   output: ModifyInstanceCreditSpecificationResult,
   errors: [],
+  operationName: "ModifyInstanceCreditSpecification",
 }));
 export type ModifyInstanceEventStartTimeError =
   | RequestLimitExceeded
@@ -93776,6 +94405,7 @@ export const modifyInstanceEventStartTime: API.OperationMethod<
   input: ModifyInstanceEventStartTimeRequest,
   output: ModifyInstanceEventStartTimeResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "ModifyInstanceEventStartTime",
 }));
 export type ModifyInstanceEventWindowError =
   | RequestLimitExceeded
@@ -93809,6 +94439,7 @@ export const modifyInstanceEventWindow: API.OperationMethod<
     InvalidInstanceEventWindowIDNotFound,
     InvalidInstanceEventWindowIdMalformed,
   ],
+  operationName: "ModifyInstanceEventWindow",
 }));
 export type ModifyInstanceMaintenanceOptionsError =
   | RequestLimitExceeded
@@ -93832,6 +94463,7 @@ export const modifyInstanceMaintenanceOptions: API.OperationMethod<
   input: ModifyInstanceMaintenanceOptionsRequest,
   output: ModifyInstanceMaintenanceOptionsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  operationName: "ModifyInstanceMaintenanceOptions",
 }));
 export type ModifyInstanceMetadataDefaultsError =
   | RequestLimitExceeded
@@ -93857,6 +94489,7 @@ export const modifyInstanceMetadataDefaults: API.OperationMethod<
   input: ModifyInstanceMetadataDefaultsRequest,
   output: ModifyInstanceMetadataDefaultsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "ModifyInstanceMetadataDefaults",
 }));
 export type ModifyInstanceMetadataOptionsError =
   | RequestLimitExceeded
@@ -93880,6 +94513,7 @@ export const modifyInstanceMetadataOptions: API.OperationMethod<
   input: ModifyInstanceMetadataOptionsRequest,
   output: ModifyInstanceMetadataOptionsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  operationName: "ModifyInstanceMetadataOptions",
 }));
 export type ModifyInstanceNetworkPerformanceOptionsError =
   | RequestLimitExceeded
@@ -93898,6 +94532,7 @@ export const modifyInstanceNetworkPerformanceOptions: API.OperationMethod<
   input: ModifyInstanceNetworkPerformanceRequest,
   output: ModifyInstanceNetworkPerformanceResult,
   errors: [RequestLimitExceeded, InvalidAction],
+  operationName: "ModifyInstanceNetworkPerformanceOptions",
 }));
 export type ModifyInstancePlacementError =
   | RequestLimitExceeded
@@ -93936,6 +94571,7 @@ export const modifyInstancePlacement: API.OperationMethod<
   input: ModifyInstancePlacementRequest,
   output: ModifyInstancePlacementResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  operationName: "ModifyInstancePlacement",
 }));
 export type ModifyIpamError =
   | RequestLimitExceeded
@@ -93953,6 +94589,7 @@ export const modifyIpam: API.OperationMethod<
   input: ModifyIpamRequest,
   output: ModifyIpamResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
+  operationName: "ModifyIpam",
 }));
 export type ModifyIpamPolicyAllocationRulesError =
   | RequestLimitExceeded
@@ -93974,6 +94611,7 @@ export const modifyIpamPolicyAllocationRules: API.OperationMethod<
   input: ModifyIpamPolicyAllocationRulesRequest,
   output: ModifyIpamPolicyAllocationRulesResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "ModifyIpamPolicyAllocationRules",
 }));
 export type ModifyIpamPoolError =
   | RequestLimitExceeded
@@ -93993,6 +94631,7 @@ export const modifyIpamPool: API.OperationMethod<
   input: ModifyIpamPoolRequest,
   output: ModifyIpamPoolResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
+  operationName: "ModifyIpamPool",
 }));
 export type ModifyIpamPoolAllocationError = CommonErrors;
 /**
@@ -94007,6 +94646,7 @@ export const modifyIpamPoolAllocation: API.OperationMethod<
   input: ModifyIpamPoolAllocationRequest,
   output: ModifyIpamPoolAllocationResult,
   errors: [],
+  operationName: "ModifyIpamPoolAllocation",
 }));
 export type ModifyIpamPrefixListResolverError =
   | RequestLimitExceeded
@@ -94029,6 +94669,7 @@ export const modifyIpamPrefixListResolver: API.OperationMethod<
     InvalidIpamPrefixListResolverIdMalformed,
     InvalidIpamPrefixListResolverIdNotFound,
   ],
+  operationName: "ModifyIpamPrefixListResolver",
 }));
 export type ModifyIpamPrefixListResolverTargetError =
   | RequestLimitExceeded
@@ -94049,6 +94690,7 @@ export const modifyIpamPrefixListResolverTarget: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamPrefixListResolverTargetIdMalformed,
   ],
+  operationName: "ModifyIpamPrefixListResolverTarget",
 }));
 export type ModifyIpamResourceCidrError =
   | RequestLimitExceeded
@@ -94073,6 +94715,7 @@ export const modifyIpamResourceCidr: API.OperationMethod<
     InvalidIpamScopeIdMalformed,
     InvalidParameterValue,
   ],
+  operationName: "ModifyIpamResourceCidr",
 }));
 export type ModifyIpamResourceDiscoveryError =
   | RequestLimitExceeded
@@ -94095,6 +94738,7 @@ export const modifyIpamResourceDiscovery: API.OperationMethod<
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
   ],
+  operationName: "ModifyIpamResourceDiscovery",
 }));
 export type ModifyIpamScopeError =
   | RequestLimitExceeded
@@ -94112,6 +94756,7 @@ export const modifyIpamScope: API.OperationMethod<
   input: ModifyIpamScopeRequest,
   output: ModifyIpamScopeResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
+  operationName: "ModifyIpamScope",
 }));
 export type ModifyLaunchTemplateError =
   | RequestLimitExceeded
@@ -94131,6 +94776,7 @@ export const modifyLaunchTemplate: API.OperationMethod<
   input: ModifyLaunchTemplateRequest,
   output: ModifyLaunchTemplateResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "ModifyLaunchTemplate",
 }));
 export type ModifyLocalGatewayRouteError =
   | RequestLimitExceeded
@@ -94148,6 +94794,7 @@ export const modifyLocalGatewayRoute: API.OperationMethod<
   input: ModifyLocalGatewayRouteRequest,
   output: ModifyLocalGatewayRouteResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "ModifyLocalGatewayRoute",
 }));
 export type ModifyManagedPrefixListError =
   | RequestLimitExceeded
@@ -94178,6 +94825,7 @@ export const modifyManagedPrefixList: API.OperationMethod<
     InvalidPrefixListIDNotFound,
     InvalidPrefixListIdMalformed,
   ],
+  operationName: "ModifyManagedPrefixList",
 }));
 export type ModifyManagedResourceVisibilityError = CommonErrors;
 /**
@@ -94195,6 +94843,7 @@ export const modifyManagedResourceVisibility: API.OperationMethod<
   input: ModifyManagedResourceVisibilityRequest,
   output: ModifyManagedResourceVisibilityResult,
   errors: [],
+  operationName: "ModifyManagedResourceVisibility",
 }));
 export type ModifyNetworkInterfaceAttributeError =
   | RequestLimitExceeded
@@ -94221,6 +94870,7 @@ export const modifyNetworkInterfaceAttribute: API.OperationMethod<
     InvalidNetworkInterfaceIdMalformed,
     InvalidParameterCombination,
   ],
+  operationName: "ModifyNetworkInterfaceAttribute",
 }));
 export type ModifyPrivateDnsNameOptionsError =
   | RequestLimitExceeded
@@ -94238,6 +94888,7 @@ export const modifyPrivateDnsNameOptions: API.OperationMethod<
   input: ModifyPrivateDnsNameOptionsRequest,
   output: ModifyPrivateDnsNameOptionsResult,
   errors: [RequestLimitExceeded, UnknownResource],
+  operationName: "ModifyPrivateDnsNameOptions",
 }));
 export type ModifyPublicIpDnsNameOptionsError =
   | RequestLimitExceeded
@@ -94255,6 +94906,7 @@ export const modifyPublicIpDnsNameOptions: API.OperationMethod<
   input: ModifyPublicIpDnsNameOptionsRequest,
   output: ModifyPublicIpDnsNameOptionsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "ModifyPublicIpDnsNameOptions",
 }));
 export type ModifyReservedInstancesError =
   | RequestLimitExceeded
@@ -94277,6 +94929,7 @@ export const modifyReservedInstances: API.OperationMethod<
   input: ModifyReservedInstancesRequest,
   output: ModifyReservedInstancesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "ModifyReservedInstances",
 }));
 export type ModifyRouteServerError =
   | RequestLimitExceeded
@@ -94309,6 +94962,7 @@ export const modifyRouteServer: API.OperationMethod<
   input: ModifyRouteServerRequest,
   output: ModifyRouteServerResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  operationName: "ModifyRouteServer",
 }));
 export type ModifySecurityGroupRulesError =
   | RequestLimitExceeded
@@ -94326,6 +94980,7 @@ export const modifySecurityGroupRules: API.OperationMethod<
   input: ModifySecurityGroupRulesRequest,
   output: ModifySecurityGroupRulesResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "ModifySecurityGroupRules",
 }));
 export type ModifySnapshotAttributeError =
   | RequestLimitExceeded
@@ -94357,6 +95012,7 @@ export const modifySnapshotAttribute: API.OperationMethod<
     InvalidParameterCombination,
     InvalidSnapshotNotFound,
   ],
+  operationName: "ModifySnapshotAttribute",
 }));
 export type ModifySnapshotTierError =
   | RequestLimitExceeded
@@ -94378,6 +95034,7 @@ export const modifySnapshotTier: API.OperationMethod<
   input: ModifySnapshotTierRequest,
   output: ModifySnapshotTierResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "ModifySnapshotTier",
 }));
 export type ModifySpotFleetRequestError =
   | RequestLimitExceeded
@@ -94424,6 +95081,7 @@ export const modifySpotFleetRequest: API.OperationMethod<
   input: ModifySpotFleetRequestRequest,
   output: ModifySpotFleetRequestResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "ModifySpotFleetRequest",
 }));
 export type ModifySubnetAttributeError =
   | RequestLimitExceeded
@@ -94459,6 +95117,7 @@ export const modifySubnetAttribute: API.OperationMethod<
   input: ModifySubnetAttributeRequest,
   output: ModifySubnetAttributeResponse,
   errors: [RequestLimitExceeded, InvalidSubnetIDNotFound, MissingParameter],
+  operationName: "ModifySubnetAttribute",
 }));
 export type ModifyTrafficMirrorFilterNetworkServicesError =
   | RequestLimitExceeded
@@ -94479,6 +95138,7 @@ export const modifyTrafficMirrorFilterNetworkServices: API.OperationMethod<
   input: ModifyTrafficMirrorFilterNetworkServicesRequest,
   output: ModifyTrafficMirrorFilterNetworkServicesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "ModifyTrafficMirrorFilterNetworkServices",
 }));
 export type ModifyTrafficMirrorFilterRuleError =
   | RequestLimitExceeded
@@ -94504,6 +95164,7 @@ export const modifyTrafficMirrorFilterRule: API.OperationMethod<
     InvalidParameterValue,
     InvalidTrafficMirrorFilterRuleIdNotFound,
   ],
+  operationName: "ModifyTrafficMirrorFilterRule",
 }));
 export type ModifyTrafficMirrorSessionError =
   | RequestLimitExceeded
@@ -94521,6 +95182,7 @@ export const modifyTrafficMirrorSession: API.OperationMethod<
   input: ModifyTrafficMirrorSessionRequest,
   output: ModifyTrafficMirrorSessionResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "ModifyTrafficMirrorSession",
 }));
 export type ModifyTransitGatewayError =
   | RequestLimitExceeded
@@ -94538,6 +95200,7 @@ export const modifyTransitGateway: API.OperationMethod<
   input: ModifyTransitGatewayRequest,
   output: ModifyTransitGatewayResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "ModifyTransitGateway",
 }));
 export type ModifyTransitGatewayMeteringPolicyError =
   | RequestLimitExceeded
@@ -94560,6 +95223,7 @@ export const modifyTransitGatewayMeteringPolicy: API.OperationMethod<
     InvalidTransitGatewayMeteringPolicyIdMalformedException,
     MissingParameter,
   ],
+  operationName: "ModifyTransitGatewayMeteringPolicy",
 }));
 export type ModifyTransitGatewayPrefixListReferenceError =
   | RequestLimitExceeded
@@ -94577,6 +95241,7 @@ export const modifyTransitGatewayPrefixListReference: API.OperationMethod<
   input: ModifyTransitGatewayPrefixListReferenceRequest,
   output: ModifyTransitGatewayPrefixListReferenceResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "ModifyTransitGatewayPrefixListReference",
 }));
 export type ModifyTransitGatewayVpcAttachmentError =
   | RequestLimitExceeded
@@ -94594,6 +95259,7 @@ export const modifyTransitGatewayVpcAttachment: API.OperationMethod<
   input: ModifyTransitGatewayVpcAttachmentRequest,
   output: ModifyTransitGatewayVpcAttachmentResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  operationName: "ModifyTransitGatewayVpcAttachment",
 }));
 export type ModifyVerifiedAccessEndpointError =
   | RequestLimitExceeded
@@ -94616,6 +95282,7 @@ export const modifyVerifiedAccessEndpoint: API.OperationMethod<
     InvalidParameterValue,
     InvalidVerifiedAccessEndpointIdNotFound,
   ],
+  operationName: "ModifyVerifiedAccessEndpoint",
 }));
 export type ModifyVerifiedAccessEndpointPolicyError =
   | RequestLimitExceeded
@@ -94638,6 +95305,7 @@ export const modifyVerifiedAccessEndpointPolicy: API.OperationMethod<
     InvalidParameterValue,
     InvalidVerifiedAccessEndpointIdNotFound,
   ],
+  operationName: "ModifyVerifiedAccessEndpointPolicy",
 }));
 export type ModifyVerifiedAccessGroupError =
   | RequestLimitExceeded
@@ -94655,6 +95323,7 @@ export const modifyVerifiedAccessGroup: API.OperationMethod<
   input: ModifyVerifiedAccessGroupRequest,
   output: ModifyVerifiedAccessGroupResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessGroupIdNotFound],
+  operationName: "ModifyVerifiedAccessGroup",
 }));
 export type ModifyVerifiedAccessGroupPolicyError =
   | RequestLimitExceeded
@@ -94672,6 +95341,7 @@ export const modifyVerifiedAccessGroupPolicy: API.OperationMethod<
   input: ModifyVerifiedAccessGroupPolicyRequest,
   output: ModifyVerifiedAccessGroupPolicyResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessGroupIdNotFound],
+  operationName: "ModifyVerifiedAccessGroupPolicy",
 }));
 export type ModifyVerifiedAccessInstanceError =
   | RequestLimitExceeded
@@ -94689,6 +95359,7 @@ export const modifyVerifiedAccessInstance: API.OperationMethod<
   input: ModifyVerifiedAccessInstanceRequest,
   output: ModifyVerifiedAccessInstanceResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  operationName: "ModifyVerifiedAccessInstance",
 }));
 export type ModifyVerifiedAccessInstanceLoggingConfigurationError =
   | RequestLimitExceeded
@@ -94706,6 +95377,7 @@ export const modifyVerifiedAccessInstanceLoggingConfiguration: API.OperationMeth
   input: ModifyVerifiedAccessInstanceLoggingConfigurationRequest,
   output: ModifyVerifiedAccessInstanceLoggingConfigurationResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "ModifyVerifiedAccessInstanceLoggingConfiguration",
 }));
 export type ModifyVerifiedAccessTrustProviderError =
   | RequestLimitExceeded
@@ -94723,6 +95395,7 @@ export const modifyVerifiedAccessTrustProvider: API.OperationMethod<
   input: ModifyVerifiedAccessTrustProviderRequest,
   output: ModifyVerifiedAccessTrustProviderResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessTrustProviderIdNotFound],
+  operationName: "ModifyVerifiedAccessTrustProvider",
 }));
 export type ModifyVolumeError =
   | RequestLimitExceeded
@@ -94766,6 +95439,7 @@ export const modifyVolume: API.OperationMethod<
     InvalidVolumeNotFound,
     InvalidVolumeIDMalformed,
   ],
+  operationName: "ModifyVolume",
 }));
 export type ModifyVolumeAttributeError =
   | RequestLimitExceeded
@@ -94796,6 +95470,7 @@ export const modifyVolumeAttribute: API.OperationMethod<
     InvalidVolumeNotFound,
     InvalidVolumeIDMalformed,
   ],
+  operationName: "ModifyVolumeAttribute",
 }));
 export type ModifyVpcAttributeError =
   | RequestLimitExceeded
@@ -94818,6 +95493,7 @@ export const modifyVpcAttribute: API.OperationMethod<
     InvalidParameterCombination,
     InvalidVpcIDNotFound,
   ],
+  operationName: "ModifyVpcAttribute",
 }));
 export type ModifyVpcBlockPublicAccessExclusionError = CommonErrors;
 /**
@@ -94832,6 +95508,7 @@ export const modifyVpcBlockPublicAccessExclusion: API.OperationMethod<
   input: ModifyVpcBlockPublicAccessExclusionRequest,
   output: ModifyVpcBlockPublicAccessExclusionResult,
   errors: [],
+  operationName: "ModifyVpcBlockPublicAccessExclusion",
 }));
 export type ModifyVpcBlockPublicAccessOptionsError = CommonErrors;
 /**
@@ -94846,6 +95523,7 @@ export const modifyVpcBlockPublicAccessOptions: API.OperationMethod<
   input: ModifyVpcBlockPublicAccessOptionsRequest,
   output: ModifyVpcBlockPublicAccessOptionsResult,
   errors: [],
+  operationName: "ModifyVpcBlockPublicAccessOptions",
 }));
 export type ModifyVpcEncryptionControlError =
   | RequestLimitExceeded
@@ -94870,6 +95548,7 @@ export const modifyVpcEncryptionControl: API.OperationMethod<
     InvalidVpcEncryptionControlIdMalformed,
     InvalidVpcEncryptionControlIdNotFound,
   ],
+  operationName: "ModifyVpcEncryptionControl",
 }));
 export type ModifyVpcEndpointError =
   | RequestLimitExceeded
@@ -94890,6 +95569,7 @@ export const modifyVpcEndpoint: API.OperationMethod<
   input: ModifyVpcEndpointRequest,
   output: ModifyVpcEndpointResult,
   errors: [RequestLimitExceeded, InvalidVpcEndpointIdNotFound],
+  operationName: "ModifyVpcEndpoint",
 }));
 export type ModifyVpcEndpointConnectionNotificationError =
   | RequestLimitExceeded
@@ -94913,6 +95593,7 @@ export const modifyVpcEndpointConnectionNotification: API.OperationMethod<
     InvalidConnectionNotification,
     InvalidParameter,
   ],
+  operationName: "ModifyVpcEndpointConnectionNotification",
 }));
 export type ModifyVpcEndpointServiceConfigurationError =
   | RequestLimitExceeded
@@ -94938,6 +95619,7 @@ export const modifyVpcEndpointServiceConfiguration: API.OperationMethod<
     InvalidVpcEndpointServiceIdMalformed,
     InvalidVpcEndpointServiceIdNotFound,
   ],
+  operationName: "ModifyVpcEndpointServiceConfiguration",
 }));
 export type ModifyVpcEndpointServicePayerResponsibilityError =
   | RequestLimitExceeded
@@ -94955,6 +95637,7 @@ export const modifyVpcEndpointServicePayerResponsibility: API.OperationMethod<
   input: ModifyVpcEndpointServicePayerResponsibilityRequest,
   output: ModifyVpcEndpointServicePayerResponsibilityResult,
   errors: [RequestLimitExceeded, UnsupportedOperation],
+  operationName: "ModifyVpcEndpointServicePayerResponsibility",
 }));
 export type ModifyVpcEndpointServicePermissionsError =
   | RequestLimitExceeded
@@ -94983,6 +95666,7 @@ export const modifyVpcEndpointServicePermissions: API.OperationMethod<
     InvalidVpcEndpointServiceIdMalformed,
     InvalidVpcEndpointServiceIdNotFound,
   ],
+  operationName: "ModifyVpcEndpointServicePermissions",
 }));
 export type ModifyVpcPeeringConnectionOptionsError =
   | RequestLimitExceeded
@@ -95016,6 +95700,7 @@ export const modifyVpcPeeringConnectionOptions: API.OperationMethod<
     InvalidVpcPeeringConnectionIDNotFound,
     InvalidVpcPeeringConnectionIdNotFound,
   ],
+  operationName: "ModifyVpcPeeringConnectionOptions",
 }));
 export type ModifyVpcTenancyError =
   | RequestLimitExceeded
@@ -95043,6 +95728,7 @@ export const modifyVpcTenancy: API.OperationMethod<
   input: ModifyVpcTenancyRequest,
   output: ModifyVpcTenancyResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, InvalidVpcIdMalformed],
+  operationName: "ModifyVpcTenancy",
 }));
 export type ModifyVpnConnectionError =
   | RequestLimitExceeded
@@ -95097,6 +95783,7 @@ export const modifyVpnConnection: API.OperationMethod<
   input: ModifyVpnConnectionRequest,
   output: ModifyVpnConnectionResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionId],
+  operationName: "ModifyVpnConnection",
 }));
 export type ModifyVpnConnectionOptionsError =
   | RequestLimitExceeded
@@ -95119,6 +95806,7 @@ export const modifyVpnConnectionOptions: API.OperationMethod<
   input: ModifyVpnConnectionOptionsRequest,
   output: ModifyVpnConnectionOptionsResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionIDNotFound],
+  operationName: "ModifyVpnConnectionOptions",
 }));
 export type ModifyVpnTunnelCertificateError =
   | RequestLimitExceeded
@@ -95136,6 +95824,7 @@ export const modifyVpnTunnelCertificate: API.OperationMethod<
   input: ModifyVpnTunnelCertificateRequest,
   output: ModifyVpnTunnelCertificateResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "ModifyVpnTunnelCertificate",
 }));
 export type ModifyVpnTunnelOptionsError =
   | RequestLimitExceeded
@@ -95156,6 +95845,7 @@ export const modifyVpnTunnelOptions: API.OperationMethod<
   input: ModifyVpnTunnelOptionsRequest,
   output: ModifyVpnTunnelOptionsResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionId],
+  operationName: "ModifyVpnTunnelOptions",
 }));
 export type MonitorInstancesError =
   | RequestLimitExceeded
@@ -95178,6 +95868,7 @@ export const monitorInstances: API.OperationMethod<
   input: MonitorInstancesRequest,
   output: MonitorInstancesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  operationName: "MonitorInstances",
 }));
 export type MoveAddressToVpcError =
   | RequestLimitExceeded
@@ -95201,6 +95892,7 @@ export const moveAddressToVpc: API.OperationMethod<
   input: MoveAddressToVpcRequest,
   output: MoveAddressToVpcResult,
   errors: [RequestLimitExceeded, UnsupportedOperation],
+  operationName: "MoveAddressToVpc",
 }));
 export type MoveByoipCidrToIpamError =
   | RequestLimitExceeded
@@ -95220,6 +95912,7 @@ export const moveByoipCidrToIpam: API.OperationMethod<
   input: MoveByoipCidrToIpamRequest,
   output: MoveByoipCidrToIpamResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
+  operationName: "MoveByoipCidrToIpam",
 }));
 export type MoveCapacityReservationInstancesError =
   | RequestLimitExceeded
@@ -95252,6 +95945,7 @@ export const moveCapacityReservationInstances: API.OperationMethod<
   input: MoveCapacityReservationInstancesRequest,
   output: MoveCapacityReservationInstancesResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  operationName: "MoveCapacityReservationInstances",
 }));
 export type ProvisionByoipCidrError =
   | RequestLimitExceeded
@@ -95280,6 +95974,7 @@ export const provisionByoipCidr: API.OperationMethod<
   input: ProvisionByoipCidrRequest,
   output: ProvisionByoipCidrResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "ProvisionByoipCidr",
 }));
 export type ProvisionIpamByoasnError =
   | RequestLimitExceeded
@@ -95297,6 +95992,7 @@ export const provisionIpamByoasn: API.OperationMethod<
   input: ProvisionIpamByoasnRequest,
   output: ProvisionIpamByoasnResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "ProvisionIpamByoasn",
 }));
 export type ProvisionIpamPoolCidrError =
   | RequestLimitExceeded
@@ -95317,6 +96013,7 @@ export const provisionIpamPoolCidr: API.OperationMethod<
   input: ProvisionIpamPoolCidrRequest,
   output: ProvisionIpamPoolCidrResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
+  operationName: "ProvisionIpamPoolCidr",
 }));
 export type ProvisionPublicIpv4PoolCidrError =
   | RequestLimitExceeded
@@ -95337,6 +96034,7 @@ export const provisionPublicIpv4PoolCidr: API.OperationMethod<
   input: ProvisionPublicIpv4PoolCidrRequest,
   output: ProvisionPublicIpv4PoolCidrResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
+  operationName: "ProvisionPublicIpv4PoolCidr",
 }));
 export type PurchaseCapacityBlockError =
   | RequestLimitExceeded
@@ -95356,6 +96054,7 @@ export const purchaseCapacityBlock: API.OperationMethod<
   input: PurchaseCapacityBlockRequest,
   output: PurchaseCapacityBlockResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "PurchaseCapacityBlock",
 }));
 export type PurchaseCapacityBlockExtensionError =
   | RequestLimitExceeded
@@ -95374,6 +96073,7 @@ export const purchaseCapacityBlockExtension: API.OperationMethod<
   input: PurchaseCapacityBlockExtensionRequest,
   output: PurchaseCapacityBlockExtensionResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdNotFound],
+  operationName: "PurchaseCapacityBlockExtension",
 }));
 export type PurchaseHostReservationError = CommonErrors;
 /**
@@ -95391,6 +96091,7 @@ export const purchaseHostReservation: API.OperationMethod<
   input: PurchaseHostReservationRequest,
   output: PurchaseHostReservationResult,
   errors: [],
+  operationName: "PurchaseHostReservation",
 }));
 export type PurchaseReservedInstancesOfferingError =
   | RequestLimitExceeded
@@ -95420,6 +96121,7 @@ export const purchaseReservedInstancesOffering: API.OperationMethod<
   input: PurchaseReservedInstancesOfferingRequest,
   output: PurchaseReservedInstancesOfferingResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "PurchaseReservedInstancesOffering",
 }));
 export type PurchaseScheduledInstancesError =
   | RequestLimitExceeded
@@ -95446,6 +96148,7 @@ export const purchaseScheduledInstances: API.OperationMethod<
   input: PurchaseScheduledInstancesRequest,
   output: PurchaseScheduledInstancesResult,
   errors: [RequestLimitExceeded, InvalidPurchaseTokenMalformed],
+  operationName: "PurchaseScheduledInstances",
 }));
 export type RebootInstancesError =
   | RequestLimitExceeded
@@ -95479,6 +96182,7 @@ export const rebootInstances: API.OperationMethod<
     InvalidInstanceIDNotFound,
     MissingParameter,
   ],
+  operationName: "RebootInstances",
 }));
 export type RegisterImageError =
   | RequestLimitExceeded
@@ -95537,6 +96241,7 @@ export const registerImage: API.OperationMethod<
   input: RegisterImageRequest,
   output: RegisterImageResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
+  operationName: "RegisterImage",
 }));
 export type RegisterInstanceEventNotificationAttributesError =
   | RequestLimitExceeded
@@ -95557,6 +96262,7 @@ export const registerInstanceEventNotificationAttributes: API.OperationMethod<
   input: RegisterInstanceEventNotificationAttributesRequest,
   output: RegisterInstanceEventNotificationAttributesResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "RegisterInstanceEventNotificationAttributes",
 }));
 export type RegisterTransitGatewayMulticastGroupMembersError =
   | RequestLimitExceeded
@@ -95585,6 +96291,7 @@ export const registerTransitGatewayMulticastGroupMembers: API.OperationMethod<
     InvalidNetworkInterfaceIdMalformed,
     MissingParameter,
   ],
+  operationName: "RegisterTransitGatewayMulticastGroupMembers",
 }));
 export type RegisterTransitGatewayMulticastGroupSourcesError =
   | RequestLimitExceeded
@@ -95614,6 +96321,7 @@ export const registerTransitGatewayMulticastGroupSources: API.OperationMethod<
     InvalidNetworkInterfaceIdMalformed,
     MissingParameter,
   ],
+  operationName: "RegisterTransitGatewayMulticastGroupSources",
 }));
 export type RejectCapacityReservationBillingOwnershipError =
   | RequestLimitExceeded
@@ -95633,6 +96341,7 @@ export const rejectCapacityReservationBillingOwnership: API.OperationMethod<
   input: RejectCapacityReservationBillingOwnershipRequest,
   output: RejectCapacityReservationBillingOwnershipResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  operationName: "RejectCapacityReservationBillingOwnership",
 }));
 export type RejectTransitGatewayClientVpnAttachmentError = CommonErrors;
 /**
@@ -95647,6 +96356,7 @@ export const rejectTransitGatewayClientVpnAttachment: API.OperationMethod<
   input: RejectTransitGatewayClientVpnAttachmentRequest,
   output: RejectTransitGatewayClientVpnAttachmentResult,
   errors: [],
+  operationName: "RejectTransitGatewayClientVpnAttachment",
 }));
 export type RejectTransitGatewayMulticastDomainAssociationsError =
   | RequestLimitExceeded
@@ -95664,6 +96374,7 @@ export const rejectTransitGatewayMulticastDomainAssociations: API.OperationMetho
   input: RejectTransitGatewayMulticastDomainAssociationsRequest,
   output: RejectTransitGatewayMulticastDomainAssociationsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "RejectTransitGatewayMulticastDomainAssociations",
 }));
 export type RejectTransitGatewayPeeringAttachmentError =
   | RequestLimitExceeded
@@ -95686,6 +96397,7 @@ export const rejectTransitGatewayPeeringAttachment: API.OperationMethod<
     InvalidTransitGatewayAttachmentIDNotFound,
     MissingParameter,
   ],
+  operationName: "RejectTransitGatewayPeeringAttachment",
 }));
 export type RejectTransitGatewayVpcAttachmentError =
   | RequestLimitExceeded
@@ -95712,6 +96424,7 @@ export const rejectTransitGatewayVpcAttachment: API.OperationMethod<
     InvalidTransitGatewayAttachmentIDNotFound,
     MissingParameter,
   ],
+  operationName: "RejectTransitGatewayVpcAttachment",
 }));
 export type RejectVpcEndpointConnectionsError =
   | RequestLimitExceeded
@@ -95734,6 +96447,7 @@ export const rejectVpcEndpointConnections: API.OperationMethod<
     InvalidParameter,
     InvalidVpcEndpointServiceIdNotFound,
   ],
+  operationName: "RejectVpcEndpointConnections",
 }));
 export type RejectVpcPeeringConnectionError =
   | RequestLimitExceeded
@@ -95761,6 +96475,7 @@ export const rejectVpcPeeringConnection: API.OperationMethod<
     InvalidVpcPeeringConnectionIdNotFound,
     MissingParameter,
   ],
+  operationName: "RejectVpcPeeringConnection",
 }));
 export type ReleaseAddressError =
   | RequestLimitExceeded
@@ -95812,6 +96527,7 @@ export const releaseAddress: API.OperationMethod<
     InvalidParameterValue,
     MissingParameter,
   ],
+  operationName: "ReleaseAddress",
 }));
 export type ReleaseHostsError =
   | RequestLimitExceeded
@@ -95839,6 +96555,7 @@ export const releaseHosts: API.OperationMethod<
   input: ReleaseHostsRequest,
   output: ReleaseHostsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "ReleaseHosts",
 }));
 export type ReleaseIpamPoolAllocationError =
   | RequestLimitExceeded
@@ -95858,6 +96575,7 @@ export const releaseIpamPoolAllocation: API.OperationMethod<
   input: ReleaseIpamPoolAllocationRequest,
   output: ReleaseIpamPoolAllocationResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
+  operationName: "ReleaseIpamPoolAllocation",
 }));
 export type ReplaceIamInstanceProfileAssociationError = CommonErrors;
 /**
@@ -95877,6 +96595,7 @@ export const replaceIamInstanceProfileAssociation: API.OperationMethod<
   input: ReplaceIamInstanceProfileAssociationRequest,
   output: ReplaceIamInstanceProfileAssociationResult,
   errors: [],
+  operationName: "ReplaceIamInstanceProfileAssociation",
 }));
 export type ReplaceImageCriteriaInAllowedImagesSettingsError = CommonErrors;
 /**
@@ -95903,6 +96622,7 @@ export const replaceImageCriteriaInAllowedImagesSettings: API.OperationMethod<
   input: ReplaceImageCriteriaInAllowedImagesSettingsRequest,
   output: ReplaceImageCriteriaInAllowedImagesSettingsResult,
   errors: [],
+  operationName: "ReplaceImageCriteriaInAllowedImagesSettings",
 }));
 export type ReplaceNetworkAclAssociationError =
   | RequestLimitExceeded
@@ -95931,6 +96651,7 @@ export const replaceNetworkAclAssociation: API.OperationMethod<
     InvalidAssociationIDNotFound,
     MissingParameter,
   ],
+  operationName: "ReplaceNetworkAclAssociation",
 }));
 export type ReplaceNetworkAclEntryError =
   | RequestLimitExceeded
@@ -95954,6 +96675,7 @@ export const replaceNetworkAclEntry: API.OperationMethod<
     InvalidNetworkAclIDNotFound,
     InvalidNetworkAclIdMalformed,
   ],
+  operationName: "ReplaceNetworkAclEntry",
 }));
 export type ReplaceRouteError =
   | RequestLimitExceeded
@@ -95979,6 +96701,7 @@ export const replaceRoute: API.OperationMethod<
   input: ReplaceRouteRequest,
   output: ReplaceRouteResponse,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  operationName: "ReplaceRoute",
 }));
 export type ReplaceRouteTableAssociationError =
   | RequestLimitExceeded
@@ -96006,6 +96729,7 @@ export const replaceRouteTableAssociation: API.OperationMethod<
     InvalidRouteTableAssociationIdMalformed,
     InvalidRouteTableIDNotFound,
   ],
+  operationName: "ReplaceRouteTableAssociation",
 }));
 export type ReplaceTransitGatewayRouteError =
   | RequestLimitExceeded
@@ -96023,6 +96747,7 @@ export const replaceTransitGatewayRoute: API.OperationMethod<
   input: ReplaceTransitGatewayRouteRequest,
   output: ReplaceTransitGatewayRouteResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  operationName: "ReplaceTransitGatewayRoute",
 }));
 export type ReplaceVpnTunnelError =
   | RequestLimitExceeded
@@ -96040,6 +96765,7 @@ export const replaceVpnTunnel: API.OperationMethod<
   input: ReplaceVpnTunnelRequest,
   output: ReplaceVpnTunnelResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionId],
+  operationName: "ReplaceVpnTunnel",
 }));
 export type ReportInstanceStatusError =
   | RequestLimitExceeded
@@ -96062,6 +96788,7 @@ export const reportInstanceStatus: API.OperationMethod<
   input: ReportInstanceStatusRequest,
   output: ReportInstanceStatusResponse,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "ReportInstanceStatus",
 }));
 export type RequestSpotFleetError =
   | RequestLimitExceeded
@@ -96110,6 +96837,7 @@ export const requestSpotFleet: API.OperationMethod<
   input: RequestSpotFleetRequest,
   output: RequestSpotFleetResponse,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "RequestSpotFleet",
 }));
 export type RequestSpotInstancesError =
   | RequestLimitExceeded
@@ -96136,6 +96864,7 @@ export const requestSpotInstances: API.OperationMethod<
   input: RequestSpotInstancesRequest,
   output: RequestSpotInstancesResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "RequestSpotInstances",
 }));
 export type ResetAddressAttributeError =
   | RequestLimitExceeded
@@ -96153,6 +96882,7 @@ export const resetAddressAttribute: API.OperationMethod<
   input: ResetAddressAttributeRequest,
   output: ResetAddressAttributeResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "ResetAddressAttribute",
 }));
 export type ResetEbsDefaultKmsKeyIdError = CommonErrors;
 /**
@@ -96173,6 +96903,7 @@ export const resetEbsDefaultKmsKeyId: API.OperationMethod<
   input: ResetEbsDefaultKmsKeyIdRequest,
   output: ResetEbsDefaultKmsKeyIdResult,
   errors: [],
+  operationName: "ResetEbsDefaultKmsKeyId",
 }));
 export type ResetFpgaImageAttributeError =
   | RequestLimitExceeded
@@ -96191,6 +96922,7 @@ export const resetFpgaImageAttribute: API.OperationMethod<
   input: ResetFpgaImageAttributeRequest,
   output: ResetFpgaImageAttributeResult,
   errors: [RequestLimitExceeded, InvalidFpgaImageIDMalformed],
+  operationName: "ResetFpgaImageAttribute",
 }));
 export type ResetImageAttributeError =
   | RequestLimitExceeded
@@ -96215,6 +96947,7 @@ export const resetImageAttribute: API.OperationMethod<
     InvalidAMIIDNotFound,
     MissingParameter,
   ],
+  operationName: "ResetImageAttribute",
 }));
 export type ResetInstanceAttributeError =
   | RequestLimitExceeded
@@ -96241,6 +96974,7 @@ export const resetInstanceAttribute: API.OperationMethod<
   input: ResetInstanceAttributeRequest,
   output: ResetInstanceAttributeResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  operationName: "ResetInstanceAttribute",
 }));
 export type ResetNetworkInterfaceAttributeError =
   | RequestLimitExceeded
@@ -96259,6 +96993,7 @@ export const resetNetworkInterfaceAttribute: API.OperationMethod<
   input: ResetNetworkInterfaceAttributeRequest,
   output: ResetNetworkInterfaceAttributeResponse,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
+  operationName: "ResetNetworkInterfaceAttribute",
 }));
 export type ResetSnapshotAttributeError =
   | RequestLimitExceeded
@@ -96286,6 +97021,7 @@ export const resetSnapshotAttribute: API.OperationMethod<
     InvalidSnapshotIDMalformed,
     MissingParameter,
   ],
+  operationName: "ResetSnapshotAttribute",
 }));
 export type RestoreAddressToClassicError =
   | RequestLimitExceeded
@@ -96305,6 +97041,7 @@ export const restoreAddressToClassic: API.OperationMethod<
   input: RestoreAddressToClassicRequest,
   output: RestoreAddressToClassicResult,
   errors: [RequestLimitExceeded, UnsupportedOperation],
+  operationName: "RestoreAddressToClassic",
 }));
 export type RestoreImageFromRecycleBinError =
   | RequestLimitExceeded
@@ -96324,6 +97061,7 @@ export const restoreImageFromRecycleBin: API.OperationMethod<
   input: RestoreImageFromRecycleBinRequest,
   output: RestoreImageFromRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  operationName: "RestoreImageFromRecycleBin",
 }));
 export type RestoreManagedPrefixListVersionError =
   | RequestLimitExceeded
@@ -96341,6 +97079,7 @@ export const restoreManagedPrefixListVersion: API.OperationMethod<
   input: RestoreManagedPrefixListVersionRequest,
   output: RestoreManagedPrefixListVersionResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "RestoreManagedPrefixListVersion",
 }));
 export type RestoreSnapshotFromRecycleBinError =
   | RequestLimitExceeded
@@ -96359,6 +97098,7 @@ export const restoreSnapshotFromRecycleBin: API.OperationMethod<
   input: RestoreSnapshotFromRecycleBinRequest,
   output: RestoreSnapshotFromRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidSnapshotIDMalformed],
+  operationName: "RestoreSnapshotFromRecycleBin",
 }));
 export type RestoreSnapshotTierError =
   | RequestLimitExceeded
@@ -96381,6 +97121,7 @@ export const restoreSnapshotTier: API.OperationMethod<
   input: RestoreSnapshotTierRequest,
   output: RestoreSnapshotTierResult,
   errors: [RequestLimitExceeded, InvalidSnapshotIDMalformed],
+  operationName: "RestoreSnapshotTier",
 }));
 export type RestoreVolumeFromRecycleBinError =
   | RequestLimitExceeded
@@ -96399,6 +97140,7 @@ export const restoreVolumeFromRecycleBin: API.OperationMethod<
   input: RestoreVolumeFromRecycleBinRequest,
   output: RestoreVolumeFromRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
+  operationName: "RestoreVolumeFromRecycleBin",
 }));
 export type RevokeClientVpnIngressError =
   | RequestLimitExceeded
@@ -96416,6 +97158,7 @@ export const revokeClientVpnIngress: API.OperationMethod<
   input: RevokeClientVpnIngressRequest,
   output: RevokeClientVpnIngressResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "RevokeClientVpnIngress",
 }));
 export type RevokeSecurityGroupEgressError =
   | RequestLimitExceeded
@@ -96466,6 +97209,7 @@ export const revokeSecurityGroupEgress: API.OperationMethod<
     MissingParameter,
     UnknownParameter,
   ],
+  operationName: "RevokeSecurityGroupEgress",
 }));
 export type RevokeSecurityGroupIngressError =
   | RequestLimitExceeded
@@ -96515,6 +97259,7 @@ export const revokeSecurityGroupIngress: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  operationName: "RevokeSecurityGroupIngress",
 }));
 export type RunInstancesError =
   | RequestLimitExceeded
@@ -96592,6 +97337,7 @@ export const runInstances: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  operationName: "RunInstances",
 }));
 export type RunScheduledInstancesError =
   | RequestLimitExceeded
@@ -96616,6 +97362,7 @@ export const runScheduledInstances: API.OperationMethod<
   input: RunScheduledInstancesRequest,
   output: RunScheduledInstancesResult,
   errors: [RequestLimitExceeded, InvalidScheduledInstance],
+  operationName: "RunScheduledInstances",
 }));
 export type SearchLocalGatewayRoutesError =
   | RequestLimitExceeded
@@ -96653,6 +97400,7 @@ export const searchLocalGatewayRoutes: API.OperationMethod<
     InvalidLocalGatewayRouteTableIDNotFound,
     MissingParameter,
   ],
+  operationName: "SearchLocalGatewayRoutes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -96696,6 +97444,7 @@ export const searchTransitGatewayMulticastGroups: API.OperationMethod<
     InvalidTransitGatewayMulticastDomainIdMalformed,
     InvalidTransitGatewayMulticastDomainIdNotFound,
   ],
+  operationName: "SearchTransitGatewayMulticastGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -96735,6 +97484,7 @@ export const searchTransitGatewayRoutes: API.OperationMethod<
   input: SearchTransitGatewayRoutesRequest,
   output: SearchTransitGatewayRoutesResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  operationName: "SearchTransitGatewayRoutes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -96774,6 +97524,7 @@ export const sendDiagnosticInterrupt: API.OperationMethod<
   input: SendDiagnosticInterruptRequest,
   output: SendDiagnosticInterruptResponse,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  operationName: "SendDiagnosticInterrupt",
 }));
 export type StartDeclarativePoliciesReportError =
   | RequestLimitExceeded
@@ -96829,6 +97580,7 @@ export const startDeclarativePoliciesReport: API.OperationMethod<
   input: StartDeclarativePoliciesReportRequest,
   output: StartDeclarativePoliciesReportResult,
   errors: [RequestLimitExceeded, DeclarativePoliciesAccessDenied],
+  operationName: "StartDeclarativePoliciesReport",
 }));
 export type StartInstancesError =
   | RequestLimitExceeded
@@ -96876,6 +97628,7 @@ export const startInstances: API.OperationMethod<
     InvalidInstanceIDNotFound,
     InvalidParameterCombination,
   ],
+  operationName: "StartInstances",
 }));
 export type StartNetworkInsightsAccessScopeAnalysisError =
   | RequestLimitExceeded
@@ -96898,6 +97651,7 @@ export const startNetworkInsightsAccessScopeAnalysis: API.OperationMethod<
     IdempotentParameterMismatch,
     InvalidParameterValue,
   ],
+  operationName: "StartNetworkInsightsAccessScopeAnalysis",
 }));
 export type StartNetworkInsightsAnalysisError =
   | RequestLimitExceeded
@@ -96917,6 +97671,7 @@ export const startNetworkInsightsAnalysis: API.OperationMethod<
   input: StartNetworkInsightsAnalysisRequest,
   output: StartNetworkInsightsAnalysisResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  operationName: "StartNetworkInsightsAnalysis",
 }));
 export type StartVpcEndpointServicePrivateDnsVerificationError =
   | RequestLimitExceeded
@@ -96944,6 +97699,7 @@ export const startVpcEndpointServicePrivateDnsVerification: API.OperationMethod<
     InvalidVpcEndpointServiceIdMalformed,
     InvalidVpcEndpointServiceIdNotFound,
   ],
+  operationName: "StartVpcEndpointServicePrivateDnsVerification",
 }));
 export type StopInstancesError =
   | RequestLimitExceeded
@@ -97004,6 +97760,7 @@ export const stopInstances: API.OperationMethod<
     InvalidInstanceIDNotFound,
     InvalidParameterCombination,
   ],
+  operationName: "StopInstances",
 }));
 export type TerminateClientVpnConnectionsError =
   | RequestLimitExceeded
@@ -97021,6 +97778,7 @@ export const terminateClientVpnConnections: API.OperationMethod<
   input: TerminateClientVpnConnectionsRequest,
   output: TerminateClientVpnConnectionsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "TerminateClientVpnConnections",
 }));
 export type TerminateInstancesError =
   | RequestLimitExceeded
@@ -97117,6 +97875,7 @@ export const terminateInstances: API.OperationMethod<
     InvalidInstanceIDNotFound,
     InvalidParameterCombination,
   ],
+  operationName: "TerminateInstances",
 }));
 export type UnassignIpv6AddressesError =
   | RequestLimitExceeded
@@ -97140,6 +97899,7 @@ export const unassignIpv6Addresses: API.OperationMethod<
     InvalidNetworkInterfaceIDNotFound,
     InvalidParameterCombination,
   ],
+  operationName: "UnassignIpv6Addresses",
 }));
 export type UnassignPrivateIpAddressesError =
   | RequestLimitExceeded
@@ -97165,6 +97925,7 @@ export const unassignPrivateIpAddresses: API.OperationMethod<
     InvalidNetworkInterfaceIdMalformed,
     MissingParameter,
   ],
+  operationName: "UnassignPrivateIpAddresses",
 }));
 export type UnassignPrivateNatGatewayAddressError = CommonErrors;
 /**
@@ -97189,6 +97950,7 @@ export const unassignPrivateNatGatewayAddress: API.OperationMethod<
   input: UnassignPrivateNatGatewayAddressRequest,
   output: UnassignPrivateNatGatewayAddressResult,
   errors: [],
+  operationName: "UnassignPrivateNatGatewayAddress",
 }));
 export type UnlockSnapshotError =
   | RequestLimitExceeded
@@ -97208,6 +97970,7 @@ export const unlockSnapshot: API.OperationMethod<
   input: UnlockSnapshotRequest,
   output: UnlockSnapshotResult,
   errors: [RequestLimitExceeded, InvalidSnapshotIDMalformed],
+  operationName: "UnlockSnapshot",
 }));
 export type UnmonitorInstancesError =
   | RequestLimitExceeded
@@ -97228,6 +97991,7 @@ export const unmonitorInstances: API.OperationMethod<
   input: UnmonitorInstancesRequest,
   output: UnmonitorInstancesResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed, MissingParameter],
+  operationName: "UnmonitorInstances",
 }));
 export type UpdateCapacityManagerMonitoredTagKeysError = CommonErrors;
 /**
@@ -97242,6 +98006,7 @@ export const updateCapacityManagerMonitoredTagKeys: API.OperationMethod<
   input: UpdateCapacityManagerMonitoredTagKeysRequest,
   output: UpdateCapacityManagerMonitoredTagKeysResult,
   errors: [],
+  operationName: "UpdateCapacityManagerMonitoredTagKeys",
 }));
 export type UpdateCapacityManagerOrganizationsAccessError =
   | RequestLimitExceeded
@@ -97260,6 +98025,7 @@ export const updateCapacityManagerOrganizationsAccess: API.OperationMethod<
   input: UpdateCapacityManagerOrganizationsAccessRequest,
   output: UpdateCapacityManagerOrganizationsAccessResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "UpdateCapacityManagerOrganizationsAccess",
 }));
 export type UpdateInterruptibleCapacityReservationAllocationError =
   | RequestLimitExceeded
@@ -97277,6 +98043,7 @@ export const updateInterruptibleCapacityReservationAllocation: API.OperationMeth
   input: UpdateInterruptibleCapacityReservationAllocationRequest,
   output: UpdateInterruptibleCapacityReservationAllocationResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdNotFound],
+  operationName: "UpdateInterruptibleCapacityReservationAllocation",
 }));
 export type UpdateSecurityGroupRuleDescriptionsEgressError =
   | RequestLimitExceeded
@@ -97297,6 +98064,7 @@ export const updateSecurityGroupRuleDescriptionsEgress: API.OperationMethod<
   input: UpdateSecurityGroupRuleDescriptionsEgressRequest,
   output: UpdateSecurityGroupRuleDescriptionsEgressResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "UpdateSecurityGroupRuleDescriptionsEgress",
 }));
 export type UpdateSecurityGroupRuleDescriptionsIngressError =
   | RequestLimitExceeded
@@ -97317,6 +98085,7 @@ export const updateSecurityGroupRuleDescriptionsIngress: API.OperationMethod<
   input: UpdateSecurityGroupRuleDescriptionsIngressRequest,
   output: UpdateSecurityGroupRuleDescriptionsIngressResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  operationName: "UpdateSecurityGroupRuleDescriptionsIngress",
 }));
 export type WithdrawByoipCidrError = RequestLimitExceeded | CommonErrors;
 /**
@@ -97337,4 +98106,5 @@ export const withdrawByoipCidr: API.OperationMethod<
   input: WithdrawByoipCidrRequest,
   output: WithdrawByoipCidrResult,
   errors: [RequestLimitExceeded],
+  operationName: "WithdrawByoipCidr",
 }));

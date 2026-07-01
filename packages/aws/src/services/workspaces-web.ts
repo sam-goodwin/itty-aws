@@ -3732,6 +3732,7 @@ export const expireSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ExpireSession",
 }));
 export type GetSessionError =
   | AccessDeniedException
@@ -3758,6 +3759,7 @@ export const getSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSession",
 }));
 export type ListSessionsError =
   | AccessDeniedException
@@ -3799,6 +3801,7 @@ export const listSessions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSessions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3831,6 +3834,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -3859,6 +3863,7 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -3885,6 +3890,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateBrowserSettingsError =
   | AccessDeniedException
@@ -3915,6 +3921,7 @@ export const createBrowserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateBrowserSettings",
 }));
 export type GetBrowserSettingsError =
   | AccessDeniedException
@@ -3941,6 +3948,7 @@ export const getBrowserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetBrowserSettings",
 }));
 export type UpdateBrowserSettingsError =
   | AccessDeniedException
@@ -3967,6 +3975,7 @@ export const updateBrowserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateBrowserSettings",
 }));
 export type DeleteBrowserSettingsError =
   | AccessDeniedException
@@ -3993,6 +4002,7 @@ export const deleteBrowserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteBrowserSettings",
 }));
 export type ListBrowserSettingsError =
   | AccessDeniedException
@@ -4032,6 +4042,7 @@ export const listBrowserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBrowserSettings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4067,6 +4078,7 @@ export const createDataProtectionSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDataProtectionSettings",
 }));
 export type GetDataProtectionSettingsError =
   | AccessDeniedException
@@ -4093,6 +4105,7 @@ export const getDataProtectionSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataProtectionSettings",
 }));
 export type UpdateDataProtectionSettingsError =
   | AccessDeniedException
@@ -4119,6 +4132,7 @@ export const updateDataProtectionSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDataProtectionSettings",
 }));
 export type DeleteDataProtectionSettingsError =
   | AccessDeniedException
@@ -4145,6 +4159,7 @@ export const deleteDataProtectionSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDataProtectionSettings",
 }));
 export type ListDataProtectionSettingsError =
   | AccessDeniedException
@@ -4184,6 +4199,7 @@ export const listDataProtectionSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataProtectionSettings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4220,6 +4236,7 @@ export const createIdentityProvider: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateIdentityProvider",
 }));
 export type GetIdentityProviderError =
   | AccessDeniedException
@@ -4246,6 +4263,7 @@ export const getIdentityProvider: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetIdentityProvider",
 }));
 export type UpdateIdentityProviderError =
   | AccessDeniedException
@@ -4272,6 +4290,7 @@ export const updateIdentityProvider: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateIdentityProvider",
 }));
 export type DeleteIdentityProviderError =
   | AccessDeniedException
@@ -4298,6 +4317,7 @@ export const deleteIdentityProvider: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteIdentityProvider",
 }));
 export type ListIdentityProvidersError =
   | AccessDeniedException
@@ -4337,6 +4357,7 @@ export const listIdentityProviders: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListIdentityProviders",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4370,6 +4391,7 @@ export const createIpAccessSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateIpAccessSettings",
 }));
 export type GetIpAccessSettingsError =
   | AccessDeniedException
@@ -4396,6 +4418,7 @@ export const getIpAccessSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetIpAccessSettings",
 }));
 export type UpdateIpAccessSettingsError =
   | AccessDeniedException
@@ -4422,6 +4445,7 @@ export const updateIpAccessSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateIpAccessSettings",
 }));
 export type DeleteIpAccessSettingsError =
   | AccessDeniedException
@@ -4448,6 +4472,7 @@ export const deleteIpAccessSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteIpAccessSettings",
 }));
 export type ListIpAccessSettingsError =
   | AccessDeniedException
@@ -4487,6 +4512,7 @@ export const listIpAccessSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListIpAccessSettings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4520,6 +4546,7 @@ export const createNetworkSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateNetworkSettings",
 }));
 export type GetNetworkSettingsError =
   | AccessDeniedException
@@ -4546,6 +4573,7 @@ export const getNetworkSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetNetworkSettings",
 }));
 export type UpdateNetworkSettingsError =
   | AccessDeniedException
@@ -4572,6 +4600,7 @@ export const updateNetworkSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateNetworkSettings",
 }));
 export type DeleteNetworkSettingsError =
   | AccessDeniedException
@@ -4598,6 +4627,7 @@ export const deleteNetworkSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteNetworkSettings",
 }));
 export type ListNetworkSettingsError =
   | AccessDeniedException
@@ -4637,6 +4667,7 @@ export const listNetworkSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListNetworkSettings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4672,6 +4703,7 @@ export const createPortal: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreatePortal",
 }));
 export type GetPortalError =
   | AccessDeniedException
@@ -4698,6 +4730,7 @@ export const getPortal: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPortal",
 }));
 export type UpdatePortalError =
   | AccessDeniedException
@@ -4728,6 +4761,7 @@ export const updatePortal: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdatePortal",
 }));
 export type DeletePortalError =
   | AccessDeniedException
@@ -4754,6 +4788,7 @@ export const deletePortal: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePortal",
 }));
 export type ListPortalsError =
   | AccessDeniedException
@@ -4793,6 +4828,7 @@ export const listPortals: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPortals",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4826,6 +4862,7 @@ export const associateBrowserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateBrowserSettings",
 }));
 export type AssociateDataProtectionSettingsError =
   | AccessDeniedException
@@ -4854,6 +4891,7 @@ export const associateDataProtectionSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateDataProtectionSettings",
 }));
 export type AssociateIpAccessSettingsError =
   | AccessDeniedException
@@ -4882,6 +4920,7 @@ export const associateIpAccessSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateIpAccessSettings",
 }));
 export type AssociateNetworkSettingsError =
   | AccessDeniedException
@@ -4910,6 +4949,7 @@ export const associateNetworkSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateNetworkSettings",
 }));
 export type AssociateSessionLoggerError =
   | AccessDeniedException
@@ -4938,6 +4978,7 @@ export const associateSessionLogger: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateSessionLogger",
 }));
 export type AssociateTrustStoreError =
   | AccessDeniedException
@@ -4966,6 +5007,7 @@ export const associateTrustStore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateTrustStore",
 }));
 export type AssociateUserAccessLoggingSettingsError =
   | AccessDeniedException
@@ -4994,6 +5036,7 @@ export const associateUserAccessLoggingSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateUserAccessLoggingSettings",
 }));
 export type AssociateUserSettingsError =
   | AccessDeniedException
@@ -5022,6 +5065,7 @@ export const associateUserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateUserSettings",
 }));
 export type DisassociateBrowserSettingsError =
   | AccessDeniedException
@@ -5050,6 +5094,7 @@ export const disassociateBrowserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateBrowserSettings",
 }));
 export type DisassociateDataProtectionSettingsError =
   | AccessDeniedException
@@ -5078,6 +5123,7 @@ export const disassociateDataProtectionSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateDataProtectionSettings",
 }));
 export type DisassociateIpAccessSettingsError =
   | AccessDeniedException
@@ -5106,6 +5152,7 @@ export const disassociateIpAccessSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateIpAccessSettings",
 }));
 export type DisassociateNetworkSettingsError =
   | AccessDeniedException
@@ -5134,6 +5181,7 @@ export const disassociateNetworkSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateNetworkSettings",
 }));
 export type DisassociateSessionLoggerError =
   | AccessDeniedException
@@ -5160,6 +5208,7 @@ export const disassociateSessionLogger: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateSessionLogger",
 }));
 export type DisassociateTrustStoreError =
   | AccessDeniedException
@@ -5188,6 +5237,7 @@ export const disassociateTrustStore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateTrustStore",
 }));
 export type DisassociateUserAccessLoggingSettingsError =
   | AccessDeniedException
@@ -5216,6 +5266,7 @@ export const disassociateUserAccessLoggingSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateUserAccessLoggingSettings",
 }));
 export type DisassociateUserSettingsError =
   | AccessDeniedException
@@ -5244,6 +5295,7 @@ export const disassociateUserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateUserSettings",
 }));
 export type GetPortalServiceProviderMetadataError =
   | AccessDeniedException
@@ -5270,6 +5322,7 @@ export const getPortalServiceProviderMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPortalServiceProviderMetadata",
 }));
 export type CreateSessionLoggerError =
   | AccessDeniedException
@@ -5298,6 +5351,7 @@ export const createSessionLogger: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateSessionLogger",
 }));
 export type GetSessionLoggerError =
   | AccessDeniedException
@@ -5324,6 +5378,7 @@ export const getSessionLogger: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSessionLogger",
 }));
 export type UpdateSessionLoggerError =
   | AccessDeniedException
@@ -5350,6 +5405,7 @@ export const updateSessionLogger: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateSessionLogger",
 }));
 export type DeleteSessionLoggerError =
   | AccessDeniedException
@@ -5376,6 +5432,7 @@ export const deleteSessionLogger: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteSessionLogger",
 }));
 export type ListSessionLoggersError =
   | AccessDeniedException
@@ -5415,6 +5472,7 @@ export const listSessionLoggers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSessionLoggers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5449,6 +5507,7 @@ export const createTrustStore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateTrustStore",
 }));
 export type GetTrustStoreError =
   | AccessDeniedException
@@ -5475,6 +5534,7 @@ export const getTrustStore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTrustStore",
 }));
 export type UpdateTrustStoreError =
   | AccessDeniedException
@@ -5503,6 +5563,7 @@ export const updateTrustStore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateTrustStore",
 }));
 export type DeleteTrustStoreError =
   | AccessDeniedException
@@ -5529,6 +5590,7 @@ export const deleteTrustStore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteTrustStore",
 }));
 export type ListTrustStoresError =
   | AccessDeniedException
@@ -5568,6 +5630,7 @@ export const listTrustStores: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTrustStores",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5599,6 +5662,7 @@ export const getTrustStoreCertificate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTrustStoreCertificate",
 }));
 export type ListTrustStoreCertificatesError =
   | AccessDeniedException
@@ -5640,6 +5704,7 @@ export const listTrustStoreCertificates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTrustStoreCertificates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5673,6 +5738,7 @@ export const createUserAccessLoggingSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateUserAccessLoggingSettings",
 }));
 export type GetUserAccessLoggingSettingsError =
   | AccessDeniedException
@@ -5699,6 +5765,7 @@ export const getUserAccessLoggingSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetUserAccessLoggingSettings",
 }));
 export type UpdateUserAccessLoggingSettingsError =
   | AccessDeniedException
@@ -5725,6 +5792,7 @@ export const updateUserAccessLoggingSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateUserAccessLoggingSettings",
 }));
 export type DeleteUserAccessLoggingSettingsError =
   | AccessDeniedException
@@ -5751,6 +5819,7 @@ export const deleteUserAccessLoggingSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteUserAccessLoggingSettings",
 }));
 export type ListUserAccessLoggingSettingsError =
   | AccessDeniedException
@@ -5790,6 +5859,7 @@ export const listUserAccessLoggingSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListUserAccessLoggingSettings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5825,6 +5895,7 @@ export const createUserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateUserSettings",
 }));
 export type GetUserSettingsError =
   | AccessDeniedException
@@ -5851,6 +5922,7 @@ export const getUserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetUserSettings",
 }));
 export type UpdateUserSettingsError =
   | AccessDeniedException
@@ -5877,6 +5949,7 @@ export const updateUserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateUserSettings",
 }));
 export type DeleteUserSettingsError =
   | AccessDeniedException
@@ -5903,6 +5976,7 @@ export const deleteUserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteUserSettings",
 }));
 export type ListUserSettingsError =
   | AccessDeniedException
@@ -5942,6 +6016,7 @@ export const listUserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListUserSettings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

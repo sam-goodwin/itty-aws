@@ -7605,6 +7605,7 @@ export const continueServiceDeployment: API.OperationMethod<
     ServiceDeploymentNotFoundException,
     UnsupportedFeatureException,
   ],
+  operationName: "ContinueServiceDeployment",
 }));
 export type DeleteAccountSettingError =
   | AccessDeniedException
@@ -7629,6 +7630,7 @@ export const deleteAccountSetting: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "DeleteAccountSetting",
 }));
 export type DeregisterTaskDefinitionError =
   | AccessDeniedException
@@ -7659,6 +7661,7 @@ export const deregisterTaskDefinition: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "DeregisterTaskDefinition",
 }));
 export type DescribeTaskDefinitionError =
   | AccessDeniedException
@@ -7685,6 +7688,7 @@ export const describeTaskDefinition: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "DescribeTaskDefinition",
 }));
 export type DiscoverPollEndpointError =
   | AccessDeniedException
@@ -7711,6 +7715,7 @@ export const discoverPollEndpoint: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "DiscoverPollEndpoint",
 }));
 export type ListAccountSettingsError =
   | AccessDeniedException
@@ -7750,6 +7755,7 @@ export const listAccountSettings: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "ListAccountSettings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7797,6 +7803,7 @@ export const listServicesByNamespace: API.OperationMethod<
     NamespaceNotFoundException,
     ServerException,
   ],
+  operationName: "ListServicesByNamespace",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7829,6 +7836,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTaskDefinitionFamiliesError =
   | AccessDeniedException
@@ -7870,6 +7878,7 @@ export const listTaskDefinitionFamilies: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "ListTaskDefinitionFamilies",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7902,6 +7911,7 @@ export const putAccountSetting: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "PutAccountSetting",
 }));
 export type PutAccountSettingDefaultError =
   | AccessDeniedException
@@ -7926,6 +7936,7 @@ export const putAccountSettingDefault: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "PutAccountSettingDefault",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -7956,6 +7967,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -7984,6 +7996,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateCapacityProviderError =
   | AccessDeniedException
@@ -8016,6 +8029,7 @@ export const createCapacityProvider: API.OperationMethod<
     UnsupportedFeatureException,
     UpdateInProgressException,
   ],
+  operationName: "CreateCapacityProvider",
 }));
 export type UpdateCapacityProviderError =
   | AccessDeniedException
@@ -8046,6 +8060,7 @@ export const updateCapacityProvider: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  operationName: "UpdateCapacityProvider",
 }));
 export type DeleteCapacityProviderError =
   | AccessDeniedException
@@ -8080,6 +8095,7 @@ export const deleteCapacityProvider: API.OperationMethod<
     UnsupportedFeatureException,
     UpdateInProgressException,
   ],
+  operationName: "DeleteCapacityProvider",
 }));
 export type DescribeCapacityProvidersError =
   | AccessDeniedException
@@ -8108,6 +8124,7 @@ export const describeCapacityProviders: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  operationName: "DescribeCapacityProviders",
 }));
 export type UpdateClusterError =
   | AccessDeniedException
@@ -8136,6 +8153,7 @@ export const updateCluster: API.OperationMethod<
     NamespaceNotFoundException,
     ServerException,
   ],
+  operationName: "UpdateCluster",
 }));
 export type DeleteClusterError =
   | AccessDeniedException
@@ -8174,6 +8192,7 @@ export const deleteCluster: API.OperationMethod<
     ServerException,
     UpdateInProgressException,
   ],
+  operationName: "DeleteCluster",
 }));
 export type PutClusterCapacityProvidersError =
   | AccessDeniedException
@@ -8210,6 +8229,7 @@ export const putClusterCapacityProviders: API.OperationMethod<
     ServerException,
     UpdateInProgressException,
   ],
+  operationName: "PutClusterCapacityProviders",
 }));
 export type UpdateClusterSettingsError =
   | AccessDeniedException
@@ -8238,6 +8258,7 @@ export const updateClusterSettings: API.OperationMethod<
     ServerException,
     UpdateInProgressException,
   ],
+  operationName: "UpdateClusterSettings",
 }));
 export type CreateClusterError =
   | AccessDeniedException
@@ -8266,6 +8287,7 @@ export const createCluster: API.OperationMethod<
     NamespaceNotFoundException,
     ServerException,
   ],
+  operationName: "CreateCluster",
 }));
 export type DeregisterContainerInstanceError =
   | AccessDeniedException
@@ -8298,6 +8320,7 @@ export const deregisterContainerInstance: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "DeregisterContainerInstance",
 }));
 export type DescribeClustersError =
   | AccessDeniedException
@@ -8324,6 +8347,7 @@ export const describeClusters: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "DescribeClusters",
 }));
 export type ExecuteCommandError =
   | AccessDeniedException
@@ -8356,6 +8380,7 @@ export const executeCommand: API.OperationMethod<
     ServerException,
     TargetNotConnectedException,
   ],
+  operationName: "ExecuteCommand",
 }));
 export type ListAttributesError =
   | AccessDeniedException
@@ -8397,6 +8422,7 @@ export const listAttributes: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "ListAttributes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8442,6 +8468,7 @@ export const listClusters: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "ListClusters",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8489,6 +8516,7 @@ export const listContainerInstances: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "ListContainerInstances",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8523,6 +8551,7 @@ export const submitAttachmentStateChanges: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "SubmitAttachmentStateChanges",
 }));
 export type SubmitContainerStateChangeError =
   | AccessDeniedException
@@ -8551,6 +8580,7 @@ export const submitContainerStateChange: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "SubmitContainerStateChange",
 }));
 export type SubmitTaskStateChangeError =
   | AccessDeniedException
@@ -8579,6 +8609,7 @@ export const submitTaskStateChange: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "SubmitTaskStateChange",
 }));
 export type DeleteAttributesError =
   | AccessDeniedException
@@ -8607,6 +8638,7 @@ export const deleteAttributes: API.OperationMethod<
     ServerException,
     TargetNotFoundException,
   ],
+  operationName: "DeleteAttributes",
 }));
 export type DescribeContainerInstancesError =
   | AccessDeniedException
@@ -8633,6 +8665,7 @@ export const describeContainerInstances: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "DescribeContainerInstances",
 }));
 export type ListTasksError =
   | AccessDeniedException
@@ -8678,6 +8711,7 @@ export const listTasks: API.OperationMethod<
     ServerException,
     ServiceNotFoundException,
   ],
+  operationName: "ListTasks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8714,6 +8748,7 @@ export const putAttributes: API.OperationMethod<
     ServerException,
     TargetNotFoundException,
   ],
+  operationName: "PutAttributes",
 }));
 export type RegisterContainerInstanceError =
   | AccessDeniedException
@@ -8742,6 +8777,7 @@ export const registerContainerInstance: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "RegisterContainerInstance",
 }));
 export type UpdateContainerAgentError =
   | AccessDeniedException
@@ -8780,6 +8816,7 @@ export const updateContainerAgent: API.OperationMethod<
     ServerException,
     UpdateInProgressException,
   ],
+  operationName: "UpdateContainerAgent",
 }));
 export type UpdateContainerInstancesStateError =
   | AccessDeniedException
@@ -8824,6 +8861,7 @@ export const updateContainerInstancesState: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "UpdateContainerInstancesState",
 }));
 export type DescribeDaemonDeploymentsError =
   | AccessDeniedException
@@ -8854,6 +8892,7 @@ export const describeDaemonDeployments: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  operationName: "DescribeDaemonDeployments",
 }));
 export type CreateDaemonError =
   | AccessDeniedException
@@ -8890,6 +8929,7 @@ export const createDaemon: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  operationName: "CreateDaemon",
 }));
 export type DeleteDaemonError =
   | AccessDeniedException
@@ -8924,6 +8964,7 @@ export const deleteDaemon: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  operationName: "DeleteDaemon",
 }));
 export type DescribeDaemonError =
   | AccessDeniedException
@@ -8954,6 +8995,7 @@ export const describeDaemon: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  operationName: "DescribeDaemon",
 }));
 export type ListDaemonDeploymentsError =
   | AccessDeniedException
@@ -8982,6 +9024,7 @@ export const listDaemonDeployments: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  operationName: "ListDaemonDeployments",
 }));
 export type ListDaemonsError =
   | AccessDeniedException
@@ -9010,6 +9053,7 @@ export const listDaemons: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  operationName: "ListDaemons",
 }));
 export type UpdateDaemonError =
   | AccessDeniedException
@@ -9050,6 +9094,7 @@ export const updateDaemon: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  operationName: "UpdateDaemon",
 }));
 export type DescribeDaemonRevisionsError =
   | AccessDeniedException
@@ -9080,6 +9125,7 @@ export const describeDaemonRevisions: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  operationName: "DescribeDaemonRevisions",
 }));
 export type DeleteDaemonTaskDefinitionError =
   | AccessDeniedException
@@ -9106,6 +9152,7 @@ export const deleteDaemonTaskDefinition: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "DeleteDaemonTaskDefinition",
 }));
 export type DescribeDaemonTaskDefinitionError =
   | AccessDeniedException
@@ -9130,6 +9177,7 @@ export const describeDaemonTaskDefinition: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "DescribeDaemonTaskDefinition",
 }));
 export type ListDaemonTaskDefinitionsError =
   | AccessDeniedException
@@ -9154,6 +9202,7 @@ export const listDaemonTaskDefinitions: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "ListDaemonTaskDefinitions",
 }));
 export type RegisterDaemonTaskDefinitionError =
   | AccessDeniedException
@@ -9184,6 +9233,7 @@ export const registerDaemonTaskDefinition: API.OperationMethod<
     LimitExceededException,
     ServerException,
   ],
+  operationName: "RegisterDaemonTaskDefinition",
 }));
 export type DescribeServiceDeploymentsError =
   | AccessDeniedException
@@ -9216,6 +9266,7 @@ export const describeServiceDeployments: API.OperationMethod<
     ServiceNotFoundException,
     UnsupportedFeatureException,
   ],
+  operationName: "DescribeServiceDeployments",
 }));
 export type UpdateServicePrimaryTaskSetError =
   | AccessDeniedException
@@ -9250,6 +9301,7 @@ export const updateServicePrimaryTaskSet: API.OperationMethod<
     TaskSetNotFoundException,
     UnsupportedFeatureException,
   ],
+  operationName: "UpdateServicePrimaryTaskSet",
 }));
 export type CreateExpressGatewayServiceError =
   | AccessDeniedException
@@ -9286,6 +9338,7 @@ export const createExpressGatewayService: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  operationName: "CreateExpressGatewayService",
 }));
 export type CreateServiceError =
   | AccessDeniedException
@@ -9412,6 +9465,7 @@ export const createService: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  operationName: "CreateService",
 }));
 export type DeleteExpressGatewayServiceError =
   | AccessDeniedException
@@ -9448,6 +9502,7 @@ export const deleteExpressGatewayService: API.OperationMethod<
     ServiceNotFoundException,
     UnsupportedFeatureException,
   ],
+  operationName: "DeleteExpressGatewayService",
 }));
 export type DeleteServiceError =
   | AccessDeniedException
@@ -9480,6 +9535,7 @@ export const deleteService: API.OperationMethod<
     ServerException,
     ServiceNotFoundException,
   ],
+  operationName: "DeleteService",
 }));
 export type DescribeExpressGatewayServiceError =
   | AccessDeniedException
@@ -9514,6 +9570,7 @@ export const describeExpressGatewayService: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  operationName: "DescribeExpressGatewayService",
 }));
 export type DescribeServicesError =
   | AccessDeniedException
@@ -9540,6 +9597,7 @@ export const describeServices: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "DescribeServices",
 }));
 export type ListServiceDeploymentsError =
   | AccessDeniedException
@@ -9574,6 +9632,7 @@ export const listServiceDeployments: API.OperationMethod<
     ServiceNotFoundException,
     UnsupportedFeatureException,
   ],
+  operationName: "ListServiceDeployments",
 }));
 export type ListServicesError =
   | AccessDeniedException
@@ -9615,6 +9674,7 @@ export const listServices: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "ListServices",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9659,6 +9719,7 @@ export const stopServiceDeployment: API.OperationMethod<
     ServiceDeploymentNotFoundException,
     UnsupportedFeatureException,
   ],
+  operationName: "StopServiceDeployment",
 }));
 export type UpdateExpressGatewayServiceError =
   | AccessDeniedException
@@ -9695,6 +9756,7 @@ export const updateExpressGatewayService: API.OperationMethod<
     ServiceNotFoundException,
     UnsupportedFeatureException,
   ],
+  operationName: "UpdateExpressGatewayService",
 }));
 export type UpdateServiceError =
   | AccessDeniedException
@@ -9775,6 +9837,7 @@ export const updateService: API.OperationMethod<
     ServiceNotFoundException,
     UnsupportedFeatureException,
   ],
+  operationName: "UpdateService",
 }));
 export type DescribeServiceRevisionsError =
   | AccessDeniedException
@@ -9809,6 +9872,7 @@ export const describeServiceRevisions: API.OperationMethod<
     ServiceNotFoundException,
     UnsupportedFeatureException,
   ],
+  operationName: "DescribeServiceRevisions",
 }));
 export type DeleteTaskDefinitionsError =
   | AccessDeniedException
@@ -9843,6 +9907,7 @@ export const deleteTaskDefinitions: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "DeleteTaskDefinitions",
 }));
 export type ListTaskDefinitionsError =
   | AccessDeniedException
@@ -9882,6 +9947,7 @@ export const listTaskDefinitions: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "ListTaskDefinitions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9918,6 +9984,7 @@ export const registerTaskDefinition: API.OperationMethod<
     LimitExceededException,
     ServerException,
   ],
+  operationName: "RegisterTaskDefinition",
 }));
 export type DescribeTasksError =
   | AccessDeniedException
@@ -9948,6 +10015,7 @@ export const describeTasks: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "DescribeTasks",
 }));
 export type GetTaskProtectionError =
   | AccessDeniedException
@@ -9978,6 +10046,7 @@ export const getTaskProtection: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  operationName: "GetTaskProtection",
 }));
 export type RunTaskError =
   | AccessDeniedException
@@ -10042,6 +10111,7 @@ export const runTask: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  operationName: "RunTask",
 }));
 export type StartTaskError =
   | AccessDeniedException
@@ -10080,6 +10150,7 @@ export const startTask: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  operationName: "StartTask",
 }));
 export type StopTaskError =
   | AccessDeniedException
@@ -10112,6 +10183,7 @@ export const stopTask: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  operationName: "StopTask",
 }));
 export type UpdateTaskProtectionError =
   | AccessDeniedException
@@ -10152,6 +10224,7 @@ export const updateTaskProtection: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  operationName: "UpdateTaskProtection",
 }));
 export type UpdateTaskSetError =
   | AccessDeniedException
@@ -10188,6 +10261,7 @@ export const updateTaskSet: API.OperationMethod<
     TaskSetNotFoundException,
     UnsupportedFeatureException,
   ],
+  operationName: "UpdateTaskSet",
 }));
 export type DeleteTaskSetError =
   | AccessDeniedException
@@ -10224,6 +10298,7 @@ export const deleteTaskSet: API.OperationMethod<
     TaskSetNotFoundException,
     UnsupportedFeatureException,
   ],
+  operationName: "DeleteTaskSet",
 }));
 export type CreateTaskSetError =
   | AccessDeniedException
@@ -10268,6 +10343,7 @@ export const createTaskSet: API.OperationMethod<
     ServiceNotFoundException,
     UnsupportedFeatureException,
   ],
+  operationName: "CreateTaskSet",
 }));
 export type DescribeTaskSetsError =
   | AccessDeniedException
@@ -10300,4 +10376,5 @@ export const describeTaskSets: API.OperationMethod<
     ServiceNotFoundException,
     UnsupportedFeatureException,
   ],
+  operationName: "DescribeTaskSets",
 }));

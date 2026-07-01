@@ -5869,6 +5869,7 @@ export const associateFileSystemAliases: API.OperationMethod<
   input: AssociateFileSystemAliasesRequest,
   output: AssociateFileSystemAliasesResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  operationName: "AssociateFileSystemAliases",
 }));
 export type CancelDataRepositoryTaskError =
   | BadRequest
@@ -5906,6 +5907,7 @@ export const cancelDataRepositoryTask: API.OperationMethod<
     InternalServerError,
     UnsupportedOperation,
   ],
+  operationName: "CancelDataRepositoryTask",
 }));
 export type CopyBackupError =
   | BackupNotFound
@@ -5968,6 +5970,7 @@ export const copyBackup: API.OperationMethod<
     SourceBackupUnavailable,
     UnsupportedOperation,
   ],
+  operationName: "CopyBackup",
 }));
 export type CopySnapshotAndUpdateVolumeError =
   | BadRequest
@@ -5993,6 +5996,7 @@ export const copySnapshotAndUpdateVolume: API.OperationMethod<
     InternalServerError,
     ServiceLimitExceeded,
   ],
+  operationName: "CopySnapshotAndUpdateVolume",
 }));
 export type CreateAndAttachS3AccessPointError =
   | AccessPointAlreadyOwnedByYou
@@ -6048,6 +6052,7 @@ export const createAndAttachS3AccessPoint: API.OperationMethod<
     UnsupportedOperation,
     VolumeNotFound,
   ],
+  operationName: "CreateAndAttachS3AccessPoint",
 }));
 export type CreateBackupError =
   | BackupInProgress
@@ -6126,6 +6131,7 @@ export const createBackup: API.OperationMethod<
     UnsupportedOperation,
     VolumeNotFound,
   ],
+  operationName: "CreateBackup",
 }));
 export type CreateDataRepositoryAssociationError =
   | BadRequest
@@ -6170,6 +6176,7 @@ export const createDataRepositoryAssociation: API.OperationMethod<
     ServiceLimitExceeded,
     UnsupportedOperation,
   ],
+  operationName: "CreateDataRepositoryAssociation",
 }));
 export type CreateDataRepositoryTaskError =
   | BadRequest
@@ -6217,6 +6224,7 @@ export const createDataRepositoryTask: API.OperationMethod<
     ServiceLimitExceeded,
     UnsupportedOperation,
   ],
+  operationName: "CreateDataRepositoryTask",
 }));
 export type CreateFileCacheError =
   | BadRequest
@@ -6266,6 +6274,7 @@ export const createFileCache: API.OperationMethod<
     MissingFileCacheConfiguration,
     ServiceLimitExceeded,
   ],
+  operationName: "CreateFileCache",
 }));
 export type CreateFileSystemError =
   | ActiveDirectoryError
@@ -6338,6 +6347,7 @@ export const createFileSystem: API.OperationMethod<
     MissingFileSystemConfiguration,
     ServiceLimitExceeded,
   ],
+  operationName: "CreateFileSystem",
 }));
 export type CreateFileSystemFromBackupError =
   | ActiveDirectoryError
@@ -6402,6 +6412,7 @@ export const createFileSystemFromBackup: API.OperationMethod<
     MissingFileSystemConfiguration,
     ServiceLimitExceeded,
   ],
+  operationName: "CreateFileSystemFromBackup",
 }));
 export type CreateSnapshotError =
   | BadRequest
@@ -6452,6 +6463,7 @@ export const createSnapshot: API.OperationMethod<
     ServiceLimitExceeded,
     VolumeNotFound,
   ],
+  operationName: "CreateSnapshot",
 }));
 export type CreateStorageVirtualMachineError =
   | ActiveDirectoryError
@@ -6482,6 +6494,7 @@ export const createStorageVirtualMachine: API.OperationMethod<
     ServiceLimitExceeded,
     UnsupportedOperation,
   ],
+  operationName: "CreateStorageVirtualMachine",
 }));
 export type CreateVolumeError =
   | BadRequest
@@ -6514,6 +6527,7 @@ export const createVolume: API.OperationMethod<
     StorageVirtualMachineNotFound,
     UnsupportedOperation,
   ],
+  operationName: "CreateVolume",
 }));
 export type CreateVolumeFromBackupError =
   | BackupNotFound
@@ -6547,6 +6561,7 @@ export const createVolumeFromBackup: API.OperationMethod<
     ServiceLimitExceeded,
     StorageVirtualMachineNotFound,
   ],
+  operationName: "CreateVolumeFromBackup",
 }));
 export type DeleteBackupError =
   | BackupBeingCopied
@@ -6584,6 +6599,7 @@ export const deleteBackup: API.OperationMethod<
     IncompatibleParameterError,
     InternalServerError,
   ],
+  operationName: "DeleteBackup",
 }));
 export type DeleteDataRepositoryAssociationError =
   | BadRequest
@@ -6616,6 +6632,7 @@ export const deleteDataRepositoryAssociation: API.OperationMethod<
     InternalServerError,
     ServiceLimitExceeded,
   ],
+  operationName: "DeleteDataRepositoryAssociation",
 }));
 export type DeleteFileCacheError =
   | BadRequest
@@ -6653,6 +6670,7 @@ export const deleteFileCache: API.OperationMethod<
     InternalServerError,
     ServiceLimitExceeded,
   ],
+  operationName: "DeleteFileCache",
 }));
 export type DeleteFileSystemError =
   | BadRequest
@@ -6724,6 +6742,7 @@ export const deleteFileSystem: API.OperationMethod<
     InternalServerError,
     ServiceLimitExceeded,
   ],
+  operationName: "DeleteFileSystem",
 }));
 export type DeleteSnapshotError =
   | BadRequest
@@ -6747,6 +6766,7 @@ export const deleteSnapshot: API.OperationMethod<
   input: DeleteSnapshotRequest,
   output: DeleteSnapshotResponse,
   errors: [BadRequest, InternalServerError, SnapshotNotFound],
+  operationName: "DeleteSnapshot",
 }));
 export type DeleteStorageVirtualMachineError =
   | BadRequest
@@ -6772,6 +6792,7 @@ export const deleteStorageVirtualMachine: API.OperationMethod<
     InternalServerError,
     StorageVirtualMachineNotFound,
   ],
+  operationName: "DeleteStorageVirtualMachine",
 }));
 export type DeleteVolumeError =
   | BadRequest
@@ -6799,6 +6820,7 @@ export const deleteVolume: API.OperationMethod<
     ServiceLimitExceeded,
     VolumeNotFound,
   ],
+  operationName: "DeleteVolume",
 }));
 export type DescribeBackupsError =
   | BackupNotFound
@@ -6864,6 +6886,7 @@ export const describeBackups: API.OperationMethod<
     InternalServerError,
     VolumeNotFound,
   ],
+  operationName: "DescribeBackups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6930,6 +6953,7 @@ export const describeDataRepositoryAssociations: API.OperationMethod<
     InternalServerError,
     InvalidDataRepositoryType,
   ],
+  operationName: "DescribeDataRepositoryAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6984,6 +7008,7 @@ export const describeDataRepositoryTasks: API.OperationMethod<
     FileSystemNotFound,
     InternalServerError,
   ],
+  operationName: "DescribeDataRepositoryTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7048,6 +7073,7 @@ export const describeFileCaches: API.OperationMethod<
   input: DescribeFileCachesRequest,
   output: DescribeFileCachesResponse,
   errors: [BadRequest, FileCacheNotFound, InternalServerError],
+  operationName: "DescribeFileCaches",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7088,6 +7114,7 @@ export const describeFileSystemAliases: API.OperationMethod<
   input: DescribeFileSystemAliasesRequest,
   output: DescribeFileSystemAliasesResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  operationName: "DescribeFileSystemAliases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7152,6 +7179,7 @@ export const describeFileSystems: API.OperationMethod<
   input: DescribeFileSystemsRequest,
   output: DescribeFileSystemsResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  operationName: "DescribeFileSystems",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7200,6 +7228,7 @@ export const describeS3AccessPointAttachments: API.OperationMethod<
     S3AccessPointAttachmentNotFound,
     UnsupportedOperation,
   ],
+  operationName: "DescribeS3AccessPointAttachments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7224,6 +7253,7 @@ export const describeSharedVpcConfiguration: API.OperationMethod<
   input: DescribeSharedVpcConfigurationRequest,
   output: DescribeSharedVpcConfigurationResponse,
   errors: [BadRequest, InternalServerError],
+  operationName: "DescribeSharedVpcConfiguration",
 }));
 export type DescribeSnapshotsError =
   | BadRequest
@@ -7282,6 +7312,7 @@ export const describeSnapshots: API.OperationMethod<
   input: DescribeSnapshotsRequest,
   output: DescribeSnapshotsResponse,
   errors: [BadRequest, InternalServerError, SnapshotNotFound],
+  operationName: "DescribeSnapshots",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7321,6 +7352,7 @@ export const describeStorageVirtualMachines: API.OperationMethod<
   input: DescribeStorageVirtualMachinesRequest,
   output: DescribeStorageVirtualMachinesResponse,
   errors: [BadRequest, InternalServerError, StorageVirtualMachineNotFound],
+  operationName: "DescribeStorageVirtualMachines",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7361,6 +7393,7 @@ export const describeVolumes: API.OperationMethod<
   input: DescribeVolumesRequest,
   output: DescribeVolumesResponse,
   errors: [BadRequest, InternalServerError, VolumeNotFound],
+  operationName: "DescribeVolumes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7399,6 +7432,7 @@ export const detachAndDeleteS3AccessPoint: API.OperationMethod<
     S3AccessPointAttachmentNotFound,
     UnsupportedOperation,
   ],
+  operationName: "DetachAndDeleteS3AccessPoint",
 }));
 export type DisassociateFileSystemAliasesError =
   | BadRequest
@@ -7426,6 +7460,7 @@ export const disassociateFileSystemAliases: API.OperationMethod<
   input: DisassociateFileSystemAliasesRequest,
   output: DisassociateFileSystemAliasesResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  operationName: "DisassociateFileSystemAliases",
 }));
 export type ListTagsForResourceError =
   | BadRequest
@@ -7489,6 +7524,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceDoesNotSupportTagging,
     ResourceNotFound,
   ],
+  operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7521,6 +7557,7 @@ export const releaseFileSystemNfsV3Locks: API.OperationMethod<
     InternalServerError,
     ServiceLimitExceeded,
   ],
+  operationName: "ReleaseFileSystemNfsV3Locks",
 }));
 export type RestoreVolumeFromSnapshotError =
   | BadRequest
@@ -7540,6 +7577,7 @@ export const restoreVolumeFromSnapshot: API.OperationMethod<
   input: RestoreVolumeFromSnapshotRequest,
   output: RestoreVolumeFromSnapshotResponse,
   errors: [BadRequest, InternalServerError, VolumeNotFound],
+  operationName: "RestoreVolumeFromSnapshot",
 }));
 export type StartMisconfiguredStateRecoveryError =
   | BadRequest
@@ -7559,6 +7597,7 @@ export const startMisconfiguredStateRecovery: API.OperationMethod<
   input: StartMisconfiguredStateRecoveryRequest,
   output: StartMisconfiguredStateRecoveryResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  operationName: "StartMisconfiguredStateRecovery",
 }));
 export type TagResourceError =
   | BadRequest
@@ -7585,6 +7624,7 @@ export const tagResource: API.OperationMethod<
     ResourceDoesNotSupportTagging,
     ResourceNotFound,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequest
@@ -7611,6 +7651,7 @@ export const untagResource: API.OperationMethod<
     ResourceDoesNotSupportTagging,
     ResourceNotFound,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateDataRepositoryAssociationError =
   | BadRequest
@@ -7640,6 +7681,7 @@ export const updateDataRepositoryAssociation: API.OperationMethod<
     InternalServerError,
     ServiceLimitExceeded,
   ],
+  operationName: "UpdateDataRepositoryAssociation",
 }));
 export type UpdateFileCacheError =
   | BadRequest
@@ -7671,6 +7713,7 @@ export const updateFileCache: API.OperationMethod<
     ServiceLimitExceeded,
     UnsupportedOperation,
   ],
+  operationName: "UpdateFileCache",
 }));
 export type UpdateFileSystemError =
   | BadRequest
@@ -7808,6 +7851,7 @@ export const updateFileSystem: API.OperationMethod<
     ServiceLimitExceeded,
     UnsupportedOperation,
   ],
+  operationName: "UpdateFileSystem",
 }));
 export type UpdateSharedVpcConfigurationError =
   | BadRequest
@@ -7834,6 +7878,7 @@ export const updateSharedVpcConfiguration: API.OperationMethod<
   input: UpdateSharedVpcConfigurationRequest,
   output: UpdateSharedVpcConfigurationResponse,
   errors: [BadRequest, IncompatibleParameterError, InternalServerError],
+  operationName: "UpdateSharedVpcConfiguration",
 }));
 export type UpdateSnapshotError =
   | BadRequest
@@ -7852,6 +7897,7 @@ export const updateSnapshot: API.OperationMethod<
   input: UpdateSnapshotRequest,
   output: UpdateSnapshotResponse,
   errors: [BadRequest, InternalServerError, SnapshotNotFound],
+  operationName: "UpdateSnapshot",
 }));
 export type UpdateStorageVirtualMachineError =
   | BadRequest
@@ -7878,6 +7924,7 @@ export const updateStorageVirtualMachine: API.OperationMethod<
     StorageVirtualMachineNotFound,
     UnsupportedOperation,
   ],
+  operationName: "UpdateStorageVirtualMachine",
 }));
 export type UpdateVolumeError =
   | BadRequest
@@ -7904,4 +7951,5 @@ export const updateVolume: API.OperationMethod<
     MissingVolumeConfiguration,
     VolumeNotFound,
   ],
+  operationName: "UpdateVolume",
 }));

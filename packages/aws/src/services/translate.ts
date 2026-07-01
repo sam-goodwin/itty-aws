@@ -1127,6 +1127,7 @@ export const createParallelData: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  operationName: "CreateParallelData",
 }));
 export type DeleteParallelDataError =
   | ConcurrentModificationException
@@ -1151,6 +1152,7 @@ export const deleteParallelData: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteParallelData",
 }));
 export type DeleteTerminologyError =
   | InternalServerException
@@ -1175,6 +1177,7 @@ export const deleteTerminology: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteTerminology",
 }));
 export type DescribeTextTranslationJobError =
   | InternalServerException
@@ -1198,6 +1201,7 @@ export const describeTextTranslationJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeTextTranslationJob",
 }));
 export type GetParallelDataError =
   | InternalServerException
@@ -1222,6 +1226,7 @@ export const getParallelData: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetParallelData",
 }));
 export type GetTerminologyError =
   | InternalServerException
@@ -1246,6 +1251,7 @@ export const getTerminology: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTerminology",
 }));
 export type ImportTerminologyError =
   | ConcurrentModificationException
@@ -1282,6 +1288,7 @@ export const importTerminology: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  operationName: "ImportTerminology",
 }));
 export type ListLanguagesError =
   | InternalServerException
@@ -1321,6 +1328,7 @@ export const listLanguages: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedDisplayLanguageCodeException,
   ],
+  operationName: "ListLanguages",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1363,6 +1371,7 @@ export const listParallelData: API.OperationMethod<
     InvalidParameterValueException,
     TooManyRequestsException,
   ],
+  operationName: "ListParallelData",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1392,6 +1401,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidParameterValueException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTerminologiesError =
   | InternalServerException
@@ -1429,6 +1439,7 @@ export const listTerminologies: API.OperationMethod<
     InvalidParameterValueException,
     TooManyRequestsException,
   ],
+  operationName: "ListTerminologies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1473,6 +1484,7 @@ export const listTextTranslationJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListTextTranslationJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1514,6 +1526,7 @@ export const startTextTranslationJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedLanguagePairException,
   ],
+  operationName: "StartTextTranslationJob",
 }));
 export type StopTextTranslationJobError =
   | InternalServerException
@@ -1544,6 +1557,7 @@ export const stopTextTranslationJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StopTextTranslationJob",
 }));
 export type TagResourceError =
   | ConcurrentModificationException
@@ -1573,6 +1587,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type TranslateDocumentError =
   | InternalServerException
@@ -1612,6 +1627,7 @@ export const translateDocument: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedLanguagePairException,
   ],
+  operationName: "TranslateDocument",
 }));
 export type TranslateTextError =
   | DetectedLanguageLowConfidenceException
@@ -1645,6 +1661,7 @@ export const translateText: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedLanguagePairException,
   ],
+  operationName: "TranslateText",
 }));
 export type UntagResourceError =
   | ConcurrentModificationException
@@ -1671,6 +1688,7 @@ export const untagResource: API.OperationMethod<
     InvalidParameterValueException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateParallelDataError =
   | ConcurrentModificationException
@@ -1704,4 +1722,5 @@ export const updateParallelData: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateParallelData",
 }));

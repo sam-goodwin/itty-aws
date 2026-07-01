@@ -5039,6 +5039,7 @@ export const associateFaces: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "AssociateFaces",
 }));
 export type CompareFacesError =
   | AccessDeniedException
@@ -5126,6 +5127,7 @@ export const compareFaces: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  operationName: "CompareFaces",
 }));
 export type CopyProjectVersionError =
   | AccessDeniedException
@@ -5185,6 +5187,7 @@ export const copyProjectVersion: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CopyProjectVersion",
 }));
 export type CreateCollectionError =
   | AccessDeniedException
@@ -5231,6 +5234,7 @@ export const createCollection: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateCollection",
 }));
 export type CreateDatasetError =
   | AccessDeniedException
@@ -5288,6 +5292,7 @@ export const createDataset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateDataset",
 }));
 export type CreateFaceLivenessSessionError =
   | AccessDeniedException
@@ -5325,6 +5330,7 @@ export const createFaceLivenessSession: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateFaceLivenessSession",
 }));
 export type CreateProjectError =
   | AccessDeniedException
@@ -5360,6 +5366,7 @@ export const createProject: API.OperationMethod<
     ResourceInUseException,
     ThrottlingException,
   ],
+  operationName: "CreateProject",
 }));
 export type CreateProjectVersionError =
   | AccessDeniedException
@@ -5422,6 +5429,7 @@ export const createProjectVersion: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateProjectVersion",
 }));
 export type CreateStreamProcessorError =
   | AccessDeniedException
@@ -5482,6 +5490,7 @@ export const createStreamProcessor: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateStreamProcessor",
 }));
 export type CreateUserError =
   | AccessDeniedException
@@ -5524,6 +5533,7 @@ export const createUser: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateUser",
 }));
 export type DeleteCollectionError =
   | AccessDeniedException
@@ -5557,6 +5567,7 @@ export const deleteCollection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteCollection",
 }));
 export type DeleteDatasetError =
   | AccessDeniedException
@@ -5600,6 +5611,7 @@ export const deleteDataset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteDataset",
 }));
 export type DeleteFacesError =
   | AccessDeniedException
@@ -5632,6 +5644,7 @@ export const deleteFaces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteFaces",
 }));
 export type DeleteProjectError =
   | AccessDeniedException
@@ -5671,6 +5684,7 @@ export const deleteProject: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteProject",
 }));
 export type DeleteProjectPolicyError =
   | AccessDeniedException
@@ -5707,6 +5721,7 @@ export const deleteProjectPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteProjectPolicy",
 }));
 export type DeleteProjectVersionError =
   | AccessDeniedException
@@ -5745,6 +5760,7 @@ export const deleteProjectVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteProjectVersion",
 }));
 export type DeleteStreamProcessorError =
   | AccessDeniedException
@@ -5776,6 +5792,7 @@ export const deleteStreamProcessor: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteStreamProcessor",
 }));
 export type DeleteUserError =
   | AccessDeniedException
@@ -5812,6 +5829,7 @@ export const deleteUser: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteUser",
 }));
 export type DescribeCollectionError =
   | AccessDeniedException
@@ -5845,6 +5863,7 @@ export const describeCollection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeCollection",
 }));
 export type DescribeDatasetError =
   | AccessDeniedException
@@ -5878,6 +5897,7 @@ export const describeDataset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeDataset",
 }));
 export type DescribeProjectsError =
   | AccessDeniedException
@@ -5923,6 +5943,7 @@ export const describeProjects: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  operationName: "DescribeProjects",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5979,6 +6000,7 @@ export const describeProjectVersions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeProjectVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6014,6 +6036,7 @@ export const describeStreamProcessor: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeStreamProcessor",
 }));
 export type DetectCustomLabelsError =
   | AccessDeniedException
@@ -6093,6 +6116,7 @@ export const detectCustomLabels: API.OperationMethod<
     ResourceNotReadyException,
     ThrottlingException,
   ],
+  operationName: "DetectCustomLabels",
 }));
 export type DetectFacesError =
   | AccessDeniedException
@@ -6145,6 +6169,7 @@ export const detectFaces: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  operationName: "DetectFaces",
 }));
 export type DetectLabelsError =
   | AccessDeniedException
@@ -6280,6 +6305,7 @@ export const detectLabels: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  operationName: "DetectLabels",
 }));
 export type DetectModerationLabelsError =
   | AccessDeniedException
@@ -6336,6 +6362,7 @@ export const detectModerationLabels: API.OperationMethod<
     ResourceNotReadyException,
     ThrottlingException,
   ],
+  operationName: "DetectModerationLabels",
 }));
 export type DetectProtectiveEquipmentError =
   | AccessDeniedException
@@ -6399,6 +6426,7 @@ export const detectProtectiveEquipment: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  operationName: "DetectProtectiveEquipment",
 }));
 export type DetectTextError =
   | AccessDeniedException
@@ -6460,6 +6488,7 @@ export const detectText: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  operationName: "DetectText",
 }));
 export type DisassociateFacesError =
   | AccessDeniedException
@@ -6499,6 +6528,7 @@ export const disassociateFaces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateFaces",
 }));
 export type DistributeDatasetEntriesError =
   | AccessDeniedException
@@ -6543,6 +6573,7 @@ export const distributeDatasetEntries: API.OperationMethod<
     ResourceNotReadyException,
     ThrottlingException,
   ],
+  operationName: "DistributeDatasetEntries",
 }));
 export type GetCelebrityInfoError =
   | AccessDeniedException
@@ -6579,6 +6610,7 @@ export const getCelebrityInfo: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetCelebrityInfo",
 }));
 export type GetCelebrityRecognitionError =
   | AccessDeniedException
@@ -6667,6 +6699,7 @@ export const getCelebrityRecognition: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetCelebrityRecognition",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6747,6 +6780,7 @@ export const getContentModeration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetContentModeration",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6814,6 +6848,7 @@ export const getFaceDetection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetFaceDetection",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6856,6 +6891,7 @@ export const getFaceLivenessSessionResults: API.OperationMethod<
     SessionNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetFaceLivenessSessionResults",
 }));
 export type GetFaceSearchError =
   | AccessDeniedException
@@ -6931,6 +6967,7 @@ export const getFaceSearch: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetFaceSearch",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7046,6 +7083,7 @@ export const getLabelDetection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetLabelDetection",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7080,6 +7118,7 @@ export const getMediaAnalysisJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetMediaAnalysisJob",
 }));
 export type GetPersonTrackingError =
   | AccessDeniedException
@@ -7157,6 +7196,7 @@ export const getPersonTracking: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetPersonTracking",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7232,6 +7272,7 @@ export const getSegmentDetection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetSegmentDetection",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7303,6 +7344,7 @@ export const getTextDetection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetTextDetection",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7435,6 +7477,7 @@ export const indexFaces: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "IndexFaces",
 }));
 export type ListCollectionsError =
   | AccessDeniedException
@@ -7488,6 +7531,7 @@ export const listCollections: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListCollections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7558,6 +7602,7 @@ export const listDatasetEntries: API.OperationMethod<
     ResourceNotReadyException,
     ThrottlingException,
   ],
+  operationName: "ListDatasetEntries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7619,6 +7664,7 @@ export const listDatasetLabels: API.OperationMethod<
     ResourceNotReadyException,
     ThrottlingException,
   ],
+  operationName: "ListDatasetLabels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7676,6 +7722,7 @@ export const listFaces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListFaces",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7725,6 +7772,7 @@ export const listMediaAnalysisJobs: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  operationName: "ListMediaAnalysisJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7781,6 +7829,7 @@ export const listProjectPolicies: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListProjectPolicies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7830,6 +7879,7 @@ export const listStreamProcessors: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  operationName: "ListStreamProcessors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7867,6 +7917,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListUsersError =
   | AccessDeniedException
@@ -7916,6 +7967,7 @@ export const listUsers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListUsers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7980,6 +8032,7 @@ export const putProjectPolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "PutProjectPolicy",
 }));
 export type RecognizeCelebritiesError =
   | AccessDeniedException
@@ -8043,6 +8096,7 @@ export const recognizeCelebrities: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  operationName: "RecognizeCelebrities",
 }));
 export type SearchFacesError =
   | AccessDeniedException
@@ -8088,6 +8142,7 @@ export const searchFaces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchFaces",
 }));
 export type SearchFacesByImageError =
   | AccessDeniedException
@@ -8163,6 +8218,7 @@ export const searchFacesByImage: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchFacesByImage",
 }));
 export type SearchUsersError =
   | AccessDeniedException
@@ -8196,6 +8252,7 @@ export const searchUsers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchUsers",
 }));
 export type SearchUsersByImageError =
   | AccessDeniedException
@@ -8240,6 +8297,7 @@ export const searchUsersByImage: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchUsersByImage",
 }));
 export type StartCelebrityRecognitionError =
   | AccessDeniedException
@@ -8286,6 +8344,7 @@ export const startCelebrityRecognition: API.OperationMethod<
     ThrottlingException,
     VideoTooLargeException,
   ],
+  operationName: "StartCelebrityRecognition",
 }));
 export type StartContentModerationError =
   | AccessDeniedException
@@ -8333,6 +8392,7 @@ export const startContentModeration: API.OperationMethod<
     ThrottlingException,
     VideoTooLargeException,
   ],
+  operationName: "StartContentModeration",
 }));
 export type StartFaceDetectionError =
   | AccessDeniedException
@@ -8380,6 +8440,7 @@ export const startFaceDetection: API.OperationMethod<
     ThrottlingException,
     VideoTooLargeException,
   ],
+  operationName: "StartFaceDetection",
 }));
 export type StartFaceSearchError =
   | AccessDeniedException
@@ -8426,6 +8487,7 @@ export const startFaceSearch: API.OperationMethod<
     ThrottlingException,
     VideoTooLargeException,
   ],
+  operationName: "StartFaceSearch",
 }));
 export type StartLabelDetectionError =
   | AccessDeniedException
@@ -8487,6 +8549,7 @@ export const startLabelDetection: API.OperationMethod<
     ThrottlingException,
     VideoTooLargeException,
   ],
+  operationName: "StartLabelDetection",
 }));
 export type StartMediaAnalysisJobError =
   | AccessDeniedException
@@ -8526,6 +8589,7 @@ export const startMediaAnalysisJob: API.OperationMethod<
     ResourceNotReadyException,
     ThrottlingException,
   ],
+  operationName: "StartMediaAnalysisJob",
 }));
 export type StartPersonTrackingError =
   | AccessDeniedException
@@ -8575,6 +8639,7 @@ export const startPersonTracking: API.OperationMethod<
     ThrottlingException,
     VideoTooLargeException,
   ],
+  operationName: "StartPersonTracking",
 }));
 export type StartProjectVersionError =
   | AccessDeniedException
@@ -8619,6 +8684,7 @@ export const startProjectVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "StartProjectVersion",
 }));
 export type StartSegmentDetectionError =
   | AccessDeniedException
@@ -8670,6 +8736,7 @@ export const startSegmentDetection: API.OperationMethod<
     ThrottlingException,
     VideoTooLargeException,
   ],
+  operationName: "StartSegmentDetection",
 }));
 export type StartStreamProcessorError =
   | AccessDeniedException
@@ -8704,6 +8771,7 @@ export const startStreamProcessor: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "StartStreamProcessor",
 }));
 export type StartTextDetectionError =
   | AccessDeniedException
@@ -8747,6 +8815,7 @@ export const startTextDetection: API.OperationMethod<
     ThrottlingException,
     VideoTooLargeException,
   ],
+  operationName: "StartTextDetection",
 }));
 export type StopProjectVersionError =
   | AccessDeniedException
@@ -8783,6 +8852,7 @@ export const stopProjectVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "StopProjectVersion",
 }));
 export type StopStreamProcessorError =
   | AccessDeniedException
@@ -8813,6 +8883,7 @@ export const stopStreamProcessor: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "StopStreamProcessor",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -8848,6 +8919,7 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -8880,6 +8952,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateDatasetEntriesError =
   | AccessDeniedException
@@ -8938,6 +9011,7 @@ export const updateDatasetEntries: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateDatasetEntries",
 }));
 export type UpdateStreamProcessorError =
   | AccessDeniedException
@@ -8968,4 +9042,5 @@ export const updateStreamProcessor: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateStreamProcessor",
 }));

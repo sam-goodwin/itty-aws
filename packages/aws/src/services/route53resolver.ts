@@ -3205,6 +3205,7 @@ export const associateFirewallRuleGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateFirewallRuleGroup",
 }));
 export type AssociateResolverEndpointIpAddressError =
   | InternalServiceErrorException
@@ -3239,6 +3240,7 @@ export const associateResolverEndpointIpAddress: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociateResolverEndpointIpAddress",
 }));
 export type AssociateResolverQueryLogConfigError =
   | AccessDeniedException
@@ -3278,6 +3280,7 @@ export const associateResolverQueryLogConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociateResolverQueryLogConfig",
 }));
 export type AssociateResolverRuleError =
   | InternalServiceErrorException
@@ -3313,6 +3316,7 @@ export const associateResolverRule: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "AssociateResolverRule",
 }));
 export type BatchCreateFirewallRuleError =
   | AccessDeniedException
@@ -3339,6 +3343,7 @@ export const batchCreateFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchCreateFirewallRule",
 }));
 export type BatchDeleteFirewallRuleError =
   | AccessDeniedException
@@ -3365,6 +3370,7 @@ export const batchDeleteFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchDeleteFirewallRule",
 }));
 export type BatchUpdateFirewallRuleError =
   | AccessDeniedException
@@ -3391,6 +3397,7 @@ export const batchUpdateFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchUpdateFirewallRule",
 }));
 export type CreateFirewallDomainListError =
   | AccessDeniedException
@@ -3417,6 +3424,7 @@ export const createFirewallDomainList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateFirewallDomainList",
 }));
 export type CreateFirewallRuleError =
   | AccessDeniedException
@@ -3453,6 +3461,7 @@ export const createFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateFirewallRule",
 }));
 export type CreateFirewallRuleGroupError =
   | AccessDeniedException
@@ -3480,6 +3489,7 @@ export const createFirewallRuleGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateFirewallRuleGroup",
 }));
 export type CreateOutpostResolverError =
   | AccessDeniedException
@@ -3508,6 +3518,7 @@ export const createOutpostResolver: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateOutpostResolver",
 }));
 export type CreateResolverEndpointError =
   | AccessDeniedException
@@ -3546,6 +3557,7 @@ export const createResolverEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateResolverEndpoint",
 }));
 export type CreateResolverQueryLogConfigError =
   | AccessDeniedException
@@ -3586,6 +3598,7 @@ export const createResolverQueryLogConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateResolverQueryLogConfig",
 }));
 export type CreateResolverRuleError =
   | AccessDeniedException
@@ -3621,6 +3634,7 @@ export const createResolverRule: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "CreateResolverRule",
 }));
 export type DeleteFirewallDomainListError =
   | AccessDeniedException
@@ -3647,6 +3661,7 @@ export const deleteFirewallDomainList: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteFirewallDomainList",
 }));
 export type DeleteFirewallRuleError =
   | AccessDeniedException
@@ -3675,6 +3690,7 @@ export const deleteFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteFirewallRule",
 }));
 export type DeleteFirewallRuleGroupError =
   | AccessDeniedException
@@ -3703,6 +3719,7 @@ export const deleteFirewallRuleGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteFirewallRuleGroup",
 }));
 export type DeleteOutpostResolverError =
   | AccessDeniedException
@@ -3731,6 +3748,7 @@ export const deleteOutpostResolver: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteOutpostResolver",
 }));
 export type DeleteResolverEndpointError =
   | InternalServiceErrorException
@@ -3763,6 +3781,7 @@ export const deleteResolverEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteResolverEndpoint",
 }));
 export type DeleteResolverQueryLogConfigError =
   | AccessDeniedException
@@ -3801,6 +3820,7 @@ export const deleteResolverQueryLogConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteResolverQueryLogConfig",
 }));
 export type DeleteResolverRuleError =
   | InternalServiceErrorException
@@ -3831,6 +3851,7 @@ export const deleteResolverRule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteResolverRule",
 }));
 export type DisassociateFirewallRuleGroupError =
   | AccessDeniedException
@@ -3859,6 +3880,7 @@ export const disassociateFirewallRuleGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateFirewallRuleGroup",
 }));
 export type DisassociateResolverEndpointIpAddressError =
   | InternalServiceErrorException
@@ -3891,6 +3913,7 @@ export const disassociateResolverEndpointIpAddress: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateResolverEndpointIpAddress",
 }));
 export type DisassociateResolverQueryLogConfigError =
   | AccessDeniedException
@@ -3928,6 +3951,7 @@ export const disassociateResolverQueryLogConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateResolverQueryLogConfig",
 }));
 export type DisassociateResolverRuleError =
   | InternalServiceErrorException
@@ -3957,6 +3981,7 @@ export const disassociateResolverRule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateResolverRule",
 }));
 export type GetFirewallConfigError =
   | AccessDeniedException
@@ -3984,6 +4009,7 @@ export const getFirewallConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFirewallConfig",
 }));
 export type GetFirewallDomainListError =
   | AccessDeniedException
@@ -4008,6 +4034,7 @@ export const getFirewallDomainList: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetFirewallDomainList",
 }));
 export type GetFirewallRuleGroupError =
   | AccessDeniedException
@@ -4032,6 +4059,7 @@ export const getFirewallRuleGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetFirewallRuleGroup",
 }));
 export type GetFirewallRuleGroupAssociationError =
   | AccessDeniedException
@@ -4056,6 +4084,7 @@ export const getFirewallRuleGroupAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetFirewallRuleGroupAssociation",
 }));
 export type GetFirewallRuleGroupPolicyError =
   | AccessDeniedException
@@ -4083,6 +4112,7 @@ export const getFirewallRuleGroupPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFirewallRuleGroupPolicy",
 }));
 export type GetOutpostResolverError =
   | AccessDeniedException
@@ -4110,6 +4140,7 @@ export const getOutpostResolver: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetOutpostResolver",
 }));
 export type GetResolverConfigError =
   | AccessDeniedException
@@ -4139,6 +4170,7 @@ export const getResolverConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResolverConfig",
 }));
 export type GetResolverDnssecConfigError =
   | AccessDeniedException
@@ -4167,6 +4199,7 @@ export const getResolverDnssecConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetResolverDnssecConfig",
 }));
 export type GetResolverEndpointError =
   | InternalServiceErrorException
@@ -4192,6 +4225,7 @@ export const getResolverEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetResolverEndpoint",
 }));
 export type GetResolverQueryLogConfigError =
   | AccessDeniedException
@@ -4221,6 +4255,7 @@ export const getResolverQueryLogConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetResolverQueryLogConfig",
 }));
 export type GetResolverQueryLogConfigAssociationError =
   | AccessDeniedException
@@ -4250,6 +4285,7 @@ export const getResolverQueryLogConfigAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetResolverQueryLogConfigAssociation",
 }));
 export type GetResolverQueryLogConfigPolicyError =
   | AccessDeniedException
@@ -4277,6 +4313,7 @@ export const getResolverQueryLogConfigPolicy: API.OperationMethod<
     InvalidRequestException,
     UnknownResourceException,
   ],
+  operationName: "GetResolverQueryLogConfigPolicy",
 }));
 export type GetResolverRuleError =
   | InternalServiceErrorException
@@ -4302,6 +4339,7 @@ export const getResolverRule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetResolverRule",
 }));
 export type GetResolverRuleAssociationError =
   | InternalServiceErrorException
@@ -4327,6 +4365,7 @@ export const getResolverRuleAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetResolverRuleAssociation",
 }));
 export type GetResolverRulePolicyError =
   | AccessDeniedException
@@ -4352,6 +4391,7 @@ export const getResolverRulePolicy: API.OperationMethod<
     InvalidParameterException,
     UnknownResourceException,
   ],
+  operationName: "GetResolverRulePolicy",
 }));
 export type ImportFirewallDomainsError =
   | AccessDeniedException
@@ -4393,6 +4433,7 @@ export const importFirewallDomains: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ImportFirewallDomains",
 }));
 export type ListFirewallConfigsError =
   | AccessDeniedException
@@ -4434,6 +4475,7 @@ export const listFirewallConfigs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFirewallConfigs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4481,6 +4523,7 @@ export const listFirewallDomainLists: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFirewallDomainLists",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4530,6 +4573,7 @@ export const listFirewallDomains: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFirewallDomains",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4577,6 +4621,7 @@ export const listFirewallRuleGroupAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFirewallRuleGroupAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4624,6 +4669,7 @@ export const listFirewallRuleGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFirewallRuleGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4675,6 +4721,7 @@ export const listFirewallRules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFirewallRules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4722,6 +4769,7 @@ export const listFirewallRuleTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFirewallRuleTypes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4769,6 +4817,7 @@ export const listOutpostResolvers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListOutpostResolvers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4821,6 +4870,7 @@ export const listResolverConfigs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListResolverConfigs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4870,6 +4920,7 @@ export const listResolverDnssecConfigs: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListResolverDnssecConfigs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4917,6 +4968,7 @@ export const listResolverEndpointIpAddresses: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListResolverEndpointIpAddresses",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4964,6 +5016,7 @@ export const listResolverEndpoints: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListResolverEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5013,6 +5066,7 @@ export const listResolverQueryLogConfigAssociations: API.OperationMethod<
     LimitExceededException,
     ThrottlingException,
   ],
+  operationName: "ListResolverQueryLogConfigAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5063,6 +5117,7 @@ export const listResolverQueryLogConfigs: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListResolverQueryLogConfigs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5110,6 +5165,7 @@ export const listResolverRuleAssociations: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListResolverRuleAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5157,6 +5213,7 @@ export const listResolverRules: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListResolverRules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5206,6 +5263,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5240,6 +5298,7 @@ export const putFirewallRuleGroupPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutFirewallRuleGroupPolicy",
 }));
 export type PutResolverQueryLogConfigPolicyError =
   | AccessDeniedException
@@ -5269,6 +5328,7 @@ export const putResolverQueryLogConfigPolicy: API.OperationMethod<
     InvalidRequestException,
     UnknownResourceException,
   ],
+  operationName: "PutResolverQueryLogConfigPolicy",
 }));
 export type PutResolverRulePolicyError =
   | AccessDeniedException
@@ -5296,6 +5356,7 @@ export const putResolverRulePolicy: API.OperationMethod<
     InvalidPolicyDocument,
     UnknownResourceException,
   ],
+  operationName: "PutResolverRulePolicy",
 }));
 export type TagResourceError =
   | InternalServiceErrorException
@@ -5326,6 +5387,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServiceErrorException
@@ -5352,6 +5414,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateFirewallConfigError =
   | AccessDeniedException
@@ -5379,6 +5442,7 @@ export const updateFirewallConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateFirewallConfig",
 }));
 export type UpdateFirewallDomainsError =
   | AccessDeniedException
@@ -5409,6 +5473,7 @@ export const updateFirewallDomains: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateFirewallDomains",
 }));
 export type UpdateFirewallRuleError =
   | AccessDeniedException
@@ -5437,6 +5502,7 @@ export const updateFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateFirewallRule",
 }));
 export type UpdateFirewallRuleGroupAssociationError =
   | AccessDeniedException
@@ -5465,6 +5531,7 @@ export const updateFirewallRuleGroupAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateFirewallRuleGroupAssociation",
 }));
 export type UpdateOutpostResolverError =
   | AccessDeniedException
@@ -5495,6 +5562,7 @@ export const updateOutpostResolver: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateOutpostResolver",
 }));
 export type UpdateResolverConfigError =
   | AccessDeniedException
@@ -5530,6 +5598,7 @@ export const updateResolverConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateResolverConfig",
 }));
 export type UpdateResolverDnssecConfigError =
   | AccessDeniedException
@@ -5558,6 +5627,7 @@ export const updateResolverDnssecConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateResolverDnssecConfig",
 }));
 export type UpdateResolverEndpointError =
   | AccessDeniedException
@@ -5587,6 +5657,7 @@ export const updateResolverEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateResolverEndpoint",
 }));
 export type UpdateResolverRuleError =
   | AccessDeniedException
@@ -5620,4 +5691,5 @@ export const updateResolverRule: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateResolverRule",
 }));

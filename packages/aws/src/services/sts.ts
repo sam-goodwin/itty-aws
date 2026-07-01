@@ -939,6 +939,7 @@ export const assumeRole: API.OperationMethod<
     PackedPolicyTooLargeException,
     RegionDisabledException,
   ],
+  operationName: "AssumeRole",
 }));
 export type AssumeRoleWithSAMLError =
   | ExpiredTokenException
@@ -1090,6 +1091,7 @@ export const assumeRoleWithSAML: API.OperationMethod<
     PackedPolicyTooLargeException,
     RegionDisabledException,
   ],
+  operationName: "AssumeRoleWithSAML",
 }));
 export type AssumeRoleWithWebIdentityError =
   | ExpiredTokenException
@@ -1237,6 +1239,7 @@ export const assumeRoleWithWebIdentity: API.OperationMethod<
     PackedPolicyTooLargeException,
     RegionDisabledException,
   ],
+  operationName: "AssumeRoleWithWebIdentity",
 }));
 export type AssumeRootError =
   | ExpiredTokenException
@@ -1274,6 +1277,7 @@ export const assumeRoot: API.OperationMethod<
   input: AssumeRootRequest,
   output: AssumeRootResponse,
   errors: [ExpiredTokenException, RegionDisabledException],
+  operationName: "AssumeRoot",
 }));
 export type DecodeAuthorizationMessageError =
   | InvalidAuthorizationMessageException
@@ -1320,6 +1324,7 @@ export const decodeAuthorizationMessage: API.OperationMethod<
   input: DecodeAuthorizationMessageRequest,
   output: DecodeAuthorizationMessageResponse,
   errors: [InvalidAuthorizationMessageException],
+  operationName: "DecodeAuthorizationMessage",
 }));
 export type GetAccessKeyInfoError = CommonErrors;
 /**
@@ -1353,6 +1358,7 @@ export const getAccessKeyInfo: API.OperationMethod<
   input: GetAccessKeyInfoRequest,
   output: GetAccessKeyInfoResponse,
   errors: [],
+  operationName: "GetAccessKeyInfo",
 }));
 export type GetCallerIdentityError = CommonErrors;
 /**
@@ -1375,6 +1381,7 @@ export const getCallerIdentity: API.OperationMethod<
   input: GetCallerIdentityRequest,
   output: GetCallerIdentityResponse,
   errors: [],
+  operationName: "GetCallerIdentity",
 }));
 export type GetDelegatedAccessTokenError =
   | ExpiredTradeInTokenException
@@ -1400,6 +1407,7 @@ export const getDelegatedAccessToken: API.OperationMethod<
     PackedPolicyTooLargeException,
     RegionDisabledException,
   ],
+  operationName: "GetDelegatedAccessToken",
 }));
 export type GetFederationTokenError =
   | MalformedPolicyDocumentException
@@ -1512,6 +1520,7 @@ export const getFederationToken: API.OperationMethod<
     PackedPolicyTooLargeException,
     RegionDisabledException,
   ],
+  operationName: "GetFederationToken",
 }));
 export type GetSessionTokenError = RegionDisabledException | CommonErrors;
 /**
@@ -1580,6 +1589,7 @@ export const getSessionToken: API.OperationMethod<
   input: GetSessionTokenRequest,
   output: GetSessionTokenResponse,
   errors: [RegionDisabledException],
+  operationName: "GetSessionToken",
 }));
 export type GetWebIdentityTokenError =
   | JWTPayloadSizeExceededException
@@ -1604,4 +1614,5 @@ export const getWebIdentityToken: API.OperationMethod<
     OutboundWebIdentityFederationDisabledException,
     SessionDurationEscalationException,
   ],
+  operationName: "GetWebIdentityToken",
 }));

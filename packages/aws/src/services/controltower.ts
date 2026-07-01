@@ -1642,6 +1642,7 @@ export const disableControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisableControl",
 }));
 export type GetBaselineOperationError =
   | AccessDeniedException
@@ -1668,6 +1669,7 @@ export const getBaselineOperation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetBaselineOperation",
 }));
 export type GetBaselineError =
   | AccessDeniedException
@@ -1694,6 +1696,7 @@ export const getBaseline: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetBaseline",
 }));
 export type ListBaselinesError =
   | AccessDeniedException
@@ -1733,6 +1736,7 @@ export const listBaselines: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBaselines",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1765,6 +1769,7 @@ export const getControlOperation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetControlOperation",
 }));
 export type ListControlOperationsError =
   | AccessDeniedException
@@ -1804,6 +1809,7 @@ export const listControlOperations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListControlOperations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1840,6 +1846,7 @@ export const enableBaseline: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "EnableBaseline",
 }));
 export type GetEnabledBaselineError =
   | AccessDeniedException
@@ -1866,6 +1873,7 @@ export const getEnabledBaseline: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEnabledBaseline",
 }));
 export type UpdateEnabledBaselineError =
   | AccessDeniedException
@@ -1896,6 +1904,7 @@ export const updateEnabledBaseline: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateEnabledBaseline",
 }));
 export type DisableBaselineError =
   | AccessDeniedException
@@ -1926,6 +1935,7 @@ export const disableBaseline: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisableBaseline",
 }));
 export type ListEnabledBaselinesError =
   | AccessDeniedException
@@ -1965,6 +1975,7 @@ export const listEnabledBaselines: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEnabledBaselines",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2001,6 +2012,7 @@ export const resetEnabledBaseline: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ResetEnabledBaseline",
 }));
 export type EnableControlError =
   | AccessDeniedException
@@ -2031,6 +2043,7 @@ export const enableControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "EnableControl",
 }));
 export type GetEnabledControlError =
   | AccessDeniedException
@@ -2057,6 +2070,7 @@ export const getEnabledControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEnabledControl",
 }));
 export type UpdateEnabledControlError =
   | AccessDeniedException
@@ -2093,6 +2107,7 @@ export const updateEnabledControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateEnabledControl",
 }));
 export type ListEnabledControlsError =
   | AccessDeniedException
@@ -2134,6 +2149,7 @@ export const listEnabledControls: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEnabledControls",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2170,6 +2186,7 @@ export const resetEnabledControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ResetEnabledControl",
 }));
 export type GetLandingZoneOperationError =
   | AccessDeniedException
@@ -2196,6 +2213,7 @@ export const getLandingZoneOperation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetLandingZoneOperation",
 }));
 export type ListLandingZoneOperationsError =
   | AccessDeniedException
@@ -2235,6 +2253,7 @@ export const listLandingZoneOperations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListLandingZoneOperations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2267,6 +2286,7 @@ export const createLandingZone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateLandingZone",
 }));
 export type GetLandingZoneError =
   | AccessDeniedException
@@ -2293,6 +2313,7 @@ export const getLandingZone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetLandingZone",
 }));
 export type UpdateLandingZoneError =
   | AccessDeniedException
@@ -2321,6 +2342,7 @@ export const updateLandingZone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateLandingZone",
 }));
 export type DeleteLandingZoneError =
   | AccessDeniedException
@@ -2351,6 +2373,7 @@ export const deleteLandingZone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteLandingZone",
 }));
 export type ListLandingZonesError =
   | AccessDeniedException
@@ -2392,6 +2415,7 @@ export const listLandingZones: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListLandingZones",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2426,6 +2450,7 @@ export const resetLandingZone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ResetLandingZone",
 }));
 export type ListTagsForResourceError =
   | InternalServerException
@@ -2448,6 +2473,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -2470,6 +2496,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -2492,4 +2519,5 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));

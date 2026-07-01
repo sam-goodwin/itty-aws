@@ -10778,6 +10778,7 @@ export const associateCertificate: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "AssociateCertificate",
 }));
 export type CancelJobError =
   | BadRequestException
@@ -10808,6 +10809,7 @@ export const cancelJob: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "CancelJob",
 }));
 export type CreateJobError =
   | BadRequestException
@@ -10838,6 +10840,7 @@ export const createJob: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "CreateJob",
 }));
 export type CreateJobTemplateError =
   | BadRequestException
@@ -10868,6 +10871,7 @@ export const createJobTemplate: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "CreateJobTemplate",
 }));
 export type CreatePresetError =
   | BadRequestException
@@ -10898,6 +10902,7 @@ export const createPreset: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "CreatePreset",
 }));
 export type CreateQueueError =
   | BadRequestException
@@ -10928,6 +10933,7 @@ export const createQueue: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "CreateQueue",
 }));
 export type CreateResourceShareError =
   | BadRequestException
@@ -10958,6 +10964,7 @@ export const createResourceShare: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "CreateResourceShare",
 }));
 export type DeleteJobTemplateError =
   | BadRequestException
@@ -10988,6 +10995,7 @@ export const deleteJobTemplate: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteJobTemplate",
 }));
 export type DeletePolicyError =
   | BadRequestException
@@ -11018,6 +11026,7 @@ export const deletePolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "DeletePolicy",
 }));
 export type DeletePresetError =
   | BadRequestException
@@ -11048,6 +11057,7 @@ export const deletePreset: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "DeletePreset",
 }));
 export type DeleteQueueError =
   | BadRequestException
@@ -11078,6 +11088,7 @@ export const deleteQueue: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteQueue",
 }));
 export type DescribeEndpointsError =
   | BadRequestException
@@ -11123,6 +11134,7 @@ export const describeEndpoints: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11159,6 +11171,7 @@ export const disassociateCertificate: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "DisassociateCertificate",
 }));
 export type GetJobError =
   | BadRequestException
@@ -11189,6 +11202,7 @@ export const getJob: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "GetJob",
 }));
 export type GetJobsQueryResultsError =
   | BadRequestException
@@ -11219,6 +11233,7 @@ export const getJobsQueryResults: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "GetJobsQueryResults",
 }));
 export type GetJobTemplateError =
   | BadRequestException
@@ -11249,6 +11264,7 @@ export const getJobTemplate: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "GetJobTemplate",
 }));
 export type GetPolicyError =
   | BadRequestException
@@ -11279,6 +11295,7 @@ export const getPolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "GetPolicy",
 }));
 export type GetPresetError =
   | BadRequestException
@@ -11309,6 +11326,7 @@ export const getPreset: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "GetPreset",
 }));
 export type GetQueueError =
   | BadRequestException
@@ -11339,6 +11357,7 @@ export const getQueue: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "GetQueue",
 }));
 export type ListJobsError =
   | BadRequestException
@@ -11384,6 +11403,7 @@ export const listJobs: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "ListJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11435,6 +11455,7 @@ export const listJobTemplates: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "ListJobTemplates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11486,6 +11507,7 @@ export const listPresets: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "ListPresets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11537,6 +11559,7 @@ export const listQueues: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "ListQueues",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11573,6 +11596,7 @@ export const listTagsForResource: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListVersionsError =
   | BadRequestException
@@ -11618,6 +11642,7 @@ export const listVersions: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "ListVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11654,6 +11679,7 @@ export const probe: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "Probe",
 }));
 export type PutPolicyError =
   | BadRequestException
@@ -11684,6 +11710,7 @@ export const putPolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "PutPolicy",
 }));
 export type SearchJobsError =
   | BadRequestException
@@ -11729,6 +11756,7 @@ export const searchJobs: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "SearchJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11765,6 +11793,7 @@ export const startJobsQuery: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "StartJobsQuery",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -11795,6 +11824,7 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -11825,6 +11855,7 @@ export const untagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateJobTemplateError =
   | BadRequestException
@@ -11855,6 +11886,7 @@ export const updateJobTemplate: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateJobTemplate",
 }));
 export type UpdatePresetError =
   | BadRequestException
@@ -11885,6 +11917,7 @@ export const updatePreset: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "UpdatePreset",
 }));
 export type UpdateQueueError =
   | BadRequestException
@@ -11915,4 +11948,5 @@ export const updateQueue: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateQueue",
 }));

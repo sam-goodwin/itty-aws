@@ -293,6 +293,7 @@ export const listRecommendedActions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRecommendedActions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

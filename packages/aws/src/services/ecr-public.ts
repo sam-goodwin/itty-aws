@@ -1379,6 +1379,7 @@ export const batchCheckLayerAvailability: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  operationName: "BatchCheckLayerAvailability",
 }));
 export type BatchDeleteImageError =
   | InvalidParameterException
@@ -1411,6 +1412,7 @@ export const batchDeleteImage: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  operationName: "BatchDeleteImage",
 }));
 export type CompleteLayerUploadError =
   | EmptyUploadException
@@ -1454,6 +1456,7 @@ export const completeLayerUpload: API.OperationMethod<
     UnsupportedCommandException,
     UploadNotFoundException,
   ],
+  operationName: "CompleteLayerUpload",
 }));
 export type CreateRepositoryError =
   | InvalidParameterException
@@ -1485,6 +1488,7 @@ export const createRepository: API.OperationMethod<
     TooManyTagsException,
     UnsupportedCommandException,
   ],
+  operationName: "CreateRepository",
 }));
 export type DeleteRepositoryError =
   | InvalidParameterException
@@ -1513,6 +1517,7 @@ export const deleteRepository: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  operationName: "DeleteRepository",
 }));
 export type DeleteRepositoryPolicyError =
   | InvalidParameterException
@@ -1539,6 +1544,7 @@ export const deleteRepositoryPolicy: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  operationName: "DeleteRepositoryPolicy",
 }));
 export type DescribeImagesError =
   | ImageNotFoundException
@@ -1586,6 +1592,7 @@ export const describeImages: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  operationName: "DescribeImages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1631,6 +1638,7 @@ export const describeImageTags: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  operationName: "DescribeImageTags",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1674,6 +1682,7 @@ export const describeRegistries: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  operationName: "DescribeRegistries",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1719,6 +1728,7 @@ export const describeRepositories: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  operationName: "DescribeRepositories",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1751,6 +1761,7 @@ export const getAuthorizationToken: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  operationName: "GetAuthorizationToken",
 }));
 export type GetRegistryCatalogDataError =
   | ServerException
@@ -1768,6 +1779,7 @@ export const getRegistryCatalogData: API.OperationMethod<
   input: GetRegistryCatalogDataRequest,
   output: GetRegistryCatalogDataResponse,
   errors: [ServerException, UnsupportedCommandException],
+  operationName: "GetRegistryCatalogData",
 }));
 export type GetRepositoryCatalogDataError =
   | InvalidParameterException
@@ -1795,6 +1807,7 @@ export const getRepositoryCatalogData: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  operationName: "GetRepositoryCatalogData",
 }));
 export type GetRepositoryPolicyError =
   | InvalidParameterException
@@ -1821,6 +1834,7 @@ export const getRepositoryPolicy: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  operationName: "GetRepositoryPolicy",
 }));
 export type InitiateLayerUploadError =
   | InvalidParameterException
@@ -1853,6 +1867,7 @@ export const initiateLayerUpload: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  operationName: "InitiateLayerUpload",
 }));
 export type ListTagsForResourceError =
   | InvalidParameterException
@@ -1877,6 +1892,7 @@ export const listTagsForResource: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutImageError =
   | ImageAlreadyExistsException
@@ -1921,6 +1937,7 @@ export const putImage: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  operationName: "PutImage",
 }));
 export type PutRegistryCatalogDataError =
   | InvalidParameterException
@@ -1943,6 +1960,7 @@ export const putRegistryCatalogData: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  operationName: "PutRegistryCatalogData",
 }));
 export type PutRepositoryCatalogDataError =
   | InvalidParameterException
@@ -1967,6 +1985,7 @@ export const putRepositoryCatalogData: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  operationName: "PutRepositoryCatalogData",
 }));
 export type SetRepositoryPolicyError =
   | InvalidParameterException
@@ -1993,6 +2012,7 @@ export const setRepositoryPolicy: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  operationName: "SetRepositoryPolicy",
 }));
 export type TagResourceError =
   | InvalidParameterException
@@ -2024,6 +2044,7 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     UnsupportedCommandException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InvalidParameterException
@@ -2052,6 +2073,7 @@ export const untagResource: API.OperationMethod<
     TooManyTagsException,
     UnsupportedCommandException,
   ],
+  operationName: "UntagResource",
 }));
 export type UploadLayerPartError =
   | InvalidLayerPartException
@@ -2090,4 +2112,5 @@ export const uploadLayerPart: API.OperationMethod<
     UnsupportedCommandException,
     UploadNotFoundException,
   ],
+  operationName: "UploadLayerPart",
 }));

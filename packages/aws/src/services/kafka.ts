@@ -5415,6 +5415,7 @@ export const batchAssociateScramSecret: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "BatchAssociateScramSecret",
 }));
 export type BatchDisassociateScramSecretError =
   | BadRequestException
@@ -5445,6 +5446,7 @@ export const batchDisassociateScramSecret: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "BatchDisassociateScramSecret",
 }));
 export type CreateClusterError =
   | BadRequestException
@@ -5475,6 +5477,7 @@ export const createCluster: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateCluster",
 }));
 export type CreateClusterV2Error =
   | BadRequestException
@@ -5505,6 +5508,7 @@ export const createClusterV2: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateClusterV2",
 }));
 export type CreateConfigurationError =
   | BadRequestException
@@ -5535,6 +5539,7 @@ export const createConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateConfiguration",
 }));
 export type CreateReplicatorError =
   | BadRequestException
@@ -5567,6 +5572,7 @@ export const createReplicator: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateReplicator",
 }));
 export type CreateTopicError =
   | BadRequestException
@@ -5615,6 +5621,7 @@ export const createTopic: API.OperationMethod<
     UnauthorizedException,
     UnknownTopicOrPartitionException,
   ],
+  operationName: "CreateTopic",
 }));
 export type CreateVpcConnectionError =
   | BadRequestException
@@ -5643,6 +5650,7 @@ export const createVpcConnection: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateVpcConnection",
 }));
 export type DeleteClusterError =
   | BadRequestException
@@ -5667,6 +5675,7 @@ export const deleteCluster: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "DeleteCluster",
 }));
 export type DeleteClusterPolicyError =
   | BadRequestException
@@ -5691,6 +5700,7 @@ export const deleteClusterPolicy: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "DeleteClusterPolicy",
 }));
 export type DeleteConfigurationError =
   | BadRequestException
@@ -5715,6 +5725,7 @@ export const deleteConfiguration: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "DeleteConfiguration",
 }));
 export type DeleteReplicatorError =
   | BadRequestException
@@ -5745,6 +5756,7 @@ export const deleteReplicator: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteReplicator",
 }));
 export type DeleteTopicError =
   | BadRequestException
@@ -5785,6 +5797,7 @@ export const deleteTopic: API.OperationMethod<
     ReassignmentInProgressException,
     UnknownTopicOrPartitionException,
   ],
+  operationName: "DeleteTopic",
 }));
 export type DeleteVpcConnectionError =
   | BadRequestException
@@ -5809,6 +5822,7 @@ export const deleteVpcConnection: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "DeleteVpcConnection",
 }));
 export type DescribeClusterError =
   | BadRequestException
@@ -5835,6 +5849,7 @@ export const describeCluster: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribeCluster",
 }));
 export type DescribeClusterOperationError =
   | BadRequestException
@@ -5861,6 +5876,7 @@ export const describeClusterOperation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribeClusterOperation",
 }));
 export type DescribeClusterOperationV2Error =
   | BadRequestException
@@ -5891,6 +5907,7 @@ export const describeClusterOperationV2: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DescribeClusterOperationV2",
 }));
 export type DescribeClusterV2Error =
   | BadRequestException
@@ -5917,6 +5934,7 @@ export const describeClusterV2: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribeClusterV2",
 }));
 export type DescribeConfigurationError =
   | BadRequestException
@@ -5945,6 +5963,7 @@ export const describeConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "DescribeConfiguration",
 }));
 export type DescribeConfigurationRevisionError =
   | BadRequestException
@@ -5973,6 +5992,7 @@ export const describeConfigurationRevision: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "DescribeConfigurationRevision",
 }));
 export type DescribeReplicatorError =
   | BadRequestException
@@ -6003,6 +6023,7 @@ export const describeReplicator: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DescribeReplicator",
 }));
 export type DescribeTopicError =
   | BadRequestException
@@ -6029,6 +6050,7 @@ export const describeTopic: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribeTopic",
 }));
 export type DescribeTopicPartitionsError =
   | BadRequestException
@@ -6070,6 +6092,7 @@ export const describeTopicPartitions: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribeTopicPartitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6104,6 +6127,7 @@ export const describeVpcConnection: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "DescribeVpcConnection",
 }));
 export type GetBootstrapBrokersError =
   | BadRequestException
@@ -6130,6 +6154,7 @@ export const getBootstrapBrokers: API.OperationMethod<
     InternalServerErrorException,
     UnauthorizedException,
   ],
+  operationName: "GetBootstrapBrokers",
 }));
 export type GetClusterPolicyError =
   | BadRequestException
@@ -6154,6 +6179,7 @@ export const getClusterPolicy: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "GetClusterPolicy",
 }));
 export type GetCompatibleKafkaVersionsError =
   | BadRequestException
@@ -6184,6 +6210,7 @@ export const getCompatibleKafkaVersions: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetCompatibleKafkaVersions",
 }));
 export type ListClientVpcConnectionsError =
   | BadRequestException
@@ -6225,6 +6252,7 @@ export const listClientVpcConnections: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "ListClientVpcConnections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6270,6 +6298,7 @@ export const listClusterOperations: API.OperationMethod<
     InternalServerErrorException,
     UnauthorizedException,
   ],
+  operationName: "ListClusterOperations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6321,6 +6350,7 @@ export const listClusterOperationsV2: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "ListClusterOperationsV2",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6366,6 +6396,7 @@ export const listClusters: API.OperationMethod<
     InternalServerErrorException,
     UnauthorizedException,
   ],
+  operationName: "ListClusters",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6411,6 +6442,7 @@ export const listClustersV2: API.OperationMethod<
     InternalServerErrorException,
     UnauthorizedException,
   ],
+  operationName: "ListClustersV2",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6460,6 +6492,7 @@ export const listConfigurationRevisions: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "ListConfigurationRevisions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6507,6 +6540,7 @@ export const listConfigurations: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "ListConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6552,6 +6586,7 @@ export const listKafkaVersions: API.OperationMethod<
     InternalServerErrorException,
     UnauthorizedException,
   ],
+  operationName: "ListKafkaVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6597,6 +6632,7 @@ export const listNodes: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "ListNodes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6648,6 +6684,7 @@ export const listReplicators: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "ListReplicators",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6699,6 +6736,7 @@ export const listScramSecrets: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "ListScramSecrets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6727,6 +6765,7 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTopicsError =
   | BadRequestException
@@ -6768,6 +6807,7 @@ export const listTopics: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "ListTopics",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6815,6 +6855,7 @@ export const listVpcConnections: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "ListVpcConnections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6843,6 +6884,7 @@ export const putClusterPolicy: API.OperationMethod<
     ForbiddenException,
     InternalServerErrorException,
   ],
+  operationName: "PutClusterPolicy",
 }));
 export type RebootBrokerError =
   | BadRequestException
@@ -6873,6 +6915,7 @@ export const rebootBroker: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "RebootBroker",
 }));
 export type RejectClientVpcConnectionError =
   | BadRequestException
@@ -6899,6 +6942,7 @@ export const rejectClientVpcConnection: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "RejectClientVpcConnection",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -6921,6 +6965,7 @@ export const tagResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -6943,6 +6988,7 @@ export const untagResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateBrokerCountError =
   | BadRequestException
@@ -6969,6 +7015,7 @@ export const updateBrokerCount: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "UpdateBrokerCount",
 }));
 export type UpdateBrokerStorageError =
   | BadRequestException
@@ -6995,6 +7042,7 @@ export const updateBrokerStorage: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "UpdateBrokerStorage",
 }));
 export type UpdateBrokerTypeError =
   | BadRequestException
@@ -7025,6 +7073,7 @@ export const updateBrokerType: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateBrokerType",
 }));
 export type UpdateClusterConfigurationError =
   | BadRequestException
@@ -7053,6 +7102,7 @@ export const updateClusterConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "UpdateClusterConfiguration",
 }));
 export type UpdateClusterKafkaVersionError =
   | BadRequestException
@@ -7083,6 +7133,7 @@ export const updateClusterKafkaVersion: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateClusterKafkaVersion",
 }));
 export type UpdateConfigurationError =
   | BadRequestException
@@ -7111,6 +7162,7 @@ export const updateConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "UpdateConfiguration",
 }));
 export type UpdateConnectivityError =
   | BadRequestException
@@ -7139,6 +7191,7 @@ export const updateConnectivity: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "UpdateConnectivity",
 }));
 export type UpdateMonitoringError =
   | BadRequestException
@@ -7165,6 +7218,7 @@ export const updateMonitoring: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "UpdateMonitoring",
 }));
 export type UpdateRebalancingError =
   | BadRequestException
@@ -7195,6 +7249,7 @@ export const updateRebalancing: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateRebalancing",
 }));
 export type UpdateReplicationInfoError =
   | BadRequestException
@@ -7225,6 +7280,7 @@ export const updateReplicationInfo: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateReplicationInfo",
 }));
 export type UpdateSecurityError =
   | BadRequestException
@@ -7255,6 +7311,7 @@ export const updateSecurity: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateSecurity",
 }));
 export type UpdateStorageError =
   | BadRequestException
@@ -7285,6 +7342,7 @@ export const updateStorage: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateStorage",
 }));
 export type UpdateTopicError =
   | BadRequestException
@@ -7329,4 +7387,5 @@ export const updateTopic: API.OperationMethod<
     UnauthorizedException,
     UnknownTopicOrPartitionException,
   ],
+  operationName: "UpdateTopic",
 }));

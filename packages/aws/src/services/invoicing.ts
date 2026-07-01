@@ -1378,6 +1378,7 @@ export const batchGetInvoiceProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchGetInvoiceProfile",
 }));
 export type CreateInvoiceUnitError =
   | AccessDeniedException
@@ -1402,6 +1403,7 @@ export const createInvoiceUnit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateInvoiceUnit",
 }));
 export type CreateProcurementPortalPreferenceError =
   | AccessDeniedException
@@ -1432,6 +1434,7 @@ export const createProcurementPortalPreference: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateProcurementPortalPreference",
 }));
 export type DeleteInvoiceUnitError =
   | AccessDeniedException
@@ -1458,6 +1461,7 @@ export const deleteInvoiceUnit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteInvoiceUnit",
 }));
 export type DeleteProcurementPortalPreferenceError =
   | AccessDeniedException
@@ -1488,6 +1492,7 @@ export const deleteProcurementPortalPreference: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteProcurementPortalPreference",
 }));
 export type GetInvoicePDFError =
   | AccessDeniedException
@@ -1514,6 +1519,7 @@ export const getInvoicePDF: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetInvoicePDF",
 }));
 export type GetInvoiceUnitError =
   | AccessDeniedException
@@ -1540,6 +1546,7 @@ export const getInvoiceUnit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetInvoiceUnit",
 }));
 export type GetProcurementPortalPreferenceError =
   | AccessDeniedException
@@ -1572,6 +1579,7 @@ export const getProcurementPortalPreference: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetProcurementPortalPreference",
 }));
 export type ListInvoiceSummariesError =
   | AccessDeniedException
@@ -1613,6 +1621,7 @@ export const listInvoiceSummaries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListInvoiceSummaries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1658,6 +1667,7 @@ export const listInvoiceUnits: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListInvoiceUnits",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1709,6 +1719,7 @@ export const listProcurementPortalPreferences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListProcurementPortalPreferences",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1741,6 +1752,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutProcurementPortalPreferenceError =
   | AccessDeniedException
@@ -1773,6 +1785,7 @@ export const putProcurementPortalPreference: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutProcurementPortalPreference",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1801,6 +1814,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1827,6 +1841,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateInvoiceUnitError =
   | AccessDeniedException
@@ -1853,6 +1868,7 @@ export const updateInvoiceUnit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateInvoiceUnit",
 }));
 export type UpdateProcurementPortalPreferenceStatusError =
   | AccessDeniedException
@@ -1885,4 +1901,5 @@ export const updateProcurementPortalPreferenceStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateProcurementPortalPreferenceStatus",
 }));

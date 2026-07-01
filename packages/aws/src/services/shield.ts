@@ -1723,6 +1723,7 @@ export const associateDRTLogBucket: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  operationName: "AssociateDRTLogBucket",
 }));
 export type AssociateDRTRoleError =
   | AccessDeniedForDependencyException
@@ -1762,6 +1763,7 @@ export const associateDRTRole: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  operationName: "AssociateDRTRole",
 }));
 export type AssociateHealthCheckError =
   | InternalErrorException
@@ -1792,6 +1794,7 @@ export const associateHealthCheck: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  operationName: "AssociateHealthCheck",
 }));
 export type AssociateProactiveEngagementDetailsError =
   | InternalErrorException
@@ -1824,6 +1827,7 @@ export const associateProactiveEngagementDetails: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  operationName: "AssociateProactiveEngagementDetails",
 }));
 export type CreateProtectionError =
   | InternalErrorException
@@ -1862,6 +1866,7 @@ export const createProtection: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateProtection",
 }));
 export type CreateProtectionGroupError =
   | InternalErrorException
@@ -1890,6 +1895,7 @@ export const createProtectionGroup: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateProtectionGroup",
 }));
 export type CreateSubscriptionError =
   | InternalErrorException
@@ -1912,6 +1918,7 @@ export const createSubscription: API.OperationMethod<
   input: CreateSubscriptionRequest,
   output: CreateSubscriptionResponse,
   errors: [InternalErrorException, ResourceAlreadyExistsException],
+  operationName: "CreateSubscription",
 }));
 export type DeleteProtectionError =
   | InternalErrorException
@@ -1934,6 +1941,7 @@ export const deleteProtection: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteProtection",
 }));
 export type DeleteProtectionGroupError =
   | InternalErrorException
@@ -1956,6 +1964,7 @@ export const deleteProtectionGroup: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteProtectionGroup",
 }));
 export type DeleteSubscriptionError =
   | InternalErrorException
@@ -1978,6 +1987,7 @@ export const deleteSubscription: API.OperationMethod<
     LockedSubscriptionException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteSubscription",
 }));
 export type DescribeAttackError =
   | AccessDeniedException
@@ -1995,6 +2005,7 @@ export const describeAttack: API.OperationMethod<
   input: DescribeAttackRequest,
   output: DescribeAttackResponse,
   errors: [AccessDeniedException, InternalErrorException],
+  operationName: "DescribeAttack",
 }));
 export type DescribeAttackStatisticsError =
   | InternalErrorException
@@ -2015,6 +2026,7 @@ export const describeAttackStatistics: API.OperationMethod<
   input: DescribeAttackStatisticsRequest,
   output: DescribeAttackStatisticsResponse,
   errors: [InternalErrorException],
+  operationName: "DescribeAttackStatistics",
 }));
 export type DescribeDRTAccessError =
   | InternalErrorException
@@ -2032,6 +2044,7 @@ export const describeDRTAccess: API.OperationMethod<
   input: DescribeDRTAccessRequest,
   output: DescribeDRTAccessResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
+  operationName: "DescribeDRTAccess",
 }));
 export type DescribeEmergencyContactSettingsError =
   | InternalErrorException
@@ -2049,6 +2062,7 @@ export const describeEmergencyContactSettings: API.OperationMethod<
   input: DescribeEmergencyContactSettingsRequest,
   output: DescribeEmergencyContactSettingsResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
+  operationName: "DescribeEmergencyContactSettings",
 }));
 export type DescribeProtectionError =
   | InternalErrorException
@@ -2071,6 +2085,7 @@ export const describeProtection: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeProtection",
 }));
 export type DescribeProtectionGroupError =
   | InternalErrorException
@@ -2088,6 +2103,7 @@ export const describeProtectionGroup: API.OperationMethod<
   input: DescribeProtectionGroupRequest,
   output: DescribeProtectionGroupResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
+  operationName: "DescribeProtectionGroup",
 }));
 export type DescribeSubscriptionError =
   | InternalErrorException
@@ -2105,6 +2121,7 @@ export const describeSubscription: API.OperationMethod<
   input: DescribeSubscriptionRequest,
   output: DescribeSubscriptionResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
+  operationName: "DescribeSubscription",
 }));
 export type DisableApplicationLayerAutomaticResponseError =
   | InternalErrorException
@@ -2132,6 +2149,7 @@ export const disableApplicationLayerAutomaticResponse: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  operationName: "DisableApplicationLayerAutomaticResponse",
 }));
 export type DisableProactiveEngagementError =
   | InternalErrorException
@@ -2158,6 +2176,7 @@ export const disableProactiveEngagement: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  operationName: "DisableProactiveEngagement",
 }));
 export type DisassociateDRTLogBucketError =
   | AccessDeniedForDependencyException
@@ -2186,6 +2205,7 @@ export const disassociateDRTLogBucket: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  operationName: "DisassociateDRTLogBucket",
 }));
 export type DisassociateDRTRoleError =
   | InternalErrorException
@@ -2210,6 +2230,7 @@ export const disassociateDRTRole: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  operationName: "DisassociateDRTRole",
 }));
 export type DisassociateHealthCheckError =
   | InternalErrorException
@@ -2238,6 +2259,7 @@ export const disassociateHealthCheck: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  operationName: "DisassociateHealthCheck",
 }));
 export type EnableApplicationLayerAutomaticResponseError =
   | InternalErrorException
@@ -2280,6 +2302,7 @@ export const enableApplicationLayerAutomaticResponse: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  operationName: "EnableApplicationLayerAutomaticResponse",
 }));
 export type EnableProactiveEngagementError =
   | InternalErrorException
@@ -2306,6 +2329,7 @@ export const enableProactiveEngagement: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  operationName: "EnableProactiveEngagement",
 }));
 export type GetSubscriptionStateError = InternalErrorException | CommonErrors;
 /**
@@ -2320,6 +2344,7 @@ export const getSubscriptionState: API.OperationMethod<
   input: GetSubscriptionStateRequest,
   output: GetSubscriptionStateResponse,
   errors: [InternalErrorException],
+  operationName: "GetSubscriptionState",
 }));
 export type ListAttacksError =
   | InternalErrorException
@@ -2358,6 +2383,7 @@ export const listAttacks: API.OperationMethod<
     InvalidOperationException,
     InvalidParameterException,
   ],
+  operationName: "ListAttacks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2402,6 +2428,7 @@ export const listProtectionGroups: API.OperationMethod<
     InvalidPaginationTokenException,
     ResourceNotFoundException,
   ],
+  operationName: "ListProtectionGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2445,6 +2472,7 @@ export const listProtections: API.OperationMethod<
     InvalidPaginationTokenException,
     ResourceNotFoundException,
   ],
+  operationName: "ListProtections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2488,6 +2516,7 @@ export const listResourcesInProtectionGroup: API.OperationMethod<
     InvalidPaginationTokenException,
     ResourceNotFoundException,
   ],
+  operationName: "ListResourcesInProtectionGroup",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2515,6 +2544,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidResourceException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalErrorException
@@ -2539,6 +2569,7 @@ export const tagResource: API.OperationMethod<
     InvalidResourceException,
     ResourceNotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalErrorException
@@ -2563,6 +2594,7 @@ export const untagResource: API.OperationMethod<
     InvalidResourceException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateApplicationLayerAutomaticResponseError =
   | InternalErrorException
@@ -2589,6 +2621,7 @@ export const updateApplicationLayerAutomaticResponse: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateApplicationLayerAutomaticResponse",
 }));
 export type UpdateEmergencyContactSettingsError =
   | InternalErrorException
@@ -2613,6 +2646,7 @@ export const updateEmergencyContactSettings: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateEmergencyContactSettings",
 }));
 export type UpdateProtectionGroupError =
   | InternalErrorException
@@ -2637,6 +2671,7 @@ export const updateProtectionGroup: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateProtectionGroup",
 }));
 export type UpdateSubscriptionError =
   | InternalErrorException
@@ -2666,4 +2701,5 @@ export const updateSubscription: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateSubscription",
 }));

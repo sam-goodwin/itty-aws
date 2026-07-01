@@ -709,6 +709,7 @@ export const deleteConnection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteConnection",
 }));
 export type DeleteThingShadowError =
   | InternalFailureException
@@ -745,6 +746,7 @@ export const deleteThingShadow: API.OperationMethod<
     UnauthorizedException,
     UnsupportedDocumentEncodingException,
   ],
+  operationName: "DeleteThingShadow",
 }));
 export type GetConnectionError =
   | ForbiddenException
@@ -773,6 +775,7 @@ export const getConnection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetConnection",
 }));
 export type GetRetainedMessageError =
   | InternalFailureException
@@ -812,6 +815,7 @@ export const getRetainedMessage: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "GetRetainedMessage",
 }));
 export type GetThingShadowError =
   | InternalFailureException
@@ -849,6 +853,7 @@ export const getThingShadow: API.OperationMethod<
     UnauthorizedException,
     UnsupportedDocumentEncodingException,
   ],
+  operationName: "GetThingShadow",
 }));
 export type ListNamedShadowsForThingError =
   | InternalFailureException
@@ -881,6 +886,7 @@ export const listNamedShadowsForThing: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "ListNamedShadowsForThing",
 }));
 export type ListRetainedMessagesError =
   | InternalFailureException
@@ -937,6 +943,7 @@ export const listRetainedMessages: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "ListRetainedMessages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -986,6 +993,7 @@ export const listSubscriptions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListSubscriptions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1027,6 +1035,7 @@ export const publish: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "Publish",
 }));
 export type SendDirectMessageError =
   | ForbiddenException
@@ -1067,6 +1076,7 @@ export const sendDirectMessage: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "SendDirectMessage",
 }));
 export type UpdateThingShadowError =
   | ConflictException
@@ -1106,4 +1116,5 @@ export const updateThingShadow: API.OperationMethod<
     UnauthorizedException,
     UnsupportedDocumentEncodingException,
   ],
+  operationName: "UpdateThingShadow",
 }));

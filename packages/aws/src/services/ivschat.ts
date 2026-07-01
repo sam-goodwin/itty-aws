@@ -1033,6 +1033,7 @@ export const createChatToken: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreateChatToken",
 }));
 export type CreateLoggingConfigurationError =
   | AccessDeniedException
@@ -1062,6 +1063,7 @@ export const createLoggingConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateLoggingConfiguration",
 }));
 export type CreateRoomError =
   | AccessDeniedException
@@ -1090,6 +1092,7 @@ export const createRoom: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateRoom",
 }));
 export type DeleteLoggingConfigurationError =
   | AccessDeniedException
@@ -1116,6 +1119,7 @@ export const deleteLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteLoggingConfiguration",
 }));
 export type DeleteMessageError =
   | AccessDeniedException
@@ -1145,6 +1149,7 @@ export const deleteMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteMessage",
 }));
 export type DeleteRoomError =
   | AccessDeniedException
@@ -1169,6 +1174,7 @@ export const deleteRoom: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteRoom",
 }));
 export type DisconnectUserError =
   | AccessDeniedException
@@ -1197,6 +1203,7 @@ export const disconnectUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisconnectUser",
 }));
 export type GetLoggingConfigurationError =
   | AccessDeniedException
@@ -1219,6 +1226,7 @@ export const getLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetLoggingConfiguration",
 }));
 export type GetRoomError =
   | AccessDeniedException
@@ -1241,6 +1249,7 @@ export const getRoom: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetRoom",
 }));
 export type ListLoggingConfigurationsError =
   | AccessDeniedException
@@ -1274,6 +1283,7 @@ export const listLoggingConfigurations: API.OperationMethod<
   input: ListLoggingConfigurationsRequest,
   output: ListLoggingConfigurationsResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListLoggingConfigurations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1317,6 +1327,7 @@ export const listRooms: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListRooms",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1344,6 +1355,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type SendEventError =
   | AccessDeniedException
@@ -1372,6 +1384,7 @@ export const sendEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendEvent",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -1394,6 +1407,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -1416,6 +1430,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateLoggingConfigurationError =
   | AccessDeniedException
@@ -1442,6 +1457,7 @@ export const updateLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateLoggingConfiguration",
 }));
 export type UpdateRoomError =
   | AccessDeniedException
@@ -1466,4 +1482,5 @@ export const updateRoom: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateRoom",
 }));

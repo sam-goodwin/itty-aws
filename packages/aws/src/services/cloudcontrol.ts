@@ -582,6 +582,7 @@ export const cancelResourceRequest: API.OperationMethod<
   input: CancelResourceRequestInput,
   output: CancelResourceRequestOutput,
   errors: [ConcurrentModificationException, RequestTokenNotFoundException],
+  operationName: "CancelResourceRequest",
 }));
 export type CreateResourceError =
   | AlreadyExistsException
@@ -641,6 +642,7 @@ export const createResource: API.OperationMethod<
     TypeNotFoundException,
     UnsupportedActionException,
   ],
+  operationName: "CreateResource",
 }));
 export type DeleteResourceError =
   | AlreadyExistsException
@@ -700,6 +702,7 @@ export const deleteResource: API.OperationMethod<
     TypeNotFoundException,
     UnsupportedActionException,
   ],
+  operationName: "DeleteResource",
 }));
 export type GetResourceError =
   | AlreadyExistsException
@@ -754,6 +757,7 @@ export const getResource: API.OperationMethod<
     TypeNotFoundException,
     UnsupportedActionException,
   ],
+  operationName: "GetResource",
 }));
 export type GetResourceRequestStatusError =
   | RequestTokenNotFoundException
@@ -772,6 +776,7 @@ export const getResourceRequestStatus: API.OperationMethod<
   input: GetResourceRequestStatusInput,
   output: GetResourceRequestStatusOutput,
   errors: [RequestTokenNotFoundException],
+  operationName: "GetResourceRequestStatus",
 }));
 export type ListResourceRequestsError = CommonErrors;
 /**
@@ -805,6 +810,7 @@ export const listResourceRequests: API.OperationMethod<
   input: ListResourceRequestsInput,
   output: ListResourceRequestsOutput,
   errors: [],
+  operationName: "ListResourceRequests",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -879,6 +885,7 @@ export const listResources: API.OperationMethod<
     TypeNotFoundException,
     UnsupportedActionException,
   ],
+  operationName: "ListResources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -954,4 +961,5 @@ export const updateResource: API.OperationMethod<
     TypeNotFoundException,
     UnsupportedActionException,
   ],
+  operationName: "UpdateResource",
 }));

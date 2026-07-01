@@ -2791,6 +2791,7 @@ export const createMediaCapturePipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateMediaCapturePipeline",
 }));
 export type CreateMediaConcatenationPipelineError =
   | BadRequestException
@@ -2821,6 +2822,7 @@ export const createMediaConcatenationPipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateMediaConcatenationPipeline",
 }));
 export type CreateMediaInsightsPipelineError =
   | BadRequestException
@@ -2853,6 +2855,7 @@ export const createMediaInsightsPipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateMediaInsightsPipeline",
 }));
 export type CreateMediaInsightsPipelineConfigurationError =
   | BadRequestException
@@ -2886,6 +2889,7 @@ export const createMediaInsightsPipelineConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateMediaInsightsPipelineConfiguration",
 }));
 export type CreateMediaLiveConnectorPipelineError =
   | BadRequestException
@@ -2916,6 +2920,7 @@ export const createMediaLiveConnectorPipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateMediaLiveConnectorPipeline",
 }));
 export type CreateMediaPipelineKinesisVideoStreamPoolError =
   | BadRequestException
@@ -2964,6 +2969,7 @@ export const createMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateMediaPipelineKinesisVideoStreamPool",
 }));
 export type CreateMediaStreamPipelineError =
   | BadRequestException
@@ -2996,6 +3002,7 @@ export const createMediaStreamPipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateMediaStreamPipeline",
 }));
 export type DeleteMediaCapturePipelineError =
   | BadRequestException
@@ -3026,6 +3033,7 @@ export const deleteMediaCapturePipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteMediaCapturePipeline",
 }));
 export type DeleteMediaInsightsPipelineConfigurationError =
   | BadRequestException
@@ -3058,6 +3066,7 @@ export const deleteMediaInsightsPipelineConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteMediaInsightsPipelineConfiguration",
 }));
 export type DeleteMediaPipelineError =
   | BadRequestException
@@ -3090,6 +3099,7 @@ export const deleteMediaPipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteMediaPipeline",
 }));
 export type DeleteMediaPipelineKinesisVideoStreamPoolError =
   | BadRequestException
@@ -3122,6 +3132,7 @@ export const deleteMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteMediaPipelineKinesisVideoStreamPool",
 }));
 export type GetMediaCapturePipelineError =
   | BadRequestException
@@ -3152,6 +3163,7 @@ export const getMediaCapturePipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetMediaCapturePipeline",
 }));
 export type GetMediaInsightsPipelineConfigurationError =
   | BadRequestException
@@ -3182,6 +3194,7 @@ export const getMediaInsightsPipelineConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetMediaInsightsPipelineConfiguration",
 }));
 export type GetMediaPipelineError =
   | BadRequestException
@@ -3212,6 +3225,7 @@ export const getMediaPipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetMediaPipeline",
 }));
 export type GetMediaPipelineKinesisVideoStreamPoolError =
   | BadRequestException
@@ -3242,6 +3256,7 @@ export const getMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetMediaPipelineKinesisVideoStreamPool",
 }));
 export type GetSpeakerSearchTaskError =
   | BadRequestException
@@ -3272,6 +3287,7 @@ export const getSpeakerSearchTask: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetSpeakerSearchTask",
 }));
 export type GetVoiceToneAnalysisTaskError =
   | BadRequestException
@@ -3302,6 +3318,7 @@ export const getVoiceToneAnalysisTask: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetVoiceToneAnalysisTask",
 }));
 export type ListMediaCapturePipelinesError =
   | BadRequestException
@@ -3347,6 +3364,7 @@ export const listMediaCapturePipelines: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListMediaCapturePipelines",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3397,6 +3415,7 @@ export const listMediaInsightsPipelineConfigurations: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListMediaInsightsPipelineConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3447,6 +3466,7 @@ export const listMediaPipelineKinesisVideoStreamPools: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListMediaPipelineKinesisVideoStreamPools",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3497,6 +3517,7 @@ export const listMediaPipelines: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListMediaPipelines",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3532,6 +3553,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type StartSpeakerSearchTaskError =
   | BadRequestException
@@ -3567,6 +3589,7 @@ export const startSpeakerSearchTask: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "StartSpeakerSearchTask",
 }));
 export type StartVoiceToneAnalysisTaskError =
   | BadRequestException
@@ -3604,6 +3627,7 @@ export const startVoiceToneAnalysisTask: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "StartVoiceToneAnalysisTask",
 }));
 export type StopSpeakerSearchTaskError =
   | BadRequestException
@@ -3636,6 +3660,7 @@ export const stopSpeakerSearchTask: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "StopSpeakerSearchTask",
 }));
 export type StopVoiceToneAnalysisTaskError =
   | BadRequestException
@@ -3668,6 +3693,7 @@ export const stopVoiceToneAnalysisTask: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "StopVoiceToneAnalysisTask",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -3698,6 +3724,7 @@ export const tagResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -3728,6 +3755,7 @@ export const untagResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateMediaInsightsPipelineConfigurationError =
   | BadRequestException
@@ -3760,6 +3788,7 @@ export const updateMediaInsightsPipelineConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateMediaInsightsPipelineConfiguration",
 }));
 export type UpdateMediaInsightsPipelineStatusError =
   | BadRequestException
@@ -3792,6 +3821,7 @@ export const updateMediaInsightsPipelineStatus: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateMediaInsightsPipelineStatus",
 }));
 export type UpdateMediaPipelineKinesisVideoStreamPoolError =
   | BadRequestException
@@ -3824,4 +3854,5 @@ export const updateMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateMediaPipelineKinesisVideoStreamPool",
 }));

@@ -823,6 +823,7 @@ export const createOAuth2Token: API.OperationMethod<
     TooManyRequestsError,
     ValidationException,
   ],
+  operationName: "CreateOAuth2Token",
 }));
 export type DeleteConsoleAuthorizationConfigurationError =
   | AccessDeniedException
@@ -849,6 +850,7 @@ export const deleteConsoleAuthorizationConfiguration: API.OperationMethod<
     TooManyRequestsError,
     ValidationException,
   ],
+  operationName: "DeleteConsoleAuthorizationConfiguration",
 }));
 export type DeleteResourcePermissionStatementError =
   | AccessDeniedException
@@ -875,6 +877,7 @@ export const deleteResourcePermissionStatement: API.OperationMethod<
     TooManyRequestsError,
     ValidationException,
   ],
+  operationName: "DeleteResourcePermissionStatement",
 }));
 export type GetConsoleAuthorizationConfigurationError =
   | AccessDeniedException
@@ -901,6 +904,7 @@ export const getConsoleAuthorizationConfiguration: API.OperationMethod<
     TooManyRequestsError,
     ValidationException,
   ],
+  operationName: "GetConsoleAuthorizationConfiguration",
 }));
 export type GetResourcePolicyError =
   | AccessDeniedException
@@ -925,6 +929,7 @@ export const getResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsError,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type ListResourcePermissionStatementsError =
   | AccessDeniedException
@@ -966,6 +971,7 @@ export const listResourcePermissionStatements: API.OperationMethod<
     TooManyRequestsError,
     ValidationException,
   ],
+  operationName: "ListResourcePermissionStatements",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1000,6 +1006,7 @@ export const putConsoleAuthorizationConfiguration: API.OperationMethod<
     TooManyRequestsError,
     ValidationException,
   ],
+  operationName: "PutConsoleAuthorizationConfiguration",
 }));
 export type PutResourcePermissionStatementError =
   | AccessDeniedException
@@ -1028,4 +1035,5 @@ export const putResourcePermissionStatement: API.OperationMethod<
     TooManyRequestsError,
     ValidationException,
   ],
+  operationName: "PutResourcePermissionStatement",
 }));

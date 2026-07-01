@@ -1807,6 +1807,7 @@ export const autocomplete: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "Autocomplete",
 }));
 export type GeocodeError =
   | AccessDeniedException
@@ -1833,6 +1834,7 @@ export const geocode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "Geocode",
 }));
 export type GetPlaceError =
   | AccessDeniedException
@@ -1859,6 +1861,7 @@ export const getPlace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPlace",
 }));
 export type ReverseGeocodeError =
   | AccessDeniedException
@@ -1885,6 +1888,7 @@ export const reverseGeocode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ReverseGeocode",
 }));
 export type SearchNearbyError =
   | AccessDeniedException
@@ -1911,6 +1915,7 @@ export const searchNearby: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchNearby",
 }));
 export type SearchTextError =
   | AccessDeniedException
@@ -1937,6 +1942,7 @@ export const searchText: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchText",
 }));
 export type SuggestError =
   | AccessDeniedException
@@ -1963,4 +1969,5 @@ export const suggest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "Suggest",
 }));

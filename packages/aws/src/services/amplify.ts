@@ -2162,6 +2162,7 @@ export const createApp: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  operationName: "CreateApp",
 }));
 export type CreateBackendEnvironmentError =
   | BadRequestException
@@ -2194,6 +2195,7 @@ export const createBackendEnvironment: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "CreateBackendEnvironment",
 }));
 export type CreateBranchError =
   | BadRequestException
@@ -2222,6 +2224,7 @@ export const createBranch: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "CreateBranch",
 }));
 export type CreateDeploymentError =
   | BadRequestException
@@ -2252,6 +2255,7 @@ export const createDeployment: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  operationName: "CreateDeployment",
 }));
 export type CreateDomainAssociationError =
   | BadRequestException
@@ -2281,6 +2285,7 @@ export const createDomainAssociation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "CreateDomainAssociation",
 }));
 export type CreateWebhookError =
   | BadRequestException
@@ -2309,6 +2314,7 @@ export const createWebhook: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "CreateWebhook",
 }));
 export type DeleteAppError =
   | BadRequestException
@@ -2335,6 +2341,7 @@ export const deleteApp: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteApp",
 }));
 export type DeleteBackendEnvironmentError =
   | BadRequestException
@@ -2367,6 +2374,7 @@ export const deleteBackendEnvironment: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteBackendEnvironment",
 }));
 export type DeleteBranchError =
   | BadRequestException
@@ -2393,6 +2401,7 @@ export const deleteBranch: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteBranch",
 }));
 export type DeleteDomainAssociationError =
   | BadRequestException
@@ -2419,6 +2428,7 @@ export const deleteDomainAssociation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteDomainAssociation",
 }));
 export type DeleteJobError =
   | BadRequestException
@@ -2445,6 +2455,7 @@ export const deleteJob: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteJob",
 }));
 export type DeleteWebhookError =
   | BadRequestException
@@ -2471,6 +2482,7 @@ export const deleteWebhook: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteWebhook",
 }));
 export type GenerateAccessLogsError =
   | BadRequestException
@@ -2495,6 +2507,7 @@ export const generateAccessLogs: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GenerateAccessLogs",
 }));
 export type GetAppError =
   | BadRequestException
@@ -2519,6 +2532,7 @@ export const getApp: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetApp",
 }));
 export type GetArtifactUrlError =
   | BadRequestException
@@ -2545,6 +2559,7 @@ export const getArtifactUrl: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetArtifactUrl",
 }));
 export type GetBackendEnvironmentError =
   | BadRequestException
@@ -2575,6 +2590,7 @@ export const getBackendEnvironment: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetBackendEnvironment",
 }));
 export type GetBranchError =
   | BadRequestException
@@ -2599,6 +2615,7 @@ export const getBranch: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetBranch",
 }));
 export type GetDomainAssociationError =
   | BadRequestException
@@ -2623,6 +2640,7 @@ export const getDomainAssociation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetDomainAssociation",
 }));
 export type GetJobError =
   | BadRequestException
@@ -2649,6 +2667,7 @@ export const getJob: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetJob",
 }));
 export type GetWebhookError =
   | BadRequestException
@@ -2675,6 +2694,7 @@ export const getWebhook: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetWebhook",
 }));
 export type ListAppsError =
   | BadRequestException
@@ -2712,6 +2732,7 @@ export const listApps: API.OperationMethod<
     InternalFailureException,
     UnauthorizedException,
   ],
+  operationName: "ListApps",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2749,6 +2770,7 @@ export const listArtifacts: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  operationName: "ListArtifacts",
 }));
 export type ListBackendEnvironmentsError =
   | BadRequestException
@@ -2777,6 +2799,7 @@ export const listBackendEnvironments: API.OperationMethod<
     InternalFailureException,
     UnauthorizedException,
   ],
+  operationName: "ListBackendEnvironments",
 }));
 export type ListBranchesError =
   | BadRequestException
@@ -2814,6 +2837,7 @@ export const listBranches: API.OperationMethod<
     InternalFailureException,
     UnauthorizedException,
   ],
+  operationName: "ListBranches",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2857,6 +2881,7 @@ export const listDomainAssociations: API.OperationMethod<
     InternalFailureException,
     UnauthorizedException,
   ],
+  operationName: "ListDomainAssociations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2902,6 +2927,7 @@ export const listJobs: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  operationName: "ListJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2930,6 +2956,7 @@ export const listTagsForResource: API.OperationMethod<
     InternalFailureException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListWebhooksError =
   | BadRequestException
@@ -2954,6 +2981,7 @@ export const listWebhooks: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  operationName: "ListWebhooks",
 }));
 export type StartDeploymentError =
   | BadRequestException
@@ -2986,6 +3014,7 @@ export const startDeployment: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "StartDeployment",
 }));
 export type StartJobError =
   | BadRequestException
@@ -3012,6 +3041,7 @@ export const startJob: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "StartJob",
 }));
 export type StopJobError =
   | BadRequestException
@@ -3038,6 +3068,7 @@ export const stopJob: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "StopJob",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -3060,6 +3091,7 @@ export const tagResource: API.OperationMethod<
     InternalFailureException,
     ResourceNotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -3082,6 +3114,7 @@ export const untagResource: API.OperationMethod<
     InternalFailureException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAppError =
   | BadRequestException
@@ -3106,6 +3139,7 @@ export const updateApp: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateApp",
 }));
 export type UpdateBranchError =
   | BadRequestException
@@ -3132,6 +3166,7 @@ export const updateBranch: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateBranch",
 }));
 export type UpdateDomainAssociationError =
   | BadRequestException
@@ -3158,6 +3193,7 @@ export const updateDomainAssociation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateDomainAssociation",
 }));
 export type UpdateWebhookError =
   | BadRequestException
@@ -3184,4 +3220,5 @@ export const updateWebhook: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateWebhook",
 }));

@@ -2017,6 +2017,7 @@ export const getMedicalScribeStream: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetMedicalScribeStream",
 }));
 export type StartCallAnalyticsStreamTranscriptionError =
   | BadRequestException
@@ -2055,6 +2056,7 @@ export const startCallAnalyticsStreamTranscription: API.OperationMethod<
     LimitExceededException,
     ServiceUnavailableException,
   ],
+  operationName: "StartCallAnalyticsStreamTranscription",
 }));
 export type StartMedicalScribeStreamError =
   | BadRequestException
@@ -2109,6 +2111,7 @@ export const startMedicalScribeStream: API.OperationMethod<
     LimitExceededException,
     ServiceUnavailableException,
   ],
+  operationName: "StartMedicalScribeStream",
 }));
 export type StartMedicalStreamTranscriptionError =
   | BadRequestException
@@ -2149,6 +2152,7 @@ export const startMedicalStreamTranscription: API.OperationMethod<
     LimitExceededException,
     ServiceUnavailableException,
   ],
+  operationName: "StartMedicalStreamTranscription",
 }));
 export type StartStreamTranscriptionError =
   | BadRequestException
@@ -2186,4 +2190,5 @@ export const startStreamTranscription: API.OperationMethod<
     LimitExceededException,
     ServiceUnavailableException,
   ],
+  operationName: "StartStreamTranscription",
 }));

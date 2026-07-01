@@ -2776,6 +2776,7 @@ export const addTagsToStream: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "AddTagsToStream",
 }));
 export type CreateStreamError =
   | InvalidArgumentException
@@ -2838,6 +2839,7 @@ export const createStream: API.OperationMethod<
     ResourceInUseException,
     ValidationException,
   ],
+  operationName: "CreateStream",
 }));
 export type DecreaseStreamRetentionPeriodError =
   | AccessDeniedException
@@ -2874,6 +2876,7 @@ export const decreaseStreamRetentionPeriod: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DecreaseStreamRetentionPeriod",
 }));
 export type DeleteResourcePolicyError =
   | AccessDeniedException
@@ -2904,6 +2907,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteStreamError =
   | AccessDeniedException
@@ -2955,6 +2959,7 @@ export const deleteStream: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteStream",
 }));
 export type DeregisterStreamConsumerError =
   | InvalidArgumentException
@@ -2985,6 +2990,7 @@ export const deregisterStreamConsumer: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DeregisterStreamConsumer",
 }));
 export type DescribeAccountSettingsError =
   | LimitExceededException
@@ -3003,6 +3009,7 @@ export const describeAccountSettings: API.OperationMethod<
   input: DescribeAccountSettingsInput,
   output: DescribeAccountSettingsOutput,
   errors: [LimitExceededException],
+  operationName: "DescribeAccountSettings",
 }));
 export type DescribeLimitsError = LimitExceededException | CommonErrors;
 /**
@@ -3022,6 +3029,7 @@ export const describeLimits: API.OperationMethod<
   input: DescribeLimitsInput,
   output: DescribeLimitsOutput,
   errors: [LimitExceededException],
+  operationName: "DescribeLimits",
 }));
 export type DescribeStreamError =
   | AccessDeniedException
@@ -3072,6 +3080,7 @@ export const describeStream: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeStream",
 }));
 export type DescribeStreamConsumerError =
   | InvalidArgumentException
@@ -3104,6 +3113,7 @@ export const describeStreamConsumer: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeStreamConsumer",
 }));
 export type DescribeStreamSummaryError =
   | AccessDeniedException
@@ -3140,6 +3150,7 @@ export const describeStreamSummary: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeStreamSummary",
 }));
 export type DisableEnhancedMonitoringError =
   | AccessDeniedException
@@ -3170,6 +3181,7 @@ export const disableEnhancedMonitoring: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DisableEnhancedMonitoring",
 }));
 export type EnableEnhancedMonitoringError =
   | AccessDeniedException
@@ -3200,6 +3212,7 @@ export const enableEnhancedMonitoring: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "EnableEnhancedMonitoring",
 }));
 export type GetRecordsError =
   | AccessDeniedException
@@ -3298,6 +3311,7 @@ export const getRecords: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetRecords",
 }));
 export type GetResourcePolicyError =
   | AccessDeniedException
@@ -3328,6 +3342,7 @@ export const getResourcePolicy: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type GetShardIteratorError =
   | AccessDeniedException
@@ -3396,6 +3411,7 @@ export const getShardIterator: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetShardIterator",
 }));
 export type IncreaseStreamRetentionPeriodError =
   | AccessDeniedException
@@ -3435,6 +3451,7 @@ export const increaseStreamRetentionPeriod: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "IncreaseStreamRetentionPeriod",
 }));
 export type ListShardsError =
   | AccessDeniedException
@@ -3477,6 +3494,7 @@ export const listShards: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "ListShards",
 }));
 export type ListStreamConsumersError =
   | ExpiredNextTokenException
@@ -3521,6 +3539,7 @@ export const listStreamConsumers: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "ListStreamConsumers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3580,6 +3599,7 @@ export const listStreams: API.OperationMethod<
     InvalidArgumentException,
     LimitExceededException,
   ],
+  operationName: "ListStreams",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3613,6 +3633,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTagsForStreamError =
   | AccessDeniedException
@@ -3642,6 +3663,7 @@ export const listTagsForStream: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForStream",
 }));
 export type MergeShardsError =
   | AccessDeniedException
@@ -3714,6 +3736,7 @@ export const mergeShards: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "MergeShards",
 }));
 export type PutRecordError =
   | AccessDeniedException
@@ -3797,6 +3820,7 @@ export const putRecord: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "PutRecord",
 }));
 export type PutRecordsError =
   | AccessDeniedException
@@ -3903,6 +3927,7 @@ export const putRecords: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "PutRecords",
 }));
 export type PutResourcePolicyError =
   | AccessDeniedException
@@ -3941,6 +3966,7 @@ export const putResourcePolicy: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type RegisterStreamConsumerError =
   | InvalidArgumentException
@@ -3983,6 +4009,7 @@ export const registerStreamConsumer: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "RegisterStreamConsumer",
 }));
 export type RemoveTagsFromStreamError =
   | AccessDeniedException
@@ -4019,6 +4046,7 @@ export const removeTagsFromStream: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "RemoveTagsFromStream",
 }));
 export type SplitShardError =
   | AccessDeniedException
@@ -4097,6 +4125,7 @@ export const splitShard: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "SplitShard",
 }));
 export type StartStreamEncryptionError =
   | AccessDeniedException
@@ -4157,6 +4186,7 @@ export const startStreamEncryption: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "StartStreamEncryption",
 }));
 export type StopStreamEncryptionError =
   | AccessDeniedException
@@ -4204,6 +4234,7 @@ export const stopStreamEncryption: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "StopStreamEncryption",
 }));
 export type SubscribeToShardError =
   | AccessDeniedException
@@ -4256,6 +4287,7 @@ export const subscribeToShard: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "SubscribeToShard",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -4282,6 +4314,7 @@ export const tagResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -4308,6 +4341,7 @@ export const untagResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAccountSettingsError =
   | InvalidArgumentException
@@ -4338,6 +4372,7 @@ export const updateAccountSettings: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  operationName: "UpdateAccountSettings",
 }));
 export type UpdateMaxRecordSizeError =
   | AccessDeniedException
@@ -4366,6 +4401,7 @@ export const updateMaxRecordSize: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateMaxRecordSize",
 }));
 export type UpdateShardCountError =
   | AccessDeniedException
@@ -4440,6 +4476,7 @@ export const updateShardCount: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateShardCount",
 }));
 export type UpdateStreamModeError =
   | InvalidArgumentException
@@ -4470,6 +4507,7 @@ export const updateStreamMode: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateStreamMode",
 }));
 export type UpdateStreamWarmThroughputError =
   | AccessDeniedException
@@ -4513,4 +4551,5 @@ export const updateStreamWarmThroughput: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateStreamWarmThroughput",
 }));

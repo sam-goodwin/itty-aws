@@ -2183,6 +2183,7 @@ export const getUserDetails: API.OperationMethod<
   input: GetUserDetailsRequest,
   output: GetUserDetailsResponse,
   errors: [],
+  operationName: "GetUserDetails",
 }));
 export type VerifySessionError = CommonErrors;
 /**
@@ -2197,6 +2198,7 @@ export const verifySession: API.OperationMethod<
   input: VerifySessionRequest,
   output: VerifySessionResponse,
   errors: [],
+  operationName: "VerifySession",
 }));
 export type CreateAccessTokenError = CommonErrors;
 /**
@@ -2215,6 +2217,7 @@ export const createAccessToken: API.OperationMethod<
   input: CreateAccessTokenRequest,
   output: CreateAccessTokenResponse,
   errors: [],
+  operationName: "CreateAccessToken",
 }));
 export type DeleteAccessTokenError = CommonErrors;
 /**
@@ -2229,6 +2232,7 @@ export const deleteAccessToken: API.OperationMethod<
   input: DeleteAccessTokenRequest,
   output: DeleteAccessTokenResponse,
   errors: [],
+  operationName: "DeleteAccessToken",
 }));
 export type ListAccessTokensError = CommonErrors;
 /**
@@ -2258,6 +2262,7 @@ export const listAccessTokens: API.OperationMethod<
   input: ListAccessTokensRequest,
   output: ListAccessTokensResponse,
   errors: [],
+  operationName: "ListAccessTokens",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2278,6 +2283,7 @@ export const getSpace: API.OperationMethod<
   input: GetSpaceRequest,
   output: GetSpaceResponse,
   errors: [],
+  operationName: "GetSpace",
 }));
 export type UpdateSpaceError = CommonErrors;
 /**
@@ -2292,6 +2298,7 @@ export const updateSpace: API.OperationMethod<
   input: UpdateSpaceRequest,
   output: UpdateSpaceResponse,
   errors: [],
+  operationName: "UpdateSpace",
 }));
 export type DeleteSpaceError = CommonErrors;
 /**
@@ -2308,6 +2315,7 @@ export const deleteSpace: API.OperationMethod<
   input: DeleteSpaceRequest,
   output: DeleteSpaceResponse,
   errors: [],
+  operationName: "DeleteSpace",
 }));
 export type ListSpacesError = CommonErrors;
 /**
@@ -2337,6 +2345,7 @@ export const listSpaces: API.OperationMethod<
   input: ListSpacesRequest,
   output: ListSpacesResponse,
   errors: [],
+  operationName: "ListSpaces",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2371,6 +2380,7 @@ export const listDevEnvironments: API.OperationMethod<
   input: ListDevEnvironmentsRequest,
   output: ListDevEnvironmentsResponse,
   errors: [],
+  operationName: "ListDevEnvironments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2414,6 +2424,7 @@ export const listEventLogs: API.OperationMethod<
   input: ListEventLogsRequest,
   output: ListEventLogsResponse,
   errors: [],
+  operationName: "ListEventLogs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2434,6 +2445,7 @@ export const createProject: API.OperationMethod<
   input: CreateProjectRequest,
   output: CreateProjectResponse,
   errors: [],
+  operationName: "CreateProject",
 }));
 export type GetProjectError = CommonErrors;
 /**
@@ -2448,6 +2460,7 @@ export const getProject: API.OperationMethod<
   input: GetProjectRequest,
   output: GetProjectResponse,
   errors: [],
+  operationName: "GetProject",
 }));
 export type UpdateProjectError = CommonErrors;
 /**
@@ -2462,6 +2475,7 @@ export const updateProject: API.OperationMethod<
   input: UpdateProjectRequest,
   output: UpdateProjectResponse,
   errors: [],
+  operationName: "UpdateProject",
 }));
 export type DeleteProjectError = CommonErrors;
 /**
@@ -2476,6 +2490,7 @@ export const deleteProject: API.OperationMethod<
   input: DeleteProjectRequest,
   output: DeleteProjectResponse,
   errors: [],
+  operationName: "DeleteProject",
 }));
 export type ListProjectsError = CommonErrors;
 /**
@@ -2505,6 +2520,7 @@ export const listProjects: API.OperationMethod<
   input: ListProjectsRequest,
   output: ListProjectsResponse,
   errors: [],
+  operationName: "ListProjects",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2529,6 +2545,7 @@ export const createDevEnvironment: API.OperationMethod<
   input: CreateDevEnvironmentRequest,
   output: CreateDevEnvironmentResponse,
   errors: [],
+  operationName: "CreateDevEnvironment",
 }));
 export type GetDevEnvironmentError = CommonErrors;
 /**
@@ -2543,6 +2560,7 @@ export const getDevEnvironment: API.OperationMethod<
   input: GetDevEnvironmentRequest,
   output: GetDevEnvironmentResponse,
   errors: [],
+  operationName: "GetDevEnvironment",
 }));
 export type UpdateDevEnvironmentError = CommonErrors;
 /**
@@ -2557,6 +2575,7 @@ export const updateDevEnvironment: API.OperationMethod<
   input: UpdateDevEnvironmentRequest,
   output: UpdateDevEnvironmentResponse,
   errors: [],
+  operationName: "UpdateDevEnvironment",
 }));
 export type DeleteDevEnvironmentError = CommonErrors;
 /**
@@ -2571,6 +2590,7 @@ export const deleteDevEnvironment: API.OperationMethod<
   input: DeleteDevEnvironmentRequest,
   output: DeleteDevEnvironmentResponse,
   errors: [],
+  operationName: "DeleteDevEnvironment",
 }));
 export type ListDevEnvironmentSessionsError = CommonErrors;
 /**
@@ -2600,6 +2620,7 @@ export const listDevEnvironmentSessions: API.OperationMethod<
   input: ListDevEnvironmentSessionsRequest,
   output: ListDevEnvironmentSessionsResponse,
   errors: [],
+  operationName: "ListDevEnvironmentSessions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2620,6 +2641,7 @@ export const startDevEnvironment: API.OperationMethod<
   input: StartDevEnvironmentRequest,
   output: StartDevEnvironmentResponse,
   errors: [],
+  operationName: "StartDevEnvironment",
 }));
 export type StartDevEnvironmentSessionError = CommonErrors;
 /**
@@ -2634,6 +2656,7 @@ export const startDevEnvironmentSession: API.OperationMethod<
   input: StartDevEnvironmentSessionRequest,
   output: StartDevEnvironmentSessionResponse,
   errors: [],
+  operationName: "StartDevEnvironmentSession",
 }));
 export type StopDevEnvironmentError = CommonErrors;
 /**
@@ -2648,6 +2671,7 @@ export const stopDevEnvironment: API.OperationMethod<
   input: StopDevEnvironmentRequest,
   output: StopDevEnvironmentResponse,
   errors: [],
+  operationName: "StopDevEnvironment",
 }));
 export type StopDevEnvironmentSessionError = CommonErrors;
 /**
@@ -2662,6 +2686,7 @@ export const stopDevEnvironmentSession: API.OperationMethod<
   input: StopDevEnvironmentSessionRequest,
   output: StopDevEnvironmentSessionResponse,
   errors: [],
+  operationName: "StopDevEnvironmentSession",
 }));
 export type CreateSourceRepositoryError = CommonErrors;
 /**
@@ -2677,6 +2702,7 @@ export const createSourceRepository: API.OperationMethod<
   input: CreateSourceRepositoryRequest,
   output: CreateSourceRepositoryResponse,
   errors: [],
+  operationName: "CreateSourceRepository",
 }));
 export type GetSourceRepositoryError = CommonErrors;
 /**
@@ -2691,6 +2717,7 @@ export const getSourceRepository: API.OperationMethod<
   input: GetSourceRepositoryRequest,
   output: GetSourceRepositoryResponse,
   errors: [],
+  operationName: "GetSourceRepository",
 }));
 export type DeleteSourceRepositoryError = CommonErrors;
 /**
@@ -2705,6 +2732,7 @@ export const deleteSourceRepository: API.OperationMethod<
   input: DeleteSourceRepositoryRequest,
   output: DeleteSourceRepositoryResponse,
   errors: [],
+  operationName: "DeleteSourceRepository",
 }));
 export type ListSourceRepositoriesError = CommonErrors;
 /**
@@ -2734,6 +2762,7 @@ export const listSourceRepositories: API.OperationMethod<
   input: ListSourceRepositoriesRequest,
   output: ListSourceRepositoriesResponse,
   errors: [],
+  operationName: "ListSourceRepositories",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2755,6 +2784,7 @@ export const getSourceRepositoryCloneUrls: API.OperationMethod<
   input: GetSourceRepositoryCloneUrlsRequest,
   output: GetSourceRepositoryCloneUrlsResponse,
   errors: [],
+  operationName: "GetSourceRepositoryCloneUrls",
 }));
 export type CreateSourceRepositoryBranchError = CommonErrors;
 /**
@@ -2771,6 +2801,7 @@ export const createSourceRepositoryBranch: API.OperationMethod<
   input: CreateSourceRepositoryBranchRequest,
   output: CreateSourceRepositoryBranchResponse,
   errors: [],
+  operationName: "CreateSourceRepositoryBranch",
 }));
 export type ListSourceRepositoryBranchesError = CommonErrors;
 /**
@@ -2800,6 +2831,7 @@ export const listSourceRepositoryBranches: API.OperationMethod<
   input: ListSourceRepositoryBranchesRequest,
   output: ListSourceRepositoryBranchesResponse,
   errors: [],
+  operationName: "ListSourceRepositoryBranches",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2820,6 +2852,7 @@ export const getWorkflow: API.OperationMethod<
   input: GetWorkflowRequest,
   output: GetWorkflowResponse,
   errors: [],
+  operationName: "GetWorkflow",
 }));
 export type ListWorkflowsError = CommonErrors;
 /**
@@ -2849,6 +2882,7 @@ export const listWorkflows: API.OperationMethod<
   input: ListWorkflowsRequest,
   output: ListWorkflowsResponse,
   errors: [],
+  operationName: "ListWorkflows",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2869,6 +2903,7 @@ export const startWorkflowRun: API.OperationMethod<
   input: StartWorkflowRunRequest,
   output: StartWorkflowRunResponse,
   errors: [],
+  operationName: "StartWorkflowRun",
 }));
 export type GetWorkflowRunError = CommonErrors;
 /**
@@ -2883,6 +2918,7 @@ export const getWorkflowRun: API.OperationMethod<
   input: GetWorkflowRunRequest,
   output: GetWorkflowRunResponse,
   errors: [],
+  operationName: "GetWorkflowRun",
 }));
 export type ListWorkflowRunsError = CommonErrors;
 /**
@@ -2912,6 +2948,7 @@ export const listWorkflowRuns: API.OperationMethod<
   input: ListWorkflowRunsRequest,
   output: ListWorkflowRunsResponse,
   errors: [],
+  operationName: "ListWorkflowRuns",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2933,4 +2970,5 @@ export const getSubscription: API.OperationMethod<
   input: GetSubscriptionRequest,
   output: GetSubscriptionResponse,
   errors: [],
+  operationName: "GetSubscription",
 }));

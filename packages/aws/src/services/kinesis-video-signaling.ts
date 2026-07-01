@@ -251,6 +251,7 @@ export const getIceServerConfig: API.OperationMethod<
     ResourceNotFoundException,
     SessionExpiredException,
   ],
+  operationName: "GetIceServerConfig",
 }));
 export type SendAlexaOfferToMasterError =
   | ClientLimitExceededException
@@ -280,4 +281,5 @@ export const sendAlexaOfferToMaster: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  operationName: "SendAlexaOfferToMaster",
 }));

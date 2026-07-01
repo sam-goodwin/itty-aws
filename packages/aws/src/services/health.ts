@@ -1170,6 +1170,7 @@ export const describeAffectedAccountsForOrganization: API.OperationMethod<
   input: DescribeAffectedAccountsForOrganizationRequest,
   output: DescribeAffectedAccountsForOrganizationResponse,
   errors: [InvalidPaginationToken],
+  operationName: "DescribeAffectedAccountsForOrganization",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1219,6 +1220,7 @@ export const describeAffectedEntities: API.OperationMethod<
   input: DescribeAffectedEntitiesRequest,
   output: DescribeAffectedEntitiesResponse,
   errors: [InvalidPaginationToken, UnsupportedLocale],
+  operationName: "DescribeAffectedEntities",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1271,6 +1273,7 @@ export const describeAffectedEntitiesForOrganization: API.OperationMethod<
   input: DescribeAffectedEntitiesForOrganizationRequest,
   output: DescribeAffectedEntitiesForOrganizationResponse,
   errors: [InvalidPaginationToken, UnsupportedLocale],
+  operationName: "DescribeAffectedEntitiesForOrganization",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1291,6 +1294,7 @@ export const describeEntityAggregates: API.OperationMethod<
   input: DescribeEntityAggregatesRequest,
   output: DescribeEntityAggregatesResponse,
   errors: [],
+  operationName: "DescribeEntityAggregates",
 }));
 export type DescribeEntityAggregatesForOrganizationError = CommonErrors;
 /**
@@ -1305,6 +1309,7 @@ export const describeEntityAggregatesForOrganization: API.OperationMethod<
   input: DescribeEntityAggregatesForOrganizationRequest,
   output: DescribeEntityAggregatesForOrganizationResponse,
   errors: [],
+  operationName: "DescribeEntityAggregatesForOrganization",
 }));
 export type DescribeEventAggregatesError =
   | InvalidPaginationToken
@@ -1340,6 +1345,7 @@ export const describeEventAggregates: API.OperationMethod<
   input: DescribeEventAggregatesRequest,
   output: DescribeEventAggregatesResponse,
   errors: [InvalidPaginationToken],
+  operationName: "DescribeEventAggregates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1369,6 +1375,7 @@ export const describeEventDetails: API.OperationMethod<
   input: DescribeEventDetailsRequest,
   output: DescribeEventDetailsResponse,
   errors: [UnsupportedLocale],
+  operationName: "DescribeEventDetails",
 }));
 export type DescribeEventDetailsForOrganizationError =
   | UnsupportedLocale
@@ -1412,6 +1419,7 @@ export const describeEventDetailsForOrganization: API.OperationMethod<
   input: DescribeEventDetailsForOrganizationRequest,
   output: DescribeEventDetailsForOrganizationResponse,
   errors: [UnsupportedLocale],
+  operationName: "DescribeEventDetailsForOrganization",
 }));
 export type DescribeEventsError =
   | InvalidPaginationToken
@@ -1461,6 +1469,7 @@ export const describeEvents: API.OperationMethod<
   input: DescribeEventsRequest,
   output: DescribeEventsResponse,
   errors: [InvalidPaginationToken, UnsupportedLocale],
+  operationName: "DescribeEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1521,6 +1530,7 @@ export const describeEventsForOrganization: API.OperationMethod<
   input: DescribeEventsForOrganizationRequest,
   output: DescribeEventsForOrganizationResponse,
   errors: [InvalidPaginationToken, UnsupportedLocale],
+  operationName: "DescribeEventsForOrganization",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1565,6 +1575,7 @@ export const describeEventTypes: API.OperationMethod<
   input: DescribeEventTypesRequest,
   output: DescribeEventTypesResponse,
   errors: [InvalidPaginationToken, UnsupportedLocale],
+  operationName: "DescribeEventTypes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1587,6 +1598,7 @@ export const describeHealthServiceStatusForOrganization: API.OperationMethod<
   input: DescribeHealthServiceStatusForOrganizationRequest,
   output: DescribeHealthServiceStatusForOrganizationResponse,
   errors: [],
+  operationName: "DescribeHealthServiceStatusForOrganization",
 }));
 export type DisableHealthServiceAccessForOrganizationError =
   | ConcurrentModificationException
@@ -1616,6 +1628,7 @@ export const disableHealthServiceAccessForOrganization: API.OperationMethod<
   input: DisableHealthServiceAccessForOrganizationRequest,
   output: DisableHealthServiceAccessForOrganizationResponse,
   errors: [ConcurrentModificationException],
+  operationName: "DisableHealthServiceAccessForOrganization",
 }));
 export type EnableHealthServiceAccessForOrganizationError =
   | ConcurrentModificationException
@@ -1651,4 +1664,5 @@ export const enableHealthServiceAccessForOrganization: API.OperationMethod<
   input: EnableHealthServiceAccessForOrganizationRequest,
   output: EnableHealthServiceAccessForOrganizationResponse,
   errors: [ConcurrentModificationException],
+  operationName: "EnableHealthServiceAccessForOrganization",
 }));

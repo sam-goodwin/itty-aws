@@ -1820,6 +1820,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -1842,6 +1843,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -1864,6 +1866,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateApplicationError =
   | ConflictException
@@ -1888,6 +1891,7 @@ export const createApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreateApplication",
 }));
 export type GetApplicationError =
   | InternalServerException
@@ -1910,6 +1914,7 @@ export const getApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetApplication",
 }));
 export type UpdateApplicationError =
   | InternalServerException
@@ -1932,6 +1937,7 @@ export const updateApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateApplication",
 }));
 export type DeleteApplicationError =
   | InternalServerException
@@ -1954,6 +1960,7 @@ export const deleteApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteApplication",
 }));
 export type ListApplicationsError =
   | InternalServerException
@@ -1986,6 +1993,7 @@ export const listApplications: API.OperationMethod<
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListApplications",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2018,6 +2026,7 @@ export const getResourceDashboard: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetResourceDashboard",
 }));
 export type StartApplicationError =
   | InternalServerException
@@ -2042,6 +2051,7 @@ export const startApplication: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "StartApplication",
 }));
 export type StopApplicationError =
   | InternalServerException
@@ -2064,6 +2074,7 @@ export const stopApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StopApplication",
 }));
 export type StartJobRunError =
   | ConflictException
@@ -2088,6 +2099,7 @@ export const startJobRun: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StartJobRun",
 }));
 export type GetJobRunError =
   | InternalServerException
@@ -2110,6 +2122,7 @@ export const getJobRun: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetJobRun",
 }));
 export type CancelJobRunError =
   | InternalServerException
@@ -2132,6 +2145,7 @@ export const cancelJobRun: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CancelJobRun",
 }));
 export type ListJobRunsError =
   | InternalServerException
@@ -2164,6 +2178,7 @@ export const listJobRuns: API.OperationMethod<
   input: ListJobRunsRequest,
   output: ListJobRunsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListJobRuns",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2196,6 +2211,7 @@ export const getDashboardForJobRun: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetDashboardForJobRun",
 }));
 export type ListJobRunAttemptsError =
   | InternalServerException
@@ -2233,6 +2249,7 @@ export const listJobRunAttempts: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListJobRunAttempts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2265,6 +2282,7 @@ export const startSession: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "StartSession",
 }));
 export type GetSessionError =
   | InternalServerException
@@ -2287,6 +2305,7 @@ export const getSession: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetSession",
 }));
 export type TerminateSessionError =
   | InternalServerException
@@ -2309,6 +2328,7 @@ export const terminateSession: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TerminateSession",
 }));
 export type ListSessionsError =
   | InternalServerException
@@ -2346,6 +2366,7 @@ export const listSessions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListSessions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2374,4 +2395,5 @@ export const getSessionEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetSessionEndpoint",
 }));

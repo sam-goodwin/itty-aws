@@ -8586,6 +8586,7 @@ export const acceptReservedNodeExchange: API.OperationMethod<
     ReservedNodeOfferingNotFoundFault,
     UnsupportedOperationFault,
   ],
+  operationName: "AcceptReservedNodeExchange",
 }));
 export type AddPartnerError =
   | ClusterNotFoundFault
@@ -8612,6 +8613,7 @@ export const addPartner: API.OperationMethod<
     UnauthorizedPartnerIntegrationFault,
     UnsupportedOperationFault,
   ],
+  operationName: "AddPartner",
 }));
 export type AssociateDataShareConsumerError =
   | InvalidDataShareFault
@@ -8631,6 +8633,7 @@ export const associateDataShareConsumer: API.OperationMethod<
   input: AssociateDataShareConsumerMessage,
   output: DataShare,
   errors: [InvalidDataShareFault, InvalidNamespaceFault],
+  operationName: "AssociateDataShareConsumer",
 }));
 export type AuthorizeClusterSecurityGroupIngressError =
   | AuthorizationAlreadyExistsFault
@@ -8673,6 +8676,7 @@ export const authorizeClusterSecurityGroupIngress: API.OperationMethod<
     ClusterSecurityGroupNotFoundFault,
     InvalidClusterSecurityGroupStateFault,
   ],
+  operationName: "AuthorizeClusterSecurityGroupIngress",
 }));
 export type AuthorizeDataShareError = InvalidDataShareFault | CommonErrors;
 /**
@@ -8689,6 +8693,7 @@ export const authorizeDataShare: API.OperationMethod<
   input: AuthorizeDataShareMessage,
   output: DataShare,
   errors: [InvalidDataShareFault],
+  operationName: "AuthorizeDataShare",
 }));
 export type AuthorizeEndpointAccessError =
   | ClusterNotFoundFault
@@ -8717,6 +8722,7 @@ export const authorizeEndpointAccess: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  operationName: "AuthorizeEndpointAccess",
 }));
 export type AuthorizeSnapshotAccessError =
   | AuthorizationAlreadyExistsFault
@@ -8752,6 +8758,7 @@ export const authorizeSnapshotAccess: API.OperationMethod<
     LimitExceededFault,
     UnsupportedOperationFault,
   ],
+  operationName: "AuthorizeSnapshotAccess",
 }));
 export type BatchDeleteClusterSnapshotsError =
   | BatchDeleteRequestSizeExceededFault
@@ -8768,6 +8775,7 @@ export const batchDeleteClusterSnapshots: API.OperationMethod<
   input: BatchDeleteClusterSnapshotsRequest,
   output: BatchDeleteClusterSnapshotsResult,
   errors: [BatchDeleteRequestSizeExceededFault],
+  operationName: "BatchDeleteClusterSnapshots",
 }));
 export type BatchModifyClusterSnapshotsError =
   | BatchModifyClusterSnapshotsLimitExceededFault
@@ -8788,6 +8796,7 @@ export const batchModifyClusterSnapshots: API.OperationMethod<
     BatchModifyClusterSnapshotsLimitExceededFault,
     InvalidRetentionPeriodFault,
   ],
+  operationName: "BatchModifyClusterSnapshots",
 }));
 export type CancelResizeError =
   | ClusterNotFoundFault
@@ -8812,6 +8821,7 @@ export const cancelResize: API.OperationMethod<
     ResizeNotFoundFault,
     UnsupportedOperationFault,
   ],
+  operationName: "CancelResize",
 }));
 export type CopyClusterSnapshotError =
   | ClusterNotFoundFault
@@ -8852,6 +8862,7 @@ export const copyClusterSnapshot: API.OperationMethod<
     InvalidClusterSnapshotStateFault,
     InvalidRetentionPeriodFault,
   ],
+  operationName: "CopyClusterSnapshot",
 }));
 export type CreateAuthenticationProfileError =
   | AuthenticationProfileAlreadyExistsFault
@@ -8874,6 +8885,7 @@ export const createAuthenticationProfile: API.OperationMethod<
     AuthenticationProfileQuotaExceededFault,
     InvalidAuthenticationProfileRequestFault,
   ],
+  operationName: "CreateAuthenticationProfile",
 }));
 export type CreateClusterError =
   | ClusterAlreadyExistsFault
@@ -8969,6 +8981,7 @@ export const createCluster: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  operationName: "CreateCluster",
 }));
 export type CreateClusterParameterGroupError =
   | ClusterParameterGroupAlreadyExistsFault
@@ -9003,6 +9016,7 @@ export const createClusterParameterGroup: API.OperationMethod<
     InvalidTagFault,
     TagLimitExceededFault,
   ],
+  operationName: "CreateClusterParameterGroup",
 }));
 export type CreateClusterSecurityGroupError =
   | ClusterSecurityGroupAlreadyExistsFault
@@ -9032,6 +9046,7 @@ export const createClusterSecurityGroup: API.OperationMethod<
     InvalidTagFault,
     TagLimitExceededFault,
   ],
+  operationName: "CreateClusterSecurityGroup",
 }));
 export type CreateClusterSnapshotError =
   | ClusterNotFoundFault
@@ -9067,6 +9082,7 @@ export const createClusterSnapshot: API.OperationMethod<
     InvalidTagFault,
     TagLimitExceededFault,
   ],
+  operationName: "CreateClusterSnapshot",
 }));
 export type CreateClusterSubnetGroupError =
   | ClusterSubnetGroupAlreadyExistsFault
@@ -9105,6 +9121,7 @@ export const createClusterSubnetGroup: API.OperationMethod<
     TagLimitExceededFault,
     UnauthorizedOperation,
   ],
+  operationName: "CreateClusterSubnetGroup",
 }));
 export type CreateCustomDomainAssociationError =
   | ClusterNotFoundFault
@@ -9128,6 +9145,7 @@ export const createCustomDomainAssociation: API.OperationMethod<
     CustomCnameAssociationFault,
     UnsupportedOperationFault,
   ],
+  operationName: "CreateCustomDomainAssociation",
 }));
 export type CreateEndpointAccessError =
   | AccessToClusterDeniedFault
@@ -9164,6 +9182,7 @@ export const createEndpointAccess: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  operationName: "CreateEndpointAccess",
 }));
 export type CreateEventSubscriptionError =
   | EventSubscriptionQuotaExceededFault
@@ -9220,6 +9239,7 @@ export const createEventSubscription: API.OperationMethod<
     SubscriptionSeverityNotFoundFault,
     TagLimitExceededFault,
   ],
+  operationName: "CreateEventSubscription",
 }));
 export type CreateHsmClientCertificateError =
   | HsmClientCertificateAlreadyExistsFault
@@ -9252,6 +9272,7 @@ export const createHsmClientCertificate: API.OperationMethod<
     InvalidTagFault,
     TagLimitExceededFault,
   ],
+  operationName: "CreateHsmClientCertificate",
 }));
 export type CreateHsmConfigurationError =
   | HsmConfigurationAlreadyExistsFault
@@ -9283,6 +9304,7 @@ export const createHsmConfiguration: API.OperationMethod<
     InvalidTagFault,
     TagLimitExceededFault,
   ],
+  operationName: "CreateHsmConfiguration",
 }));
 export type CreateIntegrationError =
   | IntegrationAlreadyExistsFault
@@ -9317,6 +9339,7 @@ export const createIntegration: API.OperationMethod<
     TagLimitExceededFault,
     UnsupportedOperationFault,
   ],
+  operationName: "CreateIntegration",
 }));
 export type CreateRedshiftIdcApplicationError =
   | DependentServiceAccessDeniedFault
@@ -9347,6 +9370,7 @@ export const createRedshiftIdcApplication: API.OperationMethod<
     TagLimitExceededFault,
     UnsupportedOperationFault,
   ],
+  operationName: "CreateRedshiftIdcApplication",
 }));
 export type CreateScheduledActionError =
   | ClusterNotFoundFault
@@ -9380,6 +9404,7 @@ export const createScheduledAction: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  operationName: "CreateScheduledAction",
 }));
 export type CreateSnapshotCopyGrantError =
   | DependentServiceRequestThrottlingFault
@@ -9414,6 +9439,7 @@ export const createSnapshotCopyGrant: API.OperationMethod<
     SnapshotCopyGrantQuotaExceededFault,
     TagLimitExceededFault,
   ],
+  operationName: "CreateSnapshotCopyGrant",
 }));
 export type CreateSnapshotScheduleError =
   | InvalidScheduleFault
@@ -9442,6 +9468,7 @@ export const createSnapshotSchedule: API.OperationMethod<
     SnapshotScheduleQuotaExceededFault,
     TagLimitExceededFault,
   ],
+  operationName: "CreateSnapshotSchedule",
 }));
 export type CreateTagsError =
   | InvalidClusterStateFault
@@ -9472,6 +9499,7 @@ export const createTags: API.OperationMethod<
     ResourceNotFoundFault,
     TagLimitExceededFault,
   ],
+  operationName: "CreateTags",
 }));
 export type CreateUsageLimitError =
   | ClusterNotFoundFault
@@ -9503,6 +9531,7 @@ export const createUsageLimit: API.OperationMethod<
     UnsupportedOperationFault,
     UsageLimitAlreadyExistsFault,
   ],
+  operationName: "CreateUsageLimit",
 }));
 export type DeauthorizeDataShareError = InvalidDataShareFault | CommonErrors;
 /**
@@ -9517,6 +9546,7 @@ export const deauthorizeDataShare: API.OperationMethod<
   input: DeauthorizeDataShareMessage,
   output: DataShare,
   errors: [InvalidDataShareFault],
+  operationName: "DeauthorizeDataShare",
 }));
 export type DeleteAuthenticationProfileError =
   | AuthenticationProfileNotFoundFault
@@ -9537,6 +9567,7 @@ export const deleteAuthenticationProfile: API.OperationMethod<
     AuthenticationProfileNotFoundFault,
     InvalidAuthenticationProfileRequestFault,
   ],
+  operationName: "DeleteAuthenticationProfile",
 }));
 export type DeleteClusterError =
   | ClusterNotFoundFault
@@ -9579,6 +9610,7 @@ export const deleteCluster: API.OperationMethod<
     InvalidClusterStateFault,
     InvalidRetentionPeriodFault,
   ],
+  operationName: "DeleteCluster",
 }));
 export type DeleteClusterParameterGroupError =
   | ClusterParameterGroupNotFoundFault
@@ -9602,6 +9634,7 @@ export const deleteClusterParameterGroup: API.OperationMethod<
     ClusterParameterGroupNotFoundFault,
     InvalidClusterParameterGroupStateFault,
   ],
+  operationName: "DeleteClusterParameterGroup",
 }));
 export type DeleteClusterSecurityGroupError =
   | ClusterSecurityGroupNotFoundFault
@@ -9629,6 +9662,7 @@ export const deleteClusterSecurityGroup: API.OperationMethod<
     ClusterSecurityGroupNotFoundFault,
     InvalidClusterSecurityGroupStateFault,
   ],
+  operationName: "DeleteClusterSecurityGroup",
 }));
 export type DeleteClusterSnapshotError =
   | ClusterSnapshotNotFoundFault
@@ -9653,6 +9687,7 @@ export const deleteClusterSnapshot: API.OperationMethod<
   input: DeleteClusterSnapshotMessage,
   output: DeleteClusterSnapshotResult,
   errors: [ClusterSnapshotNotFoundFault, InvalidClusterSnapshotStateFault],
+  operationName: "DeleteClusterSnapshot",
 }));
 export type DeleteClusterSubnetGroupError =
   | ClusterSubnetGroupNotFoundFault
@@ -9675,6 +9710,7 @@ export const deleteClusterSubnetGroup: API.OperationMethod<
     InvalidClusterSubnetGroupStateFault,
     InvalidClusterSubnetStateFault,
   ],
+  operationName: "DeleteClusterSubnetGroup",
 }));
 export type DeleteCustomDomainAssociationError =
   | ClusterNotFoundFault
@@ -9699,6 +9735,7 @@ export const deleteCustomDomainAssociation: API.OperationMethod<
     CustomDomainAssociationNotFoundFault,
     UnsupportedOperationFault,
   ],
+  operationName: "DeleteCustomDomainAssociation",
 }));
 export type DeleteEndpointAccessError =
   | ClusterNotFoundFault
@@ -9725,6 +9762,7 @@ export const deleteEndpointAccess: API.OperationMethod<
     InvalidClusterStateFault,
     InvalidEndpointStateFault,
   ],
+  operationName: "DeleteEndpointAccess",
 }));
 export type DeleteEventSubscriptionError =
   | InvalidSubscriptionStateFault
@@ -9742,6 +9780,7 @@ export const deleteEventSubscription: API.OperationMethod<
   input: DeleteEventSubscriptionMessage,
   output: DeleteEventSubscriptionResponse,
   errors: [InvalidSubscriptionStateFault, SubscriptionNotFoundFault],
+  operationName: "DeleteEventSubscription",
 }));
 export type DeleteHsmClientCertificateError =
   | HsmClientCertificateNotFoundFault
@@ -9762,6 +9801,7 @@ export const deleteHsmClientCertificate: API.OperationMethod<
     HsmClientCertificateNotFoundFault,
     InvalidHsmClientCertificateStateFault,
   ],
+  operationName: "DeleteHsmClientCertificate",
 }));
 export type DeleteHsmConfigurationError =
   | HsmConfigurationNotFoundFault
@@ -9779,6 +9819,7 @@ export const deleteHsmConfiguration: API.OperationMethod<
   input: DeleteHsmConfigurationMessage,
   output: DeleteHsmConfigurationResponse,
   errors: [HsmConfigurationNotFoundFault, InvalidHsmConfigurationStateFault],
+  operationName: "DeleteHsmConfiguration",
 }));
 export type DeleteIntegrationError =
   | IntegrationConflictOperationFault
@@ -9803,6 +9844,7 @@ export const deleteIntegration: API.OperationMethod<
     IntegrationNotFoundFault,
     UnsupportedOperationFault,
   ],
+  operationName: "DeleteIntegration",
 }));
 export type DeletePartnerError =
   | ClusterNotFoundFault
@@ -9827,6 +9869,7 @@ export const deletePartner: API.OperationMethod<
     UnauthorizedPartnerIntegrationFault,
     UnsupportedOperationFault,
   ],
+  operationName: "DeletePartner",
 }));
 export type DeleteRedshiftIdcApplicationError =
   | DependentServiceAccessDeniedFault
@@ -9851,6 +9894,7 @@ export const deleteRedshiftIdcApplication: API.OperationMethod<
     RedshiftIdcApplicationNotExistsFault,
     UnsupportedOperationFault,
   ],
+  operationName: "DeleteRedshiftIdcApplication",
 }));
 export type DeleteResourcePolicyError =
   | ResourceNotFoundFault
@@ -9868,6 +9912,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   input: DeleteResourcePolicyMessage,
   output: DeleteResourcePolicyResponse,
   errors: [ResourceNotFoundFault, UnsupportedOperationFault],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteScheduledActionError =
   | ScheduledActionNotFoundFault
@@ -9885,6 +9930,7 @@ export const deleteScheduledAction: API.OperationMethod<
   input: DeleteScheduledActionMessage,
   output: DeleteScheduledActionResponse,
   errors: [ScheduledActionNotFoundFault, UnauthorizedOperation],
+  operationName: "DeleteScheduledAction",
 }));
 export type DeleteSnapshotCopyGrantError =
   | InvalidSnapshotCopyGrantStateFault
@@ -9902,6 +9948,7 @@ export const deleteSnapshotCopyGrant: API.OperationMethod<
   input: DeleteSnapshotCopyGrantMessage,
   output: DeleteSnapshotCopyGrantResponse,
   errors: [InvalidSnapshotCopyGrantStateFault, SnapshotCopyGrantNotFoundFault],
+  operationName: "DeleteSnapshotCopyGrant",
 }));
 export type DeleteSnapshotScheduleError =
   | InvalidClusterSnapshotScheduleStateFault
@@ -9922,6 +9969,7 @@ export const deleteSnapshotSchedule: API.OperationMethod<
     InvalidClusterSnapshotScheduleStateFault,
     SnapshotScheduleNotFoundFault,
   ],
+  operationName: "DeleteSnapshotSchedule",
 }));
 export type DeleteTagsError =
   | InvalidTagFault
@@ -9940,6 +9988,7 @@ export const deleteTags: API.OperationMethod<
   input: DeleteTagsMessage,
   output: DeleteTagsResponse,
   errors: [InvalidTagFault, ResourceNotFoundFault],
+  operationName: "DeleteTags",
 }));
 export type DeleteUsageLimitError =
   | UnsupportedOperationFault
@@ -9957,6 +10006,7 @@ export const deleteUsageLimit: API.OperationMethod<
   input: DeleteUsageLimitMessage,
   output: DeleteUsageLimitResponse,
   errors: [UnsupportedOperationFault, UsageLimitNotFoundFault],
+  operationName: "DeleteUsageLimit",
 }));
 export type DeregisterNamespaceError =
   | ClusterNotFoundFault
@@ -9979,6 +10029,7 @@ export const deregisterNamespace: API.OperationMethod<
     InvalidClusterStateFault,
     InvalidNamespaceFault,
   ],
+  operationName: "DeregisterNamespace",
 }));
 export type DescribeAccountAttributesError = CommonErrors;
 /**
@@ -9993,6 +10044,7 @@ export const describeAccountAttributes: API.OperationMethod<
   input: DescribeAccountAttributesMessage,
   output: AccountAttributeList,
   errors: [],
+  operationName: "DescribeAccountAttributes",
 }));
 export type DescribeAuthenticationProfilesError =
   | AuthenticationProfileNotFoundFault
@@ -10013,6 +10065,7 @@ export const describeAuthenticationProfiles: API.OperationMethod<
     AuthenticationProfileNotFoundFault,
     InvalidAuthenticationProfileRequestFault,
   ],
+  operationName: "DescribeAuthenticationProfiles",
 }));
 export type DescribeClusterDbRevisionsError =
   | ClusterNotFoundFault
@@ -10045,6 +10098,7 @@ export const describeClusterDbRevisions: API.OperationMethod<
   input: DescribeClusterDbRevisionsMessage,
   output: ClusterDbRevisionsMessage,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
+  operationName: "DescribeClusterDbRevisions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10101,6 +10155,7 @@ export const describeClusterParameterGroups: API.OperationMethod<
   input: DescribeClusterParameterGroupsMessage,
   output: ClusterParameterGroupsMessage,
   errors: [ClusterParameterGroupNotFoundFault, InvalidTagFault],
+  operationName: "DescribeClusterParameterGroups",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10150,6 +10205,7 @@ export const describeClusterParameters: API.OperationMethod<
   input: DescribeClusterParametersMessage,
   output: ClusterParameterGroupDetails,
   errors: [ClusterParameterGroupNotFoundFault],
+  operationName: "DescribeClusterParameters",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10202,6 +10258,7 @@ export const describeClusters: API.OperationMethod<
   input: DescribeClustersMessage,
   output: ClustersMessage,
   errors: [ClusterNotFoundFault, InvalidTagFault],
+  operationName: "DescribeClusters",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10256,6 +10313,7 @@ export const describeClusterSecurityGroups: API.OperationMethod<
   input: DescribeClusterSecurityGroupsMessage,
   output: ClusterSecurityGroupMessage,
   errors: [ClusterSecurityGroupNotFoundFault, InvalidTagFault],
+  operationName: "DescribeClusterSecurityGroups",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10315,6 +10373,7 @@ export const describeClusterSnapshots: API.OperationMethod<
     InvalidTagFault,
     UnsupportedOperationFault,
   ],
+  operationName: "DescribeClusterSnapshots",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10365,6 +10424,7 @@ export const describeClusterSubnetGroups: API.OperationMethod<
   input: DescribeClusterSubnetGroupsMessage,
   output: ClusterSubnetGroupMessage,
   errors: [ClusterSubnetGroupNotFoundFault, InvalidTagFault],
+  operationName: "DescribeClusterSubnetGroups",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10403,6 +10463,7 @@ export const describeClusterTracks: API.OperationMethod<
   input: DescribeClusterTracksMessage,
   output: TrackListMessage,
   errors: [InvalidClusterTrackFault, UnauthorizedOperation],
+  operationName: "DescribeClusterTracks",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10443,6 +10504,7 @@ export const describeClusterVersions: API.OperationMethod<
   input: DescribeClusterVersionsMessage,
   output: ClusterVersionsMessage,
   errors: [],
+  operationName: "DescribeClusterVersions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10481,6 +10543,7 @@ export const describeCustomDomainAssociations: API.OperationMethod<
   input: DescribeCustomDomainAssociationsMessage,
   output: CustomDomainAssociationsMessage,
   errors: [CustomDomainAssociationNotFoundFault, UnsupportedOperationFault],
+  operationName: "DescribeCustomDomainAssociations",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10517,6 +10580,7 @@ export const describeDataShares: API.OperationMethod<
   input: DescribeDataSharesMessage,
   output: DescribeDataSharesResult,
   errors: [InvalidDataShareFault],
+  operationName: "DescribeDataShares",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10554,6 +10618,7 @@ export const describeDataSharesForConsumer: API.OperationMethod<
   input: DescribeDataSharesForConsumerMessage,
   output: DescribeDataSharesForConsumerResult,
   errors: [InvalidNamespaceFault],
+  operationName: "DescribeDataSharesForConsumer",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10591,6 +10656,7 @@ export const describeDataSharesForProducer: API.OperationMethod<
   input: DescribeDataSharesForProducerMessage,
   output: DescribeDataSharesForProducerResult,
   errors: [InvalidNamespaceFault],
+  operationName: "DescribeDataSharesForProducer",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10631,6 +10697,7 @@ export const describeDefaultClusterParameters: API.OperationMethod<
   input: DescribeDefaultClusterParametersMessage,
   output: DescribeDefaultClusterParametersResult,
   errors: [],
+  operationName: "DescribeDefaultClusterParameters",
   pagination: {
     inputToken: "Marker",
     outputToken: "DefaultClusterParameters.Marker",
@@ -10674,6 +10741,7 @@ export const describeEndpointAccess: API.OperationMethod<
     EndpointNotFoundFault,
     InvalidClusterStateFault,
   ],
+  operationName: "DescribeEndpointAccess",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10712,6 +10780,7 @@ export const describeEndpointAuthorization: API.OperationMethod<
   input: DescribeEndpointAuthorizationMessage,
   output: EndpointAuthorizationList,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  operationName: "DescribeEndpointAuthorization",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10734,6 +10803,7 @@ export const describeEventCategories: API.OperationMethod<
   input: DescribeEventCategoriesMessage,
   output: EventCategoriesMessage,
   errors: [],
+  operationName: "DescribeEventCategories",
 }));
 export type DescribeEventsError = CommonErrors;
 /**
@@ -10766,6 +10836,7 @@ export const describeEvents: API.OperationMethod<
   input: DescribeEventsMessage,
   output: EventsMessage,
   errors: [],
+  operationName: "DescribeEvents",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10816,6 +10887,7 @@ export const describeEventSubscriptions: API.OperationMethod<
   input: DescribeEventSubscriptionsMessage,
   output: EventSubscriptionsMessage,
   errors: [InvalidTagFault, SubscriptionNotFoundFault],
+  operationName: "DescribeEventSubscriptions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10865,6 +10937,7 @@ export const describeHsmClientCertificates: API.OperationMethod<
   input: DescribeHsmClientCertificatesMessage,
   output: HsmClientCertificateMessage,
   errors: [HsmClientCertificateNotFoundFault, InvalidTagFault],
+  operationName: "DescribeHsmClientCertificates",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10915,6 +10988,7 @@ export const describeHsmConfigurations: API.OperationMethod<
   input: DescribeHsmConfigurationsMessage,
   output: HsmConfigurationMessage,
   errors: [HsmConfigurationNotFoundFault, InvalidTagFault],
+  operationName: "DescribeHsmConfigurations",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10958,6 +11032,7 @@ export const describeInboundIntegrations: API.OperationMethod<
     InvalidNamespaceFault,
     UnsupportedOperationFault,
   ],
+  operationName: "DescribeInboundIntegrations",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10996,6 +11071,7 @@ export const describeIntegrations: API.OperationMethod<
   input: DescribeIntegrationsMessage,
   output: IntegrationsMessage,
   errors: [IntegrationNotFoundFault, UnsupportedOperationFault],
+  operationName: "DescribeIntegrations",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11020,6 +11096,7 @@ export const describeLoggingStatus: API.OperationMethod<
   input: DescribeLoggingStatusMessage,
   output: LoggingStatus,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  operationName: "DescribeLoggingStatus",
 }));
 export type DescribeNodeConfigurationOptionsError =
   | AccessToSnapshotDeniedFault
@@ -11062,6 +11139,7 @@ export const describeNodeConfigurationOptions: API.OperationMethod<
     InvalidClusterSnapshotStateFault,
     UnsupportedOperationFault,
   ],
+  operationName: "DescribeNodeConfigurationOptions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11105,6 +11183,7 @@ export const describeOrderableClusterOptions: API.OperationMethod<
   input: DescribeOrderableClusterOptionsMessage,
   output: OrderableClusterOptionsMessage,
   errors: [],
+  operationName: "DescribeOrderableClusterOptions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11133,6 +11212,7 @@ export const describePartners: API.OperationMethod<
     UnauthorizedPartnerIntegrationFault,
     UnsupportedOperationFault,
   ],
+  operationName: "DescribePartners",
 }));
 export type DescribeRedshiftIdcApplicationsError =
   | DependentServiceAccessDeniedFault
@@ -11172,6 +11252,7 @@ export const describeRedshiftIdcApplications: API.OperationMethod<
     RedshiftIdcApplicationNotExistsFault,
     UnsupportedOperationFault,
   ],
+  operationName: "DescribeRedshiftIdcApplications",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11216,6 +11297,7 @@ export const describeReservedNodeExchangeStatus: API.OperationMethod<
     ReservedNodeNotFoundFault,
     UnsupportedOperationFault,
   ],
+  operationName: "DescribeReservedNodeExchangeStatus",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11268,6 +11350,7 @@ export const describeReservedNodeOfferings: API.OperationMethod<
     ReservedNodeOfferingNotFoundFault,
     UnsupportedOperationFault,
   ],
+  operationName: "DescribeReservedNodeOfferings",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11306,6 +11389,7 @@ export const describeReservedNodes: API.OperationMethod<
   input: DescribeReservedNodesMessage,
   output: ReservedNodesMessage,
   errors: [DependentServiceUnavailableFault, ReservedNodeNotFoundFault],
+  operationName: "DescribeReservedNodes",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11340,6 +11424,7 @@ export const describeResize: API.OperationMethod<
     ResizeNotFoundFault,
     UnsupportedOperationFault,
   ],
+  operationName: "DescribeResize",
 }));
 export type DescribeScheduledActionsError =
   | ScheduledActionNotFoundFault
@@ -11372,6 +11457,7 @@ export const describeScheduledActions: API.OperationMethod<
   input: DescribeScheduledActionsMessage,
   output: ScheduledActionsMessage,
   errors: [ScheduledActionNotFoundFault, UnauthorizedOperation],
+  operationName: "DescribeScheduledActions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11415,6 +11501,7 @@ export const describeSnapshotCopyGrants: API.OperationMethod<
   input: DescribeSnapshotCopyGrantsMessage,
   output: SnapshotCopyGrantMessage,
   errors: [InvalidTagFault, SnapshotCopyGrantNotFoundFault],
+  operationName: "DescribeSnapshotCopyGrants",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11450,6 +11537,7 @@ export const describeSnapshotSchedules: API.OperationMethod<
   input: DescribeSnapshotSchedulesMessage,
   output: DescribeSnapshotSchedulesOutputMessage,
   errors: [],
+  operationName: "DescribeSnapshotSchedules",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11470,6 +11558,7 @@ export const describeStorage: API.OperationMethod<
   input: DescribeStorageRequest,
   output: CustomerStorageMessage,
   errors: [],
+  operationName: "DescribeStorage",
 }));
 export type DescribeTableRestoreStatusError =
   | ClusterNotFoundFault
@@ -11507,6 +11596,7 @@ export const describeTableRestoreStatus: API.OperationMethod<
   input: DescribeTableRestoreStatusMessage,
   output: TableRestoreStatusMessage,
   errors: [ClusterNotFoundFault, TableRestoreNotFoundFault],
+  operationName: "DescribeTableRestoreStatus",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11567,6 +11657,7 @@ export const describeTags: API.OperationMethod<
   input: DescribeTagsMessage,
   output: TaggedResourceListMessage,
   errors: [InvalidTagFault, ResourceNotFoundFault],
+  operationName: "DescribeTags",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11618,6 +11709,7 @@ export const describeUsageLimits: API.OperationMethod<
   input: DescribeUsageLimitsMessage,
   output: UsageLimitList,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  operationName: "DescribeUsageLimits",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11647,6 +11739,7 @@ export const disableLogging: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  operationName: "DisableLogging",
 }));
 export type DisableSnapshotCopyError =
   | ClusterNotFoundFault
@@ -11678,6 +11771,7 @@ export const disableSnapshotCopy: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  operationName: "DisableSnapshotCopy",
 }));
 export type DisassociateDataShareConsumerError =
   | InvalidDataShareFault
@@ -11695,6 +11789,7 @@ export const disassociateDataShareConsumer: API.OperationMethod<
   input: DisassociateDataShareConsumerMessage,
   output: DataShare,
   errors: [InvalidDataShareFault, InvalidNamespaceFault],
+  operationName: "DisassociateDataShareConsumer",
 }));
 export type EnableLoggingError =
   | BucketNotFoundFault
@@ -11726,6 +11821,7 @@ export const enableLogging: API.OperationMethod<
     InvalidS3KeyPrefixFault,
     UnsupportedOperationFault,
   ],
+  operationName: "EnableLogging",
 }));
 export type EnableSnapshotCopyError =
   | ClusterNotFoundFault
@@ -11765,6 +11861,7 @@ export const enableSnapshotCopy: API.OperationMethod<
     UnauthorizedOperation,
     UnknownSnapshotCopyRegionFault,
   ],
+  operationName: "EnableSnapshotCopy",
 }));
 export type FailoverPrimaryComputeError =
   | ClusterNotFoundFault
@@ -11789,6 +11886,7 @@ export const failoverPrimaryCompute: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  operationName: "FailoverPrimaryCompute",
 }));
 export type GetClusterCredentialsError =
   | ClusterNotFoundFault
@@ -11830,6 +11928,7 @@ export const getClusterCredentials: API.OperationMethod<
   input: GetClusterCredentialsMessage,
   output: ClusterCredentials,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  operationName: "GetClusterCredentials",
 }));
 export type GetClusterCredentialsWithIAMError =
   | ClusterNotFoundFault
@@ -11857,6 +11956,7 @@ export const getClusterCredentialsWithIAM: API.OperationMethod<
   input: GetClusterCredentialsWithIAMMessage,
   output: ClusterExtendedCredentials,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  operationName: "GetClusterCredentialsWithIAM",
 }));
 export type GetIdentityCenterAuthTokenError =
   | ClusterNotFoundFault
@@ -11892,6 +11992,7 @@ export const getIdentityCenterAuthToken: API.OperationMethod<
     RedshiftInvalidParameterFault,
     UnsupportedOperationFault,
   ],
+  operationName: "GetIdentityCenterAuthToken",
 }));
 export type GetReservedNodeExchangeConfigurationOptionsError =
   | ClusterNotFoundFault
@@ -11941,6 +12042,7 @@ export const getReservedNodeExchangeConfigurationOptions: API.OperationMethod<
     ReservedNodeOfferingNotFoundFault,
     UnsupportedOperationFault,
   ],
+  operationName: "GetReservedNodeExchangeConfigurationOptions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11991,6 +12093,7 @@ export const getReservedNodeExchangeOfferings: API.OperationMethod<
     ReservedNodeOfferingNotFoundFault,
     UnsupportedOperationFault,
   ],
+  operationName: "GetReservedNodeExchangeOfferings",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -12019,6 +12122,7 @@ export const getResourcePolicy: API.OperationMethod<
     ResourceNotFoundFault,
     UnsupportedOperationFault,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type ListRecommendationsError =
   | ClusterNotFoundFault
@@ -12051,6 +12155,7 @@ export const listRecommendations: API.OperationMethod<
   input: ListRecommendationsMessage,
   output: ListRecommendationsResult,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  operationName: "ListRecommendations",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -12079,6 +12184,7 @@ export const modifyAquaConfiguration: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  operationName: "ModifyAquaConfiguration",
 }));
 export type ModifyAuthenticationProfileError =
   | AuthenticationProfileNotFoundFault
@@ -12101,6 +12207,7 @@ export const modifyAuthenticationProfile: API.OperationMethod<
     AuthenticationProfileQuotaExceededFault,
     InvalidAuthenticationProfileRequestFault,
   ],
+  operationName: "ModifyAuthenticationProfile",
 }));
 export type ModifyClusterError =
   | ClusterAlreadyExistsFault
@@ -12189,6 +12296,7 @@ export const modifyCluster: API.OperationMethod<
     UnsupportedOperationFault,
     UnsupportedOptionFault,
   ],
+  operationName: "ModifyCluster",
 }));
 export type ModifyClusterDbRevisionError =
   | ClusterNotFoundFault
@@ -12214,6 +12322,7 @@ export const modifyClusterDbRevision: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  operationName: "ModifyClusterDbRevision",
 }));
 export type ModifyClusterIamRolesError =
   | ClusterNotFoundFault
@@ -12236,6 +12345,7 @@ export const modifyClusterIamRoles: API.OperationMethod<
   input: ModifyClusterIamRolesMessage,
   output: ModifyClusterIamRolesResult,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
+  operationName: "ModifyClusterIamRoles",
 }));
 export type ModifyClusterMaintenanceError =
   | ClusterNotFoundFault
@@ -12253,6 +12363,7 @@ export const modifyClusterMaintenance: API.OperationMethod<
   input: ModifyClusterMaintenanceMessage,
   output: ModifyClusterMaintenanceResult,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
+  operationName: "ModifyClusterMaintenance",
 }));
 export type ModifyClusterParameterGroupError =
   | ClusterParameterGroupNotFoundFault
@@ -12277,6 +12388,7 @@ export const modifyClusterParameterGroup: API.OperationMethod<
     ClusterParameterGroupNotFoundFault,
     InvalidClusterParameterGroupStateFault,
   ],
+  operationName: "ModifyClusterParameterGroup",
 }));
 export type ModifyClusterSnapshotError =
   | ClusterSnapshotNotFoundFault
@@ -12301,6 +12413,7 @@ export const modifyClusterSnapshot: API.OperationMethod<
     InvalidClusterSnapshotStateFault,
     InvalidRetentionPeriodFault,
   ],
+  operationName: "ModifyClusterSnapshot",
 }));
 export type ModifyClusterSnapshotScheduleError =
   | ClusterNotFoundFault
@@ -12323,6 +12436,7 @@ export const modifyClusterSnapshotSchedule: API.OperationMethod<
     InvalidClusterSnapshotScheduleStateFault,
     SnapshotScheduleNotFoundFault,
   ],
+  operationName: "ModifyClusterSnapshotSchedule",
 }));
 export type ModifyClusterSubnetGroupError =
   | ClusterSubnetGroupNotFoundFault
@@ -12370,6 +12484,7 @@ export const modifyClusterSubnetGroup: API.OperationMethod<
     SubnetAlreadyInUse,
     UnauthorizedOperation,
   ],
+  operationName: "ModifyClusterSubnetGroup",
 }));
 export type ModifyCustomDomainAssociationError =
   | ClusterNotFoundFault
@@ -12394,6 +12509,7 @@ export const modifyCustomDomainAssociation: API.OperationMethod<
     CustomDomainAssociationNotFoundFault,
     UnsupportedOperationFault,
   ],
+  operationName: "ModifyCustomDomainAssociation",
 }));
 export type ModifyEndpointAccessError =
   | ClusterNotFoundFault
@@ -12422,6 +12538,7 @@ export const modifyEndpointAccess: API.OperationMethod<
     InvalidEndpointStateFault,
     UnauthorizedOperation,
   ],
+  operationName: "ModifyEndpointAccess",
 }));
 export type ModifyEventSubscriptionError =
   | InvalidSubscriptionStateFault
@@ -12456,6 +12573,7 @@ export const modifyEventSubscription: API.OperationMethod<
     SubscriptionNotFoundFault,
     SubscriptionSeverityNotFoundFault,
   ],
+  operationName: "ModifyEventSubscription",
 }));
 export type ModifyIntegrationError =
   | IntegrationAlreadyExistsFault
@@ -12482,6 +12600,7 @@ export const modifyIntegration: API.OperationMethod<
     IntegrationNotFoundFault,
     UnsupportedOperationFault,
   ],
+  operationName: "ModifyIntegration",
 }));
 export type ModifyLakehouseConfigurationError =
   | ClusterNotFoundFault
@@ -12512,6 +12631,7 @@ export const modifyLakehouseConfiguration: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  operationName: "ModifyLakehouseConfiguration",
 }));
 export type ModifyRedshiftIdcApplicationError =
   | DependentServiceAccessDeniedFault
@@ -12536,6 +12656,7 @@ export const modifyRedshiftIdcApplication: API.OperationMethod<
     RedshiftIdcApplicationNotExistsFault,
     UnsupportedOperationFault,
   ],
+  operationName: "ModifyRedshiftIdcApplication",
 }));
 export type ModifyScheduledActionError =
   | ClusterNotFoundFault
@@ -12566,6 +12687,7 @@ export const modifyScheduledAction: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  operationName: "ModifyScheduledAction",
 }));
 export type ModifySnapshotCopyRetentionPeriodError =
   | ClusterNotFoundFault
@@ -12598,6 +12720,7 @@ export const modifySnapshotCopyRetentionPeriod: API.OperationMethod<
     SnapshotCopyDisabledFault,
     UnauthorizedOperation,
   ],
+  operationName: "ModifySnapshotCopyRetentionPeriod",
 }));
 export type ModifySnapshotScheduleError =
   | InvalidScheduleFault
@@ -12621,6 +12744,7 @@ export const modifySnapshotSchedule: API.OperationMethod<
     SnapshotScheduleNotFoundFault,
     SnapshotScheduleUpdateInProgressFault,
   ],
+  operationName: "ModifySnapshotSchedule",
 }));
 export type ModifyUsageLimitError =
   | InvalidUsageLimitFault
@@ -12644,6 +12768,7 @@ export const modifyUsageLimit: API.OperationMethod<
     UnsupportedOperationFault,
     UsageLimitNotFoundFault,
   ],
+  operationName: "ModifyUsageLimit",
 }));
 export type PauseClusterError =
   | ClusterNotFoundFault
@@ -12666,6 +12791,7 @@ export const pauseCluster: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  operationName: "PauseCluster",
 }));
 export type PurchaseReservedNodeOfferingError =
   | ReservedNodeAlreadyExistsFault
@@ -12698,6 +12824,7 @@ export const purchaseReservedNodeOffering: API.OperationMethod<
     ReservedNodeQuotaExceededFault,
     UnsupportedOperationFault,
   ],
+  operationName: "PurchaseReservedNodeOffering",
 }));
 export type PutResourcePolicyError =
   | ConflictPolicyUpdateFault
@@ -12722,6 +12849,7 @@ export const putResourcePolicy: API.OperationMethod<
     ResourceNotFoundFault,
     UnsupportedOperationFault,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type RebootClusterError =
   | ClusterNotFoundFault
@@ -12746,6 +12874,7 @@ export const rebootCluster: API.OperationMethod<
   input: RebootClusterMessage,
   output: RebootClusterResult,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
+  operationName: "RebootCluster",
 }));
 export type RegisterNamespaceError =
   | ClusterNotFoundFault
@@ -12768,6 +12897,7 @@ export const registerNamespace: API.OperationMethod<
     InvalidClusterStateFault,
     InvalidNamespaceFault,
   ],
+  operationName: "RegisterNamespace",
 }));
 export type RejectDataShareError = InvalidDataShareFault | CommonErrors;
 /**
@@ -12782,6 +12912,7 @@ export const rejectDataShare: API.OperationMethod<
   input: RejectDataShareMessage,
   output: DataShare,
   errors: [InvalidDataShareFault],
+  operationName: "RejectDataShare",
 }));
 export type ResetClusterParameterGroupError =
   | ClusterParameterGroupNotFoundFault
@@ -12805,6 +12936,7 @@ export const resetClusterParameterGroup: API.OperationMethod<
     ClusterParameterGroupNotFoundFault,
     InvalidClusterParameterGroupStateFault,
   ],
+  operationName: "ResetClusterParameterGroup",
 }));
 export type ResizeClusterError =
   | ClusterNotFoundFault
@@ -12877,6 +13009,7 @@ export const resizeCluster: API.OperationMethod<
     UnsupportedOperationFault,
     UnsupportedOptionFault,
   ],
+  operationName: "ResizeCluster",
 }));
 export type RestoreFromClusterSnapshotError =
   | AccessToSnapshotDeniedFault
@@ -12993,6 +13126,7 @@ export const restoreFromClusterSnapshot: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  operationName: "RestoreFromClusterSnapshot",
 }));
 export type RestoreTableFromClusterSnapshotError =
   | ClusterNotFoundFault
@@ -13038,6 +13172,7 @@ export const restoreTableFromClusterSnapshot: API.OperationMethod<
     InvalidTableRestoreArgumentFault,
     UnsupportedOperationFault,
   ],
+  operationName: "RestoreTableFromClusterSnapshot",
 }));
 export type ResumeClusterError =
   | ClusterNotFoundFault
@@ -13062,6 +13197,7 @@ export const resumeCluster: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  operationName: "ResumeCluster",
 }));
 export type RevokeClusterSecurityGroupIngressError =
   | AuthorizationNotFoundFault
@@ -13088,6 +13224,7 @@ export const revokeClusterSecurityGroupIngress: API.OperationMethod<
     ClusterSecurityGroupNotFoundFault,
     InvalidClusterSecurityGroupStateFault,
   ],
+  operationName: "RevokeClusterSecurityGroupIngress",
 }));
 export type RevokeEndpointAccessError =
   | ClusterNotFoundFault
@@ -13118,6 +13255,7 @@ export const revokeEndpointAccess: API.OperationMethod<
     InvalidClusterStateFault,
     InvalidEndpointStateFault,
   ],
+  operationName: "RevokeEndpointAccess",
 }));
 export type RevokeSnapshotAccessError =
   | AccessToSnapshotDeniedFault
@@ -13148,6 +13286,7 @@ export const revokeSnapshotAccess: API.OperationMethod<
     ClusterSnapshotNotFoundFault,
     UnsupportedOperationFault,
   ],
+  operationName: "RevokeSnapshotAccess",
 }));
 export type RotateEncryptionKeyError =
   | ClusterNotFoundFault
@@ -13172,6 +13311,7 @@ export const rotateEncryptionKey: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  operationName: "RotateEncryptionKey",
 }));
 export type UpdatePartnerStatusError =
   | ClusterNotFoundFault
@@ -13196,4 +13336,5 @@ export const updatePartnerStatus: API.OperationMethod<
     UnauthorizedPartnerIntegrationFault,
     UnsupportedOperationFault,
   ],
+  operationName: "UpdatePartnerStatus",
 }));

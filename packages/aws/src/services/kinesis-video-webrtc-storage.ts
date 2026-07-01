@@ -220,6 +220,7 @@ export const joinStorageSession: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  operationName: "JoinStorageSession",
 }));
 export type JoinStorageSessionAsViewerError =
   | AccessDeniedException
@@ -260,4 +261,5 @@ export const joinStorageSessionAsViewer: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  operationName: "JoinStorageSessionAsViewer",
 }));

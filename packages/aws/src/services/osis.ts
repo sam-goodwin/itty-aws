@@ -1313,6 +1313,7 @@ export const createPipeline: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreatePipeline",
 }));
 export type CreatePipelineEndpointError =
   | AccessDeniedException
@@ -1342,6 +1343,7 @@ export const createPipelineEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreatePipelineEndpoint",
 }));
 export type DeletePipelineError =
   | AccessDeniedException
@@ -1371,6 +1373,7 @@ export const deletePipeline: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeletePipeline",
 }));
 export type DeletePipelineEndpointError =
   | AccessDeniedException
@@ -1395,6 +1398,7 @@ export const deletePipelineEndpoint: API.OperationMethod<
     InternalException,
     ValidationException,
   ],
+  operationName: "DeletePipelineEndpoint",
 }));
 export type DeleteResourcePolicyError =
   | AccessDeniedException
@@ -1423,6 +1427,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type GetPipelineError =
   | AccessDeniedException
@@ -1449,6 +1454,7 @@ export const getPipeline: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetPipeline",
 }));
 export type GetPipelineBlueprintError =
   | AccessDeniedException
@@ -1478,6 +1484,7 @@ export const getPipelineBlueprint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetPipelineBlueprint",
 }));
 export type GetPipelineChangeProgressError =
   | AccessDeniedException
@@ -1508,6 +1515,7 @@ export const getPipelineChangeProgress: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetPipelineChangeProgress",
 }));
 export type GetResourcePolicyError =
   | AccessDeniedException
@@ -1536,6 +1544,7 @@ export const getResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type ListPipelineBlueprintsError =
   | AccessDeniedException
@@ -1564,6 +1573,7 @@ export const listPipelineBlueprints: API.OperationMethod<
     InvalidPaginationTokenException,
     ValidationException,
   ],
+  operationName: "ListPipelineBlueprints",
 }));
 export type ListPipelineEndpointConnectionsError =
   | AccessDeniedException
@@ -1605,6 +1615,7 @@ export const listPipelineEndpointConnections: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  operationName: "ListPipelineEndpointConnections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1652,6 +1663,7 @@ export const listPipelineEndpoints: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  operationName: "ListPipelineEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1701,6 +1713,7 @@ export const listPipelines: API.OperationMethod<
     InvalidPaginationTokenException,
     ValidationException,
   ],
+  operationName: "ListPipelines",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1733,6 +1746,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutResourcePolicyError =
   | AccessDeniedException
@@ -1762,6 +1776,7 @@ export const putResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type RevokePipelineEndpointConnectionsError =
   | AccessDeniedException
@@ -1788,6 +1803,7 @@ export const revokePipelineEndpointConnections: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  operationName: "RevokePipelineEndpointConnections",
 }));
 export type StartPipelineError =
   | AccessDeniedException
@@ -1816,6 +1832,7 @@ export const startPipeline: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StartPipeline",
 }));
 export type StopPipelineError =
   | AccessDeniedException
@@ -1845,6 +1862,7 @@ export const stopPipeline: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StopPipeline",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1874,6 +1892,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1901,6 +1920,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdatePipelineError =
   | AccessDeniedException
@@ -1930,6 +1950,7 @@ export const updatePipeline: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdatePipeline",
 }));
 export type ValidatePipelineError =
   | AccessDeniedException
@@ -1956,4 +1977,5 @@ export const validatePipeline: API.OperationMethod<
     InternalException,
     ValidationException,
   ],
+  operationName: "ValidatePipeline",
 }));

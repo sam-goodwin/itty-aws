@@ -1309,6 +1309,7 @@ export const addPermission: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  operationName: "AddPermission",
 }));
 export type CancelMessageMoveTaskError =
   | InvalidAddress
@@ -1350,6 +1351,7 @@ export const cancelMessageMoveTask: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterValueException,
   ],
+  operationName: "CancelMessageMoveTask",
 }));
 export type ChangeMessageVisibilityError =
   | InvalidAddress
@@ -1422,6 +1424,7 @@ export const changeMessageVisibility: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  operationName: "ChangeMessageVisibility",
 }));
 export type ChangeMessageVisibilityBatchError =
   | BatchEntryIdsNotDistinct
@@ -1465,6 +1468,7 @@ export const changeMessageVisibilityBatch: API.OperationMethod<
     TooManyEntriesInBatchRequest,
     UnsupportedOperation,
   ],
+  operationName: "ChangeMessageVisibilityBatch",
 }));
 export type CreateQueueError =
   | InvalidAddress
@@ -1546,6 +1550,7 @@ export const createQueue: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterValueException,
   ],
+  operationName: "CreateQueue",
 }));
 export type DeleteMessageError =
   | InvalidAddress
@@ -1596,6 +1601,7 @@ export const deleteMessage: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  operationName: "DeleteMessage",
 }));
 export type DeleteMessageBatchError =
   | BatchEntryIdsNotDistinct
@@ -1635,6 +1641,7 @@ export const deleteMessageBatch: API.OperationMethod<
     TooManyEntriesInBatchRequest,
     UnsupportedOperation,
   ],
+  operationName: "DeleteMessageBatch",
 }));
 export type DeleteQueueError =
   | InvalidAddress
@@ -1681,6 +1688,7 @@ export const deleteQueue: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  operationName: "DeleteQueue",
 }));
 export type GetQueueAttributesError =
   | InvalidAddress
@@ -1711,6 +1719,7 @@ export const getQueueAttributes: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  operationName: "GetQueueAttributes",
 }));
 export type GetQueueUrlError =
   | InvalidAddress
@@ -1748,6 +1757,7 @@ export const getQueueUrl: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  operationName: "GetQueueUrl",
 }));
 export type ListDeadLetterSourceQueuesError =
   | InvalidAddress
@@ -1801,6 +1811,7 @@ export const listDeadLetterSourceQueues: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  operationName: "ListDeadLetterSourceQueues",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1846,6 +1857,7 @@ export const listMessageMoveTasks: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterValueException,
   ],
+  operationName: "ListMessageMoveTasks",
 }));
 export type ListQueuesError =
   | InvalidAddress
@@ -1900,6 +1912,7 @@ export const listQueues: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  operationName: "ListQueues",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1938,6 +1951,7 @@ export const listQueueTags: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  operationName: "ListQueueTags",
 }));
 export type PurgeQueueError =
   | InvalidAddress
@@ -1980,6 +1994,7 @@ export const purgeQueue: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  operationName: "PurgeQueue",
 }));
 export type ReceiveMessageError =
   | InvalidAddress
@@ -2063,6 +2078,7 @@ export const receiveMessage: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterValueException,
   ],
+  operationName: "ReceiveMessage",
 }));
 export type RemovePermissionError =
   | InvalidAddress
@@ -2098,6 +2114,7 @@ export const removePermission: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  operationName: "RemovePermission",
 }));
 export type SendMessageError =
   | InvalidAddress
@@ -2152,6 +2169,7 @@ export const sendMessage: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  operationName: "SendMessage",
 }));
 export type SendMessageBatchError =
   | BatchEntryIdsNotDistinct
@@ -2228,6 +2246,7 @@ export const sendMessageBatch: API.OperationMethod<
     InvalidParameterValueException,
     ParseError,
   ],
+  operationName: "SendMessageBatch",
 }));
 export type SetQueueAttributesError =
   | InvalidAddress
@@ -2280,6 +2299,7 @@ export const setQueueAttributes: API.OperationMethod<
     CommonServiceException,
     MissingRequiredParameterException,
   ],
+  operationName: "SetQueueAttributes",
 }));
 export type StartMessageMoveTaskError =
   | InvalidAddress
@@ -2326,6 +2346,7 @@ export const startMessageMoveTask: API.OperationMethod<
     CommonServiceException,
     InvalidParameterValueException,
   ],
+  operationName: "StartMessageMoveTask",
 }));
 export type TagQueueError =
   | InvalidAddress
@@ -2371,6 +2392,7 @@ export const tagQueue: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  operationName: "TagQueue",
 }));
 export type UntagQueueError =
   | InvalidAddress
@@ -2402,4 +2424,5 @@ export const untagQueue: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  operationName: "UntagQueue",
 }));

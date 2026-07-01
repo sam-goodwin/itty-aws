@@ -2982,6 +2982,7 @@ export const createApplication: API.OperationMethod<
     InternalServerException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateApplication",
 }));
 export type CreateConfigurationProfileError =
   | BadRequestException
@@ -3034,6 +3035,7 @@ export const createConfigurationProfile: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateConfigurationProfile",
 }));
 export type CreateDeploymentStrategyError =
   | BadRequestException
@@ -3059,6 +3061,7 @@ export const createDeploymentStrategy: API.OperationMethod<
     InternalServerException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateDeploymentStrategy",
 }));
 export type CreateEnvironmentError =
   | BadRequestException
@@ -3090,6 +3093,7 @@ export const createEnvironment: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateEnvironment",
 }));
 export type CreateExperimentDefinitionError =
   | BadRequestException
@@ -3116,6 +3120,7 @@ export const createExperimentDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateExperimentDefinition",
 }));
 export type CreateExtensionError =
   | BadRequestException
@@ -3160,6 +3165,7 @@ export const createExtension: API.OperationMethod<
     InternalServerException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateExtension",
 }));
 export type CreateExtensionAssociationError =
   | BadRequestException
@@ -3195,6 +3201,7 @@ export const createExtensionAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateExtensionAssociation",
 }));
 export type CreateHostedConfigurationVersionError =
   | BadRequestException
@@ -3226,6 +3233,7 @@ export const createHostedConfigurationVersion: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateHostedConfigurationVersion",
 }));
 export type DeleteApplicationError =
   | BadRequestException
@@ -3248,6 +3256,7 @@ export const deleteApplication: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteApplication",
 }));
 export type DeleteConfigurationProfileError =
   | BadRequestException
@@ -3276,6 +3285,7 @@ export const deleteConfigurationProfile: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteConfigurationProfile",
 }));
 export type DeleteDeploymentStrategyError =
   | BadRequestException
@@ -3298,6 +3308,7 @@ export const deleteDeploymentStrategy: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteDeploymentStrategy",
 }));
 export type DeleteEnvironmentError =
   | BadRequestException
@@ -3325,6 +3336,7 @@ export const deleteEnvironment: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteEnvironment",
 }));
 export type DeleteExperimentDefinitionError =
   | BadRequestException
@@ -3349,6 +3361,7 @@ export const deleteExperimentDefinition: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteExperimentDefinition",
 }));
 export type DeleteExtensionError =
   | BadRequestException
@@ -3372,6 +3385,7 @@ export const deleteExtension: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteExtension",
 }));
 export type DeleteExtensionAssociationError =
   | BadRequestException
@@ -3395,6 +3409,7 @@ export const deleteExtensionAssociation: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteExtensionAssociation",
 }));
 export type DeleteHostedConfigurationVersionError =
   | BadRequestException
@@ -3418,6 +3433,7 @@ export const deleteHostedConfigurationVersion: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteHostedConfigurationVersion",
 }));
 export type GetAccountSettingsError =
   | BadRequestException
@@ -3436,6 +3452,7 @@ export const getAccountSettings: API.OperationMethod<
   input: GetAccountSettingsRequest,
   output: AccountSettings,
   errors: [BadRequestException, InternalServerException],
+  operationName: "GetAccountSettings",
 }));
 export type GetApplicationError =
   | BadRequestException
@@ -3458,6 +3475,7 @@ export const getApplication: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "GetApplication",
 }));
 export type GetConfigurationError =
   | BadRequestException
@@ -3488,6 +3506,7 @@ export const getConfiguration: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "GetConfiguration",
 }));
 export type GetConfigurationProfileError =
   | BadRequestException
@@ -3510,6 +3529,7 @@ export const getConfigurationProfile: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "GetConfigurationProfile",
 }));
 export type GetDeploymentError =
   | BadRequestException
@@ -3532,6 +3552,7 @@ export const getDeployment: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "GetDeployment",
 }));
 export type GetDeploymentStrategyError =
   | BadRequestException
@@ -3558,6 +3579,7 @@ export const getDeploymentStrategy: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "GetDeploymentStrategy",
 }));
 export type GetEnvironmentError =
   | BadRequestException
@@ -3585,6 +3607,7 @@ export const getEnvironment: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "GetEnvironment",
 }));
 export type GetExperimentDefinitionError =
   | BadRequestException
@@ -3607,6 +3630,7 @@ export const getExperimentDefinition: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "GetExperimentDefinition",
 }));
 export type GetExperimentRunError =
   | BadRequestException
@@ -3629,6 +3653,7 @@ export const getExperimentRun: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "GetExperimentRun",
 }));
 export type GetExtensionError =
   | BadRequestException
@@ -3651,6 +3676,7 @@ export const getExtension: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "GetExtension",
 }));
 export type GetExtensionAssociationError =
   | BadRequestException
@@ -3675,6 +3701,7 @@ export const getExtensionAssociation: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "GetExtensionAssociation",
 }));
 export type GetHostedConfigurationVersionError =
   | BadRequestException
@@ -3697,6 +3724,7 @@ export const getHostedConfigurationVersion: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "GetHostedConfigurationVersion",
 }));
 export type ListApplicationsError =
   | BadRequestException
@@ -3729,6 +3757,7 @@ export const listApplications: API.OperationMethod<
   input: ListApplicationsRequest,
   output: Applications,
   errors: [BadRequestException, InternalServerException],
+  operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3772,6 +3801,7 @@ export const listConfigurationProfiles: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "ListConfigurationProfiles",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3815,6 +3845,7 @@ export const listDeployments: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "ListDeployments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3853,6 +3884,7 @@ export const listDeploymentStrategies: API.OperationMethod<
   input: ListDeploymentStrategiesRequest,
   output: DeploymentStrategies,
   errors: [BadRequestException, InternalServerException],
+  operationName: "ListDeploymentStrategies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3896,6 +3928,7 @@ export const listEnvironments: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "ListEnvironments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3939,6 +3972,7 @@ export const listExperimentDefinitions: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "ListExperimentDefinitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3982,6 +4016,7 @@ export const listExperimentRunEvents: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "ListExperimentRunEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4025,6 +4060,7 @@ export const listExperimentRuns: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "ListExperimentRuns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4065,6 +4101,7 @@ export const listExtensionAssociations: API.OperationMethod<
   input: ListExtensionAssociationsRequest,
   output: ExtensionAssociations,
   errors: [BadRequestException, InternalServerException],
+  operationName: "ListExtensionAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4105,6 +4142,7 @@ export const listExtensions: API.OperationMethod<
   input: ListExtensionsRequest,
   output: Extensions,
   errors: [BadRequestException, InternalServerException],
+  operationName: "ListExtensions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4149,6 +4187,7 @@ export const listHostedConfigurationVersions: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "ListHostedConfigurationVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4177,6 +4216,7 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type StartDeploymentError =
   | BadRequestException
@@ -4203,6 +4243,7 @@ export const startDeployment: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "StartDeployment",
 }));
 export type StartExperimentRunError =
   | BadRequestException
@@ -4227,6 +4268,7 @@ export const startExperimentRun: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "StartExperimentRun",
 }));
 export type StopDeploymentError =
   | BadRequestException
@@ -4254,6 +4296,7 @@ export const stopDeployment: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "StopDeployment",
 }));
 export type StopExperimentRunError =
   | BadRequestException
@@ -4276,6 +4319,7 @@ export const stopExperimentRun: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "StopExperimentRun",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -4300,6 +4344,7 @@ export const tagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -4322,6 +4367,7 @@ export const untagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAccountSettingsError =
   | BadRequestException
@@ -4339,6 +4385,7 @@ export const updateAccountSettings: API.OperationMethod<
   input: UpdateAccountSettingsRequest,
   output: AccountSettings,
   errors: [BadRequestException, InternalServerException],
+  operationName: "UpdateAccountSettings",
 }));
 export type UpdateApplicationError =
   | BadRequestException
@@ -4361,6 +4408,7 @@ export const updateApplication: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateApplication",
 }));
 export type UpdateConfigurationProfileError =
   | BadRequestException
@@ -4383,6 +4431,7 @@ export const updateConfigurationProfile: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateConfigurationProfile",
 }));
 export type UpdateDeploymentStrategyError =
   | BadRequestException
@@ -4405,6 +4454,7 @@ export const updateDeploymentStrategy: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateDeploymentStrategy",
 }));
 export type UpdateEnvironmentError =
   | BadRequestException
@@ -4427,6 +4477,7 @@ export const updateEnvironment: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateEnvironment",
 }));
 export type UpdateExperimentDefinitionError =
   | BadRequestException
@@ -4451,6 +4502,7 @@ export const updateExperimentDefinition: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateExperimentDefinition",
 }));
 export type UpdateExperimentRunError =
   | BadRequestException
@@ -4475,6 +4527,7 @@ export const updateExperimentRun: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateExperimentRun",
 }));
 export type UpdateExtensionError =
   | BadRequestException
@@ -4501,6 +4554,7 @@ export const updateExtension: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateExtension",
 }));
 export type UpdateExtensionAssociationError =
   | BadRequestException
@@ -4525,6 +4579,7 @@ export const updateExtensionAssociation: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateExtensionAssociation",
 }));
 export type ValidateConfigurationError =
   | BadRequestException
@@ -4547,4 +4602,5 @@ export const validateConfiguration: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "ValidateConfiguration",
 }));

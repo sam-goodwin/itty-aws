@@ -684,6 +684,7 @@ export const describeStream: API.OperationMethod<
   input: DescribeStreamInput,
   output: DescribeStreamOutput,
   errors: [InternalServerError, ResourceNotFoundException],
+  operationName: "DescribeStream",
 }));
 export type GetRecordsError =
   | ExpiredIteratorException
@@ -719,6 +720,7 @@ export const getRecords: API.OperationMethod<
     ResourceNotFoundException,
     TrimmedDataAccessException,
   ],
+  operationName: "GetRecords",
 }));
 export type GetShardIteratorError =
   | InternalServerError
@@ -747,6 +749,7 @@ export const getShardIterator: API.OperationMethod<
     ResourceNotFoundException,
     TrimmedDataAccessException,
   ],
+  operationName: "GetShardIterator",
 }));
 export type ListStreamsError =
   | InternalServerError
@@ -768,4 +771,5 @@ export const listStreams: API.OperationMethod<
   input: ListStreamsInput,
   output: ListStreamsOutput,
   errors: [InternalServerError, ResourceNotFoundException],
+  operationName: "ListStreams",
 }));

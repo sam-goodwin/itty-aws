@@ -3343,6 +3343,7 @@ export const createAddressListImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAddressListImportJob",
 }));
 export type DeregisterMemberFromAddressListError =
   | AccessDeniedException
@@ -3369,6 +3370,7 @@ export const deregisterMemberFromAddressList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeregisterMemberFromAddressList",
 }));
 export type GetAddressListImportJobError =
   | AccessDeniedException
@@ -3393,6 +3395,7 @@ export const getAddressListImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAddressListImportJob",
 }));
 export type GetArchiveExportError =
   | AccessDeniedException
@@ -3411,6 +3414,7 @@ export const getArchiveExport: API.OperationMethod<
   input: GetArchiveExportRequest,
   output: GetArchiveExportResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  operationName: "GetArchiveExport",
 }));
 export type GetArchiveMessageError =
   | AccessDeniedException
@@ -3429,6 +3433,7 @@ export const getArchiveMessage: API.OperationMethod<
   input: GetArchiveMessageRequest,
   output: GetArchiveMessageResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  operationName: "GetArchiveMessage",
 }));
 export type GetArchiveMessageContentError =
   | AccessDeniedException
@@ -3447,6 +3452,7 @@ export const getArchiveMessageContent: API.OperationMethod<
   input: GetArchiveMessageContentRequest,
   output: GetArchiveMessageContentResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  operationName: "GetArchiveMessageContent",
 }));
 export type GetArchiveSearchError =
   | AccessDeniedException
@@ -3465,6 +3471,7 @@ export const getArchiveSearch: API.OperationMethod<
   input: GetArchiveSearchRequest,
   output: GetArchiveSearchResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  operationName: "GetArchiveSearch",
 }));
 export type GetArchiveSearchResultsError =
   | AccessDeniedException
@@ -3489,6 +3496,7 @@ export const getArchiveSearchResults: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetArchiveSearchResults",
 }));
 export type GetMemberOfAddressListError =
   | AccessDeniedException
@@ -3513,6 +3521,7 @@ export const getMemberOfAddressList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMemberOfAddressList",
 }));
 export type ListAddressListImportJobsError =
   | AccessDeniedException
@@ -3552,6 +3561,7 @@ export const listAddressListImportJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAddressListImportJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3597,6 +3607,7 @@ export const listArchiveExports: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListArchiveExports",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3642,6 +3653,7 @@ export const listArchiveSearches: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListArchiveSearches",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3687,6 +3699,7 @@ export const listMembersOfAddressList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMembersOfAddressList",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3710,6 +3723,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListTagsForResource",
 }));
 export type RegisterMemberToAddressListError =
   | AccessDeniedException
@@ -3738,6 +3752,7 @@ export const registerMemberToAddressList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RegisterMemberToAddressList",
 }));
 export type StartAddressListImportJobError =
   | AccessDeniedException
@@ -3766,6 +3781,7 @@ export const startAddressListImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartAddressListImportJob",
 }));
 export type StartArchiveExportError =
   | AccessDeniedException
@@ -3792,6 +3808,7 @@ export const startArchiveExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartArchiveExport",
 }));
 export type StartArchiveSearchError =
   | AccessDeniedException
@@ -3820,6 +3837,7 @@ export const startArchiveSearch: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartArchiveSearch",
 }));
 export type StopAddressListImportJobError =
   | AccessDeniedException
@@ -3846,6 +3864,7 @@ export const stopAddressListImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopAddressListImportJob",
 }));
 export type StopArchiveExportError =
   | AccessDeniedException
@@ -3864,6 +3883,7 @@ export const stopArchiveExport: API.OperationMethod<
   input: StopArchiveExportRequest,
   output: StopArchiveExportResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  operationName: "StopArchiveExport",
 }));
 export type StopArchiveSearchError =
   | AccessDeniedException
@@ -3882,6 +3902,7 @@ export const stopArchiveSearch: API.OperationMethod<
   input: StopArchiveSearchRequest,
   output: StopArchiveSearchResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  operationName: "StopArchiveSearch",
 }));
 export type TagResourceError =
   | ConflictException
@@ -3906,6 +3927,7 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ConflictException
@@ -3924,6 +3946,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "UntagResource",
 }));
 export type CreateAddonInstanceError =
   | ConflictException
@@ -3948,6 +3971,7 @@ export const createAddonInstance: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateAddonInstance",
 }));
 export type GetAddonInstanceError =
   | ResourceNotFoundException
@@ -3965,6 +3989,7 @@ export const getAddonInstance: API.OperationMethod<
   input: GetAddonInstanceRequest,
   output: GetAddonInstanceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetAddonInstance",
 }));
 export type DeleteAddonInstanceError =
   | ConflictException
@@ -3982,6 +4007,7 @@ export const deleteAddonInstance: API.OperationMethod<
   input: DeleteAddonInstanceRequest,
   output: DeleteAddonInstanceResponse,
   errors: [ConflictException, ValidationException],
+  operationName: "DeleteAddonInstance",
 }));
 export type ListAddonInstancesError = ValidationException | CommonErrors;
 /**
@@ -4011,6 +4037,7 @@ export const listAddonInstances: API.OperationMethod<
   input: ListAddonInstancesRequest,
   output: ListAddonInstancesResponse,
   errors: [ValidationException],
+  operationName: "ListAddonInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4041,6 +4068,7 @@ export const createAddonSubscription: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAddonSubscription",
 }));
 export type GetAddonSubscriptionError =
   | ResourceNotFoundException
@@ -4058,6 +4086,7 @@ export const getAddonSubscription: API.OperationMethod<
   input: GetAddonSubscriptionRequest,
   output: GetAddonSubscriptionResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetAddonSubscription",
 }));
 export type DeleteAddonSubscriptionError =
   | ConflictException
@@ -4075,6 +4104,7 @@ export const deleteAddonSubscription: API.OperationMethod<
   input: DeleteAddonSubscriptionRequest,
   output: DeleteAddonSubscriptionResponse,
   errors: [ConflictException, ValidationException],
+  operationName: "DeleteAddonSubscription",
 }));
 export type ListAddonSubscriptionsError = ValidationException | CommonErrors;
 /**
@@ -4104,6 +4134,7 @@ export const listAddonSubscriptions: API.OperationMethod<
   input: ListAddonSubscriptionsRequest,
   output: ListAddonSubscriptionsResponse,
   errors: [ValidationException],
+  operationName: "ListAddonSubscriptions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4136,6 +4167,7 @@ export const createAddressList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAddressList",
 }));
 export type GetAddressListError =
   | AccessDeniedException
@@ -4160,6 +4192,7 @@ export const getAddressList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAddressList",
 }));
 export type DeleteAddressListError =
   | AccessDeniedException
@@ -4184,6 +4217,7 @@ export const deleteAddressList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAddressList",
 }));
 export type ListAddressListsError =
   | AccessDeniedException
@@ -4217,6 +4251,7 @@ export const listAddressLists: API.OperationMethod<
   input: ListAddressListsRequest,
   output: ListAddressListsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  operationName: "ListAddressLists",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4249,6 +4284,7 @@ export const createArchive: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateArchive",
 }));
 export type GetArchiveError =
   | AccessDeniedException
@@ -4273,6 +4309,7 @@ export const getArchive: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetArchive",
 }));
 export type UpdateArchiveError =
   | AccessDeniedException
@@ -4301,6 +4338,7 @@ export const updateArchive: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateArchive",
 }));
 export type DeleteArchiveError =
   | AccessDeniedException
@@ -4325,6 +4363,7 @@ export const deleteArchive: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteArchive",
 }));
 export type ListArchivesError =
   | AccessDeniedException
@@ -4358,6 +4397,7 @@ export const listArchives: API.OperationMethod<
   input: ListArchivesRequest,
   output: ListArchivesResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  operationName: "ListArchives",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4386,6 +4426,7 @@ export const createIngressPoint: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateIngressPoint",
 }));
 export type GetIngressPointError =
   | ResourceNotFoundException
@@ -4403,6 +4444,7 @@ export const getIngressPoint: API.OperationMethod<
   input: GetIngressPointRequest,
   output: GetIngressPointResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetIngressPoint",
 }));
 export type UpdateIngressPointError =
   | ConflictException
@@ -4421,6 +4463,7 @@ export const updateIngressPoint: API.OperationMethod<
   input: UpdateIngressPointRequest,
   output: UpdateIngressPointResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "UpdateIngressPoint",
 }));
 export type DeleteIngressPointError =
   | ConflictException
@@ -4439,6 +4482,7 @@ export const deleteIngressPoint: API.OperationMethod<
   input: DeleteIngressPointRequest,
   output: DeleteIngressPointResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "DeleteIngressPoint",
 }));
 export type ListIngressPointsError = ValidationException | CommonErrors;
 /**
@@ -4468,6 +4512,7 @@ export const listIngressPoints: API.OperationMethod<
   input: ListIngressPointsRequest,
   output: ListIngressPointsResponse,
   errors: [ValidationException],
+  operationName: "ListIngressPoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4496,6 +4541,7 @@ export const createRelay: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateRelay",
 }));
 export type GetRelayError =
   | ResourceNotFoundException
@@ -4513,6 +4559,7 @@ export const getRelay: API.OperationMethod<
   input: GetRelayRequest,
   output: GetRelayResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetRelay",
 }));
 export type UpdateRelayError =
   | ConflictException
@@ -4531,6 +4578,7 @@ export const updateRelay: API.OperationMethod<
   input: UpdateRelayRequest,
   output: UpdateRelayResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "UpdateRelay",
 }));
 export type DeleteRelayError =
   | ConflictException
@@ -4549,6 +4597,7 @@ export const deleteRelay: API.OperationMethod<
   input: DeleteRelayRequest,
   output: DeleteRelayResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "DeleteRelay",
 }));
 export type ListRelaysError = ValidationException | CommonErrors;
 /**
@@ -4578,6 +4627,7 @@ export const listRelays: API.OperationMethod<
   input: ListRelaysRequest,
   output: ListRelaysResponse,
   errors: [ValidationException],
+  operationName: "ListRelays",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4606,6 +4656,7 @@ export const createRuleSet: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateRuleSet",
 }));
 export type GetRuleSetError =
   | ResourceNotFoundException
@@ -4623,6 +4674,7 @@ export const getRuleSet: API.OperationMethod<
   input: GetRuleSetRequest,
   output: GetRuleSetResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetRuleSet",
 }));
 export type UpdateRuleSetError =
   | ConflictException
@@ -4641,6 +4693,7 @@ export const updateRuleSet: API.OperationMethod<
   input: UpdateRuleSetRequest,
   output: UpdateRuleSetResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "UpdateRuleSet",
 }));
 export type DeleteRuleSetError =
   | ConflictException
@@ -4658,6 +4711,7 @@ export const deleteRuleSet: API.OperationMethod<
   input: DeleteRuleSetRequest,
   output: DeleteRuleSetResponse,
   errors: [ConflictException, ValidationException],
+  operationName: "DeleteRuleSet",
 }));
 export type ListRuleSetsError = ValidationException | CommonErrors;
 /**
@@ -4687,6 +4741,7 @@ export const listRuleSets: API.OperationMethod<
   input: ListRuleSetsRequest,
   output: ListRuleSetsResponse,
   errors: [ValidationException],
+  operationName: "ListRuleSets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4715,6 +4770,7 @@ export const createTrafficPolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateTrafficPolicy",
 }));
 export type GetTrafficPolicyError =
   | ResourceNotFoundException
@@ -4732,6 +4788,7 @@ export const getTrafficPolicy: API.OperationMethod<
   input: GetTrafficPolicyRequest,
   output: GetTrafficPolicyResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetTrafficPolicy",
 }));
 export type UpdateTrafficPolicyError =
   | ConflictException
@@ -4750,6 +4807,7 @@ export const updateTrafficPolicy: API.OperationMethod<
   input: UpdateTrafficPolicyRequest,
   output: UpdateTrafficPolicyResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "UpdateTrafficPolicy",
 }));
 export type DeleteTrafficPolicyError =
   | ConflictException
@@ -4768,6 +4826,7 @@ export const deleteTrafficPolicy: API.OperationMethod<
   input: DeleteTrafficPolicyRequest,
   output: DeleteTrafficPolicyResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "DeleteTrafficPolicy",
 }));
 export type ListTrafficPoliciesError = ValidationException | CommonErrors;
 /**
@@ -4797,6 +4856,7 @@ export const listTrafficPolicies: API.OperationMethod<
   input: ListTrafficPoliciesRequest,
   output: ListTrafficPoliciesResponse,
   errors: [ValidationException],
+  operationName: "ListTrafficPolicies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

@@ -1611,6 +1611,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | ResourceNotFoundException
@@ -1628,6 +1629,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1642,6 +1644,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type CreateDbClusterError =
   | AccessDeniedException
@@ -1672,6 +1675,7 @@ export const createDbCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDbCluster",
 }));
 export type GetDbClusterError =
   | AccessDeniedException
@@ -1698,6 +1702,7 @@ export const getDbCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDbCluster",
 }));
 export type UpdateDbClusterError =
   | AccessDeniedException
@@ -1726,6 +1731,7 @@ export const updateDbCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDbCluster",
 }));
 export type DeleteDbClusterError =
   | AccessDeniedException
@@ -1754,6 +1760,7 @@ export const deleteDbCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDbCluster",
 }));
 export type ListDbClustersError =
   | AccessDeniedException
@@ -1795,6 +1802,7 @@ export const listDbClusters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDbClusters",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1842,6 +1850,7 @@ export const listDbInstancesForCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDbInstancesForCluster",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1876,6 +1885,7 @@ export const rebootDbCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RebootDbCluster",
 }));
 export type CreateDbInstanceError =
   | AccessDeniedException
@@ -1906,6 +1916,7 @@ export const createDbInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDbInstance",
 }));
 export type GetDbInstanceError =
   | AccessDeniedException
@@ -1932,6 +1943,7 @@ export const getDbInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDbInstance",
 }));
 export type UpdateDbInstanceError =
   | AccessDeniedException
@@ -1960,6 +1972,7 @@ export const updateDbInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDbInstance",
 }));
 export type DeleteDbInstanceError =
   | AccessDeniedException
@@ -1988,6 +2001,7 @@ export const deleteDbInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDbInstance",
 }));
 export type ListDbInstancesError =
   | AccessDeniedException
@@ -2029,6 +2043,7 @@ export const listDbInstances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDbInstances",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2063,6 +2078,7 @@ export const rebootDbInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RebootDbInstance",
 }));
 export type CreateDbParameterGroupError =
   | AccessDeniedException
@@ -2093,6 +2109,7 @@ export const createDbParameterGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDbParameterGroup",
 }));
 export type GetDbParameterGroupError =
   | AccessDeniedException
@@ -2119,6 +2136,7 @@ export const getDbParameterGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDbParameterGroup",
 }));
 export type ListDbParameterGroupsError =
   | AccessDeniedException
@@ -2160,6 +2178,7 @@ export const listDbParameterGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDbParameterGroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

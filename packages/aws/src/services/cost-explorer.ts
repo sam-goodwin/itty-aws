@@ -4094,6 +4094,7 @@ export const createAnomalyMonitor: API.OperationMethod<
   input: CreateAnomalyMonitorRequest,
   output: CreateAnomalyMonitorResponse,
   errors: [LimitExceededException],
+  operationName: "CreateAnomalyMonitor",
 }));
 export type CreateAnomalySubscriptionError =
   | LimitExceededException
@@ -4113,6 +4114,7 @@ export const createAnomalySubscription: API.OperationMethod<
   input: CreateAnomalySubscriptionRequest,
   output: CreateAnomalySubscriptionResponse,
   errors: [LimitExceededException, UnknownMonitorException],
+  operationName: "CreateAnomalySubscription",
 }));
 export type CreateCostCategoryDefinitionError =
   | LimitExceededException
@@ -4130,6 +4132,7 @@ export const createCostCategoryDefinition: API.OperationMethod<
   input: CreateCostCategoryDefinitionRequest,
   output: CreateCostCategoryDefinitionResponse,
   errors: [LimitExceededException, ServiceQuotaExceededException],
+  operationName: "CreateCostCategoryDefinition",
 }));
 export type DeleteAnomalyMonitorError =
   | LimitExceededException
@@ -4147,6 +4150,7 @@ export const deleteAnomalyMonitor: API.OperationMethod<
   input: DeleteAnomalyMonitorRequest,
   output: DeleteAnomalyMonitorResponse,
   errors: [LimitExceededException, UnknownMonitorException],
+  operationName: "DeleteAnomalyMonitor",
 }));
 export type DeleteAnomalySubscriptionError =
   | LimitExceededException
@@ -4164,6 +4168,7 @@ export const deleteAnomalySubscription: API.OperationMethod<
   input: DeleteAnomalySubscriptionRequest,
   output: DeleteAnomalySubscriptionResponse,
   errors: [LimitExceededException, UnknownSubscriptionException],
+  operationName: "DeleteAnomalySubscription",
 }));
 export type DeleteCostCategoryDefinitionError =
   | LimitExceededException
@@ -4182,6 +4187,7 @@ export const deleteCostCategoryDefinition: API.OperationMethod<
   input: DeleteCostCategoryDefinitionRequest,
   output: DeleteCostCategoryDefinitionResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
+  operationName: "DeleteCostCategoryDefinition",
 }));
 export type DescribeCostCategoryDefinitionError =
   | LimitExceededException
@@ -4205,6 +4211,7 @@ export const describeCostCategoryDefinition: API.OperationMethod<
   input: DescribeCostCategoryDefinitionRequest,
   output: DescribeCostCategoryDefinitionResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
+  operationName: "DescribeCostCategoryDefinition",
 }));
 export type GetAnomaliesError =
   | InvalidNextTokenException
@@ -4239,6 +4246,7 @@ export const getAnomalies: API.OperationMethod<
   input: GetAnomaliesRequest,
   output: GetAnomaliesResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
+  operationName: "GetAnomalies",
   pagination: {
     inputToken: "NextPageToken",
     outputToken: "NextPageToken",
@@ -4283,6 +4291,7 @@ export const getAnomalyMonitors: API.OperationMethod<
     LimitExceededException,
     UnknownMonitorException,
   ],
+  operationName: "GetAnomalyMonitors",
   pagination: {
     inputToken: "NextPageToken",
     outputToken: "NextPageToken",
@@ -4327,6 +4336,7 @@ export const getAnomalySubscriptions: API.OperationMethod<
     LimitExceededException,
     UnknownSubscriptionException,
   ],
+  operationName: "GetAnomalySubscriptions",
   pagination: {
     inputToken: "NextPageToken",
     outputToken: "NextPageToken",
@@ -4351,6 +4361,7 @@ export const getApproximateUsageRecords: API.OperationMethod<
   input: GetApproximateUsageRecordsRequest,
   output: GetApproximateUsageRecordsResponse,
   errors: [DataUnavailableException, LimitExceededException],
+  operationName: "GetApproximateUsageRecords",
 }));
 export type GetCommitmentPurchaseAnalysisError =
   | AnalysisNotFoundException
@@ -4374,6 +4385,7 @@ export const getCommitmentPurchaseAnalysis: API.OperationMethod<
     DataUnavailableException,
     LimitExceededException,
   ],
+  operationName: "GetCommitmentPurchaseAnalysis",
 }));
 export type GetCostAndUsageError =
   | BillExpirationException
@@ -4411,6 +4423,7 @@ export const getCostAndUsage: API.OperationMethod<
     RequestChangedException,
     ResourceNotFoundException,
   ],
+  operationName: "GetCostAndUsage",
 }));
 export type GetCostAndUsageComparisonsError =
   | BillingViewHealthStatusException
@@ -4454,6 +4467,7 @@ export const getCostAndUsageComparisons: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetCostAndUsageComparisons",
   pagination: {
     inputToken: "NextPageToken",
     outputToken: "NextPageToken",
@@ -4503,6 +4517,7 @@ export const getCostAndUsageWithResources: API.OperationMethod<
     RequestChangedException,
     ResourceNotFoundException,
   ],
+  operationName: "GetCostAndUsageWithResources",
 }));
 export type GetCostCategoriesError =
   | BillExpirationException
@@ -4536,6 +4551,7 @@ export const getCostCategories: API.OperationMethod<
     RequestChangedException,
     ResourceNotFoundException,
   ],
+  operationName: "GetCostCategories",
 }));
 export type GetCostComparisonDriversError =
   | BillingViewHealthStatusException
@@ -4579,6 +4595,7 @@ export const getCostComparisonDrivers: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetCostComparisonDrivers",
   pagination: {
     inputToken: "NextPageToken",
     outputToken: "NextPageToken",
@@ -4610,6 +4627,7 @@ export const getCostForecast: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetCostForecast",
 }));
 export type GetDimensionValuesError =
   | BillExpirationException
@@ -4641,6 +4659,7 @@ export const getDimensionValues: API.OperationMethod<
     RequestChangedException,
     ResourceNotFoundException,
   ],
+  operationName: "GetDimensionValues",
 }));
 export type GetReservationCoverageError =
   | DataUnavailableException
@@ -4695,6 +4714,7 @@ export const getReservationCoverage: API.OperationMethod<
     InvalidNextTokenException,
     LimitExceededException,
   ],
+  operationName: "GetReservationCoverage",
 }));
 export type GetReservationPurchaseRecommendationError =
   | DataUnavailableException
@@ -4749,6 +4769,7 @@ export const getReservationPurchaseRecommendation: API.OperationMethod<
     InvalidNextTokenException,
     LimitExceededException,
   ],
+  operationName: "GetReservationPurchaseRecommendation",
   pagination: {
     inputToken: "NextPageToken",
     outputToken: "NextPageToken",
@@ -4780,6 +4801,7 @@ export const getReservationUtilization: API.OperationMethod<
     InvalidNextTokenException,
     LimitExceededException,
   ],
+  operationName: "GetReservationUtilization",
 }));
 export type GetRightsizingRecommendationError =
   | InvalidNextTokenException
@@ -4817,6 +4839,7 @@ export const getRightsizingRecommendation: API.OperationMethod<
   input: GetRightsizingRecommendationRequest,
   output: GetRightsizingRecommendationResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
+  operationName: "GetRightsizingRecommendation",
   pagination: {
     inputToken: "NextPageToken",
     outputToken: "NextPageToken",
@@ -4841,6 +4864,7 @@ export const getSavingsPlanPurchaseRecommendationDetails: API.OperationMethod<
   input: GetSavingsPlanPurchaseRecommendationDetailsRequest,
   output: GetSavingsPlanPurchaseRecommendationDetailsResponse,
   errors: [DataUnavailableException, LimitExceededException],
+  operationName: "GetSavingsPlanPurchaseRecommendationDetails",
 }));
 export type GetSavingsPlansCoverageError =
   | DataUnavailableException
@@ -4893,6 +4917,7 @@ export const getSavingsPlansCoverage: API.OperationMethod<
     InvalidNextTokenException,
     LimitExceededException,
   ],
+  operationName: "GetSavingsPlansCoverage",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4918,6 +4943,7 @@ export const getSavingsPlansPurchaseRecommendation: API.OperationMethod<
   input: GetSavingsPlansPurchaseRecommendationRequest,
   output: GetSavingsPlansPurchaseRecommendationResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
+  operationName: "GetSavingsPlansPurchaseRecommendation",
 }));
 export type GetSavingsPlansUtilizationError =
   | DataUnavailableException
@@ -4941,6 +4967,7 @@ export const getSavingsPlansUtilization: API.OperationMethod<
   input: GetSavingsPlansUtilizationRequest,
   output: GetSavingsPlansUtilizationResponse,
   errors: [DataUnavailableException, LimitExceededException],
+  operationName: "GetSavingsPlansUtilization",
 }));
 export type GetSavingsPlansUtilizationDetailsError =
   | DataUnavailableException
@@ -4987,6 +5014,7 @@ export const getSavingsPlansUtilizationDetails: API.OperationMethod<
     InvalidNextTokenException,
     LimitExceededException,
   ],
+  operationName: "GetSavingsPlansUtilizationDetails",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5023,6 +5051,7 @@ export const getTags: API.OperationMethod<
     RequestChangedException,
     ResourceNotFoundException,
   ],
+  operationName: "GetTags",
 }));
 export type GetUsageForecastError =
   | BillingViewHealthStatusException
@@ -5050,6 +5079,7 @@ export const getUsageForecast: API.OperationMethod<
     ResourceNotFoundException,
     UnresolvableUsageUnitException,
   ],
+  operationName: "GetUsageForecast",
 }));
 export type ListCommitmentPurchaseAnalysesError =
   | DataUnavailableException
@@ -5087,6 +5117,7 @@ export const listCommitmentPurchaseAnalyses: API.OperationMethod<
     InvalidNextTokenException,
     LimitExceededException,
   ],
+  operationName: "ListCommitmentPurchaseAnalyses",
   pagination: {
     inputToken: "NextPageToken",
     outputToken: "NextPageToken",
@@ -5125,6 +5156,7 @@ export const listCostAllocationTagBackfillHistory: API.OperationMethod<
   input: ListCostAllocationTagBackfillHistoryRequest,
   output: ListCostAllocationTagBackfillHistoryResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
+  operationName: "ListCostAllocationTagBackfillHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5164,6 +5196,7 @@ export const listCostAllocationTags: API.OperationMethod<
   input: ListCostAllocationTagsRequest,
   output: ListCostAllocationTagsResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
+  operationName: "ListCostAllocationTags",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5207,6 +5240,7 @@ export const listCostCategoryDefinitions: API.OperationMethod<
   input: ListCostCategoryDefinitionsRequest,
   output: ListCostCategoryDefinitionsResponse,
   errors: [LimitExceededException],
+  operationName: "ListCostCategoryDefinitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5245,6 +5279,7 @@ export const listCostCategoryResourceAssociations: API.OperationMethod<
   input: ListCostCategoryResourceAssociationsRequest,
   output: ListCostCategoryResourceAssociationsResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
+  operationName: "ListCostCategoryResourceAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5289,6 +5324,7 @@ export const listSavingsPlansPurchaseRecommendationGeneration: API.OperationMeth
     InvalidNextTokenException,
     LimitExceededException,
   ],
+  operationName: "ListSavingsPlansPurchaseRecommendationGeneration",
   pagination: {
     inputToken: "NextPageToken",
     outputToken: "NextPageToken",
@@ -5313,6 +5349,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type ProvideAnomalyFeedbackError = LimitExceededException | CommonErrors;
 /**
@@ -5327,6 +5364,7 @@ export const provideAnomalyFeedback: API.OperationMethod<
   input: ProvideAnomalyFeedbackRequest,
   output: ProvideAnomalyFeedbackResponse,
   errors: [LimitExceededException],
+  operationName: "ProvideAnomalyFeedback",
 }));
 export type StartCommitmentPurchaseAnalysisError =
   | DataUnavailableException
@@ -5353,6 +5391,7 @@ export const startCommitmentPurchaseAnalysis: API.OperationMethod<
     LimitExceededException,
     ServiceQuotaExceededException,
   ],
+  operationName: "StartCommitmentPurchaseAnalysis",
 }));
 export type StartCostAllocationTagBackfillError =
   | BackfillLimitExceededException
@@ -5372,6 +5411,7 @@ export const startCostAllocationTagBackfill: API.OperationMethod<
   input: StartCostAllocationTagBackfillRequest,
   output: StartCostAllocationTagBackfillResponse,
   errors: [BackfillLimitExceededException, LimitExceededException],
+  operationName: "StartCostAllocationTagBackfill",
 }));
 export type StartSavingsPlansPurchaseRecommendationGenerationError =
   | DataUnavailableException
@@ -5402,6 +5442,7 @@ export const startSavingsPlansPurchaseRecommendationGeneration: API.OperationMet
     LimitExceededException,
     ServiceQuotaExceededException,
   ],
+  operationName: "StartSavingsPlansPurchaseRecommendationGeneration",
 }));
 export type TagResourceError =
   | LimitExceededException
@@ -5432,6 +5473,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | LimitExceededException
@@ -5450,6 +5492,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type UpdateAnomalyMonitorError =
   | LimitExceededException
@@ -5468,6 +5511,7 @@ export const updateAnomalyMonitor: API.OperationMethod<
   input: UpdateAnomalyMonitorRequest,
   output: UpdateAnomalyMonitorResponse,
   errors: [LimitExceededException, UnknownMonitorException],
+  operationName: "UpdateAnomalyMonitor",
 }));
 export type UpdateAnomalySubscriptionError =
   | LimitExceededException
@@ -5494,6 +5538,7 @@ export const updateAnomalySubscription: API.OperationMethod<
     UnknownMonitorException,
     UnknownSubscriptionException,
   ],
+  operationName: "UpdateAnomalySubscription",
 }));
 export type UpdateCostAllocationTagsStatusError =
   | LimitExceededException
@@ -5513,6 +5558,7 @@ export const updateCostAllocationTagsStatus: API.OperationMethod<
   input: UpdateCostAllocationTagsStatusRequest,
   output: UpdateCostAllocationTagsStatusResponse,
   errors: [LimitExceededException],
+  operationName: "UpdateCostAllocationTagsStatus",
 }));
 export type UpdateCostCategoryDefinitionError =
   | LimitExceededException
@@ -5537,4 +5583,5 @@ export const updateCostCategoryDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "UpdateCostCategoryDefinition",
 }));

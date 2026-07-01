@@ -1801,6 +1801,7 @@ export const batchGetIncidentFindings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchGetIncidentFindings",
 }));
 export type CreateReplicationSetError =
   | AccessDeniedException
@@ -1830,6 +1831,7 @@ export const createReplicationSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateReplicationSet",
 }));
 export type CreateResponsePlanError =
   | AccessDeniedException
@@ -1860,6 +1862,7 @@ export const createResponsePlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateResponsePlan",
 }));
 export type CreateTimelineEventError =
   | AccessDeniedException
@@ -1891,6 +1894,7 @@ export const createTimelineEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateTimelineEvent",
 }));
 export type DeleteIncidentRecordError =
   | AccessDeniedException
@@ -1915,6 +1919,7 @@ export const deleteIncidentRecord: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteIncidentRecord",
 }));
 export type DeleteReplicationSetError =
   | AccessDeniedException
@@ -1942,6 +1947,7 @@ export const deleteReplicationSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteReplicationSet",
 }));
 export type DeleteResourcePolicyError =
   | AccessDeniedException
@@ -1969,6 +1975,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteResponsePlanError =
   | AccessDeniedException
@@ -1994,6 +2001,7 @@ export const deleteResponsePlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteResponsePlan",
 }));
 export type DeleteTimelineEventError =
   | AccessDeniedException
@@ -2018,6 +2026,7 @@ export const deleteTimelineEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteTimelineEvent",
 }));
 export type GetIncidentRecordError =
   | AccessDeniedException
@@ -2044,6 +2053,7 @@ export const getIncidentRecord: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetIncidentRecord",
 }));
 export type GetReplicationSetError =
   | AccessDeniedException
@@ -2070,6 +2080,7 @@ export const getReplicationSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetReplicationSet",
 }));
 export type GetResourcePoliciesError =
   | AccessDeniedException
@@ -2111,6 +2122,7 @@ export const getResourcePolicies: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourcePolicies",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2143,6 +2155,7 @@ export const getResponsePlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResponsePlan",
 }));
 export type GetTimelineEventError =
   | AccessDeniedException
@@ -2169,6 +2182,7 @@ export const getTimelineEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTimelineEvent",
 }));
 export type ListIncidentFindingsError =
   | AccessDeniedException
@@ -2213,6 +2227,7 @@ export const listIncidentFindings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListIncidentFindings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2259,6 +2274,7 @@ export const listIncidentRecords: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListIncidentRecords",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2304,6 +2320,7 @@ export const listRelatedItems: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRelatedItems",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2349,6 +2366,7 @@ export const listReplicationSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListReplicationSets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2394,6 +2412,7 @@ export const listResponsePlans: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListResponsePlans",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2426,6 +2445,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTimelineEventsError =
   | AccessDeniedException
@@ -2465,6 +2485,7 @@ export const listTimelineEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTimelineEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2499,6 +2520,7 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type StartIncidentError =
   | AccessDeniedException
@@ -2528,6 +2550,7 @@ export const startIncident: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartIncident",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2558,6 +2581,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2586,6 +2610,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateDeletionProtectionError =
   | AccessDeniedException
@@ -2613,6 +2638,7 @@ export const updateDeletionProtection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDeletionProtection",
 }));
 export type UpdateIncidentRecordError =
   | AccessDeniedException
@@ -2643,6 +2669,7 @@ export const updateIncidentRecord: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateIncidentRecord",
 }));
 export type UpdateRelatedItemsError =
   | AccessDeniedException
@@ -2671,6 +2698,7 @@ export const updateRelatedItems: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRelatedItems",
 }));
 export type UpdateReplicationSetError =
   | AccessDeniedException
@@ -2699,6 +2727,7 @@ export const updateReplicationSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateReplicationSet",
 }));
 export type UpdateResponsePlanError =
   | AccessDeniedException
@@ -2727,6 +2756,7 @@ export const updateResponsePlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateResponsePlan",
 }));
 export type UpdateTimelineEventError =
   | AccessDeniedException
@@ -2755,4 +2785,5 @@ export const updateTimelineEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateTimelineEvent",
 }));

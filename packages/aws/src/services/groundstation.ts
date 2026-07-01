@@ -3040,6 +3040,7 @@ export const getAgentTaskResponseUrl: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "GetAgentTaskResponseUrl",
 }));
 export type GetMinuteUsageError =
   | DependencyException
@@ -3062,6 +3063,7 @@ export const getMinuteUsage: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "GetMinuteUsage",
 }));
 export type ListTagsForResourceError =
   | DependencyException
@@ -3084,6 +3086,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | DependencyException
@@ -3106,6 +3109,7 @@ export const tagResource: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | DependencyException
@@ -3128,6 +3132,7 @@ export const untagResource: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type RegisterAgentError =
   | DependencyException
@@ -3152,6 +3157,7 @@ export const registerAgent: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "RegisterAgent",
 }));
 export type GetAgentConfigurationError =
   | DependencyException
@@ -3176,6 +3182,7 @@ export const getAgentConfiguration: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "GetAgentConfiguration",
 }));
 export type UpdateAgentStatusError =
   | DependencyException
@@ -3200,6 +3207,7 @@ export const updateAgentStatus: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateAgentStatus",
 }));
 export type CreateConfigError =
   | DependencyException
@@ -3226,6 +3234,7 @@ export const createConfig: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateConfig",
 }));
 export type GetConfigError =
   | DependencyException
@@ -3250,6 +3259,7 @@ export const getConfig: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "GetConfig",
 }));
 export type UpdateConfigError =
   | DependencyException
@@ -3274,6 +3284,7 @@ export const updateConfig: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateConfig",
 }));
 export type DeleteConfigError =
   | DependencyException
@@ -3296,6 +3307,7 @@ export const deleteConfig: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteConfig",
 }));
 export type ListConfigsError =
   | DependencyException
@@ -3333,6 +3345,7 @@ export const listConfigs: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "ListConfigs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3363,6 +3376,7 @@ export const reserveContact: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "ReserveContact",
 }));
 export type DescribeContactError =
   | DependencyException
@@ -3385,6 +3399,7 @@ export const describeContact: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeContact",
 }));
 export type UpdateContactError =
   | DependencyException
@@ -3409,6 +3424,7 @@ export const updateContact: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateContact",
 }));
 export type CancelContactError =
   | DependencyException
@@ -3437,6 +3453,7 @@ export const cancelContact: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "CancelContact",
 }));
 export type ListContactsError =
   | DependencyException
@@ -3476,6 +3493,7 @@ export const listContacts: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "ListContacts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3504,6 +3522,7 @@ export const describeContactVersion: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeContactVersion",
 }));
 export type ListContactVersionsError =
   | DependencyException
@@ -3541,6 +3560,7 @@ export const listContactVersions: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "ListContactVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3573,6 +3593,7 @@ export const createDataflowEndpointGroup: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateDataflowEndpointGroup",
 }));
 export type GetDataflowEndpointGroupError =
   | DependencyException
@@ -3595,6 +3616,7 @@ export const getDataflowEndpointGroup: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "GetDataflowEndpointGroup",
 }));
 export type DeleteDataflowEndpointGroupError =
   | DependencyException
@@ -3617,6 +3639,7 @@ export const deleteDataflowEndpointGroup: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteDataflowEndpointGroup",
 }));
 export type ListDataflowEndpointGroupsError =
   | DependencyException
@@ -3654,6 +3677,7 @@ export const listDataflowEndpointGroups: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "ListDataflowEndpointGroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3688,6 +3712,7 @@ export const createDataflowEndpointGroupV2: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateDataflowEndpointGroupV2",
 }));
 export type CreateEphemerisError =
   | DependencyException
@@ -3710,6 +3735,7 @@ export const createEphemeris: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateEphemeris",
 }));
 export type DescribeEphemerisError =
   | DependencyException
@@ -3732,6 +3758,7 @@ export const describeEphemeris: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeEphemeris",
 }));
 export type UpdateEphemerisError =
   | DependencyException
@@ -3754,6 +3781,7 @@ export const updateEphemeris: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateEphemeris",
 }));
 export type DeleteEphemerisError =
   | DependencyException
@@ -3778,6 +3806,7 @@ export const deleteEphemeris: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteEphemeris",
 }));
 export type ListEphemeridesError =
   | DependencyException
@@ -3815,6 +3844,7 @@ export const listEphemerides: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "ListEphemerides",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3858,6 +3888,7 @@ export const listGroundStations: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "ListGroundStations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3896,6 +3927,7 @@ export const listAntennas: API.OperationMethod<
   input: ListAntennasRequest,
   output: ListAntennasResponse,
   errors: [DependencyException, InvalidParameterException],
+  operationName: "ListAntennas",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3934,6 +3966,7 @@ export const listGroundStationReservations: API.OperationMethod<
   input: ListGroundStationReservationsRequest,
   output: ListGroundStationReservationsResponse,
   errors: [DependencyException, InvalidParameterException],
+  operationName: "ListGroundStationReservations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3964,6 +3997,7 @@ export const createMissionProfile: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateMissionProfile",
 }));
 export type GetMissionProfileError =
   | DependencyException
@@ -3986,6 +4020,7 @@ export const getMissionProfile: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "GetMissionProfile",
 }));
 export type UpdateMissionProfileError =
   | DependencyException
@@ -4010,6 +4045,7 @@ export const updateMissionProfile: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateMissionProfile",
 }));
 export type DeleteMissionProfileError =
   | DependencyException
@@ -4032,6 +4068,7 @@ export const deleteMissionProfile: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteMissionProfile",
 }));
 export type ListMissionProfilesError =
   | DependencyException
@@ -4069,6 +4106,7 @@ export const listMissionProfiles: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "ListMissionProfiles",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4097,6 +4135,7 @@ export const getSatellite: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "GetSatellite",
 }));
 export type ListSatellitesError =
   | DependencyException
@@ -4134,6 +4173,7 @@ export const listSatellites: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "ListSatellites",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

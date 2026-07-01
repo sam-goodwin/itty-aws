@@ -1783,6 +1783,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidParametersException,
     ThrottledRequestException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalServiceException
@@ -1806,6 +1807,7 @@ export const tagResource: API.OperationMethod<
     InvalidParametersException,
     ThrottledRequestException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServiceException
@@ -1828,6 +1830,7 @@ export const untagResource: API.OperationMethod<
     InvalidParametersException,
     ThrottledRequestException,
   ],
+  operationName: "UntagResource",
 }));
 export type AssociateWhatsAppBusinessAccountError =
   | DependencyException
@@ -1852,6 +1855,7 @@ export const associateWhatsAppBusinessAccount: API.OperationMethod<
     LimitExceededException,
     ThrottledRequestException,
   ],
+  operationName: "AssociateWhatsAppBusinessAccount",
 }));
 export type GetLinkedWhatsAppBusinessAccountError =
   | DependencyException
@@ -1878,6 +1882,7 @@ export const getLinkedWhatsAppBusinessAccount: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "GetLinkedWhatsAppBusinessAccount",
 }));
 export type DisassociateWhatsAppBusinessAccountError =
   | DependencyException
@@ -1902,6 +1907,7 @@ export const disassociateWhatsAppBusinessAccount: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "DisassociateWhatsAppBusinessAccount",
 }));
 export type ListLinkedWhatsAppBusinessAccountsError =
   | InternalServiceException
@@ -1941,6 +1947,7 @@ export const listLinkedWhatsAppBusinessAccounts: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "ListLinkedWhatsAppBusinessAccounts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1977,6 +1984,7 @@ export const createWhatsAppFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "CreateWhatsAppFlow",
 }));
 export type CreateWhatsAppMessageTemplateError =
   | AccessDeniedByMetaException
@@ -2007,6 +2015,7 @@ export const createWhatsAppMessageTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "CreateWhatsAppMessageTemplate",
 }));
 export type CreateWhatsAppMessageTemplateFromLibraryError =
   | AccessDeniedByMetaException
@@ -2035,6 +2044,7 @@ export const createWhatsAppMessageTemplateFromLibrary: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "CreateWhatsAppMessageTemplateFromLibrary",
 }));
 export type CreateWhatsAppMessageTemplateMediaError =
   | AccessDeniedByMetaException
@@ -2063,6 +2073,7 @@ export const createWhatsAppMessageTemplateMedia: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "CreateWhatsAppMessageTemplateMedia",
 }));
 export type DeleteWhatsAppFlowError =
   | AccessDeniedByMetaException
@@ -2091,6 +2102,7 @@ export const deleteWhatsAppFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "DeleteWhatsAppFlow",
 }));
 export type DeleteWhatsAppMessageTemplateError =
   | AccessDeniedByMetaException
@@ -2119,6 +2131,7 @@ export const deleteWhatsAppMessageTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "DeleteWhatsAppMessageTemplate",
 }));
 export type DeprecateWhatsAppFlowError =
   | AccessDeniedByMetaException
@@ -2147,6 +2160,7 @@ export const deprecateWhatsAppFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "DeprecateWhatsAppFlow",
 }));
 export type GetWhatsAppFlowError =
   | AccessDeniedByMetaException
@@ -2175,6 +2189,7 @@ export const getWhatsAppFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "GetWhatsAppFlow",
 }));
 export type GetWhatsAppFlowPreviewError =
   | AccessDeniedByMetaException
@@ -2203,6 +2218,7 @@ export const getWhatsAppFlowPreview: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "GetWhatsAppFlowPreview",
 }));
 export type GetWhatsAppMessageTemplateError =
   | AccessDeniedByMetaException
@@ -2231,6 +2247,7 @@ export const getWhatsAppMessageTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "GetWhatsAppMessageTemplate",
 }));
 export type ListWhatsAppFlowAssetsError =
   | AccessDeniedByMetaException
@@ -2274,6 +2291,7 @@ export const listWhatsAppFlowAssets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "ListWhatsAppFlowAssets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2323,6 +2341,7 @@ export const listWhatsAppFlows: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "ListWhatsAppFlows",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2372,6 +2391,7 @@ export const listWhatsAppMessageTemplates: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "ListWhatsAppMessageTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2421,6 +2441,7 @@ export const listWhatsAppTemplateLibrary: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "ListWhatsAppTemplateLibrary",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2455,6 +2476,7 @@ export const publishWhatsAppFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "PublishWhatsAppFlow",
 }));
 export type PutWhatsAppBusinessAccountEventDestinationsError =
   | InternalServiceException
@@ -2477,6 +2499,7 @@ export const putWhatsAppBusinessAccountEventDestinations: API.OperationMethod<
     InvalidParametersException,
     ThrottledRequestException,
   ],
+  operationName: "PutWhatsAppBusinessAccountEventDestinations",
 }));
 export type UpdateWhatsAppFlowError =
   | AccessDeniedByMetaException
@@ -2505,6 +2528,7 @@ export const updateWhatsAppFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "UpdateWhatsAppFlow",
 }));
 export type UpdateWhatsAppFlowAssetsError =
   | AccessDeniedByMetaException
@@ -2533,6 +2557,7 @@ export const updateWhatsAppFlowAssets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "UpdateWhatsAppFlowAssets",
 }));
 export type UpdateWhatsAppMessageTemplateError =
   | AccessDeniedByMetaException
@@ -2561,6 +2586,7 @@ export const updateWhatsAppMessageTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "UpdateWhatsAppMessageTemplate",
 }));
 export type GetLinkedWhatsAppBusinessAccountPhoneNumberError =
   | DependencyException
@@ -2587,6 +2613,7 @@ export const getLinkedWhatsAppBusinessAccountPhoneNumber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "GetLinkedWhatsAppBusinessAccountPhoneNumber",
 }));
 export type DeleteWhatsAppMessageMediaError =
   | AccessDeniedByMetaException
@@ -2615,6 +2642,7 @@ export const deleteWhatsAppMessageMedia: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "DeleteWhatsAppMessageMedia",
 }));
 export type GetWhatsAppMessageMediaError =
   | AccessDeniedByMetaException
@@ -2647,6 +2675,7 @@ export const getWhatsAppMessageMedia: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "GetWhatsAppMessageMedia",
 }));
 export type PostWhatsAppMessageMediaError =
   | AccessDeniedByMetaException
@@ -2679,6 +2708,7 @@ export const postWhatsAppMessageMedia: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "PostWhatsAppMessageMedia",
 }));
 export type SendWhatsAppMessageError =
   | DependencyException
@@ -2709,4 +2739,5 @@ export const sendWhatsAppMessage: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  operationName: "SendWhatsAppMessage",
 }));

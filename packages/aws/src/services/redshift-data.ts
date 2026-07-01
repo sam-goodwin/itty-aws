@@ -852,6 +852,7 @@ export const batchExecuteStatement: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "BatchExecuteStatement",
 }));
 export type CancelStatementError =
   | DatabaseConnectionException
@@ -880,6 +881,7 @@ export const cancelStatement: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CancelStatement",
 }));
 export type DescribeStatementError =
   | InternalServerException
@@ -904,6 +906,7 @@ export const describeStatement: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeStatement",
 }));
 export type DescribeTableError =
   | DatabaseConnectionException
@@ -957,6 +960,7 @@ export const describeTable: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeTable",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1003,6 +1007,7 @@ export const executeStatement: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ExecuteStatement",
 }));
 export type GetStatementResultError =
   | InternalServerException
@@ -1042,6 +1047,7 @@ export const getStatementResult: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetStatementResult",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1086,6 +1092,7 @@ export const getStatementResultV2: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetStatementResultV2",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1144,6 +1151,7 @@ export const listDatabases: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListDatabases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1203,6 +1211,7 @@ export const listSchemas: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListSchemas",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1250,6 +1259,7 @@ export const listStatements: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListStatements",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1309,6 +1319,7 @@ export const listTables: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTables",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

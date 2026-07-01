@@ -1052,6 +1052,7 @@ export const createEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEnvironment",
 }));
 export type DeleteDeviceError =
   | AccessDeniedException
@@ -1080,6 +1081,7 @@ export const deleteDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDevice",
 }));
 export type DeleteEnvironmentError =
   | AccessDeniedException
@@ -1108,6 +1110,7 @@ export const deleteEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteEnvironment",
 }));
 export type DeregisterDeviceError =
   | AccessDeniedException
@@ -1136,6 +1139,7 @@ export const deregisterDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeregisterDevice",
 }));
 export type GetDeviceError =
   | AccessDeniedException
@@ -1162,6 +1166,7 @@ export const getDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDevice",
 }));
 export type GetEnvironmentError =
   | AccessDeniedException
@@ -1188,6 +1193,7 @@ export const getEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEnvironment",
 }));
 export type GetSoftwareSetError =
   | AccessDeniedException
@@ -1214,6 +1220,7 @@ export const getSoftwareSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSoftwareSet",
 }));
 export type ListDevicesError =
   | AccessDeniedException
@@ -1253,6 +1260,7 @@ export const listDevices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDevices",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1298,6 +1306,7 @@ export const listEnvironments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEnvironments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1343,6 +1352,7 @@ export const listSoftwareSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSoftwareSets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1375,6 +1385,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1403,6 +1414,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1431,6 +1443,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateDeviceError =
   | AccessDeniedException
@@ -1457,6 +1470,7 @@ export const updateDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDevice",
 }));
 export type UpdateEnvironmentError =
   | AccessDeniedException
@@ -1485,6 +1499,7 @@ export const updateEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateEnvironment",
 }));
 export type UpdateSoftwareSetError =
   | AccessDeniedException
@@ -1511,4 +1526,5 @@ export const updateSoftwareSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateSoftwareSet",
 }));

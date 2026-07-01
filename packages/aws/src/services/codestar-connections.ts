@@ -1207,6 +1207,7 @@ export const createConnection: API.OperationMethod<
     ResourceNotFoundException,
     ResourceUnavailableException,
   ],
+  operationName: "CreateConnection",
 }));
 export type CreateHostError = LimitExceededException | CommonErrors;
 /**
@@ -1227,6 +1228,7 @@ export const createHost: API.OperationMethod<
   input: CreateHostInput,
   output: CreateHostOutput,
   errors: [LimitExceededException],
+  operationName: "CreateHost",
 }));
 export type CreateRepositoryLinkError =
   | AccessDeniedException
@@ -1257,6 +1259,7 @@ export const createRepositoryLink: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  operationName: "CreateRepositoryLink",
 }));
 export type CreateSyncConfigurationError =
   | AccessDeniedException
@@ -1289,6 +1292,7 @@ export const createSyncConfiguration: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  operationName: "CreateSyncConfiguration",
 }));
 export type DeleteConnectionError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1303,6 +1307,7 @@ export const deleteConnection: API.OperationMethod<
   input: DeleteConnectionInput,
   output: DeleteConnectionOutput,
   errors: [ResourceNotFoundException],
+  operationName: "DeleteConnection",
 }));
 export type DeleteHostError =
   | ResourceNotFoundException
@@ -1322,6 +1327,7 @@ export const deleteHost: API.OperationMethod<
   input: DeleteHostInput,
   output: DeleteHostOutput,
   errors: [ResourceNotFoundException, ResourceUnavailableException],
+  operationName: "DeleteHost",
 }));
 export type DeleteRepositoryLinkError =
   | AccessDeniedException
@@ -1354,6 +1360,7 @@ export const deleteRepositoryLink: API.OperationMethod<
     ThrottlingException,
     UnsupportedProviderTypeException,
   ],
+  operationName: "DeleteRepositoryLink",
 }));
 export type DeleteSyncConfigurationError =
   | AccessDeniedException
@@ -1382,6 +1389,7 @@ export const deleteSyncConfiguration: API.OperationMethod<
     LimitExceededException,
     ThrottlingException,
   ],
+  operationName: "DeleteSyncConfiguration",
 }));
 export type GetConnectionError =
   | ResourceNotFoundException
@@ -1399,6 +1407,7 @@ export const getConnection: API.OperationMethod<
   input: GetConnectionInput,
   output: GetConnectionOutput,
   errors: [ResourceNotFoundException, ResourceUnavailableException],
+  operationName: "GetConnection",
 }));
 export type GetHostError =
   | ResourceNotFoundException
@@ -1417,6 +1426,7 @@ export const getHost: API.OperationMethod<
   input: GetHostInput,
   output: GetHostOutput,
   errors: [ResourceNotFoundException, ResourceUnavailableException],
+  operationName: "GetHost",
 }));
 export type GetRepositoryLinkError =
   | AccessDeniedException
@@ -1446,6 +1456,7 @@ export const getRepositoryLink: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetRepositoryLink",
 }));
 export type GetRepositorySyncStatusError =
   | AccessDeniedException
@@ -1473,6 +1484,7 @@ export const getRepositorySyncStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetRepositorySyncStatus",
 }));
 export type GetResourceSyncStatusError =
   | AccessDeniedException
@@ -1500,6 +1512,7 @@ export const getResourceSyncStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetResourceSyncStatus",
 }));
 export type GetSyncBlockerSummaryError =
   | AccessDeniedException
@@ -1526,6 +1539,7 @@ export const getSyncBlockerSummary: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetSyncBlockerSummary",
 }));
 export type GetSyncConfigurationError =
   | AccessDeniedException
@@ -1552,6 +1566,7 @@ export const getSyncConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetSyncConfiguration",
 }));
 export type ListConnectionsError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1581,6 +1596,7 @@ export const listConnections: API.OperationMethod<
   input: ListConnectionsInput,
   output: ListConnectionsOutput,
   errors: [ResourceNotFoundException],
+  operationName: "ListConnections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1615,6 +1631,7 @@ export const listHosts: API.OperationMethod<
   input: ListHostsInput,
   output: ListHostsOutput,
   errors: [],
+  operationName: "ListHosts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1663,6 +1680,7 @@ export const listRepositoryLinks: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListRepositoryLinks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1694,6 +1712,7 @@ export const listRepositorySyncDefinitions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListRepositorySyncDefinitions",
 }));
 export type ListSyncConfigurationsError =
   | AccessDeniedException
@@ -1735,6 +1754,7 @@ export const listSyncConfigurations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListSyncConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1754,6 +1774,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | LimitExceededException
@@ -1772,6 +1793,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [LimitExceededException, ResourceNotFoundException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1786,6 +1808,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type UpdateHostError =
   | ConflictException
@@ -1810,6 +1833,7 @@ export const updateHost: API.OperationMethod<
     ResourceUnavailableException,
     UnsupportedOperationException,
   ],
+  operationName: "UpdateHost",
 }));
 export type UpdateRepositoryLinkError =
   | AccessDeniedException
@@ -1842,6 +1866,7 @@ export const updateRepositoryLink: API.OperationMethod<
     ThrottlingException,
     UpdateOutOfSyncException,
   ],
+  operationName: "UpdateRepositoryLink",
 }));
 export type UpdateSyncBlockerError =
   | AccessDeniedException
@@ -1872,6 +1897,7 @@ export const updateSyncBlocker: API.OperationMethod<
     SyncBlockerDoesNotExistException,
     ThrottlingException,
   ],
+  operationName: "UpdateSyncBlocker",
 }));
 export type UpdateSyncConfigurationError =
   | AccessDeniedException
@@ -1902,4 +1928,5 @@ export const updateSyncConfiguration: API.OperationMethod<
     ThrottlingException,
     UpdateOutOfSyncException,
   ],
+  operationName: "UpdateSyncConfiguration",
 }));

@@ -237,4 +237,5 @@ export const assumeRoleForPodIdentity: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "AssumeRoleForPodIdentity",
 }));

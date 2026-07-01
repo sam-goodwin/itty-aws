@@ -33319,6 +33319,7 @@ export const batchCreateTopicReviewedAnswer: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "BatchCreateTopicReviewedAnswer",
 }));
 export type BatchDeleteKnowledgeBaseError =
   | AccessDeniedException
@@ -33349,6 +33350,7 @@ export const batchDeleteKnowledgeBase: API.OperationMethod<
     PreconditionNotMetException,
     ThrottlingException,
   ],
+  operationName: "BatchDeleteKnowledgeBase",
 }));
 export type BatchDeleteTopicReviewedAnswerError =
   | AccessDeniedException
@@ -33377,6 +33379,7 @@ export const batchDeleteTopicReviewedAnswer: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "BatchDeleteTopicReviewedAnswer",
 }));
 export type CancelIngestionError =
   | AccessDeniedException
@@ -33405,6 +33408,7 @@ export const cancelIngestion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CancelIngestion",
 }));
 export type CreateAccountCustomizationError =
   | AccessDeniedException
@@ -33460,6 +33464,7 @@ export const createAccountCustomization: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "CreateAccountCustomization",
 }));
 export type CreateAccountSubscriptionError =
   | AccessDeniedException
@@ -33520,6 +33525,7 @@ export const createAccountSubscription: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "CreateAccountSubscription",
 }));
 export type CreateActionConnectorError =
   | AccessDeniedException
@@ -33550,6 +33556,7 @@ export const createActionConnector: API.OperationMethod<
     ResourceExistsException,
     ThrottlingException,
   ],
+  operationName: "CreateActionConnector",
 }));
 export type CreateAgentError =
   | AccessDeniedException
@@ -33582,6 +33589,7 @@ export const createAgent: API.OperationMethod<
     ResourceExistsException,
     ThrottlingException,
   ],
+  operationName: "CreateAgent",
 }));
 export type CreateAnalysisError =
   | ConflictException
@@ -33614,6 +33622,7 @@ export const createAnalysis: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "CreateAnalysis",
 }));
 export type CreateBrandError =
   | AccessDeniedException
@@ -33642,6 +33651,7 @@ export const createBrand: API.OperationMethod<
     LimitExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateBrand",
 }));
 export type CreateCustomPermissionsError =
   | AccessDeniedException
@@ -33678,6 +33688,7 @@ export const createCustomPermissions: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "CreateCustomPermissions",
 }));
 export type CreateDashboardError =
   | ConflictException
@@ -33719,6 +33730,7 @@ export const createDashboard: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "CreateDashboard",
 }));
 export type CreateDataSetError =
   | AccessDeniedException
@@ -33756,6 +33768,7 @@ export const createDataSet: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "CreateDataSet",
 }));
 export type CreateDataSourceError =
   | AccessDeniedException
@@ -33790,6 +33803,7 @@ export const createDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateDataSource",
 }));
 export type CreateFlowError =
   | AccessDeniedException
@@ -33824,6 +33838,7 @@ export const createFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateFlow",
 }));
 export type CreateFolderError =
   | AccessDeniedException
@@ -33858,6 +33873,7 @@ export const createFolder: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "CreateFolder",
 }));
 export type CreateFolderMembershipError =
   | AccessDeniedException
@@ -33890,6 +33906,7 @@ export const createFolderMembership: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "CreateFolderMembership",
 }));
 export type CreateGroupError =
   | AccessDeniedException
@@ -33930,6 +33947,7 @@ export const createGroup: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "CreateGroup",
 }));
 export type CreateGroupMembershipError =
   | AccessDeniedException
@@ -33960,6 +33978,7 @@ export const createGroupMembership: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "CreateGroupMembership",
 }));
 export type CreateIAMPolicyAssignmentError =
   | AccessDeniedException
@@ -33994,6 +34013,7 @@ export const createIAMPolicyAssignment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateIAMPolicyAssignment",
 }));
 export type CreateIngestionError =
   | AccessDeniedException
@@ -34031,6 +34051,7 @@ export const createIngestion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateIngestion",
 }));
 export type CreateNamespaceError =
   | AccessDeniedException
@@ -34075,6 +34096,7 @@ export const createNamespace: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "CreateNamespace",
 }));
 export type CreateOAuthClientApplicationError =
   | AccessDeniedException
@@ -34107,6 +34129,7 @@ export const createOAuthClientApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateOAuthClientApplication",
 }));
 export type CreateRefreshScheduleError =
   | AccessDeniedException
@@ -34139,6 +34162,7 @@ export const createRefreshSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateRefreshSchedule",
 }));
 export type CreateRoleMembershipError =
   | AccessDeniedException
@@ -34169,6 +34193,7 @@ export const createRoleMembership: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "CreateRoleMembership",
 }));
 export type CreateSpaceError =
   | AccessDeniedException
@@ -34199,6 +34224,7 @@ export const createSpace: API.OperationMethod<
     ResourceExistsException,
     ThrottlingException,
   ],
+  operationName: "CreateSpace",
 }));
 export type CreateTemplateError =
   | AccessDeniedException
@@ -34241,6 +34267,7 @@ export const createTemplate: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "CreateTemplate",
 }));
 export type CreateTemplateAliasError =
   | ConflictException
@@ -34271,6 +34298,7 @@ export const createTemplateAlias: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "CreateTemplateAlias",
 }));
 export type CreateThemeError =
   | AccessDeniedException
@@ -34307,6 +34335,7 @@ export const createTheme: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "CreateTheme",
 }));
 export type CreateThemeAliasError =
   | ConflictException
@@ -34339,6 +34368,7 @@ export const createThemeAlias: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "CreateThemeAlias",
 }));
 export type CreateTopicError =
   | AccessDeniedException
@@ -34371,6 +34401,7 @@ export const createTopic: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateTopic",
 }));
 export type CreateTopicRefreshScheduleError =
   | AccessDeniedException
@@ -34403,6 +34434,7 @@ export const createTopicRefreshSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateTopicRefreshSchedule",
 }));
 export type CreateVPCConnectionError =
   | AccessDeniedException
@@ -34435,6 +34467,7 @@ export const createVPCConnection: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "CreateVPCConnection",
 }));
 export type DeleteAccountCustomizationError =
   | AccessDeniedException
@@ -34479,6 +34512,7 @@ export const deleteAccountCustomization: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteAccountCustomization",
 }));
 export type DeleteAccountCustomPermissionError =
   | AccessDeniedException
@@ -34505,6 +34539,7 @@ export const deleteAccountCustomPermission: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteAccountCustomPermission",
 }));
 export type DeleteAccountSubscriptionError =
   | AccessDeniedException
@@ -34551,6 +34586,7 @@ export const deleteAccountSubscription: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteAccountSubscription",
 }));
 export type DeleteActionConnectorError =
   | AccessDeniedException
@@ -34577,6 +34613,7 @@ export const deleteActionConnector: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteActionConnector",
 }));
 export type DeleteAgentError =
   | AccessDeniedException
@@ -34605,6 +34642,7 @@ export const deleteAgent: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteAgent",
 }));
 export type DeleteAnalysisError =
   | ConflictException
@@ -34646,6 +34684,7 @@ export const deleteAnalysis: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DeleteAnalysis",
 }));
 export type DeleteBrandError =
   | AccessDeniedException
@@ -34684,6 +34723,7 @@ export const deleteBrand: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteBrand",
 }));
 export type DeleteBrandAssignmentError =
   | AccessDeniedException
@@ -34712,6 +34752,7 @@ export const deleteBrandAssignment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteBrandAssignment",
 }));
 export type DeleteCustomPermissionsError =
   | AccessDeniedException
@@ -34746,6 +34787,7 @@ export const deleteCustomPermissions: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteCustomPermissions",
 }));
 export type DeleteDashboardError =
   | ConflictException
@@ -34774,6 +34816,7 @@ export const deleteDashboard: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DeleteDashboard",
 }));
 export type DeleteDataSetError =
   | AccessDeniedException
@@ -34800,6 +34843,7 @@ export const deleteDataSet: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteDataSet",
 }));
 export type DeleteDataSetRefreshPropertiesError =
   | AccessDeniedException
@@ -34830,6 +34874,7 @@ export const deleteDataSetRefreshProperties: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteDataSetRefreshProperties",
 }));
 export type DeleteDataSourceError =
   | AccessDeniedException
@@ -34857,6 +34902,7 @@ export const deleteDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteDataSource",
 }));
 export type DeleteDefaultQBusinessApplicationError =
   | AccessDeniedException
@@ -34883,6 +34929,7 @@ export const deleteDefaultQBusinessApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteDefaultQBusinessApplication",
 }));
 export type DeleteFlowError =
   | AccessDeniedException
@@ -34911,6 +34958,7 @@ export const deleteFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteFlow",
 }));
 export type DeleteFolderError =
   | AccessDeniedException
@@ -34943,6 +34991,7 @@ export const deleteFolder: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DeleteFolder",
 }));
 export type DeleteFolderMembershipError =
   | AccessDeniedException
@@ -34971,6 +35020,7 @@ export const deleteFolderMembership: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DeleteFolderMembership",
 }));
 export type DeleteGroupError =
   | AccessDeniedException
@@ -35001,6 +35051,7 @@ export const deleteGroup: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteGroup",
 }));
 export type DeleteGroupMembershipError =
   | AccessDeniedException
@@ -35031,6 +35082,7 @@ export const deleteGroupMembership: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteGroupMembership",
 }));
 export type DeleteIAMPolicyAssignmentError =
   | AccessDeniedException
@@ -35061,6 +35113,7 @@ export const deleteIAMPolicyAssignment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteIAMPolicyAssignment",
 }));
 export type DeleteIdentityPropagationConfigError =
   | AccessDeniedException
@@ -35089,6 +35142,7 @@ export const deleteIdentityPropagationConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteIdentityPropagationConfig",
 }));
 export type DeleteKnowledgeBaseError =
   | AccessDeniedException
@@ -35123,6 +35177,7 @@ export const deleteKnowledgeBase: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteKnowledgeBase",
 }));
 export type DeleteNamespaceError =
   | AccessDeniedException
@@ -35155,6 +35210,7 @@ export const deleteNamespace: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteNamespace",
 }));
 export type DeleteOAuthClientApplicationError =
   | AccessDeniedException
@@ -35183,6 +35239,7 @@ export const deleteOAuthClientApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteOAuthClientApplication",
 }));
 export type DeleteRefreshScheduleError =
   | AccessDeniedException
@@ -35211,6 +35268,7 @@ export const deleteRefreshSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteRefreshSchedule",
 }));
 export type DeleteRoleCustomPermissionError =
   | AccessDeniedException
@@ -35241,6 +35299,7 @@ export const deleteRoleCustomPermission: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteRoleCustomPermission",
 }));
 export type DeleteRoleMembershipError =
   | AccessDeniedException
@@ -35271,6 +35330,7 @@ export const deleteRoleMembership: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteRoleMembership",
 }));
 export type DeleteSpaceError =
   | AccessDeniedException
@@ -35297,6 +35357,7 @@ export const deleteSpace: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteSpace",
 }));
 export type DeleteTemplateError =
   | ConflictException
@@ -35327,6 +35388,7 @@ export const deleteTemplate: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DeleteTemplate",
 }));
 export type DeleteTemplateAliasError =
   | ConflictException
@@ -35354,6 +35416,7 @@ export const deleteTemplateAlias: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DeleteTemplateAlias",
 }));
 export type DeleteThemeError =
   | AccessDeniedException
@@ -35384,6 +35447,7 @@ export const deleteTheme: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DeleteTheme",
 }));
 export type DeleteThemeAliasError =
   | ConflictException
@@ -35414,6 +35478,7 @@ export const deleteThemeAlias: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DeleteThemeAlias",
 }));
 export type DeleteTopicError =
   | AccessDeniedException
@@ -35442,6 +35507,7 @@ export const deleteTopic: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteTopic",
 }));
 export type DeleteTopicRefreshScheduleError =
   | AccessDeniedException
@@ -35474,6 +35540,7 @@ export const deleteTopicRefreshSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteTopicRefreshSchedule",
 }));
 export type DeleteUserError =
   | AccessDeniedException
@@ -35506,6 +35573,7 @@ export const deleteUser: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteUser",
 }));
 export type DeleteUserByPrincipalIdError =
   | AccessDeniedException
@@ -35536,6 +35604,7 @@ export const deleteUserByPrincipalId: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteUserByPrincipalId",
 }));
 export type DeleteUserCustomPermissionError =
   | AccessDeniedException
@@ -35568,6 +35637,7 @@ export const deleteUserCustomPermission: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteUserCustomPermission",
 }));
 export type DeleteVPCConnectionError =
   | AccessDeniedException
@@ -35598,6 +35668,7 @@ export const deleteVPCConnection: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DeleteVPCConnection",
 }));
 export type DescribeAccountCustomizationError =
   | AccessDeniedException
@@ -35665,6 +35736,7 @@ export const describeAccountCustomization: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeAccountCustomization",
 }));
 export type DescribeAccountCustomPermissionError =
   | AccessDeniedException
@@ -35691,6 +35763,7 @@ export const describeAccountCustomPermission: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeAccountCustomPermission",
 }));
 export type DescribeAccountSettingsError =
   | AccessDeniedException
@@ -35720,6 +35793,7 @@ export const describeAccountSettings: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeAccountSettings",
 }));
 export type DescribeAccountSubscriptionError =
   | AccessDeniedException
@@ -35748,6 +35822,7 @@ export const describeAccountSubscription: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeAccountSubscription",
 }));
 export type DescribeActionConnectorError =
   | AccessDeniedException
@@ -35774,6 +35849,7 @@ export const describeActionConnector: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeActionConnector",
 }));
 export type DescribeActionConnectorPermissionsError =
   | AccessDeniedException
@@ -35800,6 +35876,7 @@ export const describeActionConnectorPermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeActionConnectorPermissions",
 }));
 export type DescribeAgentError =
   | AccessDeniedException
@@ -35828,6 +35905,7 @@ export const describeAgent: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeAgent",
 }));
 export type DescribeAgentPermissionsError =
   | AccessDeniedException
@@ -35856,6 +35934,7 @@ export const describeAgentPermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeAgentPermissions",
 }));
 export type DescribeAnalysisError =
   | AccessDeniedException
@@ -35884,6 +35963,7 @@ export const describeAnalysis: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeAnalysis",
 }));
 export type DescribeAnalysisDefinitionError =
   | AccessDeniedException
@@ -35922,6 +36002,7 @@ export const describeAnalysisDefinition: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeAnalysisDefinition",
 }));
 export type DescribeAnalysisPermissionsError =
   | InternalFailureException
@@ -35948,6 +36029,7 @@ export const describeAnalysisPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeAnalysisPermissions",
 }));
 export type DescribeAssetBundleExportJobError =
   | ResourceNotFoundException
@@ -35977,6 +36059,7 @@ export const describeAssetBundleExportJob: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeAssetBundleExportJob",
 }));
 export type DescribeAssetBundleImportJobError =
   | ResourceNotFoundException
@@ -36002,6 +36085,7 @@ export const describeAssetBundleImportJob: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeAssetBundleImportJob",
 }));
 export type DescribeAutomationJobError =
   | AccessDeniedException
@@ -36028,6 +36112,7 @@ export const describeAutomationJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeAutomationJob",
 }));
 export type DescribeBrandError =
   | AccessDeniedException
@@ -36056,6 +36141,7 @@ export const describeBrand: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeBrand",
 }));
 export type DescribeBrandAssignmentError =
   | AccessDeniedException
@@ -36084,6 +36170,7 @@ export const describeBrandAssignment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeBrandAssignment",
 }));
 export type DescribeBrandPublishedVersionError =
   | AccessDeniedException
@@ -36112,6 +36199,7 @@ export const describeBrandPublishedVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeBrandPublishedVersion",
 }));
 export type DescribeCustomPermissionsError =
   | AccessDeniedException
@@ -36142,6 +36230,7 @@ export const describeCustomPermissions: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeCustomPermissions",
 }));
 export type DescribeDashboardError =
   | AccessDeniedException
@@ -36170,6 +36259,7 @@ export const describeDashboard: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeDashboard",
 }));
 export type DescribeDashboardDefinitionError =
   | AccessDeniedException
@@ -36208,6 +36298,7 @@ export const describeDashboardDefinition: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeDashboardDefinition",
 }));
 export type DescribeDashboardPermissionsError =
   | InternalFailureException
@@ -36234,6 +36325,7 @@ export const describeDashboardPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeDashboardPermissions",
 }));
 export type DescribeDashboardSnapshotJobError =
   | AccessDeniedException
@@ -36276,6 +36368,7 @@ export const describeDashboardSnapshotJob: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeDashboardSnapshotJob",
 }));
 export type DescribeDashboardSnapshotJobResultError =
   | AccessDeniedException
@@ -36340,6 +36433,7 @@ export const describeDashboardSnapshotJobResult: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeDashboardSnapshotJobResult",
 }));
 export type DescribeDashboardsQAConfigurationError =
   | AccessDeniedException
@@ -36368,6 +36462,7 @@ export const describeDashboardsQAConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeDashboardsQAConfiguration",
 }));
 export type DescribeDataSetError =
   | AccessDeniedException
@@ -36395,6 +36490,7 @@ export const describeDataSet: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeDataSet",
 }));
 export type DescribeDataSetPermissionsError =
   | AccessDeniedException
@@ -36424,6 +36520,7 @@ export const describeDataSetPermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeDataSetPermissions",
 }));
 export type DescribeDataSetRefreshPropertiesError =
   | AccessDeniedException
@@ -36454,6 +36551,7 @@ export const describeDataSetRefreshProperties: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeDataSetRefreshProperties",
 }));
 export type DescribeDataSourceError =
   | AccessDeniedException
@@ -36480,6 +36578,7 @@ export const describeDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeDataSource",
 }));
 export type DescribeDataSourcePermissionsError =
   | AccessDeniedException
@@ -36506,6 +36605,7 @@ export const describeDataSourcePermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeDataSourcePermissions",
 }));
 export type DescribeDefaultQBusinessApplicationError =
   | AccessDeniedException
@@ -36532,6 +36632,7 @@ export const describeDefaultQBusinessApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeDefaultQBusinessApplication",
 }));
 export type DescribeFlowError =
   | AccessDeniedException
@@ -36558,6 +36659,7 @@ export const describeFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeFlow",
 }));
 export type DescribeFolderError =
   | AccessDeniedException
@@ -36586,6 +36688,7 @@ export const describeFolder: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeFolder",
 }));
 export type DescribeFolderPermissionsError =
   | AccessDeniedException
@@ -36631,6 +36734,7 @@ export const describeFolderPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeFolderPermissions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -36682,6 +36786,7 @@ export const describeFolderResolvedPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeFolderResolvedPermissions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -36718,6 +36823,7 @@ export const describeGroup: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeGroup",
 }));
 export type DescribeGroupMembershipError =
   | AccessDeniedException
@@ -36750,6 +36856,7 @@ export const describeGroupMembership: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeGroupMembership",
 }));
 export type DescribeIAMPolicyAssignmentError =
   | AccessDeniedException
@@ -36779,6 +36886,7 @@ export const describeIAMPolicyAssignment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeIAMPolicyAssignment",
 }));
 export type DescribeIngestionError =
   | AccessDeniedException
@@ -36807,6 +36915,7 @@ export const describeIngestion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeIngestion",
 }));
 export type DescribeIpRestrictionError =
   | AccessDeniedException
@@ -36833,6 +36942,7 @@ export const describeIpRestriction: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeIpRestriction",
 }));
 export type DescribeKeyRegistrationError =
   | AccessDeniedException
@@ -36857,6 +36967,7 @@ export const describeKeyRegistration: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  operationName: "DescribeKeyRegistration",
 }));
 export type DescribeKnowledgeBaseError =
   | AccessDeniedException
@@ -36889,6 +37000,7 @@ export const describeKnowledgeBase: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeKnowledgeBase",
 }));
 export type DescribeKnowledgeBasePermissionsError =
   | AccessDeniedException
@@ -36921,6 +37033,7 @@ export const describeKnowledgeBasePermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeKnowledgeBasePermissions",
 }));
 export type DescribeNamespaceError =
   | AccessDeniedException
@@ -36949,6 +37062,7 @@ export const describeNamespace: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeNamespace",
 }));
 export type DescribeOAuthClientApplicationError =
   | AccessDeniedException
@@ -36975,6 +37089,7 @@ export const describeOAuthClientApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeOAuthClientApplication",
 }));
 export type DescribeQPersonalizationConfigurationError =
   | AccessDeniedException
@@ -37003,6 +37118,7 @@ export const describeQPersonalizationConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeQPersonalizationConfiguration",
 }));
 export type DescribeQuickSightQSearchConfigurationError =
   | AccessDeniedException
@@ -37031,6 +37147,7 @@ export const describeQuickSightQSearchConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeQuickSightQSearchConfiguration",
 }));
 export type DescribeRefreshScheduleError =
   | AccessDeniedException
@@ -37059,6 +37176,7 @@ export const describeRefreshSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeRefreshSchedule",
 }));
 export type DescribeRoleCustomPermissionError =
   | AccessDeniedException
@@ -37089,6 +37207,7 @@ export const describeRoleCustomPermission: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeRoleCustomPermission",
 }));
 export type DescribeSelfUpgradeConfigurationError =
   | AccessDeniedException
@@ -37121,6 +37240,7 @@ export const describeSelfUpgradeConfiguration: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeSelfUpgradeConfiguration",
 }));
 export type DescribeSpaceError =
   | AccessDeniedException
@@ -37147,6 +37267,7 @@ export const describeSpace: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeSpace",
 }));
 export type DescribeSpacePermissionsError =
   | AccessDeniedException
@@ -37173,6 +37294,7 @@ export const describeSpacePermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeSpacePermissions",
 }));
 export type DescribeTemplateError =
   | AccessDeniedException
@@ -37205,6 +37327,7 @@ export const describeTemplate: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeTemplate",
 }));
 export type DescribeTemplateAliasError =
   | InternalFailureException
@@ -37229,6 +37352,7 @@ export const describeTemplateAlias: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeTemplateAlias",
 }));
 export type DescribeTemplateDefinitionError =
   | AccessDeniedException
@@ -37267,6 +37391,7 @@ export const describeTemplateDefinition: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeTemplateDefinition",
 }));
 export type DescribeTemplatePermissionsError =
   | ConflictException
@@ -37295,6 +37420,7 @@ export const describeTemplatePermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeTemplatePermissions",
 }));
 export type DescribeThemeError =
   | AccessDeniedException
@@ -37325,6 +37451,7 @@ export const describeTheme: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeTheme",
 }));
 export type DescribeThemeAliasError =
   | ConflictException
@@ -37353,6 +37480,7 @@ export const describeThemeAlias: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeThemeAlias",
 }));
 export type DescribeThemePermissionsError =
   | AccessDeniedException
@@ -37381,6 +37509,7 @@ export const describeThemePermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeThemePermissions",
 }));
 export type DescribeTopicError =
   | AccessDeniedException
@@ -37407,6 +37536,7 @@ export const describeTopic: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeTopic",
 }));
 export type DescribeTopicPermissionsError =
   | AccessDeniedException
@@ -37433,6 +37563,7 @@ export const describeTopicPermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeTopicPermissions",
 }));
 export type DescribeTopicRefreshError =
   | AccessDeniedException
@@ -37459,6 +37590,7 @@ export const describeTopicRefresh: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeTopicRefresh",
 }));
 export type DescribeTopicRefreshScheduleError =
   | AccessDeniedException
@@ -37491,6 +37623,7 @@ export const describeTopicRefreshSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeTopicRefreshSchedule",
 }));
 export type DescribeUserError =
   | AccessDeniedException
@@ -37521,6 +37654,7 @@ export const describeUser: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeUser",
 }));
 export type DescribeVPCConnectionError =
   | AccessDeniedException
@@ -37549,6 +37683,7 @@ export const describeVPCConnection: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "DescribeVPCConnection",
 }));
 export type GenerateEmbedUrlForAnonymousUserError =
   | AccessDeniedException
@@ -37604,6 +37739,7 @@ export const generateEmbedUrlForAnonymousUser: API.OperationMethod<
     UnsupportedPricingPlanException,
     UnsupportedUserEditionException,
   ],
+  operationName: "GenerateEmbedUrlForAnonymousUser",
 }));
 export type GenerateEmbedUrlForRegisteredUserError =
   | AccessDeniedException
@@ -37662,6 +37798,7 @@ export const generateEmbedUrlForRegisteredUser: API.OperationMethod<
     UnsupportedPricingPlanException,
     UnsupportedUserEditionException,
   ],
+  operationName: "GenerateEmbedUrlForRegisteredUser",
 }));
 export type GenerateEmbedUrlForRegisteredUserWithIdentityError =
   | AccessDeniedException
@@ -37707,6 +37844,7 @@ export const generateEmbedUrlForRegisteredUserWithIdentity: API.OperationMethod<
     UnsupportedPricingPlanException,
     UnsupportedUserEditionException,
   ],
+  operationName: "GenerateEmbedUrlForRegisteredUserWithIdentity",
 }));
 export type GetDashboardEmbedUrlError =
   | AccessDeniedException
@@ -37773,6 +37911,7 @@ export const getDashboardEmbedUrl: API.OperationMethod<
     UnsupportedPricingPlanException,
     UnsupportedUserEditionException,
   ],
+  operationName: "GetDashboardEmbedUrl",
 }));
 export type GetFlowMetadataError =
   | AccessDeniedException
@@ -37797,6 +37936,7 @@ export const getFlowMetadata: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  operationName: "GetFlowMetadata",
 }));
 export type GetFlowPermissionsError =
   | AccessDeniedException
@@ -37821,6 +37961,7 @@ export const getFlowPermissions: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  operationName: "GetFlowPermissions",
 }));
 export type GetIdentityContextError =
   | AccessDeniedException
@@ -37887,6 +38028,7 @@ export const getIdentityContext: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetIdentityContext",
 }));
 export type GetSessionEmbedUrlError =
   | AccessDeniedException
@@ -37938,6 +38080,7 @@ export const getSessionEmbedUrl: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "GetSessionEmbedUrl",
 }));
 export type ListActionConnectorsError =
   | AccessDeniedException
@@ -37979,6 +38122,7 @@ export const listActionConnectors: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  operationName: "ListActionConnectors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38015,6 +38159,7 @@ export const listAgents: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "ListAgents",
 }));
 export type ListAnalysesError =
   | InternalFailureException
@@ -38054,6 +38199,7 @@ export const listAnalyses: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "ListAnalyses",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38104,6 +38250,7 @@ export const listAssetBundleExportJobs: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "ListAssetBundleExportJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38154,6 +38301,7 @@ export const listAssetBundleImportJobs: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "ListAssetBundleImportJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38199,6 +38347,7 @@ export const listBrands: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListBrands",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38250,6 +38399,7 @@ export const listCustomPermissions: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListCustomPermissions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38295,6 +38445,7 @@ export const listDashboards: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "ListDashboards",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38344,6 +38495,7 @@ export const listDashboardVersions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "ListDashboardVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38395,6 +38547,7 @@ export const listDataSets: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  operationName: "ListDataSets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38442,6 +38595,7 @@ export const listDataSources: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  operationName: "ListDataSources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38487,6 +38641,7 @@ export const listFlows: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  operationName: "ListFlows",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38538,6 +38693,7 @@ export const listFolderMembers: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "ListFolderMembers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38589,6 +38745,7 @@ export const listFolders: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "ListFolders",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38640,6 +38797,7 @@ export const listFoldersForResource: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "ListFoldersForResource",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38693,6 +38851,7 @@ export const listGroupMemberships: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListGroupMemberships",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38746,6 +38905,7 @@ export const listGroups: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38797,6 +38957,7 @@ export const listIAMPolicyAssignments: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListIAMPolicyAssignments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38854,6 +39015,7 @@ export const listIAMPolicyAssignmentsForUser: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListIAMPolicyAssignmentsForUser",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38888,6 +39050,7 @@ export const listIdentityPropagationConfigs: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListIdentityPropagationConfigs",
 }));
 export type ListIngestionsError =
   | AccessDeniedException
@@ -38933,6 +39096,7 @@ export const listIngestions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListIngestions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -38982,6 +39146,7 @@ export const listKnowledgeBases: API.OperationMethod<
     PreconditionNotMetException,
     ThrottlingException,
   ],
+  operationName: "ListKnowledgeBases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -39035,6 +39200,7 @@ export const listNamespaces: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListNamespaces",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -39084,6 +39250,7 @@ export const listOAuthClientApplications: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListOAuthClientApplications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -39118,6 +39285,7 @@ export const listRefreshSchedules: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListRefreshSchedules",
 }));
 export type ListRoleMembershipsError =
   | AccessDeniedException
@@ -39167,6 +39335,7 @@ export const listRoleMemberships: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListRoleMemberships",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -39207,6 +39376,7 @@ export const listSelfUpgrades: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListSelfUpgrades",
 }));
 export type ListSpaceResourcesError =
   | AccessDeniedException
@@ -39233,6 +39403,7 @@ export const listSpaceResources: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListSpaceResources",
 }));
 export type ListSpacesError =
   | AccessDeniedException
@@ -39259,6 +39430,7 @@ export const listSpaces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListSpaces",
 }));
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -39285,6 +39457,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTemplateAliasesError =
   | InternalFailureException
@@ -39326,6 +39499,7 @@ export const listTemplateAliases: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "ListTemplateAliases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -39375,6 +39549,7 @@ export const listTemplates: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "ListTemplates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -39424,6 +39599,7 @@ export const listTemplateVersions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "ListTemplateVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -39460,6 +39636,7 @@ export const listThemeAliases: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "ListThemeAliases",
 }));
 export type ListThemesError =
   | AccessDeniedException
@@ -39505,6 +39682,7 @@ export const listThemes: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "ListThemes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -39556,6 +39734,7 @@ export const listThemeVersions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "ListThemeVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -39594,6 +39773,7 @@ export const listTopicRefreshSchedules: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListTopicRefreshSchedules",
 }));
 export type ListTopicReviewedAnswersError =
   | AccessDeniedException
@@ -39620,6 +39800,7 @@ export const listTopicReviewedAnswers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListTopicReviewedAnswers",
 }));
 export type ListTopicsError =
   | AccessDeniedException
@@ -39661,6 +39842,7 @@ export const listTopics: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  operationName: "ListTopics",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -39711,6 +39893,7 @@ export const listUserGroups: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListUserGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -39764,6 +39947,7 @@ export const listUsers: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListUsers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -39798,6 +39982,7 @@ export const listUsersIndexCapacity: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListUsersIndexCapacity",
 }));
 export type ListVPCConnectionsError =
   | AccessDeniedException
@@ -39842,6 +40027,7 @@ export const listVPCConnections: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "ListVPCConnections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -39875,6 +40061,7 @@ export const predictQAResults: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  operationName: "PredictQAResults",
 }));
 export type PutDataSetRefreshPropertiesError =
   | AccessDeniedException
@@ -39907,6 +40094,7 @@ export const putDataSetRefreshProperties: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "PutDataSetRefreshProperties",
 }));
 export type RegisterUserError =
   | AccessDeniedException
@@ -39941,6 +40129,7 @@ export const registerUser: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "RegisterUser",
 }));
 export type RestoreAnalysisError =
   | ConflictException
@@ -39973,6 +40162,7 @@ export const restoreAnalysis: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "RestoreAnalysis",
 }));
 export type SearchActionConnectorsError =
   | AccessDeniedException
@@ -40012,6 +40202,7 @@ export const searchActionConnectors: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  operationName: "SearchActionConnectors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -40046,6 +40237,7 @@ export const searchAgents: API.OperationMethod<
     ResourceExistsException,
     ThrottlingException,
   ],
+  operationName: "SearchAgents",
 }));
 export type SearchAnalysesError =
   | InternalFailureException
@@ -40091,6 +40283,7 @@ export const searchAnalyses: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "SearchAnalyses",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -40143,6 +40336,7 @@ export const searchDashboards: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "SearchDashboards",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -40193,6 +40387,7 @@ export const searchDataSets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchDataSets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -40243,6 +40438,7 @@ export const searchDataSources: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchDataSources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -40288,6 +40484,7 @@ export const searchFlows: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  operationName: "SearchFlows",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -40341,6 +40538,7 @@ export const searchFolders: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "SearchFolders",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -40394,6 +40592,7 @@ export const searchGroups: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "SearchGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -40445,6 +40644,7 @@ export const searchKnowledgeBases: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchKnowledgeBases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -40477,6 +40677,7 @@ export const searchSpaces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchSpaces",
 }));
 export type SearchTopicsError =
   | InternalFailureException
@@ -40520,6 +40721,7 @@ export const searchTopics: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "SearchTopics",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -40567,6 +40769,7 @@ export const startAssetBundleExportJob: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "StartAssetBundleExportJob",
 }));
 export type StartAssetBundleImportJobError =
   | AccessDeniedException
@@ -40608,6 +40811,7 @@ export const startAssetBundleImportJob: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "StartAssetBundleImportJob",
 }));
 export type StartAutomationJobError =
   | AccessDeniedException
@@ -40636,6 +40840,7 @@ export const startAutomationJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "StartAutomationJob",
 }));
 export type StartDashboardSnapshotJobError =
   | AccessDeniedException
@@ -40756,6 +40961,7 @@ export const startDashboardSnapshotJob: API.OperationMethod<
     UnsupportedPricingPlanException,
     UnsupportedUserEditionException,
   ],
+  operationName: "StartDashboardSnapshotJob",
 }));
 export type StartDashboardSnapshotJobScheduleError =
   | AccessDeniedException
@@ -40790,6 +40996,7 @@ export const startDashboardSnapshotJobSchedule: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "StartDashboardSnapshotJobSchedule",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -40838,6 +41045,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -40864,6 +41072,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAccountCustomizationError =
   | AccessDeniedException
@@ -40899,6 +41108,7 @@ export const updateAccountCustomization: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateAccountCustomization",
 }));
 export type UpdateAccountCustomPermissionError =
   | AccessDeniedException
@@ -40925,6 +41135,7 @@ export const updateAccountCustomPermission: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateAccountCustomPermission",
 }));
 export type UpdateAccountSettingsError =
   | AccessDeniedException
@@ -40953,6 +41164,7 @@ export const updateAccountSettings: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateAccountSettings",
 }));
 export type UpdateActionConnectorError =
   | AccessDeniedException
@@ -40983,6 +41195,7 @@ export const updateActionConnector: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateActionConnector",
 }));
 export type UpdateActionConnectorPermissionsError =
   | AccessDeniedException
@@ -41015,6 +41228,7 @@ export const updateActionConnectorPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateActionConnectorPermissions",
 }));
 export type UpdateAgentError =
   | AccessDeniedException
@@ -41047,6 +41261,7 @@ export const updateAgent: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateAgent",
 }));
 export type UpdateAgentPermissionsError =
   | AccessDeniedException
@@ -41081,6 +41296,7 @@ export const updateAgentPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateAgentPermissions",
 }));
 export type UpdateAnalysisError =
   | ConflictException
@@ -41111,6 +41327,7 @@ export const updateAnalysis: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateAnalysis",
 }));
 export type UpdateAnalysisPermissionsError =
   | ConflictException
@@ -41141,6 +41358,7 @@ export const updateAnalysisPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateAnalysisPermissions",
 }));
 export type UpdateApplicationWithTokenExchangeGrantError =
   | AccessDeniedException
@@ -41171,6 +41389,7 @@ export const updateApplicationWithTokenExchangeGrant: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateApplicationWithTokenExchangeGrant",
 }));
 export type UpdateBrandError =
   | AccessDeniedException
@@ -41199,6 +41418,7 @@ export const updateBrand: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateBrand",
 }));
 export type UpdateBrandAssignmentError =
   | AccessDeniedException
@@ -41227,6 +41447,7 @@ export const updateBrandAssignment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateBrandAssignment",
 }));
 export type UpdateBrandPublishedVersionError =
   | AccessDeniedException
@@ -41255,6 +41476,7 @@ export const updateBrandPublishedVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateBrandPublishedVersion",
 }));
 export type UpdateCustomPermissionsError =
   | AccessDeniedException
@@ -41287,6 +41509,7 @@ export const updateCustomPermissions: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateCustomPermissions",
 }));
 export type UpdateDashboardError =
   | ConflictException
@@ -41323,6 +41546,7 @@ export const updateDashboard: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateDashboard",
 }));
 export type UpdateDashboardLinksError =
   | AccessDeniedException
@@ -41353,6 +41577,7 @@ export const updateDashboardLinks: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateDashboardLinks",
 }));
 export type UpdateDashboardPermissionsError =
   | ConflictException
@@ -41383,6 +41608,7 @@ export const updateDashboardPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateDashboardPermissions",
 }));
 export type UpdateDashboardPublishedVersionError =
   | ConflictException
@@ -41411,6 +41637,7 @@ export const updateDashboardPublishedVersion: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateDashboardPublishedVersion",
 }));
 export type UpdateDashboardsQAConfigurationError =
   | AccessDeniedException
@@ -41439,6 +41666,7 @@ export const updateDashboardsQAConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateDashboardsQAConfiguration",
 }));
 export type UpdateDataSetError =
   | AccessDeniedException
@@ -41474,6 +41702,7 @@ export const updateDataSet: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateDataSet",
 }));
 export type UpdateDataSetPermissionsError =
   | AccessDeniedException
@@ -41505,6 +41734,7 @@ export const updateDataSetPermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateDataSetPermissions",
 }));
 export type UpdateDataSourceError =
   | AccessDeniedException
@@ -41535,6 +41765,7 @@ export const updateDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateDataSource",
 }));
 export type UpdateDataSourcePermissionsError =
   | AccessDeniedException
@@ -41563,6 +41794,7 @@ export const updateDataSourcePermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateDataSourcePermissions",
 }));
 export type UpdateDefaultQBusinessApplicationError =
   | AccessDeniedException
@@ -41591,6 +41823,7 @@ export const updateDefaultQBusinessApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateDefaultQBusinessApplication",
 }));
 export type UpdateFlowError =
   | AccessDeniedException
@@ -41621,6 +41854,7 @@ export const updateFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateFlow",
 }));
 export type UpdateFlowPermissionsError =
   | AccessDeniedException
@@ -41645,6 +41879,7 @@ export const updateFlowPermissions: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  operationName: "UpdateFlowPermissions",
 }));
 export type UpdateFolderError =
   | AccessDeniedException
@@ -41677,6 +41912,7 @@ export const updateFolder: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateFolder",
 }));
 export type UpdateFolderPermissionsError =
   | AccessDeniedException
@@ -41707,6 +41943,7 @@ export const updateFolderPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateFolderPermissions",
 }));
 export type UpdateGroupError =
   | AccessDeniedException
@@ -41737,6 +41974,7 @@ export const updateGroup: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateGroup",
 }));
 export type UpdateIAMPolicyAssignmentError =
   | AccessDeniedException
@@ -41769,6 +42007,7 @@ export const updateIAMPolicyAssignment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateIAMPolicyAssignment",
 }));
 export type UpdateIdentityPropagationConfigError =
   | AccessDeniedException
@@ -41797,6 +42036,7 @@ export const updateIdentityPropagationConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateIdentityPropagationConfig",
 }));
 export type UpdateIpRestrictionError =
   | AccessDeniedException
@@ -41825,6 +42065,7 @@ export const updateIpRestriction: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateIpRestriction",
 }));
 export type UpdateKeyRegistrationError =
   | AccessDeniedException
@@ -41849,6 +42090,7 @@ export const updateKeyRegistration: API.OperationMethod<
     InvalidParameterValueException,
     ThrottlingException,
   ],
+  operationName: "UpdateKeyRegistration",
 }));
 export type UpdateKnowledgeBasePermissionsError =
   | AccessDeniedException
@@ -41883,6 +42125,7 @@ export const updateKnowledgeBasePermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateKnowledgeBasePermissions",
 }));
 export type UpdateOAuthClientApplicationError =
   | AccessDeniedException
@@ -41913,6 +42156,7 @@ export const updateOAuthClientApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateOAuthClientApplication",
 }));
 export type UpdatePublicSharingSettingsError =
   | AccessDeniedException
@@ -41962,6 +42206,7 @@ export const updatePublicSharingSettings: API.OperationMethod<
     ThrottlingException,
     UnsupportedPricingPlanException,
   ],
+  operationName: "UpdatePublicSharingSettings",
 }));
 export type UpdateQPersonalizationConfigurationError =
   | AccessDeniedException
@@ -41992,6 +42237,7 @@ export const updateQPersonalizationConfiguration: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateQPersonalizationConfiguration",
 }));
 export type UpdateQuickSightQSearchConfigurationError =
   | AccessDeniedException
@@ -42020,6 +42266,7 @@ export const updateQuickSightQSearchConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateQuickSightQSearchConfiguration",
 }));
 export type UpdateRefreshScheduleError =
   | AccessDeniedException
@@ -42050,6 +42297,7 @@ export const updateRefreshSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateRefreshSchedule",
 }));
 export type UpdateRoleCustomPermissionError =
   | AccessDeniedException
@@ -42080,6 +42328,7 @@ export const updateRoleCustomPermission: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateRoleCustomPermission",
 }));
 export type UpdateSelfUpgradeError =
   | AccessDeniedException
@@ -42114,6 +42363,7 @@ export const updateSelfUpgrade: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateSelfUpgrade",
 }));
 export type UpdateSelfUpgradeConfigurationError =
   | AccessDeniedException
@@ -42146,6 +42396,7 @@ export const updateSelfUpgradeConfiguration: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateSelfUpgradeConfiguration",
 }));
 export type UpdateSpaceError =
   | AccessDeniedException
@@ -42174,6 +42425,7 @@ export const updateSpace: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateSpace",
 }));
 export type UpdateSpacePermissionsError =
   | AccessDeniedException
@@ -42206,6 +42458,7 @@ export const updateSpacePermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateSpacePermissions",
 }));
 export type UpdateSpaceResourcesError =
   | AccessDeniedException
@@ -42238,6 +42491,7 @@ export const updateSpaceResources: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateSpaceResources",
 }));
 export type UpdateSPICECapacityConfigurationError =
   | AccessDeniedException
@@ -42264,6 +42518,7 @@ export const updateSPICECapacityConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateSPICECapacityConfiguration",
 }));
 export type UpdateTemplateError =
   | ConflictException
@@ -42296,6 +42551,7 @@ export const updateTemplate: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateTemplate",
 }));
 export type UpdateTemplateAliasError =
   | ConflictException
@@ -42322,6 +42578,7 @@ export const updateTemplateAlias: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateTemplateAlias",
 }));
 export type UpdateTemplatePermissionsError =
   | ConflictException
@@ -42352,6 +42609,7 @@ export const updateTemplatePermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateTemplatePermissions",
 }));
 export type UpdateThemeError =
   | AccessDeniedException
@@ -42384,6 +42642,7 @@ export const updateTheme: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateTheme",
 }));
 export type UpdateThemeAliasError =
   | ConflictException
@@ -42414,6 +42673,7 @@ export const updateThemeAlias: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateThemeAlias",
 }));
 export type UpdateThemePermissionsError =
   | AccessDeniedException
@@ -42484,6 +42744,7 @@ export const updateThemePermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateThemePermissions",
 }));
 export type UpdateTopicError =
   | AccessDeniedException
@@ -42516,6 +42777,7 @@ export const updateTopic: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateTopic",
 }));
 export type UpdateTopicPermissionsError =
   | AccessDeniedException
@@ -42548,6 +42810,7 @@ export const updateTopicPermissions: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateTopicPermissions",
 }));
 export type UpdateTopicRefreshScheduleError =
   | AccessDeniedException
@@ -42580,6 +42843,7 @@ export const updateTopicRefreshSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateTopicRefreshSchedule",
 }));
 export type UpdateUserError =
   | AccessDeniedException
@@ -42610,6 +42874,7 @@ export const updateUser: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateUser",
 }));
 export type UpdateUserCustomPermissionError =
   | AccessDeniedException
@@ -42642,6 +42907,7 @@ export const updateUserCustomPermission: API.OperationMethod<
     ResourceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateUserCustomPermission",
 }));
 export type UpdateVPCConnectionError =
   | AccessDeniedException
@@ -42674,4 +42940,5 @@ export const updateVPCConnection: API.OperationMethod<
     ThrottlingException,
     UnsupportedUserEditionException,
   ],
+  operationName: "UpdateVPCConnection",
 }));

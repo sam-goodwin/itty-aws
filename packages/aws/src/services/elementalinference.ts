@@ -923,6 +923,7 @@ export const listTagsForResource: API.OperationMethod<
     TooManyRequestException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -951,6 +952,7 @@ export const tagResource: API.OperationMethod<
     TooManyRequestException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -979,6 +981,7 @@ export const untagResource: API.OperationMethod<
     TooManyRequestException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateDictionaryError =
   | AccessDeniedException
@@ -1007,6 +1010,7 @@ export const createDictionary: API.OperationMethod<
     TooManyRequestException,
     ValidationException,
   ],
+  operationName: "CreateDictionary",
 }));
 export type GetDictionaryError =
   | AccessDeniedException
@@ -1033,6 +1037,7 @@ export const getDictionary: API.OperationMethod<
     TooManyRequestException,
     ValidationException,
   ],
+  operationName: "GetDictionary",
 }));
 export type UpdateDictionaryError =
   | AccessDeniedException
@@ -1061,6 +1066,7 @@ export const updateDictionary: API.OperationMethod<
     TooManyRequestException,
     ValidationException,
   ],
+  operationName: "UpdateDictionary",
 }));
 export type DeleteDictionaryError =
   | AccessDeniedException
@@ -1089,6 +1095,7 @@ export const deleteDictionary: API.OperationMethod<
     TooManyRequestException,
     ValidationException,
   ],
+  operationName: "DeleteDictionary",
 }));
 export type ListDictionariesError =
   | AccessDeniedException
@@ -1128,6 +1135,7 @@ export const listDictionaries: API.OperationMethod<
     TooManyRequestException,
     ValidationException,
   ],
+  operationName: "ListDictionaries",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1160,6 +1168,7 @@ export const exportDictionaryEntries: API.OperationMethod<
     TooManyRequestException,
     ValidationException,
   ],
+  operationName: "ExportDictionaryEntries",
 }));
 export type CreateFeedError =
   | AccessDeniedException
@@ -1190,6 +1199,7 @@ export const createFeed: API.OperationMethod<
     TooManyRequestException,
     ValidationException,
   ],
+  operationName: "CreateFeed",
 }));
 export type GetFeedError =
   | AccessDeniedException
@@ -1214,6 +1224,7 @@ export const getFeed: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestException,
   ],
+  operationName: "GetFeed",
 }));
 export type UpdateFeedError =
   | AccessDeniedException
@@ -1250,6 +1261,7 @@ export const updateFeed: API.OperationMethod<
     TooManyRequestException,
     ValidationException,
   ],
+  operationName: "UpdateFeed",
 }));
 export type DeleteFeedError =
   | AccessDeniedException
@@ -1278,6 +1290,7 @@ export const deleteFeed: API.OperationMethod<
     TooManyRequestException,
     ValidationException,
   ],
+  operationName: "DeleteFeed",
 }));
 export type ListFeedsError =
   | AccessDeniedException
@@ -1319,6 +1332,7 @@ export const listFeeds: API.OperationMethod<
     TooManyRequestException,
     ValidationException,
   ],
+  operationName: "ListFeeds",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1367,6 +1381,7 @@ export const associateFeed: API.OperationMethod<
     TooManyRequestException,
     ValidationException,
   ],
+  operationName: "AssociateFeed",
 }));
 export type DisassociateFeedError =
   | AccessDeniedException
@@ -1395,4 +1410,5 @@ export const disassociateFeed: API.OperationMethod<
     TooManyRequestException,
     ValidationException,
   ],
+  operationName: "DisassociateFeed",
 }));

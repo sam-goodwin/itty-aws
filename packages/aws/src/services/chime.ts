@@ -2807,6 +2807,7 @@ export const associatePhoneNumberWithUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "AssociatePhoneNumberWithUser",
 }));
 export type AssociateSigninDelegateGroupsWithAccountError =
   | BadRequestException
@@ -2837,6 +2838,7 @@ export const associateSigninDelegateGroupsWithAccount: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "AssociateSigninDelegateGroupsWithAccount",
 }));
 export type BatchCreateRoomMembershipError =
   | BadRequestException
@@ -2868,6 +2870,7 @@ export const batchCreateRoomMembership: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "BatchCreateRoomMembership",
 }));
 export type BatchDeletePhoneNumberError =
   | BadRequestException
@@ -2902,6 +2905,7 @@ export const batchDeletePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "BatchDeletePhoneNumber",
 }));
 export type BatchSuspendUserError =
   | BadRequestException
@@ -2946,6 +2950,7 @@ export const batchSuspendUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "BatchSuspendUser",
 }));
 export type BatchUnsuspendUserError =
   | BadRequestException
@@ -2985,6 +2990,7 @@ export const batchUnsuspendUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "BatchUnsuspendUser",
 }));
 export type BatchUpdatePhoneNumberError =
   | BadRequestException
@@ -3019,6 +3025,7 @@ export const batchUpdatePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "BatchUpdatePhoneNumber",
 }));
 export type BatchUpdateUserError =
   | BadRequestException
@@ -3049,6 +3056,7 @@ export const batchUpdateUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "BatchUpdateUser",
 }));
 export type CreateAccountError =
   | BadRequestException
@@ -3082,6 +3090,7 @@ export const createAccount: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateAccount",
 }));
 export type CreateBotError =
   | BadRequestException
@@ -3114,6 +3123,7 @@ export const createBot: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateBot",
 }));
 export type CreateMeetingDialOutError =
   | AccessDeniedException
@@ -3152,6 +3162,7 @@ export const createMeetingDialOut: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateMeetingDialOut",
 }));
 export type CreatePhoneNumberOrderError =
   | AccessDeniedException
@@ -3185,6 +3196,7 @@ export const createPhoneNumberOrder: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreatePhoneNumberOrder",
 }));
 export type CreateRoomError =
   | BadRequestException
@@ -3217,6 +3229,7 @@ export const createRoom: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateRoom",
 }));
 export type CreateRoomMembershipError =
   | BadRequestException
@@ -3251,6 +3264,7 @@ export const createRoomMembership: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateRoomMembership",
 }));
 export type CreateUserError =
   | BadRequestException
@@ -3283,6 +3297,7 @@ export const createUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateUser",
 }));
 export type DeleteAccountError =
   | BadRequestException
@@ -3328,6 +3343,7 @@ export const deleteAccount: API.OperationMethod<
     UnauthorizedClientException,
     UnprocessableEntityException,
   ],
+  operationName: "DeleteAccount",
 }));
 export type DeleteEventsConfigurationError =
   | BadRequestException
@@ -3356,6 +3372,7 @@ export const deleteEventsConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteEventsConfiguration",
 }));
 export type DeletePhoneNumberError =
   | BadRequestException
@@ -3392,6 +3409,7 @@ export const deletePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeletePhoneNumber",
 }));
 export type DeleteRoomError =
   | BadRequestException
@@ -3422,6 +3440,7 @@ export const deleteRoom: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteRoom",
 }));
 export type DeleteRoomMembershipError =
   | BadRequestException
@@ -3452,6 +3471,7 @@ export const deleteRoomMembership: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteRoomMembership",
 }));
 export type DisassociatePhoneNumberFromUserError =
   | BadRequestException
@@ -3482,6 +3502,7 @@ export const disassociatePhoneNumberFromUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DisassociatePhoneNumberFromUser",
 }));
 export type DisassociateSigninDelegateGroupsFromAccountError =
   | BadRequestException
@@ -3512,6 +3533,7 @@ export const disassociateSigninDelegateGroupsFromAccount: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DisassociateSigninDelegateGroupsFromAccount",
 }));
 export type GetAccountError =
   | BadRequestException
@@ -3543,6 +3565,7 @@ export const getAccount: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetAccount",
 }));
 export type GetAccountSettingsError =
   | BadRequestException
@@ -3575,6 +3598,7 @@ export const getAccountSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetAccountSettings",
 }));
 export type GetBotError =
   | BadRequestException
@@ -3605,6 +3629,7 @@ export const getBot: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetBot",
 }));
 export type GetEventsConfigurationError =
   | BadRequestException
@@ -3635,6 +3660,7 @@ export const getEventsConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedClientException,
   ],
+  operationName: "GetEventsConfiguration",
 }));
 export type GetGlobalSettingsError =
   | BadRequestException
@@ -3664,6 +3690,7 @@ export const getGlobalSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetGlobalSettings",
 }));
 export type GetPhoneNumberError =
   | BadRequestException
@@ -3694,6 +3721,7 @@ export const getPhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetPhoneNumber",
 }));
 export type GetPhoneNumberOrderError =
   | BadRequestException
@@ -3725,6 +3753,7 @@ export const getPhoneNumberOrder: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetPhoneNumberOrder",
 }));
 export type GetPhoneNumberSettingsError =
   | BadRequestException
@@ -3753,6 +3782,7 @@ export const getPhoneNumberSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetPhoneNumberSettings",
 }));
 export type GetRetentionSettingsError =
   | BadRequestException
@@ -3784,6 +3814,7 @@ export const getRetentionSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetRetentionSettings",
 }));
 export type GetRoomError =
   | BadRequestException
@@ -3814,6 +3845,7 @@ export const getRoom: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetRoom",
 }));
 export type GetUserError =
   | BadRequestException
@@ -3847,6 +3879,7 @@ export const getUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetUser",
 }));
 export type GetUserSettingsError =
   | BadRequestException
@@ -3877,6 +3910,7 @@ export const getUserSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetUserSettings",
 }));
 export type InviteUsersError =
   | BadRequestException
@@ -3909,6 +3943,7 @@ export const inviteUsers: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "InviteUsers",
 }));
 export type ListAccountsError =
   | BadRequestException
@@ -3956,6 +3991,7 @@ export const listAccounts: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListAccounts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4006,6 +4042,7 @@ export const listBots: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListBots",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4054,6 +4091,7 @@ export const listPhoneNumberOrders: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListPhoneNumberOrders",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4104,6 +4142,7 @@ export const listPhoneNumbers: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListPhoneNumbers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4155,6 +4194,7 @@ export const listRoomMemberships: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListRoomMemberships",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4205,6 +4245,7 @@ export const listRooms: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListRooms",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4240,6 +4281,7 @@ export const listSupportedPhoneNumberCountries: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListSupportedPhoneNumberCountries",
 }));
 export type ListUsersError =
   | BadRequestException
@@ -4286,6 +4328,7 @@ export const listUsers: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListUsers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4321,6 +4364,7 @@ export const logoutUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "LogoutUser",
 }));
 export type PutEventsConfigurationError =
   | BadRequestException
@@ -4353,6 +4397,7 @@ export const putEventsConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedClientException,
   ],
+  operationName: "PutEventsConfiguration",
 }));
 export type PutRetentionSettingsError =
   | BadRequestException
@@ -4395,6 +4440,7 @@ export const putRetentionSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "PutRetentionSettings",
 }));
 export type RedactConversationMessageError =
   | BadRequestException
@@ -4425,6 +4471,7 @@ export const redactConversationMessage: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "RedactConversationMessage",
 }));
 export type RedactRoomMessageError =
   | BadRequestException
@@ -4455,6 +4502,7 @@ export const redactRoomMessage: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "RedactRoomMessage",
 }));
 export type RegenerateSecurityTokenError =
   | BadRequestException
@@ -4485,6 +4533,7 @@ export const regenerateSecurityToken: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "RegenerateSecurityToken",
 }));
 export type ResetPersonalPINError =
   | BadRequestException
@@ -4516,6 +4565,7 @@ export const resetPersonalPIN: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ResetPersonalPIN",
 }));
 export type RestorePhoneNumberError =
   | BadRequestException
@@ -4549,6 +4599,7 @@ export const restorePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "RestorePhoneNumber",
 }));
 export type SearchAvailablePhoneNumbersError =
   | AccessDeniedException
@@ -4598,6 +4649,7 @@ export const searchAvailablePhoneNumbers: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "SearchAvailablePhoneNumbers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4633,6 +4685,7 @@ export const updateAccount: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateAccount",
 }));
 export type UpdateAccountSettingsError =
   | BadRequestException
@@ -4669,6 +4722,7 @@ export const updateAccountSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateAccountSettings",
 }));
 export type UpdateBotError =
   | BadRequestException
@@ -4699,6 +4753,7 @@ export const updateBot: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateBot",
 }));
 export type UpdateGlobalSettingsError =
   | BadRequestException
@@ -4727,6 +4782,7 @@ export const updateGlobalSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateGlobalSettings",
 }));
 export type UpdatePhoneNumberError =
   | BadRequestException
@@ -4763,6 +4819,7 @@ export const updatePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdatePhoneNumber",
 }));
 export type UpdatePhoneNumberSettingsError =
   | BadRequestException
@@ -4793,6 +4850,7 @@ export const updatePhoneNumberSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdatePhoneNumberSettings",
 }));
 export type UpdateRoomError =
   | BadRequestException
@@ -4823,6 +4881,7 @@ export const updateRoom: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateRoom",
 }));
 export type UpdateRoomMembershipError =
   | BadRequestException
@@ -4856,6 +4915,7 @@ export const updateRoomMembership: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateRoomMembership",
 }));
 export type UpdateUserError =
   | BadRequestException
@@ -4886,6 +4946,7 @@ export const updateUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateUser",
 }));
 export type UpdateUserSettingsError =
   | BadRequestException
@@ -4916,4 +4977,5 @@ export const updateUserSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateUserSettings",
 }));

@@ -2792,6 +2792,7 @@ export const associateExternalConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateExternalConnection",
 }));
 export type CopyPackageVersionsError =
   | AccessDeniedException
@@ -2824,6 +2825,7 @@ export const copyPackageVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CopyPackageVersions",
 }));
 export type CreateDomainError =
   | AccessDeniedException
@@ -2861,6 +2863,7 @@ export const createDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDomain",
 }));
 export type CreatePackageGroupError =
   | AccessDeniedException
@@ -2891,6 +2894,7 @@ export const createPackageGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreatePackageGroup",
 }));
 export type CreateRepositoryError =
   | AccessDeniedException
@@ -2921,6 +2925,7 @@ export const createRepository: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRepository",
 }));
 export type DeleteDomainError =
   | AccessDeniedException
@@ -2948,6 +2953,7 @@ export const deleteDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDomain",
 }));
 export type DeleteDomainPermissionsPolicyError =
   | AccessDeniedException
@@ -2976,6 +2982,7 @@ export const deleteDomainPermissionsPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDomainPermissionsPolicy",
 }));
 export type DeletePackageError =
   | AccessDeniedException
@@ -3005,6 +3012,7 @@ export const deletePackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePackage",
 }));
 export type DeletePackageGroupError =
   | AccessDeniedException
@@ -3039,6 +3047,7 @@ export const deletePackageGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePackageGroup",
 }));
 export type DeletePackageVersionsError =
   | AccessDeniedException
@@ -3071,6 +3080,7 @@ export const deletePackageVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePackageVersions",
 }));
 export type DeleteRepositoryError =
   | AccessDeniedException
@@ -3099,6 +3109,7 @@ export const deleteRepository: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRepository",
 }));
 export type DeleteRepositoryPermissionsPolicyError =
   | AccessDeniedException
@@ -3131,6 +3142,7 @@ export const deleteRepositoryPermissionsPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRepositoryPermissionsPolicy",
 }));
 export type DescribeDomainError =
   | AccessDeniedException
@@ -3159,6 +3171,7 @@ export const describeDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeDomain",
 }));
 export type DescribePackageError =
   | AccessDeniedException
@@ -3187,6 +3200,7 @@ export const describePackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribePackage",
 }));
 export type DescribePackageGroupError =
   | AccessDeniedException
@@ -3214,6 +3228,7 @@ export const describePackageGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribePackageGroup",
 }));
 export type DescribePackageVersionError =
   | AccessDeniedException
@@ -3244,6 +3259,7 @@ export const describePackageVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribePackageVersion",
 }));
 export type DescribeRepositoryError =
   | AccessDeniedException
@@ -3271,6 +3287,7 @@ export const describeRepository: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeRepository",
 }));
 export type DisassociateExternalConnectionError =
   | AccessDeniedException
@@ -3301,6 +3318,7 @@ export const disassociateExternalConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateExternalConnection",
 }));
 export type DisposePackageVersionsError =
   | AccessDeniedException
@@ -3336,6 +3354,7 @@ export const disposePackageVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisposePackageVersions",
 }));
 export type GetAssociatedPackageGroupError =
   | AccessDeniedException
@@ -3366,6 +3385,7 @@ export const getAssociatedPackageGroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetAssociatedPackageGroup",
 }));
 export type GetAuthorizationTokenError =
   | AccessDeniedException
@@ -3411,6 +3431,7 @@ export const getAuthorizationToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAuthorizationToken",
 }));
 export type GetDomainPermissionsPolicyError =
   | AccessDeniedException
@@ -3441,6 +3462,7 @@ export const getDomainPermissionsPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDomainPermissionsPolicy",
 }));
 export type GetPackageVersionAssetError =
   | AccessDeniedException
@@ -3471,6 +3493,7 @@ export const getPackageVersionAsset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPackageVersionAsset",
 }));
 export type GetPackageVersionReadmeError =
   | AccessDeniedException
@@ -3499,6 +3522,7 @@ export const getPackageVersionReadme: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPackageVersionReadme",
 }));
 export type GetRepositoryEndpointError =
   | AccessDeniedException
@@ -3542,6 +3566,7 @@ export const getRepositoryEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRepositoryEndpoint",
 }));
 export type GetRepositoryPermissionsPolicyError =
   | AccessDeniedException
@@ -3568,6 +3593,7 @@ export const getRepositoryPermissionsPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRepositoryPermissionsPolicy",
 }));
 export type ListAllowedRepositoriesForGroupError =
   | AccessDeniedException
@@ -3612,6 +3638,7 @@ export const listAllowedRepositoriesForGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAllowedRepositoriesForGroup",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3659,6 +3686,7 @@ export const listAssociatedPackages: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListAssociatedPackages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3706,6 +3734,7 @@ export const listDomains: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDomains",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3753,6 +3782,7 @@ export const listPackageGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPackageGroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3802,6 +3832,7 @@ export const listPackages: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPackages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3851,6 +3882,7 @@ export const listPackageVersionAssets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPackageVersionAssets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3887,6 +3919,7 @@ export const listPackageVersionDependencies: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPackageVersionDependencies",
 }));
 export type ListPackageVersionsError =
   | AccessDeniedException
@@ -3930,6 +3963,7 @@ export const listPackageVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPackageVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3978,6 +4012,7 @@ export const listRepositories: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRepositories",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4028,6 +4063,7 @@ export const listRepositoriesInDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRepositoriesInDomain",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4079,6 +4115,7 @@ export const listSubPackageGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSubPackageGroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4109,6 +4146,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PublishPackageVersionError =
   | AccessDeniedException
@@ -4148,6 +4186,7 @@ export const publishPackageVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PublishPackageVersion",
 }));
 export type PutDomainPermissionsPolicyError =
   | AccessDeniedException
@@ -4182,6 +4221,7 @@ export const putDomainPermissionsPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutDomainPermissionsPolicy",
 }));
 export type PutPackageOriginConfigurationError =
   | AccessDeniedException
@@ -4217,6 +4257,7 @@ export const putPackageOriginConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutPackageOriginConfiguration",
 }));
 export type PutRepositoryPermissionsPolicyError =
   | AccessDeniedException
@@ -4251,6 +4292,7 @@ export const putRepositoryPermissionsPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutRepositoryPermissionsPolicy",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -4277,6 +4319,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -4301,6 +4344,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdatePackageGroupError =
   | AccessDeniedException
@@ -4330,6 +4374,7 @@ export const updatePackageGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdatePackageGroup",
 }));
 export type UpdatePackageGroupOriginConfigurationError =
   | AccessDeniedException
@@ -4364,6 +4409,7 @@ export const updatePackageGroupOriginConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdatePackageGroupOriginConfiguration",
 }));
 export type UpdatePackageVersionsStatusError =
   | AccessDeniedException
@@ -4395,6 +4441,7 @@ export const updatePackageVersionsStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdatePackageVersionsStatus",
 }));
 export type UpdateRepositoryError =
   | AccessDeniedException
@@ -4425,4 +4472,5 @@ export const updateRepository: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRepository",
 }));

@@ -2716,6 +2716,7 @@ export const cloneBackend: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CloneBackend",
 }));
 export type CreateBackendError =
   | BadRequestException
@@ -2740,6 +2741,7 @@ export const createBackend: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateBackend",
 }));
 export type CreateBackendAPIError =
   | BadRequestException
@@ -2764,6 +2766,7 @@ export const createBackendAPI: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateBackendAPI",
 }));
 export type CreateBackendAuthError =
   | BadRequestException
@@ -2788,6 +2791,7 @@ export const createBackendAuth: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateBackendAuth",
 }));
 export type CreateBackendConfigError =
   | BadRequestException
@@ -2812,6 +2816,7 @@ export const createBackendConfig: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateBackendConfig",
 }));
 export type CreateBackendStorageError =
   | BadRequestException
@@ -2836,6 +2841,7 @@ export const createBackendStorage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateBackendStorage",
 }));
 export type CreateTokenError =
   | BadRequestException
@@ -2860,6 +2866,7 @@ export const createToken: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateToken",
 }));
 export type DeleteBackendError =
   | BadRequestException
@@ -2884,6 +2891,7 @@ export const deleteBackend: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteBackend",
 }));
 export type DeleteBackendAPIError =
   | BadRequestException
@@ -2908,6 +2916,7 @@ export const deleteBackendAPI: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteBackendAPI",
 }));
 export type DeleteBackendAuthError =
   | BadRequestException
@@ -2932,6 +2941,7 @@ export const deleteBackendAuth: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteBackendAuth",
 }));
 export type DeleteBackendStorageError =
   | BadRequestException
@@ -2956,6 +2966,7 @@ export const deleteBackendStorage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteBackendStorage",
 }));
 export type DeleteTokenError =
   | BadRequestException
@@ -2980,6 +2991,7 @@ export const deleteToken: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteToken",
 }));
 export type GenerateBackendAPIModelsError =
   | BadRequestException
@@ -3004,6 +3016,7 @@ export const generateBackendAPIModels: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GenerateBackendAPIModels",
 }));
 export type GetBackendError =
   | BadRequestException
@@ -3028,6 +3041,7 @@ export const getBackend: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetBackend",
 }));
 export type GetBackendAPIError =
   | BadRequestException
@@ -3052,6 +3066,7 @@ export const getBackendAPI: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetBackendAPI",
 }));
 export type GetBackendAPIModelsError =
   | BadRequestException
@@ -3076,6 +3091,7 @@ export const getBackendAPIModels: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetBackendAPIModels",
 }));
 export type GetBackendAuthError =
   | BadRequestException
@@ -3100,6 +3116,7 @@ export const getBackendAuth: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetBackendAuth",
 }));
 export type GetBackendJobError =
   | BadRequestException
@@ -3124,6 +3141,7 @@ export const getBackendJob: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetBackendJob",
 }));
 export type GetBackendStorageError =
   | BadRequestException
@@ -3148,6 +3166,7 @@ export const getBackendStorage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetBackendStorage",
 }));
 export type GetTokenError =
   | BadRequestException
@@ -3172,6 +3191,7 @@ export const getToken: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetToken",
 }));
 export type ImportBackendAuthError =
   | BadRequestException
@@ -3196,6 +3216,7 @@ export const importBackendAuth: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ImportBackendAuth",
 }));
 export type ImportBackendStorageError =
   | BadRequestException
@@ -3220,6 +3241,7 @@ export const importBackendStorage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ImportBackendStorage",
 }));
 export type ListBackendJobsError =
   | BadRequestException
@@ -3244,6 +3266,7 @@ export const listBackendJobs: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListBackendJobs",
 }));
 export type ListS3BucketsError =
   | BadRequestException
@@ -3268,6 +3291,7 @@ export const listS3Buckets: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListS3Buckets",
 }));
 export type RemoveAllBackendsError =
   | BadRequestException
@@ -3292,6 +3316,7 @@ export const removeAllBackends: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "RemoveAllBackends",
 }));
 export type RemoveBackendConfigError =
   | BadRequestException
@@ -3316,6 +3341,7 @@ export const removeBackendConfig: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "RemoveBackendConfig",
 }));
 export type UpdateBackendAPIError =
   | BadRequestException
@@ -3340,6 +3366,7 @@ export const updateBackendAPI: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateBackendAPI",
 }));
 export type UpdateBackendAuthError =
   | BadRequestException
@@ -3364,6 +3391,7 @@ export const updateBackendAuth: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateBackendAuth",
 }));
 export type UpdateBackendConfigError =
   | BadRequestException
@@ -3388,6 +3416,7 @@ export const updateBackendConfig: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateBackendConfig",
 }));
 export type UpdateBackendJobError =
   | BadRequestException
@@ -3412,6 +3441,7 @@ export const updateBackendJob: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateBackendJob",
 }));
 export type UpdateBackendStorageError =
   | BadRequestException
@@ -3436,4 +3466,5 @@ export const updateBackendStorage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateBackendStorage",
 }));

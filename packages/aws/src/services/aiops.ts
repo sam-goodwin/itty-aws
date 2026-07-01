@@ -596,6 +596,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -630,6 +631,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -658,6 +660,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateInvestigationGroupError =
   | AccessDeniedException
@@ -704,6 +707,7 @@ export const createInvestigationGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateInvestigationGroup",
 }));
 export type GetInvestigationGroupError =
   | AccessDeniedException
@@ -728,6 +732,7 @@ export const getInvestigationGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetInvestigationGroup",
 }));
 export type UpdateInvestigationGroupError =
   | AccessDeniedException
@@ -756,6 +761,7 @@ export const updateInvestigationGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateInvestigationGroup",
 }));
 export type DeleteInvestigationGroupError =
   | AccessDeniedException
@@ -780,6 +786,7 @@ export const deleteInvestigationGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteInvestigationGroup",
 }));
 export type ListInvestigationGroupsError =
   | AccessDeniedException
@@ -813,6 +820,7 @@ export const listInvestigationGroups: API.OperationMethod<
   input: ListInvestigationGroupsInput,
   output: ListInvestigationGroupsOutput,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
+  operationName: "ListInvestigationGroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -851,6 +859,7 @@ export const putInvestigationGroupPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutInvestigationGroupPolicy",
 }));
 export type GetInvestigationGroupPolicyError =
   | AccessDeniedException
@@ -877,6 +886,7 @@ export const getInvestigationGroupPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetInvestigationGroupPolicy",
 }));
 export type DeleteInvestigationGroupPolicyError =
   | AccessDeniedException
@@ -903,4 +913,5 @@ export const deleteInvestigationGroupPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteInvestigationGroupPolicy",
 }));

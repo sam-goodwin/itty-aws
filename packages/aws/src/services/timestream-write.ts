@@ -1158,6 +1158,7 @@ export const createBatchLoadTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateBatchLoadTask",
 }));
 export type CreateDatabaseError =
   | AccessDeniedException
@@ -1190,6 +1191,7 @@ export const createDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDatabase",
 }));
 export type CreateTableError =
   | AccessDeniedException
@@ -1227,6 +1229,7 @@ export const createTable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateTable",
 }));
 export type DeleteDatabaseError =
   | AccessDeniedException
@@ -1266,6 +1269,7 @@ export const deleteDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDatabase",
 }));
 export type DeleteTableError =
   | AccessDeniedException
@@ -1302,6 +1306,7 @@ export const deleteTable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteTable",
 }));
 export type DescribeBatchLoadTaskError =
   | AccessDeniedException
@@ -1331,6 +1336,7 @@ export const describeBatchLoadTask: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeBatchLoadTask",
 }));
 export type DescribeDatabaseError =
   | AccessDeniedException
@@ -1362,6 +1368,7 @@ export const describeDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeDatabase",
 }));
 export type DescribeEndpointsError =
   | InternalServerException
@@ -1396,6 +1403,7 @@ export const describeEndpoints: API.OperationMethod<
   input: DescribeEndpointsRequest,
   output: DescribeEndpointsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "DescribeEndpoints",
 }));
 export type DescribeTableError =
   | AccessDeniedException
@@ -1427,6 +1435,7 @@ export const describeTable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeTable",
 }));
 export type ListBatchLoadTasksError =
   | AccessDeniedException
@@ -1470,6 +1479,7 @@ export const listBatchLoadTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBatchLoadTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1518,6 +1528,7 @@ export const listDatabases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDatabases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1568,6 +1579,7 @@ export const listTables: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTables",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1597,6 +1609,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ResumeBatchLoadTaskError =
   | AccessDeniedException
@@ -1625,6 +1638,7 @@ export const resumeBatchLoadTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ResumeBatchLoadTask",
 }));
 export type TagResourceError =
   | InvalidEndpointException
@@ -1653,6 +1667,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InvalidEndpointException
@@ -1679,6 +1694,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateDatabaseError =
   | AccessDeniedException
@@ -1714,6 +1730,7 @@ export const updateDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDatabase",
 }));
 export type UpdateTableError =
   | AccessDeniedException
@@ -1748,6 +1765,7 @@ export const updateTable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateTable",
 }));
 export type WriteRecordsError =
   | AccessDeniedException
@@ -1820,4 +1838,5 @@ export const writeRecords: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "WriteRecords",
 }));

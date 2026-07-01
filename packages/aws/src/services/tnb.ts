@@ -2036,6 +2036,7 @@ export const cancelSolNetworkOperation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelSolNetworkOperation",
 }));
 export type CreateSolFunctionPackageError =
   | AccessDeniedException
@@ -2069,6 +2070,7 @@ export const createSolFunctionPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateSolFunctionPackage",
 }));
 export type CreateSolNetworkInstanceError =
   | AccessDeniedException
@@ -2104,6 +2106,7 @@ export const createSolNetworkInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateSolNetworkInstance",
 }));
 export type CreateSolNetworkPackageError =
   | AccessDeniedException
@@ -2141,6 +2144,7 @@ export const createSolNetworkPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateSolNetworkPackage",
 }));
 export type DeleteSolFunctionPackageError =
   | AccessDeniedException
@@ -2172,6 +2176,7 @@ export const deleteSolFunctionPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteSolFunctionPackage",
 }));
 export type DeleteSolNetworkInstanceError =
   | AccessDeniedException
@@ -2203,6 +2208,7 @@ export const deleteSolNetworkInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteSolNetworkInstance",
 }));
 export type DeleteSolNetworkPackageError =
   | AccessDeniedException
@@ -2234,6 +2240,7 @@ export const deleteSolNetworkPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteSolNetworkPackage",
 }));
 export type GetSolFunctionInstanceError =
   | AccessDeniedException
@@ -2263,6 +2270,7 @@ export const getSolFunctionInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSolFunctionInstance",
 }));
 export type GetSolFunctionPackageError =
   | AccessDeniedException
@@ -2292,6 +2300,7 @@ export const getSolFunctionPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSolFunctionPackage",
 }));
 export type GetSolFunctionPackageContentError =
   | AccessDeniedException
@@ -2320,6 +2329,7 @@ export const getSolFunctionPackageContent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSolFunctionPackageContent",
 }));
 export type GetSolFunctionPackageDescriptorError =
   | AccessDeniedException
@@ -2350,6 +2360,7 @@ export const getSolFunctionPackageDescriptor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSolFunctionPackageDescriptor",
 }));
 export type GetSolNetworkInstanceError =
   | AccessDeniedException
@@ -2378,6 +2389,7 @@ export const getSolNetworkInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSolNetworkInstance",
 }));
 export type GetSolNetworkOperationError =
   | AccessDeniedException
@@ -2407,6 +2419,7 @@ export const getSolNetworkOperation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSolNetworkOperation",
 }));
 export type GetSolNetworkPackageError =
   | AccessDeniedException
@@ -2435,6 +2448,7 @@ export const getSolNetworkPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSolNetworkPackage",
 }));
 export type GetSolNetworkPackageContentError =
   | AccessDeniedException
@@ -2463,6 +2477,7 @@ export const getSolNetworkPackageContent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSolNetworkPackageContent",
 }));
 export type GetSolNetworkPackageDescriptorError =
   | AccessDeniedException
@@ -2491,6 +2506,7 @@ export const getSolNetworkPackageDescriptor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSolNetworkPackageDescriptor",
 }));
 export type InstantiateSolNetworkInstanceError =
   | AccessDeniedException
@@ -2524,6 +2540,7 @@ export const instantiateSolNetworkInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InstantiateSolNetworkInstance",
 }));
 export type ListSolFunctionInstancesError =
   | AccessDeniedException
@@ -2565,6 +2582,7 @@ export const listSolFunctionInstances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSolFunctionInstances",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2612,6 +2630,7 @@ export const listSolFunctionPackages: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSolFunctionPackages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2659,6 +2678,7 @@ export const listSolNetworkInstances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSolNetworkInstances",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2707,6 +2727,7 @@ export const listSolNetworkOperations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSolNetworkOperations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2754,6 +2775,7 @@ export const listSolNetworkPackages: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSolNetworkPackages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2786,6 +2808,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutSolFunctionPackageContentError =
   | AccessDeniedException
@@ -2814,6 +2837,7 @@ export const putSolFunctionPackageContent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutSolFunctionPackageContent",
 }));
 export type PutSolNetworkPackageContentError =
   | AccessDeniedException
@@ -2842,6 +2866,7 @@ export const putSolNetworkPackageContent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutSolNetworkPackageContent",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2870,6 +2895,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type TerminateSolNetworkInstanceError =
   | AccessDeniedException
@@ -2902,6 +2928,7 @@ export const terminateSolNetworkInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TerminateSolNetworkInstance",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2930,6 +2957,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateSolFunctionPackageError =
   | AccessDeniedException
@@ -2958,6 +2986,7 @@ export const updateSolFunctionPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateSolFunctionPackage",
 }));
 export type UpdateSolNetworkInstanceError =
   | AccessDeniedException
@@ -2990,6 +3019,7 @@ export const updateSolNetworkInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateSolNetworkInstance",
 }));
 export type UpdateSolNetworkPackageError =
   | AccessDeniedException
@@ -3020,6 +3050,7 @@ export const updateSolNetworkPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateSolNetworkPackage",
 }));
 export type ValidateSolFunctionPackageContentError =
   | AccessDeniedException
@@ -3049,6 +3080,7 @@ export const validateSolFunctionPackageContent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ValidateSolFunctionPackageContent",
 }));
 export type ValidateSolNetworkPackageContentError =
   | AccessDeniedException
@@ -3078,4 +3110,5 @@ export const validateSolNetworkPackageContent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ValidateSolNetworkPackageContent",
 }));

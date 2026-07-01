@@ -755,6 +755,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -783,6 +784,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -811,6 +813,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateMonitorError =
   | AccessDeniedException
@@ -859,6 +862,7 @@ export const createMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateMonitor",
 }));
 export type GetMonitorError =
   | AccessDeniedException
@@ -888,6 +892,7 @@ export const getMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMonitor",
 }));
 export type UpdateMonitorError =
   | AccessDeniedException
@@ -919,6 +924,7 @@ export const updateMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateMonitor",
 }));
 export type DeleteMonitorError =
   | AccessDeniedException
@@ -948,6 +954,7 @@ export const deleteMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteMonitor",
 }));
 export type ListMonitorsError =
   | AccessDeniedException
@@ -987,6 +994,7 @@ export const listMonitors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMonitors",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1025,6 +1033,7 @@ export const createProbe: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateProbe",
 }));
 export type GetProbeError =
   | AccessDeniedException
@@ -1054,6 +1063,7 @@ export const getProbe: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetProbe",
 }));
 export type UpdateProbeError =
   | AccessDeniedException
@@ -1102,6 +1112,7 @@ export const updateProbe: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateProbe",
 }));
 export type DeleteProbeError =
   | AccessDeniedException
@@ -1136,4 +1147,5 @@ export const deleteProbe: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteProbe",
 }));

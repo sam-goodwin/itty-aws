@@ -5098,6 +5098,7 @@ export const addInstanceFleet: API.OperationMethod<
   input: AddInstanceFleetInput,
   output: AddInstanceFleetOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "AddInstanceFleet",
 }));
 export type AddInstanceGroupsError = InternalServerError | CommonErrors;
 /**
@@ -5112,6 +5113,7 @@ export const addInstanceGroups: API.OperationMethod<
   input: AddInstanceGroupsInput,
   output: AddInstanceGroupsOutput,
   errors: [InternalServerError],
+  operationName: "AddInstanceGroups",
 }));
 export type AddJobFlowStepsError = InternalServerError | CommonErrors;
 /**
@@ -5147,6 +5149,7 @@ export const addJobFlowSteps: API.OperationMethod<
   input: AddJobFlowStepsInput,
   output: AddJobFlowStepsOutput,
   errors: [InternalServerError],
+  operationName: "AddJobFlowSteps",
 }));
 export type AddTagsError =
   | InternalServerException
@@ -5168,6 +5171,7 @@ export const addTags: API.OperationMethod<
   input: AddTagsInput,
   output: AddTagsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "AddTags",
 }));
 export type CancelStepsError =
   | InternalServerError
@@ -5189,6 +5193,7 @@ export const cancelSteps: API.OperationMethod<
   input: CancelStepsInput,
   output: CancelStepsOutput,
   errors: [InternalServerError, InvalidRequestException],
+  operationName: "CancelSteps",
 }));
 export type CreatePersistentAppUIError =
   | InternalServerException
@@ -5206,6 +5211,7 @@ export const createPersistentAppUI: API.OperationMethod<
   input: CreatePersistentAppUIInput,
   output: CreatePersistentAppUIOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "CreatePersistentAppUI",
 }));
 export type CreateSecurityConfigurationError =
   | InternalServerException
@@ -5224,6 +5230,7 @@ export const createSecurityConfiguration: API.OperationMethod<
   input: CreateSecurityConfigurationInput,
   output: CreateSecurityConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "CreateSecurityConfiguration",
 }));
 export type CreateStudioError =
   | InternalServerException
@@ -5241,6 +5248,7 @@ export const createStudio: API.OperationMethod<
   input: CreateStudioInput,
   output: CreateStudioOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "CreateStudio",
 }));
 export type CreateStudioSessionMappingError =
   | InternalServerError
@@ -5262,6 +5270,7 @@ export const createStudioSessionMapping: API.OperationMethod<
   input: CreateStudioSessionMappingInput,
   output: CreateStudioSessionMappingResponse,
   errors: [InternalServerError, InvalidRequestException],
+  operationName: "CreateStudioSessionMapping",
 }));
 export type DeleteSecurityConfigurationError =
   | InternalServerException
@@ -5279,6 +5288,7 @@ export const deleteSecurityConfiguration: API.OperationMethod<
   input: DeleteSecurityConfigurationInput,
   output: DeleteSecurityConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "DeleteSecurityConfiguration",
 }));
 export type DeleteStudioError =
   | InternalServerException
@@ -5296,6 +5306,7 @@ export const deleteStudio: API.OperationMethod<
   input: DeleteStudioInput,
   output: DeleteStudioResponse,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "DeleteStudio",
 }));
 export type DeleteStudioSessionMappingError =
   | InternalServerError
@@ -5313,6 +5324,7 @@ export const deleteStudioSessionMapping: API.OperationMethod<
   input: DeleteStudioSessionMappingInput,
   output: DeleteStudioSessionMappingResponse,
   errors: [InternalServerError, InvalidRequestException],
+  operationName: "DeleteStudioSessionMapping",
 }));
 export type DescribeClusterError =
   | InternalServerException
@@ -5331,6 +5343,7 @@ export const describeCluster: API.OperationMethod<
   input: DescribeClusterInput,
   output: DescribeClusterOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "DescribeCluster",
 }));
 export type DescribeJobFlowsError = InternalServerError | CommonErrors;
 /**
@@ -5364,6 +5377,7 @@ export const describeJobFlows: API.OperationMethod<
   input: DescribeJobFlowsInput,
   output: DescribeJobFlowsOutput,
   errors: [InternalServerError],
+  operationName: "DescribeJobFlows",
 }));
 export type DescribeNotebookExecutionError =
   | InternalServerError
@@ -5381,6 +5395,7 @@ export const describeNotebookExecution: API.OperationMethod<
   input: DescribeNotebookExecutionInput,
   output: DescribeNotebookExecutionOutput,
   errors: [InternalServerError, InvalidRequestException],
+  operationName: "DescribeNotebookExecution",
 }));
 export type DescribePersistentAppUIError =
   | InternalServerException
@@ -5398,6 +5413,7 @@ export const describePersistentAppUI: API.OperationMethod<
   input: DescribePersistentAppUIInput,
   output: DescribePersistentAppUIOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "DescribePersistentAppUI",
 }));
 export type DescribeReleaseLabelError =
   | InternalServerException
@@ -5417,6 +5433,7 @@ export const describeReleaseLabel: API.OperationMethod<
   input: DescribeReleaseLabelInput,
   output: DescribeReleaseLabelOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "DescribeReleaseLabel",
 }));
 export type DescribeSecurityConfigurationError =
   | InternalServerException
@@ -5435,6 +5452,7 @@ export const describeSecurityConfiguration: API.OperationMethod<
   input: DescribeSecurityConfigurationInput,
   output: DescribeSecurityConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "DescribeSecurityConfiguration",
 }));
 export type DescribeStepError =
   | InternalServerException
@@ -5452,6 +5470,7 @@ export const describeStep: API.OperationMethod<
   input: DescribeStepInput,
   output: DescribeStepOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "DescribeStep",
 }));
 export type DescribeStudioError =
   | InternalServerException
@@ -5470,6 +5489,7 @@ export const describeStudio: API.OperationMethod<
   input: DescribeStudioInput,
   output: DescribeStudioOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "DescribeStudio",
 }));
 export type GetAutoTerminationPolicyError = CommonErrors;
 /**
@@ -5484,6 +5504,7 @@ export const getAutoTerminationPolicy: API.OperationMethod<
   input: GetAutoTerminationPolicyInput,
   output: GetAutoTerminationPolicyOutput,
   errors: [],
+  operationName: "GetAutoTerminationPolicy",
 }));
 export type GetBlockPublicAccessConfigurationError =
   | InternalServerException
@@ -5503,6 +5524,7 @@ export const getBlockPublicAccessConfiguration: API.OperationMethod<
   input: GetBlockPublicAccessConfigurationInput,
   output: GetBlockPublicAccessConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "GetBlockPublicAccessConfiguration",
 }));
 export type GetClusterSessionCredentialsError =
   | InternalServerError
@@ -5523,6 +5545,7 @@ export const getClusterSessionCredentials: API.OperationMethod<
   input: GetClusterSessionCredentialsInput,
   output: GetClusterSessionCredentialsOutput,
   errors: [InternalServerError, InvalidRequestException],
+  operationName: "GetClusterSessionCredentials",
 }));
 export type GetManagedScalingPolicyError = CommonErrors;
 /**
@@ -5537,6 +5560,7 @@ export const getManagedScalingPolicy: API.OperationMethod<
   input: GetManagedScalingPolicyInput,
   output: GetManagedScalingPolicyOutput,
   errors: [],
+  operationName: "GetManagedScalingPolicy",
 }));
 export type GetOnClusterAppUIPresignedURLError =
   | InternalServerError
@@ -5554,6 +5578,7 @@ export const getOnClusterAppUIPresignedURL: API.OperationMethod<
   input: GetOnClusterAppUIPresignedURLInput,
   output: GetOnClusterAppUIPresignedURLOutput,
   errors: [InternalServerError, InvalidRequestException],
+  operationName: "GetOnClusterAppUIPresignedURL",
 }));
 export type GetPersistentAppUIPresignedURLError =
   | InternalServerError
@@ -5571,6 +5596,7 @@ export const getPersistentAppUIPresignedURL: API.OperationMethod<
   input: GetPersistentAppUIPresignedURLInput,
   output: GetPersistentAppUIPresignedURLOutput,
   errors: [InternalServerError, InvalidRequestException],
+  operationName: "GetPersistentAppUIPresignedURL",
 }));
 export type GetSessionError =
   | InternalServerException
@@ -5588,6 +5614,7 @@ export const getSession: API.OperationMethod<
   input: GetSessionInput,
   output: GetSessionOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "GetSession",
 }));
 export type GetSessionEndpointError =
   | InternalServerException
@@ -5605,6 +5632,7 @@ export const getSessionEndpoint: API.OperationMethod<
   input: GetSessionEndpointInput,
   output: GetSessionEndpointOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "GetSessionEndpoint",
 }));
 export type GetStudioSessionMappingError =
   | InternalServerError
@@ -5623,6 +5651,7 @@ export const getStudioSessionMapping: API.OperationMethod<
   input: GetStudioSessionMappingInput,
   output: GetStudioSessionMappingOutput,
   errors: [InternalServerError, InvalidRequestException],
+  operationName: "GetStudioSessionMapping",
 }));
 export type ListBootstrapActionsError =
   | InternalServerException
@@ -5655,6 +5684,7 @@ export const listBootstrapActions: API.OperationMethod<
   input: ListBootstrapActionsInput,
   output: ListBootstrapActionsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListBootstrapActions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -5696,6 +5726,7 @@ export const listClusters: API.OperationMethod<
   input: ListClustersInput,
   output: ListClustersOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListClusters",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -5736,6 +5767,7 @@ export const listInstanceFleets: API.OperationMethod<
   input: ListInstanceFleetsInput,
   output: ListInstanceFleetsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListInstanceFleets",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -5773,6 +5805,7 @@ export const listInstanceGroups: API.OperationMethod<
   input: ListInstanceGroupsInput,
   output: ListInstanceGroupsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListInstanceGroups",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -5813,6 +5846,7 @@ export const listInstances: API.OperationMethod<
   input: ListInstancesInput,
   output: ListInstancesOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListInstances",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -5853,6 +5887,7 @@ export const listNotebookExecutions: API.OperationMethod<
   input: ListNotebookExecutionsInput,
   output: ListNotebookExecutionsOutput,
   errors: [InternalServerError, InvalidRequestException],
+  operationName: "ListNotebookExecutions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -5891,6 +5926,7 @@ export const listReleaseLabels: API.OperationMethod<
   input: ListReleaseLabelsInput,
   output: ListReleaseLabelsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListReleaseLabels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5931,6 +5967,7 @@ export const listSecurityConfigurations: API.OperationMethod<
   input: ListSecurityConfigurationsInput,
   output: ListSecurityConfigurationsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListSecurityConfigurations",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -5968,6 +6005,7 @@ export const listSessions: API.OperationMethod<
   input: ListSessionsInput,
   output: ListSessionsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListSessions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6010,6 +6048,7 @@ export const listSteps: API.OperationMethod<
   input: ListStepsInput,
   output: ListStepsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListSteps",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -6048,6 +6087,7 @@ export const listStudios: API.OperationMethod<
   input: ListStudiosInput,
   output: ListStudiosOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListStudios",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -6086,6 +6126,7 @@ export const listStudioSessionMappings: API.OperationMethod<
   input: ListStudioSessionMappingsInput,
   output: ListStudioSessionMappingsOutput,
   errors: [InternalServerError, InvalidRequestException],
+  operationName: "ListStudioSessionMappings",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -6124,6 +6165,7 @@ export const listSupportedInstanceTypes: API.OperationMethod<
   input: ListSupportedInstanceTypesInput,
   output: ListSupportedInstanceTypesOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListSupportedInstanceTypes",
   pagination: { inputToken: "Marker", outputToken: "Marker" } as const,
 }));
 export type ModifyClusterError =
@@ -6143,6 +6185,7 @@ export const modifyCluster: API.OperationMethod<
   input: ModifyClusterInput,
   output: ModifyClusterOutput,
   errors: [InternalServerError, InvalidRequestException],
+  operationName: "ModifyCluster",
 }));
 export type ModifyInstanceFleetError =
   | InternalServerException
@@ -6165,6 +6208,7 @@ export const modifyInstanceFleet: API.OperationMethod<
   input: ModifyInstanceFleetInput,
   output: ModifyInstanceFleetResponse,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ModifyInstanceFleet",
 }));
 export type ModifyInstanceGroupsError = InternalServerError | CommonErrors;
 /**
@@ -6181,6 +6225,7 @@ export const modifyInstanceGroups: API.OperationMethod<
   input: ModifyInstanceGroupsInput,
   output: ModifyInstanceGroupsResponse,
   errors: [InternalServerError],
+  operationName: "ModifyInstanceGroups",
 }));
 export type PutAutoScalingPolicyError = CommonErrors;
 /**
@@ -6198,6 +6243,7 @@ export const putAutoScalingPolicy: API.OperationMethod<
   input: PutAutoScalingPolicyInput,
   output: PutAutoScalingPolicyOutput,
   errors: [],
+  operationName: "PutAutoScalingPolicy",
 }));
 export type PutAutoTerminationPolicyError = CommonErrors;
 /**
@@ -6219,6 +6265,7 @@ export const putAutoTerminationPolicy: API.OperationMethod<
   input: PutAutoTerminationPolicyInput,
   output: PutAutoTerminationPolicyOutput,
   errors: [],
+  operationName: "PutAutoTerminationPolicy",
 }));
 export type PutBlockPublicAccessConfigurationError =
   | InternalServerException
@@ -6239,6 +6286,7 @@ export const putBlockPublicAccessConfiguration: API.OperationMethod<
   input: PutBlockPublicAccessConfigurationInput,
   output: PutBlockPublicAccessConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "PutBlockPublicAccessConfiguration",
 }));
 export type PutManagedScalingPolicyError = CommonErrors;
 /**
@@ -6256,6 +6304,7 @@ export const putManagedScalingPolicy: API.OperationMethod<
   input: PutManagedScalingPolicyInput,
   output: PutManagedScalingPolicyOutput,
   errors: [],
+  operationName: "PutManagedScalingPolicy",
 }));
 export type RemoveAutoScalingPolicyError = CommonErrors;
 /**
@@ -6270,6 +6319,7 @@ export const removeAutoScalingPolicy: API.OperationMethod<
   input: RemoveAutoScalingPolicyInput,
   output: RemoveAutoScalingPolicyOutput,
   errors: [],
+  operationName: "RemoveAutoScalingPolicy",
 }));
 export type RemoveAutoTerminationPolicyError = CommonErrors;
 /**
@@ -6284,6 +6334,7 @@ export const removeAutoTerminationPolicy: API.OperationMethod<
   input: RemoveAutoTerminationPolicyInput,
   output: RemoveAutoTerminationPolicyOutput,
   errors: [],
+  operationName: "RemoveAutoTerminationPolicy",
 }));
 export type RemoveManagedScalingPolicyError = CommonErrors;
 /**
@@ -6298,6 +6349,7 @@ export const removeManagedScalingPolicy: API.OperationMethod<
   input: RemoveManagedScalingPolicyInput,
   output: RemoveManagedScalingPolicyOutput,
   errors: [],
+  operationName: "RemoveManagedScalingPolicy",
 }));
 export type RemoveTagsError =
   | InternalServerException
@@ -6320,6 +6372,7 @@ export const removeTags: API.OperationMethod<
   input: RemoveTagsInput,
   output: RemoveTagsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "RemoveTags",
 }));
 export type RunJobFlowError = InternalServerError | CommonErrors;
 /**
@@ -6358,6 +6411,7 @@ export const runJobFlow: API.OperationMethod<
   input: RunJobFlowInput,
   output: RunJobFlowOutput,
   errors: [InternalServerError],
+  operationName: "RunJobFlow",
 }));
 export type SetKeepJobFlowAliveWhenNoStepsError =
   | InternalServerError
@@ -6378,6 +6432,7 @@ export const setKeepJobFlowAliveWhenNoSteps: API.OperationMethod<
   input: SetKeepJobFlowAliveWhenNoStepsInput,
   output: SetKeepJobFlowAliveWhenNoStepsResponse,
   errors: [InternalServerError],
+  operationName: "SetKeepJobFlowAliveWhenNoSteps",
 }));
 export type SetTerminationProtectionError = InternalServerError | CommonErrors;
 /**
@@ -6410,6 +6465,7 @@ export const setTerminationProtection: API.OperationMethod<
   input: SetTerminationProtectionInput,
   output: SetTerminationProtectionResponse,
   errors: [InternalServerError],
+  operationName: "SetTerminationProtection",
 }));
 export type SetUnhealthyNodeReplacementError =
   | InternalServerError
@@ -6439,6 +6495,7 @@ export const setUnhealthyNodeReplacement: API.OperationMethod<
   input: SetUnhealthyNodeReplacementInput,
   output: SetUnhealthyNodeReplacementResponse,
   errors: [InternalServerError],
+  operationName: "SetUnhealthyNodeReplacement",
 }));
 export type SetVisibleToAllUsersError = InternalServerError | CommonErrors;
 /**
@@ -6466,6 +6523,7 @@ export const setVisibleToAllUsers: API.OperationMethod<
   input: SetVisibleToAllUsersInput,
   output: SetVisibleToAllUsersResponse,
   errors: [InternalServerError],
+  operationName: "SetVisibleToAllUsers",
 }));
 export type StartNotebookExecutionError =
   | InternalServerException
@@ -6483,6 +6541,7 @@ export const startNotebookExecution: API.OperationMethod<
   input: StartNotebookExecutionInput,
   output: StartNotebookExecutionOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "StartNotebookExecution",
 }));
 export type StartSessionError =
   | InternalServerException
@@ -6500,6 +6559,7 @@ export const startSession: API.OperationMethod<
   input: StartSessionInput,
   output: StartSessionOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "StartSession",
 }));
 export type StopNotebookExecutionError =
   | InternalServerError
@@ -6517,6 +6577,7 @@ export const stopNotebookExecution: API.OperationMethod<
   input: StopNotebookExecutionInput,
   output: StopNotebookExecutionResponse,
   errors: [InternalServerError, InvalidRequestException],
+  operationName: "StopNotebookExecution",
 }));
 export type TerminateJobFlowsError = InternalServerError | CommonErrors;
 /**
@@ -6538,6 +6599,7 @@ export const terminateJobFlows: API.OperationMethod<
   input: TerminateJobFlowsInput,
   output: TerminateJobFlowsResponse,
   errors: [InternalServerError],
+  operationName: "TerminateJobFlows",
 }));
 export type TerminateSessionError =
   | InternalServerException
@@ -6555,6 +6617,7 @@ export const terminateSession: API.OperationMethod<
   input: TerminateSessionInput,
   output: TerminateSessionOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "TerminateSession",
 }));
 export type UpdateStudioError =
   | InternalServerException
@@ -6573,6 +6636,7 @@ export const updateStudio: API.OperationMethod<
   input: UpdateStudioInput,
   output: UpdateStudioResponse,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "UpdateStudio",
 }));
 export type UpdateStudioSessionMappingError =
   | InternalServerError
@@ -6590,4 +6654,5 @@ export const updateStudioSessionMapping: API.OperationMethod<
   input: UpdateStudioSessionMappingInput,
   output: UpdateStudioSessionMappingResponse,
   errors: [InternalServerError, InvalidRequestException],
+  operationName: "UpdateStudioSessionMapping",
 }));

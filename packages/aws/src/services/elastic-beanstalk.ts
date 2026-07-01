@@ -3149,6 +3149,7 @@ export const abortEnvironmentUpdate: API.OperationMethod<
   input: AbortEnvironmentUpdateMessage,
   output: AbortEnvironmentUpdateResponse,
   errors: [InsufficientPrivilegesException],
+  operationName: "AbortEnvironmentUpdate",
 }));
 export type ApplyEnvironmentManagedActionError =
   | ElasticBeanstalkServiceException
@@ -3171,6 +3172,7 @@ export const applyEnvironmentManagedAction: API.OperationMethod<
     ElasticBeanstalkServiceException,
     ManagedActionInvalidStateException,
   ],
+  operationName: "ApplyEnvironmentManagedAction",
 }));
 export type AssociateEnvironmentOperationsRoleError =
   | InsufficientPrivilegesException
@@ -3190,6 +3192,7 @@ export const associateEnvironmentOperationsRole: API.OperationMethod<
   input: AssociateEnvironmentOperationsRoleMessage,
   output: AssociateEnvironmentOperationsRoleResponse,
   errors: [InsufficientPrivilegesException],
+  operationName: "AssociateEnvironmentOperationsRole",
 }));
 export type CheckDNSAvailabilityError = CommonErrors;
 /**
@@ -3204,6 +3207,7 @@ export const checkDNSAvailability: API.OperationMethod<
   input: CheckDNSAvailabilityMessage,
   output: CheckDNSAvailabilityResultMessage,
   errors: [],
+  operationName: "CheckDNSAvailability",
 }));
 export type ComposeEnvironmentsError =
   | InsufficientPrivilegesException
@@ -3226,6 +3230,7 @@ export const composeEnvironments: API.OperationMethod<
   input: ComposeEnvironmentsMessage,
   output: EnvironmentDescriptionsMessage,
   errors: [InsufficientPrivilegesException, TooManyEnvironmentsException],
+  operationName: "ComposeEnvironments",
 }));
 export type CreateApplicationError =
   | TooManyApplicationsException
@@ -3243,6 +3248,7 @@ export const createApplication: API.OperationMethod<
   input: CreateApplicationMessage,
   output: ApplicationDescriptionMessage,
   errors: [TooManyApplicationsException],
+  operationName: "CreateApplication",
 }));
 export type CreateApplicationVersionError =
   | CodeBuildNotInServiceRegionException
@@ -3287,6 +3293,7 @@ export const createApplicationVersion: API.OperationMethod<
     TooManyApplicationsException,
     TooManyApplicationVersionsException,
   ],
+  operationName: "CreateApplicationVersion",
 }));
 export type CreateConfigurationTemplateError =
   | InsufficientPrivilegesException
@@ -3323,6 +3330,7 @@ export const createConfigurationTemplate: API.OperationMethod<
     TooManyBucketsException,
     TooManyConfigurationTemplatesException,
   ],
+  operationName: "CreateConfigurationTemplate",
 }));
 export type CreateEnvironmentError =
   | InsufficientPrivilegesException
@@ -3341,6 +3349,7 @@ export const createEnvironment: API.OperationMethod<
   input: CreateEnvironmentMessage,
   output: EnvironmentDescription,
   errors: [InsufficientPrivilegesException, TooManyEnvironmentsException],
+  operationName: "CreateEnvironment",
 }));
 export type CreatePlatformVersionError =
   | ElasticBeanstalkServiceException
@@ -3363,6 +3372,7 @@ export const createPlatformVersion: API.OperationMethod<
     InsufficientPrivilegesException,
     TooManyPlatformsException,
   ],
+  operationName: "CreatePlatformVersion",
 }));
 export type CreateStorageLocationError =
   | InsufficientPrivilegesException
@@ -3389,6 +3399,7 @@ export const createStorageLocation: API.OperationMethod<
     S3SubscriptionRequiredException,
     TooManyBucketsException,
   ],
+  operationName: "CreateStorageLocation",
 }));
 export type DeleteApplicationError =
   | OperationInProgressException
@@ -3409,6 +3420,7 @@ export const deleteApplication: API.OperationMethod<
   input: DeleteApplicationMessage,
   output: DeleteApplicationResponse,
   errors: [OperationInProgressException],
+  operationName: "DeleteApplication",
 }));
 export type DeleteApplicationVersionError =
   | InsufficientPrivilegesException
@@ -3436,6 +3448,7 @@ export const deleteApplicationVersion: API.OperationMethod<
     S3LocationNotInServiceRegionException,
     SourceBundleDeletionException,
   ],
+  operationName: "DeleteApplicationVersion",
 }));
 export type DeleteConfigurationTemplateError =
   | OperationInProgressException
@@ -3456,6 +3469,7 @@ export const deleteConfigurationTemplate: API.OperationMethod<
   input: DeleteConfigurationTemplateMessage,
   output: DeleteConfigurationTemplateResponse,
   errors: [OperationInProgressException],
+  operationName: "DeleteConfigurationTemplate",
 }));
 export type DeleteEnvironmentConfigurationError = CommonErrors;
 /**
@@ -3476,6 +3490,7 @@ export const deleteEnvironmentConfiguration: API.OperationMethod<
   input: DeleteEnvironmentConfigurationMessage,
   output: DeleteEnvironmentConfigurationResponse,
   errors: [],
+  operationName: "DeleteEnvironmentConfiguration",
 }));
 export type DeletePlatformVersionError =
   | ElasticBeanstalkServiceException
@@ -3500,6 +3515,7 @@ export const deletePlatformVersion: API.OperationMethod<
     OperationInProgressException,
     PlatformVersionStillReferencedException,
   ],
+  operationName: "DeletePlatformVersion",
 }));
 export type DescribeAccountAttributesError =
   | InsufficientPrivilegesException
@@ -3519,6 +3535,7 @@ export const describeAccountAttributes: API.OperationMethod<
   input: DescribeAccountAttributesRequest,
   output: DescribeAccountAttributesResult,
   errors: [InsufficientPrivilegesException],
+  operationName: "DescribeAccountAttributes",
 }));
 export type DescribeApplicationsError = CommonErrors;
 /**
@@ -3533,6 +3550,7 @@ export const describeApplications: API.OperationMethod<
   input: DescribeApplicationsMessage,
   output: ApplicationDescriptionsMessage,
   errors: [],
+  operationName: "DescribeApplications",
 }));
 export type DescribeApplicationVersionsError = CommonErrors;
 /**
@@ -3547,6 +3565,7 @@ export const describeApplicationVersions: API.OperationMethod<
   input: DescribeApplicationVersionsMessage,
   output: ApplicationVersionDescriptionsMessage,
   errors: [],
+  operationName: "DescribeApplicationVersions",
 }));
 export type DescribeConfigurationOptionsError =
   | TooManyBucketsException
@@ -3566,6 +3585,7 @@ export const describeConfigurationOptions: API.OperationMethod<
   input: DescribeConfigurationOptionsMessage,
   output: ConfigurationOptionsDescription,
   errors: [TooManyBucketsException],
+  operationName: "DescribeConfigurationOptions",
 }));
 export type DescribeConfigurationSettingsError =
   | TooManyBucketsException
@@ -3593,6 +3613,7 @@ export const describeConfigurationSettings: API.OperationMethod<
   input: DescribeConfigurationSettingsMessage,
   output: ConfigurationSettingsDescriptions,
   errors: [TooManyBucketsException],
+  operationName: "DescribeConfigurationSettings",
 }));
 export type DescribeEnvironmentHealthError =
   | ElasticBeanstalkServiceException
@@ -3612,6 +3633,7 @@ export const describeEnvironmentHealth: API.OperationMethod<
   input: DescribeEnvironmentHealthRequest,
   output: DescribeEnvironmentHealthResult,
   errors: [ElasticBeanstalkServiceException, InvalidRequestException],
+  operationName: "DescribeEnvironmentHealth",
 }));
 export type DescribeEnvironmentManagedActionHistoryError =
   | ElasticBeanstalkServiceException
@@ -3643,6 +3665,7 @@ export const describeEnvironmentManagedActionHistory: API.OperationMethod<
   input: DescribeEnvironmentManagedActionHistoryRequest,
   output: DescribeEnvironmentManagedActionHistoryResult,
   errors: [ElasticBeanstalkServiceException],
+  operationName: "DescribeEnvironmentManagedActionHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3665,6 +3688,7 @@ export const describeEnvironmentManagedActions: API.OperationMethod<
   input: DescribeEnvironmentManagedActionsRequest,
   output: DescribeEnvironmentManagedActionsResult,
   errors: [ElasticBeanstalkServiceException],
+  operationName: "DescribeEnvironmentManagedActions",
 }));
 export type DescribeEnvironmentResourcesError =
   | InsufficientPrivilegesException
@@ -3681,6 +3705,7 @@ export const describeEnvironmentResources: API.OperationMethod<
   input: DescribeEnvironmentResourcesMessage,
   output: EnvironmentResourceDescriptionsMessage,
   errors: [InsufficientPrivilegesException],
+  operationName: "DescribeEnvironmentResources",
 }));
 export type DescribeEnvironmentsError = CommonErrors;
 /**
@@ -3695,6 +3720,7 @@ export const describeEnvironments: API.OperationMethod<
   input: DescribeEnvironmentsMessage,
   output: EnvironmentDescriptionsMessage,
   errors: [],
+  operationName: "DescribeEnvironments",
 }));
 export type DescribeEventsError = CommonErrors;
 /**
@@ -3727,6 +3753,7 @@ export const describeEvents: API.OperationMethod<
   input: DescribeEventsMessage,
   output: EventDescriptionsMessage,
   errors: [],
+  operationName: "DescribeEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3752,6 +3779,7 @@ export const describeInstancesHealth: API.OperationMethod<
   input: DescribeInstancesHealthRequest,
   output: DescribeInstancesHealthResult,
   errors: [ElasticBeanstalkServiceException, InvalidRequestException],
+  operationName: "DescribeInstancesHealth",
 }));
 export type DescribePlatformVersionError =
   | ElasticBeanstalkServiceException
@@ -3773,6 +3801,7 @@ export const describePlatformVersion: API.OperationMethod<
   input: DescribePlatformVersionRequest,
   output: DescribePlatformVersionResult,
   errors: [ElasticBeanstalkServiceException, InsufficientPrivilegesException],
+  operationName: "DescribePlatformVersion",
 }));
 export type DisassociateEnvironmentOperationsRoleError =
   | InsufficientPrivilegesException
@@ -3792,6 +3821,7 @@ export const disassociateEnvironmentOperationsRole: API.OperationMethod<
   input: DisassociateEnvironmentOperationsRoleMessage,
   output: DisassociateEnvironmentOperationsRoleResponse,
   errors: [InsufficientPrivilegesException],
+  operationName: "DisassociateEnvironmentOperationsRole",
 }));
 export type ListAvailableSolutionStacksError = CommonErrors;
 /**
@@ -3807,6 +3837,7 @@ export const listAvailableSolutionStacks: API.OperationMethod<
   input: ListAvailableSolutionStacksRequest,
   output: ListAvailableSolutionStacksResultMessage,
   errors: [],
+  operationName: "ListAvailableSolutionStacks",
 }));
 export type ListPlatformBranchesError = CommonErrors;
 /**
@@ -3840,6 +3871,7 @@ export const listPlatformBranches: API.OperationMethod<
   input: ListPlatformBranchesRequest,
   output: ListPlatformBranchesResult,
   errors: [],
+  operationName: "ListPlatformBranches",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3882,6 +3914,7 @@ export const listPlatformVersions: API.OperationMethod<
   input: ListPlatformVersionsRequest,
   output: ListPlatformVersionsResult,
   errors: [ElasticBeanstalkServiceException, InsufficientPrivilegesException],
+  operationName: "ListPlatformVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3914,6 +3947,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ResourceTypeNotSupportedException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type RebuildEnvironmentError =
   | InsufficientPrivilegesException
@@ -3931,6 +3965,7 @@ export const rebuildEnvironment: API.OperationMethod<
   input: RebuildEnvironmentMessage,
   output: RebuildEnvironmentResponse,
   errors: [InsufficientPrivilegesException],
+  operationName: "RebuildEnvironment",
 }));
 export type RequestEnvironmentInfoError = CommonErrors;
 /**
@@ -3963,6 +3998,7 @@ export const requestEnvironmentInfo: API.OperationMethod<
   input: RequestEnvironmentInfoMessage,
   output: RequestEnvironmentInfoResponse,
   errors: [],
+  operationName: "RequestEnvironmentInfo",
 }));
 export type RestartAppServerError = CommonErrors;
 /**
@@ -3978,6 +4014,7 @@ export const restartAppServer: API.OperationMethod<
   input: RestartAppServerMessage,
   output: RestartAppServerResponse,
   errors: [],
+  operationName: "RestartAppServer",
 }));
 export type RetrieveEnvironmentInfoError = CommonErrors;
 /**
@@ -3997,6 +4034,7 @@ export const retrieveEnvironmentInfo: API.OperationMethod<
   input: RetrieveEnvironmentInfoMessage,
   output: RetrieveEnvironmentInfoResultMessage,
   errors: [],
+  operationName: "RetrieveEnvironmentInfo",
 }));
 export type SwapEnvironmentCNAMEsError = CommonErrors;
 /**
@@ -4011,6 +4049,7 @@ export const swapEnvironmentCNAMEs: API.OperationMethod<
   input: SwapEnvironmentCNAMEsMessage,
   output: SwapEnvironmentCNAMEsResponse,
   errors: [],
+  operationName: "SwapEnvironmentCNAMEs",
 }));
 export type TerminateEnvironmentError =
   | InsufficientPrivilegesException
@@ -4027,6 +4066,7 @@ export const terminateEnvironment: API.OperationMethod<
   input: TerminateEnvironmentMessage,
   output: EnvironmentDescription,
   errors: [InsufficientPrivilegesException],
+  operationName: "TerminateEnvironment",
 }));
 export type UpdateApplicationError = CommonErrors;
 /**
@@ -4044,6 +4084,7 @@ export const updateApplication: API.OperationMethod<
   input: UpdateApplicationMessage,
   output: ApplicationDescriptionMessage,
   errors: [],
+  operationName: "UpdateApplication",
 }));
 export type UpdateApplicationResourceLifecycleError =
   | InsufficientPrivilegesException
@@ -4060,6 +4101,7 @@ export const updateApplicationResourceLifecycle: API.OperationMethod<
   input: UpdateApplicationResourceLifecycleMessage,
   output: ApplicationResourceLifecycleDescriptionMessage,
   errors: [InsufficientPrivilegesException],
+  operationName: "UpdateApplicationResourceLifecycle",
 }));
 export type UpdateApplicationVersionError = CommonErrors;
 /**
@@ -4077,6 +4119,7 @@ export const updateApplicationVersion: API.OperationMethod<
   input: UpdateApplicationVersionMessage,
   output: ApplicationVersionDescriptionMessage,
   errors: [],
+  operationName: "UpdateApplicationVersion",
 }));
 export type UpdateConfigurationTemplateError =
   | InsufficientPrivilegesException
@@ -4102,6 +4145,7 @@ export const updateConfigurationTemplate: API.OperationMethod<
   input: UpdateConfigurationTemplateMessage,
   output: ConfigurationSettingsDescription,
   errors: [InsufficientPrivilegesException, TooManyBucketsException],
+  operationName: "UpdateConfigurationTemplate",
 }));
 export type UpdateEnvironmentError =
   | InsufficientPrivilegesException
@@ -4129,6 +4173,7 @@ export const updateEnvironment: API.OperationMethod<
   input: UpdateEnvironmentMessage,
   output: EnvironmentDescription,
   errors: [InsufficientPrivilegesException, TooManyBucketsException],
+  operationName: "UpdateEnvironment",
 }));
 export type UpdateTagsForResourceError =
   | InsufficientPrivilegesException
@@ -4175,6 +4220,7 @@ export const updateTagsForResource: API.OperationMethod<
     ResourceTypeNotSupportedException,
     TooManyTagsException,
   ],
+  operationName: "UpdateTagsForResource",
 }));
 export type ValidateConfigurationSettingsError =
   | InsufficientPrivilegesException
@@ -4196,4 +4242,5 @@ export const validateConfigurationSettings: API.OperationMethod<
   input: ValidateConfigurationSettingsMessage,
   output: ConfigurationSettingsValidationMessages,
   errors: [InsufficientPrivilegesException, TooManyBucketsException],
+  operationName: "ValidateConfigurationSettings",
 }));

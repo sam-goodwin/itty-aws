@@ -740,6 +740,7 @@ export const createNotificationRule: API.OperationMethod<
     ResourceAlreadyExistsException,
     ValidationException,
   ],
+  operationName: "CreateNotificationRule",
 }));
 export type DeleteNotificationRuleError =
   | ConcurrentModificationException
@@ -762,6 +763,7 @@ export const deleteNotificationRule: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  operationName: "DeleteNotificationRule",
 }));
 export type DeleteTargetError = ValidationException | CommonErrors;
 /**
@@ -776,6 +778,7 @@ export const deleteTarget: API.OperationMethod<
   input: DeleteTargetRequest,
   output: DeleteTargetResult,
   errors: [ValidationException],
+  operationName: "DeleteTarget",
 }));
 export type DescribeNotificationRuleError =
   | ResourceNotFoundException
@@ -793,6 +796,7 @@ export const describeNotificationRule: API.OperationMethod<
   input: DescribeNotificationRuleRequest,
   output: DescribeNotificationRuleResult,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "DescribeNotificationRule",
 }));
 export type ListEventTypesError =
   | InvalidNextTokenException
@@ -825,6 +829,7 @@ export const listEventTypes: API.OperationMethod<
   input: ListEventTypesRequest,
   output: ListEventTypesResult,
   errors: [InvalidNextTokenException, ValidationException],
+  operationName: "ListEventTypes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -863,6 +868,7 @@ export const listNotificationRules: API.OperationMethod<
   input: ListNotificationRulesRequest,
   output: ListNotificationRulesResult,
   errors: [InvalidNextTokenException, ValidationException],
+  operationName: "ListNotificationRules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -886,6 +892,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListTagsForResource",
 }));
 export type ListTargetsError =
   | InvalidNextTokenException
@@ -918,6 +925,7 @@ export const listTargets: API.OperationMethod<
   input: ListTargetsRequest,
   output: ListTargetsResult,
   errors: [InvalidNextTokenException, ValidationException],
+  operationName: "ListTargets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -948,6 +956,7 @@ export const subscribe: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "Subscribe",
 }));
 export type TagResourceError =
   | ConcurrentModificationException
@@ -972,6 +981,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UnsubscribeError = ValidationException | CommonErrors;
 /**
@@ -988,6 +998,7 @@ export const unsubscribe: API.OperationMethod<
   input: UnsubscribeRequest,
   output: UnsubscribeResult,
   errors: [ValidationException],
+  operationName: "Unsubscribe",
 }));
 export type UntagResourceError =
   | ConcurrentModificationException
@@ -1013,6 +1024,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateNotificationRuleError =
   | ConfigurationException
@@ -1039,4 +1051,5 @@ export const updateNotificationRule: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateNotificationRule",
 }));

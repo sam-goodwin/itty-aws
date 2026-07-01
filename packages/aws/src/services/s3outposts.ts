@@ -419,6 +419,7 @@ export const createEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEndpoint",
 }));
 export type DeleteEndpointError =
   | AccessDeniedException
@@ -455,6 +456,7 @@ export const deleteEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteEndpoint",
 }));
 export type ListEndpointsError =
   | AccessDeniedException
@@ -502,6 +504,7 @@ export const listEndpoints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -549,6 +552,7 @@ export const listOutpostsWithS3: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListOutpostsWithS3",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -602,6 +606,7 @@ export const listSharedEndpoints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSharedEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

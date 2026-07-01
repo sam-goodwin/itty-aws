@@ -6428,6 +6428,7 @@ export const addArtifact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AddArtifact",
 }));
 export type BatchCreateSecurityRequirementsError =
   | AccessDeniedException
@@ -6458,6 +6459,7 @@ export const batchCreateSecurityRequirements: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchCreateSecurityRequirements",
 }));
 export type BatchDeleteCodeReviewsError = CommonErrors;
 /**
@@ -6472,6 +6474,7 @@ export const batchDeleteCodeReviews: API.OperationMethod<
   input: BatchDeleteCodeReviewsInput,
   output: BatchDeleteCodeReviewsOutput,
   errors: [],
+  operationName: "BatchDeleteCodeReviews",
 }));
 export type BatchDeletePentestsError = CommonErrors;
 /**
@@ -6486,6 +6489,7 @@ export const batchDeletePentests: API.OperationMethod<
   input: BatchDeletePentestsInput,
   output: BatchDeletePentestsOutput,
   errors: [],
+  operationName: "BatchDeletePentests",
 }));
 export type BatchDeleteSecurityRequirementsError =
   | AccessDeniedException
@@ -6514,6 +6518,7 @@ export const batchDeleteSecurityRequirements: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchDeleteSecurityRequirements",
 }));
 export type BatchDeleteThreatModelsError = CommonErrors;
 /**
@@ -6528,6 +6533,7 @@ export const batchDeleteThreatModels: API.OperationMethod<
   input: BatchDeleteThreatModelsInput,
   output: BatchDeleteThreatModelsOutput,
   errors: [],
+  operationName: "BatchDeleteThreatModels",
 }));
 export type BatchGetArtifactMetadataError =
   | AccessDeniedException
@@ -6554,6 +6560,7 @@ export const batchGetArtifactMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchGetArtifactMetadata",
 }));
 export type BatchGetCodeReviewJobsError = CommonErrors;
 /**
@@ -6568,6 +6575,7 @@ export const batchGetCodeReviewJobs: API.OperationMethod<
   input: BatchGetCodeReviewJobsInput,
   output: BatchGetCodeReviewJobsOutput,
   errors: [],
+  operationName: "BatchGetCodeReviewJobs",
 }));
 export type BatchGetCodeReviewJobTasksError = CommonErrors;
 /**
@@ -6582,6 +6590,7 @@ export const batchGetCodeReviewJobTasks: API.OperationMethod<
   input: BatchGetCodeReviewJobTasksInput,
   output: BatchGetCodeReviewJobTasksOutput,
   errors: [],
+  operationName: "BatchGetCodeReviewJobTasks",
 }));
 export type BatchGetCodeReviewsError = CommonErrors;
 /**
@@ -6596,6 +6605,7 @@ export const batchGetCodeReviews: API.OperationMethod<
   input: BatchGetCodeReviewsInput,
   output: BatchGetCodeReviewsOutput,
   errors: [],
+  operationName: "BatchGetCodeReviews",
 }));
 export type BatchGetFindingsError = CommonErrors;
 /**
@@ -6610,6 +6620,7 @@ export const batchGetFindings: API.OperationMethod<
   input: BatchGetFindingsInput,
   output: BatchGetFindingsOutput,
   errors: [],
+  operationName: "BatchGetFindings",
 }));
 export type BatchGetPentestJobsError = CommonErrors;
 /**
@@ -6624,6 +6635,7 @@ export const batchGetPentestJobs: API.OperationMethod<
   input: BatchGetPentestJobsInput,
   output: BatchGetPentestJobsOutput,
   errors: [],
+  operationName: "BatchGetPentestJobs",
 }));
 export type BatchGetPentestJobTasksError = CommonErrors;
 /**
@@ -6638,6 +6650,7 @@ export const batchGetPentestJobTasks: API.OperationMethod<
   input: BatchGetPentestJobTasksInput,
   output: BatchGetPentestJobTasksOutput,
   errors: [],
+  operationName: "BatchGetPentestJobTasks",
 }));
 export type BatchGetPentestsError = CommonErrors;
 /**
@@ -6652,6 +6665,7 @@ export const batchGetPentests: API.OperationMethod<
   input: BatchGetPentestsInput,
   output: BatchGetPentestsOutput,
   errors: [],
+  operationName: "BatchGetPentests",
 }));
 export type BatchGetSecurityRequirementsError =
   | AccessDeniedException
@@ -6678,6 +6692,7 @@ export const batchGetSecurityRequirements: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchGetSecurityRequirements",
 }));
 export type BatchGetThreatModelJobsError = CommonErrors;
 /**
@@ -6692,6 +6707,7 @@ export const batchGetThreatModelJobs: API.OperationMethod<
   input: BatchGetThreatModelJobsInput,
   output: BatchGetThreatModelJobsOutput,
   errors: [],
+  operationName: "BatchGetThreatModelJobs",
 }));
 export type BatchGetThreatModelJobTasksError = CommonErrors;
 /**
@@ -6706,6 +6722,7 @@ export const batchGetThreatModelJobTasks: API.OperationMethod<
   input: BatchGetThreatModelJobTasksInput,
   output: BatchGetThreatModelJobTasksOutput,
   errors: [],
+  operationName: "BatchGetThreatModelJobTasks",
 }));
 export type BatchGetThreatModelsError = CommonErrors;
 /**
@@ -6720,6 +6737,7 @@ export const batchGetThreatModels: API.OperationMethod<
   input: BatchGetThreatModelsInput,
   output: BatchGetThreatModelsOutput,
   errors: [],
+  operationName: "BatchGetThreatModels",
 }));
 export type BatchGetThreatsError = CommonErrors;
 /**
@@ -6734,6 +6752,7 @@ export const batchGetThreats: API.OperationMethod<
   input: BatchGetThreatsInput,
   output: BatchGetThreatsOutput,
   errors: [],
+  operationName: "BatchGetThreats",
 }));
 export type BatchUpdateSecurityRequirementsError =
   | AccessDeniedException
@@ -6762,6 +6781,7 @@ export const batchUpdateSecurityRequirements: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchUpdateSecurityRequirements",
 }));
 export type CreateCodeReviewError = CommonErrors;
 /**
@@ -6776,6 +6796,7 @@ export const createCodeReview: API.OperationMethod<
   input: CreateCodeReviewInput,
   output: CreateCodeReviewOutput,
   errors: [],
+  operationName: "CreateCodeReview",
 }));
 export type CreateMembershipError = CommonErrors;
 /**
@@ -6790,6 +6811,7 @@ export const createMembership: API.OperationMethod<
   input: CreateMembershipRequest,
   output: CreateMembershipResponse,
   errors: [],
+  operationName: "CreateMembership",
 }));
 export type CreatePentestError = CommonErrors;
 /**
@@ -6804,6 +6826,7 @@ export const createPentest: API.OperationMethod<
   input: CreatePentestInput,
   output: CreatePentestOutput,
   errors: [],
+  operationName: "CreatePentest",
 }));
 export type CreateThreatError = CommonErrors;
 /**
@@ -6818,6 +6841,7 @@ export const createThreat: API.OperationMethod<
   input: CreateThreatInput,
   output: CreateThreatOutput,
   errors: [],
+  operationName: "CreateThreat",
 }));
 export type CreateThreatModelError = CommonErrors;
 /**
@@ -6832,6 +6856,7 @@ export const createThreatModel: API.OperationMethod<
   input: CreateThreatModelInput,
   output: CreateThreatModelOutput,
   errors: [],
+  operationName: "CreateThreatModel",
 }));
 export type DeleteArtifactError =
   | AccessDeniedException
@@ -6858,6 +6883,7 @@ export const deleteArtifact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteArtifact",
 }));
 export type DeleteMembershipError = CommonErrors;
 /**
@@ -6872,6 +6898,7 @@ export const deleteMembership: API.OperationMethod<
   input: DeleteMembershipRequest,
   output: DeleteMembershipResponse,
   errors: [],
+  operationName: "DeleteMembership",
 }));
 export type GetArtifactError =
   | AccessDeniedException
@@ -6898,6 +6925,7 @@ export const getArtifact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetArtifact",
 }));
 export type ImportSecurityRequirementsError =
   | AccessDeniedException
@@ -6928,6 +6956,7 @@ export const importSecurityRequirements: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ImportSecurityRequirements",
 }));
 export type InitiateProviderRegistrationError =
   | AccessDeniedException
@@ -6956,6 +6985,7 @@ export const initiateProviderRegistration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InitiateProviderRegistration",
 }));
 export type ListArtifactsError =
   | AccessDeniedException
@@ -6997,6 +7027,7 @@ export const listArtifacts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListArtifacts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7032,6 +7063,7 @@ export const listCodeReviewJobsForCodeReview: API.OperationMethod<
   input: ListCodeReviewJobsForCodeReviewInput,
   output: ListCodeReviewJobsForCodeReviewOutput,
   errors: [],
+  operationName: "ListCodeReviewJobsForCodeReview",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7067,6 +7099,7 @@ export const listCodeReviewJobTasks: API.OperationMethod<
   input: ListCodeReviewJobTasksInput,
   output: ListCodeReviewJobTasksOutput,
   errors: [],
+  operationName: "ListCodeReviewJobTasks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7102,6 +7135,7 @@ export const listCodeReviews: API.OperationMethod<
   input: ListCodeReviewsInput,
   output: ListCodeReviewsOutput,
   errors: [],
+  operationName: "ListCodeReviews",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7137,6 +7171,7 @@ export const listDiscoveredEndpoints: API.OperationMethod<
   input: ListDiscoveredEndpointsInput,
   output: ListDiscoveredEndpointsOutput,
   errors: [],
+  operationName: "ListDiscoveredEndpoints",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7172,6 +7207,7 @@ export const listFindings: API.OperationMethod<
   input: ListFindingsInput,
   output: ListFindingsOutput,
   errors: [],
+  operationName: "ListFindings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7219,6 +7255,7 @@ export const listIntegratedResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListIntegratedResources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7254,6 +7291,7 @@ export const listMemberships: API.OperationMethod<
   input: ListMembershipsRequest,
   output: ListMembershipsResponse,
   errors: [],
+  operationName: "ListMemberships",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7289,6 +7327,7 @@ export const listPentestJobsForPentest: API.OperationMethod<
   input: ListPentestJobsForPentestInput,
   output: ListPentestJobsForPentestOutput,
   errors: [],
+  operationName: "ListPentestJobsForPentest",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7324,6 +7363,7 @@ export const listPentestJobTasks: API.OperationMethod<
   input: ListPentestJobTasksInput,
   output: ListPentestJobTasksOutput,
   errors: [],
+  operationName: "ListPentestJobTasks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7359,6 +7399,7 @@ export const listPentests: API.OperationMethod<
   input: ListPentestsInput,
   output: ListPentestsOutput,
   errors: [],
+  operationName: "ListPentests",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7406,6 +7447,7 @@ export const listSecurityRequirements: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSecurityRequirements",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7426,6 +7468,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [],
+  operationName: "ListTagsForResource",
 }));
 export type ListThreatModelJobsError = CommonErrors;
 /**
@@ -7455,6 +7498,7 @@ export const listThreatModelJobs: API.OperationMethod<
   input: ListThreatModelJobsInput,
   output: ListThreatModelJobsOutput,
   errors: [],
+  operationName: "ListThreatModelJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7490,6 +7534,7 @@ export const listThreatModelJobTasks: API.OperationMethod<
   input: ListThreatModelJobTasksInput,
   output: ListThreatModelJobTasksOutput,
   errors: [],
+  operationName: "ListThreatModelJobTasks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7525,6 +7570,7 @@ export const listThreatModels: API.OperationMethod<
   input: ListThreatModelsInput,
   output: ListThreatModelsOutput,
   errors: [],
+  operationName: "ListThreatModels",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7560,6 +7606,7 @@ export const listThreats: API.OperationMethod<
   input: ListThreatsInput,
   output: ListThreatsOutput,
   errors: [],
+  operationName: "ListThreats",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7580,6 +7627,7 @@ export const startCodeRemediation: API.OperationMethod<
   input: StartCodeRemediationInput,
   output: StartCodeRemediationOutput,
   errors: [],
+  operationName: "StartCodeRemediation",
 }));
 export type StartCodeReviewJobError = CommonErrors;
 /**
@@ -7594,6 +7642,7 @@ export const startCodeReviewJob: API.OperationMethod<
   input: StartCodeReviewJobInput,
   output: StartCodeReviewJobOutput,
   errors: [],
+  operationName: "StartCodeReviewJob",
 }));
 export type StartPentestJobError = CommonErrors;
 /**
@@ -7608,6 +7657,7 @@ export const startPentestJob: API.OperationMethod<
   input: StartPentestJobInput,
   output: StartPentestJobOutput,
   errors: [],
+  operationName: "StartPentestJob",
 }));
 export type StartThreatModelJobError = CommonErrors;
 /**
@@ -7622,6 +7672,7 @@ export const startThreatModelJob: API.OperationMethod<
   input: StartThreatModelJobInput,
   output: StartThreatModelJobOutput,
   errors: [],
+  operationName: "StartThreatModelJob",
 }));
 export type StopCodeReviewJobError = CommonErrors;
 /**
@@ -7636,6 +7687,7 @@ export const stopCodeReviewJob: API.OperationMethod<
   input: StopCodeReviewJobInput,
   output: StopCodeReviewJobOutput,
   errors: [],
+  operationName: "StopCodeReviewJob",
 }));
 export type StopPentestJobError = CommonErrors;
 /**
@@ -7650,6 +7702,7 @@ export const stopPentestJob: API.OperationMethod<
   input: StopPentestJobInput,
   output: StopPentestJobOutput,
   errors: [],
+  operationName: "StopPentestJob",
 }));
 export type StopThreatModelJobError = CommonErrors;
 /**
@@ -7664,6 +7717,7 @@ export const stopThreatModelJob: API.OperationMethod<
   input: StopThreatModelJobInput,
   output: StopThreatModelJobOutput,
   errors: [],
+  operationName: "StopThreatModelJob",
 }));
 export type TagResourceError = CommonErrors;
 /**
@@ -7678,6 +7732,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = CommonErrors;
 /**
@@ -7692,6 +7747,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [],
+  operationName: "UntagResource",
 }));
 export type UpdateCodeReviewError = CommonErrors;
 /**
@@ -7706,6 +7762,7 @@ export const updateCodeReview: API.OperationMethod<
   input: UpdateCodeReviewInput,
   output: UpdateCodeReviewOutput,
   errors: [],
+  operationName: "UpdateCodeReview",
 }));
 export type UpdateFindingError = CommonErrors;
 /**
@@ -7720,6 +7777,7 @@ export const updateFinding: API.OperationMethod<
   input: UpdateFindingInput,
   output: UpdateFindingOutput,
   errors: [],
+  operationName: "UpdateFinding",
 }));
 export type UpdateIntegratedResourcesError =
   | AccessDeniedException
@@ -7748,6 +7806,7 @@ export const updateIntegratedResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateIntegratedResources",
 }));
 export type UpdatePentestError = CommonErrors;
 /**
@@ -7762,6 +7821,7 @@ export const updatePentest: API.OperationMethod<
   input: UpdatePentestInput,
   output: UpdatePentestOutput,
   errors: [],
+  operationName: "UpdatePentest",
 }));
 export type UpdateThreatError = CommonErrors;
 /**
@@ -7776,6 +7836,7 @@ export const updateThreat: API.OperationMethod<
   input: UpdateThreatInput,
   output: UpdateThreatOutput,
   errors: [],
+  operationName: "UpdateThreat",
 }));
 export type UpdateThreatModelError = CommonErrors;
 /**
@@ -7790,6 +7851,7 @@ export const updateThreatModel: API.OperationMethod<
   input: UpdateThreatModelInput,
   output: UpdateThreatModelOutput,
   errors: [],
+  operationName: "UpdateThreatModel",
 }));
 export type VerifyTargetDomainError = CommonErrors;
 /**
@@ -7804,6 +7866,7 @@ export const verifyTargetDomain: API.OperationMethod<
   input: VerifyTargetDomainInput,
   output: VerifyTargetDomainOutput,
   errors: [],
+  operationName: "VerifyTargetDomain",
 }));
 export type CreateAgentSpaceError = CommonErrors;
 /**
@@ -7818,6 +7881,7 @@ export const createAgentSpace: API.OperationMethod<
   input: CreateAgentSpaceInput,
   output: CreateAgentSpaceOutput,
   errors: [],
+  operationName: "CreateAgentSpace",
 }));
 export type UpdateAgentSpaceError = CommonErrors;
 /**
@@ -7832,6 +7896,7 @@ export const updateAgentSpace: API.OperationMethod<
   input: UpdateAgentSpaceInput,
   output: UpdateAgentSpaceOutput,
   errors: [],
+  operationName: "UpdateAgentSpace",
 }));
 export type DeleteAgentSpaceError = CommonErrors;
 /**
@@ -7846,6 +7911,7 @@ export const deleteAgentSpace: API.OperationMethod<
   input: DeleteAgentSpaceInput,
   output: DeleteAgentSpaceOutput,
   errors: [],
+  operationName: "DeleteAgentSpace",
 }));
 export type ListAgentSpacesError = CommonErrors;
 /**
@@ -7875,6 +7941,7 @@ export const listAgentSpaces: API.OperationMethod<
   input: ListAgentSpacesInput,
   output: ListAgentSpacesOutput,
   errors: [],
+  operationName: "ListAgentSpaces",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7895,6 +7962,7 @@ export const batchGetAgentSpaces: API.OperationMethod<
   input: BatchGetAgentSpacesInput,
   output: BatchGetAgentSpacesOutput,
   errors: [],
+  operationName: "BatchGetAgentSpaces",
 }));
 export type CreateApplicationError = CommonErrors;
 /**
@@ -7909,6 +7977,7 @@ export const createApplication: API.OperationMethod<
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
   errors: [],
+  operationName: "CreateApplication",
 }));
 export type GetApplicationError = CommonErrors;
 /**
@@ -7923,6 +7992,7 @@ export const getApplication: API.OperationMethod<
   input: GetApplicationRequest,
   output: GetApplicationResponse,
   errors: [],
+  operationName: "GetApplication",
 }));
 export type UpdateApplicationError = CommonErrors;
 /**
@@ -7937,6 +8007,7 @@ export const updateApplication: API.OperationMethod<
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,
   errors: [],
+  operationName: "UpdateApplication",
 }));
 export type DeleteApplicationError = CommonErrors;
 /**
@@ -7951,6 +8022,7 @@ export const deleteApplication: API.OperationMethod<
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
   errors: [],
+  operationName: "DeleteApplication",
 }));
 export type ListApplicationsError = CommonErrors;
 /**
@@ -7980,6 +8052,7 @@ export const listApplications: API.OperationMethod<
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [],
+  operationName: "ListApplications",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8014,6 +8087,7 @@ export const createIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateIntegration",
 }));
 export type GetIntegrationError =
   | AccessDeniedException
@@ -8040,6 +8114,7 @@ export const getIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetIntegration",
 }));
 export type DeleteIntegrationError =
   | AccessDeniedException
@@ -8068,6 +8143,7 @@ export const deleteIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteIntegration",
 }));
 export type ListIntegrationsError =
   | AccessDeniedException
@@ -8109,6 +8185,7 @@ export const listIntegrations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListIntegrations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8141,6 +8218,7 @@ export const describePrivateConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribePrivateConnection",
 }));
 export type DeletePrivateConnectionError =
   | AccessDeniedException
@@ -8169,6 +8247,7 @@ export const deletePrivateConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePrivateConnection",
 }));
 export type ListPrivateConnectionsError =
   | AccessDeniedException
@@ -8208,6 +8287,7 @@ export const listPrivateConnections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPrivateConnections",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8242,6 +8322,7 @@ export const createPrivateConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreatePrivateConnection",
 }));
 export type UpdatePrivateConnectionCertificateError =
   | AccessDeniedException
@@ -8270,6 +8351,7 @@ export const updatePrivateConnectionCertificate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdatePrivateConnectionCertificate",
 }));
 export type CreateSecurityRequirementPackError =
   | AccessDeniedException
@@ -8298,6 +8380,7 @@ export const createSecurityRequirementPack: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateSecurityRequirementPack",
 }));
 export type GetSecurityRequirementPackError =
   | AccessDeniedException
@@ -8324,6 +8407,7 @@ export const getSecurityRequirementPack: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSecurityRequirementPack",
 }));
 export type UpdateSecurityRequirementPackError =
   | AccessDeniedException
@@ -8352,6 +8436,7 @@ export const updateSecurityRequirementPack: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateSecurityRequirementPack",
 }));
 export type DeleteSecurityRequirementPackError =
   | AccessDeniedException
@@ -8380,6 +8465,7 @@ export const deleteSecurityRequirementPack: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteSecurityRequirementPack",
 }));
 export type ListSecurityRequirementPacksError =
   | AccessDeniedException
@@ -8419,6 +8505,7 @@ export const listSecurityRequirementPacks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSecurityRequirementPacks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8439,6 +8526,7 @@ export const createTargetDomain: API.OperationMethod<
   input: CreateTargetDomainInput,
   output: CreateTargetDomainOutput,
   errors: [],
+  operationName: "CreateTargetDomain",
 }));
 export type UpdateTargetDomainError = CommonErrors;
 /**
@@ -8453,6 +8541,7 @@ export const updateTargetDomain: API.OperationMethod<
   input: UpdateTargetDomainInput,
   output: UpdateTargetDomainOutput,
   errors: [],
+  operationName: "UpdateTargetDomain",
 }));
 export type DeleteTargetDomainError = CommonErrors;
 /**
@@ -8467,6 +8556,7 @@ export const deleteTargetDomain: API.OperationMethod<
   input: DeleteTargetDomainInput,
   output: DeleteTargetDomainOutput,
   errors: [],
+  operationName: "DeleteTargetDomain",
 }));
 export type ListTargetDomainsError = CommonErrors;
 /**
@@ -8496,6 +8586,7 @@ export const listTargetDomains: API.OperationMethod<
   input: ListTargetDomainsInput,
   output: ListTargetDomainsOutput,
   errors: [],
+  operationName: "ListTargetDomains",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8516,4 +8607,5 @@ export const batchGetTargetDomains: API.OperationMethod<
   input: BatchGetTargetDomainsInput,
   output: BatchGetTargetDomainsOutput,
   errors: [],
+  operationName: "BatchGetTargetDomains",
 }));

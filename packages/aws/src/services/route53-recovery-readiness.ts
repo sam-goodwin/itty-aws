@@ -1826,6 +1826,7 @@ export const createCell: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateCell",
 }));
 export type CreateCrossAccountAuthorizationError =
   | AccessDeniedException
@@ -1852,6 +1853,7 @@ export const createCrossAccountAuthorization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateCrossAccountAuthorization",
 }));
 export type CreateReadinessCheckError =
   | AccessDeniedException
@@ -1878,6 +1880,7 @@ export const createReadinessCheck: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateReadinessCheck",
 }));
 export type CreateRecoveryGroupError =
   | AccessDeniedException
@@ -1904,6 +1907,7 @@ export const createRecoveryGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRecoveryGroup",
 }));
 export type CreateResourceSetError =
   | AccessDeniedException
@@ -1930,6 +1934,7 @@ export const createResourceSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateResourceSet",
 }));
 export type DeleteCellError =
   | AccessDeniedException
@@ -1956,6 +1961,7 @@ export const deleteCell: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteCell",
 }));
 export type DeleteCrossAccountAuthorizationError =
   | AccessDeniedException
@@ -1980,6 +1986,7 @@ export const deleteCrossAccountAuthorization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteCrossAccountAuthorization",
 }));
 export type DeleteReadinessCheckError =
   | AccessDeniedException
@@ -2006,6 +2013,7 @@ export const deleteReadinessCheck: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteReadinessCheck",
 }));
 export type DeleteRecoveryGroupError =
   | AccessDeniedException
@@ -2032,6 +2040,7 @@ export const deleteRecoveryGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRecoveryGroup",
 }));
 export type DeleteResourceSetError =
   | AccessDeniedException
@@ -2058,6 +2067,7 @@ export const deleteResourceSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteResourceSet",
 }));
 export type GetArchitectureRecommendationsError =
   | AccessDeniedException
@@ -2084,6 +2094,7 @@ export const getArchitectureRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetArchitectureRecommendations",
 }));
 export type GetCellError =
   | AccessDeniedException
@@ -2110,6 +2121,7 @@ export const getCell: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCell",
 }));
 export type GetCellReadinessSummaryError =
   | AccessDeniedException
@@ -2151,6 +2163,7 @@ export const getCellReadinessSummary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCellReadinessSummary",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2183,6 +2196,7 @@ export const getReadinessCheck: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetReadinessCheck",
 }));
 export type GetReadinessCheckResourceStatusError =
   | AccessDeniedException
@@ -2224,6 +2238,7 @@ export const getReadinessCheckResourceStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetReadinessCheckResourceStatus",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2271,6 +2286,7 @@ export const getReadinessCheckStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetReadinessCheckStatus",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2303,6 +2319,7 @@ export const getRecoveryGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRecoveryGroup",
 }));
 export type GetRecoveryGroupReadinessSummaryError =
   | AccessDeniedException
@@ -2344,6 +2361,7 @@ export const getRecoveryGroupReadinessSummary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRecoveryGroupReadinessSummary",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2376,6 +2394,7 @@ export const getResourceSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourceSet",
 }));
 export type ListCellsError =
   | AccessDeniedException
@@ -2415,6 +2434,7 @@ export const listCells: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCells",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2460,6 +2480,7 @@ export const listCrossAccountAuthorizations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCrossAccountAuthorizations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2505,6 +2526,7 @@ export const listReadinessChecks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListReadinessChecks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2550,6 +2572,7 @@ export const listRecoveryGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRecoveryGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2595,6 +2618,7 @@ export const listResourceSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListResourceSets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2640,6 +2664,7 @@ export const listRules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2668,6 +2693,7 @@ export const listTagsForResources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResources",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -2690,6 +2716,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -2712,6 +2739,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateCellError =
   | AccessDeniedException
@@ -2738,6 +2766,7 @@ export const updateCell: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateCell",
 }));
 export type UpdateReadinessCheckError =
   | AccessDeniedException
@@ -2764,6 +2793,7 @@ export const updateReadinessCheck: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateReadinessCheck",
 }));
 export type UpdateRecoveryGroupError =
   | AccessDeniedException
@@ -2790,6 +2820,7 @@ export const updateRecoveryGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRecoveryGroup",
 }));
 export type UpdateResourceSetError =
   | AccessDeniedException
@@ -2816,4 +2847,5 @@ export const updateResourceSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateResourceSet",
 }));

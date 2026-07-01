@@ -2661,6 +2661,7 @@ export const exchangeCodeForToken: API.OperationMethod<
   input: ExchangeCodeForTokenRequest,
   output: ExchangeCodeForTokenResponse,
   errors: [InvalidParameterException],
+  operationName: "ExchangeCodeForToken",
 }));
 export type GetMetadataError =
   | InvalidParameterException
@@ -2678,6 +2679,7 @@ export const getMetadata: API.OperationMethod<
   input: GetMetadataRequest,
   output: GetMetadataResponse,
   errors: [InvalidParameterException, UnauthorizedException],
+  operationName: "GetMetadata",
 }));
 export type ListTagsForResourceError =
   | InternalServerException
@@ -2704,6 +2706,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutMetadataFlagError =
   | InvalidParameterException
@@ -2721,6 +2724,7 @@ export const putMetadataFlag: API.OperationMethod<
   input: PutMetadataFlagRequest,
   output: PutMetadataFlagResponse,
   errors: [InvalidParameterException, UnauthorizedException],
+  operationName: "PutMetadataFlag",
 }));
 export type RefreshTokenError = InvalidParameterException | CommonErrors;
 /**
@@ -2737,6 +2741,7 @@ export const refreshToken: API.OperationMethod<
   input: RefreshTokenRequest,
   output: RefreshTokenResponse,
   errors: [InvalidParameterException],
+  operationName: "RefreshToken",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -2763,6 +2768,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -2789,6 +2795,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "UntagResource",
 }));
 export type StartCodegenJobError =
   | InternalServerException
@@ -2811,6 +2818,7 @@ export const startCodegenJob: API.OperationMethod<
     InvalidParameterException,
     ThrottlingException,
   ],
+  operationName: "StartCodegenJob",
 }));
 export type GetCodegenJobError =
   | InternalServerException
@@ -2835,6 +2843,7 @@ export const getCodegenJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetCodegenJob",
 }));
 export type ListCodegenJobsError =
   | InternalServerException
@@ -2872,6 +2881,7 @@ export const listCodegenJobs: API.OperationMethod<
     InvalidParameterException,
     ThrottlingException,
   ],
+  operationName: "ListCodegenJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2902,6 +2912,7 @@ export const createComponent: API.OperationMethod<
     ResourceConflictException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateComponent",
 }));
 export type GetComponentError =
   | InternalServerException
@@ -2924,6 +2935,7 @@ export const getComponent: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "GetComponent",
 }));
 export type UpdateComponentError =
   | InternalServerException
@@ -2946,6 +2958,7 @@ export const updateComponent: API.OperationMethod<
     InvalidParameterException,
     ResourceConflictException,
   ],
+  operationName: "UpdateComponent",
 }));
 export type DeleteComponentError =
   | InternalServerException
@@ -2968,6 +2981,7 @@ export const deleteComponent: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteComponent",
 }));
 export type ListComponentsError =
   | InternalServerException
@@ -3001,6 +3015,7 @@ export const listComponents: API.OperationMethod<
   input: ListComponentsRequest,
   output: ListComponentsResponse,
   errors: [InternalServerException, InvalidParameterException],
+  operationName: "ListComponents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3039,6 +3054,7 @@ export const exportComponents: API.OperationMethod<
   input: ExportComponentsRequest,
   output: ExportComponentsResponse,
   errors: [InternalServerException, InvalidParameterException],
+  operationName: "ExportComponents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3068,6 +3084,7 @@ export const createForm: API.OperationMethod<
     ResourceConflictException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateForm",
 }));
 export type GetFormError =
   | InternalServerException
@@ -3090,6 +3107,7 @@ export const getForm: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "GetForm",
 }));
 export type UpdateFormError =
   | InternalServerException
@@ -3112,6 +3130,7 @@ export const updateForm: API.OperationMethod<
     InvalidParameterException,
     ResourceConflictException,
   ],
+  operationName: "UpdateForm",
 }));
 export type DeleteFormError =
   | InternalServerException
@@ -3134,6 +3153,7 @@ export const deleteForm: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteForm",
 }));
 export type ListFormsError =
   | InternalServerException
@@ -3166,6 +3186,7 @@ export const listForms: API.OperationMethod<
   input: ListFormsRequest,
   output: ListFormsResponse,
   errors: [InternalServerException, InvalidParameterException],
+  operationName: "ListForms",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3204,6 +3225,7 @@ export const exportForms: API.OperationMethod<
   input: ExportFormsRequest,
   output: ExportFormsResponse,
   errors: [InternalServerException, InvalidParameterException],
+  operationName: "ExportForms",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3233,6 +3255,7 @@ export const createTheme: API.OperationMethod<
     ResourceConflictException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateTheme",
 }));
 export type GetThemeError =
   | InternalServerException
@@ -3255,6 +3278,7 @@ export const getTheme: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "GetTheme",
 }));
 export type UpdateThemeError =
   | InternalServerException
@@ -3277,6 +3301,7 @@ export const updateTheme: API.OperationMethod<
     InvalidParameterException,
     ResourceConflictException,
   ],
+  operationName: "UpdateTheme",
 }));
 export type DeleteThemeError =
   | InternalServerException
@@ -3299,6 +3324,7 @@ export const deleteTheme: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteTheme",
 }));
 export type ListThemesError =
   | InternalServerException
@@ -3332,6 +3358,7 @@ export const listThemes: API.OperationMethod<
   input: ListThemesRequest,
   output: ListThemesResponse,
   errors: [InternalServerException, InvalidParameterException],
+  operationName: "ListThemes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3370,6 +3397,7 @@ export const exportThemes: API.OperationMethod<
   input: ExportThemesRequest,
   output: ExportThemesResponse,
   errors: [InternalServerException, InvalidParameterException],
+  operationName: "ExportThemes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

@@ -590,6 +590,7 @@ export const acceptConnectionProposal: API.OperationMethod<
   input: AcceptConnectionProposalRequest,
   output: AcceptConnectionProposalResponse,
   errors: [],
+  operationName: "AcceptConnectionProposal",
 }));
 export type DescribeConnectionProposalError = CommonErrors;
 /**
@@ -604,6 +605,7 @@ export const describeConnectionProposal: API.OperationMethod<
   input: DescribeConnectionProposalRequest,
   output: DescribeConnectionProposalResponse,
   errors: [],
+  operationName: "DescribeConnectionProposal",
 }));
 export type ListAttachPointsError = CommonErrors;
 /**
@@ -633,6 +635,7 @@ export const listAttachPoints: API.OperationMethod<
   input: ListAttachPointsRequest,
   output: ListAttachPointsResponse,
   errors: [],
+  operationName: "ListAttachPoints",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -653,6 +656,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError = CommonErrors;
 /**
@@ -667,6 +671,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = CommonErrors;
 /**
@@ -681,6 +686,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
+  operationName: "UntagResource",
 }));
 export type CreateConnectionError = CommonErrors;
 /**
@@ -701,6 +707,7 @@ export const createConnection: API.OperationMethod<
   input: CreateConnectionRequest,
   output: CreateConnectionResponse,
   errors: [],
+  operationName: "CreateConnection",
 }));
 export type GetConnectionError = CommonErrors;
 /**
@@ -715,6 +722,7 @@ export const getConnection: API.OperationMethod<
   input: GetConnectionRequest,
   output: GetConnectionResponse,
   errors: [],
+  operationName: "GetConnection",
 }));
 export type UpdateConnectionError = CommonErrors;
 /**
@@ -729,6 +737,7 @@ export const updateConnection: API.OperationMethod<
   input: UpdateConnectionRequest,
   output: UpdateConnectionResponse,
   errors: [],
+  operationName: "UpdateConnection",
 }));
 export type DeleteConnectionError = CommonErrors;
 /**
@@ -745,6 +754,7 @@ export const deleteConnection: API.OperationMethod<
   input: DeleteConnectionRequest,
   output: DeleteConnectionResponse,
   errors: [],
+  operationName: "DeleteConnection",
 }));
 export type ListConnectionsError = CommonErrors;
 /**
@@ -786,6 +796,7 @@ export const listConnections: API.OperationMethod<
   input: ListConnectionsRequest,
   output: ListConnectionsResponse,
   errors: [],
+  operationName: "ListConnections",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -806,6 +817,7 @@ export const getEnvironment: API.OperationMethod<
   input: GetEnvironmentRequest,
   output: GetEnvironmentResponse,
   errors: [],
+  operationName: "GetEnvironment",
 }));
 export type ListEnvironmentsError = CommonErrors;
 /**
@@ -835,6 +847,7 @@ export const listEnvironments: API.OperationMethod<
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResponse,
   errors: [],
+  operationName: "ListEnvironments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

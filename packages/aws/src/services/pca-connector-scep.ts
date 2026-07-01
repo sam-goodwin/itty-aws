@@ -685,6 +685,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -711,6 +712,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -737,6 +739,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateChallengeError =
   | AccessDeniedException
@@ -771,6 +774,7 @@ export const createChallenge: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateChallenge",
 }));
 export type GetChallengeMetadataError =
   | AccessDeniedException
@@ -797,6 +801,7 @@ export const getChallengeMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetChallengeMetadata",
 }));
 export type DeleteChallengeError =
   | AccessDeniedException
@@ -825,6 +830,7 @@ export const deleteChallenge: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteChallenge",
 }));
 export type ListChallengeMetadataError =
   | AccessDeniedException
@@ -866,6 +872,7 @@ export const listChallengeMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListChallengeMetadata",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -898,6 +905,7 @@ export const getChallengePassword: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetChallengePassword",
 }));
 export type CreateConnectorError =
   | AccessDeniedException
@@ -928,6 +936,7 @@ export const createConnector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateConnector",
 }));
 export type GetConnectorError =
   | AccessDeniedException
@@ -954,6 +963,7 @@ export const getConnector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetConnector",
 }));
 export type DeleteConnectorError =
   | AccessDeniedException
@@ -982,6 +992,7 @@ export const deleteConnector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteConnector",
 }));
 export type ListConnectorsError =
   | AccessDeniedException
@@ -1021,6 +1032,7 @@ export const listConnectors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListConnectors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

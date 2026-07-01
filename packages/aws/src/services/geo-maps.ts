@@ -518,6 +518,7 @@ export const getGlyphs: API.OperationMethod<
   input: GetGlyphsRequest,
   output: GetGlyphsResponse,
   errors: [],
+  operationName: "GetGlyphs",
 }));
 export type GetSpritesError = CommonErrors;
 /**
@@ -534,6 +535,7 @@ export const getSprites: API.OperationMethod<
   input: GetSpritesRequest,
   output: GetSpritesResponse,
   errors: [],
+  operationName: "GetSprites",
 }));
 export type GetStaticMapError =
   | AccessDeniedException
@@ -568,6 +570,7 @@ export const getStaticMap: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetStaticMap",
 }));
 export type GetStyleDescriptorError = CommonErrors;
 /**
@@ -584,6 +587,7 @@ export const getStyleDescriptor: API.OperationMethod<
   input: GetStyleDescriptorRequest,
   output: GetStyleDescriptorResponse,
   errors: [],
+  operationName: "GetStyleDescriptor",
 }));
 export type GetTileError =
   | AccessDeniedException
@@ -612,4 +616,5 @@ export const getTile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTile",
 }));

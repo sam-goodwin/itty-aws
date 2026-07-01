@@ -4099,6 +4099,7 @@ export const batchCheckLayerAvailability: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  operationName: "BatchCheckLayerAvailability",
 }));
 export type BatchDeleteImageError =
   | InvalidParameterException
@@ -4128,6 +4129,7 @@ export const batchDeleteImage: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  operationName: "BatchDeleteImage",
 }));
 export type BatchGetImageError =
   | InvalidParameterException
@@ -4158,6 +4160,7 @@ export const batchGetImage: API.OperationMethod<
     ServerException,
     UnableToGetUpstreamImageException,
   ],
+  operationName: "BatchGetImage",
 }));
 export type BatchGetRepositoryScanningConfigurationError =
   | InvalidParameterException
@@ -4182,6 +4185,7 @@ export const batchGetRepositoryScanningConfiguration: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "BatchGetRepositoryScanningConfiguration",
 }));
 export type CompleteLayerUploadError =
   | EmptyUploadException
@@ -4224,6 +4228,7 @@ export const completeLayerUpload: API.OperationMethod<
     ServerException,
     UploadNotFoundException,
   ],
+  operationName: "CompleteLayerUpload",
 }));
 export type CreatePullThroughCacheRuleError =
   | InvalidParameterException
@@ -4261,6 +4266,7 @@ export const createPullThroughCacheRule: API.OperationMethod<
     UnsupportedUpstreamRegistryException,
     ValidationException,
   ],
+  operationName: "CreatePullThroughCacheRule",
 }));
 export type CreateRepositoryError =
   | InvalidParameterException
@@ -4292,6 +4298,7 @@ export const createRepository: API.OperationMethod<
     ServerException,
     TooManyTagsException,
   ],
+  operationName: "CreateRepository",
 }));
 export type CreateRepositoryCreationTemplateError =
   | InvalidParameterException
@@ -4322,6 +4329,7 @@ export const createRepositoryCreationTemplate: API.OperationMethod<
     TemplateAlreadyExistsException,
     ValidationException,
   ],
+  operationName: "CreateRepositoryCreationTemplate",
 }));
 export type DeleteLifecyclePolicyError =
   | InvalidParameterException
@@ -4348,6 +4356,7 @@ export const deleteLifecyclePolicy: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "DeleteLifecyclePolicy",
 }));
 export type DeletePullThroughCacheRuleError =
   | InvalidParameterException
@@ -4372,6 +4381,7 @@ export const deletePullThroughCacheRule: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "DeletePullThroughCacheRule",
 }));
 export type DeleteRegistryPolicyError =
   | InvalidParameterException
@@ -4396,6 +4406,7 @@ export const deleteRegistryPolicy: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "DeleteRegistryPolicy",
 }));
 export type DeleteRepositoryError =
   | InvalidParameterException
@@ -4424,6 +4435,7 @@ export const deleteRepository: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  operationName: "DeleteRepository",
 }));
 export type DeleteRepositoryCreationTemplateError =
   | InvalidParameterException
@@ -4448,6 +4460,7 @@ export const deleteRepositoryCreationTemplate: API.OperationMethod<
     TemplateNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteRepositoryCreationTemplate",
 }));
 export type DeleteRepositoryPolicyError =
   | InvalidParameterException
@@ -4472,6 +4485,7 @@ export const deleteRepositoryPolicy: API.OperationMethod<
     RepositoryPolicyNotFoundException,
     ServerException,
   ],
+  operationName: "DeleteRepositoryPolicy",
 }));
 export type DeleteSigningConfigurationError =
   | ServerException
@@ -4500,6 +4514,7 @@ export const deleteSigningConfiguration: API.OperationMethod<
     SigningConfigurationNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteSigningConfiguration",
 }));
 export type DeregisterPullTimeUpdateExclusionError =
   | ExclusionNotFoundException
@@ -4526,6 +4541,7 @@ export const deregisterPullTimeUpdateExclusion: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "DeregisterPullTimeUpdateExclusion",
 }));
 export type DescribeImageReplicationStatusError =
   | ImageNotFoundException
@@ -4552,6 +4568,7 @@ export const describeImageReplicationStatus: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "DescribeImageReplicationStatus",
 }));
 export type DescribeImagesError =
   | ImageNotFoundException
@@ -4602,6 +4619,7 @@ export const describeImages: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  operationName: "DescribeImages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4651,6 +4669,7 @@ export const describeImageScanFindings: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "DescribeImageScanFindings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4687,6 +4706,7 @@ export const describeImageSigningStatus: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "DescribeImageSigningStatus",
 }));
 export type DescribePullThroughCacheRulesError =
   | InvalidParameterException
@@ -4726,6 +4746,7 @@ export const describePullThroughCacheRules: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "DescribePullThroughCacheRules",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4752,6 +4773,7 @@ export const describeRegistry: API.OperationMethod<
   input: DescribeRegistryRequest,
   output: DescribeRegistryResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
+  operationName: "DescribeRegistry",
 }));
 export type DescribeRepositoriesError =
   | InvalidParameterException
@@ -4789,6 +4811,7 @@ export const describeRepositories: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  operationName: "DescribeRepositories",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4830,6 +4853,7 @@ export const describeRepositoryCreationTemplates: API.OperationMethod<
   input: DescribeRepositoryCreationTemplatesRequest,
   output: DescribeRepositoryCreationTemplatesResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
+  operationName: "DescribeRepositoryCreationTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4854,6 +4878,7 @@ export const getAccountSetting: API.OperationMethod<
   input: GetAccountSettingRequest,
   output: GetAccountSettingResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
+  operationName: "GetAccountSetting",
 }));
 export type GetAuthorizationTokenError =
   | InvalidParameterException
@@ -4879,6 +4904,7 @@ export const getAuthorizationToken: API.OperationMethod<
   input: GetAuthorizationTokenRequest,
   output: GetAuthorizationTokenResponse,
   errors: [InvalidParameterException, ServerException],
+  operationName: "GetAuthorizationToken",
 }));
 export type GetDownloadUrlForLayerError =
   | InvalidParameterException
@@ -4914,6 +4940,7 @@ export const getDownloadUrlForLayer: API.OperationMethod<
     ServerException,
     UnableToGetUpstreamLayerException,
   ],
+  operationName: "GetDownloadUrlForLayer",
 }));
 export type GetLifecyclePolicyError =
   | InvalidParameterException
@@ -4940,6 +4967,7 @@ export const getLifecyclePolicy: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "GetLifecyclePolicy",
 }));
 export type GetLifecyclePolicyPreviewError =
   | InvalidParameterException
@@ -4982,6 +5010,7 @@ export const getLifecyclePolicyPreview: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "GetLifecyclePolicyPreview",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5012,6 +5041,7 @@ export const getRegistryPolicy: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "GetRegistryPolicy",
 }));
 export type GetRegistryScanningConfigurationError =
   | InvalidParameterException
@@ -5030,6 +5060,7 @@ export const getRegistryScanningConfiguration: API.OperationMethod<
   input: GetRegistryScanningConfigurationRequest,
   output: GetRegistryScanningConfigurationResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
+  operationName: "GetRegistryScanningConfiguration",
 }));
 export type GetRepositoryPolicyError =
   | InvalidParameterException
@@ -5054,6 +5085,7 @@ export const getRepositoryPolicy: API.OperationMethod<
     RepositoryPolicyNotFoundException,
     ServerException,
   ],
+  operationName: "GetRepositoryPolicy",
 }));
 export type GetSigningConfigurationError =
   | InvalidParameterException
@@ -5082,6 +5114,7 @@ export const getSigningConfiguration: API.OperationMethod<
     SigningConfigurationNotFoundException,
     ValidationException,
   ],
+  operationName: "GetSigningConfiguration",
 }));
 export type InitiateLayerUploadError =
   | InvalidParameterException
@@ -5113,6 +5146,7 @@ export const initiateLayerUpload: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  operationName: "InitiateLayerUpload",
 }));
 export type ListImageReferrersError =
   | InvalidParameterException
@@ -5141,6 +5175,7 @@ export const listImageReferrers: API.OperationMethod<
     UnableToListUpstreamImageReferrersException,
     ValidationException,
   ],
+  operationName: "ListImageReferrers",
 }));
 export type ListImagesError =
   | InvalidParameterException
@@ -5185,6 +5220,7 @@ export const listImages: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  operationName: "ListImages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5215,6 +5251,7 @@ export const listPullTimeUpdateExclusions: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "ListPullTimeUpdateExclusions",
 }));
 export type ListTagsForResourceError =
   | InvalidParameterException
@@ -5237,6 +5274,7 @@ export const listTagsForResource: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutAccountSettingError =
   | InvalidParameterException
@@ -5261,6 +5299,7 @@ export const putAccountSetting: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "PutAccountSetting",
 }));
 export type PutImageError =
   | ImageAlreadyExistsException
@@ -5304,6 +5343,7 @@ export const putImage: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  operationName: "PutImage",
 }));
 export type PutImageScanningConfigurationError =
   | InvalidParameterException
@@ -5332,6 +5372,7 @@ export const putImageScanningConfiguration: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "PutImageScanningConfiguration",
 }));
 export type PutImageTagMutabilityError =
   | InvalidParameterException
@@ -5356,6 +5397,7 @@ export const putImageTagMutability: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  operationName: "PutImageTagMutability",
 }));
 export type PutLifecyclePolicyError =
   | InvalidParameterException
@@ -5382,6 +5424,7 @@ export const putLifecyclePolicy: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "PutLifecyclePolicy",
 }));
 export type PutRegistryPolicyError =
   | InvalidParameterException
@@ -5403,6 +5446,7 @@ export const putRegistryPolicy: API.OperationMethod<
   input: PutRegistryPolicyRequest,
   output: PutRegistryPolicyResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
+  operationName: "PutRegistryPolicy",
 }));
 export type PutRegistryScanningConfigurationError =
   | BlockedByOrganizationPolicyException
@@ -5427,6 +5471,7 @@ export const putRegistryScanningConfiguration: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "PutRegistryScanningConfiguration",
 }));
 export type PutReplicationConfigurationError =
   | InvalidParameterException
@@ -5454,6 +5499,7 @@ export const putReplicationConfiguration: API.OperationMethod<
   input: PutReplicationConfigurationRequest,
   output: PutReplicationConfigurationResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
+  operationName: "PutReplicationConfiguration",
 }));
 export type PutSigningConfigurationError =
   | InvalidParameterException
@@ -5480,6 +5526,7 @@ export const putSigningConfiguration: API.OperationMethod<
   input: PutSigningConfigurationRequest,
   output: PutSigningConfigurationResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
+  operationName: "PutSigningConfiguration",
 }));
 export type RegisterPullTimeUpdateExclusionError =
   | ExclusionAlreadyExistsException
@@ -5506,6 +5553,7 @@ export const registerPullTimeUpdateExclusion: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "RegisterPullTimeUpdateExclusion",
 }));
 export type SetRepositoryPolicyError =
   | InvalidParameterException
@@ -5530,6 +5578,7 @@ export const setRepositoryPolicy: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  operationName: "SetRepositoryPolicy",
 }));
 export type StartImageScanError =
   | ImageArchivedException
@@ -5567,6 +5616,7 @@ export const startImageScan: API.OperationMethod<
     UnsupportedImageTypeException,
     ValidationException,
   ],
+  operationName: "StartImageScan",
 }));
 export type StartLifecyclePolicyPreviewError =
   | InvalidParameterException
@@ -5596,6 +5646,7 @@ export const startLifecyclePolicyPreview: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "StartLifecyclePolicyPreview",
 }));
 export type TagResourceError =
   | InvalidParameterException
@@ -5623,6 +5674,7 @@ export const tagResource: API.OperationMethod<
     ServerException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InvalidParameterException
@@ -5649,6 +5701,7 @@ export const untagResource: API.OperationMethod<
     ServerException,
     TooManyTagsException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateImageStorageClassError =
   | ImageNotFoundException
@@ -5677,6 +5730,7 @@ export const updateImageStorageClass: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "UpdateImageStorageClass",
 }));
 export type UpdatePullThroughCacheRuleError =
   | InvalidParameterException
@@ -5707,6 +5761,7 @@ export const updatePullThroughCacheRule: API.OperationMethod<
     UnableToDecryptSecretValueException,
     ValidationException,
   ],
+  operationName: "UpdatePullThroughCacheRule",
 }));
 export type UpdateRepositoryCreationTemplateError =
   | InvalidParameterException
@@ -5731,6 +5786,7 @@ export const updateRepositoryCreationTemplate: API.OperationMethod<
     TemplateNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateRepositoryCreationTemplate",
 }));
 export type UploadLayerPartError =
   | InvalidLayerPartException
@@ -5768,6 +5824,7 @@ export const uploadLayerPart: API.OperationMethod<
     ServerException,
     UploadNotFoundException,
   ],
+  operationName: "UploadLayerPart",
 }));
 export type ValidatePullThroughCacheRuleError =
   | InvalidParameterException
@@ -5795,4 +5852,5 @@ export const validatePullThroughCacheRule: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  operationName: "ValidatePullThroughCacheRule",
 }));

@@ -8022,6 +8022,7 @@ export const acceptMatch: API.OperationMethod<
     NotFoundException,
     UnsupportedRegionException,
   ],
+  operationName: "AcceptMatch",
 }));
 export type ClaimGameServerError =
   | ConflictException
@@ -8087,6 +8088,7 @@ export const claimGameServer: API.OperationMethod<
     OutOfCapacityException,
     UnauthorizedException,
   ],
+  operationName: "ClaimGameServer",
 }));
 export type CreateAliasError =
   | ConflictException
@@ -8136,6 +8138,7 @@ export const createAlias: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  operationName: "CreateAlias",
 }));
 export type CreateBuildError =
   | ConflictException
@@ -8199,6 +8202,7 @@ export const createBuild: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  operationName: "CreateBuild",
 }));
 export type CreateContainerFleetError =
   | ConflictException
@@ -8303,6 +8307,7 @@ export const createContainerFleet: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "CreateContainerFleet",
 }));
 export type CreateContainerGroupDefinitionError =
   | ConflictException
@@ -8425,6 +8430,7 @@ export const createContainerGroupDefinition: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "CreateContainerGroupDefinition",
 }));
 export type CreateFleetError =
   | ConflictException
@@ -8532,6 +8538,7 @@ export const createFleet: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "CreateFleet",
 }));
 export type CreateFleetLocationsError =
   | ConflictException
@@ -8591,6 +8598,7 @@ export const createFleetLocations: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "CreateFleetLocations",
 }));
 export type CreateGameServerGroupError =
   | ConflictException
@@ -8654,6 +8662,7 @@ export const createGameServerGroup: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  operationName: "CreateGameServerGroup",
 }));
 export type CreateGameSessionError =
   | ConflictException
@@ -8732,6 +8741,7 @@ export const createGameSession: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "CreateGameSession",
 }));
 export type CreateGameSessionQueueError =
   | InternalServiceException
@@ -8834,6 +8844,7 @@ export const createGameSessionQueue: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  operationName: "CreateGameSessionQueue",
 }));
 export type CreateLocationError =
   | ConflictException
@@ -8864,6 +8875,7 @@ export const createLocation: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  operationName: "CreateLocation",
 }));
 export type CreateMatchmakingConfigurationError =
   | InternalServiceException
@@ -8918,6 +8930,7 @@ export const createMatchmakingConfiguration: API.OperationMethod<
     TaggingFailedException,
     UnsupportedRegionException,
   ],
+  operationName: "CreateMatchmakingConfiguration",
 }));
 export type CreateMatchmakingRuleSetError =
   | InternalServiceException
@@ -8966,6 +8979,7 @@ export const createMatchmakingRuleSet: API.OperationMethod<
     TaggingFailedException,
     UnsupportedRegionException,
   ],
+  operationName: "CreateMatchmakingRuleSet",
 }));
 export type CreatePlayerSessionError =
   | GameSessionFullException
@@ -9016,6 +9030,7 @@ export const createPlayerSession: API.OperationMethod<
     TerminalRoutingStrategyException,
     UnauthorizedException,
   ],
+  operationName: "CreatePlayerSession",
 }));
 export type CreatePlayerSessionsError =
   | GameSessionFullException
@@ -9066,6 +9081,7 @@ export const createPlayerSessions: API.OperationMethod<
     TerminalRoutingStrategyException,
     UnauthorizedException,
   ],
+  operationName: "CreatePlayerSessions",
 }));
 export type CreateScriptError =
   | ConflictException
@@ -9125,6 +9141,7 @@ export const createScript: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  operationName: "CreateScript",
 }));
 export type CreateVpcPeeringAuthorizationError =
   | InternalServiceException
@@ -9194,6 +9211,7 @@ export const createVpcPeeringAuthorization: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "CreateVpcPeeringAuthorization",
 }));
 export type CreateVpcPeeringConnectionError =
   | InternalServiceException
@@ -9258,6 +9276,7 @@ export const createVpcPeeringConnection: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "CreateVpcPeeringConnection",
 }));
 export type DeleteAliasError =
   | InternalServiceException
@@ -9292,6 +9311,7 @@ export const deleteAlias: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  operationName: "DeleteAlias",
 }));
 export type DeleteBuildError =
   | InternalServiceException
@@ -9331,6 +9351,7 @@ export const deleteBuild: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  operationName: "DeleteBuild",
 }));
 export type DeleteContainerFleetError =
   | InternalServiceException
@@ -9371,6 +9392,7 @@ export const deleteContainerFleet: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DeleteContainerFleet",
 }));
 export type DeleteContainerGroupDefinitionError =
   | InternalServiceException
@@ -9429,6 +9451,7 @@ export const deleteContainerGroupDefinition: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DeleteContainerGroupDefinition",
 }));
 export type DeleteFleetError =
   | InternalServiceException
@@ -9474,6 +9497,7 @@ export const deleteFleet: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  operationName: "DeleteFleet",
 }));
 export type DeleteFleetLocationsError =
   | InternalServiceException
@@ -9515,6 +9539,7 @@ export const deleteFleetLocations: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DeleteFleetLocations",
 }));
 export type DeleteGameServerGroupError =
   | InternalServiceException
@@ -9568,6 +9593,7 @@ export const deleteGameServerGroup: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteGameServerGroup",
 }));
 export type DeleteGameSessionQueueError =
   | InternalServiceException
@@ -9597,6 +9623,7 @@ export const deleteGameSessionQueue: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  operationName: "DeleteGameSessionQueue",
 }));
 export type DeleteLocationError =
   | InternalServiceException
@@ -9626,6 +9653,7 @@ export const deleteLocation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteLocation",
 }));
 export type DeleteMatchmakingConfigurationError =
   | InternalServiceException
@@ -9656,6 +9684,7 @@ export const deleteMatchmakingConfiguration: API.OperationMethod<
     TaggingFailedException,
     UnsupportedRegionException,
   ],
+  operationName: "DeleteMatchmakingConfiguration",
 }));
 export type DeleteMatchmakingRuleSetError =
   | InternalServiceException
@@ -9691,6 +9720,7 @@ export const deleteMatchmakingRuleSet: API.OperationMethod<
     TaggingFailedException,
     UnsupportedRegionException,
   ],
+  operationName: "DeleteMatchmakingRuleSet",
 }));
 export type DeleteScalingPolicyError =
   | InternalServiceException
@@ -9724,6 +9754,7 @@ export const deleteScalingPolicy: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DeleteScalingPolicy",
 }));
 export type DeleteScriptError =
   | InternalServiceException
@@ -9767,6 +9798,7 @@ export const deleteScript: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  operationName: "DeleteScript",
 }));
 export type DeleteVpcPeeringAuthorizationError =
   | InternalServiceException
@@ -9798,6 +9830,7 @@ export const deleteVpcPeeringAuthorization: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteVpcPeeringAuthorization",
 }));
 export type DeleteVpcPeeringConnectionError =
   | InternalServiceException
@@ -9833,6 +9866,7 @@ export const deleteVpcPeeringConnection: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteVpcPeeringConnection",
 }));
 export type DeregisterComputeError =
   | InternalServiceException
@@ -9865,6 +9899,7 @@ export const deregisterCompute: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeregisterCompute",
 }));
 export type DeregisterGameServerError =
   | InternalServiceException
@@ -9902,6 +9937,7 @@ export const deregisterGameServer: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeregisterGameServer",
 }));
 export type DescribeAliasError =
   | InternalServiceException
@@ -9936,6 +9972,7 @@ export const describeAlias: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribeAlias",
 }));
 export type DescribeBuildError =
   | InternalServiceException
@@ -9970,6 +10007,7 @@ export const describeBuild: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribeBuild",
 }));
 export type DescribeComputeError =
   | InternalServiceException
@@ -10026,6 +10064,7 @@ export const describeCompute: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeCompute",
 }));
 export type DescribeContainerFleetError =
   | InternalServiceException
@@ -10069,6 +10108,7 @@ export const describeContainerFleet: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeContainerFleet",
 }));
 export type DescribeContainerGroupDefinitionError =
   | InternalServiceException
@@ -10115,6 +10155,7 @@ export const describeContainerGroupDefinition: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeContainerGroupDefinition",
 }));
 export type DescribeContainerGroupPortMappingsError =
   | InternalServiceException
@@ -10177,6 +10218,7 @@ export const describeContainerGroupPortMappings: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeContainerGroupPortMappings",
 }));
 export type DescribeEC2InstanceLimitsError =
   | InternalServiceException
@@ -10252,6 +10294,7 @@ export const describeEC2InstanceLimits: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeEC2InstanceLimits",
 }));
 export type DescribeFleetAttributesError =
   | InternalServiceException
@@ -10315,6 +10358,7 @@ export const describeFleetAttributes: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribeFleetAttributes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10395,6 +10439,7 @@ export const describeFleetCapacity: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeFleetCapacity",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10441,6 +10486,7 @@ export const describeFleetDeployment: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeFleetDeployment",
 }));
 export type DescribeFleetEventsError =
   | InternalServiceException
@@ -10497,6 +10543,7 @@ export const describeFleetEvents: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeFleetEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10568,6 +10615,7 @@ export const describeFleetLocationAttributes: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeFleetLocationAttributes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10622,6 +10670,7 @@ export const describeFleetLocationCapacity: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeFleetLocationCapacity",
 }));
 export type DescribeFleetLocationUtilizationError =
   | InternalServiceException
@@ -10668,6 +10717,7 @@ export const describeFleetLocationUtilization: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeFleetLocationUtilization",
 }));
 export type DescribeFleetPortSettingsError =
   | InternalServiceException
@@ -10717,6 +10767,7 @@ export const describeFleetPortSettings: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeFleetPortSettings",
 }));
 export type DescribeFleetUtilizationError =
   | InternalServiceException
@@ -10787,6 +10838,7 @@ export const describeFleetUtilization: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribeFleetUtilization",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10829,6 +10881,7 @@ export const describeGameServer: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribeGameServer",
 }));
 export type DescribeGameServerGroupError =
   | InternalServiceException
@@ -10867,6 +10920,7 @@ export const describeGameServerGroup: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribeGameServerGroup",
 }));
 export type DescribeGameServerInstancesError =
   | InternalServiceException
@@ -10927,6 +10981,7 @@ export const describeGameServerInstances: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribeGameServerInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11007,6 +11062,7 @@ export const describeGameSessionDetails: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeGameSessionDetails",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11050,6 +11106,7 @@ export const describeGameSessionPlacement: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribeGameSessionPlacement",
 }));
 export type DescribeGameSessionQueuesError =
   | InternalServiceException
@@ -11098,6 +11155,7 @@ export const describeGameSessionQueues: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribeGameSessionQueues",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11185,6 +11243,7 @@ export const describeGameSessions: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeGameSessions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11267,6 +11326,7 @@ export const describeInstances: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11315,6 +11375,7 @@ export const describeMatchmaking: API.OperationMethod<
     InvalidRequestException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeMatchmaking",
 }));
 export type DescribeMatchmakingConfigurationsError =
   | InternalServiceException
@@ -11366,6 +11427,7 @@ export const describeMatchmakingConfigurations: API.OperationMethod<
     InvalidRequestException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeMatchmakingConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11421,6 +11483,7 @@ export const describeMatchmakingRuleSets: API.OperationMethod<
     NotFoundException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeMatchmakingRuleSets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11491,6 +11554,7 @@ export const describePlayerSessions: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribePlayerSessions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11541,6 +11605,7 @@ export const describeRuntimeConfiguration: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribeRuntimeConfiguration",
 }));
 export type DescribeScalingPoliciesError =
   | InternalServiceException
@@ -11592,6 +11657,7 @@ export const describeScalingPolicies: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "DescribeScalingPolicies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11635,6 +11701,7 @@ export const describeScript: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribeScript",
 }));
 export type DescribeVpcPeeringAuthorizationsError =
   | InternalServiceException
@@ -11665,6 +11732,7 @@ export const describeVpcPeeringAuthorizations: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  operationName: "DescribeVpcPeeringAuthorizations",
 }));
 export type DescribeVpcPeeringConnectionsError =
   | InternalServiceException
@@ -11702,6 +11770,7 @@ export const describeVpcPeeringConnections: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DescribeVpcPeeringConnections",
 }));
 export type GetComputeAccessError =
   | InternalServiceException
@@ -11753,6 +11822,7 @@ export const getComputeAccess: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "GetComputeAccess",
 }));
 export type GetComputeAuthTokenError =
   | InternalServiceException
@@ -11808,6 +11878,7 @@ export const getComputeAuthToken: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "GetComputeAuthToken",
 }));
 export type GetGameSessionLogUrlError =
   | InternalServiceException
@@ -11842,6 +11913,7 @@ export const getGameSessionLogUrl: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetGameSessionLogUrl",
 }));
 export type GetInstanceAccessError =
   | InternalServiceException
@@ -11897,6 +11969,7 @@ export const getInstanceAccess: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetInstanceAccess",
 }));
 export type GetPlayerConnectionDetailsError =
   | InternalServiceException
@@ -11939,6 +12012,7 @@ export const getPlayerConnectionDetails: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "GetPlayerConnectionDetails",
 }));
 export type ListAliasesError =
   | InternalServiceException
@@ -11986,6 +12060,7 @@ export const listAliases: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  operationName: "ListAliases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -12042,6 +12117,7 @@ export const listBuilds: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  operationName: "ListBuilds",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -12112,6 +12188,7 @@ export const listCompute: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "ListCompute",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -12180,6 +12257,7 @@ export const listContainerFleets: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "ListContainerFleets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -12245,6 +12323,7 @@ export const listContainerGroupDefinitions: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "ListContainerGroupDefinitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -12313,6 +12392,7 @@ export const listContainerGroupDefinitionVersions: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "ListContainerGroupDefinitionVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -12377,6 +12457,7 @@ export const listFleetDeployments: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "ListFleetDeployments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -12446,6 +12527,7 @@ export const listFleets: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "ListFleets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -12491,6 +12573,7 @@ export const listGameServerGroups: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  operationName: "ListGameServerGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -12544,6 +12627,7 @@ export const listGameServers: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  operationName: "ListGameServers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -12596,6 +12680,7 @@ export const listLocations: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  operationName: "ListLocations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -12650,6 +12735,7 @@ export const listScripts: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  operationName: "ListScripts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -12699,6 +12785,7 @@ export const listTagsForResource: API.OperationMethod<
     TaggingFailedException,
     UnsupportedRegionException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutScalingPolicyError =
   | InternalServiceException
@@ -12794,6 +12881,7 @@ export const putScalingPolicy: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "PutScalingPolicy",
 }));
 export type RegisterComputeError =
   | ConflictException
@@ -12851,6 +12939,7 @@ export const registerCompute: API.OperationMethod<
     NotReadyException,
     UnauthorizedException,
   ],
+  operationName: "RegisterCompute",
 }));
 export type RegisterGameServerError =
   | ConflictException
@@ -12898,6 +12987,7 @@ export const registerGameServer: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  operationName: "RegisterGameServer",
 }));
 export type RequestUploadCredentialsError =
   | InternalServiceException
@@ -12936,6 +13026,7 @@ export const requestUploadCredentials: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "RequestUploadCredentials",
 }));
 export type ResolveAliasError =
   | InternalServiceException
@@ -12973,6 +13064,7 @@ export const resolveAlias: API.OperationMethod<
     TerminalRoutingStrategyException,
     UnauthorizedException,
   ],
+  operationName: "ResolveAlias",
 }));
 export type ResumeGameServerGroupError =
   | InternalServiceException
@@ -13014,6 +13106,7 @@ export const resumeGameServerGroup: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "ResumeGameServerGroup",
 }));
 export type SearchGameSessionsError =
   | InternalServiceException
@@ -13127,6 +13220,7 @@ export const searchGameSessions: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "SearchGameSessions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13180,6 +13274,7 @@ export const startFleetActions: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "StartFleetActions",
 }));
 export type StartGameSessionPlacementError =
   | InternalServiceException
@@ -13283,6 +13378,7 @@ export const startGameSessionPlacement: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "StartGameSessionPlacement",
 }));
 export type StartMatchBackfillError =
   | InternalServiceException
@@ -13344,6 +13440,7 @@ export const startMatchBackfill: API.OperationMethod<
     NotFoundException,
     UnsupportedRegionException,
   ],
+  operationName: "StartMatchBackfill",
 }));
 export type StartMatchmakingError =
   | InternalServiceException
@@ -13395,6 +13492,7 @@ export const startMatchmaking: API.OperationMethod<
     NotFoundException,
     UnsupportedRegionException,
   ],
+  operationName: "StartMatchmaking",
 }));
 export type StopFleetActionsError =
   | InternalServiceException
@@ -13447,6 +13545,7 @@ export const stopFleetActions: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "StopFleetActions",
 }));
 export type StopGameSessionPlacementError =
   | InternalServiceException
@@ -13483,6 +13582,7 @@ export const stopGameSessionPlacement: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "StopGameSessionPlacement",
 }));
 export type StopMatchmakingError =
   | InternalServiceException
@@ -13524,6 +13624,7 @@ export const stopMatchmaking: API.OperationMethod<
     NotFoundException,
     UnsupportedRegionException,
   ],
+  operationName: "StopMatchmaking",
 }));
 export type SuspendGameServerGroupError =
   | InternalServiceException
@@ -13571,6 +13672,7 @@ export const suspendGameServerGroup: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "SuspendGameServerGroup",
 }));
 export type TagResourceError =
   | InternalServiceException
@@ -13617,6 +13719,7 @@ export const tagResource: API.OperationMethod<
     TaggingFailedException,
     UnsupportedRegionException,
   ],
+  operationName: "TagResource",
 }));
 export type TerminateGameSessionError =
   | InternalServiceException
@@ -13689,6 +13792,7 @@ export const terminateGameSession: API.OperationMethod<
     NotReadyException,
     UnauthorizedException,
   ],
+  operationName: "TerminateGameSession",
 }));
 export type UntagResourceError =
   | InternalServiceException
@@ -13734,6 +13838,7 @@ export const untagResource: API.OperationMethod<
     TaggingFailedException,
     UnsupportedRegionException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAliasError =
   | InternalServiceException
@@ -13768,6 +13873,7 @@ export const updateAlias: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateAlias",
 }));
 export type UpdateBuildError =
   | InternalServiceException
@@ -13803,6 +13909,7 @@ export const updateBuild: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateBuild",
 }));
 export type UpdateContainerFleetError =
   | InternalServiceException
@@ -13882,6 +13989,7 @@ export const updateContainerFleet: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "UpdateContainerFleet",
 }));
 export type UpdateContainerGroupDefinitionError =
   | InternalServiceException
@@ -13947,6 +14055,7 @@ export const updateContainerGroupDefinition: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "UpdateContainerGroupDefinition",
 }));
 export type UpdateFleetAttributesError =
   | ConflictException
@@ -13995,6 +14104,7 @@ export const updateFleetAttributes: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateFleetAttributes",
 }));
 export type UpdateFleetCapacityError =
   | ConflictException
@@ -14077,6 +14187,7 @@ export const updateFleetCapacity: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  operationName: "UpdateFleetCapacity",
 }));
 export type UpdateFleetPortSettingsError =
   | ConflictException
@@ -14126,6 +14237,7 @@ export const updateFleetPortSettings: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateFleetPortSettings",
 }));
 export type UpdateGameServerError =
   | InternalServiceException
@@ -14180,6 +14292,7 @@ export const updateGameServer: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateGameServer",
 }));
 export type UpdateGameServerGroupError =
   | InternalServiceException
@@ -14225,6 +14338,7 @@ export const updateGameServerGroup: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateGameServerGroup",
 }));
 export type UpdateGameSessionError =
   | ConflictException
@@ -14264,6 +14378,7 @@ export const updateGameSession: API.OperationMethod<
     NotReadyException,
     UnauthorizedException,
   ],
+  operationName: "UpdateGameSession",
 }));
 export type UpdateGameSessionQueueError =
   | InternalServiceException
@@ -14297,6 +14412,7 @@ export const updateGameSessionQueue: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateGameSessionQueue",
 }));
 export type UpdateMatchmakingConfigurationError =
   | InternalServiceException
@@ -14330,6 +14446,7 @@ export const updateMatchmakingConfiguration: API.OperationMethod<
     NotFoundException,
     UnsupportedRegionException,
   ],
+  operationName: "UpdateMatchmakingConfiguration",
 }));
 export type UpdateRuntimeConfigurationError =
   | InternalServiceException
@@ -14379,6 +14496,7 @@ export const updateRuntimeConfiguration: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateRuntimeConfiguration",
 }));
 export type UpdateScriptError =
   | InternalServiceException
@@ -14425,6 +14543,7 @@ export const updateScript: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateScript",
 }));
 export type ValidateMatchmakingRuleSetError =
   | InternalServiceException
@@ -14456,4 +14575,5 @@ export const validateMatchmakingRuleSet: API.OperationMethod<
     InvalidRequestException,
     UnsupportedRegionException,
   ],
+  operationName: "ValidateMatchmakingRuleSet",
 }));

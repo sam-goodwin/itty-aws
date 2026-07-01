@@ -1067,6 +1067,7 @@ export const associateUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateUser",
 }));
 export type CreateLicenseServerEndpointError =
   | AccessDeniedException
@@ -1097,6 +1098,7 @@ export const createLicenseServerEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateLicenseServerEndpoint",
 }));
 export type DeleteLicenseServerEndpointError =
   | AccessDeniedException
@@ -1127,6 +1129,7 @@ export const deleteLicenseServerEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteLicenseServerEndpoint",
 }));
 export type DeregisterIdentityProviderError =
   | AccessDeniedException
@@ -1157,6 +1160,7 @@ export const deregisterIdentityProvider: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeregisterIdentityProvider",
 }));
 export type DisassociateUserError =
   | AccessDeniedException
@@ -1187,6 +1191,7 @@ export const disassociateUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateUser",
 }));
 export type ListIdentityProvidersError =
   | AccessDeniedException
@@ -1232,6 +1237,7 @@ export const listIdentityProviders: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListIdentityProviders",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1283,6 +1289,7 @@ export const listInstances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1332,6 +1339,7 @@ export const listLicenseServerEndpoints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListLicenseServerEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1383,6 +1391,7 @@ export const listProductSubscriptions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListProductSubscriptions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1411,6 +1420,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListUserAssociationsError =
   | AccessDeniedException
@@ -1456,6 +1466,7 @@ export const listUserAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListUserAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1492,6 +1503,7 @@ export const registerIdentityProvider: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RegisterIdentityProvider",
 }));
 export type StartProductSubscriptionError =
   | AccessDeniedException
@@ -1524,6 +1536,7 @@ export const startProductSubscription: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartProductSubscription",
 }));
 export type StopProductSubscriptionError =
   | AccessDeniedException
@@ -1554,6 +1567,7 @@ export const stopProductSubscription: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopProductSubscription",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -1576,6 +1590,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -1593,6 +1608,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type UpdateIdentityProviderSettingsError =
   | AccessDeniedException
@@ -1617,4 +1633,5 @@ export const updateIdentityProviderSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateIdentityProviderSettings",
 }));

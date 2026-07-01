@@ -8213,6 +8213,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | ResourceNotFoundException
@@ -8230,6 +8231,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, TooManyTagsException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -8244,6 +8246,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type CreateAssistantError =
   | AccessDeniedException
@@ -8270,6 +8273,7 @@ export const createAssistant: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CreateAssistant",
 }));
 export type GetAssistantError =
   | AccessDeniedException
@@ -8294,6 +8298,7 @@ export const getAssistant: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetAssistant",
 }));
 export type DeleteAssistantError =
   | AccessDeniedException
@@ -8318,6 +8323,7 @@ export const deleteAssistant: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DeleteAssistant",
 }));
 export type ListAssistantsError =
   | AccessDeniedException
@@ -8351,6 +8357,7 @@ export const listAssistants: API.OperationMethod<
   input: ListAssistantsRequest,
   output: ListAssistantsResponse,
   errors: [AccessDeniedException, UnauthorizedException, ValidationException],
+  operationName: "ListAssistants",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8381,6 +8388,7 @@ export const getRecommendations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetRecommendations",
 }));
 export type ListModelsError =
   | AccessDeniedException
@@ -8424,6 +8432,7 @@ export const listModels: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "ListModels",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8452,6 +8461,7 @@ export const notifyRecommendationsReceived: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "NotifyRecommendationsReceived",
 }));
 export type PutFeedbackError =
   | AccessDeniedException
@@ -8474,6 +8484,7 @@ export const putFeedback: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "PutFeedback",
 }));
 export type QueryAssistantError =
   | AccessDeniedException
@@ -8515,6 +8526,7 @@ export const queryAssistant: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "QueryAssistant",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8545,6 +8557,7 @@ export const removeAssistantAIAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RemoveAssistantAIAgent",
 }));
 export type RetrieveError =
   | AccessDeniedException
@@ -8577,6 +8590,7 @@ export const retrieve: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "Retrieve",
 }));
 export type SearchSessionsError =
   | AccessDeniedException
@@ -8616,6 +8630,7 @@ export const searchSessions: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "SearchSessions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8646,6 +8661,7 @@ export const updateAssistantAIAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAssistantAIAgent",
 }));
 export type CreateAIAgentError =
   | AccessDeniedException
@@ -8676,6 +8692,7 @@ export const createAIAgent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CreateAIAgent",
 }));
 export type GetAIAgentError =
   | AccessDeniedException
@@ -8702,6 +8719,7 @@ export const getAIAgent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetAIAgent",
 }));
 export type UpdateAIAgentError =
   | AccessDeniedException
@@ -8730,6 +8748,7 @@ export const updateAIAgent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "UpdateAIAgent",
 }));
 export type DeleteAIAgentError =
   | AccessDeniedException
@@ -8756,6 +8775,7 @@ export const deleteAIAgent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DeleteAIAgent",
 }));
 export type ListAIAgentsError =
   | AccessDeniedException
@@ -8797,6 +8817,7 @@ export const listAIAgents: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "ListAIAgents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8833,6 +8854,7 @@ export const createAIAgentVersion: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CreateAIAgentVersion",
 }));
 export type DeleteAIAgentVersionError =
   | AccessDeniedException
@@ -8861,6 +8883,7 @@ export const deleteAIAgentVersion: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DeleteAIAgentVersion",
 }));
 export type ListAIAgentVersionsError =
   | AccessDeniedException
@@ -8902,6 +8925,7 @@ export const listAIAgentVersions: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "ListAIAgentVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8938,6 +8962,7 @@ export const createAIGuardrail: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CreateAIGuardrail",
 }));
 export type GetAIGuardrailError =
   | AccessDeniedException
@@ -8964,6 +8989,7 @@ export const getAIGuardrail: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetAIGuardrail",
 }));
 export type UpdateAIGuardrailError =
   | AccessDeniedException
@@ -8992,6 +9018,7 @@ export const updateAIGuardrail: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "UpdateAIGuardrail",
 }));
 export type DeleteAIGuardrailError =
   | AccessDeniedException
@@ -9020,6 +9047,7 @@ export const deleteAIGuardrail: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DeleteAIGuardrail",
 }));
 export type ListAIGuardrailsError =
   | AccessDeniedException
@@ -9061,6 +9089,7 @@ export const listAIGuardrails: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "ListAIGuardrails",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9097,6 +9126,7 @@ export const createAIGuardrailVersion: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CreateAIGuardrailVersion",
 }));
 export type DeleteAIGuardrailVersionError =
   | AccessDeniedException
@@ -9125,6 +9155,7 @@ export const deleteAIGuardrailVersion: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DeleteAIGuardrailVersion",
 }));
 export type ListAIGuardrailVersionsError =
   | AccessDeniedException
@@ -9166,6 +9197,7 @@ export const listAIGuardrailVersions: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "ListAIGuardrailVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9202,6 +9234,7 @@ export const createAIPrompt: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CreateAIPrompt",
 }));
 export type GetAIPromptError =
   | AccessDeniedException
@@ -9228,6 +9261,7 @@ export const getAIPrompt: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetAIPrompt",
 }));
 export type UpdateAIPromptError =
   | AccessDeniedException
@@ -9256,6 +9290,7 @@ export const updateAIPrompt: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "UpdateAIPrompt",
 }));
 export type DeleteAIPromptError =
   | AccessDeniedException
@@ -9282,6 +9317,7 @@ export const deleteAIPrompt: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DeleteAIPrompt",
 }));
 export type ListAIPromptsError =
   | AccessDeniedException
@@ -9323,6 +9359,7 @@ export const listAIPrompts: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "ListAIPrompts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9359,6 +9396,7 @@ export const createAIPromptVersion: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CreateAIPromptVersion",
 }));
 export type DeleteAIPromptVersionError =
   | AccessDeniedException
@@ -9387,6 +9425,7 @@ export const deleteAIPromptVersion: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DeleteAIPromptVersion",
 }));
 export type ListAIPromptVersionsError =
   | AccessDeniedException
@@ -9428,6 +9467,7 @@ export const listAIPromptVersions: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "ListAIPromptVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9460,6 +9500,7 @@ export const createAssistantAssociation: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateAssistantAssociation",
 }));
 export type GetAssistantAssociationError =
   | AccessDeniedException
@@ -9484,6 +9525,7 @@ export const getAssistantAssociation: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetAssistantAssociation",
 }));
 export type DeleteAssistantAssociationError =
   | AccessDeniedException
@@ -9508,6 +9550,7 @@ export const deleteAssistantAssociation: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DeleteAssistantAssociation",
 }));
 export type ListAssistantAssociationsError =
   | AccessDeniedException
@@ -9545,6 +9588,7 @@ export const listAssistantAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListAssistantAssociations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9579,6 +9623,7 @@ export const createSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CreateSession",
 }));
 export type GetSessionError =
   | AccessDeniedException
@@ -9603,6 +9648,7 @@ export const getSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetSession",
 }));
 export type UpdateSessionError =
   | AccessDeniedException
@@ -9627,6 +9673,7 @@ export const updateSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "UpdateSession",
 }));
 export type GetNextMessageError =
   | AccessDeniedException
@@ -9651,6 +9698,7 @@ export const getNextMessage: API.OperationMethod<
     UnprocessableContentException,
     ValidationException,
   ],
+  operationName: "GetNextMessage",
 }));
 export type ListMessagesError =
   | AccessDeniedException
@@ -9688,6 +9736,7 @@ export const listMessages: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListMessages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9731,6 +9780,7 @@ export const listSpans: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListSpans",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9769,6 +9819,7 @@ export const sendMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendMessage",
 }));
 export type UpdateSessionDataError =
   | AccessDeniedException
@@ -9793,6 +9844,7 @@ export const updateSessionData: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "UpdateSessionData",
 }));
 export type CreateKnowledgeBaseError =
   | AccessDeniedException
@@ -9831,6 +9883,7 @@ export const createKnowledgeBase: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CreateKnowledgeBase",
 }));
 export type GetKnowledgeBaseError =
   | AccessDeniedException
@@ -9855,6 +9908,7 @@ export const getKnowledgeBase: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetKnowledgeBase",
 }));
 export type DeleteKnowledgeBaseError =
   | AccessDeniedException
@@ -9883,6 +9937,7 @@ export const deleteKnowledgeBase: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DeleteKnowledgeBase",
 }));
 export type ListKnowledgeBasesError =
   | AccessDeniedException
@@ -9915,6 +9970,7 @@ export const listKnowledgeBases: API.OperationMethod<
   input: ListKnowledgeBasesRequest,
   output: ListKnowledgeBasesResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListKnowledgeBases",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9947,6 +10003,7 @@ export const deleteImportJob: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DeleteImportJob",
 }));
 export type GetImportJobError =
   | AccessDeniedException
@@ -9969,6 +10026,7 @@ export const getImportJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetImportJob",
 }));
 export type ListImportJobsError =
   | AccessDeniedException
@@ -10001,6 +10059,7 @@ export const listImportJobs: API.OperationMethod<
   input: ListImportJobsRequest,
   output: ListImportJobsResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListImportJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10029,6 +10088,7 @@ export const removeKnowledgeBaseTemplateUri: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "RemoveKnowledgeBaseTemplateUri",
 }));
 export type SearchContentError =
   | AccessDeniedException
@@ -10068,6 +10128,7 @@ export const searchContent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "SearchContent",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10115,6 +10176,7 @@ export const searchMessageTemplates: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "SearchMessageTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10162,6 +10224,7 @@ export const searchQuickResponses: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "SearchQuickResponses",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10192,6 +10255,7 @@ export const startContentUpload: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "StartContentUpload",
 }));
 export type StartImportJobError =
   | AccessDeniedException
@@ -10222,6 +10286,7 @@ export const startImportJob: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "StartImportJob",
 }));
 export type UpdateKnowledgeBaseTemplateUriError =
   | AccessDeniedException
@@ -10244,6 +10309,7 @@ export const updateKnowledgeBaseTemplateUri: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateKnowledgeBaseTemplateUri",
 }));
 export type CreateContentError =
   | AccessDeniedException
@@ -10272,6 +10338,7 @@ export const createContent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CreateContent",
 }));
 export type GetContentError =
   | AccessDeniedException
@@ -10296,6 +10363,7 @@ export const getContent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetContent",
 }));
 export type UpdateContentError =
   | AccessDeniedException
@@ -10322,6 +10390,7 @@ export const updateContent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "UpdateContent",
 }));
 export type DeleteContentError =
   | AccessDeniedException
@@ -10348,6 +10417,7 @@ export const deleteContent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DeleteContent",
 }));
 export type ListContentsError =
   | AccessDeniedException
@@ -10385,6 +10455,7 @@ export const listContents: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListContents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10415,6 +10486,7 @@ export const getContentSummary: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetContentSummary",
 }));
 export type CreateContentAssociationError =
   | AccessDeniedException
@@ -10455,6 +10527,7 @@ export const createContentAssociation: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CreateContentAssociation",
 }));
 export type GetContentAssociationError =
   | AccessDeniedException
@@ -10481,6 +10554,7 @@ export const getContentAssociation: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetContentAssociation",
 }));
 export type DeleteContentAssociationError =
   | AccessDeniedException
@@ -10507,6 +10581,7 @@ export const deleteContentAssociation: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DeleteContentAssociation",
 }));
 export type ListContentAssociationsError =
   | AccessDeniedException
@@ -10548,6 +10623,7 @@ export const listContentAssociations: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "ListContentAssociations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10582,6 +10658,7 @@ export const createMessageTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateMessageTemplate",
 }));
 export type GetMessageTemplateError =
   | AccessDeniedException
@@ -10608,6 +10685,7 @@ export const getMessageTemplate: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetMessageTemplate",
 }));
 export type UpdateMessageTemplateError =
   | AccessDeniedException
@@ -10634,6 +10712,7 @@ export const updateMessageTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateMessageTemplate",
 }));
 export type DeleteMessageTemplateError =
   | AccessDeniedException
@@ -10660,6 +10739,7 @@ export const deleteMessageTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteMessageTemplate",
 }));
 export type ListMessageTemplatesError =
   | AccessDeniedException
@@ -10699,6 +10779,7 @@ export const listMessageTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMessageTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10731,6 +10812,7 @@ export const activateMessageTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ActivateMessageTemplate",
 }));
 export type CreateMessageTemplateAttachmentError =
   | AccessDeniedException
@@ -10761,6 +10843,7 @@ export const createMessageTemplateAttachment: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CreateMessageTemplateAttachment",
 }));
 export type CreateMessageTemplateVersionError =
   | AccessDeniedException
@@ -10789,6 +10872,7 @@ export const createMessageTemplateVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateMessageTemplateVersion",
 }));
 export type DeactivateMessageTemplateError =
   | AccessDeniedException
@@ -10815,6 +10899,7 @@ export const deactivateMessageTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeactivateMessageTemplate",
 }));
 export type DeleteMessageTemplateAttachmentError =
   | AccessDeniedException
@@ -10841,6 +10926,7 @@ export const deleteMessageTemplateAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteMessageTemplateAttachment",
 }));
 export type ListMessageTemplateVersionsError =
   | AccessDeniedException
@@ -10880,6 +10966,7 @@ export const listMessageTemplateVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMessageTemplateVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10910,6 +10997,7 @@ export const renderMessageTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RenderMessageTemplate",
 }));
 export type UpdateMessageTemplateMetadataError =
   | AccessDeniedException
@@ -10936,6 +11024,7 @@ export const updateMessageTemplateMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateMessageTemplateMetadata",
 }));
 export type CreateQuickResponseError =
   | AccessDeniedException
@@ -10964,6 +11053,7 @@ export const createQuickResponse: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CreateQuickResponse",
 }));
 export type GetQuickResponseError =
   | AccessDeniedException
@@ -10988,6 +11078,7 @@ export const getQuickResponse: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetQuickResponse",
 }));
 export type UpdateQuickResponseError =
   | AccessDeniedException
@@ -11016,6 +11107,7 @@ export const updateQuickResponse: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "UpdateQuickResponse",
 }));
 export type DeleteQuickResponseError =
   | AccessDeniedException
@@ -11040,6 +11132,7 @@ export const deleteQuickResponse: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DeleteQuickResponse",
 }));
 export type ListQuickResponsesError =
   | AccessDeniedException
@@ -11077,6 +11170,7 @@ export const listQuickResponses: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListQuickResponses",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

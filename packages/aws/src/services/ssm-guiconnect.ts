@@ -276,6 +276,7 @@ export const getConnectionRecordingPreferences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetConnectionRecordingPreferences",
 }));
 export type DeleteConnectionRecordingPreferencesError =
   | AccessDeniedException
@@ -306,6 +307,7 @@ export const deleteConnectionRecordingPreferences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteConnectionRecordingPreferences",
 }));
 export type UpdateConnectionRecordingPreferencesError =
   | AccessDeniedException
@@ -336,4 +338,5 @@ export const updateConnectionRecordingPreferences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateConnectionRecordingPreferences",
 }));

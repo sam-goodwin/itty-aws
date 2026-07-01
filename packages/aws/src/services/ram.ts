@@ -2180,6 +2180,7 @@ export const acceptResourceShareInvitation: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  operationName: "AcceptResourceShareInvitation",
 }));
 export type AssociateResourceShareError =
   | IdempotentParameterMismatchException
@@ -2220,6 +2221,7 @@ export const associateResourceShare: API.OperationMethod<
     ThrottlingException,
     UnknownResourceException,
   ],
+  operationName: "AssociateResourceShare",
 }));
 export type AssociateResourceSharePermissionError =
   | InvalidClientTokenException
@@ -2253,6 +2255,7 @@ export const associateResourceSharePermission: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "AssociateResourceSharePermission",
 }));
 export type CreatePermissionError =
   | IdempotentParameterMismatchException
@@ -2290,6 +2293,7 @@ export const createPermission: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  operationName: "CreatePermission",
 }));
 export type CreatePermissionVersionError =
   | IdempotentParameterMismatchException
@@ -2332,6 +2336,7 @@ export const createPermissionVersion: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "CreatePermissionVersion",
 }));
 export type CreateResourceShareError =
   | IdempotentParameterMismatchException
@@ -2380,6 +2385,7 @@ export const createResourceShare: API.OperationMethod<
     ThrottlingException,
     UnknownResourceException,
   ],
+  operationName: "CreateResourceShare",
 }));
 export type DeletePermissionError =
   | IdempotentParameterMismatchException
@@ -2412,6 +2418,7 @@ export const deletePermission: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "DeletePermission",
 }));
 export type DeletePermissionVersionError =
   | IdempotentParameterMismatchException
@@ -2448,6 +2455,7 @@ export const deletePermissionVersion: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "DeletePermissionVersion",
 }));
 export type DeleteResourceShareError =
   | IdempotentParameterMismatchException
@@ -2487,6 +2495,7 @@ export const deleteResourceShare: API.OperationMethod<
     ThrottlingException,
     UnknownResourceException,
   ],
+  operationName: "DeleteResourceShare",
 }));
 export type DisassociateResourceShareError =
   | IdempotentParameterMismatchException
@@ -2526,6 +2535,7 @@ export const disassociateResourceShare: API.OperationMethod<
     ThrottlingException,
     UnknownResourceException,
   ],
+  operationName: "DisassociateResourceShare",
 }));
 export type DisassociateResourceSharePermissionError =
   | InvalidClientTokenException
@@ -2560,6 +2570,7 @@ export const disassociateResourceSharePermission: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "DisassociateResourceSharePermission",
 }));
 export type EnableSharingWithAwsOrganizationError =
   | OperationNotPermittedException
@@ -2592,6 +2603,7 @@ export const enableSharingWithAwsOrganization: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  operationName: "EnableSharingWithAwsOrganization",
 }));
 export type GetPermissionError =
   | InvalidParameterException
@@ -2620,6 +2632,7 @@ export const getPermission: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "GetPermission",
 }));
 export type GetResourcePoliciesError =
   | InvalidNextTokenException
@@ -2670,6 +2683,7 @@ export const getResourcePolicies: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  operationName: "GetResourcePolicies",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2727,6 +2741,7 @@ export const getResourceShareAssociations: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "GetResourceShareAssociations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2785,6 +2800,7 @@ export const getResourceShareInvitations: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "GetResourceShareInvitations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2839,6 +2855,7 @@ export const getResourceShares: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "GetResourceShares",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2901,6 +2918,7 @@ export const listPendingInvitationResources: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  operationName: "ListPendingInvitationResources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2955,6 +2973,7 @@ export const listPermissionAssociations: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  operationName: "ListPermissionAssociations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3008,6 +3027,7 @@ export const listPermissions: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  operationName: "ListPermissions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3064,6 +3084,7 @@ export const listPermissionVersions: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "ListPermissionVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3119,6 +3140,7 @@ export const listPrincipals: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "ListPrincipals",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3170,6 +3192,7 @@ export const listReplacePermissionAssociationsWork: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  operationName: "ListReplacePermissionAssociationsWork",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3227,6 +3250,7 @@ export const listResources: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "ListResources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3283,6 +3307,7 @@ export const listResourceSharePermissions: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "ListResourceSharePermissions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3327,6 +3352,7 @@ export const listResourceTypes: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  operationName: "ListResourceTypes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3377,6 +3403,7 @@ export const listSourceAssociations: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "ListSourceAssociations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3441,6 +3468,7 @@ export const promotePermissionCreatedFromPolicy: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "PromotePermissionCreatedFromPolicy",
 }));
 export type PromoteResourceShareCreatedFromPolicyError =
   | InvalidParameterException
@@ -3490,6 +3518,7 @@ export const promoteResourceShareCreatedFromPolicy: API.OperationMethod<
     UnknownResourceException,
     UnmatchedPolicyPermissionException,
   ],
+  operationName: "PromoteResourceShareCreatedFromPolicy",
 }));
 export type RejectResourceShareInvitationError =
   | IdempotentParameterMismatchException
@@ -3526,6 +3555,7 @@ export const rejectResourceShareInvitation: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  operationName: "RejectResourceShareInvitation",
 }));
 export type ReplacePermissionAssociationsError =
   | IdempotentParameterMismatchException
@@ -3573,6 +3603,7 @@ export const replacePermissionAssociations: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "ReplacePermissionAssociations",
 }));
 export type SetDefaultPermissionVersionError =
   | IdempotentParameterMismatchException
@@ -3605,6 +3636,7 @@ export const setDefaultPermissionVersion: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "SetDefaultPermissionVersion",
 }));
 export type TagResourceError =
   | InvalidParameterException
@@ -3640,6 +3672,7 @@ export const tagResource: API.OperationMethod<
     TagPolicyViolationException,
     UnknownResourceException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InvalidParameterException
@@ -3666,6 +3699,7 @@ export const untagResource: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateResourceShareError =
   | IdempotentParameterMismatchException
@@ -3700,4 +3734,5 @@ export const updateResourceShare: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  operationName: "UpdateResourceShare",
 }));

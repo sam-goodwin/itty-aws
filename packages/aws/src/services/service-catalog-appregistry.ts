@@ -1315,6 +1315,7 @@ export const associateAttributeGroup: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "AssociateAttributeGroup",
 }));
 export type AssociateResourceError =
   | ConflictException
@@ -1365,6 +1366,7 @@ export const associateResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateResource",
 }));
 export type CreateApplicationError =
   | ConflictException
@@ -1391,6 +1393,7 @@ export const createApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateApplication",
 }));
 export type CreateAttributeGroupError =
   | ConflictException
@@ -1418,6 +1421,7 @@ export const createAttributeGroup: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateAttributeGroup",
 }));
 export type DeleteApplicationError =
   | InternalServerException
@@ -1440,6 +1444,7 @@ export const deleteApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteApplication",
 }));
 export type DeleteAttributeGroupError =
   | InternalServerException
@@ -1462,6 +1467,7 @@ export const deleteAttributeGroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteAttributeGroup",
 }));
 export type DisassociateAttributeGroupError =
   | InternalServerException
@@ -1484,6 +1490,7 @@ export const disassociateAttributeGroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DisassociateAttributeGroup",
 }));
 export type DisassociateResourceError =
   | InternalServerException
@@ -1529,6 +1536,7 @@ export const disassociateResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateResource",
 }));
 export type GetApplicationError =
   | ConflictException
@@ -1569,6 +1577,7 @@ export const getApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetApplication",
 }));
 export type GetAssociatedResourceError =
   | InternalServerException
@@ -1591,6 +1600,7 @@ export const getAssociatedResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetAssociatedResource",
 }));
 export type GetAttributeGroupError =
   | ConflictException
@@ -1618,6 +1628,7 @@ export const getAttributeGroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetAttributeGroup",
 }));
 export type GetConfigurationError = InternalServerException | CommonErrors;
 /**
@@ -1633,6 +1644,7 @@ export const getConfiguration: API.OperationMethod<
   input: GetConfigurationRequest,
   output: GetConfigurationResponse,
   errors: [InternalServerException],
+  operationName: "GetConfiguration",
 }));
 export type ListApplicationsError =
   | InternalServerException
@@ -1665,6 +1677,7 @@ export const listApplications: API.OperationMethod<
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListApplications",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1708,6 +1721,7 @@ export const listAssociatedAttributeGroups: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListAssociatedAttributeGroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1766,6 +1780,7 @@ export const listAssociatedResources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListAssociatedResources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1804,6 +1819,7 @@ export const listAttributeGroups: API.OperationMethod<
   input: ListAttributeGroupsRequest,
   output: ListAttributeGroupsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListAttributeGroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1847,6 +1863,7 @@ export const listAttributeGroupsForApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListAttributeGroupsForApplication",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1875,6 +1892,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutConfigurationError =
   | ConflictException
@@ -1894,6 +1912,7 @@ export const putConfiguration: API.OperationMethod<
   input: PutConfigurationRequest,
   output: PutConfigurationResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  operationName: "PutConfiguration",
 }));
 export type SyncResourceError =
   | ConflictException
@@ -1922,6 +1941,7 @@ export const syncResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SyncResource",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -1948,6 +1968,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -1972,6 +1993,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateApplicationError =
   | ConflictException
@@ -1998,6 +2020,7 @@ export const updateApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateApplication",
 }));
 export type UpdateAttributeGroupError =
   | ConflictException
@@ -2022,4 +2045,5 @@ export const updateAttributeGroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateAttributeGroup",
 }));

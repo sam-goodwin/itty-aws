@@ -1933,6 +1933,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalException, NotFoundException, ValidationException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalException
@@ -1964,6 +1965,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InternalException, NotFoundException, ValidationException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalException
@@ -1982,6 +1984,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalException, NotFoundException, ValidationException],
+  operationName: "UntagResource",
 }));
 export type CreatePipeError =
   | ConflictException
@@ -2011,6 +2014,7 @@ export const createPipe: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreatePipe",
 }));
 export type DescribePipeError =
   | InternalException
@@ -2035,6 +2039,7 @@ export const describePipe: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribePipe",
 }));
 export type UpdatePipeError =
   | ConflictException
@@ -2073,6 +2078,7 @@ export const updatePipe: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdatePipe",
 }));
 export type DeletePipeError =
   | ConflictException
@@ -2099,6 +2105,7 @@ export const deletePipe: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePipe",
 }));
 export type ListPipesError =
   | InternalException
@@ -2132,6 +2139,7 @@ export const listPipes: API.OperationMethod<
   input: ListPipesRequest,
   output: ListPipesResponse,
   errors: [InternalException, ThrottlingException, ValidationException],
+  operationName: "ListPipes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2164,6 +2172,7 @@ export const startPipe: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartPipe",
 }));
 export type StopPipeError =
   | ConflictException
@@ -2190,4 +2199,5 @@ export const stopPipe: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopPipe",
 }));

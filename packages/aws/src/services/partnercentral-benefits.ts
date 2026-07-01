@@ -1373,6 +1373,7 @@ export const amendBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AmendBenefitApplication",
 }));
 export type AssociateBenefitApplicationResourceError =
   | AccessDeniedException
@@ -1401,6 +1402,7 @@ export const associateBenefitApplicationResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateBenefitApplicationResource",
 }));
 export type CancelBenefitApplicationError =
   | AccessDeniedException
@@ -1429,6 +1431,7 @@ export const cancelBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelBenefitApplication",
 }));
 export type CreateBenefitApplicationError =
   | AccessDeniedException
@@ -1457,6 +1460,7 @@ export const createBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateBenefitApplication",
 }));
 export type DisassociateBenefitApplicationResourceError =
   | AccessDeniedException
@@ -1485,6 +1489,7 @@ export const disassociateBenefitApplicationResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateBenefitApplicationResource",
 }));
 export type GetBenefitError =
   | AccessDeniedException
@@ -1511,6 +1516,7 @@ export const getBenefit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetBenefit",
 }));
 export type GetBenefitAllocationError =
   | AccessDeniedException
@@ -1537,6 +1543,7 @@ export const getBenefitAllocation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetBenefitAllocation",
 }));
 export type GetBenefitApplicationError =
   | AccessDeniedException
@@ -1565,6 +1572,7 @@ export const getBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetBenefitApplication",
 }));
 export type ListBenefitAllocationsError =
   | AccessDeniedException
@@ -1606,6 +1614,7 @@ export const listBenefitAllocations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBenefitAllocations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1653,6 +1662,7 @@ export const listBenefitApplications: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBenefitApplications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1700,6 +1710,7 @@ export const listBenefits: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBenefits",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1732,6 +1743,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type RecallBenefitApplicationError =
   | AccessDeniedException
@@ -1760,6 +1772,7 @@ export const recallBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RecallBenefitApplication",
 }));
 export type SubmitBenefitApplicationError =
   | AccessDeniedException
@@ -1788,6 +1801,7 @@ export const submitBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SubmitBenefitApplication",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1818,6 +1832,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1848,6 +1863,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateBenefitApplicationError =
   | AccessDeniedException
@@ -1876,4 +1892,5 @@ export const updateBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateBenefitApplication",
 }));

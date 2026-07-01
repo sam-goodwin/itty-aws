@@ -3925,6 +3925,7 @@ export const addTags: API.OperationMethod<
     TagsLimitExceededException,
     UnsupportedOperationException,
   ],
+  operationName: "AddTags",
 }));
 export type CancelQueryError =
   | ConflictException
@@ -3966,6 +3967,7 @@ export const cancelQuery: API.OperationMethod<
     QueryIdNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "CancelQuery",
 }));
 export type CreateChannelError =
   | ChannelAlreadyExistsException
@@ -4008,6 +4010,7 @@ export const createChannel: API.OperationMethod<
     TagsLimitExceededException,
     UnsupportedOperationException,
   ],
+  operationName: "CreateChannel",
 }));
 export type CreateDashboardError =
   | ConflictException
@@ -4056,6 +4059,7 @@ export const createDashboard: API.OperationMethod<
     ServiceQuotaExceededException,
     UnsupportedOperationException,
   ],
+  operationName: "CreateDashboard",
 }));
 export type CreateEventDataStoreError =
   | CloudTrailAccessNotEnabledException
@@ -4110,6 +4114,7 @@ export const createEventDataStore: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  operationName: "CreateEventDataStore",
 }));
 export type CreateTrailError =
   | CloudTrailAccessNotEnabledException
@@ -4192,6 +4197,7 @@ export const createTrail: API.OperationMethod<
     TrailNotProvidedException,
     UnsupportedOperationException,
   ],
+  operationName: "CreateTrail",
 }));
 export type DeleteChannelError =
   | ChannelARNInvalidException
@@ -4216,6 +4222,7 @@ export const deleteChannel: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "DeleteChannel",
 }));
 export type DeleteDashboardError =
   | ConflictException
@@ -4238,6 +4245,7 @@ export const deleteDashboard: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "DeleteDashboard",
 }));
 export type DeleteEventDataStoreError =
   | ChannelExistsForEDSException
@@ -4293,6 +4301,7 @@ export const deleteEventDataStore: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "DeleteEventDataStore",
 }));
 export type DeleteResourcePolicyError =
   | ConflictException
@@ -4323,6 +4332,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceTypeNotSupportedException,
     UnsupportedOperationException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteTrailError =
   | CloudTrailARNInvalidException
@@ -4373,6 +4383,7 @@ export const deleteTrail: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "DeleteTrail",
 }));
 export type DeregisterOrganizationDelegatedAdminError =
   | AccountNotFoundException
@@ -4412,6 +4423,7 @@ export const deregisterOrganizationDelegatedAdmin: API.OperationMethod<
     OrganizationsNotInUseException,
     UnsupportedOperationException,
   ],
+  operationName: "DeregisterOrganizationDelegatedAdmin",
 }));
 export type DescribeQueryError =
   | EventDataStoreARNInvalidException
@@ -4451,6 +4463,7 @@ export const describeQuery: API.OperationMethod<
     QueryIdNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeQuery",
 }));
 export type DescribeTrailsError =
   | CloudTrailARNInvalidException
@@ -4478,6 +4491,7 @@ export const describeTrails: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeTrails",
 }));
 export type DisableFederationError =
   | AccessDeniedException
@@ -4526,6 +4540,7 @@ export const disableFederation: API.OperationMethod<
     OrganizationsNotInUseException,
     UnsupportedOperationException,
   ],
+  operationName: "DisableFederation",
 }));
 export type EnableFederationError =
   | AccessDeniedException
@@ -4583,6 +4598,7 @@ export const enableFederation: API.OperationMethod<
     OrganizationsNotInUseException,
     UnsupportedOperationException,
   ],
+  operationName: "EnableFederation",
 }));
 export type GenerateQueryError =
   | EventDataStoreARNInvalidException
@@ -4630,6 +4646,7 @@ export const generateQuery: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "GenerateQuery",
 }));
 export type GetChannelError =
   | ChannelARNInvalidException
@@ -4654,6 +4671,7 @@ export const getChannel: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "GetChannel",
 }));
 export type GetDashboardError =
   | ResourceNotFoundException
@@ -4671,6 +4689,7 @@ export const getDashboard: API.OperationMethod<
   input: GetDashboardRequest,
   output: GetDashboardResponse,
   errors: [ResourceNotFoundException, UnsupportedOperationException],
+  operationName: "GetDashboard",
 }));
 export type GetEventConfigurationError =
   | CloudTrailARNInvalidException
@@ -4711,6 +4730,7 @@ export const getEventConfiguration: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "GetEventConfiguration",
 }));
 export type GetEventDataStoreError =
   | EventDataStoreARNInvalidException
@@ -4740,6 +4760,7 @@ export const getEventDataStore: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "GetEventDataStore",
 }));
 export type GetEventSelectorsError =
   | CloudTrailARNInvalidException
@@ -4789,6 +4810,7 @@ export const getEventSelectors: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "GetEventSelectors",
 }));
 export type GetImportError =
   | ImportNotFoundException
@@ -4813,6 +4835,7 @@ export const getImport: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "GetImport",
 }));
 export type GetInsightSelectorsError =
   | CloudTrailARNInvalidException
@@ -4858,6 +4881,7 @@ export const getInsightSelectors: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "GetInsightSelectors",
 }));
 export type GetQueryResultsError =
   | EventDataStoreARNInvalidException
@@ -4912,6 +4936,7 @@ export const getQueryResults: API.OperationMethod<
     QueryIdNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "GetQueryResults",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
 export type GetResourcePolicyError =
@@ -4941,6 +4966,7 @@ export const getResourcePolicy: API.OperationMethod<
     ResourceTypeNotSupportedException,
     UnsupportedOperationException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type GetTrailError =
   | CloudTrailARNInvalidException
@@ -4967,6 +4993,7 @@ export const getTrail: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "GetTrail",
 }));
 export type GetTrailStatusError =
   | CloudTrailARNInvalidException
@@ -4997,6 +5024,7 @@ export const getTrailStatus: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "GetTrailStatus",
 }));
 export type ListChannelsError =
   | InvalidNextTokenException
@@ -5034,6 +5062,7 @@ export const listChannels: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "ListChannels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5053,6 +5082,7 @@ export const listDashboards: API.OperationMethod<
   input: ListDashboardsRequest,
   output: ListDashboardsResponse,
   errors: [UnsupportedOperationException],
+  operationName: "ListDashboards",
 }));
 export type ListEventDataStoresError =
   | InvalidMaxResultsException
@@ -5095,6 +5125,7 @@ export const listEventDataStores: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "ListEventDataStores",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5139,6 +5170,7 @@ export const listImportFailures: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "ListImportFailures",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5187,6 +5219,7 @@ export const listImports: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "ListImports",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5245,6 +5278,7 @@ export const listInsightsData: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "ListInsightsData",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5309,6 +5343,7 @@ export const listInsightsMetricData: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "ListInsightsMetricData",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5360,6 +5395,7 @@ export const listPublicKeys: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "ListPublicKeys",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5424,6 +5460,7 @@ export const listQueries: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "ListQueries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5484,6 +5521,7 @@ export const listTags: API.OperationMethod<
     ResourceTypeNotSupportedException,
     UnsupportedOperationException,
   ],
+  operationName: "ListTags",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5521,6 +5559,7 @@ export const listTrails: API.OperationMethod<
   input: ListTrailsRequest,
   output: ListTrailsResponse,
   errors: [OperationNotPermittedException, UnsupportedOperationException],
+  operationName: "ListTrails",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5608,6 +5647,7 @@ export const lookupEvents: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "LookupEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5668,6 +5708,7 @@ export const putEventConfiguration: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "PutEventConfiguration",
 }));
 export type PutEventSelectorsError =
   | CloudTrailARNInvalidException
@@ -5763,6 +5804,7 @@ export const putEventSelectors: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "PutEventSelectors",
 }));
 export type PutInsightSelectorsError =
   | CloudTrailARNInvalidException
@@ -5837,6 +5879,7 @@ export const putInsightSelectors: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "PutInsightSelectors",
 }));
 export type PutResourcePolicyError =
   | ConflictException
@@ -5869,6 +5912,7 @@ export const putResourcePolicy: API.OperationMethod<
     ResourceTypeNotSupportedException,
     UnsupportedOperationException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type RegisterOrganizationDelegatedAdminError =
   | AccountNotFoundException
@@ -5913,6 +5957,7 @@ export const registerOrganizationDelegatedAdmin: API.OperationMethod<
     OrganizationsNotInUseException,
     UnsupportedOperationException,
   ],
+  operationName: "RegisterOrganizationDelegatedAdmin",
 }));
 export type RemoveTagsError =
   | ChannelARNInvalidException
@@ -5959,6 +6004,7 @@ export const removeTags: API.OperationMethod<
     ResourceTypeNotSupportedException,
     UnsupportedOperationException,
   ],
+  operationName: "RemoveTags",
 }));
 export type RestoreEventDataStoreError =
   | CloudTrailAccessNotEnabledException
@@ -6004,6 +6050,7 @@ export const restoreEventDataStore: API.OperationMethod<
     OrganizationsNotInUseException,
     UnsupportedOperationException,
   ],
+  operationName: "RestoreEventDataStore",
 }));
 export type SearchSampleQueriesError =
   | InvalidParameterException
@@ -6027,6 +6074,7 @@ export const searchSampleQueries: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "SearchSampleQueries",
 }));
 export type StartDashboardRefreshError =
   | EventDataStoreNotFoundException
@@ -6056,6 +6104,7 @@ export const startDashboardRefresh: API.OperationMethod<
     ServiceQuotaExceededException,
     UnsupportedOperationException,
   ],
+  operationName: "StartDashboardRefresh",
 }));
 export type StartEventDataStoreIngestionError =
   | ConflictException
@@ -6095,6 +6144,7 @@ export const startEventDataStoreIngestion: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "StartEventDataStoreIngestion",
 }));
 export type StartImportError =
   | AccountHasOngoingImportException
@@ -6152,6 +6202,7 @@ export const startImport: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "StartImport",
 }));
 export type StartLoggingError =
   | CloudTrailARNInvalidException
@@ -6193,6 +6244,7 @@ export const startLogging: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "StartLogging",
 }));
 export type StartQueryError =
   | EventDataStoreARNInvalidException
@@ -6243,6 +6295,7 @@ export const startQuery: API.OperationMethod<
     S3BucketDoesNotExistException,
     UnsupportedOperationException,
   ],
+  operationName: "StartQuery",
 }));
 export type StopEventDataStoreIngestionError =
   | ConflictException
@@ -6282,6 +6335,7 @@ export const stopEventDataStoreIngestion: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "StopEventDataStoreIngestion",
 }));
 export type StopImportError =
   | ImportNotFoundException
@@ -6306,6 +6360,7 @@ export const stopImport: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "StopImport",
 }));
 export type StopLoggingError =
   | CloudTrailARNInvalidException
@@ -6350,6 +6405,7 @@ export const stopLogging: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "StopLogging",
 }));
 export type UpdateChannelError =
   | ChannelAlreadyExistsException
@@ -6386,6 +6442,7 @@ export const updateChannel: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  operationName: "UpdateChannel",
 }));
 export type UpdateDashboardError =
   | ConflictException
@@ -6425,6 +6482,7 @@ export const updateDashboard: API.OperationMethod<
     ServiceQuotaExceededException,
     UnsupportedOperationException,
   ],
+  operationName: "UpdateDashboard",
 }));
 export type UpdateEventDataStoreError =
   | CloudTrailAccessNotEnabledException
@@ -6496,6 +6554,7 @@ export const updateEventDataStore: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  operationName: "UpdateEventDataStore",
 }));
 export type UpdateTrailError =
   | CloudTrailAccessNotEnabledException
@@ -6583,4 +6642,5 @@ export const updateTrail: API.OperationMethod<
     TrailNotProvidedException,
     UnsupportedOperationException,
   ],
+  operationName: "UpdateTrail",
 }));

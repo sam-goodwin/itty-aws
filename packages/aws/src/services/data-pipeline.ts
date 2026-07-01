@@ -972,6 +972,7 @@ export const activatePipeline: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  operationName: "ActivatePipeline",
 }));
 export type AddTagsError =
   | InternalServiceError
@@ -996,6 +997,7 @@ export const addTags: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  operationName: "AddTags",
 }));
 export type CreatePipelineError =
   | InternalServiceError
@@ -1033,6 +1035,7 @@ export const createPipeline: API.OperationMethod<
   input: CreatePipelineInput,
   output: CreatePipelineOutput,
   errors: [InternalServiceError, InvalidRequestException],
+  operationName: "CreatePipeline",
 }));
 export type DeactivatePipelineError =
   | InternalServiceError
@@ -1061,6 +1064,7 @@ export const deactivatePipeline: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  operationName: "DeactivatePipeline",
 }));
 export type DeletePipelineError =
   | InternalServiceError
@@ -1105,6 +1109,7 @@ export const deletePipeline: API.OperationMethod<
     InvalidRequestException,
     PipelineNotFoundException,
   ],
+  operationName: "DeletePipeline",
 }));
 export type DescribeObjectsError =
   | InternalServiceError
@@ -1192,6 +1197,7 @@ export const describeObjects: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  operationName: "DescribeObjects",
   pagination: {
     inputToken: "marker",
     outputToken: "marker",
@@ -1274,6 +1280,7 @@ export const describePipelines: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  operationName: "DescribePipelines",
 }));
 export type EvaluateExpressionError =
   | InternalServiceError
@@ -1320,6 +1327,7 @@ export const evaluateExpression: API.OperationMethod<
     PipelineNotFoundException,
     TaskNotFoundException,
   ],
+  operationName: "EvaluateExpression",
 }));
 export type GetPipelineDefinitionError =
   | InternalServiceError
@@ -1398,6 +1406,7 @@ export const getPipelineDefinition: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  operationName: "GetPipelineDefinition",
 }));
 export type ListPipelinesError =
   | InternalServiceError
@@ -1455,6 +1464,7 @@ export const listPipelines: API.OperationMethod<
   input: ListPipelinesInput,
   output: ListPipelinesOutput,
   errors: [InternalServiceError, InvalidRequestException],
+  operationName: "ListPipelines",
   pagination: {
     inputToken: "marker",
     outputToken: "marker",
@@ -1550,6 +1560,7 @@ export const pollForTask: API.OperationMethod<
     InvalidRequestException,
     TaskNotFoundException,
   ],
+  operationName: "PollForTask",
 }));
 export type PutPipelineDefinitionError =
   | InternalServiceError
@@ -1713,6 +1724,7 @@ export const putPipelineDefinition: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  operationName: "PutPipelineDefinition",
 }));
 export type QueryObjectsError =
   | InternalServiceError
@@ -1780,6 +1792,7 @@ export const queryObjects: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  operationName: "QueryObjects",
   pagination: {
     inputToken: "marker",
     outputToken: "marker",
@@ -1810,6 +1823,7 @@ export const removeTags: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  operationName: "RemoveTags",
 }));
 export type ReportTaskProgressError =
   | InternalServiceError
@@ -1865,6 +1879,7 @@ export const reportTaskProgress: API.OperationMethod<
     PipelineNotFoundException,
     TaskNotFoundException,
   ],
+  operationName: "ReportTaskProgress",
 }));
 export type ReportTaskRunnerHeartbeatError =
   | InternalServiceError
@@ -1904,6 +1919,7 @@ export const reportTaskRunnerHeartbeat: API.OperationMethod<
   input: ReportTaskRunnerHeartbeatInput,
   output: ReportTaskRunnerHeartbeatOutput,
   errors: [InternalServiceError, InvalidRequestException],
+  operationName: "ReportTaskRunnerHeartbeat",
 }));
 export type SetStatusError =
   | InternalServiceError
@@ -1950,6 +1966,7 @@ export const setStatus: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  operationName: "SetStatus",
 }));
 export type SetTaskStatusError =
   | InternalServiceError
@@ -1996,6 +2013,7 @@ export const setTaskStatus: API.OperationMethod<
     PipelineNotFoundException,
     TaskNotFoundException,
   ],
+  operationName: "SetTaskStatus",
 }));
 export type ValidatePipelineDefinitionError =
   | InternalServiceError
@@ -2151,4 +2169,5 @@ export const validatePipelineDefinition: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  operationName: "ValidatePipelineDefinition",
 }));

@@ -51,10 +51,9 @@ export const make = <Op extends Operation<any, any, any>>(
 
     // Extract metadata for error recording (DISTILLED_AWS_DEBUG) and error context
     const serviceSdkId = getAwsApiService(inputAst)?.sdkId;
-    const operationName = getIdentifier(inputAst)?.replace(
-      /(?:Request|Input|Message)$/,
-      "",
-    );
+    const operationName =
+      op.operationName ??
+      getIdentifier(inputAst)?.replace(/(?:Request|Input|Message)$/, "");
 
     // Create request builder and response parser (preprocessing done once)
     const buildRequest = makeRequestBuilder(op);

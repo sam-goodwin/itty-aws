@@ -1716,6 +1716,7 @@ export const createAccessPoint: API.OperationMethod<
     InternalServerError,
     ThrottlingException,
   ],
+  operationName: "CreateAccessPoint",
 }));
 export type CreateFileSystemError =
   | BadRequest
@@ -1806,6 +1807,7 @@ export const createFileSystem: API.OperationMethod<
     ThroughputLimitExceeded,
     UnsupportedAvailabilityZone,
   ],
+  operationName: "CreateFileSystem",
 }));
 export type CreateMountTargetError =
   | AvailabilityZonesMismatch
@@ -1959,6 +1961,7 @@ export const createMountTarget: API.OperationMethod<
     SubnetNotFound,
     UnsupportedAvailabilityZone,
   ],
+  operationName: "CreateMountTarget",
 }));
 export type CreateReplicationConfigurationError =
   | BadRequest
@@ -2018,6 +2021,7 @@ export const createReplicationConfiguration: API.OperationMethod<
     UnsupportedAvailabilityZone,
     ValidationException,
   ],
+  operationName: "CreateReplicationConfiguration",
 }));
 export type CreateTagsError =
   | BadRequest
@@ -2045,6 +2049,7 @@ export const createTags: API.OperationMethod<
   input: CreateTagsRequest,
   output: CreateTagsResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  operationName: "CreateTags",
 }));
 export type DeleteAccessPointError =
   | AccessPointNotFound
@@ -2067,6 +2072,7 @@ export const deleteAccessPoint: API.OperationMethod<
   input: DeleteAccessPointRequest,
   output: DeleteAccessPointResponse,
   errors: [AccessPointNotFound, BadRequest, InternalServerError],
+  operationName: "DeleteAccessPoint",
 }));
 export type DeleteFileSystemError =
   | BadRequest
@@ -2111,6 +2117,7 @@ export const deleteFileSystem: API.OperationMethod<
     FileSystemNotFound,
     InternalServerError,
   ],
+  operationName: "DeleteFileSystem",
 }));
 export type DeleteFileSystemPolicyError =
   | BadRequest
@@ -2139,6 +2146,7 @@ export const deleteFileSystemPolicy: API.OperationMethod<
     IncorrectFileSystemLifeCycleState,
     InternalServerError,
   ],
+  operationName: "DeleteFileSystemPolicy",
 }));
 export type DeleteMountTargetError =
   | BadRequest
@@ -2185,6 +2193,7 @@ export const deleteMountTarget: API.OperationMethod<
     InternalServerError,
     MountTargetNotFound,
   ],
+  operationName: "DeleteMountTarget",
 }));
 export type DeleteReplicationConfigurationError =
   | BadRequest
@@ -2215,6 +2224,7 @@ export const deleteReplicationConfiguration: API.OperationMethod<
     InternalServerError,
     ReplicationNotFound,
   ],
+  operationName: "DeleteReplicationConfiguration",
 }));
 export type DeleteTagsError =
   | BadRequest
@@ -2242,6 +2252,7 @@ export const deleteTags: API.OperationMethod<
   input: DeleteTagsRequest,
   output: DeleteTagsResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  operationName: "DeleteTags",
 }));
 export type DescribeAccessPointsError =
   | AccessPointNotFound
@@ -2287,6 +2298,7 @@ export const describeAccessPoints: API.OperationMethod<
     FileSystemNotFound,
     InternalServerError,
   ],
+  operationName: "DescribeAccessPoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2309,6 +2321,7 @@ export const describeAccountPreferences: API.OperationMethod<
   input: DescribeAccountPreferencesRequest,
   output: DescribeAccountPreferencesResponse,
   errors: [InternalServerError],
+  operationName: "DescribeAccountPreferences",
 }));
 export type DescribeBackupPolicyError =
   | BadRequest
@@ -2335,6 +2348,7 @@ export const describeBackupPolicy: API.OperationMethod<
     PolicyNotFound,
     ValidationException,
   ],
+  operationName: "DescribeBackupPolicy",
 }));
 export type DescribeFileSystemPolicyError =
   | BadRequest
@@ -2357,6 +2371,7 @@ export const describeFileSystemPolicy: API.OperationMethod<
   input: DescribeFileSystemPolicyRequest,
   output: FileSystemPolicyDescription,
   errors: [BadRequest, FileSystemNotFound, InternalServerError, PolicyNotFound],
+  operationName: "DescribeFileSystemPolicy",
 }));
 export type DescribeFileSystemsError =
   | BadRequest
@@ -2413,6 +2428,7 @@ export const describeFileSystems: API.OperationMethod<
   input: DescribeFileSystemsRequest,
   output: DescribeFileSystemsResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  operationName: "DescribeFileSystems",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -2444,6 +2460,7 @@ export const describeLifecycleConfiguration: API.OperationMethod<
   input: DescribeLifecycleConfigurationRequest,
   output: LifecycleConfigurationDescription,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  operationName: "DescribeLifecycleConfiguration",
 }));
 export type DescribeMountTargetsError =
   | AccessPointNotFound
@@ -2492,6 +2509,7 @@ export const describeMountTargets: API.OperationMethod<
     InternalServerError,
     MountTargetNotFound,
   ],
+  operationName: "DescribeMountTargets",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -2532,6 +2550,7 @@ export const describeMountTargetSecurityGroups: API.OperationMethod<
     InternalServerError,
     MountTargetNotFound,
   ],
+  operationName: "DescribeMountTargetSecurityGroups",
 }));
 export type DescribeReplicationConfigurationsError =
   | BadRequest
@@ -2575,6 +2594,7 @@ export const describeReplicationConfigurations: API.OperationMethod<
     ReplicationNotFound,
     ValidationException,
   ],
+  operationName: "DescribeReplicationConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2623,6 +2643,7 @@ export const describeTags: API.OperationMethod<
   input: DescribeTagsRequest,
   output: DescribeTagsResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  operationName: "DescribeTags",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -2671,6 +2692,7 @@ export const listTagsForResource: API.OperationMethod<
     FileSystemNotFound,
     InternalServerError,
   ],
+  operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2719,6 +2741,7 @@ export const modifyMountTargetSecurityGroups: API.OperationMethod<
     SecurityGroupLimitExceeded,
     SecurityGroupNotFound,
   ],
+  operationName: "ModifyMountTargetSecurityGroups",
 }));
 export type PutAccountPreferencesError =
   | BadRequest
@@ -2744,6 +2767,7 @@ export const putAccountPreferences: API.OperationMethod<
   input: PutAccountPreferencesRequest,
   output: PutAccountPreferencesResponse,
   errors: [BadRequest, InternalServerError],
+  operationName: "PutAccountPreferences",
 }));
 export type PutBackupPolicyError =
   | BadRequest
@@ -2770,6 +2794,7 @@ export const putBackupPolicy: API.OperationMethod<
     InternalServerError,
     ValidationException,
   ],
+  operationName: "PutBackupPolicy",
 }));
 export type PutFileSystemPolicyError =
   | BadRequest
@@ -2807,6 +2832,7 @@ export const putFileSystemPolicy: API.OperationMethod<
     InternalServerError,
     InvalidPolicyException,
   ],
+  operationName: "PutFileSystemPolicy",
 }));
 export type PutLifecycleConfigurationError =
   | BadRequest
@@ -2883,6 +2909,7 @@ export const putLifecycleConfiguration: API.OperationMethod<
     IncorrectFileSystemLifeCycleState,
     InternalServerError,
   ],
+  operationName: "PutLifecycleConfiguration",
 }));
 export type TagResourceError =
   | AccessPointNotFound
@@ -2910,6 +2937,7 @@ export const tagResource: API.OperationMethod<
     FileSystemNotFound,
     InternalServerError,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessPointNotFound
@@ -2937,6 +2965,7 @@ export const untagResource: API.OperationMethod<
     FileSystemNotFound,
     InternalServerError,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateFileSystemError =
   | BadRequest
@@ -2968,6 +2997,7 @@ export const updateFileSystem: API.OperationMethod<
     ThroughputLimitExceeded,
     TooManyRequests,
   ],
+  operationName: "UpdateFileSystem",
 }));
 export type UpdateFileSystemProtectionError =
   | BadRequest
@@ -3003,4 +3033,5 @@ export const updateFileSystemProtection: API.OperationMethod<
     ThroughputLimitExceeded,
     TooManyRequests,
   ],
+  operationName: "UpdateFileSystemProtection",
 }));

@@ -3985,6 +3985,7 @@ export const cancelFlowExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelFlowExecutions",
 }));
 export type CreateConnectorProfileError =
   | ConflictException
@@ -4015,6 +4016,7 @@ export const createConnectorProfile: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateConnectorProfile",
 }));
 export type CreateFlowError =
   | AccessDeniedException
@@ -4051,6 +4053,7 @@ export const createFlow: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateFlow",
 }));
 export type DeleteConnectorProfileError =
   | ConflictException
@@ -4073,6 +4076,7 @@ export const deleteConnectorProfile: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteConnectorProfile",
 }));
 export type DeleteFlowError =
   | ConflictException
@@ -4096,6 +4100,7 @@ export const deleteFlow: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteFlow",
 }));
 export type DescribeConnectorError =
   | InternalServerException
@@ -4120,6 +4125,7 @@ export const describeConnector: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeConnector",
 }));
 export type DescribeConnectorEntityError =
   | ConnectorAuthenticationException
@@ -4147,6 +4153,7 @@ export const describeConnectorEntity: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeConnectorEntity",
 }));
 export type DescribeConnectorProfilesError =
   | InternalServerException
@@ -4184,6 +4191,7 @@ export const describeConnectorProfiles: API.OperationMethod<
   input: DescribeConnectorProfilesRequest,
   output: DescribeConnectorProfilesResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "DescribeConnectorProfiles",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4224,6 +4232,7 @@ export const describeConnectors: API.OperationMethod<
   input: DescribeConnectorsRequest,
   output: DescribeConnectorsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "DescribeConnectors",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4246,6 +4255,7 @@ export const describeFlow: API.OperationMethod<
   input: DescribeFlowRequest,
   output: DescribeFlowResponse,
   errors: [InternalServerException, ResourceNotFoundException],
+  operationName: "DescribeFlow",
 }));
 export type DescribeFlowExecutionRecordsError =
   | InternalServerException
@@ -4283,6 +4293,7 @@ export const describeFlowExecutionRecords: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeFlowExecutionRecords",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4317,6 +4328,7 @@ export const listConnectorEntities: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListConnectorEntities",
 }));
 export type ListConnectorsError =
   | InternalServerException
@@ -4351,6 +4363,7 @@ export const listConnectors: API.OperationMethod<
   input: ListConnectorsRequest,
   output: ListConnectorsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListConnectors",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4388,6 +4401,7 @@ export const listFlows: API.OperationMethod<
   input: ListFlowsRequest,
   output: ListFlowsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListFlows",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4415,6 +4429,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type RegisterConnectorError =
   | AccessDeniedException
@@ -4451,6 +4466,7 @@ export const registerConnector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RegisterConnector",
 }));
 export type ResetConnectorMetadataCacheError =
   | ConflictException
@@ -4482,6 +4498,7 @@ export const resetConnectorMetadataCache: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ResetConnectorMetadataCache",
 }));
 export type StartFlowError =
   | ConflictException
@@ -4507,6 +4524,7 @@ export const startFlow: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "StartFlow",
 }));
 export type StopFlowError =
   | ConflictException
@@ -4533,6 +4551,7 @@ export const stopFlow: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "StopFlow",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -4555,6 +4574,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UnregisterConnectorError =
   | ConflictException
@@ -4578,6 +4598,7 @@ export const unregisterConnector: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "UnregisterConnector",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -4600,6 +4621,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateConnectorProfileError =
   | ConflictException
@@ -4626,6 +4648,7 @@ export const updateConnectorProfile: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateConnectorProfile",
 }));
 export type UpdateConnectorRegistrationError =
   | AccessDeniedException
@@ -4665,6 +4688,7 @@ export const updateConnectorRegistration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateConnectorRegistration",
 }));
 export type UpdateFlowError =
   | AccessDeniedException
@@ -4697,4 +4721,5 @@ export const updateFlow: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateFlow",
 }));

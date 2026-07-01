@@ -3473,6 +3473,7 @@ export const associateDelegateToResource: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  operationName: "AssociateDelegateToResource",
 }));
 export type AssociateMemberToGroupError =
   | DirectoryServiceAuthenticationFailedException
@@ -3505,6 +3506,7 @@ export const associateMemberToGroup: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  operationName: "AssociateMemberToGroup",
 }));
 export type AssumeImpersonationRoleError =
   | InvalidParameterException
@@ -3530,6 +3532,7 @@ export const assumeImpersonationRole: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  operationName: "AssumeImpersonationRole",
 }));
 export type CancelMailboxExportJobError =
   | EntityNotFoundException
@@ -3557,6 +3560,7 @@ export const cancelMailboxExportJob: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "CancelMailboxExportJob",
 }));
 export type CreateAliasError =
   | EmailAddressInUseException
@@ -3591,6 +3595,7 @@ export const createAlias: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "CreateAlias",
 }));
 export type CreateAvailabilityConfigurationError =
   | InvalidParameterException
@@ -3617,6 +3622,7 @@ export const createAvailabilityConfiguration: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "CreateAvailabilityConfiguration",
 }));
 export type CreateGroupError =
   | DirectoryServiceAuthenticationFailedException
@@ -3649,6 +3655,7 @@ export const createGroup: API.OperationMethod<
     ReservedNameException,
     UnsupportedOperationException,
   ],
+  operationName: "CreateGroup",
 }));
 export type CreateIdentityCenterApplicationError =
   | InvalidParameterException
@@ -3665,6 +3672,7 @@ export const createIdentityCenterApplication: API.OperationMethod<
   input: CreateIdentityCenterApplicationRequest,
   output: CreateIdentityCenterApplicationResponse,
   errors: [InvalidParameterException],
+  operationName: "CreateIdentityCenterApplication",
 }));
 export type CreateImpersonationRoleError =
   | EntityNotFoundException
@@ -3698,6 +3706,7 @@ export const createImpersonationRole: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "CreateImpersonationRole",
 }));
 export type CreateMobileDeviceAccessRuleError =
   | InvalidParameterException
@@ -3722,6 +3731,7 @@ export const createMobileDeviceAccessRule: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "CreateMobileDeviceAccessRule",
 }));
 export type CreateOrganizationError =
   | DirectoryInUseException
@@ -3758,6 +3768,7 @@ export const createOrganization: API.OperationMethod<
     LimitExceededException,
     NameAvailabilityException,
   ],
+  operationName: "CreateOrganization",
 }));
 export type CreateResourceError =
   | DirectoryServiceAuthenticationFailedException
@@ -3790,6 +3801,7 @@ export const createResource: API.OperationMethod<
     ReservedNameException,
     UnsupportedOperationException,
   ],
+  operationName: "CreateResource",
 }));
 export type CreateUserError =
   | DirectoryServiceAuthenticationFailedException
@@ -3824,6 +3836,7 @@ export const createUser: API.OperationMethod<
     ReservedNameException,
     UnsupportedOperationException,
   ],
+  operationName: "CreateUser",
 }));
 export type DeleteAccessControlRuleError =
   | OrganizationNotFoundException
@@ -3843,6 +3856,7 @@ export const deleteAccessControlRule: API.OperationMethod<
   input: DeleteAccessControlRuleRequest,
   output: DeleteAccessControlRuleResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
+  operationName: "DeleteAccessControlRule",
 }));
 export type DeleteAliasError =
   | EntityNotFoundException
@@ -3870,6 +3884,7 @@ export const deleteAlias: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "DeleteAlias",
 }));
 export type DeleteAvailabilityConfigurationError =
   | OrganizationNotFoundException
@@ -3887,6 +3902,7 @@ export const deleteAvailabilityConfiguration: API.OperationMethod<
   input: DeleteAvailabilityConfigurationRequest,
   output: DeleteAvailabilityConfigurationResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
+  operationName: "DeleteAvailabilityConfiguration",
 }));
 export type DeleteEmailMonitoringConfigurationError =
   | InvalidParameterException
@@ -3909,6 +3925,7 @@ export const deleteEmailMonitoringConfiguration: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "DeleteEmailMonitoringConfiguration",
 }));
 export type DeleteGroupError =
   | DirectoryServiceAuthenticationFailedException
@@ -3939,6 +3956,7 @@ export const deleteGroup: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  operationName: "DeleteGroup",
 }));
 export type DeleteIdentityCenterApplicationError =
   | InvalidParameterException
@@ -3956,6 +3974,7 @@ export const deleteIdentityCenterApplication: API.OperationMethod<
   input: DeleteIdentityCenterApplicationRequest,
   output: DeleteIdentityCenterApplicationResponse,
   errors: [InvalidParameterException, OrganizationStateException],
+  operationName: "DeleteIdentityCenterApplication",
 }));
 export type DeleteIdentityProviderConfigurationError =
   | InvalidParameterException
@@ -3978,6 +3997,7 @@ export const deleteIdentityProviderConfiguration: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "DeleteIdentityProviderConfiguration",
 }));
 export type DeleteImpersonationRoleError =
   | InvalidParameterException
@@ -4000,6 +4020,7 @@ export const deleteImpersonationRole: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "DeleteImpersonationRole",
 }));
 export type DeleteMailboxPermissionsError =
   | EntityNotFoundException
@@ -4026,6 +4047,7 @@ export const deleteMailboxPermissions: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "DeleteMailboxPermissions",
 }));
 export type DeleteMobileDeviceAccessOverrideError =
   | EntityNotFoundException
@@ -4052,6 +4074,7 @@ export const deleteMobileDeviceAccessOverride: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "DeleteMobileDeviceAccessOverride",
 }));
 export type DeleteMobileDeviceAccessRuleError =
   | InvalidParameterException
@@ -4076,6 +4099,7 @@ export const deleteMobileDeviceAccessRule: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "DeleteMobileDeviceAccessRule",
 }));
 export type DeleteOrganizationError =
   | InvalidParameterException
@@ -4098,6 +4122,7 @@ export const deleteOrganization: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "DeleteOrganization",
 }));
 export type DeletePersonalAccessTokenError =
   | InvalidParameterException
@@ -4120,6 +4145,7 @@ export const deletePersonalAccessToken: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "DeletePersonalAccessToken",
 }));
 export type DeleteResourceError =
   | EntityStateException
@@ -4146,6 +4172,7 @@ export const deleteResource: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  operationName: "DeleteResource",
 }));
 export type DeleteRetentionPolicyError =
   | InvalidParameterException
@@ -4168,6 +4195,7 @@ export const deleteRetentionPolicy: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "DeleteRetentionPolicy",
 }));
 export type DeleteUserError =
   | DirectoryServiceAuthenticationFailedException
@@ -4203,6 +4231,7 @@ export const deleteUser: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  operationName: "DeleteUser",
 }));
 export type DeregisterFromWorkMailError =
   | EntityNotFoundException
@@ -4232,6 +4261,7 @@ export const deregisterFromWorkMail: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "DeregisterFromWorkMail",
 }));
 export type DeregisterMailDomainError =
   | InvalidCustomSesConfigurationException
@@ -4259,6 +4289,7 @@ export const deregisterMailDomain: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "DeregisterMailDomain",
 }));
 export type DescribeEmailMonitoringConfigurationError =
   | InvalidParameterException
@@ -4283,6 +4314,7 @@ export const describeEmailMonitoringConfiguration: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeEmailMonitoringConfiguration",
 }));
 export type DescribeEntityError =
   | EntityNotFoundException
@@ -4307,6 +4339,7 @@ export const describeEntity: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "DescribeEntity",
 }));
 export type DescribeGroupError =
   | EntityNotFoundException
@@ -4331,6 +4364,7 @@ export const describeGroup: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "DescribeGroup",
 }));
 export type DescribeIdentityProviderConfigurationError =
   | InvalidParameterException
@@ -4355,6 +4389,7 @@ export const describeIdentityProviderConfiguration: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeIdentityProviderConfiguration",
 }));
 export type DescribeInboundDmarcSettingsError =
   | OrganizationNotFoundException
@@ -4372,6 +4407,7 @@ export const describeInboundDmarcSettings: API.OperationMethod<
   input: DescribeInboundDmarcSettingsRequest,
   output: DescribeInboundDmarcSettingsResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
+  operationName: "DescribeInboundDmarcSettings",
 }));
 export type DescribeMailboxExportJobError =
   | EntityNotFoundException
@@ -4396,6 +4432,7 @@ export const describeMailboxExportJob: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "DescribeMailboxExportJob",
 }));
 export type DescribeOrganizationError =
   | InvalidParameterException
@@ -4414,6 +4451,7 @@ export const describeOrganization: API.OperationMethod<
   input: DescribeOrganizationRequest,
   output: DescribeOrganizationResponse,
   errors: [InvalidParameterException, OrganizationNotFoundException],
+  operationName: "DescribeOrganization",
 }));
 export type DescribeResourceError =
   | EntityNotFoundException
@@ -4440,6 +4478,7 @@ export const describeResource: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeResource",
 }));
 export type DescribeUserError =
   | DirectoryServiceAuthenticationFailedException
@@ -4468,6 +4507,7 @@ export const describeUser: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "DescribeUser",
 }));
 export type DisassociateDelegateFromResourceError =
   | EntityNotFoundException
@@ -4496,6 +4536,7 @@ export const disassociateDelegateFromResource: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  operationName: "DisassociateDelegateFromResource",
 }));
 export type DisassociateMemberFromGroupError =
   | DirectoryServiceAuthenticationFailedException
@@ -4528,6 +4569,7 @@ export const disassociateMemberFromGroup: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  operationName: "DisassociateMemberFromGroup",
 }));
 export type GetAccessControlEffectError =
   | EntityNotFoundException
@@ -4555,6 +4597,7 @@ export const getAccessControlEffect: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  operationName: "GetAccessControlEffect",
 }));
 export type GetDefaultRetentionPolicyError =
   | EntityNotFoundException
@@ -4579,6 +4622,7 @@ export const getDefaultRetentionPolicy: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "GetDefaultRetentionPolicy",
 }));
 export type GetImpersonationRoleError =
   | InvalidParameterException
@@ -4603,6 +4647,7 @@ export const getImpersonationRole: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  operationName: "GetImpersonationRole",
 }));
 export type GetImpersonationRoleEffectError =
   | EntityNotFoundException
@@ -4631,6 +4676,7 @@ export const getImpersonationRoleEffect: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  operationName: "GetImpersonationRoleEffect",
 }));
 export type GetMailboxDetailsError =
   | EntityNotFoundException
@@ -4655,6 +4701,7 @@ export const getMailboxDetails: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "GetMailboxDetails",
 }));
 export type GetMailDomainError =
   | InvalidParameterException
@@ -4679,6 +4726,7 @@ export const getMailDomain: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "GetMailDomain",
 }));
 export type GetMobileDeviceAccessEffectError =
   | InvalidParameterException
@@ -4702,6 +4750,7 @@ export const getMobileDeviceAccessEffect: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "GetMobileDeviceAccessEffect",
 }));
 export type GetMobileDeviceAccessOverrideError =
   | EntityNotFoundException
@@ -4728,6 +4777,7 @@ export const getMobileDeviceAccessOverride: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  operationName: "GetMobileDeviceAccessOverride",
 }));
 export type GetPersonalAccessTokenMetadataError =
   | InvalidParameterException
@@ -4752,6 +4802,7 @@ export const getPersonalAccessTokenMetadata: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  operationName: "GetPersonalAccessTokenMetadata",
 }));
 export type ListAccessControlRulesError =
   | OrganizationNotFoundException
@@ -4769,6 +4820,7 @@ export const listAccessControlRules: API.OperationMethod<
   input: ListAccessControlRulesRequest,
   output: ListAccessControlRulesResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
+  operationName: "ListAccessControlRules",
 }));
 export type ListAliasesError =
   | EntityNotFoundException
@@ -4811,6 +4863,7 @@ export const listAliases: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "ListAliases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4853,6 +4906,7 @@ export const listAvailabilityConfigurations: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "ListAvailabilityConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4901,6 +4955,7 @@ export const listGroupMembers: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "ListGroupMembers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4945,6 +5000,7 @@ export const listGroups: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "ListGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4991,6 +5047,7 @@ export const listGroupsForEntity: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "ListGroupsForEntity",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5033,6 +5090,7 @@ export const listImpersonationRoles: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "ListImpersonationRoles",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5076,6 +5134,7 @@ export const listMailboxExportJobs: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "ListMailboxExportJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5121,6 +5180,7 @@ export const listMailboxPermissions: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "ListMailboxPermissions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5163,6 +5223,7 @@ export const listMailDomains: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "ListMailDomains",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5207,6 +5268,7 @@ export const listMobileDeviceAccessOverrides: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "ListMobileDeviceAccessOverrides",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5234,6 +5296,7 @@ export const listMobileDeviceAccessRules: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "ListMobileDeviceAccessRules",
 }));
 export type ListOrganizationsError = InvalidParameterException | CommonErrors;
 /**
@@ -5263,6 +5326,7 @@ export const listOrganizations: API.OperationMethod<
   input: ListOrganizationsRequest,
   output: ListOrganizationsResponse,
   errors: [InvalidParameterException],
+  operationName: "ListOrganizations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5309,6 +5373,7 @@ export const listPersonalAccessTokens: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "ListPersonalAccessTokens",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5359,6 +5424,7 @@ export const listResourceDelegates: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  operationName: "ListResourceDelegates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5403,6 +5469,7 @@ export const listResources: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  operationName: "ListResources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5422,6 +5489,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type ListUsersError =
   | InvalidParameterException
@@ -5459,6 +5527,7 @@ export const listUsers: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "ListUsers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5495,6 +5564,7 @@ export const putAccessControlRule: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  operationName: "PutAccessControlRule",
 }));
 export type PutEmailMonitoringConfigurationError =
   | InvalidParameterException
@@ -5519,6 +5589,7 @@ export const putEmailMonitoringConfiguration: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  operationName: "PutEmailMonitoringConfiguration",
 }));
 export type PutIdentityProviderConfigurationError =
   | InvalidParameterException
@@ -5544,6 +5615,7 @@ export const putIdentityProviderConfiguration: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  operationName: "PutIdentityProviderConfiguration",
 }));
 export type PutInboundDmarcSettingsError =
   | OrganizationNotFoundException
@@ -5561,6 +5633,7 @@ export const putInboundDmarcSettings: API.OperationMethod<
   input: PutInboundDmarcSettingsRequest,
   output: PutInboundDmarcSettingsResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
+  operationName: "PutInboundDmarcSettings",
 }));
 export type PutMailboxPermissionsError =
   | EntityNotFoundException
@@ -5588,6 +5661,7 @@ export const putMailboxPermissions: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "PutMailboxPermissions",
 }));
 export type PutMobileDeviceAccessOverrideError =
   | EntityNotFoundException
@@ -5614,6 +5688,7 @@ export const putMobileDeviceAccessOverride: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "PutMobileDeviceAccessOverride",
 }));
 export type PutRetentionPolicyError =
   | InvalidParameterException
@@ -5638,6 +5713,7 @@ export const putRetentionPolicy: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "PutRetentionPolicy",
 }));
 export type RegisterMailDomainError =
   | InvalidParameterException
@@ -5665,6 +5741,7 @@ export const registerMailDomain: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "RegisterMailDomain",
 }));
 export type RegisterToWorkMailError =
   | DirectoryServiceAuthenticationFailedException
@@ -5712,6 +5789,7 @@ export const registerToWorkMail: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  operationName: "RegisterToWorkMail",
 }));
 export type ResetPasswordError =
   | DirectoryServiceAuthenticationFailedException
@@ -5746,6 +5824,7 @@ export const resetPassword: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  operationName: "ResetPassword",
 }));
 export type StartMailboxExportJobError =
   | EntityNotFoundException
@@ -5775,6 +5854,7 @@ export const startMailboxExportJob: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "StartMailboxExportJob",
 }));
 export type TagResourceError =
   | InvalidParameterException
@@ -5800,6 +5880,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type TestAvailabilityConfigurationError =
   | InvalidParameterException
@@ -5830,6 +5911,7 @@ export const testAvailabilityConfiguration: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  operationName: "TestAvailabilityConfiguration",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -5845,6 +5927,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type UpdateAvailabilityConfigurationError =
   | InvalidParameterException
@@ -5870,6 +5953,7 @@ export const updateAvailabilityConfiguration: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateAvailabilityConfiguration",
 }));
 export type UpdateDefaultMailDomainError =
   | InvalidParameterException
@@ -5896,6 +5980,7 @@ export const updateDefaultMailDomain: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "UpdateDefaultMailDomain",
 }));
 export type UpdateGroupError =
   | EntityNotFoundException
@@ -5924,6 +6009,7 @@ export const updateGroup: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  operationName: "UpdateGroup",
 }));
 export type UpdateImpersonationRoleError =
   | EntityNotFoundException
@@ -5954,6 +6040,7 @@ export const updateImpersonationRole: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateImpersonationRole",
 }));
 export type UpdateMailboxQuotaError =
   | EntityNotFoundException
@@ -5981,6 +6068,7 @@ export const updateMailboxQuota: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "UpdateMailboxQuota",
 }));
 export type UpdateMobileDeviceAccessRuleError =
   | EntityNotFoundException
@@ -6005,6 +6093,7 @@ export const updateMobileDeviceAccessRule: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  operationName: "UpdateMobileDeviceAccessRule",
 }));
 export type UpdatePrimaryEmailAddressError =
   | DirectoryServiceAuthenticationFailedException
@@ -6045,6 +6134,7 @@ export const updatePrimaryEmailAddress: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  operationName: "UpdatePrimaryEmailAddress",
 }));
 export type UpdateResourceError =
   | DirectoryUnavailableException
@@ -6087,6 +6177,7 @@ export const updateResource: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  operationName: "UpdateResource",
 }));
 export type UpdateUserError =
   | DirectoryServiceAuthenticationFailedException
@@ -6121,4 +6212,5 @@ export const updateUser: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  operationName: "UpdateUser",
 }));

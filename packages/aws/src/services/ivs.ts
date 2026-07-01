@@ -2413,6 +2413,7 @@ export const batchGetChannel: API.OperationMethod<
   input: BatchGetChannelRequest,
   output: BatchGetChannelResponse,
   errors: [AccessDeniedException, ServiceUnavailable, ValidationException],
+  operationName: "BatchGetChannel",
 }));
 export type BatchGetStreamKeyError =
   | AccessDeniedException
@@ -2431,6 +2432,7 @@ export const batchGetStreamKey: API.OperationMethod<
   input: BatchGetStreamKeyRequest,
   output: BatchGetStreamKeyResponse,
   errors: [AccessDeniedException, ServiceUnavailable, ValidationException],
+  operationName: "BatchGetStreamKey",
 }));
 export type BatchStartViewerSessionRevocationError =
   | AccessDeniedException
@@ -2455,6 +2457,7 @@ export const batchStartViewerSessionRevocation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchStartViewerSessionRevocation",
 }));
 export type CreateAdConfigurationError =
   | AccessDeniedException
@@ -2487,6 +2490,7 @@ export const createAdConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAdConfiguration",
 }));
 export type CreateChannelError =
   | AccessDeniedException
@@ -2513,6 +2517,7 @@ export const createChannel: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateChannel",
 }));
 export type CreatePlaybackRestrictionPolicyError =
   | AccessDeniedException
@@ -2539,6 +2544,7 @@ export const createPlaybackRestrictionPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreatePlaybackRestrictionPolicy",
 }));
 export type CreateRecordingConfigurationError =
   | AccessDeniedException
@@ -2571,6 +2577,7 @@ export const createRecordingConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateRecordingConfiguration",
 }));
 export type CreateStreamKeyError =
   | AccessDeniedException
@@ -2599,6 +2606,7 @@ export const createStreamKey: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateStreamKey",
 }));
 export type DeleteAdConfigurationError =
   | AccessDeniedException
@@ -2625,6 +2633,7 @@ export const deleteAdConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteAdConfiguration",
 }));
 export type DeleteChannelError =
   | AccessDeniedException
@@ -2653,6 +2662,7 @@ export const deleteChannel: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteChannel",
 }));
 export type DeletePlaybackKeyPairError =
   | AccessDeniedException
@@ -2677,6 +2687,7 @@ export const deletePlaybackKeyPair: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeletePlaybackKeyPair",
 }));
 export type DeletePlaybackRestrictionPolicyError =
   | AccessDeniedException
@@ -2703,6 +2714,7 @@ export const deletePlaybackRestrictionPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeletePlaybackRestrictionPolicy",
 }));
 export type DeleteRecordingConfigurationError =
   | AccessDeniedException
@@ -2731,6 +2743,7 @@ export const deleteRecordingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteRecordingConfiguration",
 }));
 export type DeleteStreamKeyError =
   | AccessDeniedException
@@ -2755,6 +2768,7 @@ export const deleteStreamKey: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteStreamKey",
 }));
 export type GetAdConfigurationError =
   | AccessDeniedException
@@ -2779,6 +2793,7 @@ export const getAdConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetAdConfiguration",
 }));
 export type GetChannelError =
   | AccessDeniedException
@@ -2801,6 +2816,7 @@ export const getChannel: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetChannel",
 }));
 export type GetPlaybackKeyPairError =
   | AccessDeniedException
@@ -2823,6 +2839,7 @@ export const getPlaybackKeyPair: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetPlaybackKeyPair",
 }));
 export type GetPlaybackRestrictionPolicyError =
   | AccessDeniedException
@@ -2847,6 +2864,7 @@ export const getPlaybackRestrictionPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetPlaybackRestrictionPolicy",
 }));
 export type GetRecordingConfigurationError =
   | AccessDeniedException
@@ -2871,6 +2889,7 @@ export const getRecordingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetRecordingConfiguration",
 }));
 export type GetStreamError =
   | AccessDeniedException
@@ -2895,6 +2914,7 @@ export const getStream: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetStream",
 }));
 export type GetStreamKeyError =
   | AccessDeniedException
@@ -2917,6 +2937,7 @@ export const getStreamKey: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetStreamKey",
 }));
 export type GetStreamSessionError =
   | AccessDeniedException
@@ -2939,6 +2960,7 @@ export const getStreamSession: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetStreamSession",
 }));
 export type ImportPlaybackKeyPairError =
   | AccessDeniedException
@@ -2965,6 +2987,7 @@ export const importPlaybackKeyPair: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "ImportPlaybackKeyPair",
 }));
 export type InsertAdBreakError =
   | AccessDeniedException
@@ -2997,6 +3020,7 @@ export const insertAdBreak: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InsertAdBreak",
 }));
 export type ListAdConfigurationsError =
   | AccessDeniedException
@@ -3030,6 +3054,7 @@ export const listAdConfigurations: API.OperationMethod<
   input: ListAdConfigurationsRequest,
   output: ListAdConfigurationsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListAdConfigurations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3069,6 +3094,7 @@ export const listChannels: API.OperationMethod<
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [AccessDeniedException, ConflictException, ValidationException],
+  operationName: "ListChannels",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3106,6 +3132,7 @@ export const listPlaybackKeyPairs: API.OperationMethod<
   input: ListPlaybackKeyPairsRequest,
   output: ListPlaybackKeyPairsResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListPlaybackKeyPairs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3150,6 +3177,7 @@ export const listPlaybackRestrictionPolicies: API.OperationMethod<
     PendingVerification,
     ValidationException,
   ],
+  operationName: "ListPlaybackRestrictionPolicies",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3188,6 +3216,7 @@ export const listRecordingConfigurations: API.OperationMethod<
   input: ListRecordingConfigurationsRequest,
   output: ListRecordingConfigurationsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListRecordingConfigurations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3230,6 +3259,7 @@ export const listStreamKeys: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListStreamKeys",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3267,6 +3297,7 @@ export const listStreams: API.OperationMethod<
   input: ListStreamsRequest,
   output: ListStreamsResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListStreams",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3309,6 +3340,7 @@ export const listStreamSessions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListStreamSessions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3336,6 +3368,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutMetadataError =
   | AccessDeniedException
@@ -3362,6 +3395,7 @@ export const putMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutMetadata",
 }));
 export type StartViewerSessionRevocationError =
   | AccessDeniedException
@@ -3390,6 +3424,7 @@ export const startViewerSessionRevocation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartViewerSessionRevocation",
 }));
 export type StopStreamError =
   | AccessDeniedException
@@ -3418,6 +3453,7 @@ export const stopStream: API.OperationMethod<
     StreamUnavailable,
     ValidationException,
   ],
+  operationName: "StopStream",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -3440,6 +3476,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -3462,6 +3499,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAdConfigurationError =
   | AccessDeniedException
@@ -3494,6 +3532,7 @@ export const updateAdConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAdConfiguration",
 }));
 export type UpdateChannelError =
   | AccessDeniedException
@@ -3520,6 +3559,7 @@ export const updateChannel: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateChannel",
 }));
 export type UpdatePlaybackRestrictionPolicyError =
   | AccessDeniedException
@@ -3546,4 +3586,5 @@ export const updatePlaybackRestrictionPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdatePlaybackRestrictionPolicy",
 }));

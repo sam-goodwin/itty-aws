@@ -1916,6 +1916,7 @@ export const getDataIntegrationEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataIntegrationEvent",
 }));
 export type GetDataIntegrationFlowExecutionError =
   | AccessDeniedException
@@ -1942,6 +1943,7 @@ export const getDataIntegrationFlowExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataIntegrationFlowExecution",
 }));
 export type ListDataIntegrationEventsError =
   | AccessDeniedException
@@ -1981,6 +1983,7 @@ export const listDataIntegrationEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataIntegrationEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2028,6 +2031,7 @@ export const listDataIntegrationFlowExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataIntegrationFlowExecutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2060,6 +2064,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type SendDataIntegrationEventError =
   | AccessDeniedException
@@ -2090,6 +2095,7 @@ export const sendDataIntegrationEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendDataIntegrationEvent",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2116,6 +2122,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2142,6 +2149,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateBillOfMaterialsImportJobError =
   | AccessDeniedException
@@ -2172,6 +2180,7 @@ export const createBillOfMaterialsImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateBillOfMaterialsImportJob",
 }));
 export type GetBillOfMaterialsImportJobError =
   | AccessDeniedException
@@ -2198,6 +2207,7 @@ export const getBillOfMaterialsImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetBillOfMaterialsImportJob",
 }));
 export type CreateDataIntegrationFlowError =
   | AccessDeniedException
@@ -2226,6 +2236,7 @@ export const createDataIntegrationFlow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDataIntegrationFlow",
 }));
 export type GetDataIntegrationFlowError =
   | AccessDeniedException
@@ -2252,6 +2263,7 @@ export const getDataIntegrationFlow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataIntegrationFlow",
 }));
 export type UpdateDataIntegrationFlowError =
   | AccessDeniedException
@@ -2278,6 +2290,7 @@ export const updateDataIntegrationFlow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDataIntegrationFlow",
 }));
 export type DeleteDataIntegrationFlowError =
   | AccessDeniedException
@@ -2302,6 +2315,7 @@ export const deleteDataIntegrationFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteDataIntegrationFlow",
 }));
 export type ListDataIntegrationFlowsError =
   | AccessDeniedException
@@ -2341,6 +2355,7 @@ export const listDataIntegrationFlows: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataIntegrationFlows",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2377,6 +2392,7 @@ export const createDataLakeDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDataLakeDataset",
 }));
 export type GetDataLakeDatasetError =
   | AccessDeniedException
@@ -2403,6 +2419,7 @@ export const getDataLakeDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataLakeDataset",
 }));
 export type UpdateDataLakeDatasetError =
   | AccessDeniedException
@@ -2429,6 +2446,7 @@ export const updateDataLakeDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDataLakeDataset",
 }));
 export type DeleteDataLakeDatasetError =
   | AccessDeniedException
@@ -2455,6 +2473,7 @@ export const deleteDataLakeDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDataLakeDataset",
 }));
 export type ListDataLakeDatasetsError =
   | AccessDeniedException
@@ -2496,6 +2515,7 @@ export const listDataLakeDatasets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataLakeDatasets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2530,6 +2550,7 @@ export const createDataLakeNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDataLakeNamespace",
 }));
 export type GetDataLakeNamespaceError =
   | AccessDeniedException
@@ -2556,6 +2577,7 @@ export const getDataLakeNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataLakeNamespace",
 }));
 export type UpdateDataLakeNamespaceError =
   | AccessDeniedException
@@ -2582,6 +2604,7 @@ export const updateDataLakeNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDataLakeNamespace",
 }));
 export type DeleteDataLakeNamespaceError =
   | AccessDeniedException
@@ -2608,6 +2631,7 @@ export const deleteDataLakeNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDataLakeNamespace",
 }));
 export type ListDataLakeNamespacesError =
   | AccessDeniedException
@@ -2647,6 +2671,7 @@ export const listDataLakeNamespaces: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataLakeNamespaces",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2683,6 +2708,7 @@ export const createInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateInstance",
 }));
 export type GetInstanceError =
   | AccessDeniedException
@@ -2709,6 +2735,7 @@ export const getInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetInstance",
 }));
 export type UpdateInstanceError =
   | AccessDeniedException
@@ -2735,6 +2762,7 @@ export const updateInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateInstance",
 }));
 export type DeleteInstanceError =
   | AccessDeniedException
@@ -2763,6 +2791,7 @@ export const deleteInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteInstance",
 }));
 export type ListInstancesError =
   | AccessDeniedException
@@ -2802,6 +2831,7 @@ export const listInstances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListInstances",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

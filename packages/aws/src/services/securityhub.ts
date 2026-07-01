@@ -19280,6 +19280,7 @@ export const acceptAdministratorInvitation: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "AcceptAdministratorInvitation",
 }));
 export type AcceptInvitationError =
   | InternalException
@@ -19317,6 +19318,7 @@ export const acceptInvitation: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "AcceptInvitation",
 }));
 export type BatchDeleteAutomationRulesError =
   | InternalException
@@ -19343,6 +19345,7 @@ export const batchDeleteAutomationRules: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "BatchDeleteAutomationRules",
 }));
 export type BatchDisableStandardsError =
   | AccessDeniedException
@@ -19373,6 +19376,7 @@ export const batchDisableStandards: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "BatchDisableStandards",
 }));
 export type BatchEnableStandardsError =
   | AccessDeniedException
@@ -19404,6 +19408,7 @@ export const batchEnableStandards: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "BatchEnableStandards",
 }));
 export type BatchGetAutomationRulesError =
   | AccessDeniedException
@@ -19433,6 +19438,7 @@ export const batchGetAutomationRules: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "BatchGetAutomationRules",
 }));
 export type BatchGetConfigurationPolicyAssociationsError =
   | AccessDeniedException
@@ -19463,6 +19469,7 @@ export const batchGetConfigurationPolicyAssociations: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "BatchGetConfigurationPolicyAssociations",
 }));
 export type BatchGetSecurityControlsError =
   | InternalException
@@ -19487,6 +19494,7 @@ export const batchGetSecurityControls: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "BatchGetSecurityControls",
 }));
 export type BatchGetStandardsControlAssociationsError =
   | InternalException
@@ -19513,6 +19521,7 @@ export const batchGetStandardsControlAssociations: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "BatchGetStandardsControlAssociations",
 }));
 export type BatchImportFindingsError =
   | InternalException
@@ -19580,6 +19589,7 @@ export const batchImportFindings: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "BatchImportFindings",
 }));
 export type BatchUpdateAutomationRulesError =
   | InternalException
@@ -19607,6 +19617,7 @@ export const batchUpdateAutomationRules: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "BatchUpdateAutomationRules",
 }));
 export type BatchUpdateFindingsError =
   | InternalException
@@ -19660,6 +19671,7 @@ export const batchUpdateFindings: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "BatchUpdateFindings",
 }));
 export type BatchUpdateFindingsV2Error =
   | AccessDeniedException
@@ -19695,6 +19707,7 @@ export const batchUpdateFindingsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchUpdateFindingsV2",
 }));
 export type BatchUpdateStandardsControlAssociationsError =
   | AccessDeniedException
@@ -19721,6 +19734,7 @@ export const batchUpdateStandardsControlAssociations: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "BatchUpdateStandardsControlAssociations",
 }));
 export type CreateActionTargetError =
   | InternalException
@@ -19750,6 +19764,7 @@ export const createActionTarget: API.OperationMethod<
     LimitExceededException,
     ResourceConflictException,
   ],
+  operationName: "CreateActionTarget",
 }));
 export type CreateAggregatorV2Error =
   | AccessDeniedException
@@ -19780,6 +19795,7 @@ export const createAggregatorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAggregatorV2",
 }));
 export type CreateAutomationRuleError =
   | AccessDeniedException
@@ -19806,6 +19822,7 @@ export const createAutomationRule: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "CreateAutomationRule",
 }));
 export type CreateAutomationRuleV2Error =
   | AccessDeniedException
@@ -19834,6 +19851,7 @@ export const createAutomationRuleV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAutomationRuleV2",
 }));
 export type CreateConfigurationPolicyError =
   | AccessDeniedException
@@ -19863,6 +19881,7 @@ export const createConfigurationPolicy: API.OperationMethod<
     LimitExceededException,
     ResourceConflictException,
   ],
+  operationName: "CreateConfigurationPolicy",
 }));
 export type CreateConnectorV2Error =
   | AccessDeniedException
@@ -19893,6 +19912,7 @@ export const createConnectorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateConnectorV2",
 }));
 export type CreateFindingAggregatorError =
   | AccessDeniedException
@@ -19923,6 +19943,7 @@ export const createFindingAggregator: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "CreateFindingAggregator",
 }));
 export type CreateInsightError =
   | InternalException
@@ -19953,6 +19974,7 @@ export const createInsight: API.OperationMethod<
     LimitExceededException,
     ResourceConflictException,
   ],
+  operationName: "CreateInsight",
 }));
 export type CreateMembersError =
   | AccessDeniedException
@@ -20013,6 +20035,7 @@ export const createMembers: API.OperationMethod<
     LimitExceededException,
     ResourceConflictException,
   ],
+  operationName: "CreateMembers",
 }));
 export type CreateTicketV2Error =
   | AccessDeniedException
@@ -20041,6 +20064,7 @@ export const createTicketV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateTicketV2",
 }));
 export type DeclineInvitationsError =
   | InternalException
@@ -20074,6 +20098,7 @@ export const declineInvitations: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "DeclineInvitations",
 }));
 export type DeleteActionTargetError =
   | InternalException
@@ -20101,6 +20126,7 @@ export const deleteActionTarget: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteActionTarget",
 }));
 export type DeleteAggregatorV2Error =
   | AccessDeniedException
@@ -20129,6 +20155,7 @@ export const deleteAggregatorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAggregatorV2",
 }));
 export type DeleteAutomationRuleV2Error =
   | AccessDeniedException
@@ -20157,6 +20184,7 @@ export const deleteAutomationRuleV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAutomationRuleV2",
 }));
 export type DeleteConfigurationPolicyError =
   | AccessDeniedException
@@ -20189,6 +20217,7 @@ export const deleteConfigurationPolicy: API.OperationMethod<
     ResourceConflictException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteConfigurationPolicy",
 }));
 export type DeleteConnectorV2Error =
   | AccessDeniedException
@@ -20217,6 +20246,7 @@ export const deleteConnectorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteConnectorV2",
 }));
 export type DeleteFindingAggregatorError =
   | AccessDeniedException
@@ -20251,6 +20281,7 @@ export const deleteFindingAggregator: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteFindingAggregator",
 }));
 export type DeleteInsightError =
   | InternalException
@@ -20277,6 +20308,7 @@ export const deleteInsight: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteInsight",
 }));
 export type DeleteInvitationsError =
   | InternalException
@@ -20312,6 +20344,7 @@ export const deleteInvitations: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteInvitations",
 }));
 export type DeleteMembersError =
   | InternalException
@@ -20341,6 +20374,7 @@ export const deleteMembers: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteMembers",
 }));
 export type DescribeActionTargetsError =
   | InternalException
@@ -20380,6 +20414,7 @@ export const describeActionTargets: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeActionTargets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -20413,6 +20448,7 @@ export const describeHub: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeHub",
 }));
 export type DescribeOrganizationConfigurationError =
   | InternalException
@@ -20438,6 +20474,7 @@ export const describeOrganizationConfiguration: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "DescribeOrganizationConfiguration",
 }));
 export type DescribeProductsError =
   | InternalException
@@ -20483,6 +20520,7 @@ export const describeProducts: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "DescribeProducts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -20530,6 +20568,7 @@ export const describeProductsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeProductsV2",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -20560,6 +20599,7 @@ export const describeSecurityHubV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeSecurityHubV2",
 }));
 export type DescribeStandardsError =
   | InternalException
@@ -20595,6 +20635,7 @@ export const describeStandards: API.OperationMethod<
   input: DescribeStandardsRequest,
   output: DescribeStandardsResponse,
   errors: [InternalException, InvalidAccessException, InvalidInputException],
+  operationName: "DescribeStandards",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -20645,6 +20686,7 @@ export const describeStandardsControls: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeStandardsControls",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -20678,6 +20720,7 @@ export const disableImportFindingsForProduct: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DisableImportFindingsForProduct",
 }));
 export type DisableOrganizationAdminAccountError =
   | AccessDeniedException
@@ -20705,6 +20748,7 @@ export const disableOrganizationAdminAccount: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "DisableOrganizationAdminAccount",
 }));
 export type DisableSecurityHubError =
   | AccessDeniedException
@@ -20741,6 +20785,7 @@ export const disableSecurityHub: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DisableSecurityHub",
 }));
 export type DisableSecurityHubV2Error =
   | AccessDeniedException
@@ -20765,6 +20810,7 @@ export const disableSecurityHubV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisableSecurityHubV2",
 }));
 export type DisassociateFromAdministratorAccountError =
   | InternalException
@@ -20796,6 +20842,7 @@ export const disassociateFromAdministratorAccount: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DisassociateFromAdministratorAccount",
 }));
 export type DisassociateFromMasterAccountError =
   | InternalException
@@ -20831,6 +20878,7 @@ export const disassociateFromMasterAccount: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DisassociateFromMasterAccount",
 }));
 export type DisassociateMembersError =
   | AccessDeniedException
@@ -20862,6 +20910,7 @@ export const disassociateMembers: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DisassociateMembers",
 }));
 export type EnableImportFindingsForProductError =
   | InternalException
@@ -20892,6 +20941,7 @@ export const enableImportFindingsForProduct: API.OperationMethod<
     LimitExceededException,
     ResourceConflictException,
   ],
+  operationName: "EnableImportFindingsForProduct",
 }));
 export type EnableOrganizationAdminAccountError =
   | AccessDeniedException
@@ -20919,6 +20969,7 @@ export const enableOrganizationAdminAccount: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "EnableOrganizationAdminAccount",
 }));
 export type EnableSecurityHubError =
   | AccessDeniedException
@@ -20966,6 +21017,7 @@ export const enableSecurityHub: API.OperationMethod<
     LimitExceededException,
     ResourceConflictException,
   ],
+  operationName: "EnableSecurityHub",
 }));
 export type EnableSecurityHubV2Error =
   | AccessDeniedException
@@ -20990,6 +21042,7 @@ export const enableSecurityHubV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "EnableSecurityHubV2",
 }));
 export type GenerateRecommendedPolicyV2Error =
   | AccessDeniedException
@@ -21019,6 +21072,7 @@ export const generateRecommendedPolicyV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GenerateRecommendedPolicyV2",
 }));
 export type GetAdministratorAccountError =
   | InternalException
@@ -21048,6 +21102,7 @@ export const getAdministratorAccount: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetAdministratorAccount",
 }));
 export type GetAggregatorV2Error =
   | AccessDeniedException
@@ -21076,6 +21131,7 @@ export const getAggregatorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAggregatorV2",
 }));
 export type GetAutomationRuleV2Error =
   | AccessDeniedException
@@ -21104,6 +21160,7 @@ export const getAutomationRuleV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAutomationRuleV2",
 }));
 export type GetConfigurationPolicyError =
   | AccessDeniedException
@@ -21133,6 +21190,7 @@ export const getConfigurationPolicy: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetConfigurationPolicy",
 }));
 export type GetConfigurationPolicyAssociationError =
   | AccessDeniedException
@@ -21163,6 +21221,7 @@ export const getConfigurationPolicyAssociation: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetConfigurationPolicyAssociation",
 }));
 export type GetConnectorV2Error =
   | AccessDeniedException
@@ -21191,6 +21250,7 @@ export const getConnectorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetConnectorV2",
 }));
 export type GetEnabledStandardsError =
   | InternalException
@@ -21230,6 +21290,7 @@ export const getEnabledStandards: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "GetEnabledStandards",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -21267,6 +21328,7 @@ export const getFindingAggregator: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetFindingAggregator",
 }));
 export type GetFindingHistoryError =
   | InternalException
@@ -21314,6 +21376,7 @@ export const getFindingHistory: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "GetFindingHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -21361,6 +21424,7 @@ export const getFindings: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "GetFindings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -21402,6 +21466,7 @@ export const getFindingStatisticsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFindingStatisticsV2",
 }));
 export type GetFindingsTrendsV2Error =
   | AccessDeniedException
@@ -21441,6 +21506,7 @@ export const getFindingsTrendsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFindingsTrendsV2",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -21499,6 +21565,7 @@ export const getFindingsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFindingsV2",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -21531,6 +21598,7 @@ export const getInsightResults: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetInsightResults",
 }));
 export type GetInsightsError =
   | InternalException
@@ -21572,6 +21640,7 @@ export const getInsights: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetInsights",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -21607,6 +21676,7 @@ export const getInvitationsCount: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "GetInvitationsCount",
 }));
 export type GetMasterAccountError =
   | InternalException
@@ -21640,6 +21710,7 @@ export const getMasterAccount: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetMasterAccount",
 }));
 export type GetMembersError =
   | InternalException
@@ -21672,6 +21743,7 @@ export const getMembers: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetMembers",
 }));
 export type GetRecommendedPolicyV2Error =
   | AccessDeniedException
@@ -21716,6 +21788,7 @@ export const getRecommendedPolicyV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRecommendedPolicyV2",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -21756,6 +21829,7 @@ export const getResourcesStatisticsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourcesStatisticsV2",
 }));
 export type GetResourcesTrendsV2Error =
   | AccessDeniedException
@@ -21795,6 +21869,7 @@ export const getResourcesTrendsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourcesTrendsV2",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -21852,6 +21927,7 @@ export const getResourcesV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourcesV2",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -21884,6 +21960,7 @@ export const getSecurityControlDefinition: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetSecurityControlDefinition",
 }));
 export type InviteMembersError =
   | InternalException
@@ -21923,6 +22000,7 @@ export const inviteMembers: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "InviteMembers",
 }));
 export type ListAggregatorsV2Error =
   | AccessDeniedException
@@ -21966,6 +22044,7 @@ export const listAggregatorsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAggregatorsV2",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -21998,6 +22077,7 @@ export const listAutomationRules: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "ListAutomationRules",
 }));
 export type ListAutomationRulesV2Error =
   | AccessDeniedException
@@ -22024,6 +22104,7 @@ export const listAutomationRulesV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAutomationRulesV2",
 }));
 export type ListConfigurationPoliciesError =
   | AccessDeniedException
@@ -22066,6 +22147,7 @@ export const listConfigurationPolicies: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "ListConfigurationPolicies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22114,6 +22196,7 @@ export const listConfigurationPolicyAssociations: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "ListConfigurationPolicyAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22148,6 +22231,7 @@ export const listConnectorsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListConnectorsV2",
 }));
 export type ListEnabledProductsForImportError =
   | InternalException
@@ -22182,6 +22266,7 @@ export const listEnabledProductsForImport: API.OperationMethod<
   input: ListEnabledProductsForImportRequest,
   output: ListEnabledProductsForImportResponse,
   errors: [InternalException, InvalidAccessException, LimitExceededException],
+  operationName: "ListEnabledProductsForImport",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22230,6 +22315,7 @@ export const listFindingAggregators: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "ListFindingAggregators",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22282,6 +22368,7 @@ export const listInvitations: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "ListInvitations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22331,6 +22418,7 @@ export const listMembers: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "ListMembers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22377,6 +22465,7 @@ export const listOrganizationAdminAccounts: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "ListOrganizationAdminAccounts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22422,6 +22511,7 @@ export const listSecurityControlDefinitions: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "ListSecurityControlDefinitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22469,6 +22559,7 @@ export const listStandardsControlAssociations: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  operationName: "ListStandardsControlAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22493,6 +22584,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalException, InvalidInputException, ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type RegisterConnectorV2Error =
   | AccessDeniedException
@@ -22521,6 +22613,7 @@ export const registerConnectorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RegisterConnectorV2",
 }));
 export type StartConfigurationPolicyAssociationError =
   | AccessDeniedException
@@ -22551,6 +22644,7 @@ export const startConfigurationPolicyAssociation: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "StartConfigurationPolicyAssociation",
 }));
 export type StartConfigurationPolicyDisassociationError =
   | AccessDeniedException
@@ -22583,6 +22677,7 @@ export const startConfigurationPolicyDisassociation: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "StartConfigurationPolicyDisassociation",
 }));
 export type TagResourceError =
   | InternalException
@@ -22601,6 +22696,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InternalException, InvalidInputException, ResourceNotFoundException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalException
@@ -22619,6 +22715,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalException, InvalidInputException, ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type UpdateActionTargetError =
   | InternalException
@@ -22643,6 +22740,7 @@ export const updateActionTarget: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateActionTarget",
 }));
 export type UpdateAggregatorV2Error =
   | AccessDeniedException
@@ -22671,6 +22769,7 @@ export const updateAggregatorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAggregatorV2",
 }));
 export type UpdateAutomationRuleV2Error =
   | AccessDeniedException
@@ -22699,6 +22798,7 @@ export const updateAutomationRuleV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAutomationRuleV2",
 }));
 export type UpdateConfigurationPolicyError =
   | AccessDeniedException
@@ -22730,6 +22830,7 @@ export const updateConfigurationPolicy: API.OperationMethod<
     ResourceConflictException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateConfigurationPolicy",
 }));
 export type UpdateConnectorV2Error =
   | AccessDeniedException
@@ -22758,6 +22859,7 @@ export const updateConnectorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateConnectorV2",
 }));
 export type UpdateFindingAggregatorError =
   | AccessDeniedException
@@ -22791,6 +22893,7 @@ export const updateFindingAggregator: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateFindingAggregator",
 }));
 export type UpdateFindingsError =
   | InternalException
@@ -22826,6 +22929,7 @@ export const updateFindings: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateFindings",
 }));
 export type UpdateInsightError =
   | InternalException
@@ -22852,6 +22956,7 @@ export const updateInsight: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateInsight",
 }));
 export type UpdateOrganizationConfigurationError =
   | AccessDeniedException
@@ -22883,6 +22988,7 @@ export const updateOrganizationConfiguration: API.OperationMethod<
     ResourceConflictException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateOrganizationConfiguration",
 }));
 export type UpdateSecurityControlError =
   | AccessDeniedException
@@ -22913,6 +23019,7 @@ export const updateSecurityControl: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateSecurityControl",
 }));
 export type UpdateSecurityHubConfigurationError =
   | AccessDeniedException
@@ -22941,6 +23048,7 @@ export const updateSecurityHubConfiguration: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateSecurityHubConfiguration",
 }));
 export type UpdateStandardsControlError =
   | AccessDeniedException
@@ -22970,4 +23078,5 @@ export const updateStandardsControl: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateStandardsControl",
 }));

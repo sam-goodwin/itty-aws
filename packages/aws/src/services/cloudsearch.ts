@@ -1517,6 +1517,7 @@ export const buildSuggesters: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "BuildSuggesters",
 }));
 export type CreateDomainError =
   | BaseException
@@ -1544,6 +1545,7 @@ export const createDomain: API.OperationMethod<
     ResourceAlreadyExistsException,
     ValidationException,
   ],
+  operationName: "CreateDomain",
 }));
 export type DefineAnalysisSchemeError =
   | BaseException
@@ -1572,6 +1574,7 @@ export const defineAnalysisScheme: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DefineAnalysisScheme",
 }));
 export type DefineExpressionError =
   | BaseException
@@ -1600,6 +1603,7 @@ export const defineExpression: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DefineExpression",
 }));
 export type DefineIndexFieldError =
   | BaseException
@@ -1628,6 +1632,7 @@ export const defineIndexField: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DefineIndexField",
 }));
 export type DefineSuggesterError =
   | BaseException
@@ -1656,6 +1661,7 @@ export const defineSuggester: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DefineSuggester",
 }));
 export type DeleteAnalysisSchemeError =
   | BaseException
@@ -1682,6 +1688,7 @@ export const deleteAnalysisScheme: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteAnalysisScheme",
 }));
 export type DeleteDomainError =
   | BaseException
@@ -1700,6 +1707,7 @@ export const deleteDomain: API.OperationMethod<
   input: DeleteDomainRequest,
   output: DeleteDomainResponse,
   errors: [BaseException, InternalException],
+  operationName: "DeleteDomain",
 }));
 export type DeleteExpressionError =
   | BaseException
@@ -1726,6 +1734,7 @@ export const deleteExpression: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteExpression",
 }));
 export type DeleteIndexFieldError =
   | BaseException
@@ -1752,6 +1761,7 @@ export const deleteIndexField: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteIndexField",
 }));
 export type DeleteSuggesterError =
   | BaseException
@@ -1778,6 +1788,7 @@ export const deleteSuggester: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteSuggester",
 }));
 export type DescribeAnalysisSchemesError =
   | BaseException
@@ -1796,6 +1807,7 @@ export const describeAnalysisSchemes: API.OperationMethod<
   input: DescribeAnalysisSchemesRequest,
   output: DescribeAnalysisSchemesResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
+  operationName: "DescribeAnalysisSchemes",
 }));
 export type DescribeAvailabilityOptionsError =
   | BaseException
@@ -1824,6 +1836,7 @@ export const describeAvailabilityOptions: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeAvailabilityOptions",
 }));
 export type DescribeDomainEndpointOptionsError =
   | BaseException
@@ -1850,6 +1863,7 @@ export const describeDomainEndpointOptions: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeDomainEndpointOptions",
 }));
 export type DescribeDomainsError =
   | BaseException
@@ -1869,6 +1883,7 @@ export const describeDomains: API.OperationMethod<
   input: DescribeDomainsRequest,
   output: DescribeDomainsResponse,
   errors: [BaseException, InternalException],
+  operationName: "DescribeDomains",
 }));
 export type DescribeExpressionsError =
   | BaseException
@@ -1887,6 +1902,7 @@ export const describeExpressions: API.OperationMethod<
   input: DescribeExpressionsRequest,
   output: DescribeExpressionsResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
+  operationName: "DescribeExpressions",
 }));
 export type DescribeIndexFieldsError =
   | BaseException
@@ -1907,6 +1923,7 @@ export const describeIndexFields: API.OperationMethod<
   input: DescribeIndexFieldsRequest,
   output: DescribeIndexFieldsResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
+  operationName: "DescribeIndexFields",
 }));
 export type DescribeScalingParametersError =
   | BaseException
@@ -1925,6 +1942,7 @@ export const describeScalingParameters: API.OperationMethod<
   input: DescribeScalingParametersRequest,
   output: DescribeScalingParametersResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
+  operationName: "DescribeScalingParameters",
 }));
 export type DescribeServiceAccessPoliciesError =
   | BaseException
@@ -1944,6 +1962,7 @@ export const describeServiceAccessPolicies: API.OperationMethod<
   input: DescribeServiceAccessPoliciesRequest,
   output: DescribeServiceAccessPoliciesResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
+  operationName: "DescribeServiceAccessPolicies",
 }));
 export type DescribeSuggestersError =
   | BaseException
@@ -1962,6 +1981,7 @@ export const describeSuggesters: API.OperationMethod<
   input: DescribeSuggestersRequest,
   output: DescribeSuggestersResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
+  operationName: "DescribeSuggesters",
 }));
 export type IndexDocumentsError =
   | BaseException
@@ -1986,6 +2006,7 @@ export const indexDocuments: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "IndexDocuments",
 }));
 export type ListDomainNamesError = BaseException | CommonErrors;
 /**
@@ -2000,6 +2021,7 @@ export const listDomainNames: API.OperationMethod<
   input: ListDomainNamesRequest,
   output: ListDomainNamesResponse,
   errors: [BaseException],
+  operationName: "ListDomainNames",
 }));
 export type UpdateAvailabilityOptionsError =
   | BaseException
@@ -2030,6 +2052,7 @@ export const updateAvailabilityOptions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateAvailabilityOptions",
 }));
 export type UpdateDomainEndpointOptionsError =
   | BaseException
@@ -2060,6 +2083,7 @@ export const updateDomainEndpointOptions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateDomainEndpointOptions",
 }));
 export type UpdateScalingParametersError =
   | BaseException
@@ -2088,6 +2112,7 @@ export const updateScalingParameters: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateScalingParameters",
 }));
 export type UpdateServiceAccessPoliciesError =
   | BaseException
@@ -2118,4 +2143,5 @@ export const updateServiceAccessPolicies: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateServiceAccessPolicies",
 }));

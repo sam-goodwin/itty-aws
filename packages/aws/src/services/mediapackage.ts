@@ -2180,6 +2180,7 @@ export const configureLogs: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "ConfigureLogs",
 }));
 export type CreateChannelError =
   | ForbiddenException
@@ -2208,6 +2209,7 @@ export const createChannel: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "CreateChannel",
 }));
 export type CreateHarvestJobError =
   | ForbiddenException
@@ -2236,6 +2238,7 @@ export const createHarvestJob: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "CreateHarvestJob",
 }));
 export type CreateOriginEndpointError =
   | ForbiddenException
@@ -2264,6 +2267,7 @@ export const createOriginEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "CreateOriginEndpoint",
 }));
 export type DeleteChannelError =
   | ForbiddenException
@@ -2292,6 +2296,7 @@ export const deleteChannel: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "DeleteChannel",
 }));
 export type DeleteOriginEndpointError =
   | ForbiddenException
@@ -2320,6 +2325,7 @@ export const deleteOriginEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "DeleteOriginEndpoint",
 }));
 export type DescribeChannelError =
   | ForbiddenException
@@ -2348,6 +2354,7 @@ export const describeChannel: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "DescribeChannel",
 }));
 export type DescribeHarvestJobError =
   | ForbiddenException
@@ -2376,6 +2383,7 @@ export const describeHarvestJob: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "DescribeHarvestJob",
 }));
 export type DescribeOriginEndpointError =
   | ForbiddenException
@@ -2404,6 +2412,7 @@ export const describeOriginEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "DescribeOriginEndpoint",
 }));
 export type ListChannelsError =
   | ForbiddenException
@@ -2447,6 +2456,7 @@ export const listChannels: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "ListChannels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2496,6 +2506,7 @@ export const listHarvestJobs: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "ListHarvestJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2545,6 +2556,7 @@ export const listOriginEndpoints: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "ListOriginEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2565,6 +2577,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
+  operationName: "ListTagsForResource",
 }));
 export type RotateChannelCredentialsError =
   | ForbiddenException
@@ -2593,6 +2606,7 @@ export const rotateChannelCredentials: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "RotateChannelCredentials",
 }));
 export type RotateIngestEndpointCredentialsError =
   | ForbiddenException
@@ -2621,6 +2635,7 @@ export const rotateIngestEndpointCredentials: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "RotateIngestEndpointCredentials",
 }));
 export type TagResourceError = CommonErrors;
 /**
@@ -2635,6 +2650,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = CommonErrors;
 /**
@@ -2649,6 +2665,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
+  operationName: "UntagResource",
 }));
 export type UpdateChannelError =
   | ForbiddenException
@@ -2677,6 +2694,7 @@ export const updateChannel: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "UpdateChannel",
 }));
 export type UpdateOriginEndpointError =
   | ForbiddenException
@@ -2705,4 +2723,5 @@ export const updateOriginEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "UpdateOriginEndpoint",
 }));

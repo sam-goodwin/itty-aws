@@ -3856,6 +3856,7 @@ export const associateWebACL: API.OperationMethod<
     WAFNonexistentItemException,
     WAFUnavailableEntityException,
   ],
+  operationName: "AssociateWebACL",
 }));
 export type CreateByteMatchSetError =
   | WAFDisallowedNameException
@@ -3910,6 +3911,7 @@ export const createByteMatchSet: API.OperationMethod<
     WAFLimitsExceededException,
     WAFStaleDataException,
   ],
+  operationName: "CreateByteMatchSet",
 }));
 export type CreateGeoMatchSetError =
   | WAFDisallowedNameException
@@ -3961,6 +3963,7 @@ export const createGeoMatchSet: API.OperationMethod<
     WAFLimitsExceededException,
     WAFStaleDataException,
   ],
+  operationName: "CreateGeoMatchSet",
 }));
 export type CreateIPSetError =
   | WAFDisallowedNameException
@@ -4017,6 +4020,7 @@ export const createIPSet: API.OperationMethod<
     WAFLimitsExceededException,
     WAFStaleDataException,
   ],
+  operationName: "CreateIPSet",
 }));
 export type CreateRateBasedRuleError =
   | WAFBadRequestException
@@ -4123,6 +4127,7 @@ export const createRateBasedRule: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "CreateRateBasedRule",
 }));
 export type CreateRegexMatchSetError =
   | WAFDisallowedNameException
@@ -4173,6 +4178,7 @@ export const createRegexMatchSet: API.OperationMethod<
     WAFLimitsExceededException,
     WAFStaleDataException,
   ],
+  operationName: "CreateRegexMatchSet",
 }));
 export type CreateRegexPatternSetError =
   | WAFDisallowedNameException
@@ -4219,6 +4225,7 @@ export const createRegexPatternSet: API.OperationMethod<
     WAFLimitsExceededException,
     WAFStaleDataException,
   ],
+  operationName: "CreateRegexPatternSet",
 }));
 export type CreateRuleError =
   | WAFBadRequestException
@@ -4291,6 +4298,7 @@ export const createRule: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "CreateRule",
 }));
 export type CreateRuleGroupError =
   | WAFBadRequestException
@@ -4339,6 +4347,7 @@ export const createRuleGroup: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "CreateRuleGroup",
 }));
 export type CreateSizeConstraintSetError =
   | WAFDisallowedNameException
@@ -4393,6 +4402,7 @@ export const createSizeConstraintSet: API.OperationMethod<
     WAFLimitsExceededException,
     WAFStaleDataException,
   ],
+  operationName: "CreateSizeConstraintSet",
 }));
 export type CreateSqlInjectionMatchSetError =
   | WAFDisallowedNameException
@@ -4445,6 +4455,7 @@ export const createSqlInjectionMatchSet: API.OperationMethod<
     WAFLimitsExceededException,
     WAFStaleDataException,
   ],
+  operationName: "CreateSqlInjectionMatchSet",
 }));
 export type CreateWebACLError =
   | WAFBadRequestException
@@ -4512,6 +4523,7 @@ export const createWebACL: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "CreateWebACL",
 }));
 export type CreateWebACLMigrationStackError =
   | WAFEntityMigrationException
@@ -4546,6 +4558,7 @@ export const createWebACLMigrationStack: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "CreateWebACLMigrationStack",
 }));
 export type CreateXssMatchSetError =
   | WAFDisallowedNameException
@@ -4598,6 +4611,7 @@ export const createXssMatchSet: API.OperationMethod<
     WAFLimitsExceededException,
     WAFStaleDataException,
   ],
+  operationName: "CreateXssMatchSet",
 }));
 export type DeleteByteMatchSetError =
   | WAFInternalErrorException
@@ -4645,6 +4659,7 @@ export const deleteByteMatchSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  operationName: "DeleteByteMatchSet",
 }));
 export type DeleteGeoMatchSetError =
   | WAFInternalErrorException
@@ -4692,6 +4707,7 @@ export const deleteGeoMatchSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  operationName: "DeleteGeoMatchSet",
 }));
 export type DeleteIPSetError =
   | WAFInternalErrorException
@@ -4739,6 +4755,7 @@ export const deleteIPSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  operationName: "DeleteIPSet",
 }));
 export type DeleteLoggingConfigurationError =
   | WAFInternalErrorException
@@ -4769,6 +4786,7 @@ export const deleteLoggingConfiguration: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  operationName: "DeleteLoggingConfiguration",
 }));
 export type DeletePermissionPolicyError =
   | WAFInternalErrorException
@@ -4800,6 +4818,7 @@ export const deletePermissionPolicy: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  operationName: "DeletePermissionPolicy",
 }));
 export type DeleteRateBasedRuleError =
   | WAFInternalErrorException
@@ -4855,6 +4874,7 @@ export const deleteRateBasedRule: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "DeleteRateBasedRule",
 }));
 export type DeleteRegexMatchSetError =
   | WAFInternalErrorException
@@ -4902,6 +4922,7 @@ export const deleteRegexMatchSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  operationName: "DeleteRegexMatchSet",
 }));
 export type DeleteRegexPatternSetError =
   | WAFInternalErrorException
@@ -4938,6 +4959,7 @@ export const deleteRegexPatternSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  operationName: "DeleteRegexPatternSet",
 }));
 export type DeleteRuleError =
   | WAFInternalErrorException
@@ -4989,6 +5011,7 @@ export const deleteRule: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "DeleteRule",
 }));
 export type DeleteRuleGroupError =
   | WAFInternalErrorException
@@ -5040,6 +5063,7 @@ export const deleteRuleGroup: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "DeleteRuleGroup",
 }));
 export type DeleteSizeConstraintSetError =
   | WAFInternalErrorException
@@ -5087,6 +5111,7 @@ export const deleteSizeConstraintSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  operationName: "DeleteSizeConstraintSet",
 }));
 export type DeleteSqlInjectionMatchSetError =
   | WAFInternalErrorException
@@ -5135,6 +5160,7 @@ export const deleteSqlInjectionMatchSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  operationName: "DeleteSqlInjectionMatchSet",
 }));
 export type DeleteWebACLError =
   | WAFInternalErrorException
@@ -5183,6 +5209,7 @@ export const deleteWebACL: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "DeleteWebACL",
 }));
 export type DeleteXssMatchSetError =
   | WAFInternalErrorException
@@ -5231,6 +5258,7 @@ export const deleteXssMatchSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  operationName: "DeleteXssMatchSet",
 }));
 export type DisassociateWebACLError =
   | WAFInternalErrorException
@@ -5262,6 +5290,7 @@ export const disassociateWebACL: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "DisassociateWebACL",
 }));
 export type GetByteMatchSetError =
   | WAFInternalErrorException
@@ -5291,6 +5320,7 @@ export const getByteMatchSet: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetByteMatchSet",
 }));
 export type GetChangeTokenError = WAFInternalErrorException | CommonErrors;
 /**
@@ -5320,6 +5350,7 @@ export const getChangeToken: API.OperationMethod<
   input: GetChangeTokenRequest,
   output: GetChangeTokenResponse,
   errors: [WAFInternalErrorException],
+  operationName: "GetChangeToken",
 }));
 export type GetChangeTokenStatusError =
   | WAFInternalErrorException
@@ -5352,6 +5383,7 @@ export const getChangeTokenStatus: API.OperationMethod<
   input: GetChangeTokenStatusRequest,
   output: GetChangeTokenStatusResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
+  operationName: "GetChangeTokenStatus",
 }));
 export type GetGeoMatchSetError =
   | WAFInternalErrorException
@@ -5381,6 +5413,7 @@ export const getGeoMatchSet: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetGeoMatchSet",
 }));
 export type GetIPSetError =
   | WAFInternalErrorException
@@ -5410,6 +5443,7 @@ export const getIPSet: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetIPSet",
 }));
 export type GetLoggingConfigurationError =
   | WAFInternalErrorException
@@ -5434,6 +5468,7 @@ export const getLoggingConfiguration: API.OperationMethod<
   input: GetLoggingConfigurationRequest,
   output: GetLoggingConfigurationResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
+  operationName: "GetLoggingConfiguration",
 }));
 export type GetPermissionPolicyError =
   | WAFInternalErrorException
@@ -5458,6 +5493,7 @@ export const getPermissionPolicy: API.OperationMethod<
   input: GetPermissionPolicyRequest,
   output: GetPermissionPolicyResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
+  operationName: "GetPermissionPolicy",
 }));
 export type GetRateBasedRuleError =
   | WAFInternalErrorException
@@ -5489,6 +5525,7 @@ export const getRateBasedRule: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetRateBasedRule",
 }));
 export type GetRateBasedRuleManagedKeysError =
   | WAFInternalErrorException
@@ -5522,6 +5559,7 @@ export const getRateBasedRuleManagedKeys: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetRateBasedRuleManagedKeys",
 }));
 export type GetRegexMatchSetError =
   | WAFInternalErrorException
@@ -5551,6 +5589,7 @@ export const getRegexMatchSet: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetRegexMatchSet",
 }));
 export type GetRegexPatternSetError =
   | WAFInternalErrorException
@@ -5580,6 +5619,7 @@ export const getRegexPatternSet: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetRegexPatternSet",
 }));
 export type GetRuleError =
   | WAFInternalErrorException
@@ -5609,6 +5649,7 @@ export const getRule: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetRule",
 }));
 export type GetRuleGroupError =
   | WAFInternalErrorException
@@ -5635,6 +5676,7 @@ export const getRuleGroup: API.OperationMethod<
   input: GetRuleGroupRequest,
   output: GetRuleGroupResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
+  operationName: "GetRuleGroup",
 }));
 export type GetSampledRequestsError =
   | WAFInternalErrorException
@@ -5663,6 +5705,7 @@ export const getSampledRequests: API.OperationMethod<
   input: GetSampledRequestsRequest,
   output: GetSampledRequestsResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
+  operationName: "GetSampledRequests",
 }));
 export type GetSizeConstraintSetError =
   | WAFInternalErrorException
@@ -5692,6 +5735,7 @@ export const getSizeConstraintSet: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetSizeConstraintSet",
 }));
 export type GetSqlInjectionMatchSetError =
   | WAFInternalErrorException
@@ -5721,6 +5765,7 @@ export const getSqlInjectionMatchSet: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetSqlInjectionMatchSet",
 }));
 export type GetWebACLError =
   | WAFInternalErrorException
@@ -5750,6 +5795,7 @@ export const getWebACL: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetWebACL",
 }));
 export type GetWebACLForResourceError =
   | WAFInternalErrorException
@@ -5783,6 +5829,7 @@ export const getWebACLForResource: API.OperationMethod<
     WAFNonexistentItemException,
     WAFUnavailableEntityException,
   ],
+  operationName: "GetWebACLForResource",
 }));
 export type GetXssMatchSetError =
   | WAFInternalErrorException
@@ -5812,6 +5859,7 @@ export const getXssMatchSet: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetXssMatchSet",
 }));
 export type ListActivatedRulesInRuleGroupError =
   | WAFInternalErrorException
@@ -5841,6 +5889,7 @@ export const listActivatedRulesInRuleGroup: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "ListActivatedRulesInRuleGroup",
 }));
 export type ListByteMatchSetsError =
   | WAFInternalErrorException
@@ -5865,6 +5914,7 @@ export const listByteMatchSets: API.OperationMethod<
   input: ListByteMatchSetsRequest,
   output: ListByteMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  operationName: "ListByteMatchSets",
 }));
 export type ListGeoMatchSetsError =
   | WAFInternalErrorException
@@ -5889,6 +5939,7 @@ export const listGeoMatchSets: API.OperationMethod<
   input: ListGeoMatchSetsRequest,
   output: ListGeoMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  operationName: "ListGeoMatchSets",
 }));
 export type ListIPSetsError =
   | WAFInternalErrorException
@@ -5913,6 +5964,7 @@ export const listIPSets: API.OperationMethod<
   input: ListIPSetsRequest,
   output: ListIPSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  operationName: "ListIPSets",
 }));
 export type ListLoggingConfigurationsError =
   | WAFInternalErrorException
@@ -5942,6 +5994,7 @@ export const listLoggingConfigurations: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "ListLoggingConfigurations",
 }));
 export type ListRateBasedRulesError =
   | WAFInternalErrorException
@@ -5966,6 +6019,7 @@ export const listRateBasedRules: API.OperationMethod<
   input: ListRateBasedRulesRequest,
   output: ListRateBasedRulesResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  operationName: "ListRateBasedRules",
 }));
 export type ListRegexMatchSetsError =
   | WAFInternalErrorException
@@ -5990,6 +6044,7 @@ export const listRegexMatchSets: API.OperationMethod<
   input: ListRegexMatchSetsRequest,
   output: ListRegexMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  operationName: "ListRegexMatchSets",
 }));
 export type ListRegexPatternSetsError =
   | WAFInternalErrorException
@@ -6014,6 +6069,7 @@ export const listRegexPatternSets: API.OperationMethod<
   input: ListRegexPatternSetsRequest,
   output: ListRegexPatternSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  operationName: "ListRegexPatternSets",
 }));
 export type ListResourcesForWebACLError =
   | WAFInternalErrorException
@@ -6045,6 +6101,7 @@ export const listResourcesForWebACL: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "ListResourcesForWebACL",
 }));
 export type ListRuleGroupsError = WAFInternalErrorException | CommonErrors;
 /**
@@ -6066,6 +6123,7 @@ export const listRuleGroups: API.OperationMethod<
   input: ListRuleGroupsRequest,
   output: ListRuleGroupsResponse,
   errors: [WAFInternalErrorException],
+  operationName: "ListRuleGroups",
 }));
 export type ListRulesError =
   | WAFInternalErrorException
@@ -6090,6 +6148,7 @@ export const listRules: API.OperationMethod<
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  operationName: "ListRules",
 }));
 export type ListSizeConstraintSetsError =
   | WAFInternalErrorException
@@ -6114,6 +6173,7 @@ export const listSizeConstraintSets: API.OperationMethod<
   input: ListSizeConstraintSetsRequest,
   output: ListSizeConstraintSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  operationName: "ListSizeConstraintSets",
 }));
 export type ListSqlInjectionMatchSetsError =
   | WAFInternalErrorException
@@ -6138,6 +6198,7 @@ export const listSqlInjectionMatchSets: API.OperationMethod<
   input: ListSqlInjectionMatchSetsRequest,
   output: ListSqlInjectionMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  operationName: "ListSqlInjectionMatchSets",
 }));
 export type ListSubscribedRuleGroupsError =
   | WAFInternalErrorException
@@ -6162,6 +6223,7 @@ export const listSubscribedRuleGroups: API.OperationMethod<
   input: ListSubscribedRuleGroupsRequest,
   output: ListSubscribedRuleGroupsResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
+  operationName: "ListSubscribedRuleGroups",
 }));
 export type ListTagsForResourceError =
   | WAFBadRequestException
@@ -6199,6 +6261,7 @@ export const listTagsForResource: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListWebACLsError =
   | WAFInternalErrorException
@@ -6223,6 +6286,7 @@ export const listWebACLs: API.OperationMethod<
   input: ListWebACLsRequest,
   output: ListWebACLsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  operationName: "ListWebACLs",
 }));
 export type ListXssMatchSetsError =
   | WAFInternalErrorException
@@ -6247,6 +6311,7 @@ export const listXssMatchSets: API.OperationMethod<
   input: ListXssMatchSetsRequest,
   output: ListXssMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  operationName: "ListXssMatchSets",
 }));
 export type PutLoggingConfigurationError =
   | WAFInternalErrorException
@@ -6292,6 +6357,7 @@ export const putLoggingConfiguration: API.OperationMethod<
     WAFServiceLinkedRoleErrorException,
     WAFStaleDataException,
   ],
+  operationName: "PutLoggingConfiguration",
 }));
 export type PutPermissionPolicyError =
   | WAFInternalErrorException
@@ -6345,6 +6411,7 @@ export const putPermissionPolicy: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  operationName: "PutPermissionPolicy",
 }));
 export type TagResourceError =
   | WAFBadRequestException
@@ -6384,6 +6451,7 @@ export const tagResource: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | WAFBadRequestException
@@ -6417,6 +6485,7 @@ export const untagResource: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateByteMatchSetError =
   | WAFInternalErrorException
@@ -6485,6 +6554,7 @@ export const updateByteMatchSet: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  operationName: "UpdateByteMatchSet",
 }));
 export type UpdateGeoMatchSetError =
   | WAFInternalErrorException
@@ -6548,6 +6618,7 @@ export const updateGeoMatchSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  operationName: "UpdateGeoMatchSet",
 }));
 export type UpdateIPSetError =
   | WAFInternalErrorException
@@ -6645,6 +6716,7 @@ export const updateIPSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  operationName: "UpdateIPSet",
 }));
 export type UpdateRateBasedRuleError =
   | WAFInternalErrorException
@@ -6723,6 +6795,7 @@ export const updateRateBasedRule: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  operationName: "UpdateRateBasedRule",
 }));
 export type UpdateRegexMatchSetError =
   | WAFDisallowedNameException
@@ -6788,6 +6861,7 @@ export const updateRegexMatchSet: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  operationName: "UpdateRegexMatchSet",
 }));
 export type UpdateRegexPatternSetError =
   | WAFInternalErrorException
@@ -6854,6 +6928,7 @@ export const updateRegexPatternSet: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  operationName: "UpdateRegexPatternSet",
 }));
 export type UpdateRuleError =
   | WAFInternalErrorException
@@ -6928,6 +7003,7 @@ export const updateRule: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  operationName: "UpdateRule",
 }));
 export type UpdateRuleGroupError =
   | WAFInternalErrorException
@@ -6986,6 +7062,7 @@ export const updateRuleGroup: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  operationName: "UpdateRuleGroup",
 }));
 export type UpdateSizeConstraintSetError =
   | WAFInternalErrorException
@@ -7061,6 +7138,7 @@ export const updateSizeConstraintSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  operationName: "UpdateSizeConstraintSet",
 }));
 export type UpdateSqlInjectionMatchSetError =
   | WAFInternalErrorException
@@ -7132,6 +7210,7 @@ export const updateSqlInjectionMatchSet: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  operationName: "UpdateSqlInjectionMatchSet",
 }));
 export type UpdateWebACLError =
   | WAFInternalErrorException
@@ -7236,6 +7315,7 @@ export const updateWebACL: API.OperationMethod<
     WAFStaleDataException,
     WAFSubscriptionNotFoundException,
   ],
+  operationName: "UpdateWebACL",
 }));
 export type UpdateXssMatchSetError =
   | WAFInternalErrorException
@@ -7309,4 +7389,5 @@ export const updateXssMatchSet: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  operationName: "UpdateXssMatchSet",
 }));

@@ -1328,6 +1328,7 @@ export const cancelTagSyncTask: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CancelTagSyncTask",
 }));
 export type CreateGroupError =
   | BadRequestException
@@ -1364,6 +1365,7 @@ export const createGroup: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  operationName: "CreateGroup",
 }));
 export type DeleteGroupError =
   | BadRequestException
@@ -1399,6 +1401,7 @@ export const deleteGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteGroup",
 }));
 export type GetAccountSettingsError =
   | BadRequestException
@@ -1425,6 +1428,7 @@ export const getAccountSettings: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  operationName: "GetAccountSettings",
 }));
 export type GetGroupError =
   | BadRequestException
@@ -1459,6 +1463,7 @@ export const getGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetGroup",
 }));
 export type GetGroupConfigurationError =
   | BadRequestException
@@ -1494,6 +1499,7 @@ export const getGroupConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetGroupConfiguration",
 }));
 export type GetGroupQueryError =
   | BadRequestException
@@ -1530,6 +1536,7 @@ export const getGroupQuery: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetGroupQuery",
 }));
 export type GetTagsError =
   | BadRequestException
@@ -1565,6 +1572,7 @@ export const getTags: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTags",
 }));
 export type GetTagSyncTaskError =
   | BadRequestException
@@ -1601,6 +1609,7 @@ export const getTagSyncTask: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetTagSyncTask",
 }));
 export type GroupResourcesError =
   | BadRequestException
@@ -1646,6 +1655,7 @@ export const groupResources: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GroupResources",
 }));
 export type ListGroupingStatusesError =
   | BadRequestException
@@ -1688,6 +1698,7 @@ export const listGroupingStatuses: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  operationName: "ListGroupingStatuses",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1752,6 +1763,7 @@ export const listGroupResources: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "ListGroupResources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1805,6 +1817,7 @@ export const listGroups: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  operationName: "ListGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1861,6 +1874,7 @@ export const listTagSyncTasks: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "ListTagSyncTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1903,6 +1917,7 @@ export const putGroupConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PutGroupConfiguration",
 }));
 export type SearchResourcesError =
   | BadRequestException
@@ -1960,6 +1975,7 @@ export const searchResources: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "SearchResources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2012,6 +2028,7 @@ export const startTagSyncTask: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "StartTagSyncTask",
 }));
 export type TagError =
   | BadRequestException
@@ -2052,6 +2069,7 @@ export const tag: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "Tag",
 }));
 export type UngroupResourcesError =
   | BadRequestException
@@ -2089,6 +2107,7 @@ export const ungroupResources: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UngroupResources",
 }));
 export type UntagError =
   | BadRequestException
@@ -2123,6 +2142,7 @@ export const untag: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "Untag",
 }));
 export type UpdateAccountSettingsError =
   | BadRequestException
@@ -2154,6 +2174,7 @@ export const updateAccountSettings: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateAccountSettings",
 }));
 export type UpdateGroupError =
   | BadRequestException
@@ -2189,6 +2210,7 @@ export const updateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateGroup",
 }));
 export type UpdateGroupQueryError =
   | BadRequestException
@@ -2224,4 +2246,5 @@ export const updateGroupQuery: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateGroupQuery",
 }));

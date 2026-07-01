@@ -4862,6 +4862,7 @@ export const associateAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "AssociateAccessPolicy",
 }));
 export type AssociateEncryptionConfigError =
   | ClientException
@@ -4896,6 +4897,7 @@ export const associateEncryptionConfig: API.OperationMethod<
     ServerException,
     ThrottlingException,
   ],
+  operationName: "AssociateEncryptionConfig",
 }));
 export type AssociateIdentityProviderConfigError =
   | ClientException
@@ -4934,6 +4936,7 @@ export const associateIdentityProviderConfig: API.OperationMethod<
     ServerException,
     ThrottlingException,
   ],
+  operationName: "AssociateIdentityProviderConfig",
 }));
 export type CreateAccessEntryError =
   | InvalidParameterException
@@ -4976,6 +4979,7 @@ export const createAccessEntry: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "CreateAccessEntry",
 }));
 export type CreateAddonError =
   | ClientException
@@ -5008,6 +5012,7 @@ export const createAddon: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "CreateAddon",
 }));
 export type CreateCapabilityError =
   | AccessDeniedException
@@ -5044,6 +5049,7 @@ export const createCapability: API.OperationMethod<
     ServerException,
     ThrottlingException,
   ],
+  operationName: "CreateCapability",
 }));
 export type CreateClusterError =
   | ClientException
@@ -5117,6 +5123,7 @@ export const createCluster: API.OperationMethod<
     ServiceUnavailableException,
     UnsupportedAvailabilityZoneException,
   ],
+  operationName: "CreateCluster",
 }));
 export type CreateEksAnywhereSubscriptionError =
   | ClientException
@@ -5146,6 +5153,7 @@ export const createEksAnywhereSubscription: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateEksAnywhereSubscription",
 }));
 export type CreateFargateProfileError =
   | ClientException
@@ -5203,6 +5211,7 @@ export const createFargateProfile: API.OperationMethod<
     ServerException,
     UnsupportedAvailabilityZoneException,
   ],
+  operationName: "CreateFargateProfile",
 }));
 export type CreateNodegroupError =
   | ClientException
@@ -5252,6 +5261,7 @@ export const createNodegroup: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateNodegroup",
 }));
 export type CreatePodIdentityAssociationError =
   | InvalidParameterException
@@ -5307,6 +5317,7 @@ export const createPodIdentityAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "CreatePodIdentityAssociation",
 }));
 export type DeleteAccessEntryError =
   | InvalidRequestException
@@ -5329,6 +5340,7 @@ export const deleteAccessEntry: API.OperationMethod<
   input: DeleteAccessEntryRequest,
   output: DeleteAccessEntryResponse,
   errors: [InvalidRequestException, ResourceNotFoundException, ServerException],
+  operationName: "DeleteAccessEntry",
 }));
 export type DeleteAddonError =
   | ClientException
@@ -5358,6 +5370,7 @@ export const deleteAddon: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "DeleteAddon",
 }));
 export type DeleteCapabilityError =
   | AccessDeniedException
@@ -5386,6 +5399,7 @@ export const deleteCapability: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "DeleteCapability",
 }));
 export type DeleteClusterError =
   | ClientException
@@ -5424,6 +5438,7 @@ export const deleteCluster: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteCluster",
 }));
 export type DeleteEksAnywhereSubscriptionError =
   | ClientException
@@ -5451,6 +5466,7 @@ export const deleteEksAnywhereSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "DeleteEksAnywhereSubscription",
 }));
 export type DeleteFargateProfileError =
   | ClientException
@@ -5485,6 +5501,7 @@ export const deleteFargateProfile: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "DeleteFargateProfile",
 }));
 export type DeleteNodegroupError =
   | ClientException
@@ -5513,6 +5530,7 @@ export const deleteNodegroup: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteNodegroup",
 }));
 export type DeletePodIdentityAssociationError =
   | InvalidParameterException
@@ -5539,6 +5557,7 @@ export const deletePodIdentityAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "DeletePodIdentityAssociation",
 }));
 export type DeregisterClusterError =
   | AccessDeniedException
@@ -5570,6 +5589,7 @@ export const deregisterCluster: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  operationName: "DeregisterCluster",
 }));
 export type DescribeAccessEntryError =
   | InvalidRequestException
@@ -5588,6 +5608,7 @@ export const describeAccessEntry: API.OperationMethod<
   input: DescribeAccessEntryRequest,
   output: DescribeAccessEntryResponse,
   errors: [InvalidRequestException, ResourceNotFoundException, ServerException],
+  operationName: "DescribeAccessEntry",
 }));
 export type DescribeAddonError =
   | ClientException
@@ -5614,6 +5635,7 @@ export const describeAddon: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "DescribeAddon",
 }));
 export type DescribeAddonConfigurationError =
   | InvalidParameterException
@@ -5636,6 +5658,7 @@ export const describeAddonConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "DescribeAddonConfiguration",
 }));
 export type DescribeAddonVersionsError =
   | InvalidParameterException
@@ -5677,6 +5700,7 @@ export const describeAddonVersions: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "DescribeAddonVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5707,6 +5731,7 @@ export const describeCapability: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "DescribeCapability",
 }));
 export type DescribeClusterError =
   | ClientException
@@ -5739,6 +5764,7 @@ export const describeCluster: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  operationName: "DescribeCluster",
 }));
 export type DescribeClusterVersionsError =
   | InvalidParameterException
@@ -5772,6 +5798,7 @@ export const describeClusterVersions: API.OperationMethod<
   input: DescribeClusterVersionsRequest,
   output: DescribeClusterVersionsResponse,
   errors: [InvalidParameterException, InvalidRequestException, ServerException],
+  operationName: "DescribeClusterVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5802,6 +5829,7 @@ export const describeEksAnywhereSubscription: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  operationName: "DescribeEksAnywhereSubscription",
 }));
 export type DescribeFargateProfileError =
   | ClientException
@@ -5826,6 +5854,7 @@ export const describeFargateProfile: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "DescribeFargateProfile",
 }));
 export type DescribeIdentityProviderConfigError =
   | ClientException
@@ -5852,6 +5881,7 @@ export const describeIdentityProviderConfig: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  operationName: "DescribeIdentityProviderConfig",
 }));
 export type DescribeInsightError =
   | InvalidParameterException
@@ -5876,6 +5906,7 @@ export const describeInsight: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "DescribeInsight",
 }));
 export type DescribeInsightsRefreshError =
   | InvalidParameterException
@@ -5900,6 +5931,7 @@ export const describeInsightsRefresh: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "DescribeInsightsRefresh",
 }));
 export type DescribeNodegroupError =
   | ClientException
@@ -5926,6 +5958,7 @@ export const describeNodegroup: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  operationName: "DescribeNodegroup",
 }));
 export type DescribePodIdentityAssociationError =
   | InvalidParameterException
@@ -5955,6 +5988,7 @@ export const describePodIdentityAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "DescribePodIdentityAssociation",
 }));
 export type DescribeUpdateError =
   | ClientException
@@ -5983,6 +6017,7 @@ export const describeUpdate: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "DescribeUpdate",
 }));
 export type DisassociateAccessPolicyError =
   | InvalidRequestException
@@ -6001,6 +6036,7 @@ export const disassociateAccessPolicy: API.OperationMethod<
   input: DisassociateAccessPolicyRequest,
   output: DisassociateAccessPolicyResponse,
   errors: [InvalidRequestException, ResourceNotFoundException, ServerException],
+  operationName: "DisassociateAccessPolicy",
 }));
 export type DisassociateIdentityProviderConfigError =
   | ClientException
@@ -6035,6 +6071,7 @@ export const disassociateIdentityProviderConfig: API.OperationMethod<
     ServerException,
     ThrottlingException,
   ],
+  operationName: "DisassociateIdentityProviderConfig",
 }));
 export type ListAccessEntriesError =
   | InvalidParameterException
@@ -6074,6 +6111,7 @@ export const listAccessEntries: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "ListAccessEntries",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6109,6 +6147,7 @@ export const listAccessPolicies: API.OperationMethod<
   input: ListAccessPoliciesRequest,
   output: ListAccessPoliciesResponse,
   errors: [ServerException],
+  operationName: "ListAccessPolicies",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6156,6 +6195,7 @@ export const listAddons: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "ListAddons",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6195,6 +6235,7 @@ export const listAssociatedAccessPolicies: API.OperationMethod<
   input: ListAssociatedAccessPoliciesRequest,
   output: ListAssociatedAccessPoliciesResponse,
   errors: [InvalidRequestException, ResourceNotFoundException, ServerException],
+  operationName: "ListAssociatedAccessPolicies",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6233,6 +6274,7 @@ export const listCapabilities: API.OperationMethod<
   input: ListCapabilitiesRequest,
   output: ListCapabilitiesResponse,
   errors: [InvalidParameterException, ServerException],
+  operationName: "ListCapabilities",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6278,6 +6320,7 @@ export const listClusters: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  operationName: "ListClusters",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6323,6 +6366,7 @@ export const listEksAnywhereSubscriptions: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  operationName: "ListEksAnywhereSubscriptions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6369,6 +6413,7 @@ export const listFargateProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "ListFargateProfiles",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6416,6 +6461,7 @@ export const listIdentityProviderConfigs: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  operationName: "ListIdentityProviderConfigs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6472,6 +6518,7 @@ export const listInsights: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "ListInsights",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6520,6 +6567,7 @@ export const listNodegroups: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  operationName: "ListNodegroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6566,6 +6614,7 @@ export const listPodIdentityAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "ListPodIdentityAssociations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6589,6 +6638,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [BadRequestException, NotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type ListUpdatesError =
   | ClientException
@@ -6629,6 +6679,7 @@ export const listUpdates: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "ListUpdates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6684,6 +6735,7 @@ export const registerCluster: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  operationName: "RegisterCluster",
 }));
 export type StartInsightsRefreshError =
   | InvalidParameterException
@@ -6708,6 +6760,7 @@ export const startInsightsRefresh: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "StartInsightsRefresh",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -6731,6 +6784,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [BadRequestException, NotFoundException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -6748,6 +6802,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [BadRequestException, NotFoundException],
+  operationName: "UntagResource",
 }));
 export type UpdateAccessEntryError =
   | InvalidParameterException
@@ -6772,6 +6827,7 @@ export const updateAccessEntry: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "UpdateAccessEntry",
 }));
 export type UpdateAddonError =
   | ClientException
@@ -6800,6 +6856,7 @@ export const updateAddon: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "UpdateAddon",
 }));
 export type UpdateCapabilityError =
   | AccessDeniedException
@@ -6828,6 +6885,7 @@ export const updateCapability: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "UpdateCapability",
 }));
 export type UpdateClusterConfigError =
   | ClientException
@@ -6904,6 +6962,7 @@ export const updateClusterConfig: API.OperationMethod<
     ServerException,
     ThrottlingException,
   ],
+  operationName: "UpdateClusterConfig",
 }));
 export type UpdateClusterVersionError =
   | ClientException
@@ -6949,6 +7008,7 @@ export const updateClusterVersion: API.OperationMethod<
     ServerException,
     ThrottlingException,
   ],
+  operationName: "UpdateClusterVersion",
 }));
 export type UpdateEksAnywhereSubscriptionError =
   | ClientException
@@ -6976,6 +7036,7 @@ export const updateEksAnywhereSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "UpdateEksAnywhereSubscription",
 }));
 export type UpdateNodegroupConfigError =
   | ClientException
@@ -7009,6 +7070,7 @@ export const updateNodegroupConfig: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "UpdateNodegroupConfig",
 }));
 export type UpdateNodegroupVersionError =
   | ClientException
@@ -7063,6 +7125,7 @@ export const updateNodegroupVersion: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "UpdateNodegroupVersion",
 }));
 export type UpdatePodIdentityAssociationError =
   | InvalidParameterException
@@ -7105,4 +7168,5 @@ export const updatePodIdentityAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  operationName: "UpdatePodIdentityAssociation",
 }));

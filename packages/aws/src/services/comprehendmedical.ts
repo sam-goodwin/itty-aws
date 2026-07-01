@@ -1494,6 +1494,7 @@ export const describeEntitiesDetectionV2Job: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeEntitiesDetectionV2Job",
 }));
 export type DescribeICD10CMInferenceJobError =
   | InternalServerException
@@ -1519,6 +1520,7 @@ export const describeICD10CMInferenceJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeICD10CMInferenceJob",
 }));
 export type DescribePHIDetectionJobError =
   | InternalServerException
@@ -1544,6 +1546,7 @@ export const describePHIDetectionJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribePHIDetectionJob",
 }));
 export type DescribeRxNormInferenceJobError =
   | InternalServerException
@@ -1569,6 +1572,7 @@ export const describeRxNormInferenceJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeRxNormInferenceJob",
 }));
 export type DescribeSNOMEDCTInferenceJobError =
   | InternalServerException
@@ -1593,6 +1597,7 @@ export const describeSNOMEDCTInferenceJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeSNOMEDCTInferenceJob",
 }));
 export type DetectEntitiesError =
   | InternalServerException
@@ -1625,6 +1630,7 @@ export const detectEntities: API.OperationMethod<
     TextSizeLimitExceededException,
     TooManyRequestsException,
   ],
+  operationName: "DetectEntities",
 }));
 export type DetectEntitiesV2Error =
   | InternalServerException
@@ -1664,6 +1670,7 @@ export const detectEntitiesV2: API.OperationMethod<
     TextSizeLimitExceededException,
     TooManyRequestsException,
   ],
+  operationName: "DetectEntitiesV2",
 }));
 export type DetectPHIError =
   | InternalServerException
@@ -1694,6 +1701,7 @@ export const detectPHI: API.OperationMethod<
     TextSizeLimitExceededException,
     TooManyRequestsException,
   ],
+  operationName: "DetectPHI",
 }));
 export type InferICD10CMError =
   | InternalServerException
@@ -1725,6 +1733,7 @@ export const inferICD10CM: API.OperationMethod<
     TextSizeLimitExceededException,
     TooManyRequestsException,
   ],
+  operationName: "InferICD10CM",
 }));
 export type InferRxNormError =
   | InternalServerException
@@ -1755,6 +1764,7 @@ export const inferRxNorm: API.OperationMethod<
     TextSizeLimitExceededException,
     TooManyRequestsException,
   ],
+  operationName: "InferRxNorm",
 }));
 export type InferSNOMEDCTError =
   | InternalServerException
@@ -1783,6 +1793,7 @@ export const inferSNOMEDCT: API.OperationMethod<
     TextSizeLimitExceededException,
     TooManyRequestsException,
   ],
+  operationName: "InferSNOMEDCT",
 }));
 export type ListEntitiesDetectionV2JobsError =
   | InternalServerException
@@ -1807,6 +1818,7 @@ export const listEntitiesDetectionV2Jobs: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "ListEntitiesDetectionV2Jobs",
 }));
 export type ListICD10CMInferenceJobsError =
   | InternalServerException
@@ -1831,6 +1843,7 @@ export const listICD10CMInferenceJobs: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "ListICD10CMInferenceJobs",
 }));
 export type ListPHIDetectionJobsError =
   | InternalServerException
@@ -1856,6 +1869,7 @@ export const listPHIDetectionJobs: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "ListPHIDetectionJobs",
 }));
 export type ListRxNormInferenceJobsError =
   | InternalServerException
@@ -1880,6 +1894,7 @@ export const listRxNormInferenceJobs: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "ListRxNormInferenceJobs",
 }));
 export type ListSNOMEDCTInferenceJobsError =
   | InternalServerException
@@ -1904,6 +1919,7 @@ export const listSNOMEDCTInferenceJobs: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "ListSNOMEDCTInferenceJobs",
 }));
 export type StartEntitiesDetectionV2JobError =
   | InternalServerException
@@ -1929,6 +1945,7 @@ export const startEntitiesDetectionV2Job: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StartEntitiesDetectionV2Job",
 }));
 export type StartICD10CMInferenceJobError =
   | InternalServerException
@@ -1955,6 +1972,7 @@ export const startICD10CMInferenceJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StartICD10CMInferenceJob",
 }));
 export type StartPHIDetectionJobError =
   | InternalServerException
@@ -1980,6 +1998,7 @@ export const startPHIDetectionJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StartPHIDetectionJob",
 }));
 export type StartRxNormInferenceJobError =
   | InternalServerException
@@ -2006,6 +2025,7 @@ export const startRxNormInferenceJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StartRxNormInferenceJob",
 }));
 export type StartSNOMEDCTInferenceJobError =
   | InternalServerException
@@ -2030,6 +2050,7 @@ export const startSNOMEDCTInferenceJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StartSNOMEDCTInferenceJob",
 }));
 export type StopEntitiesDetectionV2JobError =
   | InternalServerException
@@ -2052,6 +2073,7 @@ export const stopEntitiesDetectionV2Job: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "StopEntitiesDetectionV2Job",
 }));
 export type StopICD10CMInferenceJobError =
   | InternalServerException
@@ -2074,6 +2096,7 @@ export const stopICD10CMInferenceJob: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "StopICD10CMInferenceJob",
 }));
 export type StopPHIDetectionJobError =
   | InternalServerException
@@ -2096,6 +2119,7 @@ export const stopPHIDetectionJob: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "StopPHIDetectionJob",
 }));
 export type StopRxNormInferenceJobError =
   | InternalServerException
@@ -2118,6 +2142,7 @@ export const stopRxNormInferenceJob: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "StopRxNormInferenceJob",
 }));
 export type StopSNOMEDCTInferenceJobError =
   | InternalServerException
@@ -2142,4 +2167,5 @@ export const stopSNOMEDCTInferenceJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StopSNOMEDCTInferenceJob",
 }));

@@ -3363,6 +3363,7 @@ export const addTagsToOnPremisesInstances: API.OperationMethod<
     TagLimitExceededException,
     TagRequiredException,
   ],
+  operationName: "AddTagsToOnPremisesInstances",
 }));
 export type BatchGetApplicationRevisionsError =
   | ApplicationDoesNotExistException
@@ -3392,6 +3393,7 @@ export const batchGetApplicationRevisions: API.OperationMethod<
     InvalidRevisionException,
     RevisionRequiredException,
   ],
+  operationName: "BatchGetApplicationRevisions",
 }));
 export type BatchGetApplicationsError =
   | ApplicationDoesNotExistException
@@ -3417,6 +3419,7 @@ export const batchGetApplications: API.OperationMethod<
     BatchLimitExceededException,
     InvalidApplicationNameException,
   ],
+  operationName: "BatchGetApplications",
 }));
 export type BatchGetDeploymentGroupsError =
   | ApplicationDoesNotExistException
@@ -3447,6 +3450,7 @@ export const batchGetDeploymentGroups: API.OperationMethod<
     InvalidApplicationNameException,
     InvalidDeploymentGroupNameException,
   ],
+  operationName: "BatchGetDeploymentGroups",
 }));
 export type BatchGetDeploymentInstancesError =
   | BatchLimitExceededException
@@ -3483,6 +3487,7 @@ export const batchGetDeploymentInstances: API.OperationMethod<
     InvalidDeploymentIdException,
     InvalidInstanceNameException,
   ],
+  operationName: "BatchGetDeploymentInstances",
 }));
 export type BatchGetDeploymentsError =
   | BatchLimitExceededException
@@ -3506,6 +3511,7 @@ export const batchGetDeployments: API.OperationMethod<
     DeploymentIdRequiredException,
     InvalidDeploymentIdException,
   ],
+  operationName: "BatchGetDeployments",
 }));
 export type BatchGetDeploymentTargetsError =
   | DeploymentDoesNotExistException
@@ -3557,6 +3563,7 @@ export const batchGetDeploymentTargets: API.OperationMethod<
     InvalidDeploymentIdException,
     InvalidDeploymentTargetIdException,
   ],
+  operationName: "BatchGetDeploymentTargets",
 }));
 export type BatchGetOnPremisesInstancesError =
   | BatchLimitExceededException
@@ -3580,6 +3587,7 @@ export const batchGetOnPremisesInstances: API.OperationMethod<
     InstanceNameRequiredException,
     InvalidInstanceNameException,
   ],
+  operationName: "BatchGetOnPremisesInstances",
 }));
 export type ContinueDeploymentError =
   | DeploymentAlreadyCompletedException
@@ -3616,6 +3624,7 @@ export const continueDeployment: API.OperationMethod<
     InvalidDeploymentWaitTypeException,
     UnsupportedActionForDeploymentTypeException,
   ],
+  operationName: "ContinueDeployment",
 }));
 export type CreateApplicationError =
   | ApplicationAlreadyExistsException
@@ -3644,6 +3653,7 @@ export const createApplication: API.OperationMethod<
     InvalidComputePlatformException,
     InvalidTagsToAddException,
   ],
+  operationName: "CreateApplication",
 }));
 export type CreateDeploymentError =
   | AlarmsLimitExceededException
@@ -3712,6 +3722,7 @@ export const createDeployment: API.OperationMethod<
     RevisionRequiredException,
     ThrottlingException,
   ],
+  operationName: "CreateDeployment",
 }));
 export type CreateDeploymentConfigError =
   | DeploymentConfigAlreadyExistsException
@@ -3744,6 +3755,7 @@ export const createDeploymentConfig: API.OperationMethod<
     InvalidTrafficRoutingConfigurationException,
     InvalidZonalDeploymentConfigurationException,
   ],
+  operationName: "CreateDeploymentConfig",
 }));
 export type CreateDeploymentGroupError =
   | AlarmsLimitExceededException
@@ -3826,6 +3838,7 @@ export const createDeploymentGroup: API.OperationMethod<
     ThrottlingException,
     TriggerTargetsLimitExceededException,
   ],
+  operationName: "CreateDeploymentGroup",
 }));
 export type DeleteApplicationError =
   | ApplicationNameRequiredException
@@ -3848,6 +3861,7 @@ export const deleteApplication: API.OperationMethod<
     InvalidApplicationNameException,
     InvalidRoleException,
   ],
+  operationName: "DeleteApplication",
 }));
 export type DeleteDeploymentConfigError =
   | DeploymentConfigInUseException
@@ -3875,6 +3889,7 @@ export const deleteDeploymentConfig: API.OperationMethod<
     InvalidDeploymentConfigNameException,
     InvalidOperationException,
   ],
+  operationName: "DeleteDeploymentConfig",
 }));
 export type DeleteDeploymentGroupError =
   | ApplicationNameRequiredException
@@ -3901,6 +3916,7 @@ export const deleteDeploymentGroup: API.OperationMethod<
     InvalidDeploymentGroupNameException,
     InvalidRoleException,
   ],
+  operationName: "DeleteDeploymentGroup",
 }));
 export type DeleteGitHubAccountTokenError =
   | GitHubAccountTokenDoesNotExistException
@@ -3927,6 +3943,7 @@ export const deleteGitHubAccountToken: API.OperationMethod<
     OperationNotSupportedException,
     ResourceValidationException,
   ],
+  operationName: "DeleteGitHubAccountToken",
 }));
 export type DeleteResourcesByExternalIdError = CommonErrors;
 /**
@@ -3947,6 +3964,7 @@ export const deleteResourcesByExternalId: API.OperationMethod<
   input: DeleteResourcesByExternalIdInput,
   output: DeleteResourcesByExternalIdOutput,
   errors: [],
+  operationName: "DeleteResourcesByExternalId",
 }));
 export type DeregisterOnPremisesInstanceError =
   | InstanceNameRequiredException
@@ -3964,6 +3982,7 @@ export const deregisterOnPremisesInstance: API.OperationMethod<
   input: DeregisterOnPremisesInstanceInput,
   output: DeregisterOnPremisesInstanceResponse,
   errors: [InstanceNameRequiredException, InvalidInstanceNameException],
+  operationName: "DeregisterOnPremisesInstance",
 }));
 export type GetApplicationError =
   | ApplicationDoesNotExistException
@@ -3986,6 +4005,7 @@ export const getApplication: API.OperationMethod<
     ApplicationNameRequiredException,
     InvalidApplicationNameException,
   ],
+  operationName: "GetApplication",
 }));
 export type GetApplicationRevisionError =
   | ApplicationDoesNotExistException
@@ -4014,6 +4034,7 @@ export const getApplicationRevision: API.OperationMethod<
     RevisionDoesNotExistException,
     RevisionRequiredException,
   ],
+  operationName: "GetApplicationRevision",
 }));
 export type GetDeploymentError =
   | DeploymentDoesNotExistException
@@ -4041,6 +4062,7 @@ export const getDeployment: API.OperationMethod<
     DeploymentIdRequiredException,
     InvalidDeploymentIdException,
   ],
+  operationName: "GetDeployment",
 }));
 export type GetDeploymentConfigError =
   | DeploymentConfigDoesNotExistException
@@ -4065,6 +4087,7 @@ export const getDeploymentConfig: API.OperationMethod<
     InvalidComputePlatformException,
     InvalidDeploymentConfigNameException,
   ],
+  operationName: "GetDeploymentConfig",
 }));
 export type GetDeploymentGroupError =
   | ApplicationDoesNotExistException
@@ -4095,6 +4118,7 @@ export const getDeploymentGroup: API.OperationMethod<
     InvalidApplicationNameException,
     InvalidDeploymentGroupNameException,
   ],
+  operationName: "GetDeploymentGroup",
 }));
 export type GetDeploymentInstanceError =
   | DeploymentDoesNotExistException
@@ -4125,6 +4149,7 @@ export const getDeploymentInstance: API.OperationMethod<
     InvalidDeploymentIdException,
     InvalidInstanceNameException,
   ],
+  operationName: "GetDeploymentInstance",
 }));
 export type GetDeploymentTargetError =
   | DeploymentDoesNotExistException
@@ -4157,6 +4182,7 @@ export const getDeploymentTarget: API.OperationMethod<
     InvalidDeploymentTargetIdException,
     InvalidInstanceNameException,
   ],
+  operationName: "GetDeploymentTarget",
 }));
 export type GetOnPremisesInstanceError =
   | InstanceNameRequiredException
@@ -4179,6 +4205,7 @@ export const getOnPremisesInstance: API.OperationMethod<
     InstanceNotRegisteredException,
     InvalidInstanceNameException,
   ],
+  operationName: "GetOnPremisesInstance",
 }));
 export type ListApplicationRevisionsError =
   | ApplicationDoesNotExistException
@@ -4230,6 +4257,7 @@ export const listApplicationRevisions: API.OperationMethod<
     InvalidSortByException,
     InvalidSortOrderException,
   ],
+  operationName: "ListApplicationRevisions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4264,6 +4292,7 @@ export const listApplications: API.OperationMethod<
   input: ListApplicationsInput,
   output: ListApplicationsOutput,
   errors: [InvalidNextTokenException],
+  operationName: "ListApplications",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4300,6 +4329,7 @@ export const listDeploymentConfigs: API.OperationMethod<
   input: ListDeploymentConfigsInput,
   output: ListDeploymentConfigsOutput,
   errors: [InvalidNextTokenException],
+  operationName: "ListDeploymentConfigs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4345,6 +4375,7 @@ export const listDeploymentGroups: API.OperationMethod<
     InvalidApplicationNameException,
     InvalidNextTokenException,
   ],
+  operationName: "ListDeploymentGroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4406,6 +4437,7 @@ export const listDeploymentInstances: API.OperationMethod<
     InvalidNextTokenException,
     InvalidTargetFilterNameException,
   ],
+  operationName: "ListDeploymentInstances",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4465,6 +4497,7 @@ export const listDeployments: API.OperationMethod<
     InvalidNextTokenException,
     InvalidTimeRangeException,
   ],
+  operationName: "ListDeployments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4504,6 +4537,7 @@ export const listDeploymentTargets: API.OperationMethod<
     InvalidNextTokenException,
     InvalidTargetFilterNameException,
   ],
+  operationName: "ListDeploymentTargets",
 }));
 export type ListGitHubAccountTokenNamesError =
   | InvalidNextTokenException
@@ -4526,6 +4560,7 @@ export const listGitHubAccountTokenNames: API.OperationMethod<
     OperationNotSupportedException,
     ResourceValidationException,
   ],
+  operationName: "ListGitHubAccountTokenNames",
 }));
 export type ListOnPremisesInstancesError =
   | InvalidNextTokenException
@@ -4552,6 +4587,7 @@ export const listOnPremisesInstances: API.OperationMethod<
     InvalidRegistrationStatusException,
     InvalidTagFilterException,
   ],
+  operationName: "ListOnPremisesInstances",
 }));
 export type ListTagsForResourceError =
   | ArnNotSupportedException
@@ -4575,6 +4611,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidArnException,
     ResourceArnRequiredException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutLifecycleEventHookExecutionStatusError =
   | DeploymentDoesNotExistException
@@ -4613,6 +4650,7 @@ export const putLifecycleEventHookExecutionStatus: API.OperationMethod<
     LifecycleEventAlreadyCompletedException,
     UnsupportedActionForDeploymentTypeException,
   ],
+  operationName: "PutLifecycleEventHookExecutionStatus",
 }));
 export type RegisterApplicationRevisionError =
   | ApplicationDoesNotExistException
@@ -4641,6 +4679,7 @@ export const registerApplicationRevision: API.OperationMethod<
     InvalidRevisionException,
     RevisionRequiredException,
   ],
+  operationName: "RegisterApplicationRevision",
 }));
 export type RegisterOnPremisesInstanceError =
   | IamArnRequiredException
@@ -4679,6 +4718,7 @@ export const registerOnPremisesInstance: API.OperationMethod<
     InvalidInstanceNameException,
     MultipleIamArnsProvidedException,
   ],
+  operationName: "RegisterOnPremisesInstance",
 }));
 export type RemoveTagsFromOnPremisesInstancesError =
   | InstanceLimitExceededException
@@ -4709,6 +4749,7 @@ export const removeTagsFromOnPremisesInstances: API.OperationMethod<
     TagLimitExceededException,
     TagRequiredException,
   ],
+  operationName: "RemoveTagsFromOnPremisesInstances",
 }));
 export type SkipWaitTimeForInstanceTerminationError =
   | DeploymentAlreadyCompletedException
@@ -4738,6 +4779,7 @@ export const skipWaitTimeForInstanceTermination: API.OperationMethod<
     InvalidDeploymentIdException,
     UnsupportedActionForDeploymentTypeException,
   ],
+  operationName: "SkipWaitTimeForInstanceTermination",
 }));
 export type StopDeploymentError =
   | DeploymentAlreadyCompletedException
@@ -4766,6 +4808,7 @@ export const stopDeployment: API.OperationMethod<
     InvalidDeploymentIdException,
     UnsupportedActionForDeploymentTypeException,
   ],
+  operationName: "StopDeployment",
 }));
 export type TagResourceError =
   | ApplicationDoesNotExistException
@@ -4799,6 +4842,7 @@ export const tagResource: API.OperationMethod<
     ResourceArnRequiredException,
     TagRequiredException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ApplicationDoesNotExistException
@@ -4833,6 +4877,7 @@ export const untagResource: API.OperationMethod<
     ResourceArnRequiredException,
     TagRequiredException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateApplicationError =
   | ApplicationAlreadyExistsException
@@ -4857,6 +4902,7 @@ export const updateApplication: API.OperationMethod<
     ApplicationNameRequiredException,
     InvalidApplicationNameException,
   ],
+  operationName: "UpdateApplication",
 }));
 export type UpdateDeploymentGroupError =
   | AlarmsLimitExceededException
@@ -4935,4 +4981,5 @@ export const updateDeploymentGroup: API.OperationMethod<
     ThrottlingException,
     TriggerTargetsLimitExceededException,
   ],
+  operationName: "UpdateDeploymentGroup",
 }));

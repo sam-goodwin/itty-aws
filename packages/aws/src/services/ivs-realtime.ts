@@ -2526,6 +2526,7 @@ export const createEncoderConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateEncoderConfiguration",
 }));
 export type CreateIngestConfigurationError =
   | AccessDeniedException
@@ -2550,6 +2551,7 @@ export const createIngestConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateIngestConfiguration",
 }));
 export type CreateParticipantTokenError =
   | AccessDeniedException
@@ -2581,6 +2583,7 @@ export const createParticipantToken: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateParticipantToken",
 }));
 export type CreateStageError =
   | AccessDeniedException
@@ -2605,6 +2608,7 @@ export const createStage: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateStage",
 }));
 export type CreateStorageConfigurationError =
   | AccessDeniedException
@@ -2637,6 +2641,7 @@ export const createStorageConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateStorageConfiguration",
 }));
 export type DeleteEncoderConfigurationError =
   | AccessDeniedException
@@ -2666,6 +2671,7 @@ export const deleteEncoderConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "DeleteEncoderConfiguration",
 }));
 export type DeleteIngestConfigurationError =
   | AccessDeniedException
@@ -2692,6 +2698,7 @@ export const deleteIngestConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteIngestConfiguration",
 }));
 export type DeletePublicKeyError =
   | AccessDeniedException
@@ -2719,6 +2726,7 @@ export const deletePublicKey: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeletePublicKey",
 }));
 export type DeleteStageError =
   | AccessDeniedException
@@ -2747,6 +2755,7 @@ export const deleteStage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteStage",
 }));
 export type DeleteStorageConfigurationError =
   | AccessDeniedException
@@ -2779,6 +2788,7 @@ export const deleteStorageConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "DeleteStorageConfiguration",
 }));
 export type DisconnectParticipantError =
   | AccessDeniedException
@@ -2805,6 +2815,7 @@ export const disconnectParticipant: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DisconnectParticipant",
 }));
 export type GetCompositionError =
   | AccessDeniedException
@@ -2833,6 +2844,7 @@ export const getComposition: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "GetComposition",
 }));
 export type GetEncoderConfigurationError =
   | AccessDeniedException
@@ -2861,6 +2873,7 @@ export const getEncoderConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "GetEncoderConfiguration",
 }));
 export type GetIngestConfigurationError =
   | AccessDeniedException
@@ -2883,6 +2896,7 @@ export const getIngestConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetIngestConfiguration",
 }));
 export type GetParticipantError =
   | AccessDeniedException
@@ -2905,6 +2919,7 @@ export const getParticipant: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetParticipant",
 }));
 export type GetPublicKeyError =
   | AccessDeniedException
@@ -2927,6 +2942,7 @@ export const getPublicKey: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetPublicKey",
 }));
 export type GetStageError =
   | AccessDeniedException
@@ -2949,6 +2965,7 @@ export const getStage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetStage",
 }));
 export type GetStageSessionError =
   | AccessDeniedException
@@ -2971,6 +2988,7 @@ export const getStageSession: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetStageSession",
 }));
 export type GetStorageConfigurationError =
   | AccessDeniedException
@@ -2999,6 +3017,7 @@ export const getStorageConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "GetStorageConfiguration",
 }));
 export type ImportPublicKeyError =
   | AccessDeniedException
@@ -3025,6 +3044,7 @@ export const importPublicKey: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "ImportPublicKey",
 }));
 export type ListCompositionsError =
   | AccessDeniedException
@@ -3067,6 +3087,7 @@ export const listCompositions: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "ListCompositions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3114,6 +3135,7 @@ export const listEncoderConfigurations: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "ListEncoderConfigurations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3151,6 +3173,7 @@ export const listIngestConfigurations: API.OperationMethod<
   input: ListIngestConfigurationsRequest,
   output: ListIngestConfigurationsResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListIngestConfigurations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3190,6 +3213,7 @@ export const listParticipantEvents: API.OperationMethod<
   input: ListParticipantEventsRequest,
   output: ListParticipantEventsResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListParticipantEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3227,6 +3251,7 @@ export const listParticipantReplicas: API.OperationMethod<
   input: ListParticipantReplicasRequest,
   output: ListParticipantReplicasResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListParticipantReplicas",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3265,6 +3290,7 @@ export const listParticipants: API.OperationMethod<
   input: ListParticipantsRequest,
   output: ListParticipantsResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListParticipants",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3302,6 +3328,7 @@ export const listPublicKeys: API.OperationMethod<
   input: ListPublicKeysRequest,
   output: ListPublicKeysResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListPublicKeys",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3342,6 +3369,7 @@ export const listStages: API.OperationMethod<
   input: ListStagesRequest,
   output: ListStagesResponse,
   errors: [AccessDeniedException, ConflictException, ValidationException],
+  operationName: "ListStages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3379,6 +3407,7 @@ export const listStageSessions: API.OperationMethod<
   input: ListStageSessionsRequest,
   output: ListStageSessionsResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListStageSessions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3426,6 +3455,7 @@ export const listStorageConfigurations: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "ListStorageConfigurations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3453,6 +3483,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type StartCompositionError =
   | AccessDeniedException
@@ -3500,6 +3531,7 @@ export const startComposition: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "StartComposition",
 }));
 export type StartParticipantReplicationError =
   | AccessDeniedException
@@ -3530,6 +3562,7 @@ export const startParticipantReplication: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "StartParticipantReplication",
 }));
 export type StopCompositionError =
   | AccessDeniedException
@@ -3559,6 +3592,7 @@ export const stopComposition: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "StopComposition",
 }));
 export type StopParticipantReplicationError =
   | AccessDeniedException
@@ -3583,6 +3617,7 @@ export const stopParticipantReplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StopParticipantReplication",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -3605,6 +3640,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -3627,6 +3663,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateIngestConfigurationError =
   | AccessDeniedException
@@ -3653,6 +3690,7 @@ export const updateIngestConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateIngestConfiguration",
 }));
 export type UpdateStageError =
   | AccessDeniedException
@@ -3681,4 +3719,5 @@ export const updateStage: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateStage",
 }));

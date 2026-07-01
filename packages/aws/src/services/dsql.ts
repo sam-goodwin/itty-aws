@@ -897,6 +897,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | ResourceNotFoundException
@@ -914,6 +915,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceInput,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -928,6 +930,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type CreateClusterError =
   | ConflictException
@@ -992,6 +995,7 @@ export const createCluster: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateCluster",
 }));
 export type GetClusterError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1006,6 +1010,7 @@ export const getCluster: API.OperationMethod<
   input: GetClusterInput,
   output: GetClusterOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetCluster",
 }));
 export type UpdateClusterError =
   | ConflictException
@@ -1078,6 +1083,7 @@ export const updateCluster: API.OperationMethod<
   input: UpdateClusterInput,
   output: UpdateClusterOutput,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "UpdateCluster",
 }));
 export type DeleteClusterError =
   | ConflictException
@@ -1095,6 +1101,7 @@ export const deleteCluster: API.OperationMethod<
   input: DeleteClusterInput,
   output: DeleteClusterOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  operationName: "DeleteCluster",
 }));
 export type ListClustersError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1124,6 +1131,7 @@ export const listClusters: API.OperationMethod<
   input: ListClustersInput,
   output: ListClustersOutput,
   errors: [ResourceNotFoundException],
+  operationName: "ListClusters",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1148,6 +1156,7 @@ export const deleteClusterPolicy: API.OperationMethod<
   input: DeleteClusterPolicyInput,
   output: DeleteClusterPolicyOutput,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "DeleteClusterPolicy",
 }));
 export type GetClusterPolicyError =
   | ResourceNotFoundException
@@ -1165,6 +1174,7 @@ export const getClusterPolicy: API.OperationMethod<
   input: GetClusterPolicyInput,
   output: GetClusterPolicyOutput,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetClusterPolicy",
 }));
 export type GetVpcEndpointServiceNameError =
   | InternalServerException
@@ -1189,6 +1199,7 @@ export const getVpcEndpointServiceName: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetVpcEndpointServiceName",
 }));
 export type PutClusterPolicyError =
   | ConflictException
@@ -1207,6 +1218,7 @@ export const putClusterPolicy: API.OperationMethod<
   input: PutClusterPolicyInput,
   output: PutClusterPolicyOutput,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "PutClusterPolicy",
 }));
 export type CreateStreamError =
   | ConflictException
@@ -1251,6 +1263,7 @@ export const createStream: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateStream",
 }));
 export type GetStreamError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1265,6 +1278,7 @@ export const getStream: API.OperationMethod<
   input: GetStreamInput,
   output: GetStreamOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetStream",
 }));
 export type DeleteStreamError =
   | ConflictException
@@ -1282,6 +1296,7 @@ export const deleteStream: API.OperationMethod<
   input: DeleteStreamInput,
   output: DeleteStreamOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  operationName: "DeleteStream",
 }));
 export type ListStreamsError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1311,6 +1326,7 @@ export const listStreams: API.OperationMethod<
   input: ListStreamsInput,
   output: ListStreamsOutput,
   errors: [ResourceNotFoundException],
+  operationName: "ListStreams",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

@@ -10831,6 +10831,7 @@ export const associateAlias: API.OperationMethod<
     NoSuchDistribution,
     TooManyDistributionCNAMEs,
   ],
+  operationName: "AssociateAlias",
 }));
 export type AssociateDistributionTenantWebACLError =
   | AccessDenied
@@ -10859,6 +10860,7 @@ export const associateDistributionTenantWebACL: API.OperationMethod<
     InvalidIfMatchVersion,
     PreconditionFailed,
   ],
+  operationName: "AssociateDistributionTenantWebACL",
 }));
 export type AssociateDistributionWebACLError =
   | AccessDenied
@@ -10887,6 +10889,7 @@ export const associateDistributionWebACL: API.OperationMethod<
     InvalidIfMatchVersion,
     PreconditionFailed,
   ],
+  operationName: "AssociateDistributionWebACL",
 }));
 export type CreateAnycastIpListError =
   | AccessDenied
@@ -10915,6 +10918,7 @@ export const createAnycastIpList: API.OperationMethod<
     InvalidTagging,
     UnsupportedOperation,
   ],
+  operationName: "CreateAnycastIpList",
 }));
 export type CreateCachePolicyError =
   | AccessDenied
@@ -10959,6 +10963,7 @@ export const createCachePolicy: API.OperationMethod<
     TooManyHeadersInCachePolicy,
     TooManyQueryStringsInCachePolicy,
   ],
+  operationName: "CreateCachePolicy",
 }));
 export type CreateCloudFrontOriginAccessIdentityError =
   | CloudFrontOriginAccessIdentityAlreadyExists
@@ -10985,6 +10990,7 @@ export const createCloudFrontOriginAccessIdentity: API.OperationMethod<
     MissingBody,
     TooManyCloudFrontOriginAccessIdentities,
   ],
+  operationName: "CreateCloudFrontOriginAccessIdentity",
 }));
 export type CreateConnectionFunctionError =
   | AccessDenied
@@ -11015,6 +11021,7 @@ export const createConnectionFunction: API.OperationMethod<
     InvalidTagging,
     UnsupportedOperation,
   ],
+  operationName: "CreateConnectionFunction",
 }));
 export type CreateConnectionGroupError =
   | AccessDenied
@@ -11043,6 +11050,7 @@ export const createConnectionGroup: API.OperationMethod<
     InvalidArgument,
     InvalidTagging,
   ],
+  operationName: "CreateConnectionGroup",
 }));
 export type CreateContinuousDeploymentPolicyError =
   | AccessDenied
@@ -11075,6 +11083,7 @@ export const createContinuousDeploymentPolicy: API.OperationMethod<
     StagingDistributionInUse,
     TooManyContinuousDeploymentPolicies,
   ],
+  operationName: "CreateContinuousDeploymentPolicy",
 }));
 export type CreateDistributionTenantError =
   | AccessDenied
@@ -11107,6 +11116,7 @@ export const createDistributionTenant: API.OperationMethod<
     InvalidAssociation,
     InvalidTagging,
   ],
+  operationName: "CreateDistributionTenant",
 }));
 export type CreateFieldLevelEncryptionConfigError =
   | FieldLevelEncryptionConfigAlreadyExists
@@ -11139,6 +11149,7 @@ export const createFieldLevelEncryptionConfig: API.OperationMethod<
     TooManyFieldLevelEncryptionContentTypeProfiles,
     TooManyFieldLevelEncryptionQueryArgProfiles,
   ],
+  operationName: "CreateFieldLevelEncryptionConfig",
 }));
 export type CreateFieldLevelEncryptionProfileError =
   | FieldLevelEncryptionProfileAlreadyExists
@@ -11171,6 +11182,7 @@ export const createFieldLevelEncryptionProfile: API.OperationMethod<
     TooManyFieldLevelEncryptionFieldPatterns,
     TooManyFieldLevelEncryptionProfiles,
   ],
+  operationName: "CreateFieldLevelEncryptionProfile",
 }));
 export type CreateFunctionError =
   | FunctionAlreadyExists
@@ -11203,6 +11215,7 @@ export const createFunction: API.OperationMethod<
     TooManyFunctions,
     UnsupportedOperation,
   ],
+  operationName: "CreateFunction",
 }));
 export type CreateInvalidationError =
   | AccessDenied
@@ -11233,6 +11246,7 @@ export const createInvalidation: API.OperationMethod<
     NoSuchDistribution,
     TooManyInvalidationsInProgress,
   ],
+  operationName: "CreateInvalidation",
 }));
 export type CreateInvalidationForDistributionTenantError =
   | AccessDenied
@@ -11263,6 +11277,7 @@ export const createInvalidationForDistributionTenant: API.OperationMethod<
     MissingBody,
     TooManyInvalidationsInProgress,
   ],
+  operationName: "CreateInvalidationForDistributionTenant",
 }));
 export type CreateKeyGroupError =
   | InvalidArgument
@@ -11289,6 +11304,7 @@ export const createKeyGroup: API.OperationMethod<
     TooManyKeyGroups,
     TooManyPublicKeysInKeyGroup,
   ],
+  operationName: "CreateKeyGroup",
 }));
 export type CreateKeyValueStoreError =
   | AccessDenied
@@ -11317,6 +11333,7 @@ export const createKeyValueStore: API.OperationMethod<
     InvalidArgument,
     UnsupportedOperation,
   ],
+  operationName: "CreateKeyValueStore",
 }));
 export type CreateMonitoringSubscriptionError =
   | AccessDenied
@@ -11343,6 +11360,7 @@ export const createMonitoringSubscription: API.OperationMethod<
     NoSuchDistribution,
     UnsupportedOperation,
   ],
+  operationName: "CreateMonitoringSubscription",
 }));
 export type CreateOriginAccessControlError =
   | InvalidArgument
@@ -11369,6 +11387,7 @@ export const createOriginAccessControl: API.OperationMethod<
     OriginAccessControlAlreadyExists,
     TooManyOriginAccessControls,
   ],
+  operationName: "CreateOriginAccessControl",
 }));
 export type CreateOriginRequestPolicyError =
   | AccessDenied
@@ -11413,6 +11432,7 @@ export const createOriginRequestPolicy: API.OperationMethod<
     TooManyOriginRequestPolicies,
     TooManyQueryStringsInOriginRequestPolicy,
   ],
+  operationName: "CreateOriginRequestPolicy",
 }));
 export type CreatePublicKeyError =
   | InvalidArgument
@@ -11431,6 +11451,7 @@ export const createPublicKey: API.OperationMethod<
   input: CreatePublicKeyRequest,
   output: CreatePublicKeyResult,
   errors: [InvalidArgument, PublicKeyAlreadyExists, TooManyPublicKeys],
+  operationName: "CreatePublicKey",
 }));
 export type CreateRealtimeLogConfigError =
   | AccessDenied
@@ -11459,6 +11480,7 @@ export const createRealtimeLogConfig: API.OperationMethod<
     RealtimeLogConfigAlreadyExists,
     TooManyRealtimeLogConfigs,
   ],
+  operationName: "CreateRealtimeLogConfig",
 }));
 export type CreateResponseHeadersPolicyError =
   | AccessDenied
@@ -11497,6 +11519,7 @@ export const createResponseHeadersPolicy: API.OperationMethod<
     TooManyRemoveHeadersInResponseHeadersPolicy,
     TooManyResponseHeadersPolicies,
   ],
+  operationName: "CreateResponseHeadersPolicy",
 }));
 export type CreateStreamingDistributionError =
   | AccessDenied
@@ -11539,6 +11562,7 @@ export const createStreamingDistribution: API.OperationMethod<
     TooManyTrustedSigners,
     TrustedSignerDoesNotExist,
   ],
+  operationName: "CreateStreamingDistribution",
 }));
 export type CreateStreamingDistributionWithTagsError =
   | AccessDenied
@@ -11583,6 +11607,7 @@ export const createStreamingDistributionWithTags: API.OperationMethod<
     TooManyTrustedSigners,
     TrustedSignerDoesNotExist,
   ],
+  operationName: "CreateStreamingDistributionWithTags",
 }));
 export type CreateTrustStoreError =
   | AccessDenied
@@ -11611,6 +11636,7 @@ export const createTrustStore: API.OperationMethod<
     InvalidArgument,
     InvalidTagging,
   ],
+  operationName: "CreateTrustStore",
 }));
 export type CreateVpcOriginError =
   | AccessDenied
@@ -11641,6 +11667,7 @@ export const createVpcOrigin: API.OperationMethod<
     InvalidTagging,
     UnsupportedOperation,
   ],
+  operationName: "CreateVpcOrigin",
 }));
 export type DeleteAnycastIpListError =
   | AccessDenied
@@ -11673,6 +11700,7 @@ export const deleteAnycastIpList: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  operationName: "DeleteAnycastIpList",
 }));
 export type DeleteCachePolicyError =
   | AccessDenied
@@ -11705,6 +11733,7 @@ export const deleteCachePolicy: API.OperationMethod<
     NoSuchCachePolicy,
     PreconditionFailed,
   ],
+  operationName: "DeleteCachePolicy",
 }));
 export type DeleteCloudFrontOriginAccessIdentityError =
   | AccessDenied
@@ -11731,6 +11760,7 @@ export const deleteCloudFrontOriginAccessIdentity: API.OperationMethod<
     NoSuchCloudFrontOriginAccessIdentity,
     PreconditionFailed,
   ],
+  operationName: "DeleteCloudFrontOriginAccessIdentity",
 }));
 export type DeleteConnectionFunctionError =
   | AccessDenied
@@ -11761,6 +11791,7 @@ export const deleteConnectionFunction: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  operationName: "DeleteConnectionFunction",
 }));
 export type DeleteConnectionGroupError =
   | AccessDenied
@@ -11789,6 +11820,7 @@ export const deleteConnectionGroup: API.OperationMethod<
     PreconditionFailed,
     ResourceNotDisabled,
   ],
+  operationName: "DeleteConnectionGroup",
 }));
 export type DeleteContinuousDeploymentPolicyError =
   | AccessDenied
@@ -11819,6 +11851,7 @@ export const deleteContinuousDeploymentPolicy: API.OperationMethod<
     NoSuchContinuousDeploymentPolicy,
     PreconditionFailed,
   ],
+  operationName: "DeleteContinuousDeploymentPolicy",
 }));
 export type DeleteDistributionError =
   | AccessDenied
@@ -11849,6 +11882,7 @@ export const deleteDistribution: API.OperationMethod<
     PreconditionFailed,
     ResourceInUse,
   ],
+  operationName: "DeleteDistribution",
 }));
 export type DeleteDistributionTenantError =
   | AccessDenied
@@ -11877,6 +11911,7 @@ export const deleteDistributionTenant: API.OperationMethod<
     PreconditionFailed,
     ResourceNotDisabled,
   ],
+  operationName: "DeleteDistributionTenant",
 }));
 export type DeleteFieldLevelEncryptionConfigError =
   | AccessDenied
@@ -11903,6 +11938,7 @@ export const deleteFieldLevelEncryptionConfig: API.OperationMethod<
     NoSuchFieldLevelEncryptionConfig,
     PreconditionFailed,
   ],
+  operationName: "DeleteFieldLevelEncryptionConfig",
 }));
 export type DeleteFieldLevelEncryptionProfileError =
   | AccessDenied
@@ -11929,6 +11965,7 @@ export const deleteFieldLevelEncryptionProfile: API.OperationMethod<
     NoSuchFieldLevelEncryptionProfile,
     PreconditionFailed,
   ],
+  operationName: "DeleteFieldLevelEncryptionProfile",
 }));
 export type DeleteFunctionError =
   | FunctionInUse
@@ -11959,6 +11996,7 @@ export const deleteFunction: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  operationName: "DeleteFunction",
 }));
 export type DeleteKeyGroupError =
   | InvalidIfMatchVersion
@@ -11987,6 +12025,7 @@ export const deleteKeyGroup: API.OperationMethod<
     PreconditionFailed,
     ResourceInUse,
   ],
+  operationName: "DeleteKeyGroup",
 }));
 export type DeleteKeyValueStoreError =
   | AccessDenied
@@ -12015,6 +12054,7 @@ export const deleteKeyValueStore: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  operationName: "DeleteKeyValueStore",
 }));
 export type DeleteMonitoringSubscriptionError =
   | AccessDenied
@@ -12039,6 +12079,7 @@ export const deleteMonitoringSubscription: API.OperationMethod<
     NoSuchMonitoringSubscription,
     UnsupportedOperation,
   ],
+  operationName: "DeleteMonitoringSubscription",
 }));
 export type DeleteOriginAccessControlError =
   | AccessDenied
@@ -12067,6 +12108,7 @@ export const deleteOriginAccessControl: API.OperationMethod<
     OriginAccessControlInUse,
     PreconditionFailed,
   ],
+  operationName: "DeleteOriginAccessControl",
 }));
 export type DeleteOriginRequestPolicyError =
   | AccessDenied
@@ -12099,6 +12141,7 @@ export const deleteOriginRequestPolicy: API.OperationMethod<
     OriginRequestPolicyInUse,
     PreconditionFailed,
   ],
+  operationName: "DeleteOriginRequestPolicy",
 }));
 export type DeletePublicKeyError =
   | AccessDenied
@@ -12125,6 +12168,7 @@ export const deletePublicKey: API.OperationMethod<
     PreconditionFailed,
     PublicKeyInUse,
   ],
+  operationName: "DeletePublicKey",
 }));
 export type DeleteRealtimeLogConfigError =
   | AccessDenied
@@ -12153,6 +12197,7 @@ export const deleteRealtimeLogConfig: API.OperationMethod<
     NoSuchRealtimeLogConfig,
     RealtimeLogConfigInUse,
   ],
+  operationName: "DeleteRealtimeLogConfig",
 }));
 export type DeleteResourcePolicyError =
   | AccessDenied
@@ -12181,6 +12226,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteResponseHeadersPolicyError =
   | AccessDenied
@@ -12213,6 +12259,7 @@ export const deleteResponseHeadersPolicy: API.OperationMethod<
     PreconditionFailed,
     ResponseHeadersPolicyInUse,
   ],
+  operationName: "DeleteResponseHeadersPolicy",
 }));
 export type DeleteStreamingDistributionError =
   | AccessDenied
@@ -12259,6 +12306,7 @@ export const deleteStreamingDistribution: API.OperationMethod<
     PreconditionFailed,
     StreamingDistributionNotDisabled,
   ],
+  operationName: "DeleteStreamingDistribution",
 }));
 export type DeleteTrustStoreError =
   | AccessDenied
@@ -12287,6 +12335,7 @@ export const deleteTrustStore: API.OperationMethod<
     InvalidIfMatchVersion,
     PreconditionFailed,
   ],
+  operationName: "DeleteTrustStore",
 }));
 export type DeleteVpcOriginError =
   | AccessDenied
@@ -12319,6 +12368,7 @@ export const deleteVpcOrigin: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  operationName: "DeleteVpcOrigin",
 }));
 export type DescribeConnectionFunctionError =
   | AccessDenied
@@ -12338,6 +12388,7 @@ export const describeConnectionFunction: API.OperationMethod<
   input: DescribeConnectionFunctionRequest,
   output: DescribeConnectionFunctionResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  operationName: "DescribeConnectionFunction",
 }));
 export type DescribeFunctionError =
   | NoSuchFunctionExists
@@ -12357,6 +12408,7 @@ export const describeFunction: API.OperationMethod<
   input: DescribeFunctionRequest,
   output: DescribeFunctionResult,
   errors: [NoSuchFunctionExists, UnsupportedOperation],
+  operationName: "DescribeFunction",
 }));
 export type DescribeKeyValueStoreError =
   | AccessDenied
@@ -12376,6 +12428,7 @@ export const describeKeyValueStore: API.OperationMethod<
   input: DescribeKeyValueStoreRequest,
   output: DescribeKeyValueStoreResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  operationName: "DescribeKeyValueStore",
 }));
 export type DisassociateDistributionTenantWebACLError =
   | AccessDenied
@@ -12402,6 +12455,7 @@ export const disassociateDistributionTenantWebACL: API.OperationMethod<
     InvalidIfMatchVersion,
     PreconditionFailed,
   ],
+  operationName: "DisassociateDistributionTenantWebACL",
 }));
 export type DisassociateDistributionWebACLError =
   | AccessDenied
@@ -12428,6 +12482,7 @@ export const disassociateDistributionWebACL: API.OperationMethod<
     InvalidIfMatchVersion,
     PreconditionFailed,
   ],
+  operationName: "DisassociateDistributionWebACL",
 }));
 export type GetAnycastIpListError =
   | AccessDenied
@@ -12447,6 +12502,7 @@ export const getAnycastIpList: API.OperationMethod<
   input: GetAnycastIpListRequest,
   output: GetAnycastIpListResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  operationName: "GetAnycastIpList",
 }));
 export type GetCachePolicyError =
   | AccessDenied
@@ -12470,6 +12526,7 @@ export const getCachePolicy: API.OperationMethod<
   input: GetCachePolicyRequest,
   output: GetCachePolicyResult,
   errors: [AccessDenied, NoSuchCachePolicy],
+  operationName: "GetCachePolicy",
 }));
 export type GetCachePolicyConfigError =
   | AccessDenied
@@ -12489,6 +12546,7 @@ export const getCachePolicyConfig: API.OperationMethod<
   input: GetCachePolicyConfigRequest,
   output: GetCachePolicyConfigResult,
   errors: [AccessDenied, NoSuchCachePolicy],
+  operationName: "GetCachePolicyConfig",
 }));
 export type GetCloudFrontOriginAccessIdentityError =
   | AccessDenied
@@ -12506,6 +12564,7 @@ export const getCloudFrontOriginAccessIdentity: API.OperationMethod<
   input: GetCloudFrontOriginAccessIdentityRequest,
   output: GetCloudFrontOriginAccessIdentityResult,
   errors: [AccessDenied, NoSuchCloudFrontOriginAccessIdentity],
+  operationName: "GetCloudFrontOriginAccessIdentity",
 }));
 export type GetCloudFrontOriginAccessIdentityConfigError =
   | AccessDenied
@@ -12523,6 +12582,7 @@ export const getCloudFrontOriginAccessIdentityConfig: API.OperationMethod<
   input: GetCloudFrontOriginAccessIdentityConfigRequest,
   output: GetCloudFrontOriginAccessIdentityConfigResult,
   errors: [AccessDenied, NoSuchCloudFrontOriginAccessIdentity],
+  operationName: "GetCloudFrontOriginAccessIdentityConfig",
 }));
 export type GetConnectionFunctionError =
   | AccessDenied
@@ -12541,6 +12601,7 @@ export const getConnectionFunction: API.OperationMethod<
   input: GetConnectionFunctionRequest,
   output: GetConnectionFunctionResult,
   errors: [AccessDenied, EntityNotFound, UnsupportedOperation],
+  operationName: "GetConnectionFunction",
 }));
 export type GetConnectionGroupError =
   | AccessDenied
@@ -12558,6 +12619,7 @@ export const getConnectionGroup: API.OperationMethod<
   input: GetConnectionGroupRequest,
   output: GetConnectionGroupResult,
   errors: [AccessDenied, EntityNotFound],
+  operationName: "GetConnectionGroup",
 }));
 export type GetConnectionGroupByRoutingEndpointError =
   | AccessDenied
@@ -12575,6 +12637,7 @@ export const getConnectionGroupByRoutingEndpoint: API.OperationMethod<
   input: GetConnectionGroupByRoutingEndpointRequest,
   output: GetConnectionGroupByRoutingEndpointResult,
   errors: [AccessDenied, EntityNotFound],
+  operationName: "GetConnectionGroupByRoutingEndpoint",
 }));
 export type GetContinuousDeploymentPolicyError =
   | AccessDenied
@@ -12592,6 +12655,7 @@ export const getContinuousDeploymentPolicy: API.OperationMethod<
   input: GetContinuousDeploymentPolicyRequest,
   output: GetContinuousDeploymentPolicyResult,
   errors: [AccessDenied, NoSuchContinuousDeploymentPolicy],
+  operationName: "GetContinuousDeploymentPolicy",
 }));
 export type GetContinuousDeploymentPolicyConfigError =
   | AccessDenied
@@ -12609,6 +12673,7 @@ export const getContinuousDeploymentPolicyConfig: API.OperationMethod<
   input: GetContinuousDeploymentPolicyConfigRequest,
   output: GetContinuousDeploymentPolicyConfigResult,
   errors: [AccessDenied, NoSuchContinuousDeploymentPolicy],
+  operationName: "GetContinuousDeploymentPolicyConfig",
 }));
 export type GetDistributionError =
   | AccessDenied
@@ -12626,6 +12691,7 @@ export const getDistribution: API.OperationMethod<
   input: GetDistributionRequest,
   output: GetDistributionResult,
   errors: [AccessDenied, NoSuchDistribution],
+  operationName: "GetDistribution",
 }));
 export type GetDistributionConfigError =
   | AccessDenied
@@ -12643,6 +12709,7 @@ export const getDistributionConfig: API.OperationMethod<
   input: GetDistributionConfigRequest,
   output: GetDistributionConfigResult,
   errors: [AccessDenied, NoSuchDistribution],
+  operationName: "GetDistributionConfig",
 }));
 export type GetDistributionTenantError =
   | AccessDenied
@@ -12660,6 +12727,7 @@ export const getDistributionTenant: API.OperationMethod<
   input: GetDistributionTenantRequest,
   output: GetDistributionTenantResult,
   errors: [AccessDenied, EntityNotFound],
+  operationName: "GetDistributionTenant",
 }));
 export type GetDistributionTenantByDomainError =
   | AccessDenied
@@ -12677,6 +12745,7 @@ export const getDistributionTenantByDomain: API.OperationMethod<
   input: GetDistributionTenantByDomainRequest,
   output: GetDistributionTenantByDomainResult,
   errors: [AccessDenied, EntityNotFound],
+  operationName: "GetDistributionTenantByDomain",
 }));
 export type GetFieldLevelEncryptionError =
   | AccessDenied
@@ -12694,6 +12763,7 @@ export const getFieldLevelEncryption: API.OperationMethod<
   input: GetFieldLevelEncryptionRequest,
   output: GetFieldLevelEncryptionResult,
   errors: [AccessDenied, NoSuchFieldLevelEncryptionConfig],
+  operationName: "GetFieldLevelEncryption",
 }));
 export type GetFieldLevelEncryptionConfigError =
   | AccessDenied
@@ -12711,6 +12781,7 @@ export const getFieldLevelEncryptionConfig: API.OperationMethod<
   input: GetFieldLevelEncryptionConfigRequest,
   output: GetFieldLevelEncryptionConfigResult,
   errors: [AccessDenied, NoSuchFieldLevelEncryptionConfig],
+  operationName: "GetFieldLevelEncryptionConfig",
 }));
 export type GetFieldLevelEncryptionProfileError =
   | AccessDenied
@@ -12728,6 +12799,7 @@ export const getFieldLevelEncryptionProfile: API.OperationMethod<
   input: GetFieldLevelEncryptionProfileRequest,
   output: GetFieldLevelEncryptionProfileResult,
   errors: [AccessDenied, NoSuchFieldLevelEncryptionProfile],
+  operationName: "GetFieldLevelEncryptionProfile",
 }));
 export type GetFieldLevelEncryptionProfileConfigError =
   | AccessDenied
@@ -12745,6 +12817,7 @@ export const getFieldLevelEncryptionProfileConfig: API.OperationMethod<
   input: GetFieldLevelEncryptionProfileConfigRequest,
   output: GetFieldLevelEncryptionProfileConfigResult,
   errors: [AccessDenied, NoSuchFieldLevelEncryptionProfile],
+  operationName: "GetFieldLevelEncryptionProfileConfig",
 }));
 export type GetFunctionError =
   | NoSuchFunctionExists
@@ -12764,6 +12837,7 @@ export const getFunction: API.OperationMethod<
   input: GetFunctionRequest,
   output: GetFunctionResult,
   errors: [NoSuchFunctionExists, UnsupportedOperation],
+  operationName: "GetFunction",
 }));
 export type GetInvalidationError =
   | AccessDenied
@@ -12782,6 +12856,7 @@ export const getInvalidation: API.OperationMethod<
   input: GetInvalidationRequest,
   output: GetInvalidationResult,
   errors: [AccessDenied, NoSuchDistribution, NoSuchInvalidation],
+  operationName: "GetInvalidation",
 }));
 export type GetInvalidationForDistributionTenantError =
   | AccessDenied
@@ -12800,6 +12875,7 @@ export const getInvalidationForDistributionTenant: API.OperationMethod<
   input: GetInvalidationForDistributionTenantRequest,
   output: GetInvalidationForDistributionTenantResult,
   errors: [AccessDenied, EntityNotFound, NoSuchInvalidation],
+  operationName: "GetInvalidationForDistributionTenant",
 }));
 export type GetKeyGroupError = NoSuchResource | CommonErrors;
 /**
@@ -12816,6 +12892,7 @@ export const getKeyGroup: API.OperationMethod<
   input: GetKeyGroupRequest,
   output: GetKeyGroupResult,
   errors: [NoSuchResource],
+  operationName: "GetKeyGroup",
 }));
 export type GetKeyGroupConfigError = NoSuchResource | CommonErrors;
 /**
@@ -12832,6 +12909,7 @@ export const getKeyGroupConfig: API.OperationMethod<
   input: GetKeyGroupConfigRequest,
   output: GetKeyGroupConfigResult,
   errors: [NoSuchResource],
+  operationName: "GetKeyGroupConfig",
 }));
 export type GetManagedCertificateDetailsError =
   | AccessDenied
@@ -12849,6 +12927,7 @@ export const getManagedCertificateDetails: API.OperationMethod<
   input: GetManagedCertificateDetailsRequest,
   output: GetManagedCertificateDetailsResult,
   errors: [AccessDenied, EntityNotFound],
+  operationName: "GetManagedCertificateDetails",
 }));
 export type GetMonitoringSubscriptionError =
   | AccessDenied
@@ -12873,6 +12952,7 @@ export const getMonitoringSubscription: API.OperationMethod<
     NoSuchMonitoringSubscription,
     UnsupportedOperation,
   ],
+  operationName: "GetMonitoringSubscription",
 }));
 export type GetOriginAccessControlError =
   | AccessDenied
@@ -12890,6 +12970,7 @@ export const getOriginAccessControl: API.OperationMethod<
   input: GetOriginAccessControlRequest,
   output: GetOriginAccessControlResult,
   errors: [AccessDenied, NoSuchOriginAccessControl],
+  operationName: "GetOriginAccessControl",
 }));
 export type GetOriginAccessControlConfigError =
   | AccessDenied
@@ -12907,6 +12988,7 @@ export const getOriginAccessControlConfig: API.OperationMethod<
   input: GetOriginAccessControlConfigRequest,
   output: GetOriginAccessControlConfigResult,
   errors: [AccessDenied, NoSuchOriginAccessControl],
+  operationName: "GetOriginAccessControlConfig",
 }));
 export type GetOriginRequestPolicyError =
   | AccessDenied
@@ -12930,6 +13012,7 @@ export const getOriginRequestPolicy: API.OperationMethod<
   input: GetOriginRequestPolicyRequest,
   output: GetOriginRequestPolicyResult,
   errors: [AccessDenied, NoSuchOriginRequestPolicy],
+  operationName: "GetOriginRequestPolicy",
 }));
 export type GetOriginRequestPolicyConfigError =
   | AccessDenied
@@ -12949,6 +13032,7 @@ export const getOriginRequestPolicyConfig: API.OperationMethod<
   input: GetOriginRequestPolicyConfigRequest,
   output: GetOriginRequestPolicyConfigResult,
   errors: [AccessDenied, NoSuchOriginRequestPolicy],
+  operationName: "GetOriginRequestPolicyConfig",
 }));
 export type GetPublicKeyError = AccessDenied | NoSuchPublicKey | CommonErrors;
 /**
@@ -12963,6 +13047,7 @@ export const getPublicKey: API.OperationMethod<
   input: GetPublicKeyRequest,
   output: GetPublicKeyResult,
   errors: [AccessDenied, NoSuchPublicKey],
+  operationName: "GetPublicKey",
 }));
 export type GetPublicKeyConfigError =
   | AccessDenied
@@ -12980,6 +13065,7 @@ export const getPublicKeyConfig: API.OperationMethod<
   input: GetPublicKeyConfigRequest,
   output: GetPublicKeyConfigResult,
   errors: [AccessDenied, NoSuchPublicKey],
+  operationName: "GetPublicKeyConfig",
 }));
 export type GetRealtimeLogConfigError =
   | AccessDenied
@@ -13000,6 +13086,7 @@ export const getRealtimeLogConfig: API.OperationMethod<
   input: GetRealtimeLogConfigRequest,
   output: GetRealtimeLogConfigResult,
   errors: [AccessDenied, InvalidArgument, NoSuchRealtimeLogConfig],
+  operationName: "GetRealtimeLogConfig",
 }));
 export type GetResourcePolicyError =
   | AccessDenied
@@ -13019,6 +13106,7 @@ export const getResourcePolicy: API.OperationMethod<
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  operationName: "GetResourcePolicy",
 }));
 export type GetResponseHeadersPolicyError =
   | AccessDenied
@@ -13038,6 +13126,7 @@ export const getResponseHeadersPolicy: API.OperationMethod<
   input: GetResponseHeadersPolicyRequest,
   output: GetResponseHeadersPolicyResult,
   errors: [AccessDenied, NoSuchResponseHeadersPolicy],
+  operationName: "GetResponseHeadersPolicy",
 }));
 export type GetResponseHeadersPolicyConfigError =
   | AccessDenied
@@ -13057,6 +13146,7 @@ export const getResponseHeadersPolicyConfig: API.OperationMethod<
   input: GetResponseHeadersPolicyConfigRequest,
   output: GetResponseHeadersPolicyConfigResult,
   errors: [AccessDenied, NoSuchResponseHeadersPolicy],
+  operationName: "GetResponseHeadersPolicyConfig",
 }));
 export type GetStreamingDistributionError =
   | AccessDenied
@@ -13074,6 +13164,7 @@ export const getStreamingDistribution: API.OperationMethod<
   input: GetStreamingDistributionRequest,
   output: GetStreamingDistributionResult,
   errors: [AccessDenied, NoSuchStreamingDistribution],
+  operationName: "GetStreamingDistribution",
 }));
 export type GetStreamingDistributionConfigError =
   | AccessDenied
@@ -13091,6 +13182,7 @@ export const getStreamingDistributionConfig: API.OperationMethod<
   input: GetStreamingDistributionConfigRequest,
   output: GetStreamingDistributionConfigResult,
   errors: [AccessDenied, NoSuchStreamingDistribution],
+  operationName: "GetStreamingDistributionConfig",
 }));
 export type GetTrustStoreError =
   | AccessDenied
@@ -13109,6 +13201,7 @@ export const getTrustStore: API.OperationMethod<
   input: GetTrustStoreRequest,
   output: GetTrustStoreResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  operationName: "GetTrustStore",
 }));
 export type GetVpcOriginError =
   | AccessDenied
@@ -13128,6 +13221,7 @@ export const getVpcOrigin: API.OperationMethod<
   input: GetVpcOriginRequest,
   output: GetVpcOriginResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  operationName: "GetVpcOrigin",
 }));
 export type ListAnycastIpListsError =
   | AccessDenied
@@ -13147,6 +13241,7 @@ export const listAnycastIpLists: API.OperationMethod<
   input: ListAnycastIpListsRequest,
   output: ListAnycastIpListsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  operationName: "ListAnycastIpLists",
 }));
 export type ListCachePoliciesError =
   | AccessDenied
@@ -13169,6 +13264,7 @@ export const listCachePolicies: API.OperationMethod<
   input: ListCachePoliciesRequest,
   output: ListCachePoliciesResult,
   errors: [AccessDenied, InvalidArgument, NoSuchCachePolicy],
+  operationName: "ListCachePolicies",
 }));
 export type ListCloudFrontOriginAccessIdentitiesError =
   | InvalidArgument
@@ -13200,6 +13296,7 @@ export const listCloudFrontOriginAccessIdentities: API.OperationMethod<
   input: ListCloudFrontOriginAccessIdentitiesRequest,
   output: ListCloudFrontOriginAccessIdentitiesResult,
   errors: [InvalidArgument],
+  operationName: "ListCloudFrontOriginAccessIdentities",
   pagination: {
     inputToken: "Marker",
     outputToken: "CloudFrontOriginAccessIdentityList.NextMarker",
@@ -13233,6 +13330,7 @@ export const listConflictingAliases: API.OperationMethod<
   input: ListConflictingAliasesRequest,
   output: ListConflictingAliasesResult,
   errors: [InvalidArgument, NoSuchDistribution],
+  operationName: "ListConflictingAliases",
 }));
 export type ListConnectionFunctionsError =
   | AccessDenied
@@ -13266,6 +13364,7 @@ export const listConnectionFunctions: API.OperationMethod<
   input: ListConnectionFunctionsRequest,
   output: ListConnectionFunctionsResult,
   errors: [AccessDenied, InvalidArgument, UnsupportedOperation],
+  operationName: "ListConnectionFunctions",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -13305,6 +13404,7 @@ export const listConnectionGroups: API.OperationMethod<
   input: ListConnectionGroupsRequest,
   output: ListConnectionGroupsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  operationName: "ListConnectionGroups",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -13331,6 +13431,7 @@ export const listContinuousDeploymentPolicies: API.OperationMethod<
   input: ListContinuousDeploymentPoliciesRequest,
   output: ListContinuousDeploymentPoliciesResult,
   errors: [AccessDenied, InvalidArgument, NoSuchContinuousDeploymentPolicy],
+  operationName: "ListContinuousDeploymentPolicies",
 }));
 export type ListDistributionsError = InvalidArgument | CommonErrors;
 /**
@@ -13360,6 +13461,7 @@ export const listDistributions: API.OperationMethod<
   input: ListDistributionsRequest,
   output: ListDistributionsResult,
   errors: [InvalidArgument],
+  operationName: "ListDistributions",
   pagination: {
     inputToken: "Marker",
     outputToken: "DistributionList.NextMarker",
@@ -13385,6 +13487,7 @@ export const listDistributionsByAnycastIpListId: API.OperationMethod<
   input: ListDistributionsByAnycastIpListIdRequest,
   output: ListDistributionsByAnycastIpListIdResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  operationName: "ListDistributionsByAnycastIpListId",
 }));
 export type ListDistributionsByCachePolicyIdError =
   | AccessDenied
@@ -13405,6 +13508,7 @@ export const listDistributionsByCachePolicyId: API.OperationMethod<
   input: ListDistributionsByCachePolicyIdRequest,
   output: ListDistributionsByCachePolicyIdResult,
   errors: [AccessDenied, InvalidArgument, NoSuchCachePolicy],
+  operationName: "ListDistributionsByCachePolicyId",
 }));
 export type ListDistributionsByConnectionFunctionError =
   | AccessDenied
@@ -13438,6 +13542,7 @@ export const listDistributionsByConnectionFunction: API.OperationMethod<
   input: ListDistributionsByConnectionFunctionRequest,
   output: ListDistributionsByConnectionFunctionResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  operationName: "ListDistributionsByConnectionFunction",
   pagination: {
     inputToken: "Marker",
     outputToken: "DistributionList.NextMarker",
@@ -13476,6 +13581,7 @@ export const listDistributionsByConnectionMode: API.OperationMethod<
   input: ListDistributionsByConnectionModeRequest,
   output: ListDistributionsByConnectionModeResult,
   errors: [AccessDenied, InvalidArgument],
+  operationName: "ListDistributionsByConnectionMode",
   pagination: {
     inputToken: "Marker",
     outputToken: "DistributionList.NextMarker",
@@ -13501,6 +13607,7 @@ export const listDistributionsByKeyGroup: API.OperationMethod<
   input: ListDistributionsByKeyGroupRequest,
   output: ListDistributionsByKeyGroupResult,
   errors: [InvalidArgument, NoSuchResource],
+  operationName: "ListDistributionsByKeyGroup",
 }));
 export type ListDistributionsByOriginRequestPolicyIdError =
   | AccessDenied
@@ -13521,6 +13628,7 @@ export const listDistributionsByOriginRequestPolicyId: API.OperationMethod<
   input: ListDistributionsByOriginRequestPolicyIdRequest,
   output: ListDistributionsByOriginRequestPolicyIdResult,
   errors: [AccessDenied, InvalidArgument, NoSuchOriginRequestPolicy],
+  operationName: "ListDistributionsByOriginRequestPolicyId",
 }));
 export type ListDistributionsByOwnedResourceError =
   | AccessDenied
@@ -13540,6 +13648,7 @@ export const listDistributionsByOwnedResource: API.OperationMethod<
   input: ListDistributionsByOwnedResourceRequest,
   output: ListDistributionsByOwnedResourceResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  operationName: "ListDistributionsByOwnedResource",
 }));
 export type ListDistributionsByRealtimeLogConfigError =
   | InvalidArgument
@@ -13560,6 +13669,7 @@ export const listDistributionsByRealtimeLogConfig: API.OperationMethod<
   input: ListDistributionsByRealtimeLogConfigRequest,
   output: ListDistributionsByRealtimeLogConfigResult,
   errors: [InvalidArgument],
+  operationName: "ListDistributionsByRealtimeLogConfig",
 }));
 export type ListDistributionsByResponseHeadersPolicyIdError =
   | AccessDenied
@@ -13580,6 +13690,7 @@ export const listDistributionsByResponseHeadersPolicyId: API.OperationMethod<
   input: ListDistributionsByResponseHeadersPolicyIdRequest,
   output: ListDistributionsByResponseHeadersPolicyIdResult,
   errors: [AccessDenied, InvalidArgument, NoSuchResponseHeadersPolicy],
+  operationName: "ListDistributionsByResponseHeadersPolicyId",
 }));
 export type ListDistributionsByTrustStoreError =
   | AccessDenied
@@ -13613,6 +13724,7 @@ export const listDistributionsByTrustStore: API.OperationMethod<
   input: ListDistributionsByTrustStoreRequest,
   output: ListDistributionsByTrustStoreResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  operationName: "ListDistributionsByTrustStore",
   pagination: {
     inputToken: "Marker",
     outputToken: "DistributionList.NextMarker",
@@ -13638,6 +13750,7 @@ export const listDistributionsByVpcOriginId: API.OperationMethod<
   input: ListDistributionsByVpcOriginIdRequest,
   output: ListDistributionsByVpcOriginIdResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  operationName: "ListDistributionsByVpcOriginId",
 }));
 export type ListDistributionsByWebACLIdError =
   | InvalidArgument
@@ -13655,6 +13768,7 @@ export const listDistributionsByWebACLId: API.OperationMethod<
   input: ListDistributionsByWebACLIdRequest,
   output: ListDistributionsByWebACLIdResult,
   errors: [InvalidArgument, InvalidWebACLId],
+  operationName: "ListDistributionsByWebACLId",
 }));
 export type ListDistributionTenantsError =
   | AccessDenied
@@ -13688,6 +13802,7 @@ export const listDistributionTenants: API.OperationMethod<
   input: ListDistributionTenantsRequest,
   output: ListDistributionTenantsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  operationName: "ListDistributionTenants",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -13729,6 +13844,7 @@ export const listDistributionTenantsByCustomization: API.OperationMethod<
   input: ListDistributionTenantsByCustomizationRequest,
   output: ListDistributionTenantsByCustomizationResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  operationName: "ListDistributionTenantsByCustomization",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -13784,6 +13900,7 @@ export const listDomainConflicts: API.OperationMethod<
   input: ListDomainConflictsRequest,
   output: ListDomainConflictsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  operationName: "ListDomainConflicts",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -13806,6 +13923,7 @@ export const listFieldLevelEncryptionConfigs: API.OperationMethod<
   input: ListFieldLevelEncryptionConfigsRequest,
   output: ListFieldLevelEncryptionConfigsResult,
   errors: [InvalidArgument],
+  operationName: "ListFieldLevelEncryptionConfigs",
 }));
 export type ListFieldLevelEncryptionProfilesError =
   | InvalidArgument
@@ -13822,6 +13940,7 @@ export const listFieldLevelEncryptionProfiles: API.OperationMethod<
   input: ListFieldLevelEncryptionProfilesRequest,
   output: ListFieldLevelEncryptionProfilesResult,
   errors: [InvalidArgument],
+  operationName: "ListFieldLevelEncryptionProfiles",
 }));
 export type ListFunctionsError =
   | InvalidArgument
@@ -13843,6 +13962,7 @@ export const listFunctions: API.OperationMethod<
   input: ListFunctionsRequest,
   output: ListFunctionsResult,
   errors: [InvalidArgument, UnsupportedOperation],
+  operationName: "ListFunctions",
 }));
 export type ListInvalidationsError =
   | AccessDenied
@@ -13876,6 +13996,7 @@ export const listInvalidations: API.OperationMethod<
   input: ListInvalidationsRequest,
   output: ListInvalidationsResult,
   errors: [AccessDenied, InvalidArgument, NoSuchDistribution],
+  operationName: "ListInvalidations",
   pagination: {
     inputToken: "Marker",
     outputToken: "InvalidationList.NextMarker",
@@ -13915,6 +14036,7 @@ export const listInvalidationsForDistributionTenant: API.OperationMethod<
   input: ListInvalidationsForDistributionTenantRequest,
   output: ListInvalidationsForDistributionTenantResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  operationName: "ListInvalidationsForDistributionTenant",
   pagination: {
     inputToken: "Marker",
     outputToken: "InvalidationList.NextMarker",
@@ -13937,6 +14059,7 @@ export const listKeyGroups: API.OperationMethod<
   input: ListKeyGroupsRequest,
   output: ListKeyGroupsResult,
   errors: [InvalidArgument],
+  operationName: "ListKeyGroups",
 }));
 export type ListKeyValueStoresError =
   | AccessDenied
@@ -13970,6 +14093,7 @@ export const listKeyValueStores: API.OperationMethod<
   input: ListKeyValueStoresRequest,
   output: ListKeyValueStoresResult,
   errors: [AccessDenied, InvalidArgument, UnsupportedOperation],
+  operationName: "ListKeyValueStores",
   pagination: {
     inputToken: "Marker",
     outputToken: "KeyValueStoreList.NextMarker",
@@ -14009,6 +14133,7 @@ export const listOriginAccessControls: API.OperationMethod<
   input: ListOriginAccessControlsRequest,
   output: ListOriginAccessControlsResult,
   errors: [InvalidArgument],
+  operationName: "ListOriginAccessControls",
   pagination: {
     inputToken: "Marker",
     outputToken: "OriginAccessControlList.NextMarker",
@@ -14037,6 +14162,7 @@ export const listOriginRequestPolicies: API.OperationMethod<
   input: ListOriginRequestPoliciesRequest,
   output: ListOriginRequestPoliciesResult,
   errors: [AccessDenied, InvalidArgument, NoSuchOriginRequestPolicy],
+  operationName: "ListOriginRequestPolicies",
 }));
 export type ListPublicKeysError = InvalidArgument | CommonErrors;
 /**
@@ -14066,6 +14192,7 @@ export const listPublicKeys: API.OperationMethod<
   input: ListPublicKeysRequest,
   output: ListPublicKeysResult,
   errors: [InvalidArgument],
+  operationName: "ListPublicKeys",
   pagination: {
     inputToken: "Marker",
     outputToken: "PublicKeyList.NextMarker",
@@ -14092,6 +14219,7 @@ export const listRealtimeLogConfigs: API.OperationMethod<
   input: ListRealtimeLogConfigsRequest,
   output: ListRealtimeLogConfigsResult,
   errors: [AccessDenied, InvalidArgument, NoSuchRealtimeLogConfig],
+  operationName: "ListRealtimeLogConfigs",
 }));
 export type ListResponseHeadersPoliciesError =
   | AccessDenied
@@ -14114,6 +14242,7 @@ export const listResponseHeadersPolicies: API.OperationMethod<
   input: ListResponseHeadersPoliciesRequest,
   output: ListResponseHeadersPoliciesResult,
   errors: [AccessDenied, InvalidArgument, NoSuchResponseHeadersPolicy],
+  operationName: "ListResponseHeadersPolicies",
 }));
 export type ListStreamingDistributionsError = InvalidArgument | CommonErrors;
 /**
@@ -14143,6 +14272,7 @@ export const listStreamingDistributions: API.OperationMethod<
   input: ListStreamingDistributionsRequest,
   output: ListStreamingDistributionsResult,
   errors: [InvalidArgument],
+  operationName: "ListStreamingDistributions",
   pagination: {
     inputToken: "Marker",
     outputToken: "StreamingDistributionList.NextMarker",
@@ -14168,6 +14298,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [AccessDenied, InvalidArgument, InvalidTagging, NoSuchResource],
+  operationName: "ListTagsForResource",
 }));
 export type ListTrustStoresError =
   | AccessDenied
@@ -14201,6 +14332,7 @@ export const listTrustStores: API.OperationMethod<
   input: ListTrustStoresRequest,
   output: ListTrustStoresResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  operationName: "ListTrustStores",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -14226,6 +14358,7 @@ export const listVpcOrigins: API.OperationMethod<
   input: ListVpcOriginsRequest,
   output: ListVpcOriginsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  operationName: "ListVpcOrigins",
 }));
 export type PublishConnectionFunctionError =
   | AccessDenied
@@ -14254,6 +14387,7 @@ export const publishConnectionFunction: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  operationName: "PublishConnectionFunction",
 }));
 export type PublishFunctionError =
   | InvalidArgument
@@ -14284,6 +14418,7 @@ export const publishFunction: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  operationName: "PublishFunction",
 }));
 export type PutResourcePolicyError =
   | AccessDenied
@@ -14312,6 +14447,7 @@ export const putResourcePolicy: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type TagResourceError =
   | AccessDenied
@@ -14331,6 +14467,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [AccessDenied, InvalidArgument, InvalidTagging, NoSuchResource],
+  operationName: "TagResource",
 }));
 export type TestConnectionFunctionError =
   | EntityNotFound
@@ -14359,6 +14496,7 @@ export const testConnectionFunction: API.OperationMethod<
     TestFunctionFailed,
     UnsupportedOperation,
   ],
+  operationName: "TestConnectionFunction",
 }));
 export type TestFunctionError =
   | InvalidArgument
@@ -14389,6 +14527,7 @@ export const testFunction: API.OperationMethod<
     TestFunctionFailed,
     UnsupportedOperation,
   ],
+  operationName: "TestFunction",
 }));
 export type UntagResourceError =
   | AccessDenied
@@ -14408,6 +14547,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [AccessDenied, InvalidArgument, InvalidTagging, NoSuchResource],
+  operationName: "UntagResource",
 }));
 export type UpdateAnycastIpListError =
   | AccessDenied
@@ -14436,6 +14576,7 @@ export const updateAnycastIpList: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  operationName: "UpdateAnycastIpList",
 }));
 export type UpdateCachePolicyError =
   | AccessDenied
@@ -14484,6 +14625,7 @@ export const updateCachePolicy: API.OperationMethod<
     TooManyHeadersInCachePolicy,
     TooManyQueryStringsInCachePolicy,
   ],
+  operationName: "UpdateCachePolicy",
 }));
 export type UpdateCloudFrontOriginAccessIdentityError =
   | AccessDenied
@@ -14516,6 +14658,7 @@ export const updateCloudFrontOriginAccessIdentity: API.OperationMethod<
     NoSuchCloudFrontOriginAccessIdentity,
     PreconditionFailed,
   ],
+  operationName: "UpdateCloudFrontOriginAccessIdentity",
 }));
 export type UpdateConnectionFunctionError =
   | AccessDenied
@@ -14546,6 +14689,7 @@ export const updateConnectionFunction: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  operationName: "UpdateConnectionFunction",
 }));
 export type UpdateConnectionGroupError =
   | AccessDenied
@@ -14578,6 +14722,7 @@ export const updateConnectionGroup: API.OperationMethod<
     PreconditionFailed,
     ResourceInUse,
   ],
+  operationName: "UpdateConnectionGroup",
 }));
 export type UpdateContinuousDeploymentPolicyError =
   | AccessDenied
@@ -14616,6 +14761,7 @@ export const updateContinuousDeploymentPolicy: API.OperationMethod<
     PreconditionFailed,
     StagingDistributionInUse,
   ],
+  operationName: "UpdateContinuousDeploymentPolicy",
 }));
 export type UpdateDistributionTenantError =
   | AccessDenied
@@ -14650,6 +14796,7 @@ export const updateDistributionTenant: API.OperationMethod<
     InvalidIfMatchVersion,
     PreconditionFailed,
   ],
+  operationName: "UpdateDistributionTenant",
 }));
 export type UpdateDomainAssociationError =
   | AccessDenied
@@ -14684,6 +14831,7 @@ export const updateDomainAssociation: API.OperationMethod<
     InvalidIfMatchVersion,
     PreconditionFailed,
   ],
+  operationName: "UpdateDomainAssociation",
 }));
 export type UpdateFieldLevelEncryptionConfigError =
   | AccessDenied
@@ -14722,6 +14870,7 @@ export const updateFieldLevelEncryptionConfig: API.OperationMethod<
     TooManyFieldLevelEncryptionContentTypeProfiles,
     TooManyFieldLevelEncryptionQueryArgProfiles,
   ],
+  operationName: "UpdateFieldLevelEncryptionConfig",
 }));
 export type UpdateFieldLevelEncryptionProfileError =
   | AccessDenied
@@ -14762,6 +14911,7 @@ export const updateFieldLevelEncryptionProfile: API.OperationMethod<
     TooManyFieldLevelEncryptionEncryptionEntities,
     TooManyFieldLevelEncryptionFieldPatterns,
   ],
+  operationName: "UpdateFieldLevelEncryptionProfile",
 }));
 export type UpdateFunctionError =
   | FunctionSizeLimitExceeded
@@ -14794,6 +14944,7 @@ export const updateFunction: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  operationName: "UpdateFunction",
 }));
 export type UpdateKeyGroupError =
   | InvalidArgument
@@ -14830,6 +14981,7 @@ export const updateKeyGroup: API.OperationMethod<
     PreconditionFailed,
     TooManyPublicKeysInKeyGroup,
   ],
+  operationName: "UpdateKeyGroup",
 }));
 export type UpdateKeyValueStoreError =
   | AccessDenied
@@ -14858,6 +15010,7 @@ export const updateKeyValueStore: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  operationName: "UpdateKeyValueStore",
 }));
 export type UpdateOriginAccessControlError =
   | AccessDenied
@@ -14888,6 +15041,7 @@ export const updateOriginAccessControl: API.OperationMethod<
     OriginAccessControlAlreadyExists,
     PreconditionFailed,
   ],
+  operationName: "UpdateOriginAccessControl",
 }));
 export type UpdateOriginRequestPolicyError =
   | AccessDenied
@@ -14934,6 +15088,7 @@ export const updateOriginRequestPolicy: API.OperationMethod<
     TooManyHeadersInOriginRequestPolicy,
     TooManyQueryStringsInOriginRequestPolicy,
   ],
+  operationName: "UpdateOriginRequestPolicy",
 }));
 export type UpdatePublicKeyError =
   | AccessDenied
@@ -14964,6 +15119,7 @@ export const updatePublicKey: API.OperationMethod<
     NoSuchPublicKey,
     PreconditionFailed,
   ],
+  operationName: "UpdatePublicKey",
 }));
 export type UpdateRealtimeLogConfigError =
   | AccessDenied
@@ -14992,6 +15148,7 @@ export const updateRealtimeLogConfig: API.OperationMethod<
   input: UpdateRealtimeLogConfigRequest,
   output: UpdateRealtimeLogConfigResult,
   errors: [AccessDenied, InvalidArgument, NoSuchRealtimeLogConfig],
+  operationName: "UpdateRealtimeLogConfig",
 }));
 export type UpdateResponseHeadersPolicyError =
   | AccessDenied
@@ -15038,6 +15195,7 @@ export const updateResponseHeadersPolicy: API.OperationMethod<
     TooManyCustomHeadersInResponseHeadersPolicy,
     TooManyRemoveHeadersInResponseHeadersPolicy,
   ],
+  operationName: "UpdateResponseHeadersPolicy",
 }));
 export type UpdateStreamingDistributionError =
   | AccessDenied
@@ -15082,6 +15240,7 @@ export const updateStreamingDistribution: API.OperationMethod<
     TooManyTrustedSigners,
     TrustedSignerDoesNotExist,
   ],
+  operationName: "UpdateStreamingDistribution",
 }));
 export type UpdateTrustStoreError =
   | AccessDenied
@@ -15108,6 +15267,7 @@ export const updateTrustStore: API.OperationMethod<
     InvalidIfMatchVersion,
     PreconditionFailed,
   ],
+  operationName: "UpdateTrustStore",
 }));
 export type UpdateVpcOriginError =
   | AccessDenied
@@ -15146,6 +15306,7 @@ export const updateVpcOrigin: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  operationName: "UpdateVpcOrigin",
 }));
 export type VerifyDnsConfigurationError =
   | AccessDenied
@@ -15164,6 +15325,7 @@ export const verifyDnsConfiguration: API.OperationMethod<
   input: VerifyDnsConfigurationRequest,
   output: VerifyDnsConfigurationResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  operationName: "VerifyDnsConfiguration",
 }));
 export type CreateDistributionError =
   | AccessDenied
@@ -15314,6 +15476,7 @@ export const createDistribution: API.OperationMethod<
     TrustedKeyGroupDoesNotExist,
     TrustedSignerDoesNotExist,
   ],
+  operationName: "CreateDistribution",
 }));
 export type CreateDistributionWithTagsError =
   | AccessDenied
@@ -15468,6 +15631,7 @@ export const createDistributionWithTags: API.OperationMethod<
     TrustedKeyGroupDoesNotExist,
     TrustedSignerDoesNotExist,
   ],
+  operationName: "CreateDistributionWithTags",
 }));
 export type UpdateDistributionError =
   | AccessDenied
@@ -15632,6 +15796,7 @@ export const updateDistribution: API.OperationMethod<
     TrustedKeyGroupDoesNotExist,
     TrustedSignerDoesNotExist,
   ],
+  operationName: "UpdateDistribution",
 }));
 export type UpdateDistributionWithStagingConfigError =
   | AccessDenied
@@ -15782,6 +15947,7 @@ export const updateDistributionWithStagingConfig: API.OperationMethod<
     TrustedKeyGroupDoesNotExist,
     TrustedSignerDoesNotExist,
   ],
+  operationName: "UpdateDistributionWithStagingConfig",
 }));
 export type CopyDistributionError =
   | AccessDenied
@@ -15936,4 +16102,5 @@ export const copyDistribution: API.OperationMethod<
     TrustedKeyGroupDoesNotExist,
     TrustedSignerDoesNotExist,
   ],
+  operationName: "CopyDistribution",
 }));

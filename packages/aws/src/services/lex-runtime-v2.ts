@@ -1389,6 +1389,7 @@ export const deleteSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteSession",
 }));
 export type GetSessionError =
   | AccessDeniedException
@@ -1425,6 +1426,7 @@ export const getSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSession",
 }));
 export type PutSessionError =
   | AccessDeniedException
@@ -1459,6 +1461,7 @@ export const putSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutSession",
 }));
 export type RecognizeTextError =
   | AccessDeniedException
@@ -1516,6 +1519,7 @@ export const recognizeText: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RecognizeText",
 }));
 export type RecognizeUtteranceError =
   | AccessDeniedException
@@ -1596,6 +1600,7 @@ export const recognizeUtterance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RecognizeUtterance",
 }));
 export type StartConversationError =
   | AccessDeniedException
@@ -1664,4 +1669,5 @@ export const startConversation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartConversation",
 }));

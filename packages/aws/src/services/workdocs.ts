@@ -2821,6 +2821,7 @@ export const abortDocumentVersionUpload: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "AbortDocumentVersionUpload",
 }));
 export type ActivateUserError =
   | EntityNotExistsException
@@ -2848,6 +2849,7 @@ export const activateUser: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "ActivateUser",
 }));
 export type AddResourcePermissionsError =
   | FailedDependencyException
@@ -2876,6 +2878,7 @@ export const addResourcePermissions: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "AddResourcePermissions",
 }));
 export type CreateCommentError =
   | DocumentLockedForCommentsException
@@ -2908,6 +2911,7 @@ export const createComment: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "CreateComment",
 }));
 export type CreateCustomMetadataError =
   | CustomMetadataLimitExceededException
@@ -2939,6 +2943,7 @@ export const createCustomMetadata: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "CreateCustomMetadata",
 }));
 export type CreateFolderError =
   | ConcurrentModificationException
@@ -2975,6 +2980,7 @@ export const createFolder: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "CreateFolder",
 }));
 export type CreateLabelsError =
   | EntityNotExistsException
@@ -3004,6 +3010,7 @@ export const createLabels: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "CreateLabels",
 }));
 export type CreateNotificationSubscriptionError =
   | InvalidArgumentException
@@ -3032,6 +3039,7 @@ export const createNotificationSubscription: API.OperationMethod<
     TooManySubscriptionsException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "CreateNotificationSubscription",
 }));
 export type CreateUserError =
   | EntityAlreadyExistsException
@@ -3059,6 +3067,7 @@ export const createUser: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "CreateUser",
 }));
 export type DeactivateUserError =
   | EntityNotExistsException
@@ -3086,6 +3095,7 @@ export const deactivateUser: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DeactivateUser",
 }));
 export type DeleteCommentError =
   | DocumentLockedForCommentsException
@@ -3116,6 +3126,7 @@ export const deleteComment: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DeleteComment",
 }));
 export type DeleteCustomMetadataError =
   | EntityNotExistsException
@@ -3144,6 +3155,7 @@ export const deleteCustomMetadata: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DeleteCustomMetadata",
 }));
 export type DeleteDocumentError =
   | ConcurrentModificationException
@@ -3178,6 +3190,7 @@ export const deleteDocument: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DeleteDocument",
 }));
 export type DeleteDocumentVersionError =
   | ConcurrentModificationException
@@ -3210,6 +3223,7 @@ export const deleteDocumentVersion: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DeleteDocumentVersion",
 }));
 export type DeleteFolderError =
   | ConcurrentModificationException
@@ -3244,6 +3258,7 @@ export const deleteFolder: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DeleteFolder",
 }));
 export type DeleteFolderContentsError =
   | ConflictingOperationException
@@ -3274,6 +3289,7 @@ export const deleteFolderContents: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DeleteFolderContents",
 }));
 export type DeleteLabelsError =
   | EntityNotExistsException
@@ -3302,6 +3318,7 @@ export const deleteLabels: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DeleteLabels",
 }));
 export type DeleteNotificationSubscriptionError =
   | EntityNotExistsException
@@ -3326,6 +3343,7 @@ export const deleteNotificationSubscription: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DeleteNotificationSubscription",
 }));
 export type DeleteUserError =
   | EntityNotExistsException
@@ -3354,6 +3372,7 @@ export const deleteUser: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DeleteUser",
 }));
 export type DescribeActivitiesError =
   | FailedDependencyException
@@ -3395,6 +3414,7 @@ export const describeActivities: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DescribeActivities",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -3444,6 +3464,7 @@ export const describeComments: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DescribeComments",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -3499,6 +3520,7 @@ export const describeDocumentVersions: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DescribeDocumentVersions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -3554,6 +3576,7 @@ export const describeFolderContents: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DescribeFolderContents",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -3599,6 +3622,7 @@ export const describeGroups: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DescribeGroups",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -3642,6 +3666,7 @@ export const describeNotificationSubscriptions: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DescribeNotificationSubscriptions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -3689,6 +3714,7 @@ export const describeResourcePermissions: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DescribeResourcePermissions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -3745,6 +3771,7 @@ export const describeRootFolders: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DescribeRootFolders",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -3801,6 +3828,7 @@ export const describeUsers: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "DescribeUsers",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -3840,6 +3868,7 @@ export const getCurrentUser: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "GetCurrentUser",
 }));
 export type GetDocumentError =
   | EntityNotExistsException
@@ -3870,6 +3899,7 @@ export const getDocument: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "GetDocument",
 }));
 export type GetDocumentPathError =
   | EntityNotExistsException
@@ -3902,6 +3932,7 @@ export const getDocumentPath: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "GetDocumentPath",
 }));
 export type GetDocumentVersionError =
   | EntityNotExistsException
@@ -3932,6 +3963,7 @@ export const getDocumentVersion: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "GetDocumentVersion",
 }));
 export type GetFolderError =
   | EntityNotExistsException
@@ -3962,6 +3994,7 @@ export const getFolder: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "GetFolder",
 }));
 export type GetFolderPathError =
   | EntityNotExistsException
@@ -3994,6 +4027,7 @@ export const getFolderPath: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "GetFolderPath",
 }));
 export type GetResourcesError =
   | FailedDependencyException
@@ -4021,6 +4055,7 @@ export const getResources: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "GetResources",
 }));
 export type InitiateDocumentVersionUploadError =
   | DraftUploadOutOfSyncException
@@ -4072,6 +4107,7 @@ export const initiateDocumentVersionUpload: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "InitiateDocumentVersionUpload",
 }));
 export type RemoveAllResourcePermissionsError =
   | FailedDependencyException
@@ -4096,6 +4132,7 @@ export const removeAllResourcePermissions: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "RemoveAllResourcePermissions",
 }));
 export type RemoveResourcePermissionError =
   | FailedDependencyException
@@ -4121,6 +4158,7 @@ export const removeResourcePermission: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "RemoveResourcePermission",
 }));
 export type RestoreDocumentVersionsError =
   | ConcurrentModificationException
@@ -4153,6 +4191,7 @@ export const restoreDocumentVersions: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "RestoreDocumentVersions",
 }));
 export type SearchResourcesError =
   | InvalidArgumentException
@@ -4192,6 +4231,7 @@ export const searchResources: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "SearchResources",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -4235,6 +4275,7 @@ export const updateDocument: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "UpdateDocument",
 }));
 export type UpdateDocumentVersionError =
   | ConcurrentModificationException
@@ -4271,6 +4312,7 @@ export const updateDocumentVersion: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "UpdateDocumentVersion",
 }));
 export type UpdateFolderError =
   | ConcurrentModificationException
@@ -4308,6 +4350,7 @@ export const updateFolder: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "UpdateFolder",
 }));
 export type UpdateUserError =
   | DeactivatingLastSystemUserException
@@ -4343,4 +4386,5 @@ export const updateUser: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  operationName: "UpdateUser",
 }));

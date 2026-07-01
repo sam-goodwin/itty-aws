@@ -2685,6 +2685,7 @@ export const createDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDataset",
 }));
 export type CreateInferenceSchedulerError =
   | AccessDeniedException
@@ -2719,6 +2720,7 @@ export const createInferenceScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateInferenceScheduler",
 }));
 export type CreateLabelError =
   | AccessDeniedException
@@ -2749,6 +2751,7 @@ export const createLabel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateLabel",
 }));
 export type CreateLabelGroupError =
   | AccessDeniedException
@@ -2777,6 +2780,7 @@ export const createLabelGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateLabelGroup",
 }));
 export type CreateModelError =
   | AccessDeniedException
@@ -2817,6 +2821,7 @@ export const createModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateModel",
 }));
 export type CreateRetrainingSchedulerError =
   | AccessDeniedException
@@ -2845,6 +2850,7 @@ export const createRetrainingScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRetrainingScheduler",
 }));
 export type DeleteDatasetError =
   | AccessDeniedException
@@ -2877,6 +2883,7 @@ export const deleteDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDataset",
 }));
 export type DeleteInferenceSchedulerError =
   | AccessDeniedException
@@ -2906,6 +2913,7 @@ export const deleteInferenceScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteInferenceScheduler",
 }));
 export type DeleteLabelError =
   | AccessDeniedException
@@ -2934,6 +2942,7 @@ export const deleteLabel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteLabel",
 }));
 export type DeleteLabelGroupError =
   | AccessDeniedException
@@ -2962,6 +2971,7 @@ export const deleteLabelGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteLabelGroup",
 }));
 export type DeleteModelError =
   | AccessDeniedException
@@ -2991,6 +3001,7 @@ export const deleteModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteModel",
 }));
 export type DeleteResourcePolicyError =
   | AccessDeniedException
@@ -3019,6 +3030,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteRetrainingSchedulerError =
   | AccessDeniedException
@@ -3048,6 +3060,7 @@ export const deleteRetrainingScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRetrainingScheduler",
 }));
 export type DescribeDataIngestionJobError =
   | AccessDeniedException
@@ -3075,6 +3088,7 @@ export const describeDataIngestionJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeDataIngestionJob",
 }));
 export type DescribeDatasetError =
   | AccessDeniedException
@@ -3102,6 +3116,7 @@ export const describeDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeDataset",
 }));
 export type DescribeInferenceSchedulerError =
   | AccessDeniedException
@@ -3129,6 +3144,7 @@ export const describeInferenceScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeInferenceScheduler",
 }));
 export type DescribeLabelError =
   | AccessDeniedException
@@ -3155,6 +3171,7 @@ export const describeLabel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeLabel",
 }));
 export type DescribeLabelGroupError =
   | AccessDeniedException
@@ -3181,6 +3198,7 @@ export const describeLabelGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeLabelGroup",
 }));
 export type DescribeModelError =
   | AccessDeniedException
@@ -3209,6 +3227,7 @@ export const describeModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeModel",
 }));
 export type DescribeModelVersionError =
   | AccessDeniedException
@@ -3235,6 +3254,7 @@ export const describeModelVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeModelVersion",
 }));
 export type DescribeResourcePolicyError =
   | AccessDeniedException
@@ -3261,6 +3281,7 @@ export const describeResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeResourcePolicy",
 }));
 export type DescribeRetrainingSchedulerError =
   | AccessDeniedException
@@ -3288,6 +3309,7 @@ export const describeRetrainingScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeRetrainingScheduler",
 }));
 export type ImportDatasetError =
   | AccessDeniedException
@@ -3318,6 +3340,7 @@ export const importDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ImportDataset",
 }));
 export type ImportModelVersionError =
   | AccessDeniedException
@@ -3348,6 +3371,7 @@ export const importModelVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ImportModelVersion",
 }));
 export type ListDataIngestionJobsError =
   | AccessDeniedException
@@ -3388,6 +3412,7 @@ export const listDataIngestionJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataIngestionJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3432,6 +3457,7 @@ export const listDatasets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDatasets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3478,6 +3504,7 @@ export const listInferenceEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListInferenceEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3525,6 +3552,7 @@ export const listInferenceExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListInferenceExecutions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3569,6 +3597,7 @@ export const listInferenceSchedulers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListInferenceSchedulers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3613,6 +3642,7 @@ export const listLabelGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListLabelGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3657,6 +3687,7 @@ export const listLabels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListLabels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3702,6 +3733,7 @@ export const listModels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListModels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3750,6 +3782,7 @@ export const listModelVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListModelVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3795,6 +3828,7 @@ export const listRetrainingSchedulers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRetrainingSchedulers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3843,6 +3877,7 @@ export const listSensorStatistics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSensorStatistics",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3874,6 +3909,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutResourcePolicyError =
   | AccessDeniedException
@@ -3904,6 +3940,7 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type StartDataIngestionJobError =
   | AccessDeniedException
@@ -3934,6 +3971,7 @@ export const startDataIngestionJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartDataIngestionJob",
 }));
 export type StartInferenceSchedulerError =
   | AccessDeniedException
@@ -3962,6 +4000,7 @@ export const startInferenceScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartInferenceScheduler",
 }));
 export type StartRetrainingSchedulerError =
   | AccessDeniedException
@@ -3990,6 +4029,7 @@ export const startRetrainingScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartRetrainingScheduler",
 }));
 export type StopInferenceSchedulerError =
   | AccessDeniedException
@@ -4018,6 +4058,7 @@ export const stopInferenceScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopInferenceScheduler",
 }));
 export type StopRetrainingSchedulerError =
   | AccessDeniedException
@@ -4046,6 +4087,7 @@ export const stopRetrainingScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopRetrainingScheduler",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -4078,6 +4120,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -4104,6 +4147,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateActiveModelVersionError =
   | AccessDeniedException
@@ -4132,6 +4176,7 @@ export const updateActiveModelVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateActiveModelVersion",
 }));
 export type UpdateInferenceSchedulerError =
   | AccessDeniedException
@@ -4160,6 +4205,7 @@ export const updateInferenceScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateInferenceScheduler",
 }));
 export type UpdateLabelGroupError =
   | AccessDeniedException
@@ -4188,6 +4234,7 @@ export const updateLabelGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateLabelGroup",
 }));
 export type UpdateModelError =
   | AccessDeniedException
@@ -4216,6 +4263,7 @@ export const updateModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateModel",
 }));
 export type UpdateRetrainingSchedulerError =
   | AccessDeniedException
@@ -4244,4 +4292,5 @@ export const updateRetrainingScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRetrainingScheduler",
 }));

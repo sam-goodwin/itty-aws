@@ -2754,6 +2754,7 @@ export const batchDeleteInstrumentationConfigurations: API.OperationMethod<
   input: BatchDeleteInstrumentationConfigurationsRequest,
   output: BatchDeleteInstrumentationConfigurationsResponse,
   errors: [ThrottlingException, ValidationException],
+  operationName: "BatchDeleteInstrumentationConfigurations",
 }));
 export type BatchGetServiceLevelObjectiveBudgetReportError =
   | ThrottlingException
@@ -2777,6 +2778,7 @@ export const batchGetServiceLevelObjectiveBudgetReport: API.OperationMethod<
   input: BatchGetServiceLevelObjectiveBudgetReportInput,
   output: BatchGetServiceLevelObjectiveBudgetReportOutput,
   errors: [ThrottlingException, ValidationException],
+  operationName: "BatchGetServiceLevelObjectiveBudgetReport",
 }));
 export type BatchUpdateExclusionWindowsError =
   | ResourceNotFoundException
@@ -2795,6 +2797,7 @@ export const batchUpdateExclusionWindows: API.OperationMethod<
   input: BatchUpdateExclusionWindowsInput,
   output: BatchUpdateExclusionWindowsOutput,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  operationName: "BatchUpdateExclusionWindows",
 }));
 export type CreateInstrumentationConfigurationError =
   | ConflictException
@@ -2823,6 +2826,7 @@ export const createInstrumentationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateInstrumentationConfiguration",
 }));
 export type DeleteGroupingConfigurationError =
   | AccessDeniedException
@@ -2841,6 +2845,7 @@ export const deleteGroupingConfiguration: API.OperationMethod<
   input: DeleteGroupingConfigurationRequest,
   output: DeleteGroupingConfigurationOutput,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  operationName: "DeleteGroupingConfiguration",
 }));
 export type DeleteInstrumentationConfigurationError =
   | ResourceNotFoundException
@@ -2859,6 +2864,7 @@ export const deleteInstrumentationConfiguration: API.OperationMethod<
   input: DeleteInstrumentationConfigurationRequest,
   output: DeleteInstrumentationConfigurationResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  operationName: "DeleteInstrumentationConfiguration",
 }));
 export type GetInstrumentationConfigurationError =
   | ResourceNotFoundException
@@ -2877,6 +2883,7 @@ export const getInstrumentationConfiguration: API.OperationMethod<
   input: GetInstrumentationConfigurationRequest,
   output: GetInstrumentationConfigurationResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  operationName: "GetInstrumentationConfiguration",
 }));
 export type GetInstrumentationConfigurationStatusError =
   | ResourceNotFoundException
@@ -2912,6 +2919,7 @@ export const getInstrumentationConfigurationStatus: API.OperationMethod<
   input: GetInstrumentationConfigurationStatusRequest,
   output: GetInstrumentationConfigurationStatusResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  operationName: "GetInstrumentationConfigurationStatus",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2935,6 +2943,7 @@ export const getService: API.OperationMethod<
   input: GetServiceInput,
   output: GetServiceOutput,
   errors: [ThrottlingException, ValidationException],
+  operationName: "GetService",
 }));
 export type ListAuditFindingsError =
   | ThrottlingException
@@ -2952,6 +2961,7 @@ export const listAuditFindings: API.OperationMethod<
   input: ListAuditFindingsInput,
   output: ListAuditFindingsOutput,
   errors: [ThrottlingException, ValidationException],
+  operationName: "ListAuditFindings",
 }));
 export type ListEntityEventsError =
   | ThrottlingException
@@ -2984,6 +2994,7 @@ export const listEntityEvents: API.OperationMethod<
   input: ListEntityEventsInput,
   output: ListEntityEventsOutput,
   errors: [ThrottlingException, ValidationException],
+  operationName: "ListEntityEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3008,6 +3019,7 @@ export const listGroupingAttributeDefinitions: API.OperationMethod<
   input: ListGroupingAttributeDefinitionsInput,
   output: ListGroupingAttributeDefinitionsOutput,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  operationName: "ListGroupingAttributeDefinitions",
 }));
 export type ListInstrumentationConfigurationsError =
   | ResourceNotFoundException
@@ -3043,6 +3055,7 @@ export const listInstrumentationConfigurations: API.OperationMethod<
   input: ListInstrumentationConfigurationsRequest,
   output: InstrumentationConfigurationsPage,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  operationName: "ListInstrumentationConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3081,6 +3094,7 @@ export const listServiceDependencies: API.OperationMethod<
   input: ListServiceDependenciesInput,
   output: ListServiceDependenciesOutput,
   errors: [ThrottlingException, ValidationException],
+  operationName: "ListServiceDependencies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3119,6 +3133,7 @@ export const listServiceDependents: API.OperationMethod<
   input: ListServiceDependentsInput,
   output: ListServiceDependentsOutput,
   errors: [ThrottlingException, ValidationException],
+  operationName: "ListServiceDependents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3158,6 +3173,7 @@ export const listServiceLevelObjectiveExclusionWindows: API.OperationMethod<
   input: ListServiceLevelObjectiveExclusionWindowsInput,
   output: ListServiceLevelObjectiveExclusionWindowsOutput,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  operationName: "ListServiceLevelObjectiveExclusionWindows",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3196,6 +3212,7 @@ export const listServiceOperations: API.OperationMethod<
   input: ListServiceOperationsInput,
   output: ListServiceOperationsOutput,
   errors: [ThrottlingException, ValidationException],
+  operationName: "ListServiceOperations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3234,6 +3251,7 @@ export const listServices: API.OperationMethod<
   input: ListServicesInput,
   output: ListServicesOutput,
   errors: [ThrottlingException, ValidationException],
+  operationName: "ListServices",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3272,6 +3290,7 @@ export const listServiceStates: API.OperationMethod<
   input: ListServiceStatesInput,
   output: ListServiceStatesOutput,
   errors: [ThrottlingException, ValidationException],
+  operationName: "ListServiceStates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3295,6 +3314,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException, ThrottlingException],
+  operationName: "ListTagsForResource",
 }));
 export type PutGroupingConfigurationError =
   | AccessDeniedException
@@ -3313,6 +3333,7 @@ export const putGroupingConfiguration: API.OperationMethod<
   input: PutGroupingConfigurationInput,
   output: PutGroupingConfigurationOutput,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  operationName: "PutGroupingConfiguration",
 }));
 export type ReportInstrumentationConfigurationStatusError =
   | ThrottlingException
@@ -3332,6 +3353,7 @@ export const reportInstrumentationConfigurationStatus: API.OperationMethod<
   input: ReportInstrumentationConfigurationStatusRequest,
   output: ReportInstrumentationConfigurationStatusResponse,
   errors: [ThrottlingException, ValidationException],
+  operationName: "ReportInstrumentationConfigurationStatus",
 }));
 export type StartDiscoveryError =
   | AccessDeniedException
@@ -3368,6 +3390,7 @@ export const startDiscovery: API.OperationMethod<
   input: StartDiscoveryInput,
   output: StartDiscoveryOutput,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  operationName: "StartDiscovery",
 }));
 export type TagResourceError =
   | ResourceNotFoundException
@@ -3398,6 +3421,7 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ResourceNotFoundException
@@ -3415,6 +3439,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ThrottlingException],
+  operationName: "UntagResource",
 }));
 export type CreateServiceLevelObjectiveError =
   | AccessDeniedException
@@ -3483,6 +3508,7 @@ export const createServiceLevelObjective: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateServiceLevelObjective",
 }));
 export type GetServiceLevelObjectiveError =
   | ResourceNotFoundException
@@ -3501,6 +3527,7 @@ export const getServiceLevelObjective: API.OperationMethod<
   input: GetServiceLevelObjectiveInput,
   output: GetServiceLevelObjectiveOutput,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  operationName: "GetServiceLevelObjective",
 }));
 export type UpdateServiceLevelObjectiveError =
   | ResourceNotFoundException
@@ -3521,6 +3548,7 @@ export const updateServiceLevelObjective: API.OperationMethod<
   input: UpdateServiceLevelObjectiveInput,
   output: UpdateServiceLevelObjectiveOutput,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  operationName: "UpdateServiceLevelObjective",
 }));
 export type DeleteServiceLevelObjectiveError =
   | ResourceNotFoundException
@@ -3539,6 +3567,7 @@ export const deleteServiceLevelObjective: API.OperationMethod<
   input: DeleteServiceLevelObjectiveInput,
   output: DeleteServiceLevelObjectiveOutput,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  operationName: "DeleteServiceLevelObjective",
 }));
 export type ListServiceLevelObjectivesError =
   | ThrottlingException
@@ -3571,6 +3600,7 @@ export const listServiceLevelObjectives: API.OperationMethod<
   input: ListServiceLevelObjectivesInput,
   output: ListServiceLevelObjectivesOutput,
   errors: [ThrottlingException, ValidationException],
+  operationName: "ListServiceLevelObjectives",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

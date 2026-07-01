@@ -3723,6 +3723,7 @@ export const addListenerCertificates: API.OperationMethod<
     ListenerNotFoundException,
     TooManyCertificatesException,
   ],
+  operationName: "AddListenerCertificates",
 }));
 export type AddTagsError =
   | DuplicateTagKeysException
@@ -3758,6 +3759,7 @@ export const addTags: API.OperationMethod<
     TooManyTagsException,
     TrustStoreNotFoundException,
   ],
+  operationName: "AddTags",
 }));
 export type AddTrustStoreRevocationsError =
   | InvalidRevocationContentException
@@ -3782,6 +3784,7 @@ export const addTrustStoreRevocations: API.OperationMethod<
     TooManyTrustStoreRevocationEntriesException,
     TrustStoreNotFoundException,
   ],
+  operationName: "AddTrustStoreRevocations",
 }));
 export type CreateListenerError =
   | ALPNPolicyNotSupportedException
@@ -3853,6 +3856,7 @@ export const createListener: API.OperationMethod<
     TrustStoreNotReadyException,
     UnsupportedProtocolException,
   ],
+  operationName: "CreateListener",
 }));
 export type CreateLoadBalancerError =
   | AllocationIdNotFoundException
@@ -3909,6 +3913,7 @@ export const createLoadBalancer: API.OperationMethod<
     TooManyLoadBalancersException,
     TooManyTagsException,
   ],
+  operationName: "CreateLoadBalancer",
 }));
 export type CreateRuleError =
   | IncompatibleProtocolsException
@@ -3962,6 +3967,7 @@ export const createRule: API.OperationMethod<
     TooManyUniqueTargetGroupsPerLoadBalancerException,
     UnsupportedProtocolException,
   ],
+  operationName: "CreateRule",
 }));
 export type CreateTargetGroupError =
   | DuplicateTargetGroupNameException
@@ -4000,6 +4006,7 @@ export const createTargetGroup: API.OperationMethod<
     TooManyTagsException,
     TooManyTargetGroupsException,
   ],
+  operationName: "CreateTargetGroup",
 }));
 export type CreateTrustStoreError =
   | CaCertificatesBundleNotFoundException
@@ -4030,6 +4037,7 @@ export const createTrustStore: API.OperationMethod<
     TooManyTagsException,
     TooManyTrustStoresException,
   ],
+  operationName: "CreateTrustStore",
 }));
 export type DeleteListenerError =
   | ListenerNotFoundException
@@ -4050,6 +4058,7 @@ export const deleteListener: API.OperationMethod<
   input: DeleteListenerInput,
   output: DeleteListenerOutput,
   errors: [ListenerNotFoundException, ResourceInUseException],
+  operationName: "DeleteListener",
 }));
 export type DeleteLoadBalancerError =
   | LoadBalancerNotFoundException
@@ -4080,6 +4089,7 @@ export const deleteLoadBalancer: API.OperationMethod<
     OperationNotPermittedException,
     ResourceInUseException,
   ],
+  operationName: "DeleteLoadBalancer",
 }));
 export type DeleteRuleError =
   | OperationNotPermittedException
@@ -4099,6 +4109,7 @@ export const deleteRule: API.OperationMethod<
   input: DeleteRuleInput,
   output: DeleteRuleOutput,
   errors: [OperationNotPermittedException, RuleNotFoundException],
+  operationName: "DeleteRule",
 }));
 export type DeleteSharedTrustStoreAssociationError =
   | DeleteAssociationSameAccountException
@@ -4121,6 +4132,7 @@ export const deleteSharedTrustStoreAssociation: API.OperationMethod<
     TrustStoreAssociationNotFoundException,
     TrustStoreNotFoundException,
   ],
+  operationName: "DeleteSharedTrustStoreAssociation",
 }));
 export type DeleteTargetGroupError = ResourceInUseException | CommonErrors;
 /**
@@ -4140,6 +4152,7 @@ export const deleteTargetGroup: API.OperationMethod<
   input: DeleteTargetGroupInput,
   output: DeleteTargetGroupOutput,
   errors: [ResourceInUseException],
+  operationName: "DeleteTargetGroup",
 }));
 export type DeleteTrustStoreError =
   | TrustStoreInUseException
@@ -4157,6 +4170,7 @@ export const deleteTrustStore: API.OperationMethod<
   input: DeleteTrustStoreInput,
   output: DeleteTrustStoreOutput,
   errors: [TrustStoreInUseException, TrustStoreNotFoundException],
+  operationName: "DeleteTrustStore",
 }));
 export type DeregisterTargetsError =
   | InvalidTargetException
@@ -4192,6 +4206,7 @@ export const deregisterTargets: API.OperationMethod<
   input: DeregisterTargetsInput,
   output: DeregisterTargetsOutput,
   errors: [InvalidTargetException, TargetGroupNotFoundException],
+  operationName: "DeregisterTargets",
 }));
 export type DescribeAccountLimitsError = CommonErrors;
 /**
@@ -4233,6 +4248,7 @@ export const describeAccountLimits: API.OperationMethod<
   input: DescribeAccountLimitsInput,
   output: DescribeAccountLimitsOutput,
   errors: [],
+  operationName: "DescribeAccountLimits",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -4254,6 +4270,7 @@ export const describeCapacityReservation: API.OperationMethod<
   input: DescribeCapacityReservationInput,
   output: DescribeCapacityReservationOutput,
   errors: [LoadBalancerNotFoundException],
+  operationName: "DescribeCapacityReservation",
 }));
 export type DescribeListenerAttributesError =
   | ListenerNotFoundException
@@ -4270,6 +4287,7 @@ export const describeListenerAttributes: API.OperationMethod<
   input: DescribeListenerAttributesInput,
   output: DescribeListenerAttributesOutput,
   errors: [ListenerNotFoundException],
+  operationName: "DescribeListenerAttributes",
 }));
 export type DescribeListenerCertificatesError =
   | ListenerNotFoundException
@@ -4310,6 +4328,7 @@ export const describeListenerCertificates: API.OperationMethod<
   input: DescribeListenerCertificatesInput,
   output: DescribeListenerCertificatesOutput,
   errors: [ListenerNotFoundException],
+  operationName: "DescribeListenerCertificates",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -4354,6 +4373,7 @@ export const describeListeners: API.OperationMethod<
     LoadBalancerNotFoundException,
     UnsupportedProtocolException,
   ],
+  operationName: "DescribeListeners",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -4387,6 +4407,7 @@ export const describeLoadBalancerAttributes: API.OperationMethod<
   input: DescribeLoadBalancerAttributesInput,
   output: DescribeLoadBalancerAttributesOutput,
   errors: [LoadBalancerNotFoundException],
+  operationName: "DescribeLoadBalancerAttributes",
 }));
 export type DescribeLoadBalancersError =
   | LoadBalancerNotFoundException
@@ -4418,6 +4439,7 @@ export const describeLoadBalancers: API.OperationMethod<
   input: DescribeLoadBalancersInput,
   output: DescribeLoadBalancersOutput,
   errors: [LoadBalancerNotFoundException],
+  operationName: "DescribeLoadBalancers",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -4461,6 +4483,7 @@ export const describeRules: API.OperationMethod<
     RuleNotFoundException,
     UnsupportedProtocolException,
   ],
+  operationName: "DescribeRules",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -4485,6 +4508,7 @@ export const describeSSLPolicies: API.OperationMethod<
   input: DescribeSSLPoliciesInput,
   output: DescribeSSLPoliciesOutput,
   errors: [SSLPolicyNotFoundException],
+  operationName: "DescribeSSLPolicies",
 }));
 export type DescribeTagsError =
   | ListenerNotFoundException
@@ -4513,6 +4537,7 @@ export const describeTags: API.OperationMethod<
     TargetGroupNotFoundException,
     TrustStoreNotFoundException,
   ],
+  operationName: "DescribeTags",
 }));
 export type DescribeTargetGroupAttributesError =
   | TargetGroupNotFoundException
@@ -4540,6 +4565,7 @@ export const describeTargetGroupAttributes: API.OperationMethod<
   input: DescribeTargetGroupAttributesInput,
   output: DescribeTargetGroupAttributesOutput,
   errors: [TargetGroupNotFoundException],
+  operationName: "DescribeTargetGroupAttributes",
 }));
 export type DescribeTargetGroupsError =
   | LoadBalancerNotFoundException
@@ -4575,6 +4601,7 @@ export const describeTargetGroups: API.OperationMethod<
   input: DescribeTargetGroupsInput,
   output: DescribeTargetGroupsOutput,
   errors: [LoadBalancerNotFoundException, TargetGroupNotFoundException],
+  operationName: "DescribeTargetGroups",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -4602,6 +4629,7 @@ export const describeTargetHealth: API.OperationMethod<
     InvalidTargetException,
     TargetGroupNotFoundException,
   ],
+  operationName: "DescribeTargetHealth",
 }));
 export type DescribeTrustStoreAssociationsError =
   | TrustStoreNotFoundException
@@ -4633,6 +4661,7 @@ export const describeTrustStoreAssociations: API.OperationMethod<
   input: DescribeTrustStoreAssociationsInput,
   output: DescribeTrustStoreAssociationsOutput,
   errors: [TrustStoreNotFoundException],
+  operationName: "DescribeTrustStoreAssociations",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -4672,6 +4701,7 @@ export const describeTrustStoreRevocations: API.OperationMethod<
   input: DescribeTrustStoreRevocationsInput,
   output: DescribeTrustStoreRevocationsOutput,
   errors: [RevocationIdNotFoundException, TrustStoreNotFoundException],
+  operationName: "DescribeTrustStoreRevocations",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -4709,6 +4739,7 @@ export const describeTrustStores: API.OperationMethod<
   input: DescribeTrustStoresInput,
   output: DescribeTrustStoresOutput,
   errors: [TrustStoreNotFoundException],
+  operationName: "DescribeTrustStores",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -4729,6 +4760,7 @@ export const getResourcePolicy: API.OperationMethod<
   input: GetResourcePolicyInput,
   output: GetResourcePolicyOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetResourcePolicy",
 }));
 export type GetTrustStoreCaCertificatesBundleError =
   | TrustStoreNotFoundException
@@ -4748,6 +4780,7 @@ export const getTrustStoreCaCertificatesBundle: API.OperationMethod<
   input: GetTrustStoreCaCertificatesBundleInput,
   output: GetTrustStoreCaCertificatesBundleOutput,
   errors: [TrustStoreNotFoundException],
+  operationName: "GetTrustStoreCaCertificatesBundle",
 }));
 export type GetTrustStoreRevocationContentError =
   | RevocationIdNotFoundException
@@ -4768,6 +4801,7 @@ export const getTrustStoreRevocationContent: API.OperationMethod<
   input: GetTrustStoreRevocationContentInput,
   output: GetTrustStoreRevocationContentOutput,
   errors: [RevocationIdNotFoundException, TrustStoreNotFoundException],
+  operationName: "GetTrustStoreRevocationContent",
 }));
 export type ModifyCapacityReservationError =
   | CapacityDecreaseRequestsLimitExceededException
@@ -4803,6 +4837,7 @@ export const modifyCapacityReservation: API.OperationMethod<
     OperationNotPermittedException,
     PriorRequestNotCompleteException,
   ],
+  operationName: "ModifyCapacityReservation",
 }));
 export type ModifyIpPoolsError = LoadBalancerNotFoundException | CommonErrors;
 /**
@@ -4817,6 +4852,7 @@ export const modifyIpPools: API.OperationMethod<
   input: ModifyIpPoolsInput,
   output: ModifyIpPoolsOutput,
   errors: [LoadBalancerNotFoundException],
+  operationName: "ModifyIpPools",
 }));
 export type ModifyListenerError =
   | ALPNPolicyNotSupportedException
@@ -4880,6 +4916,7 @@ export const modifyListener: API.OperationMethod<
     TrustStoreNotReadyException,
     UnsupportedProtocolException,
   ],
+  operationName: "ModifyListener",
 }));
 export type ModifyListenerAttributesError =
   | InvalidConfigurationRequestException
@@ -4897,6 +4934,7 @@ export const modifyListenerAttributes: API.OperationMethod<
   input: ModifyListenerAttributesInput,
   output: ModifyListenerAttributesOutput,
   errors: [InvalidConfigurationRequestException, ListenerNotFoundException],
+  operationName: "ModifyListenerAttributes",
 }));
 export type ModifyLoadBalancerAttributesError =
   | InvalidConfigurationRequestException
@@ -4918,6 +4956,7 @@ export const modifyLoadBalancerAttributes: API.OperationMethod<
   input: ModifyLoadBalancerAttributesInput,
   output: ModifyLoadBalancerAttributesOutput,
   errors: [InvalidConfigurationRequestException, LoadBalancerNotFoundException],
+  operationName: "ModifyLoadBalancerAttributes",
 }));
 export type ModifyRuleError =
   | IncompatibleProtocolsException
@@ -4961,6 +5000,7 @@ export const modifyRule: API.OperationMethod<
     TooManyUniqueTargetGroupsPerLoadBalancerException,
     UnsupportedProtocolException,
   ],
+  operationName: "ModifyRule",
 }));
 export type ModifyTargetGroupError =
   | InvalidConfigurationRequestException
@@ -4979,6 +5019,7 @@ export const modifyTargetGroup: API.OperationMethod<
   input: ModifyTargetGroupInput,
   output: ModifyTargetGroupOutput,
   errors: [InvalidConfigurationRequestException, TargetGroupNotFoundException],
+  operationName: "ModifyTargetGroup",
 }));
 export type ModifyTargetGroupAttributesError =
   | InvalidConfigurationRequestException
@@ -4996,6 +5037,7 @@ export const modifyTargetGroupAttributes: API.OperationMethod<
   input: ModifyTargetGroupAttributesInput,
   output: ModifyTargetGroupAttributesOutput,
   errors: [InvalidConfigurationRequestException, TargetGroupNotFoundException],
+  operationName: "ModifyTargetGroupAttributes",
 }));
 export type ModifyTrustStoreError =
   | CaCertificatesBundleNotFoundException
@@ -5018,6 +5060,7 @@ export const modifyTrustStore: API.OperationMethod<
     InvalidCaCertificatesBundleException,
     TrustStoreNotFoundException,
   ],
+  operationName: "ModifyTrustStore",
 }));
 export type RegisterTargetsError =
   | InvalidTargetException
@@ -5061,6 +5104,7 @@ export const registerTargets: API.OperationMethod<
     TooManyRegistrationsForTargetIdException,
     TooManyTargetsException,
   ],
+  operationName: "RegisterTargets",
 }));
 export type RemoveListenerCertificatesError =
   | ListenerNotFoundException
@@ -5079,6 +5123,7 @@ export const removeListenerCertificates: API.OperationMethod<
   input: RemoveListenerCertificatesInput,
   output: RemoveListenerCertificatesOutput,
   errors: [ListenerNotFoundException, OperationNotPermittedException],
+  operationName: "RemoveListenerCertificates",
 }));
 export type RemoveTagsError =
   | ListenerNotFoundException
@@ -5109,6 +5154,7 @@ export const removeTags: API.OperationMethod<
     TooManyTagsException,
     TrustStoreNotFoundException,
   ],
+  operationName: "RemoveTags",
 }));
 export type RemoveTrustStoreRevocationsError =
   | RevocationIdNotFoundException
@@ -5126,6 +5172,7 @@ export const removeTrustStoreRevocations: API.OperationMethod<
   input: RemoveTrustStoreRevocationsInput,
   output: RemoveTrustStoreRevocationsOutput,
   errors: [RevocationIdNotFoundException, TrustStoreNotFoundException],
+  operationName: "RemoveTrustStoreRevocations",
 }));
 export type SetIpAddressTypeError =
   | InvalidConfigurationRequestException
@@ -5148,6 +5195,7 @@ export const setIpAddressType: API.OperationMethod<
     InvalidSubnetException,
     LoadBalancerNotFoundException,
   ],
+  operationName: "SetIpAddressType",
 }));
 export type SetRulePrioritiesError =
   | OperationNotPermittedException
@@ -5173,6 +5221,7 @@ export const setRulePriorities: API.OperationMethod<
     PriorityInUseException,
     RuleNotFoundException,
   ],
+  operationName: "SetRulePriorities",
 }));
 export type SetSecurityGroupsError =
   | InvalidConfigurationRequestException
@@ -5202,6 +5251,7 @@ export const setSecurityGroups: API.OperationMethod<
     InvalidSecurityGroupException,
     LoadBalancerNotFoundException,
   ],
+  operationName: "SetSecurityGroups",
 }));
 export type SetSubnetsError =
   | AllocationIdNotFoundException
@@ -5234,4 +5284,5 @@ export const setSubnets: API.OperationMethod<
     LoadBalancerNotFoundException,
     SubnetNotFoundException,
   ],
+  operationName: "SetSubnets",
 }));

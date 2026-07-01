@@ -3249,6 +3249,7 @@ export const createAutoPredictor: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateAutoPredictor",
 }));
 export type CreateDatasetError =
   | InvalidInputException
@@ -3306,6 +3307,7 @@ export const createDataset: API.OperationMethod<
     LimitExceededException,
     ResourceAlreadyExistsException,
   ],
+  operationName: "CreateDataset",
 }));
 export type CreateDatasetGroupError =
   | InvalidInputException
@@ -3342,6 +3344,7 @@ export const createDatasetGroup: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateDatasetGroup",
 }));
 export type CreateDatasetImportJobError =
   | InvalidInputException
@@ -3389,6 +3392,7 @@ export const createDatasetImportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateDatasetImportJob",
 }));
 export type CreateExplainabilityError =
   | InvalidInputException
@@ -3494,6 +3498,7 @@ export const createExplainability: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateExplainability",
 }));
 export type CreateExplainabilityExportError =
   | InvalidInputException
@@ -3528,6 +3533,7 @@ export const createExplainabilityExport: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateExplainabilityExport",
 }));
 export type CreateForecastError =
   | InvalidInputException
@@ -3576,6 +3582,7 @@ export const createForecast: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateForecast",
 }));
 export type CreateForecastExportJobError =
   | InvalidInputException
@@ -3619,6 +3626,7 @@ export const createForecastExportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateForecastExportJob",
 }));
 export type CreateMonitorError =
   | InvalidInputException
@@ -3646,6 +3654,7 @@ export const createMonitor: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateMonitor",
 }));
 export type CreatePredictorError =
   | InvalidInputException
@@ -3723,6 +3732,7 @@ export const createPredictor: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "CreatePredictor",
 }));
 export type CreatePredictorBacktestExportJobError =
   | InvalidInputException
@@ -3764,6 +3774,7 @@ export const createPredictorBacktestExportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "CreatePredictorBacktestExportJob",
 }));
 export type CreateWhatIfAnalysisError =
   | InvalidInputException
@@ -3806,6 +3817,7 @@ export const createWhatIfAnalysis: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateWhatIfAnalysis",
 }));
 export type CreateWhatIfForecastError =
   | InvalidInputException
@@ -3833,6 +3845,7 @@ export const createWhatIfForecast: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateWhatIfForecast",
 }));
 export type CreateWhatIfForecastExportError =
   | InvalidInputException
@@ -3877,6 +3890,7 @@ export const createWhatIfForecastExport: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateWhatIfForecastExport",
 }));
 export type DeleteDatasetError =
   | InvalidInputException
@@ -3905,6 +3919,7 @@ export const deleteDataset: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteDataset",
 }));
 export type DeleteDatasetGroupError =
   | InvalidInputException
@@ -3931,6 +3946,7 @@ export const deleteDatasetGroup: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteDatasetGroup",
 }));
 export type DeleteDatasetImportJobError =
   | InvalidInputException
@@ -3956,6 +3972,7 @@ export const deleteDatasetImportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteDatasetImportJob",
 }));
 export type DeleteExplainabilityError =
   | InvalidInputException
@@ -3981,6 +3998,7 @@ export const deleteExplainability: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteExplainability",
 }));
 export type DeleteExplainabilityExportError =
   | InvalidInputException
@@ -4003,6 +4021,7 @@ export const deleteExplainabilityExport: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteExplainabilityExport",
 }));
 export type DeleteForecastError =
   | InvalidInputException
@@ -4030,6 +4049,7 @@ export const deleteForecast: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteForecast",
 }));
 export type DeleteForecastExportJobError =
   | InvalidInputException
@@ -4054,6 +4074,7 @@ export const deleteForecastExportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteForecastExportJob",
 }));
 export type DeleteMonitorError =
   | InvalidInputException
@@ -4076,6 +4097,7 @@ export const deleteMonitor: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteMonitor",
 }));
 export type DeletePredictorError =
   | InvalidInputException
@@ -4099,6 +4121,7 @@ export const deletePredictor: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeletePredictor",
 }));
 export type DeletePredictorBacktestExportJobError =
   | InvalidInputException
@@ -4121,6 +4144,7 @@ export const deletePredictorBacktestExportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeletePredictorBacktestExportJob",
 }));
 export type DeleteResourceTreeError =
   | InvalidInputException
@@ -4163,6 +4187,7 @@ export const deleteResourceTree: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteResourceTree",
 }));
 export type DeleteWhatIfAnalysisError =
   | InvalidInputException
@@ -4188,6 +4213,7 @@ export const deleteWhatIfAnalysis: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteWhatIfAnalysis",
 }));
 export type DeleteWhatIfForecastError =
   | InvalidInputException
@@ -4213,6 +4239,7 @@ export const deleteWhatIfForecast: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteWhatIfForecast",
 }));
 export type DeleteWhatIfForecastExportError =
   | InvalidInputException
@@ -4236,6 +4263,7 @@ export const deleteWhatIfForecastExport: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteWhatIfForecastExport",
 }));
 export type DescribeAutoPredictorError =
   | InvalidInputException
@@ -4253,6 +4281,7 @@ export const describeAutoPredictor: API.OperationMethod<
   input: DescribeAutoPredictorRequest,
   output: DescribeAutoPredictorResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeAutoPredictor",
 }));
 export type DescribeDatasetError =
   | InvalidInputException
@@ -4279,6 +4308,7 @@ export const describeDataset: API.OperationMethod<
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeDataset",
 }));
 export type DescribeDatasetGroupError =
   | InvalidInputException
@@ -4308,6 +4338,7 @@ export const describeDatasetGroup: API.OperationMethod<
   input: DescribeDatasetGroupRequest,
   output: DescribeDatasetGroupResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeDatasetGroup",
 }));
 export type DescribeDatasetImportJobError =
   | InvalidInputException
@@ -4341,6 +4372,7 @@ export const describeDatasetImportJob: API.OperationMethod<
   input: DescribeDatasetImportJobRequest,
   output: DescribeDatasetImportJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeDatasetImportJob",
 }));
 export type DescribeExplainabilityError =
   | InvalidInputException
@@ -4358,6 +4390,7 @@ export const describeExplainability: API.OperationMethod<
   input: DescribeExplainabilityRequest,
   output: DescribeExplainabilityResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeExplainability",
 }));
 export type DescribeExplainabilityExportError =
   | InvalidInputException
@@ -4375,6 +4408,7 @@ export const describeExplainabilityExport: API.OperationMethod<
   input: DescribeExplainabilityExportRequest,
   output: DescribeExplainabilityExportResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeExplainabilityExport",
 }));
 export type DescribeForecastError =
   | InvalidInputException
@@ -4406,6 +4440,7 @@ export const describeForecast: API.OperationMethod<
   input: DescribeForecastRequest,
   output: DescribeForecastResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeForecast",
 }));
 export type DescribeForecastExportJobError =
   | InvalidInputException
@@ -4435,6 +4470,7 @@ export const describeForecastExportJob: API.OperationMethod<
   input: DescribeForecastExportJobRequest,
   output: DescribeForecastExportJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeForecastExportJob",
 }));
 export type DescribeMonitorError =
   | InvalidInputException
@@ -4466,6 +4502,7 @@ export const describeMonitor: API.OperationMethod<
   input: DescribeMonitorRequest,
   output: DescribeMonitorResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeMonitor",
 }));
 export type DescribePredictorError =
   | InvalidInputException
@@ -4504,6 +4541,7 @@ export const describePredictor: API.OperationMethod<
   input: DescribePredictorRequest,
   output: DescribePredictorResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribePredictor",
 }));
 export type DescribePredictorBacktestExportJobError =
   | InvalidInputException
@@ -4533,6 +4571,7 @@ export const describePredictorBacktestExportJob: API.OperationMethod<
   input: DescribePredictorBacktestExportJobRequest,
   output: DescribePredictorBacktestExportJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribePredictorBacktestExportJob",
 }));
 export type DescribeWhatIfAnalysisError =
   | InvalidInputException
@@ -4560,6 +4599,7 @@ export const describeWhatIfAnalysis: API.OperationMethod<
   input: DescribeWhatIfAnalysisRequest,
   output: DescribeWhatIfAnalysisResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeWhatIfAnalysis",
 }));
 export type DescribeWhatIfForecastError =
   | InvalidInputException
@@ -4587,6 +4627,7 @@ export const describeWhatIfForecast: API.OperationMethod<
   input: DescribeWhatIfForecastRequest,
   output: DescribeWhatIfForecastResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeWhatIfForecast",
 }));
 export type DescribeWhatIfForecastExportError =
   | InvalidInputException
@@ -4614,6 +4655,7 @@ export const describeWhatIfForecastExport: API.OperationMethod<
   input: DescribeWhatIfForecastExportRequest,
   output: DescribeWhatIfForecastExportResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeWhatIfForecastExport",
 }));
 export type GetAccuracyMetricsError =
   | InvalidInputException
@@ -4653,6 +4695,7 @@ export const getAccuracyMetrics: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "GetAccuracyMetrics",
 }));
 export type ListDatasetGroupsError = InvalidNextTokenException | CommonErrors;
 /**
@@ -4686,6 +4729,7 @@ export const listDatasetGroups: API.OperationMethod<
   input: ListDatasetGroupsRequest,
   output: ListDatasetGroupsResponse,
   errors: [InvalidNextTokenException],
+  operationName: "ListDatasetGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4728,6 +4772,7 @@ export const listDatasetImportJobs: API.OperationMethod<
   input: ListDatasetImportJobsRequest,
   output: ListDatasetImportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListDatasetImportJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4765,6 +4810,7 @@ export const listDatasets: API.OperationMethod<
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [InvalidNextTokenException],
+  operationName: "ListDatasets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4808,6 +4854,7 @@ export const listExplainabilities: API.OperationMethod<
   input: ListExplainabilitiesRequest,
   output: ListExplainabilitiesResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListExplainabilities",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4850,6 +4897,7 @@ export const listExplainabilityExports: API.OperationMethod<
   input: ListExplainabilityExportsRequest,
   output: ListExplainabilityExportsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListExplainabilityExports",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4891,6 +4939,7 @@ export const listForecastExportJobs: API.OperationMethod<
   input: ListForecastExportJobsRequest,
   output: ListForecastExportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListForecastExportJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4933,6 +4982,7 @@ export const listForecasts: API.OperationMethod<
   input: ListForecastsRequest,
   output: ListForecastsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListForecasts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4980,6 +5030,7 @@ export const listMonitorEvaluations: API.OperationMethod<
     InvalidNextTokenException,
     ResourceNotFoundException,
   ],
+  operationName: "ListMonitorEvaluations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5019,6 +5070,7 @@ export const listMonitors: API.OperationMethod<
   input: ListMonitorsRequest,
   output: ListMonitorsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListMonitors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5061,6 +5113,7 @@ export const listPredictorBacktestExportJobs: API.OperationMethod<
   input: ListPredictorBacktestExportJobsRequest,
   output: ListPredictorBacktestExportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListPredictorBacktestExportJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5104,6 +5157,7 @@ export const listPredictors: API.OperationMethod<
   input: ListPredictorsRequest,
   output: ListPredictorsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListPredictors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5127,6 +5181,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type ListWhatIfAnalysesError =
   | InvalidInputException
@@ -5159,6 +5214,7 @@ export const listWhatIfAnalyses: API.OperationMethod<
   input: ListWhatIfAnalysesRequest,
   output: ListWhatIfAnalysesResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListWhatIfAnalyses",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5197,6 +5253,7 @@ export const listWhatIfForecastExports: API.OperationMethod<
   input: ListWhatIfForecastExportsRequest,
   output: ListWhatIfForecastExportsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListWhatIfForecastExports",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5235,6 +5292,7 @@ export const listWhatIfForecasts: API.OperationMethod<
   input: ListWhatIfForecastsRequest,
   output: ListWhatIfForecastsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListWhatIfForecasts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5265,6 +5323,7 @@ export const resumeResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "ResumeResource",
 }));
 export type StopResourceError =
   | InvalidInputException
@@ -5308,6 +5367,7 @@ export const stopResource: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "StopResource",
 }));
 export type TagResourceError =
   | InvalidInputException
@@ -5333,6 +5393,7 @@ export const tagResource: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InvalidInputException
@@ -5350,6 +5411,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type UpdateDatasetGroupError =
   | InvalidInputException
@@ -5376,4 +5438,5 @@ export const updateDatasetGroup: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateDatasetGroup",
 }));

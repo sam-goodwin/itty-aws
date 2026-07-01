@@ -4948,6 +4948,7 @@ export const createApiKey: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateApiKey",
 }));
 export type CreateAuthorizerError =
   | BadRequestException
@@ -4976,6 +4977,7 @@ export const createAuthorizer: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateAuthorizer",
 }));
 export type CreateBasePathMappingError =
   | BadRequestException
@@ -5004,6 +5006,7 @@ export const createBasePathMapping: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateBasePathMapping",
 }));
 export type CreateDeploymentError =
   | BadRequestException
@@ -5034,6 +5037,7 @@ export const createDeployment: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateDeployment",
 }));
 export type CreateDocumentationPartError =
   | BadRequestException
@@ -5062,6 +5066,7 @@ export const createDocumentationPart: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateDocumentationPart",
 }));
 export type CreateDocumentationVersionError =
   | BadRequestException
@@ -5090,6 +5095,7 @@ export const createDocumentationVersion: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateDocumentationVersion",
 }));
 export type CreateDomainNameError =
   | BadRequestException
@@ -5116,6 +5122,7 @@ export const createDomainName: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateDomainName",
 }));
 export type CreateDomainNameAccessAssociationError =
   | BadRequestException
@@ -5143,6 +5150,7 @@ export const createDomainNameAccessAssociation: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateDomainNameAccessAssociation",
 }));
 export type CreateModelError =
   | BadRequestException
@@ -5171,6 +5179,7 @@ export const createModel: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateModel",
 }));
 export type CreateRequestValidatorError =
   | BadRequestException
@@ -5199,6 +5208,7 @@ export const createRequestValidator: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateRequestValidator",
 }));
 export type CreateResourceError =
   | BadRequestException
@@ -5227,6 +5237,7 @@ export const createResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateResource",
 }));
 export type CreateRestApiError =
   | BadRequestException
@@ -5253,6 +5264,7 @@ export const createRestApi: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateRestApi",
 }));
 export type CreateStageError =
   | BadRequestException
@@ -5281,6 +5293,7 @@ export const createStage: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateStage",
 }));
 export type CreateUsagePlanError =
   | BadRequestException
@@ -5309,6 +5322,7 @@ export const createUsagePlan: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateUsagePlan",
 }));
 export type CreateUsagePlanKeyError =
   | BadRequestException
@@ -5337,6 +5351,7 @@ export const createUsagePlanKey: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateUsagePlanKey",
 }));
 export type CreateVpcLinkError =
   | BadRequestException
@@ -5363,6 +5378,7 @@ export const createVpcLink: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateVpcLink",
 }));
 export type DeleteApiKeyError =
   | BadRequestException
@@ -5389,6 +5405,7 @@ export const deleteApiKey: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteApiKey",
 }));
 export type DeleteAuthorizerError =
   | BadRequestException
@@ -5415,6 +5432,7 @@ export const deleteAuthorizer: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteAuthorizer",
 }));
 export type DeleteBasePathMappingError =
   | BadRequestException
@@ -5441,6 +5459,7 @@ export const deleteBasePathMapping: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteBasePathMapping",
 }));
 export type DeleteClientCertificateError =
   | BadRequestException
@@ -5467,6 +5486,7 @@ export const deleteClientCertificate: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteClientCertificate",
 }));
 export type DeleteDeploymentError =
   | BadRequestException
@@ -5495,6 +5515,7 @@ export const deleteDeployment: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteDeployment",
 }));
 export type DeleteDocumentationPartError =
   | BadRequestException
@@ -5521,6 +5542,7 @@ export const deleteDocumentationPart: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteDocumentationPart",
 }));
 export type DeleteDocumentationVersionError =
   | BadRequestException
@@ -5547,6 +5569,7 @@ export const deleteDocumentationVersion: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteDocumentationVersion",
 }));
 export type DeleteDomainNameError =
   | BadRequestException
@@ -5573,6 +5596,7 @@ export const deleteDomainName: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteDomainName",
 }));
 export type DeleteDomainNameAccessAssociationError =
   | BadRequestException
@@ -5601,6 +5625,7 @@ export const deleteDomainNameAccessAssociation: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteDomainNameAccessAssociation",
 }));
 export type DeleteGatewayResponseError =
   | BadRequestException
@@ -5627,6 +5652,7 @@ export const deleteGatewayResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteGatewayResponse",
 }));
 export type DeleteIntegrationError =
   | BadRequestException
@@ -5653,6 +5679,7 @@ export const deleteIntegration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteIntegration",
 }));
 export type DeleteIntegrationResponseError =
   | BadRequestException
@@ -5679,6 +5706,7 @@ export const deleteIntegrationResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteIntegrationResponse",
 }));
 export type DeleteMethodError =
   | ConflictException
@@ -5703,6 +5731,7 @@ export const deleteMethod: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteMethod",
 }));
 export type DeleteMethodResponseError =
   | BadRequestException
@@ -5729,6 +5758,7 @@ export const deleteMethodResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteMethodResponse",
 }));
 export type DeleteModelError =
   | BadRequestException
@@ -5755,6 +5785,7 @@ export const deleteModel: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteModel",
 }));
 export type DeleteRequestValidatorError =
   | BadRequestException
@@ -5781,6 +5812,7 @@ export const deleteRequestValidator: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteRequestValidator",
 }));
 export type DeleteResourceError =
   | BadRequestException
@@ -5807,6 +5839,7 @@ export const deleteResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteResource",
 }));
 export type DeleteRestApiError =
   | BadRequestException
@@ -5833,6 +5866,7 @@ export const deleteRestApi: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteRestApi",
 }));
 export type DeleteStageError =
   | BadRequestException
@@ -5861,6 +5895,7 @@ export const deleteStage: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteStage",
 }));
 export type DeleteUsagePlanError =
   | BadRequestException
@@ -5887,6 +5922,7 @@ export const deleteUsagePlan: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteUsagePlan",
 }));
 export type DeleteUsagePlanKeyError =
   | BadRequestException
@@ -5913,6 +5949,7 @@ export const deleteUsagePlanKey: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteUsagePlanKey",
 }));
 export type DeleteVpcLinkError =
   | BadRequestException
@@ -5939,6 +5976,7 @@ export const deleteVpcLink: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteVpcLink",
 }));
 export type FlushStageAuthorizersCacheError =
   | BadRequestException
@@ -5967,6 +6005,7 @@ export const flushStageAuthorizersCache: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "FlushStageAuthorizersCache",
 }));
 export type FlushStageCacheError =
   | BadRequestException
@@ -5995,6 +6034,7 @@ export const flushStageCache: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "FlushStageCache",
 }));
 export type GenerateClientCertificateError =
   | BadRequestException
@@ -6021,6 +6061,7 @@ export const generateClientCertificate: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GenerateClientCertificate",
 }));
 export type GetAccountError =
   | BadRequestException
@@ -6045,6 +6086,7 @@ export const getAccount: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetAccount",
 }));
 export type GetApiKeyError =
   | BadRequestException
@@ -6069,6 +6111,7 @@ export const getApiKey: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetApiKey",
 }));
 export type GetApiKeysError =
   | BadRequestException
@@ -6108,6 +6151,7 @@ export const getApiKeys: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetApiKeys",
   pagination: {
     inputToken: "position",
     outputToken: "position",
@@ -6138,6 +6182,7 @@ export const getAuthorizer: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetAuthorizer",
 }));
 export type GetAuthorizersError =
   | BadRequestException
@@ -6162,6 +6207,7 @@ export const getAuthorizers: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetAuthorizers",
 }));
 export type GetBasePathMappingError =
   | BadRequestException
@@ -6186,6 +6232,7 @@ export const getBasePathMapping: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetBasePathMapping",
 }));
 export type GetBasePathMappingsError =
   | BadRequestException
@@ -6225,6 +6272,7 @@ export const getBasePathMappings: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetBasePathMappings",
   pagination: {
     inputToken: "position",
     outputToken: "position",
@@ -6255,6 +6303,7 @@ export const getClientCertificate: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetClientCertificate",
 }));
 export type GetClientCertificatesError =
   | BadRequestException
@@ -6294,6 +6343,7 @@ export const getClientCertificates: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetClientCertificates",
   pagination: {
     inputToken: "position",
     outputToken: "position",
@@ -6326,6 +6376,7 @@ export const getDeployment: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetDeployment",
 }));
 export type GetDeploymentsError =
   | BadRequestException
@@ -6367,6 +6418,7 @@ export const getDeployments: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetDeployments",
   pagination: {
     inputToken: "position",
     outputToken: "position",
@@ -6397,6 +6449,7 @@ export const getDocumentationPart: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetDocumentationPart",
 }));
 export type GetDocumentationPartsError =
   | BadRequestException
@@ -6421,6 +6474,7 @@ export const getDocumentationParts: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetDocumentationParts",
 }));
 export type GetDocumentationVersionError =
   | NotFoundException
@@ -6439,6 +6493,7 @@ export const getDocumentationVersion: API.OperationMethod<
   input: GetDocumentationVersionRequest,
   output: DocumentationVersion,
   errors: [NotFoundException, TooManyRequestsException, UnauthorizedException],
+  operationName: "GetDocumentationVersion",
 }));
 export type GetDocumentationVersionsError =
   | BadRequestException
@@ -6463,6 +6518,7 @@ export const getDocumentationVersions: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetDocumentationVersions",
 }));
 export type GetDomainNameError =
   | BadRequestException
@@ -6487,6 +6543,7 @@ export const getDomainName: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetDomainName",
 }));
 export type GetDomainNameAccessAssociationsError =
   | BadRequestException
@@ -6511,6 +6568,7 @@ export const getDomainNameAccessAssociations: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetDomainNameAccessAssociations",
 }));
 export type GetDomainNamesError =
   | BadRequestException
@@ -6550,6 +6608,7 @@ export const getDomainNames: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetDomainNames",
   pagination: {
     inputToken: "position",
     outputToken: "position",
@@ -6584,6 +6643,7 @@ export const getExport: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetExport",
 }));
 export type GetGatewayResponseError =
   | BadRequestException
@@ -6608,6 +6668,7 @@ export const getGatewayResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetGatewayResponse",
 }));
 export type GetGatewayResponsesError =
   | BadRequestException
@@ -6632,6 +6693,7 @@ export const getGatewayResponses: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetGatewayResponses",
 }));
 export type GetIntegrationError =
   | BadRequestException
@@ -6656,6 +6718,7 @@ export const getIntegration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetIntegration",
 }));
 export type GetIntegrationResponseError =
   | BadRequestException
@@ -6680,6 +6743,7 @@ export const getIntegrationResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetIntegrationResponse",
 }));
 export type GetMethodError =
   | NotFoundException
@@ -6698,6 +6762,7 @@ export const getMethod: API.OperationMethod<
   input: GetMethodRequest,
   output: Method,
   errors: [NotFoundException, TooManyRequestsException, UnauthorizedException],
+  operationName: "GetMethod",
 }));
 export type GetMethodResponseError =
   | NotFoundException
@@ -6716,6 +6781,7 @@ export const getMethodResponse: API.OperationMethod<
   input: GetMethodResponseRequest,
   output: MethodResponse,
   errors: [NotFoundException, TooManyRequestsException, UnauthorizedException],
+  operationName: "GetMethodResponse",
 }));
 export type GetModelError =
   | BadRequestException
@@ -6740,6 +6806,7 @@ export const getModel: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetModel",
 }));
 export type GetModelsError =
   | BadRequestException
@@ -6779,6 +6846,7 @@ export const getModels: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetModels",
   pagination: {
     inputToken: "position",
     outputToken: "position",
@@ -6809,6 +6877,7 @@ export const getModelTemplate: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetModelTemplate",
 }));
 export type GetRequestValidatorError =
   | BadRequestException
@@ -6833,6 +6902,7 @@ export const getRequestValidator: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetRequestValidator",
 }));
 export type GetRequestValidatorsError =
   | BadRequestException
@@ -6857,6 +6927,7 @@ export const getRequestValidators: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetRequestValidators",
 }));
 export type GetResourceError =
   | NotFoundException
@@ -6875,6 +6946,7 @@ export const getResource: API.OperationMethod<
   input: GetResourceRequest,
   output: Resource,
   errors: [NotFoundException, TooManyRequestsException, UnauthorizedException],
+  operationName: "GetResource",
 }));
 export type GetResourcesError =
   | BadRequestException
@@ -6914,6 +6986,7 @@ export const getResources: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetResources",
   pagination: {
     inputToken: "position",
     outputToken: "position",
@@ -6944,6 +7017,7 @@ export const getRestApi: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetRestApi",
 }));
 export type GetRestApisError =
   | BadRequestException
@@ -6983,6 +7057,7 @@ export const getRestApis: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetRestApis",
   pagination: {
     inputToken: "position",
     outputToken: "position",
@@ -7017,6 +7092,7 @@ export const getSdk: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetSdk",
 }));
 export type GetSdkTypeError =
   | BadRequestException
@@ -7041,6 +7117,7 @@ export const getSdkType: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetSdkType",
 }));
 export type GetSdkTypesError =
   | BadRequestException
@@ -7065,6 +7142,7 @@ export const getSdkTypes: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetSdkTypes",
 }));
 export type GetStageError =
   | BadRequestException
@@ -7093,6 +7171,7 @@ export const getStage: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetStage",
 }));
 export type GetStagesError =
   | BadRequestException
@@ -7121,6 +7200,7 @@ export const getStages: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetStages",
 }));
 export type GetTagsError =
   | BadRequestException
@@ -7145,6 +7225,7 @@ export const getTags: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetTags",
 }));
 export type GetUsageError =
   | BadRequestException
@@ -7184,6 +7265,7 @@ export const getUsage: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetUsage",
   pagination: {
     inputToken: "position",
     outputToken: "position",
@@ -7214,6 +7296,7 @@ export const getUsagePlan: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetUsagePlan",
 }));
 export type GetUsagePlanKeyError =
   | BadRequestException
@@ -7238,6 +7321,7 @@ export const getUsagePlanKey: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetUsagePlanKey",
 }));
 export type GetUsagePlanKeysError =
   | BadRequestException
@@ -7277,6 +7361,7 @@ export const getUsagePlanKeys: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetUsagePlanKeys",
   pagination: {
     inputToken: "position",
     outputToken: "position",
@@ -7322,6 +7407,7 @@ export const getUsagePlans: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetUsagePlans",
   pagination: {
     inputToken: "position",
     outputToken: "position",
@@ -7352,6 +7438,7 @@ export const getVpcLink: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetVpcLink",
 }));
 export type GetVpcLinksError =
   | BadRequestException
@@ -7391,6 +7478,7 @@ export const getVpcLinks: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetVpcLinks",
   pagination: {
     inputToken: "position",
     outputToken: "position",
@@ -7425,6 +7513,7 @@ export const importApiKeys: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "ImportApiKeys",
 }));
 export type ImportDocumentationPartsError =
   | BadRequestException
@@ -7453,6 +7542,7 @@ export const importDocumentationParts: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "ImportDocumentationParts",
 }));
 export type ImportRestApiError =
   | BadRequestException
@@ -7481,6 +7571,7 @@ export const importRestApi: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "ImportRestApi",
 }));
 export type PutGatewayResponseError =
   | BadRequestException
@@ -7509,6 +7600,7 @@ export const putGatewayResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "PutGatewayResponse",
 }));
 export type PutIntegrationError =
   | BadRequestException
@@ -7537,6 +7629,7 @@ export const putIntegration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "PutIntegration",
 }));
 export type PutIntegrationResponseError =
   | BadRequestException
@@ -7565,6 +7658,7 @@ export const putIntegrationResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "PutIntegrationResponse",
 }));
 export type PutMethodError =
   | BadRequestException
@@ -7593,6 +7687,7 @@ export const putMethod: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "PutMethod",
 }));
 export type PutMethodResponseError =
   | BadRequestException
@@ -7621,6 +7716,7 @@ export const putMethodResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "PutMethodResponse",
 }));
 export type PutRestApiError =
   | BadRequestException
@@ -7650,6 +7746,7 @@ export const putRestApi: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "PutRestApi",
 }));
 export type RejectDomainNameAccessAssociationError =
   | BadRequestException
@@ -7678,6 +7775,7 @@ export const rejectDomainNameAccessAssociation: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "RejectDomainNameAccessAssociation",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -7706,6 +7804,7 @@ export const tagResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "TagResource",
 }));
 export type TestInvokeAuthorizerError =
   | BadRequestException
@@ -7730,6 +7829,7 @@ export const testInvokeAuthorizer: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "TestInvokeAuthorizer",
 }));
 export type TestInvokeMethodError =
   | BadRequestException
@@ -7754,6 +7854,7 @@ export const testInvokeMethod: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "TestInvokeMethod",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -7782,6 +7883,7 @@ export const untagResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAccountError =
   | BadRequestException
@@ -7810,6 +7912,7 @@ export const updateAccount: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateAccount",
 }));
 export type UpdateApiKeyError =
   | BadRequestException
@@ -7838,6 +7941,7 @@ export const updateApiKey: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateApiKey",
 }));
 export type UpdateAuthorizerError =
   | BadRequestException
@@ -7866,6 +7970,7 @@ export const updateAuthorizer: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateAuthorizer",
 }));
 export type UpdateBasePathMappingError =
   | BadRequestException
@@ -7894,6 +7999,7 @@ export const updateBasePathMapping: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateBasePathMapping",
 }));
 export type UpdateClientCertificateError =
   | BadRequestException
@@ -7922,6 +8028,7 @@ export const updateClientCertificate: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateClientCertificate",
 }));
 export type UpdateDeploymentError =
   | BadRequestException
@@ -7952,6 +8059,7 @@ export const updateDeployment: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateDeployment",
 }));
 export type UpdateDocumentationPartError =
   | BadRequestException
@@ -7980,6 +8088,7 @@ export const updateDocumentationPart: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateDocumentationPart",
 }));
 export type UpdateDocumentationVersionError =
   | BadRequestException
@@ -8008,6 +8117,7 @@ export const updateDocumentationVersion: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateDocumentationVersion",
 }));
 export type UpdateDomainNameError =
   | BadRequestException
@@ -8036,6 +8146,7 @@ export const updateDomainName: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateDomainName",
 }));
 export type UpdateGatewayResponseError =
   | BadRequestException
@@ -8064,6 +8175,7 @@ export const updateGatewayResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateGatewayResponse",
 }));
 export type UpdateIntegrationError =
   | BadRequestException
@@ -8092,6 +8204,7 @@ export const updateIntegration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateIntegration",
 }));
 export type UpdateIntegrationResponseError =
   | BadRequestException
@@ -8120,6 +8233,7 @@ export const updateIntegrationResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateIntegrationResponse",
 }));
 export type UpdateMethodError =
   | BadRequestException
@@ -8146,6 +8260,7 @@ export const updateMethod: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateMethod",
 }));
 export type UpdateMethodResponseError =
   | BadRequestException
@@ -8174,6 +8289,7 @@ export const updateMethodResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateMethodResponse",
 }));
 export type UpdateModelError =
   | BadRequestException
@@ -8202,6 +8318,7 @@ export const updateModel: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateModel",
 }));
 export type UpdateRequestValidatorError =
   | BadRequestException
@@ -8230,6 +8347,7 @@ export const updateRequestValidator: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateRequestValidator",
 }));
 export type UpdateResourceError =
   | BadRequestException
@@ -8256,6 +8374,7 @@ export const updateResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateResource",
 }));
 export type UpdateRestApiError =
   | BadRequestException
@@ -8284,6 +8403,7 @@ export const updateRestApi: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateRestApi",
 }));
 export type UpdateStageError =
   | BadRequestException
@@ -8312,6 +8432,7 @@ export const updateStage: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateStage",
 }));
 export type UpdateUsageError =
   | BadRequestException
@@ -8340,6 +8461,7 @@ export const updateUsage: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateUsage",
 }));
 export type UpdateUsagePlanError =
   | BadRequestException
@@ -8368,6 +8490,7 @@ export const updateUsagePlan: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateUsagePlan",
 }));
 export type UpdateVpcLinkError =
   | BadRequestException
@@ -8396,4 +8519,5 @@ export const updateVpcLink: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateVpcLink",
 }));

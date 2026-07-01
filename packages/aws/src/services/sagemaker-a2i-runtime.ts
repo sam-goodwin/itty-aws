@@ -387,6 +387,7 @@ export const deleteHumanLoop: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteHumanLoop",
 }));
 export type DescribeHumanLoopError =
   | InternalServerException
@@ -412,6 +413,7 @@ export const describeHumanLoop: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeHumanLoop",
 }));
 export type ListHumanLoopsError =
   | InternalServerException
@@ -451,6 +453,7 @@ export const listHumanLoops: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListHumanLoops",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -483,6 +486,7 @@ export const startHumanLoop: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartHumanLoop",
 }));
 export type StopHumanLoopError =
   | InternalServerException
@@ -507,4 +511,5 @@ export const stopHumanLoop: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopHumanLoop",
 }));

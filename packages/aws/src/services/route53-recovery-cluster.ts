@@ -355,6 +355,7 @@ export const getRoutingControlState: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRoutingControlState",
 }));
 export type ListRoutingControlsError =
   | AccessDeniedException
@@ -423,6 +424,7 @@ export const listRoutingControls: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRoutingControls",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -486,6 +488,7 @@ export const updateRoutingControlState: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRoutingControlState",
 }));
 export type UpdateRoutingControlStatesError =
   | AccessDeniedException
@@ -545,4 +548,5 @@ export const updateRoutingControlStates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRoutingControlStates",
 }));

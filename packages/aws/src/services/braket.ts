@@ -1235,6 +1235,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalServiceException
@@ -1257,6 +1258,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServiceException
@@ -1279,6 +1281,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type GetDeviceError =
   | AccessDeniedException
@@ -1307,6 +1310,7 @@ export const getDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDevice",
 }));
 export type SearchDevicesError =
   | AccessDeniedException
@@ -1346,6 +1350,7 @@ export const searchDevices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchDevices",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1384,6 +1389,7 @@ export const createJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateJob",
 }));
 export type GetJobError =
   | AccessDeniedException
@@ -1410,6 +1416,7 @@ export const getJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetJob",
 }));
 export type CancelJobError =
   | AccessDeniedException
@@ -1438,6 +1445,7 @@ export const cancelJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelJob",
 }));
 export type SearchJobsError =
   | AccessDeniedException
@@ -1477,6 +1485,7 @@ export const searchJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1513,6 +1522,7 @@ export const createQuantumTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateQuantumTask",
 }));
 export type GetQuantumTaskError =
   | AccessDeniedException
@@ -1539,6 +1549,7 @@ export const getQuantumTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetQuantumTask",
 }));
 export type CancelQuantumTaskError =
   | AccessDeniedException
@@ -1567,6 +1578,7 @@ export const cancelQuantumTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelQuantumTask",
 }));
 export type SearchQuantumTasksError =
   | AccessDeniedException
@@ -1606,6 +1618,7 @@ export const searchQuantumTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchQuantumTasks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1638,6 +1651,7 @@ export const createSpendingLimit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateSpendingLimit",
 }));
 export type UpdateSpendingLimitError =
   | AccessDeniedException
@@ -1664,6 +1678,7 @@ export const updateSpendingLimit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateSpendingLimit",
 }));
 export type DeleteSpendingLimitError =
   | AccessDeniedException
@@ -1690,6 +1705,7 @@ export const deleteSpendingLimit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteSpendingLimit",
 }));
 export type SearchSpendingLimitsError =
   | AccessDeniedException
@@ -1729,6 +1745,7 @@ export const searchSpendingLimits: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchSpendingLimits",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

@@ -944,6 +944,7 @@ export const batchGetFindings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchGetFindings",
 }));
 export type CreateScanError =
   | AccessDeniedException
@@ -972,6 +973,7 @@ export const createScan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateScan",
 }));
 export type CreateUploadUrlError =
   | AccessDeniedException
@@ -998,6 +1000,7 @@ export const createUploadUrl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateUploadUrl",
 }));
 export type GetAccountConfigurationError =
   | AccessDeniedException
@@ -1022,6 +1025,7 @@ export const getAccountConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAccountConfiguration",
 }));
 export type GetFindingsError =
   | AccessDeniedException
@@ -1065,6 +1069,7 @@ export const getFindings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFindings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1095,6 +1100,7 @@ export const getMetricsSummary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMetricsSummary",
 }));
 export type GetScanError =
   | AccessDeniedException
@@ -1121,6 +1127,7 @@ export const getScan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetScan",
 }));
 export type ListFindingsMetricsError =
   | AccessDeniedException
@@ -1160,6 +1167,7 @@ export const listFindingsMetrics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFindingsMetrics",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1205,6 +1213,7 @@ export const listScans: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListScans",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1239,6 +1248,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1267,6 +1277,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1295,6 +1306,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAccountConfigurationError =
   | AccessDeniedException
@@ -1321,4 +1333,5 @@ export const updateAccountConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAccountConfiguration",
 }));

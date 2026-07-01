@@ -3249,6 +3249,7 @@ export const acceptHandshake: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "AcceptHandshake",
 }));
 export type AttachPolicyError =
   | AccessDeniedException
@@ -3321,6 +3322,7 @@ export const attachPolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "AttachPolicy",
 }));
 export type CancelHandshakeError =
   | AccessDeniedException
@@ -3359,6 +3361,7 @@ export const cancelHandshake: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "CancelHandshake",
 }));
 export type CloseAccountError =
   | AccessDeniedException
@@ -3443,6 +3446,7 @@ export const closeAccount: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "CloseAccount",
 }));
 export type CreateAccountError =
   | AccessDeniedException
@@ -3546,6 +3550,7 @@ export const createAccount: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "CreateAccount",
 }));
 export type CreateGovCloudAccountError =
   | AccessDeniedException
@@ -3693,6 +3698,7 @@ export const createGovCloudAccount: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "CreateGovCloudAccount",
 }));
 export type CreateOrganizationError =
   | AccessDeniedException
@@ -3742,6 +3748,7 @@ export const createOrganization: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "CreateOrganization",
 }));
 export type CreateOrganizationalUnitError =
   | AccessDeniedException
@@ -3788,6 +3795,7 @@ export const createOrganizationalUnit: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "CreateOrganizationalUnit",
 }));
 export type CreatePolicyError =
   | AccessDeniedException
@@ -3835,6 +3843,7 @@ export const createPolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "CreatePolicy",
 }));
 export type DeclineHandshakeError =
   | AccessDeniedException
@@ -3873,6 +3882,7 @@ export const declineHandshake: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "DeclineHandshake",
 }));
 export type DeleteOrganizationError =
   | AccessDeniedException
@@ -3911,6 +3921,7 @@ export const deleteOrganization: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteOrganization",
 }));
 export type DeleteOrganizationalUnitError =
   | AccessDeniedException
@@ -3946,6 +3957,7 @@ export const deleteOrganizationalUnit: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteOrganizationalUnit",
 }));
 export type DeletePolicyError =
   | AccessDeniedException
@@ -3984,6 +3996,7 @@ export const deletePolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "DeletePolicy",
 }));
 export type DeleteResourcePolicyError =
   | AccessDeniedException
@@ -4018,6 +4031,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeregisterDelegatedAdministratorError =
   | AccessDeniedException
@@ -4067,6 +4081,7 @@ export const deregisterDelegatedAdministrator: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "DeregisterDelegatedAdministrator",
 }));
 export type DescribeAccountError =
   | AccessDeniedException
@@ -4097,6 +4112,7 @@ export const describeAccount: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeAccount",
 }));
 export type DescribeCreateAccountStatusError =
   | AccessDeniedException
@@ -4129,6 +4145,7 @@ export const describeCreateAccountStatus: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "DescribeCreateAccountStatus",
 }));
 export type DescribeEffectivePolicyError =
   | AccessDeniedException
@@ -4175,6 +4192,7 @@ export const describeEffectivePolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "DescribeEffectivePolicy",
 }));
 export type DescribeHandshakeError =
   | AccessDeniedException
@@ -4209,6 +4227,7 @@ export const describeHandshake: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeHandshake",
 }));
 export type DescribeOrganizationError =
   | AccessDeniedException
@@ -4242,6 +4261,7 @@ export const describeOrganization: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeOrganization",
 }));
 export type DescribeOrganizationalUnitError =
   | AccessDeniedException
@@ -4272,6 +4292,7 @@ export const describeOrganizationalUnit: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeOrganizationalUnit",
 }));
 export type DescribePolicyError =
   | AccessDeniedException
@@ -4304,6 +4325,7 @@ export const describePolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "DescribePolicy",
 }));
 export type DescribeResourcePolicyError =
   | AccessDeniedException
@@ -4336,6 +4358,7 @@ export const describeResourcePolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "DescribeResourcePolicy",
 }));
 export type DescribeResponsibilityTransferError =
   | AccessDeniedException
@@ -4368,6 +4391,7 @@ export const describeResponsibilityTransfer: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "DescribeResponsibilityTransfer",
 }));
 export type DetachPolicyError =
   | AccessDeniedException
@@ -4423,6 +4447,7 @@ export const detachPolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "DetachPolicy",
 }));
 export type DisableAWSServiceAccessError =
   | AccessDeniedException
@@ -4509,6 +4534,7 @@ export const disableAWSServiceAccess: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "DisableAWSServiceAccess",
 }));
 export type DisablePolicyTypeError =
   | AccessDeniedException
@@ -4560,6 +4586,7 @@ export const disablePolicyType: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "DisablePolicyType",
 }));
 export type EnableAllFeaturesError =
   | AccessDeniedException
@@ -4619,6 +4646,7 @@ export const enableAllFeatures: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "EnableAllFeatures",
 }));
 export type EnableAWSServiceAccessError =
   | AccessDeniedException
@@ -4669,6 +4697,7 @@ export const enableAWSServiceAccess: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "EnableAWSServiceAccess",
 }));
 export type EnablePolicyTypeError =
   | AccessDeniedException
@@ -4722,6 +4751,7 @@ export const enablePolicyType: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "EnablePolicyType",
 }));
 export type InviteAccountToOrganizationError =
   | AccessDeniedException
@@ -4774,6 +4804,7 @@ export const inviteAccountToOrganization: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "InviteAccountToOrganization",
 }));
 export type InviteOrganizationToTransferResponsibilityError =
   | AccessDeniedException
@@ -4814,6 +4845,7 @@ export const inviteOrganizationToTransferResponsibility: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "InviteOrganizationToTransferResponsibility",
 }));
 export type LeaveOrganizationError =
   | AccessDeniedException
@@ -4901,6 +4933,7 @@ export const leaveOrganization: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "LeaveOrganization",
 }));
 export type ListAccountsError =
   | AccessDeniedException
@@ -4949,6 +4982,7 @@ export const listAccounts: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "ListAccounts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5007,6 +5041,7 @@ export const listAccountsForParent: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "ListAccountsForParent",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5064,6 +5099,7 @@ export const listAccountsWithInvalidEffectivePolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "ListAccountsWithInvalidEffectivePolicy",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5123,6 +5159,7 @@ export const listAWSServiceAccessForOrganization: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "ListAWSServiceAccessForOrganization",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5179,6 +5216,7 @@ export const listChildren: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "ListChildren",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5234,6 +5272,7 @@ export const listCreateAccountStatus: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "ListCreateAccountStatus",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5287,6 +5326,7 @@ export const listDelegatedAdministrators: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "ListDelegatedAdministrators",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5345,6 +5385,7 @@ export const listDelegatedServicesForAccount: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "ListDelegatedServicesForAccount",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5403,6 +5444,7 @@ export const listEffectivePolicyValidationErrors: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "ListEffectivePolicyValidationErrors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5460,6 +5502,7 @@ export const listHandshakesForAccount: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "ListHandshakesForAccount",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5518,6 +5561,7 @@ export const listHandshakesForOrganization: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "ListHandshakesForOrganization",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5560,6 +5604,7 @@ export const listInboundResponsibilityTransfers: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "ListInboundResponsibilityTransfers",
 }));
 export type ListOrganizationalUnitsForParentError =
   | AccessDeniedException
@@ -5609,6 +5654,7 @@ export const listOrganizationalUnitsForParent: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "ListOrganizationalUnitsForParent",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5650,6 +5696,7 @@ export const listOutboundResponsibilityTransfers: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "ListOutboundResponsibilityTransfers",
 }));
 export type ListParentsError =
   | AccessDeniedException
@@ -5703,6 +5750,7 @@ export const listParents: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "ListParents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5757,6 +5805,7 @@ export const listPolicies: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "ListPolicies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5815,6 +5864,7 @@ export const listPoliciesForTarget: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "ListPoliciesForTarget",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5873,6 +5923,7 @@ export const listRoots: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "ListRoots",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5933,6 +5984,7 @@ export const listTagsForResource: API.OperationMethod<
     TargetNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5990,6 +6042,7 @@ export const listTargetsForPolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "ListTargetsForPolicy",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6034,6 +6087,7 @@ export const moveAccount: API.OperationMethod<
     SourceParentNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "MoveAccount",
 }));
 export type PutResourcePolicyError =
   | AccessDeniedException
@@ -6068,6 +6122,7 @@ export const putResourcePolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type RegisterDelegatedAdministratorError =
   | AccessDeniedException
@@ -6113,6 +6168,7 @@ export const registerDelegatedAdministrator: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "RegisterDelegatedAdministrator",
 }));
 export type RemoveAccountFromOrganizationError =
   | AccessDeniedException
@@ -6178,6 +6234,7 @@ export const removeAccountFromOrganization: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "RemoveAccountFromOrganization",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -6222,6 +6279,7 @@ export const tagResource: API.OperationMethod<
     TargetNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "TagResource",
 }));
 export type TerminateResponsibilityTransferError =
   | AccessDeniedException
@@ -6262,6 +6320,7 @@ export const terminateResponsibilityTransfer: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "TerminateResponsibilityTransfer",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -6306,6 +6365,7 @@ export const untagResource: API.OperationMethod<
     TargetNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateOrganizationalUnitError =
   | AccessDeniedException
@@ -6342,6 +6402,7 @@ export const updateOrganizationalUnit: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateOrganizationalUnit",
 }));
 export type UpdatePolicyError =
   | AccessDeniedException
@@ -6386,6 +6447,7 @@ export const updatePolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "UpdatePolicy",
 }));
 export type UpdateResponsibilityTransferError =
   | AccessDeniedException
@@ -6422,4 +6484,5 @@ export const updateResponsibilityTransfer: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  operationName: "UpdateResponsibilityTransfer",
 }));

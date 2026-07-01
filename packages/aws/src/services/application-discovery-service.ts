@@ -1813,6 +1813,7 @@ export const associateConfigurationItemsToApplication: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  operationName: "AssociateConfigurationItemsToApplication",
 }));
 export type BatchDeleteAgentsError =
   | AuthorizationErrorException
@@ -1839,6 +1840,7 @@ export const batchDeleteAgents: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  operationName: "BatchDeleteAgents",
 }));
 export type BatchDeleteImportDataError =
   | AuthorizationErrorException
@@ -1872,6 +1874,7 @@ export const batchDeleteImportData: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  operationName: "BatchDeleteImportData",
 }));
 export type CreateApplicationError =
   | AuthorizationErrorException
@@ -1898,6 +1901,7 @@ export const createApplication: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  operationName: "CreateApplication",
 }));
 export type CreateTagsError =
   | AuthorizationErrorException
@@ -1929,6 +1933,7 @@ export const createTags: API.OperationMethod<
     ResourceNotFoundException,
     ServerInternalErrorException,
   ],
+  operationName: "CreateTags",
 }));
 export type DeleteApplicationsError =
   | AuthorizationErrorException
@@ -1956,6 +1961,7 @@ export const deleteApplications: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  operationName: "DeleteApplications",
 }));
 export type DeleteTagsError =
   | AuthorizationErrorException
@@ -1985,6 +1991,7 @@ export const deleteTags: API.OperationMethod<
     ResourceNotFoundException,
     ServerInternalErrorException,
   ],
+  operationName: "DeleteTags",
 }));
 export type DescribeAgentsError =
   | AuthorizationErrorException
@@ -2028,6 +2035,7 @@ export const describeAgents: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  operationName: "DescribeAgents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2058,6 +2066,7 @@ export const describeBatchDeleteConfigurationTask: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  operationName: "DescribeBatchDeleteConfigurationTask",
 }));
 export type DescribeConfigurationsError =
   | AuthorizationErrorException
@@ -2102,6 +2111,7 @@ export const describeConfigurations: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  operationName: "DescribeConfigurations",
 }));
 export type DescribeContinuousExportsError =
   | AuthorizationErrorException
@@ -2149,6 +2159,7 @@ export const describeContinuousExports: API.OperationMethod<
     ResourceNotFoundException,
     ServerInternalErrorException,
   ],
+  operationName: "DescribeContinuousExports",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2198,6 +2209,7 @@ export const describeExportConfigurations: API.OperationMethod<
     ResourceNotFoundException,
     ServerInternalErrorException,
   ],
+  operationName: "DescribeExportConfigurations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2246,6 +2258,7 @@ export const describeExportTasks: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  operationName: "DescribeExportTasks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2294,6 +2307,7 @@ export const describeImportTasks: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  operationName: "DescribeImportTasks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2355,6 +2369,7 @@ export const describeTags: API.OperationMethod<
     ResourceNotFoundException,
     ServerInternalErrorException,
   ],
+  operationName: "DescribeTags",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2387,6 +2402,7 @@ export const disassociateConfigurationItemsFromApplication: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  operationName: "DisassociateConfigurationItemsFromApplication",
 }));
 export type ExportConfigurationsError =
   | AuthorizationErrorException
@@ -2421,6 +2437,7 @@ export const exportConfigurations: API.OperationMethod<
     OperationNotPermittedException,
     ServerInternalErrorException,
   ],
+  operationName: "ExportConfigurations",
 }));
 export type GetDiscoverySummaryError =
   | AuthorizationErrorException
@@ -2450,6 +2467,7 @@ export const getDiscoverySummary: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  operationName: "GetDiscoverySummary",
 }));
 export type ListConfigurationsError =
   | AuthorizationErrorException
@@ -2495,6 +2513,7 @@ export const listConfigurations: API.OperationMethod<
     ResourceNotFoundException,
     ServerInternalErrorException,
   ],
+  operationName: "ListConfigurations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2528,6 +2547,7 @@ export const listServerNeighbors: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  operationName: "ListServerNeighbors",
 }));
 export type StartBatchDeleteConfigurationTaskError =
   | AuthorizationErrorException
@@ -2559,6 +2579,7 @@ export const startBatchDeleteConfigurationTask: API.OperationMethod<
     OperationNotPermittedException,
     ServerInternalErrorException,
   ],
+  operationName: "StartBatchDeleteConfigurationTask",
 }));
 export type StartContinuousExportError =
   | AuthorizationErrorException
@@ -2591,6 +2612,7 @@ export const startContinuousExport: API.OperationMethod<
     ResourceInUseException,
     ServerInternalErrorException,
   ],
+  operationName: "StartContinuousExport",
 }));
 export type StartDataCollectionByAgentIdsError =
   | AuthorizationErrorException
@@ -2617,6 +2639,7 @@ export const startDataCollectionByAgentIds: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  operationName: "StartDataCollectionByAgentIds",
 }));
 export type StartExportTaskError =
   | AuthorizationErrorException
@@ -2668,6 +2691,7 @@ export const startExportTask: API.OperationMethod<
     OperationNotPermittedException,
     ServerInternalErrorException,
   ],
+  operationName: "StartExportTask",
 }));
 export type StartImportTaskError =
   | AuthorizationErrorException
@@ -2723,6 +2747,7 @@ export const startImportTask: API.OperationMethod<
     ResourceInUseException,
     ServerInternalErrorException,
   ],
+  operationName: "StartImportTask",
 }));
 export type StopContinuousExportError =
   | AuthorizationErrorException
@@ -2755,6 +2780,7 @@ export const stopContinuousExport: API.OperationMethod<
     ResourceNotFoundException,
     ServerInternalErrorException,
   ],
+  operationName: "StopContinuousExport",
 }));
 export type StopDataCollectionByAgentIdsError =
   | AuthorizationErrorException
@@ -2781,6 +2807,7 @@ export const stopDataCollectionByAgentIds: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  operationName: "StopDataCollectionByAgentIds",
 }));
 export type UpdateApplicationError =
   | AuthorizationErrorException
@@ -2807,4 +2834,5 @@ export const updateApplication: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  operationName: "UpdateApplication",
 }));

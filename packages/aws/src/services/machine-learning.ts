@@ -1778,6 +1778,7 @@ export const addTags: API.OperationMethod<
     ResourceNotFoundException,
     TagLimitExceededException,
   ],
+  operationName: "AddTags",
 }));
 export type CreateBatchPredictionError =
   | IdempotentParameterMismatchException
@@ -1809,6 +1810,7 @@ export const createBatchPrediction: API.OperationMethod<
     InternalServerException,
     InvalidInputException,
   ],
+  operationName: "CreateBatchPrediction",
 }));
 export type CreateDataSourceFromRDSError =
   | IdempotentParameterMismatchException
@@ -1839,6 +1841,7 @@ export const createDataSourceFromRDS: API.OperationMethod<
     InternalServerException,
     InvalidInputException,
   ],
+  operationName: "CreateDataSourceFromRDS",
 }));
 export type CreateDataSourceFromRedshiftError =
   | IdempotentParameterMismatchException
@@ -1890,6 +1893,7 @@ export const createDataSourceFromRedshift: API.OperationMethod<
     InternalServerException,
     InvalidInputException,
   ],
+  operationName: "CreateDataSourceFromRedshift",
 }));
 export type CreateDataSourceFromS3Error =
   | IdempotentParameterMismatchException
@@ -1942,6 +1946,7 @@ export const createDataSourceFromS3: API.OperationMethod<
     InternalServerException,
     InvalidInputException,
   ],
+  operationName: "CreateDataSourceFromS3",
 }));
 export type CreateEvaluationError =
   | IdempotentParameterMismatchException
@@ -1973,6 +1978,7 @@ export const createEvaluation: API.OperationMethod<
     InternalServerException,
     InvalidInputException,
   ],
+  operationName: "CreateEvaluation",
 }));
 export type CreateMLModelError =
   | IdempotentParameterMismatchException
@@ -2014,6 +2020,7 @@ export const createMLModel: API.OperationMethod<
     InternalServerException,
     InvalidInputException,
   ],
+  operationName: "CreateMLModel",
 }));
 export type CreateRealtimeEndpointError =
   | InternalServerException
@@ -2036,6 +2043,7 @@ export const createRealtimeEndpoint: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateRealtimeEndpoint",
 }));
 export type DeleteBatchPredictionError =
   | InternalServerException
@@ -2063,6 +2071,7 @@ export const deleteBatchPrediction: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteBatchPrediction",
 }));
 export type DeleteDataSourceError =
   | InternalServerException
@@ -2089,6 +2098,7 @@ export const deleteDataSource: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteDataSource",
 }));
 export type DeleteEvaluationError =
   | InternalServerException
@@ -2116,6 +2126,7 @@ export const deleteEvaluation: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteEvaluation",
 }));
 export type DeleteMLModelError =
   | InternalServerException
@@ -2143,6 +2154,7 @@ export const deleteMLModel: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteMLModel",
 }));
 export type DeleteRealtimeEndpointError =
   | InternalServerException
@@ -2165,6 +2177,7 @@ export const deleteRealtimeEndpoint: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteRealtimeEndpoint",
 }));
 export type DeleteTagsError =
   | InternalServerException
@@ -2191,6 +2204,7 @@ export const deleteTags: API.OperationMethod<
     InvalidTagException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteTags",
 }));
 export type DescribeBatchPredictionsError =
   | InternalServerException
@@ -2223,6 +2237,7 @@ export const describeBatchPredictions: API.OperationMethod<
   input: DescribeBatchPredictionsInput,
   output: DescribeBatchPredictionsOutput,
   errors: [InternalServerException, InvalidInputException],
+  operationName: "DescribeBatchPredictions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2261,6 +2276,7 @@ export const describeDataSources: API.OperationMethod<
   input: DescribeDataSourcesInput,
   output: DescribeDataSourcesOutput,
   errors: [InternalServerException, InvalidInputException],
+  operationName: "DescribeDataSources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2299,6 +2315,7 @@ export const describeEvaluations: API.OperationMethod<
   input: DescribeEvaluationsInput,
   output: DescribeEvaluationsOutput,
   errors: [InternalServerException, InvalidInputException],
+  operationName: "DescribeEvaluations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2337,6 +2354,7 @@ export const describeMLModels: API.OperationMethod<
   input: DescribeMLModelsInput,
   output: DescribeMLModelsOutput,
   errors: [InternalServerException, InvalidInputException],
+  operationName: "DescribeMLModels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2365,6 +2383,7 @@ export const describeTags: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeTags",
 }));
 export type GetBatchPredictionError =
   | InternalServerException
@@ -2388,6 +2407,7 @@ export const getBatchPrediction: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "GetBatchPrediction",
 }));
 export type GetDataSourceError =
   | InternalServerException
@@ -2413,6 +2433,7 @@ export const getDataSource: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "GetDataSource",
 }));
 export type GetEvaluationError =
   | InternalServerException
@@ -2435,6 +2456,7 @@ export const getEvaluation: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "GetEvaluation",
 }));
 export type GetMLModelError =
   | InternalServerException
@@ -2459,6 +2481,7 @@ export const getMLModel: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "GetMLModel",
 }));
 export type PredictError =
   | InternalServerException
@@ -2488,6 +2511,7 @@ export const predict: API.OperationMethod<
     PredictorNotMountedException,
     ResourceNotFoundException,
   ],
+  operationName: "Predict",
 }));
 export type UpdateBatchPredictionError =
   | InternalServerException
@@ -2512,6 +2536,7 @@ export const updateBatchPrediction: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateBatchPrediction",
 }));
 export type UpdateDataSourceError =
   | InternalServerException
@@ -2536,6 +2561,7 @@ export const updateDataSource: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateDataSource",
 }));
 export type UpdateEvaluationError =
   | InternalServerException
@@ -2560,6 +2586,7 @@ export const updateEvaluation: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateEvaluation",
 }));
 export type UpdateMLModelError =
   | InternalServerException
@@ -2584,4 +2611,5 @@ export const updateMLModel: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateMLModel",
 }));

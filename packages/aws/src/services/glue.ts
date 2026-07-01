@@ -18899,6 +18899,7 @@ export const associateGlossaryTerms: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "AssociateGlossaryTerms",
 }));
 export type BatchCreatePartitionError =
   | AlreadyExistsException
@@ -18929,6 +18930,7 @@ export const batchCreatePartition: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "BatchCreatePartition",
 }));
 export type BatchDeleteConnectionError =
   | InternalServiceException
@@ -18946,6 +18948,7 @@ export const batchDeleteConnection: API.OperationMethod<
   input: BatchDeleteConnectionRequest,
   output: BatchDeleteConnectionResponse,
   errors: [InternalServiceException, OperationTimeoutException],
+  operationName: "BatchDeleteConnection",
 }));
 export type BatchDeletePartitionError =
   | EntityNotFoundException
@@ -18970,6 +18973,7 @@ export const batchDeletePartition: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "BatchDeletePartition",
 }));
 export type BatchDeleteTableError =
   | EntityNotFoundException
@@ -19008,6 +19012,7 @@ export const batchDeleteTable: API.OperationMethod<
     OperationTimeoutException,
     ResourceNotReadyException,
   ],
+  operationName: "BatchDeleteTable",
 }));
 export type BatchDeleteTableVersionError =
   | EntityNotFoundException
@@ -19032,6 +19037,7 @@ export const batchDeleteTableVersion: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "BatchDeleteTableVersion",
 }));
 export type BatchGetBlueprintsError =
   | InternalServiceException
@@ -19054,6 +19060,7 @@ export const batchGetBlueprints: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "BatchGetBlueprints",
 }));
 export type BatchGetCrawlersError =
   | InvalidInputException
@@ -19071,6 +19078,7 @@ export const batchGetCrawlers: API.OperationMethod<
   input: BatchGetCrawlersRequest,
   output: BatchGetCrawlersResponse,
   errors: [InvalidInputException, OperationTimeoutException],
+  operationName: "BatchGetCrawlers",
 }));
 export type BatchGetCustomEntityTypesError =
   | InternalServiceException
@@ -19093,6 +19101,7 @@ export const batchGetCustomEntityTypes: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "BatchGetCustomEntityTypes",
 }));
 export type BatchGetDataQualityResultError =
   | InternalServiceException
@@ -19115,6 +19124,7 @@ export const batchGetDataQualityResult: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "BatchGetDataQualityResult",
 }));
 export type BatchGetDevEndpointsError =
   | AccessDeniedException
@@ -19142,6 +19152,7 @@ export const batchGetDevEndpoints: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "BatchGetDevEndpoints",
 }));
 export type BatchGetIterableFormsError =
   | AccessDeniedException
@@ -19168,6 +19179,7 @@ export const batchGetIterableForms: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "BatchGetIterableForms",
 }));
 export type BatchGetJobsError =
   | InternalServiceException
@@ -19190,6 +19202,7 @@ export const batchGetJobs: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "BatchGetJobs",
 }));
 export type BatchGetPartitionError =
   | EntityNotFoundException
@@ -19222,6 +19235,7 @@ export const batchGetPartition: API.OperationMethod<
     InvalidStateException,
     OperationTimeoutException,
   ],
+  operationName: "BatchGetPartition",
 }));
 export type BatchGetTableOptimizerError =
   | AccessDeniedException
@@ -19248,6 +19262,7 @@ export const batchGetTableOptimizer: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "BatchGetTableOptimizer",
 }));
 export type BatchGetTriggersError =
   | InternalServiceException
@@ -19270,6 +19285,7 @@ export const batchGetTriggers: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "BatchGetTriggers",
 }));
 export type BatchGetWorkflowsError =
   | InternalServiceException
@@ -19292,6 +19308,7 @@ export const batchGetWorkflows: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "BatchGetWorkflows",
 }));
 export type BatchPutDataQualityStatisticAnnotationError =
   | EntityNotFoundException
@@ -19318,6 +19335,7 @@ export const batchPutDataQualityStatisticAnnotation: API.OperationMethod<
     InvalidInputException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "BatchPutDataQualityStatisticAnnotation",
 }));
 export type BatchStopJobRunError =
   | InternalServiceException
@@ -19340,6 +19358,7 @@ export const batchStopJobRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "BatchStopJobRun",
 }));
 export type BatchUpdatePartitionError =
   | EntityNotFoundException
@@ -19366,6 +19385,7 @@ export const batchUpdatePartition: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "BatchUpdatePartition",
 }));
 export type CancelDataQualityRuleRecommendationRunError =
   | EntityNotFoundException
@@ -19390,6 +19410,7 @@ export const cancelDataQualityRuleRecommendationRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "CancelDataQualityRuleRecommendationRun",
 }));
 export type CancelDataQualityRulesetEvaluationRunError =
   | EntityNotFoundException
@@ -19414,6 +19435,7 @@ export const cancelDataQualityRulesetEvaluationRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "CancelDataQualityRulesetEvaluationRun",
 }));
 export type CancelMLTaskRunError =
   | EntityNotFoundException
@@ -19440,6 +19462,7 @@ export const cancelMLTaskRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "CancelMLTaskRun",
 }));
 export type CancelStatementError =
   | AccessDeniedException
@@ -19468,6 +19491,7 @@ export const cancelStatement: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "CancelStatement",
 }));
 export type CheckSchemaVersionValidityError =
   | AccessDeniedException
@@ -19490,6 +19514,7 @@ export const checkSchemaVersionValidity: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  operationName: "CheckSchemaVersionValidity",
 }));
 export type CreateBlueprintError =
   | AlreadyExistsException
@@ -19516,6 +19541,7 @@ export const createBlueprint: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateBlueprint",
 }));
 export type CreateCatalogError =
   | AccessDeniedException
@@ -19554,6 +19580,7 @@ export const createCatalog: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateCatalog",
 }));
 export type CreateClassifierError =
   | AlreadyExistsException
@@ -19578,6 +19605,7 @@ export const createClassifier: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "CreateClassifier",
 }));
 export type CreateColumnStatisticsTaskSettingsError =
   | AccessDeniedException
@@ -19608,6 +19636,7 @@ export const createColumnStatisticsTaskSettings: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateColumnStatisticsTaskSettings",
 }));
 export type CreateConnectionError =
   | AlreadyExistsException
@@ -19636,6 +19665,7 @@ export const createConnection: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateConnection",
 }));
 export type CreateCrawlerError =
   | AlreadyExistsException
@@ -19662,6 +19692,7 @@ export const createCrawler: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateCrawler",
 }));
 export type CreateCustomEntityTypeError =
   | AccessDeniedException
@@ -19694,6 +19725,7 @@ export const createCustomEntityType: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateCustomEntityType",
 }));
 export type CreateDatabaseError =
   | AlreadyExistsException
@@ -19730,6 +19762,7 @@ export const createDatabase: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateDatabase",
 }));
 export type CreateDataQualityRulesetError =
   | AlreadyExistsException
@@ -19758,6 +19791,7 @@ export const createDataQualityRuleset: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateDataQualityRuleset",
 }));
 export type CreateDevEndpointError =
   | AccessDeniedException
@@ -19790,6 +19824,7 @@ export const createDevEndpoint: API.OperationMethod<
     ResourceNumberLimitExceededException,
     ValidationException,
   ],
+  operationName: "CreateDevEndpoint",
 }));
 export type CreateGlossaryError =
   | AccessDeniedException
@@ -19818,6 +19853,7 @@ export const createGlossary: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "CreateGlossary",
 }));
 export type CreateGlossaryTermError =
   | AccessDeniedException
@@ -19848,6 +19884,7 @@ export const createGlossaryTerm: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "CreateGlossaryTerm",
 }));
 export type CreateGlueIdentityCenterConfigurationError =
   | AccessDeniedException
@@ -19877,6 +19914,7 @@ export const createGlueIdentityCenterConfiguration: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "CreateGlueIdentityCenterConfiguration",
 }));
 export type CreateIntegrationError =
   | AccessDeniedException
@@ -19917,6 +19955,7 @@ export const createIntegration: API.OperationMethod<
     ResourceNumberLimitExceededException,
     ValidationException,
   ],
+  operationName: "CreateIntegration",
 }));
 export type CreateIntegrationResourcePropertyError =
   | AccessDeniedException
@@ -19949,6 +19988,7 @@ export const createIntegrationResourceProperty: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreateIntegrationResourceProperty",
 }));
 export type CreateIntegrationTablePropertiesError =
   | AccessDeniedException
@@ -19979,6 +20019,7 @@ export const createIntegrationTableProperties: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreateIntegrationTableProperties",
 }));
 export type CreateJobError =
   | AlreadyExistsException
@@ -20009,6 +20050,7 @@ export const createJob: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateJob",
 }));
 export type CreateMLTransformError =
   | AccessDeniedException
@@ -20051,6 +20093,7 @@ export const createMLTransform: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateMLTransform",
 }));
 export type CreatePartitionError =
   | AlreadyExistsException
@@ -20081,6 +20124,7 @@ export const createPartition: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreatePartition",
 }));
 export type CreatePartitionIndexError =
   | AlreadyExistsException
@@ -20111,6 +20155,7 @@ export const createPartitionIndex: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreatePartitionIndex",
 }));
 export type CreateRegistryError =
   | AccessDeniedException
@@ -20139,6 +20184,7 @@ export const createRegistry: API.OperationMethod<
     InvalidInputException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateRegistry",
 }));
 export type CreateSchemaError =
   | AccessDeniedException
@@ -20173,6 +20219,7 @@ export const createSchema: API.OperationMethod<
     InvalidInputException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateSchema",
 }));
 export type CreateScriptError =
   | InternalServiceException
@@ -20195,6 +20242,7 @@ export const createScript: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "CreateScript",
 }));
 export type CreateSecurityConfigurationError =
   | AlreadyExistsException
@@ -20221,6 +20269,7 @@ export const createSecurityConfiguration: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateSecurityConfiguration",
 }));
 export type CreateSessionError =
   | AccessDeniedException
@@ -20255,6 +20304,7 @@ export const createSession: API.OperationMethod<
     ResourceNumberLimitExceededException,
     ValidationException,
   ],
+  operationName: "CreateSession",
 }));
 export type CreateTableError =
   | AlreadyExistsException
@@ -20293,6 +20343,7 @@ export const createTable: API.OperationMethod<
     ResourceNotReadyException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateTable",
 }));
 export type CreateTableOptimizerError =
   | AccessDeniedException
@@ -20323,6 +20374,7 @@ export const createTableOptimizer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateTableOptimizer",
 }));
 export type CreateTriggerError =
   | AlreadyExistsException
@@ -20357,6 +20409,7 @@ export const createTrigger: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateTrigger",
 }));
 export type CreateUsageProfileError =
   | AlreadyExistsException
@@ -20385,6 +20438,7 @@ export const createUsageProfile: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateUsageProfile",
 }));
 export type CreateUserDefinedFunctionError =
   | AlreadyExistsException
@@ -20415,6 +20469,7 @@ export const createUserDefinedFunction: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateUserDefinedFunction",
 }));
 export type CreateWorkflowError =
   | AlreadyExistsException
@@ -20443,6 +20498,7 @@ export const createWorkflow: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateWorkflow",
 }));
 export type DeleteAssetError =
   | AccessDeniedException
@@ -20469,6 +20525,7 @@ export const deleteAsset: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "DeleteAsset",
 }));
 export type DeleteAssetTypeError =
   | AccessDeniedException
@@ -20495,6 +20552,7 @@ export const deleteAssetType: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "DeleteAssetType",
 }));
 export type DeleteAttachmentError =
   | AccessDeniedException
@@ -20523,6 +20581,7 @@ export const deleteAttachment: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "DeleteAttachment",
 }));
 export type DeleteBlueprintError =
   | InternalServiceException
@@ -20545,6 +20604,7 @@ export const deleteBlueprint: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteBlueprint",
 }));
 export type DeleteCatalogError =
   | AccessDeniedException
@@ -20581,6 +20641,7 @@ export const deleteCatalog: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteCatalog",
 }));
 export type DeleteClassifierError =
   | EntityNotFoundException
@@ -20598,6 +20659,7 @@ export const deleteClassifier: API.OperationMethod<
   input: DeleteClassifierRequest,
   output: DeleteClassifierResponse,
   errors: [EntityNotFoundException, OperationTimeoutException],
+  operationName: "DeleteClassifier",
 }));
 export type DeleteColumnStatisticsForPartitionError =
   | EntityNotFoundException
@@ -20626,6 +20688,7 @@ export const deleteColumnStatisticsForPartition: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteColumnStatisticsForPartition",
 }));
 export type DeleteColumnStatisticsForTableError =
   | EntityNotFoundException
@@ -20654,6 +20717,7 @@ export const deleteColumnStatisticsForTable: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteColumnStatisticsForTable",
 }));
 export type DeleteColumnStatisticsTaskSettingsError =
   | EntityNotFoundException
@@ -20676,6 +20740,7 @@ export const deleteColumnStatisticsTaskSettings: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteColumnStatisticsTaskSettings",
 }));
 export type DeleteConnectionError =
   | EntityNotFoundException
@@ -20693,6 +20758,7 @@ export const deleteConnection: API.OperationMethod<
   input: DeleteConnectionRequest,
   output: DeleteConnectionResponse,
   errors: [EntityNotFoundException, OperationTimeoutException],
+  operationName: "DeleteConnection",
 }));
 export type DeleteConnectionTypeError =
   | AccessDeniedException
@@ -20723,6 +20789,7 @@ export const deleteConnectionType: API.OperationMethod<
     OperationTimeoutException,
     ValidationException,
   ],
+  operationName: "DeleteConnectionType",
 }));
 export type DeleteCrawlerError =
   | CrawlerRunningException
@@ -20748,6 +20815,7 @@ export const deleteCrawler: API.OperationMethod<
     OperationTimeoutException,
     SchedulerTransitioningException,
   ],
+  operationName: "DeleteCrawler",
 }));
 export type DeleteCustomEntityTypeError =
   | AccessDeniedException
@@ -20774,6 +20842,7 @@ export const deleteCustomEntityType: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteCustomEntityType",
 }));
 export type DeleteDatabaseError =
   | ConcurrentModificationException
@@ -20816,6 +20885,7 @@ export const deleteDatabase: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteDatabase",
 }));
 export type DeleteDataQualityRulesetError =
   | EntityNotFoundException
@@ -20840,6 +20910,7 @@ export const deleteDataQualityRuleset: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteDataQualityRuleset",
 }));
 export type DeleteDevEndpointError =
   | EntityNotFoundException
@@ -20864,6 +20935,7 @@ export const deleteDevEndpoint: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteDevEndpoint",
 }));
 export type DeleteFormTypeError =
   | AccessDeniedException
@@ -20892,6 +20964,7 @@ export const deleteFormType: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "DeleteFormType",
 }));
 export type DeleteGlossaryError =
   | AccessDeniedException
@@ -20920,6 +20993,7 @@ export const deleteGlossary: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "DeleteGlossary",
 }));
 export type DeleteGlossaryTermError =
   | AccessDeniedException
@@ -20946,6 +21020,7 @@ export const deleteGlossaryTerm: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "DeleteGlossaryTerm",
 }));
 export type DeleteGlueIdentityCenterConfigurationError =
   | AccessDeniedException
@@ -20975,6 +21050,7 @@ export const deleteGlueIdentityCenterConfiguration: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteGlueIdentityCenterConfiguration",
 }));
 export type DeleteIntegrationError =
   | AccessDeniedException
@@ -21013,6 +21089,7 @@ export const deleteIntegration: API.OperationMethod<
     InvalidStateException,
     ValidationException,
   ],
+  operationName: "DeleteIntegration",
 }));
 export type DeleteIntegrationResourcePropertyError =
   | AccessDeniedException
@@ -21043,6 +21120,7 @@ export const deleteIntegrationResourceProperty: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteIntegrationResourceProperty",
 }));
 export type DeleteIntegrationTablePropertiesError =
   | AccessDeniedException
@@ -21073,6 +21151,7 @@ export const deleteIntegrationTableProperties: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteIntegrationTableProperties",
 }));
 export type DeleteJobError =
   | InternalServiceException
@@ -21096,6 +21175,7 @@ export const deleteJob: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteJob",
 }));
 export type DeleteMLTransformError =
   | EntityNotFoundException
@@ -21125,6 +21205,7 @@ export const deleteMLTransform: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteMLTransform",
 }));
 export type DeletePartitionError =
   | EntityNotFoundException
@@ -21149,6 +21230,7 @@ export const deletePartition: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeletePartition",
 }));
 export type DeletePartitionIndexError =
   | ConflictException
@@ -21177,6 +21259,7 @@ export const deletePartitionIndex: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeletePartitionIndex",
 }));
 export type DeleteRegistryError =
   | AccessDeniedException
@@ -21201,6 +21284,7 @@ export const deleteRegistry: API.OperationMethod<
     EntityNotFoundException,
     InvalidInputException,
   ],
+  operationName: "DeleteRegistry",
 }));
 export type DeleteResourcePolicyError =
   | ConditionCheckFailureException
@@ -21227,6 +21311,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteSchemaError =
   | AccessDeniedException
@@ -21251,6 +21336,7 @@ export const deleteSchema: API.OperationMethod<
     EntityNotFoundException,
     InvalidInputException,
   ],
+  operationName: "DeleteSchema",
 }));
 export type DeleteSchemaVersionsError =
   | AccessDeniedException
@@ -21281,6 +21367,7 @@ export const deleteSchemaVersions: API.OperationMethod<
     EntityNotFoundException,
     InvalidInputException,
   ],
+  operationName: "DeleteSchemaVersions",
 }));
 export type DeleteSecurityConfigurationError =
   | EntityNotFoundException
@@ -21305,6 +21392,7 @@ export const deleteSecurityConfiguration: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteSecurityConfiguration",
 }));
 export type DeleteSessionError =
   | AccessDeniedException
@@ -21333,6 +21421,7 @@ export const deleteSession: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteSession",
 }));
 export type DeleteTableError =
   | ConcurrentModificationException
@@ -21375,6 +21464,7 @@ export const deleteTable: API.OperationMethod<
     OperationTimeoutException,
     ResourceNotReadyException,
   ],
+  operationName: "DeleteTable",
 }));
 export type DeleteTableOptimizerError =
   | AccessDeniedException
@@ -21401,6 +21491,7 @@ export const deleteTableOptimizer: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "DeleteTableOptimizer",
 }));
 export type DeleteTableVersionError =
   | EntityNotFoundException
@@ -21425,6 +21516,7 @@ export const deleteTableVersion: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteTableVersion",
 }));
 export type DeleteTriggerError =
   | ConcurrentModificationException
@@ -21450,6 +21542,7 @@ export const deleteTrigger: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteTrigger",
 }));
 export type DeleteUsageProfileError =
   | InternalServiceException
@@ -21474,6 +21567,7 @@ export const deleteUsageProfile: API.OperationMethod<
     OperationNotSupportedException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteUsageProfile",
 }));
 export type DeleteUserDefinedFunctionError =
   | EntityNotFoundException
@@ -21498,6 +21592,7 @@ export const deleteUserDefinedFunction: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteUserDefinedFunction",
 }));
 export type DeleteWorkflowError =
   | ConcurrentModificationException
@@ -21522,6 +21617,7 @@ export const deleteWorkflow: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteWorkflow",
 }));
 export type DescribeConnectionTypeError =
   | AccessDeniedException
@@ -21548,6 +21644,7 @@ export const describeConnectionType: API.OperationMethod<
     InvalidInputException,
     ValidationException,
   ],
+  operationName: "DescribeConnectionType",
 }));
 export type DescribeEntityError =
   | AccessDeniedException
@@ -21595,6 +21692,7 @@ export const describeEntity: API.OperationMethod<
     OperationTimeoutException,
     ValidationException,
   ],
+  operationName: "DescribeEntity",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -21634,6 +21732,7 @@ export const describeInboundIntegrations: API.OperationMethod<
     TargetResourceNotFound,
     ValidationException,
   ],
+  operationName: "DescribeInboundIntegrations",
 }));
 export type DescribeIntegrationsError =
   | AccessDeniedException
@@ -21664,6 +21763,7 @@ export const describeIntegrations: API.OperationMethod<
     InvalidInputException,
     ValidationException,
   ],
+  operationName: "DescribeIntegrations",
 }));
 export type DisassociateGlossaryTermsError =
   | AccessDeniedException
@@ -21692,6 +21792,7 @@ export const disassociateGlossaryTerms: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "DisassociateGlossaryTerms",
 }));
 export type GetAssetError =
   | AccessDeniedException
@@ -21718,6 +21819,7 @@ export const getAsset: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "GetAsset",
 }));
 export type GetAssetTypeError =
   | AccessDeniedException
@@ -21744,6 +21846,7 @@ export const getAssetType: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "GetAssetType",
 }));
 export type GetBlueprintError =
   | EntityNotFoundException
@@ -21768,6 +21871,7 @@ export const getBlueprint: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetBlueprint",
 }));
 export type GetBlueprintRunError =
   | EntityNotFoundException
@@ -21790,6 +21894,7 @@ export const getBlueprintRun: API.OperationMethod<
     InternalServiceException,
     OperationTimeoutException,
   ],
+  operationName: "GetBlueprintRun",
 }));
 export type GetBlueprintRunsError =
   | EntityNotFoundException
@@ -21829,6 +21934,7 @@ export const getBlueprintRuns: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetBlueprintRuns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -21866,6 +21972,7 @@ export const getCatalog: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetCatalog",
 }));
 export type GetCatalogImportStatusError =
   | InternalServiceException
@@ -21883,6 +21990,7 @@ export const getCatalogImportStatus: API.OperationMethod<
   input: GetCatalogImportStatusRequest,
   output: GetCatalogImportStatusResponse,
   errors: [InternalServiceException, OperationTimeoutException],
+  operationName: "GetCatalogImportStatus",
 }));
 export type GetCatalogsError =
   | AccessDeniedException
@@ -21915,6 +22023,7 @@ export const getCatalogs: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetCatalogs",
 }));
 export type GetClassifierError =
   | EntityNotFoundException
@@ -21932,6 +22041,7 @@ export const getClassifier: API.OperationMethod<
   input: GetClassifierRequest,
   output: GetClassifierResponse,
   errors: [EntityNotFoundException, OperationTimeoutException],
+  operationName: "GetClassifier",
 }));
 export type GetClassifiersError = OperationTimeoutException | CommonErrors;
 /**
@@ -21961,6 +22071,7 @@ export const getClassifiers: API.OperationMethod<
   input: GetClassifiersRequest,
   output: GetClassifiersResponse,
   errors: [OperationTimeoutException],
+  operationName: "GetClassifiers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -21994,6 +22105,7 @@ export const getColumnStatisticsForPartition: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetColumnStatisticsForPartition",
 }));
 export type GetColumnStatisticsForTableError =
   | EntityNotFoundException
@@ -22022,6 +22134,7 @@ export const getColumnStatisticsForTable: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetColumnStatisticsForTable",
 }));
 export type GetColumnStatisticsTaskRunError =
   | EntityNotFoundException
@@ -22044,6 +22157,7 @@ export const getColumnStatisticsTaskRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetColumnStatisticsTaskRun",
 }));
 export type GetColumnStatisticsTaskRunsError =
   | OperationTimeoutException
@@ -22075,6 +22189,7 @@ export const getColumnStatisticsTaskRuns: API.OperationMethod<
   input: GetColumnStatisticsTaskRunsRequest,
   output: GetColumnStatisticsTaskRunsResponse,
   errors: [OperationTimeoutException],
+  operationName: "GetColumnStatisticsTaskRuns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22102,6 +22217,7 @@ export const getColumnStatisticsTaskSettings: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetColumnStatisticsTaskSettings",
 }));
 export type GetConnectionError =
   | EntityNotFoundException
@@ -22126,6 +22242,7 @@ export const getConnection: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetConnection",
 }));
 export type GetConnectionsError =
   | EntityNotFoundException
@@ -22165,6 +22282,7 @@ export const getConnections: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetConnections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22187,6 +22305,7 @@ export const getCrawler: API.OperationMethod<
   input: GetCrawlerRequest,
   output: GetCrawlerResponse,
   errors: [EntityNotFoundException, OperationTimeoutException],
+  operationName: "GetCrawler",
 }));
 export type GetCrawlerMetricsError = OperationTimeoutException | CommonErrors;
 /**
@@ -22216,6 +22335,7 @@ export const getCrawlerMetrics: API.OperationMethod<
   input: GetCrawlerMetricsRequest,
   output: GetCrawlerMetricsResponse,
   errors: [OperationTimeoutException],
+  operationName: "GetCrawlerMetrics",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22251,6 +22371,7 @@ export const getCrawlers: API.OperationMethod<
   input: GetCrawlersRequest,
   output: GetCrawlersResponse,
   errors: [OperationTimeoutException],
+  operationName: "GetCrawlers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22282,6 +22403,7 @@ export const getCustomEntityType: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetCustomEntityType",
 }));
 export type GetDashboardUrlError =
   | AccessDeniedException
@@ -22308,6 +22430,7 @@ export const getDashboardUrl: API.OperationMethod<
     InvalidInputException,
     OperationNotSupportedException,
   ],
+  operationName: "GetDashboardUrl",
 }));
 export type GetDatabaseError =
   | EntityNotFoundException
@@ -22338,6 +22461,7 @@ export const getDatabase: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetDatabase",
 }));
 export type GetDatabasesError =
   | EntityNotFoundException
@@ -22383,6 +22507,7 @@ export const getDatabases: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetDatabases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22410,6 +22535,7 @@ export const getDataCatalogEncryptionSettings: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetDataCatalogEncryptionSettings",
 }));
 export type GetDataflowGraphError =
   | InternalServiceException
@@ -22432,6 +22558,7 @@ export const getDataflowGraph: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetDataflowGraph",
 }));
 export type GetDataQualityModelError =
   | EntityNotFoundException
@@ -22456,6 +22583,7 @@ export const getDataQualityModel: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetDataQualityModel",
 }));
 export type GetDataQualityModelResultError =
   | EntityNotFoundException
@@ -22480,6 +22608,7 @@ export const getDataQualityModelResult: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetDataQualityModelResult",
 }));
 export type GetDataQualityResultError =
   | EntityNotFoundException
@@ -22504,6 +22633,7 @@ export const getDataQualityResult: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetDataQualityResult",
 }));
 export type GetDataQualityRuleRecommendationRunError =
   | EntityNotFoundException
@@ -22528,6 +22658,7 @@ export const getDataQualityRuleRecommendationRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetDataQualityRuleRecommendationRun",
 }));
 export type GetDataQualityRulesetError =
   | EntityNotFoundException
@@ -22552,6 +22683,7 @@ export const getDataQualityRuleset: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetDataQualityRuleset",
 }));
 export type GetDataQualityRulesetEvaluationRunError =
   | EntityNotFoundException
@@ -22576,6 +22708,7 @@ export const getDataQualityRulesetEvaluationRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetDataQualityRulesetEvaluationRun",
 }));
 export type GetDevEndpointError =
   | EntityNotFoundException
@@ -22604,6 +22737,7 @@ export const getDevEndpoint: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetDevEndpoint",
 }));
 export type GetDevEndpointsError =
   | EntityNotFoundException
@@ -22647,6 +22781,7 @@ export const getDevEndpoints: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetDevEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22686,6 +22821,7 @@ export const getEntityRecords: API.OperationMethod<
     OperationTimeoutException,
     ValidationException,
   ],
+  operationName: "GetEntityRecords",
 }));
 export type GetFormTypeError =
   | AccessDeniedException
@@ -22712,6 +22848,7 @@ export const getFormType: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "GetFormType",
 }));
 export type GetGlossaryError =
   | AccessDeniedException
@@ -22736,6 +22873,7 @@ export const getGlossary: API.OperationMethod<
     InternalServiceException,
     ThrottlingException,
   ],
+  operationName: "GetGlossary",
 }));
 export type GetGlossaryTermError =
   | AccessDeniedException
@@ -22760,6 +22898,7 @@ export const getGlossaryTerm: API.OperationMethod<
     InternalServiceException,
     ThrottlingException,
   ],
+  operationName: "GetGlossaryTerm",
 }));
 export type GetGlueIdentityCenterConfigurationError =
   | AccessDeniedException
@@ -22789,6 +22928,7 @@ export const getGlueIdentityCenterConfiguration: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetGlueIdentityCenterConfiguration",
 }));
 export type GetIntegrationResourcePropertyError =
   | AccessDeniedException
@@ -22819,6 +22959,7 @@ export const getIntegrationResourceProperty: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetIntegrationResourceProperty",
 }));
 export type GetIntegrationTablePropertiesError =
   | AccessDeniedException
@@ -22849,6 +22990,7 @@ export const getIntegrationTableProperties: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetIntegrationTableProperties",
 }));
 export type GetJobError =
   | EntityNotFoundException
@@ -22873,6 +23015,7 @@ export const getJob: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetJob",
 }));
 export type GetJobBookmarkError =
   | EntityNotFoundException
@@ -22907,6 +23050,7 @@ export const getJobBookmark: API.OperationMethod<
     OperationTimeoutException,
     ValidationException,
   ],
+  operationName: "GetJobBookmark",
 }));
 export type GetJobRunError =
   | EntityNotFoundException
@@ -22931,6 +23075,7 @@ export const getJobRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetJobRun",
 }));
 export type GetJobRunsError =
   | EntityNotFoundException
@@ -22972,6 +23117,7 @@ export const getJobRuns: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetJobRuns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -23017,6 +23163,7 @@ export const getJobs: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -23047,6 +23194,7 @@ export const getMapping: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetMapping",
 }));
 export type GetMaterializedViewRefreshTaskRunError =
   | AccessDeniedException
@@ -23071,6 +23219,7 @@ export const getMaterializedViewRefreshTaskRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetMaterializedViewRefreshTaskRun",
 }));
 export type GetMLTaskRunError =
   | EntityNotFoundException
@@ -23099,6 +23248,7 @@ export const getMLTaskRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetMLTaskRun",
 }));
 export type GetMLTaskRunsError =
   | EntityNotFoundException
@@ -23144,6 +23294,7 @@ export const getMLTaskRuns: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetMLTaskRuns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -23177,6 +23328,7 @@ export const getMLTransform: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetMLTransform",
 }));
 export type GetMLTransformsError =
   | EntityNotFoundException
@@ -23220,6 +23372,7 @@ export const getMLTransforms: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetMLTransforms",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -23255,6 +23408,7 @@ export const getPartition: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetPartition",
 }));
 export type GetPartitionIndexesError =
   | ConflictException
@@ -23296,6 +23450,7 @@ export const getPartitionIndexes: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetPartitionIndexes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -23350,6 +23505,7 @@ export const getPartitions: API.OperationMethod<
     OperationTimeoutException,
     ResourceNotReadyException,
   ],
+  operationName: "GetPartitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -23377,6 +23533,7 @@ export const getPlan: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetPlan",
 }));
 export type GetRegistryError =
   | AccessDeniedException
@@ -23401,6 +23558,7 @@ export const getRegistry: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  operationName: "GetRegistry",
 }));
 export type GetResourcePoliciesError =
   | GlueEncryptionException
@@ -23446,6 +23604,7 @@ export const getResourcePolicies: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetResourcePolicies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -23476,6 +23635,7 @@ export const getResourcePolicy: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type GetSchemaError =
   | AccessDeniedException
@@ -23500,6 +23660,7 @@ export const getSchema: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  operationName: "GetSchema",
 }));
 export type GetSchemaByDefinitionError =
   | AccessDeniedException
@@ -23524,6 +23685,7 @@ export const getSchemaByDefinition: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  operationName: "GetSchemaByDefinition",
 }));
 export type GetSchemaVersionError =
   | AccessDeniedException
@@ -23548,6 +23710,7 @@ export const getSchemaVersion: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  operationName: "GetSchemaVersion",
 }));
 export type GetSchemaVersionsDiffError =
   | AccessDeniedException
@@ -23574,6 +23737,7 @@ export const getSchemaVersionsDiff: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  operationName: "GetSchemaVersionsDiff",
 }));
 export type GetSecurityConfigurationError =
   | EntityNotFoundException
@@ -23598,6 +23762,7 @@ export const getSecurityConfiguration: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetSecurityConfiguration",
 }));
 export type GetSecurityConfigurationsError =
   | EntityNotFoundException
@@ -23637,6 +23802,7 @@ export const getSecurityConfigurations: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetSecurityConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -23669,6 +23835,7 @@ export const getSession: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetSession",
 }));
 export type GetSessionEndpointError =
   | AccessDeniedException
@@ -23699,6 +23866,7 @@ export const getSessionEndpoint: API.OperationMethod<
     OperationNotSupportedException,
     OperationTimeoutException,
   ],
+  operationName: "GetSessionEndpoint",
 }));
 export type GetStatementError =
   | AccessDeniedException
@@ -23727,6 +23895,7 @@ export const getStatement: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetStatement",
 }));
 export type GetTableError =
   | EntityNotFoundException
@@ -23760,6 +23929,7 @@ export const getTable: API.OperationMethod<
     OperationTimeoutException,
     ResourceNotReadyException,
   ],
+  operationName: "GetTable",
 }));
 export type GetTableOptimizerError =
   | AccessDeniedException
@@ -23786,6 +23956,7 @@ export const getTableOptimizer: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "GetTableOptimizer",
 }));
 export type GetTablesError =
   | EntityNotFoundException
@@ -23832,6 +24003,7 @@ export const getTables: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetTables",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -23863,6 +24035,7 @@ export const getTableVersion: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetTableVersion",
 }));
 export type GetTableVersionsError =
   | EntityNotFoundException
@@ -23905,6 +24078,7 @@ export const getTableVersions: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetTableVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -23934,6 +24108,7 @@ export const getTags: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetTags",
 }));
 export type GetTriggerError =
   | EntityNotFoundException
@@ -23958,6 +24133,7 @@ export const getTrigger: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetTrigger",
 }));
 export type GetTriggersError =
   | EntityNotFoundException
@@ -23997,6 +24173,7 @@ export const getTriggers: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetTriggers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -24038,6 +24215,7 @@ export const getUnfilteredPartitionMetadata: API.OperationMethod<
     OperationTimeoutException,
     PermissionTypeMismatchException,
   ],
+  operationName: "GetUnfilteredPartitionMetadata",
 }));
 export type GetUnfilteredPartitionsMetadataError =
   | EntityNotFoundException
@@ -24088,6 +24266,7 @@ export const getUnfilteredPartitionsMetadata: API.OperationMethod<
     OperationTimeoutException,
     PermissionTypeMismatchException,
   ],
+  operationName: "GetUnfilteredPartitionsMetadata",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -24127,6 +24306,7 @@ export const getUnfilteredTableMetadata: API.OperationMethod<
     OperationTimeoutException,
     PermissionTypeMismatchException,
   ],
+  operationName: "GetUnfilteredTableMetadata",
 }));
 export type GetUsageProfileError =
   | EntityNotFoundException
@@ -24153,6 +24333,7 @@ export const getUsageProfile: API.OperationMethod<
     OperationNotSupportedException,
     OperationTimeoutException,
   ],
+  operationName: "GetUsageProfile",
 }));
 export type GetUserDefinedFunctionError =
   | EntityNotFoundException
@@ -24179,6 +24360,7 @@ export const getUserDefinedFunction: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetUserDefinedFunction",
 }));
 export type GetUserDefinedFunctionsError =
   | EntityNotFoundException
@@ -24220,6 +24402,7 @@ export const getUserDefinedFunctions: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetUserDefinedFunctions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -24249,6 +24432,7 @@ export const getWorkflow: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetWorkflow",
 }));
 export type GetWorkflowRunError =
   | EntityNotFoundException
@@ -24273,6 +24457,7 @@ export const getWorkflowRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetWorkflowRun",
 }));
 export type GetWorkflowRunPropertiesError =
   | EntityNotFoundException
@@ -24297,6 +24482,7 @@ export const getWorkflowRunProperties: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetWorkflowRunProperties",
 }));
 export type GetWorkflowRunsError =
   | EntityNotFoundException
@@ -24336,6 +24522,7 @@ export const getWorkflowRuns: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetWorkflowRuns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -24359,6 +24546,7 @@ export const importCatalogToGlue: API.OperationMethod<
   input: ImportCatalogToGlueRequest,
   output: ImportCatalogToGlueResponse,
   errors: [InternalServiceException, OperationTimeoutException],
+  operationName: "ImportCatalogToGlue",
 }));
 export type ListAssetTypesError =
   | AccessDeniedException
@@ -24398,6 +24586,7 @@ export const listAssetTypes: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "ListAssetTypes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -24441,6 +24630,7 @@ export const listBlueprints: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListBlueprints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -24478,6 +24668,7 @@ export const listColumnStatisticsTaskRuns: API.OperationMethod<
   input: ListColumnStatisticsTaskRunsRequest,
   output: ListColumnStatisticsTaskRunsResponse,
   errors: [OperationTimeoutException],
+  operationName: "ListColumnStatisticsTaskRuns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -24517,6 +24708,7 @@ export const listConnectionTypes: API.OperationMethod<
   input: ListConnectionTypesRequest,
   output: ListConnectionTypesResponse,
   errors: [AccessDeniedException, InternalServiceException],
+  operationName: "ListConnectionTypes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -24558,6 +24750,7 @@ export const listCrawlers: API.OperationMethod<
   input: ListCrawlersRequest,
   output: ListCrawlersResponse,
   errors: [OperationTimeoutException],
+  operationName: "ListCrawlers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -24595,6 +24788,7 @@ export const listCrawls: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListCrawls",
 }));
 export type ListCustomEntityTypesError =
   | InternalServiceException
@@ -24632,6 +24826,7 @@ export const listCustomEntityTypes: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListCustomEntityTypes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -24674,6 +24869,7 @@ export const listDataQualityResults: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListDataQualityResults",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -24716,6 +24912,7 @@ export const listDataQualityRuleRecommendationRuns: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListDataQualityRuleRecommendationRuns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -24758,6 +24955,7 @@ export const listDataQualityRulesetEvaluationRuns: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListDataQualityRulesetEvaluationRuns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -24802,6 +25000,7 @@ export const listDataQualityRulesets: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListDataQualityRulesets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -24824,6 +25023,7 @@ export const listDataQualityStatisticAnnotations: API.OperationMethod<
   input: ListDataQualityStatisticAnnotationsRequest,
   output: ListDataQualityStatisticAnnotationsResponse,
   errors: [InternalServiceException, InvalidInputException],
+  operationName: "ListDataQualityStatisticAnnotations",
 }));
 export type ListDataQualityStatisticsError =
   | EntityNotFoundException
@@ -24846,6 +25046,7 @@ export const listDataQualityStatistics: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  operationName: "ListDataQualityStatistics",
 }));
 export type ListDevEndpointsError =
   | EntityNotFoundException
@@ -24891,6 +25092,7 @@ export const listDevEndpoints: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListDevEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -24941,6 +25143,7 @@ export const listEntities: API.OperationMethod<
     OperationTimeoutException,
     ValidationException,
   ],
+  operationName: "ListEntities",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -24985,6 +25188,7 @@ export const listFormTypes: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "ListFormTypes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -25030,6 +25234,7 @@ export const listGlossaries: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "ListGlossaries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -25075,6 +25280,7 @@ export const listGlossaryTerms: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "ListGlossaryTerms",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -25111,6 +25317,7 @@ export const listIntegrationResourceProperties: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListIntegrationResourceProperties",
 }));
 export type ListIterableFormsError =
   | AccessDeniedException
@@ -25152,6 +25359,7 @@ export const listIterableForms: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "ListIterableForms",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -25201,6 +25409,7 @@ export const listJobs: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -25244,6 +25453,7 @@ export const listMaterializedViewRefreshTaskRuns: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListMaterializedViewRefreshTaskRuns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -25292,6 +25502,7 @@ export const listMLTransforms: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListMLTransforms",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -25334,6 +25545,7 @@ export const listRegistries: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  operationName: "ListRegistries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -25381,6 +25593,7 @@ export const listSchemas: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  operationName: "ListSchemas",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -25426,6 +25639,7 @@ export const listSchemaVersions: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  operationName: "ListSchemaVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -25471,6 +25685,7 @@ export const listSessions: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListSessions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -25504,6 +25719,7 @@ export const listStatements: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListStatements",
 }));
 export type ListTableOptimizerRunsError =
   | AccessDeniedException
@@ -25547,6 +25763,7 @@ export const listTableOptimizerRuns: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTableOptimizerRuns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -25596,6 +25813,7 @@ export const listTriggers: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListTriggers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -25641,6 +25859,7 @@ export const listUsageProfiles: API.OperationMethod<
     OperationNotSupportedException,
     OperationTimeoutException,
   ],
+  operationName: "ListUsageProfiles",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -25684,6 +25903,7 @@ export const listWorkflows: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListWorkflows",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -25728,6 +25948,7 @@ export const modifyIntegration: API.OperationMethod<
     InvalidStateException,
     ValidationException,
   ],
+  operationName: "ModifyIntegration",
 }));
 export type PutAssetError =
   | AccessDeniedException
@@ -25756,6 +25977,7 @@ export const putAsset: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "PutAsset",
 }));
 export type PutAssetTypeError =
   | AccessDeniedException
@@ -25782,6 +26004,7 @@ export const putAssetType: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "PutAssetType",
 }));
 export type PutAttachmentError =
   | AccessDeniedException
@@ -25810,6 +26033,7 @@ export const putAttachment: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "PutAttachment",
 }));
 export type PutDataCatalogEncryptionSettingsError =
   | InternalServiceException
@@ -25833,6 +26057,7 @@ export const putDataCatalogEncryptionSettings: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "PutDataCatalogEncryptionSettings",
 }));
 export type PutDataQualityProfileAnnotationError =
   | EntityNotFoundException
@@ -25855,6 +26080,7 @@ export const putDataQualityProfileAnnotation: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  operationName: "PutDataQualityProfileAnnotation",
 }));
 export type PutFormTypeError =
   | AccessDeniedException
@@ -25881,6 +26107,7 @@ export const putFormType: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "PutFormType",
 }));
 export type PutResourcePolicyError =
   | ConditionCheckFailureException
@@ -25907,6 +26134,7 @@ export const putResourcePolicy: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type PutSchemaVersionMetadataError =
   | AccessDeniedException
@@ -25933,6 +26161,7 @@ export const putSchemaVersionMetadata: API.OperationMethod<
     InvalidInputException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "PutSchemaVersionMetadata",
 }));
 export type PutWorkflowRunPropertiesError =
   | AlreadyExistsException
@@ -25963,6 +26192,7 @@ export const putWorkflowRunProperties: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "PutWorkflowRunProperties",
 }));
 export type QuerySchemaVersionMetadataError =
   | AccessDeniedException
@@ -25985,6 +26215,7 @@ export const querySchemaVersionMetadata: API.OperationMethod<
     EntityNotFoundException,
     InvalidInputException,
   ],
+  operationName: "QuerySchemaVersionMetadata",
 }));
 export type RegisterConnectionTypeError =
   | AccessDeniedException
@@ -26017,6 +26248,7 @@ export const registerConnectionType: API.OperationMethod<
     ResourceNumberLimitExceededException,
     ValidationException,
   ],
+  operationName: "RegisterConnectionType",
 }));
 export type RegisterSchemaVersionError =
   | AccessDeniedException
@@ -26049,6 +26281,7 @@ export const registerSchemaVersion: API.OperationMethod<
     InvalidInputException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "RegisterSchemaVersion",
 }));
 export type RemoveSchemaVersionMetadataError =
   | AccessDeniedException
@@ -26071,6 +26304,7 @@ export const removeSchemaVersionMetadata: API.OperationMethod<
     EntityNotFoundException,
     InvalidInputException,
   ],
+  operationName: "RemoveSchemaVersionMetadata",
 }));
 export type ResetJobBookmarkError =
   | EntityNotFoundException
@@ -26103,6 +26337,7 @@ export const resetJobBookmark: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ResetJobBookmark",
 }));
 export type ResumeWorkflowRunError =
   | ConcurrentRunsExceededException
@@ -26131,6 +26366,7 @@ export const resumeWorkflowRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ResumeWorkflowRun",
 }));
 export type RunStatementError =
   | AccessDeniedException
@@ -26167,6 +26403,7 @@ export const runStatement: API.OperationMethod<
     SessionBusyException,
     ValidationException,
   ],
+  operationName: "RunStatement",
 }));
 export type SearchAssetsError =
   | AccessDeniedException
@@ -26206,6 +26443,7 @@ export const searchAssets: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "SearchAssets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -26251,6 +26489,7 @@ export const searchTables: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "SearchTables",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -26284,6 +26523,7 @@ export const startBlueprintRun: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "StartBlueprintRun",
 }));
 export type StartColumnStatisticsTaskRunError =
   | AccessDeniedException
@@ -26312,6 +26552,7 @@ export const startColumnStatisticsTaskRun: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "StartColumnStatisticsTaskRun",
 }));
 export type StartColumnStatisticsTaskRunScheduleError =
   | AccessDeniedException
@@ -26336,6 +26577,7 @@ export const startColumnStatisticsTaskRunSchedule: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "StartColumnStatisticsTaskRunSchedule",
 }));
 export type StartCrawlerError =
   | CrawlerRunningException
@@ -26360,6 +26602,7 @@ export const startCrawler: API.OperationMethod<
     EntityNotFoundException,
     OperationTimeoutException,
   ],
+  operationName: "StartCrawler",
 }));
 export type StartCrawlerScheduleError =
   | EntityNotFoundException
@@ -26388,6 +26631,7 @@ export const startCrawlerSchedule: API.OperationMethod<
     SchedulerRunningException,
     SchedulerTransitioningException,
   ],
+  operationName: "StartCrawlerSchedule",
 }));
 export type StartDataQualityRuleRecommendationRunError =
   | ConflictException
@@ -26414,6 +26658,7 @@ export const startDataQualityRuleRecommendationRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "StartDataQualityRuleRecommendationRun",
 }));
 export type StartDataQualityRulesetEvaluationRunError =
   | ConflictException
@@ -26440,6 +26685,7 @@ export const startDataQualityRulesetEvaluationRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "StartDataQualityRulesetEvaluationRun",
 }));
 export type StartExportLabelsTaskRunError =
   | EntityNotFoundException
@@ -26472,6 +26718,7 @@ export const startExportLabelsTaskRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "StartExportLabelsTaskRun",
 }));
 export type StartImportLabelsTaskRunError =
   | EntityNotFoundException
@@ -26522,6 +26769,7 @@ export const startImportLabelsTaskRun: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "StartImportLabelsTaskRun",
 }));
 export type StartJobRunError =
   | ConcurrentRunsExceededException
@@ -26550,6 +26798,7 @@ export const startJobRun: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "StartJobRun",
 }));
 export type StartMaterializedViewRefreshTaskRunError =
   | AccessDeniedException
@@ -26578,6 +26827,7 @@ export const startMaterializedViewRefreshTaskRun: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "StartMaterializedViewRefreshTaskRun",
 }));
 export type StartMLEvaluationTaskRunError =
   | ConcurrentRunsExceededException
@@ -26613,6 +26863,7 @@ export const startMLEvaluationTaskRun: API.OperationMethod<
     MLTransformNotReadyException,
     OperationTimeoutException,
   ],
+  operationName: "StartMLEvaluationTaskRun",
 }));
 export type StartMLLabelingSetGenerationTaskRunError =
   | ConcurrentRunsExceededException
@@ -26655,6 +26906,7 @@ export const startMLLabelingSetGenerationTaskRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "StartMLLabelingSetGenerationTaskRun",
 }));
 export type StartTriggerError =
   | ConcurrentRunsExceededException
@@ -26685,6 +26937,7 @@ export const startTrigger: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "StartTrigger",
 }));
 export type StartWorkflowRunError =
   | ConcurrentRunsExceededException
@@ -26713,6 +26966,7 @@ export const startWorkflowRun: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "StartWorkflowRun",
 }));
 export type StopColumnStatisticsTaskRunError =
   | ColumnStatisticsTaskNotRunningException
@@ -26737,6 +26991,7 @@ export const stopColumnStatisticsTaskRun: API.OperationMethod<
     EntityNotFoundException,
     OperationTimeoutException,
   ],
+  operationName: "StopColumnStatisticsTaskRun",
 }));
 export type StopColumnStatisticsTaskRunScheduleError =
   | EntityNotFoundException
@@ -26759,6 +27014,7 @@ export const stopColumnStatisticsTaskRunSchedule: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "StopColumnStatisticsTaskRunSchedule",
 }));
 export type StopCrawlerError =
   | CrawlerNotRunningException
@@ -26783,6 +27039,7 @@ export const stopCrawler: API.OperationMethod<
     EntityNotFoundException,
     OperationTimeoutException,
   ],
+  operationName: "StopCrawler",
 }));
 export type StopCrawlerScheduleError =
   | EntityNotFoundException
@@ -26809,6 +27066,7 @@ export const stopCrawlerSchedule: API.OperationMethod<
     SchedulerNotRunningException,
     SchedulerTransitioningException,
   ],
+  operationName: "StopCrawlerSchedule",
 }));
 export type StopMaterializedViewRefreshTaskRunError =
   | AccessDeniedException
@@ -26835,6 +27093,7 @@ export const stopMaterializedViewRefreshTaskRun: API.OperationMethod<
     MaterializedViewRefreshTaskStoppingException,
     OperationTimeoutException,
   ],
+  operationName: "StopMaterializedViewRefreshTaskRun",
 }));
 export type StopSessionError =
   | AccessDeniedException
@@ -26863,6 +27122,7 @@ export const stopSession: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "StopSession",
 }));
 export type StopTriggerError =
   | ConcurrentModificationException
@@ -26889,6 +27149,7 @@ export const stopTrigger: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "StopTrigger",
 }));
 export type StopWorkflowRunError =
   | EntityNotFoundException
@@ -26915,6 +27176,7 @@ export const stopWorkflowRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "StopWorkflowRun",
 }));
 export type TagResourceError =
   | EntityNotFoundException
@@ -26941,6 +27203,7 @@ export const tagResource: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "TagResource",
 }));
 export type TestConnectionError =
   | AccessDeniedException
@@ -26979,6 +27242,7 @@ export const testConnection: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "TestConnection",
 }));
 export type UntagResourceError =
   | EntityNotFoundException
@@ -27003,6 +27267,7 @@ export const untagResource: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAssetError =
   | AccessDeniedException
@@ -27031,6 +27296,7 @@ export const updateAsset: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "UpdateAsset",
 }));
 export type UpdateBlueprintError =
   | ConcurrentModificationException
@@ -27059,6 +27325,7 @@ export const updateBlueprint: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UpdateBlueprint",
 }));
 export type UpdateCatalogError =
   | AccessDeniedException
@@ -27091,6 +27358,7 @@ export const updateCatalog: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UpdateCatalog",
 }));
 export type UpdateClassifierError =
   | EntityNotFoundException
@@ -27117,6 +27385,7 @@ export const updateClassifier: API.OperationMethod<
     OperationTimeoutException,
     VersionMismatchException,
   ],
+  operationName: "UpdateClassifier",
 }));
 export type UpdateColumnStatisticsForPartitionError =
   | EntityNotFoundException
@@ -27145,6 +27414,7 @@ export const updateColumnStatisticsForPartition: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UpdateColumnStatisticsForPartition",
 }));
 export type UpdateColumnStatisticsForTableError =
   | EntityNotFoundException
@@ -27173,6 +27443,7 @@ export const updateColumnStatisticsForTable: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UpdateColumnStatisticsForTable",
 }));
 export type UpdateColumnStatisticsTaskSettingsError =
   | AccessDeniedException
@@ -27199,6 +27470,7 @@ export const updateColumnStatisticsTaskSettings: API.OperationMethod<
     OperationTimeoutException,
     VersionMismatchException,
   ],
+  operationName: "UpdateColumnStatisticsTaskSettings",
 }));
 export type UpdateConnectionError =
   | EntityNotFoundException
@@ -27223,6 +27495,7 @@ export const updateConnection: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UpdateConnection",
 }));
 export type UpdateCrawlerError =
   | CrawlerRunningException
@@ -27251,6 +27524,7 @@ export const updateCrawler: API.OperationMethod<
     OperationTimeoutException,
     VersionMismatchException,
   ],
+  operationName: "UpdateCrawler",
 }));
 export type UpdateCrawlerScheduleError =
   | EntityNotFoundException
@@ -27277,6 +27551,7 @@ export const updateCrawlerSchedule: API.OperationMethod<
     SchedulerTransitioningException,
     VersionMismatchException,
   ],
+  operationName: "UpdateCrawlerSchedule",
 }));
 export type UpdateDatabaseError =
   | AlreadyExistsException
@@ -27311,6 +27586,7 @@ export const updateDatabase: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UpdateDatabase",
 }));
 export type UpdateDataQualityRulesetError =
   | AlreadyExistsException
@@ -27341,6 +27617,7 @@ export const updateDataQualityRuleset: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "UpdateDataQualityRuleset",
 }));
 export type UpdateDevEndpointError =
   | EntityNotFoundException
@@ -27367,6 +27644,7 @@ export const updateDevEndpoint: API.OperationMethod<
     OperationTimeoutException,
     ValidationException,
   ],
+  operationName: "UpdateDevEndpoint",
 }));
 export type UpdateGlossaryError =
   | AccessDeniedException
@@ -27397,6 +27675,7 @@ export const updateGlossary: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "UpdateGlossary",
 }));
 export type UpdateGlossaryTermError =
   | AccessDeniedException
@@ -27427,6 +27706,7 @@ export const updateGlossaryTerm: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  operationName: "UpdateGlossaryTerm",
 }));
 export type UpdateGlueIdentityCenterConfigurationError =
   | AccessDeniedException
@@ -27455,6 +27735,7 @@ export const updateGlueIdentityCenterConfiguration: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UpdateGlueIdentityCenterConfiguration",
 }));
 export type UpdateIntegrationResourcePropertyError =
   | AccessDeniedException
@@ -27485,6 +27766,7 @@ export const updateIntegrationResourceProperty: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateIntegrationResourceProperty",
 }));
 export type UpdateIntegrationTablePropertiesError =
   | AccessDeniedException
@@ -27517,6 +27799,7 @@ export const updateIntegrationTableProperties: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateIntegrationTableProperties",
 }));
 export type UpdateJobError =
   | ConcurrentModificationException
@@ -27543,6 +27826,7 @@ export const updateJob: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UpdateJob",
 }));
 export type UpdateJobFromSourceControlError =
   | AccessDeniedException
@@ -27575,6 +27859,7 @@ export const updateJobFromSourceControl: API.OperationMethod<
     OperationTimeoutException,
     ValidationException,
   ],
+  operationName: "UpdateJobFromSourceControl",
 }));
 export type UpdateMLTransformError =
   | AccessDeniedException
@@ -27605,6 +27890,7 @@ export const updateMLTransform: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UpdateMLTransform",
 }));
 export type UpdatePartitionError =
   | EntityNotFoundException
@@ -27631,6 +27917,7 @@ export const updatePartition: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UpdatePartition",
 }));
 export type UpdateRegistryError =
   | AccessDeniedException
@@ -27657,6 +27944,7 @@ export const updateRegistry: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  operationName: "UpdateRegistry",
 }));
 export type UpdateSchemaError =
   | AccessDeniedException
@@ -27689,6 +27977,7 @@ export const updateSchema: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  operationName: "UpdateSchema",
 }));
 export type UpdateSourceControlFromJobError =
   | AccessDeniedException
@@ -27721,6 +28010,7 @@ export const updateSourceControlFromJob: API.OperationMethod<
     OperationTimeoutException,
     ValidationException,
   ],
+  operationName: "UpdateSourceControlFromJob",
 }));
 export type UpdateTableError =
   | AlreadyExistsException
@@ -27759,6 +28049,7 @@ export const updateTable: API.OperationMethod<
     ResourceNotReadyException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "UpdateTable",
 }));
 export type UpdateTableOptimizerError =
   | AccessDeniedException
@@ -27789,6 +28080,7 @@ export const updateTableOptimizer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateTableOptimizer",
 }));
 export type UpdateTriggerError =
   | ConcurrentModificationException
@@ -27817,6 +28109,7 @@ export const updateTrigger: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UpdateTrigger",
 }));
 export type UpdateUsageProfileError =
   | ConcurrentModificationException
@@ -27845,6 +28138,7 @@ export const updateUsageProfile: API.OperationMethod<
     OperationNotSupportedException,
     OperationTimeoutException,
   ],
+  operationName: "UpdateUsageProfile",
 }));
 export type UpdateUserDefinedFunctionError =
   | EntityNotFoundException
@@ -27871,6 +28165,7 @@ export const updateUserDefinedFunction: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UpdateUserDefinedFunction",
 }));
 export type UpdateWorkflowError =
   | ConcurrentModificationException
@@ -27897,4 +28192,5 @@ export const updateWorkflow: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UpdateWorkflow",
 }));

@@ -531,4 +531,5 @@ export const invokeEndpointWithBidirectionalStream: API.OperationMethod<
     ModelStreamError,
     ServiceUnavailableError,
   ],
+  operationName: "InvokeEndpointWithBidirectionalStream",
 }));

@@ -1432,6 +1432,7 @@ export const batchGetUserAccessTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchGetUserAccessTasks",
 }));
 export type ConnectAppAuthorizationError =
   | AccessDeniedException
@@ -1459,6 +1460,7 @@ export const connectAppAuthorization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ConnectAppAuthorization",
 }));
 export type CreateAppAuthorizationError =
   | AccessDeniedException
@@ -1490,6 +1492,7 @@ export const createAppAuthorization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAppAuthorization",
 }));
 export type CreateAppBundleError =
   | AccessDeniedException
@@ -1518,6 +1521,7 @@ export const createAppBundle: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAppBundle",
 }));
 export type CreateIngestionError =
   | AccessDeniedException
@@ -1546,6 +1550,7 @@ export const createIngestion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateIngestion",
 }));
 export type CreateIngestionDestinationError =
   | AccessDeniedException
@@ -1575,6 +1580,7 @@ export const createIngestionDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateIngestionDestination",
 }));
 export type DeleteAppAuthorizationError =
   | AccessDeniedException
@@ -1602,6 +1608,7 @@ export const deleteAppAuthorization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAppAuthorization",
 }));
 export type DeleteAppBundleError =
   | AccessDeniedException
@@ -1629,6 +1636,7 @@ export const deleteAppBundle: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAppBundle",
 }));
 export type DeleteIngestionError =
   | AccessDeniedException
@@ -1656,6 +1664,7 @@ export const deleteIngestion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteIngestion",
 }));
 export type DeleteIngestionDestinationError =
   | AccessDeniedException
@@ -1687,6 +1696,7 @@ export const deleteIngestionDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteIngestionDestination",
 }));
 export type GetAppAuthorizationError =
   | AccessDeniedException
@@ -1713,6 +1723,7 @@ export const getAppAuthorization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAppAuthorization",
 }));
 export type GetAppBundleError =
   | AccessDeniedException
@@ -1739,6 +1750,7 @@ export const getAppBundle: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAppBundle",
 }));
 export type GetIngestionError =
   | AccessDeniedException
@@ -1765,6 +1777,7 @@ export const getIngestion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetIngestion",
 }));
 export type GetIngestionDestinationError =
   | AccessDeniedException
@@ -1791,6 +1804,7 @@ export const getIngestionDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetIngestionDestination",
 }));
 export type ListAppAuthorizationsError =
   | AccessDeniedException
@@ -1832,6 +1846,7 @@ export const listAppAuthorizations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAppAuthorizations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1877,6 +1892,7 @@ export const listAppBundles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAppBundles",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1924,6 +1940,7 @@ export const listIngestionDestinations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListIngestionDestinations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1971,6 +1988,7 @@ export const listIngestions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListIngestions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2003,6 +2021,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type StartIngestionError =
   | AccessDeniedException
@@ -2031,6 +2050,7 @@ export const startIngestion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartIngestion",
 }));
 export type StartUserAccessTasksError =
   | AccessDeniedException
@@ -2060,6 +2080,7 @@ export const startUserAccessTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartUserAccessTasks",
 }));
 export type StopIngestionError =
   | AccessDeniedException
@@ -2088,6 +2109,7 @@ export const stopIngestion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopIngestion",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2114,6 +2136,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2140,6 +2163,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAppAuthorizationError =
   | AccessDeniedException
@@ -2170,6 +2194,7 @@ export const updateAppAuthorization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAppAuthorization",
 }));
 export type UpdateIngestionDestinationError =
   | AccessDeniedException
@@ -2201,4 +2226,5 @@ export const updateIngestionDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateIngestionDestination",
 }));

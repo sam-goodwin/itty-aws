@@ -528,6 +528,7 @@ export const createConfigurationSet: API.OperationMethod<
     LimitExceededException,
     TooManyRequestsException,
   ],
+  operationName: "CreateConfigurationSet",
 }));
 export type CreateConfigurationSetEventDestinationError =
   | AlreadyExistsException
@@ -556,6 +557,7 @@ export const createConfigurationSetEventDestination: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateConfigurationSetEventDestination",
 }));
 export type DeleteConfigurationSetError =
   | BadRequestException
@@ -580,6 +582,7 @@ export const deleteConfigurationSet: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteConfigurationSet",
 }));
 export type DeleteConfigurationSetEventDestinationError =
   | BadRequestException
@@ -604,6 +607,7 @@ export const deleteConfigurationSetEventDestination: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteConfigurationSetEventDestination",
 }));
 export type GetConfigurationSetEventDestinationsError =
   | BadRequestException
@@ -628,6 +632,7 @@ export const getConfigurationSetEventDestinations: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetConfigurationSetEventDestinations",
 }));
 export type ListConfigurationSetsError =
   | BadRequestException
@@ -650,6 +655,7 @@ export const listConfigurationSets: API.OperationMethod<
     InternalServiceErrorException,
     TooManyRequestsException,
   ],
+  operationName: "ListConfigurationSets",
 }));
 export type SendVoiceMessageError =
   | BadRequestException
@@ -672,6 +678,7 @@ export const sendVoiceMessage: API.OperationMethod<
     InternalServiceErrorException,
     TooManyRequestsException,
   ],
+  operationName: "SendVoiceMessage",
 }));
 export type UpdateConfigurationSetEventDestinationError =
   | BadRequestException
@@ -696,4 +703,5 @@ export const updateConfigurationSetEventDestination: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateConfigurationSetEventDestination",
 }));

@@ -2289,6 +2289,7 @@ export const cancelQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelQuery",
 }));
 export type ExecuteQueryError =
   | AccessDeniedException
@@ -2325,6 +2326,7 @@ export const executeQuery: API.OperationMethod<
     UnprocessableException,
     ValidationException,
   ],
+  operationName: "ExecuteQuery",
 }));
 export type GetGraphSummaryError =
   | AccessDeniedException
@@ -2351,6 +2353,7 @@ export const getGraphSummary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetGraphSummary",
 }));
 export type GetQueryError =
   | AccessDeniedException
@@ -2379,6 +2382,7 @@ export const getQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetQuery",
 }));
 export type ListQueriesError =
   | AccessDeniedException
@@ -2403,6 +2407,7 @@ export const listQueries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListQueries",
 }));
 export type ListTagsForResourceError =
   | InternalServerException
@@ -2427,6 +2432,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -2451,6 +2457,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -2475,6 +2482,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateGraphError =
   | ConflictException
@@ -2501,6 +2509,7 @@ export const createGraph: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateGraph",
 }));
 export type DeleteGraphError =
   | ConflictException
@@ -2527,6 +2536,7 @@ export const deleteGraph: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteGraph",
 }));
 export type GetGraphError =
   | InternalServerException
@@ -2551,6 +2561,7 @@ export const getGraph: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetGraph",
 }));
 export type ListGraphsError =
   | InternalServerException
@@ -2588,6 +2599,7 @@ export const listGraphs: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListGraphs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2620,6 +2632,7 @@ export const resetGraph: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ResetGraph",
 }));
 export type RestoreGraphFromSnapshotError =
   | ConflictException
@@ -2648,6 +2661,7 @@ export const restoreGraphFromSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RestoreGraphFromSnapshot",
 }));
 export type StartGraphError =
   | ConflictException
@@ -2674,6 +2688,7 @@ export const startGraph: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartGraph",
 }));
 export type StopGraphError =
   | ConflictException
@@ -2700,6 +2715,7 @@ export const stopGraph: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopGraph",
 }));
 export type UpdateGraphError =
   | ConflictException
@@ -2726,6 +2742,7 @@ export const updateGraph: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateGraph",
 }));
 export type CreatePrivateGraphEndpointError =
   | ConflictException
@@ -2756,6 +2773,7 @@ export const createPrivateGraphEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreatePrivateGraphEndpoint",
 }));
 export type DeletePrivateGraphEndpointError =
   | ConflictException
@@ -2782,6 +2800,7 @@ export const deletePrivateGraphEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePrivateGraphEndpoint",
 }));
 export type GetPrivateGraphEndpointError =
   | InternalServerException
@@ -2806,6 +2825,7 @@ export const getPrivateGraphEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPrivateGraphEndpoint",
 }));
 export type ListPrivateGraphEndpointsError =
   | InternalServerException
@@ -2845,6 +2865,7 @@ export const listPrivateGraphEndpoints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPrivateGraphEndpoints",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2879,6 +2900,7 @@ export const createGraphSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateGraphSnapshot",
 }));
 export type DeleteGraphSnapshotError =
   | ConflictException
@@ -2905,6 +2927,7 @@ export const deleteGraphSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteGraphSnapshot",
 }));
 export type GetGraphSnapshotError =
   | InternalServerException
@@ -2929,6 +2952,7 @@ export const getGraphSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetGraphSnapshot",
 }));
 export type ListGraphSnapshotsError =
   | InternalServerException
@@ -2968,6 +2992,7 @@ export const listGraphSnapshots: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListGraphSnapshots",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3000,6 +3025,7 @@ export const cancelExportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelExportTask",
 }));
 export type CancelImportTaskError =
   | ConflictException
@@ -3026,6 +3052,7 @@ export const cancelImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelImportTask",
 }));
 export type CreateGraphUsingImportTaskError =
   | ConflictException
@@ -3054,6 +3081,7 @@ export const createGraphUsingImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateGraphUsingImportTask",
 }));
 export type GetExportTaskError =
   | InternalServerException
@@ -3078,6 +3106,7 @@ export const getExportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetExportTask",
 }));
 export type GetImportTaskError =
   | InternalServerException
@@ -3102,6 +3131,7 @@ export const getImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetImportTask",
 }));
 export type ListExportTasksError =
   | InternalServerException
@@ -3141,6 +3171,7 @@ export const listExportTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListExportTasks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3186,6 +3217,7 @@ export const listImportTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListImportTasks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3218,6 +3250,7 @@ export const startExportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartExportTask",
 }));
 export type StartImportTaskError =
   | ConflictException
@@ -3244,4 +3277,5 @@ export const startImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartImportTask",
 }));

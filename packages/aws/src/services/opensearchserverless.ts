@@ -2367,6 +2367,7 @@ export const batchGetCollection: API.OperationMethod<
   input: BatchGetCollectionRequest,
   output: BatchGetCollectionResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "BatchGetCollection",
 }));
 export type BatchGetCollectionGroupError =
   | InternalServerException
@@ -2384,6 +2385,7 @@ export const batchGetCollectionGroup: API.OperationMethod<
   input: BatchGetCollectionGroupRequest,
   output: BatchGetCollectionGroupResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "BatchGetCollectionGroup",
 }));
 export type BatchGetEffectiveLifecyclePolicyError =
   | InternalServerException
@@ -2401,6 +2403,7 @@ export const batchGetEffectiveLifecyclePolicy: API.OperationMethod<
   input: BatchGetEffectiveLifecyclePolicyRequest,
   output: BatchGetEffectiveLifecyclePolicyResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "BatchGetEffectiveLifecyclePolicy",
 }));
 export type BatchGetLifecyclePolicyError =
   | InternalServerException
@@ -2418,6 +2421,7 @@ export const batchGetLifecyclePolicy: API.OperationMethod<
   input: BatchGetLifecyclePolicyRequest,
   output: BatchGetLifecyclePolicyResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "BatchGetLifecyclePolicy",
 }));
 export type BatchGetVpcEndpointError =
   | InternalServerException
@@ -2435,6 +2439,7 @@ export const batchGetVpcEndpoint: API.OperationMethod<
   input: BatchGetVpcEndpointRequest,
   output: BatchGetVpcEndpointResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "BatchGetVpcEndpoint",
 }));
 export type CreateLifecyclePolicyError =
   | ConflictException
@@ -2459,6 +2464,7 @@ export const createLifecyclePolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateLifecyclePolicy",
 }));
 export type CreateSecurityPolicyError =
   | ConflictException
@@ -2483,6 +2489,7 @@ export const createSecurityPolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateSecurityPolicy",
 }));
 export type GetAccountSettingsError =
   | InternalServerException
@@ -2500,6 +2507,7 @@ export const getAccountSettings: API.OperationMethod<
   input: GetAccountSettingsRequest,
   output: GetAccountSettingsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "GetAccountSettings",
 }));
 export type GetPoliciesStatsError = InternalServerException | CommonErrors;
 /**
@@ -2514,6 +2522,7 @@ export const getPoliciesStats: API.OperationMethod<
   input: GetPoliciesStatsRequest,
   output: GetPoliciesStatsResponse,
   errors: [InternalServerException],
+  operationName: "GetPoliciesStats",
 }));
 export type ListTagsForResourceError =
   | InternalServerException
@@ -2536,6 +2545,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | ConflictException
@@ -2562,6 +2572,7 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ConflictException
@@ -2586,6 +2597,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAccountSettingsError =
   | InternalServerException
@@ -2608,6 +2620,7 @@ export const updateAccountSettings: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateAccountSettings",
 }));
 export type UpdateVpcEndpointError =
   | ConflictException
@@ -2626,6 +2639,7 @@ export const updateVpcEndpoint: API.OperationMethod<
   input: UpdateVpcEndpointRequest,
   output: UpdateVpcEndpointResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  operationName: "UpdateVpcEndpoint",
 }));
 export type CreateAccessPolicyError =
   | ConflictException
@@ -2650,6 +2664,7 @@ export const createAccessPolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateAccessPolicy",
 }));
 export type GetAccessPolicyError =
   | InternalServerException
@@ -2672,6 +2687,7 @@ export const getAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetAccessPolicy",
 }));
 export type UpdateAccessPolicyError =
   | ConflictException
@@ -2696,6 +2712,7 @@ export const updateAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateAccessPolicy",
 }));
 export type DeleteAccessPolicyError =
   | ConflictException
@@ -2720,6 +2737,7 @@ export const deleteAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteAccessPolicy",
 }));
 export type ListAccessPoliciesError =
   | InternalServerException
@@ -2752,6 +2770,7 @@ export const listAccessPolicies: API.OperationMethod<
   input: ListAccessPoliciesRequest,
   output: ListAccessPoliciesResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListAccessPolicies",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
 export type CreateCollectionError =
@@ -2779,6 +2798,7 @@ export const createCollection: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateCollection",
 }));
 export type UpdateCollectionError =
   | ConflictException
@@ -2797,6 +2817,7 @@ export const updateCollection: API.OperationMethod<
   input: UpdateCollectionRequest,
   output: UpdateCollectionResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  operationName: "UpdateCollection",
 }));
 export type DeleteCollectionError =
   | ConflictException
@@ -2821,6 +2842,7 @@ export const deleteCollection: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteCollection",
 }));
 export type ListCollectionsError =
   | InternalServerException
@@ -2855,6 +2877,7 @@ export const listCollections: API.OperationMethod<
   input: ListCollectionsRequest,
   output: ListCollectionsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListCollections",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
 export type CreateCollectionGroupError =
@@ -2882,6 +2905,7 @@ export const createCollectionGroup: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateCollectionGroup",
 }));
 export type UpdateCollectionGroupError =
   | ConflictException
@@ -2906,6 +2930,7 @@ export const updateCollectionGroup: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateCollectionGroup",
 }));
 export type DeleteCollectionGroupError =
   | ConflictException
@@ -2930,6 +2955,7 @@ export const deleteCollectionGroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteCollectionGroup",
 }));
 export type ListCollectionGroupsError =
   | InternalServerException
@@ -2962,6 +2988,7 @@ export const listCollectionGroups: API.OperationMethod<
   input: ListCollectionGroupsRequest,
   output: ListCollectionGroupsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListCollectionGroups",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
 export type CreateIndexError =
@@ -2987,6 +3014,7 @@ export const createIndex: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreateIndex",
 }));
 export type GetIndexError =
   | InternalServerException
@@ -3009,6 +3037,7 @@ export const getIndex: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetIndex",
 }));
 export type UpdateIndexError =
   | InternalServerException
@@ -3031,6 +3060,7 @@ export const updateIndex: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateIndex",
 }));
 export type DeleteIndexError =
   | InternalServerException
@@ -3053,6 +3083,7 @@ export const deleteIndex: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteIndex",
 }));
 export type UpdateLifecyclePolicyError =
   | ConflictException
@@ -3079,6 +3110,7 @@ export const updateLifecyclePolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateLifecyclePolicy",
 }));
 export type DeleteLifecyclePolicyError =
   | ConflictException
@@ -3103,6 +3135,7 @@ export const deleteLifecyclePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteLifecyclePolicy",
 }));
 export type ListLifecyclePoliciesError =
   | InternalServerException
@@ -3135,6 +3168,7 @@ export const listLifecyclePolicies: API.OperationMethod<
   input: ListLifecyclePoliciesRequest,
   output: ListLifecyclePoliciesResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListLifecyclePolicies",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
 export type CreateSecurityConfigError =
@@ -3160,6 +3194,7 @@ export const createSecurityConfig: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateSecurityConfig",
 }));
 export type GetSecurityConfigError =
   | InternalServerException
@@ -3182,6 +3217,7 @@ export const getSecurityConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetSecurityConfig",
 }));
 export type UpdateSecurityConfigError =
   | ConflictException
@@ -3206,6 +3242,7 @@ export const updateSecurityConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateSecurityConfig",
 }));
 export type DeleteSecurityConfigError =
   | ConflictException
@@ -3230,6 +3267,7 @@ export const deleteSecurityConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteSecurityConfig",
 }));
 export type ListSecurityConfigsError =
   | InternalServerException
@@ -3262,6 +3300,7 @@ export const listSecurityConfigs: API.OperationMethod<
   input: ListSecurityConfigsRequest,
   output: ListSecurityConfigsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListSecurityConfigs",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
 export type GetSecurityPolicyError =
@@ -3285,6 +3324,7 @@ export const getSecurityPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetSecurityPolicy",
 }));
 export type UpdateSecurityPolicyError =
   | ConflictException
@@ -3311,6 +3351,7 @@ export const updateSecurityPolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateSecurityPolicy",
 }));
 export type DeleteSecurityPolicyError =
   | ConflictException
@@ -3335,6 +3376,7 @@ export const deleteSecurityPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteSecurityPolicy",
 }));
 export type ListSecurityPoliciesError =
   | InternalServerException
@@ -3367,6 +3409,7 @@ export const listSecurityPolicies: API.OperationMethod<
   input: ListSecurityPoliciesRequest,
   output: ListSecurityPoliciesResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListSecurityPolicies",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
 export type CreateVpcEndpointError =
@@ -3392,6 +3435,7 @@ export const createVpcEndpoint: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateVpcEndpoint",
 }));
 export type DeleteVpcEndpointError =
   | ConflictException
@@ -3416,6 +3460,7 @@ export const deleteVpcEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteVpcEndpoint",
 }));
 export type ListVpcEndpointsError =
   | InternalServerException
@@ -3448,5 +3493,6 @@ export const listVpcEndpoints: API.OperationMethod<
   input: ListVpcEndpointsRequest,
   output: ListVpcEndpointsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListVpcEndpoints",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));

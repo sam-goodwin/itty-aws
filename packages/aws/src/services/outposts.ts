@@ -2958,6 +2958,7 @@ export const cancelCapacityTask: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "CancelCapacityTask",
 }));
 export type CancelOrderError =
   | AccessDeniedException
@@ -2984,6 +2985,7 @@ export const cancelOrder: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "CancelOrder",
 }));
 export type CreateOrderError =
   | AccessDeniedException
@@ -3012,6 +3014,7 @@ export const createOrder: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateOrder",
 }));
 export type CreateOutpostError =
   | AccessDeniedException
@@ -3042,6 +3045,7 @@ export const createOutpost: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateOutpost",
 }));
 export type CreateQuoteError =
   | AccessDeniedException
@@ -3068,6 +3072,7 @@ export const createQuote: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "CreateQuote",
 }));
 export type CreateRenewalError =
   | AccessDeniedException
@@ -3092,6 +3097,7 @@ export const createRenewal: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "CreateRenewal",
 }));
 export type CreateSiteError =
   | AccessDeniedException
@@ -3118,6 +3124,7 @@ export const createSite: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateSite",
 }));
 export type DeleteOutpostError =
   | AccessDeniedException
@@ -3144,6 +3151,7 @@ export const deleteOutpost: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteOutpost",
 }));
 export type DeleteQuoteError =
   | AccessDeniedException
@@ -3168,6 +3176,7 @@ export const deleteQuote: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteQuote",
 }));
 export type DeleteSiteError =
   | AccessDeniedException
@@ -3194,6 +3203,7 @@ export const deleteSite: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteSite",
 }));
 export type GetCapacityTaskError =
   | AccessDeniedException
@@ -3218,6 +3228,7 @@ export const getCapacityTask: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "GetCapacityTask",
 }));
 export type GetCatalogItemError =
   | AccessDeniedException
@@ -3242,6 +3253,7 @@ export const getCatalogItem: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "GetCatalogItem",
 }));
 export type GetConnectionError =
   | AccessDeniedException
@@ -3273,6 +3285,7 @@ export const getConnection: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "GetConnection",
 }));
 export type GetOrderError =
   | InternalServerException
@@ -3291,6 +3304,7 @@ export const getOrder: API.OperationMethod<
   input: GetOrderInput,
   output: GetOrderOutput,
   errors: [InternalServerException, NotFoundException, ValidationException],
+  operationName: "GetOrder",
 }));
 export type GetOutpostError =
   | AccessDeniedException
@@ -3315,6 +3329,7 @@ export const getOutpost: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "GetOutpost",
 }));
 export type GetOutpostBillingInformationError =
   | AccessDeniedException
@@ -3348,6 +3363,7 @@ export const getOutpostBillingInformation: API.OperationMethod<
   input: GetOutpostBillingInformationInput,
   output: GetOutpostBillingInformationOutput,
   errors: [AccessDeniedException, InternalServerException, NotFoundException],
+  operationName: "GetOutpostBillingInformation",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3393,6 +3409,7 @@ export const getOutpostInstanceTypes: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "GetOutpostInstanceTypes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3440,6 +3457,7 @@ export const getOutpostSupportedInstanceTypes: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "GetOutpostSupportedInstanceTypes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3470,6 +3488,7 @@ export const getQuote: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "GetQuote",
 }));
 export type GetRenewalPricingError =
   | AccessDeniedException
@@ -3494,6 +3513,7 @@ export const getRenewalPricing: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "GetRenewalPricing",
 }));
 export type GetSiteError =
   | AccessDeniedException
@@ -3518,6 +3538,7 @@ export const getSite: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "GetSite",
 }));
 export type GetSiteAddressError =
   | AccessDeniedException
@@ -3542,6 +3563,7 @@ export const getSiteAddress: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "GetSiteAddress",
 }));
 export type ListAssetInstancesError =
   | AccessDeniedException
@@ -3582,6 +3604,7 @@ export const listAssetInstances: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "ListAssetInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3631,6 +3654,7 @@ export const listAssets: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "ListAssets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3678,6 +3702,7 @@ export const listBlockingInstancesForCapacityTask: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "ListBlockingInstancesForCapacityTask",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3727,6 +3752,7 @@ export const listCapacityTasks: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "ListCapacityTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3776,6 +3802,7 @@ export const listCatalogItems: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "ListCatalogItems",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3822,6 +3849,7 @@ export const listOrderableInstanceTypes: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "ListOrderableInstanceTypes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3867,6 +3895,7 @@ export const listOrders: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "ListOrders",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3910,6 +3939,7 @@ export const listOutposts: API.OperationMethod<
   input: ListOutpostsInput,
   output: ListOutpostsOutput,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListOutposts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3948,6 +3978,7 @@ export const listQuotes: API.OperationMethod<
   input: ListQuotesInput,
   output: ListQuotesOutput,
   errors: [AccessDeniedException, InternalServerException],
+  operationName: "ListQuotes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3992,6 +4023,7 @@ export const listSites: API.OperationMethod<
   input: ListSitesInput,
   output: ListSitesOutput,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListSites",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4016,6 +4048,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalServerException, NotFoundException, ValidationException],
+  operationName: "ListTagsForResource",
 }));
 export type StartCapacityTaskError =
   | AccessDeniedException
@@ -4043,6 +4076,7 @@ export const startCapacityTask: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "StartCapacityTask",
 }));
 export type StartConnectionError =
   | AccessDeniedException
@@ -4074,6 +4108,7 @@ export const startConnection: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "StartConnection",
 }));
 export type StartOutpostDecommissionError =
   | AccessDeniedException
@@ -4100,6 +4135,7 @@ export const startOutpostDecommission: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "StartOutpostDecommission",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -4118,6 +4154,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InternalServerException, NotFoundException, ValidationException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -4136,6 +4173,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalServerException, NotFoundException, ValidationException],
+  operationName: "UntagResource",
 }));
 export type UpdateOutpostError =
   | AccessDeniedException
@@ -4162,6 +4200,7 @@ export const updateOutpost: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateOutpost",
 }));
 export type UpdateQuoteError =
   | AccessDeniedException
@@ -4187,6 +4226,7 @@ export const updateQuote: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateQuote",
 }));
 export type UpdateSiteError =
   | AccessDeniedException
@@ -4213,6 +4253,7 @@ export const updateSite: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateSite",
 }));
 export type UpdateSiteAddressError =
   | AccessDeniedException
@@ -4245,6 +4286,7 @@ export const updateSiteAddress: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateSiteAddress",
 }));
 export type UpdateSiteRackPhysicalPropertiesError =
   | AccessDeniedException
@@ -4276,4 +4318,5 @@ export const updateSiteRackPhysicalProperties: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateSiteRackPhysicalProperties",
 }));

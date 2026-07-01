@@ -8619,6 +8619,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type GetResourcePolicyError =
   | AccessDeniedException
@@ -8645,6 +8646,7 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type PutResourcePolicyError =
   | AccessDeniedException
@@ -8673,6 +8675,7 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type ValidateFlowDefinitionError =
   | AccessDeniedException
@@ -8697,6 +8700,7 @@ export const validateFlowDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ValidateFlowDefinition",
 }));
 export type CreateAgentActionGroupError =
   | AccessDeniedException
@@ -8733,6 +8737,7 @@ export const createAgentActionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAgentActionGroup",
 }));
 export type DeleteAgentActionGroupError =
   | AccessDeniedException
@@ -8761,6 +8766,7 @@ export const deleteAgentActionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAgentActionGroup",
 }));
 export type GetAgentActionGroupError =
   | AccessDeniedException
@@ -8787,6 +8793,7 @@ export const getAgentActionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAgentActionGroup",
 }));
 export type ListAgentActionGroupsError =
   | AccessDeniedException
@@ -8828,6 +8835,7 @@ export const listAgentActionGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAgentActionGroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8864,6 +8872,7 @@ export const updateAgentActionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAgentActionGroup",
 }));
 export type AssociateAgentCollaboratorError =
   | AccessDeniedException
@@ -8894,6 +8903,7 @@ export const associateAgentCollaborator: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateAgentCollaborator",
 }));
 export type DisassociateAgentCollaboratorError =
   | AccessDeniedException
@@ -8922,6 +8932,7 @@ export const disassociateAgentCollaborator: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateAgentCollaborator",
 }));
 export type GetAgentCollaboratorError =
   | AccessDeniedException
@@ -8948,6 +8959,7 @@ export const getAgentCollaborator: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAgentCollaborator",
 }));
 export type ListAgentCollaboratorsError =
   | AccessDeniedException
@@ -8989,6 +9001,7 @@ export const listAgentCollaborators: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAgentCollaborators",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9025,6 +9038,7 @@ export const updateAgentCollaborator: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAgentCollaborator",
 }));
 export type CreateAgentError =
   | AccessDeniedException
@@ -9069,6 +9083,7 @@ export const createAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAgent",
 }));
 export type DeleteAgentError =
   | AccessDeniedException
@@ -9097,6 +9112,7 @@ export const deleteAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAgent",
 }));
 export type GetAgentError =
   | AccessDeniedException
@@ -9123,6 +9139,7 @@ export const getAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAgent",
 }));
 export type ListAgentsError =
   | AccessDeniedException
@@ -9162,6 +9179,7 @@ export const listAgents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAgents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9198,6 +9216,7 @@ export const prepareAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PrepareAgent",
 }));
 export type UpdateAgentError =
   | AccessDeniedException
@@ -9228,6 +9247,7 @@ export const updateAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAgent",
 }));
 export type CreateAgentAliasError =
   | AccessDeniedException
@@ -9258,6 +9278,7 @@ export const createAgentAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAgentAlias",
 }));
 export type DeleteAgentAliasError =
   | AccessDeniedException
@@ -9284,6 +9305,7 @@ export const deleteAgentAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAgentAlias",
 }));
 export type GetAgentAliasError =
   | AccessDeniedException
@@ -9310,6 +9332,7 @@ export const getAgentAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAgentAlias",
 }));
 export type ListAgentAliasesError =
   | AccessDeniedException
@@ -9351,6 +9374,7 @@ export const listAgentAliases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAgentAliases",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9387,6 +9411,7 @@ export const updateAgentAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAgentAlias",
 }));
 export type CreateDataSourceError =
   | AccessDeniedException
@@ -9419,6 +9444,7 @@ export const createDataSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDataSource",
 }));
 export type DeleteDataSourceError =
   | AccessDeniedException
@@ -9447,6 +9473,7 @@ export const deleteDataSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDataSource",
 }));
 export type GetDataSourceError =
   | AccessDeniedException
@@ -9473,6 +9500,7 @@ export const getDataSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataSource",
 }));
 export type ListDataSourcesError =
   | AccessDeniedException
@@ -9514,6 +9542,7 @@ export const listDataSources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataSources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9550,6 +9579,7 @@ export const updateDataSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDataSource",
 }));
 export type CreateFlowError =
   | AccessDeniedException
@@ -9578,6 +9608,7 @@ export const createFlow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateFlow",
 }));
 export type GetFlowError =
   | AccessDeniedException
@@ -9604,6 +9635,7 @@ export const getFlow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFlow",
 }));
 export type UpdateFlowError =
   | AccessDeniedException
@@ -9634,6 +9666,7 @@ export const updateFlow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateFlow",
 }));
 export type DeleteFlowError =
   | AccessDeniedException
@@ -9662,6 +9695,7 @@ export const deleteFlow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteFlow",
 }));
 export type ListFlowsError =
   | AccessDeniedException
@@ -9701,6 +9735,7 @@ export const listFlows: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFlows",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9737,6 +9772,7 @@ export const prepareFlow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PrepareFlow",
 }));
 export type CreateFlowAliasError =
   | AccessDeniedException
@@ -9767,6 +9803,7 @@ export const createFlowAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateFlowAlias",
 }));
 export type GetFlowAliasError =
   | AccessDeniedException
@@ -9793,6 +9830,7 @@ export const getFlowAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFlowAlias",
 }));
 export type UpdateFlowAliasError =
   | AccessDeniedException
@@ -9823,6 +9861,7 @@ export const updateFlowAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateFlowAlias",
 }));
 export type DeleteFlowAliasError =
   | AccessDeniedException
@@ -9851,6 +9890,7 @@ export const deleteFlowAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteFlowAlias",
 }));
 export type ListFlowAliasesError =
   | AccessDeniedException
@@ -9892,6 +9932,7 @@ export const listFlowAliases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFlowAliases",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9928,6 +9969,7 @@ export const createFlowVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateFlowVersion",
 }));
 export type GetFlowVersionError =
   | AccessDeniedException
@@ -9954,6 +9996,7 @@ export const getFlowVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFlowVersion",
 }));
 export type DeleteFlowVersionError =
   | AccessDeniedException
@@ -9982,6 +10025,7 @@ export const deleteFlowVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteFlowVersion",
 }));
 export type ListFlowVersionsError =
   | AccessDeniedException
@@ -10023,6 +10067,7 @@ export const listFlowVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFlowVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10055,6 +10100,7 @@ export const getIngestionJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetIngestionJob",
 }));
 export type ListIngestionJobsError =
   | AccessDeniedException
@@ -10096,6 +10142,7 @@ export const listIngestionJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListIngestionJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10132,6 +10179,7 @@ export const startIngestionJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartIngestionJob",
 }));
 export type StopIngestionJobError =
   | AccessDeniedException
@@ -10160,6 +10208,7 @@ export const stopIngestionJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopIngestionJob",
 }));
 export type DeleteKnowledgeBaseDocumentsError =
   | AccessDeniedException
@@ -10188,6 +10237,7 @@ export const deleteKnowledgeBaseDocuments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteKnowledgeBaseDocuments",
 }));
 export type GetKnowledgeBaseDocumentsError =
   | AccessDeniedException
@@ -10216,6 +10266,7 @@ export const getKnowledgeBaseDocuments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetKnowledgeBaseDocuments",
 }));
 export type IngestKnowledgeBaseDocumentsError =
   | AccessDeniedException
@@ -10244,6 +10295,7 @@ export const ingestKnowledgeBaseDocuments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "IngestKnowledgeBaseDocuments",
 }));
 export type ListKnowledgeBaseDocumentsError =
   | AccessDeniedException
@@ -10287,6 +10339,7 @@ export const listKnowledgeBaseDocuments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListKnowledgeBaseDocuments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10323,6 +10376,7 @@ export const associateAgentKnowledgeBase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateAgentKnowledgeBase",
 }));
 export type CreateKnowledgeBaseError =
   | AccessDeniedException
@@ -10371,6 +10425,7 @@ export const createKnowledgeBase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateKnowledgeBase",
 }));
 export type DeleteKnowledgeBaseError =
   | AccessDeniedException
@@ -10399,6 +10454,7 @@ export const deleteKnowledgeBase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteKnowledgeBase",
 }));
 export type DisassociateAgentKnowledgeBaseError =
   | AccessDeniedException
@@ -10427,6 +10483,7 @@ export const disassociateAgentKnowledgeBase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateAgentKnowledgeBase",
 }));
 export type GetAgentKnowledgeBaseError =
   | AccessDeniedException
@@ -10453,6 +10510,7 @@ export const getAgentKnowledgeBase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAgentKnowledgeBase",
 }));
 export type GetKnowledgeBaseError =
   | AccessDeniedException
@@ -10479,6 +10537,7 @@ export const getKnowledgeBase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetKnowledgeBase",
 }));
 export type ListAgentKnowledgeBasesError =
   | AccessDeniedException
@@ -10520,6 +10579,7 @@ export const listAgentKnowledgeBases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAgentKnowledgeBases",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10565,6 +10625,7 @@ export const listKnowledgeBases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListKnowledgeBases",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10599,6 +10660,7 @@ export const updateAgentKnowledgeBase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAgentKnowledgeBase",
 }));
 export type UpdateKnowledgeBaseError =
   | AccessDeniedException
@@ -10637,6 +10699,7 @@ export const updateKnowledgeBase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateKnowledgeBase",
 }));
 export type CreatePromptError =
   | AccessDeniedException
@@ -10665,6 +10728,7 @@ export const createPrompt: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreatePrompt",
 }));
 export type GetPromptError =
   | AccessDeniedException
@@ -10691,6 +10755,7 @@ export const getPrompt: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPrompt",
 }));
 export type UpdatePromptError =
   | AccessDeniedException
@@ -10721,6 +10786,7 @@ export const updatePrompt: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdatePrompt",
 }));
 export type DeletePromptError =
   | AccessDeniedException
@@ -10749,6 +10815,7 @@ export const deletePrompt: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePrompt",
 }));
 export type ListPromptsError =
   | AccessDeniedException
@@ -10790,6 +10857,7 @@ export const listPrompts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPrompts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10826,6 +10894,7 @@ export const createPromptVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreatePromptVersion",
 }));
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -10852,6 +10921,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -10880,6 +10950,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -10906,6 +10977,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type DeleteAgentVersionError =
   | AccessDeniedException
@@ -10934,6 +11006,7 @@ export const deleteAgentVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAgentVersion",
 }));
 export type GetAgentVersionError =
   | AccessDeniedException
@@ -10960,6 +11033,7 @@ export const getAgentVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAgentVersion",
 }));
 export type ListAgentVersionsError =
   | AccessDeniedException
@@ -11001,6 +11075,7 @@ export const listAgentVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAgentVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

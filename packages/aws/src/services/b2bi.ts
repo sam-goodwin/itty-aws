@@ -2396,6 +2396,7 @@ export const createStarterMappingTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreateStarterMappingTemplate",
 }));
 export type GenerateMappingError =
   | AccessDeniedException
@@ -2430,6 +2431,7 @@ export const generateMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GenerateMapping",
 }));
 export type GetTransformerJobError =
   | AccessDeniedException
@@ -2458,6 +2460,7 @@ export const getTransformerJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTransformerJob",
 }));
 export type ListTagsForResourceError =
   | InternalServerException
@@ -2480,6 +2483,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type StartTransformerJobError =
   | AccessDeniedException
@@ -2512,6 +2516,7 @@ export const startTransformerJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartTransformerJob",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -2538,6 +2543,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type TestConversionError =
   | AccessDeniedException
@@ -2564,6 +2570,7 @@ export const testConversion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TestConversion",
 }));
 export type TestMappingError =
   | AccessDeniedException
@@ -2590,6 +2597,7 @@ export const testMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TestMapping",
 }));
 export type TestParsingError =
   | AccessDeniedException
@@ -2616,6 +2624,7 @@ export const testParsing: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TestParsing",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -2638,6 +2647,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateCapabilityError =
   | AccessDeniedException
@@ -2668,6 +2678,7 @@ export const createCapability: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateCapability",
 }));
 export type GetCapabilityError =
   | AccessDeniedException
@@ -2694,6 +2705,7 @@ export const getCapability: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCapability",
 }));
 export type UpdateCapabilityError =
   | AccessDeniedException
@@ -2724,6 +2736,7 @@ export const updateCapability: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateCapability",
 }));
 export type DeleteCapabilityError =
   | AccessDeniedException
@@ -2752,6 +2765,7 @@ export const deleteCapability: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteCapability",
 }));
 export type ListCapabilitiesError =
   | AccessDeniedException
@@ -2791,6 +2805,7 @@ export const listCapabilities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCapabilities",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2827,6 +2842,7 @@ export const createPartnership: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreatePartnership",
 }));
 export type GetPartnershipError =
   | AccessDeniedException
@@ -2853,6 +2869,7 @@ export const getPartnership: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPartnership",
 }));
 export type UpdatePartnershipError =
   | AccessDeniedException
@@ -2883,6 +2900,7 @@ export const updatePartnership: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdatePartnership",
 }));
 export type DeletePartnershipError =
   | AccessDeniedException
@@ -2911,6 +2929,7 @@ export const deletePartnership: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePartnership",
 }));
 export type ListPartnershipsError =
   | AccessDeniedException
@@ -2952,6 +2971,7 @@ export const listPartnerships: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPartnerships",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2988,6 +3008,7 @@ export const createProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateProfile",
 }));
 export type GetProfileError =
   | AccessDeniedException
@@ -3014,6 +3035,7 @@ export const getProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetProfile",
 }));
 export type UpdateProfileError =
   | AccessDeniedException
@@ -3044,6 +3066,7 @@ export const updateProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateProfile",
 }));
 export type DeleteProfileError =
   | AccessDeniedException
@@ -3072,6 +3095,7 @@ export const deleteProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteProfile",
 }));
 export type ListProfilesError =
   | AccessDeniedException
@@ -3111,6 +3135,7 @@ export const listProfiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListProfiles",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3159,6 +3184,7 @@ export const createTransformer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateTransformer",
 }));
 export type GetTransformerError =
   | AccessDeniedException
@@ -3185,6 +3211,7 @@ export const getTransformer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTransformer",
 }));
 export type UpdateTransformerError =
   | AccessDeniedException
@@ -3215,6 +3242,7 @@ export const updateTransformer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateTransformer",
 }));
 export type DeleteTransformerError =
   | AccessDeniedException
@@ -3243,6 +3271,7 @@ export const deleteTransformer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteTransformer",
 }));
 export type ListTransformersError =
   | AccessDeniedException
@@ -3282,6 +3311,7 @@ export const listTransformers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTransformers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

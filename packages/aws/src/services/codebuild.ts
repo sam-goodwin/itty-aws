@@ -3596,6 +3596,7 @@ export const batchDeleteBuilds: API.OperationMethod<
   input: BatchDeleteBuildsInput,
   output: BatchDeleteBuildsOutput,
   errors: [InvalidInputException],
+  operationName: "BatchDeleteBuilds",
 }));
 export type BatchGetBuildBatchesError = InvalidInputException | CommonErrors;
 /**
@@ -3610,6 +3611,7 @@ export const batchGetBuildBatches: API.OperationMethod<
   input: BatchGetBuildBatchesInput,
   output: BatchGetBuildBatchesOutput,
   errors: [InvalidInputException],
+  operationName: "BatchGetBuildBatches",
 }));
 export type BatchGetBuildsError = InvalidInputException | CommonErrors;
 /**
@@ -3624,6 +3626,7 @@ export const batchGetBuilds: API.OperationMethod<
   input: BatchGetBuildsInput,
   output: BatchGetBuildsOutput,
   errors: [InvalidInputException],
+  operationName: "BatchGetBuilds",
 }));
 export type BatchGetCommandExecutionsError =
   | InvalidInputException
@@ -3640,6 +3643,7 @@ export const batchGetCommandExecutions: API.OperationMethod<
   input: BatchGetCommandExecutionsInput,
   output: BatchGetCommandExecutionsOutput,
   errors: [InvalidInputException],
+  operationName: "BatchGetCommandExecutions",
 }));
 export type BatchGetFleetsError = InvalidInputException | CommonErrors;
 /**
@@ -3654,6 +3658,7 @@ export const batchGetFleets: API.OperationMethod<
   input: BatchGetFleetsInput,
   output: BatchGetFleetsOutput,
   errors: [InvalidInputException],
+  operationName: "BatchGetFleets",
 }));
 export type BatchGetProjectsError = InvalidInputException | CommonErrors;
 /**
@@ -3668,6 +3673,7 @@ export const batchGetProjects: API.OperationMethod<
   input: BatchGetProjectsInput,
   output: BatchGetProjectsOutput,
   errors: [InvalidInputException],
+  operationName: "BatchGetProjects",
 }));
 export type BatchGetReportGroupsError = InvalidInputException | CommonErrors;
 /**
@@ -3682,6 +3688,7 @@ export const batchGetReportGroups: API.OperationMethod<
   input: BatchGetReportGroupsInput,
   output: BatchGetReportGroupsOutput,
   errors: [InvalidInputException],
+  operationName: "BatchGetReportGroups",
 }));
 export type BatchGetReportsError = InvalidInputException | CommonErrors;
 /**
@@ -3696,6 +3703,7 @@ export const batchGetReports: API.OperationMethod<
   input: BatchGetReportsInput,
   output: BatchGetReportsOutput,
   errors: [InvalidInputException],
+  operationName: "BatchGetReports",
 }));
 export type BatchGetSandboxesError = InvalidInputException | CommonErrors;
 /**
@@ -3710,6 +3718,7 @@ export const batchGetSandboxes: API.OperationMethod<
   input: BatchGetSandboxesInput,
   output: BatchGetSandboxesOutput,
   errors: [InvalidInputException],
+  operationName: "BatchGetSandboxes",
 }));
 export type CreateFleetError =
   | AccountLimitExceededException
@@ -3732,6 +3741,7 @@ export const createFleet: API.OperationMethod<
     InvalidInputException,
     ResourceAlreadyExistsException,
   ],
+  operationName: "CreateFleet",
 }));
 export type CreateProjectError =
   | AccountLimitExceededException
@@ -3754,6 +3764,7 @@ export const createProject: API.OperationMethod<
     InvalidInputException,
     ResourceAlreadyExistsException,
   ],
+  operationName: "CreateProject",
 }));
 export type CreateReportGroupError =
   | AccountLimitExceededException
@@ -3776,6 +3787,7 @@ export const createReportGroup: API.OperationMethod<
     InvalidInputException,
     ResourceAlreadyExistsException,
   ],
+  operationName: "CreateReportGroup",
 }));
 export type CreateWebhookError =
   | InvalidInputException
@@ -3809,6 +3821,7 @@ export const createWebhook: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateWebhook",
 }));
 export type DeleteBuildBatchError = InvalidInputException | CommonErrors;
 /**
@@ -3823,6 +3836,7 @@ export const deleteBuildBatch: API.OperationMethod<
   input: DeleteBuildBatchInput,
   output: DeleteBuildBatchOutput,
   errors: [InvalidInputException],
+  operationName: "DeleteBuildBatch",
 }));
 export type DeleteFleetError = InvalidInputException | CommonErrors;
 /**
@@ -3837,6 +3851,7 @@ export const deleteFleet: API.OperationMethod<
   input: DeleteFleetInput,
   output: DeleteFleetOutput,
   errors: [InvalidInputException],
+  operationName: "DeleteFleet",
 }));
 export type DeleteProjectError = InvalidInputException | CommonErrors;
 /**
@@ -3851,6 +3866,7 @@ export const deleteProject: API.OperationMethod<
   input: DeleteProjectInput,
   output: DeleteProjectOutput,
   errors: [InvalidInputException],
+  operationName: "DeleteProject",
 }));
 export type DeleteReportError = InvalidInputException | CommonErrors;
 /**
@@ -3865,6 +3881,7 @@ export const deleteReport: API.OperationMethod<
   input: DeleteReportInput,
   output: DeleteReportOutput,
   errors: [InvalidInputException],
+  operationName: "DeleteReport",
 }));
 export type DeleteReportGroupError = InvalidInputException | CommonErrors;
 /**
@@ -3879,6 +3896,7 @@ export const deleteReportGroup: API.OperationMethod<
   input: DeleteReportGroupInput,
   output: DeleteReportGroupOutput,
   errors: [InvalidInputException],
+  operationName: "DeleteReportGroup",
 }));
 export type DeleteResourcePolicyError = InvalidInputException | CommonErrors;
 /**
@@ -3893,6 +3911,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   input: DeleteResourcePolicyInput,
   output: DeleteResourcePolicyOutput,
   errors: [InvalidInputException],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteSourceCredentialsError =
   | InvalidInputException
@@ -3910,6 +3929,7 @@ export const deleteSourceCredentials: API.OperationMethod<
   input: DeleteSourceCredentialsInput,
   output: DeleteSourceCredentialsOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DeleteSourceCredentials",
 }));
 export type DeleteWebhookError =
   | InvalidInputException
@@ -3934,6 +3954,7 @@ export const deleteWebhook: API.OperationMethod<
     OAuthProviderException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteWebhook",
 }));
 export type DescribeCodeCoveragesError = InvalidInputException | CommonErrors;
 /**
@@ -3963,6 +3984,7 @@ export const describeCodeCoverages: API.OperationMethod<
   input: DescribeCodeCoveragesInput,
   output: DescribeCodeCoveragesOutput,
   errors: [InvalidInputException],
+  operationName: "DescribeCodeCoverages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4001,6 +4023,7 @@ export const describeTestCases: API.OperationMethod<
   input: DescribeTestCasesInput,
   output: DescribeTestCasesOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeTestCases",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4024,6 +4047,7 @@ export const getReportGroupTrend: API.OperationMethod<
   input: GetReportGroupTrendInput,
   output: GetReportGroupTrendOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "GetReportGroupTrend",
 }));
 export type GetResourcePolicyError =
   | InvalidInputException
@@ -4041,6 +4065,7 @@ export const getResourcePolicy: API.OperationMethod<
   input: GetResourcePolicyInput,
   output: GetResourcePolicyOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "GetResourcePolicy",
 }));
 export type ImportSourceCredentialsError =
   | AccountLimitExceededException
@@ -4064,6 +4089,7 @@ export const importSourceCredentials: API.OperationMethod<
     InvalidInputException,
     ResourceAlreadyExistsException,
   ],
+  operationName: "ImportSourceCredentials",
 }));
 export type InvalidateProjectCacheError =
   | InvalidInputException
@@ -4081,6 +4107,7 @@ export const invalidateProjectCache: API.OperationMethod<
   input: InvalidateProjectCacheInput,
   output: InvalidateProjectCacheOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "InvalidateProjectCache",
 }));
 export type ListBuildBatchesError = InvalidInputException | CommonErrors;
 /**
@@ -4110,6 +4137,7 @@ export const listBuildBatches: API.OperationMethod<
   input: ListBuildBatchesInput,
   output: ListBuildBatchesOutput,
   errors: [InvalidInputException],
+  operationName: "ListBuildBatches",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4148,6 +4176,7 @@ export const listBuildBatchesForProject: API.OperationMethod<
   input: ListBuildBatchesForProjectInput,
   output: ListBuildBatchesForProjectOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "ListBuildBatchesForProject",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4183,6 +4212,7 @@ export const listBuilds: API.OperationMethod<
   input: ListBuildsInput,
   output: ListBuildsOutput,
   errors: [InvalidInputException],
+  operationName: "ListBuilds",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4221,6 +4251,7 @@ export const listBuildsForProject: API.OperationMethod<
   input: ListBuildsForProjectInput,
   output: ListBuildsForProjectOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "ListBuildsForProject",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4258,6 +4289,7 @@ export const listCommandExecutionsForSandbox: API.OperationMethod<
   input: ListCommandExecutionsForSandboxInput,
   output: ListCommandExecutionsForSandboxOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "ListCommandExecutionsForSandbox",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4278,6 +4310,7 @@ export const listCuratedEnvironmentImages: API.OperationMethod<
   input: ListCuratedEnvironmentImagesInput,
   output: ListCuratedEnvironmentImagesOutput,
   errors: [],
+  operationName: "ListCuratedEnvironmentImages",
 }));
 export type ListFleetsError = InvalidInputException | CommonErrors;
 /**
@@ -4307,6 +4340,7 @@ export const listFleets: API.OperationMethod<
   input: ListFleetsInput,
   output: ListFleetsOutput,
   errors: [InvalidInputException],
+  operationName: "ListFleets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4342,6 +4376,7 @@ export const listProjects: API.OperationMethod<
   input: ListProjectsInput,
   output: ListProjectsOutput,
   errors: [InvalidInputException],
+  operationName: "ListProjects",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4376,6 +4411,7 @@ export const listReportGroups: API.OperationMethod<
   input: ListReportGroupsInput,
   output: ListReportGroupsOutput,
   errors: [InvalidInputException],
+  operationName: "ListReportGroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4411,6 +4447,7 @@ export const listReports: API.OperationMethod<
   input: ListReportsInput,
   output: ListReportsOutput,
   errors: [InvalidInputException],
+  operationName: "ListReports",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4449,6 +4486,7 @@ export const listReportsForReportGroup: API.OperationMethod<
   input: ListReportsForReportGroupInput,
   output: ListReportsForReportGroupOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "ListReportsForReportGroup",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4484,6 +4522,7 @@ export const listSandboxes: API.OperationMethod<
   input: ListSandboxesInput,
   output: ListSandboxesOutput,
   errors: [InvalidInputException],
+  operationName: "ListSandboxes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4522,6 +4561,7 @@ export const listSandboxesForProject: API.OperationMethod<
   input: ListSandboxesForProjectInput,
   output: ListSandboxesForProjectOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "ListSandboxesForProject",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4557,6 +4597,7 @@ export const listSharedProjects: API.OperationMethod<
   input: ListSharedProjectsInput,
   output: ListSharedProjectsOutput,
   errors: [InvalidInputException],
+  operationName: "ListSharedProjects",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4592,6 +4633,7 @@ export const listSharedReportGroups: API.OperationMethod<
   input: ListSharedReportGroupsInput,
   output: ListSharedReportGroupsOutput,
   errors: [InvalidInputException],
+  operationName: "ListSharedReportGroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4612,6 +4654,7 @@ export const listSourceCredentials: API.OperationMethod<
   input: ListSourceCredentialsInput,
   output: ListSourceCredentialsOutput,
   errors: [InvalidInputException],
+  operationName: "ListSourceCredentials",
 }));
 export type PutResourcePolicyError =
   | InvalidInputException
@@ -4630,6 +4673,7 @@ export const putResourcePolicy: API.OperationMethod<
   input: PutResourcePolicyInput,
   output: PutResourcePolicyOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "PutResourcePolicy",
 }));
 export type RetryBuildError =
   | AccountLimitExceededException
@@ -4652,6 +4696,7 @@ export const retryBuild: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "RetryBuild",
 }));
 export type RetryBuildBatchError =
   | InvalidInputException
@@ -4669,6 +4714,7 @@ export const retryBuildBatch: API.OperationMethod<
   input: RetryBuildBatchInput,
   output: RetryBuildBatchOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "RetryBuildBatch",
 }));
 export type StartBuildError =
   | AccountLimitExceededException
@@ -4695,6 +4741,7 @@ export const startBuild: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "StartBuild",
 }));
 export type StartBuildBatchError =
   | InvalidInputException
@@ -4712,6 +4759,7 @@ export const startBuildBatch: API.OperationMethod<
   input: StartBuildBatchInput,
   output: StartBuildBatchOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "StartBuildBatch",
 }));
 export type StartCommandExecutionError =
   | InvalidInputException
@@ -4729,6 +4777,7 @@ export const startCommandExecution: API.OperationMethod<
   input: StartCommandExecutionInput,
   output: StartCommandExecutionOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "StartCommandExecution",
 }));
 export type StartSandboxError =
   | AccountSuspendedException
@@ -4751,6 +4800,7 @@ export const startSandbox: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "StartSandbox",
 }));
 export type StartSandboxConnectionError =
   | InvalidInputException
@@ -4768,6 +4818,7 @@ export const startSandboxConnection: API.OperationMethod<
   input: StartSandboxConnectionInput,
   output: StartSandboxConnectionOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "StartSandboxConnection",
 }));
 export type StopBuildError =
   | InvalidInputException
@@ -4785,6 +4836,7 @@ export const stopBuild: API.OperationMethod<
   input: StopBuildInput,
   output: StopBuildOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "StopBuild",
 }));
 export type StopBuildBatchError =
   | InvalidInputException
@@ -4802,6 +4854,7 @@ export const stopBuildBatch: API.OperationMethod<
   input: StopBuildBatchInput,
   output: StopBuildBatchOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "StopBuildBatch",
 }));
 export type StopSandboxError =
   | InvalidInputException
@@ -4819,6 +4872,7 @@ export const stopSandbox: API.OperationMethod<
   input: StopSandboxInput,
   output: StopSandboxOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "StopSandbox",
 }));
 export type UpdateFleetError =
   | AccountLimitExceededException
@@ -4841,6 +4895,7 @@ export const updateFleet: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateFleet",
 }));
 export type UpdateProjectError =
   | InvalidInputException
@@ -4858,6 +4913,7 @@ export const updateProject: API.OperationMethod<
   input: UpdateProjectInput,
   output: UpdateProjectOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "UpdateProject",
 }));
 export type UpdateProjectVisibilityError =
   | InvalidInputException
@@ -4901,6 +4957,7 @@ export const updateProjectVisibility: API.OperationMethod<
   input: UpdateProjectVisibilityInput,
   output: UpdateProjectVisibilityOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "UpdateProjectVisibility",
 }));
 export type UpdateReportGroupError =
   | InvalidInputException
@@ -4918,6 +4975,7 @@ export const updateReportGroup: API.OperationMethod<
   input: UpdateReportGroupInput,
   output: UpdateReportGroupOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "UpdateReportGroup",
 }));
 export type UpdateWebhookError =
   | InvalidInputException
@@ -4942,4 +5000,5 @@ export const updateWebhook: API.OperationMethod<
     OAuthProviderException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateWebhook",
 }));

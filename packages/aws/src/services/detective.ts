@@ -1633,6 +1633,7 @@ export const acceptInvitation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "AcceptInvitation",
 }));
 export type BatchGetGraphMemberDatasourcesError =
   | AccessDeniedException
@@ -1657,6 +1658,7 @@ export const batchGetGraphMemberDatasources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "BatchGetGraphMemberDatasources",
 }));
 export type BatchGetMembershipDatasourcesError =
   | AccessDeniedException
@@ -1681,6 +1683,7 @@ export const batchGetMembershipDatasources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "BatchGetMembershipDatasources",
 }));
 export type CreateGraphError =
   | AccessDeniedException
@@ -1716,6 +1719,7 @@ export const createGraph: API.OperationMethod<
     InternalServerException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateGraph",
 }));
 export type CreateMembersError =
   | AccessDeniedException
@@ -1772,6 +1776,7 @@ export const createMembers: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateMembers",
 }));
 export type DeleteGraphError =
   | AccessDeniedException
@@ -1800,6 +1805,7 @@ export const deleteGraph: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteGraph",
 }));
 export type DeleteMembersError =
   | AccessDeniedException
@@ -1841,6 +1847,7 @@ export const deleteMembers: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteMembers",
 }));
 export type DescribeOrganizationConfigurationError =
   | AccessDeniedException
@@ -1869,6 +1876,7 @@ export const describeOrganizationConfiguration: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "DescribeOrganizationConfiguration",
 }));
 export type DisableOrganizationAdminAccountError =
   | AccessDeniedException
@@ -1901,6 +1909,7 @@ export const disableOrganizationAdminAccount: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "DisableOrganizationAdminAccount",
 }));
 export type DisassociateMembershipError =
   | AccessDeniedException
@@ -1933,6 +1942,7 @@ export const disassociateMembership: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DisassociateMembership",
 }));
 export type EnableOrganizationAdminAccountError =
   | AccessDeniedException
@@ -1972,6 +1982,7 @@ export const enableOrganizationAdminAccount: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "EnableOrganizationAdminAccount",
 }));
 export type GetInvestigationError =
   | AccessDeniedException
@@ -1998,6 +2009,7 @@ export const getInvestigation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "GetInvestigation",
 }));
 export type GetMembersError =
   | AccessDeniedException
@@ -2023,6 +2035,7 @@ export const getMembers: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetMembers",
 }));
 export type ListDatasourcePackagesError =
   | AccessDeniedException
@@ -2062,6 +2075,7 @@ export const listDatasourcePackages: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListDatasourcePackages",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2104,6 +2118,7 @@ export const listGraphs: API.OperationMethod<
   input: ListGraphsRequest,
   output: ListGraphsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListGraphs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2135,6 +2150,7 @@ export const listIndicators: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "ListIndicators",
 }));
 export type ListInvestigationsError =
   | AccessDeniedException
@@ -2166,6 +2182,7 @@ export const listInvestigations: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "ListInvestigations",
 }));
 export type ListInvitationsError =
   | AccessDeniedException
@@ -2206,6 +2223,7 @@ export const listInvitations: API.OperationMethod<
   input: ListInvitationsRequest,
   output: ListInvitationsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListInvitations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2257,6 +2275,7 @@ export const listMembers: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListMembers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2302,6 +2321,7 @@ export const listOrganizationAdminAccounts: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "ListOrganizationAdminAccounts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2331,6 +2351,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type RejectInvitationError =
   | AccessDeniedException
@@ -2363,6 +2384,7 @@ export const rejectInvitation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "RejectInvitation",
 }));
 export type StartInvestigationError =
   | AccessDeniedException
@@ -2389,6 +2411,7 @@ export const startInvestigation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "StartInvestigation",
 }));
 export type StartMonitoringMemberError =
   | AccessDeniedException
@@ -2426,6 +2449,7 @@ export const startMonitoringMember: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "StartMonitoringMember",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2450,6 +2474,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2474,6 +2499,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateDatasourcePackagesError =
   | AccessDeniedException
@@ -2500,6 +2526,7 @@ export const updateDatasourcePackages: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateDatasourcePackages",
 }));
 export type UpdateInvestigationStateError =
   | AccessDeniedException
@@ -2526,6 +2553,7 @@ export const updateInvestigationState: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "UpdateInvestigationState",
 }));
 export type UpdateOrganizationConfigurationError =
   | AccessDeniedException
@@ -2552,4 +2580,5 @@ export const updateOrganizationConfiguration: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "UpdateOrganizationConfiguration",
 }));

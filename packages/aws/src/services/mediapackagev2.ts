@@ -2730,6 +2730,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ValidationException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError = ValidationException | CommonErrors;
 /**
@@ -2746,6 +2747,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ValidationException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = ValidationException | CommonErrors;
 /**
@@ -2760,6 +2762,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ValidationException],
+  operationName: "UntagResource",
 }));
 export type CreateChannelGroupError =
   | AccessDeniedException
@@ -2790,6 +2793,7 @@ export const createChannelGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateChannelGroup",
 }));
 export type GetChannelGroupError =
   | AccessDeniedException
@@ -2816,6 +2820,7 @@ export const getChannelGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetChannelGroup",
 }));
 export type UpdateChannelGroupError =
   | AccessDeniedException
@@ -2846,6 +2851,7 @@ export const updateChannelGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateChannelGroup",
 }));
 export type DeleteChannelGroupError =
   | AccessDeniedException
@@ -2872,6 +2878,7 @@ export const deleteChannelGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteChannelGroup",
 }));
 export type ListChannelGroupsError =
   | AccessDeniedException
@@ -2911,6 +2918,7 @@ export const listChannelGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListChannelGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2947,6 +2955,7 @@ export const createChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateChannel",
 }));
 export type GetChannelError =
   | AccessDeniedException
@@ -2973,6 +2982,7 @@ export const getChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetChannel",
 }));
 export type UpdateChannelError =
   | AccessDeniedException
@@ -3003,6 +3013,7 @@ export const updateChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateChannel",
 }));
 export type DeleteChannelError =
   | AccessDeniedException
@@ -3029,6 +3040,7 @@ export const deleteChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteChannel",
 }));
 export type ListChannelsError =
   | AccessDeniedException
@@ -3070,6 +3082,7 @@ export const listChannels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListChannels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3106,6 +3119,7 @@ export const resetChannelState: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ResetChannelState",
 }));
 export type PutChannelPolicyError =
   | AccessDeniedException
@@ -3134,6 +3148,7 @@ export const putChannelPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutChannelPolicy",
 }));
 export type GetChannelPolicyError =
   | AccessDeniedException
@@ -3160,6 +3175,7 @@ export const getChannelPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetChannelPolicy",
 }));
 export type DeleteChannelPolicyError =
   | AccessDeniedException
@@ -3186,6 +3202,7 @@ export const deleteChannelPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteChannelPolicy",
 }));
 export type CreateOriginEndpointError =
   | AccessDeniedException
@@ -3216,6 +3233,7 @@ export const createOriginEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateOriginEndpoint",
 }));
 export type GetOriginEndpointError =
   | AccessDeniedException
@@ -3242,6 +3260,7 @@ export const getOriginEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetOriginEndpoint",
 }));
 export type UpdateOriginEndpointError =
   | AccessDeniedException
@@ -3274,6 +3293,7 @@ export const updateOriginEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateOriginEndpoint",
 }));
 export type DeleteOriginEndpointError =
   | AccessDeniedException
@@ -3298,6 +3318,7 @@ export const deleteOriginEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteOriginEndpoint",
 }));
 export type ListOriginEndpointsError =
   | AccessDeniedException
@@ -3339,6 +3360,7 @@ export const listOriginEndpoints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListOriginEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3375,6 +3397,7 @@ export const resetOriginEndpointState: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ResetOriginEndpointState",
 }));
 export type PutOriginEndpointPolicyError =
   | AccessDeniedException
@@ -3403,6 +3426,7 @@ export const putOriginEndpointPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutOriginEndpointPolicy",
 }));
 export type GetOriginEndpointPolicyError =
   | AccessDeniedException
@@ -3429,6 +3453,7 @@ export const getOriginEndpointPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetOriginEndpointPolicy",
 }));
 export type DeleteOriginEndpointPolicyError =
   | AccessDeniedException
@@ -3455,6 +3480,7 @@ export const deleteOriginEndpointPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteOriginEndpointPolicy",
 }));
 export type CreateHarvestJobError =
   | AccessDeniedException
@@ -3485,6 +3511,7 @@ export const createHarvestJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateHarvestJob",
 }));
 export type GetHarvestJobError =
   | AccessDeniedException
@@ -3511,6 +3538,7 @@ export const getHarvestJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetHarvestJob",
 }));
 export type CancelHarvestJobError =
   | AccessDeniedException
@@ -3539,6 +3567,7 @@ export const cancelHarvestJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelHarvestJob",
 }));
 export type ListHarvestJobsError =
   | AccessDeniedException
@@ -3580,6 +3609,7 @@ export const listHarvestJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListHarvestJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

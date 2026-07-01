@@ -401,6 +401,7 @@ export const deleteReportDefinition: API.OperationMethod<
   input: DeleteReportDefinitionRequest,
   output: DeleteReportDefinitionResponse,
   errors: [InternalErrorException, ValidationException],
+  operationName: "DeleteReportDefinition",
 }));
 export type DescribeReportDefinitionsError =
   | InternalErrorException
@@ -432,6 +433,7 @@ export const describeReportDefinitions: API.OperationMethod<
   input: DescribeReportDefinitionsRequest,
   output: DescribeReportDefinitionsResponse,
   errors: [InternalErrorException],
+  operationName: "DescribeReportDefinitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -459,6 +461,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ModifyReportDefinitionError =
   | InternalErrorException
@@ -476,6 +479,7 @@ export const modifyReportDefinition: API.OperationMethod<
   input: ModifyReportDefinitionRequest,
   output: ModifyReportDefinitionResponse,
   errors: [InternalErrorException, ValidationException],
+  operationName: "ModifyReportDefinition",
 }));
 export type PutReportDefinitionError =
   | DuplicateReportNameException
@@ -502,6 +506,7 @@ export const putReportDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "PutReportDefinition",
 }));
 export type TagResourceError =
   | InternalErrorException
@@ -524,6 +529,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalErrorException
@@ -546,4 +552,5 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));

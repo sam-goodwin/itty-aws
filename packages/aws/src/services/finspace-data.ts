@@ -1840,6 +1840,7 @@ export const associateUserToPermissionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateUserToPermissionGroup",
 }));
 export type CreateChangesetError =
   | AccessDeniedException
@@ -1870,6 +1871,7 @@ export const createChangeset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateChangeset",
 }));
 export type CreateDatasetError =
   | AccessDeniedException
@@ -1900,6 +1902,7 @@ export const createDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDataset",
 }));
 export type CreateDataViewError =
   | ConflictException
@@ -1928,6 +1931,7 @@ export const createDataView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDataView",
 }));
 export type CreatePermissionGroupError =
   | AccessDeniedException
@@ -1956,6 +1960,7 @@ export const createPermissionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreatePermissionGroup",
 }));
 export type CreateUserError =
   | AccessDeniedException
@@ -1984,6 +1989,7 @@ export const createUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateUser",
 }));
 export type DeleteDatasetError =
   | AccessDeniedException
@@ -2014,6 +2020,7 @@ export const deleteDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDataset",
 }));
 export type DeletePermissionGroupError =
   | AccessDeniedException
@@ -2044,6 +2051,7 @@ export const deletePermissionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePermissionGroup",
 }));
 export type DisableUserError =
   | AccessDeniedException
@@ -2072,6 +2080,7 @@ export const disableUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisableUser",
 }));
 export type DisassociateUserFromPermissionGroupError =
   | AccessDeniedException
@@ -2100,6 +2109,7 @@ export const disassociateUserFromPermissionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateUserFromPermissionGroup",
 }));
 export type EnableUserError =
   | AccessDeniedException
@@ -2130,6 +2140,7 @@ export const enableUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "EnableUser",
 }));
 export type GetChangesetError =
   | AccessDeniedException
@@ -2158,6 +2169,7 @@ export const getChangeset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetChangeset",
 }));
 export type GetDatasetError =
   | AccessDeniedException
@@ -2186,6 +2198,7 @@ export const getDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataset",
 }));
 export type GetDataViewError =
   | ConflictException
@@ -2212,6 +2225,7 @@ export const getDataView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataView",
 }));
 export type GetExternalDataViewAccessDetailsError =
   | AccessDeniedException
@@ -2242,6 +2256,7 @@ export const getExternalDataViewAccessDetails: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetExternalDataViewAccessDetails",
 }));
 export type GetPermissionGroupError =
   | AccessDeniedException
@@ -2268,6 +2283,7 @@ export const getPermissionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPermissionGroup",
 }));
 export type GetProgrammaticAccessCredentialsError =
   | AccessDeniedException
@@ -2292,6 +2308,7 @@ export const getProgrammaticAccessCredentials: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetProgrammaticAccessCredentials",
 }));
 export type GetUserError =
   | AccessDeniedException
@@ -2318,6 +2335,7 @@ export const getUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetUser",
 }));
 export type GetWorkingLocationError =
   | AccessDeniedException
@@ -2343,6 +2361,7 @@ export const getWorkingLocation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetWorkingLocation",
 }));
 export type ListChangesetsError =
   | AccessDeniedException
@@ -2386,6 +2405,7 @@ export const listChangesets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListChangesets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2433,6 +2453,7 @@ export const listDatasets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDatasets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2480,6 +2501,7 @@ export const listDataViews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataViews",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2525,6 +2547,7 @@ export const listPermissionGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPermissionGroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2557,6 +2580,7 @@ export const listPermissionGroupsByUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPermissionGroupsByUser",
 }));
 export type ListUsersError =
   | AccessDeniedException
@@ -2596,6 +2620,7 @@ export const listUsers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListUsers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2628,6 +2653,7 @@ export const listUsersByPermissionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListUsersByPermissionGroup",
 }));
 export type ResetUserPasswordError =
   | AccessDeniedException
@@ -2656,6 +2682,7 @@ export const resetUserPassword: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ResetUserPassword",
 }));
 export type UpdateChangesetError =
   | AccessDeniedException
@@ -2684,6 +2711,7 @@ export const updateChangeset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateChangeset",
 }));
 export type UpdateDatasetError =
   | AccessDeniedException
@@ -2712,6 +2740,7 @@ export const updateDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDataset",
 }));
 export type UpdatePermissionGroupError =
   | AccessDeniedException
@@ -2740,6 +2769,7 @@ export const updatePermissionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdatePermissionGroup",
 }));
 export type UpdateUserError =
   | AccessDeniedException
@@ -2768,4 +2798,5 @@ export const updateUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateUser",
 }));

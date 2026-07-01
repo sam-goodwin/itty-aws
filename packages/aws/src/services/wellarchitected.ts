@@ -4634,6 +4634,7 @@ export const associateLenses: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateLenses",
 }));
 export type AssociateProfilesError =
   | AccessDeniedException
@@ -4662,6 +4663,7 @@ export const associateProfiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateProfiles",
 }));
 export type CreateLensShareError =
   | AccessDeniedException
@@ -4713,6 +4715,7 @@ export const createLensShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateLensShare",
 }));
 export type CreateLensVersionError =
   | AccessDeniedException
@@ -4750,6 +4753,7 @@ export const createLensVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateLensVersion",
 }));
 export type CreateMilestoneError =
   | AccessDeniedException
@@ -4780,6 +4784,7 @@ export const createMilestone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateMilestone",
 }));
 export type CreateProfileError =
   | AccessDeniedException
@@ -4808,6 +4813,7 @@ export const createProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateProfile",
 }));
 export type CreateProfileShareError =
   | AccessDeniedException
@@ -4838,6 +4844,7 @@ export const createProfileShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateProfileShare",
 }));
 export type CreateReviewTemplateError =
   | AccessDeniedException
@@ -4877,6 +4884,7 @@ export const createReviewTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateReviewTemplate",
 }));
 export type CreateTemplateShareError =
   | AccessDeniedException
@@ -4922,6 +4930,7 @@ export const createTemplateShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateTemplateShare",
 }));
 export type CreateWorkloadError =
   | AccessDeniedException
@@ -4975,6 +4984,7 @@ export const createWorkload: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateWorkload",
 }));
 export type CreateWorkloadShareError =
   | AccessDeniedException
@@ -5015,6 +5025,7 @@ export const createWorkloadShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateWorkloadShare",
 }));
 export type DeleteLensError =
   | AccessDeniedException
@@ -5055,6 +5066,7 @@ export const deleteLens: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteLens",
 }));
 export type DeleteLensShareError =
   | AccessDeniedException
@@ -5096,6 +5108,7 @@ export const deleteLensShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteLensShare",
 }));
 export type DeleteProfileError =
   | AccessDeniedException
@@ -5133,6 +5146,7 @@ export const deleteProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteProfile",
 }));
 export type DeleteProfileShareError =
   | AccessDeniedException
@@ -5161,6 +5175,7 @@ export const deleteProfileShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteProfileShare",
 }));
 export type DeleteReviewTemplateError =
   | AccessDeniedException
@@ -5195,6 +5210,7 @@ export const deleteReviewTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteReviewTemplate",
 }));
 export type DeleteTemplateShareError =
   | AccessDeniedException
@@ -5227,6 +5243,7 @@ export const deleteTemplateShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteTemplateShare",
 }));
 export type DeleteWorkloadError =
   | AccessDeniedException
@@ -5255,6 +5272,7 @@ export const deleteWorkload: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteWorkload",
 }));
 export type DeleteWorkloadShareError =
   | AccessDeniedException
@@ -5283,6 +5301,7 @@ export const deleteWorkloadShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteWorkloadShare",
 }));
 export type DisassociateLensesError =
   | AccessDeniedException
@@ -5316,6 +5335,7 @@ export const disassociateLenses: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateLenses",
 }));
 export type DisassociateProfilesError =
   | AccessDeniedException
@@ -5344,6 +5364,7 @@ export const disassociateProfiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateProfiles",
 }));
 export type ExportLensError =
   | AccessDeniedException
@@ -5385,6 +5406,7 @@ export const exportLens: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ExportLens",
 }));
 export type GetAnswerError =
   | AccessDeniedException
@@ -5411,6 +5433,7 @@ export const getAnswer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAnswer",
 }));
 export type GetConsolidatedReportError =
   | AccessDeniedException
@@ -5454,6 +5477,7 @@ export const getConsolidatedReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetConsolidatedReport",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5483,6 +5507,7 @@ export const getGlobalSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetGlobalSettings",
 }));
 export type GetLensError =
   | AccessDeniedException
@@ -5509,6 +5534,7 @@ export const getLens: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetLens",
 }));
 export type GetLensReviewError =
   | AccessDeniedException
@@ -5535,6 +5561,7 @@ export const getLensReview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetLensReview",
 }));
 export type GetLensReviewReportError =
   | AccessDeniedException
@@ -5561,6 +5588,7 @@ export const getLensReviewReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetLensReviewReport",
 }));
 export type GetLensVersionDifferenceError =
   | AccessDeniedException
@@ -5587,6 +5615,7 @@ export const getLensVersionDifference: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetLensVersionDifference",
 }));
 export type GetMilestoneError =
   | AccessDeniedException
@@ -5613,6 +5642,7 @@ export const getMilestone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMilestone",
 }));
 export type GetProfileError =
   | AccessDeniedException
@@ -5639,6 +5669,7 @@ export const getProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetProfile",
 }));
 export type GetProfileTemplateError =
   | AccessDeniedException
@@ -5665,6 +5696,7 @@ export const getProfileTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetProfileTemplate",
 }));
 export type GetReviewTemplateError =
   | AccessDeniedException
@@ -5691,6 +5723,7 @@ export const getReviewTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetReviewTemplate",
 }));
 export type GetReviewTemplateAnswerError =
   | AccessDeniedException
@@ -5717,6 +5750,7 @@ export const getReviewTemplateAnswer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetReviewTemplateAnswer",
 }));
 export type GetReviewTemplateLensReviewError =
   | AccessDeniedException
@@ -5743,6 +5777,7 @@ export const getReviewTemplateLensReview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetReviewTemplateLensReview",
 }));
 export type GetWorkloadError =
   | AccessDeniedException
@@ -5769,6 +5804,7 @@ export const getWorkload: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetWorkload",
 }));
 export type ImportLensError =
   | AccessDeniedException
@@ -5820,6 +5856,7 @@ export const importLens: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ImportLens",
 }));
 export type ListAnswersError =
   | AccessDeniedException
@@ -5861,6 +5898,7 @@ export const listAnswers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAnswers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5907,6 +5945,7 @@ export const listCheckDetails: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCheckDetails",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5953,6 +5992,7 @@ export const listCheckSummaries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCheckSummaries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5997,6 +6037,7 @@ export const listLenses: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListLenses",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6043,6 +6084,7 @@ export const listLensReviewImprovements: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListLensReviewImprovements",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6089,6 +6131,7 @@ export const listLensReviews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListLensReviews",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6135,6 +6178,7 @@ export const listLensShares: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListLensShares",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6181,6 +6225,7 @@ export const listMilestones: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMilestones",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6225,6 +6270,7 @@ export const listNotifications: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListNotifications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6269,6 +6315,7 @@ export const listProfileNotifications: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListProfileNotifications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6313,6 +6360,7 @@ export const listProfiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListProfiles",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6359,6 +6407,7 @@ export const listProfileShares: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListProfileShares",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6405,6 +6454,7 @@ export const listReviewTemplateAnswers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListReviewTemplateAnswers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6449,6 +6499,7 @@ export const listReviewTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListReviewTemplates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6497,6 +6548,7 @@ export const listShareInvitations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListShareInvitations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6521,6 +6573,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [InternalServerException, ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type ListTemplateSharesError =
   | AccessDeniedException
@@ -6562,6 +6615,7 @@ export const listTemplateShares: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTemplateShares",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6606,6 +6660,7 @@ export const listWorkloads: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListWorkloads",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6652,6 +6707,7 @@ export const listWorkloadShares: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListWorkloadShares",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6676,6 +6732,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [InternalServerException, ResourceNotFoundException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -6699,6 +6756,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [InternalServerException, ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type UpdateAnswerError =
   | AccessDeniedException
@@ -6727,6 +6785,7 @@ export const updateAnswer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAnswer",
 }));
 export type UpdateGlobalSettingsError =
   | AccessDeniedException
@@ -6753,6 +6812,7 @@ export const updateGlobalSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateGlobalSettings",
 }));
 export type UpdateIntegrationError =
   | AccessDeniedException
@@ -6781,6 +6841,7 @@ export const updateIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateIntegration",
 }));
 export type UpdateLensReviewError =
   | AccessDeniedException
@@ -6809,6 +6870,7 @@ export const updateLensReview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateLensReview",
 }));
 export type UpdateProfileError =
   | AccessDeniedException
@@ -6837,6 +6899,7 @@ export const updateProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateProfile",
 }));
 export type UpdateReviewTemplateError =
   | AccessDeniedException
@@ -6865,6 +6928,7 @@ export const updateReviewTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateReviewTemplate",
 }));
 export type UpdateReviewTemplateAnswerError =
   | AccessDeniedException
@@ -6893,6 +6957,7 @@ export const updateReviewTemplateAnswer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateReviewTemplateAnswer",
 }));
 export type UpdateReviewTemplateLensReviewError =
   | AccessDeniedException
@@ -6921,6 +6986,7 @@ export const updateReviewTemplateLensReview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateReviewTemplateLensReview",
 }));
 export type UpdateShareInvitationError =
   | AccessDeniedException
@@ -6951,6 +7017,7 @@ export const updateShareInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateShareInvitation",
 }));
 export type UpdateWorkloadError =
   | AccessDeniedException
@@ -6979,6 +7046,7 @@ export const updateWorkload: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateWorkload",
 }));
 export type UpdateWorkloadShareError =
   | AccessDeniedException
@@ -7007,6 +7075,7 @@ export const updateWorkloadShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateWorkloadShare",
 }));
 export type UpgradeLensReviewError =
   | AccessDeniedException
@@ -7037,6 +7106,7 @@ export const upgradeLensReview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpgradeLensReview",
 }));
 export type UpgradeProfileVersionError =
   | AccessDeniedException
@@ -7067,6 +7137,7 @@ export const upgradeProfileVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpgradeProfileVersion",
 }));
 export type UpgradeReviewTemplateLensReviewError =
   | AccessDeniedException
@@ -7095,4 +7166,5 @@ export const upgradeReviewTemplateLensReview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpgradeReviewTemplateLensReview",
 }));

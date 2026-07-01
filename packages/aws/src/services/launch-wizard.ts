@@ -971,6 +971,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -993,6 +994,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -1015,6 +1017,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateDeploymentError =
   | InternalServerException
@@ -1039,6 +1042,7 @@ export const createDeployment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreateDeployment",
 }));
 export type GetDeploymentError =
   | InternalServerException
@@ -1061,6 +1065,7 @@ export const getDeployment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetDeployment",
 }));
 export type UpdateDeploymentError =
   | InternalServerException
@@ -1085,6 +1090,7 @@ export const updateDeployment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateDeployment",
 }));
 export type DeleteDeploymentError =
   | InternalServerException
@@ -1109,6 +1115,7 @@ export const deleteDeployment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteDeployment",
 }));
 export type ListDeploymentsError =
   | InternalServerException
@@ -1141,6 +1148,7 @@ export const listDeployments: API.OperationMethod<
   input: ListDeploymentsInput,
   output: ListDeploymentsOutput,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListDeployments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1184,6 +1192,7 @@ export const listDeploymentEvents: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListDeploymentEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1212,6 +1221,7 @@ export const getWorkload: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetWorkload",
 }));
 export type ListWorkloadsError =
   | InternalServerException
@@ -1244,6 +1254,7 @@ export const listWorkloads: API.OperationMethod<
   input: ListWorkloadsInput,
   output: ListWorkloadsOutput,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListWorkloads",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1272,6 +1283,7 @@ export const getWorkloadDeploymentPattern: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetWorkloadDeploymentPattern",
 }));
 export type ListWorkloadDeploymentPatternsError =
   | InternalServerException
@@ -1309,6 +1321,7 @@ export const listWorkloadDeploymentPatterns: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListWorkloadDeploymentPatterns",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1332,6 +1345,7 @@ export const getDeploymentPatternVersion: API.OperationMethod<
   input: GetDeploymentPatternVersionInput,
   output: GetDeploymentPatternVersionOutput,
   errors: [InternalServerException, ResourceNotFoundException],
+  operationName: "GetDeploymentPatternVersion",
 }));
 export type ListDeploymentPatternVersionsError =
   | InternalServerException
@@ -1369,6 +1383,7 @@ export const listDeploymentPatternVersions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListDeploymentPatternVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

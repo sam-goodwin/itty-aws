@@ -743,6 +743,7 @@ export const getExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetExecution",
 }));
 export type GetTableError =
   | InternalServerException
@@ -761,6 +762,7 @@ export const getTable: API.OperationMethod<
   input: GetTableRequest,
   output: GetTableResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "GetTable",
 }));
 export type ListExecutionsError =
   | InternalServerException
@@ -800,6 +802,7 @@ export const listExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListExecutions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -839,6 +842,7 @@ export const listTables: API.OperationMethod<
   input: ListTablesRequest,
   output: ListTablesResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "ListTables",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -871,6 +875,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -897,6 +902,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -923,6 +929,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateExportError =
   | AccessDeniedException
@@ -955,6 +962,7 @@ export const createExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateExport",
 }));
 export type GetExportError =
   | InternalServerException
@@ -979,6 +987,7 @@ export const getExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetExport",
 }));
 export type UpdateExportError =
   | InternalServerException
@@ -1003,6 +1012,7 @@ export const updateExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateExport",
 }));
 export type DeleteExportError =
   | InternalServerException
@@ -1027,6 +1037,7 @@ export const deleteExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteExport",
 }));
 export type ListExportsError =
   | InternalServerException
@@ -1060,6 +1071,7 @@ export const listExports: API.OperationMethod<
   input: ListExportsRequest,
   output: ListExportsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "ListExports",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

@@ -5364,6 +5364,7 @@ export const batchExecuteStatement: API.OperationMethod<
   input: BatchExecuteStatementInput,
   output: BatchExecuteStatementOutput,
   errors: [InternalServerError, RequestLimitExceeded, ThrottlingException],
+  operationName: "BatchExecuteStatement",
 }));
 export type BatchGetItemError =
   | InternalServerError
@@ -5447,6 +5448,7 @@ export const batchGetItem: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "BatchGetItem",
 }));
 export type BatchWriteItemError =
   | InternalServerError
@@ -5562,6 +5564,7 @@ export const batchWriteItem: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "BatchWriteItem",
 }));
 export type CreateBackupError =
   | BackupInUseException
@@ -5621,6 +5624,7 @@ export const createBackup: API.OperationMethod<
     TableInUseException,
     TableNotFoundException,
   ],
+  operationName: "CreateBackup",
 }));
 export type CreateGlobalTableError =
   | GlobalTableAlreadyExistsException
@@ -5690,6 +5694,7 @@ export const createGlobalTable: API.OperationMethod<
     LimitExceededException,
     TableNotFoundException,
   ],
+  operationName: "CreateGlobalTable",
 }));
 export type CreateTableError =
   | InternalServerError
@@ -5728,6 +5733,7 @@ export const createTable: API.OperationMethod<
     LimitExceededException,
     ResourceInUseException,
   ],
+  operationName: "CreateTable",
 }));
 export type DeleteBackupError =
   | BackupInUseException
@@ -5757,6 +5763,7 @@ export const deleteBackup: API.OperationMethod<
     InvalidEndpointException,
     LimitExceededException,
   ],
+  operationName: "DeleteBackup",
 }));
 export type DeleteItemError =
   | ConditionalCheckFailedException
@@ -5806,6 +5813,7 @@ export const deleteItem: API.OperationMethod<
     ThrottlingException,
     TransactionConflictException,
   ],
+  operationName: "DeleteItem",
 }));
 export type DeleteResourcePolicyError =
   | InternalServerError
@@ -5852,6 +5860,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteTableError =
   | InternalServerError
@@ -5898,6 +5907,7 @@ export const deleteTable: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteTable",
 }));
 export type DescribeBackupError =
   | BackupNotFoundException
@@ -5923,6 +5933,7 @@ export const describeBackup: API.OperationMethod<
     InternalServerError,
     InvalidEndpointException,
   ],
+  operationName: "DescribeBackup",
 }));
 export type DescribeContinuousBackupsError =
   | InternalServerError
@@ -5959,6 +5970,7 @@ export const describeContinuousBackups: API.OperationMethod<
     InvalidEndpointException,
     TableNotFoundException,
   ],
+  operationName: "DescribeContinuousBackups",
 }));
 export type DescribeContributorInsightsError =
   | InternalServerError
@@ -5977,6 +5989,7 @@ export const describeContributorInsights: API.OperationMethod<
   input: DescribeContributorInsightsInput,
   output: DescribeContributorInsightsOutput,
   errors: [InternalServerError, ResourceNotFoundException],
+  operationName: "DescribeContributorInsights",
 }));
 export type DescribeEndpointsError = CommonErrors;
 /**
@@ -5992,6 +6005,7 @@ export const describeEndpoints: API.OperationMethod<
   input: DescribeEndpointsRequest,
   output: DescribeEndpointsResponse,
   errors: [],
+  operationName: "DescribeEndpoints",
 }));
 export type DescribeExportError =
   | ExportNotFoundException
@@ -6014,6 +6028,7 @@ export const describeExport: API.OperationMethod<
     InternalServerError,
     LimitExceededException,
   ],
+  operationName: "DescribeExport",
 }));
 export type DescribeGlobalTableError =
   | GlobalTableNotFoundException
@@ -6040,6 +6055,7 @@ export const describeGlobalTable: API.OperationMethod<
     InternalServerError,
     InvalidEndpointException,
   ],
+  operationName: "DescribeGlobalTable",
 }));
 export type DescribeGlobalTableSettingsError =
   | GlobalTableNotFoundException
@@ -6066,6 +6082,7 @@ export const describeGlobalTableSettings: API.OperationMethod<
     InternalServerError,
     InvalidEndpointException,
   ],
+  operationName: "DescribeGlobalTableSettings",
 }));
 export type DescribeImportError = ImportNotFoundException | CommonErrors;
 /**
@@ -6080,6 +6097,7 @@ export const describeImport: API.OperationMethod<
   input: DescribeImportInput,
   output: DescribeImportOutput,
   errors: [ImportNotFoundException],
+  operationName: "DescribeImport",
 }));
 export type DescribeKinesisStreamingDestinationError =
   | InternalServerError
@@ -6102,6 +6120,7 @@ export const describeKinesisStreamingDestination: API.OperationMethod<
     InvalidEndpointException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeKinesisStreamingDestination",
 }));
 export type DescribeLimitsError =
   | InternalServerError
@@ -6181,6 +6200,7 @@ export const describeLimits: API.OperationMethod<
   input: DescribeLimitsInput,
   output: DescribeLimitsOutput,
   errors: [InternalServerError, InvalidEndpointException],
+  operationName: "DescribeLimits",
 }));
 export type DescribeTableError =
   | InternalServerError
@@ -6211,6 +6231,7 @@ export const describeTable: API.OperationMethod<
     InvalidEndpointException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeTable",
 }));
 export type DescribeTableReplicaAutoScalingError =
   | InternalServerError
@@ -6228,6 +6249,7 @@ export const describeTableReplicaAutoScaling: API.OperationMethod<
   input: DescribeTableReplicaAutoScalingInput,
   output: DescribeTableReplicaAutoScalingOutput,
   errors: [InternalServerError, ResourceNotFoundException],
+  operationName: "DescribeTableReplicaAutoScaling",
 }));
 export type DescribeTimeToLiveError =
   | InternalServerError
@@ -6250,6 +6272,7 @@ export const describeTimeToLive: API.OperationMethod<
     InvalidEndpointException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeTimeToLive",
 }));
 export type DisableKinesisStreamingDestinationError =
   | InternalServerError
@@ -6277,6 +6300,7 @@ export const disableKinesisStreamingDestination: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DisableKinesisStreamingDestination",
 }));
 export type EnableKinesisStreamingDestinationError =
   | InternalServerError
@@ -6306,6 +6330,7 @@ export const enableKinesisStreamingDestination: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "EnableKinesisStreamingDestination",
 }));
 export type ExecuteStatementError =
   | ConditionalCheckFailedException
@@ -6354,6 +6379,7 @@ export const executeStatement: API.OperationMethod<
     ThrottlingException,
     TransactionConflictException,
   ],
+  operationName: "ExecuteStatement",
 }));
 export type ExecuteTransactionError =
   | IdempotentParameterMismatchException
@@ -6392,6 +6418,7 @@ export const executeTransaction: API.OperationMethod<
     TransactionCanceledException,
     TransactionInProgressException,
   ],
+  operationName: "ExecuteTransaction",
 }));
 export type ExportTableToPointInTimeError =
   | ExportConflictException
@@ -6422,6 +6449,7 @@ export const exportTableToPointInTime: API.OperationMethod<
     PointInTimeRecoveryUnavailableException,
     TableNotFoundException,
   ],
+  operationName: "ExportTableToPointInTime",
 }));
 export type GetItemError =
   | InternalServerError
@@ -6457,6 +6485,7 @@ export const getItem: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetItem",
 }));
 export type GetResourcePolicyError =
   | InternalServerError
@@ -6513,6 +6542,7 @@ export const getResourcePolicy: API.OperationMethod<
     PolicyNotFoundException,
     ResourceNotFoundException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type ImportTableError =
   | ImportConflictException
@@ -6535,6 +6565,7 @@ export const importTable: API.OperationMethod<
     LimitExceededException,
     ResourceInUseException,
   ],
+  operationName: "ImportTable",
 }));
 export type ListBackupsError =
   | InternalServerError
@@ -6565,6 +6596,7 @@ export const listBackups: API.OperationMethod<
   input: ListBackupsInput,
   output: ListBackupsOutput,
   errors: [InternalServerError, InvalidEndpointException],
+  operationName: "ListBackups",
 }));
 export type ListContributorInsightsError =
   | InternalServerError
@@ -6598,6 +6630,7 @@ export const listContributorInsights: API.OperationMethod<
   input: ListContributorInsightsInput,
   output: ListContributorInsightsOutput,
   errors: [InternalServerError, ResourceNotFoundException],
+  operationName: "ListContributorInsights",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6635,6 +6668,7 @@ export const listExports: API.OperationMethod<
   input: ListExportsInput,
   output: ListExportsOutput,
   errors: [InternalServerError, LimitExceededException],
+  operationName: "ListExports",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6661,6 +6695,7 @@ export const listGlobalTables: API.OperationMethod<
   input: ListGlobalTablesInput,
   output: ListGlobalTablesOutput,
   errors: [InternalServerError, InvalidEndpointException],
+  operationName: "ListGlobalTables",
 }));
 export type ListImportsError = LimitExceededException | CommonErrors;
 /**
@@ -6690,6 +6725,7 @@ export const listImports: API.OperationMethod<
   input: ListImportsInput,
   output: ListImportsOutput,
   errors: [LimitExceededException],
+  operationName: "ListImports",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6729,6 +6765,7 @@ export const listTables: API.OperationMethod<
   input: ListTablesInput,
   output: ListTablesOutput,
   errors: [InternalServerError, InvalidEndpointException],
+  operationName: "ListTables",
   pagination: {
     inputToken: "ExclusiveStartTableName",
     outputToken: "LastEvaluatedTableName",
@@ -6761,6 +6798,7 @@ export const listTagsOfResource: API.OperationMethod<
     InvalidEndpointException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsOfResource",
 }));
 export type PutItemError =
   | ConditionalCheckFailedException
@@ -6824,6 +6862,7 @@ export const putItem: API.OperationMethod<
     ThrottlingException,
     TransactionConflictException,
   ],
+  operationName: "PutItem",
 }));
 export type PutResourcePolicyError =
   | InternalServerError
@@ -6871,6 +6910,7 @@ export const putResourcePolicy: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type QueryError =
   | InternalServerError
@@ -6965,6 +7005,7 @@ export const query: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "Query",
   pagination: {
     inputToken: "ExclusiveStartKey",
     outputToken: "LastEvaluatedKey",
@@ -7019,6 +7060,7 @@ export const restoreTableFromBackup: API.OperationMethod<
     TableAlreadyExistsException,
     TableInUseException,
   ],
+  operationName: "RestoreTableFromBackup",
 }));
 export type RestoreTableToPointInTimeError =
   | InternalServerError
@@ -7088,6 +7130,7 @@ export const restoreTableToPointInTime: API.OperationMethod<
     TableInUseException,
     TableNotFoundException,
   ],
+  operationName: "RestoreTableToPointInTime",
 }));
 export type ScanError =
   | InternalServerError
@@ -7173,6 +7216,7 @@ export const scan: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "Scan",
   pagination: {
     inputToken: "ExclusiveStartKey",
     outputToken: "LastEvaluatedKey",
@@ -7224,6 +7268,7 @@ export const tagResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type TransactGetItemsError =
   | InternalServerError
@@ -7274,6 +7319,7 @@ export const transactGetItems: API.OperationMethod<
     ThrottlingException,
     TransactionCanceledException,
   ],
+  operationName: "TransactGetItems",
 }));
 export type TransactWriteItemsError =
   | IdempotentParameterMismatchException
@@ -7363,6 +7409,7 @@ export const transactWriteItems: API.OperationMethod<
     TransactionCanceledException,
     TransactionInProgressException,
   ],
+  operationName: "TransactWriteItems",
 }));
 export type UntagResourceError =
   | InternalServerError
@@ -7406,6 +7453,7 @@ export const untagResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateContinuousBackupsError =
   | ContinuousBackupsUnavailableException
@@ -7442,6 +7490,7 @@ export const updateContinuousBackups: API.OperationMethod<
     InvalidEndpointException,
     TableNotFoundException,
   ],
+  operationName: "UpdateContinuousBackups",
 }));
 export type UpdateContributorInsightsError =
   | InternalServerError
@@ -7465,6 +7514,7 @@ export const updateContributorInsights: API.OperationMethod<
   input: UpdateContributorInsightsInput,
   output: UpdateContributorInsightsOutput,
   errors: [InternalServerError, ResourceNotFoundException],
+  operationName: "UpdateContributorInsights",
 }));
 export type UpdateGlobalTableError =
   | GlobalTableNotFoundException
@@ -7518,6 +7568,7 @@ export const updateGlobalTable: API.OperationMethod<
     ReplicaNotFoundException,
     TableNotFoundException,
   ],
+  operationName: "UpdateGlobalTable",
 }));
 export type UpdateGlobalTableSettingsError =
   | GlobalTableNotFoundException
@@ -7552,6 +7603,7 @@ export const updateGlobalTableSettings: API.OperationMethod<
     ReplicaNotFoundException,
     ResourceInUseException,
   ],
+  operationName: "UpdateGlobalTableSettings",
 }));
 export type UpdateItemError =
   | ConditionalCheckFailedException
@@ -7595,6 +7647,7 @@ export const updateItem: API.OperationMethod<
     ThrottlingException,
     TransactionConflictException,
   ],
+  operationName: "UpdateItem",
 }));
 export type UpdateKinesisStreamingDestinationError =
   | InternalServerError
@@ -7621,6 +7674,7 @@ export const updateKinesisStreamingDestination: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateKinesisStreamingDestination",
 }));
 export type UpdateTableError =
   | InternalServerError
@@ -7664,6 +7718,7 @@ export const updateTable: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateTable",
 }));
 export type UpdateTableReplicaAutoScalingError =
   | InternalServerError
@@ -7688,6 +7743,7 @@ export const updateTableReplicaAutoScaling: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateTableReplicaAutoScaling",
 }));
 export type UpdateTimeToLiveError =
   | InternalServerError
@@ -7740,4 +7796,5 @@ export const updateTimeToLive: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateTimeToLive",
 }));

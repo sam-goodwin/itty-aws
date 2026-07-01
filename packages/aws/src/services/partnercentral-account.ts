@@ -1801,6 +1801,7 @@ export const getVerification: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetVerification",
 }));
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -1827,6 +1828,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type SendEmailVerificationCodeError =
   | AccessDeniedException
@@ -1853,6 +1855,7 @@ export const sendEmailVerificationCode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendEmailVerificationCode",
 }));
 export type StartVerificationError =
   | AccessDeniedException
@@ -1881,6 +1884,7 @@ export const startVerification: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartVerification",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1909,6 +1913,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1937,6 +1942,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateConnectionInvitationError =
   | AccessDeniedException
@@ -1967,6 +1973,7 @@ export const createConnectionInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateConnectionInvitation",
 }));
 export type GetConnectionInvitationError =
   | AccessDeniedException
@@ -1993,6 +2000,7 @@ export const getConnectionInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetConnectionInvitation",
 }));
 export type ListConnectionInvitationsError =
   | AccessDeniedException
@@ -2032,6 +2040,7 @@ export const listConnectionInvitations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListConnectionInvitations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2068,6 +2077,7 @@ export const acceptConnectionInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AcceptConnectionInvitation",
 }));
 export type CancelConnectionInvitationError =
   | AccessDeniedException
@@ -2096,6 +2106,7 @@ export const cancelConnectionInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelConnectionInvitation",
 }));
 export type RejectConnectionInvitationError =
   | AccessDeniedException
@@ -2124,6 +2135,7 @@ export const rejectConnectionInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RejectConnectionInvitation",
 }));
 export type GetConnectionPreferencesError =
   | AccessDeniedException
@@ -2148,6 +2160,7 @@ export const getConnectionPreferences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetConnectionPreferences",
 }));
 export type UpdateConnectionPreferencesError =
   | AccessDeniedException
@@ -2174,6 +2187,7 @@ export const updateConnectionPreferences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateConnectionPreferences",
 }));
 export type GetConnectionError =
   | AccessDeniedException
@@ -2200,6 +2214,7 @@ export const getConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetConnection",
 }));
 export type ListConnectionsError =
   | AccessDeniedException
@@ -2239,6 +2254,7 @@ export const listConnections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListConnections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2273,6 +2289,7 @@ export const cancelConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelConnection",
 }));
 export type CreatePartnerError =
   | AccessDeniedException
@@ -2299,6 +2316,7 @@ export const createPartner: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreatePartner",
 }));
 export type GetPartnerError =
   | AccessDeniedException
@@ -2325,6 +2343,7 @@ export const getPartner: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPartner",
 }));
 export type ListPartnersError =
   | AccessDeniedException
@@ -2364,6 +2383,7 @@ export const listPartners: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPartners",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2397,6 +2417,7 @@ export const associateAwsTrainingCertificationEmailDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateAwsTrainingCertificationEmailDomain",
 }));
 export type CancelProfileUpdateTaskError =
   | AccessDeniedException
@@ -2425,6 +2446,7 @@ export const cancelProfileUpdateTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelProfileUpdateTask",
 }));
 export type DisassociateAwsTrainingCertificationEmailDomainError =
   | AccessDeniedException
@@ -2451,6 +2473,7 @@ export const disassociateAwsTrainingCertificationEmailDomain: API.OperationMetho
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateAwsTrainingCertificationEmailDomain",
 }));
 export type GetAllianceLeadContactError =
   | AccessDeniedException
@@ -2477,6 +2500,7 @@ export const getAllianceLeadContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAllianceLeadContact",
 }));
 export type GetProfileUpdateTaskError =
   | AccessDeniedException
@@ -2503,6 +2527,7 @@ export const getProfileUpdateTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetProfileUpdateTask",
 }));
 export type GetProfileVisibilityError =
   | AccessDeniedException
@@ -2529,6 +2554,7 @@ export const getProfileVisibility: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetProfileVisibility",
 }));
 export type PutAllianceLeadContactError =
   | AccessDeniedException
@@ -2555,6 +2581,7 @@ export const putAllianceLeadContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutAllianceLeadContact",
 }));
 export type PutProfileVisibilityError =
   | AccessDeniedException
@@ -2583,6 +2610,7 @@ export const putProfileVisibility: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutProfileVisibility",
 }));
 export type StartProfileUpdateTaskError =
   | AccessDeniedException
@@ -2613,4 +2641,5 @@ export const startProfileUpdateTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartProfileUpdateTask",
 }));

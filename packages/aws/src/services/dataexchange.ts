@@ -2992,6 +2992,7 @@ export const acceptDataGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AcceptDataGrant",
 }));
 export type CancelJobError =
   | ConflictException
@@ -3018,6 +3019,7 @@ export const cancelJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelJob",
 }));
 export type CreateDataGrantError =
   | AccessDeniedException
@@ -3046,6 +3048,7 @@ export const createDataGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDataGrant",
 }));
 export type CreateDataSetError =
   | AccessDeniedException
@@ -3072,6 +3075,7 @@ export const createDataSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDataSet",
 }));
 export type CreateEventActionError =
   | AccessDeniedException
@@ -3098,6 +3102,7 @@ export const createEventAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEventAction",
 }));
 export type CreateJobError =
   | AccessDeniedException
@@ -3126,6 +3131,7 @@ export const createJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateJob",
 }));
 export type CreateRevisionError =
   | AccessDeniedException
@@ -3152,6 +3158,7 @@ export const createRevision: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRevision",
 }));
 export type DeleteAssetError =
   | AccessDeniedException
@@ -3180,6 +3187,7 @@ export const deleteAsset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAsset",
 }));
 export type DeleteDataGrantError =
   | AccessDeniedException
@@ -3206,6 +3214,7 @@ export const deleteDataGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDataGrant",
 }));
 export type DeleteDataSetError =
   | AccessDeniedException
@@ -3234,6 +3243,7 @@ export const deleteDataSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDataSet",
 }));
 export type DeleteEventActionError =
   | InternalServerException
@@ -3258,6 +3268,7 @@ export const deleteEventAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteEventAction",
 }));
 export type DeleteRevisionError =
   | AccessDeniedException
@@ -3286,6 +3297,7 @@ export const deleteRevision: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRevision",
 }));
 export type GetAssetError =
   | InternalServerException
@@ -3310,6 +3322,7 @@ export const getAsset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAsset",
 }));
 export type GetDataGrantError =
   | AccessDeniedException
@@ -3336,6 +3349,7 @@ export const getDataGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataGrant",
 }));
 export type GetDataSetError =
   | InternalServerException
@@ -3360,6 +3374,7 @@ export const getDataSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataSet",
 }));
 export type GetEventActionError =
   | InternalServerException
@@ -3384,6 +3399,7 @@ export const getEventAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEventAction",
 }));
 export type GetJobError =
   | InternalServerException
@@ -3408,6 +3424,7 @@ export const getJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetJob",
 }));
 export type GetReceivedDataGrantError =
   | AccessDeniedException
@@ -3434,6 +3451,7 @@ export const getReceivedDataGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetReceivedDataGrant",
 }));
 export type GetRevisionError =
   | InternalServerException
@@ -3458,6 +3476,7 @@ export const getRevision: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRevision",
 }));
 export type ListDataGrantsError =
   | AccessDeniedException
@@ -3499,6 +3518,7 @@ export const listDataGrants: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataGrants",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3544,6 +3564,7 @@ export const listDataSetRevisions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataSetRevisions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3589,6 +3610,7 @@ export const listDataSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataSets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3634,6 +3656,7 @@ export const listEventActions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEventActions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3679,6 +3702,7 @@ export const listJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3726,6 +3750,7 @@ export const listReceivedDataGrants: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListReceivedDataGrants",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3771,6 +3796,7 @@ export const listRevisionAssets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRevisionAssets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3791,6 +3817,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
+  operationName: "ListTagsForResource",
 }));
 export type RevokeRevisionError =
   | AccessDeniedException
@@ -3819,6 +3846,7 @@ export const revokeRevision: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RevokeRevision",
 }));
 export type SendApiAssetError =
   | AccessDeniedException
@@ -3845,6 +3873,7 @@ export const sendApiAsset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendApiAsset",
 }));
 export type SendDataSetNotificationError =
   | AccessDeniedException
@@ -3873,6 +3902,7 @@ export const sendDataSetNotification: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendDataSetNotification",
 }));
 export type StartJobError =
   | AccessDeniedException
@@ -3901,6 +3931,7 @@ export const startJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartJob",
 }));
 export type TagResourceError = CommonErrors;
 /**
@@ -3915,6 +3946,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = CommonErrors;
 /**
@@ -3929,6 +3961,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
+  operationName: "UntagResource",
 }));
 export type UpdateAssetError =
   | AccessDeniedException
@@ -3957,6 +3990,7 @@ export const updateAsset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAsset",
 }));
 export type UpdateDataSetError =
   | AccessDeniedException
@@ -3983,6 +4017,7 @@ export const updateDataSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDataSet",
 }));
 export type UpdateEventActionError =
   | AccessDeniedException
@@ -4009,6 +4044,7 @@ export const updateEventAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateEventAction",
 }));
 export type UpdateRevisionError =
   | AccessDeniedException
@@ -4037,4 +4073,5 @@ export const updateRevision: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRevision",
 }));

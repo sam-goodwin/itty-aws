@@ -7528,6 +7528,7 @@ export const acceptDelegationRequest: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "AcceptDelegationRequest",
 }));
 export type AddClientIDToOpenIDConnectProviderError =
   | ConcurrentModificationException
@@ -7558,6 +7559,7 @@ export const addClientIDToOpenIDConnectProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "AddClientIDToOpenIDConnectProvider",
 }));
 export type AddRoleToInstanceProfileError =
   | EntityAlreadyExistsException
@@ -7603,6 +7605,7 @@ export const addRoleToInstanceProfile: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  operationName: "AddRoleToInstanceProfile",
 }));
 export type AddUserToGroupError =
   | LimitExceededException
@@ -7625,6 +7628,7 @@ export const addUserToGroup: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "AddUserToGroup",
 }));
 export type AssociateDelegationRequestError =
   | ConcurrentModificationException
@@ -7668,6 +7672,7 @@ export const associateDelegationRequest: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "AssociateDelegationRequest",
 }));
 export type AttachGroupPolicyError =
   | InvalidInputException
@@ -7706,6 +7711,7 @@ export const attachGroupPolicy: API.OperationMethod<
     PolicyNotAttachableException,
     ServiceFailureException,
   ],
+  operationName: "AttachGroupPolicy",
 }));
 export type AttachRolePolicyError =
   | InvalidInputException
@@ -7755,6 +7761,7 @@ export const attachRolePolicy: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  operationName: "AttachRolePolicy",
 }));
 export type AttachUserPolicyError =
   | InvalidInputException
@@ -7793,6 +7800,7 @@ export const attachUserPolicy: API.OperationMethod<
     PolicyNotAttachableException,
     ServiceFailureException,
   ],
+  operationName: "AttachUserPolicy",
 }));
 export type ChangePasswordError =
   | EntityTemporarilyUnmodifiableException
@@ -7830,6 +7838,7 @@ export const changePassword: API.OperationMethod<
     PasswordPolicyViolationException,
     ServiceFailureException,
   ],
+  operationName: "ChangePassword",
 }));
 export type CreateAccessKeyError =
   | LimitExceededException
@@ -7866,6 +7875,7 @@ export const createAccessKey: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "CreateAccessKey",
 }));
 export type CreateAccountAliasError =
   | ConcurrentModificationException
@@ -7893,6 +7903,7 @@ export const createAccountAlias: API.OperationMethod<
     LimitExceededException,
     ServiceFailureException,
   ],
+  operationName: "CreateAccountAlias",
 }));
 export type CreateDelegationRequestError =
   | ConcurrentModificationException
@@ -7923,6 +7934,7 @@ export const createDelegationRequest: API.OperationMethod<
     LimitExceededException,
     ServiceFailureException,
   ],
+  operationName: "CreateDelegationRequest",
 }));
 export type CreateGroupError =
   | EntityAlreadyExistsException
@@ -7950,6 +7962,7 @@ export const createGroup: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "CreateGroup",
 }));
 export type CreateInstanceProfileError =
   | ConcurrentModificationException
@@ -7981,6 +7994,7 @@ export const createInstanceProfile: API.OperationMethod<
     LimitExceededException,
     ServiceFailureException,
   ],
+  operationName: "CreateInstanceProfile",
 }));
 export type CreateLoginProfileError =
   | EntityAlreadyExistsException
@@ -8014,6 +8028,7 @@ export const createLoginProfile: API.OperationMethod<
     PasswordPolicyViolationException,
     ServiceFailureException,
   ],
+  operationName: "CreateLoginProfile",
 }));
 export type CreateOpenIDConnectProviderError =
   | ConcurrentModificationException
@@ -8078,6 +8093,7 @@ export const createOpenIDConnectProvider: API.OperationMethod<
     OpenIdIdpCommunicationErrorException,
     ServiceFailureException,
   ],
+  operationName: "CreateOpenIDConnectProvider",
 }));
 export type CreatePolicyError =
   | ConcurrentModificationException
@@ -8119,6 +8135,7 @@ export const createPolicy: API.OperationMethod<
     MalformedPolicyDocumentException,
     ServiceFailureException,
   ],
+  operationName: "CreatePolicy",
 }));
 export type CreatePolicyVersionError =
   | InvalidInputException
@@ -8154,6 +8171,7 @@ export const createPolicyVersion: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "CreatePolicyVersion",
 }));
 export type CreateRoleError =
   | ConcurrentModificationException
@@ -8187,6 +8205,7 @@ export const createRole: API.OperationMethod<
     MalformedPolicyDocumentException,
     ServiceFailureException,
   ],
+  operationName: "CreateRole",
 }));
 export type CreateSAMLProviderError =
   | ConcurrentModificationException
@@ -8232,6 +8251,7 @@ export const createSAMLProvider: API.OperationMethod<
     LimitExceededException,
     ServiceFailureException,
   ],
+  operationName: "CreateSAMLProvider",
 }));
 export type CreateServiceLinkedRoleError =
   | InvalidInputException
@@ -8265,6 +8285,7 @@ export const createServiceLinkedRole: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "CreateServiceLinkedRole",
 }));
 export type CreateServiceSpecificCredentialError =
   | LimitExceededException
@@ -8308,6 +8329,7 @@ export const createServiceSpecificCredential: API.OperationMethod<
     NoSuchEntityException,
     ServiceNotSupportedException,
   ],
+  operationName: "CreateServiceSpecificCredential",
 }));
 export type CreateUserError =
   | ConcurrentModificationException
@@ -8339,6 +8361,7 @@ export const createUser: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "CreateUser",
 }));
 export type CreateVirtualMFADeviceError =
   | ConcurrentModificationException
@@ -8378,6 +8401,7 @@ export const createVirtualMFADevice: API.OperationMethod<
     LimitExceededException,
     ServiceFailureException,
   ],
+  operationName: "CreateVirtualMFADevice",
 }));
 export type DeactivateMFADeviceError =
   | ConcurrentModificationException
@@ -8409,6 +8433,7 @@ export const deactivateMFADevice: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeactivateMFADevice",
 }));
 export type DeleteAccessKeyError =
   | LimitExceededException
@@ -8436,6 +8461,7 @@ export const deleteAccessKey: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeleteAccessKey",
 }));
 export type DeleteAccountAliasError =
   | ConcurrentModificationException
@@ -8463,6 +8489,7 @@ export const deleteAccountAlias: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeleteAccountAlias",
 }));
 export type DeleteAccountPasswordPolicyError =
   | LimitExceededException
@@ -8485,6 +8512,7 @@ export const deleteAccountPasswordPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeleteAccountPasswordPolicy",
 }));
 export type DeleteGroupError =
   | DeleteConflictException
@@ -8510,6 +8538,7 @@ export const deleteGroup: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeleteGroup",
 }));
 export type DeleteGroupPolicyError =
   | LimitExceededException
@@ -8538,6 +8567,7 @@ export const deleteGroupPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeleteGroupPolicy",
 }));
 export type DeleteInstanceProfileError =
   | DeleteConflictException
@@ -8571,6 +8601,7 @@ export const deleteInstanceProfile: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeleteInstanceProfile",
 }));
 export type DeleteLoginProfileError =
   | EntityTemporarilyUnmodifiableException
@@ -8608,6 +8639,7 @@ export const deleteLoginProfile: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeleteLoginProfile",
 }));
 export type DeleteOpenIDConnectProviderError =
   | InvalidInputException
@@ -8637,6 +8669,7 @@ export const deleteOpenIDConnectProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeleteOpenIDConnectProvider",
 }));
 export type DeletePolicyError =
   | DeleteConflictException
@@ -8682,6 +8715,7 @@ export const deletePolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeletePolicy",
 }));
 export type DeletePolicyVersionError =
   | DeleteConflictException
@@ -8715,6 +8749,7 @@ export const deletePolicyVersion: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeletePolicyVersion",
 }));
 export type DeleteRoleError =
   | ConcurrentModificationException
@@ -8759,6 +8794,7 @@ export const deleteRole: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  operationName: "DeleteRole",
 }));
 export type DeleteRolePermissionsBoundaryError =
   | NoSuchEntityException
@@ -8787,6 +8823,7 @@ export const deleteRolePermissionsBoundary: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  operationName: "DeleteRolePermissionsBoundary",
 }));
 export type DeleteRolePolicyError =
   | LimitExceededException
@@ -8817,6 +8854,7 @@ export const deleteRolePolicy: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  operationName: "DeleteRolePolicy",
 }));
 export type DeleteSAMLProviderError =
   | InvalidInputException
@@ -8847,6 +8885,7 @@ export const deleteSAMLProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeleteSAMLProvider",
 }));
 export type DeleteServerCertificateError =
   | DeleteConflictException
@@ -8885,6 +8924,7 @@ export const deleteServerCertificate: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeleteServerCertificate",
 }));
 export type DeleteServiceLinkedRoleError =
   | LimitExceededException
@@ -8925,6 +8965,7 @@ export const deleteServiceLinkedRole: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeleteServiceLinkedRole",
 }));
 export type DeleteServiceSpecificCredentialError =
   | NoSuchEntityException
@@ -8941,6 +8982,7 @@ export const deleteServiceSpecificCredential: API.OperationMethod<
   input: DeleteServiceSpecificCredentialRequest,
   output: DeleteServiceSpecificCredentialResponse,
   errors: [NoSuchEntityException],
+  operationName: "DeleteServiceSpecificCredential",
 }));
 export type DeleteSigningCertificateError =
   | ConcurrentModificationException
@@ -8970,6 +9012,7 @@ export const deleteSigningCertificate: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeleteSigningCertificate",
 }));
 export type DeleteSSHPublicKeyError = NoSuchEntityException | CommonErrors;
 /**
@@ -8989,6 +9032,7 @@ export const deleteSSHPublicKey: API.OperationMethod<
   input: DeleteSSHPublicKeyRequest,
   output: DeleteSSHPublicKeyResponse,
   errors: [NoSuchEntityException],
+  operationName: "DeleteSSHPublicKey",
 }));
 export type DeleteUserError =
   | ConcurrentModificationException
@@ -9036,6 +9080,7 @@ export const deleteUser: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeleteUser",
 }));
 export type DeleteUserPermissionsBoundaryError =
   | NoSuchEntityException
@@ -9056,6 +9101,7 @@ export const deleteUserPermissionsBoundary: API.OperationMethod<
   input: DeleteUserPermissionsBoundaryRequest,
   output: DeleteUserPermissionsBoundaryResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "DeleteUserPermissionsBoundary",
 }));
 export type DeleteUserPolicyError =
   | LimitExceededException
@@ -9084,6 +9130,7 @@ export const deleteUserPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeleteUserPolicy",
 }));
 export type DeleteVirtualMFADeviceError =
   | ConcurrentModificationException
@@ -9113,6 +9160,7 @@ export const deleteVirtualMFADevice: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DeleteVirtualMFADevice",
 }));
 export type DetachGroupPolicyError =
   | InvalidInputException
@@ -9142,6 +9190,7 @@ export const detachGroupPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DetachGroupPolicy",
 }));
 export type DetachRolePolicyError =
   | InvalidInputException
@@ -9173,6 +9222,7 @@ export const detachRolePolicy: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  operationName: "DetachRolePolicy",
 }));
 export type DetachUserPolicyError =
   | InvalidInputException
@@ -9202,6 +9252,7 @@ export const detachUserPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "DetachUserPolicy",
 }));
 export type DisableOrganizationsRootCredentialsManagementError =
   | AccountNotManagementOrDelegatedAdministratorException
@@ -9229,6 +9280,7 @@ export const disableOrganizationsRootCredentialsManagement: API.OperationMethod<
     OrganizationNotInAllFeaturesModeException,
     ServiceAccessNotEnabledException,
   ],
+  operationName: "DisableOrganizationsRootCredentialsManagement",
 }));
 export type DisableOrganizationsRootSessionsError =
   | AccountNotManagementOrDelegatedAdministratorException
@@ -9256,6 +9308,7 @@ export const disableOrganizationsRootSessions: API.OperationMethod<
     OrganizationNotInAllFeaturesModeException,
     ServiceAccessNotEnabledException,
   ],
+  operationName: "DisableOrganizationsRootSessions",
 }));
 export type DisableOutboundWebIdentityFederationError =
   | FeatureDisabledException
@@ -9274,6 +9327,7 @@ export const disableOutboundWebIdentityFederation: API.OperationMethod<
   input: DisableOutboundWebIdentityFederationRequest,
   output: DisableOutboundWebIdentityFederationResponse,
   errors: [FeatureDisabledException],
+  operationName: "DisableOutboundWebIdentityFederation",
 }));
 export type EnableMFADeviceError =
   | ConcurrentModificationException
@@ -9306,6 +9360,7 @@ export const enableMFADevice: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "EnableMFADevice",
 }));
 export type EnableOrganizationsRootCredentialsManagementError =
   | AccountNotManagementOrDelegatedAdministratorException
@@ -9344,6 +9399,7 @@ export const enableOrganizationsRootCredentialsManagement: API.OperationMethod<
     OrganizationNotInAllFeaturesModeException,
     ServiceAccessNotEnabledException,
   ],
+  operationName: "EnableOrganizationsRootCredentialsManagement",
 }));
 export type EnableOrganizationsRootSessionsError =
   | AccountNotManagementOrDelegatedAdministratorException
@@ -9381,6 +9437,7 @@ export const enableOrganizationsRootSessions: API.OperationMethod<
     OrganizationNotInAllFeaturesModeException,
     ServiceAccessNotEnabledException,
   ],
+  operationName: "EnableOrganizationsRootSessions",
 }));
 export type EnableOutboundWebIdentityFederationError =
   | FeatureEnabledException
@@ -9399,6 +9456,7 @@ export const enableOutboundWebIdentityFederation: API.OperationMethod<
   input: EnableOutboundWebIdentityFederationRequest,
   output: EnableOutboundWebIdentityFederationResponse,
   errors: [FeatureEnabledException],
+  operationName: "EnableOutboundWebIdentityFederation",
 }));
 export type GenerateCredentialReportError =
   | LimitExceededException
@@ -9418,6 +9476,7 @@ export const generateCredentialReport: API.OperationMethod<
   input: GenerateCredentialReportRequest,
   output: GenerateCredentialReportResponse,
   errors: [LimitExceededException, ServiceFailureException],
+  operationName: "GenerateCredentialReport",
 }));
 export type GenerateOrganizationsAccessReportError =
   | ReportGenerationLimitExceededException
@@ -9550,6 +9609,7 @@ export const generateOrganizationsAccessReport: API.OperationMethod<
   input: GenerateOrganizationsAccessReportRequest,
   output: GenerateOrganizationsAccessReportResponse,
   errors: [ReportGenerationLimitExceededException],
+  operationName: "GenerateOrganizationsAccessReport",
 }));
 export type GenerateServiceLastAccessedDetailsError =
   | InvalidInputException
@@ -9618,6 +9678,7 @@ export const generateServiceLastAccessedDetails: API.OperationMethod<
   input: GenerateServiceLastAccessedDetailsRequest,
   output: GenerateServiceLastAccessedDetailsResponse,
   errors: [InvalidInputException, NoSuchEntityException],
+  operationName: "GenerateServiceLastAccessedDetails",
 }));
 export type GetAccessKeyLastUsedError = CommonErrors;
 /**
@@ -9634,6 +9695,7 @@ export const getAccessKeyLastUsed: API.OperationMethod<
   input: GetAccessKeyLastUsedRequest,
   output: GetAccessKeyLastUsedResponse,
   errors: [],
+  operationName: "GetAccessKeyLastUsed",
 }));
 export type GetAccountAuthorizationDetailsError =
   | ServiceFailureException
@@ -9679,6 +9741,7 @@ export const getAccountAuthorizationDetails: API.OperationMethod<
   input: GetAccountAuthorizationDetailsRequest,
   output: GetAccountAuthorizationDetailsResponse,
   errors: [ServiceFailureException],
+  operationName: "GetAccountAuthorizationDetails",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9704,6 +9767,7 @@ export const getAccountPasswordPolicy: API.OperationMethod<
   input: GetAccountPasswordPolicyRequest,
   output: GetAccountPasswordPolicyResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "GetAccountPasswordPolicy",
 }));
 export type GetAccountSummaryError = ServiceFailureException | CommonErrors;
 /**
@@ -9722,6 +9786,7 @@ export const getAccountSummary: API.OperationMethod<
   input: GetAccountSummaryRequest,
   output: GetAccountSummaryResponse,
   errors: [ServiceFailureException],
+  operationName: "GetAccountSummary",
 }));
 export type GetContextKeysForCustomPolicyError =
   | InvalidInputException
@@ -9748,6 +9813,7 @@ export const getContextKeysForCustomPolicy: API.OperationMethod<
   input: GetContextKeysForCustomPolicyRequest,
   output: GetContextKeysForPolicyResponse,
   errors: [InvalidInputException],
+  operationName: "GetContextKeysForCustomPolicy",
 }));
 export type GetContextKeysForPrincipalPolicyError =
   | InvalidInputException
@@ -9781,6 +9847,7 @@ export const getContextKeysForPrincipalPolicy: API.OperationMethod<
   input: GetContextKeysForPrincipalPolicyRequest,
   output: GetContextKeysForPolicyResponse,
   errors: [InvalidInputException, NoSuchEntityException],
+  operationName: "GetContextKeysForPrincipalPolicy",
 }));
 export type GetCredentialReportError =
   | CredentialReportExpiredException
@@ -9807,6 +9874,7 @@ export const getCredentialReport: API.OperationMethod<
     CredentialReportNotReadyException,
     ServiceFailureException,
   ],
+  operationName: "GetCredentialReport",
 }));
 export type GetDelegationRequestError =
   | NoSuchEntityException
@@ -9832,6 +9900,7 @@ export const getDelegationRequest: API.OperationMethod<
   input: GetDelegationRequestRequest,
   output: GetDelegationRequestResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "GetDelegationRequest",
 }));
 export type GetGroupError =
   | NoSuchEntityException
@@ -9865,6 +9934,7 @@ export const getGroup: API.OperationMethod<
   input: GetGroupRequest,
   output: GetGroupResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "GetGroup",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9904,6 +9974,7 @@ export const getGroupPolicy: API.OperationMethod<
   input: GetGroupPolicyRequest,
   output: GetGroupPolicyResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "GetGroupPolicy",
 }));
 export type GetHumanReadableSummaryError =
   | InvalidInputException
@@ -9941,6 +10012,7 @@ export const getHumanReadableSummary: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "GetHumanReadableSummary",
 }));
 export type GetInstanceProfileError =
   | NoSuchEntityException
@@ -9961,6 +10033,7 @@ export const getInstanceProfile: API.OperationMethod<
   input: GetInstanceProfileRequest,
   output: GetInstanceProfileResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "GetInstanceProfile",
 }));
 export type GetLoginProfileError =
   | NoSuchEntityException
@@ -9989,6 +10062,7 @@ export const getLoginProfile: API.OperationMethod<
   input: GetLoginProfileRequest,
   output: GetLoginProfileResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "GetLoginProfile",
 }));
 export type GetMFADeviceError =
   | NoSuchEntityException
@@ -10006,6 +10080,7 @@ export const getMFADevice: API.OperationMethod<
   input: GetMFADeviceRequest,
   output: GetMFADeviceResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "GetMFADevice",
 }));
 export type GetOpenIDConnectProviderError =
   | InvalidInputException
@@ -10029,6 +10104,7 @@ export const getOpenIDConnectProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "GetOpenIDConnectProvider",
 }));
 export type GetOrganizationsAccessReportError =
   | NoSuchEntityException
@@ -10066,6 +10142,7 @@ export const getOrganizationsAccessReport: API.OperationMethod<
   input: GetOrganizationsAccessReportRequest,
   output: GetOrganizationsAccessReportResponse,
   errors: [NoSuchEntityException],
+  operationName: "GetOrganizationsAccessReport",
 }));
 export type GetOutboundWebIdentityFederationInfoError =
   | FeatureDisabledException
@@ -10083,6 +10160,7 @@ export const getOutboundWebIdentityFederationInfo: API.OperationMethod<
   input: GetOutboundWebIdentityFederationInfoRequest,
   output: GetOutboundWebIdentityFederationInfoResponse,
   errors: [FeatureDisabledException],
+  operationName: "GetOutboundWebIdentityFederationInfo",
 }));
 export type GetPolicyError =
   | InvalidInputException
@@ -10116,6 +10194,7 @@ export const getPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "GetPolicy",
 }));
 export type GetPolicyVersionError =
   | InvalidInputException
@@ -10158,6 +10237,7 @@ export const getPolicyVersion: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "GetPolicyVersion",
 }));
 export type GetRoleError =
   | NoSuchEntityException
@@ -10185,6 +10265,7 @@ export const getRole: API.OperationMethod<
   input: GetRoleRequest,
   output: GetRoleResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "GetRole",
 }));
 export type GetRolePolicyError =
   | NoSuchEntityException
@@ -10221,6 +10302,7 @@ export const getRolePolicy: API.OperationMethod<
   input: GetRolePolicyRequest,
   output: GetRolePolicyResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "GetRolePolicy",
 }));
 export type GetSAMLProviderError =
   | InvalidInputException
@@ -10246,6 +10328,7 @@ export const getSAMLProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "GetSAMLProvider",
 }));
 export type GetServerCertificateError =
   | NoSuchEntityException
@@ -10268,6 +10351,7 @@ export const getServerCertificate: API.OperationMethod<
   input: GetServerCertificateRequest,
   output: GetServerCertificateResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "GetServerCertificate",
 }));
 export type GetServiceLastAccessedDetailsError =
   | InvalidInputException
@@ -10330,6 +10414,7 @@ export const getServiceLastAccessedDetails: API.OperationMethod<
   input: GetServiceLastAccessedDetailsRequest,
   output: GetServiceLastAccessedDetailsResponse,
   errors: [InvalidInputException, NoSuchEntityException],
+  operationName: "GetServiceLastAccessedDetails",
 }));
 export type GetServiceLastAccessedDetailsWithEntitiesError =
   | InvalidInputException
@@ -10369,6 +10454,7 @@ export const getServiceLastAccessedDetailsWithEntities: API.OperationMethod<
   input: GetServiceLastAccessedDetailsWithEntitiesRequest,
   output: GetServiceLastAccessedDetailsWithEntitiesResponse,
   errors: [InvalidInputException, NoSuchEntityException],
+  operationName: "GetServiceLastAccessedDetailsWithEntities",
 }));
 export type GetServiceLinkedRoleDeletionStatusError =
   | InvalidInputException
@@ -10395,6 +10481,7 @@ export const getServiceLinkedRoleDeletionStatus: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "GetServiceLinkedRoleDeletionStatus",
 }));
 export type GetSSHPublicKeyError =
   | NoSuchEntityException
@@ -10417,6 +10504,7 @@ export const getSSHPublicKey: API.OperationMethod<
   input: GetSSHPublicKeyRequest,
   output: GetSSHPublicKeyResponse,
   errors: [NoSuchEntityException, UnrecognizedPublicKeyEncodingException],
+  operationName: "GetSSHPublicKey",
 }));
 export type GetUserError =
   | NoSuchEntityException
@@ -10438,6 +10526,7 @@ export const getUser: API.OperationMethod<
   input: GetUserRequest,
   output: GetUserResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "GetUser",
 }));
 export type GetUserPolicyError =
   | NoSuchEntityException
@@ -10471,6 +10560,7 @@ export const getUserPolicy: API.OperationMethod<
   input: GetUserPolicyRequest,
   output: GetUserPolicyResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "GetUserPolicy",
 }));
 export type ListAccessKeysError =
   | NoSuchEntityException
@@ -10519,6 +10609,7 @@ export const listAccessKeys: API.OperationMethod<
   input: ListAccessKeysRequest,
   output: ListAccessKeysResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "ListAccessKeys",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10557,6 +10648,7 @@ export const listAccountAliases: API.OperationMethod<
   input: ListAccountAliasesRequest,
   output: ListAccountAliasesResponse,
   errors: [ServiceFailureException],
+  operationName: "ListAccountAliases",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10611,6 +10703,7 @@ export const listAttachedGroupPolicies: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "ListAttachedGroupPolicies",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10665,6 +10758,7 @@ export const listAttachedRolePolicies: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "ListAttachedRolePolicies",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10719,6 +10813,7 @@ export const listAttachedUserPolicies: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "ListAttachedUserPolicies",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10754,6 +10849,7 @@ export const listDelegationRequests: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "ListDelegationRequests",
 }));
 export type ListEntitiesForPolicyError =
   | InvalidInputException
@@ -10800,6 +10896,7 @@ export const listEntitiesForPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "ListEntitiesForPolicy",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10847,6 +10944,7 @@ export const listGroupPolicies: API.OperationMethod<
   input: ListGroupPoliciesRequest,
   output: ListGroupPoliciesResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "ListGroupPolicies",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10885,6 +10983,7 @@ export const listGroups: API.OperationMethod<
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [ServiceFailureException],
+  operationName: "ListGroups",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10926,6 +11025,7 @@ export const listGroupsForUser: API.OperationMethod<
   input: ListGroupsForUserRequest,
   output: ListGroupsForUserResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "ListGroupsForUser",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10971,6 +11071,7 @@ export const listInstanceProfiles: API.OperationMethod<
   input: ListInstanceProfilesRequest,
   output: ListInstanceProfilesResponse,
   errors: [ServiceFailureException],
+  operationName: "ListInstanceProfiles",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11015,6 +11116,7 @@ export const listInstanceProfilesForRole: API.OperationMethod<
   input: ListInstanceProfilesForRoleRequest,
   output: ListInstanceProfilesForRoleResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "ListInstanceProfilesForRole",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11055,6 +11157,7 @@ export const listInstanceProfileTags: API.OperationMethod<
   input: ListInstanceProfileTagsRequest,
   output: ListInstanceProfileTagsResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "ListInstanceProfileTags",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11099,6 +11202,7 @@ export const listMFADevices: API.OperationMethod<
   input: ListMFADevicesRequest,
   output: ListMFADevicesResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "ListMFADevices",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11144,6 +11248,7 @@ export const listMFADeviceTags: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "ListMFADeviceTags",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11170,6 +11275,7 @@ export const listOpenIDConnectProviders: API.OperationMethod<
   input: ListOpenIDConnectProvidersRequest,
   output: ListOpenIDConnectProvidersResponse,
   errors: [ServiceFailureException],
+  operationName: "ListOpenIDConnectProviders",
 }));
 export type ListOpenIDConnectProviderTagsError =
   | InvalidInputException
@@ -11212,6 +11318,7 @@ export const listOpenIDConnectProviderTags: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "ListOpenIDConnectProviderTags",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11243,6 +11350,7 @@ export const listOrganizationsFeatures: API.OperationMethod<
     OrganizationNotInAllFeaturesModeException,
     ServiceAccessNotEnabledException,
   ],
+  operationName: "ListOrganizationsFeatures",
 }));
 export type ListPoliciesError = ServiceFailureException | CommonErrors;
 /**
@@ -11289,6 +11397,7 @@ export const listPolicies: API.OperationMethod<
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [ServiceFailureException],
+  operationName: "ListPolicies",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11345,6 +11454,7 @@ export const listPoliciesGrantingServiceAccess: API.OperationMethod<
   input: ListPoliciesGrantingServiceAccessRequest,
   output: ListPoliciesGrantingServiceAccessResponse,
   errors: [InvalidInputException, NoSuchEntityException],
+  operationName: "ListPoliciesGrantingServiceAccess",
 }));
 export type ListPolicyTagsError =
   | InvalidInputException
@@ -11384,6 +11494,7 @@ export const listPolicyTags: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "ListPolicyTags",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11431,6 +11542,7 @@ export const listPolicyVersions: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "ListPolicyVersions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11479,6 +11591,7 @@ export const listRolePolicies: API.OperationMethod<
   input: ListRolePoliciesRequest,
   output: ListRolePoliciesResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "ListRolePolicies",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11530,6 +11643,7 @@ export const listRoles: API.OperationMethod<
   input: ListRolesRequest,
   output: ListRolesResponse,
   errors: [ServiceFailureException],
+  operationName: "ListRoles",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11570,6 +11684,7 @@ export const listRoleTags: API.OperationMethod<
   input: ListRoleTagsRequest,
   output: ListRoleTagsResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "ListRoleTags",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11594,6 +11709,7 @@ export const listSAMLProviders: API.OperationMethod<
   input: ListSAMLProvidersRequest,
   output: ListSAMLProvidersResponse,
   errors: [ServiceFailureException],
+  operationName: "ListSAMLProviders",
 }));
 export type ListSAMLProviderTagsError =
   | InvalidInputException
@@ -11636,6 +11752,7 @@ export const listSAMLProviderTags: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "ListSAMLProviderTags",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11686,6 +11803,7 @@ export const listServerCertificates: API.OperationMethod<
   input: ListServerCertificatesRequest,
   output: ListServerCertificatesResponse,
   errors: [ServiceFailureException],
+  operationName: "ListServerCertificates",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11732,6 +11850,7 @@ export const listServerCertificateTags: API.OperationMethod<
   input: ListServerCertificateTagsRequest,
   output: ListServerCertificateTagsResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "ListServerCertificateTags",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11777,6 +11896,7 @@ export const listServiceSpecificCredentials: API.OperationMethod<
     RequestLimitExceeded,
     InvalidInput,
   ],
+  operationName: "ListServiceSpecificCredentials",
 }));
 export type ListSigningCertificatesError =
   | NoSuchEntityException
@@ -11820,6 +11940,7 @@ export const listSigningCertificates: API.OperationMethod<
   input: ListSigningCertificatesRequest,
   output: ListSigningCertificatesResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "ListSigningCertificates",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11864,6 +11985,7 @@ export const listSSHPublicKeys: API.OperationMethod<
   input: ListSSHPublicKeysRequest,
   output: ListSSHPublicKeysResponse,
   errors: [NoSuchEntityException],
+  operationName: "ListSSHPublicKeys",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11911,6 +12033,7 @@ export const listUserPolicies: API.OperationMethod<
   input: ListUserPoliciesRequest,
   output: ListUserPoliciesResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "ListUserPolicies",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11960,6 +12083,7 @@ export const listUsers: API.OperationMethod<
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [ServiceFailureException],
+  operationName: "ListUsers",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -11999,6 +12123,7 @@ export const listUserTags: API.OperationMethod<
   input: ListUserTagsRequest,
   output: ListUserTagsResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  operationName: "ListUserTags",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -12043,6 +12168,7 @@ export const listVirtualMFADevices: API.OperationMethod<
   input: ListVirtualMFADevicesRequest,
   output: ListVirtualMFADevicesResponse,
   errors: [],
+  operationName: "ListVirtualMFADevices",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -12092,6 +12218,7 @@ export const putGroupPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "PutGroupPolicy",
 }));
 export type PutRolePermissionsBoundaryError =
   | InvalidInputException
@@ -12129,6 +12256,7 @@ export const putRolePermissionsBoundary: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  operationName: "PutRolePermissionsBoundary",
 }));
 export type PutRolePolicyError =
   | LimitExceededException
@@ -12185,6 +12313,7 @@ export const putRolePolicy: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  operationName: "PutRolePolicy",
 }));
 export type PutUserPermissionsBoundaryError =
   | InvalidInputException
@@ -12218,6 +12347,7 @@ export const putUserPermissionsBoundary: API.OperationMethod<
     PolicyNotAttachableException,
     ServiceFailureException,
   ],
+  operationName: "PutUserPermissionsBoundary",
 }));
 export type PutUserPolicyError =
   | LimitExceededException
@@ -12261,6 +12391,7 @@ export const putUserPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "PutUserPolicy",
 }));
 export type RejectDelegationRequestError =
   | ConcurrentModificationException
@@ -12293,6 +12424,7 @@ export const rejectDelegationRequest: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "RejectDelegationRequest",
 }));
 export type RemoveClientIDFromOpenIDConnectProviderError =
   | ConcurrentModificationException
@@ -12322,6 +12454,7 @@ export const removeClientIDFromOpenIDConnectProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "RemoveClientIDFromOpenIDConnectProvider",
 }));
 export type RemoveRoleFromInstanceProfileError =
   | LimitExceededException
@@ -12356,6 +12489,7 @@ export const removeRoleFromInstanceProfile: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  operationName: "RemoveRoleFromInstanceProfile",
 }));
 export type RemoveUserFromGroupError =
   | LimitExceededException
@@ -12378,6 +12512,7 @@ export const removeUserFromGroup: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "RemoveUserFromGroup",
 }));
 export type ResetServiceSpecificCredentialError =
   | NoSuchEntityException
@@ -12397,6 +12532,7 @@ export const resetServiceSpecificCredential: API.OperationMethod<
   input: ResetServiceSpecificCredentialRequest,
   output: ResetServiceSpecificCredentialResponse,
   errors: [NoSuchEntityException],
+  operationName: "ResetServiceSpecificCredential",
 }));
 export type ResyncMFADeviceError =
   | ConcurrentModificationException
@@ -12427,6 +12563,7 @@ export const resyncMFADevice: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "ResyncMFADevice",
 }));
 export type SendDelegationTokenError =
   | ConcurrentModificationException
@@ -12462,6 +12599,7 @@ export const sendDelegationToken: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "SendDelegationToken",
 }));
 export type SetDefaultPolicyVersionError =
   | InvalidInputException
@@ -12493,6 +12631,7 @@ export const setDefaultPolicyVersion: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "SetDefaultPolicyVersion",
 }));
 export type SetSecurityTokenServicePreferencesError =
   | ServiceFailureException
@@ -12530,6 +12669,7 @@ export const setSecurityTokenServicePreferences: API.OperationMethod<
   input: SetSecurityTokenServicePreferencesRequest,
   output: SetSecurityTokenServicePreferencesResponse,
   errors: [ServiceFailureException],
+  operationName: "SetSecurityTokenServicePreferences",
 }));
 export type SimulateCustomPolicyError =
   | InvalidInputException
@@ -12588,6 +12728,7 @@ export const simulateCustomPolicy: API.OperationMethod<
   input: SimulateCustomPolicyRequest,
   output: SimulatePolicyResponse,
   errors: [InvalidInputException, PolicyEvaluationException],
+  operationName: "SimulateCustomPolicy",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -12666,6 +12807,7 @@ export const simulatePrincipalPolicy: API.OperationMethod<
     NoSuchEntityException,
     PolicyEvaluationException,
   ],
+  operationName: "SimulatePrincipalPolicy",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -12722,6 +12864,7 @@ export const tagInstanceProfile: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "TagInstanceProfile",
 }));
 export type TagMFADeviceError =
   | ConcurrentModificationException
@@ -12773,6 +12916,7 @@ export const tagMFADevice: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "TagMFADevice",
 }));
 export type TagOpenIDConnectProviderError =
   | ConcurrentModificationException
@@ -12825,6 +12969,7 @@ export const tagOpenIDConnectProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "TagOpenIDConnectProvider",
 }));
 export type TagPolicyError =
   | ConcurrentModificationException
@@ -12875,6 +13020,7 @@ export const tagPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "TagPolicy",
 }));
 export type TagRoleError =
   | ConcurrentModificationException
@@ -12933,6 +13079,7 @@ export const tagRole: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "TagRole",
 }));
 export type TagSAMLProviderError =
   | ConcurrentModificationException
@@ -12985,6 +13132,7 @@ export const tagSAMLProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "TagSAMLProvider",
 }));
 export type TagServerCertificateError =
   | ConcurrentModificationException
@@ -13044,6 +13192,7 @@ export const tagServerCertificate: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "TagServerCertificate",
 }));
 export type TagUserError =
   | ConcurrentModificationException
@@ -13101,6 +13250,7 @@ export const tagUser: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "TagUser",
 }));
 export type UntagInstanceProfileError =
   | ConcurrentModificationException
@@ -13126,6 +13276,7 @@ export const untagInstanceProfile: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UntagInstanceProfile",
 }));
 export type UntagMFADeviceError =
   | ConcurrentModificationException
@@ -13152,6 +13303,7 @@ export const untagMFADevice: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UntagMFADevice",
 }));
 export type UntagOpenIDConnectProviderError =
   | ConcurrentModificationException
@@ -13179,6 +13331,7 @@ export const untagOpenIDConnectProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UntagOpenIDConnectProvider",
 }));
 export type UntagPolicyError =
   | ConcurrentModificationException
@@ -13204,6 +13357,7 @@ export const untagPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UntagPolicy",
 }));
 export type UntagRoleError =
   | ConcurrentModificationException
@@ -13227,6 +13381,7 @@ export const untagRole: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UntagRole",
 }));
 export type UntagSAMLProviderError =
   | ConcurrentModificationException
@@ -13254,6 +13409,7 @@ export const untagSAMLProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UntagSAMLProvider",
 }));
 export type UntagServerCertificateError =
   | ConcurrentModificationException
@@ -13286,6 +13442,7 @@ export const untagServerCertificate: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UntagServerCertificate",
 }));
 export type UntagUserError =
   | ConcurrentModificationException
@@ -13309,6 +13466,7 @@ export const untagUser: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UntagUser",
 }));
 export type UpdateAccessKeyError =
   | InvalidInputException
@@ -13345,6 +13503,7 @@ export const updateAccessKey: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UpdateAccessKey",
 }));
 export type UpdateAccountPasswordPolicyError =
   | LimitExceededException
@@ -13379,6 +13538,7 @@ export const updateAccountPasswordPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UpdateAccountPasswordPolicy",
 }));
 export type UpdateAssumeRolePolicyError =
   | LimitExceededException
@@ -13408,6 +13568,7 @@ export const updateAssumeRolePolicy: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  operationName: "UpdateAssumeRolePolicy",
 }));
 export type UpdateDelegationRequestError =
   | ConcurrentModificationException
@@ -13438,6 +13599,7 @@ export const updateDelegationRequest: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UpdateDelegationRequest",
 }));
 export type UpdateGroupError =
   | EntityAlreadyExistsException
@@ -13473,6 +13635,7 @@ export const updateGroup: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UpdateGroup",
 }));
 export type UpdateLoginProfileError =
   | EntityTemporarilyUnmodifiableException
@@ -13506,6 +13669,7 @@ export const updateLoginProfile: API.OperationMethod<
     PasswordPolicyViolationException,
     ServiceFailureException,
   ],
+  operationName: "UpdateLoginProfile",
 }));
 export type UpdateOpenIDConnectProviderThumbprintError =
   | ConcurrentModificationException
@@ -13551,6 +13715,7 @@ export const updateOpenIDConnectProviderThumbprint: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UpdateOpenIDConnectProviderThumbprint",
 }));
 export type UpdateRoleError =
   | NoSuchEntityException
@@ -13573,6 +13738,7 @@ export const updateRole: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  operationName: "UpdateRole",
 }));
 export type UpdateRoleDescriptionError =
   | NoSuchEntityException
@@ -13598,6 +13764,7 @@ export const updateRoleDescription: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  operationName: "UpdateRoleDescription",
 }));
 export type UpdateSAMLProviderError =
   | ConcurrentModificationException
@@ -13626,6 +13793,7 @@ export const updateSAMLProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UpdateSAMLProvider",
 }));
 export type UpdateServerCertificateError =
   | EntityAlreadyExistsException
@@ -13668,6 +13836,7 @@ export const updateServerCertificate: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UpdateServerCertificate",
 }));
 export type UpdateServiceSpecificCredentialError =
   | NoSuchEntityException
@@ -13687,6 +13856,7 @@ export const updateServiceSpecificCredential: API.OperationMethod<
   input: UpdateServiceSpecificCredentialRequest,
   output: UpdateServiceSpecificCredentialResponse,
   errors: [NoSuchEntityException],
+  operationName: "UpdateServiceSpecificCredential",
 }));
 export type UpdateSigningCertificateError =
   | InvalidInputException
@@ -13719,6 +13889,7 @@ export const updateSigningCertificate: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UpdateSigningCertificate",
 }));
 export type UpdateSSHPublicKeyError =
   | InvalidInputException
@@ -13743,6 +13914,7 @@ export const updateSSHPublicKey: API.OperationMethod<
   input: UpdateSSHPublicKeyRequest,
   output: UpdateSSHPublicKeyResponse,
   errors: [InvalidInputException, NoSuchEntityException],
+  operationName: "UpdateSSHPublicKey",
 }));
 export type UpdateUserError =
   | ConcurrentModificationException
@@ -13781,6 +13953,7 @@ export const updateUser: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UpdateUser",
 }));
 export type UploadServerCertificateError =
   | ConcurrentModificationException
@@ -13836,6 +14009,7 @@ export const uploadServerCertificate: API.OperationMethod<
     MalformedCertificateException,
     ServiceFailureException,
   ],
+  operationName: "UploadServerCertificate",
 }));
 export type UploadSigningCertificateError =
   | ConcurrentModificationException
@@ -13888,6 +14062,7 @@ export const uploadSigningCertificate: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  operationName: "UploadSigningCertificate",
 }));
 export type UploadSSHPublicKeyError =
   | DuplicateSSHPublicKeyException
@@ -13919,4 +14094,5 @@ export const uploadSSHPublicKey: API.OperationMethod<
     NoSuchEntityException,
     UnrecognizedPublicKeyEncodingException,
   ],
+  operationName: "UploadSSHPublicKey",
 }));

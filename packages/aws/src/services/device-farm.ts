@@ -3996,6 +3996,7 @@ export const createDevicePool: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "CreateDevicePool",
 }));
 export type CreateInstanceProfileError =
   | ArgumentException
@@ -4021,6 +4022,7 @@ export const createInstanceProfile: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "CreateInstanceProfile",
 }));
 export type CreateNetworkProfileError =
   | ArgumentException
@@ -4045,6 +4047,7 @@ export const createNetworkProfile: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "CreateNetworkProfile",
 }));
 export type CreateProjectError =
   | ArgumentException
@@ -4071,6 +4074,7 @@ export const createProject: API.OperationMethod<
     ServiceAccountException,
     TagOperationException,
   ],
+  operationName: "CreateProject",
 }));
 export type CreateRemoteAccessSessionError =
   | ArgumentException
@@ -4095,6 +4099,7 @@ export const createRemoteAccessSession: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "CreateRemoteAccessSession",
 }));
 export type CreateTestGridProjectError =
   | ArgumentException
@@ -4114,6 +4119,7 @@ export const createTestGridProject: API.OperationMethod<
   input: CreateTestGridProjectRequest,
   output: CreateTestGridProjectResult,
   errors: [ArgumentException, InternalServiceException, LimitExceededException],
+  operationName: "CreateTestGridProject",
 }));
 export type CreateTestGridUrlError =
   | ArgumentException
@@ -4133,6 +4139,7 @@ export const createTestGridUrl: API.OperationMethod<
   input: CreateTestGridUrlRequest,
   output: CreateTestGridUrlResult,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
+  operationName: "CreateTestGridUrl",
 }));
 export type CreateUploadError =
   | ArgumentException
@@ -4157,6 +4164,7 @@ export const createUpload: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "CreateUpload",
 }));
 export type CreateVPCEConfigurationError =
   | ArgumentException
@@ -4176,6 +4184,7 @@ export const createVPCEConfiguration: API.OperationMethod<
   input: CreateVPCEConfigurationRequest,
   output: CreateVPCEConfigurationResult,
   errors: [ArgumentException, LimitExceededException, ServiceAccountException],
+  operationName: "CreateVPCEConfiguration",
 }));
 export type DeleteDevicePoolError =
   | ArgumentException
@@ -4201,6 +4210,7 @@ export const deleteDevicePool: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "DeleteDevicePool",
 }));
 export type DeleteInstanceProfileError =
   | ArgumentException
@@ -4225,6 +4235,7 @@ export const deleteInstanceProfile: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "DeleteInstanceProfile",
 }));
 export type DeleteNetworkProfileError =
   | ArgumentException
@@ -4249,6 +4260,7 @@ export const deleteNetworkProfile: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "DeleteNetworkProfile",
 }));
 export type DeleteProjectError =
   | ArgumentException
@@ -4275,6 +4287,7 @@ export const deleteProject: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "DeleteProject",
 }));
 export type DeleteRemoteAccessSessionError =
   | ArgumentException
@@ -4301,6 +4314,7 @@ export const deleteRemoteAccessSession: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "DeleteRemoteAccessSession",
 }));
 export type DeleteRunError =
   | ArgumentException
@@ -4327,6 +4341,7 @@ export const deleteRun: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "DeleteRun",
 }));
 export type DeleteTestGridProjectError =
   | ArgumentException
@@ -4353,6 +4368,7 @@ export const deleteTestGridProject: API.OperationMethod<
     InternalServiceException,
     NotFoundException,
   ],
+  operationName: "DeleteTestGridProject",
 }));
 export type DeleteUploadError =
   | ArgumentException
@@ -4377,6 +4393,7 @@ export const deleteUpload: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "DeleteUpload",
 }));
 export type DeleteVPCEConfigurationError =
   | ArgumentException
@@ -4401,6 +4418,7 @@ export const deleteVPCEConfiguration: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "DeleteVPCEConfiguration",
 }));
 export type GetAccountSettingsError =
   | ArgumentException
@@ -4426,6 +4444,7 @@ export const getAccountSettings: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "GetAccountSettings",
 }));
 export type GetDeviceError =
   | ArgumentException
@@ -4450,6 +4469,7 @@ export const getDevice: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "GetDevice",
 }));
 export type GetDeviceInstanceError =
   | ArgumentException
@@ -4474,6 +4494,7 @@ export const getDeviceInstance: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "GetDeviceInstance",
 }));
 export type GetDevicePoolError =
   | ArgumentException
@@ -4498,6 +4519,7 @@ export const getDevicePool: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "GetDevicePool",
 }));
 export type GetDevicePoolCompatibilityError =
   | ArgumentException
@@ -4522,6 +4544,7 @@ export const getDevicePoolCompatibility: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "GetDevicePoolCompatibility",
 }));
 export type GetInstanceProfileError =
   | ArgumentException
@@ -4546,6 +4569,7 @@ export const getInstanceProfile: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "GetInstanceProfile",
 }));
 export type GetJobError =
   | ArgumentException
@@ -4570,6 +4594,7 @@ export const getJob: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "GetJob",
 }));
 export type GetNetworkProfileError =
   | ArgumentException
@@ -4594,6 +4619,7 @@ export const getNetworkProfile: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "GetNetworkProfile",
 }));
 export type GetOfferingStatusError =
   | ArgumentException
@@ -4638,6 +4664,7 @@ export const getOfferingStatus: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "GetOfferingStatus",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
 export type GetProjectError =
@@ -4663,6 +4690,7 @@ export const getProject: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "GetProject",
 }));
 export type GetRemoteAccessSessionError =
   | ArgumentException
@@ -4687,6 +4715,7 @@ export const getRemoteAccessSession: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "GetRemoteAccessSession",
 }));
 export type GetRunError =
   | ArgumentException
@@ -4711,6 +4740,7 @@ export const getRun: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "GetRun",
 }));
 export type GetSuiteError =
   | ArgumentException
@@ -4735,6 +4765,7 @@ export const getSuite: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "GetSuite",
 }));
 export type GetTestError =
   | ArgumentException
@@ -4759,6 +4790,7 @@ export const getTest: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "GetTest",
 }));
 export type GetTestGridProjectError =
   | ArgumentException
@@ -4777,6 +4809,7 @@ export const getTestGridProject: API.OperationMethod<
   input: GetTestGridProjectRequest,
   output: GetTestGridProjectResult,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
+  operationName: "GetTestGridProject",
 }));
 export type GetTestGridSessionError =
   | ArgumentException
@@ -4799,6 +4832,7 @@ export const getTestGridSession: API.OperationMethod<
   input: GetTestGridSessionRequest,
   output: GetTestGridSessionResult,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
+  operationName: "GetTestGridSession",
 }));
 export type GetUploadError =
   | ArgumentException
@@ -4823,6 +4857,7 @@ export const getUpload: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "GetUpload",
 }));
 export type GetVPCEConfigurationError =
   | ArgumentException
@@ -4842,6 +4877,7 @@ export const getVPCEConfiguration: API.OperationMethod<
   input: GetVPCEConfigurationRequest,
   output: GetVPCEConfigurationResult,
   errors: [ArgumentException, NotFoundException, ServiceAccountException],
+  operationName: "GetVPCEConfiguration",
 }));
 export type InstallToRemoteAccessSessionError =
   | ArgumentException
@@ -4868,6 +4904,7 @@ export const installToRemoteAccessSession: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "InstallToRemoteAccessSession",
 }));
 export type ListArtifactsError =
   | ArgumentException
@@ -4907,6 +4944,7 @@ export const listArtifacts: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListArtifacts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4937,6 +4975,7 @@ export const listDeviceInstances: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListDeviceInstances",
 }));
 export type ListDevicePoolsError =
   | ArgumentException
@@ -4976,6 +5015,7 @@ export const listDevicePools: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListDevicePools",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5020,6 +5060,7 @@ export const listDevices: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListDevices",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5049,6 +5090,7 @@ export const listInstanceProfiles: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListInstanceProfiles",
 }));
 export type ListJobsError =
   | ArgumentException
@@ -5088,6 +5130,7 @@ export const listJobs: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5117,6 +5160,7 @@ export const listNetworkProfiles: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListNetworkProfiles",
 }));
 export type ListOfferingPromotionsError =
   | ArgumentException
@@ -5145,6 +5189,7 @@ export const listOfferingPromotions: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListOfferingPromotions",
 }));
 export type ListOfferingsError =
   | ArgumentException
@@ -5189,6 +5234,7 @@ export const listOfferings: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListOfferings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5238,6 +5284,7 @@ export const listOfferingTransactions: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListOfferingTransactions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5282,6 +5329,7 @@ export const listProjects: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListProjects",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5311,6 +5359,7 @@ export const listRemoteAccessSessions: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListRemoteAccessSessions",
 }));
 export type ListRunsError =
   | ArgumentException
@@ -5350,6 +5399,7 @@ export const listRuns: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListRuns",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5394,6 +5444,7 @@ export const listSamples: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListSamples",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5438,6 +5489,7 @@ export const listSuites: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListSuites",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5461,6 +5513,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ArgumentException, NotFoundException, TagOperationException],
+  operationName: "ListTagsForResource",
 }));
 export type ListTestGridProjectsError =
   | ArgumentException
@@ -5493,6 +5546,7 @@ export const listTestGridProjects: API.OperationMethod<
   input: ListTestGridProjectsRequest,
   output: ListTestGridProjectsResult,
   errors: [ArgumentException, InternalServiceException],
+  operationName: "ListTestGridProjects",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5531,6 +5585,7 @@ export const listTestGridSessionActions: API.OperationMethod<
   input: ListTestGridSessionActionsRequest,
   output: ListTestGridSessionActionsResult,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
+  operationName: "ListTestGridSessionActions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5569,6 +5624,7 @@ export const listTestGridSessionArtifacts: API.OperationMethod<
   input: ListTestGridSessionArtifactsRequest,
   output: ListTestGridSessionArtifactsResult,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
+  operationName: "ListTestGridSessionArtifacts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5607,6 +5663,7 @@ export const listTestGridSessions: API.OperationMethod<
   input: ListTestGridSessionsRequest,
   output: ListTestGridSessionsResult,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
+  operationName: "ListTestGridSessions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5651,6 +5708,7 @@ export const listTests: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListTests",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5700,6 +5758,7 @@ export const listUniqueProblems: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListUniqueProblems",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5744,6 +5803,7 @@ export const listUploads: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ListUploads",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5767,6 +5827,7 @@ export const listVPCEConfigurations: API.OperationMethod<
   input: ListVPCEConfigurationsRequest,
   output: ListVPCEConfigurationsResult,
   errors: [ArgumentException, ServiceAccountException],
+  operationName: "ListVPCEConfigurations",
 }));
 export type PurchaseOfferingError =
   | ArgumentException
@@ -5796,6 +5857,7 @@ export const purchaseOffering: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "PurchaseOffering",
 }));
 export type RenewOfferingError =
   | ArgumentException
@@ -5824,6 +5886,7 @@ export const renewOffering: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "RenewOffering",
 }));
 export type ScheduleRunError =
   | ArgumentException
@@ -5850,6 +5913,7 @@ export const scheduleRun: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "ScheduleRun",
 }));
 export type StopJobError =
   | ArgumentException
@@ -5877,6 +5941,7 @@ export const stopJob: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "StopJob",
 }));
 export type StopRemoteAccessSessionError =
   | ArgumentException
@@ -5901,6 +5966,7 @@ export const stopRemoteAccessSession: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "StopRemoteAccessSession",
 }));
 export type StopRunError =
   | ArgumentException
@@ -5928,6 +5994,7 @@ export const stopRun: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "StopRun",
 }));
 export type TagResourceError =
   | ArgumentException
@@ -5956,6 +6023,7 @@ export const tagResource: API.OperationMethod<
     TagPolicyException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ArgumentException
@@ -5974,6 +6042,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ArgumentException, NotFoundException, TagOperationException],
+  operationName: "UntagResource",
 }));
 export type UpdateDeviceInstanceError =
   | ArgumentException
@@ -5998,6 +6067,7 @@ export const updateDeviceInstance: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "UpdateDeviceInstance",
 }));
 export type UpdateDevicePoolError =
   | ArgumentException
@@ -6024,6 +6094,7 @@ export const updateDevicePool: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "UpdateDevicePool",
 }));
 export type UpdateInstanceProfileError =
   | ArgumentException
@@ -6048,6 +6119,7 @@ export const updateInstanceProfile: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "UpdateInstanceProfile",
 }));
 export type UpdateNetworkProfileError =
   | ArgumentException
@@ -6072,6 +6144,7 @@ export const updateNetworkProfile: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "UpdateNetworkProfile",
 }));
 export type UpdateProjectError =
   | ArgumentException
@@ -6097,6 +6170,7 @@ export const updateProject: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "UpdateProject",
 }));
 export type UpdateTestGridProjectError =
   | ArgumentException
@@ -6121,6 +6195,7 @@ export const updateTestGridProject: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "UpdateTestGridProject",
 }));
 export type UpdateUploadError =
   | ArgumentException
@@ -6145,6 +6220,7 @@ export const updateUpload: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "UpdateUpload",
 }));
 export type UpdateVPCEConfigurationError =
   | ArgumentException
@@ -6169,4 +6245,5 @@ export const updateVPCEConfiguration: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  operationName: "UpdateVPCEConfiguration",
 }));

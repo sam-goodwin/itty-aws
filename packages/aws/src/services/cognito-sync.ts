@@ -1015,6 +1015,7 @@ export const bulkPublish: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  operationName: "BulkPublish",
 }));
 export type DeleteDatasetError =
   | InternalErrorException
@@ -1048,6 +1049,7 @@ export const deleteDataset: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteDataset",
 }));
 export type DescribeDatasetError =
   | InternalErrorException
@@ -1078,6 +1080,7 @@ export const describeDataset: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeDataset",
 }));
 export type DescribeIdentityPoolUsageError =
   | InternalErrorException
@@ -1147,6 +1150,7 @@ export const describeIdentityPoolUsage: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeIdentityPoolUsage",
 }));
 export type DescribeIdentityUsageError =
   | InternalErrorException
@@ -1218,6 +1222,7 @@ export const describeIdentityUsage: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeIdentityUsage",
 }));
 export type GetBulkPublishDetailsError =
   | InternalErrorException
@@ -1244,6 +1249,7 @@ export const getBulkPublishDetails: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  operationName: "GetBulkPublishDetails",
 }));
 export type GetCognitoEventsError =
   | InternalErrorException
@@ -1272,6 +1278,7 @@ export const getCognitoEvents: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetCognitoEvents",
 }));
 export type GetIdentityPoolConfigurationError =
   | InternalErrorException
@@ -1340,6 +1347,7 @@ export const getIdentityPoolConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetIdentityPoolConfiguration",
 }));
 export type ListDatasetsError =
   | InternalErrorException
@@ -1418,6 +1426,7 @@ export const listDatasets: API.OperationMethod<
     NotAuthorizedException,
     TooManyRequestsException,
   ],
+  operationName: "ListDatasets",
 }));
 export type ListIdentityPoolUsageError =
   | InternalErrorException
@@ -1496,6 +1505,7 @@ export const listIdentityPoolUsage: API.OperationMethod<
     NotAuthorizedException,
     TooManyRequestsException,
   ],
+  operationName: "ListIdentityPoolUsage",
 }));
 export type ListRecordsError =
   | InternalErrorException
@@ -1571,6 +1581,7 @@ export const listRecords: API.OperationMethod<
     NotAuthorizedException,
     TooManyRequestsException,
   ],
+  operationName: "ListRecords",
 }));
 export type RegisterDeviceError =
   | InternalErrorException
@@ -1640,6 +1651,7 @@ export const registerDevice: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "RegisterDevice",
 }));
 export type SetCognitoEventsError =
   | InternalErrorException
@@ -1668,6 +1680,7 @@ export const setCognitoEvents: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "SetCognitoEvents",
 }));
 export type SetIdentityPoolConfigurationError =
   | ConcurrentModificationException
@@ -1743,6 +1756,7 @@ export const setIdentityPoolConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "SetIdentityPoolConfiguration",
 }));
 export type SubscribeToDatasetError =
   | InternalErrorException
@@ -1811,6 +1825,7 @@ export const subscribeToDataset: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "SubscribeToDataset",
 }));
 export type UnsubscribeFromDatasetError =
   | InternalErrorException
@@ -1880,6 +1895,7 @@ export const unsubscribeFromDataset: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UnsubscribeFromDataset",
 }));
 export type UpdateRecordsError =
   | InternalErrorException
@@ -1920,4 +1936,5 @@ export const updateRecords: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateRecords",
 }));

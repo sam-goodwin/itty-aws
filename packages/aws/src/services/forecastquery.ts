@@ -237,6 +237,7 @@ export const queryForecast: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "QueryForecast",
 }));
 export type QueryWhatIfForecastError =
   | InvalidInputException
@@ -263,4 +264,5 @@ export const queryWhatIfForecast: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "QueryWhatIfForecast",
 }));

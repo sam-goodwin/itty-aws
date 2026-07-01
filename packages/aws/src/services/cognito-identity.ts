@@ -1162,6 +1162,7 @@ export const createIdentityPool: API.OperationMethod<
     ResourceConflictException,
     TooManyRequestsException,
   ],
+  operationName: "CreateIdentityPool",
 }));
 export type DeleteIdentitiesError =
   | InternalErrorException
@@ -1188,6 +1189,7 @@ export const deleteIdentities: API.OperationMethod<
     InvalidParameterException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteIdentities",
 }));
 export type DeleteIdentityPoolError =
   | InternalErrorException
@@ -1218,6 +1220,7 @@ export const deleteIdentityPool: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteIdentityPool",
 }));
 export type DescribeIdentityError =
   | InternalErrorException
@@ -1248,6 +1251,7 @@ export const describeIdentity: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeIdentity",
 }));
 export type DescribeIdentityPoolError =
   | InternalErrorException
@@ -1278,6 +1282,7 @@ export const describeIdentityPool: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeIdentityPool",
 }));
 export type GetCredentialsForIdentityError =
   | ExternalServiceException
@@ -1314,6 +1319,7 @@ export const getCredentialsForIdentity: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetCredentialsForIdentity",
 }));
 export type GetIdError =
   | ExternalServiceException
@@ -1349,6 +1355,7 @@ export const getId: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetId",
 }));
 export type GetIdentityPoolRolesError =
   | InternalErrorException
@@ -1380,6 +1387,7 @@ export const getIdentityPoolRoles: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetIdentityPoolRoles",
 }));
 export type GetOpenIdTokenError =
   | ExternalServiceException
@@ -1416,6 +1424,7 @@ export const getOpenIdToken: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetOpenIdToken",
 }));
 export type GetOpenIdTokenForDeveloperIdentityError =
   | DeveloperUserAlreadyRegisteredException
@@ -1461,6 +1470,7 @@ export const getOpenIdTokenForDeveloperIdentity: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetOpenIdTokenForDeveloperIdentity",
 }));
 export type GetPrincipalTagAttributeMapError =
   | InternalErrorException
@@ -1488,6 +1498,7 @@ export const getPrincipalTagAttributeMap: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetPrincipalTagAttributeMap",
 }));
 export type ListIdentitiesError =
   | InternalErrorException
@@ -1517,6 +1528,7 @@ export const listIdentities: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListIdentities",
 }));
 export type ListIdentityPoolsError =
   | InternalErrorException
@@ -1561,6 +1573,7 @@ export const listIdentityPools: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListIdentityPools",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1598,6 +1611,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type LookupDeveloperIdentityError =
   | InternalErrorException
@@ -1644,6 +1658,7 @@ export const lookupDeveloperIdentity: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "LookupDeveloperIdentity",
 }));
 export type MergeDeveloperIdentitiesError =
   | InternalErrorException
@@ -1687,6 +1702,7 @@ export const mergeDeveloperIdentities: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "MergeDeveloperIdentities",
 }));
 export type SetIdentityPoolRolesError =
   | ConcurrentModificationException
@@ -1720,6 +1736,7 @@ export const setIdentityPoolRoles: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "SetIdentityPoolRoles",
 }));
 export type SetPrincipalTagAttributeMapError =
   | InternalErrorException
@@ -1747,6 +1764,7 @@ export const setPrincipalTagAttributeMap: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "SetPrincipalTagAttributeMap",
 }));
 export type TagResourceError =
   | InternalErrorException
@@ -1790,6 +1808,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "TagResource",
 }));
 export type UnlinkDeveloperIdentityError =
   | InternalErrorException
@@ -1824,6 +1843,7 @@ export const unlinkDeveloperIdentity: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UnlinkDeveloperIdentity",
 }));
 export type UnlinkIdentityError =
   | ExternalServiceException
@@ -1858,6 +1878,7 @@ export const unlinkIdentity: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UnlinkIdentity",
 }));
 export type UntagResourceError =
   | InternalErrorException
@@ -1885,6 +1906,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateIdentityPoolError =
   | ConcurrentModificationException
@@ -1922,4 +1944,5 @@ export const updateIdentityPool: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateIdentityPool",
 }));

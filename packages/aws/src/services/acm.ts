@@ -1565,6 +1565,7 @@ export const addTagsToCertificate: API.OperationMethod<
     ThrottlingException,
     TooManyTagsException,
   ],
+  operationName: "AddTagsToCertificate",
 }));
 export type DeleteCertificateError =
   | AccessDeniedException
@@ -1599,6 +1600,7 @@ export const deleteCertificate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteCertificate",
 }));
 export type DescribeCertificateError =
   | InvalidArnException
@@ -1618,6 +1620,7 @@ export const describeCertificate: API.OperationMethod<
   input: DescribeCertificateRequest,
   output: DescribeCertificateResponse,
   errors: [InvalidArnException, ResourceNotFoundException],
+  operationName: "DescribeCertificate",
 }));
 export type ExportCertificateError =
   | InvalidArnException
@@ -1646,6 +1649,7 @@ export const exportCertificate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ExportCertificate",
 }));
 export type GetAccountConfigurationError =
   | AccessDeniedException
@@ -1663,6 +1667,7 @@ export const getAccountConfiguration: API.OperationMethod<
   input: GetAccountConfigurationRequest,
   output: GetAccountConfigurationResponse,
   errors: [AccessDeniedException, ThrottlingException],
+  operationName: "GetAccountConfiguration",
 }));
 export type GetCertificateError =
   | InvalidArnException
@@ -1685,6 +1690,7 @@ export const getCertificate: API.OperationMethod<
     RequestInProgressException,
     ResourceNotFoundException,
   ],
+  operationName: "GetCertificate",
 }));
 export type ImportCertificateError =
   | ConflictException
@@ -1745,6 +1751,7 @@ export const importCertificate: API.OperationMethod<
     TagPolicyException,
     TooManyTagsException,
   ],
+  operationName: "ImportCertificate",
 }));
 export type ListCertificatesError =
   | InvalidArgsException
@@ -1777,6 +1784,7 @@ export const listCertificates: API.OperationMethod<
   input: ListCertificatesRequest,
   output: ListCertificatesResponse,
   errors: [InvalidArgsException, ValidationException],
+  operationName: "ListCertificates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1800,6 +1808,7 @@ export const listTagsForCertificate: API.OperationMethod<
   input: ListTagsForCertificateRequest,
   output: ListTagsForCertificateResponse,
   errors: [InvalidArnException, ResourceNotFoundException],
+  operationName: "ListTagsForCertificate",
 }));
 export type PutAccountConfigurationError =
   | AccessDeniedException
@@ -1826,6 +1835,7 @@ export const putAccountConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutAccountConfiguration",
 }));
 export type RemoveTagsFromCertificateError =
   | InvalidArnException
@@ -1856,6 +1866,7 @@ export const removeTagsFromCertificate: API.OperationMethod<
     TagPolicyException,
     ThrottlingException,
   ],
+  operationName: "RemoveTagsFromCertificate",
 }));
 export type RenewCertificateError =
   | InvalidArnException
@@ -1878,6 +1889,7 @@ export const renewCertificate: API.OperationMethod<
     RequestInProgressException,
     ResourceNotFoundException,
   ],
+  operationName: "RenewCertificate",
 }));
 export type RequestCertificateError =
   | InvalidArnException
@@ -1914,6 +1926,7 @@ export const requestCertificate: API.OperationMethod<
     TagPolicyException,
     TooManyTagsException,
   ],
+  operationName: "RequestCertificate",
 }));
 export type ResendValidationEmailError =
   | InvalidArnException
@@ -1938,6 +1951,7 @@ export const resendValidationEmail: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "ResendValidationEmail",
 }));
 export type RevokeCertificateError =
   | AccessDeniedException
@@ -1968,6 +1982,7 @@ export const revokeCertificate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "RevokeCertificate",
 }));
 export type SearchCertificatesError =
   | AccessDeniedException
@@ -2001,6 +2016,7 @@ export const searchCertificates: API.OperationMethod<
   input: SearchCertificatesRequest,
   output: SearchCertificatesResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  operationName: "SearchCertificates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2031,4 +2047,5 @@ export const updateCertificateOptions: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateCertificateOptions",
 }));

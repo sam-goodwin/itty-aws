@@ -5398,6 +5398,7 @@ export const acceptInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AcceptInvitation",
 }));
 export type BatchGetCustomDataIdentifiersError =
   | AccessDeniedException
@@ -5428,6 +5429,7 @@ export const batchGetCustomDataIdentifiers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchGetCustomDataIdentifiers",
 }));
 export type BatchUpdateAutomatedDiscoveryAccountsError =
   | AccessDeniedException
@@ -5454,6 +5456,7 @@ export const batchUpdateAutomatedDiscoveryAccounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchUpdateAutomatedDiscoveryAccounts",
 }));
 export type CreateAllowListError =
   | AccessDeniedException
@@ -5484,6 +5487,7 @@ export const createAllowList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAllowList",
 }));
 export type CreateClassificationJobError =
   | AccessDeniedException
@@ -5514,6 +5518,7 @@ export const createClassificationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateClassificationJob",
 }));
 export type CreateCustomDataIdentifierError =
   | AccessDeniedException
@@ -5544,6 +5549,7 @@ export const createCustomDataIdentifier: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateCustomDataIdentifier",
 }));
 export type CreateFindingsFilterError =
   | AccessDeniedException
@@ -5574,6 +5580,7 @@ export const createFindingsFilter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateFindingsFilter",
 }));
 export type CreateInvitationsError =
   | AccessDeniedException
@@ -5604,6 +5611,7 @@ export const createInvitations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateInvitations",
 }));
 export type CreateMemberError =
   | AccessDeniedException
@@ -5634,6 +5642,7 @@ export const createMember: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateMember",
 }));
 export type CreateSampleFindingsError =
   | AccessDeniedException
@@ -5664,6 +5673,7 @@ export const createSampleFindings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateSampleFindings",
 }));
 export type DeclineInvitationsError =
   | AccessDeniedException
@@ -5694,6 +5704,7 @@ export const declineInvitations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeclineInvitations",
 }));
 export type DeleteAllowListError =
   | AccessDeniedException
@@ -5720,6 +5731,7 @@ export const deleteAllowList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAllowList",
 }));
 export type DeleteCustomDataIdentifierError =
   | AccessDeniedException
@@ -5750,6 +5762,7 @@ export const deleteCustomDataIdentifier: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteCustomDataIdentifier",
 }));
 export type DeleteFindingsFilterError =
   | AccessDeniedException
@@ -5780,6 +5793,7 @@ export const deleteFindingsFilter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteFindingsFilter",
 }));
 export type DeleteInvitationsError =
   | AccessDeniedException
@@ -5810,6 +5824,7 @@ export const deleteInvitations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteInvitations",
 }));
 export type DeleteMemberError =
   | AccessDeniedException
@@ -5840,6 +5855,7 @@ export const deleteMember: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteMember",
 }));
 export type DescribeBucketsError =
   | AccessDeniedException
@@ -5885,6 +5901,7 @@ export const describeBuckets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeBuckets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5921,6 +5938,7 @@ export const describeClassificationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeClassificationJob",
 }));
 export type DescribeOrganizationConfigurationError =
   | AccessDeniedException
@@ -5951,6 +5969,7 @@ export const describeOrganizationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeOrganizationConfiguration",
 }));
 export type DisableMacieError =
   | AccessDeniedException
@@ -5981,6 +6000,7 @@ export const disableMacie: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisableMacie",
 }));
 export type DisableOrganizationAdminAccountError =
   | AccessDeniedException
@@ -6011,6 +6031,7 @@ export const disableOrganizationAdminAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisableOrganizationAdminAccount",
 }));
 export type DisassociateFromAdministratorAccountError =
   | AccessDeniedException
@@ -6041,6 +6062,7 @@ export const disassociateFromAdministratorAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateFromAdministratorAccount",
 }));
 export type DisassociateFromMasterAccountError =
   | AccessDeniedException
@@ -6071,6 +6093,7 @@ export const disassociateFromMasterAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateFromMasterAccount",
 }));
 export type DisassociateMemberError =
   | AccessDeniedException
@@ -6101,6 +6124,7 @@ export const disassociateMember: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateMember",
 }));
 export type EnableMacieError =
   | AccessDeniedException
@@ -6131,6 +6155,7 @@ export const enableMacie: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "EnableMacie",
 }));
 export type EnableOrganizationAdminAccountError =
   | AccessDeniedException
@@ -6161,6 +6186,7 @@ export const enableOrganizationAdminAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "EnableOrganizationAdminAccount",
 }));
 export type GetAdministratorAccountError =
   | AccessDeniedException
@@ -6191,6 +6217,7 @@ export const getAdministratorAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAdministratorAccount",
 }));
 export type GetAllowListError =
   | AccessDeniedException
@@ -6217,6 +6244,7 @@ export const getAllowList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAllowList",
 }));
 export type GetAutomatedDiscoveryConfigurationError =
   | AccessDeniedException
@@ -6241,6 +6269,7 @@ export const getAutomatedDiscoveryConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAutomatedDiscoveryConfiguration",
 }));
 export type GetBucketStatisticsError =
   | AccessDeniedException
@@ -6271,6 +6300,7 @@ export const getBucketStatistics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetBucketStatistics",
 }));
 export type GetClassificationExportConfigurationError =
   | AccessDeniedException
@@ -6301,6 +6331,7 @@ export const getClassificationExportConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetClassificationExportConfiguration",
 }));
 export type GetClassificationScopeError =
   | AccessDeniedException
@@ -6327,6 +6358,7 @@ export const getClassificationScope: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetClassificationScope",
 }));
 export type GetCustomDataIdentifierError =
   | AccessDeniedException
@@ -6357,6 +6389,7 @@ export const getCustomDataIdentifier: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCustomDataIdentifier",
 }));
 export type GetFindingsError =
   | AccessDeniedException
@@ -6387,6 +6420,7 @@ export const getFindings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFindings",
 }));
 export type GetFindingsFilterError =
   | AccessDeniedException
@@ -6417,6 +6451,7 @@ export const getFindingsFilter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFindingsFilter",
 }));
 export type GetFindingsPublicationConfigurationError =
   | AccessDeniedException
@@ -6447,6 +6482,7 @@ export const getFindingsPublicationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFindingsPublicationConfiguration",
 }));
 export type GetFindingStatisticsError =
   | AccessDeniedException
@@ -6477,6 +6513,7 @@ export const getFindingStatistics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFindingStatistics",
 }));
 export type GetInvitationsCountError =
   | AccessDeniedException
@@ -6507,6 +6544,7 @@ export const getInvitationsCount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetInvitationsCount",
 }));
 export type GetMacieSessionError =
   | AccessDeniedException
@@ -6537,6 +6575,7 @@ export const getMacieSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMacieSession",
 }));
 export type GetMasterAccountError =
   | AccessDeniedException
@@ -6567,6 +6606,7 @@ export const getMasterAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMasterAccount",
 }));
 export type GetMemberError =
   | AccessDeniedException
@@ -6597,6 +6637,7 @@ export const getMember: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMember",
 }));
 export type GetResourceProfileError =
   | AccessDeniedException
@@ -6625,6 +6666,7 @@ export const getResourceProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourceProfile",
 }));
 export type GetRevealConfigurationError =
   | AccessDeniedException
@@ -6649,6 +6691,7 @@ export const getRevealConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRevealConfiguration",
 }));
 export type GetSensitiveDataOccurrencesError =
   | AccessDeniedException
@@ -6677,6 +6720,7 @@ export const getSensitiveDataOccurrences: API.OperationMethod<
     ThrottlingException,
     UnprocessableEntityException,
   ],
+  operationName: "GetSensitiveDataOccurrences",
 }));
 export type GetSensitiveDataOccurrencesAvailabilityError =
   | AccessDeniedException
@@ -6701,6 +6745,7 @@ export const getSensitiveDataOccurrencesAvailability: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetSensitiveDataOccurrencesAvailability",
 }));
 export type GetSensitivityInspectionTemplateError =
   | AccessDeniedException
@@ -6727,6 +6772,7 @@ export const getSensitivityInspectionTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSensitivityInspectionTemplate",
 }));
 export type GetUsageStatisticsError =
   | AccessDeniedException
@@ -6772,6 +6818,7 @@ export const getUsageStatistics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetUsageStatistics",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6808,6 +6855,7 @@ export const getUsageTotals: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetUsageTotals",
 }));
 export type ListAllowListsError =
   | AccessDeniedException
@@ -6847,6 +6895,7 @@ export const listAllowLists: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAllowLists",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6894,6 +6943,7 @@ export const listAutomatedDiscoveryAccounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAutomatedDiscoveryAccounts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6945,6 +6995,7 @@ export const listClassificationJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListClassificationJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6990,6 +7041,7 @@ export const listClassificationScopes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListClassificationScopes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7040,6 +7092,7 @@ export const listCustomDataIdentifiers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCustomDataIdentifiers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7091,6 +7144,7 @@ export const listFindings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFindings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7142,6 +7196,7 @@ export const listFindingsFilters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFindingsFilters",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7193,6 +7248,7 @@ export const listInvitations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListInvitations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7228,6 +7284,7 @@ export const listManagedDataIdentifiers: API.OperationMethod<
   input: ListManagedDataIdentifiersRequest,
   output: ListManagedDataIdentifiersResponse,
   errors: [],
+  operationName: "ListManagedDataIdentifiers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7278,6 +7335,7 @@ export const listMembers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMembers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7329,6 +7387,7 @@ export const listOrganizationAdminAccounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListOrganizationAdminAccounts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7376,6 +7435,7 @@ export const listResourceProfileArtifacts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListResourceProfileArtifacts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7424,6 +7484,7 @@ export const listResourceProfileDetections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListResourceProfileDetections",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7471,6 +7532,7 @@ export const listSensitivityInspectionTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSensitivityInspectionTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7491,6 +7553,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
+  operationName: "ListTagsForResource",
 }));
 export type PutClassificationExportConfigurationError =
   | AccessDeniedException
@@ -7521,6 +7584,7 @@ export const putClassificationExportConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutClassificationExportConfiguration",
 }));
 export type PutFindingsPublicationConfigurationError =
   | AccessDeniedException
@@ -7551,6 +7615,7 @@ export const putFindingsPublicationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutFindingsPublicationConfiguration",
 }));
 export type SearchResourcesError =
   | AccessDeniedException
@@ -7596,6 +7661,7 @@ export const searchResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchResources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7616,6 +7682,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
+  operationName: "TagResource",
 }));
 export type TestCustomDataIdentifierError =
   | AccessDeniedException
@@ -7646,6 +7713,7 @@ export const testCustomDataIdentifier: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TestCustomDataIdentifier",
 }));
 export type UntagResourceError = CommonErrors;
 /**
@@ -7660,6 +7728,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
+  operationName: "UntagResource",
 }));
 export type UpdateAllowListError =
   | AccessDeniedException
@@ -7686,6 +7755,7 @@ export const updateAllowList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAllowList",
 }));
 export type UpdateAutomatedDiscoveryConfigurationError =
   | AccessDeniedException
@@ -7710,6 +7780,7 @@ export const updateAutomatedDiscoveryConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAutomatedDiscoveryConfiguration",
 }));
 export type UpdateClassificationJobError =
   | AccessDeniedException
@@ -7740,6 +7811,7 @@ export const updateClassificationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateClassificationJob",
 }));
 export type UpdateClassificationScopeError =
   | AccessDeniedException
@@ -7766,6 +7838,7 @@ export const updateClassificationScope: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateClassificationScope",
 }));
 export type UpdateFindingsFilterError =
   | AccessDeniedException
@@ -7796,6 +7869,7 @@ export const updateFindingsFilter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateFindingsFilter",
 }));
 export type UpdateMacieSessionError =
   | AccessDeniedException
@@ -7826,6 +7900,7 @@ export const updateMacieSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateMacieSession",
 }));
 export type UpdateMemberSessionError =
   | AccessDeniedException
@@ -7856,6 +7931,7 @@ export const updateMemberSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateMemberSession",
 }));
 export type UpdateOrganizationConfigurationError =
   | AccessDeniedException
@@ -7886,6 +7962,7 @@ export const updateOrganizationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateOrganizationConfiguration",
 }));
 export type UpdateResourceProfileError =
   | AccessDeniedException
@@ -7914,6 +7991,7 @@ export const updateResourceProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateResourceProfile",
 }));
 export type UpdateResourceProfileDetectionsError =
   | AccessDeniedException
@@ -7942,6 +8020,7 @@ export const updateResourceProfileDetections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateResourceProfileDetections",
 }));
 export type UpdateRevealConfigurationError =
   | AccessDeniedException
@@ -7966,6 +8045,7 @@ export const updateRevealConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRevealConfiguration",
 }));
 export type UpdateSensitivityInspectionTemplateError =
   | AccessDeniedException
@@ -7992,4 +8072,5 @@ export const updateSensitivityInspectionTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateSensitivityInspectionTemplate",
 }));

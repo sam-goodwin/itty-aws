@@ -3422,6 +3422,7 @@ export const countClosedWorkflowExecutions: API.OperationMethod<
   input: CountClosedWorkflowExecutionsInput,
   output: WorkflowExecutionCount,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "CountClosedWorkflowExecutions",
 }));
 export type CountOpenWorkflowExecutionsError =
   | OperationNotPermittedFault
@@ -3472,6 +3473,7 @@ export const countOpenWorkflowExecutions: API.OperationMethod<
   input: CountOpenWorkflowExecutionsInput,
   output: WorkflowExecutionCount,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "CountOpenWorkflowExecutions",
 }));
 export type CountPendingActivityTasksError =
   | OperationNotPermittedFault
@@ -3512,6 +3514,7 @@ export const countPendingActivityTasks: API.OperationMethod<
   input: CountPendingActivityTasksInput,
   output: PendingTaskCount,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "CountPendingActivityTasks",
 }));
 export type CountPendingDecisionTasksError =
   | OperationNotPermittedFault
@@ -3552,6 +3555,7 @@ export const countPendingDecisionTasks: API.OperationMethod<
   input: CountPendingDecisionTasksInput,
   output: PendingTaskCount,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "CountPendingDecisionTasks",
 }));
 export type DeleteActivityTypeError =
   | OperationNotPermittedFault
@@ -3603,6 +3607,7 @@ export const deleteActivityType: API.OperationMethod<
     TypeNotDeprecatedFault,
     UnknownResourceFault,
   ],
+  operationName: "DeleteActivityType",
 }));
 export type DeleteWorkflowTypeError =
   | OperationNotPermittedFault
@@ -3655,6 +3660,7 @@ export const deleteWorkflowType: API.OperationMethod<
     TypeNotDeprecatedFault,
     UnknownResourceFault,
   ],
+  operationName: "DeleteWorkflowType",
 }));
 export type DeprecateActivityTypeError =
   | OperationNotPermittedFault
@@ -3705,6 +3711,7 @@ export const deprecateActivityType: API.OperationMethod<
     TypeDeprecatedFault,
     UnknownResourceFault,
   ],
+  operationName: "DeprecateActivityType",
 }));
 export type DeprecateDomainError =
   | DomainDeprecatedFault
@@ -3753,6 +3760,7 @@ export const deprecateDomain: API.OperationMethod<
     OperationNotPermittedFault,
     UnknownResourceFault,
   ],
+  operationName: "DeprecateDomain",
 }));
 export type DeprecateWorkflowTypeError =
   | OperationNotPermittedFault
@@ -3807,6 +3815,7 @@ export const deprecateWorkflowType: API.OperationMethod<
     TypeDeprecatedFault,
     UnknownResourceFault,
   ],
+  operationName: "DeprecateWorkflowType",
 }));
 export type DescribeActivityTypeError =
   | OperationNotPermittedFault
@@ -3852,6 +3861,7 @@ export const describeActivityType: API.OperationMethod<
   input: DescribeActivityTypeInput,
   output: ActivityTypeDetail,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "DescribeActivityType",
 }));
 export type DescribeDomainError =
   | OperationNotPermittedFault
@@ -3889,6 +3899,7 @@ export const describeDomain: API.OperationMethod<
   input: DescribeDomainInput,
   output: DomainDetail,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "DescribeDomain",
 }));
 export type DescribeWorkflowExecutionError =
   | OperationNotPermittedFault
@@ -3929,6 +3940,7 @@ export const describeWorkflowExecution: API.OperationMethod<
   input: DescribeWorkflowExecutionInput,
   output: WorkflowExecutionDetail,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "DescribeWorkflowExecution",
 }));
 export type DescribeWorkflowTypeError =
   | OperationNotPermittedFault
@@ -3974,6 +3986,7 @@ export const describeWorkflowType: API.OperationMethod<
   input: DescribeWorkflowTypeInput,
   output: WorkflowTypeDetail,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "DescribeWorkflowType",
 }));
 export type GetWorkflowExecutionHistoryError =
   | OperationNotPermittedFault
@@ -4030,6 +4043,7 @@ export const getWorkflowExecutionHistory: API.OperationMethod<
   input: GetWorkflowExecutionHistoryInput,
   output: History,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "GetWorkflowExecutionHistory",
   pagination: {
     inputToken: "nextPageToken",
     outputToken: "nextPageToken",
@@ -4091,6 +4105,7 @@ export const listActivityTypes: API.OperationMethod<
   input: ListActivityTypesInput,
   output: ActivityTypeInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "ListActivityTypes",
   pagination: {
     inputToken: "nextPageToken",
     outputToken: "nextPageToken",
@@ -4163,6 +4178,7 @@ export const listClosedWorkflowExecutions: API.OperationMethod<
   input: ListClosedWorkflowExecutionsInput,
   output: WorkflowExecutionInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "ListClosedWorkflowExecutions",
   pagination: {
     inputToken: "nextPageToken",
     outputToken: "nextPageToken",
@@ -4224,6 +4240,7 @@ export const listDomains: API.OperationMethod<
   input: ListDomainsInput,
   output: DomainInfos,
   errors: [OperationNotPermittedFault],
+  operationName: "ListDomains",
   pagination: {
     inputToken: "nextPageToken",
     outputToken: "nextPageToken",
@@ -4296,6 +4313,7 @@ export const listOpenWorkflowExecutions: API.OperationMethod<
   input: ListOpenWorkflowExecutionsInput,
   output: WorkflowExecutionInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "ListOpenWorkflowExecutions",
   pagination: {
     inputToken: "nextPageToken",
     outputToken: "nextPageToken",
@@ -4324,6 +4342,7 @@ export const listTagsForResource: API.OperationMethod<
     OperationNotPermittedFault,
     UnknownResourceFault,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListWorkflowTypesError =
   | OperationNotPermittedFault
@@ -4376,6 +4395,7 @@ export const listWorkflowTypes: API.OperationMethod<
   input: ListWorkflowTypesInput,
   output: WorkflowTypeInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "ListWorkflowTypes",
   pagination: {
     inputToken: "nextPageToken",
     outputToken: "nextPageToken",
@@ -4434,6 +4454,7 @@ export const pollForActivityTask: API.OperationMethod<
     OperationNotPermittedFault,
     UnknownResourceFault,
   ],
+  operationName: "PollForActivityTask",
 }));
 export type PollForDecisionTaskError =
   | LimitExceededFault
@@ -4513,6 +4534,7 @@ export const pollForDecisionTask: API.OperationMethod<
     OperationNotPermittedFault,
     UnknownResourceFault,
   ],
+  operationName: "PollForDecisionTask",
   pagination: {
     inputToken: "nextPageToken",
     outputToken: "nextPageToken",
@@ -4578,6 +4600,7 @@ export const recordActivityTaskHeartbeat: API.OperationMethod<
   input: RecordActivityTaskHeartbeatInput,
   output: ActivityTaskStatus,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "RecordActivityTaskHeartbeat",
 }));
 export type RegisterActivityTypeError =
   | LimitExceededFault
@@ -4635,6 +4658,7 @@ export const registerActivityType: API.OperationMethod<
     TypeAlreadyExistsFault,
     UnknownResourceFault,
   ],
+  operationName: "RegisterActivityType",
 }));
 export type RegisterDomainError =
   | DomainAlreadyExistsFault
@@ -4678,6 +4702,7 @@ export const registerDomain: API.OperationMethod<
     OperationNotPermittedFault,
     TooManyTagsFault,
   ],
+  operationName: "RegisterDomain",
 }));
 export type RegisterWorkflowTypeError =
   | LimitExceededFault
@@ -4737,6 +4762,7 @@ export const registerWorkflowType: API.OperationMethod<
     TypeAlreadyExistsFault,
     UnknownResourceFault,
   ],
+  operationName: "RegisterWorkflowType",
 }));
 export type RequestCancelWorkflowExecutionError =
   | OperationNotPermittedFault
@@ -4784,6 +4810,7 @@ export const requestCancelWorkflowExecution: API.OperationMethod<
   input: RequestCancelWorkflowExecutionInput,
   output: RequestCancelWorkflowExecutionResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "RequestCancelWorkflowExecution",
 }));
 export type RespondActivityTaskCanceledError =
   | OperationNotPermittedFault
@@ -4835,6 +4862,7 @@ export const respondActivityTaskCanceled: API.OperationMethod<
   input: RespondActivityTaskCanceledInput,
   output: RespondActivityTaskCanceledResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "RespondActivityTaskCanceled",
 }));
 export type RespondActivityTaskCompletedError =
   | OperationNotPermittedFault
@@ -4884,6 +4912,7 @@ export const respondActivityTaskCompleted: API.OperationMethod<
   input: RespondActivityTaskCompletedInput,
   output: RespondActivityTaskCompletedResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "RespondActivityTaskCompleted",
 }));
 export type RespondActivityTaskFailedError =
   | OperationNotPermittedFault
@@ -4928,6 +4957,7 @@ export const respondActivityTaskFailed: API.OperationMethod<
   input: RespondActivityTaskFailedInput,
   output: RespondActivityTaskFailedResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "RespondActivityTaskFailed",
 }));
 export type RespondDecisionTaskCompletedError =
   | OperationNotPermittedFault
@@ -4962,6 +4992,7 @@ export const respondDecisionTaskCompleted: API.OperationMethod<
   input: RespondDecisionTaskCompletedInput,
   output: RespondDecisionTaskCompletedResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "RespondDecisionTaskCompleted",
 }));
 export type SignalWorkflowExecutionError =
   | OperationNotPermittedFault
@@ -5008,6 +5039,7 @@ export const signalWorkflowExecution: API.OperationMethod<
   input: SignalWorkflowExecutionInput,
   output: SignalWorkflowExecutionResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "SignalWorkflowExecution",
 }));
 export type StartWorkflowExecutionError =
   | DefaultUndefinedFault
@@ -5078,6 +5110,7 @@ export const startWorkflowExecution: API.OperationMethod<
     UnknownResourceFault,
     WorkflowExecutionAlreadyStartedFault,
   ],
+  operationName: "StartWorkflowExecution",
 }));
 export type TagResourceError =
   | LimitExceededFault
@@ -5104,6 +5137,7 @@ export const tagResource: API.OperationMethod<
     TooManyTagsFault,
     UnknownResourceFault,
   ],
+  operationName: "TagResource",
 }));
 export type TerminateWorkflowExecutionError =
   | OperationNotPermittedFault
@@ -5153,6 +5187,7 @@ export const terminateWorkflowExecution: API.OperationMethod<
   input: TerminateWorkflowExecutionInput,
   output: TerminateWorkflowExecutionResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  operationName: "TerminateWorkflowExecution",
 }));
 export type UndeprecateActivityTypeError =
   | OperationNotPermittedFault
@@ -5205,6 +5240,7 @@ export const undeprecateActivityType: API.OperationMethod<
     TypeAlreadyExistsFault,
     UnknownResourceFault,
   ],
+  operationName: "UndeprecateActivityType",
 }));
 export type UndeprecateDomainError =
   | DomainAlreadyExistsFault
@@ -5250,6 +5286,7 @@ export const undeprecateDomain: API.OperationMethod<
     OperationNotPermittedFault,
     UnknownResourceFault,
   ],
+  operationName: "UndeprecateDomain",
 }));
 export type UndeprecateWorkflowTypeError =
   | OperationNotPermittedFault
@@ -5302,6 +5339,7 @@ export const undeprecateWorkflowType: API.OperationMethod<
     TypeAlreadyExistsFault,
     UnknownResourceFault,
   ],
+  operationName: "UndeprecateWorkflowType",
 }));
 export type UntagResourceError =
   | LimitExceededFault
@@ -5324,4 +5362,5 @@ export const untagResource: API.OperationMethod<
     OperationNotPermittedFault,
     UnknownResourceFault,
   ],
+  operationName: "UntagResource",
 }));

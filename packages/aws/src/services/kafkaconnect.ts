@@ -1677,6 +1677,7 @@ export const createConnector: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateConnector",
 }));
 export type CreateCustomPluginError =
   | BadRequestException
@@ -1709,6 +1710,7 @@ export const createCustomPlugin: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateCustomPlugin",
 }));
 export type CreateWorkerConfigurationError =
   | BadRequestException
@@ -1741,6 +1743,7 @@ export const createWorkerConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "CreateWorkerConfiguration",
 }));
 export type DeleteConnectorError =
   | BadRequestException
@@ -1771,6 +1774,7 @@ export const deleteConnector: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteConnector",
 }));
 export type DeleteCustomPluginError =
   | BadRequestException
@@ -1801,6 +1805,7 @@ export const deleteCustomPlugin: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteCustomPlugin",
 }));
 export type DeleteWorkerConfigurationError =
   | BadRequestException
@@ -1831,6 +1836,7 @@ export const deleteWorkerConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DeleteWorkerConfiguration",
 }));
 export type DescribeConnectorError =
   | BadRequestException
@@ -1861,6 +1867,7 @@ export const describeConnector: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DescribeConnector",
 }));
 export type DescribeConnectorOperationError =
   | BadRequestException
@@ -1891,6 +1898,7 @@ export const describeConnectorOperation: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DescribeConnectorOperation",
 }));
 export type DescribeCustomPluginError =
   | BadRequestException
@@ -1921,6 +1929,7 @@ export const describeCustomPlugin: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DescribeCustomPlugin",
 }));
 export type DescribeWorkerConfigurationError =
   | BadRequestException
@@ -1951,6 +1960,7 @@ export const describeWorkerConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DescribeWorkerConfiguration",
 }));
 export type ListConnectorOperationsError =
   | BadRequestException
@@ -1996,6 +2006,7 @@ export const listConnectorOperations: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "ListConnectorOperations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2047,6 +2058,7 @@ export const listConnectors: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "ListConnectors",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2098,6 +2110,7 @@ export const listCustomPlugins: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "ListCustomPlugins",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2134,6 +2147,7 @@ export const listTagsForResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListWorkerConfigurationsError =
   | BadRequestException
@@ -2179,6 +2193,7 @@ export const listWorkerConfigurations: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "ListWorkerConfigurations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2217,6 +2232,7 @@ export const tagResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -2247,6 +2263,7 @@ export const untagResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateConnectorError =
   | BadRequestException
@@ -2277,4 +2294,5 @@ export const updateConnector: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "UpdateConnector",
 }));

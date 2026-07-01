@@ -3027,6 +3027,7 @@ export const addNotificationChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AddNotificationChannel",
 }));
 export type DeleteInsightError =
   | AccessDeniedException
@@ -3055,6 +3056,7 @@ export const deleteInsight: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteInsight",
 }));
 export type DescribeAccountHealthError =
   | AccessDeniedException
@@ -3081,6 +3083,7 @@ export const describeAccountHealth: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeAccountHealth",
 }));
 export type DescribeAccountOverviewError =
   | AccessDeniedException
@@ -3107,6 +3110,7 @@ export const describeAccountOverview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeAccountOverview",
 }));
 export type DescribeAnomalyError =
   | AccessDeniedException
@@ -3133,6 +3137,7 @@ export const describeAnomaly: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeAnomaly",
 }));
 export type DescribeEventSourcesConfigError =
   | AccessDeniedException
@@ -3160,6 +3165,7 @@ export const describeEventSourcesConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeEventSourcesConfig",
 }));
 export type DescribeFeedbackError =
   | AccessDeniedException
@@ -3186,6 +3192,7 @@ export const describeFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeFeedback",
 }));
 export type DescribeInsightError =
   | AccessDeniedException
@@ -3212,6 +3219,7 @@ export const describeInsight: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeInsight",
 }));
 export type DescribeOrganizationHealthError =
   | AccessDeniedException
@@ -3237,6 +3245,7 @@ export const describeOrganizationHealth: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeOrganizationHealth",
 }));
 export type DescribeOrganizationOverviewError =
   | AccessDeniedException
@@ -3262,6 +3271,7 @@ export const describeOrganizationOverview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeOrganizationOverview",
 }));
 export type DescribeOrganizationResourceCollectionHealthError =
   | AccessDeniedException
@@ -3303,6 +3313,7 @@ export const describeOrganizationResourceCollectionHealth: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeOrganizationResourceCollectionHealth",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
 export type DescribeResourceCollectionHealthError =
@@ -3347,6 +3358,7 @@ export const describeResourceCollectionHealth: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeResourceCollectionHealth",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
 export type DescribeServiceIntegrationError =
@@ -3376,6 +3388,7 @@ export const describeServiceIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeServiceIntegration",
 }));
 export type GetCostEstimationError =
   | AccessDeniedException
@@ -3421,6 +3434,7 @@ export const getCostEstimation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCostEstimation",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
 export type GetResourceCollectionError =
@@ -3466,6 +3480,7 @@ export const getResourceCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourceCollection",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
 export type ListAnomaliesForInsightError =
@@ -3509,6 +3524,7 @@ export const listAnomaliesForInsight: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAnomaliesForInsight",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3555,6 +3571,7 @@ export const listAnomalousLogGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAnomalousLogGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3602,6 +3619,7 @@ export const listEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3649,6 +3667,7 @@ export const listInsights: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListInsights",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3693,6 +3712,7 @@ export const listMonitoredResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMonitoredResources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3740,6 +3760,7 @@ export const listNotificationChannels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListNotificationChannels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3784,6 +3805,7 @@ export const listOrganizationInsights: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListOrganizationInsights",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3831,6 +3853,7 @@ export const listRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRecommendations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3864,6 +3887,7 @@ export const putFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutFeedback",
 }));
 export type RemoveNotificationChannelError =
   | AccessDeniedException
@@ -3894,6 +3918,7 @@ export const removeNotificationChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RemoveNotificationChannel",
 }));
 export type SearchInsightsError =
   | AccessDeniedException
@@ -3940,6 +3965,7 @@ export const searchInsights: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchInsights",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3992,6 +4018,7 @@ export const searchOrganizationInsights: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchOrganizationInsights",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4026,6 +4053,7 @@ export const startCostEstimation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartCostEstimation",
 }));
 export type UpdateEventSourcesConfigError =
   | AccessDeniedException
@@ -4052,6 +4080,7 @@ export const updateEventSourcesConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateEventSourcesConfig",
 }));
 export type UpdateResourceCollectionError =
   | AccessDeniedException
@@ -4082,6 +4111,7 @@ export const updateResourceCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateResourceCollection",
 }));
 export type UpdateServiceIntegrationError =
   | AccessDeniedException
@@ -4110,4 +4140,5 @@ export const updateServiceIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateServiceIntegration",
 }));

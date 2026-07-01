@@ -5206,6 +5206,7 @@ export const associateWebACL: API.OperationMethod<
     WAFNonexistentItemException,
     WAFUnavailableEntityException,
   ],
+  operationName: "AssociateWebACL",
 }));
 export type CheckCapacityError =
   | WAFExpiredManagedRuleGroupVersionException
@@ -5251,6 +5252,7 @@ export const checkCapacity: API.OperationMethod<
     WAFSubscriptionNotFoundException,
     WAFUnavailableEntityException,
   ],
+  operationName: "CheckCapacity",
 }));
 export type CreateAPIKeyError =
   | WAFInternalErrorException
@@ -5282,6 +5284,7 @@ export const createAPIKey: API.OperationMethod<
     WAFInvalidParameterException,
     WAFLimitsExceededException,
   ],
+  operationName: "CreateAPIKey",
 }));
 export type CreateIPSetError =
   | WAFDuplicateItemException
@@ -5317,6 +5320,7 @@ export const createIPSet: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "CreateIPSet",
 }));
 export type CreateRegexPatternSetError =
   | WAFDuplicateItemException
@@ -5350,6 +5354,7 @@ export const createRegexPatternSet: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "CreateRegexPatternSet",
 }));
 export type CreateRuleGroupError =
   | WAFDuplicateItemException
@@ -5390,6 +5395,7 @@ export const createRuleGroup: API.OperationMethod<
     WAFTagOperationInternalErrorException,
     WAFUnavailableEntityException,
   ],
+  operationName: "CreateRuleGroup",
 }));
 export type CreateWebACLError =
   | WAFConfigurationWarningException
@@ -5436,6 +5442,7 @@ export const createWebACL: API.OperationMethod<
     WAFTagOperationInternalErrorException,
     WAFUnavailableEntityException,
   ],
+  operationName: "CreateWebACL",
 }));
 export type DeleteAPIKeyError =
   | WAFInternalErrorException
@@ -5464,6 +5471,7 @@ export const deleteAPIKey: API.OperationMethod<
     WAFNonexistentItemException,
     WAFOptimisticLockException,
   ],
+  operationName: "DeleteAPIKey",
 }));
 export type DeleteFirewallManagerRuleGroupsError =
   | WAFInternalErrorException
@@ -5492,6 +5500,7 @@ export const deleteFirewallManagerRuleGroups: API.OperationMethod<
     WAFNonexistentItemException,
     WAFOptimisticLockException,
   ],
+  operationName: "DeleteFirewallManagerRuleGroups",
 }));
 export type DeleteIPSetError =
   | WAFAssociatedItemException
@@ -5524,6 +5533,7 @@ export const deleteIPSet: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "DeleteIPSet",
 }));
 export type DeleteLoggingConfigurationError =
   | WAFInternalErrorException
@@ -5550,6 +5560,7 @@ export const deleteLoggingConfiguration: API.OperationMethod<
     WAFNonexistentItemException,
     WAFOptimisticLockException,
   ],
+  operationName: "DeleteLoggingConfiguration",
 }));
 export type DeletePermissionPolicyError =
   | WAFInternalErrorException
@@ -5574,6 +5585,7 @@ export const deletePermissionPolicy: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "DeletePermissionPolicy",
 }));
 export type DeleteRegexPatternSetError =
   | WAFAssociatedItemException
@@ -5606,6 +5618,7 @@ export const deleteRegexPatternSet: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "DeleteRegexPatternSet",
 }));
 export type DeleteRuleGroupError =
   | WAFAssociatedItemException
@@ -5638,6 +5651,7 @@ export const deleteRuleGroup: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "DeleteRuleGroup",
 }));
 export type DeleteWebACLError =
   | WAFAssociatedItemException
@@ -5691,6 +5705,7 @@ export const deleteWebACL: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "DeleteWebACL",
 }));
 export type DescribeAllManagedProductsError =
   | WAFInternalErrorException
@@ -5713,6 +5728,7 @@ export const describeAllManagedProducts: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  operationName: "DescribeAllManagedProducts",
 }));
 export type DescribeManagedProductsByVendorError =
   | WAFInternalErrorException
@@ -5735,6 +5751,7 @@ export const describeManagedProductsByVendor: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  operationName: "DescribeManagedProductsByVendor",
 }));
 export type DescribeManagedRuleGroupError =
   | WAFExpiredManagedRuleGroupVersionException
@@ -5763,6 +5780,7 @@ export const describeManagedRuleGroup: API.OperationMethod<
     WAFInvalidResourceException,
     WAFNonexistentItemException,
   ],
+  operationName: "DescribeManagedRuleGroup",
 }));
 export type DisassociateWebACLError =
   | WAFInternalErrorException
@@ -5795,6 +5813,7 @@ export const disassociateWebACL: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "DisassociateWebACL",
 }));
 export type GenerateMobileSdkReleaseUrlError =
   | WAFInternalErrorException
@@ -5822,6 +5841,7 @@ export const generateMobileSdkReleaseUrl: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "GenerateMobileSdkReleaseUrl",
 }));
 export type GetDecryptedAPIKeyError =
   | WAFInternalErrorException
@@ -5852,6 +5872,7 @@ export const getDecryptedAPIKey: API.OperationMethod<
     WAFInvalidResourceException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetDecryptedAPIKey",
 }));
 export type GetIPSetError =
   | WAFInternalErrorException
@@ -5876,6 +5897,7 @@ export const getIPSet: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetIPSet",
 }));
 export type GetLoggingConfigurationError =
   | WAFInternalErrorException
@@ -5900,6 +5922,7 @@ export const getLoggingConfiguration: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetLoggingConfiguration",
 }));
 export type GetManagedRuleSetError =
   | WAFInternalErrorException
@@ -5928,6 +5951,7 @@ export const getManagedRuleSet: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetManagedRuleSet",
 }));
 export type GetMobileSdkReleaseError =
   | WAFInternalErrorException
@@ -5956,6 +5980,7 @@ export const getMobileSdkRelease: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetMobileSdkRelease",
 }));
 export type GetPermissionPolicyError =
   | WAFInternalErrorException
@@ -5980,6 +6005,7 @@ export const getPermissionPolicy: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetPermissionPolicy",
 }));
 export type GetRateBasedStatementManagedKeysError =
   | WAFInternalErrorException
@@ -6025,6 +6051,7 @@ export const getRateBasedStatementManagedKeys: API.OperationMethod<
     WAFNonexistentItemException,
     WAFUnsupportedAggregateKeyTypeException,
   ],
+  operationName: "GetRateBasedStatementManagedKeys",
 }));
 export type GetRegexPatternSetError =
   | WAFInternalErrorException
@@ -6049,6 +6076,7 @@ export const getRegexPatternSet: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetRegexPatternSet",
 }));
 export type GetRevenueStatisticsError =
   | WAFInternalErrorException
@@ -6073,6 +6101,7 @@ export const getRevenueStatistics: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetRevenueStatistics",
 }));
 export type GetRevenueStatisticsSummaryError =
   | WAFInternalErrorException
@@ -6097,6 +6126,7 @@ export const getRevenueStatisticsSummary: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetRevenueStatisticsSummary",
 }));
 export type GetRevenueStatisticsTimeSeriesError =
   | WAFInternalErrorException
@@ -6121,6 +6151,7 @@ export const getRevenueStatisticsTimeSeries: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetRevenueStatisticsTimeSeries",
 }));
 export type GetRuleGroupError =
   | WAFInternalErrorException
@@ -6145,6 +6176,7 @@ export const getRuleGroup: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetRuleGroup",
 }));
 export type GetSampledRequestsError =
   | WAFInternalErrorException
@@ -6176,6 +6208,7 @@ export const getSampledRequests: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetSampledRequests",
 }));
 export type GetTopPathStatisticsByTrafficError =
   | WAFFeatureNotIncludedInPricingPlanException
@@ -6204,6 +6237,7 @@ export const getTopPathStatisticsByTraffic: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetTopPathStatisticsByTraffic",
 }));
 export type GetWebACLError =
   | WAFInternalErrorException
@@ -6228,6 +6262,7 @@ export const getWebACL: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "GetWebACL",
 }));
 export type GetWebACLForResourceError =
   | WAFInternalErrorException
@@ -6266,6 +6301,7 @@ export const getWebACLForResource: API.OperationMethod<
     WAFNonexistentItemException,
     WAFUnavailableEntityException,
   ],
+  operationName: "GetWebACLForResource",
 }));
 export type ListAPIKeysError =
   | WAFInternalErrorException
@@ -6294,6 +6330,7 @@ export const listAPIKeys: API.OperationMethod<
     WAFInvalidParameterException,
     WAFInvalidResourceException,
   ],
+  operationName: "ListAPIKeys",
 }));
 export type ListAvailableManagedRuleGroupsError =
   | WAFInternalErrorException
@@ -6318,6 +6355,7 @@ export const listAvailableManagedRuleGroups: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  operationName: "ListAvailableManagedRuleGroups",
 }));
 export type ListAvailableManagedRuleGroupVersionsError =
   | WAFInternalErrorException
@@ -6342,6 +6380,7 @@ export const listAvailableManagedRuleGroupVersions: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "ListAvailableManagedRuleGroupVersions",
 }));
 export type ListIPSetsError =
   | WAFInternalErrorException
@@ -6365,6 +6404,7 @@ export const listIPSets: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  operationName: "ListIPSets",
 }));
 export type ListLoggingConfigurationsError =
   | WAFInternalErrorException
@@ -6387,6 +6427,7 @@ export const listLoggingConfigurations: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  operationName: "ListLoggingConfigurations",
 }));
 export type ListManagedRuleSetsError =
   | WAFInternalErrorException
@@ -6413,6 +6454,7 @@ export const listManagedRuleSets: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  operationName: "ListManagedRuleSets",
 }));
 export type ListMobileSdkReleasesError =
   | WAFInternalErrorException
@@ -6439,6 +6481,7 @@ export const listMobileSdkReleases: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  operationName: "ListMobileSdkReleases",
 }));
 export type ListRegexPatternSetsError =
   | WAFInternalErrorException
@@ -6462,6 +6505,7 @@ export const listRegexPatternSets: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  operationName: "ListRegexPatternSets",
 }));
 export type ListResourcesForWebACLError =
   | WAFInternalErrorException
@@ -6496,6 +6540,7 @@ export const listResourcesForWebACL: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "ListResourcesForWebACL",
 }));
 export type ListRuleGroupsError =
   | WAFInternalErrorException
@@ -6519,6 +6564,7 @@ export const listRuleGroups: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  operationName: "ListRuleGroups",
 }));
 export type ListSettlementRecordsError =
   | WAFInternalErrorException
@@ -6543,6 +6589,7 @@ export const listSettlementRecords: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  operationName: "ListSettlementRecords",
 }));
 export type ListTagsForResourceError =
   | WAFInternalErrorException
@@ -6579,6 +6626,7 @@ export const listTagsForResource: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListWebACLsError =
   | WAFInternalErrorException
@@ -6602,6 +6650,7 @@ export const listWebACLs: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  operationName: "ListWebACLs",
 }));
 export type PutLoggingConfigurationError =
   | WAFFeatureNotIncludedInPricingPlanException
@@ -6674,6 +6723,7 @@ export const putLoggingConfiguration: API.OperationMethod<
     WAFOptimisticLockException,
     WAFServiceLinkedRoleErrorException,
   ],
+  operationName: "PutLoggingConfiguration",
 }));
 export type PutManagedRuleSetVersionsError =
   | WAFInternalErrorException
@@ -6713,6 +6763,7 @@ export const putManagedRuleSetVersions: API.OperationMethod<
     WAFNonexistentItemException,
     WAFOptimisticLockException,
   ],
+  operationName: "PutManagedRuleSetVersions",
 }));
 export type PutPermissionPolicyError =
   | WAFInternalErrorException
@@ -6753,6 +6804,7 @@ export const putPermissionPolicy: API.OperationMethod<
     WAFInvalidPermissionPolicyException,
     WAFNonexistentItemException,
   ],
+  operationName: "PutPermissionPolicy",
 }));
 export type TagResourceError =
   | WAFInternalErrorException
@@ -6791,6 +6843,7 @@ export const tagResource: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | WAFInternalErrorException
@@ -6822,6 +6875,7 @@ export const untagResource: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateIPSetError =
   | WAFDuplicateItemException
@@ -6876,6 +6930,7 @@ export const updateIPSet: API.OperationMethod<
     WAFNonexistentItemException,
     WAFOptimisticLockException,
   ],
+  operationName: "UpdateIPSet",
 }));
 export type UpdateManagedRuleSetVersionExpiryDateError =
   | WAFInternalErrorException
@@ -6908,6 +6963,7 @@ export const updateManagedRuleSetVersionExpiryDate: API.OperationMethod<
     WAFNonexistentItemException,
     WAFOptimisticLockException,
   ],
+  operationName: "UpdateManagedRuleSetVersionExpiryDate",
 }));
 export type UpdateRegexPatternSetError =
   | WAFDuplicateItemException
@@ -6962,6 +7018,7 @@ export const updateRegexPatternSet: API.OperationMethod<
     WAFNonexistentItemException,
     WAFOptimisticLockException,
   ],
+  operationName: "UpdateRegexPatternSet",
 }));
 export type UpdateRuleGroupError =
   | WAFConfigurationWarningException
@@ -7024,6 +7081,7 @@ export const updateRuleGroup: API.OperationMethod<
     WAFSubscriptionNotFoundException,
     WAFUnavailableEntityException,
   ],
+  operationName: "UpdateRuleGroup",
 }));
 export type UpdateWebACLError =
   | WAFConfigurationWarningException
@@ -7093,4 +7151,5 @@ export const updateWebACL: API.OperationMethod<
     WAFSubscriptionNotFoundException,
     WAFUnavailableEntityException,
   ],
+  operationName: "UpdateWebACL",
 }));

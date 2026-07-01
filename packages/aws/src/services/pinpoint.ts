@@ -12147,6 +12147,7 @@ export const createApp: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "CreateApp",
 }));
 export type CreateCampaignError =
   | BadRequestException
@@ -12177,6 +12178,7 @@ export const createCampaign: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "CreateCampaign",
 }));
 export type CreateEmailTemplateError =
   | BadRequestException
@@ -12203,6 +12205,7 @@ export const createEmailTemplate: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  operationName: "CreateEmailTemplate",
 }));
 export type CreateExportJobError =
   | BadRequestException
@@ -12233,6 +12236,7 @@ export const createExportJob: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "CreateExportJob",
 }));
 export type CreateImportJobError =
   | BadRequestException
@@ -12263,6 +12267,7 @@ export const createImportJob: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "CreateImportJob",
 }));
 export type CreateInAppTemplateError =
   | BadRequestException
@@ -12289,6 +12294,7 @@ export const createInAppTemplate: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  operationName: "CreateInAppTemplate",
 }));
 export type CreateJourneyError =
   | BadRequestException
@@ -12319,6 +12325,7 @@ export const createJourney: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "CreateJourney",
 }));
 export type CreatePushTemplateError =
   | BadRequestException
@@ -12345,6 +12352,7 @@ export const createPushTemplate: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  operationName: "CreatePushTemplate",
 }));
 export type CreateRecommenderConfigurationError =
   | BadRequestException
@@ -12375,6 +12383,7 @@ export const createRecommenderConfiguration: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "CreateRecommenderConfiguration",
 }));
 export type CreateSegmentError =
   | BadRequestException
@@ -12405,6 +12414,7 @@ export const createSegment: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "CreateSegment",
 }));
 export type CreateSmsTemplateError =
   | BadRequestException
@@ -12431,6 +12441,7 @@ export const createSmsTemplate: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  operationName: "CreateSmsTemplate",
 }));
 export type CreateVoiceTemplateError =
   | BadRequestException
@@ -12457,6 +12468,7 @@ export const createVoiceTemplate: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  operationName: "CreateVoiceTemplate",
 }));
 export type DeleteAdmChannelError =
   | BadRequestException
@@ -12487,6 +12499,7 @@ export const deleteAdmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteAdmChannel",
 }));
 export type DeleteApnsChannelError =
   | BadRequestException
@@ -12517,6 +12530,7 @@ export const deleteApnsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteApnsChannel",
 }));
 export type DeleteApnsSandboxChannelError =
   | BadRequestException
@@ -12547,6 +12561,7 @@ export const deleteApnsSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteApnsSandboxChannel",
 }));
 export type DeleteApnsVoipChannelError =
   | BadRequestException
@@ -12577,6 +12592,7 @@ export const deleteApnsVoipChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteApnsVoipChannel",
 }));
 export type DeleteApnsVoipSandboxChannelError =
   | BadRequestException
@@ -12607,6 +12623,7 @@ export const deleteApnsVoipSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteApnsVoipSandboxChannel",
 }));
 export type DeleteAppError =
   | BadRequestException
@@ -12637,6 +12654,7 @@ export const deleteApp: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteApp",
 }));
 export type DeleteBaiduChannelError =
   | BadRequestException
@@ -12667,6 +12685,7 @@ export const deleteBaiduChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteBaiduChannel",
 }));
 export type DeleteCampaignError =
   | BadRequestException
@@ -12697,6 +12716,7 @@ export const deleteCampaign: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteCampaign",
 }));
 export type DeleteEmailChannelError =
   | BadRequestException
@@ -12727,6 +12747,7 @@ export const deleteEmailChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteEmailChannel",
 }));
 export type DeleteEmailTemplateError =
   | BadRequestException
@@ -12757,6 +12778,7 @@ export const deleteEmailTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteEmailTemplate",
 }));
 export type DeleteEndpointError =
   | BadRequestException
@@ -12787,6 +12809,7 @@ export const deleteEndpoint: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteEndpoint",
 }));
 export type DeleteEventStreamError =
   | BadRequestException
@@ -12817,6 +12840,7 @@ export const deleteEventStream: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteEventStream",
 }));
 export type DeleteGcmChannelError =
   | BadRequestException
@@ -12847,6 +12871,7 @@ export const deleteGcmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteGcmChannel",
 }));
 export type DeleteInAppTemplateError =
   | BadRequestException
@@ -12877,6 +12902,7 @@ export const deleteInAppTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteInAppTemplate",
 }));
 export type DeleteJourneyError =
   | BadRequestException
@@ -12907,6 +12933,7 @@ export const deleteJourney: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteJourney",
 }));
 export type DeletePushTemplateError =
   | BadRequestException
@@ -12937,6 +12964,7 @@ export const deletePushTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeletePushTemplate",
 }));
 export type DeleteRecommenderConfigurationError =
   | BadRequestException
@@ -12967,6 +12995,7 @@ export const deleteRecommenderConfiguration: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteRecommenderConfiguration",
 }));
 export type DeleteSegmentError =
   | BadRequestException
@@ -12997,6 +13026,7 @@ export const deleteSegment: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteSegment",
 }));
 export type DeleteSmsChannelError =
   | BadRequestException
@@ -13027,6 +13057,7 @@ export const deleteSmsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteSmsChannel",
 }));
 export type DeleteSmsTemplateError =
   | BadRequestException
@@ -13057,6 +13088,7 @@ export const deleteSmsTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteSmsTemplate",
 }));
 export type DeleteUserEndpointsError =
   | BadRequestException
@@ -13087,6 +13119,7 @@ export const deleteUserEndpoints: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteUserEndpoints",
 }));
 export type DeleteVoiceChannelError =
   | BadRequestException
@@ -13117,6 +13150,7 @@ export const deleteVoiceChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteVoiceChannel",
 }));
 export type DeleteVoiceTemplateError =
   | BadRequestException
@@ -13147,6 +13181,7 @@ export const deleteVoiceTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteVoiceTemplate",
 }));
 export type GetAdmChannelError =
   | BadRequestException
@@ -13177,6 +13212,7 @@ export const getAdmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetAdmChannel",
 }));
 export type GetApnsChannelError =
   | BadRequestException
@@ -13207,6 +13243,7 @@ export const getApnsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetApnsChannel",
 }));
 export type GetApnsSandboxChannelError =
   | BadRequestException
@@ -13237,6 +13274,7 @@ export const getApnsSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetApnsSandboxChannel",
 }));
 export type GetApnsVoipChannelError =
   | BadRequestException
@@ -13267,6 +13305,7 @@ export const getApnsVoipChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetApnsVoipChannel",
 }));
 export type GetApnsVoipSandboxChannelError =
   | BadRequestException
@@ -13297,6 +13336,7 @@ export const getApnsVoipSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetApnsVoipSandboxChannel",
 }));
 export type GetAppError =
   | BadRequestException
@@ -13327,6 +13367,7 @@ export const getApp: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetApp",
 }));
 export type GetApplicationDateRangeKpiError =
   | BadRequestException
@@ -13357,6 +13398,7 @@ export const getApplicationDateRangeKpi: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetApplicationDateRangeKpi",
 }));
 export type GetApplicationSettingsError =
   | BadRequestException
@@ -13387,6 +13429,7 @@ export const getApplicationSettings: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetApplicationSettings",
 }));
 export type GetAppsError =
   | BadRequestException
@@ -13417,6 +13460,7 @@ export const getApps: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetApps",
 }));
 export type GetBaiduChannelError =
   | BadRequestException
@@ -13447,6 +13491,7 @@ export const getBaiduChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetBaiduChannel",
 }));
 export type GetCampaignError =
   | BadRequestException
@@ -13477,6 +13522,7 @@ export const getCampaign: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetCampaign",
 }));
 export type GetCampaignActivitiesError =
   | BadRequestException
@@ -13507,6 +13553,7 @@ export const getCampaignActivities: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetCampaignActivities",
 }));
 export type GetCampaignDateRangeKpiError =
   | BadRequestException
@@ -13537,6 +13584,7 @@ export const getCampaignDateRangeKpi: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetCampaignDateRangeKpi",
 }));
 export type GetCampaignsError =
   | BadRequestException
@@ -13567,6 +13615,7 @@ export const getCampaigns: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetCampaigns",
 }));
 export type GetCampaignVersionError =
   | BadRequestException
@@ -13597,6 +13646,7 @@ export const getCampaignVersion: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetCampaignVersion",
 }));
 export type GetCampaignVersionsError =
   | BadRequestException
@@ -13627,6 +13677,7 @@ export const getCampaignVersions: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetCampaignVersions",
 }));
 export type GetChannelsError =
   | BadRequestException
@@ -13657,6 +13708,7 @@ export const getChannels: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetChannels",
 }));
 export type GetEmailChannelError =
   | BadRequestException
@@ -13687,6 +13739,7 @@ export const getEmailChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetEmailChannel",
 }));
 export type GetEmailTemplateError =
   | BadRequestException
@@ -13717,6 +13770,7 @@ export const getEmailTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetEmailTemplate",
 }));
 export type GetEndpointError =
   | BadRequestException
@@ -13747,6 +13801,7 @@ export const getEndpoint: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetEndpoint",
 }));
 export type GetEventStreamError =
   | BadRequestException
@@ -13777,6 +13832,7 @@ export const getEventStream: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetEventStream",
 }));
 export type GetExportJobError =
   | BadRequestException
@@ -13807,6 +13863,7 @@ export const getExportJob: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetExportJob",
 }));
 export type GetExportJobsError =
   | BadRequestException
@@ -13837,6 +13894,7 @@ export const getExportJobs: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetExportJobs",
 }));
 export type GetGcmChannelError =
   | BadRequestException
@@ -13867,6 +13925,7 @@ export const getGcmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetGcmChannel",
 }));
 export type GetImportJobError =
   | BadRequestException
@@ -13897,6 +13956,7 @@ export const getImportJob: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetImportJob",
 }));
 export type GetImportJobsError =
   | BadRequestException
@@ -13927,6 +13987,7 @@ export const getImportJobs: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetImportJobs",
 }));
 export type GetInAppMessagesError =
   | BadRequestException
@@ -13957,6 +14018,7 @@ export const getInAppMessages: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetInAppMessages",
 }));
 export type GetInAppTemplateError =
   | BadRequestException
@@ -13987,6 +14049,7 @@ export const getInAppTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetInAppTemplate",
 }));
 export type GetJourneyError =
   | BadRequestException
@@ -14017,6 +14080,7 @@ export const getJourney: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetJourney",
 }));
 export type GetJourneyDateRangeKpiError =
   | BadRequestException
@@ -14047,6 +14111,7 @@ export const getJourneyDateRangeKpi: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetJourneyDateRangeKpi",
 }));
 export type GetJourneyExecutionActivityMetricsError =
   | BadRequestException
@@ -14077,6 +14142,7 @@ export const getJourneyExecutionActivityMetrics: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetJourneyExecutionActivityMetrics",
 }));
 export type GetJourneyExecutionMetricsError =
   | BadRequestException
@@ -14107,6 +14173,7 @@ export const getJourneyExecutionMetrics: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetJourneyExecutionMetrics",
 }));
 export type GetJourneyRunExecutionActivityMetricsError =
   | BadRequestException
@@ -14137,6 +14204,7 @@ export const getJourneyRunExecutionActivityMetrics: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetJourneyRunExecutionActivityMetrics",
 }));
 export type GetJourneyRunExecutionMetricsError =
   | BadRequestException
@@ -14167,6 +14235,7 @@ export const getJourneyRunExecutionMetrics: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetJourneyRunExecutionMetrics",
 }));
 export type GetJourneyRunsError =
   | BadRequestException
@@ -14197,6 +14266,7 @@ export const getJourneyRuns: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetJourneyRuns",
 }));
 export type GetPushTemplateError =
   | BadRequestException
@@ -14227,6 +14297,7 @@ export const getPushTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetPushTemplate",
 }));
 export type GetRecommenderConfigurationError =
   | BadRequestException
@@ -14257,6 +14328,7 @@ export const getRecommenderConfiguration: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetRecommenderConfiguration",
 }));
 export type GetRecommenderConfigurationsError =
   | BadRequestException
@@ -14287,6 +14359,7 @@ export const getRecommenderConfigurations: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetRecommenderConfigurations",
 }));
 export type GetSegmentError =
   | BadRequestException
@@ -14317,6 +14390,7 @@ export const getSegment: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetSegment",
 }));
 export type GetSegmentExportJobsError =
   | BadRequestException
@@ -14347,6 +14421,7 @@ export const getSegmentExportJobs: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetSegmentExportJobs",
 }));
 export type GetSegmentImportJobsError =
   | BadRequestException
@@ -14377,6 +14452,7 @@ export const getSegmentImportJobs: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetSegmentImportJobs",
 }));
 export type GetSegmentsError =
   | BadRequestException
@@ -14407,6 +14483,7 @@ export const getSegments: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetSegments",
 }));
 export type GetSegmentVersionError =
   | BadRequestException
@@ -14437,6 +14514,7 @@ export const getSegmentVersion: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetSegmentVersion",
 }));
 export type GetSegmentVersionsError =
   | BadRequestException
@@ -14467,6 +14545,7 @@ export const getSegmentVersions: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetSegmentVersions",
 }));
 export type GetSmsChannelError =
   | BadRequestException
@@ -14497,6 +14576,7 @@ export const getSmsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetSmsChannel",
 }));
 export type GetSmsTemplateError =
   | BadRequestException
@@ -14527,6 +14607,7 @@ export const getSmsTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetSmsTemplate",
 }));
 export type GetUserEndpointsError =
   | BadRequestException
@@ -14557,6 +14638,7 @@ export const getUserEndpoints: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetUserEndpoints",
 }));
 export type GetVoiceChannelError =
   | BadRequestException
@@ -14587,6 +14669,7 @@ export const getVoiceChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetVoiceChannel",
 }));
 export type GetVoiceTemplateError =
   | BadRequestException
@@ -14617,6 +14700,7 @@ export const getVoiceTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "GetVoiceTemplate",
 }));
 export type ListJourneysError =
   | BadRequestException
@@ -14647,6 +14731,7 @@ export const listJourneys: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "ListJourneys",
 }));
 export type ListTagsForResourceError = CommonErrors;
 /**
@@ -14661,6 +14746,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
+  operationName: "ListTagsForResource",
 }));
 export type ListTemplatesError =
   | BadRequestException
@@ -14687,6 +14773,7 @@ export const listTemplates: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  operationName: "ListTemplates",
 }));
 export type ListTemplateVersionsError =
   | BadRequestException
@@ -14717,6 +14804,7 @@ export const listTemplateVersions: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "ListTemplateVersions",
 }));
 export type PhoneNumberValidateError =
   | BadRequestException
@@ -14747,6 +14835,7 @@ export const phoneNumberValidate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "PhoneNumberValidate",
 }));
 export type PutEventsError =
   | BadRequestException
@@ -14777,6 +14866,7 @@ export const putEvents: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "PutEvents",
 }));
 export type PutEventStreamError =
   | BadRequestException
@@ -14807,6 +14897,7 @@ export const putEventStream: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "PutEventStream",
 }));
 export type RemoveAttributesError =
   | BadRequestException
@@ -14837,6 +14928,7 @@ export const removeAttributes: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "RemoveAttributes",
 }));
 export type SendMessagesError =
   | BadRequestException
@@ -14867,6 +14959,7 @@ export const sendMessages: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "SendMessages",
 }));
 export type SendOTPMessageError =
   | BadRequestException
@@ -14897,6 +14990,7 @@ export const sendOTPMessage: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "SendOTPMessage",
 }));
 export type SendUsersMessagesError =
   | BadRequestException
@@ -14927,6 +15021,7 @@ export const sendUsersMessages: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "SendUsersMessages",
 }));
 export type TagResourceError = CommonErrors;
 /**
@@ -14941,6 +15036,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = CommonErrors;
 /**
@@ -14955,6 +15051,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
+  operationName: "UntagResource",
 }));
 export type UpdateAdmChannelError =
   | BadRequestException
@@ -14985,6 +15082,7 @@ export const updateAdmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateAdmChannel",
 }));
 export type UpdateApnsChannelError =
   | BadRequestException
@@ -15015,6 +15113,7 @@ export const updateApnsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateApnsChannel",
 }));
 export type UpdateApnsSandboxChannelError =
   | BadRequestException
@@ -15045,6 +15144,7 @@ export const updateApnsSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateApnsSandboxChannel",
 }));
 export type UpdateApnsVoipChannelError =
   | BadRequestException
@@ -15075,6 +15175,7 @@ export const updateApnsVoipChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateApnsVoipChannel",
 }));
 export type UpdateApnsVoipSandboxChannelError =
   | BadRequestException
@@ -15105,6 +15206,7 @@ export const updateApnsVoipSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateApnsVoipSandboxChannel",
 }));
 export type UpdateApplicationSettingsError =
   | BadRequestException
@@ -15135,6 +15237,7 @@ export const updateApplicationSettings: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateApplicationSettings",
 }));
 export type UpdateBaiduChannelError =
   | BadRequestException
@@ -15165,6 +15268,7 @@ export const updateBaiduChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateBaiduChannel",
 }));
 export type UpdateCampaignError =
   | BadRequestException
@@ -15195,6 +15299,7 @@ export const updateCampaign: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateCampaign",
 }));
 export type UpdateEmailChannelError =
   | BadRequestException
@@ -15225,6 +15330,7 @@ export const updateEmailChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateEmailChannel",
 }));
 export type UpdateEmailTemplateError =
   | BadRequestException
@@ -15255,6 +15361,7 @@ export const updateEmailTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateEmailTemplate",
 }));
 export type UpdateEndpointError =
   | BadRequestException
@@ -15285,6 +15392,7 @@ export const updateEndpoint: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateEndpoint",
 }));
 export type UpdateEndpointsBatchError =
   | BadRequestException
@@ -15315,6 +15423,7 @@ export const updateEndpointsBatch: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateEndpointsBatch",
 }));
 export type UpdateGcmChannelError =
   | BadRequestException
@@ -15345,6 +15454,7 @@ export const updateGcmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateGcmChannel",
 }));
 export type UpdateInAppTemplateError =
   | BadRequestException
@@ -15375,6 +15485,7 @@ export const updateInAppTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateInAppTemplate",
 }));
 export type UpdateJourneyError =
   | BadRequestException
@@ -15407,6 +15518,7 @@ export const updateJourney: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateJourney",
 }));
 export type UpdateJourneyStateError =
   | BadRequestException
@@ -15437,6 +15549,7 @@ export const updateJourneyState: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateJourneyState",
 }));
 export type UpdatePushTemplateError =
   | BadRequestException
@@ -15467,6 +15580,7 @@ export const updatePushTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdatePushTemplate",
 }));
 export type UpdateRecommenderConfigurationError =
   | BadRequestException
@@ -15497,6 +15611,7 @@ export const updateRecommenderConfiguration: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateRecommenderConfiguration",
 }));
 export type UpdateSegmentError =
   | BadRequestException
@@ -15527,6 +15642,7 @@ export const updateSegment: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateSegment",
 }));
 export type UpdateSmsChannelError =
   | BadRequestException
@@ -15557,6 +15673,7 @@ export const updateSmsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateSmsChannel",
 }));
 export type UpdateSmsTemplateError =
   | BadRequestException
@@ -15587,6 +15704,7 @@ export const updateSmsTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateSmsTemplate",
 }));
 export type UpdateTemplateActiveVersionError =
   | BadRequestException
@@ -15617,6 +15735,7 @@ export const updateTemplateActiveVersion: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateTemplateActiveVersion",
 }));
 export type UpdateVoiceChannelError =
   | BadRequestException
@@ -15647,6 +15766,7 @@ export const updateVoiceChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateVoiceChannel",
 }));
 export type UpdateVoiceTemplateError =
   | BadRequestException
@@ -15677,6 +15797,7 @@ export const updateVoiceTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateVoiceTemplate",
 }));
 export type VerifyOTPMessageError =
   | BadRequestException
@@ -15707,4 +15828,5 @@ export const verifyOTPMessage: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  operationName: "VerifyOTPMessage",
 }));

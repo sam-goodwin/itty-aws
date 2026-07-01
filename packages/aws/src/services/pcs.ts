@@ -1315,6 +1315,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | ResourceNotFoundException
@@ -1332,6 +1333,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1346,6 +1348,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type CreateClusterError =
   | AccessDeniedException
@@ -1376,6 +1379,7 @@ export const createCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateCluster",
 }));
 export type UpdateClusterError =
   | AccessDeniedException
@@ -1406,6 +1410,7 @@ export const updateCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateCluster",
 }));
 export type DeleteClusterError =
   | AccessDeniedException
@@ -1434,6 +1439,7 @@ export const deleteCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteCluster",
 }));
 export type GetClusterError =
   | AccessDeniedException
@@ -1462,6 +1468,7 @@ export const getCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCluster",
 }));
 export type RegisterComputeNodeGroupInstanceError =
   | AccessDeniedException
@@ -1481,6 +1488,7 @@ export const registerComputeNodeGroupInstance: API.OperationMethod<
   input: RegisterComputeNodeGroupInstanceRequest,
   output: RegisterComputeNodeGroupInstanceResponse,
   errors: [AccessDeniedException, InternalServerException],
+  operationName: "RegisterComputeNodeGroupInstance",
 }));
 export type ListClustersError =
   | AccessDeniedException
@@ -1524,6 +1532,7 @@ export const listClusters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListClusters",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1560,6 +1569,7 @@ export const createComputeNodeGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateComputeNodeGroup",
 }));
 export type UpdateComputeNodeGroupError =
   | AccessDeniedException
@@ -1590,6 +1600,7 @@ export const updateComputeNodeGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateComputeNodeGroup",
 }));
 export type DeleteComputeNodeGroupError =
   | AccessDeniedException
@@ -1618,6 +1629,7 @@ export const deleteComputeNodeGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteComputeNodeGroup",
 }));
 export type GetComputeNodeGroupError =
   | AccessDeniedException
@@ -1646,6 +1658,7 @@ export const getComputeNodeGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetComputeNodeGroup",
 }));
 export type ListComputeNodeGroupsError =
   | AccessDeniedException
@@ -1689,6 +1702,7 @@ export const listComputeNodeGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListComputeNodeGroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1725,6 +1739,7 @@ export const createQueue: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateQueue",
 }));
 export type UpdateQueueError =
   | AccessDeniedException
@@ -1755,6 +1770,7 @@ export const updateQueue: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateQueue",
 }));
 export type DeleteQueueError =
   | AccessDeniedException
@@ -1783,6 +1799,7 @@ export const deleteQueue: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteQueue",
 }));
 export type GetQueueError =
   | AccessDeniedException
@@ -1811,6 +1828,7 @@ export const getQueue: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetQueue",
 }));
 export type ListQueuesError =
   | AccessDeniedException
@@ -1854,6 +1872,7 @@ export const listQueues: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListQueues",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

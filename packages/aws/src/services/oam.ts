@@ -777,6 +777,7 @@ export const createLink: API.OperationMethod<
     MissingRequiredParameterException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateLink",
 }));
 export type CreateSinkError =
   | ConflictException
@@ -807,6 +808,7 @@ export const createSink: API.OperationMethod<
     MissingRequiredParameterException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateSink",
 }));
 export type DeleteLinkError =
   | InternalServiceFault
@@ -831,6 +833,7 @@ export const deleteLink: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteLink",
 }));
 export type DeleteSinkError =
   | ConflictException
@@ -857,6 +860,7 @@ export const deleteSink: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteSink",
 }));
 export type GetLinkError =
   | InternalServiceFault
@@ -883,6 +887,7 @@ export const getLink: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "GetLink",
 }));
 export type GetSinkError =
   | InternalServiceFault
@@ -909,6 +914,7 @@ export const getSink: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "GetSink",
 }));
 export type GetSinkPolicyError =
   | InternalServiceFault
@@ -933,6 +939,7 @@ export const getSinkPolicy: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "GetSinkPolicy",
 }));
 export type ListAttachedLinksError =
   | InternalServiceFault
@@ -976,6 +983,7 @@ export const listAttachedLinks: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "ListAttachedLinks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1021,6 +1029,7 @@ export const listLinks: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "ListLinks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1064,6 +1073,7 @@ export const listSinks: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "ListSinks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1087,6 +1097,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListTagsForResource",
 }));
 export type PutSinkPolicyError =
   | InternalServiceFault
@@ -1127,6 +1138,7 @@ export const putSinkPolicy: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "PutSinkPolicy",
 }));
 export type TagResourceError =
   | ResourceNotFoundException
@@ -1159,6 +1171,7 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ResourceNotFoundException
@@ -1178,6 +1191,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "UntagResource",
 }));
 export type UpdateLinkError =
   | InternalServiceFault
@@ -1206,4 +1220,5 @@ export const updateLink: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateLink",
 }));

@@ -6774,6 +6774,7 @@ export const associateKmsKey: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "AssociateKmsKey",
 }));
 export type AssociateSourceToS3TableIntegrationError =
   | AccessDeniedException
@@ -6802,6 +6803,7 @@ export const associateSourceToS3TableIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateSourceToS3TableIntegration",
 }));
 export type CancelExportTaskError =
   | InvalidOperationException
@@ -6828,6 +6830,7 @@ export const cancelExportTask: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "CancelExportTask",
 }));
 export type CancelImportTaskError =
   | AccessDeniedException
@@ -6854,6 +6857,7 @@ export const cancelImportTask: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CancelImportTask",
 }));
 export type CreateDeliveryError =
   | AccessDeniedException
@@ -6913,6 +6917,7 @@ export const createDelivery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDelivery",
 }));
 export type CreateExportTaskError =
   | InvalidParameterException
@@ -6968,6 +6973,7 @@ export const createExportTask: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateExportTask",
 }));
 export type CreateImportTaskError =
   | AccessDeniedException
@@ -7032,6 +7038,7 @@ export const createImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateImportTask",
 }));
 export type CreateLogAnomalyDetectorError =
   | InvalidParameterException
@@ -7085,6 +7092,7 @@ export const createLogAnomalyDetector: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateLogAnomalyDetector",
 }));
 export type CreateLogGroupError =
   | InvalidParameterException
@@ -7141,6 +7149,7 @@ export const createLogGroup: API.OperationMethod<
     ResourceAlreadyExistsException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateLogGroup",
 }));
 export type CreateLogStreamError =
   | InvalidParameterException
@@ -7179,6 +7188,7 @@ export const createLogStream: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateLogStream",
 }));
 export type CreateLookupTableError =
   | AccessDeniedException
@@ -7212,6 +7222,7 @@ export const createLookupTable: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  operationName: "CreateLookupTable",
 }));
 export type CreateScheduledQueryError =
   | AccessDeniedException
@@ -7245,6 +7256,7 @@ export const createScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateScheduledQuery",
 }));
 export type DeleteAccountPolicyError =
   | InvalidParameterException
@@ -7298,6 +7310,7 @@ export const deleteAccountPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteAccountPolicy",
 }));
 export type DeleteDataProtectionPolicyError =
   | InvalidParameterException
@@ -7324,6 +7337,7 @@ export const deleteDataProtectionPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteDataProtectionPolicy",
 }));
 export type DeleteDeliveryError =
   | ConflictException
@@ -7356,6 +7370,7 @@ export const deleteDelivery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDelivery",
 }));
 export type DeleteDeliveryDestinationError =
   | ConflictException
@@ -7390,6 +7405,7 @@ export const deleteDeliveryDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDeliveryDestination",
 }));
 export type DeleteDeliveryDestinationPolicyError =
   | ConflictException
@@ -7415,6 +7431,7 @@ export const deleteDeliveryDestinationPolicy: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  operationName: "DeleteDeliveryDestinationPolicy",
 }));
 export type DeleteDeliverySourceError =
   | ConflictException
@@ -7449,6 +7466,7 @@ export const deleteDeliverySource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDeliverySource",
 }));
 export type DeleteDestinationError =
   | InvalidParameterException
@@ -7475,6 +7493,7 @@ export const deleteDestination: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteDestination",
 }));
 export type DeleteIndexPolicyError =
   | InvalidParameterException
@@ -7515,6 +7534,7 @@ export const deleteIndexPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteIndexPolicy",
 }));
 export type DeleteIntegrationError =
   | InvalidParameterException
@@ -7544,6 +7564,7 @@ export const deleteIntegration: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  operationName: "DeleteIntegration",
 }));
 export type DeleteLogAnomalyDetectorError =
   | InvalidParameterException
@@ -7568,6 +7589,7 @@ export const deleteLogAnomalyDetector: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteLogAnomalyDetector",
 }));
 export type DeleteLogGroupError =
   | InvalidParameterException
@@ -7595,6 +7617,7 @@ export const deleteLogGroup: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  operationName: "DeleteLogGroup",
 }));
 export type DeleteLogStreamError =
   | InvalidParameterException
@@ -7622,6 +7645,7 @@ export const deleteLogStream: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  operationName: "DeleteLogStream",
 }));
 export type DeleteLookupTableError =
   | AccessDeniedException
@@ -7649,6 +7673,7 @@ export const deleteLookupTable: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteLookupTable",
 }));
 export type DeleteMetricFilterError =
   | InvalidParameterException
@@ -7673,6 +7698,7 @@ export const deleteMetricFilter: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteMetricFilter",
 }));
 export type DeleteQueryDefinitionError =
   | InvalidParameterException
@@ -7701,6 +7727,7 @@ export const deleteQueryDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteQueryDefinition",
 }));
 export type DeleteResourcePolicyError =
   | InvalidParameterException
@@ -7726,6 +7753,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteRetentionPolicyError =
   | InvalidParameterException
@@ -7753,6 +7781,7 @@ export const deleteRetentionPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteRetentionPolicy",
 }));
 export type DeleteScheduledQueryError =
   | AccessDeniedException
@@ -7780,6 +7809,7 @@ export const deleteScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteScheduledQuery",
 }));
 export type DeleteSubscriptionFilterError =
   | InvalidParameterException
@@ -7804,6 +7834,7 @@ export const deleteSubscriptionFilter: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteSubscriptionFilter",
 }));
 export type DeleteSyslogConfigurationError =
   | AccessDeniedException
@@ -7835,6 +7866,7 @@ export const deleteSyslogConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteSyslogConfiguration",
 }));
 export type DeleteTransformerError =
   | InvalidOperationException
@@ -7867,6 +7899,7 @@ export const deleteTransformer: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteTransformer",
 }));
 export type DescribeAccountPoliciesError =
   | InvalidParameterException
@@ -7908,6 +7941,7 @@ export const describeAccountPolicies: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DescribeAccountPolicies",
 }));
 export type DescribeConfigurationTemplatesError =
   | ResourceNotFoundException
@@ -7949,6 +7983,7 @@ export const describeConfigurationTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeConfigurationTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8006,6 +8041,7 @@ export const describeDeliveries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeDeliveries",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8052,6 +8088,7 @@ export const describeDeliveryDestinations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeDeliveryDestinations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8097,6 +8134,7 @@ export const describeDeliverySources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeDeliverySources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8136,6 +8174,7 @@ export const describeDestinations: API.OperationMethod<
   input: DescribeDestinationsRequest,
   output: DescribeDestinationsResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
+  operationName: "DescribeDestinations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8160,6 +8199,7 @@ export const describeExportTasks: API.OperationMethod<
   input: DescribeExportTasksRequest,
   output: DescribeExportTasksResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
+  operationName: "DescribeExportTasks",
 }));
 export type DescribeFieldIndexesError =
   | InvalidParameterException
@@ -8187,6 +8227,7 @@ export const describeFieldIndexes: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DescribeFieldIndexes",
 }));
 export type DescribeImportTaskBatchesError =
   | AccessDeniedException
@@ -8214,6 +8255,7 @@ export const describeImportTaskBatches: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeImportTaskBatches",
 }));
 export type DescribeImportTasksError =
   | AccessDeniedException
@@ -8240,6 +8282,7 @@ export const describeImportTasks: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeImportTasks",
 }));
 export type DescribeIndexPoliciesError =
   | InvalidParameterException
@@ -8275,6 +8318,7 @@ export const describeIndexPolicies: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DescribeIndexPolicies",
 }));
 export type DescribeLogGroupsError =
   | InvalidParameterException
@@ -8323,6 +8367,7 @@ export const describeLogGroups: API.OperationMethod<
   input: DescribeLogGroupsRequest,
   output: DescribeLogGroupsResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
+  operationName: "DescribeLogGroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8378,6 +8423,7 @@ export const describeLogStreams: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DescribeLogStreams",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8409,6 +8455,7 @@ export const describeLookupTables: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DescribeLookupTables",
 }));
 export type DescribeMetricFiltersError =
   | InvalidParameterException
@@ -8448,6 +8495,7 @@ export const describeMetricFilters: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DescribeMetricFilters",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8483,6 +8531,7 @@ export const describeQueries: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DescribeQueries",
 }));
 export type DescribeQueryDefinitionsError =
   | InvalidParameterException
@@ -8505,6 +8554,7 @@ export const describeQueryDefinitions: API.OperationMethod<
   input: DescribeQueryDefinitionsRequest,
   output: DescribeQueryDefinitionsResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
+  operationName: "DescribeQueryDefinitions",
 }));
 export type DescribeResourcePoliciesError =
   | InvalidParameterException
@@ -8522,6 +8572,7 @@ export const describeResourcePolicies: API.OperationMethod<
   input: DescribeResourcePoliciesRequest,
   output: DescribeResourcePoliciesResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
+  operationName: "DescribeResourcePolicies",
 }));
 export type DescribeSubscriptionFiltersError =
   | InvalidParameterException
@@ -8561,6 +8612,7 @@ export const describeSubscriptionFilters: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DescribeSubscriptionFilters",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8611,6 +8663,7 @@ export const disassociateKmsKey: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DisassociateKmsKey",
 }));
 export type DisassociateSourceFromS3TableIntegrationError =
   | AccessDeniedException
@@ -8638,6 +8691,7 @@ export const disassociateSourceFromS3TableIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateSourceFromS3TableIntegration",
 }));
 export type FilterLogEventsError =
   | InvalidParameterException
@@ -8721,6 +8775,7 @@ export const filterLogEvents: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "FilterLogEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8750,6 +8805,7 @@ export const getDataProtectionPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "GetDataProtectionPolicy",
 }));
 export type GetDeliveryError =
   | ResourceNotFoundException
@@ -8790,6 +8846,7 @@ export const getDelivery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDelivery",
 }));
 export type GetDeliveryDestinationError =
   | ResourceNotFoundException
@@ -8816,6 +8873,7 @@ export const getDeliveryDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDeliveryDestination",
 }));
 export type GetDeliveryDestinationPolicyError =
   | ResourceNotFoundException
@@ -8839,6 +8897,7 @@ export const getDeliveryDestinationPolicy: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  operationName: "GetDeliveryDestinationPolicy",
 }));
 export type GetDeliverySourceError =
   | ResourceNotFoundException
@@ -8865,6 +8924,7 @@ export const getDeliverySource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDeliverySource",
 }));
 export type GetIntegrationError =
   | InvalidParameterException
@@ -8887,6 +8947,7 @@ export const getIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "GetIntegration",
 }));
 export type GetLogAnomalyDetectorError =
   | InvalidParameterException
@@ -8911,6 +8972,7 @@ export const getLogAnomalyDetector: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "GetLogAnomalyDetector",
 }));
 export type GetLogEventsError =
   | InvalidParameterException
@@ -8980,6 +9042,7 @@ export const getLogEvents: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "GetLogEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextForwardToken",
@@ -9011,6 +9074,7 @@ export const getLogFields: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "GetLogFields",
 }));
 export type GetLogGroupFieldsError =
   | InvalidParameterException
@@ -9056,6 +9120,7 @@ export const getLogGroupFields: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "GetLogGroupFields",
 }));
 export type GetLogObjectError =
   | AccessDeniedException
@@ -9097,6 +9162,7 @@ export const getLogObject: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetLogObject",
 }));
 export type GetLogRecordError =
   | InvalidParameterException
@@ -9125,6 +9191,7 @@ export const getLogRecord: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "GetLogRecord",
 }));
 export type GetLookupTableError =
   | AccessDeniedException
@@ -9149,6 +9216,7 @@ export const getLookupTable: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "GetLookupTable",
 }));
 export type GetQueryResultsError =
   | InvalidParameterException
@@ -9198,6 +9266,7 @@ export const getQueryResults: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "GetQueryResults",
 }));
 export type GetScheduledQueryError =
   | AccessDeniedException
@@ -9225,6 +9294,7 @@ export const getScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetScheduledQuery",
 }));
 export type GetScheduledQueryHistoryError =
   | AccessDeniedException
@@ -9267,6 +9337,7 @@ export const getScheduledQueryHistory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetScheduledQueryHistory",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9300,6 +9371,7 @@ export const getTransformer: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "GetTransformer",
 }));
 export type ListAggregateLogGroupSummariesError =
   | InvalidParameterException
@@ -9348,6 +9420,7 @@ export const listAggregateLogGroupSummaries: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  operationName: "ListAggregateLogGroupSummaries",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9395,6 +9468,7 @@ export const listAnomalies: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "ListAnomalies",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9420,6 +9494,7 @@ export const listIntegrations: API.OperationMethod<
   input: ListIntegrationsRequest,
   output: ListIntegrationsResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
+  operationName: "ListIntegrations",
 }));
 export type ListLogAnomalyDetectorsError =
   | InvalidParameterException
@@ -9459,6 +9534,7 @@ export const listLogAnomalyDetectors: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "ListLogAnomalyDetectors",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9493,6 +9569,7 @@ export const listLogGroups: API.OperationMethod<
   input: ListLogGroupsRequest,
   output: ListLogGroupsResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
+  operationName: "ListLogGroups",
 }));
 export type ListLogGroupsForQueryError =
   | AccessDeniedException
@@ -9538,6 +9615,7 @@ export const listLogGroupsForQuery: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "ListLogGroupsForQuery",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9584,6 +9662,7 @@ export const listScheduledQueries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListScheduledQueries",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9632,6 +9711,7 @@ export const listSourcesForS3TableIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSourcesForS3TableIntegration",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9667,6 +9747,7 @@ export const listSyslogConfigurations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListSyslogConfigurations",
 }));
 export type ListTagsForResourceError =
   | InvalidParameterException
@@ -9690,6 +9771,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTagsLogGroupError =
   | ResourceNotFoundException
@@ -9710,6 +9792,7 @@ export const listTagsLogGroup: API.OperationMethod<
   input: ListTagsLogGroupRequest,
   output: ListTagsLogGroupResponse,
   errors: [ResourceNotFoundException, ServiceUnavailableException],
+  operationName: "ListTagsLogGroup",
 }));
 export type PutAccountPolicyError =
   | InvalidParameterException
@@ -10085,6 +10168,7 @@ export const putAccountPolicy: API.OperationMethod<
     OperationAbortedException,
     ServiceUnavailableException,
   ],
+  operationName: "PutAccountPolicy",
 }));
 export type PutBearerTokenAuthenticationError =
   | AccessDeniedException
@@ -10117,6 +10201,7 @@ export const putBearerTokenAuthentication: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "PutBearerTokenAuthentication",
 }));
 export type PutDataProtectionPolicyError =
   | InvalidParameterException
@@ -10166,6 +10251,7 @@ export const putDataProtectionPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "PutDataProtectionPolicy",
 }));
 export type PutDeliveryDestinationError =
   | ConflictException
@@ -10227,6 +10313,7 @@ export const putDeliveryDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutDeliveryDestination",
 }));
 export type PutDeliveryDestinationPolicyError =
   | ConflictException
@@ -10274,6 +10361,7 @@ export const putDeliveryDestinationPolicy: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  operationName: "PutDeliveryDestinationPolicy",
 }));
 export type PutDeliverySourceError =
   | ConflictException
@@ -10331,6 +10419,7 @@ export const putDeliverySource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutDeliverySource",
 }));
 export type PutDestinationError =
   | InvalidParameterException
@@ -10366,6 +10455,7 @@ export const putDestination: API.OperationMethod<
     OperationAbortedException,
     ServiceUnavailableException,
   ],
+  operationName: "PutDestination",
 }));
 export type PutDestinationPolicyError =
   | InvalidParameterException
@@ -10391,6 +10481,7 @@ export const putDestinationPolicy: API.OperationMethod<
     OperationAbortedException,
     ServiceUnavailableException,
   ],
+  operationName: "PutDestinationPolicy",
 }));
 export type PutIndexPolicyError =
   | InvalidParameterException
@@ -10477,6 +10568,7 @@ export const putIndexPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "PutIndexPolicy",
 }));
 export type PutIntegrationError =
   | InvalidParameterException
@@ -10510,6 +10602,7 @@ export const putIntegration: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  operationName: "PutIntegration",
 }));
 export type PutLogEventsError =
   | DataAlreadyAcceptedException
@@ -10578,6 +10671,7 @@ export const putLogEvents: API.OperationMethod<
     ServiceUnavailableException,
     UnrecognizedClientException,
   ],
+  operationName: "PutLogEvents",
 }));
 export type PutLogGroupDeletionProtectionError =
   | AccessDeniedException
@@ -10610,6 +10704,7 @@ export const putLogGroupDeletionProtection: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "PutLogGroupDeletionProtection",
 }));
 export type PutMetricFilterError =
   | InvalidOperationException
@@ -10664,6 +10759,7 @@ export const putMetricFilter: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "PutMetricFilter",
 }));
 export type PutQueryDefinitionError =
   | InvalidParameterException
@@ -10700,6 +10796,7 @@ export const putQueryDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "PutQueryDefinition",
 }));
 export type PutResourcePolicyError =
   | InvalidParameterException
@@ -10743,6 +10840,7 @@ export const putResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type PutRetentionPolicyError =
   | InvalidParameterException
@@ -10787,6 +10885,7 @@ export const putRetentionPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "PutRetentionPolicy",
 }));
 export type PutSubscriptionFilterError =
   | InvalidOperationException
@@ -10847,6 +10946,7 @@ export const putSubscriptionFilter: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "PutSubscriptionFilter",
 }));
 export type PutSyslogConfigurationError =
   | AccessDeniedException
@@ -10878,6 +10978,7 @@ export const putSyslogConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "PutSyslogConfiguration",
 }));
 export type PutTransformerError =
   | InvalidOperationException
@@ -10936,6 +11037,7 @@ export const putTransformer: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "PutTransformer",
 }));
 export type StartLiveTailError =
   | AccessDeniedException
@@ -11004,6 +11106,7 @@ export const startLiveTail: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "StartLiveTail",
 }));
 export type StartQueryError =
   | InvalidParameterException
@@ -11075,6 +11178,7 @@ export const startQuery: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "StartQuery",
 }));
 export type StopQueryError =
   | InvalidParameterException
@@ -11104,6 +11208,7 @@ export const stopQuery: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "StopQuery",
 }));
 export type TagLogGroupError =
   | InvalidParameterException
@@ -11136,6 +11241,7 @@ export const tagLogGroup: API.OperationMethod<
   input: TagLogGroupRequest,
   output: TagLogGroupResponse,
   errors: [InvalidParameterException, ResourceNotFoundException],
+  operationName: "TagLogGroup",
 }));
 export type TagResourceError =
   | InvalidParameterException
@@ -11176,6 +11282,7 @@ export const tagResource: API.OperationMethod<
     ServiceUnavailableException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type TestMetricFilterError =
   | InvalidParameterException
@@ -11194,6 +11301,7 @@ export const testMetricFilter: API.OperationMethod<
   input: TestMetricFilterRequest,
   output: TestMetricFilterResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
+  operationName: "TestMetricFilter",
 }));
 export type TestTransformerError =
   | InvalidOperationException
@@ -11218,6 +11326,7 @@ export const testTransformer: API.OperationMethod<
     InvalidParameterException,
     ServiceUnavailableException,
   ],
+  operationName: "TestTransformer",
 }));
 export type UntagLogGroupError = ResourceNotFoundException | CommonErrors;
 /**
@@ -11241,6 +11350,7 @@ export const untagLogGroup: API.OperationMethod<
   input: UntagLogGroupRequest,
   output: UntagLogGroupResponse,
   errors: [ResourceNotFoundException],
+  operationName: "UntagLogGroup",
 }));
 export type UntagResourceError =
   | InvalidParameterException
@@ -11263,6 +11373,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAnomalyError =
   | InvalidParameterException
@@ -11298,6 +11409,7 @@ export const updateAnomaly: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "UpdateAnomaly",
 }));
 export type UpdateDeliveryConfigurationError =
   | AccessDeniedException
@@ -11328,6 +11440,7 @@ export const updateDeliveryConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDeliveryConfiguration",
 }));
 export type UpdateLogAnomalyDetectorError =
   | InvalidParameterException
@@ -11352,6 +11465,7 @@ export const updateLogAnomalyDetector: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "UpdateLogAnomalyDetector",
 }));
 export type UpdateLookupTableError =
   | AccessDeniedException
@@ -11382,6 +11496,7 @@ export const updateLookupTable: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  operationName: "UpdateLookupTable",
 }));
 export type UpdateScheduledQueryError =
   | AccessDeniedException
@@ -11411,4 +11526,5 @@ export const updateScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateScheduledQuery",
 }));

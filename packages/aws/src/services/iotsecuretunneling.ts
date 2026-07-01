@@ -492,6 +492,7 @@ export const closeTunnel: API.OperationMethod<
   input: CloseTunnelRequest,
   output: CloseTunnelResponse,
   errors: [ResourceNotFoundException],
+  operationName: "CloseTunnel",
 }));
 export type DescribeTunnelError = ResourceNotFoundException | CommonErrors;
 /**
@@ -508,6 +509,7 @@ export const describeTunnel: API.OperationMethod<
   input: DescribeTunnelRequest,
   output: DescribeTunnelResponse,
   errors: [ResourceNotFoundException],
+  operationName: "DescribeTunnel",
 }));
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -522,6 +524,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type ListTunnelsError = CommonErrors;
 /**
@@ -554,6 +557,7 @@ export const listTunnels: API.OperationMethod<
   input: ListTunnelsRequest,
   output: ListTunnelsResponse,
   errors: [],
+  operationName: "ListTunnels",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -576,6 +580,7 @@ export const openTunnel: API.OperationMethod<
   input: OpenTunnelRequest,
   output: OpenTunnelResponse,
   errors: [LimitExceededException],
+  operationName: "OpenTunnel",
 }));
 export type RotateTunnelAccessTokenError =
   | ResourceNotFoundException
@@ -600,6 +605,7 @@ export const rotateTunnelAccessToken: API.OperationMethod<
   input: RotateTunnelAccessTokenRequest,
   output: RotateTunnelAccessTokenResponse,
   errors: [ResourceNotFoundException],
+  operationName: "RotateTunnelAccessToken",
 }));
 export type TagResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -614,6 +620,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -628,4 +635,5 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "UntagResource",
 }));

@@ -917,6 +917,7 @@ export const createSuiteDefinition: API.OperationMethod<
   input: CreateSuiteDefinitionRequest,
   output: CreateSuiteDefinitionResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "CreateSuiteDefinition",
 }));
 export type DeleteSuiteDefinitionError =
   | InternalServerException
@@ -936,6 +937,7 @@ export const deleteSuiteDefinition: API.OperationMethod<
   input: DeleteSuiteDefinitionRequest,
   output: DeleteSuiteDefinitionResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "DeleteSuiteDefinition",
 }));
 export type GetEndpointError =
   | InternalServerException
@@ -958,6 +960,7 @@ export const getEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetEndpoint",
 }));
 export type GetSuiteDefinitionError =
   | InternalServerException
@@ -982,6 +985,7 @@ export const getSuiteDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetSuiteDefinition",
 }));
 export type GetSuiteRunError =
   | InternalServerException
@@ -1006,6 +1010,7 @@ export const getSuiteRun: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetSuiteRun",
 }));
 export type GetSuiteRunReportError =
   | InternalServerException
@@ -1030,6 +1035,7 @@ export const getSuiteRunReport: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetSuiteRunReport",
 }));
 export type ListSuiteDefinitionsError =
   | InternalServerException
@@ -1064,6 +1070,7 @@ export const listSuiteDefinitions: API.OperationMethod<
   input: ListSuiteDefinitionsRequest,
   output: ListSuiteDefinitionsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListSuiteDefinitions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1104,6 +1111,7 @@ export const listSuiteRuns: API.OperationMethod<
   input: ListSuiteRunsRequest,
   output: ListSuiteRunsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListSuiteRuns",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1133,6 +1141,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type StartSuiteRunError =
   | ConflictException
@@ -1153,6 +1162,7 @@ export const startSuiteRun: API.OperationMethod<
   input: StartSuiteRunRequest,
   output: StartSuiteRunResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  operationName: "StartSuiteRun",
 }));
 export type StopSuiteRunError =
   | InternalServerException
@@ -1177,6 +1187,7 @@ export const stopSuiteRun: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StopSuiteRun",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -1201,6 +1212,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -1225,6 +1237,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateSuiteDefinitionError =
   | InternalServerException
@@ -1244,4 +1257,5 @@ export const updateSuiteDefinition: API.OperationMethod<
   input: UpdateSuiteDefinitionRequest,
   output: UpdateSuiteDefinitionResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "UpdateSuiteDefinition",
 }));

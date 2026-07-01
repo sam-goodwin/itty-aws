@@ -1189,6 +1189,7 @@ export const associateServiceQuotaTemplate: API.OperationMethod<
     TemplatesNotAvailableInRegionException,
     TooManyRequestsException,
   ],
+  operationName: "AssociateServiceQuotaTemplate",
 }));
 export type CreateSupportCaseError =
   | AccessDeniedException
@@ -1222,6 +1223,7 @@ export const createSupportCase: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "CreateSupportCase",
 }));
 export type DeleteServiceQuotaIncreaseRequestFromTemplateError =
   | AccessDeniedException
@@ -1257,6 +1259,7 @@ export const deleteServiceQuotaIncreaseRequestFromTemplate: API.OperationMethod<
     TemplatesNotAvailableInRegionException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteServiceQuotaIncreaseRequestFromTemplate",
 }));
 export type DisassociateServiceQuotaTemplateError =
   | AccessDeniedException
@@ -1291,6 +1294,7 @@ export const disassociateServiceQuotaTemplate: API.OperationMethod<
     TemplatesNotAvailableInRegionException,
     TooManyRequestsException,
   ],
+  operationName: "DisassociateServiceQuotaTemplate",
 }));
 export type GetAssociationForServiceQuotaTemplateError =
   | AccessDeniedException
@@ -1323,6 +1327,7 @@ export const getAssociationForServiceQuotaTemplate: API.OperationMethod<
     TemplatesNotAvailableInRegionException,
     TooManyRequestsException,
   ],
+  operationName: "GetAssociationForServiceQuotaTemplate",
 }));
 export type GetAutoManagementConfigurationError =
   | AccessDeniedException
@@ -1350,6 +1355,7 @@ export const getAutoManagementConfiguration: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "GetAutoManagementConfiguration",
 }));
 export type GetAWSDefaultServiceQuotaError =
   | AccessDeniedException
@@ -1377,6 +1383,7 @@ export const getAWSDefaultServiceQuota: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "GetAWSDefaultServiceQuota",
 }));
 export type GetQuotaUtilizationReportError =
   | AccessDeniedException
@@ -1414,6 +1421,7 @@ export const getQuotaUtilizationReport: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "GetQuotaUtilizationReport",
 }));
 export type GetRequestedServiceQuotaChangeError =
   | AccessDeniedException
@@ -1440,6 +1448,7 @@ export const getRequestedServiceQuotaChange: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "GetRequestedServiceQuotaChange",
 }));
 export type GetServiceQuotaError =
   | AccessDeniedException
@@ -1468,6 +1477,7 @@ export const getServiceQuota: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "GetServiceQuota",
 }));
 export type GetServiceQuotaIncreaseRequestFromTemplateError =
   | AccessDeniedException
@@ -1503,6 +1513,7 @@ export const getServiceQuotaIncreaseRequestFromTemplate: API.OperationMethod<
     TemplatesNotAvailableInRegionException,
     TooManyRequestsException,
   ],
+  operationName: "GetServiceQuotaIncreaseRequestFromTemplate",
 }));
 export type ListAWSDefaultServiceQuotasError =
   | AccessDeniedException
@@ -1547,6 +1558,7 @@ export const listAWSDefaultServiceQuotas: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "ListAWSDefaultServiceQuotas",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1598,6 +1610,7 @@ export const listRequestedServiceQuotaChangeHistory: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "ListRequestedServiceQuotaChangeHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1648,6 +1661,7 @@ export const listRequestedServiceQuotaChangeHistoryByQuota: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "ListRequestedServiceQuotaChangeHistoryByQuota",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1701,6 +1715,7 @@ export const listServiceQuotaIncreaseRequestsInTemplate: API.OperationMethod<
     TemplatesNotAvailableInRegionException,
     TooManyRequestsException,
   ],
+  operationName: "ListServiceQuotaIncreaseRequestsInTemplate",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1753,6 +1768,7 @@ export const listServiceQuotas: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "ListServiceQuotas",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1800,6 +1816,7 @@ export const listServices: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "ListServices",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1832,6 +1849,7 @@ export const listTagsForResource: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutServiceQuotaIncreaseRequestIntoTemplateError =
   | AccessDeniedException
@@ -1868,6 +1886,7 @@ export const putServiceQuotaIncreaseRequestIntoTemplate: API.OperationMethod<
     TemplatesNotAvailableInRegionException,
     TooManyRequestsException,
   ],
+  operationName: "PutServiceQuotaIncreaseRequestIntoTemplate",
 }));
 export type RequestServiceQuotaIncreaseError =
   | AccessDeniedException
@@ -1903,6 +1922,7 @@ export const requestServiceQuotaIncrease: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "RequestServiceQuotaIncrease",
 }));
 export type StartAutoManagementError =
   | AccessDeniedException
@@ -1931,6 +1951,7 @@ export const startAutoManagement: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "StartAutoManagement",
 }));
 export type StartQuotaUtilizationReportError =
   | AccessDeniedException
@@ -1965,6 +1986,7 @@ export const startQuotaUtilizationReport: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "StartQuotaUtilizationReport",
 }));
 export type StopAutoManagementError =
   | AccessDeniedException
@@ -1993,6 +2015,7 @@ export const stopAutoManagement: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "StopAutoManagement",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2024,6 +2047,7 @@ export const tagResource: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2051,6 +2075,7 @@ export const untagResource: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAutoManagementError =
   | AccessDeniedException
@@ -2079,4 +2104,5 @@ export const updateAutoManagement: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateAutoManagement",
 }));

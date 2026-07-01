@@ -1706,6 +1706,7 @@ export const cancelJobRun: API.OperationMethod<
   input: CancelJobRunRequest,
   output: CancelJobRunResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "CancelJobRun",
 }));
 export type CreateJobTemplateError =
   | InternalServerException
@@ -1731,6 +1732,7 @@ export const createJobTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreateJobTemplate",
 }));
 export type CreateManagedEndpointError =
   | InternalServerException
@@ -1754,6 +1756,7 @@ export const createManagedEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreateManagedEndpoint",
 }));
 export type CreateSecurityConfigurationError =
   | InternalServerException
@@ -1774,6 +1777,7 @@ export const createSecurityConfiguration: API.OperationMethod<
   input: CreateSecurityConfigurationRequest,
   output: CreateSecurityConfigurationResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "CreateSecurityConfiguration",
 }));
 export type CreateVirtualClusterError =
   | EKSRequestThrottledException
@@ -1801,6 +1805,7 @@ export const createVirtualCluster: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreateVirtualCluster",
 }));
 export type DeleteJobTemplateError =
   | InternalServerException
@@ -1821,6 +1826,7 @@ export const deleteJobTemplate: API.OperationMethod<
   input: DeleteJobTemplateRequest,
   output: DeleteJobTemplateResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "DeleteJobTemplate",
 }));
 export type DeleteManagedEndpointError =
   | InternalServerException
@@ -1839,6 +1845,7 @@ export const deleteManagedEndpoint: API.OperationMethod<
   input: DeleteManagedEndpointRequest,
   output: DeleteManagedEndpointResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "DeleteManagedEndpoint",
 }));
 export type DeleteVirtualClusterError =
   | InternalServerException
@@ -1859,6 +1866,7 @@ export const deleteVirtualCluster: API.OperationMethod<
   input: DeleteVirtualClusterRequest,
   output: DeleteVirtualClusterResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "DeleteVirtualCluster",
 }));
 export type DescribeJobRunError =
   | InternalServerException
@@ -1882,6 +1890,7 @@ export const describeJobRun: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeJobRun",
 }));
 export type DescribeJobTemplateError =
   | InternalServerException
@@ -1907,6 +1916,7 @@ export const describeJobTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeJobTemplate",
 }));
 export type DescribeManagedEndpointError =
   | InternalServerException
@@ -1930,6 +1940,7 @@ export const describeManagedEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeManagedEndpoint",
 }));
 export type DescribeSecurityConfigurationError =
   | InternalServerException
@@ -1956,6 +1967,7 @@ export const describeSecurityConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeSecurityConfiguration",
 }));
 export type DescribeVirtualClusterError =
   | InternalServerException
@@ -1983,6 +1995,7 @@ export const describeVirtualCluster: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeVirtualCluster",
 }));
 export type GetManagedEndpointSessionCredentialsError =
   | InternalServerException
@@ -2007,6 +2020,7 @@ export const getManagedEndpointSessionCredentials: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetManagedEndpointSessionCredentials",
 }));
 export type ListJobRunsError =
   | InternalServerException
@@ -2040,6 +2054,7 @@ export const listJobRuns: API.OperationMethod<
   input: ListJobRunsRequest,
   output: ListJobRunsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListJobRuns",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2081,6 +2096,7 @@ export const listJobTemplates: API.OperationMethod<
   input: ListJobTemplatesRequest,
   output: ListJobTemplatesResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListJobTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2120,6 +2136,7 @@ export const listManagedEndpoints: API.OperationMethod<
   input: ListManagedEndpointsRequest,
   output: ListManagedEndpointsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListManagedEndpoints",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2162,6 +2179,7 @@ export const listSecurityConfigurations: API.OperationMethod<
   input: ListSecurityConfigurationsRequest,
   output: ListSecurityConfigurationsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListSecurityConfigurations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2190,6 +2208,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListVirtualClustersError =
   | InternalServerException
@@ -2227,6 +2246,7 @@ export const listVirtualClusters: API.OperationMethod<
   input: ListVirtualClustersRequest,
   output: ListVirtualClustersResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListVirtualClusters",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2256,6 +2276,7 @@ export const startJobRun: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StartJobRun",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -2286,6 +2307,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -2308,4 +2330,5 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));

@@ -203,4 +203,5 @@ export const scanSbom: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ScanSbom",
 }));

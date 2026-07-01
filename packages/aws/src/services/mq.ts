@@ -2233,6 +2233,7 @@ export const createBroker: API.OperationMethod<
     InternalServerErrorException,
     UnauthorizedException,
   ],
+  operationName: "CreateBroker",
 }));
 export type CreateConfigurationError =
   | BadRequestException
@@ -2257,6 +2258,7 @@ export const createConfiguration: API.OperationMethod<
     ForbiddenException,
     InternalServerErrorException,
   ],
+  operationName: "CreateConfiguration",
 }));
 export type CreateTagsError =
   | BadRequestException
@@ -2281,6 +2283,7 @@ export const createTags: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "CreateTags",
 }));
 export type CreateUserError =
   | BadRequestException
@@ -2309,6 +2312,7 @@ export const createUser: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "CreateUser",
 }));
 export type DeleteBrokerError =
   | BadRequestException
@@ -2333,6 +2337,7 @@ export const deleteBroker: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "DeleteBroker",
 }));
 export type DeleteConfigurationError =
   | BadRequestException
@@ -2359,6 +2364,7 @@ export const deleteConfiguration: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "DeleteConfiguration",
 }));
 export type DeleteTagsError =
   | BadRequestException
@@ -2383,6 +2389,7 @@ export const deleteTags: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "DeleteTags",
 }));
 export type DeleteUserError =
   | BadRequestException
@@ -2407,6 +2414,7 @@ export const deleteUser: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "DeleteUser",
 }));
 export type DescribeBrokerError =
   | BadRequestException
@@ -2431,6 +2439,7 @@ export const describeBroker: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "DescribeBroker",
 }));
 export type DescribeBrokerEngineTypesError =
   | BadRequestException
@@ -2453,6 +2462,7 @@ export const describeBrokerEngineTypes: API.OperationMethod<
     ForbiddenException,
     InternalServerErrorException,
   ],
+  operationName: "DescribeBrokerEngineTypes",
 }));
 export type DescribeBrokerInstanceOptionsError =
   | BadRequestException
@@ -2475,6 +2485,7 @@ export const describeBrokerInstanceOptions: API.OperationMethod<
     ForbiddenException,
     InternalServerErrorException,
   ],
+  operationName: "DescribeBrokerInstanceOptions",
 }));
 export type DescribeConfigurationError =
   | BadRequestException
@@ -2499,6 +2510,7 @@ export const describeConfiguration: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "DescribeConfiguration",
 }));
 export type DescribeConfigurationRevisionError =
   | BadRequestException
@@ -2523,6 +2535,7 @@ export const describeConfigurationRevision: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "DescribeConfigurationRevision",
 }));
 export type DescribeSharedResourcesError =
   | BadRequestException
@@ -2562,6 +2575,7 @@ export const describeSharedResources: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "DescribeSharedResources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2592,6 +2606,7 @@ export const describeUser: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "DescribeUser",
 }));
 export type ListBrokersError =
   | BadRequestException
@@ -2629,6 +2644,7 @@ export const listBrokers: API.OperationMethod<
     ForbiddenException,
     InternalServerErrorException,
   ],
+  operationName: "ListBrokers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2659,6 +2675,7 @@ export const listConfigurationRevisions: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "ListConfigurationRevisions",
 }));
 export type ListConfigurationsError =
   | BadRequestException
@@ -2681,6 +2698,7 @@ export const listConfigurations: API.OperationMethod<
     ForbiddenException,
     InternalServerErrorException,
   ],
+  operationName: "ListConfigurations",
 }));
 export type ListTagsError =
   | BadRequestException
@@ -2705,6 +2723,7 @@ export const listTags: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "ListTags",
 }));
 export type ListUsersError =
   | BadRequestException
@@ -2729,6 +2748,7 @@ export const listUsers: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "ListUsers",
 }));
 export type PromoteError =
   | BadRequestException
@@ -2753,6 +2773,7 @@ export const promote: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "Promote",
 }));
 export type RebootBrokerError =
   | BadRequestException
@@ -2777,6 +2798,7 @@ export const rebootBroker: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "RebootBroker",
 }));
 export type UpdateBrokerError =
   | BadRequestException
@@ -2803,6 +2825,7 @@ export const updateBroker: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "UpdateBroker",
 }));
 export type UpdateConfigurationError =
   | BadRequestException
@@ -2829,6 +2852,7 @@ export const updateConfiguration: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "UpdateConfiguration",
 }));
 export type UpdateUserError =
   | BadRequestException
@@ -2855,4 +2879,5 @@ export const updateUser: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "UpdateUser",
 }));

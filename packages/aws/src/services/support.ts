@@ -1187,6 +1187,7 @@ export const addAttachmentsToSet: API.OperationMethod<
     AttachmentSetSizeLimitExceeded,
     InternalServerError,
   ],
+  operationName: "AddAttachmentsToSet",
 }));
 export type AddCommunicationToCaseError =
   | AttachmentSetExpired
@@ -1223,6 +1224,7 @@ export const addCommunicationToCase: API.OperationMethod<
     CaseIdNotFound,
     InternalServerError,
   ],
+  operationName: "AddCommunicationToCase",
 }));
 export type CreateCaseError =
   | AttachmentSetExpired
@@ -1272,6 +1274,7 @@ export const createCase: API.OperationMethod<
     CaseCreationLimitExceeded,
     InternalServerError,
   ],
+  operationName: "CreateCase",
 }));
 export type DescribeAttachmentError =
   | AttachmentIdNotFound
@@ -1306,6 +1309,7 @@ export const describeAttachment: API.OperationMethod<
     DescribeAttachmentLimitExceeded,
     InternalServerError,
   ],
+  operationName: "DescribeAttachment",
 }));
 export type DescribeCasesError =
   | CaseIdNotFound
@@ -1360,6 +1364,7 @@ export const describeCases: API.OperationMethod<
   input: DescribeCasesRequest,
   output: DescribeCasesResponse,
   errors: [CaseIdNotFound, InternalServerError],
+  operationName: "DescribeCases",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1417,6 +1422,7 @@ export const describeCommunications: API.OperationMethod<
   input: DescribeCommunicationsRequest,
   output: DescribeCommunicationsResponse,
   errors: [CaseIdNotFound, InternalServerError],
+  operationName: "DescribeCommunications",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1451,6 +1457,7 @@ export const describeCreateCaseOptions: API.OperationMethod<
   input: DescribeCreateCaseOptionsRequest,
   output: DescribeCreateCaseOptionsResponse,
   errors: [InternalServerError, ThrottlingException],
+  operationName: "DescribeCreateCaseOptions",
 }));
 export type DescribeServicesError = InternalServerError | CommonErrors;
 /**
@@ -1482,6 +1489,7 @@ export const describeServices: API.OperationMethod<
   input: DescribeServicesRequest,
   output: DescribeServicesResponse,
   errors: [InternalServerError],
+  operationName: "DescribeServices",
 }));
 export type DescribeSeverityLevelsError = InternalServerError | CommonErrors;
 /**
@@ -1506,6 +1514,7 @@ export const describeSeverityLevels: API.OperationMethod<
   input: DescribeSeverityLevelsRequest,
   output: DescribeSeverityLevelsResponse,
   errors: [InternalServerError],
+  operationName: "DescribeSeverityLevels",
 }));
 export type DescribeSupportedLanguagesError =
   | InternalServerError
@@ -1533,6 +1542,7 @@ export const describeSupportedLanguages: API.OperationMethod<
   input: DescribeSupportedLanguagesRequest,
   output: DescribeSupportedLanguagesResponse,
   errors: [InternalServerError, ThrottlingException],
+  operationName: "DescribeSupportedLanguages",
 }));
 export type DescribeTrustedAdvisorCheckRefreshStatusesError =
   | InternalServerError
@@ -1569,6 +1579,7 @@ export const describeTrustedAdvisorCheckRefreshStatuses: API.OperationMethod<
   input: DescribeTrustedAdvisorCheckRefreshStatusesRequest,
   output: DescribeTrustedAdvisorCheckRefreshStatusesResponse,
   errors: [InternalServerError, ThrottlingException],
+  operationName: "DescribeTrustedAdvisorCheckRefreshStatuses",
 }));
 export type DescribeTrustedAdvisorCheckResultError =
   | InternalServerError
@@ -1622,6 +1633,7 @@ export const describeTrustedAdvisorCheckResult: API.OperationMethod<
   input: DescribeTrustedAdvisorCheckResultRequest,
   output: DescribeTrustedAdvisorCheckResultResponse,
   errors: [InternalServerError, ThrottlingException],
+  operationName: "DescribeTrustedAdvisorCheckResult",
 }));
 export type DescribeTrustedAdvisorChecksError =
   | InternalServerError
@@ -1659,6 +1671,7 @@ export const describeTrustedAdvisorChecks: API.OperationMethod<
   input: DescribeTrustedAdvisorChecksRequest,
   output: DescribeTrustedAdvisorChecksResponse,
   errors: [InternalServerError, ThrottlingException],
+  operationName: "DescribeTrustedAdvisorChecks",
 }));
 export type DescribeTrustedAdvisorCheckSummariesError =
   | InternalServerError
@@ -1693,6 +1706,7 @@ export const describeTrustedAdvisorCheckSummaries: API.OperationMethod<
   input: DescribeTrustedAdvisorCheckSummariesRequest,
   output: DescribeTrustedAdvisorCheckSummariesResponse,
   errors: [InternalServerError, ThrottlingException],
+  operationName: "DescribeTrustedAdvisorCheckSummaries",
 }));
 export type RefreshTrustedAdvisorCheckError =
   | InternalServerError
@@ -1731,6 +1745,7 @@ export const refreshTrustedAdvisorCheck: API.OperationMethod<
   input: RefreshTrustedAdvisorCheckRequest,
   output: RefreshTrustedAdvisorCheckResponse,
   errors: [InternalServerError],
+  operationName: "RefreshTrustedAdvisorCheck",
 }));
 export type ResolveCaseError =
   | CaseIdNotFound
@@ -1757,4 +1772,5 @@ export const resolveCase: API.OperationMethod<
   input: ResolveCaseRequest,
   output: ResolveCaseResponse,
   errors: [CaseIdNotFound, InternalServerError],
+  operationName: "ResolveCase",
 }));

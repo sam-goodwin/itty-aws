@@ -2683,6 +2683,7 @@ export const batchGetTraces: API.OperationMethod<
   input: BatchGetTracesRequest,
   output: BatchGetTracesResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "BatchGetTraces",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2710,6 +2711,7 @@ export const cancelTraceRetrieval: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledException,
   ],
+  operationName: "CancelTraceRetrieval",
 }));
 export type CreateGroupError =
   | InvalidRequestException
@@ -2727,6 +2729,7 @@ export const createGroup: API.OperationMethod<
   input: CreateGroupRequest,
   output: CreateGroupResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "CreateGroup",
 }));
 export type CreateSamplingRuleError =
   | InvalidRequestException
@@ -2755,6 +2758,7 @@ export const createSamplingRule: API.OperationMethod<
     RuleLimitExceededException,
     ThrottledException,
   ],
+  operationName: "CreateSamplingRule",
 }));
 export type DeleteGroupError =
   | InvalidRequestException
@@ -2772,6 +2776,7 @@ export const deleteGroup: API.OperationMethod<
   input: DeleteGroupRequest,
   output: DeleteGroupResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "DeleteGroup",
 }));
 export type DeleteResourcePolicyError =
   | InvalidPolicyRevisionIdException
@@ -2794,6 +2799,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     InvalidRequestException,
     ThrottledException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteSamplingRuleError =
   | InvalidRequestException
@@ -2811,6 +2817,7 @@ export const deleteSamplingRule: API.OperationMethod<
   input: DeleteSamplingRuleRequest,
   output: DeleteSamplingRuleResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "DeleteSamplingRule",
 }));
 export type GetEncryptionConfigError =
   | InvalidRequestException
@@ -2828,6 +2835,7 @@ export const getEncryptionConfig: API.OperationMethod<
   input: GetEncryptionConfigRequest,
   output: GetEncryptionConfigResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "GetEncryptionConfig",
 }));
 export type GetGroupError =
   | InvalidRequestException
@@ -2845,6 +2853,7 @@ export const getGroup: API.OperationMethod<
   input: GetGroupRequest,
   output: GetGroupResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "GetGroup",
 }));
 export type GetGroupsError =
   | InvalidRequestException
@@ -2877,6 +2886,7 @@ export const getGroups: API.OperationMethod<
   input: GetGroupsRequest,
   output: GetGroupsResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "GetGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2901,6 +2911,7 @@ export const getIndexingRules: API.OperationMethod<
   input: GetIndexingRulesRequest,
   output: GetIndexingRulesResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "GetIndexingRules",
 }));
 export type GetInsightError =
   | InvalidRequestException
@@ -2920,6 +2931,7 @@ export const getInsight: API.OperationMethod<
   input: GetInsightRequest,
   output: GetInsightResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "GetInsight",
 }));
 export type GetInsightEventsError =
   | InvalidRequestException
@@ -2954,6 +2966,7 @@ export const getInsightEvents: API.OperationMethod<
   input: GetInsightEventsRequest,
   output: GetInsightEventsResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "GetInsightEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2977,6 +2990,7 @@ export const getInsightImpactGraph: API.OperationMethod<
   input: GetInsightImpactGraphRequest,
   output: GetInsightImpactGraphResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "GetInsightImpactGraph",
 }));
 export type GetInsightSummariesError =
   | InvalidRequestException
@@ -3009,6 +3023,7 @@ export const getInsightSummaries: API.OperationMethod<
   input: GetInsightSummariesRequest,
   output: GetInsightSummariesResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "GetInsightSummaries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3044,6 +3059,7 @@ export const getRetrievedTracesGraph: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledException,
   ],
+  operationName: "GetRetrievedTracesGraph",
 }));
 export type GetSamplingRulesError =
   | InvalidRequestException
@@ -3076,6 +3092,7 @@ export const getSamplingRules: API.OperationMethod<
   input: GetSamplingRulesRequest,
   output: GetSamplingRulesResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "GetSamplingRules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3113,6 +3130,7 @@ export const getSamplingStatisticSummaries: API.OperationMethod<
   input: GetSamplingStatisticSummariesRequest,
   output: GetSamplingStatisticSummariesResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "GetSamplingStatisticSummaries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3135,6 +3153,7 @@ export const getSamplingTargets: API.OperationMethod<
   input: GetSamplingTargetsRequest,
   output: GetSamplingTargetsResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "GetSamplingTargets",
 }));
 export type GetServiceGraphError =
   | InvalidRequestException
@@ -3171,6 +3190,7 @@ export const getServiceGraph: API.OperationMethod<
   input: GetServiceGraphRequest,
   output: GetServiceGraphResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "GetServiceGraph",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3209,6 +3229,7 @@ export const getTimeSeriesServiceStatistics: API.OperationMethod<
   input: GetTimeSeriesServiceStatisticsRequest,
   output: GetTimeSeriesServiceStatisticsResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "GetTimeSeriesServiceStatistics",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3246,6 +3267,7 @@ export const getTraceGraph: API.OperationMethod<
   input: GetTraceGraphRequest,
   output: GetTraceGraphResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "GetTraceGraph",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3268,6 +3290,7 @@ export const getTraceSegmentDestination: API.OperationMethod<
   input: GetTraceSegmentDestinationRequest,
   output: GetTraceSegmentDestinationResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "GetTraceSegmentDestination",
 }));
 export type GetTraceSummariesError =
   | InvalidRequestException
@@ -3317,6 +3340,7 @@ export const getTraceSummaries: API.OperationMethod<
   input: GetTraceSummariesRequest,
   output: GetTraceSummariesResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "GetTraceSummaries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3354,6 +3378,7 @@ export const listResourcePolicies: API.OperationMethod<
   input: ListResourcePoliciesRequest,
   output: ListResourcePoliciesResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "ListResourcePolicies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3389,6 +3414,7 @@ export const listRetrievedTraces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledException,
   ],
+  operationName: "ListRetrievedTraces",
 }));
 export type ListTagsForResourceError =
   | InvalidRequestException
@@ -3426,6 +3452,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledException,
   ],
+  operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3448,6 +3475,7 @@ export const putEncryptionConfig: API.OperationMethod<
   input: PutEncryptionConfigRequest,
   output: PutEncryptionConfigResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "PutEncryptionConfig",
 }));
 export type PutResourcePolicyError =
   | InvalidPolicyRevisionIdException
@@ -3479,6 +3507,7 @@ export const putResourcePolicy: API.OperationMethod<
     PolicySizeLimitExceededException,
     ThrottledException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type PutTelemetryRecordsError =
   | InvalidRequestException
@@ -3496,6 +3525,7 @@ export const putTelemetryRecords: API.OperationMethod<
   input: PutTelemetryRecordsRequest,
   output: PutTelemetryRecordsResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "PutTelemetryRecords",
 }));
 export type PutTraceSegmentsError =
   | InvalidRequestException
@@ -3564,6 +3594,7 @@ export const putTraceSegments: API.OperationMethod<
   input: PutTraceSegmentsRequest,
   output: PutTraceSegmentsResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "PutTraceSegments",
 }));
 export type StartTraceRetrievalError =
   | InvalidRequestException
@@ -3592,6 +3623,7 @@ export const startTraceRetrieval: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledException,
   ],
+  operationName: "StartTraceRetrieval",
 }));
 export type TagResourceError =
   | InvalidRequestException
@@ -3616,6 +3648,7 @@ export const tagResource: API.OperationMethod<
     ThrottledException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InvalidRequestException
@@ -3639,6 +3672,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateGroupError =
   | InvalidRequestException
@@ -3656,6 +3690,7 @@ export const updateGroup: API.OperationMethod<
   input: UpdateGroupRequest,
   output: UpdateGroupResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "UpdateGroup",
 }));
 export type UpdateIndexingRuleError =
   | InvalidRequestException
@@ -3680,6 +3715,7 @@ export const updateIndexingRule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledException,
   ],
+  operationName: "UpdateIndexingRule",
 }));
 export type UpdateSamplingRuleError =
   | InvalidRequestException
@@ -3697,6 +3733,7 @@ export const updateSamplingRule: API.OperationMethod<
   input: UpdateSamplingRuleRequest,
   output: UpdateSamplingRuleResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "UpdateSamplingRule",
 }));
 export type UpdateTraceSegmentDestinationError =
   | InvalidRequestException
@@ -3714,4 +3751,5 @@ export const updateTraceSegmentDestination: API.OperationMethod<
   input: UpdateTraceSegmentDestinationRequest,
   output: UpdateTraceSegmentDestinationResult,
   errors: [InvalidRequestException, ThrottledException],
+  operationName: "UpdateTraceSegmentDestination",
 }));

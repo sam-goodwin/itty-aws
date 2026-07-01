@@ -179,4 +179,5 @@ export const getBuyerDashboard: API.OperationMethod<
     InternalServerException,
     UnauthorizedException,
   ],
+  operationName: "GetBuyerDashboard",
 }));

@@ -6774,6 +6774,7 @@ export const acceptInboundConnection: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "AcceptInboundConnection",
 }));
 export type AddDataSourceError =
   | BaseException
@@ -6806,6 +6807,7 @@ export const addDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "AddDataSource",
 }));
 export type AddDirectQueryDataSourceError =
   | BaseException
@@ -6835,6 +6837,7 @@ export const addDirectQueryDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "AddDirectQueryDataSource",
 }));
 export type AddTagsError =
   | BaseException
@@ -6863,6 +6866,7 @@ export const addTags: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  operationName: "AddTags",
 }));
 export type AssociatePackageError =
   | AccessDeniedException
@@ -6893,6 +6897,7 @@ export const associatePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "AssociatePackage",
 }));
 export type AssociatePackagesError =
   | BaseException
@@ -6922,6 +6927,7 @@ export const associatePackages: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "AssociatePackages",
 }));
 export type AttachDataSourceError =
   | AccessDeniedException
@@ -6950,6 +6956,7 @@ export const attachDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "AttachDataSource",
 }));
 export type AuthorizeVpcEndpointAccessError =
   | BaseException
@@ -6979,6 +6986,7 @@ export const authorizeVpcEndpointAccess: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "AuthorizeVpcEndpointAccess",
 }));
 export type CancelDomainConfigChangeError =
   | BaseException
@@ -7005,6 +7013,7 @@ export const cancelDomainConfigChange: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CancelDomainConfigChange",
 }));
 export type CancelServiceSoftwareUpdateError =
   | BaseException
@@ -7033,6 +7042,7 @@ export const cancelServiceSoftwareUpdate: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CancelServiceSoftwareUpdate",
 }));
 export type CreateApplicationError =
   | AccessDeniedException
@@ -7061,6 +7071,7 @@ export const createApplication: API.OperationMethod<
     InternalException,
     ValidationException,
   ],
+  operationName: "CreateApplication",
 }));
 export type CreateDomainError =
   | BaseException
@@ -7092,6 +7103,7 @@ export const createDomain: API.OperationMethod<
     ResourceAlreadyExistsException,
     ValidationException,
   ],
+  operationName: "CreateDomain",
 }));
 export type CreateIndexError =
   | AccessDeniedException
@@ -7124,6 +7136,7 @@ export const createIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateIndex",
 }));
 export type CreateOutboundConnectionError =
   | DisabledOperationException
@@ -7150,6 +7163,7 @@ export const createOutboundConnection: API.OperationMethod<
     LimitExceededException,
     ResourceAlreadyExistsException,
   ],
+  operationName: "CreateOutboundConnection",
 }));
 export type CreatePackageError =
   | AccessDeniedException
@@ -7182,6 +7196,7 @@ export const createPackage: API.OperationMethod<
     ResourceAlreadyExistsException,
     ValidationException,
   ],
+  operationName: "CreatePackage",
 }));
 export type CreateVpcEndpointError =
   | BaseException
@@ -7210,6 +7225,7 @@ export const createVpcEndpoint: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  operationName: "CreateVpcEndpoint",
 }));
 export type DeleteApplicationError =
   | AccessDeniedException
@@ -7240,6 +7256,7 @@ export const deleteApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteApplication",
 }));
 export type DeleteDataSourceError =
   | BaseException
@@ -7269,6 +7286,7 @@ export const deleteDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteDataSource",
 }));
 export type DeleteDirectQueryDataSourceError =
   | BaseException
@@ -7296,6 +7314,7 @@ export const deleteDirectQueryDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteDirectQueryDataSource",
 }));
 export type DeleteDomainError =
   | BaseException
@@ -7321,6 +7340,7 @@ export const deleteDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteDomain",
 }));
 export type DeleteInboundConnectionError =
   | DisabledOperationException
@@ -7339,6 +7359,7 @@ export const deleteInboundConnection: API.OperationMethod<
   input: DeleteInboundConnectionRequest,
   output: DeleteInboundConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
+  operationName: "DeleteInboundConnection",
 }));
 export type DeleteIndexError =
   | AccessDeniedException
@@ -7369,6 +7390,7 @@ export const deleteIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteIndex",
 }));
 export type DeleteOutboundConnectionError =
   | DisabledOperationException
@@ -7387,6 +7409,7 @@ export const deleteOutboundConnection: API.OperationMethod<
   input: DeleteOutboundConnectionRequest,
   output: DeleteOutboundConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
+  operationName: "DeleteOutboundConnection",
 }));
 export type DeletePackageError =
   | AccessDeniedException
@@ -7416,6 +7439,7 @@ export const deletePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeletePackage",
 }));
 export type DeleteVpcEndpointError =
   | BaseException
@@ -7440,6 +7464,7 @@ export const deleteVpcEndpoint: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteVpcEndpoint",
 }));
 export type DeregisterCapabilityError =
   | AccessDeniedException
@@ -7468,6 +7493,7 @@ export const deregisterCapability: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeregisterCapability",
 }));
 export type DescribeDataSourceAttachmentError =
   | AccessDeniedException
@@ -7494,6 +7520,7 @@ export const describeDataSourceAttachment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeDataSourceAttachment",
 }));
 export type DescribeDomainError =
   | BaseException
@@ -7519,6 +7546,7 @@ export const describeDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeDomain",
 }));
 export type DescribeDomainAutoTunesError =
   | BaseException
@@ -7560,6 +7588,7 @@ export const describeDomainAutoTunes: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeDomainAutoTunes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7590,6 +7619,7 @@ export const describeDomainChangeProgress: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeDomainChangeProgress",
 }));
 export type DescribeDomainConfigError =
   | BaseException
@@ -7614,6 +7644,7 @@ export const describeDomainConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeDomainConfig",
 }));
 export type DescribeDomainHealthError =
   | BaseException
@@ -7641,6 +7672,7 @@ export const describeDomainHealth: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeDomainHealth",
 }));
 export type DescribeDomainNodesError =
   | BaseException
@@ -7671,6 +7703,7 @@ export const describeDomainNodes: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeDomainNodes",
 }));
 export type DescribeDomainsError =
   | BaseException
@@ -7690,6 +7723,7 @@ export const describeDomains: API.OperationMethod<
   input: DescribeDomainsRequest,
   output: DescribeDomainsResponse,
   errors: [BaseException, InternalException, ValidationException],
+  operationName: "DescribeDomains",
 }));
 export type DescribeDryRunProgressError =
   | BaseException
@@ -7717,6 +7751,7 @@ export const describeDryRunProgress: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeDryRunProgress",
 }));
 export type DescribeInboundConnectionsError =
   | DisabledOperationException
@@ -7750,6 +7785,7 @@ export const describeInboundConnections: API.OperationMethod<
   input: DescribeInboundConnectionsRequest,
   output: DescribeInboundConnectionsResponse,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
+  operationName: "DescribeInboundConnections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7785,6 +7821,7 @@ export const describeInsightDetails: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeInsightDetails",
 }));
 export type DescribeInstanceTypeLimitsError =
   | BaseException
@@ -7814,6 +7851,7 @@ export const describeInstanceTypeLimits: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeInstanceTypeLimits",
 }));
 export type DescribeOutboundConnectionsError =
   | DisabledOperationException
@@ -7847,6 +7885,7 @@ export const describeOutboundConnections: API.OperationMethod<
   input: DescribeOutboundConnectionsRequest,
   output: DescribeOutboundConnectionsResponse,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
+  operationName: "DescribeOutboundConnections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7895,6 +7934,7 @@ export const describePackages: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribePackages",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7941,6 +7981,7 @@ export const describeReservedInstanceOfferings: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeReservedInstanceOfferings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7987,6 +8028,7 @@ export const describeReservedInstances: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeReservedInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8016,6 +8058,7 @@ export const describeVpcEndpoints: API.OperationMethod<
     InternalException,
     ValidationException,
   ],
+  operationName: "DescribeVpcEndpoints",
 }));
 export type DetachDataSourceError =
   | AccessDeniedException
@@ -8044,6 +8087,7 @@ export const detachDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DetachDataSource",
 }));
 export type DissociatePackageError =
   | AccessDeniedException
@@ -8076,6 +8120,7 @@ export const dissociatePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DissociatePackage",
 }));
 export type DissociatePackagesError =
   | BaseException
@@ -8104,6 +8149,7 @@ export const dissociatePackages: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DissociatePackages",
 }));
 export type GetApplicationError =
   | AccessDeniedException
@@ -8132,6 +8178,7 @@ export const getApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetApplication",
 }));
 export type GetCapabilityError =
   | AccessDeniedException
@@ -8158,6 +8205,7 @@ export const getCapability: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetCapability",
 }));
 export type GetCompatibleVersionsError =
   | BaseException
@@ -8185,6 +8233,7 @@ export const getCompatibleVersions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetCompatibleVersions",
 }));
 export type GetDataSourceError =
   | BaseException
@@ -8213,6 +8262,7 @@ export const getDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetDataSource",
 }));
 export type GetDefaultApplicationSettingError =
   | AccessDeniedException
@@ -8240,6 +8290,7 @@ export const getDefaultApplicationSetting: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetDefaultApplicationSetting",
 }));
 export type GetDirectQueryDataSourceError =
   | BaseException
@@ -8267,6 +8318,7 @@ export const getDirectQueryDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetDirectQueryDataSource",
 }));
 export type GetDomainMaintenanceStatusError =
   | BaseException
@@ -8293,6 +8345,7 @@ export const getDomainMaintenanceStatus: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetDomainMaintenanceStatus",
 }));
 export type GetIndexError =
   | AccessDeniedException
@@ -8323,6 +8376,7 @@ export const getIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetIndex",
 }));
 export type GetPackageVersionHistoryError =
   | AccessDeniedException
@@ -8367,6 +8421,7 @@ export const getPackageVersionHistory: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetPackageVersionHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8414,6 +8469,7 @@ export const getUpgradeHistory: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetUpgradeHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8446,6 +8502,7 @@ export const getUpgradeStatus: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetUpgradeStatus",
 }));
 export type ListApplicationsError =
   | AccessDeniedException
@@ -8489,6 +8546,7 @@ export const listApplications: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListApplications",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8521,6 +8579,7 @@ export const listDataSourceAttachments: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListDataSourceAttachments",
 }));
 export type ListDataSourcesError =
   | BaseException
@@ -8551,6 +8610,7 @@ export const listDataSources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListDataSources",
 }));
 export type ListDirectQueryDataSourcesError =
   | BaseException
@@ -8578,6 +8638,7 @@ export const listDirectQueryDataSources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListDirectQueryDataSources",
 }));
 export type ListDomainMaintenancesError =
   | BaseException
@@ -8619,6 +8680,7 @@ export const listDomainMaintenances: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListDomainMaintenances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8642,6 +8704,7 @@ export const listDomainNames: API.OperationMethod<
   input: ListDomainNamesRequest,
   output: ListDomainNamesResponse,
   errors: [BaseException, ValidationException],
+  operationName: "ListDomainNames",
 }));
 export type ListDomainsForPackageError =
   | AccessDeniedException
@@ -8685,6 +8748,7 @@ export const listDomainsForPackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListDomainsForPackage",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8720,6 +8784,7 @@ export const listInsights: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListInsights",
 }));
 export type ListInstanceTypeDetailsError =
   | BaseException
@@ -8760,6 +8825,7 @@ export const listInstanceTypeDetails: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListInstanceTypeDetails",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8808,6 +8874,7 @@ export const listPackagesForDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListPackagesForDomain",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8856,6 +8923,7 @@ export const listScheduledActions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListScheduledActions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8886,6 +8954,7 @@ export const listTags: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTags",
 }));
 export type ListVersionsError =
   | BaseException
@@ -8926,6 +8995,7 @@ export const listVersions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8957,6 +9027,7 @@ export const listVpcEndpointAccess: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  operationName: "ListVpcEndpointAccess",
 }));
 export type ListVpcEndpointsError =
   | BaseException
@@ -8975,6 +9046,7 @@ export const listVpcEndpoints: API.OperationMethod<
   input: ListVpcEndpointsRequest,
   output: ListVpcEndpointsResponse,
   errors: [BaseException, DisabledOperationException, InternalException],
+  operationName: "ListVpcEndpoints",
 }));
 export type ListVpcEndpointsForDomainError =
   | BaseException
@@ -9000,6 +9072,7 @@ export const listVpcEndpointsForDomain: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  operationName: "ListVpcEndpointsForDomain",
 }));
 export type PurchaseReservedInstanceOfferingError =
   | DisabledOperationException
@@ -9028,6 +9101,7 @@ export const purchaseReservedInstanceOffering: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "PurchaseReservedInstanceOffering",
 }));
 export type PutDefaultApplicationSettingError =
   | AccessDeniedException
@@ -9057,6 +9131,7 @@ export const putDefaultApplicationSetting: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "PutDefaultApplicationSetting",
 }));
 export type RegisterCapabilityError =
   | AccessDeniedException
@@ -9087,6 +9162,7 @@ export const registerCapability: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "RegisterCapability",
 }));
 export type RejectInboundConnectionError =
   | DisabledOperationException
@@ -9105,6 +9181,7 @@ export const rejectInboundConnection: API.OperationMethod<
   input: RejectInboundConnectionRequest,
   output: RejectInboundConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
+  operationName: "RejectInboundConnection",
 }));
 export type RemoveTagsError =
   | BaseException
@@ -9124,6 +9201,7 @@ export const removeTags: API.OperationMethod<
   input: RemoveTagsRequest,
   output: RemoveTagsResponse,
   errors: [BaseException, InternalException, ValidationException],
+  operationName: "RemoveTags",
 }));
 export type RevokeVpcEndpointAccessError =
   | BaseException
@@ -9151,6 +9229,7 @@ export const revokeVpcEndpointAccess: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "RevokeVpcEndpointAccess",
 }));
 export type RollbackServiceSoftwareUpdateError =
   | BaseException
@@ -9179,6 +9258,7 @@ export const rollbackServiceSoftwareUpdate: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "RollbackServiceSoftwareUpdate",
 }));
 export type StartDomainMaintenanceError =
   | BaseException
@@ -9207,6 +9287,7 @@ export const startDomainMaintenance: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StartDomainMaintenance",
 }));
 export type StartServiceSoftwareUpdateError =
   | BaseException
@@ -9233,6 +9314,7 @@ export const startServiceSoftwareUpdate: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StartServiceSoftwareUpdate",
 }));
 export type UpdateApplicationError =
   | AccessDeniedException
@@ -9263,6 +9345,7 @@ export const updateApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateApplication",
 }));
 export type UpdateDataSourceError =
   | BaseException
@@ -9293,6 +9376,7 @@ export const updateDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateDataSource",
 }));
 export type UpdateDirectQueryDataSourceError =
   | BaseException
@@ -9322,6 +9406,7 @@ export const updateDirectQueryDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateDirectQueryDataSource",
 }));
 export type UpdateDomainConfigError =
   | BaseException
@@ -9351,6 +9436,7 @@ export const updateDomainConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateDomainConfig",
 }));
 export type UpdateIndexError =
   | AccessDeniedException
@@ -9381,6 +9467,7 @@ export const updateIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateIndex",
 }));
 export type UpdatePackageError =
   | AccessDeniedException
@@ -9411,6 +9498,7 @@ export const updatePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdatePackage",
 }));
 export type UpdatePackageScopeError =
   | BaseException
@@ -9438,6 +9526,7 @@ export const updatePackageScope: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdatePackageScope",
 }));
 export type UpdateScheduledActionError =
   | BaseException
@@ -9470,6 +9559,7 @@ export const updateScheduledAction: API.OperationMethod<
     SlotNotAvailableException,
     ValidationException,
   ],
+  operationName: "UpdateScheduledAction",
 }));
 export type UpdateVpcEndpointError =
   | BaseException
@@ -9498,6 +9588,7 @@ export const updateVpcEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateVpcEndpoint",
 }));
 export type UpgradeDomainError =
   | BaseException
@@ -9527,4 +9618,5 @@ export const upgradeDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpgradeDomain",
 }));

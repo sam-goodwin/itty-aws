@@ -1505,6 +1505,7 @@ export const createDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "CreateDiscoverer",
 }));
 export type CreateRegistryError =
   | BadRequestException
@@ -1533,6 +1534,7 @@ export const createRegistry: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "CreateRegistry",
 }));
 export type CreateSchemaError =
   | BadRequestException
@@ -1559,6 +1561,7 @@ export const createSchema: API.OperationMethod<
     InternalServerErrorException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateSchema",
 }));
 export type DeleteDiscovererError =
   | BadRequestException
@@ -1587,6 +1590,7 @@ export const deleteDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "DeleteDiscoverer",
 }));
 export type DeleteRegistryError =
   | BadRequestException
@@ -1615,6 +1619,7 @@ export const deleteRegistry: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "DeleteRegistry",
 }));
 export type DeleteResourcePolicyError =
   | BadRequestException
@@ -1643,6 +1648,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteSchemaError =
   | BadRequestException
@@ -1671,6 +1677,7 @@ export const deleteSchema: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "DeleteSchema",
 }));
 export type DeleteSchemaVersionError =
   | BadRequestException
@@ -1699,6 +1706,7 @@ export const deleteSchemaVersion: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "DeleteSchemaVersion",
 }));
 export type DescribeCodeBindingError =
   | BadRequestException
@@ -1727,6 +1735,7 @@ export const describeCodeBinding: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "DescribeCodeBinding",
 }));
 export type DescribeDiscovererError =
   | BadRequestException
@@ -1755,6 +1764,7 @@ export const describeDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "DescribeDiscoverer",
 }));
 export type DescribeRegistryError =
   | BadRequestException
@@ -1783,6 +1793,7 @@ export const describeRegistry: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "DescribeRegistry",
 }));
 export type DescribeSchemaError =
   | BadRequestException
@@ -1811,6 +1822,7 @@ export const describeSchema: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "DescribeSchema",
 }));
 export type ExportSchemaError =
   | BadRequestException
@@ -1841,6 +1853,7 @@ export const exportSchema: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "ExportSchema",
 }));
 export type GetCodeBindingSourceError =
   | BadRequestException
@@ -1869,6 +1882,7 @@ export const getCodeBindingSource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "GetCodeBindingSource",
 }));
 export type GetDiscoveredSchemaError =
   | BadRequestException
@@ -1895,6 +1909,7 @@ export const getDiscoveredSchema: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "GetDiscoveredSchema",
 }));
 export type GetResourcePolicyError =
   | BadRequestException
@@ -1923,6 +1938,7 @@ export const getResourcePolicy: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type ListDiscoverersError =
   | BadRequestException
@@ -1964,6 +1980,7 @@ export const listDiscoverers: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "ListDiscoverers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2011,6 +2028,7 @@ export const listRegistries: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "ListRegistries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2058,6 +2076,7 @@ export const listSchemas: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "ListSchemas",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2107,6 +2126,7 @@ export const listSchemaVersions: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "ListSchemaVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2137,6 +2157,7 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutCodeBindingError =
   | BadRequestException
@@ -2167,6 +2188,7 @@ export const putCodeBinding: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  operationName: "PutCodeBinding",
 }));
 export type PutResourcePolicyError =
   | BadRequestException
@@ -2197,6 +2219,7 @@ export const putResourcePolicy: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type SearchSchemasError =
   | BadRequestException
@@ -2238,6 +2261,7 @@ export const searchSchemas: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "SearchSchemas",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2272,6 +2296,7 @@ export const startDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "StartDiscoverer",
 }));
 export type StopDiscovererError =
   | BadRequestException
@@ -2300,6 +2325,7 @@ export const stopDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "StopDiscoverer",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -2324,6 +2350,7 @@ export const tagResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -2348,6 +2375,7 @@ export const untagResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateDiscovererError =
   | BadRequestException
@@ -2376,6 +2404,7 @@ export const updateDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "UpdateDiscoverer",
 }));
 export type UpdateRegistryError =
   | BadRequestException
@@ -2404,6 +2433,7 @@ export const updateRegistry: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  operationName: "UpdateRegistry",
 }));
 export type UpdateSchemaError =
   | BadRequestException
@@ -2432,4 +2462,5 @@ export const updateSchema: API.OperationMethod<
     NotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "UpdateSchema",
 }));

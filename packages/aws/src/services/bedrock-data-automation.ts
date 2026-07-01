@@ -2401,6 +2401,7 @@ export const copyBlueprintStage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CopyBlueprintStage",
 }));
 export type CreateBlueprintVersionError =
   | AccessDeniedException
@@ -2429,6 +2430,7 @@ export const createBlueprintVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateBlueprintVersion",
 }));
 export type GetDataAutomationLibraryEntityError =
   | AccessDeniedException
@@ -2455,6 +2457,7 @@ export const getDataAutomationLibraryEntity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataAutomationLibraryEntity",
 }));
 export type ListDataAutomationLibraryEntitiesError =
   | AccessDeniedException
@@ -2496,6 +2499,7 @@ export const listDataAutomationLibraryEntities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataAutomationLibraryEntities",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2528,6 +2532,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2556,6 +2561,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2582,6 +2588,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type InvokeBlueprintOptimizationAsyncError =
   | AccessDeniedException
@@ -2610,6 +2617,7 @@ export const invokeBlueprintOptimizationAsync: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InvokeBlueprintOptimizationAsync",
 }));
 export type GetBlueprintOptimizationStatusError =
   | AccessDeniedException
@@ -2636,6 +2644,7 @@ export const getBlueprintOptimizationStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetBlueprintOptimizationStatus",
 }));
 export type CreateBlueprintError =
   | AccessDeniedException
@@ -2664,6 +2673,7 @@ export const createBlueprint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateBlueprint",
 }));
 export type GetBlueprintError =
   | AccessDeniedException
@@ -2690,6 +2700,7 @@ export const getBlueprint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetBlueprint",
 }));
 export type UpdateBlueprintError =
   | AccessDeniedException
@@ -2718,6 +2729,7 @@ export const updateBlueprint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateBlueprint",
 }));
 export type DeleteBlueprintError =
   | AccessDeniedException
@@ -2744,6 +2756,7 @@ export const deleteBlueprint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteBlueprint",
 }));
 export type ListBlueprintsError =
   | AccessDeniedException
@@ -2785,6 +2798,7 @@ export const listBlueprints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBlueprints",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2821,6 +2835,7 @@ export const invokeDataAutomationLibraryIngestionJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InvokeDataAutomationLibraryIngestionJob",
 }));
 export type GetDataAutomationLibraryIngestionJobError =
   | AccessDeniedException
@@ -2847,6 +2862,7 @@ export const getDataAutomationLibraryIngestionJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataAutomationLibraryIngestionJob",
 }));
 export type ListDataAutomationLibraryIngestionJobsError =
   | AccessDeniedException
@@ -2888,6 +2904,7 @@ export const listDataAutomationLibraryIngestionJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataAutomationLibraryIngestionJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2922,6 +2939,7 @@ export const createDataAutomationLibrary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDataAutomationLibrary",
 }));
 export type GetDataAutomationLibraryError =
   | AccessDeniedException
@@ -2948,6 +2966,7 @@ export const getDataAutomationLibrary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataAutomationLibrary",
 }));
 export type UpdateDataAutomationLibraryError =
   | AccessDeniedException
@@ -2976,6 +2995,7 @@ export const updateDataAutomationLibrary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDataAutomationLibrary",
 }));
 export type DeleteDataAutomationLibraryError =
   | AccessDeniedException
@@ -3004,6 +3024,7 @@ export const deleteDataAutomationLibrary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDataAutomationLibrary",
 }));
 export type ListDataAutomationLibrariesError =
   | AccessDeniedException
@@ -3043,6 +3064,7 @@ export const listDataAutomationLibraries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataAutomationLibraries",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3077,6 +3099,7 @@ export const createDataAutomationProject: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDataAutomationProject",
 }));
 export type GetDataAutomationProjectError =
   | AccessDeniedException
@@ -3103,6 +3126,7 @@ export const getDataAutomationProject: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataAutomationProject",
 }));
 export type UpdateDataAutomationProjectError =
   | AccessDeniedException
@@ -3133,6 +3157,7 @@ export const updateDataAutomationProject: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDataAutomationProject",
 }));
 export type DeleteDataAutomationProjectError =
   | AccessDeniedException
@@ -3159,6 +3184,7 @@ export const deleteDataAutomationProject: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDataAutomationProject",
 }));
 export type ListDataAutomationProjectsError =
   | AccessDeniedException
@@ -3200,6 +3226,7 @@ export const listDataAutomationProjects: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataAutomationProjects",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

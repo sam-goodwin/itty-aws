@@ -1565,6 +1565,7 @@ export const createHttpNamespace: API.OperationMethod<
     ResourceLimitExceeded,
     TooManyTagsException,
   ],
+  operationName: "CreateHttpNamespace",
 }));
 export type CreatePrivateDnsNamespaceError =
   | DuplicateRequest
@@ -1598,6 +1599,7 @@ export const createPrivateDnsNamespace: API.OperationMethod<
     ResourceLimitExceeded,
     TooManyTagsException,
   ],
+  operationName: "CreatePrivateDnsNamespace",
 }));
 export type CreatePublicDnsNamespaceError =
   | DuplicateRequest
@@ -1632,6 +1634,7 @@ export const createPublicDnsNamespace: API.OperationMethod<
     ResourceLimitExceeded,
     TooManyTagsException,
   ],
+  operationName: "CreatePublicDnsNamespace",
 }));
 export type CreateServiceError =
   | InvalidInput
@@ -1680,6 +1683,7 @@ export const createService: API.OperationMethod<
     ServiceAlreadyExists,
     TooManyTagsException,
   ],
+  operationName: "CreateService",
 }));
 export type DeleteNamespaceError =
   | DuplicateRequest
@@ -1700,6 +1704,7 @@ export const deleteNamespace: API.OperationMethod<
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
+  operationName: "DeleteNamespace",
 }));
 export type DeleteServiceError =
   | InvalidInput
@@ -1719,6 +1724,7 @@ export const deleteService: API.OperationMethod<
   input: DeleteServiceRequest,
   output: DeleteServiceResponse,
   errors: [InvalidInput, ResourceInUse, ServiceNotFound],
+  operationName: "DeleteService",
 }));
 export type DeleteServiceAttributesError =
   | InvalidInput
@@ -1736,6 +1742,7 @@ export const deleteServiceAttributes: API.OperationMethod<
   input: DeleteServiceAttributesRequest,
   output: DeleteServiceAttributesResponse,
   errors: [InvalidInput, ServiceNotFound],
+  operationName: "DeleteServiceAttributes",
 }));
 export type DeregisterInstanceError =
   | DuplicateRequest
@@ -1763,6 +1770,7 @@ export const deregisterInstance: API.OperationMethod<
     ResourceInUse,
     ServiceNotFound,
   ],
+  operationName: "DeregisterInstance",
 }));
 export type DiscoverInstancesError =
   | InvalidInput
@@ -1791,6 +1799,7 @@ export const discoverInstances: API.OperationMethod<
     RequestLimitExceeded,
     ServiceNotFound,
   ],
+  operationName: "DiscoverInstances",
 }));
 export type DiscoverInstancesRevisionError =
   | InvalidInput
@@ -1815,6 +1824,7 @@ export const discoverInstancesRevision: API.OperationMethod<
     RequestLimitExceeded,
     ServiceNotFound,
   ],
+  operationName: "DiscoverInstancesRevision",
 }));
 export type GetInstanceError =
   | InstanceNotFound
@@ -1833,6 +1843,7 @@ export const getInstance: API.OperationMethod<
   input: GetInstanceRequest,
   output: GetInstanceResponse,
   errors: [InstanceNotFound, InvalidInput, ServiceNotFound],
+  operationName: "GetInstance",
 }));
 export type GetInstancesHealthStatusError =
   | InstanceNotFound
@@ -1871,6 +1882,7 @@ export const getInstancesHealthStatus: API.OperationMethod<
   input: GetInstancesHealthStatusRequest,
   output: GetInstancesHealthStatusResponse,
   errors: [InstanceNotFound, InvalidInput, ServiceNotFound],
+  operationName: "GetInstancesHealthStatus",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1890,6 +1902,7 @@ export const getNamespace: API.OperationMethod<
   input: GetNamespaceRequest,
   output: GetNamespaceResponse,
   errors: [InvalidInput, NamespaceNotFound],
+  operationName: "GetNamespace",
 }));
 export type GetOperationError = InvalidInput | OperationNotFound | CommonErrors;
 /**
@@ -1907,6 +1920,7 @@ export const getOperation: API.OperationMethod<
   input: GetOperationRequest,
   output: GetOperationResponse,
   errors: [InvalidInput, OperationNotFound],
+  operationName: "GetOperation",
 }));
 export type GetServiceError = InvalidInput | ServiceNotFound | CommonErrors;
 /**
@@ -1921,6 +1935,7 @@ export const getService: API.OperationMethod<
   input: GetServiceRequest,
   output: GetServiceResponse,
   errors: [InvalidInput, ServiceNotFound],
+  operationName: "GetService",
 }));
 export type GetServiceAttributesError =
   | InvalidInput
@@ -1938,6 +1953,7 @@ export const getServiceAttributes: API.OperationMethod<
   input: GetServiceAttributesRequest,
   output: GetServiceAttributesResponse,
   errors: [InvalidInput, ServiceNotFound],
+  operationName: "GetServiceAttributes",
 }));
 export type ListInstancesError = InvalidInput | ServiceNotFound | CommonErrors;
 /**
@@ -1968,6 +1984,7 @@ export const listInstances: API.OperationMethod<
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [InvalidInput, ServiceNotFound],
+  operationName: "ListInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2002,6 +2019,7 @@ export const listNamespaces: API.OperationMethod<
   input: ListNamespacesRequest,
   output: ListNamespacesResponse,
   errors: [InvalidInput],
+  operationName: "ListNamespaces",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2036,6 +2054,7 @@ export const listOperations: API.OperationMethod<
   input: ListOperationsRequest,
   output: ListOperationsResponse,
   errors: [InvalidInput],
+  operationName: "ListOperations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2071,6 +2090,7 @@ export const listServices: API.OperationMethod<
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [InvalidInput],
+  operationName: "ListServices",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2093,6 +2113,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InvalidInput, ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type RegisterInstanceError =
   | DuplicateRequest
@@ -2151,6 +2172,7 @@ export const registerInstance: API.OperationMethod<
     ResourceLimitExceeded,
     ServiceNotFound,
   ],
+  operationName: "RegisterInstance",
 }));
 export type TagResourceError =
   | InvalidInput
@@ -2169,6 +2191,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InvalidInput, ResourceNotFoundException, TooManyTagsException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InvalidInput
@@ -2186,6 +2209,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InvalidInput, ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type UpdateHttpNamespaceError =
   | DuplicateRequest
@@ -2206,6 +2230,7 @@ export const updateHttpNamespace: API.OperationMethod<
   input: UpdateHttpNamespaceRequest,
   output: UpdateHttpNamespaceResponse,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
+  operationName: "UpdateHttpNamespace",
 }));
 export type UpdateInstanceCustomHealthStatusError =
   | CustomHealthNotFound
@@ -2238,6 +2263,7 @@ export const updateInstanceCustomHealthStatus: API.OperationMethod<
     InvalidInput,
     ServiceNotFound,
   ],
+  operationName: "UpdateInstanceCustomHealthStatus",
 }));
 export type UpdatePrivateDnsNamespaceError =
   | DuplicateRequest
@@ -2258,6 +2284,7 @@ export const updatePrivateDnsNamespace: API.OperationMethod<
   input: UpdatePrivateDnsNamespaceRequest,
   output: UpdatePrivateDnsNamespaceResponse,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
+  operationName: "UpdatePrivateDnsNamespace",
 }));
 export type UpdatePublicDnsNamespaceError =
   | DuplicateRequest
@@ -2277,6 +2304,7 @@ export const updatePublicDnsNamespace: API.OperationMethod<
   input: UpdatePublicDnsNamespaceRequest,
   output: UpdatePublicDnsNamespaceResponse,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
+  operationName: "UpdatePublicDnsNamespace",
 }));
 export type UpdateServiceError =
   | DuplicateRequest
@@ -2323,6 +2351,7 @@ export const updateService: API.OperationMethod<
   input: UpdateServiceRequest,
   output: UpdateServiceResponse,
   errors: [DuplicateRequest, InvalidInput, ServiceNotFound],
+  operationName: "UpdateService",
 }));
 export type UpdateServiceAttributesError =
   | InvalidInput
@@ -2345,4 +2374,5 @@ export const updateServiceAttributes: API.OperationMethod<
     ServiceAttributesLimitExceededException,
     ServiceNotFound,
   ],
+  operationName: "UpdateServiceAttributes",
 }));

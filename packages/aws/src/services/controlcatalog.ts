@@ -761,6 +761,7 @@ export const listControlMappings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListControlMappings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -808,6 +809,7 @@ export const listCommonControls: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCommonControls",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -842,6 +844,7 @@ export const getControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetControl",
 }));
 export type ListControlsError =
   | AccessDeniedException
@@ -881,6 +884,7 @@ export const listControls: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListControls",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -926,6 +930,7 @@ export const listDomains: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDomains",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -973,6 +978,7 @@ export const listObjectives: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListObjectives",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

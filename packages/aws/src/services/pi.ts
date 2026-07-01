@@ -1109,6 +1109,7 @@ export const createPerformanceAnalysisReport: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  operationName: "CreatePerformanceAnalysisReport",
 }));
 export type DeletePerformanceAnalysisReportError =
   | InternalServiceError
@@ -1131,6 +1132,7 @@ export const deletePerformanceAnalysisReport: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  operationName: "DeletePerformanceAnalysisReport",
 }));
 export type DescribeDimensionKeysError =
   | InternalServiceError
@@ -1171,6 +1173,7 @@ export const describeDimensionKeys: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  operationName: "DescribeDimensionKeys",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1201,6 +1204,7 @@ export const getDimensionKeyDetails: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  operationName: "GetDimensionKeyDetails",
 }));
 export type GetPerformanceAnalysisReportError =
   | InternalServiceError
@@ -1226,6 +1230,7 @@ export const getPerformanceAnalysisReport: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  operationName: "GetPerformanceAnalysisReport",
 }));
 export type GetResourceMetadataError =
   | InternalServiceError
@@ -1249,6 +1254,7 @@ export const getResourceMetadata: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  operationName: "GetResourceMetadata",
 }));
 export type GetResourceMetricsError =
   | InternalServiceError
@@ -1291,6 +1297,7 @@ export const getResourceMetrics: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  operationName: "GetResourceMetrics",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1333,6 +1340,7 @@ export const listAvailableResourceDimensions: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  operationName: "ListAvailableResourceDimensions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1375,6 +1383,7 @@ export const listAvailableResourceMetrics: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  operationName: "ListAvailableResourceMetrics",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1417,6 +1426,7 @@ export const listPerformanceAnalysisReportRecommendations: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  operationName: "ListPerformanceAnalysisReportRecommendations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1460,6 +1470,7 @@ export const listPerformanceAnalysisReports: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  operationName: "ListPerformanceAnalysisReports",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1487,6 +1498,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalServiceError
@@ -1509,6 +1521,7 @@ export const tagResource: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServiceError
@@ -1531,4 +1544,5 @@ export const untagResource: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  operationName: "UntagResource",
 }));

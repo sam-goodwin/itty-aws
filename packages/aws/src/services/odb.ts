@@ -5282,6 +5282,7 @@ export const acceptMarketplaceRegistration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AcceptMarketplaceRegistration",
 }));
 export type AssociateIamRoleToResourceError =
   | AccessDeniedException
@@ -5310,6 +5311,7 @@ export const associateIamRoleToResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateIamRoleToResource",
 }));
 export type DisassociateIamRoleFromResourceError =
   | AccessDeniedException
@@ -5338,6 +5340,7 @@ export const disassociateIamRoleFromResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateIamRoleFromResource",
 }));
 export type GetOciOnboardingStatusError =
   | AccessDeniedException
@@ -5362,6 +5365,7 @@ export const getOciOnboardingStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetOciOnboardingStatus",
 }));
 export type InitializeServiceError =
   | AccessDeniedException
@@ -5386,6 +5390,7 @@ export const initializeService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InitializeService",
 }));
 export type ListAutonomousDatabaseCharacterSetsError =
   | AccessDeniedException
@@ -5425,6 +5430,7 @@ export const listAutonomousDatabaseCharacterSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAutonomousDatabaseCharacterSets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5470,6 +5476,7 @@ export const listAutonomousDatabaseVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAutonomousDatabaseVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5515,6 +5522,7 @@ export const listDbSystemShapes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDbSystemShapes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5560,6 +5568,7 @@ export const listGiVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListGiVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5607,6 +5616,7 @@ export const listSystemVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSystemVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5627,6 +5637,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | ResourceNotFoundException
@@ -5644,6 +5655,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -5658,6 +5670,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type CreateAutonomousDatabaseBackupError =
   | AccessDeniedException
@@ -5688,6 +5701,7 @@ export const createAutonomousDatabaseBackup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAutonomousDatabaseBackup",
 }));
 export type GetAutonomousDatabaseBackupError =
   | AccessDeniedException
@@ -5714,6 +5728,7 @@ export const getAutonomousDatabaseBackup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAutonomousDatabaseBackup",
 }));
 export type UpdateAutonomousDatabaseBackupError =
   | AccessDeniedException
@@ -5742,6 +5757,7 @@ export const updateAutonomousDatabaseBackup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAutonomousDatabaseBackup",
 }));
 export type DeleteAutonomousDatabaseBackupError =
   | AccessDeniedException
@@ -5770,6 +5786,7 @@ export const deleteAutonomousDatabaseBackup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAutonomousDatabaseBackup",
 }));
 export type ListAutonomousDatabaseBackupsError =
   | AccessDeniedException
@@ -5811,6 +5828,7 @@ export const listAutonomousDatabaseBackups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAutonomousDatabaseBackups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5847,6 +5865,7 @@ export const createAutonomousDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAutonomousDatabase",
 }));
 export type GetAutonomousDatabaseError =
   | AccessDeniedException
@@ -5873,6 +5892,7 @@ export const getAutonomousDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAutonomousDatabase",
 }));
 export type UpdateAutonomousDatabaseError =
   | AccessDeniedException
@@ -5901,6 +5921,7 @@ export const updateAutonomousDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAutonomousDatabase",
 }));
 export type DeleteAutonomousDatabaseError =
   | AccessDeniedException
@@ -5929,6 +5950,7 @@ export const deleteAutonomousDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAutonomousDatabase",
 }));
 export type ListAutonomousDatabasesError =
   | AccessDeniedException
@@ -5968,6 +5990,7 @@ export const listAutonomousDatabases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAutonomousDatabases",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6000,6 +6023,7 @@ export const createAutonomousDatabaseWallet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAutonomousDatabaseWallet",
 }));
 export type FailoverAutonomousDatabaseError =
   | AccessDeniedException
@@ -6028,6 +6052,7 @@ export const failoverAutonomousDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "FailoverAutonomousDatabase",
 }));
 export type GetAutonomousDatabaseWalletDetailsError =
   | AccessDeniedException
@@ -6054,6 +6079,7 @@ export const getAutonomousDatabaseWalletDetails: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAutonomousDatabaseWalletDetails",
 }));
 export type ListAutonomousDatabaseClonesError =
   | AccessDeniedException
@@ -6095,6 +6121,7 @@ export const listAutonomousDatabaseClones: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAutonomousDatabaseClones",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6142,6 +6169,7 @@ export const listAutonomousDatabasePeers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAutonomousDatabasePeers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6176,6 +6204,7 @@ export const rebootAutonomousDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RebootAutonomousDatabase",
 }));
 export type RestoreAutonomousDatabaseError =
   | AccessDeniedException
@@ -6204,6 +6233,7 @@ export const restoreAutonomousDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RestoreAutonomousDatabase",
 }));
 export type ShrinkAutonomousDatabaseError =
   | AccessDeniedException
@@ -6232,6 +6262,7 @@ export const shrinkAutonomousDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ShrinkAutonomousDatabase",
 }));
 export type StartAutonomousDatabaseError =
   | AccessDeniedException
@@ -6260,6 +6291,7 @@ export const startAutonomousDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartAutonomousDatabase",
 }));
 export type StopAutonomousDatabaseError =
   | AccessDeniedException
@@ -6288,6 +6320,7 @@ export const stopAutonomousDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopAutonomousDatabase",
 }));
 export type SwitchoverAutonomousDatabaseError =
   | AccessDeniedException
@@ -6316,6 +6349,7 @@ export const switchoverAutonomousDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SwitchoverAutonomousDatabase",
 }));
 export type CreateCloudAutonomousVmClusterError =
   | AccessDeniedException
@@ -6346,6 +6380,7 @@ export const createCloudAutonomousVmCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateCloudAutonomousVmCluster",
 }));
 export type GetCloudAutonomousVmClusterError =
   | AccessDeniedException
@@ -6372,6 +6407,7 @@ export const getCloudAutonomousVmCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCloudAutonomousVmCluster",
 }));
 export type DeleteCloudAutonomousVmClusterError =
   | AccessDeniedException
@@ -6398,6 +6434,7 @@ export const deleteCloudAutonomousVmCluster: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteCloudAutonomousVmCluster",
 }));
 export type ListCloudAutonomousVmClustersError =
   | AccessDeniedException
@@ -6439,6 +6476,7 @@ export const listCloudAutonomousVmClusters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCloudAutonomousVmClusters",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6486,6 +6524,7 @@ export const listAutonomousVirtualMachines: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAutonomousVirtualMachines",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6520,6 +6559,7 @@ export const createCloudExadataInfrastructure: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateCloudExadataInfrastructure",
 }));
 export type GetCloudExadataInfrastructureError =
   | AccessDeniedException
@@ -6546,6 +6586,7 @@ export const getCloudExadataInfrastructure: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCloudExadataInfrastructure",
 }));
 export type UpdateCloudExadataInfrastructureError =
   | AccessDeniedException
@@ -6574,6 +6615,7 @@ export const updateCloudExadataInfrastructure: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateCloudExadataInfrastructure",
 }));
 export type DeleteCloudExadataInfrastructureError =
   | AccessDeniedException
@@ -6602,6 +6644,7 @@ export const deleteCloudExadataInfrastructure: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteCloudExadataInfrastructure",
 }));
 export type ListCloudExadataInfrastructuresError =
   | AccessDeniedException
@@ -6641,6 +6684,7 @@ export const listCloudExadataInfrastructures: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCloudExadataInfrastructures",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6673,6 +6717,7 @@ export const getCloudExadataInfrastructureUnallocatedResources: API.OperationMet
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCloudExadataInfrastructureUnallocatedResources",
 }));
 export type GetDbServerError =
   | AccessDeniedException
@@ -6699,6 +6744,7 @@ export const getDbServer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDbServer",
 }));
 export type ListDbServersError =
   | AccessDeniedException
@@ -6740,6 +6786,7 @@ export const listDbServers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDbServers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6776,6 +6823,7 @@ export const createCloudVmCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateCloudVmCluster",
 }));
 export type GetCloudVmClusterError =
   | AccessDeniedException
@@ -6802,6 +6850,7 @@ export const getCloudVmCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCloudVmCluster",
 }));
 export type DeleteCloudVmClusterError =
   | AccessDeniedException
@@ -6828,6 +6877,7 @@ export const deleteCloudVmCluster: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteCloudVmCluster",
 }));
 export type ListCloudVmClustersError =
   | AccessDeniedException
@@ -6869,6 +6919,7 @@ export const listCloudVmClusters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCloudVmClusters",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6901,6 +6952,7 @@ export const getDbNode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDbNode",
 }));
 export type ListDbNodesError =
   | AccessDeniedException
@@ -6942,6 +6994,7 @@ export const listDbNodes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDbNodes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6974,6 +7027,7 @@ export const rebootDbNode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RebootDbNode",
 }));
 export type StartDbNodeError =
   | AccessDeniedException
@@ -7000,6 +7054,7 @@ export const startDbNode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartDbNode",
 }));
 export type StopDbNodeError =
   | AccessDeniedException
@@ -7026,6 +7081,7 @@ export const stopDbNode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopDbNode",
 }));
 export type CreateOdbNetworkError =
   | AccessDeniedException
@@ -7054,6 +7110,7 @@ export const createOdbNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateOdbNetwork",
 }));
 export type GetOdbNetworkError =
   | AccessDeniedException
@@ -7080,6 +7137,7 @@ export const getOdbNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetOdbNetwork",
 }));
 export type UpdateOdbNetworkError =
   | AccessDeniedException
@@ -7108,6 +7166,7 @@ export const updateOdbNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateOdbNetwork",
 }));
 export type DeleteOdbNetworkError =
   | AccessDeniedException
@@ -7134,6 +7193,7 @@ export const deleteOdbNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteOdbNetwork",
 }));
 export type ListOdbNetworksError =
   | AccessDeniedException
@@ -7173,6 +7233,7 @@ export const listOdbNetworks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListOdbNetworks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7209,6 +7270,7 @@ export const createOdbPeeringConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateOdbPeeringConnection",
 }));
 export type GetOdbPeeringConnectionError =
   | AccessDeniedException
@@ -7235,6 +7297,7 @@ export const getOdbPeeringConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetOdbPeeringConnection",
 }));
 export type UpdateOdbPeeringConnectionError =
   | AccessDeniedException
@@ -7263,6 +7326,7 @@ export const updateOdbPeeringConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateOdbPeeringConnection",
 }));
 export type DeleteOdbPeeringConnectionError =
   | AccessDeniedException
@@ -7291,6 +7355,7 @@ export const deleteOdbPeeringConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteOdbPeeringConnection",
 }));
 export type ListOdbPeeringConnectionsError =
   | AccessDeniedException
@@ -7332,6 +7397,7 @@ export const listOdbPeeringConnections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListOdbPeeringConnections",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

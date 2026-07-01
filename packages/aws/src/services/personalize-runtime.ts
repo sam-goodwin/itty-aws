@@ -358,6 +358,7 @@ export const getActionRecommendations: API.OperationMethod<
   input: GetActionRecommendationsRequest,
   output: GetActionRecommendationsResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "GetActionRecommendations",
 }));
 export type GetPersonalizedRankingError =
   | InvalidInputException
@@ -379,6 +380,7 @@ export const getPersonalizedRanking: API.OperationMethod<
   input: GetPersonalizedRankingRequest,
   output: GetPersonalizedRankingResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "GetPersonalizedRanking",
 }));
 export type GetRecommendationsError =
   | InvalidInputException
@@ -407,4 +409,5 @@ export const getRecommendations: API.OperationMethod<
   input: GetRecommendationsRequest,
   output: GetRecommendationsResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "GetRecommendations",
 }));

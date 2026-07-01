@@ -998,6 +998,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutNotificationSettingsError =
   | AccessDeniedException
@@ -1024,6 +1025,7 @@ export const putNotificationSettings: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "PutNotificationSettings",
 }));
 export type ResetNotificationSettingsError =
   | AccessDeniedException
@@ -1048,6 +1050,7 @@ export const resetNotificationSettings: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ResetNotificationSettings",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1074,6 +1077,7 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1098,6 +1102,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type ImportCrlError =
   | AccessDeniedException
@@ -1117,6 +1122,7 @@ export const importCrl: API.OperationMethod<
   input: ImportCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ImportCrl",
 }));
 export type GetCrlError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1133,6 +1139,7 @@ export const getCrl: API.OperationMethod<
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
   errors: [ResourceNotFoundException],
+  operationName: "GetCrl",
 }));
 export type UpdateCrlError =
   | AccessDeniedException
@@ -1157,6 +1164,7 @@ export const updateCrl: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateCrl",
 }));
 export type DeleteCrlError =
   | AccessDeniedException
@@ -1176,6 +1184,7 @@ export const deleteCrl: API.OperationMethod<
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "DeleteCrl",
 }));
 export type ListCrlsError =
   | AccessDeniedException
@@ -1210,6 +1219,7 @@ export const listCrls: API.OperationMethod<
   input: ListRequest,
   output: ListCrlsResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListCrls",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1234,6 +1244,7 @@ export const disableCrl: API.OperationMethod<
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "DisableCrl",
 }));
 export type EnableCrlError =
   | AccessDeniedException
@@ -1253,6 +1264,7 @@ export const enableCrl: API.OperationMethod<
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "EnableCrl",
 }));
 export type CreateProfileError =
   | AccessDeniedException
@@ -1272,6 +1284,7 @@ export const createProfile: API.OperationMethod<
   input: CreateProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "CreateProfile",
 }));
 export type GetProfileError =
   | AccessDeniedException
@@ -1291,6 +1304,7 @@ export const getProfile: API.OperationMethod<
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "GetProfile",
 }));
 export type UpdateProfileError =
   | AccessDeniedException
@@ -1315,6 +1329,7 @@ export const updateProfile: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateProfile",
 }));
 export type DeleteProfileError =
   | AccessDeniedException
@@ -1334,6 +1349,7 @@ export const deleteProfile: API.OperationMethod<
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "DeleteProfile",
 }));
 export type ListProfilesError =
   | AccessDeniedException
@@ -1368,6 +1384,7 @@ export const listProfiles: API.OperationMethod<
   input: ListRequest,
   output: ListProfilesResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListProfiles",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1395,6 +1412,7 @@ export const deleteAttributeMapping: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteAttributeMapping",
 }));
 export type DisableProfileError =
   | AccessDeniedException
@@ -1414,6 +1432,7 @@ export const disableProfile: API.OperationMethod<
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "DisableProfile",
 }));
 export type EnableProfileError =
   | AccessDeniedException
@@ -1433,6 +1452,7 @@ export const enableProfile: API.OperationMethod<
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "EnableProfile",
 }));
 export type PutAttributeMappingError =
   | AccessDeniedException
@@ -1455,6 +1475,7 @@ export const putAttributeMapping: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "PutAttributeMapping",
 }));
 export type GetSubjectError =
   | AccessDeniedException
@@ -1474,6 +1495,7 @@ export const getSubject: API.OperationMethod<
   input: ScalarSubjectRequest,
   output: SubjectDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "GetSubject",
 }));
 export type ListSubjectsError =
   | AccessDeniedException
@@ -1508,6 +1530,7 @@ export const listSubjects: API.OperationMethod<
   input: ListRequest,
   output: ListSubjectsResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListSubjects",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1532,6 +1555,7 @@ export const createTrustAnchor: API.OperationMethod<
   input: CreateTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "CreateTrustAnchor",
 }));
 export type GetTrustAnchorError =
   | AccessDeniedException
@@ -1556,6 +1580,7 @@ export const getTrustAnchor: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetTrustAnchor",
 }));
 export type UpdateTrustAnchorError =
   | AccessDeniedException
@@ -1580,6 +1605,7 @@ export const updateTrustAnchor: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateTrustAnchor",
 }));
 export type DeleteTrustAnchorError =
   | AccessDeniedException
@@ -1599,6 +1625,7 @@ export const deleteTrustAnchor: API.OperationMethod<
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "DeleteTrustAnchor",
 }));
 export type ListTrustAnchorsError =
   | AccessDeniedException
@@ -1633,6 +1660,7 @@ export const listTrustAnchors: API.OperationMethod<
   input: ListRequest,
   output: ListTrustAnchorsResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListTrustAnchors",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1657,6 +1685,7 @@ export const disableTrustAnchor: API.OperationMethod<
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "DisableTrustAnchor",
 }));
 export type EnableTrustAnchorError =
   | AccessDeniedException
@@ -1676,4 +1705,5 @@ export const enableTrustAnchor: API.OperationMethod<
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "EnableTrustAnchor",
 }));

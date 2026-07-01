@@ -5559,6 +5559,7 @@ export const associateEntitiesToExperience: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateEntitiesToExperience",
 }));
 export type AssociatePersonasToEntitiesError =
   | AccessDeniedException
@@ -5591,6 +5592,7 @@ export const associatePersonasToEntities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociatePersonasToEntities",
 }));
 export type BatchDeleteDocumentError =
   | AccessDeniedException
@@ -5630,6 +5632,7 @@ export const batchDeleteDocument: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchDeleteDocument",
 }));
 export type BatchDeleteFeaturedResultsSetError =
   | AccessDeniedException
@@ -5658,6 +5661,7 @@ export const batchDeleteFeaturedResultsSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchDeleteFeaturedResultsSet",
 }));
 export type BatchGetDocumentStatusError =
   | AccessDeniedException
@@ -5696,6 +5700,7 @@ export const batchGetDocumentStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchGetDocumentStatus",
 }));
 export type BatchPutDocumentError =
   | AccessDeniedException
@@ -5741,6 +5746,7 @@ export const batchPutDocument: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchPutDocument",
 }));
 export type ClearQuerySuggestionsError =
   | AccessDeniedException
@@ -5779,6 +5785,7 @@ export const clearQuerySuggestions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ClearQuerySuggestions",
 }));
 export type CreateAccessControlConfigurationError =
   | AccessDeniedException
@@ -5834,6 +5841,7 @@ export const createAccessControlConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAccessControlConfiguration",
 }));
 export type CreateDataSourceError =
   | AccessDeniedException
@@ -5878,6 +5886,7 @@ export const createDataSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDataSource",
 }));
 export type CreateExperienceError =
   | AccessDeniedException
@@ -5911,6 +5920,7 @@ export const createExperience: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateExperience",
 }));
 export type CreateFaqError =
   | AccessDeniedException
@@ -5946,6 +5956,7 @@ export const createFaq: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateFaq",
 }));
 export type CreateFeaturedResultsSetError =
   | AccessDeniedException
@@ -5983,6 +5994,7 @@ export const createFeaturedResultsSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateFeaturedResultsSet",
 }));
 export type CreateIndexError =
   | AccessDeniedException
@@ -6024,6 +6036,7 @@ export const createIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateIndex",
 }));
 export type CreateQuerySuggestionsBlockListError =
   | AccessDeniedException
@@ -6072,6 +6085,7 @@ export const createQuerySuggestionsBlockList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateQuerySuggestionsBlockList",
 }));
 export type CreateThesaurusError =
   | AccessDeniedException
@@ -6107,6 +6121,7 @@ export const createThesaurus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateThesaurus",
 }));
 export type DeleteAccessControlConfigurationError =
   | AccessDeniedException
@@ -6138,6 +6153,7 @@ export const deleteAccessControlConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAccessControlConfiguration",
 }));
 export type DeleteDataSourceError =
   | AccessDeniedException
@@ -6173,6 +6189,7 @@ export const deleteDataSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDataSource",
 }));
 export type DeleteExperienceError =
   | AccessDeniedException
@@ -6203,6 +6220,7 @@ export const deleteExperience: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteExperience",
 }));
 export type DeleteFaqError =
   | AccessDeniedException
@@ -6231,6 +6249,7 @@ export const deleteFaq: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteFaq",
 }));
 export type DeleteIndexError =
   | AccessDeniedException
@@ -6261,6 +6280,7 @@ export const deleteIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteIndex",
 }));
 export type DeletePrincipalMappingError =
   | AccessDeniedException
@@ -6303,6 +6323,7 @@ export const deletePrincipalMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePrincipalMapping",
 }));
 export type DeleteQuerySuggestionsBlockListError =
   | AccessDeniedException
@@ -6338,6 +6359,7 @@ export const deleteQuerySuggestionsBlockList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteQuerySuggestionsBlockList",
 }));
 export type DeleteThesaurusError =
   | AccessDeniedException
@@ -6366,6 +6388,7 @@ export const deleteThesaurus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteThesaurus",
 }));
 export type DescribeAccessControlConfigurationError =
   | AccessDeniedException
@@ -6395,6 +6418,7 @@ export const describeAccessControlConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeAccessControlConfiguration",
 }));
 export type DescribeDataSourceError =
   | AccessDeniedException
@@ -6421,6 +6445,7 @@ export const describeDataSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeDataSource",
 }));
 export type DescribeExperienceError =
   | AccessDeniedException
@@ -6450,6 +6475,7 @@ export const describeExperience: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeExperience",
 }));
 export type DescribeFaqError =
   | AccessDeniedException
@@ -6476,6 +6502,7 @@ export const describeFaq: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeFaq",
 }));
 export type DescribeFeaturedResultsSetError =
   | AccessDeniedException
@@ -6504,6 +6531,7 @@ export const describeFeaturedResultsSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeFeaturedResultsSet",
 }));
 export type DescribeIndexError =
   | AccessDeniedException
@@ -6530,6 +6558,7 @@ export const describeIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeIndex",
 }));
 export type DescribePrincipalMappingError =
   | AccessDeniedException
@@ -6563,6 +6592,7 @@ export const describePrincipalMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribePrincipalMapping",
 }));
 export type DescribeQuerySuggestionsBlockListError =
   | AccessDeniedException
@@ -6596,6 +6626,7 @@ export const describeQuerySuggestionsBlockList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeQuerySuggestionsBlockList",
 }));
 export type DescribeQuerySuggestionsConfigError =
   | AccessDeniedException
@@ -6628,6 +6659,7 @@ export const describeQuerySuggestionsConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeQuerySuggestionsConfig",
 }));
 export type DescribeThesaurusError =
   | AccessDeniedException
@@ -6654,6 +6686,7 @@ export const describeThesaurus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeThesaurus",
 }));
 export type DisassociateEntitiesFromExperienceError =
   | AccessDeniedException
@@ -6684,6 +6717,7 @@ export const disassociateEntitiesFromExperience: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateEntitiesFromExperience",
 }));
 export type DisassociatePersonasFromEntitiesError =
   | AccessDeniedException
@@ -6714,6 +6748,7 @@ export const disassociatePersonasFromEntities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociatePersonasFromEntities",
 }));
 export type GetQuerySuggestionsError =
   | AccessDeniedException
@@ -6747,6 +6782,7 @@ export const getQuerySuggestions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetQuerySuggestions",
 }));
 export type GetSnapshotsError =
   | AccessDeniedException
@@ -6787,6 +6823,7 @@ export const getSnapshots: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "GetSnapshots",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6836,6 +6873,7 @@ export const listAccessControlConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAccessControlConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6882,6 +6920,7 @@ export const listDataSources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataSources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6930,6 +6969,7 @@ export const listDataSourceSyncJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataSourceSyncJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6977,6 +7017,7 @@ export const listEntityPersonas: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEntityPersonas",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7027,6 +7068,7 @@ export const listExperienceEntities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListExperienceEntities",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
 export type ListExperiencesError =
@@ -7072,6 +7114,7 @@ export const listExperiences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListExperiences",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7118,6 +7161,7 @@ export const listFaqs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFaqs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7151,6 +7195,7 @@ export const listFeaturedResultsSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFeaturedResultsSets",
 }));
 export type ListGroupsOlderThanOrderingIdError =
   | AccessDeniedException
@@ -7197,6 +7242,7 @@ export const listGroupsOlderThanOrderingId: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListGroupsOlderThanOrderingId",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7241,6 +7287,7 @@ export const listIndices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListIndices",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7294,6 +7341,7 @@ export const listQuerySuggestionsBlockLists: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListQuerySuggestionsBlockLists",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7326,6 +7374,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListThesauriError =
   | AccessDeniedException
@@ -7367,6 +7416,7 @@ export const listThesauri: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListThesauri",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7416,6 +7466,7 @@ export const putPrincipalMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutPrincipalMapping",
 }));
 export type QueryError =
   | AccessDeniedException
@@ -7478,6 +7529,7 @@ export const query: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "Query",
 }));
 export type RetrieveError =
   | AccessDeniedException
@@ -7546,6 +7598,7 @@ export const retrieve: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "Retrieve",
 }));
 export type StartDataSourceSyncJobError =
   | AccessDeniedException
@@ -7582,6 +7635,7 @@ export const startDataSourceSyncJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartDataSourceSyncJob",
 }));
 export type StopDataSourceSyncJobError =
   | AccessDeniedException
@@ -7609,6 +7663,7 @@ export const stopDataSourceSyncJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopDataSourceSyncJob",
 }));
 export type SubmitFeedbackError =
   | AccessDeniedException
@@ -7641,6 +7696,7 @@ export const submitFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SubmitFeedback",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -7668,6 +7724,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -7694,6 +7751,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAccessControlConfigurationError =
   | AccessDeniedException
@@ -7749,6 +7807,7 @@ export const updateAccessControlConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAccessControlConfiguration",
 }));
 export type UpdateDataSourceError =
   | AccessDeniedException
@@ -7777,6 +7836,7 @@ export const updateDataSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDataSource",
 }));
 export type UpdateExperienceError =
   | AccessDeniedException
@@ -7807,6 +7867,7 @@ export const updateExperience: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateExperience",
 }));
 export type UpdateFeaturedResultsSetError =
   | AccessDeniedException
@@ -7839,6 +7900,7 @@ export const updateFeaturedResultsSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateFeaturedResultsSet",
 }));
 export type UpdateIndexError =
   | AccessDeniedException
@@ -7869,6 +7931,7 @@ export const updateIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateIndex",
 }));
 export type UpdateQuerySuggestionsBlockListError =
   | AccessDeniedException
@@ -7910,6 +7973,7 @@ export const updateQuerySuggestionsBlockList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateQuerySuggestionsBlockList",
 }));
 export type UpdateQuerySuggestionsConfigError =
   | AccessDeniedException
@@ -7953,6 +8017,7 @@ export const updateQuerySuggestionsConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateQuerySuggestionsConfig",
 }));
 export type UpdateThesaurusError =
   | AccessDeniedException
@@ -7981,4 +8046,5 @@ export const updateThesaurus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateThesaurus",
 }));

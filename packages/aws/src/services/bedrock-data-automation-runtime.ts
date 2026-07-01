@@ -494,6 +494,7 @@ export const invokeDataAutomation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InvokeDataAutomation",
 }));
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -520,6 +521,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -548,6 +550,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -574,6 +577,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type InvokeDataAutomationAsyncError =
   | AccessDeniedException
@@ -600,6 +604,7 @@ export const invokeDataAutomationAsync: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InvokeDataAutomationAsync",
 }));
 export type GetDataAutomationStatusError =
   | AccessDeniedException
@@ -626,4 +631,5 @@ export const getDataAutomationStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataAutomationStatus",
 }));

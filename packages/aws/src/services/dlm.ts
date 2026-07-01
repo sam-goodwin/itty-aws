@@ -1037,6 +1037,7 @@ export const createLifecyclePolicy: API.OperationMethod<
     InvalidRequestException,
     LimitExceededException,
   ],
+  operationName: "CreateLifecyclePolicy",
 }));
 export type DeleteLifecyclePolicyError =
   | InternalServerException
@@ -1063,6 +1064,7 @@ export const deleteLifecyclePolicy: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteLifecyclePolicy",
 }));
 export type GetLifecyclePoliciesError =
   | InternalServerException
@@ -1089,6 +1091,7 @@ export const getLifecyclePolicies: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetLifecyclePolicies",
 }));
 export type GetLifecyclePolicyError =
   | InternalServerException
@@ -1111,6 +1114,7 @@ export const getLifecyclePolicy: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetLifecyclePolicy",
 }));
 export type ListTagsForResourceError =
   | InternalServerException
@@ -1133,6 +1137,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -1155,6 +1160,7 @@ export const tagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -1177,6 +1183,7 @@ export const untagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateLifecyclePolicyError =
   | InternalServerException
@@ -1204,4 +1211,5 @@ export const updateLifecyclePolicy: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateLifecyclePolicy",
 }));

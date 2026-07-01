@@ -55,9 +55,13 @@ export const ec2QueryProtocol: Protocol = (
   // Pre-compute encoder (done once at init)
   const encodeInput = S.encodeEffect(inputSchema);
 
-  // Pre-compute operation name and version from annotations
+  // Pre-compute operation name and version from annotations. Prefer the
+  // explicit operation name emitted by the generator; fall back to deriving
+  // it from the input shape identifier.
   const identifier = getIdentifier(inputAst) ?? "";
-  const action = identifier.replace(/(?:Request|Input|Message)$/, "");
+  const action =
+    operation.operationName ??
+    identifier.replace(/(?:Request|Input|Message)$/, "");
   const version = getServiceVersion(inputAst) ?? "";
 
   return {

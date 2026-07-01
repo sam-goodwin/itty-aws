@@ -2285,6 +2285,7 @@ export const listManagedNotificationChannelAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListManagedNotificationChannelAssociations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2332,6 +2333,7 @@ export const listMemberAccounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMemberAccounts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2368,6 +2370,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2398,6 +2401,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2426,6 +2430,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type AssociateChannelError =
   | AccessDeniedException
@@ -2456,6 +2461,7 @@ export const associateChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateChannel",
 }));
 export type DisassociateChannelError =
   | AccessDeniedException
@@ -2482,6 +2488,7 @@ export const disassociateChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateChannel",
 }));
 export type ListChannelsError =
   | AccessDeniedException
@@ -2523,6 +2530,7 @@ export const listChannels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListChannels",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2559,6 +2567,7 @@ export const createEventRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEventRule",
 }));
 export type UpdateEventRuleError =
   | AccessDeniedException
@@ -2587,6 +2596,7 @@ export const updateEventRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateEventRule",
 }));
 export type GetEventRuleError =
   | AccessDeniedException
@@ -2613,6 +2623,7 @@ export const getEventRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEventRule",
 }));
 export type DeleteEventRuleError =
   | AccessDeniedException
@@ -2641,6 +2652,7 @@ export const deleteEventRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteEventRule",
 }));
 export type ListEventRulesError =
   | AccessDeniedException
@@ -2682,6 +2694,7 @@ export const listEventRules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEventRules",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2718,6 +2731,7 @@ export const associateManagedNotificationAccountContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateManagedNotificationAccountContact",
 }));
 export type DisassociateManagedNotificationAccountContactError =
   | AccessDeniedException
@@ -2746,6 +2760,7 @@ export const disassociateManagedNotificationAccountContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateManagedNotificationAccountContact",
 }));
 export type AssociateManagedNotificationAdditionalChannelError =
   | AccessDeniedException
@@ -2778,6 +2793,7 @@ export const associateManagedNotificationAdditionalChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateManagedNotificationAdditionalChannel",
 }));
 export type DisassociateManagedNotificationAdditionalChannelError =
   | AccessDeniedException
@@ -2806,6 +2822,7 @@ export const disassociateManagedNotificationAdditionalChannel: API.OperationMeth
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateManagedNotificationAdditionalChannel",
 }));
 export type GetManagedNotificationChildEventError =
   | AccessDeniedException
@@ -2832,6 +2849,7 @@ export const getManagedNotificationChildEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetManagedNotificationChildEvent",
 }));
 export type ListManagedNotificationChildEventsError =
   | AccessDeniedException
@@ -2871,6 +2889,7 @@ export const listManagedNotificationChildEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListManagedNotificationChildEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2903,6 +2922,7 @@ export const getManagedNotificationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetManagedNotificationConfiguration",
 }));
 export type ListManagedNotificationConfigurationsError =
   | AccessDeniedException
@@ -2942,6 +2962,7 @@ export const listManagedNotificationConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListManagedNotificationConfigurations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2974,6 +2995,7 @@ export const getManagedNotificationEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetManagedNotificationEvent",
 }));
 export type ListManagedNotificationEventsError =
   | AccessDeniedException
@@ -3013,6 +3035,7 @@ export const listManagedNotificationEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListManagedNotificationEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3047,6 +3070,7 @@ export const createNotificationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateNotificationConfiguration",
 }));
 export type UpdateNotificationConfigurationError =
   | AccessDeniedException
@@ -3075,6 +3099,7 @@ export const updateNotificationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateNotificationConfiguration",
 }));
 export type GetNotificationConfigurationError =
   | AccessDeniedException
@@ -3101,6 +3126,7 @@ export const getNotificationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetNotificationConfiguration",
 }));
 export type DeleteNotificationConfigurationError =
   | AccessDeniedException
@@ -3129,6 +3155,7 @@ export const deleteNotificationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteNotificationConfiguration",
 }));
 export type ListNotificationConfigurationsError =
   | AccessDeniedException
@@ -3168,6 +3195,7 @@ export const listNotificationConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListNotificationConfigurations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3202,6 +3230,7 @@ export const getNotificationEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetNotificationEvent",
 }));
 export type ListNotificationEventsError =
   | AccessDeniedException
@@ -3243,6 +3272,7 @@ export const listNotificationEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListNotificationEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3279,6 +3309,7 @@ export const registerNotificationHub: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RegisterNotificationHub",
 }));
 export type DeregisterNotificationHubError =
   | AccessDeniedException
@@ -3309,6 +3340,7 @@ export const deregisterNotificationHub: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeregisterNotificationHub",
 }));
 export type ListNotificationHubsError =
   | AccessDeniedException
@@ -3348,6 +3380,7 @@ export const listNotificationHubs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListNotificationHubs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3384,6 +3417,7 @@ export const enableNotificationsAccessForOrganization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "EnableNotificationsAccessForOrganization",
 }));
 export type GetNotificationsAccessForOrganizationError =
   | AccessDeniedException
@@ -3408,6 +3442,7 @@ export const getNotificationsAccessForOrganization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetNotificationsAccessForOrganization",
 }));
 export type DisableNotificationsAccessForOrganizationError =
   | AccessDeniedException
@@ -3438,6 +3473,7 @@ export const disableNotificationsAccessForOrganization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisableNotificationsAccessForOrganization",
 }));
 export type AssociateOrganizationalUnitError =
   | AccessDeniedException
@@ -3468,6 +3504,7 @@ export const associateOrganizationalUnit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateOrganizationalUnit",
 }));
 export type DisassociateOrganizationalUnitError =
   | AccessDeniedException
@@ -3494,6 +3531,7 @@ export const disassociateOrganizationalUnit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateOrganizationalUnit",
 }));
 export type ListOrganizationalUnitsError =
   | AccessDeniedException
@@ -3535,6 +3573,7 @@ export const listOrganizationalUnits: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListOrganizationalUnits",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

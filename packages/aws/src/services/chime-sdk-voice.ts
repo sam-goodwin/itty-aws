@@ -4483,6 +4483,7 @@ export const associatePhoneNumbersWithVoiceConnector: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "AssociatePhoneNumbersWithVoiceConnector",
 }));
 export type AssociatePhoneNumbersWithVoiceConnectorGroupError =
   | AccessDeniedException
@@ -4515,6 +4516,7 @@ export const associatePhoneNumbersWithVoiceConnectorGroup: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "AssociatePhoneNumbersWithVoiceConnectorGroup",
 }));
 export type BatchDeletePhoneNumberError =
   | BadRequestException
@@ -4549,6 +4551,7 @@ export const batchDeletePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "BatchDeletePhoneNumber",
 }));
 export type BatchUpdatePhoneNumberError =
   | BadRequestException
@@ -4582,6 +4585,7 @@ export const batchUpdatePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "BatchUpdatePhoneNumber",
 }));
 export type CreatePhoneNumberOrderError =
   | AccessDeniedException
@@ -4614,6 +4618,7 @@ export const createPhoneNumberOrder: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreatePhoneNumberOrder",
 }));
 export type CreateProxySessionError =
   | BadRequestException
@@ -4645,6 +4650,7 @@ export const createProxySession: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateProxySession",
 }));
 export type CreateSipMediaApplicationError =
   | AccessDeniedException
@@ -4680,6 +4686,7 @@ export const createSipMediaApplication: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateSipMediaApplication",
 }));
 export type CreateSipMediaApplicationCallError =
   | AccessDeniedException
@@ -4714,6 +4721,7 @@ export const createSipMediaApplicationCall: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateSipMediaApplicationCall",
 }));
 export type CreateSipRuleError =
   | AccessDeniedException
@@ -4749,6 +4757,7 @@ export const createSipRule: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateSipRule",
 }));
 export type CreateVoiceConnectorError =
   | AccessDeniedException
@@ -4784,6 +4793,7 @@ export const createVoiceConnector: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateVoiceConnector",
 }));
 export type CreateVoiceConnectorGroupError =
   | AccessDeniedException
@@ -4822,6 +4832,7 @@ export const createVoiceConnectorGroup: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateVoiceConnectorGroup",
 }));
 export type CreateVoiceProfileError =
   | AccessDeniedException
@@ -4866,6 +4877,7 @@ export const createVoiceProfile: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateVoiceProfile",
 }));
 export type CreateVoiceProfileDomainError =
   | AccessDeniedException
@@ -4906,6 +4918,7 @@ export const createVoiceProfileDomain: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateVoiceProfileDomain",
 }));
 export type DeletePhoneNumberError =
   | BadRequestException
@@ -4943,6 +4956,7 @@ export const deletePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeletePhoneNumber",
 }));
 export type DeleteProxySessionError =
   | BadRequestException
@@ -4974,6 +4988,7 @@ export const deleteProxySession: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteProxySession",
 }));
 export type DeleteSipMediaApplicationError =
   | BadRequestException
@@ -5006,6 +5021,7 @@ export const deleteSipMediaApplication: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteSipMediaApplication",
 }));
 export type DeleteSipRuleError =
   | BadRequestException
@@ -5038,6 +5054,7 @@ export const deleteSipRule: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteSipRule",
 }));
 export type DeleteVoiceConnectorError =
   | BadRequestException
@@ -5072,6 +5089,7 @@ export const deleteVoiceConnector: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteVoiceConnector",
 }));
 export type DeleteVoiceConnectorEmergencyCallingConfigurationError =
   | BadRequestException
@@ -5103,6 +5121,7 @@ export const deleteVoiceConnectorEmergencyCallingConfiguration: API.OperationMet
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteVoiceConnectorEmergencyCallingConfiguration",
 }));
 export type DeleteVoiceConnectorExternalSystemsConfigurationError =
   | BadRequestException
@@ -5133,6 +5152,7 @@ export const deleteVoiceConnectorExternalSystemsConfiguration: API.OperationMeth
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteVoiceConnectorExternalSystemsConfiguration",
 }));
 export type DeleteVoiceConnectorGroupError =
   | BadRequestException
@@ -5167,6 +5187,7 @@ export const deleteVoiceConnectorGroup: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteVoiceConnectorGroup",
 }));
 export type DeleteVoiceConnectorOriginationError =
   | BadRequestException
@@ -5200,6 +5221,7 @@ export const deleteVoiceConnectorOrigination: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteVoiceConnectorOrigination",
 }));
 export type DeleteVoiceConnectorProxyError =
   | BadRequestException
@@ -5230,6 +5252,7 @@ export const deleteVoiceConnectorProxy: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteVoiceConnectorProxy",
 }));
 export type DeleteVoiceConnectorStreamingConfigurationError =
   | BadRequestException
@@ -5260,6 +5283,7 @@ export const deleteVoiceConnectorStreamingConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteVoiceConnectorStreamingConfiguration",
 }));
 export type DeleteVoiceConnectorTerminationError =
   | BadRequestException
@@ -5293,6 +5317,7 @@ export const deleteVoiceConnectorTermination: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteVoiceConnectorTermination",
 }));
 export type DeleteVoiceConnectorTerminationCredentialsError =
   | BadRequestException
@@ -5324,6 +5349,7 @@ export const deleteVoiceConnectorTerminationCredentials: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteVoiceConnectorTerminationCredentials",
 }));
 export type DeleteVoiceProfileError =
   | AccessDeniedException
@@ -5358,6 +5384,7 @@ export const deleteVoiceProfile: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteVoiceProfile",
 }));
 export type DeleteVoiceProfileDomainError =
   | AccessDeniedException
@@ -5392,6 +5419,7 @@ export const deleteVoiceProfileDomain: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteVoiceProfileDomain",
 }));
 export type DisassociatePhoneNumbersFromVoiceConnectorError =
   | BadRequestException
@@ -5423,6 +5451,7 @@ export const disassociatePhoneNumbersFromVoiceConnector: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DisassociatePhoneNumbersFromVoiceConnector",
 }));
 export type DisassociatePhoneNumbersFromVoiceConnectorGroupError =
   | BadRequestException
@@ -5454,6 +5483,7 @@ export const disassociatePhoneNumbersFromVoiceConnectorGroup: API.OperationMetho
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DisassociatePhoneNumbersFromVoiceConnectorGroup",
 }));
 export type GetGlobalSettingsError =
   | BadRequestException
@@ -5482,6 +5512,7 @@ export const getGlobalSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetGlobalSettings",
 }));
 export type GetPhoneNumberError =
   | BadRequestException
@@ -5513,6 +5544,7 @@ export const getPhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetPhoneNumber",
 }));
 export type GetPhoneNumberOrderError =
   | BadRequestException
@@ -5545,6 +5577,7 @@ export const getPhoneNumberOrder: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetPhoneNumberOrder",
 }));
 export type GetPhoneNumberSettingsError =
   | BadRequestException
@@ -5574,6 +5607,7 @@ export const getPhoneNumberSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetPhoneNumberSettings",
 }));
 export type GetProxySessionError =
   | BadRequestException
@@ -5604,6 +5638,7 @@ export const getProxySession: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetProxySession",
 }));
 export type GetSipMediaApplicationError =
   | BadRequestException
@@ -5635,6 +5670,7 @@ export const getSipMediaApplication: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetSipMediaApplication",
 }));
 export type GetSipMediaApplicationAlexaSkillConfigurationError =
   | BadRequestException
@@ -5668,6 +5704,7 @@ export const getSipMediaApplicationAlexaSkillConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetSipMediaApplicationAlexaSkillConfiguration",
 }));
 export type GetSipMediaApplicationLoggingConfigurationError =
   | BadRequestException
@@ -5698,6 +5735,7 @@ export const getSipMediaApplicationLoggingConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetSipMediaApplicationLoggingConfiguration",
 }));
 export type GetSipRuleError =
   | BadRequestException
@@ -5729,6 +5767,7 @@ export const getSipRule: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetSipRule",
 }));
 export type GetSpeakerSearchTaskError =
   | AccessDeniedException
@@ -5763,6 +5802,7 @@ export const getSpeakerSearchTask: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetSpeakerSearchTask",
 }));
 export type GetVoiceConnectorError =
   | BadRequestException
@@ -5794,6 +5834,7 @@ export const getVoiceConnector: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetVoiceConnector",
 }));
 export type GetVoiceConnectorEmergencyCallingConfigurationError =
   | BadRequestException
@@ -5824,6 +5865,7 @@ export const getVoiceConnectorEmergencyCallingConfiguration: API.OperationMethod
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetVoiceConnectorEmergencyCallingConfiguration",
 }));
 export type GetVoiceConnectorExternalSystemsConfigurationError =
   | BadRequestException
@@ -5855,6 +5897,7 @@ export const getVoiceConnectorExternalSystemsConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetVoiceConnectorExternalSystemsConfiguration",
 }));
 export type GetVoiceConnectorGroupError =
   | BadRequestException
@@ -5886,6 +5929,7 @@ export const getVoiceConnectorGroup: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetVoiceConnectorGroup",
 }));
 export type GetVoiceConnectorLoggingConfigurationError =
   | BadRequestException
@@ -5917,6 +5961,7 @@ export const getVoiceConnectorLoggingConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetVoiceConnectorLoggingConfiguration",
 }));
 export type GetVoiceConnectorOriginationError =
   | BadRequestException
@@ -5947,6 +5992,7 @@ export const getVoiceConnectorOrigination: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetVoiceConnectorOrigination",
 }));
 export type GetVoiceConnectorProxyError =
   | BadRequestException
@@ -5978,6 +6024,7 @@ export const getVoiceConnectorProxy: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetVoiceConnectorProxy",
 }));
 export type GetVoiceConnectorStreamingConfigurationError =
   | BadRequestException
@@ -6010,6 +6057,7 @@ export const getVoiceConnectorStreamingConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetVoiceConnectorStreamingConfiguration",
 }));
 export type GetVoiceConnectorTerminationError =
   | BadRequestException
@@ -6040,6 +6088,7 @@ export const getVoiceConnectorTermination: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetVoiceConnectorTermination",
 }));
 export type GetVoiceConnectorTerminationHealthError =
   | BadRequestException
@@ -6072,6 +6121,7 @@ export const getVoiceConnectorTerminationHealth: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetVoiceConnectorTerminationHealth",
 }));
 export type GetVoiceProfileError =
   | AccessDeniedException
@@ -6104,6 +6154,7 @@ export const getVoiceProfile: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetVoiceProfile",
 }));
 export type GetVoiceProfileDomainError =
   | AccessDeniedException
@@ -6136,6 +6187,7 @@ export const getVoiceProfileDomain: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetVoiceProfileDomain",
 }));
 export type GetVoiceToneAnalysisTaskError =
   | AccessDeniedException
@@ -6170,6 +6222,7 @@ export const getVoiceToneAnalysisTask: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetVoiceToneAnalysisTask",
 }));
 export type ListAvailableVoiceConnectorRegionsError =
   | BadRequestException
@@ -6198,6 +6251,7 @@ export const listAvailableVoiceConnectorRegions: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListAvailableVoiceConnectorRegions",
 }));
 export type ListPhoneNumberOrdersError =
   | BadRequestException
@@ -6241,6 +6295,7 @@ export const listPhoneNumberOrders: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListPhoneNumberOrders",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6293,6 +6348,7 @@ export const listPhoneNumbers: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListPhoneNumbers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6343,6 +6399,7 @@ export const listProxySessions: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListProxySessions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6391,6 +6448,7 @@ export const listSipMediaApplications: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListSipMediaApplications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6440,6 +6498,7 @@ export const listSipRules: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListSipRules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6476,6 +6535,7 @@ export const listSupportedPhoneNumberCountries: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListSupportedPhoneNumberCountries",
 }));
 export type ListTagsForResourceError =
   | BadRequestException
@@ -6504,6 +6564,7 @@ export const listTagsForResource: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedClientException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListVoiceConnectorGroupsError =
   | BadRequestException
@@ -6548,6 +6609,7 @@ export const listVoiceConnectorGroups: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListVoiceConnectorGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6597,6 +6659,7 @@ export const listVoiceConnectors: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListVoiceConnectors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6632,6 +6695,7 @@ export const listVoiceConnectorTerminationCredentials: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListVoiceConnectorTerminationCredentials",
 }));
 export type ListVoiceProfileDomainsError =
   | BadRequestException
@@ -6677,6 +6741,7 @@ export const listVoiceProfileDomains: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListVoiceProfileDomains",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6727,6 +6792,7 @@ export const listVoiceProfiles: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListVoiceProfiles",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6765,6 +6831,7 @@ export const putSipMediaApplicationAlexaSkillConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "PutSipMediaApplicationAlexaSkillConfiguration",
 }));
 export type PutSipMediaApplicationLoggingConfigurationError =
   | BadRequestException
@@ -6795,6 +6862,7 @@ export const putSipMediaApplicationLoggingConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "PutSipMediaApplicationLoggingConfiguration",
 }));
 export type PutVoiceConnectorEmergencyCallingConfigurationError =
   | BadRequestException
@@ -6825,6 +6893,7 @@ export const putVoiceConnectorEmergencyCallingConfiguration: API.OperationMethod
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "PutVoiceConnectorEmergencyCallingConfiguration",
 }));
 export type PutVoiceConnectorExternalSystemsConfigurationError =
   | BadRequestException
@@ -6857,6 +6926,7 @@ export const putVoiceConnectorExternalSystemsConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "PutVoiceConnectorExternalSystemsConfiguration",
 }));
 export type PutVoiceConnectorLoggingConfigurationError =
   | BadRequestException
@@ -6887,6 +6957,7 @@ export const putVoiceConnectorLoggingConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "PutVoiceConnectorLoggingConfiguration",
 }));
 export type PutVoiceConnectorOriginationError =
   | BadRequestException
@@ -6917,6 +6988,7 @@ export const putVoiceConnectorOrigination: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "PutVoiceConnectorOrigination",
 }));
 export type PutVoiceConnectorProxyError =
   | AccessDeniedException
@@ -6949,6 +7021,7 @@ export const putVoiceConnectorProxy: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "PutVoiceConnectorProxy",
 }));
 export type PutVoiceConnectorStreamingConfigurationError =
   | BadRequestException
@@ -6979,6 +7052,7 @@ export const putVoiceConnectorStreamingConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "PutVoiceConnectorStreamingConfiguration",
 }));
 export type PutVoiceConnectorTerminationError =
   | AccessDeniedException
@@ -7011,6 +7085,7 @@ export const putVoiceConnectorTermination: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "PutVoiceConnectorTermination",
 }));
 export type PutVoiceConnectorTerminationCredentialsError =
   | BadRequestException
@@ -7041,6 +7116,7 @@ export const putVoiceConnectorTerminationCredentials: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "PutVoiceConnectorTerminationCredentials",
 }));
 export type RestorePhoneNumberError =
   | BadRequestException
@@ -7073,6 +7149,7 @@ export const restorePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "RestorePhoneNumber",
 }));
 export type SearchAvailablePhoneNumbersError =
   | AccessDeniedException
@@ -7118,6 +7195,7 @@ export const searchAvailablePhoneNumbers: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "SearchAvailablePhoneNumbers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7166,6 +7244,7 @@ export const startSpeakerSearchTask: API.OperationMethod<
     UnauthorizedClientException,
     UnprocessableEntityException,
   ],
+  operationName: "StartSpeakerSearchTask",
 }));
 export type StartVoiceToneAnalysisTaskError =
   | AccessDeniedException
@@ -7211,6 +7290,7 @@ export const startVoiceToneAnalysisTask: API.OperationMethod<
     UnauthorizedClientException,
     UnprocessableEntityException,
   ],
+  operationName: "StartVoiceToneAnalysisTask",
 }));
 export type StopSpeakerSearchTaskError =
   | AccessDeniedException
@@ -7247,6 +7327,7 @@ export const stopSpeakerSearchTask: API.OperationMethod<
     UnauthorizedClientException,
     UnprocessableEntityException,
   ],
+  operationName: "StopSpeakerSearchTask",
 }));
 export type StopVoiceToneAnalysisTaskError =
   | AccessDeniedException
@@ -7283,6 +7364,7 @@ export const stopVoiceToneAnalysisTask: API.OperationMethod<
     UnauthorizedClientException,
     UnprocessableEntityException,
   ],
+  operationName: "StopVoiceToneAnalysisTask",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -7313,6 +7395,7 @@ export const tagResource: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedClientException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -7341,6 +7424,7 @@ export const untagResource: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedClientException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateGlobalSettingsError =
   | BadRequestException
@@ -7369,6 +7453,7 @@ export const updateGlobalSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateGlobalSettings",
 }));
 export type UpdatePhoneNumberError =
   | BadRequestException
@@ -7410,6 +7495,7 @@ export const updatePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdatePhoneNumber",
 }));
 export type UpdatePhoneNumberSettingsError =
   | BadRequestException
@@ -7441,6 +7527,7 @@ export const updatePhoneNumberSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdatePhoneNumberSettings",
 }));
 export type UpdateProxySessionError =
   | BadRequestException
@@ -7471,6 +7558,7 @@ export const updateProxySession: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateProxySession",
 }));
 export type UpdateSipMediaApplicationError =
   | BadRequestException
@@ -7503,6 +7591,7 @@ export const updateSipMediaApplication: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateSipMediaApplication",
 }));
 export type UpdateSipMediaApplicationCallError =
   | BadRequestException
@@ -7537,6 +7626,7 @@ export const updateSipMediaApplicationCall: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateSipMediaApplicationCall",
 }));
 export type UpdateSipRuleError =
   | BadRequestException
@@ -7571,6 +7661,7 @@ export const updateSipRule: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateSipRule",
 }));
 export type UpdateVoiceConnectorError =
   | BadRequestException
@@ -7601,6 +7692,7 @@ export const updateVoiceConnector: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateVoiceConnector",
 }));
 export type UpdateVoiceConnectorGroupError =
   | BadRequestException
@@ -7633,6 +7725,7 @@ export const updateVoiceConnectorGroup: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateVoiceConnectorGroup",
 }));
 export type UpdateVoiceProfileError =
   | AccessDeniedException
@@ -7678,6 +7771,7 @@ export const updateVoiceProfile: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateVoiceProfile",
 }));
 export type UpdateVoiceProfileDomainError =
   | AccessDeniedException
@@ -7710,6 +7804,7 @@ export const updateVoiceProfileDomain: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateVoiceProfileDomain",
 }));
 export type ValidateE911AddressError =
   | AccessDeniedException
@@ -7745,4 +7840,5 @@ export const validateE911Address: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ValidateE911Address",
 }));

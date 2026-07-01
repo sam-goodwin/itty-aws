@@ -945,6 +945,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [NotFoundException, ServiceUnavailableException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | ConflictException
@@ -969,6 +970,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [ConflictException, NotFoundException, ServiceUnavailableException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ConflictException
@@ -993,6 +995,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [ConflictException, NotFoundException, ServiceUnavailableException],
+  operationName: "UntagResource",
 }));
 export type CreateVectorBucketError =
   | ConflictException
@@ -1021,6 +1024,7 @@ export const createVectorBucket: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateVectorBucket",
 }));
 export type DeleteVectorBucketError =
   | ConflictException
@@ -1043,6 +1047,7 @@ export const deleteVectorBucket: API.OperationMethod<
   input: DeleteVectorBucketInput,
   output: DeleteVectorBucketOutput,
   errors: [ConflictException, NotFoundException, ServiceUnavailableException],
+  operationName: "DeleteVectorBucket",
 }));
 export type DeleteVectorBucketPolicyError =
   | NotFoundException
@@ -1064,6 +1069,7 @@ export const deleteVectorBucketPolicy: API.OperationMethod<
   input: DeleteVectorBucketPolicyInput,
   output: DeleteVectorBucketPolicyOutput,
   errors: [NotFoundException, ServiceUnavailableException],
+  operationName: "DeleteVectorBucketPolicy",
 }));
 export type GetVectorBucketError =
   | NotFoundException
@@ -1085,6 +1091,7 @@ export const getVectorBucket: API.OperationMethod<
   input: GetVectorBucketInput,
   output: GetVectorBucketOutput,
   errors: [NotFoundException, ServiceUnavailableException],
+  operationName: "GetVectorBucket",
 }));
 export type GetVectorBucketPolicyError =
   | NotFoundException
@@ -1106,6 +1113,7 @@ export const getVectorBucketPolicy: API.OperationMethod<
   input: GetVectorBucketPolicyInput,
   output: GetVectorBucketPolicyOutput,
   errors: [NotFoundException, ServiceUnavailableException],
+  operationName: "GetVectorBucketPolicy",
 }));
 export type ListVectorBucketsError = ServiceUnavailableException | CommonErrors;
 /**
@@ -1139,6 +1147,7 @@ export const listVectorBuckets: API.OperationMethod<
   input: ListVectorBucketsInput,
   output: ListVectorBucketsOutput,
   errors: [ServiceUnavailableException],
+  operationName: "ListVectorBuckets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1166,6 +1175,7 @@ export const putVectorBucketPolicy: API.OperationMethod<
   input: PutVectorBucketPolicyInput,
   output: PutVectorBucketPolicyOutput,
   errors: [NotFoundException, ServiceUnavailableException],
+  operationName: "PutVectorBucketPolicy",
 }));
 export type CreateIndexError =
   | ConflictException
@@ -1196,6 +1206,7 @@ export const createIndex: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateIndex",
 }));
 export type DeleteIndexError =
   | NotFoundException
@@ -1217,6 +1228,7 @@ export const deleteIndex: API.OperationMethod<
   input: DeleteIndexInput,
   output: DeleteIndexOutput,
   errors: [NotFoundException, ServiceUnavailableException],
+  operationName: "DeleteIndex",
 }));
 export type GetIndexError =
   | NotFoundException
@@ -1238,6 +1250,7 @@ export const getIndex: API.OperationMethod<
   input: GetIndexInput,
   output: GetIndexOutput,
   errors: [NotFoundException, ServiceUnavailableException],
+  operationName: "GetIndex",
 }));
 export type ListIndexesError =
   | NotFoundException
@@ -1274,6 +1287,7 @@ export const listIndexes: API.OperationMethod<
   input: ListIndexesInput,
   output: ListIndexesOutput,
   errors: [NotFoundException, ServiceUnavailableException],
+  operationName: "ListIndexes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1314,6 +1328,7 @@ export const deleteVectors: API.OperationMethod<
     NotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteVectors",
 }));
 export type GetVectorsError =
   | KmsDisabledException
@@ -1346,6 +1361,7 @@ export const getVectors: API.OperationMethod<
     NotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "GetVectors",
 }));
 export type ListVectorsError =
   | AccessDeniedException
@@ -1393,6 +1409,7 @@ export const listVectors: API.OperationMethod<
     NotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "ListVectors",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1439,6 +1456,7 @@ export const putVectors: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  operationName: "PutVectors",
 }));
 export type QueryVectorsError =
   | KmsDisabledException
@@ -1492,6 +1510,7 @@ export const queryVectors: API.OperationMethod<
     NotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "QueryVectors",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

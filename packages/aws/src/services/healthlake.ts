@@ -884,6 +884,7 @@ export const createFHIRDatastore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateFHIRDatastore",
 }));
 export type DeleteFHIRDatastoreError =
   | AccessDeniedException
@@ -912,6 +913,7 @@ export const deleteFHIRDatastore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteFHIRDatastore",
 }));
 export type DescribeFHIRDatastoreError =
   | InternalServerException
@@ -936,6 +938,7 @@ export const describeFHIRDatastore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeFHIRDatastore",
 }));
 export type DescribeFHIRExportJobError =
   | InternalServerException
@@ -960,6 +963,7 @@ export const describeFHIRExportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeFHIRExportJob",
 }));
 export type DescribeFHIRImportJobError =
   | InternalServerException
@@ -984,6 +988,7 @@ export const describeFHIRImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeFHIRImportJob",
 }));
 export type ListFHIRDatastoresError =
   | InternalServerException
@@ -1018,6 +1023,7 @@ export const listFHIRDatastores: API.OperationMethod<
   input: ListFHIRDatastoresRequest,
   output: ListFHIRDatastoresResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "ListFHIRDatastores",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1064,6 +1070,7 @@ export const listFHIRExportJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFHIRExportJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1110,6 +1117,7 @@ export const listFHIRImportJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFHIRImportJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1132,6 +1140,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListTagsForResource",
 }));
 export type StartFHIRExportJobError =
   | AccessDeniedException
@@ -1158,6 +1167,7 @@ export const startFHIRExportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartFHIRExportJob",
 }));
 export type StartFHIRImportJobError =
   | AccessDeniedException
@@ -1186,6 +1196,7 @@ export const startFHIRImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartFHIRImportJob",
 }));
 export type TagResourceError =
   | ResourceNotFoundException
@@ -1203,6 +1214,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ResourceNotFoundException
@@ -1220,6 +1232,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "UntagResource",
 }));
 export type UpdateFHIRDatastoreError =
   | AccessDeniedException
@@ -1248,4 +1261,5 @@ export const updateFHIRDatastore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateFHIRDatastore",
 }));

@@ -3005,6 +3005,7 @@ export const createCallAnalyticsCategory: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "CreateCallAnalyticsCategory",
 }));
 export type CreateLanguageModelError =
   | BadRequestException
@@ -3040,6 +3041,7 @@ export const createLanguageModel: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "CreateLanguageModel",
 }));
 export type CreateMedicalVocabularyError =
   | BadRequestException
@@ -3079,6 +3081,7 @@ export const createMedicalVocabulary: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "CreateMedicalVocabulary",
 }));
 export type CreateVocabularyError =
   | BadRequestException
@@ -3116,6 +3119,7 @@ export const createVocabulary: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "CreateVocabulary",
 }));
 export type CreateVocabularyFilterError =
   | BadRequestException
@@ -3152,6 +3156,7 @@ export const createVocabularyFilter: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "CreateVocabularyFilter",
 }));
 export type DeleteCallAnalyticsCategoryError =
   | BadRequestException
@@ -3178,6 +3183,7 @@ export const deleteCallAnalyticsCategory: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "DeleteCallAnalyticsCategory",
 }));
 export type DeleteCallAnalyticsJobError =
   | BadRequestException
@@ -3202,6 +3208,7 @@ export const deleteCallAnalyticsJob: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "DeleteCallAnalyticsJob",
 }));
 export type DeleteLanguageModelError =
   | BadRequestException
@@ -3226,6 +3233,7 @@ export const deleteLanguageModel: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "DeleteLanguageModel",
 }));
 export type DeleteMedicalScribeJobError =
   | BadRequestException
@@ -3250,6 +3258,7 @@ export const deleteMedicalScribeJob: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "DeleteMedicalScribeJob",
 }));
 export type DeleteMedicalTranscriptionJobError =
   | BadRequestException
@@ -3274,6 +3283,7 @@ export const deleteMedicalTranscriptionJob: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "DeleteMedicalTranscriptionJob",
 }));
 export type DeleteMedicalVocabularyError =
   | BadRequestException
@@ -3300,6 +3310,7 @@ export const deleteMedicalVocabulary: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "DeleteMedicalVocabulary",
 }));
 export type DeleteTranscriptionJobError =
   | BadRequestException
@@ -3324,6 +3335,7 @@ export const deleteTranscriptionJob: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "DeleteTranscriptionJob",
 }));
 export type DeleteVocabularyError =
   | BadRequestException
@@ -3350,6 +3362,7 @@ export const deleteVocabulary: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "DeleteVocabulary",
 }));
 export type DeleteVocabularyFilterError =
   | BadRequestException
@@ -3376,6 +3389,7 @@ export const deleteVocabularyFilter: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "DeleteVocabularyFilter",
 }));
 export type DescribeLanguageModelError =
   | BadRequestException
@@ -3408,6 +3422,7 @@ export const describeLanguageModel: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "DescribeLanguageModel",
 }));
 export type GetCallAnalyticsCategoryError =
   | BadRequestException
@@ -3434,6 +3449,7 @@ export const getCallAnalyticsCategory: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetCallAnalyticsCategory",
 }));
 export type GetCallAnalyticsJobError =
   | BadRequestException
@@ -3473,6 +3489,7 @@ export const getCallAnalyticsJob: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetCallAnalyticsJob",
 }));
 export type GetMedicalScribeJobError =
   | BadRequestException
@@ -3506,6 +3523,7 @@ export const getMedicalScribeJob: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetMedicalScribeJob",
 }));
 export type GetMedicalTranscriptionJobError =
   | BadRequestException
@@ -3539,6 +3557,7 @@ export const getMedicalTranscriptionJob: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetMedicalTranscriptionJob",
 }));
 export type GetMedicalVocabularyError =
   | BadRequestException
@@ -3570,6 +3589,7 @@ export const getMedicalVocabulary: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetMedicalVocabulary",
 }));
 export type GetTranscriptionJobError =
   | BadRequestException
@@ -3606,6 +3626,7 @@ export const getTranscriptionJob: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetTranscriptionJob",
 }));
 export type GetVocabularyError =
   | BadRequestException
@@ -3638,6 +3659,7 @@ export const getVocabulary: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetVocabulary",
 }));
 export type GetVocabularyFilterError =
   | BadRequestException
@@ -3664,6 +3686,7 @@ export const getVocabularyFilter: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetVocabularyFilter",
 }));
 export type ListCallAnalyticsCategoriesError =
   | BadRequestException
@@ -3704,6 +3727,7 @@ export const listCallAnalyticsCategories: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "ListCallAnalyticsCategories",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3749,6 +3773,7 @@ export const listCallAnalyticsJobs: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "ListCallAnalyticsJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3794,6 +3819,7 @@ export const listLanguageModels: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "ListLanguageModels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3839,6 +3865,7 @@ export const listMedicalScribeJobs: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "ListMedicalScribeJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3884,6 +3911,7 @@ export const listMedicalTranscriptionJobs: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "ListMedicalTranscriptionJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3929,6 +3957,7 @@ export const listMedicalVocabularies: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "ListMedicalVocabularies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3962,6 +3991,7 @@ export const listTagsForResource: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTranscriptionJobsError =
   | BadRequestException
@@ -4002,6 +4032,7 @@ export const listTranscriptionJobs: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "ListTranscriptionJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4047,6 +4078,7 @@ export const listVocabularies: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "ListVocabularies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4092,6 +4124,7 @@ export const listVocabularyFilters: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "ListVocabularyFilters",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4163,6 +4196,7 @@ export const startCallAnalyticsJob: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "StartCallAnalyticsJob",
 }));
 export type StartMedicalScribeJobError =
   | BadRequestException
@@ -4218,6 +4252,7 @@ export const startMedicalScribeJob: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "StartMedicalScribeJob",
 }));
 export type StartMedicalTranscriptionJobError =
   | BadRequestException
@@ -4277,6 +4312,7 @@ export const startMedicalTranscriptionJob: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "StartMedicalTranscriptionJob",
 }));
 export type StartTranscriptionJobError =
   | BadRequestException
@@ -4328,6 +4364,7 @@ export const startTranscriptionJob: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "StartTranscriptionJob",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -4358,6 +4395,7 @@ export const tagResource: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -4387,6 +4425,7 @@ export const untagResource: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateCallAnalyticsCategoryError =
   | BadRequestException
@@ -4418,6 +4457,7 @@ export const updateCallAnalyticsCategory: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "UpdateCallAnalyticsCategory",
 }));
 export type UpdateMedicalVocabularyError =
   | BadRequestException
@@ -4446,6 +4486,7 @@ export const updateMedicalVocabulary: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "UpdateMedicalVocabulary",
 }));
 export type UpdateVocabularyError =
   | BadRequestException
@@ -4474,6 +4515,7 @@ export const updateVocabulary: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "UpdateVocabulary",
 }));
 export type UpdateVocabularyFilterError =
   | BadRequestException
@@ -4500,4 +4542,5 @@ export const updateVocabularyFilter: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "UpdateVocabularyFilter",
 }));

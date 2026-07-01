@@ -652,6 +652,7 @@ export const deregisterSubscriptionProvider: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeregisterSubscriptionProvider",
 }));
 export type GetRegisteredSubscriptionProviderError =
   | InternalServerException
@@ -676,6 +677,7 @@ export const getRegisteredSubscriptionProvider: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRegisteredSubscriptionProvider",
 }));
 export type GetServiceSettingsError =
   | InternalServerException
@@ -694,6 +696,7 @@ export const getServiceSettings: API.OperationMethod<
   input: GetServiceSettingsRequest,
   output: GetServiceSettingsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "GetServiceSettings",
 }));
 export type ListLinuxSubscriptionInstancesError =
   | InternalServerException
@@ -728,6 +731,7 @@ export const listLinuxSubscriptionInstances: API.OperationMethod<
   input: ListLinuxSubscriptionInstancesRequest,
   output: ListLinuxSubscriptionInstancesResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "ListLinuxSubscriptionInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -769,6 +773,7 @@ export const listLinuxSubscriptions: API.OperationMethod<
   input: ListLinuxSubscriptionsRequest,
   output: ListLinuxSubscriptionsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "ListLinuxSubscriptions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -808,6 +813,7 @@ export const listRegisteredSubscriptionProviders: API.OperationMethod<
   input: ListRegisteredSubscriptionProvidersRequest,
   output: ListRegisteredSubscriptionProvidersResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "ListRegisteredSubscriptionProviders",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -837,6 +843,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type RegisterSubscriptionProviderError =
   | InternalServerException
@@ -855,6 +862,7 @@ export const registerSubscriptionProvider: API.OperationMethod<
   input: RegisterSubscriptionProviderRequest,
   output: RegisterSubscriptionProviderResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "RegisterSubscriptionProvider",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -877,6 +885,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -894,6 +903,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type UpdateServiceSettingsError =
   | InternalServerException
@@ -912,4 +922,5 @@ export const updateServiceSettings: API.OperationMethod<
   input: UpdateServiceSettingsRequest,
   output: UpdateServiceSettingsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "UpdateServiceSettings",
 }));

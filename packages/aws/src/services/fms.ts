@@ -3059,6 +3059,7 @@ export const associateAdminAccount: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "AssociateAdminAccount",
 }));
 export type AssociateThirdPartyFirewallError =
   | InternalErrorException
@@ -3083,6 +3084,7 @@ export const associateThirdPartyFirewall: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "AssociateThirdPartyFirewall",
 }));
 export type BatchAssociateResourceError =
   | InternalErrorException
@@ -3109,6 +3111,7 @@ export const batchAssociateResource: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "BatchAssociateResource",
 }));
 export type BatchDisassociateResourceError =
   | InternalErrorException
@@ -3133,6 +3136,7 @@ export const batchDisassociateResource: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "BatchDisassociateResource",
 }));
 export type DeleteAppsListError =
   | InternalErrorException
@@ -3155,6 +3159,7 @@ export const deleteAppsList: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteAppsList",
 }));
 export type DeleteNotificationChannelError =
   | InternalErrorException
@@ -3178,6 +3183,7 @@ export const deleteNotificationChannel: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteNotificationChannel",
 }));
 export type DeletePolicyError =
   | InternalErrorException
@@ -3204,6 +3210,7 @@ export const deletePolicy: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "DeletePolicy",
 }));
 export type DeleteProtocolsListError =
   | InternalErrorException
@@ -3226,6 +3233,7 @@ export const deleteProtocolsList: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteProtocolsList",
 }));
 export type DeleteResourceSetError =
   | InternalErrorException
@@ -3250,6 +3258,7 @@ export const deleteResourceSet: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteResourceSet",
 }));
 export type DisassociateAdminAccountError =
   | InternalErrorException
@@ -3274,6 +3283,7 @@ export const disassociateAdminAccount: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "DisassociateAdminAccount",
 }));
 export type DisassociateThirdPartyFirewallError =
   | InternalErrorException
@@ -3298,6 +3308,7 @@ export const disassociateThirdPartyFirewall: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "DisassociateThirdPartyFirewall",
 }));
 export type GetAdminAccountError =
   | InternalErrorException
@@ -3321,6 +3332,7 @@ export const getAdminAccount: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "GetAdminAccount",
 }));
 export type GetAdminScopeError =
   | InternalErrorException
@@ -3347,6 +3359,7 @@ export const getAdminScope: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "GetAdminScope",
 }));
 export type GetAppsListError =
   | InternalErrorException
@@ -3369,6 +3382,7 @@ export const getAppsList: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "GetAppsList",
 }));
 export type GetComplianceDetailError =
   | InternalErrorException
@@ -3396,6 +3410,7 @@ export const getComplianceDetail: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "GetComplianceDetail",
 }));
 export type GetNotificationChannelError =
   | InternalErrorException
@@ -3420,6 +3435,7 @@ export const getNotificationChannel: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "GetNotificationChannel",
 }));
 export type GetPolicyError =
   | InternalErrorException
@@ -3444,6 +3460,7 @@ export const getPolicy: API.OperationMethod<
     InvalidTypeException,
     ResourceNotFoundException,
   ],
+  operationName: "GetPolicy",
 }));
 export type GetProtectionStatusError =
   | InternalErrorException
@@ -3467,6 +3484,7 @@ export const getProtectionStatus: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "GetProtectionStatus",
 }));
 export type GetProtocolsListError =
   | InternalErrorException
@@ -3489,6 +3507,7 @@ export const getProtocolsList: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "GetProtocolsList",
 }));
 export type GetResourceSetError =
   | InternalErrorException
@@ -3513,6 +3532,7 @@ export const getResourceSet: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "GetResourceSet",
 }));
 export type GetThirdPartyFirewallAssociationStatusError =
   | InternalErrorException
@@ -3537,6 +3557,7 @@ export const getThirdPartyFirewallAssociationStatus: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "GetThirdPartyFirewallAssociationStatus",
 }));
 export type GetViolationDetailsError =
   | InternalErrorException
@@ -3559,6 +3580,7 @@ export const getViolationDetails: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "GetViolationDetails",
 }));
 export type ListAdminAccountsForOrganizationError =
   | InternalErrorException
@@ -3600,6 +3622,7 @@ export const listAdminAccountsForOrganization: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "ListAdminAccountsForOrganization",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3643,6 +3666,7 @@ export const listAdminsManagingAccount: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  operationName: "ListAdminsManagingAccount",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3688,6 +3712,7 @@ export const listAppsLists: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "ListAppsLists",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3728,6 +3753,7 @@ export const listComplianceStatus: API.OperationMethod<
   input: ListComplianceStatusRequest,
   output: ListComplianceStatusResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
+  operationName: "ListComplianceStatus",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3756,6 +3782,7 @@ export const listDiscoveredResources: API.OperationMethod<
     InvalidInputException,
     InvalidOperationException,
   ],
+  operationName: "ListDiscoveredResources",
 }));
 export type ListMemberAccountsError =
   | InternalErrorException
@@ -3791,6 +3818,7 @@ export const listMemberAccounts: API.OperationMethod<
   input: ListMemberAccountsRequest,
   output: ListMemberAccountsResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
+  operationName: "ListMemberAccounts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3836,6 +3864,7 @@ export const listPolicies: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "ListPolicies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3879,6 +3908,7 @@ export const listProtocolsLists: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "ListProtocolsLists",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3909,6 +3939,7 @@ export const listResourceSetResources: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "ListResourceSetResources",
 }));
 export type ListResourceSetsError =
   | InternalErrorException
@@ -3931,6 +3962,7 @@ export const listResourceSets: API.OperationMethod<
     InvalidInputException,
     InvalidOperationException,
   ],
+  operationName: "ListResourceSets",
 }));
 export type ListTagsForResourceError =
   | InternalErrorException
@@ -3955,6 +3987,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListThirdPartyFirewallFirewallPoliciesError =
   | InternalErrorException
@@ -3994,6 +4027,7 @@ export const listThirdPartyFirewallFirewallPolicies: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "ListThirdPartyFirewallFirewallPolicies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4025,6 +4059,7 @@ export const putAdminAccount: API.OperationMethod<
     InvalidOperationException,
     LimitExceededException,
   ],
+  operationName: "PutAdminAccount",
 }));
 export type PutAppsListError =
   | InternalErrorException
@@ -4051,6 +4086,7 @@ export const putAppsList: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "PutAppsList",
 }));
 export type PutNotificationChannelError =
   | InternalErrorException
@@ -4077,6 +4113,7 @@ export const putNotificationChannel: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "PutNotificationChannel",
 }));
 export type PutPolicyError =
   | InternalErrorException
@@ -4142,6 +4179,7 @@ export const putPolicy: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "PutPolicy",
 }));
 export type PutProtocolsListError =
   | InternalErrorException
@@ -4168,6 +4206,7 @@ export const putProtocolsList: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "PutProtocolsList",
 }));
 export type PutResourceSetError =
   | InternalErrorException
@@ -4194,6 +4233,7 @@ export const putResourceSet: API.OperationMethod<
     InvalidOperationException,
     LimitExceededException,
   ],
+  operationName: "PutResourceSet",
 }));
 export type TagResourceError =
   | InternalErrorException
@@ -4220,6 +4260,7 @@ export const tagResource: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalErrorException
@@ -4244,4 +4285,5 @@ export const untagResource: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagResource",
 }));

@@ -1118,6 +1118,7 @@ export const createCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateCampaign",
 }));
 export type DeleteCampaignError =
   | AccessDeniedException
@@ -1142,6 +1143,7 @@ export const deleteCampaign: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteCampaign",
 }));
 export type DeleteConnectInstanceConfigError =
   | AccessDeniedException
@@ -1170,6 +1172,7 @@ export const deleteConnectInstanceConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteConnectInstanceConfig",
 }));
 export type DeleteInstanceOnboardingJobError =
   | AccessDeniedException
@@ -1196,6 +1199,7 @@ export const deleteInstanceOnboardingJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteInstanceOnboardingJob",
 }));
 export type DescribeCampaignError =
   | AccessDeniedException
@@ -1220,6 +1224,7 @@ export const describeCampaign: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeCampaign",
 }));
 export type GetCampaignStateError =
   | AccessDeniedException
@@ -1246,6 +1251,7 @@ export const getCampaignState: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCampaignState",
 }));
 export type GetCampaignStateBatchError =
   | AccessDeniedException
@@ -1270,6 +1276,7 @@ export const getCampaignStateBatch: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCampaignStateBatch",
 }));
 export type GetConnectInstanceConfigError =
   | AccessDeniedException
@@ -1294,6 +1301,7 @@ export const getConnectInstanceConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetConnectInstanceConfig",
 }));
 export type GetInstanceOnboardingJobStatusError =
   | AccessDeniedException
@@ -1318,6 +1326,7 @@ export const getInstanceOnboardingJobStatus: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetInstanceOnboardingJobStatus",
 }));
 export type ListCampaignsError =
   | AccessDeniedException
@@ -1351,6 +1360,7 @@ export const listCampaigns: API.OperationMethod<
   input: ListCampaignsRequest,
   output: ListCampaignsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListCampaigns",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1383,6 +1393,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PauseCampaignError =
   | AccessDeniedException
@@ -1413,6 +1424,7 @@ export const pauseCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PauseCampaign",
 }));
 export type PutDialRequestBatchError =
   | AccessDeniedException
@@ -1443,6 +1455,7 @@ export const putDialRequestBatch: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutDialRequestBatch",
 }));
 export type ResumeCampaignError =
   | AccessDeniedException
@@ -1473,6 +1486,7 @@ export const resumeCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ResumeCampaign",
 }));
 export type StartCampaignError =
   | AccessDeniedException
@@ -1503,6 +1517,7 @@ export const startCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartCampaign",
 }));
 export type StartInstanceOnboardingJobError =
   | AccessDeniedException
@@ -1531,6 +1546,7 @@ export const startInstanceOnboardingJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartInstanceOnboardingJob",
 }));
 export type StopCampaignError =
   | AccessDeniedException
@@ -1561,6 +1577,7 @@ export const stopCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopCampaign",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1587,6 +1604,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1613,6 +1631,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateCampaignDialerConfigError =
   | AccessDeniedException
@@ -1639,6 +1658,7 @@ export const updateCampaignDialerConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateCampaignDialerConfig",
 }));
 export type UpdateCampaignNameError =
   | AccessDeniedException
@@ -1665,6 +1685,7 @@ export const updateCampaignName: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateCampaignName",
 }));
 export type UpdateCampaignOutboundCallConfigError =
   | AccessDeniedException
@@ -1693,4 +1714,5 @@ export const updateCampaignOutboundCallConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateCampaignOutboundCallConfig",
 }));

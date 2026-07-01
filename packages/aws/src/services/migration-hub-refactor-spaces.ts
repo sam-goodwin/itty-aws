@@ -1729,6 +1729,7 @@ export const createApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateApplication",
 }));
 export type CreateEnvironmentError =
   | AccessDeniedException
@@ -1769,6 +1770,7 @@ export const createEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEnvironment",
 }));
 export type CreateRouteError =
   | AccessDeniedException
@@ -1866,6 +1868,7 @@ export const createRoute: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRoute",
 }));
 export type CreateServiceError =
   | AccessDeniedException
@@ -1904,6 +1907,7 @@ export const createService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateService",
 }));
 export type DeleteApplicationError =
   | AccessDeniedException
@@ -1933,6 +1937,7 @@ export const deleteApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteApplication",
 }));
 export type DeleteEnvironmentError =
   | AccessDeniedException
@@ -1962,6 +1967,7 @@ export const deleteEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteEnvironment",
 }));
 export type DeleteResourcePolicyError =
   | AccessDeniedException
@@ -1988,6 +1994,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteRouteError =
   | AccessDeniedException
@@ -2016,6 +2023,7 @@ export const deleteRoute: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRoute",
 }));
 export type DeleteServiceError =
   | AccessDeniedException
@@ -2044,6 +2052,7 @@ export const deleteService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteService",
 }));
 export type GetApplicationError =
   | AccessDeniedException
@@ -2070,6 +2079,7 @@ export const getApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetApplication",
 }));
 export type GetEnvironmentError =
   | AccessDeniedException
@@ -2096,6 +2106,7 @@ export const getEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEnvironment",
 }));
 export type GetResourcePolicyError =
   | AccessDeniedException
@@ -2122,6 +2133,7 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type GetRouteError =
   | AccessDeniedException
@@ -2148,6 +2160,7 @@ export const getRoute: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRoute",
 }));
 export type GetServiceError =
   | AccessDeniedException
@@ -2174,6 +2187,7 @@ export const getService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetService",
 }));
 export type ListApplicationsError =
   | AccessDeniedException
@@ -2219,6 +2233,7 @@ export const listApplications: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2267,6 +2282,7 @@ export const listEnvironments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEnvironments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2315,6 +2331,7 @@ export const listEnvironmentVpcs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEnvironmentVpcs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2366,6 +2383,7 @@ export const listRoutes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRoutes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2417,6 +2435,7 @@ export const listServices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListServices",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2446,6 +2465,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutResourcePolicyError =
   | AccessDeniedException
@@ -2477,6 +2497,7 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -2504,6 +2525,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -2528,6 +2550,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateRouteError =
   | AccessDeniedException
@@ -2554,4 +2577,5 @@ export const updateRoute: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRoute",
 }));

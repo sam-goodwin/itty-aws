@@ -1134,6 +1134,7 @@ export const createKeyspace: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateKeyspace",
 }));
 export type CreateTableError =
   | AccessDeniedException
@@ -1166,6 +1167,7 @@ export const createTable: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateTable",
 }));
 export type CreateTypeError =
   | AccessDeniedException
@@ -1198,6 +1200,7 @@ export const createType: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateType",
 }));
 export type DeleteKeyspaceError =
   | AccessDeniedException
@@ -1226,6 +1229,7 @@ export const deleteKeyspace: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "DeleteKeyspace",
 }));
 export type DeleteTableError =
   | AccessDeniedException
@@ -1254,6 +1258,7 @@ export const deleteTable: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "DeleteTable",
 }));
 export type DeleteTypeError =
   | AccessDeniedException
@@ -1284,6 +1289,7 @@ export const deleteType: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "DeleteType",
 }));
 export type GetKeyspaceError =
   | AccessDeniedException
@@ -1310,6 +1316,7 @@ export const getKeyspace: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "GetKeyspace",
 }));
 export type GetTableError =
   | AccessDeniedException
@@ -1338,6 +1345,7 @@ export const getTable: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "GetTable",
 }));
 export type GetTableAutoScalingSettingsError =
   | AccessDeniedException
@@ -1374,6 +1382,7 @@ export const getTableAutoScalingSettings: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "GetTableAutoScalingSettings",
 }));
 export type GetTypeError =
   | AccessDeniedException
@@ -1402,6 +1411,7 @@ export const getType: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "GetType",
 }));
 export type ListKeyspacesError =
   | AccessDeniedException
@@ -1443,6 +1453,7 @@ export const listKeyspaces: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "ListKeyspaces",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1492,6 +1503,7 @@ export const listTables: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "ListTables",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1541,6 +1553,7 @@ export const listTagsForResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1590,6 +1603,7 @@ export const listTypes: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "ListTypes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1650,6 +1664,7 @@ export const restoreTable: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "RestoreTable",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1680,6 +1695,7 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1708,6 +1724,7 @@ export const untagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateKeyspaceError =
   | AccessDeniedException
@@ -1776,6 +1793,7 @@ export const updateKeyspace: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateKeyspace",
 }));
 export type UpdateTableError =
   | AccessDeniedException
@@ -1804,4 +1822,5 @@ export const updateTable: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateTable",
 }));

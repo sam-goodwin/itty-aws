@@ -4695,6 +4695,7 @@ export const createEngagementContext: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEngagementContext",
 }));
 export type GetSellingSystemSettingsError =
   | AccessDeniedException
@@ -4721,6 +4722,7 @@ export const getSellingSystemSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSellingSystemSettings",
 }));
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -4747,6 +4749,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutSellingSystemSettingsError =
   | AccessDeniedException
@@ -4773,6 +4776,7 @@ export const putSellingSystemSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutSellingSystemSettings",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -4801,6 +4805,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -4829,6 +4834,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateEngagementContextError =
   | AccessDeniedException
@@ -4859,6 +4865,7 @@ export const updateEngagementContext: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateEngagementContext",
 }));
 export type CreateEngagementError =
   | AccessDeniedException
@@ -4889,6 +4896,7 @@ export const createEngagement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEngagement",
 }));
 export type GetEngagementError =
   | AccessDeniedException
@@ -4915,6 +4923,7 @@ export const getEngagement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEngagement",
 }));
 export type ListEngagementsError =
   | AccessDeniedException
@@ -4956,6 +4965,7 @@ export const listEngagements: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEngagements",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5003,6 +5013,7 @@ export const listEngagementMembers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEngagementMembers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5039,6 +5050,7 @@ export const startEngagementByAcceptingInvitationTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartEngagementByAcceptingInvitationTask",
 }));
 export type ListEngagementByAcceptingInvitationTasksError =
   | AccessDeniedException
@@ -5080,6 +5092,7 @@ export const listEngagementByAcceptingInvitationTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEngagementByAcceptingInvitationTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5116,6 +5129,7 @@ export const startEngagementFromOpportunityTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartEngagementFromOpportunityTask",
 }));
 export type ListEngagementFromOpportunityTasksError =
   | AccessDeniedException
@@ -5157,6 +5171,7 @@ export const listEngagementFromOpportunityTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEngagementFromOpportunityTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5193,6 +5208,7 @@ export const createEngagementInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEngagementInvitation",
 }));
 export type GetEngagementInvitationError =
   | AccessDeniedException
@@ -5219,6 +5235,7 @@ export const getEngagementInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEngagementInvitation",
 }));
 export type ListEngagementInvitationsError =
   | AccessDeniedException
@@ -5260,6 +5277,7 @@ export const listEngagementInvitations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEngagementInvitations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5294,6 +5312,7 @@ export const acceptEngagementInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AcceptEngagementInvitation",
 }));
 export type RejectEngagementInvitationError =
   | AccessDeniedException
@@ -5322,6 +5341,7 @@ export const rejectEngagementInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RejectEngagementInvitation",
 }));
 export type CreateOpportunityError =
   | AccessDeniedException
@@ -5362,6 +5382,7 @@ export const createOpportunity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateOpportunity",
 }));
 export type GetOpportunityError =
   | AccessDeniedException
@@ -5390,6 +5411,7 @@ export const getOpportunity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetOpportunity",
 }));
 export type UpdateOpportunityError =
   | AccessDeniedException
@@ -5420,6 +5442,7 @@ export const updateOpportunity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateOpportunity",
 }));
 export type ListOpportunitiesError =
   | AccessDeniedException
@@ -5471,6 +5494,7 @@ export const listOpportunities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListOpportunities",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5505,6 +5529,7 @@ export const assignOpportunity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssignOpportunity",
 }));
 export type AssociateOpportunityError =
   | AccessDeniedException
@@ -5545,6 +5570,7 @@ export const associateOpportunity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateOpportunity",
 }));
 export type DisassociateOpportunityError =
   | AccessDeniedException
@@ -5573,6 +5599,7 @@ export const disassociateOpportunity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateOpportunity",
 }));
 export type GetAwsOpportunitySummaryError =
   | AccessDeniedException
@@ -5599,6 +5626,7 @@ export const getAwsOpportunitySummary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAwsOpportunitySummary",
 }));
 export type SubmitOpportunityError =
   | AccessDeniedException
@@ -5625,6 +5653,7 @@ export const submitOpportunity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SubmitOpportunity",
 }));
 export type StartOpportunityFromEngagementTaskError =
   | AccessDeniedException
@@ -5655,6 +5684,7 @@ export const startOpportunityFromEngagementTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartOpportunityFromEngagementTask",
 }));
 export type ListOpportunityFromEngagementTasksError =
   | AccessDeniedException
@@ -5696,6 +5726,7 @@ export const listOpportunityFromEngagementTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListOpportunityFromEngagementTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5730,6 +5761,7 @@ export const startProspectingFromEngagementTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartProspectingFromEngagementTask",
 }));
 export type GetProspectingFromEngagementTaskError =
   | AccessDeniedException
@@ -5756,6 +5788,7 @@ export const getProspectingFromEngagementTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetProspectingFromEngagementTask",
 }));
 export type ListProspectingFromEngagementTasksError =
   | AccessDeniedException
@@ -5795,6 +5828,7 @@ export const listProspectingFromEngagementTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListProspectingFromEngagementTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5831,6 +5865,7 @@ export const createResourceSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateResourceSnapshot",
 }));
 export type GetResourceSnapshotError =
   | AccessDeniedException
@@ -5857,6 +5892,7 @@ export const getResourceSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourceSnapshot",
 }));
 export type ListEngagementResourceAssociationsError =
   | AccessDeniedException
@@ -5898,6 +5934,7 @@ export const listEngagementResourceAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEngagementResourceAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5955,6 +5992,7 @@ export const listResourceSnapshots: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListResourceSnapshots",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5991,6 +6029,7 @@ export const createResourceSnapshotJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateResourceSnapshotJob",
 }));
 export type GetResourceSnapshotJobError =
   | AccessDeniedException
@@ -6017,6 +6056,7 @@ export const getResourceSnapshotJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourceSnapshotJob",
 }));
 export type DeleteResourceSnapshotJobError =
   | AccessDeniedException
@@ -6045,6 +6085,7 @@ export const deleteResourceSnapshotJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteResourceSnapshotJob",
 }));
 export type ListResourceSnapshotJobsError =
   | AccessDeniedException
@@ -6086,6 +6127,7 @@ export const listResourceSnapshotJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListResourceSnapshotJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6118,6 +6160,7 @@ export const startResourceSnapshotJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartResourceSnapshotJob",
 }));
 export type StopResourceSnapshotJobError =
   | AccessDeniedException
@@ -6144,6 +6187,7 @@ export const stopResourceSnapshotJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopResourceSnapshotJob",
 }));
 export type ListSolutionsError =
   | AccessDeniedException
@@ -6185,6 +6229,7 @@ export const listSolutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSolutions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

@@ -359,6 +359,7 @@ export const getDeployments: API.OperationMethod<
   input: GetDeploymentsRequest,
   output: GetDeploymentsResult,
   errors: [InternalServiceException],
+  operationName: "GetDeployments",
 }));
 export type GetDeviceRegistrationError =
   | InternalServiceException
@@ -375,6 +376,7 @@ export const getDeviceRegistration: API.OperationMethod<
   input: GetDeviceRegistrationRequest,
   output: GetDeviceRegistrationResult,
   errors: [InternalServiceException],
+  operationName: "GetDeviceRegistration",
 }));
 export type SendHeartbeatError = InternalServiceException | CommonErrors;
 /**
@@ -389,4 +391,5 @@ export const sendHeartbeat: API.OperationMethod<
   input: SendHeartbeatRequest,
   output: SendHeartbeatResponse,
   errors: [InternalServiceException],
+  operationName: "SendHeartbeat",
 }));

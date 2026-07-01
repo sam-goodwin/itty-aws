@@ -7744,6 +7744,7 @@ export const associateAccessGrantsIdentityCenter: API.OperationMethod<
   input: AssociateAccessGrantsIdentityCenterRequest,
   output: AssociateAccessGrantsIdentityCenterResponse,
   errors: [],
+  operationName: "AssociateAccessGrantsIdentityCenter",
 }));
 export type CreateAccessGrantError = CommonErrors;
 /**
@@ -7770,6 +7771,7 @@ export const createAccessGrant: API.OperationMethod<
   input: CreateAccessGrantRequest,
   output: CreateAccessGrantResult,
   errors: [],
+  operationName: "CreateAccessGrant",
 }));
 export type CreateAccessGrantsInstanceError = CommonErrors;
 /**
@@ -7792,6 +7794,7 @@ export const createAccessGrantsInstance: API.OperationMethod<
   input: CreateAccessGrantsInstanceRequest,
   output: CreateAccessGrantsInstanceResult,
   errors: [],
+  operationName: "CreateAccessGrantsInstance",
 }));
 export type CreateAccessGrantsLocationError = CommonErrors;
 /**
@@ -7822,6 +7825,7 @@ export const createAccessGrantsLocation: API.OperationMethod<
   input: CreateAccessGrantsLocationRequest,
   output: CreateAccessGrantsLocationResult,
   errors: [],
+  operationName: "CreateAccessGrantsLocation",
 }));
 export type CreateAccessPointError = CommonErrors;
 /**
@@ -7861,6 +7865,7 @@ export const createAccessPoint: API.OperationMethod<
   input: CreateAccessPointRequest,
   output: CreateAccessPointResult,
   errors: [],
+  operationName: "CreateAccessPoint",
 }));
 export type CreateAccessPointForObjectLambdaError = CommonErrors;
 /**
@@ -7887,6 +7892,7 @@ export const createAccessPointForObjectLambda: API.OperationMethod<
   input: CreateAccessPointForObjectLambdaRequest,
   output: CreateAccessPointForObjectLambdaResult,
   errors: [],
+  operationName: "CreateAccessPointForObjectLambda",
 }));
 export type CreateBucketError =
   | BucketAlreadyExists
@@ -7940,6 +7946,7 @@ export const createBucket: API.OperationMethod<
   input: CreateBucketRequest,
   output: CreateBucketResult,
   errors: [BucketAlreadyExists, BucketAlreadyOwnedByYou],
+  operationName: "CreateBucket",
 }));
 export type CreateJobError =
   | BadRequestException
@@ -7985,6 +7992,7 @@ export const createJob: API.OperationMethod<
     InternalServiceException,
     TooManyRequestsException,
   ],
+  operationName: "CreateJob",
 }));
 export type CreateMultiRegionAccessPointError = CommonErrors;
 /**
@@ -8021,6 +8029,7 @@ export const createMultiRegionAccessPoint: API.OperationMethod<
   input: CreateMultiRegionAccessPointRequest,
   output: CreateMultiRegionAccessPointResult,
   errors: [],
+  operationName: "CreateMultiRegionAccessPoint",
 }));
 export type CreateStorageLensGroupError = CommonErrors;
 /**
@@ -8049,6 +8058,7 @@ export const createStorageLensGroup: API.OperationMethod<
   input: CreateStorageLensGroupRequest,
   output: CreateStorageLensGroupResponse,
   errors: [],
+  operationName: "CreateStorageLensGroup",
 }));
 export type DeleteAccessGrantError = CommonErrors;
 /**
@@ -8067,6 +8077,7 @@ export const deleteAccessGrant: API.OperationMethod<
   input: DeleteAccessGrantRequest,
   output: DeleteAccessGrantResponse,
   errors: [],
+  operationName: "DeleteAccessGrant",
 }));
 export type DeleteAccessGrantsInstanceError = CommonErrors;
 /**
@@ -8085,6 +8096,7 @@ export const deleteAccessGrantsInstance: API.OperationMethod<
   input: DeleteAccessGrantsInstanceRequest,
   output: DeleteAccessGrantsInstanceResponse,
   errors: [],
+  operationName: "DeleteAccessGrantsInstance",
 }));
 export type DeleteAccessGrantsInstanceResourcePolicyError = CommonErrors;
 /**
@@ -8103,6 +8115,7 @@ export const deleteAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   input: DeleteAccessGrantsInstanceResourcePolicyRequest,
   output: DeleteAccessGrantsInstanceResourcePolicyResponse,
   errors: [],
+  operationName: "DeleteAccessGrantsInstanceResourcePolicy",
 }));
 export type DeleteAccessGrantsLocationError = CommonErrors;
 /**
@@ -8121,6 +8134,7 @@ export const deleteAccessGrantsLocation: API.OperationMethod<
   input: DeleteAccessGrantsLocationRequest,
   output: DeleteAccessGrantsLocationResponse,
   errors: [],
+  operationName: "DeleteAccessGrantsLocation",
 }));
 export type DeleteAccessPointError = CommonErrors;
 /**
@@ -8145,6 +8159,7 @@ export const deleteAccessPoint: API.OperationMethod<
   input: DeleteAccessPointRequest,
   output: DeleteAccessPointResponse,
   errors: [],
+  operationName: "DeleteAccessPoint",
 }));
 export type DeleteAccessPointForObjectLambdaError = CommonErrors;
 /**
@@ -8170,6 +8185,7 @@ export const deleteAccessPointForObjectLambda: API.OperationMethod<
   input: DeleteAccessPointForObjectLambdaRequest,
   output: DeleteAccessPointForObjectLambdaResponse,
   errors: [],
+  operationName: "DeleteAccessPointForObjectLambda",
 }));
 export type DeleteAccessPointPolicyError = CommonErrors;
 /**
@@ -8192,6 +8208,7 @@ export const deleteAccessPointPolicy: API.OperationMethod<
   input: DeleteAccessPointPolicyRequest,
   output: DeleteAccessPointPolicyResponse,
   errors: [],
+  operationName: "DeleteAccessPointPolicy",
 }));
 export type DeleteAccessPointPolicyForObjectLambdaError = CommonErrors;
 /**
@@ -8215,6 +8232,7 @@ export const deleteAccessPointPolicyForObjectLambda: API.OperationMethod<
   input: DeleteAccessPointPolicyForObjectLambdaRequest,
   output: DeleteAccessPointPolicyForObjectLambdaResponse,
   errors: [],
+  operationName: "DeleteAccessPointPolicyForObjectLambda",
 }));
 export type DeleteAccessPointScopeError = CommonErrors;
 /**
@@ -8236,6 +8254,7 @@ export const deleteAccessPointScope: API.OperationMethod<
   input: DeleteAccessPointScopeRequest,
   output: DeleteAccessPointScopeResponse,
   errors: [],
+  operationName: "DeleteAccessPointScope",
 }));
 export type DeleteBucketError = CommonErrors;
 /**
@@ -8265,6 +8284,7 @@ export const deleteBucket: API.OperationMethod<
   input: DeleteBucketRequest,
   output: DeleteBucketResponse,
   errors: [],
+  operationName: "DeleteBucket",
 }));
 export type DeleteBucketLifecycleConfigurationError = CommonErrors;
 /**
@@ -8302,6 +8322,7 @@ export const deleteBucketLifecycleConfiguration: API.OperationMethod<
   input: DeleteBucketLifecycleConfigurationRequest,
   output: DeleteBucketLifecycleConfigurationResponse,
   errors: [],
+  operationName: "DeleteBucketLifecycleConfiguration",
 }));
 export type DeleteBucketPolicyError = CommonErrors;
 /**
@@ -8345,6 +8366,7 @@ export const deleteBucketPolicy: API.OperationMethod<
   input: DeleteBucketPolicyRequest,
   output: DeleteBucketPolicyResponse,
   errors: [],
+  operationName: "DeleteBucketPolicy",
 }));
 export type DeleteBucketReplicationError = CommonErrors;
 /**
@@ -8387,6 +8409,7 @@ export const deleteBucketReplication: API.OperationMethod<
   input: DeleteBucketReplicationRequest,
   output: DeleteBucketReplicationResponse,
   errors: [],
+  operationName: "DeleteBucketReplication",
 }));
 export type DeleteBucketTaggingError = CommonErrors;
 /**
@@ -8417,6 +8440,7 @@ export const deleteBucketTagging: API.OperationMethod<
   input: DeleteBucketTaggingRequest,
   output: DeleteBucketTaggingResponse,
   errors: [],
+  operationName: "DeleteBucketTagging",
 }));
 export type DeleteJobTaggingError =
   | InternalServiceException
@@ -8455,6 +8479,7 @@ export const deleteJobTagging: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteJobTagging",
 }));
 export type DeleteMultiRegionAccessPointError = CommonErrors;
 /**
@@ -8491,6 +8516,7 @@ export const deleteMultiRegionAccessPoint: API.OperationMethod<
   input: DeleteMultiRegionAccessPointRequest,
   output: DeleteMultiRegionAccessPointResult,
   errors: [],
+  operationName: "DeleteMultiRegionAccessPoint",
 }));
 export type DeletePublicAccessBlockError = CommonErrors;
 /**
@@ -8519,6 +8545,7 @@ export const deletePublicAccessBlock: API.OperationMethod<
   input: DeletePublicAccessBlockRequest,
   output: DeletePublicAccessBlockResponse,
   errors: [],
+  operationName: "DeletePublicAccessBlock",
 }));
 export type DeleteStorageLensConfigurationError = CommonErrors;
 /**
@@ -8542,6 +8569,7 @@ export const deleteStorageLensConfiguration: API.OperationMethod<
   input: DeleteStorageLensConfigurationRequest,
   output: DeleteStorageLensConfigurationResponse,
   errors: [],
+  operationName: "DeleteStorageLensConfiguration",
 }));
 export type DeleteStorageLensConfigurationTaggingError = CommonErrors;
 /**
@@ -8566,6 +8594,7 @@ export const deleteStorageLensConfigurationTagging: API.OperationMethod<
   input: DeleteStorageLensConfigurationTaggingRequest,
   output: DeleteStorageLensConfigurationTaggingResult,
   errors: [],
+  operationName: "DeleteStorageLensConfigurationTagging",
 }));
 export type DeleteStorageLensGroupError = CommonErrors;
 /**
@@ -8587,6 +8616,7 @@ export const deleteStorageLensGroup: API.OperationMethod<
   input: DeleteStorageLensGroupRequest,
   output: DeleteStorageLensGroupResponse,
   errors: [],
+  operationName: "DeleteStorageLensGroup",
 }));
 export type DescribeJobError =
   | BadRequestException
@@ -8626,6 +8656,7 @@ export const describeJob: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeJob",
 }));
 export type DescribeMultiRegionAccessPointOperationError = CommonErrors;
 /**
@@ -8653,6 +8684,7 @@ export const describeMultiRegionAccessPointOperation: API.OperationMethod<
   input: DescribeMultiRegionAccessPointOperationRequest,
   output: DescribeMultiRegionAccessPointOperationResult,
   errors: [],
+  operationName: "DescribeMultiRegionAccessPointOperation",
 }));
 export type DissociateAccessGrantsIdentityCenterError = CommonErrors;
 /**
@@ -8675,6 +8707,7 @@ export const dissociateAccessGrantsIdentityCenter: API.OperationMethod<
   input: DissociateAccessGrantsIdentityCenterRequest,
   output: DissociateAccessGrantsIdentityCenterResponse,
   errors: [],
+  operationName: "DissociateAccessGrantsIdentityCenter",
 }));
 export type GetAccessGrantError = CommonErrors;
 /**
@@ -8693,6 +8726,7 @@ export const getAccessGrant: API.OperationMethod<
   input: GetAccessGrantRequest,
   output: GetAccessGrantResult,
   errors: [],
+  operationName: "GetAccessGrant",
 }));
 export type GetAccessGrantsInstanceError = CommonErrors;
 /**
@@ -8713,6 +8747,7 @@ export const getAccessGrantsInstance: API.OperationMethod<
   input: GetAccessGrantsInstanceRequest,
   output: GetAccessGrantsInstanceResult,
   errors: [],
+  operationName: "GetAccessGrantsInstance",
 }));
 export type GetAccessGrantsInstanceForPrefixError = CommonErrors;
 /**
@@ -8735,6 +8770,7 @@ export const getAccessGrantsInstanceForPrefix: API.OperationMethod<
   input: GetAccessGrantsInstanceForPrefixRequest,
   output: GetAccessGrantsInstanceForPrefixResult,
   errors: [],
+  operationName: "GetAccessGrantsInstanceForPrefix",
 }));
 export type GetAccessGrantsInstanceResourcePolicyError = CommonErrors;
 /**
@@ -8753,6 +8789,7 @@ export const getAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   input: GetAccessGrantsInstanceResourcePolicyRequest,
   output: GetAccessGrantsInstanceResourcePolicyResult,
   errors: [],
+  operationName: "GetAccessGrantsInstanceResourcePolicy",
 }));
 export type GetAccessGrantsLocationError = CommonErrors;
 /**
@@ -8771,6 +8808,7 @@ export const getAccessGrantsLocation: API.OperationMethod<
   input: GetAccessGrantsLocationRequest,
   output: GetAccessGrantsLocationResult,
   errors: [],
+  operationName: "GetAccessGrantsLocation",
 }));
 export type GetAccessPointError = CommonErrors;
 /**
@@ -8795,6 +8833,7 @@ export const getAccessPoint: API.OperationMethod<
   input: GetAccessPointRequest,
   output: GetAccessPointResult,
   errors: [],
+  operationName: "GetAccessPoint",
 }));
 export type GetAccessPointConfigurationForObjectLambdaError = CommonErrors;
 /**
@@ -8816,6 +8855,7 @@ export const getAccessPointConfigurationForObjectLambda: API.OperationMethod<
   input: GetAccessPointConfigurationForObjectLambdaRequest,
   output: GetAccessPointConfigurationForObjectLambdaResult,
   errors: [],
+  operationName: "GetAccessPointConfigurationForObjectLambda",
 }));
 export type GetAccessPointForObjectLambdaError = CommonErrors;
 /**
@@ -8840,6 +8880,7 @@ export const getAccessPointForObjectLambda: API.OperationMethod<
   input: GetAccessPointForObjectLambdaRequest,
   output: GetAccessPointForObjectLambdaResult,
   errors: [],
+  operationName: "GetAccessPointForObjectLambda",
 }));
 export type GetAccessPointPolicyError = CommonErrors;
 /**
@@ -8860,6 +8901,7 @@ export const getAccessPointPolicy: API.OperationMethod<
   input: GetAccessPointPolicyRequest,
   output: GetAccessPointPolicyResult,
   errors: [],
+  operationName: "GetAccessPointPolicy",
 }));
 export type GetAccessPointPolicyForObjectLambdaError = CommonErrors;
 /**
@@ -8883,6 +8925,7 @@ export const getAccessPointPolicyForObjectLambda: API.OperationMethod<
   input: GetAccessPointPolicyForObjectLambdaRequest,
   output: GetAccessPointPolicyForObjectLambdaResult,
   errors: [],
+  operationName: "GetAccessPointPolicyForObjectLambda",
 }));
 export type GetAccessPointPolicyStatusError = CommonErrors;
 /**
@@ -8901,6 +8944,7 @@ export const getAccessPointPolicyStatus: API.OperationMethod<
   input: GetAccessPointPolicyStatusRequest,
   output: GetAccessPointPolicyStatusResult,
   errors: [],
+  operationName: "GetAccessPointPolicyStatus",
 }));
 export type GetAccessPointPolicyStatusForObjectLambdaError = CommonErrors;
 /**
@@ -8917,6 +8961,7 @@ export const getAccessPointPolicyStatusForObjectLambda: API.OperationMethod<
   input: GetAccessPointPolicyStatusForObjectLambdaRequest,
   output: GetAccessPointPolicyStatusForObjectLambdaResult,
   errors: [],
+  operationName: "GetAccessPointPolicyStatusForObjectLambda",
 }));
 export type GetAccessPointScopeError = CommonErrors;
 /**
@@ -8936,6 +8981,7 @@ export const getAccessPointScope: API.OperationMethod<
   input: GetAccessPointScopeRequest,
   output: GetAccessPointScopeResult,
   errors: [],
+  operationName: "GetAccessPointScope",
 }));
 export type GetBucketError = CommonErrors;
 /**
@@ -8971,6 +9017,7 @@ export const getBucket: API.OperationMethod<
   input: GetBucketRequest,
   output: GetBucketResult,
   errors: [],
+  operationName: "GetBucket",
 }));
 export type GetBucketLifecycleConfigurationError = CommonErrors;
 /**
@@ -9016,6 +9063,7 @@ export const getBucketLifecycleConfiguration: API.OperationMethod<
   input: GetBucketLifecycleConfigurationRequest,
   output: GetBucketLifecycleConfigurationResult,
   errors: [],
+  operationName: "GetBucketLifecycleConfiguration",
 }));
 export type GetBucketPolicyError = CommonErrors;
 /**
@@ -9062,6 +9110,7 @@ export const getBucketPolicy: API.OperationMethod<
   input: GetBucketPolicyRequest,
   output: GetBucketPolicyResult,
   errors: [],
+  operationName: "GetBucketPolicy",
 }));
 export type GetBucketReplicationError = CommonErrors;
 /**
@@ -9112,6 +9161,7 @@ export const getBucketReplication: API.OperationMethod<
   input: GetBucketReplicationRequest,
   output: GetBucketReplicationResult,
   errors: [],
+  operationName: "GetBucketReplication",
 }));
 export type GetBucketTaggingError = CommonErrors;
 /**
@@ -9149,6 +9199,7 @@ export const getBucketTagging: API.OperationMethod<
   input: GetBucketTaggingRequest,
   output: GetBucketTaggingResult,
   errors: [],
+  operationName: "GetBucketTagging",
 }));
 export type GetBucketVersioningError = CommonErrors;
 /**
@@ -9192,6 +9243,7 @@ export const getBucketVersioning: API.OperationMethod<
   input: GetBucketVersioningRequest,
   output: GetBucketVersioningResult,
   errors: [],
+  operationName: "GetBucketVersioning",
 }));
 export type GetDataAccessError = CommonErrors;
 /**
@@ -9214,6 +9266,7 @@ export const getDataAccess: API.OperationMethod<
   input: GetDataAccessRequest,
   output: GetDataAccessResult,
   errors: [],
+  operationName: "GetDataAccess",
 }));
 export type GetJobTaggingError =
   | InternalServiceException
@@ -9252,6 +9305,7 @@ export const getJobTagging: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetJobTagging",
 }));
 export type GetMultiRegionAccessPointError = CommonErrors;
 /**
@@ -9282,6 +9336,7 @@ export const getMultiRegionAccessPoint: API.OperationMethod<
   input: GetMultiRegionAccessPointRequest,
   output: GetMultiRegionAccessPointResult,
   errors: [],
+  operationName: "GetMultiRegionAccessPoint",
 }));
 export type GetMultiRegionAccessPointPolicyError = CommonErrors;
 /**
@@ -9309,6 +9364,7 @@ export const getMultiRegionAccessPointPolicy: API.OperationMethod<
   input: GetMultiRegionAccessPointPolicyRequest,
   output: GetMultiRegionAccessPointPolicyResult,
   errors: [],
+  operationName: "GetMultiRegionAccessPointPolicy",
 }));
 export type GetMultiRegionAccessPointPolicyStatusError = CommonErrors;
 /**
@@ -9337,6 +9393,7 @@ export const getMultiRegionAccessPointPolicyStatus: API.OperationMethod<
   input: GetMultiRegionAccessPointPolicyStatusRequest,
   output: GetMultiRegionAccessPointPolicyStatusResult,
   errors: [],
+  operationName: "GetMultiRegionAccessPointPolicyStatus",
 }));
 export type GetMultiRegionAccessPointRoutesError = CommonErrors;
 /**
@@ -9367,6 +9424,7 @@ export const getMultiRegionAccessPointRoutes: API.OperationMethod<
   input: GetMultiRegionAccessPointRoutesRequest,
   output: GetMultiRegionAccessPointRoutesResult,
   errors: [],
+  operationName: "GetMultiRegionAccessPointRoutes",
 }));
 export type GetPublicAccessBlockError =
   | NoSuchPublicAccessBlockConfiguration
@@ -9394,6 +9452,7 @@ export const getPublicAccessBlock: API.OperationMethod<
   input: GetPublicAccessBlockRequest,
   output: GetPublicAccessBlockOutput,
   errors: [NoSuchPublicAccessBlockConfiguration],
+  operationName: "GetPublicAccessBlock",
 }));
 export type GetStorageLensConfigurationError = CommonErrors;
 /**
@@ -9416,6 +9475,7 @@ export const getStorageLensConfiguration: API.OperationMethod<
   input: GetStorageLensConfigurationRequest,
   output: GetStorageLensConfigurationResult,
   errors: [],
+  operationName: "GetStorageLensConfiguration",
 }));
 export type GetStorageLensConfigurationTaggingError = CommonErrors;
 /**
@@ -9440,6 +9500,7 @@ export const getStorageLensConfigurationTagging: API.OperationMethod<
   input: GetStorageLensConfigurationTaggingRequest,
   output: GetStorageLensConfigurationTaggingResult,
   errors: [],
+  operationName: "GetStorageLensConfigurationTagging",
 }));
 export type GetStorageLensGroupError = CommonErrors;
 /**
@@ -9461,6 +9522,7 @@ export const getStorageLensGroup: API.OperationMethod<
   input: GetStorageLensGroupRequest,
   output: GetStorageLensGroupResult,
   errors: [],
+  operationName: "GetStorageLensGroup",
 }));
 export type ListAccessGrantsError = CommonErrors;
 /**
@@ -9494,6 +9556,7 @@ export const listAccessGrants: API.OperationMethod<
   input: ListAccessGrantsRequest,
   output: ListAccessGrantsResult,
   errors: [],
+  operationName: "ListAccessGrants",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9532,6 +9595,7 @@ export const listAccessGrantsInstances: API.OperationMethod<
   input: ListAccessGrantsInstancesRequest,
   output: ListAccessGrantsInstancesResult,
   errors: [],
+  operationName: "ListAccessGrantsInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9570,6 +9634,7 @@ export const listAccessGrantsLocations: API.OperationMethod<
   input: ListAccessGrantsLocationsRequest,
   output: ListAccessGrantsLocationsResult,
   errors: [],
+  operationName: "ListAccessGrantsLocations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9622,6 +9687,7 @@ export const listAccessPoints: API.OperationMethod<
   input: ListAccessPointsRequest,
   output: ListAccessPointsResult,
   errors: [],
+  operationName: "ListAccessPoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9663,6 +9729,7 @@ export const listAccessPointsForDirectoryBuckets: API.OperationMethod<
   input: ListAccessPointsForDirectoryBucketsRequest,
   output: ListAccessPointsForDirectoryBucketsResult,
   errors: [],
+  operationName: "ListAccessPointsForDirectoryBuckets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9711,6 +9778,7 @@ export const listAccessPointsForObjectLambda: API.OperationMethod<
   input: ListAccessPointsForObjectLambdaRequest,
   output: ListAccessPointsForObjectLambdaResult,
   errors: [],
+  operationName: "ListAccessPointsForObjectLambda",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9750,6 +9818,7 @@ export const listCallerAccessGrants: API.OperationMethod<
   input: ListCallerAccessGrantsRequest,
   output: ListCallerAccessGrantsResult,
   errors: [],
+  operationName: "ListCallerAccessGrants",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9810,6 +9879,7 @@ export const listJobs: API.OperationMethod<
     InvalidNextTokenException,
     InvalidRequestException,
   ],
+  operationName: "ListJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9862,6 +9932,7 @@ export const listMultiRegionAccessPoints: API.OperationMethod<
   input: ListMultiRegionAccessPointsRequest,
   output: ListMultiRegionAccessPointsResult,
   errors: [],
+  operationName: "ListMultiRegionAccessPoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9903,6 +9974,7 @@ export const listRegionalBuckets: API.OperationMethod<
   input: ListRegionalBucketsRequest,
   output: ListRegionalBucketsResult,
   errors: [],
+  operationName: "ListRegionalBuckets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9947,6 +10019,7 @@ export const listStorageLensConfigurations: API.OperationMethod<
   input: ListStorageLensConfigurationsRequest,
   output: ListStorageLensConfigurationsResult,
   errors: [],
+  operationName: "ListStorageLensConfigurations",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
 export type ListStorageLensGroupsError = CommonErrors;
@@ -9984,6 +10057,7 @@ export const listStorageLensGroups: API.OperationMethod<
   input: ListStorageLensGroupsRequest,
   output: ListStorageLensGroupsResult,
   errors: [],
+  operationName: "ListStorageLensGroups",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
 export type ListTagsForResourceError = CommonErrors;
@@ -10027,6 +10101,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [],
+  operationName: "ListTagsForResource",
 }));
 export type PutAccessGrantsInstanceResourcePolicyError = CommonErrors;
 /**
@@ -10045,6 +10120,7 @@ export const putAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   input: PutAccessGrantsInstanceResourcePolicyRequest,
   output: PutAccessGrantsInstanceResourcePolicyResult,
   errors: [],
+  operationName: "PutAccessGrantsInstanceResourcePolicy",
 }));
 export type PutAccessPointConfigurationForObjectLambdaError = CommonErrors;
 /**
@@ -10066,6 +10142,7 @@ export const putAccessPointConfigurationForObjectLambda: API.OperationMethod<
   input: PutAccessPointConfigurationForObjectLambdaRequest,
   output: PutAccessPointConfigurationForObjectLambdaResponse,
   errors: [],
+  operationName: "PutAccessPointConfigurationForObjectLambda",
 }));
 export type PutAccessPointPolicyError = CommonErrors;
 /**
@@ -10090,6 +10167,7 @@ export const putAccessPointPolicy: API.OperationMethod<
   input: PutAccessPointPolicyRequest,
   output: PutAccessPointPolicyResponse,
   errors: [],
+  operationName: "PutAccessPointPolicy",
 }));
 export type PutAccessPointPolicyForObjectLambdaError = CommonErrors;
 /**
@@ -10113,6 +10191,7 @@ export const putAccessPointPolicyForObjectLambda: API.OperationMethod<
   input: PutAccessPointPolicyForObjectLambdaRequest,
   output: PutAccessPointPolicyForObjectLambdaResponse,
   errors: [],
+  operationName: "PutAccessPointPolicyForObjectLambda",
 }));
 export type PutAccessPointScopeError = CommonErrors;
 /**
@@ -10134,6 +10213,7 @@ export const putAccessPointScope: API.OperationMethod<
   input: PutAccessPointScopeRequest,
   output: PutAccessPointScopeResponse,
   errors: [],
+  operationName: "PutAccessPointScope",
 }));
 export type PutBucketLifecycleConfigurationError = CommonErrors;
 /**
@@ -10163,6 +10243,7 @@ export const putBucketLifecycleConfiguration: API.OperationMethod<
   input: PutBucketLifecycleConfigurationRequest,
   output: PutBucketLifecycleConfigurationResponse,
   errors: [],
+  operationName: "PutBucketLifecycleConfiguration",
 }));
 export type PutBucketPolicyError = CommonErrors;
 /**
@@ -10207,6 +10288,7 @@ export const putBucketPolicy: API.OperationMethod<
   input: PutBucketPolicyRequest,
   output: PutBucketPolicyResponse,
   errors: [],
+  operationName: "PutBucketPolicy",
 }));
 export type PutBucketReplicationError = CommonErrors;
 /**
@@ -10293,6 +10375,7 @@ export const putBucketReplication: API.OperationMethod<
   input: PutBucketReplicationRequest,
   output: PutBucketReplicationResponse,
   errors: [],
+  operationName: "PutBucketReplication",
 }));
 export type PutBucketTaggingError = CommonErrors;
 /**
@@ -10361,6 +10444,7 @@ export const putBucketTagging: API.OperationMethod<
   input: PutBucketTaggingRequest,
   output: PutBucketTaggingResponse,
   errors: [],
+  operationName: "PutBucketTagging",
 }));
 export type PutBucketVersioningError = CommonErrors;
 /**
@@ -10424,6 +10508,7 @@ export const putBucketVersioning: API.OperationMethod<
   input: PutBucketVersioningRequest,
   output: PutBucketVersioningResponse,
   errors: [],
+  operationName: "PutBucketVersioning",
 }));
 export type PutJobTaggingError =
   | InternalServiceException
@@ -10491,6 +10576,7 @@ export const putJobTagging: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  operationName: "PutJobTagging",
 }));
 export type PutMultiRegionAccessPointPolicyError = CommonErrors;
 /**
@@ -10520,6 +10606,7 @@ export const putMultiRegionAccessPointPolicy: API.OperationMethod<
   input: PutMultiRegionAccessPointPolicyRequest,
   output: PutMultiRegionAccessPointPolicyResult,
   errors: [],
+  operationName: "PutMultiRegionAccessPointPolicy",
 }));
 export type PutPublicAccessBlockError = CommonErrors;
 /**
@@ -10549,6 +10636,7 @@ export const putPublicAccessBlock: API.OperationMethod<
   input: PutPublicAccessBlockRequest,
   output: PutPublicAccessBlockResponse,
   errors: [],
+  operationName: "PutPublicAccessBlock",
 }));
 export type PutStorageLensConfigurationError = CommonErrors;
 /**
@@ -10570,6 +10658,7 @@ export const putStorageLensConfiguration: API.OperationMethod<
   input: PutStorageLensConfigurationRequest,
   output: PutStorageLensConfigurationResponse,
   errors: [],
+  operationName: "PutStorageLensConfiguration",
 }));
 export type PutStorageLensConfigurationTaggingError = CommonErrors;
 /**
@@ -10593,6 +10682,7 @@ export const putStorageLensConfigurationTagging: API.OperationMethod<
   input: PutStorageLensConfigurationTaggingRequest,
   output: PutStorageLensConfigurationTaggingResult,
   errors: [],
+  operationName: "PutStorageLensConfigurationTagging",
 }));
 export type SubmitMultiRegionAccessPointRoutesError = CommonErrors;
 /**
@@ -10635,6 +10725,7 @@ export const submitMultiRegionAccessPointRoutes: API.OperationMethod<
   input: SubmitMultiRegionAccessPointRoutesRequest,
   output: SubmitMultiRegionAccessPointRoutesResult,
   errors: [],
+  operationName: "SubmitMultiRegionAccessPointRoutes",
 }));
 export type TagResourceError = CommonErrors;
 /**
@@ -10677,6 +10768,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResult,
   errors: [],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = CommonErrors;
 /**
@@ -10720,6 +10812,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResult,
   errors: [],
+  operationName: "UntagResource",
 }));
 export type UpdateAccessGrantsLocationError = CommonErrors;
 /**
@@ -10742,6 +10835,7 @@ export const updateAccessGrantsLocation: API.OperationMethod<
   input: UpdateAccessGrantsLocationRequest,
   output: UpdateAccessGrantsLocationResult,
   errors: [],
+  operationName: "UpdateAccessGrantsLocation",
 }));
 export type UpdateJobPriorityError =
   | BadRequestException
@@ -10782,6 +10876,7 @@ export const updateJobPriority: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateJobPriority",
 }));
 export type UpdateJobStatusError =
   | BadRequestException
@@ -10825,6 +10920,7 @@ export const updateJobStatus: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateJobStatus",
 }));
 export type UpdateStorageLensGroupError = CommonErrors;
 /**
@@ -10846,4 +10942,5 @@ export const updateStorageLensGroup: API.OperationMethod<
   input: UpdateStorageLensGroupRequest,
   output: UpdateStorageLensGroupResponse,
   errors: [],
+  operationName: "UpdateStorageLensGroup",
 }));

@@ -8112,6 +8112,7 @@ export const addTagsToResource: API.OperationMethod<
   input: AddTagsToResourceMessage,
   output: AddTagsToResourceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "AddTagsToResource",
 }));
 export type ApplyPendingMaintenanceActionError =
   | ResourceNotFoundFault
@@ -8129,6 +8130,7 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
   input: ApplyPendingMaintenanceActionMessage,
   output: ApplyPendingMaintenanceActionResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "ApplyPendingMaintenanceAction",
 }));
 export type BatchStartRecommendationsError =
   | AccessDeniedFault
@@ -8155,6 +8157,7 @@ export const batchStartRecommendations: API.OperationMethod<
   input: BatchStartRecommendationsRequest,
   output: BatchStartRecommendationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "BatchStartRecommendations",
 }));
 export type CancelMetadataModelConversionError =
   | AccessDeniedFault
@@ -8173,6 +8176,7 @@ export const cancelMetadataModelConversion: API.OperationMethod<
   input: CancelMetadataModelConversionMessage,
   output: CancelMetadataModelConversionResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "CancelMetadataModelConversion",
 }));
 export type CancelMetadataModelCreationError =
   | AccessDeniedFault
@@ -8191,6 +8195,7 @@ export const cancelMetadataModelCreation: API.OperationMethod<
   input: CancelMetadataModelCreationMessage,
   output: CancelMetadataModelCreationResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "CancelMetadataModelCreation",
 }));
 export type CancelReplicationTaskAssessmentRunError =
   | AccessDeniedFault
@@ -8213,6 +8218,7 @@ export const cancelReplicationTaskAssessmentRun: API.OperationMethod<
   input: CancelReplicationTaskAssessmentRunMessage,
   output: CancelReplicationTaskAssessmentRunResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "CancelReplicationTaskAssessmentRun",
 }));
 export type CreateDataMigrationError =
   | FailedDependencyFault
@@ -8239,6 +8245,7 @@ export const createDataMigration: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  operationName: "CreateDataMigration",
 }));
 export type CreateDataProviderError =
   | AccessDeniedFault
@@ -8264,6 +8271,7 @@ export const createDataProvider: API.OperationMethod<
     ResourceAlreadyExistsFault,
     ResourceQuotaExceededFault,
   ],
+  operationName: "CreateDataProvider",
 }));
 export type CreateEndpointError =
   | AccessDeniedFault
@@ -8301,6 +8309,7 @@ export const createEndpoint: API.OperationMethod<
     ResourceQuotaExceededFault,
     S3AccessDeniedFault,
   ],
+  operationName: "CreateEndpoint",
 }));
 export type CreateEventSubscriptionError =
   | KMSAccessDeniedFault
@@ -8352,6 +8361,7 @@ export const createEventSubscription: API.OperationMethod<
     SNSInvalidTopicFault,
     SNSNoAuthorizationFault,
   ],
+  operationName: "CreateEventSubscription",
 }));
 export type CreateFleetAdvisorCollectorError =
   | AccessDeniedFault
@@ -8380,6 +8390,7 @@ export const createFleetAdvisorCollector: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  operationName: "CreateFleetAdvisorCollector",
 }));
 export type CreateInstanceProfileError =
   | AccessDeniedFault
@@ -8414,6 +8425,7 @@ export const createInstanceProfile: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  operationName: "CreateInstanceProfile",
 }));
 export type CreateMigrationProjectError =
   | AccessDeniedFault
@@ -8447,6 +8459,7 @@ export const createMigrationProject: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  operationName: "CreateMigrationProject",
 }));
 export type CreateReplicationConfigError =
   | AccessDeniedFault
@@ -8481,6 +8494,7 @@ export const createReplicationConfig: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  operationName: "CreateReplicationConfig",
 }));
 export type CreateReplicationInstanceError =
   | AccessDeniedFault
@@ -8526,6 +8540,7 @@ export const createReplicationInstance: API.OperationMethod<
     ResourceQuotaExceededFault,
     StorageQuotaExceededFault,
   ],
+  operationName: "CreateReplicationInstance",
 }));
 export type CreateReplicationSubnetGroupError =
   | AccessDeniedFault
@@ -8564,6 +8579,7 @@ export const createReplicationSubnetGroup: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  operationName: "CreateReplicationSubnetGroup",
 }));
 export type CreateReplicationTaskError =
   | AccessDeniedFault
@@ -8592,6 +8608,7 @@ export const createReplicationTask: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  operationName: "CreateReplicationTask",
 }));
 export type DeleteCertificateError =
   | InvalidResourceStateFault
@@ -8609,6 +8626,7 @@ export const deleteCertificate: API.OperationMethod<
   input: DeleteCertificateMessage,
   output: DeleteCertificateResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "DeleteCertificate",
 }));
 export type DeleteConnectionError =
   | AccessDeniedFault
@@ -8627,6 +8645,7 @@ export const deleteConnection: API.OperationMethod<
   input: DeleteConnectionMessage,
   output: DeleteConnectionResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "DeleteConnection",
 }));
 export type DeleteDataMigrationError =
   | FailedDependencyFault
@@ -8649,6 +8668,7 @@ export const deleteDataMigration: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  operationName: "DeleteDataMigration",
 }));
 export type DeleteDataProviderError =
   | AccessDeniedFault
@@ -8676,6 +8696,7 @@ export const deleteDataProvider: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  operationName: "DeleteDataProvider",
 }));
 export type DeleteEndpointError =
   | InvalidResourceStateFault
@@ -8696,6 +8717,7 @@ export const deleteEndpoint: API.OperationMethod<
   input: DeleteEndpointMessage,
   output: DeleteEndpointResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "DeleteEndpoint",
 }));
 export type DeleteEventSubscriptionError =
   | AccessDeniedFault
@@ -8714,6 +8736,7 @@ export const deleteEventSubscription: API.OperationMethod<
   input: DeleteEventSubscriptionMessage,
   output: DeleteEventSubscriptionResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "DeleteEventSubscription",
 }));
 export type DeleteFleetAdvisorCollectorError =
   | AccessDeniedFault
@@ -8738,6 +8761,7 @@ export const deleteFleetAdvisorCollector: API.OperationMethod<
     CollectorNotFoundFault,
     InvalidResourceStateFault,
   ],
+  operationName: "DeleteFleetAdvisorCollector",
 }));
 export type DeleteFleetAdvisorDatabasesError =
   | AccessDeniedFault
@@ -8758,6 +8782,7 @@ export const deleteFleetAdvisorDatabases: API.OperationMethod<
   input: DeleteFleetAdvisorDatabasesRequest,
   output: DeleteFleetAdvisorDatabasesResponse,
   errors: [AccessDeniedFault, InvalidOperationFault, ResourceNotFoundFault],
+  operationName: "DeleteFleetAdvisorDatabases",
 }));
 export type DeleteInstanceProfileError =
   | AccessDeniedFault
@@ -8785,6 +8810,7 @@ export const deleteInstanceProfile: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  operationName: "DeleteInstanceProfile",
 }));
 export type DeleteMigrationProjectError =
   | AccessDeniedFault
@@ -8811,6 +8837,7 @@ export const deleteMigrationProject: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  operationName: "DeleteMigrationProject",
 }));
 export type DeleteReplicationConfigError =
   | AccessDeniedFault
@@ -8832,6 +8859,7 @@ export const deleteReplicationConfig: API.OperationMethod<
   input: DeleteReplicationConfigMessage,
   output: DeleteReplicationConfigResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "DeleteReplicationConfig",
 }));
 export type DeleteReplicationInstanceError =
   | InvalidResourceStateFault
@@ -8852,6 +8880,7 @@ export const deleteReplicationInstance: API.OperationMethod<
   input: DeleteReplicationInstanceMessage,
   output: DeleteReplicationInstanceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "DeleteReplicationInstance",
 }));
 export type DeleteReplicationSubnetGroupError =
   | AccessDeniedFault
@@ -8870,6 +8899,7 @@ export const deleteReplicationSubnetGroup: API.OperationMethod<
   input: DeleteReplicationSubnetGroupMessage,
   output: DeleteReplicationSubnetGroupResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "DeleteReplicationSubnetGroup",
 }));
 export type DeleteReplicationTaskError =
   | InvalidResourceStateFault
@@ -8887,6 +8917,7 @@ export const deleteReplicationTask: API.OperationMethod<
   input: DeleteReplicationTaskMessage,
   output: DeleteReplicationTaskResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "DeleteReplicationTask",
 }));
 export type DeleteReplicationTaskAssessmentRunError =
   | AccessDeniedFault
@@ -8909,6 +8940,7 @@ export const deleteReplicationTaskAssessmentRun: API.OperationMethod<
   input: DeleteReplicationTaskAssessmentRunMessage,
   output: DeleteReplicationTaskAssessmentRunResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "DeleteReplicationTaskAssessmentRun",
 }));
 export type DescribeAccountAttributesError = CommonErrors;
 /**
@@ -8930,6 +8962,7 @@ export const describeAccountAttributes: API.OperationMethod<
   input: DescribeAccountAttributesMessage,
   output: DescribeAccountAttributesResponse,
   errors: [],
+  operationName: "DescribeAccountAttributes",
 }));
 export type DescribeApplicableIndividualAssessmentsError =
   | AccessDeniedFault
@@ -8981,6 +9014,7 @@ export const describeApplicableIndividualAssessments: API.OperationMethod<
   input: DescribeApplicableIndividualAssessmentsMessage,
   output: DescribeApplicableIndividualAssessmentsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "DescribeApplicableIndividualAssessments",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9015,6 +9049,7 @@ export const describeCertificates: API.OperationMethod<
   input: DescribeCertificatesMessage,
   output: DescribeCertificatesResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeCertificates",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9050,6 +9085,7 @@ export const describeConnections: API.OperationMethod<
   input: DescribeConnectionsMessage,
   output: DescribeConnectionsResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeConnections",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9071,6 +9107,7 @@ export const describeConversionConfiguration: API.OperationMethod<
   input: DescribeConversionConfigurationMessage,
   output: DescribeConversionConfigurationResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeConversionConfiguration",
 }));
 export type DescribeDataMigrationsError =
   | FailedDependencyFault
@@ -9108,6 +9145,7 @@ export const describeDataMigrations: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  operationName: "DescribeDataMigrations",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9148,6 +9186,7 @@ export const describeDataProviders: API.OperationMethod<
   input: DescribeDataProvidersMessage,
   output: DescribeDataProvidersResponse,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
+  operationName: "DescribeDataProviders",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9182,6 +9221,7 @@ export const describeEndpoints: API.OperationMethod<
   input: DescribeEndpointsMessage,
   output: DescribeEndpointsResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeEndpoints",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9217,6 +9257,7 @@ export const describeEndpointSettings: API.OperationMethod<
   input: DescribeEndpointSettingsMessage,
   output: DescribeEndpointSettingsResponse,
   errors: [],
+  operationName: "DescribeEndpointSettings",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9251,6 +9292,7 @@ export const describeEndpointTypes: API.OperationMethod<
   input: DescribeEndpointTypesMessage,
   output: DescribeEndpointTypesResponse,
   errors: [],
+  operationName: "DescribeEndpointTypes",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9285,6 +9327,7 @@ export const describeEngineVersions: API.OperationMethod<
   input: DescribeEngineVersionsMessage,
   output: DescribeEngineVersionsResponse,
   errors: [],
+  operationName: "DescribeEngineVersions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9306,6 +9349,7 @@ export const describeEventCategories: API.OperationMethod<
   input: DescribeEventCategoriesMessage,
   output: DescribeEventCategoriesResponse,
   errors: [],
+  operationName: "DescribeEventCategories",
 }));
 export type DescribeEventsError = CommonErrors;
 /**
@@ -9337,6 +9381,7 @@ export const describeEvents: API.OperationMethod<
   input: DescribeEventsMessage,
   output: DescribeEventsResponse,
   errors: [],
+  operationName: "DescribeEvents",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9379,6 +9424,7 @@ export const describeEventSubscriptions: API.OperationMethod<
   input: DescribeEventSubscriptionsMessage,
   output: DescribeEventSubscriptionsResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeEventSubscriptions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9415,6 +9461,7 @@ export const describeExtensionPackAssociations: API.OperationMethod<
   input: DescribeExtensionPackAssociationsMessage,
   output: DescribeExtensionPackAssociationsResponse,
   errors: [],
+  operationName: "DescribeExtensionPackAssociations",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9453,6 +9500,7 @@ export const describeFleetAdvisorCollectors: API.OperationMethod<
   input: DescribeFleetAdvisorCollectorsRequest,
   output: DescribeFleetAdvisorCollectorsResponse,
   errors: [InvalidResourceStateFault],
+  operationName: "DescribeFleetAdvisorCollectors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9491,6 +9539,7 @@ export const describeFleetAdvisorDatabases: API.OperationMethod<
   input: DescribeFleetAdvisorDatabasesRequest,
   output: DescribeFleetAdvisorDatabasesResponse,
   errors: [InvalidResourceStateFault],
+  operationName: "DescribeFleetAdvisorDatabases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9530,6 +9579,7 @@ export const describeFleetAdvisorLsaAnalysis: API.OperationMethod<
   input: DescribeFleetAdvisorLsaAnalysisRequest,
   output: DescribeFleetAdvisorLsaAnalysisResponse,
   errors: [InvalidResourceStateFault],
+  operationName: "DescribeFleetAdvisorLsaAnalysis",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9569,6 +9619,7 @@ export const describeFleetAdvisorSchemaObjectSummary: API.OperationMethod<
   input: DescribeFleetAdvisorSchemaObjectSummaryRequest,
   output: DescribeFleetAdvisorSchemaObjectSummaryResponse,
   errors: [InvalidResourceStateFault],
+  operationName: "DescribeFleetAdvisorSchemaObjectSummary",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9607,6 +9658,7 @@ export const describeFleetAdvisorSchemas: API.OperationMethod<
   input: DescribeFleetAdvisorSchemasRequest,
   output: DescribeFleetAdvisorSchemasResponse,
   errors: [InvalidResourceStateFault],
+  operationName: "DescribeFleetAdvisorSchemas",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9646,6 +9698,7 @@ export const describeInstanceProfiles: API.OperationMethod<
   input: DescribeInstanceProfilesMessage,
   output: DescribeInstanceProfilesResponse,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
+  operationName: "DescribeInstanceProfiles",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9668,6 +9721,7 @@ export const describeMetadataModel: API.OperationMethod<
   input: DescribeMetadataModelMessage,
   output: DescribeMetadataModelResponse,
   errors: [AccessDeniedFault, ResourceNotFoundFault],
+  operationName: "DescribeMetadataModel",
 }));
 export type DescribeMetadataModelAssessmentsError =
   | ResourceNotFoundFault
@@ -9700,6 +9754,7 @@ export const describeMetadataModelAssessments: API.OperationMethod<
   input: DescribeMetadataModelAssessmentsMessage,
   output: DescribeMetadataModelAssessmentsResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeMetadataModelAssessments",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9737,6 +9792,7 @@ export const describeMetadataModelChildren: API.OperationMethod<
   input: DescribeMetadataModelChildrenMessage,
   output: DescribeMetadataModelChildrenResponse,
   errors: [AccessDeniedFault, ResourceNotFoundFault],
+  operationName: "DescribeMetadataModelChildren",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9774,6 +9830,7 @@ export const describeMetadataModelConversions: API.OperationMethod<
   input: DescribeMetadataModelConversionsMessage,
   output: DescribeMetadataModelConversionsResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeMetadataModelConversions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9811,6 +9868,7 @@ export const describeMetadataModelCreations: API.OperationMethod<
   input: DescribeMetadataModelCreationsMessage,
   output: DescribeMetadataModelCreationsResponse,
   errors: [AccessDeniedFault, ResourceNotFoundFault],
+  operationName: "DescribeMetadataModelCreations",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9848,6 +9906,7 @@ export const describeMetadataModelExportsAsScript: API.OperationMethod<
   input: DescribeMetadataModelExportsAsScriptMessage,
   output: DescribeMetadataModelExportsAsScriptResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeMetadataModelExportsAsScript",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9884,6 +9943,7 @@ export const describeMetadataModelExportsToTarget: API.OperationMethod<
   input: DescribeMetadataModelExportsToTargetMessage,
   output: DescribeMetadataModelExportsToTargetResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeMetadataModelExportsToTarget",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9920,6 +9980,7 @@ export const describeMetadataModelImports: API.OperationMethod<
   input: DescribeMetadataModelImportsMessage,
   output: DescribeMetadataModelImportsResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeMetadataModelImports",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9959,6 +10020,7 @@ export const describeMigrationProjects: API.OperationMethod<
   input: DescribeMigrationProjectsMessage,
   output: DescribeMigrationProjectsResponse,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
+  operationName: "DescribeMigrationProjects",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -9994,6 +10056,7 @@ export const describeOrderableReplicationInstances: API.OperationMethod<
   input: DescribeOrderableReplicationInstancesMessage,
   output: DescribeOrderableReplicationInstancesResponse,
   errors: [],
+  operationName: "DescribeOrderableReplicationInstances",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10031,6 +10094,7 @@ export const describePendingMaintenanceActions: API.OperationMethod<
   input: DescribePendingMaintenanceActionsMessage,
   output: DescribePendingMaintenanceActionsResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribePendingMaintenanceActions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10071,6 +10135,7 @@ export const describeRecommendationLimitations: API.OperationMethod<
   input: DescribeRecommendationLimitationsRequest,
   output: DescribeRecommendationLimitationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault],
+  operationName: "DescribeRecommendationLimitations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10111,6 +10176,7 @@ export const describeRecommendations: API.OperationMethod<
   input: DescribeRecommendationsRequest,
   output: DescribeRecommendationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault],
+  operationName: "DescribeRecommendations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10133,6 +10199,7 @@ export const describeRefreshSchemasStatus: API.OperationMethod<
   input: DescribeRefreshSchemasStatusMessage,
   output: DescribeRefreshSchemasStatusResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "DescribeRefreshSchemasStatus",
 }));
 export type DescribeReplicationConfigsError =
   | ResourceNotFoundFault
@@ -10165,6 +10232,7 @@ export const describeReplicationConfigs: API.OperationMethod<
   input: DescribeReplicationConfigsMessage,
   output: DescribeReplicationConfigsResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeReplicationConfigs",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10202,6 +10270,7 @@ export const describeReplicationInstances: API.OperationMethod<
   input: DescribeReplicationInstancesMessage,
   output: DescribeReplicationInstancesResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeReplicationInstances",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10239,6 +10308,7 @@ export const describeReplicationInstanceTaskLogs: API.OperationMethod<
   input: DescribeReplicationInstanceTaskLogsMessage,
   output: DescribeReplicationInstanceTaskLogsResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "DescribeReplicationInstanceTaskLogs",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10274,6 +10344,7 @@ export const describeReplications: API.OperationMethod<
   input: DescribeReplicationsMessage,
   output: DescribeReplicationsResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeReplications",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10310,6 +10381,7 @@ export const describeReplicationSubnetGroups: API.OperationMethod<
   input: DescribeReplicationSubnetGroupsMessage,
   output: DescribeReplicationSubnetGroupsResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeReplicationSubnetGroups",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10348,6 +10420,7 @@ export const describeReplicationTableStatistics: API.OperationMethod<
   input: DescribeReplicationTableStatisticsMessage,
   output: DescribeReplicationTableStatisticsResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "DescribeReplicationTableStatistics",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10388,6 +10461,7 @@ export const describeReplicationTaskAssessmentResults: API.OperationMethod<
   input: DescribeReplicationTaskAssessmentResultsMessage,
   output: DescribeReplicationTaskAssessmentResultsResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeReplicationTaskAssessmentResults",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10432,6 +10506,7 @@ export const describeReplicationTaskAssessmentRuns: API.OperationMethod<
   input: DescribeReplicationTaskAssessmentRunsMessage,
   output: DescribeReplicationTaskAssessmentRunsResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeReplicationTaskAssessmentRuns",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10471,6 +10546,7 @@ export const describeReplicationTaskIndividualAssessments: API.OperationMethod<
   input: DescribeReplicationTaskIndividualAssessmentsMessage,
   output: DescribeReplicationTaskIndividualAssessmentsResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeReplicationTaskIndividualAssessments",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10508,6 +10584,7 @@ export const describeReplicationTasks: API.OperationMethod<
   input: DescribeReplicationTasksMessage,
   output: DescribeReplicationTasksResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribeReplicationTasks",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10545,6 +10622,7 @@ export const describeSchemas: API.OperationMethod<
   input: DescribeSchemasMessage,
   output: DescribeSchemasResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "DescribeSchemas",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10588,6 +10666,7 @@ export const describeTableStatistics: API.OperationMethod<
   input: DescribeTableStatisticsMessage,
   output: DescribeTableStatisticsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "DescribeTableStatistics",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -10610,6 +10689,7 @@ export const exportMetadataModelAssessment: API.OperationMethod<
   input: ExportMetadataModelAssessmentMessage,
   output: ExportMetadataModelAssessmentResponse,
   errors: [ResourceNotFoundFault],
+  operationName: "ExportMetadataModelAssessment",
 }));
 export type GetTargetSelectionRulesError =
   | AccessDeniedFault
@@ -10628,6 +10708,7 @@ export const getTargetSelectionRules: API.OperationMethod<
   input: GetTargetSelectionRulesMessage,
   output: GetTargetSelectionRulesResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "GetTargetSelectionRules",
 }));
 export type ImportCertificateError =
   | InvalidCertificateFault
@@ -10652,6 +10733,7 @@ export const importCertificate: API.OperationMethod<
     ResourceAlreadyExistsFault,
     ResourceQuotaExceededFault,
   ],
+  operationName: "ImportCertificate",
 }));
 export type ListTagsForResourceError =
   | InvalidResourceStateFault
@@ -10673,6 +10755,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceMessage,
   output: ListTagsForResourceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "ListTagsForResource",
 }));
 export type ModifyConversionConfigurationError =
   | InvalidResourceStateFault
@@ -10690,6 +10773,7 @@ export const modifyConversionConfiguration: API.OperationMethod<
   input: ModifyConversionConfigurationMessage,
   output: ModifyConversionConfigurationResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "ModifyConversionConfiguration",
 }));
 export type ModifyDataMigrationError =
   | FailedDependencyFault
@@ -10712,6 +10796,7 @@ export const modifyDataMigration: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  operationName: "ModifyDataMigration",
 }));
 export type ModifyDataProviderError =
   | AccessDeniedFault
@@ -10739,6 +10824,7 @@ export const modifyDataProvider: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  operationName: "ModifyDataProvider",
 }));
 export type ModifyEndpointError =
   | AccessDeniedFault
@@ -10772,6 +10858,7 @@ export const modifyEndpoint: API.OperationMethod<
     ResourceAlreadyExistsFault,
     ResourceNotFoundFault,
   ],
+  operationName: "ModifyEndpoint",
 }));
 export type ModifyEventSubscriptionError =
   | AccessDeniedFault
@@ -10808,6 +10895,7 @@ export const modifyEventSubscription: API.OperationMethod<
     SNSInvalidTopicFault,
     SNSNoAuthorizationFault,
   ],
+  operationName: "ModifyEventSubscription",
 }));
 export type ModifyInstanceProfileError =
   | AccessDeniedFault
@@ -10841,6 +10929,7 @@ export const modifyInstanceProfile: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  operationName: "ModifyInstanceProfile",
 }));
 export type ModifyMigrationProjectError =
   | AccessDeniedFault
@@ -10871,6 +10960,7 @@ export const modifyMigrationProject: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  operationName: "ModifyMigrationProject",
 }));
 export type ModifyReplicationConfigError =
   | AccessDeniedFault
@@ -10907,6 +10997,7 @@ export const modifyReplicationConfig: API.OperationMethod<
     ReplicationSubnetGroupDoesNotCoverEnoughAZs,
     ResourceNotFoundFault,
   ],
+  operationName: "ModifyReplicationConfig",
 }));
 export type ModifyReplicationInstanceError =
   | AccessDeniedFault
@@ -10940,6 +11031,7 @@ export const modifyReplicationInstance: API.OperationMethod<
     StorageQuotaExceededFault,
     UpgradeDependencyFailureFault,
   ],
+  operationName: "ModifyReplicationInstance",
 }));
 export type ModifyReplicationSubnetGroupError =
   | AccessDeniedFault
@@ -10968,6 +11060,7 @@ export const modifyReplicationSubnetGroup: API.OperationMethod<
     ResourceQuotaExceededFault,
     SubnetAlreadyInUse,
   ],
+  operationName: "ModifyReplicationSubnetGroup",
 }));
 export type ModifyReplicationTaskError =
   | InvalidResourceStateFault
@@ -10997,6 +11090,7 @@ export const modifyReplicationTask: API.OperationMethod<
     ResourceAlreadyExistsFault,
     ResourceNotFoundFault,
   ],
+  operationName: "ModifyReplicationTask",
 }));
 export type MoveReplicationTaskError =
   | AccessDeniedFault
@@ -11025,6 +11119,7 @@ export const moveReplicationTask: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  operationName: "MoveReplicationTask",
 }));
 export type RebootReplicationInstanceError =
   | InvalidResourceStateFault
@@ -11043,6 +11138,7 @@ export const rebootReplicationInstance: API.OperationMethod<
   input: RebootReplicationInstanceMessage,
   output: RebootReplicationInstanceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "RebootReplicationInstance",
 }));
 export type RefreshSchemasError =
   | InvalidResourceStateFault
@@ -11069,6 +11165,7 @@ export const refreshSchemas: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  operationName: "RefreshSchemas",
 }));
 export type ReloadReplicationTablesError =
   | InvalidResourceStateFault
@@ -11090,6 +11187,7 @@ export const reloadReplicationTables: API.OperationMethod<
   input: ReloadReplicationTablesMessage,
   output: ReloadReplicationTablesResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "ReloadReplicationTables",
 }));
 export type ReloadTablesError =
   | InvalidResourceStateFault
@@ -11110,6 +11208,7 @@ export const reloadTables: API.OperationMethod<
   input: ReloadTablesMessage,
   output: ReloadTablesResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "ReloadTables",
 }));
 export type RemoveTagsFromResourceError =
   | InvalidResourceStateFault
@@ -11131,6 +11230,7 @@ export const removeTagsFromResource: API.OperationMethod<
   input: RemoveTagsFromResourceMessage,
   output: RemoveTagsFromResourceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "RemoveTagsFromResource",
 }));
 export type RunFleetAdvisorLsaAnalysisError =
   | InvalidResourceStateFault
@@ -11150,6 +11250,7 @@ export const runFleetAdvisorLsaAnalysis: API.OperationMethod<
   input: RunFleetAdvisorLsaAnalysisRequest,
   output: RunFleetAdvisorLsaAnalysisResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "RunFleetAdvisorLsaAnalysis",
 }));
 export type StartDataMigrationError =
   | FailedDependencyFault
@@ -11176,6 +11277,7 @@ export const startDataMigration: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  operationName: "StartDataMigration",
 }));
 export type StartExtensionPackAssociationError =
   | AccessDeniedFault
@@ -11210,6 +11312,7 @@ export const startExtensionPackAssociation: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  operationName: "StartExtensionPackAssociation",
 }));
 export type StartMetadataModelAssessmentError =
   | AccessDeniedFault
@@ -11245,6 +11348,7 @@ export const startMetadataModelAssessment: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  operationName: "StartMetadataModelAssessment",
 }));
 export type StartMetadataModelConversionError =
   | AccessDeniedFault
@@ -11277,6 +11381,7 @@ export const startMetadataModelConversion: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  operationName: "StartMetadataModelConversion",
 }));
 export type StartMetadataModelCreationError =
   | AccessDeniedFault
@@ -11303,6 +11408,7 @@ export const startMetadataModelCreation: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  operationName: "StartMetadataModelCreation",
 }));
 export type StartMetadataModelExportAsScriptError =
   | AccessDeniedFault
@@ -11336,6 +11442,7 @@ export const startMetadataModelExportAsScript: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  operationName: "StartMetadataModelExportAsScript",
 }));
 export type StartMetadataModelExportToTargetError =
   | AccessDeniedFault
@@ -11368,6 +11475,7 @@ export const startMetadataModelExportToTarget: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  operationName: "StartMetadataModelExportToTarget",
 }));
 export type StartMetadataModelImportError =
   | AccessDeniedFault
@@ -11403,6 +11511,7 @@ export const startMetadataModelImport: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  operationName: "StartMetadataModelImport",
 }));
 export type StartRecommendationsError =
   | AccessDeniedFault
@@ -11426,6 +11535,7 @@ export const startRecommendations: API.OperationMethod<
   input: StartRecommendationsRequest,
   output: StartRecommendationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "StartRecommendations",
 }));
 export type StartReplicationError =
   | AccessDeniedFault
@@ -11448,6 +11558,7 @@ export const startReplication: API.OperationMethod<
   input: StartReplicationMessage,
   output: StartReplicationResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "StartReplication",
 }));
 export type StartReplicationTaskError =
   | AccessDeniedFault
@@ -11469,6 +11580,7 @@ export const startReplicationTask: API.OperationMethod<
   input: StartReplicationTaskMessage,
   output: StartReplicationTaskResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "StartReplicationTask",
 }));
 export type StartReplicationTaskAssessmentError =
   | InvalidResourceStateFault
@@ -11499,6 +11611,7 @@ export const startReplicationTaskAssessment: API.OperationMethod<
   input: StartReplicationTaskAssessmentMessage,
   output: StartReplicationTaskAssessmentResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "StartReplicationTaskAssessment",
 }));
 export type StartReplicationTaskAssessmentRunError =
   | AccessDeniedFault
@@ -11546,6 +11659,7 @@ export const startReplicationTaskAssessmentRun: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  operationName: "StartReplicationTaskAssessmentRun",
 }));
 export type StopDataMigrationError =
   | FailedDependencyFault
@@ -11568,6 +11682,7 @@ export const stopDataMigration: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  operationName: "StopDataMigration",
 }));
 export type StopReplicationError =
   | AccessDeniedFault
@@ -11588,6 +11703,7 @@ export const stopReplication: API.OperationMethod<
   input: StopReplicationMessage,
   output: StopReplicationResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "StopReplication",
 }));
 export type StopReplicationTaskError =
   | InvalidResourceStateFault
@@ -11605,6 +11721,7 @@ export const stopReplicationTask: API.OperationMethod<
   input: StopReplicationTaskMessage,
   output: StopReplicationTaskResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  operationName: "StopReplicationTask",
 }));
 export type TestConnectionError =
   | AccessDeniedFault
@@ -11631,6 +11748,7 @@ export const testConnection: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  operationName: "TestConnection",
 }));
 export type UpdateSubscriptionsToEventBridgeError =
   | AccessDeniedFault
@@ -11659,4 +11777,5 @@ export const updateSubscriptionsToEventBridge: API.OperationMethod<
   input: UpdateSubscriptionsToEventBridgeMessage,
   output: UpdateSubscriptionsToEventBridgeResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault],
+  operationName: "UpdateSubscriptionsToEventBridge",
 }));

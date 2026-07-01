@@ -582,6 +582,7 @@ export const completeSnapshot: API.OperationMethod<
     ValidationException,
     InvalidSignatureException,
   ],
+  operationName: "CompleteSnapshot",
 }));
 export type GetSnapshotBlockError =
   | AccessDeniedException
@@ -615,6 +616,7 @@ export const getSnapshotBlock: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "GetSnapshotBlock",
 }));
 export type ListChangedBlocksError =
   | AccessDeniedException
@@ -664,6 +666,7 @@ export const listChangedBlocks: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "ListChangedBlocks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -717,6 +720,7 @@ export const listSnapshotBlocks: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "ListSnapshotBlocks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -761,6 +765,7 @@ export const putSnapshotBlock: API.OperationMethod<
     ValidationException,
     InvalidSignatureException,
   ],
+  operationName: "PutSnapshotBlock",
 }));
 export type StartSnapshotError =
   | AccessDeniedException
@@ -802,4 +807,5 @@ export const startSnapshot: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "StartSnapshot",
 }));

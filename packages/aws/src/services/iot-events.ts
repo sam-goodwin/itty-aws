@@ -1996,6 +1996,7 @@ export const createAlarmModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "CreateAlarmModel",
 }));
 export type CreateDetectorModelError =
   | InternalFailureException
@@ -2026,6 +2027,7 @@ export const createDetectorModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "CreateDetectorModel",
 }));
 export type CreateInputError =
   | InternalFailureException
@@ -2052,6 +2054,7 @@ export const createInput: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "CreateInput",
 }));
 export type DeleteAlarmModelError =
   | InternalFailureException
@@ -2081,6 +2084,7 @@ export const deleteAlarmModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteAlarmModel",
 }));
 export type DeleteDetectorModelError =
   | InternalFailureException
@@ -2110,6 +2114,7 @@ export const deleteDetectorModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteDetectorModel",
 }));
 export type DeleteInputError =
   | InternalFailureException
@@ -2138,6 +2143,7 @@ export const deleteInput: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteInput",
 }));
 export type DescribeAlarmModelError =
   | InternalFailureException
@@ -2165,6 +2171,7 @@ export const describeAlarmModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeAlarmModel",
 }));
 export type DescribeDetectorModelError =
   | InternalFailureException
@@ -2192,6 +2199,7 @@ export const describeDetectorModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeDetectorModel",
 }));
 export type DescribeDetectorModelAnalysisError =
   | InternalFailureException
@@ -2220,6 +2228,7 @@ export const describeDetectorModelAnalysis: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeDetectorModelAnalysis",
 }));
 export type DescribeInputError =
   | InternalFailureException
@@ -2246,6 +2255,7 @@ export const describeInput: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeInput",
 }));
 export type DescribeLoggingOptionsError =
   | InternalFailureException
@@ -2274,6 +2284,7 @@ export const describeLoggingOptions: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeLoggingOptions",
 }));
 export type GetDetectorModelAnalysisResultsError =
   | InternalFailureException
@@ -2302,6 +2313,7 @@ export const getDetectorModelAnalysisResults: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetDetectorModelAnalysisResults",
 }));
 export type ListAlarmModelsError =
   | InternalFailureException
@@ -2327,6 +2339,7 @@ export const listAlarmModels: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListAlarmModels",
 }));
 export type ListAlarmModelVersionsError =
   | InternalFailureException
@@ -2354,6 +2367,7 @@ export const listAlarmModelVersions: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListAlarmModelVersions",
 }));
 export type ListDetectorModelsError =
   | InternalFailureException
@@ -2379,6 +2393,7 @@ export const listDetectorModels: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListDetectorModels",
 }));
 export type ListDetectorModelVersionsError =
   | InternalFailureException
@@ -2406,6 +2421,7 @@ export const listDetectorModelVersions: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListDetectorModelVersions",
 }));
 export type ListInputRoutingsError =
   | InternalFailureException
@@ -2432,6 +2448,7 @@ export const listInputRoutings: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListInputRoutings",
 }));
 export type ListInputsError =
   | InternalFailureException
@@ -2456,6 +2473,7 @@ export const listInputs: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListInputs",
 }));
 export type ListTagsForResourceError =
   | InternalFailureException
@@ -2482,6 +2500,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutLoggingOptionsError =
   | InternalFailureException
@@ -2515,6 +2534,7 @@ export const putLoggingOptions: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  operationName: "PutLoggingOptions",
 }));
 export type StartDetectorModelAnalysisError =
   | InternalFailureException
@@ -2543,6 +2563,7 @@ export const startDetectorModelAnalysis: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "StartDetectorModelAnalysis",
 }));
 export type TagResourceError =
   | InternalFailureException
@@ -2572,6 +2593,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalFailureException
@@ -2598,6 +2620,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAlarmModelError =
   | InternalFailureException
@@ -2627,6 +2650,7 @@ export const updateAlarmModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateAlarmModel",
 }));
 export type UpdateDetectorModelError =
   | InternalFailureException
@@ -2656,6 +2680,7 @@ export const updateDetectorModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateDetectorModel",
 }));
 export type UpdateInputError =
   | InternalFailureException
@@ -2684,4 +2709,5 @@ export const updateInput: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateInput",
 }));

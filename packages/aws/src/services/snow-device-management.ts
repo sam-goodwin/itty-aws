@@ -886,6 +886,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -908,6 +909,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -930,6 +932,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type DescribeDeviceError =
   | AccessDeniedException
@@ -957,6 +960,7 @@ export const describeDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeDevice",
 }));
 export type ListDevicesError =
   | AccessDeniedException
@@ -997,6 +1001,7 @@ export const listDevices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDevices",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1031,6 +1036,7 @@ export const describeDeviceEc2Instances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeDeviceEc2Instances",
 }));
 export type ListDeviceResourcesError =
   | AccessDeniedException
@@ -1072,6 +1078,7 @@ export const listDeviceResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDeviceResources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1106,6 +1113,7 @@ export const createTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateTask",
 }));
 export type DescribeTaskError =
   | AccessDeniedException
@@ -1132,6 +1140,7 @@ export const describeTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeTask",
 }));
 export type ListTasksError =
   | AccessDeniedException
@@ -1171,6 +1180,7 @@ export const listTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTasks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1207,6 +1217,7 @@ export const cancelTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelTask",
 }));
 export type DescribeExecutionError =
   | AccessDeniedException
@@ -1233,6 +1244,7 @@ export const describeExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeExecution",
 }));
 export type ListExecutionsError =
   | AccessDeniedException
@@ -1274,6 +1286,7 @@ export const listExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListExecutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

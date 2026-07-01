@@ -1584,6 +1584,7 @@ export const addWorkload: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "AddWorkload",
 }));
 export type CreateApplicationError =
   | AccessDeniedException
@@ -1612,6 +1613,7 @@ export const createApplication: API.OperationMethod<
     TagsAlreadyExistException,
     ValidationException,
   ],
+  operationName: "CreateApplication",
 }));
 export type CreateComponentError =
   | InternalServerException
@@ -1636,6 +1638,7 @@ export const createComponent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreateComponent",
 }));
 export type CreateLogPatternError =
   | InternalServerException
@@ -1660,6 +1663,7 @@ export const createLogPattern: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreateLogPattern",
 }));
 export type DeleteApplicationError =
   | BadRequestException
@@ -1685,6 +1689,7 @@ export const deleteApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteApplication",
 }));
 export type DeleteComponentError =
   | InternalServerException
@@ -1709,6 +1714,7 @@ export const deleteComponent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteComponent",
 }));
 export type DeleteLogPatternError =
   | BadRequestException
@@ -1733,6 +1739,7 @@ export const deleteLogPattern: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteLogPattern",
 }));
 export type DescribeApplicationError =
   | InternalServerException
@@ -1755,6 +1762,7 @@ export const describeApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeApplication",
 }));
 export type DescribeComponentError =
   | InternalServerException
@@ -1778,6 +1786,7 @@ export const describeComponent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeComponent",
 }));
 export type DescribeComponentConfigurationError =
   | InternalServerException
@@ -1800,6 +1809,7 @@ export const describeComponentConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeComponentConfiguration",
 }));
 export type DescribeComponentConfigurationRecommendationError =
   | InternalServerException
@@ -1822,6 +1832,7 @@ export const describeComponentConfigurationRecommendation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeComponentConfigurationRecommendation",
 }));
 export type DescribeLogPatternError =
   | InternalServerException
@@ -1844,6 +1855,7 @@ export const describeLogPattern: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeLogPattern",
 }));
 export type DescribeObservationError =
   | InternalServerException
@@ -1866,6 +1878,7 @@ export const describeObservation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeObservation",
 }));
 export type DescribeProblemError =
   | InternalServerException
@@ -1888,6 +1901,7 @@ export const describeProblem: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeProblem",
 }));
 export type DescribeProblemObservationsError =
   | InternalServerException
@@ -1910,6 +1924,7 @@ export const describeProblemObservations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeProblemObservations",
 }));
 export type DescribeWorkloadError =
   | InternalServerException
@@ -1932,6 +1947,7 @@ export const describeWorkload: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeWorkload",
 }));
 export type ListApplicationsError =
   | InternalServerException
@@ -1964,6 +1980,7 @@ export const listApplications: API.OperationMethod<
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2006,6 +2023,7 @@ export const listComponents: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListComponents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2056,6 +2074,7 @@ export const listConfigurationHistory: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListConfigurationHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2098,6 +2117,7 @@ export const listLogPatterns: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListLogPatterns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2140,6 +2160,7 @@ export const listLogPatternSets: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListLogPatternSets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2182,6 +2203,7 @@ export const listProblems: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListProblems",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2209,6 +2231,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListTagsForResource",
 }));
 export type ListWorkloadsError =
   | InternalServerException
@@ -2246,6 +2269,7 @@ export const listWorkloads: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListWorkloads",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2273,6 +2297,7 @@ export const removeWorkload: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "RemoveWorkload",
 }));
 export type TagResourceError =
   | ResourceNotFoundException
@@ -2303,6 +2328,7 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ResourceNotFoundException
@@ -2320,6 +2346,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "UntagResource",
 }));
 export type UpdateApplicationError =
   | InternalServerException
@@ -2342,6 +2369,7 @@ export const updateApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateApplication",
 }));
 export type UpdateComponentError =
   | InternalServerException
@@ -2367,6 +2395,7 @@ export const updateComponent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateComponent",
 }));
 export type UpdateComponentConfigurationError =
   | InternalServerException
@@ -2393,6 +2422,7 @@ export const updateComponentConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateComponentConfiguration",
 }));
 export type UpdateLogPatternError =
   | InternalServerException
@@ -2417,6 +2447,7 @@ export const updateLogPattern: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateLogPattern",
 }));
 export type UpdateProblemError =
   | InternalServerException
@@ -2440,6 +2471,7 @@ export const updateProblem: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateProblem",
 }));
 export type UpdateWorkloadError =
   | InternalServerException
@@ -2462,4 +2494,5 @@ export const updateWorkload: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateWorkload",
 }));

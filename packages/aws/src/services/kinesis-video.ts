@@ -1758,6 +1758,7 @@ export const createSignalingChannel: API.OperationMethod<
     ResourceInUseException,
     TagsPerResourceExceededLimitException,
   ],
+  operationName: "CreateSignalingChannel",
 }));
 export type CreateStreamError =
   | AccountStreamLimitExceededException
@@ -1798,6 +1799,7 @@ export const createStream: API.OperationMethod<
     ResourceInUseException,
     TagsPerResourceExceededLimitException,
   ],
+  operationName: "CreateStream",
 }));
 export type DeleteEdgeConfigurationError =
   | AccessDeniedException
@@ -1828,6 +1830,7 @@ export const deleteEdgeConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     StreamEdgeConfigurationNotFoundException,
   ],
+  operationName: "DeleteEdgeConfiguration",
 }));
 export type DeleteSignalingChannelError =
   | AccessDeniedException
@@ -1858,6 +1861,7 @@ export const deleteSignalingChannel: API.OperationMethod<
     ResourceNotFoundException,
     VersionMismatchException,
   ],
+  operationName: "DeleteSignalingChannel",
 }));
 export type DeleteStreamError =
   | ClientLimitExceededException
@@ -1897,6 +1901,7 @@ export const deleteStream: API.OperationMethod<
     ResourceNotFoundException,
     VersionMismatchException,
   ],
+  operationName: "DeleteStream",
 }));
 export type DescribeEdgeConfigurationError =
   | AccessDeniedException
@@ -1927,6 +1932,7 @@ export const describeEdgeConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     StreamEdgeConfigurationNotFoundException,
   ],
+  operationName: "DescribeEdgeConfiguration",
 }));
 export type DescribeImageGenerationConfigurationError =
   | AccessDeniedException
@@ -1951,6 +1957,7 @@ export const describeImageGenerationConfiguration: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeImageGenerationConfiguration",
 }));
 export type DescribeMappedResourceConfigurationError =
   | AccessDeniedException
@@ -1991,6 +1998,7 @@ export const describeMappedResourceConfiguration: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeMappedResourceConfiguration",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2022,6 +2030,7 @@ export const describeMediaStorageConfiguration: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeMediaStorageConfiguration",
 }));
 export type DescribeNotificationConfigurationError =
   | AccessDeniedException
@@ -2046,6 +2055,7 @@ export const describeNotificationConfiguration: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeNotificationConfiguration",
 }));
 export type DescribeSignalingChannelError =
   | AccessDeniedException
@@ -2072,6 +2082,7 @@ export const describeSignalingChannel: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeSignalingChannel",
 }));
 export type DescribeStreamError =
   | ClientLimitExceededException
@@ -2097,6 +2108,7 @@ export const describeStream: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeStream",
 }));
 export type DescribeStreamStorageConfigurationError =
   | AccessDeniedException
@@ -2125,6 +2137,7 @@ export const describeStreamStorageConfiguration: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeStreamStorageConfiguration",
 }));
 export type GetDataEndpointError =
   | ClientLimitExceededException
@@ -2158,6 +2171,7 @@ export const getDataEndpoint: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  operationName: "GetDataEndpoint",
 }));
 export type GetSignalingChannelEndpointError =
   | AccessDeniedException
@@ -2198,6 +2212,7 @@ export const getSignalingChannelEndpoint: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "GetSignalingChannelEndpoint",
 }));
 export type ListEdgeAgentConfigurationsError =
   | ClientLimitExceededException
@@ -2237,6 +2252,7 @@ export const listEdgeAgentConfigurations: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  operationName: "ListEdgeAgentConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2282,6 +2298,7 @@ export const listSignalingChannels: API.OperationMethod<
     ClientLimitExceededException,
     InvalidArgumentException,
   ],
+  operationName: "ListSignalingChannels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2322,6 +2339,7 @@ export const listStreams: API.OperationMethod<
   input: ListStreamsInput,
   output: ListStreamsOutput,
   errors: [ClientLimitExceededException, InvalidArgumentException],
+  operationName: "ListStreams",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2352,6 +2370,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTagsForStreamError =
   | ClientLimitExceededException
@@ -2381,6 +2400,7 @@ export const listTagsForStream: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForStream",
 }));
 export type StartEdgeConfigurationUpdateError =
   | AccessDeniedException
@@ -2424,6 +2444,7 @@ export const startEdgeConfigurationUpdate: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "StartEdgeConfigurationUpdate",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2455,6 +2476,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TagsPerResourceExceededLimitException,
   ],
+  operationName: "TagResource",
 }));
 export type TagStreamError =
   | ClientLimitExceededException
@@ -2495,6 +2517,7 @@ export const tagStream: API.OperationMethod<
     ResourceNotFoundException,
     TagsPerResourceExceededLimitException,
   ],
+  operationName: "TagStream",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2521,6 +2544,7 @@ export const untagResource: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UntagStreamError =
   | ClientLimitExceededException
@@ -2552,6 +2576,7 @@ export const untagStream: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagStream",
 }));
 export type UpdateDataRetentionError =
   | ClientLimitExceededException
@@ -2599,6 +2624,7 @@ export const updateDataRetention: API.OperationMethod<
     ResourceNotFoundException,
     VersionMismatchException,
   ],
+  operationName: "UpdateDataRetention",
 }));
 export type UpdateImageGenerationConfigurationError =
   | AccessDeniedException
@@ -2627,6 +2653,7 @@ export const updateImageGenerationConfiguration: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateImageGenerationConfiguration",
 }));
 export type UpdateMediaStorageConfigurationError =
   | AccessDeniedException
@@ -2668,6 +2695,7 @@ export const updateMediaStorageConfiguration: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateMediaStorageConfiguration",
 }));
 export type UpdateNotificationConfigurationError =
   | AccessDeniedException
@@ -2696,6 +2724,7 @@ export const updateNotificationConfiguration: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateNotificationConfiguration",
 }));
 export type UpdateSignalingChannelError =
   | AccessDeniedException
@@ -2730,6 +2759,7 @@ export const updateSignalingChannel: API.OperationMethod<
     ResourceNotFoundException,
     VersionMismatchException,
   ],
+  operationName: "UpdateSignalingChannel",
 }));
 export type UpdateStreamError =
   | ClientLimitExceededException
@@ -2769,6 +2799,7 @@ export const updateStream: API.OperationMethod<
     ResourceNotFoundException,
     VersionMismatchException,
   ],
+  operationName: "UpdateStream",
 }));
 export type UpdateStreamStorageConfigurationError =
   | AccessDeniedException
@@ -2803,4 +2834,5 @@ export const updateStreamStorageConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     VersionMismatchException,
   ],
+  operationName: "UpdateStreamStorageConfiguration",
 }));

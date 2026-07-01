@@ -946,6 +946,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -960,6 +961,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [ResourceNotFoundException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -974,6 +976,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type CreateGatewayError = CommonErrors;
 /**
@@ -989,6 +992,7 @@ export const createGateway: API.OperationMethod<
   input: CreateGatewayInput,
   output: CreateGatewayOutput,
   errors: [],
+  operationName: "CreateGateway",
 }));
 export type GetGatewayError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1004,6 +1008,7 @@ export const getGateway: API.OperationMethod<
   input: GetGatewayInput,
   output: GetGatewayOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetGateway",
 }));
 export type UpdateGatewayInformationError =
   | ConflictException
@@ -1022,6 +1027,7 @@ export const updateGatewayInformation: API.OperationMethod<
   input: UpdateGatewayInformationInput,
   output: UpdateGatewayInformationOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  operationName: "UpdateGatewayInformation",
 }));
 export type DeleteGatewayError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1036,6 +1042,7 @@ export const deleteGateway: API.OperationMethod<
   input: DeleteGatewayInput,
   output: DeleteGatewayOutput,
   errors: [ResourceNotFoundException],
+  operationName: "DeleteGateway",
 }));
 export type ListGatewaysError = CommonErrors;
 /**
@@ -1065,6 +1072,7 @@ export const listGateways: API.OperationMethod<
   input: ListGatewaysInput,
   output: ListGatewaysOutput,
   errors: [],
+  operationName: "ListGateways",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1086,6 +1094,7 @@ export const associateGatewayToServer: API.OperationMethod<
   input: AssociateGatewayToServerInput,
   output: AssociateGatewayToServerOutput,
   errors: [ConflictException],
+  operationName: "AssociateGatewayToServer",
 }));
 export type DisassociateGatewayFromServerError =
   | ConflictException
@@ -1104,6 +1113,7 @@ export const disassociateGatewayFromServer: API.OperationMethod<
   input: DisassociateGatewayFromServerInput,
   output: DisassociateGatewayFromServerOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  operationName: "DisassociateGatewayFromServer",
 }));
 export type PutMaintenanceStartTimeError =
   | ConflictException
@@ -1121,6 +1131,7 @@ export const putMaintenanceStartTime: API.OperationMethod<
   input: PutMaintenanceStartTimeInput,
   output: PutMaintenanceStartTimeOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  operationName: "PutMaintenanceStartTime",
 }));
 export type TestHypervisorConfigurationError =
   | ConflictException
@@ -1139,6 +1150,7 @@ export const testHypervisorConfiguration: API.OperationMethod<
   input: TestHypervisorConfigurationInput,
   output: TestHypervisorConfigurationOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  operationName: "TestHypervisorConfiguration",
 }));
 export type UpdateGatewaySoftwareNowError =
   | ResourceNotFoundException
@@ -1160,6 +1172,7 @@ export const updateGatewaySoftwareNow: API.OperationMethod<
   input: UpdateGatewaySoftwareNowInput,
   output: UpdateGatewaySoftwareNowOutput,
   errors: [ResourceNotFoundException],
+  operationName: "UpdateGatewaySoftwareNow",
 }));
 export type PutBandwidthRateLimitScheduleError =
   | ResourceNotFoundException
@@ -1179,6 +1192,7 @@ export const putBandwidthRateLimitSchedule: API.OperationMethod<
   input: PutBandwidthRateLimitScheduleInput,
   output: PutBandwidthRateLimitScheduleOutput,
   errors: [ResourceNotFoundException],
+  operationName: "PutBandwidthRateLimitSchedule",
 }));
 export type GetBandwidthRateLimitScheduleError =
   | ResourceNotFoundException
@@ -1198,6 +1212,7 @@ export const getBandwidthRateLimitSchedule: API.OperationMethod<
   input: GetBandwidthRateLimitScheduleInput,
   output: GetBandwidthRateLimitScheduleOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetBandwidthRateLimitSchedule",
 }));
 export type ImportHypervisorConfigurationError =
   | AccessDeniedException
@@ -1215,6 +1230,7 @@ export const importHypervisorConfiguration: API.OperationMethod<
   input: ImportHypervisorConfigurationInput,
   output: ImportHypervisorConfigurationOutput,
   errors: [AccessDeniedException, ConflictException],
+  operationName: "ImportHypervisorConfiguration",
 }));
 export type GetHypervisorError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1231,6 +1247,7 @@ export const getHypervisor: API.OperationMethod<
   input: GetHypervisorInput,
   output: GetHypervisorOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetHypervisor",
 }));
 export type UpdateHypervisorError =
   | AccessDeniedException
@@ -1251,6 +1268,7 @@ export const updateHypervisor: API.OperationMethod<
   input: UpdateHypervisorInput,
   output: UpdateHypervisorOutput,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
+  operationName: "UpdateHypervisor",
 }));
 export type DeleteHypervisorError =
   | AccessDeniedException
@@ -1269,6 +1287,7 @@ export const deleteHypervisor: API.OperationMethod<
   input: DeleteHypervisorInput,
   output: DeleteHypervisorOutput,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
+  operationName: "DeleteHypervisor",
 }));
 export type ListHypervisorsError = CommonErrors;
 /**
@@ -1298,6 +1317,7 @@ export const listHypervisors: API.OperationMethod<
   input: ListHypervisorsInput,
   output: ListHypervisorsOutput,
   errors: [],
+  operationName: "ListHypervisors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1321,6 +1341,7 @@ export const startVirtualMachinesMetadataSync: API.OperationMethod<
   input: StartVirtualMachinesMetadataSyncInput,
   output: StartVirtualMachinesMetadataSyncOutput,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "StartVirtualMachinesMetadataSync",
 }));
 export type PutHypervisorPropertyMappingsError =
   | AccessDeniedException
@@ -1341,6 +1362,7 @@ export const putHypervisorPropertyMappings: API.OperationMethod<
   input: PutHypervisorPropertyMappingsInput,
   output: PutHypervisorPropertyMappingsOutput,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
+  operationName: "PutHypervisorPropertyMappings",
 }));
 export type GetHypervisorPropertyMappingsError =
   | ResourceNotFoundException
@@ -1359,6 +1381,7 @@ export const getHypervisorPropertyMappings: API.OperationMethod<
   input: GetHypervisorPropertyMappingsInput,
   output: GetHypervisorPropertyMappingsOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetHypervisorPropertyMappings",
 }));
 export type GetVirtualMachineError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1373,6 +1396,7 @@ export const getVirtualMachine: API.OperationMethod<
   input: GetVirtualMachineInput,
   output: GetVirtualMachineOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetVirtualMachine",
 }));
 export type ListVirtualMachinesError = CommonErrors;
 /**
@@ -1402,6 +1426,7 @@ export const listVirtualMachines: API.OperationMethod<
   input: ListVirtualMachinesInput,
   output: ListVirtualMachinesOutput,
   errors: [],
+  operationName: "ListVirtualMachines",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

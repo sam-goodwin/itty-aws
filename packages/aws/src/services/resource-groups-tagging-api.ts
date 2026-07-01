@@ -616,6 +616,7 @@ export const describeReportCreation: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  operationName: "DescribeReportCreation",
 }));
 export type GetComplianceSummaryError =
   | ConstraintViolationException
@@ -669,6 +670,7 @@ export const getComplianceSummary: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  operationName: "GetComplianceSummary",
   pagination: {
     inputToken: "PaginationToken",
     outputToken: "PaginationToken",
@@ -738,6 +740,7 @@ export const getResources: API.OperationMethod<
     PaginationTokenExpiredException,
     ThrottledException,
   ],
+  operationName: "GetResources",
   pagination: {
     inputToken: "PaginationToken",
     outputToken: "PaginationToken",
@@ -791,6 +794,7 @@ export const getTagKeys: API.OperationMethod<
     PaginationTokenExpiredException,
     ThrottledException,
   ],
+  operationName: "GetTagKeys",
   pagination: {
     inputToken: "PaginationToken",
     outputToken: "PaginationToken",
@@ -843,6 +847,7 @@ export const getTagValues: API.OperationMethod<
     PaginationTokenExpiredException,
     ThrottledException,
   ],
+  operationName: "GetTagValues",
   pagination: {
     inputToken: "PaginationToken",
     outputToken: "PaginationToken",
@@ -887,6 +892,7 @@ export const listRequiredTags: API.OperationMethod<
     PaginationTokenExpiredException,
     ThrottledException,
   ],
+  operationName: "ListRequiredTags",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -939,6 +945,7 @@ export const startReportCreation: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  operationName: "StartReportCreation",
 }));
 export type TagResourcesError =
   | InternalServiceException
@@ -1010,6 +1017,7 @@ export const tagResources: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  operationName: "TagResources",
 }));
 export type UntagResourcesError =
   | InternalServiceException
@@ -1061,4 +1069,5 @@ export const untagResources: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  operationName: "UntagResources",
 }));

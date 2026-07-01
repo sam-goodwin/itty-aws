@@ -4978,6 +4978,7 @@ export const associateApprovalRuleTemplateWithRepository: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "AssociateApprovalRuleTemplateWithRepository",
 }));
 export type BatchAssociateApprovalRuleTemplateWithRepositoriesError =
   | ApprovalRuleTemplateDoesNotExistException
@@ -5014,6 +5015,7 @@ export const batchAssociateApprovalRuleTemplateWithRepositories: API.OperationMe
     MaximumRepositoryNamesExceededException,
     RepositoryNamesRequiredException,
   ],
+  operationName: "BatchAssociateApprovalRuleTemplateWithRepositories",
 }));
 export type BatchDescribeMergeConflictsError =
   | CommitDoesNotExistException
@@ -5072,6 +5074,7 @@ export const batchDescribeMergeConflicts: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  operationName: "BatchDescribeMergeConflicts",
 }));
 export type BatchDisassociateApprovalRuleTemplateFromRepositoriesError =
   | ApprovalRuleTemplateDoesNotExistException
@@ -5108,6 +5111,7 @@ export const batchDisassociateApprovalRuleTemplateFromRepositories: API.Operatio
     MaximumRepositoryNamesExceededException,
     RepositoryNamesRequiredException,
   ],
+  operationName: "BatchDisassociateApprovalRuleTemplateFromRepositories",
 }));
 export type BatchGetCommitsError =
   | CommitIdsLimitExceededException
@@ -5144,6 +5148,7 @@ export const batchGetCommits: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "BatchGetCommits",
 }));
 export type BatchGetRepositoriesError =
   | EncryptionIntegrityChecksFailedException
@@ -5182,6 +5187,7 @@ export const batchGetRepositories: API.OperationMethod<
     MaximumRepositoryNamesExceededException,
     RepositoryNamesRequiredException,
   ],
+  operationName: "BatchGetRepositories",
 }));
 export type CreateApprovalRuleTemplateError =
   | ApprovalRuleTemplateContentRequiredException
@@ -5216,6 +5222,7 @@ export const createApprovalRuleTemplate: API.OperationMethod<
     InvalidApprovalRuleTemplateNameException,
     NumberOfRuleTemplatesExceededException,
   ],
+  operationName: "CreateApprovalRuleTemplate",
 }));
 export type CreateBranchError =
   | BranchNameExistsException
@@ -5262,6 +5269,7 @@ export const createBranch: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "CreateBranch",
 }));
 export type CreateCommitError =
   | BranchDoesNotExistException
@@ -5354,6 +5362,7 @@ export const createCommit: API.OperationMethod<
     SamePathRequestException,
     SourceFileOrContentRequiredException,
   ],
+  operationName: "CreateCommit",
 }));
 export type CreatePullRequestError =
   | ClientRequestTokenRequiredException
@@ -5420,6 +5429,7 @@ export const createPullRequest: API.OperationMethod<
     TargetsRequiredException,
     TitleRequiredException,
   ],
+  operationName: "CreatePullRequest",
 }));
 export type CreatePullRequestApprovalRuleError =
   | ApprovalRuleContentRequiredException
@@ -5466,6 +5476,7 @@ export const createPullRequestApprovalRule: API.OperationMethod<
     PullRequestDoesNotExistException,
     PullRequestIdRequiredException,
   ],
+  operationName: "CreatePullRequestApprovalRule",
 }));
 export type CreateRepositoryError =
   | EncryptionIntegrityChecksFailedException
@@ -5516,6 +5527,7 @@ export const createRepository: API.OperationMethod<
     TagPolicyException,
     TooManyTagsException,
   ],
+  operationName: "CreateRepository",
 }));
 export type CreateUnreferencedMergeCommitError =
   | CommitDoesNotExistException
@@ -5610,6 +5622,7 @@ export const createUnreferencedMergeCommit: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  operationName: "CreateUnreferencedMergeCommit",
 }));
 export type DeleteApprovalRuleTemplateError =
   | ApprovalRuleTemplateInUseException
@@ -5632,6 +5645,7 @@ export const deleteApprovalRuleTemplate: API.OperationMethod<
     ApprovalRuleTemplateNameRequiredException,
     InvalidApprovalRuleTemplateNameException,
   ],
+  operationName: "DeleteApprovalRuleTemplate",
 }));
 export type DeleteBranchError =
   | BranchNameRequiredException
@@ -5670,6 +5684,7 @@ export const deleteBranch: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "DeleteBranch",
 }));
 export type DeleteCommentContentError =
   | CommentDeletedException
@@ -5694,6 +5709,7 @@ export const deleteCommentContent: API.OperationMethod<
     CommentIdRequiredException,
     InvalidCommentIdException,
   ],
+  operationName: "DeleteCommentContent",
 }));
 export type DeleteFileError =
   | BranchDoesNotExistException
@@ -5756,6 +5772,7 @@ export const deleteFile: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "DeleteFile",
 }));
 export type DeletePullRequestApprovalRuleError =
   | ApprovalRuleNameRequiredException
@@ -5798,6 +5815,7 @@ export const deletePullRequestApprovalRule: API.OperationMethod<
     PullRequestDoesNotExistException,
     PullRequestIdRequiredException,
   ],
+  operationName: "DeletePullRequestApprovalRule",
 }));
 export type DeleteRepositoryError =
   | EncryptionIntegrityChecksFailedException
@@ -5832,6 +5850,7 @@ export const deleteRepository: API.OperationMethod<
     InvalidRepositoryNameException,
     RepositoryNameRequiredException,
   ],
+  operationName: "DeleteRepository",
 }));
 export type DescribeMergeConflictsError =
   | CommitDoesNotExistException
@@ -5911,6 +5930,7 @@ export const describeMergeConflicts: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  operationName: "DescribeMergeConflicts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5973,6 +5993,7 @@ export const describePullRequestEvents: API.OperationMethod<
     PullRequestDoesNotExistException,
     PullRequestIdRequiredException,
   ],
+  operationName: "DescribePullRequestEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6019,6 +6040,7 @@ export const disassociateApprovalRuleTemplateFromRepository: API.OperationMethod
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "DisassociateApprovalRuleTemplateFromRepository",
 }));
 export type EvaluatePullRequestApprovalRulesError =
   | EncryptionIntegrityChecksFailedException
@@ -6057,6 +6079,7 @@ export const evaluatePullRequestApprovalRules: API.OperationMethod<
     RevisionIdRequiredException,
     RevisionNotCurrentException,
   ],
+  operationName: "EvaluatePullRequestApprovalRules",
 }));
 export type GetApprovalRuleTemplateError =
   | ApprovalRuleTemplateDoesNotExistException
@@ -6079,6 +6102,7 @@ export const getApprovalRuleTemplate: API.OperationMethod<
     ApprovalRuleTemplateNameRequiredException,
     InvalidApprovalRuleTemplateNameException,
   ],
+  operationName: "GetApprovalRuleTemplate",
 }));
 export type GetBlobError =
   | BlobIdDoesNotExistException
@@ -6119,6 +6143,7 @@ export const getBlob: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "GetBlob",
 }));
 export type GetBranchError =
   | BranchDoesNotExistException
@@ -6157,6 +6182,7 @@ export const getBranch: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "GetBranch",
 }));
 export type GetCommentError =
   | CommentDeletedException
@@ -6194,6 +6220,7 @@ export const getComment: API.OperationMethod<
     EncryptionKeyUnavailableException,
     InvalidCommentIdException,
   ],
+  operationName: "GetComment",
 }));
 export type GetCommentReactionsError =
   | CommentDeletedException
@@ -6239,6 +6266,7 @@ export const getCommentReactions: API.OperationMethod<
     InvalidMaxResultsException,
     InvalidReactionUserArnException,
   ],
+  operationName: "GetCommentReactions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6304,6 +6332,7 @@ export const getCommentsForComparedCommit: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "GetCommentsForComparedCommit",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6377,6 +6406,7 @@ export const getCommentsForPullRequest: API.OperationMethod<
     RepositoryNameRequiredException,
     RepositoryNotAssociatedWithPullRequestException,
   ],
+  operationName: "GetCommentsForPullRequest",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6420,6 +6450,7 @@ export const getCommit: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "GetCommit",
 }));
 export type GetDifferencesError =
   | CommitDoesNotExistException
@@ -6485,6 +6516,7 @@ export const getDifferences: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "GetDifferences",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6534,6 +6566,7 @@ export const getFile: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "GetFile",
 }));
 export type GetFolderError =
   | CommitDoesNotExistException
@@ -6576,6 +6609,7 @@ export const getFolder: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "GetFolder",
 }));
 export type GetMergeCommitError =
   | CommitDoesNotExistException
@@ -6618,6 +6652,7 @@ export const getMergeCommit: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "GetMergeCommit",
 }));
 export type GetMergeConflictsError =
   | CommitDoesNotExistException
@@ -6693,6 +6728,7 @@ export const getMergeConflicts: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  operationName: "GetMergeConflicts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6748,6 +6784,7 @@ export const getMergeOptions: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  operationName: "GetMergeOptions",
 }));
 export type GetPullRequestError =
   | EncryptionIntegrityChecksFailedException
@@ -6780,6 +6817,7 @@ export const getPullRequest: API.OperationMethod<
     PullRequestDoesNotExistException,
     PullRequestIdRequiredException,
   ],
+  operationName: "GetPullRequest",
 }));
 export type GetPullRequestApprovalStatesError =
   | EncryptionIntegrityChecksFailedException
@@ -6817,6 +6855,7 @@ export const getPullRequestApprovalStates: API.OperationMethod<
     PullRequestIdRequiredException,
     RevisionIdRequiredException,
   ],
+  operationName: "GetPullRequestApprovalStates",
 }));
 export type GetPullRequestOverrideStateError =
   | EncryptionIntegrityChecksFailedException
@@ -6854,6 +6893,7 @@ export const getPullRequestOverrideState: API.OperationMethod<
     PullRequestIdRequiredException,
     RevisionIdRequiredException,
   ],
+  operationName: "GetPullRequestOverrideState",
 }));
 export type GetRepositoryError =
   | EncryptionIntegrityChecksFailedException
@@ -6892,6 +6932,7 @@ export const getRepository: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "GetRepository",
 }));
 export type GetRepositoryTriggersError =
   | EncryptionIntegrityChecksFailedException
@@ -6924,6 +6965,7 @@ export const getRepositoryTriggers: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "GetRepositoryTriggers",
 }));
 export type ListApprovalRuleTemplatesError =
   | InvalidContinuationTokenException
@@ -6957,6 +6999,7 @@ export const listApprovalRuleTemplates: API.OperationMethod<
   input: ListApprovalRuleTemplatesInput,
   output: ListApprovalRuleTemplatesOutput,
   errors: [InvalidContinuationTokenException, InvalidMaxResultsException],
+  operationName: "ListApprovalRuleTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7013,6 +7056,7 @@ export const listAssociatedApprovalRuleTemplatesForRepository: API.OperationMeth
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "ListAssociatedApprovalRuleTemplatesForRepository",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7067,6 +7111,7 @@ export const listBranches: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "ListBranches",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7131,6 +7176,7 @@ export const listFileCommitHistory: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  operationName: "ListFileCommitHistory",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7194,6 +7240,7 @@ export const listPullRequests: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "ListPullRequests",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7236,6 +7283,7 @@ export const listRepositories: API.OperationMethod<
     InvalidOrderException,
     InvalidSortByException,
   ],
+  operationName: "ListRepositories",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7292,6 +7340,7 @@ export const listRepositoriesForApprovalRuleTemplate: API.OperationMethod<
     InvalidContinuationTokenException,
     InvalidMaxResultsException,
   ],
+  operationName: "ListRepositoriesForApprovalRuleTemplate",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7322,6 +7371,7 @@ export const listTagsForResource: API.OperationMethod<
     RepositoryDoesNotExistException,
     ResourceArnRequiredException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type MergeBranchesByFastForwardError =
   | BranchDoesNotExistException
@@ -7376,6 +7426,7 @@ export const mergeBranchesByFastForward: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  operationName: "MergeBranchesByFastForward",
 }));
 export type MergeBranchesBySquashError =
   | BranchDoesNotExistException
@@ -7470,6 +7521,7 @@ export const mergeBranchesBySquash: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  operationName: "MergeBranchesBySquash",
 }));
 export type MergeBranchesByThreeWayError =
   | BranchDoesNotExistException
@@ -7564,6 +7616,7 @@ export const mergeBranchesByThreeWay: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  operationName: "MergeBranchesByThreeWay",
 }));
 export type MergePullRequestByFastForwardError =
   | ConcurrentReferenceUpdateException
@@ -7619,6 +7672,7 @@ export const mergePullRequestByFastForward: API.OperationMethod<
     RepositoryNotAssociatedWithPullRequestException,
     TipOfSourceReferenceIsDifferentException,
   ],
+  operationName: "MergePullRequestByFastForward",
 }));
 export type MergePullRequestBySquashError =
   | CommitMessageLengthExceededException
@@ -7712,6 +7766,7 @@ export const mergePullRequestBySquash: API.OperationMethod<
     TipOfSourceReferenceIsDifferentException,
     TipsDivergenceExceededException,
   ],
+  operationName: "MergePullRequestBySquash",
 }));
 export type MergePullRequestByThreeWayError =
   | CommitMessageLengthExceededException
@@ -7805,6 +7860,7 @@ export const mergePullRequestByThreeWay: API.OperationMethod<
     TipOfSourceReferenceIsDifferentException,
     TipsDivergenceExceededException,
   ],
+  operationName: "MergePullRequestByThreeWay",
 }));
 export type OverridePullRequestApprovalRulesError =
   | EncryptionIntegrityChecksFailedException
@@ -7851,6 +7907,7 @@ export const overridePullRequestApprovalRules: API.OperationMethod<
     RevisionIdRequiredException,
     RevisionNotCurrentException,
   ],
+  operationName: "OverridePullRequestApprovalRules",
 }));
 export type PostCommentForComparedCommitError =
   | BeforeCommitIdAndAfterCommitIdAreSameException
@@ -7913,6 +7970,7 @@ export const postCommentForComparedCommit: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "PostCommentForComparedCommit",
 }));
 export type PostCommentForPullRequestError =
   | BeforeCommitIdAndAfterCommitIdAreSameException
@@ -7983,6 +8041,7 @@ export const postCommentForPullRequest: API.OperationMethod<
     RepositoryNameRequiredException,
     RepositoryNotAssociatedWithPullRequestException,
   ],
+  operationName: "PostCommentForPullRequest",
 }));
 export type PostCommentReplyError =
   | ClientRequestTokenRequiredException
@@ -8015,6 +8074,7 @@ export const postCommentReply: API.OperationMethod<
     InvalidClientRequestTokenException,
     InvalidCommentIdException,
   ],
+  operationName: "PostCommentReply",
 }));
 export type PutCommentReactionError =
   | CommentDeletedException
@@ -8046,6 +8106,7 @@ export const putCommentReaction: API.OperationMethod<
     ReactionLimitExceededException,
     ReactionValueRequiredException,
   ],
+  operationName: "PutCommentReaction",
 }));
 export type PutFileError =
   | BranchDoesNotExistException
@@ -8122,6 +8183,7 @@ export const putFile: API.OperationMethod<
     RepositoryNameRequiredException,
     SameFileContentException,
   ],
+  operationName: "PutFile",
 }));
 export type PutRepositoryTriggersError =
   | EncryptionIntegrityChecksFailedException
@@ -8180,6 +8242,7 @@ export const putRepositoryTriggers: API.OperationMethod<
     RepositoryTriggerNameRequiredException,
     RepositoryTriggersListRequiredException,
   ],
+  operationName: "PutRepositoryTriggers",
 }));
 export type TagResourceError =
   | InvalidRepositoryNameException
@@ -8216,6 +8279,7 @@ export const tagResource: API.OperationMethod<
     TagsMapRequiredException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type TestRepositoryTriggersError =
   | EncryptionIntegrityChecksFailedException
@@ -8276,6 +8340,7 @@ export const testRepositoryTriggers: API.OperationMethod<
     RepositoryTriggerNameRequiredException,
     RepositoryTriggersListRequiredException,
   ],
+  operationName: "TestRepositoryTriggers",
 }));
 export type UntagResourceError =
   | InvalidRepositoryNameException
@@ -8311,6 +8376,7 @@ export const untagResource: API.OperationMethod<
     TagPolicyException,
     TooManyTagsException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateApprovalRuleTemplateContentError =
   | ApprovalRuleTemplateContentRequiredException
@@ -8341,6 +8407,7 @@ export const updateApprovalRuleTemplateContent: API.OperationMethod<
     InvalidApprovalRuleTemplateNameException,
     InvalidRuleContentSha256Exception,
   ],
+  operationName: "UpdateApprovalRuleTemplateContent",
 }));
 export type UpdateApprovalRuleTemplateDescriptionError =
   | ApprovalRuleTemplateDoesNotExistException
@@ -8365,6 +8432,7 @@ export const updateApprovalRuleTemplateDescription: API.OperationMethod<
     InvalidApprovalRuleTemplateDescriptionException,
     InvalidApprovalRuleTemplateNameException,
   ],
+  operationName: "UpdateApprovalRuleTemplateDescription",
 }));
 export type UpdateApprovalRuleTemplateNameError =
   | ApprovalRuleTemplateDoesNotExistException
@@ -8389,6 +8457,7 @@ export const updateApprovalRuleTemplateName: API.OperationMethod<
     ApprovalRuleTemplateNameRequiredException,
     InvalidApprovalRuleTemplateNameException,
   ],
+  operationName: "UpdateApprovalRuleTemplateName",
 }));
 export type UpdateCommentError =
   | CommentContentRequiredException
@@ -8419,6 +8488,7 @@ export const updateComment: API.OperationMethod<
     CommentNotCreatedByCallerException,
     InvalidCommentIdException,
   ],
+  operationName: "UpdateComment",
 }));
 export type UpdateDefaultBranchError =
   | BranchDoesNotExistException
@@ -8459,6 +8529,7 @@ export const updateDefaultBranch: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "UpdateDefaultBranch",
 }));
 export type UpdatePullRequestApprovalRuleContentError =
   | ApprovalRuleContentRequiredException
@@ -8508,6 +8579,7 @@ export const updatePullRequestApprovalRuleContent: API.OperationMethod<
     PullRequestDoesNotExistException,
     PullRequestIdRequiredException,
   ],
+  operationName: "UpdatePullRequestApprovalRuleContent",
 }));
 export type UpdatePullRequestApprovalStateError =
   | ApprovalStateRequiredException
@@ -8556,6 +8628,7 @@ export const updatePullRequestApprovalState: API.OperationMethod<
     RevisionIdRequiredException,
     RevisionNotCurrentException,
   ],
+  operationName: "UpdatePullRequestApprovalState",
 }));
 export type UpdatePullRequestDescriptionError =
   | InvalidDescriptionException
@@ -8582,6 +8655,7 @@ export const updatePullRequestDescription: API.OperationMethod<
     PullRequestDoesNotExistException,
     PullRequestIdRequiredException,
   ],
+  operationName: "UpdatePullRequestDescription",
 }));
 export type UpdatePullRequestStatusError =
   | EncryptionIntegrityChecksFailedException
@@ -8620,6 +8694,7 @@ export const updatePullRequestStatus: API.OperationMethod<
     PullRequestIdRequiredException,
     PullRequestStatusRequiredException,
   ],
+  operationName: "UpdatePullRequestStatus",
 }));
 export type UpdatePullRequestTitleError =
   | InvalidPullRequestIdException
@@ -8648,6 +8723,7 @@ export const updatePullRequestTitle: API.OperationMethod<
     PullRequestIdRequiredException,
     TitleRequiredException,
   ],
+  operationName: "UpdatePullRequestTitle",
 }));
 export type UpdateRepositoryDescriptionError =
   | EncryptionIntegrityChecksFailedException
@@ -8688,6 +8764,7 @@ export const updateRepositoryDescription: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "UpdateRepositoryDescription",
 }));
 export type UpdateRepositoryEncryptionKeyError =
   | EncryptionIntegrityChecksFailedException
@@ -8726,6 +8803,7 @@ export const updateRepositoryEncryptionKey: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  operationName: "UpdateRepositoryEncryptionKey",
 }));
 export type UpdateRepositoryNameError =
   | InvalidRepositoryNameException
@@ -8754,4 +8832,5 @@ export const updateRepositoryName: API.OperationMethod<
     RepositoryNameExistsException,
     RepositoryNameRequiredException,
   ],
+  operationName: "UpdateRepositoryName",
 }));

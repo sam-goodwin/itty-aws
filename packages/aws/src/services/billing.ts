@@ -750,6 +750,7 @@ export const associateSourceViews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateSourceViews",
 }));
 export type CreateBillingViewError =
   | AccessDeniedException
@@ -782,6 +783,7 @@ export const createBillingView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateBillingView",
 }));
 export type DeleteBillingViewError =
   | AccessDeniedException
@@ -808,6 +810,7 @@ export const deleteBillingView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteBillingView",
 }));
 export type DisassociateSourceViewsError =
   | AccessDeniedException
@@ -838,6 +841,7 @@ export const disassociateSourceViews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateSourceViews",
 }));
 export type GetBillingViewError =
   | AccessDeniedException
@@ -864,6 +868,7 @@ export const getBillingView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetBillingView",
 }));
 export type GetResourcePolicyError =
   | AccessDeniedException
@@ -890,6 +895,7 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type ListBillingViewsError =
   | AccessDeniedException
@@ -931,6 +937,7 @@ export const listBillingViews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBillingViews",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -978,6 +985,7 @@ export const listSourceViewsForBillingView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSourceViewsForBillingView",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1010,6 +1018,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1036,6 +1045,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1062,6 +1072,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateBillingViewError =
   | AccessDeniedException
@@ -1094,4 +1105,5 @@ export const updateBillingView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateBillingView",
 }));

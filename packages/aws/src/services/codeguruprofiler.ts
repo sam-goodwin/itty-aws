@@ -1380,6 +1380,7 @@ export const getFindingsReportAccountSummary: API.OperationMethod<
   input: GetFindingsReportAccountSummaryRequest,
   output: GetFindingsReportAccountSummaryResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "GetFindingsReportAccountSummary",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1407,6 +1408,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -1429,6 +1431,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -1451,6 +1454,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateProfilingGroupError =
   | ConflictException
@@ -1477,6 +1481,7 @@ export const createProfilingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateProfilingGroup",
 }));
 export type DescribeProfilingGroupError =
   | InternalServerException
@@ -1504,6 +1509,7 @@ export const describeProfilingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeProfilingGroup",
 }));
 export type UpdateProfilingGroupError =
   | ConflictException
@@ -1530,6 +1536,7 @@ export const updateProfilingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateProfilingGroup",
 }));
 export type DeleteProfilingGroupError =
   | ConflictException
@@ -1556,6 +1563,7 @@ export const deleteProfilingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteProfilingGroup",
 }));
 export type ListProfilingGroupsError =
   | InternalServerException
@@ -1592,6 +1600,7 @@ export const listProfilingGroups: API.OperationMethod<
   input: ListProfilingGroupsRequest,
   output: ListProfilingGroupsResponse,
   errors: [InternalServerException, ThrottlingException],
+  operationName: "ListProfilingGroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1625,6 +1634,7 @@ export const addNotificationChannels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AddNotificationChannels",
 }));
 export type BatchGetFrameMetricDataError =
   | InternalServerException
@@ -1650,6 +1660,7 @@ export const batchGetFrameMetricData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchGetFrameMetricData",
 }));
 export type ConfigureAgentError =
   | InternalServerException
@@ -1676,6 +1687,7 @@ export const configureAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ConfigureAgent",
 }));
 export type GetNotificationConfigurationError =
   | InternalServerException
@@ -1700,6 +1712,7 @@ export const getNotificationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetNotificationConfiguration",
 }));
 export type GetPolicyError =
   | InternalServerException
@@ -1722,6 +1735,7 @@ export const getPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetPolicy",
 }));
 export type GetProfileError =
   | InternalServerException
@@ -1785,6 +1799,7 @@ export const getProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetProfile",
 }));
 export type GetRecommendationsError =
   | InternalServerException
@@ -1818,6 +1833,7 @@ export const getRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRecommendations",
 }));
 export type ListFindingsReportsError =
   | InternalServerException
@@ -1857,6 +1873,7 @@ export const listFindingsReports: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFindingsReports",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1902,6 +1919,7 @@ export const listProfileTimes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListProfileTimes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1936,6 +1954,7 @@ export const postAgentProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PostAgentProfile",
 }));
 export type PutPermissionError =
   | ConflictException
@@ -1981,6 +2000,7 @@ export const putPermission: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutPermission",
 }));
 export type RemoveNotificationChannelError =
   | InternalServerException
@@ -2005,6 +2025,7 @@ export const removeNotificationChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RemoveNotificationChannel",
 }));
 export type RemovePermissionError =
   | ConflictException
@@ -2039,6 +2060,7 @@ export const removePermission: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RemovePermission",
 }));
 export type SubmitFeedbackError =
   | InternalServerException
@@ -2064,4 +2086,5 @@ export const submitFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SubmitFeedback",
 }));

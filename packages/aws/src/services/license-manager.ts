@@ -3723,6 +3723,7 @@ export const acceptGrant: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "AcceptGrant",
 }));
 export type CheckInLicenseError =
   | AccessDeniedException
@@ -3755,6 +3756,7 @@ export const checkInLicense: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "CheckInLicense",
 }));
 export type CheckoutBorrowLicenseError =
   | AccessDeniedException
@@ -3793,6 +3795,7 @@ export const checkoutBorrowLicense: API.OperationMethod<
     UnsupportedDigitalSignatureMethodException,
     ValidationException,
   ],
+  operationName: "CheckoutBorrowLicense",
 }));
 export type CheckoutLicenseError =
   | AccessDeniedException
@@ -3832,6 +3835,7 @@ export const checkoutLicense: API.OperationMethod<
     UnsupportedDigitalSignatureMethodException,
     ValidationException,
   ],
+  operationName: "CheckoutLicense",
 }));
 export type CreateGrantError =
   | AccessDeniedException
@@ -3864,6 +3868,7 @@ export const createGrant: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "CreateGrant",
 }));
 export type CreateGrantVersionError =
   | AccessDeniedException
@@ -3895,6 +3900,7 @@ export const createGrantVersion: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "CreateGrantVersion",
 }));
 export type CreateLicenseError =
   | AccessDeniedException
@@ -3925,6 +3931,7 @@ export const createLicense: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "CreateLicense",
 }));
 export type CreateLicenseAssetGroupError =
   | AccessDeniedException
@@ -3953,6 +3960,7 @@ export const createLicenseAssetGroup: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "CreateLicenseAssetGroup",
 }));
 export type CreateLicenseAssetRulesetError =
   | AccessDeniedException
@@ -3981,6 +3989,7 @@ export const createLicenseAssetRuleset: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "CreateLicenseAssetRuleset",
 }));
 export type CreateLicenseConfigurationError =
   | AccessDeniedException
@@ -4015,6 +4024,7 @@ export const createLicenseConfiguration: API.OperationMethod<
     ResourceLimitExceededException,
     ServerInternalException,
   ],
+  operationName: "CreateLicenseConfiguration",
 }));
 export type CreateLicenseConversionTaskForResourceError =
   | AccessDeniedException
@@ -4043,6 +4053,7 @@ export const createLicenseConversionTaskForResource: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "CreateLicenseConversionTaskForResource",
 }));
 export type CreateLicenseManagerReportGeneratorError =
   | AccessDeniedException
@@ -4075,6 +4086,7 @@ export const createLicenseManagerReportGenerator: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "CreateLicenseManagerReportGenerator",
 }));
 export type CreateLicenseVersionError =
   | AccessDeniedException
@@ -4107,6 +4119,7 @@ export const createLicenseVersion: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "CreateLicenseVersion",
 }));
 export type CreateTokenError =
   | AccessDeniedException
@@ -4143,6 +4156,7 @@ export const createToken: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "CreateToken",
 }));
 export type DeleteGrantError =
   | AccessDeniedException
@@ -4173,6 +4187,7 @@ export const deleteGrant: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "DeleteGrant",
 }));
 export type DeleteLicenseError =
   | AccessDeniedException
@@ -4205,6 +4220,7 @@ export const deleteLicense: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "DeleteLicense",
 }));
 export type DeleteLicenseAssetGroupError =
   | AccessDeniedException
@@ -4233,6 +4249,7 @@ export const deleteLicenseAssetGroup: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "DeleteLicenseAssetGroup",
 }));
 export type DeleteLicenseAssetRulesetError =
   | AccessDeniedException
@@ -4261,6 +4278,7 @@ export const deleteLicenseAssetRuleset: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "DeleteLicenseAssetRuleset",
 }));
 export type DeleteLicenseConfigurationError =
   | AccessDeniedException
@@ -4289,6 +4307,7 @@ export const deleteLicenseConfiguration: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  operationName: "DeleteLicenseConfiguration",
 }));
 export type DeleteLicenseManagerReportGeneratorError =
   | AccessDeniedException
@@ -4324,6 +4343,7 @@ export const deleteLicenseManagerReportGenerator: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "DeleteLicenseManagerReportGenerator",
 }));
 export type DeleteTokenError =
   | AccessDeniedException
@@ -4354,6 +4374,7 @@ export const deleteToken: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "DeleteToken",
 }));
 export type ExtendLicenseConsumptionError =
   | AccessDeniedException
@@ -4384,6 +4405,7 @@ export const extendLicenseConsumption: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "ExtendLicenseConsumption",
 }));
 export type GetAccessTokenError =
   | AccessDeniedException
@@ -4411,6 +4433,7 @@ export const getAccessToken: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "GetAccessToken",
 }));
 export type GetGrantError =
   | AccessDeniedException
@@ -4441,6 +4464,7 @@ export const getGrant: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "GetGrant",
 }));
 export type GetLicenseError =
   | AccessDeniedException
@@ -4469,6 +4493,7 @@ export const getLicense: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "GetLicense",
 }));
 export type GetLicenseAssetGroupError =
   | AccessDeniedException
@@ -4497,6 +4522,7 @@ export const getLicenseAssetGroup: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "GetLicenseAssetGroup",
 }));
 export type GetLicenseAssetRulesetError =
   | AccessDeniedException
@@ -4525,6 +4551,7 @@ export const getLicenseAssetRuleset: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "GetLicenseAssetRuleset",
 }));
 export type GetLicenseConfigurationError =
   | AccessDeniedException
@@ -4551,6 +4578,7 @@ export const getLicenseConfiguration: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  operationName: "GetLicenseConfiguration",
 }));
 export type GetLicenseConversionTaskError =
   | AccessDeniedException
@@ -4577,6 +4605,7 @@ export const getLicenseConversionTask: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  operationName: "GetLicenseConversionTask",
 }));
 export type GetLicenseManagerReportGeneratorError =
   | AccessDeniedException
@@ -4609,6 +4638,7 @@ export const getLicenseManagerReportGenerator: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "GetLicenseManagerReportGenerator",
 }));
 export type GetLicenseUsageError =
   | AccessDeniedException
@@ -4637,6 +4667,7 @@ export const getLicenseUsage: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "GetLicenseUsage",
 }));
 export type GetServiceSettingsError =
   | AccessDeniedException
@@ -4661,6 +4692,7 @@ export const getServiceSettings: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  operationName: "GetServiceSettings",
 }));
 export type ListAssetsForLicenseAssetGroupError =
   | AccessDeniedException
@@ -4689,6 +4721,7 @@ export const listAssetsForLicenseAssetGroup: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "ListAssetsForLicenseAssetGroup",
 }));
 export type ListAssociationsForLicenseConfigurationError =
   | AccessDeniedException
@@ -4721,6 +4754,7 @@ export const listAssociationsForLicenseConfiguration: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  operationName: "ListAssociationsForLicenseConfiguration",
 }));
 export type ListDistributedGrantsError =
   | AccessDeniedException
@@ -4751,6 +4785,7 @@ export const listDistributedGrants: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "ListDistributedGrants",
 }));
 export type ListFailuresForLicenseConfigurationOperationsError =
   | AccessDeniedException
@@ -4777,6 +4812,7 @@ export const listFailuresForLicenseConfigurationOperations: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  operationName: "ListFailuresForLicenseConfigurationOperations",
 }));
 export type ListLicenseAssetGroupsError =
   | AccessDeniedException
@@ -4805,6 +4841,7 @@ export const listLicenseAssetGroups: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "ListLicenseAssetGroups",
 }));
 export type ListLicenseAssetRulesetsError =
   | AccessDeniedException
@@ -4833,6 +4870,7 @@ export const listLicenseAssetRulesets: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "ListLicenseAssetRulesets",
 }));
 export type ListLicenseConfigurationsError =
   | AccessDeniedException
@@ -4861,6 +4899,7 @@ export const listLicenseConfigurations: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  operationName: "ListLicenseConfigurations",
 }));
 export type ListLicenseConfigurationsForOrganizationError =
   | AccessDeniedException
@@ -4889,6 +4928,7 @@ export const listLicenseConfigurationsForOrganization: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  operationName: "ListLicenseConfigurationsForOrganization",
 }));
 export type ListLicenseConversionTasksError =
   | AccessDeniedException
@@ -4915,6 +4955,7 @@ export const listLicenseConversionTasks: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  operationName: "ListLicenseConversionTasks",
 }));
 export type ListLicenseManagerReportGeneratorsError =
   | AccessDeniedException
@@ -4947,6 +4988,7 @@ export const listLicenseManagerReportGenerators: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "ListLicenseManagerReportGenerators",
 }));
 export type ListLicensesError =
   | AccessDeniedException
@@ -4975,6 +5017,7 @@ export const listLicenses: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "ListLicenses",
 }));
 export type ListLicenseSpecificationsForResourceError =
   | AccessDeniedException
@@ -5001,6 +5044,7 @@ export const listLicenseSpecificationsForResource: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  operationName: "ListLicenseSpecificationsForResource",
 }));
 export type ListLicenseVersionsError =
   | AccessDeniedException
@@ -5027,6 +5071,7 @@ export const listLicenseVersions: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  operationName: "ListLicenseVersions",
 }));
 export type ListReceivedGrantsError =
   | AccessDeniedException
@@ -5059,6 +5104,7 @@ export const listReceivedGrants: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "ListReceivedGrants",
 }));
 export type ListReceivedGrantsForOrganizationError =
   | AccessDeniedException
@@ -5089,6 +5135,7 @@ export const listReceivedGrantsForOrganization: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "ListReceivedGrantsForOrganization",
 }));
 export type ListReceivedLicensesError =
   | AccessDeniedException
@@ -5119,6 +5166,7 @@ export const listReceivedLicenses: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "ListReceivedLicenses",
 }));
 export type ListReceivedLicensesForOrganizationError =
   | AccessDeniedException
@@ -5149,6 +5197,7 @@ export const listReceivedLicensesForOrganization: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "ListReceivedLicensesForOrganization",
 }));
 export type ListResourceInventoryError =
   | AccessDeniedException
@@ -5179,6 +5228,7 @@ export const listResourceInventory: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  operationName: "ListResourceInventory",
 }));
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -5208,6 +5258,7 @@ export const listTagsForResource: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTokensError =
   | AccessDeniedException
@@ -5234,6 +5285,7 @@ export const listTokens: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "ListTokens",
 }));
 export type ListUsageForLicenseConfigurationError =
   | AccessDeniedException
@@ -5264,6 +5316,7 @@ export const listUsageForLicenseConfiguration: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  operationName: "ListUsageForLicenseConfiguration",
 }));
 export type RejectGrantError =
   | AccessDeniedException
@@ -5294,6 +5347,7 @@ export const rejectGrant: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "RejectGrant",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -5331,6 +5385,7 @@ export const tagResource: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -5359,6 +5414,7 @@ export const untagResource: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateLicenseAssetGroupError =
   | AccessDeniedException
@@ -5387,6 +5443,7 @@ export const updateLicenseAssetGroup: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "UpdateLicenseAssetGroup",
 }));
 export type UpdateLicenseAssetRulesetError =
   | AccessDeniedException
@@ -5415,6 +5472,7 @@ export const updateLicenseAssetRuleset: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "UpdateLicenseAssetRuleset",
 }));
 export type UpdateLicenseConfigurationError =
   | AccessDeniedException
@@ -5445,6 +5503,7 @@ export const updateLicenseConfiguration: API.OperationMethod<
     ResourceLimitExceededException,
     ServerInternalException,
   ],
+  operationName: "UpdateLicenseConfiguration",
 }));
 export type UpdateLicenseManagerReportGeneratorError =
   | AccessDeniedException
@@ -5479,6 +5538,7 @@ export const updateLicenseManagerReportGenerator: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "UpdateLicenseManagerReportGenerator",
 }));
 export type UpdateLicenseSpecificationsForResourceError =
   | AccessDeniedException
@@ -5515,6 +5575,7 @@ export const updateLicenseSpecificationsForResource: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  operationName: "UpdateLicenseSpecificationsForResource",
 }));
 export type UpdateServiceSettingsError =
   | AccessDeniedException
@@ -5545,4 +5606,5 @@ export const updateServiceSettings: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  operationName: "UpdateServiceSettings",
 }));

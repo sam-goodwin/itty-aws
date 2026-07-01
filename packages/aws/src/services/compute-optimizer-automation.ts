@@ -1643,6 +1643,7 @@ export const associateAccounts: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "AssociateAccounts",
 }));
 export type CreateAutomationRuleError =
   | AccessDeniedException
@@ -1681,6 +1682,7 @@ export const createAutomationRule: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "CreateAutomationRule",
 }));
 export type DeleteAutomationRuleError =
   | AccessDeniedException
@@ -1717,6 +1719,7 @@ export const deleteAutomationRule: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteAutomationRule",
 }));
 export type DisassociateAccountsError =
   | AccessDeniedException
@@ -1755,6 +1758,7 @@ export const disassociateAccounts: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DisassociateAccounts",
 }));
 export type GetAutomationEventError =
   | AccessDeniedException
@@ -1787,6 +1791,7 @@ export const getAutomationEvent: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetAutomationEvent",
 }));
 export type GetAutomationRuleError =
   | AccessDeniedException
@@ -1819,6 +1824,7 @@ export const getAutomationRule: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetAutomationRule",
 }));
 export type GetEnrollmentConfigurationError =
   | AccessDeniedException
@@ -1851,6 +1857,7 @@ export const getEnrollmentConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetEnrollmentConfiguration",
 }));
 export type ListAccountsError =
   | AccessDeniedException
@@ -1900,6 +1907,7 @@ export const listAccounts: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListAccounts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1951,6 +1959,7 @@ export const listAutomationEvents: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListAutomationEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2004,6 +2013,7 @@ export const listAutomationEventSteps: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListAutomationEventSteps",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2055,6 +2065,7 @@ export const listAutomationEventSummaries: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListAutomationEventSummaries",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2106,6 +2117,7 @@ export const listAutomationRulePreview: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListAutomationRulePreview",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2157,6 +2169,7 @@ export const listAutomationRulePreviewSummaries: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListAutomationRulePreviewSummaries",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2208,6 +2221,7 @@ export const listAutomationRules: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListAutomationRules",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2261,6 +2275,7 @@ export const listRecommendedActions: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListRecommendedActions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2314,6 +2329,7 @@ export const listRecommendedActionSummaries: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListRecommendedActionSummaries",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2352,6 +2368,7 @@ export const listTagsForResource: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type RollbackAutomationEventError =
   | AccessDeniedException
@@ -2390,6 +2407,7 @@ export const rollbackAutomationEvent: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "RollbackAutomationEvent",
 }));
 export type StartAutomationEventError =
   | AccessDeniedException
@@ -2430,6 +2448,7 @@ export const startAutomationEvent: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "StartAutomationEvent",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2466,6 +2485,7 @@ export const tagResource: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2502,6 +2522,7 @@ export const untagResource: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAutomationRuleError =
   | AccessDeniedException
@@ -2538,6 +2559,7 @@ export const updateAutomationRule: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateAutomationRule",
 }));
 export type UpdateEnrollmentConfigurationError =
   | AccessDeniedException
@@ -2576,4 +2598,5 @@ export const updateEnrollmentConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateEnrollmentConfiguration",
 }));

@@ -1021,6 +1021,7 @@ export const createSavingsPlan: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateSavingsPlan",
 }));
 export type DeleteQueuedSavingsPlanError =
   | InternalServerException
@@ -1045,6 +1046,7 @@ export const deleteQueuedSavingsPlan: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "DeleteQueuedSavingsPlan",
 }));
 export type DescribeSavingsPlanRatesError =
   | InternalServerException
@@ -1067,6 +1069,7 @@ export const describeSavingsPlanRates: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeSavingsPlanRates",
 }));
 export type DescribeSavingsPlansError =
   | InternalServerException
@@ -1084,6 +1087,7 @@ export const describeSavingsPlans: API.OperationMethod<
   input: DescribeSavingsPlansRequest,
   output: DescribeSavingsPlansResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "DescribeSavingsPlans",
 }));
 export type DescribeSavingsPlansOfferingRatesError =
   | InternalServerException
@@ -1101,6 +1105,7 @@ export const describeSavingsPlansOfferingRates: API.OperationMethod<
   input: DescribeSavingsPlansOfferingRatesRequest,
   output: DescribeSavingsPlansOfferingRatesResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "DescribeSavingsPlansOfferingRates",
 }));
 export type DescribeSavingsPlansOfferingsError =
   | InternalServerException
@@ -1118,6 +1123,7 @@ export const describeSavingsPlansOfferings: API.OperationMethod<
   input: DescribeSavingsPlansOfferingsRequest,
   output: DescribeSavingsPlansOfferingsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "DescribeSavingsPlansOfferings",
 }));
 export type ListTagsForResourceError =
   | InternalServerException
@@ -1140,6 +1146,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ReturnSavingsPlanError =
   | InternalServerException
@@ -1164,6 +1171,7 @@ export const returnSavingsPlan: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "ReturnSavingsPlan",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -1188,6 +1196,7 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -1210,4 +1219,5 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));

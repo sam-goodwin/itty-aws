@@ -2167,6 +2167,7 @@ export const decryptData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DecryptData",
 }));
 export type EncryptDataError =
   | AccessDeniedException
@@ -2219,6 +2220,7 @@ export const encryptData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "EncryptData",
 }));
 export type GenerateAs2805KekValidationError =
   | AccessDeniedException
@@ -2255,6 +2257,7 @@ export const generateAs2805KekValidation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GenerateAs2805KekValidation",
 }));
 export type GenerateAuthRequestCryptogramError =
   | AccessDeniedException
@@ -2293,6 +2296,7 @@ export const generateAuthRequestCryptogram: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GenerateAuthRequestCryptogram",
 }));
 export type GenerateCardValidationDataError =
   | AccessDeniedException
@@ -2331,6 +2335,7 @@ export const generateCardValidationData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GenerateCardValidationData",
 }));
 export type GenerateMacError =
   | AccessDeniedException
@@ -2369,6 +2374,7 @@ export const generateMac: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GenerateMac",
 }));
 export type GenerateMacEmvPinChangeError =
   | AccessDeniedException
@@ -2413,6 +2419,7 @@ export const generateMacEmvPinChange: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GenerateMacEmvPinChange",
 }));
 export type GeneratePinDataError =
   | AccessDeniedException
@@ -2455,6 +2462,7 @@ export const generatePinData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GeneratePinData",
 }));
 export type ReEncryptDataError =
   | AccessDeniedException
@@ -2501,6 +2509,7 @@ export const reEncryptData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ReEncryptData",
 }));
 export type TranslateKeyMaterialError =
   | AccessDeniedException
@@ -2543,6 +2552,7 @@ export const translateKeyMaterial: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TranslateKeyMaterial",
 }));
 export type TranslatePinDataError =
   | AccessDeniedException
@@ -2591,6 +2601,7 @@ export const translatePinData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TranslatePinData",
 }));
 export type VerifyAuthRequestCryptogramError =
   | AccessDeniedException
@@ -2631,6 +2642,7 @@ export const verifyAuthRequestCryptogram: API.OperationMethod<
     ValidationException,
     VerificationFailedException,
   ],
+  operationName: "VerifyAuthRequestCryptogram",
 }));
 export type VerifyCardValidationDataError =
   | AccessDeniedException
@@ -2673,6 +2685,7 @@ export const verifyCardValidationData: API.OperationMethod<
     ValidationException,
     VerificationFailedException,
   ],
+  operationName: "VerifyCardValidationData",
 }));
 export type VerifyMacError =
   | AccessDeniedException
@@ -2711,6 +2724,7 @@ export const verifyMac: API.OperationMethod<
     ValidationException,
     VerificationFailedException,
   ],
+  operationName: "VerifyMac",
 }));
 export type VerifyPinDataError =
   | AccessDeniedException
@@ -2751,4 +2765,5 @@ export const verifyPinData: API.OperationMethod<
     ValidationException,
     VerificationFailedException,
   ],
+  operationName: "VerifyPinData",
 }));

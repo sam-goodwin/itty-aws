@@ -2621,6 +2621,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2653,6 +2654,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2677,6 +2679,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreatePolicyStoreError =
   | ConflictException
@@ -2698,6 +2701,7 @@ export const createPolicyStore: API.OperationMethod<
   input: CreatePolicyStoreInput,
   output: CreatePolicyStoreOutput,
   errors: [ConflictException, ServiceQuotaExceededException],
+  operationName: "CreatePolicyStore",
 }));
 export type GetPolicyStoreError = ResourceNotFoundException | CommonErrors;
 /**
@@ -2712,6 +2716,7 @@ export const getPolicyStore: API.OperationMethod<
   input: GetPolicyStoreInput,
   output: GetPolicyStoreOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetPolicyStore",
 }));
 export type UpdatePolicyStoreError =
   | ConflictException
@@ -2731,6 +2736,7 @@ export const updatePolicyStore: API.OperationMethod<
   input: UpdatePolicyStoreInput,
   output: UpdatePolicyStoreOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  operationName: "UpdatePolicyStore",
 }));
 export type DeletePolicyStoreError = InvalidStateException | CommonErrors;
 /**
@@ -2747,6 +2753,7 @@ export const deletePolicyStore: API.OperationMethod<
   input: DeletePolicyStoreInput,
   output: DeletePolicyStoreOutput,
   errors: [InvalidStateException],
+  operationName: "DeletePolicyStore",
 }));
 export type ListPolicyStoresError = CommonErrors;
 /**
@@ -2776,6 +2783,7 @@ export const listPolicyStores: API.OperationMethod<
   input: ListPolicyStoresInput,
   output: ListPolicyStoresOutput,
   errors: [],
+  operationName: "ListPolicyStores",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2802,6 +2810,7 @@ export const batchIsAuthorized: API.OperationMethod<
   input: BatchIsAuthorizedInput,
   output: BatchIsAuthorizedOutput,
   errors: [ResourceNotFoundException],
+  operationName: "BatchIsAuthorized",
 }));
 export type BatchIsAuthorizedWithTokenError =
   | ResourceNotFoundException
@@ -2824,6 +2833,7 @@ export const batchIsAuthorizedWithToken: API.OperationMethod<
   input: BatchIsAuthorizedWithTokenInput,
   output: BatchIsAuthorizedWithTokenOutput,
   errors: [ResourceNotFoundException],
+  operationName: "BatchIsAuthorizedWithToken",
 }));
 export type GetSchemaError = ResourceNotFoundException | CommonErrors;
 /**
@@ -2838,6 +2848,7 @@ export const getSchema: API.OperationMethod<
   input: GetSchemaInput,
   output: GetSchemaOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetSchema",
 }));
 export type IsAuthorizedError = ResourceNotFoundException | CommonErrors;
 /**
@@ -2852,6 +2863,7 @@ export const isAuthorized: API.OperationMethod<
   input: IsAuthorizedInput,
   output: IsAuthorizedOutput,
   errors: [ResourceNotFoundException],
+  operationName: "IsAuthorized",
 }));
 export type IsAuthorizedWithTokenError =
   | ResourceNotFoundException
@@ -2872,6 +2884,7 @@ export const isAuthorizedWithToken: API.OperationMethod<
   input: IsAuthorizedWithTokenInput,
   output: IsAuthorizedWithTokenOutput,
   errors: [ResourceNotFoundException],
+  operationName: "IsAuthorizedWithToken",
 }));
 export type PutSchemaError =
   | ConflictException
@@ -2896,6 +2909,7 @@ export const putSchema: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "PutSchema",
 }));
 export type BatchGetPolicyError = CommonErrors;
 /**
@@ -2912,6 +2926,7 @@ export const batchGetPolicy: API.OperationMethod<
   input: BatchGetPolicyInput,
   output: BatchGetPolicyOutput,
   errors: [],
+  operationName: "BatchGetPolicy",
 }));
 export type CreateIdentitySourceError =
   | ConflictException
@@ -2946,6 +2961,7 @@ export const createIdentitySource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateIdentitySource",
 }));
 export type GetIdentitySourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -2960,6 +2976,7 @@ export const getIdentitySource: API.OperationMethod<
   input: GetIdentitySourceInput,
   output: GetIdentitySourceOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetIdentitySource",
 }));
 export type UpdateIdentitySourceError =
   | ConflictException
@@ -2979,6 +2996,7 @@ export const updateIdentitySource: API.OperationMethod<
   input: UpdateIdentitySourceInput,
   output: UpdateIdentitySourceOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  operationName: "UpdateIdentitySource",
 }));
 export type DeleteIdentitySourceError =
   | ConflictException
@@ -2996,6 +3014,7 @@ export const deleteIdentitySource: API.OperationMethod<
   input: DeleteIdentitySourceInput,
   output: DeleteIdentitySourceOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  operationName: "DeleteIdentitySource",
 }));
 export type ListIdentitySourcesError = ResourceNotFoundException | CommonErrors;
 /**
@@ -3025,6 +3044,7 @@ export const listIdentitySources: API.OperationMethod<
   input: ListIdentitySourcesInput,
   output: ListIdentitySourcesOutput,
   errors: [ResourceNotFoundException],
+  operationName: "ListIdentitySources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3061,6 +3081,7 @@ export const createPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreatePolicy",
 }));
 export type GetPolicyError = ResourceNotFoundException | CommonErrors;
 /**
@@ -3075,6 +3096,7 @@ export const getPolicy: API.OperationMethod<
   input: GetPolicyInput,
   output: GetPolicyOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetPolicy",
 }));
 export type UpdatePolicyError =
   | ConflictException
@@ -3119,6 +3141,7 @@ export const updatePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "UpdatePolicy",
 }));
 export type DeletePolicyError =
   | ConflictException
@@ -3138,6 +3161,7 @@ export const deletePolicy: API.OperationMethod<
   input: DeletePolicyInput,
   output: DeletePolicyOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  operationName: "DeletePolicy",
 }));
 export type ListPoliciesError = ResourceNotFoundException | CommonErrors;
 /**
@@ -3167,6 +3191,7 @@ export const listPolicies: API.OperationMethod<
   input: ListPoliciesInput,
   output: ListPoliciesOutput,
   errors: [ResourceNotFoundException],
+  operationName: "ListPolicies",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3197,6 +3222,7 @@ export const createPolicyTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreatePolicyTemplate",
 }));
 export type GetPolicyTemplateError = ResourceNotFoundException | CommonErrors;
 /**
@@ -3211,6 +3237,7 @@ export const getPolicyTemplate: API.OperationMethod<
   input: GetPolicyTemplateInput,
   output: GetPolicyTemplateOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetPolicyTemplate",
 }));
 export type UpdatePolicyTemplateError =
   | ConflictException
@@ -3232,6 +3259,7 @@ export const updatePolicyTemplate: API.OperationMethod<
   input: UpdatePolicyTemplateInput,
   output: UpdatePolicyTemplateOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  operationName: "UpdatePolicyTemplate",
 }));
 export type DeletePolicyTemplateError =
   | ConflictException
@@ -3251,6 +3279,7 @@ export const deletePolicyTemplate: API.OperationMethod<
   input: DeletePolicyTemplateInput,
   output: DeletePolicyTemplateOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  operationName: "DeletePolicyTemplate",
 }));
 export type ListPolicyTemplatesError = ResourceNotFoundException | CommonErrors;
 /**
@@ -3280,6 +3309,7 @@ export const listPolicyTemplates: API.OperationMethod<
   input: ListPolicyTemplatesInput,
   output: ListPolicyTemplatesOutput,
   errors: [ResourceNotFoundException],
+  operationName: "ListPolicyTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3312,6 +3342,7 @@ export const createPolicyStoreAlias: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreatePolicyStoreAlias",
 }));
 export type GetPolicyStoreAliasError = ResourceNotFoundException | CommonErrors;
 /**
@@ -3326,6 +3357,7 @@ export const getPolicyStoreAlias: API.OperationMethod<
   input: GetPolicyStoreAliasInput,
   output: GetPolicyStoreAliasOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetPolicyStoreAlias",
 }));
 export type DeletePolicyStoreAliasError = InvalidStateException | CommonErrors;
 /**
@@ -3348,6 +3380,7 @@ export const deletePolicyStoreAlias: API.OperationMethod<
   input: DeletePolicyStoreAliasInput,
   output: DeletePolicyStoreAliasOutput,
   errors: [InvalidStateException],
+  operationName: "DeletePolicyStoreAlias",
 }));
 export type ListPolicyStoreAliasesError = CommonErrors;
 /**
@@ -3377,6 +3410,7 @@ export const listPolicyStoreAliases: API.OperationMethod<
   input: ListPolicyStoreAliasesInput,
   output: ListPolicyStoreAliasesOutput,
   errors: [],
+  operationName: "ListPolicyStoreAliases",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

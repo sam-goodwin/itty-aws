@@ -26005,6 +26005,7 @@ export const activateEvaluationForm: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ActivateEvaluationForm",
 }));
 export type AssociateAnalyticsDataSetError =
   | InternalServiceException
@@ -26032,6 +26033,7 @@ export const associateAnalyticsDataSet: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociateAnalyticsDataSet",
 }));
 export type AssociateApprovedOriginError =
   | InternalServiceException
@@ -26064,6 +26066,7 @@ export const associateApprovedOrigin: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "AssociateApprovedOrigin",
 }));
 export type AssociateBotError =
   | InternalServiceException
@@ -26097,6 +26100,7 @@ export const associateBot: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "AssociateBot",
 }));
 export type AssociateContactWithUserError =
   | AccessDeniedException
@@ -26154,6 +26158,7 @@ export const associateContactWithUser: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociateContactWithUser",
 }));
 export type AssociateDefaultVocabularyError =
   | AccessDeniedException
@@ -26181,6 +26186,7 @@ export const associateDefaultVocabulary: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociateDefaultVocabulary",
 }));
 export type AssociateEmailAddressAliasError =
   | AccessDeniedException
@@ -26264,6 +26270,7 @@ export const associateEmailAddressAlias: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociateEmailAddressAlias",
 }));
 export type AssociateFlowError =
   | AccessDeniedException
@@ -26292,6 +26299,7 @@ export const associateFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociateFlow",
 }));
 export type AssociateHoursOfOperationsError =
   | ConditionalOperationFailedException
@@ -26322,6 +26330,7 @@ export const associateHoursOfOperations: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "AssociateHoursOfOperations",
 }));
 export type AssociateInstanceStorageConfigError =
   | InternalServiceException
@@ -26358,6 +26367,7 @@ export const associateInstanceStorageConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociateInstanceStorageConfig",
 }));
 export type AssociateLambdaFunctionError =
   | InternalServiceException
@@ -26390,6 +26400,7 @@ export const associateLambdaFunction: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "AssociateLambdaFunction",
 }));
 export type AssociateLexBotError =
   | InternalServiceException
@@ -26423,6 +26434,7 @@ export const associateLexBot: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "AssociateLexBot",
 }));
 export type AssociatePhoneNumberContactFlowError =
   | AccessDeniedException
@@ -26456,6 +26468,7 @@ export const associatePhoneNumberContactFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociatePhoneNumberContactFlow",
 }));
 export type AssociateQueueEmailAddressesError =
   | AccessDeniedException
@@ -26498,6 +26511,7 @@ export const associateQueueEmailAddresses: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociateQueueEmailAddresses",
 }));
 export type AssociateQueueQuickConnectsError =
   | InternalServiceException
@@ -26526,6 +26540,7 @@ export const associateQueueQuickConnects: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociateQueueQuickConnects",
 }));
 export type AssociateRoutingProfileQueuesError =
   | InternalServiceException
@@ -26552,6 +26567,7 @@ export const associateRoutingProfileQueues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociateRoutingProfileQueues",
 }));
 export type AssociateSecurityKeyError =
   | InternalServiceException
@@ -26584,6 +26600,7 @@ export const associateSecurityKey: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "AssociateSecurityKey",
 }));
 export type AssociateSecurityProfilesError =
   | AccessDeniedException
@@ -26614,6 +26631,7 @@ export const associateSecurityProfiles: API.OperationMethod<
     ResourceConflictException,
     ResourceNotFoundException,
   ],
+  operationName: "AssociateSecurityProfiles",
 }));
 export type AssociateTrafficDistributionGroupUserError =
   | AccessDeniedException
@@ -26643,6 +26661,7 @@ export const associateTrafficDistributionGroupUser: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociateTrafficDistributionGroupUser",
 }));
 export type AssociateUserProficienciesError =
   | InternalServiceException
@@ -26669,6 +26688,7 @@ export const associateUserProficiencies: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociateUserProficiencies",
 }));
 export type AssociateWorkspaceError =
   | AccessDeniedException
@@ -26700,6 +26720,7 @@ export const associateWorkspace: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociateWorkspace",
 }));
 export type BatchAssociateAnalyticsDataSetError =
   | InternalServiceException
@@ -26727,6 +26748,7 @@ export const batchAssociateAnalyticsDataSet: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "BatchAssociateAnalyticsDataSet",
 }));
 export type BatchCreateDataTableValueError =
   | AccessDeniedException
@@ -26766,6 +26788,7 @@ export const batchCreateDataTableValue: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "BatchCreateDataTableValue",
 }));
 export type BatchDeleteDataTableValueError =
   | AccessDeniedException
@@ -26798,6 +26821,7 @@ export const batchDeleteDataTableValue: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "BatchDeleteDataTableValue",
 }));
 export type BatchDescribeDataTableValueError =
   | AccessDeniedException
@@ -26828,6 +26852,7 @@ export const batchDescribeDataTableValue: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "BatchDescribeDataTableValue",
 }));
 export type BatchDisassociateAnalyticsDataSetError =
   | InternalServiceException
@@ -26855,6 +26880,7 @@ export const batchDisassociateAnalyticsDataSet: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "BatchDisassociateAnalyticsDataSet",
 }));
 export type BatchGetAttachedFileMetadataError =
   | AccessDeniedException
@@ -26882,6 +26908,7 @@ export const batchGetAttachedFileMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "BatchGetAttachedFileMetadata",
 }));
 export type BatchGetFlowAssociationError =
   | AccessDeniedException
@@ -26910,6 +26937,7 @@ export const batchGetFlowAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "BatchGetFlowAssociation",
 }));
 export type BatchPutContactError =
   | AccessDeniedException
@@ -26944,6 +26972,7 @@ export const batchPutContact: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "BatchPutContact",
 }));
 export type BatchUpdateDataTableValueError =
   | AccessDeniedException
@@ -26976,6 +27005,7 @@ export const batchUpdateDataTableValue: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "BatchUpdateDataTableValue",
 }));
 export type ClaimPhoneNumberError =
   | AccessDeniedException
@@ -27030,6 +27060,7 @@ export const claimPhoneNumber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ClaimPhoneNumber",
 }));
 export type CompleteAttachedFileUploadError =
   | AccessDeniedException
@@ -27057,6 +27088,7 @@ export const completeAttachedFileUpload: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CompleteAttachedFileUpload",
 }));
 export type CreateAgentStatusError =
   | DuplicateResourceException
@@ -27087,6 +27119,7 @@ export const createAgentStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateAgentStatus",
 }));
 export type CreateContactError =
   | AccessDeniedException
@@ -27136,6 +27169,7 @@ export const createContact: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateContact",
 }));
 export type CreateContactFlowError =
   | DuplicateResourceException
@@ -27171,6 +27205,7 @@ export const createContactFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateContactFlow",
 }));
 export type CreateContactFlowModuleError =
   | AccessDeniedException
@@ -27207,6 +27242,7 @@ export const createContactFlowModule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateContactFlowModule",
 }));
 export type CreateContactFlowModuleAliasError =
   | AccessDeniedException
@@ -27239,6 +27275,7 @@ export const createContactFlowModuleAlias: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateContactFlowModuleAlias",
 }));
 export type CreateContactFlowModuleVersionError =
   | AccessDeniedException
@@ -27270,6 +27307,7 @@ export const createContactFlowModuleVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateContactFlowModuleVersion",
 }));
 export type CreateContactFlowVersionError =
   | AccessDeniedException
@@ -27303,6 +27341,7 @@ export const createContactFlowVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateContactFlowVersion",
 }));
 export type CreateDataTableError =
   | AccessDeniedException
@@ -27339,6 +27378,7 @@ export const createDataTable: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateDataTable",
 }));
 export type CreateDataTableAttributeError =
   | AccessDeniedException
@@ -27376,6 +27416,7 @@ export const createDataTableAttribute: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateDataTableAttribute",
 }));
 export type CreateEmailAddressError =
   | AccessDeniedException
@@ -27414,6 +27455,7 @@ export const createEmailAddress: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateEmailAddress",
 }));
 export type CreateEvaluationFormError =
   | InternalServiceException
@@ -27444,6 +27486,7 @@ export const createEvaluationForm: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateEvaluationForm",
 }));
 export type CreateHoursOfOperationError =
   | DuplicateResourceException
@@ -27476,6 +27519,7 @@ export const createHoursOfOperation: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateHoursOfOperation",
 }));
 export type CreateHoursOfOperationOverrideError =
   | DuplicateResourceException
@@ -27506,6 +27550,7 @@ export const createHoursOfOperationOverride: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateHoursOfOperationOverride",
 }));
 export type CreateInstanceError =
   | InternalServiceException
@@ -27543,6 +27588,7 @@ export const createInstance: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateInstance",
 }));
 export type CreateIntegrationAssociationError =
   | DuplicateResourceException
@@ -27569,6 +27615,7 @@ export const createIntegrationAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateIntegrationAssociation",
 }));
 export type CreateNotificationError =
   | AccessDeniedException
@@ -27599,6 +27646,7 @@ export const createNotification: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateNotification",
 }));
 export type CreateParticipantError =
   | ConflictException
@@ -27629,6 +27677,7 @@ export const createParticipant: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateParticipant",
 }));
 export type CreatePersistentContactAssociationError =
   | AccessDeniedException
@@ -27659,6 +27708,7 @@ export const createPersistentContactAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreatePersistentContactAssociation",
 }));
 export type CreatePredefinedAttributeError =
   | DuplicateResourceException
@@ -27707,6 +27757,7 @@ export const createPredefinedAttribute: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreatePredefinedAttribute",
 }));
 export type CreatePromptError =
   | DuplicateResourceException
@@ -27737,6 +27788,7 @@ export const createPrompt: API.OperationMethod<
     LimitExceededException,
     ThrottlingException,
   ],
+  operationName: "CreatePrompt",
 }));
 export type CreatePushNotificationRegistrationError =
   | AccessDeniedException
@@ -27766,6 +27818,7 @@ export const createPushNotificationRegistration: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreatePushNotificationRegistration",
 }));
 export type CreateQueueError =
   | DuplicateResourceException
@@ -27810,6 +27863,7 @@ export const createQueue: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateQueue",
 }));
 export type CreateQuickConnectError =
   | DuplicateResourceException
@@ -27840,6 +27894,7 @@ export const createQuickConnect: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateQuickConnect",
 }));
 export type CreateRoutingProfileError =
   | DuplicateResourceException
@@ -27870,6 +27925,7 @@ export const createRoutingProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateRoutingProfile",
 }));
 export type CreateRuleError =
   | AccessDeniedException
@@ -27903,6 +27959,7 @@ export const createRule: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateRule",
 }));
 export type CreateSecurityProfileError =
   | DuplicateResourceException
@@ -27937,6 +27994,7 @@ export const createSecurityProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateSecurityProfile",
 }));
 export type CreateTaskTemplateError =
   | InternalServiceException
@@ -27965,6 +28023,7 @@ export const createTaskTemplate: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateTaskTemplate",
 }));
 export type CreateTestCaseError =
   | AccessDeniedException
@@ -28003,6 +28062,7 @@ export const createTestCase: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateTestCase",
 }));
 export type CreateTrafficDistributionGroupError =
   | AccessDeniedException
@@ -28045,6 +28105,7 @@ export const createTrafficDistributionGroup: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateTrafficDistributionGroup",
 }));
 export type CreateUseCaseError =
   | DuplicateResourceException
@@ -28071,6 +28132,7 @@ export const createUseCase: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateUseCase",
 }));
 export type CreateUserError =
   | DuplicateResourceException
@@ -28120,6 +28182,7 @@ export const createUser: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateUser",
 }));
 export type CreateUserHierarchyGroupError =
   | DuplicateResourceException
@@ -28150,6 +28213,7 @@ export const createUserHierarchyGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateUserHierarchyGroup",
 }));
 export type CreateViewError =
   | AccessDeniedException
@@ -28191,6 +28255,7 @@ export const createView: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "CreateView",
 }));
 export type CreateViewVersionError =
   | AccessDeniedException
@@ -28228,6 +28293,7 @@ export const createViewVersion: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  operationName: "CreateViewVersion",
 }));
 export type CreateVocabularyError =
   | AccessDeniedException
@@ -28260,6 +28326,7 @@ export const createVocabulary: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateVocabulary",
 }));
 export type CreateWorkspaceError =
   | AccessDeniedException
@@ -28295,6 +28362,7 @@ export const createWorkspace: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateWorkspace",
 }));
 export type CreateWorkspacePageError =
   | AccessDeniedException
@@ -28331,6 +28399,7 @@ export const createWorkspacePage: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateWorkspacePage",
 }));
 export type DeactivateEvaluationFormError =
   | InternalServiceException
@@ -28358,6 +28427,7 @@ export const deactivateEvaluationForm: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeactivateEvaluationForm",
 }));
 export type DeleteAttachedFileError =
   | AccessDeniedException
@@ -28387,6 +28457,7 @@ export const deleteAttachedFile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteAttachedFile",
 }));
 export type DeleteContactEvaluationError =
   | InternalServiceException
@@ -28413,6 +28484,7 @@ export const deleteContactEvaluation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteContactEvaluation",
 }));
 export type DeleteContactFlowError =
   | AccessDeniedException
@@ -28441,6 +28513,7 @@ export const deleteContactFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteContactFlow",
 }));
 export type DeleteContactFlowModuleError =
   | AccessDeniedException
@@ -28469,6 +28542,7 @@ export const deleteContactFlowModule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteContactFlowModule",
 }));
 export type DeleteContactFlowModuleAliasError =
   | AccessDeniedException
@@ -28498,6 +28572,7 @@ export const deleteContactFlowModuleAlias: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteContactFlowModuleAlias",
 }));
 export type DeleteContactFlowModuleVersionError =
   | AccessDeniedException
@@ -28526,6 +28601,7 @@ export const deleteContactFlowModuleVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteContactFlowModuleVersion",
 }));
 export type DeleteContactFlowVersionError =
   | AccessDeniedException
@@ -28554,6 +28630,7 @@ export const deleteContactFlowVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteContactFlowVersion",
 }));
 export type DeleteDataTableError =
   | AccessDeniedException
@@ -28588,6 +28665,7 @@ export const deleteDataTable: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteDataTable",
 }));
 export type DeleteDataTableAttributeError =
   | AccessDeniedException
@@ -28618,6 +28696,7 @@ export const deleteDataTableAttribute: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteDataTableAttribute",
 }));
 export type DeleteEmailAddressError =
   | AccessDeniedException
@@ -28648,6 +28727,7 @@ export const deleteEmailAddress: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteEmailAddress",
 }));
 export type DeleteEvaluationFormError =
   | InternalServiceException
@@ -28678,6 +28758,7 @@ export const deleteEvaluationForm: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteEvaluationForm",
 }));
 export type DeleteHoursOfOperationError =
   | InternalServiceException
@@ -28704,6 +28785,7 @@ export const deleteHoursOfOperation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteHoursOfOperation",
 }));
 export type DeleteHoursOfOperationOverrideError =
   | InternalServiceException
@@ -28730,6 +28812,7 @@ export const deleteHoursOfOperationOverride: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteHoursOfOperationOverride",
 }));
 export type DeleteInstanceError =
   | InternalServiceException
@@ -28759,6 +28842,7 @@ export const deleteInstance: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteInstance",
 }));
 export type DeleteIntegrationAssociationError =
   | InternalServiceException
@@ -28784,6 +28868,7 @@ export const deleteIntegrationAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteIntegrationAssociation",
 }));
 export type DeleteNotificationError =
   | AccessDeniedException
@@ -28812,6 +28897,7 @@ export const deleteNotification: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteNotification",
 }));
 export type DeletePredefinedAttributeError =
   | InternalServiceException
@@ -28840,6 +28926,7 @@ export const deletePredefinedAttribute: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeletePredefinedAttribute",
 }));
 export type DeletePromptError =
   | InternalServiceException
@@ -28866,6 +28953,7 @@ export const deletePrompt: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeletePrompt",
 }));
 export type DeletePushNotificationRegistrationError =
   | AccessDeniedException
@@ -28892,6 +28980,7 @@ export const deletePushNotificationRegistration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeletePushNotificationRegistration",
 }));
 export type DeleteQueueError =
   | InternalServiceException
@@ -28920,6 +29009,7 @@ export const deleteQueue: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteQueue",
 }));
 export type DeleteQuickConnectError =
   | InternalServiceException
@@ -28956,6 +29046,7 @@ export const deleteQuickConnect: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteQuickConnect",
 }));
 export type DeleteRoutingProfileError =
   | InternalServiceException
@@ -28984,6 +29075,7 @@ export const deleteRoutingProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteRoutingProfile",
 }));
 export type DeleteRuleError =
   | AccessDeniedException
@@ -29010,6 +29102,7 @@ export const deleteRule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteRule",
 }));
 export type DeleteSecurityProfileError =
   | AccessDeniedException
@@ -29040,6 +29133,7 @@ export const deleteSecurityProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteSecurityProfile",
 }));
 export type DeleteTaskTemplateError =
   | InternalServiceException
@@ -29066,6 +29160,7 @@ export const deleteTaskTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteTaskTemplate",
 }));
 export type DeleteTestCaseError =
   | AccessDeniedException
@@ -29094,6 +29189,7 @@ export const deleteTestCase: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteTestCase",
 }));
 export type DeleteTrafficDistributionGroupError =
   | AccessDeniedException
@@ -29123,6 +29219,7 @@ export const deleteTrafficDistributionGroup: API.OperationMethod<
     ResourceInUseException,
     ThrottlingException,
   ],
+  operationName: "DeleteTrafficDistributionGroup",
 }));
 export type DeleteUseCaseError =
   | InternalServiceException
@@ -29147,6 +29244,7 @@ export const deleteUseCase: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteUseCase",
 }));
 export type DeleteUserError =
   | InternalServiceException
@@ -29186,6 +29284,7 @@ export const deleteUser: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteUser",
 }));
 export type DeleteUserHierarchyGroupError =
   | InternalServiceException
@@ -29215,6 +29314,7 @@ export const deleteUserHierarchyGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteUserHierarchyGroup",
 }));
 export type DeleteViewError =
   | AccessDeniedException
@@ -29245,6 +29345,7 @@ export const deleteView: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteView",
 }));
 export type DeleteViewVersionError =
   | AccessDeniedException
@@ -29275,6 +29376,7 @@ export const deleteViewVersion: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteViewVersion",
 }));
 export type DeleteVocabularyError =
   | AccessDeniedException
@@ -29303,6 +29405,7 @@ export const deleteVocabulary: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteVocabulary",
 }));
 export type DeleteWorkspaceError =
   | AccessDeniedException
@@ -29331,6 +29434,7 @@ export const deleteWorkspace: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteWorkspace",
 }));
 export type DeleteWorkspaceMediaError =
   | InternalServiceException
@@ -29357,6 +29461,7 @@ export const deleteWorkspaceMedia: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteWorkspaceMedia",
 }));
 export type DeleteWorkspacePageError =
   | AccessDeniedException
@@ -29388,6 +29493,7 @@ export const deleteWorkspacePage: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteWorkspacePage",
 }));
 export type DescribeAgentStatusError =
   | InternalServiceException
@@ -29414,6 +29520,7 @@ export const describeAgentStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeAgentStatus",
 }));
 export type DescribeAttachedFilesConfigurationError =
   | AccessDeniedException
@@ -29442,6 +29549,7 @@ export const describeAttachedFilesConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeAttachedFilesConfiguration",
 }));
 export type DescribeAuthenticationProfileError =
   | InternalServiceException
@@ -29471,6 +29579,7 @@ export const describeAuthenticationProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeAuthenticationProfile",
 }));
 export type DescribeContactError =
   | InternalServiceException
@@ -29524,6 +29633,7 @@ export const describeContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeContact",
 }));
 export type DescribeContactEvaluationError =
   | InternalServiceException
@@ -29548,6 +29658,7 @@ export const describeContactEvaluation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeContactEvaluation",
 }));
 export type DescribeContactFlowError =
   | ContactFlowNotPublishedException
@@ -29590,6 +29701,7 @@ export const describeContactFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeContactFlow",
 }));
 export type DescribeContactFlowModuleError =
   | AccessDeniedException
@@ -29622,6 +29734,7 @@ export const describeContactFlowModule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeContactFlowModule",
 }));
 export type DescribeContactFlowModuleAliasError =
   | AccessDeniedException
@@ -29651,6 +29764,7 @@ export const describeContactFlowModuleAlias: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeContactFlowModuleAlias",
 }));
 export type DescribeDataTableError =
   | AccessDeniedException
@@ -29681,6 +29795,7 @@ export const describeDataTable: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeDataTable",
 }));
 export type DescribeDataTableAttributeError =
   | AccessDeniedException
@@ -29710,6 +29825,7 @@ export const describeDataTableAttribute: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeDataTableAttribute",
 }));
 export type DescribeEmailAddressError =
   | AccessDeniedException
@@ -29738,6 +29854,7 @@ export const describeEmailAddress: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeEmailAddress",
 }));
 export type DescribeEvaluationFormError =
   | InternalServiceException
@@ -29763,6 +29880,7 @@ export const describeEvaluationForm: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeEvaluationForm",
 }));
 export type DescribeHoursOfOperationError =
   | InternalServiceException
@@ -29789,6 +29907,7 @@ export const describeHoursOfOperation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeHoursOfOperation",
 }));
 export type DescribeHoursOfOperationOverrideError =
   | InternalServiceException
@@ -29815,6 +29934,7 @@ export const describeHoursOfOperationOverride: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeHoursOfOperationOverride",
 }));
 export type DescribeInstanceError =
   | InternalServiceException
@@ -29843,6 +29963,7 @@ export const describeInstance: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeInstance",
 }));
 export type DescribeInstanceAttributeError =
   | InternalServiceException
@@ -29871,6 +29992,7 @@ export const describeInstanceAttribute: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeInstanceAttribute",
 }));
 export type DescribeInstanceStorageConfigError =
   | InternalServiceException
@@ -29900,6 +30022,7 @@ export const describeInstanceStorageConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeInstanceStorageConfig",
 }));
 export type DescribeNotificationError =
   | AccessDeniedException
@@ -29928,6 +30051,7 @@ export const describeNotification: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeNotification",
 }));
 export type DescribePhoneNumberError =
   | AccessDeniedException
@@ -29960,6 +30084,7 @@ export const describePhoneNumber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribePhoneNumber",
 }));
 export type DescribePredefinedAttributeError =
   | InternalServiceException
@@ -29999,6 +30124,7 @@ export const describePredefinedAttribute: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribePredefinedAttribute",
 }));
 export type DescribePromptError =
   | InternalServiceException
@@ -30025,6 +30151,7 @@ export const describePrompt: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribePrompt",
 }));
 export type DescribeQueueError =
   | InternalServiceException
@@ -30051,6 +30178,7 @@ export const describeQueue: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeQueue",
 }));
 export type DescribeQuickConnectError =
   | InternalServiceException
@@ -30077,6 +30205,7 @@ export const describeQuickConnect: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeQuickConnect",
 }));
 export type DescribeRoutingProfileError =
   | InternalServiceException
@@ -30107,6 +30236,7 @@ export const describeRoutingProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeRoutingProfile",
 }));
 export type DescribeRuleError =
   | AccessDeniedException
@@ -30133,6 +30263,7 @@ export const describeRule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeRule",
 }));
 export type DescribeSecurityProfileError =
   | InternalServiceException
@@ -30163,6 +30294,7 @@ export const describeSecurityProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeSecurityProfile",
 }));
 export type DescribeTestCaseError =
   | AccessDeniedException
@@ -30191,6 +30323,7 @@ export const describeTestCase: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeTestCase",
 }));
 export type DescribeTrafficDistributionGroupError =
   | AccessDeniedException
@@ -30217,6 +30350,7 @@ export const describeTrafficDistributionGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeTrafficDistributionGroup",
 }));
 export type DescribeUserError =
   | InternalServiceException
@@ -30245,6 +30379,7 @@ export const describeUser: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeUser",
 }));
 export type DescribeUserHierarchyGroupError =
   | InternalServiceException
@@ -30271,6 +30406,7 @@ export const describeUserHierarchyGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeUserHierarchyGroup",
 }));
 export type DescribeUserHierarchyStructureError =
   | InternalServiceException
@@ -30297,6 +30433,7 @@ export const describeUserHierarchyStructure: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeUserHierarchyStructure",
 }));
 export type DescribeViewError =
   | AccessDeniedException
@@ -30334,6 +30471,7 @@ export const describeView: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeView",
 }));
 export type DescribeVocabularyError =
   | AccessDeniedException
@@ -30360,6 +30498,7 @@ export const describeVocabulary: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeVocabulary",
 }));
 export type DescribeWorkspaceError =
   | AccessDeniedException
@@ -30388,6 +30527,7 @@ export const describeWorkspace: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeWorkspace",
 }));
 export type DisassociateAnalyticsDataSetError =
   | InternalServiceException
@@ -30414,6 +30554,7 @@ export const disassociateAnalyticsDataSet: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateAnalyticsDataSet",
 }));
 export type DisassociateApprovedOriginError =
   | InternalServiceException
@@ -30442,6 +30583,7 @@ export const disassociateApprovedOrigin: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateApprovedOrigin",
 }));
 export type DisassociateBotError =
   | InternalServiceException
@@ -30468,6 +30610,7 @@ export const disassociateBot: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateBot",
 }));
 export type DisassociateEmailAddressAliasError =
   | AccessDeniedException
@@ -30551,6 +30694,7 @@ export const disassociateEmailAddressAlias: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateEmailAddressAlias",
 }));
 export type DisassociateFlowError =
   | AccessDeniedException
@@ -30579,6 +30723,7 @@ export const disassociateFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateFlow",
 }));
 export type DisassociateHoursOfOperationsError =
   | ConditionalOperationFailedException
@@ -30607,6 +30752,7 @@ export const disassociateHoursOfOperations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateHoursOfOperations",
 }));
 export type DisassociateInstanceStorageConfigError =
   | InternalServiceException
@@ -30635,6 +30781,7 @@ export const disassociateInstanceStorageConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateInstanceStorageConfig",
 }));
 export type DisassociateLambdaFunctionError =
   | InternalServiceException
@@ -30663,6 +30810,7 @@ export const disassociateLambdaFunction: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateLambdaFunction",
 }));
 export type DisassociateLexBotError =
   | InternalServiceException
@@ -30691,6 +30839,7 @@ export const disassociateLexBot: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateLexBot",
 }));
 export type DisassociatePhoneNumberContactFlowError =
   | AccessDeniedException
@@ -30723,6 +30872,7 @@ export const disassociatePhoneNumberContactFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociatePhoneNumberContactFlow",
 }));
 export type DisassociateQueueEmailAddressesError =
   | AccessDeniedException
@@ -30759,6 +30909,7 @@ export const disassociateQueueEmailAddresses: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateQueueEmailAddresses",
 }));
 export type DisassociateQueueQuickConnectsError =
   | InternalServiceException
@@ -30785,6 +30936,7 @@ export const disassociateQueueQuickConnects: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateQueueQuickConnects",
 }));
 export type DisassociateRoutingProfileQueuesError =
   | InternalServiceException
@@ -30814,6 +30966,7 @@ export const disassociateRoutingProfileQueues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateRoutingProfileQueues",
 }));
 export type DisassociateSecurityKeyError =
   | InternalServiceException
@@ -30842,6 +30995,7 @@ export const disassociateSecurityKey: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateSecurityKey",
 }));
 export type DisassociateSecurityProfilesError =
   | AccessDeniedException
@@ -30872,6 +31026,7 @@ export const disassociateSecurityProfiles: API.OperationMethod<
     ResourceConflictException,
     ResourceNotFoundException,
   ],
+  operationName: "DisassociateSecurityProfiles",
 }));
 export type DisassociateTrafficDistributionGroupUserError =
   | AccessDeniedException
@@ -30901,6 +31056,7 @@ export const disassociateTrafficDistributionGroupUser: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateTrafficDistributionGroupUser",
 }));
 export type DisassociateUserProficienciesError =
   | InternalServiceException
@@ -30927,6 +31083,7 @@ export const disassociateUserProficiencies: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateUserProficiencies",
 }));
 export type DisassociateWorkspaceError =
   | AccessDeniedException
@@ -30955,6 +31112,7 @@ export const disassociateWorkspace: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateWorkspace",
 }));
 export type DismissUserContactError =
   | AccessDeniedException
@@ -30985,6 +31143,7 @@ export const dismissUserContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DismissUserContact",
 }));
 export type EvaluateDataTableValuesError =
   | AccessDeniedException
@@ -31032,6 +31191,7 @@ export const evaluateDataTableValues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "EvaluateDataTableValues",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -31064,6 +31224,7 @@ export const getAttachedFile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetAttachedFile",
 }));
 export type GetContactAttributesError =
   | InternalServiceException
@@ -31086,6 +31247,7 @@ export const getContactAttributes: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "GetContactAttributes",
 }));
 export type GetContactMetricsError =
   | AccessDeniedException
@@ -31134,6 +31296,7 @@ export const getContactMetrics: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetContactMetrics",
 }));
 export type GetCurrentMetricDataError =
   | InternalServiceException
@@ -31198,6 +31361,7 @@ export const getCurrentMetricData: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetCurrentMetricData",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -31244,6 +31408,7 @@ export const getCurrentUserData: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetCurrentUserData",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -31275,6 +31440,7 @@ export const getEffectiveHoursOfOperations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetEffectiveHoursOfOperations",
 }));
 export type GetEvaluationFormValidationError =
   | InternalServiceException
@@ -31303,6 +31469,7 @@ export const getEvaluationFormValidation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetEvaluationFormValidation",
 }));
 export type GetFederationTokenError =
   | DuplicateResourceException
@@ -31339,6 +31506,7 @@ export const getFederationToken: API.OperationMethod<
     ResourceNotFoundException,
     UserNotFoundException,
   ],
+  operationName: "GetFederationToken",
 }));
 export type GetFlowAssociationError =
   | AccessDeniedException
@@ -31367,6 +31535,7 @@ export const getFlowAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetFlowAssociation",
 }));
 export type GetMetricDataError =
   | InternalServiceException
@@ -31416,6 +31585,7 @@ export const getMetricData: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetMetricData",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -31493,6 +31663,7 @@ export const getMetricDataV2: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetMetricDataV2",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -31524,6 +31695,7 @@ export const getPromptFile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetPromptFile",
 }));
 export type GetTaskTemplateError =
   | InternalServiceException
@@ -31550,6 +31722,7 @@ export const getTaskTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetTaskTemplate",
 }));
 export type GetTestCaseExecutionSummaryError =
   | AccessDeniedException
@@ -31578,6 +31751,7 @@ export const getTestCaseExecutionSummary: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetTestCaseExecutionSummary",
 }));
 export type GetTrafficDistributionError =
   | AccessDeniedException
@@ -31604,6 +31778,7 @@ export const getTrafficDistribution: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetTrafficDistribution",
 }));
 export type ImportPhoneNumberError =
   | AccessDeniedException
@@ -31648,6 +31823,7 @@ export const importPhoneNumber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ImportPhoneNumber",
 }));
 export type ImportWorkspaceMediaError =
   | InternalServiceException
@@ -31674,6 +31850,7 @@ export const importWorkspaceMedia: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ImportWorkspaceMedia",
 }));
 export type ListAgentStatusesError =
   | InternalServiceException
@@ -31715,6 +31892,7 @@ export const listAgentStatuses: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListAgentStatuses",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -31747,6 +31925,7 @@ export const listAnalyticsDataAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListAnalyticsDataAssociations",
 }));
 export type ListAnalyticsDataLakeDataSetsError =
   | InternalServiceException
@@ -31773,6 +31952,7 @@ export const listAnalyticsDataLakeDataSets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListAnalyticsDataLakeDataSets",
 }));
 export type ListApprovedOriginsError =
   | InternalServiceException
@@ -31816,6 +31996,7 @@ export const listApprovedOrigins: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListApprovedOrigins",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -31848,6 +32029,7 @@ export const listAssociatedContacts: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListAssociatedContacts",
 }));
 export type ListAttachedFilesConfigurationsError =
   | AccessDeniedException
@@ -31891,6 +32073,7 @@ export const listAttachedFilesConfigurations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListAttachedFilesConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -31942,6 +32125,7 @@ export const listAuthenticationProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListAuthenticationProfiles",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -31991,6 +32175,7 @@ export const listBots: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListBots",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32041,6 +32226,7 @@ export const listChildHoursOfOperations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListChildHoursOfOperations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32086,6 +32272,7 @@ export const listContactEvaluations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListContactEvaluations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32135,6 +32322,7 @@ export const listContactFlowModuleAliases: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListContactFlowModuleAliases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32184,6 +32372,7 @@ export const listContactFlowModules: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListContactFlowModules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32233,6 +32422,7 @@ export const listContactFlowModuleVersions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListContactFlowModuleVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32286,6 +32476,7 @@ export const listContactFlows: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListContactFlows",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32335,6 +32526,7 @@ export const listContactFlowVersions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListContactFlowVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32386,6 +32578,7 @@ export const listContactReferences: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListContactReferences",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32436,6 +32629,7 @@ export const listDataTableAttributes: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListDataTableAttributes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32486,6 +32680,7 @@ export const listDataTablePrimaryValues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListDataTablePrimaryValues",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32536,6 +32731,7 @@ export const listDataTables: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListDataTables",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32586,6 +32782,7 @@ export const listDataTableValues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListDataTableValues",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32631,6 +32828,7 @@ export const listDefaultVocabularies: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListDefaultVocabularies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32678,6 +32876,7 @@ export const listEntitySecurityProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListEntitySecurityProfiles",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32723,6 +32922,7 @@ export const listEvaluationForms: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListEvaluationForms",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32768,6 +32968,7 @@ export const listEvaluationFormVersions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListEvaluationFormVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32817,6 +33018,7 @@ export const listFlowAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListFlowAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32864,6 +33066,7 @@ export const listHoursOfOperationOverrides: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListHoursOfOperationOverrides",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32914,6 +33117,7 @@ export const listHoursOfOperations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListHoursOfOperations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -32963,6 +33167,7 @@ export const listInstanceAttributes: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListInstanceAttributes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33005,6 +33210,7 @@ export const listInstances: API.OperationMethod<
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [InternalServiceException, InvalidRequestException],
+  operationName: "ListInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33054,6 +33260,7 @@ export const listInstanceStorageConfigs: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListInstanceStorageConfigs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33099,6 +33306,7 @@ export const listIntegrationAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListIntegrationAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33149,6 +33357,7 @@ export const listLambdaFunctions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListLambdaFunctions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33199,6 +33408,7 @@ export const listLexBots: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListLexBots",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33233,6 +33443,7 @@ export const listNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListNotifications",
 }));
 export type ListPhoneNumbersError =
   | InternalServiceException
@@ -33285,6 +33496,7 @@ export const listPhoneNumbers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListPhoneNumbers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33342,6 +33554,7 @@ export const listPhoneNumbersV2: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListPhoneNumbersV2",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33402,6 +33615,7 @@ export const listPredefinedAttributes: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListPredefinedAttributes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33449,6 +33663,7 @@ export const listPrompts: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListPrompts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33493,6 +33708,7 @@ export const listQueueEmailAddresses: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListQueueEmailAddresses",
 }));
 export type ListQueueQuickConnectsError =
   | InternalServiceException
@@ -33534,6 +33750,7 @@ export const listQueueQuickConnects: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListQueueQuickConnects",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33588,6 +33805,7 @@ export const listQueues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListQueues",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33635,6 +33853,7 @@ export const listQuickConnects: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListQuickConnects",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33688,6 +33907,7 @@ export const listRealtimeContactAnalysisSegmentsV2: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListRealtimeContactAnalysisSegmentsV2",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33751,6 +33971,7 @@ export const listRoutingProfileManualAssignmentQueues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListRoutingProfileManualAssignmentQueues",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33798,6 +34019,7 @@ export const listRoutingProfileQueues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListRoutingProfileQueues",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33847,6 +34069,7 @@ export const listRoutingProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListRoutingProfiles",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33894,6 +34117,7 @@ export const listRules: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListRules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33943,6 +34167,7 @@ export const listSecurityKeys: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListSecurityKeys",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -33990,6 +34215,7 @@ export const listSecurityProfileApplications: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListSecurityProfileApplications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -34037,6 +34263,7 @@ export const listSecurityProfileFlowModules: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListSecurityProfileFlowModules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -34088,6 +34315,7 @@ export const listSecurityProfilePermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListSecurityProfilePermissions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -34139,6 +34367,7 @@ export const listSecurityProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListSecurityProfiles",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -34174,6 +34403,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTaskTemplatesError =
   | InternalServiceException
@@ -34215,6 +34445,7 @@ export const listTaskTemplates: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListTaskTemplates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -34249,6 +34480,7 @@ export const listTestCaseExecutionRecords: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListTestCaseExecutionRecords",
 }));
 export type ListTestCaseExecutionsError =
   | AccessDeniedException
@@ -34277,6 +34509,7 @@ export const listTestCaseExecutions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListTestCaseExecutions",
 }));
 export type ListTestCasesError =
   | AccessDeniedException
@@ -34320,6 +34553,7 @@ export const listTestCases: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListTestCases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -34365,6 +34599,7 @@ export const listTrafficDistributionGroups: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListTrafficDistributionGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -34412,6 +34647,7 @@ export const listTrafficDistributionGroupUsers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListTrafficDistributionGroupUsers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -34457,6 +34693,7 @@ export const listUseCases: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListUseCases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -34506,6 +34743,7 @@ export const listUserHierarchyGroups: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListUserHierarchyGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -34540,6 +34778,7 @@ export const listUserNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListUserNotifications",
 }));
 export type ListUserProficienciesError =
   | InternalServiceException
@@ -34581,6 +34820,7 @@ export const listUserProficiencies: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListUserProficiencies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -34628,6 +34868,7 @@ export const listUsers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListUsers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -34679,6 +34920,7 @@ export const listViews: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListViews",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -34730,6 +34972,7 @@ export const listViewVersions: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListViewVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -34764,6 +35007,7 @@ export const listWorkspaceMedia: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListWorkspaceMedia",
 }));
 export type ListWorkspacePagesError =
   | AccessDeniedException
@@ -34807,6 +35051,7 @@ export const listWorkspacePages: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListWorkspacePages",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -34856,6 +35101,7 @@ export const listWorkspaces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListWorkspaces",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -34893,6 +35139,7 @@ export const monitorContact: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "MonitorContact",
 }));
 export type PauseContactError =
   | AccessDeniedException
@@ -34925,6 +35172,7 @@ export const pauseContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "PauseContact",
 }));
 export type PutUserStatusError =
   | AccessDeniedException
@@ -34957,6 +35205,7 @@ export const putUserStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "PutUserStatus",
 }));
 export type ReleasePhoneNumberError =
   | AccessDeniedException
@@ -35010,6 +35259,7 @@ export const releasePhoneNumber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ReleasePhoneNumber",
 }));
 export type ReplicateInstanceError =
   | AccessDeniedException
@@ -35046,6 +35296,7 @@ export const replicateInstance: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "ReplicateInstance",
 }));
 export type ResumeContactError =
   | AccessDeniedException
@@ -35076,6 +35327,7 @@ export const resumeContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ResumeContact",
 }));
 export type ResumeContactRecordingError =
   | InternalServiceException
@@ -35104,6 +35356,7 @@ export const resumeContactRecording: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "ResumeContactRecording",
 }));
 export type SearchAgentStatusesError =
   | InternalServiceException
@@ -35145,6 +35398,7 @@ export const searchAgentStatuses: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchAgentStatuses",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -35192,6 +35446,7 @@ export const searchAvailablePhoneNumbers: API.OperationMethod<
     InvalidParameterException,
     ThrottlingException,
   ],
+  operationName: "SearchAvailablePhoneNumbers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -35240,6 +35495,7 @@ export const searchContactEvaluations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchContactEvaluations",
 }));
 export type SearchContactFlowModulesError =
   | InternalServiceException
@@ -35281,6 +35537,7 @@ export const searchContactFlowModules: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchContactFlowModules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -35328,6 +35585,7 @@ export const searchContactFlows: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchContactFlows",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -35375,6 +35633,7 @@ export const searchContacts: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchContacts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -35424,6 +35683,7 @@ export const searchDataTables: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchDataTables",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -35458,6 +35718,7 @@ export const searchEmailAddresses: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchEmailAddresses",
 }));
 export type SearchEvaluationFormsError =
   | InternalServiceException
@@ -35502,6 +35763,7 @@ export const searchEvaluationForms: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchEvaluationForms",
 }));
 export type SearchHoursOfOperationOverridesError =
   | InternalServiceException
@@ -35543,6 +35805,7 @@ export const searchHoursOfOperationOverrides: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchHoursOfOperationOverrides",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -35590,6 +35853,7 @@ export const searchHoursOfOperations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchHoursOfOperations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -35624,6 +35888,7 @@ export const searchNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchNotifications",
 }));
 export type SearchPredefinedAttributesError =
   | InternalServiceException
@@ -35678,6 +35943,7 @@ export const searchPredefinedAttributes: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchPredefinedAttributes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -35725,6 +35991,7 @@ export const searchPrompts: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchPrompts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -35772,6 +36039,7 @@ export const searchQueues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchQueues",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -35819,6 +36087,7 @@ export const searchQuickConnects: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchQuickConnects",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -35868,6 +36137,7 @@ export const searchResourceTags: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchResourceTags",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -35918,6 +36188,7 @@ export const searchRoutingProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchRoutingProfiles",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -35969,6 +36240,7 @@ export const searchSecurityProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchSecurityProfiles",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -36018,6 +36290,7 @@ export const searchTestCases: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchTestCases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -36068,6 +36341,7 @@ export const searchUserHierarchyGroups: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchUserHierarchyGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -36117,6 +36391,7 @@ export const searchUsers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchUsers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -36166,6 +36441,7 @@ export const searchViews: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchViews",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -36212,6 +36488,7 @@ export const searchVocabularies: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "SearchVocabularies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -36261,6 +36538,7 @@ export const searchWorkspaceAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchWorkspaceAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -36310,6 +36588,7 @@ export const searchWorkspaces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchWorkspaces",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -36354,6 +36633,7 @@ export const sendChatIntegrationEvent: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SendChatIntegrationEvent",
 }));
 export type SendOutboundEmailError =
   | AccessDeniedException
@@ -36388,6 +36668,7 @@ export const sendOutboundEmail: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "SendOutboundEmail",
 }));
 export type StartAttachedFileUploadError =
   | AccessDeniedException
@@ -36418,6 +36699,7 @@ export const startAttachedFileUpload: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "StartAttachedFileUpload",
 }));
 export type StartChatContactError =
   | InternalServiceException
@@ -36466,6 +36748,7 @@ export const startChatContact: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "StartChatContact",
 }));
 export type StartContactEvaluationError =
   | InternalServiceException
@@ -36498,6 +36781,7 @@ export const startContactEvaluation: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "StartContactEvaluation",
 }));
 export type StartContactMediaProcessingError =
   | AccessDeniedException
@@ -36529,6 +36813,7 @@ export const startContactMediaProcessing: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "StartContactMediaProcessing",
 }));
 export type StartContactRecordingError =
   | InternalServiceException
@@ -36570,6 +36855,7 @@ export const startContactRecording: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "StartContactRecording",
 }));
 export type StartContactStreamingError =
   | InternalServiceException
@@ -36606,6 +36892,7 @@ export const startContactStreaming: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "StartContactStreaming",
 }));
 export type StartEmailContactError =
   | AccessDeniedException
@@ -36637,6 +36924,7 @@ export const startEmailContact: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "StartEmailContact",
 }));
 export type StartEvaluationFormValidationError =
   | InternalServiceException
@@ -36669,6 +36957,7 @@ export const startEvaluationFormValidation: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "StartEvaluationFormValidation",
 }));
 export type StartOutboundChatContactError =
   | AccessDeniedException
@@ -36721,6 +37010,7 @@ export const startOutboundChatContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "StartOutboundChatContact",
 }));
 export type StartOutboundEmailContactError =
   | AccessDeniedException
@@ -36752,6 +37042,7 @@ export const startOutboundEmailContact: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "StartOutboundEmailContact",
 }));
 export type StartOutboundVoiceContactError =
   | DestinationNotAllowedException
@@ -36801,6 +37092,7 @@ export const startOutboundVoiceContact: API.OperationMethod<
     OutboundContactNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "StartOutboundVoiceContact",
 }));
 export type StartScreenSharingError =
   | AccessDeniedException
@@ -36830,6 +37122,7 @@ export const startScreenSharing: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "StartScreenSharing",
 }));
 export type StartTaskContactError =
   | InternalServiceException
@@ -36890,6 +37183,7 @@ export const startTaskContact: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "StartTaskContact",
 }));
 export type StartTestCaseExecutionError =
   | AccessDeniedException
@@ -36920,6 +37214,7 @@ export const startTestCaseExecution: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "StartTestCaseExecution",
 }));
 export type StartWebRTCContactError =
   | InternalServiceException
@@ -36948,6 +37243,7 @@ export const startWebRTCContact: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "StartWebRTCContact",
 }));
 export type StopContactError =
   | ContactNotFoundException
@@ -36989,6 +37285,7 @@ export const stopContact: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "StopContact",
 }));
 export type StopContactMediaProcessingError =
   | AccessDeniedException
@@ -37017,6 +37314,7 @@ export const stopContactMediaProcessing: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "StopContactMediaProcessing",
 }));
 export type StopContactRecordingError =
   | InternalServiceException
@@ -37046,6 +37344,7 @@ export const stopContactRecording: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "StopContactRecording",
 }));
 export type StopContactStreamingError =
   | InternalServiceException
@@ -37071,6 +37370,7 @@ export const stopContactStreaming: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "StopContactStreaming",
 }));
 export type StopTestCaseExecutionError =
   | AccessDeniedException
@@ -37099,6 +37399,7 @@ export const stopTestCaseExecution: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "StopTestCaseExecution",
 }));
 export type SubmitContactEvaluationError =
   | InternalServiceException
@@ -37130,6 +37431,7 @@ export const submitContactEvaluation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SubmitContactEvaluation",
 }));
 export type SuspendContactRecordingError =
   | InternalServiceException
@@ -37162,6 +37464,7 @@ export const suspendContactRecording: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "SuspendContactRecording",
 }));
 export type TagContactError =
   | InternalServiceException
@@ -37191,6 +37494,7 @@ export const tagContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "TagContact",
 }));
 export type TagResourceError =
   | InternalServiceException
@@ -37223,6 +37527,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "TagResource",
 }));
 export type TransferContactError =
   | AccessDeniedException
@@ -37270,6 +37575,7 @@ export const transferContact: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "TransferContact",
 }));
 export type UntagContactError =
   | InternalServiceException
@@ -37299,6 +37605,7 @@ export const untagContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UntagContact",
 }));
 export type UntagResourceError =
   | InternalServiceException
@@ -37325,6 +37632,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAgentStatusError =
   | DuplicateResourceException
@@ -37355,6 +37663,7 @@ export const updateAgentStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateAgentStatus",
 }));
 export type UpdateAttachedFilesConfigurationError =
   | AccessDeniedException
@@ -37383,6 +37692,7 @@ export const updateAttachedFilesConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateAttachedFilesConfiguration",
 }));
 export type UpdateAuthenticationProfileError =
   | InternalServiceException
@@ -37412,6 +37722,7 @@ export const updateAuthenticationProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateAuthenticationProfile",
 }));
 export type UpdateContactError =
   | AccessDeniedException
@@ -37449,6 +37760,7 @@ export const updateContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateContact",
 }));
 export type UpdateContactAttributesError =
   | InternalServiceException
@@ -37485,6 +37797,7 @@ export const updateContactAttributes: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateContactAttributes",
 }));
 export type UpdateContactEvaluationError =
   | InternalServiceException
@@ -37513,6 +37826,7 @@ export const updateContactEvaluation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateContactEvaluation",
 }));
 export type UpdateContactFlowContentError =
   | InternalServiceException
@@ -37548,6 +37862,7 @@ export const updateContactFlowContent: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateContactFlowContent",
 }));
 export type UpdateContactFlowMetadataError =
   | DuplicateResourceException
@@ -37576,6 +37891,7 @@ export const updateContactFlowMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateContactFlowMetadata",
 }));
 export type UpdateContactFlowModuleAliasError =
   | AccessDeniedException
@@ -37608,6 +37924,7 @@ export const updateContactFlowModuleAlias: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateContactFlowModuleAlias",
 }));
 export type UpdateContactFlowModuleContentError =
   | AccessDeniedException
@@ -37640,6 +37957,7 @@ export const updateContactFlowModuleContent: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateContactFlowModuleContent",
 }));
 export type UpdateContactFlowModuleMetadataError =
   | AccessDeniedException
@@ -37670,6 +37988,7 @@ export const updateContactFlowModuleMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateContactFlowModuleMetadata",
 }));
 export type UpdateContactFlowNameError =
   | DuplicateResourceException
@@ -37701,6 +38020,7 @@ export const updateContactFlowName: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateContactFlowName",
 }));
 export type UpdateContactRoutingDataError =
   | AccessDeniedException
@@ -37739,6 +38059,7 @@ export const updateContactRoutingData: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateContactRoutingData",
 }));
 export type UpdateContactScheduleError =
   | InternalServiceException
@@ -37767,6 +38088,7 @@ export const updateContactSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateContactSchedule",
 }));
 export type UpdateDataTableAttributeError =
   | AccessDeniedException
@@ -37804,6 +38126,7 @@ export const updateDataTableAttribute: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "UpdateDataTableAttribute",
 }));
 export type UpdateDataTableMetadataError =
   | AccessDeniedException
@@ -37838,6 +38161,7 @@ export const updateDataTableMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateDataTableMetadata",
 }));
 export type UpdateDataTablePrimaryValuesError =
   | AccessDeniedException
@@ -37870,6 +38194,7 @@ export const updateDataTablePrimaryValues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateDataTablePrimaryValues",
 }));
 export type UpdateEmailAddressMetadataError =
   | AccessDeniedException
@@ -37901,6 +38226,7 @@ export const updateEmailAddressMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateEmailAddressMetadata",
 }));
 export type UpdateEvaluationFormError =
   | InternalServiceException
@@ -37933,6 +38259,7 @@ export const updateEvaluationForm: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "UpdateEvaluationForm",
 }));
 export type UpdateHoursOfOperationError =
   | DuplicateResourceException
@@ -37961,6 +38288,7 @@ export const updateHoursOfOperation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateHoursOfOperation",
 }));
 export type UpdateHoursOfOperationOverrideError =
   | ConditionalOperationFailedException
@@ -37991,6 +38319,7 @@ export const updateHoursOfOperationOverride: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateHoursOfOperationOverride",
 }));
 export type UpdateInstanceAttributeError =
   | InternalServiceException
@@ -38019,6 +38348,7 @@ export const updateInstanceAttribute: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateInstanceAttribute",
 }));
 export type UpdateInstanceStorageConfigError =
   | InternalServiceException
@@ -38047,6 +38377,7 @@ export const updateInstanceStorageConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateInstanceStorageConfig",
 }));
 export type UpdateNotificationContentError =
   | AccessDeniedException
@@ -38075,6 +38406,7 @@ export const updateNotificationContent: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateNotificationContent",
 }));
 export type UpdateParticipantAuthenticationError =
   | AccessDeniedException
@@ -38113,6 +38445,7 @@ export const updateParticipantAuthentication: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "UpdateParticipantAuthentication",
 }));
 export type UpdateParticipantRoleConfigError =
   | AccessDeniedException
@@ -38153,6 +38486,7 @@ export const updateParticipantRoleConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateParticipantRoleConfig",
 }));
 export type UpdatePhoneNumberError =
   | AccessDeniedException
@@ -38189,6 +38523,7 @@ export const updatePhoneNumber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdatePhoneNumber",
 }));
 export type UpdatePhoneNumberMetadataError =
   | AccessDeniedException
@@ -38223,6 +38558,7 @@ export const updatePhoneNumberMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdatePhoneNumberMetadata",
 }));
 export type UpdatePredefinedAttributeError =
   | InternalServiceException
@@ -38267,6 +38603,7 @@ export const updatePredefinedAttribute: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdatePredefinedAttribute",
 }));
 export type UpdatePromptError =
   | InternalServiceException
@@ -38293,6 +38630,7 @@ export const updatePrompt: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdatePrompt",
 }));
 export type UpdateQueueHoursOfOperationError =
   | InternalServiceException
@@ -38319,6 +38657,7 @@ export const updateQueueHoursOfOperation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateQueueHoursOfOperation",
 }));
 export type UpdateQueueMaxContactsError =
   | InternalServiceException
@@ -38345,6 +38684,7 @@ export const updateQueueMaxContacts: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateQueueMaxContacts",
 }));
 export type UpdateQueueNameError =
   | DuplicateResourceException
@@ -38373,6 +38713,7 @@ export const updateQueueName: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateQueueName",
 }));
 export type UpdateQueueOutboundCallerConfigError =
   | InternalServiceException
@@ -38413,6 +38754,7 @@ export const updateQueueOutboundCallerConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateQueueOutboundCallerConfig",
 }));
 export type UpdateQueueOutboundEmailConfigError =
   | AccessDeniedException
@@ -38443,6 +38785,7 @@ export const updateQueueOutboundEmailConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateQueueOutboundEmailConfig",
 }));
 export type UpdateQueueStatusError =
   | InternalServiceException
@@ -38469,6 +38812,7 @@ export const updateQueueStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateQueueStatus",
 }));
 export type UpdateQuickConnectConfigError =
   | InternalServiceException
@@ -38495,6 +38839,7 @@ export const updateQuickConnectConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateQuickConnectConfig",
 }));
 export type UpdateQuickConnectNameError =
   | InternalServiceException
@@ -38521,6 +38866,7 @@ export const updateQuickConnectName: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateQuickConnectName",
 }));
 export type UpdateRoutingProfileAgentAvailabilityTimerError =
   | InternalServiceException
@@ -38548,6 +38894,7 @@ export const updateRoutingProfileAgentAvailabilityTimer: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateRoutingProfileAgentAvailabilityTimer",
 }));
 export type UpdateRoutingProfileConcurrencyError =
   | InternalServiceException
@@ -38574,6 +38921,7 @@ export const updateRoutingProfileConcurrency: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateRoutingProfileConcurrency",
 }));
 export type UpdateRoutingProfileDefaultOutboundQueueError =
   | InternalServiceException
@@ -38600,6 +38948,7 @@ export const updateRoutingProfileDefaultOutboundQueue: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateRoutingProfileDefaultOutboundQueue",
 }));
 export type UpdateRoutingProfileNameError =
   | DuplicateResourceException
@@ -38628,6 +38977,7 @@ export const updateRoutingProfileName: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateRoutingProfileName",
 }));
 export type UpdateRoutingProfileQueuesError =
   | InternalServiceException
@@ -38654,6 +39004,7 @@ export const updateRoutingProfileQueues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateRoutingProfileQueues",
 }));
 export type UpdateRuleError =
   | AccessDeniedException
@@ -38685,6 +39036,7 @@ export const updateRule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateRule",
 }));
 export type UpdateSecurityProfileError =
   | InternalServiceException
@@ -38715,6 +39067,7 @@ export const updateSecurityProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateSecurityProfile",
 }));
 export type UpdateTaskTemplateError =
   | InternalServiceException
@@ -38744,6 +39097,7 @@ export const updateTaskTemplate: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "UpdateTaskTemplate",
 }));
 export type UpdateTestCaseError =
   | AccessDeniedException
@@ -38776,6 +39130,7 @@ export const updateTestCase: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateTestCase",
 }));
 export type UpdateTrafficDistributionError =
   | AccessDeniedException
@@ -38823,6 +39178,7 @@ export const updateTrafficDistribution: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateTrafficDistribution",
 }));
 export type UpdateUserConfigError =
   | ConditionalOperationFailedException
@@ -38853,6 +39209,7 @@ export const updateUserConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateUserConfig",
 }));
 export type UpdateUserHierarchyError =
   | InternalServiceException
@@ -38879,6 +39236,7 @@ export const updateUserHierarchy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateUserHierarchy",
 }));
 export type UpdateUserHierarchyGroupNameError =
   | DuplicateResourceException
@@ -38907,6 +39265,7 @@ export const updateUserHierarchyGroupName: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateUserHierarchyGroupName",
 }));
 export type UpdateUserHierarchyStructureError =
   | InternalServiceException
@@ -38935,6 +39294,7 @@ export const updateUserHierarchyStructure: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateUserHierarchyStructure",
 }));
 export type UpdateUserIdentityInfoError =
   | InternalServiceException
@@ -38967,6 +39327,7 @@ export const updateUserIdentityInfo: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateUserIdentityInfo",
 }));
 export type UpdateUserNotificationStatusError =
   | AccessDeniedException
@@ -38995,6 +39356,7 @@ export const updateUserNotificationStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateUserNotificationStatus",
 }));
 export type UpdateUserPhoneConfigError =
   | InternalServiceException
@@ -39023,6 +39385,7 @@ export const updateUserPhoneConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateUserPhoneConfig",
 }));
 export type UpdateUserProficienciesError =
   | InternalServiceException
@@ -39049,6 +39412,7 @@ export const updateUserProficiencies: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateUserProficiencies",
 }));
 export type UpdateUserRoutingProfileError =
   | InternalServiceException
@@ -39075,6 +39439,7 @@ export const updateUserRoutingProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateUserRoutingProfile",
 }));
 export type UpdateUserSecurityProfilesError =
   | InternalServiceException
@@ -39101,6 +39466,7 @@ export const updateUserSecurityProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateUserSecurityProfiles",
 }));
 export type UpdateViewContentError =
   | AccessDeniedException
@@ -39136,6 +39502,7 @@ export const updateViewContent: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateViewContent",
 }));
 export type UpdateViewMetadataError =
   | AccessDeniedException
@@ -39169,6 +39536,7 @@ export const updateViewMetadata: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateViewMetadata",
 }));
 export type UpdateWorkspaceMetadataError =
   | AccessDeniedException
@@ -39199,6 +39567,7 @@ export const updateWorkspaceMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateWorkspaceMetadata",
 }));
 export type UpdateWorkspacePageError =
   | AccessDeniedException
@@ -39231,6 +39600,7 @@ export const updateWorkspacePage: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateWorkspacePage",
 }));
 export type UpdateWorkspaceThemeError =
   | AccessDeniedException
@@ -39259,6 +39629,7 @@ export const updateWorkspaceTheme: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateWorkspaceTheme",
 }));
 export type UpdateWorkspaceVisibilityError =
   | AccessDeniedException
@@ -39288,4 +39659,5 @@ export const updateWorkspaceVisibility: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateWorkspaceVisibility",
 }));

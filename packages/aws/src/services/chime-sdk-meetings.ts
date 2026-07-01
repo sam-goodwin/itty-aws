@@ -1134,6 +1134,7 @@ export const batchCreateAttendee: API.OperationMethod<
     UnauthorizedException,
     UnprocessableEntityException,
   ],
+  operationName: "BatchCreateAttendee",
 }));
 export type BatchUpdateAttendeeCapabilitiesExceptError =
   | BadRequestException
@@ -1195,6 +1196,7 @@ export const batchUpdateAttendeeCapabilitiesExcept: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "BatchUpdateAttendeeCapabilitiesExcept",
 }));
 export type CreateAttendeeError =
   | BadRequestException
@@ -1232,6 +1234,7 @@ export const createAttendee: API.OperationMethod<
     UnauthorizedException,
     UnprocessableEntityException,
   ],
+  operationName: "CreateAttendee",
 }));
 export type CreateMeetingError =
   | BadRequestException
@@ -1277,6 +1280,7 @@ export const createMeeting: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "CreateMeeting",
 }));
 export type CreateMeetingWithAttendeesError =
   | BadRequestException
@@ -1322,6 +1326,7 @@ export const createMeetingWithAttendees: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "CreateMeetingWithAttendees",
 }));
 export type DeleteAttendeeError =
   | BadRequestException
@@ -1355,6 +1360,7 @@ export const deleteAttendee: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "DeleteAttendee",
 }));
 export type DeleteMeetingError =
   | BadRequestException
@@ -1388,6 +1394,7 @@ export const deleteMeeting: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "DeleteMeeting",
 }));
 export type GetAttendeeError =
   | BadRequestException
@@ -1420,6 +1427,7 @@ export const getAttendee: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "GetAttendee",
 }));
 export type GetMeetingError =
   | BadRequestException
@@ -1452,6 +1460,7 @@ export const getMeeting: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "GetMeeting",
 }));
 export type ListAttendeesError =
   | BadRequestException
@@ -1499,6 +1508,7 @@ export const listAttendees: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "ListAttendees",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1536,6 +1546,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type StartMeetingTranscriptionError =
   | BadRequestException
@@ -1584,6 +1595,7 @@ export const startMeetingTranscription: API.OperationMethod<
     UnauthorizedException,
     UnprocessableEntityException,
   ],
+  operationName: "StartMeetingTranscription",
 }));
 export type StopMeetingTranscriptionError =
   | BadRequestException
@@ -1625,6 +1637,7 @@ export const stopMeetingTranscription: API.OperationMethod<
     UnauthorizedException,
     UnprocessableEntityException,
   ],
+  operationName: "StopMeetingTranscription",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -1659,6 +1672,7 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     UnauthorizedException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -1706,6 +1720,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAttendeeCapabilitiesError =
   | BadRequestException
@@ -1767,4 +1782,5 @@ export const updateAttendeeCapabilities: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "UpdateAttendeeCapabilities",
 }));

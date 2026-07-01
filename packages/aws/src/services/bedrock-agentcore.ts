@@ -7406,6 +7406,7 @@ export const completeResourceTokenAuth: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CompleteResourceTokenAuth",
 }));
 export type GetResourceApiKeyError =
   | AccessDeniedException
@@ -7434,6 +7435,7 @@ export const getResourceApiKey: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetResourceApiKey",
 }));
 export type GetResourceOauth2TokenError =
   | AccessDeniedException
@@ -7462,6 +7464,7 @@ export const getResourceOauth2Token: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetResourceOauth2Token",
 }));
 export type GetResourcePaymentTokenError =
   | AccessDeniedException
@@ -7490,6 +7493,7 @@ export const getResourcePaymentToken: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetResourcePaymentToken",
 }));
 export type GetWorkloadAccessTokenError =
   | AccessDeniedException
@@ -7518,6 +7522,7 @@ export const getWorkloadAccessToken: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetWorkloadAccessToken",
 }));
 export type GetWorkloadAccessTokenForJWTError =
   | AccessDeniedException
@@ -7546,6 +7551,7 @@ export const getWorkloadAccessTokenForJWT: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetWorkloadAccessTokenForJWT",
 }));
 export type GetWorkloadAccessTokenForUserIdError =
   | AccessDeniedException
@@ -7574,6 +7580,7 @@ export const getWorkloadAccessTokenForUserId: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetWorkloadAccessTokenForUserId",
 }));
 export type InvokeCodeInterpreterError =
   | AccessDeniedException
@@ -7614,6 +7621,7 @@ export const invokeCodeInterpreter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InvokeCodeInterpreter",
 }));
 export type InvokeHarnessError =
   | AccessDeniedException
@@ -7644,6 +7652,7 @@ export const invokeHarness: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InvokeHarness",
 }));
 export type GetAgentCardError =
   | AccessDeniedException
@@ -7676,6 +7685,7 @@ export const getAgentCard: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAgentCard",
 }));
 export type InvokeAgentRuntimeError =
   | AccessDeniedException
@@ -7718,6 +7728,7 @@ export const invokeAgentRuntime: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InvokeAgentRuntime",
 }));
 export type InvokeAgentRuntimeCommandError =
   | AccessDeniedException
@@ -7754,6 +7765,7 @@ export const invokeAgentRuntimeCommand: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InvokeAgentRuntimeCommand",
 }));
 export type StopRuntimeSessionError =
   | AccessDeniedException
@@ -7790,6 +7802,7 @@ export const stopRuntimeSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "StopRuntimeSession",
 }));
 export type SaveBrowserSessionProfileError =
   | AccessDeniedException
@@ -7828,6 +7841,7 @@ export const saveBrowserSessionProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SaveBrowserSessionProfile",
 }));
 export type GetBrowserSessionError =
   | AccessDeniedException
@@ -7864,6 +7878,7 @@ export const getBrowserSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetBrowserSession",
 }));
 export type InvokeBrowserError =
   | AccessDeniedException
@@ -7902,6 +7917,7 @@ export const invokeBrowser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InvokeBrowser",
 }));
 export type ListBrowserSessionsError =
   | AccessDeniedException
@@ -7938,6 +7954,7 @@ export const listBrowserSessions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBrowserSessions",
 }));
 export type StartBrowserSessionError =
   | AccessDeniedException
@@ -7982,6 +7999,7 @@ export const startBrowserSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartBrowserSession",
 }));
 export type StopBrowserSessionError =
   | AccessDeniedException
@@ -8020,6 +8038,7 @@ export const stopBrowserSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopBrowserSession",
 }));
 export type UpdateBrowserStreamError =
   | AccessDeniedException
@@ -8050,6 +8069,7 @@ export const updateBrowserStream: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateBrowserStream",
 }));
 export type GetCodeInterpreterSessionError =
   | AccessDeniedException
@@ -8086,6 +8106,7 @@ export const getCodeInterpreterSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCodeInterpreterSession",
 }));
 export type ListCodeInterpreterSessionsError =
   | AccessDeniedException
@@ -8122,6 +8143,7 @@ export const listCodeInterpreterSessions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCodeInterpreterSessions",
 }));
 export type StartCodeInterpreterSessionError =
   | AccessDeniedException
@@ -8162,6 +8184,7 @@ export const startCodeInterpreterSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartCodeInterpreterSession",
 }));
 export type StopCodeInterpreterSessionError =
   | AccessDeniedException
@@ -8200,6 +8223,7 @@ export const stopCodeInterpreterSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopCodeInterpreterSession",
 }));
 export type CreateABTestError =
   | AccessDeniedException
@@ -8230,6 +8254,7 @@ export const createABTest: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CreateABTest",
 }));
 export type DeleteABTestError =
   | AccessDeniedException
@@ -8260,6 +8285,7 @@ export const deleteABTest: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DeleteABTest",
 }));
 export type DeleteBatchEvaluationError =
   | AccessDeniedException
@@ -8290,6 +8316,7 @@ export const deleteBatchEvaluation: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DeleteBatchEvaluation",
 }));
 export type DeleteRecommendationError =
   | AccessDeniedException
@@ -8318,6 +8345,7 @@ export const deleteRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRecommendation",
 }));
 export type EvaluateError =
   | AccessDeniedException
@@ -8352,6 +8380,7 @@ export const evaluate: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "Evaluate",
 }));
 export type GetABTestError =
   | AccessDeniedException
@@ -8380,6 +8409,7 @@ export const getABTest: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetABTest",
 }));
 export type GetBatchEvaluationError =
   | AccessDeniedException
@@ -8408,6 +8438,7 @@ export const getBatchEvaluation: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetBatchEvaluation",
 }));
 export type GetRecommendationError =
   | AccessDeniedException
@@ -8434,6 +8465,7 @@ export const getRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRecommendation",
 }));
 export type ListABTestsError =
   | AccessDeniedException
@@ -8475,6 +8507,7 @@ export const listABTests: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "ListABTests",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8522,6 +8555,7 @@ export const listBatchEvaluations: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "ListBatchEvaluations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8567,6 +8601,7 @@ export const listRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRecommendations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8603,6 +8638,7 @@ export const startBatchEvaluation: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "StartBatchEvaluation",
 }));
 export type StartRecommendationError =
   | AccessDeniedException
@@ -8631,6 +8667,7 @@ export const startRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartRecommendation",
 }));
 export type StopBatchEvaluationError =
   | AccessDeniedException
@@ -8661,6 +8698,7 @@ export const stopBatchEvaluation: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "StopBatchEvaluation",
 }));
 export type UpdateABTestError =
   | AccessDeniedException
@@ -8693,6 +8731,7 @@ export const updateABTest: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "UpdateABTest",
 }));
 export type BatchCreateMemoryRecordsError =
   | AccessDeniedException
@@ -8721,6 +8760,7 @@ export const batchCreateMemoryRecords: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  operationName: "BatchCreateMemoryRecords",
 }));
 export type BatchDeleteMemoryRecordsError =
   | AccessDeniedException
@@ -8749,6 +8789,7 @@ export const batchDeleteMemoryRecords: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  operationName: "BatchDeleteMemoryRecords",
 }));
 export type BatchUpdateMemoryRecordsError =
   | AccessDeniedException
@@ -8777,6 +8818,7 @@ export const batchUpdateMemoryRecords: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  operationName: "BatchUpdateMemoryRecords",
 }));
 export type CreateEventError =
   | AccessDeniedException
@@ -8813,6 +8855,7 @@ export const createEvent: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  operationName: "CreateEvent",
 }));
 export type DeleteEventError =
   | AccessDeniedException
@@ -8845,6 +8888,7 @@ export const deleteEvent: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  operationName: "DeleteEvent",
 }));
 export type DeleteMemoryRecordError =
   | AccessDeniedException
@@ -8877,6 +8921,7 @@ export const deleteMemoryRecord: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  operationName: "DeleteMemoryRecord",
 }));
 export type GetEventError =
   | AccessDeniedException
@@ -8909,6 +8954,7 @@ export const getEvent: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  operationName: "GetEvent",
 }));
 export type GetMemoryRecordError =
   | AccessDeniedException
@@ -8941,6 +8987,7 @@ export const getMemoryRecord: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  operationName: "GetMemoryRecord",
 }));
 export type ListActorsError =
   | AccessDeniedException
@@ -8988,6 +9035,7 @@ export const listActors: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  operationName: "ListActors",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9041,6 +9089,7 @@ export const listEvents: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  operationName: "ListEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9092,6 +9141,7 @@ export const listMemoryExtractionJobs: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  operationName: "ListMemoryExtractionJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9145,6 +9195,7 @@ export const listMemoryRecords: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  operationName: "ListMemoryRecords",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9200,6 +9251,7 @@ export const listSessions: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  operationName: "ListSessions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9253,6 +9305,7 @@ export const retrieveMemoryRecords: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  operationName: "RetrieveMemoryRecords",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9289,6 +9342,7 @@ export const startMemoryExtractionJob: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  operationName: "StartMemoryExtractionJob",
 }));
 export type CreatePaymentInstrumentError =
   | AccessDeniedException
@@ -9317,6 +9371,7 @@ export const createPaymentInstrument: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreatePaymentInstrument",
 }));
 export type GetPaymentInstrumentError =
   | AccessDeniedException
@@ -9343,6 +9398,7 @@ export const getPaymentInstrument: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPaymentInstrument",
 }));
 export type DeletePaymentInstrumentError =
   | AccessDeniedException
@@ -9369,6 +9425,7 @@ export const deletePaymentInstrument: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePaymentInstrument",
 }));
 export type ListPaymentInstrumentsError =
   | AccessDeniedException
@@ -9408,6 +9465,7 @@ export const listPaymentInstruments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPaymentInstruments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9440,6 +9498,7 @@ export const getPaymentInstrumentBalance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPaymentInstrumentBalance",
 }));
 export type CreatePaymentSessionError =
   | AccessDeniedException
@@ -9468,6 +9527,7 @@ export const createPaymentSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreatePaymentSession",
 }));
 export type GetPaymentSessionError =
   | AccessDeniedException
@@ -9494,6 +9554,7 @@ export const getPaymentSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPaymentSession",
 }));
 export type DeletePaymentSessionError =
   | AccessDeniedException
@@ -9520,6 +9581,7 @@ export const deletePaymentSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePaymentSession",
 }));
 export type ListPaymentSessionsError =
   | AccessDeniedException
@@ -9559,6 +9621,7 @@ export const listPaymentSessions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPaymentSessions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9593,6 +9656,7 @@ export const processPayment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ProcessPayment",
 }));
 export type SearchRegistryRecordsError =
   | AccessDeniedException
@@ -9621,4 +9685,5 @@ export const searchRegistryRecords: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "SearchRegistryRecords",
 }));

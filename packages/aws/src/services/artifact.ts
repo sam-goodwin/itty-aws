@@ -636,6 +636,7 @@ export const getAccountSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAccountSettings",
 }));
 export type PutAccountSettingsError =
   | AccessDeniedException
@@ -666,6 +667,7 @@ export const putAccountSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutAccountSettings",
 }));
 export type ListCustomerAgreementsError =
   | AccessDeniedException
@@ -705,6 +707,7 @@ export const listCustomerAgreements: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCustomerAgreements",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -739,6 +742,7 @@ export const getReportMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetReportMetadata",
 }));
 export type ListReportsError =
   | AccessDeniedException
@@ -782,6 +786,7 @@ export const listReports: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListReports",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -818,6 +823,7 @@ export const getReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetReport",
 }));
 export type GetTermForReportError =
   | AccessDeniedException
@@ -848,6 +854,7 @@ export const getTermForReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTermForReport",
 }));
 export type ListReportVersionsError =
   | AccessDeniedException
@@ -891,6 +898,7 @@ export const listReportVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListReportVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

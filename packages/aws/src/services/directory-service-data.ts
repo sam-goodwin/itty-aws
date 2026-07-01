@@ -1065,6 +1065,7 @@ export const addGroupMember: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AddGroupMember",
 }));
 export type CreateGroupError =
   | AccessDeniedException
@@ -1093,6 +1094,7 @@ export const createGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateGroup",
 }));
 export type CreateUserError =
   | AccessDeniedException
@@ -1121,6 +1123,7 @@ export const createUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateUser",
 }));
 export type DeleteGroupError =
   | AccessDeniedException
@@ -1151,6 +1154,7 @@ export const deleteGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteGroup",
 }));
 export type DeleteUserError =
   | AccessDeniedException
@@ -1181,6 +1185,7 @@ export const deleteUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteUser",
 }));
 export type DescribeGroupError =
   | AccessDeniedException
@@ -1209,6 +1214,7 @@ export const describeGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeGroup",
 }));
 export type DescribeUserError =
   | AccessDeniedException
@@ -1237,6 +1243,7 @@ export const describeUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeUser",
 }));
 export type DisableUserError =
   | AccessDeniedException
@@ -1269,6 +1276,7 @@ export const disableUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisableUser",
 }));
 export type ListGroupMembersError =
   | AccessDeniedException
@@ -1320,6 +1328,7 @@ export const listGroupMembers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListGroupMembers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1375,6 +1384,7 @@ export const listGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1432,6 +1442,7 @@ export const listGroupsForMember: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListGroupsForMember",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1487,6 +1498,7 @@ export const listUsers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListUsers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1523,6 +1535,7 @@ export const removeGroupMember: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RemoveGroupMember",
 }));
 export type SearchGroupsError =
   | AccessDeniedException
@@ -1574,6 +1587,7 @@ export const searchGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1631,6 +1645,7 @@ export const searchUsers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchUsers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1667,6 +1682,7 @@ export const updateGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateGroup",
 }));
 export type UpdateUserError =
   | AccessDeniedException
@@ -1697,4 +1713,5 @@ export const updateUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateUser",
 }));

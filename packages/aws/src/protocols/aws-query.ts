@@ -59,12 +59,17 @@ export const awsQueryProtocol: Protocol = (
   const encodeInput = S.encodeEffect(inputSchema);
 
   // Pre-compute operation name and version from annotations.
-  // RDS-family query services (RDS, ElastiCache, Redshift, Neptune, DocDB, …)
-  // name their input shapes "XxxMessage" (e.g. DescribeDBInstancesMessage), so
-  // we must strip "Message" in addition to "Request"/"Input" to recover the
-  // Action name.
+  // Prefer the explicit operation name emitted by the generator; fall back to
+  // deriving it from the input shape identifier. RDS-family query services
+  // (RDS, ElastiCache, Redshift, Neptune, DocDB, …) name their input shapes
+  // "XxxMessage" (e.g. DescribeDBInstancesMessage), so we must strip "Message"
+  // in addition to "Request"/"Input" to recover the Action name. Note the
+  // fallback is wrong for services whose input shapes aren't named after the
+  // operation at all (e.g. AutoScaling's `AutoScalingGroupNamesType`).
   const identifier = getIdentifier(inputAst) ?? "";
-  const action = identifier.replace(/(?:Request|Input|Message)$/, "");
+  const action =
+    operation.operationName ??
+    identifier.replace(/(?:Request|Input|Message)$/, "");
   const version = getServiceVersion(inputAst) ?? "";
 
   return {

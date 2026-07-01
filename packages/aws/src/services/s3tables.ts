@@ -2421,6 +2421,7 @@ export const listTagsForResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -2455,6 +2456,7 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -2489,6 +2491,7 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateNamespaceError =
   | BadRequestException
@@ -2521,6 +2524,7 @@ export const createNamespace: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateNamespace",
 }));
 export type DeleteNamespaceError =
   | BadRequestException
@@ -2553,6 +2557,7 @@ export const deleteNamespace: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteNamespace",
 }));
 export type GetNamespaceError =
   | AccessDeniedException
@@ -2587,6 +2592,7 @@ export const getNamespace: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetNamespace",
 }));
 export type ListNamespacesError =
   | AccessDeniedException
@@ -2636,6 +2642,7 @@ export const listNamespaces: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListNamespaces",
   pagination: {
     inputToken: "continuationToken",
     outputToken: "continuationToken",
@@ -2674,6 +2681,7 @@ export const deleteTableBucketEncryption: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteTableBucketEncryption",
 }));
 export type GetTableBucketEncryptionError =
   | AccessDeniedException
@@ -2706,6 +2714,7 @@ export const getTableBucketEncryption: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTableBucketEncryption",
 }));
 export type PutTableBucketEncryptionError =
   | BadRequestException
@@ -2740,6 +2749,7 @@ export const putTableBucketEncryption: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PutTableBucketEncryption",
 }));
 export type DeleteTableBucketPolicyError =
   | BadRequestException
@@ -2772,6 +2782,7 @@ export const deleteTableBucketPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteTableBucketPolicy",
 }));
 export type GetTableBucketPolicyError =
   | BadRequestException
@@ -2804,6 +2815,7 @@ export const getTableBucketPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTableBucketPolicy",
 }));
 export type PutTableBucketPolicyError =
   | BadRequestException
@@ -2836,6 +2848,7 @@ export const putTableBucketPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PutTableBucketPolicy",
 }));
 export type DeleteTableBucketReplicationError =
   | AccessDeniedException
@@ -2870,6 +2883,7 @@ export const deleteTableBucketReplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteTableBucketReplication",
 }));
 export type GetTableBucketReplicationError =
   | AccessDeniedException
@@ -2904,6 +2918,7 @@ export const getTableBucketReplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTableBucketReplication",
 }));
 export type PutTableBucketReplicationError =
   | AccessDeniedException
@@ -2954,6 +2969,7 @@ export const putTableBucketReplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PutTableBucketReplication",
 }));
 export type CreateTableBucketError =
   | BadRequestException
@@ -2992,6 +3008,7 @@ export const createTableBucket: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateTableBucket",
 }));
 export type DeleteTableBucketError =
   | BadRequestException
@@ -3024,6 +3041,7 @@ export const deleteTableBucket: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteTableBucket",
 }));
 export type DeleteTableBucketMetricsConfigurationError =
   | BadRequestException
@@ -3056,6 +3074,7 @@ export const deleteTableBucketMetricsConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteTableBucketMetricsConfiguration",
 }));
 export type GetTableBucketError =
   | AccessDeniedException
@@ -3090,6 +3109,7 @@ export const getTableBucket: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTableBucket",
 }));
 export type GetTableBucketMaintenanceConfigurationError =
   | BadRequestException
@@ -3122,6 +3142,7 @@ export const getTableBucketMaintenanceConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTableBucketMaintenanceConfiguration",
 }));
 export type GetTableBucketMetricsConfigurationError =
   | BadRequestException
@@ -3154,6 +3175,7 @@ export const getTableBucketMetricsConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTableBucketMetricsConfiguration",
 }));
 export type GetTableBucketStorageClassError =
   | AccessDeniedException
@@ -3186,6 +3208,7 @@ export const getTableBucketStorageClass: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTableBucketStorageClass",
 }));
 export type ListTableBucketsError =
   | AccessDeniedException
@@ -3235,6 +3258,7 @@ export const listTableBuckets: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListTableBuckets",
   pagination: {
     inputToken: "continuationToken",
     outputToken: "continuationToken",
@@ -3273,6 +3297,7 @@ export const putTableBucketMaintenanceConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PutTableBucketMaintenanceConfiguration",
 }));
 export type PutTableBucketMetricsConfigurationError =
   | BadRequestException
@@ -3305,6 +3330,7 @@ export const putTableBucketMetricsConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PutTableBucketMetricsConfiguration",
 }));
 export type PutTableBucketStorageClassError =
   | BadRequestException
@@ -3337,6 +3363,7 @@ export const putTableBucketStorageClass: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PutTableBucketStorageClass",
 }));
 export type GetTableEncryptionError =
   | AccessDeniedException
@@ -3369,6 +3396,7 @@ export const getTableEncryption: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTableEncryption",
 }));
 export type DeleteTablePolicyError =
   | BadRequestException
@@ -3401,6 +3429,7 @@ export const deleteTablePolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteTablePolicy",
 }));
 export type GetTablePolicyError =
   | BadRequestException
@@ -3433,6 +3462,7 @@ export const getTablePolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTablePolicy",
 }));
 export type PutTablePolicyError =
   | BadRequestException
@@ -3465,6 +3495,7 @@ export const putTablePolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PutTablePolicy",
 }));
 export type DeleteTableReplicationError =
   | AccessDeniedException
@@ -3499,6 +3530,7 @@ export const deleteTableReplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteTableReplication",
 }));
 export type GetTableReplicationError =
   | AccessDeniedException
@@ -3533,6 +3565,7 @@ export const getTableReplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTableReplication",
 }));
 export type GetTableReplicationStatusError =
   | BadRequestException
@@ -3565,6 +3598,7 @@ export const getTableReplicationStatus: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTableReplicationStatus",
 }));
 export type PutTableReplicationError =
   | AccessDeniedException
@@ -3613,6 +3647,7 @@ export const putTableReplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PutTableReplication",
 }));
 export type CreateTableError =
   | BadRequestException
@@ -3655,6 +3690,7 @@ export const createTable: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateTable",
 }));
 export type DeleteTableError =
   | BadRequestException
@@ -3687,6 +3723,7 @@ export const deleteTable: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteTable",
 }));
 export type GetTableError =
   | AccessDeniedException
@@ -3721,6 +3758,7 @@ export const getTable: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTable",
 }));
 export type GetTableMaintenanceConfigurationError =
   | BadRequestException
@@ -3755,6 +3793,7 @@ export const getTableMaintenanceConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTableMaintenanceConfiguration",
 }));
 export type GetTableMaintenanceJobStatusError =
   | BadRequestException
@@ -3787,6 +3826,7 @@ export const getTableMaintenanceJobStatus: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTableMaintenanceJobStatus",
 }));
 export type GetTableMetadataLocationError =
   | BadRequestException
@@ -3819,6 +3859,7 @@ export const getTableMetadataLocation: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTableMetadataLocation",
 }));
 export type GetTableRecordExpirationConfigurationError =
   | BadRequestException
@@ -3851,6 +3892,7 @@ export const getTableRecordExpirationConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTableRecordExpirationConfiguration",
 }));
 export type GetTableRecordExpirationJobStatusError =
   | BadRequestException
@@ -3883,6 +3925,7 @@ export const getTableRecordExpirationJobStatus: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTableRecordExpirationJobStatus",
 }));
 export type GetTableStorageClassError =
   | AccessDeniedException
@@ -3915,6 +3958,7 @@ export const getTableStorageClass: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTableStorageClass",
 }));
 export type ListTablesError =
   | BadRequestException
@@ -3962,6 +4006,7 @@ export const listTables: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListTables",
   pagination: {
     inputToken: "continuationToken",
     outputToken: "continuationToken",
@@ -4000,6 +4045,7 @@ export const putTableMaintenanceConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PutTableMaintenanceConfiguration",
 }));
 export type PutTableRecordExpirationConfigurationError =
   | BadRequestException
@@ -4032,6 +4078,7 @@ export const putTableRecordExpirationConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PutTableRecordExpirationConfiguration",
 }));
 export type RenameTableError =
   | BadRequestException
@@ -4064,6 +4111,7 @@ export const renameTable: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "RenameTable",
 }));
 export type UpdateTableMetadataLocationError =
   | BadRequestException
@@ -4096,4 +4144,5 @@ export const updateTableMetadataLocation: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateTableMetadataLocation",
 }));

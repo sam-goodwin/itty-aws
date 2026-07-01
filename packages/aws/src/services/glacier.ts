@@ -1836,6 +1836,7 @@ export const abortMultipartUpload: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "AbortMultipartUpload",
 }));
 export type AbortVaultLockError =
   | InvalidParameterValueException
@@ -1877,6 +1878,7 @@ export const abortVaultLock: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "AbortVaultLock",
 }));
 export type AddTagsToVaultError =
   | InvalidParameterValueException
@@ -1909,6 +1911,7 @@ export const addTagsToVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "AddTagsToVault",
 }));
 export type CompleteMultipartUploadError =
   | InvalidParameterValueException
@@ -1973,6 +1976,7 @@ export const completeMultipartUpload: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "CompleteMultipartUpload",
 }));
 export type CompleteVaultLockError =
   | InvalidParameterValueException
@@ -2014,6 +2018,7 @@ export const completeVaultLock: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "CompleteVaultLock",
 }));
 export type CreateVaultError =
   | InvalidParameterValueException
@@ -2061,6 +2066,7 @@ export const createVault: API.OperationMethod<
     NoLongerSupportedException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateVault",
 }));
 export type DeleteArchiveError =
   | InvalidParameterValueException
@@ -2110,6 +2116,7 @@ export const deleteArchive: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteArchive",
 }));
 export type DeleteVaultError =
   | InvalidParameterValueException
@@ -2156,6 +2163,7 @@ export const deleteVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteVault",
 }));
 export type DeleteVaultAccessPolicyError =
   | InvalidParameterValueException
@@ -2189,6 +2197,7 @@ export const deleteVaultAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteVaultAccessPolicy",
 }));
 export type DeleteVaultNotificationsError =
   | InvalidParameterValueException
@@ -2228,6 +2237,7 @@ export const deleteVaultNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteVaultNotifications",
 }));
 export type DescribeJobError =
   | InvalidParameterValueException
@@ -2275,6 +2285,7 @@ export const describeJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DescribeJob",
 }));
 export type DescribeVaultError =
   | InvalidParameterValueException
@@ -2319,6 +2330,7 @@ export const describeVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "DescribeVault",
 }));
 export type GetDataRetrievalPolicyError =
   | InvalidParameterValueException
@@ -2345,6 +2357,7 @@ export const getDataRetrievalPolicy: API.OperationMethod<
     NoLongerSupportedException,
     ServiceUnavailableException,
   ],
+  operationName: "GetDataRetrievalPolicy",
 }));
 export type GetJobOutputError =
   | InvalidParameterValueException
@@ -2410,6 +2423,7 @@ export const getJobOutput: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "GetJobOutput",
 }));
 export type GetVaultAccessPolicyError =
   | InvalidParameterValueException
@@ -2441,6 +2455,7 @@ export const getVaultAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "GetVaultAccessPolicy",
 }));
 export type GetVaultLockError =
   | InvalidParameterValueException
@@ -2489,6 +2504,7 @@ export const getVaultLock: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "GetVaultLock",
 }));
 export type GetVaultNotificationsError =
   | InvalidParameterValueException
@@ -2531,6 +2547,7 @@ export const getVaultNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "GetVaultNotifications",
 }));
 export type InitiateJobError =
   | InsufficientCapacityException
@@ -2564,6 +2581,7 @@ export const initiateJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "InitiateJob",
 }));
 export type InitiateMultipartUploadError =
   | InvalidParameterValueException
@@ -2622,6 +2640,7 @@ export const initiateMultipartUpload: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "InitiateMultipartUpload",
 }));
 export type InitiateVaultLockError =
   | InvalidParameterValueException
@@ -2679,6 +2698,7 @@ export const initiateVaultLock: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "InitiateVaultLock",
 }));
 export type ListJobsError =
   | InvalidParameterValueException
@@ -2753,6 +2773,7 @@ export const listJobs: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "ListJobs",
   pagination: {
     inputToken: "marker",
     outputToken: "Marker",
@@ -2825,6 +2846,7 @@ export const listMultipartUploads: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "ListMultipartUploads",
   pagination: {
     inputToken: "marker",
     outputToken: "Marker",
@@ -2894,6 +2916,7 @@ export const listParts: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "ListParts",
   pagination: {
     inputToken: "marker",
     outputToken: "Marker",
@@ -2925,6 +2948,7 @@ export const listProvisionedCapacity: API.OperationMethod<
     NoLongerSupportedException,
     ServiceUnavailableException,
   ],
+  operationName: "ListProvisionedCapacity",
 }));
 export type ListTagsForVaultError =
   | InvalidParameterValueException
@@ -2953,6 +2977,7 @@ export const listTagsForVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "ListTagsForVault",
 }));
 export type ListVaultsError =
   | InvalidParameterValueException
@@ -3013,6 +3038,7 @@ export const listVaults: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "ListVaults",
   pagination: {
     inputToken: "marker",
     outputToken: "Marker",
@@ -3045,6 +3071,7 @@ export const purchaseProvisionedCapacity: API.OperationMethod<
     NoLongerSupportedException,
     ServiceUnavailableException,
   ],
+  operationName: "PurchaseProvisionedCapacity",
 }));
 export type RemoveTagsFromVaultError =
   | InvalidParameterValueException
@@ -3074,6 +3101,7 @@ export const removeTagsFromVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "RemoveTagsFromVault",
 }));
 export type SetDataRetrievalPolicyError =
   | InvalidParameterValueException
@@ -3104,6 +3132,7 @@ export const setDataRetrievalPolicy: API.OperationMethod<
     NoLongerSupportedException,
     ServiceUnavailableException,
   ],
+  operationName: "SetDataRetrievalPolicy",
 }));
 export type SetVaultAccessPolicyError =
   | InvalidParameterValueException
@@ -3135,6 +3164,7 @@ export const setVaultAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "SetVaultAccessPolicy",
 }));
 export type SetVaultNotificationsError =
   | InvalidParameterValueException
@@ -3191,6 +3221,7 @@ export const setVaultNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "SetVaultNotifications",
 }));
 export type UploadArchiveError =
   | InvalidParameterValueException
@@ -3251,6 +3282,7 @@ export const uploadArchive: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "UploadArchive",
 }));
 export type UploadMultipartPartError =
   | InvalidParameterValueException
@@ -3320,4 +3352,5 @@ export const uploadMultipartPart: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "UploadMultipartPart",
 }));

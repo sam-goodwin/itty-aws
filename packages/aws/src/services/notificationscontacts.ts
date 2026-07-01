@@ -447,6 +447,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -473,6 +474,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -499,6 +501,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateEmailContactError =
   | AccessDeniedException
@@ -527,6 +530,7 @@ export const createEmailContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEmailContact",
 }));
 export type GetEmailContactError =
   | AccessDeniedException
@@ -553,6 +557,7 @@ export const getEmailContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEmailContact",
 }));
 export type DeleteEmailContactError =
   | AccessDeniedException
@@ -583,6 +588,7 @@ export const deleteEmailContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteEmailContact",
 }));
 export type ListEmailContactsError =
   | AccessDeniedException
@@ -622,6 +628,7 @@ export const listEmailContacts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEmailContacts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -656,6 +663,7 @@ export const activateEmailContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ActivateEmailContact",
 }));
 export type SendActivationCodeError =
   | AccessDeniedException
@@ -686,4 +694,5 @@ export const sendActivationCode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendActivationCode",
 }));

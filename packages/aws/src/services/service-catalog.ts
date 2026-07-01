@@ -4313,6 +4313,7 @@ export const acceptPortfolioShare: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "AcceptPortfolioShare",
 }));
 export type AssociateBudgetWithResourceError =
   | DuplicateResourceException
@@ -4337,6 +4338,7 @@ export const associateBudgetWithResource: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "AssociateBudgetWithResource",
 }));
 export type AssociatePrincipalWithPortfolioError =
   | InvalidParametersException
@@ -4375,6 +4377,7 @@ export const associatePrincipalWithPortfolio: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "AssociatePrincipalWithPortfolio",
 }));
 export type AssociateProductWithPortfolioError =
   | InvalidParametersException
@@ -4399,6 +4402,7 @@ export const associateProductWithPortfolio: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "AssociateProductWithPortfolio",
 }));
 export type AssociateServiceActionWithProvisioningArtifactError =
   | DuplicateResourceException
@@ -4423,6 +4427,7 @@ export const associateServiceActionWithProvisioningArtifact: API.OperationMethod
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "AssociateServiceActionWithProvisioningArtifact",
 }));
 export type AssociateTagOptionWithResourceError =
   | DuplicateResourceException
@@ -4451,6 +4456,7 @@ export const associateTagOptionWithResource: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  operationName: "AssociateTagOptionWithResource",
 }));
 export type BatchAssociateServiceActionWithProvisioningArtifactError =
   | InvalidParametersException
@@ -4467,6 +4473,7 @@ export const batchAssociateServiceActionWithProvisioningArtifact: API.OperationM
   input: BatchAssociateServiceActionWithProvisioningArtifactInput,
   output: BatchAssociateServiceActionWithProvisioningArtifactOutput,
   errors: [InvalidParametersException],
+  operationName: "BatchAssociateServiceActionWithProvisioningArtifact",
 }));
 export type BatchDisassociateServiceActionFromProvisioningArtifactError =
   | InvalidParametersException
@@ -4483,6 +4490,7 @@ export const batchDisassociateServiceActionFromProvisioningArtifact: API.Operati
   input: BatchDisassociateServiceActionFromProvisioningArtifactInput,
   output: BatchDisassociateServiceActionFromProvisioningArtifactOutput,
   errors: [InvalidParametersException],
+  operationName: "BatchDisassociateServiceActionFromProvisioningArtifact",
 }));
 export type CopyProductError =
   | InvalidParametersException
@@ -4508,6 +4516,7 @@ export const copyProduct: API.OperationMethod<
   input: CopyProductInput,
   output: CopyProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "CopyProduct",
 }));
 export type CreateConstraintError =
   | DuplicateResourceException
@@ -4534,6 +4543,7 @@ export const createConstraint: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateConstraint",
 }));
 export type CreatePortfolioError =
   | InvalidParametersException
@@ -4558,6 +4568,7 @@ export const createPortfolio: API.OperationMethod<
     LimitExceededException,
     TagOptionNotMigratedException,
   ],
+  operationName: "CreatePortfolio",
 }));
 export type CreatePortfolioShareError =
   | InvalidParametersException
@@ -4604,6 +4615,7 @@ export const createPortfolioShare: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  operationName: "CreatePortfolioShare",
 }));
 export type CreateProductError =
   | InvalidParametersException
@@ -4633,6 +4645,7 @@ export const createProduct: API.OperationMethod<
     LimitExceededException,
     TagOptionNotMigratedException,
   ],
+  operationName: "CreateProduct",
 }));
 export type CreateProvisionedProductPlanError =
   | InvalidParametersException
@@ -4665,6 +4678,7 @@ export const createProvisionedProductPlan: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateProvisionedProductPlan",
 }));
 export type CreateProvisioningArtifactError =
   | InvalidParametersException
@@ -4693,6 +4707,7 @@ export const createProvisioningArtifact: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateProvisioningArtifact",
 }));
 export type CreateServiceActionError =
   | InvalidParametersException
@@ -4710,6 +4725,7 @@ export const createServiceAction: API.OperationMethod<
   input: CreateServiceActionInput,
   output: CreateServiceActionOutput,
   errors: [InvalidParametersException, LimitExceededException],
+  operationName: "CreateServiceAction",
 }));
 export type CreateTagOptionError =
   | DuplicateResourceException
@@ -4732,6 +4748,7 @@ export const createTagOption: API.OperationMethod<
     LimitExceededException,
     TagOptionNotMigratedException,
   ],
+  operationName: "CreateTagOption",
 }));
 export type DeleteConstraintError =
   | InvalidParametersException
@@ -4751,6 +4768,7 @@ export const deleteConstraint: API.OperationMethod<
   input: DeleteConstraintInput,
   output: DeleteConstraintOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "DeleteConstraint",
 }));
 export type DeletePortfolioError =
   | InvalidParametersException
@@ -4780,6 +4798,7 @@ export const deletePortfolio: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  operationName: "DeletePortfolio",
 }));
 export type DeletePortfolioShareError =
   | InvalidParametersException
@@ -4808,6 +4827,7 @@ export const deletePortfolioShare: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  operationName: "DeletePortfolioShare",
 }));
 export type DeleteProductError =
   | InvalidParametersException
@@ -4836,6 +4856,7 @@ export const deleteProduct: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  operationName: "DeleteProduct",
 }));
 export type DeleteProvisionedProductPlanError =
   | InvalidParametersException
@@ -4853,6 +4874,7 @@ export const deleteProvisionedProductPlan: API.OperationMethod<
   input: DeleteProvisionedProductPlanInput,
   output: DeleteProvisionedProductPlanOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "DeleteProvisionedProductPlan",
 }));
 export type DeleteProvisioningArtifactError =
   | InvalidParametersException
@@ -4879,6 +4901,7 @@ export const deleteProvisioningArtifact: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteProvisioningArtifact",
 }));
 export type DeleteServiceActionError =
   | InvalidParametersException
@@ -4901,6 +4924,7 @@ export const deleteServiceAction: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteServiceAction",
 }));
 export type DeleteTagOptionError =
   | ResourceInUseException
@@ -4925,6 +4949,7 @@ export const deleteTagOption: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  operationName: "DeleteTagOption",
 }));
 export type DescribeConstraintError = ResourceNotFoundException | CommonErrors;
 /**
@@ -4939,6 +4964,7 @@ export const describeConstraint: API.OperationMethod<
   input: DescribeConstraintInput,
   output: DescribeConstraintOutput,
   errors: [ResourceNotFoundException],
+  operationName: "DescribeConstraint",
 }));
 export type DescribeCopyProductStatusError =
   | ResourceNotFoundException
@@ -4955,6 +4981,7 @@ export const describeCopyProductStatus: API.OperationMethod<
   input: DescribeCopyProductStatusInput,
   output: DescribeCopyProductStatusOutput,
   errors: [ResourceNotFoundException],
+  operationName: "DescribeCopyProductStatus",
 }));
 export type DescribePortfolioError = ResourceNotFoundException | CommonErrors;
 /**
@@ -4971,6 +4998,7 @@ export const describePortfolio: API.OperationMethod<
   input: DescribePortfolioInput,
   output: DescribePortfolioOutput,
   errors: [ResourceNotFoundException],
+  operationName: "DescribePortfolio",
 }));
 export type DescribePortfolioSharesError =
   | InvalidParametersException
@@ -5009,6 +5037,7 @@ export const describePortfolioShares: API.OperationMethod<
   input: DescribePortfolioSharesInput,
   output: DescribePortfolioSharesOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "DescribePortfolioShares",
   pagination: {
     inputToken: "PageToken",
     outputToken: "NextPageToken",
@@ -5037,6 +5066,7 @@ export const describePortfolioShareStatus: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribePortfolioShareStatus",
 }));
 export type DescribeProductError =
   | InvalidParametersException
@@ -5060,6 +5090,7 @@ export const describeProduct: API.OperationMethod<
   input: DescribeProductInput,
   output: DescribeProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "DescribeProduct",
 }));
 export type DescribeProductAsAdminError =
   | InvalidParametersException
@@ -5077,6 +5108,7 @@ export const describeProductAsAdmin: API.OperationMethod<
   input: DescribeProductAsAdminInput,
   output: DescribeProductAsAdminOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "DescribeProductAsAdmin",
 }));
 export type DescribeProductViewError =
   | InvalidParametersException
@@ -5094,6 +5126,7 @@ export const describeProductView: API.OperationMethod<
   input: DescribeProductViewInput,
   output: DescribeProductViewOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "DescribeProductView",
 }));
 export type DescribeProvisionedProductError =
   | InvalidParametersException
@@ -5111,6 +5144,7 @@ export const describeProvisionedProduct: API.OperationMethod<
   input: DescribeProvisionedProductInput,
   output: DescribeProvisionedProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "DescribeProvisionedProduct",
 }));
 export type DescribeProvisionedProductPlanError =
   | InvalidParametersException
@@ -5128,6 +5162,7 @@ export const describeProvisionedProductPlan: API.OperationMethod<
   input: DescribeProvisionedProductPlanInput,
   output: DescribeProvisionedProductPlanOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "DescribeProvisionedProductPlan",
 }));
 export type DescribeProvisioningArtifactError =
   | InvalidParametersException
@@ -5145,6 +5180,7 @@ export const describeProvisioningArtifact: API.OperationMethod<
   input: DescribeProvisioningArtifactInput,
   output: DescribeProvisioningArtifactOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "DescribeProvisioningArtifact",
 }));
 export type DescribeProvisioningParametersError =
   | InvalidParametersException
@@ -5170,6 +5206,7 @@ export const describeProvisioningParameters: API.OperationMethod<
   input: DescribeProvisioningParametersInput,
   output: DescribeProvisioningParametersOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "DescribeProvisioningParameters",
 }));
 export type DescribeRecordError = ResourceNotFoundException | CommonErrors;
 /**
@@ -5191,6 +5228,7 @@ export const describeRecord: API.OperationMethod<
   input: DescribeRecordInput,
   output: DescribeRecordOutput,
   errors: [ResourceNotFoundException],
+  operationName: "DescribeRecord",
 }));
 export type DescribeServiceActionError =
   | ResourceNotFoundException
@@ -5207,6 +5245,7 @@ export const describeServiceAction: API.OperationMethod<
   input: DescribeServiceActionInput,
   output: DescribeServiceActionOutput,
   errors: [ResourceNotFoundException],
+  operationName: "DescribeServiceAction",
 }));
 export type DescribeServiceActionExecutionParametersError =
   | InvalidParametersException
@@ -5224,6 +5263,7 @@ export const describeServiceActionExecutionParameters: API.OperationMethod<
   input: DescribeServiceActionExecutionParametersInput,
   output: DescribeServiceActionExecutionParametersOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "DescribeServiceActionExecutionParameters",
 }));
 export type DescribeTagOptionError =
   | ResourceNotFoundException
@@ -5241,6 +5281,7 @@ export const describeTagOption: API.OperationMethod<
   input: DescribeTagOptionInput,
   output: DescribeTagOptionOutput,
   errors: [ResourceNotFoundException, TagOptionNotMigratedException],
+  operationName: "DescribeTagOption",
 }));
 export type DisableAWSOrganizationsAccessError =
   | InvalidStateException
@@ -5276,6 +5317,7 @@ export const disableAWSOrganizationsAccess: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  operationName: "DisableAWSOrganizationsAccess",
 }));
 export type DisassociateBudgetFromResourceError =
   | ResourceNotFoundException
@@ -5292,6 +5334,7 @@ export const disassociateBudgetFromResource: API.OperationMethod<
   input: DisassociateBudgetFromResourceInput,
   output: DisassociateBudgetFromResourceOutput,
   errors: [ResourceNotFoundException],
+  operationName: "DisassociateBudgetFromResource",
 }));
 export type DisassociatePrincipalFromPortfolioError =
   | InvalidParametersException
@@ -5328,6 +5371,7 @@ export const disassociatePrincipalFromPortfolio: API.OperationMethod<
   input: DisassociatePrincipalFromPortfolioInput,
   output: DisassociatePrincipalFromPortfolioOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "DisassociatePrincipalFromPortfolio",
 }));
 export type DisassociateProductFromPortfolioError =
   | InvalidParametersException
@@ -5352,6 +5396,7 @@ export const disassociateProductFromPortfolio: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DisassociateProductFromPortfolio",
 }));
 export type DisassociateServiceActionFromProvisioningArtifactError =
   | InvalidParametersException
@@ -5369,6 +5414,7 @@ export const disassociateServiceActionFromProvisioningArtifact: API.OperationMet
   input: DisassociateServiceActionFromProvisioningArtifactInput,
   output: DisassociateServiceActionFromProvisioningArtifactOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "DisassociateServiceActionFromProvisioningArtifact",
 }));
 export type DisassociateTagOptionFromResourceError =
   | ResourceNotFoundException
@@ -5386,6 +5432,7 @@ export const disassociateTagOptionFromResource: API.OperationMethod<
   input: DisassociateTagOptionFromResourceInput,
   output: DisassociateTagOptionFromResourceOutput,
   errors: [ResourceNotFoundException, TagOptionNotMigratedException],
+  operationName: "DisassociateTagOptionFromResource",
 }));
 export type EnableAWSOrganizationsAccessError =
   | InvalidStateException
@@ -5421,6 +5468,7 @@ export const enableAWSOrganizationsAccess: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  operationName: "EnableAWSOrganizationsAccess",
 }));
 export type ExecuteProvisionedProductPlanError =
   | InvalidParametersException
@@ -5443,6 +5491,7 @@ export const executeProvisionedProductPlan: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "ExecuteProvisionedProductPlan",
 }));
 export type ExecuteProvisionedProductServiceActionError =
   | InvalidParametersException
@@ -5465,6 +5514,7 @@ export const executeProvisionedProductServiceAction: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "ExecuteProvisionedProductServiceAction",
 }));
 export type GetAWSOrganizationsAccessStatusError =
   | OperationNotSupportedException
@@ -5483,6 +5533,7 @@ export const getAWSOrganizationsAccessStatus: API.OperationMethod<
   input: GetAWSOrganizationsAccessStatusInput,
   output: GetAWSOrganizationsAccessStatusOutput,
   errors: [OperationNotSupportedException, ResourceNotFoundException],
+  operationName: "GetAWSOrganizationsAccessStatus",
 }));
 export type GetProvisionedProductOutputsError =
   | InvalidParametersException
@@ -5515,6 +5566,7 @@ export const getProvisionedProductOutputs: API.OperationMethod<
   input: GetProvisionedProductOutputsInput,
   output: GetProvisionedProductOutputsOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "GetProvisionedProductOutputs",
   pagination: {
     inputToken: "PageToken",
     outputToken: "NextPageToken",
@@ -5569,6 +5621,7 @@ export const importAsProvisionedProduct: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "ImportAsProvisionedProduct",
 }));
 export type ListAcceptedPortfolioSharesError =
   | InvalidParametersException
@@ -5603,6 +5656,7 @@ export const listAcceptedPortfolioShares: API.OperationMethod<
   input: ListAcceptedPortfolioSharesInput,
   output: ListAcceptedPortfolioSharesOutput,
   errors: [InvalidParametersException, OperationNotSupportedException],
+  operationName: "ListAcceptedPortfolioShares",
   pagination: {
     inputToken: "PageToken",
     outputToken: "NextPageToken",
@@ -5640,6 +5694,7 @@ export const listBudgetsForResource: API.OperationMethod<
   input: ListBudgetsForResourceInput,
   output: ListBudgetsForResourceOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "ListBudgetsForResource",
   pagination: {
     inputToken: "PageToken",
     outputToken: "NextPageToken",
@@ -5677,6 +5732,7 @@ export const listConstraintsForPortfolio: API.OperationMethod<
   input: ListConstraintsForPortfolioInput,
   output: ListConstraintsForPortfolioOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "ListConstraintsForPortfolio",
   pagination: {
     inputToken: "PageToken",
     outputToken: "NextPageToken",
@@ -5734,6 +5790,7 @@ export const listLaunchPaths: API.OperationMethod<
   input: ListLaunchPathsInput,
   output: ListLaunchPathsOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "ListLaunchPaths",
   pagination: {
     inputToken: "PageToken",
     outputToken: "NextPageToken",
@@ -5780,6 +5837,7 @@ export const listOrganizationPortfolioAccess: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  operationName: "ListOrganizationPortfolioAccess",
   pagination: {
     inputToken: "PageToken",
     outputToken: "NextPageToken",
@@ -5819,6 +5877,7 @@ export const listPortfolioAccess: API.OperationMethod<
   input: ListPortfolioAccessInput,
   output: ListPortfolioAccessOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "ListPortfolioAccess",
   pagination: {
     inputToken: "PageToken",
     outputToken: "NextPageToken",
@@ -5853,6 +5912,7 @@ export const listPortfolios: API.OperationMethod<
   input: ListPortfoliosInput,
   output: ListPortfoliosOutput,
   errors: [InvalidParametersException],
+  operationName: "ListPortfolios",
   pagination: {
     inputToken: "PageToken",
     outputToken: "NextPageToken",
@@ -5890,6 +5950,7 @@ export const listPortfoliosForProduct: API.OperationMethod<
   input: ListPortfoliosForProductInput,
   output: ListPortfoliosForProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "ListPortfoliosForProduct",
   pagination: {
     inputToken: "PageToken",
     outputToken: "NextPageToken",
@@ -5927,6 +5988,7 @@ export const listPrincipalsForPortfolio: API.OperationMethod<
   input: ListPrincipalsForPortfolioInput,
   output: ListPrincipalsForPortfolioOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "ListPrincipalsForPortfolio",
   pagination: {
     inputToken: "PageToken",
     outputToken: "NextPageToken",
@@ -5949,6 +6011,7 @@ export const listProvisionedProductPlans: API.OperationMethod<
   input: ListProvisionedProductPlansInput,
   output: ListProvisionedProductPlansOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "ListProvisionedProductPlans",
 }));
 export type ListProvisioningArtifactsError =
   | InvalidParametersException
@@ -5966,6 +6029,7 @@ export const listProvisioningArtifacts: API.OperationMethod<
   input: ListProvisioningArtifactsInput,
   output: ListProvisioningArtifactsOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "ListProvisioningArtifacts",
 }));
 export type ListProvisioningArtifactsForServiceActionError =
   | InvalidParametersException
@@ -5998,6 +6062,7 @@ export const listProvisioningArtifactsForServiceAction: API.OperationMethod<
   input: ListProvisioningArtifactsForServiceActionInput,
   output: ListProvisioningArtifactsForServiceActionOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "ListProvisioningArtifactsForServiceAction",
   pagination: {
     inputToken: "PageToken",
     outputToken: "NextPageToken",
@@ -6017,6 +6082,7 @@ export const listRecordHistory: API.OperationMethod<
   input: ListRecordHistoryInput,
   output: ListRecordHistoryOutput,
   errors: [InvalidParametersException],
+  operationName: "ListRecordHistory",
 }));
 export type ListResourcesForTagOptionError =
   | InvalidParametersException
@@ -6054,6 +6120,7 @@ export const listResourcesForTagOption: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  operationName: "ListResourcesForTagOption",
   pagination: {
     inputToken: "PageToken",
     outputToken: "PageToken",
@@ -6088,6 +6155,7 @@ export const listServiceActions: API.OperationMethod<
   input: ListServiceActionsInput,
   output: ListServiceActionsOutput,
   errors: [InvalidParametersException],
+  operationName: "ListServiceActions",
   pagination: {
     inputToken: "PageToken",
     outputToken: "NextPageToken",
@@ -6125,6 +6193,7 @@ export const listServiceActionsForProvisioningArtifact: API.OperationMethod<
   input: ListServiceActionsForProvisioningArtifactInput,
   output: ListServiceActionsForProvisioningArtifactOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "ListServiceActionsForProvisioningArtifact",
   pagination: {
     inputToken: "PageToken",
     outputToken: "NextPageToken",
@@ -6147,6 +6216,7 @@ export const listStackInstancesForProvisionedProduct: API.OperationMethod<
   input: ListStackInstancesForProvisionedProductInput,
   output: ListStackInstancesForProvisionedProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "ListStackInstancesForProvisionedProduct",
 }));
 export type ListTagOptionsError =
   | InvalidParametersException
@@ -6179,6 +6249,7 @@ export const listTagOptions: API.OperationMethod<
   input: ListTagOptionsInput,
   output: ListTagOptionsOutput,
   errors: [InvalidParametersException, TagOptionNotMigratedException],
+  operationName: "ListTagOptions",
   pagination: {
     inputToken: "PageToken",
     outputToken: "PageToken",
@@ -6202,6 +6273,7 @@ export const notifyProvisionProductEngineWorkflowResult: API.OperationMethod<
   input: NotifyProvisionProductEngineWorkflowResultInput,
   output: NotifyProvisionProductEngineWorkflowResultOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "NotifyProvisionProductEngineWorkflowResult",
 }));
 export type NotifyTerminateProvisionedProductEngineWorkflowResultError =
   | InvalidParametersException
@@ -6220,6 +6292,7 @@ export const notifyTerminateProvisionedProductEngineWorkflowResult: API.Operatio
   input: NotifyTerminateProvisionedProductEngineWorkflowResultInput,
   output: NotifyTerminateProvisionedProductEngineWorkflowResultOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "NotifyTerminateProvisionedProductEngineWorkflowResult",
 }));
 export type NotifyUpdateProvisionedProductEngineWorkflowResultError =
   | InvalidParametersException
@@ -6238,6 +6311,7 @@ export const notifyUpdateProvisionedProductEngineWorkflowResult: API.OperationMe
   input: NotifyUpdateProvisionedProductEngineWorkflowResultInput,
   output: NotifyUpdateProvisionedProductEngineWorkflowResultOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "NotifyUpdateProvisionedProductEngineWorkflowResult",
 }));
 export type ProvisionProductError =
   | DuplicateResourceException
@@ -6289,6 +6363,7 @@ export const provisionProduct: API.OperationMethod<
     InvalidParametersException,
     ResourceNotFoundException,
   ],
+  operationName: "ProvisionProduct",
 }));
 export type RejectPortfolioShareError =
   | ResourceNotFoundException
@@ -6305,6 +6380,7 @@ export const rejectPortfolioShare: API.OperationMethod<
   input: RejectPortfolioShareInput,
   output: RejectPortfolioShareOutput,
   errors: [ResourceNotFoundException],
+  operationName: "RejectPortfolioShare",
 }));
 export type ScanProvisionedProductsError =
   | InvalidParametersException
@@ -6323,6 +6399,7 @@ export const scanProvisionedProducts: API.OperationMethod<
   input: ScanProvisionedProductsInput,
   output: ScanProvisionedProductsOutput,
   errors: [InvalidParametersException],
+  operationName: "ScanProvisionedProducts",
 }));
 export type SearchProductsError = InvalidParametersException | CommonErrors;
 /**
@@ -6352,6 +6429,7 @@ export const searchProducts: API.OperationMethod<
   input: SearchProductsInput,
   output: SearchProductsOutput,
   errors: [InvalidParametersException],
+  operationName: "SearchProducts",
   pagination: {
     inputToken: "PageToken",
     outputToken: "NextPageToken",
@@ -6389,6 +6467,7 @@ export const searchProductsAsAdmin: API.OperationMethod<
   input: SearchProductsAsAdminInput,
   output: SearchProductsAsAdminOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "SearchProductsAsAdmin",
   pagination: {
     inputToken: "PageToken",
     outputToken: "NextPageToken",
@@ -6425,6 +6504,7 @@ export const searchProvisionedProducts: API.OperationMethod<
   input: SearchProvisionedProductsInput,
   output: SearchProvisionedProductsOutput,
   errors: [InvalidParametersException],
+  operationName: "SearchProvisionedProducts",
   pagination: {
     inputToken: "PageToken",
     outputToken: "NextPageToken",
@@ -6450,6 +6530,7 @@ export const terminateProvisionedProduct: API.OperationMethod<
   input: TerminateProvisionedProductInput,
   output: TerminateProvisionedProductOutput,
   errors: [ResourceNotFoundException],
+  operationName: "TerminateProvisionedProduct",
 }));
 export type UpdateConstraintError =
   | InvalidParametersException
@@ -6467,6 +6548,7 @@ export const updateConstraint: API.OperationMethod<
   input: UpdateConstraintInput,
   output: UpdateConstraintOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "UpdateConstraint",
 }));
 export type UpdatePortfolioError =
   | InvalidParametersException
@@ -6493,6 +6575,7 @@ export const updatePortfolio: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  operationName: "UpdatePortfolio",
 }));
 export type UpdatePortfolioShareError =
   | InvalidParametersException
@@ -6535,6 +6618,7 @@ export const updatePortfolioShare: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdatePortfolioShare",
 }));
 export type UpdateProductError =
   | InvalidParametersException
@@ -6557,6 +6641,7 @@ export const updateProduct: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  operationName: "UpdateProduct",
 }));
 export type UpdateProvisionedProductError =
   | InvalidParametersException
@@ -6580,6 +6665,7 @@ export const updateProvisionedProduct: API.OperationMethod<
   input: UpdateProvisionedProductInput,
   output: UpdateProvisionedProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "UpdateProvisionedProduct",
 }));
 export type UpdateProvisionedProductPropertiesError =
   | InvalidParametersException
@@ -6602,6 +6688,7 @@ export const updateProvisionedProductProperties: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateProvisionedProductProperties",
 }));
 export type UpdateProvisioningArtifactError =
   | InvalidParametersException
@@ -6621,6 +6708,7 @@ export const updateProvisioningArtifact: API.OperationMethod<
   input: UpdateProvisioningArtifactInput,
   output: UpdateProvisioningArtifactOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "UpdateProvisioningArtifact",
 }));
 export type UpdateServiceActionError =
   | InvalidParametersException
@@ -6638,6 +6726,7 @@ export const updateServiceAction: API.OperationMethod<
   input: UpdateServiceActionInput,
   output: UpdateServiceActionOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  operationName: "UpdateServiceAction",
 }));
 export type UpdateTagOptionError =
   | DuplicateResourceException
@@ -6662,4 +6751,5 @@ export const updateTagOption: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  operationName: "UpdateTagOption",
 }));

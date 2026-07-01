@@ -4007,6 +4007,7 @@ export const associateApi: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
   ],
+  operationName: "AssociateApi",
 }));
 export type AssociateMergedGraphqlApiError =
   | BadRequestException
@@ -4036,6 +4037,7 @@ export const associateMergedGraphqlApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "AssociateMergedGraphqlApi",
 }));
 export type AssociateSourceGraphqlApiError =
   | BadRequestException
@@ -4065,6 +4067,7 @@ export const associateSourceGraphqlApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "AssociateSourceGraphqlApi",
 }));
 export type CreateApiError =
   | BadRequestException
@@ -4093,6 +4096,7 @@ export const createApi: API.OperationMethod<
     ServiceQuotaExceededException,
     UnauthorizedException,
   ],
+  operationName: "CreateApi",
 }));
 export type CreateApiCacheError =
   | BadRequestException
@@ -4119,6 +4123,7 @@ export const createApiCache: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "CreateApiCache",
 }));
 export type CreateApiKeyError =
   | ApiKeyLimitExceededException
@@ -4149,6 +4154,7 @@ export const createApiKey: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "CreateApiKey",
 }));
 export type CreateChannelNamespaceError =
   | BadRequestException
@@ -4179,6 +4185,7 @@ export const createChannelNamespace: API.OperationMethod<
     ServiceQuotaExceededException,
     UnauthorizedException,
   ],
+  operationName: "CreateChannelNamespace",
 }));
 export type CreateDataSourceError =
   | BadRequestException
@@ -4205,6 +4212,7 @@ export const createDataSource: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "CreateDataSource",
 }));
 export type CreateDomainNameError =
   | AccessDeniedException
@@ -4227,6 +4235,7 @@ export const createDomainName: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
   ],
+  operationName: "CreateDomainName",
 }));
 export type CreateFunctionError =
   | BadRequestException
@@ -4256,6 +4265,7 @@ export const createFunction: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "CreateFunction",
 }));
 export type CreateGraphqlApiError =
   | ApiLimitExceededException
@@ -4284,6 +4294,7 @@ export const createGraphqlApi: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  operationName: "CreateGraphqlApi",
 }));
 export type CreateResolverError =
   | BadRequestException
@@ -4313,6 +4324,7 @@ export const createResolver: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "CreateResolver",
 }));
 export type CreateTypeError =
   | BadRequestException
@@ -4339,6 +4351,7 @@ export const createType: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "CreateType",
 }));
 export type DeleteApiError =
   | AccessDeniedException
@@ -4367,6 +4380,7 @@ export const deleteApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteApi",
 }));
 export type DeleteApiCacheError =
   | BadRequestException
@@ -4393,6 +4407,7 @@ export const deleteApiCache: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteApiCache",
 }));
 export type DeleteApiKeyError =
   | BadRequestException
@@ -4417,6 +4432,7 @@ export const deleteApiKey: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteApiKey",
 }));
 export type DeleteChannelNamespaceError =
   | AccessDeniedException
@@ -4445,6 +4461,7 @@ export const deleteChannelNamespace: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteChannelNamespace",
 }));
 export type DeleteDataSourceError =
   | BadRequestException
@@ -4471,6 +4488,7 @@ export const deleteDataSource: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteDataSource",
 }));
 export type DeleteDomainNameError =
   | AccessDeniedException
@@ -4497,6 +4515,7 @@ export const deleteDomainName: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
   ],
+  operationName: "DeleteDomainName",
 }));
 export type DeleteFunctionError =
   | BadRequestException
@@ -4523,6 +4542,7 @@ export const deleteFunction: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteFunction",
 }));
 export type DeleteGraphqlApiError =
   | AccessDeniedException
@@ -4551,6 +4571,7 @@ export const deleteGraphqlApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteGraphqlApi",
 }));
 export type DeleteResolverError =
   | BadRequestException
@@ -4577,6 +4598,7 @@ export const deleteResolver: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteResolver",
 }));
 export type DeleteTypeError =
   | BadRequestException
@@ -4603,6 +4625,7 @@ export const deleteType: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteType",
 }));
 export type DisassociateApiError =
   | AccessDeniedException
@@ -4629,6 +4652,7 @@ export const disassociateApi: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
   ],
+  operationName: "DisassociateApi",
 }));
 export type DisassociateMergedGraphqlApiError =
   | BadRequestException
@@ -4656,6 +4680,7 @@ export const disassociateMergedGraphqlApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DisassociateMergedGraphqlApi",
 }));
 export type DisassociateSourceGraphqlApiError =
   | BadRequestException
@@ -4683,6 +4708,7 @@ export const disassociateSourceGraphqlApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DisassociateSourceGraphqlApi",
 }));
 export type EvaluateCodeError =
   | AccessDeniedException
@@ -4710,6 +4736,7 @@ export const evaluateCode: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
   ],
+  operationName: "EvaluateCode",
 }));
 export type EvaluateMappingTemplateError =
   | AccessDeniedException
@@ -4740,6 +4767,7 @@ export const evaluateMappingTemplate: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
   ],
+  operationName: "EvaluateMappingTemplate",
 }));
 export type FlushApiCacheError =
   | BadRequestException
@@ -4766,6 +4794,7 @@ export const flushApiCache: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "FlushApiCache",
 }));
 export type GetApiError =
   | AccessDeniedException
@@ -4792,6 +4821,7 @@ export const getApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetApi",
 }));
 export type GetApiAssociationError =
   | AccessDeniedException
@@ -4816,6 +4846,7 @@ export const getApiAssociation: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
   ],
+  operationName: "GetApiAssociation",
 }));
 export type GetApiCacheError =
   | BadRequestException
@@ -4842,6 +4873,7 @@ export const getApiCache: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetApiCache",
 }));
 export type GetChannelNamespaceError =
   | AccessDeniedException
@@ -4868,6 +4900,7 @@ export const getChannelNamespace: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetChannelNamespace",
 }));
 export type GetDataSourceError =
   | BadRequestException
@@ -4894,6 +4927,7 @@ export const getDataSource: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetDataSource",
 }));
 export type GetDataSourceIntrospectionError =
   | BadRequestException
@@ -4914,6 +4948,7 @@ export const getDataSourceIntrospection: API.OperationMethod<
   input: GetDataSourceIntrospectionRequest,
   output: GetDataSourceIntrospectionResponse,
   errors: [BadRequestException, InternalFailureException, NotFoundException],
+  operationName: "GetDataSourceIntrospection",
 }));
 export type GetDomainNameError =
   | AccessDeniedException
@@ -4938,6 +4973,7 @@ export const getDomainName: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
   ],
+  operationName: "GetDomainName",
 }));
 export type GetFunctionError =
   | ConcurrentModificationException
@@ -4960,6 +4996,7 @@ export const getFunction: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetFunction",
 }));
 export type GetGraphqlApiError =
   | AccessDeniedException
@@ -4986,6 +5023,7 @@ export const getGraphqlApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetGraphqlApi",
 }));
 export type GetGraphqlApiEnvironmentVariablesError =
   | AccessDeniedException
@@ -5013,6 +5051,7 @@ export const getGraphqlApiEnvironmentVariables: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetGraphqlApiEnvironmentVariables",
 }));
 export type GetIntrospectionSchemaError =
   | GraphQLSchemaException
@@ -5037,6 +5076,7 @@ export const getIntrospectionSchema: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetIntrospectionSchema",
 }));
 export type GetResolverError =
   | ConcurrentModificationException
@@ -5059,6 +5099,7 @@ export const getResolver: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetResolver",
 }));
 export type GetSchemaCreationStatusError =
   | BadRequestException
@@ -5083,6 +5124,7 @@ export const getSchemaCreationStatus: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetSchemaCreationStatus",
 }));
 export type GetSourceApiAssociationError =
   | BadRequestException
@@ -5107,6 +5149,7 @@ export const getSourceApiAssociation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetSourceApiAssociation",
 }));
 export type GetTypeError =
   | BadRequestException
@@ -5133,6 +5176,7 @@ export const getType: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetType",
 }));
 export type ListApiKeysError =
   | BadRequestException
@@ -5177,6 +5221,7 @@ export const listApiKeys: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "ListApiKeys",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5223,6 +5268,7 @@ export const listApis: API.OperationMethod<
     InternalFailureException,
     UnauthorizedException,
   ],
+  operationName: "ListApis",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5271,6 +5317,7 @@ export const listChannelNamespaces: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "ListChannelNamespaces",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5316,6 +5363,7 @@ export const listDataSources: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "ListDataSources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5359,6 +5407,7 @@ export const listDomainNames: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
   ],
+  operationName: "ListDomainNames",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5404,6 +5453,7 @@ export const listFunctions: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "ListFunctions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5447,6 +5497,7 @@ export const listGraphqlApis: API.OperationMethod<
     InternalFailureException,
     UnauthorizedException,
   ],
+  operationName: "ListGraphqlApis",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5492,6 +5543,7 @@ export const listResolvers: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "ListResolvers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5537,6 +5589,7 @@ export const listResolversByFunction: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "ListResolversByFunction",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5582,6 +5635,7 @@ export const listSourceApiAssociations: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "ListSourceApiAssociations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5616,6 +5670,7 @@ export const listTagsForResource: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTypesError =
   | BadRequestException
@@ -5657,6 +5712,7 @@ export const listTypes: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "ListTypes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5704,6 +5760,7 @@ export const listTypesByAssociation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "ListTypesByAssociation",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5774,6 +5831,7 @@ export const putGraphqlApiEnvironmentVariables: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "PutGraphqlApiEnvironmentVariables",
 }));
 export type StartDataSourceIntrospectionError =
   | BadRequestException
@@ -5799,6 +5857,7 @@ export const startDataSourceIntrospection: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "StartDataSourceIntrospection",
 }));
 export type StartSchemaCreationError =
   | BadRequestException
@@ -5828,6 +5887,7 @@ export const startSchemaCreation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "StartSchemaCreation",
 }));
 export type StartSchemaMergeError =
   | BadRequestException
@@ -5855,6 +5915,7 @@ export const startSchemaMerge: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "StartSchemaMerge",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -5883,6 +5944,7 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -5911,6 +5973,7 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateApiError =
   | AccessDeniedException
@@ -5939,6 +6002,7 @@ export const updateApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateApi",
 }));
 export type UpdateApiCacheError =
   | BadRequestException
@@ -5965,6 +6029,7 @@ export const updateApiCache: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateApiCache",
 }));
 export type UpdateApiKeyError =
   | ApiKeyValidityOutOfBoundsException
@@ -5993,6 +6058,7 @@ export const updateApiKey: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateApiKey",
 }));
 export type UpdateChannelNamespaceError =
   | AccessDeniedException
@@ -6021,6 +6087,7 @@ export const updateChannelNamespace: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateChannelNamespace",
 }));
 export type UpdateDataSourceError =
   | BadRequestException
@@ -6047,6 +6114,7 @@ export const updateDataSource: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateDataSource",
 }));
 export type UpdateDomainNameError =
   | AccessDeniedException
@@ -6073,6 +6141,7 @@ export const updateDomainName: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
   ],
+  operationName: "UpdateDomainName",
 }));
 export type UpdateFunctionError =
   | BadRequestException
@@ -6099,6 +6168,7 @@ export const updateFunction: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateFunction",
 }));
 export type UpdateGraphqlApiError =
   | AccessDeniedException
@@ -6127,6 +6197,7 @@ export const updateGraphqlApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateGraphqlApi",
 }));
 export type UpdateResolverError =
   | BadRequestException
@@ -6153,6 +6224,7 @@ export const updateResolver: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateResolver",
 }));
 export type UpdateSourceApiAssociationError =
   | BadRequestException
@@ -6179,6 +6251,7 @@ export const updateSourceApiAssociation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateSourceApiAssociation",
 }));
 export type UpdateTypeError =
   | BadRequestException
@@ -6205,4 +6278,5 @@ export const updateType: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateType",
 }));

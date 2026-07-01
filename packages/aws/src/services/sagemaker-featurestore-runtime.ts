@@ -538,6 +538,7 @@ export const batchGetRecord: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  operationName: "BatchGetRecord",
 }));
 export type BatchWriteRecordError =
   | AccessForbidden
@@ -571,6 +572,7 @@ export const batchWriteRecord: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  operationName: "BatchWriteRecord",
 }));
 export type DeleteRecordError =
   | AccessForbidden
@@ -625,6 +627,7 @@ export const deleteRecord: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  operationName: "DeleteRecord",
 }));
 export type GetRecordError =
   | AccessForbidden
@@ -653,6 +656,7 @@ export const getRecord: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  operationName: "GetRecord",
 }));
 export type ListRecordsError =
   | AccessForbidden
@@ -696,6 +700,7 @@ export const listRecords: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  operationName: "ListRecords",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -744,4 +749,5 @@ export const putRecord: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  operationName: "PutRecord",
 }));

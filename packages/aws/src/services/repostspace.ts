@@ -1039,6 +1039,7 @@ export const batchAddChannelRoleToAccessors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchAddChannelRoleToAccessors",
 }));
 export type BatchAddRoleError =
   | AccessDeniedException
@@ -1065,6 +1066,7 @@ export const batchAddRole: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchAddRole",
 }));
 export type BatchRemoveChannelRoleFromAccessorsError =
   | AccessDeniedException
@@ -1091,6 +1093,7 @@ export const batchRemoveChannelRoleFromAccessors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchRemoveChannelRoleFromAccessors",
 }));
 export type BatchRemoveRoleError =
   | AccessDeniedException
@@ -1117,6 +1120,7 @@ export const batchRemoveRole: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchRemoveRole",
 }));
 export type CreateChannelError =
   | AccessDeniedException
@@ -1147,6 +1151,7 @@ export const createChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateChannel",
 }));
 export type CreateSpaceError =
   | AccessDeniedException
@@ -1177,6 +1182,7 @@ export const createSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateSpace",
 }));
 export type DeleteSpaceError =
   | AccessDeniedException
@@ -1203,6 +1209,7 @@ export const deleteSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteSpace",
 }));
 export type DeregisterAdminError =
   | AccessDeniedException
@@ -1229,6 +1236,7 @@ export const deregisterAdmin: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeregisterAdmin",
 }));
 export type GetChannelError =
   | AccessDeniedException
@@ -1255,6 +1263,7 @@ export const getChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetChannel",
 }));
 export type GetSpaceError =
   | AccessDeniedException
@@ -1281,6 +1290,7 @@ export const getSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSpace",
 }));
 export type ListChannelsError =
   | AccessDeniedException
@@ -1320,6 +1330,7 @@ export const listChannels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListChannels",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1365,6 +1376,7 @@ export const listSpaces: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSpaces",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1397,6 +1409,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type RegisterAdminError =
   | AccessDeniedException
@@ -1423,6 +1436,7 @@ export const registerAdmin: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RegisterAdmin",
 }));
 export type SendInvitesError =
   | AccessDeniedException
@@ -1449,6 +1463,7 @@ export const sendInvites: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendInvites",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1475,6 +1490,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1501,6 +1517,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateChannelError =
   | AccessDeniedException
@@ -1529,6 +1546,7 @@ export const updateChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateChannel",
 }));
 export type UpdateSpaceError =
   | AccessDeniedException
@@ -1557,4 +1575,5 @@ export const updateSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateSpace",
 }));

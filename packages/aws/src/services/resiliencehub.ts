@@ -4087,6 +4087,7 @@ export const acceptResourceGroupingRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AcceptResourceGroupingRecommendations",
 }));
 export type AddDraftAppVersionResourceMappingsError =
   | AccessDeniedException
@@ -4122,6 +4123,7 @@ export const addDraftAppVersionResourceMappings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AddDraftAppVersionResourceMappings",
 }));
 export type BatchUpdateRecommendationStatusError =
   | AccessDeniedException
@@ -4148,6 +4150,7 @@ export const batchUpdateRecommendationStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchUpdateRecommendationStatus",
 }));
 export type CreateAppError =
   | AccessDeniedException
@@ -4189,6 +4192,7 @@ export const createApp: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateApp",
 }));
 export type CreateAppVersionAppComponentError =
   | AccessDeniedException
@@ -4223,6 +4227,7 @@ export const createAppVersionAppComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAppVersionAppComponent",
 }));
 export type CreateAppVersionResourceError =
   | AccessDeniedException
@@ -4264,6 +4269,7 @@ export const createAppVersionResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAppVersionResource",
 }));
 export type CreateRecommendationTemplateError =
   | AccessDeniedException
@@ -4294,6 +4300,7 @@ export const createRecommendationTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRecommendationTemplate",
 }));
 export type CreateResiliencyPolicyError =
   | AccessDeniedException
@@ -4330,6 +4337,7 @@ export const createResiliencyPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateResiliencyPolicy",
 }));
 export type DeleteAppError =
   | ConflictException
@@ -4357,6 +4365,7 @@ export const deleteApp: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteApp",
 }));
 export type DeleteAppAssessmentError =
   | AccessDeniedException
@@ -4386,6 +4395,7 @@ export const deleteAppAssessment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAppAssessment",
 }));
 export type DeleteAppInputSourceError =
   | AccessDeniedException
@@ -4415,6 +4425,7 @@ export const deleteAppInputSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAppInputSource",
 }));
 export type DeleteAppVersionAppComponentError =
   | AccessDeniedException
@@ -4450,6 +4461,7 @@ export const deleteAppVersionAppComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAppVersionAppComponent",
 }));
 export type DeleteAppVersionResourceError =
   | AccessDeniedException
@@ -4487,6 +4499,7 @@ export const deleteAppVersionResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAppVersionResource",
 }));
 export type DeleteRecommendationTemplateError =
   | AccessDeniedException
@@ -4514,6 +4527,7 @@ export const deleteRecommendationTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRecommendationTemplate",
 }));
 export type DeleteResiliencyPolicyError =
   | AccessDeniedException
@@ -4542,6 +4556,7 @@ export const deleteResiliencyPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteResiliencyPolicy",
 }));
 export type DescribeAppError =
   | AccessDeniedException
@@ -4568,6 +4583,7 @@ export const describeApp: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeApp",
 }));
 export type DescribeAppAssessmentError =
   | AccessDeniedException
@@ -4594,6 +4610,7 @@ export const describeAppAssessment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeAppAssessment",
 }));
 export type DescribeAppVersionError =
   | AccessDeniedException
@@ -4620,6 +4637,7 @@ export const describeAppVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeAppVersion",
 }));
 export type DescribeAppVersionAppComponentError =
   | AccessDeniedException
@@ -4648,6 +4666,7 @@ export const describeAppVersionAppComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeAppVersionAppComponent",
 }));
 export type DescribeAppVersionResourceError =
   | AccessDeniedException
@@ -4685,6 +4704,7 @@ export const describeAppVersionResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeAppVersionResource",
 }));
 export type DescribeAppVersionResourcesResolutionStatusError =
   | AccessDeniedException
@@ -4713,6 +4733,7 @@ export const describeAppVersionResourcesResolutionStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeAppVersionResourcesResolutionStatus",
 }));
 export type DescribeAppVersionTemplateError =
   | AccessDeniedException
@@ -4739,6 +4760,7 @@ export const describeAppVersionTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeAppVersionTemplate",
 }));
 export type DescribeDraftAppVersionResourcesImportStatusError =
   | AccessDeniedException
@@ -4771,6 +4793,7 @@ export const describeDraftAppVersionResourcesImportStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeDraftAppVersionResourcesImportStatus",
 }));
 export type DescribeMetricsExportError =
   | AccessDeniedException
@@ -4797,6 +4820,7 @@ export const describeMetricsExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeMetricsExport",
 }));
 export type DescribeResiliencyPolicyError =
   | AccessDeniedException
@@ -4825,6 +4849,7 @@ export const describeResiliencyPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeResiliencyPolicy",
 }));
 export type DescribeResourceGroupingRecommendationTaskError =
   | AccessDeniedException
@@ -4851,6 +4876,7 @@ export const describeResourceGroupingRecommendationTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeResourceGroupingRecommendationTask",
 }));
 export type ImportResourcesToDraftAppVersionError =
   | AccessDeniedException
@@ -4883,6 +4909,7 @@ export const importResourcesToDraftAppVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ImportResourcesToDraftAppVersion",
 }));
 export type ListAlarmRecommendationsError =
   | AccessDeniedException
@@ -4924,6 +4951,7 @@ export const listAlarmRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAlarmRecommendations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4969,6 +4997,7 @@ export const listAppAssessmentComplianceDrifts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAppAssessmentComplianceDrifts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5014,6 +5043,7 @@ export const listAppAssessmentResourceDrifts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAppAssessmentResourceDrifts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5062,6 +5092,7 @@ export const listAppAssessments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAppAssessments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5108,6 +5139,7 @@ export const listAppComponentCompliances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAppComponentCompliances",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5154,6 +5186,7 @@ export const listAppComponentRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAppComponentRecommendations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5202,6 +5235,7 @@ export const listAppInputSources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAppInputSources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5253,6 +5287,7 @@ export const listApps: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListApps",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5301,6 +5336,7 @@ export const listAppVersionAppComponents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAppVersionAppComponents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5349,6 +5385,7 @@ export const listAppVersionResourceMappings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAppVersionResourceMappings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5397,6 +5434,7 @@ export const listAppVersionResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAppVersionResources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5441,6 +5479,7 @@ export const listAppVersions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListAppVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5485,6 +5524,7 @@ export const listMetrics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMetrics",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5530,6 +5570,7 @@ export const listRecommendationTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRecommendationTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5576,6 +5617,7 @@ export const listResiliencyPolicies: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListResiliencyPolicies",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5622,6 +5664,7 @@ export const listResourceGroupingRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListResourceGroupingRecommendations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5671,6 +5714,7 @@ export const listSopRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSopRecommendations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5718,6 +5762,7 @@ export const listSuggestedResiliencyPolicies: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSuggestedResiliencyPolicies",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5749,6 +5794,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTestRecommendationsError =
   | AccessDeniedException
@@ -5792,6 +5838,7 @@ export const listTestRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTestRecommendations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5842,6 +5889,7 @@ export const listUnsupportedAppVersionResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListUnsupportedAppVersionResources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5875,6 +5923,7 @@ export const publishAppVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PublishAppVersion",
 }));
 export type PutDraftAppVersionTemplateError =
   | AccessDeniedException
@@ -5904,6 +5953,7 @@ export const putDraftAppVersionTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutDraftAppVersionTemplate",
 }));
 export type RejectResourceGroupingRecommendationsError =
   | AccessDeniedException
@@ -5930,6 +5980,7 @@ export const rejectResourceGroupingRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RejectResourceGroupingRecommendations",
 }));
 export type RemoveDraftAppVersionResourceMappingsError =
   | AccessDeniedException
@@ -5958,6 +6009,7 @@ export const removeDraftAppVersionResourceMappings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RemoveDraftAppVersionResourceMappings",
 }));
 export type ResolveAppVersionResourcesError =
   | AccessDeniedException
@@ -5986,6 +6038,7 @@ export const resolveAppVersionResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ResolveAppVersionResources",
 }));
 export type StartAppAssessmentError =
   | AccessDeniedException
@@ -6016,6 +6069,7 @@ export const startAppAssessment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartAppAssessment",
 }));
 export type StartMetricsExportError =
   | AccessDeniedException
@@ -6044,6 +6098,7 @@ export const startMetricsExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartMetricsExport",
 }));
 export type StartResourceGroupingRecommendationTaskError =
   | AccessDeniedException
@@ -6072,6 +6127,7 @@ export const startResourceGroupingRecommendationTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartResourceGroupingRecommendationTask",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -6098,6 +6154,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -6124,6 +6181,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAppError =
   | AccessDeniedException
@@ -6152,6 +6210,7 @@ export const updateApp: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateApp",
 }));
 export type UpdateAppVersionError =
   | AccessDeniedException
@@ -6184,6 +6243,7 @@ export const updateAppVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAppVersion",
 }));
 export type UpdateAppVersionAppComponentError =
   | AccessDeniedException
@@ -6216,6 +6276,7 @@ export const updateAppVersionAppComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAppVersionAppComponent",
 }));
 export type UpdateAppVersionResourceError =
   | AccessDeniedException
@@ -6255,6 +6316,7 @@ export const updateAppVersionResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAppVersionResource",
 }));
 export type UpdateResiliencyPolicyError =
   | AccessDeniedException
@@ -6291,4 +6353,5 @@ export const updateResiliencyPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateResiliencyPolicy",
 }));

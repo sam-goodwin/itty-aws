@@ -229,6 +229,7 @@ export const generateDataSet: API.OperationMethod<
   input: GenerateDataSetRequest,
   output: GenerateDataSetResult,
   errors: [MarketplaceCommerceAnalyticsException],
+  operationName: "GenerateDataSet",
 }));
 export type StartSupportDataExportError =
   | MarketplaceCommerceAnalyticsException
@@ -252,4 +253,5 @@ export const startSupportDataExport: API.OperationMethod<
   input: StartSupportDataExportRequest,
   output: StartSupportDataExportResult,
   errors: [MarketplaceCommerceAnalyticsException],
+  operationName: "StartSupportDataExport",
 }));

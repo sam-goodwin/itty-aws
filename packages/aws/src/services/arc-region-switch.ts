@@ -2392,6 +2392,7 @@ export const approvePlanExecutionStep: API.OperationMethod<
   input: ApprovePlanExecutionStepRequest,
   output: ApprovePlanExecutionStepResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "ApprovePlanExecutionStep",
 }));
 export type CancelPlanExecutionError =
   | AccessDeniedException
@@ -2411,6 +2412,7 @@ export const cancelPlanExecution: API.OperationMethod<
   input: CancelPlanExecutionRequest,
   output: CancelPlanExecutionResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "CancelPlanExecution",
 }));
 export type GetPlanEvaluationStatusError =
   | AccessDeniedException
@@ -2443,6 +2445,7 @@ export const getPlanEvaluationStatus: API.OperationMethod<
   input: GetPlanEvaluationStatusRequest,
   output: GetPlanEvaluationStatusResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "GetPlanEvaluationStatus",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2481,6 +2484,7 @@ export const getPlanExecution: API.OperationMethod<
   input: GetPlanExecutionRequest,
   output: GetPlanExecutionResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "GetPlanExecution",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2504,6 +2508,7 @@ export const getPlanInRegion: API.OperationMethod<
   input: GetPlanInRegionRequest,
   output: GetPlanInRegionResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "GetPlanInRegion",
 }));
 export type ListPlanExecutionEventsError =
   | AccessDeniedException
@@ -2536,6 +2541,7 @@ export const listPlanExecutionEvents: API.OperationMethod<
   input: ListPlanExecutionEventsRequest,
   output: ListPlanExecutionEventsResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "ListPlanExecutionEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2574,6 +2580,7 @@ export const listPlanExecutions: API.OperationMethod<
   input: ListPlanExecutionsRequest,
   output: ListPlanExecutionsResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "ListPlanExecutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2609,6 +2616,7 @@ export const listPlansInRegion: API.OperationMethod<
   input: ListPlansInRegionRequest,
   output: ListPlansInRegionResponse,
   errors: [AccessDeniedException],
+  operationName: "ListPlansInRegion",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2654,6 +2662,7 @@ export const listRoute53HealthChecks: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "ListRoute53HealthChecks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2699,6 +2708,7 @@ export const listRoute53HealthChecksInRegion: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "ListRoute53HealthChecksInRegion",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2731,6 +2741,7 @@ export const startPlanExecution: API.OperationMethod<
     IllegalStateException,
     ResourceNotFoundException,
   ],
+  operationName: "StartPlanExecution",
 }));
 export type UpdatePlanExecutionError =
   | AccessDeniedException
@@ -2753,6 +2764,7 @@ export const updatePlanExecution: API.OperationMethod<
     IllegalStateException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdatePlanExecution",
 }));
 export type UpdatePlanExecutionStepError =
   | AccessDeniedException
@@ -2770,6 +2782,7 @@ export const updatePlanExecutionStep: API.OperationMethod<
   input: UpdatePlanExecutionStepRequest,
   output: UpdatePlanExecutionStepResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "UpdatePlanExecutionStep",
 }));
 export type CreatePlanError = CommonErrors;
 /**
@@ -2786,6 +2799,7 @@ export const createPlan: API.OperationMethod<
   input: CreatePlanRequest,
   output: CreatePlanResponse,
   errors: [],
+  operationName: "CreatePlan",
 }));
 export type GetPlanError = ResourceNotFoundException | CommonErrors;
 /**
@@ -2800,6 +2814,7 @@ export const getPlan: API.OperationMethod<
   input: GetPlanRequest,
   output: GetPlanResponse,
   errors: [ResourceNotFoundException],
+  operationName: "GetPlan",
 }));
 export type UpdatePlanError = ResourceNotFoundException | CommonErrors;
 /**
@@ -2814,6 +2829,7 @@ export const updatePlan: API.OperationMethod<
   input: UpdatePlanRequest,
   output: UpdatePlanResponse,
   errors: [ResourceNotFoundException],
+  operationName: "UpdatePlan",
 }));
 export type DeletePlanError =
   | IllegalStateException
@@ -2833,6 +2849,7 @@ export const deletePlan: API.OperationMethod<
   input: DeletePlanRequest,
   output: DeletePlanResponse,
   errors: [IllegalStateException, ResourceNotFoundException],
+  operationName: "DeletePlan",
 }));
 export type ListPlansError = CommonErrors;
 /**
@@ -2862,6 +2879,7 @@ export const listPlans: API.OperationMethod<
   input: ListPlansRequest,
   output: ListPlansResponse,
   errors: [],
+  operationName: "ListPlans",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2885,6 +2903,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -2902,6 +2921,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -2919,4 +2939,5 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
+  operationName: "UntagResource",
 }));

@@ -514,6 +514,7 @@ export const createRescoreExecutionPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRescoreExecutionPlan",
 }));
 export type DeleteRescoreExecutionPlanError =
   | AccessDeniedException
@@ -544,6 +545,7 @@ export const deleteRescoreExecutionPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRescoreExecutionPlan",
 }));
 export type DescribeRescoreExecutionPlanError =
   | AccessDeniedException
@@ -572,6 +574,7 @@ export const describeRescoreExecutionPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeRescoreExecutionPlan",
 }));
 export type ListRescoreExecutionPlansError =
   | AccessDeniedException
@@ -613,6 +616,7 @@ export const listRescoreExecutionPlans: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRescoreExecutionPlans",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -646,6 +650,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type RescoreError =
   | AccessDeniedException
@@ -677,6 +682,7 @@ export const rescore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "Rescore",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -707,6 +713,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -736,6 +743,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateRescoreExecutionPlanError =
   | AccessDeniedException
@@ -771,4 +779,5 @@ export const updateRescoreExecutionPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRescoreExecutionPlan",
 }));

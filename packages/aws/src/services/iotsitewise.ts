@@ -7226,6 +7226,7 @@ export const associateAssets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociateAssets",
 }));
 export type AssociateTimeSeriesToAssetPropertyError =
   | ConflictingOperationException
@@ -7252,6 +7253,7 @@ export const associateTimeSeriesToAssetProperty: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociateTimeSeriesToAssetProperty",
 }));
 export type BatchAssociateProjectAssetsError =
   | InternalFailureException
@@ -7278,6 +7280,7 @@ export const batchAssociateProjectAssets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "BatchAssociateProjectAssets",
 }));
 export type BatchDisassociateProjectAssetsError =
   | InternalFailureException
@@ -7302,6 +7305,7 @@ export const batchDisassociateProjectAssets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "BatchDisassociateProjectAssets",
 }));
 export type BatchGetAssetPropertyAggregatesError =
   | InternalFailureException
@@ -7343,6 +7347,7 @@ export const batchGetAssetPropertyAggregates: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "BatchGetAssetPropertyAggregates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7388,6 +7393,7 @@ export const batchGetAssetPropertyValue: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "BatchGetAssetPropertyValue",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
 export type BatchGetAssetPropertyValueHistoryError =
@@ -7429,6 +7435,7 @@ export const batchGetAssetPropertyValueHistory: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "BatchGetAssetPropertyValueHistory",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7486,6 +7493,7 @@ export const batchPutAssetPropertyValue: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "BatchPutAssetPropertyValue",
 }));
 export type CreateAccessPolicyError =
   | InternalFailureException
@@ -7515,6 +7523,7 @@ export const createAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateAccessPolicy",
 }));
 export type CreateAssetError =
   | ConflictingOperationException
@@ -7546,6 +7555,7 @@ export const createAsset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateAsset",
 }));
 export type CreateAssetModelError =
   | ConflictingOperationException
@@ -7594,6 +7604,7 @@ export const createAssetModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateAssetModel",
 }));
 export type CreateAssetModelCompositeModelError =
   | ConflictingOperationException
@@ -7646,6 +7657,7 @@ export const createAssetModelCompositeModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateAssetModelCompositeModel",
 }));
 export type CreateBulkImportJobError =
   | ConflictingOperationException
@@ -7689,6 +7701,7 @@ export const createBulkImportJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateBulkImportJob",
 }));
 export type CreateComputationModelError =
   | ConflictingOperationException
@@ -7719,6 +7732,7 @@ export const createComputationModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateComputationModel",
 }));
 export type CreateDashboardError =
   | InternalFailureException
@@ -7745,6 +7759,7 @@ export const createDashboard: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateDashboard",
 }));
 export type CreateDatasetError =
   | ConflictingOperationException
@@ -7775,6 +7790,7 @@ export const createDataset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateDataset",
 }));
 export type CreateGatewayError =
   | InternalFailureException
@@ -7803,6 +7819,7 @@ export const createGateway: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  operationName: "CreateGateway",
 }));
 export type CreatePortalError =
   | InternalFailureException
@@ -7834,6 +7851,7 @@ export const createPortal: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreatePortal",
 }));
 export type CreateProjectError =
   | InternalFailureException
@@ -7863,6 +7881,7 @@ export const createProject: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateProject",
 }));
 export type DeleteAccessPolicyError =
   | InternalFailureException
@@ -7889,6 +7908,7 @@ export const deleteAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteAccessPolicy",
 }));
 export type DeleteAssetError =
   | ConflictingOperationException
@@ -7919,6 +7939,7 @@ export const deleteAsset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteAsset",
 }));
 export type DeleteAssetModelError =
   | ConflictingOperationException
@@ -7951,6 +7972,7 @@ export const deleteAssetModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteAssetModel",
 }));
 export type DeleteAssetModelCompositeModelError =
   | ConflictingOperationException
@@ -7983,6 +8005,7 @@ export const deleteAssetModelCompositeModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteAssetModelCompositeModel",
 }));
 export type DeleteAssetModelInterfaceRelationshipError =
   | ConflictingOperationException
@@ -8010,6 +8033,7 @@ export const deleteAssetModelInterfaceRelationship: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteAssetModelInterfaceRelationship",
 }));
 export type DeleteComputationModelError =
   | ConflictingOperationException
@@ -8036,6 +8060,7 @@ export const deleteComputationModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteComputationModel",
 }));
 export type DeleteDashboardError =
   | InternalFailureException
@@ -8060,6 +8085,7 @@ export const deleteDashboard: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteDashboard",
 }));
 export type DeleteDatasetError =
   | ConflictingOperationException
@@ -8086,6 +8112,7 @@ export const deleteDataset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteDataset",
 }));
 export type DeleteGatewayError =
   | ConflictingOperationException
@@ -8113,6 +8140,7 @@ export const deleteGateway: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteGateway",
 }));
 export type DeletePortalError =
   | ConflictingOperationException
@@ -8139,6 +8167,7 @@ export const deletePortal: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeletePortal",
 }));
 export type DeleteProjectError =
   | InternalFailureException
@@ -8163,6 +8192,7 @@ export const deleteProject: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteProject",
 }));
 export type DeleteTimeSeriesError =
   | ConflictingOperationException
@@ -8203,6 +8233,7 @@ export const deleteTimeSeries: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteTimeSeries",
 }));
 export type DescribeAccessPolicyError =
   | InternalFailureException
@@ -8228,6 +8259,7 @@ export const describeAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeAccessPolicy",
 }));
 export type DescribeActionError =
   | InternalFailureException
@@ -8252,6 +8284,7 @@ export const describeAction: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeAction",
 }));
 export type DescribeAssetError =
   | InternalFailureException
@@ -8276,6 +8309,7 @@ export const describeAsset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeAsset",
 }));
 export type DescribeAssetCompositeModelError =
   | InternalFailureException
@@ -8303,6 +8337,7 @@ export const describeAssetCompositeModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeAssetCompositeModel",
 }));
 export type DescribeAssetModelError =
   | InternalFailureException
@@ -8329,6 +8364,7 @@ export const describeAssetModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeAssetModel",
 }));
 export type DescribeAssetModelCompositeModelError =
   | InternalFailureException
@@ -8355,6 +8391,7 @@ export const describeAssetModelCompositeModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeAssetModelCompositeModel",
 }));
 export type DescribeAssetModelInterfaceRelationshipError =
   | InternalFailureException
@@ -8380,6 +8417,7 @@ export const describeAssetModelInterfaceRelationship: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeAssetModelInterfaceRelationship",
 }));
 export type DescribeAssetPropertyError =
   | InternalFailureException
@@ -8411,6 +8449,7 @@ export const describeAssetProperty: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeAssetProperty",
 }));
 export type DescribeBulkImportJobError =
   | InternalFailureException
@@ -8436,6 +8475,7 @@ export const describeBulkImportJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeBulkImportJob",
 }));
 export type DescribeComputationModelError =
   | InternalFailureException
@@ -8460,6 +8500,7 @@ export const describeComputationModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeComputationModel",
 }));
 export type DescribeComputationModelExecutionSummaryError =
   | InternalFailureException
@@ -8484,6 +8525,7 @@ export const describeComputationModelExecutionSummary: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeComputationModelExecutionSummary",
 }));
 export type DescribeDashboardError =
   | InternalFailureException
@@ -8508,6 +8550,7 @@ export const describeDashboard: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeDashboard",
 }));
 export type DescribeDatasetError =
   | InternalFailureException
@@ -8532,6 +8575,7 @@ export const describeDataset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeDataset",
 }));
 export type DescribeDefaultEncryptionConfigurationError =
   | InternalFailureException
@@ -8556,6 +8600,7 @@ export const describeDefaultEncryptionConfiguration: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "DescribeDefaultEncryptionConfiguration",
 }));
 export type DescribeExecutionError =
   | InternalFailureException
@@ -8580,6 +8625,7 @@ export const describeExecution: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeExecution",
 }));
 export type DescribeGatewayError =
   | InternalFailureException
@@ -8604,6 +8650,7 @@ export const describeGateway: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeGateway",
 }));
 export type DescribeGatewayCapabilityConfigurationError =
   | InternalFailureException
@@ -8640,6 +8687,7 @@ export const describeGatewayCapabilityConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeGatewayCapabilityConfiguration",
 }));
 export type DescribeLoggingOptionsError =
   | InternalFailureException
@@ -8664,6 +8712,7 @@ export const describeLoggingOptions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeLoggingOptions",
 }));
 export type DescribePortalError =
   | InternalFailureException
@@ -8688,6 +8737,7 @@ export const describePortal: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribePortal",
 }));
 export type DescribeProjectError =
   | InternalFailureException
@@ -8712,6 +8762,7 @@ export const describeProject: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeProject",
 }));
 export type DescribeStorageConfigurationError =
   | ConflictingOperationException
@@ -8740,6 +8791,7 @@ export const describeStorageConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeStorageConfiguration",
 }));
 export type DescribeTimeSeriesError =
   | InternalFailureException
@@ -8776,6 +8828,7 @@ export const describeTimeSeries: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeTimeSeries",
 }));
 export type DisassociateAssetsError =
   | ConflictingOperationException
@@ -8803,6 +8856,7 @@ export const disassociateAssets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateAssets",
 }));
 export type DisassociateTimeSeriesFromAssetPropertyError =
   | ConflictingOperationException
@@ -8829,6 +8883,7 @@ export const disassociateTimeSeriesFromAssetProperty: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DisassociateTimeSeriesFromAssetProperty",
 }));
 export type ExecuteActionError =
   | ConflictingOperationException
@@ -8857,6 +8912,7 @@ export const executeAction: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ExecuteAction",
 }));
 export type ExecuteQueryError =
   | AccessDeniedException
@@ -8903,6 +8959,7 @@ export const executeQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ExecuteQuery",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8958,6 +9015,7 @@ export const getAssetPropertyAggregates: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetAssetPropertyAggregates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8998,6 +9056,7 @@ export const getAssetPropertyValue: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetAssetPropertyValue",
 }));
 export type GetAssetPropertyValueHistoryError =
   | InternalFailureException
@@ -9047,6 +9106,7 @@ export const getAssetPropertyValueHistory: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetAssetPropertyValueHistory",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9106,6 +9166,7 @@ export const getInterpolatedAssetPropertyValues: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetInterpolatedAssetPropertyValues",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9142,6 +9203,7 @@ export const invokeAssistant: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "InvokeAssistant",
 }));
 export type ListAccessPoliciesError =
   | InternalFailureException
@@ -9180,6 +9242,7 @@ export const listAccessPolicies: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListAccessPolicies",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9225,6 +9288,7 @@ export const listActions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListActions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9270,6 +9334,7 @@ export const listAssetModelCompositeModels: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListAssetModelCompositeModels",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9317,6 +9382,7 @@ export const listAssetModelProperties: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListAssetModelProperties",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9360,6 +9426,7 @@ export const listAssetModels: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListAssetModels",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9407,6 +9474,7 @@ export const listAssetProperties: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListAssetProperties",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9454,6 +9522,7 @@ export const listAssetRelationships: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListAssetRelationships",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9509,6 +9578,7 @@ export const listAssets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListAssets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9560,6 +9630,7 @@ export const listAssociatedAssets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListAssociatedAssets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9606,6 +9677,7 @@ export const listBulkImportJobs: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListBulkImportJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9652,6 +9724,7 @@ export const listCompositionRelationships: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListCompositionRelationships",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9697,6 +9770,7 @@ export const listComputationModelDataBindingUsages: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListComputationModelDataBindingUsages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9743,6 +9817,7 @@ export const listComputationModelResolveToResources: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListComputationModelResolveToResources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9786,6 +9861,7 @@ export const listComputationModels: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListComputationModels",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9829,6 +9905,7 @@ export const listDashboards: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListDashboards",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9872,6 +9949,7 @@ export const listDatasets: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListDatasets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9917,6 +9995,7 @@ export const listExecutions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListExecutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -9960,6 +10039,7 @@ export const listGateways: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListGateways",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10006,6 +10086,7 @@ export const listInterfaceRelationships: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListInterfaceRelationships",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10049,6 +10130,7 @@ export const listPortals: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListPortals",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10092,6 +10174,7 @@ export const listProjectAssets: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListProjectAssets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10135,6 +10218,7 @@ export const listProjects: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListProjects",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10171,6 +10255,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTimeSeriesError =
   | InternalFailureException
@@ -10210,6 +10295,7 @@ export const listTimeSeries: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListTimeSeries",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10245,6 +10331,7 @@ export const putAssetModelInterfaceRelationship: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "PutAssetModelInterfaceRelationship",
 }));
 export type PutDefaultEncryptionConfigurationError =
   | ConflictingOperationException
@@ -10273,6 +10360,7 @@ export const putDefaultEncryptionConfiguration: API.OperationMethod<
     LimitExceededException,
     ThrottlingException,
   ],
+  operationName: "PutDefaultEncryptionConfiguration",
 }));
 export type PutLoggingOptionsError =
   | ConflictingOperationException
@@ -10299,6 +10387,7 @@ export const putLoggingOptions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "PutLoggingOptions",
 }));
 export type PutStorageConfigurationError =
   | ConflictingOperationException
@@ -10329,6 +10418,7 @@ export const putStorageConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "PutStorageConfiguration",
 }));
 export type TagResourceError =
   | ConflictingOperationException
@@ -10362,6 +10452,7 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     UnauthorizedException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ConflictingOperationException
@@ -10392,6 +10483,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAccessPolicyError =
   | InternalFailureException
@@ -10417,6 +10509,7 @@ export const updateAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateAccessPolicy",
 }));
 export type UpdateAssetError =
   | ConflictingOperationException
@@ -10446,6 +10539,7 @@ export const updateAsset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateAsset",
 }));
 export type UpdateAssetModelError =
   | ConflictingOperationException
@@ -10494,6 +10588,7 @@ export const updateAssetModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateAssetModel",
 }));
 export type UpdateAssetModelCompositeModelError =
   | ConflictingOperationException
@@ -10542,6 +10637,7 @@ export const updateAssetModelCompositeModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateAssetModelCompositeModel",
 }));
 export type UpdateAssetPropertyError =
   | ConflictingOperationException
@@ -10572,6 +10668,7 @@ export const updateAssetProperty: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateAssetProperty",
 }));
 export type UpdateComputationModelError =
   | ConflictingOperationException
@@ -10602,6 +10699,7 @@ export const updateComputationModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateComputationModel",
 }));
 export type UpdateDashboardError =
   | InternalFailureException
@@ -10626,6 +10724,7 @@ export const updateDashboard: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateDashboard",
 }));
 export type UpdateDatasetError =
   | ConflictingOperationException
@@ -10654,6 +10753,7 @@ export const updateDataset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateDataset",
 }));
 export type UpdateGatewayError =
   | ConflictingOperationException
@@ -10680,6 +10780,7 @@ export const updateGateway: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateGateway",
 }));
 export type UpdateGatewayCapabilityConfigurationError =
   | ConflictingOperationException
@@ -10724,6 +10825,7 @@ export const updateGatewayCapabilityConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateGatewayCapabilityConfiguration",
 }));
 export type UpdatePortalError =
   | ConflictingOperationException
@@ -10750,6 +10852,7 @@ export const updatePortal: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdatePortal",
 }));
 export type UpdateProjectError =
   | InternalFailureException
@@ -10774,4 +10877,5 @@ export const updateProject: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateProject",
 }));

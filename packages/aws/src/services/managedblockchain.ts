@@ -1748,6 +1748,7 @@ export const createAccessor: API.OperationMethod<
     ThrottlingException,
     TooManyTagsException,
   ],
+  operationName: "CreateAccessor",
 }));
 export type CreateMemberError =
   | AccessDeniedException
@@ -1784,6 +1785,7 @@ export const createMember: API.OperationMethod<
     ThrottlingException,
     TooManyTagsException,
   ],
+  operationName: "CreateMember",
 }));
 export type CreateNetworkError =
   | AccessDeniedException
@@ -1816,6 +1818,7 @@ export const createNetwork: API.OperationMethod<
     ThrottlingException,
     TooManyTagsException,
   ],
+  operationName: "CreateNetwork",
 }));
 export type CreateNodeError =
   | AccessDeniedException
@@ -1852,6 +1855,7 @@ export const createNode: API.OperationMethod<
     ThrottlingException,
     TooManyTagsException,
   ],
+  operationName: "CreateNode",
 }));
 export type CreateProposalError =
   | AccessDeniedException
@@ -1884,6 +1888,7 @@ export const createProposal: API.OperationMethod<
     ThrottlingException,
     TooManyTagsException,
   ],
+  operationName: "CreateProposal",
 }));
 export type DeleteAccessorError =
   | AccessDeniedException
@@ -1916,6 +1921,7 @@ export const deleteAccessor: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteAccessor",
 }));
 export type DeleteMemberError =
   | AccessDeniedException
@@ -1946,6 +1952,7 @@ export const deleteMember: API.OperationMethod<
     ResourceNotReadyException,
     ThrottlingException,
   ],
+  operationName: "DeleteMember",
 }));
 export type DeleteNodeError =
   | AccessDeniedException
@@ -1976,6 +1983,7 @@ export const deleteNode: API.OperationMethod<
     ResourceNotReadyException,
     ThrottlingException,
   ],
+  operationName: "DeleteNode",
 }));
 export type GetAccessorError =
   | AccessDeniedException
@@ -2003,6 +2011,7 @@ export const getAccessor: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetAccessor",
 }));
 export type GetMemberError =
   | AccessDeniedException
@@ -2031,6 +2040,7 @@ export const getMember: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetMember",
 }));
 export type GetNetworkError =
   | AccessDeniedException
@@ -2059,6 +2069,7 @@ export const getNetwork: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetNetwork",
 }));
 export type GetNodeError =
   | AccessDeniedException
@@ -2087,6 +2098,7 @@ export const getNode: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetNode",
 }));
 export type GetProposalError =
   | AccessDeniedException
@@ -2115,6 +2127,7 @@ export const getProposal: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetProposal",
 }));
 export type ListAccessorsError =
   | AccessDeniedException
@@ -2155,6 +2168,7 @@ export const listAccessors: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListAccessors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2206,6 +2220,7 @@ export const listInvitations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListInvitations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2252,6 +2267,7 @@ export const listMembers: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListMembers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2298,6 +2314,7 @@ export const listNetworks: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListNetworks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2344,6 +2361,7 @@ export const listNodes: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListNodes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2392,6 +2410,7 @@ export const listProposals: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListProposals",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2438,6 +2457,7 @@ export const listProposalVotes: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListProposalVotes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2469,6 +2489,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ResourceNotReadyException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type RejectInvitationError =
   | AccessDeniedException
@@ -2499,6 +2520,7 @@ export const rejectInvitation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "RejectInvitation",
 }));
 export type TagResourceError =
   | InternalServiceErrorException
@@ -2531,6 +2553,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotReadyException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServiceErrorException
@@ -2557,6 +2580,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ResourceNotReadyException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateMemberError =
   | AccessDeniedException
@@ -2585,6 +2609,7 @@ export const updateMember: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateMember",
 }));
 export type UpdateNodeError =
   | AccessDeniedException
@@ -2613,6 +2638,7 @@ export const updateNode: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateNode",
 }));
 export type VoteOnProposalError =
   | AccessDeniedException
@@ -2643,4 +2669,5 @@ export const voteOnProposal: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "VoteOnProposal",
 }));

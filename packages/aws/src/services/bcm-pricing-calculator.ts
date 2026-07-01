@@ -2574,6 +2574,7 @@ export const getPreferences: API.OperationMethod<
   input: GetPreferencesRequest,
   output: GetPreferencesResponse,
   errors: [DataUnavailableException],
+  operationName: "GetPreferences",
 }));
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -2588,6 +2589,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | ResourceNotFoundException
@@ -2605,6 +2607,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -2619,6 +2622,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type UpdatePreferencesError =
   | DataUnavailableException
@@ -2636,6 +2640,7 @@ export const updatePreferences: API.OperationMethod<
   input: UpdatePreferencesRequest,
   output: UpdatePreferencesResponse,
   errors: [DataUnavailableException, ServiceQuotaExceededException],
+  operationName: "UpdatePreferences",
 }));
 export type CreateBillEstimateError =
   | ConflictException
@@ -2658,6 +2663,7 @@ export const createBillEstimate: API.OperationMethod<
     DataUnavailableException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateBillEstimate",
 }));
 export type GetBillEstimateError =
   | DataUnavailableException
@@ -2675,6 +2681,7 @@ export const getBillEstimate: API.OperationMethod<
   input: GetBillEstimateRequest,
   output: GetBillEstimateResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  operationName: "GetBillEstimate",
 }));
 export type UpdateBillEstimateError =
   | ConflictException
@@ -2697,6 +2704,7 @@ export const updateBillEstimate: API.OperationMethod<
     DataUnavailableException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateBillEstimate",
 }));
 export type DeleteBillEstimateError =
   | ConflictException
@@ -2714,6 +2722,7 @@ export const deleteBillEstimate: API.OperationMethod<
   input: DeleteBillEstimateRequest,
   output: DeleteBillEstimateResponse,
   errors: [ConflictException, DataUnavailableException],
+  operationName: "DeleteBillEstimate",
 }));
 export type ListBillEstimatesError = DataUnavailableException | CommonErrors;
 /**
@@ -2743,6 +2752,7 @@ export const listBillEstimates: API.OperationMethod<
   input: ListBillEstimatesRequest,
   output: ListBillEstimatesResponse,
   errors: [DataUnavailableException],
+  operationName: "ListBillEstimates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2781,6 +2791,7 @@ export const listBillEstimateCommitments: API.OperationMethod<
   input: ListBillEstimateCommitmentsRequest,
   output: ListBillEstimateCommitmentsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  operationName: "ListBillEstimateCommitments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2819,6 +2830,7 @@ export const listBillEstimateInputCommitmentModifications: API.OperationMethod<
   input: ListBillEstimateInputCommitmentModificationsRequest,
   output: ListBillEstimateInputCommitmentModificationsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  operationName: "ListBillEstimateInputCommitmentModifications",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2857,6 +2869,7 @@ export const listBillEstimateInputUsageModifications: API.OperationMethod<
   input: ListBillEstimateInputUsageModificationsRequest,
   output: ListBillEstimateInputUsageModificationsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  operationName: "ListBillEstimateInputUsageModifications",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2895,6 +2908,7 @@ export const listBillEstimateLineItems: API.OperationMethod<
   input: ListBillEstimateLineItemsRequest,
   output: ListBillEstimateLineItemsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  operationName: "ListBillEstimateLineItems",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2923,6 +2937,7 @@ export const createBillScenario: API.OperationMethod<
     DataUnavailableException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateBillScenario",
 }));
 export type GetBillScenarioError =
   | DataUnavailableException
@@ -2940,6 +2955,7 @@ export const getBillScenario: API.OperationMethod<
   input: GetBillScenarioRequest,
   output: GetBillScenarioResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  operationName: "GetBillScenario",
 }));
 export type UpdateBillScenarioError =
   | ConflictException
@@ -2962,6 +2978,7 @@ export const updateBillScenario: API.OperationMethod<
     DataUnavailableException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateBillScenario",
 }));
 export type DeleteBillScenarioError =
   | ConflictException
@@ -2979,6 +2996,7 @@ export const deleteBillScenario: API.OperationMethod<
   input: DeleteBillScenarioRequest,
   output: DeleteBillScenarioResponse,
   errors: [ConflictException, DataUnavailableException],
+  operationName: "DeleteBillScenario",
 }));
 export type ListBillScenariosError = DataUnavailableException | CommonErrors;
 /**
@@ -3008,6 +3026,7 @@ export const listBillScenarios: API.OperationMethod<
   input: ListBillScenariosRequest,
   output: ListBillScenariosResponse,
   errors: [DataUnavailableException],
+  operationName: "ListBillScenarios",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3046,6 +3065,7 @@ export const listBillScenarioCommitmentModifications: API.OperationMethod<
   input: ListBillScenarioCommitmentModificationsRequest,
   output: ListBillScenarioCommitmentModificationsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  operationName: "ListBillScenarioCommitmentModifications",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3076,6 +3096,7 @@ export const batchCreateBillScenarioCommitmentModification: API.OperationMethod<
     DataUnavailableException,
     ResourceNotFoundException,
   ],
+  operationName: "BatchCreateBillScenarioCommitmentModification",
 }));
 export type BatchDeleteBillScenarioCommitmentModificationError =
   | ConflictException
@@ -3100,6 +3121,7 @@ export const batchDeleteBillScenarioCommitmentModification: API.OperationMethod<
     DataUnavailableException,
     ResourceNotFoundException,
   ],
+  operationName: "BatchDeleteBillScenarioCommitmentModification",
 }));
 export type BatchUpdateBillScenarioCommitmentModificationError =
   | ConflictException
@@ -3124,6 +3146,7 @@ export const batchUpdateBillScenarioCommitmentModification: API.OperationMethod<
     DataUnavailableException,
     ResourceNotFoundException,
   ],
+  operationName: "BatchUpdateBillScenarioCommitmentModification",
 }));
 export type ListBillScenarioUsageModificationsError =
   | DataUnavailableException
@@ -3156,6 +3179,7 @@ export const listBillScenarioUsageModifications: API.OperationMethod<
   input: ListBillScenarioUsageModificationsRequest,
   output: ListBillScenarioUsageModificationsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  operationName: "ListBillScenarioUsageModifications",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3188,6 +3212,7 @@ export const batchCreateBillScenarioUsageModification: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "BatchCreateBillScenarioUsageModification",
 }));
 export type BatchDeleteBillScenarioUsageModificationError =
   | ConflictException
@@ -3214,6 +3239,7 @@ export const batchDeleteBillScenarioUsageModification: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "BatchDeleteBillScenarioUsageModification",
 }));
 export type BatchUpdateBillScenarioUsageModificationError =
   | ConflictException
@@ -3240,6 +3266,7 @@ export const batchUpdateBillScenarioUsageModification: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "BatchUpdateBillScenarioUsageModification",
 }));
 export type CreateWorkloadEstimateError =
   | ConflictException
@@ -3262,6 +3289,7 @@ export const createWorkloadEstimate: API.OperationMethod<
     DataUnavailableException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateWorkloadEstimate",
 }));
 export type GetWorkloadEstimateError =
   | DataUnavailableException
@@ -3279,6 +3307,7 @@ export const getWorkloadEstimate: API.OperationMethod<
   input: GetWorkloadEstimateRequest,
   output: GetWorkloadEstimateResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  operationName: "GetWorkloadEstimate",
 }));
 export type UpdateWorkloadEstimateError =
   | ConflictException
@@ -3301,6 +3330,7 @@ export const updateWorkloadEstimate: API.OperationMethod<
     DataUnavailableException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateWorkloadEstimate",
 }));
 export type DeleteWorkloadEstimateError =
   | DataUnavailableException
@@ -3317,6 +3347,7 @@ export const deleteWorkloadEstimate: API.OperationMethod<
   input: DeleteWorkloadEstimateRequest,
   output: DeleteWorkloadEstimateResponse,
   errors: [DataUnavailableException],
+  operationName: "DeleteWorkloadEstimate",
 }));
 export type ListWorkloadEstimatesError =
   | DataUnavailableException
@@ -3348,6 +3379,7 @@ export const listWorkloadEstimates: API.OperationMethod<
   input: ListWorkloadEstimatesRequest,
   output: ListWorkloadEstimatesResponse,
   errors: [DataUnavailableException],
+  operationName: "ListWorkloadEstimates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3386,6 +3418,7 @@ export const listWorkloadEstimateUsage: API.OperationMethod<
   input: ListWorkloadEstimateUsageRequest,
   output: ListWorkloadEstimateUsageResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  operationName: "ListWorkloadEstimateUsage",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3418,6 +3451,7 @@ export const batchCreateWorkloadEstimateUsage: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "BatchCreateWorkloadEstimateUsage",
 }));
 export type BatchDeleteWorkloadEstimateUsageError =
   | DataUnavailableException
@@ -3442,6 +3476,7 @@ export const batchDeleteWorkloadEstimateUsage: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "BatchDeleteWorkloadEstimateUsage",
 }));
 export type BatchUpdateWorkloadEstimateUsageError =
   | DataUnavailableException
@@ -3466,4 +3501,5 @@ export const batchUpdateWorkloadEstimateUsage: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "BatchUpdateWorkloadEstimateUsage",
 }));

@@ -5651,6 +5651,7 @@ export const createAsset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAsset",
 }));
 export type CreateAssetFileError =
   | AccessDeniedException
@@ -5681,6 +5682,7 @@ export const createAssetFile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAssetFile",
 }));
 export type CreateBacklogTaskError =
   | AccessDeniedException
@@ -5709,6 +5711,7 @@ export const createBacklogTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateBacklogTask",
 }));
 export type CreateChatError =
   | InternalServerException
@@ -5733,6 +5736,7 @@ export const createChat: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateChat",
 }));
 export type CreateTriggerError =
   | AccessDeniedException
@@ -5761,6 +5765,7 @@ export const createTrigger: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateTrigger",
 }));
 export type DeleteAssetError =
   | AccessDeniedException
@@ -5789,6 +5794,7 @@ export const deleteAsset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAsset",
 }));
 export type DeleteAssetFileError =
   | AccessDeniedException
@@ -5815,6 +5821,7 @@ export const deleteAssetFile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAssetFile",
 }));
 export type DeleteTriggerError =
   | AccessDeniedException
@@ -5843,6 +5850,7 @@ export const deleteTrigger: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteTrigger",
 }));
 export type GetAccountUsageError =
   | AccessDeniedException
@@ -5869,6 +5877,7 @@ export const getAccountUsage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAccountUsage",
 }));
 export type GetAssetError =
   | AccessDeniedException
@@ -5895,6 +5904,7 @@ export const getAsset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAsset",
 }));
 export type GetAssetContentError =
   | AccessDeniedException
@@ -5921,6 +5931,7 @@ export const getAssetContent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAssetContent",
 }));
 export type GetAssetFileError =
   | AccessDeniedException
@@ -5947,6 +5958,7 @@ export const getAssetFile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAssetFile",
 }));
 export type GetBacklogTaskError =
   | AccessDeniedException
@@ -5975,6 +5987,7 @@ export const getBacklogTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetBacklogTask",
 }));
 export type GetRecommendationError =
   | AccessDeniedException
@@ -6001,6 +6014,7 @@ export const getRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRecommendation",
 }));
 export type GetTriggerError =
   | AccessDeniedException
@@ -6027,6 +6041,7 @@ export const getTrigger: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTrigger",
 }));
 export type ListAssetFilesError =
   | AccessDeniedException
@@ -6068,6 +6083,7 @@ export const listAssetFiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAssetFiles",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6113,6 +6129,7 @@ export const listAssets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAssets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6158,6 +6175,7 @@ export const listAssetTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAssetTypes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6205,6 +6223,7 @@ export const listAssetVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAssetVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6250,6 +6269,7 @@ export const listBacklogTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBacklogTasks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6280,6 +6300,7 @@ export const listChats: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListChats",
 }));
 export type ListExecutionsError =
   | AccessDeniedException
@@ -6321,6 +6342,7 @@ export const listExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListExecutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6366,6 +6388,7 @@ export const listGoals: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListGoals",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6413,6 +6436,7 @@ export const listJournalRecords: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListJournalRecords",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6445,6 +6469,7 @@ export const listPendingMessages: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPendingMessages",
 }));
 export type ListRecommendationsError =
   | AccessDeniedException
@@ -6469,6 +6494,7 @@ export const listRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRecommendations",
 }));
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -6493,6 +6519,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTriggersError =
   | AccessDeniedException
@@ -6534,6 +6561,7 @@ export const listTriggers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTriggers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6568,6 +6596,7 @@ export const sendMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendMessage",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -6592,6 +6621,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -6616,6 +6646,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAssetError =
   | AccessDeniedException
@@ -6644,6 +6675,7 @@ export const updateAsset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAsset",
 }));
 export type UpdateAssetFileError =
   | AccessDeniedException
@@ -6674,6 +6706,7 @@ export const updateAssetFile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAssetFile",
 }));
 export type UpdateBacklogTaskError =
   | AccessDeniedException
@@ -6702,6 +6735,7 @@ export const updateBacklogTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateBacklogTask",
 }));
 export type UpdateGoalError =
   | AccessDeniedException
@@ -6730,6 +6764,7 @@ export const updateGoal: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateGoal",
 }));
 export type UpdateRecommendationError =
   | AccessDeniedException
@@ -6758,6 +6793,7 @@ export const updateRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRecommendation",
 }));
 export type UpdateTriggerError =
   | AccessDeniedException
@@ -6784,6 +6820,7 @@ export const updateTrigger: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateTrigger",
 }));
 export type CreateAgentSpaceError =
   | ConflictException
@@ -6812,6 +6849,7 @@ export const createAgentSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAgentSpace",
 }));
 export type GetAgentSpaceError =
   | InternalServerException
@@ -6836,6 +6874,7 @@ export const getAgentSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAgentSpace",
 }));
 export type UpdateAgentSpaceError =
   | ConflictException
@@ -6862,6 +6901,7 @@ export const updateAgentSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAgentSpace",
 }));
 export type DeleteAgentSpaceError =
   | ConflictException
@@ -6888,6 +6928,7 @@ export const deleteAgentSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAgentSpace",
 }));
 export type DisableOperatorAppError =
   | IdentityCenterServiceException
@@ -6912,6 +6953,7 @@ export const disableOperatorApp: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisableOperatorApp",
 }));
 export type EnableOperatorAppError =
   | IdentityCenterServiceException
@@ -6936,6 +6978,7 @@ export const enableOperatorApp: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "EnableOperatorApp",
 }));
 export type GetOperatorAppError =
   | InternalServerException
@@ -6954,6 +6997,7 @@ export const getOperatorApp: API.OperationMethod<
   input: GetOperatorAppInput,
   output: GetOperatorAppOutput,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "GetOperatorApp",
 }));
 export type UpdateOperatorAppIdpConfigError =
   | InternalServerException
@@ -6978,6 +7022,7 @@ export const updateOperatorAppIdpConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateOperatorAppIdpConfig",
 }));
 export type ListAgentSpacesError =
   | InternalServerException
@@ -7011,6 +7056,7 @@ export const listAgentSpaces: API.OperationMethod<
   input: ListAgentSpacesInput,
   output: ListAgentSpacesOutput,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "ListAgentSpaces",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7045,6 +7091,7 @@ export const associateService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateService",
 }));
 export type GetAssociationError =
   | InternalServerException
@@ -7069,6 +7116,7 @@ export const getAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAssociation",
 }));
 export type UpdateAssociationError =
   | InternalServerException
@@ -7093,6 +7141,7 @@ export const updateAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAssociation",
 }));
 export type DisassociateServiceError =
   | InternalServerException
@@ -7117,6 +7166,7 @@ export const disassociateService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateService",
 }));
 export type ListWebhooksError =
   | InternalServerException
@@ -7141,6 +7191,7 @@ export const listWebhooks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListWebhooks",
 }));
 export type ListAssociationsError =
   | InternalServerException
@@ -7180,6 +7231,7 @@ export const listAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAssociations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7210,6 +7262,7 @@ export const validateAwsAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ValidateAwsAssociations",
 }));
 export type CreatePrivateConnectionError =
   | AccessDeniedException
@@ -7234,6 +7287,7 @@ export const createPrivateConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreatePrivateConnection",
 }));
 export type DescribePrivateConnectionError =
   | AccessDeniedException
@@ -7260,6 +7314,7 @@ export const describePrivateConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribePrivateConnection",
 }));
 export type DeletePrivateConnectionError =
   | AccessDeniedException
@@ -7286,6 +7341,7 @@ export const deletePrivateConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePrivateConnection",
 }));
 export type ListPrivateConnectionsError =
   | AccessDeniedException
@@ -7310,6 +7366,7 @@ export const listPrivateConnections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPrivateConnections",
 }));
 export type UpdatePrivateConnectionCertificateError =
   | AccessDeniedException
@@ -7336,6 +7393,7 @@ export const updatePrivateConnectionCertificate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdatePrivateConnectionCertificate",
 }));
 export type RegisterServiceError =
   | InternalServerException
@@ -7360,6 +7418,7 @@ export const registerService: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "RegisterService",
 }));
 export type GetServiceError =
   | InternalServerException
@@ -7384,6 +7443,7 @@ export const getService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetService",
 }));
 export type DeregisterServiceError =
   | ConflictException
@@ -7410,6 +7470,7 @@ export const deregisterService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeregisterService",
 }));
 export type ListServicesError =
   | InternalServerException
@@ -7443,6 +7504,7 @@ export const listServices: API.OperationMethod<
   input: ListServicesInput,
   output: ListServicesOutput,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "ListServices",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

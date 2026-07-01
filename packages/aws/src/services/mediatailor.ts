@@ -3561,6 +3561,7 @@ export const configureLogsForPlaybackConfiguration: API.OperationMethod<
   input: ConfigureLogsForPlaybackConfigurationRequest,
   output: ConfigureLogsForPlaybackConfigurationResponse,
   errors: [],
+  operationName: "ConfigureLogsForPlaybackConfiguration",
 }));
 export type ListAlertsError = CommonErrors;
 /**
@@ -3590,6 +3591,7 @@ export const listAlerts: API.OperationMethod<
   input: ListAlertsRequest,
   output: ListAlertsResponse,
   errors: [],
+  operationName: "ListAlerts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3610,6 +3612,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [BadRequestException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError = BadRequestException | CommonErrors;
 /**
@@ -3624,6 +3627,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [BadRequestException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = BadRequestException | CommonErrors;
 /**
@@ -3638,6 +3642,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [BadRequestException],
+  operationName: "UntagResource",
 }));
 export type CreateChannelError = CommonErrors;
 /**
@@ -3652,6 +3657,7 @@ export const createChannel: API.OperationMethod<
   input: CreateChannelRequest,
   output: CreateChannelResponse,
   errors: [],
+  operationName: "CreateChannel",
 }));
 export type DescribeChannelError = CommonErrors;
 /**
@@ -3666,6 +3672,7 @@ export const describeChannel: API.OperationMethod<
   input: DescribeChannelRequest,
   output: DescribeChannelResponse,
   errors: [],
+  operationName: "DescribeChannel",
 }));
 export type UpdateChannelError = CommonErrors;
 /**
@@ -3680,6 +3687,7 @@ export const updateChannel: API.OperationMethod<
   input: UpdateChannelRequest,
   output: UpdateChannelResponse,
   errors: [],
+  operationName: "UpdateChannel",
 }));
 export type DeleteChannelError = CommonErrors;
 /**
@@ -3694,6 +3702,7 @@ export const deleteChannel: API.OperationMethod<
   input: DeleteChannelRequest,
   output: DeleteChannelResponse,
   errors: [],
+  operationName: "DeleteChannel",
 }));
 export type ListChannelsError = CommonErrors;
 /**
@@ -3723,6 +3732,7 @@ export const listChannels: API.OperationMethod<
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [],
+  operationName: "ListChannels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3743,6 +3753,7 @@ export const configureLogsForChannel: API.OperationMethod<
   input: ConfigureLogsForChannelRequest,
   output: ConfigureLogsForChannelResponse,
   errors: [],
+  operationName: "ConfigureLogsForChannel",
 }));
 export type GetChannelScheduleError = CommonErrors;
 /**
@@ -3772,6 +3783,7 @@ export const getChannelSchedule: API.OperationMethod<
   input: GetChannelScheduleRequest,
   output: GetChannelScheduleResponse,
   errors: [],
+  operationName: "GetChannelSchedule",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3792,6 +3804,7 @@ export const startChannel: API.OperationMethod<
   input: StartChannelRequest,
   output: StartChannelResponse,
   errors: [],
+  operationName: "StartChannel",
 }));
 export type StopChannelError = CommonErrors;
 /**
@@ -3806,6 +3819,7 @@ export const stopChannel: API.OperationMethod<
   input: StopChannelRequest,
   output: StopChannelResponse,
   errors: [],
+  operationName: "StopChannel",
 }));
 export type PutChannelPolicyError = CommonErrors;
 /**
@@ -3820,6 +3834,7 @@ export const putChannelPolicy: API.OperationMethod<
   input: PutChannelPolicyRequest,
   output: PutChannelPolicyResponse,
   errors: [],
+  operationName: "PutChannelPolicy",
 }));
 export type GetChannelPolicyError = CommonErrors;
 /**
@@ -3834,6 +3849,7 @@ export const getChannelPolicy: API.OperationMethod<
   input: GetChannelPolicyRequest,
   output: GetChannelPolicyResponse,
   errors: [],
+  operationName: "GetChannelPolicy",
 }));
 export type DeleteChannelPolicyError = CommonErrors;
 /**
@@ -3848,6 +3864,7 @@ export const deleteChannelPolicy: API.OperationMethod<
   input: DeleteChannelPolicyRequest,
   output: DeleteChannelPolicyResponse,
   errors: [],
+  operationName: "DeleteChannelPolicy",
 }));
 export type CreateProgramError = CommonErrors;
 /**
@@ -3862,6 +3879,7 @@ export const createProgram: API.OperationMethod<
   input: CreateProgramRequest,
   output: CreateProgramResponse,
   errors: [],
+  operationName: "CreateProgram",
 }));
 export type DescribeProgramError = CommonErrors;
 /**
@@ -3876,6 +3894,7 @@ export const describeProgram: API.OperationMethod<
   input: DescribeProgramRequest,
   output: DescribeProgramResponse,
   errors: [],
+  operationName: "DescribeProgram",
 }));
 export type UpdateProgramError = CommonErrors;
 /**
@@ -3890,6 +3909,7 @@ export const updateProgram: API.OperationMethod<
   input: UpdateProgramRequest,
   output: UpdateProgramResponse,
   errors: [],
+  operationName: "UpdateProgram",
 }));
 export type DeleteProgramError = CommonErrors;
 /**
@@ -3904,6 +3924,7 @@ export const deleteProgram: API.OperationMethod<
   input: DeleteProgramRequest,
   output: DeleteProgramResponse,
   errors: [],
+  operationName: "DeleteProgram",
 }));
 export type PutFunctionError = CommonErrors;
 /**
@@ -3918,6 +3939,7 @@ export const putFunction: API.OperationMethod<
   input: PutFunctionRequest,
   output: PutFunctionResponse,
   errors: [],
+  operationName: "PutFunction",
 }));
 export type GetFunctionError = CommonErrors;
 /**
@@ -3932,6 +3954,7 @@ export const getFunction: API.OperationMethod<
   input: GetFunctionRequest,
   output: GetFunctionResponse,
   errors: [],
+  operationName: "GetFunction",
 }));
 export type DeleteFunctionError = CommonErrors;
 /**
@@ -3946,6 +3969,7 @@ export const deleteFunction: API.OperationMethod<
   input: DeleteFunctionRequest,
   output: DeleteFunctionResponse,
   errors: [],
+  operationName: "DeleteFunction",
 }));
 export type ListFunctionsError = CommonErrors;
 /**
@@ -3975,6 +3999,7 @@ export const listFunctions: API.OperationMethod<
   input: ListFunctionsRequest,
   output: ListFunctionsResponse,
   errors: [],
+  operationName: "ListFunctions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3995,6 +4020,7 @@ export const createLiveSource: API.OperationMethod<
   input: CreateLiveSourceRequest,
   output: CreateLiveSourceResponse,
   errors: [],
+  operationName: "CreateLiveSource",
 }));
 export type DescribeLiveSourceError = CommonErrors;
 /**
@@ -4009,6 +4035,7 @@ export const describeLiveSource: API.OperationMethod<
   input: DescribeLiveSourceRequest,
   output: DescribeLiveSourceResponse,
   errors: [],
+  operationName: "DescribeLiveSource",
 }));
 export type UpdateLiveSourceError = CommonErrors;
 /**
@@ -4023,6 +4050,7 @@ export const updateLiveSource: API.OperationMethod<
   input: UpdateLiveSourceRequest,
   output: UpdateLiveSourceResponse,
   errors: [],
+  operationName: "UpdateLiveSource",
 }));
 export type DeleteLiveSourceError = CommonErrors;
 /**
@@ -4037,6 +4065,7 @@ export const deleteLiveSource: API.OperationMethod<
   input: DeleteLiveSourceRequest,
   output: DeleteLiveSourceResponse,
   errors: [],
+  operationName: "DeleteLiveSource",
 }));
 export type ListLiveSourcesError = CommonErrors;
 /**
@@ -4066,6 +4095,7 @@ export const listLiveSources: API.OperationMethod<
   input: ListLiveSourcesRequest,
   output: ListLiveSourcesResponse,
   errors: [],
+  operationName: "ListLiveSources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4086,6 +4116,7 @@ export const putPlaybackConfiguration: API.OperationMethod<
   input: PutPlaybackConfigurationRequest,
   output: PutPlaybackConfigurationResponse,
   errors: [],
+  operationName: "PutPlaybackConfiguration",
 }));
 export type GetPlaybackConfigurationError = CommonErrors;
 /**
@@ -4100,6 +4131,7 @@ export const getPlaybackConfiguration: API.OperationMethod<
   input: GetPlaybackConfigurationRequest,
   output: GetPlaybackConfigurationResponse,
   errors: [],
+  operationName: "GetPlaybackConfiguration",
 }));
 export type DeletePlaybackConfigurationError = CommonErrors;
 /**
@@ -4114,6 +4146,7 @@ export const deletePlaybackConfiguration: API.OperationMethod<
   input: DeletePlaybackConfigurationRequest,
   output: DeletePlaybackConfigurationResponse,
   errors: [],
+  operationName: "DeletePlaybackConfiguration",
 }));
 export type ListPlaybackConfigurationsError = CommonErrors;
 /**
@@ -4143,6 +4176,7 @@ export const listPlaybackConfigurations: API.OperationMethod<
   input: ListPlaybackConfigurationsRequest,
   output: ListPlaybackConfigurationsResponse,
   errors: [],
+  operationName: "ListPlaybackConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4163,6 +4197,7 @@ export const createPrefetchSchedule: API.OperationMethod<
   input: CreatePrefetchScheduleRequest,
   output: CreatePrefetchScheduleResponse,
   errors: [],
+  operationName: "CreatePrefetchSchedule",
 }));
 export type GetPrefetchScheduleError = CommonErrors;
 /**
@@ -4177,6 +4212,7 @@ export const getPrefetchSchedule: API.OperationMethod<
   input: GetPrefetchScheduleRequest,
   output: GetPrefetchScheduleResponse,
   errors: [],
+  operationName: "GetPrefetchSchedule",
 }));
 export type DeletePrefetchScheduleError = CommonErrors;
 /**
@@ -4191,6 +4227,7 @@ export const deletePrefetchSchedule: API.OperationMethod<
   input: DeletePrefetchScheduleRequest,
   output: DeletePrefetchScheduleResponse,
   errors: [],
+  operationName: "DeletePrefetchSchedule",
 }));
 export type ListPrefetchSchedulesError = CommonErrors;
 /**
@@ -4220,6 +4257,7 @@ export const listPrefetchSchedules: API.OperationMethod<
   input: ListPrefetchSchedulesRequest,
   output: ListPrefetchSchedulesResponse,
   errors: [],
+  operationName: "ListPrefetchSchedules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4240,6 +4278,7 @@ export const createSourceLocation: API.OperationMethod<
   input: CreateSourceLocationRequest,
   output: CreateSourceLocationResponse,
   errors: [],
+  operationName: "CreateSourceLocation",
 }));
 export type DescribeSourceLocationError = CommonErrors;
 /**
@@ -4254,6 +4293,7 @@ export const describeSourceLocation: API.OperationMethod<
   input: DescribeSourceLocationRequest,
   output: DescribeSourceLocationResponse,
   errors: [],
+  operationName: "DescribeSourceLocation",
 }));
 export type UpdateSourceLocationError = CommonErrors;
 /**
@@ -4268,6 +4308,7 @@ export const updateSourceLocation: API.OperationMethod<
   input: UpdateSourceLocationRequest,
   output: UpdateSourceLocationResponse,
   errors: [],
+  operationName: "UpdateSourceLocation",
 }));
 export type DeleteSourceLocationError = CommonErrors;
 /**
@@ -4282,6 +4323,7 @@ export const deleteSourceLocation: API.OperationMethod<
   input: DeleteSourceLocationRequest,
   output: DeleteSourceLocationResponse,
   errors: [],
+  operationName: "DeleteSourceLocation",
 }));
 export type ListSourceLocationsError = CommonErrors;
 /**
@@ -4311,6 +4353,7 @@ export const listSourceLocations: API.OperationMethod<
   input: ListSourceLocationsRequest,
   output: ListSourceLocationsResponse,
   errors: [],
+  operationName: "ListSourceLocations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4331,6 +4374,7 @@ export const createVodSource: API.OperationMethod<
   input: CreateVodSourceRequest,
   output: CreateVodSourceResponse,
   errors: [],
+  operationName: "CreateVodSource",
 }));
 export type DescribeVodSourceError = CommonErrors;
 /**
@@ -4345,6 +4389,7 @@ export const describeVodSource: API.OperationMethod<
   input: DescribeVodSourceRequest,
   output: DescribeVodSourceResponse,
   errors: [],
+  operationName: "DescribeVodSource",
 }));
 export type UpdateVodSourceError = CommonErrors;
 /**
@@ -4359,6 +4404,7 @@ export const updateVodSource: API.OperationMethod<
   input: UpdateVodSourceRequest,
   output: UpdateVodSourceResponse,
   errors: [],
+  operationName: "UpdateVodSource",
 }));
 export type DeleteVodSourceError = CommonErrors;
 /**
@@ -4373,6 +4419,7 @@ export const deleteVodSource: API.OperationMethod<
   input: DeleteVodSourceRequest,
   output: DeleteVodSourceResponse,
   errors: [],
+  operationName: "DeleteVodSource",
 }));
 export type ListVodSourcesError = CommonErrors;
 /**
@@ -4402,6 +4449,7 @@ export const listVodSources: API.OperationMethod<
   input: ListVodSourcesRequest,
   output: ListVodSourcesResponse,
   errors: [],
+  operationName: "ListVodSources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

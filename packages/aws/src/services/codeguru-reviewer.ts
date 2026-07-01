@@ -1221,6 +1221,7 @@ export const associateRepository: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateRepository",
 }));
 export type CreateCodeReviewError =
   | AccessDeniedException
@@ -1252,6 +1253,7 @@ export const createCodeReview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateCodeReview",
 }));
 export type DescribeCodeReviewError =
   | AccessDeniedException
@@ -1278,6 +1280,7 @@ export const describeCodeReview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeCodeReview",
 }));
 export type DescribeRecommendationFeedbackError =
   | AccessDeniedException
@@ -1304,6 +1307,7 @@ export const describeRecommendationFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeRecommendationFeedback",
 }));
 export type DescribeRepositoryAssociationError =
   | AccessDeniedException
@@ -1331,6 +1335,7 @@ export const describeRepositoryAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeRepositoryAssociation",
 }));
 export type DisassociateRepositoryError =
   | AccessDeniedException
@@ -1359,6 +1364,7 @@ export const disassociateRepository: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateRepository",
 }));
 export type ListCodeReviewsError =
   | AccessDeniedException
@@ -1398,6 +1404,7 @@ export const listCodeReviews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCodeReviews",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1445,6 +1452,7 @@ export const listRecommendationFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRecommendationFeedback",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1491,6 +1499,7 @@ export const listRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRecommendations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1530,6 +1539,7 @@ export const listRepositoryAssociations: API.OperationMethod<
   input: ListRepositoryAssociationsRequest,
   output: ListRepositoryAssociationsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "ListRepositoryAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1558,6 +1568,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutRecommendationFeedbackError =
   | AccessDeniedException
@@ -1585,6 +1596,7 @@ export const putRecommendationFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutRecommendationFeedback",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -1607,6 +1619,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -1629,4 +1642,5 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));

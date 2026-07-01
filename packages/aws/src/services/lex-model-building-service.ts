@@ -2729,6 +2729,7 @@ export const createBotVersion: API.OperationMethod<
     NotFoundException,
     PreconditionFailedException,
   ],
+  operationName: "CreateBotVersion",
 }));
 export type CreateIntentVersionError =
   | BadRequestException
@@ -2771,6 +2772,7 @@ export const createIntentVersion: API.OperationMethod<
     NotFoundException,
     PreconditionFailedException,
   ],
+  operationName: "CreateIntentVersion",
 }));
 export type CreateSlotTypeVersionError =
   | BadRequestException
@@ -2813,6 +2815,7 @@ export const createSlotTypeVersion: API.OperationMethod<
     NotFoundException,
     PreconditionFailedException,
   ],
+  operationName: "CreateSlotTypeVersion",
 }));
 export type DeleteBotError =
   | BadRequestException
@@ -2859,6 +2862,7 @@ export const deleteBot: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  operationName: "DeleteBot",
 }));
 export type DeleteBotAliasError =
   | BadRequestException
@@ -2896,6 +2900,7 @@ export const deleteBotAlias: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  operationName: "DeleteBotAlias",
 }));
 export type DeleteBotChannelAssociationError =
   | BadRequestException
@@ -2926,6 +2931,7 @@ export const deleteBotChannelAssociation: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "DeleteBotChannelAssociation",
 }));
 export type DeleteBotVersionError =
   | BadRequestException
@@ -2958,6 +2964,7 @@ export const deleteBotVersion: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  operationName: "DeleteBotVersion",
 }));
 export type DeleteIntentError =
   | BadRequestException
@@ -3003,6 +3010,7 @@ export const deleteIntent: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  operationName: "DeleteIntent",
 }));
 export type DeleteIntentVersionError =
   | BadRequestException
@@ -3035,6 +3043,7 @@ export const deleteIntentVersion: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  operationName: "DeleteIntentVersion",
 }));
 export type DeleteSlotTypeError =
   | BadRequestException
@@ -3080,6 +3089,7 @@ export const deleteSlotType: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  operationName: "DeleteSlotType",
 }));
 export type DeleteSlotTypeVersionError =
   | BadRequestException
@@ -3112,6 +3122,7 @@ export const deleteSlotTypeVersion: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  operationName: "DeleteSlotTypeVersion",
 }));
 export type DeleteUtterancesError =
   | BadRequestException
@@ -3150,6 +3161,7 @@ export const deleteUtterances: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "DeleteUtterances",
 }));
 export type GetBotError =
   | BadRequestException
@@ -3178,6 +3190,7 @@ export const getBot: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetBot",
 }));
 export type GetBotAliasError =
   | BadRequestException
@@ -3206,6 +3219,7 @@ export const getBotAlias: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetBotAlias",
 }));
 export type GetBotAliasesError =
   | BadRequestException
@@ -3246,6 +3260,7 @@ export const getBotAliases: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "GetBotAliases",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3279,6 +3294,7 @@ export const getBotChannelAssociation: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetBotChannelAssociation",
 }));
 export type GetBotChannelAssociationsError =
   | BadRequestException
@@ -3321,6 +3337,7 @@ export const getBotChannelAssociations: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "GetBotChannelAssociations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3376,6 +3393,7 @@ export const getBots: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetBots",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3433,6 +3451,7 @@ export const getBotVersions: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetBotVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3465,6 +3484,7 @@ export const getBuiltinIntent: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetBuiltinIntent",
 }));
 export type GetBuiltinIntentsError =
   | BadRequestException
@@ -3506,6 +3526,7 @@ export const getBuiltinIntents: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "GetBuiltinIntents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3555,6 +3576,7 @@ export const getBuiltinSlotTypes: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "GetBuiltinSlotTypes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3584,6 +3606,7 @@ export const getExport: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetExport",
 }));
 export type GetImportError =
   | BadRequestException
@@ -3609,6 +3632,7 @@ export const getImport: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetImport",
 }));
 export type GetIntentError =
   | BadRequestException
@@ -3637,6 +3661,7 @@ export const getIntent: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetIntent",
 }));
 export type GetIntentsError =
   | BadRequestException
@@ -3687,6 +3712,7 @@ export const getIntents: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetIntents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3744,6 +3770,7 @@ export const getIntentVersions: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetIntentVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3775,6 +3802,7 @@ export const getMigration: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetMigration",
 }));
 export type GetMigrationsError =
   | BadRequestException
@@ -3812,6 +3840,7 @@ export const getMigrations: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "GetMigrations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3846,6 +3875,7 @@ export const getSlotType: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetSlotType",
 }));
 export type GetSlotTypesError =
   | BadRequestException
@@ -3896,6 +3926,7 @@ export const getSlotTypes: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetSlotTypes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3953,6 +3984,7 @@ export const getSlotTypeVersions: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "GetSlotTypeVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4008,6 +4040,7 @@ export const getUtterancesView: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "GetUtterancesView",
 }));
 export type ListTagsForResourceError =
   | BadRequestException
@@ -4033,6 +4066,7 @@ export const listTagsForResource: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutBotError =
   | BadRequestException
@@ -4077,6 +4111,7 @@ export const putBot: API.OperationMethod<
     LimitExceededException,
     PreconditionFailedException,
   ],
+  operationName: "PutBot",
 }));
 export type PutBotAliasError =
   | BadRequestException
@@ -4109,6 +4144,7 @@ export const putBotAlias: API.OperationMethod<
     LimitExceededException,
     PreconditionFailedException,
   ],
+  operationName: "PutBotAlias",
 }));
 export type PutIntentError =
   | BadRequestException
@@ -4186,6 +4222,7 @@ export const putIntent: API.OperationMethod<
     LimitExceededException,
     PreconditionFailedException,
   ],
+  operationName: "PutIntent",
 }));
 export type PutSlotTypeError =
   | BadRequestException
@@ -4229,6 +4266,7 @@ export const putSlotType: API.OperationMethod<
     LimitExceededException,
     PreconditionFailedException,
   ],
+  operationName: "PutSlotType",
 }));
 export type StartImportError =
   | BadRequestException
@@ -4251,6 +4289,7 @@ export const startImport: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  operationName: "StartImport",
 }));
 export type StartMigrationError =
   | AccessDeniedException
@@ -4281,6 +4320,7 @@ export const startMigration: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "StartMigration",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -4308,6 +4348,7 @@ export const tagResource: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -4334,4 +4375,5 @@ export const untagResource: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "UntagResource",
 }));

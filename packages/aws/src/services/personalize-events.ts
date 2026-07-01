@@ -373,6 +373,7 @@ export const putActionInteractions: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "PutActionInteractions",
 }));
 export type PutActionsError =
   | InvalidInputException
@@ -396,6 +397,7 @@ export const putActions: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "PutActions",
 }));
 export type PutEventsError = InvalidInputException | CommonErrors;
 /**
@@ -411,6 +413,7 @@ export const putEvents: API.OperationMethod<
   input: PutEventsRequest,
   output: PutEventsResponse,
   errors: [InvalidInputException],
+  operationName: "PutEvents",
 }));
 export type PutItemsError =
   | InvalidInputException
@@ -434,6 +437,7 @@ export const putItems: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "PutItems",
 }));
 export type PutUsersError =
   | InvalidInputException
@@ -457,4 +461,5 @@ export const putUsers: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "PutUsers",
 }));

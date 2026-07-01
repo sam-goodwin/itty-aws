@@ -368,6 +368,7 @@ export const listRealtimeContactAnalysisSegments: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListRealtimeContactAnalysisSegments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

@@ -7859,6 +7859,7 @@ export const addProfileKey: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AddProfileKey",
 }));
 export type BatchGetCalculatedAttributeForProfileError =
   | AccessDeniedException
@@ -7885,6 +7886,7 @@ export const batchGetCalculatedAttributeForProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "BatchGetCalculatedAttributeForProfile",
 }));
 export type BatchGetProfileError =
   | AccessDeniedException
@@ -7911,6 +7913,7 @@ export const batchGetProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "BatchGetProfile",
 }));
 export type BatchPutProfileObjectError =
   | AccessDeniedException
@@ -7949,6 +7952,7 @@ export const batchPutProfileObject: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "BatchPutProfileObject",
 }));
 export type CreateCalculatedAttributeDefinitionError =
   | AccessDeniedException
@@ -7980,6 +7984,7 @@ export const createCalculatedAttributeDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateCalculatedAttributeDefinition",
 }));
 export type CreateDomainError =
   | AccessDeniedException
@@ -8025,6 +8030,7 @@ export const createDomain: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateDomain",
 }));
 export type CreateDomainLayoutError =
   | AccessDeniedException
@@ -8052,6 +8058,7 @@ export const createDomainLayout: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateDomainLayout",
 }));
 export type CreateEventStreamError =
   | AccessDeniedException
@@ -8082,6 +8089,7 @@ export const createEventStream: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateEventStream",
 }));
 export type CreateEventTriggerError =
   | AccessDeniedException
@@ -8112,6 +8120,7 @@ export const createEventTrigger: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateEventTrigger",
 }));
 export type CreateIntegrationWorkflowError =
   | AccessDeniedException
@@ -8139,6 +8148,7 @@ export const createIntegrationWorkflow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateIntegrationWorkflow",
 }));
 export type CreateProfileError =
   | AccessDeniedException
@@ -8168,6 +8178,7 @@ export const createProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateProfile",
 }));
 export type CreateRecommenderError =
   | AccessDeniedException
@@ -8194,6 +8205,7 @@ export const createRecommender: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateRecommender",
 }));
 export type CreateRecommenderFilterError =
   | AccessDeniedException
@@ -8220,6 +8232,7 @@ export const createRecommenderFilter: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateRecommenderFilter",
 }));
 export type CreateRecommenderSchemaError =
   | AccessDeniedException
@@ -8246,6 +8259,7 @@ export const createRecommenderSchema: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateRecommenderSchema",
 }));
 export type CreateSegmentDefinitionError =
   | AccessDeniedException
@@ -8272,6 +8286,7 @@ export const createSegmentDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateSegmentDefinition",
 }));
 export type CreateSegmentEstimateError =
   | AccessDeniedException
@@ -8298,6 +8313,7 @@ export const createSegmentEstimate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateSegmentEstimate",
 }));
 export type CreateSegmentSnapshotError =
   | AccessDeniedException
@@ -8324,6 +8340,7 @@ export const createSegmentSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateSegmentSnapshot",
 }));
 export type CreateUploadJobError =
   | AccessDeniedException
@@ -8351,6 +8368,7 @@ export const createUploadJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateUploadJob",
 }));
 export type DeleteCalculatedAttributeDefinitionError =
   | AccessDeniedException
@@ -8380,6 +8398,7 @@ export const deleteCalculatedAttributeDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteCalculatedAttributeDefinition",
 }));
 export type DeleteDomainError =
   | AccessDeniedException
@@ -8407,6 +8426,7 @@ export const deleteDomain: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteDomain",
 }));
 export type DeleteDomainLayoutError =
   | AccessDeniedException
@@ -8434,6 +8454,7 @@ export const deleteDomainLayout: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteDomainLayout",
 }));
 export type DeleteDomainObjectTypeError =
   | AccessDeniedException
@@ -8460,6 +8481,7 @@ export const deleteDomainObjectType: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteDomainObjectType",
 }));
 export type DeleteEventStreamError =
   | AccessDeniedException
@@ -8486,6 +8508,7 @@ export const deleteEventStream: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteEventStream",
 }));
 export type DeleteEventTriggerError =
   | AccessDeniedException
@@ -8514,6 +8537,7 @@ export const deleteEventTrigger: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteEventTrigger",
 }));
 export type DeleteIntegrationError =
   | AccessDeniedException
@@ -8540,6 +8564,7 @@ export const deleteIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteIntegration",
 }));
 export type DeleteProfileError =
   | AccessDeniedException
@@ -8566,6 +8591,7 @@ export const deleteProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteProfile",
 }));
 export type DeleteProfileKeyError =
   | AccessDeniedException
@@ -8592,6 +8618,7 @@ export const deleteProfileKey: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteProfileKey",
 }));
 export type DeleteProfileObjectError =
   | AccessDeniedException
@@ -8618,6 +8645,7 @@ export const deleteProfileObject: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteProfileObject",
 }));
 export type DeleteProfileObjectTypeError =
   | AccessDeniedException
@@ -8647,6 +8675,7 @@ export const deleteProfileObjectType: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteProfileObjectType",
 }));
 export type DeleteRecommenderError =
   | AccessDeniedException
@@ -8673,6 +8702,7 @@ export const deleteRecommender: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteRecommender",
 }));
 export type DeleteRecommenderFilterError =
   | AccessDeniedException
@@ -8699,6 +8729,7 @@ export const deleteRecommenderFilter: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteRecommenderFilter",
 }));
 export type DeleteRecommenderSchemaError =
   | AccessDeniedException
@@ -8725,6 +8756,7 @@ export const deleteRecommenderSchema: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteRecommenderSchema",
 }));
 export type DeleteSegmentDefinitionError =
   | AccessDeniedException
@@ -8751,6 +8783,7 @@ export const deleteSegmentDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteSegmentDefinition",
 }));
 export type DeleteWorkflowError =
   | AccessDeniedException
@@ -8778,6 +8811,7 @@ export const deleteWorkflow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteWorkflow",
 }));
 export type DetectProfileObjectTypeError =
   | AccessDeniedException
@@ -8804,6 +8838,7 @@ export const detectProfileObjectType: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DetectProfileObjectType",
 }));
 export type GetAutoMergingPreviewError =
   | AccessDeniedException
@@ -8842,6 +8877,7 @@ export const getAutoMergingPreview: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetAutoMergingPreview",
 }));
 export type GetCalculatedAttributeDefinitionError =
   | AccessDeniedException
@@ -8869,6 +8905,7 @@ export const getCalculatedAttributeDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetCalculatedAttributeDefinition",
 }));
 export type GetCalculatedAttributeForProfileError =
   | AccessDeniedException
@@ -8895,6 +8932,7 @@ export const getCalculatedAttributeForProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetCalculatedAttributeForProfile",
 }));
 export type GetDomainError =
   | AccessDeniedException
@@ -8921,6 +8959,7 @@ export const getDomain: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetDomain",
 }));
 export type GetDomainLayoutError =
   | AccessDeniedException
@@ -8948,6 +8987,7 @@ export const getDomainLayout: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetDomainLayout",
 }));
 export type GetDomainObjectTypeError =
   | AccessDeniedException
@@ -8974,6 +9014,7 @@ export const getDomainObjectType: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetDomainObjectType",
 }));
 export type GetEventStreamError =
   | AccessDeniedException
@@ -9000,6 +9041,7 @@ export const getEventStream: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetEventStream",
 }));
 export type GetEventTriggerError =
   | AccessDeniedException
@@ -9026,6 +9068,7 @@ export const getEventTrigger: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetEventTrigger",
 }));
 export type GetIdentityResolutionJobError =
   | AccessDeniedException
@@ -9055,6 +9098,7 @@ export const getIdentityResolutionJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetIdentityResolutionJob",
 }));
 export type GetIntegrationError =
   | AccessDeniedException
@@ -9081,6 +9125,7 @@ export const getIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetIntegration",
 }));
 export type GetMatchesError =
   | AccessDeniedException
@@ -9144,6 +9189,7 @@ export const getMatches: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetMatches",
 }));
 export type GetObjectTypeAttributeStatisticsError =
   | AccessDeniedException
@@ -9176,6 +9222,7 @@ export const getObjectTypeAttributeStatistics: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetObjectTypeAttributeStatistics",
 }));
 export type GetProfileHistoryRecordError =
   | AccessDeniedException
@@ -9202,6 +9249,7 @@ export const getProfileHistoryRecord: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetProfileHistoryRecord",
 }));
 export type GetProfileObjectTypeError =
   | AccessDeniedException
@@ -9228,6 +9276,7 @@ export const getProfileObjectType: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetProfileObjectType",
 }));
 export type GetProfileObjectTypeTemplateError =
   | AccessDeniedException
@@ -9259,6 +9308,7 @@ export const getProfileObjectTypeTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetProfileObjectTypeTemplate",
 }));
 export type GetProfileRecommendationsError =
   | AccessDeniedException
@@ -9285,6 +9335,7 @@ export const getProfileRecommendations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetProfileRecommendations",
 }));
 export type GetRecommenderError =
   | AccessDeniedException
@@ -9311,6 +9362,7 @@ export const getRecommender: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetRecommender",
 }));
 export type GetRecommenderFilterError =
   | AccessDeniedException
@@ -9337,6 +9389,7 @@ export const getRecommenderFilter: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetRecommenderFilter",
 }));
 export type GetRecommenderSchemaError =
   | AccessDeniedException
@@ -9363,6 +9416,7 @@ export const getRecommenderSchema: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetRecommenderSchema",
 }));
 export type GetSegmentDefinitionError =
   | AccessDeniedException
@@ -9389,6 +9443,7 @@ export const getSegmentDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetSegmentDefinition",
 }));
 export type GetSegmentEstimateError =
   | AccessDeniedException
@@ -9415,6 +9470,7 @@ export const getSegmentEstimate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetSegmentEstimate",
 }));
 export type GetSegmentMembershipError =
   | AccessDeniedException
@@ -9441,6 +9497,7 @@ export const getSegmentMembership: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetSegmentMembership",
 }));
 export type GetSegmentSnapshotError =
   | AccessDeniedException
@@ -9467,6 +9524,7 @@ export const getSegmentSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetSegmentSnapshot",
 }));
 export type GetSimilarProfilesError =
   | AccessDeniedException
@@ -9511,6 +9569,7 @@ export const getSimilarProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetSimilarProfiles",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9543,6 +9602,7 @@ export const getUploadJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetUploadJob",
 }));
 export type GetUploadJobPathError =
   | AccessDeniedException
@@ -9570,6 +9630,7 @@ export const getUploadJobPath: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetUploadJobPath",
 }));
 export type GetWorkflowError =
   | AccessDeniedException
@@ -9596,6 +9657,7 @@ export const getWorkflow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetWorkflow",
 }));
 export type GetWorkflowStepsError =
   | AccessDeniedException
@@ -9622,6 +9684,7 @@ export const getWorkflowSteps: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetWorkflowSteps",
 }));
 export type ListAccountIntegrationsError =
   | AccessDeniedException
@@ -9648,6 +9711,7 @@ export const listAccountIntegrations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListAccountIntegrations",
 }));
 export type ListCalculatedAttributeDefinitionsError =
   | AccessDeniedException
@@ -9674,6 +9738,7 @@ export const listCalculatedAttributeDefinitions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListCalculatedAttributeDefinitions",
 }));
 export type ListCalculatedAttributesForProfileError =
   | AccessDeniedException
@@ -9700,6 +9765,7 @@ export const listCalculatedAttributesForProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListCalculatedAttributesForProfile",
 }));
 export type ListDomainLayoutsError =
   | AccessDeniedException
@@ -9742,6 +9808,7 @@ export const listDomainLayouts: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListDomainLayouts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9789,6 +9856,7 @@ export const listDomainObjectTypes: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListDomainObjectTypes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9821,6 +9889,7 @@ export const listDomains: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListDomains",
 }));
 export type ListEventStreamsError =
   | AccessDeniedException
@@ -9862,6 +9931,7 @@ export const listEventStreams: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListEventStreams",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9909,6 +9979,7 @@ export const listEventTriggers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListEventTriggers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9942,6 +10013,7 @@ export const listIdentityResolutionJobs: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListIdentityResolutionJobs",
 }));
 export type ListIntegrationsError =
   | AccessDeniedException
@@ -9968,6 +10040,7 @@ export const listIntegrations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListIntegrations",
 }));
 export type ListObjectTypeAttributesError =
   | AccessDeniedException
@@ -10009,6 +10082,7 @@ export const listObjectTypeAttributes: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListObjectTypeAttributes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10041,6 +10115,7 @@ export const listObjectTypeAttributeValues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListObjectTypeAttributeValues",
 }));
 export type ListProfileAttributeValuesError =
   | AccessDeniedException
@@ -10067,6 +10142,7 @@ export const listProfileAttributeValues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListProfileAttributeValues",
 }));
 export type ListProfileHistoryRecordsError =
   | AccessDeniedException
@@ -10093,6 +10169,7 @@ export const listProfileHistoryRecords: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListProfileHistoryRecords",
 }));
 export type ListProfileObjectsError =
   | AccessDeniedException
@@ -10119,6 +10196,7 @@ export const listProfileObjects: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListProfileObjects",
 }));
 export type ListProfileObjectTypesError =
   | AccessDeniedException
@@ -10145,6 +10223,7 @@ export const listProfileObjectTypes: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListProfileObjectTypes",
 }));
 export type ListProfileObjectTypeTemplatesError =
   | AccessDeniedException
@@ -10171,6 +10250,7 @@ export const listProfileObjectTypeTemplates: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListProfileObjectTypeTemplates",
 }));
 export type ListRecommenderFiltersError =
   | AccessDeniedException
@@ -10212,6 +10292,7 @@ export const listRecommenderFilters: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListRecommenderFilters",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10257,6 +10338,7 @@ export const listRecommenderRecipes: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
   ],
+  operationName: "ListRecommenderRecipes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10304,6 +10386,7 @@ export const listRecommenders: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListRecommenders",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10351,6 +10434,7 @@ export const listRecommenderSchemas: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListRecommenderSchemas",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10398,6 +10482,7 @@ export const listRuleBasedMatches: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListRuleBasedMatches",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10445,6 +10530,7 @@ export const listSegmentDefinitions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListSegmentDefinitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10474,6 +10560,7 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListUploadJobsError =
   | AccessDeniedException
@@ -10515,6 +10602,7 @@ export const listUploadJobs: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListUploadJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10547,6 +10635,7 @@ export const listWorkflows: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListWorkflows",
 }));
 export type MergeProfilesError =
   | BadRequestException
@@ -10599,6 +10688,7 @@ export const mergeProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "MergeProfiles",
 }));
 export type PutDomainObjectTypeError =
   | AccessDeniedException
@@ -10625,6 +10715,7 @@ export const putDomainObjectType: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "PutDomainObjectType",
 }));
 export type PutIntegrationError =
   | AccessDeniedException
@@ -10658,6 +10749,7 @@ export const putIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "PutIntegration",
 }));
 export type PutProfileObjectError =
   | AccessDeniedException
@@ -10696,6 +10788,7 @@ export const putProfileObject: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "PutProfileObject",
 }));
 export type PutProfileObjectTypeError =
   | AccessDeniedException
@@ -10725,6 +10818,7 @@ export const putProfileObjectType: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "PutProfileObjectType",
 }));
 export type SearchProfilesError =
   | AccessDeniedException
@@ -10757,6 +10851,7 @@ export const searchProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchProfiles",
 }));
 export type StartRecommenderError =
   | AccessDeniedException
@@ -10783,6 +10878,7 @@ export const startRecommender: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "StartRecommender",
 }));
 export type StartUploadJobError =
   | AccessDeniedException
@@ -10809,6 +10905,7 @@ export const startUploadJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "StartUploadJob",
 }));
 export type StopRecommenderError =
   | AccessDeniedException
@@ -10835,6 +10932,7 @@ export const stopRecommender: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "StopRecommender",
 }));
 export type StopUploadJobError =
   | AccessDeniedException
@@ -10861,6 +10959,7 @@ export const stopUploadJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "StopUploadJob",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -10897,6 +10996,7 @@ export const tagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -10920,6 +11020,7 @@ export const untagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateCalculatedAttributeDefinitionError =
   | AccessDeniedException
@@ -10948,6 +11049,7 @@ export const updateCalculatedAttributeDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateCalculatedAttributeDefinition",
 }));
 export type UpdateDomainError =
   | AccessDeniedException
@@ -10986,6 +11088,7 @@ export const updateDomain: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateDomain",
 }));
 export type UpdateDomainLayoutError =
   | AccessDeniedException
@@ -11013,6 +11116,7 @@ export const updateDomainLayout: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateDomainLayout",
 }));
 export type UpdateEventTriggerError =
   | AccessDeniedException
@@ -11039,6 +11143,7 @@ export const updateEventTrigger: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateEventTrigger",
 }));
 export type UpdateProfileError =
   | AccessDeniedException
@@ -11070,6 +11175,7 @@ export const updateProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateProfile",
 }));
 export type UpdateRecommenderError =
   | AccessDeniedException
@@ -11096,4 +11202,5 @@ export const updateRecommender: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateRecommender",
 }));

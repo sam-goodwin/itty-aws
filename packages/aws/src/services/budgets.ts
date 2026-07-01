@@ -1631,6 +1631,7 @@ export const createBudget: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateBudget",
 }));
 export type CreateBudgetActionError =
   | AccessDeniedException
@@ -1663,6 +1664,7 @@ export const createBudgetAction: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateBudgetAction",
 }));
 export type CreateNotificationError =
   | AccessDeniedException
@@ -1693,6 +1695,7 @@ export const createNotification: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateNotification",
 }));
 export type CreateSubscriberError =
   | AccessDeniedException
@@ -1723,6 +1726,7 @@ export const createSubscriber: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateSubscriber",
 }));
 export type DeleteBudgetError =
   | AccessDeniedException
@@ -1751,6 +1755,7 @@ export const deleteBudget: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteBudget",
 }));
 export type DeleteBudgetActionError =
   | AccessDeniedException
@@ -1779,6 +1784,7 @@ export const deleteBudgetAction: API.OperationMethod<
     ResourceLockedException,
     ThrottlingException,
   ],
+  operationName: "DeleteBudgetAction",
 }));
 export type DeleteNotificationError =
   | AccessDeniedException
@@ -1807,6 +1813,7 @@ export const deleteNotification: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteNotification",
 }));
 export type DeleteSubscriberError =
   | AccessDeniedException
@@ -1835,6 +1842,7 @@ export const deleteSubscriber: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteSubscriber",
 }));
 export type DescribeBudgetError =
   | AccessDeniedException
@@ -1864,6 +1872,7 @@ export const describeBudget: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeBudget",
 }));
 export type DescribeBudgetActionError =
   | AccessDeniedException
@@ -1890,6 +1899,7 @@ export const describeBudgetAction: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeBudgetAction",
 }));
 export type DescribeBudgetActionHistoriesError =
   | AccessDeniedException
@@ -1933,6 +1943,7 @@ export const describeBudgetActionHistories: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeBudgetActionHistories",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1980,6 +1991,7 @@ export const describeBudgetActionsForAccount: API.OperationMethod<
     InvalidParameterException,
     ThrottlingException,
   ],
+  operationName: "DescribeBudgetActionsForAccount",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2029,6 +2041,7 @@ export const describeBudgetActionsForBudget: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeBudgetActionsForBudget",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2080,6 +2093,7 @@ export const describeBudgetNotificationsForAccount: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeBudgetNotificationsForAccount",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2133,6 +2147,7 @@ export const describeBudgetPerformanceHistory: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeBudgetPerformanceHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2186,6 +2201,7 @@ export const describeBudgets: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeBudgets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2237,6 +2253,7 @@ export const describeNotificationsForBudget: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeNotificationsForBudget",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2288,6 +2305,7 @@ export const describeSubscribersForNotification: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeSubscribersForNotification",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2322,6 +2340,7 @@ export const executeBudgetAction: API.OperationMethod<
     ResourceLockedException,
     ThrottlingException,
   ],
+  operationName: "ExecuteBudgetAction",
 }));
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -2348,6 +2367,7 @@ export const listTagsForResource: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2376,6 +2396,7 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2402,6 +2423,7 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateBudgetError =
   | AccessDeniedException
@@ -2444,6 +2466,7 @@ export const updateBudget: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "UpdateBudget",
 }));
 export type UpdateBudgetActionError =
   | AccessDeniedException
@@ -2472,6 +2495,7 @@ export const updateBudgetAction: API.OperationMethod<
     ResourceLockedException,
     ThrottlingException,
   ],
+  operationName: "UpdateBudgetAction",
 }));
 export type UpdateNotificationError =
   | AccessDeniedException
@@ -2500,6 +2524,7 @@ export const updateNotification: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateNotification",
 }));
 export type UpdateSubscriberError =
   | AccessDeniedException
@@ -2528,4 +2553,5 @@ export const updateSubscriber: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateSubscriber",
 }));

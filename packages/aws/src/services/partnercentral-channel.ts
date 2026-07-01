@@ -1546,6 +1546,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1574,6 +1575,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1602,6 +1604,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateChannelHandshakeError =
   | AccessDeniedException
@@ -1632,6 +1635,7 @@ export const createChannelHandshake: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateChannelHandshake",
 }));
 export type ListChannelHandshakesError =
   | AccessDeniedException
@@ -1673,6 +1677,7 @@ export const listChannelHandshakes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListChannelHandshakes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1705,6 +1710,7 @@ export const acceptChannelHandshake: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AcceptChannelHandshake",
 }));
 export type CancelChannelHandshakeError =
   | AccessDeniedException
@@ -1731,6 +1737,7 @@ export const cancelChannelHandshake: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelChannelHandshake",
 }));
 export type RejectChannelHandshakeError =
   | AccessDeniedException
@@ -1757,6 +1764,7 @@ export const rejectChannelHandshake: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RejectChannelHandshake",
 }));
 export type CreateProgramManagementAccountError =
   | AccessDeniedException
@@ -1787,6 +1795,7 @@ export const createProgramManagementAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateProgramManagementAccount",
 }));
 export type UpdateProgramManagementAccountError =
   | AccessDeniedException
@@ -1815,6 +1824,7 @@ export const updateProgramManagementAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateProgramManagementAccount",
 }));
 export type DeleteProgramManagementAccountError =
   | AccessDeniedException
@@ -1843,6 +1853,7 @@ export const deleteProgramManagementAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteProgramManagementAccount",
 }));
 export type ListProgramManagementAccountsError =
   | AccessDeniedException
@@ -1884,6 +1895,7 @@ export const listProgramManagementAccounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListProgramManagementAccounts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1920,6 +1932,7 @@ export const createRelationship: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRelationship",
 }));
 export type GetRelationshipError =
   | AccessDeniedException
@@ -1946,6 +1959,7 @@ export const getRelationship: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRelationship",
 }));
 export type UpdateRelationshipError =
   | AccessDeniedException
@@ -1974,6 +1988,7 @@ export const updateRelationship: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRelationship",
 }));
 export type DeleteRelationshipError =
   | AccessDeniedException
@@ -2002,6 +2017,7 @@ export const deleteRelationship: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRelationship",
 }));
 export type ListRelationshipsError =
   | AccessDeniedException
@@ -2043,6 +2059,7 @@ export const listRelationships: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRelationships",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

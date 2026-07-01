@@ -3115,6 +3115,7 @@ export const createExtendedSourceServer: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "CreateExtendedSourceServer",
 }));
 export type DeleteLaunchActionError =
   | InternalServerException
@@ -3141,6 +3142,7 @@ export const deleteLaunchAction: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "DeleteLaunchAction",
 }));
 export type InitializeServiceError =
   | AccessDeniedException
@@ -3165,6 +3167,7 @@ export const initializeService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InitializeService",
 }));
 export type ListExtensibleSourceServersError =
   | AccessDeniedException
@@ -3206,6 +3209,7 @@ export const listExtensibleSourceServers: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "ListExtensibleSourceServers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3253,6 +3257,7 @@ export const listLaunchActions: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "ListLaunchActions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3300,6 +3305,7 @@ export const listStagingAccounts: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "ListStagingAccounts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3332,6 +3338,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutLaunchActionError =
   | ConflictException
@@ -3360,6 +3367,7 @@ export const putLaunchAction: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "PutLaunchAction",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -3386,6 +3394,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -3412,6 +3421,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type DeleteJobError =
   | ConflictException
@@ -3438,6 +3448,7 @@ export const deleteJob: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "DeleteJob",
 }));
 export type DescribeJobsError =
   | InternalServerException
@@ -3477,6 +3488,7 @@ export const describeJobs: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "DescribeJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3522,6 +3534,7 @@ export const describeJobLogItems: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "DescribeJobLogItems",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3556,6 +3569,7 @@ export const createLaunchConfigurationTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "CreateLaunchConfigurationTemplate",
 }));
 export type UpdateLaunchConfigurationTemplateError =
   | AccessDeniedException
@@ -3584,6 +3598,7 @@ export const updateLaunchConfigurationTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "UpdateLaunchConfigurationTemplate",
 }));
 export type DeleteLaunchConfigurationTemplateError =
   | ConflictException
@@ -3610,6 +3625,7 @@ export const deleteLaunchConfigurationTemplate: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "DeleteLaunchConfigurationTemplate",
 }));
 export type DescribeLaunchConfigurationTemplatesError =
   | InternalServerException
@@ -3651,6 +3667,7 @@ export const describeLaunchConfigurationTemplates: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "DescribeLaunchConfigurationTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3696,6 +3713,7 @@ export const describeRecoveryInstances: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "DescribeRecoveryInstances",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3728,6 +3746,7 @@ export const deleteRecoveryInstance: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "DeleteRecoveryInstance",
 }));
 export type DisconnectRecoveryInstanceError =
   | AccessDeniedException
@@ -3756,6 +3775,7 @@ export const disconnectRecoveryInstance: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "DisconnectRecoveryInstance",
 }));
 export type GetFailbackReplicationConfigurationError =
   | InternalServerException
@@ -3780,6 +3800,7 @@ export const getFailbackReplicationConfiguration: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "GetFailbackReplicationConfiguration",
 }));
 export type ReverseReplicationError =
   | AccessDeniedException
@@ -3810,6 +3831,7 @@ export const reverseReplication: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "ReverseReplication",
 }));
 export type StopFailbackError =
   | InternalServerException
@@ -3834,6 +3856,7 @@ export const stopFailback: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "StopFailback",
 }));
 export type UpdateFailbackReplicationConfigurationError =
   | AccessDeniedException
@@ -3860,6 +3883,7 @@ export const updateFailbackReplicationConfiguration: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "UpdateFailbackReplicationConfiguration",
 }));
 export type StartFailbackLaunchError =
   | ConflictException
@@ -3888,6 +3912,7 @@ export const startFailbackLaunch: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "StartFailbackLaunch",
 }));
 export type TerminateRecoveryInstancesError =
   | ConflictException
@@ -3914,6 +3939,7 @@ export const terminateRecoveryInstances: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "TerminateRecoveryInstances",
 }));
 export type CreateReplicationConfigurationTemplateError =
   | AccessDeniedException
@@ -3942,6 +3968,7 @@ export const createReplicationConfigurationTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "CreateReplicationConfigurationTemplate",
 }));
 export type UpdateReplicationConfigurationTemplateError =
   | AccessDeniedException
@@ -3970,6 +3997,7 @@ export const updateReplicationConfigurationTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "UpdateReplicationConfigurationTemplate",
 }));
 export type DeleteReplicationConfigurationTemplateError =
   | ConflictException
@@ -3996,6 +4024,7 @@ export const deleteReplicationConfigurationTemplate: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "DeleteReplicationConfigurationTemplate",
 }));
 export type DescribeReplicationConfigurationTemplatesError =
   | InternalServerException
@@ -4037,6 +4066,7 @@ export const describeReplicationConfigurationTemplates: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "DescribeReplicationConfigurationTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4073,6 +4103,7 @@ export const createSourceNetwork: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "CreateSourceNetwork",
 }));
 export type DeleteSourceNetworkError =
   | ConflictException
@@ -4099,6 +4130,7 @@ export const deleteSourceNetwork: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "DeleteSourceNetwork",
 }));
 export type DescribeSourceNetworksError =
   | InternalServerException
@@ -4138,6 +4170,7 @@ export const describeSourceNetworks: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "DescribeSourceNetworks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4174,6 +4207,7 @@ export const associateSourceNetworkStack: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "AssociateSourceNetworkStack",
 }));
 export type ExportSourceNetworkCfnTemplateError =
   | ConflictException
@@ -4202,6 +4236,7 @@ export const exportSourceNetworkCfnTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "ExportSourceNetworkCfnTemplate",
 }));
 export type StartSourceNetworkReplicationError =
   | ConflictException
@@ -4228,6 +4263,7 @@ export const startSourceNetworkReplication: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "StartSourceNetworkReplication",
 }));
 export type StopSourceNetworkReplicationError =
   | ConflictException
@@ -4256,6 +4292,7 @@ export const stopSourceNetworkReplication: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "StopSourceNetworkReplication",
 }));
 export type StartSourceNetworkRecoveryError =
   | ConflictException
@@ -4284,6 +4321,7 @@ export const startSourceNetworkRecovery: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "StartSourceNetworkRecovery",
 }));
 export type DeleteSourceServerError =
   | ConflictException
@@ -4310,6 +4348,7 @@ export const deleteSourceServer: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "DeleteSourceServer",
 }));
 export type DescribeSourceServersError =
   | InternalServerException
@@ -4349,6 +4388,7 @@ export const describeSourceServers: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "DescribeSourceServers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4396,6 +4436,7 @@ export const describeRecoverySnapshots: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "DescribeRecoverySnapshots",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4428,6 +4469,7 @@ export const disconnectSourceServer: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "DisconnectSourceServer",
 }));
 export type GetLaunchConfigurationError =
   | InternalServerException
@@ -4452,6 +4494,7 @@ export const getLaunchConfiguration: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "GetLaunchConfiguration",
 }));
 export type GetReplicationConfigurationError =
   | AccessDeniedException
@@ -4478,6 +4521,7 @@ export const getReplicationConfiguration: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "GetReplicationConfiguration",
 }));
 export type RetryDataReplicationError =
   | InternalServerException
@@ -4504,6 +4548,7 @@ export const retryDataReplication: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "RetryDataReplication",
 }));
 export type StartReplicationError =
   | ConflictException
@@ -4530,6 +4575,7 @@ export const startReplication: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "StartReplication",
 }));
 export type StopReplicationError =
   | ConflictException
@@ -4556,6 +4602,7 @@ export const stopReplication: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "StopReplication",
 }));
 export type UpdateLaunchConfigurationError =
   | ConflictException
@@ -4584,6 +4631,7 @@ export const updateLaunchConfiguration: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "UpdateLaunchConfiguration",
 }));
 export type UpdateReplicationConfigurationError =
   | AccessDeniedException
@@ -4614,6 +4662,7 @@ export const updateReplicationConfiguration: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "UpdateReplicationConfiguration",
 }));
 export type StartRecoveryError =
   | ConflictException
@@ -4640,4 +4689,5 @@ export const startRecovery: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  operationName: "StartRecovery",
 }));

@@ -1065,6 +1065,7 @@ export const batchAcknowledgeAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "BatchAcknowledgeAlarm",
 }));
 export type BatchDeleteDetectorError =
   | InternalFailureException
@@ -1089,6 +1090,7 @@ export const batchDeleteDetector: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "BatchDeleteDetector",
 }));
 export type BatchDisableAlarmError =
   | InternalFailureException
@@ -1114,6 +1116,7 @@ export const batchDisableAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "BatchDisableAlarm",
 }));
 export type BatchEnableAlarmError =
   | InternalFailureException
@@ -1139,6 +1142,7 @@ export const batchEnableAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "BatchEnableAlarm",
 }));
 export type BatchPutMessageError =
   | InternalFailureException
@@ -1167,6 +1171,7 @@ export const batchPutMessage: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "BatchPutMessage",
 }));
 export type BatchResetAlarmError =
   | InternalFailureException
@@ -1192,6 +1197,7 @@ export const batchResetAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "BatchResetAlarm",
 }));
 export type BatchSnoozeAlarmError =
   | InternalFailureException
@@ -1217,6 +1223,7 @@ export const batchSnoozeAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "BatchSnoozeAlarm",
 }));
 export type BatchUpdateDetectorError =
   | InternalFailureException
@@ -1242,6 +1249,7 @@ export const batchUpdateDetector: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "BatchUpdateDetector",
 }));
 export type DescribeAlarmError =
   | InternalFailureException
@@ -1268,6 +1276,7 @@ export const describeAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeAlarm",
 }));
 export type DescribeDetectorError =
   | InternalFailureException
@@ -1294,6 +1303,7 @@ export const describeDetector: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeDetector",
 }));
 export type ListAlarmsError =
   | InternalFailureException
@@ -1321,6 +1331,7 @@ export const listAlarms: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListAlarms",
 }));
 export type ListDetectorsError =
   | InternalFailureException
@@ -1347,4 +1358,5 @@ export const listDetectors: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListDetectors",
 }));

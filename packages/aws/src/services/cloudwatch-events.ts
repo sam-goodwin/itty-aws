@@ -3163,6 +3163,7 @@ export const activateEventSource: API.OperationMethod<
     OperationDisabledException,
     ResourceNotFoundException,
   ],
+  operationName: "ActivateEventSource",
 }));
 export type CancelReplayError =
   | ConcurrentModificationException
@@ -3187,6 +3188,7 @@ export const cancelReplay: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  operationName: "CancelReplay",
 }));
 export type CreateApiDestinationError =
   | InternalException
@@ -3212,6 +3214,7 @@ export const createApiDestination: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateApiDestination",
 }));
 export type CreateArchiveError =
   | ConcurrentModificationException
@@ -3244,6 +3247,7 @@ export const createArchive: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateArchive",
 }));
 export type CreateConnectionError =
   | InternalException
@@ -3267,6 +3271,7 @@ export const createConnection: API.OperationMethod<
     LimitExceededException,
     ResourceAlreadyExistsException,
   ],
+  operationName: "CreateConnection",
 }));
 export type CreateEventBusError =
   | ConcurrentModificationException
@@ -3299,6 +3304,7 @@ export const createEventBus: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateEventBus",
 }));
 export type CreatePartnerEventSourceError =
   | ConcurrentModificationException
@@ -3349,6 +3355,7 @@ export const createPartnerEventSource: API.OperationMethod<
     OperationDisabledException,
     ResourceAlreadyExistsException,
   ],
+  operationName: "CreatePartnerEventSource",
 }));
 export type DeactivateEventSourceError =
   | ConcurrentModificationException
@@ -3381,6 +3388,7 @@ export const deactivateEventSource: API.OperationMethod<
     OperationDisabledException,
     ResourceNotFoundException,
   ],
+  operationName: "DeactivateEventSource",
 }));
 export type DeauthorizeConnectionError =
   | ConcurrentModificationException
@@ -3404,6 +3412,7 @@ export const deauthorizeConnection: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  operationName: "DeauthorizeConnection",
 }));
 export type DeleteApiDestinationError =
   | ConcurrentModificationException
@@ -3426,6 +3435,7 @@ export const deleteApiDestination: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteApiDestination",
 }));
 export type DeleteArchiveError =
   | ConcurrentModificationException
@@ -3448,6 +3458,7 @@ export const deleteArchive: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteArchive",
 }));
 export type DeleteConnectionError =
   | ConcurrentModificationException
@@ -3470,6 +3481,7 @@ export const deleteConnection: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteConnection",
 }));
 export type DeleteEventBusError =
   | ConcurrentModificationException
@@ -3488,6 +3500,7 @@ export const deleteEventBus: API.OperationMethod<
   input: DeleteEventBusRequest,
   output: DeleteEventBusResponse,
   errors: [ConcurrentModificationException, InternalException],
+  operationName: "DeleteEventBus",
 }));
 export type DeletePartnerEventSourceError =
   | ConcurrentModificationException
@@ -3514,6 +3527,7 @@ export const deletePartnerEventSource: API.OperationMethod<
     InternalException,
     OperationDisabledException,
   ],
+  operationName: "DeletePartnerEventSource",
 }));
 export type DeleteRuleError =
   | ConcurrentModificationException
@@ -3552,6 +3566,7 @@ export const deleteRule: API.OperationMethod<
     ManagedRuleException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteRule",
 }));
 export type DescribeApiDestinationError =
   | InternalException
@@ -3569,6 +3584,7 @@ export const describeApiDestination: API.OperationMethod<
   input: DescribeApiDestinationRequest,
   output: DescribeApiDestinationResponse,
   errors: [InternalException, ResourceNotFoundException],
+  operationName: "DescribeApiDestination",
 }));
 export type DescribeArchiveError =
   | InternalException
@@ -3591,6 +3607,7 @@ export const describeArchive: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeArchive",
 }));
 export type DescribeConnectionError =
   | InternalException
@@ -3608,6 +3625,7 @@ export const describeConnection: API.OperationMethod<
   input: DescribeConnectionRequest,
   output: DescribeConnectionResponse,
   errors: [InternalException, ResourceNotFoundException],
+  operationName: "DescribeConnection",
 }));
 export type DescribeEventBusError =
   | InternalException
@@ -3633,6 +3651,7 @@ export const describeEventBus: API.OperationMethod<
   input: DescribeEventBusRequest,
   output: DescribeEventBusResponse,
   errors: [InternalException, ResourceNotFoundException],
+  operationName: "DescribeEventBus",
 }));
 export type DescribeEventSourceError =
   | InternalException
@@ -3656,6 +3675,7 @@ export const describeEventSource: API.OperationMethod<
     OperationDisabledException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeEventSource",
 }));
 export type DescribePartnerEventSourceError =
   | InternalException
@@ -3681,6 +3701,7 @@ export const describePartnerEventSource: API.OperationMethod<
     OperationDisabledException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribePartnerEventSource",
 }));
 export type DescribeReplayError =
   | InternalException
@@ -3706,6 +3727,7 @@ export const describeReplay: API.OperationMethod<
   input: DescribeReplayRequest,
   output: DescribeReplayResponse,
   errors: [InternalException, ResourceNotFoundException],
+  operationName: "DescribeReplay",
 }));
 export type DescribeRuleError =
   | InternalException
@@ -3726,6 +3748,7 @@ export const describeRule: API.OperationMethod<
   input: DescribeRuleRequest,
   output: DescribeRuleResponse,
   errors: [InternalException, ResourceNotFoundException],
+  operationName: "DescribeRule",
 }));
 export type DisableRuleError =
   | ConcurrentModificationException
@@ -3754,6 +3777,7 @@ export const disableRule: API.OperationMethod<
     ManagedRuleException,
     ResourceNotFoundException,
   ],
+  operationName: "DisableRule",
 }));
 export type EnableRuleError =
   | ConcurrentModificationException
@@ -3781,6 +3805,7 @@ export const enableRule: API.OperationMethod<
     ManagedRuleException,
     ResourceNotFoundException,
   ],
+  operationName: "EnableRule",
 }));
 export type ListApiDestinationsError = InternalException | CommonErrors;
 /**
@@ -3795,6 +3820,7 @@ export const listApiDestinations: API.OperationMethod<
   input: ListApiDestinationsRequest,
   output: ListApiDestinationsResponse,
   errors: [InternalException],
+  operationName: "ListApiDestinations",
 }));
 export type ListArchivesError =
   | InternalException
@@ -3813,6 +3839,7 @@ export const listArchives: API.OperationMethod<
   input: ListArchivesRequest,
   output: ListArchivesResponse,
   errors: [InternalException, ResourceNotFoundException],
+  operationName: "ListArchives",
 }));
 export type ListConnectionsError = InternalException | CommonErrors;
 /**
@@ -3827,6 +3854,7 @@ export const listConnections: API.OperationMethod<
   input: ListConnectionsRequest,
   output: ListConnectionsResponse,
   errors: [InternalException],
+  operationName: "ListConnections",
 }));
 export type ListEventBusesError = InternalException | CommonErrors;
 /**
@@ -3842,6 +3870,7 @@ export const listEventBuses: API.OperationMethod<
   input: ListEventBusesRequest,
   output: ListEventBusesResponse,
   errors: [InternalException],
+  operationName: "ListEventBuses",
 }));
 export type ListEventSourcesError =
   | InternalException
@@ -3860,6 +3889,7 @@ export const listEventSources: API.OperationMethod<
   input: ListEventSourcesRequest,
   output: ListEventSourcesResponse,
   errors: [InternalException, OperationDisabledException],
+  operationName: "ListEventSources",
 }));
 export type ListPartnerEventSourceAccountsError =
   | InternalException
@@ -3884,6 +3914,7 @@ export const listPartnerEventSourceAccounts: API.OperationMethod<
     OperationDisabledException,
     ResourceNotFoundException,
   ],
+  operationName: "ListPartnerEventSourceAccounts",
 }));
 export type ListPartnerEventSourcesError =
   | InternalException
@@ -3902,6 +3933,7 @@ export const listPartnerEventSources: API.OperationMethod<
   input: ListPartnerEventSourcesRequest,
   output: ListPartnerEventSourcesResponse,
   errors: [InternalException, OperationDisabledException],
+  operationName: "ListPartnerEventSources",
 }));
 export type ListReplaysError = InternalException | CommonErrors;
 /**
@@ -3917,6 +3949,7 @@ export const listReplays: API.OperationMethod<
   input: ListReplaysRequest,
   output: ListReplaysResponse,
   errors: [InternalException],
+  operationName: "ListReplays",
 }));
 export type ListRuleNamesByTargetError =
   | InternalException
@@ -3935,6 +3968,7 @@ export const listRuleNamesByTarget: API.OperationMethod<
   input: ListRuleNamesByTargetRequest,
   output: ListRuleNamesByTargetResponse,
   errors: [InternalException, ResourceNotFoundException],
+  operationName: "ListRuleNamesByTarget",
 }));
 export type ListRulesError =
   | InternalException
@@ -3956,6 +3990,7 @@ export const listRules: API.OperationMethod<
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [InternalException, ResourceNotFoundException],
+  operationName: "ListRules",
 }));
 export type ListTagsForResourceError =
   | InternalException
@@ -3974,6 +4009,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalException, ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type ListTargetsByRuleError =
   | InternalException
@@ -3991,6 +4027,7 @@ export const listTargetsByRule: API.OperationMethod<
   input: ListTargetsByRuleRequest,
   output: ListTargetsByRuleResponse,
   errors: [InternalException, ResourceNotFoundException],
+  operationName: "ListTargetsByRule",
 }));
 export type PutEventsError = InternalException | CommonErrors;
 /**
@@ -4005,6 +4042,7 @@ export const putEvents: API.OperationMethod<
   input: PutEventsRequest,
   output: PutEventsResponse,
   errors: [InternalException],
+  operationName: "PutEvents",
 }));
 export type PutPartnerEventsError =
   | InternalException
@@ -4023,6 +4061,7 @@ export const putPartnerEvents: API.OperationMethod<
   input: PutPartnerEventsRequest,
   output: PutPartnerEventsResponse,
   errors: [InternalException, OperationDisabledException],
+  operationName: "PutPartnerEvents",
 }));
 export type PutPermissionError =
   | ConcurrentModificationException
@@ -4069,6 +4108,7 @@ export const putPermission: API.OperationMethod<
     PolicyLengthExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "PutPermission",
 }));
 export type PutRuleError =
   | ConcurrentModificationException
@@ -4146,6 +4186,7 @@ export const putRule: API.OperationMethod<
     ManagedRuleException,
     ResourceNotFoundException,
   ],
+  operationName: "PutRule",
 }));
 export type PutTargetsError =
   | ConcurrentModificationException
@@ -4300,6 +4341,7 @@ export const putTargets: API.OperationMethod<
     ManagedRuleException,
     ResourceNotFoundException,
   ],
+  operationName: "PutTargets",
 }));
 export type RemovePermissionError =
   | ConcurrentModificationException
@@ -4327,6 +4369,7 @@ export const removePermission: API.OperationMethod<
     OperationDisabledException,
     ResourceNotFoundException,
   ],
+  operationName: "RemovePermission",
 }));
 export type RemoveTargetsError =
   | ConcurrentModificationException
@@ -4359,6 +4402,7 @@ export const removeTargets: API.OperationMethod<
     ManagedRuleException,
     ResourceNotFoundException,
   ],
+  operationName: "RemoveTargets",
 }));
 export type StartReplayError =
   | InternalException
@@ -4393,6 +4437,7 @@ export const startReplay: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  operationName: "StartReplay",
 }));
 export type TagResourceError =
   | ConcurrentModificationException
@@ -4430,6 +4475,7 @@ export const tagResource: API.OperationMethod<
     ManagedRuleException,
     ResourceNotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type TestEventPatternError =
   | InternalException
@@ -4452,6 +4498,7 @@ export const testEventPattern: API.OperationMethod<
   input: TestEventPatternRequest,
   output: TestEventPatternResponse,
   errors: [InternalException, InvalidEventPatternException],
+  operationName: "TestEventPattern",
 }));
 export type UntagResourceError =
   | ConcurrentModificationException
@@ -4477,6 +4524,7 @@ export const untagResource: API.OperationMethod<
     ManagedRuleException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateApiDestinationError =
   | ConcurrentModificationException
@@ -4501,6 +4549,7 @@ export const updateApiDestination: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateApiDestination",
 }));
 export type UpdateArchiveError =
   | ConcurrentModificationException
@@ -4527,6 +4576,7 @@ export const updateArchive: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateArchive",
 }));
 export type UpdateConnectionError =
   | ConcurrentModificationException
@@ -4551,4 +4601,5 @@ export const updateConnection: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateConnection",
 }));

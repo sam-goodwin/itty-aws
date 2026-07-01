@@ -821,6 +821,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | ResourceNotFoundException
@@ -844,6 +845,7 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ResourceNotFoundException
@@ -862,6 +864,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "UntagResource",
 }));
 export type StartSimulationError =
   | AccessDeniedException
@@ -893,6 +896,7 @@ export const startSimulation: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "StartSimulation",
 }));
 export type DescribeSimulationError =
   | AccessDeniedException
@@ -917,6 +921,7 @@ export const describeSimulation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeSimulation",
 }));
 export type StopSimulationError =
   | AccessDeniedException
@@ -946,6 +951,7 @@ export const stopSimulation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StopSimulation",
 }));
 export type DeleteSimulationError =
   | AccessDeniedException
@@ -975,6 +981,7 @@ export const deleteSimulation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteSimulation",
 }));
 export type ListSimulationsError =
   | AccessDeniedException
@@ -1008,6 +1015,7 @@ export const listSimulations: API.OperationMethod<
   input: ListSimulationsInput,
   output: ListSimulationsOutput,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListSimulations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1080,6 +1088,7 @@ export const createSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreateSnapshot",
 }));
 export type DeleteAppError =
   | AccessDeniedException
@@ -1106,6 +1115,7 @@ export const deleteApp: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteApp",
 }));
 export type DescribeAppError =
   | AccessDeniedException
@@ -1130,6 +1140,7 @@ export const describeApp: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeApp",
 }));
 export type ListAppsError =
   | AccessDeniedException
@@ -1169,6 +1180,7 @@ export const listApps: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListApps",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1200,6 +1212,7 @@ export const startApp: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "StartApp",
 }));
 export type StartClockError =
   | AccessDeniedException
@@ -1226,6 +1239,7 @@ export const startClock: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StartClock",
 }));
 export type StopAppError =
   | AccessDeniedException
@@ -1252,6 +1266,7 @@ export const stopApp: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StopApp",
 }));
 export type StopClockError =
   | AccessDeniedException
@@ -1278,4 +1293,5 @@ export const stopClock: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StopClock",
 }));

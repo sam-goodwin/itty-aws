@@ -1515,6 +1515,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1537,6 +1538,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1559,6 +1561,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateCaseError = CommonErrors;
 /**
@@ -1573,6 +1576,7 @@ export const createCase: API.OperationMethod<
   input: CreateCaseRequest,
   output: CreateCaseResponse,
   errors: [],
+  operationName: "CreateCase",
 }));
 export type GetCaseError = CommonErrors;
 /**
@@ -1587,6 +1591,7 @@ export const getCase: API.OperationMethod<
   input: GetCaseRequest,
   output: GetCaseResponse,
   errors: [],
+  operationName: "GetCase",
 }));
 export type UpdateCaseError = CommonErrors;
 /**
@@ -1601,6 +1606,7 @@ export const updateCase: API.OperationMethod<
   input: UpdateCaseRequest,
   output: UpdateCaseResponse,
   errors: [],
+  operationName: "UpdateCase",
 }));
 export type ListCasesError = CommonErrors;
 /**
@@ -1630,6 +1636,7 @@ export const listCases: API.OperationMethod<
   input: ListCasesRequest,
   output: ListCasesResponse,
   errors: [],
+  operationName: "ListCases",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1650,6 +1657,7 @@ export const closeCase: API.OperationMethod<
   input: CloseCaseRequest,
   output: CloseCaseResponse,
   errors: [],
+  operationName: "CloseCase",
 }));
 export type CreateCaseCommentError = CommonErrors;
 /**
@@ -1664,6 +1672,7 @@ export const createCaseComment: API.OperationMethod<
   input: CreateCaseCommentRequest,
   output: CreateCaseCommentResponse,
   errors: [],
+  operationName: "CreateCaseComment",
 }));
 export type GetCaseAttachmentDownloadUrlError = CommonErrors;
 /**
@@ -1678,6 +1687,7 @@ export const getCaseAttachmentDownloadUrl: API.OperationMethod<
   input: GetCaseAttachmentDownloadUrlRequest,
   output: GetCaseAttachmentDownloadUrlResponse,
   errors: [],
+  operationName: "GetCaseAttachmentDownloadUrl",
 }));
 export type GetCaseAttachmentUploadUrlError = CommonErrors;
 /**
@@ -1692,6 +1702,7 @@ export const getCaseAttachmentUploadUrl: API.OperationMethod<
   input: GetCaseAttachmentUploadUrlRequest,
   output: GetCaseAttachmentUploadUrlResponse,
   errors: [],
+  operationName: "GetCaseAttachmentUploadUrl",
 }));
 export type ListCaseEditsError = CommonErrors;
 /**
@@ -1721,6 +1732,7 @@ export const listCaseEdits: API.OperationMethod<
   input: ListCaseEditsRequest,
   output: ListCaseEditsResponse,
   errors: [],
+  operationName: "ListCaseEdits",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1756,6 +1768,7 @@ export const listComments: API.OperationMethod<
   input: ListCommentsRequest,
   output: ListCommentsResponse,
   errors: [],
+  operationName: "ListComments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1791,6 +1804,7 @@ export const listInvestigations: API.OperationMethod<
   input: ListInvestigationsRequest,
   output: ListInvestigationsResponse,
   errors: [],
+  operationName: "ListInvestigations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1811,6 +1825,7 @@ export const sendFeedback: API.OperationMethod<
   input: SendFeedbackRequest,
   output: SendFeedbackResponse,
   errors: [],
+  operationName: "SendFeedback",
 }));
 export type UpdateCaseCommentError = CommonErrors;
 /**
@@ -1825,6 +1840,7 @@ export const updateCaseComment: API.OperationMethod<
   input: UpdateCaseCommentRequest,
   output: UpdateCaseCommentResponse,
   errors: [],
+  operationName: "UpdateCaseComment",
 }));
 export type UpdateCaseStatusError = CommonErrors;
 /**
@@ -1859,6 +1875,7 @@ export const updateCaseStatus: API.OperationMethod<
   input: UpdateCaseStatusRequest,
   output: UpdateCaseStatusResponse,
   errors: [],
+  operationName: "UpdateCaseStatus",
 }));
 export type UpdateResolverTypeError = CommonErrors;
 /**
@@ -1875,6 +1892,7 @@ export const updateResolverType: API.OperationMethod<
   input: UpdateResolverTypeRequest,
   output: UpdateResolverTypeResponse,
   errors: [],
+  operationName: "UpdateResolverType",
 }));
 export type CreateMembershipError = CommonErrors;
 /**
@@ -1889,6 +1907,7 @@ export const createMembership: API.OperationMethod<
   input: CreateMembershipRequest,
   output: CreateMembershipResponse,
   errors: [],
+  operationName: "CreateMembership",
 }));
 export type GetMembershipError = CommonErrors;
 /**
@@ -1903,6 +1922,7 @@ export const getMembership: API.OperationMethod<
   input: GetMembershipRequest,
   output: GetMembershipResponse,
   errors: [],
+  operationName: "GetMembership",
 }));
 export type UpdateMembershipError = CommonErrors;
 /**
@@ -1917,6 +1937,7 @@ export const updateMembership: API.OperationMethod<
   input: UpdateMembershipRequest,
   output: UpdateMembershipResponse,
   errors: [],
+  operationName: "UpdateMembership",
 }));
 export type ListMembershipsError = CommonErrors;
 /**
@@ -1946,6 +1967,7 @@ export const listMemberships: API.OperationMethod<
   input: ListMembershipsRequest,
   output: ListMembershipsResponse,
   errors: [],
+  operationName: "ListMemberships",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1968,6 +1990,7 @@ export const batchGetMemberAccountDetails: API.OperationMethod<
   input: BatchGetMemberAccountDetailsRequest,
   output: BatchGetMemberAccountDetailsResponse,
   errors: [],
+  operationName: "BatchGetMemberAccountDetails",
 }));
 export type CancelMembershipError = CommonErrors;
 /**
@@ -1982,4 +2005,5 @@ export const cancelMembership: API.OperationMethod<
   input: CancelMembershipRequest,
   output: CancelMembershipResponse,
   errors: [],
+  operationName: "CancelMembership",
 }));

@@ -3222,6 +3222,7 @@ export const cloneReceiptRuleSet: API.OperationMethod<
     LimitExceededException,
     RuleSetDoesNotExistException,
   ],
+  operationName: "CloneReceiptRuleSet",
 }));
 export type CreateConfigurationSetError =
   | ConfigurationSetAlreadyExistsException
@@ -3250,6 +3251,7 @@ export const createConfigurationSet: API.OperationMethod<
     InvalidConfigurationSetException,
     LimitExceededException,
   ],
+  operationName: "CreateConfigurationSet",
 }));
 export type CreateConfigurationSetEventDestinationError =
   | ConfigurationSetDoesNotExistException
@@ -3288,6 +3290,7 @@ export const createConfigurationSetEventDestination: API.OperationMethod<
     InvalidSNSDestinationException,
     LimitExceededException,
   ],
+  operationName: "CreateConfigurationSetEventDestination",
 }));
 export type CreateConfigurationSetTrackingOptionsError =
   | ConfigurationSetDoesNotExistException
@@ -3315,6 +3318,7 @@ export const createConfigurationSetTrackingOptions: API.OperationMethod<
     InvalidTrackingOptionsException,
     TrackingOptionsAlreadyExistsException,
   ],
+  operationName: "CreateConfigurationSetTrackingOptions",
 }));
 export type CreateCustomVerificationEmailTemplateError =
   | CustomVerificationEmailInvalidContentException
@@ -3345,6 +3349,7 @@ export const createCustomVerificationEmailTemplate: API.OperationMethod<
     FromEmailAddressNotVerifiedException,
     LimitExceededException,
   ],
+  operationName: "CreateCustomVerificationEmailTemplate",
 }));
 export type CreateReceiptFilterError =
   | AlreadyExistsException
@@ -3367,6 +3372,7 @@ export const createReceiptFilter: API.OperationMethod<
   input: CreateReceiptFilterRequest,
   output: CreateReceiptFilterResponse,
   errors: [AlreadyExistsException, LimitExceededException],
+  operationName: "CreateReceiptFilter",
 }));
 export type CreateReceiptRuleError =
   | AlreadyExistsException
@@ -3402,6 +3408,7 @@ export const createReceiptRule: API.OperationMethod<
     RuleDoesNotExistException,
     RuleSetDoesNotExistException,
   ],
+  operationName: "CreateReceiptRule",
 }));
 export type CreateReceiptRuleSetError =
   | AlreadyExistsException
@@ -3423,6 +3430,7 @@ export const createReceiptRuleSet: API.OperationMethod<
   input: CreateReceiptRuleSetRequest,
   output: CreateReceiptRuleSetResponse,
   errors: [AlreadyExistsException, LimitExceededException],
+  operationName: "CreateReceiptRuleSet",
 }));
 export type CreateTemplateError =
   | AlreadyExistsException
@@ -3449,6 +3457,7 @@ export const createTemplate: API.OperationMethod<
     InvalidTemplateException,
     LimitExceededException,
   ],
+  operationName: "CreateTemplate",
 }));
 export type DeleteConfigurationSetError =
   | ConfigurationSetDoesNotExistException
@@ -3469,6 +3478,7 @@ export const deleteConfigurationSet: API.OperationMethod<
   input: DeleteConfigurationSetRequest,
   output: DeleteConfigurationSetResponse,
   errors: [ConfigurationSetDoesNotExistException],
+  operationName: "DeleteConfigurationSet",
 }));
 export type DeleteConfigurationSetEventDestinationError =
   | ConfigurationSetDoesNotExistException
@@ -3494,6 +3504,7 @@ export const deleteConfigurationSetEventDestination: API.OperationMethod<
     ConfigurationSetDoesNotExistException,
     EventDestinationDoesNotExistException,
   ],
+  operationName: "DeleteConfigurationSetEventDestination",
 }));
 export type DeleteConfigurationSetTrackingOptionsError =
   | ConfigurationSetDoesNotExistException
@@ -3523,6 +3534,7 @@ export const deleteConfigurationSetTrackingOptions: API.OperationMethod<
     ConfigurationSetDoesNotExistException,
     TrackingOptionsDoesNotExistException,
   ],
+  operationName: "DeleteConfigurationSetTrackingOptions",
 }));
 export type DeleteCustomVerificationEmailTemplateError = CommonErrors;
 /**
@@ -3543,6 +3555,7 @@ export const deleteCustomVerificationEmailTemplate: API.OperationMethod<
   input: DeleteCustomVerificationEmailTemplateRequest,
   output: DeleteCustomVerificationEmailTemplateResponse,
   errors: [],
+  operationName: "DeleteCustomVerificationEmailTemplate",
 }));
 export type DeleteIdentityError = CommonErrors;
 /**
@@ -3560,6 +3573,7 @@ export const deleteIdentity: API.OperationMethod<
   input: DeleteIdentityRequest,
   output: DeleteIdentityResponse,
   errors: [],
+  operationName: "DeleteIdentity",
 }));
 export type DeleteIdentityPolicyError = CommonErrors;
 /**
@@ -3586,6 +3600,7 @@ export const deleteIdentityPolicy: API.OperationMethod<
   input: DeleteIdentityPolicyRequest,
   output: DeleteIdentityPolicyResponse,
   errors: [],
+  operationName: "DeleteIdentityPolicy",
 }));
 export type DeleteReceiptFilterError = CommonErrors;
 /**
@@ -3605,6 +3620,7 @@ export const deleteReceiptFilter: API.OperationMethod<
   input: DeleteReceiptFilterRequest,
   output: DeleteReceiptFilterResponse,
   errors: [],
+  operationName: "DeleteReceiptFilter",
 }));
 export type DeleteReceiptRuleError =
   | RuleSetDoesNotExistException
@@ -3626,6 +3642,7 @@ export const deleteReceiptRule: API.OperationMethod<
   input: DeleteReceiptRuleRequest,
   output: DeleteReceiptRuleResponse,
   errors: [RuleSetDoesNotExistException],
+  operationName: "DeleteReceiptRule",
 }));
 export type DeleteReceiptRuleSetError = CannotDeleteException | CommonErrors;
 /**
@@ -3648,6 +3665,7 @@ export const deleteReceiptRuleSet: API.OperationMethod<
   input: DeleteReceiptRuleSetRequest,
   output: DeleteReceiptRuleSetResponse,
   errors: [CannotDeleteException],
+  operationName: "DeleteReceiptRuleSet",
 }));
 export type DeleteTemplateError = CommonErrors;
 /**
@@ -3664,6 +3682,7 @@ export const deleteTemplate: API.OperationMethod<
   input: DeleteTemplateRequest,
   output: DeleteTemplateResponse,
   errors: [],
+  operationName: "DeleteTemplate",
 }));
 export type DeleteVerifiedEmailAddressError = CommonErrors;
 /**
@@ -3679,6 +3698,7 @@ export const deleteVerifiedEmailAddress: API.OperationMethod<
   input: DeleteVerifiedEmailAddressRequest,
   output: DeleteVerifiedEmailAddressResponse,
   errors: [],
+  operationName: "DeleteVerifiedEmailAddress",
 }));
 export type DescribeActiveReceiptRuleSetError = CommonErrors;
 /**
@@ -3698,6 +3718,7 @@ export const describeActiveReceiptRuleSet: API.OperationMethod<
   input: DescribeActiveReceiptRuleSetRequest,
   output: DescribeActiveReceiptRuleSetResponse,
   errors: [],
+  operationName: "DescribeActiveReceiptRuleSet",
 }));
 export type DescribeConfigurationSetError =
   | ConfigurationSetDoesNotExistException
@@ -3718,6 +3739,7 @@ export const describeConfigurationSet: API.OperationMethod<
   input: DescribeConfigurationSetRequest,
   output: DescribeConfigurationSetResponse,
   errors: [ConfigurationSetDoesNotExistException],
+  operationName: "DescribeConfigurationSet",
 }));
 export type DescribeReceiptRuleError =
   | RuleDoesNotExistException
@@ -3740,6 +3762,7 @@ export const describeReceiptRule: API.OperationMethod<
   input: DescribeReceiptRuleRequest,
   output: DescribeReceiptRuleResponse,
   errors: [RuleDoesNotExistException, RuleSetDoesNotExistException],
+  operationName: "DescribeReceiptRule",
 }));
 export type DescribeReceiptRuleSetError =
   | RuleSetDoesNotExistException
@@ -3761,6 +3784,7 @@ export const describeReceiptRuleSet: API.OperationMethod<
   input: DescribeReceiptRuleSetRequest,
   output: DescribeReceiptRuleSetResponse,
   errors: [RuleSetDoesNotExistException],
+  operationName: "DescribeReceiptRuleSet",
 }));
 export type GetAccountSendingEnabledError = CommonErrors;
 /**
@@ -3777,6 +3801,7 @@ export const getAccountSendingEnabled: API.OperationMethod<
   input: GetAccountSendingEnabledRequest,
   output: GetAccountSendingEnabledResponse,
   errors: [],
+  operationName: "GetAccountSendingEnabled",
 }));
 export type GetCustomVerificationEmailTemplateError =
   | CustomVerificationEmailTemplateDoesNotExistException
@@ -3800,6 +3825,7 @@ export const getCustomVerificationEmailTemplate: API.OperationMethod<
   input: GetCustomVerificationEmailTemplateRequest,
   output: GetCustomVerificationEmailTemplateResponse,
   errors: [CustomVerificationEmailTemplateDoesNotExistException],
+  operationName: "GetCustomVerificationEmailTemplate",
 }));
 export type GetIdentityDkimAttributesError = CommonErrors;
 /**
@@ -3835,6 +3861,7 @@ export const getIdentityDkimAttributes: API.OperationMethod<
   input: GetIdentityDkimAttributesRequest,
   output: GetIdentityDkimAttributesResponse,
   errors: [],
+  operationName: "GetIdentityDkimAttributes",
 }));
 export type GetIdentityMailFromDomainAttributesError = CommonErrors;
 /**
@@ -3853,6 +3880,7 @@ export const getIdentityMailFromDomainAttributes: API.OperationMethod<
   input: GetIdentityMailFromDomainAttributesRequest,
   output: GetIdentityMailFromDomainAttributesResponse,
   errors: [],
+  operationName: "GetIdentityMailFromDomainAttributes",
 }));
 export type GetIdentityNotificationAttributesError = CommonErrors;
 /**
@@ -3874,6 +3902,7 @@ export const getIdentityNotificationAttributes: API.OperationMethod<
   input: GetIdentityNotificationAttributesRequest,
   output: GetIdentityNotificationAttributesResponse,
   errors: [],
+  operationName: "GetIdentityNotificationAttributes",
 }));
 export type GetIdentityPoliciesError = CommonErrors;
 /**
@@ -3900,6 +3929,7 @@ export const getIdentityPolicies: API.OperationMethod<
   input: GetIdentityPoliciesRequest,
   output: GetIdentityPoliciesResponse,
   errors: [],
+  operationName: "GetIdentityPolicies",
 }));
 export type GetIdentityVerificationAttributesError = CommonErrors;
 /**
@@ -3932,6 +3962,7 @@ export const getIdentityVerificationAttributes: API.OperationMethod<
   input: GetIdentityVerificationAttributesRequest,
   output: GetIdentityVerificationAttributesResponse,
   errors: [],
+  operationName: "GetIdentityVerificationAttributes",
 }));
 export type GetSendQuotaError = CommonErrors;
 /**
@@ -3948,6 +3979,7 @@ export const getSendQuota: API.OperationMethod<
   input: GetSendQuotaRequest,
   output: GetSendQuotaResponse,
   errors: [],
+  operationName: "GetSendQuota",
 }));
 export type GetSendStatisticsError = CommonErrors;
 /**
@@ -3966,6 +3998,7 @@ export const getSendStatistics: API.OperationMethod<
   input: GetSendStatisticsRequest,
   output: GetSendStatisticsResponse,
   errors: [],
+  operationName: "GetSendStatistics",
 }));
 export type GetTemplateError = TemplateDoesNotExistException | CommonErrors;
 /**
@@ -3983,6 +4016,7 @@ export const getTemplate: API.OperationMethod<
   input: GetTemplateRequest,
   output: GetTemplateResponse,
   errors: [TemplateDoesNotExistException],
+  operationName: "GetTemplate",
 }));
 export type ListConfigurationSetsError = CommonErrors;
 /**
@@ -4007,6 +4041,7 @@ export const listConfigurationSets: API.OperationMethod<
   input: ListConfigurationSetsRequest,
   output: ListConfigurationSetsResponse,
   errors: [],
+  operationName: "ListConfigurationSets",
 }));
 export type ListCustomVerificationEmailTemplatesError = CommonErrors;
 /**
@@ -4043,6 +4078,7 @@ export const listCustomVerificationEmailTemplates: API.OperationMethod<
   input: ListCustomVerificationEmailTemplatesRequest,
   output: ListCustomVerificationEmailTemplatesResponse,
   errors: [],
+  operationName: "ListCustomVerificationEmailTemplates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4089,6 +4125,7 @@ export const listIdentities: API.OperationMethod<
   input: ListIdentitiesRequest,
   output: ListIdentitiesResponse,
   errors: [],
+  operationName: "ListIdentities",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4121,6 +4158,7 @@ export const listIdentityPolicies: API.OperationMethod<
   input: ListIdentityPoliciesRequest,
   output: ListIdentityPoliciesResponse,
   errors: [],
+  operationName: "ListIdentityPolicies",
 }));
 export type ListReceiptFiltersError = CommonErrors;
 /**
@@ -4141,6 +4179,7 @@ export const listReceiptFilters: API.OperationMethod<
   input: ListReceiptFiltersRequest,
   output: ListReceiptFiltersResponse,
   errors: [],
+  operationName: "ListReceiptFilters",
 }));
 export type ListReceiptRuleSetsError = CommonErrors;
 /**
@@ -4163,6 +4202,7 @@ export const listReceiptRuleSets: API.OperationMethod<
   input: ListReceiptRuleSetsRequest,
   output: ListReceiptRuleSetsResponse,
   errors: [],
+  operationName: "ListReceiptRuleSets",
 }));
 export type ListTemplatesError = CommonErrors;
 /**
@@ -4180,6 +4220,7 @@ export const listTemplates: API.OperationMethod<
   input: ListTemplatesRequest,
   output: ListTemplatesResponse,
   errors: [],
+  operationName: "ListTemplates",
 }));
 export type ListVerifiedEmailAddressesError = CommonErrors;
 /**
@@ -4195,6 +4236,7 @@ export const listVerifiedEmailAddresses: API.OperationMethod<
   input: ListVerifiedEmailAddressesRequest,
   output: ListVerifiedEmailAddressesResponse,
   errors: [],
+  operationName: "ListVerifiedEmailAddresses",
 }));
 export type PutConfigurationSetDeliveryOptionsError =
   | ConfigurationSetDoesNotExistException
@@ -4215,6 +4257,7 @@ export const putConfigurationSetDeliveryOptions: API.OperationMethod<
     ConfigurationSetDoesNotExistException,
     InvalidDeliveryOptionsException,
   ],
+  operationName: "PutConfigurationSetDeliveryOptions",
 }));
 export type PutIdentityPolicyError = InvalidPolicyException | CommonErrors;
 /**
@@ -4240,6 +4283,7 @@ export const putIdentityPolicy: API.OperationMethod<
   input: PutIdentityPolicyRequest,
   output: PutIdentityPolicyResponse,
   errors: [InvalidPolicyException],
+  operationName: "PutIdentityPolicy",
 }));
 export type ReorderReceiptRuleSetError =
   | RuleDoesNotExistException
@@ -4265,6 +4309,7 @@ export const reorderReceiptRuleSet: API.OperationMethod<
   input: ReorderReceiptRuleSetRequest,
   output: ReorderReceiptRuleSetResponse,
   errors: [RuleDoesNotExistException, RuleSetDoesNotExistException],
+  operationName: "ReorderReceiptRuleSet",
 }));
 export type SendBounceError = MessageRejected | CommonErrors;
 /**
@@ -4289,6 +4334,7 @@ export const sendBounce: API.OperationMethod<
   input: SendBounceRequest,
   output: SendBounceResponse,
   errors: [MessageRejected],
+  operationName: "SendBounce",
 }));
 export type SendBulkTemplatedEmailError =
   | AccountSendingPausedException
@@ -4350,6 +4396,7 @@ export const sendBulkTemplatedEmail: API.OperationMethod<
     MessageRejected,
     TemplateDoesNotExistException,
   ],
+  operationName: "SendBulkTemplatedEmail",
 }));
 export type SendCustomVerificationEmailError =
   | ConfigurationSetDoesNotExistException
@@ -4386,6 +4433,7 @@ export const sendCustomVerificationEmail: API.OperationMethod<
     MessageRejected,
     ProductionAccessNotGrantedException,
   ],
+  operationName: "SendCustomVerificationEmail",
 }));
 export type SendEmailError =
   | AccountSendingPausedException
@@ -4444,6 +4492,7 @@ export const sendEmail: API.OperationMethod<
     MailFromDomainNotVerifiedException,
     MessageRejected,
   ],
+  operationName: "SendEmail",
 }));
 export type SendRawEmailError =
   | AccountSendingPausedException
@@ -4547,6 +4596,7 @@ export const sendRawEmail: API.OperationMethod<
     MailFromDomainNotVerifiedException,
     MessageRejected,
   ],
+  operationName: "SendRawEmail",
 }));
 export type SendTemplatedEmailError =
   | AccountSendingPausedException
@@ -4615,6 +4665,7 @@ export const sendTemplatedEmail: API.OperationMethod<
     MessageRejected,
     TemplateDoesNotExistException,
   ],
+  operationName: "SendTemplatedEmail",
 }));
 export type SetActiveReceiptRuleSetError =
   | RuleSetDoesNotExistException
@@ -4639,6 +4690,7 @@ export const setActiveReceiptRuleSet: API.OperationMethod<
   input: SetActiveReceiptRuleSetRequest,
   output: SetActiveReceiptRuleSetResponse,
   errors: [RuleSetDoesNotExistException],
+  operationName: "SetActiveReceiptRuleSet",
 }));
 export type SetIdentityDkimEnabledError = CommonErrors;
 /**
@@ -4668,6 +4720,7 @@ export const setIdentityDkimEnabled: API.OperationMethod<
   input: SetIdentityDkimEnabledRequest,
   output: SetIdentityDkimEnabledResponse,
   errors: [],
+  operationName: "SetIdentityDkimEnabled",
 }));
 export type SetIdentityFeedbackForwardingEnabledError = CommonErrors;
 /**
@@ -4693,6 +4746,7 @@ export const setIdentityFeedbackForwardingEnabled: API.OperationMethod<
   input: SetIdentityFeedbackForwardingEnabledRequest,
   output: SetIdentityFeedbackForwardingEnabledResponse,
   errors: [],
+  operationName: "SetIdentityFeedbackForwardingEnabled",
 }));
 export type SetIdentityHeadersInNotificationsEnabledError = CommonErrors;
 /**
@@ -4714,6 +4768,7 @@ export const setIdentityHeadersInNotificationsEnabled: API.OperationMethod<
   input: SetIdentityHeadersInNotificationsEnabledRequest,
   output: SetIdentityHeadersInNotificationsEnabledResponse,
   errors: [],
+  operationName: "SetIdentityHeadersInNotificationsEnabled",
 }));
 export type SetIdentityMailFromDomainError = CommonErrors;
 /**
@@ -4736,6 +4791,7 @@ export const setIdentityMailFromDomain: API.OperationMethod<
   input: SetIdentityMailFromDomainRequest,
   output: SetIdentityMailFromDomainResponse,
   errors: [],
+  operationName: "SetIdentityMailFromDomain",
 }));
 export type SetIdentityNotificationTopicError = CommonErrors;
 /**
@@ -4760,6 +4816,7 @@ export const setIdentityNotificationTopic: API.OperationMethod<
   input: SetIdentityNotificationTopicRequest,
   output: SetIdentityNotificationTopicResponse,
   errors: [],
+  operationName: "SetIdentityNotificationTopic",
 }));
 export type SetReceiptRulePositionError =
   | RuleDoesNotExistException
@@ -4782,6 +4839,7 @@ export const setReceiptRulePosition: API.OperationMethod<
   input: SetReceiptRulePositionRequest,
   output: SetReceiptRulePositionResponse,
   errors: [RuleDoesNotExistException, RuleSetDoesNotExistException],
+  operationName: "SetReceiptRulePosition",
 }));
 export type TestRenderTemplateError =
   | InvalidRenderingParameterException
@@ -4807,6 +4865,7 @@ export const testRenderTemplate: API.OperationMethod<
     MissingRenderingAttributeException,
     TemplateDoesNotExistException,
   ],
+  operationName: "TestRenderTemplate",
 }));
 export type UpdateAccountSendingEnabledError = CommonErrors;
 /**
@@ -4827,6 +4886,7 @@ export const updateAccountSendingEnabled: API.OperationMethod<
   input: UpdateAccountSendingEnabledRequest,
   output: UpdateAccountSendingEnabledResponse,
   errors: [],
+  operationName: "UpdateAccountSendingEnabled",
 }));
 export type UpdateConfigurationSetEventDestinationError =
   | ConfigurationSetDoesNotExistException
@@ -4863,6 +4923,7 @@ export const updateConfigurationSetEventDestination: API.OperationMethod<
     InvalidFirehoseDestinationException,
     InvalidSNSDestinationException,
   ],
+  operationName: "UpdateConfigurationSetEventDestination",
 }));
 export type UpdateConfigurationSetReputationMetricsEnabledError =
   | ConfigurationSetDoesNotExistException
@@ -4884,6 +4945,7 @@ export const updateConfigurationSetReputationMetricsEnabled: API.OperationMethod
   input: UpdateConfigurationSetReputationMetricsEnabledRequest,
   output: UpdateConfigurationSetReputationMetricsEnabledResponse,
   errors: [ConfigurationSetDoesNotExistException],
+  operationName: "UpdateConfigurationSetReputationMetricsEnabled",
 }));
 export type UpdateConfigurationSetSendingEnabledError =
   | ConfigurationSetDoesNotExistException
@@ -4906,6 +4968,7 @@ export const updateConfigurationSetSendingEnabled: API.OperationMethod<
   input: UpdateConfigurationSetSendingEnabledRequest,
   output: UpdateConfigurationSetSendingEnabledResponse,
   errors: [ConfigurationSetDoesNotExistException],
+  operationName: "UpdateConfigurationSetSendingEnabled",
 }));
 export type UpdateConfigurationSetTrackingOptionsError =
   | ConfigurationSetDoesNotExistException
@@ -4933,6 +4996,7 @@ export const updateConfigurationSetTrackingOptions: API.OperationMethod<
     InvalidTrackingOptionsException,
     TrackingOptionsDoesNotExistException,
   ],
+  operationName: "UpdateConfigurationSetTrackingOptions",
 }));
 export type UpdateCustomVerificationEmailTemplateError =
   | CustomVerificationEmailInvalidContentException
@@ -4961,6 +5025,7 @@ export const updateCustomVerificationEmailTemplate: API.OperationMethod<
     CustomVerificationEmailTemplateDoesNotExistException,
     FromEmailAddressNotVerifiedException,
   ],
+  operationName: "UpdateCustomVerificationEmailTemplate",
 }));
 export type UpdateReceiptRuleError =
   | InvalidLambdaFunctionException
@@ -4994,6 +5059,7 @@ export const updateReceiptRule: API.OperationMethod<
     RuleDoesNotExistException,
     RuleSetDoesNotExistException,
   ],
+  operationName: "UpdateReceiptRule",
 }));
 export type UpdateTemplateError =
   | InvalidTemplateException
@@ -5015,6 +5081,7 @@ export const updateTemplate: API.OperationMethod<
   input: UpdateTemplateRequest,
   output: UpdateTemplateResponse,
   errors: [InvalidTemplateException, TemplateDoesNotExistException],
+  operationName: "UpdateTemplate",
 }));
 export type VerifyDomainDkimError = CommonErrors;
 /**
@@ -5061,6 +5128,7 @@ export const verifyDomainDkim: API.OperationMethod<
   input: VerifyDomainDkimRequest,
   output: VerifyDomainDkimResponse,
   errors: [],
+  operationName: "VerifyDomainDkim",
 }));
 export type VerifyDomainIdentityError = CommonErrors;
 /**
@@ -5080,6 +5148,7 @@ export const verifyDomainIdentity: API.OperationMethod<
   input: VerifyDomainIdentityRequest,
   output: VerifyDomainIdentityResponse,
   errors: [],
+  operationName: "VerifyDomainIdentity",
 }));
 export type VerifyEmailAddressError = CommonErrors;
 /**
@@ -5095,6 +5164,7 @@ export const verifyEmailAddress: API.OperationMethod<
   input: VerifyEmailAddressRequest,
   output: VerifyEmailAddressResponse,
   errors: [],
+  operationName: "VerifyEmailAddress",
 }));
 export type VerifyEmailIdentityError = CommonErrors;
 /**
@@ -5113,4 +5183,5 @@ export const verifyEmailIdentity: API.OperationMethod<
   input: VerifyEmailIdentityRequest,
   output: VerifyEmailIdentityResponse,
   errors: [],
+  operationName: "VerifyEmailIdentity",
 }));

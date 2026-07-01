@@ -403,6 +403,7 @@ export const describeServices: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeServices",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -454,6 +455,7 @@ export const getAttributeValues: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetAttributeValues",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -490,6 +492,7 @@ export const getPriceListFileUrl: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetPriceListFileUrl",
 }));
 export type GetProductsError =
   | AccessDeniedException
@@ -535,6 +538,7 @@ export const getProducts: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetProducts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -590,6 +594,7 @@ export const listPriceLists: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListPriceLists",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

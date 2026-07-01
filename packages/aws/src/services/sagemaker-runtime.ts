@@ -485,6 +485,7 @@ export const invokeEndpoint: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  operationName: "InvokeEndpoint",
 }));
 export type InvokeEndpointAsyncError =
   | InternalFailure
@@ -517,6 +518,7 @@ export const invokeEndpointAsync: API.OperationMethod<
   input: InvokeEndpointAsyncInput,
   output: InvokeEndpointAsyncOutput,
   errors: [InternalFailure, ServiceUnavailable, ValidationError],
+  operationName: "InvokeEndpointAsync",
 }));
 export type InvokeEndpointWithResponseStreamError =
   | InternalFailure
@@ -568,4 +570,5 @@ export const invokeEndpointWithResponseStream: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  operationName: "InvokeEndpointWithResponseStream",
 }));

@@ -7376,6 +7376,7 @@ export const agenticRetrieveStream: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AgenticRetrieveStream",
 }));
 export type GetExecutionFlowSnapshotError =
   | AccessDeniedException
@@ -7404,6 +7405,7 @@ export const getExecutionFlowSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetExecutionFlowSnapshot",
 }));
 export type GetFlowExecutionError =
   | AccessDeniedException
@@ -7430,6 +7432,7 @@ export const getFlowExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFlowExecution",
 }));
 export type ListFlowExecutionEventsError =
   | AccessDeniedException
@@ -7473,6 +7476,7 @@ export const listFlowExecutionEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFlowExecutionEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7522,6 +7526,7 @@ export const listFlowExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFlowExecutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7566,6 +7571,7 @@ export const startFlowExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartFlowExecution",
 }));
 export type StopFlowExecutionError =
   | AccessDeniedException
@@ -7598,6 +7604,7 @@ export const stopFlowExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopFlowExecution",
 }));
 export type InvokeFlowError =
   | AccessDeniedException
@@ -7634,6 +7641,7 @@ export const invokeFlow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InvokeFlow",
 }));
 export type GenerateQueryError =
   | AccessDeniedException
@@ -7668,6 +7676,7 @@ export const generateQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GenerateQuery",
 }));
 export type GetDocumentContentError =
   | AccessDeniedException
@@ -7694,6 +7703,7 @@ export const getDocumentContent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDocumentContent",
 }));
 export type InvokeAgentError =
   | AccessDeniedException
@@ -7750,6 +7760,7 @@ export const invokeAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InvokeAgent",
 }));
 export type InvokeInlineAgentError =
   | AccessDeniedException
@@ -7794,6 +7805,7 @@ export const invokeInlineAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InvokeInlineAgent",
 }));
 export type DeleteAgentMemoryError =
   | AccessDeniedException
@@ -7828,6 +7840,7 @@ export const deleteAgentMemory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAgentMemory",
 }));
 export type GetAgentMemoryError =
   | AccessDeniedException
@@ -7877,6 +7890,7 @@ export const getAgentMemory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAgentMemory",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7911,6 +7925,7 @@ export const optimizePrompt: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "OptimizePrompt",
 }));
 export type RerankError =
   | AccessDeniedException
@@ -7960,6 +7975,7 @@ export const rerank: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "Rerank",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8001,6 +8017,7 @@ export const retrieveAndGenerate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RetrieveAndGenerate",
 }));
 export type RetrieveAndGenerateStreamError =
   | AccessDeniedException
@@ -8041,6 +8058,7 @@ export const retrieveAndGenerateStream: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RetrieveAndGenerateStream",
 }));
 export type RetrieveError =
   | AccessDeniedException
@@ -8090,6 +8108,7 @@ export const retrieve: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "Retrieve",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8137,6 +8156,7 @@ export const createSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateSession",
 }));
 export type GetSessionError =
   | AccessDeniedException
@@ -8163,6 +8183,7 @@ export const getSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSession",
 }));
 export type UpdateSessionError =
   | AccessDeniedException
@@ -8191,6 +8212,7 @@ export const updateSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateSession",
 }));
 export type DeleteSessionError =
   | AccessDeniedException
@@ -8219,6 +8241,7 @@ export const deleteSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteSession",
 }));
 export type ListSessionsError =
   | AccessDeniedException
@@ -8258,6 +8281,7 @@ export const listSessions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSessions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8292,6 +8316,7 @@ export const endSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "EndSession",
 }));
 export type CreateInvocationError =
   | AccessDeniedException
@@ -8330,6 +8355,7 @@ export const createInvocation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateInvocation",
 }));
 export type ListInvocationsError =
   | AccessDeniedException
@@ -8371,6 +8397,7 @@ export const listInvocations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListInvocations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8417,6 +8444,7 @@ export const putInvocationStep: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutInvocationStep",
 }));
 export type GetInvocationStepError =
   | AccessDeniedException
@@ -8443,6 +8471,7 @@ export const getInvocationStep: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetInvocationStep",
 }));
 export type ListInvocationStepsError =
   | AccessDeniedException
@@ -8484,6 +8513,7 @@ export const listInvocationSteps: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListInvocationSteps",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8516,6 +8546,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -8544,6 +8575,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -8570,4 +8602,5 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));

@@ -1280,6 +1280,7 @@ export const addProfilePermission: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "AddProfilePermission",
 }));
 export type CancelSigningProfileError =
   | AccessDeniedException
@@ -1306,6 +1307,7 @@ export const cancelSigningProfile: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CancelSigningProfile",
 }));
 export type DescribeSigningJobError =
   | AccessDeniedException
@@ -1332,6 +1334,7 @@ export const describeSigningJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeSigningJob",
 }));
 export type GetRevocationStatusError =
   | AccessDeniedException
@@ -1357,6 +1360,7 @@ export const getRevocationStatus: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "GetRevocationStatus",
 }));
 export type GetSigningPlatformError =
   | AccessDeniedException
@@ -1381,6 +1385,7 @@ export const getSigningPlatform: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetSigningPlatform",
 }));
 export type GetSigningProfileError =
   | AccessDeniedException
@@ -1405,6 +1410,7 @@ export const getSigningProfile: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetSigningProfile",
 }));
 export type ListProfilePermissionsError =
   | AccessDeniedException
@@ -1431,6 +1437,7 @@ export const listProfilePermissions: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "ListProfilePermissions",
 }));
 export type ListSigningJobsError =
   | AccessDeniedException
@@ -1476,6 +1483,7 @@ export const listSigningJobs: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "ListSigningJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1526,6 +1534,7 @@ export const listSigningPlatforms: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "ListSigningPlatforms",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1575,6 +1584,7 @@ export const listSigningProfiles: API.OperationMethod<
     InternalServiceErrorException,
     TooManyRequestsException,
   ],
+  operationName: "ListSigningProfiles",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1604,6 +1614,7 @@ export const listTagsForResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutSigningProfileError =
   | AccessDeniedException
@@ -1631,6 +1642,7 @@ export const putSigningProfile: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "PutSigningProfile",
 }));
 export type RemoveProfilePermissionError =
   | AccessDeniedException
@@ -1659,6 +1671,7 @@ export const removeProfilePermission: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "RemoveProfilePermission",
 }));
 export type RevokeSignatureError =
   | AccessDeniedException
@@ -1686,6 +1699,7 @@ export const revokeSignature: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "RevokeSignature",
 }));
 export type RevokeSigningProfileError =
   | AccessDeniedException
@@ -1716,6 +1730,7 @@ export const revokeSigningProfile: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "RevokeSigningProfile",
 }));
 export type SignPayloadError =
   | AccessDeniedException
@@ -1742,6 +1757,7 @@ export const signPayload: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "SignPayload",
 }));
 export type StartSigningJobError =
   | AccessDeniedException
@@ -1791,6 +1807,7 @@ export const startSigningJob: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "StartSigningJob",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -1818,6 +1835,7 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -1843,4 +1861,5 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UntagResource",
 }));

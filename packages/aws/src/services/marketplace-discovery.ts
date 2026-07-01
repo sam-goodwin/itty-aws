@@ -2172,6 +2172,7 @@ export const getListing: API.OperationMethod<
   input: GetListingInput,
   output: GetListingOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetListing",
 }));
 export type GetOfferError = ResourceNotFoundException | CommonErrors;
 /**
@@ -2186,6 +2187,7 @@ export const getOffer: API.OperationMethod<
   input: GetOfferInput,
   output: GetOfferOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetOffer",
 }));
 export type GetOfferSetError = ResourceNotFoundException | CommonErrors;
 /**
@@ -2200,6 +2202,7 @@ export const getOfferSet: API.OperationMethod<
   input: GetOfferSetInput,
   output: GetOfferSetOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetOfferSet",
 }));
 export type GetOfferTermsError = ResourceNotFoundException | CommonErrors;
 /**
@@ -2229,6 +2232,7 @@ export const getOfferTerms: API.OperationMethod<
   input: GetOfferTermsInput,
   output: GetOfferTermsOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetOfferTerms",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2248,6 +2252,7 @@ export const getProduct: API.OperationMethod<
   input: GetProductInput,
   output: GetProductOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetProduct",
 }));
 export type ListFulfillmentOptionsError =
   | ResourceNotFoundException
@@ -2279,6 +2284,7 @@ export const listFulfillmentOptions: API.OperationMethod<
   input: ListFulfillmentOptionsInput,
   output: ListFulfillmentOptionsOutput,
   errors: [ResourceNotFoundException],
+  operationName: "ListFulfillmentOptions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2316,6 +2322,7 @@ export const listPurchaseOptions: API.OperationMethod<
   input: ListPurchaseOptionsInput,
   output: ListPurchaseOptionsOutput,
   errors: [],
+  operationName: "ListPurchaseOptions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2350,6 +2357,7 @@ export const searchFacets: API.OperationMethod<
   input: SearchFacetsInput,
   output: SearchFacetsOutput,
   errors: [],
+  operationName: "SearchFacets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2384,6 +2392,7 @@ export const searchListings: API.OperationMethod<
   input: SearchListingsInput,
   output: SearchListingsOutput,
   errors: [],
+  operationName: "SearchListings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

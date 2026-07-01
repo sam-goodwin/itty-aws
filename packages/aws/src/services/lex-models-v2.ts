@@ -10390,6 +10390,7 @@ export const batchCreateCustomVocabularyItem: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchCreateCustomVocabularyItem",
 }));
 export type BatchDeleteCustomVocabularyItemError =
   | InternalServerException
@@ -10417,6 +10418,7 @@ export const batchDeleteCustomVocabularyItem: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchDeleteCustomVocabularyItem",
 }));
 export type BatchUpdateCustomVocabularyItemError =
   | InternalServerException
@@ -10444,6 +10446,7 @@ export const batchUpdateCustomVocabularyItem: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchUpdateCustomVocabularyItem",
 }));
 export type BuildBotLocaleError =
   | ConflictException
@@ -10474,6 +10477,7 @@ export const buildBotLocale: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BuildBotLocale",
 }));
 export type CreateBotError =
   | ConflictException
@@ -10502,6 +10506,7 @@ export const createBot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateBot",
 }));
 export type CreateBotAliasError =
   | ConflictException
@@ -10535,6 +10540,7 @@ export const createBotAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateBotAlias",
 }));
 export type CreateBotLocaleError =
   | ConflictException
@@ -10566,6 +10572,7 @@ export const createBotLocale: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateBotLocale",
 }));
 export type CreateBotReplicaError =
   | ConflictException
@@ -10594,6 +10601,7 @@ export const createBotReplica: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateBotReplica",
 }));
 export type CreateBotVersionError =
   | ConflictException
@@ -10626,6 +10634,7 @@ export const createBotVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateBotVersion",
 }));
 export type CreateExportError =
   | ConflictException
@@ -10664,6 +10673,7 @@ export const createExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateExport",
 }));
 export type CreateIntentError =
   | ConflictException
@@ -10723,6 +10733,7 @@ export const createIntent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateIntent",
 }));
 export type CreateResourcePolicyError =
   | InternalServerException
@@ -10752,6 +10763,7 @@ export const createResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateResourcePolicy",
 }));
 export type CreateResourcePolicyStatementError =
   | ConflictException
@@ -10790,6 +10802,7 @@ export const createResourcePolicyStatement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateResourcePolicyStatement",
 }));
 export type CreateSlotError =
   | ConflictException
@@ -10822,6 +10835,7 @@ export const createSlot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateSlot",
 }));
 export type CreateSlotTypeError =
   | ConflictException
@@ -10854,6 +10868,7 @@ export const createSlotType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateSlotType",
 }));
 export type CreateTestSetDiscrepancyReportError =
   | ConflictException
@@ -10882,6 +10897,7 @@ export const createTestSetDiscrepancyReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateTestSetDiscrepancyReport",
 }));
 export type CreateUploadUrlError =
   | ConflictException
@@ -10909,6 +10925,7 @@ export const createUploadUrl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateUploadUrl",
 }));
 export type DeleteBotError =
   | ConflictException
@@ -10948,6 +10965,7 @@ export const deleteBot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteBot",
 }));
 export type DeleteBotAliasError =
   | ConflictException
@@ -10976,6 +10994,7 @@ export const deleteBotAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteBotAlias",
 }));
 export type DeleteBotAnalyzerRecommendationError =
   | InternalServerException
@@ -11002,6 +11021,7 @@ export const deleteBotAnalyzerRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteBotAnalyzerRecommendation",
 }));
 export type DeleteBotLocaleError =
   | ConflictException
@@ -11033,6 +11053,7 @@ export const deleteBotLocale: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteBotLocale",
 }));
 export type DeleteBotReplicaError =
   | ConflictException
@@ -11061,6 +11082,7 @@ export const deleteBotReplica: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteBotReplica",
 }));
 export type DeleteBotVersionError =
   | ConflictException
@@ -11090,6 +11112,7 @@ export const deleteBotVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteBotVersion",
 }));
 export type DeleteCustomVocabularyError =
   | ConflictException
@@ -11119,6 +11142,7 @@ export const deleteCustomVocabulary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteCustomVocabulary",
 }));
 export type DeleteExportError =
   | InternalServerException
@@ -11146,6 +11170,7 @@ export const deleteExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteExport",
 }));
 export type DeleteImportError =
   | InternalServerException
@@ -11173,6 +11198,7 @@ export const deleteImport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteImport",
 }));
 export type DeleteIntentError =
   | ConflictException
@@ -11204,6 +11230,7 @@ export const deleteIntent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteIntent",
 }));
 export type DeleteResourcePolicyError =
   | InternalServerException
@@ -11229,6 +11256,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteResourcePolicyStatementError =
   | InternalServerException
@@ -11260,6 +11288,7 @@ export const deleteResourcePolicyStatement: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteResourcePolicyStatement",
 }));
 export type DeleteSlotError =
   | ConflictException
@@ -11288,6 +11317,7 @@ export const deleteSlot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteSlot",
 }));
 export type DeleteSlotTypeError =
   | ConflictException
@@ -11321,6 +11351,7 @@ export const deleteSlotType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteSlotType",
 }));
 export type DeleteTestSetError =
   | ConflictException
@@ -11349,6 +11380,7 @@ export const deleteTestSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteTestSet",
 }));
 export type DeleteUtterancesError =
   | InternalServerException
@@ -11380,6 +11412,7 @@ export const deleteUtterances: API.OperationMethod<
   input: DeleteUtterancesRequest,
   output: DeleteUtterancesResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "DeleteUtterances",
 }));
 export type DescribeBotError =
   | InternalServerException
@@ -11406,6 +11439,7 @@ export const describeBot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeBot",
 }));
 export type DescribeBotAliasError =
   | InternalServerException
@@ -11432,6 +11466,7 @@ export const describeBotAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeBotAlias",
 }));
 export type DescribeBotAnalyzerRecommendationError =
   | InternalServerException
@@ -11473,6 +11508,7 @@ export const describeBotAnalyzerRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeBotAnalyzerRecommendation",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -11505,6 +11541,7 @@ export const describeBotLocale: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeBotLocale",
 }));
 export type DescribeBotRecommendationError =
   | InternalServerException
@@ -11533,6 +11570,7 @@ export const describeBotRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeBotRecommendation",
 }));
 export type DescribeBotReplicaError =
   | InternalServerException
@@ -11559,6 +11597,7 @@ export const describeBotReplica: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeBotReplica",
 }));
 export type DescribeBotResourceGenerationError =
   | InternalServerException
@@ -11586,6 +11625,7 @@ export const describeBotResourceGeneration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeBotResourceGeneration",
 }));
 export type DescribeBotVersionError =
   | InternalServerException
@@ -11612,6 +11652,7 @@ export const describeBotVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeBotVersion",
 }));
 export type DescribeCustomVocabularyMetadataError =
   | InternalServerException
@@ -11638,6 +11679,7 @@ export const describeCustomVocabularyMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeCustomVocabularyMetadata",
 }));
 export type DescribeExportError =
   | InternalServerException
@@ -11662,6 +11704,7 @@ export const describeExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeExport",
 }));
 export type DescribeImportError =
   | InternalServerException
@@ -11686,6 +11729,7 @@ export const describeImport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeImport",
 }));
 export type DescribeIntentError =
   | InternalServerException
@@ -11712,6 +11756,7 @@ export const describeIntent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeIntent",
 }));
 export type DescribeResourcePolicyError =
   | InternalServerException
@@ -11735,6 +11780,7 @@ export const describeResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeResourcePolicy",
 }));
 export type DescribeSlotError =
   | InternalServerException
@@ -11761,6 +11807,7 @@ export const describeSlot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeSlot",
 }));
 export type DescribeSlotTypeError =
   | InternalServerException
@@ -11787,6 +11834,7 @@ export const describeSlotType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeSlotType",
 }));
 export type DescribeTestExecutionError =
   | InternalServerException
@@ -11813,6 +11861,7 @@ export const describeTestExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeTestExecution",
 }));
 export type DescribeTestSetError =
   | InternalServerException
@@ -11839,6 +11888,7 @@ export const describeTestSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeTestSet",
 }));
 export type DescribeTestSetDiscrepancyReportError =
   | InternalServerException
@@ -11865,6 +11915,7 @@ export const describeTestSetDiscrepancyReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeTestSetDiscrepancyReport",
 }));
 export type DescribeTestSetGenerationError =
   | InternalServerException
@@ -11891,6 +11942,7 @@ export const describeTestSetGeneration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeTestSetGeneration",
 }));
 export type GenerateBotElementError =
   | ConflictException
@@ -11921,6 +11973,7 @@ export const generateBotElement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GenerateBotElement",
 }));
 export type GetTestExecutionArtifactsUrlError =
   | InternalServerException
@@ -11947,6 +12000,7 @@ export const getTestExecutionArtifactsUrl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTestExecutionArtifactsUrl",
 }));
 export type ListAggregatedUtterancesError =
   | InternalServerException
@@ -12009,6 +12063,7 @@ export const listAggregatedUtterances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAggregatedUtterances",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12053,6 +12108,7 @@ export const listBotAliases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBotAliases",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12097,6 +12153,7 @@ export const listBotAliasReplicas: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBotAliasReplicas",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12143,6 +12200,7 @@ export const listBotAnalyzerHistory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBotAnalyzerHistory",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12188,6 +12246,7 @@ export const listBotLocales: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBotLocales",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12233,6 +12292,7 @@ export const listBotRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBotRecommendations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12262,6 +12322,7 @@ export const listBotReplicas: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBotReplicas",
 }));
 export type ListBotResourceGenerationsError =
   | InternalServerException
@@ -12301,6 +12362,7 @@ export const listBotResourceGenerations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBotResourceGenerations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12345,6 +12407,7 @@ export const listBots: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBots",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12389,6 +12452,7 @@ export const listBotVersionReplicas: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBotVersionReplicas",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12442,6 +12506,7 @@ export const listBotVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBotVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12492,6 +12557,7 @@ export const listBuiltInIntents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBuiltInIntents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12537,6 +12603,7 @@ export const listBuiltInSlotTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBuiltInSlotTypes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12584,6 +12651,7 @@ export const listCustomVocabularyItems: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCustomVocabularyItems",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12623,6 +12691,7 @@ export const listExports: API.OperationMethod<
   input: ListExportsRequest,
   output: ListExportsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "ListExports",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12662,6 +12731,7 @@ export const listImports: API.OperationMethod<
   input: ListImportsRequest,
   output: ListImportsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "ListImports",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12720,6 +12790,7 @@ export const listIntentMetrics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListIntentMetrics",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12757,6 +12828,7 @@ export const listIntentPaths: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListIntentPaths",
 }));
 export type ListIntentsError =
   | InternalServerException
@@ -12796,6 +12868,7 @@ export const listIntents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListIntents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12854,6 +12927,7 @@ export const listIntentStageMetrics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListIntentStageMetrics",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12902,6 +12976,7 @@ export const listRecommendedIntents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRecommendedIntents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12952,6 +13027,7 @@ export const listSessionAnalyticsData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSessionAnalyticsData",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -13010,6 +13086,7 @@ export const listSessionMetrics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSessionMetrics",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -13054,6 +13131,7 @@ export const listSlots: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSlots",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -13098,6 +13176,7 @@ export const listSlotTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSlotTypes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -13128,6 +13207,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTestExecutionResultItemsError =
   | InternalServerException
@@ -13169,6 +13249,7 @@ export const listTestExecutionResultItems: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTestExecutionResultItems",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -13213,6 +13294,7 @@ export const listTestExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTestExecutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -13259,6 +13341,7 @@ export const listTestSetRecords: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTestSetRecords",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -13303,6 +13386,7 @@ export const listTestSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTestSets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -13362,6 +13446,7 @@ export const listUtteranceAnalyticsData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListUtteranceAnalyticsData",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -13425,6 +13510,7 @@ export const listUtteranceMetrics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListUtteranceMetrics",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -13457,6 +13543,7 @@ export const searchAssociatedTranscripts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchAssociatedTranscripts",
 }));
 export type StartBotAnalyzerError =
   | ConflictException
@@ -13485,6 +13572,7 @@ export const startBotAnalyzer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartBotAnalyzer",
 }));
 export type StartBotRecommendationError =
   | ConflictException
@@ -13516,6 +13604,7 @@ export const startBotRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartBotRecommendation",
 }));
 export type StartBotResourceGenerationError =
   | ConflictException
@@ -13548,6 +13637,7 @@ export const startBotResourceGeneration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartBotResourceGeneration",
 }));
 export type StartImportError =
   | ConflictException
@@ -13577,6 +13667,7 @@ export const startImport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartImport",
 }));
 export type StartTestExecutionError =
   | ConflictException
@@ -13605,6 +13696,7 @@ export const startTestExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartTestExecution",
 }));
 export type StartTestSetGenerationError =
   | ConflictException
@@ -13633,6 +13725,7 @@ export const startTestSetGeneration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartTestSetGeneration",
 }));
 export type StopBotAnalyzerError =
   | InternalServerException
@@ -13657,6 +13750,7 @@ export const stopBotAnalyzer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopBotAnalyzer",
 }));
 export type StopBotRecommendationError =
   | ConflictException
@@ -13687,6 +13781,7 @@ export const stopBotRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopBotRecommendation",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -13713,6 +13808,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -13737,6 +13833,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateBotError =
   | ConflictException
@@ -13765,6 +13862,7 @@ export const updateBot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateBot",
 }));
 export type UpdateBotAliasError =
   | ConflictException
@@ -13793,6 +13891,7 @@ export const updateBotAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateBotAlias",
 }));
 export type UpdateBotLocaleError =
   | ConflictException
@@ -13821,6 +13920,7 @@ export const updateBotLocale: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateBotLocale",
 }));
 export type UpdateBotRecommendationError =
   | ConflictException
@@ -13851,6 +13951,7 @@ export const updateBotRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateBotRecommendation",
 }));
 export type UpdateExportError =
   | ConflictException
@@ -13884,6 +13985,7 @@ export const updateExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateExport",
 }));
 export type UpdateIntentError =
   | ConflictException
@@ -13912,6 +14014,7 @@ export const updateIntent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateIntent",
 }));
 export type UpdateResourcePolicyError =
   | InternalServerException
@@ -13942,6 +14045,7 @@ export const updateResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateResourcePolicy",
 }));
 export type UpdateSlotError =
   | ConflictException
@@ -13970,6 +14074,7 @@ export const updateSlot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateSlot",
 }));
 export type UpdateSlotTypeError =
   | ConflictException
@@ -13998,6 +14103,7 @@ export const updateSlotType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateSlotType",
 }));
 export type UpdateTestSetError =
   | ConflictException
@@ -14026,4 +14132,5 @@ export const updateTestSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateTestSet",
 }));

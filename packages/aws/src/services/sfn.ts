@@ -2995,6 +2995,7 @@ export const createActivity: API.OperationMethod<
     KmsThrottlingException,
     TooManyTags,
   ],
+  operationName: "CreateActivity",
 }));
 export type CreateStateMachineError =
   | ConflictException
@@ -3062,6 +3063,7 @@ export const createStateMachine: API.OperationMethod<
     TooManyTags,
     ValidationException,
   ],
+  operationName: "CreateStateMachine",
 }));
 export type CreateStateMachineAliasError =
   | ConflictException
@@ -3120,6 +3122,7 @@ export const createStateMachineAlias: API.OperationMethod<
     StateMachineDeleting,
     ValidationException,
   ],
+  operationName: "CreateStateMachineAlias",
 }));
 export type DeleteActivityError = InvalidArn | CommonErrors;
 /**
@@ -3134,6 +3137,7 @@ export const deleteActivity: API.OperationMethod<
   input: DeleteActivityInput,
   output: DeleteActivityOutput,
   errors: [InvalidArn],
+  operationName: "DeleteActivity",
 }));
 export type DeleteStateMachineError =
   | InvalidArn
@@ -3172,6 +3176,7 @@ export const deleteStateMachine: API.OperationMethod<
   input: DeleteStateMachineInput,
   output: DeleteStateMachineOutput,
   errors: [InvalidArn, ValidationException],
+  operationName: "DeleteStateMachine",
 }));
 export type DeleteStateMachineAliasError =
   | ConflictException
@@ -3210,6 +3215,7 @@ export const deleteStateMachineAlias: API.OperationMethod<
     ResourceNotFound,
     ValidationException,
   ],
+  operationName: "DeleteStateMachineAlias",
 }));
 export type DeleteStateMachineVersionError =
   | ConflictException
@@ -3240,6 +3246,7 @@ export const deleteStateMachineVersion: API.OperationMethod<
   input: DeleteStateMachineVersionInput,
   output: DeleteStateMachineVersionOutput,
   errors: [ConflictException, InvalidArn, ValidationException],
+  operationName: "DeleteStateMachineVersion",
 }));
 export type DescribeActivityError =
   | ActivityDoesNotExist
@@ -3259,6 +3266,7 @@ export const describeActivity: API.OperationMethod<
   input: DescribeActivityInput,
   output: DescribeActivityOutput,
   errors: [ActivityDoesNotExist, InvalidArn],
+  operationName: "DescribeActivity",
 }));
 export type DescribeExecutionError =
   | ExecutionDoesNotExist
@@ -3292,6 +3300,7 @@ export const describeExecution: API.OperationMethod<
     KmsInvalidStateException,
     KmsThrottlingException,
   ],
+  operationName: "DescribeExecution",
 }));
 export type DescribeMapRunError = InvalidArn | ResourceNotFound | CommonErrors;
 /**
@@ -3306,6 +3315,7 @@ export const describeMapRun: API.OperationMethod<
   input: DescribeMapRunInput,
   output: DescribeMapRunOutput,
   errors: [InvalidArn, ResourceNotFound],
+  operationName: "DescribeMapRun",
 }));
 export type DescribeStateMachineError =
   | InvalidArn
@@ -3357,6 +3367,7 @@ export const describeStateMachine: API.OperationMethod<
     KmsThrottlingException,
     StateMachineDoesNotExist,
   ],
+  operationName: "DescribeStateMachine",
 }));
 export type DescribeStateMachineAliasError =
   | InvalidArn
@@ -3385,6 +3396,7 @@ export const describeStateMachineAlias: API.OperationMethod<
   input: DescribeStateMachineAliasInput,
   output: DescribeStateMachineAliasOutput,
   errors: [InvalidArn, ResourceNotFound, ValidationException],
+  operationName: "DescribeStateMachineAlias",
 }));
 export type DescribeStateMachineForExecutionError =
   | ExecutionDoesNotExist
@@ -3418,6 +3430,7 @@ export const describeStateMachineForExecution: API.OperationMethod<
     KmsInvalidStateException,
     KmsThrottlingException,
   ],
+  operationName: "DescribeStateMachineForExecution",
 }));
 export type GetActivityTaskError =
   | ActivityDoesNotExist
@@ -3460,6 +3473,7 @@ export const getActivityTask: API.OperationMethod<
     KmsInvalidStateException,
     KmsThrottlingException,
   ],
+  operationName: "GetActivityTask",
 }));
 export type GetExecutionHistoryError =
   | ExecutionDoesNotExist
@@ -3510,6 +3524,7 @@ export const getExecutionHistory: API.OperationMethod<
     KmsInvalidStateException,
     KmsThrottlingException,
   ],
+  operationName: "GetExecutionHistory",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3550,6 +3565,7 @@ export const listActivities: API.OperationMethod<
   input: ListActivitiesInput,
   output: ListActivitiesOutput,
   errors: [InvalidToken],
+  operationName: "ListActivities",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3611,6 +3627,7 @@ export const listExecutions: API.OperationMethod<
     StateMachineTypeNotSupported,
     ValidationException,
   ],
+  operationName: "ListExecutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3650,6 +3667,7 @@ export const listMapRuns: API.OperationMethod<
   input: ListMapRunsInput,
   output: ListMapRunsOutput,
   errors: [ExecutionDoesNotExist, InvalidArn, InvalidToken],
+  operationName: "ListMapRuns",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3697,6 +3715,7 @@ export const listStateMachineAliases: API.OperationMethod<
     StateMachineDeleting,
     StateMachineDoesNotExist,
   ],
+  operationName: "ListStateMachineAliases",
 }));
 export type ListStateMachinesError = InvalidToken | CommonErrors;
 /**
@@ -3731,6 +3750,7 @@ export const listStateMachines: API.OperationMethod<
   input: ListStateMachinesInput,
   output: ListStateMachinesOutput,
   errors: [InvalidToken],
+  operationName: "ListStateMachines",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3766,6 +3786,7 @@ export const listStateMachineVersions: API.OperationMethod<
   input: ListStateMachineVersionsInput,
   output: ListStateMachineVersionsOutput,
   errors: [InvalidArn, InvalidToken, ValidationException],
+  operationName: "ListStateMachineVersions",
 }));
 export type ListTagsForResourceError =
   | InvalidArn
@@ -3785,6 +3806,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [InvalidArn, ResourceNotFound],
+  operationName: "ListTagsForResource",
 }));
 export type PublishStateMachineVersionError =
   | ConflictException
@@ -3831,6 +3853,7 @@ export const publishStateMachineVersion: API.OperationMethod<
     StateMachineDoesNotExist,
     ValidationException,
   ],
+  operationName: "PublishStateMachineVersion",
 }));
 export type RedriveExecutionError =
   | ExecutionDoesNotExist
@@ -3875,6 +3898,7 @@ export const redriveExecution: API.OperationMethod<
     InvalidArn,
     ValidationException,
   ],
+  operationName: "RedriveExecution",
 }));
 export type SendTaskFailureError =
   | InvalidToken
@@ -3908,6 +3932,7 @@ export const sendTaskFailure: API.OperationMethod<
     TaskDoesNotExist,
     TaskTimedOut,
   ],
+  operationName: "SendTaskFailure",
 }));
 export type SendTaskHeartbeatError =
   | InvalidToken
@@ -3939,6 +3964,7 @@ export const sendTaskHeartbeat: API.OperationMethod<
   input: SendTaskHeartbeatInput,
   output: SendTaskHeartbeatOutput,
   errors: [InvalidToken, TaskDoesNotExist, TaskTimedOut],
+  operationName: "SendTaskHeartbeat",
 }));
 export type SendTaskSuccessError =
   | InvalidOutput
@@ -3971,6 +3997,7 @@ export const sendTaskSuccess: API.OperationMethod<
     TaskDoesNotExist,
     TaskTimedOut,
   ],
+  operationName: "SendTaskSuccess",
 }));
 export type StartExecutionError =
   | ExecutionAlreadyExists
@@ -4042,6 +4069,7 @@ export const startExecution: API.OperationMethod<
     StateMachineDoesNotExist,
     ValidationException,
   ],
+  operationName: "StartExecution",
 }));
 export type StartSyncExecutionError =
   | InvalidArn
@@ -4085,6 +4113,7 @@ export const startSyncExecution: API.OperationMethod<
     StateMachineDoesNotExist,
     StateMachineTypeNotSupported,
   ],
+  operationName: "StartSyncExecution",
 }));
 export type StopExecutionError =
   | ExecutionDoesNotExist
@@ -4119,6 +4148,7 @@ export const stopExecution: API.OperationMethod<
     KmsThrottlingException,
     ValidationException,
   ],
+  operationName: "StopExecution",
 }));
 export type TagResourceError =
   | InvalidArn
@@ -4144,6 +4174,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [InvalidArn, ResourceNotFound, TooManyTags],
+  operationName: "TagResource",
 }));
 export type TestStateError =
   | InvalidArn
@@ -4195,6 +4226,7 @@ export const testState: API.OperationMethod<
     InvalidExecutionInput,
     ValidationException,
   ],
+  operationName: "TestState",
 }));
 export type UntagResourceError = InvalidArn | ResourceNotFound | CommonErrors;
 /**
@@ -4209,6 +4241,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [InvalidArn, ResourceNotFound],
+  operationName: "UntagResource",
 }));
 export type UpdateMapRunError =
   | InvalidArn
@@ -4227,6 +4260,7 @@ export const updateMapRun: API.OperationMethod<
   input: UpdateMapRunInput,
   output: UpdateMapRunOutput,
   errors: [InvalidArn, ResourceNotFound, ValidationException],
+  operationName: "UpdateMapRun",
 }));
 export type UpdateStateMachineError =
   | ConflictException
@@ -4306,6 +4340,7 @@ export const updateStateMachine: API.OperationMethod<
     StateMachineDoesNotExist,
     ValidationException,
   ],
+  operationName: "UpdateStateMachine",
 }));
 export type UpdateStateMachineAliasError =
   | ConflictException
@@ -4354,6 +4389,7 @@ export const updateStateMachineAlias: API.OperationMethod<
     StateMachineDeleting,
     ValidationException,
   ],
+  operationName: "UpdateStateMachineAlias",
 }));
 export type ValidateStateMachineDefinitionError =
   | ValidationException
@@ -4401,4 +4437,5 @@ export const validateStateMachineDefinition: API.OperationMethod<
   input: ValidateStateMachineDefinitionInput,
   output: ValidateStateMachineDefinitionOutput,
   errors: [ValidationException],
+  operationName: "ValidateStateMachineDefinition",
 }));

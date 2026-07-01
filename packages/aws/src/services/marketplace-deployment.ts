@@ -311,6 +311,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -339,6 +340,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -367,6 +369,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type PutDeploymentParameterError =
   | AccessDeniedException
@@ -397,4 +400,5 @@ export const putDeploymentParameter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutDeploymentParameter",
 }));

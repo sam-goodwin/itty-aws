@@ -1569,6 +1569,7 @@ export const addTags: API.OperationMethod<
     DuplicateTagKeysException,
     TooManyTagsException,
   ],
+  operationName: "AddTags",
 }));
 export type ApplySecurityGroupsToLoadBalancerError =
   | AccessPointNotFoundException
@@ -1594,6 +1595,7 @@ export const applySecurityGroupsToLoadBalancer: API.OperationMethod<
     InvalidConfigurationRequestException,
     InvalidSecurityGroupException,
   ],
+  operationName: "ApplySecurityGroupsToLoadBalancer",
 }));
 export type AttachLoadBalancerToSubnetsError =
   | AccessPointNotFoundException
@@ -1622,6 +1624,7 @@ export const attachLoadBalancerToSubnets: API.OperationMethod<
     InvalidSubnetException,
     SubnetNotFoundException,
   ],
+  operationName: "AttachLoadBalancerToSubnets",
 }));
 export type ConfigureHealthCheckError =
   | AccessPointNotFoundException
@@ -1641,6 +1644,7 @@ export const configureHealthCheck: API.OperationMethod<
   input: ConfigureHealthCheckInput,
   output: ConfigureHealthCheckOutput,
   errors: [AccessPointNotFoundException],
+  operationName: "ConfigureHealthCheck",
 }));
 export type CreateAppCookieStickinessPolicyError =
   | AccessPointNotFoundException
@@ -1676,6 +1680,7 @@ export const createAppCookieStickinessPolicy: API.OperationMethod<
     InvalidConfigurationRequestException,
     TooManyPoliciesException,
   ],
+  operationName: "CreateAppCookieStickinessPolicy",
 }));
 export type CreateLBCookieStickinessPolicyError =
   | AccessPointNotFoundException
@@ -1708,6 +1713,7 @@ export const createLBCookieStickinessPolicy: API.OperationMethod<
     InvalidConfigurationRequestException,
     TooManyPoliciesException,
   ],
+  operationName: "CreateLBCookieStickinessPolicy",
 }));
 export type CreateLoadBalancerError =
   | CertificateNotFoundException
@@ -1762,6 +1768,7 @@ export const createLoadBalancer: API.OperationMethod<
     TooManyTagsException,
     UnsupportedProtocolException,
   ],
+  operationName: "CreateLoadBalancer",
 }));
 export type CreateLoadBalancerListenersError =
   | AccessPointNotFoundException
@@ -1791,6 +1798,7 @@ export const createLoadBalancerListeners: API.OperationMethod<
     InvalidConfigurationRequestException,
     UnsupportedProtocolException,
   ],
+  operationName: "CreateLoadBalancerListeners",
 }));
 export type CreateLoadBalancerPolicyError =
   | AccessPointNotFoundException
@@ -1819,6 +1827,7 @@ export const createLoadBalancerPolicy: API.OperationMethod<
     PolicyTypeNotFoundException,
     TooManyPoliciesException,
   ],
+  operationName: "CreateLoadBalancerPolicy",
 }));
 export type DeleteLoadBalancerError = CommonErrors;
 /**
@@ -1838,6 +1847,7 @@ export const deleteLoadBalancer: API.OperationMethod<
   input: DeleteAccessPointInput,
   output: DeleteAccessPointOutput,
   errors: [],
+  operationName: "DeleteLoadBalancer",
 }));
 export type DeleteLoadBalancerListenersError =
   | AccessPointNotFoundException
@@ -1854,6 +1864,7 @@ export const deleteLoadBalancerListeners: API.OperationMethod<
   input: DeleteLoadBalancerListenerInput,
   output: DeleteLoadBalancerListenerOutput,
   errors: [AccessPointNotFoundException],
+  operationName: "DeleteLoadBalancerListeners",
 }));
 export type DeleteLoadBalancerPolicyError =
   | AccessPointNotFoundException
@@ -1871,6 +1882,7 @@ export const deleteLoadBalancerPolicy: API.OperationMethod<
   input: DeleteLoadBalancerPolicyInput,
   output: DeleteLoadBalancerPolicyOutput,
   errors: [AccessPointNotFoundException, InvalidConfigurationRequestException],
+  operationName: "DeleteLoadBalancerPolicy",
 }));
 export type DeregisterInstancesFromLoadBalancerError =
   | AccessPointNotFoundException
@@ -1893,6 +1905,7 @@ export const deregisterInstancesFromLoadBalancer: API.OperationMethod<
   input: DeregisterEndPointsInput,
   output: DeregisterEndPointsOutput,
   errors: [AccessPointNotFoundException, InvalidEndPointException],
+  operationName: "DeregisterInstancesFromLoadBalancer",
 }));
 export type DescribeAccountLimitsError = CommonErrors;
 /**
@@ -1910,6 +1923,7 @@ export const describeAccountLimits: API.OperationMethod<
   input: DescribeAccountLimitsInput,
   output: DescribeAccountLimitsOutput,
   errors: [],
+  operationName: "DescribeAccountLimits",
 }));
 export type DescribeInstanceHealthError =
   | AccessPointNotFoundException
@@ -1927,6 +1941,7 @@ export const describeInstanceHealth: API.OperationMethod<
   input: DescribeEndPointStateInput,
   output: DescribeEndPointStateOutput,
   errors: [AccessPointNotFoundException, InvalidEndPointException],
+  operationName: "DescribeInstanceHealth",
 }));
 export type DescribeLoadBalancerAttributesError =
   | AccessPointNotFoundException
@@ -1947,6 +1962,7 @@ export const describeLoadBalancerAttributes: API.OperationMethod<
     AccessPointNotFoundException,
     LoadBalancerAttributeNotFoundException,
   ],
+  operationName: "DescribeLoadBalancerAttributes",
 }));
 export type DescribeLoadBalancerPoliciesError =
   | AccessPointNotFoundException
@@ -1969,6 +1985,7 @@ export const describeLoadBalancerPolicies: API.OperationMethod<
   input: DescribeLoadBalancerPoliciesInput,
   output: DescribeLoadBalancerPoliciesOutput,
   errors: [AccessPointNotFoundException, PolicyNotFoundException],
+  operationName: "DescribeLoadBalancerPolicies",
 }));
 export type DescribeLoadBalancerPolicyTypesError =
   | PolicyTypeNotFoundException
@@ -1994,6 +2011,7 @@ export const describeLoadBalancerPolicyTypes: API.OperationMethod<
   input: DescribeLoadBalancerPolicyTypesInput,
   output: DescribeLoadBalancerPolicyTypesOutput,
   errors: [PolicyTypeNotFoundException],
+  operationName: "DescribeLoadBalancerPolicyTypes",
 }));
 export type DescribeLoadBalancersError =
   | AccessPointNotFoundException
@@ -2026,6 +2044,7 @@ export const describeLoadBalancers: API.OperationMethod<
   input: DescribeAccessPointsInput,
   output: DescribeAccessPointsOutput,
   errors: [AccessPointNotFoundException, DependencyThrottleException],
+  operationName: "DescribeLoadBalancers",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -2045,6 +2064,7 @@ export const describeTags: API.OperationMethod<
   input: DescribeTagsInput,
   output: DescribeTagsOutput,
   errors: [AccessPointNotFoundException],
+  operationName: "DescribeTags",
 }));
 export type DetachLoadBalancerFromSubnetsError =
   | AccessPointNotFoundException
@@ -2066,6 +2086,7 @@ export const detachLoadBalancerFromSubnets: API.OperationMethod<
   input: DetachLoadBalancerFromSubnetsInput,
   output: DetachLoadBalancerFromSubnetsOutput,
   errors: [AccessPointNotFoundException, InvalidConfigurationRequestException],
+  operationName: "DetachLoadBalancerFromSubnets",
 }));
 export type DisableAvailabilityZonesForLoadBalancerError =
   | AccessPointNotFoundException
@@ -2094,6 +2115,7 @@ export const disableAvailabilityZonesForLoadBalancer: API.OperationMethod<
   input: RemoveAvailabilityZonesInput,
   output: RemoveAvailabilityZonesOutput,
   errors: [AccessPointNotFoundException, InvalidConfigurationRequestException],
+  operationName: "DisableAvailabilityZonesForLoadBalancer",
 }));
 export type EnableAvailabilityZonesForLoadBalancerError =
   | AccessPointNotFoundException
@@ -2117,6 +2139,7 @@ export const enableAvailabilityZonesForLoadBalancer: API.OperationMethod<
   input: AddAvailabilityZonesInput,
   output: AddAvailabilityZonesOutput,
   errors: [AccessPointNotFoundException],
+  operationName: "EnableAvailabilityZonesForLoadBalancer",
 }));
 export type ModifyLoadBalancerAttributesError =
   | AccessPointNotFoundException
@@ -2153,6 +2176,7 @@ export const modifyLoadBalancerAttributes: API.OperationMethod<
     InvalidConfigurationRequestException,
     LoadBalancerAttributeNotFoundException,
   ],
+  operationName: "ModifyLoadBalancerAttributes",
 }));
 export type RegisterInstancesWithLoadBalancerError =
   | AccessPointNotFoundException
@@ -2188,6 +2212,7 @@ export const registerInstancesWithLoadBalancer: API.OperationMethod<
   input: RegisterEndPointsInput,
   output: RegisterEndPointsOutput,
   errors: [AccessPointNotFoundException, InvalidEndPointException],
+  operationName: "RegisterInstancesWithLoadBalancer",
 }));
 export type RemoveTagsError = AccessPointNotFoundException | CommonErrors;
 /**
@@ -2202,6 +2227,7 @@ export const removeTags: API.OperationMethod<
   input: RemoveTagsInput,
   output: RemoveTagsOutput,
   errors: [AccessPointNotFoundException],
+  operationName: "RemoveTags",
 }));
 export type SetLoadBalancerListenerSSLCertificateError =
   | AccessPointNotFoundException
@@ -2232,6 +2258,7 @@ export const setLoadBalancerListenerSSLCertificate: API.OperationMethod<
     ListenerNotFoundException,
     UnsupportedProtocolException,
   ],
+  operationName: "SetLoadBalancerListenerSSLCertificate",
 }));
 export type SetLoadBalancerPoliciesForBackendServerError =
   | AccessPointNotFoundException
@@ -2266,6 +2293,7 @@ export const setLoadBalancerPoliciesForBackendServer: API.OperationMethod<
     InvalidConfigurationRequestException,
     PolicyNotFoundException,
   ],
+  operationName: "SetLoadBalancerPoliciesForBackendServer",
 }));
 export type SetLoadBalancerPoliciesOfListenerError =
   | AccessPointNotFoundException
@@ -2298,4 +2326,5 @@ export const setLoadBalancerPoliciesOfListener: API.OperationMethod<
     ListenerNotFoundException,
     PolicyNotFoundException,
   ],
+  operationName: "SetLoadBalancerPoliciesOfListener",
 }));

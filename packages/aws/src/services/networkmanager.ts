@@ -5632,6 +5632,7 @@ export const acceptAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AcceptAttachment",
 }));
 export type AssociateConnectPeerError =
   | AccessDeniedException
@@ -5666,6 +5667,7 @@ export const associateConnectPeer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateConnectPeer",
 }));
 export type AssociateCustomerGatewayError =
   | AccessDeniedException
@@ -5706,6 +5708,7 @@ export const associateCustomerGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateCustomerGateway",
 }));
 export type AssociateLinkError =
   | AccessDeniedException
@@ -5736,6 +5739,7 @@ export const associateLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateLink",
 }));
 export type AssociateTransitGatewayConnectPeerError =
   | AccessDeniedException
@@ -5772,6 +5776,7 @@ export const associateTransitGatewayConnectPeer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateTransitGatewayConnectPeer",
 }));
 export type CreateConnectAttachmentError =
   | AccessDeniedException
@@ -5804,6 +5809,7 @@ export const createConnectAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateConnectAttachment",
 }));
 export type CreateConnectionError =
   | AccessDeniedException
@@ -5832,6 +5838,7 @@ export const createConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateConnection",
 }));
 export type CreateConnectPeerError =
   | AccessDeniedException
@@ -5861,6 +5868,7 @@ export const createConnectPeer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateConnectPeer",
 }));
 export type CreateCoreNetworkError =
   | AccessDeniedException
@@ -5891,6 +5899,7 @@ export const createCoreNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateCoreNetwork",
 }));
 export type CreateCoreNetworkPrefixListAssociationError =
   | AccessDeniedException
@@ -5921,6 +5930,7 @@ export const createCoreNetworkPrefixListAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateCoreNetworkPrefixListAssociation",
 }));
 export type CreateDeviceError =
   | AccessDeniedException
@@ -5952,6 +5962,7 @@ export const createDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDevice",
 }));
 export type CreateDirectConnectGatewayAttachmentError =
   | AccessDeniedException
@@ -5980,6 +5991,7 @@ export const createDirectConnectGatewayAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDirectConnectGatewayAttachment",
 }));
 export type CreateGlobalNetworkError =
   | AccessDeniedException
@@ -6008,6 +6020,7 @@ export const createGlobalNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateGlobalNetwork",
 }));
 export type CreateLinkError =
   | AccessDeniedException
@@ -6038,6 +6051,7 @@ export const createLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateLink",
 }));
 export type CreateSiteError =
   | AccessDeniedException
@@ -6068,6 +6082,7 @@ export const createSite: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateSite",
 }));
 export type CreateSiteToSiteVpnAttachmentError =
   | AccessDeniedException
@@ -6096,6 +6111,7 @@ export const createSiteToSiteVpnAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateSiteToSiteVpnAttachment",
 }));
 export type CreateTransitGatewayPeeringError =
   | AccessDeniedException
@@ -6124,6 +6140,7 @@ export const createTransitGatewayPeering: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateTransitGatewayPeering",
 }));
 export type CreateTransitGatewayRouteTableAttachmentError =
   | AccessDeniedException
@@ -6152,6 +6169,7 @@ export const createTransitGatewayRouteTableAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateTransitGatewayRouteTableAttachment",
 }));
 export type CreateVpcAttachmentError =
   | AccessDeniedException
@@ -6180,6 +6198,7 @@ export const createVpcAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateVpcAttachment",
 }));
 export type DeleteAttachmentError =
   | AccessDeniedException
@@ -6208,6 +6227,7 @@ export const deleteAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAttachment",
 }));
 export type DeleteConnectionError =
   | AccessDeniedException
@@ -6236,6 +6256,7 @@ export const deleteConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteConnection",
 }));
 export type DeleteConnectPeerError =
   | AccessDeniedException
@@ -6264,6 +6285,7 @@ export const deleteConnectPeer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteConnectPeer",
 }));
 export type DeleteCoreNetworkError =
   | AccessDeniedException
@@ -6292,6 +6314,7 @@ export const deleteCoreNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteCoreNetwork",
 }));
 export type DeleteCoreNetworkPolicyVersionError =
   | AccessDeniedException
@@ -6320,6 +6343,7 @@ export const deleteCoreNetworkPolicyVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteCoreNetworkPolicyVersion",
 }));
 export type DeleteCoreNetworkPrefixListAssociationError =
   | AccessDeniedException
@@ -6350,6 +6374,7 @@ export const deleteCoreNetworkPrefixListAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteCoreNetworkPrefixListAssociation",
 }));
 export type DeleteDeviceError =
   | AccessDeniedException
@@ -6379,6 +6404,7 @@ export const deleteDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDevice",
 }));
 export type DeleteGlobalNetworkError =
   | AccessDeniedException
@@ -6408,6 +6434,7 @@ export const deleteGlobalNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteGlobalNetwork",
 }));
 export type DeleteLinkError =
   | AccessDeniedException
@@ -6437,6 +6464,7 @@ export const deleteLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteLink",
 }));
 export type DeletePeeringError =
   | AccessDeniedException
@@ -6465,6 +6493,7 @@ export const deletePeering: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePeering",
 }));
 export type DeleteResourcePolicyError =
   | AccessDeniedException
@@ -6491,6 +6520,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteSiteError =
   | AccessDeniedException
@@ -6519,6 +6549,7 @@ export const deleteSite: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteSite",
 }));
 export type DeregisterTransitGatewayError =
   | AccessDeniedException
@@ -6548,6 +6579,7 @@ export const deregisterTransitGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeregisterTransitGateway",
 }));
 export type DescribeGlobalNetworksError =
   | AccessDeniedException
@@ -6592,6 +6624,7 @@ export const describeGlobalNetworks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeGlobalNetworks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6626,6 +6659,7 @@ export const disassociateConnectPeer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateConnectPeer",
 }));
 export type DisassociateCustomerGatewayError =
   | AccessDeniedException
@@ -6654,6 +6688,7 @@ export const disassociateCustomerGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateCustomerGateway",
 }));
 export type DisassociateLinkError =
   | AccessDeniedException
@@ -6683,6 +6718,7 @@ export const disassociateLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateLink",
 }));
 export type DisassociateTransitGatewayConnectPeerError =
   | AccessDeniedException
@@ -6711,6 +6747,7 @@ export const disassociateTransitGatewayConnectPeer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateTransitGatewayConnectPeer",
 }));
 export type ExecuteCoreNetworkChangeSetError =
   | AccessDeniedException
@@ -6739,6 +6776,7 @@ export const executeCoreNetworkChangeSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ExecuteCoreNetworkChangeSet",
 }));
 export type GetConnectAttachmentError =
   | AccessDeniedException
@@ -6765,6 +6803,7 @@ export const getConnectAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetConnectAttachment",
 }));
 export type GetConnectionsError =
   | AccessDeniedException
@@ -6806,6 +6845,7 @@ export const getConnections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetConnections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6838,6 +6878,7 @@ export const getConnectPeer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetConnectPeer",
 }));
 export type GetConnectPeerAssociationsError =
   | AccessDeniedException
@@ -6881,6 +6922,7 @@ export const getConnectPeerAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetConnectPeerAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6913,6 +6955,7 @@ export const getCoreNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCoreNetwork",
 }));
 export type GetCoreNetworkChangeEventsError =
   | AccessDeniedException
@@ -6954,6 +6997,7 @@ export const getCoreNetworkChangeEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCoreNetworkChangeEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7001,6 +7045,7 @@ export const getCoreNetworkChangeSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCoreNetworkChangeSet",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7033,6 +7078,7 @@ export const getCoreNetworkPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCoreNetworkPolicy",
 }));
 export type GetCustomerGatewayAssociationsError =
   | AccessDeniedException
@@ -7077,6 +7123,7 @@ export const getCustomerGatewayAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCustomerGatewayAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7124,6 +7171,7 @@ export const getDevices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDevices",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7156,6 +7204,7 @@ export const getDirectConnectGatewayAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDirectConnectGatewayAttachment",
 }));
 export type GetLinkAssociationsError =
   | AccessDeniedException
@@ -7198,6 +7247,7 @@ export const getLinkAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetLinkAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7247,6 +7297,7 @@ export const getLinks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetLinks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7292,6 +7343,7 @@ export const getNetworkResourceCounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetNetworkResourceCounts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7339,6 +7391,7 @@ export const getNetworkResourceRelationships: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetNetworkResourceRelationships",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7388,6 +7441,7 @@ export const getNetworkResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetNetworkResources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7420,6 +7474,7 @@ export const getNetworkRoutes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetNetworkRoutes",
 }));
 export type GetNetworkTelemetryError =
   | AccessDeniedException
@@ -7461,6 +7516,7 @@ export const getNetworkTelemetry: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetNetworkTelemetry",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7491,6 +7547,7 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type GetRouteAnalysisError =
   | AccessDeniedException
@@ -7517,6 +7574,7 @@ export const getRouteAnalysis: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRouteAnalysis",
 }));
 export type GetSitesError =
   | AccessDeniedException
@@ -7558,6 +7616,7 @@ export const getSites: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSites",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7590,6 +7649,7 @@ export const getSiteToSiteVpnAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSiteToSiteVpnAttachment",
 }));
 export type GetTransitGatewayConnectPeerAssociationsError =
   | AccessDeniedException
@@ -7633,6 +7693,7 @@ export const getTransitGatewayConnectPeerAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTransitGatewayConnectPeerAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7665,6 +7726,7 @@ export const getTransitGatewayPeering: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTransitGatewayPeering",
 }));
 export type GetTransitGatewayRegistrationsError =
   | AccessDeniedException
@@ -7707,6 +7769,7 @@ export const getTransitGatewayRegistrations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTransitGatewayRegistrations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7739,6 +7802,7 @@ export const getTransitGatewayRouteTableAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTransitGatewayRouteTableAttachment",
 }));
 export type GetVpcAttachmentError =
   | AccessDeniedException
@@ -7765,6 +7829,7 @@ export const getVpcAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetVpcAttachment",
 }));
 export type ListAttachmentRoutingPolicyAssociationsError =
   | AccessDeniedException
@@ -7806,6 +7871,7 @@ export const listAttachmentRoutingPolicyAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAttachmentRoutingPolicyAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7851,6 +7917,7 @@ export const listAttachments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAttachments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7896,6 +7963,7 @@ export const listConnectPeers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListConnectPeers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7943,6 +8011,7 @@ export const listCoreNetworkPolicyVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCoreNetworkPolicyVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7990,6 +8059,7 @@ export const listCoreNetworkPrefixListAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCoreNetworkPrefixListAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8037,6 +8107,7 @@ export const listCoreNetworkRoutingInformation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCoreNetworkRoutingInformation",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8082,6 +8153,7 @@ export const listCoreNetworks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCoreNetworks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8102,6 +8174,7 @@ export const listOrganizationServiceAccessStatus: API.OperationMethod<
   input: ListOrganizationServiceAccessStatusRequest,
   output: ListOrganizationServiceAccessStatusResponse,
   errors: [],
+  operationName: "ListOrganizationServiceAccessStatus",
 }));
 export type ListPeeringsError =
   | AccessDeniedException
@@ -8141,6 +8214,7 @@ export const listPeerings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPeerings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8173,6 +8247,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutAttachmentRoutingPolicyLabelError =
   | AccessDeniedException
@@ -8203,6 +8278,7 @@ export const putAttachmentRoutingPolicyLabel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutAttachmentRoutingPolicyLabel",
 }));
 export type PutCoreNetworkPolicyError =
   | AccessDeniedException
@@ -8233,6 +8309,7 @@ export const putCoreNetworkPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutCoreNetworkPolicy",
 }));
 export type PutResourcePolicyError =
   | AccessDeniedException
@@ -8261,6 +8338,7 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type RegisterTransitGatewayError =
   | AccessDeniedException
@@ -8293,6 +8371,7 @@ export const registerTransitGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RegisterTransitGateway",
 }));
 export type RejectAttachmentError =
   | AccessDeniedException
@@ -8321,6 +8400,7 @@ export const rejectAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RejectAttachment",
 }));
 export type RemoveAttachmentRoutingPolicyLabelError =
   | AccessDeniedException
@@ -8351,6 +8431,7 @@ export const removeAttachmentRoutingPolicyLabel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RemoveAttachmentRoutingPolicyLabel",
 }));
 export type RestoreCoreNetworkPolicyVersionError =
   | AccessDeniedException
@@ -8379,6 +8460,7 @@ export const restoreCoreNetworkPolicyVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RestoreCoreNetworkPolicyVersion",
 }));
 export type StartOrganizationServiceAccessUpdateError =
   | AccessDeniedException
@@ -8407,6 +8489,7 @@ export const startOrganizationServiceAccessUpdate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartOrganizationServiceAccessUpdate",
 }));
 export type StartRouteAnalysisError =
   | AccessDeniedException
@@ -8436,6 +8519,7 @@ export const startRouteAnalysis: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartRouteAnalysis",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -8466,6 +8550,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -8494,6 +8579,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateConnectionError =
   | AccessDeniedException
@@ -8523,6 +8609,7 @@ export const updateConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateConnection",
 }));
 export type UpdateCoreNetworkError =
   | AccessDeniedException
@@ -8551,6 +8638,7 @@ export const updateCoreNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateCoreNetwork",
 }));
 export type UpdateDeviceError =
   | AccessDeniedException
@@ -8580,6 +8668,7 @@ export const updateDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDevice",
 }));
 export type UpdateDirectConnectGatewayAttachmentError =
   | AccessDeniedException
@@ -8608,6 +8697,7 @@ export const updateDirectConnectGatewayAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDirectConnectGatewayAttachment",
 }));
 export type UpdateGlobalNetworkError =
   | AccessDeniedException
@@ -8637,6 +8727,7 @@ export const updateGlobalNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateGlobalNetwork",
 }));
 export type UpdateLinkError =
   | AccessDeniedException
@@ -8668,6 +8759,7 @@ export const updateLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateLink",
 }));
 export type UpdateNetworkResourceMetadataError =
   | AccessDeniedException
@@ -8696,6 +8788,7 @@ export const updateNetworkResourceMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateNetworkResourceMetadata",
 }));
 export type UpdateSiteError =
   | AccessDeniedException
@@ -8725,6 +8818,7 @@ export const updateSite: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateSite",
 }));
 export type UpdateVpcAttachmentError =
   | AccessDeniedException
@@ -8753,4 +8847,5 @@ export const updateVpcAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateVpcAttachment",
 }));

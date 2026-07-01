@@ -1859,6 +1859,7 @@ export const getApplicationComponentDetails: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetApplicationComponentDetails",
 }));
 export type GetApplicationComponentStrategiesError =
   | InternalServerException
@@ -1882,6 +1883,7 @@ export const getApplicationComponentStrategies: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetApplicationComponentStrategies",
 }));
 export type GetAssessmentError =
   | AccessDeniedException
@@ -1906,6 +1908,7 @@ export const getAssessment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetAssessment",
 }));
 export type GetImportFileTaskError =
   | AccessDeniedException
@@ -1932,6 +1935,7 @@ export const getImportFileTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetImportFileTask",
 }));
 export type GetLatestAssessmentIdError =
   | AccessDeniedException
@@ -1956,6 +1960,7 @@ export const getLatestAssessmentId: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  operationName: "GetLatestAssessmentId",
 }));
 export type GetPortfolioPreferencesError =
   | AccessDeniedException
@@ -1980,6 +1985,7 @@ export const getPortfolioPreferences: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetPortfolioPreferences",
 }));
 export type GetPortfolioSummaryError =
   | AccessDeniedException
@@ -1999,6 +2005,7 @@ export const getPortfolioSummary: API.OperationMethod<
   input: GetPortfolioSummaryRequest,
   output: GetPortfolioSummaryResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
+  operationName: "GetPortfolioSummary",
 }));
 export type GetRecommendationReportDetailsError =
   | AccessDeniedException
@@ -2025,6 +2032,7 @@ export const getRecommendationReportDetails: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRecommendationReportDetails",
 }));
 export type GetServerDetailsError =
   | AccessDeniedException
@@ -2066,6 +2074,7 @@ export const getServerDetails: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetServerDetails",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2098,6 +2107,7 @@ export const getServerStrategies: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetServerStrategies",
 }));
 export type ListAnalyzableServersError =
   | AccessDeniedException
@@ -2137,6 +2147,7 @@ export const listAnalyzableServers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAnalyzableServers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2182,6 +2193,7 @@ export const listApplicationComponents: API.OperationMethod<
     ServiceLinkedRoleLockClientException,
     ValidationException,
   ],
+  operationName: "ListApplicationComponents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2227,6 +2239,7 @@ export const listCollectors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCollectors",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2272,6 +2285,7 @@ export const listImportFileTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListImportFileTask",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2317,6 +2331,7 @@ export const listServers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListServers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2349,6 +2364,7 @@ export const putPortfolioPreferences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutPortfolioPreferences",
 }));
 export type StartAssessmentError =
   | AccessDeniedException
@@ -2373,6 +2389,7 @@ export const startAssessment: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "StartAssessment",
 }));
 export type StartImportFileTaskError =
   | AccessDeniedException
@@ -2399,6 +2416,7 @@ export const startImportFileTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartImportFileTask",
 }));
 export type StartRecommendationReportGenerationError =
   | AccessDeniedException
@@ -2425,6 +2443,7 @@ export const startRecommendationReportGeneration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartRecommendationReportGeneration",
 }));
 export type StopAssessmentError =
   | AccessDeniedException
@@ -2449,6 +2468,7 @@ export const stopAssessment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopAssessment",
 }));
 export type UpdateApplicationComponentConfigError =
   | InternalServerException
@@ -2473,6 +2493,7 @@ export const updateApplicationComponentConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateApplicationComponentConfig",
 }));
 export type UpdateServerConfigError =
   | InternalServerException
@@ -2497,4 +2518,5 @@ export const updateServerConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateServerConfig",
 }));

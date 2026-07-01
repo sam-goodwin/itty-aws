@@ -937,6 +937,7 @@ export const associateCreatedArtifact: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  operationName: "AssociateCreatedArtifact",
 }));
 export type AssociateDiscoveredResourceError =
   | AccessDeniedException
@@ -974,6 +975,7 @@ export const associateDiscoveredResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  operationName: "AssociateDiscoveredResource",
 }));
 export type AssociateSourceResourceError =
   | AccessDeniedException
@@ -1007,6 +1009,7 @@ export const associateSourceResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  operationName: "AssociateSourceResource",
 }));
 export type CreateProgressUpdateStreamError =
   | AccessDeniedException
@@ -1043,6 +1046,7 @@ export const createProgressUpdateStream: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  operationName: "CreateProgressUpdateStream",
 }));
 export type DeleteProgressUpdateStreamError =
   | AccessDeniedException
@@ -1099,6 +1103,7 @@ export const deleteProgressUpdateStream: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  operationName: "DeleteProgressUpdateStream",
 }));
 export type DescribeApplicationStateError =
   | AccessDeniedException
@@ -1131,6 +1136,7 @@ export const describeApplicationState: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeApplicationState",
 }));
 export type DescribeMigrationTaskError =
   | AccessDeniedException
@@ -1161,6 +1167,7 @@ export const describeMigrationTask: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeMigrationTask",
 }));
 export type DisassociateCreatedArtifactError =
   | AccessDeniedException
@@ -1206,6 +1213,7 @@ export const disassociateCreatedArtifact: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  operationName: "DisassociateCreatedArtifact",
 }));
 export type DisassociateDiscoveredResourceError =
   | AccessDeniedException
@@ -1241,6 +1249,7 @@ export const disassociateDiscoveredResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  operationName: "DisassociateDiscoveredResource",
 }));
 export type DisassociateSourceResourceError =
   | AccessDeniedException
@@ -1273,6 +1282,7 @@ export const disassociateSourceResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  operationName: "DisassociateSourceResource",
 }));
 export type ImportMigrationTaskError =
   | AccessDeniedException
@@ -1311,6 +1321,7 @@ export const importMigrationTask: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  operationName: "ImportMigrationTask",
 }));
 export type ListApplicationStatesError =
   | AccessDeniedException
@@ -1356,6 +1367,7 @@ export const listApplicationStates: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListApplicationStates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1416,6 +1428,7 @@ export const listCreatedArtifacts: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListCreatedArtifacts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1467,6 +1480,7 @@ export const listDiscoveredResources: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListDiscoveredResources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1528,6 +1542,7 @@ export const listMigrationTasks: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListMigrationTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1578,6 +1593,7 @@ export const listMigrationTaskUpdates: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListMigrationTaskUpdates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1627,6 +1643,7 @@ export const listProgressUpdateStreams: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListProgressUpdateStreams",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1677,6 +1694,7 @@ export const listSourceResources: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ListSourceResources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1722,6 +1740,7 @@ export const notifyApplicationState: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  operationName: "NotifyApplicationState",
 }));
 export type NotifyMigrationTaskStateError =
   | AccessDeniedException
@@ -1766,6 +1785,7 @@ export const notifyMigrationTaskState: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  operationName: "NotifyMigrationTaskState",
 }));
 export type PutResourceAttributesError =
   | AccessDeniedException
@@ -1817,4 +1837,5 @@ export const putResourceAttributes: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  operationName: "PutResourceAttributes",
 }));

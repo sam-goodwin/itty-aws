@@ -1047,6 +1047,7 @@ export const getGroupId: API.OperationMethod<
   input: GetGroupIdRequest,
   output: GetGroupIdResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetGroupId",
 }));
 export type GetGroupMembershipIdError =
   | ResourceNotFoundException
@@ -1066,6 +1067,7 @@ export const getGroupMembershipId: API.OperationMethod<
   input: GetGroupMembershipIdRequest,
   output: GetGroupMembershipIdResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetGroupMembershipId",
 }));
 export type GetUserIdError =
   | ResourceNotFoundException
@@ -1085,6 +1087,7 @@ export const getUserId: API.OperationMethod<
   input: GetUserIdRequest,
   output: GetUserIdResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetUserId",
 }));
 export type IsMemberInGroupsError =
   | ResourceNotFoundException
@@ -1104,6 +1107,7 @@ export const isMemberInGroups: API.OperationMethod<
   input: IsMemberInGroupsRequest,
   output: IsMemberInGroupsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "IsMemberInGroups",
 }));
 export type ListGroupMembershipsForMemberError =
   | ResourceNotFoundException
@@ -1138,6 +1142,7 @@ export const listGroupMembershipsForMember: API.OperationMethod<
   input: ListGroupMembershipsForMemberRequest,
   output: ListGroupMembershipsForMemberResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListGroupMembershipsForMember",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1168,6 +1173,7 @@ export const createGroupMembership: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateGroupMembership",
 }));
 export type DescribeGroupMembershipError =
   | ResourceNotFoundException
@@ -1187,6 +1193,7 @@ export const describeGroupMembership: API.OperationMethod<
   input: DescribeGroupMembershipRequest,
   output: DescribeGroupMembershipResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "DescribeGroupMembership",
 }));
 export type DeleteGroupMembershipError =
   | ConflictException
@@ -1205,6 +1212,7 @@ export const deleteGroupMembership: API.OperationMethod<
   input: DeleteGroupMembershipRequest,
   output: DeleteGroupMembershipResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "DeleteGroupMembership",
 }));
 export type ListGroupMembershipsError =
   | ResourceNotFoundException
@@ -1239,6 +1247,7 @@ export const listGroupMemberships: API.OperationMethod<
   input: ListGroupMembershipsRequest,
   output: ListGroupMembershipsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListGroupMemberships",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1269,6 +1278,7 @@ export const createGroup: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateGroup",
 }));
 export type DescribeGroupError =
   | ResourceNotFoundException
@@ -1288,6 +1298,7 @@ export const describeGroup: API.OperationMethod<
   input: DescribeGroupRequest,
   output: DescribeGroupResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "DescribeGroup",
 }));
 export type UpdateGroupError =
   | ConflictException
@@ -1312,6 +1323,7 @@ export const updateGroup: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateGroup",
 }));
 export type DeleteGroupError =
   | ConflictException
@@ -1330,6 +1342,7 @@ export const deleteGroup: API.OperationMethod<
   input: DeleteGroupRequest,
   output: DeleteGroupResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "DeleteGroup",
 }));
 export type ListGroupsError =
   | ResourceNotFoundException
@@ -1364,6 +1377,7 @@ export const listGroups: API.OperationMethod<
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1394,6 +1408,7 @@ export const createUser: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateUser",
 }));
 export type DescribeUserError =
   | ResourceNotFoundException
@@ -1413,6 +1428,7 @@ export const describeUser: API.OperationMethod<
   input: DescribeUserRequest,
   output: DescribeUserResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "DescribeUser",
 }));
 export type UpdateUserError =
   | ConflictException
@@ -1437,6 +1453,7 @@ export const updateUser: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateUser",
 }));
 export type DeleteUserError =
   | ConflictException
@@ -1455,6 +1472,7 @@ export const deleteUser: API.OperationMethod<
   input: DeleteUserRequest,
   output: DeleteUserResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "DeleteUser",
 }));
 export type ListUsersError =
   | ResourceNotFoundException
@@ -1489,6 +1507,7 @@ export const listUsers: API.OperationMethod<
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListUsers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

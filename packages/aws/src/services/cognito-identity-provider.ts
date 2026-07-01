@@ -6877,6 +6877,7 @@ export const addCustomAttributes: API.OperationMethod<
     TooManyRequestsException,
     UserImportInProgressException,
   ],
+  operationName: "AddCustomAttributes",
 }));
 export type AddUserPoolClientSecretError =
   | AccessDeniedException
@@ -6905,6 +6906,7 @@ export const addUserPoolClientSecret: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "AddUserPoolClientSecret",
 }));
 export type AdminAddUserToGroupError =
   | InternalErrorException
@@ -6947,6 +6949,7 @@ export const adminAddUserToGroup: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  operationName: "AdminAddUserToGroup",
 }));
 export type AdminConfirmSignUpError =
   | InternalErrorException
@@ -7005,6 +7008,7 @@ export const adminConfirmSignUp: API.OperationMethod<
     UserLambdaValidationException,
     UserNotFoundException,
   ],
+  operationName: "AdminConfirmSignUp",
 }));
 export type AdminCreateUserError =
   | CodeDeliveryFailureException
@@ -7100,6 +7104,7 @@ export const adminCreateUser: API.OperationMethod<
     UsernameExistsException,
     UserNotFoundException,
   ],
+  operationName: "AdminCreateUser",
 }));
 export type AdminDeleteUserError =
   | InternalErrorException
@@ -7140,6 +7145,7 @@ export const adminDeleteUser: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  operationName: "AdminDeleteUser",
 }));
 export type AdminDeleteUserAttributesError =
   | InternalErrorException
@@ -7182,6 +7188,7 @@ export const adminDeleteUserAttributes: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  operationName: "AdminDeleteUserAttributes",
 }));
 export type AdminDisableProviderForUserError =
   | AliasExistsException
@@ -7250,6 +7257,7 @@ export const adminDisableProviderForUser: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  operationName: "AdminDisableProviderForUser",
 }));
 export type AdminDisableUserError =
   | InternalErrorException
@@ -7292,6 +7300,7 @@ export const adminDisableUser: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  operationName: "AdminDisableUser",
 }));
 export type AdminEnableUserError =
   | InternalErrorException
@@ -7333,6 +7342,7 @@ export const adminEnableUser: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  operationName: "AdminEnableUser",
 }));
 export type AdminForgetDeviceError =
   | InternalErrorException
@@ -7377,6 +7387,7 @@ export const adminForgetDevice: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  operationName: "AdminForgetDevice",
 }));
 export type AdminGetDeviceError =
   | InternalErrorException
@@ -7418,6 +7429,7 @@ export const adminGetDevice: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "AdminGetDevice",
 }));
 export type AdminGetUserError =
   | InternalErrorException
@@ -7462,6 +7474,7 @@ export const adminGetUser: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  operationName: "AdminGetUser",
 }));
 export type AdminInitiateAuthError =
   | InternalErrorException
@@ -7545,6 +7558,7 @@ export const adminInitiateAuth: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "AdminInitiateAuth",
 }));
 export type AdminLinkProviderForUserError =
   | AliasExistsException
@@ -7603,6 +7617,7 @@ export const adminLinkProviderForUser: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  operationName: "AdminLinkProviderForUser",
 }));
 export type AdminListDevicesError =
   | InternalErrorException
@@ -7646,6 +7661,7 @@ export const adminListDevices: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "AdminListDevices",
 }));
 export type AdminListGroupsForUserError =
   | InternalErrorException
@@ -7703,6 +7719,7 @@ export const adminListGroupsForUser: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  operationName: "AdminListGroupsForUser",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7767,6 +7784,7 @@ export const adminListUserAuthEvents: API.OperationMethod<
     UserNotFoundException,
     UserPoolAddOnNotEnabledException,
   ],
+  operationName: "AdminListUserAuthEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7815,6 +7833,7 @@ export const adminRemoveUserFromGroup: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  operationName: "AdminRemoveUserFromGroup",
 }));
 export type AdminResetUserPasswordError =
   | InternalErrorException
@@ -7894,6 +7913,7 @@ export const adminResetUserPassword: API.OperationMethod<
     UserLambdaValidationException,
     UserNotFoundException,
   ],
+  operationName: "AdminResetUserPassword",
 }));
 export type AdminRespondToAuthChallengeError =
   | AliasExistsException
@@ -7990,6 +8010,7 @@ export const adminRespondToAuthChallenge: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "AdminRespondToAuthChallenge",
 }));
 export type AdminSetUserMFAPreferenceError =
   | InternalErrorException
@@ -8036,6 +8057,7 @@ export const adminSetUserMFAPreference: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "AdminSetUserMFAPreference",
 }));
 export type AdminSetUserPasswordError =
   | InternalErrorException
@@ -8108,6 +8130,7 @@ export const adminSetUserPassword: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  operationName: "AdminSetUserPassword",
 }));
 export type AdminSetUserSettingsError =
   | InternalErrorException
@@ -8148,6 +8171,7 @@ export const adminSetUserSettings: API.OperationMethod<
     ResourceNotFoundException,
     UserNotFoundException,
   ],
+  operationName: "AdminSetUserSettings",
 }));
 export type AdminUpdateAuthEventFeedbackError =
   | InternalErrorException
@@ -8200,6 +8224,7 @@ export const adminUpdateAuthEventFeedback: API.OperationMethod<
     UserNotFoundException,
     UserPoolAddOnNotEnabledException,
   ],
+  operationName: "AdminUpdateAuthEventFeedback",
 }));
 export type AdminUpdateDeviceStatusError =
   | InternalErrorException
@@ -8247,6 +8272,7 @@ export const adminUpdateDeviceStatus: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  operationName: "AdminUpdateDeviceStatus",
 }));
 export type AdminUpdateUserAttributesError =
   | AliasExistsException
@@ -8327,6 +8353,7 @@ export const adminUpdateUserAttributes: API.OperationMethod<
     UserLambdaValidationException,
     UserNotFoundException,
   ],
+  operationName: "AdminUpdateUserAttributes",
 }));
 export type AdminUserGlobalSignOutError =
   | InternalErrorException
@@ -8390,6 +8417,7 @@ export const adminUserGlobalSignOut: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  operationName: "AdminUserGlobalSignOut",
 }));
 export type AssociateSoftwareTokenError =
   | ConcurrentModificationException
@@ -8433,6 +8461,7 @@ export const associateSoftwareToken: API.OperationMethod<
     ResourceNotFoundException,
     SoftwareTokenMFANotFoundException,
   ],
+  operationName: "AssociateSoftwareToken",
 }));
 export type ChangePasswordError =
   | ForbiddenException
@@ -8482,6 +8511,7 @@ export const changePassword: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "ChangePassword",
 }));
 export type CompleteWebAuthnRegistrationError =
   | ForbiddenException
@@ -8529,6 +8559,7 @@ export const completeWebAuthnRegistration: API.OperationMethod<
     WebAuthnOriginNotAllowedException,
     WebAuthnRelyingPartyMismatchException,
   ],
+  operationName: "CompleteWebAuthnRegistration",
 }));
 export type ConfirmDeviceError =
   | DeviceKeyExistsException
@@ -8585,6 +8616,7 @@ export const confirmDevice: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "ConfirmDevice",
 }));
 export type ConfirmForgotPasswordError =
   | CodeMismatchException
@@ -8643,6 +8675,7 @@ export const confirmForgotPassword: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "ConfirmForgotPassword",
 }));
 export type ConfirmSignUpError =
   | AliasExistsException
@@ -8705,6 +8738,7 @@ export const confirmSignUp: API.OperationMethod<
     UserLambdaValidationException,
     UserNotFoundException,
   ],
+  operationName: "ConfirmSignUp",
 }));
 export type CreateGroupError =
   | GroupExistsException
@@ -8748,6 +8782,7 @@ export const createGroup: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateGroup",
 }));
 export type CreateIdentityProviderError =
   | DuplicateProviderException
@@ -8790,6 +8825,7 @@ export const createIdentityProvider: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateIdentityProvider",
 }));
 export type CreateManagedLoginBrandingError =
   | ConcurrentModificationException
@@ -8849,6 +8885,7 @@ export const createManagedLoginBranding: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateManagedLoginBranding",
 }));
 export type CreateResourceServerError =
   | InternalErrorException
@@ -8891,6 +8928,7 @@ export const createResourceServer: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateResourceServer",
 }));
 export type CreateTermsError =
   | ConcurrentModificationException
@@ -8948,6 +8986,7 @@ export const createTerms: API.OperationMethod<
     TermsExistsException,
     TooManyRequestsException,
   ],
+  operationName: "CreateTerms",
 }));
 export type CreateUserImportJobError =
   | InternalErrorException
@@ -8991,6 +9030,7 @@ export const createUserImportJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateUserImportJob",
 }));
 export type CreateUserPoolError =
   | FeatureUnavailableInTierException
@@ -9059,6 +9099,7 @@ export const createUserPool: API.OperationMethod<
     TooManyRequestsException,
     UserPoolTaggingException,
   ],
+  operationName: "CreateUserPool",
 }));
 export type CreateUserPoolClientError =
   | FeatureUnavailableInTierException
@@ -9112,6 +9153,7 @@ export const createUserPoolClient: API.OperationMethod<
     ScopeDoesNotExistException,
     TooManyRequestsException,
   ],
+  operationName: "CreateUserPoolClient",
 }));
 export type CreateUserPoolDomainError =
   | ConcurrentModificationException
@@ -9165,6 +9207,7 @@ export const createUserPoolDomain: API.OperationMethod<
     OperationNotEnabledException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateUserPoolDomain",
 }));
 export type CreateUserPoolReplicaError =
   | FeatureUnavailableInTierException
@@ -9211,6 +9254,7 @@ export const createUserPoolReplica: API.OperationMethod<
     TooManyRequestsException,
     UserPoolTaggingException,
   ],
+  operationName: "CreateUserPoolReplica",
 }));
 export type DeleteGroupError =
   | InternalErrorException
@@ -9253,6 +9297,7 @@ export const deleteGroup: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteGroup",
 }));
 export type DeleteIdentityProviderError =
   | ConcurrentModificationException
@@ -9295,6 +9340,7 @@ export const deleteIdentityProvider: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedIdentityProviderException,
   ],
+  operationName: "DeleteIdentityProvider",
 }));
 export type DeleteManagedLoginBrandingError =
   | ConcurrentModificationException
@@ -9338,6 +9384,7 @@ export const deleteManagedLoginBranding: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteManagedLoginBranding",
 }));
 export type DeleteResourceServerError =
   | InternalErrorException
@@ -9380,6 +9427,7 @@ export const deleteResourceServer: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteResourceServer",
 }));
 export type DeleteTermsError =
   | ConcurrentModificationException
@@ -9420,6 +9468,7 @@ export const deleteTerms: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteTerms",
 }));
 export type DeleteUserError =
   | ForbiddenException
@@ -9464,6 +9513,7 @@ export const deleteUser: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "DeleteUser",
 }));
 export type DeleteUserAttributesError =
   | ForbiddenException
@@ -9509,6 +9559,7 @@ export const deleteUserAttributes: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "DeleteUserAttributes",
 }));
 export type DeleteUserPoolError =
   | InternalErrorException
@@ -9549,6 +9600,7 @@ export const deleteUserPool: API.OperationMethod<
     TooManyRequestsException,
     UserImportInProgressException,
   ],
+  operationName: "DeleteUserPool",
 }));
 export type DeleteUserPoolClientError =
   | ConcurrentModificationException
@@ -9580,6 +9632,7 @@ export const deleteUserPoolClient: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteUserPoolClient",
 }));
 export type DeleteUserPoolClientSecretError =
   | InternalServerException
@@ -9606,6 +9659,7 @@ export const deleteUserPoolClientSecret: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteUserPoolClientSecret",
 }));
 export type DeleteUserPoolDomainError =
   | ConcurrentModificationException
@@ -9636,6 +9690,7 @@ export const deleteUserPoolDomain: API.OperationMethod<
     OperationNotEnabledException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteUserPoolDomain",
 }));
 export type DeleteUserPoolReplicaError =
   | InternalErrorException
@@ -9675,6 +9730,7 @@ export const deleteUserPoolReplica: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteUserPoolReplica",
 }));
 export type DeleteWebAuthnCredentialError =
   | ForbiddenException
@@ -9717,6 +9773,7 @@ export const deleteWebAuthnCredential: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteWebAuthnCredential",
 }));
 export type DescribeIdentityProviderError =
   | InternalErrorException
@@ -9744,6 +9801,7 @@ export const describeIdentityProvider: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeIdentityProvider",
 }));
 export type DescribeManagedLoginBrandingError =
   | InternalErrorException
@@ -9773,6 +9831,7 @@ export const describeManagedLoginBranding: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeManagedLoginBranding",
 }));
 export type DescribeManagedLoginBrandingByClientError =
   | InternalErrorException
@@ -9802,6 +9861,7 @@ export const describeManagedLoginBrandingByClient: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeManagedLoginBrandingByClient",
 }));
 export type DescribeResourceServerError =
   | InternalErrorException
@@ -9830,6 +9890,7 @@ export const describeResourceServer: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeResourceServer",
 }));
 export type DescribeRiskConfigurationError =
   | InternalErrorException
@@ -9863,6 +9924,7 @@ export const describeRiskConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UserPoolAddOnNotEnabledException,
   ],
+  operationName: "DescribeRiskConfiguration",
 }));
 export type DescribeTermsError =
   | InternalErrorException
@@ -9901,6 +9963,7 @@ export const describeTerms: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeTerms",
 }));
 export type DescribeUserImportJobError =
   | InternalErrorException
@@ -9929,6 +9992,7 @@ export const describeUserImportJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeUserImportJob",
 }));
 export type DescribeUserPoolError =
   | InternalErrorException
@@ -9971,6 +10035,7 @@ export const describeUserPool: API.OperationMethod<
     TooManyRequestsException,
     UserPoolTaggingException,
   ],
+  operationName: "DescribeUserPool",
 }));
 export type DescribeUserPoolClientError =
   | InternalErrorException
@@ -10011,6 +10076,7 @@ export const describeUserPoolClient: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeUserPoolClient",
 }));
 export type DescribeUserPoolDomainError =
   | InternalErrorException
@@ -10048,6 +10114,7 @@ export const describeUserPoolDomain: API.OperationMethod<
     OperationNotEnabledException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeUserPoolDomain",
 }));
 export type ForgetDeviceError =
   | ForbiddenException
@@ -10094,6 +10161,7 @@ export const forgetDevice: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "ForgetDevice",
 }));
 export type ForgotPasswordError =
   | CodeDeliveryFailureException
@@ -10175,6 +10243,7 @@ export const forgotPassword: API.OperationMethod<
     UserLambdaValidationException,
     UserNotFoundException,
   ],
+  operationName: "ForgotPassword",
 }));
 export type GetCSVHeaderError =
   | InternalErrorException
@@ -10218,6 +10287,7 @@ export const getCSVHeader: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetCSVHeader",
 }));
 export type GetDeviceError =
   | ForbiddenException
@@ -10264,6 +10334,7 @@ export const getDevice: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "GetDevice",
 }));
 export type GetGroupError =
   | InternalErrorException
@@ -10305,6 +10376,7 @@ export const getGroup: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetGroup",
 }));
 export type GetIdentityProviderByIdentifierError =
   | InternalErrorException
@@ -10333,6 +10405,7 @@ export const getIdentityProviderByIdentifier: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetIdentityProviderByIdentifier",
 }));
 export type GetLogDeliveryConfigurationError =
   | InternalErrorException
@@ -10370,6 +10443,7 @@ export const getLogDeliveryConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetLogDeliveryConfiguration",
 }));
 export type GetSigningCertificateError =
   | InternalErrorException
@@ -10411,6 +10485,7 @@ export const getSigningCertificate: API.OperationMethod<
     OperationNotEnabledException,
     ResourceNotFoundException,
   ],
+  operationName: "GetSigningCertificate",
 }));
 export type GetTokensFromRefreshTokenError =
   | ForbiddenException
@@ -10455,6 +10530,7 @@ export const getTokensFromRefreshToken: API.OperationMethod<
     UserLambdaValidationException,
     UserNotFoundException,
   ],
+  operationName: "GetTokensFromRefreshToken",
 }));
 export type GetUICustomizationError =
   | InternalErrorException
@@ -10487,6 +10563,7 @@ export const getUICustomization: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetUICustomization",
 }));
 export type GetUserError =
   | ForbiddenException
@@ -10530,6 +10607,7 @@ export const getUser: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "GetUser",
 }));
 export type GetUserAttributeVerificationCodeError =
   | CodeDeliveryFailureException
@@ -10607,6 +10685,7 @@ export const getUserAttributeVerificationCode: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "GetUserAttributeVerificationCode",
 }));
 export type GetUserAuthFactorsError =
   | ForbiddenException
@@ -10656,6 +10735,7 @@ export const getUserAuthFactors: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "GetUserAuthFactors",
 }));
 export type GetUserPoolMfaConfigError =
   | InternalErrorException
@@ -10704,6 +10784,7 @@ export const getUserPoolMfaConfig: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetUserPoolMfaConfig",
 }));
 export type GlobalSignOutError =
   | ForbiddenException
@@ -10768,6 +10849,7 @@ export const globalSignOut: API.OperationMethod<
     TooManyRequestsException,
     UserNotConfirmedException,
   ],
+  operationName: "GlobalSignOut",
 }));
 export type InitiateAuthError =
   | ForbiddenException
@@ -10846,6 +10928,7 @@ export const initiateAuth: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "InitiateAuth",
 }));
 export type ListDevicesError =
   | ForbiddenException
@@ -10892,6 +10975,7 @@ export const listDevices: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "ListDevices",
 }));
 export type ListGroupsError =
   | InternalErrorException
@@ -10945,6 +11029,7 @@ export const listGroups: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11003,6 +11088,7 @@ export const listIdentityProviders: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListIdentityProviders",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11063,6 +11149,7 @@ export const listResourceServers: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListResourceServers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11099,6 +11186,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTermsError =
   | InternalErrorException
@@ -11137,6 +11225,7 @@ export const listTerms: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListTerms",
 }));
 export type ListUserImportJobsError =
   | InternalErrorException
@@ -11177,6 +11266,7 @@ export const listUserImportJobs: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListUserImportJobs",
 }));
 export type ListUserPoolClientsError =
   | InternalErrorException
@@ -11231,6 +11321,7 @@ export const listUserPoolClients: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListUserPoolClients",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11263,6 +11354,7 @@ export const listUserPoolClientSecrets: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListUserPoolClientSecrets",
 }));
 export type ListUserPoolReplicasError =
   | InternalErrorException
@@ -11303,6 +11395,7 @@ export const listUserPoolReplicas: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListUserPoolReplicas",
 }));
 export type ListUserPoolsError =
   | InternalErrorException
@@ -11352,6 +11445,7 @@ export const listUserPools: API.OperationMethod<
     NotAuthorizedException,
     TooManyRequestsException,
   ],
+  operationName: "ListUserPools",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11416,6 +11510,7 @@ export const listUsers: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListUsers",
   pagination: {
     inputToken: "PaginationToken",
     outputToken: "PaginationToken",
@@ -11476,6 +11571,7 @@ export const listUsersInGroup: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListUsersInGroup",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11522,6 +11618,7 @@ export const listWebAuthnCredentials: API.OperationMethod<
     PasswordResetRequiredException,
     TooManyRequestsException,
   ],
+  operationName: "ListWebAuthnCredentials",
 }));
 export type ResendConfirmationCodeError =
   | CodeDeliveryFailureException
@@ -11596,6 +11693,7 @@ export const resendConfirmationCode: API.OperationMethod<
     UserLambdaValidationException,
     UserNotFoundException,
   ],
+  operationName: "ResendConfirmationCode",
 }));
 export type RespondToAuthChallengeError =
   | AliasExistsException
@@ -11689,6 +11787,7 @@ export const respondToAuthChallenge: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "RespondToAuthChallenge",
 }));
 export type RevokeTokenError =
   | ForbiddenException
@@ -11728,6 +11827,7 @@ export const revokeToken: API.OperationMethod<
     UnsupportedOperationException,
     UnsupportedTokenTypeException,
   ],
+  operationName: "RevokeToken",
 }));
 export type SetLogDeliveryConfigurationError =
   | FeatureUnavailableInTierException
@@ -11759,6 +11859,7 @@ export const setLogDeliveryConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "SetLogDeliveryConfiguration",
 }));
 export type SetRiskConfigurationError =
   | CodeDeliveryFailureException
@@ -11817,6 +11918,7 @@ export const setRiskConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UserPoolAddOnNotEnabledException,
   ],
+  operationName: "SetRiskConfiguration",
 }));
 export type SetUICustomizationError =
   | InternalErrorException
@@ -11861,6 +11963,7 @@ export const setUICustomization: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "SetUICustomization",
 }));
 export type SetUserMFAPreferenceError =
   | ForbiddenException
@@ -11910,6 +12013,7 @@ export const setUserMFAPreference: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "SetUserMFAPreference",
 }));
 export type SetUserPoolMfaConfigError =
   | ConcurrentModificationException
@@ -11964,6 +12068,7 @@ export const setUserPoolMfaConfig: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "SetUserPoolMfaConfig",
 }));
 export type SetUserSettingsError =
   | ForbiddenException
@@ -12007,6 +12112,7 @@ export const setUserSettings: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "SetUserSettings",
 }));
 export type SignUpError =
   | CodeDeliveryFailureException
@@ -12086,6 +12192,7 @@ export const signUp: API.OperationMethod<
     UserLambdaValidationException,
     UsernameExistsException,
   ],
+  operationName: "SignUp",
 }));
 export type StartUserImportJobError =
   | InternalErrorException
@@ -12118,6 +12225,7 @@ export const startUserImportJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StartUserImportJob",
 }));
 export type StartWebAuthnRegistrationError =
   | ForbiddenException
@@ -12159,6 +12267,7 @@ export const startWebAuthnRegistration: API.OperationMethod<
     WebAuthnConfigurationMissingException,
     WebAuthnNotEnabledException,
   ],
+  operationName: "StartWebAuthnRegistration",
 }));
 export type StopUserImportJobError =
   | InternalErrorException
@@ -12191,6 +12300,7 @@ export const stopUserImportJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StopUserImportJob",
 }));
 export type TagResourceError =
   | InternalErrorException
@@ -12235,6 +12345,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalErrorException
@@ -12263,6 +12374,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAuthEventFeedbackError =
   | InternalErrorException
@@ -12313,6 +12425,7 @@ export const updateAuthEventFeedback: API.OperationMethod<
     UserNotFoundException,
     UserPoolAddOnNotEnabledException,
   ],
+  operationName: "UpdateAuthEventFeedback",
 }));
 export type UpdateDeviceStatusError =
   | ForbiddenException
@@ -12363,6 +12476,7 @@ export const updateDeviceStatus: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "UpdateDeviceStatus",
 }));
 export type UpdateGroupError =
   | InternalErrorException
@@ -12402,6 +12516,7 @@ export const updateGroup: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateGroup",
 }));
 export type UpdateIdentityProviderError =
   | ConcurrentModificationException
@@ -12445,6 +12560,7 @@ export const updateIdentityProvider: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedIdentityProviderException,
   ],
+  operationName: "UpdateIdentityProvider",
 }));
 export type UpdateManagedLoginBrandingError =
   | ConcurrentModificationException
@@ -12495,6 +12611,7 @@ export const updateManagedLoginBranding: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateManagedLoginBranding",
 }));
 export type UpdateResourceServerError =
   | InternalErrorException
@@ -12537,6 +12654,7 @@ export const updateResourceServer: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateResourceServer",
 }));
 export type UpdateTermsError =
   | ConcurrentModificationException
@@ -12592,6 +12710,7 @@ export const updateTerms: API.OperationMethod<
     TermsExistsException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateTerms",
 }));
 export type UpdateUserAttributesError =
   | AliasExistsException
@@ -12676,6 +12795,7 @@ export const updateUserAttributes: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "UpdateUserAttributes",
 }));
 export type UpdateUserPoolError =
   | ConcurrentModificationException
@@ -12756,6 +12876,7 @@ export const updateUserPool: API.OperationMethod<
     UserImportInProgressException,
     UserPoolTaggingException,
   ],
+  operationName: "UpdateUserPool",
 }));
 export type UpdateUserPoolClientError =
   | ConcurrentModificationException
@@ -12811,6 +12932,7 @@ export const updateUserPoolClient: API.OperationMethod<
     ScopeDoesNotExistException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateUserPoolClient",
 }));
 export type UpdateUserPoolDomainError =
   | ConcurrentModificationException
@@ -12874,6 +12996,7 @@ export const updateUserPoolDomain: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateUserPoolDomain",
 }));
 export type UpdateUserPoolReplicaError =
   | InternalErrorException
@@ -12914,6 +13037,7 @@ export const updateUserPoolReplica: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateUserPoolReplica",
 }));
 export type VerifySoftwareTokenError =
   | CodeMismatchException
@@ -12966,6 +13090,7 @@ export const verifySoftwareToken: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "VerifySoftwareToken",
 }));
 export type VerifyUserAttributeError =
   | AliasExistsException
@@ -13023,4 +13148,5 @@ export const verifyUserAttribute: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  operationName: "VerifyUserAttribute",
 }));

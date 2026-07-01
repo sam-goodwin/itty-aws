@@ -1428,6 +1428,7 @@ export const associateFraudster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateFraudster",
 }));
 export type CreateWatchlistError =
   | AccessDeniedException
@@ -1458,6 +1459,7 @@ export const createWatchlist: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateWatchlist",
 }));
 export type DeleteFraudsterError =
   | AccessDeniedException
@@ -1486,6 +1488,7 @@ export const deleteFraudster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteFraudster",
 }));
 export type DeleteSpeakerError =
   | AccessDeniedException
@@ -1514,6 +1517,7 @@ export const deleteSpeaker: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteSpeaker",
 }));
 export type DeleteWatchlistError =
   | AccessDeniedException
@@ -1544,6 +1548,7 @@ export const deleteWatchlist: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteWatchlist",
 }));
 export type DescribeFraudsterError =
   | AccessDeniedException
@@ -1570,6 +1575,7 @@ export const describeFraudster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeFraudster",
 }));
 export type DescribeFraudsterRegistrationJobError =
   | AccessDeniedException
@@ -1596,6 +1602,7 @@ export const describeFraudsterRegistrationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeFraudsterRegistrationJob",
 }));
 export type DescribeSpeakerError =
   | AccessDeniedException
@@ -1622,6 +1629,7 @@ export const describeSpeaker: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeSpeaker",
 }));
 export type DescribeSpeakerEnrollmentJobError =
   | AccessDeniedException
@@ -1648,6 +1656,7 @@ export const describeSpeakerEnrollmentJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeSpeakerEnrollmentJob",
 }));
 export type DescribeWatchlistError =
   | AccessDeniedException
@@ -1674,6 +1683,7 @@ export const describeWatchlist: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeWatchlist",
 }));
 export type DisassociateFraudsterError =
   | AccessDeniedException
@@ -1704,6 +1714,7 @@ export const disassociateFraudster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateFraudster",
 }));
 export type EvaluateSessionError =
   | AccessDeniedException
@@ -1733,6 +1744,7 @@ export const evaluateSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "EvaluateSession",
 }));
 export type ListFraudsterRegistrationJobsError =
   | AccessDeniedException
@@ -1776,6 +1788,7 @@ export const listFraudsterRegistrationJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFraudsterRegistrationJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1823,6 +1836,7 @@ export const listFraudsters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFraudsters",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1872,6 +1886,7 @@ export const listSpeakerEnrollmentJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSpeakerEnrollmentJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1919,6 +1934,7 @@ export const listSpeakers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSpeakers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1951,6 +1967,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListWatchlistsError =
   | AccessDeniedException
@@ -1992,6 +2009,7 @@ export const listWatchlists: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListWatchlists",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2033,6 +2051,7 @@ export const optOutSpeaker: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "OptOutSpeaker",
 }));
 export type StartFraudsterRegistrationJobError =
   | AccessDeniedException
@@ -2063,6 +2082,7 @@ export const startFraudsterRegistrationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartFraudsterRegistrationJob",
 }));
 export type StartSpeakerEnrollmentJobError =
   | AccessDeniedException
@@ -2093,6 +2113,7 @@ export const startSpeakerEnrollmentJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartSpeakerEnrollmentJob",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2121,6 +2142,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2149,6 +2171,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateWatchlistError =
   | AccessDeniedException
@@ -2177,6 +2200,7 @@ export const updateWatchlist: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateWatchlist",
 }));
 export type CreateDomainError =
   | AccessDeniedException
@@ -2208,6 +2232,7 @@ export const createDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDomain",
 }));
 export type DescribeDomainError =
   | AccessDeniedException
@@ -2234,6 +2259,7 @@ export const describeDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeDomain",
 }));
 export type UpdateDomainError =
   | AccessDeniedException
@@ -2264,6 +2290,7 @@ export const updateDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDomain",
 }));
 export type DeleteDomainError =
   | AccessDeniedException
@@ -2292,6 +2319,7 @@ export const deleteDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDomain",
 }));
 export type ListDomainsError =
   | AccessDeniedException
@@ -2331,6 +2359,7 @@ export const listDomains: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDomains",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

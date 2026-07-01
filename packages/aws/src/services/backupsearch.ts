@@ -911,6 +911,7 @@ export const listSearchJobBackups: API.OperationMethod<
   input: ListSearchJobBackupsInput,
   output: ListSearchJobBackupsOutput,
   errors: [ResourceNotFoundException],
+  operationName: "ListSearchJobBackups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -948,6 +949,7 @@ export const listSearchJobResults: API.OperationMethod<
   input: ListSearchJobResultsInput,
   output: ListSearchJobResultsOutput,
   errors: [ResourceNotFoundException],
+  operationName: "ListSearchJobResults",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -968,6 +970,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -982,6 +985,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -996,6 +1000,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type StartSearchJobError =
   | ConflictException
@@ -1020,6 +1025,7 @@ export const startSearchJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "StartSearchJob",
 }));
 export type GetSearchJobError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1034,6 +1040,7 @@ export const getSearchJob: API.OperationMethod<
   input: GetSearchJobInput,
   output: GetSearchJobOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetSearchJob",
 }));
 export type StopSearchJobError =
   | ConflictException
@@ -1053,6 +1060,7 @@ export const stopSearchJob: API.OperationMethod<
   input: StopSearchJobInput,
   output: StopSearchJobOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  operationName: "StopSearchJob",
 }));
 export type ListSearchJobsError = CommonErrors;
 /**
@@ -1082,6 +1090,7 @@ export const listSearchJobs: API.OperationMethod<
   input: ListSearchJobsInput,
   output: ListSearchJobsOutput,
   errors: [],
+  operationName: "ListSearchJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1110,6 +1119,7 @@ export const startSearchResultExportJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  operationName: "StartSearchResultExportJob",
 }));
 export type GetSearchResultExportJobError =
   | ResourceNotFoundException
@@ -1130,6 +1140,7 @@ export const getSearchResultExportJob: API.OperationMethod<
   input: GetSearchResultExportJobInput,
   output: GetSearchResultExportJobOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetSearchResultExportJob",
 }));
 export type ListSearchResultExportJobsError =
   | ResourceNotFoundException
@@ -1162,6 +1173,7 @@ export const listSearchResultExportJobs: API.OperationMethod<
   input: ListSearchResultExportJobsInput,
   output: ListSearchResultExportJobsOutput,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
+  operationName: "ListSearchResultExportJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

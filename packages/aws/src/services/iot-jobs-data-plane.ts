@@ -494,6 +494,7 @@ export const describeJobExecution: API.OperationMethod<
     TerminalStateException,
     ThrottlingException,
   ],
+  operationName: "DescribeJobExecution",
 }));
 export type GetPendingJobExecutionsError =
   | CertificateValidationException
@@ -522,6 +523,7 @@ export const getPendingJobExecutions: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetPendingJobExecutions",
 }));
 export type StartCommandExecutionError =
   | ConflictException
@@ -551,6 +553,7 @@ export const startCommandExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartCommandExecution",
 }));
 export type StartNextPendingJobExecutionError =
   | CertificateValidationException
@@ -580,6 +583,7 @@ export const startNextPendingJobExecution: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "StartNextPendingJobExecution",
 }));
 export type UpdateJobExecutionError =
   | CertificateValidationException
@@ -610,4 +614,5 @@ export const updateJobExecution: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateJobExecution",
 }));

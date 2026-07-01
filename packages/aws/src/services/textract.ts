@@ -1809,6 +1809,7 @@ export const analyzeDocument: API.OperationMethod<
     ThrottlingException,
     UnsupportedDocumentException,
   ],
+  operationName: "AnalyzeDocument",
 }));
 export type AnalyzeExpenseError =
   | AccessDeniedException
@@ -1854,6 +1855,7 @@ export const analyzeExpense: API.OperationMethod<
     ThrottlingException,
     UnsupportedDocumentException,
   ],
+  operationName: "AnalyzeExpense",
 }));
 export type AnalyzeIDError =
   | AccessDeniedException
@@ -1891,6 +1893,7 @@ export const analyzeID: API.OperationMethod<
     ThrottlingException,
     UnsupportedDocumentException,
   ],
+  operationName: "AnalyzeID",
 }));
 export type CreateAdapterError =
   | AccessDeniedException
@@ -1931,6 +1934,7 @@ export const createAdapter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAdapter",
 }));
 export type CreateAdapterVersionError =
   | AccessDeniedException
@@ -1976,6 +1980,7 @@ export const createAdapterVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAdapterVersion",
 }));
 export type DeleteAdapterError =
   | AccessDeniedException
@@ -2008,6 +2013,7 @@ export const deleteAdapter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAdapter",
 }));
 export type DeleteAdapterVersionError =
   | AccessDeniedException
@@ -2041,6 +2047,7 @@ export const deleteAdapterVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAdapterVersion",
 }));
 export type DetectDocumentTextError =
   | AccessDeniedException
@@ -2087,6 +2094,7 @@ export const detectDocumentText: API.OperationMethod<
     ThrottlingException,
     UnsupportedDocumentException,
   ],
+  operationName: "DetectDocumentText",
 }));
 export type GetAdapterError =
   | AccessDeniedException
@@ -2118,6 +2126,7 @@ export const getAdapter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAdapter",
 }));
 export type GetAdapterVersionError =
   | AccessDeniedException
@@ -2150,6 +2159,7 @@ export const getAdapterVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAdapterVersion",
 }));
 export type GetDocumentAnalysisError =
   | AccessDeniedException
@@ -2238,6 +2248,7 @@ export const getDocumentAnalysis: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  operationName: "GetDocumentAnalysis",
 }));
 export type GetDocumentTextDetectionError =
   | AccessDeniedException
@@ -2297,6 +2308,7 @@ export const getDocumentTextDetection: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  operationName: "GetDocumentTextDetection",
 }));
 export type GetExpenseAnalysisError =
   | AccessDeniedException
@@ -2348,6 +2360,7 @@ export const getExpenseAnalysis: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  operationName: "GetExpenseAnalysis",
 }));
 export type GetLendingAnalysisError =
   | AccessDeniedException
@@ -2392,6 +2405,7 @@ export const getLendingAnalysis: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  operationName: "GetLendingAnalysis",
 }));
 export type GetLendingAnalysisSummaryError =
   | AccessDeniedException
@@ -2437,6 +2451,7 @@ export const getLendingAnalysisSummary: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  operationName: "GetLendingAnalysisSummary",
 }));
 export type ListAdaptersError =
   | AccessDeniedException
@@ -2480,6 +2495,7 @@ export const listAdapters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAdapters",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2531,6 +2547,7 @@ export const listAdapterVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAdapterVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2567,6 +2584,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type StartDocumentAnalysisError =
   | AccessDeniedException
@@ -2623,6 +2641,7 @@ export const startDocumentAnalysis: API.OperationMethod<
     ThrottlingException,
     UnsupportedDocumentException,
   ],
+  operationName: "StartDocumentAnalysis",
 }));
 export type StartDocumentTextDetectionError =
   | AccessDeniedException
@@ -2679,6 +2698,7 @@ export const startDocumentTextDetection: API.OperationMethod<
     ThrottlingException,
     UnsupportedDocumentException,
   ],
+  operationName: "StartDocumentTextDetection",
 }));
 export type StartExpenseAnalysisError =
   | AccessDeniedException
@@ -2734,6 +2754,7 @@ export const startExpenseAnalysis: API.OperationMethod<
     ThrottlingException,
     UnsupportedDocumentException,
   ],
+  operationName: "StartExpenseAnalysis",
 }));
 export type StartLendingAnalysisError =
   | AccessDeniedException
@@ -2800,6 +2821,7 @@ export const startLendingAnalysis: API.OperationMethod<
     ThrottlingException,
     UnsupportedDocumentException,
   ],
+  operationName: "StartLendingAnalysis",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2832,6 +2854,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2862,6 +2885,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAdapterError =
   | AccessDeniedException
@@ -2895,4 +2919,5 @@ export const updateAdapter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAdapter",
 }));

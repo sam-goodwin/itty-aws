@@ -1542,6 +1542,7 @@ export const cancelCluster: API.OperationMethod<
     InvalidResourceException,
     KMSRequestFailedException,
   ],
+  operationName: "CancelCluster",
 }));
 export type CancelJobError =
   | InvalidJobStateException
@@ -1567,6 +1568,7 @@ export const cancelJob: API.OperationMethod<
     InvalidResourceException,
     KMSRequestFailedException,
   ],
+  operationName: "CancelJob",
 }));
 export type CreateAddressError =
   | InvalidAddressException
@@ -1587,6 +1589,7 @@ export const createAddress: API.OperationMethod<
   input: CreateAddressRequest,
   output: CreateAddressResult,
   errors: [InvalidAddressException, UnsupportedAddressException],
+  operationName: "CreateAddress",
 }));
 export type CreateClusterError =
   | Ec2RequestFailedException
@@ -1612,6 +1615,7 @@ export const createCluster: API.OperationMethod<
     InvalidResourceException,
     KMSRequestFailedException,
   ],
+  operationName: "CreateCluster",
 }));
 export type CreateJobError =
   | ClusterLimitExceededException
@@ -1717,6 +1721,7 @@ export const createJob: API.OperationMethod<
     InvalidResourceException,
     KMSRequestFailedException,
   ],
+  operationName: "CreateJob",
 }));
 export type CreateLongTermPricingError =
   | InvalidResourceException
@@ -1734,6 +1739,7 @@ export const createLongTermPricing: API.OperationMethod<
   input: CreateLongTermPricingRequest,
   output: CreateLongTermPricingResult,
   errors: [InvalidResourceException],
+  operationName: "CreateLongTermPricing",
 }));
 export type CreateReturnShippingLabelError =
   | ConflictException
@@ -1760,6 +1766,7 @@ export const createReturnShippingLabel: API.OperationMethod<
     InvalidResourceException,
     ReturnShippingLabelAlreadyExistsException,
   ],
+  operationName: "CreateReturnShippingLabel",
 }));
 export type DescribeAddressError = InvalidResourceException | CommonErrors;
 /**
@@ -1775,6 +1782,7 @@ export const describeAddress: API.OperationMethod<
   input: DescribeAddressRequest,
   output: DescribeAddressResult,
   errors: [InvalidResourceException],
+  operationName: "DescribeAddress",
 }));
 export type DescribeAddressesError =
   | InvalidNextTokenException
@@ -1809,6 +1817,7 @@ export const describeAddresses: API.OperationMethod<
   input: DescribeAddressesRequest,
   output: DescribeAddressesResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
+  operationName: "DescribeAddresses",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1830,6 +1839,7 @@ export const describeCluster: API.OperationMethod<
   input: DescribeClusterRequest,
   output: DescribeClusterResult,
   errors: [InvalidResourceException],
+  operationName: "DescribeCluster",
 }));
 export type DescribeJobError = InvalidResourceException | CommonErrors;
 /**
@@ -1845,6 +1855,7 @@ export const describeJob: API.OperationMethod<
   input: DescribeJobRequest,
   output: DescribeJobResult,
   errors: [InvalidResourceException],
+  operationName: "DescribeJob",
 }));
 export type DescribeReturnShippingLabelError =
   | ConflictException
@@ -1867,6 +1878,7 @@ export const describeReturnShippingLabel: API.OperationMethod<
     InvalidJobStateException,
     InvalidResourceException,
   ],
+  operationName: "DescribeReturnShippingLabel",
 }));
 export type GetJobManifestError =
   | InvalidJobStateException
@@ -1902,6 +1914,7 @@ export const getJobManifest: API.OperationMethod<
   input: GetJobManifestRequest,
   output: GetJobManifestResult,
   errors: [InvalidJobStateException, InvalidResourceException],
+  operationName: "GetJobManifest",
 }));
 export type GetJobUnlockCodeError =
   | InvalidJobStateException
@@ -1933,6 +1946,7 @@ export const getJobUnlockCode: API.OperationMethod<
   input: GetJobUnlockCodeRequest,
   output: GetJobUnlockCodeResult,
   errors: [InvalidJobStateException, InvalidResourceException],
+  operationName: "GetJobUnlockCode",
 }));
 export type GetSnowballUsageError = CommonErrors;
 /**
@@ -1951,6 +1965,7 @@ export const getSnowballUsage: API.OperationMethod<
   input: GetSnowballUsageRequest,
   output: GetSnowballUsageResult,
   errors: [],
+  operationName: "GetSnowballUsage",
 }));
 export type GetSoftwareUpdatesError =
   | InvalidJobStateException
@@ -1969,6 +1984,7 @@ export const getSoftwareUpdates: API.OperationMethod<
   input: GetSoftwareUpdatesRequest,
   output: GetSoftwareUpdatesResult,
   errors: [InvalidJobStateException, InvalidResourceException],
+  operationName: "GetSoftwareUpdates",
 }));
 export type ListClusterJobsError =
   | InvalidNextTokenException
@@ -2003,6 +2019,7 @@ export const listClusterJobs: API.OperationMethod<
   input: ListClusterJobsRequest,
   output: ListClusterJobsResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
+  operationName: "ListClusterJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2040,6 +2057,7 @@ export const listClusters: API.OperationMethod<
   input: ListClustersRequest,
   output: ListClustersResult,
   errors: [InvalidNextTokenException],
+  operationName: "ListClusters",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2081,6 +2099,7 @@ export const listCompatibleImages: API.OperationMethod<
   input: ListCompatibleImagesRequest,
   output: ListCompatibleImagesResult,
   errors: [Ec2RequestFailedException, InvalidNextTokenException],
+  operationName: "ListCompatibleImages",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2120,6 +2139,7 @@ export const listJobs: API.OperationMethod<
   input: ListJobsRequest,
   output: ListJobsResult,
   errors: [InvalidNextTokenException],
+  operationName: "ListJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2158,6 +2178,7 @@ export const listLongTermPricing: API.OperationMethod<
   input: ListLongTermPricingRequest,
   output: ListLongTermPricingResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
+  operationName: "ListLongTermPricing",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2193,6 +2214,7 @@ export const listPickupLocations: API.OperationMethod<
   input: ListPickupLocationsRequest,
   output: ListPickupLocationsResult,
   errors: [InvalidResourceException],
+  operationName: "ListPickupLocations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2216,6 +2238,7 @@ export const listServiceVersions: API.OperationMethod<
   input: ListServiceVersionsRequest,
   output: ListServiceVersionsResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
+  operationName: "ListServiceVersions",
 }));
 export type UpdateClusterError =
   | Ec2RequestFailedException
@@ -2245,6 +2268,7 @@ export const updateCluster: API.OperationMethod<
     InvalidResourceException,
     KMSRequestFailedException,
   ],
+  operationName: "UpdateCluster",
 }));
 export type UpdateJobError =
   | ClusterLimitExceededException
@@ -2275,6 +2299,7 @@ export const updateJob: API.OperationMethod<
     InvalidResourceException,
     KMSRequestFailedException,
   ],
+  operationName: "UpdateJob",
 }));
 export type UpdateJobShipmentStateError =
   | InvalidJobStateException
@@ -2292,6 +2317,7 @@ export const updateJobShipmentState: API.OperationMethod<
   input: UpdateJobShipmentStateRequest,
   output: UpdateJobShipmentStateResult,
   errors: [InvalidJobStateException, InvalidResourceException],
+  operationName: "UpdateJobShipmentState",
 }));
 export type UpdateLongTermPricingError =
   | InvalidResourceException
@@ -2308,4 +2334,5 @@ export const updateLongTermPricing: API.OperationMethod<
   input: UpdateLongTermPricingRequest,
   output: UpdateLongTermPricingResult,
   errors: [InvalidResourceException],
+  operationName: "UpdateLongTermPricing",
 }));

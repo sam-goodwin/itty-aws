@@ -2980,6 +2980,7 @@ export const batchUpdateCluster: API.OperationMethod<
   input: BatchUpdateClusterRequest,
   output: BatchUpdateClusterResponse,
   errors: [InvalidParameterValueException, ServiceUpdateNotFoundFault],
+  operationName: "BatchUpdateCluster",
 }));
 export type CopySnapshotError =
   | InvalidParameterCombinationException
@@ -3012,6 +3013,7 @@ export const copySnapshot: API.OperationMethod<
     SnapshotQuotaExceededFault,
     TagQuotaPerResourceExceeded,
   ],
+  operationName: "CopySnapshot",
 }));
 export type CreateACLError =
   | ACLAlreadyExistsFault
@@ -3042,6 +3044,7 @@ export const createACL: API.OperationMethod<
     TagQuotaPerResourceExceeded,
     UserNotFoundFault,
   ],
+  operationName: "CreateACL",
 }));
 export type CreateClusterError =
   | ACLNotFoundFault
@@ -3094,6 +3097,7 @@ export const createCluster: API.OperationMethod<
     SubnetGroupNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  operationName: "CreateCluster",
 }));
 export type CreateMultiRegionClusterError =
   | ClusterQuotaForCustomerExceededFault
@@ -3122,6 +3126,7 @@ export const createMultiRegionCluster: API.OperationMethod<
     MultiRegionParameterGroupNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  operationName: "CreateMultiRegionCluster",
 }));
 export type CreateParameterGroupError =
   | InvalidParameterCombinationException
@@ -3153,6 +3158,7 @@ export const createParameterGroup: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  operationName: "CreateParameterGroup",
 }));
 export type CreateSnapshotError =
   | ClusterNotFoundFault
@@ -3185,6 +3191,7 @@ export const createSnapshot: API.OperationMethod<
     SnapshotQuotaExceededFault,
     TagQuotaPerResourceExceeded,
   ],
+  operationName: "CreateSnapshot",
 }));
 export type CreateSubnetGroupError =
   | InvalidSubnet
@@ -3218,6 +3225,7 @@ export const createSubnetGroup: API.OperationMethod<
     SubnetQuotaExceededFault,
     TagQuotaPerResourceExceeded,
   ],
+  operationName: "CreateSubnetGroup",
 }));
 export type CreateUserError =
   | DuplicateUserNameFault
@@ -3246,6 +3254,7 @@ export const createUser: API.OperationMethod<
     UserAlreadyExistsFault,
     UserQuotaExceededFault,
   ],
+  operationName: "CreateUser",
 }));
 export type DeleteACLError =
   | ACLNotFoundFault
@@ -3268,6 +3277,7 @@ export const deleteACL: API.OperationMethod<
     InvalidACLStateFault,
     InvalidParameterValueException,
   ],
+  operationName: "DeleteACL",
 }));
 export type DeleteClusterError =
   | ClusterNotFoundFault
@@ -3299,6 +3309,7 @@ export const deleteCluster: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     SnapshotAlreadyExistsFault,
   ],
+  operationName: "DeleteCluster",
 }));
 export type DeleteMultiRegionClusterError =
   | InvalidMultiRegionClusterStateFault
@@ -3321,6 +3332,7 @@ export const deleteMultiRegionCluster: API.OperationMethod<
     InvalidParameterValueException,
     MultiRegionClusterNotFoundFault,
   ],
+  operationName: "DeleteMultiRegionCluster",
 }));
 export type DeleteParameterGroupError =
   | InvalidParameterCombinationException
@@ -3348,6 +3360,7 @@ export const deleteParameterGroup: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DeleteParameterGroup",
 }));
 export type DeleteSnapshotError =
   | InvalidParameterCombinationException
@@ -3374,6 +3387,7 @@ export const deleteSnapshot: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     SnapshotNotFoundFault,
   ],
+  operationName: "DeleteSnapshot",
 }));
 export type DeleteSubnetGroupError =
   | ServiceLinkedRoleNotFoundFault
@@ -3396,6 +3410,7 @@ export const deleteSubnetGroup: API.OperationMethod<
     SubnetGroupInUseFault,
     SubnetGroupNotFoundFault,
   ],
+  operationName: "DeleteSubnetGroup",
 }));
 export type DeleteUserError =
   | InvalidParameterValueException
@@ -3418,6 +3433,7 @@ export const deleteUser: API.OperationMethod<
     InvalidUserStateFault,
     UserNotFoundFault,
   ],
+  operationName: "DeleteUser",
 }));
 export type DescribeACLsError =
   | ACLNotFoundFault
@@ -3450,6 +3466,7 @@ export const describeACLs: API.OperationMethod<
   input: DescribeACLsRequest,
   output: DescribeACLsResponse,
   errors: [ACLNotFoundFault, InvalidParameterCombinationException],
+  operationName: "DescribeACLs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3495,6 +3512,7 @@ export const describeClusters: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DescribeClusters",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3538,6 +3556,7 @@ export const describeEngineVersions: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DescribeEngineVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3583,6 +3602,7 @@ export const describeEvents: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DescribeEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3628,6 +3648,7 @@ export const describeMultiRegionClusters: API.OperationMethod<
     InvalidParameterValueException,
     MultiRegionClusterNotFoundFault,
   ],
+  operationName: "DescribeMultiRegionClusters",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3658,6 +3679,7 @@ export const describeMultiRegionParameterGroups: API.OperationMethod<
     MultiRegionParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DescribeMultiRegionParameterGroups",
 }));
 export type DescribeMultiRegionParametersError =
   | InvalidParameterCombinationException
@@ -3682,6 +3704,7 @@ export const describeMultiRegionParameters: API.OperationMethod<
     MultiRegionParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DescribeMultiRegionParameters",
 }));
 export type DescribeParameterGroupsError =
   | InvalidParameterCombinationException
@@ -3721,6 +3744,7 @@ export const describeParameterGroups: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DescribeParameterGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3766,6 +3790,7 @@ export const describeParameters: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DescribeParameters",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3811,6 +3836,7 @@ export const describeReservedNodes: API.OperationMethod<
     ReservedNodeNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DescribeReservedNodes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3856,6 +3882,7 @@ export const describeReservedNodesOfferings: API.OperationMethod<
     ReservedNodesOfferingNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DescribeReservedNodesOfferings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3897,6 +3924,7 @@ export const describeServiceUpdates: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  operationName: "DescribeServiceUpdates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3943,6 +3971,7 @@ export const describeSnapshots: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     SnapshotNotFoundFault,
   ],
+  operationName: "DescribeSnapshots",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3981,6 +4010,7 @@ export const describeSubnetGroups: API.OperationMethod<
   input: DescribeSubnetGroupsRequest,
   output: DescribeSubnetGroupsResponse,
   errors: [ServiceLinkedRoleNotFoundFault, SubnetGroupNotFoundFault],
+  operationName: "DescribeSubnetGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4019,6 +4049,7 @@ export const describeUsers: API.OperationMethod<
   input: DescribeUsersRequest,
   output: DescribeUsersResponse,
   errors: [InvalidParameterCombinationException, UserNotFoundFault],
+  operationName: "DescribeUsers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4058,6 +4089,7 @@ export const failoverShard: API.OperationMethod<
     ShardNotFoundFault,
     TestFailoverNotAvailableFault,
   ],
+  operationName: "FailoverShard",
 }));
 export type ListAllowedMultiRegionClusterUpdatesError =
   | InvalidParameterCombinationException
@@ -4080,6 +4112,7 @@ export const listAllowedMultiRegionClusterUpdates: API.OperationMethod<
     InvalidParameterValueException,
     MultiRegionClusterNotFoundFault,
   ],
+  operationName: "ListAllowedMultiRegionClusterUpdates",
 }));
 export type ListAllowedNodeTypeUpdatesError =
   | ClusterNotFoundFault
@@ -4106,6 +4139,7 @@ export const listAllowedNodeTypeUpdates: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "ListAllowedNodeTypeUpdates",
 }));
 export type ListTagsError =
   | ACLNotFoundFault
@@ -4146,6 +4180,7 @@ export const listTags: API.OperationMethod<
     SubnetGroupNotFoundFault,
     UserNotFoundFault,
   ],
+  operationName: "ListTags",
 }));
 export type PurchaseReservedNodesOfferingError =
   | InvalidParameterCombinationException
@@ -4176,6 +4211,7 @@ export const purchaseReservedNodesOffering: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  operationName: "PurchaseReservedNodesOffering",
 }));
 export type ResetParameterGroupError =
   | InvalidParameterCombinationException
@@ -4202,6 +4238,7 @@ export const resetParameterGroup: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "ResetParameterGroup",
 }));
 export type TagResourceError =
   | ACLNotFoundFault
@@ -4252,6 +4289,7 @@ export const tagResource: API.OperationMethod<
     TagQuotaPerResourceExceeded,
     UserNotFoundFault,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ACLNotFoundFault
@@ -4302,6 +4340,7 @@ export const untagResource: API.OperationMethod<
     TagNotFoundFault,
     UserNotFoundFault,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateACLError =
   | ACLNotFoundFault
@@ -4332,6 +4371,7 @@ export const updateACL: API.OperationMethod<
     InvalidParameterValueException,
     UserNotFoundFault,
   ],
+  operationName: "UpdateACL",
 }));
 export type UpdateClusterError =
   | ACLNotFoundFault
@@ -4380,6 +4420,7 @@ export const updateCluster: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     ShardsPerClusterQuotaExceededFault,
   ],
+  operationName: "UpdateCluster",
 }));
 export type UpdateMultiRegionClusterError =
   | InvalidMultiRegionClusterStateFault
@@ -4406,6 +4447,7 @@ export const updateMultiRegionCluster: API.OperationMethod<
     MultiRegionClusterNotFoundFault,
     MultiRegionParameterGroupNotFoundFault,
   ],
+  operationName: "UpdateMultiRegionCluster",
 }));
 export type UpdateParameterGroupError =
   | InvalidParameterCombinationException
@@ -4432,6 +4474,7 @@ export const updateParameterGroup: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "UpdateParameterGroup",
 }));
 export type UpdateSubnetGroupError =
   | InvalidSubnet
@@ -4460,6 +4503,7 @@ export const updateSubnetGroup: API.OperationMethod<
     SubnetNotAllowedFault,
     SubnetQuotaExceededFault,
   ],
+  operationName: "UpdateSubnetGroup",
 }));
 export type UpdateUserError =
   | InvalidParameterCombinationException
@@ -4484,4 +4528,5 @@ export const updateUser: API.OperationMethod<
     InvalidUserStateFault,
     UserNotFoundFault,
   ],
+  operationName: "UpdateUser",
 }));

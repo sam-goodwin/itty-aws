@@ -4529,6 +4529,7 @@ export const associateRoleToGroup: API.OperationMethod<
   input: AssociateRoleToGroupRequest,
   output: AssociateRoleToGroupResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "AssociateRoleToGroup",
 }));
 export type AssociateServiceRoleToAccountError =
   | BadRequestException
@@ -4546,6 +4547,7 @@ export const associateServiceRoleToAccount: API.OperationMethod<
   input: AssociateServiceRoleToAccountRequest,
   output: AssociateServiceRoleToAccountResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "AssociateServiceRoleToAccount",
 }));
 export type CreateConnectorDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -4560,6 +4562,7 @@ export const createConnectorDefinition: API.OperationMethod<
   input: CreateConnectorDefinitionRequest,
   output: CreateConnectorDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "CreateConnectorDefinition",
 }));
 export type CreateConnectorDefinitionVersionError =
   | BadRequestException
@@ -4576,6 +4579,7 @@ export const createConnectorDefinitionVersion: API.OperationMethod<
   input: CreateConnectorDefinitionVersionRequest,
   output: CreateConnectorDefinitionVersionResponse,
   errors: [BadRequestException],
+  operationName: "CreateConnectorDefinitionVersion",
 }));
 export type CreateCoreDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -4590,6 +4594,7 @@ export const createCoreDefinition: API.OperationMethod<
   input: CreateCoreDefinitionRequest,
   output: CreateCoreDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "CreateCoreDefinition",
 }));
 export type CreateCoreDefinitionVersionError =
   | BadRequestException
@@ -4606,6 +4611,7 @@ export const createCoreDefinitionVersion: API.OperationMethod<
   input: CreateCoreDefinitionVersionRequest,
   output: CreateCoreDefinitionVersionResponse,
   errors: [BadRequestException],
+  operationName: "CreateCoreDefinitionVersion",
 }));
 export type CreateDeploymentError = BadRequestException | CommonErrors;
 /**
@@ -4620,6 +4626,7 @@ export const createDeployment: API.OperationMethod<
   input: CreateDeploymentRequest,
   output: CreateDeploymentResponse,
   errors: [BadRequestException],
+  operationName: "CreateDeployment",
 }));
 export type CreateDeviceDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -4634,6 +4641,7 @@ export const createDeviceDefinition: API.OperationMethod<
   input: CreateDeviceDefinitionRequest,
   output: CreateDeviceDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "CreateDeviceDefinition",
 }));
 export type CreateDeviceDefinitionVersionError =
   | BadRequestException
@@ -4650,6 +4658,7 @@ export const createDeviceDefinitionVersion: API.OperationMethod<
   input: CreateDeviceDefinitionVersionRequest,
   output: CreateDeviceDefinitionVersionResponse,
   errors: [BadRequestException],
+  operationName: "CreateDeviceDefinitionVersion",
 }));
 export type CreateFunctionDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -4664,6 +4673,7 @@ export const createFunctionDefinition: API.OperationMethod<
   input: CreateFunctionDefinitionRequest,
   output: CreateFunctionDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "CreateFunctionDefinition",
 }));
 export type CreateFunctionDefinitionVersionError =
   | BadRequestException
@@ -4680,6 +4690,7 @@ export const createFunctionDefinitionVersion: API.OperationMethod<
   input: CreateFunctionDefinitionVersionRequest,
   output: CreateFunctionDefinitionVersionResponse,
   errors: [BadRequestException],
+  operationName: "CreateFunctionDefinitionVersion",
 }));
 export type CreateGroupError = BadRequestException | CommonErrors;
 /**
@@ -4694,6 +4705,7 @@ export const createGroup: API.OperationMethod<
   input: CreateGroupRequest,
   output: CreateGroupResponse,
   errors: [BadRequestException],
+  operationName: "CreateGroup",
 }));
 export type CreateGroupCertificateAuthorityError =
   | BadRequestException
@@ -4711,6 +4723,7 @@ export const createGroupCertificateAuthority: API.OperationMethod<
   input: CreateGroupCertificateAuthorityRequest,
   output: CreateGroupCertificateAuthorityResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "CreateGroupCertificateAuthority",
 }));
 export type CreateGroupVersionError = BadRequestException | CommonErrors;
 /**
@@ -4725,6 +4738,7 @@ export const createGroupVersion: API.OperationMethod<
   input: CreateGroupVersionRequest,
   output: CreateGroupVersionResponse,
   errors: [BadRequestException],
+  operationName: "CreateGroupVersion",
 }));
 export type CreateLoggerDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -4739,6 +4753,7 @@ export const createLoggerDefinition: API.OperationMethod<
   input: CreateLoggerDefinitionRequest,
   output: CreateLoggerDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "CreateLoggerDefinition",
 }));
 export type CreateLoggerDefinitionVersionError =
   | BadRequestException
@@ -4755,6 +4770,7 @@ export const createLoggerDefinitionVersion: API.OperationMethod<
   input: CreateLoggerDefinitionVersionRequest,
   output: CreateLoggerDefinitionVersionResponse,
   errors: [BadRequestException],
+  operationName: "CreateLoggerDefinitionVersion",
 }));
 export type CreateResourceDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -4769,6 +4785,7 @@ export const createResourceDefinition: API.OperationMethod<
   input: CreateResourceDefinitionRequest,
   output: CreateResourceDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "CreateResourceDefinition",
 }));
 export type CreateResourceDefinitionVersionError =
   | BadRequestException
@@ -4785,6 +4802,7 @@ export const createResourceDefinitionVersion: API.OperationMethod<
   input: CreateResourceDefinitionVersionRequest,
   output: CreateResourceDefinitionVersionResponse,
   errors: [BadRequestException],
+  operationName: "CreateResourceDefinitionVersion",
 }));
 export type CreateSoftwareUpdateJobError =
   | BadRequestException
@@ -4802,6 +4820,7 @@ export const createSoftwareUpdateJob: API.OperationMethod<
   input: CreateSoftwareUpdateJobRequest,
   output: CreateSoftwareUpdateJobResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "CreateSoftwareUpdateJob",
 }));
 export type CreateSubscriptionDefinitionError =
   | BadRequestException
@@ -4818,6 +4837,7 @@ export const createSubscriptionDefinition: API.OperationMethod<
   input: CreateSubscriptionDefinitionRequest,
   output: CreateSubscriptionDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "CreateSubscriptionDefinition",
 }));
 export type CreateSubscriptionDefinitionVersionError =
   | BadRequestException
@@ -4834,6 +4854,7 @@ export const createSubscriptionDefinitionVersion: API.OperationMethod<
   input: CreateSubscriptionDefinitionVersionRequest,
   output: CreateSubscriptionDefinitionVersionResponse,
   errors: [BadRequestException],
+  operationName: "CreateSubscriptionDefinitionVersion",
 }));
 export type DeleteConnectorDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -4848,6 +4869,7 @@ export const deleteConnectorDefinition: API.OperationMethod<
   input: DeleteConnectorDefinitionRequest,
   output: DeleteConnectorDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "DeleteConnectorDefinition",
 }));
 export type DeleteCoreDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -4862,6 +4884,7 @@ export const deleteCoreDefinition: API.OperationMethod<
   input: DeleteCoreDefinitionRequest,
   output: DeleteCoreDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "DeleteCoreDefinition",
 }));
 export type DeleteDeviceDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -4876,6 +4899,7 @@ export const deleteDeviceDefinition: API.OperationMethod<
   input: DeleteDeviceDefinitionRequest,
   output: DeleteDeviceDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "DeleteDeviceDefinition",
 }));
 export type DeleteFunctionDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -4890,6 +4914,7 @@ export const deleteFunctionDefinition: API.OperationMethod<
   input: DeleteFunctionDefinitionRequest,
   output: DeleteFunctionDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "DeleteFunctionDefinition",
 }));
 export type DeleteGroupError = BadRequestException | CommonErrors;
 /**
@@ -4904,6 +4929,7 @@ export const deleteGroup: API.OperationMethod<
   input: DeleteGroupRequest,
   output: DeleteGroupResponse,
   errors: [BadRequestException],
+  operationName: "DeleteGroup",
 }));
 export type DeleteLoggerDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -4918,6 +4944,7 @@ export const deleteLoggerDefinition: API.OperationMethod<
   input: DeleteLoggerDefinitionRequest,
   output: DeleteLoggerDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "DeleteLoggerDefinition",
 }));
 export type DeleteResourceDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -4932,6 +4959,7 @@ export const deleteResourceDefinition: API.OperationMethod<
   input: DeleteResourceDefinitionRequest,
   output: DeleteResourceDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "DeleteResourceDefinition",
 }));
 export type DeleteSubscriptionDefinitionError =
   | BadRequestException
@@ -4948,6 +4976,7 @@ export const deleteSubscriptionDefinition: API.OperationMethod<
   input: DeleteSubscriptionDefinitionRequest,
   output: DeleteSubscriptionDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "DeleteSubscriptionDefinition",
 }));
 export type DisassociateRoleFromGroupError =
   | BadRequestException
@@ -4965,6 +4994,7 @@ export const disassociateRoleFromGroup: API.OperationMethod<
   input: DisassociateRoleFromGroupRequest,
   output: DisassociateRoleFromGroupResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DisassociateRoleFromGroup",
 }));
 export type DisassociateServiceRoleFromAccountError =
   | InternalServerErrorException
@@ -4981,6 +5011,7 @@ export const disassociateServiceRoleFromAccount: API.OperationMethod<
   input: DisassociateServiceRoleFromAccountRequest,
   output: DisassociateServiceRoleFromAccountResponse,
   errors: [InternalServerErrorException],
+  operationName: "DisassociateServiceRoleFromAccount",
 }));
 export type GetAssociatedRoleError =
   | BadRequestException
@@ -4998,6 +5029,7 @@ export const getAssociatedRole: API.OperationMethod<
   input: GetAssociatedRoleRequest,
   output: GetAssociatedRoleResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetAssociatedRole",
 }));
 export type GetBulkDeploymentStatusError = BadRequestException | CommonErrors;
 /**
@@ -5012,6 +5044,7 @@ export const getBulkDeploymentStatus: API.OperationMethod<
   input: GetBulkDeploymentStatusRequest,
   output: GetBulkDeploymentStatusResponse,
   errors: [BadRequestException],
+  operationName: "GetBulkDeploymentStatus",
 }));
 export type GetConnectivityInfoError =
   | BadRequestException
@@ -5029,6 +5062,7 @@ export const getConnectivityInfo: API.OperationMethod<
   input: GetConnectivityInfoRequest,
   output: GetConnectivityInfoResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetConnectivityInfo",
 }));
 export type GetConnectorDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -5043,6 +5077,7 @@ export const getConnectorDefinition: API.OperationMethod<
   input: GetConnectorDefinitionRequest,
   output: GetConnectorDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "GetConnectorDefinition",
 }));
 export type GetConnectorDefinitionVersionError =
   | BadRequestException
@@ -5059,6 +5094,7 @@ export const getConnectorDefinitionVersion: API.OperationMethod<
   input: GetConnectorDefinitionVersionRequest,
   output: GetConnectorDefinitionVersionResponse,
   errors: [BadRequestException],
+  operationName: "GetConnectorDefinitionVersion",
 }));
 export type GetCoreDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -5073,6 +5109,7 @@ export const getCoreDefinition: API.OperationMethod<
   input: GetCoreDefinitionRequest,
   output: GetCoreDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "GetCoreDefinition",
 }));
 export type GetCoreDefinitionVersionError = BadRequestException | CommonErrors;
 /**
@@ -5087,6 +5124,7 @@ export const getCoreDefinitionVersion: API.OperationMethod<
   input: GetCoreDefinitionVersionRequest,
   output: GetCoreDefinitionVersionResponse,
   errors: [BadRequestException],
+  operationName: "GetCoreDefinitionVersion",
 }));
 export type GetDeploymentStatusError = BadRequestException | CommonErrors;
 /**
@@ -5101,6 +5139,7 @@ export const getDeploymentStatus: API.OperationMethod<
   input: GetDeploymentStatusRequest,
   output: GetDeploymentStatusResponse,
   errors: [BadRequestException],
+  operationName: "GetDeploymentStatus",
 }));
 export type GetDeviceDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -5115,6 +5154,7 @@ export const getDeviceDefinition: API.OperationMethod<
   input: GetDeviceDefinitionRequest,
   output: GetDeviceDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "GetDeviceDefinition",
 }));
 export type GetDeviceDefinitionVersionError =
   | BadRequestException
@@ -5131,6 +5171,7 @@ export const getDeviceDefinitionVersion: API.OperationMethod<
   input: GetDeviceDefinitionVersionRequest,
   output: GetDeviceDefinitionVersionResponse,
   errors: [BadRequestException],
+  operationName: "GetDeviceDefinitionVersion",
 }));
 export type GetFunctionDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -5145,6 +5186,7 @@ export const getFunctionDefinition: API.OperationMethod<
   input: GetFunctionDefinitionRequest,
   output: GetFunctionDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "GetFunctionDefinition",
 }));
 export type GetFunctionDefinitionVersionError =
   | BadRequestException
@@ -5161,6 +5203,7 @@ export const getFunctionDefinitionVersion: API.OperationMethod<
   input: GetFunctionDefinitionVersionRequest,
   output: GetFunctionDefinitionVersionResponse,
   errors: [BadRequestException],
+  operationName: "GetFunctionDefinitionVersion",
 }));
 export type GetGroupError = BadRequestException | CommonErrors;
 /**
@@ -5175,6 +5218,7 @@ export const getGroup: API.OperationMethod<
   input: GetGroupRequest,
   output: GetGroupResponse,
   errors: [BadRequestException],
+  operationName: "GetGroup",
 }));
 export type GetGroupCertificateAuthorityError =
   | BadRequestException
@@ -5192,6 +5236,7 @@ export const getGroupCertificateAuthority: API.OperationMethod<
   input: GetGroupCertificateAuthorityRequest,
   output: GetGroupCertificateAuthorityResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetGroupCertificateAuthority",
 }));
 export type GetGroupCertificateConfigurationError =
   | BadRequestException
@@ -5209,6 +5254,7 @@ export const getGroupCertificateConfiguration: API.OperationMethod<
   input: GetGroupCertificateConfigurationRequest,
   output: GetGroupCertificateConfigurationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetGroupCertificateConfiguration",
 }));
 export type GetGroupVersionError = BadRequestException | CommonErrors;
 /**
@@ -5223,6 +5269,7 @@ export const getGroupVersion: API.OperationMethod<
   input: GetGroupVersionRequest,
   output: GetGroupVersionResponse,
   errors: [BadRequestException],
+  operationName: "GetGroupVersion",
 }));
 export type GetLoggerDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -5237,6 +5284,7 @@ export const getLoggerDefinition: API.OperationMethod<
   input: GetLoggerDefinitionRequest,
   output: GetLoggerDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "GetLoggerDefinition",
 }));
 export type GetLoggerDefinitionVersionError =
   | BadRequestException
@@ -5253,6 +5301,7 @@ export const getLoggerDefinitionVersion: API.OperationMethod<
   input: GetLoggerDefinitionVersionRequest,
   output: GetLoggerDefinitionVersionResponse,
   errors: [BadRequestException],
+  operationName: "GetLoggerDefinitionVersion",
 }));
 export type GetResourceDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -5267,6 +5316,7 @@ export const getResourceDefinition: API.OperationMethod<
   input: GetResourceDefinitionRequest,
   output: GetResourceDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "GetResourceDefinition",
 }));
 export type GetResourceDefinitionVersionError =
   | BadRequestException
@@ -5283,6 +5333,7 @@ export const getResourceDefinitionVersion: API.OperationMethod<
   input: GetResourceDefinitionVersionRequest,
   output: GetResourceDefinitionVersionResponse,
   errors: [BadRequestException],
+  operationName: "GetResourceDefinitionVersion",
 }));
 export type GetServiceRoleForAccountError =
   | InternalServerErrorException
@@ -5299,6 +5350,7 @@ export const getServiceRoleForAccount: API.OperationMethod<
   input: GetServiceRoleForAccountRequest,
   output: GetServiceRoleForAccountResponse,
   errors: [InternalServerErrorException],
+  operationName: "GetServiceRoleForAccount",
 }));
 export type GetSubscriptionDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -5313,6 +5365,7 @@ export const getSubscriptionDefinition: API.OperationMethod<
   input: GetSubscriptionDefinitionRequest,
   output: GetSubscriptionDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "GetSubscriptionDefinition",
 }));
 export type GetSubscriptionDefinitionVersionError =
   | BadRequestException
@@ -5329,6 +5382,7 @@ export const getSubscriptionDefinitionVersion: API.OperationMethod<
   input: GetSubscriptionDefinitionVersionRequest,
   output: GetSubscriptionDefinitionVersionResponse,
   errors: [BadRequestException],
+  operationName: "GetSubscriptionDefinitionVersion",
 }));
 export type GetThingRuntimeConfigurationError =
   | BadRequestException
@@ -5346,6 +5400,7 @@ export const getThingRuntimeConfiguration: API.OperationMethod<
   input: GetThingRuntimeConfigurationRequest,
   output: GetThingRuntimeConfigurationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetThingRuntimeConfiguration",
 }));
 export type ListBulkDeploymentDetailedReportsError =
   | BadRequestException
@@ -5362,6 +5417,7 @@ export const listBulkDeploymentDetailedReports: API.OperationMethod<
   input: ListBulkDeploymentDetailedReportsRequest,
   output: ListBulkDeploymentDetailedReportsResponse,
   errors: [BadRequestException],
+  operationName: "ListBulkDeploymentDetailedReports",
 }));
 export type ListBulkDeploymentsError = BadRequestException | CommonErrors;
 /**
@@ -5376,6 +5432,7 @@ export const listBulkDeployments: API.OperationMethod<
   input: ListBulkDeploymentsRequest,
   output: ListBulkDeploymentsResponse,
   errors: [BadRequestException],
+  operationName: "ListBulkDeployments",
 }));
 export type ListConnectorDefinitionsError = CommonErrors;
 /**
@@ -5390,6 +5447,7 @@ export const listConnectorDefinitions: API.OperationMethod<
   input: ListConnectorDefinitionsRequest,
   output: ListConnectorDefinitionsResponse,
   errors: [],
+  operationName: "ListConnectorDefinitions",
 }));
 export type ListConnectorDefinitionVersionsError =
   | BadRequestException
@@ -5406,6 +5464,7 @@ export const listConnectorDefinitionVersions: API.OperationMethod<
   input: ListConnectorDefinitionVersionsRequest,
   output: ListConnectorDefinitionVersionsResponse,
   errors: [BadRequestException],
+  operationName: "ListConnectorDefinitionVersions",
 }));
 export type ListCoreDefinitionsError = CommonErrors;
 /**
@@ -5420,6 +5479,7 @@ export const listCoreDefinitions: API.OperationMethod<
   input: ListCoreDefinitionsRequest,
   output: ListCoreDefinitionsResponse,
   errors: [],
+  operationName: "ListCoreDefinitions",
 }));
 export type ListCoreDefinitionVersionsError =
   | BadRequestException
@@ -5436,6 +5496,7 @@ export const listCoreDefinitionVersions: API.OperationMethod<
   input: ListCoreDefinitionVersionsRequest,
   output: ListCoreDefinitionVersionsResponse,
   errors: [BadRequestException],
+  operationName: "ListCoreDefinitionVersions",
 }));
 export type ListDeploymentsError = BadRequestException | CommonErrors;
 /**
@@ -5450,6 +5511,7 @@ export const listDeployments: API.OperationMethod<
   input: ListDeploymentsRequest,
   output: ListDeploymentsResponse,
   errors: [BadRequestException],
+  operationName: "ListDeployments",
 }));
 export type ListDeviceDefinitionsError = CommonErrors;
 /**
@@ -5464,6 +5526,7 @@ export const listDeviceDefinitions: API.OperationMethod<
   input: ListDeviceDefinitionsRequest,
   output: ListDeviceDefinitionsResponse,
   errors: [],
+  operationName: "ListDeviceDefinitions",
 }));
 export type ListDeviceDefinitionVersionsError =
   | BadRequestException
@@ -5480,6 +5543,7 @@ export const listDeviceDefinitionVersions: API.OperationMethod<
   input: ListDeviceDefinitionVersionsRequest,
   output: ListDeviceDefinitionVersionsResponse,
   errors: [BadRequestException],
+  operationName: "ListDeviceDefinitionVersions",
 }));
 export type ListFunctionDefinitionsError = CommonErrors;
 /**
@@ -5494,6 +5558,7 @@ export const listFunctionDefinitions: API.OperationMethod<
   input: ListFunctionDefinitionsRequest,
   output: ListFunctionDefinitionsResponse,
   errors: [],
+  operationName: "ListFunctionDefinitions",
 }));
 export type ListFunctionDefinitionVersionsError =
   | BadRequestException
@@ -5510,6 +5575,7 @@ export const listFunctionDefinitionVersions: API.OperationMethod<
   input: ListFunctionDefinitionVersionsRequest,
   output: ListFunctionDefinitionVersionsResponse,
   errors: [BadRequestException],
+  operationName: "ListFunctionDefinitionVersions",
 }));
 export type ListGroupCertificateAuthoritiesError =
   | BadRequestException
@@ -5527,6 +5593,7 @@ export const listGroupCertificateAuthorities: API.OperationMethod<
   input: ListGroupCertificateAuthoritiesRequest,
   output: ListGroupCertificateAuthoritiesResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "ListGroupCertificateAuthorities",
 }));
 export type ListGroupsError = CommonErrors;
 /**
@@ -5541,6 +5608,7 @@ export const listGroups: API.OperationMethod<
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [],
+  operationName: "ListGroups",
 }));
 export type ListGroupVersionsError = BadRequestException | CommonErrors;
 /**
@@ -5555,6 +5623,7 @@ export const listGroupVersions: API.OperationMethod<
   input: ListGroupVersionsRequest,
   output: ListGroupVersionsResponse,
   errors: [BadRequestException],
+  operationName: "ListGroupVersions",
 }));
 export type ListLoggerDefinitionsError = CommonErrors;
 /**
@@ -5569,6 +5638,7 @@ export const listLoggerDefinitions: API.OperationMethod<
   input: ListLoggerDefinitionsRequest,
   output: ListLoggerDefinitionsResponse,
   errors: [],
+  operationName: "ListLoggerDefinitions",
 }));
 export type ListLoggerDefinitionVersionsError =
   | BadRequestException
@@ -5585,6 +5655,7 @@ export const listLoggerDefinitionVersions: API.OperationMethod<
   input: ListLoggerDefinitionVersionsRequest,
   output: ListLoggerDefinitionVersionsResponse,
   errors: [BadRequestException],
+  operationName: "ListLoggerDefinitionVersions",
 }));
 export type ListResourceDefinitionsError = CommonErrors;
 /**
@@ -5599,6 +5670,7 @@ export const listResourceDefinitions: API.OperationMethod<
   input: ListResourceDefinitionsRequest,
   output: ListResourceDefinitionsResponse,
   errors: [],
+  operationName: "ListResourceDefinitions",
 }));
 export type ListResourceDefinitionVersionsError =
   | BadRequestException
@@ -5615,6 +5687,7 @@ export const listResourceDefinitionVersions: API.OperationMethod<
   input: ListResourceDefinitionVersionsRequest,
   output: ListResourceDefinitionVersionsResponse,
   errors: [BadRequestException],
+  operationName: "ListResourceDefinitionVersions",
 }));
 export type ListSubscriptionDefinitionsError = CommonErrors;
 /**
@@ -5629,6 +5702,7 @@ export const listSubscriptionDefinitions: API.OperationMethod<
   input: ListSubscriptionDefinitionsRequest,
   output: ListSubscriptionDefinitionsResponse,
   errors: [],
+  operationName: "ListSubscriptionDefinitions",
 }));
 export type ListSubscriptionDefinitionVersionsError =
   | BadRequestException
@@ -5645,6 +5719,7 @@ export const listSubscriptionDefinitionVersions: API.OperationMethod<
   input: ListSubscriptionDefinitionVersionsRequest,
   output: ListSubscriptionDefinitionVersionsResponse,
   errors: [BadRequestException],
+  operationName: "ListSubscriptionDefinitionVersions",
 }));
 export type ListTagsForResourceError = BadRequestException | CommonErrors;
 /**
@@ -5659,6 +5734,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [BadRequestException],
+  operationName: "ListTagsForResource",
 }));
 export type ResetDeploymentsError = BadRequestException | CommonErrors;
 /**
@@ -5673,6 +5749,7 @@ export const resetDeployments: API.OperationMethod<
   input: ResetDeploymentsRequest,
   output: ResetDeploymentsResponse,
   errors: [BadRequestException],
+  operationName: "ResetDeployments",
 }));
 export type StartBulkDeploymentError = BadRequestException | CommonErrors;
 /**
@@ -5687,6 +5764,7 @@ export const startBulkDeployment: API.OperationMethod<
   input: StartBulkDeploymentRequest,
   output: StartBulkDeploymentResponse,
   errors: [BadRequestException],
+  operationName: "StartBulkDeployment",
 }));
 export type StopBulkDeploymentError = BadRequestException | CommonErrors;
 /**
@@ -5701,6 +5779,7 @@ export const stopBulkDeployment: API.OperationMethod<
   input: StopBulkDeploymentRequest,
   output: StopBulkDeploymentResponse,
   errors: [BadRequestException],
+  operationName: "StopBulkDeployment",
 }));
 export type TagResourceError = BadRequestException | CommonErrors;
 /**
@@ -5715,6 +5794,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [BadRequestException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = BadRequestException | CommonErrors;
 /**
@@ -5729,6 +5809,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [BadRequestException],
+  operationName: "UntagResource",
 }));
 export type UpdateConnectivityInfoError =
   | BadRequestException
@@ -5746,6 +5827,7 @@ export const updateConnectivityInfo: API.OperationMethod<
   input: UpdateConnectivityInfoRequest,
   output: UpdateConnectivityInfoResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "UpdateConnectivityInfo",
 }));
 export type UpdateConnectorDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -5760,6 +5842,7 @@ export const updateConnectorDefinition: API.OperationMethod<
   input: UpdateConnectorDefinitionRequest,
   output: UpdateConnectorDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "UpdateConnectorDefinition",
 }));
 export type UpdateCoreDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -5774,6 +5857,7 @@ export const updateCoreDefinition: API.OperationMethod<
   input: UpdateCoreDefinitionRequest,
   output: UpdateCoreDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "UpdateCoreDefinition",
 }));
 export type UpdateDeviceDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -5788,6 +5872,7 @@ export const updateDeviceDefinition: API.OperationMethod<
   input: UpdateDeviceDefinitionRequest,
   output: UpdateDeviceDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "UpdateDeviceDefinition",
 }));
 export type UpdateFunctionDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -5802,6 +5887,7 @@ export const updateFunctionDefinition: API.OperationMethod<
   input: UpdateFunctionDefinitionRequest,
   output: UpdateFunctionDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "UpdateFunctionDefinition",
 }));
 export type UpdateGroupError = BadRequestException | CommonErrors;
 /**
@@ -5816,6 +5902,7 @@ export const updateGroup: API.OperationMethod<
   input: UpdateGroupRequest,
   output: UpdateGroupResponse,
   errors: [BadRequestException],
+  operationName: "UpdateGroup",
 }));
 export type UpdateGroupCertificateConfigurationError =
   | BadRequestException
@@ -5833,6 +5920,7 @@ export const updateGroupCertificateConfiguration: API.OperationMethod<
   input: UpdateGroupCertificateConfigurationRequest,
   output: UpdateGroupCertificateConfigurationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "UpdateGroupCertificateConfiguration",
 }));
 export type UpdateLoggerDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -5847,6 +5935,7 @@ export const updateLoggerDefinition: API.OperationMethod<
   input: UpdateLoggerDefinitionRequest,
   output: UpdateLoggerDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "UpdateLoggerDefinition",
 }));
 export type UpdateResourceDefinitionError = BadRequestException | CommonErrors;
 /**
@@ -5861,6 +5950,7 @@ export const updateResourceDefinition: API.OperationMethod<
   input: UpdateResourceDefinitionRequest,
   output: UpdateResourceDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "UpdateResourceDefinition",
 }));
 export type UpdateSubscriptionDefinitionError =
   | BadRequestException
@@ -5877,6 +5967,7 @@ export const updateSubscriptionDefinition: API.OperationMethod<
   input: UpdateSubscriptionDefinitionRequest,
   output: UpdateSubscriptionDefinitionResponse,
   errors: [BadRequestException],
+  operationName: "UpdateSubscriptionDefinition",
 }));
 export type UpdateThingRuntimeConfigurationError =
   | BadRequestException
@@ -5894,4 +5985,5 @@ export const updateThingRuntimeConfiguration: API.OperationMethod<
   input: UpdateThingRuntimeConfigurationRequest,
   output: UpdateThingRuntimeConfigurationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "UpdateThingRuntimeConfiguration",
 }));

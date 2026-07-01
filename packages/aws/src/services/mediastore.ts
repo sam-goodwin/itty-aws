@@ -784,6 +784,7 @@ export const createContainer: API.OperationMethod<
     InternalServerError,
     LimitExceededException,
   ],
+  operationName: "CreateContainer",
 }));
 export type DeleteContainerError =
   | ContainerInUseException
@@ -808,6 +809,7 @@ export const deleteContainer: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  operationName: "DeleteContainer",
 }));
 export type DeleteContainerPolicyError =
   | ContainerInUseException
@@ -832,6 +834,7 @@ export const deleteContainerPolicy: API.OperationMethod<
     InternalServerError,
     PolicyNotFoundException,
   ],
+  operationName: "DeleteContainerPolicy",
 }));
 export type DeleteCorsPolicyError =
   | ContainerInUseException
@@ -861,6 +864,7 @@ export const deleteCorsPolicy: API.OperationMethod<
     CorsPolicyNotFoundException,
     InternalServerError,
   ],
+  operationName: "DeleteCorsPolicy",
 }));
 export type DeleteLifecyclePolicyError =
   | ContainerInUseException
@@ -885,6 +889,7 @@ export const deleteLifecyclePolicy: API.OperationMethod<
     InternalServerError,
     PolicyNotFoundException,
   ],
+  operationName: "DeleteLifecyclePolicy",
 }));
 export type DeleteMetricPolicyError =
   | ContainerInUseException
@@ -909,6 +914,7 @@ export const deleteMetricPolicy: API.OperationMethod<
     InternalServerError,
     PolicyNotFoundException,
   ],
+  operationName: "DeleteMetricPolicy",
 }));
 export type DescribeContainerError =
   | ContainerNotFoundException
@@ -932,6 +938,7 @@ export const describeContainer: API.OperationMethod<
   input: DescribeContainerInput,
   output: DescribeContainerOutput,
   errors: [ContainerNotFoundException, InternalServerError],
+  operationName: "DescribeContainer",
 }));
 export type GetContainerPolicyError =
   | ContainerInUseException
@@ -958,6 +965,7 @@ export const getContainerPolicy: API.OperationMethod<
     InternalServerError,
     PolicyNotFoundException,
   ],
+  operationName: "GetContainerPolicy",
 }));
 export type GetCorsPolicyError =
   | ContainerInUseException
@@ -987,6 +995,7 @@ export const getCorsPolicy: API.OperationMethod<
     CorsPolicyNotFoundException,
     InternalServerError,
   ],
+  operationName: "GetCorsPolicy",
 }));
 export type GetLifecyclePolicyError =
   | ContainerInUseException
@@ -1011,6 +1020,7 @@ export const getLifecyclePolicy: API.OperationMethod<
     InternalServerError,
     PolicyNotFoundException,
   ],
+  operationName: "GetLifecyclePolicy",
 }));
 export type GetMetricPolicyError =
   | ContainerInUseException
@@ -1035,6 +1045,7 @@ export const getMetricPolicy: API.OperationMethod<
     InternalServerError,
     PolicyNotFoundException,
   ],
+  operationName: "GetMetricPolicy",
 }));
 export type ListContainersError = InternalServerError | CommonErrors;
 /**
@@ -1074,6 +1085,7 @@ export const listContainers: API.OperationMethod<
   input: ListContainersInput,
   output: ListContainersOutput,
   errors: [InternalServerError],
+  operationName: "ListContainers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1101,6 +1113,7 @@ export const listTagsForResource: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutContainerPolicyError =
   | ContainerInUseException
@@ -1130,6 +1143,7 @@ export const putContainerPolicy: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  operationName: "PutContainerPolicy",
 }));
 export type PutCorsPolicyError =
   | ContainerInUseException
@@ -1164,6 +1178,7 @@ export const putCorsPolicy: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  operationName: "PutCorsPolicy",
 }));
 export type PutLifecyclePolicyError =
   | ContainerInUseException
@@ -1188,6 +1203,7 @@ export const putLifecyclePolicy: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  operationName: "PutLifecyclePolicy",
 }));
 export type PutMetricPolicyError =
   | ContainerInUseException
@@ -1210,6 +1226,7 @@ export const putMetricPolicy: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  operationName: "PutMetricPolicy",
 }));
 export type StartAccessLoggingError =
   | ContainerInUseException
@@ -1232,6 +1249,7 @@ export const startAccessLogging: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  operationName: "StartAccessLogging",
 }));
 export type StopAccessLoggingError =
   | ContainerInUseException
@@ -1254,6 +1272,7 @@ export const stopAccessLogging: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  operationName: "StopAccessLogging",
 }));
 export type TagResourceError =
   | ContainerInUseException
@@ -1278,6 +1297,7 @@ export const tagResource: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ContainerInUseException
@@ -1300,4 +1320,5 @@ export const untagResource: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  operationName: "UntagResource",
 }));

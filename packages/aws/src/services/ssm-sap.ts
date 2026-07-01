@@ -1691,6 +1691,7 @@ export const deleteResourcePermission: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteResourcePermission",
 }));
 export type DeregisterApplicationError =
   | InternalServerException
@@ -1709,6 +1710,7 @@ export const deregisterApplication: API.OperationMethod<
   input: DeregisterApplicationInput,
   output: DeregisterApplicationOutput,
   errors: [InternalServerException, UnauthorizedException, ValidationException],
+  operationName: "DeregisterApplication",
 }));
 export type GetApplicationError =
   | InternalServerException
@@ -1726,6 +1728,7 @@ export const getApplication: API.OperationMethod<
   input: GetApplicationInput,
   output: GetApplicationOutput,
   errors: [InternalServerException, ValidationException],
+  operationName: "GetApplication",
 }));
 export type GetComponentError =
   | InternalServerException
@@ -1744,6 +1747,7 @@ export const getComponent: API.OperationMethod<
   input: GetComponentInput,
   output: GetComponentOutput,
   errors: [InternalServerException, UnauthorizedException, ValidationException],
+  operationName: "GetComponent",
 }));
 export type GetConfigurationCheckOperationError =
   | InternalServerException
@@ -1761,6 +1765,7 @@ export const getConfigurationCheckOperation: API.OperationMethod<
   input: GetConfigurationCheckOperationInput,
   output: GetConfigurationCheckOperationOutput,
   errors: [InternalServerException, ValidationException],
+  operationName: "GetConfigurationCheckOperation",
 }));
 export type GetDatabaseError =
   | InternalServerException
@@ -1778,6 +1783,7 @@ export const getDatabase: API.OperationMethod<
   input: GetDatabaseInput,
   output: GetDatabaseOutput,
   errors: [InternalServerException, ValidationException],
+  operationName: "GetDatabase",
 }));
 export type GetOperationError =
   | InternalServerException
@@ -1795,6 +1801,7 @@ export const getOperation: API.OperationMethod<
   input: GetOperationInput,
   output: GetOperationOutput,
   errors: [InternalServerException, ValidationException],
+  operationName: "GetOperation",
 }));
 export type GetResourcePermissionError =
   | InternalServerException
@@ -1817,6 +1824,7 @@ export const getResourcePermission: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetResourcePermission",
 }));
 export type ListApplicationsError =
   | InternalServerException
@@ -1854,6 +1862,7 @@ export const listApplications: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1899,6 +1908,7 @@ export const listComponents: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "ListComponents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1937,6 +1947,7 @@ export const listConfigurationCheckDefinitions: API.OperationMethod<
   input: ListConfigurationCheckDefinitionsInput,
   output: ListConfigurationCheckDefinitionsOutput,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListConfigurationCheckDefinitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1980,6 +1991,7 @@ export const listConfigurationCheckOperations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListConfigurationCheckOperations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2023,6 +2035,7 @@ export const listDatabases: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListDatabases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2063,6 +2076,7 @@ export const listOperationEvents: API.OperationMethod<
   input: ListOperationEventsInput,
   output: ListOperationEventsOutput,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListOperationEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2101,6 +2115,7 @@ export const listOperations: API.OperationMethod<
   input: ListOperationsInput,
   output: ListOperationsOutput,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListOperations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2139,6 +2154,7 @@ export const listSubCheckResults: API.OperationMethod<
   input: ListSubCheckResultsInput,
   output: ListSubCheckResultsOutput,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListSubCheckResults",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2177,6 +2193,7 @@ export const listSubCheckRuleResults: API.OperationMethod<
   input: ListSubCheckRuleResultsInput,
   output: ListSubCheckRuleResultsOutput,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListSubCheckRuleResults",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2201,6 +2218,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "ListTagsForResource",
 }));
 export type PutResourcePermissionError =
   | InternalServerException
@@ -2223,6 +2241,7 @@ export const putResourcePermission: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "PutResourcePermission",
 }));
 export type RegisterApplicationError =
   | ConflictException
@@ -2253,6 +2272,7 @@ export const registerApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "RegisterApplication",
 }));
 export type StartApplicationError =
   | ConflictException
@@ -2279,6 +2299,7 @@ export const startApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StartApplication",
 }));
 export type StartApplicationRefreshError =
   | ConflictException
@@ -2305,6 +2326,7 @@ export const startApplicationRefresh: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "StartApplicationRefresh",
 }));
 export type StartConfigurationChecksError =
   | ConflictException
@@ -2329,6 +2351,7 @@ export const startConfigurationChecks: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StartConfigurationChecks",
 }));
 export type StopApplicationError =
   | ConflictException
@@ -2355,6 +2378,7 @@ export const stopApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StopApplication",
 }));
 export type TagResourceError =
   | ConflictException
@@ -2373,6 +2397,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ConflictException
@@ -2391,6 +2416,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "UntagResource",
 }));
 export type UpdateApplicationSettingsError =
   | ConflictException
@@ -2417,4 +2443,5 @@ export const updateApplicationSettings: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "UpdateApplicationSettings",
 }));

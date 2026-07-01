@@ -147,4 +147,5 @@ export const getRevocationStatus: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "GetRevocationStatus",
 }));

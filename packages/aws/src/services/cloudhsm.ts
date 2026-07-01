@@ -727,6 +727,7 @@ export const addTagsToResource: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "AddTagsToResource",
 }));
 export type CreateHapgError =
   | CloudHsmInternalException
@@ -761,6 +762,7 @@ export const createHapg: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "CreateHapg",
 }));
 export type CreateHsmError =
   | CloudHsmInternalException
@@ -803,6 +805,7 @@ export const createHsm: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "CreateHsm",
 }));
 export type CreateLunaClientError =
   | CloudHsmInternalException
@@ -836,6 +839,7 @@ export const createLunaClient: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "CreateLunaClient",
 }));
 export type DeleteHapgError =
   | CloudHsmInternalException
@@ -869,6 +873,7 @@ export const deleteHapg: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "DeleteHapg",
 }));
 export type DeleteHsmError =
   | CloudHsmInternalException
@@ -903,6 +908,7 @@ export const deleteHsm: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "DeleteHsm",
 }));
 export type DeleteLunaClientError =
   | CloudHsmInternalException
@@ -936,6 +942,7 @@ export const deleteLunaClient: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "DeleteLunaClient",
 }));
 export type DescribeHapgError =
   | CloudHsmInternalException
@@ -969,6 +976,7 @@ export const describeHapg: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "DescribeHapg",
 }));
 export type DescribeHsmError =
   | CloudHsmInternalException
@@ -1003,6 +1011,7 @@ export const describeHsm: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "DescribeHsm",
 }));
 export type DescribeLunaClientError =
   | CloudHsmInternalException
@@ -1036,6 +1045,7 @@ export const describeLunaClient: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "DescribeLunaClient",
 }));
 export type GetConfigError =
   | CloudHsmInternalException
@@ -1070,6 +1080,7 @@ export const getConfig: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "GetConfig",
 }));
 export type ListAvailableZonesError =
   | CloudHsmInternalException
@@ -1103,6 +1114,7 @@ export const listAvailableZones: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "ListAvailableZones",
 }));
 export type ListHapgsError =
   | CloudHsmInternalException
@@ -1141,6 +1153,7 @@ export const listHapgs: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "ListHapgs",
 }));
 export type ListHsmsError =
   | CloudHsmInternalException
@@ -1180,6 +1193,7 @@ export const listHsms: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "ListHsms",
 }));
 export type ListLunaClientsError =
   | CloudHsmInternalException
@@ -1218,6 +1232,7 @@ export const listLunaClients: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "ListLunaClients",
 }));
 export type ListTagsForResourceError =
   | CloudHsmInternalException
@@ -1251,6 +1266,7 @@ export const listTagsForResource: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ModifyHapgError =
   | CloudHsmInternalException
@@ -1284,6 +1300,7 @@ export const modifyHapg: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "ModifyHapg",
 }));
 export type ModifyHsmError =
   | CloudHsmInternalException
@@ -1322,6 +1339,7 @@ export const modifyHsm: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "ModifyHsm",
 }));
 export type ModifyLunaClientError = CloudHsmServiceException | CommonErrors;
 /**
@@ -1350,6 +1368,7 @@ export const modifyLunaClient: API.OperationMethod<
   input: ModifyLunaClientRequest,
   output: ModifyLunaClientResponse,
   errors: [CloudHsmServiceException],
+  operationName: "ModifyLunaClient",
 }));
 export type RemoveTagsFromResourceError =
   | CloudHsmInternalException
@@ -1386,4 +1405,5 @@ export const removeTagsFromResource: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  operationName: "RemoveTagsFromResource",
 }));

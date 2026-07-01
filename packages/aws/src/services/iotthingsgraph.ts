@@ -1429,6 +1429,7 @@ export const associateEntityToThing: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "AssociateEntityToThing",
 }));
 export type CreateFlowTemplateError =
   | InternalFailureException
@@ -1457,6 +1458,7 @@ export const createFlowTemplate: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  operationName: "CreateFlowTemplate",
 }));
 export type CreateSystemInstanceError =
   | InternalFailureException
@@ -1495,6 +1497,7 @@ export const createSystemInstance: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  operationName: "CreateSystemInstance",
 }));
 export type CreateSystemTemplateError =
   | InternalFailureException
@@ -1520,6 +1523,7 @@ export const createSystemTemplate: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  operationName: "CreateSystemTemplate",
 }));
 export type DeleteFlowTemplateError =
   | InternalFailureException
@@ -1545,6 +1549,7 @@ export const deleteFlowTemplate: API.OperationMethod<
     ResourceInUseException,
     ThrottlingException,
   ],
+  operationName: "DeleteFlowTemplate",
 }));
 export type DeleteNamespaceError =
   | InternalFailureException
@@ -1563,6 +1568,7 @@ export const deleteNamespace: API.OperationMethod<
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
   errors: [InternalFailureException, ThrottlingException],
+  operationName: "DeleteNamespace",
 }));
 export type DeleteSystemInstanceError =
   | InternalFailureException
@@ -1590,6 +1596,7 @@ export const deleteSystemInstance: API.OperationMethod<
     ResourceInUseException,
     ThrottlingException,
   ],
+  operationName: "DeleteSystemInstance",
 }));
 export type DeleteSystemTemplateError =
   | InternalFailureException
@@ -1615,6 +1622,7 @@ export const deleteSystemTemplate: API.OperationMethod<
     ResourceInUseException,
     ThrottlingException,
   ],
+  operationName: "DeleteSystemTemplate",
 }));
 export type DeploySystemInstanceError =
   | InternalFailureException
@@ -1653,6 +1661,7 @@ export const deploySystemInstance: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeploySystemInstance",
 }));
 export type DeprecateFlowTemplateError =
   | InternalFailureException
@@ -1677,6 +1686,7 @@ export const deprecateFlowTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeprecateFlowTemplate",
 }));
 export type DeprecateSystemTemplateError =
   | InternalFailureException
@@ -1701,6 +1711,7 @@ export const deprecateSystemTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeprecateSystemTemplate",
 }));
 export type DescribeNamespaceError =
   | InternalFailureException
@@ -1725,6 +1736,7 @@ export const describeNamespace: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DescribeNamespace",
 }));
 export type DissociateEntityFromThingError =
   | InternalFailureException
@@ -1750,6 +1762,7 @@ export const dissociateEntityFromThing: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DissociateEntityFromThing",
 }));
 export type GetEntitiesError =
   | InternalFailureException
@@ -1795,6 +1808,7 @@ export const getEntities: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetEntities",
 }));
 export type GetFlowTemplateError =
   | InternalFailureException
@@ -1819,6 +1833,7 @@ export const getFlowTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetFlowTemplate",
 }));
 export type GetFlowTemplateRevisionsError =
   | InternalFailureException
@@ -1859,6 +1874,7 @@ export const getFlowTemplateRevisions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetFlowTemplateRevisions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1887,6 +1903,7 @@ export const getNamespaceDeletionStatus: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "GetNamespaceDeletionStatus",
 }));
 export type GetSystemInstanceError =
   | InternalFailureException
@@ -1911,6 +1928,7 @@ export const getSystemInstance: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetSystemInstance",
 }));
 export type GetSystemTemplateError =
   | InternalFailureException
@@ -1935,6 +1953,7 @@ export const getSystemTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetSystemTemplate",
 }));
 export type GetSystemTemplateRevisionsError =
   | InternalFailureException
@@ -1975,6 +1994,7 @@ export const getSystemTemplateRevisions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetSystemTemplateRevisions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2005,6 +2025,7 @@ export const getUploadStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetUploadStatus",
 }));
 export type ListFlowExecutionMessagesError =
   | InternalFailureException
@@ -2044,6 +2065,7 @@ export const listFlowExecutionMessages: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListFlowExecutionMessages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2089,6 +2111,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  operationName: "ListTagsForResource",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2132,6 +2155,7 @@ export const searchEntities: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "SearchEntities",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2177,6 +2201,7 @@ export const searchFlowExecutions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchFlowExecutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2220,6 +2245,7 @@ export const searchFlowTemplates: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "SearchFlowTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2263,6 +2289,7 @@ export const searchSystemInstances: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "SearchSystemInstances",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2306,6 +2333,7 @@ export const searchSystemTemplates: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "SearchSystemTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2356,6 +2384,7 @@ export const searchThings: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "SearchThings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2386,6 +2415,7 @@ export const tagResource: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  operationName: "TagResource",
 }));
 export type UndeploySystemInstanceError =
   | InternalFailureException
@@ -2412,6 +2442,7 @@ export const undeploySystemInstance: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UndeploySystemInstance",
 }));
 export type UntagResourceError =
   | InternalFailureException
@@ -2436,6 +2467,7 @@ export const untagResource: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateFlowTemplateError =
   | InternalFailureException
@@ -2461,6 +2493,7 @@ export const updateFlowTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateFlowTemplate",
 }));
 export type UpdateSystemTemplateError =
   | InternalFailureException
@@ -2485,6 +2518,7 @@ export const updateSystemTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateSystemTemplate",
 }));
 export type UploadEntityDefinitionsError =
   | InternalFailureException
@@ -2519,4 +2553,5 @@ export const uploadEntityDefinitions: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "UploadEntityDefinitions",
 }));

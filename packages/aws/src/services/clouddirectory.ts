@@ -4148,6 +4148,7 @@ export const addFacetToObject: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "AddFacetToObject",
 }));
 export type ApplySchemaError =
   | AccessDeniedException
@@ -4183,6 +4184,7 @@ export const applySchema: API.OperationMethod<
     SchemaAlreadyExistsException,
     ValidationException,
   ],
+  operationName: "ApplySchema",
 }));
 export type AttachObjectError =
   | AccessDeniedException
@@ -4226,6 +4228,7 @@ export const attachObject: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "AttachObject",
 }));
 export type AttachPolicyError =
   | AccessDeniedException
@@ -4261,6 +4264,7 @@ export const attachPolicy: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "AttachPolicy",
 }));
 export type AttachToIndexError =
   | AccessDeniedException
@@ -4301,6 +4305,7 @@ export const attachToIndex: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "AttachToIndex",
 }));
 export type AttachTypedLinkError =
   | AccessDeniedException
@@ -4337,6 +4342,7 @@ export const attachTypedLink: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "AttachTypedLink",
 }));
 export type BatchReadError =
   | AccessDeniedException
@@ -4367,6 +4373,7 @@ export const batchRead: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "BatchRead",
 }));
 export type BatchWriteError =
   | AccessDeniedException
@@ -4400,6 +4407,7 @@ export const batchWrite: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "BatchWrite",
 }));
 export type CreateDirectoryError =
   | AccessDeniedException
@@ -4436,6 +4444,7 @@ export const createDirectory: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "CreateDirectory",
 }));
 export type CreateFacetError =
   | AccessDeniedException
@@ -4473,6 +4482,7 @@ export const createFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "CreateFacet",
 }));
 export type CreateIndexError =
   | AccessDeniedException
@@ -4511,6 +4521,7 @@ export const createIndex: API.OperationMethod<
     UnsupportedIndexTypeException,
     ValidationException,
   ],
+  operationName: "CreateIndex",
 }));
 export type CreateObjectError =
   | AccessDeniedException
@@ -4552,6 +4563,7 @@ export const createObject: API.OperationMethod<
     UnsupportedIndexTypeException,
     ValidationException,
   ],
+  operationName: "CreateObject",
 }));
 export type CreateSchemaError =
   | AccessDeniedException
@@ -4594,6 +4606,7 @@ export const createSchema: API.OperationMethod<
     SchemaAlreadyExistsException,
     ValidationException,
   ],
+  operationName: "CreateSchema",
 }));
 export type CreateTypedLinkFacetError =
   | AccessDeniedException
@@ -4630,6 +4643,7 @@ export const createTypedLinkFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "CreateTypedLinkFacet",
 }));
 export type DeleteDirectoryError =
   | AccessDeniedException
@@ -4666,6 +4680,7 @@ export const deleteDirectory: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "DeleteDirectory",
 }));
 export type DeleteFacetError =
   | AccessDeniedException
@@ -4702,6 +4717,7 @@ export const deleteFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "DeleteFacet",
 }));
 export type DeleteObjectError =
   | AccessDeniedException
@@ -4737,6 +4753,7 @@ export const deleteObject: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "DeleteObject",
 }));
 export type DeleteSchemaError =
   | AccessDeniedException
@@ -4769,6 +4786,7 @@ export const deleteSchema: API.OperationMethod<
     StillContainsLinksException,
     ValidationException,
   ],
+  operationName: "DeleteSchema",
 }));
 export type DeleteTypedLinkFacetError =
   | AccessDeniedException
@@ -4801,6 +4819,7 @@ export const deleteTypedLinkFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "DeleteTypedLinkFacet",
 }));
 export type DetachFromIndexError =
   | AccessDeniedException
@@ -4837,6 +4856,7 @@ export const detachFromIndex: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "DetachFromIndex",
 }));
 export type DetachObjectError =
   | AccessDeniedException
@@ -4872,6 +4892,7 @@ export const detachObject: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "DetachObject",
 }));
 export type DetachPolicyError =
   | AccessDeniedException
@@ -4906,6 +4927,7 @@ export const detachPolicy: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "DetachPolicy",
 }));
 export type DetachTypedLinkError =
   | AccessDeniedException
@@ -4940,6 +4962,7 @@ export const detachTypedLink: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "DetachTypedLink",
 }));
 export type DisableDirectoryError =
   | AccessDeniedException
@@ -4973,6 +4996,7 @@ export const disableDirectory: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "DisableDirectory",
 }));
 export type EnableDirectoryError =
   | AccessDeniedException
@@ -5006,6 +5030,7 @@ export const enableDirectory: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "EnableDirectory",
 }));
 export type GetAppliedSchemaVersionError =
   | AccessDeniedException
@@ -5036,6 +5061,7 @@ export const getAppliedSchemaVersion: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "GetAppliedSchemaVersion",
 }));
 export type GetDirectoryError =
   | AccessDeniedException
@@ -5064,6 +5090,7 @@ export const getDirectory: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "GetDirectory",
 }));
 export type GetFacetError =
   | AccessDeniedException
@@ -5097,6 +5124,7 @@ export const getFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "GetFacet",
 }));
 export type GetLinkAttributesError =
   | AccessDeniedException
@@ -5131,6 +5159,7 @@ export const getLinkAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "GetLinkAttributes",
 }));
 export type GetObjectAttributesError =
   | AccessDeniedException
@@ -5165,6 +5194,7 @@ export const getObjectAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "GetObjectAttributes",
 }));
 export type GetObjectInformationError =
   | AccessDeniedException
@@ -5197,6 +5227,7 @@ export const getObjectInformation: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "GetObjectInformation",
 }));
 export type GetSchemaAsJsonError =
   | AccessDeniedException
@@ -5227,6 +5258,7 @@ export const getSchemaAsJson: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "GetSchemaAsJson",
 }));
 export type GetTypedLinkFacetInformationError =
   | AccessDeniedException
@@ -5261,6 +5293,7 @@ export const getTypedLinkFacetInformation: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "GetTypedLinkFacetInformation",
 }));
 export type ListAppliedSchemaArnsError =
   | AccessDeniedException
@@ -5308,6 +5341,7 @@ export const listAppliedSchemaArns: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListAppliedSchemaArns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5360,6 +5394,7 @@ export const listAttachedIndices: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListAttachedIndices",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5413,6 +5448,7 @@ export const listDevelopmentSchemaArns: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListDevelopmentSchemaArns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5463,6 +5499,7 @@ export const listDirectories: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListDirectories",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5517,6 +5554,7 @@ export const listFacetAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListFacetAttributes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5569,6 +5607,7 @@ export const listFacetNames: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListFacetNames",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5612,6 +5651,7 @@ export const listIncomingTypedLinks: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListIncomingTypedLinks",
 }));
 export type ListIndexError =
   | AccessDeniedException
@@ -5665,6 +5705,7 @@ export const listIndex: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListIndex",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5713,6 +5754,7 @@ export const listManagedSchemaArns: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListManagedSchemaArns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5769,6 +5811,7 @@ export const listObjectAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListObjectAttributes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5826,6 +5869,7 @@ export const listObjectChildren: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListObjectChildren",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5888,6 +5932,7 @@ export const listObjectParentPaths: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListObjectParentPaths",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5945,6 +5990,7 @@ export const listObjectParents: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListObjectParents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5999,6 +6045,7 @@ export const listObjectPolicies: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListObjectPolicies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6042,6 +6089,7 @@ export const listOutgoingTypedLinks: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListOutgoingTypedLinks",
 }));
 export type ListPolicyAttachmentsError =
   | AccessDeniedException
@@ -6093,6 +6141,7 @@ export const listPolicyAttachments: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListPolicyAttachments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6145,6 +6194,7 @@ export const listPublishedSchemaArns: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListPublishedSchemaArns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6199,6 +6249,7 @@ export const listTagsForResource: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6253,6 +6304,7 @@ export const listTypedLinkFacetAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListTypedLinkFacetAttributes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6306,6 +6358,7 @@ export const listTypedLinkFacetNames: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "ListTypedLinkFacetNames",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6365,6 +6418,7 @@ export const lookupPolicy: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "LookupPolicy",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6402,6 +6456,7 @@ export const publishSchema: API.OperationMethod<
     SchemaAlreadyPublishedException,
     ValidationException,
   ],
+  operationName: "PublishSchema",
 }));
 export type PutSchemaFromJsonError =
   | AccessDeniedException
@@ -6434,6 +6489,7 @@ export const putSchemaFromJson: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "PutSchemaFromJson",
 }));
 export type RemoveFacetFromObjectError =
   | AccessDeniedException
@@ -6468,6 +6524,7 @@ export const removeFacetFromObject: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "RemoveFacetFromObject",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -6500,6 +6557,7 @@ export const tagResource: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -6532,6 +6590,7 @@ export const untagResource: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateFacetError =
   | AccessDeniedException
@@ -6576,6 +6635,7 @@ export const updateFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "UpdateFacet",
 }));
 export type UpdateLinkAttributesError =
   | AccessDeniedException
@@ -6610,6 +6670,7 @@ export const updateLinkAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "UpdateLinkAttributes",
 }));
 export type UpdateObjectAttributesError =
   | AccessDeniedException
@@ -6646,6 +6707,7 @@ export const updateObjectAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "UpdateObjectAttributes",
 }));
 export type UpdateSchemaError =
   | AccessDeniedException
@@ -6677,6 +6739,7 @@ export const updateSchema: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "UpdateSchema",
 }));
 export type UpdateTypedLinkFacetError =
   | AccessDeniedException
@@ -6715,6 +6778,7 @@ export const updateTypedLinkFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "UpdateTypedLinkFacet",
 }));
 export type UpgradeAppliedSchemaError =
   | AccessDeniedException
@@ -6749,6 +6813,7 @@ export const upgradeAppliedSchema: API.OperationMethod<
     SchemaAlreadyExistsException,
     ValidationException,
   ],
+  operationName: "UpgradeAppliedSchema",
 }));
 export type UpgradePublishedSchemaError =
   | AccessDeniedException
@@ -6783,4 +6848,5 @@ export const upgradePublishedSchema: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  operationName: "UpgradePublishedSchema",
 }));

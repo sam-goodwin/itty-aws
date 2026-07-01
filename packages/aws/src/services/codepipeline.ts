@@ -3777,6 +3777,7 @@ export const acknowledgeJob: API.OperationMethod<
   input: AcknowledgeJobInput,
   output: AcknowledgeJobOutput,
   errors: [InvalidNonceException, JobNotFoundException, ValidationException],
+  operationName: "AcknowledgeJob",
 }));
 export type AcknowledgeThirdPartyJobError =
   | InvalidClientTokenException
@@ -3802,6 +3803,7 @@ export const acknowledgeThirdPartyJob: API.OperationMethod<
     JobNotFoundException,
     ValidationException,
   ],
+  operationName: "AcknowledgeThirdPartyJob",
 }));
 export type CreateCustomActionTypeError =
   | ConcurrentModificationException
@@ -3829,6 +3831,7 @@ export const createCustomActionType: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "CreateCustomActionType",
 }));
 export type CreatePipelineError =
   | ConcurrentModificationException
@@ -3870,6 +3873,7 @@ export const createPipeline: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "CreatePipeline",
 }));
 export type DeleteCustomActionTypeError =
   | ConcurrentModificationException
@@ -3894,6 +3898,7 @@ export const deleteCustomActionType: API.OperationMethod<
   input: DeleteCustomActionTypeInput,
   output: DeleteCustomActionTypeResponse,
   errors: [ConcurrentModificationException, ValidationException],
+  operationName: "DeleteCustomActionType",
 }));
 export type DeletePipelineError =
   | ConcurrentModificationException
@@ -3911,6 +3916,7 @@ export const deletePipeline: API.OperationMethod<
   input: DeletePipelineInput,
   output: DeletePipelineResponse,
   errors: [ConcurrentModificationException, ValidationException],
+  operationName: "DeletePipeline",
 }));
 export type DeleteWebhookError =
   | ConcurrentModificationException
@@ -3931,6 +3937,7 @@ export const deleteWebhook: API.OperationMethod<
   input: DeleteWebhookInput,
   output: DeleteWebhookOutput,
   errors: [ConcurrentModificationException, ValidationException],
+  operationName: "DeleteWebhook",
 }));
 export type DeregisterWebhookWithThirdPartyError =
   | ValidationException
@@ -3950,6 +3957,7 @@ export const deregisterWebhookWithThirdParty: API.OperationMethod<
   input: DeregisterWebhookWithThirdPartyInput,
   output: DeregisterWebhookWithThirdPartyOutput,
   errors: [ValidationException, WebhookNotFoundException],
+  operationName: "DeregisterWebhookWithThirdParty",
 }));
 export type DisableStageTransitionError =
   | PipelineNotFoundException
@@ -3973,6 +3981,7 @@ export const disableStageTransition: API.OperationMethod<
     StageNotFoundException,
     ValidationException,
   ],
+  operationName: "DisableStageTransition",
 }));
 export type EnableStageTransitionError =
   | PipelineNotFoundException
@@ -3995,6 +4004,7 @@ export const enableStageTransition: API.OperationMethod<
     StageNotFoundException,
     ValidationException,
   ],
+  operationName: "EnableStageTransition",
 }));
 export type GetActionTypeError =
   | ActionTypeNotFoundException
@@ -4014,6 +4024,7 @@ export const getActionType: API.OperationMethod<
   input: GetActionTypeInput,
   output: GetActionTypeOutput,
   errors: [ActionTypeNotFoundException, ValidationException],
+  operationName: "GetActionType",
 }));
 export type GetJobDetailsError =
   | JobNotFoundException
@@ -4036,6 +4047,7 @@ export const getJobDetails: API.OperationMethod<
   input: GetJobDetailsInput,
   output: GetJobDetailsOutput,
   errors: [JobNotFoundException, ValidationException],
+  operationName: "GetJobDetails",
 }));
 export type GetPipelineError =
   | PipelineNotFoundException
@@ -4060,6 +4072,7 @@ export const getPipeline: API.OperationMethod<
     PipelineVersionNotFoundException,
     ValidationException,
   ],
+  operationName: "GetPipeline",
 }));
 export type GetPipelineExecutionError =
   | PipelineExecutionNotFoundException
@@ -4084,6 +4097,7 @@ export const getPipelineExecution: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  operationName: "GetPipelineExecution",
 }));
 export type GetPipelineStateError =
   | PipelineNotFoundException
@@ -4106,6 +4120,7 @@ export const getPipelineState: API.OperationMethod<
   input: GetPipelineStateInput,
   output: GetPipelineStateOutput,
   errors: [PipelineNotFoundException, ValidationException],
+  operationName: "GetPipelineState",
 }));
 export type GetThirdPartyJobDetailsError =
   | InvalidClientTokenException
@@ -4136,6 +4151,7 @@ export const getThirdPartyJobDetails: API.OperationMethod<
     JobNotFoundException,
     ValidationException,
   ],
+  operationName: "GetThirdPartyJobDetails",
 }));
 export type ListActionExecutionsError =
   | InvalidNextTokenException
@@ -4175,6 +4191,7 @@ export const listActionExecutions: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  operationName: "ListActionExecutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4214,6 +4231,7 @@ export const listActionTypes: API.OperationMethod<
   input: ListActionTypesInput,
   output: ListActionTypesOutput,
   errors: [InvalidNextTokenException, ValidationException],
+  operationName: "ListActionTypes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4258,6 +4276,7 @@ export const listDeployActionExecutionTargets: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  operationName: "ListDeployActionExecutionTargets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4305,6 +4324,7 @@ export const listPipelineExecutions: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  operationName: "ListPipelineExecutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4343,6 +4363,7 @@ export const listPipelines: API.OperationMethod<
   input: ListPipelinesInput,
   output: ListPipelinesOutput,
   errors: [InvalidNextTokenException, ValidationException],
+  operationName: "ListPipelines",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4389,6 +4410,7 @@ export const listRuleExecutions: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  operationName: "ListRuleExecutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4414,6 +4436,7 @@ export const listRuleTypes: API.OperationMethod<
   input: ListRuleTypesInput,
   output: ListRuleTypesOutput,
   errors: [InvalidNextTokenException, ValidationException],
+  operationName: "ListRuleTypes",
 }));
 export type ListTagsForResourceError =
   | InvalidArnException
@@ -4454,6 +4477,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4496,6 +4520,7 @@ export const listWebhooks: API.OperationMethod<
   input: ListWebhooksInput,
   output: ListWebhooksOutput,
   errors: [InvalidNextTokenException, ValidationException],
+  operationName: "ListWebhooks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4534,6 +4559,7 @@ export const overrideStageCondition: API.OperationMethod<
     StageNotFoundException,
     ValidationException,
   ],
+  operationName: "OverrideStageCondition",
 }));
 export type PollForJobsError =
   | ActionTypeNotFoundException
@@ -4559,6 +4585,7 @@ export const pollForJobs: API.OperationMethod<
   input: PollForJobsInput,
   output: PollForJobsOutput,
   errors: [ActionTypeNotFoundException, ValidationException],
+  operationName: "PollForJobs",
 }));
 export type PollForThirdPartyJobsError =
   | ActionTypeNotFoundException
@@ -4581,6 +4608,7 @@ export const pollForThirdPartyJobs: API.OperationMethod<
   input: PollForThirdPartyJobsInput,
   output: PollForThirdPartyJobsOutput,
   errors: [ActionTypeNotFoundException, ValidationException],
+  operationName: "PollForThirdPartyJobs",
 }));
 export type PutActionRevisionError =
   | ActionNotFoundException
@@ -4608,6 +4636,7 @@ export const putActionRevision: API.OperationMethod<
     StageNotFoundException,
     ValidationException,
   ],
+  operationName: "PutActionRevision",
 }));
 export type PutApprovalResultError =
   | ActionNotFoundException
@@ -4637,6 +4666,7 @@ export const putApprovalResult: API.OperationMethod<
     StageNotFoundException,
     ValidationException,
   ],
+  operationName: "PutApprovalResult",
 }));
 export type PutJobFailureResultError =
   | InvalidJobStateException
@@ -4656,6 +4686,7 @@ export const putJobFailureResult: API.OperationMethod<
   input: PutJobFailureResultInput,
   output: PutJobFailureResultResponse,
   errors: [InvalidJobStateException, JobNotFoundException, ValidationException],
+  operationName: "PutJobFailureResult",
 }));
 export type PutJobSuccessResultError =
   | InvalidJobStateException
@@ -4681,6 +4712,7 @@ export const putJobSuccessResult: API.OperationMethod<
     OutputVariablesSizeExceededException,
     ValidationException,
   ],
+  operationName: "PutJobSuccessResult",
 }));
 export type PutThirdPartyJobFailureResultError =
   | InvalidClientTokenException
@@ -4706,6 +4738,7 @@ export const putThirdPartyJobFailureResult: API.OperationMethod<
     JobNotFoundException,
     ValidationException,
   ],
+  operationName: "PutThirdPartyJobFailureResult",
 }));
 export type PutThirdPartyJobSuccessResultError =
   | InvalidClientTokenException
@@ -4731,6 +4764,7 @@ export const putThirdPartyJobSuccessResult: API.OperationMethod<
     JobNotFoundException,
     ValidationException,
   ],
+  operationName: "PutThirdPartyJobSuccessResult",
 }));
 export type PutWebhookError =
   | ConcurrentModificationException
@@ -4780,6 +4814,7 @@ export const putWebhook: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "PutWebhook",
 }));
 export type RegisterWebhookWithThirdPartyError =
   | ValidationException
@@ -4798,6 +4833,7 @@ export const registerWebhookWithThirdParty: API.OperationMethod<
   input: RegisterWebhookWithThirdPartyInput,
   output: RegisterWebhookWithThirdPartyOutput,
   errors: [ValidationException, WebhookNotFoundException],
+  operationName: "RegisterWebhookWithThirdParty",
 }));
 export type RetryStageExecutionError =
   | ConcurrentPipelineExecutionsLimitExceededException
@@ -4835,6 +4871,7 @@ export const retryStageExecution: API.OperationMethod<
     StageNotRetryableException,
     ValidationException,
   ],
+  operationName: "RetryStageExecution",
 }));
 export type RollbackStageError =
   | ConflictException
@@ -4865,6 +4902,7 @@ export const rollbackStage: API.OperationMethod<
     UnableToRollbackStageException,
     ValidationException,
   ],
+  operationName: "RollbackStage",
 }));
 export type StartPipelineExecutionError =
   | ConcurrentPipelineExecutionsLimitExceededException
@@ -4890,6 +4928,7 @@ export const startPipelineExecution: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  operationName: "StartPipelineExecution",
 }));
 export type StopPipelineExecutionError =
   | ConflictException
@@ -4921,6 +4960,7 @@ export const stopPipelineExecution: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  operationName: "StopPipelineExecution",
 }));
 export type TagResourceError =
   | ConcurrentModificationException
@@ -4950,6 +4990,7 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ConcurrentModificationException
@@ -4976,6 +5017,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateActionTypeError =
   | ActionTypeNotFoundException
@@ -5001,6 +5043,7 @@ export const updateActionType: API.OperationMethod<
     RequestFailedException,
     ValidationException,
   ],
+  operationName: "UpdateActionType",
 }));
 export type UpdatePipelineError =
   | InvalidActionDeclarationException
@@ -5032,4 +5075,5 @@ export const updatePipeline: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  operationName: "UpdatePipeline",
 }));

@@ -2620,6 +2620,7 @@ export const createCustomDomainAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateCustomDomainAssociation",
 }));
 export type DeleteCustomDomainAssociationError =
   | AccessDeniedException
@@ -2648,6 +2649,7 @@ export const deleteCustomDomainAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteCustomDomainAssociation",
 }));
 export type DeleteResourcePolicyError =
   | InternalServerException
@@ -2670,6 +2672,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type GetCredentialsError =
   | InternalServerException
@@ -2698,6 +2701,7 @@ export const getCredentials: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetCredentials",
 }));
 export type GetCustomDomainAssociationError =
   | AccessDeniedException
@@ -2726,6 +2730,7 @@ export const getCustomDomainAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCustomDomainAssociation",
 }));
 export type GetIdentityCenterAuthTokenError =
   | AccessDeniedException
@@ -2760,6 +2765,7 @@ export const getIdentityCenterAuthToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetIdentityCenterAuthToken",
 }));
 export type GetResourcePolicyError =
   | InternalServerException
@@ -2782,6 +2788,7 @@ export const getResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type GetTrackError =
   | AccessDeniedException
@@ -2812,6 +2819,7 @@ export const getTrack: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTrack",
 }));
 export type ListCustomDomainAssociationsError =
   | AccessDeniedException
@@ -2853,6 +2861,7 @@ export const listCustomDomainAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCustomDomainAssociations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2883,6 +2892,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTracksError =
   | AccessDeniedException
@@ -2924,6 +2934,7 @@ export const listTracks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTracks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2956,6 +2967,7 @@ export const putResourcePolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -2982,6 +2994,7 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -3006,6 +3019,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateCustomDomainAssociationError =
   | AccessDeniedException
@@ -3034,6 +3048,7 @@ export const updateCustomDomainAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateCustomDomainAssociation",
 }));
 export type CreateEndpointAccessError =
   | AccessDeniedException
@@ -3062,6 +3077,7 @@ export const createEndpointAccess: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateEndpointAccess",
 }));
 export type DeleteEndpointAccessError =
   | ConflictException
@@ -3086,6 +3102,7 @@ export const deleteEndpointAccess: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteEndpointAccess",
 }));
 export type GetEndpointAccessError =
   | ConflictException
@@ -3110,6 +3127,7 @@ export const getEndpointAccess: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetEndpointAccess",
 }));
 export type ListEndpointAccessError =
   | ConflictException
@@ -3149,6 +3167,7 @@ export const listEndpointAccess: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListEndpointAccess",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3181,6 +3200,7 @@ export const updateEndpointAccess: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateEndpointAccess",
 }));
 export type ListManagedWorkgroupsError =
   | AccessDeniedException
@@ -3213,6 +3233,7 @@ export const listManagedWorkgroups: API.OperationMethod<
   input: ListManagedWorkgroupsRequest,
   output: ListManagedWorkgroupsResponse,
   errors: [AccessDeniedException, InternalServerException],
+  operationName: "ListManagedWorkgroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3243,6 +3264,7 @@ export const createNamespace: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "CreateNamespace",
 }));
 export type GetNamespaceError =
   | InternalServerException
@@ -3265,6 +3287,7 @@ export const getNamespace: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetNamespace",
 }));
 export type UpdateNamespaceError =
   | ConflictException
@@ -3289,6 +3312,7 @@ export const updateNamespace: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateNamespace",
 }));
 export type DeleteNamespaceError =
   | ConflictException
@@ -3313,6 +3337,7 @@ export const deleteNamespace: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteNamespace",
 }));
 export type ListNamespacesError =
   | InternalServerException
@@ -3345,6 +3370,7 @@ export const listNamespaces: API.OperationMethod<
   input: ListNamespacesRequest,
   output: ListNamespacesResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListNamespaces",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3377,6 +3403,7 @@ export const updateLakehouseConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateLakehouseConfiguration",
 }));
 export type ConvertRecoveryPointToSnapshotError =
   | ConflictException
@@ -3405,6 +3432,7 @@ export const convertRecoveryPointToSnapshot: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "ConvertRecoveryPointToSnapshot",
 }));
 export type GetRecoveryPointError =
   | ConflictException
@@ -3429,6 +3457,7 @@ export const getRecoveryPoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetRecoveryPoint",
 }));
 export type ListRecoveryPointsError =
   | InternalServerException
@@ -3461,6 +3490,7 @@ export const listRecoveryPoints: API.OperationMethod<
   input: ListRecoveryPointsRequest,
   output: ListRecoveryPointsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListRecoveryPoints",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3491,6 +3521,7 @@ export const restoreFromRecoveryPoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "RestoreFromRecoveryPoint",
 }));
 export type RestoreTableFromRecoveryPointError =
   | ConflictException
@@ -3515,6 +3546,7 @@ export const restoreTableFromRecoveryPoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "RestoreTableFromRecoveryPoint",
 }));
 export type CreateReservationError =
   | ConflictException
@@ -3545,6 +3577,7 @@ export const createReservation: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "CreateReservation",
 }));
 export type GetReservationError =
   | InternalServerException
@@ -3569,6 +3602,7 @@ export const getReservation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetReservation",
 }));
 export type GetReservationOfferingError =
   | InternalServerException
@@ -3593,6 +3627,7 @@ export const getReservationOffering: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetReservationOffering",
 }));
 export type ListReservationOfferingsError =
   | InternalServerException
@@ -3626,6 +3661,7 @@ export const listReservationOfferings: API.OperationMethod<
   input: ListReservationOfferingsRequest,
   output: ListReservationOfferingsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "ListReservationOfferings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3665,6 +3701,7 @@ export const listReservations: API.OperationMethod<
   input: ListReservationsRequest,
   output: ListReservationsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "ListReservations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3695,6 +3732,7 @@ export const createScheduledAction: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreateScheduledAction",
 }));
 export type DeleteScheduledActionError =
   | InternalServerException
@@ -3717,6 +3755,7 @@ export const deleteScheduledAction: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteScheduledAction",
 }));
 export type GetScheduledActionError =
   | InternalServerException
@@ -3739,6 +3778,7 @@ export const getScheduledAction: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetScheduledAction",
 }));
 export type ListScheduledActionsError =
   | InternalServerException
@@ -3778,6 +3818,7 @@ export const listScheduledActions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListScheduledActions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3808,6 +3849,7 @@ export const updateScheduledAction: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateScheduledAction",
 }));
 export type CreateSnapshotError =
   | ConflictException
@@ -3836,6 +3878,7 @@ export const createSnapshot: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "CreateSnapshot",
 }));
 export type CreateSnapshotCopyConfigurationError =
   | AccessDeniedException
@@ -3864,6 +3907,7 @@ export const createSnapshotCopyConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateSnapshotCopyConfiguration",
 }));
 export type DeleteSnapshotError =
   | ConflictException
@@ -3888,6 +3932,7 @@ export const deleteSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteSnapshot",
 }));
 export type DeleteSnapshotCopyConfigurationError =
   | AccessDeniedException
@@ -3914,6 +3959,7 @@ export const deleteSnapshotCopyConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteSnapshotCopyConfiguration",
 }));
 export type GetSnapshotError =
   | InternalServerException
@@ -3936,6 +3982,7 @@ export const getSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetSnapshot",
 }));
 export type GetTableRestoreStatusError =
   | ResourceNotFoundException
@@ -3953,6 +4000,7 @@ export const getTableRestoreStatus: API.OperationMethod<
   input: GetTableRestoreStatusRequest,
   output: GetTableRestoreStatusResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetTableRestoreStatus",
 }));
 export type ListSnapshotCopyConfigurationsError =
   | ConflictException
@@ -3994,6 +4042,7 @@ export const listSnapshotCopyConfigurations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListSnapshotCopyConfigurations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4037,6 +4086,7 @@ export const listSnapshots: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListSnapshots",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4080,6 +4130,7 @@ export const listTableRestoreStatus: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTableRestoreStatus",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4112,6 +4163,7 @@ export const restoreFromSnapshot: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "RestoreFromSnapshot",
 }));
 export type RestoreTableFromSnapshotError =
   | ConflictException
@@ -4136,6 +4188,7 @@ export const restoreTableFromSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "RestoreTableFromSnapshot",
 }));
 export type UpdateSnapshotError =
   | ConflictException
@@ -4160,6 +4213,7 @@ export const updateSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateSnapshot",
 }));
 export type UpdateSnapshotCopyConfigurationError =
   | AccessDeniedException
@@ -4186,6 +4240,7 @@ export const updateSnapshotCopyConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateSnapshotCopyConfiguration",
 }));
 export type CreateUsageLimitError =
   | ConflictException
@@ -4212,6 +4267,7 @@ export const createUsageLimit: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateUsageLimit",
 }));
 export type DeleteUsageLimitError =
   | ConflictException
@@ -4236,6 +4292,7 @@ export const deleteUsageLimit: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteUsageLimit",
 }));
 export type GetUsageLimitError =
   | ConflictException
@@ -4260,6 +4317,7 @@ export const getUsageLimit: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetUsageLimit",
 }));
 export type ListUsageLimitsError =
   | ConflictException
@@ -4301,6 +4359,7 @@ export const listUsageLimits: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListUsageLimits",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4331,6 +4390,7 @@ export const updateUsageLimit: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateUsageLimit",
 }));
 export type CreateWorkgroupError =
   | ConflictException
@@ -4371,6 +4431,7 @@ export const createWorkgroup: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "CreateWorkgroup",
 }));
 export type GetWorkgroupError =
   | InternalServerException
@@ -4393,6 +4454,7 @@ export const getWorkgroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetWorkgroup",
 }));
 export type UpdateWorkgroupError =
   | ConflictException
@@ -4431,6 +4493,7 @@ export const updateWorkgroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateWorkgroup",
 }));
 export type DeleteWorkgroupError =
   | ConflictException
@@ -4455,6 +4518,7 @@ export const deleteWorkgroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteWorkgroup",
 }));
 export type ListWorkgroupsError =
   | InternalServerException
@@ -4487,6 +4551,7 @@ export const listWorkgroups: API.OperationMethod<
   input: ListWorkgroupsRequest,
   output: ListWorkgroupsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListWorkgroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

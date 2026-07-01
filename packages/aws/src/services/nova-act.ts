@@ -1091,6 +1091,7 @@ export const createAct: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAct",
 }));
 export type ListActsError =
   | AccessDeniedException
@@ -1134,6 +1135,7 @@ export const listActs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListActs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1170,6 +1172,7 @@ export const invokeActStep: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InvokeActStep",
 }));
 export type UpdateActError =
   | AccessDeniedException
@@ -1198,6 +1201,7 @@ export const updateAct: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAct",
 }));
 export type ListModelsError =
   | AccessDeniedException
@@ -1216,6 +1220,7 @@ export const listModels: API.OperationMethod<
   input: ListModelsRequest,
   output: ListModelsResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
+  operationName: "ListModels",
 }));
 export type CreateSessionError =
   | AccessDeniedException
@@ -1246,6 +1251,7 @@ export const createSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateSession",
 }));
 export type ListSessionsError =
   | AccessDeniedException
@@ -1289,6 +1295,7 @@ export const listSessions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSessions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1323,6 +1330,7 @@ export const createWorkflowDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateWorkflowDefinition",
 }));
 export type GetWorkflowDefinitionError =
   | AccessDeniedException
@@ -1349,6 +1357,7 @@ export const getWorkflowDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetWorkflowDefinition",
 }));
 export type DeleteWorkflowDefinitionError =
   | AccessDeniedException
@@ -1377,6 +1386,7 @@ export const deleteWorkflowDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteWorkflowDefinition",
 }));
 export type ListWorkflowDefinitionsError =
   | AccessDeniedException
@@ -1416,6 +1426,7 @@ export const listWorkflowDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListWorkflowDefinitions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1450,6 +1461,7 @@ export const createWorkflowRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateWorkflowRun",
 }));
 export type GetWorkflowRunError =
   | AccessDeniedException
@@ -1478,6 +1490,7 @@ export const getWorkflowRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetWorkflowRun",
 }));
 export type UpdateWorkflowRunError =
   | AccessDeniedException
@@ -1506,6 +1519,7 @@ export const updateWorkflowRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateWorkflowRun",
 }));
 export type DeleteWorkflowRunError =
   | AccessDeniedException
@@ -1534,6 +1548,7 @@ export const deleteWorkflowRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteWorkflowRun",
 }));
 export type ListWorkflowRunsError =
   | AccessDeniedException
@@ -1577,6 +1592,7 @@ export const listWorkflowRuns: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListWorkflowRuns",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

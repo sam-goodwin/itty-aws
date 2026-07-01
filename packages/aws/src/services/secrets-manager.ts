@@ -1269,6 +1269,7 @@ export const batchGetSecretValue: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "BatchGetSecretValue",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1317,6 +1318,7 @@ export const cancelRotateSecret: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "CancelRotateSecret",
 }));
 export type CreateSecretError =
   | DecryptionFailure
@@ -1407,6 +1409,7 @@ export const createSecret: API.OperationMethod<
     ResourceExistsException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateSecret",
 }));
 export type DeleteResourcePolicyError =
   | InternalServiceError
@@ -1440,6 +1443,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteSecretError =
   | InternalServiceError
@@ -1501,6 +1505,7 @@ export const deleteSecret: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteSecret",
 }));
 export type DescribeSecretError =
   | InternalServiceError
@@ -1532,6 +1537,7 @@ export const describeSecret: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeSecret",
 }));
 export type GetRandomPasswordError =
   | InternalServiceError
@@ -1567,6 +1573,7 @@ export const getRandomPassword: API.OperationMethod<
     InvalidParameterException,
     InvalidRequestException,
   ],
+  operationName: "GetRandomPassword",
 }));
 export type GetResourcePolicyError =
   | InternalServiceError
@@ -1600,6 +1607,7 @@ export const getResourcePolicy: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type GetSecretValueError =
   | DecryptionFailure
@@ -1647,6 +1655,7 @@ export const getSecretValue: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "GetSecretValue",
 }));
 export type ListSecretsError =
   | InternalServiceError
@@ -1708,6 +1717,7 @@ export const listSecrets: API.OperationMethod<
     InvalidParameterException,
     InvalidRequestException,
   ],
+  operationName: "ListSecrets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1764,6 +1774,7 @@ export const listSecretVersionIds: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "ListSecretVersionIds",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1808,6 +1819,7 @@ export const putResourcePolicy: API.OperationMethod<
     PublicPolicyException,
     ResourceNotFoundException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type PutSecretValueError =
   | DecryptionFailure
@@ -1877,6 +1889,7 @@ export const putSecretValue: API.OperationMethod<
     ResourceExistsException,
     ResourceNotFoundException,
   ],
+  operationName: "PutSecretValue",
 }));
 export type RemoveRegionsFromReplicationError =
   | InternalServiceError
@@ -1911,6 +1924,7 @@ export const removeRegionsFromReplication: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "RemoveRegionsFromReplication",
 }));
 export type ReplicateSecretToRegionsError =
   | InternalServiceError
@@ -1948,6 +1962,7 @@ export const replicateSecretToRegions: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "ReplicateSecretToRegions",
 }));
 export type RestoreSecretError =
   | InternalServiceError
@@ -1981,6 +1996,7 @@ export const restoreSecret: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "RestoreSecret",
 }));
 export type RotateSecretError =
   | InternalServiceError
@@ -2030,6 +2046,7 @@ export const rotateSecret: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "RotateSecret",
 }));
 export type StopReplicationToReplicaError =
   | InternalServiceError
@@ -2066,6 +2083,7 @@ export const stopReplicationToReplica: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "StopReplicationToReplica",
 }));
 export type TagResourceError =
   | InternalServiceError
@@ -2108,6 +2126,7 @@ export const tagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServiceError
@@ -2148,6 +2167,7 @@ export const untagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateSecretError =
   | DecryptionFailure
@@ -2228,6 +2248,7 @@ export const updateSecret: API.OperationMethod<
     ResourceExistsException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateSecret",
 }));
 export type UpdateSecretVersionStageError =
   | InternalServiceError
@@ -2281,6 +2302,7 @@ export const updateSecretVersionStage: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateSecretVersionStage",
 }));
 export type ValidateResourcePolicyError =
   | InternalServiceError
@@ -2327,4 +2349,5 @@ export const validateResourcePolicy: API.OperationMethod<
     MalformedPolicyDocumentException,
     ResourceNotFoundException,
   ],
+  operationName: "ValidateResourcePolicy",
 }));

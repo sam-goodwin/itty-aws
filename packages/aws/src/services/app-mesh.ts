@@ -3618,6 +3618,7 @@ export const listTagsForResource: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListTagsForResource",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3657,6 +3658,7 @@ export const tagResource: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -3685,6 +3687,7 @@ export const untagResource: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateMeshError =
   | BadRequestException
@@ -3724,6 +3727,7 @@ export const createMesh: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "CreateMesh",
 }));
 export type DescribeMeshError =
   | BadRequestException
@@ -3752,6 +3756,7 @@ export const describeMesh: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeMesh",
 }));
 export type UpdateMeshError =
   | BadRequestException
@@ -3782,6 +3787,7 @@ export const updateMesh: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateMesh",
 }));
 export type DeleteMeshError =
   | BadRequestException
@@ -3815,6 +3821,7 @@ export const deleteMesh: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteMesh",
 }));
 export type ListMeshesError =
   | BadRequestException
@@ -3858,6 +3865,7 @@ export const listMeshes: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListMeshes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3903,6 +3911,7 @@ export const createVirtualGateway: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "CreateVirtualGateway",
 }));
 export type DescribeVirtualGatewayError =
   | BadRequestException
@@ -3931,6 +3940,7 @@ export const describeVirtualGateway: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeVirtualGateway",
 }));
 export type UpdateVirtualGatewayError =
   | BadRequestException
@@ -3963,6 +3973,7 @@ export const updateVirtualGateway: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateVirtualGateway",
 }));
 export type DeleteVirtualGatewayError =
   | BadRequestException
@@ -3994,6 +4005,7 @@ export const deleteVirtualGateway: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteVirtualGateway",
 }));
 export type ListVirtualGatewaysError =
   | BadRequestException
@@ -4037,6 +4049,7 @@ export const listVirtualGateways: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListVirtualGateways",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4081,6 +4094,7 @@ export const createGatewayRoute: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "CreateGatewayRoute",
 }));
 export type DescribeGatewayRouteError =
   | BadRequestException
@@ -4109,6 +4123,7 @@ export const describeGatewayRoute: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeGatewayRoute",
 }));
 export type UpdateGatewayRouteError =
   | BadRequestException
@@ -4142,6 +4157,7 @@ export const updateGatewayRoute: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateGatewayRoute",
 }));
 export type DeleteGatewayRouteError =
   | BadRequestException
@@ -4172,6 +4188,7 @@ export const deleteGatewayRoute: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteGatewayRoute",
 }));
 export type ListGatewayRoutesError =
   | BadRequestException
@@ -4216,6 +4233,7 @@ export const listGatewayRoutes: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListGatewayRoutes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4280,6 +4298,7 @@ export const createVirtualNode: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "CreateVirtualNode",
 }));
 export type DescribeVirtualNodeError =
   | BadRequestException
@@ -4308,6 +4327,7 @@ export const describeVirtualNode: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeVirtualNode",
 }));
 export type UpdateVirtualNodeError =
   | BadRequestException
@@ -4340,6 +4360,7 @@ export const updateVirtualNode: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateVirtualNode",
 }));
 export type DeleteVirtualNodeError =
   | BadRequestException
@@ -4373,6 +4394,7 @@ export const deleteVirtualNode: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteVirtualNode",
 }));
 export type ListVirtualNodesError =
   | BadRequestException
@@ -4416,6 +4438,7 @@ export const listVirtualNodes: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListVirtualNodes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4462,6 +4485,7 @@ export const createVirtualRouter: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "CreateVirtualRouter",
 }));
 export type DescribeVirtualRouterError =
   | BadRequestException
@@ -4490,6 +4514,7 @@ export const describeVirtualRouter: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeVirtualRouter",
 }));
 export type UpdateVirtualRouterError =
   | BadRequestException
@@ -4522,6 +4547,7 @@ export const updateVirtualRouter: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateVirtualRouter",
 }));
 export type DeleteVirtualRouterError =
   | BadRequestException
@@ -4555,6 +4581,7 @@ export const deleteVirtualRouter: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteVirtualRouter",
 }));
 export type ListVirtualRoutersError =
   | BadRequestException
@@ -4598,6 +4625,7 @@ export const listVirtualRouters: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListVirtualRouters",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4641,6 +4669,7 @@ export const createRoute: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "CreateRoute",
 }));
 export type DescribeRouteError =
   | BadRequestException
@@ -4669,6 +4698,7 @@ export const describeRoute: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeRoute",
 }));
 export type UpdateRouteError =
   | BadRequestException
@@ -4701,6 +4731,7 @@ export const updateRoute: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateRoute",
 }));
 export type DeleteRouteError =
   | BadRequestException
@@ -4731,6 +4762,7 @@ export const deleteRoute: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteRoute",
 }));
 export type ListRoutesError =
   | BadRequestException
@@ -4774,6 +4806,7 @@ export const listRoutes: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListRoutes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4820,6 +4853,7 @@ export const createVirtualService: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "CreateVirtualService",
 }));
 export type DescribeVirtualServiceError =
   | BadRequestException
@@ -4848,6 +4882,7 @@ export const describeVirtualService: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeVirtualService",
 }));
 export type UpdateVirtualServiceError =
   | BadRequestException
@@ -4880,6 +4915,7 @@ export const updateVirtualService: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateVirtualService",
 }));
 export type DeleteVirtualServiceError =
   | BadRequestException
@@ -4910,6 +4946,7 @@ export const deleteVirtualService: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteVirtualService",
 }));
 export type ListVirtualServicesError =
   | BadRequestException
@@ -4953,6 +4990,7 @@ export const listVirtualServices: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListVirtualServices",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

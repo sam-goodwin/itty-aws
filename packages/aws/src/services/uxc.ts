@@ -235,6 +235,7 @@ export const getAccountCustomizations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAccountCustomizations",
 }));
 export type ListServicesError =
   | AccessDeniedException
@@ -276,6 +277,7 @@ export const listServices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListServices",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -307,4 +309,5 @@ export const updateAccountCustomizations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAccountCustomizations",
 }));

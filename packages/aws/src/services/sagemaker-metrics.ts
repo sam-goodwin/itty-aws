@@ -281,6 +281,7 @@ export const batchGetMetrics: API.OperationMethod<
   input: BatchGetMetricsRequest,
   output: BatchGetMetricsResponse,
   errors: [],
+  operationName: "BatchGetMetrics",
 }));
 export type BatchPutMetricsError = CommonErrors;
 /**
@@ -295,4 +296,5 @@ export const batchPutMetrics: API.OperationMethod<
   input: BatchPutMetricsRequest,
   output: BatchPutMetricsResponse,
   errors: [],
+  operationName: "BatchPutMetrics",
 }));

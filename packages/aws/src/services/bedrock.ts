@@ -9934,6 +9934,7 @@ export const batchDeleteAdvancedPromptOptimizationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchDeleteAdvancedPromptOptimizationJob",
 }));
 export type CreateAdvancedPromptOptimizationJobError =
   | AccessDeniedException
@@ -9966,6 +9967,7 @@ export const createAdvancedPromptOptimizationJob: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "CreateAdvancedPromptOptimizationJob",
 }));
 export type GetAdvancedPromptOptimizationJobError =
   | AccessDeniedException
@@ -9992,6 +9994,7 @@ export const getAdvancedPromptOptimizationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAdvancedPromptOptimizationJob",
 }));
 export type ListAdvancedPromptOptimizationJobsError =
   | AccessDeniedException
@@ -10031,6 +10034,7 @@ export const listAdvancedPromptOptimizationJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAdvancedPromptOptimizationJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10065,6 +10069,7 @@ export const stopAdvancedPromptOptimizationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopAdvancedPromptOptimizationJob",
 }));
 export type GetUseCaseForModelAccessError =
   | InternalServerException
@@ -10089,6 +10094,7 @@ export const getUseCaseForModelAccess: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetUseCaseForModelAccess",
 }));
 export type PutUseCaseForModelAccessError =
   | AccessDeniedException
@@ -10113,6 +10119,7 @@ export const putUseCaseForModelAccess: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutUseCaseForModelAccess",
 }));
 export type CreateAutomatedReasoningPolicyError =
   | AccessDeniedException
@@ -10147,6 +10154,7 @@ export const createAutomatedReasoningPolicy: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "CreateAutomatedReasoningPolicy",
 }));
 export type GetAutomatedReasoningPolicyError =
   | AccessDeniedException
@@ -10173,6 +10181,7 @@ export const getAutomatedReasoningPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAutomatedReasoningPolicy",
 }));
 export type UpdateAutomatedReasoningPolicyError =
   | AccessDeniedException
@@ -10203,6 +10212,7 @@ export const updateAutomatedReasoningPolicy: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "UpdateAutomatedReasoningPolicy",
 }));
 export type DeleteAutomatedReasoningPolicyError =
   | AccessDeniedException
@@ -10233,6 +10243,7 @@ export const deleteAutomatedReasoningPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAutomatedReasoningPolicy",
 }));
 export type ListAutomatedReasoningPoliciesError =
   | AccessDeniedException
@@ -10274,6 +10285,7 @@ export const listAutomatedReasoningPolicies: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAutomatedReasoningPolicies",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10306,6 +10318,7 @@ export const cancelAutomatedReasoningPolicyBuildWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelAutomatedReasoningPolicyBuildWorkflow",
 }));
 export type CreateAutomatedReasoningPolicyTestCaseError =
   | AccessDeniedException
@@ -10336,6 +10349,7 @@ export const createAutomatedReasoningPolicyTestCase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAutomatedReasoningPolicyTestCase",
 }));
 export type CreateAutomatedReasoningPolicyVersionError =
   | AccessDeniedException
@@ -10368,6 +10382,7 @@ export const createAutomatedReasoningPolicyVersion: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "CreateAutomatedReasoningPolicyVersion",
 }));
 export type DeleteAutomatedReasoningPolicyBuildWorkflowError =
   | AccessDeniedException
@@ -10398,6 +10413,7 @@ export const deleteAutomatedReasoningPolicyBuildWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAutomatedReasoningPolicyBuildWorkflow",
 }));
 export type DeleteAutomatedReasoningPolicyTestCaseError =
   | AccessDeniedException
@@ -10428,6 +10444,7 @@ export const deleteAutomatedReasoningPolicyTestCase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAutomatedReasoningPolicyTestCase",
 }));
 export type ExportAutomatedReasoningPolicyVersionError =
   | AccessDeniedException
@@ -10454,6 +10471,7 @@ export const exportAutomatedReasoningPolicyVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ExportAutomatedReasoningPolicyVersion",
 }));
 export type GetAutomatedReasoningPolicyAnnotationsError =
   | AccessDeniedException
@@ -10480,6 +10498,7 @@ export const getAutomatedReasoningPolicyAnnotations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAutomatedReasoningPolicyAnnotations",
 }));
 export type GetAutomatedReasoningPolicyBuildWorkflowError =
   | AccessDeniedException
@@ -10506,6 +10525,7 @@ export const getAutomatedReasoningPolicyBuildWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAutomatedReasoningPolicyBuildWorkflow",
 }));
 export type GetAutomatedReasoningPolicyBuildWorkflowResultAssetsError =
   | AccessDeniedException
@@ -10532,6 +10552,7 @@ export const getAutomatedReasoningPolicyBuildWorkflowResultAssets: API.Operation
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAutomatedReasoningPolicyBuildWorkflowResultAssets",
 }));
 export type GetAutomatedReasoningPolicyNextScenarioError =
   | AccessDeniedException
@@ -10558,6 +10579,7 @@ export const getAutomatedReasoningPolicyNextScenario: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAutomatedReasoningPolicyNextScenario",
 }));
 export type GetAutomatedReasoningPolicyTestCaseError =
   | AccessDeniedException
@@ -10584,6 +10606,7 @@ export const getAutomatedReasoningPolicyTestCase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAutomatedReasoningPolicyTestCase",
 }));
 export type GetAutomatedReasoningPolicyTestResultError =
   | AccessDeniedException
@@ -10610,6 +10633,7 @@ export const getAutomatedReasoningPolicyTestResult: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAutomatedReasoningPolicyTestResult",
 }));
 export type ListAutomatedReasoningPolicyBuildWorkflowsError =
   | AccessDeniedException
@@ -10651,6 +10675,7 @@ export const listAutomatedReasoningPolicyBuildWorkflows: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAutomatedReasoningPolicyBuildWorkflows",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10698,6 +10723,7 @@ export const listAutomatedReasoningPolicyTestCases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAutomatedReasoningPolicyTestCases",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10747,6 +10773,7 @@ export const listAutomatedReasoningPolicyTestResults: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAutomatedReasoningPolicyTestResults",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -10785,6 +10812,7 @@ export const startAutomatedReasoningPolicyBuildWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartAutomatedReasoningPolicyBuildWorkflow",
 }));
 export type StartAutomatedReasoningPolicyTestWorkflowError =
   | AccessDeniedException
@@ -10813,6 +10841,7 @@ export const startAutomatedReasoningPolicyTestWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartAutomatedReasoningPolicyTestWorkflow",
 }));
 export type UpdateAutomatedReasoningPolicyAnnotationsError =
   | AccessDeniedException
@@ -10841,6 +10870,7 @@ export const updateAutomatedReasoningPolicyAnnotations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAutomatedReasoningPolicyAnnotations",
 }));
 export type UpdateAutomatedReasoningPolicyTestCaseError =
   | AccessDeniedException
@@ -10871,6 +10901,7 @@ export const updateAutomatedReasoningPolicyTestCase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAutomatedReasoningPolicyTestCase",
 }));
 export type CreateMarketplaceModelEndpointError =
   | AccessDeniedException
@@ -10901,6 +10932,7 @@ export const createMarketplaceModelEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateMarketplaceModelEndpoint",
 }));
 export type DeleteMarketplaceModelEndpointError =
   | AccessDeniedException
@@ -10927,6 +10959,7 @@ export const deleteMarketplaceModelEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteMarketplaceModelEndpoint",
 }));
 export type DeregisterMarketplaceModelEndpointError =
   | AccessDeniedException
@@ -10955,6 +10988,7 @@ export const deregisterMarketplaceModelEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeregisterMarketplaceModelEndpoint",
 }));
 export type GetMarketplaceModelEndpointError =
   | AccessDeniedException
@@ -10981,6 +11015,7 @@ export const getMarketplaceModelEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMarketplaceModelEndpoint",
 }));
 export type ListMarketplaceModelEndpointsError =
   | AccessDeniedException
@@ -11022,6 +11057,7 @@ export const listMarketplaceModelEndpoints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMarketplaceModelEndpoints",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -11056,6 +11092,7 @@ export const registerMarketplaceModelEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RegisterMarketplaceModelEndpoint",
 }));
 export type UpdateMarketplaceModelEndpointError =
   | AccessDeniedException
@@ -11086,6 +11123,7 @@ export const updateMarketplaceModelEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateMarketplaceModelEndpoint",
 }));
 export type CreateCustomModelDeploymentError =
   | AccessDeniedException
@@ -11126,6 +11164,7 @@ export const createCustomModelDeployment: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "CreateCustomModelDeployment",
 }));
 export type DeleteCustomModelDeploymentError =
   | AccessDeniedException
@@ -11162,6 +11201,7 @@ export const deleteCustomModelDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteCustomModelDeployment",
 }));
 export type GetCustomModelDeploymentError =
   | AccessDeniedException
@@ -11196,6 +11236,7 @@ export const getCustomModelDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCustomModelDeployment",
 }));
 export type ListCustomModelDeploymentsError =
   | AccessDeniedException
@@ -11245,6 +11286,7 @@ export const listCustomModelDeployments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCustomModelDeployments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -11277,6 +11319,7 @@ export const updateCustomModelDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateCustomModelDeployment",
 }));
 export type CreateCustomModelError =
   | AccessDeniedException
@@ -11333,6 +11376,7 @@ export const createCustomModel: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "CreateCustomModel",
 }));
 export type DeleteCustomModelError =
   | AccessDeniedException
@@ -11361,6 +11405,7 @@ export const deleteCustomModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteCustomModel",
 }));
 export type GetCustomModelError =
   | AccessDeniedException
@@ -11387,6 +11432,7 @@ export const getCustomModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCustomModel",
 }));
 export type ListCustomModelsError =
   | AccessDeniedException
@@ -11428,6 +11474,7 @@ export const listCustomModels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCustomModels",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -11458,6 +11505,7 @@ export const getAccountDataRetention: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAccountDataRetention",
 }));
 export type PutAccountDataRetentionError =
   | AccessDeniedException
@@ -11482,6 +11530,7 @@ export const putAccountDataRetention: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutAccountDataRetention",
 }));
 export type DeleteEnforcedGuardrailConfigurationError =
   | AccessDeniedException
@@ -11508,6 +11557,7 @@ export const deleteEnforcedGuardrailConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteEnforcedGuardrailConfiguration",
 }));
 export type ListEnforcedGuardrailsConfigurationError =
   | AccessDeniedException
@@ -11549,6 +11599,7 @@ export const listEnforcedGuardrailsConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEnforcedGuardrailsConfiguration",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -11582,6 +11633,7 @@ export const putEnforcedGuardrailConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutEnforcedGuardrailConfiguration",
 }));
 export type BatchDeleteEvaluationJobError =
   | AccessDeniedException
@@ -11610,6 +11662,7 @@ export const batchDeleteEvaluationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchDeleteEvaluationJob",
 }));
 export type CreateEvaluationJobError =
   | AccessDeniedException
@@ -11640,6 +11693,7 @@ export const createEvaluationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEvaluationJob",
 }));
 export type GetEvaluationJobError =
   | AccessDeniedException
@@ -11666,6 +11720,7 @@ export const getEvaluationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEvaluationJob",
 }));
 export type ListEvaluationJobsError =
   | AccessDeniedException
@@ -11705,6 +11760,7 @@ export const listEvaluationJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEvaluationJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -11739,6 +11795,7 @@ export const stopEvaluationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopEvaluationJob",
 }));
 export type CreateGuardrailError =
   | AccessDeniedException
@@ -11785,6 +11842,7 @@ export const createGuardrail: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "CreateGuardrail",
 }));
 export type GetGuardrailError =
   | AccessDeniedException
@@ -11811,6 +11869,7 @@ export const getGuardrail: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetGuardrail",
 }));
 export type UpdateGuardrailError =
   | AccessDeniedException
@@ -11861,6 +11920,7 @@ export const updateGuardrail: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateGuardrail",
 }));
 export type DeleteGuardrailError =
   | AccessDeniedException
@@ -11895,6 +11955,7 @@ export const deleteGuardrail: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteGuardrail",
 }));
 export type ListGuardrailsError =
   | AccessDeniedException
@@ -11938,6 +11999,7 @@ export const listGuardrails: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListGuardrails",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -11974,6 +12036,7 @@ export const createGuardrailVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateGuardrailVersion",
 }));
 export type CreateInferenceProfileError =
   | AccessDeniedException
@@ -12006,6 +12069,7 @@ export const createInferenceProfile: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "CreateInferenceProfile",
 }));
 export type GetInferenceProfileError =
   | AccessDeniedException
@@ -12032,6 +12096,7 @@ export const getInferenceProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetInferenceProfile",
 }));
 export type DeleteInferenceProfileError =
   | AccessDeniedException
@@ -12060,6 +12125,7 @@ export const deleteInferenceProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteInferenceProfile",
 }));
 export type ListInferenceProfilesError =
   | AccessDeniedException
@@ -12099,6 +12165,7 @@ export const listInferenceProfiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListInferenceProfiles",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12123,6 +12190,7 @@ export const deleteModelInvocationLoggingConfiguration: API.OperationMethod<
   input: DeleteModelInvocationLoggingConfigurationRequest,
   output: DeleteModelInvocationLoggingConfigurationResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
+  operationName: "DeleteModelInvocationLoggingConfiguration",
 }));
 export type GetModelInvocationLoggingConfigurationError =
   | AccessDeniedException
@@ -12141,6 +12209,7 @@ export const getModelInvocationLoggingConfiguration: API.OperationMethod<
   input: GetModelInvocationLoggingConfigurationRequest,
   output: GetModelInvocationLoggingConfigurationResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
+  operationName: "GetModelInvocationLoggingConfiguration",
 }));
 export type PutModelInvocationLoggingConfigurationError =
   | AccessDeniedException
@@ -12165,6 +12234,7 @@ export const putModelInvocationLoggingConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutModelInvocationLoggingConfiguration",
 }));
 export type CreateModelCopyJobError =
   | AccessDeniedException
@@ -12189,6 +12259,7 @@ export const createModelCopyJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "CreateModelCopyJob",
 }));
 export type GetModelCopyJobError =
   | AccessDeniedException
@@ -12215,6 +12286,7 @@ export const getModelCopyJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetModelCopyJob",
 }));
 export type ListModelCopyJobsError =
   | AccessDeniedException
@@ -12256,6 +12328,7 @@ export const listModelCopyJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListModelCopyJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12294,6 +12367,7 @@ export const createModelImportJob: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "CreateModelImportJob",
 }));
 export type DeleteImportedModelError =
   | AccessDeniedException
@@ -12322,6 +12396,7 @@ export const deleteImportedModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteImportedModel",
 }));
 export type GetImportedModelError =
   | AccessDeniedException
@@ -12348,6 +12423,7 @@ export const getImportedModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetImportedModel",
 }));
 export type GetModelImportJobError =
   | AccessDeniedException
@@ -12374,6 +12450,7 @@ export const getModelImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetModelImportJob",
 }));
 export type ListImportedModelsError =
   | AccessDeniedException
@@ -12413,6 +12490,7 @@ export const listImportedModels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListImportedModels",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12458,6 +12536,7 @@ export const listModelImportJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListModelImportJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12496,6 +12575,7 @@ export const createModelInvocationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateModelInvocationJob",
 }));
 export type GetModelInvocationJobError =
   | AccessDeniedException
@@ -12522,6 +12602,7 @@ export const getModelInvocationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetModelInvocationJob",
 }));
 export type ListModelInvocationJobsError =
   | AccessDeniedException
@@ -12561,6 +12642,7 @@ export const listModelInvocationJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListModelInvocationJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12595,6 +12677,7 @@ export const stopModelInvocationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopModelInvocationJob",
 }));
 export type GetFoundationModelError =
   | AccessDeniedException
@@ -12621,6 +12704,7 @@ export const getFoundationModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFoundationModel",
 }));
 export type ListFoundationModelsError =
   | AccessDeniedException
@@ -12645,6 +12729,7 @@ export const listFoundationModels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFoundationModels",
 }));
 export type CreatePromptRouterError =
   | AccessDeniedException
@@ -12677,6 +12762,7 @@ export const createPromptRouter: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "CreatePromptRouter",
 }));
 export type GetPromptRouterError =
   | AccessDeniedException
@@ -12703,6 +12789,7 @@ export const getPromptRouter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPromptRouter",
 }));
 export type DeletePromptRouterError =
   | AccessDeniedException
@@ -12729,6 +12816,7 @@ export const deletePromptRouter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePromptRouter",
 }));
 export type ListPromptRoutersError =
   | AccessDeniedException
@@ -12768,6 +12856,7 @@ export const listPromptRouters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPromptRouters",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12804,6 +12893,7 @@ export const createProvisionedModelThroughput: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "CreateProvisionedModelThroughput",
 }));
 export type DeleteProvisionedModelThroughputError =
   | AccessDeniedException
@@ -12832,6 +12922,7 @@ export const deleteProvisionedModelThroughput: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteProvisionedModelThroughput",
 }));
 export type GetProvisionedModelThroughputError =
   | AccessDeniedException
@@ -12858,6 +12949,7 @@ export const getProvisionedModelThroughput: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetProvisionedModelThroughput",
 }));
 export type ListProvisionedModelThroughputsError =
   | AccessDeniedException
@@ -12897,6 +12989,7 @@ export const listProvisionedModelThroughputs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListProvisionedModelThroughputs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -12929,6 +13022,7 @@ export const updateProvisionedModelThroughput: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateProvisionedModelThroughput",
 }));
 export type DeleteResourcePolicyError =
   | AccessDeniedException
@@ -12955,6 +13049,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type GetResourcePolicyError =
   | AccessDeniedException
@@ -12981,6 +13076,7 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type PutResourcePolicyError =
   | AccessDeniedException
@@ -13007,6 +13103,7 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type CreateFoundationModelAgreementError =
   | AccessDeniedException
@@ -13035,6 +13132,7 @@ export const createFoundationModelAgreement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateFoundationModelAgreement",
 }));
 export type DeleteFoundationModelAgreementError =
   | AccessDeniedException
@@ -13063,6 +13161,7 @@ export const deleteFoundationModelAgreement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteFoundationModelAgreement",
 }));
 export type GetFoundationModelAvailabilityError =
   | AccessDeniedException
@@ -13089,6 +13188,7 @@ export const getFoundationModelAvailability: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFoundationModelAvailability",
 }));
 export type ListFoundationModelAgreementOffersError =
   | AccessDeniedException
@@ -13115,6 +13215,7 @@ export const listFoundationModelAgreementOffers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFoundationModelAgreementOffers",
 }));
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -13143,6 +13244,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -13171,6 +13273,7 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -13197,6 +13300,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateModelCustomizationJobError =
   | AccessDeniedException
@@ -13237,6 +13341,7 @@ export const createModelCustomizationJob: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "CreateModelCustomizationJob",
 }));
 export type GetModelCustomizationJobError =
   | AccessDeniedException
@@ -13263,6 +13368,7 @@ export const getModelCustomizationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetModelCustomizationJob",
 }));
 export type ListModelCustomizationJobsError =
   | AccessDeniedException
@@ -13304,6 +13410,7 @@ export const listModelCustomizationJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListModelCustomizationJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -13338,4 +13445,5 @@ export const stopModelCustomizationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopModelCustomizationJob",
 }));

@@ -224,4 +224,5 @@ export const putAuditEvents: API.OperationMethod<
     InvalidChannelARN,
     UnsupportedOperationException,
   ],
+  operationName: "PutAuditEvents",
 }));

@@ -2317,6 +2317,7 @@ export const getPreferences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPreferences",
 }));
 export type GetRecommendationError =
   | AccessDeniedException
@@ -2345,6 +2346,7 @@ export const getRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRecommendation",
 }));
 export type ListEfficiencyMetricsError =
   | AccessDeniedException
@@ -2386,6 +2388,7 @@ export const listEfficiencyMetrics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEfficiencyMetrics",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2431,6 +2434,7 @@ export const listEnrollmentStatuses: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEnrollmentStatuses",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2476,6 +2480,7 @@ export const listRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRecommendations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2523,6 +2528,7 @@ export const listRecommendationSummaries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRecommendationSummaries",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2557,6 +2563,7 @@ export const updateEnrollmentStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateEnrollmentStatus",
 }));
 export type UpdatePreferencesError =
   | AccessDeniedException
@@ -2581,4 +2588,5 @@ export const updatePreferences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdatePreferences",
 }));

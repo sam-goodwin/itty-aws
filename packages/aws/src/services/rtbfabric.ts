@@ -2240,6 +2240,7 @@ export const listRequesterGateways: API.OperationMethod<
   input: ListRequesterGatewaysRequest,
   output: ListRequesterGatewaysResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListRequesterGateways",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2278,6 +2279,7 @@ export const listResponderGateways: API.OperationMethod<
   input: ListResponderGatewaysRequest,
   output: ListResponderGatewaysResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListResponderGateways",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2310,6 +2312,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2336,6 +2339,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2362,6 +2366,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateLinkError =
   | AccessDeniedException
@@ -2394,6 +2399,7 @@ export const createLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateLink",
 }));
 export type GetLinkError =
   | AccessDeniedException
@@ -2424,6 +2430,7 @@ export const getLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetLink",
 }));
 export type DeleteLinkError =
   | AccessDeniedException
@@ -2454,6 +2461,7 @@ export const deleteLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteLink",
 }));
 export type ListLinksError =
   | AccessDeniedException
@@ -2497,6 +2505,7 @@ export const listLinks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListLinks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2533,6 +2542,7 @@ export const acceptLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AcceptLink",
 }));
 export type RejectLinkError =
   | AccessDeniedException
@@ -2563,6 +2573,7 @@ export const rejectLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RejectLink",
 }));
 export type UpdateLinkError =
   | AccessDeniedException
@@ -2593,6 +2604,7 @@ export const updateLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateLink",
 }));
 export type UpdateLinkModuleFlowError =
   | AccessDeniedException
@@ -2623,6 +2635,7 @@ export const updateLinkModuleFlow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateLinkModuleFlow",
 }));
 export type CreateLinkRoutingRuleError =
   | AccessDeniedException
@@ -2655,6 +2668,7 @@ export const createLinkRoutingRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateLinkRoutingRule",
 }));
 export type GetLinkRoutingRuleError =
   | AccessDeniedException
@@ -2681,6 +2695,7 @@ export const getLinkRoutingRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetLinkRoutingRule",
 }));
 export type UpdateLinkRoutingRuleError =
   | AccessDeniedException
@@ -2709,6 +2724,7 @@ export const updateLinkRoutingRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateLinkRoutingRule",
 }));
 export type DeleteLinkRoutingRuleError =
   | AccessDeniedException
@@ -2737,6 +2753,7 @@ export const deleteLinkRoutingRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteLinkRoutingRule",
 }));
 export type ListLinkRoutingRulesError =
   | AccessDeniedException
@@ -2778,6 +2795,7 @@ export const listLinkRoutingRules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListLinkRoutingRules",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2812,6 +2830,7 @@ export const createRequesterGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRequesterGateway",
 }));
 export type GetRequesterGatewayError =
   | AccessDeniedException
@@ -2838,6 +2857,7 @@ export const getRequesterGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRequesterGateway",
 }));
 export type DeleteRequesterGatewayError =
   | AccessDeniedException
@@ -2866,6 +2886,7 @@ export const deleteRequesterGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRequesterGateway",
 }));
 export type UpdateRequesterGatewayError =
   | AccessDeniedException
@@ -2894,6 +2915,7 @@ export const updateRequesterGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRequesterGateway",
 }));
 export type CreateOutboundExternalLinkError =
   | AccessDeniedException
@@ -2924,6 +2946,7 @@ export const createOutboundExternalLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateOutboundExternalLink",
 }));
 export type DeleteOutboundExternalLinkError =
   | AccessDeniedException
@@ -2952,6 +2975,7 @@ export const deleteOutboundExternalLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteOutboundExternalLink",
 }));
 export type GetOutboundExternalLinkError =
   | AccessDeniedException
@@ -2978,6 +3002,7 @@ export const getOutboundExternalLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetOutboundExternalLink",
 }));
 export type CreateResponderGatewayError =
   | AccessDeniedException
@@ -3008,6 +3033,7 @@ export const createResponderGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateResponderGateway",
 }));
 export type GetResponderGatewayError =
   | AccessDeniedException
@@ -3034,6 +3060,7 @@ export const getResponderGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResponderGateway",
 }));
 export type DeleteResponderGatewayError =
   | AccessDeniedException
@@ -3062,6 +3089,7 @@ export const deleteResponderGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteResponderGateway",
 }));
 export type AssociateCertificateError =
   | AccessDeniedException
@@ -3092,6 +3120,7 @@ export const associateCertificate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateCertificate",
 }));
 export type DisassociateCertificateError =
   | AccessDeniedException
@@ -3122,6 +3151,7 @@ export const disassociateCertificate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateCertificate",
 }));
 export type GetCertificateAssociationError =
   | AccessDeniedException
@@ -3148,6 +3178,7 @@ export const getCertificateAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCertificateAssociation",
 }));
 export type ListCertificateAssociationsError =
   | AccessDeniedException
@@ -3189,6 +3220,7 @@ export const listCertificateAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCertificateAssociations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3223,6 +3255,7 @@ export const updateResponderGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateResponderGateway",
 }));
 export type CreateInboundExternalLinkError =
   | AccessDeniedException
@@ -3253,6 +3286,7 @@ export const createInboundExternalLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateInboundExternalLink",
 }));
 export type DeleteInboundExternalLinkError =
   | AccessDeniedException
@@ -3281,6 +3315,7 @@ export const deleteInboundExternalLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteInboundExternalLink",
 }));
 export type GetInboundExternalLinkError =
   | AccessDeniedException
@@ -3307,4 +3342,5 @@ export const getInboundExternalLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetInboundExternalLink",
 }));

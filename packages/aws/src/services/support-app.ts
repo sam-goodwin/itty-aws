@@ -540,6 +540,7 @@ export const createSlackChannelConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateSlackChannelConfiguration",
 }));
 export type DeleteAccountAliasError =
   | AccessDeniedException
@@ -563,6 +564,7 @@ export const deleteAccountAlias: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteAccountAlias",
 }));
 export type DeleteSlackChannelConfigurationError =
   | AccessDeniedException
@@ -590,6 +592,7 @@ export const deleteSlackChannelConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteSlackChannelConfiguration",
 }));
 export type DeleteSlackWorkspaceConfigurationError =
   | AccessDeniedException
@@ -617,6 +620,7 @@ export const deleteSlackWorkspaceConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteSlackWorkspaceConfiguration",
 }));
 export type GetAccountAliasError = InternalServerException | CommonErrors;
 /**
@@ -632,6 +636,7 @@ export const getAccountAlias: API.OperationMethod<
   input: GetAccountAliasRequest,
   output: GetAccountAliasResult,
   errors: [InternalServerException],
+  operationName: "GetAccountAlias",
 }));
 export type ListSlackChannelConfigurationsError =
   | AccessDeniedException
@@ -664,6 +669,7 @@ export const listSlackChannelConfigurations: API.OperationMethod<
   input: ListSlackChannelConfigurationsRequest,
   output: ListSlackChannelConfigurationsResult,
   errors: [AccessDeniedException, InternalServerException],
+  operationName: "ListSlackChannelConfigurations",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
 export type ListSlackWorkspaceConfigurationsError =
@@ -697,6 +703,7 @@ export const listSlackWorkspaceConfigurations: API.OperationMethod<
   input: ListSlackWorkspaceConfigurationsRequest,
   output: ListSlackWorkspaceConfigurationsResult,
   errors: [AccessDeniedException, InternalServerException],
+  operationName: "ListSlackWorkspaceConfigurations",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
 export type PutAccountAliasError =
@@ -718,6 +725,7 @@ export const putAccountAlias: API.OperationMethod<
   input: PutAccountAliasRequest,
   output: PutAccountAliasResult,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "PutAccountAlias",
 }));
 export type RegisterSlackWorkspaceForOrganizationError =
   | AccessDeniedException
@@ -768,6 +776,7 @@ export const registerSlackWorkspaceForOrganization: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "RegisterSlackWorkspaceForOrganization",
 }));
 export type UpdateSlackChannelConfigurationError =
   | AccessDeniedException
@@ -794,4 +803,5 @@ export const updateSlackChannelConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateSlackChannelConfiguration",
 }));

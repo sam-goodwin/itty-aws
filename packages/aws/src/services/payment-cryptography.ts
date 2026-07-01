@@ -1526,6 +1526,7 @@ export const associateMpaTeam: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateMpaTeam",
 }));
 export type DeleteResourcePolicyError =
   | AccessDeniedException
@@ -1564,6 +1565,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DisableDefaultKeyReplicationRegionsError =
   | AccessDeniedException
@@ -1606,6 +1608,7 @@ export const disableDefaultKeyReplicationRegions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisableDefaultKeyReplicationRegions",
 }));
 export type DisassociateMpaTeamError =
   | AccessDeniedException
@@ -1646,6 +1649,7 @@ export const disassociateMpaTeam: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateMpaTeam",
 }));
 export type EnableDefaultKeyReplicationRegionsError =
   | AccessDeniedException
@@ -1688,6 +1692,7 @@ export const enableDefaultKeyReplicationRegions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "EnableDefaultKeyReplicationRegions",
 }));
 export type ExportKeyError =
   | AccessDeniedException
@@ -1806,6 +1811,7 @@ export const exportKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ExportKey",
 }));
 export type GetCertificateSigningRequestError =
   | AccessDeniedException
@@ -1834,6 +1840,7 @@ export const getCertificateSigningRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCertificateSigningRequest",
 }));
 export type GetDefaultKeyReplicationRegionsError =
   | AccessDeniedException
@@ -1874,6 +1881,7 @@ export const getDefaultKeyReplicationRegions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDefaultKeyReplicationRegions",
 }));
 export type GetMpaTeamAssociationError =
   | AccessDeniedException
@@ -1914,6 +1922,7 @@ export const getMpaTeamAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMpaTeamAssociation",
 }));
 export type GetParametersForExportError =
   | AccessDeniedException
@@ -1958,6 +1967,7 @@ export const getParametersForExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetParametersForExport",
 }));
 export type GetParametersForImportError =
   | AccessDeniedException
@@ -2002,6 +2012,7 @@ export const getParametersForImport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetParametersForImport",
 }));
 export type GetPublicKeyCertificateError =
   | AccessDeniedException
@@ -2034,6 +2045,7 @@ export const getPublicKeyCertificate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPublicKeyCertificate",
 }));
 export type GetResourcePolicyError =
   | AccessDeniedException
@@ -2070,6 +2082,7 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type ImportKeyError =
   | AccessDeniedException
@@ -2196,6 +2209,7 @@ export const importKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ImportKey",
 }));
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -2249,6 +2263,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2301,6 +2316,7 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2345,6 +2361,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2385,6 +2402,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateAliasError =
   | AccessDeniedException
@@ -2433,6 +2451,7 @@ export const createAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAlias",
 }));
 export type GetAliasError =
   | AccessDeniedException
@@ -2473,6 +2492,7 @@ export const getAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAlias",
 }));
 export type UpdateAliasError =
   | AccessDeniedException
@@ -2515,6 +2535,7 @@ export const updateAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAlias",
 }));
 export type DeleteAliasError =
   | AccessDeniedException
@@ -2559,6 +2580,7 @@ export const deleteAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAlias",
 }));
 export type ListAliasesError =
   | AccessDeniedException
@@ -2616,6 +2638,7 @@ export const listAliases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAliases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2674,6 +2697,7 @@ export const createKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateKey",
 }));
 export type GetKeyError =
   | AccessDeniedException
@@ -2712,6 +2736,7 @@ export const getKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetKey",
 }));
 export type DeleteKeyError =
   | AccessDeniedException
@@ -2756,6 +2781,7 @@ export const deleteKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteKey",
 }));
 export type ListKeysError =
   | AccessDeniedException
@@ -2811,6 +2837,7 @@ export const listKeys: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListKeys",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2861,6 +2888,7 @@ export const addKeyReplicationRegions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AddKeyReplicationRegions",
 }));
 export type RemoveKeyReplicationRegionsError =
   | AccessDeniedException
@@ -2903,6 +2931,7 @@ export const removeKeyReplicationRegions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RemoveKeyReplicationRegions",
 }));
 export type RestoreKeyError =
   | AccessDeniedException
@@ -2947,6 +2976,7 @@ export const restoreKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RestoreKey",
 }));
 export type StartKeyUsageError =
   | AccessDeniedException
@@ -2985,6 +3015,7 @@ export const startKeyUsage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartKeyUsage",
 }));
 export type StopKeyUsageError =
   | AccessDeniedException
@@ -3027,4 +3058,5 @@ export const stopKeyUsage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopKeyUsage",
 }));

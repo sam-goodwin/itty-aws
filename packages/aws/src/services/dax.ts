@@ -1345,6 +1345,7 @@ export const createCluster: API.OperationMethod<
     SubnetGroupNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  operationName: "CreateCluster",
 }));
 export type CreateParameterGroupError =
   | InvalidParameterCombinationException
@@ -1374,6 +1375,7 @@ export const createParameterGroup: API.OperationMethod<
     ParameterGroupQuotaExceededFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "CreateParameterGroup",
 }));
 export type CreateSubnetGroupError =
   | InvalidSubnet
@@ -1402,6 +1404,7 @@ export const createSubnetGroup: API.OperationMethod<
     SubnetNotAllowedFault,
     SubnetQuotaExceededFault,
   ],
+  operationName: "CreateSubnetGroup",
 }));
 export type DecreaseReplicationFactorError =
   | ClusterNotFoundFault
@@ -1434,6 +1437,7 @@ export const decreaseReplicationFactor: API.OperationMethod<
     NodeNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DecreaseReplicationFactor",
 }));
 export type DeleteClusterError =
   | ClusterNotFoundFault
@@ -1464,6 +1468,7 @@ export const deleteCluster: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DeleteCluster",
 }));
 export type DeleteParameterGroupError =
   | InvalidParameterCombinationException
@@ -1491,6 +1496,7 @@ export const deleteParameterGroup: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DeleteParameterGroup",
 }));
 export type DeleteSubnetGroupError =
   | ServiceLinkedRoleNotFoundFault
@@ -1516,6 +1522,7 @@ export const deleteSubnetGroup: API.OperationMethod<
     SubnetGroupInUseFault,
     SubnetGroupNotFoundFault,
   ],
+  operationName: "DeleteSubnetGroup",
 }));
 export type DescribeClustersError =
   | ClusterNotFoundFault
@@ -1556,6 +1563,7 @@ export const describeClusters: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DescribeClusters",
 }));
 export type DescribeDefaultParametersError =
   | InvalidParameterCombinationException
@@ -1579,6 +1587,7 @@ export const describeDefaultParameters: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DescribeDefaultParameters",
 }));
 export type DescribeEventsError =
   | InvalidParameterCombinationException
@@ -1606,6 +1615,7 @@ export const describeEvents: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DescribeEvents",
 }));
 export type DescribeParameterGroupsError =
   | InvalidParameterCombinationException
@@ -1631,6 +1641,7 @@ export const describeParameterGroups: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DescribeParameterGroups",
 }));
 export type DescribeParametersError =
   | InvalidParameterCombinationException
@@ -1655,6 +1666,7 @@ export const describeParameters: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "DescribeParameters",
 }));
 export type DescribeSubnetGroupsError =
   | ServiceLinkedRoleNotFoundFault
@@ -1673,6 +1685,7 @@ export const describeSubnetGroups: API.OperationMethod<
   input: DescribeSubnetGroupsRequest,
   output: DescribeSubnetGroupsResponse,
   errors: [ServiceLinkedRoleNotFoundFault, SubnetGroupNotFoundFault],
+  operationName: "DescribeSubnetGroups",
 }));
 export type IncreaseReplicationFactorError =
   | ClusterNotFoundFault
@@ -1707,6 +1720,7 @@ export const increaseReplicationFactor: API.OperationMethod<
     NodeQuotaForCustomerExceededFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "IncreaseReplicationFactor",
 }));
 export type ListTagsError =
   | ClusterNotFoundFault
@@ -1736,6 +1750,7 @@ export const listTags: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "ListTags",
 }));
 export type RebootNodeError =
   | ClusterNotFoundFault
@@ -1769,6 +1784,7 @@ export const rebootNode: API.OperationMethod<
     NodeNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "RebootNode",
 }));
 export type TagResourceError =
   | ClusterNotFoundFault
@@ -1801,6 +1817,7 @@ export const tagResource: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ClusterNotFoundFault
@@ -1832,6 +1849,7 @@ export const untagResource: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     TagNotFoundFault,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateClusterError =
   | ClusterNotFoundFault
@@ -1864,6 +1882,7 @@ export const updateCluster: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "UpdateCluster",
 }));
 export type UpdateParameterGroupError =
   | InvalidParameterCombinationException
@@ -1891,6 +1910,7 @@ export const updateParameterGroup: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  operationName: "UpdateParameterGroup",
 }));
 export type UpdateSubnetGroupError =
   | InvalidSubnet
@@ -1919,4 +1939,5 @@ export const updateSubnetGroup: API.OperationMethod<
     SubnetNotAllowedFault,
     SubnetQuotaExceededFault,
   ],
+  operationName: "UpdateSubnetGroup",
 }));

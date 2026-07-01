@@ -3802,6 +3802,7 @@ export const acceptInboundCrossClusterSearchConnection: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "AcceptInboundCrossClusterSearchConnection",
 }));
 export type AddTagsError =
   | BaseException
@@ -3827,6 +3828,7 @@ export const addTags: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  operationName: "AddTags",
 }));
 export type AssociatePackageError =
   | AccessDeniedException
@@ -3855,6 +3857,7 @@ export const associatePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "AssociatePackage",
 }));
 export type AuthorizeVpcEndpointAccessError =
   | BaseException
@@ -3883,6 +3886,7 @@ export const authorizeVpcEndpointAccess: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "AuthorizeVpcEndpointAccess",
 }));
 export type CancelDomainConfigChangeError =
   | BaseException
@@ -3909,6 +3913,7 @@ export const cancelDomainConfigChange: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CancelDomainConfigChange",
 }));
 export type CancelElasticsearchServiceSoftwareUpdateError =
   | BaseException
@@ -3933,6 +3938,7 @@ export const cancelElasticsearchServiceSoftwareUpdate: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CancelElasticsearchServiceSoftwareUpdate",
 }));
 export type CreateElasticsearchDomainError =
   | BaseException
@@ -3964,6 +3970,7 @@ export const createElasticsearchDomain: API.OperationMethod<
     ResourceAlreadyExistsException,
     ValidationException,
   ],
+  operationName: "CreateElasticsearchDomain",
 }));
 export type CreateOutboundCrossClusterSearchConnectionError =
   | DisabledOperationException
@@ -3988,6 +3995,7 @@ export const createOutboundCrossClusterSearchConnection: API.OperationMethod<
     LimitExceededException,
     ResourceAlreadyExistsException,
   ],
+  operationName: "CreateOutboundCrossClusterSearchConnection",
 }));
 export type CreatePackageError =
   | AccessDeniedException
@@ -4018,6 +4026,7 @@ export const createPackage: API.OperationMethod<
     ResourceAlreadyExistsException,
     ValidationException,
   ],
+  operationName: "CreatePackage",
 }));
 export type CreateVpcEndpointError =
   | BaseException
@@ -4046,6 +4055,7 @@ export const createVpcEndpoint: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  operationName: "CreateVpcEndpoint",
 }));
 export type DeleteElasticsearchDomainError =
   | BaseException
@@ -4070,6 +4080,7 @@ export const deleteElasticsearchDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteElasticsearchDomain",
 }));
 export type DeleteElasticsearchServiceRoleError =
   | BaseException
@@ -4088,6 +4099,7 @@ export const deleteElasticsearchServiceRole: API.OperationMethod<
   input: DeleteElasticsearchServiceRoleRequest,
   output: DeleteElasticsearchServiceRoleResponse,
   errors: [BaseException, InternalException, ValidationException],
+  operationName: "DeleteElasticsearchServiceRole",
 }));
 export type DeleteInboundCrossClusterSearchConnectionError =
   | DisabledOperationException
@@ -4105,6 +4117,7 @@ export const deleteInboundCrossClusterSearchConnection: API.OperationMethod<
   input: DeleteInboundCrossClusterSearchConnectionRequest,
   output: DeleteInboundCrossClusterSearchConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
+  operationName: "DeleteInboundCrossClusterSearchConnection",
 }));
 export type DeleteOutboundCrossClusterSearchConnectionError =
   | DisabledOperationException
@@ -4122,6 +4135,7 @@ export const deleteOutboundCrossClusterSearchConnection: API.OperationMethod<
   input: DeleteOutboundCrossClusterSearchConnectionRequest,
   output: DeleteOutboundCrossClusterSearchConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
+  operationName: "DeleteOutboundCrossClusterSearchConnection",
 }));
 export type DeletePackageError =
   | AccessDeniedException
@@ -4150,6 +4164,7 @@ export const deletePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeletePackage",
 }));
 export type DeleteVpcEndpointError =
   | BaseException
@@ -4174,6 +4189,7 @@ export const deleteVpcEndpoint: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteVpcEndpoint",
 }));
 export type DescribeDomainAutoTunesError =
   | BaseException
@@ -4213,6 +4229,7 @@ export const describeDomainAutoTunes: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeDomainAutoTunes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4243,6 +4260,7 @@ export const describeDomainChangeProgress: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeDomainChangeProgress",
 }));
 export type DescribeElasticsearchDomainError =
   | BaseException
@@ -4267,6 +4285,7 @@ export const describeElasticsearchDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeElasticsearchDomain",
 }));
 export type DescribeElasticsearchDomainConfigError =
   | BaseException
@@ -4291,6 +4310,7 @@ export const describeElasticsearchDomainConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeElasticsearchDomainConfig",
 }));
 export type DescribeElasticsearchDomainsError =
   | BaseException
@@ -4309,6 +4329,7 @@ export const describeElasticsearchDomains: API.OperationMethod<
   input: DescribeElasticsearchDomainsRequest,
   output: DescribeElasticsearchDomainsResponse,
   errors: [BaseException, InternalException, ValidationException],
+  operationName: "DescribeElasticsearchDomains",
 }));
 export type DescribeElasticsearchInstanceTypeLimitsError =
   | BaseException
@@ -4342,6 +4363,7 @@ export const describeElasticsearchInstanceTypeLimits: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeElasticsearchInstanceTypeLimits",
 }));
 export type DescribeInboundCrossClusterSearchConnectionsError =
   | DisabledOperationException
@@ -4374,6 +4396,7 @@ export const describeInboundCrossClusterSearchConnections: API.OperationMethod<
   input: DescribeInboundCrossClusterSearchConnectionsRequest,
   output: DescribeInboundCrossClusterSearchConnectionsResponse,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
+  operationName: "DescribeInboundCrossClusterSearchConnections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4411,6 +4434,7 @@ export const describeOutboundCrossClusterSearchConnections: API.OperationMethod<
   input: DescribeOutboundCrossClusterSearchConnectionsRequest,
   output: DescribeOutboundCrossClusterSearchConnectionsResponse,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
+  operationName: "DescribeOutboundCrossClusterSearchConnections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4457,6 +4481,7 @@ export const describePackages: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribePackages",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4501,6 +4526,7 @@ export const describeReservedElasticsearchInstanceOfferings: API.OperationMethod
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeReservedElasticsearchInstanceOfferings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4545,6 +4571,7 @@ export const describeReservedElasticsearchInstances: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeReservedElasticsearchInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4574,6 +4601,7 @@ export const describeVpcEndpoints: API.OperationMethod<
     InternalException,
     ValidationException,
   ],
+  operationName: "DescribeVpcEndpoints",
 }));
 export type DissociatePackageError =
   | AccessDeniedException
@@ -4602,6 +4630,7 @@ export const dissociatePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DissociatePackage",
 }));
 export type GetCompatibleElasticsearchVersionsError =
   | BaseException
@@ -4633,6 +4662,7 @@ export const getCompatibleElasticsearchVersions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetCompatibleElasticsearchVersions",
 }));
 export type GetPackageVersionHistoryError =
   | AccessDeniedException
@@ -4674,6 +4704,7 @@ export const getPackageVersionHistory: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetPackageVersionHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4720,6 +4751,7 @@ export const getUpgradeHistory: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetUpgradeHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4751,6 +4783,7 @@ export const getUpgradeStatus: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetUpgradeStatus",
 }));
 export type ListDomainNamesError =
   | BaseException
@@ -4768,6 +4801,7 @@ export const listDomainNames: API.OperationMethod<
   input: ListDomainNamesRequest,
   output: ListDomainNamesResponse,
   errors: [BaseException, ValidationException],
+  operationName: "ListDomainNames",
 }));
 export type ListDomainsForPackageError =
   | AccessDeniedException
@@ -4809,6 +4843,7 @@ export const listDomainsForPackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListDomainsForPackage",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4853,6 +4888,7 @@ export const listElasticsearchInstanceTypes: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListElasticsearchInstanceTypes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4897,6 +4933,7 @@ export const listElasticsearchVersions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListElasticsearchVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4943,6 +4980,7 @@ export const listPackagesForDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListPackagesForDomain",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4972,6 +5010,7 @@ export const listTags: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTags",
 }));
 export type ListVpcEndpointAccessError =
   | BaseException
@@ -4997,6 +5036,7 @@ export const listVpcEndpointAccess: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  operationName: "ListVpcEndpointAccess",
 }));
 export type ListVpcEndpointsError =
   | BaseException
@@ -5015,6 +5055,7 @@ export const listVpcEndpoints: API.OperationMethod<
   input: ListVpcEndpointsRequest,
   output: ListVpcEndpointsResponse,
   errors: [BaseException, DisabledOperationException, InternalException],
+  operationName: "ListVpcEndpoints",
 }));
 export type ListVpcEndpointsForDomainError =
   | BaseException
@@ -5039,6 +5080,7 @@ export const listVpcEndpointsForDomain: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  operationName: "ListVpcEndpointsForDomain",
 }));
 export type PurchaseReservedElasticsearchInstanceOfferingError =
   | DisabledOperationException
@@ -5067,6 +5109,7 @@ export const purchaseReservedElasticsearchInstanceOffering: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "PurchaseReservedElasticsearchInstanceOffering",
 }));
 export type RejectInboundCrossClusterSearchConnectionError =
   | DisabledOperationException
@@ -5084,6 +5127,7 @@ export const rejectInboundCrossClusterSearchConnection: API.OperationMethod<
   input: RejectInboundCrossClusterSearchConnectionRequest,
   output: RejectInboundCrossClusterSearchConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
+  operationName: "RejectInboundCrossClusterSearchConnection",
 }));
 export type RemoveTagsError =
   | BaseException
@@ -5102,6 +5146,7 @@ export const removeTags: API.OperationMethod<
   input: RemoveTagsRequest,
   output: RemoveTagsResponse,
   errors: [BaseException, InternalException, ValidationException],
+  operationName: "RemoveTags",
 }));
 export type RevokeVpcEndpointAccessError =
   | BaseException
@@ -5129,6 +5174,7 @@ export const revokeVpcEndpointAccess: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "RevokeVpcEndpointAccess",
 }));
 export type StartElasticsearchServiceSoftwareUpdateError =
   | BaseException
@@ -5153,6 +5199,7 @@ export const startElasticsearchServiceSoftwareUpdate: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StartElasticsearchServiceSoftwareUpdate",
 }));
 export type UpdateElasticsearchDomainConfigError =
   | BaseException
@@ -5181,6 +5228,7 @@ export const updateElasticsearchDomainConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateElasticsearchDomainConfig",
 }));
 export type UpdatePackageError =
   | AccessDeniedException
@@ -5209,6 +5257,7 @@ export const updatePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdatePackage",
 }));
 export type UpdateVpcEndpointError =
   | BaseException
@@ -5237,6 +5286,7 @@ export const updateVpcEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateVpcEndpoint",
 }));
 export type UpgradeElasticsearchDomainError =
   | BaseException
@@ -5265,4 +5315,5 @@ export const upgradeElasticsearchDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpgradeElasticsearchDomain",
 }));

@@ -1656,6 +1656,7 @@ export const acceptPage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AcceptPage",
 }));
 export type ActivateContactChannelError =
   | AccessDeniedException
@@ -1683,6 +1684,7 @@ export const activateContactChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ActivateContactChannel",
 }));
 export type CreateContactError =
   | AccessDeniedException
@@ -1715,6 +1717,7 @@ export const createContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateContact",
 }));
 export type CreateContactChannelError =
   | AccessDeniedException
@@ -1743,6 +1746,7 @@ export const createContactChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateContactChannel",
 }));
 export type CreateRotationError =
   | AccessDeniedException
@@ -1771,6 +1775,7 @@ export const createRotation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRotation",
 }));
 export type CreateRotationOverrideError =
   | AccessDeniedException
@@ -1799,6 +1804,7 @@ export const createRotationOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRotationOverride",
 }));
 export type DeactivateContactChannelError =
   | AccessDeniedException
@@ -1826,6 +1832,7 @@ export const deactivateContactChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeactivateContactChannel",
 }));
 export type DeleteContactError =
   | AccessDeniedException
@@ -1858,6 +1865,7 @@ export const deleteContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteContact",
 }));
 export type DeleteContactChannelError =
   | AccessDeniedException
@@ -1888,6 +1896,7 @@ export const deleteContactChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteContactChannel",
 }));
 export type DeleteRotationError =
   | AccessDeniedException
@@ -1917,6 +1926,7 @@ export const deleteRotation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRotation",
 }));
 export type DeleteRotationOverrideError =
   | AccessDeniedException
@@ -1943,6 +1953,7 @@ export const deleteRotationOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRotationOverride",
 }));
 export type DescribeEngagementError =
   | AccessDeniedException
@@ -1972,6 +1983,7 @@ export const describeEngagement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeEngagement",
 }));
 export type DescribePageError =
   | AccessDeniedException
@@ -2000,6 +2012,7 @@ export const describePage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribePage",
 }));
 export type GetContactError =
   | AccessDeniedException
@@ -2028,6 +2041,7 @@ export const getContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetContact",
 }));
 export type GetContactChannelError =
   | AccessDeniedException
@@ -2056,6 +2070,7 @@ export const getContactChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetContactChannel",
 }));
 export type GetContactPolicyError =
   | AccessDeniedException
@@ -2083,6 +2098,7 @@ export const getContactPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetContactPolicy",
 }));
 export type GetRotationError =
   | AccessDeniedException
@@ -2109,6 +2125,7 @@ export const getRotation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRotation",
 }));
 export type GetRotationOverrideError =
   | AccessDeniedException
@@ -2135,6 +2152,7 @@ export const getRotationOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRotationOverride",
 }));
 export type ListContactChannelsError =
   | AccessDeniedException
@@ -2178,6 +2196,7 @@ export const listContactChannels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListContactChannels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2223,6 +2242,7 @@ export const listContacts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListContacts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2268,6 +2288,7 @@ export const listEngagements: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEngagements",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2315,6 +2336,7 @@ export const listPageReceipts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPageReceipts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2366,6 +2388,7 @@ export const listPageResolutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPageResolutions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2412,6 +2435,7 @@ export const listPagesByContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPagesByContact",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2459,6 +2483,7 @@ export const listPagesByEngagement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPagesByEngagement",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2506,6 +2531,7 @@ export const listPreviewRotationShifts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPreviewRotationShifts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2553,6 +2579,7 @@ export const listRotationOverrides: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRotationOverrides",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2600,6 +2627,7 @@ export const listRotations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRotations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2649,6 +2677,7 @@ export const listRotationShifts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRotationShifts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2681,6 +2710,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutContactPolicyError =
   | AccessDeniedException
@@ -2711,6 +2741,7 @@ export const putContactPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutContactPolicy",
 }));
 export type SendActivationCodeError =
   | AccessDeniedException
@@ -2743,6 +2774,7 @@ export const sendActivationCode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendActivationCode",
 }));
 export type StartEngagementError =
   | AccessDeniedException
@@ -2772,6 +2804,7 @@ export const startEngagement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartEngagement",
 }));
 export type StopEngagementError =
   | AccessDeniedException
@@ -2799,6 +2832,7 @@ export const stopEngagement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopEngagement",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2828,6 +2862,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2854,6 +2889,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateContactError =
   | AccessDeniedException
@@ -2884,6 +2920,7 @@ export const updateContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateContact",
 }));
 export type UpdateContactChannelError =
   | AccessDeniedException
@@ -2914,6 +2951,7 @@ export const updateContactChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateContactChannel",
 }));
 export type UpdateRotationError =
   | AccessDeniedException
@@ -2942,4 +2980,5 @@ export const updateRotation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRotation",
 }));

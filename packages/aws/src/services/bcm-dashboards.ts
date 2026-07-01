@@ -1052,6 +1052,7 @@ export const createDashboard: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDashboard",
 }));
 export type CreateScheduledReportError =
   | AccessDeniedException
@@ -1080,6 +1081,7 @@ export const createScheduledReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateScheduledReport",
 }));
 export type DeleteDashboardError =
   | AccessDeniedException
@@ -1104,6 +1106,7 @@ export const deleteDashboard: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDashboard",
 }));
 export type DeleteScheduledReportError =
   | AccessDeniedException
@@ -1130,6 +1133,7 @@ export const deleteScheduledReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteScheduledReport",
 }));
 export type ExecuteScheduledReportError =
   | AccessDeniedException
@@ -1160,6 +1164,7 @@ export const executeScheduledReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ExecuteScheduledReport",
 }));
 export type GetDashboardError =
   | AccessDeniedException
@@ -1186,6 +1191,7 @@ export const getDashboard: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDashboard",
 }));
 export type GetResourcePolicyError =
   | AccessDeniedException
@@ -1212,6 +1218,7 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type GetScheduledReportError =
   | AccessDeniedException
@@ -1238,6 +1245,7 @@ export const getScheduledReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetScheduledReport",
 }));
 export type ListDashboardsError =
   | AccessDeniedException
@@ -1277,6 +1285,7 @@ export const listDashboards: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDashboards",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1322,6 +1331,7 @@ export const listScheduledReports: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListScheduledReports",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1352,6 +1362,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -1376,6 +1387,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -1400,6 +1412,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateDashboardError =
   | AccessDeniedException
@@ -1426,6 +1439,7 @@ export const updateDashboard: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDashboard",
 }));
 export type UpdateScheduledReportError =
   | AccessDeniedException
@@ -1454,4 +1468,5 @@ export const updateScheduledReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateScheduledReport",
 }));

@@ -1696,6 +1696,7 @@ export const createMicrovmImage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateMicrovmImage",
 }));
 export type DeleteMicrovmImageError =
   | AccessDeniedException
@@ -1724,6 +1725,7 @@ export const deleteMicrovmImage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteMicrovmImage",
 }));
 export type DeleteMicrovmImageVersionError =
   | AccessDeniedException
@@ -1752,6 +1754,7 @@ export const deleteMicrovmImageVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteMicrovmImageVersion",
 }));
 export type GetMicrovmImageError =
   | AccessDeniedException
@@ -1778,6 +1781,7 @@ export const getMicrovmImage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMicrovmImage",
 }));
 export type GetMicrovmImageBuildError =
   | AccessDeniedException
@@ -1804,6 +1808,7 @@ export const getMicrovmImageBuild: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMicrovmImageBuild",
 }));
 export type GetMicrovmImageVersionError =
   | AccessDeniedException
@@ -1830,6 +1835,7 @@ export const getMicrovmImageVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMicrovmImageVersion",
 }));
 export type ListManagedMicrovmImagesError =
   | AccessDeniedException
@@ -1869,6 +1875,7 @@ export const listManagedMicrovmImages: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListManagedMicrovmImages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1916,6 +1923,7 @@ export const listManagedMicrovmImageVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListManagedMicrovmImageVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1963,6 +1971,7 @@ export const listMicrovmImageBuilds: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMicrovmImageBuilds",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2008,6 +2017,7 @@ export const listMicrovmImages: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMicrovmImages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2055,6 +2065,7 @@ export const listMicrovmImageVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMicrovmImageVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2085,6 +2096,7 @@ export const listTags: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "ListTags",
 }));
 export type TagResourceError =
   | InvalidParameterValueException
@@ -2111,6 +2123,7 @@ export const tagResource: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InvalidParameterValueException
@@ -2137,6 +2150,7 @@ export const untagResource: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateMicrovmImageError =
   | AccessDeniedException
@@ -2167,6 +2181,7 @@ export const updateMicrovmImage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateMicrovmImage",
 }));
 export type UpdateMicrovmImageVersionError =
   | AccessDeniedException
@@ -2195,6 +2210,7 @@ export const updateMicrovmImageVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateMicrovmImageVersion",
 }));
 export type RunMicrovmError =
   | AccessDeniedException
@@ -2225,6 +2241,7 @@ export const runMicrovm: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RunMicrovm",
 }));
 export type GetMicrovmError =
   | AccessDeniedException
@@ -2251,6 +2268,7 @@ export const getMicrovm: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMicrovm",
 }));
 export type TerminateMicrovmError =
   | AccessDeniedException
@@ -2279,6 +2297,7 @@ export const terminateMicrovm: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TerminateMicrovm",
 }));
 export type ListMicrovmsError =
   | AccessDeniedException
@@ -2320,6 +2339,7 @@ export const listMicrovms: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMicrovms",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2352,6 +2372,7 @@ export const createMicrovmAuthToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateMicrovmAuthToken",
 }));
 export type CreateMicrovmShellAuthTokenError =
   | AccessDeniedException
@@ -2378,6 +2399,7 @@ export const createMicrovmShellAuthToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateMicrovmShellAuthToken",
 }));
 export type ResumeMicrovmError =
   | AccessDeniedException
@@ -2406,6 +2428,7 @@ export const resumeMicrovm: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ResumeMicrovm",
 }));
 export type SuspendMicrovmError =
   | AccessDeniedException
@@ -2434,4 +2457,5 @@ export const suspendMicrovm: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SuspendMicrovm",
 }));

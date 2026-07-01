@@ -3222,6 +3222,7 @@ export const batchPutPropertyValues: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchPutPropertyValues",
 }));
 export type CancelMetadataTransferJobError =
   | AccessDeniedException
@@ -3250,6 +3251,7 @@ export const cancelMetadataTransferJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelMetadataTransferJob",
 }));
 export type CreateComponentTypeError =
   | AccessDeniedException
@@ -3278,6 +3280,7 @@ export const createComponentType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateComponentType",
 }));
 export type CreateEntityError =
   | AccessDeniedException
@@ -3306,6 +3309,7 @@ export const createEntity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEntity",
 }));
 export type CreateMetadataTransferJobError =
   | AccessDeniedException
@@ -3336,6 +3340,7 @@ export const createMetadataTransferJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateMetadataTransferJob",
 }));
 export type CreateSceneError =
   | AccessDeniedException
@@ -3364,6 +3369,7 @@ export const createScene: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateScene",
 }));
 export type CreateSyncJobError =
   | AccessDeniedException
@@ -3392,6 +3398,7 @@ export const createSyncJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateSyncJob",
 }));
 export type CreateWorkspaceError =
   | AccessDeniedException
@@ -3420,6 +3427,7 @@ export const createWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateWorkspace",
 }));
 export type DeleteComponentTypeError =
   | AccessDeniedException
@@ -3446,6 +3454,7 @@ export const deleteComponentType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteComponentType",
 }));
 export type DeleteEntityError =
   | InternalServerException
@@ -3472,6 +3481,7 @@ export const deleteEntity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteEntity",
 }));
 export type DeleteSceneError =
   | AccessDeniedException
@@ -3498,6 +3508,7 @@ export const deleteScene: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteScene",
 }));
 export type DeleteSyncJobError =
   | AccessDeniedException
@@ -3526,6 +3537,7 @@ export const deleteSyncJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteSyncJob",
 }));
 export type DeleteWorkspaceError =
   | AccessDeniedException
@@ -3552,6 +3564,7 @@ export const deleteWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteWorkspace",
 }));
 export type ExecuteQueryError =
   | AccessDeniedException
@@ -3599,6 +3612,7 @@ export const executeQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ExecuteQuery",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3630,6 +3644,7 @@ export const getComponentType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetComponentType",
 }));
 export type GetEntityError =
   | InternalServerException
@@ -3656,6 +3671,7 @@ export const getEntity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEntity",
 }));
 export type GetMetadataTransferJobError =
   | AccessDeniedException
@@ -3682,6 +3698,7 @@ export const getMetadataTransferJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMetadataTransferJob",
 }));
 export type GetPricingPlanError =
   | AccessDeniedException
@@ -3706,6 +3723,7 @@ export const getPricingPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPricingPlan",
 }));
 export type GetPropertyValueError =
   | AccessDeniedException
@@ -3754,6 +3772,7 @@ export const getPropertyValue: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPropertyValue",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3809,6 +3828,7 @@ export const getPropertyValueHistory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPropertyValueHistory",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3840,6 +3860,7 @@ export const getScene: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetScene",
 }));
 export type GetSyncJobError =
   | AccessDeniedException
@@ -3868,6 +3889,7 @@ export const getSyncJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSyncJob",
 }));
 export type GetWorkspaceError =
   | InternalServerException
@@ -3894,6 +3916,7 @@ export const getWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetWorkspace",
 }));
 export type ListComponentsError =
   | AccessDeniedException
@@ -3935,6 +3958,7 @@ export const listComponents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListComponents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3979,6 +4003,7 @@ export const listComponentTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListComponentTypes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4023,6 +4048,7 @@ export const listEntities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEntities",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4067,6 +4093,7 @@ export const listMetadataTransferJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMetadataTransferJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4113,6 +4140,7 @@ export const listProperties: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListProperties",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4157,6 +4185,7 @@ export const listScenes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListScenes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4203,6 +4232,7 @@ export const listSyncJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSyncJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4249,6 +4279,7 @@ export const listSyncResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSyncResources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4271,6 +4302,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type ListWorkspacesError =
   | InternalServerException
@@ -4310,6 +4342,7 @@ export const listWorkspaces: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListWorkspaces",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4337,6 +4370,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -4354,6 +4388,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type UpdateComponentTypeError =
   | AccessDeniedException
@@ -4382,6 +4417,7 @@ export const updateComponentType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateComponentType",
 }));
 export type UpdateEntityError =
   | AccessDeniedException
@@ -4412,6 +4448,7 @@ export const updateEntity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateEntity",
 }));
 export type UpdatePricingPlanError =
   | AccessDeniedException
@@ -4436,6 +4473,7 @@ export const updatePricingPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdatePricingPlan",
 }));
 export type UpdateSceneError =
   | AccessDeniedException
@@ -4462,6 +4500,7 @@ export const updateScene: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateScene",
 }));
 export type UpdateWorkspaceError =
   | AccessDeniedException
@@ -4490,4 +4529,5 @@ export const updateWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateWorkspace",
 }));

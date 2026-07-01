@@ -3550,6 +3550,7 @@ export const createEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEnvironment",
 }));
 export type CreateKxChangesetError =
   | AccessDeniedException
@@ -3580,6 +3581,7 @@ export const createKxChangeset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateKxChangeset",
 }));
 export type CreateKxClusterError =
   | AccessDeniedException
@@ -3610,6 +3612,7 @@ export const createKxCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateKxCluster",
 }));
 export type CreateKxDatabaseError =
   | AccessDeniedException
@@ -3642,6 +3645,7 @@ export const createKxDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateKxDatabase",
 }));
 export type CreateKxDataviewError =
   | AccessDeniedException
@@ -3674,6 +3678,7 @@ export const createKxDataview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateKxDataview",
 }));
 export type CreateKxEnvironmentError =
   | AccessDeniedException
@@ -3704,6 +3709,7 @@ export const createKxEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateKxEnvironment",
 }));
 export type CreateKxScalingGroupError =
   | AccessDeniedException
@@ -3734,6 +3740,7 @@ export const createKxScalingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateKxScalingGroup",
 }));
 export type CreateKxUserError =
   | AccessDeniedException
@@ -3766,6 +3773,7 @@ export const createKxUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateKxUser",
 }));
 export type CreateKxVolumeError =
   | AccessDeniedException
@@ -3798,6 +3806,7 @@ export const createKxVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateKxVolume",
 }));
 export type DeleteEnvironmentError =
   | AccessDeniedException
@@ -3824,6 +3833,7 @@ export const deleteEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteEnvironment",
 }));
 export type DeleteKxClusterError =
   | AccessDeniedException
@@ -3854,6 +3864,7 @@ export const deleteKxCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteKxCluster",
 }));
 export type DeleteKxClusterNodeError =
   | AccessDeniedException
@@ -3880,6 +3891,7 @@ export const deleteKxClusterNode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteKxClusterNode",
 }));
 export type DeleteKxDatabaseError =
   | AccessDeniedException
@@ -3908,6 +3920,7 @@ export const deleteKxDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteKxDatabase",
 }));
 export type DeleteKxDataviewError =
   | AccessDeniedException
@@ -3936,6 +3949,7 @@ export const deleteKxDataview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteKxDataview",
 }));
 export type DeleteKxEnvironmentError =
   | AccessDeniedException
@@ -3964,6 +3978,7 @@ export const deleteKxEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteKxEnvironment",
 }));
 export type DeleteKxScalingGroupError =
   | AccessDeniedException
@@ -3994,6 +4009,7 @@ export const deleteKxScalingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteKxScalingGroup",
 }));
 export type DeleteKxUserError =
   | AccessDeniedException
@@ -4022,6 +4038,7 @@ export const deleteKxUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteKxUser",
 }));
 export type DeleteKxVolumeError =
   | AccessDeniedException
@@ -4052,6 +4069,7 @@ export const deleteKxVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteKxVolume",
 }));
 export type GetEnvironmentError =
   | AccessDeniedException
@@ -4076,6 +4094,7 @@ export const getEnvironment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetEnvironment",
 }));
 export type GetKxChangesetError =
   | AccessDeniedException
@@ -4102,6 +4121,7 @@ export const getKxChangeset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetKxChangeset",
 }));
 export type GetKxClusterError =
   | AccessDeniedException
@@ -4132,6 +4152,7 @@ export const getKxCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetKxCluster",
 }));
 export type GetKxConnectionStringError =
   | AccessDeniedException
@@ -4158,6 +4179,7 @@ export const getKxConnectionString: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetKxConnectionString",
 }));
 export type GetKxDatabaseError =
   | AccessDeniedException
@@ -4184,6 +4206,7 @@ export const getKxDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetKxDatabase",
 }));
 export type GetKxDataviewError =
   | AccessDeniedException
@@ -4210,6 +4233,7 @@ export const getKxDataview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetKxDataview",
 }));
 export type GetKxEnvironmentError =
   | AccessDeniedException
@@ -4236,6 +4260,7 @@ export const getKxEnvironment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetKxEnvironment",
 }));
 export type GetKxScalingGroupError =
   | AccessDeniedException
@@ -4266,6 +4291,7 @@ export const getKxScalingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetKxScalingGroup",
 }));
 export type GetKxUserError =
   | AccessDeniedException
@@ -4292,6 +4318,7 @@ export const getKxUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetKxUser",
 }));
 export type GetKxVolumeError =
   | AccessDeniedException
@@ -4322,6 +4349,7 @@ export const getKxVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetKxVolume",
 }));
 export type ListEnvironmentsError =
   | AccessDeniedException
@@ -4340,6 +4368,7 @@ export const listEnvironments: API.OperationMethod<
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListEnvironments",
 }));
 export type ListKxChangesetsError =
   | AccessDeniedException
@@ -4381,6 +4410,7 @@ export const listKxChangesets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListKxChangesets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4429,6 +4459,7 @@ export const listKxClusterNodes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListKxClusterNodes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4464,6 +4495,7 @@ export const listKxClusters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListKxClusters",
 }));
 export type ListKxDatabasesError =
   | AccessDeniedException
@@ -4505,6 +4537,7 @@ export const listKxDatabases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListKxDatabases",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4551,6 +4584,7 @@ export const listKxDataviews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListKxDataviews",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4589,6 +4623,7 @@ export const listKxEnvironments: API.OperationMethod<
   input: ListKxEnvironmentsRequest,
   output: ListKxEnvironmentsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListKxEnvironments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4640,6 +4675,7 @@ export const listKxScalingGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListKxScalingGroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4671,6 +4707,7 @@ export const listKxUsers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListKxUsers",
 }));
 export type ListKxVolumesError =
   | AccessDeniedException
@@ -4701,6 +4738,7 @@ export const listKxVolumes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListKxVolumes",
 }));
 export type ListTagsForResourceError =
   | InternalServerException
@@ -4723,6 +4761,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -4745,6 +4784,7 @@ export const tagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -4767,6 +4807,7 @@ export const untagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateEnvironmentError =
   | AccessDeniedException
@@ -4793,6 +4834,7 @@ export const updateEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateEnvironment",
 }));
 export type UpdateKxClusterCodeConfigurationError =
   | AccessDeniedException
@@ -4824,6 +4866,7 @@ export const updateKxClusterCodeConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateKxClusterCodeConfiguration",
 }));
 export type UpdateKxClusterDatabasesError =
   | AccessDeniedException
@@ -4856,6 +4899,7 @@ export const updateKxClusterDatabases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateKxClusterDatabases",
 }));
 export type UpdateKxDatabaseError =
   | AccessDeniedException
@@ -4884,6 +4928,7 @@ export const updateKxDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateKxDatabase",
 }));
 export type UpdateKxDataviewError =
   | AccessDeniedException
@@ -4914,6 +4959,7 @@ export const updateKxDataview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateKxDataview",
 }));
 export type UpdateKxEnvironmentError =
   | AccessDeniedException
@@ -4942,6 +4988,7 @@ export const updateKxEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateKxEnvironment",
 }));
 export type UpdateKxEnvironmentNetworkError =
   | AccessDeniedException
@@ -4972,6 +5019,7 @@ export const updateKxEnvironmentNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateKxEnvironmentNetwork",
 }));
 export type UpdateKxUserError =
   | AccessDeniedException
@@ -5002,6 +5050,7 @@ export const updateKxUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateKxUser",
 }));
 export type UpdateKxVolumeError =
   | AccessDeniedException
@@ -5033,4 +5082,5 @@ export const updateKxVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateKxVolume",
 }));

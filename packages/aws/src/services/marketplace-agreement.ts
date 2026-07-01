@@ -2400,6 +2400,7 @@ export const acceptAgreementCancellationRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AcceptAgreementCancellationRequest",
 }));
 export type AcceptAgreementPaymentRequestError =
   | AccessDeniedException
@@ -2430,6 +2431,7 @@ export const acceptAgreementPaymentRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AcceptAgreementPaymentRequest",
 }));
 export type AcceptAgreementRequestError =
   | AccessDeniedException
@@ -2458,6 +2460,7 @@ export const acceptAgreementRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AcceptAgreementRequest",
 }));
 export type BatchCreateBillingAdjustmentRequestError =
   | AccessDeniedException
@@ -2486,6 +2489,7 @@ export const batchCreateBillingAdjustmentRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchCreateBillingAdjustmentRequest",
 }));
 export type CancelAgreementError =
   | AccessDeniedException
@@ -2514,6 +2518,7 @@ export const cancelAgreement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelAgreement",
 }));
 export type CancelAgreementCancellationRequestError =
   | AccessDeniedException
@@ -2544,6 +2549,7 @@ export const cancelAgreementCancellationRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelAgreementCancellationRequest",
 }));
 export type CancelAgreementPaymentRequestError =
   | AccessDeniedException
@@ -2574,6 +2580,7 @@ export const cancelAgreementPaymentRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelAgreementPaymentRequest",
 }));
 export type CreateAgreementRequestError =
   | AccessDeniedException
@@ -2604,6 +2611,7 @@ export const createAgreementRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAgreementRequest",
 }));
 export type DescribeAgreementError =
   | AccessDeniedException
@@ -2630,6 +2638,7 @@ export const describeAgreement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeAgreement",
 }));
 export type GetAgreementCancellationRequestError =
   | AccessDeniedException
@@ -2656,6 +2665,7 @@ export const getAgreementCancellationRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAgreementCancellationRequest",
 }));
 export type GetAgreementEntitlementsError =
   | AccessDeniedException
@@ -2697,6 +2707,7 @@ export const getAgreementEntitlements: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAgreementEntitlements",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2731,6 +2742,7 @@ export const getAgreementPaymentRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAgreementPaymentRequest",
 }));
 export type GetAgreementTermsError =
   | AccessDeniedException
@@ -2782,6 +2794,7 @@ export const getAgreementTerms: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAgreementTerms",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2814,6 +2827,7 @@ export const getBillingAdjustmentRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetBillingAdjustmentRequest",
 }));
 export type ListAgreementCancellationRequestsError =
   | AccessDeniedException
@@ -2855,6 +2869,7 @@ export const listAgreementCancellationRequests: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAgreementCancellationRequests",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2900,6 +2915,7 @@ export const listAgreementCharges: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAgreementCharges",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2949,6 +2965,7 @@ export const listAgreementInvoiceLineItems: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAgreementInvoiceLineItems",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2996,6 +3013,7 @@ export const listAgreementPaymentRequests: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAgreementPaymentRequests",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3041,6 +3059,7 @@ export const listBillingAdjustmentRequests: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBillingAdjustmentRequests",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3077,6 +3096,7 @@ export const rejectAgreementCancellationRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RejectAgreementCancellationRequest",
 }));
 export type RejectAgreementPaymentRequestError =
   | AccessDeniedException
@@ -3107,6 +3127,7 @@ export const rejectAgreementPaymentRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RejectAgreementPaymentRequest",
 }));
 export type SearchAgreementsError =
   | AccessDeniedException
@@ -3260,6 +3281,7 @@ export const searchAgreements: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchAgreements",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3294,6 +3316,7 @@ export const sendAgreementCancellationRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendAgreementCancellationRequest",
 }));
 export type SendAgreementPaymentRequestError =
   | AccessDeniedException
@@ -3324,6 +3347,7 @@ export const sendAgreementPaymentRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendAgreementPaymentRequest",
 }));
 export type UpdatePurchaseOrdersError =
   | AccessDeniedException
@@ -3352,4 +3376,5 @@ export const updatePurchaseOrders: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdatePurchaseOrders",
 }));

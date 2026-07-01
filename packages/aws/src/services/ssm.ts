@@ -12132,6 +12132,7 @@ export const addTagsToResource: API.OperationMethod<
     TooManyTagsError,
     TooManyUpdates,
   ],
+  operationName: "AddTagsToResource",
 }));
 export type AssociateOpsItemRelatedItemError =
   | InternalServerError
@@ -12162,6 +12163,7 @@ export const associateOpsItemRelatedItem: API.OperationMethod<
     OpsItemNotFoundException,
     OpsItemRelatedItemAlreadyExistsException,
   ],
+  operationName: "AssociateOpsItemRelatedItem",
 }));
 export type CancelCommandError =
   | DuplicateInstanceId
@@ -12187,6 +12189,7 @@ export const cancelCommand: API.OperationMethod<
     InvalidCommandId,
     InvalidInstanceId,
   ],
+  operationName: "CancelCommand",
 }));
 export type CancelMaintenanceWindowExecutionError =
   | DoesNotExistException
@@ -12206,6 +12209,7 @@ export const cancelMaintenanceWindowExecution: API.OperationMethod<
   input: CancelMaintenanceWindowExecutionRequest,
   output: CancelMaintenanceWindowExecutionResult,
   errors: [DoesNotExistException, InternalServerError],
+  operationName: "CancelMaintenanceWindowExecution",
 }));
 export type CreateActivationError =
   | InternalServerError
@@ -12231,6 +12235,7 @@ export const createActivation: API.OperationMethod<
   input: CreateActivationRequest,
   output: CreateActivationResult,
   errors: [InternalServerError, InvalidParameters],
+  operationName: "CreateActivation",
 }));
 export type CreateAssociationError =
   | AssociationAlreadyExists
@@ -12282,6 +12287,7 @@ export const createAssociation: API.OperationMethod<
     InvalidTargetMaps,
     UnsupportedPlatformType,
   ],
+  operationName: "CreateAssociation",
 }));
 export type CreateAssociationBatchError =
   | AssociationLimitExceeded
@@ -12330,6 +12336,7 @@ export const createAssociationBatch: API.OperationMethod<
     InvalidTargetMaps,
     UnsupportedPlatformType,
   ],
+  operationName: "CreateAssociationBatch",
 }));
 export type CreateDocumentError =
   | DocumentAlreadyExists
@@ -12365,6 +12372,7 @@ export const createDocument: API.OperationMethod<
     NoLongerSupportedException,
     TooManyUpdates,
   ],
+  operationName: "CreateDocument",
 }));
 export type CreateMaintenanceWindowError =
   | IdempotentParameterMismatch
@@ -12394,6 +12402,7 @@ export const createMaintenanceWindow: API.OperationMethod<
     InternalServerError,
     ResourceLimitExceededException,
   ],
+  operationName: "CreateMaintenanceWindow",
 }));
 export type CreateOpsItemError =
   | InternalServerError
@@ -12426,6 +12435,7 @@ export const createOpsItem: API.OperationMethod<
     OpsItemInvalidParameterException,
     OpsItemLimitExceededException,
   ],
+  operationName: "CreateOpsItem",
 }));
 export type CreateOpsMetadataError =
   | InternalServerError
@@ -12453,6 +12463,7 @@ export const createOpsMetadata: API.OperationMethod<
     OpsMetadataLimitExceededException,
     OpsMetadataTooManyUpdatesException,
   ],
+  operationName: "CreateOpsMetadata",
 }));
 export type CreatePatchBaselineError =
   | IdempotentParameterMismatch
@@ -12478,6 +12489,7 @@ export const createPatchBaseline: API.OperationMethod<
     InternalServerError,
     ResourceLimitExceededException,
   ],
+  operationName: "CreatePatchBaseline",
 }));
 export type CreateResourceDataSyncError =
   | InternalServerError
@@ -12524,6 +12536,7 @@ export const createResourceDataSync: API.OperationMethod<
     ResourceDataSyncCountExceededException,
     ResourceDataSyncInvalidConfigurationException,
   ],
+  operationName: "CreateResourceDataSync",
 }));
 export type DeleteActivationError =
   | InternalServerError
@@ -12550,6 +12563,7 @@ export const deleteActivation: API.OperationMethod<
     InvalidActivationId,
     TooManyUpdates,
   ],
+  operationName: "DeleteActivation",
 }));
 export type DeleteAssociationError =
   | AssociationDoesNotExist
@@ -12583,6 +12597,7 @@ export const deleteAssociation: API.OperationMethod<
     InvalidInstanceId,
     TooManyUpdates,
   ],
+  operationName: "DeleteAssociation",
 }));
 export type DeleteDocumentError =
   | AssociatedInstances
@@ -12612,6 +12627,7 @@ export const deleteDocument: API.OperationMethod<
     InvalidDocumentOperation,
     TooManyUpdates,
   ],
+  operationName: "DeleteDocument",
 }));
 export type DeleteInventoryError =
   | InternalServerError
@@ -12639,6 +12655,7 @@ export const deleteInventory: API.OperationMethod<
     InvalidOptionException,
     InvalidTypeNameException,
   ],
+  operationName: "DeleteInventory",
 }));
 export type DeleteMaintenanceWindowError = InternalServerError | CommonErrors;
 /**
@@ -12653,6 +12670,7 @@ export const deleteMaintenanceWindow: API.OperationMethod<
   input: DeleteMaintenanceWindowRequest,
   output: DeleteMaintenanceWindowResult,
   errors: [InternalServerError],
+  operationName: "DeleteMaintenanceWindow",
 }));
 export type DeleteOpsItemError =
   | InternalServerError
@@ -12690,6 +12708,7 @@ export const deleteOpsItem: API.OperationMethod<
   input: DeleteOpsItemRequest,
   output: DeleteOpsItemResponse,
   errors: [InternalServerError, OpsItemInvalidParameterException],
+  operationName: "DeleteOpsItem",
 }));
 export type DeleteOpsMetadataError =
   | InternalServerError
@@ -12712,6 +12731,7 @@ export const deleteOpsMetadata: API.OperationMethod<
     OpsMetadataInvalidArgumentException,
     OpsMetadataNotFoundException,
   ],
+  operationName: "DeleteOpsMetadata",
 }));
 export type DeleteParameterError =
   | InternalServerError
@@ -12730,6 +12750,7 @@ export const deleteParameter: API.OperationMethod<
   input: DeleteParameterRequest,
   output: DeleteParameterResult,
   errors: [InternalServerError, ParameterNotFound],
+  operationName: "DeleteParameter",
 }));
 export type DeleteParametersError = InternalServerError | CommonErrors;
 /**
@@ -12745,6 +12766,7 @@ export const deleteParameters: API.OperationMethod<
   input: DeleteParametersRequest,
   output: DeleteParametersResult,
   errors: [InternalServerError],
+  operationName: "DeleteParameters",
 }));
 export type DeletePatchBaselineError =
   | InternalServerError
@@ -12762,6 +12784,7 @@ export const deletePatchBaseline: API.OperationMethod<
   input: DeletePatchBaselineRequest,
   output: DeletePatchBaselineResult,
   errors: [InternalServerError, ResourceInUseException],
+  operationName: "DeletePatchBaseline",
 }));
 export type DeleteResourceDataSyncError =
   | InternalServerError
@@ -12786,6 +12809,7 @@ export const deleteResourceDataSync: API.OperationMethod<
     ResourceDataSyncInvalidConfigurationException,
     ResourceDataSyncNotFoundException,
   ],
+  operationName: "DeleteResourceDataSync",
 }));
 export type DeleteResourcePolicyError =
   | InternalServerError
@@ -12823,6 +12847,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourcePolicyInvalidParameterException,
     ResourcePolicyNotFoundException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeregisterManagedInstanceError =
   | InternalServerError
@@ -12847,6 +12872,7 @@ export const deregisterManagedInstance: API.OperationMethod<
   input: DeregisterManagedInstanceRequest,
   output: DeregisterManagedInstanceResult,
   errors: [InternalServerError, InvalidInstanceId],
+  operationName: "DeregisterManagedInstance",
 }));
 export type DeregisterPatchBaselineForPatchGroupError =
   | InternalServerError
@@ -12864,6 +12890,7 @@ export const deregisterPatchBaselineForPatchGroup: API.OperationMethod<
   input: DeregisterPatchBaselineForPatchGroupRequest,
   output: DeregisterPatchBaselineForPatchGroupResult,
   errors: [InternalServerError, InvalidResourceId],
+  operationName: "DeregisterPatchBaselineForPatchGroup",
 }));
 export type DeregisterTargetFromMaintenanceWindowError =
   | DoesNotExistException
@@ -12882,6 +12909,7 @@ export const deregisterTargetFromMaintenanceWindow: API.OperationMethod<
   input: DeregisterTargetFromMaintenanceWindowRequest,
   output: DeregisterTargetFromMaintenanceWindowResult,
   errors: [DoesNotExistException, InternalServerError, TargetInUseException],
+  operationName: "DeregisterTargetFromMaintenanceWindow",
 }));
 export type DeregisterTaskFromMaintenanceWindowError =
   | DoesNotExistException
@@ -12899,6 +12927,7 @@ export const deregisterTaskFromMaintenanceWindow: API.OperationMethod<
   input: DeregisterTaskFromMaintenanceWindowRequest,
   output: DeregisterTaskFromMaintenanceWindowResult,
   errors: [DoesNotExistException, InternalServerError],
+  operationName: "DeregisterTaskFromMaintenanceWindow",
 }));
 export type DescribeActivationsError =
   | InternalServerError
@@ -12935,6 +12964,7 @@ export const describeActivations: API.OperationMethod<
   input: DescribeActivationsRequest,
   output: DescribeActivationsResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
+  operationName: "DescribeActivations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -12969,6 +12999,7 @@ export const describeAssociation: API.OperationMethod<
     InvalidDocument,
     InvalidInstanceId,
   ],
+  operationName: "DescribeAssociation",
 }));
 export type DescribeAssociationExecutionsError =
   | AssociationDoesNotExist
@@ -13002,6 +13033,7 @@ export const describeAssociationExecutions: API.OperationMethod<
   input: DescribeAssociationExecutionsRequest,
   output: DescribeAssociationExecutionsResult,
   errors: [AssociationDoesNotExist, InternalServerError, InvalidNextToken],
+  operationName: "DescribeAssociationExecutions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13047,6 +13079,7 @@ export const describeAssociationExecutionTargets: API.OperationMethod<
     InternalServerError,
     InvalidNextToken,
   ],
+  operationName: "DescribeAssociationExecutionTargets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13092,6 +13125,7 @@ export const describeAutomationExecutions: API.OperationMethod<
     InvalidFilterValue,
     InvalidNextToken,
   ],
+  operationName: "DescribeAutomationExecutions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13140,6 +13174,7 @@ export const describeAutomationStepExecutions: API.OperationMethod<
     InvalidFilterValue,
     InvalidNextToken,
   ],
+  operationName: "DescribeAutomationStepExecutions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13178,6 +13213,7 @@ export const describeAvailablePatches: API.OperationMethod<
   input: DescribeAvailablePatchesRequest,
   output: DescribeAvailablePatchesResult,
   errors: [InternalServerError],
+  operationName: "DescribeAvailablePatches",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13202,6 +13238,7 @@ export const describeDocument: API.OperationMethod<
   input: DescribeDocumentRequest,
   output: DescribeDocumentResult,
   errors: [InternalServerError, InvalidDocument, InvalidDocumentVersion],
+  operationName: "DescribeDocument",
 }));
 export type DescribeDocumentPermissionError =
   | InternalServerError
@@ -13230,6 +13267,7 @@ export const describeDocumentPermission: API.OperationMethod<
     InvalidNextToken,
     InvalidPermissionType,
   ],
+  operationName: "DescribeDocumentPermission",
 }));
 export type DescribeEffectiveInstanceAssociationsError =
   | InternalServerError
@@ -13263,6 +13301,7 @@ export const describeEffectiveInstanceAssociations: API.OperationMethod<
   input: DescribeEffectiveInstanceAssociationsRequest,
   output: DescribeEffectiveInstanceAssociationsResult,
   errors: [InternalServerError, InvalidInstanceId, InvalidNextToken],
+  operationName: "DescribeEffectiveInstanceAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13309,6 +13348,7 @@ export const describeEffectivePatchesForPatchBaseline: API.OperationMethod<
     InvalidResourceId,
     UnsupportedOperatingSystem,
   ],
+  operationName: "DescribeEffectivePatchesForPatchBaseline",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13348,6 +13388,7 @@ export const describeInstanceAssociationsStatus: API.OperationMethod<
   input: DescribeInstanceAssociationsStatusRequest,
   output: DescribeInstanceAssociationsStatusResult,
   errors: [InternalServerError, InvalidInstanceId, InvalidNextToken],
+  operationName: "DescribeInstanceAssociationsStatus",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13405,6 +13446,7 @@ export const describeInstanceInformation: API.OperationMethod<
     InvalidInstanceInformationFilterValue,
     InvalidNextToken,
   ],
+  operationName: "DescribeInstanceInformation",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13451,6 +13493,7 @@ export const describeInstancePatches: API.OperationMethod<
     InvalidInstanceId,
     InvalidNextToken,
   ],
+  operationName: "DescribeInstancePatches",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13489,6 +13532,7 @@ export const describeInstancePatchStates: API.OperationMethod<
   input: DescribeInstancePatchStatesRequest,
   output: DescribeInstancePatchStatesResult,
   errors: [InternalServerError, InvalidNextToken],
+  operationName: "DescribeInstancePatchStates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13529,6 +13573,7 @@ export const describeInstancePatchStatesForPatchGroup: API.OperationMethod<
   input: DescribeInstancePatchStatesForPatchGroupRequest,
   output: DescribeInstancePatchStatesForPatchGroupResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
+  operationName: "DescribeInstancePatchStatesForPatchGroup",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13581,6 +13626,7 @@ export const describeInstanceProperties: API.OperationMethod<
     InvalidInstancePropertyFilterValue,
     InvalidNextToken,
   ],
+  operationName: "DescribeInstanceProperties",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13620,6 +13666,7 @@ export const describeInventoryDeletions: API.OperationMethod<
   input: DescribeInventoryDeletionsRequest,
   output: DescribeInventoryDeletionsResult,
   errors: [InternalServerError, InvalidDeletionIdException, InvalidNextToken],
+  operationName: "DescribeInventoryDeletions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13659,6 +13706,7 @@ export const describeMaintenanceWindowExecutions: API.OperationMethod<
   input: DescribeMaintenanceWindowExecutionsRequest,
   output: DescribeMaintenanceWindowExecutionsResult,
   errors: [InternalServerError],
+  operationName: "DescribeMaintenanceWindowExecutions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13698,6 +13746,7 @@ export const describeMaintenanceWindowExecutionTaskInvocations: API.OperationMet
   input: DescribeMaintenanceWindowExecutionTaskInvocationsRequest,
   output: DescribeMaintenanceWindowExecutionTaskInvocationsResult,
   errors: [DoesNotExistException, InternalServerError],
+  operationName: "DescribeMaintenanceWindowExecutionTaskInvocations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13736,6 +13785,7 @@ export const describeMaintenanceWindowExecutionTasks: API.OperationMethod<
   input: DescribeMaintenanceWindowExecutionTasksRequest,
   output: DescribeMaintenanceWindowExecutionTasksResult,
   errors: [DoesNotExistException, InternalServerError],
+  operationName: "DescribeMaintenanceWindowExecutionTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13773,6 +13823,7 @@ export const describeMaintenanceWindows: API.OperationMethod<
   input: DescribeMaintenanceWindowsRequest,
   output: DescribeMaintenanceWindowsResult,
   errors: [InternalServerError],
+  operationName: "DescribeMaintenanceWindows",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13811,6 +13862,7 @@ export const describeMaintenanceWindowSchedule: API.OperationMethod<
   input: DescribeMaintenanceWindowScheduleRequest,
   output: DescribeMaintenanceWindowScheduleResult,
   errors: [DoesNotExistException, InternalServerError],
+  operationName: "DescribeMaintenanceWindowSchedule",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13849,6 +13901,7 @@ export const describeMaintenanceWindowsForTarget: API.OperationMethod<
   input: DescribeMaintenanceWindowsForTargetRequest,
   output: DescribeMaintenanceWindowsForTargetResult,
   errors: [InternalServerError],
+  operationName: "DescribeMaintenanceWindowsForTarget",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13887,6 +13940,7 @@ export const describeMaintenanceWindowTargets: API.OperationMethod<
   input: DescribeMaintenanceWindowTargetsRequest,
   output: DescribeMaintenanceWindowTargetsResult,
   errors: [DoesNotExistException, InternalServerError],
+  operationName: "DescribeMaintenanceWindowTargets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13930,6 +13984,7 @@ export const describeMaintenanceWindowTasks: API.OperationMethod<
   input: DescribeMaintenanceWindowTasksRequest,
   output: DescribeMaintenanceWindowTasksResult,
   errors: [DoesNotExistException, InternalServerError],
+  operationName: "DescribeMaintenanceWindowTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -13971,6 +14026,7 @@ export const describeOpsItems: API.OperationMethod<
   input: DescribeOpsItemsRequest,
   output: DescribeOpsItemsResponse,
   errors: [InternalServerError],
+  operationName: "DescribeOpsItems",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -14035,6 +14091,7 @@ export const describeParameters: API.OperationMethod<
     InvalidFilterValue,
     InvalidNextToken,
   ],
+  operationName: "DescribeParameters",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -14069,6 +14126,7 @@ export const describePatchBaselines: API.OperationMethod<
   input: DescribePatchBaselinesRequest,
   output: DescribePatchBaselinesResult,
   errors: [InternalServerError],
+  operationName: "DescribePatchBaselines",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -14104,6 +14162,7 @@ export const describePatchGroups: API.OperationMethod<
   input: DescribePatchGroupsRequest,
   output: DescribePatchGroupsResult,
   errors: [InternalServerError],
+  operationName: "DescribePatchGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -14127,6 +14186,7 @@ export const describePatchGroupState: API.OperationMethod<
   input: DescribePatchGroupStateRequest,
   output: DescribePatchGroupStateResult,
   errors: [InternalServerError, InvalidNextToken],
+  operationName: "DescribePatchGroupState",
 }));
 export type DescribePatchPropertiesError = InternalServerError | CommonErrors;
 /**
@@ -14213,6 +14273,7 @@ export const describePatchProperties: API.OperationMethod<
   input: DescribePatchPropertiesRequest,
   output: DescribePatchPropertiesResult,
   errors: [InternalServerError],
+  operationName: "DescribePatchProperties",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -14253,6 +14314,7 @@ export const describeSessions: API.OperationMethod<
   input: DescribeSessionsRequest,
   output: DescribeSessionsResponse,
   errors: [InternalServerError, InvalidFilterKey, InvalidNextToken],
+  operationName: "DescribeSessions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -14287,6 +14349,7 @@ export const disassociateOpsItemRelatedItem: API.OperationMethod<
     OpsItemNotFoundException,
     OpsItemRelatedItemAssociationNotFoundException,
   ],
+  operationName: "DisassociateOpsItemRelatedItem",
 }));
 export type GetAccessTokenError =
   | AccessDeniedException
@@ -14313,6 +14376,7 @@ export const getAccessToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAccessToken",
 }));
 export type GetAutomationExecutionError =
   | AutomationExecutionNotFoundException
@@ -14330,6 +14394,7 @@ export const getAutomationExecution: API.OperationMethod<
   input: GetAutomationExecutionRequest,
   output: GetAutomationExecutionResult,
   errors: [AutomationExecutionNotFoundException, InternalServerError],
+  operationName: "GetAutomationExecution",
 }));
 export type GetCalendarStateError =
   | InternalServerError
@@ -14364,6 +14429,7 @@ export const getCalendarState: API.OperationMethod<
     InvalidDocumentType,
     UnsupportedCalendarException,
   ],
+  operationName: "GetCalendarState",
 }));
 export type GetCommandInvocationError =
   | InternalServerError
@@ -14399,6 +14465,7 @@ export const getCommandInvocation: API.OperationMethod<
     InvalidPluginName,
     InvocationDoesNotExist,
   ],
+  operationName: "GetCommandInvocation",
 }));
 export type GetConnectionStatusError = InternalServerError | CommonErrors;
 /**
@@ -14414,6 +14481,7 @@ export const getConnectionStatus: API.OperationMethod<
   input: GetConnectionStatusRequest,
   output: GetConnectionStatusResponse,
   errors: [InternalServerError],
+  operationName: "GetConnectionStatus",
 }));
 export type GetDefaultPatchBaselineError = InternalServerError | CommonErrors;
 /**
@@ -14432,6 +14500,7 @@ export const getDefaultPatchBaseline: API.OperationMethod<
   input: GetDefaultPatchBaselineRequest,
   output: GetDefaultPatchBaselineResult,
   errors: [InternalServerError],
+  operationName: "GetDefaultPatchBaseline",
 }));
 export type GetDeployablePatchSnapshotForInstanceError =
   | InternalServerError
@@ -14461,6 +14530,7 @@ export const getDeployablePatchSnapshotForInstance: API.OperationMethod<
     UnsupportedFeatureRequiredException,
     UnsupportedOperatingSystem,
   ],
+  operationName: "GetDeployablePatchSnapshotForInstance",
 }));
 export type GetDocumentError =
   | InternalServerError
@@ -14479,6 +14549,7 @@ export const getDocument: API.OperationMethod<
   input: GetDocumentRequest,
   output: GetDocumentResult,
   errors: [InternalServerError, InvalidDocument, InvalidDocumentVersion],
+  operationName: "GetDocument",
 }));
 export type GetExecutionPreviewError =
   | InternalServerError
@@ -14497,6 +14568,7 @@ export const getExecutionPreview: API.OperationMethod<
   input: GetExecutionPreviewRequest,
   output: GetExecutionPreviewResponse,
   errors: [InternalServerError, ResourceNotFoundException],
+  operationName: "GetExecutionPreview",
 }));
 export type GetInventoryError =
   | InternalServerError
@@ -14543,6 +14615,7 @@ export const getInventory: API.OperationMethod<
     InvalidResultAttributeException,
     InvalidTypeNameException,
   ],
+  operationName: "GetInventory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -14583,6 +14656,7 @@ export const getInventorySchema: API.OperationMethod<
   input: GetInventorySchemaRequest,
   output: GetInventorySchemaResult,
   errors: [InternalServerError, InvalidNextToken, InvalidTypeNameException],
+  operationName: "GetInventorySchema",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -14606,6 +14680,7 @@ export const getMaintenanceWindow: API.OperationMethod<
   input: GetMaintenanceWindowRequest,
   output: GetMaintenanceWindowResult,
   errors: [DoesNotExistException, InternalServerError],
+  operationName: "GetMaintenanceWindow",
 }));
 export type GetMaintenanceWindowExecutionError =
   | DoesNotExistException
@@ -14623,6 +14698,7 @@ export const getMaintenanceWindowExecution: API.OperationMethod<
   input: GetMaintenanceWindowExecutionRequest,
   output: GetMaintenanceWindowExecutionResult,
   errors: [DoesNotExistException, InternalServerError],
+  operationName: "GetMaintenanceWindowExecution",
 }));
 export type GetMaintenanceWindowExecutionTaskError =
   | DoesNotExistException
@@ -14641,6 +14717,7 @@ export const getMaintenanceWindowExecutionTask: API.OperationMethod<
   input: GetMaintenanceWindowExecutionTaskRequest,
   output: GetMaintenanceWindowExecutionTaskResult,
   errors: [DoesNotExistException, InternalServerError],
+  operationName: "GetMaintenanceWindowExecutionTask",
 }));
 export type GetMaintenanceWindowExecutionTaskInvocationError =
   | DoesNotExistException
@@ -14658,6 +14735,7 @@ export const getMaintenanceWindowExecutionTaskInvocation: API.OperationMethod<
   input: GetMaintenanceWindowExecutionTaskInvocationRequest,
   output: GetMaintenanceWindowExecutionTaskInvocationResult,
   errors: [DoesNotExistException, InternalServerError],
+  operationName: "GetMaintenanceWindowExecutionTaskInvocation",
 }));
 export type GetMaintenanceWindowTaskError =
   | DoesNotExistException
@@ -14682,6 +14760,7 @@ export const getMaintenanceWindowTask: API.OperationMethod<
   input: GetMaintenanceWindowTaskRequest,
   output: GetMaintenanceWindowTaskResult,
   errors: [DoesNotExistException, InternalServerError],
+  operationName: "GetMaintenanceWindowTask",
 }));
 export type GetOpsItemError =
   | InternalServerError
@@ -14711,6 +14790,7 @@ export const getOpsItem: API.OperationMethod<
     OpsItemAccessDeniedException,
     OpsItemNotFoundException,
   ],
+  operationName: "GetOpsItem",
 }));
 export type GetOpsMetadataError =
   | InternalServerError
@@ -14733,6 +14813,7 @@ export const getOpsMetadata: API.OperationMethod<
     OpsMetadataInvalidArgumentException,
     OpsMetadataNotFoundException,
   ],
+  operationName: "GetOpsMetadata",
 }));
 export type GetOpsSummaryError =
   | InternalServerError
@@ -14779,6 +14860,7 @@ export const getOpsSummary: API.OperationMethod<
     InvalidTypeNameException,
     ResourceDataSyncNotFoundException,
   ],
+  operationName: "GetOpsSummary",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -14815,6 +14897,7 @@ export const getParameter: API.OperationMethod<
     ParameterNotFound,
     ParameterVersionNotFound,
   ],
+  operationName: "GetParameter",
 }));
 export type GetParameterHistoryError =
   | InternalServerError
@@ -14863,6 +14946,7 @@ export const getParameterHistory: API.OperationMethod<
     InvalidNextToken,
     ParameterNotFound,
   ],
+  operationName: "GetParameterHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -14892,6 +14976,7 @@ export const getParameters: API.OperationMethod<
   input: GetParametersRequest,
   output: GetParametersResult,
   errors: [InternalServerError, InvalidKeyId],
+  operationName: "GetParameters",
 }));
 export type GetParametersByPathError =
   | InternalServerError
@@ -14946,6 +15031,7 @@ export const getParametersByPath: API.OperationMethod<
     InvalidKeyId,
     InvalidNextToken,
   ],
+  operationName: "GetParametersByPath",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -14969,6 +15055,7 @@ export const getPatchBaseline: API.OperationMethod<
   input: GetPatchBaselineRequest,
   output: GetPatchBaselineResult,
   errors: [DoesNotExistException, InternalServerError, InvalidResourceId],
+  operationName: "GetPatchBaseline",
 }));
 export type GetPatchBaselineForPatchGroupError =
   | InternalServerError
@@ -14985,6 +15072,7 @@ export const getPatchBaselineForPatchGroup: API.OperationMethod<
   input: GetPatchBaselineForPatchGroupRequest,
   output: GetPatchBaselineForPatchGroupResult,
   errors: [InternalServerError],
+  operationName: "GetPatchBaselineForPatchGroup",
 }));
 export type GetResourcePoliciesError =
   | InternalServerError
@@ -15022,6 +15110,7 @@ export const getResourcePolicies: API.OperationMethod<
     ResourceNotFoundException,
     ResourcePolicyInvalidParameterException,
   ],
+  operationName: "GetResourcePolicies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -15059,6 +15148,7 @@ export const getServiceSetting: API.OperationMethod<
   input: GetServiceSettingRequest,
   output: GetServiceSettingResult,
   errors: [InternalServerError, ServiceSettingNotFound],
+  operationName: "GetServiceSetting",
 }));
 export type LabelParameterVersionError =
   | InternalServerError
@@ -15116,6 +15206,7 @@ export const labelParameterVersion: API.OperationMethod<
     ParameterVersionNotFound,
     TooManyUpdates,
   ],
+  operationName: "LabelParameterVersion",
 }));
 export type ListAssociationsError =
   | InternalServerError
@@ -15150,6 +15241,7 @@ export const listAssociations: API.OperationMethod<
   input: ListAssociationsRequest,
   output: ListAssociationsResult,
   errors: [InternalServerError, InvalidNextToken],
+  operationName: "ListAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -15189,6 +15281,7 @@ export const listAssociationVersions: API.OperationMethod<
   input: ListAssociationVersionsRequest,
   output: ListAssociationVersionsResult,
   errors: [AssociationDoesNotExist, InternalServerError, InvalidNextToken],
+  operationName: "ListAssociationVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -15240,6 +15333,7 @@ export const listCommandInvocations: API.OperationMethod<
     InvalidInstanceId,
     InvalidNextToken,
   ],
+  operationName: "ListCommandInvocations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -15287,6 +15381,7 @@ export const listCommands: API.OperationMethod<
     InvalidInstanceId,
     InvalidNextToken,
   ],
+  operationName: "ListCommands",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -15336,6 +15431,7 @@ export const listComplianceItems: API.OperationMethod<
     InvalidResourceId,
     InvalidResourceType,
   ],
+  operationName: "ListComplianceItems",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -15377,6 +15473,7 @@ export const listComplianceSummaries: API.OperationMethod<
   input: ListComplianceSummariesRequest,
   output: ListComplianceSummariesResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
+  operationName: "ListComplianceSummaries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -15411,6 +15508,7 @@ export const listDocumentMetadataHistory: API.OperationMethod<
     InvalidDocumentVersion,
     InvalidNextToken,
   ],
+  operationName: "ListDocumentMetadataHistory",
 }));
 export type ListDocumentsError =
   | InternalServerError
@@ -15445,6 +15543,7 @@ export const listDocuments: API.OperationMethod<
   input: ListDocumentsRequest,
   output: ListDocumentsResult,
   errors: [InternalServerError, InvalidFilterKey, InvalidNextToken],
+  operationName: "ListDocuments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -15484,6 +15583,7 @@ export const listDocumentVersions: API.OperationMethod<
   input: ListDocumentVersionsRequest,
   output: ListDocumentVersionsResult,
   errors: [InternalServerError, InvalidDocument, InvalidNextToken],
+  operationName: "ListDocumentVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -15516,6 +15616,7 @@ export const listInventoryEntries: API.OperationMethod<
     InvalidNextToken,
     InvalidTypeNameException,
   ],
+  operationName: "ListInventoryEntries",
 }));
 export type ListNodesError =
   | InternalServerError
@@ -15553,6 +15654,7 @@ export const listNodes: API.OperationMethod<
     ResourceDataSyncNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "ListNodes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -15603,6 +15705,7 @@ export const listNodesSummary: API.OperationMethod<
     ResourceDataSyncNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "ListNodesSummary",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -15649,6 +15752,7 @@ export const listOpsItemEvents: API.OperationMethod<
     OpsItemLimitExceededException,
     OpsItemNotFoundException,
   ],
+  operationName: "ListOpsItemEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -15688,6 +15792,7 @@ export const listOpsItemRelatedItems: API.OperationMethod<
   input: ListOpsItemRelatedItemsRequest,
   output: ListOpsItemRelatedItemsResponse,
   errors: [InternalServerError, OpsItemInvalidParameterException],
+  operationName: "ListOpsItemRelatedItems",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -15727,6 +15832,7 @@ export const listOpsMetadata: API.OperationMethod<
   input: ListOpsMetadataRequest,
   output: ListOpsMetadataResult,
   errors: [InternalServerError, OpsMetadataInvalidArgumentException],
+  operationName: "ListOpsMetadata",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -15768,6 +15874,7 @@ export const listResourceComplianceSummaries: API.OperationMethod<
   input: ListResourceComplianceSummariesRequest,
   output: ListResourceComplianceSummariesResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
+  operationName: "ListResourceComplianceSummaries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -15820,6 +15927,7 @@ export const listResourceDataSync: API.OperationMethod<
     InvalidNextToken,
     ResourceDataSyncInvalidConfigurationException,
   ],
+  operationName: "ListResourceDataSync",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -15846,6 +15954,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [InternalServerError, InvalidResourceId, InvalidResourceType],
+  operationName: "ListTagsForResource",
 }));
 export type ModifyDocumentPermissionError =
   | DocumentLimitExceeded
@@ -15875,6 +15984,7 @@ export const modifyDocumentPermission: API.OperationMethod<
     InvalidDocument,
     InvalidPermissionType,
   ],
+  operationName: "ModifyDocumentPermission",
 }));
 export type PutComplianceItemsError =
   | ComplianceTypeCountLimitExceededException
@@ -15951,6 +16061,7 @@ export const putComplianceItems: API.OperationMethod<
     ItemSizeLimitExceededException,
     TotalSizeLimitExceededException,
   ],
+  operationName: "PutComplianceItems",
 }));
 export type PutInventoryError =
   | CustomSchemaCountLimitExceededException
@@ -15993,6 +16104,7 @@ export const putInventory: API.OperationMethod<
     UnsupportedInventoryItemContextException,
     UnsupportedInventorySchemaVersionException,
   ],
+  operationName: "PutInventory",
 }));
 export type PutParameterError =
   | HierarchyLevelLimitExceededException
@@ -16039,6 +16151,7 @@ export const putParameter: API.OperationMethod<
     TooManyUpdates,
     UnsupportedParameterType,
   ],
+  operationName: "PutParameter",
 }));
 export type PutResourcePolicyError =
   | InternalServerError
@@ -16095,6 +16208,7 @@ export const putResourcePolicy: API.OperationMethod<
     ResourcePolicyLimitExceededException,
     ResourcePolicyNotFoundException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type RegisterDefaultPatchBaselineError =
   | DoesNotExistException
@@ -16118,6 +16232,7 @@ export const registerDefaultPatchBaseline: API.OperationMethod<
   input: RegisterDefaultPatchBaselineRequest,
   output: RegisterDefaultPatchBaselineResult,
   errors: [DoesNotExistException, InternalServerError, InvalidResourceId],
+  operationName: "RegisterDefaultPatchBaseline",
 }));
 export type RegisterPatchBaselineForPatchGroupError =
   | AlreadyExistsException
@@ -16144,6 +16259,7 @@ export const registerPatchBaselineForPatchGroup: API.OperationMethod<
     InvalidResourceId,
     ResourceLimitExceededException,
   ],
+  operationName: "RegisterPatchBaselineForPatchGroup",
 }));
 export type RegisterTargetWithMaintenanceWindowError =
   | DoesNotExistException
@@ -16168,6 +16284,7 @@ export const registerTargetWithMaintenanceWindow: API.OperationMethod<
     InternalServerError,
     ResourceLimitExceededException,
   ],
+  operationName: "RegisterTargetWithMaintenanceWindow",
 }));
 export type RegisterTaskWithMaintenanceWindowError =
   | DoesNotExistException
@@ -16194,6 +16311,7 @@ export const registerTaskWithMaintenanceWindow: API.OperationMethod<
     InternalServerError,
     ResourceLimitExceededException,
   ],
+  operationName: "RegisterTaskWithMaintenanceWindow",
 }));
 export type RemoveTagsFromResourceError =
   | InternalServerError
@@ -16218,6 +16336,7 @@ export const removeTagsFromResource: API.OperationMethod<
     InvalidResourceType,
     TooManyUpdates,
   ],
+  operationName: "RemoveTagsFromResource",
 }));
 export type ResetServiceSettingError =
   | InternalServerError
@@ -16251,6 +16370,7 @@ export const resetServiceSetting: API.OperationMethod<
   input: ResetServiceSettingRequest,
   output: ResetServiceSettingResult,
   errors: [InternalServerError, ServiceSettingNotFound, TooManyUpdates],
+  operationName: "ResetServiceSetting",
 }));
 export type ResumeSessionError =
   | DoesNotExistException
@@ -16272,6 +16392,7 @@ export const resumeSession: API.OperationMethod<
   input: ResumeSessionRequest,
   output: ResumeSessionResponse,
   errors: [DoesNotExistException, InternalServerError],
+  operationName: "ResumeSession",
 }));
 export type SendAutomationSignalError =
   | AutomationExecutionNotFoundException
@@ -16297,6 +16418,7 @@ export const sendAutomationSignal: API.OperationMethod<
     InternalServerError,
     InvalidAutomationSignalException,
   ],
+  operationName: "SendAutomationSignal",
 }));
 export type SendCommandError =
   | DuplicateInstanceId
@@ -16335,6 +16457,7 @@ export const sendCommand: API.OperationMethod<
     MaxDocumentSizeExceeded,
     UnsupportedPlatformType,
   ],
+  operationName: "SendCommand",
 }));
 export type StartAccessRequestError =
   | AccessDeniedException
@@ -16363,6 +16486,7 @@ export const startAccessRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartAccessRequest",
 }));
 export type StartAssociationsOnceError =
   | AssociationDoesNotExist
@@ -16381,6 +16505,7 @@ export const startAssociationsOnce: API.OperationMethod<
   input: StartAssociationsOnceRequest,
   output: StartAssociationsOnceResult,
   errors: [AssociationDoesNotExist, InvalidAssociation],
+  operationName: "StartAssociationsOnce",
 }));
 export type StartAutomationExecutionError =
   | AutomationDefinitionNotFoundException
@@ -16411,6 +16536,7 @@ export const startAutomationExecution: API.OperationMethod<
     InvalidAutomationExecutionParametersException,
     InvalidTarget,
   ],
+  operationName: "StartAutomationExecution",
 }));
 export type StartChangeRequestExecutionError =
   | AutomationDefinitionNotApprovedException
@@ -16449,6 +16575,7 @@ export const startChangeRequestExecution: API.OperationMethod<
     InvalidAutomationExecutionParametersException,
     NoLongerSupportedException,
   ],
+  operationName: "StartChangeRequestExecution",
 }));
 export type StartExecutionPreviewError =
   | InternalServerError
@@ -16467,6 +16594,7 @@ export const startExecutionPreview: API.OperationMethod<
   input: StartExecutionPreviewRequest,
   output: StartExecutionPreviewResponse,
   errors: [InternalServerError, ValidationException],
+  operationName: "StartExecutionPreview",
 }));
 export type StartSessionError =
   | InternalServerError
@@ -16494,6 +16622,7 @@ export const startSession: API.OperationMethod<
   input: StartSessionRequest,
   output: StartSessionResponse,
   errors: [InternalServerError, InvalidDocument, TargetNotConnected],
+  operationName: "StartSession",
 }));
 export type StopAutomationExecutionError =
   | AutomationExecutionNotFoundException
@@ -16516,6 +16645,7 @@ export const stopAutomationExecution: API.OperationMethod<
     InternalServerError,
     InvalidAutomationStatusUpdateException,
   ],
+  operationName: "StopAutomationExecution",
 }));
 export type TerminateSessionError = InternalServerError | CommonErrors;
 /**
@@ -16531,6 +16661,7 @@ export const terminateSession: API.OperationMethod<
   input: TerminateSessionRequest,
   output: TerminateSessionResponse,
   errors: [InternalServerError],
+  operationName: "TerminateSession",
 }));
 export type UnlabelParameterVersionError =
   | InternalServerError
@@ -16559,6 +16690,7 @@ export const unlabelParameterVersion: API.OperationMethod<
     ParameterVersionNotFound,
     TooManyUpdates,
   ],
+  operationName: "UnlabelParameterVersion",
 }));
 export type UpdateAssociationError =
   | AssociationDoesNotExist
@@ -16618,6 +16750,7 @@ export const updateAssociation: API.OperationMethod<
     InvalidUpdate,
     TooManyUpdates,
   ],
+  operationName: "UpdateAssociation",
 }));
 export type UpdateAssociationStatusError =
   | AssociationDoesNotExist
@@ -16651,6 +16784,7 @@ export const updateAssociationStatus: API.OperationMethod<
     StatusUnchanged,
     TooManyUpdates,
   ],
+  operationName: "UpdateAssociationStatus",
 }));
 export type UpdateDocumentError =
   | DocumentVersionLimitExceeded
@@ -16687,6 +16821,7 @@ export const updateDocument: API.OperationMethod<
     InvalidDocumentVersion,
     MaxDocumentSizeExceeded,
   ],
+  operationName: "UpdateDocument",
 }));
 export type UpdateDocumentDefaultVersionError =
   | InternalServerError
@@ -16715,6 +16850,7 @@ export const updateDocumentDefaultVersion: API.OperationMethod<
     InvalidDocumentSchemaVersion,
     InvalidDocumentVersion,
   ],
+  operationName: "UpdateDocumentDefaultVersion",
 }));
 export type UpdateDocumentMetadataError =
   | InternalServerError
@@ -16746,6 +16882,7 @@ export const updateDocumentMetadata: API.OperationMethod<
     InvalidDocumentVersion,
     TooManyUpdates,
   ],
+  operationName: "UpdateDocumentMetadata",
 }));
 export type UpdateMaintenanceWindowError =
   | DoesNotExistException
@@ -16770,6 +16907,7 @@ export const updateMaintenanceWindow: API.OperationMethod<
   input: UpdateMaintenanceWindowRequest,
   output: UpdateMaintenanceWindowResult,
   errors: [DoesNotExistException, InternalServerError],
+  operationName: "UpdateMaintenanceWindow",
 }));
 export type UpdateMaintenanceWindowTargetError =
   | DoesNotExistException
@@ -16803,6 +16941,7 @@ export const updateMaintenanceWindowTarget: API.OperationMethod<
   input: UpdateMaintenanceWindowTargetRequest,
   output: UpdateMaintenanceWindowTargetResult,
   errors: [DoesNotExistException, InternalServerError],
+  operationName: "UpdateMaintenanceWindowTarget",
 }));
 export type UpdateMaintenanceWindowTaskError =
   | DoesNotExistException
@@ -16855,6 +16994,7 @@ export const updateMaintenanceWindowTask: API.OperationMethod<
   input: UpdateMaintenanceWindowTaskRequest,
   output: UpdateMaintenanceWindowTaskResult,
   errors: [DoesNotExistException, InternalServerError],
+  operationName: "UpdateMaintenanceWindowTask",
 }));
 export type UpdateManagedInstanceRoleError =
   | InternalServerError
@@ -16874,6 +17014,7 @@ export const updateManagedInstanceRole: API.OperationMethod<
   input: UpdateManagedInstanceRoleRequest,
   output: UpdateManagedInstanceRoleResult,
   errors: [InternalServerError, InvalidInstanceId],
+  operationName: "UpdateManagedInstanceRole",
 }));
 export type UpdateOpsItemError =
   | InternalServerError
@@ -16910,6 +17051,7 @@ export const updateOpsItem: API.OperationMethod<
     OpsItemLimitExceededException,
     OpsItemNotFoundException,
   ],
+  operationName: "UpdateOpsItem",
 }));
 export type UpdateOpsMetadataError =
   | InternalServerError
@@ -16936,6 +17078,7 @@ export const updateOpsMetadata: API.OperationMethod<
     OpsMetadataNotFoundException,
     OpsMetadataTooManyUpdatesException,
   ],
+  operationName: "UpdateOpsMetadata",
 }));
 export type UpdatePatchBaselineError =
   | DoesNotExistException
@@ -16957,6 +17100,7 @@ export const updatePatchBaseline: API.OperationMethod<
   input: UpdatePatchBaselineRequest,
   output: UpdatePatchBaselineResult,
   errors: [DoesNotExistException, InternalServerError],
+  operationName: "UpdatePatchBaseline",
 }));
 export type UpdateResourceDataSyncError =
   | InternalServerError
@@ -16989,6 +17133,7 @@ export const updateResourceDataSync: API.OperationMethod<
     ResourceDataSyncInvalidConfigurationException,
     ResourceDataSyncNotFoundException,
   ],
+  operationName: "UpdateResourceDataSync",
 }));
 export type UpdateServiceSettingError =
   | InternalServerError
@@ -17021,4 +17166,5 @@ export const updateServiceSetting: API.OperationMethod<
   input: UpdateServiceSettingRequest,
   output: UpdateServiceSettingResult,
   errors: [InternalServerError, ServiceSettingNotFound, TooManyUpdates],
+  operationName: "UpdateServiceSetting",
 }));

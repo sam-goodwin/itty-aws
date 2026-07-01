@@ -693,6 +693,7 @@ export const createScalingPlan: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  operationName: "CreateScalingPlan",
 }));
 export type DeleteScalingPlanError =
   | ConcurrentUpdateException
@@ -723,6 +724,7 @@ export const deleteScalingPlan: API.OperationMethod<
     ObjectNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteScalingPlan",
 }));
 export type DescribeScalingPlanResourcesError =
   | ConcurrentUpdateException
@@ -747,6 +749,7 @@ export const describeScalingPlanResources: API.OperationMethod<
     InvalidNextTokenException,
     ValidationException,
   ],
+  operationName: "DescribeScalingPlanResources",
 }));
 export type DescribeScalingPlansError =
   | ConcurrentUpdateException
@@ -771,6 +774,7 @@ export const describeScalingPlans: API.OperationMethod<
     InvalidNextTokenException,
     ValidationException,
   ],
+  operationName: "DescribeScalingPlans",
 }));
 export type GetScalingPlanResourceForecastDataError =
   | InternalServiceException
@@ -792,6 +796,7 @@ export const getScalingPlanResourceForecastData: API.OperationMethod<
   input: GetScalingPlanResourceForecastDataRequest,
   output: GetScalingPlanResourceForecastDataResponse,
   errors: [InternalServiceException, ValidationException],
+  operationName: "GetScalingPlanResourceForecastData",
 }));
 export type UpdateScalingPlanError =
   | ConcurrentUpdateException
@@ -819,4 +824,5 @@ export const updateScalingPlan: API.OperationMethod<
     ObjectNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateScalingPlan",
 }));

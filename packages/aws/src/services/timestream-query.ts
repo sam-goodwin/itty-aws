@@ -1276,6 +1276,7 @@ export const cancelQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelQuery",
 }));
 export type CreateScheduledQueryError =
   | AccessDeniedException
@@ -1310,6 +1311,7 @@ export const createScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateScheduledQuery",
 }));
 export type DeleteScheduledQueryError =
   | AccessDeniedException
@@ -1338,6 +1340,7 @@ export const deleteScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteScheduledQuery",
 }));
 export type DescribeAccountSettingsError =
   | AccessDeniedException
@@ -1364,6 +1367,7 @@ export const describeAccountSettings: API.OperationMethod<
     InvalidEndpointException,
     ThrottlingException,
   ],
+  operationName: "DescribeAccountSettings",
 }));
 export type DescribeEndpointsError =
   | InternalServerException
@@ -1397,6 +1401,7 @@ export const describeEndpoints: API.OperationMethod<
   input: DescribeEndpointsRequest,
   output: DescribeEndpointsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "DescribeEndpoints",
 }));
 export type DescribeScheduledQueryError =
   | AccessDeniedException
@@ -1425,6 +1430,7 @@ export const describeScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeScheduledQuery",
 }));
 export type ExecuteScheduledQueryError =
   | AccessDeniedException
@@ -1455,6 +1461,7 @@ export const executeScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ExecuteScheduledQuery",
 }));
 export type ListScheduledQueriesError =
   | AccessDeniedException
@@ -1497,6 +1504,7 @@ export const listScheduledQueries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListScheduledQueries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1542,6 +1550,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1576,6 +1585,7 @@ export const prepareQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PrepareQuery",
 }));
 export type QueryError =
   | AccessDeniedException
@@ -1650,6 +1660,7 @@ export const query: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "Query",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1684,6 +1695,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InvalidEndpointException
@@ -1708,6 +1720,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAccountSettingsError =
   | AccessDeniedException
@@ -1736,6 +1749,7 @@ export const updateAccountSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAccountSettings",
 }));
 export type UpdateScheduledQueryError =
   | AccessDeniedException
@@ -1764,4 +1778,5 @@ export const updateScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateScheduledQuery",
 }));

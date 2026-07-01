@@ -3041,6 +3041,7 @@ export const cancelKeyDeletion: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "CancelKeyDeletion",
 }));
 export type ConnectCustomKeyStoreError =
   | CloudHsmClusterInvalidConfigurationException
@@ -3148,6 +3149,7 @@ export const connectCustomKeyStore: API.OperationMethod<
     CustomKeyStoreNotFoundException,
     KMSInternalException,
   ],
+  operationName: "ConnectCustomKeyStore",
 }));
 export type CreateAliasError =
   | AlreadyExistsException
@@ -3222,6 +3224,7 @@ export const createAlias: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "CreateAlias",
 }));
 export type CreateCustomKeyStoreError =
   | CloudHsmClusterInUseException
@@ -3344,6 +3347,7 @@ export const createCustomKeyStore: API.OperationMethod<
     XksProxyVpcEndpointServiceInvalidConfigurationException,
     XksProxyVpcEndpointServiceNotFoundException,
   ],
+  operationName: "CreateCustomKeyStore",
 }));
 export type CreateGrantError =
   | DependencyTimeoutException
@@ -3433,6 +3437,7 @@ export const createGrant: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "CreateGrant",
 }));
 export type CreateKeyError =
   | CloudHsmClusterInvalidConfigurationException
@@ -3639,6 +3644,7 @@ export const createKey: API.OperationMethod<
     XksKeyInvalidConfigurationException,
     XksKeyNotFoundException,
   ],
+  operationName: "CreateKey",
 }));
 export type DecryptError =
   | DependencyTimeoutException
@@ -3748,6 +3754,7 @@ export const decrypt: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "Decrypt",
 }));
 export type DeleteAliasError =
   | DependencyTimeoutException
@@ -3805,6 +3812,7 @@ export const deleteAlias: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "DeleteAlias",
 }));
 export type DeleteCustomKeyStoreError =
   | CustomKeyStoreHasCMKsException
@@ -3877,6 +3885,7 @@ export const deleteCustomKeyStore: API.OperationMethod<
     CustomKeyStoreNotFoundException,
     KMSInternalException,
   ],
+  operationName: "DeleteCustomKeyStore",
 }));
 export type DeleteImportedKeyMaterialError =
   | DependencyTimeoutException
@@ -3939,6 +3948,7 @@ export const deleteImportedKeyMaterial: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "DeleteImportedKeyMaterial",
 }));
 export type DeriveSharedSecretError =
   | DependencyTimeoutException
@@ -4046,6 +4056,7 @@ export const deriveSharedSecret: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "DeriveSharedSecret",
 }));
 export type DescribeCustomKeyStoresError =
   | CustomKeyStoreNotFoundException
@@ -4131,6 +4142,7 @@ export const describeCustomKeyStores: API.OperationMethod<
     InvalidMarkerException,
     KMSInternalException,
   ],
+  operationName: "DescribeCustomKeyStores",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -4217,6 +4229,7 @@ export const describeKey: API.OperationMethod<
     KMSInternalException,
     NotFoundException,
   ],
+  operationName: "DescribeKey",
 }));
 export type DisableKeyError =
   | DependencyTimeoutException
@@ -4259,6 +4272,7 @@ export const disableKey: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "DisableKey",
 }));
 export type DisableKeyRotationError =
   | DependencyTimeoutException
@@ -4321,6 +4335,7 @@ export const disableKeyRotation: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "DisableKeyRotation",
 }));
 export type DisconnectCustomKeyStoreError =
   | CustomKeyStoreInvalidStateException
@@ -4382,6 +4397,7 @@ export const disconnectCustomKeyStore: API.OperationMethod<
     CustomKeyStoreNotFoundException,
     KMSInternalException,
   ],
+  operationName: "DisconnectCustomKeyStore",
 }));
 export type EnableKeyError =
   | DependencyTimeoutException
@@ -4423,6 +4439,7 @@ export const enableKey: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "EnableKey",
 }));
 export type EnableKeyRotationError =
   | DependencyTimeoutException
@@ -4505,6 +4522,7 @@ export const enableKeyRotation: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "EnableKeyRotation",
 }));
 export type EncryptError =
   | DependencyTimeoutException
@@ -4607,6 +4625,7 @@ export const encrypt: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "Encrypt",
 }));
 export type GenerateDataKeyError =
   | DependencyTimeoutException
@@ -4727,6 +4746,7 @@ export const generateDataKey: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "GenerateDataKey",
 }));
 export type GenerateDataKeyPairError =
   | DependencyTimeoutException
@@ -4835,6 +4855,7 @@ export const generateDataKeyPair: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "GenerateDataKeyPair",
 }));
 export type GenerateDataKeyPairWithoutPlaintextError =
   | DependencyTimeoutException
@@ -4924,6 +4945,7 @@ export const generateDataKeyPairWithoutPlaintext: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "GenerateDataKeyPairWithoutPlaintext",
 }));
 export type GenerateDataKeyWithoutPlaintextError =
   | DependencyTimeoutException
@@ -5024,6 +5046,7 @@ export const generateDataKeyWithoutPlaintext: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "GenerateDataKeyWithoutPlaintext",
 }));
 export type GenerateMacError =
   | DisabledException
@@ -5087,6 +5110,7 @@ export const generateMac: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "GenerateMac",
 }));
 export type GenerateRandomError =
   | CustomKeyStoreInvalidStateException
@@ -5138,6 +5162,7 @@ export const generateRandom: API.OperationMethod<
     KMSInternalException,
     UnsupportedOperationException,
   ],
+  operationName: "GenerateRandom",
 }));
 export type GetKeyLastUsageError =
   | DependencyTimeoutException
@@ -5214,6 +5239,7 @@ export const getKeyLastUsage: API.OperationMethod<
     KMSInternalException,
     NotFoundException,
   ],
+  operationName: "GetKeyLastUsage",
 }));
 export type GetKeyPolicyError =
   | DependencyTimeoutException
@@ -5249,6 +5275,7 @@ export const getKeyPolicy: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "GetKeyPolicy",
 }));
 export type GetKeyRotationStatusError =
   | DependencyTimeoutException
@@ -5329,6 +5356,7 @@ export const getKeyRotationStatus: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "GetKeyRotationStatus",
 }));
 export type GetParametersForImportError =
   | DependencyTimeoutException
@@ -5421,6 +5449,7 @@ export const getParametersForImport: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "GetParametersForImport",
 }));
 export type GetPublicKeyError =
   | DependencyTimeoutException
@@ -5504,6 +5533,7 @@ export const getPublicKey: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "GetPublicKey",
 }));
 export type ImportKeyMaterialError =
   | DependencyTimeoutException
@@ -5653,6 +5683,7 @@ export const importKeyMaterial: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "ImportKeyMaterial",
 }));
 export type ListAliasesError =
   | DependencyTimeoutException
@@ -5728,6 +5759,7 @@ export const listAliases: API.OperationMethod<
     KMSInternalException,
     NotFoundException,
   ],
+  operationName: "ListAliases",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -5815,6 +5847,7 @@ export const listGrants: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "ListGrants",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -5877,6 +5910,7 @@ export const listKeyPolicies: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "ListKeyPolicies",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -5955,6 +5989,7 @@ export const listKeyRotations: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "ListKeyRotations",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -6015,6 +6050,7 @@ export const listKeys: API.OperationMethod<
     InvalidMarkerException,
     KMSInternalException,
   ],
+  operationName: "ListKeys",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -6082,6 +6118,7 @@ export const listResourceTags: API.OperationMethod<
     KMSInternalException,
     NotFoundException,
   ],
+  operationName: "ListResourceTags",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -6173,6 +6210,7 @@ export const listRetirableGrants: API.OperationMethod<
     KMSInternalException,
     NotFoundException,
   ],
+  operationName: "ListRetirableGrants",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -6227,6 +6265,7 @@ export const putKeyPolicy: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "PutKeyPolicy",
 }));
 export type ReEncryptError =
   | DependencyTimeoutException
@@ -6344,6 +6383,7 @@ export const reEncrypt: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "ReEncrypt",
 }));
 export type ReplicateKeyError =
   | AlreadyExistsException
@@ -6450,6 +6490,7 @@ export const replicateKey: API.OperationMethod<
     TagException,
     UnsupportedOperationException,
   ],
+  operationName: "ReplicateKey",
 }));
 export type RetireGrantError =
   | DependencyTimeoutException
@@ -6516,6 +6557,7 @@ export const retireGrant: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "RetireGrant",
 }));
 export type RevokeGrantError =
   | DependencyTimeoutException
@@ -6579,6 +6621,7 @@ export const revokeGrant: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "RevokeGrant",
 }));
 export type RotateKeyOnDemandError =
   | ConflictException
@@ -6667,6 +6710,7 @@ export const rotateKeyOnDemand: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "RotateKeyOnDemand",
 }));
 export type ScheduleKeyDeletionError =
   | DependencyTimeoutException
@@ -6746,6 +6790,7 @@ export const scheduleKeyDeletion: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "ScheduleKeyDeletion",
 }));
 export type SignError =
   | DependencyTimeoutException
@@ -6830,6 +6875,7 @@ export const sign: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "Sign",
 }));
 export type TagResourceError =
   | InvalidArnException
@@ -6895,6 +6941,7 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     TagException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InvalidArnException
@@ -6952,6 +6999,7 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     TagException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAliasError =
   | DependencyTimeoutException
@@ -7026,6 +7074,7 @@ export const updateAlias: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  operationName: "UpdateAlias",
 }));
 export type UpdateCustomKeyStoreError =
   | CloudHsmClusterInvalidConfigurationException
@@ -7160,6 +7209,7 @@ export const updateCustomKeyStore: API.OperationMethod<
     XksProxyVpcEndpointServiceInvalidConfigurationException,
     XksProxyVpcEndpointServiceNotFoundException,
   ],
+  operationName: "UpdateCustomKeyStore",
 }));
 export type UpdateKeyDescriptionError =
   | DependencyTimeoutException
@@ -7202,6 +7252,7 @@ export const updateKeyDescription: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "UpdateKeyDescription",
 }));
 export type UpdatePrimaryRegionError =
   | DisabledException
@@ -7290,6 +7341,7 @@ export const updatePrimaryRegion: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "UpdatePrimaryRegion",
 }));
 export type VerifyError =
   | DependencyTimeoutException
@@ -7367,6 +7419,7 @@ export const verify: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "Verify",
 }));
 export type VerifyMacError =
   | DisabledException
@@ -7426,4 +7479,5 @@ export const verifyMac: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  operationName: "VerifyMac",
 }));

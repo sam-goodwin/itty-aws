@@ -199,6 +199,7 @@ export const getRawMessageContent: API.OperationMethod<
   input: GetRawMessageContentRequest,
   output: GetRawMessageContentResponse,
   errors: [ResourceNotFoundException],
+  operationName: "GetRawMessageContent",
 }));
 export type PutRawMessageContentError =
   | InvalidContentLocation
@@ -233,4 +234,5 @@ export const putRawMessageContent: API.OperationMethod<
     MessageRejected,
     ResourceNotFoundException,
   ],
+  operationName: "PutRawMessageContent",
 }));

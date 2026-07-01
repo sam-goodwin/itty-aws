@@ -2456,6 +2456,7 @@ export const batchDescribeEntities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchDescribeEntities",
 }));
 export type CancelChangeSetError =
   | AccessDeniedException
@@ -2487,6 +2488,7 @@ export const cancelChangeSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelChangeSet",
 }));
 export type DeleteResourcePolicyError =
   | AccessDeniedException
@@ -2514,6 +2516,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DescribeChangeSetError =
   | AccessDeniedException
@@ -2540,6 +2543,7 @@ export const describeChangeSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeChangeSet",
 }));
 export type DescribeEntityError =
   | AccessDeniedException
@@ -2568,6 +2572,7 @@ export const describeEntity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeEntity",
 }));
 export type GetResourcePolicyError =
   | AccessDeniedException
@@ -2595,6 +2600,7 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type ListChangeSetsError =
   | AccessDeniedException
@@ -2640,6 +2646,7 @@ export const listChangeSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListChangeSets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2687,6 +2694,7 @@ export const listEntities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEntities",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2719,6 +2727,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutResourcePolicyError =
   | AccessDeniedException
@@ -2746,6 +2755,7 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type StartChangeSetError =
   | AccessDeniedException
@@ -2793,6 +2803,7 @@ export const startChangeSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartChangeSet",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2819,6 +2830,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2845,4 +2857,5 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));

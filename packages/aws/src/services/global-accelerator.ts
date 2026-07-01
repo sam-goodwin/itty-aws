@@ -2168,6 +2168,7 @@ export const addCustomRoutingEndpoints: API.OperationMethod<
     InvalidArgumentException,
     LimitExceededException,
   ],
+  operationName: "AddCustomRoutingEndpoints",
 }));
 export type AddEndpointsError =
   | AccessDeniedException
@@ -2213,6 +2214,7 @@ export const addEndpoints: API.OperationMethod<
     LimitExceededException,
     TransactionInProgressException,
   ],
+  operationName: "AddEndpoints",
 }));
 export type AdvertiseByoipCidrError =
   | AccessDeniedException
@@ -2247,6 +2249,7 @@ export const advertiseByoipCidr: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  operationName: "AdvertiseByoipCidr",
 }));
 export type AllowCustomRoutingTrafficError =
   | EndpointGroupNotFoundException
@@ -2275,6 +2278,7 @@ export const allowCustomRoutingTraffic: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  operationName: "AllowCustomRoutingTraffic",
 }));
 export type CreateAcceleratorError =
   | AccessDeniedException
@@ -2306,6 +2310,7 @@ export const createAccelerator: API.OperationMethod<
     LimitExceededException,
     TransactionInProgressException,
   ],
+  operationName: "CreateAccelerator",
 }));
 export type CreateCrossAccountAttachmentError =
   | AccessDeniedException
@@ -2351,6 +2356,7 @@ export const createCrossAccountAttachment: API.OperationMethod<
     LimitExceededException,
     TransactionInProgressException,
   ],
+  operationName: "CreateCrossAccountAttachment",
 }));
 export type CreateCustomRoutingAcceleratorError =
   | AccessDeniedException
@@ -2387,6 +2393,7 @@ export const createCustomRoutingAccelerator: API.OperationMethod<
     LimitExceededException,
     TransactionInProgressException,
   ],
+  operationName: "CreateCustomRoutingAccelerator",
 }));
 export type CreateCustomRoutingEndpointGroupError =
   | AcceleratorNotFoundException
@@ -2421,6 +2428,7 @@ export const createCustomRoutingEndpointGroup: API.OperationMethod<
     LimitExceededException,
     ListenerNotFoundException,
   ],
+  operationName: "CreateCustomRoutingEndpointGroup",
 }));
 export type CreateCustomRoutingListenerError =
   | AcceleratorNotFoundException
@@ -2448,6 +2456,7 @@ export const createCustomRoutingListener: API.OperationMethod<
     InvalidPortRangeException,
     LimitExceededException,
   ],
+  operationName: "CreateCustomRoutingListener",
 }));
 export type CreateEndpointGroupError =
   | AcceleratorNotFoundException
@@ -2483,6 +2492,7 @@ export const createEndpointGroup: API.OperationMethod<
     LimitExceededException,
     ListenerNotFoundException,
   ],
+  operationName: "CreateEndpointGroup",
 }));
 export type CreateListenerError =
   | AcceleratorNotFoundException
@@ -2510,6 +2520,7 @@ export const createListener: API.OperationMethod<
     InvalidPortRangeException,
     LimitExceededException,
   ],
+  operationName: "CreateListener",
 }));
 export type DeleteAcceleratorError =
   | AcceleratorNotDisabledException
@@ -2550,6 +2561,7 @@ export const deleteAccelerator: API.OperationMethod<
     InvalidArgumentException,
     TransactionInProgressException,
   ],
+  operationName: "DeleteAccelerator",
 }));
 export type DeleteCrossAccountAttachmentError =
   | AccessDeniedException
@@ -2582,6 +2594,7 @@ export const deleteCrossAccountAttachment: API.OperationMethod<
     InvalidArgumentException,
     TransactionInProgressException,
   ],
+  operationName: "DeleteCrossAccountAttachment",
 }));
 export type DeleteCustomRoutingAcceleratorError =
   | AcceleratorNotDisabledException
@@ -2622,6 +2635,7 @@ export const deleteCustomRoutingAccelerator: API.OperationMethod<
     InvalidArgumentException,
     TransactionInProgressException,
   ],
+  operationName: "DeleteCustomRoutingAccelerator",
 }));
 export type DeleteCustomRoutingEndpointGroupError =
   | EndpointGroupNotFoundException
@@ -2644,6 +2658,7 @@ export const deleteCustomRoutingEndpointGroup: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  operationName: "DeleteCustomRoutingEndpointGroup",
 }));
 export type DeleteCustomRoutingListenerError =
   | AssociatedEndpointGroupFoundException
@@ -2668,6 +2683,7 @@ export const deleteCustomRoutingListener: API.OperationMethod<
     InvalidArgumentException,
     ListenerNotFoundException,
   ],
+  operationName: "DeleteCustomRoutingListener",
 }));
 export type DeleteEndpointGroupError =
   | EndpointGroupNotFoundException
@@ -2690,6 +2706,7 @@ export const deleteEndpointGroup: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  operationName: "DeleteEndpointGroup",
 }));
 export type DeleteListenerError =
   | AssociatedEndpointGroupFoundException
@@ -2714,6 +2731,7 @@ export const deleteListener: API.OperationMethod<
     InvalidArgumentException,
     ListenerNotFoundException,
   ],
+  operationName: "DeleteListener",
 }));
 export type DenyCustomRoutingTrafficError =
   | EndpointGroupNotFoundException
@@ -2742,6 +2760,7 @@ export const denyCustomRoutingTraffic: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  operationName: "DenyCustomRoutingTraffic",
 }));
 export type DeprovisionByoipCidrError =
   | AccessDeniedException
@@ -2775,6 +2794,7 @@ export const deprovisionByoipCidr: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  operationName: "DeprovisionByoipCidr",
 }));
 export type DescribeAcceleratorError =
   | AcceleratorNotFoundException
@@ -2797,6 +2817,7 @@ export const describeAccelerator: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  operationName: "DescribeAccelerator",
 }));
 export type DescribeAcceleratorAttributesError =
   | AcceleratorNotFoundException
@@ -2819,6 +2840,7 @@ export const describeAcceleratorAttributes: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  operationName: "DescribeAcceleratorAttributes",
 }));
 export type DescribeCrossAccountAttachmentError =
   | AccessDeniedException
@@ -2843,6 +2865,7 @@ export const describeCrossAccountAttachment: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  operationName: "DescribeCrossAccountAttachment",
 }));
 export type DescribeCustomRoutingAcceleratorError =
   | AcceleratorNotFoundException
@@ -2865,6 +2888,7 @@ export const describeCustomRoutingAccelerator: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  operationName: "DescribeCustomRoutingAccelerator",
 }));
 export type DescribeCustomRoutingAcceleratorAttributesError =
   | AcceleratorNotFoundException
@@ -2887,6 +2911,7 @@ export const describeCustomRoutingAcceleratorAttributes: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  operationName: "DescribeCustomRoutingAcceleratorAttributes",
 }));
 export type DescribeCustomRoutingEndpointGroupError =
   | EndpointGroupNotFoundException
@@ -2909,6 +2934,7 @@ export const describeCustomRoutingEndpointGroup: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  operationName: "DescribeCustomRoutingEndpointGroup",
 }));
 export type DescribeCustomRoutingListenerError =
   | InternalServiceErrorException
@@ -2931,6 +2957,7 @@ export const describeCustomRoutingListener: API.OperationMethod<
     InvalidArgumentException,
     ListenerNotFoundException,
   ],
+  operationName: "DescribeCustomRoutingListener",
 }));
 export type DescribeEndpointGroupError =
   | EndpointGroupNotFoundException
@@ -2953,6 +2980,7 @@ export const describeEndpointGroup: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  operationName: "DescribeEndpointGroup",
 }));
 export type DescribeListenerError =
   | InternalServiceErrorException
@@ -2975,6 +3003,7 @@ export const describeListener: API.OperationMethod<
     InvalidArgumentException,
     ListenerNotFoundException,
   ],
+  operationName: "DescribeListener",
 }));
 export type ListAcceleratorsError =
   | InternalServiceErrorException
@@ -3012,6 +3041,7 @@ export const listAccelerators: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  operationName: "ListAccelerators",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3058,6 +3088,7 @@ export const listByoipCidrs: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  operationName: "ListByoipCidrs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3103,6 +3134,7 @@ export const listCrossAccountAttachments: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  operationName: "ListCrossAccountAttachments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3130,6 +3162,7 @@ export const listCrossAccountResourceAccounts: API.OperationMethod<
   input: ListCrossAccountResourceAccountsRequest,
   output: ListCrossAccountResourceAccountsResponse,
   errors: [AccessDeniedException, InternalServiceErrorException],
+  operationName: "ListCrossAccountResourceAccounts",
 }));
 export type ListCrossAccountResourcesError =
   | AcceleratorNotFoundException
@@ -3171,6 +3204,7 @@ export const listCrossAccountResources: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  operationName: "ListCrossAccountResources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3214,6 +3248,7 @@ export const listCustomRoutingAccelerators: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  operationName: "ListCustomRoutingAccelerators",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3259,6 +3294,7 @@ export const listCustomRoutingEndpointGroups: API.OperationMethod<
     InvalidNextTokenException,
     ListenerNotFoundException,
   ],
+  operationName: "ListCustomRoutingEndpointGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3304,6 +3340,7 @@ export const listCustomRoutingListeners: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  operationName: "ListCustomRoutingListeners",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3361,6 +3398,7 @@ export const listCustomRoutingPortMappings: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  operationName: "ListCustomRoutingPortMappings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3409,6 +3447,7 @@ export const listCustomRoutingPortMappingsByDestination: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  operationName: "ListCustomRoutingPortMappingsByDestination",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3454,6 +3493,7 @@ export const listEndpointGroups: API.OperationMethod<
     InvalidNextTokenException,
     ListenerNotFoundException,
   ],
+  operationName: "ListEndpointGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3499,6 +3539,7 @@ export const listListeners: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  operationName: "ListListeners",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3536,6 +3577,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidArgumentException,
     ListenerNotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ProvisionByoipCidrError =
   | AccessDeniedException
@@ -3568,6 +3610,7 @@ export const provisionByoipCidr: API.OperationMethod<
     InvalidArgumentException,
     LimitExceededException,
   ],
+  operationName: "ProvisionByoipCidr",
 }));
 export type RemoveCustomRoutingEndpointsError =
   | AccessDeniedException
@@ -3596,6 +3639,7 @@ export const removeCustomRoutingEndpoints: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  operationName: "RemoveCustomRoutingEndpoints",
 }));
 export type RemoveEndpointsError =
   | AccessDeniedException
@@ -3635,6 +3679,7 @@ export const removeEndpoints: API.OperationMethod<
     InvalidArgumentException,
     TransactionInProgressException,
   ],
+  operationName: "RemoveEndpoints",
 }));
 export type TagResourceError =
   | AcceleratorNotFoundException
@@ -3660,6 +3705,7 @@ export const tagResource: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AcceleratorNotFoundException
@@ -3686,6 +3732,7 @@ export const untagResource: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAcceleratorError =
   | AcceleratorNotFoundException
@@ -3730,6 +3777,7 @@ export const updateAccelerator: API.OperationMethod<
     InvalidArgumentException,
     TransactionInProgressException,
   ],
+  operationName: "UpdateAccelerator",
 }));
 export type UpdateAcceleratorAttributesError =
   | AcceleratorNotFoundException
@@ -3756,6 +3804,7 @@ export const updateAcceleratorAttributes: API.OperationMethod<
     InvalidArgumentException,
     TransactionInProgressException,
   ],
+  operationName: "UpdateAcceleratorAttributes",
 }));
 export type UpdateCrossAccountAttachmentError =
   | AccessDeniedException
@@ -3790,6 +3839,7 @@ export const updateCrossAccountAttachment: API.OperationMethod<
     LimitExceededException,
     TransactionInProgressException,
   ],
+  operationName: "UpdateCrossAccountAttachment",
 }));
 export type UpdateCustomRoutingAcceleratorError =
   | AcceleratorNotFoundException
@@ -3816,6 +3866,7 @@ export const updateCustomRoutingAccelerator: API.OperationMethod<
     InvalidArgumentException,
     TransactionInProgressException,
   ],
+  operationName: "UpdateCustomRoutingAccelerator",
 }));
 export type UpdateCustomRoutingAcceleratorAttributesError =
   | AcceleratorNotFoundException
@@ -3842,6 +3893,7 @@ export const updateCustomRoutingAcceleratorAttributes: API.OperationMethod<
     InvalidArgumentException,
     TransactionInProgressException,
   ],
+  operationName: "UpdateCustomRoutingAcceleratorAttributes",
 }));
 export type UpdateCustomRoutingListenerError =
   | InternalServiceErrorException
@@ -3868,6 +3920,7 @@ export const updateCustomRoutingListener: API.OperationMethod<
     LimitExceededException,
     ListenerNotFoundException,
   ],
+  operationName: "UpdateCustomRoutingListener",
 }));
 export type UpdateEndpointGroupError =
   | AccessDeniedException
@@ -3894,6 +3947,7 @@ export const updateEndpointGroup: API.OperationMethod<
     InvalidArgumentException,
     LimitExceededException,
   ],
+  operationName: "UpdateEndpointGroup",
 }));
 export type UpdateListenerError =
   | InternalServiceErrorException
@@ -3920,6 +3974,7 @@ export const updateListener: API.OperationMethod<
     LimitExceededException,
     ListenerNotFoundException,
   ],
+  operationName: "UpdateListener",
 }));
 export type WithdrawByoipCidrError =
   | AccessDeniedException
@@ -3954,4 +4009,5 @@ export const withdrawByoipCidr: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  operationName: "WithdrawByoipCidr",
 }));

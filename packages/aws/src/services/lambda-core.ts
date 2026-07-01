@@ -531,6 +531,7 @@ export const createNetworkConnector: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "CreateNetworkConnector",
 }));
 export type GetNetworkConnectorError =
   | InvalidParameterValueException
@@ -557,6 +558,7 @@ export const getNetworkConnector: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "GetNetworkConnector",
 }));
 export type UpdateNetworkConnectorError =
   | InvalidParameterValueException
@@ -585,6 +587,7 @@ export const updateNetworkConnector: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateNetworkConnector",
 }));
 export type DeleteNetworkConnectorError =
   | InvalidParameterValueException
@@ -613,6 +616,7 @@ export const deleteNetworkConnector: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteNetworkConnector",
 }));
 export type ListNetworkConnectorsError =
   | InvalidParameterValueException
@@ -652,6 +656,7 @@ export const listNetworkConnectors: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  operationName: "ListNetworkConnectors",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",

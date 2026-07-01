@@ -2289,6 +2289,7 @@ export const createCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateCampaign",
 }));
 export type DeleteCampaignError =
   | AccessDeniedException
@@ -2313,6 +2314,7 @@ export const deleteCampaign: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteCampaign",
 }));
 export type DeleteCampaignChannelSubtypeConfigError =
   | AccessDeniedException
@@ -2339,6 +2341,7 @@ export const deleteCampaignChannelSubtypeConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteCampaignChannelSubtypeConfig",
 }));
 export type DeleteCampaignCommunicationLimitsError =
   | AccessDeniedException
@@ -2367,6 +2370,7 @@ export const deleteCampaignCommunicationLimits: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteCampaignCommunicationLimits",
 }));
 export type DeleteCampaignCommunicationTimeError =
   | AccessDeniedException
@@ -2395,6 +2399,7 @@ export const deleteCampaignCommunicationTime: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteCampaignCommunicationTime",
 }));
 export type DeleteCampaignEntryLimitsError =
   | AccessDeniedException
@@ -2423,6 +2428,7 @@ export const deleteCampaignEntryLimits: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteCampaignEntryLimits",
 }));
 export type DeleteConnectInstanceConfigError =
   | AccessDeniedException
@@ -2451,6 +2457,7 @@ export const deleteConnectInstanceConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteConnectInstanceConfig",
 }));
 export type DeleteConnectInstanceIntegrationError =
   | AccessDeniedException
@@ -2477,6 +2484,7 @@ export const deleteConnectInstanceIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteConnectInstanceIntegration",
 }));
 export type DeleteInstanceOnboardingJobError =
   | AccessDeniedException
@@ -2503,6 +2511,7 @@ export const deleteInstanceOnboardingJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteInstanceOnboardingJob",
 }));
 export type DescribeCampaignError =
   | AccessDeniedException
@@ -2527,6 +2536,7 @@ export const describeCampaign: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeCampaign",
 }));
 export type GetCampaignStateError =
   | AccessDeniedException
@@ -2553,6 +2563,7 @@ export const getCampaignState: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCampaignState",
 }));
 export type GetCampaignStateBatchError =
   | AccessDeniedException
@@ -2577,6 +2588,7 @@ export const getCampaignStateBatch: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCampaignStateBatch",
 }));
 export type GetConnectInstanceConfigError =
   | AccessDeniedException
@@ -2601,6 +2613,7 @@ export const getConnectInstanceConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetConnectInstanceConfig",
 }));
 export type GetInstanceCommunicationLimitsError =
   | AccessDeniedException
@@ -2625,6 +2638,7 @@ export const getInstanceCommunicationLimits: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetInstanceCommunicationLimits",
 }));
 export type GetInstanceOnboardingJobStatusError =
   | AccessDeniedException
@@ -2649,6 +2663,7 @@ export const getInstanceOnboardingJobStatus: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetInstanceOnboardingJobStatus",
 }));
 export type ListCampaignsError =
   | AccessDeniedException
@@ -2682,6 +2697,7 @@ export const listCampaigns: API.OperationMethod<
   input: ListCampaignsRequest,
   output: ListCampaignsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListCampaigns",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2729,6 +2745,7 @@ export const listConnectInstanceIntegrations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListConnectInstanceIntegrations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2761,6 +2778,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PauseCampaignError =
   | AccessDeniedException
@@ -2791,6 +2809,7 @@ export const pauseCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PauseCampaign",
 }));
 export type PutConnectInstanceIntegrationError =
   | AccessDeniedException
@@ -2819,6 +2838,7 @@ export const putConnectInstanceIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutConnectInstanceIntegration",
 }));
 export type PutInstanceCommunicationLimitsError =
   | AccessDeniedException
@@ -2845,6 +2865,7 @@ export const putInstanceCommunicationLimits: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "PutInstanceCommunicationLimits",
 }));
 export type PutOutboundRequestBatchError =
   | AccessDeniedException
@@ -2875,6 +2896,7 @@ export const putOutboundRequestBatch: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutOutboundRequestBatch",
 }));
 export type PutProfileOutboundRequestBatchError =
   | AccessDeniedException
@@ -2905,6 +2927,7 @@ export const putProfileOutboundRequestBatch: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutProfileOutboundRequestBatch",
 }));
 export type ResumeCampaignError =
   | AccessDeniedException
@@ -2935,6 +2958,7 @@ export const resumeCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ResumeCampaign",
 }));
 export type StartCampaignError =
   | AccessDeniedException
@@ -2965,6 +2989,7 @@ export const startCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartCampaign",
 }));
 export type StartInstanceOnboardingJobError =
   | AccessDeniedException
@@ -2993,6 +3018,7 @@ export const startInstanceOnboardingJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartInstanceOnboardingJob",
 }));
 export type StopCampaignError =
   | AccessDeniedException
@@ -3023,6 +3049,7 @@ export const stopCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopCampaign",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -3049,6 +3076,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -3075,6 +3103,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateCampaignChannelSubtypeConfigError =
   | AccessDeniedException
@@ -3101,6 +3130,7 @@ export const updateCampaignChannelSubtypeConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateCampaignChannelSubtypeConfig",
 }));
 export type UpdateCampaignCommunicationLimitsError =
   | AccessDeniedException
@@ -3129,6 +3159,7 @@ export const updateCampaignCommunicationLimits: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateCampaignCommunicationLimits",
 }));
 export type UpdateCampaignCommunicationTimeError =
   | AccessDeniedException
@@ -3157,6 +3188,7 @@ export const updateCampaignCommunicationTime: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateCampaignCommunicationTime",
 }));
 export type UpdateCampaignEntryLimitsError =
   | AccessDeniedException
@@ -3185,6 +3217,7 @@ export const updateCampaignEntryLimits: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateCampaignEntryLimits",
 }));
 export type UpdateCampaignFlowAssociationError =
   | AccessDeniedException
@@ -3213,6 +3246,7 @@ export const updateCampaignFlowAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateCampaignFlowAssociation",
 }));
 export type UpdateCampaignNameError =
   | AccessDeniedException
@@ -3239,6 +3273,7 @@ export const updateCampaignName: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateCampaignName",
 }));
 export type UpdateCampaignScheduleError =
   | AccessDeniedException
@@ -3267,6 +3302,7 @@ export const updateCampaignSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateCampaignSchedule",
 }));
 export type UpdateCampaignSourceError =
   | AccessDeniedException
@@ -3295,4 +3331,5 @@ export const updateCampaignSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateCampaignSource",
 }));

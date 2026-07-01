@@ -632,6 +632,7 @@ export const createEnvironmentEC2: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateEnvironmentEC2",
 }));
 export type CreateEnvironmentMembershipError =
   | BadRequestException
@@ -666,6 +667,7 @@ export const createEnvironmentMembership: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateEnvironmentMembership",
 }));
 export type DeleteEnvironmentError =
   | BadRequestException
@@ -701,6 +703,7 @@ export const deleteEnvironment: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteEnvironment",
 }));
 export type DeleteEnvironmentMembershipError =
   | BadRequestException
@@ -735,6 +738,7 @@ export const deleteEnvironmentMembership: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteEnvironmentMembership",
 }));
 export type DescribeEnvironmentMembershipsError =
   | BadRequestException
@@ -784,6 +788,7 @@ export const describeEnvironmentMemberships: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeEnvironmentMemberships",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -823,6 +828,7 @@ export const describeEnvironments: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeEnvironments",
 }));
 export type DescribeEnvironmentStatusError =
   | BadRequestException
@@ -857,6 +863,7 @@ export const describeEnvironmentStatus: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeEnvironmentStatus",
 }));
 export type ListEnvironmentsError =
   | BadRequestException
@@ -910,6 +917,7 @@ export const listEnvironments: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListEnvironments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -941,6 +949,7 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -972,6 +981,7 @@ export const tagResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -1000,6 +1010,7 @@ export const untagResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateEnvironmentError =
   | BadRequestException
@@ -1034,6 +1045,7 @@ export const updateEnvironment: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateEnvironment",
 }));
 export type UpdateEnvironmentMembershipError =
   | BadRequestException
@@ -1069,4 +1081,5 @@ export const updateEnvironmentMembership: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateEnvironmentMembership",
 }));

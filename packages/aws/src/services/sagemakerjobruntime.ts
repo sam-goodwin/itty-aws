@@ -278,6 +278,7 @@ export const completeRollout: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CompleteRollout",
 }));
 export type SampleError =
   | AccessDeniedException
@@ -308,6 +309,7 @@ export const sample: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "Sample",
 }));
 export type SampleWithResponseStreamError =
   | AccessDeniedException
@@ -338,6 +340,7 @@ export const sampleWithResponseStream: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SampleWithResponseStream",
 }));
 export type UpdateRewardError =
   | AccessDeniedException
@@ -370,4 +373,5 @@ export const updateReward: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateReward",
 }));

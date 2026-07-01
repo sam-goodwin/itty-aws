@@ -918,6 +918,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | ConflictException
@@ -944,6 +945,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ConflictException
@@ -970,6 +972,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateScheduleError =
   | ConflictException
@@ -998,6 +1001,7 @@ export const createSchedule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateSchedule",
 }));
 export type GetScheduleError =
   | InternalServerException
@@ -1022,6 +1026,7 @@ export const getSchedule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSchedule",
 }));
 export type UpdateScheduleError =
   | ConflictException
@@ -1053,6 +1058,7 @@ export const updateSchedule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateSchedule",
 }));
 export type DeleteScheduleError =
   | ConflictException
@@ -1079,6 +1085,7 @@ export const deleteSchedule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteSchedule",
 }));
 export type ListSchedulesError =
   | InternalServerException
@@ -1118,6 +1125,7 @@ export const listSchedules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSchedules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1150,6 +1158,7 @@ export const createScheduleGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateScheduleGroup",
 }));
 export type GetScheduleGroupError =
   | InternalServerException
@@ -1174,6 +1183,7 @@ export const getScheduleGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetScheduleGroup",
 }));
 export type DeleteScheduleGroupError =
   | ConflictException
@@ -1205,6 +1215,7 @@ export const deleteScheduleGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteScheduleGroup",
 }));
 export type ListScheduleGroupsError =
   | InternalServerException
@@ -1238,6 +1249,7 @@ export const listScheduleGroups: API.OperationMethod<
   input: ListScheduleGroupsInput,
   output: ListScheduleGroupsOutput,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  operationName: "ListScheduleGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

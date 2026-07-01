@@ -1322,6 +1322,7 @@ export const getVersions: API.OperationMethod<
   input: GetVersionsRequest,
   output: GetVersionsResponse,
   errors: [InternalServerException, ThrottlingException],
+  operationName: "GetVersions",
 }));
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1336,6 +1337,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | ResourceNotFoundException
@@ -1360,6 +1362,7 @@ export const tagResource: API.OperationMethod<
     TagPolicyException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ResourceNotFoundException
@@ -1377,6 +1380,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, TagPolicyException],
+  operationName: "UntagResource",
 }));
 export type CreateEnvironmentError = ValidationException | CommonErrors;
 /**
@@ -1399,6 +1403,7 @@ export const createEnvironment: API.OperationMethod<
   input: CreateEnvironmentRequest,
   output: CreateEnvironmentResponse,
   errors: [ValidationException],
+  operationName: "CreateEnvironment",
 }));
 export type GetEnvironmentError =
   | ResourceNotFoundException
@@ -1416,6 +1421,7 @@ export const getEnvironment: API.OperationMethod<
   input: GetEnvironmentRequest,
   output: GetEnvironmentResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetEnvironment",
 }));
 export type DeleteEnvironmentError =
   | ResourceNotFoundException
@@ -1437,6 +1443,7 @@ export const deleteEnvironment: API.OperationMethod<
   input: DeleteEnvironmentRequest,
   output: DeleteEnvironmentResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "DeleteEnvironment",
 }));
 export type ListEnvironmentsError = ValidationException | CommonErrors;
 /**
@@ -1466,6 +1473,7 @@ export const listEnvironments: API.OperationMethod<
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResponse,
   errors: [ValidationException],
+  operationName: "ListEnvironments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1490,6 +1498,7 @@ export const associateEipToVlan: API.OperationMethod<
   input: AssociateEipToVlanRequest,
   output: AssociateEipToVlanResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  operationName: "AssociateEipToVlan",
 }));
 export type CreateEntitlementError =
   | ResourceNotFoundException
@@ -1508,6 +1517,7 @@ export const createEntitlement: API.OperationMethod<
   input: CreateEntitlementRequest,
   output: CreateEntitlementResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  operationName: "CreateEntitlement",
 }));
 export type CreateEnvironmentConnectorError =
   | ResourceNotFoundException
@@ -1530,6 +1540,7 @@ export const createEnvironmentConnector: API.OperationMethod<
   input: CreateEnvironmentConnectorRequest,
   output: CreateEnvironmentConnectorResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  operationName: "CreateEnvironmentConnector",
 }));
 export type CreateEnvironmentHostError =
   | ThrottlingException
@@ -1557,6 +1568,7 @@ export const createEnvironmentHost: API.OperationMethod<
   input: CreateEnvironmentHostRequest,
   output: CreateEnvironmentHostResponse,
   errors: [ThrottlingException, ValidationException],
+  operationName: "CreateEnvironmentHost",
 }));
 export type DeleteEntitlementError =
   | ResourceNotFoundException
@@ -1575,6 +1587,7 @@ export const deleteEntitlement: API.OperationMethod<
   input: DeleteEntitlementRequest,
   output: DeleteEntitlementResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  operationName: "DeleteEntitlement",
 }));
 export type DeleteEnvironmentConnectorError =
   | ResourceNotFoundException
@@ -1595,6 +1608,7 @@ export const deleteEnvironmentConnector: API.OperationMethod<
   input: DeleteEnvironmentConnectorRequest,
   output: DeleteEnvironmentConnectorResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  operationName: "DeleteEnvironmentConnector",
 }));
 export type DeleteEnvironmentHostError =
   | ResourceNotFoundException
@@ -1614,6 +1628,7 @@ export const deleteEnvironmentHost: API.OperationMethod<
   input: DeleteEnvironmentHostRequest,
   output: DeleteEnvironmentHostResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "DeleteEnvironmentHost",
 }));
 export type DisassociateEipFromVlanError =
   | ResourceNotFoundException
@@ -1632,6 +1647,7 @@ export const disassociateEipFromVlan: API.OperationMethod<
   input: DisassociateEipFromVlanRequest,
   output: DisassociateEipFromVlanResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  operationName: "DisassociateEipFromVlan",
 }));
 export type GetDepotUrlError =
   | ResourceNotFoundException
@@ -1652,6 +1668,7 @@ export const getDepotUrl: API.OperationMethod<
   input: GetDepotUrlRequest,
   output: GetDepotUrlResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  operationName: "GetDepotUrl",
 }));
 export type ListEnvironmentConnectorsError =
   | ResourceNotFoundException
@@ -1684,6 +1701,7 @@ export const listEnvironmentConnectors: API.OperationMethod<
   input: ListEnvironmentConnectorsRequest,
   output: ListEnvironmentConnectorsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListEnvironmentConnectors",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1722,6 +1740,7 @@ export const listEnvironmentHosts: API.OperationMethod<
   input: ListEnvironmentHostsRequest,
   output: ListEnvironmentHostsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListEnvironmentHosts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1760,6 +1779,7 @@ export const listEnvironmentVlans: API.OperationMethod<
   input: ListEnvironmentVlansRequest,
   output: ListEnvironmentVlansResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListEnvironmentVlans",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1798,6 +1818,7 @@ export const listVmEntitlements: API.OperationMethod<
   input: ListVmEntitlementsRequest,
   output: ListVmEntitlementsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListVmEntitlements",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1824,4 +1845,5 @@ export const updateEnvironmentConnector: API.OperationMethod<
   input: UpdateEnvironmentConnectorRequest,
   output: UpdateEnvironmentConnectorResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  operationName: "UpdateEnvironmentConnector",
 }));

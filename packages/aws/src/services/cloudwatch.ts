@@ -3362,6 +3362,7 @@ export const associateDatasetKmsKey: API.OperationMethod<
     KmsKeyNotFoundException,
     ResourceNotFoundException,
   ],
+  operationName: "AssociateDatasetKmsKey",
 }));
 export type DeleteAlarmMuteRuleError = CommonErrors;
 /**
@@ -3388,6 +3389,7 @@ export const deleteAlarmMuteRule: API.OperationMethod<
   input: DeleteAlarmMuteRuleInput,
   output: DeleteAlarmMuteRuleResponse,
   errors: [],
+  operationName: "DeleteAlarmMuteRule",
 }));
 export type DeleteAlarmsError =
   | ResourceConflict
@@ -3426,6 +3428,7 @@ export const deleteAlarms: API.OperationMethod<
   input: DeleteAlarmsInput,
   output: DeleteAlarmsResponse,
   errors: [ResourceConflict, ResourceNotFound],
+  operationName: "DeleteAlarms",
 }));
 export type DeleteAnomalyDetectorError =
   | InternalServiceFault
@@ -3454,6 +3457,7 @@ export const deleteAnomalyDetector: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteAnomalyDetector",
 }));
 export type DeleteDashboardsError =
   | ConflictException
@@ -3478,6 +3482,7 @@ export const deleteDashboards: API.OperationMethod<
     InternalServiceFault,
     InvalidParameterValueException,
   ],
+  operationName: "DeleteDashboards",
 }));
 export type DeleteInsightRulesError =
   | InvalidParameterValueException
@@ -3498,6 +3503,7 @@ export const deleteInsightRules: API.OperationMethod<
   input: DeleteInsightRulesInput,
   output: DeleteInsightRulesOutput,
   errors: [InvalidParameterValueException, MissingRequiredParameterException],
+  operationName: "DeleteInsightRules",
 }));
 export type DeleteMetricStreamError =
   | InternalServiceFault
@@ -3520,6 +3526,7 @@ export const deleteMetricStream: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  operationName: "DeleteMetricStream",
 }));
 export type DescribeAlarmContributorsError =
   | InvalidNextToken
@@ -3539,6 +3546,7 @@ export const describeAlarmContributors: API.OperationMethod<
   input: DescribeAlarmContributorsInput,
   output: DescribeAlarmContributorsOutput,
   errors: [InvalidNextToken, ResourceNotFoundException],
+  operationName: "DescribeAlarmContributors",
 }));
 export type DescribeAlarmHistoryError = InvalidNextToken | CommonErrors;
 /**
@@ -3577,6 +3585,7 @@ export const describeAlarmHistory: API.OperationMethod<
   input: DescribeAlarmHistoryInput,
   output: DescribeAlarmHistoryOutput,
   errors: [InvalidNextToken],
+  operationName: "DescribeAlarmHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3618,6 +3627,7 @@ export const describeAlarms: API.OperationMethod<
   input: DescribeAlarmsInput,
   output: DescribeAlarmsOutput,
   errors: [InvalidNextToken],
+  operationName: "DescribeAlarms",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3642,6 +3652,7 @@ export const describeAlarmsForMetric: API.OperationMethod<
   input: DescribeAlarmsForMetricInput,
   output: DescribeAlarmsForMetricOutput,
   errors: [],
+  operationName: "DescribeAlarmsForMetric",
 }));
 export type DescribeAnomalyDetectorsError =
   | InternalServiceFault
@@ -3686,6 +3697,7 @@ export const describeAnomalyDetectors: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  operationName: "DescribeAnomalyDetectors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3724,6 +3736,7 @@ export const describeInsightRules: API.OperationMethod<
   input: DescribeInsightRulesInput,
   output: DescribeInsightRulesOutput,
   errors: [InvalidNextToken],
+  operationName: "DescribeInsightRules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3744,6 +3757,7 @@ export const disableAlarmActions: API.OperationMethod<
   input: DisableAlarmActionsInput,
   output: DisableAlarmActionsResponse,
   errors: [],
+  operationName: "DisableAlarmActions",
 }));
 export type DisableInsightRulesError =
   | InvalidParameterValueException
@@ -3762,6 +3776,7 @@ export const disableInsightRules: API.OperationMethod<
   input: DisableInsightRulesInput,
   output: DisableInsightRulesOutput,
   errors: [InvalidParameterValueException, MissingRequiredParameterException],
+  operationName: "DisableInsightRules",
 }));
 export type DisassociateDatasetKmsKeyError =
   | ConflictException
@@ -3806,6 +3821,7 @@ export const disassociateDatasetKmsKey: API.OperationMethod<
   input: DisassociateDatasetKmsKeyInput,
   output: DisassociateDatasetKmsKeyOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  operationName: "DisassociateDatasetKmsKey",
 }));
 export type EnableAlarmActionsError = CommonErrors;
 /**
@@ -3820,6 +3836,7 @@ export const enableAlarmActions: API.OperationMethod<
   input: EnableAlarmActionsInput,
   output: EnableAlarmActionsResponse,
   errors: [],
+  operationName: "EnableAlarmActions",
 }));
 export type EnableInsightRulesError =
   | InvalidParameterValueException
@@ -3843,6 +3860,7 @@ export const enableInsightRules: API.OperationMethod<
     LimitExceededException,
     MissingRequiredParameterException,
   ],
+  operationName: "EnableInsightRules",
 }));
 export type GetAlarmMuteRuleError = ResourceNotFoundException | CommonErrors;
 /**
@@ -3877,6 +3895,7 @@ export const getAlarmMuteRule: API.OperationMethod<
   input: GetAlarmMuteRuleInput,
   output: GetAlarmMuteRuleOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetAlarmMuteRule",
 }));
 export type GetDashboardError =
   | DashboardNotFoundError
@@ -3903,6 +3922,7 @@ export const getDashboard: API.OperationMethod<
     InternalServiceFault,
     InvalidParameterValueException,
   ],
+  operationName: "GetDashboard",
 }));
 export type GetDatasetError = ResourceNotFoundException | CommonErrors;
 /**
@@ -3929,6 +3949,7 @@ export const getDataset: API.OperationMethod<
   input: GetDatasetInput,
   output: GetDatasetOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetDataset",
 }));
 export type GetInsightRuleReportError =
   | InvalidParameterValueException
@@ -3982,6 +4003,7 @@ export const getInsightRuleReport: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "GetInsightRuleReport",
 }));
 export type GetMetricDataError = InvalidNextToken | CommonErrors;
 /**
@@ -4074,6 +4096,7 @@ export const getMetricData: API.OperationMethod<
   input: GetMetricDataInput,
   output: GetMetricDataOutput,
   errors: [InvalidNextToken],
+  operationName: "GetMetricData",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4157,6 +4180,7 @@ export const getMetricStatistics: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  operationName: "GetMetricStatistics",
 }));
 export type GetMetricStreamError =
   | InternalServiceFault
@@ -4183,6 +4207,7 @@ export const getMetricStream: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "GetMetricStream",
 }));
 export type GetMetricWidgetImageError = CommonErrors;
 /**
@@ -4211,6 +4236,7 @@ export const getMetricWidgetImage: API.OperationMethod<
   input: GetMetricWidgetImageInput,
   output: GetMetricWidgetImageOutput,
   errors: [],
+  operationName: "GetMetricWidgetImage",
 }));
 export type GetOTelEnrichmentError = CommonErrors;
 /**
@@ -4227,6 +4253,7 @@ export const getOTelEnrichment: API.OperationMethod<
   input: GetOTelEnrichmentInput,
   output: GetOTelEnrichmentOutput,
   errors: [],
+  operationName: "GetOTelEnrichment",
 }));
 export type ListAlarmMuteRulesError =
   | InvalidNextToken
@@ -4271,6 +4298,7 @@ export const listAlarmMuteRules: API.OperationMethod<
   input: ListAlarmMuteRulesInput,
   output: ListAlarmMuteRulesOutput,
   errors: [InvalidNextToken, ResourceNotFoundException],
+  operationName: "ListAlarmMuteRules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4316,6 +4344,7 @@ export const listDashboards: API.OperationMethod<
   input: ListDashboardsInput,
   output: ListDashboardsOutput,
   errors: [InternalServiceFault, InvalidParameterValueException],
+  operationName: "ListDashboards",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4359,6 +4388,7 @@ export const listManagedInsightRules: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  operationName: "ListManagedInsightRules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4409,6 +4439,7 @@ export const listMetrics: API.OperationMethod<
   input: ListMetricsInput,
   output: ListMetricsOutput,
   errors: [InternalServiceFault, InvalidParameterValueException],
+  operationName: "ListMetrics",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
 export type ListMetricStreamsError =
@@ -4449,6 +4480,7 @@ export const listMetricStreams: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  operationName: "ListMetricStreams",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4477,6 +4509,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidParameterValueException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutAlarmMuteRuleError = LimitExceededFault | CommonErrors;
 /**
@@ -4523,6 +4556,7 @@ export const putAlarmMuteRule: API.OperationMethod<
   input: PutAlarmMuteRuleInput,
   output: PutAlarmMuteRuleResponse,
   errors: [LimitExceededFault],
+  operationName: "PutAlarmMuteRule",
 }));
 export type PutAnomalyDetectorError =
   | InternalServiceFault
@@ -4557,6 +4591,7 @@ export const putAnomalyDetector: API.OperationMethod<
     LimitExceededException,
     MissingRequiredParameterException,
   ],
+  operationName: "PutAnomalyDetector",
 }));
 export type PutCompositeAlarmError = LimitExceededFault | CommonErrors;
 /**
@@ -4626,6 +4661,7 @@ export const putCompositeAlarm: API.OperationMethod<
   input: PutCompositeAlarmInput,
   output: PutCompositeAlarmResponse,
   errors: [LimitExceededFault],
+  operationName: "PutCompositeAlarm",
 }));
 export type PutDashboardError =
   | ConflictException
@@ -4662,6 +4698,7 @@ export const putDashboard: API.OperationMethod<
   input: PutDashboardInput,
   output: PutDashboardOutput,
   errors: [ConflictException, DashboardInvalidInputError, InternalServiceFault],
+  operationName: "PutDashboard",
 }));
 export type PutInsightRuleError =
   | InvalidParameterValueException
@@ -4690,6 +4727,7 @@ export const putInsightRule: API.OperationMethod<
     LimitExceededException,
     MissingRequiredParameterException,
   ],
+  operationName: "PutInsightRule",
 }));
 export type PutLogAlarmError =
   | LimitExceededFault
@@ -4717,6 +4755,7 @@ export const putLogAlarm: API.OperationMethod<
   input: PutLogAlarmInput,
   output: PutLogAlarmResponse,
   errors: [LimitExceededFault, ResourceConflict],
+  operationName: "PutLogAlarm",
 }));
 export type PutManagedInsightRulesError =
   | InvalidParameterValueException
@@ -4741,6 +4780,7 @@ export const putManagedInsightRules: API.OperationMethod<
   input: PutManagedInsightRulesInput,
   output: PutManagedInsightRulesOutput,
   errors: [InvalidParameterValueException, MissingRequiredParameterException],
+  operationName: "PutManagedInsightRules",
 }));
 export type PutMetricAlarmError = LimitExceededFault | CommonErrors;
 /**
@@ -4803,6 +4843,7 @@ export const putMetricAlarm: API.OperationMethod<
   input: PutMetricAlarmInput,
   output: PutMetricAlarmResponse,
   errors: [LimitExceededFault],
+  operationName: "PutMetricAlarm",
 }));
 export type PutMetricDataError =
   | InternalServiceFault
@@ -4879,6 +4920,7 @@ export const putMetricData: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  operationName: "PutMetricData",
 }));
 export type PutMetricStreamError =
   | ConcurrentModificationException
@@ -4939,6 +4981,7 @@ export const putMetricStream: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  operationName: "PutMetricStream",
 }));
 export type SetAlarmStateError =
   | InvalidFormatFault
@@ -4974,6 +5017,7 @@ export const setAlarmState: API.OperationMethod<
   input: SetAlarmStateInput,
   output: SetAlarmStateResponse,
   errors: [InvalidFormatFault, ResourceNotFound],
+  operationName: "SetAlarmState",
 }));
 export type StartMetricStreamsError =
   | InternalServiceFault
@@ -4996,6 +5040,7 @@ export const startMetricStreams: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  operationName: "StartMetricStreams",
 }));
 export type StartOTelEnrichmentError = CommonErrors;
 /**
@@ -5017,6 +5062,7 @@ export const startOTelEnrichment: API.OperationMethod<
   input: StartOTelEnrichmentInput,
   output: StartOTelEnrichmentOutput,
   errors: [],
+  operationName: "StartOTelEnrichment",
 }));
 export type StopMetricStreamsError =
   | InternalServiceFault
@@ -5039,6 +5085,7 @@ export const stopMetricStreams: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  operationName: "StopMetricStreams",
 }));
 export type StopOTelEnrichmentError = CommonErrors;
 /**
@@ -5055,6 +5102,7 @@ export const stopOTelEnrichment: API.OperationMethod<
   input: StopOTelEnrichmentInput,
   output: StopOTelEnrichmentOutput,
   errors: [],
+  operationName: "StopOTelEnrichment",
 }));
 export type TagResourceError =
   | ConcurrentModificationException
@@ -5098,6 +5146,7 @@ export const tagResource: API.OperationMethod<
     InvalidParameterValueException,
     ResourceNotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ConcurrentModificationException
@@ -5125,4 +5174,5 @@ export const untagResource: API.OperationMethod<
     InvalidParameterValueException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagResource",
 }));

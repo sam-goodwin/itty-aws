@@ -1487,6 +1487,7 @@ export const copyImageSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CopyImageSet",
 }));
 export type DeleteImageSetError =
   | AccessDeniedException
@@ -1515,6 +1516,7 @@ export const deleteImageSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteImageSet",
 }));
 export type GetDICOMImportJobError =
   | AccessDeniedException
@@ -1545,6 +1547,7 @@ export const getDICOMImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDICOMImportJob",
 }));
 export type GetImageFrameError =
   | AccessDeniedException
@@ -1577,6 +1580,7 @@ export const getImageFrame: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetImageFrame",
 }));
 export type GetImageSetError =
   | AccessDeniedException
@@ -1605,6 +1609,7 @@ export const getImageSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetImageSet",
 }));
 export type GetImageSetMetadataError =
   | AccessDeniedException
@@ -1633,6 +1638,7 @@ export const getImageSetMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetImageSetMetadata",
 }));
 export type ListDICOMImportJobsError =
   | AccessDeniedException
@@ -1676,6 +1682,7 @@ export const listDICOMImportJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDICOMImportJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1725,6 +1732,7 @@ export const listImageSetVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListImageSetVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1757,6 +1765,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type SearchImageSetsError =
   | AccessDeniedException
@@ -1804,6 +1813,7 @@ export const searchImageSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchImageSets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1840,6 +1850,7 @@ export const startDICOMImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartDICOMImportJob",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1866,6 +1877,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1892,6 +1904,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateImageSetMetadataError =
   | AccessDeniedException
@@ -1922,6 +1935,7 @@ export const updateImageSetMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateImageSetMetadata",
 }));
 export type CreateDatastoreError =
   | AccessDeniedException
@@ -1952,6 +1966,7 @@ export const createDatastore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDatastore",
 }));
 export type GetDatastoreError =
   | AccessDeniedException
@@ -1978,6 +1993,7 @@ export const getDatastore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDatastore",
 }));
 export type DeleteDatastoreError =
   | AccessDeniedException
@@ -2008,6 +2024,7 @@ export const deleteDatastore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDatastore",
 }));
 export type ListDatastoresError =
   | AccessDeniedException
@@ -2047,6 +2064,7 @@ export const listDatastores: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDatastores",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

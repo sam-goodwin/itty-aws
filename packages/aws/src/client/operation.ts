@@ -17,6 +17,15 @@ export interface Operation<
   input: Input;
   output: Output;
   errors: Error[];
+  /**
+   * The Smithy operation name (e.g. "DescribeAutoScalingGroups"). Used as the
+   * wire `Action` / `X-Amz-Target` operation. When absent, protocols fall back
+   * to deriving it from the input schema identifier by stripping a
+   * Request/Input/Message suffix — which is wrong for services whose input
+   * shapes are not named after the operation (e.g. AutoScaling's
+   * `AutoScalingGroupNamesType`).
+   */
+  operationName?: string;
   /** Pagination metadata for paginated operations */
   pagination?: PaginatedTrait;
 }

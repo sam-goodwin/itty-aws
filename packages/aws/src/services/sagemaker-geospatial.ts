@@ -1790,6 +1790,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1816,6 +1817,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1842,6 +1844,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type StartEarthObservationJobError =
   | AccessDeniedException
@@ -1872,6 +1875,7 @@ export const startEarthObservationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartEarthObservationJob",
 }));
 export type GetEarthObservationJobError =
   | AccessDeniedException
@@ -1898,6 +1902,7 @@ export const getEarthObservationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEarthObservationJob",
 }));
 export type DeleteEarthObservationJobError =
   | AccessDeniedException
@@ -1926,6 +1931,7 @@ export const deleteEarthObservationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteEarthObservationJob",
 }));
 export type ListEarthObservationJobsError =
   | AccessDeniedException
@@ -1967,6 +1973,7 @@ export const listEarthObservationJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEarthObservationJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2002,6 +2009,7 @@ export const exportEarthObservationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ExportEarthObservationJob",
 }));
 export type GetTileError =
   | AccessDeniedException
@@ -2028,6 +2036,7 @@ export const getTile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTile",
 }));
 export type StopEarthObservationJobError =
   | AccessDeniedException
@@ -2056,6 +2065,7 @@ export const stopEarthObservationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopEarthObservationJob",
 }));
 export type GetRasterDataCollectionError =
   | AccessDeniedException
@@ -2082,6 +2092,7 @@ export const getRasterDataCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRasterDataCollection",
 }));
 export type ListRasterDataCollectionsError =
   | AccessDeniedException
@@ -2123,6 +2134,7 @@ export const listRasterDataCollections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRasterDataCollections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2169,6 +2181,7 @@ export const searchRasterDataCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchRasterDataCollection",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
 export type StartVectorEnrichmentJobError =
@@ -2200,6 +2213,7 @@ export const startVectorEnrichmentJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartVectorEnrichmentJob",
 }));
 export type GetVectorEnrichmentJobError =
   | AccessDeniedException
@@ -2226,6 +2240,7 @@ export const getVectorEnrichmentJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetVectorEnrichmentJob",
 }));
 export type DeleteVectorEnrichmentJobError =
   | AccessDeniedException
@@ -2254,6 +2269,7 @@ export const deleteVectorEnrichmentJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteVectorEnrichmentJob",
 }));
 export type ListVectorEnrichmentJobsError =
   | AccessDeniedException
@@ -2295,6 +2311,7 @@ export const listVectorEnrichmentJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListVectorEnrichmentJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2330,6 +2347,7 @@ export const exportVectorEnrichmentJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ExportVectorEnrichmentJob",
 }));
 export type StopVectorEnrichmentJobError =
   | AccessDeniedException
@@ -2358,4 +2376,5 @@ export const stopVectorEnrichmentJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopVectorEnrichmentJob",
 }));

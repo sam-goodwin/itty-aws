@@ -2553,6 +2553,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | ResourceNotFoundException
@@ -2570,6 +2571,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, TooManyTagsException],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -2584,6 +2586,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type CreateAssistantError =
   | AccessDeniedException
@@ -2608,6 +2611,7 @@ export const createAssistant: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateAssistant",
 }));
 export type GetAssistantError =
   | AccessDeniedException
@@ -2630,6 +2634,7 @@ export const getAssistant: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetAssistant",
 }));
 export type DeleteAssistantError =
   | AccessDeniedException
@@ -2652,6 +2657,7 @@ export const deleteAssistant: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteAssistant",
 }));
 export type ListAssistantsError =
   | AccessDeniedException
@@ -2684,6 +2690,7 @@ export const listAssistants: API.OperationMethod<
   input: ListAssistantsRequest,
   output: ListAssistantsResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListAssistants",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2715,6 +2722,7 @@ export const getRecommendations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetRecommendations",
 }));
 export type NotifyRecommendationsReceivedError =
   | AccessDeniedException
@@ -2739,6 +2747,7 @@ export const notifyRecommendationsReceived: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "NotifyRecommendationsReceived",
 }));
 export type QueryAssistantError =
   | AccessDeniedException
@@ -2779,6 +2788,7 @@ export const queryAssistant: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "QueryAssistant",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2822,6 +2832,7 @@ export const searchSessions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "SearchSessions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2856,6 +2867,7 @@ export const createAssistantAssociation: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateAssistantAssociation",
 }));
 export type GetAssistantAssociationError =
   | AccessDeniedException
@@ -2878,6 +2890,7 @@ export const getAssistantAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetAssistantAssociation",
 }));
 export type DeleteAssistantAssociationError =
   | AccessDeniedException
@@ -2900,6 +2913,7 @@ export const deleteAssistantAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteAssistantAssociation",
 }));
 export type ListAssistantAssociationsError =
   | AccessDeniedException
@@ -2937,6 +2951,7 @@ export const listAssistantAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListAssistantAssociations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2963,6 +2978,7 @@ export const createSession: API.OperationMethod<
   input: CreateSessionRequest,
   output: CreateSessionResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "CreateSession",
 }));
 export type GetSessionError =
   | AccessDeniedException
@@ -2985,6 +3001,7 @@ export const getSession: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetSession",
 }));
 export type CreateKnowledgeBaseError =
   | AccessDeniedException
@@ -3026,6 +3043,7 @@ export const createKnowledgeBase: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateKnowledgeBase",
 }));
 export type GetKnowledgeBaseError =
   | AccessDeniedException
@@ -3048,6 +3066,7 @@ export const getKnowledgeBase: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetKnowledgeBase",
 }));
 export type DeleteKnowledgeBaseError =
   | AccessDeniedException
@@ -3079,6 +3098,7 @@ export const deleteKnowledgeBase: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteKnowledgeBase",
 }));
 export type ListKnowledgeBasesError =
   | AccessDeniedException
@@ -3111,6 +3131,7 @@ export const listKnowledgeBases: API.OperationMethod<
   input: ListKnowledgeBasesRequest,
   output: ListKnowledgeBasesResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListKnowledgeBases",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3141,6 +3162,7 @@ export const deleteImportJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteImportJob",
 }));
 export type GetImportJobError =
   | AccessDeniedException
@@ -3163,6 +3185,7 @@ export const getImportJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetImportJob",
 }));
 export type ListImportJobsError =
   | AccessDeniedException
@@ -3195,6 +3218,7 @@ export const listImportJobs: API.OperationMethod<
   input: ListImportJobsRequest,
   output: ListImportJobsResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "ListImportJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3223,6 +3247,7 @@ export const removeKnowledgeBaseTemplateUri: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "RemoveKnowledgeBaseTemplateUri",
 }));
 export type SearchContentError =
   | AccessDeniedException
@@ -3261,6 +3286,7 @@ export const searchContent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "SearchContent",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3306,6 +3332,7 @@ export const searchQuickResponses: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "SearchQuickResponses",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3337,6 +3364,7 @@ export const startContentUpload: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StartContentUpload",
 }));
 export type StartImportJobError =
   | AccessDeniedException
@@ -3366,6 +3394,7 @@ export const startImportJob: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "StartImportJob",
 }));
 export type UpdateKnowledgeBaseTemplateUriError =
   | AccessDeniedException
@@ -3392,6 +3421,7 @@ export const updateKnowledgeBaseTemplateUri: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateKnowledgeBaseTemplateUri",
 }));
 export type CreateContentError =
   | AccessDeniedException
@@ -3419,6 +3449,7 @@ export const createContent: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateContent",
 }));
 export type GetContentError =
   | AccessDeniedException
@@ -3441,6 +3472,7 @@ export const getContent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetContent",
 }));
 export type UpdateContentError =
   | AccessDeniedException
@@ -3465,6 +3497,7 @@ export const updateContent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateContent",
 }));
 export type DeleteContentError =
   | AccessDeniedException
@@ -3487,6 +3520,7 @@ export const deleteContent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteContent",
 }));
 export type ListContentsError =
   | AccessDeniedException
@@ -3524,6 +3558,7 @@ export const listContents: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListContents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3552,6 +3587,7 @@ export const getContentSummary: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetContentSummary",
 }));
 export type CreateQuickResponseError =
   | AccessDeniedException
@@ -3578,6 +3614,7 @@ export const createQuickResponse: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateQuickResponse",
 }));
 export type GetQuickResponseError =
   | AccessDeniedException
@@ -3600,6 +3637,7 @@ export const getQuickResponse: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetQuickResponse",
 }));
 export type UpdateQuickResponseError =
   | AccessDeniedException
@@ -3626,6 +3664,7 @@ export const updateQuickResponse: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateQuickResponse",
 }));
 export type DeleteQuickResponseError =
   | AccessDeniedException
@@ -3648,6 +3687,7 @@ export const deleteQuickResponse: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteQuickResponse",
 }));
 export type ListQuickResponsesError =
   | AccessDeniedException
@@ -3685,6 +3725,7 @@ export const listQuickResponses: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListQuickResponses",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

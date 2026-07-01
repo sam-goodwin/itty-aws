@@ -1932,6 +1932,7 @@ export const acceptQualificationRequest: API.OperationMethod<
   input: AcceptQualificationRequestRequest,
   output: AcceptQualificationRequestResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "AcceptQualificationRequest",
 }));
 export type ApproveAssignmentError = RequestError | ServiceFault | CommonErrors;
 /**
@@ -1962,6 +1963,7 @@ export const approveAssignment: API.OperationMethod<
   input: ApproveAssignmentRequest,
   output: ApproveAssignmentResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "ApproveAssignment",
 }));
 export type AssociateQualificationWithWorkerError =
   | RequestError
@@ -1991,6 +1993,7 @@ export const associateQualificationWithWorker: API.OperationMethod<
   input: AssociateQualificationWithWorkerRequest,
   output: AssociateQualificationWithWorkerResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "AssociateQualificationWithWorker",
 }));
 export type CreateAdditionalAssignmentsForHITError =
   | RequestError
@@ -2021,6 +2024,7 @@ export const createAdditionalAssignmentsForHIT: API.OperationMethod<
   input: CreateAdditionalAssignmentsForHITRequest,
   output: CreateAdditionalAssignmentsForHITResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "CreateAdditionalAssignmentsForHIT",
 }));
 export type CreateHITError = RequestError | ServiceFault | CommonErrors;
 /**
@@ -2048,6 +2052,7 @@ export const createHIT: API.OperationMethod<
   input: CreateHITRequest,
   output: CreateHITResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "CreateHIT",
 }));
 export type CreateHITTypeError = RequestError | ServiceFault | CommonErrors;
 /**
@@ -2065,6 +2070,7 @@ export const createHITType: API.OperationMethod<
   input: CreateHITTypeRequest,
   output: CreateHITTypeResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "CreateHITType",
 }));
 export type CreateHITWithHITTypeError =
   | RequestError
@@ -2093,6 +2099,7 @@ export const createHITWithHITType: API.OperationMethod<
   input: CreateHITWithHITTypeRequest,
   output: CreateHITWithHITTypeResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "CreateHITWithHITType",
 }));
 export type CreateQualificationTypeError =
   | RequestError
@@ -2114,6 +2121,7 @@ export const createQualificationType: API.OperationMethod<
   input: CreateQualificationTypeRequest,
   output: CreateQualificationTypeResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "CreateQualificationType",
 }));
 export type CreateWorkerBlockError = RequestError | ServiceFault | CommonErrors;
 /**
@@ -2128,6 +2136,7 @@ export const createWorkerBlock: API.OperationMethod<
   input: CreateWorkerBlockRequest,
   output: CreateWorkerBlockResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "CreateWorkerBlock",
 }));
 export type DeleteHITError = RequestError | ServiceFault | CommonErrors;
 /**
@@ -2158,6 +2167,7 @@ export const deleteHIT: API.OperationMethod<
   input: DeleteHITRequest,
   output: DeleteHITResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "DeleteHIT",
 }));
 export type DeleteQualificationTypeError =
   | RequestError
@@ -2191,6 +2201,7 @@ export const deleteQualificationType: API.OperationMethod<
   input: DeleteQualificationTypeRequest,
   output: DeleteQualificationTypeResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "DeleteQualificationType",
 }));
 export type DeleteWorkerBlockError = RequestError | ServiceFault | CommonErrors;
 /**
@@ -2205,6 +2216,7 @@ export const deleteWorkerBlock: API.OperationMethod<
   input: DeleteWorkerBlockRequest,
   output: DeleteWorkerBlockResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "DeleteWorkerBlock",
 }));
 export type DisassociateQualificationFromWorkerError =
   | RequestError
@@ -2226,6 +2238,7 @@ export const disassociateQualificationFromWorker: API.OperationMethod<
   input: DisassociateQualificationFromWorkerRequest,
   output: DisassociateQualificationFromWorkerResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "DisassociateQualificationFromWorker",
 }));
 export type GetAccountBalanceError = RequestError | ServiceFault | CommonErrors;
 /**
@@ -2242,6 +2255,7 @@ export const getAccountBalance: API.OperationMethod<
   input: GetAccountBalanceRequest,
   output: GetAccountBalanceResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "GetAccountBalance",
 }));
 export type GetAssignmentError = RequestError | ServiceFault | CommonErrors;
 /**
@@ -2256,6 +2270,7 @@ export const getAssignment: API.OperationMethod<
   input: GetAssignmentRequest,
   output: GetAssignmentResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "GetAssignment",
 }));
 export type GetFileUploadURLError = RequestError | ServiceFault | CommonErrors;
 /**
@@ -2284,6 +2299,7 @@ export const getFileUploadURL: API.OperationMethod<
   input: GetFileUploadURLRequest,
   output: GetFileUploadURLResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "GetFileUploadURL",
 }));
 export type GetHITError = RequestError | ServiceFault | CommonErrors;
 /**
@@ -2298,6 +2314,7 @@ export const getHIT: API.OperationMethod<
   input: GetHITRequest,
   output: GetHITResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "GetHIT",
 }));
 export type GetQualificationScoreError =
   | RequestError
@@ -2326,6 +2343,7 @@ export const getQualificationScore: API.OperationMethod<
   input: GetQualificationScoreRequest,
   output: GetQualificationScoreResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "GetQualificationScore",
 }));
 export type GetQualificationTypeError =
   | RequestError
@@ -2343,6 +2361,7 @@ export const getQualificationType: API.OperationMethod<
   input: GetQualificationTypeRequest,
   output: GetQualificationTypeResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "GetQualificationType",
 }));
 export type ListAssignmentsForHITError =
   | RequestError
@@ -2399,6 +2418,7 @@ export const listAssignmentsForHIT: API.OperationMethod<
   input: ListAssignmentsForHITRequest,
   output: ListAssignmentsForHITResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "ListAssignmentsForHIT",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2436,6 +2456,7 @@ export const listBonusPayments: API.OperationMethod<
   input: ListBonusPaymentsRequest,
   output: ListBonusPaymentsResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "ListBonusPayments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2474,6 +2495,7 @@ export const listHITs: API.OperationMethod<
   input: ListHITsRequest,
   output: ListHITsResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "ListHITs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2514,6 +2536,7 @@ export const listHITsForQualificationType: API.OperationMethod<
   input: ListHITsForQualificationTypeRequest,
   output: ListHITsForQualificationTypeResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "ListHITsForQualificationType",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2556,6 +2579,7 @@ export const listQualificationRequests: API.OperationMethod<
   input: ListQualificationRequestsRequest,
   output: ListQualificationRequestsResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "ListQualificationRequests",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2596,6 +2620,7 @@ export const listQualificationTypes: API.OperationMethod<
   input: ListQualificationTypesRequest,
   output: ListQualificationTypesResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "ListQualificationTypes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2634,6 +2659,7 @@ export const listReviewableHITs: API.OperationMethod<
   input: ListReviewableHITsRequest,
   output: ListReviewableHITsResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "ListReviewableHITs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2675,6 +2701,7 @@ export const listReviewPolicyResultsForHIT: API.OperationMethod<
   input: ListReviewPolicyResultsForHITRequest,
   output: ListReviewPolicyResultsForHITResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "ListReviewPolicyResultsForHIT",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2709,6 +2736,7 @@ export const listWorkerBlocks: API.OperationMethod<
   input: ListWorkerBlocksRequest,
   output: ListWorkerBlocksResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "ListWorkerBlocks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2747,6 +2775,7 @@ export const listWorkersWithQualificationType: API.OperationMethod<
   input: ListWorkersWithQualificationTypeRequest,
   output: ListWorkersWithQualificationTypeResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "ListWorkersWithQualificationType",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2773,6 +2802,7 @@ export const notifyWorkers: API.OperationMethod<
   input: NotifyWorkersRequest,
   output: NotifyWorkersResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "NotifyWorkers",
 }));
 export type RejectAssignmentError = RequestError | ServiceFault | CommonErrors;
 /**
@@ -2795,6 +2825,7 @@ export const rejectAssignment: API.OperationMethod<
   input: RejectAssignmentRequest,
   output: RejectAssignmentResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "RejectAssignment",
 }));
 export type RejectQualificationRequestError =
   | RequestError
@@ -2817,6 +2848,7 @@ export const rejectQualificationRequest: API.OperationMethod<
   input: RejectQualificationRequestRequest,
   output: RejectQualificationRequestResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "RejectQualificationRequest",
 }));
 export type SendBonusError = RequestError | ServiceFault | CommonErrors;
 /**
@@ -2842,6 +2874,7 @@ export const sendBonus: API.OperationMethod<
   input: SendBonusRequest,
   output: SendBonusResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "SendBonus",
 }));
 export type SendTestEventNotificationError =
   | RequestError
@@ -2863,6 +2896,7 @@ export const sendTestEventNotification: API.OperationMethod<
   input: SendTestEventNotificationRequest,
   output: SendTestEventNotificationResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "SendTestEventNotification",
 }));
 export type UpdateExpirationForHITError =
   | RequestError
@@ -2881,6 +2915,7 @@ export const updateExpirationForHIT: API.OperationMethod<
   input: UpdateExpirationForHITRequest,
   output: UpdateExpirationForHITResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "UpdateExpirationForHIT",
 }));
 export type UpdateHITReviewStatusError =
   | RequestError
@@ -2900,6 +2935,7 @@ export const updateHITReviewStatus: API.OperationMethod<
   input: UpdateHITReviewStatusRequest,
   output: UpdateHITReviewStatusResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "UpdateHITReviewStatus",
 }));
 export type UpdateHITTypeOfHITError =
   | RequestError
@@ -2922,6 +2958,7 @@ export const updateHITTypeOfHIT: API.OperationMethod<
   input: UpdateHITTypeOfHITRequest,
   output: UpdateHITTypeOfHITResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "UpdateHITTypeOfHIT",
 }));
 export type UpdateNotificationSettingsError =
   | RequestError
@@ -2948,6 +2985,7 @@ export const updateNotificationSettings: API.OperationMethod<
   input: UpdateNotificationSettingsRequest,
   output: UpdateNotificationSettingsResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "UpdateNotificationSettings",
 }));
 export type UpdateQualificationTypeError =
   | RequestError
@@ -3001,4 +3039,5 @@ export const updateQualificationType: API.OperationMethod<
   input: UpdateQualificationTypeRequest,
   output: UpdateQualificationTypeResponse,
   errors: [RequestError, ServiceFault],
+  operationName: "UpdateQualificationType",
 }));

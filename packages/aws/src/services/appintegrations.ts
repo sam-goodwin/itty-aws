@@ -1410,6 +1410,7 @@ export const createApplication: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  operationName: "CreateApplication",
 }));
 export type CreateDataIntegrationError =
   | AccessDeniedException
@@ -1442,6 +1443,7 @@ export const createDataIntegration: API.OperationMethod<
     ResourceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateDataIntegration",
 }));
 export type CreateDataIntegrationAssociationError =
   | AccessDeniedException
@@ -1470,6 +1472,7 @@ export const createDataIntegrationAssociation: API.OperationMethod<
     ResourceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateDataIntegrationAssociation",
 }));
 export type CreateEventIntegrationError =
   | AccessDeniedException
@@ -1501,6 +1504,7 @@ export const createEventIntegration: API.OperationMethod<
     ResourceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "CreateEventIntegration",
 }));
 export type DeleteApplicationError =
   | AccessDeniedException
@@ -1528,6 +1532,7 @@ export const deleteApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteApplication",
 }));
 export type DeleteDataIntegrationError =
   | AccessDeniedException
@@ -1560,6 +1565,7 @@ export const deleteDataIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteDataIntegration",
 }));
 export type DeleteEventIntegrationError =
   | AccessDeniedException
@@ -1587,6 +1593,7 @@ export const deleteEventIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteEventIntegration",
 }));
 export type GetApplicationError =
   | AccessDeniedException
@@ -1613,6 +1620,7 @@ export const getApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetApplication",
 }));
 export type GetDataIntegrationError =
   | AccessDeniedException
@@ -1643,6 +1651,7 @@ export const getDataIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetDataIntegration",
 }));
 export type GetEventIntegrationError =
   | AccessDeniedException
@@ -1669,6 +1678,7 @@ export const getEventIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetEventIntegration",
 }));
 export type ListApplicationAssociationsError =
   | AccessDeniedException
@@ -1710,6 +1720,7 @@ export const listApplicationAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListApplicationAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1755,6 +1766,7 @@ export const listApplications: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1806,6 +1818,7 @@ export const listDataIntegrationAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListDataIntegrationAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1855,6 +1868,7 @@ export const listDataIntegrations: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListDataIntegrations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1902,6 +1916,7 @@ export const listEventIntegrationAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListEventIntegrationAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1947,6 +1962,7 @@ export const listEventIntegrations: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  operationName: "ListEventIntegrations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1977,6 +1993,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalServiceError
@@ -2001,6 +2018,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServiceError
@@ -2025,6 +2043,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateApplicationError =
   | AccessDeniedException
@@ -2053,6 +2072,7 @@ export const updateApplication: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  operationName: "UpdateApplication",
 }));
 export type UpdateDataIntegrationError =
   | AccessDeniedException
@@ -2083,6 +2103,7 @@ export const updateDataIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateDataIntegration",
 }));
 export type UpdateDataIntegrationAssociationError =
   | AccessDeniedException
@@ -2111,6 +2132,7 @@ export const updateDataIntegrationAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateDataIntegrationAssociation",
 }));
 export type UpdateEventIntegrationError =
   | AccessDeniedException
@@ -2137,4 +2159,5 @@ export const updateEventIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateEventIntegration",
 }));

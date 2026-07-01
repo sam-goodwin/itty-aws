@@ -8840,6 +8840,7 @@ export const allocateStaticIp: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "AllocateStaticIp",
 }));
 export type AttachCertificateToDistributionError =
   | AccessDeniedException
@@ -8881,6 +8882,7 @@ export const attachCertificateToDistribution: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "AttachCertificateToDistribution",
 }));
 export type AttachDiskError =
   | AccessDeniedException
@@ -8918,6 +8920,7 @@ export const attachDisk: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "AttachDisk",
 }));
 export type AttachInstancesToLoadBalancerError =
   | AccessDeniedException
@@ -8957,6 +8960,7 @@ export const attachInstancesToLoadBalancer: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "AttachInstancesToLoadBalancer",
 }));
 export type AttachLoadBalancerTlsCertificateError =
   | AccessDeniedException
@@ -8999,6 +9003,7 @@ export const attachLoadBalancerTlsCertificate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "AttachLoadBalancerTlsCertificate",
 }));
 export type AttachStaticIpError =
   | AccessDeniedException
@@ -9031,6 +9036,7 @@ export const attachStaticIp: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "AttachStaticIp",
 }));
 export type CloseInstancePublicPortsError =
   | AccessDeniedException
@@ -9067,6 +9073,7 @@ export const closeInstancePublicPorts: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CloseInstancePublicPorts",
 }));
 export type CopySnapshotError =
   | AccessDeniedException
@@ -9110,6 +9117,7 @@ export const copySnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CopySnapshot",
 }));
 export type CreateBucketError =
   | AccessDeniedException
@@ -9141,6 +9149,7 @@ export const createBucket: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateBucket",
 }));
 export type CreateBucketAccessKeyError =
   | AccessDeniedException
@@ -9180,6 +9189,7 @@ export const createBucketAccessKey: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateBucketAccessKey",
 }));
 export type CreateCertificateError =
   | AccessDeniedException
@@ -9220,6 +9230,7 @@ export const createCertificate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateCertificate",
 }));
 export type CreateCloudFormationStackError =
   | AccessDeniedException
@@ -9258,6 +9269,7 @@ export const createCloudFormationStack: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateCloudFormationStack",
 }));
 export type CreateContactMethodError =
   | AccessDeniedException
@@ -9296,6 +9308,7 @@ export const createContactMethod: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateContactMethod",
 }));
 export type CreateContainerServiceError =
   | AccessDeniedException
@@ -9328,6 +9341,7 @@ export const createContainerService: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateContainerService",
 }));
 export type CreateContainerServiceDeploymentError =
   | AccessDeniedException
@@ -9367,6 +9381,7 @@ export const createContainerServiceDeployment: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateContainerServiceDeployment",
 }));
 export type CreateContainerServiceRegistryLoginError =
   | AccessDeniedException
@@ -9413,6 +9428,7 @@ export const createContainerServiceRegistryLogin: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateContainerServiceRegistryLogin",
 }));
 export type CreateDiskError =
   | AccessDeniedException
@@ -9449,6 +9465,7 @@ export const createDisk: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateDisk",
 }));
 export type CreateDiskFromSnapshotError =
   | AccessDeniedException
@@ -9487,6 +9504,7 @@ export const createDiskFromSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateDiskFromSnapshot",
 }));
 export type CreateDiskSnapshotError =
   | AccessDeniedException
@@ -9540,6 +9558,7 @@ export const createDiskSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateDiskSnapshot",
 }));
 export type CreateDistributionError =
   | AccessDeniedException
@@ -9572,6 +9591,7 @@ export const createDistribution: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateDistribution",
 }));
 export type CreateDomainError =
   | AccessDeniedException
@@ -9607,6 +9627,7 @@ export const createDomain: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateDomain",
 }));
 export type CreateDomainEntryError =
   | AccessDeniedException
@@ -9645,6 +9666,7 @@ export const createDomainEntry: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateDomainEntry",
 }));
 export type CreateGUISessionAccessDetailsError =
   | AccessDeniedException
@@ -9678,6 +9700,7 @@ export const createGUISessionAccessDetails: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateGUISessionAccessDetails",
 }));
 export type CreateInstancesError =
   | AccessDeniedException
@@ -9713,6 +9736,7 @@ export const createInstances: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateInstances",
 }));
 export type CreateInstancesFromSnapshotError =
   | AccessDeniedException
@@ -9750,6 +9774,7 @@ export const createInstancesFromSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateInstancesFromSnapshot",
 }));
 export type CreateInstanceSnapshotError =
   | AccessDeniedException
@@ -9786,6 +9811,7 @@ export const createInstanceSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateInstanceSnapshot",
 }));
 export type CreateKeyPairError =
   | AccessDeniedException
@@ -9826,6 +9852,7 @@ export const createKeyPair: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateKeyPair",
 }));
 export type CreateLoadBalancerError =
   | AccessDeniedException
@@ -9867,6 +9894,7 @@ export const createLoadBalancer: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateLoadBalancer",
 }));
 export type CreateLoadBalancerTlsCertificateError =
   | AccessDeniedException
@@ -9905,6 +9933,7 @@ export const createLoadBalancerTlsCertificate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateLoadBalancerTlsCertificate",
 }));
 export type CreateRelationalDatabaseError =
   | AccessDeniedException
@@ -9940,6 +9969,7 @@ export const createRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateRelationalDatabase",
 }));
 export type CreateRelationalDatabaseFromSnapshotError =
   | AccessDeniedException
@@ -9980,6 +10010,7 @@ export const createRelationalDatabaseFromSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateRelationalDatabaseFromSnapshot",
 }));
 export type CreateRelationalDatabaseSnapshotError =
   | AccessDeniedException
@@ -10016,6 +10047,7 @@ export const createRelationalDatabaseSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "CreateRelationalDatabaseSnapshot",
 }));
 export type DeleteAlarmError =
   | AccessDeniedException
@@ -10051,6 +10083,7 @@ export const deleteAlarm: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteAlarm",
 }));
 export type DeleteAutoSnapshotError =
   | AccessDeniedException
@@ -10081,6 +10114,7 @@ export const deleteAutoSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteAutoSnapshot",
 }));
 export type DeleteBucketError =
   | AccessDeniedException
@@ -10112,6 +10146,7 @@ export const deleteBucket: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteBucket",
 }));
 export type DeleteBucketAccessKeyError =
   | AccessDeniedException
@@ -10145,6 +10180,7 @@ export const deleteBucketAccessKey: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteBucketAccessKey",
 }));
 export type DeleteCertificateError =
   | AccessDeniedException
@@ -10178,6 +10214,7 @@ export const deleteCertificate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteCertificate",
 }));
 export type DeleteContactMethodError =
   | AccessDeniedException
@@ -10213,6 +10250,7 @@ export const deleteContactMethod: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteContactMethod",
 }));
 export type DeleteContainerImageError =
   | AccessDeniedException
@@ -10242,6 +10280,7 @@ export const deleteContainerImage: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteContainerImage",
 }));
 export type DeleteContainerServiceError =
   | AccessDeniedException
@@ -10270,6 +10309,7 @@ export const deleteContainerService: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteContainerService",
 }));
 export type DeleteDiskError =
   | AccessDeniedException
@@ -10309,6 +10349,7 @@ export const deleteDisk: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteDisk",
 }));
 export type DeleteDiskSnapshotError =
   | AccessDeniedException
@@ -10351,6 +10392,7 @@ export const deleteDiskSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteDiskSnapshot",
 }));
 export type DeleteDistributionError =
   | AccessDeniedException
@@ -10379,6 +10421,7 @@ export const deleteDistribution: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteDistribution",
 }));
 export type DeleteDomainError =
   | AccessDeniedException
@@ -10415,6 +10458,7 @@ export const deleteDomain: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteDomain",
 }));
 export type DeleteDomainEntryError =
   | AccessDeniedException
@@ -10451,6 +10495,7 @@ export const deleteDomainEntry: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteDomainEntry",
 }));
 export type DeleteInstanceError =
   | AccessDeniedException
@@ -10487,6 +10532,7 @@ export const deleteInstance: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteInstance",
 }));
 export type DeleteInstanceSnapshotError =
   | AccessDeniedException
@@ -10524,6 +10570,7 @@ export const deleteInstanceSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteInstanceSnapshot",
 }));
 export type DeleteKeyPairError =
   | AccessDeniedException
@@ -10565,6 +10612,7 @@ export const deleteKeyPair: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteKeyPair",
 }));
 export type DeleteKnownHostKeysError =
   | AccessDeniedException
@@ -10604,6 +10652,7 @@ export const deleteKnownHostKeys: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteKnownHostKeys",
 }));
 export type DeleteLoadBalancerError =
   | AccessDeniedException
@@ -10642,6 +10691,7 @@ export const deleteLoadBalancer: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteLoadBalancer",
 }));
 export type DeleteLoadBalancerTlsCertificateError =
   | AccessDeniedException
@@ -10678,6 +10728,7 @@ export const deleteLoadBalancerTlsCertificate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteLoadBalancerTlsCertificate",
 }));
 export type DeleteRelationalDatabaseError =
   | AccessDeniedException
@@ -10714,6 +10765,7 @@ export const deleteRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteRelationalDatabase",
 }));
 export type DeleteRelationalDatabaseSnapshotError =
   | AccessDeniedException
@@ -10750,6 +10802,7 @@ export const deleteRelationalDatabaseSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DeleteRelationalDatabaseSnapshot",
 }));
 export type DetachCertificateFromDistributionError =
   | AccessDeniedException
@@ -10782,6 +10835,7 @@ export const detachCertificateFromDistribution: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DetachCertificateFromDistribution",
 }));
 export type DetachDiskError =
   | AccessDeniedException
@@ -10820,6 +10874,7 @@ export const detachDisk: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DetachDisk",
 }));
 export type DetachInstancesFromLoadBalancerError =
   | AccessDeniedException
@@ -10859,6 +10914,7 @@ export const detachInstancesFromLoadBalancer: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DetachInstancesFromLoadBalancer",
 }));
 export type DetachStaticIpError =
   | AccessDeniedException
@@ -10891,6 +10947,7 @@ export const detachStaticIp: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DetachStaticIp",
 }));
 export type DisableAddOnError =
   | AccessDeniedException
@@ -10921,6 +10978,7 @@ export const disableAddOn: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DisableAddOn",
 }));
 export type DownloadDefaultKeyPairError =
   | AccessDeniedException
@@ -10956,6 +11014,7 @@ export const downloadDefaultKeyPair: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "DownloadDefaultKeyPair",
 }));
 export type EnableAddOnError =
   | AccessDeniedException
@@ -10987,6 +11046,7 @@ export const enableAddOn: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "EnableAddOn",
 }));
 export type ExportSnapshotError =
   | AccessDeniedException
@@ -11033,6 +11093,7 @@ export const exportSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "ExportSnapshot",
 }));
 export type GetActiveNamesError =
   | AccessDeniedException
@@ -11065,6 +11126,7 @@ export const getActiveNames: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetActiveNames",
 }));
 export type GetAlarmsError =
   | AccessDeniedException
@@ -11102,6 +11164,7 @@ export const getAlarms: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetAlarms",
 }));
 export type GetAutoSnapshotsError =
   | AccessDeniedException
@@ -11133,6 +11196,7 @@ export const getAutoSnapshots: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetAutoSnapshots",
 }));
 export type GetBlueprintsError =
   | AccessDeniedException
@@ -11173,6 +11237,7 @@ export const getBlueprints: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetBlueprints",
 }));
 export type GetBucketAccessKeysError =
   | AccessDeniedException
@@ -11205,6 +11270,7 @@ export const getBucketAccessKeys: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetBucketAccessKeys",
 }));
 export type GetBucketBundlesError =
   | AccessDeniedException
@@ -11237,6 +11303,7 @@ export const getBucketBundles: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetBucketBundles",
 }));
 export type GetBucketMetricDataError =
   | AccessDeniedException
@@ -11269,6 +11336,7 @@ export const getBucketMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetBucketMetricData",
 }));
 export type GetBucketsError =
   | AccessDeniedException
@@ -11302,6 +11370,7 @@ export const getBuckets: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetBuckets",
 }));
 export type GetBundlesError =
   | AccessDeniedException
@@ -11342,6 +11411,7 @@ export const getBundles: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetBundles",
 }));
 export type GetCertificatesError =
   | AccessDeniedException
@@ -11374,6 +11444,7 @@ export const getCertificates: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetCertificates",
 }));
 export type GetCloudFormationStackRecordsError =
   | AccessDeniedException
@@ -11410,6 +11481,7 @@ export const getCloudFormationStackRecords: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetCloudFormationStackRecords",
 }));
 export type GetContactMethodsError =
   | AccessDeniedException
@@ -11446,6 +11518,7 @@ export const getContactMethods: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetContactMethods",
 }));
 export type GetContainerAPIMetadataError =
   | AccessDeniedException
@@ -11471,6 +11544,7 @@ export const getContainerAPIMetadata: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetContainerAPIMetadata",
 }));
 export type GetContainerImagesError =
   | AccessDeniedException
@@ -11504,6 +11578,7 @@ export const getContainerImages: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetContainerImages",
 }));
 export type GetContainerLogError =
   | AccessDeniedException
@@ -11541,6 +11616,7 @@ export const getContainerLog: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetContainerLog",
 }));
 export type GetContainerServiceDeploymentsError =
   | AccessDeniedException
@@ -11580,6 +11656,7 @@ export const getContainerServiceDeployments: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetContainerServiceDeployments",
 }));
 export type GetContainerServiceMetricDataError =
   | AccessDeniedException
@@ -11612,6 +11689,7 @@ export const getContainerServiceMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetContainerServiceMetricData",
 }));
 export type GetContainerServicePowersError =
   | AccessDeniedException
@@ -11644,6 +11722,7 @@ export const getContainerServicePowers: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetContainerServicePowers",
 }));
 export type GetContainerServicesError =
   | AccessDeniedException
@@ -11672,6 +11751,7 @@ export const getContainerServices: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetContainerServices",
 }));
 export type GetCostEstimateError =
   | AccessDeniedException
@@ -11701,6 +11781,7 @@ export const getCostEstimate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetCostEstimate",
 }));
 export type GetDiskError =
   | AccessDeniedException
@@ -11733,6 +11814,7 @@ export const getDisk: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetDisk",
 }));
 export type GetDisksError =
   | AccessDeniedException
@@ -11765,6 +11847,7 @@ export const getDisks: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetDisks",
 }));
 export type GetDiskSnapshotError =
   | AccessDeniedException
@@ -11797,6 +11880,7 @@ export const getDiskSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetDiskSnapshot",
 }));
 export type GetDiskSnapshotsError =
   | AccessDeniedException
@@ -11830,6 +11914,7 @@ export const getDiskSnapshots: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetDiskSnapshots",
 }));
 export type GetDistributionBundlesError =
   | AccessDeniedException
@@ -11862,6 +11947,7 @@ export const getDistributionBundles: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetDistributionBundles",
 }));
 export type GetDistributionLatestCacheResetError =
   | AccessDeniedException
@@ -11891,6 +11977,7 @@ export const getDistributionLatestCacheReset: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetDistributionLatestCacheReset",
 }));
 export type GetDistributionMetricDataError =
   | AccessDeniedException
@@ -11924,6 +12011,7 @@ export const getDistributionMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetDistributionMetricData",
 }));
 export type GetDistributionsError =
   | AccessDeniedException
@@ -11953,6 +12041,7 @@ export const getDistributions: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetDistributions",
 }));
 export type GetDomainError =
   | AccessDeniedException
@@ -11985,6 +12074,7 @@ export const getDomain: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetDomain",
 }));
 export type GetDomainsError =
   | AccessDeniedException
@@ -12017,6 +12107,7 @@ export const getDomains: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetDomains",
 }));
 export type GetExportSnapshotRecordsError =
   | AccessDeniedException
@@ -12054,6 +12145,7 @@ export const getExportSnapshotRecords: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetExportSnapshotRecords",
 }));
 export type GetInstanceError =
   | AccessDeniedException
@@ -12087,6 +12179,7 @@ export const getInstance: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetInstance",
 }));
 export type GetInstanceAccessDetailsError =
   | AccessDeniedException
@@ -12124,6 +12217,7 @@ export const getInstanceAccessDetails: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetInstanceAccessDetails",
 }));
 export type GetInstanceMetricDataError =
   | AccessDeniedException
@@ -12161,6 +12255,7 @@ export const getInstanceMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetInstanceMetricData",
 }));
 export type GetInstancePortStatesError =
   | AccessDeniedException
@@ -12194,6 +12289,7 @@ export const getInstancePortStates: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetInstancePortStates",
 }));
 export type GetInstancesError =
   | AccessDeniedException
@@ -12227,6 +12323,7 @@ export const getInstances: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetInstances",
 }));
 export type GetInstanceSnapshotError =
   | AccessDeniedException
@@ -12259,6 +12356,7 @@ export const getInstanceSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetInstanceSnapshot",
 }));
 export type GetInstanceSnapshotsError =
   | AccessDeniedException
@@ -12291,6 +12389,7 @@ export const getInstanceSnapshots: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetInstanceSnapshots",
 }));
 export type GetInstanceStateError =
   | AccessDeniedException
@@ -12323,6 +12422,7 @@ export const getInstanceState: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetInstanceState",
 }));
 export type GetKeyPairError =
   | AccessDeniedException
@@ -12355,6 +12455,7 @@ export const getKeyPair: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetKeyPair",
 }));
 export type GetKeyPairsError =
   | AccessDeniedException
@@ -12387,6 +12488,7 @@ export const getKeyPairs: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetKeyPairs",
 }));
 export type GetLoadBalancerError =
   | AccessDeniedException
@@ -12419,6 +12521,7 @@ export const getLoadBalancer: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetLoadBalancer",
 }));
 export type GetLoadBalancerMetricDataError =
   | AccessDeniedException
@@ -12455,6 +12558,7 @@ export const getLoadBalancerMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetLoadBalancerMetricData",
 }));
 export type GetLoadBalancersError =
   | AccessDeniedException
@@ -12487,6 +12591,7 @@ export const getLoadBalancers: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetLoadBalancers",
 }));
 export type GetLoadBalancerTlsCertificatesError =
   | AccessDeniedException
@@ -12525,6 +12630,7 @@ export const getLoadBalancerTlsCertificates: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetLoadBalancerTlsCertificates",
 }));
 export type GetLoadBalancerTlsPoliciesError =
   | AccessDeniedException
@@ -12557,6 +12663,7 @@ export const getLoadBalancerTlsPolicies: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetLoadBalancerTlsPolicies",
 }));
 export type GetOperationError =
   | AccessDeniedException
@@ -12590,6 +12697,7 @@ export const getOperation: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetOperation",
 }));
 export type GetOperationsError =
   | AccessDeniedException
@@ -12626,6 +12734,7 @@ export const getOperations: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetOperations",
 }));
 export type GetOperationsForResourceError =
   | AccessDeniedException
@@ -12658,6 +12767,7 @@ export const getOperationsForResource: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetOperationsForResource",
 }));
 export type GetRegionsError =
   | AccessDeniedException
@@ -12692,6 +12802,7 @@ export const getRegions: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetRegions",
 }));
 export type GetRelationalDatabaseError =
   | AccessDeniedException
@@ -12724,6 +12835,7 @@ export const getRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetRelationalDatabase",
 }));
 export type GetRelationalDatabaseBlueprintsError =
   | AccessDeniedException
@@ -12760,6 +12872,7 @@ export const getRelationalDatabaseBlueprints: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetRelationalDatabaseBlueprints",
 }));
 export type GetRelationalDatabaseBundlesError =
   | AccessDeniedException
@@ -12796,6 +12909,7 @@ export const getRelationalDatabaseBundles: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetRelationalDatabaseBundles",
 }));
 export type GetRelationalDatabaseEventsError =
   | AccessDeniedException
@@ -12828,6 +12942,7 @@ export const getRelationalDatabaseEvents: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetRelationalDatabaseEvents",
 }));
 export type GetRelationalDatabaseLogEventsError =
   | AccessDeniedException
@@ -12860,6 +12975,7 @@ export const getRelationalDatabaseLogEvents: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetRelationalDatabaseLogEvents",
 }));
 export type GetRelationalDatabaseLogStreamsError =
   | AccessDeniedException
@@ -12892,6 +13008,7 @@ export const getRelationalDatabaseLogStreams: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetRelationalDatabaseLogStreams",
 }));
 export type GetRelationalDatabaseMasterUserPasswordError =
   | AccessDeniedException
@@ -12929,6 +13046,7 @@ export const getRelationalDatabaseMasterUserPassword: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetRelationalDatabaseMasterUserPassword",
 }));
 export type GetRelationalDatabaseMetricDataError =
   | AccessDeniedException
@@ -12965,6 +13083,7 @@ export const getRelationalDatabaseMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetRelationalDatabaseMetricData",
 }));
 export type GetRelationalDatabaseParametersError =
   | AccessDeniedException
@@ -13002,6 +13121,7 @@ export const getRelationalDatabaseParameters: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetRelationalDatabaseParameters",
 }));
 export type GetRelationalDatabasesError =
   | AccessDeniedException
@@ -13034,6 +13154,7 @@ export const getRelationalDatabases: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetRelationalDatabases",
 }));
 export type GetRelationalDatabaseSnapshotError =
   | AccessDeniedException
@@ -13066,6 +13187,7 @@ export const getRelationalDatabaseSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetRelationalDatabaseSnapshot",
 }));
 export type GetRelationalDatabaseSnapshotsError =
   | AccessDeniedException
@@ -13098,6 +13220,7 @@ export const getRelationalDatabaseSnapshots: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetRelationalDatabaseSnapshots",
 }));
 export type GetSetupHistoryError =
   | AccessDeniedException
@@ -13127,6 +13250,7 @@ export const getSetupHistory: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetSetupHistory",
 }));
 export type GetStaticIpError =
   | AccessDeniedException
@@ -13159,6 +13283,7 @@ export const getStaticIp: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetStaticIp",
 }));
 export type GetStaticIpsError =
   | AccessDeniedException
@@ -13191,6 +13316,7 @@ export const getStaticIps: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "GetStaticIps",
 }));
 export type ImportKeyPairError =
   | AccessDeniedException
@@ -13223,6 +13349,7 @@ export const importKeyPair: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "ImportKeyPair",
 }));
 export type IsVpcPeeredError =
   | AccessDeniedException
@@ -13255,6 +13382,7 @@ export const isVpcPeered: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "IsVpcPeered",
 }));
 export type OpenInstancePublicPortsError =
   | AccessDeniedException
@@ -13292,6 +13420,7 @@ export const openInstancePublicPorts: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "OpenInstancePublicPorts",
 }));
 export type PeerVpcError =
   | AccessDeniedException
@@ -13324,6 +13453,7 @@ export const peerVpc: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "PeerVpc",
 }));
 export type PutAlarmError =
   | AccessDeniedException
@@ -13370,6 +13500,7 @@ export const putAlarm: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "PutAlarm",
 }));
 export type PutInstancePublicPortsError =
   | AccessDeniedException
@@ -13411,6 +13542,7 @@ export const putInstancePublicPorts: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "PutInstancePublicPorts",
 }));
 export type RebootInstanceError =
   | AccessDeniedException
@@ -13447,6 +13579,7 @@ export const rebootInstance: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "RebootInstance",
 }));
 export type RebootRelationalDatabaseError =
   | AccessDeniedException
@@ -13483,6 +13616,7 @@ export const rebootRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "RebootRelationalDatabase",
 }));
 export type RegisterContainerImageError =
   | AccessDeniedException
@@ -13516,6 +13650,7 @@ export const registerContainerImage: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "RegisterContainerImage",
 }));
 export type ReleaseStaticIpError =
   | AccessDeniedException
@@ -13548,6 +13683,7 @@ export const releaseStaticIp: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "ReleaseStaticIp",
 }));
 export type ResetDistributionCacheError =
   | AccessDeniedException
@@ -13580,6 +13716,7 @@ export const resetDistributionCache: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "ResetDistributionCache",
 }));
 export type SendContactMethodVerificationError =
   | AccessDeniedException
@@ -13623,6 +13760,7 @@ export const sendContactMethodVerification: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "SendContactMethodVerification",
 }));
 export type SetIpAddressTypeError =
   | AccessDeniedException
@@ -13659,6 +13797,7 @@ export const setIpAddressType: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "SetIpAddressType",
 }));
 export type SetResourceAccessForBucketError =
   | AccessDeniedException
@@ -13691,6 +13830,7 @@ export const setResourceAccessForBucket: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "SetResourceAccessForBucket",
 }));
 export type SetupInstanceHttpsError =
   | AccessDeniedException
@@ -13723,6 +13863,7 @@ export const setupInstanceHttps: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "SetupInstanceHttps",
 }));
 export type StartGUISessionError =
   | AccessDeniedException
@@ -13753,6 +13894,7 @@ export const startGUISession: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "StartGUISession",
 }));
 export type StartInstanceError =
   | AccessDeniedException
@@ -13794,6 +13936,7 @@ export const startInstance: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "StartInstance",
 }));
 export type StartRelationalDatabaseError =
   | AccessDeniedException
@@ -13831,6 +13974,7 @@ export const startRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "StartRelationalDatabase",
 }));
 export type StopGUISessionError =
   | AccessDeniedException
@@ -13861,6 +14005,7 @@ export const stopGUISession: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "StopGUISession",
 }));
 export type StopInstanceError =
   | AccessDeniedException
@@ -13901,6 +14046,7 @@ export const stopInstance: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "StopInstance",
 }));
 export type StopRelationalDatabaseError =
   | AccessDeniedException
@@ -13941,6 +14087,7 @@ export const stopRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "StopRelationalDatabase",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -13979,6 +14126,7 @@ export const tagResource: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "TagResource",
 }));
 export type TestAlarmError =
   | AccessDeniedException
@@ -14017,6 +14165,7 @@ export const testAlarm: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "TestAlarm",
 }));
 export type UnpeerVpcError =
   | AccessDeniedException
@@ -14049,6 +14198,7 @@ export const unpeerVpc: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "UnpeerVpc",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -14086,6 +14236,7 @@ export const untagResource: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateBucketError =
   | AccessDeniedException
@@ -14117,6 +14268,7 @@ export const updateBucket: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "UpdateBucket",
 }));
 export type UpdateBucketBundleError =
   | AccessDeniedException
@@ -14159,6 +14311,7 @@ export const updateBucketBundle: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "UpdateBucketBundle",
 }));
 export type UpdateContainerServiceError =
   | AccessDeniedException
@@ -14188,6 +14341,7 @@ export const updateContainerService: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "UpdateContainerService",
 }));
 export type UpdateDistributionError =
   | AccessDeniedException
@@ -14218,6 +14372,7 @@ export const updateDistribution: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "UpdateDistribution",
 }));
 export type UpdateDistributionBundleError =
   | AccessDeniedException
@@ -14257,6 +14412,7 @@ export const updateDistributionBundle: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "UpdateDistributionBundle",
 }));
 export type UpdateDomainEntryError =
   | AccessDeniedException
@@ -14293,6 +14449,7 @@ export const updateDomainEntry: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "UpdateDomainEntry",
 }));
 export type UpdateInstanceMetadataOptionsError =
   | AccessDeniedException
@@ -14330,6 +14487,7 @@ export const updateInstanceMetadataOptions: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "UpdateInstanceMetadataOptions",
 }));
 export type UpdateLoadBalancerAttributeError =
   | AccessDeniedException
@@ -14367,6 +14525,7 @@ export const updateLoadBalancerAttribute: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "UpdateLoadBalancerAttribute",
 }));
 export type UpdateRelationalDatabaseError =
   | AccessDeniedException
@@ -14406,6 +14565,7 @@ export const updateRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "UpdateRelationalDatabase",
 }));
 export type UpdateRelationalDatabaseParametersError =
   | AccessDeniedException
@@ -14449,4 +14609,5 @@ export const updateRelationalDatabaseParameters: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  operationName: "UpdateRelationalDatabaseParameters",
 }));

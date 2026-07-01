@@ -6136,6 +6136,7 @@ export const batchGetMetricData: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "BatchGetMetricData",
 }));
 export type CancelExportJobError =
   | BadRequestException
@@ -6154,6 +6155,7 @@ export const cancelExportJob: API.OperationMethod<
   input: CancelExportJobRequest,
   output: CancelExportJobResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "CancelExportJob",
 }));
 export type CreateConfigurationSetError =
   | AlreadyExistsException
@@ -6186,6 +6188,7 @@ export const createConfigurationSet: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateConfigurationSet",
 }));
 export type CreateConfigurationSetEventDestinationError =
   | AlreadyExistsException
@@ -6218,6 +6221,7 @@ export const createConfigurationSetEventDestination: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateConfigurationSetEventDestination",
 }));
 export type CreateContactError =
   | AlreadyExistsException
@@ -6243,6 +6247,7 @@ export const createContact: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateContact",
 }));
 export type CreateContactListError =
   | AlreadyExistsException
@@ -6267,6 +6272,7 @@ export const createContactList: API.OperationMethod<
     LimitExceededException,
     TooManyRequestsException,
   ],
+  operationName: "CreateContactList",
 }));
 export type CreateCustomVerificationEmailTemplateError =
   | AlreadyExistsException
@@ -6299,6 +6305,7 @@ export const createCustomVerificationEmailTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateCustomVerificationEmailTemplate",
 }));
 export type CreateDedicatedIpPoolError =
   | AlreadyExistsException
@@ -6328,6 +6335,7 @@ export const createDedicatedIpPool: API.OperationMethod<
     LimitExceededException,
     TooManyRequestsException,
   ],
+  operationName: "CreateDedicatedIpPool",
 }));
 export type CreateDeliverabilityTestReportError =
   | AccountSuspendedException
@@ -6368,6 +6376,7 @@ export const createDeliverabilityTestReport: API.OperationMethod<
     SendingPausedException,
     TooManyRequestsException,
   ],
+  operationName: "CreateDeliverabilityTestReport",
 }));
 export type CreateEmailIdentityError =
   | AlreadyExistsException
@@ -6424,6 +6433,7 @@ export const createEmailIdentity: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateEmailIdentity",
 }));
 export type CreateEmailIdentityPolicyError =
   | AlreadyExistsException
@@ -6461,6 +6471,7 @@ export const createEmailIdentityPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateEmailIdentityPolicy",
 }));
 export type CreateEmailTemplateError =
   | AlreadyExistsException
@@ -6489,6 +6500,7 @@ export const createEmailTemplate: API.OperationMethod<
     LimitExceededException,
     TooManyRequestsException,
   ],
+  operationName: "CreateEmailTemplate",
 }));
 export type CreateExportJobError =
   | BadRequestException
@@ -6515,6 +6527,7 @@ export const createExportJob: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateExportJob",
 }));
 export type CreateImportJobError =
   | BadRequestException
@@ -6537,6 +6550,7 @@ export const createImportJob: API.OperationMethod<
     LimitExceededException,
     TooManyRequestsException,
   ],
+  operationName: "CreateImportJob",
 }));
 export type CreateMultiRegionEndpointError =
   | AlreadyExistsException
@@ -6567,6 +6581,7 @@ export const createMultiRegionEndpoint: API.OperationMethod<
     LimitExceededException,
     TooManyRequestsException,
   ],
+  operationName: "CreateMultiRegionEndpoint",
 }));
 export type CreateTenantError =
   | AlreadyExistsException
@@ -6600,6 +6615,7 @@ export const createTenant: API.OperationMethod<
     LimitExceededException,
     TooManyRequestsException,
   ],
+  operationName: "CreateTenant",
 }));
 export type CreateTenantResourceAssociationError =
   | AlreadyExistsException
@@ -6631,6 +6647,7 @@ export const createTenantResourceAssociation: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateTenantResourceAssociation",
 }));
 export type DeleteConfigurationSetError =
   | BadRequestException
@@ -6660,6 +6677,7 @@ export const deleteConfigurationSet: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteConfigurationSet",
 }));
 export type DeleteConfigurationSetEventDestinationError =
   | BadRequestException
@@ -6683,6 +6701,7 @@ export const deleteConfigurationSetEventDestination: API.OperationMethod<
   input: DeleteConfigurationSetEventDestinationRequest,
   output: DeleteConfigurationSetEventDestinationResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "DeleteConfigurationSetEventDestination",
 }));
 export type DeleteContactError =
   | BadRequestException
@@ -6701,6 +6720,7 @@ export const deleteContact: API.OperationMethod<
   input: DeleteContactRequest,
   output: DeleteContactResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "DeleteContact",
 }));
 export type DeleteContactListError =
   | BadRequestException
@@ -6725,6 +6745,7 @@ export const deleteContactList: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteContactList",
 }));
 export type DeleteCustomVerificationEmailTemplateError =
   | BadRequestException
@@ -6749,6 +6770,7 @@ export const deleteCustomVerificationEmailTemplate: API.OperationMethod<
   input: DeleteCustomVerificationEmailTemplateRequest,
   output: DeleteCustomVerificationEmailTemplateResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "DeleteCustomVerificationEmailTemplate",
 }));
 export type DeleteDedicatedIpPoolError =
   | BadRequestException
@@ -6773,6 +6795,7 @@ export const deleteDedicatedIpPool: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteDedicatedIpPool",
 }));
 export type DeleteEmailIdentityError =
   | BadRequestException
@@ -6798,6 +6821,7 @@ export const deleteEmailIdentity: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteEmailIdentity",
 }));
 export type DeleteEmailIdentityPolicyError =
   | BadRequestException
@@ -6828,6 +6852,7 @@ export const deleteEmailIdentityPolicy: API.OperationMethod<
   input: DeleteEmailIdentityPolicyRequest,
   output: DeleteEmailIdentityPolicyResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "DeleteEmailIdentityPolicy",
 }));
 export type DeleteEmailTemplateError =
   | BadRequestException
@@ -6848,6 +6873,7 @@ export const deleteEmailTemplate: API.OperationMethod<
   input: DeleteEmailTemplateRequest,
   output: DeleteEmailTemplateResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "DeleteEmailTemplate",
 }));
 export type DeleteMultiRegionEndpointError =
   | BadRequestException
@@ -6875,6 +6901,7 @@ export const deleteMultiRegionEndpoint: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteMultiRegionEndpoint",
 }));
 export type DeleteSuppressedDestinationError =
   | BadRequestException
@@ -6896,6 +6923,7 @@ export const deleteSuppressedDestination: API.OperationMethod<
   input: DeleteSuppressedDestinationRequest,
   output: DeleteSuppressedDestinationResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "DeleteSuppressedDestination",
 }));
 export type DeleteTenantError =
   | BadRequestException
@@ -6917,6 +6945,7 @@ export const deleteTenant: API.OperationMethod<
   input: DeleteTenantRequest,
   output: DeleteTenantResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "DeleteTenant",
 }));
 export type DeleteTenantResourceAssociationError =
   | BadRequestException
@@ -6939,6 +6968,7 @@ export const deleteTenantResourceAssociation: API.OperationMethod<
   input: DeleteTenantResourceAssociationRequest,
   output: DeleteTenantResourceAssociationResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "DeleteTenantResourceAssociation",
 }));
 export type GetAccountError =
   | BadRequestException
@@ -6957,6 +6987,7 @@ export const getAccount: API.OperationMethod<
   input: GetAccountRequest,
   output: GetAccountResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "GetAccount",
 }));
 export type GetBlacklistReportsError =
   | BadRequestException
@@ -6975,6 +7006,7 @@ export const getBlacklistReports: API.OperationMethod<
   input: GetBlacklistReportsRequest,
   output: GetBlacklistReportsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetBlacklistReports",
 }));
 export type GetConfigurationSetError =
   | BadRequestException
@@ -7000,6 +7032,7 @@ export const getConfigurationSet: API.OperationMethod<
   input: GetConfigurationSetRequest,
   output: GetConfigurationSetResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetConfigurationSet",
 }));
 export type GetConfigurationSetEventDestinationsError =
   | BadRequestException
@@ -7024,6 +7057,7 @@ export const getConfigurationSetEventDestinations: API.OperationMethod<
   input: GetConfigurationSetEventDestinationsRequest,
   output: GetConfigurationSetEventDestinationsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetConfigurationSetEventDestinations",
 }));
 export type GetContactError =
   | BadRequestException
@@ -7042,6 +7076,7 @@ export const getContact: API.OperationMethod<
   input: GetContactRequest,
   output: GetContactResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetContact",
 }));
 export type GetContactListError =
   | BadRequestException
@@ -7061,6 +7096,7 @@ export const getContactList: API.OperationMethod<
   input: GetContactListRequest,
   output: GetContactListResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetContactList",
 }));
 export type GetCustomVerificationEmailTemplateError =
   | BadRequestException
@@ -7086,6 +7122,7 @@ export const getCustomVerificationEmailTemplate: API.OperationMethod<
   input: GetCustomVerificationEmailTemplateRequest,
   output: GetCustomVerificationEmailTemplateResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetCustomVerificationEmailTemplate",
 }));
 export type GetDedicatedIpError =
   | BadRequestException
@@ -7106,6 +7143,7 @@ export const getDedicatedIp: API.OperationMethod<
   input: GetDedicatedIpRequest,
   output: GetDedicatedIpResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetDedicatedIp",
 }));
 export type GetDedicatedIpPoolError =
   | BadRequestException
@@ -7124,6 +7162,7 @@ export const getDedicatedIpPool: API.OperationMethod<
   input: GetDedicatedIpPoolRequest,
   output: GetDedicatedIpPoolResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetDedicatedIpPool",
 }));
 export type GetDedicatedIpsError =
   | BadRequestException
@@ -7158,6 +7197,7 @@ export const getDedicatedIps: API.OperationMethod<
   input: GetDedicatedIpsRequest,
   output: GetDedicatedIpsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetDedicatedIps",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7192,6 +7232,7 @@ export const getDeliverabilityDashboardOptions: API.OperationMethod<
     LimitExceededException,
     TooManyRequestsException,
   ],
+  operationName: "GetDeliverabilityDashboardOptions",
 }));
 export type GetDeliverabilityTestReportError =
   | BadRequestException
@@ -7210,6 +7251,7 @@ export const getDeliverabilityTestReport: API.OperationMethod<
   input: GetDeliverabilityTestReportRequest,
   output: GetDeliverabilityTestReportResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetDeliverabilityTestReport",
 }));
 export type GetDomainDeliverabilityCampaignError =
   | BadRequestException
@@ -7230,6 +7272,7 @@ export const getDomainDeliverabilityCampaign: API.OperationMethod<
   input: GetDomainDeliverabilityCampaignRequest,
   output: GetDomainDeliverabilityCampaignResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetDomainDeliverabilityCampaign",
 }));
 export type GetDomainStatisticsReportError =
   | BadRequestException
@@ -7249,6 +7292,7 @@ export const getDomainStatisticsReport: API.OperationMethod<
   input: GetDomainStatisticsReportRequest,
   output: GetDomainStatisticsReportResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetDomainStatisticsReport",
 }));
 export type GetEmailAddressInsightsError =
   | BadRequestException
@@ -7266,6 +7310,7 @@ export const getEmailAddressInsights: API.OperationMethod<
   input: GetEmailAddressInsightsRequest,
   output: GetEmailAddressInsightsResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "GetEmailAddressInsights",
 }));
 export type GetEmailIdentityError =
   | BadRequestException
@@ -7286,6 +7331,7 @@ export const getEmailIdentity: API.OperationMethod<
   input: GetEmailIdentityRequest,
   output: GetEmailIdentityResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetEmailIdentity",
 }));
 export type GetEmailIdentityPoliciesError =
   | BadRequestException
@@ -7316,6 +7362,7 @@ export const getEmailIdentityPolicies: API.OperationMethod<
   input: GetEmailIdentityPoliciesRequest,
   output: GetEmailIdentityPoliciesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetEmailIdentityPolicies",
 }));
 export type GetEmailTemplateError =
   | BadRequestException
@@ -7337,6 +7384,7 @@ export const getEmailTemplate: API.OperationMethod<
   input: GetEmailTemplateRequest,
   output: GetEmailTemplateResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetEmailTemplate",
 }));
 export type GetExportJobError =
   | BadRequestException
@@ -7355,6 +7403,7 @@ export const getExportJob: API.OperationMethod<
   input: GetExportJobRequest,
   output: GetExportJobResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetExportJob",
 }));
 export type GetImportJobError =
   | BadRequestException
@@ -7373,6 +7422,7 @@ export const getImportJob: API.OperationMethod<
   input: GetImportJobRequest,
   output: GetImportJobResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetImportJob",
 }));
 export type GetMessageInsightsError =
   | BadRequestException
@@ -7394,6 +7444,7 @@ export const getMessageInsights: API.OperationMethod<
   input: GetMessageInsightsRequest,
   output: GetMessageInsightsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetMessageInsights",
 }));
 export type GetMultiRegionEndpointError =
   | BadRequestException
@@ -7415,6 +7466,7 @@ export const getMultiRegionEndpoint: API.OperationMethod<
   input: GetMultiRegionEndpointRequest,
   output: GetMultiRegionEndpointResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetMultiRegionEndpoint",
 }));
 export type GetReputationEntityError =
   | BadRequestException
@@ -7440,6 +7492,7 @@ export const getReputationEntity: API.OperationMethod<
   input: GetReputationEntityRequest,
   output: GetReputationEntityResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetReputationEntity",
 }));
 export type GetSuppressedDestinationError =
   | BadRequestException
@@ -7461,6 +7514,7 @@ export const getSuppressedDestination: API.OperationMethod<
   input: GetSuppressedDestinationRequest,
   output: GetSuppressedDestinationResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetSuppressedDestination",
 }));
 export type GetTenantError =
   | BadRequestException
@@ -7480,6 +7534,7 @@ export const getTenant: API.OperationMethod<
   input: GetTenantRequest,
   output: GetTenantResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetTenant",
 }));
 export type ListConfigurationSetsError =
   | BadRequestException
@@ -7518,6 +7573,7 @@ export const listConfigurationSets: API.OperationMethod<
   input: ListConfigurationSetsRequest,
   output: ListConfigurationSetsResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "ListConfigurationSets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7558,6 +7614,7 @@ export const listContactLists: API.OperationMethod<
   input: ListContactListsRequest,
   output: ListContactListsResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "ListContactLists",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7596,6 +7653,7 @@ export const listContacts: API.OperationMethod<
   input: ListContactsRequest,
   output: ListContactsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "ListContacts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7640,6 +7698,7 @@ export const listCustomVerificationEmailTemplates: API.OperationMethod<
   input: ListCustomVerificationEmailTemplatesRequest,
   output: ListCustomVerificationEmailTemplatesResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "ListCustomVerificationEmailTemplates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7678,6 +7737,7 @@ export const listDedicatedIpPools: API.OperationMethod<
   input: ListDedicatedIpPoolsRequest,
   output: ListDedicatedIpPoolsResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "ListDedicatedIpPools",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7718,6 +7778,7 @@ export const listDeliverabilityTestReports: API.OperationMethod<
   input: ListDeliverabilityTestReportsRequest,
   output: ListDeliverabilityTestReportsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "ListDeliverabilityTestReports",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7758,6 +7819,7 @@ export const listDomainDeliverabilityCampaigns: API.OperationMethod<
   input: ListDomainDeliverabilityCampaignsRequest,
   output: ListDomainDeliverabilityCampaignsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "ListDomainDeliverabilityCampaigns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7798,6 +7860,7 @@ export const listEmailIdentities: API.OperationMethod<
   input: ListEmailIdentitiesRequest,
   output: ListEmailIdentitiesResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "ListEmailIdentities",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7838,6 +7901,7 @@ export const listEmailTemplates: API.OperationMethod<
   input: ListEmailTemplatesRequest,
   output: ListEmailTemplatesResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "ListEmailTemplates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7875,6 +7939,7 @@ export const listExportJobs: API.OperationMethod<
   input: ListExportJobsRequest,
   output: ListExportJobsResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "ListExportJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7912,6 +7977,7 @@ export const listImportJobs: API.OperationMethod<
   input: ListImportJobsRequest,
   output: ListImportJobsResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "ListImportJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7952,6 +8018,7 @@ export const listMultiRegionEndpoints: API.OperationMethod<
   input: ListMultiRegionEndpointsRequest,
   output: ListMultiRegionEndpointsResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "ListMultiRegionEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7993,6 +8060,7 @@ export const listRecommendations: API.OperationMethod<
   input: ListRecommendationsRequest,
   output: ListRecommendationsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "ListRecommendations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8036,6 +8104,7 @@ export const listReputationEntities: API.OperationMethod<
   input: ListReputationEntitiesRequest,
   output: ListReputationEntitiesResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "ListReputationEntities",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8079,6 +8148,7 @@ export const listResourceTenants: API.OperationMethod<
   input: ListResourceTenantsRequest,
   output: ListResourceTenantsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "ListResourceTenants",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8127,6 +8197,7 @@ export const listSuppressedDestinations: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListSuppressedDestinations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8155,6 +8226,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "ListTagsForResource",
 }));
 export type ListTenantResourcesError =
   | BadRequestException
@@ -8192,6 +8264,7 @@ export const listTenantResources: API.OperationMethod<
   input: ListTenantResourcesRequest,
   output: ListTenantResourcesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "ListTenantResources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8233,6 +8306,7 @@ export const listTenants: API.OperationMethod<
   input: ListTenantsRequest,
   output: ListTenantsResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "ListTenants",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8256,6 +8330,7 @@ export const putAccountDedicatedIpWarmupAttributes: API.OperationMethod<
   input: PutAccountDedicatedIpWarmupAttributesRequest,
   output: PutAccountDedicatedIpWarmupAttributesResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "PutAccountDedicatedIpWarmupAttributes",
 }));
 export type PutAccountDetailsError =
   | BadRequestException
@@ -8274,6 +8349,7 @@ export const putAccountDetails: API.OperationMethod<
   input: PutAccountDetailsRequest,
   output: PutAccountDetailsResponse,
   errors: [BadRequestException, ConflictException, TooManyRequestsException],
+  operationName: "PutAccountDetails",
 }));
 export type PutAccountSendingAttributesError =
   | BadRequestException
@@ -8291,6 +8367,7 @@ export const putAccountSendingAttributes: API.OperationMethod<
   input: PutAccountSendingAttributesRequest,
   output: PutAccountSendingAttributesResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "PutAccountSendingAttributes",
 }));
 export type PutAccountSuppressionAttributesError =
   | BadRequestException
@@ -8308,6 +8385,7 @@ export const putAccountSuppressionAttributes: API.OperationMethod<
   input: PutAccountSuppressionAttributesRequest,
   output: PutAccountSuppressionAttributesResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "PutAccountSuppressionAttributes",
 }));
 export type PutAccountVdmAttributesError =
   | BadRequestException
@@ -8327,6 +8405,7 @@ export const putAccountVdmAttributes: API.OperationMethod<
   input: PutAccountVdmAttributesRequest,
   output: PutAccountVdmAttributesResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "PutAccountVdmAttributes",
 }));
 export type PutConfigurationSetArchivingOptionsError =
   | BadRequestException
@@ -8347,6 +8426,7 @@ export const putConfigurationSetArchivingOptions: API.OperationMethod<
   input: PutConfigurationSetArchivingOptionsRequest,
   output: PutConfigurationSetArchivingOptionsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "PutConfigurationSetArchivingOptions",
 }));
 export type PutConfigurationSetDeliveryOptionsError =
   | BadRequestException
@@ -8366,6 +8446,7 @@ export const putConfigurationSetDeliveryOptions: API.OperationMethod<
   input: PutConfigurationSetDeliveryOptionsRequest,
   output: PutConfigurationSetDeliveryOptionsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "PutConfigurationSetDeliveryOptions",
 }));
 export type PutConfigurationSetReputationOptionsError =
   | BadRequestException
@@ -8385,6 +8466,7 @@ export const putConfigurationSetReputationOptions: API.OperationMethod<
   input: PutConfigurationSetReputationOptionsRequest,
   output: PutConfigurationSetReputationOptionsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "PutConfigurationSetReputationOptions",
 }));
 export type PutConfigurationSetSendingOptionsError =
   | BadRequestException
@@ -8404,6 +8486,7 @@ export const putConfigurationSetSendingOptions: API.OperationMethod<
   input: PutConfigurationSetSendingOptionsRequest,
   output: PutConfigurationSetSendingOptionsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "PutConfigurationSetSendingOptions",
 }));
 export type PutConfigurationSetSuppressionOptionsError =
   | BadRequestException
@@ -8425,6 +8508,7 @@ export const putConfigurationSetSuppressionOptions: API.OperationMethod<
   input: PutConfigurationSetSuppressionOptionsRequest,
   output: PutConfigurationSetSuppressionOptionsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "PutConfigurationSetSuppressionOptions",
 }));
 export type PutConfigurationSetTrackingOptionsError =
   | BadRequestException
@@ -8444,6 +8528,7 @@ export const putConfigurationSetTrackingOptions: API.OperationMethod<
   input: PutConfigurationSetTrackingOptionsRequest,
   output: PutConfigurationSetTrackingOptionsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "PutConfigurationSetTrackingOptions",
 }));
 export type PutConfigurationSetVdmOptionsError =
   | BadRequestException
@@ -8464,6 +8549,7 @@ export const putConfigurationSetVdmOptions: API.OperationMethod<
   input: PutConfigurationSetVdmOptionsRequest,
   output: PutConfigurationSetVdmOptionsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "PutConfigurationSetVdmOptions",
 }));
 export type PutDedicatedIpInPoolError =
   | BadRequestException
@@ -8488,6 +8574,7 @@ export const putDedicatedIpInPool: API.OperationMethod<
   input: PutDedicatedIpInPoolRequest,
   output: PutDedicatedIpInPoolResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "PutDedicatedIpInPool",
 }));
 export type PutDedicatedIpPoolScalingAttributesError =
   | BadRequestException
@@ -8514,6 +8601,7 @@ export const putDedicatedIpPoolScalingAttributes: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PutDedicatedIpPoolScalingAttributes",
 }));
 export type PutDedicatedIpWarmupAttributesError =
   | BadRequestException
@@ -8532,6 +8620,7 @@ export const putDedicatedIpWarmupAttributes: API.OperationMethod<
   input: PutDedicatedIpWarmupAttributesRequest,
   output: PutDedicatedIpWarmupAttributesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "PutDedicatedIpWarmupAttributes",
 }));
 export type PutDeliverabilityDashboardOptionError =
   | AlreadyExistsException
@@ -8564,6 +8653,7 @@ export const putDeliverabilityDashboardOption: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PutDeliverabilityDashboardOption",
 }));
 export type PutEmailIdentityConfigurationSetAttributesError =
   | BadRequestException
@@ -8582,6 +8672,7 @@ export const putEmailIdentityConfigurationSetAttributes: API.OperationMethod<
   input: PutEmailIdentityConfigurationSetAttributesRequest,
   output: PutEmailIdentityConfigurationSetAttributesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "PutEmailIdentityConfigurationSetAttributes",
 }));
 export type PutEmailIdentityDkimAttributesError =
   | BadRequestException
@@ -8600,6 +8691,7 @@ export const putEmailIdentityDkimAttributes: API.OperationMethod<
   input: PutEmailIdentityDkimAttributesRequest,
   output: PutEmailIdentityDkimAttributesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "PutEmailIdentityDkimAttributes",
 }));
 export type PutEmailIdentityDkimSigningAttributesError =
   | BadRequestException
@@ -8632,6 +8724,7 @@ export const putEmailIdentityDkimSigningAttributes: API.OperationMethod<
   input: PutEmailIdentityDkimSigningAttributesRequest,
   output: PutEmailIdentityDkimSigningAttributesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "PutEmailIdentityDkimSigningAttributes",
 }));
 export type PutEmailIdentityFeedbackAttributesError =
   | BadRequestException
@@ -8661,6 +8754,7 @@ export const putEmailIdentityFeedbackAttributes: API.OperationMethod<
   input: PutEmailIdentityFeedbackAttributesRequest,
   output: PutEmailIdentityFeedbackAttributesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "PutEmailIdentityFeedbackAttributes",
 }));
 export type PutEmailIdentityMailFromAttributesError =
   | BadRequestException
@@ -8680,6 +8774,7 @@ export const putEmailIdentityMailFromAttributes: API.OperationMethod<
   input: PutEmailIdentityMailFromAttributesRequest,
   output: PutEmailIdentityMailFromAttributesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "PutEmailIdentityMailFromAttributes",
 }));
 export type PutSuppressedDestinationError =
   | BadRequestException
@@ -8701,6 +8796,7 @@ export const putSuppressedDestination: API.OperationMethod<
   input: PutSuppressedDestinationRequest,
   output: PutSuppressedDestinationResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "PutSuppressedDestination",
 }));
 export type PutTenantSuppressionAttributesError =
   | BadRequestException
@@ -8724,6 +8820,7 @@ export const putTenantSuppressionAttributes: API.OperationMethod<
   input: PutTenantSuppressionAttributesRequest,
   output: PutTenantSuppressionAttributesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "PutTenantSuppressionAttributes",
 }));
 export type SendBulkEmailError =
   | AccountSuspendedException
@@ -8756,6 +8853,7 @@ export const sendBulkEmail: API.OperationMethod<
     SendingPausedException,
     TooManyRequestsException,
   ],
+  operationName: "SendBulkEmail",
 }));
 export type SendCustomVerificationEmailError =
   | BadRequestException
@@ -8796,6 +8894,7 @@ export const sendCustomVerificationEmail: API.OperationMethod<
     SendingPausedException,
     TooManyRequestsException,
   ],
+  operationName: "SendCustomVerificationEmail",
 }));
 export type SendEmailError =
   | AccountSuspendedException
@@ -8843,6 +8942,7 @@ export const sendEmail: API.OperationMethod<
     SendingPausedException,
     TooManyRequestsException,
   ],
+  operationName: "SendEmail",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -8876,6 +8976,7 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "TagResource",
 }));
 export type TestRenderEmailTemplateError =
   | BadRequestException
@@ -8897,6 +8998,7 @@ export const testRenderEmailTemplate: API.OperationMethod<
   input: TestRenderEmailTemplateRequest,
   output: TestRenderEmailTemplateResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "TestRenderEmailTemplate",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -8921,6 +9023,7 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateConfigurationSetEventDestinationError =
   | BadRequestException
@@ -8944,6 +9047,7 @@ export const updateConfigurationSetEventDestination: API.OperationMethod<
   input: UpdateConfigurationSetEventDestinationRequest,
   output: UpdateConfigurationSetEventDestinationResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "UpdateConfigurationSetEventDestination",
 }));
 export type UpdateContactError =
   | BadRequestException
@@ -8972,6 +9076,7 @@ export const updateContact: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateContact",
 }));
 export type UpdateContactListError =
   | BadRequestException
@@ -8996,6 +9101,7 @@ export const updateContactList: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateContactList",
 }));
 export type UpdateCustomVerificationEmailTemplateError =
   | BadRequestException
@@ -9020,6 +9126,7 @@ export const updateCustomVerificationEmailTemplate: API.OperationMethod<
   input: UpdateCustomVerificationEmailTemplateRequest,
   output: UpdateCustomVerificationEmailTemplateResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "UpdateCustomVerificationEmailTemplate",
 }));
 export type UpdateEmailIdentityPolicyError =
   | BadRequestException
@@ -9050,6 +9157,7 @@ export const updateEmailIdentityPolicy: API.OperationMethod<
   input: UpdateEmailIdentityPolicyRequest,
   output: UpdateEmailIdentityPolicyResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "UpdateEmailIdentityPolicy",
 }));
 export type UpdateEmailTemplateError =
   | BadRequestException
@@ -9072,6 +9180,7 @@ export const updateEmailTemplate: API.OperationMethod<
   input: UpdateEmailTemplateRequest,
   output: UpdateEmailTemplateResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "UpdateEmailTemplate",
 }));
 export type UpdateReputationEntityCustomerManagedStatusError =
   | BadRequestException
@@ -9099,6 +9208,7 @@ export const updateReputationEntityCustomerManagedStatus: API.OperationMethod<
   input: UpdateReputationEntityCustomerManagedStatusRequest,
   output: UpdateReputationEntityCustomerManagedStatusResponse,
   errors: [BadRequestException, ConflictException, TooManyRequestsException],
+  operationName: "UpdateReputationEntityCustomerManagedStatus",
 }));
 export type UpdateReputationEntityPolicyError =
   | BadRequestException
@@ -9122,4 +9232,5 @@ export const updateReputationEntityPolicy: API.OperationMethod<
   input: UpdateReputationEntityPolicyRequest,
   output: UpdateReputationEntityPolicyResponse,
   errors: [BadRequestException, ConflictException, TooManyRequestsException],
+  operationName: "UpdateReputationEntityPolicy",
 }));

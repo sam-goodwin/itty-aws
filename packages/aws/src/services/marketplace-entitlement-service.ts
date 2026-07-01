@@ -262,6 +262,7 @@ export const getEntitlements: API.OperationMethod<
     InvalidParameterException,
     ThrottlingException,
   ],
+  operationName: "GetEntitlements",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

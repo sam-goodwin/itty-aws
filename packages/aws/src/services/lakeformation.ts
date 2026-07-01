@@ -3240,6 +3240,7 @@ export const addLFTagsToResource: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "AddLFTagsToResource",
 }));
 export type AssumeDecoratedRoleWithSAMLError =
   | AccessDeniedException
@@ -3281,6 +3282,7 @@ export const assumeDecoratedRoleWithSAML: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "AssumeDecoratedRoleWithSAML",
 }));
 export type BatchGrantPermissionsError =
   | InvalidInputException
@@ -3298,6 +3300,7 @@ export const batchGrantPermissions: API.OperationMethod<
   input: BatchGrantPermissionsRequest,
   output: BatchGrantPermissionsResponse,
   errors: [InvalidInputException, OperationTimeoutException],
+  operationName: "BatchGrantPermissions",
 }));
 export type BatchRevokePermissionsError =
   | InvalidInputException
@@ -3315,6 +3318,7 @@ export const batchRevokePermissions: API.OperationMethod<
   input: BatchRevokePermissionsRequest,
   output: BatchRevokePermissionsResponse,
   errors: [InvalidInputException, OperationTimeoutException],
+  operationName: "BatchRevokePermissions",
 }));
 export type CancelTransactionError =
   | ConcurrentModificationException
@@ -3345,6 +3349,7 @@ export const cancelTransaction: API.OperationMethod<
     TransactionCommitInProgressException,
     TransactionCommittedException,
   ],
+  operationName: "CancelTransaction",
 }));
 export type CommitTransactionError =
   | ConcurrentModificationException
@@ -3373,6 +3378,7 @@ export const commitTransaction: API.OperationMethod<
     OperationTimeoutException,
     TransactionCanceledException,
   ],
+  operationName: "CommitTransaction",
 }));
 export type CreateDataCellsFilterError =
   | AccessDeniedException
@@ -3403,6 +3409,7 @@ export const createDataCellsFilter: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateDataCellsFilter",
 }));
 export type CreateLakeFormationIdentityCenterConfigurationError =
   | AccessDeniedException
@@ -3431,6 +3438,7 @@ export const createLakeFormationIdentityCenterConfiguration: API.OperationMethod
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "CreateLakeFormationIdentityCenterConfiguration",
 }));
 export type CreateLakeFormationOptInError =
   | AccessDeniedException
@@ -3461,6 +3469,7 @@ export const createLakeFormationOptIn: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateLakeFormationOptIn",
 }));
 export type CreateLFTagError =
   | AccessDeniedException
@@ -3489,6 +3498,7 @@ export const createLFTag: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateLFTag",
 }));
 export type CreateLFTagExpressionError =
   | AccessDeniedException
@@ -3525,6 +3535,7 @@ export const createLFTagExpression: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "CreateLFTagExpression",
 }));
 export type DeleteDataCellsFilterError =
   | AccessDeniedException
@@ -3551,6 +3562,7 @@ export const deleteDataCellsFilter: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteDataCellsFilter",
 }));
 export type DeleteLakeFormationIdentityCenterConfigurationError =
   | AccessDeniedException
@@ -3579,6 +3591,7 @@ export const deleteLakeFormationIdentityCenterConfiguration: API.OperationMethod
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteLakeFormationIdentityCenterConfiguration",
 }));
 export type DeleteLakeFormationOptInError =
   | AccessDeniedException
@@ -3607,6 +3620,7 @@ export const deleteLakeFormationOptIn: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteLakeFormationOptIn",
 }));
 export type DeleteLFTagError =
   | AccessDeniedException
@@ -3639,6 +3653,7 @@ export const deleteLFTag: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteLFTag",
 }));
 export type DeleteLFTagExpressionError =
   | AccessDeniedException
@@ -3666,6 +3681,7 @@ export const deleteLFTagExpression: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeleteLFTagExpression",
 }));
 export type DeleteObjectsOnCancelError =
   | ConcurrentModificationException
@@ -3703,6 +3719,7 @@ export const deleteObjectsOnCancel: API.OperationMethod<
     TransactionCanceledException,
     TransactionCommittedException,
   ],
+  operationName: "DeleteObjectsOnCancel",
 }));
 export type DeregisterResourceError =
   | EntityNotFoundException
@@ -3729,6 +3746,7 @@ export const deregisterResource: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DeregisterResource",
 }));
 export type DescribeLakeFormationIdentityCenterConfigurationError =
   | AccessDeniedException
@@ -3755,6 +3773,7 @@ export const describeLakeFormationIdentityCenterConfiguration: API.OperationMeth
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DescribeLakeFormationIdentityCenterConfiguration",
 }));
 export type DescribeResourceError =
   | EntityNotFoundException
@@ -3779,6 +3798,7 @@ export const describeResource: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DescribeResource",
 }));
 export type DescribeTransactionError =
   | EntityNotFoundException
@@ -3803,6 +3823,7 @@ export const describeTransaction: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "DescribeTransaction",
 }));
 export type ExtendTransactionError =
   | EntityNotFoundException
@@ -3835,6 +3856,7 @@ export const extendTransaction: API.OperationMethod<
     TransactionCommitInProgressException,
     TransactionCommittedException,
   ],
+  operationName: "ExtendTransaction",
 }));
 export type GetDataCellsFilterError =
   | AccessDeniedException
@@ -3861,6 +3883,7 @@ export const getDataCellsFilter: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetDataCellsFilter",
 }));
 export type GetDataLakePrincipalError =
   | AccessDeniedException
@@ -3883,6 +3906,7 @@ export const getDataLakePrincipal: API.OperationMethod<
     InternalServiceException,
     OperationTimeoutException,
   ],
+  operationName: "GetDataLakePrincipal",
 }));
 export type GetDataLakeSettingsError =
   | EntityNotFoundException
@@ -3905,6 +3929,7 @@ export const getDataLakeSettings: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  operationName: "GetDataLakeSettings",
 }));
 export type GetEffectivePermissionsForPathError =
   | EntityNotFoundException
@@ -3945,6 +3970,7 @@ export const getEffectivePermissionsForPath: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetEffectivePermissionsForPath",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3976,6 +4002,7 @@ export const getLFTag: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetLFTag",
 }));
 export type GetLFTagExpressionError =
   | AccessDeniedException
@@ -4002,6 +4029,7 @@ export const getLFTagExpression: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetLFTagExpression",
 }));
 export type GetQueryStateError =
   | AccessDeniedException
@@ -4024,6 +4052,7 @@ export const getQueryState: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  operationName: "GetQueryState",
 }));
 export type GetQueryStatisticsError =
   | AccessDeniedException
@@ -4052,6 +4081,7 @@ export const getQueryStatistics: API.OperationMethod<
     StatisticsNotReadyYetException,
     ThrottledException,
   ],
+  operationName: "GetQueryStatistics",
 }));
 export type GetResourceLFTagsError =
   | AccessDeniedException
@@ -4080,6 +4110,7 @@ export const getResourceLFTags: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetResourceLFTags",
 }));
 export type GetTableObjectsError =
   | EntityNotFoundException
@@ -4125,6 +4156,7 @@ export const getTableObjects: API.OperationMethod<
     TransactionCanceledException,
     TransactionCommittedException,
   ],
+  operationName: "GetTableObjects",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4179,6 +4211,7 @@ export const getTemporaryDataLocationCredentials: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "GetTemporaryDataLocationCredentials",
 }));
 export type GetTemporaryGluePartitionCredentialsError =
   | AccessDeniedException
@@ -4207,6 +4240,7 @@ export const getTemporaryGluePartitionCredentials: API.OperationMethod<
     OperationTimeoutException,
     PermissionTypeMismatchException,
   ],
+  operationName: "GetTemporaryGluePartitionCredentials",
 }));
 export type GetTemporaryGlueTableCredentialsError =
   | AccessDeniedException
@@ -4237,6 +4271,7 @@ export const getTemporaryGlueTableCredentials: API.OperationMethod<
     OperationTimeoutException,
     PermissionTypeMismatchException,
   ],
+  operationName: "GetTemporaryGlueTableCredentials",
 }));
 export type GetWorkUnitResultsError =
   | AccessDeniedException
@@ -4263,6 +4298,7 @@ export const getWorkUnitResults: API.OperationMethod<
     InvalidInputException,
     ThrottledException,
   ],
+  operationName: "GetWorkUnitResults",
 }));
 export type GetWorkUnitsError =
   | AccessDeniedException
@@ -4304,6 +4340,7 @@ export const getWorkUnits: API.OperationMethod<
     InvalidInputException,
     WorkUnitsNotReadyYetException,
   ],
+  operationName: "GetWorkUnits",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4334,6 +4371,7 @@ export const grantPermissions: API.OperationMethod<
     EntityNotFoundException,
     InvalidInputException,
   ],
+  operationName: "GrantPermissions",
 }));
 export type ListDataCellsFilterError =
   | AccessDeniedException
@@ -4373,6 +4411,7 @@ export const listDataCellsFilter: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListDataCellsFilter",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4418,6 +4457,7 @@ export const listLakeFormationOptIns: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListLakeFormationOptIns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4464,6 +4504,7 @@ export const listLFTagExpressions: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListLFTagExpressions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4511,6 +4552,7 @@ export const listLFTags: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListLFTags",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4560,6 +4602,7 @@ export const listPermissions: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListPermissions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4602,6 +4645,7 @@ export const listResources: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListResources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4646,6 +4690,7 @@ export const listTableStorageOptimizers: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  operationName: "ListTableStorageOptimizers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4690,6 +4735,7 @@ export const listTransactions: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "ListTransactions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4714,6 +4760,7 @@ export const putDataLakeSettings: API.OperationMethod<
   input: PutDataLakeSettingsRequest,
   output: PutDataLakeSettingsResponse,
   errors: [InternalServiceException, InvalidInputException],
+  operationName: "PutDataLakeSettings",
 }));
 export type RegisterResourceError =
   | AccessDeniedException
@@ -4755,6 +4802,7 @@ export const registerResource: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "RegisterResource",
 }));
 export type RemoveLFTagsFromResourceError =
   | AccessDeniedException
@@ -4785,6 +4833,7 @@ export const removeLFTagsFromResource: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "RemoveLFTagsFromResource",
 }));
 export type RevokePermissionsError =
   | ConcurrentModificationException
@@ -4807,6 +4856,7 @@ export const revokePermissions: API.OperationMethod<
     EntityNotFoundException,
     InvalidInputException,
   ],
+  operationName: "RevokePermissions",
 }));
 export type SearchDatabasesByLFTagsError =
   | AccessDeniedException
@@ -4850,6 +4900,7 @@ export const searchDatabasesByLFTags: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "SearchDatabasesByLFTags",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4899,6 +4950,7 @@ export const searchTablesByLFTags: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "SearchTablesByLFTags",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4931,6 +4983,7 @@ export const startQueryPlanning: API.OperationMethod<
     InvalidInputException,
     ThrottledException,
   ],
+  operationName: "StartQueryPlanning",
 }));
 export type StartTransactionError =
   | InternalServiceException
@@ -4948,6 +5001,7 @@ export const startTransaction: API.OperationMethod<
   input: StartTransactionRequest,
   output: StartTransactionResponse,
   errors: [InternalServiceException, OperationTimeoutException],
+  operationName: "StartTransaction",
 }));
 export type UpdateDataCellsFilterError =
   | AccessDeniedException
@@ -4976,6 +5030,7 @@ export const updateDataCellsFilter: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UpdateDataCellsFilter",
 }));
 export type UpdateLakeFormationIdentityCenterConfigurationError =
   | AccessDeniedException
@@ -5004,6 +5059,7 @@ export const updateLakeFormationIdentityCenterConfiguration: API.OperationMethod
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UpdateLakeFormationIdentityCenterConfiguration",
 }));
 export type UpdateLFTagError =
   | AccessDeniedException
@@ -5032,6 +5088,7 @@ export const updateLFTag: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UpdateLFTag",
 }));
 export type UpdateLFTagExpressionError =
   | AccessDeniedException
@@ -5061,6 +5118,7 @@ export const updateLFTagExpression: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  operationName: "UpdateLFTagExpression",
 }));
 export type UpdateResourceError =
   | EntityNotFoundException
@@ -5085,6 +5143,7 @@ export const updateResource: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  operationName: "UpdateResource",
 }));
 export type UpdateTableObjectsError =
   | ConcurrentModificationException
@@ -5119,6 +5178,7 @@ export const updateTableObjects: API.OperationMethod<
     TransactionCommitInProgressException,
     TransactionCommittedException,
   ],
+  operationName: "UpdateTableObjects",
 }));
 export type UpdateTableStorageOptimizerError =
   | AccessDeniedException
@@ -5143,4 +5203,5 @@ export const updateTableStorageOptimizer: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  operationName: "UpdateTableStorageOptimizer",
 }));

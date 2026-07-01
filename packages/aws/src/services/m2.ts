@@ -2447,6 +2447,7 @@ export const getSignedBluinsightsUrl: API.OperationMethod<
   input: GetSignedBluinsightsUrlRequest,
   output: GetSignedBluinsightsUrlResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
+  operationName: "GetSignedBluinsightsUrl",
 }));
 export type ListEngineVersionsError =
   | AccessDeniedException
@@ -2486,6 +2487,7 @@ export const listEngineVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEngineVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2518,6 +2520,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -2546,6 +2549,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -2572,6 +2576,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateApplicationError =
   | AccessDeniedException
@@ -2601,6 +2606,7 @@ export const createApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateApplication",
 }));
 export type GetApplicationError =
   | AccessDeniedException
@@ -2627,6 +2633,7 @@ export const getApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetApplication",
 }));
 export type UpdateApplicationError =
   | AccessDeniedException
@@ -2655,6 +2662,7 @@ export const updateApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateApplication",
 }));
 export type DeleteApplicationError =
   | AccessDeniedException
@@ -2681,6 +2689,7 @@ export const deleteApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteApplication",
 }));
 export type ListApplicationsError =
   | AccessDeniedException
@@ -2722,6 +2731,7 @@ export const listApplications: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListApplications",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2756,6 +2766,7 @@ export const cancelBatchJobExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelBatchJobExecution",
 }));
 export type CreateDataSetExportTaskError =
   | AccessDeniedException
@@ -2786,6 +2797,7 @@ export const createDataSetExportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDataSetExportTask",
 }));
 export type CreateDataSetImportTaskError =
   | AccessDeniedException
@@ -2816,6 +2828,7 @@ export const createDataSetImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDataSetImportTask",
 }));
 export type CreateDeploymentError =
   | AccessDeniedException
@@ -2847,6 +2860,7 @@ export const createDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDeployment",
 }));
 export type DeleteApplicationFromEnvironmentError =
   | AccessDeniedException
@@ -2878,6 +2892,7 @@ export const deleteApplicationFromEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteApplicationFromEnvironment",
 }));
 export type GetApplicationVersionError =
   | AccessDeniedException
@@ -2904,6 +2919,7 @@ export const getApplicationVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetApplicationVersion",
 }));
 export type GetBatchJobExecutionError =
   | AccessDeniedException
@@ -2930,6 +2946,7 @@ export const getBatchJobExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetBatchJobExecution",
 }));
 export type GetDataSetDetailsError =
   | AccessDeniedException
@@ -2962,6 +2979,7 @@ export const getDataSetDetails: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataSetDetails",
 }));
 export type GetDataSetExportTaskError =
   | AccessDeniedException
@@ -2988,6 +3006,7 @@ export const getDataSetExportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataSetExportTask",
 }));
 export type GetDataSetImportTaskError =
   | AccessDeniedException
@@ -3014,6 +3033,7 @@ export const getDataSetImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDataSetImportTask",
 }));
 export type GetDeploymentError =
   | AccessDeniedException
@@ -3040,6 +3060,7 @@ export const getDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDeployment",
 }));
 export type ListApplicationVersionsError =
   | AccessDeniedException
@@ -3081,6 +3102,7 @@ export const listApplicationVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListApplicationVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3130,6 +3152,7 @@ export const listBatchJobDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBatchJobDefinitions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3178,6 +3201,7 @@ export const listBatchJobExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBatchJobExecutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3212,6 +3236,7 @@ export const listBatchJobRestartPoints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListBatchJobRestartPoints",
 }));
 export type ListDataSetExportHistoryError =
   | AccessDeniedException
@@ -3253,6 +3278,7 @@ export const listDataSetExportHistory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataSetExportHistory",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3300,6 +3326,7 @@ export const listDataSetImportHistory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataSetImportHistory",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3355,6 +3382,7 @@ export const listDataSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDataSets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3404,6 +3432,7 @@ export const listDeployments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDeployments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3438,6 +3467,7 @@ export const startApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartApplication",
 }));
 export type StartBatchJobError =
   | AccessDeniedException
@@ -3467,6 +3497,7 @@ export const startBatchJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartBatchJob",
 }));
 export type StopApplicationError =
   | AccessDeniedException
@@ -3495,6 +3526,7 @@ export const stopApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopApplication",
 }));
 export type CreateEnvironmentError =
   | AccessDeniedException
@@ -3523,6 +3555,7 @@ export const createEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEnvironment",
 }));
 export type GetEnvironmentError =
   | AccessDeniedException
@@ -3549,6 +3582,7 @@ export const getEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEnvironment",
 }));
 export type UpdateEnvironmentError =
   | AccessDeniedException
@@ -3579,6 +3613,7 @@ export const updateEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateEnvironment",
 }));
 export type DeleteEnvironmentError =
   | AccessDeniedException
@@ -3607,6 +3642,7 @@ export const deleteEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteEnvironment",
 }));
 export type ListEnvironmentsError =
   | AccessDeniedException
@@ -3646,6 +3682,7 @@ export const listEnvironments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEnvironments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

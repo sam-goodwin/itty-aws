@@ -2205,6 +2205,7 @@ export const associateServiceRoleToAccount: API.OperationMethod<
   input: AssociateServiceRoleToAccountRequest,
   output: AssociateServiceRoleToAccountResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "AssociateServiceRoleToAccount",
 }));
 export type BatchAssociateClientDeviceWithCoreDeviceError =
   | AccessDeniedException
@@ -2241,6 +2242,7 @@ export const batchAssociateClientDeviceWithCoreDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchAssociateClientDeviceWithCoreDevice",
 }));
 export type BatchDisassociateClientDeviceFromCoreDeviceError =
   | AccessDeniedException
@@ -2269,6 +2271,7 @@ export const batchDisassociateClientDeviceFromCoreDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchDisassociateClientDeviceFromCoreDevice",
 }));
 export type CancelDeploymentError =
   | AccessDeniedException
@@ -2299,6 +2302,7 @@ export const cancelDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelDeployment",
 }));
 export type CreateComponentVersionError =
   | AccessDeniedException
@@ -2358,6 +2362,7 @@ export const createComponentVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateComponentVersion",
 }));
 export type CreateDeploymentError =
   | AccessDeniedException
@@ -2401,6 +2406,7 @@ export const createDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDeployment",
 }));
 export type DeleteComponentError =
   | AccessDeniedException
@@ -2434,6 +2440,7 @@ export const deleteComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteComponent",
 }));
 export type DeleteCoreDeviceError =
   | AccessDeniedException
@@ -2465,6 +2472,7 @@ export const deleteCoreDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteCoreDevice",
 }));
 export type DeleteDeploymentError =
   | AccessDeniedException
@@ -2498,6 +2506,7 @@ export const deleteDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDeployment",
 }));
 export type DescribeComponentError =
   | AccessDeniedException
@@ -2524,6 +2533,7 @@ export const describeComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeComponent",
 }));
 export type DisassociateServiceRoleFromAccountError =
   | InternalServerException
@@ -2543,6 +2553,7 @@ export const disassociateServiceRoleFromAccount: API.OperationMethod<
   input: DisassociateServiceRoleFromAccountRequest,
   output: DisassociateServiceRoleFromAccountResponse,
   errors: [InternalServerException],
+  operationName: "DisassociateServiceRoleFromAccount",
 }));
 export type GetComponentError =
   | AccessDeniedException
@@ -2569,6 +2580,7 @@ export const getComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetComponent",
 }));
 export type GetComponentVersionArtifactError =
   | AccessDeniedException
@@ -2597,6 +2609,7 @@ export const getComponentVersionArtifact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetComponentVersionArtifact",
 }));
 export type GetConnectivityInfoError =
   | InternalServerException
@@ -2621,6 +2634,7 @@ export const getConnectivityInfo: API.OperationMethod<
   input: GetConnectivityInfoRequest,
   output: GetConnectivityInfoResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "GetConnectivityInfo",
 }));
 export type GetCoreDeviceError =
   | AccessDeniedException
@@ -2666,6 +2680,7 @@ export const getCoreDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCoreDevice",
 }));
 export type GetDeploymentError =
   | AccessDeniedException
@@ -2692,6 +2707,7 @@ export const getDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDeployment",
 }));
 export type GetServiceRoleForAccountError =
   | InternalServerException
@@ -2711,6 +2727,7 @@ export const getServiceRoleForAccount: API.OperationMethod<
   input: GetServiceRoleForAccountRequest,
   output: GetServiceRoleForAccountResponse,
   errors: [InternalServerException],
+  operationName: "GetServiceRoleForAccount",
 }));
 export type ListClientDevicesAssociatedWithCoreDeviceError =
   | AccessDeniedException
@@ -2753,6 +2770,7 @@ export const listClientDevicesAssociatedWithCoreDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListClientDevicesAssociatedWithCoreDevice",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2801,6 +2819,7 @@ export const listComponents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListComponents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2849,6 +2868,7 @@ export const listComponentVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListComponentVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2918,6 +2938,7 @@ export const listCoreDevices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListCoreDevices",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2963,6 +2984,7 @@ export const listDeployments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDeployments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3010,6 +3032,7 @@ export const listEffectiveDeployments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEffectiveDeployments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3079,6 +3102,7 @@ export const listInstalledComponents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListInstalledComponents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3107,6 +3131,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ResolveComponentCandidatesError =
   | AccessDeniedException
@@ -3150,6 +3175,7 @@ export const resolveComponentCandidates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ResolveComponentCandidates",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -3173,6 +3199,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -3195,6 +3222,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateConnectivityInfoError =
   | InternalServerException
@@ -3219,4 +3247,5 @@ export const updateConnectivityInfo: API.OperationMethod<
   input: UpdateConnectivityInfoRequest,
   output: UpdateConnectivityInfoResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "UpdateConnectivityInfo",
 }));

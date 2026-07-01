@@ -378,6 +378,7 @@ export const getEstimatedCarbonEmissions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEstimatedCarbonEmissions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -423,6 +424,7 @@ export const getEstimatedCarbonEmissionsDimensionValues: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEstimatedCarbonEmissionsDimensionValues",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

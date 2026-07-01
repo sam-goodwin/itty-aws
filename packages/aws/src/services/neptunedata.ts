@@ -2355,6 +2355,7 @@ export const cancelGremlinQuery: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "CancelGremlinQuery",
 }));
 export type CancelLoaderJobError =
   | BadRequestException
@@ -2399,6 +2400,7 @@ export const cancelLoaderJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "CancelLoaderJob",
 }));
 export type CancelMLDataProcessingJobError =
   | BadRequestException
@@ -2439,6 +2441,7 @@ export const cancelMLDataProcessingJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "CancelMLDataProcessingJob",
 }));
 export type CancelMLModelTrainingJobError =
   | BadRequestException
@@ -2479,6 +2482,7 @@ export const cancelMLModelTrainingJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "CancelMLModelTrainingJob",
 }));
 export type CancelMLModelTransformJobError =
   | BadRequestException
@@ -2519,6 +2523,7 @@ export const cancelMLModelTransformJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "CancelMLModelTransformJob",
 }));
 export type CancelOpenCypherQueryError =
   | BadRequestException
@@ -2567,6 +2572,7 @@ export const cancelOpenCypherQuery: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "CancelOpenCypherQuery",
 }));
 export type CreateMLEndpointError =
   | BadRequestException
@@ -2607,6 +2613,7 @@ export const createMLEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "CreateMLEndpoint",
 }));
 export type DeleteMLEndpointError =
   | BadRequestException
@@ -2647,6 +2654,7 @@ export const deleteMLEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "DeleteMLEndpoint",
 }));
 export type DeletePropertygraphStatisticsError =
   | AccessDeniedException
@@ -2691,6 +2699,7 @@ export const deletePropertygraphStatistics: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "DeletePropertygraphStatistics",
 }));
 export type DeleteSparqlStatisticsError =
   | AccessDeniedException
@@ -2735,6 +2744,7 @@ export const deleteSparqlStatistics: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "DeleteSparqlStatistics",
 }));
 export type ExecuteFastResetError =
   | AccessDeniedException
@@ -2781,6 +2791,7 @@ export const executeFastReset: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "ExecuteFastReset",
 }));
 export type ExecuteGremlinExplainQueryError =
   | BadRequestException
@@ -2851,6 +2862,7 @@ export const executeGremlinExplainQuery: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "ExecuteGremlinExplainQuery",
 }));
 export type ExecuteGremlinProfileQueryError =
   | BadRequestException
@@ -2911,6 +2923,7 @@ export const executeGremlinProfileQuery: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "ExecuteGremlinProfileQuery",
 }));
 export type ExecuteGremlinQueryError =
   | BadRequestException
@@ -2977,6 +2990,7 @@ export const executeGremlinQuery: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "ExecuteGremlinQuery",
 }));
 export type ExecuteOpenCypherExplainQueryError =
   | BadRequestException
@@ -3039,6 +3053,7 @@ export const executeOpenCypherExplainQuery: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "ExecuteOpenCypherExplainQuery",
 }));
 export type ExecuteOpenCypherQueryError =
   | BadRequestException
@@ -3111,6 +3126,7 @@ export const executeOpenCypherQuery: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "ExecuteOpenCypherQuery",
 }));
 export type GetEngineStatusError =
   | ClientTimeoutException
@@ -3145,6 +3161,7 @@ export const getEngineStatus: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "GetEngineStatus",
 }));
 export type GetGremlinQueryStatusError =
   | AccessDeniedException
@@ -3197,6 +3214,7 @@ export const getGremlinQueryStatus: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "GetGremlinQueryStatus",
 }));
 export type GetLoaderJobStatusError =
   | BadRequestException
@@ -3243,6 +3261,7 @@ export const getLoaderJobStatus: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "GetLoaderJobStatus",
 }));
 export type GetMLDataProcessingJobError =
   | BadRequestException
@@ -3283,6 +3302,7 @@ export const getMLDataProcessingJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "GetMLDataProcessingJob",
 }));
 export type GetMLEndpointError =
   | BadRequestException
@@ -3323,6 +3343,7 @@ export const getMLEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "GetMLEndpoint",
 }));
 export type GetMLModelTrainingJobError =
   | BadRequestException
@@ -3363,6 +3384,7 @@ export const getMLModelTrainingJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "GetMLModelTrainingJob",
 }));
 export type GetMLModelTransformJobError =
   | BadRequestException
@@ -3403,6 +3425,7 @@ export const getMLModelTransformJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "GetMLModelTransformJob",
 }));
 export type GetOpenCypherQueryStatusError =
   | AccessDeniedException
@@ -3457,6 +3480,7 @@ export const getOpenCypherQueryStatus: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "GetOpenCypherQueryStatus",
 }));
 export type GetPropertygraphStatisticsError =
   | AccessDeniedException
@@ -3501,6 +3525,7 @@ export const getPropertygraphStatistics: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "GetPropertygraphStatistics",
 }));
 export type GetPropertygraphStreamError =
   | ClientTimeoutException
@@ -3559,6 +3584,7 @@ export const getPropertygraphStream: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "GetPropertygraphStream",
 }));
 export type GetPropertygraphSummaryError =
   | AccessDeniedException
@@ -3603,6 +3629,7 @@ export const getPropertygraphSummary: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "GetPropertygraphSummary",
 }));
 export type GetRDFGraphSummaryError =
   | AccessDeniedException
@@ -3647,6 +3674,7 @@ export const getRDFGraphSummary: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "GetRDFGraphSummary",
 }));
 export type GetSparqlStatisticsError =
   | AccessDeniedException
@@ -3689,6 +3717,7 @@ export const getSparqlStatistics: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "GetSparqlStatistics",
 }));
 export type GetSparqlStreamError =
   | ClientTimeoutException
@@ -3739,6 +3768,7 @@ export const getSparqlStream: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "GetSparqlStream",
 }));
 export type ListGremlinQueriesError =
   | AccessDeniedException
@@ -3791,6 +3821,7 @@ export const listGremlinQueries: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "ListGremlinQueries",
 }));
 export type ListLoaderJobsError =
   | BadRequestException
@@ -3833,6 +3864,7 @@ export const listLoaderJobs: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "ListLoaderJobs",
 }));
 export type ListMLDataProcessingJobsError =
   | BadRequestException
@@ -3873,6 +3905,7 @@ export const listMLDataProcessingJobs: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "ListMLDataProcessingJobs",
 }));
 export type ListMLEndpointsError =
   | BadRequestException
@@ -3913,6 +3946,7 @@ export const listMLEndpoints: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "ListMLEndpoints",
 }));
 export type ListMLModelTrainingJobsError =
   | BadRequestException
@@ -3953,6 +3987,7 @@ export const listMLModelTrainingJobs: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "ListMLModelTrainingJobs",
 }));
 export type ListMLModelTransformJobsError =
   | BadRequestException
@@ -3993,6 +4028,7 @@ export const listMLModelTransformJobs: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "ListMLModelTransformJobs",
 }));
 export type ListOpenCypherQueriesError =
   | AccessDeniedException
@@ -4047,6 +4083,7 @@ export const listOpenCypherQueries: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "ListOpenCypherQueries",
 }));
 export type ManagePropertygraphStatisticsError =
   | AccessDeniedException
@@ -4091,6 +4128,7 @@ export const managePropertygraphStatistics: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "ManagePropertygraphStatistics",
 }));
 export type ManageSparqlStatisticsError =
   | AccessDeniedException
@@ -4135,6 +4173,7 @@ export const manageSparqlStatistics: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "ManageSparqlStatistics",
 }));
 export type StartLoaderJobError =
   | BadRequestException
@@ -4181,6 +4220,7 @@ export const startLoaderJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "StartLoaderJob",
 }));
 export type StartMLDataProcessingJobError =
   | BadRequestException
@@ -4221,6 +4261,7 @@ export const startMLDataProcessingJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "StartMLDataProcessingJob",
 }));
 export type StartMLModelTrainingJobError =
   | BadRequestException
@@ -4261,6 +4302,7 @@ export const startMLModelTrainingJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "StartMLModelTrainingJob",
 }));
 export type StartMLModelTransformJobError =
   | BadRequestException
@@ -4301,4 +4343,5 @@ export const startMLModelTransformJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  operationName: "StartMLModelTransformJob",
 }));

@@ -3015,6 +3015,7 @@ export const disassociateHostedZone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateHostedZone",
 }));
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -3031,6 +3032,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | ResourceNotFoundException
@@ -3055,6 +3057,7 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ResourceNotFoundException
@@ -3074,6 +3077,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "UntagResource",
 }));
 export type CreateAccessSourceError =
   | AccessDeniedException
@@ -3106,6 +3110,7 @@ export const createAccessSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAccessSource",
 }));
 export type GetAccessSourceError =
   | AccessDeniedException
@@ -3134,6 +3139,7 @@ export const getAccessSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAccessSource",
 }));
 export type UpdateAccessSourceError =
   | AccessDeniedException
@@ -3166,6 +3172,7 @@ export const updateAccessSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAccessSource",
 }));
 export type DeleteAccessSourceError =
   | AccessDeniedException
@@ -3196,6 +3203,7 @@ export const deleteAccessSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAccessSource",
 }));
 export type ListAccessSourcesError =
   | AccessDeniedException
@@ -3237,6 +3245,7 @@ export const listAccessSources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAccessSources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3275,6 +3284,7 @@ export const createAccessToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAccessToken",
 }));
 export type GetAccessTokenError =
   | AccessDeniedException
@@ -3303,6 +3313,7 @@ export const getAccessToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAccessToken",
 }));
 export type UpdateAccessTokenError =
   | AccessDeniedException
@@ -3335,6 +3346,7 @@ export const updateAccessToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAccessToken",
 }));
 export type DeleteAccessTokenError =
   | AccessDeniedException
@@ -3365,6 +3377,7 @@ export const deleteAccessToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAccessToken",
 }));
 export type ListAccessTokensError =
   | AccessDeniedException
@@ -3408,6 +3421,7 @@ export const listAccessTokens: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAccessTokens",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3446,6 +3460,7 @@ export const createDNSView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDNSView",
 }));
 export type GetDNSViewError =
   | AccessDeniedException
@@ -3474,6 +3489,7 @@ export const getDNSView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDNSView",
 }));
 export type UpdateDNSViewError =
   | AccessDeniedException
@@ -3506,6 +3522,7 @@ export const updateDNSView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDNSView",
 }));
 export type DeleteDNSViewError =
   | AccessDeniedException
@@ -3536,6 +3553,7 @@ export const deleteDNSView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDNSView",
 }));
 export type ListDNSViewsError =
   | AccessDeniedException
@@ -3579,6 +3597,7 @@ export const listDNSViews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDNSViews",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3617,6 +3636,7 @@ export const disableDNSView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisableDNSView",
 }));
 export type EnableDNSViewError =
   | AccessDeniedException
@@ -3649,6 +3669,7 @@ export const enableDNSView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "EnableDNSView",
 }));
 export type CreateFirewallDomainListError =
   | AccessDeniedException
@@ -3681,6 +3702,7 @@ export const createFirewallDomainList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateFirewallDomainList",
 }));
 export type GetFirewallDomainListError =
   | AccessDeniedException
@@ -3709,6 +3731,7 @@ export const getFirewallDomainList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFirewallDomainList",
 }));
 export type DeleteFirewallDomainListError =
   | AccessDeniedException
@@ -3739,6 +3762,7 @@ export const deleteFirewallDomainList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteFirewallDomainList",
 }));
 export type ListFirewallDomainListsError =
   | AccessDeniedException
@@ -3782,6 +3806,7 @@ export const listFirewallDomainLists: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFirewallDomainLists",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3820,6 +3845,7 @@ export const importFirewallDomains: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ImportFirewallDomains",
 }));
 export type ListFirewallDomainsError =
   | AccessDeniedException
@@ -3863,6 +3889,7 @@ export const listFirewallDomains: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFirewallDomains",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3901,6 +3928,7 @@ export const updateFirewallDomains: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateFirewallDomains",
 }));
 export type CreateFirewallRuleError =
   | AccessDeniedException
@@ -3933,6 +3961,7 @@ export const createFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateFirewallRule",
 }));
 export type GetFirewallRuleError =
   | AccessDeniedException
@@ -3961,6 +3990,7 @@ export const getFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFirewallRule",
 }));
 export type UpdateFirewallRuleError =
   | AccessDeniedException
@@ -3993,6 +4023,7 @@ export const updateFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateFirewallRule",
 }));
 export type DeleteFirewallRuleError =
   | AccessDeniedException
@@ -4023,6 +4054,7 @@ export const deleteFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteFirewallRule",
 }));
 export type ListFirewallRulesError =
   | AccessDeniedException
@@ -4066,6 +4098,7 @@ export const listFirewallRules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFirewallRules",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4098,6 +4131,7 @@ export const batchCreateFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchCreateFirewallRule",
 }));
 export type BatchDeleteFirewallRuleError =
   | AccessDeniedException
@@ -4124,6 +4158,7 @@ export const batchDeleteFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchDeleteFirewallRule",
 }));
 export type BatchUpdateFirewallRuleError =
   | AccessDeniedException
@@ -4150,6 +4185,7 @@ export const batchUpdateFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchUpdateFirewallRule",
 }));
 export type CreateGlobalResolverError =
   | AccessDeniedException
@@ -4180,6 +4216,7 @@ export const createGlobalResolver: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateGlobalResolver",
 }));
 export type GetGlobalResolverError =
   | AccessDeniedException
@@ -4208,6 +4245,7 @@ export const getGlobalResolver: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetGlobalResolver",
 }));
 export type UpdateGlobalResolverError =
   | AccessDeniedException
@@ -4240,6 +4278,7 @@ export const updateGlobalResolver: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateGlobalResolver",
 }));
 export type DeleteGlobalResolverError =
   | AccessDeniedException
@@ -4270,6 +4309,7 @@ export const deleteGlobalResolver: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteGlobalResolver",
 }));
 export type ListGlobalResolversError =
   | AccessDeniedException
@@ -4311,6 +4351,7 @@ export const listGlobalResolvers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListGlobalResolvers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4349,6 +4390,7 @@ export const associateHostedZone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateHostedZone",
 }));
 export type GetHostedZoneAssociationError =
   | AccessDeniedException
@@ -4377,6 +4419,7 @@ export const getHostedZoneAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetHostedZoneAssociation",
 }));
 export type UpdateHostedZoneAssociationError =
   | AccessDeniedException
@@ -4409,6 +4452,7 @@ export const updateHostedZoneAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateHostedZoneAssociation",
 }));
 export type ListHostedZoneAssociationsError =
   | AccessDeniedException
@@ -4452,6 +4496,7 @@ export const listHostedZoneAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListHostedZoneAssociations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4486,6 +4531,7 @@ export const getManagedFirewallDomainList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetManagedFirewallDomainList",
 }));
 export type ListManagedFirewallDomainListsError =
   | AccessDeniedException
@@ -4527,6 +4573,7 @@ export const listManagedFirewallDomainLists: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListManagedFirewallDomainLists",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

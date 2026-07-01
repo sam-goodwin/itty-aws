@@ -1359,6 +1359,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1387,6 +1388,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1415,6 +1417,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateMonitorError =
   | AccessDeniedException
@@ -1443,6 +1446,7 @@ export const createMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateMonitor",
 }));
 export type GetMonitorError =
   | AccessDeniedException
@@ -1469,6 +1473,7 @@ export const getMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMonitor",
 }));
 export type UpdateMonitorError =
   | AccessDeniedException
@@ -1495,6 +1500,7 @@ export const updateMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateMonitor",
 }));
 export type DeleteMonitorError =
   | AccessDeniedException
@@ -1523,6 +1529,7 @@ export const deleteMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteMonitor",
 }));
 export type ListMonitorsError =
   | AccessDeniedException
@@ -1562,6 +1569,7 @@ export const listMonitors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMonitors",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1615,6 +1623,7 @@ export const getQueryResultsMonitorTopContributors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetQueryResultsMonitorTopContributors",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1651,6 +1660,7 @@ export const getQueryStatusMonitorTopContributors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetQueryStatusMonitorTopContributors",
 }));
 export type StartQueryMonitorTopContributorsError =
   | AccessDeniedException
@@ -1681,6 +1691,7 @@ export const startQueryMonitorTopContributors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartQueryMonitorTopContributors",
 }));
 export type StopQueryMonitorTopContributorsError =
   | AccessDeniedException
@@ -1709,6 +1720,7 @@ export const stopQueryMonitorTopContributors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopQueryMonitorTopContributors",
 }));
 export type CreateScopeError =
   | AccessDeniedException
@@ -1747,6 +1759,7 @@ export const createScope: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateScope",
 }));
 export type GetScopeError =
   | AccessDeniedException
@@ -1775,6 +1788,7 @@ export const getScope: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetScope",
 }));
 export type UpdateScopeError =
   | AccessDeniedException
@@ -1805,6 +1819,7 @@ export const updateScope: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateScope",
 }));
 export type DeleteScopeError =
   | AccessDeniedException
@@ -1835,6 +1850,7 @@ export const deleteScope: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteScope",
 }));
 export type ListScopesError =
   | AccessDeniedException
@@ -1876,6 +1892,7 @@ export const listScopes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListScopes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1931,6 +1948,7 @@ export const getQueryResultsWorkloadInsightsTopContributors: API.OperationMethod
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetQueryResultsWorkloadInsightsTopContributors",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1988,6 +2006,7 @@ export const getQueryResultsWorkloadInsightsTopContributorsData: API.OperationMe
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetQueryResultsWorkloadInsightsTopContributorsData",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2024,6 +2043,7 @@ export const getQueryStatusWorkloadInsightsTopContributors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetQueryStatusWorkloadInsightsTopContributors",
 }));
 export type GetQueryStatusWorkloadInsightsTopContributorsDataError =
   | AccessDeniedException
@@ -2056,6 +2076,7 @@ export const getQueryStatusWorkloadInsightsTopContributorsData: API.OperationMet
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetQueryStatusWorkloadInsightsTopContributorsData",
 }));
 export type StartQueryWorkloadInsightsTopContributorsError =
   | AccessDeniedException
@@ -2086,6 +2107,7 @@ export const startQueryWorkloadInsightsTopContributors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartQueryWorkloadInsightsTopContributors",
 }));
 export type StartQueryWorkloadInsightsTopContributorsDataError =
   | AccessDeniedException
@@ -2116,6 +2138,7 @@ export const startQueryWorkloadInsightsTopContributorsData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartQueryWorkloadInsightsTopContributorsData",
 }));
 export type StopQueryWorkloadInsightsTopContributorsError =
   | AccessDeniedException
@@ -2144,6 +2167,7 @@ export const stopQueryWorkloadInsightsTopContributors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopQueryWorkloadInsightsTopContributors",
 }));
 export type StopQueryWorkloadInsightsTopContributorsDataError =
   | AccessDeniedException
@@ -2172,4 +2196,5 @@ export const stopQueryWorkloadInsightsTopContributorsData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopQueryWorkloadInsightsTopContributorsData",
 }));

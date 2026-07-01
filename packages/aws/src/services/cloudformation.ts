@@ -6622,6 +6622,7 @@ export const activateOrganizationsAccess: API.OperationMethod<
   input: ActivateOrganizationsAccessInput,
   output: ActivateOrganizationsAccessOutput,
   errors: [InvalidOperationException, OperationNotFoundException],
+  operationName: "ActivateOrganizationsAccess",
 }));
 export type ActivateTypeError =
   | CFNRegistryException
@@ -6652,6 +6653,7 @@ export const activateType: API.OperationMethod<
   input: ActivateTypeInput,
   output: ActivateTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  operationName: "ActivateType",
 }));
 export type BatchDescribeTypeConfigurationsError =
   | CFNRegistryException
@@ -6674,6 +6676,7 @@ export const batchDescribeTypeConfigurations: API.OperationMethod<
   input: BatchDescribeTypeConfigurationsInput,
   output: BatchDescribeTypeConfigurationsOutput,
   errors: [CFNRegistryException, TypeConfigurationNotFoundException],
+  operationName: "BatchDescribeTypeConfigurations",
 }));
 export type CancelUpdateStackError = TokenAlreadyExistsException | CommonErrors;
 /**
@@ -6691,6 +6694,7 @@ export const cancelUpdateStack: API.OperationMethod<
   input: CancelUpdateStackInput,
   output: CancelUpdateStackResponse,
   errors: [TokenAlreadyExistsException],
+  operationName: "CancelUpdateStack",
 }));
 export type ContinueUpdateRollbackError =
   | TokenAlreadyExistsException
@@ -6720,6 +6724,7 @@ export const continueUpdateRollback: API.OperationMethod<
   input: ContinueUpdateRollbackInput,
   output: ContinueUpdateRollbackOutput,
   errors: [TokenAlreadyExistsException],
+  operationName: "ContinueUpdateRollback",
 }));
 export type CreateChangeSetError =
   | AlreadyExistsException
@@ -6763,6 +6768,7 @@ export const createChangeSet: API.OperationMethod<
     InsufficientCapabilitiesException,
     LimitExceededException,
   ],
+  operationName: "CreateChangeSet",
 }));
 export type CreateGeneratedTemplateError =
   | AlreadyExistsException
@@ -6787,6 +6793,7 @@ export const createGeneratedTemplate: API.OperationMethod<
     ConcurrentResourcesLimitExceededException,
     LimitExceededException,
   ],
+  operationName: "CreateGeneratedTemplate",
 }));
 export type CreateStackError =
   | AlreadyExistsException
@@ -6816,6 +6823,7 @@ export const createStack: API.OperationMethod<
     LimitExceededException,
     TokenAlreadyExistsException,
   ],
+  operationName: "CreateStack",
 }));
 export type CreateStackInstancesError =
   | InvalidOperationException
@@ -6859,6 +6867,7 @@ export const createStackInstances: API.OperationMethod<
     StackSetNotFoundException,
     StaleRequestException,
   ],
+  operationName: "CreateStackInstances",
 }));
 export type CreateStackRefactorError = CommonErrors;
 /**
@@ -6874,6 +6883,7 @@ export const createStackRefactor: API.OperationMethod<
   input: CreateStackRefactorInput,
   output: CreateStackRefactorOutput,
   errors: [],
+  operationName: "CreateStackRefactor",
 }));
 export type CreateStackSetError =
   | CreatedButModifiedException
@@ -6896,6 +6906,7 @@ export const createStackSet: API.OperationMethod<
     LimitExceededException,
     NameAlreadyExistsException,
   ],
+  operationName: "CreateStackSet",
 }));
 export type DeactivateOrganizationsAccessError =
   | InvalidOperationException
@@ -6915,6 +6926,7 @@ export const deactivateOrganizationsAccess: API.OperationMethod<
   input: DeactivateOrganizationsAccessInput,
   output: DeactivateOrganizationsAccessOutput,
   errors: [InvalidOperationException, OperationNotFoundException],
+  operationName: "DeactivateOrganizationsAccess",
 }));
 export type DeactivateTypeError =
   | CFNRegistryException
@@ -6943,6 +6955,7 @@ export const deactivateType: API.OperationMethod<
   input: DeactivateTypeInput,
   output: DeactivateTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  operationName: "DeactivateType",
 }));
 export type DeleteChangeSetError =
   | InvalidChangeSetStatusException
@@ -6967,6 +6980,7 @@ export const deleteChangeSet: API.OperationMethod<
   input: DeleteChangeSetInput,
   output: DeleteChangeSetOutput,
   errors: [InvalidChangeSetStatusException],
+  operationName: "DeleteChangeSet",
 }));
 export type DeleteGeneratedTemplateError =
   | ConcurrentResourcesLimitExceededException
@@ -6987,6 +7001,7 @@ export const deleteGeneratedTemplate: API.OperationMethod<
     ConcurrentResourcesLimitExceededException,
     GeneratedTemplateNotFoundException,
   ],
+  operationName: "DeleteGeneratedTemplate",
 }));
 export type DeleteStackError = TokenAlreadyExistsException | CommonErrors;
 /**
@@ -7006,6 +7021,7 @@ export const deleteStack: API.OperationMethod<
   input: DeleteStackInput,
   output: DeleteStackResponse,
   errors: [TokenAlreadyExistsException],
+  operationName: "DeleteStack",
 }));
 export type DeleteStackInstancesError =
   | InvalidOperationException
@@ -7044,6 +7060,7 @@ export const deleteStackInstances: API.OperationMethod<
     StackSetNotFoundException,
     StaleRequestException,
   ],
+  operationName: "DeleteStackInstances",
 }));
 export type DeleteStackSetError =
   | OperationInProgressException
@@ -7062,6 +7079,7 @@ export const deleteStackSet: API.OperationMethod<
   input: DeleteStackSetInput,
   output: DeleteStackSetOutput,
   errors: [OperationInProgressException, StackSetNotEmptyException],
+  operationName: "DeleteStackSet",
 }));
 export type DeregisterTypeError =
   | CFNRegistryException
@@ -7096,6 +7114,7 @@ export const deregisterType: API.OperationMethod<
   input: DeregisterTypeInput,
   output: DeregisterTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  operationName: "DeregisterType",
 }));
 export type DescribeAccountLimitsError = CommonErrors;
 /**
@@ -7126,6 +7145,7 @@ export const describeAccountLimits: API.OperationMethod<
   input: DescribeAccountLimitsInput,
   output: DescribeAccountLimitsOutput,
   errors: [],
+  operationName: "DescribeAccountLimits",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7163,6 +7183,7 @@ export const describeChangeSet: API.OperationMethod<
   input: DescribeChangeSetInput,
   output: DescribeChangeSetOutput,
   errors: [ChangeSetNotFoundException],
+  operationName: "DescribeChangeSet",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7185,6 +7206,7 @@ export const describeChangeSetHooks: API.OperationMethod<
   input: DescribeChangeSetHooksInput,
   output: DescribeChangeSetHooksOutput,
   errors: [ChangeSetNotFoundException],
+  operationName: "DescribeChangeSetHooks",
 }));
 export type DescribeEventsError = CommonErrors;
 /**
@@ -7237,6 +7259,7 @@ export const describeEvents: API.OperationMethod<
   input: DescribeEventsInput,
   output: DescribeEventsOutput,
   errors: [],
+  operationName: "DescribeEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7261,6 +7284,7 @@ export const describeGeneratedTemplate: API.OperationMethod<
   input: DescribeGeneratedTemplateInput,
   output: DescribeGeneratedTemplateOutput,
   errors: [GeneratedTemplateNotFoundException],
+  operationName: "DescribeGeneratedTemplate",
 }));
 export type DescribeOrganizationsAccessError =
   | InvalidOperationException
@@ -7281,6 +7305,7 @@ export const describeOrganizationsAccess: API.OperationMethod<
   input: DescribeOrganizationsAccessInput,
   output: DescribeOrganizationsAccessOutput,
   errors: [InvalidOperationException, OperationNotFoundException],
+  operationName: "DescribeOrganizationsAccess",
 }));
 export type DescribePublisherError = CFNRegistryException | CommonErrors;
 /**
@@ -7307,6 +7332,7 @@ export const describePublisher: API.OperationMethod<
   input: DescribePublisherInput,
   output: DescribePublisherOutput,
   errors: [CFNRegistryException],
+  operationName: "DescribePublisher",
 }));
 export type DescribeResourceScanError =
   | ResourceScanNotFoundException
@@ -7323,6 +7349,7 @@ export const describeResourceScan: API.OperationMethod<
   input: DescribeResourceScanInput,
   output: DescribeResourceScanOutput,
   errors: [ResourceScanNotFoundException],
+  operationName: "DescribeResourceScan",
 }));
 export type DescribeStackDriftDetectionStatusError = CommonErrors;
 /**
@@ -7349,6 +7376,7 @@ export const describeStackDriftDetectionStatus: API.OperationMethod<
   input: DescribeStackDriftDetectionStatusInput,
   output: DescribeStackDriftDetectionStatusOutput,
   errors: [],
+  operationName: "DescribeStackDriftDetectionStatus",
 }));
 export type DescribeStackEventsError = CommonErrors;
 /**
@@ -7383,6 +7411,7 @@ export const describeStackEvents: API.OperationMethod<
   input: DescribeStackEventsInput,
   output: DescribeStackEventsOutput,
   errors: [],
+  operationName: "DescribeStackEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7408,6 +7437,7 @@ export const describeStackInstance: API.OperationMethod<
   input: DescribeStackInstanceInput,
   output: DescribeStackInstanceOutput,
   errors: [StackInstanceNotFoundException, StackSetNotFoundException],
+  operationName: "DescribeStackInstance",
 }));
 export type DescribeStackRefactorError =
   | StackRefactorNotFoundException
@@ -7424,6 +7454,7 @@ export const describeStackRefactor: API.OperationMethod<
   input: DescribeStackRefactorInput,
   output: DescribeStackRefactorOutput,
   errors: [StackRefactorNotFoundException],
+  operationName: "DescribeStackRefactor",
 }));
 export type DescribeStackResourceError = CommonErrors;
 /**
@@ -7441,6 +7472,7 @@ export const describeStackResource: API.OperationMethod<
   input: DescribeStackResourceInput,
   output: DescribeStackResourceOutput,
   errors: [],
+  operationName: "DescribeStackResource",
 }));
 export type DescribeStackResourceDriftsError = CommonErrors;
 /**
@@ -7482,6 +7514,7 @@ export const describeStackResourceDrifts: API.OperationMethod<
   input: DescribeStackResourceDriftsInput,
   output: DescribeStackResourceDriftsOutput,
   errors: [],
+  operationName: "DescribeStackResourceDrifts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7518,6 +7551,7 @@ export const describeStackResources: API.OperationMethod<
   input: DescribeStackResourcesInput,
   output: DescribeStackResourcesOutput,
   errors: [],
+  operationName: "DescribeStackResources",
 }));
 export type DescribeStacksError = CommonErrors;
 /**
@@ -7552,6 +7586,7 @@ export const describeStacks: API.OperationMethod<
   input: DescribeStacksInput,
   output: DescribeStacksOutput,
   errors: [],
+  operationName: "DescribeStacks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7574,6 +7609,7 @@ export const describeStackSet: API.OperationMethod<
   input: DescribeStackSetInput,
   output: DescribeStackSetOutput,
   errors: [StackSetNotFoundException],
+  operationName: "DescribeStackSet",
 }));
 export type DescribeStackSetOperationError =
   | OperationNotFoundException
@@ -7594,6 +7630,7 @@ export const describeStackSetOperation: API.OperationMethod<
   input: DescribeStackSetOperationInput,
   output: DescribeStackSetOperationOutput,
   errors: [OperationNotFoundException, StackSetNotFoundException],
+  operationName: "DescribeStackSetOperation",
 }));
 export type DescribeTypeError =
   | CFNRegistryException
@@ -7620,6 +7657,7 @@ export const describeType: API.OperationMethod<
   input: DescribeTypeInput,
   output: DescribeTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  operationName: "DescribeType",
 }));
 export type DescribeTypeRegistrationError = CFNRegistryException | CommonErrors;
 /**
@@ -7642,6 +7680,7 @@ export const describeTypeRegistration: API.OperationMethod<
   input: DescribeTypeRegistrationInput,
   output: DescribeTypeRegistrationOutput,
   errors: [CFNRegistryException],
+  operationName: "DescribeTypeRegistration",
 }));
 export type DetectStackDriftError = CommonErrors;
 /**
@@ -7680,6 +7719,7 @@ export const detectStackDrift: API.OperationMethod<
   input: DetectStackDriftInput,
   output: DetectStackDriftOutput,
   errors: [],
+  operationName: "DetectStackDrift",
 }));
 export type DetectStackResourceDriftError = CommonErrors;
 /**
@@ -7708,6 +7748,7 @@ export const detectStackResourceDrift: API.OperationMethod<
   input: DetectStackResourceDriftInput,
   output: DetectStackResourceDriftOutput,
   errors: [],
+  operationName: "DetectStackResourceDrift",
 }));
 export type DetectStackSetDriftError =
   | InvalidOperationException
@@ -7759,6 +7800,7 @@ export const detectStackSetDrift: API.OperationMethod<
     OperationInProgressException,
     StackSetNotFoundException,
   ],
+  operationName: "DetectStackSetDrift",
 }));
 export type EstimateTemplateCostError = CommonErrors;
 /**
@@ -7775,6 +7817,7 @@ export const estimateTemplateCost: API.OperationMethod<
   input: EstimateTemplateCostInput,
   output: EstimateTemplateCostOutput,
   errors: [],
+  operationName: "EstimateTemplateCost",
 }));
 export type ExecuteChangeSetError =
   | ChangeSetNotFoundException
@@ -7810,6 +7853,7 @@ export const executeChangeSet: API.OperationMethod<
     InvalidChangeSetStatusException,
     TokenAlreadyExistsException,
   ],
+  operationName: "ExecuteChangeSet",
 }));
 export type ExecuteStackRefactorError = CommonErrors;
 /**
@@ -7824,6 +7868,7 @@ export const executeStackRefactor: API.OperationMethod<
   input: ExecuteStackRefactorInput,
   output: ExecuteStackRefactorResponse,
   errors: [],
+  operationName: "ExecuteStackRefactor",
 }));
 export type GetGeneratedTemplateError =
   | GeneratedTemplateNotFoundException
@@ -7843,6 +7888,7 @@ export const getGeneratedTemplate: API.OperationMethod<
   input: GetGeneratedTemplateInput,
   output: GetGeneratedTemplateOutput,
   errors: [GeneratedTemplateNotFoundException],
+  operationName: "GetGeneratedTemplate",
 }));
 export type GetHookResultError = HookResultNotFoundException | CommonErrors;
 /**
@@ -7864,6 +7910,7 @@ export const getHookResult: API.OperationMethod<
   input: GetHookResultInput,
   output: GetHookResultOutput,
   errors: [HookResultNotFoundException],
+  operationName: "GetHookResult",
 }));
 export type GetStackPolicyError = CommonErrors;
 /**
@@ -7879,6 +7926,7 @@ export const getStackPolicy: API.OperationMethod<
   input: GetStackPolicyInput,
   output: GetStackPolicyOutput,
   errors: [],
+  operationName: "GetStackPolicy",
 }));
 export type GetTemplateError = ChangeSetNotFoundException | CommonErrors;
 /**
@@ -7899,6 +7947,7 @@ export const getTemplate: API.OperationMethod<
   input: GetTemplateInput,
   output: GetTemplateOutput,
   errors: [ChangeSetNotFoundException],
+  operationName: "GetTemplate",
 }));
 export type GetTemplateSummaryError = StackSetNotFoundException | CommonErrors;
 /**
@@ -7922,6 +7971,7 @@ export const getTemplateSummary: API.OperationMethod<
   input: GetTemplateSummaryInput,
   output: GetTemplateSummaryOutput,
   errors: [StackSetNotFoundException],
+  operationName: "GetTemplateSummary",
 }));
 export type ImportStacksToStackSetError =
   | InvalidOperationException
@@ -7955,6 +8005,7 @@ export const importStacksToStackSet: API.OperationMethod<
     StackSetNotFoundException,
     StaleRequestException,
   ],
+  operationName: "ImportStacksToStackSet",
 }));
 export type ListChangeSetsError = CommonErrors;
 /**
@@ -7986,6 +8037,7 @@ export const listChangeSets: API.OperationMethod<
   input: ListChangeSetsInput,
   output: ListChangeSetsOutput,
   errors: [],
+  operationName: "ListChangeSets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8025,6 +8077,7 @@ export const listExports: API.OperationMethod<
   input: ListExportsInput,
   output: ListExportsOutput,
   errors: [],
+  operationName: "ListExports",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8059,6 +8112,7 @@ export const listGeneratedTemplates: API.OperationMethod<
   input: ListGeneratedTemplatesInput,
   output: ListGeneratedTemplatesOutput,
   errors: [],
+  operationName: "ListGeneratedTemplates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8092,6 +8146,7 @@ export const listHookResults: API.OperationMethod<
   input: ListHookResultsInput,
   output: ListHookResultsOutput,
   errors: [HookResultNotFoundException],
+  operationName: "ListHookResults",
 }));
 export type ListImportsError = CommonErrors;
 /**
@@ -8125,6 +8180,7 @@ export const listImports: API.OperationMethod<
   input: ListImportsInput,
   output: ListImportsOutput,
   errors: [],
+  operationName: "ListImports",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8163,6 +8219,7 @@ export const listResourceScanRelatedResources: API.OperationMethod<
   input: ListResourceScanRelatedResourcesInput,
   output: ListResourceScanRelatedResourcesOutput,
   errors: [ResourceScanInProgressException, ResourceScanNotFoundException],
+  operationName: "ListResourceScanRelatedResources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8204,6 +8261,7 @@ export const listResourceScanResources: API.OperationMethod<
   input: ListResourceScanResourcesInput,
   output: ListResourceScanResourcesOutput,
   errors: [ResourceScanInProgressException, ResourceScanNotFoundException],
+  operationName: "ListResourceScanResources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8240,6 +8298,7 @@ export const listResourceScans: API.OperationMethod<
   input: ListResourceScansInput,
   output: ListResourceScansOutput,
   errors: [],
+  operationName: "ListResourceScans",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8272,6 +8331,7 @@ export const listStackInstanceResourceDrifts: API.OperationMethod<
     StackInstanceNotFoundException,
     StackSetNotFoundException,
   ],
+  operationName: "ListStackInstanceResourceDrifts",
 }));
 export type ListStackInstancesError = StackSetNotFoundException | CommonErrors;
 /**
@@ -8303,6 +8363,7 @@ export const listStackInstances: API.OperationMethod<
   input: ListStackInstancesInput,
   output: ListStackInstancesOutput,
   errors: [StackSetNotFoundException],
+  operationName: "ListStackInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8338,6 +8399,7 @@ export const listStackRefactorActions: API.OperationMethod<
   input: ListStackRefactorActionsInput,
   output: ListStackRefactorActionsOutput,
   errors: [],
+  operationName: "ListStackRefactorActions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8373,6 +8435,7 @@ export const listStackRefactors: API.OperationMethod<
   input: ListStackRefactorsInput,
   output: ListStackRefactorsOutput,
   errors: [],
+  operationName: "ListStackRefactors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8411,6 +8474,7 @@ export const listStackResources: API.OperationMethod<
   input: ListStackResourcesInput,
   output: ListStackResourcesOutput,
   errors: [],
+  operationName: "ListStackResources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8449,6 +8513,7 @@ export const listStacks: API.OperationMethod<
   input: ListStacksInput,
   output: ListStacksOutput,
   errors: [],
+  operationName: "ListStacks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8470,6 +8535,7 @@ export const listStackSetAutoDeploymentTargets: API.OperationMethod<
   input: ListStackSetAutoDeploymentTargetsInput,
   output: ListStackSetAutoDeploymentTargetsOutput,
   errors: [StackSetNotFoundException],
+  operationName: "ListStackSetAutoDeploymentTargets",
 }));
 export type ListStackSetOperationResultsError =
   | OperationNotFoundException
@@ -8505,6 +8571,7 @@ export const listStackSetOperationResults: API.OperationMethod<
   input: ListStackSetOperationResultsInput,
   output: ListStackSetOperationResultsOutput,
   errors: [OperationNotFoundException, StackSetNotFoundException],
+  operationName: "ListStackSetOperationResults",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8545,6 +8612,7 @@ export const listStackSetOperations: API.OperationMethod<
   input: ListStackSetOperationsInput,
   output: ListStackSetOperationsOutput,
   errors: [StackSetNotFoundException],
+  operationName: "ListStackSetOperations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8596,6 +8664,7 @@ export const listStackSets: API.OperationMethod<
   input: ListStackSetsInput,
   output: ListStackSetsOutput,
   errors: [],
+  operationName: "ListStackSets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8631,6 +8700,7 @@ export const listTypeRegistrations: API.OperationMethod<
   input: ListTypeRegistrationsInput,
   output: ListTypeRegistrationsOutput,
   errors: [CFNRegistryException],
+  operationName: "ListTypeRegistrations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8667,6 +8737,7 @@ export const listTypes: API.OperationMethod<
   input: ListTypesInput,
   output: ListTypesOutput,
   errors: [CFNRegistryException],
+  operationName: "ListTypes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8702,6 +8773,7 @@ export const listTypeVersions: API.OperationMethod<
   input: ListTypeVersionsInput,
   output: ListTypeVersionsOutput,
   errors: [CFNRegistryException],
+  operationName: "ListTypeVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8731,6 +8803,7 @@ export const publishType: API.OperationMethod<
   input: PublishTypeInput,
   output: PublishTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  operationName: "PublishType",
 }));
 export type RecordHandlerProgressError =
   | InvalidStateTransitionException
@@ -8754,6 +8827,7 @@ export const recordHandlerProgress: API.OperationMethod<
     InvalidStateTransitionException,
     OperationStatusCheckFailedException,
   ],
+  operationName: "RecordHandlerProgress",
 }));
 export type RegisterPublisherError = CFNRegistryException | CommonErrors;
 /**
@@ -8774,6 +8848,7 @@ export const registerPublisher: API.OperationMethod<
   input: RegisterPublisherInput,
   output: RegisterPublisherOutput,
   errors: [CFNRegistryException],
+  operationName: "RegisterPublisher",
 }));
 export type RegisterTypeError = CFNRegistryException | CommonErrors;
 /**
@@ -8812,6 +8887,7 @@ export const registerType: API.OperationMethod<
   input: RegisterTypeInput,
   output: RegisterTypeOutput,
   errors: [CFNRegistryException],
+  operationName: "RegisterType",
 }));
 export type RollbackStackError = TokenAlreadyExistsException | CommonErrors;
 /**
@@ -8845,6 +8921,7 @@ export const rollbackStack: API.OperationMethod<
   input: RollbackStackInput,
   output: RollbackStackOutput,
   errors: [TokenAlreadyExistsException],
+  operationName: "RollbackStack",
 }));
 export type SetStackPolicyError = CommonErrors;
 /**
@@ -8859,6 +8936,7 @@ export const setStackPolicy: API.OperationMethod<
   input: SetStackPolicyInput,
   output: SetStackPolicyResponse,
   errors: [],
+  operationName: "SetStackPolicy",
 }));
 export type SetTypeConfigurationError =
   | CFNRegistryException
@@ -8892,6 +8970,7 @@ export const setTypeConfiguration: API.OperationMethod<
   input: SetTypeConfigurationInput,
   output: SetTypeConfigurationOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  operationName: "SetTypeConfiguration",
 }));
 export type SetTypeDefaultVersionError =
   | CFNRegistryException
@@ -8910,6 +8989,7 @@ export const setTypeDefaultVersion: API.OperationMethod<
   input: SetTypeDefaultVersionInput,
   output: SetTypeDefaultVersionOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  operationName: "SetTypeDefaultVersion",
 }));
 export type SignalResourceError = CommonErrors;
 /**
@@ -8929,6 +9009,7 @@ export const signalResource: API.OperationMethod<
   input: SignalResourceInput,
   output: SignalResourceResponse,
   errors: [],
+  operationName: "SignalResource",
 }));
 export type StartResourceScanError =
   | ResourceScanInProgressException
@@ -8947,6 +9028,7 @@ export const startResourceScan: API.OperationMethod<
   input: StartResourceScanInput,
   output: StartResourceScanOutput,
   errors: [ResourceScanInProgressException, ResourceScanLimitExceededException],
+  operationName: "StartResourceScan",
 }));
 export type StopStackSetOperationError =
   | InvalidOperationException
@@ -8971,6 +9053,7 @@ export const stopStackSetOperation: API.OperationMethod<
     OperationNotFoundException,
     StackSetNotFoundException,
   ],
+  operationName: "StopStackSetOperation",
 }));
 export type TestTypeError =
   | CFNRegistryException
@@ -9013,6 +9096,7 @@ export const testType: API.OperationMethod<
   input: TestTypeInput,
   output: TestTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  operationName: "TestType",
 }));
 export type UpdateGeneratedTemplateError =
   | AlreadyExistsException
@@ -9038,6 +9122,7 @@ export const updateGeneratedTemplate: API.OperationMethod<
     GeneratedTemplateNotFoundException,
     LimitExceededException,
   ],
+  operationName: "UpdateGeneratedTemplate",
 }));
 export type UpdateStackError =
   | InsufficientCapabilitiesException
@@ -9063,6 +9148,7 @@ export const updateStack: API.OperationMethod<
   input: UpdateStackInput,
   output: UpdateStackOutput,
   errors: [InsufficientCapabilitiesException, TokenAlreadyExistsException],
+  operationName: "UpdateStack",
 }));
 export type UpdateStackInstancesError =
   | InvalidOperationException
@@ -9119,6 +9205,7 @@ export const updateStackInstances: API.OperationMethod<
     StackSetNotFoundException,
     StaleRequestException,
   ],
+  operationName: "UpdateStackInstances",
 }));
 export type UpdateStackSetError =
   | InvalidOperationException
@@ -9165,6 +9252,7 @@ export const updateStackSet: API.OperationMethod<
     StackSetNotFoundException,
     StaleRequestException,
   ],
+  operationName: "UpdateStackSet",
 }));
 export type UpdateTerminationProtectionError = CommonErrors;
 /**
@@ -9186,6 +9274,7 @@ export const updateTerminationProtection: API.OperationMethod<
   input: UpdateTerminationProtectionInput,
   output: UpdateTerminationProtectionOutput,
   errors: [],
+  operationName: "UpdateTerminationProtection",
 }));
 export type ValidateTemplateError = CommonErrors;
 /**
@@ -9202,4 +9291,5 @@ export const validateTemplate: API.OperationMethod<
   input: ValidateTemplateInput,
   output: ValidateTemplateOutput,
   errors: [],
+  operationName: "ValidateTemplate",
 }));

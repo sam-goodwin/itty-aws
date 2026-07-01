@@ -365,6 +365,7 @@ export const deleteObject: API.OperationMethod<
     InternalServerError,
     ObjectNotFoundException,
   ],
+  operationName: "DeleteObject",
 }));
 export type DescribeObjectError =
   | ContainerNotFoundException
@@ -387,6 +388,7 @@ export const describeObject: API.OperationMethod<
     InternalServerError,
     ObjectNotFoundException,
   ],
+  operationName: "DescribeObject",
 }));
 export type GetObjectError =
   | ContainerNotFoundException
@@ -411,6 +413,7 @@ export const getObject: API.OperationMethod<
     ObjectNotFoundException,
     RequestedRangeNotSatisfiableException,
   ],
+  operationName: "GetObject",
 }));
 export type ListItemsError =
   | ContainerNotFoundException
@@ -444,6 +447,7 @@ export const listItems: API.OperationMethod<
   input: ListItemsRequest,
   output: ListItemsResponse,
   errors: [ContainerNotFoundException, InternalServerError],
+  operationName: "ListItems",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -466,4 +470,5 @@ export const putObject: API.OperationMethod<
   input: PutObjectRequest,
   output: PutObjectResponse,
   errors: [ContainerNotFoundException, InternalServerError],
+  operationName: "PutObject",
 }));

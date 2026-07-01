@@ -3016,6 +3016,7 @@ export const createDeliveryStream: API.OperationMethod<
     LimitExceededException,
     ResourceInUseException,
   ],
+  operationName: "CreateDeliveryStream",
 }));
 export type DeleteDeliveryStreamError =
   | ResourceInUseException
@@ -3048,6 +3049,7 @@ export const deleteDeliveryStream: API.OperationMethod<
   input: DeleteDeliveryStreamInput,
   output: DeleteDeliveryStreamOutput,
   errors: [ResourceInUseException, ResourceNotFoundException],
+  operationName: "DeleteDeliveryStream",
 }));
 export type DescribeDeliveryStreamError =
   | ResourceNotFoundException
@@ -3071,6 +3073,7 @@ export const describeDeliveryStream: API.OperationMethod<
   input: DescribeDeliveryStreamInput,
   output: DescribeDeliveryStreamOutput,
   errors: [ResourceNotFoundException],
+  operationName: "DescribeDeliveryStream",
 }));
 export type ListDeliveryStreamsError = CommonErrors;
 /**
@@ -3093,6 +3096,7 @@ export const listDeliveryStreams: API.OperationMethod<
   input: ListDeliveryStreamsInput,
   output: ListDeliveryStreamsOutput,
   errors: [],
+  operationName: "ListDeliveryStreams",
 }));
 export type ListTagsForDeliveryStreamError =
   | InvalidArgumentException
@@ -3116,6 +3120,7 @@ export const listTagsForDeliveryStream: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForDeliveryStream",
 }));
 export type PutRecordError =
   | InvalidArgumentException
@@ -3190,6 +3195,7 @@ export const putRecord: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "PutRecord",
 }));
 export type PutRecordBatchError =
   | InvalidArgumentException
@@ -3285,6 +3291,7 @@ export const putRecordBatch: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "PutRecordBatch",
 }));
 export type StartDeliveryStreamEncryptionError =
   | InvalidArgumentException
@@ -3356,6 +3363,7 @@ export const startDeliveryStreamEncryption: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "StartDeliveryStreamEncryption",
 }));
 export type StopDeliveryStreamEncryptionError =
   | InvalidArgumentException
@@ -3402,6 +3410,7 @@ export const stopDeliveryStreamEncryption: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "StopDeliveryStreamEncryption",
 }));
 export type TagDeliveryStreamError =
   | InvalidArgumentException
@@ -3437,6 +3446,7 @@ export const tagDeliveryStream: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "TagDeliveryStream",
 }));
 export type UntagDeliveryStreamError =
   | InvalidArgumentException
@@ -3466,6 +3476,7 @@ export const untagDeliveryStream: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagDeliveryStream",
 }));
 export type UpdateDestinationError =
   | ConcurrentModificationException
@@ -3517,4 +3528,5 @@ export const updateDestination: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateDestination",
 }));

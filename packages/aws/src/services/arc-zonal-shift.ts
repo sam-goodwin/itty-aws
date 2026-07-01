@@ -967,6 +967,7 @@ export const listAutoshifts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAutoshifts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -991,6 +992,7 @@ export const getAutoshiftObserverNotificationStatus: API.OperationMethod<
   input: GetAutoshiftObserverNotificationStatusRequest,
   output: GetAutoshiftObserverNotificationStatusResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
+  operationName: "GetAutoshiftObserverNotificationStatus",
 }));
 export type UpdateAutoshiftObserverNotificationStatusError =
   | AccessDeniedException
@@ -1019,6 +1021,7 @@ export const updateAutoshiftObserverNotificationStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAutoshiftObserverNotificationStatus",
 }));
 export type GetManagedResourceError =
   | AccessDeniedException
@@ -1045,6 +1048,7 @@ export const getManagedResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetManagedResource",
 }));
 export type ListManagedResourcesError =
   | AccessDeniedException
@@ -1084,6 +1088,7 @@ export const listManagedResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListManagedResources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1120,6 +1125,7 @@ export const updateZonalAutoshiftConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateZonalAutoshiftConfiguration",
 }));
 export type UpdatePracticeRunConfigurationError =
   | AccessDeniedException
@@ -1148,6 +1154,7 @@ export const updatePracticeRunConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdatePracticeRunConfiguration",
 }));
 export type DeletePracticeRunConfigurationError =
   | AccessDeniedException
@@ -1176,6 +1183,7 @@ export const deletePracticeRunConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePracticeRunConfiguration",
 }));
 export type CreatePracticeRunConfigurationError =
   | AccessDeniedException
@@ -1208,6 +1216,7 @@ export const createPracticeRunConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreatePracticeRunConfiguration",
 }));
 export type CancelPracticeRunError =
   | AccessDeniedException
@@ -1236,6 +1245,7 @@ export const cancelPracticeRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelPracticeRun",
 }));
 export type CancelZonalShiftError =
   | AccessDeniedException
@@ -1266,6 +1276,7 @@ export const cancelZonalShift: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelZonalShift",
 }));
 export type UpdateZonalShiftError =
   | AccessDeniedException
@@ -1294,6 +1305,7 @@ export const updateZonalShift: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateZonalShift",
 }));
 export type ListZonalShiftsError =
   | AccessDeniedException
@@ -1335,6 +1347,7 @@ export const listZonalShifts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListZonalShifts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1371,6 +1384,7 @@ export const startPracticeRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartPracticeRun",
 }));
 export type StartZonalShiftError =
   | AccessDeniedException
@@ -1413,4 +1427,5 @@ export const startZonalShift: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartZonalShift",
 }));

@@ -3914,6 +3914,7 @@ export const createKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateKey",
 }));
 export type DescribeKeyError =
   | AccessDeniedException
@@ -3942,6 +3943,7 @@ export const describeKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeKey",
 }));
 export type UpdateKeyError =
   | AccessDeniedException
@@ -3968,6 +3970,7 @@ export const updateKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateKey",
 }));
 export type DeleteKeyError =
   | AccessDeniedException
@@ -3996,6 +3999,7 @@ export const deleteKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteKey",
 }));
 export type ListKeysError =
   | AccessDeniedException
@@ -4037,6 +4041,7 @@ export const listKeys: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListKeys",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4069,6 +4074,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -4101,6 +4107,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -4127,6 +4134,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateGeofenceCollectionError =
   | AccessDeniedException
@@ -4155,6 +4163,7 @@ export const createGeofenceCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateGeofenceCollection",
 }));
 export type DescribeGeofenceCollectionError =
   | AccessDeniedException
@@ -4181,6 +4190,7 @@ export const describeGeofenceCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeGeofenceCollection",
 }));
 export type UpdateGeofenceCollectionError =
   | AccessDeniedException
@@ -4207,6 +4217,7 @@ export const updateGeofenceCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateGeofenceCollection",
 }));
 export type DeleteGeofenceCollectionError =
   | AccessDeniedException
@@ -4235,6 +4246,7 @@ export const deleteGeofenceCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteGeofenceCollection",
 }));
 export type ListGeofenceCollectionsError =
   | AccessDeniedException
@@ -4274,6 +4286,7 @@ export const listGeofenceCollections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListGeofenceCollections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4308,6 +4321,7 @@ export const batchDeleteGeofence: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchDeleteGeofence",
 }));
 export type BatchEvaluateGeofencesError =
   | AccessDeniedException
@@ -4346,6 +4360,7 @@ export const batchEvaluateGeofences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchEvaluateGeofences",
 }));
 export type BatchPutGeofenceError =
   | AccessDeniedException
@@ -4372,6 +4387,7 @@ export const batchPutGeofence: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchPutGeofence",
 }));
 export type ForecastGeofenceEventsError =
   | AccessDeniedException
@@ -4421,6 +4437,7 @@ export const forecastGeofenceEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ForecastGeofenceEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4455,6 +4472,7 @@ export const getGeofence: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetGeofence",
 }));
 export type ListGeofencesError =
   | AccessDeniedException
@@ -4496,6 +4514,7 @@ export const listGeofences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListGeofences",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4530,6 +4549,7 @@ export const putGeofence: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutGeofence",
 }));
 export type StartJobError =
   | AccessDeniedException
@@ -4556,6 +4576,7 @@ export const startJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartJob",
 }));
 export type GetJobError =
   | AccessDeniedException
@@ -4584,6 +4605,7 @@ export const getJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetJob",
 }));
 export type ListJobsError =
   | AccessDeniedException
@@ -4625,6 +4647,7 @@ export const listJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4657,6 +4680,7 @@ export const cancelJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelJob",
 }));
 export type CreateMapError =
   | AccessDeniedException
@@ -4699,6 +4723,7 @@ export const createMap: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateMap",
 }));
 export type DescribeMapError =
   | AccessDeniedException
@@ -4737,6 +4762,7 @@ export const describeMap: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeMap",
 }));
 export type UpdateMapError =
   | AccessDeniedException
@@ -4775,6 +4801,7 @@ export const updateMap: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateMap",
 }));
 export type DeleteMapError =
   | AccessDeniedException
@@ -4815,6 +4842,7 @@ export const deleteMap: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteMap",
 }));
 export type ListMapsError =
   | AccessDeniedException
@@ -4866,6 +4894,7 @@ export const listMaps: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMaps",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4910,6 +4939,7 @@ export const getMapGlyphs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMapGlyphs",
 }));
 export type GetMapSpritesError =
   | AccessDeniedException
@@ -4948,6 +4978,7 @@ export const getMapSprites: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMapSprites",
 }));
 export type GetMapStyleDescriptorError =
   | AccessDeniedException
@@ -4988,6 +5019,7 @@ export const getMapStyleDescriptor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMapStyleDescriptor",
 }));
 export type GetMapTileError =
   | AccessDeniedException
@@ -5028,6 +5060,7 @@ export const getMapTile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMapTile",
 }));
 export type CreatePlaceIndexError =
   | AccessDeniedException
@@ -5070,6 +5103,7 @@ export const createPlaceIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreatePlaceIndex",
 }));
 export type DescribePlaceIndexError =
   | AccessDeniedException
@@ -5108,6 +5142,7 @@ export const describePlaceIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribePlaceIndex",
 }));
 export type UpdatePlaceIndexError =
   | AccessDeniedException
@@ -5146,6 +5181,7 @@ export const updatePlaceIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdatePlaceIndex",
 }));
 export type DeletePlaceIndexError =
   | AccessDeniedException
@@ -5186,6 +5222,7 @@ export const deletePlaceIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePlaceIndex",
 }));
 export type ListPlaceIndexesError =
   | AccessDeniedException
@@ -5237,6 +5274,7 @@ export const listPlaceIndexes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPlaceIndexes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5291,6 +5329,7 @@ export const getPlace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPlace",
 }));
 export type SearchPlaceIndexForPositionError =
   | AccessDeniedException
@@ -5327,6 +5366,7 @@ export const searchPlaceIndexForPosition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchPlaceIndexForPosition",
 }));
 export type SearchPlaceIndexForSuggestionsError =
   | AccessDeniedException
@@ -5367,6 +5407,7 @@ export const searchPlaceIndexForSuggestions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchPlaceIndexForSuggestions",
 }));
 export type SearchPlaceIndexForTextError =
   | AccessDeniedException
@@ -5409,6 +5450,7 @@ export const searchPlaceIndexForText: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SearchPlaceIndexForText",
 }));
 export type CreateRouteCalculatorError =
   | AccessDeniedException
@@ -5453,6 +5495,7 @@ export const createRouteCalculator: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRouteCalculator",
 }));
 export type DescribeRouteCalculatorError =
   | AccessDeniedException
@@ -5491,6 +5534,7 @@ export const describeRouteCalculator: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeRouteCalculator",
 }));
 export type UpdateRouteCalculatorError =
   | AccessDeniedException
@@ -5529,6 +5573,7 @@ export const updateRouteCalculator: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRouteCalculator",
 }));
 export type DeleteRouteCalculatorError =
   | AccessDeniedException
@@ -5569,6 +5614,7 @@ export const deleteRouteCalculator: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRouteCalculator",
 }));
 export type ListRouteCalculatorsError =
   | AccessDeniedException
@@ -5620,6 +5666,7 @@ export const listRouteCalculators: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRouteCalculators",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5674,6 +5721,7 @@ export const calculateRoute: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CalculateRoute",
 }));
 export type CalculateRouteMatrixError =
   | AccessDeniedException
@@ -5726,6 +5774,7 @@ export const calculateRouteMatrix: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CalculateRouteMatrix",
 }));
 export type CreateTrackerError =
   | AccessDeniedException
@@ -5754,6 +5803,7 @@ export const createTracker: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateTracker",
 }));
 export type DescribeTrackerError =
   | AccessDeniedException
@@ -5780,6 +5830,7 @@ export const describeTracker: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeTracker",
 }));
 export type UpdateTrackerError =
   | AccessDeniedException
@@ -5806,6 +5857,7 @@ export const updateTracker: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateTracker",
 }));
 export type DeleteTrackerError =
   | AccessDeniedException
@@ -5834,6 +5886,7 @@ export const deleteTracker: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteTracker",
 }));
 export type ListTrackersError =
   | AccessDeniedException
@@ -5873,6 +5926,7 @@ export const listTrackers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTrackers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5913,6 +5967,7 @@ export const associateTrackerConsumer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateTrackerConsumer",
 }));
 export type BatchDeleteDevicePositionHistoryError =
   | AccessDeniedException
@@ -5939,6 +5994,7 @@ export const batchDeleteDevicePositionHistory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchDeleteDevicePositionHistory",
 }));
 export type BatchGetDevicePositionError =
   | AccessDeniedException
@@ -5965,6 +6021,7 @@ export const batchGetDevicePosition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchGetDevicePosition",
 }));
 export type BatchUpdateDevicePositionError =
   | AccessDeniedException
@@ -5997,6 +6054,7 @@ export const batchUpdateDevicePosition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchUpdateDevicePosition",
 }));
 export type DisassociateTrackerConsumerError =
   | AccessDeniedException
@@ -6025,6 +6083,7 @@ export const disassociateTrackerConsumer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateTrackerConsumer",
 }));
 export type GetDevicePositionError =
   | AccessDeniedException
@@ -6053,6 +6112,7 @@ export const getDevicePosition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDevicePosition",
 }));
 export type GetDevicePositionHistoryError =
   | AccessDeniedException
@@ -6096,6 +6156,7 @@ export const getDevicePositionHistory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDevicePositionHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6141,6 +6202,7 @@ export const listDevicePositions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDevicePositions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6188,6 +6250,7 @@ export const listTrackerConsumers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTrackerConsumers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6222,4 +6285,5 @@ export const verifyDevicePosition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "VerifyDevicePosition",
 }));

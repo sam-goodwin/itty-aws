@@ -3574,6 +3574,7 @@ export const createBatchInferenceJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "CreateBatchInferenceJob",
 }));
 export type CreateBatchSegmentJobError =
   | InvalidInputException
@@ -3604,6 +3605,7 @@ export const createBatchSegmentJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "CreateBatchSegmentJob",
 }));
 export type CreateCampaignError =
   | InvalidInputException
@@ -3686,6 +3688,7 @@ export const createCampaign: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "CreateCampaign",
 }));
 export type CreateDataDeletionJobError =
   | InvalidInputException
@@ -3748,6 +3751,7 @@ export const createDataDeletionJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "CreateDataDeletionJob",
 }));
 export type CreateDatasetError =
   | InvalidInputException
@@ -3813,6 +3817,7 @@ export const createDataset: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "CreateDataset",
 }));
 export type CreateDatasetExportJobError =
   | InvalidInputException
@@ -3857,6 +3862,7 @@ export const createDatasetExportJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "CreateDatasetExportJob",
 }));
 export type CreateDatasetGroupError =
   | InvalidInputException
@@ -3935,6 +3941,7 @@ export const createDatasetGroup: API.OperationMethod<
     ResourceAlreadyExistsException,
     TooManyTagsException,
   ],
+  operationName: "CreateDatasetGroup",
 }));
 export type CreateDatasetImportJobError =
   | InvalidInputException
@@ -4000,6 +4007,7 @@ export const createDatasetImportJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "CreateDatasetImportJob",
 }));
 export type CreateEventTrackerError =
   | InvalidInputException
@@ -4057,6 +4065,7 @@ export const createEventTracker: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "CreateEventTracker",
 }));
 export type CreateFilterError =
   | InvalidInputException
@@ -4083,6 +4092,7 @@ export const createFilter: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "CreateFilter",
 }));
 export type CreateMetricAttributionError =
   | InvalidInputException
@@ -4111,6 +4121,7 @@ export const createMetricAttribution: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateMetricAttribution",
 }));
 export type CreateRecommenderError =
   | InvalidInputException
@@ -4192,6 +4203,7 @@ export const createRecommender: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "CreateRecommender",
 }));
 export type CreateSchemaError =
   | InvalidInputException
@@ -4228,6 +4240,7 @@ export const createSchema: API.OperationMethod<
     LimitExceededException,
     ResourceAlreadyExistsException,
   ],
+  operationName: "CreateSchema",
 }));
 export type CreateSolutionError =
   | InvalidInputException
@@ -4312,6 +4325,7 @@ export const createSolution: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "CreateSolution",
 }));
 export type CreateSolutionVersionError =
   | InvalidInputException
@@ -4379,6 +4393,7 @@ export const createSolutionVersion: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "CreateSolutionVersion",
 }));
 export type DeleteCampaignError =
   | InvalidInputException
@@ -4406,6 +4421,7 @@ export const deleteCampaign: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteCampaign",
 }));
 export type DeleteDatasetError =
   | InvalidInputException
@@ -4431,6 +4447,7 @@ export const deleteDataset: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteDataset",
 }));
 export type DeleteDatasetGroupError =
   | InvalidInputException
@@ -4460,6 +4477,7 @@ export const deleteDatasetGroup: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteDatasetGroup",
 }));
 export type DeleteEventTrackerError =
   | InvalidInputException
@@ -4484,6 +4502,7 @@ export const deleteEventTracker: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteEventTracker",
 }));
 export type DeleteFilterError =
   | InvalidInputException
@@ -4506,6 +4525,7 @@ export const deleteFilter: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteFilter",
 }));
 export type DeleteMetricAttributionError =
   | InvalidInputException
@@ -4528,6 +4548,7 @@ export const deleteMetricAttribution: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteMetricAttribution",
 }));
 export type DeleteRecommenderError =
   | InvalidInputException
@@ -4551,6 +4572,7 @@ export const deleteRecommender: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteRecommender",
 }));
 export type DeleteSchemaError =
   | InvalidInputException
@@ -4575,6 +4597,7 @@ export const deleteSchema: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteSchema",
 }));
 export type DeleteSolutionError =
   | InvalidInputException
@@ -4603,6 +4626,7 @@ export const deleteSolution: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteSolution",
 }));
 export type DescribeAlgorithmError =
   | InvalidInputException
@@ -4620,6 +4644,7 @@ export const describeAlgorithm: API.OperationMethod<
   input: DescribeAlgorithmRequest,
   output: DescribeAlgorithmResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeAlgorithm",
 }));
 export type DescribeBatchInferenceJobError =
   | InvalidInputException
@@ -4639,6 +4664,7 @@ export const describeBatchInferenceJob: API.OperationMethod<
   input: DescribeBatchInferenceJobRequest,
   output: DescribeBatchInferenceJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeBatchInferenceJob",
 }));
 export type DescribeBatchSegmentJobError =
   | InvalidInputException
@@ -4658,6 +4684,7 @@ export const describeBatchSegmentJob: API.OperationMethod<
   input: DescribeBatchSegmentJobRequest,
   output: DescribeBatchSegmentJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeBatchSegmentJob",
 }));
 export type DescribeCampaignError =
   | InvalidInputException
@@ -4686,6 +4713,7 @@ export const describeCampaign: API.OperationMethod<
   input: DescribeCampaignRequest,
   output: DescribeCampaignResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeCampaign",
 }));
 export type DescribeDataDeletionJobError =
   | InvalidInputException
@@ -4703,6 +4731,7 @@ export const describeDataDeletionJob: API.OperationMethod<
   input: DescribeDataDeletionJobRequest,
   output: DescribeDataDeletionJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeDataDeletionJob",
 }));
 export type DescribeDatasetError =
   | InvalidInputException
@@ -4721,6 +4750,7 @@ export const describeDataset: API.OperationMethod<
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeDataset",
 }));
 export type DescribeDatasetExportJobError =
   | InvalidInputException
@@ -4738,6 +4768,7 @@ export const describeDatasetExportJob: API.OperationMethod<
   input: DescribeDatasetExportJobRequest,
   output: DescribeDatasetExportJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeDatasetExportJob",
 }));
 export type DescribeDatasetGroupError =
   | InvalidInputException
@@ -4756,6 +4787,7 @@ export const describeDatasetGroup: API.OperationMethod<
   input: DescribeDatasetGroupRequest,
   output: DescribeDatasetGroupResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeDatasetGroup",
 }));
 export type DescribeDatasetImportJobError =
   | InvalidInputException
@@ -4773,6 +4805,7 @@ export const describeDatasetImportJob: API.OperationMethod<
   input: DescribeDatasetImportJobRequest,
   output: DescribeDatasetImportJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeDatasetImportJob",
 }));
 export type DescribeEventTrackerError =
   | InvalidInputException
@@ -4792,6 +4825,7 @@ export const describeEventTracker: API.OperationMethod<
   input: DescribeEventTrackerRequest,
   output: DescribeEventTrackerResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeEventTracker",
 }));
 export type DescribeFeatureTransformationError =
   | InvalidInputException
@@ -4809,6 +4843,7 @@ export const describeFeatureTransformation: API.OperationMethod<
   input: DescribeFeatureTransformationRequest,
   output: DescribeFeatureTransformationResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeFeatureTransformation",
 }));
 export type DescribeFilterError =
   | InvalidInputException
@@ -4826,6 +4861,7 @@ export const describeFilter: API.OperationMethod<
   input: DescribeFilterRequest,
   output: DescribeFilterResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeFilter",
 }));
 export type DescribeMetricAttributionError =
   | InvalidInputException
@@ -4843,6 +4879,7 @@ export const describeMetricAttribution: API.OperationMethod<
   input: DescribeMetricAttributionRequest,
   output: DescribeMetricAttributionResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeMetricAttribution",
 }));
 export type DescribeRecipeError =
   | InvalidInputException
@@ -4875,6 +4912,7 @@ export const describeRecipe: API.OperationMethod<
   input: DescribeRecipeRequest,
   output: DescribeRecipeResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeRecipe",
 }));
 export type DescribeRecommenderError =
   | InvalidInputException
@@ -4908,6 +4946,7 @@ export const describeRecommender: API.OperationMethod<
   input: DescribeRecommenderRequest,
   output: DescribeRecommenderResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeRecommender",
 }));
 export type DescribeSchemaError =
   | InvalidInputException
@@ -4926,6 +4965,7 @@ export const describeSchema: API.OperationMethod<
   input: DescribeSchemaRequest,
   output: DescribeSchemaResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeSchema",
 }));
 export type DescribeSolutionError =
   | InvalidInputException
@@ -4944,6 +4984,7 @@ export const describeSolution: API.OperationMethod<
   input: DescribeSolutionRequest,
   output: DescribeSolutionResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeSolution",
 }));
 export type DescribeSolutionVersionError =
   | InvalidInputException
@@ -4961,6 +5002,7 @@ export const describeSolutionVersion: API.OperationMethod<
   input: DescribeSolutionVersionRequest,
   output: DescribeSolutionVersionResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  operationName: "DescribeSolutionVersion",
 }));
 export type GetSolutionMetricsError =
   | InvalidInputException
@@ -4983,6 +5025,7 @@ export const getSolutionMetrics: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "GetSolutionMetrics",
 }));
 export type ListBatchInferenceJobsError =
   | InvalidInputException
@@ -5016,6 +5059,7 @@ export const listBatchInferenceJobs: API.OperationMethod<
   input: ListBatchInferenceJobsRequest,
   output: ListBatchInferenceJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListBatchInferenceJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5055,6 +5099,7 @@ export const listBatchSegmentJobs: API.OperationMethod<
   input: ListBatchSegmentJobsRequest,
   output: ListBatchSegmentJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListBatchSegmentJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5096,6 +5141,7 @@ export const listCampaigns: API.OperationMethod<
   input: ListCampaignsRequest,
   output: ListCampaignsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListCampaigns",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5125,6 +5171,7 @@ export const listDataDeletionJobs: API.OperationMethod<
   input: ListDataDeletionJobsRequest,
   output: ListDataDeletionJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListDataDeletionJobs",
 }));
 export type ListDatasetExportJobsError =
   | InvalidInputException
@@ -5162,6 +5209,7 @@ export const listDatasetExportJobs: API.OperationMethod<
   input: ListDatasetExportJobsRequest,
   output: ListDatasetExportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListDatasetExportJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5199,6 +5247,7 @@ export const listDatasetGroups: API.OperationMethod<
   input: ListDatasetGroupsRequest,
   output: ListDatasetGroupsResponse,
   errors: [InvalidNextTokenException],
+  operationName: "ListDatasetGroups",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5242,6 +5291,7 @@ export const listDatasetImportJobs: API.OperationMethod<
   input: ListDatasetImportJobsRequest,
   output: ListDatasetImportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListDatasetImportJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5282,6 +5332,7 @@ export const listDatasets: API.OperationMethod<
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListDatasets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5323,6 +5374,7 @@ export const listEventTrackers: API.OperationMethod<
   input: ListEventTrackersRequest,
   output: ListEventTrackersResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListEventTrackers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5361,6 +5413,7 @@ export const listFilters: API.OperationMethod<
   input: ListFiltersRequest,
   output: ListFiltersResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListFilters",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5399,6 +5452,7 @@ export const listMetricAttributionMetrics: API.OperationMethod<
   input: ListMetricAttributionMetricsRequest,
   output: ListMetricAttributionMetricsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListMetricAttributionMetrics",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5437,6 +5491,7 @@ export const listMetricAttributions: API.OperationMethod<
   input: ListMetricAttributionsRequest,
   output: ListMetricAttributionsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListMetricAttributions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5476,6 +5531,7 @@ export const listRecipes: API.OperationMethod<
   input: ListRecipesRequest,
   output: ListRecipesResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListRecipes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5517,6 +5573,7 @@ export const listRecommenders: API.OperationMethod<
   input: ListRecommendersRequest,
   output: ListRecommendersResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListRecommenders",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5554,6 +5611,7 @@ export const listSchemas: API.OperationMethod<
   input: ListSchemasRequest,
   output: ListSchemasResponse,
   errors: [InvalidNextTokenException],
+  operationName: "ListSchemas",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5595,6 +5653,7 @@ export const listSolutions: API.OperationMethod<
   input: ListSolutionsRequest,
   output: ListSolutionsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  operationName: "ListSolutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5640,6 +5699,7 @@ export const listSolutionVersions: API.OperationMethod<
     InvalidNextTokenException,
     ResourceNotFoundException,
   ],
+  operationName: "ListSolutionVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5668,6 +5728,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type StartRecommenderError =
   | InvalidInputException
@@ -5691,6 +5752,7 @@ export const startRecommender: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "StartRecommender",
 }));
 export type StopRecommenderError =
   | InvalidInputException
@@ -5713,6 +5775,7 @@ export const stopRecommender: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "StopRecommender",
 }));
 export type StopSolutionVersionCreationError =
   | InvalidInputException
@@ -5746,6 +5809,7 @@ export const stopSolutionVersionCreation: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "StopSolutionVersionCreation",
 }));
 export type TagResourceError =
   | InvalidInputException
@@ -5772,6 +5836,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InvalidInputException
@@ -5796,6 +5861,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagKeysException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateCampaignError =
   | InvalidInputException
@@ -5835,6 +5901,7 @@ export const updateCampaign: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateCampaign",
 }));
 export type UpdateDatasetError =
   | InvalidInputException
@@ -5857,6 +5924,7 @@ export const updateDataset: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateDataset",
 }));
 export type UpdateMetricAttributionError =
   | InvalidInputException
@@ -5881,6 +5949,7 @@ export const updateMetricAttribution: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateMetricAttribution",
 }));
 export type UpdateRecommenderError =
   | InvalidInputException
@@ -5909,6 +5978,7 @@ export const updateRecommender: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateRecommender",
 }));
 export type UpdateSolutionError =
   | InvalidInputException
@@ -5945,4 +6015,5 @@ export const updateSolution: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateSolution",
 }));

@@ -272,6 +272,7 @@ export const sendSerialConsoleSSHPublicKey: API.OperationMethod<
     ServiceException,
     ThrottlingException,
   ],
+  operationName: "SendSerialConsoleSSHPublicKey",
 }));
 export type SendSSHPublicKeyError =
   | AuthException
@@ -305,4 +306,5 @@ export const sendSSHPublicKey: API.OperationMethod<
     ServiceException,
     ThrottlingException,
   ],
+  operationName: "SendSSHPublicKey",
 }));

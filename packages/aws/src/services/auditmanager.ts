@@ -3605,6 +3605,7 @@ export const associateAssessmentReportEvidenceFolder: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "AssociateAssessmentReportEvidenceFolder",
 }));
 export type BatchAssociateAssessmentReportEvidenceError =
   | AccessDeniedException
@@ -3630,6 +3631,7 @@ export const batchAssociateAssessmentReportEvidence: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "BatchAssociateAssessmentReportEvidence",
 }));
 export type BatchCreateDelegationByAssessmentError =
   | AccessDeniedException
@@ -3654,6 +3656,7 @@ export const batchCreateDelegationByAssessment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "BatchCreateDelegationByAssessment",
 }));
 export type BatchDeleteDelegationByAssessmentError =
   | AccessDeniedException
@@ -3678,6 +3681,7 @@ export const batchDeleteDelegationByAssessment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "BatchDeleteDelegationByAssessment",
 }));
 export type BatchDisassociateAssessmentReportEvidenceError =
   | AccessDeniedException
@@ -3702,6 +3706,7 @@ export const batchDisassociateAssessmentReportEvidence: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "BatchDisassociateAssessmentReportEvidence",
 }));
 export type BatchImportEvidenceToAssessmentControlError =
   | AccessDeniedException
@@ -3747,6 +3752,7 @@ export const batchImportEvidenceToAssessmentControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchImportEvidenceToAssessmentControl",
 }));
 export type CreateAssessmentError =
   | AccessDeniedException
@@ -3775,6 +3781,7 @@ export const createAssessment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAssessment",
 }));
 export type CreateAssessmentFrameworkError =
   | AccessDeniedException
@@ -3801,6 +3808,7 @@ export const createAssessmentFramework: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateAssessmentFramework",
 }));
 export type CreateAssessmentReportError =
   | AccessDeniedException
@@ -3825,6 +3833,7 @@ export const createAssessmentReport: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreateAssessmentReport",
 }));
 export type CreateControlError =
   | AccessDeniedException
@@ -3851,6 +3860,7 @@ export const createControl: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateControl",
 }));
 export type DeleteAssessmentError =
   | AccessDeniedException
@@ -3875,6 +3885,7 @@ export const deleteAssessment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteAssessment",
 }));
 export type DeleteAssessmentFrameworkError =
   | AccessDeniedException
@@ -3899,6 +3910,7 @@ export const deleteAssessmentFramework: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteAssessmentFramework",
 }));
 export type DeleteAssessmentFrameworkShareError =
   | AccessDeniedException
@@ -3923,6 +3935,7 @@ export const deleteAssessmentFrameworkShare: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteAssessmentFrameworkShare",
 }));
 export type DeleteAssessmentReportError =
   | AccessDeniedException
@@ -3967,6 +3980,7 @@ export const deleteAssessmentReport: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteAssessmentReport",
 }));
 export type DeleteControlError =
   | AccessDeniedException
@@ -3996,6 +4010,7 @@ export const deleteControl: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteControl",
 }));
 export type DeregisterAccountError =
   | AccessDeniedException
@@ -4028,6 +4043,7 @@ export const deregisterAccount: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeregisterAccount",
 }));
 export type DeregisterOrganizationAdminAccountError =
   | AccessDeniedException
@@ -4104,6 +4120,7 @@ export const deregisterOrganizationAdminAccount: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeregisterOrganizationAdminAccount",
 }));
 export type DisassociateAssessmentReportEvidenceFolderError =
   | AccessDeniedException
@@ -4128,6 +4145,7 @@ export const disassociateAssessmentReportEvidenceFolder: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DisassociateAssessmentReportEvidenceFolder",
 }));
 export type GetAccountStatusError = InternalServerException | CommonErrors;
 /**
@@ -4142,6 +4160,7 @@ export const getAccountStatus: API.OperationMethod<
   input: GetAccountStatusRequest,
   output: GetAccountStatusResponse,
   errors: [InternalServerException],
+  operationName: "GetAccountStatus",
 }));
 export type GetAssessmentError =
   | AccessDeniedException
@@ -4166,6 +4185,7 @@ export const getAssessment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetAssessment",
 }));
 export type GetAssessmentFrameworkError =
   | AccessDeniedException
@@ -4190,6 +4210,7 @@ export const getAssessmentFramework: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetAssessmentFramework",
 }));
 export type GetAssessmentReportUrlError =
   | AccessDeniedException
@@ -4214,6 +4235,7 @@ export const getAssessmentReportUrl: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetAssessmentReportUrl",
 }));
 export type GetChangeLogsError =
   | AccessDeniedException
@@ -4253,6 +4275,7 @@ export const getChangeLogs: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetChangeLogs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4282,6 +4305,7 @@ export const getControl: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetControl",
 }));
 export type GetDelegationsError =
   | AccessDeniedException
@@ -4315,6 +4339,7 @@ export const getDelegations: API.OperationMethod<
   input: GetDelegationsRequest,
   output: GetDelegationsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "GetDelegations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4344,6 +4369,7 @@ export const getEvidence: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetEvidence",
 }));
 export type GetEvidenceByEvidenceFolderError =
   | AccessDeniedException
@@ -4383,6 +4409,7 @@ export const getEvidenceByEvidenceFolder: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetEvidenceByEvidenceFolder",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4425,6 +4452,7 @@ export const getEvidenceFileUploadUrl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEvidenceFileUploadUrl",
 }));
 export type GetEvidenceFolderError =
   | AccessDeniedException
@@ -4449,6 +4477,7 @@ export const getEvidenceFolder: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetEvidenceFolder",
 }));
 export type GetEvidenceFoldersByAssessmentError =
   | AccessDeniedException
@@ -4488,6 +4517,7 @@ export const getEvidenceFoldersByAssessment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetEvidenceFoldersByAssessment",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4533,6 +4563,7 @@ export const getEvidenceFoldersByAssessmentControl: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetEvidenceFoldersByAssessmentControl",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4555,6 +4586,7 @@ export const getInsights: API.OperationMethod<
   input: GetInsightsRequest,
   output: GetInsightsResponse,
   errors: [AccessDeniedException, InternalServerException],
+  operationName: "GetInsights",
 }));
 export type GetInsightsByAssessmentError =
   | AccessDeniedException
@@ -4579,6 +4611,7 @@ export const getInsightsByAssessment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetInsightsByAssessment",
 }));
 export type GetOrganizationAdminAccountError =
   | AccessDeniedException
@@ -4604,6 +4637,7 @@ export const getOrganizationAdminAccount: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetOrganizationAdminAccount",
 }));
 export type GetServicesInScopeError =
   | AccessDeniedException
@@ -4633,6 +4667,7 @@ export const getServicesInScope: API.OperationMethod<
   input: GetServicesInScopeRequest,
   output: GetServicesInScopeResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "GetServicesInScope",
 }));
 export type GetSettingsError =
   | AccessDeniedException
@@ -4650,6 +4685,7 @@ export const getSettings: API.OperationMethod<
   input: GetSettingsRequest,
   output: GetSettingsResponse,
   errors: [AccessDeniedException, InternalServerException],
+  operationName: "GetSettings",
 }));
 export type ListAssessmentControlInsightsByControlDomainError =
   | AccessDeniedException
@@ -4695,6 +4731,7 @@ export const listAssessmentControlInsightsByControlDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListAssessmentControlInsightsByControlDomain",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4734,6 +4771,7 @@ export const listAssessmentFrameworks: API.OperationMethod<
   input: ListAssessmentFrameworksRequest,
   output: ListAssessmentFrameworksResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListAssessmentFrameworks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4772,6 +4810,7 @@ export const listAssessmentFrameworkShareRequests: API.OperationMethod<
   input: ListAssessmentFrameworkShareRequestsRequest,
   output: ListAssessmentFrameworkShareRequestsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListAssessmentFrameworkShareRequests",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4810,6 +4849,7 @@ export const listAssessmentReports: API.OperationMethod<
   input: ListAssessmentReportsRequest,
   output: ListAssessmentReportsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListAssessmentReports",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4848,6 +4888,7 @@ export const listAssessments: API.OperationMethod<
   input: ListAssessmentsRequest,
   output: ListAssessmentsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListAssessments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4905,6 +4946,7 @@ export const listControlDomainInsights: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListControlDomainInsights",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4961,6 +5003,7 @@ export const listControlDomainInsightsByAssessment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListControlDomainInsightsByAssessment",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5011,6 +5054,7 @@ export const listControlInsightsByControlDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListControlInsightsByControlDomain",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5049,6 +5093,7 @@ export const listControls: API.OperationMethod<
   input: ListControlsRequest,
   output: ListControlsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListControls",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5088,6 +5133,7 @@ export const listKeywordsForDataSource: API.OperationMethod<
   input: ListKeywordsForDataSourceRequest,
   output: ListKeywordsForDataSourceResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListKeywordsForDataSource",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5126,6 +5172,7 @@ export const listNotifications: API.OperationMethod<
   input: ListNotificationsRequest,
   output: ListNotificationsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListNotifications",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5153,6 +5200,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type RegisterAccountError =
   | AccessDeniedException
@@ -5179,6 +5227,7 @@ export const registerAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RegisterAccount",
 }));
 export type RegisterOrganizationAdminAccountError =
   | AccessDeniedException
@@ -5206,6 +5255,7 @@ export const registerOrganizationAdminAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RegisterOrganizationAdminAccount",
 }));
 export type StartAssessmentFrameworkShareError =
   | AccessDeniedException
@@ -5264,6 +5314,7 @@ export const startAssessmentFrameworkShare: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StartAssessmentFrameworkShare",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -5286,6 +5337,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -5308,6 +5360,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAssessmentError =
   | AccessDeniedException
@@ -5336,6 +5389,7 @@ export const updateAssessment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAssessment",
 }));
 export type UpdateAssessmentControlError =
   | AccessDeniedException
@@ -5360,6 +5414,7 @@ export const updateAssessmentControl: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateAssessmentControl",
 }));
 export type UpdateAssessmentControlSetStatusError =
   | AccessDeniedException
@@ -5384,6 +5439,7 @@ export const updateAssessmentControlSetStatus: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateAssessmentControlSetStatus",
 }));
 export type UpdateAssessmentFrameworkError =
   | AccessDeniedException
@@ -5410,6 +5466,7 @@ export const updateAssessmentFramework: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateAssessmentFramework",
 }));
 export type UpdateAssessmentFrameworkShareError =
   | AccessDeniedException
@@ -5436,6 +5493,7 @@ export const updateAssessmentFrameworkShare: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateAssessmentFrameworkShare",
 }));
 export type UpdateAssessmentStatusError =
   | AccessDeniedException
@@ -5462,6 +5520,7 @@ export const updateAssessmentStatus: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateAssessmentStatus",
 }));
 export type UpdateControlError =
   | AccessDeniedException
@@ -5486,6 +5545,7 @@ export const updateControl: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateControl",
 }));
 export type UpdateSettingsError =
   | AccessDeniedException
@@ -5504,6 +5564,7 @@ export const updateSettings: API.OperationMethod<
   input: UpdateSettingsRequest,
   output: UpdateSettingsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "UpdateSettings",
 }));
 export type ValidateAssessmentReportIntegrityError =
   | AccessDeniedException
@@ -5528,4 +5589,5 @@ export const validateAssessmentReportIntegrity: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ValidateAssessmentReportIntegrity",
 }));

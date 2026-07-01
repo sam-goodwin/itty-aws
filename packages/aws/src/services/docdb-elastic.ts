@@ -971,6 +971,7 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ApplyPendingMaintenanceAction",
 }));
 export type CopyClusterSnapshotError =
   | AccessDeniedException
@@ -1001,6 +1002,7 @@ export const copyClusterSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CopyClusterSnapshot",
 }));
 export type CreateClusterError =
   | AccessDeniedException
@@ -1029,6 +1031,7 @@ export const createCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateCluster",
 }));
 export type CreateClusterSnapshotError =
   | AccessDeniedException
@@ -1059,6 +1062,7 @@ export const createClusterSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateClusterSnapshot",
 }));
 export type DeleteClusterError =
   | AccessDeniedException
@@ -1087,6 +1091,7 @@ export const deleteCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteCluster",
 }));
 export type DeleteClusterSnapshotError =
   | AccessDeniedException
@@ -1115,6 +1120,7 @@ export const deleteClusterSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteClusterSnapshot",
 }));
 export type GetClusterError =
   | AccessDeniedException
@@ -1141,6 +1147,7 @@ export const getCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCluster",
 }));
 export type GetClusterSnapshotError =
   | AccessDeniedException
@@ -1167,6 +1174,7 @@ export const getClusterSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetClusterSnapshot",
 }));
 export type GetPendingMaintenanceActionError =
   | AccessDeniedException
@@ -1195,6 +1203,7 @@ export const getPendingMaintenanceAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPendingMaintenanceAction",
 }));
 export type ListClustersError =
   | AccessDeniedException
@@ -1234,6 +1243,7 @@ export const listClusters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListClusters",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1279,6 +1289,7 @@ export const listClusterSnapshots: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListClusterSnapshots",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1324,6 +1335,7 @@ export const listPendingMaintenanceActions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPendingMaintenanceActions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1354,6 +1366,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type RestoreClusterFromSnapshotError =
   | AccessDeniedException
@@ -1384,6 +1397,7 @@ export const restoreClusterFromSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RestoreClusterFromSnapshot",
 }));
 export type StartClusterError =
   | AccessDeniedException
@@ -1410,6 +1424,7 @@ export const startCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartCluster",
 }));
 export type StopClusterError =
   | AccessDeniedException
@@ -1437,6 +1452,7 @@ export const stopCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopCluster",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -1461,6 +1477,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -1485,6 +1502,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateClusterError =
   | AccessDeniedException
@@ -1514,4 +1532,5 @@ export const updateCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateCluster",
 }));

@@ -897,6 +897,7 @@ export const batchExecuteStatement: API.OperationMethod<
     StatementTimeoutException,
     TransactionNotFoundException,
   ],
+  operationName: "BatchExecuteStatement",
 }));
 export type BeginTransactionError =
   | AccessDeniedException
@@ -949,6 +950,7 @@ export const beginTransaction: API.OperationMethod<
     StatementTimeoutException,
     TransactionNotFoundException,
   ],
+  operationName: "BeginTransaction",
 }));
 export type CommitTransactionError =
   | AccessDeniedException
@@ -995,6 +997,7 @@ export const commitTransaction: API.OperationMethod<
     StatementTimeoutException,
     TransactionNotFoundException,
   ],
+  operationName: "CommitTransaction",
 }));
 export type ExecuteSqlError =
   | AccessDeniedException
@@ -1023,6 +1026,7 @@ export const executeSql: API.OperationMethod<
     InternalServerErrorException,
     ServiceUnavailableError,
   ],
+  operationName: "ExecuteSql",
 }));
 export type ExecuteStatementError =
   | AccessDeniedException
@@ -1075,6 +1079,7 @@ export const executeStatement: API.OperationMethod<
     TransactionNotFoundException,
     UnsupportedResultException,
   ],
+  operationName: "ExecuteStatement",
 }));
 export type RollbackTransactionError =
   | AccessDeniedException
@@ -1121,4 +1126,5 @@ export const rollbackTransaction: API.OperationMethod<
     StatementTimeoutException,
     TransactionNotFoundException,
   ],
+  operationName: "RollbackTransaction",
 }));

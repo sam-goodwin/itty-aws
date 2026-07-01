@@ -1747,6 +1747,7 @@ export const associateToConfiguration: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  operationName: "AssociateToConfiguration",
 }));
 export type CreateChimeWebhookConfigurationError =
   | ConflictException
@@ -1773,6 +1774,7 @@ export const createChimeWebhookConfiguration: API.OperationMethod<
     InvalidRequestException,
     LimitExceededException,
   ],
+  operationName: "CreateChimeWebhookConfiguration",
 }));
 export type CreateMicrosoftTeamsChannelConfigurationError =
   | ConflictException
@@ -1799,6 +1801,7 @@ export const createMicrosoftTeamsChannelConfiguration: API.OperationMethod<
     InvalidRequestException,
     LimitExceededException,
   ],
+  operationName: "CreateMicrosoftTeamsChannelConfiguration",
 }));
 export type CreateSlackChannelConfigurationError =
   | ConflictException
@@ -1825,6 +1828,7 @@ export const createSlackChannelConfiguration: API.OperationMethod<
     InvalidRequestException,
     LimitExceededException,
   ],
+  operationName: "CreateSlackChannelConfiguration",
 }));
 export type DeleteChimeWebhookConfigurationError =
   | DeleteChimeWebhookConfigurationException
@@ -1849,6 +1853,7 @@ export const deleteChimeWebhookConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteChimeWebhookConfiguration",
 }));
 export type DeleteMicrosoftTeamsChannelConfigurationError =
   | DeleteTeamsChannelConfigurationException
@@ -1873,6 +1878,7 @@ export const deleteMicrosoftTeamsChannelConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteMicrosoftTeamsChannelConfiguration",
 }));
 export type DeleteMicrosoftTeamsConfiguredTeamError =
   | DeleteTeamsConfiguredTeamException
@@ -1890,6 +1896,7 @@ export const deleteMicrosoftTeamsConfiguredTeam: API.OperationMethod<
   input: DeleteTeamsConfiguredTeamRequest,
   output: DeleteTeamsConfiguredTeamResult,
   errors: [DeleteTeamsConfiguredTeamException, InvalidParameterException],
+  operationName: "DeleteMicrosoftTeamsConfiguredTeam",
 }));
 export type DeleteMicrosoftTeamsUserIdentityError =
   | DeleteMicrosoftTeamsUserIdentityException
@@ -1912,6 +1919,7 @@ export const deleteMicrosoftTeamsUserIdentity: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteMicrosoftTeamsUserIdentity",
 }));
 export type DeleteSlackChannelConfigurationError =
   | DeleteSlackChannelConfigurationException
@@ -1936,6 +1944,7 @@ export const deleteSlackChannelConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteSlackChannelConfiguration",
 }));
 export type DeleteSlackUserIdentityError =
   | DeleteSlackUserIdentityException
@@ -1958,6 +1967,7 @@ export const deleteSlackUserIdentity: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteSlackUserIdentity",
 }));
 export type DeleteSlackWorkspaceAuthorizationError =
   | DeleteSlackWorkspaceAuthorizationFault
@@ -1975,6 +1985,7 @@ export const deleteSlackWorkspaceAuthorization: API.OperationMethod<
   input: DeleteSlackWorkspaceAuthorizationRequest,
   output: DeleteSlackWorkspaceAuthorizationResult,
   errors: [DeleteSlackWorkspaceAuthorizationFault, InvalidParameterException],
+  operationName: "DeleteSlackWorkspaceAuthorization",
 }));
 export type DescribeChimeWebhookConfigurationsError =
   | DescribeChimeWebhookConfigurationsException
@@ -2012,6 +2023,7 @@ export const describeChimeWebhookConfigurations: API.OperationMethod<
     InvalidParameterException,
     InvalidRequestException,
   ],
+  operationName: "DescribeChimeWebhookConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2055,6 +2067,7 @@ export const describeSlackChannelConfigurations: API.OperationMethod<
     InvalidParameterException,
     InvalidRequestException,
   ],
+  operationName: "DescribeSlackChannelConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2098,6 +2111,7 @@ export const describeSlackUserIdentities: API.OperationMethod<
     InvalidParameterException,
     InvalidRequestException,
   ],
+  operationName: "DescribeSlackUserIdentities",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2141,6 +2155,7 @@ export const describeSlackWorkspaces: API.OperationMethod<
     InvalidParameterException,
     InvalidRequestException,
   ],
+  operationName: "DescribeSlackWorkspaces",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2169,6 +2184,7 @@ export const disassociateFromConfiguration: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  operationName: "DisassociateFromConfiguration",
 }));
 export type GetAccountPreferencesError =
   | GetAccountPreferencesException
@@ -2186,6 +2202,7 @@ export const getAccountPreferences: API.OperationMethod<
   input: GetAccountPreferencesRequest,
   output: GetAccountPreferencesResult,
   errors: [GetAccountPreferencesException, InvalidRequestException],
+  operationName: "GetAccountPreferences",
 }));
 export type GetMicrosoftTeamsChannelConfigurationError =
   | GetTeamsChannelConfigurationException
@@ -2208,6 +2225,7 @@ export const getMicrosoftTeamsChannelConfiguration: API.OperationMethod<
     InvalidParameterException,
     InvalidRequestException,
   ],
+  operationName: "GetMicrosoftTeamsChannelConfiguration",
 }));
 export type ListAssociationsError = CommonErrors;
 /**
@@ -2237,6 +2255,7 @@ export const listAssociations: API.OperationMethod<
   input: ListAssociationsRequest,
   output: ListAssociationsResult,
   errors: [],
+  operationName: "ListAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2280,6 +2299,7 @@ export const listMicrosoftTeamsChannelConfigurations: API.OperationMethod<
     InvalidRequestException,
     ListTeamsChannelConfigurationsException,
   ],
+  operationName: "ListMicrosoftTeamsChannelConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2323,6 +2343,7 @@ export const listMicrosoftTeamsConfiguredTeams: API.OperationMethod<
     InvalidRequestException,
     ListMicrosoftTeamsConfiguredTeamsException,
   ],
+  operationName: "ListMicrosoftTeamsConfiguredTeams",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2366,6 +2387,7 @@ export const listMicrosoftTeamsUserIdentities: API.OperationMethod<
     InvalidRequestException,
     ListMicrosoftTeamsUserIdentitiesException,
   ],
+  operationName: "ListMicrosoftTeamsUserIdentities",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2394,6 +2416,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalServiceError
@@ -2418,6 +2441,7 @@ export const tagResource: API.OperationMethod<
     ServiceUnavailableException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServiceError
@@ -2440,6 +2464,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAccountPreferencesError =
   | InvalidParameterException
@@ -2462,6 +2487,7 @@ export const updateAccountPreferences: API.OperationMethod<
     InvalidRequestException,
     UpdateAccountPreferencesException,
   ],
+  operationName: "UpdateAccountPreferences",
 }));
 export type UpdateChimeWebhookConfigurationError =
   | InvalidParameterException
@@ -2486,6 +2512,7 @@ export const updateChimeWebhookConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     UpdateChimeWebhookConfigurationException,
   ],
+  operationName: "UpdateChimeWebhookConfiguration",
 }));
 export type UpdateMicrosoftTeamsChannelConfigurationError =
   | InvalidParameterException
@@ -2510,6 +2537,7 @@ export const updateMicrosoftTeamsChannelConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     UpdateTeamsChannelConfigurationException,
   ],
+  operationName: "UpdateMicrosoftTeamsChannelConfiguration",
 }));
 export type UpdateSlackChannelConfigurationError =
   | InvalidParameterException
@@ -2534,6 +2562,7 @@ export const updateSlackChannelConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     UpdateSlackChannelConfigurationException,
   ],
+  operationName: "UpdateSlackChannelConfiguration",
 }));
 export type CreateCustomActionError =
   | ConflictException
@@ -2560,6 +2589,7 @@ export const createCustomAction: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  operationName: "CreateCustomAction",
 }));
 export type GetCustomActionError =
   | InternalServiceError
@@ -2584,6 +2614,7 @@ export const getCustomAction: API.OperationMethod<
     ResourceNotFoundException,
     UnauthorizedException,
   ],
+  operationName: "GetCustomAction",
 }));
 export type UpdateCustomActionError =
   | InternalServiceError
@@ -2608,6 +2639,7 @@ export const updateCustomAction: API.OperationMethod<
     ResourceNotFoundException,
     UnauthorizedException,
   ],
+  operationName: "UpdateCustomAction",
 }));
 export type DeleteCustomActionError =
   | InternalServiceError
@@ -2632,6 +2664,7 @@ export const deleteCustomAction: API.OperationMethod<
     ResourceNotFoundException,
     UnauthorizedException,
   ],
+  operationName: "DeleteCustomAction",
 }));
 export type ListCustomActionsError =
   | InternalServiceError
@@ -2669,6 +2702,7 @@ export const listCustomActions: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  operationName: "ListCustomActions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

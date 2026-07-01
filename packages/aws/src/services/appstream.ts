@@ -4390,6 +4390,7 @@ export const associateAppBlockBuilderAppBlock: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "AssociateAppBlockBuilderAppBlock",
 }));
 export type AssociateApplicationFleetError =
   | ConcurrentModificationException
@@ -4416,6 +4417,7 @@ export const associateApplicationFleet: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "AssociateApplicationFleet",
 }));
 export type AssociateApplicationToEntitlementError =
   | EntitlementNotFoundException
@@ -4440,6 +4442,7 @@ export const associateApplicationToEntitlement: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "AssociateApplicationToEntitlement",
 }));
 export type AssociateFleetError =
   | ConcurrentModificationException
@@ -4468,6 +4471,7 @@ export const associateFleet: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "AssociateFleet",
 }));
 export type AssociateSoftwareToImageBuilderError =
   | ConcurrentModificationException
@@ -4494,6 +4498,7 @@ export const associateSoftwareToImageBuilder: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "AssociateSoftwareToImageBuilder",
 }));
 export type BatchAssociateUserStackError =
   | InvalidParameterCombinationException
@@ -4514,6 +4519,7 @@ export const batchAssociateUserStack: API.OperationMethod<
     InvalidParameterCombinationException,
     OperationNotPermittedException,
   ],
+  operationName: "BatchAssociateUserStack",
 }));
 export type BatchDisassociateUserStackError =
   | InvalidParameterCombinationException
@@ -4534,6 +4540,7 @@ export const batchDisassociateUserStack: API.OperationMethod<
     InvalidParameterCombinationException,
     OperationNotPermittedException,
   ],
+  operationName: "BatchDisassociateUserStack",
 }));
 export type CopyImageError =
   | IncompatibleImageException
@@ -4562,6 +4569,7 @@ export const copyImage: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  operationName: "CopyImage",
 }));
 export type CreateAppBlockError =
   | ConcurrentModificationException
@@ -4594,6 +4602,7 @@ export const createAppBlock: API.OperationMethod<
     OperationNotPermittedException,
     ResourceAlreadyExistsException,
   ],
+  operationName: "CreateAppBlock",
 }));
 export type CreateAppBlockBuilderError =
   | ConcurrentModificationException
@@ -4630,6 +4639,7 @@ export const createAppBlockBuilder: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateAppBlockBuilder",
 }));
 export type CreateAppBlockBuilderStreamingURLError =
   | OperationNotPermittedException
@@ -4647,6 +4657,7 @@ export const createAppBlockBuilderStreamingURL: API.OperationMethod<
   input: CreateAppBlockBuilderStreamingURLRequest,
   output: CreateAppBlockBuilderStreamingURLResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
+  operationName: "CreateAppBlockBuilderStreamingURL",
 }));
 export type CreateApplicationError =
   | ConcurrentModificationException
@@ -4681,6 +4692,7 @@ export const createApplication: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateApplication",
 }));
 export type CreateDirectoryConfigError =
   | InvalidAccountStatusException
@@ -4709,6 +4721,7 @@ export const createDirectoryConfig: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateDirectoryConfig",
 }));
 export type CreateEntitlementError =
   | EntitlementAlreadyExistsException
@@ -4738,6 +4751,7 @@ export const createEntitlement: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateEntitlement",
 }));
 export type CreateExportImageTaskError =
   | ConcurrentModificationException
@@ -4768,6 +4782,7 @@ export const createExportImageTask: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateExportImageTask",
 }));
 export type CreateFleetError =
   | ConcurrentModificationException
@@ -4806,6 +4821,7 @@ export const createFleet: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateFleet",
 }));
 export type CreateImageBuilderError =
   | ConcurrentModificationException
@@ -4846,6 +4862,7 @@ export const createImageBuilder: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateImageBuilder",
 }));
 export type CreateImageBuilderStreamingURLError =
   | OperationNotPermittedException
@@ -4863,6 +4880,7 @@ export const createImageBuilderStreamingURL: API.OperationMethod<
   input: CreateImageBuilderStreamingURLRequest,
   output: CreateImageBuilderStreamingURLResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
+  operationName: "CreateImageBuilderStreamingURL",
 }));
 export type CreateImportedImageError =
   | DryRunOperationException
@@ -4897,6 +4915,7 @@ export const createImportedImage: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateImportedImage",
 }));
 export type CreateStackError =
   | ConcurrentModificationException
@@ -4929,6 +4948,7 @@ export const createStack: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateStack",
 }));
 export type CreateStreamingURLError =
   | InvalidParameterCombinationException
@@ -4953,6 +4973,7 @@ export const createStreamingURL: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateStreamingURL",
 }));
 export type CreateThemeForStackError =
   | ConcurrentModificationException
@@ -4981,6 +5002,7 @@ export const createThemeForStack: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateThemeForStack",
 }));
 export type CreateUpdatedImageError =
   | ConcurrentModificationException
@@ -5014,6 +5036,7 @@ export const createUpdatedImage: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateUpdatedImage",
 }));
 export type CreateUsageReportSubscriptionError =
   | InvalidAccountStatusException
@@ -5036,6 +5059,7 @@ export const createUsageReportSubscription: API.OperationMethod<
     InvalidRoleException,
     LimitExceededException,
   ],
+  operationName: "CreateUsageReportSubscription",
 }));
 export type CreateUserError =
   | InvalidAccountStatusException
@@ -5062,6 +5086,7 @@ export const createUser: API.OperationMethod<
     OperationNotPermittedException,
     ResourceAlreadyExistsException,
   ],
+  operationName: "CreateUser",
 }));
 export type DeleteAppBlockError =
   | ConcurrentModificationException
@@ -5084,6 +5109,7 @@ export const deleteAppBlock: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteAppBlock",
 }));
 export type DeleteAppBlockBuilderError =
   | ConcurrentModificationException
@@ -5111,6 +5137,7 @@ export const deleteAppBlockBuilder: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteAppBlockBuilder",
 }));
 export type DeleteApplicationError =
   | ConcurrentModificationException
@@ -5135,6 +5162,7 @@ export const deleteApplication: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteApplication",
 }));
 export type DeleteDirectoryConfigError =
   | ResourceInUseException
@@ -5152,6 +5180,7 @@ export const deleteDirectoryConfig: API.OperationMethod<
   input: DeleteDirectoryConfigRequest,
   output: DeleteDirectoryConfigResult,
   errors: [ResourceInUseException, ResourceNotFoundException],
+  operationName: "DeleteDirectoryConfig",
 }));
 export type DeleteEntitlementError =
   | ConcurrentModificationException
@@ -5176,6 +5205,7 @@ export const deleteEntitlement: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteEntitlement",
 }));
 export type DeleteFleetError =
   | ConcurrentModificationException
@@ -5198,6 +5228,7 @@ export const deleteFleet: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteFleet",
 }));
 export type DeleteImageError =
   | ConcurrentModificationException
@@ -5223,6 +5254,7 @@ export const deleteImage: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteImage",
 }));
 export type DeleteImageBuilderError =
   | ConcurrentModificationException
@@ -5245,6 +5277,7 @@ export const deleteImageBuilder: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteImageBuilder",
 }));
 export type DeleteImagePermissionsError =
   | ResourceNotAvailableException
@@ -5262,6 +5295,7 @@ export const deleteImagePermissions: API.OperationMethod<
   input: DeleteImagePermissionsRequest,
   output: DeleteImagePermissionsResult,
   errors: [ResourceNotAvailableException, ResourceNotFoundException],
+  operationName: "DeleteImagePermissions",
 }));
 export type DeleteStackError =
   | ConcurrentModificationException
@@ -5286,6 +5320,7 @@ export const deleteStack: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteStack",
 }));
 export type DeleteThemeForStackError =
   | ConcurrentModificationException
@@ -5308,6 +5343,7 @@ export const deleteThemeForStack: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteThemeForStack",
 }));
 export type DeleteUsageReportSubscriptionError =
   | InvalidAccountStatusException
@@ -5325,6 +5361,7 @@ export const deleteUsageReportSubscription: API.OperationMethod<
   input: DeleteUsageReportSubscriptionRequest,
   output: DeleteUsageReportSubscriptionResult,
   errors: [InvalidAccountStatusException, ResourceNotFoundException],
+  operationName: "DeleteUsageReportSubscription",
 }));
 export type DeleteUserError = ResourceNotFoundException | CommonErrors;
 /**
@@ -5339,6 +5376,7 @@ export const deleteUser: API.OperationMethod<
   input: DeleteUserRequest,
   output: DeleteUserResult,
   errors: [ResourceNotFoundException],
+  operationName: "DeleteUser",
 }));
 export type DescribeAppBlockBuilderAppBlockAssociationsError =
   | InvalidParameterCombinationException
@@ -5374,6 +5412,7 @@ export const describeAppBlockBuilderAppBlockAssociations: API.OperationMethod<
     InvalidParameterCombinationException,
     OperationNotPermittedException,
   ],
+  operationName: "DescribeAppBlockBuilderAppBlockAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5411,6 +5450,7 @@ export const describeAppBlockBuilders: API.OperationMethod<
   input: DescribeAppBlockBuildersRequest,
   output: DescribeAppBlockBuildersResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
+  operationName: "DescribeAppBlockBuilders",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5433,6 +5473,7 @@ export const describeAppBlocks: API.OperationMethod<
   input: DescribeAppBlocksRequest,
   output: DescribeAppBlocksResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
+  operationName: "DescribeAppBlocks",
 }));
 export type DescribeApplicationFleetAssociationsError =
   | InvalidParameterCombinationException
@@ -5453,6 +5494,7 @@ export const describeApplicationFleetAssociations: API.OperationMethod<
     InvalidParameterCombinationException,
     OperationNotPermittedException,
   ],
+  operationName: "DescribeApplicationFleetAssociations",
 }));
 export type DescribeApplicationsError =
   | OperationNotPermittedException
@@ -5470,6 +5512,7 @@ export const describeApplications: API.OperationMethod<
   input: DescribeApplicationsRequest,
   output: DescribeApplicationsResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
+  operationName: "DescribeApplications",
 }));
 export type DescribeAppLicenseUsageError =
   | InvalidParameterCombinationException
@@ -5492,6 +5535,7 @@ export const describeAppLicenseUsage: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeAppLicenseUsage",
 }));
 export type DescribeDirectoryConfigsError =
   | ResourceNotFoundException
@@ -5510,6 +5554,7 @@ export const describeDirectoryConfigs: API.OperationMethod<
   input: DescribeDirectoryConfigsRequest,
   output: DescribeDirectoryConfigsResult,
   errors: [ResourceNotFoundException],
+  operationName: "DescribeDirectoryConfigs",
 }));
 export type DescribeEntitlementsError =
   | EntitlementNotFoundException
@@ -5532,6 +5577,7 @@ export const describeEntitlements: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeEntitlements",
 }));
 export type DescribeFleetsError = ResourceNotFoundException | CommonErrors;
 /**
@@ -5546,6 +5592,7 @@ export const describeFleets: API.OperationMethod<
   input: DescribeFleetsRequest,
   output: DescribeFleetsResult,
   errors: [ResourceNotFoundException],
+  operationName: "DescribeFleets",
 }));
 export type DescribeImageBuildersError =
   | ResourceNotFoundException
@@ -5562,6 +5609,7 @@ export const describeImageBuilders: API.OperationMethod<
   input: DescribeImageBuildersRequest,
   output: DescribeImageBuildersResult,
   errors: [ResourceNotFoundException],
+  operationName: "DescribeImageBuilders",
 }));
 export type DescribeImagePermissionsError =
   | ResourceNotFoundException
@@ -5593,6 +5641,7 @@ export const describeImagePermissions: API.OperationMethod<
   input: DescribeImagePermissionsRequest,
   output: DescribeImagePermissionsResult,
   errors: [ResourceNotFoundException],
+  operationName: "DescribeImagePermissions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5630,6 +5679,7 @@ export const describeImages: API.OperationMethod<
   input: DescribeImagesRequest,
   output: DescribeImagesResult,
   errors: [InvalidParameterCombinationException, ResourceNotFoundException],
+  operationName: "DescribeImages",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5653,6 +5703,7 @@ export const describeSessions: API.OperationMethod<
   input: DescribeSessionsRequest,
   output: DescribeSessionsResult,
   errors: [InvalidParameterCombinationException],
+  operationName: "DescribeSessions",
 }));
 export type DescribeSoftwareAssociationsError =
   | OperationNotPermittedException
@@ -5670,6 +5721,7 @@ export const describeSoftwareAssociations: API.OperationMethod<
   input: DescribeSoftwareAssociationsRequest,
   output: DescribeSoftwareAssociationsResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
+  operationName: "DescribeSoftwareAssociations",
 }));
 export type DescribeStacksError = ResourceNotFoundException | CommonErrors;
 /**
@@ -5684,6 +5736,7 @@ export const describeStacks: API.OperationMethod<
   input: DescribeStacksRequest,
   output: DescribeStacksResult,
   errors: [ResourceNotFoundException],
+  operationName: "DescribeStacks",
 }));
 export type DescribeThemeForStackError =
   | OperationNotPermittedException
@@ -5701,6 +5754,7 @@ export const describeThemeForStack: API.OperationMethod<
   input: DescribeThemeForStackRequest,
   output: DescribeThemeForStackResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
+  operationName: "DescribeThemeForStack",
 }));
 export type DescribeUsageReportSubscriptionsError =
   | InvalidAccountStatusException
@@ -5718,6 +5772,7 @@ export const describeUsageReportSubscriptions: API.OperationMethod<
   input: DescribeUsageReportSubscriptionsRequest,
   output: DescribeUsageReportSubscriptionsResult,
   errors: [InvalidAccountStatusException, ResourceNotFoundException],
+  operationName: "DescribeUsageReportSubscriptions",
 }));
 export type DescribeUsersError =
   | InvalidParameterCombinationException
@@ -5740,6 +5795,7 @@ export const describeUsers: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeUsers",
 }));
 export type DescribeUserStackAssociationsError =
   | InvalidParameterCombinationException
@@ -5764,6 +5820,7 @@ export const describeUserStackAssociations: API.OperationMethod<
     InvalidParameterCombinationException,
     OperationNotPermittedException,
   ],
+  operationName: "DescribeUserStackAssociations",
 }));
 export type DisableUserError = ResourceNotFoundException | CommonErrors;
 /**
@@ -5778,6 +5835,7 @@ export const disableUser: API.OperationMethod<
   input: DisableUserRequest,
   output: DisableUserResult,
   errors: [ResourceNotFoundException],
+  operationName: "DisableUser",
 }));
 export type DisassociateAppBlockBuilderAppBlockError =
   | ConcurrentModificationException
@@ -5802,6 +5860,7 @@ export const disassociateAppBlockBuilderAppBlock: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "DisassociateAppBlockBuilderAppBlock",
 }));
 export type DisassociateApplicationFleetError =
   | ConcurrentModificationException
@@ -5824,6 +5883,7 @@ export const disassociateApplicationFleet: API.OperationMethod<
     InvalidParameterCombinationException,
     OperationNotPermittedException,
   ],
+  operationName: "DisassociateApplicationFleet",
 }));
 export type DisassociateApplicationFromEntitlementError =
   | EntitlementNotFoundException
@@ -5846,6 +5906,7 @@ export const disassociateApplicationFromEntitlement: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "DisassociateApplicationFromEntitlement",
 }));
 export type DisassociateFleetError =
   | ConcurrentModificationException
@@ -5870,6 +5931,7 @@ export const disassociateFleet: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DisassociateFleet",
 }));
 export type DisassociateSoftwareFromImageBuilderError =
   | ConcurrentModificationException
@@ -5894,6 +5956,7 @@ export const disassociateSoftwareFromImageBuilder: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "DisassociateSoftwareFromImageBuilder",
 }));
 export type DrainSessionInstanceError =
   | ConcurrentModificationException
@@ -5916,6 +5979,7 @@ export const drainSessionInstance: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "DrainSessionInstance",
 }));
 export type EnableUserError =
   | InvalidAccountStatusException
@@ -5933,6 +5997,7 @@ export const enableUser: API.OperationMethod<
   input: EnableUserRequest,
   output: EnableUserResult,
   errors: [InvalidAccountStatusException, ResourceNotFoundException],
+  operationName: "EnableUser",
 }));
 export type ExpireSessionError = CommonErrors;
 /**
@@ -5947,6 +6012,7 @@ export const expireSession: API.OperationMethod<
   input: ExpireSessionRequest,
   output: ExpireSessionResult,
   errors: [],
+  operationName: "ExpireSession",
 }));
 export type GetExportImageTaskError =
   | OperationNotPermittedException
@@ -5964,6 +6030,7 @@ export const getExportImageTask: API.OperationMethod<
   input: GetExportImageTaskRequest,
   output: GetExportImageTaskResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
+  operationName: "GetExportImageTask",
 }));
 export type ListAssociatedFleetsError = CommonErrors;
 /**
@@ -5978,6 +6045,7 @@ export const listAssociatedFleets: API.OperationMethod<
   input: ListAssociatedFleetsRequest,
   output: ListAssociatedFleetsResult,
   errors: [],
+  operationName: "ListAssociatedFleets",
 }));
 export type ListAssociatedStacksError = CommonErrors;
 /**
@@ -5992,6 +6060,7 @@ export const listAssociatedStacks: API.OperationMethod<
   input: ListAssociatedStacksRequest,
   output: ListAssociatedStacksResult,
   errors: [],
+  operationName: "ListAssociatedStacks",
 }));
 export type ListEntitledApplicationsError =
   | EntitlementNotFoundException
@@ -6014,6 +6083,7 @@ export const listEntitledApplications: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "ListEntitledApplications",
 }));
 export type ListExportImageTasksError =
   | OperationNotPermittedException
@@ -6030,6 +6100,7 @@ export const listExportImageTasks: API.OperationMethod<
   input: ListExportImageTasksRequest,
   output: ListExportImageTasksResult,
   errors: [OperationNotPermittedException],
+  operationName: "ListExportImageTasks",
 }));
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -6046,6 +6117,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type StartAppBlockBuilderError =
   | ConcurrentModificationException
@@ -6082,6 +6154,7 @@ export const startAppBlockBuilder: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  operationName: "StartAppBlockBuilder",
 }));
 export type StartFleetError =
   | ConcurrentModificationException
@@ -6114,6 +6187,7 @@ export const startFleet: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  operationName: "StartFleet",
 }));
 export type StartImageBuilderError =
   | ConcurrentModificationException
@@ -6140,6 +6214,7 @@ export const startImageBuilder: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  operationName: "StartImageBuilder",
 }));
 export type StartSoftwareDeploymentToImageBuilderError =
   | ConcurrentModificationException
@@ -6162,6 +6237,7 @@ export const startSoftwareDeploymentToImageBuilder: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "StartSoftwareDeploymentToImageBuilder",
 }));
 export type StopAppBlockBuilderError =
   | ConcurrentModificationException
@@ -6187,6 +6263,7 @@ export const stopAppBlockBuilder: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "StopAppBlockBuilder",
 }));
 export type StopFleetError =
   | ConcurrentModificationException
@@ -6204,6 +6281,7 @@ export const stopFleet: API.OperationMethod<
   input: StopFleetRequest,
   output: StopFleetResult,
   errors: [ConcurrentModificationException, ResourceNotFoundException],
+  operationName: "StopFleet",
 }));
 export type StopImageBuilderError =
   | ConcurrentModificationException
@@ -6226,6 +6304,7 @@ export const stopImageBuilder: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "StopImageBuilder",
 }));
 export type TagResourceError =
   | InvalidAccountStatusException
@@ -6256,6 +6335,7 @@ export const tagResource: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -6274,6 +6354,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "UntagResource",
 }));
 export type UpdateAppBlockBuilderError =
   | ConcurrentModificationException
@@ -6315,6 +6396,7 @@ export const updateAppBlockBuilder: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateAppBlockBuilder",
 }));
 export type UpdateApplicationError =
   | ConcurrentModificationException
@@ -6337,6 +6419,7 @@ export const updateApplication: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateApplication",
 }));
 export type UpdateDirectoryConfigError =
   | ConcurrentModificationException
@@ -6365,6 +6448,7 @@ export const updateDirectoryConfig: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateDirectoryConfig",
 }));
 export type UpdateEntitlementError =
   | ConcurrentModificationException
@@ -6389,6 +6473,7 @@ export const updateEntitlement: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateEntitlement",
 }));
 export type UpdateFleetError =
   | ConcurrentModificationException
@@ -6449,6 +6534,7 @@ export const updateFleet: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateFleet",
 }));
 export type UpdateImagePermissionsError =
   | LimitExceededException
@@ -6471,6 +6557,7 @@ export const updateImagePermissions: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateImagePermissions",
 }));
 export type UpdateStackError =
   | ConcurrentModificationException
@@ -6505,6 +6592,7 @@ export const updateStack: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateStack",
 }));
 export type UpdateThemeForStackError =
   | ConcurrentModificationException
@@ -6533,4 +6621,5 @@ export const updateThemeForStack: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateThemeForStack",
 }));

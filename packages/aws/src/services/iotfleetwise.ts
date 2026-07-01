@@ -3830,6 +3830,7 @@ export const batchCreateVehicle: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchCreateVehicle",
 }));
 export type BatchUpdateVehicleError =
   | AccessDeniedException
@@ -3862,6 +3863,7 @@ export const batchUpdateVehicle: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchUpdateVehicle",
 }));
 export type GetEncryptionConfigurationError =
   | AccessDeniedException
@@ -3888,6 +3890,7 @@ export const getEncryptionConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEncryptionConfiguration",
 }));
 export type GetLoggingOptionsError =
   | AccessDeniedException
@@ -3905,6 +3908,7 @@ export const getLoggingOptions: API.OperationMethod<
   input: GetLoggingOptionsRequest,
   output: GetLoggingOptionsResponse,
   errors: [AccessDeniedException, ThrottlingException],
+  operationName: "GetLoggingOptions",
 }));
 export type GetRegisterAccountStatusError =
   | AccessDeniedException
@@ -3937,6 +3941,7 @@ export const getRegisterAccountStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRegisterAccountStatus",
 }));
 export type GetVehicleStatusError =
   | AccessDeniedException
@@ -3977,6 +3982,7 @@ export const getVehicleStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetVehicleStatus",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4009,6 +4015,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutEncryptionConfigurationError =
   | AccessDeniedException
@@ -4040,6 +4047,7 @@ export const putEncryptionConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutEncryptionConfiguration",
 }));
 export type PutLoggingOptionsError =
   | AccessDeniedException
@@ -4066,6 +4074,7 @@ export const putLoggingOptions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutLoggingOptions",
 }));
 export type RegisterAccountError =
   | AccessDeniedException
@@ -4116,6 +4125,7 @@ export const registerAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RegisterAccount",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -4143,6 +4153,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -4169,6 +4180,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateCampaignError =
   | AccessDeniedException
@@ -4205,6 +4217,7 @@ export const createCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateCampaign",
 }));
 export type GetCampaignError =
   | AccessDeniedException
@@ -4231,6 +4244,7 @@ export const getCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetCampaign",
 }));
 export type UpdateCampaignError =
   | AccessDeniedException
@@ -4257,6 +4271,7 @@ export const updateCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateCampaign",
 }));
 export type DeleteCampaignError =
   | AccessDeniedException
@@ -4282,6 +4297,7 @@ export const deleteCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteCampaign",
 }));
 export type ListCampaignsError =
   | AccessDeniedException
@@ -4317,6 +4333,7 @@ export const listCampaigns: API.OperationMethod<
   input: ListCampaignsRequest,
   output: ListCampaignsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  operationName: "ListCampaigns",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4362,6 +4379,7 @@ export const createDecoderManifest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDecoderManifest",
 }));
 export type GetDecoderManifestError =
   | AccessDeniedException
@@ -4386,6 +4404,7 @@ export const getDecoderManifest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDecoderManifest",
 }));
 export type UpdateDecoderManifestError =
   | AccessDeniedException
@@ -4419,6 +4438,7 @@ export const updateDecoderManifest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateDecoderManifest",
 }));
 export type DeleteDecoderManifestError =
   | AccessDeniedException
@@ -4446,6 +4466,7 @@ export const deleteDecoderManifest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDecoderManifest",
 }));
 export type ListDecoderManifestsError =
   | AccessDeniedException
@@ -4487,6 +4508,7 @@ export const listDecoderManifests: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDecoderManifests",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4525,6 +4547,7 @@ export const importDecoderManifest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ImportDecoderManifest",
 }));
 export type ListDecoderManifestNetworkInterfacesError =
   | AccessDeniedException
@@ -4568,6 +4591,7 @@ export const listDecoderManifestNetworkInterfaces: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDecoderManifestNetworkInterfaces",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4617,6 +4641,7 @@ export const listDecoderManifestSignals: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDecoderManifestSignals",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4658,6 +4683,7 @@ export const createFleet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateFleet",
 }));
 export type GetFleetError =
   | AccessDeniedException
@@ -4684,6 +4710,7 @@ export const getFleet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetFleet",
 }));
 export type UpdateFleetError =
   | AccessDeniedException
@@ -4712,6 +4739,7 @@ export const updateFleet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateFleet",
 }));
 export type DeleteFleetError =
   | AccessDeniedException
@@ -4738,6 +4766,7 @@ export const deleteFleet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteFleet",
 }));
 export type ListFleetsError =
   | AccessDeniedException
@@ -4781,6 +4810,7 @@ export const listFleets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFleets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4830,6 +4860,7 @@ export const listVehiclesInFleet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListVehiclesInFleet",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4870,6 +4901,7 @@ export const createModelManifest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateModelManifest",
 }));
 export type GetModelManifestError =
   | AccessDeniedException
@@ -4894,6 +4926,7 @@ export const getModelManifest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetModelManifest",
 }));
 export type UpdateModelManifestError =
   | AccessDeniedException
@@ -4925,6 +4958,7 @@ export const updateModelManifest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateModelManifest",
 }));
 export type DeleteModelManifestError =
   | AccessDeniedException
@@ -4951,6 +4985,7 @@ export const deleteModelManifest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteModelManifest",
 }));
 export type ListModelManifestsError =
   | AccessDeniedException
@@ -4992,6 +5027,7 @@ export const listModelManifests: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListModelManifests",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5043,6 +5079,7 @@ export const listModelManifestNodes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListModelManifestNodes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5080,6 +5117,7 @@ export const createSignalCatalog: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateSignalCatalog",
 }));
 export type GetSignalCatalogError =
   | AccessDeniedException
@@ -5104,6 +5142,7 @@ export const getSignalCatalog: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetSignalCatalog",
 }));
 export type UpdateSignalCatalogError =
   | AccessDeniedException
@@ -5138,6 +5177,7 @@ export const updateSignalCatalog: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateSignalCatalog",
 }));
 export type DeleteSignalCatalogError =
   | AccessDeniedException
@@ -5164,6 +5204,7 @@ export const deleteSignalCatalog: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteSignalCatalog",
 }));
 export type ListSignalCatalogsError =
   | AccessDeniedException
@@ -5208,6 +5249,7 @@ export const listSignalCatalogs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSignalCatalogs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5247,6 +5289,7 @@ export const importSignalCatalog: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ImportSignalCatalog",
 }));
 export type ListSignalCatalogNodesError =
   | AccessDeniedException
@@ -5292,6 +5335,7 @@ export const listSignalCatalogNodes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSignalCatalogNodes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5332,6 +5376,7 @@ export const createStateTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateStateTemplate",
 }));
 export type GetStateTemplateError =
   | AccessDeniedException
@@ -5360,6 +5405,7 @@ export const getStateTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetStateTemplate",
 }));
 export type UpdateStateTemplateError =
   | AccessDeniedException
@@ -5392,6 +5438,7 @@ export const updateStateTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateStateTemplate",
 }));
 export type DeleteStateTemplateError =
   | AccessDeniedException
@@ -5416,6 +5463,7 @@ export const deleteStateTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteStateTemplate",
 }));
 export type ListStateTemplatesError =
   | AccessDeniedException
@@ -5457,6 +5505,7 @@ export const listStateTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListStateTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5501,6 +5550,7 @@ export const createVehicle: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateVehicle",
 }));
 export type GetVehicleError =
   | AccessDeniedException
@@ -5527,6 +5577,7 @@ export const getVehicle: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetVehicle",
 }));
 export type UpdateVehicleError =
   | AccessDeniedException
@@ -5559,6 +5610,7 @@ export const updateVehicle: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateVehicle",
 }));
 export type DeleteVehicleError =
   | AccessDeniedException
@@ -5583,6 +5635,7 @@ export const deleteVehicle: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteVehicle",
 }));
 export type ListVehiclesError =
   | AccessDeniedException
@@ -5624,6 +5677,7 @@ export const listVehicles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListVehicles",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5658,6 +5712,7 @@ export const associateVehicleFleet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateVehicleFleet",
 }));
 export type DisassociateVehicleFleetError =
   | AccessDeniedException
@@ -5685,6 +5740,7 @@ export const disassociateVehicleFleet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateVehicleFleet",
 }));
 export type ListFleetsForVehicleError =
   | AccessDeniedException
@@ -5728,6 +5784,7 @@ export const listFleetsForVehicle: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFleetsForVehicle",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

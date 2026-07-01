@@ -263,6 +263,7 @@ export const getLatestConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetLatestConfiguration",
 }));
 export type StartConfigurationSessionError =
   | BadRequestException
@@ -290,4 +291,5 @@ export const startConfigurationSession: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "StartConfigurationSession",
 }));

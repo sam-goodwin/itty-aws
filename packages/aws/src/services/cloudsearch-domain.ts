@@ -440,6 +440,7 @@ export const search: API.OperationMethod<
   input: SearchRequest,
   output: SearchResponse,
   errors: [SearchException],
+  operationName: "Search",
 }));
 export type SuggestError = SearchException | CommonErrors;
 /**
@@ -458,6 +459,7 @@ export const suggest: API.OperationMethod<
   input: SuggestRequest,
   output: SuggestResponse,
   errors: [SearchException],
+  operationName: "Suggest",
 }));
 export type UploadDocumentsError = DocumentServiceException | CommonErrors;
 /**
@@ -477,4 +479,5 @@ export const uploadDocuments: API.OperationMethod<
   input: UploadDocumentsRequest,
   output: UploadDocumentsResponse,
   errors: [DocumentServiceException],
+  operationName: "UploadDocuments",
 }));

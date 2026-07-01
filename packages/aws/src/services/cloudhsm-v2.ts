@@ -832,6 +832,7 @@ export const copyBackupToRegion: API.OperationMethod<
     CloudHsmServiceException,
     CloudHsmTagException,
   ],
+  operationName: "CopyBackupToRegion",
 }));
 export type CreateClusterError =
   | CloudHsmAccessDeniedException
@@ -863,6 +864,7 @@ export const createCluster: API.OperationMethod<
     CloudHsmServiceException,
     CloudHsmTagException,
   ],
+  operationName: "CreateCluster",
 }));
 export type CreateHsmError =
   | CloudHsmAccessDeniedException
@@ -892,6 +894,7 @@ export const createHsm: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  operationName: "CreateHsm",
 }));
 export type DeleteBackupError =
   | CloudHsmAccessDeniedException
@@ -922,6 +925,7 @@ export const deleteBackup: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  operationName: "DeleteBackup",
 }));
 export type DeleteClusterError =
   | CloudHsmAccessDeniedException
@@ -953,6 +957,7 @@ export const deleteCluster: API.OperationMethod<
     CloudHsmServiceException,
     CloudHsmTagException,
   ],
+  operationName: "DeleteCluster",
 }));
 export type DeleteHsmError =
   | CloudHsmAccessDeniedException
@@ -983,6 +988,7 @@ export const deleteHsm: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  operationName: "DeleteHsm",
 }));
 export type DeleteResourcePolicyError =
   | CloudHsmAccessDeniedException
@@ -1013,6 +1019,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DescribeBackupsError =
   | CloudHsmAccessDeniedException
@@ -1064,6 +1071,7 @@ export const describeBackups: API.OperationMethod<
     CloudHsmServiceException,
     CloudHsmTagException,
   ],
+  operationName: "DescribeBackups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1118,6 +1126,7 @@ export const describeClusters: API.OperationMethod<
     CloudHsmServiceException,
     CloudHsmTagException,
   ],
+  operationName: "DescribeClusters",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1151,6 +1160,7 @@ export const getResourcePolicy: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type InitializeClusterError =
   | CloudHsmAccessDeniedException
@@ -1182,6 +1192,7 @@ export const initializeCluster: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  operationName: "InitializeCluster",
 }));
 export type ListTagsError =
   | CloudHsmAccessDeniedException
@@ -1233,6 +1244,7 @@ export const listTags: API.OperationMethod<
     CloudHsmServiceException,
     CloudHsmTagException,
   ],
+  operationName: "ListTags",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1266,6 +1278,7 @@ export const modifyBackupAttributes: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  operationName: "ModifyBackupAttributes",
 }));
 export type ModifyClusterError =
   | CloudHsmAccessDeniedException
@@ -1294,6 +1307,7 @@ export const modifyCluster: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  operationName: "ModifyCluster",
 }));
 export type PutResourcePolicyError =
   | CloudHsmAccessDeniedException
@@ -1336,6 +1350,7 @@ export const putResourcePolicy: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type RestoreBackupError =
   | CloudHsmAccessDeniedException
@@ -1366,6 +1381,7 @@ export const restoreBackup: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  operationName: "RestoreBackup",
 }));
 export type TagResourceError =
   | CloudHsmAccessDeniedException
@@ -1398,6 +1414,7 @@ export const tagResource: API.OperationMethod<
     CloudHsmServiceException,
     CloudHsmTagException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | CloudHsmAccessDeniedException
@@ -1428,4 +1445,5 @@ export const untagResource: API.OperationMethod<
     CloudHsmServiceException,
     CloudHsmTagException,
   ],
+  operationName: "UntagResource",
 }));

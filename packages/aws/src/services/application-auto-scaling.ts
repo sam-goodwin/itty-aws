@@ -1323,6 +1323,7 @@ export const deleteScalingPolicy: API.OperationMethod<
     ObjectNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteScalingPolicy",
 }));
 export type DeleteScheduledActionError =
   | ConcurrentUpdateException
@@ -1349,6 +1350,7 @@ export const deleteScheduledAction: API.OperationMethod<
     ObjectNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteScheduledAction",
 }));
 export type DeregisterScalableTargetError =
   | ConcurrentUpdateException
@@ -1377,6 +1379,7 @@ export const deregisterScalableTarget: API.OperationMethod<
     ObjectNotFoundException,
     ValidationException,
   ],
+  operationName: "DeregisterScalableTarget",
 }));
 export type DescribeScalableTargetsError =
   | ConcurrentUpdateException
@@ -1419,6 +1422,7 @@ export const describeScalableTargets: API.OperationMethod<
     InvalidNextTokenException,
     ValidationException,
   ],
+  operationName: "DescribeScalableTargets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1470,6 +1474,7 @@ export const describeScalingActivities: API.OperationMethod<
     InvalidNextTokenException,
     ValidationException,
   ],
+  operationName: "DescribeScalingActivities",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1522,6 +1527,7 @@ export const describeScalingPolicies: API.OperationMethod<
     InvalidNextTokenException,
     ValidationException,
   ],
+  operationName: "DescribeScalingPolicies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1572,6 +1578,7 @@ export const describeScheduledActions: API.OperationMethod<
     InvalidNextTokenException,
     ValidationException,
   ],
+  operationName: "DescribeScheduledActions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1603,6 +1610,7 @@ export const getPredictiveScalingForecast: API.OperationMethod<
   input: GetPredictiveScalingForecastRequest,
   output: GetPredictiveScalingForecastResponse,
   errors: [InternalServiceException, ValidationException],
+  operationName: "GetPredictiveScalingForecast",
 }));
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1620,6 +1628,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  operationName: "ListTagsForResource",
 }));
 export type PutScalingPolicyError =
   | ConcurrentUpdateException
@@ -1676,6 +1685,7 @@ export const putScalingPolicy: API.OperationMethod<
     ObjectNotFoundException,
     ValidationException,
   ],
+  operationName: "PutScalingPolicy",
 }));
 export type PutScheduledActionError =
   | ConcurrentUpdateException
@@ -1719,6 +1729,7 @@ export const putScheduledAction: API.OperationMethod<
     ObjectNotFoundException,
     ValidationException,
   ],
+  operationName: "PutScheduledAction",
 }));
 export type RegisterScalableTargetError =
   | ConcurrentUpdateException
@@ -1779,6 +1790,7 @@ export const registerScalableTarget: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  operationName: "RegisterScalableTarget",
 }));
 export type TagResourceError =
   | ResourceNotFoundException
@@ -1817,6 +1829,7 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ResourceNotFoundException
@@ -1835,4 +1848,5 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "UntagResource",
 }));

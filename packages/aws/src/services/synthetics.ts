@@ -1581,6 +1581,7 @@ export const associateResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "AssociateResource",
 }));
 export type CreateCanaryError =
   | InternalServerException
@@ -1619,6 +1620,7 @@ export const createCanary: API.OperationMethod<
     RequestEntityTooLargeException,
     ValidationException,
   ],
+  operationName: "CreateCanary",
 }));
 export type CreateGroupError =
   | ConflictException
@@ -1658,6 +1660,7 @@ export const createGroup: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateGroup",
 }));
 export type DeleteCanaryError =
   | ConflictException
@@ -1707,6 +1710,7 @@ export const deleteCanary: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteCanary",
 }));
 export type DeleteGroupError =
   | ConflictException
@@ -1735,6 +1739,7 @@ export const deleteGroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteGroup",
 }));
 export type DescribeCanariesError =
   | InternalServerException
@@ -1778,6 +1783,7 @@ export const describeCanaries: API.OperationMethod<
   input: DescribeCanariesRequest,
   output: DescribeCanariesResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "DescribeCanaries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1825,6 +1831,7 @@ export const describeCanariesLastRun: API.OperationMethod<
   input: DescribeCanariesLastRunRequest,
   output: DescribeCanariesLastRunResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "DescribeCanariesLastRun",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1864,6 +1871,7 @@ export const describeRuntimeVersions: API.OperationMethod<
   input: DescribeRuntimeVersionsRequest,
   output: DescribeRuntimeVersionsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "DescribeRuntimeVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1893,6 +1901,7 @@ export const disassociateResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DisassociateResource",
 }));
 export type GetCanaryError =
   | InternalServerException
@@ -1912,6 +1921,7 @@ export const getCanary: API.OperationMethod<
   input: GetCanaryRequest,
   output: GetCanaryResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "GetCanary",
 }));
 export type GetCanaryRunsError =
   | InternalServerException
@@ -1949,6 +1959,7 @@ export const getCanaryRuns: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetCanaryRuns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1979,6 +1990,7 @@ export const getGroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetGroup",
 }));
 export type ListAssociatedGroupsError =
   | InternalServerException
@@ -2017,6 +2029,7 @@ export const listAssociatedGroups: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListAssociatedGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2061,6 +2074,7 @@ export const listGroupResources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListGroupResources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2099,6 +2113,7 @@ export const listGroups: API.OperationMethod<
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2130,6 +2145,7 @@ export const listTagsForResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type StartCanaryError =
   | ConflictException
@@ -2156,6 +2172,7 @@ export const startCanary: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StartCanary",
 }));
 export type StartCanaryDryRunError =
   | AccessDeniedException
@@ -2182,6 +2199,7 @@ export const startCanaryDryRun: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StartCanaryDryRun",
 }));
 export type StopCanaryError =
   | ConflictException
@@ -2211,6 +2229,7 @@ export const stopCanary: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "StopCanary",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -2252,6 +2271,7 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -2278,6 +2298,7 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateCanaryError =
   | AccessDeniedException
@@ -2317,4 +2338,5 @@ export const updateCanary: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateCanary",
 }));

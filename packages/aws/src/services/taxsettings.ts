@@ -1615,6 +1615,7 @@ export const batchDeleteTaxRegistration: API.OperationMethod<
   input: BatchDeleteTaxRegistrationRequest,
   output: BatchDeleteTaxRegistrationResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  operationName: "BatchDeleteTaxRegistration",
 }));
 export type BatchGetTaxExemptionsError =
   | InternalServerException
@@ -1637,6 +1638,7 @@ export const batchGetTaxExemptions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "BatchGetTaxExemptions",
 }));
 export type BatchPutTaxRegistrationError =
   | ConflictException
@@ -1789,6 +1791,7 @@ export const batchPutTaxRegistration: API.OperationMethod<
   input: BatchPutTaxRegistrationRequest,
   output: BatchPutTaxRegistrationResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  operationName: "BatchPutTaxRegistration",
 }));
 export type DeleteSupplementalTaxRegistrationError =
   | ConflictException
@@ -1813,6 +1816,7 @@ export const deleteSupplementalTaxRegistration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteSupplementalTaxRegistration",
 }));
 export type DeleteTaxRegistrationError =
   | ConflictException
@@ -1839,6 +1843,7 @@ export const deleteTaxRegistration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteTaxRegistration",
 }));
 export type GetTaxExemptionTypesError =
   | InternalServerException
@@ -1861,6 +1866,7 @@ export const getTaxExemptionTypes: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetTaxExemptionTypes",
 }));
 export type GetTaxInheritanceError =
   | InternalServerException
@@ -1883,6 +1889,7 @@ export const getTaxInheritance: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetTaxInheritance",
 }));
 export type GetTaxRegistrationError =
   | InternalServerException
@@ -1905,6 +1912,7 @@ export const getTaxRegistration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetTaxRegistration",
 }));
 export type GetTaxRegistrationDocumentError =
   | InternalServerException
@@ -1922,6 +1930,7 @@ export const getTaxRegistrationDocument: API.OperationMethod<
   input: GetTaxRegistrationDocumentRequest,
   output: GetTaxRegistrationDocumentResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "GetTaxRegistrationDocument",
 }));
 export type ListSupplementalTaxRegistrationsError =
   | InternalServerException
@@ -1959,6 +1968,7 @@ export const listSupplementalTaxRegistrations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListSupplementalTaxRegistrations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2002,6 +2012,7 @@ export const listTaxExemptions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTaxExemptions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2045,6 +2056,7 @@ export const listTaxRegistrations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTaxRegistrations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2069,6 +2081,7 @@ export const putSupplementalTaxRegistration: API.OperationMethod<
   input: PutSupplementalTaxRegistrationRequest,
   output: PutSupplementalTaxRegistrationResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  operationName: "PutSupplementalTaxRegistration",
 }));
 export type PutTaxExemptionError =
   | AccessDeniedException
@@ -2097,6 +2110,7 @@ export const putTaxExemption: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "PutTaxExemption",
 }));
 export type PutTaxInheritanceError =
   | ConflictException
@@ -2121,6 +2135,7 @@ export const putTaxInheritance: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "PutTaxInheritance",
 }));
 export type PutTaxRegistrationError =
   | ConflictException
@@ -2273,4 +2288,5 @@ export const putTaxRegistration: API.OperationMethod<
   input: PutTaxRegistrationRequest,
   output: PutTaxRegistrationResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  operationName: "PutTaxRegistration",
 }));

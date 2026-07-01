@@ -12912,7 +12912,7 @@ export class InvalidLocationConstraint extends S.TaggedErrorClass<InvalidLocatio
 export class BucketNotEmpty extends S.TaggedErrorClass<BucketNotEmpty>()(
   "BucketNotEmpty",
   {},
-).pipe(C.withConflictError, C.withRetryableError) {}
+).pipe(C.withConflictError) {}
 export class SignatureDoesNotMatch extends S.TaggedErrorClass<SignatureDoesNotMatch>()(
   "SignatureDoesNotMatch",
   {},
@@ -13122,6 +13122,7 @@ export const abortMultipartUpload: API.OperationMethod<
     NoSuchBucket,
     NotFound,
   ],
+  operationName: "AbortMultipartUpload",
 }));
 export type CompleteMultipartUploadError = CommonErrors;
 /**
@@ -13246,6 +13247,7 @@ export const completeMultipartUpload: API.OperationMethod<
   input: CompleteMultipartUploadRequest,
   output: CompleteMultipartUploadOutput,
   errors: [],
+  operationName: "CompleteMultipartUpload",
 }));
 export type CopyObjectError =
   | ObjectNotInActiveTierError
@@ -13430,6 +13432,7 @@ export const copyObject: API.OperationMethod<
     NoSuchBucket,
     PermanentRedirect,
   ],
+  operationName: "CopyObject",
 }));
 export type CreateBucketError =
   | BucketAlreadyExists
@@ -13573,6 +13576,7 @@ export const createBucket: API.OperationMethod<
     InvalidBucketName,
     InvalidLocationConstraint,
   ],
+  operationName: "CreateBucket",
 }));
 export type CreateBucketMetadataConfigurationError = CommonErrors;
 /**
@@ -13652,6 +13656,7 @@ export const createBucketMetadataConfiguration: API.OperationMethod<
   input: CreateBucketMetadataConfigurationRequest,
   output: CreateBucketMetadataConfigurationResponse,
   errors: [],
+  operationName: "CreateBucketMetadataConfiguration",
 }));
 export type CreateBucketMetadataTableConfigurationError = CommonErrors;
 /**
@@ -13711,6 +13716,7 @@ export const createBucketMetadataTableConfiguration: API.OperationMethod<
   input: CreateBucketMetadataTableConfigurationRequest,
   output: CreateBucketMetadataTableConfigurationResponse,
   errors: [],
+  operationName: "CreateBucketMetadataTableConfiguration",
 }));
 export type CreateMultipartUploadError =
   | RequestLimitExceeded
@@ -13901,6 +13907,7 @@ export const createMultipartUpload: API.OperationMethod<
   input: CreateMultipartUploadRequest,
   output: CreateMultipartUploadOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "CreateMultipartUpload",
 }));
 export type CreateSessionError = NoSuchBucket | CommonErrors;
 /**
@@ -14007,6 +14014,7 @@ export const createSession: API.OperationMethod<
   input: CreateSessionRequest,
   output: CreateSessionOutput,
   errors: [NoSuchBucket],
+  operationName: "CreateSession",
 }));
 export type DeleteBucketError =
   | RequestLimitExceeded
@@ -14065,6 +14073,7 @@ export const deleteBucket: API.OperationMethod<
     NoSuchBucket,
     PermanentRedirect,
   ],
+  operationName: "DeleteBucket",
 }));
 export type DeleteBucketAnalyticsConfigurationError =
   | RequestLimitExceeded
@@ -14104,6 +14113,7 @@ export const deleteBucketAnalyticsConfiguration: API.OperationMethod<
   input: DeleteBucketAnalyticsConfigurationRequest,
   output: DeleteBucketAnalyticsConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "DeleteBucketAnalyticsConfiguration",
 }));
 export type DeleteBucketCorsError =
   | RequestLimitExceeded
@@ -14138,6 +14148,7 @@ export const deleteBucketCors: API.OperationMethod<
   input: DeleteBucketCorsRequest,
   output: DeleteBucketCorsResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "DeleteBucketCors",
 }));
 export type DeleteBucketEncryptionError =
   | RequestLimitExceeded
@@ -14191,6 +14202,7 @@ export const deleteBucketEncryption: API.OperationMethod<
   input: DeleteBucketEncryptionRequest,
   output: DeleteBucketEncryptionResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "DeleteBucketEncryption",
 }));
 export type DeleteBucketIntelligentTieringConfigurationError =
   | RequestLimitExceeded
@@ -14227,6 +14239,7 @@ export const deleteBucketIntelligentTieringConfiguration: API.OperationMethod<
   input: DeleteBucketIntelligentTieringConfigurationRequest,
   output: DeleteBucketIntelligentTieringConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "DeleteBucketIntelligentTieringConfiguration",
 }));
 export type DeleteBucketInventoryConfigurationError =
   | RequestLimitExceeded
@@ -14287,6 +14300,7 @@ export const deleteBucketInventoryConfiguration: API.OperationMethod<
   input: DeleteBucketInventoryConfigurationRequest,
   output: DeleteBucketInventoryConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "DeleteBucketInventoryConfiguration",
 }));
 export type DeleteBucketLifecycleError =
   | RequestLimitExceeded
@@ -14351,6 +14365,7 @@ export const deleteBucketLifecycle: API.OperationMethod<
   input: DeleteBucketLifecycleRequest,
   output: DeleteBucketLifecycleResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "DeleteBucketLifecycle",
 }));
 export type DeleteBucketMetadataConfigurationError =
   | RequestLimitExceeded
@@ -14397,6 +14412,7 @@ export const deleteBucketMetadataConfiguration: API.OperationMethod<
   input: DeleteBucketMetadataConfigurationRequest,
   output: DeleteBucketMetadataConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "DeleteBucketMetadataConfiguration",
 }));
 export type DeleteBucketMetadataTableConfigurationError =
   | RequestLimitExceeded
@@ -14449,6 +14465,7 @@ export const deleteBucketMetadataTableConfiguration: API.OperationMethod<
   input: DeleteBucketMetadataTableConfigurationRequest,
   output: DeleteBucketMetadataTableConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "DeleteBucketMetadataTableConfiguration",
 }));
 export type DeleteBucketMetricsConfigurationError =
   | RequestLimitExceeded
@@ -14510,6 +14527,7 @@ export const deleteBucketMetricsConfiguration: API.OperationMethod<
   input: DeleteBucketMetricsConfigurationRequest,
   output: DeleteBucketMetricsConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "DeleteBucketMetricsConfiguration",
 }));
 export type DeleteBucketOwnershipControlsError =
   | RequestLimitExceeded
@@ -14543,6 +14561,7 @@ export const deleteBucketOwnershipControls: API.OperationMethod<
   input: DeleteBucketOwnershipControlsRequest,
   output: DeleteBucketOwnershipControlsResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "DeleteBucketOwnershipControls",
 }));
 export type DeleteBucketPolicyError =
   | RequestLimitExceeded
@@ -14615,6 +14634,7 @@ export const deleteBucketPolicy: API.OperationMethod<
     PermanentRedirect,
     SignatureDoesNotMatch,
   ],
+  operationName: "DeleteBucketPolicy",
 }));
 export type DeleteBucketReplicationError =
   | RequestLimitExceeded
@@ -14653,6 +14673,7 @@ export const deleteBucketReplication: API.OperationMethod<
   input: DeleteBucketReplicationRequest,
   output: DeleteBucketReplicationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "DeleteBucketReplication",
 }));
 export type DeleteBucketTaggingError =
   | RequestLimitExceeded
@@ -14684,6 +14705,7 @@ export const deleteBucketTagging: API.OperationMethod<
   input: DeleteBucketTaggingRequest,
   output: DeleteBucketTaggingResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "DeleteBucketTagging",
 }));
 export type DeleteBucketWebsiteError =
   | RequestLimitExceeded
@@ -14723,6 +14745,7 @@ export const deleteBucketWebsite: API.OperationMethod<
   input: DeleteBucketWebsiteRequest,
   output: DeleteBucketWebsiteResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "DeleteBucketWebsite",
 }));
 export type DeleteObjectError =
   | RequestLimitExceeded
@@ -14836,6 +14859,7 @@ export const deleteObject: API.OperationMethod<
     PermanentRedirect,
     NotFound,
   ],
+  operationName: "DeleteObject",
 }));
 export type DeleteObjectAnnotationError =
   | NoSuchBucket
@@ -14874,6 +14898,7 @@ export const deleteObjectAnnotation: API.OperationMethod<
   input: DeleteObjectAnnotationRequest,
   output: DeleteObjectAnnotationOutput,
   errors: [NoSuchBucket, NoSuchKey],
+  operationName: "DeleteObjectAnnotation",
 }));
 export type DeleteObjectsError =
   | RequestLimitExceeded
@@ -14982,6 +15007,7 @@ export const deleteObjects: API.OperationMethod<
   input: DeleteObjectsRequest,
   output: DeleteObjectsOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "DeleteObjects",
 }));
 export type DeleteObjectTaggingError =
   | RequestLimitExceeded
@@ -15019,6 +15045,7 @@ export const deleteObjectTagging: API.OperationMethod<
   input: DeleteObjectTaggingRequest,
   output: DeleteObjectTaggingOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchKey, PermanentRedirect],
+  operationName: "DeleteObjectTagging",
 }));
 export type DeletePublicAccessBlockError =
   | RequestLimitExceeded
@@ -15057,6 +15084,7 @@ export const deletePublicAccessBlock: API.OperationMethod<
   input: DeletePublicAccessBlockRequest,
   output: DeletePublicAccessBlockResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "DeletePublicAccessBlock",
 }));
 export type GetBucketAbacError =
   | RequestLimitExceeded
@@ -15075,6 +15103,7 @@ export const getBucketAbac: API.OperationMethod<
   input: GetBucketAbacRequest,
   output: GetBucketAbacOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "GetBucketAbac",
 }));
 export type GetBucketAccelerateConfigurationError =
   | RequestLimitExceeded
@@ -15120,6 +15149,7 @@ export const getBucketAccelerateConfiguration: API.OperationMethod<
   input: GetBucketAccelerateConfigurationRequest,
   output: GetBucketAccelerateConfigurationOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "GetBucketAccelerateConfiguration",
 }));
 export type GetBucketAclError =
   | RequestLimitExceeded
@@ -15163,6 +15193,7 @@ export const getBucketAcl: API.OperationMethod<
   input: GetBucketAclRequest,
   output: GetBucketAclOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "GetBucketAcl",
 }));
 export type GetBucketAnalyticsConfigurationError =
   | RequestLimitExceeded
@@ -15203,6 +15234,7 @@ export const getBucketAnalyticsConfiguration: API.OperationMethod<
   input: GetBucketAnalyticsConfigurationRequest,
   output: GetBucketAnalyticsConfigurationOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchConfiguration],
+  operationName: "GetBucketAnalyticsConfiguration",
 }));
 export type GetBucketCorsError =
   | RequestLimitExceeded
@@ -15252,6 +15284,7 @@ export const getBucketCors: API.OperationMethod<
     NoSuchCORSConfiguration,
     PermanentRedirect,
   ],
+  operationName: "GetBucketCors",
 }));
 export type GetBucketEncryptionError =
   | RequestLimitExceeded
@@ -15313,6 +15346,7 @@ export const getBucketEncryption: API.OperationMethod<
     ParseError,
     PermanentRedirect,
   ],
+  operationName: "GetBucketEncryption",
 }));
 export type GetBucketIntelligentTieringConfigurationError =
   | RequestLimitExceeded
@@ -15350,6 +15384,7 @@ export const getBucketIntelligentTieringConfiguration: API.OperationMethod<
   input: GetBucketIntelligentTieringConfigurationRequest,
   output: GetBucketIntelligentTieringConfigurationOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchConfiguration],
+  operationName: "GetBucketIntelligentTieringConfiguration",
 }));
 export type GetBucketInventoryConfigurationError =
   | RequestLimitExceeded
@@ -15409,6 +15444,7 @@ export const getBucketInventoryConfiguration: API.OperationMethod<
   input: GetBucketInventoryConfigurationRequest,
   output: GetBucketInventoryConfigurationOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchConfiguration],
+  operationName: "GetBucketInventoryConfiguration",
 }));
 export type GetBucketLifecycleConfigurationError =
   | RequestLimitExceeded
@@ -15498,6 +15534,7 @@ export const getBucketLifecycleConfiguration: API.OperationMethod<
     NoSuchLifecycleConfiguration,
     PermanentRedirect,
   ],
+  operationName: "GetBucketLifecycleConfiguration",
 }));
 export type GetBucketLocationError =
   | RequestLimitExceeded
@@ -15548,6 +15585,7 @@ export const getBucketLocation: API.OperationMethod<
   input: GetBucketLocationRequest,
   output: GetBucketLocationOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "GetBucketLocation",
 }));
 export type GetBucketLoggingError =
   | RequestLimitExceeded
@@ -15578,6 +15616,7 @@ export const getBucketLogging: API.OperationMethod<
   input: GetBucketLoggingRequest,
   output: GetBucketLoggingOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "GetBucketLogging",
 }));
 export type GetBucketMetadataConfigurationError =
   | RequestLimitExceeded
@@ -15623,6 +15662,7 @@ export const getBucketMetadataConfiguration: API.OperationMethod<
   input: GetBucketMetadataConfigurationRequest,
   output: GetBucketMetadataConfigurationOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "GetBucketMetadataConfiguration",
 }));
 export type GetBucketMetadataTableConfigurationError =
   | RequestLimitExceeded
@@ -15674,6 +15714,7 @@ export const getBucketMetadataTableConfiguration: API.OperationMethod<
   input: GetBucketMetadataTableConfigurationRequest,
   output: GetBucketMetadataTableConfigurationOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "GetBucketMetadataTableConfiguration",
 }));
 export type GetBucketMetricsConfigurationError =
   | RequestLimitExceeded
@@ -15737,6 +15778,7 @@ export const getBucketMetricsConfiguration: API.OperationMethod<
   input: GetBucketMetricsConfigurationRequest,
   output: GetBucketMetricsConfigurationOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchConfiguration],
+  operationName: "GetBucketMetricsConfiguration",
 }));
 export type GetBucketNotificationConfigurationError =
   | RequestLimitExceeded
@@ -15781,6 +15823,7 @@ export const getBucketNotificationConfiguration: API.OperationMethod<
   input: GetBucketNotificationConfigurationRequest,
   output: NotificationConfiguration,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "GetBucketNotificationConfiguration",
 }));
 export type GetBucketOwnershipControlsError =
   | RequestLimitExceeded
@@ -15830,6 +15873,7 @@ export const getBucketOwnershipControls: API.OperationMethod<
     NoSuchBucket,
     OwnershipControlsNotFoundError,
   ],
+  operationName: "GetBucketOwnershipControls",
 }));
 export type GetBucketPolicyError =
   | RequestLimitExceeded
@@ -15910,6 +15954,7 @@ export const getBucketPolicy: API.OperationMethod<
     PermanentRedirect,
     SignatureDoesNotMatch,
   ],
+  operationName: "GetBucketPolicy",
 }));
 export type GetBucketPolicyStatusError =
   | RequestLimitExceeded
@@ -15948,6 +15993,7 @@ export const getBucketPolicyStatus: API.OperationMethod<
   input: GetBucketPolicyStatusRequest,
   output: GetBucketPolicyStatusOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "GetBucketPolicyStatus",
 }));
 export type GetBucketReplicationError =
   | RequestLimitExceeded
@@ -15999,6 +16045,7 @@ export const getBucketReplication: API.OperationMethod<
     NoSuchBucket,
     ReplicationConfigurationNotFoundError,
   ],
+  operationName: "GetBucketReplication",
 }));
 export type GetBucketRequestPaymentError =
   | RequestLimitExceeded
@@ -16027,6 +16074,7 @@ export const getBucketRequestPayment: API.OperationMethod<
   input: GetBucketRequestPaymentRequest,
   output: GetBucketRequestPaymentOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "GetBucketRequestPayment",
 }));
 export type GetBucketTaggingError =
   | RequestLimitExceeded
@@ -16072,6 +16120,7 @@ export const getBucketTagging: API.OperationMethod<
     NoSuchTagSet,
     PermanentRedirect,
   ],
+  operationName: "GetBucketTagging",
 }));
 export type GetBucketVersioningError =
   | RequestLimitExceeded
@@ -16109,6 +16158,7 @@ export const getBucketVersioning: API.OperationMethod<
   input: GetBucketVersioningRequest,
   output: GetBucketVersioningOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "GetBucketVersioning",
 }));
 export type GetBucketWebsiteError =
   | RequestLimitExceeded
@@ -16151,6 +16201,7 @@ export const getBucketWebsite: API.OperationMethod<
     NoSuchWebsiteConfiguration,
     PermanentRedirect,
   ],
+  operationName: "GetBucketWebsite",
 }));
 export type GetObjectError =
   | InvalidObjectState
@@ -16308,6 +16359,7 @@ export const getObject: API.OperationMethod<
     NoSuchBucket,
     PermanentRedirect,
   ],
+  operationName: "GetObject",
 }));
 export type GetObjectAclError =
   | NoSuchKey
@@ -16361,6 +16413,7 @@ export const getObjectAcl: API.OperationMethod<
     NoSuchBucket,
     PermanentRedirect,
   ],
+  operationName: "GetObjectAcl",
 }));
 export type GetObjectAnnotationError =
   | NoSuchAnnotation
@@ -16395,6 +16448,7 @@ export const getObjectAnnotation: API.OperationMethod<
   input: GetObjectAnnotationRequest,
   output: GetObjectAnnotationOutput,
   errors: [NoSuchAnnotation, NoSuchBucket, NoSuchKey],
+  operationName: "GetObjectAnnotation",
 }));
 export type GetObjectAttributesError = NoSuchKey | CommonErrors;
 /**
@@ -16546,6 +16600,7 @@ export const getObjectAttributes: API.OperationMethod<
   input: GetObjectAttributesRequest,
   output: GetObjectAttributesOutput,
   errors: [NoSuchKey],
+  operationName: "GetObjectAttributes",
 }));
 export type GetObjectLegalHoldError =
   | RequestLimitExceeded
@@ -16574,6 +16629,7 @@ export const getObjectLegalHold: API.OperationMethod<
   input: GetObjectLegalHoldRequest,
   output: GetObjectLegalHoldOutput,
   errors: [RequestLimitExceeded, SlowDown, InvalidRequest],
+  operationName: "GetObjectLegalHold",
 }));
 export type GetObjectLockConfigurationError =
   | RequestLimitExceeded
@@ -16610,6 +16666,7 @@ export const getObjectLockConfiguration: API.OperationMethod<
     ObjectLockConfigurationNotFoundError,
     PermanentRedirect,
   ],
+  operationName: "GetObjectLockConfiguration",
 }));
 export type GetObjectRetentionError =
   | RequestLimitExceeded
@@ -16638,6 +16695,7 @@ export const getObjectRetention: API.OperationMethod<
   input: GetObjectRetentionRequest,
   output: GetObjectRetentionOutput,
   errors: [RequestLimitExceeded, SlowDown, InvalidRequest],
+  operationName: "GetObjectRetention",
 }));
 export type GetObjectTaggingError =
   | RequestLimitExceeded
@@ -16687,6 +16745,7 @@ export const getObjectTagging: API.OperationMethod<
     NoSuchKey,
     PermanentRedirect,
   ],
+  operationName: "GetObjectTagging",
 }));
 export type GetObjectTorrentError = CommonErrors;
 /**
@@ -16717,6 +16776,7 @@ export const getObjectTorrent: API.OperationMethod<
   input: GetObjectTorrentRequest,
   output: GetObjectTorrentOutput,
   errors: [],
+  operationName: "GetObjectTorrent",
 }));
 export type GetPublicAccessBlockError =
   | RequestLimitExceeded
@@ -16773,6 +16833,7 @@ export const getPublicAccessBlock: API.OperationMethod<
     NoSuchPublicAccessBlockConfiguration,
     PermanentRedirect,
   ],
+  operationName: "GetPublicAccessBlock",
 }));
 export type HeadBucketError =
   | NotFound
@@ -16853,6 +16914,7 @@ export const headBucket: API.OperationMethod<
   input: HeadBucketRequest,
   output: HeadBucketOutput,
   errors: [NotFound, RequestLimitExceeded, SlowDown, ParseError, NoSuchBucket],
+  operationName: "HeadBucket",
 }));
 export type HeadObjectError =
   | NotFound
@@ -16978,6 +17040,7 @@ export const headObject: API.OperationMethod<
   input: HeadObjectRequest,
   output: HeadObjectOutput,
   errors: [NotFound, RequestLimitExceeded, SlowDown, ParseError, NoSuchBucket],
+  operationName: "HeadObject",
 }));
 export type ListBucketAnalyticsConfigurationsError =
   | RequestLimitExceeded
@@ -17025,6 +17088,7 @@ export const listBucketAnalyticsConfigurations: API.OperationMethod<
   input: ListBucketAnalyticsConfigurationsRequest,
   output: ListBucketAnalyticsConfigurationsOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "ListBucketAnalyticsConfigurations",
 }));
 export type ListBucketIntelligentTieringConfigurationsError =
   | RequestLimitExceeded
@@ -17061,6 +17125,7 @@ export const listBucketIntelligentTieringConfigurations: API.OperationMethod<
   input: ListBucketIntelligentTieringConfigurationsRequest,
   output: ListBucketIntelligentTieringConfigurationsOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "ListBucketIntelligentTieringConfigurations",
 }));
 export type ListBucketInventoryConfigurationsError =
   | RequestLimitExceeded
@@ -17126,6 +17191,7 @@ export const listBucketInventoryConfigurations: API.OperationMethod<
   input: ListBucketInventoryConfigurationsRequest,
   output: ListBucketInventoryConfigurationsOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "ListBucketInventoryConfigurations",
 }));
 export type ListBucketMetricsConfigurationsError =
   | RequestLimitExceeded
@@ -17193,6 +17259,7 @@ export const listBucketMetricsConfigurations: API.OperationMethod<
   input: ListBucketMetricsConfigurationsRequest,
   output: ListBucketMetricsConfigurationsOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "ListBucketMetricsConfigurations",
 }));
 export type ListBucketsError =
   | RequestLimitExceeded
@@ -17241,6 +17308,7 @@ export const listBuckets: API.OperationMethod<
   input: ListBucketsRequest,
   output: ListBucketsOutput,
   errors: [RequestLimitExceeded, SlowDown, RequestError],
+  operationName: "ListBuckets",
   pagination: {
     inputToken: "ContinuationToken",
     outputToken: "ContinuationToken",
@@ -17300,6 +17368,7 @@ export const listDirectoryBuckets: API.OperationMethod<
   input: ListDirectoryBucketsRequest,
   output: ListDirectoryBucketsOutput,
   errors: [],
+  operationName: "ListDirectoryBuckets",
   pagination: {
     inputToken: "ContinuationToken",
     outputToken: "ContinuationToken",
@@ -17409,6 +17478,7 @@ export const listMultipartUploads: API.OperationMethod<
   input: ListMultipartUploadsRequest,
   output: ListMultipartUploadsOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "ListMultipartUploads",
 }));
 export type ListObjectAnnotationsError =
   | InvalidPrefix
@@ -17458,6 +17528,7 @@ export const listObjectAnnotations: API.OperationMethod<
   input: ListObjectAnnotationsRequest,
   output: ListObjectAnnotationsOutput,
   errors: [InvalidPrefix, NoSuchBucket, NoSuchKey],
+  operationName: "ListObjectAnnotations",
   pagination: {
     inputToken: "ContinuationToken",
     outputToken: "NextContinuationToken",
@@ -17506,6 +17577,7 @@ export const listObjects: API.OperationMethod<
   input: ListObjectsRequest,
   output: ListObjectsOutput,
   errors: [NoSuchBucket, RequestLimitExceeded, SlowDown, PermanentRedirect],
+  operationName: "ListObjects",
 }));
 export type ListObjectsV2Error =
   | NoSuchBucket
@@ -17603,6 +17675,7 @@ export const listObjectsV2: API.OperationMethod<
   input: ListObjectsV2Request,
   output: ListObjectsV2Output,
   errors: [NoSuchBucket, RequestLimitExceeded, SlowDown, PermanentRedirect],
+  operationName: "ListObjectsV2",
   pagination: {
     inputToken: "ContinuationToken",
     outputToken: "NextContinuationToken",
@@ -17650,6 +17723,7 @@ export const listObjectVersions: API.OperationMethod<
   input: ListObjectVersionsRequest,
   output: ListObjectVersionsOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "ListObjectVersions",
 }));
 export type ListPartsError =
   | RequestLimitExceeded
@@ -17742,6 +17816,7 @@ export const listParts: API.OperationMethod<
   input: ListPartsRequest,
   output: ListPartsOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "ListParts",
   pagination: {
     inputToken: "PartNumberMarker",
     outputToken: "NextPartNumberMarker",
@@ -17762,6 +17837,7 @@ export const putBucketAbac: API.OperationMethod<
   input: PutBucketAbacRequest,
   output: PutBucketAbacResponse,
   errors: [],
+  operationName: "PutBucketAbac",
 }));
 export type PutBucketAccelerateConfigurationError =
   | RequestLimitExceeded
@@ -17814,6 +17890,7 @@ export const putBucketAccelerateConfiguration: API.OperationMethod<
   input: PutBucketAccelerateConfigurationRequest,
   output: PutBucketAccelerateConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "PutBucketAccelerateConfiguration",
 }));
 export type PutBucketAclError =
   | RequestLimitExceeded
@@ -17975,6 +18052,7 @@ export const putBucketAcl: API.OperationMethod<
   input: PutBucketAclRequest,
   output: PutBucketAclResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "PutBucketAcl",
 }));
 export type PutBucketAnalyticsConfigurationError = CommonErrors;
 /**
@@ -18049,6 +18127,7 @@ export const putBucketAnalyticsConfiguration: API.OperationMethod<
   input: PutBucketAnalyticsConfigurationRequest,
   output: PutBucketAnalyticsConfigurationResponse,
   errors: [],
+  operationName: "PutBucketAnalyticsConfiguration",
 }));
 export type PutBucketCorsError =
   | RequestLimitExceeded
@@ -18111,6 +18190,7 @@ export const putBucketCors: API.OperationMethod<
   input: PutBucketCorsRequest,
   output: PutBucketCorsResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "PutBucketCors",
 }));
 export type PutBucketEncryptionError =
   | RequestLimitExceeded
@@ -18212,6 +18292,7 @@ export const putBucketEncryption: API.OperationMethod<
   input: PutBucketEncryptionRequest,
   output: PutBucketEncryptionResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "PutBucketEncryption",
 }));
 export type PutBucketIntelligentTieringConfigurationError =
   | RequestLimitExceeded
@@ -18274,6 +18355,7 @@ export const putBucketIntelligentTieringConfiguration: API.OperationMethod<
   input: PutBucketIntelligentTieringConfigurationRequest,
   output: PutBucketIntelligentTieringConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "PutBucketIntelligentTieringConfiguration",
 }));
 export type PutBucketInventoryConfigurationError =
   | RequestLimitExceeded
@@ -18379,6 +18461,7 @@ export const putBucketInventoryConfiguration: API.OperationMethod<
   input: PutBucketInventoryConfigurationRequest,
   output: PutBucketInventoryConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "PutBucketInventoryConfiguration",
 }));
 export type PutBucketLifecycleConfigurationError =
   | RequestLimitExceeded
@@ -18500,6 +18583,7 @@ export const putBucketLifecycleConfiguration: API.OperationMethod<
     NoSuchBucket,
     PermanentRedirect,
   ],
+  operationName: "PutBucketLifecycleConfiguration",
 }));
 export type PutBucketLoggingError =
   | RequestLimitExceeded
@@ -18584,6 +18668,7 @@ export const putBucketLogging: API.OperationMethod<
   input: PutBucketLoggingRequest,
   output: PutBucketLoggingResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "PutBucketLogging",
 }));
 export type PutBucketMetricsConfigurationError =
   | RequestLimitExceeded
@@ -18654,6 +18739,7 @@ export const putBucketMetricsConfiguration: API.OperationMethod<
   input: PutBucketMetricsConfigurationRequest,
   output: PutBucketMetricsConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "PutBucketMetricsConfiguration",
 }));
 export type PutBucketNotificationConfigurationError =
   | RequestLimitExceeded
@@ -18722,6 +18808,7 @@ export const putBucketNotificationConfiguration: API.OperationMethod<
   input: PutBucketNotificationConfigurationRequest,
   output: PutBucketNotificationConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "PutBucketNotificationConfiguration",
 }));
 export type PutBucketOwnershipControlsError =
   | RequestLimitExceeded
@@ -18754,6 +18841,7 @@ export const putBucketOwnershipControls: API.OperationMethod<
   input: PutBucketOwnershipControlsRequest,
   output: PutBucketOwnershipControlsResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "PutBucketOwnershipControls",
 }));
 export type PutBucketPolicyError =
   | RequestLimitExceeded
@@ -18844,6 +18932,7 @@ export const putBucketPolicy: API.OperationMethod<
     PermanentRedirect,
     SignatureDoesNotMatch,
   ],
+  operationName: "PutBucketPolicy",
 }));
 export type PutBucketReplicationError =
   | RequestLimitExceeded
@@ -18921,6 +19010,7 @@ export const putBucketReplication: API.OperationMethod<
   input: PutBucketReplicationRequest,
   output: PutBucketReplicationResponse,
   errors: [RequestLimitExceeded, SlowDown, InvalidRequest, NoSuchBucket],
+  operationName: "PutBucketReplication",
 }));
 export type PutBucketRequestPaymentError =
   | RequestLimitExceeded
@@ -18953,6 +19043,7 @@ export const putBucketRequestPayment: API.OperationMethod<
   input: PutBucketRequestPaymentRequest,
   output: PutBucketRequestPaymentResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "PutBucketRequestPayment",
 }));
 export type PutBucketTaggingError =
   | RequestLimitExceeded
@@ -19011,6 +19102,7 @@ export const putBucketTagging: API.OperationMethod<
   input: PutBucketTaggingRequest,
   output: PutBucketTaggingResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "PutBucketTagging",
 }));
 export type PutBucketVersioningError =
   | RequestLimitExceeded
@@ -19070,6 +19162,7 @@ export const putBucketVersioning: API.OperationMethod<
   input: PutBucketVersioningRequest,
   output: PutBucketVersioningResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "PutBucketVersioning",
 }));
 export type PutBucketWebsiteError =
   | RequestLimitExceeded
@@ -19157,6 +19250,7 @@ export const putBucketWebsite: API.OperationMethod<
   input: PutBucketWebsiteRequest,
   output: PutBucketWebsiteResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "PutBucketWebsite",
 }));
 export type PutObjectError =
   | EncryptionTypeMismatch
@@ -19309,6 +19403,7 @@ export const putObject: API.OperationMethod<
     NoSuchBucket,
     PermanentRedirect,
   ],
+  operationName: "PutObject",
 }));
 export type PutObjectAclError =
   | NoSuchKey
@@ -19468,6 +19563,7 @@ export const putObjectAcl: API.OperationMethod<
   input: PutObjectAclRequest,
   output: PutObjectAclOutput,
   errors: [NoSuchKey, RequestLimitExceeded, SlowDown, PermanentRedirect],
+  operationName: "PutObjectAcl",
 }));
 export type PutObjectAnnotationError =
   | AnnotationLimitExceeded
@@ -19522,6 +19618,7 @@ export const putObjectAnnotation: API.OperationMethod<
     NoSuchKey,
     UnsupportedMediaType,
   ],
+  operationName: "PutObjectAnnotation",
 }));
 export type PutObjectLegalHoldError =
   | RequestLimitExceeded
@@ -19546,6 +19643,7 @@ export const putObjectLegalHold: API.OperationMethod<
   input: PutObjectLegalHoldRequest,
   output: PutObjectLegalHoldOutput,
   errors: [RequestLimitExceeded, SlowDown, MalformedXML],
+  operationName: "PutObjectLegalHold",
 }));
 export type PutObjectLockConfigurationError =
   | RequestLimitExceeded
@@ -19588,6 +19686,7 @@ export const putObjectLockConfiguration: API.OperationMethod<
     NoSuchBucket,
     PermanentRedirect,
   ],
+  operationName: "PutObjectLockConfiguration",
 }));
 export type PutObjectRetentionError =
   | RequestLimitExceeded
@@ -19615,6 +19714,7 @@ export const putObjectRetention: API.OperationMethod<
   input: PutObjectRetentionRequest,
   output: PutObjectRetentionOutput,
   errors: [RequestLimitExceeded, SlowDown, InvalidRequest],
+  operationName: "PutObjectRetention",
 }));
 export type PutObjectTaggingError =
   | RequestLimitExceeded
@@ -19671,6 +19771,7 @@ export const putObjectTagging: API.OperationMethod<
   input: PutObjectTaggingRequest,
   output: PutObjectTaggingOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchKey, PermanentRedirect],
+  operationName: "PutObjectTagging",
 }));
 export type PutPublicAccessBlockError =
   | RequestLimitExceeded
@@ -19717,6 +19818,7 @@ export const putPublicAccessBlock: API.OperationMethod<
   input: PutPublicAccessBlockRequest,
   output: PutPublicAccessBlockResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "PutPublicAccessBlock",
 }));
 export type RenameObjectError = IdempotencyParameterMismatch | CommonErrors;
 /**
@@ -19773,6 +19875,7 @@ export const renameObject: API.OperationMethod<
   input: RenameObjectRequest,
   output: RenameObjectOutput,
   errors: [IdempotencyParameterMismatch],
+  operationName: "RenameObject",
 }));
 export type RestoreObjectError =
   | ObjectAlreadyInActiveTierError
@@ -19936,6 +20039,7 @@ export const restoreObject: API.OperationMethod<
     NoSuchKey,
     PermanentRedirect,
   ],
+  operationName: "RestoreObject",
 }));
 export type SelectObjectContentError =
   | RequestLimitExceeded
@@ -20042,6 +20146,7 @@ export const selectObjectContent: API.OperationMethod<
   input: SelectObjectContentRequest,
   output: SelectObjectContentOutput,
   errors: [RequestLimitExceeded, SlowDown, PermanentRedirect],
+  operationName: "SelectObjectContent",
 }));
 export type UpdateBucketMetadataAnnotationTableConfigurationError =
   CommonErrors;
@@ -20078,6 +20183,7 @@ export const updateBucketMetadataAnnotationTableConfiguration: API.OperationMeth
   input: UpdateBucketMetadataAnnotationTableConfigurationRequest,
   output: UpdateBucketMetadataAnnotationTableConfigurationResponse,
   errors: [],
+  operationName: "UpdateBucketMetadataAnnotationTableConfiguration",
 }));
 export type UpdateBucketMetadataInventoryTableConfigurationError = CommonErrors;
 /**
@@ -20135,6 +20241,7 @@ export const updateBucketMetadataInventoryTableConfiguration: API.OperationMetho
   input: UpdateBucketMetadataInventoryTableConfigurationRequest,
   output: UpdateBucketMetadataInventoryTableConfigurationResponse,
   errors: [],
+  operationName: "UpdateBucketMetadataInventoryTableConfiguration",
 }));
 export type UpdateBucketMetadataJournalTableConfigurationError = CommonErrors;
 /**
@@ -20170,6 +20277,7 @@ export const updateBucketMetadataJournalTableConfiguration: API.OperationMethod<
   input: UpdateBucketMetadataJournalTableConfigurationRequest,
   output: UpdateBucketMetadataJournalTableConfigurationResponse,
   errors: [],
+  operationName: "UpdateBucketMetadataJournalTableConfiguration",
 }));
 export type UpdateObjectEncryptionError =
   | AccessDenied
@@ -20296,6 +20404,7 @@ export const updateObjectEncryption: API.OperationMethod<
   input: UpdateObjectEncryptionRequest,
   output: UpdateObjectEncryptionResponse,
   errors: [AccessDenied, InvalidRequest, NoSuchKey],
+  operationName: "UpdateObjectEncryption",
 }));
 export type UploadPartError =
   | RequestLimitExceeded
@@ -20452,6 +20561,7 @@ export const uploadPart: API.OperationMethod<
   input: UploadPartRequest,
   output: UploadPartOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  operationName: "UploadPart",
 }));
 export type UploadPartCopyError =
   | RequestLimitExceeded
@@ -20628,6 +20738,7 @@ export const uploadPartCopy: API.OperationMethod<
   input: UploadPartCopyRequest,
   output: UploadPartCopyOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  operationName: "UploadPartCopy",
 }));
 export type WriteGetObjectResponseError = CommonErrors;
 /**
@@ -20682,4 +20793,5 @@ export const writeGetObjectResponse: API.OperationMethod<
   input: WriteGetObjectResponseRequest,
   output: WriteGetObjectResponseResponse,
   errors: [],
+  operationName: "WriteGetObjectResponse",
 }));

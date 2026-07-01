@@ -5860,6 +5860,7 @@ export const associateOriginationIdentity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateOriginationIdentity",
 }));
 export type AssociateProtectConfigurationError =
   | AccessDeniedException
@@ -5888,6 +5889,7 @@ export const associateProtectConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateProtectConfiguration",
 }));
 export type CarrierLookupError =
   | AccessDeniedException
@@ -5914,6 +5916,7 @@ export const carrierLookup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CarrierLookup",
 }));
 export type CreateConfigurationSetError =
   | AccessDeniedException
@@ -5946,6 +5949,7 @@ export const createConfigurationSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateConfigurationSet",
 }));
 export type CreateEventDestinationError =
   | AccessDeniedException
@@ -5982,6 +5986,7 @@ export const createEventDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEventDestination",
 }));
 export type CreateNotifyConfigurationError =
   | AccessDeniedException
@@ -6012,6 +6017,7 @@ export const createNotifyConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateNotifyConfiguration",
 }));
 export type CreateOptOutListError =
   | AccessDeniedException
@@ -6044,6 +6050,7 @@ export const createOptOutList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateOptOutList",
 }));
 export type CreatePoolError =
   | AccessDeniedException
@@ -6078,6 +6085,7 @@ export const createPool: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreatePool",
 }));
 export type CreateProtectConfigurationError =
   | AccessDeniedException
@@ -6106,6 +6114,7 @@ export const createProtectConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateProtectConfiguration",
 }));
 export type CreateRcsAgentError =
   | AccessDeniedException
@@ -6136,6 +6145,7 @@ export const createRcsAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRcsAgent",
 }));
 export type CreateRegistrationError =
   | AccessDeniedException
@@ -6164,6 +6174,7 @@ export const createRegistration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRegistration",
 }));
 export type CreateRegistrationAssociationError =
   | AccessDeniedException
@@ -6194,6 +6205,7 @@ export const createRegistrationAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRegistrationAssociation",
 }));
 export type CreateRegistrationAttachmentError =
   | AccessDeniedException
@@ -6224,6 +6236,7 @@ export const createRegistrationAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRegistrationAttachment",
 }));
 export type CreateRegistrationVersionError =
   | AccessDeniedException
@@ -6254,6 +6267,7 @@ export const createRegistrationVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRegistrationVersion",
 }));
 export type CreateVerifiedDestinationNumberError =
   | AccessDeniedException
@@ -6284,6 +6298,7 @@ export const createVerifiedDestinationNumber: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateVerifiedDestinationNumber",
 }));
 export type DeleteAccountDefaultProtectConfigurationError =
   | AccessDeniedException
@@ -6310,6 +6325,7 @@ export const deleteAccountDefaultProtectConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAccountDefaultProtectConfiguration",
 }));
 export type DeleteConfigurationSetError =
   | AccessDeniedException
@@ -6338,6 +6354,7 @@ export const deleteConfigurationSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteConfigurationSet",
 }));
 export type DeleteDefaultMessageTypeError =
   | AccessDeniedException
@@ -6366,6 +6383,7 @@ export const deleteDefaultMessageType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDefaultMessageType",
 }));
 export type DeleteDefaultSenderIdError =
   | AccessDeniedException
@@ -6394,6 +6412,7 @@ export const deleteDefaultSenderId: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDefaultSenderId",
 }));
 export type DeleteEventDestinationError =
   | AccessDeniedException
@@ -6422,6 +6441,7 @@ export const deleteEventDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteEventDestination",
 }));
 export type DeleteKeywordError =
   | AccessDeniedException
@@ -6454,6 +6474,7 @@ export const deleteKeyword: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteKeyword",
 }));
 export type DeleteMediaMessageSpendLimitOverrideError =
   | AccessDeniedException
@@ -6478,6 +6499,7 @@ export const deleteMediaMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteMediaMessageSpendLimitOverride",
 }));
 export type DeleteNotifyConfigurationError =
   | AccessDeniedException
@@ -6508,6 +6530,7 @@ export const deleteNotifyConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteNotifyConfiguration",
 }));
 export type DeleteNotifyMessageSpendLimitOverrideError =
   | AccessDeniedException
@@ -6532,6 +6555,7 @@ export const deleteNotifyMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteNotifyMessageSpendLimitOverride",
 }));
 export type DeleteOptedOutNumberError =
   | AccessDeniedException
@@ -6564,6 +6588,7 @@ export const deleteOptedOutNumber: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteOptedOutNumber",
 }));
 export type DeleteOptOutListError =
   | AccessDeniedException
@@ -6594,6 +6619,7 @@ export const deleteOptOutList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteOptOutList",
 }));
 export type DeletePoolError =
   | AccessDeniedException
@@ -6626,6 +6652,7 @@ export const deletePool: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeletePool",
 }));
 export type DeleteProtectConfigurationError =
   | AccessDeniedException
@@ -6654,6 +6681,7 @@ export const deleteProtectConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteProtectConfiguration",
 }));
 export type DeleteProtectConfigurationRuleSetNumberOverrideError =
   | AccessDeniedException
@@ -6680,6 +6708,7 @@ export const deleteProtectConfigurationRuleSetNumberOverride: API.OperationMetho
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteProtectConfigurationRuleSetNumberOverride",
 }));
 export type DeleteRcsAgentError =
   | AccessDeniedException
@@ -6708,6 +6737,7 @@ export const deleteRcsAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRcsAgent",
 }));
 export type DeleteRcsMessageSpendLimitOverrideError =
   | AccessDeniedException
@@ -6732,6 +6762,7 @@ export const deleteRcsMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRcsMessageSpendLimitOverride",
 }));
 export type DeleteRegistrationError =
   | AccessDeniedException
@@ -6760,6 +6791,7 @@ export const deleteRegistration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRegistration",
 }));
 export type DeleteRegistrationAttachmentError =
   | AccessDeniedException
@@ -6788,6 +6820,7 @@ export const deleteRegistrationAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRegistrationAttachment",
 }));
 export type DeleteRegistrationFieldValueError =
   | AccessDeniedException
@@ -6816,6 +6849,7 @@ export const deleteRegistrationFieldValue: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRegistrationFieldValue",
 }));
 export type DeleteResourcePolicyError =
   | AccessDeniedException
@@ -6842,6 +6876,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteTextMessageSpendLimitOverrideError =
   | AccessDeniedException
@@ -6866,6 +6901,7 @@ export const deleteTextMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteTextMessageSpendLimitOverride",
 }));
 export type DeleteVerifiedDestinationNumberError =
   | AccessDeniedException
@@ -6894,6 +6930,7 @@ export const deleteVerifiedDestinationNumber: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteVerifiedDestinationNumber",
 }));
 export type DeleteVoiceMessageSpendLimitOverrideError =
   | AccessDeniedException
@@ -6918,6 +6955,7 @@ export const deleteVoiceMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteVoiceMessageSpendLimitOverride",
 }));
 export type DescribeAccountAttributesError =
   | AccessDeniedException
@@ -6959,6 +6997,7 @@ export const describeAccountAttributes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeAccountAttributes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7006,6 +7045,7 @@ export const describeAccountLimits: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeAccountLimits",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7057,6 +7097,7 @@ export const describeConfigurationSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeConfigurationSets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7108,6 +7149,7 @@ export const describeKeywords: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeKeywords",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7159,6 +7201,7 @@ export const describeNotifyConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeNotifyConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7210,6 +7253,7 @@ export const describeNotifyTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeNotifyTemplates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7261,6 +7305,7 @@ export const describeOptedOutNumbers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeOptedOutNumbers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7312,6 +7357,7 @@ export const describeOptOutLists: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeOptOutLists",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7363,6 +7409,7 @@ export const describePhoneNumbers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribePhoneNumbers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7416,6 +7463,7 @@ export const describePools: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribePools",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7463,6 +7511,7 @@ export const describeProtectConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeProtectConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7510,6 +7559,7 @@ export const describeRcsAgentCountryLaunchStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeRcsAgentCountryLaunchStatus",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7559,6 +7609,7 @@ export const describeRcsAgents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeRcsAgents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7606,6 +7657,7 @@ export const describeRegistrationAttachments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeRegistrationAttachments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7651,6 +7703,7 @@ export const describeRegistrationFieldDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeRegistrationFieldDefinitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7698,6 +7751,7 @@ export const describeRegistrationFieldValues: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeRegistrationFieldValues",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7745,6 +7799,7 @@ export const describeRegistrations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeRegistrations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7790,6 +7845,7 @@ export const describeRegistrationSectionDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeRegistrationSectionDefinitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7835,6 +7891,7 @@ export const describeRegistrationTypeDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeRegistrationTypeDefinitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7882,6 +7939,7 @@ export const describeRegistrationVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeRegistrationVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7933,6 +7991,7 @@ export const describeSenderIds: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeSenderIds",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -7980,6 +8039,7 @@ export const describeSpendLimits: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeSpendLimits",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8027,6 +8087,7 @@ export const describeVerifiedDestinationNumbers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeVerifiedDestinationNumbers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8063,6 +8124,7 @@ export const disassociateOriginationIdentity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateOriginationIdentity",
 }));
 export type DisassociateProtectConfigurationError =
   | AccessDeniedException
@@ -8091,6 +8153,7 @@ export const disassociateProtectConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateProtectConfiguration",
 }));
 export type DiscardRegistrationVersionError =
   | AccessDeniedException
@@ -8119,6 +8182,7 @@ export const discardRegistrationVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DiscardRegistrationVersion",
 }));
 export type GetProtectConfigurationCountryRuleSetError =
   | AccessDeniedException
@@ -8145,6 +8209,7 @@ export const getProtectConfigurationCountryRuleSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetProtectConfigurationCountryRuleSet",
 }));
 export type GetResourcePolicyError =
   | AccessDeniedException
@@ -8171,6 +8236,7 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type ListNotifyCountriesError =
   | AccessDeniedException
@@ -8210,6 +8276,7 @@ export const listNotifyCountries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListNotifyCountries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8259,6 +8326,7 @@ export const listPoolOriginationIdentities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListPoolOriginationIdentities",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8306,6 +8374,7 @@ export const listProtectConfigurationRuleSetNumberOverrides: API.OperationMethod
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListProtectConfigurationRuleSetNumberOverrides",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8353,6 +8422,7 @@ export const listRegistrationAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRegistrationAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8385,6 +8455,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutKeywordError =
   | AccessDeniedException
@@ -8419,6 +8490,7 @@ export const putKeyword: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutKeyword",
 }));
 export type PutMessageFeedbackError =
   | AccessDeniedException
@@ -8447,6 +8519,7 @@ export const putMessageFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutMessageFeedback",
 }));
 export type PutOptedOutNumberError =
   | AccessDeniedException
@@ -8475,6 +8548,7 @@ export const putOptedOutNumber: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutOptedOutNumber",
 }));
 export type PutProtectConfigurationRuleSetNumberOverrideError =
   | AccessDeniedException
@@ -8505,6 +8579,7 @@ export const putProtectConfigurationRuleSetNumberOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutProtectConfigurationRuleSetNumberOverride",
 }));
 export type PutRegistrationFieldValueError =
   | AccessDeniedException
@@ -8533,6 +8608,7 @@ export const putRegistrationFieldValue: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutRegistrationFieldValue",
 }));
 export type PutResourcePolicyError =
   | AccessDeniedException
@@ -8559,6 +8635,7 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type ReleasePhoneNumberError =
   | AccessDeniedException
@@ -8589,6 +8666,7 @@ export const releasePhoneNumber: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ReleasePhoneNumber",
 }));
 export type ReleaseSenderIdError =
   | AccessDeniedException
@@ -8617,6 +8695,7 @@ export const releaseSenderId: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ReleaseSenderId",
 }));
 export type RequestPhoneNumberError =
   | AccessDeniedException
@@ -8647,6 +8726,7 @@ export const requestPhoneNumber: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RequestPhoneNumber",
 }));
 export type RequestSenderIdError =
   | AccessDeniedException
@@ -8675,6 +8755,7 @@ export const requestSenderId: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RequestSenderId",
 }));
 export type SendDestinationNumberVerificationCodeError =
   | AccessDeniedException
@@ -8705,6 +8786,7 @@ export const sendDestinationNumberVerificationCode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendDestinationNumberVerificationCode",
 }));
 export type SendMediaMessageError =
   | AccessDeniedException
@@ -8735,6 +8817,7 @@ export const sendMediaMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendMediaMessage",
 }));
 export type SendNotifyTextMessageError =
   | AccessDeniedException
@@ -8765,6 +8848,7 @@ export const sendNotifyTextMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendNotifyTextMessage",
 }));
 export type SendNotifyVoiceMessageError =
   | AccessDeniedException
@@ -8795,6 +8879,7 @@ export const sendNotifyVoiceMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendNotifyVoiceMessage",
 }));
 export type SendRcsMessageError =
   | AccessDeniedException
@@ -8825,6 +8910,7 @@ export const sendRcsMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendRcsMessage",
 }));
 export type SendTextMessageError =
   | AccessDeniedException
@@ -8857,6 +8943,7 @@ export const sendTextMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendTextMessage",
 }));
 export type SendVoiceMessageError =
   | AccessDeniedException
@@ -8887,6 +8974,7 @@ export const sendVoiceMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendVoiceMessage",
 }));
 export type SetAccountDefaultProtectConfigurationError =
   | AccessDeniedException
@@ -8913,6 +9001,7 @@ export const setAccountDefaultProtectConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SetAccountDefaultProtectConfiguration",
 }));
 export type SetDefaultMessageFeedbackEnabledError =
   | AccessDeniedException
@@ -8939,6 +9028,7 @@ export const setDefaultMessageFeedbackEnabled: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SetDefaultMessageFeedbackEnabled",
 }));
 export type SetDefaultMessageTypeError =
   | AccessDeniedException
@@ -8967,6 +9057,7 @@ export const setDefaultMessageType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SetDefaultMessageType",
 }));
 export type SetDefaultSenderIdError =
   | AccessDeniedException
@@ -8995,6 +9086,7 @@ export const setDefaultSenderId: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SetDefaultSenderId",
 }));
 export type SetMediaMessageSpendLimitOverrideError =
   | AccessDeniedException
@@ -9019,6 +9111,7 @@ export const setMediaMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SetMediaMessageSpendLimitOverride",
 }));
 export type SetNotifyMessageSpendLimitOverrideError =
   | AccessDeniedException
@@ -9043,6 +9136,7 @@ export const setNotifyMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SetNotifyMessageSpendLimitOverride",
 }));
 export type SetRcsMessageSpendLimitOverrideError =
   | AccessDeniedException
@@ -9067,6 +9161,7 @@ export const setRcsMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SetRcsMessageSpendLimitOverride",
 }));
 export type SetTextMessageSpendLimitOverrideError =
   | AccessDeniedException
@@ -9091,6 +9186,7 @@ export const setTextMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SetTextMessageSpendLimitOverride",
 }));
 export type SetVoiceMessageSpendLimitOverrideError =
   | AccessDeniedException
@@ -9115,6 +9211,7 @@ export const setVoiceMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SetVoiceMessageSpendLimitOverride",
 }));
 export type SubmitRegistrationVersionError =
   | AccessDeniedException
@@ -9143,6 +9240,7 @@ export const submitRegistrationVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SubmitRegistrationVersion",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -9171,6 +9269,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -9197,6 +9296,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateEventDestinationError =
   | AccessDeniedException
@@ -9227,6 +9327,7 @@ export const updateEventDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateEventDestination",
 }));
 export type UpdateNotifyConfigurationError =
   | AccessDeniedException
@@ -9255,6 +9356,7 @@ export const updateNotifyConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateNotifyConfiguration",
 }));
 export type UpdatePhoneNumberError =
   | AccessDeniedException
@@ -9285,6 +9387,7 @@ export const updatePhoneNumber: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdatePhoneNumber",
 }));
 export type UpdatePoolError =
   | AccessDeniedException
@@ -9313,6 +9416,7 @@ export const updatePool: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdatePool",
 }));
 export type UpdateProtectConfigurationError =
   | AccessDeniedException
@@ -9339,6 +9443,7 @@ export const updateProtectConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateProtectConfiguration",
 }));
 export type UpdateProtectConfigurationCountryRuleSetError =
   | AccessDeniedException
@@ -9365,6 +9470,7 @@ export const updateProtectConfigurationCountryRuleSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateProtectConfigurationCountryRuleSet",
 }));
 export type UpdateRcsAgentError =
   | AccessDeniedException
@@ -9393,6 +9499,7 @@ export const updateRcsAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRcsAgent",
 }));
 export type UpdateSenderIdError =
   | AccessDeniedException
@@ -9419,6 +9526,7 @@ export const updateSenderId: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateSenderId",
 }));
 export type VerifyDestinationNumberError =
   | AccessDeniedException
@@ -9447,4 +9555,5 @@ export const verifyDestinationNumber: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "VerifyDestinationNumber",
 }));

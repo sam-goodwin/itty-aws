@@ -4144,6 +4144,7 @@ export const createAssertion: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateAssertion",
 }));
 export type CreateInputSourceError =
   | AccessDeniedException
@@ -4172,6 +4173,7 @@ export const createInputSource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateInputSource",
 }));
 export type CreatePolicyError =
   | AccessDeniedException
@@ -4200,6 +4202,7 @@ export const createPolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreatePolicy",
 }));
 export type CreateReportError =
   | AccessDeniedException
@@ -4228,6 +4231,7 @@ export const createReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateReport",
 }));
 export type CreateServiceError =
   | AccessDeniedException
@@ -4256,6 +4260,7 @@ export const createService: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateService",
 }));
 export type CreateServiceFunctionError =
   | AccessDeniedException
@@ -4284,6 +4289,7 @@ export const createServiceFunction: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateServiceFunction",
 }));
 export type CreateServiceFunctionResourcesError =
   | AccessDeniedException
@@ -4310,6 +4316,7 @@ export const createServiceFunctionResources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreateServiceFunctionResources",
 }));
 export type CreateSystemError =
   | AccessDeniedException
@@ -4338,6 +4345,7 @@ export const createSystem: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateSystem",
 }));
 export type CreateUserJourneyError =
   | AccessDeniedException
@@ -4366,6 +4374,7 @@ export const createUserJourney: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateUserJourney",
 }));
 export type DeleteAssertionError =
   | AccessDeniedException
@@ -4390,6 +4399,7 @@ export const deleteAssertion: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteAssertion",
 }));
 export type DeleteInputSourceError =
   | AccessDeniedException
@@ -4414,6 +4424,7 @@ export const deleteInputSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteInputSource",
 }));
 export type DeletePolicyError =
   | AccessDeniedException
@@ -4440,6 +4451,7 @@ export const deletePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeletePolicy",
 }));
 export type DeleteServiceError =
   | AccessDeniedException
@@ -4466,6 +4478,7 @@ export const deleteService: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteService",
 }));
 export type DeleteServiceFunctionError =
   | AccessDeniedException
@@ -4492,6 +4505,7 @@ export const deleteServiceFunction: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteServiceFunction",
 }));
 export type DeleteServiceFunctionResourcesError =
   | AccessDeniedException
@@ -4518,6 +4532,7 @@ export const deleteServiceFunctionResources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteServiceFunctionResources",
 }));
 export type DeleteSystemError =
   | AccessDeniedException
@@ -4544,6 +4559,7 @@ export const deleteSystem: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteSystem",
 }));
 export type DeleteUserJourneyError =
   | AccessDeniedException
@@ -4570,6 +4586,7 @@ export const deleteUserJourney: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteUserJourney",
 }));
 export type GetFailureModeFindingError =
   | AccessDeniedException
@@ -4594,6 +4611,7 @@ export const getFailureModeFinding: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetFailureModeFinding",
 }));
 export type GetPolicyError =
   | AccessDeniedException
@@ -4618,6 +4636,7 @@ export const getPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetPolicy",
 }));
 export type GetServiceError =
   | AccessDeniedException
@@ -4642,6 +4661,7 @@ export const getService: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetService",
 }));
 export type GetSystemError =
   | AccessDeniedException
@@ -4666,6 +4686,7 @@ export const getSystem: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetSystem",
 }));
 export type GetUserJourneyError =
   | AccessDeniedException
@@ -4690,6 +4711,7 @@ export const getUserJourney: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetUserJourney",
 }));
 export type ImportAppError =
   | AccessDeniedException
@@ -4716,6 +4738,7 @@ export const importApp: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ImportApp",
 }));
 export type ImportPolicyError =
   | AccessDeniedException
@@ -4742,6 +4765,7 @@ export const importPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ImportPolicy",
 }));
 export type ListAssertionsError =
   | AccessDeniedException
@@ -4781,6 +4805,7 @@ export const listAssertions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListAssertions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4826,6 +4851,7 @@ export const listDependencies: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListDependencies",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4871,6 +4897,7 @@ export const listFailureModeAssessments: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListFailureModeAssessments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4916,6 +4943,7 @@ export const listFailureModeFindings: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListFailureModeFindings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4961,6 +4989,7 @@ export const listInputSources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListInputSources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5000,6 +5029,7 @@ export const listPolicies: API.OperationMethod<
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListPolicies",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5047,6 +5077,7 @@ export const listReports: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListReports",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5092,6 +5123,7 @@ export const listResources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListResources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5137,6 +5169,7 @@ export const listServiceEvents: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListServiceEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5182,6 +5215,7 @@ export const listServiceFunctions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListServiceFunctions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5221,6 +5255,7 @@ export const listServices: API.OperationMethod<
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListServices",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5260,6 +5295,7 @@ export const listServiceTopologyEdges: API.OperationMethod<
   input: ListServiceTopologyEdgesRequest,
   output: ListServiceTopologyEdgesResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListServiceTopologyEdges",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5305,6 +5341,7 @@ export const listSystemEvents: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListSystemEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5344,6 +5381,7 @@ export const listSystems: API.OperationMethod<
   input: ListSystemsRequest,
   output: ListSystemsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  operationName: "ListSystems",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5376,6 +5414,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListUserJourneysError =
   | AccessDeniedException
@@ -5415,6 +5454,7 @@ export const listUserJourneys: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListUserJourneys",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5449,6 +5489,7 @@ export const startFailureModeAssessment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartFailureModeAssessment",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -5475,6 +5516,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -5501,6 +5543,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAssertionError =
   | AccessDeniedException
@@ -5527,6 +5570,7 @@ export const updateAssertion: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateAssertion",
 }));
 export type UpdateDependencyError =
   | AccessDeniedException
@@ -5553,6 +5597,7 @@ export const updateDependency: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateDependency",
 }));
 export type UpdateFailureModeFindingError =
   | AccessDeniedException
@@ -5579,6 +5624,7 @@ export const updateFailureModeFinding: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateFailureModeFinding",
 }));
 export type UpdatePolicyError =
   | AccessDeniedException
@@ -5605,6 +5651,7 @@ export const updatePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdatePolicy",
 }));
 export type UpdateServiceError =
   | AccessDeniedException
@@ -5633,6 +5680,7 @@ export const updateService: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateService",
 }));
 export type UpdateServiceFunctionError =
   | AccessDeniedException
@@ -5659,6 +5707,7 @@ export const updateServiceFunction: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateServiceFunction",
 }));
 export type UpdateSystemError =
   | AccessDeniedException
@@ -5685,6 +5734,7 @@ export const updateSystem: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateSystem",
 }));
 export type UpdateUserJourneyError =
   | AccessDeniedException
@@ -5711,4 +5761,5 @@ export const updateUserJourney: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateUserJourney",
 }));

@@ -402,6 +402,7 @@ export const deleteReportDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteReportDefinition",
 }));
 export type GetReportDefinitionError =
   | AccessDeniedException
@@ -426,6 +427,7 @@ export const getReportDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetReportDefinition",
 }));
 export type ImportApplicationUsageError =
   | AccessDeniedException
@@ -454,6 +456,7 @@ export const importApplicationUsage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ImportApplicationUsage",
 }));
 export type ListReportDefinitionsError =
   | AccessDeniedException
@@ -495,6 +498,7 @@ export const listReportDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListReportDefinitions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -527,6 +531,7 @@ export const putReportDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutReportDefinition",
 }));
 export type UpdateReportDefinitionError =
   | AccessDeniedException
@@ -551,4 +556,5 @@ export const updateReportDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateReportDefinition",
 }));

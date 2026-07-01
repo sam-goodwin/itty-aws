@@ -3319,6 +3319,7 @@ export const batchGetNamedQuery: API.OperationMethod<
   input: BatchGetNamedQueryInput,
   output: BatchGetNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "BatchGetNamedQuery",
 }));
 export type BatchGetPreparedStatementError =
   | InternalServerException
@@ -3340,6 +3341,7 @@ export const batchGetPreparedStatement: API.OperationMethod<
   input: BatchGetPreparedStatementInput,
   output: BatchGetPreparedStatementOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "BatchGetPreparedStatement",
 }));
 export type BatchGetQueryExecutionError =
   | InternalServerException
@@ -3362,6 +3364,7 @@ export const batchGetQueryExecution: API.OperationMethod<
   input: BatchGetQueryExecutionInput,
   output: BatchGetQueryExecutionOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "BatchGetQueryExecution",
 }));
 export type CancelCapacityReservationError =
   | InternalServerException
@@ -3382,6 +3385,7 @@ export const cancelCapacityReservation: API.OperationMethod<
   input: CancelCapacityReservationInput,
   output: CancelCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "CancelCapacityReservation",
 }));
 export type CreateCapacityReservationError =
   | InternalServerException
@@ -3400,6 +3404,7 @@ export const createCapacityReservation: API.OperationMethod<
   input: CreateCapacityReservationInput,
   output: CreateCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "CreateCapacityReservation",
 }));
 export type CreateDataCatalogError =
   | InternalServerException
@@ -3433,6 +3438,7 @@ export const createDataCatalog: API.OperationMethod<
   input: CreateDataCatalogInput,
   output: CreateDataCatalogOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "CreateDataCatalog",
 }));
 export type CreateNamedQueryError =
   | InternalServerException
@@ -3451,6 +3457,7 @@ export const createNamedQuery: API.OperationMethod<
   input: CreateNamedQueryInput,
   output: CreateNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "CreateNamedQuery",
 }));
 export type CreateNotebookError =
   | InternalServerException
@@ -3475,6 +3482,7 @@ export const createNotebook: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "CreateNotebook",
 }));
 export type CreatePreparedStatementError =
   | InternalServerException
@@ -3492,6 +3500,7 @@ export const createPreparedStatement: API.OperationMethod<
   input: CreatePreparedStatementInput,
   output: CreatePreparedStatementOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "CreatePreparedStatement",
 }));
 export type CreatePresignedNotebookUrlError =
   | InternalServerException
@@ -3518,6 +3527,7 @@ export const createPresignedNotebookUrl: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "CreatePresignedNotebookUrl",
 }));
 export type CreateWorkGroupError =
   | InternalServerException
@@ -3536,6 +3546,7 @@ export const createWorkGroup: API.OperationMethod<
   input: CreateWorkGroupInput,
   output: CreateWorkGroupOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "CreateWorkGroup",
 }));
 export type DeleteCapacityReservationError =
   | InternalServerException
@@ -3557,6 +3568,7 @@ export const deleteCapacityReservation: API.OperationMethod<
   input: DeleteCapacityReservationInput,
   output: DeleteCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "DeleteCapacityReservation",
 }));
 export type DeleteDataCatalogError =
   | InternalServerException
@@ -3574,6 +3586,7 @@ export const deleteDataCatalog: API.OperationMethod<
   input: DeleteDataCatalogInput,
   output: DeleteDataCatalogOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "DeleteDataCatalog",
 }));
 export type DeleteNamedQueryError =
   | InternalServerException
@@ -3592,6 +3605,7 @@ export const deleteNamedQuery: API.OperationMethod<
   input: DeleteNamedQueryInput,
   output: DeleteNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "DeleteNamedQuery",
 }));
 export type DeleteNotebookError =
   | InternalServerException
@@ -3614,6 +3628,7 @@ export const deleteNotebook: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteNotebook",
 }));
 export type DeletePreparedStatementError =
   | InternalServerException
@@ -3637,6 +3652,7 @@ export const deletePreparedStatement: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DeletePreparedStatement",
 }));
 export type DeleteWorkGroupError =
   | InternalServerException
@@ -3655,6 +3671,7 @@ export const deleteWorkGroup: API.OperationMethod<
   input: DeleteWorkGroupInput,
   output: DeleteWorkGroupOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "DeleteWorkGroup",
 }));
 export type ExportNotebookError =
   | InternalServerException
@@ -3677,6 +3694,7 @@ export const exportNotebook: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ExportNotebook",
 }));
 export type GetCalculationExecutionError =
   | InternalServerException
@@ -3699,6 +3717,7 @@ export const getCalculationExecution: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "GetCalculationExecution",
 }));
 export type GetCalculationExecutionCodeError =
   | InternalServerException
@@ -3721,6 +3740,7 @@ export const getCalculationExecutionCode: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "GetCalculationExecutionCode",
 }));
 export type GetCalculationExecutionStatusError =
   | InternalServerException
@@ -3743,6 +3763,7 @@ export const getCalculationExecutionStatus: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "GetCalculationExecutionStatus",
 }));
 export type GetCapacityAssignmentConfigurationError =
   | InternalServerException
@@ -3761,6 +3782,7 @@ export const getCapacityAssignmentConfiguration: API.OperationMethod<
   input: GetCapacityAssignmentConfigurationInput,
   output: GetCapacityAssignmentConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "GetCapacityAssignmentConfiguration",
 }));
 export type GetCapacityReservationError =
   | InternalServerException
@@ -3778,6 +3800,7 @@ export const getCapacityReservation: API.OperationMethod<
   input: GetCapacityReservationInput,
   output: GetCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "GetCapacityReservation",
 }));
 export type GetDatabaseError =
   | InternalServerException
@@ -3796,6 +3819,7 @@ export const getDatabase: API.OperationMethod<
   input: GetDatabaseInput,
   output: GetDatabaseOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
+  operationName: "GetDatabase",
 }));
 export type GetDataCatalogError =
   | InternalServerException
@@ -3813,6 +3837,7 @@ export const getDataCatalog: API.OperationMethod<
   input: GetDataCatalogInput,
   output: GetDataCatalogOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "GetDataCatalog",
 }));
 export type GetNamedQueryError =
   | InternalServerException
@@ -3831,6 +3856,7 @@ export const getNamedQuery: API.OperationMethod<
   input: GetNamedQueryInput,
   output: GetNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "GetNamedQuery",
 }));
 export type GetNotebookMetadataError =
   | InternalServerException
@@ -3853,6 +3879,7 @@ export const getNotebookMetadata: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "GetNotebookMetadata",
 }));
 export type GetPreparedStatementError =
   | InternalServerException
@@ -3876,6 +3903,7 @@ export const getPreparedStatement: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "GetPreparedStatement",
 }));
 export type GetQueryExecutionError =
   | InternalServerException
@@ -3895,6 +3923,7 @@ export const getQueryExecution: API.OperationMethod<
   input: GetQueryExecutionInput,
   output: GetQueryExecutionOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "GetQueryExecution",
 }));
 export type GetQueryResultsError =
   | InternalServerException
@@ -3947,6 +3976,7 @@ export const getQueryResults: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "GetQueryResults",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3975,6 +4005,7 @@ export const getQueryRuntimeStatistics: API.OperationMethod<
   input: GetQueryRuntimeStatisticsInput,
   output: GetQueryRuntimeStatisticsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "GetQueryRuntimeStatistics",
 }));
 export type GetResourceDashboardError =
   | InternalServerException
@@ -3997,6 +4028,7 @@ export const getResourceDashboard: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "GetResourceDashboard",
 }));
 export type GetSessionError =
   | InternalServerException
@@ -4020,6 +4052,7 @@ export const getSession: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "GetSession",
 }));
 export type GetSessionEndpointError =
   | InternalServerException
@@ -4042,6 +4075,7 @@ export const getSessionEndpoint: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "GetSessionEndpoint",
 }));
 export type GetSessionStatusError =
   | InternalServerException
@@ -4064,6 +4098,7 @@ export const getSessionStatus: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "GetSessionStatus",
 }));
 export type GetTableMetadataError =
   | InternalServerException
@@ -4082,6 +4117,7 @@ export const getTableMetadata: API.OperationMethod<
   input: GetTableMetadataInput,
   output: GetTableMetadataOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
+  operationName: "GetTableMetadata",
 }));
 export type GetWorkGroupError =
   | InternalServerException
@@ -4099,6 +4135,7 @@ export const getWorkGroup: API.OperationMethod<
   input: GetWorkGroupInput,
   output: GetWorkGroupOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "GetWorkGroup",
 }));
 export type ImportNotebookError =
   | InternalServerException
@@ -4126,6 +4163,7 @@ export const importNotebook: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ImportNotebook",
 }));
 export type ListApplicationDPUSizesError =
   | InternalServerException
@@ -4164,6 +4202,7 @@ export const listApplicationDPUSizes: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListApplicationDPUSizes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4207,6 +4246,7 @@ export const listCalculationExecutions: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "ListCalculationExecutions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4244,6 +4284,7 @@ export const listCapacityReservations: API.OperationMethod<
   input: ListCapacityReservationsInput,
   output: ListCapacityReservationsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListCapacityReservations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4282,6 +4323,7 @@ export const listDatabases: API.OperationMethod<
   input: ListDatabasesInput,
   output: ListDatabasesOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
+  operationName: "ListDatabases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4323,6 +4365,7 @@ export const listDataCatalogs: API.OperationMethod<
   input: ListDataCatalogsInput,
   output: ListDataCatalogsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListDataCatalogs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4362,6 +4405,7 @@ export const listEngineVersions: API.OperationMethod<
   input: ListEngineVersionsInput,
   output: ListEngineVersionsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListEngineVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4406,6 +4450,7 @@ export const listExecutors: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "ListExecutors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4445,6 +4490,7 @@ export const listNamedQueries: API.OperationMethod<
   input: ListNamedQueriesInput,
   output: ListNamedQueriesOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListNamedQueries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4472,6 +4518,7 @@ export const listNotebookMetadata: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListNotebookMetadata",
 }));
 export type ListNotebookSessionsError =
   | InternalServerException
@@ -4497,6 +4544,7 @@ export const listNotebookSessions: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "ListNotebookSessions",
 }));
 export type ListPreparedStatementsError =
   | InternalServerException
@@ -4529,6 +4577,7 @@ export const listPreparedStatements: API.OperationMethod<
   input: ListPreparedStatementsInput,
   output: ListPreparedStatementsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListPreparedStatements",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4569,6 +4618,7 @@ export const listQueryExecutions: API.OperationMethod<
   input: ListQueryExecutionsInput,
   output: ListQueryExecutionsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListQueryExecutions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4614,6 +4664,7 @@ export const listSessions: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "ListSessions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4652,6 +4703,7 @@ export const listTableMetadata: API.OperationMethod<
   input: ListTableMetadataInput,
   output: ListTableMetadataOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
+  operationName: "ListTableMetadata",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4695,6 +4747,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4733,6 +4786,7 @@ export const listWorkGroups: API.OperationMethod<
   input: ListWorkGroupsInput,
   output: ListWorkGroupsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "ListWorkGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4757,6 +4811,7 @@ export const putCapacityAssignmentConfiguration: API.OperationMethod<
   input: PutCapacityAssignmentConfigurationInput,
   output: PutCapacityAssignmentConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "PutCapacityAssignmentConfiguration",
 }));
 export type StartCalculationExecutionError =
   | InternalServerException
@@ -4785,6 +4840,7 @@ export const startCalculationExecution: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "StartCalculationExecution",
 }));
 export type StartQueryExecutionError =
   | InternalServerException
@@ -4812,6 +4868,7 @@ export const startQueryExecution: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "StartQueryExecution",
 }));
 export type StartSessionError =
   | InternalServerException
@@ -4839,6 +4896,7 @@ export const startSession: API.OperationMethod<
     SessionAlreadyExistsException,
     TooManyRequestsException,
   ],
+  operationName: "StartSession",
 }));
 export type StopCalculationExecutionError =
   | InternalServerException
@@ -4869,6 +4927,7 @@ export const stopCalculationExecution: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "StopCalculationExecution",
 }));
 export type StopQueryExecutionError =
   | InternalServerException
@@ -4887,6 +4946,7 @@ export const stopQueryExecution: API.OperationMethod<
   input: StopQueryExecutionInput,
   output: StopQueryExecutionOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "StopQueryExecution",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -4919,6 +4979,7 @@ export const tagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type TerminateSessionError =
   | InternalServerException
@@ -4945,6 +5006,7 @@ export const terminateSession: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "TerminateSession",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -4967,6 +5029,7 @@ export const untagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateCapacityReservationError =
   | InternalServerException
@@ -4985,6 +5048,7 @@ export const updateCapacityReservation: API.OperationMethod<
   input: UpdateCapacityReservationInput,
   output: UpdateCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "UpdateCapacityReservation",
 }));
 export type UpdateDataCatalogError =
   | InternalServerException
@@ -5002,6 +5066,7 @@ export const updateDataCatalog: API.OperationMethod<
   input: UpdateDataCatalogInput,
   output: UpdateDataCatalogOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "UpdateDataCatalog",
 }));
 export type UpdateNamedQueryError =
   | InternalServerException
@@ -5020,6 +5085,7 @@ export const updateNamedQuery: API.OperationMethod<
   input: UpdateNamedQueryInput,
   output: UpdateNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "UpdateNamedQuery",
 }));
 export type UpdateNotebookError =
   | InternalServerException
@@ -5042,6 +5108,7 @@ export const updateNotebook: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateNotebook",
 }));
 export type UpdateNotebookMetadataError =
   | InternalServerException
@@ -5064,6 +5131,7 @@ export const updateNotebookMetadata: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateNotebookMetadata",
 }));
 export type UpdatePreparedStatementError =
   | InternalServerException
@@ -5086,6 +5154,7 @@ export const updatePreparedStatement: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdatePreparedStatement",
 }));
 export type UpdateWorkGroupError =
   | InternalServerException
@@ -5104,4 +5173,5 @@ export const updateWorkGroup: API.OperationMethod<
   input: UpdateWorkGroupInput,
   output: UpdateWorkGroupOutput,
   errors: [InternalServerException, InvalidRequestException],
+  operationName: "UpdateWorkGroup",
 }));

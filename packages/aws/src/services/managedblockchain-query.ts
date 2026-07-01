@@ -891,6 +891,7 @@ export const batchGetTokenBalance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchGetTokenBalance",
 }));
 export type GetAssetContractError =
   | AccessDeniedException
@@ -925,6 +926,7 @@ export const getAssetContract: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAssetContract",
 }));
 export type GetTokenBalanceError =
   | AccessDeniedException
@@ -956,6 +958,7 @@ export const getTokenBalance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTokenBalance",
 }));
 export type GetTransactionError =
   | AccessDeniedException
@@ -988,6 +991,7 @@ export const getTransaction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTransaction",
 }));
 export type ListAssetContractsError =
   | AccessDeniedException
@@ -1033,6 +1037,7 @@ export const listAssetContracts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAssetContracts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1082,6 +1087,7 @@ export const listFilteredTransactionEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListFilteredTransactionEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1139,6 +1145,7 @@ export const listTokenBalances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTokenBalances",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1190,6 +1197,7 @@ export const listTransactionEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTransactionEvents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1237,6 +1245,7 @@ export const listTransactions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTransactions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

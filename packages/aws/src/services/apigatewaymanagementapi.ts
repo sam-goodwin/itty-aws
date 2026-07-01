@@ -226,6 +226,7 @@ export const deleteConnection: API.OperationMethod<
   input: DeleteConnectionRequest,
   output: DeleteConnectionResponse,
   errors: [ForbiddenException, GoneException, LimitExceededException],
+  operationName: "DeleteConnection",
 }));
 export type GetConnectionError =
   | ForbiddenException
@@ -244,6 +245,7 @@ export const getConnection: API.OperationMethod<
   input: GetConnectionRequest,
   output: GetConnectionResponse,
   errors: [ForbiddenException, GoneException, LimitExceededException],
+  operationName: "GetConnection",
 }));
 export type PostToConnectionError =
   | ForbiddenException
@@ -268,4 +270,5 @@ export const postToConnection: API.OperationMethod<
     LimitExceededException,
     PayloadTooLargeException,
   ],
+  operationName: "PostToConnection",
 }));

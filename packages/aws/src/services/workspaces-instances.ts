@@ -1227,6 +1227,7 @@ export const associateVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateVolume",
 }));
 export type CreateVolumeError =
   | AccessDeniedException
@@ -1255,6 +1256,7 @@ export const createVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateVolume",
 }));
 export type CreateWorkspaceInstanceError =
   | AccessDeniedException
@@ -1283,6 +1285,7 @@ export const createWorkspaceInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateWorkspaceInstance",
 }));
 export type DeleteVolumeError =
   | AccessDeniedException
@@ -1311,6 +1314,7 @@ export const deleteVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteVolume",
 }));
 export type DeleteWorkspaceInstanceError =
   | AccessDeniedException
@@ -1341,6 +1345,7 @@ export const deleteWorkspaceInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteWorkspaceInstance",
 }));
 export type DisassociateVolumeError =
   | AccessDeniedException
@@ -1369,6 +1374,7 @@ export const disassociateVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateVolume",
 }));
 export type GetWorkspaceInstanceError =
   | AccessDeniedException
@@ -1395,6 +1401,7 @@ export const getWorkspaceInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetWorkspaceInstance",
 }));
 export type ListInstanceTypesError =
   | AccessDeniedException
@@ -1434,6 +1441,7 @@ export const listInstanceTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListInstanceTypes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1479,6 +1487,7 @@ export const listRegions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRegions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1511,6 +1520,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListWorkspaceInstancesError =
   | AccessDeniedException
@@ -1550,6 +1560,7 @@ export const listWorkspaceInstances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListWorkspaceInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1582,6 +1593,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1608,4 +1620,5 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));

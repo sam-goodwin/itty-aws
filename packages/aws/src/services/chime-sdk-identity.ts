@@ -1581,6 +1581,7 @@ export const createAppInstance: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateAppInstance",
 }));
 export type CreateAppInstanceAdminError =
   | BadRequestException
@@ -1623,6 +1624,7 @@ export const createAppInstanceAdmin: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateAppInstanceAdmin",
 }));
 export type CreateAppInstanceBotError =
   | BadRequestException
@@ -1656,6 +1658,7 @@ export const createAppInstanceBot: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateAppInstanceBot",
 }));
 export type CreateAppInstanceUserError =
   | BadRequestException
@@ -1689,6 +1692,7 @@ export const createAppInstanceUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateAppInstanceUser",
 }));
 export type DeleteAppInstanceError =
   | BadRequestException
@@ -1719,6 +1723,7 @@ export const deleteAppInstance: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteAppInstance",
 }));
 export type DeleteAppInstanceAdminError =
   | BadRequestException
@@ -1753,6 +1758,7 @@ export const deleteAppInstanceAdmin: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteAppInstanceAdmin",
 }));
 export type DeleteAppInstanceBotError =
   | BadRequestException
@@ -1785,6 +1791,7 @@ export const deleteAppInstanceBot: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteAppInstanceBot",
 }));
 export type DeleteAppInstanceUserError =
   | BadRequestException
@@ -1817,6 +1824,7 @@ export const deleteAppInstanceUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteAppInstanceUser",
 }));
 export type DeregisterAppInstanceUserEndpointError =
   | BadRequestException
@@ -1845,6 +1853,7 @@ export const deregisterAppInstanceUserEndpoint: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeregisterAppInstanceUserEndpoint",
 }));
 export type DescribeAppInstanceError =
   | BadRequestException
@@ -1873,6 +1882,7 @@ export const describeAppInstance: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DescribeAppInstance",
 }));
 export type DescribeAppInstanceAdminError =
   | BadRequestException
@@ -1901,6 +1911,7 @@ export const describeAppInstanceAdmin: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DescribeAppInstanceAdmin",
 }));
 export type DescribeAppInstanceBotError =
   | BadRequestException
@@ -1931,6 +1942,7 @@ export const describeAppInstanceBot: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DescribeAppInstanceBot",
 }));
 export type DescribeAppInstanceUserError =
   | BadRequestException
@@ -1959,6 +1971,7 @@ export const describeAppInstanceUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DescribeAppInstanceUser",
 }));
 export type DescribeAppInstanceUserEndpointError =
   | BadRequestException
@@ -1987,6 +2000,7 @@ export const describeAppInstanceUserEndpoint: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DescribeAppInstanceUserEndpoint",
 }));
 export type GetAppInstanceRetentionSettingsError =
   | BadRequestException
@@ -2015,6 +2029,7 @@ export const getAppInstanceRetentionSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetAppInstanceRetentionSettings",
 }));
 export type ListAppInstanceAdminsError =
   | BadRequestException
@@ -2060,6 +2075,7 @@ export const listAppInstanceAdmins: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListAppInstanceAdmins",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2110,6 +2126,7 @@ export const listAppInstanceBots: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListAppInstanceBots",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2159,6 +2176,7 @@ export const listAppInstances: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListAppInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2207,6 +2225,7 @@ export const listAppInstanceUserEndpoints: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListAppInstanceUserEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2256,6 +2275,7 @@ export const listAppInstanceUsers: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListAppInstanceUsers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2289,6 +2309,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutAppInstanceRetentionSettingsError =
   | BadRequestException
@@ -2318,6 +2339,7 @@ export const putAppInstanceRetentionSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "PutAppInstanceRetentionSettings",
 }));
 export type PutAppInstanceUserExpirationSettingsError =
   | BadRequestException
@@ -2354,6 +2376,7 @@ export const putAppInstanceUserExpirationSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "PutAppInstanceUserExpirationSettings",
 }));
 export type RegisterAppInstanceUserEndpointError =
   | BadRequestException
@@ -2386,6 +2409,7 @@ export const registerAppInstanceUserEndpoint: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "RegisterAppInstanceUserEndpoint",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -2416,6 +2440,7 @@ export const tagResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -2444,6 +2469,7 @@ export const untagResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateAppInstanceError =
   | BadRequestException
@@ -2474,6 +2500,7 @@ export const updateAppInstance: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateAppInstance",
 }));
 export type UpdateAppInstanceBotError =
   | BadRequestException
@@ -2506,6 +2533,7 @@ export const updateAppInstanceBot: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateAppInstanceBot",
 }));
 export type UpdateAppInstanceUserError =
   | BadRequestException
@@ -2539,6 +2567,7 @@ export const updateAppInstanceUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateAppInstanceUser",
 }));
 export type UpdateAppInstanceUserEndpointError =
   | BadRequestException
@@ -2569,4 +2598,5 @@ export const updateAppInstanceUserEndpoint: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateAppInstanceUserEndpoint",
 }));

@@ -5405,6 +5405,7 @@ export const calculateIsolines: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CalculateIsolines",
 }));
 export type CalculateRouteMatrixError =
   | AccessDeniedException
@@ -5431,6 +5432,7 @@ export const calculateRouteMatrix: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CalculateRouteMatrix",
 }));
 export type CalculateRoutesError =
   | AccessDeniedException
@@ -5457,6 +5459,7 @@ export const calculateRoutes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CalculateRoutes",
 }));
 export type OptimizeWaypointsError =
   | AccessDeniedException
@@ -5483,6 +5486,7 @@ export const optimizeWaypoints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "OptimizeWaypoints",
 }));
 export type SnapToRoadsError =
   | AccessDeniedException
@@ -5509,4 +5513,5 @@ export const snapToRoads: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SnapToRoads",
 }));

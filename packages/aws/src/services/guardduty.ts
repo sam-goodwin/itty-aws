@@ -10040,6 +10040,7 @@ export const acceptAdministratorInvitation: API.OperationMethod<
   input: AcceptAdministratorInvitationRequest,
   output: AcceptAdministratorInvitationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "AcceptAdministratorInvitation",
 }));
 export type AcceptInvitationError =
   | BadRequestException
@@ -10057,6 +10058,7 @@ export const acceptInvitation: API.OperationMethod<
   input: AcceptInvitationRequest,
   output: AcceptInvitationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "AcceptInvitation",
 }));
 export type ArchiveFindingsError =
   | BadRequestException
@@ -10076,6 +10078,7 @@ export const archiveFindings: API.OperationMethod<
   input: ArchiveFindingsRequest,
   output: ArchiveFindingsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "ArchiveFindings",
 }));
 export type CreateDetectorError =
   | BadRequestException
@@ -10101,6 +10104,7 @@ export const createDetector: API.OperationMethod<
   input: CreateDetectorRequest,
   output: CreateDetectorResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "CreateDetector",
 }));
 export type CreateFilterError =
   | BadRequestException
@@ -10118,6 +10122,7 @@ export const createFilter: API.OperationMethod<
   input: CreateFilterRequest,
   output: CreateFilterResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "CreateFilter",
 }));
 export type CreateInvestigationError =
   | AccessDeniedException
@@ -10148,6 +10153,7 @@ export const createInvestigation: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  operationName: "CreateInvestigation",
 }));
 export type CreateIPSetError =
   | AccessDeniedException
@@ -10170,6 +10176,7 @@ export const createIPSet: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  operationName: "CreateIPSet",
 }));
 export type CreateMalwareProtectionPlanError =
   | AccessDeniedException
@@ -10196,6 +10203,7 @@ export const createMalwareProtectionPlan: API.OperationMethod<
     ConflictException,
     InternalServerErrorException,
   ],
+  operationName: "CreateMalwareProtectionPlan",
 }));
 export type CreateMembersError =
   | BadRequestException
@@ -10221,6 +10229,7 @@ export const createMembers: API.OperationMethod<
   input: CreateMembersRequest,
   output: CreateMembersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "CreateMembers",
 }));
 export type CreatePublishingDestinationError =
   | BadRequestException
@@ -10238,6 +10247,7 @@ export const createPublishingDestination: API.OperationMethod<
   input: CreatePublishingDestinationRequest,
   output: CreatePublishingDestinationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "CreatePublishingDestination",
 }));
 export type CreateSampleFindingsError =
   | BadRequestException
@@ -10255,6 +10265,7 @@ export const createSampleFindings: API.OperationMethod<
   input: CreateSampleFindingsRequest,
   output: CreateSampleFindingsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "CreateSampleFindings",
 }));
 export type CreateThreatEntitySetError =
   | BadRequestException
@@ -10272,6 +10283,7 @@ export const createThreatEntitySet: API.OperationMethod<
   input: CreateThreatEntitySetRequest,
   output: CreateThreatEntitySetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "CreateThreatEntitySet",
 }));
 export type CreateThreatIntelSetError =
   | AccessDeniedException
@@ -10294,6 +10306,7 @@ export const createThreatIntelSet: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  operationName: "CreateThreatIntelSet",
 }));
 export type CreateTrustedEntitySetError =
   | BadRequestException
@@ -10313,6 +10326,7 @@ export const createTrustedEntitySet: API.OperationMethod<
   input: CreateTrustedEntitySetRequest,
   output: CreateTrustedEntitySetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "CreateTrustedEntitySet",
 }));
 export type DeclineInvitationsError =
   | BadRequestException
@@ -10330,6 +10344,7 @@ export const declineInvitations: API.OperationMethod<
   input: DeclineInvitationsRequest,
   output: DeclineInvitationsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DeclineInvitations",
 }));
 export type DeleteDetectorError =
   | BadRequestException
@@ -10347,6 +10362,7 @@ export const deleteDetector: API.OperationMethod<
   input: DeleteDetectorRequest,
   output: DeleteDetectorResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DeleteDetector",
 }));
 export type DeleteFilterError =
   | BadRequestException
@@ -10364,6 +10380,7 @@ export const deleteFilter: API.OperationMethod<
   input: DeleteFilterRequest,
   output: DeleteFilterResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DeleteFilter",
 }));
 export type DeleteInvitationsError =
   | BadRequestException
@@ -10381,6 +10398,7 @@ export const deleteInvitations: API.OperationMethod<
   input: DeleteInvitationsRequest,
   output: DeleteInvitationsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DeleteInvitations",
 }));
 export type DeleteIPSetError =
   | BadRequestException
@@ -10398,6 +10416,7 @@ export const deleteIPSet: API.OperationMethod<
   input: DeleteIPSetRequest,
   output: DeleteIPSetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DeleteIPSet",
 }));
 export type DeleteMalwareProtectionPlanError =
   | AccessDeniedException
@@ -10422,6 +10441,7 @@ export const deleteMalwareProtectionPlan: API.OperationMethod<
     InternalServerErrorException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteMalwareProtectionPlan",
 }));
 export type DeleteMembersError =
   | BadRequestException
@@ -10441,6 +10461,7 @@ export const deleteMembers: API.OperationMethod<
   input: DeleteMembersRequest,
   output: DeleteMembersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DeleteMembers",
 }));
 export type DeletePublishingDestinationError =
   | BadRequestException
@@ -10458,6 +10479,7 @@ export const deletePublishingDestination: API.OperationMethod<
   input: DeletePublishingDestinationRequest,
   output: DeletePublishingDestinationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DeletePublishingDestination",
 }));
 export type DeleteThreatEntitySetError =
   | BadRequestException
@@ -10475,6 +10497,7 @@ export const deleteThreatEntitySet: API.OperationMethod<
   input: DeleteThreatEntitySetRequest,
   output: DeleteThreatEntitySetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DeleteThreatEntitySet",
 }));
 export type DeleteThreatIntelSetError =
   | BadRequestException
@@ -10492,6 +10515,7 @@ export const deleteThreatIntelSet: API.OperationMethod<
   input: DeleteThreatIntelSetRequest,
   output: DeleteThreatIntelSetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DeleteThreatIntelSet",
 }));
 export type DeleteTrustedEntitySetError =
   | BadRequestException
@@ -10509,6 +10533,7 @@ export const deleteTrustedEntitySet: API.OperationMethod<
   input: DeleteTrustedEntitySetRequest,
   output: DeleteTrustedEntitySetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DeleteTrustedEntitySet",
 }));
 export type DescribeMalwareScansError =
   | BadRequestException
@@ -10543,6 +10568,7 @@ export const describeMalwareScans: API.OperationMethod<
   input: DescribeMalwareScansRequest,
   output: DescribeMalwareScansResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DescribeMalwareScans",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10583,6 +10609,7 @@ export const describeOrganizationConfiguration: API.OperationMethod<
   input: DescribeOrganizationConfigurationRequest,
   output: DescribeOrganizationConfigurationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DescribeOrganizationConfiguration",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10605,6 +10632,7 @@ export const describePublishingDestination: API.OperationMethod<
   input: DescribePublishingDestinationRequest,
   output: DescribePublishingDestinationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DescribePublishingDestination",
 }));
 export type DisableOrganizationAdminAccountError =
   | BadRequestException
@@ -10622,6 +10650,7 @@ export const disableOrganizationAdminAccount: API.OperationMethod<
   input: DisableOrganizationAdminAccountRequest,
   output: DisableOrganizationAdminAccountResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DisableOrganizationAdminAccount",
 }));
 export type DisassociateFromAdministratorAccountError =
   | BadRequestException
@@ -10643,6 +10672,7 @@ export const disassociateFromAdministratorAccount: API.OperationMethod<
   input: DisassociateFromAdministratorAccountRequest,
   output: DisassociateFromAdministratorAccountResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DisassociateFromAdministratorAccount",
 }));
 export type DisassociateFromMasterAccountError =
   | BadRequestException
@@ -10662,6 +10692,7 @@ export const disassociateFromMasterAccount: API.OperationMethod<
   input: DisassociateFromMasterAccountRequest,
   output: DisassociateFromMasterAccountResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DisassociateFromMasterAccount",
 }));
 export type DisassociateMembersError =
   | BadRequestException
@@ -10687,6 +10718,7 @@ export const disassociateMembers: API.OperationMethod<
   input: DisassociateMembersRequest,
   output: DisassociateMembersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "DisassociateMembers",
 }));
 export type EnableOrganizationAdminAccountError =
   | BadRequestException
@@ -10704,6 +10736,7 @@ export const enableOrganizationAdminAccount: API.OperationMethod<
   input: EnableOrganizationAdminAccountRequest,
   output: EnableOrganizationAdminAccountResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "EnableOrganizationAdminAccount",
 }));
 export type GetAdministratorAccountError =
   | BadRequestException
@@ -10729,6 +10762,7 @@ export const getAdministratorAccount: API.OperationMethod<
   input: GetAdministratorAccountRequest,
   output: GetAdministratorAccountResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetAdministratorAccount",
 }));
 export type GetCoverageStatisticsError =
   | BadRequestException
@@ -10746,6 +10780,7 @@ export const getCoverageStatistics: API.OperationMethod<
   input: GetCoverageStatisticsRequest,
   output: GetCoverageStatisticsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetCoverageStatistics",
 }));
 export type GetDetectorError =
   | BadRequestException
@@ -10765,6 +10800,7 @@ export const getDetector: API.OperationMethod<
   input: GetDetectorRequest,
   output: GetDetectorResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetDetector",
 }));
 export type GetFilterError =
   | BadRequestException
@@ -10782,6 +10818,7 @@ export const getFilter: API.OperationMethod<
   input: GetFilterRequest,
   output: GetFilterResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetFilter",
 }));
 export type GetFindingsError =
   | BadRequestException
@@ -10799,6 +10836,7 @@ export const getFindings: API.OperationMethod<
   input: GetFindingsRequest,
   output: GetFindingsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetFindings",
 }));
 export type GetFindingsStatisticsError =
   | BadRequestException
@@ -10820,6 +10858,7 @@ export const getFindingsStatistics: API.OperationMethod<
   input: GetFindingsStatisticsRequest,
   output: GetFindingsStatisticsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetFindingsStatistics",
 }));
 export type GetInvestigationError =
   | AccessDeniedException
@@ -10848,6 +10887,7 @@ export const getInvestigation: API.OperationMethod<
     InternalServerErrorException,
     ResourceNotFoundException,
   ],
+  operationName: "GetInvestigation",
 }));
 export type GetInvitationsCountError =
   | BadRequestException
@@ -10865,6 +10905,7 @@ export const getInvitationsCount: API.OperationMethod<
   input: GetInvitationsCountRequest,
   output: GetInvitationsCountResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetInvitationsCount",
 }));
 export type GetIPSetError =
   | BadRequestException
@@ -10882,6 +10923,7 @@ export const getIPSet: API.OperationMethod<
   input: GetIPSetRequest,
   output: GetIPSetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetIPSet",
 }));
 export type GetMalwareProtectionPlanError =
   | AccessDeniedException
@@ -10906,6 +10948,7 @@ export const getMalwareProtectionPlan: API.OperationMethod<
     InternalServerErrorException,
     ResourceNotFoundException,
   ],
+  operationName: "GetMalwareProtectionPlan",
 }));
 export type GetMalwareScanError =
   | BadRequestException
@@ -10930,6 +10973,7 @@ export const getMalwareScan: API.OperationMethod<
     InternalServerErrorException,
     ResourceNotFoundException,
   ],
+  operationName: "GetMalwareScan",
 }));
 export type GetMalwareScanSettingsError =
   | BadRequestException
@@ -10949,6 +10993,7 @@ export const getMalwareScanSettings: API.OperationMethod<
   input: GetMalwareScanSettingsRequest,
   output: GetMalwareScanSettingsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetMalwareScanSettings",
 }));
 export type GetMasterAccountError =
   | BadRequestException
@@ -10966,6 +11011,7 @@ export const getMasterAccount: API.OperationMethod<
   input: GetMasterAccountRequest,
   output: GetMasterAccountResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetMasterAccount",
 }));
 export type GetMemberDetectorsError =
   | BadRequestException
@@ -10985,6 +11031,7 @@ export const getMemberDetectors: API.OperationMethod<
   input: GetMemberDetectorsRequest,
   output: GetMemberDetectorsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetMemberDetectors",
 }));
 export type GetMembersError =
   | BadRequestException
@@ -11002,6 +11049,7 @@ export const getMembers: API.OperationMethod<
   input: GetMembersRequest,
   output: GetMembersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetMembers",
 }));
 export type GetOrganizationStatisticsError =
   | BadRequestException
@@ -11021,6 +11069,7 @@ export const getOrganizationStatistics: API.OperationMethod<
   input: GetOrganizationStatisticsRequest,
   output: GetOrganizationStatisticsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetOrganizationStatistics",
 }));
 export type GetRemainingFreeTrialDaysError =
   | BadRequestException
@@ -11038,6 +11087,7 @@ export const getRemainingFreeTrialDays: API.OperationMethod<
   input: GetRemainingFreeTrialDaysRequest,
   output: GetRemainingFreeTrialDaysResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetRemainingFreeTrialDays",
 }));
 export type GetThreatEntitySetError =
   | BadRequestException
@@ -11055,6 +11105,7 @@ export const getThreatEntitySet: API.OperationMethod<
   input: GetThreatEntitySetRequest,
   output: GetThreatEntitySetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetThreatEntitySet",
 }));
 export type GetThreatIntelSetError =
   | BadRequestException
@@ -11072,6 +11123,7 @@ export const getThreatIntelSet: API.OperationMethod<
   input: GetThreatIntelSetRequest,
   output: GetThreatIntelSetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetThreatIntelSet",
 }));
 export type GetTrustedEntitySetError =
   | BadRequestException
@@ -11089,6 +11141,7 @@ export const getTrustedEntitySet: API.OperationMethod<
   input: GetTrustedEntitySetRequest,
   output: GetTrustedEntitySetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetTrustedEntitySet",
 }));
 export type GetUsageStatisticsError =
   | BadRequestException
@@ -11121,6 +11174,7 @@ export const getUsageStatistics: API.OperationMethod<
   input: GetUsageStatisticsRequest,
   output: GetUsageStatisticsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "GetUsageStatistics",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11151,6 +11205,7 @@ export const inviteMembers: API.OperationMethod<
   input: InviteMembersRequest,
   output: InviteMembersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "InviteMembers",
 }));
 export type ListCoverageError =
   | BadRequestException
@@ -11185,6 +11240,7 @@ export const listCoverage: API.OperationMethod<
   input: ListCoverageRequest,
   output: ListCoverageResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "ListCoverage",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11223,6 +11279,7 @@ export const listDetectors: API.OperationMethod<
   input: ListDetectorsRequest,
   output: ListDetectorsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "ListDetectors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11261,6 +11318,7 @@ export const listFilters: API.OperationMethod<
   input: ListFiltersRequest,
   output: ListFiltersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "ListFilters",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11301,6 +11359,7 @@ export const listFindings: API.OperationMethod<
   input: ListFindingsRequest,
   output: ListFindingsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "ListFindings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11348,6 +11407,7 @@ export const listInvestigations: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  operationName: "ListInvestigations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11386,6 +11446,7 @@ export const listInvitations: API.OperationMethod<
   input: ListInvitationsRequest,
   output: ListInvitationsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "ListInvitations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11424,6 +11485,7 @@ export const listIPSets: API.OperationMethod<
   input: ListIPSetsRequest,
   output: ListIPSetsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "ListIPSets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11452,6 +11514,7 @@ export const listMalwareProtectionPlans: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  operationName: "ListMalwareProtectionPlans",
 }));
 export type ListMalwareScansError =
   | BadRequestException
@@ -11484,6 +11547,7 @@ export const listMalwareScans: API.OperationMethod<
   input: ListMalwareScansRequest,
   output: ListMalwareScansResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "ListMalwareScans",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11522,6 +11586,7 @@ export const listMembers: API.OperationMethod<
   input: ListMembersRequest,
   output: ListMembersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "ListMembers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11560,6 +11625,7 @@ export const listOrganizationAdminAccounts: API.OperationMethod<
   input: ListOrganizationAdminAccountsRequest,
   output: ListOrganizationAdminAccountsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "ListOrganizationAdminAccounts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11598,6 +11664,7 @@ export const listPublishingDestinations: API.OperationMethod<
   input: ListPublishingDestinationsRequest,
   output: ListPublishingDestinationsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "ListPublishingDestinations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11625,6 +11692,7 @@ export const listTagsForResource: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListThreatEntitySetsError =
   | BadRequestException
@@ -11657,6 +11725,7 @@ export const listThreatEntitySets: API.OperationMethod<
   input: ListThreatEntitySetsRequest,
   output: ListThreatEntitySetsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "ListThreatEntitySets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11695,6 +11764,7 @@ export const listThreatIntelSets: API.OperationMethod<
   input: ListThreatIntelSetsRequest,
   output: ListThreatIntelSetsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "ListThreatIntelSets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11733,6 +11803,7 @@ export const listTrustedEntitySets: API.OperationMethod<
   input: ListTrustedEntitySetsRequest,
   output: ListTrustedEntitySetsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "ListTrustedEntitySets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -11763,6 +11834,7 @@ export const sendObjectMalwareScan: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  operationName: "SendObjectMalwareScan",
 }));
 export type StartMalwareScanError =
   | BadRequestException
@@ -11789,6 +11861,7 @@ export const startMalwareScan: API.OperationMethod<
     ConflictException,
     InternalServerErrorException,
   ],
+  operationName: "StartMalwareScan",
 }));
 export type StartMonitoringMembersError =
   | BadRequestException
@@ -11806,6 +11879,7 @@ export const startMonitoringMembers: API.OperationMethod<
   input: StartMonitoringMembersRequest,
   output: StartMonitoringMembersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "StartMonitoringMembers",
 }));
 export type StopMonitoringMembersError =
   | BadRequestException
@@ -11825,6 +11899,7 @@ export const stopMonitoringMembers: API.OperationMethod<
   input: StopMonitoringMembersRequest,
   output: StopMonitoringMembersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "StopMonitoringMembers",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -11847,6 +11922,7 @@ export const tagResource: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  operationName: "TagResource",
 }));
 export type UnarchiveFindingsError =
   | BadRequestException
@@ -11864,6 +11940,7 @@ export const unarchiveFindings: API.OperationMethod<
   input: UnarchiveFindingsRequest,
   output: UnarchiveFindingsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "UnarchiveFindings",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -11886,6 +11963,7 @@ export const untagResource: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateDetectorError =
   | BadRequestException
@@ -11907,6 +11985,7 @@ export const updateDetector: API.OperationMethod<
   input: UpdateDetectorRequest,
   output: UpdateDetectorResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "UpdateDetector",
 }));
 export type UpdateFilterError =
   | BadRequestException
@@ -11924,6 +12003,7 @@ export const updateFilter: API.OperationMethod<
   input: UpdateFilterRequest,
   output: UpdateFilterResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "UpdateFilter",
 }));
 export type UpdateFindingsFeedbackError =
   | BadRequestException
@@ -11941,6 +12021,7 @@ export const updateFindingsFeedback: API.OperationMethod<
   input: UpdateFindingsFeedbackRequest,
   output: UpdateFindingsFeedbackResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "UpdateFindingsFeedback",
 }));
 export type UpdateIPSetError =
   | AccessDeniedException
@@ -11963,6 +12044,7 @@ export const updateIPSet: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  operationName: "UpdateIPSet",
 }));
 export type UpdateMalwareProtectionPlanError =
   | AccessDeniedException
@@ -11987,6 +12069,7 @@ export const updateMalwareProtectionPlan: API.OperationMethod<
     InternalServerErrorException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateMalwareProtectionPlan",
 }));
 export type UpdateMalwareScanSettingsError =
   | BadRequestException
@@ -12006,6 +12089,7 @@ export const updateMalwareScanSettings: API.OperationMethod<
   input: UpdateMalwareScanSettingsRequest,
   output: UpdateMalwareScanSettingsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "UpdateMalwareScanSettings",
 }));
 export type UpdateMemberDetectorsError =
   | BadRequestException
@@ -12027,6 +12111,7 @@ export const updateMemberDetectors: API.OperationMethod<
   input: UpdateMemberDetectorsRequest,
   output: UpdateMemberDetectorsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "UpdateMemberDetectors",
 }));
 export type UpdateOrganizationConfigurationError =
   | BadRequestException
@@ -12048,6 +12133,7 @@ export const updateOrganizationConfiguration: API.OperationMethod<
   input: UpdateOrganizationConfigurationRequest,
   output: UpdateOrganizationConfigurationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "UpdateOrganizationConfiguration",
 }));
 export type UpdatePublishingDestinationError =
   | BadRequestException
@@ -12065,6 +12151,7 @@ export const updatePublishingDestination: API.OperationMethod<
   input: UpdatePublishingDestinationRequest,
   output: UpdatePublishingDestinationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "UpdatePublishingDestination",
 }));
 export type UpdateThreatEntitySetError =
   | BadRequestException
@@ -12082,6 +12169,7 @@ export const updateThreatEntitySet: API.OperationMethod<
   input: UpdateThreatEntitySetRequest,
   output: UpdateThreatEntitySetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "UpdateThreatEntitySet",
 }));
 export type UpdateThreatIntelSetError =
   | AccessDeniedException
@@ -12104,6 +12192,7 @@ export const updateThreatIntelSet: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  operationName: "UpdateThreatIntelSet",
 }));
 export type UpdateTrustedEntitySetError =
   | BadRequestException
@@ -12121,4 +12210,5 @@ export const updateTrustedEntitySet: API.OperationMethod<
   input: UpdateTrustedEntitySetRequest,
   output: UpdateTrustedEntitySetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  operationName: "UpdateTrustedEntitySet",
 }));

@@ -651,6 +651,7 @@ export const getClip: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedStreamMediaTypeException,
   ],
+  operationName: "GetClip",
 }));
 export type GetDASHStreamingSessionURLError =
   | ClientLimitExceededException
@@ -805,6 +806,7 @@ export const getDASHStreamingSessionURL: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedStreamMediaTypeException,
   ],
+  operationName: "GetDASHStreamingSessionURL",
 }));
 export type GetHLSStreamingSessionURLError =
   | ClientLimitExceededException
@@ -999,6 +1001,7 @@ export const getHLSStreamingSessionURL: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedStreamMediaTypeException,
   ],
+  operationName: "GetHLSStreamingSessionURL",
 }));
 export type GetImagesError =
   | ClientLimitExceededException
@@ -1041,6 +1044,7 @@ export const getImages: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  operationName: "GetImages",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1098,6 +1102,7 @@ export const getMediaForFragmentList: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  operationName: "GetMediaForFragmentList",
 }));
 export type ListFragmentsError =
   | ClientLimitExceededException
@@ -1166,6 +1171,7 @@ export const listFragments: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  operationName: "ListFragments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

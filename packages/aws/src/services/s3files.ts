@@ -1167,6 +1167,7 @@ export const createAccessPoint: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateAccessPoint",
 }));
 export type CreateFileSystemError =
   | ConflictException
@@ -1193,6 +1194,7 @@ export const createFileSystem: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateFileSystem",
 }));
 export type CreateMountTargetError =
   | ConflictException
@@ -1219,6 +1221,7 @@ export const createMountTarget: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateMountTarget",
 }));
 export type DeleteAccessPointError =
   | ConflictException
@@ -1243,6 +1246,7 @@ export const deleteAccessPoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteAccessPoint",
 }));
 export type DeleteFileSystemError =
   | ConflictException
@@ -1267,6 +1271,7 @@ export const deleteFileSystem: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteFileSystem",
 }));
 export type DeleteFileSystemPolicyError =
   | InternalServerException
@@ -1289,6 +1294,7 @@ export const deleteFileSystemPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteFileSystemPolicy",
 }));
 export type DeleteMountTargetError =
   | ConflictException
@@ -1313,6 +1319,7 @@ export const deleteMountTarget: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteMountTarget",
 }));
 export type GetAccessPointError =
   | InternalServerException
@@ -1335,6 +1342,7 @@ export const getAccessPoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetAccessPoint",
 }));
 export type GetFileSystemError =
   | InternalServerException
@@ -1357,6 +1365,7 @@ export const getFileSystem: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetFileSystem",
 }));
 export type GetFileSystemPolicyError =
   | InternalServerException
@@ -1379,6 +1388,7 @@ export const getFileSystemPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetFileSystemPolicy",
 }));
 export type GetMountTargetError =
   | InternalServerException
@@ -1401,6 +1411,7 @@ export const getMountTarget: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetMountTarget",
 }));
 export type GetSynchronizationConfigurationError =
   | InternalServerException
@@ -1423,6 +1434,7 @@ export const getSynchronizationConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetSynchronizationConfiguration",
 }));
 export type ListAccessPointsError =
   | InternalServerException
@@ -1460,6 +1472,7 @@ export const listAccessPoints: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListAccessPoints",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1498,6 +1511,7 @@ export const listFileSystems: API.OperationMethod<
   input: ListFileSystemsRequest,
   output: ListFileSystemsResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListFileSystems",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1541,6 +1555,7 @@ export const listMountTargets: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListMountTargets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1584,6 +1599,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1612,6 +1628,7 @@ export const putFileSystemPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "PutFileSystemPolicy",
 }));
 export type PutSynchronizationConfigurationError =
   | ConflictException
@@ -1636,6 +1653,7 @@ export const putSynchronizationConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "PutSynchronizationConfiguration",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -1658,6 +1676,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -1680,6 +1699,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateMountTargetError =
   | InternalServerException
@@ -1702,4 +1722,5 @@ export const updateMountTarget: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateMountTarget",
 }));

@@ -1234,6 +1234,7 @@ export const getRecords: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRecords",
 }));
 export type GetShardIteratorError =
   | AccessDeniedException
@@ -1260,6 +1261,7 @@ export const getShardIterator: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetShardIterator",
 }));
 export type GetStreamError =
   | AccessDeniedException
@@ -1301,6 +1303,7 @@ export const getStream: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetStream",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1348,6 +1351,7 @@ export const listStreams: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListStreams",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",

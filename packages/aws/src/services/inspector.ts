@@ -1952,6 +1952,7 @@ export const addAttributesToFindings: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  operationName: "AddAttributesToFindings",
 }));
 export type CreateAssessmentTargetError =
   | AccessDeniedException
@@ -1989,6 +1990,7 @@ export const createAssessmentTarget: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  operationName: "CreateAssessmentTarget",
 }));
 export type CreateAssessmentTemplateError =
   | AccessDeniedException
@@ -2020,6 +2022,7 @@ export const createAssessmentTemplate: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  operationName: "CreateAssessmentTemplate",
 }));
 export type CreateExclusionsPreviewError =
   | AccessDeniedException
@@ -2050,6 +2053,7 @@ export const createExclusionsPreview: API.OperationMethod<
     PreviewGenerationInProgressException,
     ServiceTemporarilyUnavailableException,
   ],
+  operationName: "CreateExclusionsPreview",
 }));
 export type CreateResourceGroupError =
   | AccessDeniedException
@@ -2079,6 +2083,7 @@ export const createResourceGroup: API.OperationMethod<
     LimitExceededException,
     ServiceTemporarilyUnavailableException,
   ],
+  operationName: "CreateResourceGroup",
 }));
 export type DeleteAssessmentRunError =
   | AccessDeniedException
@@ -2108,6 +2113,7 @@ export const deleteAssessmentRun: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  operationName: "DeleteAssessmentRun",
 }));
 export type DeleteAssessmentTargetError =
   | AccessDeniedException
@@ -2137,6 +2143,7 @@ export const deleteAssessmentTarget: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  operationName: "DeleteAssessmentTarget",
 }));
 export type DeleteAssessmentTemplateError =
   | AccessDeniedException
@@ -2166,6 +2173,7 @@ export const deleteAssessmentTemplate: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  operationName: "DeleteAssessmentTemplate",
 }));
 export type DescribeAssessmentRunsError =
   | InternalException
@@ -2184,6 +2192,7 @@ export const describeAssessmentRuns: API.OperationMethod<
   input: DescribeAssessmentRunsRequest,
   output: DescribeAssessmentRunsResponse,
   errors: [InternalException, InvalidInputException],
+  operationName: "DescribeAssessmentRuns",
 }));
 export type DescribeAssessmentTargetsError =
   | InternalException
@@ -2202,6 +2211,7 @@ export const describeAssessmentTargets: API.OperationMethod<
   input: DescribeAssessmentTargetsRequest,
   output: DescribeAssessmentTargetsResponse,
   errors: [InternalException, InvalidInputException],
+  operationName: "DescribeAssessmentTargets",
 }));
 export type DescribeAssessmentTemplatesError =
   | InternalException
@@ -2220,6 +2230,7 @@ export const describeAssessmentTemplates: API.OperationMethod<
   input: DescribeAssessmentTemplatesRequest,
   output: DescribeAssessmentTemplatesResponse,
   errors: [InternalException, InvalidInputException],
+  operationName: "DescribeAssessmentTemplates",
 }));
 export type DescribeCrossAccountAccessRoleError =
   | InternalException
@@ -2237,6 +2248,7 @@ export const describeCrossAccountAccessRole: API.OperationMethod<
   input: DescribeCrossAccountAccessRoleRequest,
   output: DescribeCrossAccountAccessRoleResponse,
   errors: [InternalException],
+  operationName: "DescribeCrossAccountAccessRole",
 }));
 export type DescribeExclusionsError =
   | InternalException
@@ -2254,6 +2266,7 @@ export const describeExclusions: API.OperationMethod<
   input: DescribeExclusionsRequest,
   output: DescribeExclusionsResponse,
   errors: [InternalException, InvalidInputException],
+  operationName: "DescribeExclusions",
 }));
 export type DescribeFindingsError =
   | InternalException
@@ -2271,6 +2284,7 @@ export const describeFindings: API.OperationMethod<
   input: DescribeFindingsRequest,
   output: DescribeFindingsResponse,
   errors: [InternalException, InvalidInputException],
+  operationName: "DescribeFindings",
 }));
 export type DescribeResourceGroupsError =
   | InternalException
@@ -2289,6 +2303,7 @@ export const describeResourceGroups: API.OperationMethod<
   input: DescribeResourceGroupsRequest,
   output: DescribeResourceGroupsResponse,
   errors: [InternalException, InvalidInputException],
+  operationName: "DescribeResourceGroups",
 }));
 export type DescribeRulesPackagesError =
   | InternalException
@@ -2307,6 +2322,7 @@ export const describeRulesPackages: API.OperationMethod<
   input: DescribeRulesPackagesRequest,
   output: DescribeRulesPackagesResponse,
   errors: [InternalException, InvalidInputException],
+  operationName: "DescribeRulesPackages",
 }));
 export type GetAssessmentReportError =
   | AccessDeniedException
@@ -2338,6 +2354,7 @@ export const getAssessmentReport: API.OperationMethod<
     ServiceTemporarilyUnavailableException,
     UnsupportedFeatureException,
   ],
+  operationName: "GetAssessmentReport",
 }));
 export type GetExclusionsPreviewError =
   | AccessDeniedException
@@ -2379,6 +2396,7 @@ export const getExclusionsPreview: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  operationName: "GetExclusionsPreview",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2409,6 +2427,7 @@ export const getTelemetryMetadata: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  operationName: "GetTelemetryMetadata",
 }));
 export type ListAssessmentRunAgentsError =
   | AccessDeniedException
@@ -2449,6 +2468,7 @@ export const listAssessmentRunAgents: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  operationName: "ListAssessmentRunAgents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2494,6 +2514,7 @@ export const listAssessmentRuns: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  operationName: "ListAssessmentRuns",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2534,6 +2555,7 @@ export const listAssessmentTargets: API.OperationMethod<
   input: ListAssessmentTargetsRequest,
   output: ListAssessmentTargetsResponse,
   errors: [AccessDeniedException, InternalException, InvalidInputException],
+  operationName: "ListAssessmentTargets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2579,6 +2601,7 @@ export const listAssessmentTemplates: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  operationName: "ListAssessmentTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2624,6 +2647,7 @@ export const listEventSubscriptions: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  operationName: "ListEventSubscriptions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2668,6 +2692,7 @@ export const listExclusions: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  operationName: "ListExclusions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2713,6 +2738,7 @@ export const listFindings: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  operationName: "ListFindings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2751,6 +2777,7 @@ export const listRulesPackages: API.OperationMethod<
   input: ListRulesPackagesRequest,
   output: ListRulesPackagesResponse,
   errors: [AccessDeniedException, InternalException, InvalidInputException],
+  operationName: "ListRulesPackages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2780,6 +2807,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PreviewAgentsError =
   | AccessDeniedException
@@ -2822,6 +2850,7 @@ export const previewAgents: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  operationName: "PreviewAgents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2854,6 +2883,7 @@ export const registerCrossAccountAccessRole: API.OperationMethod<
     InvalidInputException,
     ServiceTemporarilyUnavailableException,
   ],
+  operationName: "RegisterCrossAccountAccessRole",
 }));
 export type RemoveAttributesFromFindingsError =
   | AccessDeniedException
@@ -2881,6 +2911,7 @@ export const removeAttributesFromFindings: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  operationName: "RemoveAttributesFromFindings",
 }));
 export type SetTagsForResourceError =
   | AccessDeniedException
@@ -2908,6 +2939,7 @@ export const setTagsForResource: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  operationName: "SetTagsForResource",
 }));
 export type StartAssessmentRunError =
   | AccessDeniedException
@@ -2942,6 +2974,7 @@ export const startAssessmentRun: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  operationName: "StartAssessmentRun",
 }));
 export type StopAssessmentRunError =
   | AccessDeniedException
@@ -2969,6 +3002,7 @@ export const stopAssessmentRun: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  operationName: "StopAssessmentRun",
 }));
 export type SubscribeToEventError =
   | AccessDeniedException
@@ -2998,6 +3032,7 @@ export const subscribeToEvent: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  operationName: "SubscribeToEvent",
 }));
 export type UnsubscribeFromEventError =
   | AccessDeniedException
@@ -3025,6 +3060,7 @@ export const unsubscribeFromEvent: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  operationName: "UnsubscribeFromEvent",
 }));
 export type UpdateAssessmentTargetError =
   | AccessDeniedException
@@ -3055,4 +3091,5 @@ export const updateAssessmentTarget: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  operationName: "UpdateAssessmentTarget",
 }));

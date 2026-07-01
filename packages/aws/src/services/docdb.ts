@@ -3590,6 +3590,7 @@ export const addSourceIdentifierToSubscription: API.OperationMethod<
   input: AddSourceIdentifierToSubscriptionMessage,
   output: AddSourceIdentifierToSubscriptionResult,
   errors: [SourceNotFoundFault, SubscriptionNotFoundFault],
+  operationName: "AddSourceIdentifierToSubscription",
 }));
 export type AddTagsToResourceError =
   | DBClusterNotFoundFault
@@ -3615,6 +3616,7 @@ export const addTagsToResource: API.OperationMethod<
     DBInstanceNotFoundFault,
     DBSnapshotNotFoundFault,
   ],
+  operationName: "AddTagsToResource",
 }));
 export type ApplyPendingMaintenanceActionError =
   | InvalidDBClusterStateFault
@@ -3638,6 +3640,7 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
     InvalidDBInstanceStateFault,
     ResourceNotFoundFault,
   ],
+  operationName: "ApplyPendingMaintenanceAction",
 }));
 export type CopyDBClusterParameterGroupError =
   | DBParameterGroupAlreadyExistsFault
@@ -3660,6 +3663,7 @@ export const copyDBClusterParameterGroup: API.OperationMethod<
     DBParameterGroupNotFoundFault,
     DBParameterGroupQuotaExceededFault,
   ],
+  operationName: "CopyDBClusterParameterGroup",
 }));
 export type CopyDBClusterSnapshotError =
   | DBClusterSnapshotAlreadyExistsFault
@@ -3699,6 +3703,7 @@ export const copyDBClusterSnapshot: API.OperationMethod<
     KMSKeyNotAccessibleFault,
     SnapshotQuotaExceededFault,
   ],
+  operationName: "CopyDBClusterSnapshot",
 }));
 export type CreateDBClusterError =
   | DBClusterAlreadyExistsFault
@@ -3751,6 +3756,7 @@ export const createDBCluster: API.OperationMethod<
     NetworkTypeNotSupported,
     StorageQuotaExceededFault,
   ],
+  operationName: "CreateDBCluster",
 }));
 export type CreateDBClusterParameterGroupError =
   | DBParameterGroupAlreadyExistsFault
@@ -3790,6 +3796,7 @@ export const createDBClusterParameterGroup: API.OperationMethod<
     DBParameterGroupAlreadyExistsFault,
     DBParameterGroupQuotaExceededFault,
   ],
+  operationName: "CreateDBClusterParameterGroup",
 }));
 export type CreateDBClusterSnapshotError =
   | DBClusterNotFoundFault
@@ -3816,6 +3823,7 @@ export const createDBClusterSnapshot: API.OperationMethod<
     InvalidDBClusterStateFault,
     SnapshotQuotaExceededFault,
   ],
+  operationName: "CreateDBClusterSnapshot",
 }));
 export type CreateDBInstanceError =
   | AuthorizationNotFoundFault
@@ -3862,6 +3870,7 @@ export const createDBInstance: API.OperationMethod<
     StorageQuotaExceededFault,
     StorageTypeNotSupportedFault,
   ],
+  operationName: "CreateDBInstance",
 }));
 export type CreateDBSubnetGroupError =
   | DBSubnetGroupAlreadyExistsFault
@@ -3889,6 +3898,7 @@ export const createDBSubnetGroup: API.OperationMethod<
     DBSubnetQuotaExceededFault,
     InvalidSubnet,
   ],
+  operationName: "CreateDBSubnetGroup",
 }));
 export type CreateEventSubscriptionError =
   | EventSubscriptionQuotaExceededFault
@@ -3923,6 +3933,7 @@ export const createEventSubscription: API.OperationMethod<
     SubscriptionAlreadyExistFault,
     SubscriptionCategoryNotFoundFault,
   ],
+  operationName: "CreateEventSubscription",
 }));
 export type CreateGlobalClusterError =
   | DBClusterNotFoundFault
@@ -3953,6 +3964,7 @@ export const createGlobalCluster: API.OperationMethod<
     GlobalClusterQuotaExceededFault,
     InvalidDBClusterStateFault,
   ],
+  operationName: "CreateGlobalCluster",
 }));
 export type DeleteDBClusterError =
   | DBClusterNotFoundFault
@@ -3979,6 +3991,7 @@ export const deleteDBCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     SnapshotQuotaExceededFault,
   ],
+  operationName: "DeleteDBCluster",
 }));
 export type DeleteDBClusterParameterGroupError =
   | DBParameterGroupNotFoundFault
@@ -3996,6 +4009,7 @@ export const deleteDBClusterParameterGroup: API.OperationMethod<
   input: DeleteDBClusterParameterGroupMessage,
   output: DeleteDBClusterParameterGroupResponse,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
+  operationName: "DeleteDBClusterParameterGroup",
 }));
 export type DeleteDBClusterSnapshotError =
   | DBClusterSnapshotNotFoundFault
@@ -4015,6 +4029,7 @@ export const deleteDBClusterSnapshot: API.OperationMethod<
   input: DeleteDBClusterSnapshotMessage,
   output: DeleteDBClusterSnapshotResult,
   errors: [DBClusterSnapshotNotFoundFault, InvalidDBClusterSnapshotStateFault],
+  operationName: "DeleteDBClusterSnapshot",
 }));
 export type DeleteDBInstanceError =
   | DBInstanceNotFoundFault
@@ -4041,6 +4056,7 @@ export const deleteDBInstance: API.OperationMethod<
     InvalidDBInstanceStateFault,
     SnapshotQuotaExceededFault,
   ],
+  operationName: "DeleteDBInstance",
 }));
 export type DeleteDBSubnetGroupError =
   | DBSubnetGroupNotFoundFault
@@ -4066,6 +4082,7 @@ export const deleteDBSubnetGroup: API.OperationMethod<
     InvalidDBSubnetGroupStateFault,
     InvalidDBSubnetStateFault,
   ],
+  operationName: "DeleteDBSubnetGroup",
 }));
 export type DeleteEventSubscriptionError =
   | InvalidEventSubscriptionStateFault
@@ -4083,6 +4100,7 @@ export const deleteEventSubscription: API.OperationMethod<
   input: DeleteEventSubscriptionMessage,
   output: DeleteEventSubscriptionResult,
   errors: [InvalidEventSubscriptionStateFault, SubscriptionNotFoundFault],
+  operationName: "DeleteEventSubscription",
 }));
 export type DeleteGlobalClusterError =
   | GlobalClusterNotFoundFault
@@ -4102,6 +4120,7 @@ export const deleteGlobalCluster: API.OperationMethod<
   input: DeleteGlobalClusterMessage,
   output: DeleteGlobalClusterResult,
   errors: [GlobalClusterNotFoundFault, InvalidGlobalClusterStateFault],
+  operationName: "DeleteGlobalCluster",
 }));
 export type DescribeCertificatesError = CertificateNotFoundFault | CommonErrors;
 /**
@@ -4131,6 +4150,7 @@ export const describeCertificates: API.OperationMethod<
   input: DescribeCertificatesMessage,
   output: CertificateMessage,
   errors: [CertificateNotFoundFault],
+  operationName: "DescribeCertificates",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -4168,6 +4188,7 @@ export const describeDBClusterParameterGroups: API.OperationMethod<
   input: DescribeDBClusterParameterGroupsMessage,
   output: DBClusterParameterGroupsMessage,
   errors: [DBParameterGroupNotFoundFault],
+  operationName: "DescribeDBClusterParameterGroups",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -4206,6 +4227,7 @@ export const describeDBClusterParameters: API.OperationMethod<
   input: DescribeDBClusterParametersMessage,
   output: DBClusterParameterGroupDetails,
   errors: [DBParameterGroupNotFoundFault],
+  operationName: "DescribeDBClusterParameters",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -4246,6 +4268,7 @@ export const describeDBClusters: API.OperationMethod<
   input: DescribeDBClustersMessage,
   output: DBClusterMessage,
   errors: [DBClusterNotFoundFault],
+  operationName: "DescribeDBClusters",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -4272,6 +4295,7 @@ export const describeDBClusterSnapshotAttributes: API.OperationMethod<
   input: DescribeDBClusterSnapshotAttributesMessage,
   output: DescribeDBClusterSnapshotAttributesResult,
   errors: [DBClusterSnapshotNotFoundFault],
+  operationName: "DescribeDBClusterSnapshotAttributes",
 }));
 export type DescribeDBClusterSnapshotsError =
   | DBClusterSnapshotNotFoundFault
@@ -4303,6 +4327,7 @@ export const describeDBClusterSnapshots: API.OperationMethod<
   input: DescribeDBClusterSnapshotsMessage,
   output: DBClusterSnapshotMessage,
   errors: [DBClusterSnapshotNotFoundFault],
+  operationName: "DescribeDBClusterSnapshots",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -4338,6 +4363,7 @@ export const describeDBEngineVersions: API.OperationMethod<
   input: DescribeDBEngineVersionsMessage,
   output: DBEngineVersionMessage,
   errors: [],
+  operationName: "DescribeDBEngineVersions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -4373,6 +4399,7 @@ export const describeDBInstances: API.OperationMethod<
   input: DescribeDBInstancesMessage,
   output: DBInstanceMessage,
   errors: [DBInstanceNotFoundFault],
+  operationName: "DescribeDBInstances",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -4411,6 +4438,7 @@ export const describeDBSubnetGroups: API.OperationMethod<
   input: DescribeDBSubnetGroupsMessage,
   output: DBSubnetGroupMessage,
   errors: [DBSubnetGroupNotFoundFault],
+  operationName: "DescribeDBSubnetGroups",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -4432,6 +4460,7 @@ export const describeEngineDefaultClusterParameters: API.OperationMethod<
   input: DescribeEngineDefaultClusterParametersMessage,
   output: DescribeEngineDefaultClusterParametersResult,
   errors: [],
+  operationName: "DescribeEngineDefaultClusterParameters",
 }));
 export type DescribeEventCategoriesError = CommonErrors;
 /**
@@ -4447,6 +4476,7 @@ export const describeEventCategories: API.OperationMethod<
   input: DescribeEventCategoriesMessage,
   output: EventCategoriesMessage,
   errors: [],
+  operationName: "DescribeEventCategories",
 }));
 export type DescribeEventsError = CommonErrors;
 /**
@@ -4476,6 +4506,7 @@ export const describeEvents: API.OperationMethod<
   input: DescribeEventsMessage,
   output: EventsMessage,
   errors: [],
+  operationName: "DescribeEvents",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -4515,6 +4546,7 @@ export const describeEventSubscriptions: API.OperationMethod<
   input: DescribeEventSubscriptionsMessage,
   output: EventSubscriptionsMessage,
   errors: [SubscriptionNotFoundFault],
+  operationName: "DescribeEventSubscriptions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -4554,6 +4586,7 @@ export const describeGlobalClusters: API.OperationMethod<
   input: DescribeGlobalClustersMessage,
   output: GlobalClustersMessage,
   errors: [GlobalClusterNotFoundFault],
+  operationName: "DescribeGlobalClusters",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -4589,6 +4622,7 @@ export const describeOrderableDBInstanceOptions: API.OperationMethod<
   input: DescribeOrderableDBInstanceOptionsMessage,
   output: OrderableDBInstanceOptionsMessage,
   errors: [],
+  operationName: "DescribeOrderableDBInstanceOptions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -4627,6 +4661,7 @@ export const describePendingMaintenanceActions: API.OperationMethod<
   input: DescribePendingMaintenanceActionsMessage,
   output: PendingMaintenanceActionsMessage,
   errors: [ResourceNotFoundFault],
+  operationName: "DescribePendingMaintenanceActions",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -4659,6 +4694,7 @@ export const failoverDBCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     InvalidDBInstanceStateFault,
   ],
+  operationName: "FailoverDBCluster",
 }));
 export type FailoverGlobalClusterError =
   | DBClusterNotFoundFault
@@ -4687,6 +4723,7 @@ export const failoverGlobalCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     InvalidGlobalClusterStateFault,
   ],
+  operationName: "FailoverGlobalCluster",
 }));
 export type ListTagsForResourceError =
   | DBClusterNotFoundFault
@@ -4709,6 +4746,7 @@ export const listTagsForResource: API.OperationMethod<
     DBInstanceNotFoundFault,
     DBSnapshotNotFoundFault,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ModifyDBClusterError =
   | DBClusterAlreadyExistsFault
@@ -4751,6 +4789,7 @@ export const modifyDBCluster: API.OperationMethod<
     NetworkTypeNotSupported,
     StorageQuotaExceededFault,
   ],
+  operationName: "ModifyDBCluster",
 }));
 export type ModifyDBClusterParameterGroupError =
   | DBParameterGroupNotFoundFault
@@ -4784,6 +4823,7 @@ export const modifyDBClusterParameterGroup: API.OperationMethod<
   input: ModifyDBClusterParameterGroupMessage,
   output: DBClusterParameterGroupNameMessage,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
+  operationName: "ModifyDBClusterParameterGroup",
 }));
 export type ModifyDBClusterSnapshotAttributeError =
   | DBClusterSnapshotNotFoundFault
@@ -4808,6 +4848,7 @@ export const modifyDBClusterSnapshotAttribute: API.OperationMethod<
     InvalidDBClusterSnapshotStateFault,
     SharedSnapshotQuotaExceededFault,
   ],
+  operationName: "ModifyDBClusterSnapshotAttribute",
 }));
 export type ModifyDBInstanceError =
   | AuthorizationNotFoundFault
@@ -4850,6 +4891,7 @@ export const modifyDBInstance: API.OperationMethod<
     StorageQuotaExceededFault,
     StorageTypeNotSupportedFault,
   ],
+  operationName: "ModifyDBInstance",
 }));
 export type ModifyDBSubnetGroupError =
   | DBSubnetGroupDoesNotCoverEnoughAZs
@@ -4876,6 +4918,7 @@ export const modifyDBSubnetGroup: API.OperationMethod<
     InvalidSubnet,
     SubnetAlreadyInUse,
   ],
+  operationName: "ModifyDBSubnetGroup",
 }));
 export type ModifyEventSubscriptionError =
   | EventSubscriptionQuotaExceededFault
@@ -4904,6 +4947,7 @@ export const modifyEventSubscription: API.OperationMethod<
     SubscriptionCategoryNotFoundFault,
     SubscriptionNotFoundFault,
   ],
+  operationName: "ModifyEventSubscription",
 }));
 export type ModifyGlobalClusterError =
   | GlobalClusterNotFoundFault
@@ -4923,6 +4967,7 @@ export const modifyGlobalCluster: API.OperationMethod<
   input: ModifyGlobalClusterMessage,
   output: ModifyGlobalClusterResult,
   errors: [GlobalClusterNotFoundFault, InvalidGlobalClusterStateFault],
+  operationName: "ModifyGlobalCluster",
 }));
 export type RebootDBInstanceError =
   | DBInstanceNotFoundFault
@@ -4947,6 +4992,7 @@ export const rebootDBInstance: API.OperationMethod<
   input: RebootDBInstanceMessage,
   output: RebootDBInstanceResult,
   errors: [DBInstanceNotFoundFault, InvalidDBInstanceStateFault],
+  operationName: "RebootDBInstance",
 }));
 export type RemoveFromGlobalClusterError =
   | DBClusterNotFoundFault
@@ -4971,6 +5017,7 @@ export const removeFromGlobalCluster: API.OperationMethod<
     GlobalClusterNotFoundFault,
     InvalidGlobalClusterStateFault,
   ],
+  operationName: "RemoveFromGlobalCluster",
 }));
 export type RemoveSourceIdentifierFromSubscriptionError =
   | SourceNotFoundFault
@@ -4989,6 +5036,7 @@ export const removeSourceIdentifierFromSubscription: API.OperationMethod<
   input: RemoveSourceIdentifierFromSubscriptionMessage,
   output: RemoveSourceIdentifierFromSubscriptionResult,
   errors: [SourceNotFoundFault, SubscriptionNotFoundFault],
+  operationName: "RemoveSourceIdentifierFromSubscription",
 }));
 export type RemoveTagsFromResourceError =
   | DBClusterNotFoundFault
@@ -5011,6 +5059,7 @@ export const removeTagsFromResource: API.OperationMethod<
     DBInstanceNotFoundFault,
     DBSnapshotNotFoundFault,
   ],
+  operationName: "RemoveTagsFromResource",
 }));
 export type ResetDBClusterParameterGroupError =
   | DBParameterGroupNotFoundFault
@@ -5036,6 +5085,7 @@ export const resetDBClusterParameterGroup: API.OperationMethod<
   input: ResetDBClusterParameterGroupMessage,
   output: DBClusterParameterGroupNameMessage,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
+  operationName: "ResetDBClusterParameterGroup",
 }));
 export type RestoreDBClusterFromSnapshotError =
   | DBClusterAlreadyExistsFault
@@ -5086,6 +5136,7 @@ export const restoreDBClusterFromSnapshot: API.OperationMethod<
     NetworkTypeNotSupported,
     StorageQuotaExceededFault,
   ],
+  operationName: "RestoreDBClusterFromSnapshot",
 }));
 export type RestoreDBClusterToPointInTimeError =
   | DBClusterAlreadyExistsFault
@@ -5138,6 +5189,7 @@ export const restoreDBClusterToPointInTime: API.OperationMethod<
     NetworkTypeNotSupported,
     StorageQuotaExceededFault,
   ],
+  operationName: "RestoreDBClusterToPointInTime",
 }));
 export type StartDBClusterError =
   | DBClusterNotFoundFault
@@ -5162,6 +5214,7 @@ export const startDBCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     InvalidDBInstanceStateFault,
   ],
+  operationName: "StartDBCluster",
 }));
 export type StopDBClusterError =
   | DBClusterNotFoundFault
@@ -5187,6 +5240,7 @@ export const stopDBCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     InvalidDBInstanceStateFault,
   ],
+  operationName: "StopDBCluster",
 }));
 export type SwitchoverGlobalClusterError =
   | DBClusterNotFoundFault
@@ -5211,4 +5265,5 @@ export const switchoverGlobalCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     InvalidGlobalClusterStateFault,
   ],
+  operationName: "SwitchoverGlobalCluster",
 }));

@@ -1614,6 +1614,7 @@ export const configureLogs: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "ConfigureLogs",
 }));
 export type CreateAssetError =
   | ForbiddenException
@@ -1642,6 +1643,7 @@ export const createAsset: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "CreateAsset",
 }));
 export type CreatePackagingConfigurationError =
   | ForbiddenException
@@ -1670,6 +1672,7 @@ export const createPackagingConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "CreatePackagingConfiguration",
 }));
 export type CreatePackagingGroupError =
   | ForbiddenException
@@ -1698,6 +1701,7 @@ export const createPackagingGroup: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "CreatePackagingGroup",
 }));
 export type DeleteAssetError =
   | ForbiddenException
@@ -1726,6 +1730,7 @@ export const deleteAsset: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "DeleteAsset",
 }));
 export type DeletePackagingConfigurationError =
   | ForbiddenException
@@ -1754,6 +1759,7 @@ export const deletePackagingConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "DeletePackagingConfiguration",
 }));
 export type DeletePackagingGroupError =
   | ForbiddenException
@@ -1782,6 +1788,7 @@ export const deletePackagingGroup: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "DeletePackagingGroup",
 }));
 export type DescribeAssetError =
   | ForbiddenException
@@ -1810,6 +1817,7 @@ export const describeAsset: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "DescribeAsset",
 }));
 export type DescribePackagingConfigurationError =
   | ForbiddenException
@@ -1838,6 +1846,7 @@ export const describePackagingConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "DescribePackagingConfiguration",
 }));
 export type DescribePackagingGroupError =
   | ForbiddenException
@@ -1866,6 +1875,7 @@ export const describePackagingGroup: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "DescribePackagingGroup",
 }));
 export type ListAssetsError =
   | ForbiddenException
@@ -1909,6 +1919,7 @@ export const listAssets: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "ListAssets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1958,6 +1969,7 @@ export const listPackagingConfigurations: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "ListPackagingConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2007,6 +2019,7 @@ export const listPackagingGroups: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "ListPackagingGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2027,6 +2040,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError = CommonErrors;
 /**
@@ -2041,6 +2055,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = CommonErrors;
 /**
@@ -2055,6 +2070,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
+  operationName: "UntagResource",
 }));
 export type UpdatePackagingGroupError =
   | ForbiddenException
@@ -2083,4 +2099,5 @@ export const updatePackagingGroup: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "UpdatePackagingGroup",
 }));

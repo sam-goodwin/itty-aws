@@ -3788,6 +3788,7 @@ export const cancelComponentDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelComponentDeployment",
 }));
 export type CancelEnvironmentDeploymentError =
   | AccessDeniedException
@@ -3827,6 +3828,7 @@ export const cancelEnvironmentDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelEnvironmentDeployment",
 }));
 export type CancelServiceInstanceDeploymentError =
   | AccessDeniedException
@@ -3869,6 +3871,7 @@ export const cancelServiceInstanceDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelServiceInstanceDeployment",
 }));
 export type CancelServicePipelineDeploymentError =
   | AccessDeniedException
@@ -3911,6 +3914,7 @@ export const cancelServicePipelineDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelServicePipelineDeployment",
 }));
 export type GetRepositorySyncStatusError =
   | AccessDeniedException
@@ -3944,6 +3948,7 @@ export const getRepositorySyncStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRepositorySyncStatus",
 }));
 export type GetResourcesSummaryError =
   | AccessDeniedException
@@ -3981,6 +3986,7 @@ export const getResourcesSummary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourcesSummary",
 }));
 export type GetServiceInstanceSyncStatusError =
   | AccessDeniedException
@@ -4007,6 +4013,7 @@ export const getServiceInstanceSyncStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetServiceInstanceSyncStatus",
 }));
 export type GetTemplateSyncStatusError =
   | AccessDeniedException
@@ -4033,6 +4040,7 @@ export const getTemplateSyncStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTemplateSyncStatus",
 }));
 export type ListRepositorySyncDefinitionsError =
   | AccessDeniedException
@@ -4072,6 +4080,7 @@ export const listRepositorySyncDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRepositorySyncDefinitions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4119,6 +4128,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4157,6 +4167,7 @@ export const notifyResourceDeploymentStatusChange: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "NotifyResourceDeploymentStatusChange",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -4188,6 +4199,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -4219,6 +4231,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type GetAccountSettingsError =
   | AccessDeniedException
@@ -4245,6 +4258,7 @@ export const getAccountSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAccountSettings",
 }));
 export type UpdateAccountSettingsError =
   | AccessDeniedException
@@ -4271,6 +4285,7 @@ export const updateAccountSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAccountSettings",
 }));
 export type ListComponentOutputsError =
   | AccessDeniedException
@@ -4316,6 +4331,7 @@ export const listComponentOutputs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListComponentOutputs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4366,6 +4382,7 @@ export const listComponentProvisionedResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListComponentProvisionedResources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4405,6 +4422,7 @@ export const createComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateComponent",
 }));
 export type GetComponentError =
   | AccessDeniedException
@@ -4435,6 +4453,7 @@ export const getComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetComponent",
 }));
 export type UpdateComponentError =
   | AccessDeniedException
@@ -4474,6 +4493,7 @@ export const updateComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateComponent",
 }));
 export type DeleteComponentError =
   | AccessDeniedException
@@ -4506,6 +4526,7 @@ export const deleteComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteComponent",
 }));
 export type ListComponentsError =
   | AccessDeniedException
@@ -4549,6 +4570,7 @@ export const listComponents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListComponents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4581,6 +4603,7 @@ export const getDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDeployment",
 }));
 export type DeleteDeploymentError =
   | AccessDeniedException
@@ -4607,6 +4630,7 @@ export const deleteDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDeployment",
 }));
 export type ListDeploymentsError =
   | AccessDeniedException
@@ -4648,6 +4672,7 @@ export const listDeployments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDeployments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4687,6 +4712,7 @@ export const createEnvironmentAccountConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEnvironmentAccountConnection",
 }));
 export type GetEnvironmentAccountConnectionError =
   | AccessDeniedException
@@ -4716,6 +4742,7 @@ export const getEnvironmentAccountConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEnvironmentAccountConnection",
 }));
 export type UpdateEnvironmentAccountConnectionError =
   | AccessDeniedException
@@ -4747,6 +4774,7 @@ export const updateEnvironmentAccountConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateEnvironmentAccountConnection",
 }));
 export type DeleteEnvironmentAccountConnectionError =
   | AccessDeniedException
@@ -4782,6 +4810,7 @@ export const deleteEnvironmentAccountConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteEnvironmentAccountConnection",
 }));
 export type ListEnvironmentAccountConnectionsError =
   | AccessDeniedException
@@ -4824,6 +4853,7 @@ export const listEnvironmentAccountConnections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEnvironmentAccountConnections",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4862,6 +4892,7 @@ export const acceptEnvironmentAccountConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AcceptEnvironmentAccountConnection",
 }));
 export type RejectEnvironmentAccountConnectionError =
   | AccessDeniedException
@@ -4898,6 +4929,7 @@ export const rejectEnvironmentAccountConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "RejectEnvironmentAccountConnection",
 }));
 export type ListEnvironmentOutputsError =
   | AccessDeniedException
@@ -4939,6 +4971,7 @@ export const listEnvironmentOutputs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEnvironmentOutputs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4985,6 +5018,7 @@ export const listEnvironmentProvisionedResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEnvironmentProvisionedResources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5031,6 +5065,7 @@ export const createEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEnvironment",
 }));
 export type GetEnvironmentError =
   | AccessDeniedException
@@ -5057,6 +5092,7 @@ export const getEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEnvironment",
 }));
 export type UpdateEnvironmentError =
   | AccessDeniedException
@@ -5127,6 +5163,7 @@ export const updateEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateEnvironment",
 }));
 export type DeleteEnvironmentError =
   | AccessDeniedException
@@ -5155,6 +5192,7 @@ export const deleteEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteEnvironment",
 }));
 export type ListEnvironmentsError =
   | AccessDeniedException
@@ -5196,6 +5234,7 @@ export const listEnvironments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEnvironments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5241,6 +5280,7 @@ export const createEnvironmentTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEnvironmentTemplate",
 }));
 export type GetEnvironmentTemplateError =
   | AccessDeniedException
@@ -5267,6 +5307,7 @@ export const getEnvironmentTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEnvironmentTemplate",
 }));
 export type UpdateEnvironmentTemplateError =
   | AccessDeniedException
@@ -5295,6 +5336,7 @@ export const updateEnvironmentTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateEnvironmentTemplate",
 }));
 export type DeleteEnvironmentTemplateError =
   | AccessDeniedException
@@ -5323,6 +5365,7 @@ export const deleteEnvironmentTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteEnvironmentTemplate",
 }));
 export type ListEnvironmentTemplatesError =
   | AccessDeniedException
@@ -5362,6 +5405,7 @@ export const listEnvironmentTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEnvironmentTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5400,6 +5444,7 @@ export const createEnvironmentTemplateVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateEnvironmentTemplateVersion",
 }));
 export type GetEnvironmentTemplateVersionError =
   | AccessDeniedException
@@ -5426,6 +5471,7 @@ export const getEnvironmentTemplateVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetEnvironmentTemplateVersion",
 }));
 export type UpdateEnvironmentTemplateVersionError =
   | AccessDeniedException
@@ -5454,6 +5500,7 @@ export const updateEnvironmentTemplateVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateEnvironmentTemplateVersion",
 }));
 export type DeleteEnvironmentTemplateVersionError =
   | AccessDeniedException
@@ -5488,6 +5535,7 @@ export const deleteEnvironmentTemplateVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteEnvironmentTemplateVersion",
 }));
 export type ListEnvironmentTemplateVersionsError =
   | AccessDeniedException
@@ -5529,6 +5577,7 @@ export const listEnvironmentTemplateVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListEnvironmentTemplateVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5569,6 +5618,7 @@ export const createRepository: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRepository",
 }));
 export type GetRepositoryError =
   | AccessDeniedException
@@ -5595,6 +5645,7 @@ export const getRepository: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetRepository",
 }));
 export type DeleteRepositoryError =
   | AccessDeniedException
@@ -5623,6 +5674,7 @@ export const deleteRepository: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRepository",
 }));
 export type ListRepositoriesError =
   | AccessDeniedException
@@ -5664,6 +5716,7 @@ export const listRepositories: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRepositories",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5711,6 +5764,7 @@ export const listServiceInstanceOutputs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListServiceInstanceOutputs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5757,6 +5811,7 @@ export const listServiceInstanceProvisionedResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListServiceInstanceProvisionedResources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5790,6 +5845,7 @@ export const createServiceInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateServiceInstance",
 }));
 export type GetServiceInstanceError =
   | AccessDeniedException
@@ -5817,6 +5873,7 @@ export const getServiceInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetServiceInstance",
 }));
 export type UpdateServiceInstanceError =
   | AccessDeniedException
@@ -5855,6 +5912,7 @@ export const updateServiceInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateServiceInstance",
 }));
 export type ListServiceInstancesError =
   | AccessDeniedException
@@ -5897,6 +5955,7 @@ export const listServiceInstances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListServiceInstances",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5944,6 +6003,7 @@ export const listServicePipelineOutputs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListServicePipelineOutputs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5990,6 +6050,7 @@ export const listServicePipelineProvisionedResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListServicePipelineProvisionedResources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6050,6 +6111,7 @@ export const updateServicePipeline: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateServicePipeline",
 }));
 export type CreateServiceError =
   | AccessDeniedException
@@ -6083,6 +6145,7 @@ export const createService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateService",
 }));
 export type GetServiceError =
   | AccessDeniedException
@@ -6109,6 +6172,7 @@ export const getService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetService",
 }));
 export type UpdateServiceError =
   | AccessDeniedException
@@ -6153,6 +6217,7 @@ export const updateService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateService",
 }));
 export type DeleteServiceError =
   | AccessDeniedException
@@ -6188,6 +6253,7 @@ export const deleteService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteService",
 }));
 export type ListServicesError =
   | AccessDeniedException
@@ -6227,6 +6293,7 @@ export const listServices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListServices",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6259,6 +6326,7 @@ export const getServiceSyncBlockerSummary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetServiceSyncBlockerSummary",
 }));
 export type UpdateServiceSyncBlockerError =
   | AccessDeniedException
@@ -6287,6 +6355,7 @@ export const updateServiceSyncBlocker: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateServiceSyncBlocker",
 }));
 export type CreateServiceSyncConfigError =
   | AccessDeniedException
@@ -6315,6 +6384,7 @@ export const createServiceSyncConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateServiceSyncConfig",
 }));
 export type GetServiceSyncConfigError =
   | AccessDeniedException
@@ -6341,6 +6411,7 @@ export const getServiceSyncConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetServiceSyncConfig",
 }));
 export type UpdateServiceSyncConfigError =
   | AccessDeniedException
@@ -6369,6 +6440,7 @@ export const updateServiceSyncConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateServiceSyncConfig",
 }));
 export type DeleteServiceSyncConfigError =
   | AccessDeniedException
@@ -6397,6 +6469,7 @@ export const deleteServiceSyncConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteServiceSyncConfig",
 }));
 export type CreateServiceTemplateError =
   | AccessDeniedException
@@ -6430,6 +6503,7 @@ export const createServiceTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateServiceTemplate",
 }));
 export type GetServiceTemplateError =
   | AccessDeniedException
@@ -6456,6 +6530,7 @@ export const getServiceTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetServiceTemplate",
 }));
 export type UpdateServiceTemplateError =
   | AccessDeniedException
@@ -6484,6 +6559,7 @@ export const updateServiceTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateServiceTemplate",
 }));
 export type DeleteServiceTemplateError =
   | AccessDeniedException
@@ -6513,6 +6589,7 @@ export const deleteServiceTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteServiceTemplate",
 }));
 export type ListServiceTemplatesError =
   | AccessDeniedException
@@ -6552,6 +6629,7 @@ export const listServiceTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListServiceTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6590,6 +6668,7 @@ export const createServiceTemplateVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateServiceTemplateVersion",
 }));
 export type GetServiceTemplateVersionError =
   | AccessDeniedException
@@ -6616,6 +6695,7 @@ export const getServiceTemplateVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetServiceTemplateVersion",
 }));
 export type UpdateServiceTemplateVersionError =
   | AccessDeniedException
@@ -6644,6 +6724,7 @@ export const updateServiceTemplateVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateServiceTemplateVersion",
 }));
 export type DeleteServiceTemplateVersionError =
   | AccessDeniedException
@@ -6681,6 +6762,7 @@ export const deleteServiceTemplateVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteServiceTemplateVersion",
 }));
 export type ListServiceTemplateVersionsError =
   | AccessDeniedException
@@ -6722,6 +6804,7 @@ export const listServiceTemplateVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListServiceTemplateVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6761,6 +6844,7 @@ export const createTemplateSyncConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateTemplateSyncConfig",
 }));
 export type GetTemplateSyncConfigError =
   | AccessDeniedException
@@ -6787,6 +6871,7 @@ export const getTemplateSyncConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTemplateSyncConfig",
 }));
 export type UpdateTemplateSyncConfigError =
   | AccessDeniedException
@@ -6817,6 +6902,7 @@ export const updateTemplateSyncConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateTemplateSyncConfig",
 }));
 export type DeleteTemplateSyncConfigError =
   | AccessDeniedException
@@ -6845,4 +6931,5 @@ export const deleteTemplateSyncConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteTemplateSyncConfig",
 }));

@@ -2434,6 +2434,7 @@ export const createExperimentTemplate: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateExperimentTemplate",
 }));
 export type CreateTargetAccountConfigurationError =
   | ConflictException
@@ -2461,6 +2462,7 @@ export const createTargetAccountConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateTargetAccountConfiguration",
 }));
 export type DeleteExperimentTemplateError =
   | ResourceNotFoundException
@@ -2478,6 +2480,7 @@ export const deleteExperimentTemplate: API.OperationMethod<
   input: DeleteExperimentTemplateRequest,
   output: DeleteExperimentTemplateResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "DeleteExperimentTemplate",
 }));
 export type DeleteTargetAccountConfigurationError =
   | ResourceNotFoundException
@@ -2495,6 +2498,7 @@ export const deleteTargetAccountConfiguration: API.OperationMethod<
   input: DeleteTargetAccountConfigurationRequest,
   output: DeleteTargetAccountConfigurationResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "DeleteTargetAccountConfiguration",
 }));
 export type GetActionError =
   | ResourceNotFoundException
@@ -2512,6 +2516,7 @@ export const getAction: API.OperationMethod<
   input: GetActionRequest,
   output: GetActionResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetAction",
 }));
 export type GetExperimentError =
   | ResourceNotFoundException
@@ -2529,6 +2534,7 @@ export const getExperiment: API.OperationMethod<
   input: GetExperimentRequest,
   output: GetExperimentResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetExperiment",
 }));
 export type GetExperimentTargetAccountConfigurationError =
   | ResourceNotFoundException
@@ -2546,6 +2552,7 @@ export const getExperimentTargetAccountConfiguration: API.OperationMethod<
   input: GetExperimentTargetAccountConfigurationRequest,
   output: GetExperimentTargetAccountConfigurationResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetExperimentTargetAccountConfiguration",
 }));
 export type GetExperimentTemplateError =
   | ResourceNotFoundException
@@ -2563,6 +2570,7 @@ export const getExperimentTemplate: API.OperationMethod<
   input: GetExperimentTemplateRequest,
   output: GetExperimentTemplateResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetExperimentTemplate",
 }));
 export type GetSafetyLeverError = ResourceNotFoundException | CommonErrors;
 /**
@@ -2577,6 +2585,7 @@ export const getSafetyLever: API.OperationMethod<
   input: GetSafetyLeverRequest,
   output: GetSafetyLeverResponse,
   errors: [ResourceNotFoundException],
+  operationName: "GetSafetyLever",
 }));
 export type GetTargetAccountConfigurationError =
   | ResourceNotFoundException
@@ -2594,6 +2603,7 @@ export const getTargetAccountConfiguration: API.OperationMethod<
   input: GetTargetAccountConfigurationRequest,
   output: GetTargetAccountConfigurationResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetTargetAccountConfiguration",
 }));
 export type GetTargetResourceTypeError =
   | ResourceNotFoundException
@@ -2611,6 +2621,7 @@ export const getTargetResourceType: API.OperationMethod<
   input: GetTargetResourceTypeRequest,
   output: GetTargetResourceTypeResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "GetTargetResourceType",
 }));
 export type ListActionsError = ValidationException | CommonErrors;
 /**
@@ -2640,6 +2651,7 @@ export const listActions: API.OperationMethod<
   input: ListActionsRequest,
   output: ListActionsResponse,
   errors: [ValidationException],
+  operationName: "ListActions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2678,6 +2690,7 @@ export const listExperimentResolvedTargets: API.OperationMethod<
   input: ListExperimentResolvedTargetsRequest,
   output: ListExperimentResolvedTargetsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListExperimentResolvedTargets",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2713,6 +2726,7 @@ export const listExperiments: API.OperationMethod<
   input: ListExperimentsRequest,
   output: ListExperimentsResponse,
   errors: [ValidationException],
+  operationName: "ListExperiments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2736,6 +2750,7 @@ export const listExperimentTargetAccountConfigurations: API.OperationMethod<
   input: ListExperimentTargetAccountConfigurationsRequest,
   output: ListExperimentTargetAccountConfigurationsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListExperimentTargetAccountConfigurations",
 }));
 export type ListExperimentTemplatesError = ValidationException | CommonErrors;
 /**
@@ -2765,6 +2780,7 @@ export const listExperimentTemplates: API.OperationMethod<
   input: ListExperimentTemplatesRequest,
   output: ListExperimentTemplatesResponse,
   errors: [ValidationException],
+  operationName: "ListExperimentTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2785,6 +2801,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
+  operationName: "ListTagsForResource",
 }));
 export type ListTargetAccountConfigurationsError =
   | ResourceNotFoundException
@@ -2817,6 +2834,7 @@ export const listTargetAccountConfigurations: API.OperationMethod<
   input: ListTargetAccountConfigurationsRequest,
   output: ListTargetAccountConfigurationsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListTargetAccountConfigurations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2852,6 +2870,7 @@ export const listTargetResourceTypes: API.OperationMethod<
   input: ListTargetResourceTypesRequest,
   output: ListTargetResourceTypesResponse,
   errors: [ValidationException],
+  operationName: "ListTargetResourceTypes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2882,6 +2901,7 @@ export const startExperiment: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "StartExperiment",
 }));
 export type StopExperimentError =
   | ResourceNotFoundException
@@ -2899,6 +2919,7 @@ export const stopExperiment: API.OperationMethod<
   input: StopExperimentRequest,
   output: StopExperimentResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "StopExperiment",
 }));
 export type TagResourceError = CommonErrors;
 /**
@@ -2913,6 +2934,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = CommonErrors;
 /**
@@ -2927,6 +2949,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
+  operationName: "UntagResource",
 }));
 export type UpdateExperimentTemplateError =
   | ResourceNotFoundException
@@ -2949,6 +2972,7 @@ export const updateExperimentTemplate: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateExperimentTemplate",
 }));
 export type UpdateSafetyLeverStateError =
   | ConflictException
@@ -2967,6 +2991,7 @@ export const updateSafetyLeverState: API.OperationMethod<
   input: UpdateSafetyLeverStateRequest,
   output: UpdateSafetyLeverStateResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "UpdateSafetyLeverState",
 }));
 export type UpdateTargetAccountConfigurationError =
   | ResourceNotFoundException
@@ -2984,4 +3009,5 @@ export const updateTargetAccountConfiguration: API.OperationMethod<
   input: UpdateTargetAccountConfigurationRequest,
   output: UpdateTargetAccountConfigurationResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "UpdateTargetAccountConfiguration",
 }));

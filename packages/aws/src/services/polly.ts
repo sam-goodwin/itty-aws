@@ -1103,6 +1103,7 @@ export const deleteLexicon: API.OperationMethod<
   input: DeleteLexiconInput,
   output: DeleteLexiconOutput,
   errors: [LexiconNotFoundException, ServiceFailureException],
+  operationName: "DeleteLexicon",
 }));
 export type DescribeVoicesError =
   | InvalidNextTokenException
@@ -1139,6 +1140,7 @@ export const describeVoices: API.OperationMethod<
   input: DescribeVoicesInput,
   output: DescribeVoicesOutput,
   errors: [InvalidNextTokenException, ServiceFailureException],
+  operationName: "DescribeVoices",
 }));
 export type GetLexiconError =
   | LexiconNotFoundException
@@ -1157,6 +1159,7 @@ export const getLexicon: API.OperationMethod<
   input: GetLexiconInput,
   output: GetLexiconOutput,
   errors: [LexiconNotFoundException, ServiceFailureException],
+  operationName: "GetLexicon",
 }));
 export type GetSpeechSynthesisTaskError =
   | InvalidTaskIdException
@@ -1182,6 +1185,7 @@ export const getSpeechSynthesisTask: API.OperationMethod<
     ServiceFailureException,
     SynthesisTaskNotFoundException,
   ],
+  operationName: "GetSpeechSynthesisTask",
 }));
 export type ListLexiconsError =
   | InvalidNextTokenException
@@ -1199,6 +1203,7 @@ export const listLexicons: API.OperationMethod<
   input: ListLexiconsInput,
   output: ListLexiconsOutput,
   errors: [InvalidNextTokenException, ServiceFailureException],
+  operationName: "ListLexicons",
 }));
 export type ListSpeechSynthesisTasksError =
   | InvalidNextTokenException
@@ -1233,6 +1238,7 @@ export const listSpeechSynthesisTasks: API.OperationMethod<
   input: ListSpeechSynthesisTasksInput,
   output: ListSpeechSynthesisTasksOutput,
   errors: [InvalidNextTokenException, ServiceFailureException],
+  operationName: "ListSpeechSynthesisTasks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1274,6 +1280,7 @@ export const putLexicon: API.OperationMethod<
     UnsupportedPlsAlphabetException,
     UnsupportedPlsLanguageException,
   ],
+  operationName: "PutLexicon",
 }));
 export type StartSpeechSynthesisStreamError =
   | ServiceFailureException
@@ -1304,6 +1311,7 @@ export const startSpeechSynthesisStream: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartSpeechSynthesisStream",
 }));
 export type StartSpeechSynthesisTaskError =
   | EngineNotSupportedException
@@ -1353,6 +1361,7 @@ export const startSpeechSynthesisTask: API.OperationMethod<
     SsmlMarksNotSupportedForTextTypeException,
     TextLengthExceededException,
   ],
+  operationName: "StartSpeechSynthesisTask",
 }));
 export type SynthesizeSpeechError =
   | EngineNotSupportedException
@@ -1391,4 +1400,5 @@ export const synthesizeSpeech: API.OperationMethod<
     SsmlMarksNotSupportedForTextTypeException,
     TextLengthExceededException,
   ],
+  operationName: "SynthesizeSpeech",
 }));

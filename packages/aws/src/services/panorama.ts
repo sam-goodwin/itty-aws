@@ -2243,6 +2243,7 @@ export const createApplicationInstance: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateApplicationInstance",
 }));
 export type CreateJobForDevicesError =
   | AccessDeniedException
@@ -2269,6 +2270,7 @@ export const createJobForDevices: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "CreateJobForDevices",
 }));
 export type CreateNodeFromTemplateJobError =
   | AccessDeniedException
@@ -2293,6 +2295,7 @@ export const createNodeFromTemplateJob: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  operationName: "CreateNodeFromTemplateJob",
 }));
 export type CreatePackageError =
   | AccessDeniedException
@@ -2317,6 +2320,7 @@ export const createPackage: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  operationName: "CreatePackage",
 }));
 export type CreatePackageImportJobError =
   | AccessDeniedException
@@ -2341,6 +2345,7 @@ export const createPackageImportJob: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  operationName: "CreatePackageImportJob",
 }));
 export type DeleteDeviceError =
   | AccessDeniedException
@@ -2367,6 +2372,7 @@ export const deleteDevice: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteDevice",
 }));
 export type DeletePackageError =
   | AccessDeniedException
@@ -2396,6 +2402,7 @@ export const deletePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeletePackage",
 }));
 export type DeregisterPackageVersionError =
   | AccessDeniedException
@@ -2422,6 +2429,7 @@ export const deregisterPackageVersion: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeregisterPackageVersion",
 }));
 export type DescribeApplicationInstanceError =
   | AccessDeniedException
@@ -2448,6 +2456,7 @@ export const describeApplicationInstance: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeApplicationInstance",
 }));
 export type DescribeApplicationInstanceDetailsError =
   | AccessDeniedException
@@ -2474,6 +2483,7 @@ export const describeApplicationInstanceDetails: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeApplicationInstanceDetails",
 }));
 export type DescribeDeviceError =
   | AccessDeniedException
@@ -2498,6 +2508,7 @@ export const describeDevice: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeDevice",
 }));
 export type DescribeDeviceJobError =
   | AccessDeniedException
@@ -2524,6 +2535,7 @@ export const describeDeviceJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeDeviceJob",
 }));
 export type DescribeNodeError =
   | AccessDeniedException
@@ -2550,6 +2562,7 @@ export const describeNode: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribeNode",
 }));
 export type DescribeNodeFromTemplateJobError =
   | AccessDeniedException
@@ -2574,6 +2587,7 @@ export const describeNodeFromTemplateJob: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  operationName: "DescribeNodeFromTemplateJob",
 }));
 export type DescribePackageError =
   | AccessDeniedException
@@ -2600,6 +2614,7 @@ export const describePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribePackage",
 }));
 export type DescribePackageImportJobError =
   | AccessDeniedException
@@ -2624,6 +2639,7 @@ export const describePackageImportJob: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  operationName: "DescribePackageImportJob",
 }));
 export type DescribePackageVersionError =
   | AccessDeniedException
@@ -2650,6 +2666,7 @@ export const describePackageVersion: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DescribePackageVersion",
 }));
 export type ListApplicationInstanceDependenciesError =
   | AccessDeniedException
@@ -2682,6 +2699,7 @@ export const listApplicationInstanceDependencies: API.OperationMethod<
   input: ListApplicationInstanceDependenciesRequest,
   output: ListApplicationInstanceDependenciesResponse,
   errors: [AccessDeniedException, InternalServerException],
+  operationName: "ListApplicationInstanceDependencies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2719,6 +2737,7 @@ export const listApplicationInstanceNodeInstances: API.OperationMethod<
   input: ListApplicationInstanceNodeInstancesRequest,
   output: ListApplicationInstanceNodeInstancesResponse,
   errors: [AccessDeniedException, InternalServerException],
+  operationName: "ListApplicationInstanceNodeInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2756,6 +2775,7 @@ export const listApplicationInstances: API.OperationMethod<
   input: ListApplicationInstancesRequest,
   output: ListApplicationInstancesResponse,
   errors: [AccessDeniedException, InternalServerException],
+  operationName: "ListApplicationInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2800,6 +2820,7 @@ export const listDevices: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  operationName: "ListDevices",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2846,6 +2867,7 @@ export const listDevicesJobs: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListDevicesJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2890,6 +2912,7 @@ export const listNodeFromTemplateJobs: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  operationName: "ListNodeFromTemplateJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2928,6 +2951,7 @@ export const listNodes: API.OperationMethod<
   input: ListNodesRequest,
   output: ListNodesResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  operationName: "ListNodes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2972,6 +2996,7 @@ export const listPackageImportJobs: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  operationName: "ListPackageImportJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3018,6 +3043,7 @@ export const listPackages: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListPackages",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3045,6 +3071,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ProvisionDeviceError =
   | AccessDeniedException
@@ -3074,6 +3101,7 @@ export const provisionDevice: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "ProvisionDevice",
 }));
 export type RegisterPackageVersionError =
   | AccessDeniedException
@@ -3098,6 +3126,7 @@ export const registerPackageVersion: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  operationName: "RegisterPackageVersion",
 }));
 export type RemoveApplicationInstanceError =
   | AccessDeniedException
@@ -3124,6 +3153,7 @@ export const removeApplicationInstance: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "RemoveApplicationInstance",
 }));
 export type SignalApplicationInstanceNodeInstancesError =
   | AccessDeniedException
@@ -3148,6 +3178,7 @@ export const signalApplicationInstanceNodeInstances: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "SignalApplicationInstanceNodeInstances",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -3170,6 +3201,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -3192,6 +3224,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateDeviceMetadataError =
   | AccessDeniedException
@@ -3218,4 +3251,5 @@ export const updateDeviceMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateDeviceMetadata",
 }));

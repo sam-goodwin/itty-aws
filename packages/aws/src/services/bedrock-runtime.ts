@@ -3688,6 +3688,7 @@ export const getAsyncInvoke: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAsyncInvoke",
 }));
 export type ListAsyncInvokesError =
   | AccessDeniedException
@@ -3727,6 +3728,7 @@ export const listAsyncInvokes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAsyncInvokes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -3769,6 +3771,7 @@ export const startAsyncInvoke: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartAsyncInvoke",
 }));
 export type ApplyGuardrailError =
   | AccessDeniedException
@@ -3801,6 +3804,7 @@ export const applyGuardrail: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ApplyGuardrail",
 }));
 export type InvokeGuardrailChecksError =
   | AccessDeniedException
@@ -3827,6 +3831,7 @@ export const invokeGuardrailChecks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InvokeGuardrailChecks",
 }));
 export type ConverseError =
   | AccessDeniedException
@@ -3877,6 +3882,7 @@ export const converse: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "Converse",
 }));
 export type ConverseStreamError =
   | AccessDeniedException
@@ -3931,6 +3937,7 @@ export const converseStream: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ConverseStream",
 }));
 export type InvokeModelError =
   | AccessDeniedException
@@ -3975,6 +3982,7 @@ export const invokeModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InvokeModel",
 }));
 export type InvokeModelWithBidirectionalStreamError =
   | AccessDeniedException
@@ -4015,6 +4023,7 @@ export const invokeModelWithBidirectionalStream: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InvokeModelWithBidirectionalStream",
 }));
 export type InvokeModelWithResponseStreamError =
   | AccessDeniedException
@@ -4065,6 +4074,7 @@ export const invokeModelWithResponseStream: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "InvokeModelWithResponseStream",
 }));
 export type CountTokensError =
   | AccessDeniedException
@@ -4111,4 +4121,5 @@ export const countTokens: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CountTokens",
 }));

@@ -678,6 +678,7 @@ export const createRule: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateRule",
 }));
 export type DeleteRuleError =
   | ConflictException
@@ -703,6 +704,7 @@ export const deleteRule: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteRule",
 }));
 export type GetRuleError =
   | InternalServerException
@@ -725,6 +727,7 @@ export const getRule: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetRule",
 }));
 export type ListRulesError =
   | InternalServerException
@@ -757,6 +760,7 @@ export const listRules: API.OperationMethod<
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "ListRules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -785,6 +789,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type LockRuleError =
   | ConflictException
@@ -813,6 +818,7 @@ export const lockRule: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "LockRule",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -837,6 +843,7 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UnlockRuleError =
   | ConflictException
@@ -862,6 +869,7 @@ export const unlockRule: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UnlockRule",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -884,6 +892,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateRuleError =
   | ConflictException
@@ -913,4 +922,5 @@ export const updateRule: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateRule",
 }));

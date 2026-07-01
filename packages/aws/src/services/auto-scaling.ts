@@ -4770,6 +4770,7 @@ export const attachInstances: API.OperationMethod<
   input: AttachInstancesQuery,
   output: AttachInstancesResponse,
   errors: [ResourceContentionFault, ServiceLinkedRoleFailure],
+  operationName: "AttachInstances",
 }));
 export type AttachLoadBalancersError =
   | InstanceRefreshInProgressFault
@@ -4811,6 +4812,7 @@ export const attachLoadBalancers: API.OperationMethod<
     ResourceContentionFault,
     ServiceLinkedRoleFailure,
   ],
+  operationName: "AttachLoadBalancers",
 }));
 export type AttachLoadBalancerTargetGroupsError =
   | InstanceRefreshInProgressFault
@@ -4861,6 +4863,7 @@ export const attachLoadBalancerTargetGroups: API.OperationMethod<
     ResourceContentionFault,
     ServiceLinkedRoleFailure,
   ],
+  operationName: "AttachLoadBalancerTargetGroups",
 }));
 export type AttachTrafficSourcesError =
   | InstanceRefreshInProgressFault
@@ -4903,6 +4906,7 @@ export const attachTrafficSources: API.OperationMethod<
     ResourceContentionFault,
     ServiceLinkedRoleFailure,
   ],
+  operationName: "AttachTrafficSources",
 }));
 export type BatchDeleteScheduledActionError =
   | ResourceContentionFault
@@ -4919,6 +4923,7 @@ export const batchDeleteScheduledAction: API.OperationMethod<
   input: BatchDeleteScheduledActionType,
   output: BatchDeleteScheduledActionAnswer,
   errors: [ResourceContentionFault],
+  operationName: "BatchDeleteScheduledAction",
 }));
 export type BatchPutScheduledUpdateGroupActionError =
   | AlreadyExistsFault
@@ -4937,6 +4942,7 @@ export const batchPutScheduledUpdateGroupAction: API.OperationMethod<
   input: BatchPutScheduledUpdateGroupActionType,
   output: BatchPutScheduledUpdateGroupActionAnswer,
   errors: [AlreadyExistsFault, LimitExceededFault, ResourceContentionFault],
+  operationName: "BatchPutScheduledUpdateGroupAction",
 }));
 export type CancelInstanceRefreshError =
   | ActiveInstanceRefreshNotFoundFault
@@ -4968,6 +4974,7 @@ export const cancelInstanceRefresh: API.OperationMethod<
     LimitExceededFault,
     ResourceContentionFault,
   ],
+  operationName: "CancelInstanceRefresh",
 }));
 export type CompleteLifecycleActionError =
   | ResourceContentionFault
@@ -5013,6 +5020,7 @@ export const completeLifecycleAction: API.OperationMethod<
   input: CompleteLifecycleActionType,
   output: CompleteLifecycleActionAnswer,
   errors: [ResourceContentionFault],
+  operationName: "CompleteLifecycleAction",
 }));
 export type CreateAutoScalingGroupError =
   | AlreadyExistsFault
@@ -5053,6 +5061,7 @@ export const createAutoScalingGroup: API.OperationMethod<
     ResourceContentionFault,
     ServiceLinkedRoleFailure,
   ],
+  operationName: "CreateAutoScalingGroup",
 }));
 export type CreateLaunchConfigurationError =
   | AlreadyExistsFault
@@ -5084,6 +5093,7 @@ export const createLaunchConfiguration: API.OperationMethod<
   input: CreateLaunchConfigurationType,
   output: CreateLaunchConfigurationResponse,
   errors: [AlreadyExistsFault, LimitExceededFault, ResourceContentionFault],
+  operationName: "CreateLaunchConfiguration",
 }));
 export type CreateOrUpdateTagsError =
   | AlreadyExistsFault
@@ -5114,6 +5124,7 @@ export const createOrUpdateTags: API.OperationMethod<
     ResourceContentionFault,
     ResourceInUseFault,
   ],
+  operationName: "CreateOrUpdateTags",
 }));
 export type DeleteAutoScalingGroupError =
   | ResourceContentionFault
@@ -5157,6 +5168,7 @@ export const deleteAutoScalingGroup: API.OperationMethod<
     ResourceInUseFault,
     ScalingActivityInProgressFault,
   ],
+  operationName: "DeleteAutoScalingGroup",
 }));
 export type DeleteLaunchConfigurationError =
   | ResourceContentionFault
@@ -5177,6 +5189,7 @@ export const deleteLaunchConfiguration: API.OperationMethod<
   input: LaunchConfigurationNameType,
   output: DeleteLaunchConfigurationResponse,
   errors: [ResourceContentionFault, ResourceInUseFault],
+  operationName: "DeleteLaunchConfiguration",
 }));
 export type DeleteLifecycleHookError = ResourceContentionFault | CommonErrors;
 /**
@@ -5195,6 +5208,7 @@ export const deleteLifecycleHook: API.OperationMethod<
   input: DeleteLifecycleHookType,
   output: DeleteLifecycleHookAnswer,
   errors: [ResourceContentionFault],
+  operationName: "DeleteLifecycleHook",
 }));
 export type DeleteNotificationConfigurationError =
   | ResourceContentionFault
@@ -5211,6 +5225,7 @@ export const deleteNotificationConfiguration: API.OperationMethod<
   input: DeleteNotificationConfigurationType,
   output: DeleteNotificationConfigurationResponse,
   errors: [ResourceContentionFault],
+  operationName: "DeleteNotificationConfiguration",
 }));
 export type DeletePolicyError =
   | ResourceContentionFault
@@ -5235,6 +5250,7 @@ export const deletePolicy: API.OperationMethod<
   input: DeletePolicyType,
   output: DeletePolicyResponse,
   errors: [ResourceContentionFault, ServiceLinkedRoleFailure],
+  operationName: "DeletePolicy",
 }));
 export type DeleteScheduledActionError = ResourceContentionFault | CommonErrors;
 /**
@@ -5249,6 +5265,7 @@ export const deleteScheduledAction: API.OperationMethod<
   input: DeleteScheduledActionType,
   output: DeleteScheduledActionResponse,
   errors: [ResourceContentionFault],
+  operationName: "DeleteScheduledAction",
 }));
 export type DeleteTagsError =
   | ResourceContentionFault
@@ -5266,6 +5283,7 @@ export const deleteTags: API.OperationMethod<
   input: DeleteTagsType,
   output: DeleteTagsResponse,
   errors: [ResourceContentionFault, ResourceInUseFault],
+  operationName: "DeleteTags",
 }));
 export type DeleteWarmPoolError =
   | LimitExceededFault
@@ -5293,6 +5311,7 @@ export const deleteWarmPool: API.OperationMethod<
     ResourceInUseFault,
     ScalingActivityInProgressFault,
   ],
+  operationName: "DeleteWarmPool",
 }));
 export type DescribeAccountLimitsError = ResourceContentionFault | CommonErrors;
 /**
@@ -5312,6 +5331,7 @@ export const describeAccountLimits: API.OperationMethod<
   input: DescribeAccountLimitsRequest,
   output: DescribeAccountLimitsAnswer,
   errors: [ResourceContentionFault],
+  operationName: "DescribeAccountLimits",
 }));
 export type DescribeAdjustmentTypesError =
   | ResourceContentionFault
@@ -5337,6 +5357,7 @@ export const describeAdjustmentTypes: API.OperationMethod<
   input: DescribeAdjustmentTypesRequest,
   output: DescribeAdjustmentTypesAnswer,
   errors: [ResourceContentionFault],
+  operationName: "DescribeAdjustmentTypes",
 }));
 export type DescribeAutoScalingGroupsError =
   | InvalidNextToken
@@ -5378,6 +5399,7 @@ export const describeAutoScalingGroups: API.OperationMethod<
   input: AutoScalingGroupNamesType,
   output: AutoScalingGroupsType,
   errors: [InvalidNextToken, ResourceContentionFault],
+  operationName: "DescribeAutoScalingGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5416,6 +5438,7 @@ export const describeAutoScalingInstances: API.OperationMethod<
   input: DescribeAutoScalingInstancesType,
   output: AutoScalingInstancesType,
   errors: [InvalidNextToken, ResourceContentionFault],
+  operationName: "DescribeAutoScalingInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5438,6 +5461,7 @@ export const describeAutoScalingNotificationTypes: API.OperationMethod<
   input: DescribeAutoScalingNotificationTypesRequest,
   output: DescribeAutoScalingNotificationTypesAnswer,
   errors: [ResourceContentionFault],
+  operationName: "DescribeAutoScalingNotificationTypes",
 }));
 export type DescribeInstanceRefreshesError =
   | InvalidNextToken
@@ -5482,6 +5506,7 @@ export const describeInstanceRefreshes: API.OperationMethod<
   input: DescribeInstanceRefreshesType,
   output: DescribeInstanceRefreshesAnswer,
   errors: [InvalidNextToken, ResourceContentionFault],
+  operationName: "DescribeInstanceRefreshes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5519,6 +5544,7 @@ export const describeLaunchConfigurations: API.OperationMethod<
   input: LaunchConfigurationNamesType,
   output: LaunchConfigurationsType,
   errors: [InvalidNextToken, ResourceContentionFault],
+  operationName: "DescribeLaunchConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5541,6 +5567,7 @@ export const describeLifecycleHooks: API.OperationMethod<
   input: DescribeLifecycleHooksType,
   output: DescribeLifecycleHooksAnswer,
   errors: [ResourceContentionFault],
+  operationName: "DescribeLifecycleHooks",
 }));
 export type DescribeLifecycleHookTypesError =
   | ResourceContentionFault
@@ -5563,6 +5590,7 @@ export const describeLifecycleHookTypes: API.OperationMethod<
   input: DescribeLifecycleHookTypesRequest,
   output: DescribeLifecycleHookTypesAnswer,
   errors: [ResourceContentionFault],
+  operationName: "DescribeLifecycleHookTypes",
 }));
 export type DescribeLoadBalancersError =
   | InvalidNextToken
@@ -5628,6 +5656,7 @@ export const describeLoadBalancers: API.OperationMethod<
   input: DescribeLoadBalancersRequest,
   output: DescribeLoadBalancersResponse,
   errors: [InvalidNextToken, ResourceContentionFault],
+  operationName: "DescribeLoadBalancers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5698,6 +5727,7 @@ export const describeLoadBalancerTargetGroups: API.OperationMethod<
   input: DescribeLoadBalancerTargetGroupsRequest,
   output: DescribeLoadBalancerTargetGroupsResponse,
   errors: [InvalidNextToken, ResourceContentionFault],
+  operationName: "DescribeLoadBalancerTargetGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5719,6 +5749,7 @@ export const describeMetricCollectionTypes: API.OperationMethod<
   input: DescribeMetricCollectionTypesRequest,
   output: DescribeMetricCollectionTypesAnswer,
   errors: [ResourceContentionFault],
+  operationName: "DescribeMetricCollectionTypes",
 }));
 export type DescribeNotificationConfigurationsError =
   | InvalidNextToken
@@ -5752,6 +5783,7 @@ export const describeNotificationConfigurations: API.OperationMethod<
   input: DescribeNotificationConfigurationsType,
   output: DescribeNotificationConfigurationsAnswer,
   errors: [InvalidNextToken, ResourceContentionFault],
+  operationName: "DescribeNotificationConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5791,6 +5823,7 @@ export const describePolicies: API.OperationMethod<
   input: DescribePoliciesType,
   output: PoliciesType,
   errors: [InvalidNextToken, ResourceContentionFault, ServiceLinkedRoleFailure],
+  operationName: "DescribePolicies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5839,6 +5872,7 @@ export const describeScalingActivities: API.OperationMethod<
   input: DescribeScalingActivitiesType,
   output: ActivitiesType,
   errors: [InvalidNextToken, ResourceContentionFault],
+  operationName: "DescribeScalingActivities",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5862,6 +5896,7 @@ export const describeScalingProcessTypes: API.OperationMethod<
   input: DescribeScalingProcessTypesRequest,
   output: ProcessesType,
   errors: [ResourceContentionFault],
+  operationName: "DescribeScalingProcessTypes",
 }));
 export type DescribeScheduledActionsError =
   | InvalidNextToken
@@ -5898,6 +5933,7 @@ export const describeScheduledActions: API.OperationMethod<
   input: DescribeScheduledActionsType,
   output: ScheduledActionsType,
   errors: [InvalidNextToken, ResourceContentionFault],
+  operationName: "DescribeScheduledActions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5947,6 +5983,7 @@ export const describeTags: API.OperationMethod<
   input: DescribeTagsType,
   output: TagsType,
   errors: [InvalidNextToken, ResourceContentionFault],
+  operationName: "DescribeTags",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5973,6 +6010,7 @@ export const describeTerminationPolicyTypes: API.OperationMethod<
   input: DescribeTerminationPolicyTypesRequest,
   output: DescribeTerminationPolicyTypesAnswer,
   errors: [ResourceContentionFault],
+  operationName: "DescribeTerminationPolicyTypes",
 }));
 export type DescribeTrafficSourcesError =
   | InvalidNextToken
@@ -6011,6 +6049,7 @@ export const describeTrafficSources: API.OperationMethod<
   input: DescribeTrafficSourcesRequest,
   output: DescribeTrafficSourcesResponse,
   errors: [InvalidNextToken, ResourceContentionFault],
+  operationName: "DescribeTrafficSources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6052,6 +6091,7 @@ export const describeWarmPool: API.OperationMethod<
   input: DescribeWarmPoolType,
   output: DescribeWarmPoolAnswer,
   errors: [InvalidNextToken, LimitExceededFault, ResourceContentionFault],
+  operationName: "DescribeWarmPool",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6085,6 +6125,7 @@ export const detachInstances: API.OperationMethod<
   input: DetachInstancesQuery,
   output: DetachInstancesAnswer,
   errors: [ResourceContentionFault],
+  operationName: "DetachInstances",
 }));
 export type DetachLoadBalancersError = ResourceContentionFault | CommonErrors;
 /**
@@ -6114,6 +6155,7 @@ export const detachLoadBalancers: API.OperationMethod<
   input: DetachLoadBalancersType,
   output: DetachLoadBalancersResultType,
   errors: [ResourceContentionFault],
+  operationName: "DetachLoadBalancers",
 }));
 export type DetachLoadBalancerTargetGroupsError =
   | ResourceContentionFault
@@ -6147,6 +6189,7 @@ export const detachLoadBalancerTargetGroups: API.OperationMethod<
   input: DetachLoadBalancerTargetGroupsType,
   output: DetachLoadBalancerTargetGroupsResultType,
   errors: [ResourceContentionFault],
+  operationName: "DetachLoadBalancerTargetGroups",
 }));
 export type DetachTrafficSourcesError = ResourceContentionFault | CommonErrors;
 /**
@@ -6167,6 +6210,7 @@ export const detachTrafficSources: API.OperationMethod<
   input: DetachTrafficSourcesType,
   output: DetachTrafficSourcesResultType,
   errors: [ResourceContentionFault],
+  operationName: "DetachTrafficSources",
 }));
 export type DisableMetricsCollectionError =
   | ResourceContentionFault
@@ -6183,6 +6227,7 @@ export const disableMetricsCollection: API.OperationMethod<
   input: DisableMetricsCollectionQuery,
   output: DisableMetricsCollectionResponse,
   errors: [ResourceContentionFault],
+  operationName: "DisableMetricsCollection",
 }));
 export type EnableMetricsCollectionError =
   | ResourceContentionFault
@@ -6205,6 +6250,7 @@ export const enableMetricsCollection: API.OperationMethod<
   input: EnableMetricsCollectionQuery,
   output: EnableMetricsCollectionResponse,
   errors: [ResourceContentionFault],
+  operationName: "EnableMetricsCollection",
 }));
 export type EnterStandbyError = ResourceContentionFault | CommonErrors;
 /**
@@ -6231,6 +6277,7 @@ export const enterStandby: API.OperationMethod<
   input: EnterStandbyQuery,
   output: EnterStandbyAnswer,
   errors: [ResourceContentionFault],
+  operationName: "EnterStandby",
 }));
 export type ExecutePolicyError =
   | ResourceContentionFault
@@ -6249,6 +6296,7 @@ export const executePolicy: API.OperationMethod<
   input: ExecutePolicyType,
   output: ExecutePolicyResponse,
   errors: [ResourceContentionFault, ScalingActivityInProgressFault],
+  operationName: "ExecutePolicy",
 }));
 export type ExitStandbyError = ResourceContentionFault | CommonErrors;
 /**
@@ -6270,6 +6318,7 @@ export const exitStandby: API.OperationMethod<
   input: ExitStandbyQuery,
   output: ExitStandbyAnswer,
   errors: [ResourceContentionFault],
+  operationName: "ExitStandby",
 }));
 export type GetPredictiveScalingForecastError =
   | ResourceContentionFault
@@ -6297,6 +6346,7 @@ export const getPredictiveScalingForecast: API.OperationMethod<
   input: GetPredictiveScalingForecastType,
   output: GetPredictiveScalingForecastAnswer,
   errors: [ResourceContentionFault],
+  operationName: "GetPredictiveScalingForecast",
 }));
 export type LaunchInstancesError =
   | IdempotentParameterMismatchError
@@ -6315,6 +6365,7 @@ export const launchInstances: API.OperationMethod<
   input: LaunchInstancesRequest,
   output: LaunchInstancesResult,
   errors: [IdempotentParameterMismatchError, ResourceContentionFault],
+  operationName: "LaunchInstances",
 }));
 export type PutLifecycleHookError =
   | LimitExceededFault
@@ -6370,6 +6421,7 @@ export const putLifecycleHook: API.OperationMethod<
   input: PutLifecycleHookType,
   output: PutLifecycleHookAnswer,
   errors: [LimitExceededFault, ResourceContentionFault],
+  operationName: "PutLifecycleHook",
 }));
 export type PutNotificationConfigurationError =
   | LimitExceededFault
@@ -6403,6 +6455,7 @@ export const putNotificationConfiguration: API.OperationMethod<
     ResourceContentionFault,
     ServiceLinkedRoleFailure,
   ],
+  operationName: "PutNotificationConfiguration",
 }));
 export type PutScalingPolicyError =
   | LimitExceededFault
@@ -6438,6 +6491,7 @@ export const putScalingPolicy: API.OperationMethod<
     ResourceContentionFault,
     ServiceLinkedRoleFailure,
   ],
+  operationName: "PutScalingPolicy",
 }));
 export type PutScheduledUpdateGroupActionError =
   | AlreadyExistsFault
@@ -6467,6 +6521,7 @@ export const putScheduledUpdateGroupAction: API.OperationMethod<
   input: PutScheduledUpdateGroupActionType,
   output: PutScheduledUpdateGroupActionResponse,
   errors: [AlreadyExistsFault, LimitExceededFault, ResourceContentionFault],
+  operationName: "PutScheduledUpdateGroupAction",
 }));
 export type PutWarmPoolError =
   | InstanceRefreshInProgressFault
@@ -6501,6 +6556,7 @@ export const putWarmPool: API.OperationMethod<
     LimitExceededFault,
     ResourceContentionFault,
   ],
+  operationName: "PutWarmPool",
 }));
 export type RecordLifecycleActionHeartbeatError =
   | ResourceContentionFault
@@ -6546,6 +6602,7 @@ export const recordLifecycleActionHeartbeat: API.OperationMethod<
   input: RecordLifecycleActionHeartbeatType,
   output: RecordLifecycleActionHeartbeatAnswer,
   errors: [ResourceContentionFault],
+  operationName: "RecordLifecycleActionHeartbeat",
 }));
 export type ResumeProcessesError =
   | ResourceContentionFault
@@ -6567,6 +6624,7 @@ export const resumeProcesses: API.OperationMethod<
   input: ScalingProcessQuery,
   output: ResumeProcessesResponse,
   errors: [ResourceContentionFault, ResourceInUseFault],
+  operationName: "ResumeProcesses",
 }));
 export type RollbackInstanceRefreshError =
   | ActiveInstanceRefreshNotFoundFault
@@ -6612,6 +6670,7 @@ export const rollbackInstanceRefresh: API.OperationMethod<
     LimitExceededFault,
     ResourceContentionFault,
   ],
+  operationName: "RollbackInstanceRefresh",
 }));
 export type SetDesiredCapacityError =
   | ResourceContentionFault
@@ -6636,6 +6695,7 @@ export const setDesiredCapacity: API.OperationMethod<
   input: SetDesiredCapacityType,
   output: SetDesiredCapacityResponse,
   errors: [ResourceContentionFault, ScalingActivityInProgressFault],
+  operationName: "SetDesiredCapacity",
 }));
 export type SetInstanceHealthError = ResourceContentionFault | CommonErrors;
 /**
@@ -6654,6 +6714,7 @@ export const setInstanceHealth: API.OperationMethod<
   input: SetInstanceHealthQuery,
   output: SetInstanceHealthResponse,
   errors: [ResourceContentionFault],
+  operationName: "SetInstanceHealth",
 }));
 export type SetInstanceProtectionError =
   | LimitExceededFault
@@ -6679,6 +6740,7 @@ export const setInstanceProtection: API.OperationMethod<
   input: SetInstanceProtectionQuery,
   output: SetInstanceProtectionAnswer,
   errors: [LimitExceededFault, ResourceContentionFault],
+  operationName: "SetInstanceProtection",
 }));
 export type StartInstanceRefreshError =
   | InstanceRefreshInProgressFault
@@ -6727,6 +6789,7 @@ export const startInstanceRefresh: API.OperationMethod<
     LimitExceededFault,
     ResourceContentionFault,
   ],
+  operationName: "StartInstanceRefresh",
 }));
 export type SuspendProcessesError =
   | ResourceContentionFault
@@ -6752,6 +6815,7 @@ export const suspendProcesses: API.OperationMethod<
   input: ScalingProcessQuery,
   output: SuspendProcessesResponse,
   errors: [ResourceContentionFault, ResourceInUseFault],
+  operationName: "SuspendProcesses",
 }));
 export type TerminateInstanceInAutoScalingGroupError =
   | ResourceContentionFault
@@ -6784,6 +6848,7 @@ export const terminateInstanceInAutoScalingGroup: API.OperationMethod<
   input: TerminateInstanceInAutoScalingGroupType,
   output: ActivityType,
   errors: [ResourceContentionFault, ScalingActivityInProgressFault],
+  operationName: "TerminateInstanceInAutoScalingGroup",
 }));
 export type UpdateAutoScalingGroupError =
   | ResourceContentionFault
@@ -6846,4 +6911,5 @@ export const updateAutoScalingGroup: API.OperationMethod<
     ScalingActivityInProgressFault,
     ServiceLinkedRoleFailure,
   ],
+  operationName: "UpdateAutoScalingGroup",
 }));

@@ -1570,6 +1570,7 @@ export const createDataLakeExceptionSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateDataLakeExceptionSubscription",
 }));
 export type DeleteDataLakeExceptionSubscriptionError =
   | AccessDeniedException
@@ -1599,6 +1600,7 @@ export const deleteDataLakeExceptionSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteDataLakeExceptionSubscription",
 }));
 export type DeregisterDataLakeDelegatedAdministratorError =
   | AccessDeniedException
@@ -1629,6 +1631,7 @@ export const deregisterDataLakeDelegatedAdministrator: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeregisterDataLakeDelegatedAdministrator",
 }));
 export type GetDataLakeExceptionSubscriptionError =
   | AccessDeniedException
@@ -1657,6 +1660,7 @@ export const getDataLakeExceptionSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetDataLakeExceptionSubscription",
 }));
 export type ListDataLakeExceptionsError =
   | AccessDeniedException
@@ -1701,6 +1705,7 @@ export const listDataLakeExceptions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListDataLakeExceptions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1736,6 +1741,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type RegisterDataLakeDelegatedAdministratorError =
   | AccessDeniedException
@@ -1766,6 +1772,7 @@ export const registerDataLakeDelegatedAdministrator: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "RegisterDataLakeDelegatedAdministrator",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1801,6 +1808,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1830,6 +1838,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateDataLakeExceptionSubscriptionError =
   | AccessDeniedException
@@ -1859,6 +1868,7 @@ export const updateDataLakeExceptionSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateDataLakeExceptionSubscription",
 }));
 export type CreateAwsLogSourceError =
   | AccessDeniedException
@@ -1894,6 +1904,7 @@ export const createAwsLogSource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateAwsLogSource",
 }));
 export type CreateCustomLogSourceError =
   | AccessDeniedException
@@ -1928,6 +1939,7 @@ export const createCustomLogSource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateCustomLogSource",
 }));
 export type CreateDataLakeError =
   | AccessDeniedException
@@ -1970,6 +1982,7 @@ export const createDataLake: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateDataLake",
 }));
 export type CreateDataLakeOrganizationConfigurationError =
   | AccessDeniedException
@@ -2002,6 +2015,7 @@ export const createDataLakeOrganizationConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateDataLakeOrganizationConfiguration",
 }));
 export type DeleteAwsLogSourceError =
   | AccessDeniedException
@@ -2037,6 +2051,7 @@ export const deleteAwsLogSource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteAwsLogSource",
 }));
 export type DeleteCustomLogSourceError =
   | AccessDeniedException
@@ -2066,6 +2081,7 @@ export const deleteCustomLogSource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteCustomLogSource",
 }));
 export type DeleteDataLakeError =
   | AccessDeniedException
@@ -2102,6 +2118,7 @@ export const deleteDataLake: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteDataLake",
 }));
 export type DeleteDataLakeOrganizationConfigurationError =
   | AccessDeniedException
@@ -2132,6 +2149,7 @@ export const deleteDataLakeOrganizationConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteDataLakeOrganizationConfiguration",
 }));
 export type GetDataLakeOrganizationConfigurationError =
   | AccessDeniedException
@@ -2162,6 +2180,7 @@ export const getDataLakeOrganizationConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetDataLakeOrganizationConfiguration",
 }));
 export type GetDataLakeSourcesError =
   | AccessDeniedException
@@ -2206,6 +2225,7 @@ export const getDataLakeSources: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetDataLakeSources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2241,6 +2261,7 @@ export const listDataLakes: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListDataLakes",
 }));
 export type ListLogSourcesError =
   | AccessDeniedException
@@ -2284,6 +2305,7 @@ export const listLogSources: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListLogSources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2330,6 +2352,7 @@ export const updateDataLake: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateDataLake",
 }));
 export type CreateSubscriberError =
   | AccessDeniedException
@@ -2359,6 +2382,7 @@ export const createSubscriber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateSubscriber",
 }));
 export type GetSubscriberError =
   | AccessDeniedException
@@ -2388,6 +2412,7 @@ export const getSubscriber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "GetSubscriber",
 }));
 export type UpdateSubscriberError =
   | AccessDeniedException
@@ -2417,6 +2442,7 @@ export const updateSubscriber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateSubscriber",
 }));
 export type DeleteSubscriberError =
   | AccessDeniedException
@@ -2448,6 +2474,7 @@ export const deleteSubscriber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteSubscriber",
 }));
 export type ListSubscribersError =
   | AccessDeniedException
@@ -2492,6 +2519,7 @@ export const listSubscribers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "ListSubscribers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2528,6 +2556,7 @@ export const createSubscriberNotification: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "CreateSubscriberNotification",
 }));
 export type DeleteSubscriberNotificationError =
   | AccessDeniedException
@@ -2557,6 +2586,7 @@ export const deleteSubscriberNotification: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "DeleteSubscriberNotification",
 }));
 export type UpdateSubscriberNotificationError =
   | AccessDeniedException
@@ -2586,4 +2616,5 @@ export const updateSubscriberNotification: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  operationName: "UpdateSubscriberNotification",
 }));

@@ -8522,6 +8522,7 @@ export const listEntitlements: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListEntitlements",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8550,6 +8551,7 @@ export const listTagsForGlobalResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "ListTagsForGlobalResource",
 }));
 export type ListTagsForResourceError =
   | BadRequestException
@@ -8572,6 +8574,7 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagGlobalResourceError =
   | BadRequestException
@@ -8594,6 +8597,7 @@ export const tagGlobalResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "TagGlobalResource",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -8616,6 +8620,7 @@ export const tagResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagGlobalResourceError =
   | BadRequestException
@@ -8638,6 +8643,7 @@ export const untagGlobalResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "UntagGlobalResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -8660,6 +8666,7 @@ export const untagResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateBridgeError =
   | BadRequestException
@@ -8690,6 +8697,7 @@ export const createBridge: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "CreateBridge",
 }));
 export type DescribeBridgeError =
   | BadRequestException
@@ -8720,6 +8728,7 @@ export const describeBridge: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeBridge",
 }));
 export type UpdateBridgeError =
   | BadRequestException
@@ -8750,6 +8759,7 @@ export const updateBridge: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateBridge",
 }));
 export type DeleteBridgeError =
   | BadRequestException
@@ -8780,6 +8790,7 @@ export const deleteBridge: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteBridge",
 }));
 export type ListBridgesError =
   | BadRequestException
@@ -8821,6 +8832,7 @@ export const listBridges: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListBridges",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -8857,6 +8869,7 @@ export const addBridgeOutputs: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "AddBridgeOutputs",
 }));
 export type AddBridgeSourcesError =
   | BadRequestException
@@ -8887,6 +8900,7 @@ export const addBridgeSources: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "AddBridgeSources",
 }));
 export type RemoveBridgeOutputError =
   | BadRequestException
@@ -8917,6 +8931,7 @@ export const removeBridgeOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "RemoveBridgeOutput",
 }));
 export type RemoveBridgeSourceError =
   | BadRequestException
@@ -8947,6 +8962,7 @@ export const removeBridgeSource: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "RemoveBridgeSource",
 }));
 export type UpdateBridgeOutputError =
   | BadRequestException
@@ -8977,6 +8993,7 @@ export const updateBridgeOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateBridgeOutput",
 }));
 export type UpdateBridgeSourceError =
   | BadRequestException
@@ -9007,6 +9024,7 @@ export const updateBridgeSource: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateBridgeSource",
 }));
 export type UpdateBridgeStateError =
   | BadRequestException
@@ -9037,6 +9055,7 @@ export const updateBridgeState: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateBridgeState",
 }));
 export type CreateFlowError =
   | BadRequestException
@@ -9065,6 +9084,7 @@ export const createFlow: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "CreateFlow",
 }));
 export type DescribeFlowError =
   | BadRequestException
@@ -9093,6 +9113,7 @@ export const describeFlow: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeFlow",
 }));
 export type UpdateFlowError =
   | BadRequestException
@@ -9135,6 +9156,7 @@ export const updateFlow: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateFlow",
 }));
 export type DeleteFlowError =
   | BadRequestException
@@ -9163,6 +9185,7 @@ export const deleteFlow: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteFlow",
 }));
 export type ListFlowsError =
   | BadRequestException
@@ -9202,6 +9225,7 @@ export const listFlows: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListFlows",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9236,6 +9260,7 @@ export const addFlowMediaStreams: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "AddFlowMediaStreams",
 }));
 export type AddFlowOutputsError =
   | AddFlowOutputs420Exception
@@ -9266,6 +9291,7 @@ export const addFlowOutputs: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "AddFlowOutputs",
 }));
 export type AddFlowSourcesError =
   | BadRequestException
@@ -9294,6 +9320,7 @@ export const addFlowSources: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "AddFlowSources",
 }));
 export type AddFlowVpcInterfacesError =
   | BadRequestException
@@ -9322,6 +9349,7 @@ export const addFlowVpcInterfaces: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "AddFlowVpcInterfaces",
 }));
 export type DescribeFlowSourceMetadataError =
   | BadRequestException
@@ -9350,6 +9378,7 @@ export const describeFlowSourceMetadata: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeFlowSourceMetadata",
 }));
 export type DescribeFlowSourceThumbnailError =
   | BadRequestException
@@ -9378,6 +9407,7 @@ export const describeFlowSourceThumbnail: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeFlowSourceThumbnail",
 }));
 export type GrantFlowEntitlementsError =
   | BadRequestException
@@ -9408,6 +9438,7 @@ export const grantFlowEntitlements: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "GrantFlowEntitlements",
 }));
 export type RemoveFlowMediaStreamError =
   | BadRequestException
@@ -9436,6 +9467,7 @@ export const removeFlowMediaStream: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "RemoveFlowMediaStream",
 }));
 export type RemoveFlowOutputError =
   | BadRequestException
@@ -9464,6 +9496,7 @@ export const removeFlowOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "RemoveFlowOutput",
 }));
 export type RemoveFlowSourceError =
   | BadRequestException
@@ -9492,6 +9525,7 @@ export const removeFlowSource: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "RemoveFlowSource",
 }));
 export type RemoveFlowVpcInterfaceError =
   | BadRequestException
@@ -9520,6 +9554,7 @@ export const removeFlowVpcInterface: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "RemoveFlowVpcInterface",
 }));
 export type RevokeFlowEntitlementError =
   | BadRequestException
@@ -9548,6 +9583,7 @@ export const revokeFlowEntitlement: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "RevokeFlowEntitlement",
 }));
 export type StartFlowError =
   | BadRequestException
@@ -9576,6 +9612,7 @@ export const startFlow: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "StartFlow",
 }));
 export type StopFlowError =
   | BadRequestException
@@ -9604,6 +9641,7 @@ export const stopFlow: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "StopFlow",
 }));
 export type UpdateFlowEntitlementError =
   | BadRequestException
@@ -9632,6 +9670,7 @@ export const updateFlowEntitlement: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateFlowEntitlement",
 }));
 export type UpdateFlowMediaStreamError =
   | BadRequestException
@@ -9660,6 +9699,7 @@ export const updateFlowMediaStream: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateFlowMediaStream",
 }));
 export type UpdateFlowOutputError =
   | BadRequestException
@@ -9688,6 +9728,7 @@ export const updateFlowOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateFlowOutput",
 }));
 export type UpdateFlowSourceError =
   | BadRequestException
@@ -9730,6 +9771,7 @@ export const updateFlowSource: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateFlowSource",
 }));
 export type DescribeGatewayInstanceError =
   | BadRequestException
@@ -9760,6 +9802,7 @@ export const describeGatewayInstance: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeGatewayInstance",
 }));
 export type UpdateGatewayInstanceError =
   | BadRequestException
@@ -9790,6 +9833,7 @@ export const updateGatewayInstance: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateGatewayInstance",
 }));
 export type DeregisterGatewayInstanceError =
   | BadRequestException
@@ -9820,6 +9864,7 @@ export const deregisterGatewayInstance: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DeregisterGatewayInstance",
 }));
 export type ListGatewayInstancesError =
   | BadRequestException
@@ -9861,6 +9906,7 @@ export const listGatewayInstances: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListGatewayInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9897,6 +9943,7 @@ export const createGateway: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "CreateGateway",
 }));
 export type DescribeGatewayError =
   | BadRequestException
@@ -9927,6 +9974,7 @@ export const describeGateway: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeGateway",
 }));
 export type DeleteGatewayError =
   | BadRequestException
@@ -9957,6 +10005,7 @@ export const deleteGateway: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteGateway",
 }));
 export type ListGatewaysError =
   | BadRequestException
@@ -9998,6 +10047,7 @@ export const listGateways: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListGateways",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10030,6 +10080,7 @@ export const describeOffering: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeOffering",
 }));
 export type ListOfferingsError =
   | BadRequestException
@@ -10069,6 +10120,7 @@ export const listOfferings: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListOfferings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10103,6 +10155,7 @@ export const purchaseOffering: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "PurchaseOffering",
 }));
 export type DescribeReservationError =
   | BadRequestException
@@ -10129,6 +10182,7 @@ export const describeReservation: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeReservation",
 }));
 export type ListReservationsError =
   | BadRequestException
@@ -10168,6 +10222,7 @@ export const listReservations: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListReservations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10204,6 +10259,7 @@ export const createRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "CreateRouterInput",
 }));
 export type GetRouterInputError =
   | BadRequestException
@@ -10234,6 +10290,7 @@ export const getRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "GetRouterInput",
 }));
 export type UpdateRouterInputError =
   | BadRequestException
@@ -10264,6 +10321,7 @@ export const updateRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateRouterInput",
 }));
 export type DeleteRouterInputError =
   | BadRequestException
@@ -10294,6 +10352,7 @@ export const deleteRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteRouterInput",
 }));
 export type ListRouterInputsError =
   | BadRequestException
@@ -10335,6 +10394,7 @@ export const listRouterInputs: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListRouterInputs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10369,6 +10429,7 @@ export const getRouterInputSourceMetadata: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "GetRouterInputSourceMetadata",
 }));
 export type GetRouterInputThumbnailError =
   | BadRequestException
@@ -10397,6 +10458,7 @@ export const getRouterInputThumbnail: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "GetRouterInputThumbnail",
 }));
 export type RestartRouterInputError =
   | BadRequestException
@@ -10427,6 +10489,7 @@ export const restartRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "RestartRouterInput",
 }));
 export type StartRouterInputError =
   | BadRequestException
@@ -10457,6 +10520,7 @@ export const startRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "StartRouterInput",
 }));
 export type StopRouterInputError =
   | BadRequestException
@@ -10487,6 +10551,7 @@ export const stopRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "StopRouterInput",
 }));
 export type BatchGetRouterInputError =
   | BadRequestException
@@ -10513,6 +10578,7 @@ export const batchGetRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "BatchGetRouterInput",
 }));
 export type CreateRouterNetworkInterfaceError =
   | BadRequestException
@@ -10543,6 +10609,7 @@ export const createRouterNetworkInterface: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "CreateRouterNetworkInterface",
 }));
 export type GetRouterNetworkInterfaceError =
   | BadRequestException
@@ -10573,6 +10640,7 @@ export const getRouterNetworkInterface: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "GetRouterNetworkInterface",
 }));
 export type UpdateRouterNetworkInterfaceError =
   | BadRequestException
@@ -10601,6 +10669,7 @@ export const updateRouterNetworkInterface: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateRouterNetworkInterface",
 }));
 export type DeleteRouterNetworkInterfaceError =
   | BadRequestException
@@ -10631,6 +10700,7 @@ export const deleteRouterNetworkInterface: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteRouterNetworkInterface",
 }));
 export type ListRouterNetworkInterfacesError =
   | BadRequestException
@@ -10672,6 +10742,7 @@ export const listRouterNetworkInterfaces: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListRouterNetworkInterfaces",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10704,6 +10775,7 @@ export const batchGetRouterNetworkInterface: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "BatchGetRouterNetworkInterface",
 }));
 export type CreateRouterOutputError =
   | BadRequestException
@@ -10734,6 +10806,7 @@ export const createRouterOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "CreateRouterOutput",
 }));
 export type GetRouterOutputError =
   | BadRequestException
@@ -10764,6 +10837,7 @@ export const getRouterOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "GetRouterOutput",
 }));
 export type UpdateRouterOutputError =
   | BadRequestException
@@ -10794,6 +10868,7 @@ export const updateRouterOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateRouterOutput",
 }));
 export type DeleteRouterOutputError =
   | BadRequestException
@@ -10824,6 +10899,7 @@ export const deleteRouterOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteRouterOutput",
 }));
 export type ListRouterOutputsError =
   | BadRequestException
@@ -10865,6 +10941,7 @@ export const listRouterOutputs: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ListRouterOutputs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -10901,6 +10978,7 @@ export const restartRouterOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "RestartRouterOutput",
 }));
 export type StartRouterOutputError =
   | BadRequestException
@@ -10931,6 +11009,7 @@ export const startRouterOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "StartRouterOutput",
 }));
 export type StopRouterOutputError =
   | BadRequestException
@@ -10961,6 +11040,7 @@ export const stopRouterOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "StopRouterOutput",
 }));
 export type TakeRouterInputError =
   | BadRequestException
@@ -10991,6 +11071,7 @@ export const takeRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "TakeRouterInput",
 }));
 export type BatchGetRouterOutputError =
   | BadRequestException
@@ -11017,4 +11098,5 @@ export const batchGetRouterOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "BatchGetRouterOutput",
 }));

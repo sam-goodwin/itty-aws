@@ -1991,6 +1991,7 @@ export const acceptDomainTransferFromAnotherAwsAccount: API.OperationMethod<
     OperationLimitExceeded,
     UnsupportedTLD,
   ],
+  operationName: "AcceptDomainTransferFromAnotherAwsAccount",
 }));
 export type AssociateDelegationSignerToDomainError =
   | DnssecLimitExceeded
@@ -2027,6 +2028,7 @@ export const associateDelegationSignerToDomain: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  operationName: "AssociateDelegationSignerToDomain",
 }));
 export type CancelDomainTransferToAnotherAwsAccountError =
   | InvalidInput
@@ -2052,6 +2054,7 @@ export const cancelDomainTransferToAnotherAwsAccount: API.OperationMethod<
   input: CancelDomainTransferToAnotherAwsAccountRequest,
   output: CancelDomainTransferToAnotherAwsAccountResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
+  operationName: "CancelDomainTransferToAnotherAwsAccount",
 }));
 export type CheckDomainAvailabilityError =
   | InvalidInput
@@ -2072,6 +2075,7 @@ export const checkDomainAvailability: API.OperationMethod<
   input: CheckDomainAvailabilityRequest,
   output: CheckDomainAvailabilityResponse,
   errors: [InvalidInput, TLDInMaintenance, UnsupportedTLD],
+  operationName: "CheckDomainAvailability",
 }));
 export type CheckDomainTransferabilityError =
   | InvalidInput
@@ -2090,6 +2094,7 @@ export const checkDomainTransferability: API.OperationMethod<
   input: CheckDomainTransferabilityRequest,
   output: CheckDomainTransferabilityResponse,
   errors: [InvalidInput, TLDInMaintenance, UnsupportedTLD],
+  operationName: "CheckDomainTransferability",
 }));
 export type DeleteDomainError =
   | DuplicateRequest
@@ -2126,6 +2131,7 @@ export const deleteDomain: API.OperationMethod<
   input: DeleteDomainRequest,
   output: DeleteDomainResponse,
   errors: [DuplicateRequest, InvalidInput, TLDRulesViolation, UnsupportedTLD],
+  operationName: "DeleteDomain",
 }));
 export type DeleteTagsForDomainError =
   | InvalidInput
@@ -2147,6 +2153,7 @@ export const deleteTagsForDomain: API.OperationMethod<
   input: DeleteTagsForDomainRequest,
   output: DeleteTagsForDomainResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
+  operationName: "DeleteTagsForDomain",
 }));
 export type DisableDomainAutoRenewError =
   | InvalidInput
@@ -2165,6 +2172,7 @@ export const disableDomainAutoRenew: API.OperationMethod<
   input: DisableDomainAutoRenewRequest,
   output: DisableDomainAutoRenewResponse,
   errors: [InvalidInput, UnsupportedTLD],
+  operationName: "DisableDomainAutoRenew",
 }));
 export type DisableDomainTransferLockError =
   | DuplicateRequest
@@ -2196,6 +2204,7 @@ export const disableDomainTransferLock: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  operationName: "DisableDomainTransferLock",
 }));
 export type DisassociateDelegationSignerFromDomainError =
   | DuplicateRequest
@@ -2223,6 +2232,7 @@ export const disassociateDelegationSignerFromDomain: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  operationName: "DisassociateDelegationSignerFromDomain",
 }));
 export type EnableDomainAutoRenewError =
   | InvalidInput
@@ -2249,6 +2259,7 @@ export const enableDomainAutoRenew: API.OperationMethod<
   input: EnableDomainAutoRenewRequest,
   output: EnableDomainAutoRenewResponse,
   errors: [InvalidInput, TLDRulesViolation, UnsupportedTLD],
+  operationName: "EnableDomainAutoRenew",
 }));
 export type EnableDomainTransferLockError =
   | DuplicateRequest
@@ -2279,6 +2290,7 @@ export const enableDomainTransferLock: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  operationName: "EnableDomainTransferLock",
 }));
 export type GetContactReachabilityStatusError =
   | InvalidInput
@@ -2302,6 +2314,7 @@ export const getContactReachabilityStatus: API.OperationMethod<
   input: GetContactReachabilityStatusRequest,
   output: GetContactReachabilityStatusResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
+  operationName: "GetContactReachabilityStatus",
 }));
 export type GetDomainDetailError = InvalidInput | UnsupportedTLD | CommonErrors;
 /**
@@ -2318,6 +2331,7 @@ export const getDomainDetail: API.OperationMethod<
   input: GetDomainDetailRequest,
   output: GetDomainDetailResponse,
   errors: [InvalidInput, UnsupportedTLD],
+  operationName: "GetDomainDetail",
 }));
 export type GetDomainSuggestionsError =
   | InvalidInput
@@ -2336,6 +2350,7 @@ export const getDomainSuggestions: API.OperationMethod<
   input: GetDomainSuggestionsRequest,
   output: GetDomainSuggestionsResponse,
   errors: [InvalidInput, TLDInMaintenance, UnsupportedTLD],
+  operationName: "GetDomainSuggestions",
 }));
 export type GetOperationDetailError = InvalidInput | CommonErrors;
 /**
@@ -2351,6 +2366,7 @@ export const getOperationDetail: API.OperationMethod<
   input: GetOperationDetailRequest,
   output: GetOperationDetailResponse,
   errors: [InvalidInput],
+  operationName: "GetOperationDetail",
 }));
 export type ListDomainsError = InvalidInput | CommonErrors;
 /**
@@ -2381,6 +2397,7 @@ export const listDomains: API.OperationMethod<
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [InvalidInput],
+  operationName: "ListDomains",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextPageMarker",
@@ -2419,6 +2436,7 @@ export const listOperations: API.OperationMethod<
   input: ListOperationsRequest,
   output: ListOperationsResponse,
   errors: [InvalidInput],
+  operationName: "ListOperations",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextPageMarker",
@@ -2465,6 +2483,7 @@ export const listPrices: API.OperationMethod<
   input: ListPricesRequest,
   output: ListPricesResponse,
   errors: [InvalidInput, UnsupportedTLD],
+  operationName: "ListPrices",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextPageMarker",
@@ -2493,6 +2512,7 @@ export const listTagsForDomain: API.OperationMethod<
   input: ListTagsForDomainRequest,
   output: ListTagsForDomainResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
+  operationName: "ListTagsForDomain",
 }));
 export type PushDomainError =
   | InvalidInput
@@ -2522,6 +2542,7 @@ export const pushDomain: API.OperationMethod<
     TLDInMaintenance,
     UnsupportedTLD,
   ],
+  operationName: "PushDomain",
 }));
 export type RegisterDomainError =
   | DomainLimitExceeded
@@ -2577,6 +2598,7 @@ export const registerDomain: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  operationName: "RegisterDomain",
 }));
 export type RejectDomainTransferFromAnotherAwsAccountError =
   | InvalidInput
@@ -2599,6 +2621,7 @@ export const rejectDomainTransferFromAnotherAwsAccount: API.OperationMethod<
   input: RejectDomainTransferFromAnotherAwsAccountRequest,
   output: RejectDomainTransferFromAnotherAwsAccountResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
+  operationName: "RejectDomainTransferFromAnotherAwsAccount",
 }));
 export type RenewDomainError =
   | DuplicateRequest
@@ -2632,6 +2655,7 @@ export const renewDomain: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  operationName: "RenewDomain",
 }));
 export type ResendContactReachabilityEmailError =
   | InvalidInput
@@ -2658,6 +2682,7 @@ export const resendContactReachabilityEmail: API.OperationMethod<
     TLDInMaintenance,
     UnsupportedTLD,
   ],
+  operationName: "ResendContactReachabilityEmail",
 }));
 export type ResendOperationAuthorizationError =
   | InvalidInput
@@ -2675,6 +2700,7 @@ export const resendOperationAuthorization: API.OperationMethod<
   input: ResendOperationAuthorizationRequest,
   output: ResendOperationAuthorizationResponse,
   errors: [InvalidInput, TLDInMaintenance],
+  operationName: "ResendOperationAuthorization",
 }));
 export type RetrieveDomainAuthCodeError =
   | InvalidInput
@@ -2694,6 +2720,7 @@ export const retrieveDomainAuthCode: API.OperationMethod<
   input: RetrieveDomainAuthCodeRequest,
   output: RetrieveDomainAuthCodeResponse,
   errors: [InvalidInput, TLDInMaintenance, UnsupportedTLD],
+  operationName: "RetrieveDomainAuthCode",
 }));
 export type TransferDomainError =
   | DomainLimitExceeded
@@ -2755,6 +2782,7 @@ export const transferDomain: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  operationName: "TransferDomain",
 }));
 export type TransferDomainToAnotherAwsAccountError =
   | DuplicateRequest
@@ -2798,6 +2826,7 @@ export const transferDomainToAnotherAwsAccount: API.OperationMethod<
     OperationLimitExceeded,
     UnsupportedTLD,
   ],
+  operationName: "TransferDomainToAnotherAwsAccount",
 }));
 export type UpdateDomainContactError =
   | DuplicateRequest
@@ -2830,6 +2859,7 @@ export const updateDomainContact: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  operationName: "UpdateDomainContact",
 }));
 export type UpdateDomainContactPrivacyError =
   | DuplicateRequest
@@ -2876,6 +2906,7 @@ export const updateDomainContactPrivacy: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  operationName: "UpdateDomainContactPrivacy",
 }));
 export type UpdateDomainNameserversError =
   | DuplicateRequest
@@ -2908,6 +2939,7 @@ export const updateDomainNameservers: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  operationName: "UpdateDomainNameservers",
 }));
 export type UpdateTagsForDomainError =
   | InvalidInput
@@ -2929,6 +2961,7 @@ export const updateTagsForDomain: API.OperationMethod<
   input: UpdateTagsForDomainRequest,
   output: UpdateTagsForDomainResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
+  operationName: "UpdateTagsForDomain",
 }));
 export type ViewBillingError = InvalidInput | CommonErrors;
 /**
@@ -2958,6 +2991,7 @@ export const viewBilling: API.OperationMethod<
   input: ViewBillingRequest,
   output: ViewBillingResponse,
   errors: [InvalidInput],
+  operationName: "ViewBilling",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextPageMarker",

@@ -1828,6 +1828,7 @@ export const addPermission: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "AddPermission",
 }));
 export type CheckIfPhoneNumberIsOptedOutError =
   | AuthorizationErrorException
@@ -1857,6 +1858,7 @@ export const checkIfPhoneNumberIsOptedOut: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  operationName: "CheckIfPhoneNumberIsOptedOut",
 }));
 export type ConfirmSubscriptionError =
   | AuthorizationErrorException
@@ -1891,6 +1893,7 @@ export const confirmSubscription: API.OperationMethod<
     ReplayLimitExceededException,
     SubscriptionLimitExceededException,
   ],
+  operationName: "ConfirmSubscription",
 }));
 export type CreatePlatformApplicationError =
   | AuthorizationErrorException
@@ -1950,6 +1953,7 @@ export const createPlatformApplication: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
   ],
+  operationName: "CreatePlatformApplication",
 }));
 export type CreatePlatformEndpointError =
   | AuthorizationErrorException
@@ -1992,6 +1996,7 @@ export const createPlatformEndpoint: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "CreatePlatformEndpoint",
 }));
 export type CreateSMSSandboxPhoneNumberError =
   | AuthorizationErrorException
@@ -2030,6 +2035,7 @@ export const createSMSSandboxPhoneNumber: API.OperationMethod<
     ThrottledException,
     UserErrorException,
   ],
+  operationName: "CreateSMSSandboxPhoneNumber",
 }));
 export type CreateTopicError =
   | AuthorizationErrorException
@@ -2068,6 +2074,7 @@ export const createTopic: API.OperationMethod<
     TagPolicyException,
     TopicLimitExceededException,
   ],
+  operationName: "CreateTopic",
 }));
 export type DeleteEndpointError =
   | AuthorizationErrorException
@@ -2099,6 +2106,7 @@ export const deleteEndpoint: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "DeleteEndpoint",
 }));
 export type DeletePlatformApplicationError =
   | AuthorizationErrorException
@@ -2128,6 +2136,7 @@ export const deletePlatformApplication: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "DeletePlatformApplication",
 }));
 export type DeleteSMSSandboxPhoneNumberError =
   | AuthorizationErrorException
@@ -2166,6 +2175,7 @@ export const deleteSMSSandboxPhoneNumber: API.OperationMethod<
     ThrottledException,
     UserErrorException,
   ],
+  operationName: "DeleteSMSSandboxPhoneNumber",
 }));
 export type DeleteTopicError =
   | AuthorizationErrorException
@@ -2205,6 +2215,7 @@ export const deleteTopic: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "DeleteTopic",
 }));
 export type GetDataProtectionPolicyError =
   | AuthorizationErrorException
@@ -2236,6 +2247,7 @@ export const getDataProtectionPolicy: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "GetDataProtectionPolicy",
 }));
 export type GetEndpointAttributesError =
   | AuthorizationErrorException
@@ -2266,6 +2278,7 @@ export const getEndpointAttributes: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "GetEndpointAttributes",
 }));
 export type GetPlatformApplicationAttributesError =
   | AuthorizationErrorException
@@ -2296,6 +2309,7 @@ export const getPlatformApplicationAttributes: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "GetPlatformApplicationAttributes",
 }));
 export type GetSMSAttributesError =
   | AuthorizationErrorException
@@ -2322,6 +2336,7 @@ export const getSMSAttributes: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  operationName: "GetSMSAttributes",
 }));
 export type GetSMSSandboxAccountStatusError =
   | AuthorizationErrorException
@@ -2354,6 +2369,7 @@ export const getSMSSandboxAccountStatus: API.OperationMethod<
     InternalErrorException,
     ThrottledException,
   ],
+  operationName: "GetSMSSandboxAccountStatus",
 }));
 export type GetSubscriptionAttributesError =
   | AuthorizationErrorException
@@ -2378,6 +2394,7 @@ export const getSubscriptionAttributes: API.OperationMethod<
     InvalidParameterException,
     NotFoundException,
   ],
+  operationName: "GetSubscriptionAttributes",
 }));
 export type GetTopicAttributesError =
   | AuthorizationErrorException
@@ -2409,6 +2426,7 @@ export const getTopicAttributes: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "GetTopicAttributes",
 }));
 export type ListEndpointsByPlatformApplicationError =
   | AuthorizationErrorException
@@ -2462,6 +2480,7 @@ export const listEndpointsByPlatformApplication: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "ListEndpointsByPlatformApplication",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2510,6 +2529,7 @@ export const listOriginationNumbers: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  operationName: "ListOriginationNumbers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2563,6 +2583,7 @@ export const listPhoneNumbersOptedOut: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  operationName: "ListPhoneNumbersOptedOut",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2615,6 +2636,7 @@ export const listPlatformApplications: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
   ],
+  operationName: "ListPlatformApplications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2671,6 +2693,7 @@ export const listSMSSandboxPhoneNumbers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledException,
   ],
+  operationName: "ListSMSSandboxPhoneNumbers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2719,6 +2742,7 @@ export const listSubscriptions: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
   ],
+  operationName: "ListSubscriptions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2772,6 +2796,7 @@ export const listSubscriptionsByTopic: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "ListSubscriptionsByTopic",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2808,6 +2833,7 @@ export const listTagsForResource: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTopicsError =
   | AuthorizationErrorException
@@ -2850,6 +2876,7 @@ export const listTopics: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
   ],
+  operationName: "ListTopics",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2882,6 +2909,7 @@ export const optInPhoneNumber: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  operationName: "OptInPhoneNumber",
 }));
 export type PublishError =
   | AuthorizationErrorException
@@ -2952,6 +2980,7 @@ export const publish: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "Publish",
 }));
 export type PublishBatchError =
   | AuthorizationErrorException
@@ -3045,6 +3074,7 @@ export const publishBatch: API.OperationMethod<
     TooManyEntriesInBatchRequestException,
     ValidationException,
   ],
+  operationName: "PublishBatch",
 }));
 export type PutDataProtectionPolicyError =
   | AuthorizationErrorException
@@ -3076,6 +3106,7 @@ export const putDataProtectionPolicy: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "PutDataProtectionPolicy",
 }));
 export type RemovePermissionError =
   | AuthorizationErrorException
@@ -3108,6 +3139,7 @@ export const removePermission: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "RemovePermission",
 }));
 export type SetEndpointAttributesError =
   | AuthorizationErrorException
@@ -3138,6 +3170,7 @@ export const setEndpointAttributes: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "SetEndpointAttributes",
 }));
 export type SetPlatformApplicationAttributesError =
   | AuthorizationErrorException
@@ -3170,6 +3203,7 @@ export const setPlatformApplicationAttributes: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "SetPlatformApplicationAttributes",
 }));
 export type SetSMSAttributesError =
   | AuthorizationErrorException
@@ -3204,6 +3238,7 @@ export const setSMSAttributes: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  operationName: "SetSMSAttributes",
 }));
 export type SetSubscriptionAttributesError =
   | AuthorizationErrorException
@@ -3233,6 +3268,7 @@ export const setSubscriptionAttributes: API.OperationMethod<
     NotFoundException,
     ReplayLimitExceededException,
   ],
+  operationName: "SetSubscriptionAttributes",
 }));
 export type SetTopicAttributesError =
   | AuthorizationErrorException
@@ -3267,6 +3303,7 @@ export const setTopicAttributes: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "SetTopicAttributes",
 }));
 export type SubscribeError =
   | AuthorizationErrorException
@@ -3310,6 +3347,7 @@ export const subscribe: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "Subscribe",
 }));
 export type TagResourceError =
   | AuthorizationErrorException
@@ -3360,6 +3398,7 @@ export const tagResource: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "TagResource",
 }));
 export type UnsubscribeError =
   | AuthorizationErrorException
@@ -3393,6 +3432,7 @@ export const unsubscribe: API.OperationMethod<
     InvalidSecurityException,
     NotFoundException,
   ],
+  operationName: "Unsubscribe",
 }));
 export type UntagResourceError =
   | AuthorizationErrorException
@@ -3428,6 +3468,7 @@ export const untagResource: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  operationName: "UntagResource",
 }));
 export type VerifySMSSandboxPhoneNumberError =
   | AuthorizationErrorException
@@ -3466,4 +3507,5 @@ export const verifySMSSandboxPhoneNumber: API.OperationMethod<
     ThrottledException,
     VerificationException,
   ],
+  operationName: "VerifySMSSandboxPhoneNumber",
 }));

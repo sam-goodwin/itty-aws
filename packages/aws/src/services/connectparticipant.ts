@@ -879,6 +879,7 @@ export const cancelParticipantAuthentication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CancelParticipantAuthentication",
 }));
 export type CompleteAttachmentUploadError =
   | AccessDeniedException
@@ -917,6 +918,7 @@ export const completeAttachmentUpload: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CompleteAttachmentUpload",
 }));
 export type CreateParticipantConnectionError =
   | AccessDeniedException
@@ -1004,6 +1006,7 @@ export const createParticipantConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateParticipantConnection",
 }));
 export type DescribeViewError =
   | AccessDeniedException
@@ -1032,6 +1035,7 @@ export const describeView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeView",
 }));
 export type DisconnectParticipantError =
   | AccessDeniedException
@@ -1064,6 +1068,7 @@ export const disconnectParticipant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisconnectParticipant",
 }));
 export type GetAttachmentError =
   | AccessDeniedException
@@ -1102,6 +1107,7 @@ export const getAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAttachment",
 }));
 export type GetAuthenticationUrlError =
   | AccessDeniedException
@@ -1141,6 +1147,7 @@ export const getAuthenticationUrl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAuthenticationUrl",
 }));
 export type GetTranscriptError =
   | AccessDeniedException
@@ -1206,6 +1213,7 @@ export const getTranscript: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTranscript",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1252,6 +1260,7 @@ export const sendEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendEvent",
 }));
 export type SendMessageError =
   | AccessDeniedException
@@ -1284,6 +1293,7 @@ export const sendMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "SendMessage",
 }));
 export type StartAttachmentUploadError =
   | AccessDeniedException
@@ -1319,4 +1329,5 @@ export const startAttachmentUpload: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartAttachmentUpload",
 }));

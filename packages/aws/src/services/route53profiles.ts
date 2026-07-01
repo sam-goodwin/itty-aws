@@ -843,6 +843,7 @@ export const associateProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateProfile",
 }));
 export type AssociateResourceToProfileError =
   | AccessDeniedException
@@ -875,6 +876,7 @@ export const associateResourceToProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "AssociateResourceToProfile",
 }));
 export type CreateProfileError =
   | AccessDeniedException
@@ -901,6 +903,7 @@ export const createProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateProfile",
 }));
 export type DeleteProfileError =
   | AccessDeniedException
@@ -927,6 +930,7 @@ export const deleteProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteProfile",
 }));
 export type DisassociateProfileError =
   | AccessDeniedException
@@ -955,6 +959,7 @@ export const disassociateProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateProfile",
 }));
 export type DisassociateResourceFromProfileError =
   | AccessDeniedException
@@ -987,6 +992,7 @@ export const disassociateResourceFromProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DisassociateResourceFromProfile",
 }));
 export type GetProfileError =
   | AccessDeniedException
@@ -1011,6 +1017,7 @@ export const getProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetProfile",
 }));
 export type GetProfileAssociationError =
   | AccessDeniedException
@@ -1035,6 +1042,7 @@ export const getProfileAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetProfileAssociation",
 }));
 export type GetProfileResourceAssociationError =
   | AccessDeniedException
@@ -1061,6 +1069,7 @@ export const getProfileResourceAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetProfileResourceAssociation",
 }));
 export type ListProfileAssociationsError =
   | AccessDeniedException
@@ -1102,6 +1111,7 @@ export const listProfileAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListProfileAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1153,6 +1163,7 @@ export const listProfileResourceAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListProfileResourceAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1200,6 +1211,7 @@ export const listProfiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListProfiles",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1232,6 +1244,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1256,6 +1269,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1282,6 +1296,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateProfileResourceAssociationError =
   | AccessDeniedException
@@ -1314,4 +1329,5 @@ export const updateProfileResourceAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateProfileResourceAssociation",
 }));

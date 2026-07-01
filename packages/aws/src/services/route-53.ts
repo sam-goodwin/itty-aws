@@ -4287,6 +4287,7 @@ export const activateKeySigningKey: API.OperationMethod<
     InvalidSigningStatus,
     NoSuchKeySigningKey,
   ],
+  operationName: "ActivateKeySigningKey",
 }));
 export type AssociateVPCWithHostedZoneError =
   | ConflictingDomainExists
@@ -4343,6 +4344,7 @@ export const associateVPCWithHostedZone: API.OperationMethod<
     PriorRequestNotComplete,
     PublicZoneVPCAssociation,
   ],
+  operationName: "AssociateVPCWithHostedZone",
 }));
 export type ChangeCidrCollectionError =
   | CidrBlockInUseException
@@ -4390,6 +4392,7 @@ export const changeCidrCollection: API.OperationMethod<
     LimitsExceeded,
     NoSuchCidrCollectionException,
   ],
+  operationName: "ChangeCidrCollection",
 }));
 export type ChangeResourceRecordSetsError =
   | InvalidChangeBatch
@@ -4499,6 +4502,7 @@ export const changeResourceRecordSets: API.OperationMethod<
     NoSuchHostedZone,
     PriorRequestNotComplete,
   ],
+  operationName: "ChangeResourceRecordSets",
 }));
 export type ChangeTagsForResourceError =
   | InvalidInput
@@ -4528,6 +4532,7 @@ export const changeTagsForResource: API.OperationMethod<
     PriorRequestNotComplete,
     ThrottlingException,
   ],
+  operationName: "ChangeTagsForResource",
 }));
 export type CreateCidrCollectionError =
   | CidrCollectionAlreadyExistsException
@@ -4552,6 +4557,7 @@ export const createCidrCollection: API.OperationMethod<
     InvalidInput,
     LimitsExceeded,
   ],
+  operationName: "CreateCidrCollection",
 }));
 export type CreateHealthCheckError =
   | HealthCheckAlreadyExists
@@ -4600,6 +4606,7 @@ export const createHealthCheck: API.OperationMethod<
   input: CreateHealthCheckRequest,
   output: CreateHealthCheckResponse,
   errors: [HealthCheckAlreadyExists, InvalidInput, TooManyHealthChecks],
+  operationName: "CreateHealthCheck",
 }));
 export type CreateHostedZoneError =
   | ConflictingDomainExists
@@ -4688,6 +4695,7 @@ export const createHostedZone: API.OperationMethod<
     NoSuchDelegationSet,
     TooManyHostedZones,
   ],
+  operationName: "CreateHostedZone",
 }));
 export type CreateKeySigningKeyError =
   | ConcurrentModification
@@ -4725,6 +4733,7 @@ export const createKeySigningKey: API.OperationMethod<
     NoSuchHostedZone,
     TooManyKeySigningKeys,
   ],
+  operationName: "CreateKeySigningKey",
 }));
 export type CreateQueryLoggingConfigError =
   | ConcurrentModification
@@ -4893,6 +4902,7 @@ export const createQueryLoggingConfig: API.OperationMethod<
     NoSuchHostedZone,
     QueryLoggingConfigAlreadyExists,
   ],
+  operationName: "CreateQueryLoggingConfig",
 }));
 export type CreateReusableDelegationSetError =
   | DelegationSetAlreadyCreated
@@ -4970,6 +4980,7 @@ export const createReusableDelegationSet: API.OperationMethod<
     InvalidInput,
     LimitsExceeded,
   ],
+  operationName: "CreateReusableDelegationSet",
 }));
 export type CreateTrafficPolicyError =
   | InvalidInput
@@ -4996,6 +5007,7 @@ export const createTrafficPolicy: API.OperationMethod<
     TooManyTrafficPolicies,
     TrafficPolicyAlreadyExists,
   ],
+  operationName: "CreateTrafficPolicy",
 }));
 export type CreateTrafficPolicyInstanceError =
   | InvalidInput
@@ -5034,6 +5046,7 @@ export const createTrafficPolicyInstance: API.OperationMethod<
     TooManyTrafficPolicyInstances,
     TrafficPolicyInstanceAlreadyExists,
   ],
+  operationName: "CreateTrafficPolicyInstance",
 }));
 export type CreateTrafficPolicyVersionError =
   | ConcurrentModification
@@ -5066,6 +5079,7 @@ export const createTrafficPolicyVersion: API.OperationMethod<
     NoSuchTrafficPolicy,
     TooManyTrafficPolicyVersionsForCurrentPolicy,
   ],
+  operationName: "CreateTrafficPolicyVersion",
 }));
 export type CreateVPCAssociationAuthorizationError =
   | ConcurrentModification
@@ -5101,6 +5115,7 @@ export const createVPCAssociationAuthorization: API.OperationMethod<
     NoSuchHostedZone,
     TooManyVPCAssociationAuthorizations,
   ],
+  operationName: "CreateVPCAssociationAuthorization",
 }));
 export type DeactivateKeySigningKeyError =
   | ConcurrentModification
@@ -5132,6 +5147,7 @@ export const deactivateKeySigningKey: API.OperationMethod<
     KeySigningKeyInUse,
     NoSuchKeySigningKey,
   ],
+  operationName: "DeactivateKeySigningKey",
 }));
 export type DeleteCidrCollectionError =
   | CidrCollectionInUseException
@@ -5157,6 +5173,7 @@ export const deleteCidrCollection: API.OperationMethod<
     InvalidInput,
     NoSuchCidrCollectionException,
   ],
+  operationName: "DeleteCidrCollection",
 }));
 export type DeleteHealthCheckError =
   | HealthCheckInUse
@@ -5189,6 +5206,7 @@ export const deleteHealthCheck: API.OperationMethod<
   input: DeleteHealthCheckRequest,
   output: DeleteHealthCheckResponse,
   errors: [HealthCheckInUse, InvalidInput, NoSuchHealthCheck],
+  operationName: "DeleteHealthCheck",
 }));
 export type DeleteHostedZoneError =
   | HostedZoneNotEmpty
@@ -5256,6 +5274,7 @@ export const deleteHostedZone: API.OperationMethod<
     NoSuchHostedZone,
     PriorRequestNotComplete,
   ],
+  operationName: "DeleteHostedZone",
 }));
 export type DeleteKeySigningKeyError =
   | ConcurrentModification
@@ -5291,6 +5310,7 @@ export const deleteKeySigningKey: API.OperationMethod<
     InvalidSigningStatus,
     NoSuchKeySigningKey,
   ],
+  operationName: "DeleteKeySigningKey",
 }));
 export type DeleteQueryLoggingConfigError =
   | ConcurrentModification
@@ -5313,6 +5333,7 @@ export const deleteQueryLoggingConfig: API.OperationMethod<
   input: DeleteQueryLoggingConfigRequest,
   output: DeleteQueryLoggingConfigResponse,
   errors: [ConcurrentModification, InvalidInput, NoSuchQueryLoggingConfig],
+  operationName: "DeleteQueryLoggingConfig",
 }));
 export type DeleteReusableDelegationSetError =
   | DelegationSetInUse
@@ -5344,6 +5365,7 @@ export const deleteReusableDelegationSet: API.OperationMethod<
     InvalidInput,
     NoSuchDelegationSet,
   ],
+  operationName: "DeleteReusableDelegationSet",
 }));
 export type DeleteTrafficPolicyError =
   | ConcurrentModification
@@ -5379,6 +5401,7 @@ export const deleteTrafficPolicy: API.OperationMethod<
     NoSuchTrafficPolicy,
     TrafficPolicyInUse,
   ],
+  operationName: "DeleteTrafficPolicy",
 }));
 export type DeleteTrafficPolicyInstanceError =
   | InvalidInput
@@ -5401,6 +5424,7 @@ export const deleteTrafficPolicyInstance: API.OperationMethod<
   input: DeleteTrafficPolicyInstanceRequest,
   output: DeleteTrafficPolicyInstanceResponse,
   errors: [InvalidInput, NoSuchTrafficPolicyInstance, PriorRequestNotComplete],
+  operationName: "DeleteTrafficPolicyInstance",
 }));
 export type DeleteVPCAssociationAuthorizationError =
   | ConcurrentModification
@@ -5437,6 +5461,7 @@ export const deleteVPCAssociationAuthorization: API.OperationMethod<
     NoSuchHostedZone,
     VPCAssociationAuthorizationNotFound,
   ],
+  operationName: "DeleteVPCAssociationAuthorization",
 }));
 export type DisableHostedZoneDNSSECError =
   | ConcurrentModification
@@ -5470,6 +5495,7 @@ export const disableHostedZoneDNSSEC: API.OperationMethod<
     KeySigningKeyInParentDSRecord,
     NoSuchHostedZone,
   ],
+  operationName: "DisableHostedZoneDNSSEC",
 }));
 export type DisassociateVPCFromHostedZoneError =
   | InvalidInput
@@ -5532,6 +5558,7 @@ export const disassociateVPCFromHostedZone: API.OperationMethod<
     NoSuchHostedZone,
     VPCAssociationNotFound,
   ],
+  operationName: "DisassociateVPCFromHostedZone",
 }));
 export type EnableHostedZoneDNSSECError =
   | ConcurrentModification
@@ -5566,6 +5593,7 @@ export const enableHostedZoneDNSSEC: API.OperationMethod<
     KeySigningKeyWithActiveStatusNotFound,
     NoSuchHostedZone,
   ],
+  operationName: "EnableHostedZoneDNSSEC",
 }));
 export type GetAccountLimitError = InvalidInput | CommonErrors;
 /**
@@ -5588,6 +5616,7 @@ export const getAccountLimit: API.OperationMethod<
   input: GetAccountLimitRequest,
   output: GetAccountLimitResponse,
   errors: [InvalidInput],
+  operationName: "GetAccountLimit",
 }));
 export type GetChangeError = InvalidInput | NoSuchChange | CommonErrors;
 /**
@@ -5610,6 +5639,7 @@ export const getChange: API.OperationMethod<
   input: GetChangeRequest,
   output: GetChangeResponse,
   errors: [InvalidInput, NoSuchChange],
+  operationName: "GetChange",
 }));
 export type GetCheckerIpRangesError = CommonErrors;
 /**
@@ -5631,6 +5661,7 @@ export const getCheckerIpRanges: API.OperationMethod<
   input: GetCheckerIpRangesRequest,
   output: GetCheckerIpRangesResponse,
   errors: [],
+  operationName: "GetCheckerIpRanges",
 }));
 export type GetDNSSECError =
   | InvalidArgument
@@ -5650,6 +5681,7 @@ export const getDNSSEC: API.OperationMethod<
   input: GetDNSSECRequest,
   output: GetDNSSECResponse,
   errors: [InvalidArgument, InvalidInput, NoSuchHostedZone],
+  operationName: "GetDNSSEC",
 }));
 export type GetGeoLocationError =
   | InvalidInput
@@ -5690,6 +5722,7 @@ export const getGeoLocation: API.OperationMethod<
   input: GetGeoLocationRequest,
   output: GetGeoLocationResponse,
   errors: [InvalidInput, NoSuchGeoLocation],
+  operationName: "GetGeoLocation",
 }));
 export type GetHealthCheckError =
   | IncompatibleVersion
@@ -5708,6 +5741,7 @@ export const getHealthCheck: API.OperationMethod<
   input: GetHealthCheckRequest,
   output: GetHealthCheckResponse,
   errors: [IncompatibleVersion, InvalidInput, NoSuchHealthCheck],
+  operationName: "GetHealthCheck",
 }));
 export type GetHealthCheckCountError = CommonErrors;
 /**
@@ -5722,6 +5756,7 @@ export const getHealthCheckCount: API.OperationMethod<
   input: GetHealthCheckCountRequest,
   output: GetHealthCheckCountResponse,
   errors: [],
+  operationName: "GetHealthCheckCount",
 }));
 export type GetHealthCheckLastFailureReasonError =
   | InvalidInput
@@ -5739,6 +5774,7 @@ export const getHealthCheckLastFailureReason: API.OperationMethod<
   input: GetHealthCheckLastFailureReasonRequest,
   output: GetHealthCheckLastFailureReasonResponse,
   errors: [InvalidInput, NoSuchHealthCheck],
+  operationName: "GetHealthCheckLastFailureReason",
 }));
 export type GetHealthCheckStatusError =
   | InvalidInput
@@ -5760,6 +5796,7 @@ export const getHealthCheckStatus: API.OperationMethod<
   input: GetHealthCheckStatusRequest,
   output: GetHealthCheckStatusResponse,
   errors: [InvalidInput, NoSuchHealthCheck],
+  operationName: "GetHealthCheckStatus",
 }));
 export type GetHostedZoneError = InvalidInput | NoSuchHostedZone | CommonErrors;
 /**
@@ -5778,6 +5815,7 @@ export const getHostedZone: API.OperationMethod<
   input: GetHostedZoneRequest,
   output: GetHostedZoneResponse,
   errors: [InvalidInput, NoSuchHostedZone],
+  operationName: "GetHostedZone",
 }));
 export type GetHostedZoneCountError = InvalidInput | CommonErrors;
 /**
@@ -5792,6 +5830,7 @@ export const getHostedZoneCount: API.OperationMethod<
   input: GetHostedZoneCountRequest,
   output: GetHostedZoneCountResponse,
   errors: [InvalidInput],
+  operationName: "GetHostedZoneCount",
 }));
 export type GetHostedZoneLimitError =
   | HostedZoneNotPrivate
@@ -5815,6 +5854,7 @@ export const getHostedZoneLimit: API.OperationMethod<
   input: GetHostedZoneLimitRequest,
   output: GetHostedZoneLimitResponse,
   errors: [HostedZoneNotPrivate, InvalidInput, NoSuchHostedZone],
+  operationName: "GetHostedZoneLimit",
 }));
 export type GetQueryLoggingConfigError =
   | InvalidInput
@@ -5835,6 +5875,7 @@ export const getQueryLoggingConfig: API.OperationMethod<
   input: GetQueryLoggingConfigRequest,
   output: GetQueryLoggingConfigResponse,
   errors: [InvalidInput, NoSuchQueryLoggingConfig],
+  operationName: "GetQueryLoggingConfig",
 }));
 export type GetReusableDelegationSetError =
   | DelegationSetNotReusable
@@ -5854,6 +5895,7 @@ export const getReusableDelegationSet: API.OperationMethod<
   input: GetReusableDelegationSetRequest,
   output: GetReusableDelegationSetResponse,
   errors: [DelegationSetNotReusable, InvalidInput, NoSuchDelegationSet],
+  operationName: "GetReusableDelegationSet",
 }));
 export type GetReusableDelegationSetLimitError =
   | InvalidInput
@@ -5876,6 +5918,7 @@ export const getReusableDelegationSetLimit: API.OperationMethod<
   input: GetReusableDelegationSetLimitRequest,
   output: GetReusableDelegationSetLimitResponse,
   errors: [InvalidInput, NoSuchDelegationSet],
+  operationName: "GetReusableDelegationSetLimit",
 }));
 export type GetTrafficPolicyError =
   | InvalidInput
@@ -5896,6 +5939,7 @@ export const getTrafficPolicy: API.OperationMethod<
   input: GetTrafficPolicyRequest,
   output: GetTrafficPolicyResponse,
   errors: [InvalidInput, NoSuchTrafficPolicy],
+  operationName: "GetTrafficPolicy",
 }));
 export type GetTrafficPolicyInstanceError =
   | InvalidInput
@@ -5921,6 +5965,7 @@ export const getTrafficPolicyInstance: API.OperationMethod<
   input: GetTrafficPolicyInstanceRequest,
   output: GetTrafficPolicyInstanceResponse,
   errors: [InvalidInput, NoSuchTrafficPolicyInstance],
+  operationName: "GetTrafficPolicyInstance",
 }));
 export type GetTrafficPolicyInstanceCountError = CommonErrors;
 /**
@@ -5936,6 +5981,7 @@ export const getTrafficPolicyInstanceCount: API.OperationMethod<
   input: GetTrafficPolicyInstanceCountRequest,
   output: GetTrafficPolicyInstanceCountResponse,
   errors: [],
+  operationName: "GetTrafficPolicyInstanceCount",
 }));
 export type ListCidrBlocksError =
   | InvalidInput
@@ -5973,6 +6019,7 @@ export const listCidrBlocks: API.OperationMethod<
     NoSuchCidrCollectionException,
     NoSuchCidrLocationException,
   ],
+  operationName: "ListCidrBlocks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6009,6 +6056,7 @@ export const listCidrCollections: API.OperationMethod<
   input: ListCidrCollectionsRequest,
   output: ListCidrCollectionsResponse,
   errors: [InvalidInput],
+  operationName: "ListCidrCollections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6048,6 +6096,7 @@ export const listCidrLocations: API.OperationMethod<
   input: ListCidrLocationsRequest,
   output: ListCidrLocationsResponse,
   errors: [InvalidInput, NoSuchCidrCollectionException],
+  operationName: "ListCidrLocations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6079,6 +6128,7 @@ export const listGeoLocations: API.OperationMethod<
   input: ListGeoLocationsRequest,
   output: ListGeoLocationsResponse,
   errors: [InvalidInput],
+  operationName: "ListGeoLocations",
 }));
 export type ListHealthChecksError =
   | IncompatibleVersion
@@ -6111,6 +6161,7 @@ export const listHealthChecks: API.OperationMethod<
   input: ListHealthChecksRequest,
   output: ListHealthChecksResponse,
   errors: [IncompatibleVersion, InvalidInput],
+  operationName: "ListHealthChecks",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -6156,6 +6207,7 @@ export const listHostedZones: API.OperationMethod<
   input: ListHostedZonesRequest,
   output: ListHostedZonesResponse,
   errors: [DelegationSetNotReusable, InvalidInput, NoSuchDelegationSet],
+  operationName: "ListHostedZones",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -6231,6 +6283,7 @@ export const listHostedZonesByName: API.OperationMethod<
   input: ListHostedZonesByNameRequest,
   output: ListHostedZonesByNameResponse,
   errors: [InvalidDomainName, InvalidInput],
+  operationName: "ListHostedZonesByName",
 }));
 export type ListHostedZonesByVPCError =
   | InvalidInput
@@ -6279,6 +6332,7 @@ export const listHostedZonesByVPC: API.OperationMethod<
   input: ListHostedZonesByVPCRequest,
   output: ListHostedZonesByVPCResponse,
   errors: [InvalidInput, InvalidPaginationToken],
+  operationName: "ListHostedZonesByVPC",
 }));
 export type ListQueryLoggingConfigsError =
   | InvalidInput
@@ -6318,6 +6372,7 @@ export const listQueryLoggingConfigs: API.OperationMethod<
   input: ListQueryLoggingConfigsRequest,
   output: ListQueryLoggingConfigsResponse,
   errors: [InvalidInput, InvalidPaginationToken, NoSuchHostedZone],
+  operationName: "ListQueryLoggingConfigs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6410,6 +6465,7 @@ export const listResourceRecordSets: API.OperationMethod<
   input: ListResourceRecordSetsRequest,
   output: ListResourceRecordSetsResponse,
   errors: [InvalidInput, NoSuchHostedZone],
+  operationName: "ListResourceRecordSets",
 }));
 export type ListReusableDelegationSetsError = InvalidInput | CommonErrors;
 /**
@@ -6425,6 +6481,7 @@ export const listReusableDelegationSets: API.OperationMethod<
   input: ListReusableDelegationSetsRequest,
   output: ListReusableDelegationSetsResponse,
   errors: [InvalidInput],
+  operationName: "ListReusableDelegationSets",
 }));
 export type ListTagsForResourceError =
   | InvalidInput
@@ -6454,6 +6511,7 @@ export const listTagsForResource: API.OperationMethod<
     PriorRequestNotComplete,
     ThrottlingException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTagsForResourcesError =
   | InvalidInput
@@ -6483,6 +6541,7 @@ export const listTagsForResources: API.OperationMethod<
     PriorRequestNotComplete,
     ThrottlingException,
   ],
+  operationName: "ListTagsForResources",
 }));
 export type ListTrafficPoliciesError = InvalidInput | CommonErrors;
 /**
@@ -6502,6 +6561,7 @@ export const listTrafficPolicies: API.OperationMethod<
   input: ListTrafficPoliciesRequest,
   output: ListTrafficPoliciesResponse,
   errors: [InvalidInput],
+  operationName: "ListTrafficPolicies",
 }));
 export type ListTrafficPolicyInstancesError =
   | InvalidInput
@@ -6529,6 +6589,7 @@ export const listTrafficPolicyInstances: API.OperationMethod<
   input: ListTrafficPolicyInstancesRequest,
   output: ListTrafficPolicyInstancesResponse,
   errors: [InvalidInput, NoSuchTrafficPolicyInstance],
+  operationName: "ListTrafficPolicyInstances",
 }));
 export type ListTrafficPolicyInstancesByHostedZoneError =
   | InvalidInput
@@ -6558,6 +6619,7 @@ export const listTrafficPolicyInstancesByHostedZone: API.OperationMethod<
   input: ListTrafficPolicyInstancesByHostedZoneRequest,
   output: ListTrafficPolicyInstancesByHostedZoneResponse,
   errors: [InvalidInput, NoSuchHostedZone, NoSuchTrafficPolicyInstance],
+  operationName: "ListTrafficPolicyInstancesByHostedZone",
 }));
 export type ListTrafficPolicyInstancesByPolicyError =
   | InvalidInput
@@ -6587,6 +6649,7 @@ export const listTrafficPolicyInstancesByPolicy: API.OperationMethod<
   input: ListTrafficPolicyInstancesByPolicyRequest,
   output: ListTrafficPolicyInstancesByPolicyResponse,
   errors: [InvalidInput, NoSuchTrafficPolicy, NoSuchTrafficPolicyInstance],
+  operationName: "ListTrafficPolicyInstancesByPolicy",
 }));
 export type ListTrafficPolicyVersionsError =
   | InvalidInput
@@ -6607,6 +6670,7 @@ export const listTrafficPolicyVersions: API.OperationMethod<
   input: ListTrafficPolicyVersionsRequest,
   output: ListTrafficPolicyVersionsResponse,
   errors: [InvalidInput, NoSuchTrafficPolicy],
+  operationName: "ListTrafficPolicyVersions",
 }));
 export type ListVPCAssociationAuthorizationsError =
   | InvalidInput
@@ -6630,6 +6694,7 @@ export const listVPCAssociationAuthorizations: API.OperationMethod<
   input: ListVPCAssociationAuthorizationsRequest,
   output: ListVPCAssociationAuthorizationsResponse,
   errors: [InvalidInput, InvalidPaginationToken, NoSuchHostedZone],
+  operationName: "ListVPCAssociationAuthorizations",
 }));
 export type TestDNSAnswerError = InvalidInput | NoSuchHostedZone | CommonErrors;
 /**
@@ -6653,6 +6718,7 @@ export const testDNSAnswer: API.OperationMethod<
   input: TestDNSAnswerRequest,
   output: TestDNSAnswerResponse,
   errors: [InvalidInput, NoSuchHostedZone],
+  operationName: "TestDNSAnswer",
 }));
 export type UpdateHealthCheckError =
   | HealthCheckVersionMismatch
@@ -6675,6 +6741,7 @@ export const updateHealthCheck: API.OperationMethod<
   input: UpdateHealthCheckRequest,
   output: UpdateHealthCheckResponse,
   errors: [HealthCheckVersionMismatch, InvalidInput, NoSuchHealthCheck],
+  operationName: "UpdateHealthCheck",
 }));
 export type UpdateHostedZoneCommentError =
   | InvalidInput
@@ -6693,6 +6760,7 @@ export const updateHostedZoneComment: API.OperationMethod<
   input: UpdateHostedZoneCommentRequest,
   output: UpdateHostedZoneCommentResponse,
   errors: [InvalidInput, NoSuchHostedZone, PriorRequestNotComplete],
+  operationName: "UpdateHostedZoneComment",
 }));
 export type UpdateHostedZoneFeaturesError =
   | InvalidInput
@@ -6719,6 +6787,7 @@ export const updateHostedZoneFeatures: API.OperationMethod<
     NoSuchHostedZone,
     PriorRequestNotComplete,
   ],
+  operationName: "UpdateHostedZoneFeatures",
 }));
 export type UpdateTrafficPolicyCommentError =
   | ConcurrentModification
@@ -6737,6 +6806,7 @@ export const updateTrafficPolicyComment: API.OperationMethod<
   input: UpdateTrafficPolicyCommentRequest,
   output: UpdateTrafficPolicyCommentResponse,
   errors: [ConcurrentModification, InvalidInput, NoSuchTrafficPolicy],
+  operationName: "UpdateTrafficPolicyComment",
 }));
 export type UpdateTrafficPolicyInstanceError =
   | ConflictingTypes
@@ -6785,4 +6855,5 @@ export const updateTrafficPolicyInstance: API.OperationMethod<
     NoSuchTrafficPolicyInstance,
     PriorRequestNotComplete,
   ],
+  operationName: "UpdateTrafficPolicyInstance",
 }));

@@ -5798,6 +5798,7 @@ export const initializeService: API.OperationMethod<
   input: InitializeServiceRequest,
   output: InitializeServiceResponse,
   errors: [AccessDeniedException, ValidationException],
+  operationName: "InitializeService",
 }));
 export type ListImportFileEnrichmentsError = ValidationException | CommonErrors;
 /**
@@ -5827,6 +5828,7 @@ export const listImportFileEnrichments: API.OperationMethod<
   input: ListImportFileEnrichmentsRequest,
   output: ListImportFileEnrichmentsResponse,
   errors: [ValidationException],
+  operationName: "ListImportFileEnrichments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5865,6 +5867,7 @@ export const listManagedAccounts: API.OperationMethod<
   input: ListManagedAccountsRequest,
   output: ListManagedAccountsResponse,
   errors: [UninitializedAccountException, ValidationException],
+  operationName: "ListManagedAccounts",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5897,6 +5900,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type StartImportFileEnrichmentError =
   | AccessDeniedException
@@ -5923,6 +5927,7 @@ export const startImportFileEnrichment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartImportFileEnrichment",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -5949,6 +5954,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -5975,6 +5981,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateApplicationError =
   | ConflictException
@@ -5997,6 +6004,7 @@ export const createApplication: API.OperationMethod<
     ServiceQuotaExceededException,
     UninitializedAccountException,
   ],
+  operationName: "CreateApplication",
 }));
 export type DeleteApplicationError =
   | ConflictException
@@ -6019,6 +6027,7 @@ export const deleteApplication: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  operationName: "DeleteApplication",
 }));
 export type ListApplicationsError =
   | UninitializedAccountException
@@ -6050,6 +6059,7 @@ export const listApplications: API.OperationMethod<
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [UninitializedAccountException],
+  operationName: "ListApplications",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6080,6 +6090,7 @@ export const archiveApplication: API.OperationMethod<
     ServiceQuotaExceededException,
     UninitializedAccountException,
   ],
+  operationName: "ArchiveApplication",
 }));
 export type AssociateSourceServersError =
   | ConflictException
@@ -6104,6 +6115,7 @@ export const associateSourceServers: API.OperationMethod<
     ServiceQuotaExceededException,
     UninitializedAccountException,
   ],
+  operationName: "AssociateSourceServers",
 }));
 export type DisassociateSourceServersError =
   | ConflictException
@@ -6126,6 +6138,7 @@ export const disassociateSourceServers: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  operationName: "DisassociateSourceServers",
 }));
 export type UnarchiveApplicationError =
   | ResourceNotFoundException
@@ -6148,6 +6161,7 @@ export const unarchiveApplication: API.OperationMethod<
     ServiceQuotaExceededException,
     UninitializedAccountException,
   ],
+  operationName: "UnarchiveApplication",
 }));
 export type UpdateApplicationError =
   | ConflictException
@@ -6170,6 +6184,7 @@ export const updateApplication: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  operationName: "UpdateApplication",
 }));
 export type CreateConnectorError =
   | UninitializedAccountException
@@ -6187,6 +6202,7 @@ export const createConnector: API.OperationMethod<
   input: CreateConnectorRequest,
   output: Connector,
   errors: [UninitializedAccountException, ValidationException],
+  operationName: "CreateConnector",
 }));
 export type UpdateConnectorError =
   | ResourceNotFoundException
@@ -6209,6 +6225,7 @@ export const updateConnector: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "UpdateConnector",
 }));
 export type DeleteConnectorError =
   | ResourceNotFoundException
@@ -6231,6 +6248,7 @@ export const deleteConnector: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "DeleteConnector",
 }));
 export type ListConnectorsError =
   | UninitializedAccountException
@@ -6263,6 +6281,7 @@ export const listConnectors: API.OperationMethod<
   input: ListConnectorsRequest,
   output: ListConnectorsResponse,
   errors: [UninitializedAccountException, ValidationException],
+  operationName: "ListConnectors",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6291,6 +6310,7 @@ export const startExport: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "StartExport",
 }));
 export type ListExportsError = UninitializedAccountException | CommonErrors;
 /**
@@ -6320,6 +6340,7 @@ export const listExports: API.OperationMethod<
   input: ListExportsRequest,
   output: ListExportsResponse,
   errors: [UninitializedAccountException],
+  operationName: "ListExports",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6358,6 +6379,7 @@ export const listExportErrors: API.OperationMethod<
   input: ListExportErrorsRequest,
   output: ListExportErrorsResponse,
   errors: [UninitializedAccountException, ValidationException],
+  operationName: "ListExportErrors",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6390,6 +6412,7 @@ export const startImport: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "StartImport",
 }));
 export type ListImportsError =
   | UninitializedAccountException
@@ -6422,6 +6445,7 @@ export const listImports: API.OperationMethod<
   input: ListImportsRequest,
   output: ListImportsResponse,
   errors: [UninitializedAccountException, ValidationException],
+  operationName: "ListImports",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6460,6 +6484,7 @@ export const listImportErrors: API.OperationMethod<
   input: ListImportErrorsRequest,
   output: ListImportErrorsResponse,
   errors: [UninitializedAccountException, ValidationException],
+  operationName: "ListImportErrors",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6488,6 +6513,7 @@ export const deleteJob: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  operationName: "DeleteJob",
 }));
 export type DescribeJobsError =
   | UninitializedAccountException
@@ -6520,6 +6546,7 @@ export const describeJobs: API.OperationMethod<
   input: DescribeJobsRequest,
   output: DescribeJobsResponse,
   errors: [UninitializedAccountException, ValidationException],
+  operationName: "DescribeJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6558,6 +6585,7 @@ export const describeJobLogItems: API.OperationMethod<
   input: DescribeJobLogItemsRequest,
   output: DescribeJobLogItemsResponse,
   errors: [UninitializedAccountException, ValidationException],
+  operationName: "DescribeJobLogItems",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6586,6 +6614,7 @@ export const createLaunchConfigurationTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "CreateLaunchConfigurationTemplate",
 }));
 export type UpdateLaunchConfigurationTemplateError =
   | AccessDeniedException
@@ -6610,6 +6639,7 @@ export const updateLaunchConfigurationTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "UpdateLaunchConfigurationTemplate",
 }));
 export type DeleteLaunchConfigurationTemplateError =
   | ConflictException
@@ -6632,6 +6662,7 @@ export const deleteLaunchConfigurationTemplate: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  operationName: "DeleteLaunchConfigurationTemplate",
 }));
 export type DescribeLaunchConfigurationTemplatesError =
   | ResourceNotFoundException
@@ -6669,6 +6700,7 @@ export const describeLaunchConfigurationTemplates: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "DescribeLaunchConfigurationTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6707,6 +6739,7 @@ export const listTemplateActions: API.OperationMethod<
   input: ListTemplateActionsRequest,
   output: ListTemplateActionsResponse,
   errors: [ResourceNotFoundException, UninitializedAccountException],
+  operationName: "ListTemplateActions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6737,6 +6770,7 @@ export const putTemplateAction: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "PutTemplateAction",
 }));
 export type RemoveTemplateActionError =
   | ResourceNotFoundException
@@ -6759,6 +6793,7 @@ export const removeTemplateAction: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "RemoveTemplateAction",
 }));
 export type CreateNetworkMigrationDefinitionError =
   | ServiceQuotaExceededException
@@ -6776,6 +6811,7 @@ export const createNetworkMigrationDefinition: API.OperationMethod<
   input: CreateNetworkMigrationDefinitionRequest,
   output: NetworkMigrationDefinition,
   errors: [ServiceQuotaExceededException, ValidationException],
+  operationName: "CreateNetworkMigrationDefinition",
 }));
 export type UpdateNetworkMigrationDefinitionError =
   | AccessDeniedException
@@ -6798,6 +6834,7 @@ export const updateNetworkMigrationDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateNetworkMigrationDefinition",
 }));
 export type DeleteNetworkMigrationDefinitionError =
   | AccessDeniedException
@@ -6816,6 +6853,7 @@ export const deleteNetworkMigrationDefinition: API.OperationMethod<
   input: DeleteNetworkMigrationDefinitionRequest,
   output: DeleteNetworkMigrationDefinitionResponse,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
+  operationName: "DeleteNetworkMigrationDefinition",
 }));
 export type ListNetworkMigrationDefinitionsError =
   | AccessDeniedException
@@ -6847,6 +6885,7 @@ export const listNetworkMigrationDefinitions: API.OperationMethod<
   input: ListNetworkMigrationDefinitionsRequest,
   output: ListNetworkMigrationDefinitionsResponse,
   errors: [AccessDeniedException],
+  operationName: "ListNetworkMigrationDefinitions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6870,6 +6909,7 @@ export const getNetworkMigrationDefinition: API.OperationMethod<
   input: GetNetworkMigrationDefinitionRequest,
   output: NetworkMigrationDefinition,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "GetNetworkMigrationDefinition",
 }));
 export type GetNetworkMigrationMapperSegmentConstructError =
   | AccessDeniedException
@@ -6892,6 +6932,7 @@ export const getNetworkMigrationMapperSegmentConstruct: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetNetworkMigrationMapperSegmentConstruct",
 }));
 export type ListNetworkMigrationAnalysesError =
   | AccessDeniedException
@@ -6931,6 +6972,7 @@ export const listNetworkMigrationAnalyses: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListNetworkMigrationAnalyses",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -6976,6 +7018,7 @@ export const listNetworkMigrationAnalysisResults: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListNetworkMigrationAnalysisResults",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7021,6 +7064,7 @@ export const listNetworkMigrationCodeGenerations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListNetworkMigrationCodeGenerations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7066,6 +7110,7 @@ export const listNetworkMigrationCodeGenerationSegments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListNetworkMigrationCodeGenerationSegments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7111,6 +7156,7 @@ export const listNetworkMigrationDeployedStacks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListNetworkMigrationDeployedStacks",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7156,6 +7202,7 @@ export const listNetworkMigrationDeployments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListNetworkMigrationDeployments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7194,6 +7241,7 @@ export const listNetworkMigrationExecutions: API.OperationMethod<
   input: ListNetworkMigrationExecutionsRequest,
   output: ListNetworkMigrationExecutionsResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  operationName: "ListNetworkMigrationExecutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7239,6 +7287,7 @@ export const listNetworkMigrationMapperSegmentConstructs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListNetworkMigrationMapperSegmentConstructs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7284,6 +7333,7 @@ export const listNetworkMigrationMapperSegments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListNetworkMigrationMapperSegments",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7329,6 +7379,7 @@ export const listNetworkMigrationMappings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListNetworkMigrationMappings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7374,6 +7425,7 @@ export const listNetworkMigrationMappingUpdates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListNetworkMigrationMappingUpdates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7408,6 +7460,7 @@ export const startNetworkMigrationAnalysis: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartNetworkMigrationAnalysis",
 }));
 export type StartNetworkMigrationCodeGenerationError =
   | AccessDeniedException
@@ -7436,6 +7489,7 @@ export const startNetworkMigrationCodeGeneration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartNetworkMigrationCodeGeneration",
 }));
 export type StartNetworkMigrationDeploymentError =
   | AccessDeniedException
@@ -7464,6 +7518,7 @@ export const startNetworkMigrationDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartNetworkMigrationDeployment",
 }));
 export type StartNetworkMigrationMappingError =
   | AccessDeniedException
@@ -7492,6 +7547,7 @@ export const startNetworkMigrationMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartNetworkMigrationMapping",
 }));
 export type StartNetworkMigrationMappingUpdateError =
   | AccessDeniedException
@@ -7520,6 +7576,7 @@ export const startNetworkMigrationMappingUpdate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartNetworkMigrationMappingUpdate",
 }));
 export type UpdateNetworkMigrationMapperSegmentError =
   | AccessDeniedException
@@ -7542,6 +7599,7 @@ export const updateNetworkMigrationMapperSegment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateNetworkMigrationMapperSegment",
 }));
 export type CreateReplicationConfigurationTemplateError =
   | AccessDeniedException
@@ -7564,6 +7622,7 @@ export const createReplicationConfigurationTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "CreateReplicationConfigurationTemplate",
 }));
 export type UpdateReplicationConfigurationTemplateError =
   | AccessDeniedException
@@ -7588,6 +7647,7 @@ export const updateReplicationConfigurationTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "UpdateReplicationConfigurationTemplate",
 }));
 export type DeleteReplicationConfigurationTemplateError =
   | ConflictException
@@ -7610,6 +7670,7 @@ export const deleteReplicationConfigurationTemplate: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  operationName: "DeleteReplicationConfigurationTemplate",
 }));
 export type DescribeReplicationConfigurationTemplatesError =
   | ResourceNotFoundException
@@ -7647,6 +7708,7 @@ export const describeReplicationConfigurationTemplates: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "DescribeReplicationConfigurationTemplates",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7675,6 +7737,7 @@ export const updateSourceServer: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  operationName: "UpdateSourceServer",
 }));
 export type DeleteSourceServerError =
   | ConflictException
@@ -7697,6 +7760,7 @@ export const deleteSourceServer: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  operationName: "DeleteSourceServer",
 }));
 export type DescribeSourceServersError =
   | UninitializedAccountException
@@ -7729,6 +7793,7 @@ export const describeSourceServers: API.OperationMethod<
   input: DescribeSourceServersRequest,
   output: DescribeSourceServersResponse,
   errors: [UninitializedAccountException, ValidationException],
+  operationName: "DescribeSourceServers",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7759,6 +7824,7 @@ export const changeServerLifeCycleState: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "ChangeServerLifeCycleState",
 }));
 export type DisconnectFromServiceError =
   | ConflictException
@@ -7781,6 +7847,7 @@ export const disconnectFromService: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  operationName: "DisconnectFromService",
 }));
 export type FinalizeCutoverError =
   | ConflictException
@@ -7805,6 +7872,7 @@ export const finalizeCutover: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "FinalizeCutover",
 }));
 export type GetLaunchConfigurationError =
   | ResourceNotFoundException
@@ -7822,6 +7890,7 @@ export const getLaunchConfiguration: API.OperationMethod<
   input: GetLaunchConfigurationRequest,
   output: LaunchConfiguration,
   errors: [ResourceNotFoundException, UninitializedAccountException],
+  operationName: "GetLaunchConfiguration",
 }));
 export type GetReplicationConfigurationError =
   | ResourceNotFoundException
@@ -7839,6 +7908,7 @@ export const getReplicationConfiguration: API.OperationMethod<
   input: GetReplicationConfigurationRequest,
   output: ReplicationConfiguration,
   errors: [ResourceNotFoundException, UninitializedAccountException],
+  operationName: "GetReplicationConfiguration",
 }));
 export type ListSourceServerActionsError =
   | ResourceNotFoundException
@@ -7871,6 +7941,7 @@ export const listSourceServerActions: API.OperationMethod<
   input: ListSourceServerActionsRequest,
   output: ListSourceServerActionsResponse,
   errors: [ResourceNotFoundException, UninitializedAccountException],
+  operationName: "ListSourceServerActions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7899,6 +7970,7 @@ export const markAsArchived: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  operationName: "MarkAsArchived",
 }));
 export type PauseReplicationError =
   | ConflictException
@@ -7925,6 +7997,7 @@ export const pauseReplication: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "PauseReplication",
 }));
 export type PutSourceServerActionError =
   | ConflictException
@@ -7949,6 +8022,7 @@ export const putSourceServerAction: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "PutSourceServerAction",
 }));
 export type RemoveSourceServerActionError =
   | ResourceNotFoundException
@@ -7971,6 +8045,7 @@ export const removeSourceServerAction: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "RemoveSourceServerAction",
 }));
 export type ResumeReplicationError =
   | ConflictException
@@ -7997,6 +8072,7 @@ export const resumeReplication: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "ResumeReplication",
 }));
 export type RetryDataReplicationError =
   | ResourceNotFoundException
@@ -8019,6 +8095,7 @@ export const retryDataReplication: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "RetryDataReplication",
 }));
 export type StartReplicationError =
   | ConflictException
@@ -8045,6 +8122,7 @@ export const startReplication: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "StartReplication",
 }));
 export type StopReplicationError =
   | ConflictException
@@ -8071,6 +8149,7 @@ export const stopReplication: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "StopReplication",
 }));
 export type UpdateLaunchConfigurationError =
   | ConflictException
@@ -8097,6 +8176,7 @@ export const updateLaunchConfiguration: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "UpdateLaunchConfiguration",
 }));
 export type UpdateReplicationConfigurationError =
   | AccessDeniedException
@@ -8123,6 +8203,7 @@ export const updateReplicationConfiguration: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "UpdateReplicationConfiguration",
 }));
 export type UpdateSourceServerReplicationTypeError =
   | ConflictException
@@ -8149,6 +8230,7 @@ export const updateSourceServerReplicationType: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "UpdateSourceServerReplicationType",
 }));
 export type StartCutoverError =
   | ConflictException
@@ -8171,6 +8253,7 @@ export const startCutover: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "StartCutover",
 }));
 export type StartTestError =
   | ConflictException
@@ -8193,6 +8276,7 @@ export const startTest: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "StartTest",
 }));
 export type TerminateTargetInstancesError =
   | ConflictException
@@ -8215,6 +8299,7 @@ export const terminateTargetInstances: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "TerminateTargetInstances",
 }));
 export type DeleteVcenterClientError =
   | ResourceNotFoundException
@@ -8237,6 +8322,7 @@ export const deleteVcenterClient: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "DeleteVcenterClient",
 }));
 export type DescribeVcenterClientsError =
   | ResourceNotFoundException
@@ -8274,6 +8360,7 @@ export const describeVcenterClients: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  operationName: "DescribeVcenterClients",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8302,6 +8389,7 @@ export const createWave: API.OperationMethod<
     ServiceQuotaExceededException,
     UninitializedAccountException,
   ],
+  operationName: "CreateWave",
 }));
 export type DeleteWaveError =
   | ConflictException
@@ -8324,6 +8412,7 @@ export const deleteWave: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  operationName: "DeleteWave",
 }));
 export type ListWavesError = UninitializedAccountException | CommonErrors;
 /**
@@ -8353,6 +8442,7 @@ export const listWaves: API.OperationMethod<
   input: ListWavesRequest,
   output: ListWavesResponse,
   errors: [UninitializedAccountException],
+  operationName: "ListWaves",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8383,6 +8473,7 @@ export const archiveWave: API.OperationMethod<
     ServiceQuotaExceededException,
     UninitializedAccountException,
   ],
+  operationName: "ArchiveWave",
 }));
 export type AssociateApplicationsError =
   | ConflictException
@@ -8407,6 +8498,7 @@ export const associateApplications: API.OperationMethod<
     ServiceQuotaExceededException,
     UninitializedAccountException,
   ],
+  operationName: "AssociateApplications",
 }));
 export type DisassociateApplicationsError =
   | ConflictException
@@ -8429,6 +8521,7 @@ export const disassociateApplications: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  operationName: "DisassociateApplications",
 }));
 export type UnarchiveWaveError =
   | ResourceNotFoundException
@@ -8451,6 +8544,7 @@ export const unarchiveWave: API.OperationMethod<
     ServiceQuotaExceededException,
     UninitializedAccountException,
   ],
+  operationName: "UnarchiveWave",
 }));
 export type UpdateWaveError =
   | ConflictException
@@ -8473,4 +8567,5 @@ export const updateWave: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  operationName: "UpdateWave",
 }));

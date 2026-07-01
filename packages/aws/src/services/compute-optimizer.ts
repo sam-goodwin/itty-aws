@@ -4233,6 +4233,7 @@ export const deleteRecommendationPreferences: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteRecommendationPreferences",
 }));
 export type DescribeRecommendationExportJobsError =
   | AccessDeniedException
@@ -4284,6 +4285,7 @@ export const describeRecommendationExportJobs: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeRecommendationExportJobs",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4329,6 +4331,7 @@ export const exportAutoScalingGroupRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ExportAutoScalingGroupRecommendations",
 }));
 export type ExportEBSVolumeRecommendationsError =
   | AccessDeniedException
@@ -4368,6 +4371,7 @@ export const exportEBSVolumeRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ExportEBSVolumeRecommendations",
 }));
 export type ExportEC2InstanceRecommendationsError =
   | AccessDeniedException
@@ -4407,6 +4411,7 @@ export const exportEC2InstanceRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ExportEC2InstanceRecommendations",
 }));
 export type ExportECSServiceRecommendationsError =
   | AccessDeniedException
@@ -4446,6 +4451,7 @@ export const exportECSServiceRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ExportECSServiceRecommendations",
 }));
 export type ExportIdleRecommendationsError =
   | AccessDeniedException
@@ -4485,6 +4491,7 @@ export const exportIdleRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ExportIdleRecommendations",
 }));
 export type ExportLambdaFunctionRecommendationsError =
   | AccessDeniedException
@@ -4524,6 +4531,7 @@ export const exportLambdaFunctionRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ExportLambdaFunctionRecommendations",
 }));
 export type ExportLicenseRecommendationsError =
   | AccessDeniedException
@@ -4563,6 +4571,7 @@ export const exportLicenseRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ExportLicenseRecommendations",
 }));
 export type ExportRDSDatabaseRecommendationsError =
   | AccessDeniedException
@@ -4602,6 +4611,7 @@ export const exportRDSDatabaseRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "ExportRDSDatabaseRecommendations",
 }));
 export type GetAutoScalingGroupRecommendationsError =
   | AccessDeniedException
@@ -4639,6 +4649,7 @@ export const getAutoScalingGroupRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetAutoScalingGroupRecommendations",
 }));
 export type GetEBSVolumeRecommendationsError =
   | AccessDeniedException
@@ -4676,6 +4687,7 @@ export const getEBSVolumeRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetEBSVolumeRecommendations",
 }));
 export type GetEC2InstanceRecommendationsError =
   | AccessDeniedException
@@ -4713,6 +4725,7 @@ export const getEC2InstanceRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetEC2InstanceRecommendations",
 }));
 export type GetEC2RecommendationProjectedMetricsError =
   | AccessDeniedException
@@ -4751,6 +4764,7 @@ export const getEC2RecommendationProjectedMetrics: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetEC2RecommendationProjectedMetrics",
 }));
 export type GetECSServiceRecommendationProjectedMetricsError =
   | AccessDeniedException
@@ -4783,6 +4797,7 @@ export const getECSServiceRecommendationProjectedMetrics: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetECSServiceRecommendationProjectedMetrics",
 }));
 export type GetECSServiceRecommendationsError =
   | AccessDeniedException
@@ -4821,6 +4836,7 @@ export const getECSServiceRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetECSServiceRecommendations",
 }));
 export type GetEffectiveRecommendationPreferencesError =
   | AccessDeniedException
@@ -4859,6 +4875,7 @@ export const getEffectiveRecommendationPreferences: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetEffectiveRecommendationPreferences",
 }));
 export type GetEnrollmentStatusError =
   | AccessDeniedException
@@ -4892,6 +4909,7 @@ export const getEnrollmentStatus: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetEnrollmentStatus",
 }));
 export type GetEnrollmentStatusesForOrganizationError =
   | AccessDeniedException
@@ -4938,6 +4956,7 @@ export const getEnrollmentStatusesForOrganization: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetEnrollmentStatusesForOrganization",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -4979,6 +4998,7 @@ export const getIdleRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetIdleRecommendations",
 }));
 export type GetLambdaFunctionRecommendationsError =
   | AccessDeniedException
@@ -5031,6 +5051,7 @@ export const getLambdaFunctionRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetLambdaFunctionRecommendations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5074,6 +5095,7 @@ export const getLicenseRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetLicenseRecommendations",
 }));
 export type GetRDSDatabaseRecommendationProjectedMetricsError =
   | AccessDeniedException
@@ -5106,6 +5128,7 @@ export const getRDSDatabaseRecommendationProjectedMetrics: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetRDSDatabaseRecommendationProjectedMetrics",
 }));
 export type GetRDSDatabaseRecommendationsError =
   | AccessDeniedException
@@ -5144,6 +5167,7 @@ export const getRDSDatabaseRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetRDSDatabaseRecommendations",
 }));
 export type GetRecommendationPreferencesError =
   | AccessDeniedException
@@ -5200,6 +5224,7 @@ export const getRecommendationPreferences: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetRecommendationPreferences",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5275,6 +5300,7 @@ export const getRecommendationSummaries: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetRecommendationSummaries",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -5318,6 +5344,7 @@ export const putRecommendationPreferences: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "PutRecommendationPreferences",
 }));
 export type UpdateEnrollmentStatusError =
   | AccessDeniedException
@@ -5356,4 +5383,5 @@ export const updateEnrollmentStatus: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "UpdateEnrollmentStatus",
 }));

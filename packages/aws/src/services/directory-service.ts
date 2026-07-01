@@ -4134,6 +4134,7 @@ export const acceptSharedDirectory: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "AcceptSharedDirectory",
 }));
 export type AddIpRoutesError =
   | ClientException
@@ -4172,6 +4173,7 @@ export const addIpRoutes: API.OperationMethod<
     IpRouteLimitExceededException,
     ServiceException,
   ],
+  operationName: "AddIpRoutes",
 }));
 export type AddRegionError =
   | AccessDeniedException
@@ -4208,6 +4210,7 @@ export const addRegion: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "AddRegion",
 }));
 export type AddTagsToResourceError =
   | ClientException
@@ -4236,6 +4239,7 @@ export const addTagsToResource: API.OperationMethod<
     ServiceException,
     TagLimitExceededException,
   ],
+  operationName: "AddTagsToResource",
 }));
 export type CancelSchemaExtensionError =
   | ClientException
@@ -4258,6 +4262,7 @@ export const cancelSchemaExtension: API.OperationMethod<
   input: CancelSchemaExtensionRequest,
   output: CancelSchemaExtensionResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
+  operationName: "CancelSchemaExtension",
 }));
 export type ConnectDirectoryError =
   | ClientException
@@ -4286,6 +4291,7 @@ export const connectDirectory: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "ConnectDirectory",
 }));
 export type CreateAliasError =
   | ClientException
@@ -4316,6 +4322,7 @@ export const createAlias: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "CreateAlias",
 }));
 export type CreateComputerError =
   | AuthenticationFailedException
@@ -4348,6 +4355,7 @@ export const createComputer: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "CreateComputer",
 }));
 export type CreateConditionalForwarderError =
   | ClientException
@@ -4380,6 +4388,7 @@ export const createConditionalForwarder: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "CreateConditionalForwarder",
 }));
 export type CreateDirectoryError =
   | ClientException
@@ -4408,6 +4417,7 @@ export const createDirectory: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "CreateDirectory",
 }));
 export type CreateHybridADError =
   | ADAssessmentLimitExceededException
@@ -4445,6 +4455,7 @@ export const createHybridAD: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "CreateHybridAD",
 }));
 export type CreateLogSubscriptionError =
   | ClientException
@@ -4474,6 +4485,7 @@ export const createLogSubscription: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "CreateLogSubscription",
 }));
 export type CreateMicrosoftADError =
   | ClientException
@@ -4504,6 +4516,7 @@ export const createMicrosoftAD: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "CreateMicrosoftAD",
 }));
 export type CreateSnapshotError =
   | ClientException
@@ -4532,6 +4545,7 @@ export const createSnapshot: API.OperationMethod<
     ServiceException,
     SnapshotLimitExceededException,
   ],
+  operationName: "CreateSnapshot",
 }));
 export type CreateTrustError =
   | ClientException
@@ -4567,6 +4581,7 @@ export const createTrust: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "CreateTrust",
 }));
 export type DeleteADAssessmentError =
   | ClientException
@@ -4598,6 +4613,7 @@ export const deleteADAssessment: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DeleteADAssessment",
 }));
 export type DeleteConditionalForwarderError =
   | ClientException
@@ -4627,6 +4643,7 @@ export const deleteConditionalForwarder: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DeleteConditionalForwarder",
 }));
 export type DeleteDirectoryError =
   | ClientException
@@ -4649,6 +4666,7 @@ export const deleteDirectory: API.OperationMethod<
   input: DeleteDirectoryRequest,
   output: DeleteDirectoryResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
+  operationName: "DeleteDirectory",
 }));
 export type DeleteLogSubscriptionError =
   | ClientException
@@ -4673,6 +4691,7 @@ export const deleteLogSubscription: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DeleteLogSubscription",
 }));
 export type DeleteSnapshotError =
   | ClientException
@@ -4697,6 +4716,7 @@ export const deleteSnapshot: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "DeleteSnapshot",
 }));
 export type DeleteTrustError =
   | ClientException
@@ -4724,6 +4744,7 @@ export const deleteTrust: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DeleteTrust",
 }));
 export type DeregisterCertificateError =
   | CertificateDoesNotExistException
@@ -4757,6 +4778,7 @@ export const deregisterCertificate: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DeregisterCertificate",
 }));
 export type DeregisterEventTopicError =
   | ClientException
@@ -4781,6 +4803,7 @@ export const deregisterEventTopic: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "DeregisterEventTopic",
 }));
 export type DescribeADAssessmentError =
   | ClientException
@@ -4809,6 +4832,7 @@ export const describeADAssessment: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeADAssessment",
 }));
 export type DescribeCAEnrollmentPolicyError =
   | ClientException
@@ -4835,6 +4859,7 @@ export const describeCAEnrollmentPolicy: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeCAEnrollmentPolicy",
 }));
 export type DescribeCertificateError =
   | CertificateDoesNotExistException
@@ -4864,6 +4889,7 @@ export const describeCertificate: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeCertificate",
 }));
 export type DescribeClientAuthenticationSettingsError =
   | AccessDeniedException
@@ -4910,6 +4936,7 @@ export const describeClientAuthenticationSettings: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeClientAuthenticationSettings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4947,6 +4974,7 @@ export const describeConditionalForwarders: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeConditionalForwarders",
 }));
 export type DescribeDirectoriesError =
   | ClientException
@@ -5001,6 +5029,7 @@ export const describeDirectories: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "DescribeDirectories",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5034,6 +5063,7 @@ export const describeDirectoryDataAccess: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeDirectoryDataAccess",
 }));
 export type DescribeDomainControllersError =
   | ClientException
@@ -5077,6 +5107,7 @@ export const describeDomainControllers: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeDomainControllers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5110,6 +5141,7 @@ export const describeEventTopics: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "DescribeEventTopics",
 }));
 export type DescribeHybridADUpdateError =
   | ClientException
@@ -5140,6 +5172,7 @@ export const describeHybridADUpdate: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeHybridADUpdate",
 }));
 export type DescribeLDAPSSettingsError =
   | ClientException
@@ -5183,6 +5216,7 @@ export const describeLDAPSSettings: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeLDAPSSettings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5235,6 +5269,7 @@ export const describeRegions: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeRegions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5268,6 +5303,7 @@ export const describeSettings: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeSettings",
 }));
 export type DescribeSharedDirectoriesError =
   | ClientException
@@ -5311,6 +5347,7 @@ export const describeSharedDirectories: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeSharedDirectories",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5366,6 +5403,7 @@ export const describeSnapshots: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "DescribeSnapshots",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5418,6 +5456,7 @@ export const describeTrusts: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeTrusts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5467,6 +5506,7 @@ export const describeUpdateDirectory: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "DescribeUpdateDirectory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5509,6 +5549,7 @@ export const disableCAEnrollmentPolicy: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "DisableCAEnrollmentPolicy",
 }));
 export type DisableClientAuthenticationError =
   | AccessDeniedException
@@ -5537,6 +5578,7 @@ export const disableClientAuthentication: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DisableClientAuthentication",
 }));
 export type DisableDirectoryDataAccessError =
   | AccessDeniedException
@@ -5568,6 +5610,7 @@ export const disableDirectoryDataAccess: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DisableDirectoryDataAccess",
 }));
 export type DisableLDAPSError =
   | ClientException
@@ -5598,6 +5641,7 @@ export const disableLDAPS: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "DisableLDAPS",
 }));
 export type DisableRadiusError =
   | ClientException
@@ -5617,6 +5661,7 @@ export const disableRadius: API.OperationMethod<
   input: DisableRadiusRequest,
   output: DisableRadiusResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
+  operationName: "DisableRadius",
 }));
 export type DisableSsoError =
   | AuthenticationFailedException
@@ -5643,6 +5688,7 @@ export const disableSso: API.OperationMethod<
     InsufficientPermissionsException,
     ServiceException,
   ],
+  operationName: "DisableSso",
 }));
 export type EnableCAEnrollmentPolicyError =
   | AccessDeniedException
@@ -5683,6 +5729,7 @@ export const enableCAEnrollmentPolicy: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "EnableCAEnrollmentPolicy",
 }));
 export type EnableClientAuthenticationError =
   | AccessDeniedException
@@ -5713,6 +5760,7 @@ export const enableClientAuthentication: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "EnableClientAuthentication",
 }));
 export type EnableDirectoryDataAccessError =
   | AccessDeniedException
@@ -5744,6 +5792,7 @@ export const enableDirectoryDataAccess: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "EnableDirectoryDataAccess",
 }));
 export type EnableLDAPSError =
   | ClientException
@@ -5776,6 +5825,7 @@ export const enableLDAPS: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "EnableLDAPS",
 }));
 export type EnableRadiusError =
   | ClientException
@@ -5803,6 +5853,7 @@ export const enableRadius: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "EnableRadius",
 }));
 export type EnableSsoError =
   | AuthenticationFailedException
@@ -5831,6 +5882,7 @@ export const enableSso: API.OperationMethod<
     InsufficientPermissionsException,
     ServiceException,
   ],
+  operationName: "EnableSso",
 }));
 export type GetDirectoryLimitsError =
   | ClientException
@@ -5849,6 +5901,7 @@ export const getDirectoryLimits: API.OperationMethod<
   input: GetDirectoryLimitsRequest,
   output: GetDirectoryLimitsResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
+  operationName: "GetDirectoryLimits",
 }));
 export type GetSnapshotLimitsError =
   | ClientException
@@ -5867,6 +5920,7 @@ export const getSnapshotLimits: API.OperationMethod<
   input: GetSnapshotLimitsRequest,
   output: GetSnapshotLimitsResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
+  operationName: "GetSnapshotLimits",
 }));
 export type ListADAssessmentsError =
   | ClientException
@@ -5910,6 +5964,7 @@ export const listADAssessments: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "ListADAssessments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -5960,6 +6015,7 @@ export const listCertificates: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "ListCertificates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6007,6 +6063,7 @@ export const listIpRoutes: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "ListIpRoutes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6052,6 +6109,7 @@ export const listLogSubscriptions: API.OperationMethod<
     InvalidNextTokenException,
     ServiceException,
   ],
+  operationName: "ListLogSubscriptions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6097,6 +6155,7 @@ export const listSchemaExtensions: API.OperationMethod<
     InvalidNextTokenException,
     ServiceException,
   ],
+  operationName: "ListSchemaExtensions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6144,6 +6203,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6184,6 +6244,7 @@ export const registerCertificate: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "RegisterCertificate",
 }));
 export type RegisterEventTopicError =
   | ClientException
@@ -6212,6 +6273,7 @@ export const registerEventTopic: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "RegisterEventTopic",
 }));
 export type RejectSharedDirectoryError =
   | ClientException
@@ -6238,6 +6300,7 @@ export const rejectSharedDirectory: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "RejectSharedDirectory",
 }));
 export type RemoveIpRoutesError =
   | ClientException
@@ -6264,6 +6327,7 @@ export const removeIpRoutes: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "RemoveIpRoutes",
 }));
 export type RemoveRegionError =
   | AccessDeniedException
@@ -6294,6 +6358,7 @@ export const removeRegion: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "RemoveRegion",
 }));
 export type RemoveTagsFromResourceError =
   | ClientException
@@ -6318,6 +6383,7 @@ export const removeTagsFromResource: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "RemoveTagsFromResource",
 }));
 export type ResetUserPasswordError =
   | ClientException
@@ -6363,6 +6429,7 @@ export const resetUserPassword: API.OperationMethod<
     UnsupportedOperationException,
     UserDoesNotExistException,
   ],
+  operationName: "ResetUserPassword",
 }));
 export type RestoreFromSnapshotError =
   | ClientException
@@ -6394,6 +6461,7 @@ export const restoreFromSnapshot: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "RestoreFromSnapshot",
 }));
 export type ShareDirectoryError =
   | AccessDeniedException
@@ -6445,6 +6513,7 @@ export const shareDirectory: API.OperationMethod<
     ShareLimitExceededException,
     UnsupportedOperationException,
   ],
+  operationName: "ShareDirectory",
 }));
 export type StartADAssessmentError =
   | ADAssessmentLimitExceededException
@@ -6493,6 +6562,7 @@ export const startADAssessment: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "StartADAssessment",
 }));
 export type StartSchemaExtensionError =
   | ClientException
@@ -6521,6 +6591,7 @@ export const startSchemaExtension: API.OperationMethod<
     ServiceException,
     SnapshotLimitExceededException,
   ],
+  operationName: "StartSchemaExtension",
 }));
 export type UnshareDirectoryError =
   | ClientException
@@ -6547,6 +6618,7 @@ export const unshareDirectory: API.OperationMethod<
     InvalidTargetException,
     ServiceException,
   ],
+  operationName: "UnshareDirectory",
 }));
 export type UpdateConditionalForwarderError =
   | ClientException
@@ -6576,6 +6648,7 @@ export const updateConditionalForwarder: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "UpdateConditionalForwarder",
 }));
 export type UpdateDirectorySetupError =
   | AccessDeniedException
@@ -6610,6 +6683,7 @@ export const updateDirectorySetup: API.OperationMethod<
     SnapshotLimitExceededException,
     UnsupportedOperationException,
   ],
+  operationName: "UpdateDirectorySetup",
 }));
 export type UpdateHybridADError =
   | ADAssessmentLimitExceededException
@@ -6651,6 +6725,7 @@ export const updateHybridAD: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "UpdateHybridAD",
 }));
 export type UpdateNumberOfDomainControllersError =
   | ClientException
@@ -6685,6 +6760,7 @@ export const updateNumberOfDomainControllers: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "UpdateNumberOfDomainControllers",
 }));
 export type UpdateRadiusError =
   | ClientException
@@ -6710,6 +6786,7 @@ export const updateRadius: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "UpdateRadius",
 }));
 export type UpdateSettingsError =
   | ClientException
@@ -6742,6 +6819,7 @@ export const updateSettings: API.OperationMethod<
     UnsupportedOperationException,
     UnsupportedSettingsException,
   ],
+  operationName: "UpdateSettings",
 }));
 export type UpdateTrustError =
   | ClientException
@@ -6767,6 +6845,7 @@ export const updateTrust: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  operationName: "UpdateTrust",
 }));
 export type VerifyTrustError =
   | ClientException
@@ -6797,4 +6876,5 @@ export const verifyTrust: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  operationName: "VerifyTrust",
 }));

@@ -1216,6 +1216,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutRumEventsError =
   | AccessDeniedException
@@ -1244,6 +1245,7 @@ export const putRumEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutRumEvents",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -1276,6 +1278,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -1298,6 +1301,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type GetAppMonitorError =
   | AccessDeniedException
@@ -1324,6 +1328,7 @@ export const getAppMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAppMonitor",
 }));
 export type UpdateAppMonitorError =
   | AccessDeniedException
@@ -1358,6 +1363,7 @@ export const updateAppMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateAppMonitor",
 }));
 export type DeleteAppMonitorError =
   | AccessDeniedException
@@ -1386,6 +1392,7 @@ export const deleteAppMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteAppMonitor",
 }));
 export type ListAppMonitorsError =
   | AccessDeniedException
@@ -1425,6 +1432,7 @@ export const listAppMonitors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListAppMonitors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1481,6 +1489,7 @@ export const batchCreateRumMetricDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchCreateRumMetricDefinitions",
 }));
 export type BatchDeleteRumMetricDefinitionsError =
   | AccessDeniedException
@@ -1513,6 +1522,7 @@ export const batchDeleteRumMetricDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "BatchDeleteRumMetricDefinitions",
 }));
 export type BatchGetRumMetricDefinitionsError =
   | AccessDeniedException
@@ -1552,6 +1562,7 @@ export const batchGetRumMetricDefinitions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "BatchGetRumMetricDefinitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1592,6 +1603,7 @@ export const createAppMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateAppMonitor",
 }));
 export type DeleteResourcePolicyError =
   | AccessDeniedException
@@ -1624,6 +1636,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DeleteRumMetricsDestinationError =
   | AccessDeniedException
@@ -1652,6 +1665,7 @@ export const deleteRumMetricsDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRumMetricsDestination",
 }));
 export type GetAppMonitorDataError =
   | AccessDeniedException
@@ -1693,6 +1707,7 @@ export const getAppMonitorData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetAppMonitorData",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1729,6 +1744,7 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetResourcePolicy",
 }));
 export type ListRumMetricsDestinationsError =
   | AccessDeniedException
@@ -1770,6 +1786,7 @@ export const listRumMetricsDestinations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListRumMetricsDestinations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1810,6 +1827,7 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type PutRumMetricsDestinationError =
   | AccessDeniedException
@@ -1840,6 +1858,7 @@ export const putRumMetricsDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "PutRumMetricsDestination",
 }));
 export type UpdateRumMetricDefinitionError =
   | AccessDeniedException
@@ -1870,4 +1889,5 @@ export const updateRumMetricDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRumMetricDefinition",
 }));

@@ -1315,6 +1315,7 @@ export const createCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateCluster",
 }));
 export type CreateControlPanelError =
   | AccessDeniedException
@@ -1345,6 +1346,7 @@ export const createControlPanel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateControlPanel",
 }));
 export type CreateRoutingControlError =
   | AccessDeniedException
@@ -1379,6 +1381,7 @@ export const createRoutingControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateRoutingControl",
 }));
 export type CreateSafetyRuleError =
   | InternalServerException
@@ -1404,6 +1407,7 @@ export const createSafetyRule: API.OperationMethod<
   input: CreateSafetyRuleRequest,
   output: CreateSafetyRuleResponse,
   errors: [InternalServerException, ValidationException],
+  operationName: "CreateSafetyRule",
 }));
 export type DeleteClusterError =
   | AccessDeniedException
@@ -1432,6 +1436,7 @@ export const deleteCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteCluster",
 }));
 export type DeleteControlPanelError =
   | AccessDeniedException
@@ -1460,6 +1465,7 @@ export const deleteControlPanel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteControlPanel",
 }));
 export type DeleteRoutingControlError =
   | AccessDeniedException
@@ -1488,6 +1494,7 @@ export const deleteRoutingControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteRoutingControl",
 }));
 export type DeleteSafetyRuleError =
   | InternalServerException
@@ -1511,6 +1518,7 @@ export const deleteSafetyRule: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeleteSafetyRule",
 }));
 export type DescribeClusterError =
   | AccessDeniedException
@@ -1539,6 +1547,7 @@ export const describeCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeCluster",
 }));
 export type DescribeControlPanelError =
   | AccessDeniedException
@@ -1567,6 +1576,7 @@ export const describeControlPanel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeControlPanel",
 }));
 export type DescribeRoutingControlError =
   | AccessDeniedException
@@ -1597,6 +1607,7 @@ export const describeRoutingControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DescribeRoutingControl",
 }));
 export type DescribeSafetyRuleError =
   | ResourceNotFoundException
@@ -1614,6 +1625,7 @@ export const describeSafetyRule: API.OperationMethod<
   input: DescribeSafetyRuleRequest,
   output: DescribeSafetyRuleResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "DescribeSafetyRule",
 }));
 export type GetResourcePolicyError =
   | InternalServerException
@@ -1631,6 +1643,7 @@ export const getResourcePolicy: API.OperationMethod<
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
   errors: [InternalServerException, ResourceNotFoundException],
+  operationName: "GetResourcePolicy",
 }));
 export type ListAssociatedRoute53HealthChecksError =
   | InternalServerException
@@ -1668,6 +1681,7 @@ export const listAssociatedRoute53HealthChecks: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListAssociatedRoute53HealthChecks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1715,6 +1729,7 @@ export const listClusters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListClusters",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1762,6 +1777,7 @@ export const listControlPanels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListControlPanels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1809,6 +1825,7 @@ export const listRoutingControls: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListRoutingControls",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1856,6 +1873,7 @@ export const listSafetyRules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListSafetyRules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1884,6 +1902,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -1906,6 +1925,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -1928,6 +1948,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateClusterError =
   | AccessDeniedException
@@ -1956,6 +1977,7 @@ export const updateCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateCluster",
 }));
 export type UpdateControlPanelError =
   | AccessDeniedException
@@ -1984,6 +2006,7 @@ export const updateControlPanel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateControlPanel",
 }));
 export type UpdateRoutingControlError =
   | AccessDeniedException
@@ -2012,6 +2035,7 @@ export const updateRoutingControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateRoutingControl",
 }));
 export type UpdateSafetyRuleError =
   | InternalServerException
@@ -2034,4 +2058,5 @@ export const updateSafetyRule: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateSafetyRule",
 }));

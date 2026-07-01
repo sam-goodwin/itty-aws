@@ -1288,6 +1288,7 @@ export const createApplication: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "CreateApplication",
 }));
 export type CreateApplicationVersionError =
   | BadRequestException
@@ -1314,6 +1315,7 @@ export const createApplicationVersion: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "CreateApplicationVersion",
 }));
 export type CreateCloudFormationChangeSetError =
   | BadRequestException
@@ -1338,6 +1340,7 @@ export const createCloudFormationChangeSet: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "CreateCloudFormationChangeSet",
 }));
 export type CreateCloudFormationTemplateError =
   | BadRequestException
@@ -1364,6 +1367,7 @@ export const createCloudFormationTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateCloudFormationTemplate",
 }));
 export type DeleteApplicationError =
   | BadRequestException
@@ -1392,6 +1396,7 @@ export const deleteApplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteApplication",
 }));
 export type GetApplicationError =
   | BadRequestException
@@ -1418,6 +1423,7 @@ export const getApplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetApplication",
 }));
 export type GetApplicationPolicyError =
   | BadRequestException
@@ -1444,6 +1450,7 @@ export const getApplicationPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetApplicationPolicy",
 }));
 export type GetCloudFormationTemplateError =
   | BadRequestException
@@ -1470,6 +1477,7 @@ export const getCloudFormationTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetCloudFormationTemplate",
 }));
 export type ListApplicationDependenciesError =
   | BadRequestException
@@ -1511,6 +1519,7 @@ export const listApplicationDependencies: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListApplicationDependencies",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1555,6 +1564,7 @@ export const listApplications: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1601,6 +1611,7 @@ export const listApplicationVersions: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListApplicationVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1635,6 +1646,7 @@ export const putApplicationPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PutApplicationPolicy",
 }));
 export type UnshareApplicationError =
   | BadRequestException
@@ -1663,6 +1675,7 @@ export const unshareApplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UnshareApplication",
 }));
 export type UpdateApplicationError =
   | BadRequestException
@@ -1691,4 +1704,5 @@ export const updateApplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateApplication",
 }));

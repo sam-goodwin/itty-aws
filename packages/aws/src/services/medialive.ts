@@ -20226,6 +20226,7 @@ export const acceptInputDeviceTransfer: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "AcceptInputDeviceTransfer",
 }));
 export type BatchDeleteError =
   | BadGatewayException
@@ -20258,6 +20259,7 @@ export const batchDelete: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "BatchDelete",
 }));
 export type BatchStartError =
   | BadGatewayException
@@ -20290,6 +20292,7 @@ export const batchStart: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "BatchStart",
 }));
 export type BatchStopError =
   | BadGatewayException
@@ -20322,6 +20325,7 @@ export const batchStop: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "BatchStop",
 }));
 export type BatchUpdateScheduleError =
   | BadGatewayException
@@ -20354,6 +20358,7 @@ export const batchUpdateSchedule: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "BatchUpdateSchedule",
 }));
 export type CancelInputDeviceTransferError =
   | BadGatewayException
@@ -20388,6 +20393,7 @@ export const cancelInputDeviceTransfer: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "CancelInputDeviceTransfer",
 }));
 export type ClaimDeviceError =
   | BadGatewayException
@@ -20420,6 +20426,7 @@ export const claimDevice: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "ClaimDevice",
 }));
 export type CreateChannelError =
   | BadGatewayException
@@ -20452,6 +20459,7 @@ export const createChannel: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "CreateChannel",
 }));
 export type CreateChannelPlacementGroupError =
   | BadGatewayException
@@ -20482,6 +20490,7 @@ export const createChannelPlacementGroup: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "CreateChannelPlacementGroup",
 }));
 export type CreateCloudWatchAlarmTemplateError =
   | BadRequestException
@@ -20510,6 +20519,7 @@ export const createCloudWatchAlarmTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateCloudWatchAlarmTemplate",
 }));
 export type CreateCloudWatchAlarmTemplateGroupError =
   | BadRequestException
@@ -20538,6 +20548,7 @@ export const createCloudWatchAlarmTemplateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateCloudWatchAlarmTemplateGroup",
 }));
 export type CreateClusterError =
   | BadGatewayException
@@ -20568,6 +20579,7 @@ export const createCluster: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "CreateCluster",
 }));
 export type CreateEventBridgeRuleTemplateError =
   | BadRequestException
@@ -20596,6 +20608,7 @@ export const createEventBridgeRuleTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateEventBridgeRuleTemplate",
 }));
 export type CreateEventBridgeRuleTemplateGroupError =
   | BadRequestException
@@ -20624,6 +20637,7 @@ export const createEventBridgeRuleTemplateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateEventBridgeRuleTemplateGroup",
 }));
 export type CreateInputError =
   | BadGatewayException
@@ -20652,6 +20666,7 @@ export const createInput: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "CreateInput",
 }));
 export type CreateInputSecurityGroupError =
   | BadGatewayException
@@ -20680,6 +20695,7 @@ export const createInputSecurityGroup: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "CreateInputSecurityGroup",
 }));
 export type CreateMultiplexError =
   | BadGatewayException
@@ -20712,6 +20728,7 @@ export const createMultiplex: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "CreateMultiplex",
 }));
 export type CreateMultiplexProgramError =
   | BadGatewayException
@@ -20744,6 +20761,7 @@ export const createMultiplexProgram: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "CreateMultiplexProgram",
 }));
 export type CreateNetworkError =
   | BadGatewayException
@@ -20774,6 +20792,7 @@ export const createNetwork: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "CreateNetwork",
 }));
 export type CreateNodeError =
   | BadGatewayException
@@ -20804,6 +20823,7 @@ export const createNode: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "CreateNode",
 }));
 export type CreateNodeRegistrationScriptError =
   | BadGatewayException
@@ -20834,6 +20854,7 @@ export const createNodeRegistrationScript: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "CreateNodeRegistrationScript",
 }));
 export type CreatePartnerInputError =
   | BadGatewayException
@@ -20862,6 +20883,7 @@ export const createPartnerInput: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "CreatePartnerInput",
 }));
 export type CreateSdiSourceError =
   | BadGatewayException
@@ -20892,6 +20914,7 @@ export const createSdiSource: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "CreateSdiSource",
 }));
 export type CreateSignalMapError =
   | BadRequestException
@@ -20920,6 +20943,7 @@ export const createSignalMap: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateSignalMap",
 }));
 export type CreateTagsError =
   | BadRequestException
@@ -20944,6 +20968,7 @@ export const createTags: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "CreateTags",
 }));
 export type DeleteChannelError =
   | BadGatewayException
@@ -20976,6 +21001,7 @@ export const deleteChannel: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteChannel",
 }));
 export type DeleteChannelPlacementGroupError =
   | BadGatewayException
@@ -21008,6 +21034,7 @@ export const deleteChannelPlacementGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteChannelPlacementGroup",
 }));
 export type DeleteCloudWatchAlarmTemplateError =
   | BadRequestException
@@ -21036,6 +21063,7 @@ export const deleteCloudWatchAlarmTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteCloudWatchAlarmTemplate",
 }));
 export type DeleteCloudWatchAlarmTemplateGroupError =
   | BadRequestException
@@ -21064,6 +21092,7 @@ export const deleteCloudWatchAlarmTemplateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteCloudWatchAlarmTemplateGroup",
 }));
 export type DeleteClusterError =
   | BadGatewayException
@@ -21096,6 +21125,7 @@ export const deleteCluster: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteCluster",
 }));
 export type DeleteEventBridgeRuleTemplateError =
   | BadRequestException
@@ -21124,6 +21154,7 @@ export const deleteEventBridgeRuleTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteEventBridgeRuleTemplate",
 }));
 export type DeleteEventBridgeRuleTemplateGroupError =
   | BadRequestException
@@ -21152,6 +21183,7 @@ export const deleteEventBridgeRuleTemplateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteEventBridgeRuleTemplateGroup",
 }));
 export type DeleteInputError =
   | BadGatewayException
@@ -21184,6 +21216,7 @@ export const deleteInput: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteInput",
 }));
 export type DeleteInputSecurityGroupError =
   | BadGatewayException
@@ -21214,6 +21247,7 @@ export const deleteInputSecurityGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteInputSecurityGroup",
 }));
 export type DeleteMultiplexError =
   | BadGatewayException
@@ -21246,6 +21280,7 @@ export const deleteMultiplex: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteMultiplex",
 }));
 export type DeleteMultiplexProgramError =
   | BadGatewayException
@@ -21278,6 +21313,7 @@ export const deleteMultiplexProgram: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteMultiplexProgram",
 }));
 export type DeleteNetworkError =
   | BadGatewayException
@@ -21310,6 +21346,7 @@ export const deleteNetwork: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteNetwork",
 }));
 export type DeleteNodeError =
   | BadGatewayException
@@ -21342,6 +21379,7 @@ export const deleteNode: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteNode",
 }));
 export type DeleteReservationError =
   | BadGatewayException
@@ -21374,6 +21412,7 @@ export const deleteReservation: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteReservation",
 }));
 export type DeleteScheduleError =
   | BadGatewayException
@@ -21404,6 +21443,7 @@ export const deleteSchedule: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteSchedule",
 }));
 export type DeleteSdiSourceError =
   | BadGatewayException
@@ -21436,6 +21476,7 @@ export const deleteSdiSource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteSdiSource",
 }));
 export type DeleteSignalMapError =
   | BadRequestException
@@ -21464,6 +21505,7 @@ export const deleteSignalMap: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteSignalMap",
 }));
 export type DeleteTagsError =
   | BadRequestException
@@ -21488,6 +21530,7 @@ export const deleteTags: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "DeleteTags",
 }));
 export type DescribeAccountConfigurationError =
   | BadGatewayException
@@ -21516,6 +21559,7 @@ export const describeAccountConfiguration: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeAccountConfiguration",
 }));
 export type DescribeChannelError =
   | BadGatewayException
@@ -21546,6 +21590,7 @@ export const describeChannel: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeChannel",
 }));
 export type DescribeChannelPlacementGroupError =
   | BadGatewayException
@@ -21576,6 +21621,7 @@ export const describeChannelPlacementGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeChannelPlacementGroup",
 }));
 export type DescribeClusterError =
   | BadGatewayException
@@ -21606,6 +21652,7 @@ export const describeCluster: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeCluster",
 }));
 export type DescribeInputError =
   | BadGatewayException
@@ -21636,6 +21683,7 @@ export const describeInput: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeInput",
 }));
 export type DescribeInputDeviceError =
   | BadGatewayException
@@ -21666,6 +21714,7 @@ export const describeInputDevice: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeInputDevice",
 }));
 export type DescribeInputDeviceThumbnailError =
   | BadGatewayException
@@ -21696,6 +21745,7 @@ export const describeInputDeviceThumbnail: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeInputDeviceThumbnail",
 }));
 export type DescribeInputSecurityGroupError =
   | BadGatewayException
@@ -21726,6 +21776,7 @@ export const describeInputSecurityGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeInputSecurityGroup",
 }));
 export type DescribeMultiplexError =
   | BadGatewayException
@@ -21756,6 +21807,7 @@ export const describeMultiplex: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeMultiplex",
 }));
 export type DescribeMultiplexProgramError =
   | BadGatewayException
@@ -21786,6 +21838,7 @@ export const describeMultiplexProgram: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeMultiplexProgram",
 }));
 export type DescribeNetworkError =
   | BadGatewayException
@@ -21816,6 +21869,7 @@ export const describeNetwork: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeNetwork",
 }));
 export type DescribeNodeError =
   | BadGatewayException
@@ -21846,6 +21900,7 @@ export const describeNode: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeNode",
 }));
 export type DescribeOfferingError =
   | BadGatewayException
@@ -21876,6 +21931,7 @@ export const describeOffering: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeOffering",
 }));
 export type DescribeReservationError =
   | BadGatewayException
@@ -21906,6 +21962,7 @@ export const describeReservation: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeReservation",
 }));
 export type DescribeScheduleError =
   | BadGatewayException
@@ -21951,6 +22008,7 @@ export const describeSchedule: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeSchedule",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -21987,6 +22045,7 @@ export const describeSdiSource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeSdiSource",
 }));
 export type DescribeThumbnailsError =
   | BadGatewayException
@@ -22019,6 +22078,7 @@ export const describeThumbnails: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeThumbnails",
 }));
 export type GetCloudWatchAlarmTemplateError =
   | BadRequestException
@@ -22045,6 +22105,7 @@ export const getCloudWatchAlarmTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetCloudWatchAlarmTemplate",
 }));
 export type GetCloudWatchAlarmTemplateGroupError =
   | BadRequestException
@@ -22071,6 +22132,7 @@ export const getCloudWatchAlarmTemplateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetCloudWatchAlarmTemplateGroup",
 }));
 export type GetEventBridgeRuleTemplateError =
   | BadRequestException
@@ -22097,6 +22159,7 @@ export const getEventBridgeRuleTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetEventBridgeRuleTemplate",
 }));
 export type GetEventBridgeRuleTemplateGroupError =
   | BadRequestException
@@ -22123,6 +22186,7 @@ export const getEventBridgeRuleTemplateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetEventBridgeRuleTemplateGroup",
 }));
 export type GetSignalMapError =
   | BadRequestException
@@ -22149,6 +22213,7 @@ export const getSignalMap: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetSignalMap",
 }));
 export type ListAlertsError =
   | BadGatewayException
@@ -22194,6 +22259,7 @@ export const listAlerts: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListAlerts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22243,6 +22309,7 @@ export const listChannelPlacementGroups: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "ListChannelPlacementGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22292,6 +22359,7 @@ export const listChannels: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "ListChannels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22339,6 +22407,7 @@ export const listCloudWatchAlarmTemplateGroups: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListCloudWatchAlarmTemplateGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22386,6 +22455,7 @@ export const listCloudWatchAlarmTemplates: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListCloudWatchAlarmTemplates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22437,6 +22507,7 @@ export const listClusterAlerts: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListClusterAlerts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22486,6 +22557,7 @@ export const listClusters: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "ListClusters",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22533,6 +22605,7 @@ export const listEventBridgeRuleTemplateGroups: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListEventBridgeRuleTemplateGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22580,6 +22653,7 @@ export const listEventBridgeRuleTemplates: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListEventBridgeRuleTemplates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22629,6 +22703,7 @@ export const listInputDevices: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "ListInputDevices",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22680,6 +22755,7 @@ export const listInputDeviceTransfers: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "ListInputDeviceTransfers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22729,6 +22805,7 @@ export const listInputs: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "ListInputs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22778,6 +22855,7 @@ export const listInputSecurityGroups: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "ListInputSecurityGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22829,6 +22907,7 @@ export const listMultiplexAlerts: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListMultiplexAlerts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22878,6 +22957,7 @@ export const listMultiplexes: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "ListMultiplexes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22929,6 +23009,7 @@ export const listMultiplexPrograms: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListMultiplexPrograms",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -22978,6 +23059,7 @@ export const listNetworks: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "ListNetworks",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -23027,6 +23109,7 @@ export const listNodes: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "ListNodes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -23076,6 +23159,7 @@ export const listOfferings: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "ListOfferings",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -23125,6 +23209,7 @@ export const listReservations: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "ListReservations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -23174,6 +23259,7 @@ export const listSdiSources: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "ListSdiSources",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -23221,6 +23307,7 @@ export const listSignalMaps: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListSignalMaps",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -23251,6 +23338,7 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListVersionsError =
   | BadGatewayException
@@ -23283,6 +23371,7 @@ export const listVersions: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListVersions",
 }));
 export type PurchaseOfferingError =
   | BadGatewayException
@@ -23315,6 +23404,7 @@ export const purchaseOffering: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PurchaseOffering",
 }));
 export type RebootInputDeviceError =
   | BadGatewayException
@@ -23347,6 +23437,7 @@ export const rebootInputDevice: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "RebootInputDevice",
 }));
 export type RejectInputDeviceTransferError =
   | BadGatewayException
@@ -23381,6 +23472,7 @@ export const rejectInputDeviceTransfer: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "RejectInputDeviceTransfer",
 }));
 export type RestartChannelPipelinesError =
   | BadGatewayException
@@ -23413,6 +23505,7 @@ export const restartChannelPipelines: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "RestartChannelPipelines",
 }));
 export type StartChannelError =
   | BadGatewayException
@@ -23445,6 +23538,7 @@ export const startChannel: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StartChannel",
 }));
 export type StartDeleteMonitorDeploymentError =
   | BadRequestException
@@ -23473,6 +23567,7 @@ export const startDeleteMonitorDeployment: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StartDeleteMonitorDeployment",
 }));
 export type StartInputDeviceError =
   | BadGatewayException
@@ -23505,6 +23600,7 @@ export const startInputDevice: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "StartInputDevice",
 }));
 export type StartInputDeviceMaintenanceWindowError =
   | BadGatewayException
@@ -23537,6 +23633,7 @@ export const startInputDeviceMaintenanceWindow: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "StartInputDeviceMaintenanceWindow",
 }));
 export type StartMonitorDeploymentError =
   | BadRequestException
@@ -23565,6 +23662,7 @@ export const startMonitorDeployment: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StartMonitorDeployment",
 }));
 export type StartMultiplexError =
   | BadGatewayException
@@ -23597,6 +23695,7 @@ export const startMultiplex: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StartMultiplex",
 }));
 export type StartUpdateSignalMapError =
   | BadRequestException
@@ -23625,6 +23724,7 @@ export const startUpdateSignalMap: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StartUpdateSignalMap",
 }));
 export type StopChannelError =
   | BadGatewayException
@@ -23657,6 +23757,7 @@ export const stopChannel: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StopChannel",
 }));
 export type StopInputDeviceError =
   | BadGatewayException
@@ -23689,6 +23790,7 @@ export const stopInputDevice: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "StopInputDevice",
 }));
 export type StopMultiplexError =
   | BadGatewayException
@@ -23721,6 +23823,7 @@ export const stopMultiplex: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StopMultiplex",
 }));
 export type TransferInputDeviceError =
   | BadGatewayException
@@ -23755,6 +23858,7 @@ export const transferInputDevice: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "TransferInputDevice",
 }));
 export type UpdateAccountConfigurationError =
   | BadGatewayException
@@ -23785,6 +23889,7 @@ export const updateAccountConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "UpdateAccountConfiguration",
 }));
 export type UpdateChannelError =
   | BadGatewayException
@@ -23815,6 +23920,7 @@ export const updateChannel: API.OperationMethod<
     InternalServerErrorException,
     UnprocessableEntityException,
   ],
+  operationName: "UpdateChannel",
 }));
 export type UpdateChannelClassError =
   | BadGatewayException
@@ -23849,6 +23955,7 @@ export const updateChannelClass: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "UpdateChannelClass",
 }));
 export type UpdateChannelPlacementGroupError =
   | BadGatewayException
@@ -23881,6 +23988,7 @@ export const updateChannelPlacementGroup: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "UpdateChannelPlacementGroup",
 }));
 export type UpdateCloudWatchAlarmTemplateError =
   | BadRequestException
@@ -23909,6 +24017,7 @@ export const updateCloudWatchAlarmTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateCloudWatchAlarmTemplate",
 }));
 export type UpdateCloudWatchAlarmTemplateGroupError =
   | BadRequestException
@@ -23937,6 +24046,7 @@ export const updateCloudWatchAlarmTemplateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateCloudWatchAlarmTemplateGroup",
 }));
 export type UpdateClusterError =
   | BadGatewayException
@@ -23967,6 +24077,7 @@ export const updateCluster: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateCluster",
 }));
 export type UpdateEventBridgeRuleTemplateError =
   | BadRequestException
@@ -23995,6 +24106,7 @@ export const updateEventBridgeRuleTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateEventBridgeRuleTemplate",
 }));
 export type UpdateEventBridgeRuleTemplateGroupError =
   | BadRequestException
@@ -24023,6 +24135,7 @@ export const updateEventBridgeRuleTemplateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateEventBridgeRuleTemplateGroup",
 }));
 export type UpdateInputError =
   | BadGatewayException
@@ -24053,6 +24166,7 @@ export const updateInput: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "UpdateInput",
 }));
 export type UpdateInputDeviceError =
   | BadGatewayException
@@ -24085,6 +24199,7 @@ export const updateInputDevice: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "UpdateInputDevice",
 }));
 export type UpdateInputSecurityGroupError =
   | BadGatewayException
@@ -24115,6 +24230,7 @@ export const updateInputSecurityGroup: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  operationName: "UpdateInputSecurityGroup",
 }));
 export type UpdateMultiplexError =
   | BadGatewayException
@@ -24147,6 +24263,7 @@ export const updateMultiplex: API.OperationMethod<
     NotFoundException,
     UnprocessableEntityException,
   ],
+  operationName: "UpdateMultiplex",
 }));
 export type UpdateMultiplexProgramError =
   | BadGatewayException
@@ -24179,6 +24296,7 @@ export const updateMultiplexProgram: API.OperationMethod<
     NotFoundException,
     UnprocessableEntityException,
   ],
+  operationName: "UpdateMultiplexProgram",
 }));
 export type UpdateNetworkError =
   | BadGatewayException
@@ -24209,6 +24327,7 @@ export const updateNetwork: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateNetwork",
 }));
 export type UpdateNodeError =
   | BadGatewayException
@@ -24239,6 +24358,7 @@ export const updateNode: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateNode",
 }));
 export type UpdateNodeStateError =
   | BadGatewayException
@@ -24271,6 +24391,7 @@ export const updateNodeState: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  operationName: "UpdateNodeState",
 }));
 export type UpdateReservationError =
   | BadGatewayException
@@ -24303,6 +24424,7 @@ export const updateReservation: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateReservation",
 }));
 export type UpdateSdiSourceError =
   | BadGatewayException
@@ -24333,4 +24455,5 @@ export const updateSdiSource: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateSdiSource",
 }));

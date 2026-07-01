@@ -4912,6 +4912,7 @@ export const batchDetectDominantLanguage: API.OperationMethod<
     InvalidRequestException,
     TextSizeLimitExceededException,
   ],
+  operationName: "BatchDetectDominantLanguage",
 }));
 export type BatchDetectEntitiesError =
   | BatchSizeLimitExceededException
@@ -4940,6 +4941,7 @@ export const batchDetectEntities: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  operationName: "BatchDetectEntities",
 }));
 export type BatchDetectKeyPhrasesError =
   | BatchSizeLimitExceededException
@@ -4966,6 +4968,7 @@ export const batchDetectKeyPhrases: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  operationName: "BatchDetectKeyPhrases",
 }));
 export type BatchDetectSentimentError =
   | BatchSizeLimitExceededException
@@ -4994,6 +4997,7 @@ export const batchDetectSentiment: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  operationName: "BatchDetectSentiment",
 }));
 export type BatchDetectSyntaxError =
   | BatchSizeLimitExceededException
@@ -5022,6 +5026,7 @@ export const batchDetectSyntax: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  operationName: "BatchDetectSyntax",
 }));
 export type BatchDetectTargetedSentimentError =
   | BatchSizeLimitExceededException
@@ -5051,6 +5056,7 @@ export const batchDetectTargetedSentiment: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  operationName: "BatchDetectTargetedSentiment",
 }));
 export type ClassifyDocumentError =
   | InternalServerException
@@ -5095,6 +5101,7 @@ export const classifyDocument: API.OperationMethod<
     ResourceUnavailableException,
     TextSizeLimitExceededException,
   ],
+  operationName: "ClassifyDocument",
 }));
 export type ContainsPiiEntitiesError =
   | InternalServerException
@@ -5121,6 +5128,7 @@ export const containsPiiEntities: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  operationName: "ContainsPiiEntities",
 }));
 export type CreateDatasetError =
   | InternalServerException
@@ -5153,6 +5161,7 @@ export const createDataset: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  operationName: "CreateDataset",
 }));
 export type CreateDocumentClassifierError =
   | InternalServerException
@@ -5189,6 +5198,7 @@ export const createDocumentClassifier: API.OperationMethod<
     TooManyTagsException,
     UnsupportedLanguageException,
   ],
+  operationName: "CreateDocumentClassifier",
 }));
 export type CreateEndpointError =
   | InternalServerException
@@ -5223,6 +5233,7 @@ export const createEndpoint: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  operationName: "CreateEndpoint",
 }));
 export type CreateEntityRecognizerError =
   | InternalServerException
@@ -5257,6 +5268,7 @@ export const createEntityRecognizer: API.OperationMethod<
     TooManyTagsException,
     UnsupportedLanguageException,
   ],
+  operationName: "CreateEntityRecognizer",
 }));
 export type CreateFlywheelError =
   | InternalServerException
@@ -5307,6 +5319,7 @@ export const createFlywheel: API.OperationMethod<
     TooManyTagsException,
     UnsupportedLanguageException,
   ],
+  operationName: "CreateFlywheel",
 }));
 export type DeleteDocumentClassifierError =
   | InternalServerException
@@ -5343,6 +5356,7 @@ export const deleteDocumentClassifier: API.OperationMethod<
     ResourceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteDocumentClassifier",
 }));
 export type DeleteEndpointError =
   | InternalServerException
@@ -5371,6 +5385,7 @@ export const deleteEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteEndpoint",
 }));
 export type DeleteEntityRecognizerError =
   | InternalServerException
@@ -5407,6 +5422,7 @@ export const deleteEntityRecognizer: API.OperationMethod<
     ResourceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteEntityRecognizer",
 }));
 export type DeleteFlywheelError =
   | InternalServerException
@@ -5439,6 +5455,7 @@ export const deleteFlywheel: API.OperationMethod<
     ResourceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteFlywheel",
 }));
 export type DeleteResourcePolicyError =
   | InternalServerException
@@ -5461,6 +5478,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteResourcePolicy",
 }));
 export type DescribeDatasetError =
   | InternalServerException
@@ -5487,6 +5505,7 @@ export const describeDataset: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeDataset",
 }));
 export type DescribeDocumentClassificationJobError =
   | InternalServerException
@@ -5512,6 +5531,7 @@ export const describeDocumentClassificationJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeDocumentClassificationJob",
 }));
 export type DescribeDocumentClassifierError =
   | InternalServerException
@@ -5536,6 +5556,7 @@ export const describeDocumentClassifier: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeDocumentClassifier",
 }));
 export type DescribeDominantLanguageDetectionJobError =
   | InternalServerException
@@ -5561,6 +5582,7 @@ export const describeDominantLanguageDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeDominantLanguageDetectionJob",
 }));
 export type DescribeEndpointError =
   | InternalServerException
@@ -5587,6 +5609,7 @@ export const describeEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeEndpoint",
 }));
 export type DescribeEntitiesDetectionJobError =
   | InternalServerException
@@ -5612,6 +5635,7 @@ export const describeEntitiesDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeEntitiesDetectionJob",
 }));
 export type DescribeEntityRecognizerError =
   | InternalServerException
@@ -5637,6 +5661,7 @@ export const describeEntityRecognizer: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeEntityRecognizer",
 }));
 export type DescribeEventsDetectionJobError =
   | InternalServerException
@@ -5661,6 +5686,7 @@ export const describeEventsDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeEventsDetectionJob",
 }));
 export type DescribeFlywheelError =
   | InternalServerException
@@ -5686,6 +5712,7 @@ export const describeFlywheel: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeFlywheel",
 }));
 export type DescribeFlywheelIterationError =
   | InternalServerException
@@ -5712,6 +5739,7 @@ export const describeFlywheelIteration: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeFlywheelIteration",
 }));
 export type DescribeKeyPhrasesDetectionJobError =
   | InternalServerException
@@ -5737,6 +5765,7 @@ export const describeKeyPhrasesDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeKeyPhrasesDetectionJob",
 }));
 export type DescribePiiEntitiesDetectionJobError =
   | InternalServerException
@@ -5762,6 +5791,7 @@ export const describePiiEntitiesDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribePiiEntitiesDetectionJob",
 }));
 export type DescribeResourcePolicyError =
   | InternalServerException
@@ -5785,6 +5815,7 @@ export const describeResourcePolicy: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeResourcePolicy",
 }));
 export type DescribeSentimentDetectionJobError =
   | InternalServerException
@@ -5810,6 +5841,7 @@ export const describeSentimentDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeSentimentDetectionJob",
 }));
 export type DescribeTargetedSentimentDetectionJobError =
   | InternalServerException
@@ -5835,6 +5867,7 @@ export const describeTargetedSentimentDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeTargetedSentimentDetectionJob",
 }));
 export type DescribeTopicsDetectionJobError =
   | InternalServerException
@@ -5860,6 +5893,7 @@ export const describeTopicsDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DescribeTopicsDetectionJob",
 }));
 export type DetectDominantLanguageError =
   | InternalServerException
@@ -5883,6 +5917,7 @@ export const detectDominantLanguage: API.OperationMethod<
     InvalidRequestException,
     TextSizeLimitExceededException,
   ],
+  operationName: "DetectDominantLanguage",
 }));
 export type DetectEntitiesError =
   | InternalServerException
@@ -5926,6 +5961,7 @@ export const detectEntities: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  operationName: "DetectEntities",
 }));
 export type DetectKeyPhrasesError =
   | InternalServerException
@@ -5950,6 +5986,7 @@ export const detectKeyPhrases: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  operationName: "DetectKeyPhrases",
 }));
 export type DetectPiiEntitiesError =
   | InternalServerException
@@ -5975,6 +6012,7 @@ export const detectPiiEntities: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  operationName: "DetectPiiEntities",
 }));
 export type DetectSentimentError =
   | InternalServerException
@@ -6000,6 +6038,7 @@ export const detectSentiment: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  operationName: "DetectSentiment",
 }));
 export type DetectSyntaxError =
   | InternalServerException
@@ -6026,6 +6065,7 @@ export const detectSyntax: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  operationName: "DetectSyntax",
 }));
 export type DetectTargetedSentimentError =
   | InternalServerException
@@ -6052,6 +6092,7 @@ export const detectTargetedSentiment: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  operationName: "DetectTargetedSentiment",
 }));
 export type DetectToxicContentError =
   | InternalServerException
@@ -6078,6 +6119,7 @@ export const detectToxicContent: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  operationName: "DetectToxicContent",
 }));
 export type ImportModelError =
   | InternalServerException
@@ -6119,6 +6161,7 @@ export const importModel: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  operationName: "ImportModel",
 }));
 export type ListDatasetsError =
   | InternalServerException
@@ -6161,6 +6204,7 @@ export const listDatasets: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListDatasets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6205,6 +6249,7 @@ export const listDocumentClassificationJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListDocumentClassificationJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6249,6 +6294,7 @@ export const listDocumentClassifiers: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListDocumentClassifiers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6291,6 +6337,7 @@ export const listDocumentClassifierSummaries: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListDocumentClassifierSummaries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6335,6 +6382,7 @@ export const listDominantLanguageDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListDominantLanguageDetectionJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6378,6 +6426,7 @@ export const listEndpoints: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6423,6 +6472,7 @@ export const listEntitiesDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListEntitiesDetectionJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6473,6 +6523,7 @@ export const listEntityRecognizers: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListEntityRecognizers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6515,6 +6566,7 @@ export const listEntityRecognizerSummaries: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListEntityRecognizerSummaries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6559,6 +6611,7 @@ export const listEventsDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListEventsDetectionJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6607,6 +6660,7 @@ export const listFlywheelIterationHistory: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListFlywheelIterationHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6651,6 +6705,7 @@ export const listFlywheels: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListFlywheels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6695,6 +6750,7 @@ export const listKeyPhrasesDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListKeyPhrasesDetectionJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6739,6 +6795,7 @@ export const listPiiEntitiesDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListPiiEntitiesDetectionJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6784,6 +6841,7 @@ export const listSentimentDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListSentimentDetectionJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6811,6 +6869,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListTargetedSentimentDetectionJobsError =
   | InternalServerException
@@ -6850,6 +6909,7 @@ export const listTargetedSentimentDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListTargetedSentimentDetectionJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6894,6 +6954,7 @@ export const listTopicsDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListTopicsDetectionJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -6923,6 +6984,7 @@ export const putResourcePolicy: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "PutResourcePolicy",
 }));
 export type StartDocumentClassificationJobError =
   | InternalServerException
@@ -6957,6 +7019,7 @@ export const startDocumentClassificationJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  operationName: "StartDocumentClassificationJob",
 }));
 export type StartDominantLanguageDetectionJobError =
   | InternalServerException
@@ -6987,6 +7050,7 @@ export const startDominantLanguageDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  operationName: "StartDominantLanguageDetectionJob",
 }));
 export type StartEntitiesDetectionJobError =
   | InternalServerException
@@ -7024,6 +7088,7 @@ export const startEntitiesDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  operationName: "StartEntitiesDetectionJob",
 }));
 export type StartEventsDetectionJobError =
   | InternalServerException
@@ -7052,6 +7117,7 @@ export const startEventsDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  operationName: "StartEventsDetectionJob",
 }));
 export type StartFlywheelIterationError =
   | InternalServerException
@@ -7080,6 +7146,7 @@ export const startFlywheelIteration: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StartFlywheelIteration",
 }));
 export type StartKeyPhrasesDetectionJobError =
   | InternalServerException
@@ -7110,6 +7177,7 @@ export const startKeyPhrasesDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  operationName: "StartKeyPhrasesDetectionJob",
 }));
 export type StartPiiEntitiesDetectionJobError =
   | InternalServerException
@@ -7138,6 +7206,7 @@ export const startPiiEntitiesDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  operationName: "StartPiiEntitiesDetectionJob",
 }));
 export type StartSentimentDetectionJobError =
   | InternalServerException
@@ -7168,6 +7237,7 @@ export const startSentimentDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  operationName: "StartSentimentDetectionJob",
 }));
 export type StartTargetedSentimentDetectionJobError =
   | InternalServerException
@@ -7198,6 +7268,7 @@ export const startTargetedSentimentDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  operationName: "StartTargetedSentimentDetectionJob",
 }));
 export type StartTopicsDetectionJobError =
   | InternalServerException
@@ -7227,6 +7298,7 @@ export const startTopicsDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  operationName: "StartTopicsDetectionJob",
 }));
 export type StopDominantLanguageDetectionJobError =
   | InternalServerException
@@ -7261,6 +7333,7 @@ export const stopDominantLanguageDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  operationName: "StopDominantLanguageDetectionJob",
 }));
 export type StopEntitiesDetectionJobError =
   | InternalServerException
@@ -7295,6 +7368,7 @@ export const stopEntitiesDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  operationName: "StopEntitiesDetectionJob",
 }));
 export type StopEventsDetectionJobError =
   | InternalServerException
@@ -7317,6 +7391,7 @@ export const stopEventsDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  operationName: "StopEventsDetectionJob",
 }));
 export type StopKeyPhrasesDetectionJobError =
   | InternalServerException
@@ -7351,6 +7426,7 @@ export const stopKeyPhrasesDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  operationName: "StopKeyPhrasesDetectionJob",
 }));
 export type StopPiiEntitiesDetectionJobError =
   | InternalServerException
@@ -7373,6 +7449,7 @@ export const stopPiiEntitiesDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  operationName: "StopPiiEntitiesDetectionJob",
 }));
 export type StopSentimentDetectionJobError =
   | InternalServerException
@@ -7407,6 +7484,7 @@ export const stopSentimentDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  operationName: "StopSentimentDetectionJob",
 }));
 export type StopTargetedSentimentDetectionJobError =
   | InternalServerException
@@ -7441,6 +7519,7 @@ export const stopTargetedSentimentDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  operationName: "StopTargetedSentimentDetectionJob",
 }));
 export type StopTrainingDocumentClassifierError =
   | InternalServerException
@@ -7471,6 +7550,7 @@ export const stopTrainingDocumentClassifier: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StopTrainingDocumentClassifier",
 }));
 export type StopTrainingEntityRecognizerError =
   | InternalServerException
@@ -7501,6 +7581,7 @@ export const stopTrainingEntityRecognizer: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "StopTrainingEntityRecognizer",
 }));
 export type TagResourceError =
   | ConcurrentModificationException
@@ -7529,6 +7610,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ConcurrentModificationException
@@ -7555,6 +7637,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagKeysException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateEndpointError =
   | InternalServerException
@@ -7586,6 +7669,7 @@ export const updateEndpoint: API.OperationMethod<
     ResourceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateEndpoint",
 }));
 export type UpdateFlywheelError =
   | InternalServerException
@@ -7612,4 +7696,5 @@ export const updateFlywheel: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateFlywheel",
 }));

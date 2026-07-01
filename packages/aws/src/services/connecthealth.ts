@@ -1400,6 +1400,7 @@ export const activateSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ActivateSubscription",
 }));
 export type CreateDomainError = ServiceQuotaExceededException | CommonErrors;
 /**
@@ -1414,6 +1415,7 @@ export const createDomain: API.OperationMethod<
   input: CreateDomainInput,
   output: CreateDomainOutput,
   errors: [ServiceQuotaExceededException],
+  operationName: "CreateDomain",
 }));
 export type CreateSubscriptionError =
   | AccessDeniedException
@@ -1440,6 +1442,7 @@ export const createSubscription: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateSubscription",
 }));
 export type DeactivateSubscriptionError =
   | AccessDeniedException
@@ -1464,6 +1467,7 @@ export const deactivateSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "DeactivateSubscription",
 }));
 export type DeleteDomainError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1478,6 +1482,7 @@ export const deleteDomain: API.OperationMethod<
   input: DeleteDomainInput,
   output: DeleteDomainOutput,
   errors: [ResourceNotFoundException],
+  operationName: "DeleteDomain",
 }));
 export type GetDomainError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1492,6 +1497,7 @@ export const getDomain: API.OperationMethod<
   input: GetDomainInput,
   output: GetDomainOutput,
   errors: [ResourceNotFoundException],
+  operationName: "GetDomain",
 }));
 export type GetMedicalScribeListeningSessionError =
   | AccessDeniedException
@@ -1518,6 +1524,7 @@ export const getMedicalScribeListeningSession: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  operationName: "GetMedicalScribeListeningSession",
 }));
 export type GetPatientInsightsJobError =
   | AccessDeniedException
@@ -1544,6 +1551,7 @@ export const getPatientInsightsJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetPatientInsightsJob",
 }));
 export type GetSubscriptionError =
   | AccessDeniedException
@@ -1568,6 +1576,7 @@ export const getSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "GetSubscription",
 }));
 export type ListDomainsError = CommonErrors;
 /**
@@ -1597,6 +1606,7 @@ export const listDomains: API.OperationMethod<
   input: ListDomainsInput,
   output: ListDomainsOutput,
   errors: [],
+  operationName: "ListDomains",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1642,6 +1652,7 @@ export const listSubscriptions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListSubscriptions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1662,6 +1673,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [],
+  operationName: "ListTagsForResource",
 }));
 export type StartMedicalScribeListeningSessionError =
   | AccessDeniedException
@@ -1690,6 +1702,7 @@ export const startMedicalScribeListeningSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartMedicalScribeListeningSession",
 }));
 export type StartPatientInsightsJobError =
   | AccessDeniedException
@@ -1718,6 +1731,7 @@ export const startPatientInsightsJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartPatientInsightsJob",
 }));
 export type TagResourceError = CommonErrors;
 /**
@@ -1732,6 +1746,7 @@ export const tagResource: API.OperationMethod<
   input: TagResourceInput,
   output: TagResourceResponse,
   errors: [],
+  operationName: "TagResource",
 }));
 export type UntagResourceError = CommonErrors;
 /**
@@ -1746,4 +1761,5 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceResponse,
   errors: [],
+  operationName: "UntagResource",
 }));

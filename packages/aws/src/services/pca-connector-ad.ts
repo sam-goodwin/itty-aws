@@ -1911,6 +1911,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1937,6 +1938,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1963,6 +1965,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type CreateConnectorError =
   | AccessDeniedException
@@ -1994,6 +1997,7 @@ export const createConnector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateConnector",
 }));
 export type GetConnectorError =
   | AccessDeniedException
@@ -2021,6 +2025,7 @@ export const getConnector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetConnector",
 }));
 export type DeleteConnectorError =
   | AccessDeniedException
@@ -2053,6 +2058,7 @@ export const deleteConnector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteConnector",
 }));
 export type ListConnectorsError =
   | AccessDeniedException
@@ -2092,6 +2098,7 @@ export const listConnectors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListConnectors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2127,6 +2134,7 @@ export const createDirectoryRegistration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateDirectoryRegistration",
 }));
 export type GetDirectoryRegistrationError =
   | AccessDeniedException
@@ -2153,6 +2161,7 @@ export const getDirectoryRegistration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetDirectoryRegistration",
 }));
 export type DeleteDirectoryRegistrationError =
   | AccessDeniedException
@@ -2180,6 +2189,7 @@ export const deleteDirectoryRegistration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteDirectoryRegistration",
 }));
 export type ListDirectoryRegistrationsError =
   | AccessDeniedException
@@ -2220,6 +2230,7 @@ export const listDirectoryRegistrations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListDirectoryRegistrations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2256,6 +2267,7 @@ export const createServicePrincipalName: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateServicePrincipalName",
 }));
 export type GetServicePrincipalNameError =
   | AccessDeniedException
@@ -2283,6 +2295,7 @@ export const getServicePrincipalName: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetServicePrincipalName",
 }));
 export type DeleteServicePrincipalNameError =
   | AccessDeniedException
@@ -2310,6 +2323,7 @@ export const deleteServicePrincipalName: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteServicePrincipalName",
 }));
 export type ListServicePrincipalNamesError =
   | AccessDeniedException
@@ -2352,6 +2366,7 @@ export const listServicePrincipalNames: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListServicePrincipalNames",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2389,6 +2404,7 @@ export const createTemplateGroupAccessControlEntry: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateTemplateGroupAccessControlEntry",
 }));
 export type GetTemplateGroupAccessControlEntryError =
   | AccessDeniedException
@@ -2415,6 +2431,7 @@ export const getTemplateGroupAccessControlEntry: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTemplateGroupAccessControlEntry",
 }));
 export type UpdateTemplateGroupAccessControlEntryError =
   | AccessDeniedException
@@ -2443,6 +2460,7 @@ export const updateTemplateGroupAccessControlEntry: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateTemplateGroupAccessControlEntry",
 }));
 export type DeleteTemplateGroupAccessControlEntryError =
   | AccessDeniedException
@@ -2471,6 +2489,7 @@ export const deleteTemplateGroupAccessControlEntry: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteTemplateGroupAccessControlEntry",
 }));
 export type ListTemplateGroupAccessControlEntriesError =
   | AccessDeniedException
@@ -2512,6 +2531,7 @@ export const listTemplateGroupAccessControlEntries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTemplateGroupAccessControlEntries",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2549,6 +2569,7 @@ export const createTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateTemplate",
 }));
 export type GetTemplateError =
   | AccessDeniedException
@@ -2576,6 +2597,7 @@ export const getTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetTemplate",
 }));
 export type UpdateTemplateError =
   | AccessDeniedException
@@ -2604,6 +2626,7 @@ export const updateTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateTemplate",
 }));
 export type DeleteTemplateError =
   | AccessDeniedException
@@ -2633,6 +2656,7 @@ export const deleteTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteTemplate",
 }));
 export type ListTemplatesError =
   | AccessDeniedException
@@ -2674,6 +2698,7 @@ export const listTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTemplates",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

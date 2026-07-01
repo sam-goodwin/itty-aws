@@ -4623,6 +4623,7 @@ export const activateGateway: API.OperationMethod<
   input: ActivateGatewayInput,
   output: ActivateGatewayOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "ActivateGateway",
 }));
 export type AddCacheError =
   | InternalServerError
@@ -4644,6 +4645,7 @@ export const addCache: API.OperationMethod<
   input: AddCacheInput,
   output: AddCacheOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "AddCache",
 }));
 export type AddTagsToResourceError =
   | InternalServerError
@@ -4677,6 +4679,7 @@ export const addTagsToResource: API.OperationMethod<
   input: AddTagsToResourceInput,
   output: AddTagsToResourceOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "AddTagsToResource",
 }));
 export type AddUploadBufferError =
   | InternalServerError
@@ -4700,6 +4703,7 @@ export const addUploadBuffer: API.OperationMethod<
   input: AddUploadBufferInput,
   output: AddUploadBufferOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "AddUploadBuffer",
 }));
 export type AddWorkingStorageError =
   | InternalServerError
@@ -4727,6 +4731,7 @@ export const addWorkingStorage: API.OperationMethod<
   input: AddWorkingStorageInput,
   output: AddWorkingStorageOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "AddWorkingStorage",
 }));
 export type AssignTapePoolError =
   | InternalServerError
@@ -4747,6 +4752,7 @@ export const assignTapePool: API.OperationMethod<
   input: AssignTapePoolInput,
   output: AssignTapePoolOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "AssignTapePool",
 }));
 export type AssociateFileSystemError =
   | InternalServerError
@@ -4767,6 +4773,7 @@ export const associateFileSystem: API.OperationMethod<
   input: AssociateFileSystemInput,
   output: AssociateFileSystemOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "AssociateFileSystem",
 }));
 export type AttachVolumeError =
   | InternalServerError
@@ -4787,6 +4794,7 @@ export const attachVolume: API.OperationMethod<
   input: AttachVolumeInput,
   output: AttachVolumeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "AttachVolume",
 }));
 export type CancelArchivalError =
   | InternalServerError
@@ -4805,6 +4813,7 @@ export const cancelArchival: API.OperationMethod<
   input: CancelArchivalInput,
   output: CancelArchivalOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "CancelArchival",
 }));
 export type CancelCacheReportError =
   | InternalServerError
@@ -4826,6 +4835,7 @@ export const cancelCacheReport: API.OperationMethod<
   input: CancelCacheReportInput,
   output: CancelCacheReportOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "CancelCacheReport",
 }));
 export type CancelRetrievalError =
   | InternalServerError
@@ -4845,6 +4855,7 @@ export const cancelRetrieval: API.OperationMethod<
   input: CancelRetrievalInput,
   output: CancelRetrievalOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "CancelRetrieval",
 }));
 export type CreateCachediSCSIVolumeError =
   | InternalServerError
@@ -4877,6 +4888,7 @@ export const createCachediSCSIVolume: API.OperationMethod<
   input: CreateCachediSCSIVolumeInput,
   output: CreateCachediSCSIVolumeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "CreateCachediSCSIVolume",
 }));
 export type CreateNFSFileShareError =
   | InternalServerError
@@ -4908,6 +4920,7 @@ export const createNFSFileShare: API.OperationMethod<
   input: CreateNFSFileShareInput,
   output: CreateNFSFileShareOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "CreateNFSFileShare",
 }));
 export type CreateSMBFileShareError =
   | InternalServerError
@@ -4939,6 +4952,7 @@ export const createSMBFileShare: API.OperationMethod<
   input: CreateSMBFileShareInput,
   output: CreateSMBFileShareOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "CreateSMBFileShare",
 }));
 export type CreateSnapshotError =
   | InternalServerError
@@ -4984,6 +4998,7 @@ export const createSnapshot: API.OperationMethod<
     InvalidGatewayRequestException,
     ServiceUnavailableError,
   ],
+  operationName: "CreateSnapshot",
 }));
 export type CreateSnapshotFromVolumeRecoveryPointError =
   | InternalServerError
@@ -5024,6 +5039,7 @@ export const createSnapshotFromVolumeRecoveryPoint: API.OperationMethod<
     InvalidGatewayRequestException,
     ServiceUnavailableError,
   ],
+  operationName: "CreateSnapshotFromVolumeRecoveryPoint",
 }));
 export type CreateStorediSCSIVolumeError =
   | InternalServerError
@@ -5052,6 +5068,7 @@ export const createStorediSCSIVolume: API.OperationMethod<
   input: CreateStorediSCSIVolumeInput,
   output: CreateStorediSCSIVolumeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "CreateStorediSCSIVolume",
 }));
 export type CreateTapePoolError =
   | InternalServerError
@@ -5070,6 +5087,7 @@ export const createTapePool: API.OperationMethod<
   input: CreateTapePoolInput,
   output: CreateTapePoolOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "CreateTapePool",
 }));
 export type CreateTapesError =
   | InternalServerError
@@ -5091,6 +5109,7 @@ export const createTapes: API.OperationMethod<
   input: CreateTapesInput,
   output: CreateTapesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "CreateTapes",
 }));
 export type CreateTapeWithBarcodeError =
   | InternalServerError
@@ -5114,6 +5133,7 @@ export const createTapeWithBarcode: API.OperationMethod<
   input: CreateTapeWithBarcodeInput,
   output: CreateTapeWithBarcodeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "CreateTapeWithBarcode",
 }));
 export type DeleteAutomaticTapeCreationPolicyError =
   | InternalServerError
@@ -5133,6 +5153,7 @@ export const deleteAutomaticTapeCreationPolicy: API.OperationMethod<
   input: DeleteAutomaticTapeCreationPolicyInput,
   output: DeleteAutomaticTapeCreationPolicyOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DeleteAutomaticTapeCreationPolicy",
 }));
 export type DeleteBandwidthRateLimitError =
   | InternalServerError
@@ -5154,6 +5175,7 @@ export const deleteBandwidthRateLimit: API.OperationMethod<
   input: DeleteBandwidthRateLimitInput,
   output: DeleteBandwidthRateLimitOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DeleteBandwidthRateLimit",
 }));
 export type DeleteCacheReportError =
   | InternalServerError
@@ -5175,6 +5197,7 @@ export const deleteCacheReport: API.OperationMethod<
   input: DeleteCacheReportInput,
   output: DeleteCacheReportOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DeleteCacheReport",
 }));
 export type DeleteChapCredentialsError =
   | InternalServerError
@@ -5194,6 +5217,7 @@ export const deleteChapCredentials: API.OperationMethod<
   input: DeleteChapCredentialsInput,
   output: DeleteChapCredentialsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DeleteChapCredentials",
 }));
 export type DeleteFileShareError =
   | InternalServerError
@@ -5212,6 +5236,7 @@ export const deleteFileShare: API.OperationMethod<
   input: DeleteFileShareInput,
   output: DeleteFileShareOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DeleteFileShare",
 }));
 export type DeleteGatewayError =
   | InternalServerError
@@ -5244,6 +5269,7 @@ export const deleteGateway: API.OperationMethod<
   input: DeleteGatewayInput,
   output: DeleteGatewayOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DeleteGateway",
 }));
 export type DeleteSnapshotScheduleError =
   | InternalServerError
@@ -5272,6 +5298,7 @@ export const deleteSnapshotSchedule: API.OperationMethod<
   input: DeleteSnapshotScheduleInput,
   output: DeleteSnapshotScheduleOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DeleteSnapshotSchedule",
 }));
 export type DeleteTapeError =
   | InternalServerError
@@ -5290,6 +5317,7 @@ export const deleteTape: API.OperationMethod<
   input: DeleteTapeInput,
   output: DeleteTapeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DeleteTape",
 }));
 export type DeleteTapeArchiveError =
   | InternalServerError
@@ -5308,6 +5336,7 @@ export const deleteTapeArchive: API.OperationMethod<
   input: DeleteTapeArchiveInput,
   output: DeleteTapeArchiveOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DeleteTapeArchive",
 }));
 export type DeleteTapePoolError =
   | InternalServerError
@@ -5327,6 +5356,7 @@ export const deleteTapePool: API.OperationMethod<
   input: DeleteTapePoolInput,
   output: DeleteTapePoolOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DeleteTapePool",
 }));
 export type DeleteVolumeError =
   | InternalServerError
@@ -5356,6 +5386,7 @@ export const deleteVolume: API.OperationMethod<
   input: DeleteVolumeInput,
   output: DeleteVolumeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DeleteVolume",
 }));
 export type DescribeAvailabilityMonitorTestError =
   | InternalServerError
@@ -5375,6 +5406,7 @@ export const describeAvailabilityMonitorTest: API.OperationMethod<
   input: DescribeAvailabilityMonitorTestInput,
   output: DescribeAvailabilityMonitorTestOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeAvailabilityMonitorTest",
 }));
 export type DescribeBandwidthRateLimitError =
   | InternalServerError
@@ -5400,6 +5432,7 @@ export const describeBandwidthRateLimit: API.OperationMethod<
   input: DescribeBandwidthRateLimitInput,
   output: DescribeBandwidthRateLimitOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeBandwidthRateLimit",
 }));
 export type DescribeBandwidthRateLimitScheduleError =
   | InternalServerError
@@ -5433,6 +5466,7 @@ export const describeBandwidthRateLimitSchedule: API.OperationMethod<
   input: DescribeBandwidthRateLimitScheduleInput,
   output: DescribeBandwidthRateLimitScheduleOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeBandwidthRateLimitSchedule",
 }));
 export type DescribeCacheError =
   | InternalServerError
@@ -5454,6 +5488,7 @@ export const describeCache: API.OperationMethod<
   input: DescribeCacheInput,
   output: DescribeCacheOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeCache",
 }));
 export type DescribeCachediSCSIVolumesError =
   | InternalServerError
@@ -5476,6 +5511,7 @@ export const describeCachediSCSIVolumes: API.OperationMethod<
   input: DescribeCachediSCSIVolumesInput,
   output: DescribeCachediSCSIVolumesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeCachediSCSIVolumes",
 }));
 export type DescribeCacheReportError =
   | InternalServerError
@@ -5494,6 +5530,7 @@ export const describeCacheReport: API.OperationMethod<
   input: DescribeCacheReportInput,
   output: DescribeCacheReportOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeCacheReport",
 }));
 export type DescribeChapCredentialsError =
   | InternalServerError
@@ -5513,6 +5550,7 @@ export const describeChapCredentials: API.OperationMethod<
   input: DescribeChapCredentialsInput,
   output: DescribeChapCredentialsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeChapCredentials",
 }));
 export type DescribeFileSystemAssociationsError =
   | InternalServerError
@@ -5531,6 +5569,7 @@ export const describeFileSystemAssociations: API.OperationMethod<
   input: DescribeFileSystemAssociationsInput,
   output: DescribeFileSystemAssociationsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeFileSystemAssociations",
 }));
 export type DescribeGatewayInformationError =
   | InternalServerError
@@ -5550,6 +5589,7 @@ export const describeGatewayInformation: API.OperationMethod<
   input: DescribeGatewayInformationInput,
   output: DescribeGatewayInformationOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeGatewayInformation",
 }));
 export type DescribeMaintenanceStartTimeError =
   | InternalServerError
@@ -5569,6 +5609,7 @@ export const describeMaintenanceStartTime: API.OperationMethod<
   input: DescribeMaintenanceStartTimeInput,
   output: DescribeMaintenanceStartTimeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeMaintenanceStartTime",
 }));
 export type DescribeNFSFileSharesError =
   | InternalServerError
@@ -5587,6 +5628,7 @@ export const describeNFSFileShares: API.OperationMethod<
   input: DescribeNFSFileSharesInput,
   output: DescribeNFSFileSharesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeNFSFileShares",
 }));
 export type DescribeSMBFileSharesError =
   | InternalServerError
@@ -5605,6 +5647,7 @@ export const describeSMBFileShares: API.OperationMethod<
   input: DescribeSMBFileSharesInput,
   output: DescribeSMBFileSharesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeSMBFileShares",
 }));
 export type DescribeSMBSettingsError =
   | InternalServerError
@@ -5623,6 +5666,7 @@ export const describeSMBSettings: API.OperationMethod<
   input: DescribeSMBSettingsInput,
   output: DescribeSMBSettingsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeSMBSettings",
 }));
 export type DescribeSnapshotScheduleError =
   | InternalServerError
@@ -5643,6 +5687,7 @@ export const describeSnapshotSchedule: API.OperationMethod<
   input: DescribeSnapshotScheduleInput,
   output: DescribeSnapshotScheduleOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeSnapshotSchedule",
 }));
 export type DescribeStorediSCSIVolumesError =
   | InternalServerError
@@ -5662,6 +5707,7 @@ export const describeStorediSCSIVolumes: API.OperationMethod<
   input: DescribeStorediSCSIVolumesInput,
   output: DescribeStorediSCSIVolumesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeStorediSCSIVolumes",
 }));
 export type DescribeTapeArchivesError =
   | InternalServerError
@@ -5698,6 +5744,7 @@ export const describeTapeArchives: API.OperationMethod<
   input: DescribeTapeArchivesInput,
   output: DescribeTapeArchivesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeTapeArchives",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -5742,6 +5789,7 @@ export const describeTapeRecoveryPoints: API.OperationMethod<
   input: DescribeTapeRecoveryPointsInput,
   output: DescribeTapeRecoveryPointsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeTapeRecoveryPoints",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -5790,6 +5838,7 @@ export const describeTapes: API.OperationMethod<
   input: DescribeTapesInput,
   output: DescribeTapesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeTapes",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -5817,6 +5866,7 @@ export const describeUploadBuffer: API.OperationMethod<
   input: DescribeUploadBufferInput,
   output: DescribeUploadBufferOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeUploadBuffer",
 }));
 export type DescribeVTLDevicesError =
   | InternalServerError
@@ -5852,6 +5902,7 @@ export const describeVTLDevices: API.OperationMethod<
   input: DescribeVTLDevicesInput,
   output: DescribeVTLDevicesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeVTLDevices",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -5883,6 +5934,7 @@ export const describeWorkingStorage: API.OperationMethod<
   input: DescribeWorkingStorageInput,
   output: DescribeWorkingStorageOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DescribeWorkingStorage",
 }));
 export type DetachVolumeError =
   | InternalServerError
@@ -5904,6 +5956,7 @@ export const detachVolume: API.OperationMethod<
   input: DetachVolumeInput,
   output: DetachVolumeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DetachVolume",
 }));
 export type DisableGatewayError =
   | InternalServerError
@@ -5927,6 +5980,7 @@ export const disableGateway: API.OperationMethod<
   input: DisableGatewayInput,
   output: DisableGatewayOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DisableGateway",
 }));
 export type DisassociateFileSystemError =
   | InternalServerError
@@ -5946,6 +6000,7 @@ export const disassociateFileSystem: API.OperationMethod<
   input: DisassociateFileSystemInput,
   output: DisassociateFileSystemOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "DisassociateFileSystem",
 }));
 export type EvictFilesFailingUploadError =
   | InternalServerError
@@ -5974,6 +6029,7 @@ export const evictFilesFailingUpload: API.OperationMethod<
   input: EvictFilesFailingUploadInput,
   output: EvictFilesFailingUploadOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "EvictFilesFailingUpload",
 }));
 export type JoinDomainError =
   | InternalServerError
@@ -6001,6 +6057,7 @@ export const joinDomain: API.OperationMethod<
   input: JoinDomainInput,
   output: JoinDomainOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "JoinDomain",
 }));
 export type ListAutomaticTapeCreationPoliciesError =
   | InternalServerError
@@ -6021,6 +6078,7 @@ export const listAutomaticTapeCreationPolicies: API.OperationMethod<
   input: ListAutomaticTapeCreationPoliciesInput,
   output: ListAutomaticTapeCreationPoliciesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "ListAutomaticTapeCreationPolicies",
 }));
 export type ListCacheReportsError =
   | InternalServerError
@@ -6056,6 +6114,7 @@ export const listCacheReports: API.OperationMethod<
   input: ListCacheReportsInput,
   output: ListCacheReportsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "ListCacheReports",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -6095,6 +6154,7 @@ export const listFileShares: API.OperationMethod<
   input: ListFileSharesInput,
   output: ListFileSharesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "ListFileShares",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -6135,6 +6195,7 @@ export const listFileSystemAssociations: API.OperationMethod<
   input: ListFileSystemAssociationsInput,
   output: ListFileSystemAssociationsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "ListFileSystemAssociations",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
@@ -6183,6 +6244,7 @@ export const listGateways: API.OperationMethod<
   input: ListGatewaysInput,
   output: ListGatewaysOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "ListGateways",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -6214,6 +6276,7 @@ export const listLocalDisks: API.OperationMethod<
   input: ListLocalDisksInput,
   output: ListLocalDisksOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "ListLocalDisks",
 }));
 export type ListTagsForResourceError =
   | InternalServerError
@@ -6247,6 +6310,7 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "ListTagsForResource",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -6293,6 +6357,7 @@ export const listTapePools: API.OperationMethod<
   input: ListTapePoolsInput,
   output: ListTapePoolsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "ListTapePools",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -6341,6 +6406,7 @@ export const listTapes: API.OperationMethod<
   input: ListTapesInput,
   output: ListTapesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "ListTapes",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -6366,6 +6432,7 @@ export const listVolumeInitiators: API.OperationMethod<
   input: ListVolumeInitiatorsInput,
   output: ListVolumeInitiatorsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "ListVolumeInitiators",
 }));
 export type ListVolumeRecoveryPointsError =
   | InternalServerError
@@ -6389,6 +6456,7 @@ export const listVolumeRecoveryPoints: API.OperationMethod<
   input: ListVolumeRecoveryPointsInput,
   output: ListVolumeRecoveryPointsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "ListVolumeRecoveryPoints",
 }));
 export type ListVolumesError =
   | InternalServerError
@@ -6430,6 +6498,7 @@ export const listVolumes: API.OperationMethod<
   input: ListVolumesInput,
   output: ListVolumesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "ListVolumes",
   pagination: {
     inputToken: "Marker",
     outputToken: "Marker",
@@ -6465,6 +6534,7 @@ export const notifyWhenUploaded: API.OperationMethod<
   input: NotifyWhenUploadedInput,
   output: NotifyWhenUploadedOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "NotifyWhenUploaded",
 }));
 export type RefreshCacheError =
   | InternalServerError
@@ -6519,6 +6589,7 @@ export const refreshCache: API.OperationMethod<
   input: RefreshCacheInput,
   output: RefreshCacheOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "RefreshCache",
 }));
 export type RemoveTagsFromResourceError =
   | InternalServerError
@@ -6537,6 +6608,7 @@ export const removeTagsFromResource: API.OperationMethod<
   input: RemoveTagsFromResourceInput,
   output: RemoveTagsFromResourceOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "RemoveTagsFromResource",
 }));
 export type ResetCacheError =
   | InternalServerError
@@ -6564,6 +6636,7 @@ export const resetCache: API.OperationMethod<
   input: ResetCacheInput,
   output: ResetCacheOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "ResetCache",
 }));
 export type RetrieveTapeArchiveError =
   | InternalServerError
@@ -6588,6 +6661,7 @@ export const retrieveTapeArchive: API.OperationMethod<
   input: RetrieveTapeArchiveInput,
   output: RetrieveTapeArchiveOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "RetrieveTapeArchive",
 }));
 export type RetrieveTapeRecoveryPointError =
   | InternalServerError
@@ -6614,6 +6688,7 @@ export const retrieveTapeRecoveryPoint: API.OperationMethod<
   input: RetrieveTapeRecoveryPointInput,
   output: RetrieveTapeRecoveryPointOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "RetrieveTapeRecoveryPoint",
 }));
 export type SetLocalConsolePasswordError =
   | InternalServerError
@@ -6634,6 +6709,7 @@ export const setLocalConsolePassword: API.OperationMethod<
   input: SetLocalConsolePasswordInput,
   output: SetLocalConsolePasswordOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "SetLocalConsolePassword",
 }));
 export type SetSMBGuestPasswordError =
   | InternalServerError
@@ -6653,6 +6729,7 @@ export const setSMBGuestPassword: API.OperationMethod<
   input: SetSMBGuestPasswordInput,
   output: SetSMBGuestPasswordOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "SetSMBGuestPassword",
 }));
 export type ShutdownGatewayError =
   | InternalServerError
@@ -6692,6 +6769,7 @@ export const shutdownGateway: API.OperationMethod<
   input: ShutdownGatewayInput,
   output: ShutdownGatewayOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "ShutdownGateway",
 }));
 export type StartAvailabilityMonitorTestError =
   | InternalServerError
@@ -6715,6 +6793,7 @@ export const startAvailabilityMonitorTest: API.OperationMethod<
   input: StartAvailabilityMonitorTestInput,
   output: StartAvailabilityMonitorTestOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "StartAvailabilityMonitorTest",
 }));
 export type StartCacheReportError =
   | InternalServerError
@@ -6759,6 +6838,7 @@ export const startCacheReport: API.OperationMethod<
   input: StartCacheReportInput,
   output: StartCacheReportOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "StartCacheReport",
 }));
 export type StartGatewayError =
   | InternalServerError
@@ -6786,6 +6866,7 @@ export const startGateway: API.OperationMethod<
   input: StartGatewayInput,
   output: StartGatewayOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "StartGateway",
 }));
 export type UpdateAutomaticTapeCreationPolicyError =
   | InternalServerError
@@ -6809,6 +6890,7 @@ export const updateAutomaticTapeCreationPolicy: API.OperationMethod<
   input: UpdateAutomaticTapeCreationPolicyInput,
   output: UpdateAutomaticTapeCreationPolicyOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "UpdateAutomaticTapeCreationPolicy",
 }));
 export type UpdateBandwidthRateLimitError =
   | InternalServerError
@@ -6837,6 +6919,7 @@ export const updateBandwidthRateLimit: API.OperationMethod<
   input: UpdateBandwidthRateLimitInput,
   output: UpdateBandwidthRateLimitOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "UpdateBandwidthRateLimit",
 }));
 export type UpdateBandwidthRateLimitScheduleError =
   | InternalServerError
@@ -6859,6 +6942,7 @@ export const updateBandwidthRateLimitSchedule: API.OperationMethod<
   input: UpdateBandwidthRateLimitScheduleInput,
   output: UpdateBandwidthRateLimitScheduleOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "UpdateBandwidthRateLimitSchedule",
 }));
 export type UpdateChapCredentialsError =
   | InternalServerError
@@ -6882,6 +6966,7 @@ export const updateChapCredentials: API.OperationMethod<
   input: UpdateChapCredentialsInput,
   output: UpdateChapCredentialsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "UpdateChapCredentials",
 }));
 export type UpdateFileSystemAssociationError =
   | InternalServerError
@@ -6900,6 +6985,7 @@ export const updateFileSystemAssociation: API.OperationMethod<
   input: UpdateFileSystemAssociationInput,
   output: UpdateFileSystemAssociationOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "UpdateFileSystemAssociation",
 }));
 export type UpdateGatewayInformationError =
   | InternalServerError
@@ -6923,6 +7009,7 @@ export const updateGatewayInformation: API.OperationMethod<
   input: UpdateGatewayInformationInput,
   output: UpdateGatewayInformationOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "UpdateGatewayInformation",
 }));
 export type UpdateGatewaySoftwareNowError =
   | InternalServerError
@@ -6951,6 +7038,7 @@ export const updateGatewaySoftwareNow: API.OperationMethod<
   input: UpdateGatewaySoftwareNowInput,
   output: UpdateGatewaySoftwareNowOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "UpdateGatewaySoftwareNow",
 }));
 export type UpdateMaintenanceStartTimeError =
   | InternalServerError
@@ -6983,6 +7071,7 @@ export const updateMaintenanceStartTime: API.OperationMethod<
   input: UpdateMaintenanceStartTimeInput,
   output: UpdateMaintenanceStartTimeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "UpdateMaintenanceStartTime",
 }));
 export type UpdateNFSFileShareError =
   | InternalServerError
@@ -7016,6 +7105,7 @@ export const updateNFSFileShare: API.OperationMethod<
   input: UpdateNFSFileShareInput,
   output: UpdateNFSFileShareOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "UpdateNFSFileShare",
 }));
 export type UpdateSMBFileShareError =
   | InternalServerError
@@ -7048,6 +7138,7 @@ export const updateSMBFileShare: API.OperationMethod<
   input: UpdateSMBFileShareInput,
   output: UpdateSMBFileShareOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "UpdateSMBFileShare",
 }));
 export type UpdateSMBFileShareVisibilityError =
   | InternalServerError
@@ -7066,6 +7157,7 @@ export const updateSMBFileShareVisibility: API.OperationMethod<
   input: UpdateSMBFileShareVisibilityInput,
   output: UpdateSMBFileShareVisibilityOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "UpdateSMBFileShareVisibility",
 }));
 export type UpdateSMBLocalGroupsError =
   | InternalServerError
@@ -7084,6 +7176,7 @@ export const updateSMBLocalGroups: API.OperationMethod<
   input: UpdateSMBLocalGroupsInput,
   output: UpdateSMBLocalGroupsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "UpdateSMBLocalGroups",
 }));
 export type UpdateSMBSecurityStrategyError =
   | InternalServerError
@@ -7108,6 +7201,7 @@ export const updateSMBSecurityStrategy: API.OperationMethod<
   input: UpdateSMBSecurityStrategyInput,
   output: UpdateSMBSecurityStrategyOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "UpdateSMBSecurityStrategy",
 }));
 export type UpdateSnapshotScheduleError =
   | InternalServerError
@@ -7134,6 +7228,7 @@ export const updateSnapshotSchedule: API.OperationMethod<
   input: UpdateSnapshotScheduleInput,
   output: UpdateSnapshotScheduleOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "UpdateSnapshotSchedule",
 }));
 export type UpdateVTLDeviceTypeError =
   | InternalServerError
@@ -7154,4 +7249,5 @@ export const updateVTLDeviceType: API.OperationMethod<
   input: UpdateVTLDeviceTypeInput,
   output: UpdateVTLDeviceTypeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  operationName: "UpdateVTLDeviceType",
 }));

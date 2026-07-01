@@ -2799,6 +2799,7 @@ export const batchDeleteRecipeVersion: API.OperationMethod<
   input: BatchDeleteRecipeVersionRequest,
   output: BatchDeleteRecipeVersionResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "BatchDeleteRecipeVersion",
 }));
 export type CreateDatasetError =
   | AccessDeniedException
@@ -2823,6 +2824,7 @@ export const createDataset: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateDataset",
 }));
 export type CreateProfileJobError =
   | AccessDeniedException
@@ -2849,6 +2851,7 @@ export const createProfileJob: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateProfileJob",
 }));
 export type CreateProjectError =
   | ConflictException
@@ -2873,6 +2876,7 @@ export const createProject: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateProject",
 }));
 export type CreateRecipeError =
   | ConflictException
@@ -2895,6 +2899,7 @@ export const createRecipe: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateRecipe",
 }));
 export type CreateRecipeJobError =
   | AccessDeniedException
@@ -2921,6 +2926,7 @@ export const createRecipeJob: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateRecipeJob",
 }));
 export type CreateRulesetError =
   | ConflictException
@@ -2944,6 +2950,7 @@ export const createRuleset: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateRuleset",
 }));
 export type CreateScheduleError =
   | ConflictException
@@ -2967,6 +2974,7 @@ export const createSchedule: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "CreateSchedule",
 }));
 export type DeleteDatasetError =
   | ConflictException
@@ -2985,6 +2993,7 @@ export const deleteDataset: API.OperationMethod<
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "DeleteDataset",
 }));
 export type DeleteJobError =
   | ConflictException
@@ -3003,6 +3012,7 @@ export const deleteJob: API.OperationMethod<
   input: DeleteJobRequest,
   output: DeleteJobResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "DeleteJob",
 }));
 export type DeleteProjectError =
   | ConflictException
@@ -3021,6 +3031,7 @@ export const deleteProject: API.OperationMethod<
   input: DeleteProjectRequest,
   output: DeleteProjectResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "DeleteProject",
 }));
 export type DeleteRecipeVersionError =
   | ConflictException
@@ -3039,6 +3050,7 @@ export const deleteRecipeVersion: API.OperationMethod<
   input: DeleteRecipeVersionRequest,
   output: DeleteRecipeVersionResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "DeleteRecipeVersion",
 }));
 export type DeleteRulesetError =
   | ConflictException
@@ -3057,6 +3069,7 @@ export const deleteRuleset: API.OperationMethod<
   input: DeleteRulesetRequest,
   output: DeleteRulesetResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "DeleteRuleset",
 }));
 export type DeleteScheduleError =
   | ResourceNotFoundException
@@ -3074,6 +3087,7 @@ export const deleteSchedule: API.OperationMethod<
   input: DeleteScheduleRequest,
   output: DeleteScheduleResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "DeleteSchedule",
 }));
 export type DescribeDatasetError =
   | ResourceNotFoundException
@@ -3091,6 +3105,7 @@ export const describeDataset: API.OperationMethod<
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "DescribeDataset",
 }));
 export type DescribeJobError =
   | ResourceNotFoundException
@@ -3108,6 +3123,7 @@ export const describeJob: API.OperationMethod<
   input: DescribeJobRequest,
   output: DescribeJobResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "DescribeJob",
 }));
 export type DescribeJobRunError =
   | ResourceNotFoundException
@@ -3125,6 +3141,7 @@ export const describeJobRun: API.OperationMethod<
   input: DescribeJobRunRequest,
   output: DescribeJobRunResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "DescribeJobRun",
 }));
 export type DescribeProjectError =
   | ResourceNotFoundException
@@ -3142,6 +3159,7 @@ export const describeProject: API.OperationMethod<
   input: DescribeProjectRequest,
   output: DescribeProjectResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "DescribeProject",
 }));
 export type DescribeRecipeError =
   | ResourceNotFoundException
@@ -3160,6 +3178,7 @@ export const describeRecipe: API.OperationMethod<
   input: DescribeRecipeRequest,
   output: DescribeRecipeResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "DescribeRecipe",
 }));
 export type DescribeRulesetError =
   | ResourceNotFoundException
@@ -3177,6 +3196,7 @@ export const describeRuleset: API.OperationMethod<
   input: DescribeRulesetRequest,
   output: DescribeRulesetResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "DescribeRuleset",
 }));
 export type DescribeScheduleError =
   | ResourceNotFoundException
@@ -3194,6 +3214,7 @@ export const describeSchedule: API.OperationMethod<
   input: DescribeScheduleRequest,
   output: DescribeScheduleResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "DescribeSchedule",
 }));
 export type ListDatasetsError = ValidationException | CommonErrors;
 /**
@@ -3223,6 +3244,7 @@ export const listDatasets: API.OperationMethod<
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [ValidationException],
+  operationName: "ListDatasets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3261,6 +3283,7 @@ export const listJobRuns: API.OperationMethod<
   input: ListJobRunsRequest,
   output: ListJobRunsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListJobRuns",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3296,6 +3319,7 @@ export const listJobs: API.OperationMethod<
   input: ListJobsRequest,
   output: ListJobsResponse,
   errors: [ValidationException],
+  operationName: "ListJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3331,6 +3355,7 @@ export const listProjects: API.OperationMethod<
   input: ListProjectsRequest,
   output: ListProjectsResponse,
   errors: [ValidationException],
+  operationName: "ListProjects",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3366,6 +3391,7 @@ export const listRecipes: API.OperationMethod<
   input: ListRecipesRequest,
   output: ListRecipesResponse,
   errors: [ValidationException],
+  operationName: "ListRecipes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3402,6 +3428,7 @@ export const listRecipeVersions: API.OperationMethod<
   input: ListRecipeVersionsRequest,
   output: ListRecipeVersionsResponse,
   errors: [ValidationException],
+  operationName: "ListRecipeVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3441,6 +3468,7 @@ export const listRulesets: API.OperationMethod<
   input: ListRulesetsRequest,
   output: ListRulesetsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "ListRulesets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3476,6 +3504,7 @@ export const listSchedules: API.OperationMethod<
   input: ListSchedulesRequest,
   output: ListSchedulesResponse,
   errors: [ValidationException],
+  operationName: "ListSchedules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3504,6 +3533,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PublishRecipeError =
   | ResourceNotFoundException
@@ -3526,6 +3556,7 @@ export const publishRecipe: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "PublishRecipe",
 }));
 export type SendProjectSessionActionError =
   | ConflictException
@@ -3545,6 +3576,7 @@ export const sendProjectSessionAction: API.OperationMethod<
   input: SendProjectSessionActionRequest,
   output: SendProjectSessionActionResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  operationName: "SendProjectSessionAction",
 }));
 export type StartJobRunError =
   | ConflictException
@@ -3569,6 +3601,7 @@ export const startJobRun: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "StartJobRun",
 }));
 export type StartProjectSessionError =
   | ConflictException
@@ -3594,6 +3627,7 @@ export const startProjectSession: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "StartProjectSession",
 }));
 export type StopJobRunError =
   | ResourceNotFoundException
@@ -3611,6 +3645,7 @@ export const stopJobRun: API.OperationMethod<
   input: StopJobRunRequest,
   output: StopJobRunResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "StopJobRun",
 }));
 export type TagResourceError =
   | InternalServerException
@@ -3634,6 +3669,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServerException
@@ -3656,6 +3692,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateDatasetError =
   | AccessDeniedException
@@ -3678,6 +3715,7 @@ export const updateDataset: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateDataset",
 }));
 export type UpdateProfileJobError =
   | AccessDeniedException
@@ -3700,6 +3738,7 @@ export const updateProfileJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateProfileJob",
 }));
 export type UpdateProjectError =
   | ResourceNotFoundException
@@ -3717,6 +3756,7 @@ export const updateProject: API.OperationMethod<
   input: UpdateProjectRequest,
   output: UpdateProjectResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "UpdateProject",
 }));
 export type UpdateRecipeError =
   | ResourceNotFoundException
@@ -3735,6 +3775,7 @@ export const updateRecipe: API.OperationMethod<
   input: UpdateRecipeRequest,
   output: UpdateRecipeResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "UpdateRecipe",
 }));
 export type UpdateRecipeJobError =
   | AccessDeniedException
@@ -3757,6 +3798,7 @@ export const updateRecipeJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  operationName: "UpdateRecipeJob",
 }));
 export type UpdateRulesetError =
   | ResourceNotFoundException
@@ -3774,6 +3816,7 @@ export const updateRuleset: API.OperationMethod<
   input: UpdateRulesetRequest,
   output: UpdateRulesetResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  operationName: "UpdateRuleset",
 }));
 export type UpdateScheduleError =
   | ResourceNotFoundException
@@ -3796,4 +3839,5 @@ export const updateSchedule: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  operationName: "UpdateSchedule",
 }));

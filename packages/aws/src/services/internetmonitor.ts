@@ -1125,6 +1125,7 @@ export const listTagsForResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1153,6 +1154,7 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1179,6 +1181,7 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UntagResource",
 }));
 export type GetInternetEventError =
   | AccessDeniedException
@@ -1209,6 +1212,7 @@ export const getInternetEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetInternetEvent",
 }));
 export type ListInternetEventsError =
   | AccessDeniedException
@@ -1257,6 +1261,7 @@ export const listInternetEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListInternetEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1300,6 +1305,7 @@ export const createMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateMonitor",
 }));
 export type GetMonitorError =
   | AccessDeniedException
@@ -1325,6 +1331,7 @@ export const getMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetMonitor",
 }));
 export type UpdateMonitorError =
   | AccessDeniedException
@@ -1357,6 +1364,7 @@ export const updateMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateMonitor",
 }));
 export type DeleteMonitorError =
   | AccessDeniedException
@@ -1381,6 +1389,7 @@ export const deleteMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteMonitor",
 }));
 export type ListMonitorsError =
   | AccessDeniedException
@@ -1420,6 +1429,7 @@ export const listMonitors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListMonitors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1472,6 +1482,7 @@ export const getQueryResults: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetQueryResults",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -1514,6 +1525,7 @@ export const getQueryStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetQueryStatus",
 }));
 export type StartQueryError =
   | AccessDeniedException
@@ -1546,6 +1558,7 @@ export const startQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StartQuery",
 }));
 export type StopQueryError =
   | AccessDeniedException
@@ -1572,6 +1585,7 @@ export const stopQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "StopQuery",
 }));
 export type GetHealthEventError =
   | AccessDeniedException
@@ -1602,6 +1616,7 @@ export const getHealthEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetHealthEvent",
 }));
 export type ListHealthEventsError =
   | AccessDeniedException
@@ -1644,6 +1659,7 @@ export const listHealthEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListHealthEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

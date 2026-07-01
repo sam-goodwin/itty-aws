@@ -38825,6 +38825,7 @@ export const addAssociation: API.OperationMethod<
   input: AddAssociationRequest,
   output: AddAssociationResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  operationName: "AddAssociation",
 }));
 export type AddTagsError = CommonErrors;
 /**
@@ -38845,6 +38846,7 @@ export const addTags: API.OperationMethod<
   input: AddTagsInput,
   output: AddTagsOutput,
   errors: [],
+  operationName: "AddTags",
 }));
 export type AssociateTrialComponentError =
   | ResourceLimitExceeded
@@ -38862,6 +38864,7 @@ export const associateTrialComponent: API.OperationMethod<
   input: AssociateTrialComponentRequest,
   output: AssociateTrialComponentResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  operationName: "AssociateTrialComponent",
 }));
 export type AttachClusterNodeVolumeError = ResourceNotFound | CommonErrors;
 /**
@@ -38878,6 +38881,7 @@ export const attachClusterNodeVolume: API.OperationMethod<
   input: AttachClusterNodeVolumeRequest,
   output: AttachClusterNodeVolumeResponse,
   errors: [ResourceNotFound],
+  operationName: "AttachClusterNodeVolume",
 }));
 export type BatchAddClusterNodesError =
   | ResourceLimitExceeded
@@ -38897,6 +38901,7 @@ export const batchAddClusterNodes: API.OperationMethod<
   input: BatchAddClusterNodesRequest,
   output: BatchAddClusterNodesResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  operationName: "BatchAddClusterNodes",
 }));
 export type BatchDeleteClusterNodesError = ResourceNotFound | CommonErrors;
 /**
@@ -38915,6 +38920,7 @@ export const batchDeleteClusterNodes: API.OperationMethod<
   input: BatchDeleteClusterNodesRequest,
   output: BatchDeleteClusterNodesResponse,
   errors: [ResourceNotFound],
+  operationName: "BatchDeleteClusterNodes",
 }));
 export type BatchDescribeModelPackageError = CommonErrors;
 /**
@@ -38929,6 +38935,7 @@ export const batchDescribeModelPackage: API.OperationMethod<
   input: BatchDescribeModelPackageInput,
   output: BatchDescribeModelPackageOutput,
   errors: [],
+  operationName: "BatchDescribeModelPackage",
 }));
 export type BatchRebootClusterNodesError = ResourceNotFound | CommonErrors;
 /**
@@ -38951,6 +38958,7 @@ export const batchRebootClusterNodes: API.OperationMethod<
   input: BatchRebootClusterNodesRequest,
   output: BatchRebootClusterNodesResponse,
   errors: [ResourceNotFound],
+  operationName: "BatchRebootClusterNodes",
 }));
 export type BatchReplaceClusterNodesError = ResourceNotFound | CommonErrors;
 /**
@@ -38975,6 +38983,7 @@ export const batchReplaceClusterNodes: API.OperationMethod<
   input: BatchReplaceClusterNodesRequest,
   output: BatchReplaceClusterNodesResponse,
   errors: [ResourceNotFound],
+  operationName: "BatchReplaceClusterNodes",
 }));
 export type CreateActionError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -38989,6 +38998,7 @@ export const createAction: API.OperationMethod<
   input: CreateActionRequest,
   output: CreateActionResponse,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateAction",
 }));
 export type CreateAIBenchmarkJobError =
   | ResourceInUse
@@ -39007,6 +39017,7 @@ export const createAIBenchmarkJob: API.OperationMethod<
   input: CreateAIBenchmarkJobRequest,
   output: CreateAIBenchmarkJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "CreateAIBenchmarkJob",
 }));
 export type CreateAIRecommendationJobError =
   | ResourceInUse
@@ -39025,6 +39036,7 @@ export const createAIRecommendationJob: API.OperationMethod<
   input: CreateAIRecommendationJobRequest,
   output: CreateAIRecommendationJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "CreateAIRecommendationJob",
 }));
 export type CreateAIWorkloadConfigError =
   | ResourceInUse
@@ -39042,6 +39054,7 @@ export const createAIWorkloadConfig: API.OperationMethod<
   input: CreateAIWorkloadConfigRequest,
   output: CreateAIWorkloadConfigResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateAIWorkloadConfig",
 }));
 export type CreateAlgorithmError = CommonErrors;
 /**
@@ -39056,6 +39069,7 @@ export const createAlgorithm: API.OperationMethod<
   input: CreateAlgorithmInput,
   output: CreateAlgorithmOutput,
   errors: [],
+  operationName: "CreateAlgorithm",
 }));
 export type CreateAppError =
   | ResourceInUse
@@ -39073,6 +39087,7 @@ export const createApp: API.OperationMethod<
   input: CreateAppRequest,
   output: CreateAppResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateApp",
 }));
 export type CreateAppImageConfigError = ResourceInUse | CommonErrors;
 /**
@@ -39087,6 +39102,7 @@ export const createAppImageConfig: API.OperationMethod<
   input: CreateAppImageConfigRequest,
   output: CreateAppImageConfigResponse,
   errors: [ResourceInUse],
+  operationName: "CreateAppImageConfig",
 }));
 export type CreateArtifactError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -39101,6 +39117,7 @@ export const createArtifact: API.OperationMethod<
   input: CreateArtifactRequest,
   output: CreateArtifactResponse,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateArtifact",
 }));
 export type CreateAutoMLJobError =
   | ResourceInUse
@@ -39130,6 +39147,7 @@ export const createAutoMLJob: API.OperationMethod<
   input: CreateAutoMLJobRequest,
   output: CreateAutoMLJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateAutoMLJob",
 }));
 export type CreateAutoMLJobV2Error =
   | ResourceInUse
@@ -39163,6 +39181,7 @@ export const createAutoMLJobV2: API.OperationMethod<
   input: CreateAutoMLJobV2Request,
   output: CreateAutoMLJobV2Response,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateAutoMLJobV2",
 }));
 export type CreateClusterError =
   | ResourceInUse
@@ -39180,6 +39199,7 @@ export const createCluster: API.OperationMethod<
   input: CreateClusterRequest,
   output: CreateClusterResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateCluster",
 }));
 export type CreateClusterSchedulerConfigError =
   | ConflictException
@@ -39197,6 +39217,7 @@ export const createClusterSchedulerConfig: API.OperationMethod<
   input: CreateClusterSchedulerConfigRequest,
   output: CreateClusterSchedulerConfigResponse,
   errors: [ConflictException, ResourceLimitExceeded],
+  operationName: "CreateClusterSchedulerConfig",
 }));
 export type CreateCodeRepositoryError = CommonErrors;
 /**
@@ -39213,6 +39234,7 @@ export const createCodeRepository: API.OperationMethod<
   input: CreateCodeRepositoryInput,
   output: CreateCodeRepositoryOutput,
   errors: [],
+  operationName: "CreateCodeRepository",
 }));
 export type CreateCompilationJobError =
   | ResourceInUse
@@ -39246,6 +39268,7 @@ export const createCompilationJob: API.OperationMethod<
   input: CreateCompilationJobRequest,
   output: CreateCompilationJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateCompilationJob",
 }));
 export type CreateComputeQuotaError =
   | ConflictException
@@ -39263,6 +39286,7 @@ export const createComputeQuota: API.OperationMethod<
   input: CreateComputeQuotaRequest,
   output: CreateComputeQuotaResponse,
   errors: [ConflictException, ResourceLimitExceeded],
+  operationName: "CreateComputeQuota",
 }));
 export type CreateContextError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -39277,6 +39301,7 @@ export const createContext: API.OperationMethod<
   input: CreateContextRequest,
   output: CreateContextResponse,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateContext",
 }));
 export type CreateDataQualityJobDefinitionError =
   | ResourceInUse
@@ -39294,6 +39319,7 @@ export const createDataQualityJobDefinition: API.OperationMethod<
   input: CreateDataQualityJobDefinitionRequest,
   output: CreateDataQualityJobDefinitionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateDataQualityJobDefinition",
 }));
 export type CreateDeviceFleetError =
   | ResourceInUse
@@ -39311,6 +39337,7 @@ export const createDeviceFleet: API.OperationMethod<
   input: CreateDeviceFleetRequest,
   output: CreateDeviceFleetResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateDeviceFleet",
 }));
 export type CreateDomainError =
   | ResourceInUse
@@ -39348,6 +39375,7 @@ export const createDomain: API.OperationMethod<
   input: CreateDomainRequest,
   output: CreateDomainResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateDomain",
 }));
 export type CreateEdgeDeploymentPlanError =
   | ResourceLimitExceeded
@@ -39364,6 +39392,7 @@ export const createEdgeDeploymentPlan: API.OperationMethod<
   input: CreateEdgeDeploymentPlanRequest,
   output: CreateEdgeDeploymentPlanResponse,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateEdgeDeploymentPlan",
 }));
 export type CreateEdgeDeploymentStageError =
   | ResourceLimitExceeded
@@ -39380,6 +39409,7 @@ export const createEdgeDeploymentStage: API.OperationMethod<
   input: CreateEdgeDeploymentStageRequest,
   output: CreateEdgeDeploymentStageResponse,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateEdgeDeploymentStage",
 }));
 export type CreateEdgePackagingJobError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -39394,6 +39424,7 @@ export const createEdgePackagingJob: API.OperationMethod<
   input: CreateEdgePackagingJobRequest,
   output: CreateEdgePackagingJobResponse,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateEdgePackagingJob",
 }));
 export type CreateEndpointError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -39440,6 +39471,7 @@ export const createEndpoint: API.OperationMethod<
   input: CreateEndpointInput,
   output: CreateEndpointOutput,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateEndpoint",
 }));
 export type CreateEndpointConfigError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -39462,6 +39494,7 @@ export const createEndpointConfig: API.OperationMethod<
   input: CreateEndpointConfigInput,
   output: CreateEndpointConfigOutput,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateEndpointConfig",
 }));
 export type CreateExperimentError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -39488,6 +39521,7 @@ export const createExperiment: API.OperationMethod<
   input: CreateExperimentRequest,
   output: CreateExperimentResponse,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateExperiment",
 }));
 export type CreateFeatureGroupError =
   | ResourceInUse
@@ -39511,6 +39545,7 @@ export const createFeatureGroup: API.OperationMethod<
   input: CreateFeatureGroupRequest,
   output: CreateFeatureGroupResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateFeatureGroup",
 }));
 export type CreateFlowDefinitionError =
   | ResourceInUse
@@ -39528,6 +39563,7 @@ export const createFlowDefinition: API.OperationMethod<
   input: CreateFlowDefinitionRequest,
   output: CreateFlowDefinitionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateFlowDefinition",
 }));
 export type CreateHubError =
   | ResourceInUse
@@ -39545,6 +39581,7 @@ export const createHub: API.OperationMethod<
   input: CreateHubRequest,
   output: CreateHubResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateHub",
 }));
 export type CreateHubContentPresignedUrlsError = CommonErrors;
 /**
@@ -39574,6 +39611,7 @@ export const createHubContentPresignedUrls: API.OperationMethod<
   input: CreateHubContentPresignedUrlsRequest,
   output: CreateHubContentPresignedUrlsResponse,
   errors: [],
+  operationName: "CreateHubContentPresignedUrls",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -39598,6 +39636,7 @@ export const createHubContentReference: API.OperationMethod<
   input: CreateHubContentReferenceRequest,
   output: CreateHubContentReferenceResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "CreateHubContentReference",
 }));
 export type CreateHumanTaskUiError =
   | ResourceInUse
@@ -39615,6 +39654,7 @@ export const createHumanTaskUi: API.OperationMethod<
   input: CreateHumanTaskUiRequest,
   output: CreateHumanTaskUiResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateHumanTaskUi",
 }));
 export type CreateHyperParameterTuningJobError =
   | ResourceInUse
@@ -39636,6 +39676,7 @@ export const createHyperParameterTuningJob: API.OperationMethod<
   input: CreateHyperParameterTuningJobRequest,
   output: CreateHyperParameterTuningJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateHyperParameterTuningJob",
 }));
 export type CreateImageError =
   | ResourceInUse
@@ -39653,6 +39694,7 @@ export const createImage: API.OperationMethod<
   input: CreateImageRequest,
   output: CreateImageResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateImage",
 }));
 export type CreateImageVersionError =
   | ResourceInUse
@@ -39671,6 +39713,7 @@ export const createImageVersion: API.OperationMethod<
   input: CreateImageVersionRequest,
   output: CreateImageVersionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "CreateImageVersion",
 }));
 export type CreateInferenceComponentError =
   | ResourceLimitExceeded
@@ -39687,6 +39730,7 @@ export const createInferenceComponent: API.OperationMethod<
   input: CreateInferenceComponentInput,
   output: CreateInferenceComponentOutput,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateInferenceComponent",
 }));
 export type CreateInferenceExperimentError =
   | ResourceInUse
@@ -39710,6 +39754,7 @@ export const createInferenceExperiment: API.OperationMethod<
   input: CreateInferenceExperimentRequest,
   output: CreateInferenceExperimentResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateInferenceExperiment",
 }));
 export type CreateInferenceRecommendationsJobError =
   | ResourceInUse
@@ -39727,6 +39772,7 @@ export const createInferenceRecommendationsJob: API.OperationMethod<
   input: CreateInferenceRecommendationsJobRequest,
   output: CreateInferenceRecommendationsJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateInferenceRecommendationsJob",
 }));
 export type CreateJobError =
   | ResourceInUse
@@ -39763,6 +39809,7 @@ export const createJob: API.OperationMethod<
   input: CreateJobRequest,
   output: CreateJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "CreateJob",
 }));
 export type CreateLabelingJobError =
   | ResourceInUse
@@ -39796,6 +39843,7 @@ export const createLabelingJob: API.OperationMethod<
   input: CreateLabelingJobRequest,
   output: CreateLabelingJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateLabelingJob",
 }));
 export type CreateMlflowAppError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -39810,6 +39858,7 @@ export const createMlflowApp: API.OperationMethod<
   input: CreateMlflowAppRequest,
   output: CreateMlflowAppResponse,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateMlflowApp",
 }));
 export type CreateMlflowTrackingServerError =
   | ResourceLimitExceeded
@@ -39826,6 +39875,7 @@ export const createMlflowTrackingServer: API.OperationMethod<
   input: CreateMlflowTrackingServerRequest,
   output: CreateMlflowTrackingServerResponse,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateMlflowTrackingServer",
 }));
 export type CreateModelError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -39848,6 +39898,7 @@ export const createModel: API.OperationMethod<
   input: CreateModelInput,
   output: CreateModelOutput,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateModel",
 }));
 export type CreateModelBiasJobDefinitionError =
   | ResourceInUse
@@ -39865,6 +39916,7 @@ export const createModelBiasJobDefinition: API.OperationMethod<
   input: CreateModelBiasJobDefinitionRequest,
   output: CreateModelBiasJobDefinitionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateModelBiasJobDefinition",
 }));
 export type CreateModelCardError =
   | ConflictException
@@ -39884,6 +39936,7 @@ export const createModelCard: API.OperationMethod<
   input: CreateModelCardRequest,
   output: CreateModelCardResponse,
   errors: [ConflictException, ResourceLimitExceeded],
+  operationName: "CreateModelCard",
 }));
 export type CreateModelCardExportJobError =
   | ConflictException
@@ -39902,6 +39955,7 @@ export const createModelCardExportJob: API.OperationMethod<
   input: CreateModelCardExportJobRequest,
   output: CreateModelCardExportJobResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "CreateModelCardExportJob",
 }));
 export type CreateModelExplainabilityJobDefinitionError =
   | ResourceInUse
@@ -39919,6 +39973,7 @@ export const createModelExplainabilityJobDefinition: API.OperationMethod<
   input: CreateModelExplainabilityJobDefinitionRequest,
   output: CreateModelExplainabilityJobDefinitionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateModelExplainabilityJobDefinition",
 }));
 export type CreateModelPackageError =
   | ConflictException
@@ -39944,6 +39999,7 @@ export const createModelPackage: API.OperationMethod<
   input: CreateModelPackageInput,
   output: CreateModelPackageOutput,
   errors: [ConflictException, ResourceLimitExceeded],
+  operationName: "CreateModelPackage",
 }));
 export type CreateModelPackageGroupError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -39958,6 +40014,7 @@ export const createModelPackageGroup: API.OperationMethod<
   input: CreateModelPackageGroupInput,
   output: CreateModelPackageGroupOutput,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateModelPackageGroup",
 }));
 export type CreateModelQualityJobDefinitionError =
   | ResourceInUse
@@ -39975,6 +40032,7 @@ export const createModelQualityJobDefinition: API.OperationMethod<
   input: CreateModelQualityJobDefinitionRequest,
   output: CreateModelQualityJobDefinitionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateModelQualityJobDefinition",
 }));
 export type CreateMonitoringScheduleError =
   | ResourceInUse
@@ -39992,6 +40050,7 @@ export const createMonitoringSchedule: API.OperationMethod<
   input: CreateMonitoringScheduleRequest,
   output: CreateMonitoringScheduleResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateMonitoringSchedule",
 }));
 export type CreateNotebookInstanceError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -40024,6 +40083,7 @@ export const createNotebookInstance: API.OperationMethod<
   input: CreateNotebookInstanceInput,
   output: CreateNotebookInstanceOutput,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateNotebookInstance",
 }));
 export type CreateNotebookInstanceLifecycleConfigError =
   | ResourceLimitExceeded
@@ -40052,6 +40112,7 @@ export const createNotebookInstanceLifecycleConfig: API.OperationMethod<
   input: CreateNotebookInstanceLifecycleConfigInput,
   output: CreateNotebookInstanceLifecycleConfigOutput,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateNotebookInstanceLifecycleConfig",
 }));
 export type CreateOptimizationJobError =
   | ResourceInUse
@@ -40071,6 +40132,7 @@ export const createOptimizationJob: API.OperationMethod<
   input: CreateOptimizationJobRequest,
   output: CreateOptimizationJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateOptimizationJob",
 }));
 export type CreatePartnerAppError =
   | ConflictException
@@ -40088,6 +40150,7 @@ export const createPartnerApp: API.OperationMethod<
   input: CreatePartnerAppRequest,
   output: CreatePartnerAppResponse,
   errors: [ConflictException, ResourceLimitExceeded],
+  operationName: "CreatePartnerApp",
 }));
 export type CreatePartnerAppPresignedUrlError = ResourceNotFound | CommonErrors;
 /**
@@ -40102,6 +40165,7 @@ export const createPartnerAppPresignedUrl: API.OperationMethod<
   input: CreatePartnerAppPresignedUrlRequest,
   output: CreatePartnerAppPresignedUrlResponse,
   errors: [ResourceNotFound],
+  operationName: "CreatePartnerAppPresignedUrl",
 }));
 export type CreatePipelineError =
   | ConflictException
@@ -40120,6 +40184,7 @@ export const createPipeline: API.OperationMethod<
   input: CreatePipelineRequest,
   output: CreatePipelineResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "CreatePipeline",
 }));
 export type CreatePresignedDomainUrlError = ResourceNotFound | CommonErrors;
 /**
@@ -40142,6 +40207,7 @@ export const createPresignedDomainUrl: API.OperationMethod<
   input: CreatePresignedDomainUrlRequest,
   output: CreatePresignedDomainUrlResponse,
   errors: [ResourceNotFound],
+  operationName: "CreatePresignedDomainUrl",
 }));
 export type CreatePresignedMlflowAppUrlError = ResourceNotFound | CommonErrors;
 /**
@@ -40156,6 +40222,7 @@ export const createPresignedMlflowAppUrl: API.OperationMethod<
   input: CreatePresignedMlflowAppUrlRequest,
   output: CreatePresignedMlflowAppUrlResponse,
   errors: [ResourceNotFound],
+  operationName: "CreatePresignedMlflowAppUrl",
 }));
 export type CreatePresignedMlflowTrackingServerUrlError =
   | ResourceNotFound
@@ -40172,6 +40239,7 @@ export const createPresignedMlflowTrackingServerUrl: API.OperationMethod<
   input: CreatePresignedMlflowTrackingServerUrlRequest,
   output: CreatePresignedMlflowTrackingServerUrlResponse,
   errors: [ResourceNotFound],
+  operationName: "CreatePresignedMlflowTrackingServerUrl",
 }));
 export type CreatePresignedNotebookInstanceUrlError = CommonErrors;
 /**
@@ -40192,6 +40260,7 @@ export const createPresignedNotebookInstanceUrl: API.OperationMethod<
   input: CreatePresignedNotebookInstanceUrlInput,
   output: CreatePresignedNotebookInstanceUrlOutput,
   errors: [],
+  operationName: "CreatePresignedNotebookInstanceUrl",
 }));
 export type CreateProcessingJobError =
   | ResourceInUse
@@ -40210,6 +40279,7 @@ export const createProcessingJob: API.OperationMethod<
   input: CreateProcessingJobRequest,
   output: CreateProcessingJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "CreateProcessingJob",
 }));
 export type CreateProjectError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -40224,6 +40294,7 @@ export const createProject: API.OperationMethod<
   input: CreateProjectInput,
   output: CreateProjectOutput,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateProject",
 }));
 export type CreateSpaceError =
   | ResourceInUse
@@ -40241,6 +40312,7 @@ export const createSpace: API.OperationMethod<
   input: CreateSpaceRequest,
   output: CreateSpaceResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateSpace",
 }));
 export type CreateStudioLifecycleConfigError = ResourceInUse | CommonErrors;
 /**
@@ -40255,6 +40327,7 @@ export const createStudioLifecycleConfig: API.OperationMethod<
   input: CreateStudioLifecycleConfigRequest,
   output: CreateStudioLifecycleConfigResponse,
   errors: [ResourceInUse],
+  operationName: "CreateStudioLifecycleConfig",
 }));
 export type CreateTrainingJobError =
   | ResourceInUse
@@ -40303,6 +40376,7 @@ export const createTrainingJob: API.OperationMethod<
   input: CreateTrainingJobRequest,
   output: CreateTrainingJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "CreateTrainingJob",
 }));
 export type CreateTrainingPlanError =
   | ResourceInUse
@@ -40351,6 +40425,7 @@ export const createTrainingPlan: API.OperationMethod<
   input: CreateTrainingPlanRequest,
   output: CreateTrainingPlanResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "CreateTrainingPlan",
 }));
 export type CreateTransformJobError =
   | ResourceInUse
@@ -40385,6 +40460,7 @@ export const createTransformJob: API.OperationMethod<
   input: CreateTransformJobRequest,
   output: CreateTransformJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "CreateTransformJob",
 }));
 export type CreateTrialError =
   | ResourceLimitExceeded
@@ -40408,6 +40484,7 @@ export const createTrial: API.OperationMethod<
   input: CreateTrialRequest,
   output: CreateTrialResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  operationName: "CreateTrial",
 }));
 export type CreateTrialComponentError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -40428,6 +40505,7 @@ export const createTrialComponent: API.OperationMethod<
   input: CreateTrialComponentRequest,
   output: CreateTrialComponentResponse,
   errors: [ResourceLimitExceeded],
+  operationName: "CreateTrialComponent",
 }));
 export type CreateUserProfileError =
   | ResourceInUse
@@ -40445,6 +40523,7 @@ export const createUserProfile: API.OperationMethod<
   input: CreateUserProfileRequest,
   output: CreateUserProfileResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateUserProfile",
 }));
 export type CreateWorkforceError = CommonErrors;
 /**
@@ -40465,6 +40544,7 @@ export const createWorkforce: API.OperationMethod<
   input: CreateWorkforceRequest,
   output: CreateWorkforceResponse,
   errors: [],
+  operationName: "CreateWorkforce",
 }));
 export type CreateWorkteamError =
   | ResourceInUse
@@ -40484,6 +40564,7 @@ export const createWorkteam: API.OperationMethod<
   input: CreateWorkteamRequest,
   output: CreateWorkteamResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  operationName: "CreateWorkteam",
 }));
 export type DeleteActionError = ResourceNotFound | CommonErrors;
 /**
@@ -40498,6 +40579,7 @@ export const deleteAction: API.OperationMethod<
   input: DeleteActionRequest,
   output: DeleteActionResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteAction",
 }));
 export type DeleteAIBenchmarkJobError = ResourceNotFound | CommonErrors;
 /**
@@ -40512,6 +40594,7 @@ export const deleteAIBenchmarkJob: API.OperationMethod<
   input: DeleteAIBenchmarkJobRequest,
   output: DeleteAIBenchmarkJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteAIBenchmarkJob",
 }));
 export type DeleteAIRecommendationJobError = ResourceNotFound | CommonErrors;
 /**
@@ -40526,6 +40609,7 @@ export const deleteAIRecommendationJob: API.OperationMethod<
   input: DeleteAIRecommendationJobRequest,
   output: DeleteAIRecommendationJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteAIRecommendationJob",
 }));
 export type DeleteAIWorkloadConfigError =
   | ResourceInUse
@@ -40543,6 +40627,7 @@ export const deleteAIWorkloadConfig: API.OperationMethod<
   input: DeleteAIWorkloadConfigRequest,
   output: DeleteAIWorkloadConfigResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "DeleteAIWorkloadConfig",
 }));
 export type DeleteAlgorithmError = ConflictException | CommonErrors;
 /**
@@ -40557,6 +40642,7 @@ export const deleteAlgorithm: API.OperationMethod<
   input: DeleteAlgorithmInput,
   output: DeleteAlgorithmResponse,
   errors: [ConflictException],
+  operationName: "DeleteAlgorithm",
 }));
 export type DeleteAppError = ResourceInUse | ResourceNotFound | CommonErrors;
 /**
@@ -40571,6 +40657,7 @@ export const deleteApp: API.OperationMethod<
   input: DeleteAppRequest,
   output: DeleteAppResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "DeleteApp",
 }));
 export type DeleteAppImageConfigError = ResourceNotFound | CommonErrors;
 /**
@@ -40585,6 +40672,7 @@ export const deleteAppImageConfig: API.OperationMethod<
   input: DeleteAppImageConfigRequest,
   output: DeleteAppImageConfigResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteAppImageConfig",
 }));
 export type DeleteArtifactError = ResourceNotFound | CommonErrors;
 /**
@@ -40599,6 +40687,7 @@ export const deleteArtifact: API.OperationMethod<
   input: DeleteArtifactRequest,
   output: DeleteArtifactResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteArtifact",
 }));
 export type DeleteAssociationError = ResourceNotFound | CommonErrors;
 /**
@@ -40613,6 +40702,7 @@ export const deleteAssociation: API.OperationMethod<
   input: DeleteAssociationRequest,
   output: DeleteAssociationResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteAssociation",
 }));
 export type DeleteClusterError =
   | ConflictException
@@ -40630,6 +40720,7 @@ export const deleteCluster: API.OperationMethod<
   input: DeleteClusterRequest,
   output: DeleteClusterResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "DeleteCluster",
 }));
 export type DeleteClusterSchedulerConfigError = ResourceNotFound | CommonErrors;
 /**
@@ -40644,6 +40735,7 @@ export const deleteClusterSchedulerConfig: API.OperationMethod<
   input: DeleteClusterSchedulerConfigRequest,
   output: DeleteClusterSchedulerConfigResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteClusterSchedulerConfig",
 }));
 export type DeleteCodeRepositoryError = CommonErrors;
 /**
@@ -40658,6 +40750,7 @@ export const deleteCodeRepository: API.OperationMethod<
   input: DeleteCodeRepositoryInput,
   output: DeleteCodeRepositoryResponse,
   errors: [],
+  operationName: "DeleteCodeRepository",
 }));
 export type DeleteCompilationJobError = ResourceNotFound | CommonErrors;
 /**
@@ -40674,6 +40767,7 @@ export const deleteCompilationJob: API.OperationMethod<
   input: DeleteCompilationJobRequest,
   output: DeleteCompilationJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteCompilationJob",
 }));
 export type DeleteComputeQuotaError = ResourceNotFound | CommonErrors;
 /**
@@ -40688,6 +40782,7 @@ export const deleteComputeQuota: API.OperationMethod<
   input: DeleteComputeQuotaRequest,
   output: DeleteComputeQuotaResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteComputeQuota",
 }));
 export type DeleteContextError = ResourceNotFound | CommonErrors;
 /**
@@ -40702,6 +40797,7 @@ export const deleteContext: API.OperationMethod<
   input: DeleteContextRequest,
   output: DeleteContextResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteContext",
 }));
 export type DeleteDataQualityJobDefinitionError =
   | ResourceNotFound
@@ -40718,6 +40814,7 @@ export const deleteDataQualityJobDefinition: API.OperationMethod<
   input: DeleteDataQualityJobDefinitionRequest,
   output: DeleteDataQualityJobDefinitionResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteDataQualityJobDefinition",
 }));
 export type DeleteDeviceFleetError = ResourceInUse | CommonErrors;
 /**
@@ -40732,6 +40829,7 @@ export const deleteDeviceFleet: API.OperationMethod<
   input: DeleteDeviceFleetRequest,
   output: DeleteDeviceFleetResponse,
   errors: [ResourceInUse],
+  operationName: "DeleteDeviceFleet",
 }));
 export type DeleteDomainError = ResourceInUse | ResourceNotFound | CommonErrors;
 /**
@@ -40746,6 +40844,7 @@ export const deleteDomain: API.OperationMethod<
   input: DeleteDomainRequest,
   output: DeleteDomainResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "DeleteDomain",
 }));
 export type DeleteEdgeDeploymentPlanError = ResourceInUse | CommonErrors;
 /**
@@ -40760,6 +40859,7 @@ export const deleteEdgeDeploymentPlan: API.OperationMethod<
   input: DeleteEdgeDeploymentPlanRequest,
   output: DeleteEdgeDeploymentPlanResponse,
   errors: [ResourceInUse],
+  operationName: "DeleteEdgeDeploymentPlan",
 }));
 export type DeleteEdgeDeploymentStageError = ResourceInUse | CommonErrors;
 /**
@@ -40774,6 +40874,7 @@ export const deleteEdgeDeploymentStage: API.OperationMethod<
   input: DeleteEdgeDeploymentStageRequest,
   output: DeleteEdgeDeploymentStageResponse,
   errors: [ResourceInUse],
+  operationName: "DeleteEdgeDeploymentStage",
 }));
 export type DeleteEndpointError = CommonErrors;
 /**
@@ -40792,6 +40893,7 @@ export const deleteEndpoint: API.OperationMethod<
   input: DeleteEndpointInput,
   output: DeleteEndpointResponse,
   errors: [],
+  operationName: "DeleteEndpoint",
 }));
 export type DeleteEndpointConfigError = CommonErrors;
 /**
@@ -40808,6 +40910,7 @@ export const deleteEndpointConfig: API.OperationMethod<
   input: DeleteEndpointConfigInput,
   output: DeleteEndpointConfigResponse,
   errors: [],
+  operationName: "DeleteEndpointConfig",
 }));
 export type DeleteExperimentError = ResourceNotFound | CommonErrors;
 /**
@@ -40822,6 +40925,7 @@ export const deleteExperiment: API.OperationMethod<
   input: DeleteExperimentRequest,
   output: DeleteExperimentResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteExperiment",
 }));
 export type DeleteFeatureGroupError = ResourceNotFound | CommonErrors;
 /**
@@ -40840,6 +40944,7 @@ export const deleteFeatureGroup: API.OperationMethod<
   input: DeleteFeatureGroupRequest,
   output: DeleteFeatureGroupResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteFeatureGroup",
 }));
 export type DeleteFlowDefinitionError =
   | ResourceInUse
@@ -40857,6 +40962,7 @@ export const deleteFlowDefinition: API.OperationMethod<
   input: DeleteFlowDefinitionRequest,
   output: DeleteFlowDefinitionResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "DeleteFlowDefinition",
 }));
 export type DeleteHubError = ResourceInUse | ResourceNotFound | CommonErrors;
 /**
@@ -40871,6 +40977,7 @@ export const deleteHub: API.OperationMethod<
   input: DeleteHubRequest,
   output: DeleteHubResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "DeleteHub",
 }));
 export type DeleteHubContentError =
   | ResourceInUse
@@ -40888,6 +40995,7 @@ export const deleteHubContent: API.OperationMethod<
   input: DeleteHubContentRequest,
   output: DeleteHubContentResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "DeleteHubContent",
 }));
 export type DeleteHubContentReferenceError = ResourceNotFound | CommonErrors;
 /**
@@ -40902,6 +41010,7 @@ export const deleteHubContentReference: API.OperationMethod<
   input: DeleteHubContentReferenceRequest,
   output: DeleteHubContentReferenceResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteHubContentReference",
 }));
 export type DeleteHumanTaskUiError = ResourceNotFound | CommonErrors;
 /**
@@ -40918,6 +41027,7 @@ export const deleteHumanTaskUi: API.OperationMethod<
   input: DeleteHumanTaskUiRequest,
   output: DeleteHumanTaskUiResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteHumanTaskUi",
 }));
 export type DeleteHyperParameterTuningJobError = CommonErrors;
 /**
@@ -40932,6 +41042,7 @@ export const deleteHyperParameterTuningJob: API.OperationMethod<
   input: DeleteHyperParameterTuningJobRequest,
   output: DeleteHyperParameterTuningJobResponse,
   errors: [],
+  operationName: "DeleteHyperParameterTuningJob",
 }));
 export type DeleteImageError = ResourceInUse | ResourceNotFound | CommonErrors;
 /**
@@ -40946,6 +41057,7 @@ export const deleteImage: API.OperationMethod<
   input: DeleteImageRequest,
   output: DeleteImageResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "DeleteImage",
 }));
 export type DeleteImageVersionError =
   | ResourceInUse
@@ -40963,6 +41075,7 @@ export const deleteImageVersion: API.OperationMethod<
   input: DeleteImageVersionRequest,
   output: DeleteImageVersionResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "DeleteImageVersion",
 }));
 export type DeleteInferenceComponentError = CommonErrors;
 /**
@@ -40977,6 +41090,7 @@ export const deleteInferenceComponent: API.OperationMethod<
   input: DeleteInferenceComponentInput,
   output: DeleteInferenceComponentResponse,
   errors: [],
+  operationName: "DeleteInferenceComponent",
 }));
 export type DeleteInferenceExperimentError =
   | ConflictException
@@ -40996,6 +41110,7 @@ export const deleteInferenceExperiment: API.OperationMethod<
   input: DeleteInferenceExperimentRequest,
   output: DeleteInferenceExperimentResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "DeleteInferenceExperiment",
 }));
 export type DeleteJobError = ResourceInUse | ResourceNotFound | CommonErrors;
 /**
@@ -41018,6 +41133,7 @@ export const deleteJob: API.OperationMethod<
   input: DeleteJobRequest,
   output: DeleteJobResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "DeleteJob",
 }));
 export type DeleteMlflowAppError = ResourceNotFound | CommonErrors;
 /**
@@ -41032,6 +41148,7 @@ export const deleteMlflowApp: API.OperationMethod<
   input: DeleteMlflowAppRequest,
   output: DeleteMlflowAppResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteMlflowApp",
 }));
 export type DeleteMlflowTrackingServerError = ResourceNotFound | CommonErrors;
 /**
@@ -41046,6 +41163,7 @@ export const deleteMlflowTrackingServer: API.OperationMethod<
   input: DeleteMlflowTrackingServerRequest,
   output: DeleteMlflowTrackingServerResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteMlflowTrackingServer",
 }));
 export type DeleteModelError = CommonErrors;
 /**
@@ -41060,6 +41178,7 @@ export const deleteModel: API.OperationMethod<
   input: DeleteModelInput,
   output: DeleteModelResponse,
   errors: [],
+  operationName: "DeleteModel",
 }));
 export type DeleteModelBiasJobDefinitionError = ResourceNotFound | CommonErrors;
 /**
@@ -41074,6 +41193,7 @@ export const deleteModelBiasJobDefinition: API.OperationMethod<
   input: DeleteModelBiasJobDefinitionRequest,
   output: DeleteModelBiasJobDefinitionResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteModelBiasJobDefinition",
 }));
 export type DeleteModelCardError =
   | ConflictException
@@ -41091,6 +41211,7 @@ export const deleteModelCard: API.OperationMethod<
   input: DeleteModelCardRequest,
   output: DeleteModelCardResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "DeleteModelCard",
 }));
 export type DeleteModelExplainabilityJobDefinitionError =
   | ResourceNotFound
@@ -41107,6 +41228,7 @@ export const deleteModelExplainabilityJobDefinition: API.OperationMethod<
   input: DeleteModelExplainabilityJobDefinitionRequest,
   output: DeleteModelExplainabilityJobDefinitionResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteModelExplainabilityJobDefinition",
 }));
 export type DeleteModelPackageError = ConflictException | CommonErrors;
 /**
@@ -41123,6 +41245,7 @@ export const deleteModelPackage: API.OperationMethod<
   input: DeleteModelPackageInput,
   output: DeleteModelPackageResponse,
   errors: [ConflictException],
+  operationName: "DeleteModelPackage",
 }));
 export type DeleteModelPackageGroupError = ConflictException | CommonErrors;
 /**
@@ -41137,6 +41260,7 @@ export const deleteModelPackageGroup: API.OperationMethod<
   input: DeleteModelPackageGroupInput,
   output: DeleteModelPackageGroupResponse,
   errors: [ConflictException],
+  operationName: "DeleteModelPackageGroup",
 }));
 export type DeleteModelPackageGroupPolicyError = CommonErrors;
 /**
@@ -41151,6 +41275,7 @@ export const deleteModelPackageGroupPolicy: API.OperationMethod<
   input: DeleteModelPackageGroupPolicyInput,
   output: DeleteModelPackageGroupPolicyResponse,
   errors: [],
+  operationName: "DeleteModelPackageGroupPolicy",
 }));
 export type DeleteModelQualityJobDefinitionError =
   | ResourceNotFound
@@ -41167,6 +41292,7 @@ export const deleteModelQualityJobDefinition: API.OperationMethod<
   input: DeleteModelQualityJobDefinitionRequest,
   output: DeleteModelQualityJobDefinitionResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteModelQualityJobDefinition",
 }));
 export type DeleteMonitoringScheduleError = ResourceNotFound | CommonErrors;
 /**
@@ -41181,6 +41307,7 @@ export const deleteMonitoringSchedule: API.OperationMethod<
   input: DeleteMonitoringScheduleRequest,
   output: DeleteMonitoringScheduleResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteMonitoringSchedule",
 }));
 export type DeleteNotebookInstanceError = CommonErrors;
 /**
@@ -41197,6 +41324,7 @@ export const deleteNotebookInstance: API.OperationMethod<
   input: DeleteNotebookInstanceInput,
   output: DeleteNotebookInstanceResponse,
   errors: [],
+  operationName: "DeleteNotebookInstance",
 }));
 export type DeleteNotebookInstanceLifecycleConfigError = CommonErrors;
 /**
@@ -41211,6 +41339,7 @@ export const deleteNotebookInstanceLifecycleConfig: API.OperationMethod<
   input: DeleteNotebookInstanceLifecycleConfigInput,
   output: DeleteNotebookInstanceLifecycleConfigResponse,
   errors: [],
+  operationName: "DeleteNotebookInstanceLifecycleConfig",
 }));
 export type DeleteOptimizationJobError = ResourceNotFound | CommonErrors;
 /**
@@ -41225,6 +41354,7 @@ export const deleteOptimizationJob: API.OperationMethod<
   input: DeleteOptimizationJobRequest,
   output: DeleteOptimizationJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteOptimizationJob",
 }));
 export type DeletePartnerAppError =
   | ConflictException
@@ -41242,6 +41372,7 @@ export const deletePartnerApp: API.OperationMethod<
   input: DeletePartnerAppRequest,
   output: DeletePartnerAppResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "DeletePartnerApp",
 }));
 export type DeletePipelineError =
   | ConflictException
@@ -41259,6 +41390,7 @@ export const deletePipeline: API.OperationMethod<
   input: DeletePipelineRequest,
   output: DeletePipelineResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "DeletePipeline",
 }));
 export type DeleteProcessingJobError =
   | ResourceInUse
@@ -41276,6 +41408,7 @@ export const deleteProcessingJob: API.OperationMethod<
   input: DeleteProcessingJobRequest,
   output: DeleteProcessingJobResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "DeleteProcessingJob",
 }));
 export type DeleteProjectError = ConflictException | CommonErrors;
 /**
@@ -41290,6 +41423,7 @@ export const deleteProject: API.OperationMethod<
   input: DeleteProjectInput,
   output: DeleteProjectResponse,
   errors: [ConflictException],
+  operationName: "DeleteProject",
 }));
 export type DeleteSpaceError = ResourceInUse | ResourceNotFound | CommonErrors;
 /**
@@ -41304,6 +41438,7 @@ export const deleteSpace: API.OperationMethod<
   input: DeleteSpaceRequest,
   output: DeleteSpaceResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "DeleteSpace",
 }));
 export type DeleteStudioLifecycleConfigError =
   | ResourceInUse
@@ -41321,6 +41456,7 @@ export const deleteStudioLifecycleConfig: API.OperationMethod<
   input: DeleteStudioLifecycleConfigRequest,
   output: DeleteStudioLifecycleConfigResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "DeleteStudioLifecycleConfig",
 }));
 export type DeleteTagsError = CommonErrors;
 /**
@@ -41341,6 +41477,7 @@ export const deleteTags: API.OperationMethod<
   input: DeleteTagsInput,
   output: DeleteTagsOutput,
   errors: [],
+  operationName: "DeleteTags",
 }));
 export type DeleteTrainingJobError =
   | ResourceInUse
@@ -41358,6 +41495,7 @@ export const deleteTrainingJob: API.OperationMethod<
   input: DeleteTrainingJobRequest,
   output: DeleteTrainingJobResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "DeleteTrainingJob",
 }));
 export type DeleteTrialError = ResourceNotFound | CommonErrors;
 /**
@@ -41372,6 +41510,7 @@ export const deleteTrial: API.OperationMethod<
   input: DeleteTrialRequest,
   output: DeleteTrialResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteTrial",
 }));
 export type DeleteTrialComponentError = ResourceNotFound | CommonErrors;
 /**
@@ -41386,6 +41525,7 @@ export const deleteTrialComponent: API.OperationMethod<
   input: DeleteTrialComponentRequest,
   output: DeleteTrialComponentResponse,
   errors: [ResourceNotFound],
+  operationName: "DeleteTrialComponent",
 }));
 export type DeleteUserProfileError =
   | ResourceInUse
@@ -41403,6 +41543,7 @@ export const deleteUserProfile: API.OperationMethod<
   input: DeleteUserProfileRequest,
   output: DeleteUserProfileResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "DeleteUserProfile",
 }));
 export type DeleteWorkforceError = CommonErrors;
 /**
@@ -41421,6 +41562,7 @@ export const deleteWorkforce: API.OperationMethod<
   input: DeleteWorkforceRequest,
   output: DeleteWorkforceResponse,
   errors: [],
+  operationName: "DeleteWorkforce",
 }));
 export type DeleteWorkteamError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -41435,6 +41577,7 @@ export const deleteWorkteam: API.OperationMethod<
   input: DeleteWorkteamRequest,
   output: DeleteWorkteamResponse,
   errors: [ResourceLimitExceeded],
+  operationName: "DeleteWorkteam",
 }));
 export type DeregisterDevicesError = CommonErrors;
 /**
@@ -41449,6 +41592,7 @@ export const deregisterDevices: API.OperationMethod<
   input: DeregisterDevicesRequest,
   output: DeregisterDevicesResponse,
   errors: [],
+  operationName: "DeregisterDevices",
 }));
 export type DescribeActionError = ResourceNotFound | CommonErrors;
 /**
@@ -41463,6 +41607,7 @@ export const describeAction: API.OperationMethod<
   input: DescribeActionRequest,
   output: DescribeActionResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeAction",
 }));
 export type DescribeAIBenchmarkJobError = ResourceNotFound | CommonErrors;
 /**
@@ -41477,6 +41622,7 @@ export const describeAIBenchmarkJob: API.OperationMethod<
   input: DescribeAIBenchmarkJobRequest,
   output: DescribeAIBenchmarkJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeAIBenchmarkJob",
 }));
 export type DescribeAIRecommendationJobError = ResourceNotFound | CommonErrors;
 /**
@@ -41491,6 +41637,7 @@ export const describeAIRecommendationJob: API.OperationMethod<
   input: DescribeAIRecommendationJobRequest,
   output: DescribeAIRecommendationJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeAIRecommendationJob",
 }));
 export type DescribeAIWorkloadConfigError = ResourceNotFound | CommonErrors;
 /**
@@ -41505,6 +41652,7 @@ export const describeAIWorkloadConfig: API.OperationMethod<
   input: DescribeAIWorkloadConfigRequest,
   output: DescribeAIWorkloadConfigResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeAIWorkloadConfig",
 }));
 export type DescribeAlgorithmError = CommonErrors;
 /**
@@ -41519,6 +41667,7 @@ export const describeAlgorithm: API.OperationMethod<
   input: DescribeAlgorithmInput,
   output: DescribeAlgorithmOutput,
   errors: [],
+  operationName: "DescribeAlgorithm",
 }));
 export type DescribeAppError = ResourceNotFound | CommonErrors;
 /**
@@ -41533,6 +41682,7 @@ export const describeApp: API.OperationMethod<
   input: DescribeAppRequest,
   output: DescribeAppResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeApp",
 }));
 export type DescribeAppImageConfigError = ResourceNotFound | CommonErrors;
 /**
@@ -41547,6 +41697,7 @@ export const describeAppImageConfig: API.OperationMethod<
   input: DescribeAppImageConfigRequest,
   output: DescribeAppImageConfigResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeAppImageConfig",
 }));
 export type DescribeArtifactError = ResourceNotFound | CommonErrors;
 /**
@@ -41561,6 +41712,7 @@ export const describeArtifact: API.OperationMethod<
   input: DescribeArtifactRequest,
   output: DescribeArtifactResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeArtifact",
 }));
 export type DescribeAutoMLJobError = ResourceNotFound | CommonErrors;
 /**
@@ -41577,6 +41729,7 @@ export const describeAutoMLJob: API.OperationMethod<
   input: DescribeAutoMLJobRequest,
   output: DescribeAutoMLJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeAutoMLJob",
 }));
 export type DescribeAutoMLJobV2Error = ResourceNotFound | CommonErrors;
 /**
@@ -41591,6 +41744,7 @@ export const describeAutoMLJobV2: API.OperationMethod<
   input: DescribeAutoMLJobV2Request,
   output: DescribeAutoMLJobV2Response,
   errors: [ResourceNotFound],
+  operationName: "DescribeAutoMLJobV2",
 }));
 export type DescribeClusterError = ResourceNotFound | CommonErrors;
 /**
@@ -41605,6 +41759,7 @@ export const describeCluster: API.OperationMethod<
   input: DescribeClusterRequest,
   output: DescribeClusterResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeCluster",
 }));
 export type DescribeClusterEventError = ResourceNotFound | CommonErrors;
 /**
@@ -41619,6 +41774,7 @@ export const describeClusterEvent: API.OperationMethod<
   input: DescribeClusterEventRequest,
   output: DescribeClusterEventResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeClusterEvent",
 }));
 export type DescribeClusterNodeError = ResourceNotFound | CommonErrors;
 /**
@@ -41633,6 +41789,7 @@ export const describeClusterNode: API.OperationMethod<
   input: DescribeClusterNodeRequest,
   output: DescribeClusterNodeResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeClusterNode",
 }));
 export type DescribeClusterSchedulerConfigError =
   | ResourceNotFound
@@ -41649,6 +41806,7 @@ export const describeClusterSchedulerConfig: API.OperationMethod<
   input: DescribeClusterSchedulerConfigRequest,
   output: DescribeClusterSchedulerConfigResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeClusterSchedulerConfig",
 }));
 export type DescribeCodeRepositoryError = CommonErrors;
 /**
@@ -41663,6 +41821,7 @@ export const describeCodeRepository: API.OperationMethod<
   input: DescribeCodeRepositoryInput,
   output: DescribeCodeRepositoryOutput,
   errors: [],
+  operationName: "DescribeCodeRepository",
 }));
 export type DescribeCompilationJobError = ResourceNotFound | CommonErrors;
 /**
@@ -41679,6 +41838,7 @@ export const describeCompilationJob: API.OperationMethod<
   input: DescribeCompilationJobRequest,
   output: DescribeCompilationJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeCompilationJob",
 }));
 export type DescribeComputeQuotaError = ResourceNotFound | CommonErrors;
 /**
@@ -41693,6 +41853,7 @@ export const describeComputeQuota: API.OperationMethod<
   input: DescribeComputeQuotaRequest,
   output: DescribeComputeQuotaResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeComputeQuota",
 }));
 export type DescribeContextError = ResourceNotFound | CommonErrors;
 /**
@@ -41707,6 +41868,7 @@ export const describeContext: API.OperationMethod<
   input: DescribeContextRequest,
   output: DescribeContextResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeContext",
 }));
 export type DescribeDataQualityJobDefinitionError =
   | ResourceNotFound
@@ -41723,6 +41885,7 @@ export const describeDataQualityJobDefinition: API.OperationMethod<
   input: DescribeDataQualityJobDefinitionRequest,
   output: DescribeDataQualityJobDefinitionResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeDataQualityJobDefinition",
 }));
 export type DescribeDeviceError = ResourceNotFound | CommonErrors;
 /**
@@ -41737,6 +41900,7 @@ export const describeDevice: API.OperationMethod<
   input: DescribeDeviceRequest,
   output: DescribeDeviceResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeDevice",
 }));
 export type DescribeDeviceFleetError = ResourceNotFound | CommonErrors;
 /**
@@ -41751,6 +41915,7 @@ export const describeDeviceFleet: API.OperationMethod<
   input: DescribeDeviceFleetRequest,
   output: DescribeDeviceFleetResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeDeviceFleet",
 }));
 export type DescribeDomainError = ResourceNotFound | CommonErrors;
 /**
@@ -41765,6 +41930,7 @@ export const describeDomain: API.OperationMethod<
   input: DescribeDomainRequest,
   output: DescribeDomainResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeDomain",
 }));
 export type DescribeEdgeDeploymentPlanError = ResourceNotFound | CommonErrors;
 /**
@@ -41779,6 +41945,7 @@ export const describeEdgeDeploymentPlan: API.OperationMethod<
   input: DescribeEdgeDeploymentPlanRequest,
   output: DescribeEdgeDeploymentPlanResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeEdgeDeploymentPlan",
 }));
 export type DescribeEdgePackagingJobError = ResourceNotFound | CommonErrors;
 /**
@@ -41793,6 +41960,7 @@ export const describeEdgePackagingJob: API.OperationMethod<
   input: DescribeEdgePackagingJobRequest,
   output: DescribeEdgePackagingJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeEdgePackagingJob",
 }));
 export type DescribeEndpointError = CommonErrors;
 /**
@@ -41807,6 +41975,7 @@ export const describeEndpoint: API.OperationMethod<
   input: DescribeEndpointInput,
   output: DescribeEndpointOutput,
   errors: [],
+  operationName: "DescribeEndpoint",
 }));
 export type DescribeEndpointConfigError = CommonErrors;
 /**
@@ -41821,6 +41990,7 @@ export const describeEndpointConfig: API.OperationMethod<
   input: DescribeEndpointConfigInput,
   output: DescribeEndpointConfigOutput,
   errors: [],
+  operationName: "DescribeEndpointConfig",
 }));
 export type DescribeExperimentError = ResourceNotFound | CommonErrors;
 /**
@@ -41835,6 +42005,7 @@ export const describeExperiment: API.OperationMethod<
   input: DescribeExperimentRequest,
   output: DescribeExperimentResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeExperiment",
 }));
 export type DescribeFeatureGroupError = ResourceNotFound | CommonErrors;
 /**
@@ -41849,6 +42020,7 @@ export const describeFeatureGroup: API.OperationMethod<
   input: DescribeFeatureGroupRequest,
   output: DescribeFeatureGroupResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeFeatureGroup",
 }));
 export type DescribeFeatureMetadataError = ResourceNotFound | CommonErrors;
 /**
@@ -41863,6 +42035,7 @@ export const describeFeatureMetadata: API.OperationMethod<
   input: DescribeFeatureMetadataRequest,
   output: DescribeFeatureMetadataResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeFeatureMetadata",
 }));
 export type DescribeFlowDefinitionError = ResourceNotFound | CommonErrors;
 /**
@@ -41877,6 +42050,7 @@ export const describeFlowDefinition: API.OperationMethod<
   input: DescribeFlowDefinitionRequest,
   output: DescribeFlowDefinitionResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeFlowDefinition",
 }));
 export type DescribeHubError = ResourceNotFound | CommonErrors;
 /**
@@ -41891,6 +42065,7 @@ export const describeHub: API.OperationMethod<
   input: DescribeHubRequest,
   output: DescribeHubResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeHub",
 }));
 export type DescribeHubContentError = ResourceNotFound | CommonErrors;
 /**
@@ -41905,6 +42080,7 @@ export const describeHubContent: API.OperationMethod<
   input: DescribeHubContentRequest,
   output: DescribeHubContentResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeHubContent",
 }));
 export type DescribeHumanTaskUiError = ResourceNotFound | CommonErrors;
 /**
@@ -41919,6 +42095,7 @@ export const describeHumanTaskUi: API.OperationMethod<
   input: DescribeHumanTaskUiRequest,
   output: DescribeHumanTaskUiResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeHumanTaskUi",
 }));
 export type DescribeHyperParameterTuningJobError =
   | ResourceNotFound
@@ -41935,6 +42112,7 @@ export const describeHyperParameterTuningJob: API.OperationMethod<
   input: DescribeHyperParameterTuningJobRequest,
   output: DescribeHyperParameterTuningJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeHyperParameterTuningJob",
 }));
 export type DescribeImageError = ResourceNotFound | CommonErrors;
 /**
@@ -41949,6 +42127,7 @@ export const describeImage: API.OperationMethod<
   input: DescribeImageRequest,
   output: DescribeImageResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeImage",
 }));
 export type DescribeImageVersionError = ResourceNotFound | CommonErrors;
 /**
@@ -41963,6 +42142,7 @@ export const describeImageVersion: API.OperationMethod<
   input: DescribeImageVersionRequest,
   output: DescribeImageVersionResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeImageVersion",
 }));
 export type DescribeInferenceComponentError = CommonErrors;
 /**
@@ -41977,6 +42157,7 @@ export const describeInferenceComponent: API.OperationMethod<
   input: DescribeInferenceComponentInput,
   output: DescribeInferenceComponentOutput,
   errors: [],
+  operationName: "DescribeInferenceComponent",
 }));
 export type DescribeInferenceExperimentError = ResourceNotFound | CommonErrors;
 /**
@@ -41991,6 +42172,7 @@ export const describeInferenceExperiment: API.OperationMethod<
   input: DescribeInferenceExperimentRequest,
   output: DescribeInferenceExperimentResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeInferenceExperiment",
 }));
 export type DescribeInferenceRecommendationsJobError =
   | ResourceNotFound
@@ -42007,6 +42189,7 @@ export const describeInferenceRecommendationsJob: API.OperationMethod<
   input: DescribeInferenceRecommendationsJobRequest,
   output: DescribeInferenceRecommendationsJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeInferenceRecommendationsJob",
 }));
 export type DescribeJobError = ResourceNotFound | CommonErrors;
 /**
@@ -42031,6 +42214,7 @@ export const describeJob: API.OperationMethod<
   input: DescribeJobRequest,
   output: DescribeJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeJob",
 }));
 export type DescribeJobSchemaVersionError = ResourceNotFound | CommonErrors;
 /**
@@ -42051,6 +42235,7 @@ export const describeJobSchemaVersion: API.OperationMethod<
   input: DescribeJobSchemaVersionRequest,
   output: DescribeJobSchemaVersionResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeJobSchemaVersion",
 }));
 export type DescribeLabelingJobError = ResourceNotFound | CommonErrors;
 /**
@@ -42065,6 +42250,7 @@ export const describeLabelingJob: API.OperationMethod<
   input: DescribeLabelingJobRequest,
   output: DescribeLabelingJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeLabelingJob",
 }));
 export type DescribeLineageGroupError = ResourceNotFound | CommonErrors;
 /**
@@ -42079,6 +42265,7 @@ export const describeLineageGroup: API.OperationMethod<
   input: DescribeLineageGroupRequest,
   output: DescribeLineageGroupResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeLineageGroup",
 }));
 export type DescribeMlflowAppError = ResourceNotFound | CommonErrors;
 /**
@@ -42093,6 +42280,7 @@ export const describeMlflowApp: API.OperationMethod<
   input: DescribeMlflowAppRequest,
   output: DescribeMlflowAppResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeMlflowApp",
 }));
 export type DescribeMlflowTrackingServerError = ResourceNotFound | CommonErrors;
 /**
@@ -42107,6 +42295,7 @@ export const describeMlflowTrackingServer: API.OperationMethod<
   input: DescribeMlflowTrackingServerRequest,
   output: DescribeMlflowTrackingServerResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeMlflowTrackingServer",
 }));
 export type DescribeModelError = CommonErrors;
 /**
@@ -42121,6 +42310,7 @@ export const describeModel: API.OperationMethod<
   input: DescribeModelInput,
   output: DescribeModelOutput,
   errors: [],
+  operationName: "DescribeModel",
 }));
 export type DescribeModelBiasJobDefinitionError =
   | ResourceNotFound
@@ -42137,6 +42327,7 @@ export const describeModelBiasJobDefinition: API.OperationMethod<
   input: DescribeModelBiasJobDefinitionRequest,
   output: DescribeModelBiasJobDefinitionResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeModelBiasJobDefinition",
 }));
 export type DescribeModelCardError = ResourceNotFound | CommonErrors;
 /**
@@ -42153,6 +42344,7 @@ export const describeModelCard: API.OperationMethod<
   input: DescribeModelCardRequest,
   output: DescribeModelCardResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeModelCard",
 }));
 export type DescribeModelCardExportJobError = ResourceNotFound | CommonErrors;
 /**
@@ -42167,6 +42359,7 @@ export const describeModelCardExportJob: API.OperationMethod<
   input: DescribeModelCardExportJobRequest,
   output: DescribeModelCardExportJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeModelCardExportJob",
 }));
 export type DescribeModelExplainabilityJobDefinitionError =
   | ResourceNotFound
@@ -42183,6 +42376,7 @@ export const describeModelExplainabilityJobDefinition: API.OperationMethod<
   input: DescribeModelExplainabilityJobDefinitionRequest,
   output: DescribeModelExplainabilityJobDefinitionResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeModelExplainabilityJobDefinition",
 }));
 export type DescribeModelPackageError = CommonErrors;
 /**
@@ -42201,6 +42395,7 @@ export const describeModelPackage: API.OperationMethod<
   input: DescribeModelPackageInput,
   output: DescribeModelPackageOutput,
   errors: [],
+  operationName: "DescribeModelPackage",
 }));
 export type DescribeModelPackageGroupError = CommonErrors;
 /**
@@ -42215,6 +42410,7 @@ export const describeModelPackageGroup: API.OperationMethod<
   input: DescribeModelPackageGroupInput,
   output: DescribeModelPackageGroupOutput,
   errors: [],
+  operationName: "DescribeModelPackageGroup",
 }));
 export type DescribeModelQualityJobDefinitionError =
   | ResourceNotFound
@@ -42231,6 +42427,7 @@ export const describeModelQualityJobDefinition: API.OperationMethod<
   input: DescribeModelQualityJobDefinitionRequest,
   output: DescribeModelQualityJobDefinitionResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeModelQualityJobDefinition",
 }));
 export type DescribeMonitoringScheduleError = ResourceNotFound | CommonErrors;
 /**
@@ -42245,6 +42442,7 @@ export const describeMonitoringSchedule: API.OperationMethod<
   input: DescribeMonitoringScheduleRequest,
   output: DescribeMonitoringScheduleResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeMonitoringSchedule",
 }));
 export type DescribeNotebookInstanceError = CommonErrors;
 /**
@@ -42259,6 +42457,7 @@ export const describeNotebookInstance: API.OperationMethod<
   input: DescribeNotebookInstanceInput,
   output: DescribeNotebookInstanceOutput,
   errors: [],
+  operationName: "DescribeNotebookInstance",
 }));
 export type DescribeNotebookInstanceLifecycleConfigError = CommonErrors;
 /**
@@ -42275,6 +42474,7 @@ export const describeNotebookInstanceLifecycleConfig: API.OperationMethod<
   input: DescribeNotebookInstanceLifecycleConfigInput,
   output: DescribeNotebookInstanceLifecycleConfigOutput,
   errors: [],
+  operationName: "DescribeNotebookInstanceLifecycleConfig",
 }));
 export type DescribeOptimizationJobError = ResourceNotFound | CommonErrors;
 /**
@@ -42289,6 +42489,7 @@ export const describeOptimizationJob: API.OperationMethod<
   input: DescribeOptimizationJobRequest,
   output: DescribeOptimizationJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeOptimizationJob",
 }));
 export type DescribePartnerAppError = ResourceNotFound | CommonErrors;
 /**
@@ -42303,6 +42504,7 @@ export const describePartnerApp: API.OperationMethod<
   input: DescribePartnerAppRequest,
   output: DescribePartnerAppResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribePartnerApp",
 }));
 export type DescribePipelineError = ResourceNotFound | CommonErrors;
 /**
@@ -42317,6 +42519,7 @@ export const describePipeline: API.OperationMethod<
   input: DescribePipelineRequest,
   output: DescribePipelineResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribePipeline",
 }));
 export type DescribePipelineDefinitionForExecutionError =
   | ResourceNotFound
@@ -42333,6 +42536,7 @@ export const describePipelineDefinitionForExecution: API.OperationMethod<
   input: DescribePipelineDefinitionForExecutionRequest,
   output: DescribePipelineDefinitionForExecutionResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribePipelineDefinitionForExecution",
 }));
 export type DescribePipelineExecutionError = ResourceNotFound | CommonErrors;
 /**
@@ -42347,6 +42551,7 @@ export const describePipelineExecution: API.OperationMethod<
   input: DescribePipelineExecutionRequest,
   output: DescribePipelineExecutionResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribePipelineExecution",
 }));
 export type DescribeProcessingJobError = ResourceNotFound | CommonErrors;
 /**
@@ -42361,6 +42566,7 @@ export const describeProcessingJob: API.OperationMethod<
   input: DescribeProcessingJobRequest,
   output: DescribeProcessingJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeProcessingJob",
 }));
 export type DescribeProjectError = CommonErrors;
 /**
@@ -42375,6 +42581,7 @@ export const describeProject: API.OperationMethod<
   input: DescribeProjectInput,
   output: DescribeProjectOutput,
   errors: [],
+  operationName: "DescribeProject",
 }));
 export type DescribeReservedCapacityError = ResourceNotFound | CommonErrors;
 /**
@@ -42389,6 +42596,7 @@ export const describeReservedCapacity: API.OperationMethod<
   input: DescribeReservedCapacityRequest,
   output: DescribeReservedCapacityResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeReservedCapacity",
 }));
 export type DescribeSpaceError = ResourceNotFound | CommonErrors;
 /**
@@ -42403,6 +42611,7 @@ export const describeSpace: API.OperationMethod<
   input: DescribeSpaceRequest,
   output: DescribeSpaceResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeSpace",
 }));
 export type DescribeStudioLifecycleConfigError =
   | ResourceNotFound
@@ -42419,6 +42628,7 @@ export const describeStudioLifecycleConfig: API.OperationMethod<
   input: DescribeStudioLifecycleConfigRequest,
   output: DescribeStudioLifecycleConfigResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeStudioLifecycleConfig",
 }));
 export type DescribeSubscribedWorkteamError = CommonErrors;
 /**
@@ -42433,6 +42643,7 @@ export const describeSubscribedWorkteam: API.OperationMethod<
   input: DescribeSubscribedWorkteamRequest,
   output: DescribeSubscribedWorkteamResponse,
   errors: [],
+  operationName: "DescribeSubscribedWorkteam",
 }));
 export type DescribeTrainingJobError = ResourceNotFound | CommonErrors;
 /**
@@ -42449,6 +42660,7 @@ export const describeTrainingJob: API.OperationMethod<
   input: DescribeTrainingJobRequest,
   output: DescribeTrainingJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeTrainingJob",
 }));
 export type DescribeTrainingPlanError = ResourceNotFound | CommonErrors;
 /**
@@ -42463,6 +42675,7 @@ export const describeTrainingPlan: API.OperationMethod<
   input: DescribeTrainingPlanRequest,
   output: DescribeTrainingPlanResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeTrainingPlan",
 }));
 export type DescribeTrainingPlanExtensionHistoryError =
   | ResourceNotFound
@@ -42494,6 +42707,7 @@ export const describeTrainingPlanExtensionHistory: API.OperationMethod<
   input: DescribeTrainingPlanExtensionHistoryRequest,
   output: DescribeTrainingPlanExtensionHistoryResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeTrainingPlanExtensionHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -42514,6 +42728,7 @@ export const describeTransformJob: API.OperationMethod<
   input: DescribeTransformJobRequest,
   output: DescribeTransformJobResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeTransformJob",
 }));
 export type DescribeTrialError = ResourceNotFound | CommonErrors;
 /**
@@ -42528,6 +42743,7 @@ export const describeTrial: API.OperationMethod<
   input: DescribeTrialRequest,
   output: DescribeTrialResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeTrial",
 }));
 export type DescribeTrialComponentError = ResourceNotFound | CommonErrors;
 /**
@@ -42542,6 +42758,7 @@ export const describeTrialComponent: API.OperationMethod<
   input: DescribeTrialComponentRequest,
   output: DescribeTrialComponentResponse,
   errors: [ResourceNotFound],
+  operationName: "DescribeTrialComponent",
 }));
 export type DescribeUserProfileError =
   | ResourceLimitExceeded
@@ -42559,6 +42776,7 @@ export const describeUserProfile: API.OperationMethod<
   input: DescribeUserProfileRequest,
   output: DescribeUserProfileResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  operationName: "DescribeUserProfile",
 }));
 export type DescribeWorkforceError = CommonErrors;
 /**
@@ -42575,6 +42793,7 @@ export const describeWorkforce: API.OperationMethod<
   input: DescribeWorkforceRequest,
   output: DescribeWorkforceResponse,
   errors: [],
+  operationName: "DescribeWorkforce",
 }));
 export type DescribeWorkteamError = CommonErrors;
 /**
@@ -42589,6 +42808,7 @@ export const describeWorkteam: API.OperationMethod<
   input: DescribeWorkteamRequest,
   output: DescribeWorkteamResponse,
   errors: [],
+  operationName: "DescribeWorkteam",
 }));
 export type DetachClusterNodeVolumeError = ResourceNotFound | CommonErrors;
 /**
@@ -42605,6 +42825,7 @@ export const detachClusterNodeVolume: API.OperationMethod<
   input: DetachClusterNodeVolumeRequest,
   output: DetachClusterNodeVolumeResponse,
   errors: [ResourceNotFound],
+  operationName: "DetachClusterNodeVolume",
 }));
 export type DisableSagemakerServicecatalogPortfolioError = CommonErrors;
 /**
@@ -42619,6 +42840,7 @@ export const disableSagemakerServicecatalogPortfolio: API.OperationMethod<
   input: DisableSagemakerServicecatalogPortfolioInput,
   output: DisableSagemakerServicecatalogPortfolioOutput,
   errors: [],
+  operationName: "DisableSagemakerServicecatalogPortfolio",
 }));
 export type DisassociateTrialComponentError = ResourceNotFound | CommonErrors;
 /**
@@ -42635,6 +42857,7 @@ export const disassociateTrialComponent: API.OperationMethod<
   input: DisassociateTrialComponentRequest,
   output: DisassociateTrialComponentResponse,
   errors: [ResourceNotFound],
+  operationName: "DisassociateTrialComponent",
 }));
 export type EnableSagemakerServicecatalogPortfolioError = CommonErrors;
 /**
@@ -42649,6 +42872,7 @@ export const enableSagemakerServicecatalogPortfolio: API.OperationMethod<
   input: EnableSagemakerServicecatalogPortfolioInput,
   output: EnableSagemakerServicecatalogPortfolioOutput,
   errors: [],
+  operationName: "EnableSagemakerServicecatalogPortfolio",
 }));
 export type ExtendTrainingPlanError = ResourceNotFound | CommonErrors;
 /**
@@ -42667,6 +42891,7 @@ export const extendTrainingPlan: API.OperationMethod<
   input: ExtendTrainingPlanRequest,
   output: ExtendTrainingPlanResponse,
   errors: [ResourceNotFound],
+  operationName: "ExtendTrainingPlan",
 }));
 export type GetDeviceFleetReportError = CommonErrors;
 /**
@@ -42681,6 +42906,7 @@ export const getDeviceFleetReport: API.OperationMethod<
   input: GetDeviceFleetReportRequest,
   output: GetDeviceFleetReportResponse,
   errors: [],
+  operationName: "GetDeviceFleetReport",
 }));
 export type GetLineageGroupPolicyError = ResourceNotFound | CommonErrors;
 /**
@@ -42695,6 +42921,7 @@ export const getLineageGroupPolicy: API.OperationMethod<
   input: GetLineageGroupPolicyRequest,
   output: GetLineageGroupPolicyResponse,
   errors: [ResourceNotFound],
+  operationName: "GetLineageGroupPolicy",
 }));
 export type GetModelPackageGroupPolicyError = CommonErrors;
 /**
@@ -42709,6 +42936,7 @@ export const getModelPackageGroupPolicy: API.OperationMethod<
   input: GetModelPackageGroupPolicyInput,
   output: GetModelPackageGroupPolicyOutput,
   errors: [],
+  operationName: "GetModelPackageGroupPolicy",
 }));
 export type GetSagemakerServicecatalogPortfolioStatusError = CommonErrors;
 /**
@@ -42723,6 +42951,7 @@ export const getSagemakerServicecatalogPortfolioStatus: API.OperationMethod<
   input: GetSagemakerServicecatalogPortfolioStatusInput,
   output: GetSagemakerServicecatalogPortfolioStatusOutput,
   errors: [],
+  operationName: "GetSagemakerServicecatalogPortfolioStatus",
 }));
 export type GetScalingConfigurationRecommendationError =
   | ResourceNotFound
@@ -42739,6 +42968,7 @@ export const getScalingConfigurationRecommendation: API.OperationMethod<
   input: GetScalingConfigurationRecommendationRequest,
   output: GetScalingConfigurationRecommendationResponse,
   errors: [ResourceNotFound],
+  operationName: "GetScalingConfigurationRecommendation",
 }));
 export type GetSearchSuggestionsError = CommonErrors;
 /**
@@ -42753,6 +42983,7 @@ export const getSearchSuggestions: API.OperationMethod<
   input: GetSearchSuggestionsRequest,
   output: GetSearchSuggestionsResponse,
   errors: [],
+  operationName: "GetSearchSuggestions",
 }));
 export type ImportHubContentError =
   | ResourceInUse
@@ -42771,6 +43002,7 @@ export const importHubContent: API.OperationMethod<
   input: ImportHubContentRequest,
   output: ImportHubContentResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "ImportHubContent",
 }));
 export type ListActionsError = ResourceNotFound | CommonErrors;
 /**
@@ -42800,6 +43032,7 @@ export const listActions: API.OperationMethod<
   input: ListActionsRequest,
   output: ListActionsResponse,
   errors: [ResourceNotFound],
+  operationName: "ListActions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -42835,6 +43068,7 @@ export const listAIBenchmarkJobs: API.OperationMethod<
   input: ListAIBenchmarkJobsRequest,
   output: ListAIBenchmarkJobsResponse,
   errors: [],
+  operationName: "ListAIBenchmarkJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -42870,6 +43104,7 @@ export const listAIRecommendationJobs: API.OperationMethod<
   input: ListAIRecommendationJobsRequest,
   output: ListAIRecommendationJobsResponse,
   errors: [],
+  operationName: "ListAIRecommendationJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -42905,6 +43140,7 @@ export const listAIWorkloadConfigs: API.OperationMethod<
   input: ListAIWorkloadConfigsRequest,
   output: ListAIWorkloadConfigsResponse,
   errors: [],
+  operationName: "ListAIWorkloadConfigs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -42940,6 +43176,7 @@ export const listAlgorithms: API.OperationMethod<
   input: ListAlgorithmsInput,
   output: ListAlgorithmsOutput,
   errors: [],
+  operationName: "ListAlgorithms",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -42975,6 +43212,7 @@ export const listAliases: API.OperationMethod<
   input: ListAliasesRequest,
   output: ListAliasesResponse,
   errors: [ResourceNotFound],
+  operationName: "ListAliases",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43010,6 +43248,7 @@ export const listAppImageConfigs: API.OperationMethod<
   input: ListAppImageConfigsRequest,
   output: ListAppImageConfigsResponse,
   errors: [],
+  operationName: "ListAppImageConfigs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43045,6 +43284,7 @@ export const listApps: API.OperationMethod<
   input: ListAppsRequest,
   output: ListAppsResponse,
   errors: [],
+  operationName: "ListApps",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43080,6 +43320,7 @@ export const listArtifacts: API.OperationMethod<
   input: ListArtifactsRequest,
   output: ListArtifactsResponse,
   errors: [ResourceNotFound],
+  operationName: "ListArtifacts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43115,6 +43356,7 @@ export const listAssociations: API.OperationMethod<
   input: ListAssociationsRequest,
   output: ListAssociationsResponse,
   errors: [ResourceNotFound],
+  operationName: "ListAssociations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43150,6 +43392,7 @@ export const listAutoMLJobs: API.OperationMethod<
   input: ListAutoMLJobsRequest,
   output: ListAutoMLJobsResponse,
   errors: [],
+  operationName: "ListAutoMLJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43185,6 +43428,7 @@ export const listCandidatesForAutoMLJob: API.OperationMethod<
   input: ListCandidatesForAutoMLJobRequest,
   output: ListCandidatesForAutoMLJobResponse,
   errors: [ResourceNotFound],
+  operationName: "ListCandidatesForAutoMLJob",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43220,6 +43464,7 @@ export const listClusterEvents: API.OperationMethod<
   input: ListClusterEventsRequest,
   output: ListClusterEventsResponse,
   errors: [ResourceNotFound],
+  operationName: "ListClusterEvents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43255,6 +43500,7 @@ export const listClusterNodes: API.OperationMethod<
   input: ListClusterNodesRequest,
   output: ListClusterNodesResponse,
   errors: [ResourceNotFound],
+  operationName: "ListClusterNodes",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43290,6 +43536,7 @@ export const listClusters: API.OperationMethod<
   input: ListClustersRequest,
   output: ListClustersResponse,
   errors: [],
+  operationName: "ListClusters",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43325,6 +43572,7 @@ export const listClusterSchedulerConfigs: API.OperationMethod<
   input: ListClusterSchedulerConfigsRequest,
   output: ListClusterSchedulerConfigsResponse,
   errors: [],
+  operationName: "ListClusterSchedulerConfigs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43360,6 +43608,7 @@ export const listCodeRepositories: API.OperationMethod<
   input: ListCodeRepositoriesInput,
   output: ListCodeRepositoriesOutput,
   errors: [],
+  operationName: "ListCodeRepositories",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43397,6 +43646,7 @@ export const listCompilationJobs: API.OperationMethod<
   input: ListCompilationJobsRequest,
   output: ListCompilationJobsResponse,
   errors: [],
+  operationName: "ListCompilationJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43432,6 +43682,7 @@ export const listComputeQuotas: API.OperationMethod<
   input: ListComputeQuotasRequest,
   output: ListComputeQuotasResponse,
   errors: [],
+  operationName: "ListComputeQuotas",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43467,6 +43718,7 @@ export const listContexts: API.OperationMethod<
   input: ListContextsRequest,
   output: ListContextsResponse,
   errors: [ResourceNotFound],
+  operationName: "ListContexts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43502,6 +43754,7 @@ export const listDataQualityJobDefinitions: API.OperationMethod<
   input: ListDataQualityJobDefinitionsRequest,
   output: ListDataQualityJobDefinitionsResponse,
   errors: [],
+  operationName: "ListDataQualityJobDefinitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43537,6 +43790,7 @@ export const listDeviceFleets: API.OperationMethod<
   input: ListDeviceFleetsRequest,
   output: ListDeviceFleetsResponse,
   errors: [],
+  operationName: "ListDeviceFleets",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43572,6 +43826,7 @@ export const listDevices: API.OperationMethod<
   input: ListDevicesRequest,
   output: ListDevicesResponse,
   errors: [],
+  operationName: "ListDevices",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43607,6 +43862,7 @@ export const listDomains: API.OperationMethod<
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [],
+  operationName: "ListDomains",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43642,6 +43898,7 @@ export const listEdgeDeploymentPlans: API.OperationMethod<
   input: ListEdgeDeploymentPlansRequest,
   output: ListEdgeDeploymentPlansResponse,
   errors: [],
+  operationName: "ListEdgeDeploymentPlans",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43677,6 +43934,7 @@ export const listEdgePackagingJobs: API.OperationMethod<
   input: ListEdgePackagingJobsRequest,
   output: ListEdgePackagingJobsResponse,
   errors: [],
+  operationName: "ListEdgePackagingJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43712,6 +43970,7 @@ export const listEndpointConfigs: API.OperationMethod<
   input: ListEndpointConfigsInput,
   output: ListEndpointConfigsOutput,
   errors: [],
+  operationName: "ListEndpointConfigs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43747,6 +44006,7 @@ export const listEndpoints: API.OperationMethod<
   input: ListEndpointsInput,
   output: ListEndpointsOutput,
   errors: [],
+  operationName: "ListEndpoints",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43782,6 +44042,7 @@ export const listExperiments: API.OperationMethod<
   input: ListExperimentsRequest,
   output: ListExperimentsResponse,
   errors: [],
+  operationName: "ListExperiments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43817,6 +44078,7 @@ export const listFeatureGroups: API.OperationMethod<
   input: ListFeatureGroupsRequest,
   output: ListFeatureGroupsResponse,
   errors: [],
+  operationName: "ListFeatureGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43852,6 +44114,7 @@ export const listFlowDefinitions: API.OperationMethod<
   input: ListFlowDefinitionsRequest,
   output: ListFlowDefinitionsResponse,
   errors: [],
+  operationName: "ListFlowDefinitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43872,6 +44135,7 @@ export const listHubContents: API.OperationMethod<
   input: ListHubContentsRequest,
   output: ListHubContentsResponse,
   errors: [ResourceNotFound],
+  operationName: "ListHubContents",
 }));
 export type ListHubContentVersionsError = ResourceNotFound | CommonErrors;
 /**
@@ -43886,6 +44150,7 @@ export const listHubContentVersions: API.OperationMethod<
   input: ListHubContentVersionsRequest,
   output: ListHubContentVersionsResponse,
   errors: [ResourceNotFound],
+  operationName: "ListHubContentVersions",
 }));
 export type ListHubsError = CommonErrors;
 /**
@@ -43900,6 +44165,7 @@ export const listHubs: API.OperationMethod<
   input: ListHubsRequest,
   output: ListHubsResponse,
   errors: [],
+  operationName: "ListHubs",
 }));
 export type ListHumanTaskUisError = CommonErrors;
 /**
@@ -43929,6 +44195,7 @@ export const listHumanTaskUis: API.OperationMethod<
   input: ListHumanTaskUisRequest,
   output: ListHumanTaskUisResponse,
   errors: [],
+  operationName: "ListHumanTaskUis",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43964,6 +44231,7 @@ export const listHyperParameterTuningJobs: API.OperationMethod<
   input: ListHyperParameterTuningJobsRequest,
   output: ListHyperParameterTuningJobsResponse,
   errors: [],
+  operationName: "ListHyperParameterTuningJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -43999,6 +44267,7 @@ export const listImages: API.OperationMethod<
   input: ListImagesRequest,
   output: ListImagesResponse,
   errors: [],
+  operationName: "ListImages",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44034,6 +44303,7 @@ export const listImageVersions: API.OperationMethod<
   input: ListImageVersionsRequest,
   output: ListImageVersionsResponse,
   errors: [ResourceNotFound],
+  operationName: "ListImageVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44069,6 +44339,7 @@ export const listInferenceComponents: API.OperationMethod<
   input: ListInferenceComponentsInput,
   output: ListInferenceComponentsOutput,
   errors: [],
+  operationName: "ListInferenceComponents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44104,6 +44375,7 @@ export const listInferenceExperiments: API.OperationMethod<
   input: ListInferenceExperimentsRequest,
   output: ListInferenceExperimentsResponse,
   errors: [],
+  operationName: "ListInferenceExperiments",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44139,6 +44411,7 @@ export const listInferenceRecommendationsJobs: API.OperationMethod<
   input: ListInferenceRecommendationsJobsRequest,
   output: ListInferenceRecommendationsJobsResponse,
   errors: [],
+  operationName: "ListInferenceRecommendationsJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44178,6 +44451,7 @@ export const listInferenceRecommendationsJobSteps: API.OperationMethod<
   input: ListInferenceRecommendationsJobStepsRequest,
   output: ListInferenceRecommendationsJobStepsResponse,
   errors: [ResourceNotFound],
+  operationName: "ListInferenceRecommendationsJobSteps",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44219,6 +44493,7 @@ export const listJobs: API.OperationMethod<
   input: ListJobsRequest,
   output: ListJobsResponse,
   errors: [],
+  operationName: "ListJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44260,6 +44535,7 @@ export const listJobSchemaVersions: API.OperationMethod<
   input: ListJobSchemaVersionsRequest,
   output: ListJobSchemaVersionsResponse,
   errors: [ResourceNotFound],
+  operationName: "ListJobSchemaVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44295,6 +44571,7 @@ export const listLabelingJobs: API.OperationMethod<
   input: ListLabelingJobsRequest,
   output: ListLabelingJobsResponse,
   errors: [],
+  operationName: "ListLabelingJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44330,6 +44607,7 @@ export const listLabelingJobsForWorkteam: API.OperationMethod<
   input: ListLabelingJobsForWorkteamRequest,
   output: ListLabelingJobsForWorkteamResponse,
   errors: [ResourceNotFound],
+  operationName: "ListLabelingJobsForWorkteam",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44365,6 +44643,7 @@ export const listLineageGroups: API.OperationMethod<
   input: ListLineageGroupsRequest,
   output: ListLineageGroupsResponse,
   errors: [],
+  operationName: "ListLineageGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44400,6 +44679,7 @@ export const listMlflowApps: API.OperationMethod<
   input: ListMlflowAppsRequest,
   output: ListMlflowAppsResponse,
   errors: [],
+  operationName: "ListMlflowApps",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44435,6 +44715,7 @@ export const listMlflowTrackingServers: API.OperationMethod<
   input: ListMlflowTrackingServersRequest,
   output: ListMlflowTrackingServersResponse,
   errors: [],
+  operationName: "ListMlflowTrackingServers",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44470,6 +44751,7 @@ export const listModelBiasJobDefinitions: API.OperationMethod<
   input: ListModelBiasJobDefinitionsRequest,
   output: ListModelBiasJobDefinitionsResponse,
   errors: [],
+  operationName: "ListModelBiasJobDefinitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44505,6 +44787,7 @@ export const listModelCardExportJobs: API.OperationMethod<
   input: ListModelCardExportJobsRequest,
   output: ListModelCardExportJobsResponse,
   errors: [],
+  operationName: "ListModelCardExportJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44540,6 +44823,7 @@ export const listModelCards: API.OperationMethod<
   input: ListModelCardsRequest,
   output: ListModelCardsResponse,
   errors: [],
+  operationName: "ListModelCards",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44575,6 +44859,7 @@ export const listModelCardVersions: API.OperationMethod<
   input: ListModelCardVersionsRequest,
   output: ListModelCardVersionsResponse,
   errors: [ResourceNotFound],
+  operationName: "ListModelCardVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44610,6 +44895,7 @@ export const listModelExplainabilityJobDefinitions: API.OperationMethod<
   input: ListModelExplainabilityJobDefinitionsRequest,
   output: ListModelExplainabilityJobDefinitionsResponse,
   errors: [],
+  operationName: "ListModelExplainabilityJobDefinitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44645,6 +44931,7 @@ export const listModelMetadata: API.OperationMethod<
   input: ListModelMetadataRequest,
   output: ListModelMetadataResponse,
   errors: [],
+  operationName: "ListModelMetadata",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44680,6 +44967,7 @@ export const listModelPackageGroups: API.OperationMethod<
   input: ListModelPackageGroupsInput,
   output: ListModelPackageGroupsOutput,
   errors: [],
+  operationName: "ListModelPackageGroups",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44715,6 +45003,7 @@ export const listModelPackages: API.OperationMethod<
   input: ListModelPackagesInput,
   output: ListModelPackagesOutput,
   errors: [],
+  operationName: "ListModelPackages",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44750,6 +45039,7 @@ export const listModelQualityJobDefinitions: API.OperationMethod<
   input: ListModelQualityJobDefinitionsRequest,
   output: ListModelQualityJobDefinitionsResponse,
   errors: [],
+  operationName: "ListModelQualityJobDefinitions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44785,6 +45075,7 @@ export const listModels: API.OperationMethod<
   input: ListModelsInput,
   output: ListModelsOutput,
   errors: [],
+  operationName: "ListModels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44820,6 +45111,7 @@ export const listMonitoringAlertHistory: API.OperationMethod<
   input: ListMonitoringAlertHistoryRequest,
   output: ListMonitoringAlertHistoryResponse,
   errors: [ResourceNotFound],
+  operationName: "ListMonitoringAlertHistory",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44855,6 +45147,7 @@ export const listMonitoringAlerts: API.OperationMethod<
   input: ListMonitoringAlertsRequest,
   output: ListMonitoringAlertsResponse,
   errors: [ResourceNotFound],
+  operationName: "ListMonitoringAlerts",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44890,6 +45183,7 @@ export const listMonitoringExecutions: API.OperationMethod<
   input: ListMonitoringExecutionsRequest,
   output: ListMonitoringExecutionsResponse,
   errors: [],
+  operationName: "ListMonitoringExecutions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44925,6 +45219,7 @@ export const listMonitoringSchedules: API.OperationMethod<
   input: ListMonitoringSchedulesRequest,
   output: ListMonitoringSchedulesResponse,
   errors: [],
+  operationName: "ListMonitoringSchedules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44960,6 +45255,7 @@ export const listNotebookInstanceLifecycleConfigs: API.OperationMethod<
   input: ListNotebookInstanceLifecycleConfigsInput,
   output: ListNotebookInstanceLifecycleConfigsOutput,
   errors: [],
+  operationName: "ListNotebookInstanceLifecycleConfigs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -44995,6 +45291,7 @@ export const listNotebookInstances: API.OperationMethod<
   input: ListNotebookInstancesInput,
   output: ListNotebookInstancesOutput,
   errors: [],
+  operationName: "ListNotebookInstances",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45030,6 +45327,7 @@ export const listOptimizationJobs: API.OperationMethod<
   input: ListOptimizationJobsRequest,
   output: ListOptimizationJobsResponse,
   errors: [],
+  operationName: "ListOptimizationJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45065,6 +45363,7 @@ export const listPartnerApps: API.OperationMethod<
   input: ListPartnerAppsRequest,
   output: ListPartnerAppsResponse,
   errors: [],
+  operationName: "ListPartnerApps",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45100,6 +45399,7 @@ export const listPipelineExecutions: API.OperationMethod<
   input: ListPipelineExecutionsRequest,
   output: ListPipelineExecutionsResponse,
   errors: [ResourceNotFound],
+  operationName: "ListPipelineExecutions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45135,6 +45435,7 @@ export const listPipelineExecutionSteps: API.OperationMethod<
   input: ListPipelineExecutionStepsRequest,
   output: ListPipelineExecutionStepsResponse,
   errors: [ResourceNotFound],
+  operationName: "ListPipelineExecutionSteps",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45172,6 +45473,7 @@ export const listPipelineParametersForExecution: API.OperationMethod<
   input: ListPipelineParametersForExecutionRequest,
   output: ListPipelineParametersForExecutionResponse,
   errors: [ResourceNotFound],
+  operationName: "ListPipelineParametersForExecution",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45207,6 +45509,7 @@ export const listPipelines: API.OperationMethod<
   input: ListPipelinesRequest,
   output: ListPipelinesResponse,
   errors: [],
+  operationName: "ListPipelines",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45242,6 +45545,7 @@ export const listPipelineVersions: API.OperationMethod<
   input: ListPipelineVersionsRequest,
   output: ListPipelineVersionsResponse,
   errors: [ResourceNotFound],
+  operationName: "ListPipelineVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45277,6 +45581,7 @@ export const listProcessingJobs: API.OperationMethod<
   input: ListProcessingJobsRequest,
   output: ListProcessingJobsResponse,
   errors: [],
+  operationName: "ListProcessingJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45312,6 +45617,7 @@ export const listProjects: API.OperationMethod<
   input: ListProjectsInput,
   output: ListProjectsOutput,
   errors: [],
+  operationName: "ListProjects",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45346,6 +45652,7 @@ export const listResourceCatalogs: API.OperationMethod<
   input: ListResourceCatalogsRequest,
   output: ListResourceCatalogsResponse,
   errors: [],
+  operationName: "ListResourceCatalogs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45381,6 +45688,7 @@ export const listSpaces: API.OperationMethod<
   input: ListSpacesRequest,
   output: ListSpacesResponse,
   errors: [],
+  operationName: "ListSpaces",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45416,6 +45724,7 @@ export const listStageDevices: API.OperationMethod<
   input: ListStageDevicesRequest,
   output: ListStageDevicesResponse,
   errors: [],
+  operationName: "ListStageDevices",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45451,6 +45760,7 @@ export const listStudioLifecycleConfigs: API.OperationMethod<
   input: ListStudioLifecycleConfigsRequest,
   output: ListStudioLifecycleConfigsResponse,
   errors: [ResourceInUse],
+  operationName: "ListStudioLifecycleConfigs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45486,6 +45796,7 @@ export const listSubscribedWorkteams: API.OperationMethod<
   input: ListSubscribedWorkteamsRequest,
   output: ListSubscribedWorkteamsResponse,
   errors: [],
+  operationName: "ListSubscribedWorkteams",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45521,6 +45832,7 @@ export const listTags: API.OperationMethod<
   input: ListTagsInput,
   output: ListTagsOutput,
   errors: [],
+  operationName: "ListTags",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45568,6 +45880,7 @@ export const listTrainingJobs: API.OperationMethod<
   input: ListTrainingJobsRequest,
   output: ListTrainingJobsResponse,
   errors: [],
+  operationName: "ListTrainingJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45605,6 +45918,7 @@ export const listTrainingJobsForHyperParameterTuningJob: API.OperationMethod<
   input: ListTrainingJobsForHyperParameterTuningJobRequest,
   output: ListTrainingJobsForHyperParameterTuningJobResponse,
   errors: [ResourceNotFound],
+  operationName: "ListTrainingJobsForHyperParameterTuningJob",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45640,6 +45954,7 @@ export const listTrainingPlans: API.OperationMethod<
   input: ListTrainingPlansRequest,
   output: ListTrainingPlansResponse,
   errors: [],
+  operationName: "ListTrainingPlans",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45675,6 +45990,7 @@ export const listTransformJobs: API.OperationMethod<
   input: ListTransformJobsRequest,
   output: ListTransformJobsResponse,
   errors: [],
+  operationName: "ListTransformJobs",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45716,6 +46032,7 @@ export const listTrialComponents: API.OperationMethod<
   input: ListTrialComponentsRequest,
   output: ListTrialComponentsResponse,
   errors: [ResourceNotFound],
+  operationName: "ListTrialComponents",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45751,6 +46068,7 @@ export const listTrials: API.OperationMethod<
   input: ListTrialsRequest,
   output: ListTrialsResponse,
   errors: [ResourceNotFound],
+  operationName: "ListTrials",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45788,6 +46106,7 @@ export const listUltraServersByReservedCapacity: API.OperationMethod<
   input: ListUltraServersByReservedCapacityRequest,
   output: ListUltraServersByReservedCapacityResponse,
   errors: [ResourceNotFound],
+  operationName: "ListUltraServersByReservedCapacity",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45823,6 +46142,7 @@ export const listUserProfiles: API.OperationMethod<
   input: ListUserProfilesRequest,
   output: ListUserProfilesResponse,
   errors: [],
+  operationName: "ListUserProfiles",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45858,6 +46178,7 @@ export const listWorkforces: API.OperationMethod<
   input: ListWorkforcesRequest,
   output: ListWorkforcesResponse,
   errors: [],
+  operationName: "ListWorkforces",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45893,6 +46214,7 @@ export const listWorkteams: API.OperationMethod<
   input: ListWorkteamsRequest,
   output: ListWorkteamsResponse,
   errors: [],
+  operationName: "ListWorkteams",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45913,6 +46235,7 @@ export const putModelPackageGroupPolicy: API.OperationMethod<
   input: PutModelPackageGroupPolicyInput,
   output: PutModelPackageGroupPolicyOutput,
   errors: [ConflictException],
+  operationName: "PutModelPackageGroupPolicy",
 }));
 export type QueryLineageError = ResourceNotFound | CommonErrors;
 /**
@@ -45942,6 +46265,7 @@ export const queryLineage: API.OperationMethod<
   input: QueryLineageRequest,
   output: QueryLineageResponse,
   errors: [ResourceNotFound],
+  operationName: "QueryLineage",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -45961,6 +46285,7 @@ export const registerDevices: API.OperationMethod<
   input: RegisterDevicesRequest,
   output: RegisterDevicesResponse,
   errors: [ResourceLimitExceeded],
+  operationName: "RegisterDevices",
 }));
 export type RenderUiTemplateError = ResourceNotFound | CommonErrors;
 /**
@@ -45975,6 +46300,7 @@ export const renderUiTemplate: API.OperationMethod<
   input: RenderUiTemplateRequest,
   output: RenderUiTemplateResponse,
   errors: [ResourceNotFound],
+  operationName: "RenderUiTemplate",
 }));
 export type RetryPipelineExecutionError =
   | ConflictException
@@ -45993,6 +46319,7 @@ export const retryPipelineExecution: API.OperationMethod<
   input: RetryPipelineExecutionRequest,
   output: RetryPipelineExecutionResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "RetryPipelineExecution",
 }));
 export type SearchError = CommonErrors;
 /**
@@ -46026,6 +46353,7 @@ export const search: API.OperationMethod<
   input: SearchRequest,
   output: SearchResponse,
   errors: [],
+  operationName: "Search",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -46054,6 +46382,7 @@ export const searchTrainingPlanOfferings: API.OperationMethod<
   input: SearchTrainingPlanOfferingsRequest,
   output: SearchTrainingPlanOfferingsResponse,
   errors: [ResourceLimitExceeded],
+  operationName: "SearchTrainingPlanOfferings",
 }));
 export type SendPipelineExecutionStepFailureError =
   | ConflictException
@@ -46072,6 +46401,7 @@ export const sendPipelineExecutionStepFailure: API.OperationMethod<
   input: SendPipelineExecutionStepFailureRequest,
   output: SendPipelineExecutionStepFailureResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "SendPipelineExecutionStepFailure",
 }));
 export type SendPipelineExecutionStepSuccessError =
   | ConflictException
@@ -46090,6 +46420,7 @@ export const sendPipelineExecutionStepSuccess: API.OperationMethod<
   input: SendPipelineExecutionStepSuccessRequest,
   output: SendPipelineExecutionStepSuccessResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "SendPipelineExecutionStepSuccess",
 }));
 export type StartClusterHealthCheckError = ResourceNotFound | CommonErrors;
 /**
@@ -46104,6 +46435,7 @@ export const startClusterHealthCheck: API.OperationMethod<
   input: StartClusterHealthCheckRequest,
   output: StartClusterHealthCheckResponse,
   errors: [ResourceNotFound],
+  operationName: "StartClusterHealthCheck",
 }));
 export type StartEdgeDeploymentStageError = CommonErrors;
 /**
@@ -46118,6 +46450,7 @@ export const startEdgeDeploymentStage: API.OperationMethod<
   input: StartEdgeDeploymentStageRequest,
   output: StartEdgeDeploymentStageResponse,
   errors: [],
+  operationName: "StartEdgeDeploymentStage",
 }));
 export type StartInferenceExperimentError =
   | ConflictException
@@ -46135,6 +46468,7 @@ export const startInferenceExperiment: API.OperationMethod<
   input: StartInferenceExperimentRequest,
   output: StartInferenceExperimentResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "StartInferenceExperiment",
 }));
 export type StartMlflowTrackingServerError =
   | ConflictException
@@ -46152,6 +46486,7 @@ export const startMlflowTrackingServer: API.OperationMethod<
   input: StartMlflowTrackingServerRequest,
   output: StartMlflowTrackingServerResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "StartMlflowTrackingServer",
 }));
 export type StartMonitoringScheduleError = ResourceNotFound | CommonErrors;
 /**
@@ -46168,6 +46503,7 @@ export const startMonitoringSchedule: API.OperationMethod<
   input: StartMonitoringScheduleRequest,
   output: StartMonitoringScheduleResponse,
   errors: [ResourceNotFound],
+  operationName: "StartMonitoringSchedule",
 }));
 export type StartNotebookInstanceError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -46182,6 +46518,7 @@ export const startNotebookInstance: API.OperationMethod<
   input: StartNotebookInstanceInput,
   output: StartNotebookInstanceResponse,
   errors: [ResourceLimitExceeded],
+  operationName: "StartNotebookInstance",
 }));
 export type StartPipelineExecutionError =
   | ConflictException
@@ -46200,6 +46537,7 @@ export const startPipelineExecution: API.OperationMethod<
   input: StartPipelineExecutionRequest,
   output: StartPipelineExecutionResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "StartPipelineExecution",
 }));
 export type StartSessionError =
   | ResourceLimitExceeded
@@ -46217,6 +46555,7 @@ export const startSession: API.OperationMethod<
   input: StartSessionRequest,
   output: StartSessionResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  operationName: "StartSession",
 }));
 export type StopAIBenchmarkJobError = ResourceNotFound | CommonErrors;
 /**
@@ -46231,6 +46570,7 @@ export const stopAIBenchmarkJob: API.OperationMethod<
   input: StopAIBenchmarkJobRequest,
   output: StopAIBenchmarkJobResponse,
   errors: [ResourceNotFound],
+  operationName: "StopAIBenchmarkJob",
 }));
 export type StopAIRecommendationJobError = ResourceNotFound | CommonErrors;
 /**
@@ -46245,6 +46585,7 @@ export const stopAIRecommendationJob: API.OperationMethod<
   input: StopAIRecommendationJobRequest,
   output: StopAIRecommendationJobResponse,
   errors: [ResourceNotFound],
+  operationName: "StopAIRecommendationJob",
 }));
 export type StopAutoMLJobError = ResourceNotFound | CommonErrors;
 /**
@@ -46259,6 +46600,7 @@ export const stopAutoMLJob: API.OperationMethod<
   input: StopAutoMLJobRequest,
   output: StopAutoMLJobResponse,
   errors: [ResourceNotFound],
+  operationName: "StopAutoMLJob",
 }));
 export type StopCompilationJobError = ResourceNotFound | CommonErrors;
 /**
@@ -46277,6 +46619,7 @@ export const stopCompilationJob: API.OperationMethod<
   input: StopCompilationJobRequest,
   output: StopCompilationJobResponse,
   errors: [ResourceNotFound],
+  operationName: "StopCompilationJob",
 }));
 export type StopEdgeDeploymentStageError = CommonErrors;
 /**
@@ -46291,6 +46634,7 @@ export const stopEdgeDeploymentStage: API.OperationMethod<
   input: StopEdgeDeploymentStageRequest,
   output: StopEdgeDeploymentStageResponse,
   errors: [],
+  operationName: "StopEdgeDeploymentStage",
 }));
 export type StopEdgePackagingJobError = CommonErrors;
 /**
@@ -46305,6 +46649,7 @@ export const stopEdgePackagingJob: API.OperationMethod<
   input: StopEdgePackagingJobRequest,
   output: StopEdgePackagingJobResponse,
   errors: [],
+  operationName: "StopEdgePackagingJob",
 }));
 export type StopHyperParameterTuningJobError = ResourceNotFound | CommonErrors;
 /**
@@ -46321,6 +46666,7 @@ export const stopHyperParameterTuningJob: API.OperationMethod<
   input: StopHyperParameterTuningJobRequest,
   output: StopHyperParameterTuningJobResponse,
   errors: [ResourceNotFound],
+  operationName: "StopHyperParameterTuningJob",
 }));
 export type StopInferenceExperimentError =
   | ConflictException
@@ -46338,6 +46684,7 @@ export const stopInferenceExperiment: API.OperationMethod<
   input: StopInferenceExperimentRequest,
   output: StopInferenceExperimentResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "StopInferenceExperiment",
 }));
 export type StopInferenceRecommendationsJobError =
   | ResourceNotFound
@@ -46354,6 +46701,7 @@ export const stopInferenceRecommendationsJob: API.OperationMethod<
   input: StopInferenceRecommendationsJobRequest,
   output: StopInferenceRecommendationsJobResponse,
   errors: [ResourceNotFound],
+  operationName: "StopInferenceRecommendationsJob",
 }));
 export type StopJobError = ResourceNotFound | CommonErrors;
 /**
@@ -46376,6 +46724,7 @@ export const stopJob: API.OperationMethod<
   input: StopJobRequest,
   output: StopJobResponse,
   errors: [ResourceNotFound],
+  operationName: "StopJob",
 }));
 export type StopLabelingJobError = ResourceNotFound | CommonErrors;
 /**
@@ -46390,6 +46739,7 @@ export const stopLabelingJob: API.OperationMethod<
   input: StopLabelingJobRequest,
   output: StopLabelingJobResponse,
   errors: [ResourceNotFound],
+  operationName: "StopLabelingJob",
 }));
 export type StopMlflowTrackingServerError =
   | ConflictException
@@ -46407,6 +46757,7 @@ export const stopMlflowTrackingServer: API.OperationMethod<
   input: StopMlflowTrackingServerRequest,
   output: StopMlflowTrackingServerResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "StopMlflowTrackingServer",
 }));
 export type StopMonitoringScheduleError = ResourceNotFound | CommonErrors;
 /**
@@ -46421,6 +46772,7 @@ export const stopMonitoringSchedule: API.OperationMethod<
   input: StopMonitoringScheduleRequest,
   output: StopMonitoringScheduleResponse,
   errors: [ResourceNotFound],
+  operationName: "StopMonitoringSchedule",
 }));
 export type StopNotebookInstanceError = CommonErrors;
 /**
@@ -46437,6 +46789,7 @@ export const stopNotebookInstance: API.OperationMethod<
   input: StopNotebookInstanceInput,
   output: StopNotebookInstanceResponse,
   errors: [],
+  operationName: "StopNotebookInstance",
 }));
 export type StopOptimizationJobError = ResourceNotFound | CommonErrors;
 /**
@@ -46451,6 +46804,7 @@ export const stopOptimizationJob: API.OperationMethod<
   input: StopOptimizationJobRequest,
   output: StopOptimizationJobResponse,
   errors: [ResourceNotFound],
+  operationName: "StopOptimizationJob",
 }));
 export type StopPipelineExecutionError =
   | ConflictException
@@ -46480,6 +46834,7 @@ export const stopPipelineExecution: API.OperationMethod<
   input: StopPipelineExecutionRequest,
   output: StopPipelineExecutionResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "StopPipelineExecution",
 }));
 export type StopProcessingJobError = ResourceNotFound | CommonErrors;
 /**
@@ -46494,6 +46849,7 @@ export const stopProcessingJob: API.OperationMethod<
   input: StopProcessingJobRequest,
   output: StopProcessingJobResponse,
   errors: [ResourceNotFound],
+  operationName: "StopProcessingJob",
 }));
 export type StopTrainingJobError = ResourceNotFound | CommonErrors;
 /**
@@ -46510,6 +46866,7 @@ export const stopTrainingJob: API.OperationMethod<
   input: StopTrainingJobRequest,
   output: StopTrainingJobResponse,
   errors: [ResourceNotFound],
+  operationName: "StopTrainingJob",
 }));
 export type StopTransformJobError = ResourceNotFound | CommonErrors;
 /**
@@ -46526,6 +46883,7 @@ export const stopTransformJob: API.OperationMethod<
   input: StopTransformJobRequest,
   output: StopTransformJobResponse,
   errors: [ResourceNotFound],
+  operationName: "StopTransformJob",
 }));
 export type UpdateActionError =
   | ConflictException
@@ -46543,6 +46901,7 @@ export const updateAction: API.OperationMethod<
   input: UpdateActionRequest,
   output: UpdateActionResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "UpdateAction",
 }));
 export type UpdateAppImageConfigError = ResourceNotFound | CommonErrors;
 /**
@@ -46557,6 +46916,7 @@ export const updateAppImageConfig: API.OperationMethod<
   input: UpdateAppImageConfigRequest,
   output: UpdateAppImageConfigResponse,
   errors: [ResourceNotFound],
+  operationName: "UpdateAppImageConfig",
 }));
 export type UpdateArtifactError =
   | ConflictException
@@ -46574,6 +46934,7 @@ export const updateArtifact: API.OperationMethod<
   input: UpdateArtifactRequest,
   output: UpdateArtifactResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "UpdateArtifact",
 }));
 export type UpdateClusterError =
   | ConflictException
@@ -46592,6 +46953,7 @@ export const updateCluster: API.OperationMethod<
   input: UpdateClusterRequest,
   output: UpdateClusterResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "UpdateCluster",
 }));
 export type UpdateClusterSchedulerConfigError =
   | ConflictException
@@ -46610,6 +46972,7 @@ export const updateClusterSchedulerConfig: API.OperationMethod<
   input: UpdateClusterSchedulerConfigRequest,
   output: UpdateClusterSchedulerConfigResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "UpdateClusterSchedulerConfig",
 }));
 export type UpdateClusterSoftwareError =
   | ConflictException
@@ -46629,6 +46992,7 @@ export const updateClusterSoftware: API.OperationMethod<
   input: UpdateClusterSoftwareRequest,
   output: UpdateClusterSoftwareResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "UpdateClusterSoftware",
 }));
 export type UpdateCodeRepositoryError = ConflictException | CommonErrors;
 /**
@@ -46643,6 +47007,7 @@ export const updateCodeRepository: API.OperationMethod<
   input: UpdateCodeRepositoryInput,
   output: UpdateCodeRepositoryOutput,
   errors: [ConflictException],
+  operationName: "UpdateCodeRepository",
 }));
 export type UpdateComputeQuotaError =
   | ConflictException
@@ -46661,6 +47026,7 @@ export const updateComputeQuota: API.OperationMethod<
   input: UpdateComputeQuotaRequest,
   output: UpdateComputeQuotaResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "UpdateComputeQuota",
 }));
 export type UpdateContextError =
   | ConflictException
@@ -46678,6 +47044,7 @@ export const updateContext: API.OperationMethod<
   input: UpdateContextRequest,
   output: UpdateContextResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "UpdateContext",
 }));
 export type UpdateDeviceFleetError = ResourceInUse | CommonErrors;
 /**
@@ -46692,6 +47059,7 @@ export const updateDeviceFleet: API.OperationMethod<
   input: UpdateDeviceFleetRequest,
   output: UpdateDeviceFleetResponse,
   errors: [ResourceInUse],
+  operationName: "UpdateDeviceFleet",
 }));
 export type UpdateDevicesError = CommonErrors;
 /**
@@ -46706,6 +47074,7 @@ export const updateDevices: API.OperationMethod<
   input: UpdateDevicesRequest,
   output: UpdateDevicesResponse,
   errors: [],
+  operationName: "UpdateDevices",
 }));
 export type UpdateDomainError =
   | ResourceInUse
@@ -46724,6 +47093,7 @@ export const updateDomain: API.OperationMethod<
   input: UpdateDomainRequest,
   output: UpdateDomainResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "UpdateDomain",
 }));
 export type UpdateEndpointError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -46744,6 +47114,7 @@ export const updateEndpoint: API.OperationMethod<
   input: UpdateEndpointInput,
   output: UpdateEndpointOutput,
   errors: [ResourceLimitExceeded],
+  operationName: "UpdateEndpoint",
 }));
 export type UpdateEndpointWeightsAndCapacitiesError =
   | ResourceLimitExceeded
@@ -46760,6 +47131,7 @@ export const updateEndpointWeightsAndCapacities: API.OperationMethod<
   input: UpdateEndpointWeightsAndCapacitiesInput,
   output: UpdateEndpointWeightsAndCapacitiesOutput,
   errors: [ResourceLimitExceeded],
+  operationName: "UpdateEndpointWeightsAndCapacities",
 }));
 export type UpdateExperimentError =
   | ConflictException
@@ -46777,6 +47149,7 @@ export const updateExperiment: API.OperationMethod<
   input: UpdateExperimentRequest,
   output: UpdateExperimentResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "UpdateExperiment",
 }));
 export type UpdateFeatureGroupError =
   | ResourceLimitExceeded
@@ -46798,6 +47171,7 @@ export const updateFeatureGroup: API.OperationMethod<
   input: UpdateFeatureGroupRequest,
   output: UpdateFeatureGroupResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  operationName: "UpdateFeatureGroup",
 }));
 export type UpdateFeatureMetadataError = ResourceNotFound | CommonErrors;
 /**
@@ -46812,6 +47186,7 @@ export const updateFeatureMetadata: API.OperationMethod<
   input: UpdateFeatureMetadataRequest,
   output: UpdateFeatureMetadataResponse,
   errors: [ResourceNotFound],
+  operationName: "UpdateFeatureMetadata",
 }));
 export type UpdateHubError = ResourceNotFound | CommonErrors;
 /**
@@ -46826,6 +47201,7 @@ export const updateHub: API.OperationMethod<
   input: UpdateHubRequest,
   output: UpdateHubResponse,
   errors: [ResourceNotFound],
+  operationName: "UpdateHub",
 }));
 export type UpdateHubContentError =
   | ResourceInUse
@@ -46859,6 +47235,7 @@ export const updateHubContent: API.OperationMethod<
   input: UpdateHubContentRequest,
   output: UpdateHubContentResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "UpdateHubContent",
 }));
 export type UpdateHubContentReferenceError =
   | ResourceInUse
@@ -46882,6 +47259,7 @@ export const updateHubContentReference: API.OperationMethod<
   input: UpdateHubContentReferenceRequest,
   output: UpdateHubContentReferenceResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "UpdateHubContentReference",
 }));
 export type UpdateImageError = ResourceInUse | ResourceNotFound | CommonErrors;
 /**
@@ -46896,6 +47274,7 @@ export const updateImage: API.OperationMethod<
   input: UpdateImageRequest,
   output: UpdateImageResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "UpdateImage",
 }));
 export type UpdateImageVersionError =
   | ResourceInUse
@@ -46913,6 +47292,7 @@ export const updateImageVersion: API.OperationMethod<
   input: UpdateImageVersionRequest,
   output: UpdateImageVersionResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  operationName: "UpdateImageVersion",
 }));
 export type UpdateInferenceComponentError =
   | ResourceLimitExceeded
@@ -46929,6 +47309,7 @@ export const updateInferenceComponent: API.OperationMethod<
   input: UpdateInferenceComponentInput,
   output: UpdateInferenceComponentOutput,
   errors: [ResourceLimitExceeded],
+  operationName: "UpdateInferenceComponent",
 }));
 export type UpdateInferenceComponentRuntimeConfigError =
   | ResourceLimitExceeded
@@ -46945,6 +47326,7 @@ export const updateInferenceComponentRuntimeConfig: API.OperationMethod<
   input: UpdateInferenceComponentRuntimeConfigInput,
   output: UpdateInferenceComponentRuntimeConfigOutput,
   errors: [ResourceLimitExceeded],
+  operationName: "UpdateInferenceComponentRuntimeConfig",
 }));
 export type UpdateInferenceExperimentError =
   | ConflictException
@@ -46962,6 +47344,7 @@ export const updateInferenceExperiment: API.OperationMethod<
   input: UpdateInferenceExperimentRequest,
   output: UpdateInferenceExperimentResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "UpdateInferenceExperiment",
 }));
 export type UpdateMlflowAppError =
   | ConflictException
@@ -46979,6 +47362,7 @@ export const updateMlflowApp: API.OperationMethod<
   input: UpdateMlflowAppRequest,
   output: UpdateMlflowAppResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "UpdateMlflowApp",
 }));
 export type UpdateMlflowTrackingServerError =
   | ConflictException
@@ -46997,6 +47381,7 @@ export const updateMlflowTrackingServer: API.OperationMethod<
   input: UpdateMlflowTrackingServerRequest,
   output: UpdateMlflowTrackingServerResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "UpdateMlflowTrackingServer",
 }));
 export type UpdateModelCardError =
   | ConflictException
@@ -47017,6 +47402,7 @@ export const updateModelCard: API.OperationMethod<
   input: UpdateModelCardRequest,
   output: UpdateModelCardResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "UpdateModelCard",
 }));
 export type UpdateModelPackageError = ConflictException | CommonErrors;
 /**
@@ -47031,6 +47417,7 @@ export const updateModelPackage: API.OperationMethod<
   input: UpdateModelPackageInput,
   output: UpdateModelPackageOutput,
   errors: [ConflictException],
+  operationName: "UpdateModelPackage",
 }));
 export type UpdateMonitoringAlertError =
   | ResourceLimitExceeded
@@ -47048,6 +47435,7 @@ export const updateMonitoringAlert: API.OperationMethod<
   input: UpdateMonitoringAlertRequest,
   output: UpdateMonitoringAlertResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  operationName: "UpdateMonitoringAlert",
 }));
 export type UpdateMonitoringScheduleError =
   | ResourceLimitExceeded
@@ -47065,6 +47453,7 @@ export const updateMonitoringSchedule: API.OperationMethod<
   input: UpdateMonitoringScheduleRequest,
   output: UpdateMonitoringScheduleResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  operationName: "UpdateMonitoringSchedule",
 }));
 export type UpdateNotebookInstanceError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -47081,6 +47470,7 @@ export const updateNotebookInstance: API.OperationMethod<
   input: UpdateNotebookInstanceInput,
   output: UpdateNotebookInstanceOutput,
   errors: [ResourceLimitExceeded],
+  operationName: "UpdateNotebookInstance",
 }));
 export type UpdateNotebookInstanceLifecycleConfigError =
   | ResourceLimitExceeded
@@ -47099,6 +47489,7 @@ export const updateNotebookInstanceLifecycleConfig: API.OperationMethod<
   input: UpdateNotebookInstanceLifecycleConfigInput,
   output: UpdateNotebookInstanceLifecycleConfigOutput,
   errors: [ResourceLimitExceeded],
+  operationName: "UpdateNotebookInstanceLifecycleConfig",
 }));
 export type UpdatePartnerAppError =
   | ConflictException
@@ -47116,6 +47507,7 @@ export const updatePartnerApp: API.OperationMethod<
   input: UpdatePartnerAppRequest,
   output: UpdatePartnerAppResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "UpdatePartnerApp",
 }));
 export type UpdatePipelineError =
   | ConflictException
@@ -47133,6 +47525,7 @@ export const updatePipeline: API.OperationMethod<
   input: UpdatePipelineRequest,
   output: UpdatePipelineResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "UpdatePipeline",
 }));
 export type UpdatePipelineExecutionError =
   | ConflictException
@@ -47150,6 +47543,7 @@ export const updatePipelineExecution: API.OperationMethod<
   input: UpdatePipelineExecutionRequest,
   output: UpdatePipelineExecutionResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "UpdatePipelineExecution",
 }));
 export type UpdatePipelineVersionError =
   | ConflictException
@@ -47167,6 +47561,7 @@ export const updatePipelineVersion: API.OperationMethod<
   input: UpdatePipelineVersionRequest,
   output: UpdatePipelineVersionResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "UpdatePipelineVersion",
 }));
 export type UpdateProjectError = ConflictException | CommonErrors;
 /**
@@ -47183,6 +47578,7 @@ export const updateProject: API.OperationMethod<
   input: UpdateProjectInput,
   output: UpdateProjectOutput,
   errors: [ConflictException],
+  operationName: "UpdateProject",
 }));
 export type UpdateSpaceError =
   | ResourceInUse
@@ -47203,6 +47599,7 @@ export const updateSpace: API.OperationMethod<
   input: UpdateSpaceRequest,
   output: UpdateSpaceResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "UpdateSpace",
 }));
 export type UpdateTrainingJobError =
   | ResourceLimitExceeded
@@ -47220,6 +47617,7 @@ export const updateTrainingJob: API.OperationMethod<
   input: UpdateTrainingJobRequest,
   output: UpdateTrainingJobResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  operationName: "UpdateTrainingJob",
 }));
 export type UpdateTrialError =
   | ConflictException
@@ -47237,6 +47635,7 @@ export const updateTrial: API.OperationMethod<
   input: UpdateTrialRequest,
   output: UpdateTrialResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "UpdateTrial",
 }));
 export type UpdateTrialComponentError =
   | ConflictException
@@ -47254,6 +47653,7 @@ export const updateTrialComponent: API.OperationMethod<
   input: UpdateTrialComponentRequest,
   output: UpdateTrialComponentResponse,
   errors: [ConflictException, ResourceNotFound],
+  operationName: "UpdateTrialComponent",
 }));
 export type UpdateUserProfileError =
   | ResourceInUse
@@ -47272,6 +47672,7 @@ export const updateUserProfile: API.OperationMethod<
   input: UpdateUserProfileRequest,
   output: UpdateUserProfileResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  operationName: "UpdateUserProfile",
 }));
 export type UpdateWorkforceError = ConflictException | CommonErrors;
 /**
@@ -47302,6 +47703,7 @@ export const updateWorkforce: API.OperationMethod<
   input: UpdateWorkforceRequest,
   output: UpdateWorkforceResponse,
   errors: [ConflictException],
+  operationName: "UpdateWorkforce",
 }));
 export type UpdateWorkteamError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -47316,4 +47718,5 @@ export const updateWorkteam: API.OperationMethod<
   input: UpdateWorkteamRequest,
   output: UpdateWorkteamResponse,
   errors: [ResourceLimitExceeded],
+  operationName: "UpdateWorkteam",
 }));

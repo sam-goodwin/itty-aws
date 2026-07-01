@@ -273,6 +273,7 @@ export const createHomeRegionControl: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "CreateHomeRegionControl",
 }));
 export type DeleteHomeRegionControlError =
   | AccessDeniedException
@@ -299,6 +300,7 @@ export const deleteHomeRegionControl: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DeleteHomeRegionControl",
 }));
 export type DescribeHomeRegionControlsError =
   | AccessDeniedException
@@ -341,6 +343,7 @@ export const describeHomeRegionControls: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "DescribeHomeRegionControls",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -376,4 +379,5 @@ export const getHomeRegion: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  operationName: "GetHomeRegion",
 }));

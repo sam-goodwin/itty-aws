@@ -234,4 +234,5 @@ export const getMedia: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  operationName: "GetMedia",
 }));

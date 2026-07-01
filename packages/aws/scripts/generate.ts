@@ -2767,10 +2767,13 @@ const generateClient = Effect.fn(function* (
 
         // Build operation object - include pagination metadata if present
         // Use 'as const' on pagination to preserve literal types for type inference
+        // Always emit the Smithy operation name: protocols use it as the wire
+        // Action / X-Amz-Target instead of guessing it from the input shape
+        // identifier (which fails for e.g. AutoScaling's `...NamesType` shapes).
         const exportedName = formatName(operationShapeName, true);
         const metaObject = paginatedTrait
-          ? `{ input: ${input}, output: ${output}, errors: ${operationErrors}, pagination: ${JSON.stringify(paginatedTrait)} as const }`
-          : `{ input: ${input}, output: ${output}, errors: ${operationErrors} }`;
+          ? `{ input: ${input}, output: ${output}, errors: ${operationErrors}, operationName: ${JSON.stringify(opName)}, pagination: ${JSON.stringify(paginatedTrait)} as const }`
+          : `{ input: ${input}, output: ${output}, errors: ${operationErrors}, operationName: ${JSON.stringify(opName)} }`;
 
         // Build the error type alias for the function signature
         // Errors include operation-specific errors plus common API errors

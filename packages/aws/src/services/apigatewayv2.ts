@@ -7589,6 +7589,7 @@ export const createApi: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateApi",
 }));
 export type CreateApiMappingError =
   | BadRequestException
@@ -7613,6 +7614,7 @@ export const createApiMapping: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateApiMapping",
 }));
 export type CreateAuthorizerError =
   | BadRequestException
@@ -7637,6 +7639,7 @@ export const createAuthorizer: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateAuthorizer",
 }));
 export type CreateDeploymentError =
   | BadRequestException
@@ -7661,6 +7664,7 @@ export const createDeployment: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateDeployment",
 }));
 export type CreateDomainNameError =
   | AccessDeniedException
@@ -7687,6 +7691,7 @@ export const createDomainName: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateDomainName",
 }));
 export type CreateIntegrationError =
   | BadRequestException
@@ -7711,6 +7716,7 @@ export const createIntegration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateIntegration",
 }));
 export type CreateIntegrationResponseError =
   | BadRequestException
@@ -7735,6 +7741,7 @@ export const createIntegrationResponse: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateIntegrationResponse",
 }));
 export type CreateModelError =
   | BadRequestException
@@ -7759,6 +7766,7 @@ export const createModel: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateModel",
 }));
 export type CreatePortalError =
   | AccessDeniedException
@@ -7781,6 +7789,7 @@ export const createPortal: API.OperationMethod<
     BadRequestException,
     TooManyRequestsException,
   ],
+  operationName: "CreatePortal",
 }));
 export type CreatePortalProductError =
   | AccessDeniedException
@@ -7803,6 +7812,7 @@ export const createPortalProduct: API.OperationMethod<
     BadRequestException,
     TooManyRequestsException,
   ],
+  operationName: "CreatePortalProduct",
 }));
 export type CreateProductPageError =
   | AccessDeniedException
@@ -7827,6 +7837,7 @@ export const createProductPage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateProductPage",
 }));
 export type CreateProductRestEndpointPageError =
   | AccessDeniedException
@@ -7851,6 +7862,7 @@ export const createProductRestEndpointPage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateProductRestEndpointPage",
 }));
 export type CreateRouteError =
   | BadRequestException
@@ -7875,6 +7887,7 @@ export const createRoute: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateRoute",
 }));
 export type CreateRouteResponseError =
   | BadRequestException
@@ -7899,6 +7912,7 @@ export const createRouteResponse: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateRouteResponse",
 }));
 export type CreateRoutingRuleError =
   | BadRequestException
@@ -7923,6 +7937,7 @@ export const createRoutingRule: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateRoutingRule",
 }));
 export type CreateStageError =
   | BadRequestException
@@ -7947,6 +7962,7 @@ export const createStage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "CreateStage",
 }));
 export type CreateVpcLinkError =
   | BadRequestException
@@ -7964,6 +7980,7 @@ export const createVpcLink: API.OperationMethod<
   input: CreateVpcLinkRequest,
   output: CreateVpcLinkResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "CreateVpcLink",
 }));
 export type DeleteAccessLogSettingsError =
   | NotFoundException
@@ -7981,6 +7998,7 @@ export const deleteAccessLogSettings: API.OperationMethod<
   input: DeleteAccessLogSettingsRequest,
   output: DeleteAccessLogSettingsResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "DeleteAccessLogSettings",
 }));
 export type DeleteApiError =
   | NotFoundException
@@ -7998,6 +8016,7 @@ export const deleteApi: API.OperationMethod<
   input: DeleteApiRequest,
   output: DeleteApiResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "DeleteApi",
 }));
 export type DeleteApiMappingError =
   | BadRequestException
@@ -8016,6 +8035,7 @@ export const deleteApiMapping: API.OperationMethod<
   input: DeleteApiMappingRequest,
   output: DeleteApiMappingResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "DeleteApiMapping",
 }));
 export type DeleteAuthorizerError =
   | NotFoundException
@@ -8033,6 +8053,7 @@ export const deleteAuthorizer: API.OperationMethod<
   input: DeleteAuthorizerRequest,
   output: DeleteAuthorizerResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "DeleteAuthorizer",
 }));
 export type DeleteCorsConfigurationError =
   | NotFoundException
@@ -8050,6 +8071,7 @@ export const deleteCorsConfiguration: API.OperationMethod<
   input: DeleteCorsConfigurationRequest,
   output: DeleteCorsConfigurationResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "DeleteCorsConfiguration",
 }));
 export type DeleteDeploymentError =
   | NotFoundException
@@ -8067,6 +8089,7 @@ export const deleteDeployment: API.OperationMethod<
   input: DeleteDeploymentRequest,
   output: DeleteDeploymentResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "DeleteDeployment",
 }));
 export type DeleteDomainNameError =
   | NotFoundException
@@ -8084,6 +8107,7 @@ export const deleteDomainName: API.OperationMethod<
   input: DeleteDomainNameRequest,
   output: DeleteDomainNameResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "DeleteDomainName",
 }));
 export type DeleteIntegrationError =
   | NotFoundException
@@ -8101,6 +8125,7 @@ export const deleteIntegration: API.OperationMethod<
   input: DeleteIntegrationRequest,
   output: DeleteIntegrationResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "DeleteIntegration",
 }));
 export type DeleteIntegrationResponseError =
   | NotFoundException
@@ -8118,6 +8143,7 @@ export const deleteIntegrationResponse: API.OperationMethod<
   input: DeleteIntegrationResponseRequest,
   output: DeleteIntegrationResponseResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "DeleteIntegrationResponse",
 }));
 export type DeleteModelError =
   | NotFoundException
@@ -8135,6 +8161,7 @@ export const deleteModel: API.OperationMethod<
   input: DeleteModelRequest,
   output: DeleteModelResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "DeleteModel",
 }));
 export type DeletePortalError =
   | AccessDeniedException
@@ -8157,6 +8184,7 @@ export const deletePortal: API.OperationMethod<
     BadRequestException,
     TooManyRequestsException,
   ],
+  operationName: "DeletePortal",
 }));
 export type DeletePortalProductError =
   | AccessDeniedException
@@ -8181,6 +8209,7 @@ export const deletePortalProduct: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeletePortalProduct",
 }));
 export type DeletePortalProductSharingPolicyError =
   | AccessDeniedException
@@ -8205,6 +8234,7 @@ export const deletePortalProductSharingPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeletePortalProductSharingPolicy",
 }));
 export type DeleteProductPageError =
   | AccessDeniedException
@@ -8229,6 +8259,7 @@ export const deleteProductPage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteProductPage",
 }));
 export type DeleteProductRestEndpointPageError =
   | AccessDeniedException
@@ -8253,6 +8284,7 @@ export const deleteProductRestEndpointPage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DeleteProductRestEndpointPage",
 }));
 export type DeleteRouteError =
   | NotFoundException
@@ -8270,6 +8302,7 @@ export const deleteRoute: API.OperationMethod<
   input: DeleteRouteRequest,
   output: DeleteRouteResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "DeleteRoute",
 }));
 export type DeleteRouteRequestParameterError =
   | NotFoundException
@@ -8287,6 +8320,7 @@ export const deleteRouteRequestParameter: API.OperationMethod<
   input: DeleteRouteRequestParameterRequest,
   output: DeleteRouteRequestParameterResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "DeleteRouteRequestParameter",
 }));
 export type DeleteRouteResponseError =
   | NotFoundException
@@ -8304,6 +8338,7 @@ export const deleteRouteResponse: API.OperationMethod<
   input: DeleteRouteResponseRequest,
   output: DeleteRouteResponseResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "DeleteRouteResponse",
 }));
 export type DeleteRouteSettingsError =
   | NotFoundException
@@ -8321,6 +8356,7 @@ export const deleteRouteSettings: API.OperationMethod<
   input: DeleteRouteSettingsRequest,
   output: DeleteRouteSettingsResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "DeleteRouteSettings",
 }));
 export type DeleteRoutingRuleError =
   | BadRequestException
@@ -8339,6 +8375,7 @@ export const deleteRoutingRule: API.OperationMethod<
   input: DeleteRoutingRuleRequest,
   output: DeleteRoutingRuleResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "DeleteRoutingRule",
 }));
 export type DeleteStageError =
   | NotFoundException
@@ -8356,6 +8393,7 @@ export const deleteStage: API.OperationMethod<
   input: DeleteStageRequest,
   output: DeleteStageResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "DeleteStage",
 }));
 export type DeleteVpcLinkError =
   | NotFoundException
@@ -8373,6 +8411,7 @@ export const deleteVpcLink: API.OperationMethod<
   input: DeleteVpcLinkRequest,
   output: DeleteVpcLinkResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "DeleteVpcLink",
 }));
 export type DisablePortalError =
   | AccessDeniedException
@@ -8399,6 +8438,7 @@ export const disablePortal: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "DisablePortal",
 }));
 export type ExportApiError =
   | BadRequestException
@@ -8417,6 +8457,7 @@ export const exportApi: API.OperationMethod<
   input: ExportApiRequest,
   output: ExportApiResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "ExportApi",
 }));
 export type GetApiError =
   | NotFoundException
@@ -8434,6 +8475,7 @@ export const getApi: API.OperationMethod<
   input: GetApiRequest,
   output: GetApiResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "GetApi",
 }));
 export type GetApiMappingError =
   | BadRequestException
@@ -8452,6 +8494,7 @@ export const getApiMapping: API.OperationMethod<
   input: GetApiMappingRequest,
   output: GetApiMappingResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetApiMapping",
 }));
 export type GetApiMappingsError =
   | BadRequestException
@@ -8470,6 +8513,7 @@ export const getApiMappings: API.OperationMethod<
   input: GetApiMappingsRequest,
   output: GetApiMappingsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetApiMappings",
 }));
 export type GetApisError =
   | BadRequestException
@@ -8488,6 +8532,7 @@ export const getApis: API.OperationMethod<
   input: GetApisRequest,
   output: GetApisResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetApis",
 }));
 export type GetAuthorizerError =
   | NotFoundException
@@ -8505,6 +8550,7 @@ export const getAuthorizer: API.OperationMethod<
   input: GetAuthorizerRequest,
   output: GetAuthorizerResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "GetAuthorizer",
 }));
 export type GetAuthorizersError =
   | BadRequestException
@@ -8523,6 +8569,7 @@ export const getAuthorizers: API.OperationMethod<
   input: GetAuthorizersRequest,
   output: GetAuthorizersResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetAuthorizers",
 }));
 export type GetDeploymentError =
   | NotFoundException
@@ -8540,6 +8587,7 @@ export const getDeployment: API.OperationMethod<
   input: GetDeploymentRequest,
   output: GetDeploymentResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "GetDeployment",
 }));
 export type GetDeploymentsError =
   | BadRequestException
@@ -8558,6 +8606,7 @@ export const getDeployments: API.OperationMethod<
   input: GetDeploymentsRequest,
   output: GetDeploymentsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetDeployments",
 }));
 export type GetDomainNameError =
   | NotFoundException
@@ -8575,6 +8624,7 @@ export const getDomainName: API.OperationMethod<
   input: GetDomainNameRequest,
   output: GetDomainNameResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "GetDomainName",
 }));
 export type GetDomainNamesError =
   | BadRequestException
@@ -8593,6 +8643,7 @@ export const getDomainNames: API.OperationMethod<
   input: GetDomainNamesRequest,
   output: GetDomainNamesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetDomainNames",
 }));
 export type GetIntegrationError =
   | NotFoundException
@@ -8610,6 +8661,7 @@ export const getIntegration: API.OperationMethod<
   input: GetIntegrationRequest,
   output: GetIntegrationResult,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "GetIntegration",
 }));
 export type GetIntegrationResponseError =
   | NotFoundException
@@ -8627,6 +8679,7 @@ export const getIntegrationResponse: API.OperationMethod<
   input: GetIntegrationResponseRequest,
   output: GetIntegrationResponseResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "GetIntegrationResponse",
 }));
 export type GetIntegrationResponsesError =
   | BadRequestException
@@ -8645,6 +8698,7 @@ export const getIntegrationResponses: API.OperationMethod<
   input: GetIntegrationResponsesRequest,
   output: GetIntegrationResponsesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetIntegrationResponses",
 }));
 export type GetIntegrationsError =
   | BadRequestException
@@ -8663,6 +8717,7 @@ export const getIntegrations: API.OperationMethod<
   input: GetIntegrationsRequest,
   output: GetIntegrationsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetIntegrations",
 }));
 export type GetModelError =
   | NotFoundException
@@ -8680,6 +8735,7 @@ export const getModel: API.OperationMethod<
   input: GetModelRequest,
   output: GetModelResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "GetModel",
 }));
 export type GetModelsError =
   | BadRequestException
@@ -8698,6 +8754,7 @@ export const getModels: API.OperationMethod<
   input: GetModelsRequest,
   output: GetModelsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetModels",
 }));
 export type GetModelTemplateError =
   | NotFoundException
@@ -8715,6 +8772,7 @@ export const getModelTemplate: API.OperationMethod<
   input: GetModelTemplateRequest,
   output: GetModelTemplateResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "GetModelTemplate",
 }));
 export type GetPortalError =
   | AccessDeniedException
@@ -8739,6 +8797,7 @@ export const getPortal: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetPortal",
 }));
 export type GetPortalProductError =
   | AccessDeniedException
@@ -8763,6 +8822,7 @@ export const getPortalProduct: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetPortalProduct",
 }));
 export type GetPortalProductSharingPolicyError =
   | AccessDeniedException
@@ -8787,6 +8847,7 @@ export const getPortalProductSharingPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetPortalProductSharingPolicy",
 }));
 export type GetProductPageError =
   | AccessDeniedException
@@ -8811,6 +8872,7 @@ export const getProductPage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetProductPage",
 }));
 export type GetProductRestEndpointPageError =
   | AccessDeniedException
@@ -8835,6 +8897,7 @@ export const getProductRestEndpointPage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetProductRestEndpointPage",
 }));
 export type GetRouteError =
   | NotFoundException
@@ -8852,6 +8915,7 @@ export const getRoute: API.OperationMethod<
   input: GetRouteRequest,
   output: GetRouteResult,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "GetRoute",
 }));
 export type GetRouteResponseError =
   | NotFoundException
@@ -8869,6 +8933,7 @@ export const getRouteResponse: API.OperationMethod<
   input: GetRouteResponseRequest,
   output: GetRouteResponseResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "GetRouteResponse",
 }));
 export type GetRouteResponsesError =
   | BadRequestException
@@ -8887,6 +8952,7 @@ export const getRouteResponses: API.OperationMethod<
   input: GetRouteResponsesRequest,
   output: GetRouteResponsesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetRouteResponses",
 }));
 export type GetRoutesError =
   | BadRequestException
@@ -8905,6 +8971,7 @@ export const getRoutes: API.OperationMethod<
   input: GetRoutesRequest,
   output: GetRoutesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetRoutes",
 }));
 export type GetRoutingRuleError =
   | BadRequestException
@@ -8923,6 +8990,7 @@ export const getRoutingRule: API.OperationMethod<
   input: GetRoutingRuleRequest,
   output: GetRoutingRuleResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetRoutingRule",
 }));
 export type GetStageError =
   | NotFoundException
@@ -8940,6 +9008,7 @@ export const getStage: API.OperationMethod<
   input: GetStageRequest,
   output: GetStageResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "GetStage",
 }));
 export type GetStagesError =
   | BadRequestException
@@ -8958,6 +9027,7 @@ export const getStages: API.OperationMethod<
   input: GetStagesRequest,
   output: GetStagesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "GetStages",
 }));
 export type GetTagsError =
   | BadRequestException
@@ -8982,6 +9052,7 @@ export const getTags: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "GetTags",
 }));
 export type GetVpcLinkError =
   | NotFoundException
@@ -8999,6 +9070,7 @@ export const getVpcLink: API.OperationMethod<
   input: GetVpcLinkRequest,
   output: GetVpcLinkResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "GetVpcLink",
 }));
 export type GetVpcLinksError =
   | BadRequestException
@@ -9016,6 +9088,7 @@ export const getVpcLinks: API.OperationMethod<
   input: GetVpcLinksRequest,
   output: GetVpcLinksResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  operationName: "GetVpcLinks",
 }));
 export type ImportApiError =
   | BadRequestException
@@ -9040,6 +9113,7 @@ export const importApi: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ImportApi",
 }));
 export type ListPortalProductsError =
   | AccessDeniedException
@@ -9062,6 +9136,7 @@ export const listPortalProducts: API.OperationMethod<
     BadRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListPortalProducts",
 }));
 export type ListPortalsError =
   | AccessDeniedException
@@ -9084,6 +9159,7 @@ export const listPortals: API.OperationMethod<
     BadRequestException,
     TooManyRequestsException,
   ],
+  operationName: "ListPortals",
 }));
 export type ListProductPagesError =
   | AccessDeniedException
@@ -9108,6 +9184,7 @@ export const listProductPages: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListProductPages",
 }));
 export type ListProductRestEndpointPagesError =
   | AccessDeniedException
@@ -9132,6 +9209,7 @@ export const listProductRestEndpointPages: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ListProductRestEndpointPages",
 }));
 export type ListRoutingRulesError =
   | BadRequestException
@@ -9165,6 +9243,7 @@ export const listRoutingRules: API.OperationMethod<
   input: ListRoutingRulesRequest,
   output: ListRoutingRulesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "ListRoutingRules",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9197,6 +9276,7 @@ export const previewPortal: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PreviewPortal",
 }));
 export type PublishPortalError =
   | AccessDeniedException
@@ -9223,6 +9303,7 @@ export const publishPortal: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PublishPortal",
 }));
 export type PutPortalProductSharingPolicyError =
   | AccessDeniedException
@@ -9247,6 +9328,7 @@ export const putPortalProductSharingPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PutPortalProductSharingPolicy",
 }));
 export type PutRoutingRuleError =
   | BadRequestException
@@ -9271,6 +9353,7 @@ export const putRoutingRule: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "PutRoutingRule",
 }));
 export type ReimportApiError =
   | BadRequestException
@@ -9295,6 +9378,7 @@ export const reimportApi: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "ReimportApi",
 }));
 export type ResetAuthorizersCacheError =
   | NotFoundException
@@ -9312,6 +9396,7 @@ export const resetAuthorizersCache: API.OperationMethod<
   input: ResetAuthorizersCacheRequest,
   output: ResetAuthorizersCacheResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  operationName: "ResetAuthorizersCache",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -9336,6 +9421,7 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -9360,6 +9446,7 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateApiError =
   | BadRequestException
@@ -9384,6 +9471,7 @@ export const updateApi: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateApi",
 }));
 export type UpdateApiMappingError =
   | BadRequestException
@@ -9408,6 +9496,7 @@ export const updateApiMapping: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateApiMapping",
 }));
 export type UpdateAuthorizerError =
   | BadRequestException
@@ -9432,6 +9521,7 @@ export const updateAuthorizer: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateAuthorizer",
 }));
 export type UpdateDeploymentError =
   | BadRequestException
@@ -9456,6 +9546,7 @@ export const updateDeployment: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateDeployment",
 }));
 export type UpdateDomainNameError =
   | BadRequestException
@@ -9480,6 +9571,7 @@ export const updateDomainName: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateDomainName",
 }));
 export type UpdateIntegrationError =
   | BadRequestException
@@ -9504,6 +9596,7 @@ export const updateIntegration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateIntegration",
 }));
 export type UpdateIntegrationResponseError =
   | BadRequestException
@@ -9528,6 +9621,7 @@ export const updateIntegrationResponse: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateIntegrationResponse",
 }));
 export type UpdateModelError =
   | BadRequestException
@@ -9552,6 +9646,7 @@ export const updateModel: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateModel",
 }));
 export type UpdatePortalError =
   | AccessDeniedException
@@ -9578,6 +9673,7 @@ export const updatePortal: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdatePortal",
 }));
 export type UpdatePortalProductError =
   | AccessDeniedException
@@ -9602,6 +9698,7 @@ export const updatePortalProduct: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdatePortalProduct",
 }));
 export type UpdateProductPageError =
   | AccessDeniedException
@@ -9626,6 +9723,7 @@ export const updateProductPage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateProductPage",
 }));
 export type UpdateProductRestEndpointPageError =
   | AccessDeniedException
@@ -9650,6 +9748,7 @@ export const updateProductRestEndpointPage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateProductRestEndpointPage",
 }));
 export type UpdateRouteError =
   | BadRequestException
@@ -9674,6 +9773,7 @@ export const updateRoute: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateRoute",
 }));
 export type UpdateRouteResponseError =
   | BadRequestException
@@ -9698,6 +9798,7 @@ export const updateRouteResponse: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateRouteResponse",
 }));
 export type UpdateStageError =
   | BadRequestException
@@ -9722,6 +9823,7 @@ export const updateStage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  operationName: "UpdateStage",
 }));
 export type UpdateVpcLinkError =
   | BadRequestException
@@ -9740,4 +9842,5 @@ export const updateVpcLink: API.OperationMethod<
   input: UpdateVpcLinkRequest,
   output: UpdateVpcLinkResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  operationName: "UpdateVpcLink",
 }));

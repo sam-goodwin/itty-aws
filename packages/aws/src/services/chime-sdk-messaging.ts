@@ -2793,6 +2793,7 @@ export const associateChannelFlow: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "AssociateChannelFlow",
 }));
 export type BatchCreateChannelMembershipError =
   | BadRequestException
@@ -2825,6 +2826,7 @@ export const batchCreateChannelMembership: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "BatchCreateChannelMembership",
 }));
 export type ChannelFlowCallbackError =
   | BadRequestException
@@ -2863,6 +2865,7 @@ export const channelFlowCallback: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ChannelFlowCallback",
 }));
 export type CreateChannelError =
   | BadRequestException
@@ -2902,6 +2905,7 @@ export const createChannel: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateChannel",
 }));
 export type CreateChannelBanError =
   | BadRequestException
@@ -2944,6 +2948,7 @@ export const createChannelBan: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateChannelBan",
 }));
 export type CreateChannelFlowError =
   | BadRequestException
@@ -2990,6 +2995,7 @@ export const createChannelFlow: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateChannelFlow",
 }));
 export type CreateChannelMembershipError =
   | BadRequestException
@@ -3046,6 +3052,7 @@ export const createChannelMembership: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateChannelMembership",
 }));
 export type CreateChannelModeratorError =
   | BadRequestException
@@ -3092,6 +3099,7 @@ export const createChannelModerator: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "CreateChannelModerator",
 }));
 export type DeleteChannelError =
   | BadRequestException
@@ -3127,6 +3135,7 @@ export const deleteChannel: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteChannel",
 }));
 export type DeleteChannelBanError =
   | BadRequestException
@@ -3159,6 +3168,7 @@ export const deleteChannelBan: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteChannelBan",
 }));
 export type DeleteChannelFlowError =
   | BadRequestException
@@ -3192,6 +3202,7 @@ export const deleteChannelFlow: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteChannelFlow",
 }));
 export type DeleteChannelMembershipError =
   | BadRequestException
@@ -3226,6 +3237,7 @@ export const deleteChannelMembership: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteChannelMembership",
 }));
 export type DeleteChannelMessageError =
   | BadRequestException
@@ -3260,6 +3272,7 @@ export const deleteChannelMessage: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteChannelMessage",
 }));
 export type DeleteChannelModeratorError =
   | BadRequestException
@@ -3292,6 +3305,7 @@ export const deleteChannelModerator: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteChannelModerator",
 }));
 export type DeleteMessagingStreamingConfigurationsError =
   | BadRequestException
@@ -3321,6 +3335,7 @@ export const deleteMessagingStreamingConfigurations: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DeleteMessagingStreamingConfigurations",
 }));
 export type DescribeChannelError =
   | BadRequestException
@@ -3354,6 +3369,7 @@ export const describeChannel: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DescribeChannel",
 }));
 export type DescribeChannelBanError =
   | BadRequestException
@@ -3388,6 +3404,7 @@ export const describeChannelBan: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DescribeChannelBan",
 }));
 export type DescribeChannelFlowError =
   | BadRequestException
@@ -3416,6 +3433,7 @@ export const describeChannelFlow: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DescribeChannelFlow",
 }));
 export type DescribeChannelMembershipError =
   | BadRequestException
@@ -3450,6 +3468,7 @@ export const describeChannelMembership: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DescribeChannelMembership",
 }));
 export type DescribeChannelMembershipForAppInstanceUserError =
   | BadRequestException
@@ -3483,6 +3502,7 @@ export const describeChannelMembershipForAppInstanceUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DescribeChannelMembershipForAppInstanceUser",
 }));
 export type DescribeChannelModeratedByAppInstanceUserError =
   | BadRequestException
@@ -3516,6 +3536,7 @@ export const describeChannelModeratedByAppInstanceUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DescribeChannelModeratedByAppInstanceUser",
 }));
 export type DescribeChannelModeratorError =
   | BadRequestException
@@ -3550,6 +3571,7 @@ export const describeChannelModerator: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DescribeChannelModerator",
 }));
 export type DisassociateChannelFlowError =
   | BadRequestException
@@ -3589,6 +3611,7 @@ export const disassociateChannelFlow: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "DisassociateChannelFlow",
 }));
 export type GetChannelMembershipPreferencesError =
   | BadRequestException
@@ -3625,6 +3648,7 @@ export const getChannelMembershipPreferences: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetChannelMembershipPreferences",
 }));
 export type GetChannelMessageError =
   | BadRequestException
@@ -3659,6 +3683,7 @@ export const getChannelMessage: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetChannelMessage",
 }));
 export type GetChannelMessageStatusError =
   | BadRequestException
@@ -3714,6 +3739,7 @@ export const getChannelMessageStatus: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetChannelMessageStatus",
 }));
 export type GetMessagingSessionEndpointError =
   | ForbiddenException
@@ -3740,6 +3766,7 @@ export const getMessagingSessionEndpoint: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetMessagingSessionEndpoint",
 }));
 export type GetMessagingStreamingConfigurationsError =
   | BadRequestException
@@ -3771,6 +3798,7 @@ export const getMessagingStreamingConfigurations: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "GetMessagingStreamingConfigurations",
 }));
 export type ListChannelBansError =
   | BadRequestException
@@ -3818,6 +3846,7 @@ export const listChannelBans: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListChannelBans",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3866,6 +3895,7 @@ export const listChannelFlows: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListChannelFlows",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3921,6 +3951,7 @@ export const listChannelMemberships: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListChannelMemberships",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3974,6 +4005,7 @@ export const listChannelMembershipsForAppInstanceUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListChannelMembershipsForAppInstanceUser",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4032,6 +4064,7 @@ export const listChannelMessages: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListChannelMessages",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4084,6 +4117,7 @@ export const listChannelModerators: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListChannelModerators",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4145,6 +4179,7 @@ export const listChannels: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListChannels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4193,6 +4228,7 @@ export const listChannelsAssociatedWithChannelFlow: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListChannelsAssociatedWithChannelFlow",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4245,6 +4281,7 @@ export const listChannelsModeratedByAppInstanceUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListChannelsModeratedByAppInstanceUser",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4293,6 +4330,7 @@ export const listSubChannels: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListSubChannels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4326,6 +4364,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PutChannelExpirationSettingsError =
   | BadRequestException
@@ -4366,6 +4405,7 @@ export const putChannelExpirationSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "PutChannelExpirationSettings",
 }));
 export type PutChannelMembershipPreferencesError =
   | BadRequestException
@@ -4404,6 +4444,7 @@ export const putChannelMembershipPreferences: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "PutChannelMembershipPreferences",
 }));
 export type PutMessagingStreamingConfigurationsError =
   | BadRequestException
@@ -4437,6 +4478,7 @@ export const putMessagingStreamingConfigurations: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "PutMessagingStreamingConfigurations",
 }));
 export type RedactChannelMessageError =
   | BadRequestException
@@ -4472,6 +4514,7 @@ export const redactChannelMessage: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "RedactChannelMessage",
 }));
 export type SearchChannelsError =
   | BadRequestException
@@ -4523,6 +4566,7 @@ export const searchChannels: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "SearchChannels",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4567,6 +4611,7 @@ export const sendChannelMessage: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "SendChannelMessage",
 }));
 export type TagResourceError =
   | BadRequestException
@@ -4597,6 +4642,7 @@ export const tagResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | BadRequestException
@@ -4625,6 +4671,7 @@ export const untagResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateChannelError =
   | BadRequestException
@@ -4661,6 +4708,7 @@ export const updateChannel: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateChannel",
 }));
 export type UpdateChannelFlowError =
   | BadRequestException
@@ -4691,6 +4739,7 @@ export const updateChannelFlow: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateChannelFlow",
 }));
 export type UpdateChannelMessageError =
   | BadRequestException
@@ -4725,6 +4774,7 @@ export const updateChannelMessage: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateChannelMessage",
 }));
 export type UpdateChannelReadMarkerError =
   | BadRequestException
@@ -4759,4 +4809,5 @@ export const updateChannelReadMarker: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  operationName: "UpdateChannelReadMarker",
 }));

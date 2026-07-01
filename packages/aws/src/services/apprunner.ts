@@ -2141,6 +2141,7 @@ export const associateCustomDomain: API.OperationMethod<
     InvalidRequestException,
     InvalidStateException,
   ],
+  operationName: "AssociateCustomDomain",
 }));
 export type CreateAutoScalingConfigurationError =
   | InternalServiceErrorException
@@ -2174,6 +2175,7 @@ export const createAutoScalingConfiguration: API.OperationMethod<
     InvalidRequestException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateAutoScalingConfiguration",
 }));
 export type CreateConnectionError =
   | InternalServiceErrorException
@@ -2201,6 +2203,7 @@ export const createConnection: API.OperationMethod<
     InvalidRequestException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateConnection",
 }));
 export type CreateObservabilityConfigurationError =
   | InternalServiceErrorException
@@ -2233,6 +2236,7 @@ export const createObservabilityConfiguration: API.OperationMethod<
     InvalidRequestException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateObservabilityConfiguration",
 }));
 export type CreateServiceError =
   | InternalServiceErrorException
@@ -2257,6 +2261,7 @@ export const createService: API.OperationMethod<
     InvalidRequestException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateService",
 }));
 export type CreateVpcConnectorError =
   | InternalServiceErrorException
@@ -2280,6 +2285,7 @@ export const createVpcConnector: API.OperationMethod<
     InvalidRequestException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateVpcConnector",
 }));
 export type CreateVpcIngressConnectionError =
   | InternalServiceErrorException
@@ -2304,6 +2310,7 @@ export const createVpcIngressConnection: API.OperationMethod<
     InvalidStateException,
     ServiceQuotaExceededException,
   ],
+  operationName: "CreateVpcIngressConnection",
 }));
 export type DeleteAutoScalingConfigurationError =
   | InternalServiceErrorException
@@ -2328,6 +2335,7 @@ export const deleteAutoScalingConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteAutoScalingConfiguration",
 }));
 export type DeleteConnectionError =
   | InternalServiceErrorException
@@ -2351,6 +2359,7 @@ export const deleteConnection: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteConnection",
 }));
 export type DeleteObservabilityConfigurationError =
   | InternalServiceErrorException
@@ -2374,6 +2383,7 @@ export const deleteObservabilityConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteObservabilityConfiguration",
 }));
 export type DeleteServiceError =
   | InternalServiceErrorException
@@ -2403,6 +2413,7 @@ export const deleteService: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteService",
 }));
 export type DeleteVpcConnectorError =
   | InternalServiceErrorException
@@ -2426,6 +2437,7 @@ export const deleteVpcConnector: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteVpcConnector",
 }));
 export type DeleteVpcIngressConnectionError =
   | InternalServiceErrorException
@@ -2458,6 +2470,7 @@ export const deleteVpcIngressConnection: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteVpcIngressConnection",
 }));
 export type DescribeAutoScalingConfigurationError =
   | InternalServiceErrorException
@@ -2480,6 +2493,7 @@ export const describeAutoScalingConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeAutoScalingConfiguration",
 }));
 export type DescribeCustomDomainsError =
   | InternalServiceErrorException
@@ -2517,6 +2531,7 @@ export const describeCustomDomains: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeCustomDomains",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2544,6 +2559,7 @@ export const describeObservabilityConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeObservabilityConfiguration",
 }));
 export type DescribeServiceError =
   | InternalServiceErrorException
@@ -2566,6 +2582,7 @@ export const describeService: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeService",
 }));
 export type DescribeVpcConnectorError =
   | InternalServiceErrorException
@@ -2588,6 +2605,7 @@ export const describeVpcConnector: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeVpcConnector",
 }));
 export type DescribeVpcIngressConnectionError =
   | InternalServiceErrorException
@@ -2610,6 +2628,7 @@ export const describeVpcIngressConnection: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeVpcIngressConnection",
 }));
 export type DisassociateCustomDomainError =
   | InternalServiceErrorException
@@ -2638,6 +2657,7 @@ export const disassociateCustomDomain: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "DisassociateCustomDomain",
 }));
 export type ListAutoScalingConfigurationsError =
   | InternalServiceErrorException
@@ -2675,6 +2695,7 @@ export const listAutoScalingConfigurations: API.OperationMethod<
   input: ListAutoScalingConfigurationsRequest,
   output: ListAutoScalingConfigurationsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
+  operationName: "ListAutoScalingConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2712,6 +2733,7 @@ export const listConnections: API.OperationMethod<
   input: ListConnectionsRequest,
   output: ListConnectionsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
+  operationName: "ListConnections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2754,6 +2776,7 @@ export const listObservabilityConfigurations: API.OperationMethod<
   input: ListObservabilityConfigurationsRequest,
   output: ListObservabilityConfigurationsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
+  operationName: "ListObservabilityConfigurations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2799,6 +2822,7 @@ export const listOperations: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "ListOperations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2836,6 +2860,7 @@ export const listServices: API.OperationMethod<
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
+  operationName: "ListServices",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2878,6 +2903,7 @@ export const listServicesForAutoScalingConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "ListServicesForAutoScalingConfiguration",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2907,6 +2933,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListVpcConnectorsError =
   | InternalServiceErrorException
@@ -2939,6 +2966,7 @@ export const listVpcConnectors: API.OperationMethod<
   input: ListVpcConnectorsRequest,
   output: ListVpcConnectorsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
+  operationName: "ListVpcConnectors",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -2976,6 +3004,7 @@ export const listVpcIngressConnections: API.OperationMethod<
   input: ListVpcIngressConnectionsRequest,
   output: ListVpcIngressConnectionsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
+  operationName: "ListVpcIngressConnections",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -3009,6 +3038,7 @@ export const pauseService: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "PauseService",
 }));
 export type ResumeServiceError =
   | InternalServiceErrorException
@@ -3036,6 +3066,7 @@ export const resumeService: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "ResumeService",
 }));
 export type StartDeploymentError =
   | InternalServiceErrorException
@@ -3065,6 +3096,7 @@ export const startDeployment: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "StartDeployment",
 }));
 export type TagResourceError =
   | InternalServiceErrorException
@@ -3089,6 +3121,7 @@ export const tagResource: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InternalServiceErrorException
@@ -3113,6 +3146,7 @@ export const untagResource: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateDefaultAutoScalingConfigurationError =
   | InternalServiceErrorException
@@ -3136,6 +3170,7 @@ export const updateDefaultAutoScalingConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateDefaultAutoScalingConfiguration",
 }));
 export type UpdateServiceError =
   | InternalServiceErrorException
@@ -3167,6 +3202,7 @@ export const updateService: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateService",
 }));
 export type UpdateVpcIngressConnectionError =
   | InternalServiceErrorException
@@ -3197,4 +3233,5 @@ export const updateVpcIngressConnection: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateVpcIngressConnection",
 }));

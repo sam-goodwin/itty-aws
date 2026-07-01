@@ -729,6 +729,7 @@ export const putAccountName: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "PutAccountName",
 }));
 export type GetAccountInformationError =
   | AccessDeniedException
@@ -753,6 +754,7 @@ export const getAccountInformation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "GetAccountInformation",
 }));
 export type PutAlternateContactError =
   | AccessDeniedException
@@ -781,6 +783,7 @@ export const putAlternateContact: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "PutAlternateContact",
 }));
 export type GetAlternateContactError =
   | AccessDeniedException
@@ -811,6 +814,7 @@ export const getAlternateContact: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "GetAlternateContact",
 }));
 export type DeleteAlternateContactError =
   | AccessDeniedException
@@ -841,6 +845,7 @@ export const deleteAlternateContact: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "DeleteAlternateContact",
 }));
 export type GetGovCloudAccountInformationError =
   | AccessDeniedException
@@ -869,6 +874,7 @@ export const getGovCloudAccountInformation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "GetGovCloudAccountInformation",
 }));
 export type PutContactInformationError =
   | AccessDeniedException
@@ -895,6 +901,7 @@ export const putContactInformation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "PutContactInformation",
 }));
 export type GetContactInformationError =
   | AccessDeniedException
@@ -923,6 +930,7 @@ export const getContactInformation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "GetContactInformation",
 }));
 export type AcceptPrimaryEmailUpdateError =
   | AccessDeniedException
@@ -951,6 +959,7 @@ export const acceptPrimaryEmailUpdate: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "AcceptPrimaryEmailUpdate",
 }));
 export type GetPrimaryEmailError =
   | AccessDeniedException
@@ -977,6 +986,7 @@ export const getPrimaryEmail: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "GetPrimaryEmail",
 }));
 export type StartPrimaryEmailUpdateError =
   | AccessDeniedException
@@ -1005,6 +1015,7 @@ export const startPrimaryEmailUpdate: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "StartPrimaryEmailUpdate",
 }));
 export type DisableRegionError =
   | AccessDeniedException
@@ -1033,6 +1044,7 @@ export const disableRegion: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "DisableRegion",
 }));
 export type EnableRegionError =
   | AccessDeniedException
@@ -1059,6 +1071,7 @@ export const enableRegion: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "EnableRegion",
 }));
 export type GetRegionOptStatusError =
   | AccessDeniedException
@@ -1083,6 +1096,7 @@ export const getRegionOptStatus: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "GetRegionOptStatus",
 }));
 export type ListRegionsError =
   | AccessDeniedException
@@ -1122,6 +1136,7 @@ export const listRegions: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  operationName: "ListRegions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",

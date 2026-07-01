@@ -5697,6 +5697,7 @@ export const cancelImageCreation: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "CancelImageCreation",
 }));
 export type CancelLifecycleExecutionError =
   | CallRateLimitExceededException
@@ -5729,6 +5730,7 @@ export const cancelLifecycleExecution: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "CancelLifecycleExecution",
 }));
 export type CreateComponentError =
   | CallRateLimitExceededException
@@ -5776,6 +5778,7 @@ export const createComponent: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateComponent",
 }));
 export type CreateContainerRecipeError =
   | CallRateLimitExceededException
@@ -5815,6 +5818,7 @@ export const createContainerRecipe: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateContainerRecipe",
 }));
 export type CreateDistributionConfigurationError =
   | CallRateLimitExceededException
@@ -5854,6 +5858,7 @@ export const createDistributionConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateDistributionConfiguration",
 }));
 export type CreateImageError =
   | CallRateLimitExceededException
@@ -5891,6 +5896,7 @@ export const createImage: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateImage",
 }));
 export type CreateImagePipelineError =
   | CallRateLimitExceededException
@@ -5928,6 +5934,7 @@ export const createImagePipeline: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateImagePipeline",
 }));
 export type CreateImageRecipeError =
   | CallRateLimitExceededException
@@ -5967,6 +5974,7 @@ export const createImageRecipe: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateImageRecipe",
 }));
 export type CreateInfrastructureConfigurationError =
   | CallRateLimitExceededException
@@ -6004,6 +6012,7 @@ export const createInfrastructureConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateInfrastructureConfiguration",
 }));
 export type CreateLifecyclePolicyError =
   | CallRateLimitExceededException
@@ -6040,6 +6049,7 @@ export const createLifecyclePolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateLifecyclePolicy",
 }));
 export type CreateWorkflowError =
   | CallRateLimitExceededException
@@ -6080,6 +6090,7 @@ export const createWorkflow: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  operationName: "CreateWorkflow",
 }));
 export type DeleteComponentError =
   | CallRateLimitExceededException
@@ -6110,6 +6121,7 @@ export const deleteComponent: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteComponent",
 }));
 export type DeleteContainerRecipeError =
   | CallRateLimitExceededException
@@ -6140,6 +6152,7 @@ export const deleteContainerRecipe: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteContainerRecipe",
 }));
 export type DeleteDistributionConfigurationError =
   | CallRateLimitExceededException
@@ -6170,6 +6183,7 @@ export const deleteDistributionConfiguration: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteDistributionConfiguration",
 }));
 export type DeleteImageError =
   | CallRateLimitExceededException
@@ -6216,6 +6230,7 @@ export const deleteImage: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteImage",
 }));
 export type DeleteImagePipelineError =
   | CallRateLimitExceededException
@@ -6246,6 +6261,7 @@ export const deleteImagePipeline: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteImagePipeline",
 }));
 export type DeleteImageRecipeError =
   | CallRateLimitExceededException
@@ -6276,6 +6292,7 @@ export const deleteImageRecipe: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteImageRecipe",
 }));
 export type DeleteInfrastructureConfigurationError =
   | CallRateLimitExceededException
@@ -6306,6 +6323,7 @@ export const deleteInfrastructureConfiguration: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteInfrastructureConfiguration",
 }));
 export type DeleteLifecyclePolicyError =
   | CallRateLimitExceededException
@@ -6336,6 +6354,7 @@ export const deleteLifecyclePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteLifecyclePolicy",
 }));
 export type DeleteWorkflowError =
   | CallRateLimitExceededException
@@ -6366,6 +6385,7 @@ export const deleteWorkflow: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "DeleteWorkflow",
 }));
 export type DistributeImageError =
   | AccessDeniedException
@@ -6408,6 +6428,7 @@ export const distributeImage: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "DistributeImage",
 }));
 export type GetComponentError =
   | CallRateLimitExceededException
@@ -6436,6 +6457,7 @@ export const getComponent: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "GetComponent",
 }));
 export type GetComponentPolicyError =
   | CallRateLimitExceededException
@@ -6464,6 +6486,7 @@ export const getComponentPolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "GetComponentPolicy",
 }));
 export type GetContainerRecipeError =
   | CallRateLimitExceededException
@@ -6492,6 +6515,7 @@ export const getContainerRecipe: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "GetContainerRecipe",
 }));
 export type GetContainerRecipePolicyError =
   | CallRateLimitExceededException
@@ -6520,6 +6544,7 @@ export const getContainerRecipePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "GetContainerRecipePolicy",
 }));
 export type GetDistributionConfigurationError =
   | CallRateLimitExceededException
@@ -6548,6 +6573,7 @@ export const getDistributionConfiguration: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "GetDistributionConfiguration",
 }));
 export type GetImageError =
   | CallRateLimitExceededException
@@ -6576,6 +6602,7 @@ export const getImage: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "GetImage",
 }));
 export type GetImagePipelineError =
   | CallRateLimitExceededException
@@ -6604,6 +6631,7 @@ export const getImagePipeline: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "GetImagePipeline",
 }));
 export type GetImagePolicyError =
   | CallRateLimitExceededException
@@ -6632,6 +6660,7 @@ export const getImagePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "GetImagePolicy",
 }));
 export type GetImageRecipeError =
   | CallRateLimitExceededException
@@ -6660,6 +6689,7 @@ export const getImageRecipe: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "GetImageRecipe",
 }));
 export type GetImageRecipePolicyError =
   | CallRateLimitExceededException
@@ -6688,6 +6718,7 @@ export const getImageRecipePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "GetImageRecipePolicy",
 }));
 export type GetInfrastructureConfigurationError =
   | CallRateLimitExceededException
@@ -6716,6 +6747,7 @@ export const getInfrastructureConfiguration: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "GetInfrastructureConfiguration",
 }));
 export type GetLifecycleExecutionError =
   | CallRateLimitExceededException
@@ -6744,6 +6776,7 @@ export const getLifecycleExecution: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "GetLifecycleExecution",
 }));
 export type GetLifecyclePolicyError =
   | CallRateLimitExceededException
@@ -6772,6 +6805,7 @@ export const getLifecyclePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "GetLifecyclePolicy",
 }));
 export type GetMarketplaceResourceError =
   | CallRateLimitExceededException
@@ -6802,6 +6836,7 @@ export const getMarketplaceResource: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "GetMarketplaceResource",
 }));
 export type GetWorkflowError =
   | CallRateLimitExceededException
@@ -6830,6 +6865,7 @@ export const getWorkflow: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "GetWorkflow",
 }));
 export type GetWorkflowExecutionError =
   | CallRateLimitExceededException
@@ -6859,6 +6895,7 @@ export const getWorkflowExecution: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "GetWorkflowExecution",
 }));
 export type GetWorkflowStepExecutionError =
   | CallRateLimitExceededException
@@ -6888,6 +6925,7 @@ export const getWorkflowStepExecution: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "GetWorkflowStepExecution",
 }));
 export type ImportComponentError =
   | CallRateLimitExceededException
@@ -6924,6 +6962,7 @@ export const importComponent: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ImportComponent",
 }));
 export type ImportDiskImageError =
   | AccessDeniedException
@@ -6953,6 +6992,7 @@ export const importDiskImage: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  operationName: "ImportDiskImage",
 }));
 export type ImportVmImageError =
   | ClientException
@@ -6978,6 +7018,7 @@ export const importVmImage: API.OperationMethod<
   input: ImportVmImageRequest,
   output: ImportVmImageResponse,
   errors: [ClientException, ServiceException, ServiceUnavailableException],
+  operationName: "ImportVmImage",
 }));
 export type ListComponentBuildVersionsError =
   | CallRateLimitExceededException
@@ -7024,6 +7065,7 @@ export const listComponentBuildVersions: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListComponentBuildVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7085,6 +7127,7 @@ export const listComponents: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListComponents",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7136,6 +7179,7 @@ export const listContainerRecipes: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListContainerRecipes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7187,6 +7231,7 @@ export const listDistributionConfigurations: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListDistributionConfigurations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7238,6 +7283,7 @@ export const listImageBuildVersions: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListImageBuildVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7292,6 +7338,7 @@ export const listImagePackages: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListImagePackages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7345,6 +7392,7 @@ export const listImagePipelineImages: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListImagePipelineImages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7396,6 +7444,7 @@ export const listImagePipelines: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListImagePipelines",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7447,6 +7496,7 @@ export const listImageRecipes: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListImageRecipes",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7499,6 +7549,7 @@ export const listImages: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListImages",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7564,6 +7615,7 @@ export const listImageScanFindingAggregations: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListImageScanFindingAggregations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7614,6 +7666,7 @@ export const listImageScanFindings: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListImageScanFindings",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7665,6 +7718,7 @@ export const listInfrastructureConfigurations: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListInfrastructureConfigurations",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7716,6 +7770,7 @@ export const listLifecycleExecutionResources: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListLifecycleExecutionResources",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7767,6 +7822,7 @@ export const listLifecycleExecutions: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListLifecycleExecutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7818,6 +7874,7 @@ export const listLifecyclePolicies: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListLifecyclePolicies",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7846,6 +7903,7 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type ListWaitingWorkflowStepsError =
   | CallRateLimitExceededException
@@ -7892,6 +7950,7 @@ export const listWaitingWorkflowSteps: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListWaitingWorkflowSteps",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7943,6 +8002,7 @@ export const listWorkflowBuildVersions: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListWorkflowBuildVersions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -7995,6 +8055,7 @@ export const listWorkflowExecutions: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListWorkflowExecutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8046,6 +8107,7 @@ export const listWorkflows: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListWorkflows",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8098,6 +8160,7 @@ export const listWorkflowStepExecutions: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "ListWorkflowStepExecutions",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -8138,6 +8201,7 @@ export const putComponentPolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "PutComponentPolicy",
 }));
 export type PutContainerRecipePolicyError =
   | CallRateLimitExceededException
@@ -8177,6 +8241,7 @@ export const putContainerRecipePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "PutContainerRecipePolicy",
 }));
 export type PutImagePolicyError =
   | CallRateLimitExceededException
@@ -8211,6 +8276,7 @@ export const putImagePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "PutImagePolicy",
 }));
 export type PutImageRecipePolicyError =
   | CallRateLimitExceededException
@@ -8245,6 +8311,7 @@ export const putImageRecipePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "PutImageRecipePolicy",
 }));
 export type RetryImageError =
   | CallRateLimitExceededException
@@ -8277,6 +8344,7 @@ export const retryImage: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "RetryImage",
 }));
 export type SendWorkflowStepActionError =
   | CallRateLimitExceededException
@@ -8314,6 +8382,7 @@ export const sendWorkflowStepAction: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "SendWorkflowStepAction",
 }));
 export type StartImagePipelineExecutionError =
   | CallRateLimitExceededException
@@ -8348,6 +8417,7 @@ export const startImagePipelineExecution: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "StartImagePipelineExecution",
 }));
 export type StartResourceStateUpdateError =
   | CallRateLimitExceededException
@@ -8383,6 +8453,7 @@ export const startResourceStateUpdate: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "StartResourceStateUpdate",
 }));
 export type TagResourceError =
   | InvalidParameterException
@@ -8405,6 +8476,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | InvalidParameterException
@@ -8427,6 +8499,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateDistributionConfigurationError =
   | CallRateLimitExceededException
@@ -8462,6 +8535,7 @@ export const updateDistributionConfiguration: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "UpdateDistributionConfiguration",
 }));
 export type UpdateImagePipelineError =
   | CallRateLimitExceededException
@@ -8500,6 +8574,7 @@ export const updateImagePipeline: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "UpdateImagePipeline",
 }));
 export type UpdateInfrastructureConfigurationError =
   | CallRateLimitExceededException
@@ -8533,6 +8608,7 @@ export const updateInfrastructureConfiguration: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "UpdateInfrastructureConfiguration",
 }));
 export type UpdateLifecyclePolicyError =
   | CallRateLimitExceededException
@@ -8567,4 +8643,5 @@ export const updateLifecyclePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  operationName: "UpdateLifecyclePolicy",
 }));

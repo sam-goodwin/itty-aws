@@ -3395,6 +3395,7 @@ export const addApplicationCloudWatchLoggingOption: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "AddApplicationCloudWatchLoggingOption",
 }));
 export type AddApplicationInputError =
   | CodeValidationException
@@ -3431,6 +3432,7 @@ export const addApplicationInput: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "AddApplicationInput",
 }));
 export type AddApplicationInputProcessingConfigurationError =
   | ConcurrentModificationException
@@ -3459,6 +3461,7 @@ export const addApplicationInputProcessingConfiguration: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "AddApplicationInputProcessingConfiguration",
 }));
 export type AddApplicationOutputError =
   | ConcurrentModificationException
@@ -3500,6 +3503,7 @@ export const addApplicationOutput: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "AddApplicationOutput",
 }));
 export type AddApplicationReferenceDataSourceError =
   | ConcurrentModificationException
@@ -3532,6 +3536,7 @@ export const addApplicationReferenceDataSource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "AddApplicationReferenceDataSource",
 }));
 export type AddApplicationVpcConfigurationError =
   | ConcurrentModificationException
@@ -3566,6 +3571,7 @@ export const addApplicationVpcConfiguration: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "AddApplicationVpcConfiguration",
 }));
 export type CreateApplicationError =
   | CodeValidationException
@@ -3600,6 +3606,7 @@ export const createApplication: API.OperationMethod<
     TooManyTagsException,
     UnsupportedOperationException,
   ],
+  operationName: "CreateApplication",
 }));
 export type CreateApplicationPresignedUrlError =
   | InvalidArgumentException
@@ -3635,6 +3642,7 @@ export const createApplicationPresignedUrl: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "CreateApplicationPresignedUrl",
 }));
 export type CreateApplicationSnapshotError =
   | InvalidApplicationConfigurationException
@@ -3665,6 +3673,7 @@ export const createApplicationSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "CreateApplicationSnapshot",
 }));
 export type DeleteApplicationError =
   | ConcurrentModificationException
@@ -3693,6 +3702,7 @@ export const deleteApplication: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteApplication",
 }));
 export type DeleteApplicationCloudWatchLoggingOptionError =
   | ConcurrentModificationException
@@ -3721,6 +3731,7 @@ export const deleteApplicationCloudWatchLoggingOption: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteApplicationCloudWatchLoggingOption",
 }));
 export type DeleteApplicationInputProcessingConfigurationError =
   | ConcurrentModificationException
@@ -3747,6 +3758,7 @@ export const deleteApplicationInputProcessingConfiguration: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteApplicationInputProcessingConfiguration",
 }));
 export type DeleteApplicationOutputError =
   | ConcurrentModificationException
@@ -3775,6 +3787,7 @@ export const deleteApplicationOutput: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteApplicationOutput",
 }));
 export type DeleteApplicationReferenceDataSourceError =
   | ConcurrentModificationException
@@ -3804,6 +3817,7 @@ export const deleteApplicationReferenceDataSource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteApplicationReferenceDataSource",
 }));
 export type DeleteApplicationSnapshotError =
   | ConcurrentModificationException
@@ -3832,6 +3846,7 @@ export const deleteApplicationSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "DeleteApplicationSnapshot",
 }));
 export type DeleteApplicationVpcConfigurationError =
   | ConcurrentModificationException
@@ -3858,6 +3873,7 @@ export const deleteApplicationVpcConfiguration: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "DeleteApplicationVpcConfiguration",
 }));
 export type DescribeApplicationError =
   | InvalidArgumentException
@@ -3883,6 +3899,7 @@ export const describeApplication: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  operationName: "DescribeApplication",
 }));
 export type DescribeApplicationOperationError =
   | InvalidArgumentException
@@ -3907,6 +3924,7 @@ export const describeApplicationOperation: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeApplicationOperation",
 }));
 export type DescribeApplicationSnapshotError =
   | InvalidArgumentException
@@ -3929,6 +3947,7 @@ export const describeApplicationSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeApplicationSnapshot",
 }));
 export type DescribeApplicationVersionError =
   | InvalidArgumentException
@@ -3953,6 +3972,7 @@ export const describeApplicationVersion: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "DescribeApplicationVersion",
 }));
 export type DiscoverInputSchemaError =
   | InvalidArgumentException
@@ -3988,6 +4008,7 @@ export const discoverInputSchema: API.OperationMethod<
     UnableToDetectSchemaException,
     UnsupportedOperationException,
   ],
+  operationName: "DiscoverInputSchema",
 }));
 export type ListApplicationOperationsError =
   | InvalidArgumentException
@@ -4030,6 +4051,7 @@ export const listApplicationOperations: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "ListApplicationOperations",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4070,6 +4092,7 @@ export const listApplications: API.OperationMethod<
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [InvalidRequestException],
+  operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4108,6 +4131,7 @@ export const listApplicationSnapshots: API.OperationMethod<
   input: ListApplicationSnapshotsRequest,
   output: ListApplicationSnapshotsResponse,
   errors: [InvalidArgumentException, UnsupportedOperationException],
+  operationName: "ListApplicationSnapshots",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4156,6 +4180,7 @@ export const listApplicationVersions: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "ListApplicationVersions",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4185,6 +4210,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type RollbackApplicationError =
   | ConcurrentModificationException
@@ -4220,6 +4246,7 @@ export const rollbackApplication: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "RollbackApplication",
 }));
 export type StartApplicationError =
   | InvalidApplicationConfigurationException
@@ -4247,6 +4274,7 @@ export const startApplication: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "StartApplication",
 }));
 export type StopApplicationError =
   | ConcurrentModificationException
@@ -4282,6 +4310,7 @@ export const stopApplication: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "StopApplication",
 }));
 export type TagResourceError =
   | ConcurrentModificationException
@@ -4310,6 +4339,7 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ConcurrentModificationException
@@ -4337,6 +4367,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateApplicationError =
   | CodeValidationException
@@ -4373,6 +4404,7 @@ export const updateApplication: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  operationName: "UpdateApplication",
 }));
 export type UpdateApplicationMaintenanceConfigurationError =
   | ConcurrentModificationException
@@ -4416,4 +4448,5 @@ export const updateApplicationMaintenanceConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  operationName: "UpdateApplicationMaintenanceConfiguration",
 }));

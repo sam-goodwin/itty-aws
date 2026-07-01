@@ -803,6 +803,7 @@ export const createConfigurationManager: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "CreateConfigurationManager",
 }));
 export type DeleteConfigurationManagerError =
   | AccessDeniedException
@@ -831,6 +832,7 @@ export const deleteConfigurationManager: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "DeleteConfigurationManager",
 }));
 export type GetConfigurationError =
   | AccessDeniedException
@@ -859,6 +861,7 @@ export const getConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetConfiguration",
 }));
 export type GetConfigurationManagerError =
   | AccessDeniedException
@@ -887,6 +890,7 @@ export const getConfigurationManager: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "GetConfigurationManager",
 }));
 export type GetServiceSettingsError =
   | AccessDeniedException
@@ -911,6 +915,7 @@ export const getServiceSettings: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
   ],
+  operationName: "GetServiceSettings",
 }));
 export type ListConfigurationManagersError =
   | AccessDeniedException
@@ -952,6 +957,7 @@ export const listConfigurationManagers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListConfigurationManagers",
   pagination: {
     inputToken: "StartingToken",
     outputToken: "NextToken",
@@ -999,6 +1005,7 @@ export const listConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListConfigurations",
   pagination: {
     inputToken: "StartingToken",
     outputToken: "NextToken",
@@ -1029,6 +1036,7 @@ export const listQuickSetupTypes: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
   ],
+  operationName: "ListQuickSetupTypes",
 }));
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -1057,6 +1065,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -1085,6 +1094,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -1113,6 +1123,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateConfigurationDefinitionError =
   | AccessDeniedException
@@ -1141,6 +1152,7 @@ export const updateConfigurationDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateConfigurationDefinition",
 }));
 export type UpdateConfigurationManagerError =
   | AccessDeniedException
@@ -1169,6 +1181,7 @@ export const updateConfigurationManager: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateConfigurationManager",
 }));
 export type UpdateServiceSettingsError =
   | AccessDeniedException
@@ -1195,4 +1208,5 @@ export const updateServiceSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UpdateServiceSettings",
 }));

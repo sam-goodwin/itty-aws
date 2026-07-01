@@ -2273,6 +2273,7 @@ export const associateLibraryItemReview: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "AssociateLibraryItemReview",
 }));
 export type AssociateQAppWithUserError =
   | AccessDeniedException
@@ -2303,6 +2304,7 @@ export const associateQAppWithUser: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "AssociateQAppWithUser",
 }));
 export type BatchCreateCategoryError =
   | AccessDeniedException
@@ -2333,6 +2335,7 @@ export const batchCreateCategory: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "BatchCreateCategory",
 }));
 export type BatchDeleteCategoryError =
   | AccessDeniedException
@@ -2363,6 +2366,7 @@ export const batchDeleteCategory: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "BatchDeleteCategory",
 }));
 export type BatchUpdateCategoryError =
   | AccessDeniedException
@@ -2393,6 +2397,7 @@ export const batchUpdateCategory: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "BatchUpdateCategory",
 }));
 export type CreateLibraryItemError =
   | AccessDeniedException
@@ -2423,6 +2428,7 @@ export const createLibraryItem: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CreateLibraryItem",
 }));
 export type CreatePresignedUrlError =
   | AccessDeniedException
@@ -2451,6 +2457,7 @@ export const createPresignedUrl: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CreatePresignedUrl",
 }));
 export type CreateQAppError =
   | AccessDeniedException
@@ -2483,6 +2490,7 @@ export const createQApp: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "CreateQApp",
 }));
 export type DeleteLibraryItemError =
   | AccessDeniedException
@@ -2513,6 +2521,7 @@ export const deleteLibraryItem: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DeleteLibraryItem",
 }));
 export type DeleteQAppError =
   | AccessDeniedException
@@ -2541,6 +2550,7 @@ export const deleteQApp: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DeleteQApp",
 }));
 export type DescribeQAppPermissionsError =
   | AccessDeniedException
@@ -2569,6 +2579,7 @@ export const describeQAppPermissions: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DescribeQAppPermissions",
 }));
 export type DisassociateLibraryItemReviewError =
   | AccessDeniedException
@@ -2601,6 +2612,7 @@ export const disassociateLibraryItemReview: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DisassociateLibraryItemReview",
 }));
 export type DisassociateQAppFromUserError =
   | AccessDeniedException
@@ -2629,6 +2641,7 @@ export const disassociateQAppFromUser: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "DisassociateQAppFromUser",
 }));
 export type ExportQAppSessionDataError =
   | AccessDeniedException
@@ -2661,6 +2674,7 @@ export const exportQAppSessionData: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "ExportQAppSessionData",
 }));
 export type GetLibraryItemError =
   | AccessDeniedException
@@ -2689,6 +2703,7 @@ export const getLibraryItem: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetLibraryItem",
 }));
 export type GetQAppError =
   | AccessDeniedException
@@ -2717,6 +2732,7 @@ export const getQApp: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetQApp",
 }));
 export type GetQAppSessionError =
   | AccessDeniedException
@@ -2747,6 +2763,7 @@ export const getQAppSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetQAppSession",
 }));
 export type GetQAppSessionMetadataError =
   | AccessDeniedException
@@ -2777,6 +2794,7 @@ export const getQAppSessionMetadata: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "GetQAppSessionMetadata",
 }));
 export type ImportDocumentError =
   | AccessDeniedException
@@ -2809,6 +2827,7 @@ export const importDocument: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "ImportDocument",
 }));
 export type ListCategoriesError =
   | AccessDeniedException
@@ -2837,6 +2856,7 @@ export const listCategories: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "ListCategories",
 }));
 export type ListLibraryItemsError =
   | AccessDeniedException
@@ -2880,6 +2900,7 @@ export const listLibraryItems: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "ListLibraryItems",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2927,6 +2948,7 @@ export const listQApps: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "ListQApps",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -2963,6 +2985,7 @@ export const listQAppSessionData: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "ListQAppSessionData",
 }));
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -2989,6 +3012,7 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "ListTagsForResource",
 }));
 export type PredictQAppError =
   | AccessDeniedException
@@ -3015,6 +3039,7 @@ export const predictQApp: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "PredictQApp",
 }));
 export type StartQAppSessionError =
   | AccessDeniedException
@@ -3047,6 +3072,7 @@ export const startQAppSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "StartQAppSession",
 }));
 export type StopQAppSessionError =
   | AccessDeniedException
@@ -3077,6 +3103,7 @@ export const stopQAppSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "StopQAppSession",
 }));
 export type TagResourceError =
   | AccessDeniedException
@@ -3105,6 +3132,7 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "TagResource",
 }));
 export type UntagResourceError =
   | AccessDeniedException
@@ -3131,6 +3159,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  operationName: "UntagResource",
 }));
 export type UpdateLibraryItemError =
   | AccessDeniedException
@@ -3161,6 +3190,7 @@ export const updateLibraryItem: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "UpdateLibraryItem",
 }));
 export type UpdateLibraryItemMetadataError =
   | AccessDeniedException
@@ -3191,6 +3221,7 @@ export const updateLibraryItemMetadata: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "UpdateLibraryItemMetadata",
 }));
 export type UpdateQAppError =
   | AccessDeniedException
@@ -3221,6 +3252,7 @@ export const updateQApp: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "UpdateQApp",
 }));
 export type UpdateQAppPermissionsError =
   | AccessDeniedException
@@ -3249,6 +3281,7 @@ export const updateQAppPermissions: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "UpdateQAppPermissions",
 }));
 export type UpdateQAppSessionError =
   | AccessDeniedException
@@ -3279,6 +3312,7 @@ export const updateQAppSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "UpdateQAppSession",
 }));
 export type UpdateQAppSessionMetadataError =
   | AccessDeniedException
@@ -3309,4 +3343,5 @@ export const updateQAppSessionMetadata: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  operationName: "UpdateQAppSessionMetadata",
 }));
