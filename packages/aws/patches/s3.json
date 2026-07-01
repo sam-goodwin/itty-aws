@@ -1,7 +1,7 @@
 {
   "errorCategories": {
     "SlowDown": ["ThrottlingError", "RetryableError"],
-    "BucketNotEmpty": ["ConflictError", "RetryableError"],
+    "BucketNotEmpty": ["ConflictError"],
     "BucketAlreadyOwnedByYou": ["AlreadyExistsError"],
     "MalformedXML": ["BadRequestError"],
     "MalformedPolicy": ["BadRequestError"],
