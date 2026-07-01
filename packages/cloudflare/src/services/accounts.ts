@@ -128,6 +128,14 @@ export class PermissionGroupNotFound extends T.applyErrorMatchers(
   [{ code: 1001, message: { includes: "Permission group" } }],
 ) {}
 
+export class TokenManagedByCloudflare extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TokenManagedByCloudflare>()(
+    "TokenManagedByCloudflare",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1001 }],
+) {}
+
 export class TokenNotFound extends T.applyErrorMatchers(
   Schema.TaggedErrorClass<TokenNotFound>()("TokenNotFound", {
     code: Schema.Number,
@@ -3676,7 +3684,8 @@ export type DeleteTokenError =
   | DefaultErrors
   | InvalidRoute
   | MethodNotAllowed
-  | TokenNotFound;
+  | TokenNotFound
+  | TokenManagedByCloudflare;
 
 export const deleteToken: API.OperationMethod<
   DeleteTokenRequest,
@@ -3686,7 +3695,12 @@ export const deleteToken: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTokenRequest,
   output: DeleteTokenResponse,
-  errors: [InvalidRoute, MethodNotAllowed, TokenNotFound],
+  errors: [
+    InvalidRoute,
+    MethodNotAllowed,
+    TokenNotFound,
+    TokenManagedByCloudflare,
+  ],
 }));
 
 export interface VerifyTokenRequest {

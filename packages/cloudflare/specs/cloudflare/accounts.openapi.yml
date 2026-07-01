@@ -3009,6 +3009,8 @@ paths:
           - code: 7001
         TokenNotFound:
           - code: 1003
+        TokenManagedByCloudflare:
+          - code: 1001
   /accounts/{account_id}/tokens:
     get:
       operationId: listTokens
