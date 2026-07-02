@@ -13016,6 +13016,14 @@ export class TooManyParts extends S.TaggedErrorClass<TooManyParts>()(
   "TooManyParts",
   {},
 ).pipe(C.withBadRequestError) {}
+export class PreconditionFailed extends S.TaggedErrorClass<PreconditionFailed>()(
+  "PreconditionFailed",
+  {},
+).pipe(C.withConflictError) {}
+export class ConditionalRequestConflict extends S.TaggedErrorClass<ConditionalRequestConflict>()(
+  "ConditionalRequestConflict",
+  {},
+).pipe(C.withConflictError, C.withRetryableError) {}
 export class AnnotationLimitExceeded extends S.TaggedErrorClass<AnnotationLimitExceeded>()(
   "AnnotationLimitExceeded",
   {},
@@ -19261,6 +19269,8 @@ export type PutObjectError =
   | SlowDown
   | NoSuchBucket
   | PermanentRedirect
+  | PreconditionFailed
+  | ConditionalRequestConflict
   | CommonErrors;
 /**
  * End of support notice: As of October 1, 2025, Amazon S3 has discontinued support for Email Grantee Access Control Lists (ACLs). If you attempt to use an Email Grantee ACL in a request after October 1, 2025,
@@ -19402,6 +19412,8 @@ export const putObject: API.OperationMethod<
     SlowDown,
     NoSuchBucket,
     PermanentRedirect,
+    PreconditionFailed,
+    ConditionalRequestConflict,
   ],
   operationName: "PutObject",
 }));

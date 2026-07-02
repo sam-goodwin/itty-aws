@@ -11,7 +11,9 @@
     "InvalidRequest": ["BadRequestError"],
     "InvalidDigest": ["BadRequestError"],
     "InvalidBucketState": ["ConflictError"],
-    "IllegalLocationConstraintException": ["BadRequestError"]
+    "IllegalLocationConstraintException": ["BadRequestError"],
+    "PreconditionFailed": ["ConflictError"],
+    "ConditionalRequestConflict": ["ConflictError", "RetryableError"]
   },
   "operations": {
     "createBucket": {
@@ -140,7 +142,14 @@
       ]
     },
     "putObject": {
-      "errors": ["RequestLimitExceeded", "SlowDown", "NoSuchBucket", "PermanentRedirect"]
+      "errors": [
+        "RequestLimitExceeded",
+        "SlowDown",
+        "NoSuchBucket",
+        "PermanentRedirect",
+        "PreconditionFailed",
+        "ConditionalRequestConflict"
+      ]
     },
     "deleteBucketEncryption": {
       "errors": ["RequestLimitExceeded", "SlowDown", "NoSuchBucket"]
