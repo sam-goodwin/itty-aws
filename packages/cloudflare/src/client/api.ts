@@ -412,6 +412,17 @@ const matchError = (
       bodyStr,
     );
     if (matchedRaw) return matchedRaw;
+    // The global API rate limiter can respond 429 with an empty/non-envelope
+    // body (e.g. `null`); surface it as the retryable TooManyRequests instead
+    // of the catch-all CloudflareHttpError so the retry policy backs off.
+    if (status === 429) {
+      return Effect.fail(
+        new TooManyRequests({
+          message: bodyStr,
+          retryAfter: parseServerRetryHint(headers),
+        }),
+      );
+    }
     return Effect.fail(
       new CloudflareHttpError({
         status,
