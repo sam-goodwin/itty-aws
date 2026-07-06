@@ -2,7 +2,8 @@
   "errors": {
     "InvalidRoute": [{ "code": 7003 }],
     "WebhookTestFailed": [
-      { "code": 0, "message": { "includes": "Webhook test failed" } }
+      { "code": 0, "message": { "includes": "Webhook test failed" } },
+      { "status": 422, "message": { "includes": "Webhook test request failed" } }
     ]
   }
 }

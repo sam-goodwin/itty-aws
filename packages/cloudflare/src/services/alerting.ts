@@ -103,7 +103,10 @@ export class WebhookTestFailed extends T.applyErrorMatchers(
     code: Schema.Number,
     message: Schema.String,
   }),
-  [{ code: 0, message: { includes: "Webhook test failed" } }],
+  [
+    { code: 0, message: { includes: "Webhook test failed" } },
+    { status: 422, message: { includes: "Webhook test request failed" } },
+  ],
 ) {}
 
 // =============================================================================
@@ -1462,7 +1465,8 @@ export const UpdateDestinationWebhookResponse =
 export type UpdateDestinationWebhookError =
   | DefaultErrors
   | InvalidRoute
-  | InvalidWebhookId;
+  | InvalidWebhookId
+  | WebhookTestFailed;
 
 export const updateDestinationWebhook: API.OperationMethod<
   UpdateDestinationWebhookRequest,
@@ -1472,7 +1476,7 @@ export const updateDestinationWebhook: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDestinationWebhookRequest,
   output: UpdateDestinationWebhookResponse,
-  errors: [InvalidRoute, InvalidWebhookId],
+  errors: [InvalidRoute, InvalidWebhookId, WebhookTestFailed],
 }));
 
 export interface DeleteDestinationWebhookRequest {

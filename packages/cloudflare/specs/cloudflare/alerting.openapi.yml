@@ -337,6 +337,13 @@ paths:
           - code: 0
             message:
               includes: invalid Webhook ID
+        WebhookTestFailed:
+          - code: 0
+            message:
+              includes: Webhook test failed
+          - status: 422
+            message:
+              includes: Webhook test request failed
     delete:
       operationId: deleteDestinationWebhook
       description: "Delete a configured webhook destination.  @example ```ts const
@@ -512,6 +519,9 @@ paths:
           - code: 0
             message:
               includes: Webhook test failed
+          - status: 422
+            message:
+              includes: Webhook test request failed
   /accounts/{account_id}/alerting/v3/history:
     get:
       operationId: listHistories
