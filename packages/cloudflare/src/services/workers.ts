@@ -6479,6 +6479,25 @@ const PutScriptRequestMetadataBinding37 =
     ),
   ) as unknown as Schema.Codec<PutScriptRequestMetadataBinding37>;
 
+interface PutScriptRequestMetadataCache {
+  enabled?: boolean | null;
+  crossVersionCache?: boolean | null;
+}
+const PutScriptRequestMetadataCache =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      crossVersionCache: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        enabled: "enabled",
+        crossVersionCache: "cross_version_cache",
+      }),
+    ),
+  ) as unknown as Schema.Codec<PutScriptRequestMetadataCache>;
+
 interface Metadata2 {
   /** Annotations for the version created by this upload. */
   annotations?: {
@@ -6756,6 +6775,10 @@ interface Metadata2 {
   /** Usage model for the Worker invocations. */
   usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
   containers?: { className: string }[] | null;
+  cache?: {
+    enabled?: boolean | null;
+    crossVersionCache?: boolean | null;
+  } | null;
 }
 const Metadata2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -6862,6 +6885,9 @@ const Metadata2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     containers: Schema.optional(
       Schema.Union([Schema.Array(Container), Schema.Null]),
     ),
+    cache: Schema.optional(
+      Schema.Union([PutScriptRequestMetadataCache, Schema.Null]),
+    ),
   }).pipe(
     Schema.encodeKeys({
       annotations: "annotations",
@@ -6882,6 +6908,7 @@ const Metadata2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       tailConsumers: "tail_consumers",
       usageModel: "usage_model",
       containers: "containers",
+      cache: "cache",
     }),
   ),
 ) as unknown as Schema.Codec<Metadata2>;
@@ -9093,6 +9120,10 @@ interface Metadata5 {
   keepBindings?: string[] | null;
   /** Usage model for the Worker invocations. */
   usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
+  cache?: {
+    enabled?: boolean | null;
+    crossVersionCache?: boolean | null;
+  } | null;
 }
 const Metadata5 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -9162,6 +9193,9 @@ const Metadata5 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
         Schema.Null,
       ]),
     ),
+    cache: Schema.optional(
+      Schema.Union([PutScriptRequestMetadataCache, Schema.Null]),
+    ),
   }).pipe(
     Schema.encodeKeys({
       mainModule: "main_module",
@@ -9171,6 +9205,7 @@ const Metadata5 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       compatibilityFlags: "compatibility_flags",
       keepBindings: "keep_bindings",
       usageModel: "usage_model",
+      cache: "cache",
     }),
   ),
 ) as unknown as Schema.Codec<Metadata5>;
@@ -14814,6 +14849,7 @@ export interface PutScriptRequest {
       | null;
     usageModel?: "standard" | "bundled" | "unbound" | (string & {});
     containers?: { className: string }[];
+    cache?: { enabled?: boolean; crossVersionCache?: boolean };
   };
   /** Body param: An array of modules (often JavaScript files) comprising a Worker script. At least one module must be present and referenced in the metadata as `main_module` or `body_part` by filename.<br/ */
   files?: (File | Blob)[];
@@ -18580,6 +18616,7 @@ export interface CreateScriptVersionRequest {
     compatibilityFlags?: string[];
     keepBindings?: string[];
     usageModel?: "standard" | "bundled" | "unbound" | (string & {});
+    cache?: { enabled?: boolean; crossVersionCache?: boolean };
   };
   /** Body param: An array of modules (often JavaScript files) comprising a Worker script. At least one module must be present and referenced in the metadata as `main_module` or `body_part` by filename.<br/ */
   files?: (File | Blob)[];

@@ -12319,6 +12319,13 @@ paths:
                             type: string
                         required:
                           - class_name
+                    cache:
+                      type: object
+                      properties:
+                        enabled:
+                          type: boolean
+                        cross_version_cache:
+                          type: boolean
                   description: "Body param: JSON-encoded metadata about the uploaded parts and
                     Worker configuration."
                 files:
@@ -21338,6 +21345,13 @@ paths:
                         - bundled
                         - unbound
                       description: Usage model for the Worker invocations.
+                    cache:
+                      type: object
+                      properties:
+                        enabled:
+                          type: boolean
+                        cross_version_cache:
+                          type: boolean
                   required:
                     - main_module
                   description: "Body param: JSON-encoded metadata about the uploaded parts and
