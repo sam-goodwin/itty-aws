@@ -1,3 +1,32 @@
+## v0.28.0
+
+### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- Update all specs and fix generate scripts and optimize compile &nbsp;-&nbsp; by **Sam Goodwin** in https://github.com/alchemy-run/distilled/issues/360 [<samp>(313cc)</samp>](https://github.com/alchemy-run/distilled/commit/313cc9854)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **aws**: Update AWS SDKs, inclding lambda micro vms &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(06001)</samp>](https://github.com/alchemy-run/distilled/commit/06001ee8e)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Update workos specs &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(3c2f2)</samp>](https://github.com/alchemy-run/distilled/commit/3c2f29fae)
+- **aws**:
+  - Patch ec2 InvalidSubnetConflict &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(67841)</samp>](https://github.com/alchemy-run/distilled/commit/678411100)
+  - Remove RetryableError from BucketNotEmpty &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(c00f1)</samp>](https://github.com/alchemy-run/distilled/commit/c00f16122)
+  - Encode operation name &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(e2a9a)</samp>](https://github.com/alchemy-run/distilled/commit/e2a9a01f6)
+  - Add PreconditionFailed + ConditionalRequestConflict to s3 putObject &nbsp;-&nbsp; by **Sam Goodwin** and **Claude Fable 5** [<samp>(78457)</samp>](https://github.com/alchemy-run/distilled/commit/7845750d6)
+- **cloudflare**:
+  - DurableObjectCheckError for containers &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(6fc3c)</samp>](https://github.com/alchemy-run/distilled/commit/6fc3c0e53)
+  - Patch TokenManagedByCloudflare for AccountApiToken &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(4bb79)</samp>](https://github.com/alchemy-run/distilled/commit/4bb792f63)
+  - Patch ZoneCreationBlocked &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(2bf71)</samp>](https://github.com/alchemy-run/distilled/commit/2bf713d45)
+  - Surface null-body 429 as retryable TooManyRequests &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/362 [<samp>(718f8)</samp>](https://github.com/alchemy-run/distilled/commit/718f8b7e2)
+  - **workers-for-platforms**: Type getDispatchNamespaceScriptSetting errors + loosen placement &nbsp;-&nbsp; by **Sam Goodwin** in https://github.com/alchemy-run/distilled/issues/361 [<samp>(645c7)</samp>](https://github.com/alchemy-run/distilled/commit/645c7141a)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.27.0...HEAD)
+
+---
+
 ## v0.27.0
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
