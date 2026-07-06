@@ -1,3 +1,13 @@
+## v0.28.1
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**: Patch WebhookTestFailed &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(b0be6)</samp>](https://github.com/alchemy-run/distilled/commit/b0be63817)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.28.0...HEAD)
+
+---
+
 ## v0.28.0
 
 ### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
