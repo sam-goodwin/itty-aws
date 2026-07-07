@@ -1,0 +1,54 @@
+{
+  "name": "@distilled.cloud/cloudflare",
+  "version": "0.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "src"
+  ],
+  "exports": {
+    "./*": {
+      "types": "./src/services/*.ts",
+      "bun": "./src/services/*.ts",
+      "default": "./src/services/*.ts"
+    },
+    "./Credentials": {
+      "types": "./src/credentials.ts",
+      "bun": "./src/credentials.ts",
+      "default": "./src/credentials.ts"
+    },
+    "./Errors": {
+      "types": "./src/errors.ts",
+      "bun": "./src/errors.ts",
+      "default": "./src/errors.ts"
+    },
+    "./Traits": {
+      "types": "./src/traits.ts",
+      "bun": "./src/traits.ts",
+      "default": "./src/traits.ts"
+    },
+    ".": {
+      "types": "./src/index.ts",
+      "bun": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "download-api-docs": "bun scripts/download-api-docs.ts",
+    "spec-to-smithy": "bun scripts/spec-to-smithy.ts",
+    "generate": "bun scripts/generate.ts",
+    "typecheck": "tsgo -p tsconfig.json",
+    "typecheck:strict": "tsgo -p tsconfig.strict.json"
+  },
+  "dependencies": {
+    "@distilled.cloud/core": "workspace:*",
+    "@effect/platform-bun": "catalog:",
+    "effect": "catalog:"
+  },
+  "devDependencies": {
+    "@types/bun": "catalog:",
+    "@types/node": "catalog:"
+  }
+}
