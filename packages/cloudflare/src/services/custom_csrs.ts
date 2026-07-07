@@ -18,33 +18,45 @@ export type CreateRequestKeyType = "rsa2048" | "p256v1" | (string & {});
 export const CreateRequestKeyType = /*@__PURE__*/ S.String;
 
 export interface CreateRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  common_name: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The common name (domain) for the CSR. Must be at most 64 characters. */
+  commonName: string;
+  /** Two-letter ISO 3166-1 alpha-2 country code. */
   country: string;
+  /** City or locality name. */
   locality: string;
+  /** Organization name. */
   organization: string;
+  /** Subject Alternative Names for the CSR. At least one SAN is required. */
   sans: CreateRequestSansList;
+  /** State or province name. */
   state: string;
+  /** Optional description for the CSR. */
   description?: string;
-  key_type?: CreateRequestKeyType;
+  /** Key algorithm to use for the CSR. Defaults to rsa2048 if not specified. */
+  keyType?: CreateRequestKeyType;
+  /** Human-readable name for the CSR. */
   name?: string;
-  organizational_unit?: string;
+  /** Organizational unit name. */
+  organizationalUnit?: string;
 }
 export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    common_name: S.String,
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    commonName: S.String.pipe(T.Body("common_name")),
     country: S.String,
     locality: S.String,
     organization: S.String,
     sans: CreateRequestSansList,
     state: S.String,
     description: S.optional(S.String),
-    key_type: S.optional(CreateRequestKeyType),
+    keyType: S.optional(CreateRequestKeyType.pipe(T.Body("key_type"))),
     name: S.optional(S.String),
-    organizational_unit: S.optional(S.String),
+    organizationalUnit: S.optional(
+      S.String.pipe(T.Body("organizational_unit")),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -64,50 +76,67 @@ export const CreateResponseSansList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateResponse {
+  /** Custom CSR identifier tag. */
   id: string;
-  created_at: string;
-  key_type: CreateResponseKeyType;
-  account_tag?: string;
-  common_name?: string;
+  /** When the CSR was created. */
+  createdAt: string;
+  /** The key algorithm used to generate the CSR. */
+  keyType: CreateResponseKeyType;
+  /** Account identifier associated with this CSR. */
+  accountTag?: string;
+  /** The common name (domain) for the CSR. */
+  commonName?: string;
+  /** Two-letter ISO 3166-1 alpha-2 country code. */
   country?: string;
+  /** The PEM-encoded Certificate Signing Request. */
   csr?: string;
+  /** Optional description for the CSR. */
   description?: string;
+  /** City or locality name. */
   locality?: string;
+  /** Human-readable name for the CSR. */
   name?: string;
+  /** Organization name. */
   organization?: string;
-  organizational_unit?: string;
+  /** Organizational unit name. */
+  organizationalUnit?: string;
+  /** Subject Alternative Names included in the CSR. */
   sans?: CreateResponseSansList;
+  /** State or province name. */
   state?: string;
 }
 export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
-    key_type: CreateResponseKeyType,
-    account_tag: S.optional(S.String),
-    common_name: S.optional(S.String),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    keyType: CreateResponseKeyType.pipe(T.Body("key_type")),
+    accountTag: S.optional(S.String.pipe(T.Body("account_tag"))),
+    commonName: S.optional(S.String.pipe(T.Body("common_name"))),
     country: S.optional(S.String),
     csr: S.optional(S.String),
     description: S.optional(S.String),
     locality: S.optional(S.String),
     name: S.optional(S.String),
     organization: S.optional(S.String),
-    organizational_unit: S.optional(S.String),
+    organizationalUnit: S.optional(
+      S.String.pipe(T.Body("organizational_unit")),
+    ),
     sans: S.optional(CreateResponseSansList),
     state: S.optional(S.String),
   }),
 ).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
 
 export interface DeleteRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  custom_csr_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** Custom CSR identifier tag. */
+  customCsrId: string;
 }
 export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    custom_csr_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    customCsrId: S.String.pipe(T.Label("custom_csr_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -119,6 +148,7 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteResponse {
+  /** Custom CSR identifier tag. */
   id?: string;
 }
 export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -128,15 +158,16 @@ export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
 
 export interface GetRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  custom_csr_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** Custom CSR identifier tag. */
+  customCsrId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    custom_csr_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    customCsrId: S.String.pipe(T.Label("custom_csr_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -156,52 +187,70 @@ export const GetResponseSansList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
+  /** Custom CSR identifier tag. */
   id: string;
-  created_at: string;
-  key_type: GetResponseKeyType;
-  account_tag?: string;
-  common_name?: string;
+  /** When the CSR was created. */
+  createdAt: string;
+  /** The key algorithm used to generate the CSR. */
+  keyType: GetResponseKeyType;
+  /** Account identifier associated with this CSR. */
+  accountTag?: string;
+  /** The common name (domain) for the CSR. */
+  commonName?: string;
+  /** Two-letter ISO 3166-1 alpha-2 country code. */
   country?: string;
+  /** The PEM-encoded Certificate Signing Request. */
   csr?: string;
+  /** Optional description for the CSR. */
   description?: string;
+  /** City or locality name. */
   locality?: string;
+  /** Human-readable name for the CSR. */
   name?: string;
+  /** Organization name. */
   organization?: string;
-  organizational_unit?: string;
+  /** Organizational unit name. */
+  organizationalUnit?: string;
+  /** Subject Alternative Names included in the CSR. */
   sans?: GetResponseSansList;
+  /** State or province name. */
   state?: string;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
-    key_type: GetResponseKeyType,
-    account_tag: S.optional(S.String),
-    common_name: S.optional(S.String),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    keyType: GetResponseKeyType.pipe(T.Body("key_type")),
+    accountTag: S.optional(S.String.pipe(T.Body("account_tag"))),
+    commonName: S.optional(S.String.pipe(T.Body("common_name"))),
     country: S.optional(S.String),
     csr: S.optional(S.String),
     description: S.optional(S.String),
     locality: S.optional(S.String),
     name: S.optional(S.String),
     organization: S.optional(S.String),
-    organizational_unit: S.optional(S.String),
+    organizationalUnit: S.optional(
+      S.String.pipe(T.Body("organizational_unit")),
+    ),
     sans: S.optional(GetResponseSansList),
     state: S.optional(S.String),
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
 export interface ListRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
+  /** Number of custom CSRs per page. */
+  perPage?: number;
 }
 export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -220,35 +269,51 @@ export const ListResultItemSansList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResultItemSansList>;
 
 export interface ListResultItem {
+  /** Custom CSR identifier tag. */
   id: string;
-  created_at: string;
-  key_type: ListResultItemKeyType;
-  account_tag?: string;
-  common_name?: string;
+  /** When the CSR was created. */
+  createdAt: string;
+  /** The key algorithm used to generate the CSR. */
+  keyType: ListResultItemKeyType;
+  /** Account identifier associated with this CSR. */
+  accountTag?: string;
+  /** The common name (domain) for the CSR. */
+  commonName?: string;
+  /** Two-letter ISO 3166-1 alpha-2 country code. */
   country?: string;
+  /** The PEM-encoded Certificate Signing Request. */
   csr?: string;
+  /** Optional description for the CSR. */
   description?: string;
+  /** City or locality name. */
   locality?: string;
+  /** Human-readable name for the CSR. */
   name?: string;
+  /** Organization name. */
   organization?: string;
-  organizational_unit?: string;
+  /** Organizational unit name. */
+  organizationalUnit?: string;
+  /** Subject Alternative Names included in the CSR. */
   sans?: ListResultItemSansList;
+  /** State or province name. */
   state?: string;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
-    key_type: ListResultItemKeyType,
-    account_tag: S.optional(S.String),
-    common_name: S.optional(S.String),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    keyType: ListResultItemKeyType.pipe(T.Body("key_type")),
+    accountTag: S.optional(S.String.pipe(T.Body("account_tag"))),
+    commonName: S.optional(S.String.pipe(T.Body("common_name"))),
     country: S.optional(S.String),
     csr: S.optional(S.String),
     description: S.optional(S.String),
     locality: S.optional(S.String),
     name: S.optional(S.String),
     organization: S.optional(S.String),
-    organizational_unit: S.optional(S.String),
+    organizationalUnit: S.optional(
+      S.String.pipe(T.Body("organizational_unit")),
+    ),
     sans: S.optional(ListResultItemSansList),
     state: S.optional(S.String),
   }),
@@ -260,6 +325,7 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResultList>;
 
 export interface ListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
 export const ListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -268,11 +334,12 @@ export const ListResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
 
+export type CreateError = CloudflareOpError;
 /** Generate a new custom Certificate Signing Request (CSR) for an account or zone. Cloudflare generates and securely stores the private key associated with the CSR. */
-export const Create: API.OperationMethod<
+export const create: API.OperationMethod<
   CreateRequest,
   CreateResponse,
-  CloudflareOpError,
+  CreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRequest,
@@ -281,11 +348,12 @@ export const Create: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DeleteError = CloudflareOpError;
 /** Delete a custom Certificate Signing Request (CSR) and its associated private key. */
 export const Delete: API.OperationMethod<
   DeleteRequest,
   DeleteResponse,
-  CloudflareOpError,
+  DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequest,
@@ -294,11 +362,12 @@ export const Delete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Retrieve details for a specific custom Certificate Signing Request (CSR). */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -307,11 +376,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ListError = CloudflareOpError;
 /** List all custom Certificate Signing Requests (CSRs) for an account or zone. */
-export const List: API.OperationMethod<
+export const list: API.OperationMethod<
   ListRequest,
   ListResponse,
-  CloudflareOpError,
+  ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRequest,

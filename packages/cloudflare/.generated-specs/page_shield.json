@@ -36,16 +36,38 @@
     "com.cloudflare.page_shield#GetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "enabled": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "When true, indicates that Page Shield is enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when Page Shield was last updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "use_cloudflare_reporting_endpoint": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report",
+            "smithy.api#required": {}
+          }
+        },
+        "use_connection_url_path": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, the paths associated with connections URLs will also be analyzed.",
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.page_shield#Get": {
@@ -179,19 +201,92 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.page_shield#ConnectionsGetResponseMaliciousDomainCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.page_shield#ConnectionsGetResponseMaliciousUrlCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.page_shield#ConnectionsGetResponsePageUrlsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.page_shield#ConnectionsGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#required": {}
           }
+        },
+        "added_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "first_seen_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "last_seen_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "url_contains_cdn_cgi_path": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "domain_reported_malicious": {
+          "target": "smithy.api#Boolean"
+        },
+        "first_page_url": {
+          "target": "smithy.api#String"
+        },
+        "malicious_domain_categories": {
+          "target": "com.cloudflare.page_shield#ConnectionsGetResponseMaliciousDomainCategoriesList"
+        },
+        "malicious_url_categories": {
+          "target": "com.cloudflare.page_shield#ConnectionsGetResponseMaliciousUrlCategoriesList"
+        },
+        "page_urls": {
+          "target": "com.cloudflare.page_shield#ConnectionsGetResponsePageUrlsList"
+        },
+        "url_reported_malicious": {
+          "target": "smithy.api#Boolean"
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.page_shield#ConnectionsGet": {
@@ -357,10 +452,94 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.page_shield#ConnectionsListResultItemMaliciousDomainCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.page_shield#ConnectionsListResultItemMaliciousUrlCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.page_shield#ConnectionsListResultItemPageUrlsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.page_shield#ConnectionsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#required": {}
+          }
+        },
+        "added_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "first_seen_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "last_seen_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "url_contains_cdn_cgi_path": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "domain_reported_malicious": {
+          "target": "smithy.api#Boolean"
+        },
+        "first_page_url": {
+          "target": "smithy.api#String"
+        },
+        "malicious_domain_categories": {
+          "target": "com.cloudflare.page_shield#ConnectionsListResultItemMaliciousDomainCategoriesList"
+        },
+        "malicious_url_categories": {
+          "target": "com.cloudflare.page_shield#ConnectionsListResultItemMaliciousUrlCategoriesList"
+        },
+        "page_urls": {
+          "target": "com.cloudflare.page_shield#ConnectionsListResultItemPageUrlsList"
+        },
+        "url_reported_malicious": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.page_shield#ConnectionsListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.page_shield#ConnectionsListResultItem"
       }
     },
     "com.cloudflare.page_shield#ConnectionsListResponse": {
@@ -1913,10 +2092,142 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.page_shield#ScriptsListResultItemMaliciousDomainCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.page_shield#ScriptsListResultItemMaliciousUrlCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.page_shield#ScriptsListResultItemPageUrlsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.page_shield#ScriptsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#required": {}
+          }
+        },
+        "added_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "first_seen_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "last_seen_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "url_contains_cdn_cgi_path": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "cryptomining_score": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The cryptomining score of the JavaScript content."
+          }
+        },
+        "dataflow_score": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score."
+          }
+        },
+        "domain_reported_malicious": {
+          "target": "smithy.api#Boolean"
+        },
+        "fetched_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the script was last fetched."
+          }
+        },
+        "first_page_url": {
+          "target": "smithy.api#String"
+        },
+        "hash": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The computed hash of the analyzed script."
+          }
+        },
+        "js_integrity_score": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The integrity score of the JavaScript content."
+          }
+        },
+        "magecart_score": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The magecart score of the JavaScript content."
+          }
+        },
+        "malicious_domain_categories": {
+          "target": "com.cloudflare.page_shield#ScriptsListResultItemMaliciousDomainCategoriesList"
+        },
+        "malicious_url_categories": {
+          "target": "com.cloudflare.page_shield#ScriptsListResultItemMaliciousUrlCategoriesList"
+        },
+        "malware_score": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The malware score of the JavaScript content."
+          }
+        },
+        "obfuscation_score": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score."
+          }
+        },
+        "page_urls": {
+          "target": "com.cloudflare.page_shield#ScriptsListResultItemPageUrlsList"
+        },
+        "url_reported_malicious": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.page_shield#ScriptsListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.page_shield#ScriptsListResultItem"
       }
     },
     "com.cloudflare.page_shield#ScriptsListResponse": {

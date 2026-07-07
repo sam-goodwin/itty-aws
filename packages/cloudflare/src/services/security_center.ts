@@ -19,28 +19,35 @@ export type InsightsAuditLogsListRequestOrder = "asc" | "desc" | (string & {});
 export const InsightsAuditLogsListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface InsightsAuditLogsListRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** Filter entries changed before this timestamp (RFC 3339). */
   before?: string;
-  changed_by?: string;
+  /** Filter by the actor that made the change. */
+  changedBy?: string;
+  /** Opaque cursor for pagination. Use the cursor value from result_info of the previous response. */
   cursor?: string;
-  field_changed?: InsightsAuditLogsListRequestFieldChanged;
+  /** Filter by the field that was changed. */
+  fieldChanged?: InsightsAuditLogsListRequestFieldChanged;
+  /** Sort order for results. Use 'asc' for oldest first or 'desc' for newest first. */
   order?: InsightsAuditLogsListRequestOrder;
-  per_page?: number;
+  /** Number of results per page. */
+  perPage?: number;
+  /** Filter entries changed at or after this timestamp (RFC 3339). */
   since?: string;
 }
 export const InsightsAuditLogsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
     before: S.optional(S.String.pipe(T.Query())),
-    changed_by: S.optional(S.String.pipe(T.Query())),
+    changedBy: S.optional(S.String.pipe(T.Query("changed_by"))),
     cursor: S.optional(S.String.pipe(T.Query())),
-    field_changed: S.optional(
-      InsightsAuditLogsListRequestFieldChanged.pipe(T.Query()),
+    fieldChanged: S.optional(
+      InsightsAuditLogsListRequestFieldChanged.pipe(T.Query("field_changed")),
     ),
     order: S.optional(InsightsAuditLogsListRequestOrder.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     since: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -61,27 +68,38 @@ export const InsightsAuditLogsListResultItemFieldChanged =
   /*@__PURE__*/ S.String;
 
 export interface InsightsAuditLogsListResultItem {
+  /** UUIDv7 identifier for the audit log entry, time-ordered. */
   id?: string;
-  changed_at?: string;
-  changed_by?: string;
-  current_value?: string;
-  field_changed?: InsightsAuditLogsListResultItemFieldChanged;
-  issue_id?: string;
-  previous_value?: string;
+  /** The timestamp when the change occurred. */
+  changedAt?: string;
+  /** The actor that made the change. 'system' for automated changes, or a user identifier. */
+  changedBy?: string;
+  /** The value of the field after the change. Null if the field was cleared. */
+  currentValue?: string;
+  /** The field that was changed. */
+  fieldChanged?: InsightsAuditLogsListResultItemFieldChanged;
+  /** The ID of the insight this audit log entry relates to. */
+  issueId?: string;
+  /** The value of the field before the change. Null if the field was not previously set. */
+  previousValue?: string;
+  /** Optional rationale provided for the change. */
   rationale?: string;
-  zone_id?: number;
+  /** The zone ID associated with the insight. Only present for zone-level insights. */
+  zoneId?: number;
 }
 export const InsightsAuditLogsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    changed_at: S.optional(S.String),
-    changed_by: S.optional(S.String),
-    current_value: S.optional(S.String),
-    field_changed: S.optional(InsightsAuditLogsListResultItemFieldChanged),
-    issue_id: S.optional(S.String),
-    previous_value: S.optional(S.String),
+    changedAt: S.optional(S.String.pipe(T.Body("changed_at"))),
+    changedBy: S.optional(S.String.pipe(T.Body("changed_by"))),
+    currentValue: S.optional(S.String.pipe(T.Body("current_value"))),
+    fieldChanged: S.optional(
+      InsightsAuditLogsListResultItemFieldChanged.pipe(T.Body("field_changed")),
+    ),
+    issueId: S.optional(S.String.pipe(T.Body("issue_id"))),
+    previousValue: S.optional(S.String.pipe(T.Body("previous_value"))),
     rationale: S.optional(S.String),
-    zone_id: S.optional(S.Number),
+    zoneId: S.optional(S.Number.pipe(T.Body("zone_id"))),
   }),
 ).annotate({
   identifier: "InsightsAuditLogsListResultItem",
@@ -93,6 +111,7 @@ export const InsightsAuditLogsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InsightsAuditLogsListResultList>;
 
 export interface InsightsAuditLogsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: InsightsAuditLogsListResultList;
 }
 export const InsightsAuditLogsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -120,33 +139,42 @@ export const InsightsAuditLogsListByInsightRequestOrder =
   /*@__PURE__*/ S.String;
 
 export interface InsightsAuditLogsListByInsightRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  issue_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  issueId: string;
+  /** Filter entries changed before this timestamp (RFC 3339). */
   before?: string;
-  changed_by?: string;
+  /** Filter by the actor that made the change. */
+  changedBy?: string;
+  /** Opaque cursor for pagination. Use the cursor value from result_info of the previous response. */
   cursor?: string;
-  field_changed?: InsightsAuditLogsListByInsightRequestFieldChanged;
+  /** Filter by the field that was changed. */
+  fieldChanged?: InsightsAuditLogsListByInsightRequestFieldChanged;
+  /** Sort order for results. Use 'asc' for oldest first or 'desc' for newest first. */
   order?: InsightsAuditLogsListByInsightRequestOrder;
-  per_page?: number;
+  /** Number of results per page. */
+  perPage?: number;
+  /** Filter entries changed at or after this timestamp (RFC 3339). */
   since?: string;
 }
 export const InsightsAuditLogsListByInsightRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      accounts_or_zones: S.String.pipe(T.Label()),
-      account_or_zone_id: S.String.pipe(T.Label()),
-      issue_id: S.String.pipe(T.Label()),
+      accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+      accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+      issueId: S.String.pipe(T.Label("issue_id")),
       before: S.optional(S.String.pipe(T.Query())),
-      changed_by: S.optional(S.String.pipe(T.Query())),
+      changedBy: S.optional(S.String.pipe(T.Query("changed_by"))),
       cursor: S.optional(S.String.pipe(T.Query())),
-      field_changed: S.optional(
-        InsightsAuditLogsListByInsightRequestFieldChanged.pipe(T.Query()),
+      fieldChanged: S.optional(
+        InsightsAuditLogsListByInsightRequestFieldChanged.pipe(
+          T.Query("field_changed"),
+        ),
       ),
       order: S.optional(
         InsightsAuditLogsListByInsightRequestOrder.pipe(T.Query()),
       ),
-      per_page: S.optional(S.Number.pipe(T.Query())),
+      perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
       since: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -167,30 +195,41 @@ export const InsightsAuditLogsListByInsightResultItemFieldChanged =
   /*@__PURE__*/ S.String;
 
 export interface InsightsAuditLogsListByInsightResultItem {
+  /** UUIDv7 identifier for the audit log entry, time-ordered. */
   id?: string;
-  changed_at?: string;
-  changed_by?: string;
-  current_value?: string;
-  field_changed?: InsightsAuditLogsListByInsightResultItemFieldChanged;
-  issue_id?: string;
-  previous_value?: string;
+  /** The timestamp when the change occurred. */
+  changedAt?: string;
+  /** The actor that made the change. 'system' for automated changes, or a user identifier. */
+  changedBy?: string;
+  /** The value of the field after the change. Null if the field was cleared. */
+  currentValue?: string;
+  /** The field that was changed. */
+  fieldChanged?: InsightsAuditLogsListByInsightResultItemFieldChanged;
+  /** The ID of the insight this audit log entry relates to. */
+  issueId?: string;
+  /** The value of the field before the change. Null if the field was not previously set. */
+  previousValue?: string;
+  /** Optional rationale provided for the change. */
   rationale?: string;
-  zone_id?: number;
+  /** The zone ID associated with the insight. Only present for zone-level insights. */
+  zoneId?: number;
 }
 export const InsightsAuditLogsListByInsightResultItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
-      changed_at: S.optional(S.String),
-      changed_by: S.optional(S.String),
-      current_value: S.optional(S.String),
-      field_changed: S.optional(
-        InsightsAuditLogsListByInsightResultItemFieldChanged,
+      changedAt: S.optional(S.String.pipe(T.Body("changed_at"))),
+      changedBy: S.optional(S.String.pipe(T.Body("changed_by"))),
+      currentValue: S.optional(S.String.pipe(T.Body("current_value"))),
+      fieldChanged: S.optional(
+        InsightsAuditLogsListByInsightResultItemFieldChanged.pipe(
+          T.Body("field_changed"),
+        ),
       ),
-      issue_id: S.optional(S.String),
-      previous_value: S.optional(S.String),
+      issueId: S.optional(S.String.pipe(T.Body("issue_id"))),
+      previousValue: S.optional(S.String.pipe(T.Body("previous_value"))),
       rationale: S.optional(S.String),
-      zone_id: S.optional(S.Number),
+      zoneId: S.optional(S.Number.pipe(T.Body("zone_id"))),
     }),
 ).annotate({
   identifier: "InsightsAuditLogsListByInsightResultItem",
@@ -203,6 +242,7 @@ export const InsightsAuditLogsListByInsightResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InsightsAuditLogsListByInsightResultList>;
 
 export interface InsightsAuditLogsListByInsightResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: InsightsAuditLogsListByInsightResultList;
 }
 export const InsightsAuditLogsListByInsightResponse = /*@__PURE__*/ S.suspend(
@@ -267,49 +307,49 @@ export const InsightsClassGetRequestSubjectNeqList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InsightsClassGetRequestSubjectNeqList>;
 
 export interface InsightsClassGetRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
   dismissed?: boolean;
-  issue_class?: InsightsClassGetRequestIssueClassList;
-  _issue_class_neq_?: InsightsClassGetRequestIssueClassNeqList;
-  issue_type?: InsightsClassGetRequestIssueTypeList;
-  _issue_type_neq_?: InsightsClassGetRequestIssueTypeNeqList;
+  issueClass?: InsightsClassGetRequestIssueClassList;
+  IssueClassNeq_?: InsightsClassGetRequestIssueClassNeqList;
+  issueType?: InsightsClassGetRequestIssueTypeList;
+  IssueTypeNeq_?: InsightsClassGetRequestIssueTypeNeqList;
   product?: InsightsClassGetRequestProductList;
-  _product_neq_?: InsightsClassGetRequestProductNeqList;
+  ProductNeq_?: InsightsClassGetRequestProductNeqList;
   severity?: InsightsClassGetRequestSeverityList;
-  _severity_neq_?: InsightsClassGetRequestSeverityNeqList;
+  SeverityNeq_?: InsightsClassGetRequestSeverityNeqList;
   subject?: InsightsClassGetRequestSubjectList;
-  _subject_neq_?: InsightsClassGetRequestSubjectNeqList;
+  SubjectNeq_?: InsightsClassGetRequestSubjectNeqList;
 }
 export const InsightsClassGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
     dismissed: S.optional(S.Boolean.pipe(T.Query())),
-    issue_class: S.optional(
-      InsightsClassGetRequestIssueClassList.pipe(T.Query()),
+    issueClass: S.optional(
+      InsightsClassGetRequestIssueClassList.pipe(T.Query("issue_class")),
     ),
-    _issue_class_neq_: S.optional(
+    IssueClassNeq_: S.optional(
       InsightsClassGetRequestIssueClassNeqList.pipe(
         T.Query('"issue_class~neq"'),
       ),
     ),
-    issue_type: S.optional(
-      InsightsClassGetRequestIssueTypeList.pipe(T.Query()),
+    issueType: S.optional(
+      InsightsClassGetRequestIssueTypeList.pipe(T.Query("issue_type")),
     ),
-    _issue_type_neq_: S.optional(
+    IssueTypeNeq_: S.optional(
       InsightsClassGetRequestIssueTypeNeqList.pipe(T.Query('"issue_type~neq"')),
     ),
     product: S.optional(InsightsClassGetRequestProductList.pipe(T.Query())),
-    _product_neq_: S.optional(
+    ProductNeq_: S.optional(
       InsightsClassGetRequestProductNeqList.pipe(T.Query('"product~neq"')),
     ),
     severity: S.optional(InsightsClassGetRequestSeverityList.pipe(T.Query())),
-    _severity_neq_: S.optional(
+    SeverityNeq_: S.optional(
       InsightsClassGetRequestSeverityNeqList.pipe(T.Query('"severity~neq"')),
     ),
     subject: S.optional(InsightsClassGetRequestSubjectList.pipe(T.Query())),
-    _subject_neq_: S.optional(
+    SubjectNeq_: S.optional(
       InsightsClassGetRequestSubjectNeqList.pipe(T.Query('"subject~neq"')),
     ),
   }).pipe(
@@ -342,6 +382,7 @@ export const InsightsClassGetResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InsightsClassGetResultList>;
 
 export interface InsightsClassGetResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: InsightsClassGetResultList;
 }
 export const InsightsClassGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -361,17 +402,19 @@ export const InsightsClassificationUpdateRequestClassification =
   /*@__PURE__*/ S.String;
 
 export interface InsightsClassificationUpdateRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  issue_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  issueId: string;
+  /** User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
   classification?: InsightsClassificationUpdateRequestClassification;
+  /** Rationale for the classification change. Required when classification is 'accept_risk' or 'other'. */
   rationale?: string;
 }
 export const InsightsClassificationUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    issue_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    issueId: S.String.pipe(T.Label("issue_id")),
     classification: S.optional(
       InsightsClassificationUpdateRequestClassification,
     ),
@@ -395,13 +438,14 @@ export const InsightsClassificationUpdateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InsightsClassificationUpdateResponse>;
 
 export interface InsightsContextGetRequest {
-  account_id: string;
-  issue_id: string;
+  /** Identifier. */
+  accountId: string;
+  issueId: string;
 }
 export const InsightsContextGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    issue_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    issueId: S.String.pipe(T.Label("issue_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -422,6 +466,7 @@ export const InsightsContextGetResultMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<InsightsContextGetResultMap>;
 
 export interface InsightsContextGetResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: InsightsContextGetResultMap;
 }
 export const InsightsContextGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -433,16 +478,16 @@ export const InsightsContextGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsightsContextGetResponse>;
 
 export interface InsightsDismissRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  issue_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  issueId: string;
   dismiss?: boolean;
 }
 export const InsightsDismissRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    issue_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    issueId: S.String.pipe(T.Label("issue_id")),
     dismiss: S.optional(S.Boolean),
   }).pipe(
     T.Http({
@@ -513,47 +558,53 @@ export const InsightsListRequestSubjectNeqList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InsightsListRequestSubjectNeqList>;
 
 export interface InsightsListRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
   dismissed?: boolean;
-  issue_class?: InsightsListRequestIssueClassList;
-  _issue_class_neq_?: InsightsListRequestIssueClassNeqList;
-  issue_type?: InsightsListRequestIssueTypeList;
-  _issue_type_neq_?: InsightsListRequestIssueTypeNeqList;
+  issueClass?: InsightsListRequestIssueClassList;
+  IssueClassNeq_?: InsightsListRequestIssueClassNeqList;
+  issueType?: InsightsListRequestIssueTypeList;
+  IssueTypeNeq_?: InsightsListRequestIssueTypeNeqList;
+  /** Specifies the current page within paginated list of results. */
   page?: number;
-  per_page?: number;
+  /** Sets the number of results per page of results. */
+  perPage?: number;
   product?: InsightsListRequestProductList;
-  _product_neq_?: InsightsListRequestProductNeqList;
+  ProductNeq_?: InsightsListRequestProductNeqList;
   severity?: InsightsListRequestSeverityList;
-  _severity_neq_?: InsightsListRequestSeverityNeqList;
+  SeverityNeq_?: InsightsListRequestSeverityNeqList;
   subject?: InsightsListRequestSubjectList;
-  _subject_neq_?: InsightsListRequestSubjectNeqList;
+  SubjectNeq_?: InsightsListRequestSubjectNeqList;
 }
 export const InsightsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
     dismissed: S.optional(S.Boolean.pipe(T.Query())),
-    issue_class: S.optional(InsightsListRequestIssueClassList.pipe(T.Query())),
-    _issue_class_neq_: S.optional(
+    issueClass: S.optional(
+      InsightsListRequestIssueClassList.pipe(T.Query("issue_class")),
+    ),
+    IssueClassNeq_: S.optional(
       InsightsListRequestIssueClassNeqList.pipe(T.Query('"issue_class~neq"')),
     ),
-    issue_type: S.optional(InsightsListRequestIssueTypeList.pipe(T.Query())),
-    _issue_type_neq_: S.optional(
+    issueType: S.optional(
+      InsightsListRequestIssueTypeList.pipe(T.Query("issue_type")),
+    ),
+    IssueTypeNeq_: S.optional(
       InsightsListRequestIssueTypeNeqList.pipe(T.Query('"issue_type~neq"')),
     ),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     product: S.optional(InsightsListRequestProductList.pipe(T.Query())),
-    _product_neq_: S.optional(
+    ProductNeq_: S.optional(
       InsightsListRequestProductNeqList.pipe(T.Query('"product~neq"')),
     ),
     severity: S.optional(InsightsListRequestSeverityList.pipe(T.Query())),
-    _severity_neq_: S.optional(
+    SeverityNeq_: S.optional(
       InsightsListRequestSeverityNeqList.pipe(T.Query('"severity~neq"')),
     ),
     subject: S.optional(InsightsListRequestSubjectList.pipe(T.Query())),
-    _subject_neq_: S.optional(
+    SubjectNeq_: S.optional(
       InsightsListRequestSubjectNeqList.pipe(T.Query('"subject~neq"')),
     ),
   }).pipe(
@@ -568,14 +619,15 @@ export const InsightsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsightsListRequest>;
 
 export interface InsightsListResponseIssuesItemPayload {
-  detection_method?: string;
-  zone_tag?: string;
+  /** Describes the method used to detect insight. */
+  detectionMethod?: string;
+  zoneTag?: string;
 }
 export const InsightsListResponseIssuesItemPayload = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      detection_method: S.optional(S.String),
-      zone_tag: S.optional(S.String),
+      detectionMethod: S.optional(S.String.pipe(T.Body("detection_method"))),
+      zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
     }),
 ).annotate({
   identifier: "InsightsListResponseIssuesItemPayload",
@@ -605,36 +657,43 @@ export const InsightsListResponseIssuesItemUserClassification =
 export interface InsightsListResponseIssuesItem {
   id?: string;
   dismissed?: boolean;
-  has_extended_context?: boolean;
-  issue_class?: string;
-  issue_type?: unknown;
+  /** Indicates whether the insight has a large payload that requires fetching via the context endpoint. */
+  hasExtendedContext?: boolean;
+  issueClass?: string;
+  issueType?: unknown;
   payload?: InsightsListResponseIssuesItemPayload;
-  resolve_link?: string;
-  resolve_text?: string;
+  resolveLink?: string;
+  resolveText?: string;
   severity?: InsightsListResponseIssuesItemSeverity;
   since?: string;
+  /** The current status of the insight. */
   status?: InsightsListResponseIssuesItemStatus;
   subject?: string;
   timestamp?: string;
-  user_classification?: InsightsListResponseIssuesItemUserClassification;
+  /** User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
+  userClassification?: InsightsListResponseIssuesItemUserClassification;
 }
 export const InsightsListResponseIssuesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     dismissed: S.optional(S.Boolean),
-    has_extended_context: S.optional(S.Boolean),
-    issue_class: S.optional(S.String),
-    issue_type: S.optional(S.Unknown),
+    hasExtendedContext: S.optional(
+      S.Boolean.pipe(T.Body("has_extended_context")),
+    ),
+    issueClass: S.optional(S.String.pipe(T.Body("issue_class"))),
+    issueType: S.optional(S.Unknown.pipe(T.Body("issue_type"))),
     payload: S.optional(InsightsListResponseIssuesItemPayload),
-    resolve_link: S.optional(S.String),
-    resolve_text: S.optional(S.String),
+    resolveLink: S.optional(S.String.pipe(T.Body("resolve_link"))),
+    resolveText: S.optional(S.String.pipe(T.Body("resolve_text"))),
     severity: S.optional(InsightsListResponseIssuesItemSeverity),
     since: S.optional(S.String),
     status: S.optional(InsightsListResponseIssuesItemStatus),
     subject: S.optional(S.String),
     timestamp: S.optional(S.String),
-    user_classification: S.optional(
-      InsightsListResponseIssuesItemUserClassification,
+    userClassification: S.optional(
+      InsightsListResponseIssuesItemUserClassification.pipe(
+        T.Body("user_classification"),
+      ),
     ),
   }),
 ).annotate({
@@ -648,17 +707,20 @@ export const InsightsListResponseIssuesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface InsightsListResponse {
+  /** Indicates the total number of results. */
   count?: number;
   issues?: InsightsListResponseIssuesList;
+  /** Specifies the current page within paginated list of results. */
   page?: number;
-  per_page?: number;
+  /** Sets the number of results per page of results. */
+  perPage?: number;
 }
 export const InsightsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     issues: S.optional(InsightsListResponseIssuesList),
     page: S.optional(S.Number),
-    per_page: S.optional(S.Number),
+    perPage: S.optional(S.Number.pipe(T.Body("per_page"))),
   }),
 ).annotate({
   identifier: "InsightsListResponse",
@@ -716,53 +778,53 @@ export const InsightsSeverityGetRequestSubjectNeqList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InsightsSeverityGetRequestSubjectNeqList>;
 
 export interface InsightsSeverityGetRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
   dismissed?: boolean;
-  issue_class?: InsightsSeverityGetRequestIssueClassList;
-  _issue_class_neq_?: InsightsSeverityGetRequestIssueClassNeqList;
-  issue_type?: InsightsSeverityGetRequestIssueTypeList;
-  _issue_type_neq_?: InsightsSeverityGetRequestIssueTypeNeqList;
+  issueClass?: InsightsSeverityGetRequestIssueClassList;
+  IssueClassNeq_?: InsightsSeverityGetRequestIssueClassNeqList;
+  issueType?: InsightsSeverityGetRequestIssueTypeList;
+  IssueTypeNeq_?: InsightsSeverityGetRequestIssueTypeNeqList;
   product?: InsightsSeverityGetRequestProductList;
-  _product_neq_?: InsightsSeverityGetRequestProductNeqList;
+  ProductNeq_?: InsightsSeverityGetRequestProductNeqList;
   severity?: InsightsSeverityGetRequestSeverityList;
-  _severity_neq_?: InsightsSeverityGetRequestSeverityNeqList;
+  SeverityNeq_?: InsightsSeverityGetRequestSeverityNeqList;
   subject?: InsightsSeverityGetRequestSubjectList;
-  _subject_neq_?: InsightsSeverityGetRequestSubjectNeqList;
+  SubjectNeq_?: InsightsSeverityGetRequestSubjectNeqList;
 }
 export const InsightsSeverityGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
     dismissed: S.optional(S.Boolean.pipe(T.Query())),
-    issue_class: S.optional(
-      InsightsSeverityGetRequestIssueClassList.pipe(T.Query()),
+    issueClass: S.optional(
+      InsightsSeverityGetRequestIssueClassList.pipe(T.Query("issue_class")),
     ),
-    _issue_class_neq_: S.optional(
+    IssueClassNeq_: S.optional(
       InsightsSeverityGetRequestIssueClassNeqList.pipe(
         T.Query('"issue_class~neq"'),
       ),
     ),
-    issue_type: S.optional(
-      InsightsSeverityGetRequestIssueTypeList.pipe(T.Query()),
+    issueType: S.optional(
+      InsightsSeverityGetRequestIssueTypeList.pipe(T.Query("issue_type")),
     ),
-    _issue_type_neq_: S.optional(
+    IssueTypeNeq_: S.optional(
       InsightsSeverityGetRequestIssueTypeNeqList.pipe(
         T.Query('"issue_type~neq"'),
       ),
     ),
     product: S.optional(InsightsSeverityGetRequestProductList.pipe(T.Query())),
-    _product_neq_: S.optional(
+    ProductNeq_: S.optional(
       InsightsSeverityGetRequestProductNeqList.pipe(T.Query('"product~neq"')),
     ),
     severity: S.optional(
       InsightsSeverityGetRequestSeverityList.pipe(T.Query()),
     ),
-    _severity_neq_: S.optional(
+    SeverityNeq_: S.optional(
       InsightsSeverityGetRequestSeverityNeqList.pipe(T.Query('"severity~neq"')),
     ),
     subject: S.optional(InsightsSeverityGetRequestSubjectList.pipe(T.Query())),
-    _subject_neq_: S.optional(
+    SubjectNeq_: S.optional(
       InsightsSeverityGetRequestSubjectNeqList.pipe(T.Query('"subject~neq"')),
     ),
   }).pipe(
@@ -795,6 +857,7 @@ export const InsightsSeverityGetResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InsightsSeverityGetResultList>;
 
 export interface InsightsSeverityGetResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: InsightsSeverityGetResultList;
 }
 export const InsightsSeverityGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -856,47 +919,49 @@ export const InsightsTypeGetRequestSubjectNeqList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InsightsTypeGetRequestSubjectNeqList>;
 
 export interface InsightsTypeGetRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
   dismissed?: boolean;
-  issue_class?: InsightsTypeGetRequestIssueClassList;
-  _issue_class_neq_?: InsightsTypeGetRequestIssueClassNeqList;
-  issue_type?: InsightsTypeGetRequestIssueTypeList;
-  _issue_type_neq_?: InsightsTypeGetRequestIssueTypeNeqList;
+  issueClass?: InsightsTypeGetRequestIssueClassList;
+  IssueClassNeq_?: InsightsTypeGetRequestIssueClassNeqList;
+  issueType?: InsightsTypeGetRequestIssueTypeList;
+  IssueTypeNeq_?: InsightsTypeGetRequestIssueTypeNeqList;
   product?: InsightsTypeGetRequestProductList;
-  _product_neq_?: InsightsTypeGetRequestProductNeqList;
+  ProductNeq_?: InsightsTypeGetRequestProductNeqList;
   severity?: InsightsTypeGetRequestSeverityList;
-  _severity_neq_?: InsightsTypeGetRequestSeverityNeqList;
+  SeverityNeq_?: InsightsTypeGetRequestSeverityNeqList;
   subject?: InsightsTypeGetRequestSubjectList;
-  _subject_neq_?: InsightsTypeGetRequestSubjectNeqList;
+  SubjectNeq_?: InsightsTypeGetRequestSubjectNeqList;
 }
 export const InsightsTypeGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
     dismissed: S.optional(S.Boolean.pipe(T.Query())),
-    issue_class: S.optional(
-      InsightsTypeGetRequestIssueClassList.pipe(T.Query()),
+    issueClass: S.optional(
+      InsightsTypeGetRequestIssueClassList.pipe(T.Query("issue_class")),
     ),
-    _issue_class_neq_: S.optional(
+    IssueClassNeq_: S.optional(
       InsightsTypeGetRequestIssueClassNeqList.pipe(
         T.Query('"issue_class~neq"'),
       ),
     ),
-    issue_type: S.optional(InsightsTypeGetRequestIssueTypeList.pipe(T.Query())),
-    _issue_type_neq_: S.optional(
+    issueType: S.optional(
+      InsightsTypeGetRequestIssueTypeList.pipe(T.Query("issue_type")),
+    ),
+    IssueTypeNeq_: S.optional(
       InsightsTypeGetRequestIssueTypeNeqList.pipe(T.Query('"issue_type~neq"')),
     ),
     product: S.optional(InsightsTypeGetRequestProductList.pipe(T.Query())),
-    _product_neq_: S.optional(
+    ProductNeq_: S.optional(
       InsightsTypeGetRequestProductNeqList.pipe(T.Query('"product~neq"')),
     ),
     severity: S.optional(InsightsTypeGetRequestSeverityList.pipe(T.Query())),
-    _severity_neq_: S.optional(
+    SeverityNeq_: S.optional(
       InsightsTypeGetRequestSeverityNeqList.pipe(T.Query('"severity~neq"')),
     ),
     subject: S.optional(InsightsTypeGetRequestSubjectList.pipe(T.Query())),
-    _subject_neq_: S.optional(
+    SubjectNeq_: S.optional(
       InsightsTypeGetRequestSubjectNeqList.pipe(T.Query('"subject~neq"')),
     ),
   }).pipe(
@@ -929,6 +994,7 @@ export const InsightsTypeGetResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InsightsTypeGetResultList>;
 
 export interface InsightsTypeGetResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: InsightsTypeGetResultList;
 }
 export const InsightsTypeGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -939,11 +1005,12 @@ export const InsightsTypeGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsTypeGetResponse",
 }) as any as S.Schema<InsightsTypeGetResponse>;
 
+export type InsightsAuditLogsListError = CloudflareOpError;
 /** Lists audit log entries for all Security Center insights in the account or zone, showing changes to insight status and classification. */
-export const InsightsAuditLogsList: API.OperationMethod<
+export const insightsAuditLogsList: API.OperationMethod<
   InsightsAuditLogsListRequest,
   InsightsAuditLogsListResponse,
-  CloudflareOpError,
+  InsightsAuditLogsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InsightsAuditLogsListRequest,
@@ -952,11 +1019,12 @@ export const InsightsAuditLogsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InsightsAuditLogsListByInsightError = CloudflareOpError;
 /** Lists audit log entries for a specific Security Center insight, showing changes to its status and classification over time. */
-export const InsightsAuditLogsListByInsight: API.OperationMethod<
+export const insightsAuditLogsListByInsight: API.OperationMethod<
   InsightsAuditLogsListByInsightRequest,
   InsightsAuditLogsListByInsightResponse,
-  CloudflareOpError,
+  InsightsAuditLogsListByInsightError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InsightsAuditLogsListByInsightRequest,
@@ -965,11 +1033,12 @@ export const InsightsAuditLogsListByInsight: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InsightsClassGetError = CloudflareOpError;
 /** Retrieves Security Center insight counts aggregated by classification class. */
-export const InsightsClassGet: API.OperationMethod<
+export const insightsClassGet: API.OperationMethod<
   InsightsClassGetRequest,
   InsightsClassGetResponse,
-  CloudflareOpError,
+  InsightsClassGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InsightsClassGetRequest,
@@ -978,11 +1047,12 @@ export const InsightsClassGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InsightsClassificationUpdateError = CloudflareOpError;
 /** Updates the user classification for a Security Center insight. Valid values are 'false_positive' or 'accept_risk'. To reset, set classification to null. Cannot change directly between classification values - must reset to null first. */
-export const InsightsClassificationUpdate: API.OperationMethod<
+export const insightsClassificationUpdate: API.OperationMethod<
   InsightsClassificationUpdateRequest,
   InsightsClassificationUpdateResponse,
-  CloudflareOpError,
+  InsightsClassificationUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InsightsClassificationUpdateRequest,
@@ -991,11 +1061,12 @@ export const InsightsClassificationUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InsightsContextGetError = CloudflareOpError;
 /** Returns the full context payload for an insight. This endpoint is used for insights with large payloads that are not included inline in the list response. */
-export const InsightsContextGet: API.OperationMethod<
+export const insightsContextGet: API.OperationMethod<
   InsightsContextGetRequest,
   InsightsContextGetResponse,
-  CloudflareOpError,
+  InsightsContextGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InsightsContextGetRequest,
@@ -1004,11 +1075,12 @@ export const InsightsContextGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InsightsDismissError = CloudflareOpError;
 /** Archives a Security Center insight for an account or zone, removing it from the active insights list while preserving historical data. */
-export const InsightsDismiss: API.OperationMethod<
+export const insightsDismiss: API.OperationMethod<
   InsightsDismissRequest,
   InsightsDismissResponse,
-  CloudflareOpError,
+  InsightsDismissError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InsightsDismissRequest,
@@ -1017,11 +1089,12 @@ export const InsightsDismiss: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InsightsListError = CloudflareOpError;
 /** Lists all Security Center insights for the account or zone, showing security findings and recommendations. */
-export const InsightsList: API.OperationMethod<
+export const insightsList: API.OperationMethod<
   InsightsListRequest,
   InsightsListResponse,
-  CloudflareOpError,
+  InsightsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InsightsListRequest,
@@ -1030,11 +1103,12 @@ export const InsightsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InsightsSeverityGetError = CloudflareOpError;
 /** Retrieves Security Center insight counts aggregated by severity level (critical, high, medium, low). */
-export const InsightsSeverityGet: API.OperationMethod<
+export const insightsSeverityGet: API.OperationMethod<
   InsightsSeverityGetRequest,
   InsightsSeverityGetResponse,
-  CloudflareOpError,
+  InsightsSeverityGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InsightsSeverityGetRequest,
@@ -1043,11 +1117,12 @@ export const InsightsSeverityGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InsightsTypeGetError = CloudflareOpError;
 /** Retrieves Security Center insight counts aggregated by insight type. */
-export const InsightsTypeGet: API.OperationMethod<
+export const insightsTypeGet: API.OperationMethod<
   InsightsTypeGetRequest,
   InsightsTypeGetResponse,
-  CloudflareOpError,
+  InsightsTypeGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InsightsTypeGetRequest,

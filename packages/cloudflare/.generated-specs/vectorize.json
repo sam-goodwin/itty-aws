@@ -17,6 +17,25 @@
     ]
   },
   "shapes": {
+    "com.cloudflare.vectorize#IndexesCreateRequestConfig": {
+      "type": "structure",
+      "members": {
+        "IndexDimensionConfiguration_object___dimensions__metric__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexDimensionConfiguration object { dimensions, metric }"
+          }
+        },
+        "VectorizeIndexPresetConfiguration_object___preset__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "VectorizeIndexPresetConfiguration object { preset }"
+          }
+        }
+      }
+    },
     "com.cloudflare.vectorize#IndexesCreateRequest": {
       "type": "structure",
       "members": {
@@ -29,7 +48,7 @@
           }
         },
         "config": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.vectorize#IndexesCreateRequestConfig",
           "traits": {
             "smithy.api#documentation": "Specifies the type of configuration to use for the index.",
             "smithy.api#required": {}
@@ -52,19 +71,79 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.vectorize#IndexesCreateResponseConfigMetric": {
+      "type": "enum",
+      "members": {
+        "COSINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cosine"
+          }
+        },
+        "EUCLIDEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "euclidean"
+          }
+        },
+        "DOT_PRODUCT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dot-product"
+          }
+        }
+      }
+    },
+    "com.cloudflare.vectorize#IndexesCreateResponseConfig": {
+      "type": "structure",
+      "members": {
+        "dimensions": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the number of dimensions for the index",
+            "smithy.api#required": {}
+          }
+        },
+        "metric": {
+          "target": "com.cloudflare.vectorize#IndexesCreateResponseConfigMetric",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of metric to use calculating distance.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.vectorize#IndexesCreateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "config": {
+          "target": "com.cloudflare.vectorize#IndexesCreateResponseConfig"
+        },
+        "created_on": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Specifies the timestamp the resource was created as an ISO8601 string."
           }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the description of the index."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the timestamp the resource was modified as an ISO8601 string."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.vectorize#IndexesCreate": {
@@ -110,16 +189,22 @@
     "com.cloudflare.vectorize#IndexesDeleteResponse": {
       "type": "structure",
       "members": {
-        "result": {
+        "unknown": {
           "target": "smithy.api#Document",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.vectorize#IndexesDelete": {
@@ -230,19 +315,79 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.vectorize#IndexesGetResponseConfigMetric": {
+      "type": "enum",
+      "members": {
+        "COSINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cosine"
+          }
+        },
+        "EUCLIDEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "euclidean"
+          }
+        },
+        "DOT_PRODUCT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dot-product"
+          }
+        }
+      }
+    },
+    "com.cloudflare.vectorize#IndexesGetResponseConfig": {
+      "type": "structure",
+      "members": {
+        "dimensions": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the number of dimensions for the index",
+            "smithy.api#required": {}
+          }
+        },
+        "metric": {
+          "target": "com.cloudflare.vectorize#IndexesGetResponseConfigMetric",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of metric to use calculating distance.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.vectorize#IndexesGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "config": {
+          "target": "com.cloudflare.vectorize#IndexesGetResponseConfig"
+        },
+        "created_on": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Specifies the timestamp the resource was created as an ISO8601 string."
           }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the description of the index."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the timestamp the resource was modified as an ISO8601 string."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.vectorize#IndexesGet": {
@@ -499,10 +644,81 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.vectorize#IndexesListResultItemConfigMetric": {
+      "type": "enum",
+      "members": {
+        "COSINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cosine"
+          }
+        },
+        "EUCLIDEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "euclidean"
+          }
+        },
+        "DOT_PRODUCT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dot-product"
+          }
+        }
+      }
+    },
+    "com.cloudflare.vectorize#IndexesListResultItemConfig": {
+      "type": "structure",
+      "members": {
+        "dimensions": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies the number of dimensions for the index",
+            "smithy.api#required": {}
+          }
+        },
+        "metric": {
+          "target": "com.cloudflare.vectorize#IndexesListResultItemConfigMetric",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of metric to use calculating distance.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.vectorize#IndexesListResultItem": {
+      "type": "structure",
+      "members": {
+        "config": {
+          "target": "com.cloudflare.vectorize#IndexesListResultItemConfig"
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the timestamp the resource was created as an ISO8601 string."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the description of the index."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the timestamp the resource was modified as an ISO8601 string."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
     "com.cloudflare.vectorize#IndexesListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.vectorize#IndexesListResultItem"
       }
     },
     "com.cloudflare.vectorize#IndexesListResponse": {

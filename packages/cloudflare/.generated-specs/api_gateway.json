@@ -40,19 +40,46 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsItem": {
+      "type": "structure",
+      "members": {
+        "APIShieldAuthIDCharacteristic_object___name__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Auth ID Characteristic",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldAuthIDCharacteristic object { name, type }"
+          }
+        },
+        "APIShieldAuthIDCharacteristicJWTClaim_object___name__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Auth ID Characteristic extracted from JWT Token Claims",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldAuthIDCharacteristicJWTClaim object { name, type }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsItem"
+      }
+    },
     "com.cloudflare.api_gateway#ConfigurationsGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "auth_id_characteristics": {
+          "target": "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsList",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.api_gateway#ConfigurationsGet": {
@@ -129,19 +156,46 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsItem": {
+      "type": "structure",
+      "members": {
+        "APIShieldAuthIDCharacteristic_object___name__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Auth ID Characteristic",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldAuthIDCharacteristic object { name, type }"
+          }
+        },
+        "APIShieldAuthIDCharacteristicJWTClaim_object___name__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Auth ID Characteristic extracted from JWT Token Claims",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldAuthIDCharacteristicJWTClaim object { name, type }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsItem"
+      }
+    },
     "com.cloudflare.api_gateway#ConfigurationsUpdateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "auth_id_characteristics": {
+          "target": "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsList",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.api_gateway#ConfigurationsUpdate": {
@@ -479,10 +533,174 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.api_gateway#DiscoveryOperationsListResultItemMethod": {
+      "type": "enum",
+      "members": {
+        "GET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GET"
+          }
+        },
+        "POST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "POST"
+          }
+        },
+        "HEAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HEAD"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#DiscoveryOperationsListResultItemOriginItem": {
+      "type": "enum",
+      "members": {
+        "ML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ML"
+          }
+        },
+        "SESSIONIDENTIFIER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SessionIdentifier"
+          }
+        },
+        "LABELDISCOVERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LabelDiscovery"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#DiscoveryOperationsListResultItemOriginList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.api_gateway#DiscoveryOperationsListResultItemOriginItem"
+      }
+    },
+    "com.cloudflare.api_gateway#DiscoveryOperationsListResultItemState": {
+      "type": "enum",
+      "members": {
+        "REVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "review"
+          }
+        },
+        "SAVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "saved"
+          }
+        },
+        "IGNORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ignored"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#DiscoveryOperationsListResultItemFeaturesTrafficStats": {
+      "type": "structure",
+      "members": {
+        "last_updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "period_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The period in seconds these statistics were computed over",
+            "smithy.api#required": {}
+          }
+        },
+        "requests": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The average number of requests seen during this period",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#DiscoveryOperationsListResultItemFeatures": {
+      "type": "structure",
+      "members": {
+        "traffic_stats": {
+          "target": "com.cloudflare.api_gateway#DiscoveryOperationsListResultItemFeaturesTrafficStats"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#DiscoveryOperationsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
+            "smithy.api#required": {}
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RFC3986-compliant host.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "method": {
+          "target": "com.cloudflare.api_gateway#DiscoveryOperationsListResultItemMethod",
+          "traits": {
+            "smithy.api#documentation": "The HTTP method used to access the endpoint.",
+            "smithy.api#required": {}
+          }
+        },
+        "origin": {
+          "target": "com.cloudflare.api_gateway#DiscoveryOperationsListResultItemOriginList",
+          "traits": {
+            "smithy.api#documentation": "API discovery engine(s) that discovered this operation",
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.cloudflare.api_gateway#DiscoveryOperationsListResultItemState",
+          "traits": {
+            "smithy.api#documentation": "State of operation in API Discovery",
+            "smithy.api#required": {}
+          }
+        },
+        "features": {
+          "target": "com.cloudflare.api_gateway#DiscoveryOperationsListResultItemFeatures"
+        }
+      }
+    },
     "com.cloudflare.api_gateway#DiscoveryOperationsListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.api_gateway#DiscoveryOperationsListResultItem"
       }
     },
     "com.cloudflare.api_gateway#DiscoveryOperationsListResponse": {
@@ -4468,6 +4686,40 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.api_gateway#OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction": {
+      "type": "enum",
+      "members": {
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#OperationsSchemaValidationEditRequestSettingsMultipleRequest": {
+      "type": "structure",
+      "members": {
+        "mitigation_action": {
+          "target": "com.cloudflare.api_gateway#OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction",
+          "traits": {
+            "smithy.api#documentation": "When set, this applies a mitigation action to this operation"
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#OperationsSchemaValidationEditRequest": {
       "type": "structure",
       "members": {
@@ -4480,7 +4732,7 @@
           }
         },
         "settings_multiple_request": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.api_gateway#OperationsSchemaValidationEditRequestSettingsMultipleRequest",
           "traits": {
             "smithy.api#required": {}
           }
@@ -4490,19 +4742,42 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.api_gateway#OperationsSchemaValidationEditResponseMitigationAction": {
+      "type": "enum",
+      "members": {
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#OperationsSchemaValidationEditResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "mitigation_action": {
+          "target": "com.cloudflare.api_gateway#OperationsSchemaValidationEditResponseMitigationAction",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "When set, this applies a mitigation action to this operation"
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.api_gateway#OperationsSchemaValidationEdit": {
@@ -5097,6 +5372,61 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.api_gateway#UserSchemasCreateResponseSchemaKind": {
+      "type": "enum",
+      "members": {
+        "OPENAPI_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "openapi_v3"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasCreateResponseSchema": {
+      "type": "structure",
+      "members": {
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.cloudflare.api_gateway#UserSchemasCreateResponseSchemaKind",
+          "traits": {
+            "smithy.api#documentation": "Kind of schema",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the schema",
+            "smithy.api#required": {}
+          }
+        },
+        "schema_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source of the schema"
+          }
+        },
+        "validation_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag whether schema is enabled for validation."
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#UserSchemasCreateResponseUploadDetailsWarningsItemLocationsList": {
       "type": "list",
       "member": {
@@ -5148,7 +5478,7 @@
       "type": "structure",
       "members": {
         "schema": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.api_gateway#UserSchemasCreateResponseSchema",
           "traits": {
             "smithy.api#required": {}
           }
@@ -5249,19 +5579,63 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.api_gateway#UserSchemasEditResponseKind": {
+      "type": "enum",
+      "members": {
+        "OPENAPI_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "openapi_v3"
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#UserSchemasEditResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "created_at": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.cloudflare.api_gateway#UserSchemasEditResponseKind",
+          "traits": {
+            "smithy.api#documentation": "Kind of schema",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the schema",
+            "smithy.api#required": {}
+          }
+        },
+        "schema_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source of the schema"
+          }
+        },
+        "validation_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag whether schema is enabled for validation."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.api_gateway#UserSchemasEdit": {
@@ -5311,19 +5685,63 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.api_gateway#UserSchemasGetResponseKind": {
+      "type": "enum",
+      "members": {
+        "OPENAPI_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "openapi_v3"
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#UserSchemasGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "created_at": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.cloudflare.api_gateway#UserSchemasGetResponseKind",
+          "traits": {
+            "smithy.api#documentation": "Kind of schema",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the schema",
+            "smithy.api#required": {}
+          }
+        },
+        "schema_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source of the schema"
+          }
+        },
+        "validation_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag whether schema is enabled for validation."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.api_gateway#UserSchemasGet": {
@@ -5388,10 +5806,65 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.api_gateway#UserSchemasListResultItemKind": {
+      "type": "enum",
+      "members": {
+        "OPENAPI_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "openapi_v3"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasListResultItem": {
+      "type": "structure",
+      "members": {
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.cloudflare.api_gateway#UserSchemasListResultItemKind",
+          "traits": {
+            "smithy.api#documentation": "Kind of schema",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the schema",
+            "smithy.api#required": {}
+          }
+        },
+        "schema_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source of the schema"
+          }
+        },
+        "validation_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag whether schema is enabled for validation."
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#UserSchemasListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.api_gateway#UserSchemasListResultItem"
       }
     },
     "com.cloudflare.api_gateway#UserSchemasListResponse": {

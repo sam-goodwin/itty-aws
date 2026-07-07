@@ -2416,10 +2416,49 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.browser_rendering#SnapshotCreateResponseAccessibilityTreeChecked": {
+      "type": "structure",
+      "members": {
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.browser_rendering#SnapshotCreateResponseAccessibilityTreeChildrenList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateResponseAccessibilityTreePressed": {
+      "type": "structure",
+      "members": {
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#SnapshotCreateResponseAccessibilityTreeValue": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
       }
     },
     "com.cloudflare.browser_rendering#SnapshotCreateResponseAccessibilityTree": {
@@ -2435,7 +2474,7 @@
           "target": "smithy.api#String"
         },
         "checked": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateResponseAccessibilityTreeChecked"
         },
         "children": {
           "target": "com.cloudflare.browser_rendering#SnapshotCreateResponseAccessibilityTreeChildrenList"
@@ -2480,7 +2519,7 @@
           "target": "smithy.api#String"
         },
         "pressed": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateResponseAccessibilityTreePressed"
         },
         "readonly": {
           "target": "smithy.api#Boolean"
@@ -2495,7 +2534,7 @@
           "target": "smithy.api#Boolean"
         },
         "value": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.browser_rendering#SnapshotCreateResponseAccessibilityTreeValue"
         },
         "valuemax": {
           "target": "smithy.api#Double"

@@ -2476,16 +2476,70 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksUpdateRequestErrorsItemSource": {
+      "type": "structure",
+      "members": {
+        "pointer": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.smart_shield#HealthChecksUpdateRequestErrorsItem": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#String"
+        },
+        "source": {
+          "target": "com.cloudflare.smart_shield#HealthChecksUpdateRequestErrorsItemSource"
+        }
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksUpdateRequestErrorsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.smart_shield#HealthChecksUpdateRequestErrorsItem"
+      }
+    },
+    "com.cloudflare.smart_shield#HealthChecksUpdateRequestMessagesItem": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "documentation_url": {
+          "target": "smithy.api#String"
+        },
+        "source": {
+          "target": "smithy.api#Document"
+        }
       }
     },
     "com.cloudflare.smart_shield#HealthChecksUpdateRequestMessagesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.smart_shield#HealthChecksUpdateRequestMessagesItem"
       }
     },
     "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultCheckRegionsItem": {

@@ -38,7 +38,7 @@ import {
 } from "@distilled.cloud/core/trait";
 import { CloudflareCredentials } from "./credentials.ts";
 import { CloudflareError, CloudflareRateLimited } from "./errors.ts";
-import { envelopePayloadSymbol } from "./traits.ts";
+import { envelopePayloadSymbol, getErrorMatchers } from "./traits.ts";
 
 /**
  * Error channel shared by every generated Cloudflare operation. Generated
@@ -168,12 +168,49 @@ const encode = ({
     return request;
   });
 
+/**
+ * Pick the operation's typed error class for a failed response, if any of the
+ * declared classes carries a matcher that matches the envelope failure. First
+ * matching class wins, in declaration order.
+ */
+const matchTypedError = (
+  errorClasses: ReadonlyArray<unknown>,
+  status: number,
+  errors: ReadonlyArray<{ code?: number; message: string }>,
+): unknown | undefined => {
+  for (const cls of errorClasses) {
+    const matchers = getErrorMatchers(cls);
+    if (!matchers) continue;
+    for (const m of matchers) {
+      const matched = errors.some(
+        (e) =>
+          (m.code === undefined || e.code === m.code) &&
+          (m.status === undefined || status === m.status) &&
+          (m.message === undefined ||
+            e.message.toLowerCase().includes(m.message.includes.toLowerCase())),
+      );
+      if (matched) {
+        const src = errors.find(
+          (e) => m.code === undefined || e.code === m.code,
+        );
+        return new (cls as new (args: any) => unknown)({
+          code: src?.code ?? 0,
+          message: src?.message ?? `HTTP ${status}`,
+        });
+      }
+    }
+  }
+  return undefined;
+};
+
 const decode = ({
   response,
   outputAst,
+  errors: errorClasses,
 }: {
   readonly response: HttpClientResponse.HttpClientResponse;
   readonly outputAst: AST.AST;
+  readonly errors: ReadonlyArray<unknown>;
 }) =>
   Effect.gen(function* () {
     const json = ((yield* response.json.pipe(Effect.orDie)) ?? {}) as Record<
@@ -194,6 +231,12 @@ const decode = ({
           code: undefined,
           message: `HTTP ${response.status}`,
         });
+      }
+      // Operation-specific typed error (matcher metadata on the class) wins
+      // over the generic envelope errors.
+      const typed = matchTypedError(errorClasses, response.status, errors);
+      if (typed !== undefined) {
+        return yield* Effect.fail(typed) as Effect.Effect<never>;
       }
       if (response.status === 429) {
         return yield* fail(

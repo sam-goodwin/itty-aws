@@ -10,12 +10,14 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface CreateRequest {
-  zone_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
+  /** Determines whether or not Leaked Credential Checks are enabled. */
   enabled?: boolean;
 }
 export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.optional(S.Boolean),
   }).pipe(
     T.Http({
@@ -28,6 +30,7 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateResponse {
+  /** Determines whether or not Leaked Credential Checks are enabled. */
   enabled?: boolean;
 }
 export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -37,13 +40,16 @@ export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
 
 export interface DetectionsCreateRequest {
-  zone_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
+  /** Defines ehe ruleset expression to use in matching the password in a request. */
   password?: string;
+  /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string;
 }
 export const DetectionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     password: S.optional(S.String),
     username: S.optional(S.String),
   }).pipe(
@@ -59,8 +65,11 @@ export const DetectionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DetectionsCreateResponse {
+  /** Defines the unique ID for this custom detection. */
   id?: string;
+  /** Defines ehe ruleset expression to use in matching the password in a request. */
   password?: string;
+  /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string;
 }
 export const DetectionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -74,13 +83,15 @@ export const DetectionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectionsCreateResponse>;
 
 export interface DetectionsDeleteRequest {
-  zone_id: string;
-  detection_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
+  /** Defines the unique ID for this custom detection. */
+  detectionId: string;
 }
 export const DetectionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    detection_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    detectionId: S.String.pipe(T.Label("detection_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -93,6 +104,7 @@ export const DetectionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectionsDeleteRequest>;
 
 export interface DetectionsDeleteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const DetectionsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -104,13 +116,15 @@ export const DetectionsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectionsDeleteResponse>;
 
 export interface DetectionsGetRequest {
-  zone_id: string;
-  detection_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
+  /** Defines the unique ID for this custom detection. */
+  detectionId: string;
 }
 export const DetectionsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    detection_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    detectionId: S.String.pipe(T.Label("detection_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -124,8 +138,11 @@ export const DetectionsGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DetectionsGetResponse {
+  /** Defines the unique ID for this custom detection. */
   id?: string;
+  /** Defines ehe ruleset expression to use in matching the password in a request. */
   password?: string;
+  /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string;
 }
 export const DetectionsGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -139,11 +156,12 @@ export const DetectionsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectionsGetResponse>;
 
 export interface DetectionsListRequest {
-  zone_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
 }
 export const DetectionsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -156,8 +174,11 @@ export const DetectionsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectionsListRequest>;
 
 export interface DetectionsListResultItem {
+  /** Defines the unique ID for this custom detection. */
   id?: string;
+  /** Defines ehe ruleset expression to use in matching the password in a request. */
   password?: string;
+  /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string;
 }
 export const DetectionsListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -176,6 +197,7 @@ export const DetectionsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DetectionsListResultList>;
 
 export interface DetectionsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DetectionsListResultList;
 }
 export const DetectionsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -187,15 +209,19 @@ export const DetectionsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectionsListResponse>;
 
 export interface DetectionsUpdateRequest {
-  zone_id: string;
-  detection_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
+  /** Defines the unique ID for this custom detection. */
+  detectionId: string;
+  /** Defines ehe ruleset expression to use in matching the password in a request. */
   password?: string;
+  /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string;
 }
 export const DetectionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    detection_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    detectionId: S.String.pipe(T.Label("detection_id")),
     password: S.optional(S.String),
     username: S.optional(S.String),
   }).pipe(
@@ -211,8 +237,11 @@ export const DetectionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DetectionsUpdateResponse {
+  /** Defines the unique ID for this custom detection. */
   id?: string;
+  /** Defines ehe ruleset expression to use in matching the password in a request. */
   password?: string;
+  /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string;
 }
 export const DetectionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -226,11 +255,12 @@ export const DetectionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectionsUpdateResponse>;
 
 export interface GetRequest {
-  zone_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -242,6 +272,7 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
+  /** Determines whether or not Leaked Credential Checks are enabled. */
   enabled?: boolean;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -250,11 +281,12 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
+export type CreateError = CloudflareOpError;
 /** Updates the current status of Leaked Credential Checks. */
-export const Create: API.OperationMethod<
+export const create: API.OperationMethod<
   CreateRequest,
   CreateResponse,
-  CloudflareOpError,
+  CreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRequest,
@@ -263,11 +295,12 @@ export const Create: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DetectionsCreateError = CloudflareOpError;
 /** Create user-defined detection pattern for Leaked Credential Checks. */
-export const DetectionsCreate: API.OperationMethod<
+export const detectionsCreate: API.OperationMethod<
   DetectionsCreateRequest,
   DetectionsCreateResponse,
-  CloudflareOpError,
+  DetectionsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DetectionsCreateRequest,
@@ -276,11 +309,12 @@ export const DetectionsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DetectionsDeleteError = CloudflareOpError;
 /** Remove user-defined detection pattern for Leaked Credential Checks. */
-export const DetectionsDelete: API.OperationMethod<
+export const detectionsDelete: API.OperationMethod<
   DetectionsDeleteRequest,
   DetectionsDeleteResponse,
-  CloudflareOpError,
+  DetectionsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DetectionsDeleteRequest,
@@ -289,11 +323,12 @@ export const DetectionsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DetectionsGetError = CloudflareOpError;
 /** Get user-defined detection pattern for Leaked Credential Checks. */
-export const DetectionsGet: API.OperationMethod<
+export const detectionsGet: API.OperationMethod<
   DetectionsGetRequest,
   DetectionsGetResponse,
-  CloudflareOpError,
+  DetectionsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DetectionsGetRequest,
@@ -302,11 +337,12 @@ export const DetectionsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DetectionsListError = CloudflareOpError;
 /** List user-defined detection patterns for Leaked Credential Checks. */
-export const DetectionsList: API.OperationMethod<
+export const detectionsList: API.OperationMethod<
   DetectionsListRequest,
   DetectionsListResponse,
-  CloudflareOpError,
+  DetectionsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DetectionsListRequest,
@@ -315,11 +351,12 @@ export const DetectionsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DetectionsUpdateError = CloudflareOpError;
 /** Update user-defined detection pattern for Leaked Credential Checks. */
-export const DetectionsUpdate: API.OperationMethod<
+export const detectionsUpdate: API.OperationMethod<
   DetectionsUpdateRequest,
   DetectionsUpdateResponse,
-  CloudflareOpError,
+  DetectionsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DetectionsUpdateRequest,
@@ -328,11 +365,12 @@ export const DetectionsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Retrieves the current status of Leaked Credential Checks. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,

@@ -10,11 +10,11 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface AuthorsListRequest {
-  account_id: string;
+  accountId: string;
 }
 export const AuthorsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -32,6 +32,7 @@ export const AuthorsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AuthorsListResultList>;
 
 export interface AuthorsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AuthorsListResultList;
 }
 export const AuthorsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -43,13 +44,13 @@ export const AuthorsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthorsListResponse>;
 
 export interface FinetunesAssetsCreateRequest {
-  account_id: string;
-  finetune_id: string;
+  accountId: string;
+  finetuneId: string;
 }
 export const FinetunesAssetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    finetune_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    finetuneId: S.String.pipe(T.Label("finetune_id")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -69,7 +70,7 @@ export const FinetunesAssetsCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FinetunesAssetsCreateResponse>;
 
 export interface FinetunesCreateRequest {
-  account_id: string;
+  accountId: string;
   model: string;
   name: string;
   description?: string;
@@ -77,7 +78,7 @@ export interface FinetunesCreateRequest {
 }
 export const FinetunesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     model: S.String,
     name: S.String,
     description: S.optional(S.String),
@@ -96,9 +97,9 @@ export const FinetunesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface FinetunesCreateResponse {
   id: string;
-  created_at: string;
+  createdAt: string;
   model: string;
-  modified_at: string;
+  modifiedAt: string;
   name: string;
   public: boolean;
   description?: string;
@@ -106,9 +107,9 @@ export interface FinetunesCreateResponse {
 export const FinetunesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     model: S.String,
-    modified_at: S.String,
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     public: S.Boolean,
     description: S.optional(S.String),
@@ -118,11 +119,11 @@ export const FinetunesCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FinetunesCreateResponse>;
 
 export interface FinetunesListRequest {
-  account_id: string;
+  accountId: string;
 }
 export const FinetunesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -137,18 +138,18 @@ export const FinetunesListRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface FinetunesListResponse {
   id: string;
-  created_at: string;
+  createdAt: string;
   model: string;
-  modified_at: string;
+  modifiedAt: string;
   name: string;
   description?: string;
 }
 export const FinetunesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     model: S.String,
-    modified_at: S.String,
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     description: S.optional(S.String),
   }),
@@ -157,14 +158,17 @@ export const FinetunesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FinetunesListResponse>;
 
 export interface FinetunesPublicListRequest {
-  account_id: string;
+  accountId: string;
+  /** Pagination Limit */
   limit?: number;
+  /** Pagination Offset */
   offset?: number;
+  /** Order By Column Name */
   orderBy?: string;
 }
 export const FinetunesPublicListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -181,9 +185,9 @@ export const FinetunesPublicListRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface FinetunesPublicListResultItem {
   id: string;
-  created_at: string;
+  createdAt: string;
   model: string;
-  modified_at: string;
+  modifiedAt: string;
   name: string;
   public: boolean;
   description?: string;
@@ -191,9 +195,9 @@ export interface FinetunesPublicListResultItem {
 export const FinetunesPublicListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     model: S.String,
-    modified_at: S.String,
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     public: S.Boolean,
     description: S.optional(S.String),
@@ -208,6 +212,7 @@ export const FinetunesPublicListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FinetunesPublicListResultList>;
 
 export interface FinetunesPublicListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: FinetunesPublicListResultList;
 }
 export const FinetunesPublicListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -222,26 +227,35 @@ export type ModelsListRequestFormat = "openrouter" | (string & {});
 export const ModelsListRequestFormat = /*@__PURE__*/ S.String;
 
 export interface ModelsListRequest {
-  account_id: string;
+  accountId: string;
+  /** Filter by Author */
   author?: string;
+  /** If set, return models in the requested marketplace format instead of the default response. */
   format?: ModelsListRequestFormat;
-  hide_experimental?: boolean;
-  include_deprecated?: boolean;
+  /** Filter to hide experimental models */
+  hideExperimental?: boolean;
+  /** If true, include models whose planned_deprecation_date is in the past — but only within a three-month grace window after that date. Models whose planned_deprecation_date is more than three months in the past remain hidden regardless of this flag. Future planned-deprecation dates are always included regardless of this flag. Defaults to false, preserving the existing behavior of hiding all past-dated deprecations. */
+  includeDeprecated?: boolean;
   page?: number;
-  per_page?: number;
+  perPage?: number;
+  /** Search */
   search?: string;
+  /** Filter by Source Id */
   source?: number;
+  /** Filter by Task Name */
   task?: string;
 }
 export const ModelsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     author: S.optional(S.String.pipe(T.Query())),
     format: S.optional(ModelsListRequestFormat.pipe(T.Query())),
-    hide_experimental: S.optional(S.Boolean.pipe(T.Query())),
-    include_deprecated: S.optional(S.Boolean.pipe(T.Query())),
+    hideExperimental: S.optional(S.Boolean.pipe(T.Query("hide_experimental"))),
+    includeDeprecated: S.optional(
+      S.Boolean.pipe(T.Query("include_deprecated")),
+    ),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
     source: S.optional(S.Number.pipe(T.Query())),
     task: S.optional(S.String.pipe(T.Query())),
@@ -258,27 +272,29 @@ export const ModelsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ModelsListResponse {
-  object___errors__messages__result__success__: unknown;
-  Data_object___data__: unknown;
+  objectErrorsMessagesResultSuccess__: unknown;
+  /** Marketplace-format response. See https://openrouter.ai/docs/guides/get-started/for-providers */
+  DataObjectData__: unknown;
 }
 export const ModelsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    object___errors__messages__result__success__: S.Unknown.pipe(
+    objectErrorsMessagesResultSuccess__: S.Unknown.pipe(
       T.Body("object { errors, messages, result, success }"),
     ),
-    Data_object___data__: S.Unknown.pipe(T.Body("Data object { data }")),
+    DataObjectData__: S.Unknown.pipe(T.Body("Data object { data }")),
   }),
 ).annotate({
   identifier: "ModelsListResponse",
 }) as any as S.Schema<ModelsListResponse>;
 
 export interface ModelsSchemaGetRequest {
-  account_id: string;
+  accountId: string;
+  /** Model Name */
   model: string;
 }
 export const ModelsSchemaGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     model: S.String.pipe(T.Query()),
   }).pipe(
     T.Http({
@@ -336,93 +352,90 @@ export const ModelsSchemaGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModelsSchemaGetResponse>;
 
 export interface RunRequestBody {
-  TextClassification_object___text__: unknown;
-  TextToImage_object___prompt__guidance__height__8_more__: unknown;
-  TextToSpeech_object___prompt__lang__: unknown;
-  TextEmbeddings_object___text__: unknown;
-  AutomaticSpeechRecognition_object___audio__source_lang__target_lang__: unknown;
-  ImageClassification_object___image__: unknown;
-  ObjectDetection_object___image__: unknown;
-  Prompt_object___prompt__frequency_penalty__lora__10_more__: unknown;
-  TextGeneration_object___messages__frequency_penalty__functions__11_more__: unknown;
-  Translation_object___target_lang__text__source_lang__: unknown;
-  Summarization_object___input_text__max_length__: unknown;
-  ImageToText_object___image__frequency_penalty__max_tokens__8_more__: unknown;
-  object___image__prompt__frequency_penalty__8_more__: unknown;
-  ImageTextToText_object___image__messages__frequency_penalty__8_more__: unknown;
-  MultimodalEmbeddings_object___image__text__: unknown;
+  TextClassificationObjectText__: unknown;
+  TextToImageObjectPromptGuidanceHeight8More__: unknown;
+  TextToSpeechObjectPromptLang__: unknown;
+  TextEmbeddingsObjectText__: unknown;
+  AutomaticSpeechRecognitionObjectAudioSourceLangTargetLang__: unknown;
+  ImageClassificationObjectImage__: unknown;
+  ObjectDetectionObjectImage__: unknown;
+  PromptObjectPromptFrequencyPenaltyLora10More__: unknown;
+  TextGenerationObjectMessagesFrequencyPenaltyFunctions11More__: unknown;
+  TranslationObjectTargetLangTextSourceLang__: unknown;
+  SummarizationObjectInputTextMaxLength__: unknown;
+  ImageToTextObjectImageFrequencyPenaltyMaxTokens8More__: unknown;
+  objectImagePromptFrequencyPenalty8More__: unknown;
+  ImageTextToTextObjectImageMessagesFrequencyPenalty8More__: unknown;
+  MultimodalEmbeddingsObjectImageText__: unknown;
 }
 export const RunRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    TextClassification_object___text__: S.Unknown.pipe(
+    TextClassificationObjectText__: S.Unknown.pipe(
       T.Body("TextClassification object { text }"),
     ),
-    TextToImage_object___prompt__guidance__height__8_more__: S.Unknown.pipe(
+    TextToImageObjectPromptGuidanceHeight8More__: S.Unknown.pipe(
       T.Body("TextToImage object { prompt, guidance, height, 8 more }"),
     ),
-    TextToSpeech_object___prompt__lang__: S.Unknown.pipe(
+    TextToSpeechObjectPromptLang__: S.Unknown.pipe(
       T.Body("TextToSpeech object { prompt, lang }"),
     ),
-    TextEmbeddings_object___text__: S.Unknown.pipe(
+    TextEmbeddingsObjectText__: S.Unknown.pipe(
       T.Body("TextEmbeddings object { text }"),
     ),
-    AutomaticSpeechRecognition_object___audio__source_lang__target_lang__:
-      S.Unknown.pipe(
-        T.Body(
-          "AutomaticSpeechRecognition object { audio, source_lang, target_lang }",
-        ),
+    AutomaticSpeechRecognitionObjectAudioSourceLangTargetLang__: S.Unknown.pipe(
+      T.Body(
+        "AutomaticSpeechRecognition object { audio, source_lang, target_lang }",
       ),
-    ImageClassification_object___image__: S.Unknown.pipe(
+    ),
+    ImageClassificationObjectImage__: S.Unknown.pipe(
       T.Body("ImageClassification object { image }"),
     ),
-    ObjectDetection_object___image__: S.Unknown.pipe(
+    ObjectDetectionObjectImage__: S.Unknown.pipe(
       T.Body("ObjectDetection object { image }"),
     ),
-    Prompt_object___prompt__frequency_penalty__lora__10_more__: S.Unknown.pipe(
+    PromptObjectPromptFrequencyPenaltyLora10More__: S.Unknown.pipe(
       T.Body("Prompt object { prompt, frequency_penalty, lora, 10 more }"),
     ),
-    TextGeneration_object___messages__frequency_penalty__functions__11_more__:
+    TextGenerationObjectMessagesFrequencyPenaltyFunctions11More__:
       S.Unknown.pipe(
         T.Body(
           "TextGeneration object { messages, frequency_penalty, functions, 11 more }",
         ),
       ),
-    Translation_object___target_lang__text__source_lang__: S.Unknown.pipe(
+    TranslationObjectTargetLangTextSourceLang__: S.Unknown.pipe(
       T.Body("Translation object { target_lang, text, source_lang }"),
     ),
-    Summarization_object___input_text__max_length__: S.Unknown.pipe(
+    SummarizationObjectInputTextMaxLength__: S.Unknown.pipe(
       T.Body("Summarization object { input_text, max_length }"),
     ),
-    ImageToText_object___image__frequency_penalty__max_tokens__8_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "ImageToText object { image, frequency_penalty, max_tokens, 8 more }",
-        ),
+    ImageToTextObjectImageFrequencyPenaltyMaxTokens8More__: S.Unknown.pipe(
+      T.Body(
+        "ImageToText object { image, frequency_penalty, max_tokens, 8 more }",
       ),
-    object___image__prompt__frequency_penalty__8_more__: S.Unknown.pipe(
+    ),
+    objectImagePromptFrequencyPenalty8More__: S.Unknown.pipe(
       T.Body("object { image, prompt, frequency_penalty, 8 more }"),
     ),
-    ImageTextToText_object___image__messages__frequency_penalty__8_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "ImageTextToText object { image, messages, frequency_penalty, 8 more }",
-        ),
+    ImageTextToTextObjectImageMessagesFrequencyPenalty8More__: S.Unknown.pipe(
+      T.Body(
+        "ImageTextToText object { image, messages, frequency_penalty, 8 more }",
       ),
-    MultimodalEmbeddings_object___image__text__: S.Unknown.pipe(
+    ),
+    MultimodalEmbeddingsObjectImageText__: S.Unknown.pipe(
       T.Body("MultimodalEmbeddings object { image, text }"),
     ),
   }),
 ).annotate({ identifier: "RunRequestBody" }) as any as S.Schema<RunRequestBody>;
 
 export interface RunRequest {
-  account_id: string;
-  model_name: string;
+  accountId: string;
+  modelName: string;
   body?: RunRequestBody;
 }
 export const RunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    model_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    modelName: S.String.pipe(T.Label("model_name")),
     body: S.optional(RunRequestBody),
   }).pipe(
     T.Http({
@@ -434,7 +447,9 @@ export const RunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunRequest" }) as any as S.Schema<RunRequest>;
 
 export interface RunResultItemTextClassificationItem {
+  /** The classification label assigned to the text (e.g., 'POSITIVE' or 'NEGATIVE') */
   label?: string;
+  /** Confidence score indicating the likelihood that the text belongs to the specified label */
   score?: number;
 }
 export const RunResultItemTextClassificationItem = /*@__PURE__*/ S.suspend(() =>
@@ -453,7 +468,9 @@ export const RunResultItemTextClassificationList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RunResultItemTextClassificationList>;
 
 export interface RunResultItemImageClassificationItem {
+  /** The predicted category or class for the input image based on analysis */
   label?: string;
+  /** A confidence value, between 0 and 1, indicating how certain the model is about the predicted label */
   score?: number;
 }
 export const RunResultItemImageClassificationItem = /*@__PURE__*/ S.suspend(
@@ -473,9 +490,13 @@ export const RunResultItemImageClassificationList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RunResultItemImageClassificationList>;
 
 export interface RunResultItemObjectDetectionItemBox {
+  /** The x-coordinate of the bottom-right corner of the bounding box */
   xmax?: number;
+  /** The x-coordinate of the top-left corner of the bounding box */
   xmin?: number;
+  /** The y-coordinate of the bottom-right corner of the bounding box */
   ymax?: number;
+  /** The y-coordinate of the top-left corner of the bounding box */
   ymin?: number;
 }
 export const RunResultItemObjectDetectionItemBox = /*@__PURE__*/ S.suspend(() =>
@@ -490,8 +511,11 @@ export const RunResultItemObjectDetectionItemBox = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunResultItemObjectDetectionItemBox>;
 
 export interface RunResultItemObjectDetectionItem {
+  /** Coordinates defining the bounding box around the detected object */
   box?: RunResultItemObjectDetectionItemBox;
+  /** The class label or name of the detected object */
   label?: string;
+  /** Confidence score indicating the likelihood that the detection is correct */
   score?: number;
 }
 export const RunResultItemObjectDetectionItem = /*@__PURE__*/ S.suspend(() =>
@@ -511,56 +535,59 @@ export const RunResultItemObjectDetectionList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RunResultItemObjectDetectionList>;
 
 export interface RunResultItem {
+  /** An array of classification results for the input text */
   TextClassification: RunResultItemTextClassificationList;
+  /** The generated image in PNG format */
   TextToImage: string;
-  Audio_object___audio__: unknown;
+  AudioObjectAudio__: unknown;
+  /** The generated audio in MP3 format */
   string: unknown;
-  TextEmbeddings_object___data__shape__: unknown;
-  AutomaticSpeechRecognition_object___text__vtt__word_count__words__: unknown;
+  TextEmbeddingsObjectDataShape__: unknown;
+  AutomaticSpeechRecognitionObjectTextVttWordCountWords__: unknown;
   ImageClassification: RunResultItemImageClassificationList;
+  /** An array of detected objects within the input image */
   ObjectDetection: RunResultItemObjectDetectionList;
-  object___response__tool_calls__usage__: unknown;
-  string_2: unknown;
-  Translation_object___translated_text__: unknown;
-  Summarization_object___summary__: unknown;
-  ImageToText_object___description__: unknown;
-  ImageTextToText_object___description__: unknown;
-  MultimodalEmbeddings_object___data__shape__: unknown;
+  objectResponseToolCallsUsage__: unknown;
+  string2: unknown;
+  TranslationObjectTranslatedText__: unknown;
+  SummarizationObjectSummary__: unknown;
+  ImageToTextObjectDescription__: unknown;
+  ImageTextToTextObjectDescription__: unknown;
+  MultimodalEmbeddingsObjectDataShape__: unknown;
 }
 export const RunResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TextClassification: RunResultItemTextClassificationList,
     TextToImage: S.String,
-    Audio_object___audio__: S.Unknown.pipe(T.Body("Audio object { audio }")),
+    AudioObjectAudio__: S.Unknown.pipe(T.Body("Audio object { audio }")),
     string: S.Unknown,
-    TextEmbeddings_object___data__shape__: S.Unknown.pipe(
+    TextEmbeddingsObjectDataShape__: S.Unknown.pipe(
       T.Body("TextEmbeddings object { data, shape }"),
     ),
-    AutomaticSpeechRecognition_object___text__vtt__word_count__words__:
-      S.Unknown.pipe(
-        T.Body(
-          "AutomaticSpeechRecognition object { text, vtt, word_count, words }",
-        ),
+    AutomaticSpeechRecognitionObjectTextVttWordCountWords__: S.Unknown.pipe(
+      T.Body(
+        "AutomaticSpeechRecognition object { text, vtt, word_count, words }",
       ),
+    ),
     ImageClassification: RunResultItemImageClassificationList,
     ObjectDetection: RunResultItemObjectDetectionList,
-    object___response__tool_calls__usage__: S.Unknown.pipe(
+    objectResponseToolCallsUsage__: S.Unknown.pipe(
       T.Body("object { response, tool_calls, usage }"),
     ),
-    string_2: S.Unknown.pipe(T.Body("string")),
-    Translation_object___translated_text__: S.Unknown.pipe(
+    string2: S.Unknown.pipe(T.Body("string")),
+    TranslationObjectTranslatedText__: S.Unknown.pipe(
       T.Body("Translation object { translated_text }"),
     ),
-    Summarization_object___summary__: S.Unknown.pipe(
+    SummarizationObjectSummary__: S.Unknown.pipe(
       T.Body("Summarization object { summary }"),
     ),
-    ImageToText_object___description__: S.Unknown.pipe(
+    ImageToTextObjectDescription__: S.Unknown.pipe(
       T.Body("ImageToText object { description }"),
     ),
-    ImageTextToText_object___description__: S.Unknown.pipe(
+    ImageTextToTextObjectDescription__: S.Unknown.pipe(
       T.Body("ImageTextToText object { description }"),
     ),
-    MultimodalEmbeddings_object___data__shape__: S.Unknown.pipe(
+    MultimodalEmbeddingsObjectDataShape__: S.Unknown.pipe(
       T.Body("MultimodalEmbeddings object { data, shape }"),
     ),
   }),
@@ -572,6 +599,7 @@ export const RunResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RunResultList>;
 
 export interface RunResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RunResultList;
 }
 export const RunResponse = /*@__PURE__*/ S.suspend(() =>
@@ -581,11 +609,11 @@ export const RunResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunResponse" }) as any as S.Schema<RunResponse>;
 
 export interface TasksListRequest {
-  account_id: string;
+  accountId: string;
 }
 export const TasksListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -603,6 +631,7 @@ export const TasksListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<TasksListResultList>;
 
 export interface TasksListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: TasksListResultList;
 }
 export const TasksListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -614,11 +643,11 @@ export const TasksListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksListResponse>;
 
 export interface ToMarkdownSupportedRequest {
-  account_id: string;
+  accountId: string;
 }
 export const ToMarkdownSupportedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -649,6 +678,7 @@ export const ToMarkdownSupportedResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ToMarkdownSupportedResultList>;
 
 export interface ToMarkdownSupportedResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ToMarkdownSupportedResultList;
 }
 export const ToMarkdownSupportedResponse = /*@__PURE__*/ S.suspend(() =>
@@ -660,11 +690,11 @@ export const ToMarkdownSupportedResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ToMarkdownSupportedResponse>;
 
 export interface ToMarkdownTransformRequest {
-  account_id: string;
+  accountId: string;
 }
 export const ToMarkdownTransformRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -701,6 +731,7 @@ export const ToMarkdownTransformResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ToMarkdownTransformResultList>;
 
 export interface ToMarkdownTransformResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ToMarkdownTransformResultList;
 }
 export const ToMarkdownTransformResponse = /*@__PURE__*/ S.suspend(() =>
@@ -711,11 +742,12 @@ export const ToMarkdownTransformResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ToMarkdownTransformResponse",
 }) as any as S.Schema<ToMarkdownTransformResponse>;
 
+export type AuthorsListError = CloudflareOpError;
 /** Searches Workers AI models by author or organization name. */
-export const AuthorsList: API.OperationMethod<
+export const authorsList: API.OperationMethod<
   AuthorsListRequest,
   AuthorsListResponse,
-  CloudflareOpError,
+  AuthorsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AuthorsListRequest,
@@ -724,11 +756,12 @@ export const AuthorsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type FinetunesAssetsCreateError = CloudflareOpError;
 /** Uploads training data assets for a Workers AI fine-tuning job. */
-export const FinetunesAssetsCreate: API.OperationMethod<
+export const finetunesAssetsCreate: API.OperationMethod<
   FinetunesAssetsCreateRequest,
   FinetunesAssetsCreateResponse,
-  CloudflareOpError,
+  FinetunesAssetsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: FinetunesAssetsCreateRequest,
@@ -737,11 +770,12 @@ export const FinetunesAssetsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type FinetunesCreateError = CloudflareOpError;
 /** Creates a new fine-tuning job for a Workers AI model using custom training data. */
-export const FinetunesCreate: API.OperationMethod<
+export const finetunesCreate: API.OperationMethod<
   FinetunesCreateRequest,
   FinetunesCreateResponse,
-  CloudflareOpError,
+  FinetunesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: FinetunesCreateRequest,
@@ -750,11 +784,12 @@ export const FinetunesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type FinetunesListError = CloudflareOpError;
 /** Lists all fine-tuning jobs created by the account, including status and metrics. */
-export const FinetunesList: API.OperationMethod<
+export const finetunesList: API.OperationMethod<
   FinetunesListRequest,
   FinetunesListResponse,
-  CloudflareOpError,
+  FinetunesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: FinetunesListRequest,
@@ -763,11 +798,12 @@ export const FinetunesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type FinetunesPublicListError = CloudflareOpError;
 /** Lists publicly available fine-tuned models that can be used with Workers AI. */
-export const FinetunesPublicList: API.OperationMethod<
+export const finetunesPublicList: API.OperationMethod<
   FinetunesPublicListRequest,
   FinetunesPublicListResponse,
-  CloudflareOpError,
+  FinetunesPublicListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: FinetunesPublicListRequest,
@@ -776,11 +812,12 @@ export const FinetunesPublicList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ModelsListError = CloudflareOpError;
 /** Searches Workers AI models by name or description. */
-export const ModelsList: API.OperationMethod<
+export const modelsList: API.OperationMethod<
   ModelsListRequest,
   ModelsListResponse,
-  CloudflareOpError,
+  ModelsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ModelsListRequest,
@@ -789,11 +826,12 @@ export const ModelsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ModelsSchemaGetError = CloudflareOpError;
 /** Retrieves the input and output JSON schema definition for a Workers AI model. */
-export const ModelsSchemaGet: API.OperationMethod<
+export const modelsSchemaGet: API.OperationMethod<
   ModelsSchemaGetRequest,
   ModelsSchemaGetResponse,
-  CloudflareOpError,
+  ModelsSchemaGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ModelsSchemaGetRequest,
@@ -802,11 +840,12 @@ export const ModelsSchemaGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RunError = CloudflareOpError;
 /** This endpoint provides users with the capability to run specific AI models on-demand. By submitting the required input data, users can receive real-time predictions or results generated by the chosen AI model. The endpoint supports various AI model types, ensuring flexibility and adaptability for diverse use cases. Model specific inputs available in [Cloudflare Docs](https://developers.cloudflare.com/workers-ai/models/). */
-export const Run: API.OperationMethod<
+export const run: API.OperationMethod<
   RunRequest,
   RunResponse,
-  CloudflareOpError,
+  RunError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RunRequest,
@@ -815,11 +854,12 @@ export const Run: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type TasksListError = CloudflareOpError;
 /** Searches Workers AI models by task type (e.g., text-generation, embeddings). */
-export const TasksList: API.OperationMethod<
+export const tasksList: API.OperationMethod<
   TasksListRequest,
   TasksListResponse,
-  CloudflareOpError,
+  TasksListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: TasksListRequest,
@@ -828,11 +868,12 @@ export const TasksList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ToMarkdownSupportedError = CloudflareOpError;
 /** Lists all file formats supported for conversion to Markdown. */
-export const ToMarkdownSupported: API.OperationMethod<
+export const toMarkdownSupported: API.OperationMethod<
   ToMarkdownSupportedRequest,
   ToMarkdownSupportedResponse,
-  CloudflareOpError,
+  ToMarkdownSupportedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ToMarkdownSupportedRequest,
@@ -841,11 +882,12 @@ export const ToMarkdownSupported: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ToMarkdownTransformError = CloudflareOpError;
 /** Converts uploaded files into Markdown format using Workers AI. */
-export const ToMarkdownTransform: API.OperationMethod<
+export const toMarkdownTransform: API.OperationMethod<
   ToMarkdownTransformRequest,
   ToMarkdownTransformResponse,
-  CloudflareOpError,
+  ToMarkdownTransformError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ToMarkdownTransformRequest,

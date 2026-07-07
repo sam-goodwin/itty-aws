@@ -88,6 +88,12 @@ export class Protocol extends Context.Service<
     readonly decode: (args: {
       readonly response: HttpClientResponse.HttpClientResponse;
       readonly outputAst: AST.AST;
+      /**
+       * The operation's declared error classes (from `OperationConfig.errors`).
+       * Protocols use these to surface wire failures as the operation's typed
+       * errors — e.g. by consulting matcher metadata stamped on the class.
+       */
+      readonly errors: ReadonlyArray<ApiErrorClass>;
     }) => Effect.Effect<unknown>;
   }
 >()("Protocol") {}
@@ -219,7 +225,11 @@ export function make<
           const client = yield* HttpClient.HttpClient;
           const request = yield* protocol.encode({ input, inputAst });
           const response = yield* client.execute(request);
-          return yield* protocol.decode({ response, outputAst });
+          return yield* protocol.decode({
+            response,
+            outputAst,
+            errors: cfg.errors ?? [],
+          });
         }).pipe(Effect.provideContext(protocolCtx)),
       );
     })) as any;

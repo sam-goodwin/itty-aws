@@ -1928,19 +1928,69 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cache#OriginCloudRegionsGetResponseVendor": {
+      "type": "enum",
+      "members": {
+        "AWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws"
+          }
+        },
+        "AZURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "azure"
+          }
+        },
+        "GCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcp"
+          }
+        },
+        "OCI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oci"
+          }
+        }
+      }
+    },
     "com.cloudflare.cache#OriginCloudRegionsGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "origin_ip": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "The origin IP address (IPv4 or IPv6). Normalized to canonical form (RFC 5952 for IPv6).",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud vendor region identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "vendor": {
+          "target": "com.cloudflare.cache#OriginCloudRegionsGetResponseVendor",
+          "traits": {
+            "smithy.api#documentation": "Cloud vendor hosting the origin.",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time this mapping was last modified."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.cache#OriginCloudRegionsGet": {
@@ -2140,10 +2190,71 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cache#OriginCloudRegionsListResultItemVendor": {
+      "type": "enum",
+      "members": {
+        "AWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws"
+          }
+        },
+        "AZURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "azure"
+          }
+        },
+        "GCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcp"
+          }
+        },
+        "OCI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oci"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cache#OriginCloudRegionsListResultItem": {
+      "type": "structure",
+      "members": {
+        "origin_ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The origin IP address (IPv4 or IPv6). Normalized to canonical form (RFC 5952 for IPv6).",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud vendor region identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "vendor": {
+          "target": "com.cloudflare.cache#OriginCloudRegionsListResultItemVendor",
+          "traits": {
+            "smithy.api#documentation": "Cloud vendor hosting the origin.",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time this mapping was last modified."
+          }
+        }
+      }
+    },
     "com.cloudflare.cache#OriginCloudRegionsListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.cache#OriginCloudRegionsListResultItem"
       }
     },
     "com.cloudflare.cache#OriginCloudRegionsListResponse": {
@@ -2532,19 +2643,69 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cache#OriginCloudRegionsUpdateResponseVendor": {
+      "type": "enum",
+      "members": {
+        "AWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws"
+          }
+        },
+        "AZURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "azure"
+          }
+        },
+        "GCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcp"
+          }
+        },
+        "OCI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oci"
+          }
+        }
+      }
+    },
     "com.cloudflare.cache#OriginCloudRegionsUpdateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "origin_ip": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "The origin IP address (IPv4 or IPv6). Normalized to canonical form (RFC 5952 for IPv6).",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud vendor region identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "vendor": {
+          "target": "com.cloudflare.cache#OriginCloudRegionsUpdateResponseVendor",
+          "traits": {
+            "smithy.api#documentation": "Cloud vendor hosting the origin.",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time this mapping was last modified."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.cache#OriginCloudRegionsUpdate": {

@@ -122,19 +122,106 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.r2#BucketsCreateResponseJurisdiction": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "default"
+          }
+        },
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        },
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.r2#BucketsCreateResponseLocation": {
+      "type": "enum",
+      "members": {
+        "APAC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "apac"
+          }
+        },
+        "EEUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eeur"
+          }
+        },
+        "ENAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enam"
+          }
+        }
+      }
+    },
+    "com.cloudflare.r2#BucketsCreateResponseStorageClass": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "INFREQUENTACCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InfrequentAccess"
+          }
+        }
+      }
+    },
     "com.cloudflare.r2#BucketsCreateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "creation_date": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Creation timestamp."
+          }
+        },
+        "jurisdiction": {
+          "target": "com.cloudflare.r2#BucketsCreateResponseJurisdiction",
+          "traits": {
+            "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored."
+          }
+        },
+        "location": {
+          "target": "com.cloudflare.r2#BucketsCreateResponseLocation",
+          "traits": {
+            "smithy.api#documentation": "Location of the bucket."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the bucket."
+          }
+        },
+        "storage_class": {
+          "target": "com.cloudflare.r2#BucketsCreateResponseStorageClass",
+          "traits": {
+            "smithy.api#documentation": "Storage class for newly uploaded objects, unless specified otherwise."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.r2#BucketsCreate": {
@@ -320,19 +407,106 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.r2#BucketsEditResponseJurisdiction": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "default"
+          }
+        },
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        },
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.r2#BucketsEditResponseLocation": {
+      "type": "enum",
+      "members": {
+        "APAC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "apac"
+          }
+        },
+        "EEUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eeur"
+          }
+        },
+        "ENAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enam"
+          }
+        }
+      }
+    },
+    "com.cloudflare.r2#BucketsEditResponseStorageClass": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "INFREQUENTACCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InfrequentAccess"
+          }
+        }
+      }
+    },
     "com.cloudflare.r2#BucketsEditResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "creation_date": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Creation timestamp."
+          }
+        },
+        "jurisdiction": {
+          "target": "com.cloudflare.r2#BucketsEditResponseJurisdiction",
+          "traits": {
+            "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored."
+          }
+        },
+        "location": {
+          "target": "com.cloudflare.r2#BucketsEditResponseLocation",
+          "traits": {
+            "smithy.api#documentation": "Location of the bucket."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the bucket."
+          }
+        },
+        "storage_class": {
+          "target": "com.cloudflare.r2#BucketsEditResponseStorageClass",
+          "traits": {
+            "smithy.api#documentation": "Storage class for newly uploaded objects, unless specified otherwise."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.r2#BucketsEdit": {
@@ -406,19 +580,106 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.r2#BucketsGetResponseJurisdiction": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "default"
+          }
+        },
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        },
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.r2#BucketsGetResponseLocation": {
+      "type": "enum",
+      "members": {
+        "APAC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "apac"
+          }
+        },
+        "EEUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eeur"
+          }
+        },
+        "ENAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enam"
+          }
+        }
+      }
+    },
+    "com.cloudflare.r2#BucketsGetResponseStorageClass": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "INFREQUENTACCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InfrequentAccess"
+          }
+        }
+      }
+    },
     "com.cloudflare.r2#BucketsGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "creation_date": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Creation timestamp."
+          }
+        },
+        "jurisdiction": {
+          "target": "com.cloudflare.r2#BucketsGetResponseJurisdiction",
+          "traits": {
+            "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored."
+          }
+        },
+        "location": {
+          "target": "com.cloudflare.r2#BucketsGetResponseLocation",
+          "traits": {
+            "smithy.api#documentation": "Location of the bucket."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the bucket."
+          }
+        },
+        "storage_class": {
+          "target": "com.cloudflare.r2#BucketsGetResponseStorageClass",
+          "traits": {
+            "smithy.api#documentation": "Storage class for newly uploaded objects, unless specified otherwise."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.r2#BucketsGet": {
@@ -555,10 +816,108 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.r2#BucketsListResponseBucketsItemJurisdiction": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "default"
+          }
+        },
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        },
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.r2#BucketsListResponseBucketsItemLocation": {
+      "type": "enum",
+      "members": {
+        "APAC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "apac"
+          }
+        },
+        "EEUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eeur"
+          }
+        },
+        "ENAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enam"
+          }
+        }
+      }
+    },
+    "com.cloudflare.r2#BucketsListResponseBucketsItemStorageClass": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "INFREQUENTACCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InfrequentAccess"
+          }
+        }
+      }
+    },
+    "com.cloudflare.r2#BucketsListResponseBucketsItem": {
+      "type": "structure",
+      "members": {
+        "creation_date": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Creation timestamp."
+          }
+        },
+        "jurisdiction": {
+          "target": "com.cloudflare.r2#BucketsListResponseBucketsItemJurisdiction",
+          "traits": {
+            "smithy.api#documentation": "Jurisdiction where objects in this bucket are guaranteed to be stored."
+          }
+        },
+        "location": {
+          "target": "com.cloudflare.r2#BucketsListResponseBucketsItemLocation",
+          "traits": {
+            "smithy.api#documentation": "Location of the bucket."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the bucket."
+          }
+        },
+        "storage_class": {
+          "target": "com.cloudflare.r2#BucketsListResponseBucketsItemStorageClass",
+          "traits": {
+            "smithy.api#documentation": "Storage class for newly uploaded objects, unless specified otherwise."
+          }
+        }
+      }
+    },
     "com.cloudflare.r2#BucketsListResponseBucketsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.r2#BucketsListResponseBucketsItem"
       }
     },
     "com.cloudflare.r2#BucketsListResponse": {
@@ -4689,19 +5048,103 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.r2#BucketsSippyGetResponseDestination": {
+      "type": "structure",
+      "members": {
+        "accessKeyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Cloudflare API token used when writing objects to this"
+          }
+        },
+        "account": {
+          "target": "smithy.api#String"
+        },
+        "bucket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the bucket on the provider."
+          }
+        },
+        "provider": {
+          "target": "smithy.api#Document"
+        }
+      }
+    },
+    "com.cloudflare.r2#BucketsSippyGetResponseSourceProvider": {
+      "type": "enum",
+      "members": {
+        "AWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws"
+          }
+        },
+        "GCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcs"
+          }
+        },
+        "S3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "s3"
+          }
+        }
+      }
+    },
+    "com.cloudflare.r2#BucketsSippyGetResponseSource": {
+      "type": "structure",
+      "members": {
+        "bucket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the bucket on the provider (AWS, GCS only)."
+          }
+        },
+        "bucketUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "S3-compatible URL (Generic S3-compatible providers only)."
+          }
+        },
+        "provider": {
+          "target": "com.cloudflare.r2#BucketsSippyGetResponseSourceProvider"
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Region where the bucket resides (AWS only)."
+          }
+        }
+      }
+    },
     "com.cloudflare.r2#BucketsSippyGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "destination": {
+          "target": "com.cloudflare.r2#BucketsSippyGetResponseDestination",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Details about the configured destination bucket."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "State of Sippy for this bucket."
+          }
+        },
+        "source": {
+          "target": "com.cloudflare.r2#BucketsSippyGetResponseSource",
+          "traits": {
+            "smithy.api#documentation": "Details about the configured source bucket."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.r2#BucketsSippyGet": {
@@ -4808,19 +5251,103 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.r2#BucketsSippyUpdateResponseDestination": {
+      "type": "structure",
+      "members": {
+        "accessKeyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Cloudflare API token used when writing objects to this"
+          }
+        },
+        "account": {
+          "target": "smithy.api#String"
+        },
+        "bucket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the bucket on the provider."
+          }
+        },
+        "provider": {
+          "target": "smithy.api#Document"
+        }
+      }
+    },
+    "com.cloudflare.r2#BucketsSippyUpdateResponseSourceProvider": {
+      "type": "enum",
+      "members": {
+        "AWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws"
+          }
+        },
+        "GCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcs"
+          }
+        },
+        "S3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "s3"
+          }
+        }
+      }
+    },
+    "com.cloudflare.r2#BucketsSippyUpdateResponseSource": {
+      "type": "structure",
+      "members": {
+        "bucket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the bucket on the provider (AWS, GCS only)."
+          }
+        },
+        "bucketUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "S3-compatible URL (Generic S3-compatible providers only)."
+          }
+        },
+        "provider": {
+          "target": "com.cloudflare.r2#BucketsSippyUpdateResponseSourceProvider"
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Region where the bucket resides (AWS only)."
+          }
+        }
+      }
+    },
     "com.cloudflare.r2#BucketsSippyUpdateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "destination": {
+          "target": "com.cloudflare.r2#BucketsSippyUpdateResponseDestination",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Details about the configured destination bucket."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "State of Sippy for this bucket."
+          }
+        },
+        "source": {
+          "target": "com.cloudflare.r2#BucketsSippyUpdateResponseSource",
+          "traits": {
+            "smithy.api#documentation": "Details about the configured source bucket."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.r2#BucketsSippyUpdate": {

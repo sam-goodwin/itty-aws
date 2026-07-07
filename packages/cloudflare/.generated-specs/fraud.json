@@ -33,19 +33,141 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.fraud#GetResponseAuthenticationSettingsFailureCriteriaKind": {
+      "type": "enum",
+      "members": {
+        "STATUS_CODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "status_code"
+          }
+        }
+      }
+    },
+    "com.cloudflare.fraud#GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      }
+    },
+    "com.cloudflare.fraud#GetResponseAuthenticationSettingsFailureCriteria": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.cloudflare.fraud#GetResponseAuthenticationSettingsFailureCriteriaKind",
+          "traits": {
+            "smithy.api#documentation": "The type of criterion. Currently only `status_code` is supported.",
+            "smithy.api#required": {}
+          }
+        },
+        "status_codes": {
+          "target": "com.cloudflare.fraud#GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList",
+          "traits": {
+            "smithy.api#documentation": "HTTP status codes to match against the origin response."
+          }
+        }
+      }
+    },
+    "com.cloudflare.fraud#GetResponseAuthenticationSettingsSuccessCriteriaKind": {
+      "type": "enum",
+      "members": {
+        "STATUS_CODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "status_code"
+          }
+        }
+      }
+    },
+    "com.cloudflare.fraud#GetResponseAuthenticationSettingsSuccessCriteriaStatusCodesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      }
+    },
+    "com.cloudflare.fraud#GetResponseAuthenticationSettingsSuccessCriteria": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.cloudflare.fraud#GetResponseAuthenticationSettingsSuccessCriteriaKind",
+          "traits": {
+            "smithy.api#documentation": "The type of criterion. Currently only `status_code` is supported.",
+            "smithy.api#required": {}
+          }
+        },
+        "status_codes": {
+          "target": "com.cloudflare.fraud#GetResponseAuthenticationSettingsSuccessCriteriaStatusCodesList",
+          "traits": {
+            "smithy.api#documentation": "HTTP status codes to match against the origin response."
+          }
+        }
+      }
+    },
+    "com.cloudflare.fraud#GetResponseAuthenticationSettings": {
+      "type": "structure",
+      "members": {
+        "failure_criteria": {
+          "target": "com.cloudflare.fraud#GetResponseAuthenticationSettingsFailureCriteria",
+          "traits": {
+            "smithy.api#documentation": "Criterion for identifying failed login responses."
+          }
+        },
+        "success_criteria": {
+          "target": "com.cloudflare.fraud#GetResponseAuthenticationSettingsSuccessCriteria",
+          "traits": {
+            "smithy.api#documentation": "Criterion for identifying successful login responses."
+          }
+        }
+      }
+    },
+    "com.cloudflare.fraud#GetResponseUserProfiles": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.fraud#GetResponseUsernameExpressionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.fraud#GetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "authentication_settings": {
+          "target": "com.cloudflare.fraud#GetResponseAuthenticationSettings",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Configuration for classifying login authentication outcomes based on the origin response."
+          }
+        },
+        "user_profiles": {
+          "target": "com.cloudflare.fraud#GetResponseUserProfiles",
+          "traits": {
+            "smithy.api#documentation": "Whether Fraud User Profiles is enabled for the zone."
+          }
+        },
+        "username_expressions": {
+          "target": "com.cloudflare.fraud#GetResponseUsernameExpressionsList",
+          "traits": {
+            "smithy.api#documentation": "List of expressions to detect usernames in write HTTP requests."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.fraud#Get": {
@@ -210,19 +332,141 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.fraud#UpdateResponseAuthenticationSettingsFailureCriteriaKind": {
+      "type": "enum",
+      "members": {
+        "STATUS_CODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "status_code"
+          }
+        }
+      }
+    },
+    "com.cloudflare.fraud#UpdateResponseAuthenticationSettingsFailureCriteriaStatusCodesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      }
+    },
+    "com.cloudflare.fraud#UpdateResponseAuthenticationSettingsFailureCriteria": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.cloudflare.fraud#UpdateResponseAuthenticationSettingsFailureCriteriaKind",
+          "traits": {
+            "smithy.api#documentation": "The type of criterion. Currently only `status_code` is supported.",
+            "smithy.api#required": {}
+          }
+        },
+        "status_codes": {
+          "target": "com.cloudflare.fraud#UpdateResponseAuthenticationSettingsFailureCriteriaStatusCodesList",
+          "traits": {
+            "smithy.api#documentation": "HTTP status codes to match against the origin response."
+          }
+        }
+      }
+    },
+    "com.cloudflare.fraud#UpdateResponseAuthenticationSettingsSuccessCriteriaKind": {
+      "type": "enum",
+      "members": {
+        "STATUS_CODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "status_code"
+          }
+        }
+      }
+    },
+    "com.cloudflare.fraud#UpdateResponseAuthenticationSettingsSuccessCriteriaStatusCodesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      }
+    },
+    "com.cloudflare.fraud#UpdateResponseAuthenticationSettingsSuccessCriteria": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.cloudflare.fraud#UpdateResponseAuthenticationSettingsSuccessCriteriaKind",
+          "traits": {
+            "smithy.api#documentation": "The type of criterion. Currently only `status_code` is supported.",
+            "smithy.api#required": {}
+          }
+        },
+        "status_codes": {
+          "target": "com.cloudflare.fraud#UpdateResponseAuthenticationSettingsSuccessCriteriaStatusCodesList",
+          "traits": {
+            "smithy.api#documentation": "HTTP status codes to match against the origin response."
+          }
+        }
+      }
+    },
+    "com.cloudflare.fraud#UpdateResponseAuthenticationSettings": {
+      "type": "structure",
+      "members": {
+        "failure_criteria": {
+          "target": "com.cloudflare.fraud#UpdateResponseAuthenticationSettingsFailureCriteria",
+          "traits": {
+            "smithy.api#documentation": "Criterion for identifying failed login responses."
+          }
+        },
+        "success_criteria": {
+          "target": "com.cloudflare.fraud#UpdateResponseAuthenticationSettingsSuccessCriteria",
+          "traits": {
+            "smithy.api#documentation": "Criterion for identifying successful login responses."
+          }
+        }
+      }
+    },
+    "com.cloudflare.fraud#UpdateResponseUserProfiles": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.fraud#UpdateResponseUsernameExpressionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.fraud#UpdateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "authentication_settings": {
+          "target": "com.cloudflare.fraud#UpdateResponseAuthenticationSettings",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Configuration for classifying login authentication outcomes based on the origin response."
+          }
+        },
+        "user_profiles": {
+          "target": "com.cloudflare.fraud#UpdateResponseUserProfiles",
+          "traits": {
+            "smithy.api#documentation": "Whether Fraud User Profiles is enabled for the zone."
+          }
+        },
+        "username_expressions": {
+          "target": "com.cloudflare.fraud#UpdateResponseUsernameExpressionsList",
+          "traits": {
+            "smithy.api#documentation": "List of expressions to detect usernames in write HTTP requests."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.fraud#Update": {

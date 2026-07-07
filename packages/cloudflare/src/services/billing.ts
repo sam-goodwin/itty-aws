@@ -10,11 +10,12 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface ProfilesGetRequest {
-  account_id: string;
+  /** Identifier */
+  accountId: string;
 }
 export const ProfilesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -28,85 +29,90 @@ export const ProfilesGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ProfilesGetResponse {
+  /** Billing item identifier tag. */
   id?: string;
-  account_type?: string;
+  accountType?: string;
   address?: string;
   address2?: string;
   balance?: string;
-  card_expiry_month?: number;
-  card_expiry_year?: number;
-  card_number?: string;
+  cardExpiryMonth?: number;
+  cardExpiryYear?: number;
+  cardNumber?: string;
   city?: string;
   company?: string;
   country?: string;
-  created_on?: string;
-  device_data?: string;
-  edited_on?: string;
-  enterprise_billing_email?: string;
-  enterprise_primary_email?: string;
-  first_name?: string;
-  is_partner?: boolean;
-  last_name?: string;
-  next_bill_date?: string;
-  payment_address?: string;
-  payment_address2?: string;
-  payment_city?: string;
-  payment_country?: string;
-  payment_email?: string;
-  payment_first_name?: string;
-  payment_gateway?: string;
-  payment_last_name?: string;
-  payment_nonce?: string;
-  payment_state?: string;
-  payment_zipcode?: string;
-  primary_email?: string;
+  createdOn?: string;
+  deviceData?: string;
+  editedOn?: string;
+  enterpriseBillingEmail?: string;
+  enterprisePrimaryEmail?: string;
+  firstName?: string;
+  isPartner?: boolean;
+  lastName?: string;
+  nextBillDate?: string;
+  paymentAddress?: string;
+  paymentAddress2?: string;
+  paymentCity?: string;
+  paymentCountry?: string;
+  paymentEmail?: string;
+  paymentFirstName?: string;
+  paymentGateway?: string;
+  paymentLastName?: string;
+  paymentNonce?: string;
+  paymentState?: string;
+  paymentZipcode?: string;
+  primaryEmail?: string;
   state?: string;
-  tax_id_type?: string;
+  taxIdType?: string;
   telephone?: string;
-  use_legacy?: boolean;
-  validation_code?: string;
+  useLegacy?: boolean;
+  validationCode?: string;
   vat?: string;
   zipcode?: string;
 }
 export const ProfilesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    account_type: S.optional(S.String),
+    accountType: S.optional(S.String.pipe(T.Body("account_type"))),
     address: S.optional(S.String),
     address2: S.optional(S.String),
     balance: S.optional(S.String),
-    card_expiry_month: S.optional(S.Number),
-    card_expiry_year: S.optional(S.Number),
-    card_number: S.optional(S.String),
+    cardExpiryMonth: S.optional(S.Number.pipe(T.Body("card_expiry_month"))),
+    cardExpiryYear: S.optional(S.Number.pipe(T.Body("card_expiry_year"))),
+    cardNumber: S.optional(S.String.pipe(T.Body("card_number"))),
     city: S.optional(S.String),
     company: S.optional(S.String),
     country: S.optional(S.String),
-    created_on: S.optional(S.String),
-    device_data: S.optional(S.String),
-    edited_on: S.optional(S.String),
-    enterprise_billing_email: S.optional(S.String),
-    enterprise_primary_email: S.optional(S.String),
-    first_name: S.optional(S.String),
-    is_partner: S.optional(S.Boolean),
-    last_name: S.optional(S.String),
-    next_bill_date: S.optional(S.String),
-    payment_address: S.optional(S.String),
-    payment_address2: S.optional(S.String),
-    payment_city: S.optional(S.String),
-    payment_country: S.optional(S.String),
-    payment_email: S.optional(S.String),
-    payment_first_name: S.optional(S.String),
-    payment_gateway: S.optional(S.String),
-    payment_last_name: S.optional(S.String),
-    payment_nonce: S.optional(S.String),
-    payment_state: S.optional(S.String),
-    payment_zipcode: S.optional(S.String),
-    primary_email: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    deviceData: S.optional(S.String.pipe(T.Body("device_data"))),
+    editedOn: S.optional(S.String.pipe(T.Body("edited_on"))),
+    enterpriseBillingEmail: S.optional(
+      S.String.pipe(T.Body("enterprise_billing_email")),
+    ),
+    enterprisePrimaryEmail: S.optional(
+      S.String.pipe(T.Body("enterprise_primary_email")),
+    ),
+    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
+    isPartner: S.optional(S.Boolean.pipe(T.Body("is_partner"))),
+    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
+    nextBillDate: S.optional(S.String.pipe(T.Body("next_bill_date"))),
+    paymentAddress: S.optional(S.String.pipe(T.Body("payment_address"))),
+    paymentAddress2: S.optional(S.String.pipe(T.Body("payment_address2"))),
+    paymentCity: S.optional(S.String.pipe(T.Body("payment_city"))),
+    paymentCountry: S.optional(S.String.pipe(T.Body("payment_country"))),
+    paymentEmail: S.optional(S.String.pipe(T.Body("payment_email"))),
+    paymentFirstName: S.optional(S.String.pipe(T.Body("payment_first_name"))),
+    paymentGateway: S.optional(S.String.pipe(T.Body("payment_gateway"))),
+    paymentLastName: S.optional(S.String.pipe(T.Body("payment_last_name"))),
+    paymentNonce: S.optional(S.String.pipe(T.Body("payment_nonce"))),
+    paymentState: S.optional(S.String.pipe(T.Body("payment_state"))),
+    paymentZipcode: S.optional(S.String.pipe(T.Body("payment_zipcode"))),
+    primaryEmail: S.optional(S.String.pipe(T.Body("primary_email"))),
     state: S.optional(S.String),
-    tax_id_type: S.optional(S.String),
+    taxIdType: S.optional(S.String.pipe(T.Body("tax_id_type"))),
     telephone: S.optional(S.String),
-    use_legacy: S.optional(S.Boolean),
-    validation_code: S.optional(S.String),
+    useLegacy: S.optional(S.Boolean.pipe(T.Body("use_legacy"))),
+    validationCode: S.optional(S.String.pipe(T.Body("validation_code"))),
     vat: S.optional(S.String),
     zipcode: S.optional(S.String),
   }),
@@ -115,14 +121,18 @@ export const ProfilesGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProfilesGetResponse>;
 
 export interface UsageGetRequest {
-  account_id: string;
+  /** Represents a Cloudflare resource identifier tag. */
+  accountId: string;
+  /** Start date for the usage query (ISO 8601). Required if `to` is set. When omitted along with `to`, defaults to the start of the current month. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days. */
   from?: string;
+  /** Filter results by billable metric id (e.g., workers_standard_requests). */
   metric?: string;
+  /** End date for the usage query (ISO 8601). Required if `from` is set. When omitted along with `from`, defaults to today. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days. */
   to?: string;
 }
 export const UsageGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     from: S.optional(S.String.pipe(T.Query())),
     metric: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -147,39 +157,72 @@ export type UsageGetResultItemChargeClass = "Correction" | (string & {});
 export const UsageGetResultItemChargeClass = /*@__PURE__*/ S.String;
 
 export interface UsageGetResultItem {
+  /** Public identifier of the Cloudflare account (account tag). */
   BillingAccountId: string;
+  /** Display name of the Cloudflare account. */
   BillingAccountName: string;
+  /** Highest-level classification of a charge based on the nature of how it gets billed. Currently only "Usage" is supported. */
   ChargeCategory: UsageGetResultItemChargeCategory;
+  /** Self-contained summary of the charge's purpose and price. */
   ChargeDescription: string;
+  /** Indicates how often a charge occurs. Currently only "Usage-Based" is supported. */
   ChargeFrequency: UsageGetResultItemChargeFrequency;
+  /** Exclusive end of the time interval during which the usage was consumed. */
   ChargePeriodEnd: string;
+  /** Inclusive start of the time interval during which the usage was consumed. */
   ChargePeriodStart: string;
+  /** Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations. */
   ConsumedQuantity: number;
+  /** Unit of measure for the consumed quantity (e.g., "GB", "Requests", "vCPU-Hours"). */
   ConsumedUnit: string;
+  /** Name of the entity providing the underlying infrastructure or platform. */
   HostProviderName: string;
+  /** Name of the entity responsible for invoicing for the services consumed. */
   InvoiceIssuerName: string;
+  /** Name of the entity that made the services available for purchase. */
   ServiceProviderName: string;
-  x_BillableMetricName: string;
+  /** The display name of the billable metric. Cloudflare extension; replaces FOCUS SkuMeter. */
+  xBillableMetricName: string;
+  /** A charge serving as the basis for invoicing, inclusive of all reduced rates and discounts while excluding the amortization of upfront charges (one-time or recurring). */
   BilledCost?: number;
+  /** Currency that a charge was billed in (ISO 4217). */
   BillingCurrency?: string;
+  /** Exclusive end of the billing cycle that contains this usage record. */
   BillingPeriodEnd?: string;
+  /** Inclusive start of the billing cycle that contains this usage record. */
   BillingPeriodStart?: string;
+  /** Indicates whether the row represents a correction to one or more charges invoiced in a previous billing period. */
   ChargeClass?: UsageGetResultItemChargeClass;
+  /** Cost calculated by multiplying ContractedUnitPrice and the corresponding PricingQuantity. */
   ContractedCost?: number;
+  /** The agreed-upon unit price for a single PricingUnit of the associated billable metric, inclusive of negotiated discounts, if present, while excluding any other discounts. */
   ContractedUnitPrice?: number;
+  /** The amortized cost of the charge after applying all reduced rates, discounts, and the applicable portion of relevant, prepaid purchases (one-time or recurring) that covered the charge. */
   EffectiveCost?: number;
+  /** Cost calculated by multiplying ListUnitPrice and the corresponding PricingQuantity. */
   ListCost?: number;
+  /** Suggested provider-published unit price for a single PricingUnit of the associated billable metric, exclusive of any discounts. */
   ListUnitPrice?: number;
+  /** Volume of a given service used or purchased, based on the PricingUnit. */
   PricingQuantity?: number;
+  /** Provider-specified measurement unit for determining unit prices, indicating how the provider rates measured usage after applying pricing rules like block pricing. */
   PricingUnit?: string;
+  /** Provider-assigned identifier for an isolated geographic area where a service is provided. */
   RegionId?: string;
+  /** Name of an isolated geographic area where a service is provided. */
   RegionName?: string;
+  /** Unique identifier assigned to a grouping of services. For Cloudflare, this is the subscription or contract ID. */
   SubAccountId?: string;
+  /** Name assigned to a grouping of services. For Cloudflare, this is the subscription or contract display name. */
   SubAccountName?: string;
-  x_BillableMetricId?: string;
-  x_ProductFamilyName?: string;
-  x_ZoneId?: string;
-  x_ZoneName?: string;
+  /** The unique identifier for the billable metric in the Cloudflare catalog. Cloudflare extension; replaces FOCUS SkuId. */
+  xBillableMetricId?: string;
+  /** The product family the charge belongs to (e.g., "R2", "Workers"). Cloudflare extension; replaces FOCUS ServiceName. */
+  xProductFamilyName?: string;
+  /** The identifier for the Cloudflare zone (zone tag). Cloudflare extension. */
+  xZoneId?: string;
+  /** The display name of the Cloudflare zone. Cloudflare extension. */
+  xZoneName?: string;
 }
 export const UsageGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -195,7 +238,7 @@ export const UsageGetResultItem = /*@__PURE__*/ S.suspend(() =>
     HostProviderName: S.String,
     InvoiceIssuerName: S.String,
     ServiceProviderName: S.String,
-    x_BillableMetricName: S.String,
+    xBillableMetricName: S.String.pipe(T.Body("x_BillableMetricName")),
     BilledCost: S.optional(S.Number),
     BillingCurrency: S.optional(S.String),
     BillingPeriodEnd: S.optional(S.String),
@@ -212,10 +255,12 @@ export const UsageGetResultItem = /*@__PURE__*/ S.suspend(() =>
     RegionName: S.optional(S.String),
     SubAccountId: S.optional(S.String),
     SubAccountName: S.optional(S.String),
-    x_BillableMetricId: S.optional(S.String),
-    x_ProductFamilyName: S.optional(S.String),
-    x_ZoneId: S.optional(S.String),
-    x_ZoneName: S.optional(S.String),
+    xBillableMetricId: S.optional(S.String.pipe(T.Body("x_BillableMetricId"))),
+    xProductFamilyName: S.optional(
+      S.String.pipe(T.Body("x_ProductFamilyName")),
+    ),
+    xZoneId: S.optional(S.String.pipe(T.Body("x_ZoneId"))),
+    xZoneName: S.optional(S.String.pipe(T.Body("x_ZoneName"))),
   }),
 ).annotate({
   identifier: "UsageGetResultItem",
@@ -227,6 +272,7 @@ export const UsageGetResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UsageGetResultList>;
 
 export interface UsageGetResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: UsageGetResultList;
 }
 export const UsageGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -238,13 +284,16 @@ export const UsageGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsageGetResponse>;
 
 export interface UsagePaygoRequest {
-  account_id: string;
+  /** Represents a Cloudflare resource identifier tag. */
+  accountId: string;
+  /** Start date for the usage query (ISO 8601). */
   from?: string;
+  /** End date for the usage query (ISO 8601). */
   to?: string;
 }
 export const UsagePaygoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -259,20 +308,35 @@ export const UsagePaygoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsagePaygoRequest>;
 
 export interface UsagePaygoResultItem {
+  /** Specifies the billing currency code (ISO 4217). */
   BillingCurrency: string;
+  /** Indicates the start of the billing period. */
   BillingPeriodStart: string;
+  /** Indicates the end of the charge period. */
   ChargePeriodEnd: string;
+  /** Indicates the start of the charge period. */
   ChargePeriodStart: string;
+  /** Specifies the quantity consumed during this charge period. */
   ConsumedQuantity: number;
+  /** A display name for the unit of measurement used for the product (for example, "GB-months", "GB-seconds"). May be empty when the unit is implicit in the service name. */
   ConsumedUnit: string;
+  /** Specifies the cost for this charge period in the billing currency. */
   ContractedCost: number;
+  /** Specifies the cumulated cost for the billing period in the billing currency. */
   CumulatedContractedCost: number;
+  /** Specifies the cumulated pricing quantity for the billing period. */
   CumulatedPricingQuantity: number;
+  /** Specifies the pricing quantity for this charge period. */
   PricingQuantity: number;
+  /** Identifies the Cloudflare service. */
   ServiceName: string;
+  /** Identifies the product family for the Cloudflare service. */
   ServiceFamilyName?: string;
+  /** The identifier for the Cloudflare subscription. */
   SubscriptionId?: string;
+  /** The identifier for the Cloudflare zone (zone tag). */
   ZoneId?: string;
+  /** The display name of the Cloudflare zone. */
   ZoneName?: string;
 }
 export const UsagePaygoResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -303,6 +367,7 @@ export const UsagePaygoResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UsagePaygoResultList>;
 
 export interface UsagePaygoResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: UsagePaygoResultList;
 }
 export const UsagePaygoResponse = /*@__PURE__*/ S.suspend(() =>
@@ -313,11 +378,12 @@ export const UsagePaygoResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsagePaygoResponse",
 }) as any as S.Schema<UsagePaygoResponse>;
 
+export type ProfilesGetError = CloudflareOpError;
 /** Gets the current billing profile for the account. */
-export const ProfilesGet: API.OperationMethod<
+export const profilesGet: API.OperationMethod<
   ProfilesGetRequest,
   ProfilesGetResponse,
-  CloudflareOpError,
+  ProfilesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ProfilesGetRequest,
@@ -326,11 +392,12 @@ export const ProfilesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UsageGetError = CloudflareOpError;
 /** Returns cost and usage data for a single Cloudflare account, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. **Note:** Cost and pricing fields are not yet populated and will be absent from responses until billing integration is complete. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days. */
-export const UsageGet: API.OperationMethod<
+export const usageGet: API.OperationMethod<
   UsageGetRequest,
   UsageGetResponse,
-  CloudflareOpError,
+  UsageGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UsageGetRequest,
@@ -339,11 +406,12 @@ export const UsageGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UsagePaygoError = CloudflareOpError;
 /** Returns billable usage data for PayGo (self-serve) accounts. When no query parameters are provided, returns usage for the current billing period. This endpoint is currently in alpha and access is restricted to select accounts. While in alpha, the endpoint may get breaking changes. */
-export const UsagePaygo: API.OperationMethod<
+export const usagePaygo: API.OperationMethod<
   UsagePaygoRequest,
   UsagePaygoResponse,
-  CloudflareOpError,
+  UsagePaygoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UsagePaygoRequest,

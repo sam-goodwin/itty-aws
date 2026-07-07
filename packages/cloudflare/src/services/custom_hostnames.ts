@@ -10,18 +10,22 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface CertificatePackCertificatesDeleteRequest {
-  zone_id: string;
-  custom_hostname_id: string;
-  certificate_pack_id: string;
-  certificate_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  customHostnameId: string;
+  /** Identifier. */
+  certificatePackId: string;
+  /** Identifier. */
+  certificateId: string;
 }
 export const CertificatePackCertificatesDeleteRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      zone_id: S.String.pipe(T.Label()),
-      custom_hostname_id: S.String.pipe(T.Label()),
-      certificate_pack_id: S.String.pipe(T.Label()),
-      certificate_id: S.String.pipe(T.Label()),
+      zoneId: S.String.pipe(T.Label("zone_id")),
+      customHostnameId: S.String.pipe(T.Label("custom_hostname_id")),
+      certificatePackId: S.String.pipe(T.Label("certificate_pack_id")),
+      certificateId: S.String.pipe(T.Label("certificate_id")),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -35,6 +39,7 @@ export const CertificatePackCertificatesDeleteRequest = /*@__PURE__*/ S.suspend(
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CertificatePackCertificatesDeleteResponse {
+  /** Identifier. */
   id?: string;
 }
 export const CertificatePackCertificatesDeleteResponse =
@@ -47,22 +52,28 @@ export const CertificatePackCertificatesDeleteResponse =
   }) as any as S.Schema<CertificatePackCertificatesDeleteResponse>;
 
 export interface CertificatePackCertificatesUpdateRequest {
-  zone_id: string;
-  custom_hostname_id: string;
-  certificate_pack_id: string;
-  certificate_id: string;
-  custom_certificate: string;
-  custom_key: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  customHostnameId: string;
+  /** Identifier. */
+  certificatePackId: string;
+  /** Identifier. */
+  certificateId: string;
+  /** If a custom uploaded certificate is used. */
+  customCertificate: string;
+  /** The key for a custom uploaded certificate. */
+  customKey: string;
 }
 export const CertificatePackCertificatesUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      zone_id: S.String.pipe(T.Label()),
-      custom_hostname_id: S.String.pipe(T.Label()),
-      certificate_pack_id: S.String.pipe(T.Label()),
-      certificate_id: S.String.pipe(T.Label()),
-      custom_certificate: S.String,
-      custom_key: S.String,
+      zoneId: S.String.pipe(T.Label("zone_id")),
+      customHostnameId: S.String.pipe(T.Label("custom_hostname_id")),
+      certificatePackId: S.String.pipe(T.Label("certificate_pack_id")),
+      certificateId: S.String.pipe(T.Label("certificate_id")),
+      customCertificate: S.String.pipe(T.Body("custom_certificate")),
+      customKey: S.String.pipe(T.Body("custom_key")),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -89,8 +100,11 @@ export const CertificatePackCertificatesUpdateResponseOwnershipVerificationType 
   /*@__PURE__*/ S.String;
 
 export interface CertificatePackCertificatesUpdateResponseOwnershipVerification {
+  /** DNS Name for record. */
   name?: string;
+  /** DNS Record type. */
   type?: CertificatePackCertificatesUpdateResponseOwnershipVerificationType;
+  /** Content for the record. */
   value?: string;
 }
 export const CertificatePackCertificatesUpdateResponseOwnershipVerification =
@@ -108,14 +122,16 @@ export const CertificatePackCertificatesUpdateResponseOwnershipVerification =
   }) as any as S.Schema<CertificatePackCertificatesUpdateResponseOwnershipVerification>;
 
 export interface CertificatePackCertificatesUpdateResponseOwnershipVerificationHttp {
-  http_body?: string;
-  http_url?: string;
+  /** Token to be served. */
+  httpBody?: string;
+  /** The HTTP URL that will be checked during custom hostname verification and where the customer should host the token. */
+  httpUrl?: string;
 }
 export const CertificatePackCertificatesUpdateResponseOwnershipVerificationHttp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
     }),
   ).annotate({
     identifier:
@@ -130,28 +146,36 @@ export const CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsIte
   ) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItemEmailsList>;
 
 export interface CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cname: S.optional(S.String),
-      cname_target: S.optional(S.String),
+      cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
       emails: S.optional(
         CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItemEmailsList,
       ),
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
       status: S.optional(S.String),
-      txt_name: S.optional(S.String),
-      txt_value: S.optional(S.String),
+      txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
     }),
   ).annotate({
     identifier:
@@ -209,11 +233,16 @@ export const CertificatePackCertificatesUpdateResponseSslSettingsTls13 =
   /*@__PURE__*/ S.String;
 
 export interface CertificatePackCertificatesUpdateResponseSslSettings {
+  /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
   ciphers?: CertificatePackCertificatesUpdateResponseSslSettingsCiphersList;
-  early_hints?: CertificatePackCertificatesUpdateResponseSslSettingsEarlyHints;
+  /** Whether or not Early Hints is enabled. */
+  earlyHints?: CertificatePackCertificatesUpdateResponseSslSettingsEarlyHints;
+  /** Whether or not HTTP2 is enabled. */
   http2?: CertificatePackCertificatesUpdateResponseSslSettingsHttp2;
-  min_tls_version?: CertificatePackCertificatesUpdateResponseSslSettingsMinTlsVersion;
-  tls_1_3?: CertificatePackCertificatesUpdateResponseSslSettingsTls13;
+  /** The minimum TLS version supported. */
+  minTlsVersion?: CertificatePackCertificatesUpdateResponseSslSettingsMinTlsVersion;
+  /** Whether or not TLS 1.3 is enabled. */
+  tls13?: CertificatePackCertificatesUpdateResponseSslSettingsTls13;
 }
 export const CertificatePackCertificatesUpdateResponseSslSettings =
   /*@__PURE__*/ S.suspend(() =>
@@ -221,17 +250,23 @@ export const CertificatePackCertificatesUpdateResponseSslSettings =
       ciphers: S.optional(
         CertificatePackCertificatesUpdateResponseSslSettingsCiphersList,
       ),
-      early_hints: S.optional(
-        CertificatePackCertificatesUpdateResponseSslSettingsEarlyHints,
+      earlyHints: S.optional(
+        CertificatePackCertificatesUpdateResponseSslSettingsEarlyHints.pipe(
+          T.Body("early_hints"),
+        ),
       ),
       http2: S.optional(
         CertificatePackCertificatesUpdateResponseSslSettingsHttp2,
       ),
-      min_tls_version: S.optional(
-        CertificatePackCertificatesUpdateResponseSslSettingsMinTlsVersion,
+      minTlsVersion: S.optional(
+        CertificatePackCertificatesUpdateResponseSslSettingsMinTlsVersion.pipe(
+          T.Body("min_tls_version"),
+        ),
       ),
-      tls_1_3: S.optional(
-        CertificatePackCertificatesUpdateResponseSslSettingsTls13,
+      tls13: S.optional(
+        CertificatePackCertificatesUpdateResponseSslSettingsTls13.pipe(
+          T.Body("tls_1_3"),
+        ),
       ),
     }),
   ).annotate({
@@ -247,6 +282,7 @@ export const CertificatePackCertificatesUpdateResponseSslStatus =
   /*@__PURE__*/ S.String;
 
 export interface CertificatePackCertificatesUpdateResponseSslValidationErrorsItem {
+  /** A domain validation error. */
   message?: string;
 }
 export const CertificatePackCertificatesUpdateResponseSslValidationErrorsItem =
@@ -274,28 +310,36 @@ export const CertificatePackCertificatesUpdateResponseSslValidationRecordsItemEm
   ) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslValidationRecordsItemEmailsList>;
 
 export interface CertificatePackCertificatesUpdateResponseSslValidationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: CertificatePackCertificatesUpdateResponseSslValidationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const CertificatePackCertificatesUpdateResponseSslValidationRecordsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cname: S.optional(S.String),
-      cname_target: S.optional(S.String),
+      cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
       emails: S.optional(
         CertificatePackCertificatesUpdateResponseSslValidationRecordsItemEmailsList,
       ),
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
       status: S.optional(S.String),
-      txt_name: S.optional(S.String),
-      txt_value: S.optional(S.String),
+      txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
     }),
   ).annotate({
     identifier:
@@ -310,56 +354,84 @@ export const CertificatePackCertificatesUpdateResponseSslValidationRecordsList =
   ) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslValidationRecordsList>;
 
 export interface CertificatePackCertificatesUpdateResponseSsl {
+  /** Custom hostname SSL identifier tag. */
   id?: string;
-  bundle_method?: unknown;
-  certificate_authority?: unknown;
-  custom_certificate?: string;
-  custom_csr_id?: string;
-  custom_key?: string;
-  dcv_delegation_records?: CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsList;
-  expires_on?: string;
+  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
+  bundleMethod?: unknown;
+  /** The Certificate Authority that will issue the certificate. */
+  certificateAuthority?: unknown;
+  /** If a custom uploaded certificate is used. */
+  customCertificate?: string;
+  /** The identifier for the Custom CSR that was used. */
+  customCsrId?: string;
+  /** The key for a custom uploaded certificate. */
+  customKey?: string;
+  /** DCV Delegation records for domain validation. */
+  dcvDelegationRecords?: CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsList;
+  /** The time the custom certificate expires on. */
+  expiresOn?: string;
+  /** A list of Hostnames on a custom uploaded certificate. */
   hosts?: CertificatePackCertificatesUpdateResponseSslHostsList;
+  /** The issuer on a custom uploaded certificate. */
   issuer?: string;
+  /** Domain control validation (DCV) method used for this hostname. */
   method?: unknown;
-  serial_number?: string;
+  /** The serial number on a custom uploaded certificate. */
+  serialNumber?: string;
   settings?: CertificatePackCertificatesUpdateResponseSslSettings;
+  /** The signature on a custom uploaded certificate. */
   signature?: string;
+  /** Status of the hostname's SSL certificates. */
   status?: CertificatePackCertificatesUpdateResponseSslStatus;
+  /** Level of validation to be used for this hostname. Domain validation (dv) must be used. */
   type?: unknown;
-  uploaded_on?: string;
-  validation_errors?: CertificatePackCertificatesUpdateResponseSslValidationErrorsList;
-  validation_records?: CertificatePackCertificatesUpdateResponseSslValidationRecordsList;
+  /** The time the custom certificate was uploaded. */
+  uploadedOn?: string;
+  /** Domain validation errors that have been received by the certificate authority (CA). */
+  validationErrors?: CertificatePackCertificatesUpdateResponseSslValidationErrorsList;
+  validationRecords?: CertificatePackCertificatesUpdateResponseSslValidationRecordsList;
+  /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean;
 }
 export const CertificatePackCertificatesUpdateResponseSsl =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
-      bundle_method: S.optional(S.Unknown),
-      certificate_authority: S.optional(S.Unknown),
-      custom_certificate: S.optional(S.String),
-      custom_csr_id: S.optional(S.String),
-      custom_key: S.optional(S.String),
-      dcv_delegation_records: S.optional(
-        CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsList,
+      bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+      certificateAuthority: S.optional(
+        S.Unknown.pipe(T.Body("certificate_authority")),
       ),
-      expires_on: S.optional(S.String),
+      customCertificate: S.optional(
+        S.String.pipe(T.Body("custom_certificate")),
+      ),
+      customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
+      customKey: S.optional(S.String.pipe(T.Body("custom_key"))),
+      dcvDelegationRecords: S.optional(
+        CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsList.pipe(
+          T.Body("dcv_delegation_records"),
+        ),
+      ),
+      expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
       hosts: S.optional(CertificatePackCertificatesUpdateResponseSslHostsList),
       issuer: S.optional(S.String),
       method: S.optional(S.Unknown),
-      serial_number: S.optional(S.String),
+      serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
       settings: S.optional(
         CertificatePackCertificatesUpdateResponseSslSettings,
       ),
       signature: S.optional(S.String),
       status: S.optional(CertificatePackCertificatesUpdateResponseSslStatus),
       type: S.optional(S.Unknown),
-      uploaded_on: S.optional(S.String),
-      validation_errors: S.optional(
-        CertificatePackCertificatesUpdateResponseSslValidationErrorsList,
+      uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+      validationErrors: S.optional(
+        CertificatePackCertificatesUpdateResponseSslValidationErrorsList.pipe(
+          T.Body("validation_errors"),
+        ),
       ),
-      validation_records: S.optional(
-        CertificatePackCertificatesUpdateResponseSslValidationRecordsList,
+      validationRecords: S.optional(
+        CertificatePackCertificatesUpdateResponseSslValidationRecordsList.pipe(
+          T.Body("validation_records"),
+        ),
       ),
       wildcard: S.optional(S.Boolean),
     }),
@@ -384,39 +456,59 @@ export const CertificatePackCertificatesUpdateResponseVerificationErrorsList =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CertificatePackCertificatesUpdateResponse {
+  /** Identifier. */
   id: string;
+  /** The custom hostname that will point to your hostname via CNAME. */
   hostname: string;
-  created_at?: string;
-  custom_metadata?: CertificatePackCertificatesUpdateResponseCustomMetadataMap;
-  custom_origin_server?: string;
-  custom_origin_sni?: string;
-  ownership_verification?: CertificatePackCertificatesUpdateResponseOwnershipVerification;
-  ownership_verification_http?: CertificatePackCertificatesUpdateResponseOwnershipVerificationHttp;
+  /** This is the time the hostname was created. */
+  createdAt?: string;
+  /** Unique key/value metadata for this hostname. These are per-hostname (customer) settings. */
+  customMetadata?: CertificatePackCertificatesUpdateResponseCustomMetadataMap;
+  /** a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record. */
+  customOriginServer?: string;
+  /** A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request_host_header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server. */
+  customOriginSni?: string;
+  /** This is a record which can be placed to activate a hostname. */
+  ownershipVerification?: CertificatePackCertificatesUpdateResponseOwnershipVerification;
+  /** This presents the token to be served by the given http url to activate a hostname. */
+  ownershipVerificationHttp?: CertificatePackCertificatesUpdateResponseOwnershipVerificationHttp;
   ssl?: CertificatePackCertificatesUpdateResponseSsl;
+  /** Status of the hostname's activation. */
   status?: CertificatePackCertificatesUpdateResponseStatus;
-  verification_errors?: CertificatePackCertificatesUpdateResponseVerificationErrorsList;
+  /** These are errors that were encountered while trying to activate a hostname. */
+  verificationErrors?: CertificatePackCertificatesUpdateResponseVerificationErrorsList;
 }
 export const CertificatePackCertificatesUpdateResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       hostname: S.String,
-      created_at: S.optional(S.String),
-      custom_metadata: S.optional(
-        CertificatePackCertificatesUpdateResponseCustomMetadataMap,
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      customMetadata: S.optional(
+        CertificatePackCertificatesUpdateResponseCustomMetadataMap.pipe(
+          T.Body("custom_metadata"),
+        ),
       ),
-      custom_origin_server: S.optional(S.String),
-      custom_origin_sni: S.optional(S.String),
-      ownership_verification: S.optional(
-        CertificatePackCertificatesUpdateResponseOwnershipVerification,
+      customOriginServer: S.optional(
+        S.String.pipe(T.Body("custom_origin_server")),
       ),
-      ownership_verification_http: S.optional(
-        CertificatePackCertificatesUpdateResponseOwnershipVerificationHttp,
+      customOriginSni: S.optional(S.String.pipe(T.Body("custom_origin_sni"))),
+      ownershipVerification: S.optional(
+        CertificatePackCertificatesUpdateResponseOwnershipVerification.pipe(
+          T.Body("ownership_verification"),
+        ),
+      ),
+      ownershipVerificationHttp: S.optional(
+        CertificatePackCertificatesUpdateResponseOwnershipVerificationHttp.pipe(
+          T.Body("ownership_verification_http"),
+        ),
       ),
       ssl: S.optional(CertificatePackCertificatesUpdateResponseSsl),
       status: S.optional(CertificatePackCertificatesUpdateResponseStatus),
-      verification_errors: S.optional(
-        CertificatePackCertificatesUpdateResponseVerificationErrorsList,
+      verificationErrors: S.optional(
+        CertificatePackCertificatesUpdateResponseVerificationErrorsList.pipe(
+          T.Body("verification_errors"),
+        ),
       ),
     }),
   ).annotate({
@@ -432,14 +524,16 @@ export const CreateRequestCustomMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CreateRequestCustomMetadataMap>;
 
 export interface CreateRequestSslCustomCertBundleItem {
-  custom_certificate: string;
-  custom_key: string;
+  /** If a custom uploaded certificate is used. */
+  customCertificate: string;
+  /** The key for a custom uploaded certificate. */
+  customKey: string;
 }
 export const CreateRequestSslCustomCertBundleItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      custom_certificate: S.String,
-      custom_key: S.String,
+      customCertificate: S.String.pipe(T.Body("custom_certificate")),
+      customKey: S.String.pipe(T.Body("custom_key")),
     }),
 ).annotate({
   identifier: "CreateRequestSslCustomCertBundleItem",
@@ -474,46 +568,72 @@ export type CreateRequestSslSettingsTls13 = "on" | "off" | (string & {});
 export const CreateRequestSslSettingsTls13 = /*@__PURE__*/ S.String;
 
 export interface CreateRequestSslSettings {
+  /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
   ciphers?: CreateRequestSslSettingsCiphersList;
-  early_hints?: CreateRequestSslSettingsEarlyHints;
+  /** Whether or not Early Hints is enabled. */
+  earlyHints?: CreateRequestSslSettingsEarlyHints;
+  /** Whether or not HTTP2 is enabled. */
   http2?: CreateRequestSslSettingsHttp2;
-  min_tls_version?: CreateRequestSslSettingsMinTlsVersion;
-  tls_1_3?: CreateRequestSslSettingsTls13;
+  /** The minimum TLS version supported. */
+  minTlsVersion?: CreateRequestSslSettingsMinTlsVersion;
+  /** Whether or not TLS 1.3 is enabled. */
+  tls13?: CreateRequestSslSettingsTls13;
 }
 export const CreateRequestSslSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ciphers: S.optional(CreateRequestSslSettingsCiphersList),
-    early_hints: S.optional(CreateRequestSslSettingsEarlyHints),
+    earlyHints: S.optional(
+      CreateRequestSslSettingsEarlyHints.pipe(T.Body("early_hints")),
+    ),
     http2: S.optional(CreateRequestSslSettingsHttp2),
-    min_tls_version: S.optional(CreateRequestSslSettingsMinTlsVersion),
-    tls_1_3: S.optional(CreateRequestSslSettingsTls13),
+    minTlsVersion: S.optional(
+      CreateRequestSslSettingsMinTlsVersion.pipe(T.Body("min_tls_version")),
+    ),
+    tls13: S.optional(CreateRequestSslSettingsTls13.pipe(T.Body("tls_1_3"))),
   }),
 ).annotate({
   identifier: "CreateRequestSslSettings",
 }) as any as S.Schema<CreateRequestSslSettings>;
 
 export interface CreateRequestSsl {
-  bundle_method?: unknown;
-  certificate_authority?: unknown;
-  cloudflare_branding?: boolean;
-  custom_cert_bundle?: CreateRequestSslCustomCertBundleList;
-  custom_certificate?: string;
-  custom_csr_id?: string;
-  custom_key?: string;
+  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
+  bundleMethod?: unknown;
+  /** The Certificate Authority that will issue the certificate. */
+  certificateAuthority?: unknown;
+  /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
+  cloudflareBranding?: boolean;
+  /** Array of custom certificate and key pairs (1 or 2 pairs allowed). */
+  customCertBundle?: CreateRequestSslCustomCertBundleList;
+  /** If a custom uploaded certificate is used. */
+  customCertificate?: string;
+  /** The identifier for the Custom CSR that was used. */
+  customCsrId?: string;
+  /** The key for a custom uploaded certificate. */
+  customKey?: string;
+  /** Domain control validation (DCV) method used for this hostname. */
   method?: unknown;
+  /** SSL specific settings. */
   settings?: CreateRequestSslSettings;
+  /** Level of validation to be used for this hostname. Domain validation (dv) must be used. */
   type?: unknown;
+  /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean;
 }
 export const CreateRequestSsl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    bundle_method: S.optional(S.Unknown),
-    certificate_authority: S.optional(S.Unknown),
-    cloudflare_branding: S.optional(S.Boolean),
-    custom_cert_bundle: S.optional(CreateRequestSslCustomCertBundleList),
-    custom_certificate: S.optional(S.String),
-    custom_csr_id: S.optional(S.String),
-    custom_key: S.optional(S.String),
+    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+    certificateAuthority: S.optional(
+      S.Unknown.pipe(T.Body("certificate_authority")),
+    ),
+    cloudflareBranding: S.optional(
+      S.Boolean.pipe(T.Body("cloudflare_branding")),
+    ),
+    customCertBundle: S.optional(
+      CreateRequestSslCustomCertBundleList.pipe(T.Body("custom_cert_bundle")),
+    ),
+    customCertificate: S.optional(S.String.pipe(T.Body("custom_certificate"))),
+    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
+    customKey: S.optional(S.String.pipe(T.Body("custom_key"))),
     method: S.optional(S.Unknown),
     settings: S.optional(CreateRequestSslSettings),
     type: S.optional(S.Unknown),
@@ -524,16 +644,22 @@ export const CreateRequestSsl = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRequestSsl>;
 
 export interface CreateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** The custom hostname that will point to your hostname via CNAME. */
   hostname: string;
-  custom_metadata?: CreateRequestCustomMetadataMap;
+  /** Unique key/value metadata for this hostname. These are per-hostname (customer) settings. */
+  customMetadata?: CreateRequestCustomMetadataMap;
+  /** SSL properties used when creating the custom hostname. */
   ssl?: CreateRequestSsl;
 }
 export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     hostname: S.String,
-    custom_metadata: S.optional(CreateRequestCustomMetadataMap),
+    customMetadata: S.optional(
+      CreateRequestCustomMetadataMap.pipe(T.Body("custom_metadata")),
+    ),
     ssl: S.optional(CreateRequestSsl),
   }).pipe(
     T.Http({
@@ -556,8 +682,11 @@ export type CreateResponseOwnershipVerificationType = "txt" | (string & {});
 export const CreateResponseOwnershipVerificationType = /*@__PURE__*/ S.String;
 
 export interface CreateResponseOwnershipVerification {
+  /** DNS Name for record. */
   name?: string;
+  /** DNS Record type. */
   type?: CreateResponseOwnershipVerificationType;
+  /** Content for the record. */
   value?: string;
 }
 export const CreateResponseOwnershipVerification = /*@__PURE__*/ S.suspend(() =>
@@ -571,14 +700,16 @@ export const CreateResponseOwnershipVerification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResponseOwnershipVerification>;
 
 export interface CreateResponseOwnershipVerificationHttp {
-  http_body?: string;
-  http_url?: string;
+  /** Token to be served. */
+  httpBody?: string;
+  /** The HTTP URL that will be checked during custom hostname verification and where the customer should host the token. */
+  httpUrl?: string;
 }
 export const CreateResponseOwnershipVerificationHttp = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
     }),
 ).annotate({
   identifier: "CreateResponseOwnershipVerificationHttp",
@@ -591,26 +722,34 @@ export const CreateResponseSslDcvDelegationRecordsItemEmailsList =
   ) as any as S.Schema<CreateResponseSslDcvDelegationRecordsItemEmailsList>;
 
 export interface CreateResponseSslDcvDelegationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: CreateResponseSslDcvDelegationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const CreateResponseSslDcvDelegationRecordsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cname: S.optional(S.String),
-      cname_target: S.optional(S.String),
+      cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
       emails: S.optional(CreateResponseSslDcvDelegationRecordsItemEmailsList),
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
       status: S.optional(S.String),
-      txt_name: S.optional(S.String),
-      txt_value: S.optional(S.String),
+      txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
     }),
   ).annotate({
     identifier: "CreateResponseSslDcvDelegationRecordsItem",
@@ -650,19 +789,28 @@ export type CreateResponseSslSettingsTls13 = "on" | "off" | (string & {});
 export const CreateResponseSslSettingsTls13 = /*@__PURE__*/ S.String;
 
 export interface CreateResponseSslSettings {
+  /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
   ciphers?: CreateResponseSslSettingsCiphersList;
-  early_hints?: CreateResponseSslSettingsEarlyHints;
+  /** Whether or not Early Hints is enabled. */
+  earlyHints?: CreateResponseSslSettingsEarlyHints;
+  /** Whether or not HTTP2 is enabled. */
   http2?: CreateResponseSslSettingsHttp2;
-  min_tls_version?: CreateResponseSslSettingsMinTlsVersion;
-  tls_1_3?: CreateResponseSslSettingsTls13;
+  /** The minimum TLS version supported. */
+  minTlsVersion?: CreateResponseSslSettingsMinTlsVersion;
+  /** Whether or not TLS 1.3 is enabled. */
+  tls13?: CreateResponseSslSettingsTls13;
 }
 export const CreateResponseSslSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ciphers: S.optional(CreateResponseSslSettingsCiphersList),
-    early_hints: S.optional(CreateResponseSslSettingsEarlyHints),
+    earlyHints: S.optional(
+      CreateResponseSslSettingsEarlyHints.pipe(T.Body("early_hints")),
+    ),
     http2: S.optional(CreateResponseSslSettingsHttp2),
-    min_tls_version: S.optional(CreateResponseSslSettingsMinTlsVersion),
-    tls_1_3: S.optional(CreateResponseSslSettingsTls13),
+    minTlsVersion: S.optional(
+      CreateResponseSslSettingsMinTlsVersion.pipe(T.Body("min_tls_version")),
+    ),
+    tls13: S.optional(CreateResponseSslSettingsTls13.pipe(T.Body("tls_1_3"))),
   }),
 ).annotate({
   identifier: "CreateResponseSslSettings",
@@ -676,6 +824,7 @@ export type CreateResponseSslStatus =
 export const CreateResponseSslStatus = /*@__PURE__*/ S.String;
 
 export interface CreateResponseSslValidationErrorsItem {
+  /** A domain validation error. */
   message?: string;
 }
 export const CreateResponseSslValidationErrorsItem = /*@__PURE__*/ S.suspend(
@@ -700,26 +849,34 @@ export const CreateResponseSslValidationRecordsItemEmailsList =
   ) as any as S.Schema<CreateResponseSslValidationRecordsItemEmailsList>;
 
 export interface CreateResponseSslValidationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: CreateResponseSslValidationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const CreateResponseSslValidationRecordsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       cname: S.optional(S.String),
-      cname_target: S.optional(S.String),
+      cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
       emails: S.optional(CreateResponseSslValidationRecordsItemEmailsList),
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
       status: S.optional(S.String),
-      txt_name: S.optional(S.String),
-      txt_value: S.optional(S.String),
+      txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
     }),
 ).annotate({
   identifier: "CreateResponseSslValidationRecordsItem",
@@ -732,50 +889,76 @@ export const CreateResponseSslValidationRecordsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateResponseSslValidationRecordsList>;
 
 export interface CreateResponseSsl {
+  /** Custom hostname SSL identifier tag. */
   id?: string;
-  bundle_method?: unknown;
-  certificate_authority?: unknown;
-  custom_certificate?: string;
-  custom_csr_id?: string;
-  custom_key?: string;
-  dcv_delegation_records?: CreateResponseSslDcvDelegationRecordsList;
-  expires_on?: string;
+  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
+  bundleMethod?: unknown;
+  /** The Certificate Authority that will issue the certificate. */
+  certificateAuthority?: unknown;
+  /** If a custom uploaded certificate is used. */
+  customCertificate?: string;
+  /** The identifier for the Custom CSR that was used. */
+  customCsrId?: string;
+  /** The key for a custom uploaded certificate. */
+  customKey?: string;
+  /** DCV Delegation records for domain validation. */
+  dcvDelegationRecords?: CreateResponseSslDcvDelegationRecordsList;
+  /** The time the custom certificate expires on. */
+  expiresOn?: string;
+  /** A list of Hostnames on a custom uploaded certificate. */
   hosts?: CreateResponseSslHostsList;
+  /** The issuer on a custom uploaded certificate. */
   issuer?: string;
+  /** Domain control validation (DCV) method used for this hostname. */
   method?: unknown;
-  serial_number?: string;
+  /** The serial number on a custom uploaded certificate. */
+  serialNumber?: string;
   settings?: CreateResponseSslSettings;
+  /** The signature on a custom uploaded certificate. */
   signature?: string;
+  /** Status of the hostname's SSL certificates. */
   status?: CreateResponseSslStatus;
+  /** Level of validation to be used for this hostname. Domain validation (dv) must be used. */
   type?: unknown;
-  uploaded_on?: string;
-  validation_errors?: CreateResponseSslValidationErrorsList;
-  validation_records?: CreateResponseSslValidationRecordsList;
+  /** The time the custom certificate was uploaded. */
+  uploadedOn?: string;
+  /** Domain validation errors that have been received by the certificate authority (CA). */
+  validationErrors?: CreateResponseSslValidationErrorsList;
+  validationRecords?: CreateResponseSslValidationRecordsList;
+  /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean;
 }
 export const CreateResponseSsl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    bundle_method: S.optional(S.Unknown),
-    certificate_authority: S.optional(S.Unknown),
-    custom_certificate: S.optional(S.String),
-    custom_csr_id: S.optional(S.String),
-    custom_key: S.optional(S.String),
-    dcv_delegation_records: S.optional(
-      CreateResponseSslDcvDelegationRecordsList,
+    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+    certificateAuthority: S.optional(
+      S.Unknown.pipe(T.Body("certificate_authority")),
     ),
-    expires_on: S.optional(S.String),
+    customCertificate: S.optional(S.String.pipe(T.Body("custom_certificate"))),
+    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
+    customKey: S.optional(S.String.pipe(T.Body("custom_key"))),
+    dcvDelegationRecords: S.optional(
+      CreateResponseSslDcvDelegationRecordsList.pipe(
+        T.Body("dcv_delegation_records"),
+      ),
+    ),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
     hosts: S.optional(CreateResponseSslHostsList),
     issuer: S.optional(S.String),
     method: S.optional(S.Unknown),
-    serial_number: S.optional(S.String),
+    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
     settings: S.optional(CreateResponseSslSettings),
     signature: S.optional(S.String),
     status: S.optional(CreateResponseSslStatus),
     type: S.optional(S.Unknown),
-    uploaded_on: S.optional(S.String),
-    validation_errors: S.optional(CreateResponseSslValidationErrorsList),
-    validation_records: S.optional(CreateResponseSslValidationRecordsList),
+    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    validationErrors: S.optional(
+      CreateResponseSslValidationErrorsList.pipe(T.Body("validation_errors")),
+    ),
+    validationRecords: S.optional(
+      CreateResponseSslValidationRecordsList.pipe(T.Body("validation_records")),
+    ),
     wildcard: S.optional(S.Boolean),
   }),
 ).annotate({
@@ -796,44 +979,68 @@ export const CreateResponseVerificationErrorsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateResponse {
+  /** Identifier. */
   id: string;
+  /** The custom hostname that will point to your hostname via CNAME. */
   hostname: string;
-  created_at?: string;
-  custom_metadata?: CreateResponseCustomMetadataMap;
-  custom_origin_server?: string;
-  custom_origin_sni?: string;
-  ownership_verification?: CreateResponseOwnershipVerification;
-  ownership_verification_http?: CreateResponseOwnershipVerificationHttp;
+  /** This is the time the hostname was created. */
+  createdAt?: string;
+  /** Unique key/value metadata for this hostname. These are per-hostname (customer) settings. */
+  customMetadata?: CreateResponseCustomMetadataMap;
+  /** a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record. */
+  customOriginServer?: string;
+  /** A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request_host_header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server. */
+  customOriginSni?: string;
+  /** This is a record which can be placed to activate a hostname. */
+  ownershipVerification?: CreateResponseOwnershipVerification;
+  /** This presents the token to be served by the given http url to activate a hostname. */
+  ownershipVerificationHttp?: CreateResponseOwnershipVerificationHttp;
   ssl?: CreateResponseSsl;
+  /** Status of the hostname's activation. */
   status?: CreateResponseStatus;
-  verification_errors?: CreateResponseVerificationErrorsList;
+  /** These are errors that were encountered while trying to activate a hostname. */
+  verificationErrors?: CreateResponseVerificationErrorsList;
 }
 export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     hostname: S.String,
-    created_at: S.optional(S.String),
-    custom_metadata: S.optional(CreateResponseCustomMetadataMap),
-    custom_origin_server: S.optional(S.String),
-    custom_origin_sni: S.optional(S.String),
-    ownership_verification: S.optional(CreateResponseOwnershipVerification),
-    ownership_verification_http: S.optional(
-      CreateResponseOwnershipVerificationHttp,
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    customMetadata: S.optional(
+      CreateResponseCustomMetadataMap.pipe(T.Body("custom_metadata")),
+    ),
+    customOriginServer: S.optional(
+      S.String.pipe(T.Body("custom_origin_server")),
+    ),
+    customOriginSni: S.optional(S.String.pipe(T.Body("custom_origin_sni"))),
+    ownershipVerification: S.optional(
+      CreateResponseOwnershipVerification.pipe(
+        T.Body("ownership_verification"),
+      ),
+    ),
+    ownershipVerificationHttp: S.optional(
+      CreateResponseOwnershipVerificationHttp.pipe(
+        T.Body("ownership_verification_http"),
+      ),
     ),
     ssl: S.optional(CreateResponseSsl),
     status: S.optional(CreateResponseStatus),
-    verification_errors: S.optional(CreateResponseVerificationErrorsList),
+    verificationErrors: S.optional(
+      CreateResponseVerificationErrorsList.pipe(T.Body("verification_errors")),
+    ),
   }),
 ).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
 
 export interface DeleteRequest {
-  zone_id: string;
-  custom_hostname_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  customHostnameId: string;
 }
 export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    custom_hostname_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    customHostnameId: S.String.pipe(T.Label("custom_hostname_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -845,6 +1052,7 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DeleteResponse {
+  /** Identifier. */
   id?: string;
 }
 export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -862,13 +1070,15 @@ export const EditRequestCustomMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EditRequestCustomMetadataMap>;
 
 export interface EditRequestSslCustomCertBundleItem {
-  custom_certificate: string;
-  custom_key: string;
+  /** If a custom uploaded certificate is used. */
+  customCertificate: string;
+  /** The key for a custom uploaded certificate. */
+  customKey: string;
 }
 export const EditRequestSslCustomCertBundleItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    custom_certificate: S.String,
-    custom_key: S.String,
+    customCertificate: S.String.pipe(T.Body("custom_certificate")),
+    customKey: S.String.pipe(T.Body("custom_key")),
   }),
 ).annotate({
   identifier: "EditRequestSslCustomCertBundleItem",
@@ -903,46 +1113,72 @@ export type EditRequestSslSettingsTls13 = "on" | "off" | (string & {});
 export const EditRequestSslSettingsTls13 = /*@__PURE__*/ S.String;
 
 export interface EditRequestSslSettings {
+  /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
   ciphers?: EditRequestSslSettingsCiphersList;
-  early_hints?: EditRequestSslSettingsEarlyHints;
+  /** Whether or not Early Hints is enabled. */
+  earlyHints?: EditRequestSslSettingsEarlyHints;
+  /** Whether or not HTTP2 is enabled. */
   http2?: EditRequestSslSettingsHttp2;
-  min_tls_version?: EditRequestSslSettingsMinTlsVersion;
-  tls_1_3?: EditRequestSslSettingsTls13;
+  /** The minimum TLS version supported. */
+  minTlsVersion?: EditRequestSslSettingsMinTlsVersion;
+  /** Whether or not TLS 1.3 is enabled. */
+  tls13?: EditRequestSslSettingsTls13;
 }
 export const EditRequestSslSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ciphers: S.optional(EditRequestSslSettingsCiphersList),
-    early_hints: S.optional(EditRequestSslSettingsEarlyHints),
+    earlyHints: S.optional(
+      EditRequestSslSettingsEarlyHints.pipe(T.Body("early_hints")),
+    ),
     http2: S.optional(EditRequestSslSettingsHttp2),
-    min_tls_version: S.optional(EditRequestSslSettingsMinTlsVersion),
-    tls_1_3: S.optional(EditRequestSslSettingsTls13),
+    minTlsVersion: S.optional(
+      EditRequestSslSettingsMinTlsVersion.pipe(T.Body("min_tls_version")),
+    ),
+    tls13: S.optional(EditRequestSslSettingsTls13.pipe(T.Body("tls_1_3"))),
   }),
 ).annotate({
   identifier: "EditRequestSslSettings",
 }) as any as S.Schema<EditRequestSslSettings>;
 
 export interface EditRequestSsl {
-  bundle_method?: unknown;
-  certificate_authority?: unknown;
-  cloudflare_branding?: boolean;
-  custom_cert_bundle?: EditRequestSslCustomCertBundleList;
-  custom_certificate?: string;
-  custom_csr_id?: string;
-  custom_key?: string;
+  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
+  bundleMethod?: unknown;
+  /** The Certificate Authority that will issue the certificate. */
+  certificateAuthority?: unknown;
+  /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
+  cloudflareBranding?: boolean;
+  /** Array of custom certificate and key pairs (1 or 2 pairs allowed). */
+  customCertBundle?: EditRequestSslCustomCertBundleList;
+  /** If a custom uploaded certificate is used. */
+  customCertificate?: string;
+  /** The identifier for the Custom CSR that was used. */
+  customCsrId?: string;
+  /** The key for a custom uploaded certificate. */
+  customKey?: string;
+  /** Domain control validation (DCV) method used for this hostname. */
   method?: unknown;
+  /** SSL specific settings. */
   settings?: EditRequestSslSettings;
+  /** Level of validation to be used for this hostname. Domain validation (dv) must be used. */
   type?: unknown;
+  /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean;
 }
 export const EditRequestSsl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    bundle_method: S.optional(S.Unknown),
-    certificate_authority: S.optional(S.Unknown),
-    cloudflare_branding: S.optional(S.Boolean),
-    custom_cert_bundle: S.optional(EditRequestSslCustomCertBundleList),
-    custom_certificate: S.optional(S.String),
-    custom_csr_id: S.optional(S.String),
-    custom_key: S.optional(S.String),
+    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+    certificateAuthority: S.optional(
+      S.Unknown.pipe(T.Body("certificate_authority")),
+    ),
+    cloudflareBranding: S.optional(
+      S.Boolean.pipe(T.Body("cloudflare_branding")),
+    ),
+    customCertBundle: S.optional(
+      EditRequestSslCustomCertBundleList.pipe(T.Body("custom_cert_bundle")),
+    ),
+    customCertificate: S.optional(S.String.pipe(T.Body("custom_certificate"))),
+    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
+    customKey: S.optional(S.String.pipe(T.Body("custom_key"))),
     method: S.optional(S.Unknown),
     settings: S.optional(EditRequestSslSettings),
     type: S.optional(S.Unknown),
@@ -951,20 +1187,30 @@ export const EditRequestSsl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EditRequestSsl" }) as any as S.Schema<EditRequestSsl>;
 
 export interface EditRequest {
-  zone_id: string;
-  custom_hostname_id: string;
-  custom_metadata?: EditRequestCustomMetadataMap;
-  custom_origin_server?: string;
-  custom_origin_sni?: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  customHostnameId: string;
+  /** Unique key/value metadata for this hostname. These are per-hostname (customer) settings. */
+  customMetadata?: EditRequestCustomMetadataMap;
+  /** a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record. */
+  customOriginServer?: string;
+  /** A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request_host_header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server. */
+  customOriginSni?: string;
+  /** SSL properties used when creating the custom hostname. */
   ssl?: EditRequestSsl;
 }
 export const EditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    custom_hostname_id: S.String.pipe(T.Label()),
-    custom_metadata: S.optional(EditRequestCustomMetadataMap),
-    custom_origin_server: S.optional(S.String),
-    custom_origin_sni: S.optional(S.String),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    customHostnameId: S.String.pipe(T.Label("custom_hostname_id")),
+    customMetadata: S.optional(
+      EditRequestCustomMetadataMap.pipe(T.Body("custom_metadata")),
+    ),
+    customOriginServer: S.optional(
+      S.String.pipe(T.Body("custom_origin_server")),
+    ),
+    customOriginSni: S.optional(S.String.pipe(T.Body("custom_origin_sni"))),
     ssl: S.optional(EditRequestSsl),
   }).pipe(
     T.Http({
@@ -987,8 +1233,11 @@ export type EditResponseOwnershipVerificationType = "txt" | (string & {});
 export const EditResponseOwnershipVerificationType = /*@__PURE__*/ S.String;
 
 export interface EditResponseOwnershipVerification {
+  /** DNS Name for record. */
   name?: string;
+  /** DNS Record type. */
   type?: EditResponseOwnershipVerificationType;
+  /** Content for the record. */
   value?: string;
 }
 export const EditResponseOwnershipVerification = /*@__PURE__*/ S.suspend(() =>
@@ -1002,14 +1251,16 @@ export const EditResponseOwnershipVerification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditResponseOwnershipVerification>;
 
 export interface EditResponseOwnershipVerificationHttp {
-  http_body?: string;
-  http_url?: string;
+  /** Token to be served. */
+  httpBody?: string;
+  /** The HTTP URL that will be checked during custom hostname verification and where the customer should host the token. */
+  httpUrl?: string;
 }
 export const EditResponseOwnershipVerificationHttp = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
     }),
 ).annotate({
   identifier: "EditResponseOwnershipVerificationHttp",
@@ -1022,26 +1273,34 @@ export const EditResponseSslDcvDelegationRecordsItemEmailsList =
   ) as any as S.Schema<EditResponseSslDcvDelegationRecordsItemEmailsList>;
 
 export interface EditResponseSslDcvDelegationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: EditResponseSslDcvDelegationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const EditResponseSslDcvDelegationRecordsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       cname: S.optional(S.String),
-      cname_target: S.optional(S.String),
+      cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
       emails: S.optional(EditResponseSslDcvDelegationRecordsItemEmailsList),
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
       status: S.optional(S.String),
-      txt_name: S.optional(S.String),
-      txt_value: S.optional(S.String),
+      txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
     }),
 ).annotate({
   identifier: "EditResponseSslDcvDelegationRecordsItem",
@@ -1081,19 +1340,28 @@ export type EditResponseSslSettingsTls13 = "on" | "off" | (string & {});
 export const EditResponseSslSettingsTls13 = /*@__PURE__*/ S.String;
 
 export interface EditResponseSslSettings {
+  /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
   ciphers?: EditResponseSslSettingsCiphersList;
-  early_hints?: EditResponseSslSettingsEarlyHints;
+  /** Whether or not Early Hints is enabled. */
+  earlyHints?: EditResponseSslSettingsEarlyHints;
+  /** Whether or not HTTP2 is enabled. */
   http2?: EditResponseSslSettingsHttp2;
-  min_tls_version?: EditResponseSslSettingsMinTlsVersion;
-  tls_1_3?: EditResponseSslSettingsTls13;
+  /** The minimum TLS version supported. */
+  minTlsVersion?: EditResponseSslSettingsMinTlsVersion;
+  /** Whether or not TLS 1.3 is enabled. */
+  tls13?: EditResponseSslSettingsTls13;
 }
 export const EditResponseSslSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ciphers: S.optional(EditResponseSslSettingsCiphersList),
-    early_hints: S.optional(EditResponseSslSettingsEarlyHints),
+    earlyHints: S.optional(
+      EditResponseSslSettingsEarlyHints.pipe(T.Body("early_hints")),
+    ),
     http2: S.optional(EditResponseSslSettingsHttp2),
-    min_tls_version: S.optional(EditResponseSslSettingsMinTlsVersion),
-    tls_1_3: S.optional(EditResponseSslSettingsTls13),
+    minTlsVersion: S.optional(
+      EditResponseSslSettingsMinTlsVersion.pipe(T.Body("min_tls_version")),
+    ),
+    tls13: S.optional(EditResponseSslSettingsTls13.pipe(T.Body("tls_1_3"))),
   }),
 ).annotate({
   identifier: "EditResponseSslSettings",
@@ -1107,6 +1375,7 @@ export type EditResponseSslStatus =
 export const EditResponseSslStatus = /*@__PURE__*/ S.String;
 
 export interface EditResponseSslValidationErrorsItem {
+  /** A domain validation error. */
   message?: string;
 }
 export const EditResponseSslValidationErrorsItem = /*@__PURE__*/ S.suspend(() =>
@@ -1130,26 +1399,34 @@ export const EditResponseSslValidationRecordsItemEmailsList =
   ) as any as S.Schema<EditResponseSslValidationRecordsItemEmailsList>;
 
 export interface EditResponseSslValidationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: EditResponseSslValidationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const EditResponseSslValidationRecordsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       cname: S.optional(S.String),
-      cname_target: S.optional(S.String),
+      cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
       emails: S.optional(EditResponseSslValidationRecordsItemEmailsList),
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
       status: S.optional(S.String),
-      txt_name: S.optional(S.String),
-      txt_value: S.optional(S.String),
+      txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
     }),
 ).annotate({
   identifier: "EditResponseSslValidationRecordsItem",
@@ -1162,48 +1439,76 @@ export const EditResponseSslValidationRecordsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EditResponseSslValidationRecordsList>;
 
 export interface EditResponseSsl {
+  /** Custom hostname SSL identifier tag. */
   id?: string;
-  bundle_method?: unknown;
-  certificate_authority?: unknown;
-  custom_certificate?: string;
-  custom_csr_id?: string;
-  custom_key?: string;
-  dcv_delegation_records?: EditResponseSslDcvDelegationRecordsList;
-  expires_on?: string;
+  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
+  bundleMethod?: unknown;
+  /** The Certificate Authority that will issue the certificate. */
+  certificateAuthority?: unknown;
+  /** If a custom uploaded certificate is used. */
+  customCertificate?: string;
+  /** The identifier for the Custom CSR that was used. */
+  customCsrId?: string;
+  /** The key for a custom uploaded certificate. */
+  customKey?: string;
+  /** DCV Delegation records for domain validation. */
+  dcvDelegationRecords?: EditResponseSslDcvDelegationRecordsList;
+  /** The time the custom certificate expires on. */
+  expiresOn?: string;
+  /** A list of Hostnames on a custom uploaded certificate. */
   hosts?: EditResponseSslHostsList;
+  /** The issuer on a custom uploaded certificate. */
   issuer?: string;
+  /** Domain control validation (DCV) method used for this hostname. */
   method?: unknown;
-  serial_number?: string;
+  /** The serial number on a custom uploaded certificate. */
+  serialNumber?: string;
   settings?: EditResponseSslSettings;
+  /** The signature on a custom uploaded certificate. */
   signature?: string;
+  /** Status of the hostname's SSL certificates. */
   status?: EditResponseSslStatus;
+  /** Level of validation to be used for this hostname. Domain validation (dv) must be used. */
   type?: unknown;
-  uploaded_on?: string;
-  validation_errors?: EditResponseSslValidationErrorsList;
-  validation_records?: EditResponseSslValidationRecordsList;
+  /** The time the custom certificate was uploaded. */
+  uploadedOn?: string;
+  /** Domain validation errors that have been received by the certificate authority (CA). */
+  validationErrors?: EditResponseSslValidationErrorsList;
+  validationRecords?: EditResponseSslValidationRecordsList;
+  /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean;
 }
 export const EditResponseSsl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    bundle_method: S.optional(S.Unknown),
-    certificate_authority: S.optional(S.Unknown),
-    custom_certificate: S.optional(S.String),
-    custom_csr_id: S.optional(S.String),
-    custom_key: S.optional(S.String),
-    dcv_delegation_records: S.optional(EditResponseSslDcvDelegationRecordsList),
-    expires_on: S.optional(S.String),
+    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+    certificateAuthority: S.optional(
+      S.Unknown.pipe(T.Body("certificate_authority")),
+    ),
+    customCertificate: S.optional(S.String.pipe(T.Body("custom_certificate"))),
+    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
+    customKey: S.optional(S.String.pipe(T.Body("custom_key"))),
+    dcvDelegationRecords: S.optional(
+      EditResponseSslDcvDelegationRecordsList.pipe(
+        T.Body("dcv_delegation_records"),
+      ),
+    ),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
     hosts: S.optional(EditResponseSslHostsList),
     issuer: S.optional(S.String),
     method: S.optional(S.Unknown),
-    serial_number: S.optional(S.String),
+    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
     settings: S.optional(EditResponseSslSettings),
     signature: S.optional(S.String),
     status: S.optional(EditResponseSslStatus),
     type: S.optional(S.Unknown),
-    uploaded_on: S.optional(S.String),
-    validation_errors: S.optional(EditResponseSslValidationErrorsList),
-    validation_records: S.optional(EditResponseSslValidationRecordsList),
+    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    validationErrors: S.optional(
+      EditResponseSslValidationErrorsList.pipe(T.Body("validation_errors")),
+    ),
+    validationRecords: S.optional(
+      EditResponseSslValidationRecordsList.pipe(T.Body("validation_records")),
+    ),
     wildcard: S.optional(S.Boolean),
   }),
 ).annotate({
@@ -1224,42 +1529,63 @@ export const EditResponseVerificationErrorsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditResponse {
+  /** Identifier. */
   id: string;
+  /** The custom hostname that will point to your hostname via CNAME. */
   hostname: string;
-  created_at?: string;
-  custom_metadata?: EditResponseCustomMetadataMap;
-  custom_origin_server?: string;
-  custom_origin_sni?: string;
-  ownership_verification?: EditResponseOwnershipVerification;
-  ownership_verification_http?: EditResponseOwnershipVerificationHttp;
+  /** This is the time the hostname was created. */
+  createdAt?: string;
+  /** Unique key/value metadata for this hostname. These are per-hostname (customer) settings. */
+  customMetadata?: EditResponseCustomMetadataMap;
+  /** a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record. */
+  customOriginServer?: string;
+  /** A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request_host_header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server. */
+  customOriginSni?: string;
+  /** This is a record which can be placed to activate a hostname. */
+  ownershipVerification?: EditResponseOwnershipVerification;
+  /** This presents the token to be served by the given http url to activate a hostname. */
+  ownershipVerificationHttp?: EditResponseOwnershipVerificationHttp;
   ssl?: EditResponseSsl;
+  /** Status of the hostname's activation. */
   status?: EditResponseStatus;
-  verification_errors?: EditResponseVerificationErrorsList;
+  /** These are errors that were encountered while trying to activate a hostname. */
+  verificationErrors?: EditResponseVerificationErrorsList;
 }
 export const EditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     hostname: S.String,
-    created_at: S.optional(S.String),
-    custom_metadata: S.optional(EditResponseCustomMetadataMap),
-    custom_origin_server: S.optional(S.String),
-    custom_origin_sni: S.optional(S.String),
-    ownership_verification: S.optional(EditResponseOwnershipVerification),
-    ownership_verification_http: S.optional(
-      EditResponseOwnershipVerificationHttp,
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    customMetadata: S.optional(
+      EditResponseCustomMetadataMap.pipe(T.Body("custom_metadata")),
+    ),
+    customOriginServer: S.optional(
+      S.String.pipe(T.Body("custom_origin_server")),
+    ),
+    customOriginSni: S.optional(S.String.pipe(T.Body("custom_origin_sni"))),
+    ownershipVerification: S.optional(
+      EditResponseOwnershipVerification.pipe(T.Body("ownership_verification")),
+    ),
+    ownershipVerificationHttp: S.optional(
+      EditResponseOwnershipVerificationHttp.pipe(
+        T.Body("ownership_verification_http"),
+      ),
     ),
     ssl: S.optional(EditResponseSsl),
     status: S.optional(EditResponseStatus),
-    verification_errors: S.optional(EditResponseVerificationErrorsList),
+    verificationErrors: S.optional(
+      EditResponseVerificationErrorsList.pipe(T.Body("verification_errors")),
+    ),
   }),
 ).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
 
 export interface FallbackOriginDeleteRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const FallbackOriginDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1285,30 +1611,36 @@ export const FallbackOriginDeleteResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface FallbackOriginDeleteResponse {
-  created_at?: string;
+  /** This is the time the fallback origin was created. */
+  createdAt?: string;
+  /** These are errors that were encountered while trying to activate a fallback origin. */
   errors?: FallbackOriginDeleteResponseErrorsList;
+  /** Your origin hostname that requests to your custom hostnames will be sent to. */
   origin?: string;
+  /** Status of the fallback origin's activation. */
   status?: FallbackOriginDeleteResponseStatus;
-  updated_at?: string;
+  /** This is the time the fallback origin was updated. */
+  updatedAt?: string;
 }
 export const FallbackOriginDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created_at: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     errors: S.optional(FallbackOriginDeleteResponseErrorsList),
     origin: S.optional(S.String),
     status: S.optional(FallbackOriginDeleteResponseStatus),
-    updated_at: S.optional(S.String),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
   }),
 ).annotate({
   identifier: "FallbackOriginDeleteResponse",
 }) as any as S.Schema<FallbackOriginDeleteResponse>;
 
 export interface FallbackOriginGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const FallbackOriginGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1334,31 +1666,38 @@ export const FallbackOriginGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface FallbackOriginGetResponse {
-  created_at?: string;
+  /** This is the time the fallback origin was created. */
+  createdAt?: string;
+  /** These are errors that were encountered while trying to activate a fallback origin. */
   errors?: FallbackOriginGetResponseErrorsList;
+  /** Your origin hostname that requests to your custom hostnames will be sent to. */
   origin?: string;
+  /** Status of the fallback origin's activation. */
   status?: FallbackOriginGetResponseStatus;
-  updated_at?: string;
+  /** This is the time the fallback origin was updated. */
+  updatedAt?: string;
 }
 export const FallbackOriginGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created_at: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     errors: S.optional(FallbackOriginGetResponseErrorsList),
     origin: S.optional(S.String),
     status: S.optional(FallbackOriginGetResponseStatus),
-    updated_at: S.optional(S.String),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
   }),
 ).annotate({
   identifier: "FallbackOriginGetResponse",
 }) as any as S.Schema<FallbackOriginGetResponse>;
 
 export interface FallbackOriginUpdateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Your origin hostname that requests to your custom hostnames will be sent to. */
   origin: string;
 }
 export const FallbackOriginUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     origin: S.String,
   }).pipe(
     T.Http({
@@ -1385,32 +1724,39 @@ export const FallbackOriginUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface FallbackOriginUpdateResponse {
-  created_at?: string;
+  /** This is the time the fallback origin was created. */
+  createdAt?: string;
+  /** These are errors that were encountered while trying to activate a fallback origin. */
   errors?: FallbackOriginUpdateResponseErrorsList;
+  /** Your origin hostname that requests to your custom hostnames will be sent to. */
   origin?: string;
+  /** Status of the fallback origin's activation. */
   status?: FallbackOriginUpdateResponseStatus;
-  updated_at?: string;
+  /** This is the time the fallback origin was updated. */
+  updatedAt?: string;
 }
 export const FallbackOriginUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created_at: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     errors: S.optional(FallbackOriginUpdateResponseErrorsList),
     origin: S.optional(S.String),
     status: S.optional(FallbackOriginUpdateResponseStatus),
-    updated_at: S.optional(S.String),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
   }),
 ).annotate({
   identifier: "FallbackOriginUpdateResponse",
 }) as any as S.Schema<FallbackOriginUpdateResponse>;
 
 export interface GetRequest {
-  zone_id: string;
-  custom_hostname_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  customHostnameId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    custom_hostname_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    customHostnameId: S.String.pipe(T.Label("custom_hostname_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1432,8 +1778,11 @@ export type GetResponseOwnershipVerificationType = "txt" | (string & {});
 export const GetResponseOwnershipVerificationType = /*@__PURE__*/ S.String;
 
 export interface GetResponseOwnershipVerification {
+  /** DNS Name for record. */
   name?: string;
+  /** DNS Record type. */
   type?: GetResponseOwnershipVerificationType;
+  /** Content for the record. */
   value?: string;
 }
 export const GetResponseOwnershipVerification = /*@__PURE__*/ S.suspend(() =>
@@ -1447,14 +1796,16 @@ export const GetResponseOwnershipVerification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseOwnershipVerification>;
 
 export interface GetResponseOwnershipVerificationHttp {
-  http_body?: string;
-  http_url?: string;
+  /** Token to be served. */
+  httpBody?: string;
+  /** The HTTP URL that will be checked during custom hostname verification and where the customer should host the token. */
+  httpUrl?: string;
 }
 export const GetResponseOwnershipVerificationHttp = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
     }),
 ).annotate({
   identifier: "GetResponseOwnershipVerificationHttp",
@@ -1467,26 +1818,34 @@ export const GetResponseSslDcvDelegationRecordsItemEmailsList =
   ) as any as S.Schema<GetResponseSslDcvDelegationRecordsItemEmailsList>;
 
 export interface GetResponseSslDcvDelegationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: GetResponseSslDcvDelegationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const GetResponseSslDcvDelegationRecordsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       cname: S.optional(S.String),
-      cname_target: S.optional(S.String),
+      cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
       emails: S.optional(GetResponseSslDcvDelegationRecordsItemEmailsList),
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
       status: S.optional(S.String),
-      txt_name: S.optional(S.String),
-      txt_value: S.optional(S.String),
+      txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
     }),
 ).annotate({
   identifier: "GetResponseSslDcvDelegationRecordsItem",
@@ -1526,19 +1885,28 @@ export type GetResponseSslSettingsTls13 = "on" | "off" | (string & {});
 export const GetResponseSslSettingsTls13 = /*@__PURE__*/ S.String;
 
 export interface GetResponseSslSettings {
+  /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
   ciphers?: GetResponseSslSettingsCiphersList;
-  early_hints?: GetResponseSslSettingsEarlyHints;
+  /** Whether or not Early Hints is enabled. */
+  earlyHints?: GetResponseSslSettingsEarlyHints;
+  /** Whether or not HTTP2 is enabled. */
   http2?: GetResponseSslSettingsHttp2;
-  min_tls_version?: GetResponseSslSettingsMinTlsVersion;
-  tls_1_3?: GetResponseSslSettingsTls13;
+  /** The minimum TLS version supported. */
+  minTlsVersion?: GetResponseSslSettingsMinTlsVersion;
+  /** Whether or not TLS 1.3 is enabled. */
+  tls13?: GetResponseSslSettingsTls13;
 }
 export const GetResponseSslSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ciphers: S.optional(GetResponseSslSettingsCiphersList),
-    early_hints: S.optional(GetResponseSslSettingsEarlyHints),
+    earlyHints: S.optional(
+      GetResponseSslSettingsEarlyHints.pipe(T.Body("early_hints")),
+    ),
     http2: S.optional(GetResponseSslSettingsHttp2),
-    min_tls_version: S.optional(GetResponseSslSettingsMinTlsVersion),
-    tls_1_3: S.optional(GetResponseSslSettingsTls13),
+    minTlsVersion: S.optional(
+      GetResponseSslSettingsMinTlsVersion.pipe(T.Body("min_tls_version")),
+    ),
+    tls13: S.optional(GetResponseSslSettingsTls13.pipe(T.Body("tls_1_3"))),
   }),
 ).annotate({
   identifier: "GetResponseSslSettings",
@@ -1552,6 +1920,7 @@ export type GetResponseSslStatus =
 export const GetResponseSslStatus = /*@__PURE__*/ S.String;
 
 export interface GetResponseSslValidationErrorsItem {
+  /** A domain validation error. */
   message?: string;
 }
 export const GetResponseSslValidationErrorsItem = /*@__PURE__*/ S.suspend(() =>
@@ -1575,25 +1944,33 @@ export const GetResponseSslValidationRecordsItemEmailsList =
   ) as any as S.Schema<GetResponseSslValidationRecordsItemEmailsList>;
 
 export interface GetResponseSslValidationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: GetResponseSslValidationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const GetResponseSslValidationRecordsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cname: S.optional(S.String),
-    cname_target: S.optional(S.String),
+    cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
     emails: S.optional(GetResponseSslValidationRecordsItemEmailsList),
-    http_body: S.optional(S.String),
-    http_url: S.optional(S.String),
+    httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+    httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
     status: S.optional(S.String),
-    txt_name: S.optional(S.String),
-    txt_value: S.optional(S.String),
+    txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+    txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
   }),
 ).annotate({
   identifier: "GetResponseSslValidationRecordsItem",
@@ -1606,48 +1983,76 @@ export const GetResponseSslValidationRecordsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetResponseSslValidationRecordsList>;
 
 export interface GetResponseSsl {
+  /** Custom hostname SSL identifier tag. */
   id?: string;
-  bundle_method?: unknown;
-  certificate_authority?: unknown;
-  custom_certificate?: string;
-  custom_csr_id?: string;
-  custom_key?: string;
-  dcv_delegation_records?: GetResponseSslDcvDelegationRecordsList;
-  expires_on?: string;
+  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
+  bundleMethod?: unknown;
+  /** The Certificate Authority that will issue the certificate. */
+  certificateAuthority?: unknown;
+  /** If a custom uploaded certificate is used. */
+  customCertificate?: string;
+  /** The identifier for the Custom CSR that was used. */
+  customCsrId?: string;
+  /** The key for a custom uploaded certificate. */
+  customKey?: string;
+  /** DCV Delegation records for domain validation. */
+  dcvDelegationRecords?: GetResponseSslDcvDelegationRecordsList;
+  /** The time the custom certificate expires on. */
+  expiresOn?: string;
+  /** A list of Hostnames on a custom uploaded certificate. */
   hosts?: GetResponseSslHostsList;
+  /** The issuer on a custom uploaded certificate. */
   issuer?: string;
+  /** Domain control validation (DCV) method used for this hostname. */
   method?: unknown;
-  serial_number?: string;
+  /** The serial number on a custom uploaded certificate. */
+  serialNumber?: string;
   settings?: GetResponseSslSettings;
+  /** The signature on a custom uploaded certificate. */
   signature?: string;
+  /** Status of the hostname's SSL certificates. */
   status?: GetResponseSslStatus;
+  /** Level of validation to be used for this hostname. Domain validation (dv) must be used. */
   type?: unknown;
-  uploaded_on?: string;
-  validation_errors?: GetResponseSslValidationErrorsList;
-  validation_records?: GetResponseSslValidationRecordsList;
+  /** The time the custom certificate was uploaded. */
+  uploadedOn?: string;
+  /** Domain validation errors that have been received by the certificate authority (CA). */
+  validationErrors?: GetResponseSslValidationErrorsList;
+  validationRecords?: GetResponseSslValidationRecordsList;
+  /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean;
 }
 export const GetResponseSsl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    bundle_method: S.optional(S.Unknown),
-    certificate_authority: S.optional(S.Unknown),
-    custom_certificate: S.optional(S.String),
-    custom_csr_id: S.optional(S.String),
-    custom_key: S.optional(S.String),
-    dcv_delegation_records: S.optional(GetResponseSslDcvDelegationRecordsList),
-    expires_on: S.optional(S.String),
+    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+    certificateAuthority: S.optional(
+      S.Unknown.pipe(T.Body("certificate_authority")),
+    ),
+    customCertificate: S.optional(S.String.pipe(T.Body("custom_certificate"))),
+    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
+    customKey: S.optional(S.String.pipe(T.Body("custom_key"))),
+    dcvDelegationRecords: S.optional(
+      GetResponseSslDcvDelegationRecordsList.pipe(
+        T.Body("dcv_delegation_records"),
+      ),
+    ),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
     hosts: S.optional(GetResponseSslHostsList),
     issuer: S.optional(S.String),
     method: S.optional(S.Unknown),
-    serial_number: S.optional(S.String),
+    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
     settings: S.optional(GetResponseSslSettings),
     signature: S.optional(S.String),
     status: S.optional(GetResponseSslStatus),
     type: S.optional(S.Unknown),
-    uploaded_on: S.optional(S.String),
-    validation_errors: S.optional(GetResponseSslValidationErrorsList),
-    validation_records: S.optional(GetResponseSslValidationRecordsList),
+    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    validationErrors: S.optional(
+      GetResponseSslValidationErrorsList.pipe(T.Body("validation_errors")),
+    ),
+    validationRecords: S.optional(
+      GetResponseSslValidationRecordsList.pipe(T.Body("validation_records")),
+    ),
     wildcard: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "GetResponseSsl" }) as any as S.Schema<GetResponseSsl>;
@@ -1666,33 +2071,53 @@ export const GetResponseVerificationErrorsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
+  /** Identifier. */
   id: string;
+  /** The custom hostname that will point to your hostname via CNAME. */
   hostname: string;
-  created_at?: string;
-  custom_metadata?: GetResponseCustomMetadataMap;
-  custom_origin_server?: string;
-  custom_origin_sni?: string;
-  ownership_verification?: GetResponseOwnershipVerification;
-  ownership_verification_http?: GetResponseOwnershipVerificationHttp;
+  /** This is the time the hostname was created. */
+  createdAt?: string;
+  /** Unique key/value metadata for this hostname. These are per-hostname (customer) settings. */
+  customMetadata?: GetResponseCustomMetadataMap;
+  /** a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record. */
+  customOriginServer?: string;
+  /** A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request_host_header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server. */
+  customOriginSni?: string;
+  /** This is a record which can be placed to activate a hostname. */
+  ownershipVerification?: GetResponseOwnershipVerification;
+  /** This presents the token to be served by the given http url to activate a hostname. */
+  ownershipVerificationHttp?: GetResponseOwnershipVerificationHttp;
   ssl?: GetResponseSsl;
+  /** Status of the hostname's activation. */
   status?: GetResponseStatus;
-  verification_errors?: GetResponseVerificationErrorsList;
+  /** These are errors that were encountered while trying to activate a hostname. */
+  verificationErrors?: GetResponseVerificationErrorsList;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     hostname: S.String,
-    created_at: S.optional(S.String),
-    custom_metadata: S.optional(GetResponseCustomMetadataMap),
-    custom_origin_server: S.optional(S.String),
-    custom_origin_sni: S.optional(S.String),
-    ownership_verification: S.optional(GetResponseOwnershipVerification),
-    ownership_verification_http: S.optional(
-      GetResponseOwnershipVerificationHttp,
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    customMetadata: S.optional(
+      GetResponseCustomMetadataMap.pipe(T.Body("custom_metadata")),
+    ),
+    customOriginServer: S.optional(
+      S.String.pipe(T.Body("custom_origin_server")),
+    ),
+    customOriginSni: S.optional(S.String.pipe(T.Body("custom_origin_sni"))),
+    ownershipVerification: S.optional(
+      GetResponseOwnershipVerification.pipe(T.Body("ownership_verification")),
+    ),
+    ownershipVerificationHttp: S.optional(
+      GetResponseOwnershipVerificationHttp.pipe(
+        T.Body("ownership_verification_http"),
+      ),
     ),
     ssl: S.optional(GetResponseSsl),
     status: S.optional(GetResponseStatus),
-    verification_errors: S.optional(GetResponseVerificationErrorsList),
+    verificationErrors: S.optional(
+      GetResponseVerificationErrorsList.pipe(T.Body("verification_errors")),
+    ),
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
@@ -1724,36 +2149,52 @@ export type ListRequestSslStatus =
 export const ListRequestSslStatus = /*@__PURE__*/ S.String;
 
 export interface ListRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the 'hostname', 'hostname.exact', 'hostname.contain', or 'hostname.startsWith' parameters. */
   id?: string;
-  certificate_authority?: ListRequestCertificateAuthority;
-  custom_origin_server?: string;
+  /** Filter by the certificate authority that issued the SSL certificate. */
+  certificateAuthority?: ListRequestCertificateAuthority;
+  /** Filter by custom origin server name. */
+  customOriginServer?: string;
+  /** Direction to order hostnames. */
   direction?: ListRequestDirection;
   hostname?: string;
-  hostname_status?: ListRequestHostnameStatus;
+  /** Filter by the hostname's activation status. */
+  hostnameStatus?: ListRequestHostnameStatus;
+  /** Field to order hostnames by. */
   order?: ListRequestOrder;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
+  /** Number of hostnames per page. */
+  perPage?: number;
+  /** Whether to filter hostnames based on if they have SSL enabled. */
   ssl?: string;
-  ssl_status?: ListRequestSslStatus;
+  /** Filter by SSL certificate status. */
+  sslStatus?: ListRequestSslStatus;
+  /** Filter by whether the custom hostname is a wildcard hostname. */
   wildcard?: boolean;
 }
 export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     id: S.optional(S.String.pipe(T.Query())),
-    certificate_authority: S.optional(
-      ListRequestCertificateAuthority.pipe(T.Query()),
+    certificateAuthority: S.optional(
+      ListRequestCertificateAuthority.pipe(T.Query("certificate_authority")),
     ),
-    custom_origin_server: S.optional(S.String.pipe(T.Query())),
+    customOriginServer: S.optional(
+      S.String.pipe(T.Query("custom_origin_server")),
+    ),
     direction: S.optional(ListRequestDirection.pipe(T.Query())),
     hostname: S.optional(S.String.pipe(T.Query())),
-    hostname_status: S.optional(ListRequestHostnameStatus.pipe(T.Query())),
+    hostnameStatus: S.optional(
+      ListRequestHostnameStatus.pipe(T.Query("hostname_status")),
+    ),
     order: S.optional(ListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     ssl: S.optional(S.String.pipe(T.Query())),
-    ssl_status: S.optional(ListRequestSslStatus.pipe(T.Query())),
+    sslStatus: S.optional(ListRequestSslStatus.pipe(T.Query("ssl_status"))),
     wildcard: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -1776,8 +2217,11 @@ export type ListResultItemOwnershipVerificationType = "txt" | (string & {});
 export const ListResultItemOwnershipVerificationType = /*@__PURE__*/ S.String;
 
 export interface ListResultItemOwnershipVerification {
+  /** DNS Name for record. */
   name?: string;
+  /** DNS Record type. */
   type?: ListResultItemOwnershipVerificationType;
+  /** Content for the record. */
   value?: string;
 }
 export const ListResultItemOwnershipVerification = /*@__PURE__*/ S.suspend(() =>
@@ -1791,14 +2235,16 @@ export const ListResultItemOwnershipVerification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemOwnershipVerification>;
 
 export interface ListResultItemOwnershipVerificationHttp {
-  http_body?: string;
-  http_url?: string;
+  /** Token to be served. */
+  httpBody?: string;
+  /** The HTTP URL that will be checked during custom hostname verification and where the customer should host the token. */
+  httpUrl?: string;
 }
 export const ListResultItemOwnershipVerificationHttp = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
     }),
 ).annotate({
   identifier: "ListResultItemOwnershipVerificationHttp",
@@ -1811,26 +2257,34 @@ export const ListResultItemSslDcvDelegationRecordsItemEmailsList =
   ) as any as S.Schema<ListResultItemSslDcvDelegationRecordsItemEmailsList>;
 
 export interface ListResultItemSslDcvDelegationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: ListResultItemSslDcvDelegationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const ListResultItemSslDcvDelegationRecordsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cname: S.optional(S.String),
-      cname_target: S.optional(S.String),
+      cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
       emails: S.optional(ListResultItemSslDcvDelegationRecordsItemEmailsList),
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
       status: S.optional(S.String),
-      txt_name: S.optional(S.String),
-      txt_value: S.optional(S.String),
+      txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
     }),
   ).annotate({
     identifier: "ListResultItemSslDcvDelegationRecordsItem",
@@ -1870,19 +2324,28 @@ export type ListResultItemSslSettingsTls13 = "on" | "off" | (string & {});
 export const ListResultItemSslSettingsTls13 = /*@__PURE__*/ S.String;
 
 export interface ListResultItemSslSettings {
+  /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
   ciphers?: ListResultItemSslSettingsCiphersList;
-  early_hints?: ListResultItemSslSettingsEarlyHints;
+  /** Whether or not Early Hints is enabled. */
+  earlyHints?: ListResultItemSslSettingsEarlyHints;
+  /** Whether or not HTTP2 is enabled. */
   http2?: ListResultItemSslSettingsHttp2;
-  min_tls_version?: ListResultItemSslSettingsMinTlsVersion;
-  tls_1_3?: ListResultItemSslSettingsTls13;
+  /** The minimum TLS version supported. */
+  minTlsVersion?: ListResultItemSslSettingsMinTlsVersion;
+  /** Whether or not TLS 1.3 is enabled. */
+  tls13?: ListResultItemSslSettingsTls13;
 }
 export const ListResultItemSslSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ciphers: S.optional(ListResultItemSslSettingsCiphersList),
-    early_hints: S.optional(ListResultItemSslSettingsEarlyHints),
+    earlyHints: S.optional(
+      ListResultItemSslSettingsEarlyHints.pipe(T.Body("early_hints")),
+    ),
     http2: S.optional(ListResultItemSslSettingsHttp2),
-    min_tls_version: S.optional(ListResultItemSslSettingsMinTlsVersion),
-    tls_1_3: S.optional(ListResultItemSslSettingsTls13),
+    minTlsVersion: S.optional(
+      ListResultItemSslSettingsMinTlsVersion.pipe(T.Body("min_tls_version")),
+    ),
+    tls13: S.optional(ListResultItemSslSettingsTls13.pipe(T.Body("tls_1_3"))),
   }),
 ).annotate({
   identifier: "ListResultItemSslSettings",
@@ -1896,6 +2359,7 @@ export type ListResultItemSslStatus =
 export const ListResultItemSslStatus = /*@__PURE__*/ S.String;
 
 export interface ListResultItemSslValidationErrorsItem {
+  /** A domain validation error. */
   message?: string;
 }
 export const ListResultItemSslValidationErrorsItem = /*@__PURE__*/ S.suspend(
@@ -1920,26 +2384,34 @@ export const ListResultItemSslValidationRecordsItemEmailsList =
   ) as any as S.Schema<ListResultItemSslValidationRecordsItemEmailsList>;
 
 export interface ListResultItemSslValidationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: ListResultItemSslValidationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const ListResultItemSslValidationRecordsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       cname: S.optional(S.String),
-      cname_target: S.optional(S.String),
+      cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
       emails: S.optional(ListResultItemSslValidationRecordsItemEmailsList),
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
       status: S.optional(S.String),
-      txt_name: S.optional(S.String),
-      txt_value: S.optional(S.String),
+      txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
     }),
 ).annotate({
   identifier: "ListResultItemSslValidationRecordsItem",
@@ -1952,50 +2424,76 @@ export const ListResultItemSslValidationRecordsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResultItemSslValidationRecordsList>;
 
 export interface ListResultItemSsl {
+  /** Custom hostname SSL identifier tag. */
   id?: string;
-  bundle_method?: unknown;
-  certificate_authority?: unknown;
-  custom_certificate?: string;
-  custom_csr_id?: string;
-  custom_key?: string;
-  dcv_delegation_records?: ListResultItemSslDcvDelegationRecordsList;
-  expires_on?: string;
+  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
+  bundleMethod?: unknown;
+  /** The Certificate Authority that will issue the certificate. */
+  certificateAuthority?: unknown;
+  /** If a custom uploaded certificate is used. */
+  customCertificate?: string;
+  /** The identifier for the Custom CSR that was used. */
+  customCsrId?: string;
+  /** The key for a custom uploaded certificate. */
+  customKey?: string;
+  /** DCV Delegation records for domain validation. */
+  dcvDelegationRecords?: ListResultItemSslDcvDelegationRecordsList;
+  /** The time the custom certificate expires on. */
+  expiresOn?: string;
+  /** A list of Hostnames on a custom uploaded certificate. */
   hosts?: ListResultItemSslHostsList;
+  /** The issuer on a custom uploaded certificate. */
   issuer?: string;
+  /** Domain control validation (DCV) method used for this hostname. */
   method?: unknown;
-  serial_number?: string;
+  /** The serial number on a custom uploaded certificate. */
+  serialNumber?: string;
   settings?: ListResultItemSslSettings;
+  /** The signature on a custom uploaded certificate. */
   signature?: string;
+  /** Status of the hostname's SSL certificates. */
   status?: ListResultItemSslStatus;
+  /** Level of validation to be used for this hostname. Domain validation (dv) must be used. */
   type?: unknown;
-  uploaded_on?: string;
-  validation_errors?: ListResultItemSslValidationErrorsList;
-  validation_records?: ListResultItemSslValidationRecordsList;
+  /** The time the custom certificate was uploaded. */
+  uploadedOn?: string;
+  /** Domain validation errors that have been received by the certificate authority (CA). */
+  validationErrors?: ListResultItemSslValidationErrorsList;
+  validationRecords?: ListResultItemSslValidationRecordsList;
+  /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean;
 }
 export const ListResultItemSsl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    bundle_method: S.optional(S.Unknown),
-    certificate_authority: S.optional(S.Unknown),
-    custom_certificate: S.optional(S.String),
-    custom_csr_id: S.optional(S.String),
-    custom_key: S.optional(S.String),
-    dcv_delegation_records: S.optional(
-      ListResultItemSslDcvDelegationRecordsList,
+    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+    certificateAuthority: S.optional(
+      S.Unknown.pipe(T.Body("certificate_authority")),
     ),
-    expires_on: S.optional(S.String),
+    customCertificate: S.optional(S.String.pipe(T.Body("custom_certificate"))),
+    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
+    customKey: S.optional(S.String.pipe(T.Body("custom_key"))),
+    dcvDelegationRecords: S.optional(
+      ListResultItemSslDcvDelegationRecordsList.pipe(
+        T.Body("dcv_delegation_records"),
+      ),
+    ),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
     hosts: S.optional(ListResultItemSslHostsList),
     issuer: S.optional(S.String),
     method: S.optional(S.Unknown),
-    serial_number: S.optional(S.String),
+    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
     settings: S.optional(ListResultItemSslSettings),
     signature: S.optional(S.String),
     status: S.optional(ListResultItemSslStatus),
     type: S.optional(S.Unknown),
-    uploaded_on: S.optional(S.String),
-    validation_errors: S.optional(ListResultItemSslValidationErrorsList),
-    validation_records: S.optional(ListResultItemSslValidationRecordsList),
+    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+    validationErrors: S.optional(
+      ListResultItemSslValidationErrorsList.pipe(T.Body("validation_errors")),
+    ),
+    validationRecords: S.optional(
+      ListResultItemSslValidationRecordsList.pipe(T.Body("validation_records")),
+    ),
     wildcard: S.optional(S.Boolean),
   }),
 ).annotate({
@@ -2015,33 +2513,55 @@ export const ListResultItemVerificationErrorsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResultItemVerificationErrorsList>;
 
 export interface ListResultItem {
+  /** Identifier. */
   id: string;
+  /** The custom hostname that will point to your hostname via CNAME. */
   hostname: string;
-  created_at?: string;
-  custom_metadata?: ListResultItemCustomMetadataMap;
-  custom_origin_server?: string;
-  custom_origin_sni?: string;
-  ownership_verification?: ListResultItemOwnershipVerification;
-  ownership_verification_http?: ListResultItemOwnershipVerificationHttp;
+  /** This is the time the hostname was created. */
+  createdAt?: string;
+  /** Unique key/value metadata for this hostname. These are per-hostname (customer) settings. */
+  customMetadata?: ListResultItemCustomMetadataMap;
+  /** a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record. */
+  customOriginServer?: string;
+  /** A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request_host_header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server. */
+  customOriginSni?: string;
+  /** This is a record which can be placed to activate a hostname. */
+  ownershipVerification?: ListResultItemOwnershipVerification;
+  /** This presents the token to be served by the given http url to activate a hostname. */
+  ownershipVerificationHttp?: ListResultItemOwnershipVerificationHttp;
   ssl?: ListResultItemSsl;
+  /** Status of the hostname's activation. */
   status?: ListResultItemStatus;
-  verification_errors?: ListResultItemVerificationErrorsList;
+  /** These are errors that were encountered while trying to activate a hostname. */
+  verificationErrors?: ListResultItemVerificationErrorsList;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     hostname: S.String,
-    created_at: S.optional(S.String),
-    custom_metadata: S.optional(ListResultItemCustomMetadataMap),
-    custom_origin_server: S.optional(S.String),
-    custom_origin_sni: S.optional(S.String),
-    ownership_verification: S.optional(ListResultItemOwnershipVerification),
-    ownership_verification_http: S.optional(
-      ListResultItemOwnershipVerificationHttp,
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    customMetadata: S.optional(
+      ListResultItemCustomMetadataMap.pipe(T.Body("custom_metadata")),
+    ),
+    customOriginServer: S.optional(
+      S.String.pipe(T.Body("custom_origin_server")),
+    ),
+    customOriginSni: S.optional(S.String.pipe(T.Body("custom_origin_sni"))),
+    ownershipVerification: S.optional(
+      ListResultItemOwnershipVerification.pipe(
+        T.Body("ownership_verification"),
+      ),
+    ),
+    ownershipVerificationHttp: S.optional(
+      ListResultItemOwnershipVerificationHttp.pipe(
+        T.Body("ownership_verification_http"),
+      ),
     ),
     ssl: S.optional(ListResultItemSsl),
     status: S.optional(ListResultItemStatus),
-    verification_errors: S.optional(ListResultItemVerificationErrorsList),
+    verificationErrors: S.optional(
+      ListResultItemVerificationErrorsList.pipe(T.Body("verification_errors")),
+    ),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
@@ -2051,6 +2571,7 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResultList>;
 
 export interface ListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
 export const ListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2059,11 +2580,12 @@ export const ListResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
 
+export type CertificatePackCertificatesDeleteError = CloudflareOpError;
 /** Delete a single custom certificate from a certificate pack that contains two bundled certificates. Deletion is subject to the following constraints. You cannot delete a certificate if it is the only remaining certificate in the pack. At least one certificate must remain in the pack. */
-export const CertificatePackCertificatesDelete: API.OperationMethod<
+export const certificatePackCertificatesDelete: API.OperationMethod<
   CertificatePackCertificatesDeleteRequest,
   CertificatePackCertificatesDeleteResponse,
-  CloudflareOpError,
+  CertificatePackCertificatesDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CertificatePackCertificatesDeleteRequest,
@@ -2072,11 +2594,12 @@ export const CertificatePackCertificatesDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CertificatePackCertificatesUpdateError = CloudflareOpError;
 /** Replace a single custom certificate within a certificate pack that contains two bundled certificates. The replacement must adhere to the following constraints. You can only replace an RSA certificate with another RSA certificate or an ECDSA certificate with another ECDSA certificate. */
-export const CertificatePackCertificatesUpdate: API.OperationMethod<
+export const certificatePackCertificatesUpdate: API.OperationMethod<
   CertificatePackCertificatesUpdateRequest,
   CertificatePackCertificatesUpdateResponse,
-  CloudflareOpError,
+  CertificatePackCertificatesUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CertificatePackCertificatesUpdateRequest,
@@ -2085,11 +2608,12 @@ export const CertificatePackCertificatesUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CreateError = CloudflareOpError;
 /** Add a new custom hostname and request that an SSL certificate be issued for it. One of three validation methods—http, txt, email—should be used, with 'http' recommended if the CNAME is already in place (or will be soon). Specifying 'email' will send an email to the WHOIS contacts on file for the base domain plus hostmaster, postmaster, webmaster, admin, administrator. If http is used and the domain is not already pointing to the Managed CNAME host, the PATCH method must be used once it is (to complete validation). Enable bundling of certificates using the custom_cert_bundle field. The bundling process requires the following condition One certificate in the bundle must use an RSA, and the other must use an ECDSA. */
-export const Create: API.OperationMethod<
+export const create: API.OperationMethod<
   CreateRequest,
   CreateResponse,
-  CloudflareOpError,
+  CreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRequest,
@@ -2098,11 +2622,12 @@ export const Create: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DeleteError = CloudflareOpError;
 /** Permanently deletes a custom hostname and revokes any SSL certificates that were issued for it. This action cannot be undone. */
 export const Delete: API.OperationMethod<
   DeleteRequest,
   DeleteResponse,
-  CloudflareOpError,
+  DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequest,
@@ -2111,11 +2636,12 @@ export const Delete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type EditError = CloudflareOpError;
 /** Modify SSL configuration for a custom hostname. When sent with SSL config that matches existing config, used to indicate that hostname should pass domain control validation (DCV). Can also be used to change validation type, e.g., from 'http' to 'email'. Bundle an existing certificate with another certificate by using the "custom_cert_bundle" field. The bundling process supports combining certificates as long as the following condition is met. One certificate must use the RSA algorithm, and the other must use the ECDSA algorithm. */
-export const Edit: API.OperationMethod<
+export const edit: API.OperationMethod<
   EditRequest,
   EditResponse,
-  CloudflareOpError,
+  EditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EditRequest,
@@ -2124,11 +2650,12 @@ export const Edit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type FallbackOriginDeleteError = CloudflareOpError;
 /** Removes the fallback origin configuration for custom hostnames on a zone. Custom hostnames without specific origins will no longer have a fallback. */
-export const FallbackOriginDelete: API.OperationMethod<
+export const fallbackOriginDelete: API.OperationMethod<
   FallbackOriginDeleteRequest,
   FallbackOriginDeleteResponse,
-  CloudflareOpError,
+  FallbackOriginDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: FallbackOriginDeleteRequest,
@@ -2137,11 +2664,12 @@ export const FallbackOriginDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type FallbackOriginGetError = CloudflareOpError;
 /** Retrieves the current fallback origin configuration for custom hostnames on a zone. The fallback origin handles traffic when specific custom hostname origins are unavailable. */
-export const FallbackOriginGet: API.OperationMethod<
+export const fallbackOriginGet: API.OperationMethod<
   FallbackOriginGetRequest,
   FallbackOriginGetResponse,
-  CloudflareOpError,
+  FallbackOriginGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: FallbackOriginGetRequest,
@@ -2150,11 +2678,12 @@ export const FallbackOriginGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type FallbackOriginUpdateError = CloudflareOpError;
 /** Updates the fallback origin configuration for custom hostnames on a zone. Sets the default origin server for custom hostname traffic. */
-export const FallbackOriginUpdate: API.OperationMethod<
+export const fallbackOriginUpdate: API.OperationMethod<
   FallbackOriginUpdateRequest,
   FallbackOriginUpdateResponse,
-  CloudflareOpError,
+  FallbackOriginUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: FallbackOriginUpdateRequest,
@@ -2163,11 +2692,12 @@ export const FallbackOriginUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Retrieves detailed information about a specific custom hostname, including SSL certificate status, ownership verification, and origin configuration. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -2176,11 +2706,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ListError = CloudflareOpError;
 /** List, search, sort, and filter all of your custom hostnames. */
-export const List: API.OperationMethod<
+export const list: API.OperationMethod<
   ListRequest,
   ListResponse,
-  CloudflareOpError,
+  ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRequest,

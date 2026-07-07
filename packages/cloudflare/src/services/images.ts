@@ -10,13 +10,15 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface V1BlobsGetRequest {
-  account_id: string;
-  image_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** Image unique identifier. */
+  imageId: string;
 }
 export const V1BlobsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    image_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    imageId: S.String.pipe(T.Label("image_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -36,11 +38,12 @@ export const V1BlobsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1BlobsGetResponse>;
 
 export interface V1CreateRequest {
-  account_id: string;
+  /** Account identifier tag. */
+  accountId: string;
 }
 export const V1CreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -52,25 +55,52 @@ export const V1CreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1CreateRequest",
 }) as any as S.Schema<V1CreateRequest>;
 
+export type V1CreateResponseVariantsList = string[];
+export const V1CreateResponseVariantsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<V1CreateResponseVariantsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface V1CreateResponse {
-  result?: unknown;
+  /** Image unique identifier. */
+  id?: string;
+  /** Can set the creator field with an internal user ID. */
+  creator?: string;
+  /** Image file name. */
+  filename?: string;
+  /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes. */
+  meta?: unknown;
+  /** Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
+  requireSignedURLs?: boolean;
+  /** When the media item was uploaded. */
+  uploaded?: string;
+  /** Object specifying available variants for an image. */
+  variants?: V1CreateResponseVariantsList;
 }
 export const V1CreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    creator: S.optional(S.String),
+    filename: S.optional(S.String),
+    meta: S.optional(S.Unknown),
+    requireSignedURLs: S.optional(S.Boolean),
+    uploaded: S.optional(S.String),
+    variants: S.optional(V1CreateResponseVariantsList),
   }),
 ).annotate({
   identifier: "V1CreateResponse",
 }) as any as S.Schema<V1CreateResponse>;
 
 export interface V1DeleteRequest {
-  account_id: string;
-  image_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** Image unique identifier. */
+  imageId: string;
 }
 export const V1DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    image_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    imageId: S.String.pipe(T.Label("image_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -82,28 +112,36 @@ export const V1DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1DeleteRequest",
 }) as any as S.Schema<V1DeleteRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface V1DeleteResponse {
-  result?: unknown;
+  unknown: unknown;
+  string: unknown;
 }
 export const V1DeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    unknown: S.Unknown,
+    string: S.Unknown,
   }),
 ).annotate({
   identifier: "V1DeleteResponse",
 }) as any as S.Schema<V1DeleteResponse>;
 
 export interface V1EditRequest {
-  account_id: string;
-  image_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** Image unique identifier. */
+  imageId: string;
+  /** Can set the creator field with an internal user ID. */
   creator?: string;
+  /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. No change if not specified. */
   metadata?: unknown;
+  /** Indicates whether the image can be accessed using only its UID. If set to `true`, a signed token needs to be generated with a signing key to view the image. Returns a new UID on a change. No change if not specified. */
   requireSignedURLs?: boolean;
 }
 export const V1EditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    image_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    imageId: S.String.pipe(T.Label("image_id")),
     creator: S.optional(S.String),
     metadata: S.optional(S.Unknown),
     requireSignedURLs: S.optional(S.Boolean),
@@ -116,23 +154,50 @@ export const V1EditRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "V1EditRequest" }) as any as S.Schema<V1EditRequest>;
 
+export type V1EditResponseVariantsList = string[];
+export const V1EditResponseVariantsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<V1EditResponseVariantsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface V1EditResponse {
-  result?: unknown;
+  /** Image unique identifier. */
+  id?: string;
+  /** Can set the creator field with an internal user ID. */
+  creator?: string;
+  /** Image file name. */
+  filename?: string;
+  /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes. */
+  meta?: unknown;
+  /** Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
+  requireSignedURLs?: boolean;
+  /** When the media item was uploaded. */
+  uploaded?: string;
+  /** Object specifying available variants for an image. */
+  variants?: V1EditResponseVariantsList;
 }
 export const V1EditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    creator: S.optional(S.String),
+    filename: S.optional(S.String),
+    meta: S.optional(S.Unknown),
+    requireSignedURLs: S.optional(S.Boolean),
+    uploaded: S.optional(S.String),
+    variants: S.optional(V1EditResponseVariantsList),
   }),
 ).annotate({ identifier: "V1EditResponse" }) as any as S.Schema<V1EditResponse>;
 
 export interface V1GetRequest {
-  account_id: string;
-  image_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** Image unique identifier. */
+  imageId: string;
 }
 export const V1GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    image_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    imageId: S.String.pipe(T.Label("image_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -142,23 +207,49 @@ export const V1GetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "V1GetRequest" }) as any as S.Schema<V1GetRequest>;
 
+export type V1GetResponseVariantsList = string[];
+export const V1GetResponseVariantsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<V1GetResponseVariantsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface V1GetResponse {
-  result?: unknown;
+  /** Image unique identifier. */
+  id?: string;
+  /** Can set the creator field with an internal user ID. */
+  creator?: string;
+  /** Image file name. */
+  filename?: string;
+  /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes. */
+  meta?: unknown;
+  /** Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
+  requireSignedURLs?: boolean;
+  /** When the media item was uploaded. */
+  uploaded?: string;
+  /** Object specifying available variants for an image. */
+  variants?: V1GetResponseVariantsList;
 }
 export const V1GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    creator: S.optional(S.String),
+    filename: S.optional(S.String),
+    meta: S.optional(S.Unknown),
+    requireSignedURLs: S.optional(S.Boolean),
+    uploaded: S.optional(S.String),
+    variants: S.optional(V1GetResponseVariantsList),
   }),
 ).annotate({ identifier: "V1GetResponse" }) as any as S.Schema<V1GetResponse>;
 
 export interface V1KeysDeleteRequest {
-  account_id: string;
-  signing_key_name: string;
+  /** Account identifier tag. */
+  accountId: string;
+  signingKeyName: string;
 }
 export const V1KeysDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    signing_key_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    signingKeyName: S.String.pipe(T.Label("signing_key_name")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -170,9 +261,24 @@ export const V1KeysDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1KeysDeleteRequest",
 }) as any as S.Schema<V1KeysDeleteRequest>;
 
-export type V1KeysDeleteResponseKeysList = unknown[];
+export interface V1KeysDeleteResponseKeysItem {
+  /** Key name. */
+  name?: string;
+  /** Key value. */
+  value?: string;
+}
+export const V1KeysDeleteResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "V1KeysDeleteResponseKeysItem",
+}) as any as S.Schema<V1KeysDeleteResponseKeysItem>;
+
+export type V1KeysDeleteResponseKeysList = V1KeysDeleteResponseKeysItem[];
 export const V1KeysDeleteResponseKeysList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  V1KeysDeleteResponseKeysItem,
 ) as any as S.Schema<V1KeysDeleteResponseKeysList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -188,11 +294,12 @@ export const V1KeysDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1KeysDeleteResponse>;
 
 export interface V1KeysListRequest {
-  account_id: string;
+  /** Account identifier tag. */
+  accountId: string;
 }
 export const V1KeysListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -204,9 +311,24 @@ export const V1KeysListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1KeysListRequest",
 }) as any as S.Schema<V1KeysListRequest>;
 
-export type V1KeysListResponseKeysList = unknown[];
+export interface V1KeysListResponseKeysItem {
+  /** Key name. */
+  name?: string;
+  /** Key value. */
+  value?: string;
+}
+export const V1KeysListResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "V1KeysListResponseKeysItem",
+}) as any as S.Schema<V1KeysListResponseKeysItem>;
+
+export type V1KeysListResponseKeysList = V1KeysListResponseKeysItem[];
 export const V1KeysListResponseKeysList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  V1KeysListResponseKeysItem,
 ) as any as S.Schema<V1KeysListResponseKeysList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -222,13 +344,14 @@ export const V1KeysListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1KeysListResponse>;
 
 export interface V1KeysUpdateRequest {
-  account_id: string;
-  signing_key_name: string;
+  /** Account identifier tag. */
+  accountId: string;
+  signingKeyName: string;
 }
 export const V1KeysUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    signing_key_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    signingKeyName: S.String.pipe(T.Label("signing_key_name")),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -240,9 +363,24 @@ export const V1KeysUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1KeysUpdateRequest",
 }) as any as S.Schema<V1KeysUpdateRequest>;
 
-export type V1KeysUpdateResponseKeysList = unknown[];
+export interface V1KeysUpdateResponseKeysItem {
+  /** Key name. */
+  name?: string;
+  /** Key value. */
+  value?: string;
+}
+export const V1KeysUpdateResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "V1KeysUpdateResponseKeysItem",
+}) as any as S.Schema<V1KeysUpdateResponseKeysItem>;
+
+export type V1KeysUpdateResponseKeysList = V1KeysUpdateResponseKeysItem[];
 export const V1KeysUpdateResponseKeysList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  V1KeysUpdateResponseKeysItem,
 ) as any as S.Schema<V1KeysUpdateResponseKeysList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -258,17 +396,21 @@ export const V1KeysUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1KeysUpdateResponse>;
 
 export interface V1ListRequest {
-  account_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set */
   creator?: string;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
+  /** Number of items per page. */
+  perPage?: number;
 }
 export const V1ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     creator: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -278,9 +420,44 @@ export const V1ListRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "V1ListRequest" }) as any as S.Schema<V1ListRequest>;
 
-export type V1ListResponseImagesList = unknown[];
+export type V1ListResponseImagesItemVariantsList = string[];
+export const V1ListResponseImagesItemVariantsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<V1ListResponseImagesItemVariantsList>;
+
+export interface V1ListResponseImagesItem {
+  /** Image unique identifier. */
+  id?: string;
+  /** Can set the creator field with an internal user ID. */
+  creator?: string;
+  /** Image file name. */
+  filename?: string;
+  /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes. */
+  meta?: unknown;
+  /** Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
+  requireSignedURLs?: boolean;
+  /** When the media item was uploaded. */
+  uploaded?: string;
+  /** Object specifying available variants for an image. */
+  variants?: V1ListResponseImagesItemVariantsList;
+}
+export const V1ListResponseImagesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    creator: S.optional(S.String),
+    filename: S.optional(S.String),
+    meta: S.optional(S.Unknown),
+    requireSignedURLs: S.optional(S.Boolean),
+    uploaded: S.optional(S.String),
+    variants: S.optional(V1ListResponseImagesItemVariantsList),
+  }),
+).annotate({
+  identifier: "V1ListResponseImagesItem",
+}) as any as S.Schema<V1ListResponseImagesItem>;
+
+export type V1ListResponseImagesList = V1ListResponseImagesItem[];
 export const V1ListResponseImagesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  V1ListResponseImagesItem,
 ) as any as S.Schema<V1ListResponseImagesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -294,11 +471,12 @@ export const V1ListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1ListResponse" }) as any as S.Schema<V1ListResponse>;
 
 export interface V1StatsGetRequest {
-  account_id: string;
+  /** Account identifier tag. */
+  accountId: string;
 }
 export const V1StatsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -310,12 +488,28 @@ export const V1StatsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1StatsGetRequest",
 }) as any as S.Schema<V1StatsGetRequest>;
 
+export interface V1StatsGetResponseCount {
+  /** Cloudflare Images allowed usage. */
+  allowed?: number;
+  /** Cloudflare Images current usage. */
+  current?: number;
+}
+export const V1StatsGetResponseCount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowed: S.optional(S.Number),
+    current: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "V1StatsGetResponseCount",
+}) as any as S.Schema<V1StatsGetResponseCount>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface V1StatsGetResponse {
-  result?: unknown;
+  count?: V1StatsGetResponseCount;
 }
 export const V1StatsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    count: S.optional(V1StatsGetResponseCount),
   }),
 ).annotate({
   identifier: "V1StatsGetResponse",
@@ -336,9 +530,13 @@ export type V1VariantsCreateRequestOptionsMetadata =
 export const V1VariantsCreateRequestOptionsMetadata = /*@__PURE__*/ S.String;
 
 export interface V1VariantsCreateRequestOptions {
+  /** The fit property describes how the width and height dimensions should be interpreted. */
   fit: V1VariantsCreateRequestOptionsFit;
+  /** Maximum height in image pixels. */
   height: number;
+  /** What EXIF data should be preserved in the output image. */
   metadata: V1VariantsCreateRequestOptionsMetadata;
+  /** Maximum width in image pixels. */
   width: number;
 }
 export const V1VariantsCreateRequestOptions = /*@__PURE__*/ S.suspend(() =>
@@ -353,14 +551,17 @@ export const V1VariantsCreateRequestOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1VariantsCreateRequestOptions>;
 
 export interface V1VariantsCreateRequest {
-  account_id: string;
+  /** Account identifier tag. */
+  accountId: string;
   id: string;
+  /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsCreateRequestOptions;
+  /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
   neverRequireSignedURLs?: boolean;
 }
 export const V1VariantsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.String,
     options: V1VariantsCreateRequestOptions,
     neverRequireSignedURLs: S.optional(S.Boolean),
@@ -391,9 +592,13 @@ export const V1VariantsCreateResponseVariantOptionsMetadata =
   /*@__PURE__*/ S.String;
 
 export interface V1VariantsCreateResponseVariantOptions {
+  /** The fit property describes how the width and height dimensions should be interpreted. */
   fit: V1VariantsCreateResponseVariantOptionsFit;
+  /** Maximum height in image pixels. */
   height: number;
+  /** What EXIF data should be preserved in the output image. */
   metadata: V1VariantsCreateResponseVariantOptionsMetadata;
+  /** Maximum width in image pixels. */
   width: number;
 }
 export const V1VariantsCreateResponseVariantOptions = /*@__PURE__*/ S.suspend(
@@ -410,7 +615,9 @@ export const V1VariantsCreateResponseVariantOptions = /*@__PURE__*/ S.suspend(
 
 export interface V1VariantsCreateResponseVariant {
   id: string;
+  /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsCreateResponseVariantOptions;
+  /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
   neverRequireSignedURLs?: boolean;
 }
 export const V1VariantsCreateResponseVariant = /*@__PURE__*/ S.suspend(() =>
@@ -436,13 +643,14 @@ export const V1VariantsCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1VariantsCreateResponse>;
 
 export interface V1VariantsDeleteRequest {
-  account_id: string;
-  variant_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  variantId: string;
 }
 export const V1VariantsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    variant_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    variantId: S.String.pipe(T.Label("variant_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -454,12 +662,15 @@ export const V1VariantsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1VariantsDeleteRequest",
 }) as any as S.Schema<V1VariantsDeleteRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface V1VariantsDeleteResponse {
-  result?: unknown;
+  unknown: unknown;
+  string: unknown;
 }
 export const V1VariantsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    unknown: S.Unknown,
+    string: S.Unknown,
   }),
 ).annotate({
   identifier: "V1VariantsDeleteResponse",
@@ -480,9 +691,13 @@ export type V1VariantsEditRequestOptionsMetadata =
 export const V1VariantsEditRequestOptionsMetadata = /*@__PURE__*/ S.String;
 
 export interface V1VariantsEditRequestOptions {
+  /** The fit property describes how the width and height dimensions should be interpreted. */
   fit: V1VariantsEditRequestOptionsFit;
+  /** Maximum height in image pixels. */
   height: number;
+  /** What EXIF data should be preserved in the output image. */
   metadata: V1VariantsEditRequestOptionsMetadata;
+  /** Maximum width in image pixels. */
   width: number;
 }
 export const V1VariantsEditRequestOptions = /*@__PURE__*/ S.suspend(() =>
@@ -497,15 +712,18 @@ export const V1VariantsEditRequestOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1VariantsEditRequestOptions>;
 
 export interface V1VariantsEditRequest {
-  account_id: string;
-  variant_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  variantId: string;
+  /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsEditRequestOptions;
+  /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
   neverRequireSignedURLs?: boolean;
 }
 export const V1VariantsEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    variant_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    variantId: S.String.pipe(T.Label("variant_id")),
     options: V1VariantsEditRequestOptions,
     neverRequireSignedURLs: S.optional(S.Boolean),
   }).pipe(
@@ -535,9 +753,13 @@ export const V1VariantsEditResponseVariantOptionsMetadata =
   /*@__PURE__*/ S.String;
 
 export interface V1VariantsEditResponseVariantOptions {
+  /** The fit property describes how the width and height dimensions should be interpreted. */
   fit: V1VariantsEditResponseVariantOptionsFit;
+  /** Maximum height in image pixels. */
   height: number;
+  /** What EXIF data should be preserved in the output image. */
   metadata: V1VariantsEditResponseVariantOptionsMetadata;
+  /** Maximum width in image pixels. */
   width: number;
 }
 export const V1VariantsEditResponseVariantOptions = /*@__PURE__*/ S.suspend(
@@ -554,7 +776,9 @@ export const V1VariantsEditResponseVariantOptions = /*@__PURE__*/ S.suspend(
 
 export interface V1VariantsEditResponseVariant {
   id: string;
+  /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsEditResponseVariantOptions;
+  /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
   neverRequireSignedURLs?: boolean;
 }
 export const V1VariantsEditResponseVariant = /*@__PURE__*/ S.suspend(() =>
@@ -580,13 +804,14 @@ export const V1VariantsEditResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1VariantsEditResponse>;
 
 export interface V1VariantsGetRequest {
-  account_id: string;
-  variant_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  variantId: string;
 }
 export const V1VariantsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    variant_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    variantId: S.String.pipe(T.Label("variant_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -614,9 +839,13 @@ export const V1VariantsGetResponseVariantOptionsMetadata =
   /*@__PURE__*/ S.String;
 
 export interface V1VariantsGetResponseVariantOptions {
+  /** The fit property describes how the width and height dimensions should be interpreted. */
   fit: V1VariantsGetResponseVariantOptionsFit;
+  /** Maximum height in image pixels. */
   height: number;
+  /** What EXIF data should be preserved in the output image. */
   metadata: V1VariantsGetResponseVariantOptionsMetadata;
+  /** Maximum width in image pixels. */
   width: number;
 }
 export const V1VariantsGetResponseVariantOptions = /*@__PURE__*/ S.suspend(() =>
@@ -632,7 +861,9 @@ export const V1VariantsGetResponseVariantOptions = /*@__PURE__*/ S.suspend(() =>
 
 export interface V1VariantsGetResponseVariant {
   id: string;
+  /** Allows you to define image resizing sizes for different use cases. */
   options: V1VariantsGetResponseVariantOptions;
+  /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
   neverRequireSignedURLs?: boolean;
 }
 export const V1VariantsGetResponseVariant = /*@__PURE__*/ S.suspend(() =>
@@ -658,11 +889,12 @@ export const V1VariantsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1VariantsGetResponse>;
 
 export interface V1VariantsListRequest {
-  account_id: string;
+  /** Account identifier tag. */
+  accountId: string;
 }
 export const V1VariantsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -674,23 +906,91 @@ export const V1VariantsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1VariantsListRequest",
 }) as any as S.Schema<V1VariantsListRequest>;
 
+export type V1VariantsListResponseVariantsHeroOptionsFit =
+  | "scale-down"
+  | "contain"
+  | "cover"
+  | (string & {});
+export const V1VariantsListResponseVariantsHeroOptionsFit =
+  /*@__PURE__*/ S.String;
+
+export type V1VariantsListResponseVariantsHeroOptionsMetadata =
+  | "keep"
+  | "copyright"
+  | "none"
+  | (string & {});
+export const V1VariantsListResponseVariantsHeroOptionsMetadata =
+  /*@__PURE__*/ S.String;
+
+export interface V1VariantsListResponseVariantsHeroOptions {
+  /** The fit property describes how the width and height dimensions should be interpreted. */
+  fit: V1VariantsListResponseVariantsHeroOptionsFit;
+  /** Maximum height in image pixels. */
+  height: number;
+  /** What EXIF data should be preserved in the output image. */
+  metadata: V1VariantsListResponseVariantsHeroOptionsMetadata;
+  /** Maximum width in image pixels. */
+  width: number;
+}
+export const V1VariantsListResponseVariantsHeroOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fit: V1VariantsListResponseVariantsHeroOptionsFit,
+      height: S.Number,
+      metadata: V1VariantsListResponseVariantsHeroOptionsMetadata,
+      width: S.Number,
+    }),
+  ).annotate({
+    identifier: "V1VariantsListResponseVariantsHeroOptions",
+  }) as any as S.Schema<V1VariantsListResponseVariantsHeroOptions>;
+
+export interface V1VariantsListResponseVariantsHero {
+  id: string;
+  /** Allows you to define image resizing sizes for different use cases. */
+  options: V1VariantsListResponseVariantsHeroOptions;
+  /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
+  neverRequireSignedURLs?: boolean;
+}
+export const V1VariantsListResponseVariantsHero = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    options: V1VariantsListResponseVariantsHeroOptions,
+    neverRequireSignedURLs: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "V1VariantsListResponseVariantsHero",
+}) as any as S.Schema<V1VariantsListResponseVariantsHero>;
+
+export interface V1VariantsListResponseVariants {
+  hero?: V1VariantsListResponseVariantsHero;
+}
+export const V1VariantsListResponseVariants = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hero: S.optional(V1VariantsListResponseVariantsHero),
+  }),
+).annotate({
+  identifier: "V1VariantsListResponseVariants",
+}) as any as S.Schema<V1VariantsListResponseVariants>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface V1VariantsListResponse {
-  result?: unknown;
+  variants?: V1VariantsListResponseVariants;
 }
 export const V1VariantsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    variants: S.optional(V1VariantsListResponseVariants),
   }),
 ).annotate({
   identifier: "V1VariantsListResponse",
 }) as any as S.Schema<V1VariantsListResponse>;
 
 export interface V2DirectUploadsCreateRequest {
-  account_id: string;
+  /** Account identifier tag. */
+  accountId: string;
 }
 export const V2DirectUploadsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -704,7 +1004,9 @@ export const V2DirectUploadsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface V2DirectUploadsCreateResponse {
+  /** Image unique identifier. */
   id?: string;
+  /** The URL the unauthenticated upload can be performed to using a single HTTP POST (multipart/form-data) request. */
   uploadURL?: string;
 }
 export const V2DirectUploadsCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -720,21 +1022,26 @@ export type V2ListRequestSortOrder = "asc" | "desc" | (string & {});
 export const V2ListRequestSortOrder = /*@__PURE__*/ S.String;
 
 export interface V2ListRequest {
-  account_id: string;
-  continuation_token?: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** Continuation token to fetch next page. Passed as a query param when requesting List V2 api endpoint. */
+  continuationToken?: string;
+  /** Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set */
   creator?: string;
   meta?: string;
-  per_page?: number;
-  sort_order?: V2ListRequestSortOrder;
+  /** Number of items per page */
+  perPage?: number;
+  /** Sorting order by upload time */
+  sortOrder?: V2ListRequestSortOrder;
 }
 export const V2ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    continuation_token: S.optional(S.String.pipe(T.Query())),
+    accountId: S.String.pipe(T.Label("account_id")),
+    continuationToken: S.optional(S.String.pipe(T.Query("continuation_token"))),
     creator: S.optional(S.String.pipe(T.Query())),
     meta: S.optional(S.String.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
-    sort_order: S.optional(V2ListRequestSortOrder.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    sortOrder: S.optional(V2ListRequestSortOrder.pipe(T.Query("sort_order"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -744,28 +1051,65 @@ export const V2ListRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "V2ListRequest" }) as any as S.Schema<V2ListRequest>;
 
-export type V2ListResponseImagesList = unknown[];
+export type V2ListResponseImagesItemVariantsList = string[];
+export const V2ListResponseImagesItemVariantsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<V2ListResponseImagesItemVariantsList>;
+
+export interface V2ListResponseImagesItem {
+  /** Image unique identifier. */
+  id?: string;
+  /** Can set the creator field with an internal user ID. */
+  creator?: string;
+  /** Image file name. */
+  filename?: string;
+  /** User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes. */
+  meta?: unknown;
+  /** Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image. */
+  requireSignedURLs?: boolean;
+  /** When the media item was uploaded. */
+  uploaded?: string;
+  /** Object specifying available variants for an image. */
+  variants?: V2ListResponseImagesItemVariantsList;
+}
+export const V2ListResponseImagesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    creator: S.optional(S.String),
+    filename: S.optional(S.String),
+    meta: S.optional(S.Unknown),
+    requireSignedURLs: S.optional(S.Boolean),
+    uploaded: S.optional(S.String),
+    variants: S.optional(V2ListResponseImagesItemVariantsList),
+  }),
+).annotate({
+  identifier: "V2ListResponseImagesItem",
+}) as any as S.Schema<V2ListResponseImagesItem>;
+
+export type V2ListResponseImagesList = V2ListResponseImagesItem[];
 export const V2ListResponseImagesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  V2ListResponseImagesItem,
 ) as any as S.Schema<V2ListResponseImagesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface V2ListResponse {
-  continuation_token?: string;
+  /** Continuation token to fetch next page. Passed as a query param when requesting List V2 api endpoint. */
+  continuationToken?: string;
   images?: V2ListResponseImagesList;
 }
 export const V2ListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    continuation_token: S.optional(S.String),
+    continuationToken: S.optional(S.String.pipe(T.Body("continuation_token"))),
     images: S.optional(V2ListResponseImagesList),
   }),
 ).annotate({ identifier: "V2ListResponse" }) as any as S.Schema<V2ListResponse>;
 
+export type V1BlobsGetError = CloudflareOpError;
 /** Download an image from CF Images. For most images this will be the originally uploaded file. For larger images it can be a near-lossless version of the original. */
-export const V1BlobsGet: API.OperationMethod<
+export const v1BlobsGet: API.OperationMethod<
   V1BlobsGetRequest,
   V1BlobsGetResponse,
-  CloudflareOpError,
+  V1BlobsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: V1BlobsGetRequest,
@@ -774,11 +1118,12 @@ export const V1BlobsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type V1CreateError = CloudflareOpError;
 /** Upload an image to CF Images. Images up to 10 Megabytes can be uploaded using a single HTTP POST (multipart/form-data) request by sending an image file or passing a URL accessible to the API. */
-export const V1Create: API.OperationMethod<
+export const v1Create: API.OperationMethod<
   V1CreateRequest,
   V1CreateResponse,
-  CloudflareOpError,
+  V1CreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: V1CreateRequest,
@@ -787,11 +1132,12 @@ export const V1Create: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type V1DeleteError = CloudflareOpError;
 /** Delete an image on Cloudflare Images. On success, all copies of the image are deleted and purged from cache. */
-export const V1Delete: API.OperationMethod<
+export const v1Delete: API.OperationMethod<
   V1DeleteRequest,
   V1DeleteResponse,
-  CloudflareOpError,
+  V1DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: V1DeleteRequest,
@@ -800,11 +1146,12 @@ export const V1Delete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type V1EditError = CloudflareOpError;
 /** Update a CF Images image's metadata, creator, or access control. On access control change, all copies of the image are purged from cache. */
-export const V1Edit: API.OperationMethod<
+export const v1Edit: API.OperationMethod<
   V1EditRequest,
   V1EditResponse,
-  CloudflareOpError,
+  V1EditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: V1EditRequest,
@@ -813,11 +1160,12 @@ export const V1Edit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type V1GetError = CloudflareOpError;
 /** Fetch details for a CF Images image. */
-export const V1Get: API.OperationMethod<
+export const v1Get: API.OperationMethod<
   V1GetRequest,
   V1GetResponse,
-  CloudflareOpError,
+  V1GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: V1GetRequest,
@@ -826,11 +1174,12 @@ export const V1Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type V1KeysDeleteError = CloudflareOpError;
 /** Delete a CF Images signing key with specified name. Returns all keys available. When the last key is removed, a new default signing key will be generated. */
-export const V1KeysDelete: API.OperationMethod<
+export const v1KeysDelete: API.OperationMethod<
   V1KeysDeleteRequest,
   V1KeysDeleteResponse,
-  CloudflareOpError,
+  V1KeysDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: V1KeysDeleteRequest,
@@ -839,11 +1188,12 @@ export const V1KeysDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type V1KeysListError = CloudflareOpError;
 /** List your CF Images signing keys. */
-export const V1KeysList: API.OperationMethod<
+export const v1KeysList: API.OperationMethod<
   V1KeysListRequest,
   V1KeysListResponse,
-  CloudflareOpError,
+  V1KeysListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: V1KeysListRequest,
@@ -852,11 +1202,12 @@ export const V1KeysList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type V1KeysUpdateError = CloudflareOpError;
 /** Create a new CF Images signing key with specified name. Returns all keys available. */
-export const V1KeysUpdate: API.OperationMethod<
+export const v1KeysUpdate: API.OperationMethod<
   V1KeysUpdateRequest,
   V1KeysUpdateResponse,
-  CloudflareOpError,
+  V1KeysUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: V1KeysUpdateRequest,
@@ -865,11 +1216,12 @@ export const V1KeysUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type V1ListError = CloudflareOpError;
 /** List up to 100 images with one request. Use the optional parameters below to get a specific range of images. */
-export const V1List: API.OperationMethod<
+export const v1List: API.OperationMethod<
   V1ListRequest,
   V1ListResponse,
-  CloudflareOpError,
+  V1ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: V1ListRequest,
@@ -878,11 +1230,12 @@ export const V1List: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type V1StatsGetError = CloudflareOpError;
 /** Fetch image statistics details for Cloudflare Images. The returned statistics detail storage usage, including the current image count vs this account's allowance. */
-export const V1StatsGet: API.OperationMethod<
+export const v1StatsGet: API.OperationMethod<
   V1StatsGetRequest,
   V1StatsGetResponse,
-  CloudflareOpError,
+  V1StatsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: V1StatsGetRequest,
@@ -891,11 +1244,12 @@ export const V1StatsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type V1VariantsCreateError = CloudflareOpError;
 /** Create a CF Images variant that allows you to resize images for different use cases. */
-export const V1VariantsCreate: API.OperationMethod<
+export const v1VariantsCreate: API.OperationMethod<
   V1VariantsCreateRequest,
   V1VariantsCreateResponse,
-  CloudflareOpError,
+  V1VariantsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: V1VariantsCreateRequest,
@@ -904,11 +1258,12 @@ export const V1VariantsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type V1VariantsDeleteError = CloudflareOpError;
 /** Delete a CF Images variant. This will purge the cache for all images associated with the variant. */
-export const V1VariantsDelete: API.OperationMethod<
+export const v1VariantsDelete: API.OperationMethod<
   V1VariantsDeleteRequest,
   V1VariantsDeleteResponse,
-  CloudflareOpError,
+  V1VariantsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: V1VariantsDeleteRequest,
@@ -917,11 +1272,12 @@ export const V1VariantsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type V1VariantsEditError = CloudflareOpError;
 /** Update a CF Images variant. This will purge the cache for all images associated with the variant. */
-export const V1VariantsEdit: API.OperationMethod<
+export const v1VariantsEdit: API.OperationMethod<
   V1VariantsEditRequest,
   V1VariantsEditResponse,
-  CloudflareOpError,
+  V1VariantsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: V1VariantsEditRequest,
@@ -930,11 +1286,12 @@ export const V1VariantsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type V1VariantsGetError = CloudflareOpError;
 /** Fetch details for a CF Images variant. */
-export const V1VariantsGet: API.OperationMethod<
+export const v1VariantsGet: API.OperationMethod<
   V1VariantsGetRequest,
   V1VariantsGetResponse,
-  CloudflareOpError,
+  V1VariantsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: V1VariantsGetRequest,
@@ -943,11 +1300,12 @@ export const V1VariantsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type V1VariantsListError = CloudflareOpError;
 /** List existing CF Images variants. */
-export const V1VariantsList: API.OperationMethod<
+export const v1VariantsList: API.OperationMethod<
   V1VariantsListRequest,
   V1VariantsListResponse,
-  CloudflareOpError,
+  V1VariantsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: V1VariantsListRequest,
@@ -956,11 +1314,12 @@ export const V1VariantsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type V2DirectUploadsCreateError = CloudflareOpError;
 /** Direct uploads allow users to upload images without API keys. A common use case are web apps, client-side applications, or mobile devices where users upload content directly to Cloudflare Images. This method creates a draft record for a future image. It returns an upload URL and an image identifier. To verify if the image itself has been uploaded, send an image details request (accounts/:account_identifier/images/v1/:identifier), and check that the `draft: true` property is not present. */
-export const V2DirectUploadsCreate: API.OperationMethod<
+export const v2DirectUploadsCreate: API.OperationMethod<
   V2DirectUploadsCreateRequest,
   V2DirectUploadsCreateResponse,
-  CloudflareOpError,
+  V2DirectUploadsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: V2DirectUploadsCreateRequest,
@@ -969,11 +1328,12 @@ export const V2DirectUploadsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type V2ListError = CloudflareOpError;
 /** List up to 10000 images from CF Images, with up to 1000 results per page. Use the optional parameters below to get a specific range of images. Pagination is supported via continuation_token. **Metadata Filtering (Optional):** You can optionally filter images by custom metadata fields using the `meta.<field>[<operator>]=<value>` syntax. **Supported Operators:** - `eq` / `eq:string` / `eq:number` / `eq:boolean` - Exact match - `gt` / `gt:number` - Greater than (number only) - `gte` / `gte:number` - Greater than or equal (number only) - `lt` / `lt:number` - Less than (number only) - `lte` / `lte:number` - Less than or equal (number only) - `in` / `in:string` / `in:number` - Match any value in list (pipe-separated) **Metadata Filter Constraints:** - Maximum 5 metadata filters per request - Maximum 5 levels of nesting (e.g., `meta.first.second.third.fourth.fifth`) - Maximum 10 elements for list operators (`in`) - Supports string, number, and boolean value types - Range operators (`gt`, `gte`, `lt`, `lte`) only accept numeric values **Filter Consistency:** Filters are combined with AND logic. The system does not validate whether filter combinations are logically consistent. For example, `meta.priority[eq:number]=5&meta.priority[lte:number]=3` will return zero results because no value can satisfy both conditions simultaneously. It is the caller's responsibility to ensure filter combinations make sense. **Examples:** ``` # List all images /images/v2 # Filter by metadata [eq] /images/v2?meta.status[eq:string]=active # Filter by metadata [in] /images/v2?meta.status[in]=pending|deleted|flagged # Filter by metadata [in:number] /images/v2?meta.ratings[in:number]=4|5 # Filter by metadata range [gte:number] /images/v2?meta.priority[gte:number]=1 # Filter by bounded range /images/v2?meta.priority[gte:number]=1&meta.priority[lte:number]=5 # Filter by nested metadata /images/v2?meta.region.name[eq]=eu-west # Combine metadata filters with creator /images/v2?meta.status[eq]=active&creator=user123 # Multiple metadata filters (AND logic) /images/v2?meta.status[eq]=active&meta.priority[eq:number]=5 ``` */
-export const V2List: API.OperationMethod<
+export const v2List: API.OperationMethod<
   V2ListRequest,
   V2ListResponse,
-  CloudflareOpError,
+  V2ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: V2ListRequest,

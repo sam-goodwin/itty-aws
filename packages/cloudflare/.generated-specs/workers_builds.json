@@ -1186,10 +1186,29 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.workers_builds#BuildsLogsGetResponseLinesItem": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Unix epoch timestamp",
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Log message",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.workers_builds#BuildsLogsGetResponseLinesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.workers_builds#BuildsLogsGetResponseLinesItem"
       }
     },
     "com.cloudflare.workers_builds#BuildsLogsGetResponse": {

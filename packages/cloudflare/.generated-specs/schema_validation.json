@@ -72,19 +72,64 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.schema_validation#SchemasCreateResponseKind": {
+      "type": "enum",
+      "members": {
+        "OPENAPI_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "openapi_v3"
+          }
+        }
+      }
+    },
     "com.cloudflare.schema_validation#SchemasCreateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "created_at": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.cloudflare.schema_validation#SchemasCreateResponseKind",
+          "traits": {
+            "smithy.api#documentation": "The kind of the schema",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable name for the schema",
+            "smithy.api#required": {}
+          }
+        },
+        "schema_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier of this schema",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The raw schema, e.g., the OpenAPI schema, either as JSON or YAML",
+            "smithy.api#required": {}
+          }
+        },
+        "validation_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "An indicator if this schema is enabled"
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.schema_validation#SchemasCreate": {
@@ -192,19 +237,64 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.schema_validation#SchemasEditResponseKind": {
+      "type": "enum",
+      "members": {
+        "OPENAPI_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "openapi_v3"
+          }
+        }
+      }
+    },
     "com.cloudflare.schema_validation#SchemasEditResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "created_at": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.cloudflare.schema_validation#SchemasEditResponseKind",
+          "traits": {
+            "smithy.api#documentation": "The kind of the schema",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable name for the schema",
+            "smithy.api#required": {}
+          }
+        },
+        "schema_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier of this schema",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The raw schema, e.g., the OpenAPI schema, either as JSON or YAML",
+            "smithy.api#required": {}
+          }
+        },
+        "validation_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "An indicator if this schema is enabled"
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.schema_validation#SchemasEdit": {
@@ -255,19 +345,64 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.schema_validation#SchemasGetResponseKind": {
+      "type": "enum",
+      "members": {
+        "OPENAPI_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "openapi_v3"
+          }
+        }
+      }
+    },
     "com.cloudflare.schema_validation#SchemasGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "created_at": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.cloudflare.schema_validation#SchemasGetResponseKind",
+          "traits": {
+            "smithy.api#documentation": "The kind of the schema",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable name for the schema",
+            "smithy.api#required": {}
+          }
+        },
+        "schema_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier of this schema",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The raw schema, e.g., the OpenAPI schema, either as JSON or YAML",
+            "smithy.api#required": {}
+          }
+        },
+        "validation_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "An indicator if this schema is enabled"
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.schema_validation#SchemasGet": {
@@ -332,10 +467,66 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.schema_validation#SchemasListResultItemKind": {
+      "type": "enum",
+      "members": {
+        "OPENAPI_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "openapi_v3"
+          }
+        }
+      }
+    },
+    "com.cloudflare.schema_validation#SchemasListResultItem": {
+      "type": "structure",
+      "members": {
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.cloudflare.schema_validation#SchemasListResultItemKind",
+          "traits": {
+            "smithy.api#documentation": "The kind of the schema",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable name for the schema",
+            "smithy.api#required": {}
+          }
+        },
+        "schema_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier of this schema",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The raw schema, e.g., the OpenAPI schema, either as JSON or YAML",
+            "smithy.api#required": {}
+          }
+        },
+        "validation_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "An indicator if this schema is enabled"
+          }
+        }
+      }
+    },
     "com.cloudflare.schema_validation#SchemasListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.schema_validation#SchemasListResultItem"
       }
     },
     "com.cloudflare.schema_validation#SchemasListResponse": {

@@ -10,15 +10,18 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface AddressMapsAccountsDeleteRequest {
-  account_id: string;
-  address_map_id: string;
-  account_id_2: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an Address Map. */
+  addressMapId: string;
+  /** Identifier of a Cloudflare account. */
+  accountId2: string;
 }
 export const AddressMapsAccountsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    address_map_id: S.String.pipe(T.Label()),
-    account_id_2: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    addressMapId: S.String.pipe(T.Label("address_map_id")),
+    accountId2: S.String.pipe(T.Label("account_id_2")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -38,16 +41,19 @@ export const AddressMapsAccountsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddressMapsAccountsDeleteResponse>;
 
 export interface AddressMapsAccountsUpdateRequest {
-  account_id: string;
-  address_map_id: string;
-  account_id_2: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an Address Map. */
+  addressMapId: string;
+  /** Identifier of a Cloudflare account. */
+  accountId2: string;
   body: unknown;
 }
 export const AddressMapsAccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    address_map_id: S.String.pipe(T.Label()),
-    account_id_2: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    addressMapId: S.String.pipe(T.Label("address_map_id")),
+    accountId2: S.String.pipe(T.Label("account_id_2")),
     body: S.Unknown,
   }).pipe(
     T.Http({
@@ -73,7 +79,9 @@ export const AddressMapsCreateRequestIpsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AddressMapsCreateRequestIpsList>;
 
 export interface AddressMapsCreateRequestMembershipsItem {
+  /** The identifier for the membership (eg. a zone or account tag). */
   identifier?: string;
+  /** The type of the membership. */
   kind?: unknown;
 }
 export const AddressMapsCreateRequestMembershipsItem = /*@__PURE__*/ S.suspend(
@@ -93,15 +101,19 @@ export const AddressMapsCreateRequestMembershipsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AddressMapsCreateRequestMembershipsList>;
 
 export interface AddressMapsCreateRequest {
-  account_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** An optional description field which may be used to describe the types of IPs or zones on the map. */
   description?: string;
+  /** Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled. */
   enabled?: boolean;
   ips?: AddressMapsCreateRequestIpsList;
+  /** Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership. */
   memberships?: AddressMapsCreateRequestMembershipsList;
 }
 export const AddressMapsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     description: S.optional(S.String),
     enabled: S.optional(S.Boolean),
     ips: S.optional(AddressMapsCreateRequestIpsList),
@@ -117,17 +129,34 @@ export const AddressMapsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddressMapsCreateRequest",
 }) as any as S.Schema<AddressMapsCreateRequest>;
 
+export interface AddressMapsCreateResponseIps {
+  createdAt?: string;
+  /** An IPv4 or IPv6 address. */
+  ip?: string;
+}
+export const AddressMapsCreateResponseIps = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    ip: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AddressMapsCreateResponseIps",
+}) as any as S.Schema<AddressMapsCreateResponseIps>;
+
 export interface AddressMapsCreateResponseMembershipsItem {
-  can_delete?: boolean;
-  created_at?: string;
+  /** Controls whether the membership can be deleted via the API or not. */
+  canDelete?: boolean;
+  createdAt?: string;
+  /** The identifier for the membership (eg. a zone or account tag). */
   identifier?: string;
+  /** The type of the membership. */
   kind?: unknown;
 }
 export const AddressMapsCreateResponseMembershipsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      can_delete: S.optional(S.Boolean),
-      created_at: S.optional(S.String),
+      canDelete: S.optional(S.Boolean.pipe(T.Body("can_delete"))),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
       identifier: S.optional(S.String),
       kind: S.optional(S.Unknown),
     }),
@@ -143,42 +172,52 @@ export const AddressMapsCreateResponseMembershipsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AddressMapsCreateResponse {
+  /** Identifier of an Address Map. */
   id?: string;
-  can_delete?: boolean;
-  can_modify_ips?: boolean;
-  created_at?: string;
-  default_sni?: string;
+  /** If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps. */
+  canDelete?: boolean;
+  /** If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps. */
+  canModifyIps?: boolean;
+  createdAt?: string;
+  /** If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account. */
+  defaultSni?: string;
+  /** An optional description field which may be used to describe the types of IPs or zones on the map. */
   description?: string;
+  /** Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled. */
   enabled?: boolean;
-  ips?: unknown;
+  /** The set of IPs on the Address Map. */
+  ips?: AddressMapsCreateResponseIps;
+  /** Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership. */
   memberships?: AddressMapsCreateResponseMembershipsList;
-  modified_at?: string;
+  modifiedAt?: string;
 }
 export const AddressMapsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    can_delete: S.optional(S.Boolean),
-    can_modify_ips: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    default_sni: S.optional(S.String),
+    canDelete: S.optional(S.Boolean.pipe(T.Body("can_delete"))),
+    canModifyIps: S.optional(S.Boolean.pipe(T.Body("can_modify_ips"))),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    defaultSni: S.optional(S.String.pipe(T.Body("default_sni"))),
     description: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    ips: S.optional(S.Unknown),
+    ips: S.optional(AddressMapsCreateResponseIps),
     memberships: S.optional(AddressMapsCreateResponseMembershipsList),
-    modified_at: S.optional(S.String),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
   }),
 ).annotate({
   identifier: "AddressMapsCreateResponse",
 }) as any as S.Schema<AddressMapsCreateResponse>;
 
 export interface AddressMapsDeleteRequest {
-  account_id: string;
-  address_map_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an Address Map. */
+  addressMapId: string;
 }
 export const AddressMapsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    address_map_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    addressMapId: S.String.pipe(T.Label("address_map_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -198,17 +237,22 @@ export const AddressMapsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddressMapsDeleteResponse>;
 
 export interface AddressMapsEditRequest {
-  account_id: string;
-  address_map_id: string;
-  default_sni?: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an Address Map. */
+  addressMapId: string;
+  /** If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account. */
+  defaultSni?: string;
+  /** An optional description field which may be used to describe the types of IPs or zones on the map. */
   description?: string;
+  /** Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled. */
   enabled?: boolean;
 }
 export const AddressMapsEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    address_map_id: S.String.pipe(T.Label()),
-    default_sni: S.optional(S.String),
+    accountId: S.String.pipe(T.Label("account_id")),
+    addressMapId: S.String.pipe(T.Label("address_map_id")),
+    defaultSni: S.optional(S.String.pipe(T.Body("default_sni"))),
     description: S.optional(S.String),
     enabled: S.optional(S.Boolean),
   }).pipe(
@@ -222,25 +266,48 @@ export const AddressMapsEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddressMapsEditRequest",
 }) as any as S.Schema<AddressMapsEditRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AddressMapsEditResponse {
-  result?: unknown;
+  /** Identifier of an Address Map. */
+  id?: string;
+  /** If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps. */
+  canDelete?: boolean;
+  /** If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps. */
+  canModifyIps?: boolean;
+  createdAt?: string;
+  /** If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account. */
+  defaultSni?: string;
+  /** An optional description field which may be used to describe the types of IPs or zones on the map. */
+  description?: string;
+  /** Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled. */
+  enabled?: boolean;
+  modifiedAt?: string;
 }
 export const AddressMapsEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    canDelete: S.optional(S.Boolean.pipe(T.Body("can_delete"))),
+    canModifyIps: S.optional(S.Boolean.pipe(T.Body("can_modify_ips"))),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    defaultSni: S.optional(S.String.pipe(T.Body("default_sni"))),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
   }),
 ).annotate({
   identifier: "AddressMapsEditResponse",
 }) as any as S.Schema<AddressMapsEditResponse>;
 
 export interface AddressMapsGetRequest {
-  account_id: string;
-  address_map_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an Address Map. */
+  addressMapId: string;
 }
 export const AddressMapsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    address_map_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    addressMapId: S.String.pipe(T.Label("address_map_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -252,17 +319,34 @@ export const AddressMapsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddressMapsGetRequest",
 }) as any as S.Schema<AddressMapsGetRequest>;
 
+export interface AddressMapsGetResponseIps {
+  createdAt?: string;
+  /** An IPv4 or IPv6 address. */
+  ip?: string;
+}
+export const AddressMapsGetResponseIps = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    ip: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AddressMapsGetResponseIps",
+}) as any as S.Schema<AddressMapsGetResponseIps>;
+
 export interface AddressMapsGetResponseMembershipsItem {
-  can_delete?: boolean;
-  created_at?: string;
+  /** Controls whether the membership can be deleted via the API or not. */
+  canDelete?: boolean;
+  createdAt?: string;
+  /** The identifier for the membership (eg. a zone or account tag). */
   identifier?: string;
+  /** The type of the membership. */
   kind?: unknown;
 }
 export const AddressMapsGetResponseMembershipsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      can_delete: S.optional(S.Boolean),
-      created_at: S.optional(S.String),
+      canDelete: S.optional(S.Boolean.pipe(T.Body("can_delete"))),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
       identifier: S.optional(S.String),
       kind: S.optional(S.Unknown),
     }),
@@ -278,44 +362,55 @@ export const AddressMapsGetResponseMembershipsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AddressMapsGetResponse {
+  /** Identifier of an Address Map. */
   id?: string;
-  can_delete?: boolean;
-  can_modify_ips?: boolean;
-  created_at?: string;
-  default_sni?: string;
+  /** If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps. */
+  canDelete?: boolean;
+  /** If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps. */
+  canModifyIps?: boolean;
+  createdAt?: string;
+  /** If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account. */
+  defaultSni?: string;
+  /** An optional description field which may be used to describe the types of IPs or zones on the map. */
   description?: string;
+  /** Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled. */
   enabled?: boolean;
-  ips?: unknown;
+  /** The set of IPs on the Address Map. */
+  ips?: AddressMapsGetResponseIps;
+  /** Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership. */
   memberships?: AddressMapsGetResponseMembershipsList;
-  modified_at?: string;
+  modifiedAt?: string;
 }
 export const AddressMapsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    can_delete: S.optional(S.Boolean),
-    can_modify_ips: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    default_sni: S.optional(S.String),
+    canDelete: S.optional(S.Boolean.pipe(T.Body("can_delete"))),
+    canModifyIps: S.optional(S.Boolean.pipe(T.Body("can_modify_ips"))),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    defaultSni: S.optional(S.String.pipe(T.Body("default_sni"))),
     description: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    ips: S.optional(S.Unknown),
+    ips: S.optional(AddressMapsGetResponseIps),
     memberships: S.optional(AddressMapsGetResponseMembershipsList),
-    modified_at: S.optional(S.String),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
   }),
 ).annotate({
   identifier: "AddressMapsGetResponse",
 }) as any as S.Schema<AddressMapsGetResponse>;
 
 export interface AddressMapsIpsDeleteRequest {
-  account_id: string;
-  address_map_id: string;
-  ip_address: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an Address Map. */
+  addressMapId: string;
+  /** An IPv4 or IPv6 address. */
+  ipAddress: string;
 }
 export const AddressMapsIpsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    address_map_id: S.String.pipe(T.Label()),
-    ip_address: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    addressMapId: S.String.pipe(T.Label("address_map_id")),
+    ipAddress: S.String.pipe(T.Label("ip_address")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -335,16 +430,19 @@ export const AddressMapsIpsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddressMapsIpsDeleteResponse>;
 
 export interface AddressMapsIpsUpdateRequest {
-  account_id: string;
-  address_map_id: string;
-  ip_address: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an Address Map. */
+  addressMapId: string;
+  /** An IPv4 or IPv6 address. */
+  ipAddress: string;
   body: unknown;
 }
 export const AddressMapsIpsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    address_map_id: S.String.pipe(T.Label()),
-    ip_address: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    addressMapId: S.String.pipe(T.Label("address_map_id")),
+    ipAddress: S.String.pipe(T.Label("ip_address")),
     body: S.Unknown,
   }).pipe(
     T.Http({
@@ -365,11 +463,12 @@ export const AddressMapsIpsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddressMapsIpsUpdateResponse>;
 
 export interface AddressMapsListRequest {
-  account_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
 }
 export const AddressMapsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -381,12 +480,44 @@ export const AddressMapsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddressMapsListRequest",
 }) as any as S.Schema<AddressMapsListRequest>;
 
-export type AddressMapsListResultList = unknown[];
+export interface AddressMapsListResultItem {
+  /** Identifier of an Address Map. */
+  id?: string;
+  /** If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps. */
+  canDelete?: boolean;
+  /** If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps. */
+  canModifyIps?: boolean;
+  createdAt?: string;
+  /** If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account. */
+  defaultSni?: string;
+  /** An optional description field which may be used to describe the types of IPs or zones on the map. */
+  description?: string;
+  /** Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled. */
+  enabled?: boolean;
+  modifiedAt?: string;
+}
+export const AddressMapsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    canDelete: S.optional(S.Boolean.pipe(T.Body("can_delete"))),
+    canModifyIps: S.optional(S.Boolean.pipe(T.Body("can_modify_ips"))),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    defaultSni: S.optional(S.String.pipe(T.Body("default_sni"))),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+  }),
+).annotate({
+  identifier: "AddressMapsListResultItem",
+}) as any as S.Schema<AddressMapsListResultItem>;
+
+export type AddressMapsListResultList = AddressMapsListResultItem[];
 export const AddressMapsListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  AddressMapsListResultItem,
 ) as any as S.Schema<AddressMapsListResultList>;
 
 export interface AddressMapsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AddressMapsListResultList;
 }
 export const AddressMapsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -398,15 +529,18 @@ export const AddressMapsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddressMapsListResponse>;
 
 export interface AddressMapsZonesDeleteRequest {
-  account_id: string;
-  address_map_id: string;
-  zone_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an Address Map. */
+  addressMapId: string;
+  /** Identifier of a zone. */
+  zoneId: string;
 }
 export const AddressMapsZonesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    address_map_id: S.String.pipe(T.Label()),
-    zone_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    addressMapId: S.String.pipe(T.Label("address_map_id")),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -426,16 +560,19 @@ export const AddressMapsZonesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddressMapsZonesDeleteResponse>;
 
 export interface AddressMapsZonesUpdateRequest {
-  account_id: string;
-  address_map_id: string;
-  zone_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an Address Map. */
+  addressMapId: string;
+  /** Identifier of a zone. */
+  zoneId: string;
   body: unknown;
 }
 export const AddressMapsZonesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    address_map_id: S.String.pipe(T.Label()),
-    zone_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    addressMapId: S.String.pipe(T.Label("address_map_id")),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Unknown,
   }).pipe(
     T.Http({
@@ -456,11 +593,12 @@ export const AddressMapsZonesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddressMapsZonesUpdateResponse>;
 
 export interface LoaDocumentsCreateRequest {
-  account_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
 }
 export const LoaDocumentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -474,38 +612,47 @@ export const LoaDocumentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface LoaDocumentsCreateResponse {
+  /** Identifier for the uploaded LOA document. */
   id?: string;
-  account_id?: string;
-  auto_generated?: boolean;
+  /** Identifier of a Cloudflare account. */
+  accountId?: string;
+  /** Whether the LOA has been auto-generated for the prefix owner by Cloudflare. */
+  autoGenerated?: boolean;
   created?: string;
+  /** Name of LOA document. Max file size 10MB, and supported filetype is pdf. */
   filename?: string;
-  size_bytes?: number;
+  /** File size of the uploaded LOA document. */
+  sizeBytes?: number;
+  /** Whether the LOA has been verified by Cloudflare staff. */
   verified?: boolean;
-  verified_at?: string;
+  /** Timestamp of the moment the LOA was marked as validated. */
+  verifiedAt?: string;
 }
 export const LoaDocumentsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    account_id: S.optional(S.String),
-    auto_generated: S.optional(S.Boolean),
+    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
+    autoGenerated: S.optional(S.Boolean.pipe(T.Body("auto_generated"))),
     created: S.optional(S.String),
     filename: S.optional(S.String),
-    size_bytes: S.optional(S.Number),
+    sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
     verified: S.optional(S.Boolean),
-    verified_at: S.optional(S.String),
+    verifiedAt: S.optional(S.String.pipe(T.Body("verified_at"))),
   }),
 ).annotate({
   identifier: "LoaDocumentsCreateResponse",
 }) as any as S.Schema<LoaDocumentsCreateResponse>;
 
 export interface LoaDocumentsGetRequest {
-  account_id: string;
-  loa_document_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier for the uploaded LOA document. */
+  loaDocumentId: string;
 }
 export const LoaDocumentsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    loa_document_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    loaDocumentId: S.String.pipe(T.Label("loa_document_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -525,15 +672,18 @@ export const LoaDocumentsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoaDocumentsGetResponse>;
 
 export interface PrefixesAdvertisementStatusEditRequest {
-  account_id: string;
-  prefix_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an IP Prefix. */
+  prefixId: string;
+  /** Advertisement status of the prefix. If `true`, the BGP route for the prefix is advertised to the Internet. If */
   advertised: boolean;
 }
 export const PrefixesAdvertisementStatusEditRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      prefix_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      prefixId: S.String.pipe(T.Label("prefix_id")),
       advertised: S.Boolean,
     }).pipe(
       T.Http({
@@ -548,28 +698,34 @@ export const PrefixesAdvertisementStatusEditRequest = /*@__PURE__*/ S.suspend(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PrefixesAdvertisementStatusEditResponse {
+  /** Advertisement status of the prefix. If `true`, the BGP route for the prefix is advertised to the Internet. If */
   advertised?: boolean;
-  advertised_modified_at?: string;
+  /** Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled. */
+  advertisedModifiedAt?: string;
 }
 export const PrefixesAdvertisementStatusEditResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       advertised: S.optional(S.Boolean),
-      advertised_modified_at: S.optional(S.String),
+      advertisedModifiedAt: S.optional(
+        S.String.pipe(T.Body("advertised_modified_at")),
+      ),
     }),
 ).annotate({
   identifier: "PrefixesAdvertisementStatusEditResponse",
 }) as any as S.Schema<PrefixesAdvertisementStatusEditResponse>;
 
 export interface PrefixesAdvertisementStatusGetRequest {
-  account_id: string;
-  prefix_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an IP Prefix. */
+  prefixId: string;
 }
 export const PrefixesAdvertisementStatusGetRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      prefix_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      prefixId: S.String.pipe(T.Label("prefix_id")),
     }).pipe(
       T.Http({
         method: "GET",
@@ -583,28 +739,35 @@ export const PrefixesAdvertisementStatusGetRequest = /*@__PURE__*/ S.suspend(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PrefixesAdvertisementStatusGetResponse {
+  /** Advertisement status of the prefix. If `true`, the BGP route for the prefix is advertised to the Internet. If */
   advertised?: boolean;
-  advertised_modified_at?: string;
+  /** Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled. */
+  advertisedModifiedAt?: string;
 }
 export const PrefixesAdvertisementStatusGetResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       advertised: S.optional(S.Boolean),
-      advertised_modified_at: S.optional(S.String),
+      advertisedModifiedAt: S.optional(
+        S.String.pipe(T.Body("advertised_modified_at")),
+      ),
     }),
 ).annotate({
   identifier: "PrefixesAdvertisementStatusGetResponse",
 }) as any as S.Schema<PrefixesAdvertisementStatusGetResponse>;
 
 export interface PrefixesBgpPrefixesCreateRequest {
-  account_id: string;
-  prefix_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an IP Prefix. */
+  prefixId: string;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr: string;
 }
 export const PrefixesBgpPrefixesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    prefix_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    prefixId: S.String.pipe(T.Label("prefix_id")),
     cidr: S.String,
   }).pipe(
     T.Http({
@@ -617,12 +780,82 @@ export const PrefixesBgpPrefixesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrefixesBgpPrefixesCreateRequest",
 }) as any as S.Schema<PrefixesBgpPrefixesCreateRequest>;
 
+export interface PrefixesBgpPrefixesCreateResponseBgpSignalOpts {
+  /** Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal */
+  enabled?: boolean;
+  /** Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled. */
+  modifiedAt?: string;
+}
+export const PrefixesBgpPrefixesCreateResponseBgpSignalOpts =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    }),
+  ).annotate({
+    identifier: "PrefixesBgpPrefixesCreateResponseBgpSignalOpts",
+  }) as any as S.Schema<PrefixesBgpPrefixesCreateResponseBgpSignalOpts>;
+
+export interface PrefixesBgpPrefixesCreateResponseOnDemand {
+  /** Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled. */
+  advertised?: boolean;
+  /** Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled. */
+  advertisedModifiedAt?: string;
+  /** Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled. */
+  onDemandEnabled?: boolean;
+  /** Whether the advertisement status of the prefix is locked, meaning it cannot be changed. */
+  onDemandLocked?: boolean;
+}
+export const PrefixesBgpPrefixesCreateResponseOnDemand =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      advertised: S.optional(S.Boolean),
+      advertisedModifiedAt: S.optional(
+        S.String.pipe(T.Body("advertised_modified_at")),
+      ),
+      onDemandEnabled: S.optional(S.Boolean.pipe(T.Body("on_demand_enabled"))),
+      onDemandLocked: S.optional(S.Boolean.pipe(T.Body("on_demand_locked"))),
+    }),
+  ).annotate({
+    identifier: "PrefixesBgpPrefixesCreateResponseOnDemand",
+  }) as any as S.Schema<PrefixesBgpPrefixesCreateResponseOnDemand>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PrefixesBgpPrefixesCreateResponse {
-  result?: unknown;
+  /** Identifier of BGP Prefix. */
+  id?: string;
+  /** Autonomous System Number (ASN) the prefix will be advertised under. */
+  asn?: number;
+  /** Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute */
+  asnPrependCount?: number;
+  /** Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route. */
+  autoAdvertiseWithdraw?: boolean;
+  bgpSignalOpts?: PrefixesBgpPrefixesCreateResponseBgpSignalOpts;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  cidr?: string;
+  createdAt?: string;
+  modifiedAt?: string;
+  onDemand?: PrefixesBgpPrefixesCreateResponseOnDemand;
 }
 export const PrefixesBgpPrefixesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    asn: S.optional(S.Number),
+    asnPrependCount: S.optional(S.Number.pipe(T.Body("asn_prepend_count"))),
+    autoAdvertiseWithdraw: S.optional(
+      S.Boolean.pipe(T.Body("auto_advertise_withdraw")),
+    ),
+    bgpSignalOpts: S.optional(
+      PrefixesBgpPrefixesCreateResponseBgpSignalOpts.pipe(
+        T.Body("bgp_signal_opts"),
+      ),
+    ),
+    cidr: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    onDemand: S.optional(
+      PrefixesBgpPrefixesCreateResponseOnDemand.pipe(T.Body("on_demand")),
+    ),
   }),
 ).annotate({
   identifier: "PrefixesBgpPrefixesCreateResponse",
@@ -641,21 +874,30 @@ export const PrefixesBgpPrefixesEditRequestOnDemand = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrefixesBgpPrefixesEditRequestOnDemand>;
 
 export interface PrefixesBgpPrefixesEditRequest {
-  account_id: string;
-  prefix_id: string;
-  bgp_prefix_id: string;
-  asn_prepend_count?: number;
-  auto_advertise_withdraw?: boolean;
-  on_demand?: PrefixesBgpPrefixesEditRequestOnDemand;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an IP Prefix. */
+  prefixId: string;
+  /** Identifier of BGP Prefix. */
+  bgpPrefixId: string;
+  /** Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute */
+  asnPrependCount?: number;
+  /** Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route. */
+  autoAdvertiseWithdraw?: boolean;
+  onDemand?: PrefixesBgpPrefixesEditRequestOnDemand;
 }
 export const PrefixesBgpPrefixesEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    prefix_id: S.String.pipe(T.Label()),
-    bgp_prefix_id: S.String.pipe(T.Label()),
-    asn_prepend_count: S.optional(S.Number),
-    auto_advertise_withdraw: S.optional(S.Boolean),
-    on_demand: S.optional(PrefixesBgpPrefixesEditRequestOnDemand),
+    accountId: S.String.pipe(T.Label("account_id")),
+    prefixId: S.String.pipe(T.Label("prefix_id")),
+    bgpPrefixId: S.String.pipe(T.Label("bgp_prefix_id")),
+    asnPrependCount: S.optional(S.Number.pipe(T.Body("asn_prepend_count"))),
+    autoAdvertiseWithdraw: S.optional(
+      S.Boolean.pipe(T.Body("auto_advertise_withdraw")),
+    ),
+    onDemand: S.optional(
+      PrefixesBgpPrefixesEditRequestOnDemand.pipe(T.Body("on_demand")),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -667,27 +909,100 @@ export const PrefixesBgpPrefixesEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrefixesBgpPrefixesEditRequest",
 }) as any as S.Schema<PrefixesBgpPrefixesEditRequest>;
 
+export interface PrefixesBgpPrefixesEditResponseBgpSignalOpts {
+  /** Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal */
+  enabled?: boolean;
+  /** Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled. */
+  modifiedAt?: string;
+}
+export const PrefixesBgpPrefixesEditResponseBgpSignalOpts =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    }),
+  ).annotate({
+    identifier: "PrefixesBgpPrefixesEditResponseBgpSignalOpts",
+  }) as any as S.Schema<PrefixesBgpPrefixesEditResponseBgpSignalOpts>;
+
+export interface PrefixesBgpPrefixesEditResponseOnDemand {
+  /** Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled. */
+  advertised?: boolean;
+  /** Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled. */
+  advertisedModifiedAt?: string;
+  /** Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled. */
+  onDemandEnabled?: boolean;
+  /** Whether the advertisement status of the prefix is locked, meaning it cannot be changed. */
+  onDemandLocked?: boolean;
+}
+export const PrefixesBgpPrefixesEditResponseOnDemand = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      advertised: S.optional(S.Boolean),
+      advertisedModifiedAt: S.optional(
+        S.String.pipe(T.Body("advertised_modified_at")),
+      ),
+      onDemandEnabled: S.optional(S.Boolean.pipe(T.Body("on_demand_enabled"))),
+      onDemandLocked: S.optional(S.Boolean.pipe(T.Body("on_demand_locked"))),
+    }),
+).annotate({
+  identifier: "PrefixesBgpPrefixesEditResponseOnDemand",
+}) as any as S.Schema<PrefixesBgpPrefixesEditResponseOnDemand>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PrefixesBgpPrefixesEditResponse {
-  result?: unknown;
+  /** Identifier of BGP Prefix. */
+  id?: string;
+  /** Autonomous System Number (ASN) the prefix will be advertised under. */
+  asn?: number;
+  /** Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute */
+  asnPrependCount?: number;
+  /** Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route. */
+  autoAdvertiseWithdraw?: boolean;
+  bgpSignalOpts?: PrefixesBgpPrefixesEditResponseBgpSignalOpts;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  cidr?: string;
+  createdAt?: string;
+  modifiedAt?: string;
+  onDemand?: PrefixesBgpPrefixesEditResponseOnDemand;
 }
 export const PrefixesBgpPrefixesEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    asn: S.optional(S.Number),
+    asnPrependCount: S.optional(S.Number.pipe(T.Body("asn_prepend_count"))),
+    autoAdvertiseWithdraw: S.optional(
+      S.Boolean.pipe(T.Body("auto_advertise_withdraw")),
+    ),
+    bgpSignalOpts: S.optional(
+      PrefixesBgpPrefixesEditResponseBgpSignalOpts.pipe(
+        T.Body("bgp_signal_opts"),
+      ),
+    ),
+    cidr: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    onDemand: S.optional(
+      PrefixesBgpPrefixesEditResponseOnDemand.pipe(T.Body("on_demand")),
+    ),
   }),
 ).annotate({
   identifier: "PrefixesBgpPrefixesEditResponse",
 }) as any as S.Schema<PrefixesBgpPrefixesEditResponse>;
 
 export interface PrefixesBgpPrefixesGetRequest {
-  account_id: string;
-  prefix_id: string;
-  bgp_prefix_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an IP Prefix. */
+  prefixId: string;
+  /** Identifier of BGP Prefix. */
+  bgpPrefixId: string;
 }
 export const PrefixesBgpPrefixesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    prefix_id: S.String.pipe(T.Label()),
-    bgp_prefix_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    prefixId: S.String.pipe(T.Label("prefix_id")),
+    bgpPrefixId: S.String.pipe(T.Label("bgp_prefix_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -699,25 +1014,97 @@ export const PrefixesBgpPrefixesGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrefixesBgpPrefixesGetRequest",
 }) as any as S.Schema<PrefixesBgpPrefixesGetRequest>;
 
+export interface PrefixesBgpPrefixesGetResponseBgpSignalOpts {
+  /** Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal */
+  enabled?: boolean;
+  /** Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled. */
+  modifiedAt?: string;
+}
+export const PrefixesBgpPrefixesGetResponseBgpSignalOpts =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    }),
+  ).annotate({
+    identifier: "PrefixesBgpPrefixesGetResponseBgpSignalOpts",
+  }) as any as S.Schema<PrefixesBgpPrefixesGetResponseBgpSignalOpts>;
+
+export interface PrefixesBgpPrefixesGetResponseOnDemand {
+  /** Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled. */
+  advertised?: boolean;
+  /** Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled. */
+  advertisedModifiedAt?: string;
+  /** Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled. */
+  onDemandEnabled?: boolean;
+  /** Whether the advertisement status of the prefix is locked, meaning it cannot be changed. */
+  onDemandLocked?: boolean;
+}
+export const PrefixesBgpPrefixesGetResponseOnDemand = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      advertised: S.optional(S.Boolean),
+      advertisedModifiedAt: S.optional(
+        S.String.pipe(T.Body("advertised_modified_at")),
+      ),
+      onDemandEnabled: S.optional(S.Boolean.pipe(T.Body("on_demand_enabled"))),
+      onDemandLocked: S.optional(S.Boolean.pipe(T.Body("on_demand_locked"))),
+    }),
+).annotate({
+  identifier: "PrefixesBgpPrefixesGetResponseOnDemand",
+}) as any as S.Schema<PrefixesBgpPrefixesGetResponseOnDemand>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PrefixesBgpPrefixesGetResponse {
-  result?: unknown;
+  /** Identifier of BGP Prefix. */
+  id?: string;
+  /** Autonomous System Number (ASN) the prefix will be advertised under. */
+  asn?: number;
+  /** Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute */
+  asnPrependCount?: number;
+  /** Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route. */
+  autoAdvertiseWithdraw?: boolean;
+  bgpSignalOpts?: PrefixesBgpPrefixesGetResponseBgpSignalOpts;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  cidr?: string;
+  createdAt?: string;
+  modifiedAt?: string;
+  onDemand?: PrefixesBgpPrefixesGetResponseOnDemand;
 }
 export const PrefixesBgpPrefixesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    asn: S.optional(S.Number),
+    asnPrependCount: S.optional(S.Number.pipe(T.Body("asn_prepend_count"))),
+    autoAdvertiseWithdraw: S.optional(
+      S.Boolean.pipe(T.Body("auto_advertise_withdraw")),
+    ),
+    bgpSignalOpts: S.optional(
+      PrefixesBgpPrefixesGetResponseBgpSignalOpts.pipe(
+        T.Body("bgp_signal_opts"),
+      ),
+    ),
+    cidr: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    onDemand: S.optional(
+      PrefixesBgpPrefixesGetResponseOnDemand.pipe(T.Body("on_demand")),
+    ),
   }),
 ).annotate({
   identifier: "PrefixesBgpPrefixesGetResponse",
 }) as any as S.Schema<PrefixesBgpPrefixesGetResponse>;
 
 export interface PrefixesBgpPrefixesListRequest {
-  account_id: string;
-  prefix_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an IP Prefix. */
+  prefixId: string;
 }
 export const PrefixesBgpPrefixesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    prefix_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    prefixId: S.String.pipe(T.Label("prefix_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -729,12 +1116,94 @@ export const PrefixesBgpPrefixesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrefixesBgpPrefixesListRequest",
 }) as any as S.Schema<PrefixesBgpPrefixesListRequest>;
 
-export type PrefixesBgpPrefixesListResultList = unknown[];
+export interface PrefixesBgpPrefixesListResultItemBgpSignalOpts {
+  /** Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal */
+  enabled?: boolean;
+  /** Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled. */
+  modifiedAt?: string;
+}
+export const PrefixesBgpPrefixesListResultItemBgpSignalOpts =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    }),
+  ).annotate({
+    identifier: "PrefixesBgpPrefixesListResultItemBgpSignalOpts",
+  }) as any as S.Schema<PrefixesBgpPrefixesListResultItemBgpSignalOpts>;
+
+export interface PrefixesBgpPrefixesListResultItemOnDemand {
+  /** Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled. */
+  advertised?: boolean;
+  /** Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled. */
+  advertisedModifiedAt?: string;
+  /** Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled. */
+  onDemandEnabled?: boolean;
+  /** Whether the advertisement status of the prefix is locked, meaning it cannot be changed. */
+  onDemandLocked?: boolean;
+}
+export const PrefixesBgpPrefixesListResultItemOnDemand =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      advertised: S.optional(S.Boolean),
+      advertisedModifiedAt: S.optional(
+        S.String.pipe(T.Body("advertised_modified_at")),
+      ),
+      onDemandEnabled: S.optional(S.Boolean.pipe(T.Body("on_demand_enabled"))),
+      onDemandLocked: S.optional(S.Boolean.pipe(T.Body("on_demand_locked"))),
+    }),
+  ).annotate({
+    identifier: "PrefixesBgpPrefixesListResultItemOnDemand",
+  }) as any as S.Schema<PrefixesBgpPrefixesListResultItemOnDemand>;
+
+export interface PrefixesBgpPrefixesListResultItem {
+  /** Identifier of BGP Prefix. */
+  id?: string;
+  /** Autonomous System Number (ASN) the prefix will be advertised under. */
+  asn?: number;
+  /** Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute */
+  asnPrependCount?: number;
+  /** Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route. */
+  autoAdvertiseWithdraw?: boolean;
+  bgpSignalOpts?: PrefixesBgpPrefixesListResultItemBgpSignalOpts;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  cidr?: string;
+  createdAt?: string;
+  modifiedAt?: string;
+  onDemand?: PrefixesBgpPrefixesListResultItemOnDemand;
+}
+export const PrefixesBgpPrefixesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    asn: S.optional(S.Number),
+    asnPrependCount: S.optional(S.Number.pipe(T.Body("asn_prepend_count"))),
+    autoAdvertiseWithdraw: S.optional(
+      S.Boolean.pipe(T.Body("auto_advertise_withdraw")),
+    ),
+    bgpSignalOpts: S.optional(
+      PrefixesBgpPrefixesListResultItemBgpSignalOpts.pipe(
+        T.Body("bgp_signal_opts"),
+      ),
+    ),
+    cidr: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    onDemand: S.optional(
+      PrefixesBgpPrefixesListResultItemOnDemand.pipe(T.Body("on_demand")),
+    ),
+  }),
+).annotate({
+  identifier: "PrefixesBgpPrefixesListResultItem",
+}) as any as S.Schema<PrefixesBgpPrefixesListResultItem>;
+
+export type PrefixesBgpPrefixesListResultList =
+  PrefixesBgpPrefixesListResultItem[];
 export const PrefixesBgpPrefixesListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PrefixesBgpPrefixesListResultItem,
 ) as any as S.Schema<PrefixesBgpPrefixesListResultList>;
 
 export interface PrefixesBgpPrefixesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PrefixesBgpPrefixesListResultList;
 }
 export const PrefixesBgpPrefixesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -748,21 +1217,29 @@ export const PrefixesBgpPrefixesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrefixesBgpPrefixesListResponse>;
 
 export interface PrefixesCreateRequest {
-  account_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Autonomous System Number (ASN) the prefix will be advertised under. */
   asn: number;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr: string;
-  delegate_loa_creation?: boolean;
+  /** Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner. */
+  delegateLoaCreation?: boolean;
+  /** Description of the prefix. */
   description?: string;
-  loa_document_id?: string;
+  /** Identifier for the uploaded LOA document. */
+  loaDocumentId?: string;
 }
 export const PrefixesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     asn: S.Number,
     cidr: S.String,
-    delegate_loa_creation: S.optional(S.Boolean),
+    delegateLoaCreation: S.optional(
+      S.Boolean.pipe(T.Body("delegate_loa_creation")),
+    ),
     description: S.optional(S.String),
-    loa_document_id: S.optional(S.String),
+    loaDocumentId: S.optional(S.String.pipe(T.Body("loa_document_id"))),
   }).pipe(
     T.Http({
       method: "POST",
@@ -774,29 +1251,96 @@ export const PrefixesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrefixesCreateRequest",
 }) as any as S.Schema<PrefixesCreateRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PrefixesCreateResponse {
-  result?: unknown;
+  /** Identifier of an IP Prefix. */
+  id?: string;
+  /** Identifier of a Cloudflare account. */
+  accountId?: string;
+  /** Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled. */
+  advertised?: boolean;
+  /** Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled. */
+  advertisedModifiedAt?: string;
+  /** Approval state of the prefix (P = pending, V = active). */
+  approved?: string;
+  /** Autonomous System Number (ASN) the prefix will be advertised under. */
+  asn?: number;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  cidr?: string;
+  createdAt?: string;
+  /** Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner. */
+  delegateLoaCreation?: boolean;
+  /** Description of the prefix. */
+  description?: string;
+  /** State of one kind of validation for an IP prefix. */
+  irrValidationState?: string;
+  /** Identifier for the uploaded LOA document. */
+  loaDocumentId?: string;
+  modifiedAt?: string;
+  /** Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled. */
+  onDemandEnabled?: boolean;
+  /** Whether advertisement status of the prefix is locked, meaning it cannot be changed. */
+  onDemandLocked?: boolean;
+  /** State of one kind of validation for an IP prefix. */
+  ownershipValidationState?: string;
+  /** Token provided to demonstrate ownership of the prefix. */
+  ownershipValidationToken?: string;
+  /** State of one kind of validation for an IP prefix. */
+  rpkiValidationState?: string;
 }
 export const PrefixesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
+    advertised: S.optional(S.Boolean),
+    advertisedModifiedAt: S.optional(
+      S.String.pipe(T.Body("advertised_modified_at")),
+    ),
+    approved: S.optional(S.String),
+    asn: S.optional(S.Number),
+    cidr: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    delegateLoaCreation: S.optional(
+      S.Boolean.pipe(T.Body("delegate_loa_creation")),
+    ),
+    description: S.optional(S.String),
+    irrValidationState: S.optional(
+      S.String.pipe(T.Body("irr_validation_state")),
+    ),
+    loaDocumentId: S.optional(S.String.pipe(T.Body("loa_document_id"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    onDemandEnabled: S.optional(S.Boolean.pipe(T.Body("on_demand_enabled"))),
+    onDemandLocked: S.optional(S.Boolean.pipe(T.Body("on_demand_locked"))),
+    ownershipValidationState: S.optional(
+      S.String.pipe(T.Body("ownership_validation_state")),
+    ),
+    ownershipValidationToken: S.optional(
+      S.String.pipe(T.Body("ownership_validation_token")),
+    ),
+    rpkiValidationState: S.optional(
+      S.String.pipe(T.Body("rpki_validation_state")),
+    ),
   }),
 ).annotate({
   identifier: "PrefixesCreateResponse",
 }) as any as S.Schema<PrefixesCreateResponse>;
 
 export interface PrefixesDelegationsCreateRequest {
-  account_id: string;
-  prefix_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an IP Prefix. */
+  prefixId: string;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr: string;
-  delegated_account_id: string;
+  /** Account identifier for the account to which prefix is being delegated. */
+  delegatedAccountId: string;
 }
 export const PrefixesDelegationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    prefix_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    prefixId: S.String.pipe(T.Label("prefix_id")),
     cidr: S.String,
-    delegated_account_id: S.String,
+    delegatedAccountId: S.String.pipe(T.Body("delegated_account_id")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -808,27 +1352,47 @@ export const PrefixesDelegationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrefixesDelegationsCreateRequest",
 }) as any as S.Schema<PrefixesDelegationsCreateRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PrefixesDelegationsCreateResponse {
-  result?: unknown;
+  /** Identifier of a Delegation. */
+  id?: string;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  cidr?: string;
+  createdAt?: string;
+  /** Account identifier for the account to which prefix is being delegated. */
+  delegatedAccountId?: string;
+  modifiedAt?: string;
+  /** Identifier of an IP Prefix. */
+  parentPrefixId?: string;
 }
 export const PrefixesDelegationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    cidr: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    delegatedAccountId: S.optional(
+      S.String.pipe(T.Body("delegated_account_id")),
+    ),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    parentPrefixId: S.optional(S.String.pipe(T.Body("parent_prefix_id"))),
   }),
 ).annotate({
   identifier: "PrefixesDelegationsCreateResponse",
 }) as any as S.Schema<PrefixesDelegationsCreateResponse>;
 
 export interface PrefixesDelegationsDeleteRequest {
-  account_id: string;
-  prefix_id: string;
-  delegation_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an IP Prefix. */
+  prefixId: string;
+  /** Identifier of a Delegation. */
+  delegationId: string;
 }
 export const PrefixesDelegationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    prefix_id: S.String.pipe(T.Label()),
-    delegation_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    prefixId: S.String.pipe(T.Label("prefix_id")),
+    delegationId: S.String.pipe(T.Label("delegation_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -842,6 +1406,7 @@ export const PrefixesDelegationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PrefixesDelegationsDeleteResponse {
+  /** Identifier of a Delegation. */
   id?: string;
 }
 export const PrefixesDelegationsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -853,13 +1418,15 @@ export const PrefixesDelegationsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrefixesDelegationsDeleteResponse>;
 
 export interface PrefixesDelegationsListRequest {
-  account_id: string;
-  prefix_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an IP Prefix. */
+  prefixId: string;
 }
 export const PrefixesDelegationsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    prefix_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    prefixId: S.String.pipe(T.Label("prefix_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -871,12 +1438,41 @@ export const PrefixesDelegationsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrefixesDelegationsListRequest",
 }) as any as S.Schema<PrefixesDelegationsListRequest>;
 
-export type PrefixesDelegationsListResultList = unknown[];
+export interface PrefixesDelegationsListResultItem {
+  /** Identifier of a Delegation. */
+  id?: string;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  cidr?: string;
+  createdAt?: string;
+  /** Account identifier for the account to which prefix is being delegated. */
+  delegatedAccountId?: string;
+  modifiedAt?: string;
+  /** Identifier of an IP Prefix. */
+  parentPrefixId?: string;
+}
+export const PrefixesDelegationsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    cidr: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    delegatedAccountId: S.optional(
+      S.String.pipe(T.Body("delegated_account_id")),
+    ),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    parentPrefixId: S.optional(S.String.pipe(T.Body("parent_prefix_id"))),
+  }),
+).annotate({
+  identifier: "PrefixesDelegationsListResultItem",
+}) as any as S.Schema<PrefixesDelegationsListResultItem>;
+
+export type PrefixesDelegationsListResultList =
+  PrefixesDelegationsListResultItem[];
 export const PrefixesDelegationsListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PrefixesDelegationsListResultItem,
 ) as any as S.Schema<PrefixesDelegationsListResultList>;
 
 export interface PrefixesDelegationsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PrefixesDelegationsListResultList;
 }
 export const PrefixesDelegationsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -890,13 +1486,15 @@ export const PrefixesDelegationsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrefixesDelegationsListResponse>;
 
 export interface PrefixesDeleteRequest {
-  account_id: string;
-  prefix_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an IP Prefix. */
+  prefixId: string;
 }
 export const PrefixesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    prefix_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    prefixId: S.String.pipe(T.Label("prefix_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -916,14 +1514,17 @@ export const PrefixesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrefixesDeleteResponse>;
 
 export interface PrefixesEditRequest {
-  account_id: string;
-  prefix_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an IP Prefix. */
+  prefixId: string;
+  /** Description of the prefix. */
   description: string;
 }
 export const PrefixesEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    prefix_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    prefixId: S.String.pipe(T.Label("prefix_id")),
     description: S.String,
   }).pipe(
     T.Http({
@@ -936,25 +1537,90 @@ export const PrefixesEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrefixesEditRequest",
 }) as any as S.Schema<PrefixesEditRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PrefixesEditResponse {
-  result?: unknown;
+  /** Identifier of an IP Prefix. */
+  id?: string;
+  /** Identifier of a Cloudflare account. */
+  accountId?: string;
+  /** Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled. */
+  advertised?: boolean;
+  /** Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled. */
+  advertisedModifiedAt?: string;
+  /** Approval state of the prefix (P = pending, V = active). */
+  approved?: string;
+  /** Autonomous System Number (ASN) the prefix will be advertised under. */
+  asn?: number;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  cidr?: string;
+  createdAt?: string;
+  /** Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner. */
+  delegateLoaCreation?: boolean;
+  /** Description of the prefix. */
+  description?: string;
+  /** State of one kind of validation for an IP prefix. */
+  irrValidationState?: string;
+  /** Identifier for the uploaded LOA document. */
+  loaDocumentId?: string;
+  modifiedAt?: string;
+  /** Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled. */
+  onDemandEnabled?: boolean;
+  /** Whether advertisement status of the prefix is locked, meaning it cannot be changed. */
+  onDemandLocked?: boolean;
+  /** State of one kind of validation for an IP prefix. */
+  ownershipValidationState?: string;
+  /** Token provided to demonstrate ownership of the prefix. */
+  ownershipValidationToken?: string;
+  /** State of one kind of validation for an IP prefix. */
+  rpkiValidationState?: string;
 }
 export const PrefixesEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
+    advertised: S.optional(S.Boolean),
+    advertisedModifiedAt: S.optional(
+      S.String.pipe(T.Body("advertised_modified_at")),
+    ),
+    approved: S.optional(S.String),
+    asn: S.optional(S.Number),
+    cidr: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    delegateLoaCreation: S.optional(
+      S.Boolean.pipe(T.Body("delegate_loa_creation")),
+    ),
+    description: S.optional(S.String),
+    irrValidationState: S.optional(
+      S.String.pipe(T.Body("irr_validation_state")),
+    ),
+    loaDocumentId: S.optional(S.String.pipe(T.Body("loa_document_id"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    onDemandEnabled: S.optional(S.Boolean.pipe(T.Body("on_demand_enabled"))),
+    onDemandLocked: S.optional(S.Boolean.pipe(T.Body("on_demand_locked"))),
+    ownershipValidationState: S.optional(
+      S.String.pipe(T.Body("ownership_validation_state")),
+    ),
+    ownershipValidationToken: S.optional(
+      S.String.pipe(T.Body("ownership_validation_token")),
+    ),
+    rpkiValidationState: S.optional(
+      S.String.pipe(T.Body("rpki_validation_state")),
+    ),
   }),
 ).annotate({
   identifier: "PrefixesEditResponse",
 }) as any as S.Schema<PrefixesEditResponse>;
 
 export interface PrefixesGetRequest {
-  account_id: string;
-  prefix_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an IP Prefix. */
+  prefixId: string;
 }
 export const PrefixesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    prefix_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    prefixId: S.String.pipe(T.Label("prefix_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -966,23 +1632,87 @@ export const PrefixesGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrefixesGetRequest",
 }) as any as S.Schema<PrefixesGetRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PrefixesGetResponse {
-  result?: unknown;
+  /** Identifier of an IP Prefix. */
+  id?: string;
+  /** Identifier of a Cloudflare account. */
+  accountId?: string;
+  /** Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled. */
+  advertised?: boolean;
+  /** Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled. */
+  advertisedModifiedAt?: string;
+  /** Approval state of the prefix (P = pending, V = active). */
+  approved?: string;
+  /** Autonomous System Number (ASN) the prefix will be advertised under. */
+  asn?: number;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  cidr?: string;
+  createdAt?: string;
+  /** Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner. */
+  delegateLoaCreation?: boolean;
+  /** Description of the prefix. */
+  description?: string;
+  /** State of one kind of validation for an IP prefix. */
+  irrValidationState?: string;
+  /** Identifier for the uploaded LOA document. */
+  loaDocumentId?: string;
+  modifiedAt?: string;
+  /** Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled. */
+  onDemandEnabled?: boolean;
+  /** Whether advertisement status of the prefix is locked, meaning it cannot be changed. */
+  onDemandLocked?: boolean;
+  /** State of one kind of validation for an IP prefix. */
+  ownershipValidationState?: string;
+  /** Token provided to demonstrate ownership of the prefix. */
+  ownershipValidationToken?: string;
+  /** State of one kind of validation for an IP prefix. */
+  rpkiValidationState?: string;
 }
 export const PrefixesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
+    advertised: S.optional(S.Boolean),
+    advertisedModifiedAt: S.optional(
+      S.String.pipe(T.Body("advertised_modified_at")),
+    ),
+    approved: S.optional(S.String),
+    asn: S.optional(S.Number),
+    cidr: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    delegateLoaCreation: S.optional(
+      S.Boolean.pipe(T.Body("delegate_loa_creation")),
+    ),
+    description: S.optional(S.String),
+    irrValidationState: S.optional(
+      S.String.pipe(T.Body("irr_validation_state")),
+    ),
+    loaDocumentId: S.optional(S.String.pipe(T.Body("loa_document_id"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    onDemandEnabled: S.optional(S.Boolean.pipe(T.Body("on_demand_enabled"))),
+    onDemandLocked: S.optional(S.Boolean.pipe(T.Body("on_demand_locked"))),
+    ownershipValidationState: S.optional(
+      S.String.pipe(T.Body("ownership_validation_state")),
+    ),
+    ownershipValidationToken: S.optional(
+      S.String.pipe(T.Body("ownership_validation_token")),
+    ),
+    rpkiValidationState: S.optional(
+      S.String.pipe(T.Body("rpki_validation_state")),
+    ),
   }),
 ).annotate({
   identifier: "PrefixesGetResponse",
 }) as any as S.Schema<PrefixesGetResponse>;
 
 export interface PrefixesListRequest {
-  account_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
 }
 export const PrefixesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -994,12 +1724,86 @@ export const PrefixesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrefixesListRequest",
 }) as any as S.Schema<PrefixesListRequest>;
 
-export type PrefixesListResultList = unknown[];
+export interface PrefixesListResultItem {
+  /** Identifier of an IP Prefix. */
+  id?: string;
+  /** Identifier of a Cloudflare account. */
+  accountId?: string;
+  /** Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled. */
+  advertised?: boolean;
+  /** Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled. */
+  advertisedModifiedAt?: string;
+  /** Approval state of the prefix (P = pending, V = active). */
+  approved?: string;
+  /** Autonomous System Number (ASN) the prefix will be advertised under. */
+  asn?: number;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  cidr?: string;
+  createdAt?: string;
+  /** Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner. */
+  delegateLoaCreation?: boolean;
+  /** Description of the prefix. */
+  description?: string;
+  /** State of one kind of validation for an IP prefix. */
+  irrValidationState?: string;
+  /** Identifier for the uploaded LOA document. */
+  loaDocumentId?: string;
+  modifiedAt?: string;
+  /** Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled. */
+  onDemandEnabled?: boolean;
+  /** Whether advertisement status of the prefix is locked, meaning it cannot be changed. */
+  onDemandLocked?: boolean;
+  /** State of one kind of validation for an IP prefix. */
+  ownershipValidationState?: string;
+  /** Token provided to demonstrate ownership of the prefix. */
+  ownershipValidationToken?: string;
+  /** State of one kind of validation for an IP prefix. */
+  rpkiValidationState?: string;
+}
+export const PrefixesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
+    advertised: S.optional(S.Boolean),
+    advertisedModifiedAt: S.optional(
+      S.String.pipe(T.Body("advertised_modified_at")),
+    ),
+    approved: S.optional(S.String),
+    asn: S.optional(S.Number),
+    cidr: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    delegateLoaCreation: S.optional(
+      S.Boolean.pipe(T.Body("delegate_loa_creation")),
+    ),
+    description: S.optional(S.String),
+    irrValidationState: S.optional(
+      S.String.pipe(T.Body("irr_validation_state")),
+    ),
+    loaDocumentId: S.optional(S.String.pipe(T.Body("loa_document_id"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    onDemandEnabled: S.optional(S.Boolean.pipe(T.Body("on_demand_enabled"))),
+    onDemandLocked: S.optional(S.Boolean.pipe(T.Body("on_demand_locked"))),
+    ownershipValidationState: S.optional(
+      S.String.pipe(T.Body("ownership_validation_state")),
+    ),
+    ownershipValidationToken: S.optional(
+      S.String.pipe(T.Body("ownership_validation_token")),
+    ),
+    rpkiValidationState: S.optional(
+      S.String.pipe(T.Body("rpki_validation_state")),
+    ),
+  }),
+).annotate({
+  identifier: "PrefixesListResultItem",
+}) as any as S.Schema<PrefixesListResultItem>;
+
+export type PrefixesListResultList = PrefixesListResultItem[];
 export const PrefixesListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PrefixesListResultItem,
 ) as any as S.Schema<PrefixesListResultList>;
 
 export interface PrefixesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PrefixesListResultList;
 }
 export const PrefixesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1011,18 +1815,22 @@ export const PrefixesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrefixesListResponse>;
 
 export interface PrefixesServiceBindingsCreateRequest {
-  account_id: string;
-  prefix_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an IP Prefix. */
+  prefixId: string;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr: string;
-  service_id: string;
+  /** Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the */
+  serviceId: string;
 }
 export const PrefixesServiceBindingsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      prefix_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      prefixId: S.String.pipe(T.Label("prefix_id")),
       cidr: S.String,
-      service_id: S.String,
+      serviceId: S.String.pipe(T.Body("service_id")),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1034,29 +1842,68 @@ export const PrefixesServiceBindingsCreateRequest = /*@__PURE__*/ S.suspend(
   identifier: "PrefixesServiceBindingsCreateRequest",
 }) as any as S.Schema<PrefixesServiceBindingsCreateRequest>;
 
+export type PrefixesServiceBindingsCreateResponseProvisioningState =
+  | "provisioning"
+  | "active"
+  | (string & {});
+export const PrefixesServiceBindingsCreateResponseProvisioningState =
+  /*@__PURE__*/ S.String;
+
+export interface PrefixesServiceBindingsCreateResponseProvisioning {
+  /** When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active and can be used with its associated service. */
+  state?: PrefixesServiceBindingsCreateResponseProvisioningState;
+}
+export const PrefixesServiceBindingsCreateResponseProvisioning =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: S.optional(PrefixesServiceBindingsCreateResponseProvisioningState),
+    }),
+  ).annotate({
+    identifier: "PrefixesServiceBindingsCreateResponseProvisioning",
+  }) as any as S.Schema<PrefixesServiceBindingsCreateResponseProvisioning>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PrefixesServiceBindingsCreateResponse {
-  result?: unknown;
+  /** Identifier of a Service Binding. */
+  id?: string;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  cidr?: string;
+  /** Status of a Service Binding's deployment to the Cloudflare network */
+  provisioning?: PrefixesServiceBindingsCreateResponseProvisioning;
+  /** Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the */
+  serviceId?: string;
+  /** Name of a service running on the Cloudflare network */
+  serviceName?: string;
 }
 export const PrefixesServiceBindingsCreateResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+      id: S.optional(S.String),
+      cidr: S.optional(S.String),
+      provisioning: S.optional(
+        PrefixesServiceBindingsCreateResponseProvisioning,
+      ),
+      serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
+      serviceName: S.optional(S.String.pipe(T.Body("service_name"))),
     }),
 ).annotate({
   identifier: "PrefixesServiceBindingsCreateResponse",
 }) as any as S.Schema<PrefixesServiceBindingsCreateResponse>;
 
 export interface PrefixesServiceBindingsDeleteRequest {
-  account_id: string;
-  prefix_id: string;
-  binding_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an IP Prefix. */
+  prefixId: string;
+  /** Identifier of a Service Binding. */
+  bindingId: string;
 }
 export const PrefixesServiceBindingsDeleteRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      prefix_id: S.String.pipe(T.Label()),
-      binding_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      prefixId: S.String.pipe(T.Label("prefix_id")),
+      bindingId: S.String.pipe(T.Label("binding_id")),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -1076,15 +1923,18 @@ export const PrefixesServiceBindingsDeleteResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrefixesServiceBindingsDeleteResponse>;
 
 export interface PrefixesServiceBindingsGetRequest {
-  account_id: string;
-  prefix_id: string;
-  binding_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an IP Prefix. */
+  prefixId: string;
+  /** Identifier of a Service Binding. */
+  bindingId: string;
 }
 export const PrefixesServiceBindingsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    prefix_id: S.String.pipe(T.Label()),
-    binding_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    prefixId: S.String.pipe(T.Label("prefix_id")),
+    bindingId: S.String.pipe(T.Label("binding_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1096,25 +1946,61 @@ export const PrefixesServiceBindingsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrefixesServiceBindingsGetRequest",
 }) as any as S.Schema<PrefixesServiceBindingsGetRequest>;
 
+export type PrefixesServiceBindingsGetResponseProvisioningState =
+  | "provisioning"
+  | "active"
+  | (string & {});
+export const PrefixesServiceBindingsGetResponseProvisioningState =
+  /*@__PURE__*/ S.String;
+
+export interface PrefixesServiceBindingsGetResponseProvisioning {
+  /** When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active and can be used with its associated service. */
+  state?: PrefixesServiceBindingsGetResponseProvisioningState;
+}
+export const PrefixesServiceBindingsGetResponseProvisioning =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: S.optional(PrefixesServiceBindingsGetResponseProvisioningState),
+    }),
+  ).annotate({
+    identifier: "PrefixesServiceBindingsGetResponseProvisioning",
+  }) as any as S.Schema<PrefixesServiceBindingsGetResponseProvisioning>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PrefixesServiceBindingsGetResponse {
-  result?: unknown;
+  /** Identifier of a Service Binding. */
+  id?: string;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  cidr?: string;
+  /** Status of a Service Binding's deployment to the Cloudflare network */
+  provisioning?: PrefixesServiceBindingsGetResponseProvisioning;
+  /** Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the */
+  serviceId?: string;
+  /** Name of a service running on the Cloudflare network */
+  serviceName?: string;
 }
 export const PrefixesServiceBindingsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    cidr: S.optional(S.String),
+    provisioning: S.optional(PrefixesServiceBindingsGetResponseProvisioning),
+    serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
+    serviceName: S.optional(S.String.pipe(T.Body("service_name"))),
   }),
 ).annotate({
   identifier: "PrefixesServiceBindingsGetResponse",
 }) as any as S.Schema<PrefixesServiceBindingsGetResponse>;
 
 export interface PrefixesServiceBindingsListRequest {
-  account_id: string;
-  prefix_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Identifier of an IP Prefix. */
+  prefixId: string;
 }
 export const PrefixesServiceBindingsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    prefix_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    prefixId: S.String.pipe(T.Label("prefix_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1126,12 +2012,61 @@ export const PrefixesServiceBindingsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrefixesServiceBindingsListRequest",
 }) as any as S.Schema<PrefixesServiceBindingsListRequest>;
 
-export type PrefixesServiceBindingsListResultList = unknown[];
+export type PrefixesServiceBindingsListResultItemProvisioningState =
+  | "provisioning"
+  | "active"
+  | (string & {});
+export const PrefixesServiceBindingsListResultItemProvisioningState =
+  /*@__PURE__*/ S.String;
+
+export interface PrefixesServiceBindingsListResultItemProvisioning {
+  /** When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active and can be used with its associated service. */
+  state?: PrefixesServiceBindingsListResultItemProvisioningState;
+}
+export const PrefixesServiceBindingsListResultItemProvisioning =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: S.optional(PrefixesServiceBindingsListResultItemProvisioningState),
+    }),
+  ).annotate({
+    identifier: "PrefixesServiceBindingsListResultItemProvisioning",
+  }) as any as S.Schema<PrefixesServiceBindingsListResultItemProvisioning>;
+
+export interface PrefixesServiceBindingsListResultItem {
+  /** Identifier of a Service Binding. */
+  id?: string;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  cidr?: string;
+  /** Status of a Service Binding's deployment to the Cloudflare network */
+  provisioning?: PrefixesServiceBindingsListResultItemProvisioning;
+  /** Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the */
+  serviceId?: string;
+  /** Name of a service running on the Cloudflare network */
+  serviceName?: string;
+}
+export const PrefixesServiceBindingsListResultItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      cidr: S.optional(S.String),
+      provisioning: S.optional(
+        PrefixesServiceBindingsListResultItemProvisioning,
+      ),
+      serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
+      serviceName: S.optional(S.String.pipe(T.Body("service_name"))),
+    }),
+).annotate({
+  identifier: "PrefixesServiceBindingsListResultItem",
+}) as any as S.Schema<PrefixesServiceBindingsListResultItem>;
+
+export type PrefixesServiceBindingsListResultList =
+  PrefixesServiceBindingsListResultItem[];
 export const PrefixesServiceBindingsListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PrefixesServiceBindingsListResultItem,
 ) as any as S.Schema<PrefixesServiceBindingsListResultList>;
 
 export interface PrefixesServiceBindingsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PrefixesServiceBindingsListResultList;
 }
 export const PrefixesServiceBindingsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1145,16 +2080,20 @@ export const PrefixesServiceBindingsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrefixesServiceBindingsListResponse>;
 
 export interface RegionalHostnamesCreateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com` */
   hostname: string;
-  region_key: string;
+  /** Identifying key for the region */
+  regionKey: string;
+  /** Configure which routing method to use for the regional hostname */
   routing?: string;
 }
 export const RegionalHostnamesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     hostname: S.String,
-    region_key: S.String,
+    regionKey: S.String.pipe(T.Body("region_key")),
     routing: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -1169,16 +2108,20 @@ export const RegionalHostnamesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RegionalHostnamesCreateResponse {
-  created_on: string;
+  /** When the regional hostname was created */
+  createdOn: string;
+  /** DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com` */
   hostname: string;
-  region_key: string;
+  /** Identifying key for the region */
+  regionKey: string;
+  /** Configure which routing method to use for the regional hostname */
   routing: string;
 }
 export const RegionalHostnamesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created_on: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
     hostname: S.String,
-    region_key: S.String,
+    regionKey: S.String.pipe(T.Body("region_key")),
     routing: S.String,
   }),
 ).annotate({
@@ -1186,12 +2129,14 @@ export const RegionalHostnamesCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionalHostnamesCreateResponse>;
 
 export interface RegionalHostnamesDeleteRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com` */
   hostname: string;
 }
 export const RegionalHostnamesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     hostname: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -1212,15 +2157,18 @@ export const RegionalHostnamesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionalHostnamesDeleteResponse>;
 
 export interface RegionalHostnamesEditRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com` */
   hostname: string;
-  region_key: string;
+  /** Identifying key for the region */
+  regionKey: string;
 }
 export const RegionalHostnamesEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     hostname: S.String.pipe(T.Label()),
-    region_key: S.String,
+    regionKey: S.String.pipe(T.Body("region_key")),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1234,16 +2182,20 @@ export const RegionalHostnamesEditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RegionalHostnamesEditResponse {
-  created_on: string;
+  /** When the regional hostname was created */
+  createdOn: string;
+  /** DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com` */
   hostname: string;
-  region_key: string;
+  /** Identifying key for the region */
+  regionKey: string;
+  /** Configure which routing method to use for the regional hostname */
   routing: string;
 }
 export const RegionalHostnamesEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created_on: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
     hostname: S.String,
-    region_key: S.String,
+    regionKey: S.String.pipe(T.Body("region_key")),
     routing: S.String,
   }),
 ).annotate({
@@ -1251,12 +2203,14 @@ export const RegionalHostnamesEditResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionalHostnamesEditResponse>;
 
 export interface RegionalHostnamesGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com` */
   hostname: string;
 }
 export const RegionalHostnamesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     hostname: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -1271,16 +2225,20 @@ export const RegionalHostnamesGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RegionalHostnamesGetResponse {
-  created_on: string;
+  /** When the regional hostname was created */
+  createdOn: string;
+  /** DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com` */
   hostname: string;
-  region_key: string;
+  /** Identifying key for the region */
+  regionKey: string;
+  /** Configure which routing method to use for the regional hostname */
   routing: string;
 }
 export const RegionalHostnamesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created_on: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
     hostname: S.String,
-    region_key: S.String,
+    regionKey: S.String.pipe(T.Body("region_key")),
     routing: S.String,
   }),
 ).annotate({
@@ -1288,11 +2246,12 @@ export const RegionalHostnamesGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionalHostnamesGetResponse>;
 
 export interface RegionalHostnamesListRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const RegionalHostnamesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1305,16 +2264,20 @@ export const RegionalHostnamesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionalHostnamesListRequest>;
 
 export interface RegionalHostnamesListResultItem {
-  created_on: string;
+  /** When the regional hostname was created */
+  createdOn: string;
+  /** DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com` */
   hostname: string;
-  region_key: string;
+  /** Identifying key for the region */
+  regionKey: string;
+  /** Configure which routing method to use for the regional hostname */
   routing: string;
 }
 export const RegionalHostnamesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created_on: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
     hostname: S.String,
-    region_key: S.String,
+    regionKey: S.String.pipe(T.Body("region_key")),
     routing: S.String,
   }),
 ).annotate({
@@ -1327,6 +2290,7 @@ export const RegionalHostnamesListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RegionalHostnamesListResultList>;
 
 export interface RegionalHostnamesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RegionalHostnamesListResultList;
 }
 export const RegionalHostnamesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1340,11 +2304,12 @@ export const RegionalHostnamesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionalHostnamesListResponse>;
 
 export interface RegionalHostnamesRegionsListRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
 }
 export const RegionalHostnamesRegionsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1357,7 +2322,9 @@ export const RegionalHostnamesRegionsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionalHostnamesRegionsListRequest>;
 
 export interface RegionalHostnamesRegionsListResultItem {
+  /** Identifying key for the region */
   key?: string;
+  /** Human-readable text label for the region */
   label?: string;
 }
 export const RegionalHostnamesRegionsListResultItem = /*@__PURE__*/ S.suspend(
@@ -1377,6 +2344,7 @@ export const RegionalHostnamesRegionsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RegionalHostnamesRegionsListResultList>;
 
 export interface RegionalHostnamesRegionsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RegionalHostnamesRegionsListResultList;
 }
 export const RegionalHostnamesRegionsListResponse = /*@__PURE__*/ S.suspend(
@@ -1391,11 +2359,12 @@ export const RegionalHostnamesRegionsListResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RegionalHostnamesRegionsListResponse>;
 
 export interface ServicesListRequest {
-  account_id: string;
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
 }
 export const ServicesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1408,7 +2377,9 @@ export const ServicesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicesListRequest>;
 
 export interface ServicesListResultItem {
+  /** Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the */
   id?: string;
+  /** Name of a service running on the Cloudflare network */
   name?: string;
 }
 export const ServicesListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -1426,6 +2397,7 @@ export const ServicesListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ServicesListResultList>;
 
 export interface ServicesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ServicesListResultList;
 }
 export const ServicesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1436,11 +2408,12 @@ export const ServicesListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServicesListResponse",
 }) as any as S.Schema<ServicesListResponse>;
 
+export type AddressMapsAccountsDeleteError = CloudflareOpError;
 /** Remove an account as a member of a particular address map. */
-export const AddressMapsAccountsDelete: API.OperationMethod<
+export const addressMapsAccountsDelete: API.OperationMethod<
   AddressMapsAccountsDeleteRequest,
   AddressMapsAccountsDeleteResponse,
-  CloudflareOpError,
+  AddressMapsAccountsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AddressMapsAccountsDeleteRequest,
@@ -1449,11 +2422,12 @@ export const AddressMapsAccountsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AddressMapsAccountsUpdateError = CloudflareOpError;
 /** Add an account as a member of a particular address map. */
-export const AddressMapsAccountsUpdate: API.OperationMethod<
+export const addressMapsAccountsUpdate: API.OperationMethod<
   AddressMapsAccountsUpdateRequest,
   AddressMapsAccountsUpdateResponse,
-  CloudflareOpError,
+  AddressMapsAccountsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AddressMapsAccountsUpdateRequest,
@@ -1462,11 +2436,12 @@ export const AddressMapsAccountsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AddressMapsCreateError = CloudflareOpError;
 /** Create a new address map under the account. */
-export const AddressMapsCreate: API.OperationMethod<
+export const addressMapsCreate: API.OperationMethod<
   AddressMapsCreateRequest,
   AddressMapsCreateResponse,
-  CloudflareOpError,
+  AddressMapsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AddressMapsCreateRequest,
@@ -1475,11 +2450,12 @@ export const AddressMapsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AddressMapsDeleteError = CloudflareOpError;
 /** Delete a particular address map owned by the account. An Address Map must be disabled before it can be deleted. */
-export const AddressMapsDelete: API.OperationMethod<
+export const addressMapsDelete: API.OperationMethod<
   AddressMapsDeleteRequest,
   AddressMapsDeleteResponse,
-  CloudflareOpError,
+  AddressMapsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AddressMapsDeleteRequest,
@@ -1488,11 +2464,12 @@ export const AddressMapsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AddressMapsEditError = CloudflareOpError;
 /** Modify properties of an address map owned by the account. */
-export const AddressMapsEdit: API.OperationMethod<
+export const addressMapsEdit: API.OperationMethod<
   AddressMapsEditRequest,
   AddressMapsEditResponse,
-  CloudflareOpError,
+  AddressMapsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AddressMapsEditRequest,
@@ -1501,11 +2478,12 @@ export const AddressMapsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AddressMapsGetError = CloudflareOpError;
 /** Show a particular address map owned by the account. */
-export const AddressMapsGet: API.OperationMethod<
+export const addressMapsGet: API.OperationMethod<
   AddressMapsGetRequest,
   AddressMapsGetResponse,
-  CloudflareOpError,
+  AddressMapsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AddressMapsGetRequest,
@@ -1514,11 +2492,12 @@ export const AddressMapsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AddressMapsIpsDeleteError = CloudflareOpError;
 /** Remove an IP from a particular address map. */
-export const AddressMapsIpsDelete: API.OperationMethod<
+export const addressMapsIpsDelete: API.OperationMethod<
   AddressMapsIpsDeleteRequest,
   AddressMapsIpsDeleteResponse,
-  CloudflareOpError,
+  AddressMapsIpsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AddressMapsIpsDeleteRequest,
@@ -1527,11 +2506,12 @@ export const AddressMapsIpsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AddressMapsIpsUpdateError = CloudflareOpError;
 /** Add an IP from a prefix owned by the account to a particular address map. */
-export const AddressMapsIpsUpdate: API.OperationMethod<
+export const addressMapsIpsUpdate: API.OperationMethod<
   AddressMapsIpsUpdateRequest,
   AddressMapsIpsUpdateResponse,
-  CloudflareOpError,
+  AddressMapsIpsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AddressMapsIpsUpdateRequest,
@@ -1540,11 +2520,12 @@ export const AddressMapsIpsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AddressMapsListError = CloudflareOpError;
 /** List all address maps owned by the account. */
-export const AddressMapsList: API.OperationMethod<
+export const addressMapsList: API.OperationMethod<
   AddressMapsListRequest,
   AddressMapsListResponse,
-  CloudflareOpError,
+  AddressMapsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AddressMapsListRequest,
@@ -1553,11 +2534,12 @@ export const AddressMapsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AddressMapsZonesDeleteError = CloudflareOpError;
 /** Remove a zone as a member of a particular address map. */
-export const AddressMapsZonesDelete: API.OperationMethod<
+export const addressMapsZonesDelete: API.OperationMethod<
   AddressMapsZonesDeleteRequest,
   AddressMapsZonesDeleteResponse,
-  CloudflareOpError,
+  AddressMapsZonesDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AddressMapsZonesDeleteRequest,
@@ -1566,11 +2548,12 @@ export const AddressMapsZonesDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AddressMapsZonesUpdateError = CloudflareOpError;
 /** Add a zone as a member of a particular address map. */
-export const AddressMapsZonesUpdate: API.OperationMethod<
+export const addressMapsZonesUpdate: API.OperationMethod<
   AddressMapsZonesUpdateRequest,
   AddressMapsZonesUpdateResponse,
-  CloudflareOpError,
+  AddressMapsZonesUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AddressMapsZonesUpdateRequest,
@@ -1579,11 +2562,12 @@ export const AddressMapsZonesUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type LoaDocumentsCreateError = CloudflareOpError;
 /** Submit LOA document (pdf format) under the account. */
-export const LoaDocumentsCreate: API.OperationMethod<
+export const loaDocumentsCreate: API.OperationMethod<
   LoaDocumentsCreateRequest,
   LoaDocumentsCreateResponse,
-  CloudflareOpError,
+  LoaDocumentsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LoaDocumentsCreateRequest,
@@ -1592,11 +2576,12 @@ export const LoaDocumentsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type LoaDocumentsGetError = CloudflareOpError;
 /** Download specified LOA document under the account. */
-export const LoaDocumentsGet: API.OperationMethod<
+export const loaDocumentsGet: API.OperationMethod<
   LoaDocumentsGetRequest,
   LoaDocumentsGetResponse,
-  CloudflareOpError,
+  LoaDocumentsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LoaDocumentsGetRequest,
@@ -1605,11 +2590,12 @@ export const LoaDocumentsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesAdvertisementStatusEditError = CloudflareOpError;
 /** Advertise or withdraw the BGP route for a prefix. **Deprecated:** Prefer the BGP Prefixes endpoints, which additionally allow for advertising and withdrawing subnets of an IP prefix. */
-export const PrefixesAdvertisementStatusEdit: API.OperationMethod<
+export const prefixesAdvertisementStatusEdit: API.OperationMethod<
   PrefixesAdvertisementStatusEditRequest,
   PrefixesAdvertisementStatusEditResponse,
-  CloudflareOpError,
+  PrefixesAdvertisementStatusEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesAdvertisementStatusEditRequest,
@@ -1618,11 +2604,12 @@ export const PrefixesAdvertisementStatusEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesAdvertisementStatusGetError = CloudflareOpError;
 /** View the current advertisement state for a prefix. **Deprecated:** Prefer the BGP Prefixes endpoints, which additionally allow for advertising and withdrawing subnets of an IP prefix. */
-export const PrefixesAdvertisementStatusGet: API.OperationMethod<
+export const prefixesAdvertisementStatusGet: API.OperationMethod<
   PrefixesAdvertisementStatusGetRequest,
   PrefixesAdvertisementStatusGetResponse,
-  CloudflareOpError,
+  PrefixesAdvertisementStatusGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesAdvertisementStatusGetRequest,
@@ -1631,11 +2618,12 @@ export const PrefixesAdvertisementStatusGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesBgpPrefixesCreateError = CloudflareOpError;
 /** Create a BGP prefix, controlling the BGP advertisement status of a specific subnet. When created, BGP prefixes are initially withdrawn, and can be advertised with the Update BGP Prefix API. */
-export const PrefixesBgpPrefixesCreate: API.OperationMethod<
+export const prefixesBgpPrefixesCreate: API.OperationMethod<
   PrefixesBgpPrefixesCreateRequest,
   PrefixesBgpPrefixesCreateResponse,
-  CloudflareOpError,
+  PrefixesBgpPrefixesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesBgpPrefixesCreateRequest,
@@ -1644,11 +2632,12 @@ export const PrefixesBgpPrefixesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesBgpPrefixesEditError = CloudflareOpError;
 /** Update the properties of a BGP Prefix, such as the on demand advertisement status (advertised or withdrawn). */
-export const PrefixesBgpPrefixesEdit: API.OperationMethod<
+export const prefixesBgpPrefixesEdit: API.OperationMethod<
   PrefixesBgpPrefixesEditRequest,
   PrefixesBgpPrefixesEditResponse,
-  CloudflareOpError,
+  PrefixesBgpPrefixesEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesBgpPrefixesEditRequest,
@@ -1657,11 +2646,12 @@ export const PrefixesBgpPrefixesEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesBgpPrefixesGetError = CloudflareOpError;
 /** Retrieve a single BGP Prefix according to its identifier */
-export const PrefixesBgpPrefixesGet: API.OperationMethod<
+export const prefixesBgpPrefixesGet: API.OperationMethod<
   PrefixesBgpPrefixesGetRequest,
   PrefixesBgpPrefixesGetResponse,
-  CloudflareOpError,
+  PrefixesBgpPrefixesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesBgpPrefixesGetRequest,
@@ -1670,11 +2660,12 @@ export const PrefixesBgpPrefixesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesBgpPrefixesListError = CloudflareOpError;
 /** List all BGP Prefixes within the specified IP Prefix. BGP Prefixes are used to control which specific subnets are advertised to the Internet. It is possible to advertise subnets more specific than an IP Prefix by creating more specific BGP Prefixes. */
-export const PrefixesBgpPrefixesList: API.OperationMethod<
+export const prefixesBgpPrefixesList: API.OperationMethod<
   PrefixesBgpPrefixesListRequest,
   PrefixesBgpPrefixesListResponse,
-  CloudflareOpError,
+  PrefixesBgpPrefixesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesBgpPrefixesListRequest,
@@ -1683,11 +2674,12 @@ export const PrefixesBgpPrefixesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesCreateError = CloudflareOpError;
 /** Add a new prefix under the account. */
-export const PrefixesCreate: API.OperationMethod<
+export const prefixesCreate: API.OperationMethod<
   PrefixesCreateRequest,
   PrefixesCreateResponse,
-  CloudflareOpError,
+  PrefixesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesCreateRequest,
@@ -1696,11 +2688,12 @@ export const PrefixesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesDelegationsCreateError = CloudflareOpError;
 /** Create a new account delegation for a given IP prefix. */
-export const PrefixesDelegationsCreate: API.OperationMethod<
+export const prefixesDelegationsCreate: API.OperationMethod<
   PrefixesDelegationsCreateRequest,
   PrefixesDelegationsCreateResponse,
-  CloudflareOpError,
+  PrefixesDelegationsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesDelegationsCreateRequest,
@@ -1709,11 +2702,12 @@ export const PrefixesDelegationsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesDelegationsDeleteError = CloudflareOpError;
 /** Delete an account delegation for a given IP prefix. */
-export const PrefixesDelegationsDelete: API.OperationMethod<
+export const prefixesDelegationsDelete: API.OperationMethod<
   PrefixesDelegationsDeleteRequest,
   PrefixesDelegationsDeleteResponse,
-  CloudflareOpError,
+  PrefixesDelegationsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesDelegationsDeleteRequest,
@@ -1722,11 +2716,12 @@ export const PrefixesDelegationsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesDelegationsListError = CloudflareOpError;
 /** List all delegations for a given account IP prefix. */
-export const PrefixesDelegationsList: API.OperationMethod<
+export const prefixesDelegationsList: API.OperationMethod<
   PrefixesDelegationsListRequest,
   PrefixesDelegationsListResponse,
-  CloudflareOpError,
+  PrefixesDelegationsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesDelegationsListRequest,
@@ -1735,11 +2730,12 @@ export const PrefixesDelegationsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesDeleteError = CloudflareOpError;
 /** Delete an unapproved prefix owned by the account. */
-export const PrefixesDelete: API.OperationMethod<
+export const prefixesDelete: API.OperationMethod<
   PrefixesDeleteRequest,
   PrefixesDeleteResponse,
-  CloudflareOpError,
+  PrefixesDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesDeleteRequest,
@@ -1748,11 +2744,12 @@ export const PrefixesDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesEditError = CloudflareOpError;
 /** Modify the description for a prefix owned by the account. */
-export const PrefixesEdit: API.OperationMethod<
+export const prefixesEdit: API.OperationMethod<
   PrefixesEditRequest,
   PrefixesEditResponse,
-  CloudflareOpError,
+  PrefixesEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesEditRequest,
@@ -1761,11 +2758,12 @@ export const PrefixesEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesGetError = CloudflareOpError;
 /** List a particular prefix owned by the account. */
-export const PrefixesGet: API.OperationMethod<
+export const prefixesGet: API.OperationMethod<
   PrefixesGetRequest,
   PrefixesGetResponse,
-  CloudflareOpError,
+  PrefixesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesGetRequest,
@@ -1774,11 +2772,12 @@ export const PrefixesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesListError = CloudflareOpError;
 /** List all prefixes owned by the account. */
-export const PrefixesList: API.OperationMethod<
+export const prefixesList: API.OperationMethod<
   PrefixesListRequest,
   PrefixesListResponse,
-  CloudflareOpError,
+  PrefixesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesListRequest,
@@ -1787,11 +2786,12 @@ export const PrefixesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesServiceBindingsCreateError = CloudflareOpError;
 /** Creates a new Service Binding, routing traffic to IPs within the given CIDR to a service running on Cloudflare's network. **NOTE:** The first Service Binding created for an IP Prefix must exactly match the IP Prefix's CIDR. Subsequent Service Bindings may be created with a more-specific CIDR. Refer to the [Service Bindings Documentation](https://developers.cloudflare.com/byoip/service-bindings/) for compatibility details. */
-export const PrefixesServiceBindingsCreate: API.OperationMethod<
+export const prefixesServiceBindingsCreate: API.OperationMethod<
   PrefixesServiceBindingsCreateRequest,
   PrefixesServiceBindingsCreateResponse,
-  CloudflareOpError,
+  PrefixesServiceBindingsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesServiceBindingsCreateRequest,
@@ -1800,11 +2800,12 @@ export const PrefixesServiceBindingsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesServiceBindingsDeleteError = CloudflareOpError;
 /** Delete a Service Binding */
-export const PrefixesServiceBindingsDelete: API.OperationMethod<
+export const prefixesServiceBindingsDelete: API.OperationMethod<
   PrefixesServiceBindingsDeleteRequest,
   PrefixesServiceBindingsDeleteResponse,
-  CloudflareOpError,
+  PrefixesServiceBindingsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesServiceBindingsDeleteRequest,
@@ -1813,11 +2814,12 @@ export const PrefixesServiceBindingsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesServiceBindingsGetError = CloudflareOpError;
 /** Fetch a single Service Binding */
-export const PrefixesServiceBindingsGet: API.OperationMethod<
+export const prefixesServiceBindingsGet: API.OperationMethod<
   PrefixesServiceBindingsGetRequest,
   PrefixesServiceBindingsGetResponse,
-  CloudflareOpError,
+  PrefixesServiceBindingsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesServiceBindingsGetRequest,
@@ -1826,11 +2828,12 @@ export const PrefixesServiceBindingsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PrefixesServiceBindingsListError = CloudflareOpError;
 /** List the Cloudflare services this prefix is currently bound to. Traffic sent to an address within an IP prefix will be routed to the Cloudflare service of the most-specific Service Binding matching the address. **Example:** binding `192.0.2.0/24` to Cloudflare Magic Transit and `192.0.2.1/32` to the Cloudflare CDN would route traffic for `192.0.2.1` to the CDN, and traffic for all other IPs in the prefix to Cloudflare Magic Transit. */
-export const PrefixesServiceBindingsList: API.OperationMethod<
+export const prefixesServiceBindingsList: API.OperationMethod<
   PrefixesServiceBindingsListRequest,
   PrefixesServiceBindingsListResponse,
-  CloudflareOpError,
+  PrefixesServiceBindingsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PrefixesServiceBindingsListRequest,
@@ -1839,11 +2842,12 @@ export const PrefixesServiceBindingsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RegionalHostnamesCreateError = CloudflareOpError;
 /** Create a new Regional Hostname entry. Cloudflare will only use data centers that are physically located within the chosen region to decrypt and service HTTPS traffic. Learn more about [Regional Services](https://developers.cloudflare.com/data-localization/regional-services/get-started/). */
-export const RegionalHostnamesCreate: API.OperationMethod<
+export const regionalHostnamesCreate: API.OperationMethod<
   RegionalHostnamesCreateRequest,
   RegionalHostnamesCreateResponse,
-  CloudflareOpError,
+  RegionalHostnamesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RegionalHostnamesCreateRequest,
@@ -1852,11 +2856,12 @@ export const RegionalHostnamesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RegionalHostnamesDeleteError = CloudflareOpError;
 /** Delete the region configuration for a specific Regional Hostname. */
-export const RegionalHostnamesDelete: API.OperationMethod<
+export const regionalHostnamesDelete: API.OperationMethod<
   RegionalHostnamesDeleteRequest,
   RegionalHostnamesDeleteResponse,
-  CloudflareOpError,
+  RegionalHostnamesDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RegionalHostnamesDeleteRequest,
@@ -1865,11 +2870,12 @@ export const RegionalHostnamesDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RegionalHostnamesEditError = CloudflareOpError;
 /** Update the configuration for a specific Regional Hostname. Only the region_key of a hostname is mutable. */
-export const RegionalHostnamesEdit: API.OperationMethod<
+export const regionalHostnamesEdit: API.OperationMethod<
   RegionalHostnamesEditRequest,
   RegionalHostnamesEditResponse,
-  CloudflareOpError,
+  RegionalHostnamesEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RegionalHostnamesEditRequest,
@@ -1878,11 +2884,12 @@ export const RegionalHostnamesEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RegionalHostnamesGetError = CloudflareOpError;
 /** Fetch the configuration for a specific Regional Hostname, within a zone. */
-export const RegionalHostnamesGet: API.OperationMethod<
+export const regionalHostnamesGet: API.OperationMethod<
   RegionalHostnamesGetRequest,
   RegionalHostnamesGetResponse,
-  CloudflareOpError,
+  RegionalHostnamesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RegionalHostnamesGetRequest,
@@ -1891,11 +2898,12 @@ export const RegionalHostnamesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RegionalHostnamesListError = CloudflareOpError;
 /** List all Regional Hostnames within a zone. */
-export const RegionalHostnamesList: API.OperationMethod<
+export const regionalHostnamesList: API.OperationMethod<
   RegionalHostnamesListRequest,
   RegionalHostnamesListResponse,
-  CloudflareOpError,
+  RegionalHostnamesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RegionalHostnamesListRequest,
@@ -1904,11 +2912,12 @@ export const RegionalHostnamesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RegionalHostnamesRegionsListError = CloudflareOpError;
 /** List all Regional Services regions available for use by this account. */
-export const RegionalHostnamesRegionsList: API.OperationMethod<
+export const regionalHostnamesRegionsList: API.OperationMethod<
   RegionalHostnamesRegionsListRequest,
   RegionalHostnamesRegionsListResponse,
-  CloudflareOpError,
+  RegionalHostnamesRegionsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RegionalHostnamesRegionsListRequest,
@@ -1917,11 +2926,12 @@ export const RegionalHostnamesRegionsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ServicesListError = CloudflareOpError;
 /** Bring-Your-Own IP (BYOIP) prefixes onboarded to Cloudflare must be bound to a service running on the Cloudflare network to enable a Cloudflare product on the IP addresses. This endpoint can be used as a reference of available services on the Cloudflare network, and their service IDs. */
-export const ServicesList: API.OperationMethod<
+export const servicesList: API.OperationMethod<
   ServicesListRequest,
   ServicesListResponse,
-  CloudflareOpError,
+  ServicesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ServicesListRequest,

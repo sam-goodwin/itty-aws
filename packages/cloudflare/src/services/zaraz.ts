@@ -10,11 +10,12 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface ConfigGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const ConfigGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -26,12 +27,274 @@ export const ConfigGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigGetRequest",
 }) as any as S.Schema<ConfigGetRequest>;
 
+export interface ConfigGetResponseSettingsContextEnricher {
+  escapedWorkerName: string;
+  workerTag: string;
+}
+export const ConfigGetResponseSettingsContextEnricher = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      escapedWorkerName: S.String,
+      workerTag: S.String,
+    }),
+).annotate({
+  identifier: "ConfigGetResponseSettingsContextEnricher",
+}) as any as S.Schema<ConfigGetResponseSettingsContextEnricher>;
+
+export interface ConfigGetResponseSettings {
+  /** Automatic injection of Zaraz scripts enabled. */
+  autoInjectScript: boolean;
+  /** Details of the worker that receives and edits Zaraz Context object. */
+  contextEnricher?: ConfigGetResponseSettingsContextEnricher;
+  /** The domain Zaraz will use for writing and reading its cookies. */
+  cookieDomain?: string;
+  /** Ecommerce API enabled. */
+  ecommerce?: boolean;
+  /** Custom endpoint for server-side track events. */
+  eventsApiPath?: string;
+  /** Hiding external referrer URL enabled. */
+  hideExternalReferer?: boolean;
+  /** Trimming IP address enabled. */
+  hideIPAddress?: boolean;
+  /** Removing URL query params enabled. */
+  hideQueryParams?: boolean;
+  /** Removing sensitive data from User Agent string enabled. */
+  hideUserAgent?: boolean;
+  /** Custom endpoint for Zaraz init script. */
+  initPath?: string;
+  /** Injection of Zaraz scripts into iframes enabled. */
+  injectIframes?: boolean;
+  /** Custom path for Managed Components server functionalities. */
+  mcRootPath?: string;
+  /** Custom endpoint for Zaraz main script. */
+  scriptPath?: string;
+  /** Custom endpoint for Zaraz tracking requests. */
+  trackPath?: string;
+}
+export const ConfigGetResponseSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autoInjectScript: S.Boolean,
+    contextEnricher: S.optional(ConfigGetResponseSettingsContextEnricher),
+    cookieDomain: S.optional(S.String),
+    ecommerce: S.optional(S.Boolean),
+    eventsApiPath: S.optional(S.String),
+    hideExternalReferer: S.optional(S.Boolean),
+    hideIPAddress: S.optional(S.Boolean),
+    hideQueryParams: S.optional(S.Boolean),
+    hideUserAgent: S.optional(S.Boolean),
+    initPath: S.optional(S.String),
+    injectIframes: S.optional(S.Boolean),
+    mcRootPath: S.optional(S.String),
+    scriptPath: S.optional(S.String),
+    trackPath: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigGetResponseSettings",
+}) as any as S.Schema<ConfigGetResponseSettings>;
+
+export type ConfigGetResponseToolsMap = { [key: string]: unknown | undefined };
+export const ConfigGetResponseToolsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ConfigGetResponseToolsMap>;
+
+export type ConfigGetResponseTriggersMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConfigGetResponseTriggersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ConfigGetResponseTriggersMap>;
+
+export type ConfigGetResponseVariablesMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConfigGetResponseVariablesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ConfigGetResponseVariablesMap>;
+
+export interface ConfigGetResponseAnalytics {
+  /** Consent purpose assigned to Monitoring. */
+  defaultPurpose?: string;
+  /** Whether Advanced Monitoring reports are enabled. */
+  enabled?: boolean;
+  /** Session expiration time (seconds). */
+  sessionExpTime?: number;
+}
+export const ConfigGetResponseAnalytics = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultPurpose: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    sessionExpTime: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ConfigGetResponseAnalytics",
+}) as any as S.Schema<ConfigGetResponseAnalytics>;
+
+export type ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap>;
+
+export type ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
+  { [key: string]: unknown | undefined };
+export const ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap>;
+
+export type ConfigGetResponseConsentButtonTextTranslationsRejectAllMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConfigGetResponseConsentButtonTextTranslationsRejectAllMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ConfigGetResponseConsentButtonTextTranslationsRejectAllMap>;
+
+export interface ConfigGetResponseConsentButtonTextTranslations {
+  /** Object where keys are language codes. */
+  acceptAll: ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap;
+  /** Object where keys are language codes. */
+  confirmMyChoices: ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap;
+  /** Object where keys are language codes. */
+  rejectAll: ConfigGetResponseConsentButtonTextTranslationsRejectAllMap;
+}
+export const ConfigGetResponseConsentButtonTextTranslations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      acceptAll:
+        ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap.pipe(
+          T.Body("accept_all"),
+        ),
+      confirmMyChoices:
+        ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap.pipe(
+          T.Body("confirm_my_choices"),
+        ),
+      rejectAll:
+        ConfigGetResponseConsentButtonTextTranslationsRejectAllMap.pipe(
+          T.Body("reject_all"),
+        ),
+    }),
+  ).annotate({
+    identifier: "ConfigGetResponseConsentButtonTextTranslations",
+  }) as any as S.Schema<ConfigGetResponseConsentButtonTextTranslations>;
+
+export type ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap>;
+
+export type ConfigGetResponseConsentPurposesMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConfigGetResponseConsentPurposesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ConfigGetResponseConsentPurposesMap>;
+
+export type ConfigGetResponseConsentPurposesWithTranslationsMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConfigGetResponseConsentPurposesWithTranslationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ConfigGetResponseConsentPurposesWithTranslationsMap>;
+
+export interface ConfigGetResponseConsent {
+  enabled: boolean;
+  buttonTextTranslations?: ConfigGetResponseConsentButtonTextTranslations;
+  companyEmail?: string;
+  companyName?: string;
+  companyStreetAddress?: string;
+  consentModalIntroHTML?: string;
+  /** Object where keys are language codes. */
+  consentModalIntroHTMLWithTranslations?: ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap;
+  cookieName?: string;
+  customCSS?: string;
+  customIntroDisclaimerDismissed?: boolean;
+  defaultLanguage?: string;
+  hideModal?: boolean;
+  /** Object where keys are purpose alpha-numeric IDs. */
+  purposes?: ConfigGetResponseConsentPurposesMap;
+  /** Object where keys are purpose alpha-numeric IDs. */
+  purposesWithTranslations?: ConfigGetResponseConsentPurposesWithTranslationsMap;
+  tcfCompliant?: boolean;
+}
+export const ConfigGetResponseConsent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    buttonTextTranslations: S.optional(
+      ConfigGetResponseConsentButtonTextTranslations,
+    ),
+    companyEmail: S.optional(S.String),
+    companyName: S.optional(S.String),
+    companyStreetAddress: S.optional(S.String),
+    consentModalIntroHTML: S.optional(S.String),
+    consentModalIntroHTMLWithTranslations: S.optional(
+      ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap,
+    ),
+    cookieName: S.optional(S.String),
+    customCSS: S.optional(S.String),
+    customIntroDisclaimerDismissed: S.optional(S.Boolean),
+    defaultLanguage: S.optional(S.String),
+    hideModal: S.optional(S.Boolean),
+    purposes: S.optional(ConfigGetResponseConsentPurposesMap),
+    purposesWithTranslations: S.optional(
+      ConfigGetResponseConsentPurposesWithTranslationsMap,
+    ),
+    tcfCompliant: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ConfigGetResponseConsent",
+}) as any as S.Schema<ConfigGetResponseConsent>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ConfigGetResponse {
-  result?: unknown;
+  /** Data layer compatibility mode enabled. */
+  dataLayer: boolean;
+  /** The key for Zaraz debug mode. */
+  debugKey: string;
+  /** General Zaraz settings. */
+  settings: ConfigGetResponseSettings;
+  /** Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object. */
+  tools: ConfigGetResponseToolsMap;
+  /** Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration. */
+  triggers: ConfigGetResponseTriggersMap;
+  /** Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included. */
+  variables: ConfigGetResponseVariablesMap;
+  /** Zaraz internal version of the config. */
+  zarazVersion: number;
+  /** Cloudflare Monitoring settings. */
+  analytics?: ConfigGetResponseAnalytics;
+  /** Consent management configuration. */
+  consent?: ConfigGetResponseConsent;
+  /** Single Page Application support enabled. */
+  historyChange?: boolean;
 }
 export const ConfigGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    dataLayer: S.Boolean,
+    debugKey: S.String,
+    settings: ConfigGetResponseSettings,
+    tools: ConfigGetResponseToolsMap,
+    triggers: ConfigGetResponseTriggersMap,
+    variables: ConfigGetResponseVariablesMap,
+    zarazVersion: S.Number,
+    analytics: S.optional(ConfigGetResponseAnalytics),
+    consent: S.optional(ConfigGetResponseConsent),
+    historyChange: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "ConfigGetResponse",
@@ -52,19 +315,33 @@ export const ConfigUpdateRequestSettingsContextEnricher =
   }) as any as S.Schema<ConfigUpdateRequestSettingsContextEnricher>;
 
 export interface ConfigUpdateRequestSettings {
+  /** Automatic injection of Zaraz scripts enabled. */
   autoInjectScript: boolean;
+  /** Details of the worker that receives and edits Zaraz Context object. */
   contextEnricher?: ConfigUpdateRequestSettingsContextEnricher;
+  /** The domain Zaraz will use for writing and reading its cookies. */
   cookieDomain?: string;
+  /** Ecommerce API enabled. */
   ecommerce?: boolean;
+  /** Custom endpoint for server-side track events. */
   eventsApiPath?: string;
+  /** Hiding external referrer URL enabled. */
   hideExternalReferer?: boolean;
+  /** Trimming IP address enabled. */
   hideIPAddress?: boolean;
+  /** Removing URL query params enabled. */
   hideQueryParams?: boolean;
+  /** Removing sensitive data from User Agent string enabled. */
   hideUserAgent?: boolean;
+  /** Custom endpoint for Zaraz init script. */
   initPath?: string;
+  /** Injection of Zaraz scripts into iframes enabled. */
   injectIframes?: boolean;
+  /** Custom path for Managed Components server functionalities. */
   mcRootPath?: string;
+  /** Custom endpoint for Zaraz main script. */
   scriptPath?: string;
+  /** Custom endpoint for Zaraz tracking requests. */
   trackPath?: string;
 }
 export const ConfigUpdateRequestSettings = /*@__PURE__*/ S.suspend(() =>
@@ -113,8 +390,11 @@ export const ConfigUpdateRequestVariablesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConfigUpdateRequestVariablesMap>;
 
 export interface ConfigUpdateRequestAnalytics {
+  /** Consent purpose assigned to Monitoring. */
   defaultPurpose?: string;
+  /** Whether Advanced Monitoring reports are enabled. */
   enabled?: boolean;
+  /** Session expiration time (seconds). */
   sessionExpTime?: number;
 }
 export const ConfigUpdateRequestAnalytics = /*@__PURE__*/ S.suspend(() =>
@@ -126,6 +406,60 @@ export const ConfigUpdateRequestAnalytics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfigUpdateRequestAnalytics",
 }) as any as S.Schema<ConfigUpdateRequestAnalytics>;
+
+export type ConfigUpdateRequestConsentButtonTextTranslationsAcceptAllMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConfigUpdateRequestConsentButtonTextTranslationsAcceptAllMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ConfigUpdateRequestConsentButtonTextTranslationsAcceptAllMap>;
+
+export type ConfigUpdateRequestConsentButtonTextTranslationsConfirmMyChoicesMap =
+  { [key: string]: unknown | undefined };
+export const ConfigUpdateRequestConsentButtonTextTranslationsConfirmMyChoicesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ConfigUpdateRequestConsentButtonTextTranslationsConfirmMyChoicesMap>;
+
+export type ConfigUpdateRequestConsentButtonTextTranslationsRejectAllMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConfigUpdateRequestConsentButtonTextTranslationsRejectAllMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ConfigUpdateRequestConsentButtonTextTranslationsRejectAllMap>;
+
+export interface ConfigUpdateRequestConsentButtonTextTranslations {
+  /** Object where keys are language codes. */
+  acceptAll: ConfigUpdateRequestConsentButtonTextTranslationsAcceptAllMap;
+  /** Object where keys are language codes. */
+  confirmMyChoices: ConfigUpdateRequestConsentButtonTextTranslationsConfirmMyChoicesMap;
+  /** Object where keys are language codes. */
+  rejectAll: ConfigUpdateRequestConsentButtonTextTranslationsRejectAllMap;
+}
+export const ConfigUpdateRequestConsentButtonTextTranslations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      acceptAll:
+        ConfigUpdateRequestConsentButtonTextTranslationsAcceptAllMap.pipe(
+          T.Body("accept_all"),
+        ),
+      confirmMyChoices:
+        ConfigUpdateRequestConsentButtonTextTranslationsConfirmMyChoicesMap.pipe(
+          T.Body("confirm_my_choices"),
+        ),
+      rejectAll:
+        ConfigUpdateRequestConsentButtonTextTranslationsRejectAllMap.pipe(
+          T.Body("reject_all"),
+        ),
+    }),
+  ).annotate({
+    identifier: "ConfigUpdateRequestConsentButtonTextTranslations",
+  }) as any as S.Schema<ConfigUpdateRequestConsentButtonTextTranslations>;
 
 export type ConfigUpdateRequestConsentConsentModalIntroHTMLWithTranslationsMap =
   { [key: string]: unknown | undefined };
@@ -154,25 +488,30 @@ export const ConfigUpdateRequestConsentPurposesWithTranslationsMap =
 
 export interface ConfigUpdateRequestConsent {
   enabled: boolean;
-  buttonTextTranslations?: unknown;
+  buttonTextTranslations?: ConfigUpdateRequestConsentButtonTextTranslations;
   companyEmail?: string;
   companyName?: string;
   companyStreetAddress?: string;
   consentModalIntroHTML?: string;
+  /** Object where keys are language codes. */
   consentModalIntroHTMLWithTranslations?: ConfigUpdateRequestConsentConsentModalIntroHTMLWithTranslationsMap;
   cookieName?: string;
   customCSS?: string;
   customIntroDisclaimerDismissed?: boolean;
   defaultLanguage?: string;
   hideModal?: boolean;
+  /** Object where keys are purpose alpha-numeric IDs. */
   purposes?: ConfigUpdateRequestConsentPurposesMap;
+  /** Object where keys are purpose alpha-numeric IDs. */
   purposesWithTranslations?: ConfigUpdateRequestConsentPurposesWithTranslationsMap;
   tcfCompliant?: boolean;
 }
 export const ConfigUpdateRequestConsent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
-    buttonTextTranslations: S.optional(S.Unknown),
+    buttonTextTranslations: S.optional(
+      ConfigUpdateRequestConsentButtonTextTranslations,
+    ),
     companyEmail: S.optional(S.String),
     companyName: S.optional(S.String),
     companyStreetAddress: S.optional(S.String),
@@ -196,21 +535,32 @@ export const ConfigUpdateRequestConsent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigUpdateRequestConsent>;
 
 export interface ConfigUpdateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Data layer compatibility mode enabled. */
   dataLayer: boolean;
+  /** The key for Zaraz debug mode. */
   debugKey: string;
+  /** General Zaraz settings. */
   settings: ConfigUpdateRequestSettings;
+  /** Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object. */
   tools: ConfigUpdateRequestToolsMap;
+  /** Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration. */
   triggers: ConfigUpdateRequestTriggersMap;
+  /** Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included. */
   variables: ConfigUpdateRequestVariablesMap;
+  /** Zaraz internal version of the config. */
   zarazVersion: number;
+  /** Cloudflare Monitoring settings. */
   analytics?: ConfigUpdateRequestAnalytics;
+  /** Consent management configuration. */
   consent?: ConfigUpdateRequestConsent;
+  /** Single Page Application support enabled. */
   historyChange?: boolean;
 }
 export const ConfigUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     dataLayer: S.Boolean,
     debugKey: S.String,
     settings: ConfigUpdateRequestSettings,
@@ -232,23 +582,287 @@ export const ConfigUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigUpdateRequest",
 }) as any as S.Schema<ConfigUpdateRequest>;
 
+export interface ConfigUpdateResponseSettingsContextEnricher {
+  escapedWorkerName: string;
+  workerTag: string;
+}
+export const ConfigUpdateResponseSettingsContextEnricher =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      escapedWorkerName: S.String,
+      workerTag: S.String,
+    }),
+  ).annotate({
+    identifier: "ConfigUpdateResponseSettingsContextEnricher",
+  }) as any as S.Schema<ConfigUpdateResponseSettingsContextEnricher>;
+
+export interface ConfigUpdateResponseSettings {
+  /** Automatic injection of Zaraz scripts enabled. */
+  autoInjectScript: boolean;
+  /** Details of the worker that receives and edits Zaraz Context object. */
+  contextEnricher?: ConfigUpdateResponseSettingsContextEnricher;
+  /** The domain Zaraz will use for writing and reading its cookies. */
+  cookieDomain?: string;
+  /** Ecommerce API enabled. */
+  ecommerce?: boolean;
+  /** Custom endpoint for server-side track events. */
+  eventsApiPath?: string;
+  /** Hiding external referrer URL enabled. */
+  hideExternalReferer?: boolean;
+  /** Trimming IP address enabled. */
+  hideIPAddress?: boolean;
+  /** Removing URL query params enabled. */
+  hideQueryParams?: boolean;
+  /** Removing sensitive data from User Agent string enabled. */
+  hideUserAgent?: boolean;
+  /** Custom endpoint for Zaraz init script. */
+  initPath?: string;
+  /** Injection of Zaraz scripts into iframes enabled. */
+  injectIframes?: boolean;
+  /** Custom path for Managed Components server functionalities. */
+  mcRootPath?: string;
+  /** Custom endpoint for Zaraz main script. */
+  scriptPath?: string;
+  /** Custom endpoint for Zaraz tracking requests. */
+  trackPath?: string;
+}
+export const ConfigUpdateResponseSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autoInjectScript: S.Boolean,
+    contextEnricher: S.optional(ConfigUpdateResponseSettingsContextEnricher),
+    cookieDomain: S.optional(S.String),
+    ecommerce: S.optional(S.Boolean),
+    eventsApiPath: S.optional(S.String),
+    hideExternalReferer: S.optional(S.Boolean),
+    hideIPAddress: S.optional(S.Boolean),
+    hideQueryParams: S.optional(S.Boolean),
+    hideUserAgent: S.optional(S.Boolean),
+    initPath: S.optional(S.String),
+    injectIframes: S.optional(S.Boolean),
+    mcRootPath: S.optional(S.String),
+    scriptPath: S.optional(S.String),
+    trackPath: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigUpdateResponseSettings",
+}) as any as S.Schema<ConfigUpdateResponseSettings>;
+
+export type ConfigUpdateResponseToolsMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConfigUpdateResponseToolsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ConfigUpdateResponseToolsMap>;
+
+export type ConfigUpdateResponseTriggersMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConfigUpdateResponseTriggersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ConfigUpdateResponseTriggersMap>;
+
+export type ConfigUpdateResponseVariablesMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConfigUpdateResponseVariablesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ConfigUpdateResponseVariablesMap>;
+
+export interface ConfigUpdateResponseAnalytics {
+  /** Consent purpose assigned to Monitoring. */
+  defaultPurpose?: string;
+  /** Whether Advanced Monitoring reports are enabled. */
+  enabled?: boolean;
+  /** Session expiration time (seconds). */
+  sessionExpTime?: number;
+}
+export const ConfigUpdateResponseAnalytics = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultPurpose: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    sessionExpTime: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ConfigUpdateResponseAnalytics",
+}) as any as S.Schema<ConfigUpdateResponseAnalytics>;
+
+export type ConfigUpdateResponseConsentButtonTextTranslationsAcceptAllMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConfigUpdateResponseConsentButtonTextTranslationsAcceptAllMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ConfigUpdateResponseConsentButtonTextTranslationsAcceptAllMap>;
+
+export type ConfigUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
+  { [key: string]: unknown | undefined };
+export const ConfigUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ConfigUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap>;
+
+export type ConfigUpdateResponseConsentButtonTextTranslationsRejectAllMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConfigUpdateResponseConsentButtonTextTranslationsRejectAllMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ConfigUpdateResponseConsentButtonTextTranslationsRejectAllMap>;
+
+export interface ConfigUpdateResponseConsentButtonTextTranslations {
+  /** Object where keys are language codes. */
+  acceptAll: ConfigUpdateResponseConsentButtonTextTranslationsAcceptAllMap;
+  /** Object where keys are language codes. */
+  confirmMyChoices: ConfigUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap;
+  /** Object where keys are language codes. */
+  rejectAll: ConfigUpdateResponseConsentButtonTextTranslationsRejectAllMap;
+}
+export const ConfigUpdateResponseConsentButtonTextTranslations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      acceptAll:
+        ConfigUpdateResponseConsentButtonTextTranslationsAcceptAllMap.pipe(
+          T.Body("accept_all"),
+        ),
+      confirmMyChoices:
+        ConfigUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap.pipe(
+          T.Body("confirm_my_choices"),
+        ),
+      rejectAll:
+        ConfigUpdateResponseConsentButtonTextTranslationsRejectAllMap.pipe(
+          T.Body("reject_all"),
+        ),
+    }),
+  ).annotate({
+    identifier: "ConfigUpdateResponseConsentButtonTextTranslations",
+  }) as any as S.Schema<ConfigUpdateResponseConsentButtonTextTranslations>;
+
+export type ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap =
+  { [key: string]: unknown | undefined };
+export const ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap>;
+
+export type ConfigUpdateResponseConsentPurposesMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConfigUpdateResponseConsentPurposesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ConfigUpdateResponseConsentPurposesMap>;
+
+export type ConfigUpdateResponseConsentPurposesWithTranslationsMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConfigUpdateResponseConsentPurposesWithTranslationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ConfigUpdateResponseConsentPurposesWithTranslationsMap>;
+
+export interface ConfigUpdateResponseConsent {
+  enabled: boolean;
+  buttonTextTranslations?: ConfigUpdateResponseConsentButtonTextTranslations;
+  companyEmail?: string;
+  companyName?: string;
+  companyStreetAddress?: string;
+  consentModalIntroHTML?: string;
+  /** Object where keys are language codes. */
+  consentModalIntroHTMLWithTranslations?: ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap;
+  cookieName?: string;
+  customCSS?: string;
+  customIntroDisclaimerDismissed?: boolean;
+  defaultLanguage?: string;
+  hideModal?: boolean;
+  /** Object where keys are purpose alpha-numeric IDs. */
+  purposes?: ConfigUpdateResponseConsentPurposesMap;
+  /** Object where keys are purpose alpha-numeric IDs. */
+  purposesWithTranslations?: ConfigUpdateResponseConsentPurposesWithTranslationsMap;
+  tcfCompliant?: boolean;
+}
+export const ConfigUpdateResponseConsent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    buttonTextTranslations: S.optional(
+      ConfigUpdateResponseConsentButtonTextTranslations,
+    ),
+    companyEmail: S.optional(S.String),
+    companyName: S.optional(S.String),
+    companyStreetAddress: S.optional(S.String),
+    consentModalIntroHTML: S.optional(S.String),
+    consentModalIntroHTMLWithTranslations: S.optional(
+      ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap,
+    ),
+    cookieName: S.optional(S.String),
+    customCSS: S.optional(S.String),
+    customIntroDisclaimerDismissed: S.optional(S.Boolean),
+    defaultLanguage: S.optional(S.String),
+    hideModal: S.optional(S.Boolean),
+    purposes: S.optional(ConfigUpdateResponseConsentPurposesMap),
+    purposesWithTranslations: S.optional(
+      ConfigUpdateResponseConsentPurposesWithTranslationsMap,
+    ),
+    tcfCompliant: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ConfigUpdateResponseConsent",
+}) as any as S.Schema<ConfigUpdateResponseConsent>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ConfigUpdateResponse {
-  result?: unknown;
+  /** Data layer compatibility mode enabled. */
+  dataLayer: boolean;
+  /** The key for Zaraz debug mode. */
+  debugKey: string;
+  /** General Zaraz settings. */
+  settings: ConfigUpdateResponseSettings;
+  /** Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object. */
+  tools: ConfigUpdateResponseToolsMap;
+  /** Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration. */
+  triggers: ConfigUpdateResponseTriggersMap;
+  /** Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included. */
+  variables: ConfigUpdateResponseVariablesMap;
+  /** Zaraz internal version of the config. */
+  zarazVersion: number;
+  /** Cloudflare Monitoring settings. */
+  analytics?: ConfigUpdateResponseAnalytics;
+  /** Consent management configuration. */
+  consent?: ConfigUpdateResponseConsent;
+  /** Single Page Application support enabled. */
+  historyChange?: boolean;
 }
 export const ConfigUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    dataLayer: S.Boolean,
+    debugKey: S.String,
+    settings: ConfigUpdateResponseSettings,
+    tools: ConfigUpdateResponseToolsMap,
+    triggers: ConfigUpdateResponseTriggersMap,
+    variables: ConfigUpdateResponseVariablesMap,
+    zarazVersion: S.Number,
+    analytics: S.optional(ConfigUpdateResponseAnalytics),
+    consent: S.optional(ConfigUpdateResponseConsent),
+    historyChange: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "ConfigUpdateResponse",
 }) as any as S.Schema<ConfigUpdateResponse>;
 
 export interface DefaultGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const DefaultGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -260,23 +874,285 @@ export const DefaultGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultGetRequest",
 }) as any as S.Schema<DefaultGetRequest>;
 
+export interface DefaultGetResponseSettingsContextEnricher {
+  escapedWorkerName: string;
+  workerTag: string;
+}
+export const DefaultGetResponseSettingsContextEnricher =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      escapedWorkerName: S.String,
+      workerTag: S.String,
+    }),
+  ).annotate({
+    identifier: "DefaultGetResponseSettingsContextEnricher",
+  }) as any as S.Schema<DefaultGetResponseSettingsContextEnricher>;
+
+export interface DefaultGetResponseSettings {
+  /** Automatic injection of Zaraz scripts enabled. */
+  autoInjectScript: boolean;
+  /** Details of the worker that receives and edits Zaraz Context object. */
+  contextEnricher?: DefaultGetResponseSettingsContextEnricher;
+  /** The domain Zaraz will use for writing and reading its cookies. */
+  cookieDomain?: string;
+  /** Ecommerce API enabled. */
+  ecommerce?: boolean;
+  /** Custom endpoint for server-side track events. */
+  eventsApiPath?: string;
+  /** Hiding external referrer URL enabled. */
+  hideExternalReferer?: boolean;
+  /** Trimming IP address enabled. */
+  hideIPAddress?: boolean;
+  /** Removing URL query params enabled. */
+  hideQueryParams?: boolean;
+  /** Removing sensitive data from User Agent string enabled. */
+  hideUserAgent?: boolean;
+  /** Custom endpoint for Zaraz init script. */
+  initPath?: string;
+  /** Injection of Zaraz scripts into iframes enabled. */
+  injectIframes?: boolean;
+  /** Custom path for Managed Components server functionalities. */
+  mcRootPath?: string;
+  /** Custom endpoint for Zaraz main script. */
+  scriptPath?: string;
+  /** Custom endpoint for Zaraz tracking requests. */
+  trackPath?: string;
+}
+export const DefaultGetResponseSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autoInjectScript: S.Boolean,
+    contextEnricher: S.optional(DefaultGetResponseSettingsContextEnricher),
+    cookieDomain: S.optional(S.String),
+    ecommerce: S.optional(S.Boolean),
+    eventsApiPath: S.optional(S.String),
+    hideExternalReferer: S.optional(S.Boolean),
+    hideIPAddress: S.optional(S.Boolean),
+    hideQueryParams: S.optional(S.Boolean),
+    hideUserAgent: S.optional(S.Boolean),
+    initPath: S.optional(S.String),
+    injectIframes: S.optional(S.Boolean),
+    mcRootPath: S.optional(S.String),
+    scriptPath: S.optional(S.String),
+    trackPath: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DefaultGetResponseSettings",
+}) as any as S.Schema<DefaultGetResponseSettings>;
+
+export type DefaultGetResponseToolsMap = { [key: string]: unknown | undefined };
+export const DefaultGetResponseToolsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DefaultGetResponseToolsMap>;
+
+export type DefaultGetResponseTriggersMap = {
+  [key: string]: unknown | undefined;
+};
+export const DefaultGetResponseTriggersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DefaultGetResponseTriggersMap>;
+
+export type DefaultGetResponseVariablesMap = {
+  [key: string]: unknown | undefined;
+};
+export const DefaultGetResponseVariablesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DefaultGetResponseVariablesMap>;
+
+export interface DefaultGetResponseAnalytics {
+  /** Consent purpose assigned to Monitoring. */
+  defaultPurpose?: string;
+  /** Whether Advanced Monitoring reports are enabled. */
+  enabled?: boolean;
+  /** Session expiration time (seconds). */
+  sessionExpTime?: number;
+}
+export const DefaultGetResponseAnalytics = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultPurpose: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    sessionExpTime: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DefaultGetResponseAnalytics",
+}) as any as S.Schema<DefaultGetResponseAnalytics>;
+
+export type DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap = {
+  [key: string]: unknown | undefined;
+};
+export const DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap>;
+
+export type DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
+  { [key: string]: unknown | undefined };
+export const DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap>;
+
+export type DefaultGetResponseConsentButtonTextTranslationsRejectAllMap = {
+  [key: string]: unknown | undefined;
+};
+export const DefaultGetResponseConsentButtonTextTranslationsRejectAllMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<DefaultGetResponseConsentButtonTextTranslationsRejectAllMap>;
+
+export interface DefaultGetResponseConsentButtonTextTranslations {
+  /** Object where keys are language codes. */
+  acceptAll: DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap;
+  /** Object where keys are language codes. */
+  confirmMyChoices: DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap;
+  /** Object where keys are language codes. */
+  rejectAll: DefaultGetResponseConsentButtonTextTranslationsRejectAllMap;
+}
+export const DefaultGetResponseConsentButtonTextTranslations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      acceptAll:
+        DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap.pipe(
+          T.Body("accept_all"),
+        ),
+      confirmMyChoices:
+        DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap.pipe(
+          T.Body("confirm_my_choices"),
+        ),
+      rejectAll:
+        DefaultGetResponseConsentButtonTextTranslationsRejectAllMap.pipe(
+          T.Body("reject_all"),
+        ),
+    }),
+  ).annotate({
+    identifier: "DefaultGetResponseConsentButtonTextTranslations",
+  }) as any as S.Schema<DefaultGetResponseConsentButtonTextTranslations>;
+
+export type DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap =
+  { [key: string]: unknown | undefined };
+export const DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap>;
+
+export type DefaultGetResponseConsentPurposesMap = {
+  [key: string]: unknown | undefined;
+};
+export const DefaultGetResponseConsentPurposesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DefaultGetResponseConsentPurposesMap>;
+
+export type DefaultGetResponseConsentPurposesWithTranslationsMap = {
+  [key: string]: unknown | undefined;
+};
+export const DefaultGetResponseConsentPurposesWithTranslationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<DefaultGetResponseConsentPurposesWithTranslationsMap>;
+
+export interface DefaultGetResponseConsent {
+  enabled: boolean;
+  buttonTextTranslations?: DefaultGetResponseConsentButtonTextTranslations;
+  companyEmail?: string;
+  companyName?: string;
+  companyStreetAddress?: string;
+  consentModalIntroHTML?: string;
+  /** Object where keys are language codes. */
+  consentModalIntroHTMLWithTranslations?: DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap;
+  cookieName?: string;
+  customCSS?: string;
+  customIntroDisclaimerDismissed?: boolean;
+  defaultLanguage?: string;
+  hideModal?: boolean;
+  /** Object where keys are purpose alpha-numeric IDs. */
+  purposes?: DefaultGetResponseConsentPurposesMap;
+  /** Object where keys are purpose alpha-numeric IDs. */
+  purposesWithTranslations?: DefaultGetResponseConsentPurposesWithTranslationsMap;
+  tcfCompliant?: boolean;
+}
+export const DefaultGetResponseConsent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    buttonTextTranslations: S.optional(
+      DefaultGetResponseConsentButtonTextTranslations,
+    ),
+    companyEmail: S.optional(S.String),
+    companyName: S.optional(S.String),
+    companyStreetAddress: S.optional(S.String),
+    consentModalIntroHTML: S.optional(S.String),
+    consentModalIntroHTMLWithTranslations: S.optional(
+      DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap,
+    ),
+    cookieName: S.optional(S.String),
+    customCSS: S.optional(S.String),
+    customIntroDisclaimerDismissed: S.optional(S.Boolean),
+    defaultLanguage: S.optional(S.String),
+    hideModal: S.optional(S.Boolean),
+    purposes: S.optional(DefaultGetResponseConsentPurposesMap),
+    purposesWithTranslations: S.optional(
+      DefaultGetResponseConsentPurposesWithTranslationsMap,
+    ),
+    tcfCompliant: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DefaultGetResponseConsent",
+}) as any as S.Schema<DefaultGetResponseConsent>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DefaultGetResponse {
-  result?: unknown;
+  /** Data layer compatibility mode enabled. */
+  dataLayer: boolean;
+  /** The key for Zaraz debug mode. */
+  debugKey: string;
+  /** General Zaraz settings. */
+  settings: DefaultGetResponseSettings;
+  /** Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object. */
+  tools: DefaultGetResponseToolsMap;
+  /** Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration. */
+  triggers: DefaultGetResponseTriggersMap;
+  /** Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included. */
+  variables: DefaultGetResponseVariablesMap;
+  /** Zaraz internal version of the config. */
+  zarazVersion: number;
+  /** Cloudflare Monitoring settings. */
+  analytics?: DefaultGetResponseAnalytics;
+  /** Consent management configuration. */
+  consent?: DefaultGetResponseConsent;
+  /** Single Page Application support enabled. */
+  historyChange?: boolean;
 }
 export const DefaultGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    dataLayer: S.Boolean,
+    debugKey: S.String,
+    settings: DefaultGetResponseSettings,
+    tools: DefaultGetResponseToolsMap,
+    triggers: DefaultGetResponseTriggersMap,
+    variables: DefaultGetResponseVariablesMap,
+    zarazVersion: S.Number,
+    analytics: S.optional(DefaultGetResponseAnalytics),
+    consent: S.optional(DefaultGetResponseConsent),
+    historyChange: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "DefaultGetResponse",
 }) as any as S.Schema<DefaultGetResponse>;
 
 export interface ExportGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const ExportGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -290,16 +1166,14 @@ export const ExportGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ExportGetResponse {
-  Configuration_object___dataLayer__debugKey__settings__7_more__: unknown;
+  /** Zaraz configuration. */
+  ConfigurationObjectDataLayerDebugKeySettings7More__: unknown;
 }
 export const ExportGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Configuration_object___dataLayer__debugKey__settings__7_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "Configuration object { dataLayer, debugKey, settings, 7 more }",
-        ),
-      ),
+    ConfigurationObjectDataLayerDebugKeySettings7More__: S.Unknown.pipe(
+      T.Body("Configuration object { dataLayer, debugKey, settings, 7 more }"),
+    ),
   }),
 ).annotate({
   identifier: "ExportGetResponse",
@@ -311,12 +1185,14 @@ export const HistoryConfigsGetRequestIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<HistoryConfigsGetRequestIdsList>;
 
 export interface HistoryConfigsGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Comma separated list of Zaraz configuration IDs. */
   ids: HistoryConfigsGetRequestIdsList;
 }
 export const HistoryConfigsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     ids: HistoryConfigsGetRequestIdsList.pipe(T.Query()),
   }).pipe(
     T.Http({
@@ -336,6 +1212,7 @@ export const HistoryConfigsGetResultMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HistoryConfigsGetResultMap>;
 
 export interface HistoryConfigsGetResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: HistoryConfigsGetResultMap;
 }
 export const HistoryConfigsGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -357,15 +1234,20 @@ export type HistoryListRequestSortOrder = "DESC" | "ASC" | (string & {});
 export const HistoryListRequestSortOrder = /*@__PURE__*/ S.String;
 
 export interface HistoryListRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Maximum amount of results to list. Default value is 10. */
   limit?: number;
+  /** Ordinal number to start listing the results with. Default value is 0. */
   offset?: number;
+  /** The field to sort by. Default is updated_at. */
   sortField?: HistoryListRequestSortField;
+  /** Sorting order. Default is DESC. */
   sortOrder?: HistoryListRequestSortOrder;
 }
 export const HistoryListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
     sortField: S.optional(HistoryListRequestSortField.pipe(T.Query())),
@@ -382,10 +1264,15 @@ export const HistoryListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HistoryListRequest>;
 
 export interface HistoryListResultItem {
+  /** ID of the configuration. */
   id: number;
+  /** Date and time the configuration was created. */
   createdAt: string;
+  /** Configuration description provided by the user who published this configuration. */
   description: string;
+  /** Date and time the configuration was last updated. */
   updatedAt: string;
+  /** Alpha-numeric ID of the account user who published the configuration. */
   userId: string;
 }
 export const HistoryListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -406,6 +1293,7 @@ export const HistoryListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<HistoryListResultList>;
 
 export interface HistoryListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: HistoryListResultList;
 }
 export const HistoryListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -417,12 +1305,14 @@ export const HistoryListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HistoryListResponse>;
 
 export interface HistoryUpdateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** ID of the Zaraz configuration to restore. */
   body: number;
 }
 export const HistoryUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Number,
   }).pipe(
     T.Http({
@@ -435,24 +1325,289 @@ export const HistoryUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "HistoryUpdateRequest",
 }) as any as S.Schema<HistoryUpdateRequest>;
 
+export interface HistoryUpdateResponseSettingsContextEnricher {
+  escapedWorkerName: string;
+  workerTag: string;
+}
+export const HistoryUpdateResponseSettingsContextEnricher =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      escapedWorkerName: S.String,
+      workerTag: S.String,
+    }),
+  ).annotate({
+    identifier: "HistoryUpdateResponseSettingsContextEnricher",
+  }) as any as S.Schema<HistoryUpdateResponseSettingsContextEnricher>;
+
+export interface HistoryUpdateResponseSettings {
+  /** Automatic injection of Zaraz scripts enabled. */
+  autoInjectScript: boolean;
+  /** Details of the worker that receives and edits Zaraz Context object. */
+  contextEnricher?: HistoryUpdateResponseSettingsContextEnricher;
+  /** The domain Zaraz will use for writing and reading its cookies. */
+  cookieDomain?: string;
+  /** Ecommerce API enabled. */
+  ecommerce?: boolean;
+  /** Custom endpoint for server-side track events. */
+  eventsApiPath?: string;
+  /** Hiding external referrer URL enabled. */
+  hideExternalReferer?: boolean;
+  /** Trimming IP address enabled. */
+  hideIPAddress?: boolean;
+  /** Removing URL query params enabled. */
+  hideQueryParams?: boolean;
+  /** Removing sensitive data from User Agent string enabled. */
+  hideUserAgent?: boolean;
+  /** Custom endpoint for Zaraz init script. */
+  initPath?: string;
+  /** Injection of Zaraz scripts into iframes enabled. */
+  injectIframes?: boolean;
+  /** Custom path for Managed Components server functionalities. */
+  mcRootPath?: string;
+  /** Custom endpoint for Zaraz main script. */
+  scriptPath?: string;
+  /** Custom endpoint for Zaraz tracking requests. */
+  trackPath?: string;
+}
+export const HistoryUpdateResponseSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autoInjectScript: S.Boolean,
+    contextEnricher: S.optional(HistoryUpdateResponseSettingsContextEnricher),
+    cookieDomain: S.optional(S.String),
+    ecommerce: S.optional(S.Boolean),
+    eventsApiPath: S.optional(S.String),
+    hideExternalReferer: S.optional(S.Boolean),
+    hideIPAddress: S.optional(S.Boolean),
+    hideQueryParams: S.optional(S.Boolean),
+    hideUserAgent: S.optional(S.Boolean),
+    initPath: S.optional(S.String),
+    injectIframes: S.optional(S.Boolean),
+    mcRootPath: S.optional(S.String),
+    scriptPath: S.optional(S.String),
+    trackPath: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HistoryUpdateResponseSettings",
+}) as any as S.Schema<HistoryUpdateResponseSettings>;
+
+export type HistoryUpdateResponseToolsMap = {
+  [key: string]: unknown | undefined;
+};
+export const HistoryUpdateResponseToolsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<HistoryUpdateResponseToolsMap>;
+
+export type HistoryUpdateResponseTriggersMap = {
+  [key: string]: unknown | undefined;
+};
+export const HistoryUpdateResponseTriggersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<HistoryUpdateResponseTriggersMap>;
+
+export type HistoryUpdateResponseVariablesMap = {
+  [key: string]: unknown | undefined;
+};
+export const HistoryUpdateResponseVariablesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<HistoryUpdateResponseVariablesMap>;
+
+export interface HistoryUpdateResponseAnalytics {
+  /** Consent purpose assigned to Monitoring. */
+  defaultPurpose?: string;
+  /** Whether Advanced Monitoring reports are enabled. */
+  enabled?: boolean;
+  /** Session expiration time (seconds). */
+  sessionExpTime?: number;
+}
+export const HistoryUpdateResponseAnalytics = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultPurpose: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    sessionExpTime: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "HistoryUpdateResponseAnalytics",
+}) as any as S.Schema<HistoryUpdateResponseAnalytics>;
+
+export type HistoryUpdateResponseConsentButtonTextTranslationsAcceptAllMap = {
+  [key: string]: unknown | undefined;
+};
+export const HistoryUpdateResponseConsentButtonTextTranslationsAcceptAllMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<HistoryUpdateResponseConsentButtonTextTranslationsAcceptAllMap>;
+
+export type HistoryUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
+  { [key: string]: unknown | undefined };
+export const HistoryUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<HistoryUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap>;
+
+export type HistoryUpdateResponseConsentButtonTextTranslationsRejectAllMap = {
+  [key: string]: unknown | undefined;
+};
+export const HistoryUpdateResponseConsentButtonTextTranslationsRejectAllMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<HistoryUpdateResponseConsentButtonTextTranslationsRejectAllMap>;
+
+export interface HistoryUpdateResponseConsentButtonTextTranslations {
+  /** Object where keys are language codes. */
+  acceptAll: HistoryUpdateResponseConsentButtonTextTranslationsAcceptAllMap;
+  /** Object where keys are language codes. */
+  confirmMyChoices: HistoryUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap;
+  /** Object where keys are language codes. */
+  rejectAll: HistoryUpdateResponseConsentButtonTextTranslationsRejectAllMap;
+}
+export const HistoryUpdateResponseConsentButtonTextTranslations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      acceptAll:
+        HistoryUpdateResponseConsentButtonTextTranslationsAcceptAllMap.pipe(
+          T.Body("accept_all"),
+        ),
+      confirmMyChoices:
+        HistoryUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap.pipe(
+          T.Body("confirm_my_choices"),
+        ),
+      rejectAll:
+        HistoryUpdateResponseConsentButtonTextTranslationsRejectAllMap.pipe(
+          T.Body("reject_all"),
+        ),
+    }),
+  ).annotate({
+    identifier: "HistoryUpdateResponseConsentButtonTextTranslations",
+  }) as any as S.Schema<HistoryUpdateResponseConsentButtonTextTranslations>;
+
+export type HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap =
+  { [key: string]: unknown | undefined };
+export const HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap>;
+
+export type HistoryUpdateResponseConsentPurposesMap = {
+  [key: string]: unknown | undefined;
+};
+export const HistoryUpdateResponseConsentPurposesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<HistoryUpdateResponseConsentPurposesMap>;
+
+export type HistoryUpdateResponseConsentPurposesWithTranslationsMap = {
+  [key: string]: unknown | undefined;
+};
+export const HistoryUpdateResponseConsentPurposesWithTranslationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<HistoryUpdateResponseConsentPurposesWithTranslationsMap>;
+
+export interface HistoryUpdateResponseConsent {
+  enabled: boolean;
+  buttonTextTranslations?: HistoryUpdateResponseConsentButtonTextTranslations;
+  companyEmail?: string;
+  companyName?: string;
+  companyStreetAddress?: string;
+  consentModalIntroHTML?: string;
+  /** Object where keys are language codes. */
+  consentModalIntroHTMLWithTranslations?: HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap;
+  cookieName?: string;
+  customCSS?: string;
+  customIntroDisclaimerDismissed?: boolean;
+  defaultLanguage?: string;
+  hideModal?: boolean;
+  /** Object where keys are purpose alpha-numeric IDs. */
+  purposes?: HistoryUpdateResponseConsentPurposesMap;
+  /** Object where keys are purpose alpha-numeric IDs. */
+  purposesWithTranslations?: HistoryUpdateResponseConsentPurposesWithTranslationsMap;
+  tcfCompliant?: boolean;
+}
+export const HistoryUpdateResponseConsent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    buttonTextTranslations: S.optional(
+      HistoryUpdateResponseConsentButtonTextTranslations,
+    ),
+    companyEmail: S.optional(S.String),
+    companyName: S.optional(S.String),
+    companyStreetAddress: S.optional(S.String),
+    consentModalIntroHTML: S.optional(S.String),
+    consentModalIntroHTMLWithTranslations: S.optional(
+      HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap,
+    ),
+    cookieName: S.optional(S.String),
+    customCSS: S.optional(S.String),
+    customIntroDisclaimerDismissed: S.optional(S.Boolean),
+    defaultLanguage: S.optional(S.String),
+    hideModal: S.optional(S.Boolean),
+    purposes: S.optional(HistoryUpdateResponseConsentPurposesMap),
+    purposesWithTranslations: S.optional(
+      HistoryUpdateResponseConsentPurposesWithTranslationsMap,
+    ),
+    tcfCompliant: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "HistoryUpdateResponseConsent",
+}) as any as S.Schema<HistoryUpdateResponseConsent>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface HistoryUpdateResponse {
-  result?: unknown;
+  /** Data layer compatibility mode enabled. */
+  dataLayer: boolean;
+  /** The key for Zaraz debug mode. */
+  debugKey: string;
+  /** General Zaraz settings. */
+  settings: HistoryUpdateResponseSettings;
+  /** Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object. */
+  tools: HistoryUpdateResponseToolsMap;
+  /** Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration. */
+  triggers: HistoryUpdateResponseTriggersMap;
+  /** Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included. */
+  variables: HistoryUpdateResponseVariablesMap;
+  /** Zaraz internal version of the config. */
+  zarazVersion: number;
+  /** Cloudflare Monitoring settings. */
+  analytics?: HistoryUpdateResponseAnalytics;
+  /** Consent management configuration. */
+  consent?: HistoryUpdateResponseConsent;
+  /** Single Page Application support enabled. */
+  historyChange?: boolean;
 }
 export const HistoryUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    dataLayer: S.Boolean,
+    debugKey: S.String,
+    settings: HistoryUpdateResponseSettings,
+    tools: HistoryUpdateResponseToolsMap,
+    triggers: HistoryUpdateResponseTriggersMap,
+    variables: HistoryUpdateResponseVariablesMap,
+    zarazVersion: S.Number,
+    analytics: S.optional(HistoryUpdateResponseAnalytics),
+    consent: S.optional(HistoryUpdateResponseConsent),
+    historyChange: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "HistoryUpdateResponse",
 }) as any as S.Schema<HistoryUpdateResponse>;
 
 export interface PublishCreateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Zaraz configuration description. */
   body?: string;
 }
 export const PublishCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -466,6 +1621,7 @@ export const PublishCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublishCreateRequest>;
 
 export interface PublishCreateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: string;
 }
 export const PublishCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -477,12 +1633,14 @@ export const PublishCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublishCreateResponse>;
 
 export interface UpdateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Zaraz workflow. */
   workflow: unknown;
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     workflow: S.Unknown,
   }).pipe(
     T.Http({
@@ -494,6 +1652,7 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
 
 export interface UpdateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -503,11 +1662,12 @@ export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
 export interface WorkflowGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const WorkflowGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -520,6 +1680,7 @@ export const WorkflowGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowGetRequest>;
 
 export interface WorkflowGetResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const WorkflowGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -530,11 +1691,12 @@ export const WorkflowGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkflowGetResponse",
 }) as any as S.Schema<WorkflowGetResponse>;
 
+export type ConfigGetError = CloudflareOpError;
 /** Gets latest Zaraz configuration for a zone. It can be preview or published configuration, whichever was the last updated. Secret variables values will not be included. */
-export const ConfigGet: API.OperationMethod<
+export const configGet: API.OperationMethod<
   ConfigGetRequest,
   ConfigGetResponse,
-  CloudflareOpError,
+  ConfigGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigGetRequest,
@@ -543,11 +1705,12 @@ export const ConfigGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConfigUpdateError = CloudflareOpError;
 /** Updates Zaraz configuration for a zone. */
-export const ConfigUpdate: API.OperationMethod<
+export const configUpdate: API.OperationMethod<
   ConfigUpdateRequest,
   ConfigUpdateResponse,
-  CloudflareOpError,
+  ConfigUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigUpdateRequest,
@@ -556,11 +1719,12 @@ export const ConfigUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DefaultGetError = CloudflareOpError;
 /** Gets default Zaraz configuration for a zone. */
-export const DefaultGet: API.OperationMethod<
+export const defaultGet: API.OperationMethod<
   DefaultGetRequest,
   DefaultGetResponse,
-  CloudflareOpError,
+  DefaultGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DefaultGetRequest,
@@ -569,11 +1733,12 @@ export const DefaultGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ExportGetError = CloudflareOpError;
 /** Exports full current published Zaraz configuration for a zone, secret variables included. */
-export const ExportGet: API.OperationMethod<
+export const exportGet: API.OperationMethod<
   ExportGetRequest,
   ExportGetResponse,
-  CloudflareOpError,
+  ExportGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportGetRequest,
@@ -582,11 +1747,12 @@ export const ExportGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type HistoryConfigsGetError = CloudflareOpError;
 /** Gets a history of published Zaraz configurations by ID(s) for a zone. */
-export const HistoryConfigsGet: API.OperationMethod<
+export const historyConfigsGet: API.OperationMethod<
   HistoryConfigsGetRequest,
   HistoryConfigsGetResponse,
-  CloudflareOpError,
+  HistoryConfigsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HistoryConfigsGetRequest,
@@ -595,11 +1761,12 @@ export const HistoryConfigsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type HistoryListError = CloudflareOpError;
 /** Lists a history of published Zaraz configuration records for a zone. */
-export const HistoryList: API.OperationMethod<
+export const historyList: API.OperationMethod<
   HistoryListRequest,
   HistoryListResponse,
-  CloudflareOpError,
+  HistoryListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HistoryListRequest,
@@ -608,11 +1775,12 @@ export const HistoryList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type HistoryUpdateError = CloudflareOpError;
 /** Restores a historical published Zaraz configuration by ID for a zone. */
-export const HistoryUpdate: API.OperationMethod<
+export const historyUpdate: API.OperationMethod<
   HistoryUpdateRequest,
   HistoryUpdateResponse,
-  CloudflareOpError,
+  HistoryUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HistoryUpdateRequest,
@@ -621,11 +1789,12 @@ export const HistoryUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PublishCreateError = CloudflareOpError;
 /** Publish current Zaraz preview configuration for a zone. */
-export const PublishCreate: API.OperationMethod<
+export const publishCreate: API.OperationMethod<
   PublishCreateRequest,
   PublishCreateResponse,
-  CloudflareOpError,
+  PublishCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PublishCreateRequest,
@@ -634,11 +1803,12 @@ export const PublishCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UpdateError = CloudflareOpError;
 /** Updates Zaraz workflow for a zone. */
-export const Update: API.OperationMethod<
+export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,
-  CloudflareOpError,
+  UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,
@@ -647,11 +1817,12 @@ export const Update: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type WorkflowGetError = CloudflareOpError;
 /** Gets Zaraz workflow for a zone. */
-export const WorkflowGet: API.OperationMethod<
+export const workflowGet: API.OperationMethod<
   WorkflowGetRequest,
   WorkflowGetResponse,
-  CloudflareOpError,
+  WorkflowGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: WorkflowGetRequest,

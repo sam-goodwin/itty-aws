@@ -10,22 +10,22 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface ConfigsCreateRequestOrigin {
-  PublicDatabase_object___database__host__password__3_more__: unknown;
-  AccessProtectedDatabaseBehindCloudflareTunnel_object___access_client_id__access_client_secret__database__4_more__: unknown;
-  DatabaseReachableThroughAWorkersVPC_object___database__password__scheme__2_more__: unknown;
+  PublicDatabaseObjectDatabaseHostPassword3More__: unknown;
+  AccessProtectedDatabaseBehindCloudflareTunnelObjectAccessClientIdAccessClientSecretDatabase4More__: unknown;
+  DatabaseReachableThroughAWorkersVPCObjectDatabasePasswordScheme2More__: unknown;
 }
 export const ConfigsCreateRequestOrigin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    PublicDatabase_object___database__host__password__3_more__: S.Unknown.pipe(
+    PublicDatabaseObjectDatabaseHostPassword3More__: S.Unknown.pipe(
       T.Body("PublicDatabase object { database, host, password, 3 more }"),
     ),
-    AccessProtectedDatabaseBehindCloudflareTunnel_object___access_client_id__access_client_secret__database__4_more__:
+    AccessProtectedDatabaseBehindCloudflareTunnelObjectAccessClientIdAccessClientSecretDatabase4More__:
       S.Unknown.pipe(
         T.Body(
           "AccessProtectedDatabaseBehindCloudflareTunnel object { access_client_id, access_client_secret, database, 4 more }",
         ),
       ),
-    DatabaseReachableThroughAWorkersVPC_object___database__password__scheme__2_more__:
+    DatabaseReachableThroughAWorkersVPCObjectDatabasePasswordScheme2More__:
       S.Unknown.pipe(
         T.Body(
           "DatabaseReachableThroughAWorkersVPC object { database, password, scheme, 2 more }",
@@ -37,15 +37,15 @@ export const ConfigsCreateRequestOrigin = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsCreateRequestOrigin>;
 
 export interface ConfigsCreateRequestCaching {
-  HyperdriveHyperdriveCachingCommon_object___disabled__: unknown;
-  HyperdriveHyperdriveCachingEnabled_object___disabled__max_age__stale_while_revalidate__: unknown;
+  HyperdriveHyperdriveCachingCommonObjectDisabled__: unknown;
+  HyperdriveHyperdriveCachingEnabledObjectDisabledMaxAgeStaleWhileRevalidate__: unknown;
 }
 export const ConfigsCreateRequestCaching = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    HyperdriveHyperdriveCachingCommon_object___disabled__: S.Unknown.pipe(
+    HyperdriveHyperdriveCachingCommonObjectDisabled__: S.Unknown.pipe(
       T.Body("HyperdriveHyperdriveCachingCommon object { disabled }"),
     ),
-    HyperdriveHyperdriveCachingEnabled_object___disabled__max_age__stale_while_revalidate__:
+    HyperdriveHyperdriveCachingEnabledObjectDisabledMaxAgeStaleWhileRevalidate__:
       S.Unknown.pipe(
         T.Body(
           "HyperdriveHyperdriveCachingEnabled object { disabled, max_age, stale_while_revalidate }",
@@ -57,14 +57,17 @@ export const ConfigsCreateRequestCaching = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsCreateRequestCaching>;
 
 export interface ConfigsCreateRequestMtls {
-  ca_certificate_id?: string;
-  mtls_certificate_id?: string;
+  /** Define CA certificate ID obtained after uploading CA cert. */
+  caCertificateId?: string;
+  /** Define mTLS certificate ID obtained after uploading client cert. */
+  mtlsCertificateId?: string;
+  /** Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA. */
   sslmode?: string;
 }
 export const ConfigsCreateRequestMtls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ca_certificate_id: S.optional(S.String),
-    mtls_certificate_id: S.optional(S.String),
+    caCertificateId: S.optional(S.String.pipe(T.Body("ca_certificate_id"))),
+    mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
     sslmode: S.optional(S.String),
   }),
 ).annotate({
@@ -72,21 +75,27 @@ export const ConfigsCreateRequestMtls = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsCreateRequestMtls>;
 
 export interface ConfigsCreateRequest {
-  account_id: string;
+  /** Define configurations using a unique string identifier. */
+  accountId: string;
+  /** The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
   name: string;
   origin: ConfigsCreateRequestOrigin;
   caching?: ConfigsCreateRequestCaching;
+  /** mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
   mtls?: ConfigsCreateRequestMtls;
-  origin_connection_limit?: number;
+  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  originConnectionLimit?: number;
 }
 export const ConfigsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     origin: ConfigsCreateRequestOrigin,
     caching: S.optional(ConfigsCreateRequestCaching),
     mtls: S.optional(ConfigsCreateRequestMtls),
-    origin_connection_limit: S.optional(S.Number),
+    originConnectionLimit: S.optional(
+      S.Number.pipe(T.Body("origin_connection_limit")),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -98,25 +107,115 @@ export const ConfigsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigsCreateRequest",
 }) as any as S.Schema<ConfigsCreateRequest>;
 
+export interface ConfigsCreateResponseOrigin {
+  PublicDatabaseObjectDatabaseHostPassword3More__: unknown;
+  AccessProtectedDatabaseBehindCloudflareTunnelObjectAccessClientIdAccessClientSecretDatabase4More__: unknown;
+  DatabaseReachableThroughAWorkersVPCObjectDatabasePasswordScheme2More__: unknown;
+}
+export const ConfigsCreateResponseOrigin = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PublicDatabaseObjectDatabaseHostPassword3More__: S.Unknown.pipe(
+      T.Body("PublicDatabase object { database, host, password, 3 more }"),
+    ),
+    AccessProtectedDatabaseBehindCloudflareTunnelObjectAccessClientIdAccessClientSecretDatabase4More__:
+      S.Unknown.pipe(
+        T.Body(
+          "AccessProtectedDatabaseBehindCloudflareTunnel object { access_client_id, access_client_secret, database, 4 more }",
+        ),
+      ),
+    DatabaseReachableThroughAWorkersVPCObjectDatabasePasswordScheme2More__:
+      S.Unknown.pipe(
+        T.Body(
+          "DatabaseReachableThroughAWorkersVPC object { database, password, scheme, 2 more }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "ConfigsCreateResponseOrigin",
+}) as any as S.Schema<ConfigsCreateResponseOrigin>;
+
+export interface ConfigsCreateResponseCaching {
+  HyperdriveHyperdriveCachingCommonObjectDisabled__: unknown;
+  HyperdriveHyperdriveCachingEnabledObjectDisabledMaxAgeStaleWhileRevalidate__: unknown;
+}
+export const ConfigsCreateResponseCaching = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HyperdriveHyperdriveCachingCommonObjectDisabled__: S.Unknown.pipe(
+      T.Body("HyperdriveHyperdriveCachingCommon object { disabled }"),
+    ),
+    HyperdriveHyperdriveCachingEnabledObjectDisabledMaxAgeStaleWhileRevalidate__:
+      S.Unknown.pipe(
+        T.Body(
+          "HyperdriveHyperdriveCachingEnabled object { disabled, max_age, stale_while_revalidate }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "ConfigsCreateResponseCaching",
+}) as any as S.Schema<ConfigsCreateResponseCaching>;
+
+export interface ConfigsCreateResponseMtls {
+  /** Define CA certificate ID obtained after uploading CA cert. */
+  caCertificateId?: string;
+  /** Define mTLS certificate ID obtained after uploading client cert. */
+  mtlsCertificateId?: string;
+  /** Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA. */
+  sslmode?: string;
+}
+export const ConfigsCreateResponseMtls = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    caCertificateId: S.optional(S.String.pipe(T.Body("ca_certificate_id"))),
+    mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
+    sslmode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigsCreateResponseMtls",
+}) as any as S.Schema<ConfigsCreateResponseMtls>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ConfigsCreateResponse {
-  result?: unknown;
+  /** Define configurations using a unique string identifier. */
+  id: string;
+  /** The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
+  name: string;
+  origin: ConfigsCreateResponseOrigin;
+  caching?: ConfigsCreateResponseCaching;
+  /** Defines the creation time of the Hyperdrive configuration. */
+  createdOn?: string;
+  /** Defines the last modified time of the Hyperdrive configuration. */
+  modifiedOn?: string;
+  /** mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
+  mtls?: ConfigsCreateResponseMtls;
+  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  originConnectionLimit?: number;
 }
 export const ConfigsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    name: S.String,
+    origin: ConfigsCreateResponseOrigin,
+    caching: S.optional(ConfigsCreateResponseCaching),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    mtls: S.optional(ConfigsCreateResponseMtls),
+    originConnectionLimit: S.optional(
+      S.Number.pipe(T.Body("origin_connection_limit")),
+    ),
   }),
 ).annotate({
   identifier: "ConfigsCreateResponse",
 }) as any as S.Schema<ConfigsCreateResponse>;
 
 export interface ConfigsDeleteRequest {
-  account_id: string;
-  hyperdrive_id: string;
+  /** Define configurations using a unique string identifier. */
+  accountId: string;
+  /** Define configurations using a unique string identifier. */
+  hyperdriveId: string;
 }
 export const ConfigsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    hyperdrive_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    hyperdriveId: S.String.pipe(T.Label("hyperdrive_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -129,6 +228,7 @@ export const ConfigsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsDeleteRequest>;
 
 export interface ConfigsDeleteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const ConfigsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -140,15 +240,15 @@ export const ConfigsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsDeleteResponse>;
 
 export interface ConfigsEditRequestCaching {
-  HyperdriveHyperdriveCachingCommon_object___disabled__: unknown;
-  HyperdriveHyperdriveCachingEnabled_object___disabled__max_age__stale_while_revalidate__: unknown;
+  HyperdriveHyperdriveCachingCommonObjectDisabled__: unknown;
+  HyperdriveHyperdriveCachingEnabledObjectDisabledMaxAgeStaleWhileRevalidate__: unknown;
 }
 export const ConfigsEditRequestCaching = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    HyperdriveHyperdriveCachingCommon_object___disabled__: S.Unknown.pipe(
+    HyperdriveHyperdriveCachingCommonObjectDisabled__: S.Unknown.pipe(
       T.Body("HyperdriveHyperdriveCachingCommon object { disabled }"),
     ),
-    HyperdriveHyperdriveCachingEnabled_object___disabled__max_age__stale_while_revalidate__:
+    HyperdriveHyperdriveCachingEnabledObjectDisabledMaxAgeStaleWhileRevalidate__:
       S.Unknown.pipe(
         T.Body(
           "HyperdriveHyperdriveCachingEnabled object { disabled, max_age, stale_while_revalidate }",
@@ -160,14 +260,17 @@ export const ConfigsEditRequestCaching = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsEditRequestCaching>;
 
 export interface ConfigsEditRequestMtls {
-  ca_certificate_id?: string;
-  mtls_certificate_id?: string;
+  /** Define CA certificate ID obtained after uploading CA cert. */
+  caCertificateId?: string;
+  /** Define mTLS certificate ID obtained after uploading client cert. */
+  mtlsCertificateId?: string;
+  /** Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA. */
   sslmode?: string;
 }
 export const ConfigsEditRequestMtls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ca_certificate_id: S.optional(S.String),
-    mtls_certificate_id: S.optional(S.String),
+    caCertificateId: S.optional(S.String.pipe(T.Body("ca_certificate_id"))),
+    mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
     sslmode: S.optional(S.String),
   }),
 ).annotate({
@@ -175,29 +278,30 @@ export const ConfigsEditRequestMtls = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsEditRequestMtls>;
 
 export interface ConfigsEditRequestOrigin {
-  HyperdriveHyperdriveDatabase_object___database__password__scheme__user__: unknown;
-  HyperdriveInternetOrigin_object___host__port__: unknown;
-  HyperdriveOverAccessOrigin_object___access_client_id__access_client_secret__host__: unknown;
-  HyperdriveVPCServiceOrigin_object___service_id__: unknown;
+  HyperdriveHyperdriveDatabaseObjectDatabasePasswordSchemeUser__: unknown;
+  HyperdriveInternetOriginObjectHostPort__: unknown;
+  HyperdriveOverAccessOriginObjectAccessClientIdAccessClientSecretHost__: unknown;
+  /** Connect to a database through a Workers VPC Service. TLS settings (mTLS, sslmode) cannot be configured on the Hyperdrive when using a VPC Service origin; TLS must be managed on the VPC Service itself. */
+  HyperdriveVPCServiceOriginObjectServiceId__: unknown;
 }
 export const ConfigsEditRequestOrigin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    HyperdriveHyperdriveDatabase_object___database__password__scheme__user__:
+    HyperdriveHyperdriveDatabaseObjectDatabasePasswordSchemeUser__:
       S.Unknown.pipe(
         T.Body(
           "HyperdriveHyperdriveDatabase object { database, password, scheme, user }",
         ),
       ),
-    HyperdriveInternetOrigin_object___host__port__: S.Unknown.pipe(
+    HyperdriveInternetOriginObjectHostPort__: S.Unknown.pipe(
       T.Body("HyperdriveInternetOrigin object { host, port }"),
     ),
-    HyperdriveOverAccessOrigin_object___access_client_id__access_client_secret__host__:
+    HyperdriveOverAccessOriginObjectAccessClientIdAccessClientSecretHost__:
       S.Unknown.pipe(
         T.Body(
           "HyperdriveOverAccessOrigin object { access_client_id, access_client_secret, host }",
         ),
       ),
-    HyperdriveVPCServiceOrigin_object___service_id__: S.Unknown.pipe(
+    HyperdriveVPCServiceOriginObjectServiceId__: S.Unknown.pipe(
       T.Body("HyperdriveVPCServiceOrigin object { service_id }"),
     ),
   }),
@@ -206,23 +310,31 @@ export const ConfigsEditRequestOrigin = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsEditRequestOrigin>;
 
 export interface ConfigsEditRequest {
-  account_id: string;
-  hyperdrive_id: string;
+  /** Define configurations using a unique string identifier. */
+  accountId: string;
+  /** Define configurations using a unique string identifier. */
+  hyperdriveId: string;
   caching?: ConfigsEditRequestCaching;
+  /** mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
   mtls?: ConfigsEditRequestMtls;
+  /** The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
   name?: string;
+  /** Connect to a database through a Workers VPC Service. TLS settings (mTLS, sslmode) cannot be configured on the Hyperdrive when using a VPC Service origin; TLS must be managed on the VPC Service itself. */
   origin?: ConfigsEditRequestOrigin;
-  origin_connection_limit?: number;
+  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  originConnectionLimit?: number;
 }
 export const ConfigsEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    hyperdrive_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    hyperdriveId: S.String.pipe(T.Label("hyperdrive_id")),
     caching: S.optional(ConfigsEditRequestCaching),
     mtls: S.optional(ConfigsEditRequestMtls),
     name: S.optional(S.String),
     origin: S.optional(ConfigsEditRequestOrigin),
-    origin_connection_limit: S.optional(S.Number),
+    originConnectionLimit: S.optional(
+      S.Number.pipe(T.Body("origin_connection_limit")),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -234,25 +346,115 @@ export const ConfigsEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigsEditRequest",
 }) as any as S.Schema<ConfigsEditRequest>;
 
+export interface ConfigsEditResponseOrigin {
+  PublicDatabaseObjectDatabaseHostPassword3More__: unknown;
+  AccessProtectedDatabaseBehindCloudflareTunnelObjectAccessClientIdAccessClientSecretDatabase4More__: unknown;
+  DatabaseReachableThroughAWorkersVPCObjectDatabasePasswordScheme2More__: unknown;
+}
+export const ConfigsEditResponseOrigin = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PublicDatabaseObjectDatabaseHostPassword3More__: S.Unknown.pipe(
+      T.Body("PublicDatabase object { database, host, password, 3 more }"),
+    ),
+    AccessProtectedDatabaseBehindCloudflareTunnelObjectAccessClientIdAccessClientSecretDatabase4More__:
+      S.Unknown.pipe(
+        T.Body(
+          "AccessProtectedDatabaseBehindCloudflareTunnel object { access_client_id, access_client_secret, database, 4 more }",
+        ),
+      ),
+    DatabaseReachableThroughAWorkersVPCObjectDatabasePasswordScheme2More__:
+      S.Unknown.pipe(
+        T.Body(
+          "DatabaseReachableThroughAWorkersVPC object { database, password, scheme, 2 more }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "ConfigsEditResponseOrigin",
+}) as any as S.Schema<ConfigsEditResponseOrigin>;
+
+export interface ConfigsEditResponseCaching {
+  HyperdriveHyperdriveCachingCommonObjectDisabled__: unknown;
+  HyperdriveHyperdriveCachingEnabledObjectDisabledMaxAgeStaleWhileRevalidate__: unknown;
+}
+export const ConfigsEditResponseCaching = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HyperdriveHyperdriveCachingCommonObjectDisabled__: S.Unknown.pipe(
+      T.Body("HyperdriveHyperdriveCachingCommon object { disabled }"),
+    ),
+    HyperdriveHyperdriveCachingEnabledObjectDisabledMaxAgeStaleWhileRevalidate__:
+      S.Unknown.pipe(
+        T.Body(
+          "HyperdriveHyperdriveCachingEnabled object { disabled, max_age, stale_while_revalidate }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "ConfigsEditResponseCaching",
+}) as any as S.Schema<ConfigsEditResponseCaching>;
+
+export interface ConfigsEditResponseMtls {
+  /** Define CA certificate ID obtained after uploading CA cert. */
+  caCertificateId?: string;
+  /** Define mTLS certificate ID obtained after uploading client cert. */
+  mtlsCertificateId?: string;
+  /** Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA. */
+  sslmode?: string;
+}
+export const ConfigsEditResponseMtls = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    caCertificateId: S.optional(S.String.pipe(T.Body("ca_certificate_id"))),
+    mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
+    sslmode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigsEditResponseMtls",
+}) as any as S.Schema<ConfigsEditResponseMtls>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ConfigsEditResponse {
-  result?: unknown;
+  /** Define configurations using a unique string identifier. */
+  id: string;
+  /** The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
+  name: string;
+  origin: ConfigsEditResponseOrigin;
+  caching?: ConfigsEditResponseCaching;
+  /** Defines the creation time of the Hyperdrive configuration. */
+  createdOn?: string;
+  /** Defines the last modified time of the Hyperdrive configuration. */
+  modifiedOn?: string;
+  /** mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
+  mtls?: ConfigsEditResponseMtls;
+  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  originConnectionLimit?: number;
 }
 export const ConfigsEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    name: S.String,
+    origin: ConfigsEditResponseOrigin,
+    caching: S.optional(ConfigsEditResponseCaching),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    mtls: S.optional(ConfigsEditResponseMtls),
+    originConnectionLimit: S.optional(
+      S.Number.pipe(T.Body("origin_connection_limit")),
+    ),
   }),
 ).annotate({
   identifier: "ConfigsEditResponse",
 }) as any as S.Schema<ConfigsEditResponse>;
 
 export interface ConfigsGetRequest {
-  account_id: string;
-  hyperdrive_id: string;
+  /** Define configurations using a unique string identifier. */
+  accountId: string;
+  /** Define configurations using a unique string identifier. */
+  hyperdriveId: string;
 }
 export const ConfigsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    hyperdrive_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    hyperdriveId: S.String.pipe(T.Label("hyperdrive_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -264,23 +466,112 @@ export const ConfigsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigsGetRequest",
 }) as any as S.Schema<ConfigsGetRequest>;
 
+export interface ConfigsGetResponseOrigin {
+  PublicDatabaseObjectDatabaseHostPassword3More__: unknown;
+  AccessProtectedDatabaseBehindCloudflareTunnelObjectAccessClientIdAccessClientSecretDatabase4More__: unknown;
+  DatabaseReachableThroughAWorkersVPCObjectDatabasePasswordScheme2More__: unknown;
+}
+export const ConfigsGetResponseOrigin = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PublicDatabaseObjectDatabaseHostPassword3More__: S.Unknown.pipe(
+      T.Body("PublicDatabase object { database, host, password, 3 more }"),
+    ),
+    AccessProtectedDatabaseBehindCloudflareTunnelObjectAccessClientIdAccessClientSecretDatabase4More__:
+      S.Unknown.pipe(
+        T.Body(
+          "AccessProtectedDatabaseBehindCloudflareTunnel object { access_client_id, access_client_secret, database, 4 more }",
+        ),
+      ),
+    DatabaseReachableThroughAWorkersVPCObjectDatabasePasswordScheme2More__:
+      S.Unknown.pipe(
+        T.Body(
+          "DatabaseReachableThroughAWorkersVPC object { database, password, scheme, 2 more }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "ConfigsGetResponseOrigin",
+}) as any as S.Schema<ConfigsGetResponseOrigin>;
+
+export interface ConfigsGetResponseCaching {
+  HyperdriveHyperdriveCachingCommonObjectDisabled__: unknown;
+  HyperdriveHyperdriveCachingEnabledObjectDisabledMaxAgeStaleWhileRevalidate__: unknown;
+}
+export const ConfigsGetResponseCaching = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HyperdriveHyperdriveCachingCommonObjectDisabled__: S.Unknown.pipe(
+      T.Body("HyperdriveHyperdriveCachingCommon object { disabled }"),
+    ),
+    HyperdriveHyperdriveCachingEnabledObjectDisabledMaxAgeStaleWhileRevalidate__:
+      S.Unknown.pipe(
+        T.Body(
+          "HyperdriveHyperdriveCachingEnabled object { disabled, max_age, stale_while_revalidate }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "ConfigsGetResponseCaching",
+}) as any as S.Schema<ConfigsGetResponseCaching>;
+
+export interface ConfigsGetResponseMtls {
+  /** Define CA certificate ID obtained after uploading CA cert. */
+  caCertificateId?: string;
+  /** Define mTLS certificate ID obtained after uploading client cert. */
+  mtlsCertificateId?: string;
+  /** Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA. */
+  sslmode?: string;
+}
+export const ConfigsGetResponseMtls = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    caCertificateId: S.optional(S.String.pipe(T.Body("ca_certificate_id"))),
+    mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
+    sslmode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigsGetResponseMtls",
+}) as any as S.Schema<ConfigsGetResponseMtls>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ConfigsGetResponse {
-  result?: unknown;
+  /** Define configurations using a unique string identifier. */
+  id: string;
+  /** The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
+  name: string;
+  origin: ConfigsGetResponseOrigin;
+  caching?: ConfigsGetResponseCaching;
+  /** Defines the creation time of the Hyperdrive configuration. */
+  createdOn?: string;
+  /** Defines the last modified time of the Hyperdrive configuration. */
+  modifiedOn?: string;
+  /** mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
+  mtls?: ConfigsGetResponseMtls;
+  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  originConnectionLimit?: number;
 }
 export const ConfigsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    name: S.String,
+    origin: ConfigsGetResponseOrigin,
+    caching: S.optional(ConfigsGetResponseCaching),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    mtls: S.optional(ConfigsGetResponseMtls),
+    originConnectionLimit: S.optional(
+      S.Number.pipe(T.Body("origin_connection_limit")),
+    ),
   }),
 ).annotate({
   identifier: "ConfigsGetResponse",
 }) as any as S.Schema<ConfigsGetResponse>;
 
 export interface ConfigsListRequest {
-  account_id: string;
+  /** Define configurations using a unique string identifier. */
+  accountId: string;
 }
 export const ConfigsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -292,12 +583,111 @@ export const ConfigsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigsListRequest",
 }) as any as S.Schema<ConfigsListRequest>;
 
-export type ConfigsListResultList = unknown[];
+export interface ConfigsListResultItemOrigin {
+  PublicDatabaseObjectDatabaseHostPassword3More__: unknown;
+  AccessProtectedDatabaseBehindCloudflareTunnelObjectAccessClientIdAccessClientSecretDatabase4More__: unknown;
+  DatabaseReachableThroughAWorkersVPCObjectDatabasePasswordScheme2More__: unknown;
+}
+export const ConfigsListResultItemOrigin = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PublicDatabaseObjectDatabaseHostPassword3More__: S.Unknown.pipe(
+      T.Body("PublicDatabase object { database, host, password, 3 more }"),
+    ),
+    AccessProtectedDatabaseBehindCloudflareTunnelObjectAccessClientIdAccessClientSecretDatabase4More__:
+      S.Unknown.pipe(
+        T.Body(
+          "AccessProtectedDatabaseBehindCloudflareTunnel object { access_client_id, access_client_secret, database, 4 more }",
+        ),
+      ),
+    DatabaseReachableThroughAWorkersVPCObjectDatabasePasswordScheme2More__:
+      S.Unknown.pipe(
+        T.Body(
+          "DatabaseReachableThroughAWorkersVPC object { database, password, scheme, 2 more }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "ConfigsListResultItemOrigin",
+}) as any as S.Schema<ConfigsListResultItemOrigin>;
+
+export interface ConfigsListResultItemCaching {
+  HyperdriveHyperdriveCachingCommonObjectDisabled__: unknown;
+  HyperdriveHyperdriveCachingEnabledObjectDisabledMaxAgeStaleWhileRevalidate__: unknown;
+}
+export const ConfigsListResultItemCaching = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HyperdriveHyperdriveCachingCommonObjectDisabled__: S.Unknown.pipe(
+      T.Body("HyperdriveHyperdriveCachingCommon object { disabled }"),
+    ),
+    HyperdriveHyperdriveCachingEnabledObjectDisabledMaxAgeStaleWhileRevalidate__:
+      S.Unknown.pipe(
+        T.Body(
+          "HyperdriveHyperdriveCachingEnabled object { disabled, max_age, stale_while_revalidate }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "ConfigsListResultItemCaching",
+}) as any as S.Schema<ConfigsListResultItemCaching>;
+
+export interface ConfigsListResultItemMtls {
+  /** Define CA certificate ID obtained after uploading CA cert. */
+  caCertificateId?: string;
+  /** Define mTLS certificate ID obtained after uploading client cert. */
+  mtlsCertificateId?: string;
+  /** Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA. */
+  sslmode?: string;
+}
+export const ConfigsListResultItemMtls = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    caCertificateId: S.optional(S.String.pipe(T.Body("ca_certificate_id"))),
+    mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
+    sslmode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigsListResultItemMtls",
+}) as any as S.Schema<ConfigsListResultItemMtls>;
+
+export interface ConfigsListResultItem {
+  /** Define configurations using a unique string identifier. */
+  id: string;
+  /** The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
+  name: string;
+  origin: ConfigsListResultItemOrigin;
+  caching?: ConfigsListResultItemCaching;
+  /** Defines the creation time of the Hyperdrive configuration. */
+  createdOn?: string;
+  /** Defines the last modified time of the Hyperdrive configuration. */
+  modifiedOn?: string;
+  /** mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
+  mtls?: ConfigsListResultItemMtls;
+  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  originConnectionLimit?: number;
+}
+export const ConfigsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    origin: ConfigsListResultItemOrigin,
+    caching: S.optional(ConfigsListResultItemCaching),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    mtls: S.optional(ConfigsListResultItemMtls),
+    originConnectionLimit: S.optional(
+      S.Number.pipe(T.Body("origin_connection_limit")),
+    ),
+  }),
+).annotate({
+  identifier: "ConfigsListResultItem",
+}) as any as S.Schema<ConfigsListResultItem>;
+
+export type ConfigsListResultList = ConfigsListResultItem[];
 export const ConfigsListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  ConfigsListResultItem,
 ) as any as S.Schema<ConfigsListResultList>;
 
 export interface ConfigsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ConfigsListResultList;
 }
 export const ConfigsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -309,22 +699,22 @@ export const ConfigsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsListResponse>;
 
 export interface ConfigsUpdateRequestOrigin {
-  PublicDatabase_object___database__host__password__3_more__: unknown;
-  AccessProtectedDatabaseBehindCloudflareTunnel_object___access_client_id__access_client_secret__database__4_more__: unknown;
-  DatabaseReachableThroughAWorkersVPC_object___database__password__scheme__2_more__: unknown;
+  PublicDatabaseObjectDatabaseHostPassword3More__: unknown;
+  AccessProtectedDatabaseBehindCloudflareTunnelObjectAccessClientIdAccessClientSecretDatabase4More__: unknown;
+  DatabaseReachableThroughAWorkersVPCObjectDatabasePasswordScheme2More__: unknown;
 }
 export const ConfigsUpdateRequestOrigin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    PublicDatabase_object___database__host__password__3_more__: S.Unknown.pipe(
+    PublicDatabaseObjectDatabaseHostPassword3More__: S.Unknown.pipe(
       T.Body("PublicDatabase object { database, host, password, 3 more }"),
     ),
-    AccessProtectedDatabaseBehindCloudflareTunnel_object___access_client_id__access_client_secret__database__4_more__:
+    AccessProtectedDatabaseBehindCloudflareTunnelObjectAccessClientIdAccessClientSecretDatabase4More__:
       S.Unknown.pipe(
         T.Body(
           "AccessProtectedDatabaseBehindCloudflareTunnel object { access_client_id, access_client_secret, database, 4 more }",
         ),
       ),
-    DatabaseReachableThroughAWorkersVPC_object___database__password__scheme__2_more__:
+    DatabaseReachableThroughAWorkersVPCObjectDatabasePasswordScheme2More__:
       S.Unknown.pipe(
         T.Body(
           "DatabaseReachableThroughAWorkersVPC object { database, password, scheme, 2 more }",
@@ -336,15 +726,15 @@ export const ConfigsUpdateRequestOrigin = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsUpdateRequestOrigin>;
 
 export interface ConfigsUpdateRequestCaching {
-  HyperdriveHyperdriveCachingCommon_object___disabled__: unknown;
-  HyperdriveHyperdriveCachingEnabled_object___disabled__max_age__stale_while_revalidate__: unknown;
+  HyperdriveHyperdriveCachingCommonObjectDisabled__: unknown;
+  HyperdriveHyperdriveCachingEnabledObjectDisabledMaxAgeStaleWhileRevalidate__: unknown;
 }
 export const ConfigsUpdateRequestCaching = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    HyperdriveHyperdriveCachingCommon_object___disabled__: S.Unknown.pipe(
+    HyperdriveHyperdriveCachingCommonObjectDisabled__: S.Unknown.pipe(
       T.Body("HyperdriveHyperdriveCachingCommon object { disabled }"),
     ),
-    HyperdriveHyperdriveCachingEnabled_object___disabled__max_age__stale_while_revalidate__:
+    HyperdriveHyperdriveCachingEnabledObjectDisabledMaxAgeStaleWhileRevalidate__:
       S.Unknown.pipe(
         T.Body(
           "HyperdriveHyperdriveCachingEnabled object { disabled, max_age, stale_while_revalidate }",
@@ -356,14 +746,17 @@ export const ConfigsUpdateRequestCaching = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsUpdateRequestCaching>;
 
 export interface ConfigsUpdateRequestMtls {
-  ca_certificate_id?: string;
-  mtls_certificate_id?: string;
+  /** Define CA certificate ID obtained after uploading CA cert. */
+  caCertificateId?: string;
+  /** Define mTLS certificate ID obtained after uploading client cert. */
+  mtlsCertificateId?: string;
+  /** Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA. */
   sslmode?: string;
 }
 export const ConfigsUpdateRequestMtls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ca_certificate_id: S.optional(S.String),
-    mtls_certificate_id: S.optional(S.String),
+    caCertificateId: S.optional(S.String.pipe(T.Body("ca_certificate_id"))),
+    mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
     sslmode: S.optional(S.String),
   }),
 ).annotate({
@@ -371,23 +764,30 @@ export const ConfigsUpdateRequestMtls = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsUpdateRequestMtls>;
 
 export interface ConfigsUpdateRequest {
-  account_id: string;
-  hyperdrive_id: string;
+  /** Define configurations using a unique string identifier. */
+  accountId: string;
+  /** Define configurations using a unique string identifier. */
+  hyperdriveId: string;
+  /** The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
   name: string;
   origin: ConfigsUpdateRequestOrigin;
   caching?: ConfigsUpdateRequestCaching;
+  /** mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
   mtls?: ConfigsUpdateRequestMtls;
-  origin_connection_limit?: number;
+  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  originConnectionLimit?: number;
 }
 export const ConfigsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    hyperdrive_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    hyperdriveId: S.String.pipe(T.Label("hyperdrive_id")),
     name: S.String,
     origin: ConfigsUpdateRequestOrigin,
     caching: S.optional(ConfigsUpdateRequestCaching),
     mtls: S.optional(ConfigsUpdateRequestMtls),
-    origin_connection_limit: S.optional(S.Number),
+    originConnectionLimit: S.optional(
+      S.Number.pipe(T.Body("origin_connection_limit")),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -399,22 +799,111 @@ export const ConfigsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigsUpdateRequest",
 }) as any as S.Schema<ConfigsUpdateRequest>;
 
+export interface ConfigsUpdateResponseOrigin {
+  PublicDatabaseObjectDatabaseHostPassword3More__: unknown;
+  AccessProtectedDatabaseBehindCloudflareTunnelObjectAccessClientIdAccessClientSecretDatabase4More__: unknown;
+  DatabaseReachableThroughAWorkersVPCObjectDatabasePasswordScheme2More__: unknown;
+}
+export const ConfigsUpdateResponseOrigin = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PublicDatabaseObjectDatabaseHostPassword3More__: S.Unknown.pipe(
+      T.Body("PublicDatabase object { database, host, password, 3 more }"),
+    ),
+    AccessProtectedDatabaseBehindCloudflareTunnelObjectAccessClientIdAccessClientSecretDatabase4More__:
+      S.Unknown.pipe(
+        T.Body(
+          "AccessProtectedDatabaseBehindCloudflareTunnel object { access_client_id, access_client_secret, database, 4 more }",
+        ),
+      ),
+    DatabaseReachableThroughAWorkersVPCObjectDatabasePasswordScheme2More__:
+      S.Unknown.pipe(
+        T.Body(
+          "DatabaseReachableThroughAWorkersVPC object { database, password, scheme, 2 more }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "ConfigsUpdateResponseOrigin",
+}) as any as S.Schema<ConfigsUpdateResponseOrigin>;
+
+export interface ConfigsUpdateResponseCaching {
+  HyperdriveHyperdriveCachingCommonObjectDisabled__: unknown;
+  HyperdriveHyperdriveCachingEnabledObjectDisabledMaxAgeStaleWhileRevalidate__: unknown;
+}
+export const ConfigsUpdateResponseCaching = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HyperdriveHyperdriveCachingCommonObjectDisabled__: S.Unknown.pipe(
+      T.Body("HyperdriveHyperdriveCachingCommon object { disabled }"),
+    ),
+    HyperdriveHyperdriveCachingEnabledObjectDisabledMaxAgeStaleWhileRevalidate__:
+      S.Unknown.pipe(
+        T.Body(
+          "HyperdriveHyperdriveCachingEnabled object { disabled, max_age, stale_while_revalidate }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "ConfigsUpdateResponseCaching",
+}) as any as S.Schema<ConfigsUpdateResponseCaching>;
+
+export interface ConfigsUpdateResponseMtls {
+  /** Define CA certificate ID obtained after uploading CA cert. */
+  caCertificateId?: string;
+  /** Define mTLS certificate ID obtained after uploading client cert. */
+  mtlsCertificateId?: string;
+  /** Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA. */
+  sslmode?: string;
+}
+export const ConfigsUpdateResponseMtls = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    caCertificateId: S.optional(S.String.pipe(T.Body("ca_certificate_id"))),
+    mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
+    sslmode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigsUpdateResponseMtls",
+}) as any as S.Schema<ConfigsUpdateResponseMtls>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ConfigsUpdateResponse {
-  result?: unknown;
+  /** Define configurations using a unique string identifier. */
+  id: string;
+  /** The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
+  name: string;
+  origin: ConfigsUpdateResponseOrigin;
+  caching?: ConfigsUpdateResponseCaching;
+  /** Defines the creation time of the Hyperdrive configuration. */
+  createdOn?: string;
+  /** Defines the last modified time of the Hyperdrive configuration. */
+  modifiedOn?: string;
+  /** mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
+  mtls?: ConfigsUpdateResponseMtls;
+  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  originConnectionLimit?: number;
 }
 export const ConfigsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    name: S.String,
+    origin: ConfigsUpdateResponseOrigin,
+    caching: S.optional(ConfigsUpdateResponseCaching),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    mtls: S.optional(ConfigsUpdateResponseMtls),
+    originConnectionLimit: S.optional(
+      S.Number.pipe(T.Body("origin_connection_limit")),
+    ),
   }),
 ).annotate({
   identifier: "ConfigsUpdateResponse",
 }) as any as S.Schema<ConfigsUpdateResponse>;
 
+export type ConfigsCreateError = CloudflareOpError;
 /** Creates and returns a new Hyperdrive configuration. */
-export const ConfigsCreate: API.OperationMethod<
+export const configsCreate: API.OperationMethod<
   ConfigsCreateRequest,
   ConfigsCreateResponse,
-  CloudflareOpError,
+  ConfigsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigsCreateRequest,
@@ -423,11 +912,12 @@ export const ConfigsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConfigsDeleteError = CloudflareOpError;
 /** Deletes the specified Hyperdrive. */
-export const ConfigsDelete: API.OperationMethod<
+export const configsDelete: API.OperationMethod<
   ConfigsDeleteRequest,
   ConfigsDeleteResponse,
-  CloudflareOpError,
+  ConfigsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigsDeleteRequest,
@@ -436,11 +926,12 @@ export const ConfigsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConfigsEditError = CloudflareOpError;
 /** Patches and returns the specified Hyperdrive configuration. Custom caching settings are not kept if caching is disabled. */
-export const ConfigsEdit: API.OperationMethod<
+export const configsEdit: API.OperationMethod<
   ConfigsEditRequest,
   ConfigsEditResponse,
-  CloudflareOpError,
+  ConfigsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigsEditRequest,
@@ -449,11 +940,12 @@ export const ConfigsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConfigsGetError = CloudflareOpError;
 /** Returns the specified Hyperdrive configuration. */
-export const ConfigsGet: API.OperationMethod<
+export const configsGet: API.OperationMethod<
   ConfigsGetRequest,
   ConfigsGetResponse,
-  CloudflareOpError,
+  ConfigsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigsGetRequest,
@@ -462,11 +954,12 @@ export const ConfigsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConfigsListError = CloudflareOpError;
 /** Returns a list of Hyperdrives. */
-export const ConfigsList: API.OperationMethod<
+export const configsList: API.OperationMethod<
   ConfigsListRequest,
   ConfigsListResponse,
-  CloudflareOpError,
+  ConfigsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigsListRequest,
@@ -475,11 +968,12 @@ export const ConfigsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConfigsUpdateError = CloudflareOpError;
 /** Updates and returns the specified Hyperdrive configuration. */
-export const ConfigsUpdate: API.OperationMethod<
+export const configsUpdate: API.OperationMethod<
   ConfigsUpdateRequest,
   ConfigsUpdateResponse,
-  CloudflareOpError,
+  ConfigsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigsUpdateRequest,

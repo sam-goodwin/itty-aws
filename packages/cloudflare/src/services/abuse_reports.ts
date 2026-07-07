@@ -10,39 +10,39 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface CreateRequestBody {
-  AbuseDmca_object___act__address1__agent_name__18_more__: unknown;
-  AbuseTrademark_object___act__email__email2__14_more__: unknown;
-  AbuseGeneral_object___act__email__email2__14_more__: unknown;
-  AbusePhishing_object___act__email__email2__12_more__: unknown;
-  AbuseChildren_object___act__email__email2__13_more__: unknown;
-  AbuseThreat_object___act__email__email2__11_more__: unknown;
-  AbuseRegistrarWhois_object___act__email__email2__10_more__: unknown;
-  AbuseNcsei_object___act__email__email2__12_more__: unknown;
+  AbuseDmcaObjectActAddress1AgentName18More__: unknown;
+  AbuseTrademarkObjectActEmailEmail214More__: unknown;
+  AbuseGeneralObjectActEmailEmail214More__: unknown;
+  AbusePhishingObjectActEmailEmail212More__: unknown;
+  AbuseChildrenObjectActEmailEmail213More__: unknown;
+  AbuseThreatObjectActEmailEmail211More__: unknown;
+  AbuseRegistrarWhoisObjectActEmailEmail210More__: unknown;
+  AbuseNcseiObjectActEmailEmail212More__: unknown;
 }
 export const CreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AbuseDmca_object___act__address1__agent_name__18_more__: S.Unknown.pipe(
+    AbuseDmcaObjectActAddress1AgentName18More__: S.Unknown.pipe(
       T.Body("AbuseDmca object { act, address1, agent_name, 18 more }"),
     ),
-    AbuseTrademark_object___act__email__email2__14_more__: S.Unknown.pipe(
+    AbuseTrademarkObjectActEmailEmail214More__: S.Unknown.pipe(
       T.Body("AbuseTrademark object { act, email, email2, 14 more }"),
     ),
-    AbuseGeneral_object___act__email__email2__14_more__: S.Unknown.pipe(
+    AbuseGeneralObjectActEmailEmail214More__: S.Unknown.pipe(
       T.Body("AbuseGeneral object { act, email, email2, 14 more }"),
     ),
-    AbusePhishing_object___act__email__email2__12_more__: S.Unknown.pipe(
+    AbusePhishingObjectActEmailEmail212More__: S.Unknown.pipe(
       T.Body("AbusePhishing object { act, email, email2, 12 more }"),
     ),
-    AbuseChildren_object___act__email__email2__13_more__: S.Unknown.pipe(
+    AbuseChildrenObjectActEmailEmail213More__: S.Unknown.pipe(
       T.Body("AbuseChildren object { act, email, email2, 13 more }"),
     ),
-    AbuseThreat_object___act__email__email2__11_more__: S.Unknown.pipe(
+    AbuseThreatObjectActEmailEmail211More__: S.Unknown.pipe(
       T.Body("AbuseThreat object { act, email, email2, 11 more }"),
     ),
-    AbuseRegistrarWhois_object___act__email__email2__10_more__: S.Unknown.pipe(
+    AbuseRegistrarWhoisObjectActEmailEmail210More__: S.Unknown.pipe(
       T.Body("AbuseRegistrarWhois object { act, email, email2, 10 more }"),
     ),
-    AbuseNcsei_object___act__email__email2__12_more__: S.Unknown.pipe(
+    AbuseNcseiObjectActEmailEmail212More__: S.Unknown.pipe(
       T.Body("AbuseNcsei object { act, email, email2, 12 more }"),
     ),
   }),
@@ -51,14 +51,15 @@ export const CreateRequestBody = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRequestBody>;
 
 export interface CreateRequest {
-  account_id: string;
-  report_param: string;
+  accountId: string;
+  /** The report type for submitted reports. */
+  reportParam: string;
   body: CreateRequestBody;
 }
 export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    report_param: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    reportParam: S.String.pipe(T.Label("report_param")),
     body: CreateRequestBody,
   }).pipe(
     T.Http({
@@ -70,6 +71,7 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
 
 export interface CreateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: string;
 }
 export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -79,13 +81,13 @@ export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
 
 export interface GetRequest {
-  account_id: string;
-  report_param: string;
+  accountId: string;
+  reportParam: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    report_param: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    reportParam: S.String.pipe(T.Label("report_param")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -96,19 +98,24 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
 export interface GetResponseMitigationSummary {
-  accepted_url_count: number;
-  active_count: number;
-  external_host_notified: boolean;
-  in_review_count: number;
-  pending_count: number;
+  /** How many of the reported URLs were confirmed as abusive. */
+  acceptedUrlCount: number;
+  /** How many mitigations are active. */
+  activeCount: number;
+  /** Whether the report has been forwarded to an external hosting provider. */
+  externalHostNotified: boolean;
+  /** How many mitigations are under review. */
+  inReviewCount: number;
+  /** How many mitigations are pending their effective date. */
+  pendingCount: number;
 }
 export const GetResponseMitigationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accepted_url_count: S.Number,
-    active_count: S.Number,
-    external_host_notified: S.Boolean,
-    in_review_count: S.Number,
-    pending_count: S.Number,
+    acceptedUrlCount: S.Number.pipe(T.Body("accepted_url_count")),
+    activeCount: S.Number.pipe(T.Body("active_count")),
+    externalHostNotified: S.Boolean.pipe(T.Body("external_host_notified")),
+    inReviewCount: S.Number.pipe(T.Body("in_review_count")),
+    pendingCount: S.Number.pipe(T.Body("pending_count")),
   }),
 ).annotate({
   identifier: "GetResponseMitigationSummary",
@@ -144,14 +151,23 @@ export const GetResponseUrlsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
+  /** Public facing ID of abuse report, aka abuse_rand. */
   id: string;
+  /** Creation date of report. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html) */
   cdate: string;
+  /** Domain that relates to the report. */
   domain: string;
-  mitigation_summary: GetResponseMitigationSummary;
+  /** A summary of the mitigations related to this report. */
+  mitigationSummary: GetResponseMitigationSummary;
+  /** An enum value that represents the status of an abuse record */
   status: GetResponseStatus;
+  /** The abuse report type */
   type: GetResponseType;
+  /** Justification for the report. */
   justification?: string;
-  original_work?: string;
+  /** Original work / Targeted brand in the alleged abuse. */
+  originalWork?: string;
+  /** Information about the submitter of the report. */
   submitter?: GetResponseSubmitter;
   urls?: GetResponseUrlsList;
 }
@@ -160,11 +176,13 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     cdate: S.String,
     domain: S.String,
-    mitigation_summary: GetResponseMitigationSummary,
+    mitigationSummary: GetResponseMitigationSummary.pipe(
+      T.Body("mitigation_summary"),
+    ),
     status: GetResponseStatus,
     type: GetResponseType,
     justification: S.optional(S.String),
-    original_work: S.optional(S.String),
+    originalWork: S.optional(S.String.pipe(T.Body("original_work"))),
     submitter: S.optional(GetResponseSubmitter),
     urls: S.optional(GetResponseUrlsList),
   }),
@@ -184,26 +202,37 @@ export type ListRequestType = "PHISH" | "GEN" | "THREAT" | (string & {});
 export const ListRequestType = /*@__PURE__*/ S.String;
 
 export interface ListRequest {
-  account_id: string;
-  created_after?: string;
-  created_before?: string;
+  accountId: string;
+  /** Returns reports created after the specified date */
+  createdAfter?: string;
+  /** Returns reports created before the specified date */
+  createdBefore?: string;
+  /** Filter by domain name related to the abuse report */
   domain?: string;
-  mitigation_status?: ListRequestMitigationStatus;
+  /** Filter reports that have any mitigations in the given status. */
+  mitigationStatus?: ListRequestMitigationStatus;
+  /** Where in pagination to start listing abuse reports */
   page?: number;
-  per_page?: number;
+  /** How many abuse reports per page to list */
+  perPage?: number;
+  /** A property to sort by, followed by the order (id, cdate, domain, type, status) */
   sort?: string;
+  /** Filter by the status of the report. */
   status?: ListRequestStatus;
+  /** Filter by the type of the report. */
   type?: ListRequestType;
 }
 export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    created_after: S.optional(S.String.pipe(T.Query())),
-    created_before: S.optional(S.String.pipe(T.Query())),
+    accountId: S.String.pipe(T.Label("account_id")),
+    createdAfter: S.optional(S.String.pipe(T.Query("created_after"))),
+    createdBefore: S.optional(S.String.pipe(T.Query("created_before"))),
     domain: S.optional(S.String.pipe(T.Query())),
-    mitigation_status: S.optional(ListRequestMitigationStatus.pipe(T.Query())),
+    mitigationStatus: S.optional(
+      ListRequestMitigationStatus.pipe(T.Query("mitigation_status")),
+    ),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     sort: S.optional(S.String.pipe(T.Query())),
     status: S.optional(ListRequestStatus.pipe(T.Query())),
     type: S.optional(ListRequestType.pipe(T.Query())),
@@ -217,20 +246,25 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
 
 export interface ListResponseReportsItemMitigationSummary {
-  accepted_url_count: number;
-  active_count: number;
-  external_host_notified: boolean;
-  in_review_count: number;
-  pending_count: number;
+  /** How many of the reported URLs were confirmed as abusive. */
+  acceptedUrlCount: number;
+  /** How many mitigations are active. */
+  activeCount: number;
+  /** Whether the report has been forwarded to an external hosting provider. */
+  externalHostNotified: boolean;
+  /** How many mitigations are under review. */
+  inReviewCount: number;
+  /** How many mitigations are pending their effective date. */
+  pendingCount: number;
 }
 export const ListResponseReportsItemMitigationSummary = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      accepted_url_count: S.Number,
-      active_count: S.Number,
-      external_host_notified: S.Boolean,
-      in_review_count: S.Number,
-      pending_count: S.Number,
+      acceptedUrlCount: S.Number.pipe(T.Body("accepted_url_count")),
+      activeCount: S.Number.pipe(T.Body("active_count")),
+      externalHostNotified: S.Boolean.pipe(T.Body("external_host_notified")),
+      inReviewCount: S.Number.pipe(T.Body("in_review_count")),
+      pendingCount: S.Number.pipe(T.Body("pending_count")),
     }),
 ).annotate({
   identifier: "ListResponseReportsItemMitigationSummary",
@@ -272,14 +306,23 @@ export const ListResponseReportsItemUrlsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResponseReportsItemUrlsList>;
 
 export interface ListResponseReportsItem {
+  /** Public facing ID of abuse report, aka abuse_rand. */
   id: string;
+  /** Creation date of report. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html) */
   cdate: string;
+  /** Domain that relates to the report. */
   domain: string;
-  mitigation_summary: ListResponseReportsItemMitigationSummary;
+  /** A summary of the mitigations related to this report. */
+  mitigationSummary: ListResponseReportsItemMitigationSummary;
+  /** An enum value that represents the status of an abuse record */
   status: ListResponseReportsItemStatus;
+  /** The abuse report type */
   type: ListResponseReportsItemType;
+  /** Justification for the report. */
   justification?: string;
-  original_work?: string;
+  /** Original work / Targeted brand in the alleged abuse. */
+  originalWork?: string;
+  /** Information about the submitter of the report. */
   submitter?: ListResponseReportsItemSubmitter;
   urls?: ListResponseReportsItemUrlsList;
 }
@@ -288,11 +331,13 @@ export const ListResponseReportsItem = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     cdate: S.String,
     domain: S.String,
-    mitigation_summary: ListResponseReportsItemMitigationSummary,
+    mitigationSummary: ListResponseReportsItemMitigationSummary.pipe(
+      T.Body("mitigation_summary"),
+    ),
     status: ListResponseReportsItemStatus,
     type: ListResponseReportsItemType,
     justification: S.optional(S.String),
-    original_work: S.optional(S.String),
+    originalWork: S.optional(S.String.pipe(T.Body("original_work"))),
     submitter: S.optional(ListResponseReportsItemSubmitter),
     urls: S.optional(ListResponseReportsItemUrlsList),
   }),
@@ -344,26 +389,36 @@ export type MitigationsListRequestType =
 export const MitigationsListRequestType = /*@__PURE__*/ S.String;
 
 export interface MitigationsListRequest {
-  account_id: string;
-  report_id: string;
-  effective_after?: string;
-  effective_before?: string;
-  entity_type?: MitigationsListRequestEntityType;
+  accountId: string;
+  reportId: string;
+  /** Returns mitigation that were dispatched after the given date */
+  effectiveAfter?: string;
+  /** Returns mitigations that were dispatched before the given date */
+  effectiveBefore?: string;
+  /** Filter by the type of entity the mitigation impacts. */
+  entityType?: MitigationsListRequestEntityType;
+  /** Where in pagination to start listing abuse reports */
   page?: number;
-  per_page?: number;
+  /** How many abuse reports per page to list */
+  perPage?: number;
+  /** A property to sort by, followed by the order */
   sort?: MitigationsListRequestSort;
+  /** Filter by the status of the mitigation. */
   status?: MitigationsListRequestStatus;
+  /** Filter by the type of mitigation. This filter parameter can be specified multiple times to include multiple types of mitigations in the result set, e.g. ?type=rate_limit_cache&type=legal_block. */
   type?: MitigationsListRequestType;
 }
 export const MitigationsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    report_id: S.String.pipe(T.Label()),
-    effective_after: S.optional(S.String.pipe(T.Query())),
-    effective_before: S.optional(S.String.pipe(T.Query())),
-    entity_type: S.optional(MitigationsListRequestEntityType.pipe(T.Query())),
+    accountId: S.String.pipe(T.Label("account_id")),
+    reportId: S.String.pipe(T.Label("report_id")),
+    effectiveAfter: S.optional(S.String.pipe(T.Query("effective_after"))),
+    effectiveBefore: S.optional(S.String.pipe(T.Query("effective_before"))),
+    entityType: S.optional(
+      MitigationsListRequestEntityType.pipe(T.Query("entity_type")),
+    ),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     sort: S.optional(MitigationsListRequestSort.pipe(T.Query())),
     status: S.optional(MitigationsListRequestStatus.pipe(T.Query())),
     type: S.optional(MitigationsListRequestType.pipe(T.Query())),
@@ -403,20 +458,27 @@ export const MitigationsListResponseMitigationsItemType =
   /*@__PURE__*/ S.String;
 
 export interface MitigationsListResponseMitigationsItem {
+  /** ID of remediation. */
   id: string;
-  effective_date: string;
-  entity_id: string;
-  entity_type: MitigationsListResponseMitigationsItemEntityType;
+  /** Date when the mitigation will become active. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html) */
+  effectiveDate: string;
+  entityId: string;
+  /** The type of entity targeted by a mitigation. */
+  entityType: MitigationsListResponseMitigationsItemEntityType;
+  /** The status of a mitigation */
   status: MitigationsListResponseMitigationsItemStatus;
+  /** The type of mitigation applied to a reported entity. */
   type: MitigationsListResponseMitigationsItemType;
 }
 export const MitigationsListResponseMitigationsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
-      effective_date: S.String,
-      entity_id: S.String,
-      entity_type: MitigationsListResponseMitigationsItemEntityType,
+      effectiveDate: S.String.pipe(T.Body("effective_date")),
+      entityId: S.String.pipe(T.Body("entity_id")),
+      entityType: MitigationsListResponseMitigationsItemEntityType.pipe(
+        T.Body("entity_type"),
+      ),
       status: MitigationsListResponseMitigationsItemStatus,
       type: MitigationsListResponseMitigationsItemType,
     }),
@@ -449,7 +511,9 @@ export type MitigationsReviewRequestAppealsItemReason =
 export const MitigationsReviewRequestAppealsItemReason = /*@__PURE__*/ S.String;
 
 export interface MitigationsReviewRequestAppealsItem {
+  /** ID of the mitigation to appeal. */
   id: string;
+  /** Reason why the customer is appealing. */
   reason: MitigationsReviewRequestAppealsItemReason;
 }
 export const MitigationsReviewRequestAppealsItem = /*@__PURE__*/ S.suspend(() =>
@@ -468,14 +532,15 @@ export const MitigationsReviewRequestAppealsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MitigationsReviewRequestAppealsList>;
 
 export interface MitigationsReviewRequest {
-  account_id: string;
-  report_id: string;
+  accountId: string;
+  reportId: string;
+  /** List of mitigations to appeal. */
   appeals: MitigationsReviewRequestAppealsList;
 }
 export const MitigationsReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    report_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    reportId: S.String.pipe(T.Label("report_id")),
     appeals: MitigationsReviewRequestAppealsList,
   }).pipe(
     T.Http({
@@ -510,19 +575,26 @@ export type MitigationsReviewResultItemType =
 export const MitigationsReviewResultItemType = /*@__PURE__*/ S.String;
 
 export interface MitigationsReviewResultItem {
+  /** ID of remediation. */
   id: string;
-  effective_date: string;
-  entity_id: string;
-  entity_type: MitigationsReviewResultItemEntityType;
+  /** Date when the mitigation will become active. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html) */
+  effectiveDate: string;
+  entityId: string;
+  /** The type of entity targeted by a mitigation. */
+  entityType: MitigationsReviewResultItemEntityType;
+  /** The status of a mitigation */
   status: MitigationsReviewResultItemStatus;
+  /** The type of mitigation applied to a reported entity. */
   type: MitigationsReviewResultItemType;
 }
 export const MitigationsReviewResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    effective_date: S.String,
-    entity_id: S.String,
-    entity_type: MitigationsReviewResultItemEntityType,
+    effectiveDate: S.String.pipe(T.Body("effective_date")),
+    entityId: S.String.pipe(T.Body("entity_id")),
+    entityType: MitigationsReviewResultItemEntityType.pipe(
+      T.Body("entity_type"),
+    ),
     status: MitigationsReviewResultItemStatus,
     type: MitigationsReviewResultItemType,
   }),
@@ -536,6 +608,7 @@ export const MitigationsReviewResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MitigationsReviewResultList>;
 
 export interface MitigationsReviewResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: MitigationsReviewResultList;
 }
 export const MitigationsReviewResponse = /*@__PURE__*/ S.suspend(() =>
@@ -546,11 +619,12 @@ export const MitigationsReviewResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MitigationsReviewResponse",
 }) as any as S.Schema<MitigationsReviewResponse>;
 
+export type CreateError = CloudflareOpError;
 /** Submit the Abuse Report of a particular type */
-export const Create: API.OperationMethod<
+export const create: API.OperationMethod<
   CreateRequest,
   CreateResponse,
-  CloudflareOpError,
+  CreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRequest,
@@ -559,11 +633,12 @@ export const Create: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Retrieve the details of an abuse report. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -572,11 +647,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ListError = CloudflareOpError;
 /** List the abuse reports for a given account */
-export const List: API.OperationMethod<
+export const list: API.OperationMethod<
   ListRequest,
   ListResponse,
-  CloudflareOpError,
+  ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRequest,
@@ -585,11 +661,12 @@ export const List: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type MitigationsListError = CloudflareOpError;
 /** List mitigations done to remediate the abuse report. */
-export const MitigationsList: API.OperationMethod<
+export const mitigationsList: API.OperationMethod<
   MitigationsListRequest,
   MitigationsListResponse,
-  CloudflareOpError,
+  MitigationsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: MitigationsListRequest,
@@ -598,11 +675,12 @@ export const MitigationsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type MitigationsReviewError = CloudflareOpError;
 /** Request a review for mitigations on an account. */
-export const MitigationsReview: API.OperationMethod<
+export const mitigationsReview: API.OperationMethod<
   MitigationsReviewRequest,
   MitigationsReviewResponse,
-  CloudflareOpError,
+  MitigationsReviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: MitigationsReviewRequest,

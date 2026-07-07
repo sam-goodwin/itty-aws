@@ -51,6 +51,43 @@ const makeAnnotation = <T>(sym: symbol, value: T): Annotation => {
   return fn as Annotation;
 };
 
+export const errorMatchersSymbol = Symbol.for(
+  "@distilled.cloud/cloudflare/error-matchers",
+);
+
+/**
+ * One wire-matching rule for a typed error class. A matcher matches a v4
+ * envelope failure when every present field matches: `code` equals the
+ * envelope error's code, `status` equals the HTTP status, and
+ * `message.includes` is a case-insensitive substring of the error message.
+ */
+export interface ErrorMatcher {
+  readonly code?: number;
+  readonly status?: number;
+  readonly message?: { readonly includes: string };
+}
+
+/**
+ * Stamp wire-matching rules onto a generated error class. The protocol
+ * consults these to decide which of an operation's declared error classes a
+ * failed response should surface as (first matching class wins, in the order
+ * the operation declares them). Mirrors
+ * `com.cloudflare.protocols#errorMatchers` in the Smithy models.
+ */
+export const applyErrorMatchers = <C>(
+  cls: C,
+  matchers: ReadonlyArray<ErrorMatcher>,
+): C => {
+  (cls as any)[errorMatchersSymbol] = matchers;
+  return cls;
+};
+
+/** Read the matchers stamped on an error class, if any. */
+export const getErrorMatchers = (
+  cls: unknown,
+): ReadonlyArray<ErrorMatcher> | undefined =>
+  (cls as any)?.[errorMatchersSymbol];
+
 export const envelopePayloadSymbol = Symbol.for(
   "@distilled.cloud/cloudflare/envelope-payload",
 );

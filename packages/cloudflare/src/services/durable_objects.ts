@@ -10,15 +10,18 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface NamespacesListRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Current page. */
   page?: number;
-  per_page?: number;
+  /** Items per-page. */
+  perPage?: number;
 }
 export const NamespacesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -30,12 +33,32 @@ export const NamespacesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesListRequest",
 }) as any as S.Schema<NamespacesListRequest>;
 
-export type NamespacesListResultList = unknown[];
+export interface NamespacesListResultItem {
+  id?: string;
+  class?: string;
+  name?: string;
+  script?: string;
+  useSqlite?: boolean;
+}
+export const NamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    class: S.optional(S.String),
+    name: S.optional(S.String),
+    script: S.optional(S.String),
+    useSqlite: S.optional(S.Boolean.pipe(T.Body("use_sqlite"))),
+  }),
+).annotate({
+  identifier: "NamespacesListResultItem",
+}) as any as S.Schema<NamespacesListResultItem>;
+
+export type NamespacesListResultList = NamespacesListResultItem[];
 export const NamespacesListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  NamespacesListResultItem,
 ) as any as S.Schema<NamespacesListResultList>;
 
 export interface NamespacesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: NamespacesListResultList;
 }
 export const NamespacesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -47,14 +70,18 @@ export const NamespacesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesListResponse>;
 
 export interface NamespacesObjectsListRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** ID of the namespace. */
   id: string;
+  /** Opaque token indicating the position from which to continue when requesting the next set of records. A valid value for the cursor can be obtained from the cursors object in the result_info structure. */
   cursor?: string;
+  /** The number of objects to return. The cursor attribute may be used to iterate over the next batch of objects if there are more than the limit. */
   limit?: number;
 }
 export const NamespacesObjectsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -69,12 +96,28 @@ export const NamespacesObjectsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesObjectsListRequest",
 }) as any as S.Schema<NamespacesObjectsListRequest>;
 
-export type NamespacesObjectsListResultList = unknown[];
+export interface NamespacesObjectsListResultItem {
+  /** ID of the Durable Object. */
+  id?: string;
+  /** Whether the Durable Object has stored data. */
+  hasStoredData?: boolean;
+}
+export const NamespacesObjectsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    hasStoredData: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "NamespacesObjectsListResultItem",
+}) as any as S.Schema<NamespacesObjectsListResultItem>;
+
+export type NamespacesObjectsListResultList = NamespacesObjectsListResultItem[];
 export const NamespacesObjectsListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  NamespacesObjectsListResultItem,
 ) as any as S.Schema<NamespacesObjectsListResultList>;
 
 export interface NamespacesObjectsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: NamespacesObjectsListResultList;
 }
 export const NamespacesObjectsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -87,11 +130,12 @@ export const NamespacesObjectsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesObjectsListResponse",
 }) as any as S.Schema<NamespacesObjectsListResponse>;
 
+export type NamespacesListError = CloudflareOpError;
 /** Returns the Durable Object namespaces owned by an account. */
-export const NamespacesList: API.OperationMethod<
+export const namespacesList: API.OperationMethod<
   NamespacesListRequest,
   NamespacesListResponse,
-  CloudflareOpError,
+  NamespacesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: NamespacesListRequest,
@@ -100,11 +144,12 @@ export const NamespacesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type NamespacesObjectsListError = CloudflareOpError;
 /** Returns the Durable Objects in a given namespace. */
-export const NamespacesObjectsList: API.OperationMethod<
+export const namespacesObjectsList: API.OperationMethod<
   NamespacesObjectsListRequest,
   NamespacesObjectsListResponse,
-  CloudflareOpError,
+  NamespacesObjectsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: NamespacesObjectsListRequest,

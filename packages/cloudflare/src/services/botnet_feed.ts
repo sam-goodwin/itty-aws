@@ -10,14 +10,15 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface AsnDayReportRequest {
-  account_id: string;
-  asn_id: number;
+  /** Identifier. */
+  accountId: string;
+  asnId: number;
   date?: string;
 }
 export const AsnDayReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    asn_id: S.Number.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    asnId: S.Number.pipe(T.Label("asn_id")),
     date: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -34,26 +35,27 @@ export const AsnDayReportRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AsnDayReportResponse {
   cidr?: string;
   date?: string;
-  offense_count?: number;
+  offenseCount?: number;
 }
 export const AsnDayReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cidr: S.optional(S.String),
     date: S.optional(S.String),
-    offense_count: S.optional(S.Number),
+    offenseCount: S.optional(S.Number.pipe(T.Body("offense_count"))),
   }),
 ).annotate({
   identifier: "AsnDayReportResponse",
 }) as any as S.Schema<AsnDayReportResponse>;
 
 export interface AsnFullReportRequest {
-  account_id: string;
-  asn_id: number;
+  /** Identifier. */
+  accountId: string;
+  asnId: number;
 }
 export const AsnFullReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    asn_id: S.Number.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    asnId: S.Number.pipe(T.Label("asn_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -69,26 +71,27 @@ export const AsnFullReportRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AsnFullReportResponse {
   cidr?: string;
   date?: string;
-  offense_count?: number;
+  offenseCount?: number;
 }
 export const AsnFullReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cidr: S.optional(S.String),
     date: S.optional(S.String),
-    offense_count: S.optional(S.Number),
+    offenseCount: S.optional(S.Number.pipe(T.Body("offense_count"))),
   }),
 ).annotate({
   identifier: "AsnFullReportResponse",
 }) as any as S.Schema<AsnFullReportResponse>;
 
 export interface ConfigsAsnDeleteRequest {
-  account_id: string;
-  asn_id: number;
+  /** Identifier. */
+  accountId: string;
+  asnId: number;
 }
 export const ConfigsAsnDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    asn_id: S.Number.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    asnId: S.Number.pipe(T.Label("asn_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -113,11 +116,12 @@ export const ConfigsAsnDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsAsnDeleteResponse>;
 
 export interface ConfigsAsnGetRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
 }
 export const ConfigsAsnGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -141,11 +145,12 @@ export const ConfigsAsnGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigsAsnGetResponse",
 }) as any as S.Schema<ConfigsAsnGetResponse>;
 
+export type AsnDayReportError = CloudflareOpError;
 /** Gets all the data the botnet tracking database has for a given ASN registered to user account for given date. If no date is given, it will return results for the previous day. */
-export const AsnDayReport: API.OperationMethod<
+export const asnDayReport: API.OperationMethod<
   AsnDayReportRequest,
   AsnDayReportResponse,
-  CloudflareOpError,
+  AsnDayReportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AsnDayReportRequest,
@@ -154,11 +159,12 @@ export const AsnDayReport: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AsnFullReportError = CloudflareOpError;
 /** Gets all the data the botnet threat feed tracking database has for a given ASN registered to user account. */
-export const AsnFullReport: API.OperationMethod<
+export const asnFullReport: API.OperationMethod<
   AsnFullReportRequest,
   AsnFullReportResponse,
-  CloudflareOpError,
+  AsnFullReportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AsnFullReportRequest,
@@ -167,11 +173,12 @@ export const AsnFullReport: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConfigsAsnDeleteError = CloudflareOpError;
 /** Delete an ASN from botnet threat feed for a given user. */
-export const ConfigsAsnDelete: API.OperationMethod<
+export const configsAsnDelete: API.OperationMethod<
   ConfigsAsnDeleteRequest,
   ConfigsAsnDeleteResponse,
-  CloudflareOpError,
+  ConfigsAsnDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigsAsnDeleteRequest,
@@ -180,11 +187,12 @@ export const ConfigsAsnDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConfigsAsnGetError = CloudflareOpError;
 /** Gets a list of all ASNs registered for a user for the DDoS Botnet Feed API. */
-export const ConfigsAsnGet: API.OperationMethod<
+export const configsAsnGet: API.OperationMethod<
   ConfigsAsnGetRequest,
   ConfigsAsnGetResponse,
-  CloudflareOpError,
+  ConfigsAsnGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigsAsnGetRequest,

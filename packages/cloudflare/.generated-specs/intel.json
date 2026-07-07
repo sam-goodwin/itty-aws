@@ -1216,19 +1216,66 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.intel#DnsListResponseReverseRecordsItem": {
+      "type": "structure",
+      "members": {
+        "first_seen": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "First seen date of the DNS record during the time period."
+          }
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Hostname that the IP was observed resolving to."
+          }
+        },
+        "last_seen": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last seen date of the DNS record during the time period."
+          }
+        }
+      }
+    },
+    "com.cloudflare.intel#DnsListResponseReverseRecordsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.intel#DnsListResponseReverseRecordsItem"
+      }
+    },
     "com.cloudflare.intel#DnsListResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "count": {
+          "target": "smithy.api#Double",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Total results returned based on your search parameters."
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Current page within paginated list of results."
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of results per page of results."
+          }
+        },
+        "reverse_records": {
+          "target": "com.cloudflare.intel#DnsListResponseReverseRecordsList",
+          "traits": {
+            "smithy.api#documentation": "Reverse DNS look-ups observed during the time period."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.intel#DnsList": {
@@ -1271,10 +1318,58 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.intel#DomainHistoryGetResultItemCategorizationsItemCategoriesItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Double"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.intel#DomainHistoryGetResultItemCategorizationsItemCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.intel#DomainHistoryGetResultItemCategorizationsItemCategoriesItem"
+      }
+    },
+    "com.cloudflare.intel#DomainHistoryGetResultItemCategorizationsItem": {
+      "type": "structure",
+      "members": {
+        "categories": {
+          "target": "com.cloudflare.intel#DomainHistoryGetResultItemCategorizationsItemCategoriesList"
+        },
+        "end": {
+          "target": "smithy.api#String"
+        },
+        "start": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.intel#DomainHistoryGetResultItemCategorizationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.intel#DomainHistoryGetResultItemCategorizationsItem"
+      }
+    },
+    "com.cloudflare.intel#DomainHistoryGetResultItem": {
+      "type": "structure",
+      "members": {
+        "categorizations": {
+          "target": "com.cloudflare.intel#DomainHistoryGetResultItemCategorizationsList"
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
     "com.cloudflare.intel#DomainHistoryGetResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.intel#DomainHistoryGetResultItem"
       }
     },
     "com.cloudflare.intel#DomainHistoryGetResponse": {
@@ -1346,19 +1441,189 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.intel#DomainsGetResponseAdditionalInformation": {
+      "type": "structure",
+      "members": {
+        "suspected_malware_family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Suspected DGA malware family."
+          }
+        }
+      }
+    },
+    "com.cloudflare.intel#DomainsGetResponseApplication": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Double"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.intel#DomainsGetResponseContentCategoriesItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Double"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "super_category_id": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.intel#DomainsGetResponseContentCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.intel#DomainsGetResponseContentCategoriesItem"
+      }
+    },
+    "com.cloudflare.intel#DomainsGetResponseInheritedContentCategoriesItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Double"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "super_category_id": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.intel#DomainsGetResponseInheritedContentCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.intel#DomainsGetResponseInheritedContentCategoriesItem"
+      }
+    },
+    "com.cloudflare.intel#DomainsGetResponseInheritedRiskTypesItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Double"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "super_category_id": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.intel#DomainsGetResponseInheritedRiskTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.intel#DomainsGetResponseInheritedRiskTypesItem"
+      }
+    },
+    "com.cloudflare.intel#DomainsGetResponseResolvesToRefsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "STIX 2.1 identifier: https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_64yvzeku5a5c."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP address or domain name."
+          }
+        }
+      }
+    },
+    "com.cloudflare.intel#DomainsGetResponseResolvesToRefsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.intel#DomainsGetResponseResolvesToRefsItem"
+      }
+    },
+    "com.cloudflare.intel#DomainsGetResponseRiskTypesItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Double"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "super_category_id": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.intel#DomainsGetResponseRiskTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.intel#DomainsGetResponseRiskTypesItem"
+      }
+    },
     "com.cloudflare.intel#DomainsGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "additional_information": {
+          "target": "com.cloudflare.intel#DomainsGetResponseAdditionalInformation",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Additional information related to the host name."
           }
+        },
+        "application": {
+          "target": "com.cloudflare.intel#DomainsGetResponseApplication",
+          "traits": {
+            "smithy.api#documentation": "Application that the hostname belongs to."
+          }
+        },
+        "content_categories": {
+          "target": "com.cloudflare.intel#DomainsGetResponseContentCategoriesList"
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "inherited_content_categories": {
+          "target": "com.cloudflare.intel#DomainsGetResponseInheritedContentCategoriesList"
+        },
+        "inherited_from": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Domain from which `inherited_content_categories` and `inherited_risk_types` are inherited, if applicable."
+          }
+        },
+        "inherited_risk_types": {
+          "target": "com.cloudflare.intel#DomainsGetResponseInheritedRiskTypesList"
+        },
+        "popularity_rank": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000."
+          }
+        },
+        "resolves_to_refs": {
+          "target": "com.cloudflare.intel#DomainsGetResponseResolvesToRefsList",
+          "traits": {
+            "smithy.api#documentation": "Specifies a list of references to one or more IP addresses or domain names that the domain name currently resolves to."
+          }
+        },
+        "risk_score": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Hostname risk score, which is a value between 0 (lowest risk) to 1 (highest risk)."
+          }
+        },
+        "risk_types": {
+          "target": "com.cloudflare.intel#DomainsGetResponseRiskTypesList"
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.intel#DomainsGet": {
@@ -2553,10 +2818,93 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.intel#IpsGetResultItemBelongsToRefType": {
+      "type": "enum",
+      "members": {
+        "HOSTING_PROVIDER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hosting_provider"
+          }
+        },
+        "ISP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "isp"
+          }
+        },
+        "ORGANIZATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "organization"
+          }
+        }
+      }
+    },
+    "com.cloudflare.intel#IpsGetResultItemBelongsToRef": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "country": {
+          "target": "smithy.api#String"
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "com.cloudflare.intel#IpsGetResultItemBelongsToRefType",
+          "traits": {
+            "smithy.api#documentation": "Infrastructure type of this ASN."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.intel#IpsGetResultItemRiskTypesItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Double"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "super_category_id": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.intel#IpsGetResultItemRiskTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.intel#IpsGetResultItemRiskTypesItem"
+      }
+    },
+    "com.cloudflare.intel#IpsGetResultItem": {
+      "type": "structure",
+      "members": {
+        "belongs_to_ref": {
+          "target": "com.cloudflare.intel#IpsGetResultItemBelongsToRef",
+          "traits": {
+            "smithy.api#documentation": "Specifies a reference to the autonomous systems (AS) that the IP address belongs to."
+          }
+        },
+        "ip": {
+          "target": "smithy.api#String"
+        },
+        "risk_types": {
+          "target": "com.cloudflare.intel#IpsGetResultItemRiskTypesList"
+        }
+      }
+    },
     "com.cloudflare.intel#IpsGetResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.intel#IpsGetResultItem"
       }
     },
     "com.cloudflare.intel#IpsGetResponse": {
@@ -2733,10 +3081,57 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.intel#SinkholesListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the sinkhole."
+          }
+        },
+        "account_tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The account tag that owns this sinkhole."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the sinkhole was created."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time when the sinkhole was last modified."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the sinkhole."
+          }
+        },
+        "r2_bucket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the R2 bucket to store results."
+          }
+        },
+        "r2_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the R2 instance."
+          }
+        }
+      }
+    },
     "com.cloudflare.intel#SinkholesListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.intel#SinkholesListResultItem"
       }
     },
     "com.cloudflare.intel#SinkholesListResponse": {

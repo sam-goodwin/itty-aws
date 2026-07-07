@@ -10,13 +10,15 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface ResponsesGetRequest {
-  account_id: string;
-  response_id: string;
+  /** Account ID. */
+  accountId: string;
+  /** Response hash. */
+  responseId: string;
 }
 export const ResponsesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    response_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    responseId: S.String.pipe(T.Label("response_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -67,11 +69,15 @@ export const ScansBulkCreateRequestBodyItemVisibility = /*@__PURE__*/ S.String;
 
 export interface ScansBulkCreateRequestBodyItem {
   url: string;
+  /** Enable agent readiness checks. */
   agentReadiness?: boolean;
   customagent?: string;
+  /** Set custom headers. */
   customHeaders?: ScansBulkCreateRequestBodyItemCustomHeadersMap;
   referer?: string;
+  /** Take multiple screenshots targeting different device types. */
   screenshotsResolutions?: ScansBulkCreateRequestBodyItemScreenshotsResolutionsList;
+  /** The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material. */
   visibility?: ScansBulkCreateRequestBodyItemVisibility;
 }
 export const ScansBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
@@ -96,12 +102,14 @@ export const ScansBulkCreateRequestBodyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ScansBulkCreateRequestBodyList>;
 
 export interface ScansBulkCreateRequest {
-  account_id: string;
+  /** Account ID. */
+  accountId: string;
+  /** List of urls to scan (up to a 100). */
   body?: ScansBulkCreateRequestBodyList;
 }
 export const ScansBulkCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     body: S.optional(ScansBulkCreateRequestBodyList),
   }).pipe(
     T.Http({
@@ -115,6 +123,7 @@ export const ScansBulkCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansBulkCreateRequest>;
 
 export interface ScansBulkCreateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: string;
 }
 export const ScansBulkCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -158,19 +167,25 @@ export type ScansCreateRequestVisibility =
 export const ScansCreateRequestVisibility = /*@__PURE__*/ S.String;
 
 export interface ScansCreateRequest {
-  account_id: string;
+  /** Account ID. */
+  accountId: string;
   url: string;
+  /** Enable agent readiness checks. */
   agentReadiness?: boolean;
+  /** Country to geo egress from */
   country?: ScansCreateRequestCountry;
   customagent?: string;
+  /** Set custom headers. */
   customHeaders?: ScansCreateRequestCustomHeadersMap;
   referer?: string;
+  /** Take multiple screenshots targeting different device types. */
   screenshotsResolutions?: ScansCreateRequestScreenshotsResolutionsList;
+  /** The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material. */
   visibility?: ScansCreateRequestVisibility;
 }
 export const ScansCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     url: S.String,
     agentReadiness: S.optional(S.Boolean),
     country: S.optional(ScansCreateRequestCountry),
@@ -193,6 +208,7 @@ export const ScansCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansCreateRequest>;
 
 export interface ScansCreateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: string;
 }
 export const ScansCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -204,13 +220,15 @@ export const ScansCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansCreateResponse>;
 
 export interface ScansDomRequest {
-  account_id: string;
-  scan_id: string;
+  /** Account ID. */
+  accountId: string;
+  /** Scan UUID. */
+  scanId: string;
 }
 export const ScansDomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    scan_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scanId: S.String.pipe(T.Label("scan_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -230,13 +248,15 @@ export const ScansDomResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansDomResponse>;
 
 export interface ScansGetRequest {
-  account_id: string;
-  scan_id: string;
+  /** Account ID. */
+  accountId: string;
+  /** Scan UUID. */
+  scanId: string;
 }
 export const ScansGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    scan_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scanId: S.String.pipe(T.Label("scan_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -543,7 +563,7 @@ export const ScansGetResponseDataRequestsItemResponseGeoipLlList =
 export interface ScansGetResponseDataRequestsItemResponseGeoip {
   city: string;
   country: string;
-  country_name: string;
+  countryName: string;
   geonameId: string;
   ll: ScansGetResponseDataRequestsItemResponseGeoipLlList;
   region: string;
@@ -553,7 +573,7 @@ export const ScansGetResponseDataRequestsItemResponseGeoip =
     S.Struct({
       city: S.String,
       country: S.String,
-      country_name: S.String,
+      countryName: S.String.pipe(T.Body("country_name")),
       geonameId: S.String,
       ll: ScansGetResponseDataRequestsItemResponseGeoipLlList,
       region: S.String,
@@ -961,7 +981,7 @@ export const ScansGetResponseMetaProcessorsAsn = /*@__PURE__*/ S.suspend(() =>
 
 export interface ScansGetResponseMetaProcessorsDnsDataItem {
   address: string;
-  dnssec_valid: boolean;
+  dnssecValid: boolean;
   name: string;
   type: string;
 }
@@ -969,7 +989,7 @@ export const ScansGetResponseMetaProcessorsDnsDataItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       address: S.String,
-      dnssec_valid: S.Boolean,
+      dnssecValid: S.Boolean.pipe(T.Body("dnssec_valid")),
       name: S.String,
       type: S.String,
     }),
@@ -1038,7 +1058,7 @@ export const ScansGetResponseMetaProcessorsGeoipDataItemGeoipLlList =
 export interface ScansGetResponseMetaProcessorsGeoipDataItemGeoip {
   city: string;
   country: string;
-  country_name: string;
+  countryName: string;
   ll: ScansGetResponseMetaProcessorsGeoipDataItemGeoipLlList;
   region: string;
 }
@@ -1047,7 +1067,7 @@ export const ScansGetResponseMetaProcessorsGeoipDataItemGeoip =
     S.Struct({
       city: S.String,
       country: S.String,
-      country_name: S.String,
+      countryName: S.String.pipe(T.Body("country_name")),
       ll: ScansGetResponseMetaProcessorsGeoipDataItemGeoipLlList,
       region: S.String,
     }),
@@ -3596,15 +3616,15 @@ export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeDisallowLi
   ) as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeDisallowList>;
 
 export interface ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeContentSignal {
-  _ai_input_?: string;
-  _ai_train_?: string;
+  AiInput_?: string;
+  AiTrain_?: string;
   search?: string;
 }
 export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesShapeContentSignal =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      _ai_input_: S.optional(S.String.pipe(T.Body('"ai-input"'))),
-      _ai_train_: S.optional(S.String.pipe(T.Body('"ai-train"'))),
+      AiInput_: S.optional(S.String.pipe(T.Body('"ai-input"'))),
+      AiTrain_: S.optional(S.String.pipe(T.Body('"ai-train"'))),
       search: S.optional(S.String),
     }),
   ).annotate({
@@ -3692,14 +3712,14 @@ export const ScansGetResponseMetaProcessorsRobotsTxt = /*@__PURE__*/ S.suspend(
 export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem {
   id: number;
   name: string;
-  super_category_id: number;
+  superCategoryId: number;
 }
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.Number,
       name: S.String,
-      super_category_id: S.Number,
+      superCategoryId: S.Number.pipe(T.Body("super_category_id")),
     }),
   ).annotate({
     identifier:
@@ -3716,14 +3736,14 @@ export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentList =
 export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentItem {
   id: number;
   name: string;
-  super_category_id: number;
+  superCategoryId: number;
 }
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.Number,
       name: S.String,
-      super_category_id: S.Number,
+      superCategoryId: S.Number.pipe(T.Body("super_category_id")),
     }),
   ).annotate({
     identifier:
@@ -3740,14 +3760,14 @@ export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContent
 export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksItem {
   id: number;
   name: string;
-  super_category_id: number;
+  superCategoryId: number;
 }
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.Number,
       name: S.String,
-      super_category_id: S.Number,
+      superCategoryId: S.Number.pipe(T.Body("super_category_id")),
     }),
   ).annotate({
     identifier:
@@ -3782,14 +3802,14 @@ export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited =
 export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem {
   id: number;
   name: string;
-  super_category_id: number;
+  superCategoryId: number;
 }
 export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.Number,
       name: S.String,
-      super_category_id: S.Number,
+      superCategoryId: S.Number.pipe(T.Body("super_category_id")),
     }),
   ).annotate({
     identifier: "ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem",
@@ -3848,7 +3868,7 @@ export interface ScansGetResponseMetaProcessors {
   radarRank: ScansGetResponseMetaProcessorsRadarRank;
   wappa: ScansGetResponseMetaProcessorsWappa;
   agentReadiness?: ScansGetResponseMetaProcessorsAgentReadiness;
-  phishing_v2?: ScansGetResponseMetaProcessorsPhishingV2;
+  phishingV2?: ScansGetResponseMetaProcessorsPhishingV2;
   robotsTxt?: ScansGetResponseMetaProcessorsRobotsTxt;
   urlCategories?: ScansGetResponseMetaProcessorsUrlCategories;
 }
@@ -3862,7 +3882,9 @@ export const ScansGetResponseMetaProcessors = /*@__PURE__*/ S.suspend(() =>
     radarRank: ScansGetResponseMetaProcessorsRadarRank,
     wappa: ScansGetResponseMetaProcessorsWappa,
     agentReadiness: S.optional(ScansGetResponseMetaProcessorsAgentReadiness),
-    phishing_v2: S.optional(ScansGetResponseMetaProcessorsPhishingV2),
+    phishingV2: S.optional(
+      ScansGetResponseMetaProcessorsPhishingV2.pipe(T.Body("phishing_v2")),
+    ),
     robotsTxt: S.optional(ScansGetResponseMetaProcessorsRobotsTxt),
     urlCategories: S.optional(ScansGetResponseMetaProcessorsUrlCategories),
   }),
@@ -4048,7 +4070,7 @@ export const ScansGetResponseStatsIpStatsItemGeoipLlList =
 export interface ScansGetResponseStatsIpStatsItemGeoip {
   city: string;
   country: string;
-  country_name: string;
+  countryName: string;
   ll: ScansGetResponseStatsIpStatsItemGeoipLlList;
   region: string;
 }
@@ -4057,7 +4079,7 @@ export const ScansGetResponseStatsIpStatsItemGeoip = /*@__PURE__*/ S.suspend(
     S.Struct({
       city: S.String,
       country: S.String,
-      country_name: S.String,
+      countryName: S.String.pipe(T.Body("country_name")),
       ll: ScansGetResponseStatsIpStatsItemGeoipLlList,
       region: S.String,
     }),
@@ -4240,12 +4262,12 @@ export const ScansGetResponseStatsTlsStatsItemIpsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ScansGetResponseStatsTlsStatsItemIpsList>;
 
 export interface ScansGetResponseStatsTlsStatsItemProtocols {
-  _TLS_1_3___AES_128_GCM_: number;
+  TLS13AES128GCM_: number;
 }
 export const ScansGetResponseStatsTlsStatsItemProtocols =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      _TLS_1_3___AES_128_GCM_: S.Number.pipe(T.Body('"TLS 1.3 / AES_128_GCM"')),
+      TLS13AES128GCM_: S.Number.pipe(T.Body('"TLS 1.3 / AES_128_GCM"')),
     }),
   ).annotate({
     identifier: "ScansGetResponseStatsTlsStatsItemProtocols",
@@ -4322,6 +4344,7 @@ export const ScansGetResponseTaskOptionsScreenshotsResolutionsList =
   ) as any as S.Schema<ScansGetResponseTaskOptionsScreenshotsResolutionsList>;
 
 export interface ScansGetResponseTaskOptions {
+  /** Custom headers set. */
   customHeaders?: unknown;
   screenshotsResolutions?: ScansGetResponseTaskOptionsScreenshotsResolutionsList;
 }
@@ -4437,13 +4460,15 @@ export const ScansGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponse>;
 
 export interface ScansHarRequest {
-  account_id: string;
-  scan_id: string;
+  /** Account ID. */
+  accountId: string;
+  /** Scan UUID. */
+  scanId: string;
 }
 export const ScansHarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    scan_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scanId: S.String.pipe(T.Label("scan_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4551,7 +4576,7 @@ export const ScansHarResponseLogEntriesItemResponseHeadersList =
   ) as any as S.Schema<ScansHarResponseLogEntriesItemResponseHeadersList>;
 
 export interface ScansHarResponseLogEntriesItemResponse {
-  _transferSize: number;
+  TransferSize: number;
   bodySize: number;
   content: ScansHarResponseLogEntriesItemResponseContent;
   headers: ScansHarResponseLogEntriesItemResponseHeadersList;
@@ -4564,7 +4589,7 @@ export interface ScansHarResponseLogEntriesItemResponse {
 export const ScansHarResponseLogEntriesItemResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      _transferSize: S.Number,
+      TransferSize: S.Number.pipe(T.Body("_transferSize")),
       bodySize: S.Number,
       content: ScansHarResponseLogEntriesItemResponseContent,
       headers: ScansHarResponseLogEntriesItemResponseHeadersList,
@@ -4579,12 +4604,12 @@ export const ScansHarResponseLogEntriesItemResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScansHarResponseLogEntriesItemResponse>;
 
 export interface ScansHarResponseLogEntriesItem {
-  _initialPriority: string;
-  _initiator_type: string;
-  _priority: string;
-  _requestId: string;
-  _requestTime: number;
-  _resourceType: string;
+  InitialPriority: string;
+  InitiatorType: string;
+  Priority: string;
+  RequestId: string;
+  RequestTime: number;
+  ResourceType: string;
   cache: unknown;
   connection: string;
   pageref: string;
@@ -4596,12 +4621,12 @@ export interface ScansHarResponseLogEntriesItem {
 }
 export const ScansHarResponseLogEntriesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    _initialPriority: S.String,
-    _initiator_type: S.String,
-    _priority: S.String,
-    _requestId: S.String,
-    _requestTime: S.Number,
-    _resourceType: S.String,
+    InitialPriority: S.String.pipe(T.Body("_initialPriority")),
+    InitiatorType: S.String.pipe(T.Body("_initiator_type")),
+    Priority: S.String.pipe(T.Body("_priority")),
+    RequestId: S.String.pipe(T.Body("_requestId")),
+    RequestTime: S.Number.pipe(T.Body("_requestTime")),
+    ResourceType: S.String.pipe(T.Body("_resourceType")),
     cache: S.Unknown,
     connection: S.String,
     pageref: S.String,
@@ -4686,13 +4711,16 @@ export const ScansHarResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansHarResponse>;
 
 export interface ScansListRequest {
-  account_id: string;
+  /** Account ID. */
+  accountId: string;
+  /** Filter scans */
   q?: string;
+  /** Limit the number of objects in the response. */
   size?: number;
 }
 export const ScansListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     q: S.optional(S.String.pipe(T.Query())),
     size: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
@@ -4770,7 +4798,7 @@ export const ScansListResponseResultsItemVerdicts = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScansListResponseResultsItemVerdicts>;
 
 export interface ScansListResponseResultsItem {
-  _id: string;
+  Id: string;
   page: ScansListResponseResultsItemPage;
   result: string;
   stats: ScansListResponseResultsItemStats;
@@ -4779,7 +4807,7 @@ export interface ScansListResponseResultsItem {
 }
 export const ScansListResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    _id: S.String,
+    Id: S.String.pipe(T.Body("_id")),
     page: ScansListResponseResultsItemPage,
     result: S.String,
     stats: ScansListResponseResultsItemStats,
@@ -4815,14 +4843,17 @@ export type ScansScreenshotRequestResolution =
 export const ScansScreenshotRequestResolution = /*@__PURE__*/ S.String;
 
 export interface ScansScreenshotRequest {
-  account_id: string;
-  scan_id: string;
+  /** Account ID. */
+  accountId: string;
+  /** Scan UUID. */
+  scanId: string;
+  /** Target device type. */
   resolution?: ScansScreenshotRequestResolution;
 }
 export const ScansScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    scan_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scanId: S.String.pipe(T.Label("scan_id")),
     resolution: S.optional(ScansScreenshotRequestResolution.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -4842,11 +4873,12 @@ export const ScansScreenshotResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScansScreenshotResponse",
 }) as any as S.Schema<ScansScreenshotResponse>;
 
+export type ResponsesGetError = CloudflareOpError;
 /** Returns the raw response of the network request. Find the `response_id` in the `data.requests.response.hash`. */
-export const ResponsesGet: API.OperationMethod<
+export const responsesGet: API.OperationMethod<
   ResponsesGetRequest,
   ResponsesGetResponse,
-  CloudflareOpError,
+  ResponsesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ResponsesGetRequest,
@@ -4855,11 +4887,12 @@ export const ResponsesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScansBulkCreateError = CloudflareOpError;
 /** Submit URLs to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/ and take into account scans submitted in bulk have lower priority and may take longer to finish. */
-export const ScansBulkCreate: API.OperationMethod<
+export const scansBulkCreate: API.OperationMethod<
   ScansBulkCreateRequest,
   ScansBulkCreateResponse,
-  CloudflareOpError,
+  ScansBulkCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScansBulkCreateRequest,
@@ -4868,11 +4901,12 @@ export const ScansBulkCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScansCreateError = CloudflareOpError;
 /** Submit a URL to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/. */
-export const ScansCreate: API.OperationMethod<
+export const scansCreate: API.OperationMethod<
   ScansCreateRequest,
   ScansCreateResponse,
-  CloudflareOpError,
+  ScansCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScansCreateRequest,
@@ -4881,11 +4915,12 @@ export const ScansCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScansDomError = CloudflareOpError;
 /** Returns a plain text response, with the scan's DOM content as rendered by Chrome. */
-export const ScansDom: API.OperationMethod<
+export const scansDom: API.OperationMethod<
   ScansDomRequest,
   ScansDomResponse,
-  CloudflareOpError,
+  ScansDomError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScansDomRequest,
@@ -4894,11 +4929,12 @@ export const ScansDom: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScansGetError = CloudflareOpError;
 /** Get URL scan by uuid */
-export const ScansGet: API.OperationMethod<
+export const scansGet: API.OperationMethod<
   ScansGetRequest,
   ScansGetResponse,
-  CloudflareOpError,
+  ScansGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScansGetRequest,
@@ -4907,11 +4943,12 @@ export const ScansGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScansHarError = CloudflareOpError;
 /** Get a URL scan's HAR file. See HAR spec at http://www.softwareishard.com/blog/har-12-spec/. */
-export const ScansHar: API.OperationMethod<
+export const scansHar: API.OperationMethod<
   ScansHarRequest,
   ScansHarResponse,
-  CloudflareOpError,
+  ScansHarError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScansHarRequest,
@@ -4920,11 +4957,12 @@ export const ScansHar: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScansListError = CloudflareOpError;
 /** Use a subset of ElasticSearch Query syntax to filter scans. Some example queries:<br/> <br/>- 'path:"/bundles/jquery.js"': Searches for scans who requested resources with the given path.<br/>- 'page.asn:AS24940 AND hash:xxx': Websites hosted in AS24940 where a resource with the given hash was downloaded.<br/>- 'page.domain:microsoft* AND verdicts.malicious:true AND NOT page.domain:microsoft.com': malicious scans whose hostname starts with "microsoft".<br/>- 'apikey:me AND date:[2025-01 TO 2025-02]': my scans from 2025 January to 2025 February. */
-export const ScansList: API.OperationMethod<
+export const scansList: API.OperationMethod<
   ScansListRequest,
   ScansListResponse,
-  CloudflareOpError,
+  ScansListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScansListRequest,
@@ -4933,11 +4971,12 @@ export const ScansList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScansScreenshotError = CloudflareOpError;
 /** Get scan's screenshot by resolution (desktop/mobile/tablet). */
-export const ScansScreenshot: API.OperationMethod<
+export const scansScreenshot: API.OperationMethod<
   ScansScreenshotRequest,
   ScansScreenshotResponse,
-  CloudflareOpError,
+  ScansScreenshotError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScansScreenshotRequest,

@@ -557,10 +557,205 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemColo": {
+      "type": "structure",
+      "members": {
+        "city": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source colo city."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source colo name."
+          }
+        }
+      }
+    },
+    "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemError": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        },
+        "COULD_NOT_GATHER_TRACEROUTE_DATA_CODE_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Could not gather traceroute data: Code 1"
+          }
+        },
+        "COULD_NOT_GATHER_TRACEROUTE_DATA_CODE_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Could not gather traceroute data: Code 2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItemNodesItem": {
+      "type": "structure",
+      "members": {
+        "asn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "AS number associated with the node object."
+          }
+        },
+        "ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP address of the node."
+          }
+        },
+        "labels": {
+          "target": "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList",
+          "traits": {
+            "smithy.api#documentation": "Field appears if there is an additional annotation printed when the probe returns. Field also appears when running a GRE+ICMP traceroute to denote which traceroute a node comes from."
+          }
+        },
+        "max_rtt_ms": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum RTT in ms."
+          }
+        },
+        "mean_rtt_ms": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Mean RTT in ms."
+          }
+        },
+        "min_rtt_ms": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Minimum RTT in ms."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Host name of the address, this may be the same as the IP address."
+          }
+        },
+        "packet_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of packets with a response from this node."
+          }
+        },
+        "std_dev_rtt_ms": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Standard deviation of the RTTs in ms."
+          }
+        }
+      }
+    },
+    "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItemNodesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItemNodesItem"
+      }
+    },
+    "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItem": {
+      "type": "structure",
+      "members": {
+        "nodes": {
+          "target": "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItemNodesList",
+          "traits": {
+            "smithy.api#documentation": "An array of node objects."
+          }
+        },
+        "packets_lost": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of packets where no response was received."
+          }
+        },
+        "packets_sent": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of packets sent with specified TTL."
+          }
+        },
+        "packets_ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsItem"
+      }
+    },
+    "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItem": {
+      "type": "structure",
+      "members": {
+        "colo": {
+          "target": "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemColo"
+        },
+        "error": {
+          "target": "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemError",
+          "traits": {
+            "smithy.api#documentation": "Errors resulting from collecting traceroute from colo to target."
+          }
+        },
+        "hops": {
+          "target": "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItemHopsList"
+        },
+        "target_summary": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Aggregated statistics from all hops about the target."
+          }
+        },
+        "traceroute_time_ms": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Total time of traceroute in ms."
+          }
+        }
+      }
+    },
+    "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosItem"
+      }
+    },
+    "com.cloudflare.diagnostics#TraceroutesCreateResultItem": {
+      "type": "structure",
+      "members": {
+        "colos": {
+          "target": "com.cloudflare.diagnostics#TraceroutesCreateResultItemColosList"
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target hostname, IPv6, or IPv6 address."
+          }
+        }
+      }
+    },
     "com.cloudflare.diagnostics#TraceroutesCreateResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.diagnostics#TraceroutesCreateResultItem"
       }
     },
     "com.cloudflare.diagnostics#TraceroutesCreateResponse": {

@@ -66,40 +66,65 @@ export const OauthClientsCreateRequestPostLogoutRedirectUrisList =
   ) as any as S.Schema<OauthClientsCreateRequestPostLogoutRedirectUrisList>;
 
 export interface OauthClientsCreateRequest {
-  account_id: string;
-  client_name: string;
-  grant_types: OauthClientsCreateRequestGrantTypesList;
-  redirect_uris: OauthClientsCreateRequestRedirectUrisList;
-  response_types: OauthClientsCreateRequestResponseTypesList;
+  /** Account identifier tag. */
+  accountId: string;
+  /** Human-readable name of the OAuth client. */
+  clientName: string;
+  /** Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally. */
+  grantTypes: OauthClientsCreateRequestGrantTypesList;
+  /** Array of allowed redirect URIs for the client. */
+  redirectUris: OauthClientsCreateRequestRedirectUrisList;
+  /** Array of OAuth response types the client is allowed to use. */
+  responseTypes: OauthClientsCreateRequestResponseTypesList;
+  /** Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`. */
   scopes: OauthClientsCreateRequestScopesList;
-  token_endpoint_auth_method: OauthClientsCreateRequestTokenEndpointAuthMethod;
-  allowed_cors_origins?: OauthClientsCreateRequestAllowedCorsOriginsList;
-  client_uri?: string;
-  logo_uri?: string;
-  policy_uri?: string;
-  post_logout_redirect_uris?: OauthClientsCreateRequestPostLogoutRedirectUrisList;
-  tos_uri?: string;
+  /** The authentication method the client uses at the token endpoint. */
+  tokenEndpointAuthMethod: OauthClientsCreateRequestTokenEndpointAuthMethod;
+  /** Array of allowed CORS origins. */
+  allowedCorsOrigins?: OauthClientsCreateRequestAllowedCorsOriginsList;
+  /** URL of the home page of the client. */
+  clientUri?: string;
+  /** URL of the client's logo. */
+  logoUri?: string;
+  /** URL that points to a privacy policy document. */
+  policyUri?: string;
+  /** Array of allowed post-logout redirect URIs. */
+  postLogoutRedirectUris?: OauthClientsCreateRequestPostLogoutRedirectUrisList;
+  /** URL that points to a terms of service document. */
+  tosUri?: string;
 }
 export const OauthClientsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    client_name: S.String,
-    grant_types: OauthClientsCreateRequestGrantTypesList,
-    redirect_uris: OauthClientsCreateRequestRedirectUrisList,
-    response_types: OauthClientsCreateRequestResponseTypesList,
+    accountId: S.String.pipe(T.Label("account_id")),
+    clientName: S.String.pipe(T.Body("client_name")),
+    grantTypes: OauthClientsCreateRequestGrantTypesList.pipe(
+      T.Body("grant_types"),
+    ),
+    redirectUris: OauthClientsCreateRequestRedirectUrisList.pipe(
+      T.Body("redirect_uris"),
+    ),
+    responseTypes: OauthClientsCreateRequestResponseTypesList.pipe(
+      T.Body("response_types"),
+    ),
     scopes: OauthClientsCreateRequestScopesList,
-    token_endpoint_auth_method:
-      OauthClientsCreateRequestTokenEndpointAuthMethod,
-    allowed_cors_origins: S.optional(
-      OauthClientsCreateRequestAllowedCorsOriginsList,
+    tokenEndpointAuthMethod:
+      OauthClientsCreateRequestTokenEndpointAuthMethod.pipe(
+        T.Body("token_endpoint_auth_method"),
+      ),
+    allowedCorsOrigins: S.optional(
+      OauthClientsCreateRequestAllowedCorsOriginsList.pipe(
+        T.Body("allowed_cors_origins"),
+      ),
     ),
-    client_uri: S.optional(S.String),
-    logo_uri: S.optional(S.String),
-    policy_uri: S.optional(S.String),
-    post_logout_redirect_uris: S.optional(
-      OauthClientsCreateRequestPostLogoutRedirectUrisList,
+    clientUri: S.optional(S.String.pipe(T.Body("client_uri"))),
+    logoUri: S.optional(S.String.pipe(T.Body("logo_uri"))),
+    policyUri: S.optional(S.String.pipe(T.Body("policy_uri"))),
+    postLogoutRedirectUris: S.optional(
+      OauthClientsCreateRequestPostLogoutRedirectUrisList.pipe(
+        T.Body("post_logout_redirect_uris"),
+      ),
     ),
-    tos_uri: S.optional(S.String),
+    tosUri: S.optional(S.String.pipe(T.Body("tos_uri"))),
   }).pipe(
     T.Http({
       method: "POST",
@@ -133,7 +158,9 @@ export const OauthClientsCreateResponseClientUriVerificationStatus =
   /*@__PURE__*/ S.String;
 
 export interface OauthClientsCreateResponseClientUriVerification {
+  /** Current verification status for the client URI host. */
   status?: OauthClientsCreateResponseClientUriVerificationStatus;
+  /** Exact TXT record value that must be added to DNS to prove ownership of the client URI host. */
   text?: string;
 }
 export const OauthClientsCreateResponseClientUriVerification =
@@ -199,70 +226,108 @@ export const OauthClientsCreateResponseTokenEndpointAuthMethod =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface OauthClientsCreateResponse {
-  client_id: string;
+  /** The unique identifier for an OAuth client. */
+  clientId: string;
+  /** Visibility of the OAuth client. */
   visibility: OauthClientsCreateResponseVisibility;
-  allowed_cors_origins?: OauthClientsCreateResponseAllowedCorsOriginsList;
-  client_name?: string;
-  client_secret?: string;
-  client_uri?: string;
-  client_uri_verification?: OauthClientsCreateResponseClientUriVerification;
-  created_at?: string;
-  grant_types?: OauthClientsCreateResponseGrantTypesList;
-  has_rotated_secret?: boolean;
-  logo_uri?: string;
-  policy_uri?: string;
-  post_logout_redirect_uris?: OauthClientsCreateResponsePostLogoutRedirectUrisList;
-  promoted_at?: string;
-  redirect_uris?: OauthClientsCreateResponseRedirectUrisList;
-  response_types?: OauthClientsCreateResponseResponseTypesList;
+  /** Array of allowed CORS origins. */
+  allowedCorsOrigins?: OauthClientsCreateResponseAllowedCorsOriginsList;
+  /** Human-readable name of the OAuth client. */
+  clientName?: string;
+  /** The client secret. This is the only time the secret is returned in a response. */
+  clientSecret?: string;
+  /** URL of the home page of the client. */
+  clientUri?: string;
+  /** Client URI domain control verification state. */
+  clientUriVerification?: OauthClientsCreateResponseClientUriVerification;
+  /** Timestamp when the OAuth client was created. */
+  createdAt?: string;
+  /** Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally. */
+  grantTypes?: OauthClientsCreateResponseGrantTypesList;
+  /** Indicates whether the client has a rotated secret that has not yet been deleted. */
+  hasRotatedSecret?: boolean;
+  /** URL of the client's logo. */
+  logoUri?: string;
+  /** URL that points to a privacy policy document. */
+  policyUri?: string;
+  /** Array of allowed post-logout redirect URIs. */
+  postLogoutRedirectUris?: OauthClientsCreateResponsePostLogoutRedirectUrisList;
+  /** Timestamp when the OAuth client was promoted to public visibility. */
+  promotedAt?: string;
+  /** Array of allowed redirect URIs for the client. */
+  redirectUris?: OauthClientsCreateResponseRedirectUrisList;
+  /** Array of OAuth response types the client is allowed to use. */
+  responseTypes?: OauthClientsCreateResponseResponseTypesList;
+  /** Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`. */
   scopes?: OauthClientsCreateResponseScopesList;
-  token_endpoint_auth_method?: OauthClientsCreateResponseTokenEndpointAuthMethod;
-  tos_uri?: string;
-  updated_at?: string;
+  /** The authentication method the client uses at the token endpoint. */
+  tokenEndpointAuthMethod?: OauthClientsCreateResponseTokenEndpointAuthMethod;
+  /** URL that points to a terms of service document. */
+  tosUri?: string;
+  /** Timestamp when the OAuth client was last updated. */
+  updatedAt?: string;
 }
 export const OauthClientsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    client_id: S.String,
+    clientId: S.String.pipe(T.Body("client_id")),
     visibility: OauthClientsCreateResponseVisibility,
-    allowed_cors_origins: S.optional(
-      OauthClientsCreateResponseAllowedCorsOriginsList,
+    allowedCorsOrigins: S.optional(
+      OauthClientsCreateResponseAllowedCorsOriginsList.pipe(
+        T.Body("allowed_cors_origins"),
+      ),
     ),
-    client_name: S.optional(S.String),
-    client_secret: S.optional(S.String),
-    client_uri: S.optional(S.String),
-    client_uri_verification: S.optional(
-      OauthClientsCreateResponseClientUriVerification,
+    clientName: S.optional(S.String.pipe(T.Body("client_name"))),
+    clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
+    clientUri: S.optional(S.String.pipe(T.Body("client_uri"))),
+    clientUriVerification: S.optional(
+      OauthClientsCreateResponseClientUriVerification.pipe(
+        T.Body("client_uri_verification"),
+      ),
     ),
-    created_at: S.optional(S.String),
-    grant_types: S.optional(OauthClientsCreateResponseGrantTypesList),
-    has_rotated_secret: S.optional(S.Boolean),
-    logo_uri: S.optional(S.String),
-    policy_uri: S.optional(S.String),
-    post_logout_redirect_uris: S.optional(
-      OauthClientsCreateResponsePostLogoutRedirectUrisList,
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    grantTypes: S.optional(
+      OauthClientsCreateResponseGrantTypesList.pipe(T.Body("grant_types")),
     ),
-    promoted_at: S.optional(S.String),
-    redirect_uris: S.optional(OauthClientsCreateResponseRedirectUrisList),
-    response_types: S.optional(OauthClientsCreateResponseResponseTypesList),
+    hasRotatedSecret: S.optional(S.Boolean.pipe(T.Body("has_rotated_secret"))),
+    logoUri: S.optional(S.String.pipe(T.Body("logo_uri"))),
+    policyUri: S.optional(S.String.pipe(T.Body("policy_uri"))),
+    postLogoutRedirectUris: S.optional(
+      OauthClientsCreateResponsePostLogoutRedirectUrisList.pipe(
+        T.Body("post_logout_redirect_uris"),
+      ),
+    ),
+    promotedAt: S.optional(S.String.pipe(T.Body("promoted_at"))),
+    redirectUris: S.optional(
+      OauthClientsCreateResponseRedirectUrisList.pipe(T.Body("redirect_uris")),
+    ),
+    responseTypes: S.optional(
+      OauthClientsCreateResponseResponseTypesList.pipe(
+        T.Body("response_types"),
+      ),
+    ),
     scopes: S.optional(OauthClientsCreateResponseScopesList),
-    token_endpoint_auth_method: S.optional(
-      OauthClientsCreateResponseTokenEndpointAuthMethod,
+    tokenEndpointAuthMethod: S.optional(
+      OauthClientsCreateResponseTokenEndpointAuthMethod.pipe(
+        T.Body("token_endpoint_auth_method"),
+      ),
     ),
-    tos_uri: S.optional(S.String),
-    updated_at: S.optional(S.String),
+    tosUri: S.optional(S.String.pipe(T.Body("tos_uri"))),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
   }),
 ).annotate({
   identifier: "OauthClientsCreateResponse",
 }) as any as S.Schema<OauthClientsCreateResponse>;
 
 export interface OauthClientsDeleteRequest {
-  account_id: string;
-  oauth_client_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** The unique identifier for an OAuth client. */
+  oauthClientId: string;
 }
 export const OauthClientsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    oauth_client_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    oauthClientId: S.String.pipe(T.Label("oauth_client_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -276,6 +341,7 @@ export const OauthClientsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface OauthClientsDeleteResponse {
+  /** Identifier */
   id: string;
 }
 export const OauthClientsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -287,14 +353,16 @@ export const OauthClientsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OauthClientsDeleteResponse>;
 
 export interface OauthClientsDeleteRotatedSecretRequest {
-  account_id: string;
-  oauth_client_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** The unique identifier for an OAuth client. */
+  oauthClientId: string;
 }
 export const OauthClientsDeleteRotatedSecretRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      oauth_client_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      oauthClientId: S.String.pipe(T.Label("oauth_client_id")),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -308,6 +376,7 @@ export const OauthClientsDeleteRotatedSecretRequest = /*@__PURE__*/ S.suspend(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface OauthClientsDeleteRotatedSecretResponse {
+  /** Identifier */
   id: string;
 }
 export const OauthClientsDeleteRotatedSecretResponse = /*@__PURE__*/ S.suspend(
@@ -320,13 +389,15 @@ export const OauthClientsDeleteRotatedSecretResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OauthClientsDeleteRotatedSecretResponse>;
 
 export interface OauthClientsGetRequest {
-  account_id: string;
-  oauth_client_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** The unique identifier for an OAuth client. */
+  oauthClientId: string;
 }
 export const OauthClientsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    oauth_client_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    oauthClientId: S.String.pipe(T.Label("oauth_client_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -360,7 +431,9 @@ export const OauthClientsGetResponseClientUriVerificationStatus =
   /*@__PURE__*/ S.String;
 
 export interface OauthClientsGetResponseClientUriVerification {
+  /** Current verification status for the client URI host. */
   status?: OauthClientsGetResponseClientUriVerificationStatus;
+  /** Exact TXT record value that must be added to DNS to prove ownership of the client URI host. */
   text?: string;
 }
 export const OauthClientsGetResponseClientUriVerification =
@@ -424,66 +497,100 @@ export const OauthClientsGetResponseTokenEndpointAuthMethod =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface OauthClientsGetResponse {
-  client_id: string;
+  /** The unique identifier for an OAuth client. */
+  clientId: string;
+  /** Visibility of the OAuth client. */
   visibility: OauthClientsGetResponseVisibility;
-  allowed_cors_origins?: OauthClientsGetResponseAllowedCorsOriginsList;
-  client_name?: string;
-  client_uri?: string;
-  client_uri_verification?: OauthClientsGetResponseClientUriVerification;
-  created_at?: string;
-  grant_types?: OauthClientsGetResponseGrantTypesList;
-  has_rotated_secret?: boolean;
-  logo_uri?: string;
-  policy_uri?: string;
-  post_logout_redirect_uris?: OauthClientsGetResponsePostLogoutRedirectUrisList;
-  promoted_at?: string;
-  redirect_uris?: OauthClientsGetResponseRedirectUrisList;
-  response_types?: OauthClientsGetResponseResponseTypesList;
+  /** Array of allowed CORS origins. */
+  allowedCorsOrigins?: OauthClientsGetResponseAllowedCorsOriginsList;
+  /** Human-readable name of the OAuth client. */
+  clientName?: string;
+  /** URL of the home page of the client. */
+  clientUri?: string;
+  /** Client URI domain control verification state. */
+  clientUriVerification?: OauthClientsGetResponseClientUriVerification;
+  /** Timestamp when the OAuth client was created. */
+  createdAt?: string;
+  /** Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally. */
+  grantTypes?: OauthClientsGetResponseGrantTypesList;
+  /** Indicates whether the client has a rotated secret that has not yet been deleted. */
+  hasRotatedSecret?: boolean;
+  /** URL of the client's logo. */
+  logoUri?: string;
+  /** URL that points to a privacy policy document. */
+  policyUri?: string;
+  /** Array of allowed post-logout redirect URIs. */
+  postLogoutRedirectUris?: OauthClientsGetResponsePostLogoutRedirectUrisList;
+  /** Timestamp when the OAuth client was promoted to public visibility. */
+  promotedAt?: string;
+  /** Array of allowed redirect URIs for the client. */
+  redirectUris?: OauthClientsGetResponseRedirectUrisList;
+  /** Array of OAuth response types the client is allowed to use. */
+  responseTypes?: OauthClientsGetResponseResponseTypesList;
+  /** Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`. */
   scopes?: OauthClientsGetResponseScopesList;
-  token_endpoint_auth_method?: OauthClientsGetResponseTokenEndpointAuthMethod;
-  tos_uri?: string;
-  updated_at?: string;
+  /** The authentication method the client uses at the token endpoint. */
+  tokenEndpointAuthMethod?: OauthClientsGetResponseTokenEndpointAuthMethod;
+  /** URL that points to a terms of service document. */
+  tosUri?: string;
+  /** Timestamp when the OAuth client was last updated. */
+  updatedAt?: string;
 }
 export const OauthClientsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    client_id: S.String,
+    clientId: S.String.pipe(T.Body("client_id")),
     visibility: OauthClientsGetResponseVisibility,
-    allowed_cors_origins: S.optional(
-      OauthClientsGetResponseAllowedCorsOriginsList,
+    allowedCorsOrigins: S.optional(
+      OauthClientsGetResponseAllowedCorsOriginsList.pipe(
+        T.Body("allowed_cors_origins"),
+      ),
     ),
-    client_name: S.optional(S.String),
-    client_uri: S.optional(S.String),
-    client_uri_verification: S.optional(
-      OauthClientsGetResponseClientUriVerification,
+    clientName: S.optional(S.String.pipe(T.Body("client_name"))),
+    clientUri: S.optional(S.String.pipe(T.Body("client_uri"))),
+    clientUriVerification: S.optional(
+      OauthClientsGetResponseClientUriVerification.pipe(
+        T.Body("client_uri_verification"),
+      ),
     ),
-    created_at: S.optional(S.String),
-    grant_types: S.optional(OauthClientsGetResponseGrantTypesList),
-    has_rotated_secret: S.optional(S.Boolean),
-    logo_uri: S.optional(S.String),
-    policy_uri: S.optional(S.String),
-    post_logout_redirect_uris: S.optional(
-      OauthClientsGetResponsePostLogoutRedirectUrisList,
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    grantTypes: S.optional(
+      OauthClientsGetResponseGrantTypesList.pipe(T.Body("grant_types")),
     ),
-    promoted_at: S.optional(S.String),
-    redirect_uris: S.optional(OauthClientsGetResponseRedirectUrisList),
-    response_types: S.optional(OauthClientsGetResponseResponseTypesList),
+    hasRotatedSecret: S.optional(S.Boolean.pipe(T.Body("has_rotated_secret"))),
+    logoUri: S.optional(S.String.pipe(T.Body("logo_uri"))),
+    policyUri: S.optional(S.String.pipe(T.Body("policy_uri"))),
+    postLogoutRedirectUris: S.optional(
+      OauthClientsGetResponsePostLogoutRedirectUrisList.pipe(
+        T.Body("post_logout_redirect_uris"),
+      ),
+    ),
+    promotedAt: S.optional(S.String.pipe(T.Body("promoted_at"))),
+    redirectUris: S.optional(
+      OauthClientsGetResponseRedirectUrisList.pipe(T.Body("redirect_uris")),
+    ),
+    responseTypes: S.optional(
+      OauthClientsGetResponseResponseTypesList.pipe(T.Body("response_types")),
+    ),
     scopes: S.optional(OauthClientsGetResponseScopesList),
-    token_endpoint_auth_method: S.optional(
-      OauthClientsGetResponseTokenEndpointAuthMethod,
+    tokenEndpointAuthMethod: S.optional(
+      OauthClientsGetResponseTokenEndpointAuthMethod.pipe(
+        T.Body("token_endpoint_auth_method"),
+      ),
     ),
-    tos_uri: S.optional(S.String),
-    updated_at: S.optional(S.String),
+    tosUri: S.optional(S.String.pipe(T.Body("tos_uri"))),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
   }),
 ).annotate({
   identifier: "OauthClientsGetResponse",
 }) as any as S.Schema<OauthClientsGetResponse>;
 
 export interface OauthClientsListRequest {
-  account_id: string;
+  /** Account identifier tag. */
+  accountId: string;
 }
 export const OauthClientsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -517,7 +624,9 @@ export const OauthClientsListResultItemClientUriVerificationStatus =
   /*@__PURE__*/ S.String;
 
 export interface OauthClientsListResultItemClientUriVerification {
+  /** Current verification status for the client URI host. */
   status?: OauthClientsListResultItemClientUriVerificationStatus;
+  /** Exact TXT record value that must be added to DNS to prove ownership of the client URI host. */
   text?: string;
 }
 export const OauthClientsListResultItemClientUriVerification =
@@ -582,55 +691,90 @@ export const OauthClientsListResultItemTokenEndpointAuthMethod =
   /*@__PURE__*/ S.String;
 
 export interface OauthClientsListResultItem {
-  client_id: string;
+  /** The unique identifier for an OAuth client. */
+  clientId: string;
+  /** Visibility of the OAuth client. */
   visibility: OauthClientsListResultItemVisibility;
-  allowed_cors_origins?: OauthClientsListResultItemAllowedCorsOriginsList;
-  client_name?: string;
-  client_uri?: string;
-  client_uri_verification?: OauthClientsListResultItemClientUriVerification;
-  created_at?: string;
-  grant_types?: OauthClientsListResultItemGrantTypesList;
-  has_rotated_secret?: boolean;
-  logo_uri?: string;
-  policy_uri?: string;
-  post_logout_redirect_uris?: OauthClientsListResultItemPostLogoutRedirectUrisList;
-  promoted_at?: string;
-  redirect_uris?: OauthClientsListResultItemRedirectUrisList;
-  response_types?: OauthClientsListResultItemResponseTypesList;
+  /** Array of allowed CORS origins. */
+  allowedCorsOrigins?: OauthClientsListResultItemAllowedCorsOriginsList;
+  /** Human-readable name of the OAuth client. */
+  clientName?: string;
+  /** URL of the home page of the client. */
+  clientUri?: string;
+  /** Client URI domain control verification state. */
+  clientUriVerification?: OauthClientsListResultItemClientUriVerification;
+  /** Timestamp when the OAuth client was created. */
+  createdAt?: string;
+  /** Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally. */
+  grantTypes?: OauthClientsListResultItemGrantTypesList;
+  /** Indicates whether the client has a rotated secret that has not yet been deleted. */
+  hasRotatedSecret?: boolean;
+  /** URL of the client's logo. */
+  logoUri?: string;
+  /** URL that points to a privacy policy document. */
+  policyUri?: string;
+  /** Array of allowed post-logout redirect URIs. */
+  postLogoutRedirectUris?: OauthClientsListResultItemPostLogoutRedirectUrisList;
+  /** Timestamp when the OAuth client was promoted to public visibility. */
+  promotedAt?: string;
+  /** Array of allowed redirect URIs for the client. */
+  redirectUris?: OauthClientsListResultItemRedirectUrisList;
+  /** Array of OAuth response types the client is allowed to use. */
+  responseTypes?: OauthClientsListResultItemResponseTypesList;
+  /** Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`. */
   scopes?: OauthClientsListResultItemScopesList;
-  token_endpoint_auth_method?: OauthClientsListResultItemTokenEndpointAuthMethod;
-  tos_uri?: string;
-  updated_at?: string;
+  /** The authentication method the client uses at the token endpoint. */
+  tokenEndpointAuthMethod?: OauthClientsListResultItemTokenEndpointAuthMethod;
+  /** URL that points to a terms of service document. */
+  tosUri?: string;
+  /** Timestamp when the OAuth client was last updated. */
+  updatedAt?: string;
 }
 export const OauthClientsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    client_id: S.String,
+    clientId: S.String.pipe(T.Body("client_id")),
     visibility: OauthClientsListResultItemVisibility,
-    allowed_cors_origins: S.optional(
-      OauthClientsListResultItemAllowedCorsOriginsList,
+    allowedCorsOrigins: S.optional(
+      OauthClientsListResultItemAllowedCorsOriginsList.pipe(
+        T.Body("allowed_cors_origins"),
+      ),
     ),
-    client_name: S.optional(S.String),
-    client_uri: S.optional(S.String),
-    client_uri_verification: S.optional(
-      OauthClientsListResultItemClientUriVerification,
+    clientName: S.optional(S.String.pipe(T.Body("client_name"))),
+    clientUri: S.optional(S.String.pipe(T.Body("client_uri"))),
+    clientUriVerification: S.optional(
+      OauthClientsListResultItemClientUriVerification.pipe(
+        T.Body("client_uri_verification"),
+      ),
     ),
-    created_at: S.optional(S.String),
-    grant_types: S.optional(OauthClientsListResultItemGrantTypesList),
-    has_rotated_secret: S.optional(S.Boolean),
-    logo_uri: S.optional(S.String),
-    policy_uri: S.optional(S.String),
-    post_logout_redirect_uris: S.optional(
-      OauthClientsListResultItemPostLogoutRedirectUrisList,
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    grantTypes: S.optional(
+      OauthClientsListResultItemGrantTypesList.pipe(T.Body("grant_types")),
     ),
-    promoted_at: S.optional(S.String),
-    redirect_uris: S.optional(OauthClientsListResultItemRedirectUrisList),
-    response_types: S.optional(OauthClientsListResultItemResponseTypesList),
+    hasRotatedSecret: S.optional(S.Boolean.pipe(T.Body("has_rotated_secret"))),
+    logoUri: S.optional(S.String.pipe(T.Body("logo_uri"))),
+    policyUri: S.optional(S.String.pipe(T.Body("policy_uri"))),
+    postLogoutRedirectUris: S.optional(
+      OauthClientsListResultItemPostLogoutRedirectUrisList.pipe(
+        T.Body("post_logout_redirect_uris"),
+      ),
+    ),
+    promotedAt: S.optional(S.String.pipe(T.Body("promoted_at"))),
+    redirectUris: S.optional(
+      OauthClientsListResultItemRedirectUrisList.pipe(T.Body("redirect_uris")),
+    ),
+    responseTypes: S.optional(
+      OauthClientsListResultItemResponseTypesList.pipe(
+        T.Body("response_types"),
+      ),
+    ),
     scopes: S.optional(OauthClientsListResultItemScopesList),
-    token_endpoint_auth_method: S.optional(
-      OauthClientsListResultItemTokenEndpointAuthMethod,
+    tokenEndpointAuthMethod: S.optional(
+      OauthClientsListResultItemTokenEndpointAuthMethod.pipe(
+        T.Body("token_endpoint_auth_method"),
+      ),
     ),
-    tos_uri: S.optional(S.String),
-    updated_at: S.optional(S.String),
+    tosUri: S.optional(S.String.pipe(T.Body("tos_uri"))),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
   }),
 ).annotate({
   identifier: "OauthClientsListResultItem",
@@ -642,6 +786,7 @@ export const OauthClientsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<OauthClientsListResultList>;
 
 export interface OauthClientsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: OauthClientsListResultList;
 }
 export const OauthClientsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -653,13 +798,15 @@ export const OauthClientsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OauthClientsListResponse>;
 
 export interface OauthClientsRotateSecretRequest {
-  account_id: string;
-  oauth_client_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** The unique identifier for an OAuth client. */
+  oauthClientId: string;
 }
 export const OauthClientsRotateSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    oauth_client_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    oauthClientId: S.String.pipe(T.Label("oauth_client_id")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -673,11 +820,12 @@ export const OauthClientsRotateSecretRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface OauthClientsRotateSecretResponse {
-  client_secret?: string;
+  /** The new client secret. */
+  clientSecret?: string;
 }
 export const OauthClientsRotateSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    client_secret: S.optional(S.String),
+    clientSecret: S.optional(S.String.pipe(T.Body("client_secret"))),
   }),
 ).annotate({
   identifier: "OauthClientsRotateSecretResponse",
@@ -743,44 +891,71 @@ export type OauthClientsUpdateRequestVisibility = "public" | (string & {});
 export const OauthClientsUpdateRequestVisibility = /*@__PURE__*/ S.String;
 
 export interface OauthClientsUpdateRequest {
-  account_id: string;
-  oauth_client_id: string;
-  allowed_cors_origins?: OauthClientsUpdateRequestAllowedCorsOriginsList;
-  client_name?: string;
-  client_uri?: string;
-  grant_types?: OauthClientsUpdateRequestGrantTypesList;
-  logo_uri?: string;
-  policy_uri?: string;
-  post_logout_redirect_uris?: OauthClientsUpdateRequestPostLogoutRedirectUrisList;
-  redirect_uris?: OauthClientsUpdateRequestRedirectUrisList;
-  response_types?: OauthClientsUpdateRequestResponseTypesList;
+  /** Account identifier tag. */
+  accountId: string;
+  /** The unique identifier for an OAuth client. */
+  oauthClientId: string;
+  /** Array of allowed CORS origins. */
+  allowedCorsOrigins?: OauthClientsUpdateRequestAllowedCorsOriginsList;
+  /** Human-readable name of the OAuth client. */
+  clientName?: string;
+  /** URL of the home page of the client. */
+  clientUri?: string;
+  /** Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally. */
+  grantTypes?: OauthClientsUpdateRequestGrantTypesList;
+  /** URL of the client's logo. */
+  logoUri?: string;
+  /** URL that points to a privacy policy document. */
+  policyUri?: string;
+  /** Array of allowed post-logout redirect URIs. */
+  postLogoutRedirectUris?: OauthClientsUpdateRequestPostLogoutRedirectUrisList;
+  /** Array of allowed redirect URIs for the client. */
+  redirectUris?: OauthClientsUpdateRequestRedirectUrisList;
+  /** Array of OAuth response types the client is allowed to use. */
+  responseTypes?: OauthClientsUpdateRequestResponseTypesList;
+  /** Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`. */
   scopes?: OauthClientsUpdateRequestScopesList;
-  token_endpoint_auth_method?: OauthClientsUpdateRequestTokenEndpointAuthMethod;
-  tos_uri?: string;
+  /** The authentication method the client uses at the token endpoint. */
+  tokenEndpointAuthMethod?: OauthClientsUpdateRequestTokenEndpointAuthMethod;
+  /** URL that points to a terms of service document. */
+  tosUri?: string;
+  /** Promote the OAuth client from private to public visibility. Only `public` is accepted; demotion to `private` is not supported. Promotion requires a non-empty client name, logo URI, verified client URI host, and at least one non-identity scope. */
   visibility?: OauthClientsUpdateRequestVisibility;
 }
 export const OauthClientsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    oauth_client_id: S.String.pipe(T.Label()),
-    allowed_cors_origins: S.optional(
-      OauthClientsUpdateRequestAllowedCorsOriginsList,
+    accountId: S.String.pipe(T.Label("account_id")),
+    oauthClientId: S.String.pipe(T.Label("oauth_client_id")),
+    allowedCorsOrigins: S.optional(
+      OauthClientsUpdateRequestAllowedCorsOriginsList.pipe(
+        T.Body("allowed_cors_origins"),
+      ),
     ),
-    client_name: S.optional(S.String),
-    client_uri: S.optional(S.String),
-    grant_types: S.optional(OauthClientsUpdateRequestGrantTypesList),
-    logo_uri: S.optional(S.String),
-    policy_uri: S.optional(S.String),
-    post_logout_redirect_uris: S.optional(
-      OauthClientsUpdateRequestPostLogoutRedirectUrisList,
+    clientName: S.optional(S.String.pipe(T.Body("client_name"))),
+    clientUri: S.optional(S.String.pipe(T.Body("client_uri"))),
+    grantTypes: S.optional(
+      OauthClientsUpdateRequestGrantTypesList.pipe(T.Body("grant_types")),
     ),
-    redirect_uris: S.optional(OauthClientsUpdateRequestRedirectUrisList),
-    response_types: S.optional(OauthClientsUpdateRequestResponseTypesList),
+    logoUri: S.optional(S.String.pipe(T.Body("logo_uri"))),
+    policyUri: S.optional(S.String.pipe(T.Body("policy_uri"))),
+    postLogoutRedirectUris: S.optional(
+      OauthClientsUpdateRequestPostLogoutRedirectUrisList.pipe(
+        T.Body("post_logout_redirect_uris"),
+      ),
+    ),
+    redirectUris: S.optional(
+      OauthClientsUpdateRequestRedirectUrisList.pipe(T.Body("redirect_uris")),
+    ),
+    responseTypes: S.optional(
+      OauthClientsUpdateRequestResponseTypesList.pipe(T.Body("response_types")),
+    ),
     scopes: S.optional(OauthClientsUpdateRequestScopesList),
-    token_endpoint_auth_method: S.optional(
-      OauthClientsUpdateRequestTokenEndpointAuthMethod,
+    tokenEndpointAuthMethod: S.optional(
+      OauthClientsUpdateRequestTokenEndpointAuthMethod.pipe(
+        T.Body("token_endpoint_auth_method"),
+      ),
     ),
-    tos_uri: S.optional(S.String),
+    tosUri: S.optional(S.String.pipe(T.Body("tos_uri"))),
     visibility: S.optional(OauthClientsUpdateRequestVisibility),
   }).pipe(
     T.Http({
@@ -815,7 +990,9 @@ export const OauthClientsUpdateResponseClientUriVerificationStatus =
   /*@__PURE__*/ S.String;
 
 export interface OauthClientsUpdateResponseClientUriVerification {
+  /** Current verification status for the client URI host. */
   status?: OauthClientsUpdateResponseClientUriVerificationStatus;
+  /** Exact TXT record value that must be added to DNS to prove ownership of the client URI host. */
   text?: string;
 }
 export const OauthClientsUpdateResponseClientUriVerification =
@@ -881,55 +1058,90 @@ export const OauthClientsUpdateResponseTokenEndpointAuthMethod =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface OauthClientsUpdateResponse {
-  client_id: string;
+  /** The unique identifier for an OAuth client. */
+  clientId: string;
+  /** Visibility of the OAuth client. */
   visibility: OauthClientsUpdateResponseVisibility;
-  allowed_cors_origins?: OauthClientsUpdateResponseAllowedCorsOriginsList;
-  client_name?: string;
-  client_uri?: string;
-  client_uri_verification?: OauthClientsUpdateResponseClientUriVerification;
-  created_at?: string;
-  grant_types?: OauthClientsUpdateResponseGrantTypesList;
-  has_rotated_secret?: boolean;
-  logo_uri?: string;
-  policy_uri?: string;
-  post_logout_redirect_uris?: OauthClientsUpdateResponsePostLogoutRedirectUrisList;
-  promoted_at?: string;
-  redirect_uris?: OauthClientsUpdateResponseRedirectUrisList;
-  response_types?: OauthClientsUpdateResponseResponseTypesList;
+  /** Array of allowed CORS origins. */
+  allowedCorsOrigins?: OauthClientsUpdateResponseAllowedCorsOriginsList;
+  /** Human-readable name of the OAuth client. */
+  clientName?: string;
+  /** URL of the home page of the client. */
+  clientUri?: string;
+  /** Client URI domain control verification state. */
+  clientUriVerification?: OauthClientsUpdateResponseClientUriVerification;
+  /** Timestamp when the OAuth client was created. */
+  createdAt?: string;
+  /** Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally. */
+  grantTypes?: OauthClientsUpdateResponseGrantTypesList;
+  /** Indicates whether the client has a rotated secret that has not yet been deleted. */
+  hasRotatedSecret?: boolean;
+  /** URL of the client's logo. */
+  logoUri?: string;
+  /** URL that points to a privacy policy document. */
+  policyUri?: string;
+  /** Array of allowed post-logout redirect URIs. */
+  postLogoutRedirectUris?: OauthClientsUpdateResponsePostLogoutRedirectUrisList;
+  /** Timestamp when the OAuth client was promoted to public visibility. */
+  promotedAt?: string;
+  /** Array of allowed redirect URIs for the client. */
+  redirectUris?: OauthClientsUpdateResponseRedirectUrisList;
+  /** Array of OAuth response types the client is allowed to use. */
+  responseTypes?: OauthClientsUpdateResponseResponseTypesList;
+  /** Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`. */
   scopes?: OauthClientsUpdateResponseScopesList;
-  token_endpoint_auth_method?: OauthClientsUpdateResponseTokenEndpointAuthMethod;
-  tos_uri?: string;
-  updated_at?: string;
+  /** The authentication method the client uses at the token endpoint. */
+  tokenEndpointAuthMethod?: OauthClientsUpdateResponseTokenEndpointAuthMethod;
+  /** URL that points to a terms of service document. */
+  tosUri?: string;
+  /** Timestamp when the OAuth client was last updated. */
+  updatedAt?: string;
 }
 export const OauthClientsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    client_id: S.String,
+    clientId: S.String.pipe(T.Body("client_id")),
     visibility: OauthClientsUpdateResponseVisibility,
-    allowed_cors_origins: S.optional(
-      OauthClientsUpdateResponseAllowedCorsOriginsList,
+    allowedCorsOrigins: S.optional(
+      OauthClientsUpdateResponseAllowedCorsOriginsList.pipe(
+        T.Body("allowed_cors_origins"),
+      ),
     ),
-    client_name: S.optional(S.String),
-    client_uri: S.optional(S.String),
-    client_uri_verification: S.optional(
-      OauthClientsUpdateResponseClientUriVerification,
+    clientName: S.optional(S.String.pipe(T.Body("client_name"))),
+    clientUri: S.optional(S.String.pipe(T.Body("client_uri"))),
+    clientUriVerification: S.optional(
+      OauthClientsUpdateResponseClientUriVerification.pipe(
+        T.Body("client_uri_verification"),
+      ),
     ),
-    created_at: S.optional(S.String),
-    grant_types: S.optional(OauthClientsUpdateResponseGrantTypesList),
-    has_rotated_secret: S.optional(S.Boolean),
-    logo_uri: S.optional(S.String),
-    policy_uri: S.optional(S.String),
-    post_logout_redirect_uris: S.optional(
-      OauthClientsUpdateResponsePostLogoutRedirectUrisList,
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    grantTypes: S.optional(
+      OauthClientsUpdateResponseGrantTypesList.pipe(T.Body("grant_types")),
     ),
-    promoted_at: S.optional(S.String),
-    redirect_uris: S.optional(OauthClientsUpdateResponseRedirectUrisList),
-    response_types: S.optional(OauthClientsUpdateResponseResponseTypesList),
+    hasRotatedSecret: S.optional(S.Boolean.pipe(T.Body("has_rotated_secret"))),
+    logoUri: S.optional(S.String.pipe(T.Body("logo_uri"))),
+    policyUri: S.optional(S.String.pipe(T.Body("policy_uri"))),
+    postLogoutRedirectUris: S.optional(
+      OauthClientsUpdateResponsePostLogoutRedirectUrisList.pipe(
+        T.Body("post_logout_redirect_uris"),
+      ),
+    ),
+    promotedAt: S.optional(S.String.pipe(T.Body("promoted_at"))),
+    redirectUris: S.optional(
+      OauthClientsUpdateResponseRedirectUrisList.pipe(T.Body("redirect_uris")),
+    ),
+    responseTypes: S.optional(
+      OauthClientsUpdateResponseResponseTypesList.pipe(
+        T.Body("response_types"),
+      ),
+    ),
     scopes: S.optional(OauthClientsUpdateResponseScopesList),
-    token_endpoint_auth_method: S.optional(
-      OauthClientsUpdateResponseTokenEndpointAuthMethod,
+    tokenEndpointAuthMethod: S.optional(
+      OauthClientsUpdateResponseTokenEndpointAuthMethod.pipe(
+        T.Body("token_endpoint_auth_method"),
+      ),
     ),
-    tos_uri: S.optional(S.String),
-    updated_at: S.optional(S.String),
+    tosUri: S.optional(S.String.pipe(T.Body("tos_uri"))),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
   }),
 ).annotate({
   identifier: "OauthClientsUpdateResponse",
@@ -948,9 +1160,13 @@ export const OauthScopesListResultItemScopesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<OauthScopesListResultItemScopesList>;
 
 export interface OauthScopesListResultItem {
+  /** The scope label to use in the scopes array when creating or updating an OAuth client. */
   id: string;
+  /** Human-readable name of the OAuth scope. */
   name: string;
+  /** Category for grouping scopes in the UI. */
   category?: string;
+  /** The underlying resource scopes (Bach scopes) that define which resources this OAuth scope can act upon. */
   scopes?: OauthScopesListResultItemScopesList;
 }
 export const OauthScopesListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -970,6 +1186,7 @@ export const OauthScopesListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<OauthScopesListResultList>;
 
 export interface OauthScopesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: OauthScopesListResultList;
 }
 export const OauthScopesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -981,13 +1198,15 @@ export const OauthScopesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OauthScopesListResponse>;
 
 export interface PermissionGroupsGetRequest {
-  account_id: string;
-  permission_group_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** Permission Group identifier tag. */
+  permissionGroupId: string;
 }
 export const PermissionGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    permission_group_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    permissionGroupId: S.String.pipe(T.Label("permission_group_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1014,8 +1233,11 @@ export const PermissionGroupsGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PermissionGroupsGetResponse {
+  /** Identifier of the permission group. */
   id: string;
+  /** Attributes associated to the permission group. */
   meta?: PermissionGroupsGetResponseMeta;
+  /** Name of the permission group. */
   name?: string;
 }
 export const PermissionGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1029,21 +1251,27 @@ export const PermissionGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PermissionGroupsGetResponse>;
 
 export interface PermissionGroupsListRequest {
-  account_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** ID of the permission group to be fetched. */
   id?: string;
+  /** Label of the permission group to be fetched. */
   label?: string;
+  /** Name of the permission group to be fetched. */
   name?: string;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
+  /** Maximum number of results per page. */
+  perPage?: number;
 }
 export const PermissionGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
     label: S.optional(S.String.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1069,8 +1297,11 @@ export const PermissionGroupsListResultItemMeta = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PermissionGroupsListResultItemMeta>;
 
 export interface PermissionGroupsListResultItem {
+  /** Identifier of the permission group. */
   id: string;
+  /** Attributes associated to the permission group. */
   meta?: PermissionGroupsListResultItemMeta;
+  /** Name of the permission group. */
   name?: string;
 }
 export const PermissionGroupsListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -1089,6 +1320,7 @@ export const PermissionGroupsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PermissionGroupsListResultList>;
 
 export interface PermissionGroupsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PermissionGroupsListResultList;
 }
 export const PermissionGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1102,6 +1334,7 @@ export const PermissionGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PermissionGroupsListResponse>;
 
 export interface ResourceGroupsCreateRequestScopeObjectsItem {
+  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
   key: string;
 }
 export const ResourceGroupsCreateRequestScopeObjectsItem =
@@ -1121,7 +1354,9 @@ export const ResourceGroupsCreateRequestScopeObjectsList =
   ) as any as S.Schema<ResourceGroupsCreateRequestScopeObjectsList>;
 
 export interface ResourceGroupsCreateRequestScope {
+  /** This is a combination of pre-defined resource name and identifier (like Account ID etc.) */
   key: string;
+  /** A list of scope objects for additional context. The number of Scope objects should not be zero. */
   objects: ResourceGroupsCreateRequestScopeObjectsList;
 }
 export const ResourceGroupsCreateRequestScope = /*@__PURE__*/ S.suspend(() =>
@@ -1134,13 +1369,16 @@ export const ResourceGroupsCreateRequestScope = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceGroupsCreateRequestScope>;
 
 export interface ResourceGroupsCreateRequest {
-  account_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** Name of the resource group */
   name: string;
+  /** A scope is a combination of scope objects which provides additional context. */
   scope: ResourceGroupsCreateRequestScope;
 }
 export const ResourceGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     scope: ResourceGroupsCreateRequestScope,
   }).pipe(
@@ -1155,6 +1393,7 @@ export const ResourceGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceGroupsCreateRequest>;
 
 export interface ResourceGroupsCreateResponseScopeItemObjectsItem {
+  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
   key: string;
 }
 export const ResourceGroupsCreateResponseScopeItemObjectsItem =
@@ -1174,7 +1413,9 @@ export const ResourceGroupsCreateResponseScopeItemObjectsList =
   ) as any as S.Schema<ResourceGroupsCreateResponseScopeItemObjectsList>;
 
 export interface ResourceGroupsCreateResponseScopeItem {
+  /** This is a combination of pre-defined resource name and identifier (like Account ID etc.) */
   key: string;
+  /** A list of scope objects for additional context. */
   objects: ResourceGroupsCreateResponseScopeItemObjectsList;
 }
 export const ResourceGroupsCreateResponseScopeItem = /*@__PURE__*/ S.suspend(
@@ -1208,9 +1449,13 @@ export const ResourceGroupsCreateResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ResourceGroupsCreateResponse {
+  /** Identifier of the resource group. */
   id: string;
+  /** The scope associated to the resource group */
   scope: ResourceGroupsCreateResponseScopeList;
+  /** Attributes associated to the resource group. */
   meta?: ResourceGroupsCreateResponseMeta;
+  /** Name of the resource group. */
   name?: string;
 }
 export const ResourceGroupsCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1225,13 +1470,15 @@ export const ResourceGroupsCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceGroupsCreateResponse>;
 
 export interface ResourceGroupsDeleteRequest {
-  account_id: string;
-  resource_group_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** Resource Group identifier tag. */
+  resourceGroupId: string;
 }
 export const ResourceGroupsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    resource_group_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    resourceGroupId: S.String.pipe(T.Label("resource_group_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1245,6 +1492,7 @@ export const ResourceGroupsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ResourceGroupsDeleteResponse {
+  /** Identifier */
   id: string;
 }
 export const ResourceGroupsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1256,13 +1504,15 @@ export const ResourceGroupsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceGroupsDeleteResponse>;
 
 export interface ResourceGroupsGetRequest {
-  account_id: string;
-  resource_group_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** Resource Group identifier tag. */
+  resourceGroupId: string;
 }
 export const ResourceGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    resource_group_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    resourceGroupId: S.String.pipe(T.Label("resource_group_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1275,6 +1525,7 @@ export const ResourceGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceGroupsGetRequest>;
 
 export interface ResourceGroupsGetResponseScopeItemObjectsItem {
+  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
   key: string;
 }
 export const ResourceGroupsGetResponseScopeItemObjectsItem =
@@ -1294,7 +1545,9 @@ export const ResourceGroupsGetResponseScopeItemObjectsList =
   ) as any as S.Schema<ResourceGroupsGetResponseScopeItemObjectsList>;
 
 export interface ResourceGroupsGetResponseScopeItem {
+  /** This is a combination of pre-defined resource name and identifier (like Account ID etc.) */
   key: string;
+  /** A list of scope objects for additional context. */
   objects: ResourceGroupsGetResponseScopeItemObjectsList;
 }
 export const ResourceGroupsGetResponseScopeItem = /*@__PURE__*/ S.suspend(() =>
@@ -1327,9 +1580,13 @@ export const ResourceGroupsGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ResourceGroupsGetResponse {
+  /** Identifier of the resource group. */
   id: string;
+  /** The scope associated to the resource group */
   scope: ResourceGroupsGetResponseScopeList;
+  /** Attributes associated to the resource group. */
   meta?: ResourceGroupsGetResponseMeta;
+  /** Name of the resource group. */
   name?: string;
 }
 export const ResourceGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1344,13 +1601,16 @@ export const ResourceGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceGroupsGetResponse>;
 
 export interface ResourceGroupsListRequest {
-  account_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** ID of the resource group to be fetched. */
   id?: string;
+  /** Name of the resource group to be fetched. */
   name?: string;
 }
 export const ResourceGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -1365,6 +1625,7 @@ export const ResourceGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceGroupsListRequest>;
 
 export interface ResourceGroupsListResultItemScopeItemObjectsItem {
+  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
   key: string;
 }
 export const ResourceGroupsListResultItemScopeItemObjectsItem =
@@ -1384,7 +1645,9 @@ export const ResourceGroupsListResultItemScopeItemObjectsList =
   ) as any as S.Schema<ResourceGroupsListResultItemScopeItemObjectsList>;
 
 export interface ResourceGroupsListResultItemScopeItem {
+  /** This is a combination of pre-defined resource name and identifier (like Account ID etc.) */
   key: string;
+  /** A list of scope objects for additional context. */
   objects: ResourceGroupsListResultItemScopeItemObjectsList;
 }
 export const ResourceGroupsListResultItemScopeItem = /*@__PURE__*/ S.suspend(
@@ -1417,9 +1680,13 @@ export const ResourceGroupsListResultItemMeta = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceGroupsListResultItemMeta>;
 
 export interface ResourceGroupsListResultItem {
+  /** Identifier of the resource group. */
   id: string;
+  /** The scope associated to the resource group */
   scope: ResourceGroupsListResultItemScopeList;
+  /** Attributes associated to the resource group. */
   meta?: ResourceGroupsListResultItemMeta;
+  /** Name of the resource group. */
   name?: string;
 }
 export const ResourceGroupsListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -1439,6 +1706,7 @@ export const ResourceGroupsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ResourceGroupsListResultList>;
 
 export interface ResourceGroupsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ResourceGroupsListResultList;
 }
 export const ResourceGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1450,6 +1718,7 @@ export const ResourceGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceGroupsListResponse>;
 
 export interface ResourceGroupsUpdateRequestScopeObjectsItem {
+  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
   key: string;
 }
 export const ResourceGroupsUpdateRequestScopeObjectsItem =
@@ -1469,7 +1738,9 @@ export const ResourceGroupsUpdateRequestScopeObjectsList =
   ) as any as S.Schema<ResourceGroupsUpdateRequestScopeObjectsList>;
 
 export interface ResourceGroupsUpdateRequestScope {
+  /** This is a combination of pre-defined resource name and identifier (like Account ID etc.) */
   key: string;
+  /** A list of scope objects for additional context. The number of Scope objects should not be zero. */
   objects: ResourceGroupsUpdateRequestScopeObjectsList;
 }
 export const ResourceGroupsUpdateRequestScope = /*@__PURE__*/ S.suspend(() =>
@@ -1482,15 +1753,19 @@ export const ResourceGroupsUpdateRequestScope = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceGroupsUpdateRequestScope>;
 
 export interface ResourceGroupsUpdateRequest {
-  account_id: string;
-  resource_group_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** Resource Group identifier tag. */
+  resourceGroupId: string;
+  /** Name of the resource group */
   name?: string;
+  /** A scope is a combination of scope objects which provides additional context. */
   scope?: ResourceGroupsUpdateRequestScope;
 }
 export const ResourceGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    resource_group_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    resourceGroupId: S.String.pipe(T.Label("resource_group_id")),
     name: S.optional(S.String),
     scope: S.optional(ResourceGroupsUpdateRequestScope),
   }).pipe(
@@ -1505,6 +1780,7 @@ export const ResourceGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceGroupsUpdateRequest>;
 
 export interface ResourceGroupsUpdateResponseScopeItemObjectsItem {
+  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
   key: string;
 }
 export const ResourceGroupsUpdateResponseScopeItemObjectsItem =
@@ -1524,7 +1800,9 @@ export const ResourceGroupsUpdateResponseScopeItemObjectsList =
   ) as any as S.Schema<ResourceGroupsUpdateResponseScopeItemObjectsList>;
 
 export interface ResourceGroupsUpdateResponseScopeItem {
+  /** This is a combination of pre-defined resource name and identifier (like Account ID etc.) */
   key: string;
+  /** A list of scope objects for additional context. */
   objects: ResourceGroupsUpdateResponseScopeItemObjectsList;
 }
 export const ResourceGroupsUpdateResponseScopeItem = /*@__PURE__*/ S.suspend(
@@ -1558,9 +1836,13 @@ export const ResourceGroupsUpdateResponseMeta = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ResourceGroupsUpdateResponse {
+  /** Identifier of the resource group. */
   id: string;
+  /** The scope associated to the resource group */
   scope: ResourceGroupsUpdateResponseScopeList;
+  /** Attributes associated to the resource group. */
   meta?: ResourceGroupsUpdateResponseMeta;
+  /** Name of the resource group. */
   name?: string;
 }
 export const ResourceGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1575,13 +1857,15 @@ export const ResourceGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceGroupsUpdateResponse>;
 
 export interface SsoBeginVerificationRequest {
-  account_id: string;
-  sso_connector_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** SSO Connector identifier tag. */
+  ssoConnectorId: string;
 }
 export const SsoBeginVerificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    sso_connector_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    ssoConnectorId: S.String.pipe(T.Label("sso_connector_id")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1601,17 +1885,23 @@ export const SsoBeginVerificationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SsoBeginVerificationResponse>;
 
 export interface SsoCreateRequest {
-  account_id: string;
-  email_domain: string;
-  begin_verification?: boolean;
-  use_fedramp_language?: boolean;
+  /** Account identifier tag. */
+  accountId: string;
+  /** Email domain of the new SSO connector */
+  emailDomain: string;
+  /** Begin the verification process after creation */
+  beginVerification?: boolean;
+  /** Controls the display of FedRAMP language to the user during SSO login */
+  useFedrampLanguage?: boolean;
 }
 export const SsoCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    email_domain: S.String,
-    begin_verification: S.optional(S.Boolean),
-    use_fedramp_language: S.optional(S.Boolean),
+    accountId: S.String.pipe(T.Label("account_id")),
+    emailDomain: S.String.pipe(T.Body("email_domain")),
+    beginVerification: S.optional(S.Boolean.pipe(T.Body("begin_verification"))),
+    useFedrampLanguage: S.optional(
+      S.Boolean.pipe(T.Body("use_fedramp_language")),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1632,7 +1922,9 @@ export type SsoCreateResponseVerificationStatus =
 export const SsoCreateResponseVerificationStatus = /*@__PURE__*/ S.String;
 
 export interface SsoCreateResponseVerification {
+  /** DNS verification code. Add this entire string to the DNS TXT record of the email domain to validate ownership. */
   code?: string;
+  /** The status of the verification code from the verification process. */
   status?: SsoCreateResponseVerificationStatus;
 }
 export const SsoCreateResponseVerification = /*@__PURE__*/ S.suspend(() =>
@@ -1646,22 +1938,28 @@ export const SsoCreateResponseVerification = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SsoCreateResponse {
+  /** SSO Connector identifier tag. */
   id?: string;
-  created_on?: string;
-  email_domain?: string;
+  /** Timestamp for the creation of the SSO connector */
+  createdOn?: string;
+  emailDomain?: string;
   enabled?: boolean;
-  updated_on?: string;
-  use_fedramp_language?: boolean;
+  /** Timestamp for the last update of the SSO connector */
+  updatedOn?: string;
+  /** Controls the display of FedRAMP language to the user during SSO login */
+  useFedrampLanguage?: boolean;
   verification?: SsoCreateResponseVerification;
 }
 export const SsoCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    created_on: S.optional(S.String),
-    email_domain: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    emailDomain: S.optional(S.String.pipe(T.Body("email_domain"))),
     enabled: S.optional(S.Boolean),
-    updated_on: S.optional(S.String),
-    use_fedramp_language: S.optional(S.Boolean),
+    updatedOn: S.optional(S.String.pipe(T.Body("updated_on"))),
+    useFedrampLanguage: S.optional(
+      S.Boolean.pipe(T.Body("use_fedramp_language")),
+    ),
     verification: S.optional(SsoCreateResponseVerification),
   }),
 ).annotate({
@@ -1669,13 +1967,15 @@ export const SsoCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SsoCreateResponse>;
 
 export interface SsoDeleteRequest {
-  account_id: string;
-  sso_connector_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** SSO Connector identifier tag. */
+  ssoConnectorId: string;
 }
 export const SsoDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    sso_connector_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    ssoConnectorId: S.String.pipe(T.Label("sso_connector_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1689,6 +1989,7 @@ export const SsoDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SsoDeleteResponse {
+  /** Identifier */
   id: string;
 }
 export const SsoDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1700,13 +2001,15 @@ export const SsoDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SsoDeleteResponse>;
 
 export interface SsoGetRequest {
-  account_id: string;
-  sso_connector_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** SSO Connector identifier tag. */
+  ssoConnectorId: string;
 }
 export const SsoGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    sso_connector_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    ssoConnectorId: S.String.pipe(T.Label("sso_connector_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1725,7 +2028,9 @@ export type SsoGetResponseVerificationStatus =
 export const SsoGetResponseVerificationStatus = /*@__PURE__*/ S.String;
 
 export interface SsoGetResponseVerification {
+  /** DNS verification code. Add this entire string to the DNS TXT record of the email domain to validate ownership. */
   code?: string;
+  /** The status of the verification code from the verification process. */
   status?: SsoGetResponseVerificationStatus;
 }
 export const SsoGetResponseVerification = /*@__PURE__*/ S.suspend(() =>
@@ -1739,32 +2044,39 @@ export const SsoGetResponseVerification = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SsoGetResponse {
+  /** SSO Connector identifier tag. */
   id?: string;
-  created_on?: string;
-  email_domain?: string;
+  /** Timestamp for the creation of the SSO connector */
+  createdOn?: string;
+  emailDomain?: string;
   enabled?: boolean;
-  updated_on?: string;
-  use_fedramp_language?: boolean;
+  /** Timestamp for the last update of the SSO connector */
+  updatedOn?: string;
+  /** Controls the display of FedRAMP language to the user during SSO login */
+  useFedrampLanguage?: boolean;
   verification?: SsoGetResponseVerification;
 }
 export const SsoGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    created_on: S.optional(S.String),
-    email_domain: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    emailDomain: S.optional(S.String.pipe(T.Body("email_domain"))),
     enabled: S.optional(S.Boolean),
-    updated_on: S.optional(S.String),
-    use_fedramp_language: S.optional(S.Boolean),
+    updatedOn: S.optional(S.String.pipe(T.Body("updated_on"))),
+    useFedrampLanguage: S.optional(
+      S.Boolean.pipe(T.Body("use_fedramp_language")),
+    ),
     verification: S.optional(SsoGetResponseVerification),
   }),
 ).annotate({ identifier: "SsoGetResponse" }) as any as S.Schema<SsoGetResponse>;
 
 export interface SsoListRequest {
-  account_id: string;
+  /** Account identifier tag. */
+  accountId: string;
 }
 export const SsoListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1783,7 +2095,9 @@ export type SsoListResultItemVerificationStatus =
 export const SsoListResultItemVerificationStatus = /*@__PURE__*/ S.String;
 
 export interface SsoListResultItemVerification {
+  /** DNS verification code. Add this entire string to the DNS TXT record of the email domain to validate ownership. */
   code?: string;
+  /** The status of the verification code from the verification process. */
   status?: SsoListResultItemVerificationStatus;
 }
 export const SsoListResultItemVerification = /*@__PURE__*/ S.suspend(() =>
@@ -1796,22 +2110,28 @@ export const SsoListResultItemVerification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SsoListResultItemVerification>;
 
 export interface SsoListResultItem {
+  /** SSO Connector identifier tag. */
   id?: string;
-  created_on?: string;
-  email_domain?: string;
+  /** Timestamp for the creation of the SSO connector */
+  createdOn?: string;
+  emailDomain?: string;
   enabled?: boolean;
-  updated_on?: string;
-  use_fedramp_language?: boolean;
+  /** Timestamp for the last update of the SSO connector */
+  updatedOn?: string;
+  /** Controls the display of FedRAMP language to the user during SSO login */
+  useFedrampLanguage?: boolean;
   verification?: SsoListResultItemVerification;
 }
 export const SsoListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    created_on: S.optional(S.String),
-    email_domain: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    emailDomain: S.optional(S.String.pipe(T.Body("email_domain"))),
     enabled: S.optional(S.Boolean),
-    updated_on: S.optional(S.String),
-    use_fedramp_language: S.optional(S.Boolean),
+    updatedOn: S.optional(S.String.pipe(T.Body("updated_on"))),
+    useFedrampLanguage: S.optional(
+      S.Boolean.pipe(T.Body("use_fedramp_language")),
+    ),
     verification: S.optional(SsoListResultItemVerification),
   }),
 ).annotate({
@@ -1824,6 +2144,7 @@ export const SsoListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SsoListResultList>;
 
 export interface SsoListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SsoListResultList;
 }
 export const SsoListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1835,17 +2156,23 @@ export const SsoListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SsoListResponse>;
 
 export interface SsoUpdateRequest {
-  account_id: string;
-  sso_connector_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** SSO Connector identifier tag. */
+  ssoConnectorId: string;
+  /** SSO Connector enabled state */
   enabled?: boolean;
-  use_fedramp_language?: boolean;
+  /** Controls the display of FedRAMP language to the user during SSO login */
+  useFedrampLanguage?: boolean;
 }
 export const SsoUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    sso_connector_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    ssoConnectorId: S.String.pipe(T.Label("sso_connector_id")),
     enabled: S.optional(S.Boolean),
-    use_fedramp_language: S.optional(S.Boolean),
+    useFedrampLanguage: S.optional(
+      S.Boolean.pipe(T.Body("use_fedramp_language")),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1866,7 +2193,9 @@ export type SsoUpdateResponseVerificationStatus =
 export const SsoUpdateResponseVerificationStatus = /*@__PURE__*/ S.String;
 
 export interface SsoUpdateResponseVerification {
+  /** DNS verification code. Add this entire string to the DNS TXT record of the email domain to validate ownership. */
   code?: string;
+  /** The status of the verification code from the verification process. */
   status?: SsoUpdateResponseVerificationStatus;
 }
 export const SsoUpdateResponseVerification = /*@__PURE__*/ S.suspend(() =>
@@ -1880,22 +2209,28 @@ export const SsoUpdateResponseVerification = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SsoUpdateResponse {
+  /** SSO Connector identifier tag. */
   id?: string;
-  created_on?: string;
-  email_domain?: string;
+  /** Timestamp for the creation of the SSO connector */
+  createdOn?: string;
+  emailDomain?: string;
   enabled?: boolean;
-  updated_on?: string;
-  use_fedramp_language?: boolean;
+  /** Timestamp for the last update of the SSO connector */
+  updatedOn?: string;
+  /** Controls the display of FedRAMP language to the user during SSO login */
+  useFedrampLanguage?: boolean;
   verification?: SsoUpdateResponseVerification;
 }
 export const SsoUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    created_on: S.optional(S.String),
-    email_domain: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    emailDomain: S.optional(S.String.pipe(T.Body("email_domain"))),
     enabled: S.optional(S.Boolean),
-    updated_on: S.optional(S.String),
-    use_fedramp_language: S.optional(S.Boolean),
+    updatedOn: S.optional(S.String.pipe(T.Body("updated_on"))),
+    useFedrampLanguage: S.optional(
+      S.Boolean.pipe(T.Body("use_fedramp_language")),
+    ),
     verification: S.optional(SsoUpdateResponseVerification),
   }),
 ).annotate({
@@ -1909,6 +2244,7 @@ export type UserGroupsCreateRequestPoliciesItemAccess =
 export const UserGroupsCreateRequestPoliciesItemAccess = /*@__PURE__*/ S.String;
 
 export interface UserGroupsCreateRequestPoliciesItemPermissionGroupsItem {
+  /** Permission Group identifier tag. */
   id: string;
 }
 export const UserGroupsCreateRequestPoliciesItemPermissionGroupsItem =
@@ -1928,6 +2264,7 @@ export const UserGroupsCreateRequestPoliciesItemPermissionGroupsList =
   ) as any as S.Schema<UserGroupsCreateRequestPoliciesItemPermissionGroupsList>;
 
 export interface UserGroupsCreateRequestPoliciesItemResourceGroupsItem {
+  /** Resource Group identifier tag. */
   id: string;
 }
 export const UserGroupsCreateRequestPoliciesItemResourceGroupsItem =
@@ -1947,15 +2284,23 @@ export const UserGroupsCreateRequestPoliciesItemResourceGroupsList =
   ) as any as S.Schema<UserGroupsCreateRequestPoliciesItemResourceGroupsList>;
 
 export interface UserGroupsCreateRequestPoliciesItem {
+  /** Allow or deny operations against the resources. */
   access: UserGroupsCreateRequestPoliciesItemAccess;
-  permission_groups: UserGroupsCreateRequestPoliciesItemPermissionGroupsList;
-  resource_groups: UserGroupsCreateRequestPoliciesItemResourceGroupsList;
+  /** A set of permission groups that are specified to the policy. */
+  permissionGroups: UserGroupsCreateRequestPoliciesItemPermissionGroupsList;
+  /** A set of resource groups that are specified to the policy. */
+  resourceGroups: UserGroupsCreateRequestPoliciesItemResourceGroupsList;
 }
 export const UserGroupsCreateRequestPoliciesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access: UserGroupsCreateRequestPoliciesItemAccess,
-    permission_groups: UserGroupsCreateRequestPoliciesItemPermissionGroupsList,
-    resource_groups: UserGroupsCreateRequestPoliciesItemResourceGroupsList,
+    permissionGroups:
+      UserGroupsCreateRequestPoliciesItemPermissionGroupsList.pipe(
+        T.Body("permission_groups"),
+      ),
+    resourceGroups: UserGroupsCreateRequestPoliciesItemResourceGroupsList.pipe(
+      T.Body("resource_groups"),
+    ),
   }),
 ).annotate({
   identifier: "UserGroupsCreateRequestPoliciesItem",
@@ -1968,13 +2313,16 @@ export const UserGroupsCreateRequestPoliciesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UserGroupsCreateRequestPoliciesList>;
 
 export interface UserGroupsCreateRequest {
-  account_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** Name of the User group. */
   name: string;
+  /** Policies attached to the User group */
   policies?: UserGroupsCreateRequestPoliciesList;
 }
 export const UserGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     policies: S.optional(UserGroupsCreateRequestPoliciesList),
   }).pipe(
@@ -2010,8 +2358,11 @@ export const UserGroupsCreateResponsePoliciesItemPermissionGroupsItemMeta =
   }) as any as S.Schema<UserGroupsCreateResponsePoliciesItemPermissionGroupsItemMeta>;
 
 export interface UserGroupsCreateResponsePoliciesItemPermissionGroupsItem {
+  /** Identifier of the permission group. */
   id: string;
+  /** Attributes associated to the permission group. */
   meta?: UserGroupsCreateResponsePoliciesItemPermissionGroupsItemMeta;
+  /** Name of the permission group. */
   name?: string;
 }
 export const UserGroupsCreateResponsePoliciesItemPermissionGroupsItem =
@@ -2035,6 +2386,7 @@ export const UserGroupsCreateResponsePoliciesItemPermissionGroupsList =
   ) as any as S.Schema<UserGroupsCreateResponsePoliciesItemPermissionGroupsList>;
 
 export interface UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem {
+  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
   key: string;
 }
 export const UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem =
@@ -2055,7 +2407,9 @@ export const UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObje
   ) as any as S.Schema<UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList>;
 
 export interface UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItem {
+  /** This is a combination of pre-defined resource name and identifier (like Account ID etc.) */
   key: string;
+  /** A list of scope objects for additional context. */
   objects: UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList;
 }
 export const UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeItem =
@@ -2092,9 +2446,13 @@ export const UserGroupsCreateResponsePoliciesItemResourceGroupsItemMeta =
   }) as any as S.Schema<UserGroupsCreateResponsePoliciesItemResourceGroupsItemMeta>;
 
 export interface UserGroupsCreateResponsePoliciesItemResourceGroupsItem {
+  /** Identifier of the resource group. */
   id: string;
+  /** The scope associated to the resource group */
   scope: UserGroupsCreateResponsePoliciesItemResourceGroupsItemScopeList;
+  /** Attributes associated to the resource group. */
   meta?: UserGroupsCreateResponsePoliciesItemResourceGroupsItemMeta;
+  /** Name of the resource group. */
   name?: string;
 }
 export const UserGroupsCreateResponsePoliciesItemResourceGroupsItem =
@@ -2119,21 +2477,29 @@ export const UserGroupsCreateResponsePoliciesItemResourceGroupsList =
   ) as any as S.Schema<UserGroupsCreateResponsePoliciesItemResourceGroupsList>;
 
 export interface UserGroupsCreateResponsePoliciesItem {
+  /** Policy identifier. */
   id?: string;
+  /** Allow or deny operations against the resources. */
   access?: UserGroupsCreateResponsePoliciesItemAccess;
-  permission_groups?: UserGroupsCreateResponsePoliciesItemPermissionGroupsList;
-  resource_groups?: UserGroupsCreateResponsePoliciesItemResourceGroupsList;
+  /** A set of permission groups that are specified to the policy. */
+  permissionGroups?: UserGroupsCreateResponsePoliciesItemPermissionGroupsList;
+  /** A list of resource groups that the policy applies to. */
+  resourceGroups?: UserGroupsCreateResponsePoliciesItemResourceGroupsList;
 }
 export const UserGroupsCreateResponsePoliciesItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
       access: S.optional(UserGroupsCreateResponsePoliciesItemAccess),
-      permission_groups: S.optional(
-        UserGroupsCreateResponsePoliciesItemPermissionGroupsList,
+      permissionGroups: S.optional(
+        UserGroupsCreateResponsePoliciesItemPermissionGroupsList.pipe(
+          T.Body("permission_groups"),
+        ),
       ),
-      resource_groups: S.optional(
-        UserGroupsCreateResponsePoliciesItemResourceGroupsList,
+      resourceGroups: S.optional(
+        UserGroupsCreateResponsePoliciesItemResourceGroupsList.pipe(
+          T.Body("resource_groups"),
+        ),
       ),
     }),
 ).annotate({
@@ -2148,17 +2514,22 @@ export const UserGroupsCreateResponsePoliciesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UserGroupsCreateResponse {
+  /** User Group identifier tag. */
   id: string;
-  created_on: string;
-  modified_on: string;
+  /** Timestamp for the creation of the user group */
+  createdOn: string;
+  /** Last time the user group was modified. */
+  modifiedOn: string;
+  /** Name of the user group. */
   name: string;
+  /** Policies attached to the User group */
   policies?: UserGroupsCreateResponsePoliciesList;
 }
 export const UserGroupsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_on: S.String,
-    modified_on: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
     name: S.String,
     policies: S.optional(UserGroupsCreateResponsePoliciesList),
   }),
@@ -2167,13 +2538,15 @@ export const UserGroupsCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserGroupsCreateResponse>;
 
 export interface UserGroupsDeleteRequest {
-  account_id: string;
-  user_group_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** User Group identifier tag. */
+  userGroupId: string;
 }
 export const UserGroupsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    user_group_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    userGroupId: S.String.pipe(T.Label("user_group_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2187,6 +2560,7 @@ export const UserGroupsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UserGroupsDeleteResponse {
+  /** Identifier */
   id: string;
 }
 export const UserGroupsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2198,13 +2572,15 @@ export const UserGroupsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserGroupsDeleteResponse>;
 
 export interface UserGroupsGetRequest {
-  account_id: string;
-  user_group_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** User Group identifier tag. */
+  userGroupId: string;
 }
 export const UserGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    user_group_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    userGroupId: S.String.pipe(T.Label("user_group_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2237,8 +2613,11 @@ export const UserGroupsGetResponsePoliciesItemPermissionGroupsItemMeta =
   }) as any as S.Schema<UserGroupsGetResponsePoliciesItemPermissionGroupsItemMeta>;
 
 export interface UserGroupsGetResponsePoliciesItemPermissionGroupsItem {
+  /** Identifier of the permission group. */
   id: string;
+  /** Attributes associated to the permission group. */
   meta?: UserGroupsGetResponsePoliciesItemPermissionGroupsItemMeta;
+  /** Name of the permission group. */
   name?: string;
 }
 export const UserGroupsGetResponsePoliciesItemPermissionGroupsItem =
@@ -2262,6 +2641,7 @@ export const UserGroupsGetResponsePoliciesItemPermissionGroupsList =
   ) as any as S.Schema<UserGroupsGetResponsePoliciesItemPermissionGroupsList>;
 
 export interface UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem {
+  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
   key: string;
 }
 export const UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem =
@@ -2282,7 +2662,9 @@ export const UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjects
   ) as any as S.Schema<UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsList>;
 
 export interface UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItem {
+  /** This is a combination of pre-defined resource name and identifier (like Account ID etc.) */
   key: string;
+  /** A list of scope objects for additional context. */
   objects: UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItemObjectsList;
 }
 export const UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeItem =
@@ -2318,9 +2700,13 @@ export const UserGroupsGetResponsePoliciesItemResourceGroupsItemMeta =
   }) as any as S.Schema<UserGroupsGetResponsePoliciesItemResourceGroupsItemMeta>;
 
 export interface UserGroupsGetResponsePoliciesItemResourceGroupsItem {
+  /** Identifier of the resource group. */
   id: string;
+  /** The scope associated to the resource group */
   scope: UserGroupsGetResponsePoliciesItemResourceGroupsItemScopeList;
+  /** Attributes associated to the resource group. */
   meta?: UserGroupsGetResponsePoliciesItemResourceGroupsItemMeta;
+  /** Name of the resource group. */
   name?: string;
 }
 export const UserGroupsGetResponsePoliciesItemResourceGroupsItem =
@@ -2343,20 +2729,28 @@ export const UserGroupsGetResponsePoliciesItemResourceGroupsList =
   ) as any as S.Schema<UserGroupsGetResponsePoliciesItemResourceGroupsList>;
 
 export interface UserGroupsGetResponsePoliciesItem {
+  /** Policy identifier. */
   id?: string;
+  /** Allow or deny operations against the resources. */
   access?: UserGroupsGetResponsePoliciesItemAccess;
-  permission_groups?: UserGroupsGetResponsePoliciesItemPermissionGroupsList;
-  resource_groups?: UserGroupsGetResponsePoliciesItemResourceGroupsList;
+  /** A set of permission groups that are specified to the policy. */
+  permissionGroups?: UserGroupsGetResponsePoliciesItemPermissionGroupsList;
+  /** A list of resource groups that the policy applies to. */
+  resourceGroups?: UserGroupsGetResponsePoliciesItemResourceGroupsList;
 }
 export const UserGroupsGetResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     access: S.optional(UserGroupsGetResponsePoliciesItemAccess),
-    permission_groups: S.optional(
-      UserGroupsGetResponsePoliciesItemPermissionGroupsList,
+    permissionGroups: S.optional(
+      UserGroupsGetResponsePoliciesItemPermissionGroupsList.pipe(
+        T.Body("permission_groups"),
+      ),
     ),
-    resource_groups: S.optional(
-      UserGroupsGetResponsePoliciesItemResourceGroupsList,
+    resourceGroups: S.optional(
+      UserGroupsGetResponsePoliciesItemResourceGroupsList.pipe(
+        T.Body("resource_groups"),
+      ),
     ),
   }),
 ).annotate({
@@ -2371,17 +2765,22 @@ export const UserGroupsGetResponsePoliciesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UserGroupsGetResponse {
+  /** User Group identifier tag. */
   id: string;
-  created_on: string;
-  modified_on: string;
+  /** Timestamp for the creation of the user group */
+  createdOn: string;
+  /** Last time the user group was modified. */
+  modifiedOn: string;
+  /** Name of the user group. */
   name: string;
+  /** Policies attached to the User group */
   policies?: UserGroupsGetResponsePoliciesList;
 }
 export const UserGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_on: S.String,
-    modified_on: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
     name: S.String,
     policies: S.optional(UserGroupsGetResponsePoliciesList),
   }),
@@ -2393,23 +2792,30 @@ export type UserGroupsListRequestDirection = "asc" | "desc" | (string & {});
 export const UserGroupsListRequestDirection = /*@__PURE__*/ S.String;
 
 export interface UserGroupsListRequest {
-  account_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** ID of the user group to be fetched. */
   id?: string;
+  /** The sort order of returned user groups by name (ascending or descending). */
   direction?: UserGroupsListRequestDirection;
+  /** A string used for searching for user groups containing that substring. */
   fuzzyName?: string;
+  /** Name of the user group to be fetched. */
   name?: string;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
+  /** Maximum number of results per page. */
+  perPage?: number;
 }
 export const UserGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
     direction: S.optional(UserGroupsListRequestDirection.pipe(T.Query())),
     fuzzyName: S.optional(S.String.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2443,8 +2849,11 @@ export const UserGroupsListResultItemPoliciesItemPermissionGroupsItemMeta =
   }) as any as S.Schema<UserGroupsListResultItemPoliciesItemPermissionGroupsItemMeta>;
 
 export interface UserGroupsListResultItemPoliciesItemPermissionGroupsItem {
+  /** Identifier of the permission group. */
   id: string;
+  /** Attributes associated to the permission group. */
   meta?: UserGroupsListResultItemPoliciesItemPermissionGroupsItemMeta;
+  /** Name of the permission group. */
   name?: string;
 }
 export const UserGroupsListResultItemPoliciesItemPermissionGroupsItem =
@@ -2468,6 +2877,7 @@ export const UserGroupsListResultItemPoliciesItemPermissionGroupsList =
   ) as any as S.Schema<UserGroupsListResultItemPoliciesItemPermissionGroupsList>;
 
 export interface UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsItem {
+  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
   key: string;
 }
 export const UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsItem =
@@ -2488,7 +2898,9 @@ export const UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObje
   ) as any as S.Schema<UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsList>;
 
 export interface UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItem {
+  /** This is a combination of pre-defined resource name and identifier (like Account ID etc.) */
   key: string;
+  /** A list of scope objects for additional context. */
   objects: UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItemObjectsList;
 }
 export const UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeItem =
@@ -2525,9 +2937,13 @@ export const UserGroupsListResultItemPoliciesItemResourceGroupsItemMeta =
   }) as any as S.Schema<UserGroupsListResultItemPoliciesItemResourceGroupsItemMeta>;
 
 export interface UserGroupsListResultItemPoliciesItemResourceGroupsItem {
+  /** Identifier of the resource group. */
   id: string;
+  /** The scope associated to the resource group */
   scope: UserGroupsListResultItemPoliciesItemResourceGroupsItemScopeList;
+  /** Attributes associated to the resource group. */
   meta?: UserGroupsListResultItemPoliciesItemResourceGroupsItemMeta;
+  /** Name of the resource group. */
   name?: string;
 }
 export const UserGroupsListResultItemPoliciesItemResourceGroupsItem =
@@ -2552,21 +2968,29 @@ export const UserGroupsListResultItemPoliciesItemResourceGroupsList =
   ) as any as S.Schema<UserGroupsListResultItemPoliciesItemResourceGroupsList>;
 
 export interface UserGroupsListResultItemPoliciesItem {
+  /** Policy identifier. */
   id?: string;
+  /** Allow or deny operations against the resources. */
   access?: UserGroupsListResultItemPoliciesItemAccess;
-  permission_groups?: UserGroupsListResultItemPoliciesItemPermissionGroupsList;
-  resource_groups?: UserGroupsListResultItemPoliciesItemResourceGroupsList;
+  /** A set of permission groups that are specified to the policy. */
+  permissionGroups?: UserGroupsListResultItemPoliciesItemPermissionGroupsList;
+  /** A list of resource groups that the policy applies to. */
+  resourceGroups?: UserGroupsListResultItemPoliciesItemResourceGroupsList;
 }
 export const UserGroupsListResultItemPoliciesItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
       access: S.optional(UserGroupsListResultItemPoliciesItemAccess),
-      permission_groups: S.optional(
-        UserGroupsListResultItemPoliciesItemPermissionGroupsList,
+      permissionGroups: S.optional(
+        UserGroupsListResultItemPoliciesItemPermissionGroupsList.pipe(
+          T.Body("permission_groups"),
+        ),
       ),
-      resource_groups: S.optional(
-        UserGroupsListResultItemPoliciesItemResourceGroupsList,
+      resourceGroups: S.optional(
+        UserGroupsListResultItemPoliciesItemResourceGroupsList.pipe(
+          T.Body("resource_groups"),
+        ),
       ),
     }),
 ).annotate({
@@ -2580,17 +3004,22 @@ export const UserGroupsListResultItemPoliciesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UserGroupsListResultItemPoliciesList>;
 
 export interface UserGroupsListResultItem {
+  /** User Group identifier tag. */
   id: string;
-  created_on: string;
-  modified_on: string;
+  /** Timestamp for the creation of the user group */
+  createdOn: string;
+  /** Last time the user group was modified. */
+  modifiedOn: string;
+  /** Name of the user group. */
   name: string;
+  /** Policies attached to the User group */
   policies?: UserGroupsListResultItemPoliciesList;
 }
 export const UserGroupsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_on: S.String,
-    modified_on: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
     name: S.String,
     policies: S.optional(UserGroupsListResultItemPoliciesList),
   }),
@@ -2604,6 +3033,7 @@ export const UserGroupsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UserGroupsListResultList>;
 
 export interface UserGroupsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: UserGroupsListResultList;
 }
 export const UserGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2615,6 +3045,7 @@ export const UserGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserGroupsListResponse>;
 
 export interface UserGroupsMembersCreateRequestMembersItem {
+  /** The identifier of an existing account Member. */
   id: string;
 }
 export const UserGroupsMembersCreateRequestMembersItem =
@@ -2633,14 +3064,16 @@ export const UserGroupsMembersCreateRequestMembersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UserGroupsMembersCreateRequestMembersList>;
 
 export interface UserGroupsMembersCreateRequest {
-  account_id: string;
-  user_group_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** User Group identifier tag. */
+  userGroupId: string;
   members: UserGroupsMembersCreateRequestMembersList;
 }
 export const UserGroupsMembersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    user_group_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    userGroupId: S.String.pipe(T.Label("user_group_id")),
     members: UserGroupsMembersCreateRequestMembersList,
   }).pipe(
     T.Http({
@@ -2660,8 +3093,11 @@ export type UserGroupsMembersCreateResultItemStatus =
 export const UserGroupsMembersCreateResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface UserGroupsMembersCreateResultItem {
+  /** Account member identifier. */
   id: string;
+  /** The contact email address of the user. */
   email?: string;
+  /** The member's status in the account. */
   status?: UserGroupsMembersCreateResultItemStatus;
 }
 export const UserGroupsMembersCreateResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -2681,6 +3117,7 @@ export const UserGroupsMembersCreateResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UserGroupsMembersCreateResultList>;
 
 export interface UserGroupsMembersCreateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: UserGroupsMembersCreateResultList;
 }
 export const UserGroupsMembersCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2694,15 +3131,18 @@ export const UserGroupsMembersCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserGroupsMembersCreateResponse>;
 
 export interface UserGroupsMembersDeleteRequest {
-  account_id: string;
-  user_group_id: string;
-  member_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** User Group identifier tag. */
+  userGroupId: string;
+  /** The identifier of an existing account Member. */
+  memberId: string;
 }
 export const UserGroupsMembersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    user_group_id: S.String.pipe(T.Label()),
-    member_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    userGroupId: S.String.pipe(T.Label("user_group_id")),
+    memberId: S.String.pipe(T.Label("member_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2722,8 +3162,11 @@ export const UserGroupsMembersDeleteResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UserGroupsMembersDeleteResponse {
+  /** Account member identifier. */
   id: string;
+  /** The contact email address of the user. */
   email?: string;
+  /** The member's status in the account. */
   status?: UserGroupsMembersDeleteResponseStatus;
 }
 export const UserGroupsMembersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2737,15 +3180,18 @@ export const UserGroupsMembersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserGroupsMembersDeleteResponse>;
 
 export interface UserGroupsMembersGetRequest {
-  account_id: string;
-  user_group_id: string;
-  member_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** User Group identifier tag. */
+  userGroupId: string;
+  /** The identifier of an existing account Member. */
+  memberId: string;
 }
 export const UserGroupsMembersGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    user_group_id: S.String.pipe(T.Label()),
-    member_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    userGroupId: S.String.pipe(T.Label("user_group_id")),
+    memberId: S.String.pipe(T.Label("member_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2764,17 +3210,21 @@ export type UserGroupsMembersGetResponseStatus =
 export const UserGroupsMembersGetResponseStatus = /*@__PURE__*/ S.String;
 
 export interface UserGroupsMembersGetResponseUser {
+  /** User identifier tag. */
   id?: string;
+  /** The contact email address of the user. */
   email?: string;
-  first_name?: string;
-  last_name?: string;
+  /** User's first name. */
+  firstName?: string;
+  /** User's last name. */
+  lastName?: string;
 }
 export const UserGroupsMembersGetResponseUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     email: S.optional(S.String),
-    first_name: S.optional(S.String),
-    last_name: S.optional(S.String),
+    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
+    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
   }),
 ).annotate({
   identifier: "UserGroupsMembersGetResponseUser",
@@ -2782,16 +3232,21 @@ export const UserGroupsMembersGetResponseUser = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UserGroupsMembersGetResponse {
+  /** Account member identifier. */
   id: string;
-  created_at?: string;
+  /** When the member was added to the user group. */
+  createdAt?: string;
+  /** The contact email address of the user. */
   email?: string;
+  /** The member's status in the account. */
   status?: UserGroupsMembersGetResponseStatus;
+  /** Details of the user associated with this membership. */
   user?: UserGroupsMembersGetResponseUser;
 }
 export const UserGroupsMembersGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     email: S.optional(S.String),
     status: S.optional(UserGroupsMembersGetResponseStatus),
     user: S.optional(UserGroupsMembersGetResponseUser),
@@ -2807,23 +3262,29 @@ export type UserGroupsMembersListRequestDirection =
 export const UserGroupsMembersListRequestDirection = /*@__PURE__*/ S.String;
 
 export interface UserGroupsMembersListRequest {
-  account_id: string;
-  user_group_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** User Group identifier tag. */
+  userGroupId: string;
+  /** The sort order of returned user group members by email. */
   direction?: UserGroupsMembersListRequestDirection;
+  /** A string used for filtering members by partial email match. */
   fuzzyEmail?: string;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
+  /** Maximum number of results per page. */
+  perPage?: number;
 }
 export const UserGroupsMembersListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    user_group_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    userGroupId: S.String.pipe(T.Label("user_group_id")),
     direction: S.optional(
       UserGroupsMembersListRequestDirection.pipe(T.Query()),
     ),
     fuzzyEmail: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2842,8 +3303,11 @@ export type UserGroupsMembersListResultItemStatus =
 export const UserGroupsMembersListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface UserGroupsMembersListResultItem {
+  /** Account member identifier. */
   id: string;
+  /** The contact email address of the user. */
   email?: string;
+  /** The member's status in the account. */
   status?: UserGroupsMembersListResultItemStatus;
 }
 export const UserGroupsMembersListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -2862,6 +3326,7 @@ export const UserGroupsMembersListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UserGroupsMembersListResultList>;
 
 export interface UserGroupsMembersListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: UserGroupsMembersListResultList;
 }
 export const UserGroupsMembersListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2875,6 +3340,7 @@ export const UserGroupsMembersListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserGroupsMembersListResponse>;
 
 export interface UserGroupsMembersUpdateRequestMembersItem {
+  /** The identifier of an existing account Member. */
   id: string;
 }
 export const UserGroupsMembersUpdateRequestMembersItem =
@@ -2893,14 +3359,17 @@ export const UserGroupsMembersUpdateRequestMembersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UserGroupsMembersUpdateRequestMembersList>;
 
 export interface UserGroupsMembersUpdateRequest {
-  account_id: string;
-  user_group_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** User Group identifier tag. */
+  userGroupId: string;
+  /** Set/Replace members to a user group. */
   members: UserGroupsMembersUpdateRequestMembersList;
 }
 export const UserGroupsMembersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    user_group_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    userGroupId: S.String.pipe(T.Label("user_group_id")),
     members: UserGroupsMembersUpdateRequestMembersList,
   }).pipe(
     T.Http({
@@ -2920,8 +3389,11 @@ export type UserGroupsMembersUpdateResultItemStatus =
 export const UserGroupsMembersUpdateResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface UserGroupsMembersUpdateResultItem {
+  /** Account member identifier. */
   id: string;
+  /** The contact email address of the user. */
   email?: string;
+  /** The member's status in the account. */
   status?: UserGroupsMembersUpdateResultItemStatus;
 }
 export const UserGroupsMembersUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -2941,6 +3413,7 @@ export const UserGroupsMembersUpdateResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UserGroupsMembersUpdateResultList>;
 
 export interface UserGroupsMembersUpdateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: UserGroupsMembersUpdateResultList;
 }
 export const UserGroupsMembersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2960,6 +3433,7 @@ export type UserGroupsUpdateRequestPoliciesItemAccess =
 export const UserGroupsUpdateRequestPoliciesItemAccess = /*@__PURE__*/ S.String;
 
 export interface UserGroupsUpdateRequestPoliciesItemPermissionGroupsItem {
+  /** Permission Group identifier tag. */
   id: string;
 }
 export const UserGroupsUpdateRequestPoliciesItemPermissionGroupsItem =
@@ -2979,6 +3453,7 @@ export const UserGroupsUpdateRequestPoliciesItemPermissionGroupsList =
   ) as any as S.Schema<UserGroupsUpdateRequestPoliciesItemPermissionGroupsList>;
 
 export interface UserGroupsUpdateRequestPoliciesItemResourceGroupsItem {
+  /** Resource Group identifier tag. */
   id: string;
 }
 export const UserGroupsUpdateRequestPoliciesItemResourceGroupsItem =
@@ -2998,17 +3473,26 @@ export const UserGroupsUpdateRequestPoliciesItemResourceGroupsList =
   ) as any as S.Schema<UserGroupsUpdateRequestPoliciesItemResourceGroupsList>;
 
 export interface UserGroupsUpdateRequestPoliciesItem {
+  /** Policy identifier. */
   id: string;
+  /** Allow or deny operations against the resources. */
   access: UserGroupsUpdateRequestPoliciesItemAccess;
-  permission_groups: UserGroupsUpdateRequestPoliciesItemPermissionGroupsList;
-  resource_groups: UserGroupsUpdateRequestPoliciesItemResourceGroupsList;
+  /** A set of permission groups that are specified to the policy. */
+  permissionGroups: UserGroupsUpdateRequestPoliciesItemPermissionGroupsList;
+  /** A set of resource groups that are specified to the policy. */
+  resourceGroups: UserGroupsUpdateRequestPoliciesItemResourceGroupsList;
 }
 export const UserGroupsUpdateRequestPoliciesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     access: UserGroupsUpdateRequestPoliciesItemAccess,
-    permission_groups: UserGroupsUpdateRequestPoliciesItemPermissionGroupsList,
-    resource_groups: UserGroupsUpdateRequestPoliciesItemResourceGroupsList,
+    permissionGroups:
+      UserGroupsUpdateRequestPoliciesItemPermissionGroupsList.pipe(
+        T.Body("permission_groups"),
+      ),
+    resourceGroups: UserGroupsUpdateRequestPoliciesItemResourceGroupsList.pipe(
+      T.Body("resource_groups"),
+    ),
   }),
 ).annotate({
   identifier: "UserGroupsUpdateRequestPoliciesItem",
@@ -3021,15 +3505,19 @@ export const UserGroupsUpdateRequestPoliciesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UserGroupsUpdateRequestPoliciesList>;
 
 export interface UserGroupsUpdateRequest {
-  account_id: string;
-  user_group_id: string;
+  /** Account identifier tag. */
+  accountId: string;
+  /** User Group identifier tag. */
+  userGroupId: string;
+  /** Name of the User group. */
   name?: string;
+  /** Policies attached to the User group */
   policies?: UserGroupsUpdateRequestPoliciesList;
 }
 export const UserGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    user_group_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    userGroupId: S.String.pipe(T.Label("user_group_id")),
     name: S.optional(S.String),
     policies: S.optional(UserGroupsUpdateRequestPoliciesList),
   }).pipe(
@@ -3065,8 +3553,11 @@ export const UserGroupsUpdateResponsePoliciesItemPermissionGroupsItemMeta =
   }) as any as S.Schema<UserGroupsUpdateResponsePoliciesItemPermissionGroupsItemMeta>;
 
 export interface UserGroupsUpdateResponsePoliciesItemPermissionGroupsItem {
+  /** Identifier of the permission group. */
   id: string;
+  /** Attributes associated to the permission group. */
   meta?: UserGroupsUpdateResponsePoliciesItemPermissionGroupsItemMeta;
+  /** Name of the permission group. */
   name?: string;
 }
 export const UserGroupsUpdateResponsePoliciesItemPermissionGroupsItem =
@@ -3090,6 +3581,7 @@ export const UserGroupsUpdateResponsePoliciesItemPermissionGroupsList =
   ) as any as S.Schema<UserGroupsUpdateResponsePoliciesItemPermissionGroupsList>;
 
 export interface UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem {
+  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
   key: string;
 }
 export const UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsItem =
@@ -3110,7 +3602,9 @@ export const UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObje
   ) as any as S.Schema<UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList>;
 
 export interface UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItem {
+  /** This is a combination of pre-defined resource name and identifier (like Account ID etc.) */
   key: string;
+  /** A list of scope objects for additional context. */
   objects: UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItemObjectsList;
 }
 export const UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeItem =
@@ -3147,9 +3641,13 @@ export const UserGroupsUpdateResponsePoliciesItemResourceGroupsItemMeta =
   }) as any as S.Schema<UserGroupsUpdateResponsePoliciesItemResourceGroupsItemMeta>;
 
 export interface UserGroupsUpdateResponsePoliciesItemResourceGroupsItem {
+  /** Identifier of the resource group. */
   id: string;
+  /** The scope associated to the resource group */
   scope: UserGroupsUpdateResponsePoliciesItemResourceGroupsItemScopeList;
+  /** Attributes associated to the resource group. */
   meta?: UserGroupsUpdateResponsePoliciesItemResourceGroupsItemMeta;
+  /** Name of the resource group. */
   name?: string;
 }
 export const UserGroupsUpdateResponsePoliciesItemResourceGroupsItem =
@@ -3174,21 +3672,29 @@ export const UserGroupsUpdateResponsePoliciesItemResourceGroupsList =
   ) as any as S.Schema<UserGroupsUpdateResponsePoliciesItemResourceGroupsList>;
 
 export interface UserGroupsUpdateResponsePoliciesItem {
+  /** Policy identifier. */
   id?: string;
+  /** Allow or deny operations against the resources. */
   access?: UserGroupsUpdateResponsePoliciesItemAccess;
-  permission_groups?: UserGroupsUpdateResponsePoliciesItemPermissionGroupsList;
-  resource_groups?: UserGroupsUpdateResponsePoliciesItemResourceGroupsList;
+  /** A set of permission groups that are specified to the policy. */
+  permissionGroups?: UserGroupsUpdateResponsePoliciesItemPermissionGroupsList;
+  /** A list of resource groups that the policy applies to. */
+  resourceGroups?: UserGroupsUpdateResponsePoliciesItemResourceGroupsList;
 }
 export const UserGroupsUpdateResponsePoliciesItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
       access: S.optional(UserGroupsUpdateResponsePoliciesItemAccess),
-      permission_groups: S.optional(
-        UserGroupsUpdateResponsePoliciesItemPermissionGroupsList,
+      permissionGroups: S.optional(
+        UserGroupsUpdateResponsePoliciesItemPermissionGroupsList.pipe(
+          T.Body("permission_groups"),
+        ),
       ),
-      resource_groups: S.optional(
-        UserGroupsUpdateResponsePoliciesItemResourceGroupsList,
+      resourceGroups: S.optional(
+        UserGroupsUpdateResponsePoliciesItemResourceGroupsList.pipe(
+          T.Body("resource_groups"),
+        ),
       ),
     }),
 ).annotate({
@@ -3203,17 +3709,22 @@ export const UserGroupsUpdateResponsePoliciesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UserGroupsUpdateResponse {
+  /** User Group identifier tag. */
   id: string;
-  created_on: string;
-  modified_on: string;
+  /** Timestamp for the creation of the user group */
+  createdOn: string;
+  /** Last time the user group was modified. */
+  modifiedOn: string;
+  /** Name of the user group. */
   name: string;
+  /** Policies attached to the User group */
   policies?: UserGroupsUpdateResponsePoliciesList;
 }
 export const UserGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_on: S.String,
-    modified_on: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
     name: S.String,
     policies: S.optional(UserGroupsUpdateResponsePoliciesList),
   }),
@@ -3221,11 +3732,12 @@ export const UserGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserGroupsUpdateResponse",
 }) as any as S.Schema<UserGroupsUpdateResponse>;
 
+export type OauthClientsCreateError = CloudflareOpError;
 /** Create a new OAuth client for an account. */
-export const OauthClientsCreate: API.OperationMethod<
+export const oauthClientsCreate: API.OperationMethod<
   OauthClientsCreateRequest,
   OauthClientsCreateResponse,
-  CloudflareOpError,
+  OauthClientsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: OauthClientsCreateRequest,
@@ -3234,11 +3746,12 @@ export const OauthClientsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type OauthClientsDeleteError = CloudflareOpError;
 /** Delete an OAuth client. */
-export const OauthClientsDelete: API.OperationMethod<
+export const oauthClientsDelete: API.OperationMethod<
   OauthClientsDeleteRequest,
   OauthClientsDeleteResponse,
-  CloudflareOpError,
+  OauthClientsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: OauthClientsDeleteRequest,
@@ -3247,11 +3760,12 @@ export const OauthClientsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type OauthClientsDeleteRotatedSecretError = CloudflareOpError;
 /** Removes the old client secret after a rotation, keeping only the new one. Use this after you have updated your client configuration to use the new secret. The `has_rotated_secret` field on the client indicates whether there is an old secret to delete. */
-export const OauthClientsDeleteRotatedSecret: API.OperationMethod<
+export const oauthClientsDeleteRotatedSecret: API.OperationMethod<
   OauthClientsDeleteRotatedSecretRequest,
   OauthClientsDeleteRotatedSecretResponse,
-  CloudflareOpError,
+  OauthClientsDeleteRotatedSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: OauthClientsDeleteRotatedSecretRequest,
@@ -3260,11 +3774,12 @@ export const OauthClientsDeleteRotatedSecret: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type OauthClientsGetError = CloudflareOpError;
 /** Get details of a specific OAuth client. */
-export const OauthClientsGet: API.OperationMethod<
+export const oauthClientsGet: API.OperationMethod<
   OauthClientsGetRequest,
   OauthClientsGetResponse,
-  CloudflareOpError,
+  OauthClientsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: OauthClientsGetRequest,
@@ -3273,11 +3788,12 @@ export const OauthClientsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type OauthClientsListError = CloudflareOpError;
 /** List all OAuth clients for an account. */
-export const OauthClientsList: API.OperationMethod<
+export const oauthClientsList: API.OperationMethod<
   OauthClientsListRequest,
   OauthClientsListResponse,
-  CloudflareOpError,
+  OauthClientsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: OauthClientsListRequest,
@@ -3286,11 +3802,12 @@ export const OauthClientsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type OauthClientsRotateSecretError = CloudflareOpError;
 /** Creates a second client secret so you can update your client configuration before deleting the old one. The `has_rotated_secret` field on the client will be set to `true`. */
-export const OauthClientsRotateSecret: API.OperationMethod<
+export const oauthClientsRotateSecret: API.OperationMethod<
   OauthClientsRotateSecretRequest,
   OauthClientsRotateSecretResponse,
-  CloudflareOpError,
+  OauthClientsRotateSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: OauthClientsRotateSecretRequest,
@@ -3299,11 +3816,12 @@ export const OauthClientsRotateSecret: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type OauthClientsUpdateError = CloudflareOpError;
 /** Update an existing OAuth client. Only include fields you want to update. */
-export const OauthClientsUpdate: API.OperationMethod<
+export const oauthClientsUpdate: API.OperationMethod<
   OauthClientsUpdateRequest,
   OauthClientsUpdateResponse,
-  CloudflareOpError,
+  OauthClientsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: OauthClientsUpdateRequest,
@@ -3312,11 +3830,12 @@ export const OauthClientsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type OauthScopesListError = CloudflareOpError;
 /** List all available OAuth scopes. This endpoint requires authentication but has no authorization role requirements. */
-export const OauthScopesList: API.OperationMethod<
+export const oauthScopesList: API.OperationMethod<
   OauthScopesListRequest,
   OauthScopesListResponse,
-  CloudflareOpError,
+  OauthScopesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: OauthScopesListRequest,
@@ -3325,11 +3844,12 @@ export const OauthScopesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PermissionGroupsGetError = CloudflareOpError;
 /** Get information about a specific permission group in an account. */
-export const PermissionGroupsGet: API.OperationMethod<
+export const permissionGroupsGet: API.OperationMethod<
   PermissionGroupsGetRequest,
   PermissionGroupsGetResponse,
-  CloudflareOpError,
+  PermissionGroupsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PermissionGroupsGetRequest,
@@ -3338,11 +3858,12 @@ export const PermissionGroupsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PermissionGroupsListError = CloudflareOpError;
 /** List all the permissions groups for an account. */
-export const PermissionGroupsList: API.OperationMethod<
+export const permissionGroupsList: API.OperationMethod<
   PermissionGroupsListRequest,
   PermissionGroupsListResponse,
-  CloudflareOpError,
+  PermissionGroupsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PermissionGroupsListRequest,
@@ -3351,11 +3872,12 @@ export const PermissionGroupsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ResourceGroupsCreateError = CloudflareOpError;
 /** Create a new Resource Group under the specified account. */
-export const ResourceGroupsCreate: API.OperationMethod<
+export const resourceGroupsCreate: API.OperationMethod<
   ResourceGroupsCreateRequest,
   ResourceGroupsCreateResponse,
-  CloudflareOpError,
+  ResourceGroupsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ResourceGroupsCreateRequest,
@@ -3364,11 +3886,12 @@ export const ResourceGroupsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ResourceGroupsDeleteError = CloudflareOpError;
 /** Remove a resource group from an account. */
-export const ResourceGroupsDelete: API.OperationMethod<
+export const resourceGroupsDelete: API.OperationMethod<
   ResourceGroupsDeleteRequest,
   ResourceGroupsDeleteResponse,
-  CloudflareOpError,
+  ResourceGroupsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ResourceGroupsDeleteRequest,
@@ -3377,11 +3900,12 @@ export const ResourceGroupsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ResourceGroupsGetError = CloudflareOpError;
 /** Get information about a specific resource group in an account. */
-export const ResourceGroupsGet: API.OperationMethod<
+export const resourceGroupsGet: API.OperationMethod<
   ResourceGroupsGetRequest,
   ResourceGroupsGetResponse,
-  CloudflareOpError,
+  ResourceGroupsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ResourceGroupsGetRequest,
@@ -3390,11 +3914,12 @@ export const ResourceGroupsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ResourceGroupsListError = CloudflareOpError;
 /** List all the resource groups for an account. */
-export const ResourceGroupsList: API.OperationMethod<
+export const resourceGroupsList: API.OperationMethod<
   ResourceGroupsListRequest,
   ResourceGroupsListResponse,
-  CloudflareOpError,
+  ResourceGroupsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ResourceGroupsListRequest,
@@ -3403,11 +3928,12 @@ export const ResourceGroupsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ResourceGroupsUpdateError = CloudflareOpError;
 /** Modify an existing resource group. */
-export const ResourceGroupsUpdate: API.OperationMethod<
+export const resourceGroupsUpdate: API.OperationMethod<
   ResourceGroupsUpdateRequest,
   ResourceGroupsUpdateResponse,
-  CloudflareOpError,
+  ResourceGroupsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ResourceGroupsUpdateRequest,
@@ -3416,11 +3942,12 @@ export const ResourceGroupsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SsoBeginVerificationError = CloudflareOpError;
 /** Validates the user has added the DNS TXT record required for validating ownership of the domain they are trying to set up a connector for. */
-export const SsoBeginVerification: API.OperationMethod<
+export const ssoBeginVerification: API.OperationMethod<
   SsoBeginVerificationRequest,
   SsoBeginVerificationResponse,
-  CloudflareOpError,
+  SsoBeginVerificationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SsoBeginVerificationRequest,
@@ -3429,11 +3956,12 @@ export const SsoBeginVerification: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SsoCreateError = CloudflareOpError;
 /** Creates a new SSO connector for logging into Cloudflare through an identity provider. */
-export const SsoCreate: API.OperationMethod<
+export const ssoCreate: API.OperationMethod<
   SsoCreateRequest,
   SsoCreateResponse,
-  CloudflareOpError,
+  SsoCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SsoCreateRequest,
@@ -3442,11 +3970,12 @@ export const SsoCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SsoDeleteError = CloudflareOpError;
 /** Deletes an SSO connector from the account. */
-export const SsoDelete: API.OperationMethod<
+export const ssoDelete: API.OperationMethod<
   SsoDeleteRequest,
   SsoDeleteResponse,
-  CloudflareOpError,
+  SsoDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SsoDeleteRequest,
@@ -3455,11 +3984,12 @@ export const SsoDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SsoGetError = CloudflareOpError;
 /** Retrieves details for a specific SSO connector. */
-export const SsoGet: API.OperationMethod<
+export const ssoGet: API.OperationMethod<
   SsoGetRequest,
   SsoGetResponse,
-  CloudflareOpError,
+  SsoGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SsoGetRequest,
@@ -3468,11 +3998,12 @@ export const SsoGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SsoListError = CloudflareOpError;
 /** Lists all SSO connectors configured for the account. */
-export const SsoList: API.OperationMethod<
+export const ssoList: API.OperationMethod<
   SsoListRequest,
   SsoListResponse,
-  CloudflareOpError,
+  SsoListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SsoListRequest,
@@ -3481,11 +4012,12 @@ export const SsoList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SsoUpdateError = CloudflareOpError;
 /** Updates the state or configuration of an SSO connector. */
-export const SsoUpdate: API.OperationMethod<
+export const ssoUpdate: API.OperationMethod<
   SsoUpdateRequest,
   SsoUpdateResponse,
-  CloudflareOpError,
+  SsoUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SsoUpdateRequest,
@@ -3494,11 +4026,12 @@ export const SsoUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UserGroupsCreateError = CloudflareOpError;
 /** Create a new user group under the specified account. */
-export const UserGroupsCreate: API.OperationMethod<
+export const userGroupsCreate: API.OperationMethod<
   UserGroupsCreateRequest,
   UserGroupsCreateResponse,
-  CloudflareOpError,
+  UserGroupsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UserGroupsCreateRequest,
@@ -3507,11 +4040,12 @@ export const UserGroupsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UserGroupsDeleteError = CloudflareOpError;
 /** Remove a user group from an account. */
-export const UserGroupsDelete: API.OperationMethod<
+export const userGroupsDelete: API.OperationMethod<
   UserGroupsDeleteRequest,
   UserGroupsDeleteResponse,
-  CloudflareOpError,
+  UserGroupsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UserGroupsDeleteRequest,
@@ -3520,11 +4054,12 @@ export const UserGroupsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UserGroupsGetError = CloudflareOpError;
 /** Get information about a specific user group in an account. */
-export const UserGroupsGet: API.OperationMethod<
+export const userGroupsGet: API.OperationMethod<
   UserGroupsGetRequest,
   UserGroupsGetResponse,
-  CloudflareOpError,
+  UserGroupsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UserGroupsGetRequest,
@@ -3533,11 +4068,12 @@ export const UserGroupsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UserGroupsListError = CloudflareOpError;
 /** List all the user groups for an account. */
-export const UserGroupsList: API.OperationMethod<
+export const userGroupsList: API.OperationMethod<
   UserGroupsListRequest,
   UserGroupsListResponse,
-  CloudflareOpError,
+  UserGroupsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UserGroupsListRequest,
@@ -3546,11 +4082,12 @@ export const UserGroupsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UserGroupsMembersCreateError = CloudflareOpError;
 /** Add members to a User Group. */
-export const UserGroupsMembersCreate: API.OperationMethod<
+export const userGroupsMembersCreate: API.OperationMethod<
   UserGroupsMembersCreateRequest,
   UserGroupsMembersCreateResponse,
-  CloudflareOpError,
+  UserGroupsMembersCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UserGroupsMembersCreateRequest,
@@ -3559,11 +4096,12 @@ export const UserGroupsMembersCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UserGroupsMembersDeleteError = CloudflareOpError;
 /** Remove a member from User Group */
-export const UserGroupsMembersDelete: API.OperationMethod<
+export const userGroupsMembersDelete: API.OperationMethod<
   UserGroupsMembersDeleteRequest,
   UserGroupsMembersDeleteResponse,
-  CloudflareOpError,
+  UserGroupsMembersDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UserGroupsMembersDeleteRequest,
@@ -3572,11 +4110,12 @@ export const UserGroupsMembersDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UserGroupsMembersGetError = CloudflareOpError;
 /** Get details of a specific member in a user group. */
-export const UserGroupsMembersGet: API.OperationMethod<
+export const userGroupsMembersGet: API.OperationMethod<
   UserGroupsMembersGetRequest,
   UserGroupsMembersGetResponse,
-  CloudflareOpError,
+  UserGroupsMembersGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UserGroupsMembersGetRequest,
@@ -3585,11 +4124,12 @@ export const UserGroupsMembersGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UserGroupsMembersListError = CloudflareOpError;
 /** List all the members attached to a user group. */
-export const UserGroupsMembersList: API.OperationMethod<
+export const userGroupsMembersList: API.OperationMethod<
   UserGroupsMembersListRequest,
   UserGroupsMembersListResponse,
-  CloudflareOpError,
+  UserGroupsMembersListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UserGroupsMembersListRequest,
@@ -3598,11 +4138,12 @@ export const UserGroupsMembersList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UserGroupsMembersUpdateError = CloudflareOpError;
 /** Replace the set of members attached to a User Group. */
-export const UserGroupsMembersUpdate: API.OperationMethod<
+export const userGroupsMembersUpdate: API.OperationMethod<
   UserGroupsMembersUpdateRequest,
   UserGroupsMembersUpdateResponse,
-  CloudflareOpError,
+  UserGroupsMembersUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UserGroupsMembersUpdateRequest,
@@ -3611,11 +4152,12 @@ export const UserGroupsMembersUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UserGroupsUpdateError = CloudflareOpError;
 /** Modify an existing user group. */
-export const UserGroupsUpdate: API.OperationMethod<
+export const userGroupsUpdate: API.OperationMethod<
   UserGroupsUpdateRequest,
   UserGroupsUpdateResponse,
-  CloudflareOpError,
+  UserGroupsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UserGroupsUpdateRequest,

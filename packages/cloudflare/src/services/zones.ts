@@ -10,11 +10,12 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface ActivationCheckTriggerRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const ActivationCheckTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -28,6 +29,7 @@ export const ActivationCheckTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ActivationCheckTriggerResponse {
+  /** Identifier. */
   id?: string;
 }
 export const ActivationCheckTriggerResponse = /*@__PURE__*/ S.suspend(() =>
@@ -39,6 +41,7 @@ export const ActivationCheckTriggerResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivationCheckTriggerResponse>;
 
 export interface CreateRequestAccount {
+  /** Identifier */
   id?: string;
 }
 export const CreateRequestAccount = /*@__PURE__*/ S.suspend(() =>
@@ -51,7 +54,9 @@ export const CreateRequestAccount = /*@__PURE__*/ S.suspend(() =>
 
 export interface CreateRequest {
   account: CreateRequestAccount;
+  /** The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters. */
   name: string;
+  /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is */
   type?: unknown;
 }
 export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -62,12 +67,244 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "POST", uri: "/zones", code: 200 })),
 ).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
 
+export interface CreateResponseAccount {
+  /** Identifier */
+  id?: string;
+  /** The name of the account. */
+  name?: string;
+}
+export const CreateResponseAccount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateResponseAccount",
+}) as any as S.Schema<CreateResponseAccount>;
+
+export interface CreateResponseMeta {
+  /** The zone is only configured for CDN. */
+  cdnOnly?: boolean;
+  /** Number of Custom Certificates the zone can have. */
+  customCertificateQuota?: number;
+  /** The zone is only configured for DNS. */
+  dnsOnly?: boolean;
+  /** The zone is setup with Foundation DNS. */
+  foundationDns?: boolean;
+  /** Number of Page Rules a zone can have. */
+  pageRuleQuota?: number;
+  /** The zone has been flagged for phishing. */
+  phishingDetected?: boolean;
+  step?: number;
+}
+export const CreateResponseMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cdnOnly: S.optional(S.Boolean.pipe(T.Body("cdn_only"))),
+    customCertificateQuota: S.optional(
+      S.Number.pipe(T.Body("custom_certificate_quota")),
+    ),
+    dnsOnly: S.optional(S.Boolean.pipe(T.Body("dns_only"))),
+    foundationDns: S.optional(S.Boolean.pipe(T.Body("foundation_dns"))),
+    pageRuleQuota: S.optional(S.Number.pipe(T.Body("page_rule_quota"))),
+    phishingDetected: S.optional(S.Boolean.pipe(T.Body("phishing_detected"))),
+    step: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CreateResponseMeta",
+}) as any as S.Schema<CreateResponseMeta>;
+
+export type CreateResponseNameServersList = string[];
+export const CreateResponseNameServersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateResponseNameServersList>;
+
+export type CreateResponseOriginalNameServersList = string[];
+export const CreateResponseOriginalNameServersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateResponseOriginalNameServersList>;
+
+export interface CreateResponseOwner {
+  /** Identifier */
+  id?: string;
+  /** Name of the owner. */
+  name?: string;
+  /** The type of owner. */
+  type?: string;
+}
+export const CreateResponseOwner = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateResponseOwner",
+}) as any as S.Schema<CreateResponseOwner>;
+
+export interface CreateResponsePlan {
+  /** Identifier */
+  id?: string;
+  /** States if the subscription can be activated. */
+  canSubscribe?: boolean;
+  /** The denomination of the customer. */
+  currency?: string;
+  /** If this Zone is managed by another company. */
+  externallyManaged?: boolean;
+  /** How often the customer is billed. */
+  frequency?: string;
+  /** States if the subscription active. */
+  isSubscribed?: boolean;
+  /** If the legacy discount applies to this Zone. */
+  legacyDiscount?: boolean;
+  /** The legacy name of the plan. */
+  legacyId?: string;
+  /** Name of the owner. */
+  name?: string;
+  /** How much the customer is paying. */
+  price?: number;
+}
+export const CreateResponsePlan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    canSubscribe: S.optional(S.Boolean.pipe(T.Body("can_subscribe"))),
+    currency: S.optional(S.String),
+    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
+    frequency: S.optional(S.String),
+    isSubscribed: S.optional(S.Boolean.pipe(T.Body("is_subscribed"))),
+    legacyDiscount: S.optional(S.Boolean.pipe(T.Body("legacy_discount"))),
+    legacyId: S.optional(S.String.pipe(T.Body("legacy_id"))),
+    name: S.optional(S.String),
+    price: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CreateResponsePlan",
+}) as any as S.Schema<CreateResponsePlan>;
+
+export type CreateResponsePermissionsList = string[];
+export const CreateResponsePermissionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateResponsePermissionsList>;
+
+export type CreateResponseStatus =
+  | "initializing"
+  | "pending"
+  | "active"
+  | "moved"
+  | (string & {});
+export const CreateResponseStatus = /*@__PURE__*/ S.String;
+
+export interface CreateResponseTenant {
+  /** Identifier */
+  id?: string;
+  /** The name of the Tenant account. */
+  name?: string;
+}
+export const CreateResponseTenant = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateResponseTenant",
+}) as any as S.Schema<CreateResponseTenant>;
+
+export interface CreateResponseTenantUnit {
+  /** Identifier */
+  id?: string;
+}
+export const CreateResponseTenantUnit = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateResponseTenantUnit",
+}) as any as S.Schema<CreateResponseTenantUnit>;
+
+export type CreateResponseVanityNameServersList = string[];
+export const CreateResponseVanityNameServersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateResponseVanityNameServersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateResponse {
-  result?: unknown;
+  /** Identifier */
+  id: string;
+  /** The account the zone belongs to. */
+  account: CreateResponseAccount;
+  /** The last time proof of ownership was detected and the zone was made */
+  activatedOn: string;
+  /** When the zone was created. */
+  createdOn: string;
+  /** The interval (in seconds) from when development mode expires */
+  developmentMode: number;
+  /** Metadata about the zone. */
+  meta: CreateResponseMeta;
+  /** When the zone was last modified. */
+  modifiedOn: string;
+  /** The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters. */
+  name: string;
+  /** The name servers Cloudflare assigns to a zone. */
+  nameServers: CreateResponseNameServersList;
+  /** DNS host at the time of switching to Cloudflare. */
+  originalDnshost: string;
+  /** Original name servers before moving to Cloudflare. */
+  originalNameServers: CreateResponseOriginalNameServersList;
+  /** Registrar for the domain at the time of switching to Cloudflare. */
+  originalRegistrar: string;
+  /** The owner of the zone. */
+  owner: CreateResponseOwner;
+  /** A Zones subscription information. */
+  plan: CreateResponsePlan;
+  /** Allows the customer to use a custom apex. */
+  cnameSuffix?: string;
+  /** Indicates whether the zone is only using Cloudflare DNS services. A */
+  paused?: boolean;
+  /** Legacy permissions based on legacy user membership information. */
+  permissions?: CreateResponsePermissionsList;
+  /** The zone status on Cloudflare. */
+  status?: CreateResponseStatus;
+  /** The root organizational unit that this zone belongs to (such as a tenant or organization). */
+  tenant?: CreateResponseTenant;
+  /** The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization). */
+  tenantUnit?: CreateResponseTenantUnit;
+  /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is */
+  type?: unknown;
+  /** An array of domains used for custom name servers. This is only available for Business and Enterprise plans. */
+  vanityNameServers?: CreateResponseVanityNameServersList;
+  /** Verification key for partial zone setup. */
+  verificationKey?: string;
 }
 export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    account: CreateResponseAccount,
+    activatedOn: S.String.pipe(T.Body("activated_on")),
+    createdOn: S.String.pipe(T.Body("created_on")),
+    developmentMode: S.Number.pipe(T.Body("development_mode")),
+    meta: CreateResponseMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    nameServers: CreateResponseNameServersList.pipe(T.Body("name_servers")),
+    originalDnshost: S.String.pipe(T.Body("original_dnshost")),
+    originalNameServers: CreateResponseOriginalNameServersList.pipe(
+      T.Body("original_name_servers"),
+    ),
+    originalRegistrar: S.String.pipe(T.Body("original_registrar")),
+    owner: CreateResponseOwner,
+    plan: CreateResponsePlan,
+    cnameSuffix: S.optional(S.String.pipe(T.Body("cname_suffix"))),
+    paused: S.optional(S.Boolean),
+    permissions: S.optional(CreateResponsePermissionsList),
+    status: S.optional(CreateResponseStatus),
+    tenant: S.optional(CreateResponseTenant),
+    tenantUnit: S.optional(
+      CreateResponseTenantUnit.pipe(T.Body("tenant_unit")),
+    ),
+    type: S.optional(S.Unknown),
+    vanityNameServers: S.optional(
+      CreateResponseVanityNameServersList.pipe(T.Body("vanity_name_servers")),
+    ),
+    verificationKey: S.optional(S.String.pipe(T.Body("verification_key"))),
   }),
 ).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
 
@@ -77,13 +314,16 @@ export const CtAlertingEditRequestEmailsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CtAlertingEditRequestEmailsList>;
 
 export interface CtAlertingEditRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Whether CT alerting is enabled for the zone. */
   enabled: boolean;
+  /** Email addresses that receive CT alert notifications. Only present and configurable for Business and Enterprise zones. Maximum of 10 addresses. For Free and Pro zones, notifications are sent to all users with SSL permissions on the zone. */
   emails?: CtAlertingEditRequestEmailsList;
 }
 export const CtAlertingEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.Boolean,
     emails: S.optional(CtAlertingEditRequestEmailsList),
   }).pipe(
@@ -100,7 +340,9 @@ export const CtAlertingEditResponseEmailsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CtAlertingEditResponse {
+  /** Whether CT alerting is enabled for the zone. */
   enabled: boolean;
+  /** Email addresses that receive CT alert notifications. Only present and configurable for Business and Enterprise zones. Maximum of 10 addresses. For Free and Pro zones, notifications are sent to all users with SSL permissions on the zone. */
   emails?: CtAlertingEditResponseEmailsList;
 }
 export const CtAlertingEditResponse = /*@__PURE__*/ S.suspend(() =>
@@ -113,11 +355,12 @@ export const CtAlertingEditResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CtAlertingEditResponse>;
 
 export interface CtAlertingGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const CtAlertingGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({ method: "GET", uri: "/zones/{zone_id}/ct/alerting", code: 200 }),
   ),
@@ -132,7 +375,9 @@ export const CtAlertingGetResponseEmailsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CtAlertingGetResponse {
+  /** Whether CT alerting is enabled for the zone. */
   enabled: boolean;
+  /** Email addresses that receive CT alert notifications. Only present and configurable for Business and Enterprise zones. Maximum of 10 addresses. For Free and Pro zones, notifications are sent to all users with SSL permissions on the zone. */
   emails?: CtAlertingGetResponseEmailsList;
 }
 export const CtAlertingGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -145,11 +390,12 @@ export const CtAlertingGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CtAlertingGetResponse>;
 
 export interface CustomNameserversGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const CustomNameserversGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({ method: "GET", uri: "/zones/{zone_id}/custom_ns", code: 200 }),
   ),
@@ -159,28 +405,33 @@ export const CustomNameserversGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CustomNameserversGetResponse {
+  /** Whether zone uses account-level custom nameservers. */
   enabled?: boolean;
-  ns_set?: number;
+  /** The number of the name server set to assign to the zone. */
+  nsSet?: number;
 }
 export const CustomNameserversGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
-    ns_set: S.optional(S.Number),
+    nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
   }),
 ).annotate({
   identifier: "CustomNameserversGetResponse",
 }) as any as S.Schema<CustomNameserversGetResponse>;
 
 export interface CustomNameserversUpdateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Whether zone uses account-level custom nameservers. */
   enabled?: boolean;
-  ns_set?: number;
+  /** The number of the name server set to assign to the zone. */
+  nsSet?: number;
 }
 export const CustomNameserversUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.optional(S.Boolean),
-    ns_set: S.optional(S.Number),
+    nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
   }).pipe(
     T.Http({ method: "PUT", uri: "/zones/{zone_id}/custom_ns", code: 200 }),
   ),
@@ -194,6 +445,7 @@ export const CustomNameserversUpdateResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CustomNameserversUpdateResultList>;
 
 export interface CustomNameserversUpdateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: CustomNameserversUpdateResultList;
 }
 export const CustomNameserversUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -207,16 +459,18 @@ export const CustomNameserversUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomNameserversUpdateResponse>;
 
 export interface DeleteRequest {
-  zone_id: string;
+  /** Identifier */
+  zoneId: string;
 }
 export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(T.Http({ method: "DELETE", uri: "/zones/{zone_id}", code: 200 })),
 ).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteResponse {
+  /** Identifier */
   id: string;
 }
 export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -239,48 +493,300 @@ export const EditRequestVanityNameServersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EditRequestVanityNameServersList>;
 
 export interface EditRequest {
-  zone_id: string;
+  /** Identifier */
+  zoneId: string;
+  /** Indicates whether the zone is only using Cloudflare DNS services. A */
   paused?: boolean;
+  /** A full zone implies that DNS is hosted with Cloudflare. A partial */
   type?: EditRequestType;
-  vanity_name_servers?: EditRequestVanityNameServersList;
+  /** An array of domains used for custom name servers. This is only */
+  vanityNameServers?: EditRequestVanityNameServersList;
 }
 export const EditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     paused: S.optional(S.Boolean),
     type: S.optional(EditRequestType),
-    vanity_name_servers: S.optional(EditRequestVanityNameServersList),
+    vanityNameServers: S.optional(
+      EditRequestVanityNameServersList.pipe(T.Body("vanity_name_servers")),
+    ),
   }).pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}", code: 200 })),
 ).annotate({ identifier: "EditRequest" }) as any as S.Schema<EditRequest>;
 
+export interface EditResponseAccount {
+  /** Identifier */
+  id?: string;
+  /** The name of the account. */
+  name?: string;
+}
+export const EditResponseAccount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EditResponseAccount",
+}) as any as S.Schema<EditResponseAccount>;
+
+export interface EditResponseMeta {
+  /** The zone is only configured for CDN. */
+  cdnOnly?: boolean;
+  /** Number of Custom Certificates the zone can have. */
+  customCertificateQuota?: number;
+  /** The zone is only configured for DNS. */
+  dnsOnly?: boolean;
+  /** The zone is setup with Foundation DNS. */
+  foundationDns?: boolean;
+  /** Number of Page Rules a zone can have. */
+  pageRuleQuota?: number;
+  /** The zone has been flagged for phishing. */
+  phishingDetected?: boolean;
+  step?: number;
+}
+export const EditResponseMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cdnOnly: S.optional(S.Boolean.pipe(T.Body("cdn_only"))),
+    customCertificateQuota: S.optional(
+      S.Number.pipe(T.Body("custom_certificate_quota")),
+    ),
+    dnsOnly: S.optional(S.Boolean.pipe(T.Body("dns_only"))),
+    foundationDns: S.optional(S.Boolean.pipe(T.Body("foundation_dns"))),
+    pageRuleQuota: S.optional(S.Number.pipe(T.Body("page_rule_quota"))),
+    phishingDetected: S.optional(S.Boolean.pipe(T.Body("phishing_detected"))),
+    step: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "EditResponseMeta",
+}) as any as S.Schema<EditResponseMeta>;
+
+export type EditResponseNameServersList = string[];
+export const EditResponseNameServersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponseNameServersList>;
+
+export type EditResponseOriginalNameServersList = string[];
+export const EditResponseOriginalNameServersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponseOriginalNameServersList>;
+
+export interface EditResponseOwner {
+  /** Identifier */
+  id?: string;
+  /** Name of the owner. */
+  name?: string;
+  /** The type of owner. */
+  type?: string;
+}
+export const EditResponseOwner = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EditResponseOwner",
+}) as any as S.Schema<EditResponseOwner>;
+
+export interface EditResponsePlan {
+  /** Identifier */
+  id?: string;
+  /** States if the subscription can be activated. */
+  canSubscribe?: boolean;
+  /** The denomination of the customer. */
+  currency?: string;
+  /** If this Zone is managed by another company. */
+  externallyManaged?: boolean;
+  /** How often the customer is billed. */
+  frequency?: string;
+  /** States if the subscription active. */
+  isSubscribed?: boolean;
+  /** If the legacy discount applies to this Zone. */
+  legacyDiscount?: boolean;
+  /** The legacy name of the plan. */
+  legacyId?: string;
+  /** Name of the owner. */
+  name?: string;
+  /** How much the customer is paying. */
+  price?: number;
+}
+export const EditResponsePlan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    canSubscribe: S.optional(S.Boolean.pipe(T.Body("can_subscribe"))),
+    currency: S.optional(S.String),
+    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
+    frequency: S.optional(S.String),
+    isSubscribed: S.optional(S.Boolean.pipe(T.Body("is_subscribed"))),
+    legacyDiscount: S.optional(S.Boolean.pipe(T.Body("legacy_discount"))),
+    legacyId: S.optional(S.String.pipe(T.Body("legacy_id"))),
+    name: S.optional(S.String),
+    price: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "EditResponsePlan",
+}) as any as S.Schema<EditResponsePlan>;
+
+export type EditResponsePermissionsList = string[];
+export const EditResponsePermissionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponsePermissionsList>;
+
+export type EditResponseStatus =
+  | "initializing"
+  | "pending"
+  | "active"
+  | "moved"
+  | (string & {});
+export const EditResponseStatus = /*@__PURE__*/ S.String;
+
+export interface EditResponseTenant {
+  /** Identifier */
+  id?: string;
+  /** The name of the Tenant account. */
+  name?: string;
+}
+export const EditResponseTenant = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EditResponseTenant",
+}) as any as S.Schema<EditResponseTenant>;
+
+export interface EditResponseTenantUnit {
+  /** Identifier */
+  id?: string;
+}
+export const EditResponseTenantUnit = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EditResponseTenantUnit",
+}) as any as S.Schema<EditResponseTenantUnit>;
+
+export type EditResponseVanityNameServersList = string[];
+export const EditResponseVanityNameServersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponseVanityNameServersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditResponse {
-  result?: unknown;
+  /** Identifier */
+  id: string;
+  /** The account the zone belongs to. */
+  account: EditResponseAccount;
+  /** The last time proof of ownership was detected and the zone was made */
+  activatedOn: string;
+  /** When the zone was created. */
+  createdOn: string;
+  /** The interval (in seconds) from when development mode expires */
+  developmentMode: number;
+  /** Metadata about the zone. */
+  meta: EditResponseMeta;
+  /** When the zone was last modified. */
+  modifiedOn: string;
+  /** The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters. */
+  name: string;
+  /** The name servers Cloudflare assigns to a zone. */
+  nameServers: EditResponseNameServersList;
+  /** DNS host at the time of switching to Cloudflare. */
+  originalDnshost: string;
+  /** Original name servers before moving to Cloudflare. */
+  originalNameServers: EditResponseOriginalNameServersList;
+  /** Registrar for the domain at the time of switching to Cloudflare. */
+  originalRegistrar: string;
+  /** The owner of the zone. */
+  owner: EditResponseOwner;
+  /** A Zones subscription information. */
+  plan: EditResponsePlan;
+  /** Allows the customer to use a custom apex. */
+  cnameSuffix?: string;
+  /** Indicates whether the zone is only using Cloudflare DNS services. A */
+  paused?: boolean;
+  /** Legacy permissions based on legacy user membership information. */
+  permissions?: EditResponsePermissionsList;
+  /** The zone status on Cloudflare. */
+  status?: EditResponseStatus;
+  /** The root organizational unit that this zone belongs to (such as a tenant or organization). */
+  tenant?: EditResponseTenant;
+  /** The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization). */
+  tenantUnit?: EditResponseTenantUnit;
+  /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is */
+  type?: unknown;
+  /** An array of domains used for custom name servers. This is only available for Business and Enterprise plans. */
+  vanityNameServers?: EditResponseVanityNameServersList;
+  /** Verification key for partial zone setup. */
+  verificationKey?: string;
 }
 export const EditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    account: EditResponseAccount,
+    activatedOn: S.String.pipe(T.Body("activated_on")),
+    createdOn: S.String.pipe(T.Body("created_on")),
+    developmentMode: S.Number.pipe(T.Body("development_mode")),
+    meta: EditResponseMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    nameServers: EditResponseNameServersList.pipe(T.Body("name_servers")),
+    originalDnshost: S.String.pipe(T.Body("original_dnshost")),
+    originalNameServers: EditResponseOriginalNameServersList.pipe(
+      T.Body("original_name_servers"),
+    ),
+    originalRegistrar: S.String.pipe(T.Body("original_registrar")),
+    owner: EditResponseOwner,
+    plan: EditResponsePlan,
+    cnameSuffix: S.optional(S.String.pipe(T.Body("cname_suffix"))),
+    paused: S.optional(S.Boolean),
+    permissions: S.optional(EditResponsePermissionsList),
+    status: S.optional(EditResponseStatus),
+    tenant: S.optional(EditResponseTenant),
+    tenantUnit: S.optional(EditResponseTenantUnit.pipe(T.Body("tenant_unit"))),
+    type: S.optional(S.Unknown),
+    vanityNameServers: S.optional(
+      EditResponseVanityNameServersList.pipe(T.Body("vanity_name_servers")),
+    ),
+    verificationKey: S.optional(S.String.pipe(T.Body("verification_key"))),
   }),
 ).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
 
+export interface EnvironmentsCreateRequestEnvironmentsItemPosition {
+  after?: string;
+  before?: string;
+}
+export const EnvironmentsCreateRequestEnvironmentsItemPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      after: S.optional(S.String),
+      before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EnvironmentsCreateRequestEnvironmentsItemPosition",
+  }) as any as S.Schema<EnvironmentsCreateRequestEnvironmentsItemPosition>;
+
 export interface EnvironmentsCreateRequestEnvironmentsItem {
   expression: string;
-  locked_on_deployment: boolean;
+  lockedOnDeployment: boolean;
   name: string;
-  position: unknown;
+  position: EnvironmentsCreateRequestEnvironmentsItemPosition;
   ref: string;
   version: number;
-  http_application_id?: string;
+  httpApplicationId?: string;
 }
 export const EnvironmentsCreateRequestEnvironmentsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       expression: S.String,
-      locked_on_deployment: S.Boolean,
+      lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
       name: S.String,
-      position: S.Unknown,
+      position: EnvironmentsCreateRequestEnvironmentsItemPosition,
       ref: S.String,
       version: S.Number,
-      http_application_id: S.optional(S.String),
+      httpApplicationId: S.optional(
+        S.String.pipe(T.Body("http_application_id")),
+      ),
     }),
   ).annotate({
     identifier: "EnvironmentsCreateRequestEnvironmentsItem",
@@ -293,12 +799,12 @@ export const EnvironmentsCreateRequestEnvironmentsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EnvironmentsCreateRequestEnvironmentsList>;
 
 export interface EnvironmentsCreateRequest {
-  zone_id: string;
+  zoneId: string;
   environments: EnvironmentsCreateRequestEnvironmentsList;
 }
 export const EnvironmentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     environments: EnvironmentsCreateRequestEnvironmentsList,
   }).pipe(
     T.Http({ method: "POST", uri: "/zones/{zone_id}/environments", code: 200 }),
@@ -307,25 +813,41 @@ export const EnvironmentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentsCreateRequest",
 }) as any as S.Schema<EnvironmentsCreateRequest>;
 
+export interface EnvironmentsCreateResponseEnvironmentsItemPosition {
+  after?: string;
+  before?: string;
+}
+export const EnvironmentsCreateResponseEnvironmentsItemPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      after: S.optional(S.String),
+      before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EnvironmentsCreateResponseEnvironmentsItemPosition",
+  }) as any as S.Schema<EnvironmentsCreateResponseEnvironmentsItemPosition>;
+
 export interface EnvironmentsCreateResponseEnvironmentsItem {
   expression: string;
-  locked_on_deployment: boolean;
+  lockedOnDeployment: boolean;
   name: string;
-  position: unknown;
+  position: EnvironmentsCreateResponseEnvironmentsItemPosition;
   ref: string;
   version: number;
-  http_application_id?: string;
+  httpApplicationId?: string;
 }
 export const EnvironmentsCreateResponseEnvironmentsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       expression: S.String,
-      locked_on_deployment: S.Boolean,
+      lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
       name: S.String,
-      position: S.Unknown,
+      position: EnvironmentsCreateResponseEnvironmentsItemPosition,
       ref: S.String,
       version: S.Number,
-      http_application_id: S.optional(S.String),
+      httpApplicationId: S.optional(
+        S.String.pipe(T.Body("http_application_id")),
+      ),
     }),
   ).annotate({
     identifier: "EnvironmentsCreateResponseEnvironmentsItem",
@@ -350,13 +872,13 @@ export const EnvironmentsCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentsCreateResponse>;
 
 export interface EnvironmentsDeleteRequest {
-  zone_id: string;
-  environment_id: string;
+  zoneId: string;
+  environmentId: string;
 }
 export const EnvironmentsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    environment_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    environmentId: S.String.pipe(T.Label("environment_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -368,25 +890,41 @@ export const EnvironmentsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentsDeleteRequest",
 }) as any as S.Schema<EnvironmentsDeleteRequest>;
 
+export interface EnvironmentsDeleteResponseEnvironmentsItemPosition {
+  after?: string;
+  before?: string;
+}
+export const EnvironmentsDeleteResponseEnvironmentsItemPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      after: S.optional(S.String),
+      before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EnvironmentsDeleteResponseEnvironmentsItemPosition",
+  }) as any as S.Schema<EnvironmentsDeleteResponseEnvironmentsItemPosition>;
+
 export interface EnvironmentsDeleteResponseEnvironmentsItem {
   expression: string;
-  locked_on_deployment: boolean;
+  lockedOnDeployment: boolean;
   name: string;
-  position: unknown;
+  position: EnvironmentsDeleteResponseEnvironmentsItemPosition;
   ref: string;
   version: number;
-  http_application_id?: string;
+  httpApplicationId?: string;
 }
 export const EnvironmentsDeleteResponseEnvironmentsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       expression: S.String,
-      locked_on_deployment: S.Boolean,
+      lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
       name: S.String,
-      position: S.Unknown,
+      position: EnvironmentsDeleteResponseEnvironmentsItemPosition,
       ref: S.String,
       version: S.Number,
-      http_application_id: S.optional(S.String),
+      httpApplicationId: S.optional(
+        S.String.pipe(T.Body("http_application_id")),
+      ),
     }),
   ).annotate({
     identifier: "EnvironmentsDeleteResponseEnvironmentsItem",
@@ -410,25 +948,41 @@ export const EnvironmentsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentsDeleteResponse",
 }) as any as S.Schema<EnvironmentsDeleteResponse>;
 
+export interface EnvironmentsEditRequestEnvironmentsItemPosition {
+  after?: string;
+  before?: string;
+}
+export const EnvironmentsEditRequestEnvironmentsItemPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      after: S.optional(S.String),
+      before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EnvironmentsEditRequestEnvironmentsItemPosition",
+  }) as any as S.Schema<EnvironmentsEditRequestEnvironmentsItemPosition>;
+
 export interface EnvironmentsEditRequestEnvironmentsItem {
   expression: string;
-  locked_on_deployment: boolean;
+  lockedOnDeployment: boolean;
   name: string;
-  position: unknown;
+  position: EnvironmentsEditRequestEnvironmentsItemPosition;
   ref: string;
   version: number;
-  http_application_id?: string;
+  httpApplicationId?: string;
 }
 export const EnvironmentsEditRequestEnvironmentsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       expression: S.String,
-      locked_on_deployment: S.Boolean,
+      lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
       name: S.String,
-      position: S.Unknown,
+      position: EnvironmentsEditRequestEnvironmentsItemPosition,
       ref: S.String,
       version: S.Number,
-      http_application_id: S.optional(S.String),
+      httpApplicationId: S.optional(
+        S.String.pipe(T.Body("http_application_id")),
+      ),
     }),
 ).annotate({
   identifier: "EnvironmentsEditRequestEnvironmentsItem",
@@ -441,12 +995,12 @@ export const EnvironmentsEditRequestEnvironmentsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EnvironmentsEditRequestEnvironmentsList>;
 
 export interface EnvironmentsEditRequest {
-  zone_id: string;
+  zoneId: string;
   environments: EnvironmentsEditRequestEnvironmentsList;
 }
 export const EnvironmentsEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     environments: EnvironmentsEditRequestEnvironmentsList,
   }).pipe(
     T.Http({
@@ -459,25 +1013,41 @@ export const EnvironmentsEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentsEditRequest",
 }) as any as S.Schema<EnvironmentsEditRequest>;
 
+export interface EnvironmentsEditResponseEnvironmentsItemPosition {
+  after?: string;
+  before?: string;
+}
+export const EnvironmentsEditResponseEnvironmentsItemPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      after: S.optional(S.String),
+      before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EnvironmentsEditResponseEnvironmentsItemPosition",
+  }) as any as S.Schema<EnvironmentsEditResponseEnvironmentsItemPosition>;
+
 export interface EnvironmentsEditResponseEnvironmentsItem {
   expression: string;
-  locked_on_deployment: boolean;
+  lockedOnDeployment: boolean;
   name: string;
-  position: unknown;
+  position: EnvironmentsEditResponseEnvironmentsItemPosition;
   ref: string;
   version: number;
-  http_application_id?: string;
+  httpApplicationId?: string;
 }
 export const EnvironmentsEditResponseEnvironmentsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       expression: S.String,
-      locked_on_deployment: S.Boolean,
+      lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
       name: S.String,
-      position: S.Unknown,
+      position: EnvironmentsEditResponseEnvironmentsItemPosition,
       ref: S.String,
       version: S.Number,
-      http_application_id: S.optional(S.String),
+      httpApplicationId: S.optional(
+        S.String.pipe(T.Body("http_application_id")),
+      ),
     }),
 ).annotate({
   identifier: "EnvironmentsEditResponseEnvironmentsItem",
@@ -502,11 +1072,11 @@ export const EnvironmentsEditResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentsEditResponse>;
 
 export interface EnvironmentsListRequest {
-  zone_id: string;
+  zoneId: string;
 }
 export const EnvironmentsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({ method: "GET", uri: "/zones/{zone_id}/environments", code: 200 }),
   ),
@@ -514,25 +1084,41 @@ export const EnvironmentsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentsListRequest",
 }) as any as S.Schema<EnvironmentsListRequest>;
 
+export interface EnvironmentsListResponseEnvironmentsItemPosition {
+  after?: string;
+  before?: string;
+}
+export const EnvironmentsListResponseEnvironmentsItemPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      after: S.optional(S.String),
+      before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EnvironmentsListResponseEnvironmentsItemPosition",
+  }) as any as S.Schema<EnvironmentsListResponseEnvironmentsItemPosition>;
+
 export interface EnvironmentsListResponseEnvironmentsItem {
   expression: string;
-  locked_on_deployment: boolean;
+  lockedOnDeployment: boolean;
   name: string;
-  position: unknown;
+  position: EnvironmentsListResponseEnvironmentsItemPosition;
   ref: string;
   version: number;
-  http_application_id?: string;
+  httpApplicationId?: string;
 }
 export const EnvironmentsListResponseEnvironmentsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       expression: S.String,
-      locked_on_deployment: S.Boolean,
+      lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
       name: S.String,
-      position: S.Unknown,
+      position: EnvironmentsListResponseEnvironmentsItemPosition,
       ref: S.String,
       version: S.Number,
-      http_application_id: S.optional(S.String),
+      httpApplicationId: S.optional(
+        S.String.pipe(T.Body("http_application_id")),
+      ),
     }),
 ).annotate({
   identifier: "EnvironmentsListResponseEnvironmentsItem",
@@ -557,13 +1143,13 @@ export const EnvironmentsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentsListResponse>;
 
 export interface EnvironmentsRollbackRequest {
-  zone_id: string;
-  environment_id: string;
+  zoneId: string;
+  environmentId: string;
 }
 export const EnvironmentsRollbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    environment_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    environmentId: S.String.pipe(T.Label("environment_id")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -575,25 +1161,41 @@ export const EnvironmentsRollbackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentsRollbackRequest",
 }) as any as S.Schema<EnvironmentsRollbackRequest>;
 
+export interface EnvironmentsRollbackResponseEnvironmentsItemPosition {
+  after?: string;
+  before?: string;
+}
+export const EnvironmentsRollbackResponseEnvironmentsItemPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      after: S.optional(S.String),
+      before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EnvironmentsRollbackResponseEnvironmentsItemPosition",
+  }) as any as S.Schema<EnvironmentsRollbackResponseEnvironmentsItemPosition>;
+
 export interface EnvironmentsRollbackResponseEnvironmentsItem {
   expression: string;
-  locked_on_deployment: boolean;
+  lockedOnDeployment: boolean;
   name: string;
-  position: unknown;
+  position: EnvironmentsRollbackResponseEnvironmentsItemPosition;
   ref: string;
   version: number;
-  http_application_id?: string;
+  httpApplicationId?: string;
 }
 export const EnvironmentsRollbackResponseEnvironmentsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       expression: S.String,
-      locked_on_deployment: S.Boolean,
+      lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
       name: S.String,
-      position: S.Unknown,
+      position: EnvironmentsRollbackResponseEnvironmentsItemPosition,
       ref: S.String,
       version: S.Number,
-      http_application_id: S.optional(S.String),
+      httpApplicationId: S.optional(
+        S.String.pipe(T.Body("http_application_id")),
+      ),
     }),
   ).annotate({
     identifier: "EnvironmentsRollbackResponseEnvironmentsItem",
@@ -618,25 +1220,41 @@ export const EnvironmentsRollbackResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentsRollbackResponse",
 }) as any as S.Schema<EnvironmentsRollbackResponse>;
 
+export interface EnvironmentsUpdateRequestEnvironmentsItemPosition {
+  after?: string;
+  before?: string;
+}
+export const EnvironmentsUpdateRequestEnvironmentsItemPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      after: S.optional(S.String),
+      before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EnvironmentsUpdateRequestEnvironmentsItemPosition",
+  }) as any as S.Schema<EnvironmentsUpdateRequestEnvironmentsItemPosition>;
+
 export interface EnvironmentsUpdateRequestEnvironmentsItem {
   expression: string;
-  locked_on_deployment: boolean;
+  lockedOnDeployment: boolean;
   name: string;
-  position: unknown;
+  position: EnvironmentsUpdateRequestEnvironmentsItemPosition;
   ref: string;
   version: number;
-  http_application_id?: string;
+  httpApplicationId?: string;
 }
 export const EnvironmentsUpdateRequestEnvironmentsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       expression: S.String,
-      locked_on_deployment: S.Boolean,
+      lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
       name: S.String,
-      position: S.Unknown,
+      position: EnvironmentsUpdateRequestEnvironmentsItemPosition,
       ref: S.String,
       version: S.Number,
-      http_application_id: S.optional(S.String),
+      httpApplicationId: S.optional(
+        S.String.pipe(T.Body("http_application_id")),
+      ),
     }),
   ).annotate({
     identifier: "EnvironmentsUpdateRequestEnvironmentsItem",
@@ -649,12 +1267,12 @@ export const EnvironmentsUpdateRequestEnvironmentsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EnvironmentsUpdateRequestEnvironmentsList>;
 
 export interface EnvironmentsUpdateRequest {
-  zone_id: string;
+  zoneId: string;
   environments: EnvironmentsUpdateRequestEnvironmentsList;
 }
 export const EnvironmentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     environments: EnvironmentsUpdateRequestEnvironmentsList,
   }).pipe(
     T.Http({ method: "PUT", uri: "/zones/{zone_id}/environments", code: 200 }),
@@ -663,25 +1281,41 @@ export const EnvironmentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentsUpdateRequest",
 }) as any as S.Schema<EnvironmentsUpdateRequest>;
 
+export interface EnvironmentsUpdateResponseEnvironmentsItemPosition {
+  after?: string;
+  before?: string;
+}
+export const EnvironmentsUpdateResponseEnvironmentsItemPosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      after: S.optional(S.String),
+      before: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EnvironmentsUpdateResponseEnvironmentsItemPosition",
+  }) as any as S.Schema<EnvironmentsUpdateResponseEnvironmentsItemPosition>;
+
 export interface EnvironmentsUpdateResponseEnvironmentsItem {
   expression: string;
-  locked_on_deployment: boolean;
+  lockedOnDeployment: boolean;
   name: string;
-  position: unknown;
+  position: EnvironmentsUpdateResponseEnvironmentsItemPosition;
   ref: string;
   version: number;
-  http_application_id?: string;
+  httpApplicationId?: string;
 }
 export const EnvironmentsUpdateResponseEnvironmentsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       expression: S.String,
-      locked_on_deployment: S.Boolean,
+      lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
       name: S.String,
-      position: S.Unknown,
+      position: EnvironmentsUpdateResponseEnvironmentsItemPosition,
       ref: S.String,
       version: S.Number,
-      http_application_id: S.optional(S.String),
+      httpApplicationId: S.optional(
+        S.String.pipe(T.Body("http_application_id")),
+      ),
     }),
   ).annotate({
     identifier: "EnvironmentsUpdateResponseEnvironmentsItem",
@@ -706,55 +1340,297 @@ export const EnvironmentsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentsUpdateResponse>;
 
 export interface GetRequest {
-  zone_id: string;
+  /** Identifier */
+  zoneId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}", code: 200 })),
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
+export interface GetResponseAccount {
+  /** Identifier */
+  id?: string;
+  /** The name of the account. */
+  name?: string;
+}
+export const GetResponseAccount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetResponseAccount",
+}) as any as S.Schema<GetResponseAccount>;
+
+export interface GetResponseMeta {
+  /** The zone is only configured for CDN. */
+  cdnOnly?: boolean;
+  /** Number of Custom Certificates the zone can have. */
+  customCertificateQuota?: number;
+  /** The zone is only configured for DNS. */
+  dnsOnly?: boolean;
+  /** The zone is setup with Foundation DNS. */
+  foundationDns?: boolean;
+  /** Number of Page Rules a zone can have. */
+  pageRuleQuota?: number;
+  /** The zone has been flagged for phishing. */
+  phishingDetected?: boolean;
+  step?: number;
+}
+export const GetResponseMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cdnOnly: S.optional(S.Boolean.pipe(T.Body("cdn_only"))),
+    customCertificateQuota: S.optional(
+      S.Number.pipe(T.Body("custom_certificate_quota")),
+    ),
+    dnsOnly: S.optional(S.Boolean.pipe(T.Body("dns_only"))),
+    foundationDns: S.optional(S.Boolean.pipe(T.Body("foundation_dns"))),
+    pageRuleQuota: S.optional(S.Number.pipe(T.Body("page_rule_quota"))),
+    phishingDetected: S.optional(S.Boolean.pipe(T.Body("phishing_detected"))),
+    step: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GetResponseMeta",
+}) as any as S.Schema<GetResponseMeta>;
+
+export type GetResponseNameServersList = string[];
+export const GetResponseNameServersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetResponseNameServersList>;
+
+export type GetResponseOriginalNameServersList = string[];
+export const GetResponseOriginalNameServersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetResponseOriginalNameServersList>;
+
+export interface GetResponseOwner {
+  /** Identifier */
+  id?: string;
+  /** Name of the owner. */
+  name?: string;
+  /** The type of owner. */
+  type?: string;
+}
+export const GetResponseOwner = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetResponseOwner",
+}) as any as S.Schema<GetResponseOwner>;
+
+export interface GetResponsePlan {
+  /** Identifier */
+  id?: string;
+  /** States if the subscription can be activated. */
+  canSubscribe?: boolean;
+  /** The denomination of the customer. */
+  currency?: string;
+  /** If this Zone is managed by another company. */
+  externallyManaged?: boolean;
+  /** How often the customer is billed. */
+  frequency?: string;
+  /** States if the subscription active. */
+  isSubscribed?: boolean;
+  /** If the legacy discount applies to this Zone. */
+  legacyDiscount?: boolean;
+  /** The legacy name of the plan. */
+  legacyId?: string;
+  /** Name of the owner. */
+  name?: string;
+  /** How much the customer is paying. */
+  price?: number;
+}
+export const GetResponsePlan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    canSubscribe: S.optional(S.Boolean.pipe(T.Body("can_subscribe"))),
+    currency: S.optional(S.String),
+    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
+    frequency: S.optional(S.String),
+    isSubscribed: S.optional(S.Boolean.pipe(T.Body("is_subscribed"))),
+    legacyDiscount: S.optional(S.Boolean.pipe(T.Body("legacy_discount"))),
+    legacyId: S.optional(S.String.pipe(T.Body("legacy_id"))),
+    name: S.optional(S.String),
+    price: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GetResponsePlan",
+}) as any as S.Schema<GetResponsePlan>;
+
+export type GetResponsePermissionsList = string[];
+export const GetResponsePermissionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetResponsePermissionsList>;
+
+export type GetResponseStatus =
+  | "initializing"
+  | "pending"
+  | "active"
+  | "moved"
+  | (string & {});
+export const GetResponseStatus = /*@__PURE__*/ S.String;
+
+export interface GetResponseTenant {
+  /** Identifier */
+  id?: string;
+  /** The name of the Tenant account. */
+  name?: string;
+}
+export const GetResponseTenant = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetResponseTenant",
+}) as any as S.Schema<GetResponseTenant>;
+
+export interface GetResponseTenantUnit {
+  /** Identifier */
+  id?: string;
+}
+export const GetResponseTenantUnit = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetResponseTenantUnit",
+}) as any as S.Schema<GetResponseTenantUnit>;
+
+export type GetResponseVanityNameServersList = string[];
+export const GetResponseVanityNameServersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetResponseVanityNameServersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
-  result?: unknown;
+  /** Identifier */
+  id: string;
+  /** The account the zone belongs to. */
+  account: GetResponseAccount;
+  /** The last time proof of ownership was detected and the zone was made */
+  activatedOn: string;
+  /** When the zone was created. */
+  createdOn: string;
+  /** The interval (in seconds) from when development mode expires */
+  developmentMode: number;
+  /** Metadata about the zone. */
+  meta: GetResponseMeta;
+  /** When the zone was last modified. */
+  modifiedOn: string;
+  /** The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters. */
+  name: string;
+  /** The name servers Cloudflare assigns to a zone. */
+  nameServers: GetResponseNameServersList;
+  /** DNS host at the time of switching to Cloudflare. */
+  originalDnshost: string;
+  /** Original name servers before moving to Cloudflare. */
+  originalNameServers: GetResponseOriginalNameServersList;
+  /** Registrar for the domain at the time of switching to Cloudflare. */
+  originalRegistrar: string;
+  /** The owner of the zone. */
+  owner: GetResponseOwner;
+  /** A Zones subscription information. */
+  plan: GetResponsePlan;
+  /** Allows the customer to use a custom apex. */
+  cnameSuffix?: string;
+  /** Indicates whether the zone is only using Cloudflare DNS services. A */
+  paused?: boolean;
+  /** Legacy permissions based on legacy user membership information. */
+  permissions?: GetResponsePermissionsList;
+  /** The zone status on Cloudflare. */
+  status?: GetResponseStatus;
+  /** The root organizational unit that this zone belongs to (such as a tenant or organization). */
+  tenant?: GetResponseTenant;
+  /** The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization). */
+  tenantUnit?: GetResponseTenantUnit;
+  /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is */
+  type?: unknown;
+  /** An array of domains used for custom name servers. This is only available for Business and Enterprise plans. */
+  vanityNameServers?: GetResponseVanityNameServersList;
+  /** Verification key for partial zone setup. */
+  verificationKey?: string;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    account: GetResponseAccount,
+    activatedOn: S.String.pipe(T.Body("activated_on")),
+    createdOn: S.String.pipe(T.Body("created_on")),
+    developmentMode: S.Number.pipe(T.Body("development_mode")),
+    meta: GetResponseMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    nameServers: GetResponseNameServersList.pipe(T.Body("name_servers")),
+    originalDnshost: S.String.pipe(T.Body("original_dnshost")),
+    originalNameServers: GetResponseOriginalNameServersList.pipe(
+      T.Body("original_name_servers"),
+    ),
+    originalRegistrar: S.String.pipe(T.Body("original_registrar")),
+    owner: GetResponseOwner,
+    plan: GetResponsePlan,
+    cnameSuffix: S.optional(S.String.pipe(T.Body("cname_suffix"))),
+    paused: S.optional(S.Boolean),
+    permissions: S.optional(GetResponsePermissionsList),
+    status: S.optional(GetResponseStatus),
+    tenant: S.optional(GetResponseTenant),
+    tenantUnit: S.optional(GetResponseTenantUnit.pipe(T.Body("tenant_unit"))),
+    type: S.optional(S.Unknown),
+    vanityNameServers: S.optional(
+      GetResponseVanityNameServersList.pipe(T.Body("vanity_name_servers")),
+    ),
+    verificationKey: S.optional(S.String.pipe(T.Body("verification_key"))),
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
 export interface HoldsCreateRequest {
-  zone_id: string;
-  include_subdomains?: boolean;
+  /** Identifier. */
+  zoneId: string;
+  /** If provided, the zone hold will extend to block any subdomain of the given zone, as well */
+  includeSubdomains?: boolean;
 }
 export const HoldsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    include_subdomains: S.optional(S.Boolean.pipe(T.Query())),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    includeSubdomains: S.optional(
+      S.Boolean.pipe(T.Query("include_subdomains")),
+    ),
   }).pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/hold", code: 200 })),
 ).annotate({
   identifier: "HoldsCreateRequest",
 }) as any as S.Schema<HoldsCreateRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface HoldsCreateResponse {
-  result?: unknown;
+  hold?: boolean;
+  holdAfter?: string;
+  includeSubdomains?: string;
 }
 export const HoldsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    hold: S.optional(S.Boolean),
+    holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
+    includeSubdomains: S.optional(S.String.pipe(T.Body("include_subdomains"))),
   }),
 ).annotate({
   identifier: "HoldsCreateResponse",
 }) as any as S.Schema<HoldsCreateResponse>;
 
 export interface HoldsDeleteRequest {
-  zone_id: string;
-  hold_after?: string;
+  /** Identifier. */
+  zoneId: string;
+  /** If `hold_after` is provided, the hold will be temporarily disabled, */
+  holdAfter?: string;
 }
 export const HoldsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    hold_after: S.optional(S.String.pipe(T.Query())),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    holdAfter: S.optional(S.String.pipe(T.Query("hold_after"))),
   }).pipe(
     T.Http({ method: "DELETE", uri: "/zones/{zone_id}/hold", code: 200 }),
   ),
@@ -762,60 +1638,79 @@ export const HoldsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "HoldsDeleteRequest",
 }) as any as S.Schema<HoldsDeleteRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface HoldsDeleteResponse {
-  result?: unknown;
+  hold?: boolean;
+  holdAfter?: string;
+  includeSubdomains?: string;
 }
 export const HoldsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    hold: S.optional(S.Boolean),
+    holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
+    includeSubdomains: S.optional(S.String.pipe(T.Body("include_subdomains"))),
   }),
 ).annotate({
   identifier: "HoldsDeleteResponse",
 }) as any as S.Schema<HoldsDeleteResponse>;
 
 export interface HoldsEditRequest {
-  zone_id: string;
-  hold_after?: string;
-  include_subdomains?: boolean;
+  /** Identifier. */
+  zoneId: string;
+  /** If `hold_after` is provided and future-dated, the hold will be temporarily disabled, */
+  holdAfter?: string;
+  /** If `true`, the zone hold will extend to block any subdomain of the given zone, as well */
+  includeSubdomains?: boolean;
 }
 export const HoldsEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    hold_after: S.optional(S.String),
-    include_subdomains: S.optional(S.Boolean),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
+    includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
   }).pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/hold", code: 200 })),
 ).annotate({
   identifier: "HoldsEditRequest",
 }) as any as S.Schema<HoldsEditRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface HoldsEditResponse {
-  result?: unknown;
+  hold?: boolean;
+  holdAfter?: string;
+  includeSubdomains?: string;
 }
 export const HoldsEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    hold: S.optional(S.Boolean),
+    holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
+    includeSubdomains: S.optional(S.String.pipe(T.Body("include_subdomains"))),
   }),
 ).annotate({
   identifier: "HoldsEditResponse",
 }) as any as S.Schema<HoldsEditResponse>;
 
 export interface HoldsGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const HoldsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/hold", code: 200 })),
 ).annotate({
   identifier: "HoldsGetRequest",
 }) as any as S.Schema<HoldsGetRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface HoldsGetResponse {
-  result?: unknown;
+  hold?: boolean;
+  holdAfter?: string;
+  includeSubdomains?: string;
 }
 export const HoldsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    hold: S.optional(S.Boolean),
+    holdAfter: S.optional(S.String.pipe(T.Body("hold_after"))),
+    includeSubdomains: S.optional(S.String.pipe(T.Body("include_subdomains"))),
   }),
 ).annotate({
   identifier: "HoldsGetResponse",
@@ -853,13 +1748,21 @@ export const ListRequestTypeList = /*@__PURE__*/ S.Array(
 
 export interface ListRequest {
   account?: string;
+  /** Direction to order zones. */
   direction?: ListRequestDirection;
+  /** Whether to match all search requirements or at least one (any). */
   match?: ListRequestMatch;
+  /** A domain name. Optional filter operators can be provided to extend refine the search: */
   name?: string;
+  /** Field to order zones by. */
   order?: ListRequestOrder;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
+  /** Number of zones per page. */
+  perPage?: number;
+  /** Specify a zone status to filter by. */
   status?: ListRequestStatus;
+  /** Zone types to filter by. Multiple types can be specified as a comma-separated list (e.g., ?type=full,partial,secondary). When this parameter is not provided, zones with type "internal" are excluded from the results. */
   type?: ListRequestTypeList;
 }
 export const ListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -870,18 +1773,259 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String.pipe(T.Query())),
     order: S.optional(ListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     status: S.optional(ListRequestStatus.pipe(T.Query())),
     type: S.optional(ListRequestTypeList.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/zones", code: 200 })),
 ).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
 
-export type ListResultList = unknown[];
+export interface ListResultItemAccount {
+  /** Identifier */
+  id?: string;
+  /** The name of the account. */
+  name?: string;
+}
+export const ListResultItemAccount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListResultItemAccount",
+}) as any as S.Schema<ListResultItemAccount>;
+
+export interface ListResultItemMeta {
+  /** The zone is only configured for CDN. */
+  cdnOnly?: boolean;
+  /** Number of Custom Certificates the zone can have. */
+  customCertificateQuota?: number;
+  /** The zone is only configured for DNS. */
+  dnsOnly?: boolean;
+  /** The zone is setup with Foundation DNS. */
+  foundationDns?: boolean;
+  /** Number of Page Rules a zone can have. */
+  pageRuleQuota?: number;
+  /** The zone has been flagged for phishing. */
+  phishingDetected?: boolean;
+  step?: number;
+}
+export const ListResultItemMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cdnOnly: S.optional(S.Boolean.pipe(T.Body("cdn_only"))),
+    customCertificateQuota: S.optional(
+      S.Number.pipe(T.Body("custom_certificate_quota")),
+    ),
+    dnsOnly: S.optional(S.Boolean.pipe(T.Body("dns_only"))),
+    foundationDns: S.optional(S.Boolean.pipe(T.Body("foundation_dns"))),
+    pageRuleQuota: S.optional(S.Number.pipe(T.Body("page_rule_quota"))),
+    phishingDetected: S.optional(S.Boolean.pipe(T.Body("phishing_detected"))),
+    step: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ListResultItemMeta",
+}) as any as S.Schema<ListResultItemMeta>;
+
+export type ListResultItemNameServersList = string[];
+export const ListResultItemNameServersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultItemNameServersList>;
+
+export type ListResultItemOriginalNameServersList = string[];
+export const ListResultItemOriginalNameServersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultItemOriginalNameServersList>;
+
+export interface ListResultItemOwner {
+  /** Identifier */
+  id?: string;
+  /** Name of the owner. */
+  name?: string;
+  /** The type of owner. */
+  type?: string;
+}
+export const ListResultItemOwner = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListResultItemOwner",
+}) as any as S.Schema<ListResultItemOwner>;
+
+export interface ListResultItemPlan {
+  /** Identifier */
+  id?: string;
+  /** States if the subscription can be activated. */
+  canSubscribe?: boolean;
+  /** The denomination of the customer. */
+  currency?: string;
+  /** If this Zone is managed by another company. */
+  externallyManaged?: boolean;
+  /** How often the customer is billed. */
+  frequency?: string;
+  /** States if the subscription active. */
+  isSubscribed?: boolean;
+  /** If the legacy discount applies to this Zone. */
+  legacyDiscount?: boolean;
+  /** The legacy name of the plan. */
+  legacyId?: string;
+  /** Name of the owner. */
+  name?: string;
+  /** How much the customer is paying. */
+  price?: number;
+}
+export const ListResultItemPlan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    canSubscribe: S.optional(S.Boolean.pipe(T.Body("can_subscribe"))),
+    currency: S.optional(S.String),
+    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
+    frequency: S.optional(S.String),
+    isSubscribed: S.optional(S.Boolean.pipe(T.Body("is_subscribed"))),
+    legacyDiscount: S.optional(S.Boolean.pipe(T.Body("legacy_discount"))),
+    legacyId: S.optional(S.String.pipe(T.Body("legacy_id"))),
+    name: S.optional(S.String),
+    price: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ListResultItemPlan",
+}) as any as S.Schema<ListResultItemPlan>;
+
+export type ListResultItemPermissionsList = string[];
+export const ListResultItemPermissionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultItemPermissionsList>;
+
+export type ListResultItemStatus =
+  | "initializing"
+  | "pending"
+  | "active"
+  | "moved"
+  | (string & {});
+export const ListResultItemStatus = /*@__PURE__*/ S.String;
+
+export interface ListResultItemTenant {
+  /** Identifier */
+  id?: string;
+  /** The name of the Tenant account. */
+  name?: string;
+}
+export const ListResultItemTenant = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListResultItemTenant",
+}) as any as S.Schema<ListResultItemTenant>;
+
+export interface ListResultItemTenantUnit {
+  /** Identifier */
+  id?: string;
+}
+export const ListResultItemTenantUnit = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListResultItemTenantUnit",
+}) as any as S.Schema<ListResultItemTenantUnit>;
+
+export type ListResultItemVanityNameServersList = string[];
+export const ListResultItemVanityNameServersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultItemVanityNameServersList>;
+
+export interface ListResultItem {
+  /** Identifier */
+  id: string;
+  /** The account the zone belongs to. */
+  account: ListResultItemAccount;
+  /** The last time proof of ownership was detected and the zone was made */
+  activatedOn: string;
+  /** When the zone was created. */
+  createdOn: string;
+  /** The interval (in seconds) from when development mode expires */
+  developmentMode: number;
+  /** Metadata about the zone. */
+  meta: ListResultItemMeta;
+  /** When the zone was last modified. */
+  modifiedOn: string;
+  /** The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters. */
+  name: string;
+  /** The name servers Cloudflare assigns to a zone. */
+  nameServers: ListResultItemNameServersList;
+  /** DNS host at the time of switching to Cloudflare. */
+  originalDnshost: string;
+  /** Original name servers before moving to Cloudflare. */
+  originalNameServers: ListResultItemOriginalNameServersList;
+  /** Registrar for the domain at the time of switching to Cloudflare. */
+  originalRegistrar: string;
+  /** The owner of the zone. */
+  owner: ListResultItemOwner;
+  /** A Zones subscription information. */
+  plan: ListResultItemPlan;
+  /** Allows the customer to use a custom apex. */
+  cnameSuffix?: string;
+  /** Indicates whether the zone is only using Cloudflare DNS services. A */
+  paused?: boolean;
+  /** Legacy permissions based on legacy user membership information. */
+  permissions?: ListResultItemPermissionsList;
+  /** The zone status on Cloudflare. */
+  status?: ListResultItemStatus;
+  /** The root organizational unit that this zone belongs to (such as a tenant or organization). */
+  tenant?: ListResultItemTenant;
+  /** The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization). */
+  tenantUnit?: ListResultItemTenantUnit;
+  /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is */
+  type?: unknown;
+  /** An array of domains used for custom name servers. This is only available for Business and Enterprise plans. */
+  vanityNameServers?: ListResultItemVanityNameServersList;
+  /** Verification key for partial zone setup. */
+  verificationKey?: string;
+}
+export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    account: ListResultItemAccount,
+    activatedOn: S.String.pipe(T.Body("activated_on")),
+    createdOn: S.String.pipe(T.Body("created_on")),
+    developmentMode: S.Number.pipe(T.Body("development_mode")),
+    meta: ListResultItemMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    nameServers: ListResultItemNameServersList.pipe(T.Body("name_servers")),
+    originalDnshost: S.String.pipe(T.Body("original_dnshost")),
+    originalNameServers: ListResultItemOriginalNameServersList.pipe(
+      T.Body("original_name_servers"),
+    ),
+    originalRegistrar: S.String.pipe(T.Body("original_registrar")),
+    owner: ListResultItemOwner,
+    plan: ListResultItemPlan,
+    cnameSuffix: S.optional(S.String.pipe(T.Body("cname_suffix"))),
+    paused: S.optional(S.Boolean),
+    permissions: S.optional(ListResultItemPermissionsList),
+    status: S.optional(ListResultItemStatus),
+    tenant: S.optional(ListResultItemTenant),
+    tenantUnit: S.optional(
+      ListResultItemTenantUnit.pipe(T.Body("tenant_unit")),
+    ),
+    type: S.optional(S.Unknown),
+    vanityNameServers: S.optional(
+      ListResultItemVanityNameServersList.pipe(T.Body("vanity_name_servers")),
+    ),
+    verificationKey: S.optional(S.String.pipe(T.Body("verification_key"))),
+  }),
+).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
+
+export type ListResultList = ListResultItem[];
 export const ListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
 export interface ListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
 export const ListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -891,13 +2035,15 @@ export const ListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
 
 export interface PlansGetRequest {
-  zone_id: string;
-  plan_identifier: string;
+  /** Identifier */
+  zoneId: string;
+  /** Identifier */
+  planIdentifier: string;
 }
 export const PlansGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    plan_identifier: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    planIdentifier: S.String.pipe(T.Label("plan_identifier")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -909,23 +2055,61 @@ export const PlansGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlansGetRequest",
 }) as any as S.Schema<PlansGetRequest>;
 
+export type PlansGetResponseFrequency =
+  | "weekly"
+  | "monthly"
+  | "quarterly"
+  | "yearly"
+  | (string & {});
+export const PlansGetResponseFrequency = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PlansGetResponse {
-  result?: unknown;
+  /** Identifier */
+  id?: string;
+  /** Indicates whether you can subscribe to this plan. */
+  canSubscribe?: boolean;
+  /** The monetary unit in which pricing information is displayed. */
+  currency?: string;
+  /** Indicates whether this plan is managed externally. */
+  externallyManaged?: boolean;
+  /** The frequency at which you will be billed for this plan. */
+  frequency?: PlansGetResponseFrequency;
+  /** Indicates whether you are currently subscribed to this plan. */
+  isSubscribed?: boolean;
+  /** Indicates whether this plan has a legacy discount applied. */
+  legacyDiscount?: boolean;
+  /** The legacy identifier for this rate plan, if any. */
+  legacyId?: string;
+  /** The plan name. */
+  name?: string;
+  /** The amount you will be billed for this plan. */
+  price?: number;
 }
 export const PlansGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    canSubscribe: S.optional(S.Boolean.pipe(T.Body("can_subscribe"))),
+    currency: S.optional(S.String),
+    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
+    frequency: S.optional(PlansGetResponseFrequency),
+    isSubscribed: S.optional(S.Boolean.pipe(T.Body("is_subscribed"))),
+    legacyDiscount: S.optional(S.Boolean.pipe(T.Body("legacy_discount"))),
+    legacyId: S.optional(S.String.pipe(T.Body("legacy_id"))),
+    name: S.optional(S.String),
+    price: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "PlansGetResponse",
 }) as any as S.Schema<PlansGetResponse>;
 
 export interface PlansListRequest {
-  zone_id: string;
+  /** Identifier */
+  zoneId: string;
 }
 export const PlansListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -937,12 +2121,60 @@ export const PlansListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlansListRequest",
 }) as any as S.Schema<PlansListRequest>;
 
-export type PlansListResultList = unknown[];
+export type PlansListResultItemFrequency =
+  | "weekly"
+  | "monthly"
+  | "quarterly"
+  | "yearly"
+  | (string & {});
+export const PlansListResultItemFrequency = /*@__PURE__*/ S.String;
+
+export interface PlansListResultItem {
+  /** Identifier */
+  id?: string;
+  /** Indicates whether you can subscribe to this plan. */
+  canSubscribe?: boolean;
+  /** The monetary unit in which pricing information is displayed. */
+  currency?: string;
+  /** Indicates whether this plan is managed externally. */
+  externallyManaged?: boolean;
+  /** The frequency at which you will be billed for this plan. */
+  frequency?: PlansListResultItemFrequency;
+  /** Indicates whether you are currently subscribed to this plan. */
+  isSubscribed?: boolean;
+  /** Indicates whether this plan has a legacy discount applied. */
+  legacyDiscount?: boolean;
+  /** The legacy identifier for this rate plan, if any. */
+  legacyId?: string;
+  /** The plan name. */
+  name?: string;
+  /** The amount you will be billed for this plan. */
+  price?: number;
+}
+export const PlansListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    canSubscribe: S.optional(S.Boolean.pipe(T.Body("can_subscribe"))),
+    currency: S.optional(S.String),
+    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
+    frequency: S.optional(PlansListResultItemFrequency),
+    isSubscribed: S.optional(S.Boolean.pipe(T.Body("is_subscribed"))),
+    legacyDiscount: S.optional(S.Boolean.pipe(T.Body("legacy_discount"))),
+    legacyId: S.optional(S.String.pipe(T.Body("legacy_id"))),
+    name: S.optional(S.String),
+    price: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PlansListResultItem",
+}) as any as S.Schema<PlansListResultItem>;
+
+export type PlansListResultList = PlansListResultItem[];
 export const PlansListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PlansListResultItem,
 ) as any as S.Schema<PlansListResultList>;
 
 export interface PlansListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PlansListResultList;
 }
 export const PlansListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -954,11 +2186,12 @@ export const PlansListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlansListResponse>;
 
 export interface RatePlansGetRequest {
-  zone_id: string;
+  /** Identifier */
+  zoneId: string;
 }
 export const RatePlansGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -979,16 +2212,19 @@ export type RatePlansGetResultItemComponentsItemName =
 export const RatePlansGetResultItemComponentsItemName = /*@__PURE__*/ S.String;
 
 export interface RatePlansGetResultItemComponentsItem {
+  /** The default amount allocated. */
   default?: number;
+  /** The unique component. */
   name?: RatePlansGetResultItemComponentsItemName;
-  unit_price?: number;
+  /** The unit price of the addon. */
+  unitPrice?: number;
 }
 export const RatePlansGetResultItemComponentsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       default: S.optional(S.Number),
       name: S.optional(RatePlansGetResultItemComponentsItemName),
-      unit_price: S.optional(S.Number),
+      unitPrice: S.optional(S.Number.pipe(T.Body("unit_price"))),
     }),
 ).annotate({
   identifier: "RatePlansGetResultItemComponentsItem",
@@ -1009,11 +2245,17 @@ export type RatePlansGetResultItemFrequency =
 export const RatePlansGetResultItemFrequency = /*@__PURE__*/ S.String;
 
 export interface RatePlansGetResultItem {
+  /** Plan identifier tag. */
   id?: string;
+  /** Array of available components values for the plan. */
   components?: RatePlansGetResultItemComponentsList;
+  /** The monetary unit in which pricing information is displayed. */
   currency?: string;
+  /** The duration of the plan subscription. */
   duration?: number;
+  /** The frequency at which you will be billed for this plan. */
   frequency?: RatePlansGetResultItemFrequency;
+  /** The plan name. */
   name?: string;
 }
 export const RatePlansGetResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -1035,6 +2277,7 @@ export const RatePlansGetResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RatePlansGetResultList>;
 
 export interface RatePlansGetResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RatePlansGetResultList;
 }
 export const RatePlansGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1045,18 +2288,387 @@ export const RatePlansGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RatePlansGetResponse",
 }) as any as S.Schema<RatePlansGetResponse>;
 
-export type SettingsBulkEditRequestBodyList = unknown[];
+export interface SettingsBulkEditRequestBodyItem {
+  /** 0-RTT session resumption enabled for this zone. */
+  ZeroRTTObjectIdValueEditableModifiedOn__: unknown;
+  /** Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones. */
+  AdvancedDDoSObjectIdValueEditableModifiedOn__: unknown;
+  /** Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses. */
+  ZonesCacheRulesAegisObjectIdModifiedOnValue__: unknown;
+  /** When enabled, Cloudflare serves limited copies of web pages available from the [Internet Archive's Wayback Machine](https://archive.org/web/) if your server is offline. Refer to [Always Online](https://developers.cloudflare.com/cache/about/always-online) for more information. */
+  AlwaysOnlineObjectIdValueEditableModifiedOn__: unknown;
+  /** Reply to all requests for URLs that use "http" with a 301 redirect to the equivalent "https" URL. If you only want to redirect for a subset of requests, consider creating an "Always use HTTPS" page rule. */
+  ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable the Automatic HTTPS Rewrites feature for this zone. */
+  ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__: unknown;
+  /** When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset. */
+  BrotliObjectIdValueEditableModifiedOn__: unknown;
+  /** Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276). */
+  ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__: unknown;
+  /** Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page. It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086). */
+  ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: unknown;
+  /** Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256). */
+  ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: unknown;
+  /** Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136). */
+  ChallengeTTLObjectIdValueEditableModifiedOn__: unknown;
+  /** Determines whether or not the china network is enabled. */
+  ZonesChinaNetworkEnabledObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled and the client sends an Accept header requesting text/markdown, */
+  ZonesContentConverterObjectIdValueEditableModifiedOn__: unknown;
+  /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
+  CiphersObjectIdValueEditableModifiedOn__: unknown;
+  /** Whether or not cname flattening is on. */
+  ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: unknown;
+  /** Development Mode temporarily allows you to enter development mode for your websites if you need to make changes to your site. This will bypass Cloudflare's accelerated cache and slow down your site, but is useful if you are making changes to cacheable content (like images, css, or JavaScript) and would like to see those changes right away. Once entered, development mode will last for 3 hours and then automatically toggle off. */
+  DevelopmentModeObjectIdValueEditable2More__: unknown;
+  /** When enabled, Cloudflare will attempt to speed up overall page loads by serving `103` responses with `Link` headers from the final response. Refer to [Early Hints](https://developers.cloudflare.com/cache/about/early-hints) for more information. */
+  EarlyHintsObjectIdValueEditableModifiedOn__: unknown;
+  /** Time (in seconds) that a resource will be ensured to remain on Cloudflare's cache servers. */
+  ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: unknown;
+  /** Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016). */
+  ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__: unknown;
+  /** HTTP/2 Edge Prioritization optimises the delivery of resources served through HTTP/2 to improve page load performance. It also supports fine control of content delivery when used in conjunction with Workers. */
+  H2PrioritizationObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026). */
+  HotlinkProtectionObjectIdValueEditableModifiedOn__: unknown;
+  /** HTTP2 enabled for this zone. */
+  HTTP2ObjectIdValueEditableModifiedOn__: unknown;
+  /** HTTP3 enabled for this zone. */
+  HTTP3ObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236). */
+  ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable IPv6 on all subdomains that are Cloudflare enabled. (https://support.cloudflare.com/hc/en-us/articles/200168586). */
+  IPV6ObjectIdValueEditableModifiedOn__: unknown;
+  /** Maximum size of an allowable upload. */
+  ZonesMaxUploadObjectIdValueEditableModifiedOn__: unknown;
+  /** Only accepts HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted. */
+  MinTLSVersionObjectIdValueEditableModifiedOn__: unknown;
+  /** Automatically optimize image loading for website visitors on mobile */
+  ZonesSchemasMirageObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable Network Error Logging reporting on your zone. (Beta) */
+  NELObjectIdValueEditableModifiedOn__: unknown;
+  /** Enables the Opportunistic Encryption feature for a zone. */
+  ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__: unknown;
+  /** Add an Alt-Svc header to all legitimate requests from Tor, allowing the connection to use our onion services instead of exit nodes. */
+  OpportunisticOnionObjectIdValueEditableModifiedOn__: unknown;
+  /** Orange to Orange (O2O) allows zones on Cloudflare to CNAME to other zones also on Cloudflare. */
+  OrangeToOrangeObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones. */
+  ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__: unknown;
+  /** Origin H2 Max Streams configures the max number of concurrent requests that Cloudflare will send within the same connection when communicating with the origin server, if the origin supports it. Note that if your origin does not support H2 multiplexing, 5xx errors may be observed, particularly 520s. Also note that the default value is `100` for all plan types except Enterprise where it is `1`. `1` means that H2 multiplexing is disabled. */
+  ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: unknown;
+  /** Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is "2" for all plan types except Enterprise where it is "1". */
+  ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__: unknown;
+  /** Removes metadata and compresses your images for faster page load times. Basic (Lossless): Reduce the size of PNG, JPEG, and GIF files - no impact on visual quality. Basic + JPEG (Lossy): Further reduce the size of JPEG files for faster image loading. Larger JPEGs are converted to progressive images, loading a lower-resolution image first and ending in a higher-resolution version. Not recommended for hi-res photography sites. */
+  ZonesSchemasPolishObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare will prefetch any URLs that are included in the response headers. This is limited to Enterprise Zones. */
+  PrefetchPreloadObjectIdValueEditableModifiedOn__: unknown;
+  /** Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass). */
+  ZonesPrivacyPassObjectIdValueEditableModifiedOn__: unknown;
+  /** Maximum time between two read operations from origin. */
+  ProxyReadTimeoutObjectIdValueEditableModifiedOn__: unknown;
+  /** The value set for the Pseudo IPv4 setting. */
+  PseudoIPV4ObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled, Cloudflare will redirect verified AI training crawlers to canonical URLs */
+  ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__: unknown;
+  /** Automatically replace insecure JavaScript libraries with safer and faster alternatives provided under cdnjs and powered by Cloudflare. Currently supports the following libraries: Polyfill under polyfill.io. */
+  ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: unknown;
+  /** Enables or disables buffering of responses from the proxied server. Cloudflare may buffer the whole payload to deliver it at once to the client versus allowing it to be delivered in chunks. By default, the proxied server streams directly and is not buffered by Cloudflare. This is limited to Enterprise Zones. */
+  ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__: unknown;
+  /** Rocket Loader is a general-purpose asynchronous JavaScript optimisation that prioritises rendering your content while loading your site's Javascript asynchronously. Turning on Rocket Loader will immediately improve a web page's rendering time sometimes measured as Time to First Paint (TTFP), and also the `window.onload` time (assuming there is JavaScript on the page). This can have a positive impact on your Google search ranking. When turned on, Rocket Loader will automatically defer the loading of all Javascript referenced in your HTML, with no configuration required. Refer to [Understanding Rocket Loader](https://support.cloudflare.com/hc/articles/200168056) for more information. */
+  ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: unknown;
+  /** [Automatic Platform Optimization for WordPress](https://developers.cloudflare.com/automatic-platform-optimization/) serves your WordPress site from Cloudflare's edge network and caches third-party fonts. */
+  ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled, Cloudflare provisions an AI Search instance for the zone */
+  ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare security header for a zone. */
+  SecurityHeadersObjectIdValueEditableModifiedOn__: unknown;
+  /** Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056). */
+  ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: unknown;
+  /** If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse--> Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036). */
+  ServerSideExcludesObjectIdValueEditableModifiedOn__: unknown;
+  /** Allow SHA1 support. */
+  ZonesSha1SupportObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare will treat files with the same query strings as the same file in cache, regardless of the order of the query strings. This is limited to Enterprise Zones. */
+  ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__: unknown;
+  /** SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416). */
+  ZonesSchemasSSLObjectIdValueEditableModifiedOn__: unknown;
+  /** Enrollment in the SSL/TLS Recommender service which tries to detect and recommend (by sending periodic emails) the most secure SSL/TLS setting your origin servers support. */
+  SSLRecommenderObjectIdEnabled__: unknown;
+  /** Only allows TLS1.2. */
+  ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: unknown;
+  /** Enables Crypto TLS 1.3 feature for a zone. */
+  TLS13ObjectIdValueEditableModifiedOn__: unknown;
+  /** TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only). */
+  TLSClientAuthObjectIdValueEditableModifiedOn__: unknown;
+  /** Allows customer to continue to use True Client IP (Akamai feature) in the headers we send to the origin. This is limited to Enterprise Zones. */
+  ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__: unknown;
+  /** The WAF examines HTTP requests to your website. It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016). */
+  ZonesSchemasWAFObjectIdValueEditableModifiedOn__: unknown;
+  /** When the client requesting the image supports the WebP image codec, and WebP offers a performance advantage over the original image format, Cloudflare will serve a WebP version of the original image. */
+  WebPObjectIdValueEditableModifiedOn__: unknown;
+  /** WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-). */
+  WebsocketObjectIdValueEditableModifiedOn__: unknown;
+}
+export const SettingsBulkEditRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ZeroRTTObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZeroRTT object { id, value, editable, modified_on }"),
+    ),
+    AdvancedDDoSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("AdvancedDDoS object { id, value, editable, modified_on }"),
+    ),
+    ZonesCacheRulesAegisObjectIdModifiedOnValue__: S.Unknown.pipe(
+      T.Body("ZonesCacheRulesAegis object { id, modified_on, value }"),
+    ),
+    AlwaysOnlineObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("AlwaysOnline object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasAlwaysUseHTTPS object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasAutomaticHTTPSRewrites object { id, value, editable, modified_on }",
+        ),
+      ),
+    BrotliObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("Brotli object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasBrowserCacheTTL object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasBrowserCheck object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasCacheLevel object { id, value, editable, modified_on }",
+      ),
+    ),
+    ChallengeTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ChallengeTTL object { id, value, editable, modified_on }"),
+    ),
+    ZonesChinaNetworkEnabledObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesChinaNetworkEnabled object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesContentConverterObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesContentConverter object { id, value, editable, modified_on }",
+      ),
+    ),
+    CiphersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("Ciphers object { id, value, editable, modified_on }"),
+    ),
+    ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesCNAMEFlattening object { id, value, editable, modified_on }",
+      ),
+    ),
+    DevelopmentModeObjectIdValueEditable2More__: S.Unknown.pipe(
+      T.Body("DevelopmentMode object { id, value, editable, 2 more }"),
+    ),
+    EarlyHintsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("EarlyHints object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasEdgeCacheTTL object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasEmailObfuscation object { id, value, editable, modified_on }",
+        ),
+      ),
+    H2PrioritizationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("H2Prioritization object { id, value, editable, modified_on }"),
+    ),
+    HotlinkProtectionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("HotlinkProtection object { id, value, editable, modified_on }"),
+    ),
+    HTTP2ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("HTTP2 object { id, value, editable, modified_on }"),
+    ),
+    HTTP3ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("HTTP3 object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasIPGeolocation object { id, value, editable, modified_on }",
+      ),
+    ),
+    IPV6ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("IPV6 object { id, value, editable, modified_on }"),
+    ),
+    ZonesMaxUploadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesMaxUpload object { id, value, editable, modified_on }"),
+    ),
+    MinTLSVersionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("MinTLSVersion object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasMirageObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasMirage object { id, value, editable, modified_on }"),
+    ),
+    NELObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("NEL object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasOpportunisticEncryption object { id, value, editable, modified_on }",
+        ),
+      ),
+    OpportunisticOnionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("OpportunisticOnion object { id, value, editable, modified_on }"),
+    ),
+    OrangeToOrangeObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("OrangeToOrange object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasOriginErrorPagePassThru object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: S.Unknown.pipe(
+      T.Body(
+        "ZonesCacheRulesOriginH2MaxStreams object { id, modified_on, value }",
+      ),
+    ),
+    ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesCacheRulesOriginMaxHTTPVersion object { id, modified_on, value }",
+        ),
+      ),
+    ZonesSchemasPolishObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasPolish object { id, value, editable, modified_on }"),
+    ),
+    PrefetchPreloadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("PrefetchPreload object { id, value, editable, modified_on }"),
+    ),
+    ZonesPrivacyPassObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesPrivacyPass object { id, value, editable, modified_on }"),
+    ),
+    ProxyReadTimeoutObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ProxyReadTimeout object { id, value, editable, modified_on }"),
+    ),
+    PseudoIPV4ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("PseudoIPV4 object { id, value, editable, modified_on }"),
+    ),
+    ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesRedirectsForAITraining object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesReplaceInsecureJS object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasResponseBuffering object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasRocketLoader object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasAutomaticPlatformOptimization object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSearchForAgents object { id, value, editable, modified_on }",
+      ),
+    ),
+    SecurityHeadersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("SecurityHeaders object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasSecurityLevel object { id, value, editable, modified_on }",
+      ),
+    ),
+    ServerSideExcludesObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ServerSideExcludes object { id, value, editable, modified_on }"),
+    ),
+    ZonesSha1SupportObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSha1Support object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasSortQueryStringForCache object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasSSLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasSSL object { id, value, editable, modified_on }"),
+    ),
+    SSLRecommenderObjectIdEnabled__: S.Unknown.pipe(
+      T.Body("SSLRecommender object { id, enabled }"),
+    ),
+    ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesTLS1_2Only object { id, value, editable, modified_on }"),
+    ),
+    TLS13ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("TLS1_3 object { id, value, editable, modified_on }"),
+    ),
+    TLSClientAuthObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("TLSClientAuth object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasTrueClientIPHeader object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasWAFObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasWAF object { id, value, editable, modified_on }"),
+    ),
+    WebPObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("WebP object { id, value, editable, modified_on }"),
+    ),
+    WebsocketObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("Websocket object { id, value, editable, modified_on }"),
+    ),
+  }),
+).annotate({
+  identifier: "SettingsBulkEditRequestBodyItem",
+}) as any as S.Schema<SettingsBulkEditRequestBodyItem>;
+
+export type SettingsBulkEditRequestBodyList = SettingsBulkEditRequestBodyItem[];
 export const SettingsBulkEditRequestBodyList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  SettingsBulkEditRequestBodyItem,
 ) as any as S.Schema<SettingsBulkEditRequestBodyList>;
 
 export interface SettingsBulkEditRequest {
-  zone_id: string;
+  /** Identifier */
+  zoneId: string;
   body: SettingsBulkEditRequestBodyList;
 }
 export const SettingsBulkEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     body: SettingsBulkEditRequestBodyList,
   }).pipe(
     T.Http({ method: "PATCH", uri: "/zones/{zone_id}/settings", code: 200 }),
@@ -1065,12 +2677,394 @@ export const SettingsBulkEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsBulkEditRequest",
 }) as any as S.Schema<SettingsBulkEditRequest>;
 
-export type SettingsBulkEditResultList = unknown[];
+export interface SettingsBulkEditResultItem {
+  /** 0-RTT session resumption enabled for this zone. */
+  ZeroRTTObjectIdValueEditableModifiedOn__: unknown;
+  /** Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones. */
+  AdvancedDDoSObjectIdValueEditableModifiedOn__: unknown;
+  /** Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses. */
+  ZonesCacheRulesAegisObjectIdModifiedOnValue__: unknown;
+  /** When enabled, Cloudflare serves limited copies of web pages available from the [Internet Archive's Wayback Machine](https://archive.org/web/) if your server is offline. Refer to [Always Online](https://developers.cloudflare.com/cache/about/always-online) for more information. */
+  AlwaysOnlineObjectIdValueEditableModifiedOn__: unknown;
+  /** Reply to all requests for URLs that use "http" with a 301 redirect to the equivalent "https" URL. If you only want to redirect for a subset of requests, consider creating an "Always use HTTPS" page rule. */
+  ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable the Automatic HTTPS Rewrites feature for this zone. */
+  ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__: unknown;
+  /** When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset. */
+  BrotliObjectIdValueEditableModifiedOn__: unknown;
+  /** Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276). */
+  ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__: unknown;
+  /** Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page. It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086). */
+  ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: unknown;
+  /** Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256). */
+  ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: unknown;
+  /** Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136). */
+  ChallengeTTLObjectIdValueEditableModifiedOn__: unknown;
+  /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
+  CiphersObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled and the client sends an Accept header requesting text/markdown, */
+  ZonesContentConverterObjectIdValueEditableModifiedOn__: unknown;
+  /** Whether or not cname flattening is on. */
+  ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: unknown;
+  /** Development Mode temporarily allows you to enter development mode for your websites if you need to make changes to your site. This will bypass Cloudflare's accelerated cache and slow down your site, but is useful if you are making changes to cacheable content (like images, css, or JavaScript) and would like to see those changes right away. Once entered, development mode will last for 3 hours and then automatically toggle off. */
+  DevelopmentModeObjectIdValueEditable2More__: unknown;
+  /** When enabled, Cloudflare will attempt to speed up overall page loads by serving `103` responses with `Link` headers from the final response. Refer to [Early Hints](https://developers.cloudflare.com/cache/about/early-hints) for more information. */
+  EarlyHintsObjectIdValueEditableModifiedOn__: unknown;
+  /** Time (in seconds) that a resource will be ensured to remain on Cloudflare's cache servers. */
+  ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: unknown;
+  /** Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016). */
+  ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__: unknown;
+  /** HTTP/2 Edge Prioritization optimises the delivery of resources served through HTTP/2 to improve page load performance. It also supports fine control of content delivery when used in conjunction with Workers. */
+  H2PrioritizationObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026). */
+  HotlinkProtectionObjectIdValueEditableModifiedOn__: unknown;
+  /** HTTP2 enabled for this zone. */
+  HTTP2ObjectIdValueEditableModifiedOn__: unknown;
+  /** HTTP3 enabled for this zone. */
+  HTTP3ObjectIdValueEditableModifiedOn__: unknown;
+  /** Image Transformations provides on-demand resizing, conversion and optimization for images served through Cloudflare's network. Refer to the [Image Transformations documentation](https://developers.cloudflare.com/images/) for more information. */
+  ImageResizingObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236). */
+  ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable IPv6 on all subdomains that are Cloudflare enabled. (https://support.cloudflare.com/hc/en-us/articles/200168586). */
+  IPV6ObjectIdValueEditableModifiedOn__: unknown;
+  /** Maximum size of an allowable upload. */
+  ZonesMaxUploadObjectIdValueEditableModifiedOn__: unknown;
+  /** Only accepts HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted. */
+  MinTLSVersionObjectIdValueEditableModifiedOn__: unknown;
+  /** Automatically optimize image loading for website visitors on mobile */
+  ZonesSchemasMirageObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable Network Error Logging reporting on your zone. (Beta) */
+  NELObjectIdValueEditableModifiedOn__: unknown;
+  /** Enables the Opportunistic Encryption feature for a zone. */
+  ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__: unknown;
+  /** Add an Alt-Svc header to all legitimate requests from Tor, allowing the connection to use our onion services instead of exit nodes. */
+  OpportunisticOnionObjectIdValueEditableModifiedOn__: unknown;
+  /** Orange to Orange (O2O) allows zones on Cloudflare to CNAME to other zones also on Cloudflare. */
+  OrangeToOrangeObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones. */
+  ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__: unknown;
+  /** Origin H2 Max Streams configures the max number of concurrent requests that Cloudflare will send within the same connection when communicating with the origin server, if the origin supports it. Note that if your origin does not support H2 multiplexing, 5xx errors may be observed, particularly 520s. Also note that the default value is `100` for all plan types except Enterprise where it is `1`. `1` means that H2 multiplexing is disabled. */
+  ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: unknown;
+  /** Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is "2" for all plan types except Enterprise where it is "1". */
+  ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__: unknown;
+  /** Removes metadata and compresses your images for faster page load times. Basic (Lossless): Reduce the size of PNG, JPEG, and GIF files - no impact on visual quality. Basic + JPEG (Lossy): Further reduce the size of JPEG files for faster image loading. Larger JPEGs are converted to progressive images, loading a lower-resolution image first and ending in a higher-resolution version. Not recommended for hi-res photography sites. */
+  ZonesSchemasPolishObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare will prefetch any URLs that are included in the response headers. This is limited to Enterprise Zones. */
+  PrefetchPreloadObjectIdValueEditableModifiedOn__: unknown;
+  /** Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass). */
+  ZonesPrivacyPassObjectIdValueEditableModifiedOn__: unknown;
+  /** Maximum time between two read operations from origin. */
+  ProxyReadTimeoutObjectIdValueEditableModifiedOn__: unknown;
+  /** The value set for the Pseudo IPv4 setting. */
+  PseudoIPV4ObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled, Cloudflare will redirect verified AI training crawlers to canonical URLs */
+  ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__: unknown;
+  /** Automatically replace insecure JavaScript libraries with safer and faster alternatives provided under cdnjs and powered by Cloudflare. Currently supports the following libraries: Polyfill under polyfill.io. */
+  ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: unknown;
+  /** Enables or disables buffering of responses from the proxied server. Cloudflare may buffer the whole payload to deliver it at once to the client versus allowing it to be delivered in chunks. By default, the proxied server streams directly and is not buffered by Cloudflare. This is limited to Enterprise Zones. */
+  ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__: unknown;
+  /** Rocket Loader is a general-purpose asynchronous JavaScript optimisation that prioritises rendering your content while loading your site's Javascript asynchronously. Turning on Rocket Loader will immediately improve a web page's rendering time sometimes measured as Time to First Paint (TTFP), and also the `window.onload` time (assuming there is JavaScript on the page). This can have a positive impact on your Google search ranking. When turned on, Rocket Loader will automatically defer the loading of all Javascript referenced in your HTML, with no configuration required. Refer to [Understanding Rocket Loader](https://support.cloudflare.com/hc/articles/200168056) for more information. */
+  ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: unknown;
+  /** [Automatic Platform Optimization for WordPress](https://developers.cloudflare.com/automatic-platform-optimization/) serves your WordPress site from Cloudflare's edge network and caches third-party fonts. */
+  ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled, Cloudflare provisions an AI Search instance for the zone */
+  ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare security header for a zone. */
+  SecurityHeadersObjectIdValueEditableModifiedOn__: unknown;
+  /** Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056). */
+  ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: unknown;
+  /** If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse--> Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036). */
+  ServerSideExcludesObjectIdValueEditableModifiedOn__: unknown;
+  /** Allow SHA1 support. */
+  ZonesSha1SupportObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare will treat files with the same query strings as the same file in cache, regardless of the order of the query strings. This is limited to Enterprise Zones. */
+  ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__: unknown;
+  /** SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416). */
+  ZonesSchemasSSLObjectIdValueEditableModifiedOn__: unknown;
+  /** Enrollment in the SSL/TLS Recommender service which tries to detect and recommend (by sending periodic emails) the most secure SSL/TLS setting your origin servers support. */
+  SSLRecommenderObjectIdEnabled__: unknown;
+  /** Only allows TLS1.2. */
+  ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: unknown;
+  /** Enables Crypto TLS 1.3 feature for a zone. */
+  TLS13ObjectIdValueEditableModifiedOn__: unknown;
+  /** TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only). */
+  TLSClientAuthObjectIdValueEditableModifiedOn__: unknown;
+  /** Media Transformations provides on-demand resizing, conversion and optimization for images and video served through Cloudflare's network. Refer to the [Image Transformations](https://developers.cloudflare.com/images/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information. */
+  ZonesTransformationsObjectIdValueEditableModifiedOn__: unknown;
+  /** Media Transformations Allowed Origins restricts transformations for images and video served through Cloudflare's network. Refer to the [Image Transformations](https://developers.cloudflare.com/images/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information. */
+  ZonesTransformationsAllowedOriginsObjectIdValueEditableModifiedOn__: unknown;
+  /** Allows customer to continue to use True Client IP (Akamai feature) in the headers we send to the origin. This is limited to Enterprise Zones. */
+  ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__: unknown;
+  /** The WAF examines HTTP requests to your website. It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016). */
+  ZonesSchemasWAFObjectIdValueEditableModifiedOn__: unknown;
+  /** When the client requesting the image supports the WebP image codec, and WebP offers a performance advantage over the original image format, Cloudflare will serve a WebP version of the original image. */
+  WebPObjectIdValueEditableModifiedOn__: unknown;
+  /** WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-). */
+  WebsocketObjectIdValueEditableModifiedOn__: unknown;
+}
+export const SettingsBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ZeroRTTObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZeroRTT object { id, value, editable, modified_on }"),
+    ),
+    AdvancedDDoSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("AdvancedDDoS object { id, value, editable, modified_on }"),
+    ),
+    ZonesCacheRulesAegisObjectIdModifiedOnValue__: S.Unknown.pipe(
+      T.Body("ZonesCacheRulesAegis object { id, modified_on, value }"),
+    ),
+    AlwaysOnlineObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("AlwaysOnline object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasAlwaysUseHTTPS object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasAutomaticHTTPSRewrites object { id, value, editable, modified_on }",
+        ),
+      ),
+    BrotliObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("Brotli object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasBrowserCacheTTL object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasBrowserCheck object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasCacheLevel object { id, value, editable, modified_on }",
+      ),
+    ),
+    ChallengeTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ChallengeTTL object { id, value, editable, modified_on }"),
+    ),
+    CiphersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("Ciphers object { id, value, editable, modified_on }"),
+    ),
+    ZonesContentConverterObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesContentConverter object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesCNAMEFlattening object { id, value, editable, modified_on }",
+      ),
+    ),
+    DevelopmentModeObjectIdValueEditable2More__: S.Unknown.pipe(
+      T.Body("DevelopmentMode object { id, value, editable, 2 more }"),
+    ),
+    EarlyHintsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("EarlyHints object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasEdgeCacheTTL object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasEmailObfuscation object { id, value, editable, modified_on }",
+        ),
+      ),
+    H2PrioritizationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("H2Prioritization object { id, value, editable, modified_on }"),
+    ),
+    HotlinkProtectionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("HotlinkProtection object { id, value, editable, modified_on }"),
+    ),
+    HTTP2ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("HTTP2 object { id, value, editable, modified_on }"),
+    ),
+    HTTP3ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("HTTP3 object { id, value, editable, modified_on }"),
+    ),
+    ImageResizingObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ImageResizing object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasIPGeolocation object { id, value, editable, modified_on }",
+      ),
+    ),
+    IPV6ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("IPV6 object { id, value, editable, modified_on }"),
+    ),
+    ZonesMaxUploadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesMaxUpload object { id, value, editable, modified_on }"),
+    ),
+    MinTLSVersionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("MinTLSVersion object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasMirageObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasMirage object { id, value, editable, modified_on }"),
+    ),
+    NELObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("NEL object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasOpportunisticEncryption object { id, value, editable, modified_on }",
+        ),
+      ),
+    OpportunisticOnionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("OpportunisticOnion object { id, value, editable, modified_on }"),
+    ),
+    OrangeToOrangeObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("OrangeToOrange object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasOriginErrorPagePassThru object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: S.Unknown.pipe(
+      T.Body(
+        "ZonesCacheRulesOriginH2MaxStreams object { id, modified_on, value }",
+      ),
+    ),
+    ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesCacheRulesOriginMaxHTTPVersion object { id, modified_on, value }",
+        ),
+      ),
+    ZonesSchemasPolishObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasPolish object { id, value, editable, modified_on }"),
+    ),
+    PrefetchPreloadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("PrefetchPreload object { id, value, editable, modified_on }"),
+    ),
+    ZonesPrivacyPassObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesPrivacyPass object { id, value, editable, modified_on }"),
+    ),
+    ProxyReadTimeoutObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ProxyReadTimeout object { id, value, editable, modified_on }"),
+    ),
+    PseudoIPV4ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("PseudoIPV4 object { id, value, editable, modified_on }"),
+    ),
+    ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesRedirectsForAITraining object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesReplaceInsecureJS object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasResponseBuffering object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasRocketLoader object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasAutomaticPlatformOptimization object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSearchForAgents object { id, value, editable, modified_on }",
+      ),
+    ),
+    SecurityHeadersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("SecurityHeaders object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasSecurityLevel object { id, value, editable, modified_on }",
+      ),
+    ),
+    ServerSideExcludesObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ServerSideExcludes object { id, value, editable, modified_on }"),
+    ),
+    ZonesSha1SupportObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSha1Support object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasSortQueryStringForCache object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasSSLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasSSL object { id, value, editable, modified_on }"),
+    ),
+    SSLRecommenderObjectIdEnabled__: S.Unknown.pipe(
+      T.Body("SSLRecommender object { id, enabled }"),
+    ),
+    ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesTLS1_2Only object { id, value, editable, modified_on }"),
+    ),
+    TLS13ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("TLS1_3 object { id, value, editable, modified_on }"),
+    ),
+    TLSClientAuthObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("TLSClientAuth object { id, value, editable, modified_on }"),
+    ),
+    ZonesTransformationsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesTransformations object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesTransformationsAllowedOriginsObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesTransformationsAllowedOrigins object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasTrueClientIPHeader object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasWAFObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasWAF object { id, value, editable, modified_on }"),
+    ),
+    WebPObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("WebP object { id, value, editable, modified_on }"),
+    ),
+    WebsocketObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("Websocket object { id, value, editable, modified_on }"),
+    ),
+  }),
+).annotate({
+  identifier: "SettingsBulkEditResultItem",
+}) as any as S.Schema<SettingsBulkEditResultItem>;
+
+export type SettingsBulkEditResultList = SettingsBulkEditResultItem[];
 export const SettingsBulkEditResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  SettingsBulkEditResultItem,
 ) as any as S.Schema<SettingsBulkEditResultList>;
 
 export interface SettingsBulkEditResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SettingsBulkEditResultList;
 }
 export const SettingsBulkEditResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1082,29 +3076,31 @@ export const SettingsBulkEditResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsBulkEditResponse>;
 
 export interface SettingsEditRequestBody {
-  Enabled_object___enabled__: unknown;
-  Value_object___value__: unknown;
+  EnabledObjectEnabled__: unknown;
+  ValueObjectValue__: unknown;
 }
 export const SettingsEditRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Enabled_object___enabled__: S.Unknown.pipe(
+    EnabledObjectEnabled__: S.Unknown.pipe(
       T.Body("Enabled object { enabled }"),
     ),
-    Value_object___value__: S.Unknown.pipe(T.Body("Value object { value }")),
+    ValueObjectValue__: S.Unknown.pipe(T.Body("Value object { value }")),
   }),
 ).annotate({
   identifier: "SettingsEditRequestBody",
 }) as any as S.Schema<SettingsEditRequestBody>;
 
 export interface SettingsEditRequest {
-  zone_id: string;
-  setting_id: string;
+  /** Identifier */
+  zoneId: string;
+  /** Setting name */
+  settingId: string;
   body: SettingsEditRequestBody;
 }
 export const SettingsEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    setting_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    settingId: S.String.pipe(T.Label("setting_id")),
     body: SettingsEditRequestBody,
   }).pipe(
     T.Http({
@@ -1117,25 +3113,405 @@ export const SettingsEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsEditRequest",
 }) as any as S.Schema<SettingsEditRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SettingsEditResponse {
-  result?: unknown;
+  /** 0-RTT session resumption enabled for this zone. */
+  ZeroRTTObjectIdValueEditableModifiedOn__: unknown;
+  /** Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones. */
+  AdvancedDDoSObjectIdValueEditableModifiedOn__: unknown;
+  /** Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses. */
+  ZonesCacheRulesAegisObjectIdModifiedOnValue__: unknown;
+  /** When enabled, Cloudflare serves limited copies of web pages available from the [Internet Archive's Wayback Machine](https://archive.org/web/) if your server is offline. Refer to [Always Online](https://developers.cloudflare.com/cache/about/always-online) for more information. */
+  AlwaysOnlineObjectIdValueEditableModifiedOn__: unknown;
+  /** Reply to all requests for URLs that use "http" with a 301 redirect to the equivalent "https" URL. If you only want to redirect for a subset of requests, consider creating an "Always use HTTPS" page rule. */
+  ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable the Automatic HTTPS Rewrites feature for this zone. */
+  ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__: unknown;
+  /** When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset. */
+  BrotliObjectIdValueEditableModifiedOn__: unknown;
+  /** Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276). */
+  ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__: unknown;
+  /** Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page. It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086). */
+  ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: unknown;
+  /** Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256). */
+  ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: unknown;
+  /** Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136). */
+  ChallengeTTLObjectIdValueEditableModifiedOn__: unknown;
+  /** Determines whether or not the china network is enabled. */
+  ZonesChinaNetworkEnabledObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled and the client sends an Accept header requesting text/markdown, */
+  ZonesContentConverterObjectIdValueEditableModifiedOn__: unknown;
+  /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
+  CiphersObjectIdValueEditableModifiedOn__: unknown;
+  /** Whether or not cname flattening is on. */
+  ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: unknown;
+  /** Development Mode temporarily allows you to enter development mode for your websites if you need to make changes to your site. This will bypass Cloudflare's accelerated cache and slow down your site, but is useful if you are making changes to cacheable content (like images, css, or JavaScript) and would like to see those changes right away. Once entered, development mode will last for 3 hours and then automatically toggle off. */
+  DevelopmentModeObjectIdValueEditable2More__: unknown;
+  /** When enabled, Cloudflare will attempt to speed up overall page loads by serving `103` responses with `Link` headers from the final response. Refer to [Early Hints](https://developers.cloudflare.com/cache/about/early-hints) for more information. */
+  EarlyHintsObjectIdValueEditableModifiedOn__: unknown;
+  /** Time (in seconds) that a resource will be ensured to remain on Cloudflare's cache servers. */
+  ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: unknown;
+  /** Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016). */
+  ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__: unknown;
+  /** HTTP/2 Edge Prioritization optimises the delivery of resources served through HTTP/2 to improve page load performance. It also supports fine control of content delivery when used in conjunction with Workers. */
+  H2PrioritizationObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026). */
+  HotlinkProtectionObjectIdValueEditableModifiedOn__: unknown;
+  /** HTTP2 enabled for this zone. */
+  HTTP2ObjectIdValueEditableModifiedOn__: unknown;
+  /** HTTP3 enabled for this zone. */
+  HTTP3ObjectIdValueEditableModifiedOn__: unknown;
+  /** Image Transformations provides on-demand resizing, conversion and optimization for images served through Cloudflare's network. Refer to the [Image Transformations documentation](https://developers.cloudflare.com/images/) for more information. */
+  ImageResizingObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236). */
+  ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable IPv6 on all subdomains that are Cloudflare enabled. (https://support.cloudflare.com/hc/en-us/articles/200168586). */
+  IPV6ObjectIdValueEditableModifiedOn__: unknown;
+  /** Maximum size of an allowable upload. */
+  ZonesMaxUploadObjectIdValueEditableModifiedOn__: unknown;
+  /** Only accepts HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted. */
+  MinTLSVersionObjectIdValueEditableModifiedOn__: unknown;
+  /** Automatically optimize image loading for website visitors on mobile */
+  ZonesSchemasMirageObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable Network Error Logging reporting on your zone. (Beta) */
+  NELObjectIdValueEditableModifiedOn__: unknown;
+  /** Enables the Opportunistic Encryption feature for a zone. */
+  ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__: unknown;
+  /** Add an Alt-Svc header to all legitimate requests from Tor, allowing the connection to use our onion services instead of exit nodes. */
+  OpportunisticOnionObjectIdValueEditableModifiedOn__: unknown;
+  /** Orange to Orange (O2O) allows zones on Cloudflare to CNAME to other zones also on Cloudflare. */
+  OrangeToOrangeObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones. */
+  ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__: unknown;
+  /** Origin H2 Max Streams configures the max number of concurrent requests that Cloudflare will send within the same connection when communicating with the origin server, if the origin supports it. Note that if your origin does not support H2 multiplexing, 5xx errors may be observed, particularly 520s. Also note that the default value is `100` for all plan types except Enterprise where it is `1`. `1` means that H2 multiplexing is disabled. */
+  ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: unknown;
+  /** Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is "2" for all plan types except Enterprise where it is "1". */
+  ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__: unknown;
+  /** Removes metadata and compresses your images for faster page load times. Basic (Lossless): Reduce the size of PNG, JPEG, and GIF files - no impact on visual quality. Basic + JPEG (Lossy): Further reduce the size of JPEG files for faster image loading. Larger JPEGs are converted to progressive images, loading a lower-resolution image first and ending in a higher-resolution version. Not recommended for hi-res photography sites. */
+  ZonesSchemasPolishObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare will prefetch any URLs that are included in the response headers. This is limited to Enterprise Zones. */
+  PrefetchPreloadObjectIdValueEditableModifiedOn__: unknown;
+  /** Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass). */
+  ZonesPrivacyPassObjectIdValueEditableModifiedOn__: unknown;
+  /** Maximum time between two read operations from origin. */
+  ProxyReadTimeoutObjectIdValueEditableModifiedOn__: unknown;
+  /** The value set for the Pseudo IPv4 setting. */
+  PseudoIPV4ObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled, Cloudflare will redirect verified AI training crawlers to canonical URLs */
+  ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__: unknown;
+  /** Automatically replace insecure JavaScript libraries with safer and faster alternatives provided under cdnjs and powered by Cloudflare. Currently supports the following libraries: Polyfill under polyfill.io. */
+  ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: unknown;
+  /** Enables or disables buffering of responses from the proxied server. Cloudflare may buffer the whole payload to deliver it at once to the client versus allowing it to be delivered in chunks. By default, the proxied server streams directly and is not buffered by Cloudflare. This is limited to Enterprise Zones. */
+  ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__: unknown;
+  /** Rocket Loader is a general-purpose asynchronous JavaScript optimisation that prioritises rendering your content while loading your site's Javascript asynchronously. Turning on Rocket Loader will immediately improve a web page's rendering time sometimes measured as Time to First Paint (TTFP), and also the `window.onload` time (assuming there is JavaScript on the page). This can have a positive impact on your Google search ranking. When turned on, Rocket Loader will automatically defer the loading of all Javascript referenced in your HTML, with no configuration required. Refer to [Understanding Rocket Loader](https://support.cloudflare.com/hc/articles/200168056) for more information. */
+  ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: unknown;
+  /** [Automatic Platform Optimization for WordPress](https://developers.cloudflare.com/automatic-platform-optimization/) serves your WordPress site from Cloudflare's edge network and caches third-party fonts. */
+  ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled, Cloudflare provisions an AI Search instance for the zone */
+  ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare security header for a zone. */
+  SecurityHeadersObjectIdValueEditableModifiedOn__: unknown;
+  /** Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056). */
+  ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: unknown;
+  /** If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse--> Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036). */
+  ServerSideExcludesObjectIdValueEditableModifiedOn__: unknown;
+  /** Allow SHA1 support. */
+  ZonesSha1SupportObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare will treat files with the same query strings as the same file in cache, regardless of the order of the query strings. This is limited to Enterprise Zones. */
+  ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__: unknown;
+  /** SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416). */
+  ZonesSchemasSSLObjectIdValueEditableModifiedOn__: unknown;
+  /** Enrollment in the SSL/TLS Recommender service which tries to detect and recommend (by sending periodic emails) the most secure SSL/TLS setting your origin servers support. */
+  SSLRecommenderObjectIdEnabled__: unknown;
+  /** Only allows TLS1.2. */
+  ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: unknown;
+  /** Enables Crypto TLS 1.3 feature for a zone. */
+  TLS13ObjectIdValueEditableModifiedOn__: unknown;
+  /** TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only). */
+  TLSClientAuthObjectIdValueEditableModifiedOn__: unknown;
+  /** Media Transformations provides on-demand resizing, conversion and optimization for images and video served through Cloudflare's network. Refer to the [Image Transformations](https://developers.cloudflare.com/images/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information. */
+  ZonesTransformationsObjectIdValueEditableModifiedOn__: unknown;
+  /** Media Transformations Allowed Origins restricts transformations for images and video served through Cloudflare's network. Refer to the [Image Transformations](https://developers.cloudflare.com/images/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information. */
+  ZonesTransformationsAllowedOriginsObjectIdValueEditableModifiedOn__: unknown;
+  /** Allows customer to continue to use True Client IP (Akamai feature) in the headers we send to the origin. This is limited to Enterprise Zones. */
+  ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__: unknown;
+  /** The WAF examines HTTP requests to your website. It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016). */
+  ZonesSchemasWAFObjectIdValueEditableModifiedOn__: unknown;
+  /** When the client requesting the image supports the WebP image codec, and WebP offers a performance advantage over the original image format, Cloudflare will serve a WebP version of the original image. */
+  WebPObjectIdValueEditableModifiedOn__: unknown;
+  /** WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-). */
+  WebsocketObjectIdValueEditableModifiedOn__: unknown;
 }
 export const SettingsEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    ZeroRTTObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZeroRTT object { id, value, editable, modified_on }"),
+    ),
+    AdvancedDDoSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("AdvancedDDoS object { id, value, editable, modified_on }"),
+    ),
+    ZonesCacheRulesAegisObjectIdModifiedOnValue__: S.Unknown.pipe(
+      T.Body("ZonesCacheRulesAegis object { id, modified_on, value }"),
+    ),
+    AlwaysOnlineObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("AlwaysOnline object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasAlwaysUseHTTPS object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasAutomaticHTTPSRewrites object { id, value, editable, modified_on }",
+        ),
+      ),
+    BrotliObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("Brotli object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasBrowserCacheTTL object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasBrowserCheck object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasCacheLevel object { id, value, editable, modified_on }",
+      ),
+    ),
+    ChallengeTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ChallengeTTL object { id, value, editable, modified_on }"),
+    ),
+    ZonesChinaNetworkEnabledObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesChinaNetworkEnabled object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesContentConverterObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesContentConverter object { id, value, editable, modified_on }",
+      ),
+    ),
+    CiphersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("Ciphers object { id, value, editable, modified_on }"),
+    ),
+    ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesCNAMEFlattening object { id, value, editable, modified_on }",
+      ),
+    ),
+    DevelopmentModeObjectIdValueEditable2More__: S.Unknown.pipe(
+      T.Body("DevelopmentMode object { id, value, editable, 2 more }"),
+    ),
+    EarlyHintsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("EarlyHints object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasEdgeCacheTTL object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasEmailObfuscation object { id, value, editable, modified_on }",
+        ),
+      ),
+    H2PrioritizationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("H2Prioritization object { id, value, editable, modified_on }"),
+    ),
+    HotlinkProtectionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("HotlinkProtection object { id, value, editable, modified_on }"),
+    ),
+    HTTP2ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("HTTP2 object { id, value, editable, modified_on }"),
+    ),
+    HTTP3ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("HTTP3 object { id, value, editable, modified_on }"),
+    ),
+    ImageResizingObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ImageResizing object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasIPGeolocation object { id, value, editable, modified_on }",
+      ),
+    ),
+    IPV6ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("IPV6 object { id, value, editable, modified_on }"),
+    ),
+    ZonesMaxUploadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesMaxUpload object { id, value, editable, modified_on }"),
+    ),
+    MinTLSVersionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("MinTLSVersion object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasMirageObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasMirage object { id, value, editable, modified_on }"),
+    ),
+    NELObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("NEL object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasOpportunisticEncryption object { id, value, editable, modified_on }",
+        ),
+      ),
+    OpportunisticOnionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("OpportunisticOnion object { id, value, editable, modified_on }"),
+    ),
+    OrangeToOrangeObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("OrangeToOrange object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasOriginErrorPagePassThru object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: S.Unknown.pipe(
+      T.Body(
+        "ZonesCacheRulesOriginH2MaxStreams object { id, modified_on, value }",
+      ),
+    ),
+    ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesCacheRulesOriginMaxHTTPVersion object { id, modified_on, value }",
+        ),
+      ),
+    ZonesSchemasPolishObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasPolish object { id, value, editable, modified_on }"),
+    ),
+    PrefetchPreloadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("PrefetchPreload object { id, value, editable, modified_on }"),
+    ),
+    ZonesPrivacyPassObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesPrivacyPass object { id, value, editable, modified_on }"),
+    ),
+    ProxyReadTimeoutObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ProxyReadTimeout object { id, value, editable, modified_on }"),
+    ),
+    PseudoIPV4ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("PseudoIPV4 object { id, value, editable, modified_on }"),
+    ),
+    ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesRedirectsForAITraining object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesReplaceInsecureJS object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasResponseBuffering object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasRocketLoader object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasAutomaticPlatformOptimization object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSearchForAgents object { id, value, editable, modified_on }",
+      ),
+    ),
+    SecurityHeadersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("SecurityHeaders object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasSecurityLevel object { id, value, editable, modified_on }",
+      ),
+    ),
+    ServerSideExcludesObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ServerSideExcludes object { id, value, editable, modified_on }"),
+    ),
+    ZonesSha1SupportObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSha1Support object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasSortQueryStringForCache object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasSSLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasSSL object { id, value, editable, modified_on }"),
+    ),
+    SSLRecommenderObjectIdEnabled__: S.Unknown.pipe(
+      T.Body("SSLRecommender object { id, enabled }"),
+    ),
+    ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesTLS1_2Only object { id, value, editable, modified_on }"),
+    ),
+    TLS13ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("TLS1_3 object { id, value, editable, modified_on }"),
+    ),
+    TLSClientAuthObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("TLSClientAuth object { id, value, editable, modified_on }"),
+    ),
+    ZonesTransformationsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesTransformations object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesTransformationsAllowedOriginsObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesTransformationsAllowedOrigins object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasTrueClientIPHeader object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasWAFObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasWAF object { id, value, editable, modified_on }"),
+    ),
+    WebPObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("WebP object { id, value, editable, modified_on }"),
+    ),
+    WebsocketObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("Websocket object { id, value, editable, modified_on }"),
+    ),
   }),
 ).annotate({
   identifier: "SettingsEditResponse",
 }) as any as S.Schema<SettingsEditResponse>;
 
 export interface SettingsGetRequest {
-  zone_id: string;
-  setting_id: string;
+  /** Identifier */
+  zoneId: string;
+  /** Setting name */
+  settingId: string;
 }
 export const SettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    setting_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    settingId: S.String.pipe(T.Label("setting_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1147,23 +3523,402 @@ export const SettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsGetRequest",
 }) as any as S.Schema<SettingsGetRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SettingsGetResponse {
-  result?: unknown;
+  /** 0-RTT session resumption enabled for this zone. */
+  ZeroRTTObjectIdValueEditableModifiedOn__: unknown;
+  /** Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones. */
+  AdvancedDDoSObjectIdValueEditableModifiedOn__: unknown;
+  /** Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses. */
+  ZonesCacheRulesAegisObjectIdModifiedOnValue__: unknown;
+  /** When enabled, Cloudflare serves limited copies of web pages available from the [Internet Archive's Wayback Machine](https://archive.org/web/) if your server is offline. Refer to [Always Online](https://developers.cloudflare.com/cache/about/always-online) for more information. */
+  AlwaysOnlineObjectIdValueEditableModifiedOn__: unknown;
+  /** Reply to all requests for URLs that use "http" with a 301 redirect to the equivalent "https" URL. If you only want to redirect for a subset of requests, consider creating an "Always use HTTPS" page rule. */
+  ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable the Automatic HTTPS Rewrites feature for this zone. */
+  ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__: unknown;
+  /** When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset. */
+  BrotliObjectIdValueEditableModifiedOn__: unknown;
+  /** Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276). */
+  ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__: unknown;
+  /** Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page. It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086). */
+  ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: unknown;
+  /** Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256). */
+  ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: unknown;
+  /** Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136). */
+  ChallengeTTLObjectIdValueEditableModifiedOn__: unknown;
+  /** Determines whether or not the china network is enabled. */
+  ZonesChinaNetworkEnabledObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled and the client sends an Accept header requesting text/markdown, */
+  ZonesContentConverterObjectIdValueEditableModifiedOn__: unknown;
+  /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
+  CiphersObjectIdValueEditableModifiedOn__: unknown;
+  /** Whether or not cname flattening is on. */
+  ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: unknown;
+  /** Development Mode temporarily allows you to enter development mode for your websites if you need to make changes to your site. This will bypass Cloudflare's accelerated cache and slow down your site, but is useful if you are making changes to cacheable content (like images, css, or JavaScript) and would like to see those changes right away. Once entered, development mode will last for 3 hours and then automatically toggle off. */
+  DevelopmentModeObjectIdValueEditable2More__: unknown;
+  /** When enabled, Cloudflare will attempt to speed up overall page loads by serving `103` responses with `Link` headers from the final response. Refer to [Early Hints](https://developers.cloudflare.com/cache/about/early-hints) for more information. */
+  EarlyHintsObjectIdValueEditableModifiedOn__: unknown;
+  /** Time (in seconds) that a resource will be ensured to remain on Cloudflare's cache servers. */
+  ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: unknown;
+  /** Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016). */
+  ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__: unknown;
+  /** HTTP/2 Edge Prioritization optimises the delivery of resources served through HTTP/2 to improve page load performance. It also supports fine control of content delivery when used in conjunction with Workers. */
+  H2PrioritizationObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026). */
+  HotlinkProtectionObjectIdValueEditableModifiedOn__: unknown;
+  /** HTTP2 enabled for this zone. */
+  HTTP2ObjectIdValueEditableModifiedOn__: unknown;
+  /** HTTP3 enabled for this zone. */
+  HTTP3ObjectIdValueEditableModifiedOn__: unknown;
+  /** Image Transformations provides on-demand resizing, conversion and optimization for images served through Cloudflare's network. Refer to the [Image Transformations documentation](https://developers.cloudflare.com/images/) for more information. */
+  ImageResizingObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236). */
+  ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable IPv6 on all subdomains that are Cloudflare enabled. (https://support.cloudflare.com/hc/en-us/articles/200168586). */
+  IPV6ObjectIdValueEditableModifiedOn__: unknown;
+  /** Maximum size of an allowable upload. */
+  ZonesMaxUploadObjectIdValueEditableModifiedOn__: unknown;
+  /** Only accepts HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted. */
+  MinTLSVersionObjectIdValueEditableModifiedOn__: unknown;
+  /** Automatically optimize image loading for website visitors on mobile */
+  ZonesSchemasMirageObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable Network Error Logging reporting on your zone. (Beta) */
+  NELObjectIdValueEditableModifiedOn__: unknown;
+  /** Enables the Opportunistic Encryption feature for a zone. */
+  ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__: unknown;
+  /** Add an Alt-Svc header to all legitimate requests from Tor, allowing the connection to use our onion services instead of exit nodes. */
+  OpportunisticOnionObjectIdValueEditableModifiedOn__: unknown;
+  /** Orange to Orange (O2O) allows zones on Cloudflare to CNAME to other zones also on Cloudflare. */
+  OrangeToOrangeObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones. */
+  ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__: unknown;
+  /** Origin H2 Max Streams configures the max number of concurrent requests that Cloudflare will send within the same connection when communicating with the origin server, if the origin supports it. Note that if your origin does not support H2 multiplexing, 5xx errors may be observed, particularly 520s. Also note that the default value is `100` for all plan types except Enterprise where it is `1`. `1` means that H2 multiplexing is disabled. */
+  ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: unknown;
+  /** Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is "2" for all plan types except Enterprise where it is "1". */
+  ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__: unknown;
+  /** Removes metadata and compresses your images for faster page load times. Basic (Lossless): Reduce the size of PNG, JPEG, and GIF files - no impact on visual quality. Basic + JPEG (Lossy): Further reduce the size of JPEG files for faster image loading. Larger JPEGs are converted to progressive images, loading a lower-resolution image first and ending in a higher-resolution version. Not recommended for hi-res photography sites. */
+  ZonesSchemasPolishObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare will prefetch any URLs that are included in the response headers. This is limited to Enterprise Zones. */
+  PrefetchPreloadObjectIdValueEditableModifiedOn__: unknown;
+  /** Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass). */
+  ZonesPrivacyPassObjectIdValueEditableModifiedOn__: unknown;
+  /** Maximum time between two read operations from origin. */
+  ProxyReadTimeoutObjectIdValueEditableModifiedOn__: unknown;
+  /** The value set for the Pseudo IPv4 setting. */
+  PseudoIPV4ObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled, Cloudflare will redirect verified AI training crawlers to canonical URLs */
+  ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__: unknown;
+  /** Automatically replace insecure JavaScript libraries with safer and faster alternatives provided under cdnjs and powered by Cloudflare. Currently supports the following libraries: Polyfill under polyfill.io. */
+  ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: unknown;
+  /** Enables or disables buffering of responses from the proxied server. Cloudflare may buffer the whole payload to deliver it at once to the client versus allowing it to be delivered in chunks. By default, the proxied server streams directly and is not buffered by Cloudflare. This is limited to Enterprise Zones. */
+  ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__: unknown;
+  /** Rocket Loader is a general-purpose asynchronous JavaScript optimisation that prioritises rendering your content while loading your site's Javascript asynchronously. Turning on Rocket Loader will immediately improve a web page's rendering time sometimes measured as Time to First Paint (TTFP), and also the `window.onload` time (assuming there is JavaScript on the page). This can have a positive impact on your Google search ranking. When turned on, Rocket Loader will automatically defer the loading of all Javascript referenced in your HTML, with no configuration required. Refer to [Understanding Rocket Loader](https://support.cloudflare.com/hc/articles/200168056) for more information. */
+  ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: unknown;
+  /** [Automatic Platform Optimization for WordPress](https://developers.cloudflare.com/automatic-platform-optimization/) serves your WordPress site from Cloudflare's edge network and caches third-party fonts. */
+  ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled, Cloudflare provisions an AI Search instance for the zone */
+  ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare security header for a zone. */
+  SecurityHeadersObjectIdValueEditableModifiedOn__: unknown;
+  /** Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056). */
+  ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: unknown;
+  /** If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse--> Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036). */
+  ServerSideExcludesObjectIdValueEditableModifiedOn__: unknown;
+  /** Allow SHA1 support. */
+  ZonesSha1SupportObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare will treat files with the same query strings as the same file in cache, regardless of the order of the query strings. This is limited to Enterprise Zones. */
+  ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__: unknown;
+  /** SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416). */
+  ZonesSchemasSSLObjectIdValueEditableModifiedOn__: unknown;
+  /** Enrollment in the SSL/TLS Recommender service which tries to detect and recommend (by sending periodic emails) the most secure SSL/TLS setting your origin servers support. */
+  SSLRecommenderObjectIdEnabled__: unknown;
+  /** Only allows TLS1.2. */
+  ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: unknown;
+  /** Enables Crypto TLS 1.3 feature for a zone. */
+  TLS13ObjectIdValueEditableModifiedOn__: unknown;
+  /** TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only). */
+  TLSClientAuthObjectIdValueEditableModifiedOn__: unknown;
+  /** Media Transformations provides on-demand resizing, conversion and optimization for images and video served through Cloudflare's network. Refer to the [Image Transformations](https://developers.cloudflare.com/images/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information. */
+  ZonesTransformationsObjectIdValueEditableModifiedOn__: unknown;
+  /** Media Transformations Allowed Origins restricts transformations for images and video served through Cloudflare's network. Refer to the [Image Transformations](https://developers.cloudflare.com/images/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information. */
+  ZonesTransformationsAllowedOriginsObjectIdValueEditableModifiedOn__: unknown;
+  /** Allows customer to continue to use True Client IP (Akamai feature) in the headers we send to the origin. This is limited to Enterprise Zones. */
+  ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__: unknown;
+  /** The WAF examines HTTP requests to your website. It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016). */
+  ZonesSchemasWAFObjectIdValueEditableModifiedOn__: unknown;
+  /** When the client requesting the image supports the WebP image codec, and WebP offers a performance advantage over the original image format, Cloudflare will serve a WebP version of the original image. */
+  WebPObjectIdValueEditableModifiedOn__: unknown;
+  /** WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-). */
+  WebsocketObjectIdValueEditableModifiedOn__: unknown;
 }
 export const SettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    ZeroRTTObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZeroRTT object { id, value, editable, modified_on }"),
+    ),
+    AdvancedDDoSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("AdvancedDDoS object { id, value, editable, modified_on }"),
+    ),
+    ZonesCacheRulesAegisObjectIdModifiedOnValue__: S.Unknown.pipe(
+      T.Body("ZonesCacheRulesAegis object { id, modified_on, value }"),
+    ),
+    AlwaysOnlineObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("AlwaysOnline object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasAlwaysUseHTTPS object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasAutomaticHTTPSRewrites object { id, value, editable, modified_on }",
+        ),
+      ),
+    BrotliObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("Brotli object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasBrowserCacheTTL object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasBrowserCheck object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasCacheLevel object { id, value, editable, modified_on }",
+      ),
+    ),
+    ChallengeTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ChallengeTTL object { id, value, editable, modified_on }"),
+    ),
+    ZonesChinaNetworkEnabledObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesChinaNetworkEnabled object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesContentConverterObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesContentConverter object { id, value, editable, modified_on }",
+      ),
+    ),
+    CiphersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("Ciphers object { id, value, editable, modified_on }"),
+    ),
+    ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesCNAMEFlattening object { id, value, editable, modified_on }",
+      ),
+    ),
+    DevelopmentModeObjectIdValueEditable2More__: S.Unknown.pipe(
+      T.Body("DevelopmentMode object { id, value, editable, 2 more }"),
+    ),
+    EarlyHintsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("EarlyHints object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasEdgeCacheTTL object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasEmailObfuscation object { id, value, editable, modified_on }",
+        ),
+      ),
+    H2PrioritizationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("H2Prioritization object { id, value, editable, modified_on }"),
+    ),
+    HotlinkProtectionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("HotlinkProtection object { id, value, editable, modified_on }"),
+    ),
+    HTTP2ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("HTTP2 object { id, value, editable, modified_on }"),
+    ),
+    HTTP3ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("HTTP3 object { id, value, editable, modified_on }"),
+    ),
+    ImageResizingObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ImageResizing object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasIPGeolocation object { id, value, editable, modified_on }",
+      ),
+    ),
+    IPV6ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("IPV6 object { id, value, editable, modified_on }"),
+    ),
+    ZonesMaxUploadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesMaxUpload object { id, value, editable, modified_on }"),
+    ),
+    MinTLSVersionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("MinTLSVersion object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasMirageObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasMirage object { id, value, editable, modified_on }"),
+    ),
+    NELObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("NEL object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasOpportunisticEncryption object { id, value, editable, modified_on }",
+        ),
+      ),
+    OpportunisticOnionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("OpportunisticOnion object { id, value, editable, modified_on }"),
+    ),
+    OrangeToOrangeObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("OrangeToOrange object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasOriginErrorPagePassThru object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: S.Unknown.pipe(
+      T.Body(
+        "ZonesCacheRulesOriginH2MaxStreams object { id, modified_on, value }",
+      ),
+    ),
+    ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesCacheRulesOriginMaxHTTPVersion object { id, modified_on, value }",
+        ),
+      ),
+    ZonesSchemasPolishObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasPolish object { id, value, editable, modified_on }"),
+    ),
+    PrefetchPreloadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("PrefetchPreload object { id, value, editable, modified_on }"),
+    ),
+    ZonesPrivacyPassObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesPrivacyPass object { id, value, editable, modified_on }"),
+    ),
+    ProxyReadTimeoutObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ProxyReadTimeout object { id, value, editable, modified_on }"),
+    ),
+    PseudoIPV4ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("PseudoIPV4 object { id, value, editable, modified_on }"),
+    ),
+    ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesRedirectsForAITraining object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesReplaceInsecureJS object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasResponseBuffering object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasRocketLoader object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasAutomaticPlatformOptimization object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSearchForAgents object { id, value, editable, modified_on }",
+      ),
+    ),
+    SecurityHeadersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("SecurityHeaders object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasSecurityLevel object { id, value, editable, modified_on }",
+      ),
+    ),
+    ServerSideExcludesObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ServerSideExcludes object { id, value, editable, modified_on }"),
+    ),
+    ZonesSha1SupportObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSha1Support object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasSortQueryStringForCache object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasSSLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasSSL object { id, value, editable, modified_on }"),
+    ),
+    SSLRecommenderObjectIdEnabled__: S.Unknown.pipe(
+      T.Body("SSLRecommender object { id, enabled }"),
+    ),
+    ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesTLS1_2Only object { id, value, editable, modified_on }"),
+    ),
+    TLS13ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("TLS1_3 object { id, value, editable, modified_on }"),
+    ),
+    TLSClientAuthObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("TLSClientAuth object { id, value, editable, modified_on }"),
+    ),
+    ZonesTransformationsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesTransformations object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesTransformationsAllowedOriginsObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesTransformationsAllowedOrigins object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasTrueClientIPHeader object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasWAFObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasWAF object { id, value, editable, modified_on }"),
+    ),
+    WebPObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("WebP object { id, value, editable, modified_on }"),
+    ),
+    WebsocketObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("Websocket object { id, value, editable, modified_on }"),
+    ),
   }),
 ).annotate({
   identifier: "SettingsGetResponse",
 }) as any as S.Schema<SettingsGetResponse>;
 
 export interface SettingsListRequest {
-  zone_id: string;
+  /** Identifier */
+  zoneId: string;
 }
 export const SettingsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({ method: "GET", uri: "/zones/{zone_id}/settings", code: 200 }),
   ),
@@ -1171,12 +3926,394 @@ export const SettingsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsListRequest",
 }) as any as S.Schema<SettingsListRequest>;
 
-export type SettingsListResultList = unknown[];
+export interface SettingsListResultItem {
+  /** 0-RTT session resumption enabled for this zone. */
+  ZeroRTTObjectIdValueEditableModifiedOn__: unknown;
+  /** Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones. */
+  AdvancedDDoSObjectIdValueEditableModifiedOn__: unknown;
+  /** Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses. */
+  ZonesCacheRulesAegisObjectIdModifiedOnValue__: unknown;
+  /** When enabled, Cloudflare serves limited copies of web pages available from the [Internet Archive's Wayback Machine](https://archive.org/web/) if your server is offline. Refer to [Always Online](https://developers.cloudflare.com/cache/about/always-online) for more information. */
+  AlwaysOnlineObjectIdValueEditableModifiedOn__: unknown;
+  /** Reply to all requests for URLs that use "http" with a 301 redirect to the equivalent "https" URL. If you only want to redirect for a subset of requests, consider creating an "Always use HTTPS" page rule. */
+  ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable the Automatic HTTPS Rewrites feature for this zone. */
+  ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__: unknown;
+  /** When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset. */
+  BrotliObjectIdValueEditableModifiedOn__: unknown;
+  /** Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276). */
+  ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__: unknown;
+  /** Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page. It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086). */
+  ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: unknown;
+  /** Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256). */
+  ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: unknown;
+  /** Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136). */
+  ChallengeTTLObjectIdValueEditableModifiedOn__: unknown;
+  /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
+  CiphersObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled and the client sends an Accept header requesting text/markdown, */
+  ZonesContentConverterObjectIdValueEditableModifiedOn__: unknown;
+  /** Whether or not cname flattening is on. */
+  ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: unknown;
+  /** Development Mode temporarily allows you to enter development mode for your websites if you need to make changes to your site. This will bypass Cloudflare's accelerated cache and slow down your site, but is useful if you are making changes to cacheable content (like images, css, or JavaScript) and would like to see those changes right away. Once entered, development mode will last for 3 hours and then automatically toggle off. */
+  DevelopmentModeObjectIdValueEditable2More__: unknown;
+  /** When enabled, Cloudflare will attempt to speed up overall page loads by serving `103` responses with `Link` headers from the final response. Refer to [Early Hints](https://developers.cloudflare.com/cache/about/early-hints) for more information. */
+  EarlyHintsObjectIdValueEditableModifiedOn__: unknown;
+  /** Time (in seconds) that a resource will be ensured to remain on Cloudflare's cache servers. */
+  ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: unknown;
+  /** Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016). */
+  ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__: unknown;
+  /** HTTP/2 Edge Prioritization optimises the delivery of resources served through HTTP/2 to improve page load performance. It also supports fine control of content delivery when used in conjunction with Workers. */
+  H2PrioritizationObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026). */
+  HotlinkProtectionObjectIdValueEditableModifiedOn__: unknown;
+  /** HTTP2 enabled for this zone. */
+  HTTP2ObjectIdValueEditableModifiedOn__: unknown;
+  /** HTTP3 enabled for this zone. */
+  HTTP3ObjectIdValueEditableModifiedOn__: unknown;
+  /** Image Transformations provides on-demand resizing, conversion and optimization for images served through Cloudflare's network. Refer to the [Image Transformations documentation](https://developers.cloudflare.com/images/) for more information. */
+  ImageResizingObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236). */
+  ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable IPv6 on all subdomains that are Cloudflare enabled. (https://support.cloudflare.com/hc/en-us/articles/200168586). */
+  IPV6ObjectIdValueEditableModifiedOn__: unknown;
+  /** Maximum size of an allowable upload. */
+  ZonesMaxUploadObjectIdValueEditableModifiedOn__: unknown;
+  /** Only accepts HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted. */
+  MinTLSVersionObjectIdValueEditableModifiedOn__: unknown;
+  /** Automatically optimize image loading for website visitors on mobile */
+  ZonesSchemasMirageObjectIdValueEditableModifiedOn__: unknown;
+  /** Enable Network Error Logging reporting on your zone. (Beta) */
+  NELObjectIdValueEditableModifiedOn__: unknown;
+  /** Enables the Opportunistic Encryption feature for a zone. */
+  ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__: unknown;
+  /** Add an Alt-Svc header to all legitimate requests from Tor, allowing the connection to use our onion services instead of exit nodes. */
+  OpportunisticOnionObjectIdValueEditableModifiedOn__: unknown;
+  /** Orange to Orange (O2O) allows zones on Cloudflare to CNAME to other zones also on Cloudflare. */
+  OrangeToOrangeObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones. */
+  ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__: unknown;
+  /** Origin H2 Max Streams configures the max number of concurrent requests that Cloudflare will send within the same connection when communicating with the origin server, if the origin supports it. Note that if your origin does not support H2 multiplexing, 5xx errors may be observed, particularly 520s. Also note that the default value is `100` for all plan types except Enterprise where it is `1`. `1` means that H2 multiplexing is disabled. */
+  ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: unknown;
+  /** Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is "2" for all plan types except Enterprise where it is "1". */
+  ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__: unknown;
+  /** Removes metadata and compresses your images for faster page load times. Basic (Lossless): Reduce the size of PNG, JPEG, and GIF files - no impact on visual quality. Basic + JPEG (Lossy): Further reduce the size of JPEG files for faster image loading. Larger JPEGs are converted to progressive images, loading a lower-resolution image first and ending in a higher-resolution version. Not recommended for hi-res photography sites. */
+  ZonesSchemasPolishObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare will prefetch any URLs that are included in the response headers. This is limited to Enterprise Zones. */
+  PrefetchPreloadObjectIdValueEditableModifiedOn__: unknown;
+  /** Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors by allowing users to reduce the number of CAPTCHAs shown. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass). */
+  ZonesPrivacyPassObjectIdValueEditableModifiedOn__: unknown;
+  /** Maximum time between two read operations from origin. */
+  ProxyReadTimeoutObjectIdValueEditableModifiedOn__: unknown;
+  /** The value set for the Pseudo IPv4 setting. */
+  PseudoIPV4ObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled, Cloudflare will redirect verified AI training crawlers to canonical URLs */
+  ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__: unknown;
+  /** Automatically replace insecure JavaScript libraries with safer and faster alternatives provided under cdnjs and powered by Cloudflare. Currently supports the following libraries: Polyfill under polyfill.io. */
+  ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: unknown;
+  /** Enables or disables buffering of responses from the proxied server. Cloudflare may buffer the whole payload to deliver it at once to the client versus allowing it to be delivered in chunks. By default, the proxied server streams directly and is not buffered by Cloudflare. This is limited to Enterprise Zones. */
+  ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__: unknown;
+  /** Rocket Loader is a general-purpose asynchronous JavaScript optimisation that prioritises rendering your content while loading your site's Javascript asynchronously. Turning on Rocket Loader will immediately improve a web page's rendering time sometimes measured as Time to First Paint (TTFP), and also the `window.onload` time (assuming there is JavaScript on the page). This can have a positive impact on your Google search ranking. When turned on, Rocket Loader will automatically defer the loading of all Javascript referenced in your HTML, with no configuration required. Refer to [Understanding Rocket Loader](https://support.cloudflare.com/hc/articles/200168056) for more information. */
+  ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: unknown;
+  /** [Automatic Platform Optimization for WordPress](https://developers.cloudflare.com/automatic-platform-optimization/) serves your WordPress site from Cloudflare's edge network and caches third-party fonts. */
+  ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__: unknown;
+  /** When enabled, Cloudflare provisions an AI Search instance for the zone */
+  ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare security header for a zone. */
+  SecurityHeadersObjectIdValueEditableModifiedOn__: unknown;
+  /** Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056). */
+  ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: unknown;
+  /** If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse--> Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036). */
+  ServerSideExcludesObjectIdValueEditableModifiedOn__: unknown;
+  /** Allow SHA1 support. */
+  ZonesSha1SupportObjectIdValueEditableModifiedOn__: unknown;
+  /** Cloudflare will treat files with the same query strings as the same file in cache, regardless of the order of the query strings. This is limited to Enterprise Zones. */
+  ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__: unknown;
+  /** SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416). */
+  ZonesSchemasSSLObjectIdValueEditableModifiedOn__: unknown;
+  /** Enrollment in the SSL/TLS Recommender service which tries to detect and recommend (by sending periodic emails) the most secure SSL/TLS setting your origin servers support. */
+  SSLRecommenderObjectIdEnabled__: unknown;
+  /** Only allows TLS1.2. */
+  ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: unknown;
+  /** Enables Crypto TLS 1.3 feature for a zone. */
+  TLS13ObjectIdValueEditableModifiedOn__: unknown;
+  /** TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only). */
+  TLSClientAuthObjectIdValueEditableModifiedOn__: unknown;
+  /** Media Transformations provides on-demand resizing, conversion and optimization for images and video served through Cloudflare's network. Refer to the [Image Transformations](https://developers.cloudflare.com/images/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information. */
+  ZonesTransformationsObjectIdValueEditableModifiedOn__: unknown;
+  /** Media Transformations Allowed Origins restricts transformations for images and video served through Cloudflare's network. Refer to the [Image Transformations](https://developers.cloudflare.com/images/) and [Video Transformations](https://developers.cloudflare.com/stream/transform-videos/#getting-started) documentation for more information. */
+  ZonesTransformationsAllowedOriginsObjectIdValueEditableModifiedOn__: unknown;
+  /** Allows customer to continue to use True Client IP (Akamai feature) in the headers we send to the origin. This is limited to Enterprise Zones. */
+  ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__: unknown;
+  /** The WAF examines HTTP requests to your website. It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016). */
+  ZonesSchemasWAFObjectIdValueEditableModifiedOn__: unknown;
+  /** When the client requesting the image supports the WebP image codec, and WebP offers a performance advantage over the original image format, Cloudflare will serve a WebP version of the original image. */
+  WebPObjectIdValueEditableModifiedOn__: unknown;
+  /** WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-). */
+  WebsocketObjectIdValueEditableModifiedOn__: unknown;
+}
+export const SettingsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ZeroRTTObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZeroRTT object { id, value, editable, modified_on }"),
+    ),
+    AdvancedDDoSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("AdvancedDDoS object { id, value, editable, modified_on }"),
+    ),
+    ZonesCacheRulesAegisObjectIdModifiedOnValue__: S.Unknown.pipe(
+      T.Body("ZonesCacheRulesAegis object { id, modified_on, value }"),
+    ),
+    AlwaysOnlineObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("AlwaysOnline object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasAlwaysUseHTTPSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasAlwaysUseHTTPS object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasAutomaticHTTPSRewritesObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasAutomaticHTTPSRewrites object { id, value, editable, modified_on }",
+        ),
+      ),
+    BrotliObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("Brotli object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasBrowserCacheTTLObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasBrowserCacheTTL object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasBrowserCheckObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasBrowserCheck object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasCacheLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasCacheLevel object { id, value, editable, modified_on }",
+      ),
+    ),
+    ChallengeTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ChallengeTTL object { id, value, editable, modified_on }"),
+    ),
+    CiphersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("Ciphers object { id, value, editable, modified_on }"),
+    ),
+    ZonesContentConverterObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesContentConverter object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesCNAMEFlatteningObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesCNAMEFlattening object { id, value, editable, modified_on }",
+      ),
+    ),
+    DevelopmentModeObjectIdValueEditable2More__: S.Unknown.pipe(
+      T.Body("DevelopmentMode object { id, value, editable, 2 more }"),
+    ),
+    EarlyHintsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("EarlyHints object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasEdgeCacheTTLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasEdgeCacheTTL object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasEmailObfuscationObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasEmailObfuscation object { id, value, editable, modified_on }",
+        ),
+      ),
+    H2PrioritizationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("H2Prioritization object { id, value, editable, modified_on }"),
+    ),
+    HotlinkProtectionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("HotlinkProtection object { id, value, editable, modified_on }"),
+    ),
+    HTTP2ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("HTTP2 object { id, value, editable, modified_on }"),
+    ),
+    HTTP3ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("HTTP3 object { id, value, editable, modified_on }"),
+    ),
+    ImageResizingObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ImageResizing object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasIPGeolocationObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasIPGeolocation object { id, value, editable, modified_on }",
+      ),
+    ),
+    IPV6ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("IPV6 object { id, value, editable, modified_on }"),
+    ),
+    ZonesMaxUploadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesMaxUpload object { id, value, editable, modified_on }"),
+    ),
+    MinTLSVersionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("MinTLSVersion object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasMirageObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasMirage object { id, value, editable, modified_on }"),
+    ),
+    NELObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("NEL object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasOpportunisticEncryptionObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasOpportunisticEncryption object { id, value, editable, modified_on }",
+        ),
+      ),
+    OpportunisticOnionObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("OpportunisticOnion object { id, value, editable, modified_on }"),
+    ),
+    OrangeToOrangeObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("OrangeToOrange object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasOriginErrorPagePassThruObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasOriginErrorPagePassThru object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesCacheRulesOriginH2MaxStreamsObjectIdModifiedOnValue__: S.Unknown.pipe(
+      T.Body(
+        "ZonesCacheRulesOriginH2MaxStreams object { id, modified_on, value }",
+      ),
+    ),
+    ZonesCacheRulesOriginMaxHTTPVersionObjectIdModifiedOnValue__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesCacheRulesOriginMaxHTTPVersion object { id, modified_on, value }",
+        ),
+      ),
+    ZonesSchemasPolishObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasPolish object { id, value, editable, modified_on }"),
+    ),
+    PrefetchPreloadObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("PrefetchPreload object { id, value, editable, modified_on }"),
+    ),
+    ZonesPrivacyPassObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesPrivacyPass object { id, value, editable, modified_on }"),
+    ),
+    ProxyReadTimeoutObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ProxyReadTimeout object { id, value, editable, modified_on }"),
+    ),
+    PseudoIPV4ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("PseudoIPV4 object { id, value, editable, modified_on }"),
+    ),
+    ZonesRedirectsForAITrainingObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesRedirectsForAITraining object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesReplaceInsecureJSObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesReplaceInsecureJS object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasResponseBufferingObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasResponseBuffering object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasRocketLoaderObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasRocketLoader object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesSchemasAutomaticPlatformOptimizationObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasAutomaticPlatformOptimization object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSearchForAgentsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSearchForAgents object { id, value, editable, modified_on }",
+      ),
+    ),
+    SecurityHeadersObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("SecurityHeaders object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasSecurityLevelObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesSchemasSecurityLevel object { id, value, editable, modified_on }",
+      ),
+    ),
+    ServerSideExcludesObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ServerSideExcludes object { id, value, editable, modified_on }"),
+    ),
+    ZonesSha1SupportObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSha1Support object { id, value, editable, modified_on }"),
+    ),
+    ZonesSchemasSortQueryStringForCacheObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasSortQueryStringForCache object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasSSLObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasSSL object { id, value, editable, modified_on }"),
+    ),
+    SSLRecommenderObjectIdEnabled__: S.Unknown.pipe(
+      T.Body("SSLRecommender object { id, enabled }"),
+    ),
+    ZonesTLS12OnlyObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesTLS1_2Only object { id, value, editable, modified_on }"),
+    ),
+    TLS13ObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("TLS1_3 object { id, value, editable, modified_on }"),
+    ),
+    TLSClientAuthObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("TLSClientAuth object { id, value, editable, modified_on }"),
+    ),
+    ZonesTransformationsObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body(
+        "ZonesTransformations object { id, value, editable, modified_on }",
+      ),
+    ),
+    ZonesTransformationsAllowedOriginsObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesTransformationsAllowedOrigins object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasTrueClientIPHeaderObjectIdValueEditableModifiedOn__:
+      S.Unknown.pipe(
+        T.Body(
+          "ZonesSchemasTrueClientIPHeader object { id, value, editable, modified_on }",
+        ),
+      ),
+    ZonesSchemasWAFObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("ZonesSchemasWAF object { id, value, editable, modified_on }"),
+    ),
+    WebPObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("WebP object { id, value, editable, modified_on }"),
+    ),
+    WebsocketObjectIdValueEditableModifiedOn__: S.Unknown.pipe(
+      T.Body("Websocket object { id, value, editable, modified_on }"),
+    ),
+  }),
+).annotate({
+  identifier: "SettingsListResultItem",
+}) as any as S.Schema<SettingsListResultItem>;
+
+export type SettingsListResultList = SettingsListResultItem[];
 export const SettingsListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  SettingsListResultItem,
 ) as any as S.Schema<SettingsListResultList>;
 
 export interface SettingsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SettingsListResultList;
 }
 export const SettingsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1195,16 +4332,63 @@ export type SubscriptionsCreateRequestFrequency =
   | (string & {});
 export const SubscriptionsCreateRequestFrequency = /*@__PURE__*/ S.String;
 
+export type SubscriptionsCreateRequestRatePlanId =
+  | "free"
+  | "lite"
+  | "pro"
+  | (string & {});
+export const SubscriptionsCreateRequestRatePlanId = /*@__PURE__*/ S.String;
+
+export type SubscriptionsCreateRequestRatePlanSetsList = string[];
+export const SubscriptionsCreateRequestRatePlanSetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SubscriptionsCreateRequestRatePlanSetsList>;
+
+export interface SubscriptionsCreateRequestRatePlan {
+  /** The ID of the rate plan. */
+  id?: SubscriptionsCreateRequestRatePlanId;
+  /** The currency applied to the rate plan subscription. */
+  currency?: string;
+  /** Whether this rate plan is managed externally from Cloudflare. */
+  externallyManaged?: boolean;
+  /** Whether a rate plan is enterprise-based (or newly adopted term contract). */
+  isContract?: boolean;
+  /** The full name of the rate plan. */
+  publicName?: string;
+  /** The scope that this rate plan applies to. */
+  scope?: string;
+  /** The list of sets this rate plan applies to. Returns array of strings. */
+  sets?: SubscriptionsCreateRequestRatePlanSetsList;
+}
+export const SubscriptionsCreateRequestRatePlan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(SubscriptionsCreateRequestRatePlanId),
+    currency: S.optional(S.String),
+    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
+    isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
+    publicName: S.optional(S.String.pipe(T.Body("public_name"))),
+    scope: S.optional(S.String),
+    sets: S.optional(SubscriptionsCreateRequestRatePlanSetsList),
+  }),
+).annotate({
+  identifier: "SubscriptionsCreateRequestRatePlan",
+}) as any as S.Schema<SubscriptionsCreateRequestRatePlan>;
+
 export interface SubscriptionsCreateRequest {
-  zone_id: string;
+  /** Identifier */
+  zoneId: string;
+  /** How often the subscription is renewed automatically. */
   frequency?: SubscriptionsCreateRequestFrequency;
-  rate_plan?: unknown;
+  /** The rate plan applied to the subscription. */
+  ratePlan?: SubscriptionsCreateRequestRatePlan;
 }
 export const SubscriptionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     frequency: S.optional(SubscriptionsCreateRequestFrequency),
-    rate_plan: S.optional(S.Unknown),
+    ratePlan: S.optional(
+      SubscriptionsCreateRequestRatePlan.pipe(T.Body("rate_plan")),
+    ),
   }).pipe(
     T.Http({ method: "POST", uri: "/zones/{zone_id}/subscription", code: 200 }),
   ),
@@ -1219,6 +4403,49 @@ export type SubscriptionsCreateResponseFrequency =
   | (string & {});
 export const SubscriptionsCreateResponseFrequency = /*@__PURE__*/ S.String;
 
+export type SubscriptionsCreateResponseRatePlanId =
+  | "free"
+  | "lite"
+  | "pro"
+  | (string & {});
+export const SubscriptionsCreateResponseRatePlanId = /*@__PURE__*/ S.String;
+
+export type SubscriptionsCreateResponseRatePlanSetsList = string[];
+export const SubscriptionsCreateResponseRatePlanSetsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SubscriptionsCreateResponseRatePlanSetsList>;
+
+export interface SubscriptionsCreateResponseRatePlan {
+  /** The ID of the rate plan. */
+  id?: SubscriptionsCreateResponseRatePlanId;
+  /** The currency applied to the rate plan subscription. */
+  currency?: string;
+  /** Whether this rate plan is managed externally from Cloudflare. */
+  externallyManaged?: boolean;
+  /** Whether a rate plan is enterprise-based (or newly adopted term contract). */
+  isContract?: boolean;
+  /** The full name of the rate plan. */
+  publicName?: string;
+  /** The scope that this rate plan applies to. */
+  scope?: string;
+  /** The list of sets this rate plan applies to. Returns array of strings. */
+  sets?: SubscriptionsCreateResponseRatePlanSetsList;
+}
+export const SubscriptionsCreateResponseRatePlan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(SubscriptionsCreateResponseRatePlanId),
+    currency: S.optional(S.String),
+    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
+    isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
+    publicName: S.optional(S.String.pipe(T.Body("public_name"))),
+    scope: S.optional(S.String),
+    sets: S.optional(SubscriptionsCreateResponseRatePlanSetsList),
+  }),
+).annotate({
+  identifier: "SubscriptionsCreateResponseRatePlan",
+}) as any as S.Schema<SubscriptionsCreateResponseRatePlan>;
+
 export type SubscriptionsCreateResponseState =
   | "Trial"
   | "Provisioned"
@@ -1228,24 +4455,36 @@ export const SubscriptionsCreateResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SubscriptionsCreateResponse {
+  /** Subscription identifier tag. */
   id?: string;
+  /** The monetary unit in which pricing information is displayed. */
   currency?: string;
-  current_period_end?: string;
-  current_period_start?: string;
+  /** The end of the current period and also when the next billing is due. */
+  currentPeriodEnd?: string;
+  /** When the current billing period started. May match initial_period_start if this is the first period. */
+  currentPeriodStart?: string;
+  /** How often the subscription is renewed automatically. */
   frequency?: SubscriptionsCreateResponseFrequency;
+  /** The price of the subscription that will be billed, in US dollars. */
   price?: number;
-  rate_plan?: unknown;
+  /** The rate plan applied to the subscription. */
+  ratePlan?: SubscriptionsCreateResponseRatePlan;
+  /** The state that the subscription is in. */
   state?: SubscriptionsCreateResponseState;
 }
 export const SubscriptionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     currency: S.optional(S.String),
-    current_period_end: S.optional(S.String),
-    current_period_start: S.optional(S.String),
+    currentPeriodEnd: S.optional(S.String.pipe(T.Body("current_period_end"))),
+    currentPeriodStart: S.optional(
+      S.String.pipe(T.Body("current_period_start")),
+    ),
     frequency: S.optional(SubscriptionsCreateResponseFrequency),
     price: S.optional(S.Number),
-    rate_plan: S.optional(S.Unknown),
+    ratePlan: S.optional(
+      SubscriptionsCreateResponseRatePlan.pipe(T.Body("rate_plan")),
+    ),
     state: S.optional(SubscriptionsCreateResponseState),
   }),
 ).annotate({
@@ -1253,11 +4492,12 @@ export const SubscriptionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionsCreateResponse>;
 
 export interface SubscriptionsGetRequest {
-  zone_id: string;
+  /** Identifier */
+  zoneId: string;
 }
 export const SubscriptionsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({ method: "GET", uri: "/zones/{zone_id}/subscription", code: 200 }),
   ),
@@ -1272,6 +4512,48 @@ export type SubscriptionsGetResponseFrequency =
   | (string & {});
 export const SubscriptionsGetResponseFrequency = /*@__PURE__*/ S.String;
 
+export type SubscriptionsGetResponseRatePlanId =
+  | "free"
+  | "lite"
+  | "pro"
+  | (string & {});
+export const SubscriptionsGetResponseRatePlanId = /*@__PURE__*/ S.String;
+
+export type SubscriptionsGetResponseRatePlanSetsList = string[];
+export const SubscriptionsGetResponseRatePlanSetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SubscriptionsGetResponseRatePlanSetsList>;
+
+export interface SubscriptionsGetResponseRatePlan {
+  /** The ID of the rate plan. */
+  id?: SubscriptionsGetResponseRatePlanId;
+  /** The currency applied to the rate plan subscription. */
+  currency?: string;
+  /** Whether this rate plan is managed externally from Cloudflare. */
+  externallyManaged?: boolean;
+  /** Whether a rate plan is enterprise-based (or newly adopted term contract). */
+  isContract?: boolean;
+  /** The full name of the rate plan. */
+  publicName?: string;
+  /** The scope that this rate plan applies to. */
+  scope?: string;
+  /** The list of sets this rate plan applies to. Returns array of strings. */
+  sets?: SubscriptionsGetResponseRatePlanSetsList;
+}
+export const SubscriptionsGetResponseRatePlan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(SubscriptionsGetResponseRatePlanId),
+    currency: S.optional(S.String),
+    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
+    isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
+    publicName: S.optional(S.String.pipe(T.Body("public_name"))),
+    scope: S.optional(S.String),
+    sets: S.optional(SubscriptionsGetResponseRatePlanSetsList),
+  }),
+).annotate({
+  identifier: "SubscriptionsGetResponseRatePlan",
+}) as any as S.Schema<SubscriptionsGetResponseRatePlan>;
+
 export type SubscriptionsGetResponseState =
   | "Trial"
   | "Provisioned"
@@ -1281,24 +4563,36 @@ export const SubscriptionsGetResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SubscriptionsGetResponse {
+  /** Subscription identifier tag. */
   id?: string;
+  /** The monetary unit in which pricing information is displayed. */
   currency?: string;
-  current_period_end?: string;
-  current_period_start?: string;
+  /** The end of the current period and also when the next billing is due. */
+  currentPeriodEnd?: string;
+  /** When the current billing period started. May match initial_period_start if this is the first period. */
+  currentPeriodStart?: string;
+  /** How often the subscription is renewed automatically. */
   frequency?: SubscriptionsGetResponseFrequency;
+  /** The price of the subscription that will be billed, in US dollars. */
   price?: number;
-  rate_plan?: unknown;
+  /** The rate plan applied to the subscription. */
+  ratePlan?: SubscriptionsGetResponseRatePlan;
+  /** The state that the subscription is in. */
   state?: SubscriptionsGetResponseState;
 }
 export const SubscriptionsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     currency: S.optional(S.String),
-    current_period_end: S.optional(S.String),
-    current_period_start: S.optional(S.String),
+    currentPeriodEnd: S.optional(S.String.pipe(T.Body("current_period_end"))),
+    currentPeriodStart: S.optional(
+      S.String.pipe(T.Body("current_period_start")),
+    ),
     frequency: S.optional(SubscriptionsGetResponseFrequency),
     price: S.optional(S.Number),
-    rate_plan: S.optional(S.Unknown),
+    ratePlan: S.optional(
+      SubscriptionsGetResponseRatePlan.pipe(T.Body("rate_plan")),
+    ),
     state: S.optional(SubscriptionsGetResponseState),
   }),
 ).annotate({
@@ -1313,16 +4607,63 @@ export type SubscriptionsUpdateRequestFrequency =
   | (string & {});
 export const SubscriptionsUpdateRequestFrequency = /*@__PURE__*/ S.String;
 
+export type SubscriptionsUpdateRequestRatePlanId =
+  | "free"
+  | "lite"
+  | "pro"
+  | (string & {});
+export const SubscriptionsUpdateRequestRatePlanId = /*@__PURE__*/ S.String;
+
+export type SubscriptionsUpdateRequestRatePlanSetsList = string[];
+export const SubscriptionsUpdateRequestRatePlanSetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SubscriptionsUpdateRequestRatePlanSetsList>;
+
+export interface SubscriptionsUpdateRequestRatePlan {
+  /** The ID of the rate plan. */
+  id?: SubscriptionsUpdateRequestRatePlanId;
+  /** The currency applied to the rate plan subscription. */
+  currency?: string;
+  /** Whether this rate plan is managed externally from Cloudflare. */
+  externallyManaged?: boolean;
+  /** Whether a rate plan is enterprise-based (or newly adopted term contract). */
+  isContract?: boolean;
+  /** The full name of the rate plan. */
+  publicName?: string;
+  /** The scope that this rate plan applies to. */
+  scope?: string;
+  /** The list of sets this rate plan applies to. Returns array of strings. */
+  sets?: SubscriptionsUpdateRequestRatePlanSetsList;
+}
+export const SubscriptionsUpdateRequestRatePlan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(SubscriptionsUpdateRequestRatePlanId),
+    currency: S.optional(S.String),
+    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
+    isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
+    publicName: S.optional(S.String.pipe(T.Body("public_name"))),
+    scope: S.optional(S.String),
+    sets: S.optional(SubscriptionsUpdateRequestRatePlanSetsList),
+  }),
+).annotate({
+  identifier: "SubscriptionsUpdateRequestRatePlan",
+}) as any as S.Schema<SubscriptionsUpdateRequestRatePlan>;
+
 export interface SubscriptionsUpdateRequest {
-  zone_id: string;
+  /** Identifier */
+  zoneId: string;
+  /** How often the subscription is renewed automatically. */
   frequency?: SubscriptionsUpdateRequestFrequency;
-  rate_plan?: unknown;
+  /** The rate plan applied to the subscription. */
+  ratePlan?: SubscriptionsUpdateRequestRatePlan;
 }
 export const SubscriptionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     frequency: S.optional(SubscriptionsUpdateRequestFrequency),
-    rate_plan: S.optional(S.Unknown),
+    ratePlan: S.optional(
+      SubscriptionsUpdateRequestRatePlan.pipe(T.Body("rate_plan")),
+    ),
   }).pipe(
     T.Http({ method: "PUT", uri: "/zones/{zone_id}/subscription", code: 200 }),
   ),
@@ -1337,6 +4678,49 @@ export type SubscriptionsUpdateResponseFrequency =
   | (string & {});
 export const SubscriptionsUpdateResponseFrequency = /*@__PURE__*/ S.String;
 
+export type SubscriptionsUpdateResponseRatePlanId =
+  | "free"
+  | "lite"
+  | "pro"
+  | (string & {});
+export const SubscriptionsUpdateResponseRatePlanId = /*@__PURE__*/ S.String;
+
+export type SubscriptionsUpdateResponseRatePlanSetsList = string[];
+export const SubscriptionsUpdateResponseRatePlanSetsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SubscriptionsUpdateResponseRatePlanSetsList>;
+
+export interface SubscriptionsUpdateResponseRatePlan {
+  /** The ID of the rate plan. */
+  id?: SubscriptionsUpdateResponseRatePlanId;
+  /** The currency applied to the rate plan subscription. */
+  currency?: string;
+  /** Whether this rate plan is managed externally from Cloudflare. */
+  externallyManaged?: boolean;
+  /** Whether a rate plan is enterprise-based (or newly adopted term contract). */
+  isContract?: boolean;
+  /** The full name of the rate plan. */
+  publicName?: string;
+  /** The scope that this rate plan applies to. */
+  scope?: string;
+  /** The list of sets this rate plan applies to. Returns array of strings. */
+  sets?: SubscriptionsUpdateResponseRatePlanSetsList;
+}
+export const SubscriptionsUpdateResponseRatePlan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(SubscriptionsUpdateResponseRatePlanId),
+    currency: S.optional(S.String),
+    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
+    isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
+    publicName: S.optional(S.String.pipe(T.Body("public_name"))),
+    scope: S.optional(S.String),
+    sets: S.optional(SubscriptionsUpdateResponseRatePlanSetsList),
+  }),
+).annotate({
+  identifier: "SubscriptionsUpdateResponseRatePlan",
+}) as any as S.Schema<SubscriptionsUpdateResponseRatePlan>;
+
 export type SubscriptionsUpdateResponseState =
   | "Trial"
   | "Provisioned"
@@ -1346,35 +4730,48 @@ export const SubscriptionsUpdateResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SubscriptionsUpdateResponse {
+  /** Subscription identifier tag. */
   id?: string;
+  /** The monetary unit in which pricing information is displayed. */
   currency?: string;
-  current_period_end?: string;
-  current_period_start?: string;
+  /** The end of the current period and also when the next billing is due. */
+  currentPeriodEnd?: string;
+  /** When the current billing period started. May match initial_period_start if this is the first period. */
+  currentPeriodStart?: string;
+  /** How often the subscription is renewed automatically. */
   frequency?: SubscriptionsUpdateResponseFrequency;
+  /** The price of the subscription that will be billed, in US dollars. */
   price?: number;
-  rate_plan?: unknown;
+  /** The rate plan applied to the subscription. */
+  ratePlan?: SubscriptionsUpdateResponseRatePlan;
+  /** The state that the subscription is in. */
   state?: SubscriptionsUpdateResponseState;
 }
 export const SubscriptionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     currency: S.optional(S.String),
-    current_period_end: S.optional(S.String),
-    current_period_start: S.optional(S.String),
+    currentPeriodEnd: S.optional(S.String.pipe(T.Body("current_period_end"))),
+    currentPeriodStart: S.optional(
+      S.String.pipe(T.Body("current_period_start")),
+    ),
     frequency: S.optional(SubscriptionsUpdateResponseFrequency),
     price: S.optional(S.Number),
-    rate_plan: S.optional(S.Unknown),
+    ratePlan: S.optional(
+      SubscriptionsUpdateResponseRatePlan.pipe(T.Body("rate_plan")),
+    ),
     state: S.optional(SubscriptionsUpdateResponseState),
   }),
 ).annotate({
   identifier: "SubscriptionsUpdateResponse",
 }) as any as S.Schema<SubscriptionsUpdateResponse>;
 
+export type ActivationCheckTriggerError = CloudflareOpError;
 /** Triggeres a new activation check for a PENDING Zone. This can be triggered every 5 min for paygo/ent customers, every hour for FREE Zones. */
-export const ActivationCheckTrigger: API.OperationMethod<
+export const activationCheckTrigger: API.OperationMethod<
   ActivationCheckTriggerRequest,
   ActivationCheckTriggerResponse,
-  CloudflareOpError,
+  ActivationCheckTriggerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ActivationCheckTriggerRequest,
@@ -1383,11 +4780,12 @@ export const ActivationCheckTrigger: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CreateError = CloudflareOpError;
 /** Create Zone */
-export const Create: API.OperationMethod<
+export const create: API.OperationMethod<
   CreateRequest,
   CreateResponse,
-  CloudflareOpError,
+  CreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRequest,
@@ -1396,11 +4794,12 @@ export const Create: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CtAlertingEditError = CloudflareOpError;
 /** Create or update the Certificate Transparency alerting subscription for a zone. Enables or disables email notifications when certificates are issued for the zone's domains. For Free and Pro zones, the subscription is toggled on or off using the enabled field. Notification emails are sent to all users with SSL permissions on the zone. For Business and Enterprise zones, the emails field is required and controls which addresses receive alerts. Setting emails to an empty list disables the subscription regardless of the enabled field. A maximum of 10 email addresses may be configured. */
-export const CtAlertingEdit: API.OperationMethod<
+export const ctAlertingEdit: API.OperationMethod<
   CtAlertingEditRequest,
   CtAlertingEditResponse,
-  CloudflareOpError,
+  CtAlertingEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CtAlertingEditRequest,
@@ -1409,11 +4808,12 @@ export const CtAlertingEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CtAlertingGetError = CloudflareOpError;
 /** Retrieve the Certificate Transparency alerting subscription settings for a zone. Returns whether CT monitoring is enabled and, for Business and Enterprise zones, the list of email addresses that receive alerts. */
-export const CtAlertingGet: API.OperationMethod<
+export const ctAlertingGet: API.OperationMethod<
   CtAlertingGetRequest,
   CtAlertingGetResponse,
-  CloudflareOpError,
+  CtAlertingGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CtAlertingGetRequest,
@@ -1422,11 +4822,12 @@ export const CtAlertingGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CustomNameserversGetError = CloudflareOpError;
 /** Get metadata for account-level custom nameservers on a zone. Deprecated in favor of [Show DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-a-zone-list-dns-settings). */
-export const CustomNameserversGet: API.OperationMethod<
+export const customNameserversGet: API.OperationMethod<
   CustomNameserversGetRequest,
   CustomNameserversGetResponse,
-  CloudflareOpError,
+  CustomNameserversGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CustomNameserversGetRequest,
@@ -1435,11 +4836,12 @@ export const CustomNameserversGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CustomNameserversUpdateError = CloudflareOpError;
 /** Set metadata for account-level custom nameservers on a zone. If you would like new zones in the account to use account custom nameservers by default, use PUT /accounts/:identifier to set the account setting use_account_custom_ns_by_default to true. Deprecated in favor of [Update DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-a-zone-update-dns-settings). */
-export const CustomNameserversUpdate: API.OperationMethod<
+export const customNameserversUpdate: API.OperationMethod<
   CustomNameserversUpdateRequest,
   CustomNameserversUpdateResponse,
-  CloudflareOpError,
+  CustomNameserversUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CustomNameserversUpdateRequest,
@@ -1448,11 +4850,12 @@ export const CustomNameserversUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DeleteError = CloudflareOpError;
 /** Deletes an existing zone. */
 export const Delete: API.OperationMethod<
   DeleteRequest,
   DeleteResponse,
-  CloudflareOpError,
+  DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequest,
@@ -1461,11 +4864,12 @@ export const Delete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type EditError = CloudflareOpError;
 /** Edits a zone. Only one zone property can be changed at a time. */
-export const Edit: API.OperationMethod<
+export const edit: API.OperationMethod<
   EditRequest,
   EditResponse,
-  CloudflareOpError,
+  EditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EditRequest,
@@ -1474,11 +4878,12 @@ export const Edit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type EnvironmentsCreateError = CloudflareOpError;
 /** Create zone environments */
-export const EnvironmentsCreate: API.OperationMethod<
+export const environmentsCreate: API.OperationMethod<
   EnvironmentsCreateRequest,
   EnvironmentsCreateResponse,
-  CloudflareOpError,
+  EnvironmentsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EnvironmentsCreateRequest,
@@ -1487,11 +4892,12 @@ export const EnvironmentsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type EnvironmentsDeleteError = CloudflareOpError;
 /** Delete zone environment */
-export const EnvironmentsDelete: API.OperationMethod<
+export const environmentsDelete: API.OperationMethod<
   EnvironmentsDeleteRequest,
   EnvironmentsDeleteResponse,
-  CloudflareOpError,
+  EnvironmentsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EnvironmentsDeleteRequest,
@@ -1500,11 +4906,12 @@ export const EnvironmentsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type EnvironmentsEditError = CloudflareOpError;
 /** Partially update zone environments */
-export const EnvironmentsEdit: API.OperationMethod<
+export const environmentsEdit: API.OperationMethod<
   EnvironmentsEditRequest,
   EnvironmentsEditResponse,
-  CloudflareOpError,
+  EnvironmentsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EnvironmentsEditRequest,
@@ -1513,11 +4920,12 @@ export const EnvironmentsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type EnvironmentsListError = CloudflareOpError;
 /** List zone environments */
-export const EnvironmentsList: API.OperationMethod<
+export const environmentsList: API.OperationMethod<
   EnvironmentsListRequest,
   EnvironmentsListResponse,
-  CloudflareOpError,
+  EnvironmentsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EnvironmentsListRequest,
@@ -1526,11 +4934,12 @@ export const EnvironmentsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type EnvironmentsRollbackError = CloudflareOpError;
 /** Roll back zone environment */
-export const EnvironmentsRollback: API.OperationMethod<
+export const environmentsRollback: API.OperationMethod<
   EnvironmentsRollbackRequest,
   EnvironmentsRollbackResponse,
-  CloudflareOpError,
+  EnvironmentsRollbackError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EnvironmentsRollbackRequest,
@@ -1539,11 +4948,12 @@ export const EnvironmentsRollback: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type EnvironmentsUpdateError = CloudflareOpError;
 /** Upsert zone environments */
-export const EnvironmentsUpdate: API.OperationMethod<
+export const environmentsUpdate: API.OperationMethod<
   EnvironmentsUpdateRequest,
   EnvironmentsUpdateResponse,
-  CloudflareOpError,
+  EnvironmentsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EnvironmentsUpdateRequest,
@@ -1552,11 +4962,12 @@ export const EnvironmentsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Zone Details */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -1565,11 +4976,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type HoldsCreateError = CloudflareOpError;
 /** Enforce a zone hold on the zone, blocking the creation and activation of zones with this zone's hostname. Zone holds cannot be enabled on CDN-only zones. */
-export const HoldsCreate: API.OperationMethod<
+export const holdsCreate: API.OperationMethod<
   HoldsCreateRequest,
   HoldsCreateResponse,
-  CloudflareOpError,
+  HoldsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HoldsCreateRequest,
@@ -1578,11 +4990,12 @@ export const HoldsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type HoldsDeleteError = CloudflareOpError;
 /** Stop enforcement of a zone hold on the zone, permanently or temporarily, allowing the creation and activation of zones with this zone's hostname. Existing zone holds can be removed from CDN-only zones when `hold_after` is not provided. Active holds are automatically disabled when a zone transitions to CDN-only mode. */
-export const HoldsDelete: API.OperationMethod<
+export const holdsDelete: API.OperationMethod<
   HoldsDeleteRequest,
   HoldsDeleteResponse,
-  CloudflareOpError,
+  HoldsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HoldsDeleteRequest,
@@ -1591,11 +5004,12 @@ export const HoldsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type HoldsEditError = CloudflareOpError;
 /** Update the `hold_after` and/or `include_subdomains` values on an existing zone hold. The hold is enabled if the `hold_after` date-time value is in the past. Existing zone holds can be removed from CDN-only zones by setting `hold_after` to `null`. Other zone hold updates cannot be made on CDN-only zones. Active holds are automatically disabled when a zone transitions to CDN-only mode. */
-export const HoldsEdit: API.OperationMethod<
+export const holdsEdit: API.OperationMethod<
   HoldsEditRequest,
   HoldsEditResponse,
-  CloudflareOpError,
+  HoldsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HoldsEditRequest,
@@ -1604,11 +5018,12 @@ export const HoldsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type HoldsGetError = CloudflareOpError;
 /** Retrieve whether the zone is subject to a zone hold, and metadata about the hold. */
-export const HoldsGet: API.OperationMethod<
+export const holdsGet: API.OperationMethod<
   HoldsGetRequest,
   HoldsGetResponse,
-  CloudflareOpError,
+  HoldsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HoldsGetRequest,
@@ -1617,11 +5032,12 @@ export const HoldsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ListError = CloudflareOpError;
 /** Lists, searches, sorts, and filters your zones. Listing zones across more than 500 accounts is currently not allowed. */
-export const List: API.OperationMethod<
+export const list: API.OperationMethod<
   ListRequest,
   ListResponse,
-  CloudflareOpError,
+  ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRequest,
@@ -1630,11 +5046,12 @@ export const List: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PlansGetError = CloudflareOpError;
 /** Details of the available plan that the zone can subscribe to. */
-export const PlansGet: API.OperationMethod<
+export const plansGet: API.OperationMethod<
   PlansGetRequest,
   PlansGetResponse,
-  CloudflareOpError,
+  PlansGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PlansGetRequest,
@@ -1643,11 +5060,12 @@ export const PlansGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PlansListError = CloudflareOpError;
 /** Lists available plans the zone can subscribe to. */
-export const PlansList: API.OperationMethod<
+export const plansList: API.OperationMethod<
   PlansListRequest,
   PlansListResponse,
-  CloudflareOpError,
+  PlansListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PlansListRequest,
@@ -1656,11 +5074,12 @@ export const PlansList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RatePlansGetError = CloudflareOpError;
 /** Lists all rate plans the zone can subscribe to. */
-export const RatePlansGet: API.OperationMethod<
+export const ratePlansGet: API.OperationMethod<
   RatePlansGetRequest,
   RatePlansGetResponse,
-  CloudflareOpError,
+  RatePlansGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RatePlansGetRequest,
@@ -1669,11 +5088,12 @@ export const RatePlansGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsBulkEditError = CloudflareOpError;
 /** Edit settings for a zone. */
-export const SettingsBulkEdit: API.OperationMethod<
+export const settingsBulkEdit: API.OperationMethod<
   SettingsBulkEditRequest,
   SettingsBulkEditResponse,
-  CloudflareOpError,
+  SettingsBulkEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsBulkEditRequest,
@@ -1682,11 +5102,12 @@ export const SettingsBulkEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsEditError = CloudflareOpError;
 /** Updates a single zone setting by the identifier */
-export const SettingsEdit: API.OperationMethod<
+export const settingsEdit: API.OperationMethod<
   SettingsEditRequest,
   SettingsEditResponse,
-  CloudflareOpError,
+  SettingsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsEditRequest,
@@ -1695,11 +5116,12 @@ export const SettingsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsGetError = CloudflareOpError;
 /** Fetch a single zone setting by name */
-export const SettingsGet: API.OperationMethod<
+export const settingsGet: API.OperationMethod<
   SettingsGetRequest,
   SettingsGetResponse,
-  CloudflareOpError,
+  SettingsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsGetRequest,
@@ -1708,11 +5130,12 @@ export const SettingsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsListError = CloudflareOpError;
 /** Available settings for your user in relation to a zone. */
-export const SettingsList: API.OperationMethod<
+export const settingsList: API.OperationMethod<
   SettingsListRequest,
   SettingsListResponse,
-  CloudflareOpError,
+  SettingsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsListRequest,
@@ -1721,11 +5144,12 @@ export const SettingsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SubscriptionsCreateError = CloudflareOpError;
 /** Create a zone subscription, either plan or add-ons. */
-export const SubscriptionsCreate: API.OperationMethod<
+export const subscriptionsCreate: API.OperationMethod<
   SubscriptionsCreateRequest,
   SubscriptionsCreateResponse,
-  CloudflareOpError,
+  SubscriptionsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SubscriptionsCreateRequest,
@@ -1734,11 +5158,12 @@ export const SubscriptionsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SubscriptionsGetError = CloudflareOpError;
 /** Lists zone subscription details. */
-export const SubscriptionsGet: API.OperationMethod<
+export const subscriptionsGet: API.OperationMethod<
   SubscriptionsGetRequest,
   SubscriptionsGetResponse,
-  CloudflareOpError,
+  SubscriptionsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SubscriptionsGetRequest,
@@ -1747,11 +5172,12 @@ export const SubscriptionsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SubscriptionsUpdateError = CloudflareOpError;
 /** Updates zone subscriptions, either plan or add-ons. */
-export const SubscriptionsUpdate: API.OperationMethod<
+export const subscriptionsUpdate: API.OperationMethod<
   SubscriptionsUpdateRequest,
   SubscriptionsUpdateResponse,
-  CloudflareOpError,
+  SubscriptionsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SubscriptionsUpdateRequest,

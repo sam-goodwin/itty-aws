@@ -10,18 +10,17 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface ConsumersCreateRequestBody {
-  Worker_object___script_name__type__dead_letter_queue__settings__: unknown;
-  HTTPPull_object___type__dead_letter_queue__settings__: unknown;
+  WorkerObjectScriptNameTypeDeadLetterQueueSettings__: unknown;
+  HTTPPullObjectTypeDeadLetterQueueSettings__: unknown;
 }
 export const ConsumersCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Worker_object___script_name__type__dead_letter_queue__settings__:
-      S.Unknown.pipe(
-        T.Body(
-          "Worker object { script_name, type, dead_letter_queue, settings }",
-        ),
+    WorkerObjectScriptNameTypeDeadLetterQueueSettings__: S.Unknown.pipe(
+      T.Body(
+        "Worker object { script_name, type, dead_letter_queue, settings }",
       ),
-    HTTPPull_object___type__dead_letter_queue__settings__: S.Unknown.pipe(
+    ),
+    HTTPPullObjectTypeDeadLetterQueueSettings__: S.Unknown.pipe(
       T.Body("HTTPPull object { type, dead_letter_queue, settings }"),
     ),
   }),
@@ -30,14 +29,17 @@ export const ConsumersCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumersCreateRequestBody>;
 
 export interface ConsumersCreateRequest {
-  account_id: string;
-  queue_id: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  queueId: string;
+  /** Request body for creating or updating a consumer */
   body: ConsumersCreateRequestBody;
 }
 export const ConsumersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    queue_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    queueId: S.String.pipe(T.Label("queue_id")),
     body: ConsumersCreateRequestBody,
   }).pipe(
     T.Http({
@@ -50,27 +52,41 @@ export const ConsumersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumersCreateRequest",
 }) as any as S.Schema<ConsumersCreateRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ConsumersCreateResponse {
-  result?: unknown;
+  WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: unknown;
+  HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: unknown;
 }
 export const ConsumersCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: S.Unknown.pipe(
+      T.Body(
+        "Worker object { consumer_id, created_on, dead_letter_queue, 4 more }",
+      ),
+    ),
+    HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: S.Unknown.pipe(
+      T.Body(
+        "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }",
+      ),
+    ),
   }),
 ).annotate({
   identifier: "ConsumersCreateResponse",
 }) as any as S.Schema<ConsumersCreateResponse>;
 
 export interface ConsumersDeleteRequest {
-  account_id: string;
-  queue_id: string;
-  consumer_id: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  queueId: string;
+  /** A Resource identifier. */
+  consumerId: string;
 }
 export const ConsumersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    queue_id: S.String.pipe(T.Label()),
-    consumer_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    queueId: S.String.pipe(T.Label("queue_id")),
+    consumerId: S.String.pipe(T.Label("consumer_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -90,15 +106,18 @@ export const ConsumersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumersDeleteResponse>;
 
 export interface ConsumersGetRequest {
-  account_id: string;
-  queue_id: string;
-  consumer_id: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  queueId: string;
+  /** A Resource identifier. */
+  consumerId: string;
 }
 export const ConsumersGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    queue_id: S.String.pipe(T.Label()),
-    consumer_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    queueId: S.String.pipe(T.Label("queue_id")),
+    consumerId: S.String.pipe(T.Label("consumer_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -110,25 +129,38 @@ export const ConsumersGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumersGetRequest",
 }) as any as S.Schema<ConsumersGetRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ConsumersGetResponse {
-  result?: unknown;
+  WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: unknown;
+  HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: unknown;
 }
 export const ConsumersGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: S.Unknown.pipe(
+      T.Body(
+        "Worker object { consumer_id, created_on, dead_letter_queue, 4 more }",
+      ),
+    ),
+    HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: S.Unknown.pipe(
+      T.Body(
+        "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }",
+      ),
+    ),
   }),
 ).annotate({
   identifier: "ConsumersGetResponse",
 }) as any as S.Schema<ConsumersGetResponse>;
 
 export interface ConsumersListRequest {
-  account_id: string;
-  queue_id: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  queueId: string;
 }
 export const ConsumersListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    queue_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    queueId: S.String.pipe(T.Label("queue_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -140,12 +172,34 @@ export const ConsumersListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumersListRequest",
 }) as any as S.Schema<ConsumersListRequest>;
 
-export type ConsumersListResultList = unknown[];
+export interface ConsumersListResultItem {
+  WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: unknown;
+  HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: unknown;
+}
+export const ConsumersListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: S.Unknown.pipe(
+      T.Body(
+        "Worker object { consumer_id, created_on, dead_letter_queue, 4 more }",
+      ),
+    ),
+    HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: S.Unknown.pipe(
+      T.Body(
+        "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "ConsumersListResultItem",
+}) as any as S.Schema<ConsumersListResultItem>;
+
+export type ConsumersListResultList = ConsumersListResultItem[];
 export const ConsumersListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  ConsumersListResultItem,
 ) as any as S.Schema<ConsumersListResultList>;
 
 export interface ConsumersListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ConsumersListResultList;
 }
 export const ConsumersListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -157,18 +211,17 @@ export const ConsumersListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumersListResponse>;
 
 export interface ConsumersUpdateRequestBody {
-  Worker_object___script_name__type__dead_letter_queue__settings__: unknown;
-  HTTPPull_object___type__dead_letter_queue__settings__: unknown;
+  WorkerObjectScriptNameTypeDeadLetterQueueSettings__: unknown;
+  HTTPPullObjectTypeDeadLetterQueueSettings__: unknown;
 }
 export const ConsumersUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Worker_object___script_name__type__dead_letter_queue__settings__:
-      S.Unknown.pipe(
-        T.Body(
-          "Worker object { script_name, type, dead_letter_queue, settings }",
-        ),
+    WorkerObjectScriptNameTypeDeadLetterQueueSettings__: S.Unknown.pipe(
+      T.Body(
+        "Worker object { script_name, type, dead_letter_queue, settings }",
       ),
-    HTTPPull_object___type__dead_letter_queue__settings__: S.Unknown.pipe(
+    ),
+    HTTPPullObjectTypeDeadLetterQueueSettings__: S.Unknown.pipe(
       T.Body("HTTPPull object { type, dead_letter_queue, settings }"),
     ),
   }),
@@ -177,16 +230,20 @@ export const ConsumersUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumersUpdateRequestBody>;
 
 export interface ConsumersUpdateRequest {
-  account_id: string;
-  queue_id: string;
-  consumer_id: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  queueId: string;
+  /** A Resource identifier. */
+  consumerId: string;
+  /** Request body for creating or updating a consumer */
   body: ConsumersUpdateRequestBody;
 }
 export const ConsumersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    queue_id: S.String.pipe(T.Label()),
-    consumer_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    queueId: S.String.pipe(T.Label("queue_id")),
+    consumerId: S.String.pipe(T.Label("consumer_id")),
     body: ConsumersUpdateRequestBody,
   }).pipe(
     T.Http({
@@ -199,47 +256,150 @@ export const ConsumersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumersUpdateRequest",
 }) as any as S.Schema<ConsumersUpdateRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ConsumersUpdateResponse {
-  result?: unknown;
+  WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: unknown;
+  HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: unknown;
 }
 export const ConsumersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: S.Unknown.pipe(
+      T.Body(
+        "Worker object { consumer_id, created_on, dead_letter_queue, 4 more }",
+      ),
+    ),
+    HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: S.Unknown.pipe(
+      T.Body(
+        "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }",
+      ),
+    ),
   }),
 ).annotate({
   identifier: "ConsumersUpdateResponse",
 }) as any as S.Schema<ConsumersUpdateResponse>;
 
 export interface CreateRequest {
-  account_id: string;
-  queue_name: string;
+  /** A Resource identifier. */
+  accountId: string;
+  queueName: string;
 }
 export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    queue_name: S.String,
+    accountId: S.String.pipe(T.Label("account_id")),
+    queueName: S.String.pipe(T.Body("queue_name")),
   }).pipe(
     T.Http({ method: "POST", uri: "/accounts/{account_id}/queues", code: 200 }),
   ),
 ).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
 
+export interface CreateResponseConsumersItem {
+  WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: unknown;
+  HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: unknown;
+}
+export const CreateResponseConsumersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: S.Unknown.pipe(
+      T.Body(
+        "Worker object { consumer_id, created_on, dead_letter_queue, 4 more }",
+      ),
+    ),
+    HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: S.Unknown.pipe(
+      T.Body(
+        "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "CreateResponseConsumersItem",
+}) as any as S.Schema<CreateResponseConsumersItem>;
+
+export type CreateResponseConsumersList = CreateResponseConsumersItem[];
+export const CreateResponseConsumersList = /*@__PURE__*/ S.Array(
+  CreateResponseConsumersItem,
+) as any as S.Schema<CreateResponseConsumersList>;
+
+export interface CreateResponseProducersItem {
+  MqWorkerProducerObjectScriptType__: unknown;
+  MqR2ProducerObjectBucketNameType__: unknown;
+}
+export const CreateResponseProducersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MqWorkerProducerObjectScriptType__: S.Unknown.pipe(
+      T.Body("MqWorkerProducer object { script, type }"),
+    ),
+    MqR2ProducerObjectBucketNameType__: S.Unknown.pipe(
+      T.Body("MqR2Producer object { bucket_name, type }"),
+    ),
+  }),
+).annotate({
+  identifier: "CreateResponseProducersItem",
+}) as any as S.Schema<CreateResponseProducersItem>;
+
+export type CreateResponseProducersList = CreateResponseProducersItem[];
+export const CreateResponseProducersList = /*@__PURE__*/ S.Array(
+  CreateResponseProducersItem,
+) as any as S.Schema<CreateResponseProducersList>;
+
+export interface CreateResponseSettings {
+  /** Number of seconds to delay delivery of all messages to consumers. */
+  deliveryDelay?: number;
+  /** Indicates if message delivery to consumers is currently paused. */
+  deliveryPaused?: boolean;
+  /** Number of seconds after which an unconsumed message will be delayed. */
+  messageRetentionPeriod?: number;
+}
+export const CreateResponseSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
+    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
+    messageRetentionPeriod: S.optional(
+      S.Number.pipe(T.Body("message_retention_period")),
+    ),
+  }),
+).annotate({
+  identifier: "CreateResponseSettings",
+}) as any as S.Schema<CreateResponseSettings>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateResponse {
-  result?: unknown;
+  consumers?: CreateResponseConsumersList;
+  consumersTotalCount?: number;
+  createdOn?: string;
+  modifiedOn?: string;
+  producers?: CreateResponseProducersList;
+  producersTotalCount?: number;
+  queueId?: string;
+  queueName?: string;
+  settings?: CreateResponseSettings;
 }
 export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    consumers: S.optional(CreateResponseConsumersList),
+    consumersTotalCount: S.optional(
+      S.Number.pipe(T.Body("consumers_total_count")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    producers: S.optional(CreateResponseProducersList),
+    producersTotalCount: S.optional(
+      S.Number.pipe(T.Body("producers_total_count")),
+    ),
+    queueId: S.optional(S.String.pipe(T.Body("queue_id"))),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(CreateResponseSettings),
   }),
 ).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
 
 export interface DeleteRequest {
-  account_id: string;
-  queue_id: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  queueId: string;
 }
 export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    queue_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    queueId: S.String.pipe(T.Label("queue_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -255,31 +415,38 @@ export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
 
 export interface EditRequestSettings {
-  delivery_delay?: number;
-  delivery_paused?: boolean;
-  message_retention_period?: number;
+  /** Number of seconds to delay delivery of all messages to consumers. */
+  deliveryDelay?: number;
+  /** Indicates if message delivery to consumers is currently paused. */
+  deliveryPaused?: boolean;
+  /** Number of seconds after which an unconsumed message will be delayed. */
+  messageRetentionPeriod?: number;
 }
 export const EditRequestSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    delivery_delay: S.optional(S.Number),
-    delivery_paused: S.optional(S.Boolean),
-    message_retention_period: S.optional(S.Number),
+    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
+    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
+    messageRetentionPeriod: S.optional(
+      S.Number.pipe(T.Body("message_retention_period")),
+    ),
   }),
 ).annotate({
   identifier: "EditRequestSettings",
 }) as any as S.Schema<EditRequestSettings>;
 
 export interface EditRequest {
-  account_id: string;
-  queue_id: string;
-  queue_name?: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  queueId: string;
+  queueName?: string;
   settings?: EditRequestSettings;
 }
 export const EditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    queue_id: S.String.pipe(T.Label()),
-    queue_name: S.optional(S.String),
+    accountId: S.String.pipe(T.Label("account_id")),
+    queueId: S.String.pipe(T.Label("queue_id")),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
     settings: S.optional(EditRequestSettings),
   }).pipe(
     T.Http({
@@ -290,23 +457,114 @@ export const EditRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "EditRequest" }) as any as S.Schema<EditRequest>;
 
+export interface EditResponseConsumersItem {
+  WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: unknown;
+  HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: unknown;
+}
+export const EditResponseConsumersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: S.Unknown.pipe(
+      T.Body(
+        "Worker object { consumer_id, created_on, dead_letter_queue, 4 more }",
+      ),
+    ),
+    HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: S.Unknown.pipe(
+      T.Body(
+        "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "EditResponseConsumersItem",
+}) as any as S.Schema<EditResponseConsumersItem>;
+
+export type EditResponseConsumersList = EditResponseConsumersItem[];
+export const EditResponseConsumersList = /*@__PURE__*/ S.Array(
+  EditResponseConsumersItem,
+) as any as S.Schema<EditResponseConsumersList>;
+
+export interface EditResponseProducersItem {
+  MqWorkerProducerObjectScriptType__: unknown;
+  MqR2ProducerObjectBucketNameType__: unknown;
+}
+export const EditResponseProducersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MqWorkerProducerObjectScriptType__: S.Unknown.pipe(
+      T.Body("MqWorkerProducer object { script, type }"),
+    ),
+    MqR2ProducerObjectBucketNameType__: S.Unknown.pipe(
+      T.Body("MqR2Producer object { bucket_name, type }"),
+    ),
+  }),
+).annotate({
+  identifier: "EditResponseProducersItem",
+}) as any as S.Schema<EditResponseProducersItem>;
+
+export type EditResponseProducersList = EditResponseProducersItem[];
+export const EditResponseProducersList = /*@__PURE__*/ S.Array(
+  EditResponseProducersItem,
+) as any as S.Schema<EditResponseProducersList>;
+
+export interface EditResponseSettings {
+  /** Number of seconds to delay delivery of all messages to consumers. */
+  deliveryDelay?: number;
+  /** Indicates if message delivery to consumers is currently paused. */
+  deliveryPaused?: boolean;
+  /** Number of seconds after which an unconsumed message will be delayed. */
+  messageRetentionPeriod?: number;
+}
+export const EditResponseSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
+    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
+    messageRetentionPeriod: S.optional(
+      S.Number.pipe(T.Body("message_retention_period")),
+    ),
+  }),
+).annotate({
+  identifier: "EditResponseSettings",
+}) as any as S.Schema<EditResponseSettings>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditResponse {
-  result?: unknown;
+  consumers?: EditResponseConsumersList;
+  consumersTotalCount?: number;
+  createdOn?: string;
+  modifiedOn?: string;
+  producers?: EditResponseProducersList;
+  producersTotalCount?: number;
+  queueId?: string;
+  queueName?: string;
+  settings?: EditResponseSettings;
 }
 export const EditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    consumers: S.optional(EditResponseConsumersList),
+    consumersTotalCount: S.optional(
+      S.Number.pipe(T.Body("consumers_total_count")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    producers: S.optional(EditResponseProducersList),
+    producersTotalCount: S.optional(
+      S.Number.pipe(T.Body("producers_total_count")),
+    ),
+    queueId: S.optional(S.String.pipe(T.Body("queue_id"))),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(EditResponseSettings),
   }),
 ).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
 
 export interface GetRequest {
-  account_id: string;
-  queue_id: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  queueId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    queue_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    queueId: S.String.pipe(T.Label("queue_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -316,23 +574,114 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
+export interface GetResponseConsumersItem {
+  WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: unknown;
+  HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: unknown;
+}
+export const GetResponseConsumersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: S.Unknown.pipe(
+      T.Body(
+        "Worker object { consumer_id, created_on, dead_letter_queue, 4 more }",
+      ),
+    ),
+    HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: S.Unknown.pipe(
+      T.Body(
+        "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "GetResponseConsumersItem",
+}) as any as S.Schema<GetResponseConsumersItem>;
+
+export type GetResponseConsumersList = GetResponseConsumersItem[];
+export const GetResponseConsumersList = /*@__PURE__*/ S.Array(
+  GetResponseConsumersItem,
+) as any as S.Schema<GetResponseConsumersList>;
+
+export interface GetResponseProducersItem {
+  MqWorkerProducerObjectScriptType__: unknown;
+  MqR2ProducerObjectBucketNameType__: unknown;
+}
+export const GetResponseProducersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MqWorkerProducerObjectScriptType__: S.Unknown.pipe(
+      T.Body("MqWorkerProducer object { script, type }"),
+    ),
+    MqR2ProducerObjectBucketNameType__: S.Unknown.pipe(
+      T.Body("MqR2Producer object { bucket_name, type }"),
+    ),
+  }),
+).annotate({
+  identifier: "GetResponseProducersItem",
+}) as any as S.Schema<GetResponseProducersItem>;
+
+export type GetResponseProducersList = GetResponseProducersItem[];
+export const GetResponseProducersList = /*@__PURE__*/ S.Array(
+  GetResponseProducersItem,
+) as any as S.Schema<GetResponseProducersList>;
+
+export interface GetResponseSettings {
+  /** Number of seconds to delay delivery of all messages to consumers. */
+  deliveryDelay?: number;
+  /** Indicates if message delivery to consumers is currently paused. */
+  deliveryPaused?: boolean;
+  /** Number of seconds after which an unconsumed message will be delayed. */
+  messageRetentionPeriod?: number;
+}
+export const GetResponseSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
+    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
+    messageRetentionPeriod: S.optional(
+      S.Number.pipe(T.Body("message_retention_period")),
+    ),
+  }),
+).annotate({
+  identifier: "GetResponseSettings",
+}) as any as S.Schema<GetResponseSettings>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
-  result?: unknown;
+  consumers?: GetResponseConsumersList;
+  consumersTotalCount?: number;
+  createdOn?: string;
+  modifiedOn?: string;
+  producers?: GetResponseProducersList;
+  producersTotalCount?: number;
+  queueId?: string;
+  queueName?: string;
+  settings?: GetResponseSettings;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    consumers: S.optional(GetResponseConsumersList),
+    consumersTotalCount: S.optional(
+      S.Number.pipe(T.Body("consumers_total_count")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    producers: S.optional(GetResponseProducersList),
+    producersTotalCount: S.optional(
+      S.Number.pipe(T.Body("producers_total_count")),
+    ),
+    queueId: S.optional(S.String.pipe(T.Body("queue_id"))),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(GetResponseSettings),
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
 export interface GetMetricsRequest {
-  account_id: string;
-  queue_id: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  queueId: string;
 }
 export const GetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    queue_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    queueId: S.String.pipe(T.Label("queue_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -346,37 +695,141 @@ export const GetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetMetricsResponse {
-  backlog_bytes: number;
-  backlog_count: number;
-  oldest_message_timestamp_ms: number;
+  /** The size in bytes of unacknowledged messages in the queue. */
+  backlogBytes: number;
+  /** The number of unacknowledged messages in the queue. */
+  backlogCount: number;
+  /** Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown. */
+  oldestMessageTimestampMs: number;
 }
 export const GetMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    backlog_bytes: S.Number,
-    backlog_count: S.Number,
-    oldest_message_timestamp_ms: S.Number,
+    backlogBytes: S.Number.pipe(T.Body("backlog_bytes")),
+    backlogCount: S.Number.pipe(T.Body("backlog_count")),
+    oldestMessageTimestampMs: S.Number.pipe(
+      T.Body("oldest_message_timestamp_ms"),
+    ),
   }),
 ).annotate({
   identifier: "GetMetricsResponse",
 }) as any as S.Schema<GetMetricsResponse>;
 
 export interface ListRequest {
-  account_id: string;
+  /** A Resource identifier. */
+  accountId: string;
 }
 export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({ method: "GET", uri: "/accounts/{account_id}/queues", code: 200 }),
   ),
 ).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
 
-export type ListResultList = unknown[];
+export interface ListResultItemConsumersItem {
+  WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: unknown;
+  HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: unknown;
+}
+export const ListResultItemConsumersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: S.Unknown.pipe(
+      T.Body(
+        "Worker object { consumer_id, created_on, dead_letter_queue, 4 more }",
+      ),
+    ),
+    HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: S.Unknown.pipe(
+      T.Body(
+        "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "ListResultItemConsumersItem",
+}) as any as S.Schema<ListResultItemConsumersItem>;
+
+export type ListResultItemConsumersList = ListResultItemConsumersItem[];
+export const ListResultItemConsumersList = /*@__PURE__*/ S.Array(
+  ListResultItemConsumersItem,
+) as any as S.Schema<ListResultItemConsumersList>;
+
+export interface ListResultItemProducersItem {
+  MqWorkerProducerObjectScriptType__: unknown;
+  MqR2ProducerObjectBucketNameType__: unknown;
+}
+export const ListResultItemProducersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MqWorkerProducerObjectScriptType__: S.Unknown.pipe(
+      T.Body("MqWorkerProducer object { script, type }"),
+    ),
+    MqR2ProducerObjectBucketNameType__: S.Unknown.pipe(
+      T.Body("MqR2Producer object { bucket_name, type }"),
+    ),
+  }),
+).annotate({
+  identifier: "ListResultItemProducersItem",
+}) as any as S.Schema<ListResultItemProducersItem>;
+
+export type ListResultItemProducersList = ListResultItemProducersItem[];
+export const ListResultItemProducersList = /*@__PURE__*/ S.Array(
+  ListResultItemProducersItem,
+) as any as S.Schema<ListResultItemProducersList>;
+
+export interface ListResultItemSettings {
+  /** Number of seconds to delay delivery of all messages to consumers. */
+  deliveryDelay?: number;
+  /** Indicates if message delivery to consumers is currently paused. */
+  deliveryPaused?: boolean;
+  /** Number of seconds after which an unconsumed message will be delayed. */
+  messageRetentionPeriod?: number;
+}
+export const ListResultItemSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
+    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
+    messageRetentionPeriod: S.optional(
+      S.Number.pipe(T.Body("message_retention_period")),
+    ),
+  }),
+).annotate({
+  identifier: "ListResultItemSettings",
+}) as any as S.Schema<ListResultItemSettings>;
+
+export interface ListResultItem {
+  consumers?: ListResultItemConsumersList;
+  consumersTotalCount?: number;
+  createdOn?: string;
+  modifiedOn?: string;
+  producers?: ListResultItemProducersList;
+  producersTotalCount?: number;
+  queueId?: string;
+  queueName?: string;
+  settings?: ListResultItemSettings;
+}
+export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumers: S.optional(ListResultItemConsumersList),
+    consumersTotalCount: S.optional(
+      S.Number.pipe(T.Body("consumers_total_count")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    producers: S.optional(ListResultItemProducersList),
+    producersTotalCount: S.optional(
+      S.Number.pipe(T.Body("producers_total_count")),
+    ),
+    queueId: S.optional(S.String.pipe(T.Body("queue_id"))),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(ListResultItemSettings),
+  }),
+).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
+
+export type ListResultList = ListResultItem[];
 export const ListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
 export interface ListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
 export const ListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -386,11 +839,12 @@ export const ListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
 
 export interface MessagesAckRequestAcksItem {
-  lease_id?: string;
+  /** An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message. */
+  leaseId?: string;
 }
 export const MessagesAckRequestAcksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lease_id: S.optional(S.String),
+    leaseId: S.optional(S.String.pipe(T.Body("lease_id"))),
   }),
 ).annotate({
   identifier: "MessagesAckRequestAcksItem",
@@ -402,13 +856,15 @@ export const MessagesAckRequestAcksList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MessagesAckRequestAcksList>;
 
 export interface MessagesAckRequestRetriesItem {
-  delay_seconds?: number;
-  lease_id?: string;
+  /** The number of seconds to delay before making the message available for another attempt. */
+  delaySeconds?: number;
+  /** An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message. */
+  leaseId?: string;
 }
 export const MessagesAckRequestRetriesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    delay_seconds: S.optional(S.Number),
-    lease_id: S.optional(S.String),
+    delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
+    leaseId: S.optional(S.String.pipe(T.Body("lease_id"))),
   }),
 ).annotate({
   identifier: "MessagesAckRequestRetriesItem",
@@ -420,15 +876,17 @@ export const MessagesAckRequestRetriesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MessagesAckRequestRetriesList>;
 
 export interface MessagesAckRequest {
-  account_id: string;
-  queue_id: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  queueId: string;
   acks?: MessagesAckRequestAcksList;
   retries?: MessagesAckRequestRetriesList;
 }
 export const MessagesAckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    queue_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    queueId: S.String.pipe(T.Label("queue_id")),
     acks: S.optional(MessagesAckRequestAcksList),
     retries: S.optional(MessagesAckRequestRetriesList),
   }).pipe(
@@ -452,8 +910,11 @@ export const MessagesAckResponseWarningsMap = /*@__PURE__*/ S.Record(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface MessagesAckResponse {
+  /** The number of messages that were succesfully acknowledged. */
   ackCount?: number;
+  /** The number of messages that were succesfully retried. */
   retryCount?: number;
+  /** Map of lease IDs to warning messages encountered during acknowledgement. */
   warnings?: MessagesAckResponseWarningsMap;
 }
 export const MessagesAckResponse = /*@__PURE__*/ S.suspend(() =>
@@ -467,23 +928,17 @@ export const MessagesAckResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MessagesAckResponse>;
 
 export interface MessagesBulkPushRequestMessagesItem {
-  MqQueueMessageText_object___body__content_type__delay_seconds__: unknown;
-  MqQueueMessageJson_object___body__content_type__delay_seconds__: unknown;
+  MqQueueMessageTextObjectBodyContentTypeDelaySeconds__: unknown;
+  MqQueueMessageJsonObjectBodyContentTypeDelaySeconds__: unknown;
 }
 export const MessagesBulkPushRequestMessagesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    MqQueueMessageText_object___body__content_type__delay_seconds__:
-      S.Unknown.pipe(
-        T.Body(
-          "MqQueueMessageText object { body, content_type, delay_seconds }",
-        ),
-      ),
-    MqQueueMessageJson_object___body__content_type__delay_seconds__:
-      S.Unknown.pipe(
-        T.Body(
-          "MqQueueMessageJson object { body, content_type, delay_seconds }",
-        ),
-      ),
+    MqQueueMessageTextObjectBodyContentTypeDelaySeconds__: S.Unknown.pipe(
+      T.Body("MqQueueMessageText object { body, content_type, delay_seconds }"),
+    ),
+    MqQueueMessageJsonObjectBodyContentTypeDelaySeconds__: S.Unknown.pipe(
+      T.Body("MqQueueMessageJson object { body, content_type, delay_seconds }"),
+    ),
   }),
 ).annotate({
   identifier: "MessagesBulkPushRequestMessagesItem",
@@ -496,16 +951,19 @@ export const MessagesBulkPushRequestMessagesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MessagesBulkPushRequestMessagesList>;
 
 export interface MessagesBulkPushRequest {
-  account_id: string;
-  queue_id: string;
-  delay_seconds?: number;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  queueId: string;
+  /** The number of seconds to wait for attempting to deliver this batch to consumers */
+  delaySeconds?: number;
   messages?: MessagesBulkPushRequestMessagesList;
 }
 export const MessagesBulkPushRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    queue_id: S.String.pipe(T.Label()),
-    delay_seconds: S.optional(S.Number),
+    accountId: S.String.pipe(T.Label("account_id")),
+    queueId: S.String.pipe(T.Label("queue_id")),
+    delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
     messages: S.optional(MessagesBulkPushRequestMessagesList),
   }).pipe(
     T.Http({
@@ -519,22 +977,28 @@ export const MessagesBulkPushRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MessagesBulkPushRequest>;
 
 export interface MessagesBulkPushResponseMetadataMetrics {
-  backlog_bytes: number;
-  backlog_count: number;
-  oldest_message_timestamp_ms: number;
+  /** The size in bytes of unacknowledged messages in the queue. */
+  backlogBytes: number;
+  /** The number of unacknowledged messages in the queue. */
+  backlogCount: number;
+  /** Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown. */
+  oldestMessageTimestampMs: number;
 }
 export const MessagesBulkPushResponseMetadataMetrics = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      backlog_bytes: S.Number,
-      backlog_count: S.Number,
-      oldest_message_timestamp_ms: S.Number,
+      backlogBytes: S.Number.pipe(T.Body("backlog_bytes")),
+      backlogCount: S.Number.pipe(T.Body("backlog_count")),
+      oldestMessageTimestampMs: S.Number.pipe(
+        T.Body("oldest_message_timestamp_ms"),
+      ),
     }),
 ).annotate({
   identifier: "MessagesBulkPushResponseMetadataMetrics",
 }) as any as S.Schema<MessagesBulkPushResponseMetadataMetrics>;
 
 export interface MessagesBulkPushResponseMetadata {
+  /** Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues. */
   metrics?: MessagesBulkPushResponseMetadataMetrics;
 }
 export const MessagesBulkPushResponseMetadata = /*@__PURE__*/ S.suspend(() =>
@@ -558,17 +1022,23 @@ export const MessagesBulkPushResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MessagesBulkPushResponse>;
 
 export interface MessagesPullRequest {
-  account_id: string;
-  queue_id: string;
-  batch_size?: number;
-  visibility_timeout_ms?: number;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  queueId: string;
+  /** The maximum number of messages to include in a batch. */
+  batchSize?: number;
+  /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
+  visibilityTimeoutMs?: number;
 }
 export const MessagesPullRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    queue_id: S.String.pipe(T.Label()),
-    batch_size: S.optional(S.Number),
-    visibility_timeout_ms: S.optional(S.Number),
+    accountId: S.String.pipe(T.Label("account_id")),
+    queueId: S.String.pipe(T.Label("queue_id")),
+    batchSize: S.optional(S.Number.pipe(T.Body("batch_size"))),
+    visibilityTimeoutMs: S.optional(
+      S.Number.pipe(T.Body("visibility_timeout_ms")),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -584,18 +1054,19 @@ export interface MessagesPullResponseMessagesItem {
   id?: string;
   attempts?: number;
   body?: string;
-  lease_id?: string;
+  /** An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message. */
+  leaseId?: string;
   metadata?: unknown;
-  timestamp_ms?: number;
+  timestampMs?: number;
 }
 export const MessagesPullResponseMessagesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     attempts: S.optional(S.Number),
     body: S.optional(S.String),
-    lease_id: S.optional(S.String),
+    leaseId: S.optional(S.String.pipe(T.Body("lease_id"))),
     metadata: S.optional(S.Unknown),
-    timestamp_ms: S.optional(S.Number),
+    timestampMs: S.optional(S.Number.pipe(T.Body("timestamp_ms"))),
   }),
 ).annotate({
   identifier: "MessagesPullResponseMessagesItem",
@@ -608,21 +1079,27 @@ export const MessagesPullResponseMessagesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MessagesPullResponseMessagesList>;
 
 export interface MessagesPullResponseMetadataMetrics {
-  backlog_bytes: number;
-  backlog_count: number;
-  oldest_message_timestamp_ms: number;
+  /** The size in bytes of unacknowledged messages in the queue. */
+  backlogBytes: number;
+  /** The number of unacknowledged messages in the queue. */
+  backlogCount: number;
+  /** Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown. */
+  oldestMessageTimestampMs: number;
 }
 export const MessagesPullResponseMetadataMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    backlog_bytes: S.Number,
-    backlog_count: S.Number,
-    oldest_message_timestamp_ms: S.Number,
+    backlogBytes: S.Number.pipe(T.Body("backlog_bytes")),
+    backlogCount: S.Number.pipe(T.Body("backlog_count")),
+    oldestMessageTimestampMs: S.Number.pipe(
+      T.Body("oldest_message_timestamp_ms"),
+    ),
   }),
 ).annotate({
   identifier: "MessagesPullResponseMetadataMetrics",
 }) as any as S.Schema<MessagesPullResponseMetadataMetrics>;
 
 export interface MessagesPullResponseMetadata {
+  /** Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues. */
   metrics?: MessagesPullResponseMetadataMetrics;
 }
 export const MessagesPullResponseMetadata = /*@__PURE__*/ S.suspend(() =>
@@ -635,13 +1112,16 @@ export const MessagesPullResponseMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface MessagesPullResponse {
-  message_backlog_count?: number;
+  /** The number of unacknowledged messages in the queue. */
+  messageBacklogCount?: number;
   messages?: MessagesPullResponseMessagesList;
   metadata?: MessagesPullResponseMetadata;
 }
 export const MessagesPullResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    message_backlog_count: S.optional(S.Number),
+    messageBacklogCount: S.optional(
+      S.Number.pipe(T.Body("message_backlog_count")),
+    ),
     messages: S.optional(MessagesPullResponseMessagesList),
     metadata: S.optional(MessagesPullResponseMetadata),
   }),
@@ -650,37 +1130,33 @@ export const MessagesPullResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MessagesPullResponse>;
 
 export interface MessagesPushRequestBody {
-  MqQueueMessageText_object___body__content_type__delay_seconds__: unknown;
-  MqQueueMessageJson_object___body__content_type__delay_seconds__: unknown;
+  MqQueueMessageTextObjectBodyContentTypeDelaySeconds__: unknown;
+  MqQueueMessageJsonObjectBodyContentTypeDelaySeconds__: unknown;
 }
 export const MessagesPushRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    MqQueueMessageText_object___body__content_type__delay_seconds__:
-      S.Unknown.pipe(
-        T.Body(
-          "MqQueueMessageText object { body, content_type, delay_seconds }",
-        ),
-      ),
-    MqQueueMessageJson_object___body__content_type__delay_seconds__:
-      S.Unknown.pipe(
-        T.Body(
-          "MqQueueMessageJson object { body, content_type, delay_seconds }",
-        ),
-      ),
+    MqQueueMessageTextObjectBodyContentTypeDelaySeconds__: S.Unknown.pipe(
+      T.Body("MqQueueMessageText object { body, content_type, delay_seconds }"),
+    ),
+    MqQueueMessageJsonObjectBodyContentTypeDelaySeconds__: S.Unknown.pipe(
+      T.Body("MqQueueMessageJson object { body, content_type, delay_seconds }"),
+    ),
   }),
 ).annotate({
   identifier: "MessagesPushRequestBody",
 }) as any as S.Schema<MessagesPushRequestBody>;
 
 export interface MessagesPushRequest {
-  account_id: string;
-  queue_id: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  queueId: string;
   body?: MessagesPushRequestBody;
 }
 export const MessagesPushRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    queue_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    queueId: S.String.pipe(T.Label("queue_id")),
     body: S.optional(MessagesPushRequestBody),
   }).pipe(
     T.Http({
@@ -694,21 +1170,27 @@ export const MessagesPushRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MessagesPushRequest>;
 
 export interface MessagesPushResponseMetadataMetrics {
-  backlog_bytes: number;
-  backlog_count: number;
-  oldest_message_timestamp_ms: number;
+  /** The size in bytes of unacknowledged messages in the queue. */
+  backlogBytes: number;
+  /** The number of unacknowledged messages in the queue. */
+  backlogCount: number;
+  /** Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown. */
+  oldestMessageTimestampMs: number;
 }
 export const MessagesPushResponseMetadataMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    backlog_bytes: S.Number,
-    backlog_count: S.Number,
-    oldest_message_timestamp_ms: S.Number,
+    backlogBytes: S.Number.pipe(T.Body("backlog_bytes")),
+    backlogCount: S.Number.pipe(T.Body("backlog_count")),
+    oldestMessageTimestampMs: S.Number.pipe(
+      T.Body("oldest_message_timestamp_ms"),
+    ),
   }),
 ).annotate({
   identifier: "MessagesPushResponseMetadataMetrics",
 }) as any as S.Schema<MessagesPushResponseMetadataMetrics>;
 
 export interface MessagesPushResponseMetadata {
+  /** Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues. */
   metrics?: MessagesPushResponseMetadataMetrics;
 }
 export const MessagesPushResponseMetadata = /*@__PURE__*/ S.suspend(() =>
@@ -732,15 +1214,20 @@ export const MessagesPushResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MessagesPushResponse>;
 
 export interface PurgeStartRequest {
-  account_id: string;
-  queue_id: string;
-  delete_messages_permanently?: boolean;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  queueId: string;
+  /** Confimation that all messages will be deleted permanently. */
+  deleteMessagesPermanently?: boolean;
 }
 export const PurgeStartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    queue_id: S.String.pipe(T.Label()),
-    delete_messages_permanently: S.optional(S.Boolean),
+    accountId: S.String.pipe(T.Label("account_id")),
+    queueId: S.String.pipe(T.Label("queue_id")),
+    deleteMessagesPermanently: S.optional(
+      S.Boolean.pipe(T.Body("delete_messages_permanently")),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -752,25 +1239,116 @@ export const PurgeStartRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PurgeStartRequest",
 }) as any as S.Schema<PurgeStartRequest>;
 
+export interface PurgeStartResponseConsumersItem {
+  WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: unknown;
+  HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: unknown;
+}
+export const PurgeStartResponseConsumersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: S.Unknown.pipe(
+      T.Body(
+        "Worker object { consumer_id, created_on, dead_letter_queue, 4 more }",
+      ),
+    ),
+    HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: S.Unknown.pipe(
+      T.Body(
+        "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "PurgeStartResponseConsumersItem",
+}) as any as S.Schema<PurgeStartResponseConsumersItem>;
+
+export type PurgeStartResponseConsumersList = PurgeStartResponseConsumersItem[];
+export const PurgeStartResponseConsumersList = /*@__PURE__*/ S.Array(
+  PurgeStartResponseConsumersItem,
+) as any as S.Schema<PurgeStartResponseConsumersList>;
+
+export interface PurgeStartResponseProducersItem {
+  MqWorkerProducerObjectScriptType__: unknown;
+  MqR2ProducerObjectBucketNameType__: unknown;
+}
+export const PurgeStartResponseProducersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MqWorkerProducerObjectScriptType__: S.Unknown.pipe(
+      T.Body("MqWorkerProducer object { script, type }"),
+    ),
+    MqR2ProducerObjectBucketNameType__: S.Unknown.pipe(
+      T.Body("MqR2Producer object { bucket_name, type }"),
+    ),
+  }),
+).annotate({
+  identifier: "PurgeStartResponseProducersItem",
+}) as any as S.Schema<PurgeStartResponseProducersItem>;
+
+export type PurgeStartResponseProducersList = PurgeStartResponseProducersItem[];
+export const PurgeStartResponseProducersList = /*@__PURE__*/ S.Array(
+  PurgeStartResponseProducersItem,
+) as any as S.Schema<PurgeStartResponseProducersList>;
+
+export interface PurgeStartResponseSettings {
+  /** Number of seconds to delay delivery of all messages to consumers. */
+  deliveryDelay?: number;
+  /** Indicates if message delivery to consumers is currently paused. */
+  deliveryPaused?: boolean;
+  /** Number of seconds after which an unconsumed message will be delayed. */
+  messageRetentionPeriod?: number;
+}
+export const PurgeStartResponseSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
+    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
+    messageRetentionPeriod: S.optional(
+      S.Number.pipe(T.Body("message_retention_period")),
+    ),
+  }),
+).annotate({
+  identifier: "PurgeStartResponseSettings",
+}) as any as S.Schema<PurgeStartResponseSettings>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PurgeStartResponse {
-  result?: unknown;
+  consumers?: PurgeStartResponseConsumersList;
+  consumersTotalCount?: number;
+  createdOn?: string;
+  modifiedOn?: string;
+  producers?: PurgeStartResponseProducersList;
+  producersTotalCount?: number;
+  queueId?: string;
+  queueName?: string;
+  settings?: PurgeStartResponseSettings;
 }
 export const PurgeStartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    consumers: S.optional(PurgeStartResponseConsumersList),
+    consumersTotalCount: S.optional(
+      S.Number.pipe(T.Body("consumers_total_count")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    producers: S.optional(PurgeStartResponseProducersList),
+    producersTotalCount: S.optional(
+      S.Number.pipe(T.Body("producers_total_count")),
+    ),
+    queueId: S.optional(S.String.pipe(T.Body("queue_id"))),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(PurgeStartResponseSettings),
   }),
 ).annotate({
   identifier: "PurgeStartResponse",
 }) as any as S.Schema<PurgeStartResponse>;
 
 export interface PurgeStatusRequest {
-  account_id: string;
-  queue_id: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  queueId: string;
 }
 export const PurgeStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    queue_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    queueId: S.String.pipe(T.Label("queue_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -784,13 +1362,15 @@ export const PurgeStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PurgeStatusResponse {
+  /** Indicates if the last purge operation completed successfully. */
   completed?: string;
-  started_at?: string;
+  /** Timestamp when the last purge operation started. */
+  startedAt?: string;
 }
 export const PurgeStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.optional(S.String),
-    started_at: S.optional(S.String),
+    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
   }),
 ).annotate({
   identifier: "PurgeStatusResponse",
@@ -802,13 +1382,15 @@ export type SubscriptionsCreateRequestDestinationType =
 export const SubscriptionsCreateRequestDestinationType = /*@__PURE__*/ S.String;
 
 export interface SubscriptionsCreateRequestDestination {
-  queue_id: string;
+  /** ID of the target queue */
+  queueId: string;
+  /** Type of destination */
   type: SubscriptionsCreateRequestDestinationType;
 }
 export const SubscriptionsCreateRequestDestination = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      queue_id: S.String,
+      queueId: S.String.pipe(T.Body("queue_id")),
       type: SubscriptionsCreateRequestDestinationType,
     }),
 ).annotate({
@@ -821,59 +1403,63 @@ export const SubscriptionsCreateRequestEventsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SubscriptionsCreateRequestEventsList>;
 
 export interface SubscriptionsCreateRequestSource {
-  MqEventSourceImages_object___type__: unknown;
-  MqEventSourceKV_object___type__: unknown;
-  MqEventSourceR2_object___type__: unknown;
-  MqEventSourceSuperSlurper_object___type__: unknown;
-  MqEventSourceVectorize_object___type__: unknown;
-  MqEventSourceWorkersAIModel_object___model_name__type__: unknown;
-  MqEventSourceWorkersBuildsWorker_object___type__worker_name__: unknown;
-  MqEventSourceWorkflowsWorkflow_object___type__workflow_name__: unknown;
+  MqEventSourceImagesObjectType__: unknown;
+  MqEventSourceKVObjectType__: unknown;
+  MqEventSourceR2ObjectType__: unknown;
+  MqEventSourceSuperSlurperObjectType__: unknown;
+  MqEventSourceVectorizeObjectType__: unknown;
+  MqEventSourceWorkersAIModelObjectModelNameType__: unknown;
+  MqEventSourceWorkersBuildsWorkerObjectTypeWorkerName__: unknown;
+  MqEventSourceWorkflowsWorkflowObjectTypeWorkflowName__: unknown;
 }
 export const SubscriptionsCreateRequestSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    MqEventSourceImages_object___type__: S.Unknown.pipe(
+    MqEventSourceImagesObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceImages object { type }"),
     ),
-    MqEventSourceKV_object___type__: S.Unknown.pipe(
+    MqEventSourceKVObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceKV object { type }"),
     ),
-    MqEventSourceR2_object___type__: S.Unknown.pipe(
+    MqEventSourceR2ObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceR2 object { type }"),
     ),
-    MqEventSourceSuperSlurper_object___type__: S.Unknown.pipe(
+    MqEventSourceSuperSlurperObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceSuperSlurper object { type }"),
     ),
-    MqEventSourceVectorize_object___type__: S.Unknown.pipe(
+    MqEventSourceVectorizeObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceVectorize object { type }"),
     ),
-    MqEventSourceWorkersAIModel_object___model_name__type__: S.Unknown.pipe(
+    MqEventSourceWorkersAIModelObjectModelNameType__: S.Unknown.pipe(
       T.Body("MqEventSourceWorkersAIModel object { model_name, type }"),
     ),
-    MqEventSourceWorkersBuildsWorker_object___type__worker_name__:
-      S.Unknown.pipe(
-        T.Body("MqEventSourceWorkersBuildsWorker object { type, worker_name }"),
-      ),
-    MqEventSourceWorkflowsWorkflow_object___type__workflow_name__:
-      S.Unknown.pipe(
-        T.Body("MqEventSourceWorkflowsWorkflow object { type, workflow_name }"),
-      ),
+    MqEventSourceWorkersBuildsWorkerObjectTypeWorkerName__: S.Unknown.pipe(
+      T.Body("MqEventSourceWorkersBuildsWorker object { type, worker_name }"),
+    ),
+    MqEventSourceWorkflowsWorkflowObjectTypeWorkflowName__: S.Unknown.pipe(
+      T.Body("MqEventSourceWorkflowsWorkflow object { type, workflow_name }"),
+    ),
   }),
 ).annotate({
   identifier: "SubscriptionsCreateRequestSource",
 }) as any as S.Schema<SubscriptionsCreateRequestSource>;
 
 export interface SubscriptionsCreateRequest {
-  account_id: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** Destination configuration for the subscription */
   destination?: SubscriptionsCreateRequestDestination;
+  /** Whether the subscription is active */
   enabled?: boolean;
+  /** List of event types this subscription handles */
   events?: SubscriptionsCreateRequestEventsList;
+  /** Name of the subscription */
   name?: string;
+  /** Source configuration for the subscription */
   source?: SubscriptionsCreateRequestSource;
 }
 export const SubscriptionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     destination: S.optional(SubscriptionsCreateRequestDestination),
     enabled: S.optional(S.Boolean),
     events: S.optional(SubscriptionsCreateRequestEventsList),
@@ -897,13 +1483,15 @@ export const SubscriptionsCreateResponseDestinationType =
   /*@__PURE__*/ S.String;
 
 export interface SubscriptionsCreateResponseDestination {
-  queue_id: string;
+  /** ID of the target queue */
+  queueId: string;
+  /** Type of destination */
   type: SubscriptionsCreateResponseDestinationType;
 }
 export const SubscriptionsCreateResponseDestination = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      queue_id: S.String,
+      queueId: S.String.pipe(T.Body("queue_id")),
       type: SubscriptionsCreateResponseDestinationType,
     }),
 ).annotate({
@@ -916,43 +1504,41 @@ export const SubscriptionsCreateResponseEventsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SubscriptionsCreateResponseEventsList>;
 
 export interface SubscriptionsCreateResponseSource {
-  MqEventSourceImages_object___type__: unknown;
-  MqEventSourceKV_object___type__: unknown;
-  MqEventSourceR2_object___type__: unknown;
-  MqEventSourceSuperSlurper_object___type__: unknown;
-  MqEventSourceVectorize_object___type__: unknown;
-  MqEventSourceWorkersAIModel_object___model_name__type__: unknown;
-  MqEventSourceWorkersBuildsWorker_object___type__worker_name__: unknown;
-  MqEventSourceWorkflowsWorkflow_object___type__workflow_name__: unknown;
+  MqEventSourceImagesObjectType__: unknown;
+  MqEventSourceKVObjectType__: unknown;
+  MqEventSourceR2ObjectType__: unknown;
+  MqEventSourceSuperSlurperObjectType__: unknown;
+  MqEventSourceVectorizeObjectType__: unknown;
+  MqEventSourceWorkersAIModelObjectModelNameType__: unknown;
+  MqEventSourceWorkersBuildsWorkerObjectTypeWorkerName__: unknown;
+  MqEventSourceWorkflowsWorkflowObjectTypeWorkflowName__: unknown;
 }
 export const SubscriptionsCreateResponseSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    MqEventSourceImages_object___type__: S.Unknown.pipe(
+    MqEventSourceImagesObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceImages object { type }"),
     ),
-    MqEventSourceKV_object___type__: S.Unknown.pipe(
+    MqEventSourceKVObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceKV object { type }"),
     ),
-    MqEventSourceR2_object___type__: S.Unknown.pipe(
+    MqEventSourceR2ObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceR2 object { type }"),
     ),
-    MqEventSourceSuperSlurper_object___type__: S.Unknown.pipe(
+    MqEventSourceSuperSlurperObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceSuperSlurper object { type }"),
     ),
-    MqEventSourceVectorize_object___type__: S.Unknown.pipe(
+    MqEventSourceVectorizeObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceVectorize object { type }"),
     ),
-    MqEventSourceWorkersAIModel_object___model_name__type__: S.Unknown.pipe(
+    MqEventSourceWorkersAIModelObjectModelNameType__: S.Unknown.pipe(
       T.Body("MqEventSourceWorkersAIModel object { model_name, type }"),
     ),
-    MqEventSourceWorkersBuildsWorker_object___type__worker_name__:
-      S.Unknown.pipe(
-        T.Body("MqEventSourceWorkersBuildsWorker object { type, worker_name }"),
-      ),
-    MqEventSourceWorkflowsWorkflow_object___type__workflow_name__:
-      S.Unknown.pipe(
-        T.Body("MqEventSourceWorkflowsWorkflow object { type, workflow_name }"),
-      ),
+    MqEventSourceWorkersBuildsWorkerObjectTypeWorkerName__: S.Unknown.pipe(
+      T.Body("MqEventSourceWorkersBuildsWorker object { type, worker_name }"),
+    ),
+    MqEventSourceWorkflowsWorkflowObjectTypeWorkflowName__: S.Unknown.pipe(
+      T.Body("MqEventSourceWorkflowsWorkflow object { type, workflow_name }"),
+    ),
   }),
 ).annotate({
   identifier: "SubscriptionsCreateResponseSource",
@@ -960,23 +1546,31 @@ export const SubscriptionsCreateResponseSource = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SubscriptionsCreateResponse {
+  /** Unique identifier for the subscription */
   id: string;
-  created_at: string;
+  /** When the subscription was created */
+  createdAt: string;
+  /** Destination configuration for the subscription */
   destination: SubscriptionsCreateResponseDestination;
+  /** Whether the subscription is active */
   enabled: boolean;
+  /** List of event types this subscription handles */
   events: SubscriptionsCreateResponseEventsList;
-  modified_at: string;
+  /** When the subscription was last modified */
+  modifiedAt: string;
+  /** Name of the subscription */
   name: string;
+  /** Source configuration for the subscription */
   source: SubscriptionsCreateResponseSource;
 }
 export const SubscriptionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     destination: SubscriptionsCreateResponseDestination,
     enabled: S.Boolean,
     events: SubscriptionsCreateResponseEventsList,
-    modified_at: S.String,
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     source: SubscriptionsCreateResponseSource,
   }),
@@ -985,13 +1579,15 @@ export const SubscriptionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionsCreateResponse>;
 
 export interface SubscriptionsDeleteRequest {
-  account_id: string;
-  subscription_id: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  subscriptionId: string;
 }
 export const SubscriptionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    subscription_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    subscriptionId: S.String.pipe(T.Label("subscription_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1010,13 +1606,15 @@ export const SubscriptionsDeleteResponseDestinationType =
   /*@__PURE__*/ S.String;
 
 export interface SubscriptionsDeleteResponseDestination {
-  queue_id: string;
+  /** ID of the target queue */
+  queueId: string;
+  /** Type of destination */
   type: SubscriptionsDeleteResponseDestinationType;
 }
 export const SubscriptionsDeleteResponseDestination = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      queue_id: S.String,
+      queueId: S.String.pipe(T.Body("queue_id")),
       type: SubscriptionsDeleteResponseDestinationType,
     }),
 ).annotate({
@@ -1029,43 +1627,41 @@ export const SubscriptionsDeleteResponseEventsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SubscriptionsDeleteResponseEventsList>;
 
 export interface SubscriptionsDeleteResponseSource {
-  MqEventSourceImages_object___type__: unknown;
-  MqEventSourceKV_object___type__: unknown;
-  MqEventSourceR2_object___type__: unknown;
-  MqEventSourceSuperSlurper_object___type__: unknown;
-  MqEventSourceVectorize_object___type__: unknown;
-  MqEventSourceWorkersAIModel_object___model_name__type__: unknown;
-  MqEventSourceWorkersBuildsWorker_object___type__worker_name__: unknown;
-  MqEventSourceWorkflowsWorkflow_object___type__workflow_name__: unknown;
+  MqEventSourceImagesObjectType__: unknown;
+  MqEventSourceKVObjectType__: unknown;
+  MqEventSourceR2ObjectType__: unknown;
+  MqEventSourceSuperSlurperObjectType__: unknown;
+  MqEventSourceVectorizeObjectType__: unknown;
+  MqEventSourceWorkersAIModelObjectModelNameType__: unknown;
+  MqEventSourceWorkersBuildsWorkerObjectTypeWorkerName__: unknown;
+  MqEventSourceWorkflowsWorkflowObjectTypeWorkflowName__: unknown;
 }
 export const SubscriptionsDeleteResponseSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    MqEventSourceImages_object___type__: S.Unknown.pipe(
+    MqEventSourceImagesObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceImages object { type }"),
     ),
-    MqEventSourceKV_object___type__: S.Unknown.pipe(
+    MqEventSourceKVObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceKV object { type }"),
     ),
-    MqEventSourceR2_object___type__: S.Unknown.pipe(
+    MqEventSourceR2ObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceR2 object { type }"),
     ),
-    MqEventSourceSuperSlurper_object___type__: S.Unknown.pipe(
+    MqEventSourceSuperSlurperObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceSuperSlurper object { type }"),
     ),
-    MqEventSourceVectorize_object___type__: S.Unknown.pipe(
+    MqEventSourceVectorizeObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceVectorize object { type }"),
     ),
-    MqEventSourceWorkersAIModel_object___model_name__type__: S.Unknown.pipe(
+    MqEventSourceWorkersAIModelObjectModelNameType__: S.Unknown.pipe(
       T.Body("MqEventSourceWorkersAIModel object { model_name, type }"),
     ),
-    MqEventSourceWorkersBuildsWorker_object___type__worker_name__:
-      S.Unknown.pipe(
-        T.Body("MqEventSourceWorkersBuildsWorker object { type, worker_name }"),
-      ),
-    MqEventSourceWorkflowsWorkflow_object___type__workflow_name__:
-      S.Unknown.pipe(
-        T.Body("MqEventSourceWorkflowsWorkflow object { type, workflow_name }"),
-      ),
+    MqEventSourceWorkersBuildsWorkerObjectTypeWorkerName__: S.Unknown.pipe(
+      T.Body("MqEventSourceWorkersBuildsWorker object { type, worker_name }"),
+    ),
+    MqEventSourceWorkflowsWorkflowObjectTypeWorkflowName__: S.Unknown.pipe(
+      T.Body("MqEventSourceWorkflowsWorkflow object { type, workflow_name }"),
+    ),
   }),
 ).annotate({
   identifier: "SubscriptionsDeleteResponseSource",
@@ -1073,23 +1669,31 @@ export const SubscriptionsDeleteResponseSource = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SubscriptionsDeleteResponse {
+  /** Unique identifier for the subscription */
   id: string;
-  created_at: string;
+  /** When the subscription was created */
+  createdAt: string;
+  /** Destination configuration for the subscription */
   destination: SubscriptionsDeleteResponseDestination;
+  /** Whether the subscription is active */
   enabled: boolean;
+  /** List of event types this subscription handles */
   events: SubscriptionsDeleteResponseEventsList;
-  modified_at: string;
+  /** When the subscription was last modified */
+  modifiedAt: string;
+  /** Name of the subscription */
   name: string;
+  /** Source configuration for the subscription */
   source: SubscriptionsDeleteResponseSource;
 }
 export const SubscriptionsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     destination: SubscriptionsDeleteResponseDestination,
     enabled: S.Boolean,
     events: SubscriptionsDeleteResponseEventsList,
-    modified_at: S.String,
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     source: SubscriptionsDeleteResponseSource,
   }),
@@ -1098,13 +1702,15 @@ export const SubscriptionsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionsDeleteResponse>;
 
 export interface SubscriptionsGetRequest {
-  account_id: string;
-  subscription_id: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  subscriptionId: string;
 }
 export const SubscriptionsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    subscription_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    subscriptionId: S.String.pipe(T.Label("subscription_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1122,12 +1728,14 @@ export type SubscriptionsGetResponseDestinationType =
 export const SubscriptionsGetResponseDestinationType = /*@__PURE__*/ S.String;
 
 export interface SubscriptionsGetResponseDestination {
-  queue_id: string;
+  /** ID of the target queue */
+  queueId: string;
+  /** Type of destination */
   type: SubscriptionsGetResponseDestinationType;
 }
 export const SubscriptionsGetResponseDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    queue_id: S.String,
+    queueId: S.String.pipe(T.Body("queue_id")),
     type: SubscriptionsGetResponseDestinationType,
   }),
 ).annotate({
@@ -1140,43 +1748,41 @@ export const SubscriptionsGetResponseEventsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SubscriptionsGetResponseEventsList>;
 
 export interface SubscriptionsGetResponseSource {
-  MqEventSourceImages_object___type__: unknown;
-  MqEventSourceKV_object___type__: unknown;
-  MqEventSourceR2_object___type__: unknown;
-  MqEventSourceSuperSlurper_object___type__: unknown;
-  MqEventSourceVectorize_object___type__: unknown;
-  MqEventSourceWorkersAIModel_object___model_name__type__: unknown;
-  MqEventSourceWorkersBuildsWorker_object___type__worker_name__: unknown;
-  MqEventSourceWorkflowsWorkflow_object___type__workflow_name__: unknown;
+  MqEventSourceImagesObjectType__: unknown;
+  MqEventSourceKVObjectType__: unknown;
+  MqEventSourceR2ObjectType__: unknown;
+  MqEventSourceSuperSlurperObjectType__: unknown;
+  MqEventSourceVectorizeObjectType__: unknown;
+  MqEventSourceWorkersAIModelObjectModelNameType__: unknown;
+  MqEventSourceWorkersBuildsWorkerObjectTypeWorkerName__: unknown;
+  MqEventSourceWorkflowsWorkflowObjectTypeWorkflowName__: unknown;
 }
 export const SubscriptionsGetResponseSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    MqEventSourceImages_object___type__: S.Unknown.pipe(
+    MqEventSourceImagesObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceImages object { type }"),
     ),
-    MqEventSourceKV_object___type__: S.Unknown.pipe(
+    MqEventSourceKVObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceKV object { type }"),
     ),
-    MqEventSourceR2_object___type__: S.Unknown.pipe(
+    MqEventSourceR2ObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceR2 object { type }"),
     ),
-    MqEventSourceSuperSlurper_object___type__: S.Unknown.pipe(
+    MqEventSourceSuperSlurperObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceSuperSlurper object { type }"),
     ),
-    MqEventSourceVectorize_object___type__: S.Unknown.pipe(
+    MqEventSourceVectorizeObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceVectorize object { type }"),
     ),
-    MqEventSourceWorkersAIModel_object___model_name__type__: S.Unknown.pipe(
+    MqEventSourceWorkersAIModelObjectModelNameType__: S.Unknown.pipe(
       T.Body("MqEventSourceWorkersAIModel object { model_name, type }"),
     ),
-    MqEventSourceWorkersBuildsWorker_object___type__worker_name__:
-      S.Unknown.pipe(
-        T.Body("MqEventSourceWorkersBuildsWorker object { type, worker_name }"),
-      ),
-    MqEventSourceWorkflowsWorkflow_object___type__workflow_name__:
-      S.Unknown.pipe(
-        T.Body("MqEventSourceWorkflowsWorkflow object { type, workflow_name }"),
-      ),
+    MqEventSourceWorkersBuildsWorkerObjectTypeWorkerName__: S.Unknown.pipe(
+      T.Body("MqEventSourceWorkersBuildsWorker object { type, worker_name }"),
+    ),
+    MqEventSourceWorkflowsWorkflowObjectTypeWorkflowName__: S.Unknown.pipe(
+      T.Body("MqEventSourceWorkflowsWorkflow object { type, workflow_name }"),
+    ),
   }),
 ).annotate({
   identifier: "SubscriptionsGetResponseSource",
@@ -1184,23 +1790,31 @@ export const SubscriptionsGetResponseSource = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SubscriptionsGetResponse {
+  /** Unique identifier for the subscription */
   id: string;
-  created_at: string;
+  /** When the subscription was created */
+  createdAt: string;
+  /** Destination configuration for the subscription */
   destination: SubscriptionsGetResponseDestination;
+  /** Whether the subscription is active */
   enabled: boolean;
+  /** List of event types this subscription handles */
   events: SubscriptionsGetResponseEventsList;
-  modified_at: string;
+  /** When the subscription was last modified */
+  modifiedAt: string;
+  /** Name of the subscription */
   name: string;
+  /** Source configuration for the subscription */
   source: SubscriptionsGetResponseSource;
 }
 export const SubscriptionsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     destination: SubscriptionsGetResponseDestination,
     enabled: S.Boolean,
     events: SubscriptionsGetResponseEventsList,
-    modified_at: S.String,
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     source: SubscriptionsGetResponseSource,
   }),
@@ -1220,19 +1834,24 @@ export type SubscriptionsListRequestOrder =
 export const SubscriptionsListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface SubscriptionsListRequest {
-  account_id: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** Sort direction */
   direction?: SubscriptionsListRequestDirection;
+  /** Field to sort by */
   order?: SubscriptionsListRequestOrder;
+  /** Page number for pagination */
   page?: number;
-  per_page?: number;
+  /** Number of items per page */
+  perPage?: number;
 }
 export const SubscriptionsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     direction: S.optional(SubscriptionsListRequestDirection.pipe(T.Query())),
     order: S.optional(SubscriptionsListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1251,13 +1870,15 @@ export const SubscriptionsListResultItemDestinationType =
   /*@__PURE__*/ S.String;
 
 export interface SubscriptionsListResultItemDestination {
-  queue_id: string;
+  /** ID of the target queue */
+  queueId: string;
+  /** Type of destination */
   type: SubscriptionsListResultItemDestinationType;
 }
 export const SubscriptionsListResultItemDestination = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      queue_id: S.String,
+      queueId: S.String.pipe(T.Body("queue_id")),
       type: SubscriptionsListResultItemDestinationType,
     }),
 ).annotate({
@@ -1270,66 +1891,72 @@ export const SubscriptionsListResultItemEventsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SubscriptionsListResultItemEventsList>;
 
 export interface SubscriptionsListResultItemSource {
-  MqEventSourceImages_object___type__: unknown;
-  MqEventSourceKV_object___type__: unknown;
-  MqEventSourceR2_object___type__: unknown;
-  MqEventSourceSuperSlurper_object___type__: unknown;
-  MqEventSourceVectorize_object___type__: unknown;
-  MqEventSourceWorkersAIModel_object___model_name__type__: unknown;
-  MqEventSourceWorkersBuildsWorker_object___type__worker_name__: unknown;
-  MqEventSourceWorkflowsWorkflow_object___type__workflow_name__: unknown;
+  MqEventSourceImagesObjectType__: unknown;
+  MqEventSourceKVObjectType__: unknown;
+  MqEventSourceR2ObjectType__: unknown;
+  MqEventSourceSuperSlurperObjectType__: unknown;
+  MqEventSourceVectorizeObjectType__: unknown;
+  MqEventSourceWorkersAIModelObjectModelNameType__: unknown;
+  MqEventSourceWorkersBuildsWorkerObjectTypeWorkerName__: unknown;
+  MqEventSourceWorkflowsWorkflowObjectTypeWorkflowName__: unknown;
 }
 export const SubscriptionsListResultItemSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    MqEventSourceImages_object___type__: S.Unknown.pipe(
+    MqEventSourceImagesObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceImages object { type }"),
     ),
-    MqEventSourceKV_object___type__: S.Unknown.pipe(
+    MqEventSourceKVObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceKV object { type }"),
     ),
-    MqEventSourceR2_object___type__: S.Unknown.pipe(
+    MqEventSourceR2ObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceR2 object { type }"),
     ),
-    MqEventSourceSuperSlurper_object___type__: S.Unknown.pipe(
+    MqEventSourceSuperSlurperObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceSuperSlurper object { type }"),
     ),
-    MqEventSourceVectorize_object___type__: S.Unknown.pipe(
+    MqEventSourceVectorizeObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceVectorize object { type }"),
     ),
-    MqEventSourceWorkersAIModel_object___model_name__type__: S.Unknown.pipe(
+    MqEventSourceWorkersAIModelObjectModelNameType__: S.Unknown.pipe(
       T.Body("MqEventSourceWorkersAIModel object { model_name, type }"),
     ),
-    MqEventSourceWorkersBuildsWorker_object___type__worker_name__:
-      S.Unknown.pipe(
-        T.Body("MqEventSourceWorkersBuildsWorker object { type, worker_name }"),
-      ),
-    MqEventSourceWorkflowsWorkflow_object___type__workflow_name__:
-      S.Unknown.pipe(
-        T.Body("MqEventSourceWorkflowsWorkflow object { type, workflow_name }"),
-      ),
+    MqEventSourceWorkersBuildsWorkerObjectTypeWorkerName__: S.Unknown.pipe(
+      T.Body("MqEventSourceWorkersBuildsWorker object { type, worker_name }"),
+    ),
+    MqEventSourceWorkflowsWorkflowObjectTypeWorkflowName__: S.Unknown.pipe(
+      T.Body("MqEventSourceWorkflowsWorkflow object { type, workflow_name }"),
+    ),
   }),
 ).annotate({
   identifier: "SubscriptionsListResultItemSource",
 }) as any as S.Schema<SubscriptionsListResultItemSource>;
 
 export interface SubscriptionsListResultItem {
+  /** Unique identifier for the subscription */
   id: string;
-  created_at: string;
+  /** When the subscription was created */
+  createdAt: string;
+  /** Destination configuration for the subscription */
   destination: SubscriptionsListResultItemDestination;
+  /** Whether the subscription is active */
   enabled: boolean;
+  /** List of event types this subscription handles */
   events: SubscriptionsListResultItemEventsList;
-  modified_at: string;
+  /** When the subscription was last modified */
+  modifiedAt: string;
+  /** Name of the subscription */
   name: string;
+  /** Source configuration for the subscription */
   source: SubscriptionsListResultItemSource;
 }
 export const SubscriptionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     destination: SubscriptionsListResultItemDestination,
     enabled: S.Boolean,
     events: SubscriptionsListResultItemEventsList,
-    modified_at: S.String,
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     source: SubscriptionsListResultItemSource,
   }),
@@ -1343,6 +1970,7 @@ export const SubscriptionsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SubscriptionsListResultList>;
 
 export interface SubscriptionsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SubscriptionsListResultList;
 }
 export const SubscriptionsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1359,13 +1987,15 @@ export type SubscriptionsUpdateRequestDestinationType =
 export const SubscriptionsUpdateRequestDestinationType = /*@__PURE__*/ S.String;
 
 export interface SubscriptionsUpdateRequestDestination {
-  queue_id: string;
+  /** ID of the target queue */
+  queueId: string;
+  /** Type of destination */
   type: SubscriptionsUpdateRequestDestinationType;
 }
 export const SubscriptionsUpdateRequestDestination = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      queue_id: S.String,
+      queueId: S.String.pipe(T.Body("queue_id")),
       type: SubscriptionsUpdateRequestDestinationType,
     }),
 ).annotate({
@@ -1378,17 +2008,23 @@ export const SubscriptionsUpdateRequestEventsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SubscriptionsUpdateRequestEventsList>;
 
 export interface SubscriptionsUpdateRequest {
-  account_id: string;
-  subscription_id: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  subscriptionId: string;
+  /** Destination configuration for the subscription */
   destination?: SubscriptionsUpdateRequestDestination;
+  /** Whether the subscription is active */
   enabled?: boolean;
+  /** List of event types this subscription handles */
   events?: SubscriptionsUpdateRequestEventsList;
+  /** Name of the subscription */
   name?: string;
 }
 export const SubscriptionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    subscription_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    subscriptionId: S.String.pipe(T.Label("subscription_id")),
     destination: S.optional(SubscriptionsUpdateRequestDestination),
     enabled: S.optional(S.Boolean),
     events: S.optional(SubscriptionsUpdateRequestEventsList),
@@ -1411,13 +2047,15 @@ export const SubscriptionsUpdateResponseDestinationType =
   /*@__PURE__*/ S.String;
 
 export interface SubscriptionsUpdateResponseDestination {
-  queue_id: string;
+  /** ID of the target queue */
+  queueId: string;
+  /** Type of destination */
   type: SubscriptionsUpdateResponseDestinationType;
 }
 export const SubscriptionsUpdateResponseDestination = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      queue_id: S.String,
+      queueId: S.String.pipe(T.Body("queue_id")),
       type: SubscriptionsUpdateResponseDestinationType,
     }),
 ).annotate({
@@ -1430,43 +2068,41 @@ export const SubscriptionsUpdateResponseEventsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SubscriptionsUpdateResponseEventsList>;
 
 export interface SubscriptionsUpdateResponseSource {
-  MqEventSourceImages_object___type__: unknown;
-  MqEventSourceKV_object___type__: unknown;
-  MqEventSourceR2_object___type__: unknown;
-  MqEventSourceSuperSlurper_object___type__: unknown;
-  MqEventSourceVectorize_object___type__: unknown;
-  MqEventSourceWorkersAIModel_object___model_name__type__: unknown;
-  MqEventSourceWorkersBuildsWorker_object___type__worker_name__: unknown;
-  MqEventSourceWorkflowsWorkflow_object___type__workflow_name__: unknown;
+  MqEventSourceImagesObjectType__: unknown;
+  MqEventSourceKVObjectType__: unknown;
+  MqEventSourceR2ObjectType__: unknown;
+  MqEventSourceSuperSlurperObjectType__: unknown;
+  MqEventSourceVectorizeObjectType__: unknown;
+  MqEventSourceWorkersAIModelObjectModelNameType__: unknown;
+  MqEventSourceWorkersBuildsWorkerObjectTypeWorkerName__: unknown;
+  MqEventSourceWorkflowsWorkflowObjectTypeWorkflowName__: unknown;
 }
 export const SubscriptionsUpdateResponseSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    MqEventSourceImages_object___type__: S.Unknown.pipe(
+    MqEventSourceImagesObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceImages object { type }"),
     ),
-    MqEventSourceKV_object___type__: S.Unknown.pipe(
+    MqEventSourceKVObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceKV object { type }"),
     ),
-    MqEventSourceR2_object___type__: S.Unknown.pipe(
+    MqEventSourceR2ObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceR2 object { type }"),
     ),
-    MqEventSourceSuperSlurper_object___type__: S.Unknown.pipe(
+    MqEventSourceSuperSlurperObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceSuperSlurper object { type }"),
     ),
-    MqEventSourceVectorize_object___type__: S.Unknown.pipe(
+    MqEventSourceVectorizeObjectType__: S.Unknown.pipe(
       T.Body("MqEventSourceVectorize object { type }"),
     ),
-    MqEventSourceWorkersAIModel_object___model_name__type__: S.Unknown.pipe(
+    MqEventSourceWorkersAIModelObjectModelNameType__: S.Unknown.pipe(
       T.Body("MqEventSourceWorkersAIModel object { model_name, type }"),
     ),
-    MqEventSourceWorkersBuildsWorker_object___type__worker_name__:
-      S.Unknown.pipe(
-        T.Body("MqEventSourceWorkersBuildsWorker object { type, worker_name }"),
-      ),
-    MqEventSourceWorkflowsWorkflow_object___type__workflow_name__:
-      S.Unknown.pipe(
-        T.Body("MqEventSourceWorkflowsWorkflow object { type, workflow_name }"),
-      ),
+    MqEventSourceWorkersBuildsWorkerObjectTypeWorkerName__: S.Unknown.pipe(
+      T.Body("MqEventSourceWorkersBuildsWorker object { type, worker_name }"),
+    ),
+    MqEventSourceWorkflowsWorkflowObjectTypeWorkflowName__: S.Unknown.pipe(
+      T.Body("MqEventSourceWorkflowsWorkflow object { type, workflow_name }"),
+    ),
   }),
 ).annotate({
   identifier: "SubscriptionsUpdateResponseSource",
@@ -1474,23 +2110,31 @@ export const SubscriptionsUpdateResponseSource = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SubscriptionsUpdateResponse {
+  /** Unique identifier for the subscription */
   id: string;
-  created_at: string;
+  /** When the subscription was created */
+  createdAt: string;
+  /** Destination configuration for the subscription */
   destination: SubscriptionsUpdateResponseDestination;
+  /** Whether the subscription is active */
   enabled: boolean;
+  /** List of event types this subscription handles */
   events: SubscriptionsUpdateResponseEventsList;
-  modified_at: string;
+  /** When the subscription was last modified */
+  modifiedAt: string;
+  /** Name of the subscription */
   name: string;
+  /** Source configuration for the subscription */
   source: SubscriptionsUpdateResponseSource;
 }
 export const SubscriptionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     destination: SubscriptionsUpdateResponseDestination,
     enabled: S.Boolean,
     events: SubscriptionsUpdateResponseEventsList,
-    modified_at: S.String,
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     source: SubscriptionsUpdateResponseSource,
   }),
@@ -1499,31 +2143,38 @@ export const SubscriptionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionsUpdateResponse>;
 
 export interface UpdateRequestSettings {
-  delivery_delay?: number;
-  delivery_paused?: boolean;
-  message_retention_period?: number;
+  /** Number of seconds to delay delivery of all messages to consumers. */
+  deliveryDelay?: number;
+  /** Indicates if message delivery to consumers is currently paused. */
+  deliveryPaused?: boolean;
+  /** Number of seconds after which an unconsumed message will be delayed. */
+  messageRetentionPeriod?: number;
 }
 export const UpdateRequestSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    delivery_delay: S.optional(S.Number),
-    delivery_paused: S.optional(S.Boolean),
-    message_retention_period: S.optional(S.Number),
+    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
+    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
+    messageRetentionPeriod: S.optional(
+      S.Number.pipe(T.Body("message_retention_period")),
+    ),
   }),
 ).annotate({
   identifier: "UpdateRequestSettings",
 }) as any as S.Schema<UpdateRequestSettings>;
 
 export interface UpdateRequest {
-  account_id: string;
-  queue_id: string;
-  queue_name?: string;
+  /** A Resource identifier. */
+  accountId: string;
+  /** A Resource identifier. */
+  queueId: string;
+  queueName?: string;
   settings?: UpdateRequestSettings;
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    queue_id: S.String.pipe(T.Label()),
-    queue_name: S.optional(S.String),
+    accountId: S.String.pipe(T.Label("account_id")),
+    queueId: S.String.pipe(T.Label("queue_id")),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
     settings: S.optional(UpdateRequestSettings),
   }).pipe(
     T.Http({
@@ -1534,20 +2185,110 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
 
+export interface UpdateResponseConsumersItem {
+  WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: unknown;
+  HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: unknown;
+}
+export const UpdateResponseConsumersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WorkerObjectConsumerIdCreatedOnDeadLetterQueue4More__: S.Unknown.pipe(
+      T.Body(
+        "Worker object { consumer_id, created_on, dead_letter_queue, 4 more }",
+      ),
+    ),
+    HTTPPullObjectConsumerIdCreatedOnDeadLetterQueue3More__: S.Unknown.pipe(
+      T.Body(
+        "HTTPPull object { consumer_id, created_on, dead_letter_queue, 3 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "UpdateResponseConsumersItem",
+}) as any as S.Schema<UpdateResponseConsumersItem>;
+
+export type UpdateResponseConsumersList = UpdateResponseConsumersItem[];
+export const UpdateResponseConsumersList = /*@__PURE__*/ S.Array(
+  UpdateResponseConsumersItem,
+) as any as S.Schema<UpdateResponseConsumersList>;
+
+export interface UpdateResponseProducersItem {
+  MqWorkerProducerObjectScriptType__: unknown;
+  MqR2ProducerObjectBucketNameType__: unknown;
+}
+export const UpdateResponseProducersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MqWorkerProducerObjectScriptType__: S.Unknown.pipe(
+      T.Body("MqWorkerProducer object { script, type }"),
+    ),
+    MqR2ProducerObjectBucketNameType__: S.Unknown.pipe(
+      T.Body("MqR2Producer object { bucket_name, type }"),
+    ),
+  }),
+).annotate({
+  identifier: "UpdateResponseProducersItem",
+}) as any as S.Schema<UpdateResponseProducersItem>;
+
+export type UpdateResponseProducersList = UpdateResponseProducersItem[];
+export const UpdateResponseProducersList = /*@__PURE__*/ S.Array(
+  UpdateResponseProducersItem,
+) as any as S.Schema<UpdateResponseProducersList>;
+
+export interface UpdateResponseSettings {
+  /** Number of seconds to delay delivery of all messages to consumers. */
+  deliveryDelay?: number;
+  /** Indicates if message delivery to consumers is currently paused. */
+  deliveryPaused?: boolean;
+  /** Number of seconds after which an unconsumed message will be delayed. */
+  messageRetentionPeriod?: number;
+}
+export const UpdateResponseSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
+    deliveryPaused: S.optional(S.Boolean.pipe(T.Body("delivery_paused"))),
+    messageRetentionPeriod: S.optional(
+      S.Number.pipe(T.Body("message_retention_period")),
+    ),
+  }),
+).annotate({
+  identifier: "UpdateResponseSettings",
+}) as any as S.Schema<UpdateResponseSettings>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
-  result?: unknown;
+  consumers?: UpdateResponseConsumersList;
+  consumersTotalCount?: number;
+  createdOn?: string;
+  modifiedOn?: string;
+  producers?: UpdateResponseProducersList;
+  producersTotalCount?: number;
+  queueId?: string;
+  queueName?: string;
+  settings?: UpdateResponseSettings;
 }
 export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    consumers: S.optional(UpdateResponseConsumersList),
+    consumersTotalCount: S.optional(
+      S.Number.pipe(T.Body("consumers_total_count")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    producers: S.optional(UpdateResponseProducersList),
+    producersTotalCount: S.optional(
+      S.Number.pipe(T.Body("producers_total_count")),
+    ),
+    queueId: S.optional(S.String.pipe(T.Body("queue_id"))),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(UpdateResponseSettings),
   }),
 ).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
+export type ConsumersCreateError = CloudflareOpError;
 /** Creates a new consumer for a Queue */
-export const ConsumersCreate: API.OperationMethod<
+export const consumersCreate: API.OperationMethod<
   ConsumersCreateRequest,
   ConsumersCreateResponse,
-  CloudflareOpError,
+  ConsumersCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConsumersCreateRequest,
@@ -1556,11 +2297,12 @@ export const ConsumersCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConsumersDeleteError = CloudflareOpError;
 /** Deletes the consumer for a queue. */
-export const ConsumersDelete: API.OperationMethod<
+export const consumersDelete: API.OperationMethod<
   ConsumersDeleteRequest,
   ConsumersDeleteResponse,
-  CloudflareOpError,
+  ConsumersDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConsumersDeleteRequest,
@@ -1569,11 +2311,12 @@ export const ConsumersDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConsumersGetError = CloudflareOpError;
 /** Fetches the consumer for a queue by consumer id */
-export const ConsumersGet: API.OperationMethod<
+export const consumersGet: API.OperationMethod<
   ConsumersGetRequest,
   ConsumersGetResponse,
-  CloudflareOpError,
+  ConsumersGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConsumersGetRequest,
@@ -1582,11 +2325,12 @@ export const ConsumersGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConsumersListError = CloudflareOpError;
 /** Returns the consumers for a Queue */
-export const ConsumersList: API.OperationMethod<
+export const consumersList: API.OperationMethod<
   ConsumersListRequest,
   ConsumersListResponse,
-  CloudflareOpError,
+  ConsumersListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConsumersListRequest,
@@ -1595,11 +2339,12 @@ export const ConsumersList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConsumersUpdateError = CloudflareOpError;
 /** Updates the consumer for a queue, or creates one if it does not exist. */
-export const ConsumersUpdate: API.OperationMethod<
+export const consumersUpdate: API.OperationMethod<
   ConsumersUpdateRequest,
   ConsumersUpdateResponse,
-  CloudflareOpError,
+  ConsumersUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConsumersUpdateRequest,
@@ -1608,11 +2353,12 @@ export const ConsumersUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CreateError = CloudflareOpError;
 /** Create a new queue */
-export const Create: API.OperationMethod<
+export const create: API.OperationMethod<
   CreateRequest,
   CreateResponse,
-  CloudflareOpError,
+  CreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRequest,
@@ -1621,11 +2367,12 @@ export const Create: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DeleteError = CloudflareOpError;
 /** Deletes a queue */
 export const Delete: API.OperationMethod<
   DeleteRequest,
   DeleteResponse,
-  CloudflareOpError,
+  DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequest,
@@ -1634,11 +2381,12 @@ export const Delete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type EditError = CloudflareOpError;
 /** Updates a Queue. */
-export const Edit: API.OperationMethod<
+export const edit: API.OperationMethod<
   EditRequest,
   EditResponse,
-  CloudflareOpError,
+  EditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EditRequest,
@@ -1647,11 +2395,12 @@ export const Edit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Get details about a specific queue. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -1660,11 +2409,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetMetricsError = CloudflareOpError;
 /** Return best-effort metrics for a queue. Values may be approximate due to the distributed nature of queues. */
-export const GetMetrics: API.OperationMethod<
+export const getMetrics: API.OperationMethod<
   GetMetricsRequest,
   GetMetricsResponse,
-  CloudflareOpError,
+  GetMetricsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMetricsRequest,
@@ -1673,11 +2423,12 @@ export const GetMetrics: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ListError = CloudflareOpError;
 /** Returns the queues owned by an account. */
-export const List: API.OperationMethod<
+export const list: API.OperationMethod<
   ListRequest,
   ListResponse,
-  CloudflareOpError,
+  ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRequest,
@@ -1686,11 +2437,12 @@ export const List: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type MessagesAckError = CloudflareOpError;
 /** Acknowledge + Retry messages from a Queue */
-export const MessagesAck: API.OperationMethod<
+export const messagesAck: API.OperationMethod<
   MessagesAckRequest,
   MessagesAckResponse,
-  CloudflareOpError,
+  MessagesAckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: MessagesAckRequest,
@@ -1699,11 +2451,12 @@ export const MessagesAck: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type MessagesBulkPushError = CloudflareOpError;
 /** Push a batch of message to a Queue */
-export const MessagesBulkPush: API.OperationMethod<
+export const messagesBulkPush: API.OperationMethod<
   MessagesBulkPushRequest,
   MessagesBulkPushResponse,
-  CloudflareOpError,
+  MessagesBulkPushError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: MessagesBulkPushRequest,
@@ -1712,11 +2465,12 @@ export const MessagesBulkPush: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type MessagesPullError = CloudflareOpError;
 /** Pull a batch of messages from a Queue */
-export const MessagesPull: API.OperationMethod<
+export const messagesPull: API.OperationMethod<
   MessagesPullRequest,
   MessagesPullResponse,
-  CloudflareOpError,
+  MessagesPullError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: MessagesPullRequest,
@@ -1725,11 +2479,12 @@ export const MessagesPull: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type MessagesPushError = CloudflareOpError;
 /** Push a message to a Queue */
-export const MessagesPush: API.OperationMethod<
+export const messagesPush: API.OperationMethod<
   MessagesPushRequest,
   MessagesPushResponse,
-  CloudflareOpError,
+  MessagesPushError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: MessagesPushRequest,
@@ -1738,11 +2493,12 @@ export const MessagesPush: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PurgeStartError = CloudflareOpError;
 /** Deletes all messages from the Queue. */
-export const PurgeStart: API.OperationMethod<
+export const purgeStart: API.OperationMethod<
   PurgeStartRequest,
   PurgeStartResponse,
-  CloudflareOpError,
+  PurgeStartError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PurgeStartRequest,
@@ -1751,11 +2507,12 @@ export const PurgeStart: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PurgeStatusError = CloudflareOpError;
 /** Get details about a Queue's purge status. */
-export const PurgeStatus: API.OperationMethod<
+export const purgeStatus: API.OperationMethod<
   PurgeStatusRequest,
   PurgeStatusResponse,
-  CloudflareOpError,
+  PurgeStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PurgeStatusRequest,
@@ -1764,11 +2521,12 @@ export const PurgeStatus: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SubscriptionsCreateError = CloudflareOpError;
 /** Create a new event subscription for a queue */
-export const SubscriptionsCreate: API.OperationMethod<
+export const subscriptionsCreate: API.OperationMethod<
   SubscriptionsCreateRequest,
   SubscriptionsCreateResponse,
-  CloudflareOpError,
+  SubscriptionsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SubscriptionsCreateRequest,
@@ -1777,11 +2535,12 @@ export const SubscriptionsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SubscriptionsDeleteError = CloudflareOpError;
 /** Delete an existing event subscription */
-export const SubscriptionsDelete: API.OperationMethod<
+export const subscriptionsDelete: API.OperationMethod<
   SubscriptionsDeleteRequest,
   SubscriptionsDeleteResponse,
-  CloudflareOpError,
+  SubscriptionsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SubscriptionsDeleteRequest,
@@ -1790,11 +2549,12 @@ export const SubscriptionsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SubscriptionsGetError = CloudflareOpError;
 /** Get details about an existing event subscription */
-export const SubscriptionsGet: API.OperationMethod<
+export const subscriptionsGet: API.OperationMethod<
   SubscriptionsGetRequest,
   SubscriptionsGetResponse,
-  CloudflareOpError,
+  SubscriptionsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SubscriptionsGetRequest,
@@ -1803,11 +2563,12 @@ export const SubscriptionsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SubscriptionsListError = CloudflareOpError;
 /** Get a paginated list of event subscriptions with optional sorting and filtering */
-export const SubscriptionsList: API.OperationMethod<
+export const subscriptionsList: API.OperationMethod<
   SubscriptionsListRequest,
   SubscriptionsListResponse,
-  CloudflareOpError,
+  SubscriptionsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SubscriptionsListRequest,
@@ -1816,11 +2577,12 @@ export const SubscriptionsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SubscriptionsUpdateError = CloudflareOpError;
 /** Update an existing event subscription */
-export const SubscriptionsUpdate: API.OperationMethod<
+export const subscriptionsUpdate: API.OperationMethod<
   SubscriptionsUpdateRequest,
   SubscriptionsUpdateResponse,
-  CloudflareOpError,
+  SubscriptionsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SubscriptionsUpdateRequest,
@@ -1829,11 +2591,12 @@ export const SubscriptionsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UpdateError = CloudflareOpError;
 /** Updates a Queue. Note that this endpoint does not support partial updates. If successful, the Queue's configuration is overwritten with the supplied configuration. */
-export const Update: API.OperationMethod<
+export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,
-  CloudflareOpError,
+  UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,

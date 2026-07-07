@@ -47,10 +47,30 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.durable_objects#NamespacesListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "class": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "script": {
+          "target": "smithy.api#String"
+        },
+        "use_sqlite": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.durable_objects#NamespacesListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.durable_objects#NamespacesListResultItem"
       }
     },
     "com.cloudflare.durable_objects#NamespacesListResponse": {
@@ -124,10 +144,27 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.durable_objects#NamespacesObjectsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the Durable Object."
+          }
+        },
+        "hasStoredData": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the Durable Object has stored data."
+          }
+        }
+      }
+    },
     "com.cloudflare.durable_objects#NamespacesObjectsListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.durable_objects#NamespacesObjectsListResultItem"
       }
     },
     "com.cloudflare.durable_objects#NamespacesObjectsListResponse": {

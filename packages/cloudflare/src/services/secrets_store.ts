@@ -10,11 +10,12 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface QuotaGetRequest {
-  account_id: string;
+  /** Account Identifier */
+  accountId: string;
 }
 export const QuotaGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -27,7 +28,9 @@ export const QuotaGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuotaGetRequest>;
 
 export interface QuotaGetResponseSecrets {
+  /** The number of secrets the account is entitlted to use */
   quota: number;
+  /** The number of secrets the account is currently using */
   usage: number;
 }
 export const QuotaGetResponseSecrets = /*@__PURE__*/ S.suspend(() =>
@@ -52,12 +55,14 @@ export const QuotaGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuotaGetResponse>;
 
 export interface StoresCreateRequest {
-  account_id: string;
+  /** Account Identifier */
+  accountId: string;
+  /** The name of the store */
   name: string;
 }
 export const StoresCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
   }).pipe(
     T.Http({
@@ -72,11 +77,16 @@ export const StoresCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StoresCreateResponse {
+  /** Store Identifier */
   id: string;
+  /** Whenthe secret was created. */
   created: string;
+  /** When the secret was modified. */
   modified: string;
+  /** The name of the store */
   name: string;
-  account_id?: string;
+  /** Account Identifier */
+  accountId?: string;
 }
 export const StoresCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -84,21 +94,24 @@ export const StoresCreateResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     modified: S.String,
     name: S.String,
-    account_id: S.optional(S.String),
+    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
   }),
 ).annotate({
   identifier: "StoresCreateResponse",
 }) as any as S.Schema<StoresCreateResponse>;
 
 export interface StoresDeleteRequest {
-  account_id: string;
-  store_id: string;
+  /** Account Identifier */
+  accountId: string;
+  /** Store Identifier */
+  storeId: string;
+  /** When true, cascade-deletes all secrets in the store before deleting */
   force?: boolean;
 }
 export const StoresDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    store_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    storeId: S.String.pipe(T.Label("store_id")),
     force: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -112,6 +125,7 @@ export const StoresDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoresDeleteRequest>;
 
 export interface StoresDeleteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const StoresDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -123,13 +137,15 @@ export const StoresDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoresDeleteResponse>;
 
 export interface StoresGetRequest {
-  account_id: string;
-  store_id: string;
+  /** Account Identifier */
+  accountId: string;
+  /** Store Identifier */
+  storeId: string;
 }
 export const StoresGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    store_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    storeId: S.String.pipe(T.Label("store_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -143,11 +159,16 @@ export const StoresGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StoresGetResponse {
+  /** Store Identifier */
   id: string;
+  /** Whenthe secret was created. */
   created: string;
+  /** When the secret was modified. */
   modified: string;
+  /** The name of the store */
   name: string;
-  account_id?: string;
+  /** Account Identifier */
+  accountId?: string;
 }
 export const StoresGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -155,7 +176,7 @@ export const StoresGetResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     modified: S.String,
     name: S.String,
-    account_id: S.optional(S.String),
+    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
   }),
 ).annotate({
   identifier: "StoresGetResponse",
@@ -172,19 +193,24 @@ export type StoresListRequestOrder =
 export const StoresListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface StoresListRequest {
-  account_id: string;
+  /** Account Identifier */
+  accountId: string;
+  /** Direction to sort objects */
   direction?: StoresListRequestDirection;
+  /** Order secrets by values in the given field */
   order?: StoresListRequestOrder;
+  /** Page number */
   page?: number;
-  per_page?: number;
+  /** Number of objects to return per page */
+  perPage?: number;
 }
 export const StoresListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     direction: S.optional(StoresListRequestDirection.pipe(T.Query())),
     order: S.optional(StoresListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -197,11 +223,16 @@ export const StoresListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoresListRequest>;
 
 export interface StoresListResultItem {
+  /** Store Identifier */
   id: string;
+  /** Whenthe secret was created. */
   created: string;
+  /** When the secret was modified. */
   modified: string;
+  /** The name of the store */
   name: string;
-  account_id?: string;
+  /** Account Identifier */
+  accountId?: string;
 }
 export const StoresListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -209,7 +240,7 @@ export const StoresListResultItem = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     modified: S.String,
     name: S.String,
-    account_id: S.optional(S.String),
+    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
   }),
 ).annotate({
   identifier: "StoresListResultItem",
@@ -221,6 +252,7 @@ export const StoresListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StoresListResultList>;
 
 export interface StoresListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: StoresListResultList;
 }
 export const StoresListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -232,13 +264,15 @@ export const StoresListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoresListResponse>;
 
 export interface StoresSecretsBulkDeleteRequest {
-  account_id: string;
-  store_id: string;
+  /** Account Identifier */
+  accountId: string;
+  /** Store Identifier */
+  storeId: string;
 }
 export const StoresSecretsBulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    store_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    storeId: S.String.pipe(T.Label("store_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -251,6 +285,7 @@ export const StoresSecretsBulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoresSecretsBulkDeleteRequest>;
 
 export interface StoresSecretsBulkDeleteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const StoresSecretsBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -268,9 +303,13 @@ export const StoresSecretsCreateRequestBodyItemScopesList =
   ) as any as S.Schema<StoresSecretsCreateRequestBodyItemScopesList>;
 
 export interface StoresSecretsCreateRequestBodyItem {
+  /** The name of the secret */
   name: string;
+  /** The list of services that can use this secret. */
   scopes: StoresSecretsCreateRequestBodyItemScopesList;
+  /** The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets. */
   value: string;
+  /** Freeform text describing the secret */
   comment?: string;
 }
 export const StoresSecretsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
@@ -291,14 +330,16 @@ export const StoresSecretsCreateRequestBodyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StoresSecretsCreateRequestBodyList>;
 
 export interface StoresSecretsCreateRequest {
-  account_id: string;
-  store_id: string;
+  /** Account Identifier */
+  accountId: string;
+  /** Store Identifier */
+  storeId: string;
   body: StoresSecretsCreateRequestBodyList;
 }
 export const StoresSecretsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    store_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    storeId: S.String.pipe(T.Label("store_id")),
     body: StoresSecretsCreateRequestBodyList,
   }).pipe(
     T.Http({
@@ -324,13 +365,20 @@ export const StoresSecretsCreateResultItemScopesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StoresSecretsCreateResultItemScopesList>;
 
 export interface StoresSecretsCreateResultItem {
+  /** Secret identifier tag. */
   id: string;
+  /** Whenthe secret was created. */
   created: string;
+  /** When the secret was modified. */
   modified: string;
+  /** The name of the secret */
   name: string;
   status: StoresSecretsCreateResultItemStatus;
-  store_id: string;
+  /** Store Identifier */
+  storeId: string;
+  /** Freeform text describing the secret */
   comment?: string;
+  /** The list of services that can use this secret. */
   scopes?: StoresSecretsCreateResultItemScopesList;
 }
 export const StoresSecretsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -340,7 +388,7 @@ export const StoresSecretsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
     modified: S.String,
     name: S.String,
     status: StoresSecretsCreateResultItemStatus,
-    store_id: S.String,
+    storeId: S.String.pipe(T.Body("store_id")),
     comment: S.optional(S.String),
     scopes: S.optional(StoresSecretsCreateResultItemScopesList),
   }),
@@ -354,6 +402,7 @@ export const StoresSecretsCreateResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StoresSecretsCreateResultList>;
 
 export interface StoresSecretsCreateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: StoresSecretsCreateResultList;
 }
 export const StoresSecretsCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -365,15 +414,18 @@ export const StoresSecretsCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoresSecretsCreateResponse>;
 
 export interface StoresSecretsDeleteRequest {
-  account_id: string;
-  store_id: string;
-  secret_id: string;
+  /** Account Identifier */
+  accountId: string;
+  /** Store Identifier */
+  storeId: string;
+  /** Secret identifier tag. */
+  secretId: string;
 }
 export const StoresSecretsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    store_id: S.String.pipe(T.Label()),
-    secret_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    storeId: S.String.pipe(T.Label("store_id")),
+    secretId: S.String.pipe(T.Label("secret_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -386,6 +438,7 @@ export const StoresSecretsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoresSecretsDeleteRequest>;
 
 export interface StoresSecretsDeleteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const StoresSecretsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -402,18 +455,24 @@ export const StoresSecretsDuplicateRequestScopesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StoresSecretsDuplicateRequestScopesList>;
 
 export interface StoresSecretsDuplicateRequest {
-  account_id: string;
-  store_id: string;
-  secret_id: string;
+  /** Account Identifier */
+  accountId: string;
+  /** Store Identifier */
+  storeId: string;
+  /** Secret identifier tag. */
+  secretId: string;
+  /** The name of the secret */
   name: string;
+  /** The list of services that can use this secret. */
   scopes: StoresSecretsDuplicateRequestScopesList;
+  /** Freeform text describing the secret */
   comment?: string;
 }
 export const StoresSecretsDuplicateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    store_id: S.String.pipe(T.Label()),
-    secret_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    storeId: S.String.pipe(T.Label("store_id")),
+    secretId: S.String.pipe(T.Label("secret_id")),
     name: S.String,
     scopes: StoresSecretsDuplicateRequestScopesList,
     comment: S.optional(S.String),
@@ -442,13 +501,20 @@ export const StoresSecretsDuplicateResponseScopesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StoresSecretsDuplicateResponse {
+  /** Secret identifier tag. */
   id: string;
+  /** Whenthe secret was created. */
   created: string;
+  /** When the secret was modified. */
   modified: string;
+  /** The name of the secret */
   name: string;
   status: StoresSecretsDuplicateResponseStatus;
-  store_id: string;
+  /** Store Identifier */
+  storeId: string;
+  /** Freeform text describing the secret */
   comment?: string;
+  /** The list of services that can use this secret. */
   scopes?: StoresSecretsDuplicateResponseScopesList;
 }
 export const StoresSecretsDuplicateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -458,7 +524,7 @@ export const StoresSecretsDuplicateResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.String,
     name: S.String,
     status: StoresSecretsDuplicateResponseStatus,
-    store_id: S.String,
+    storeId: S.String.pipe(T.Body("store_id")),
     comment: S.optional(S.String),
     scopes: S.optional(StoresSecretsDuplicateResponseScopesList),
   }),
@@ -472,18 +538,24 @@ export const StoresSecretsEditRequestScopesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StoresSecretsEditRequestScopesList>;
 
 export interface StoresSecretsEditRequest {
-  account_id: string;
-  store_id: string;
-  secret_id: string;
+  /** Account Identifier */
+  accountId: string;
+  /** Store Identifier */
+  storeId: string;
+  /** Secret identifier tag. */
+  secretId: string;
+  /** Freeform text describing the secret */
   comment?: string;
+  /** The list of services that can use this secret. */
   scopes?: StoresSecretsEditRequestScopesList;
+  /** The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets. */
   value?: string;
 }
 export const StoresSecretsEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    store_id: S.String.pipe(T.Label()),
-    secret_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    storeId: S.String.pipe(T.Label("store_id")),
+    secretId: S.String.pipe(T.Label("secret_id")),
     comment: S.optional(S.String),
     scopes: S.optional(StoresSecretsEditRequestScopesList),
     value: S.optional(S.String),
@@ -512,13 +584,20 @@ export const StoresSecretsEditResponseScopesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StoresSecretsEditResponse {
+  /** Secret identifier tag. */
   id: string;
+  /** Whenthe secret was created. */
   created: string;
+  /** When the secret was modified. */
   modified: string;
+  /** The name of the secret */
   name: string;
   status: StoresSecretsEditResponseStatus;
-  store_id: string;
+  /** Store Identifier */
+  storeId: string;
+  /** Freeform text describing the secret */
   comment?: string;
+  /** The list of services that can use this secret. */
   scopes?: StoresSecretsEditResponseScopesList;
 }
 export const StoresSecretsEditResponse = /*@__PURE__*/ S.suspend(() =>
@@ -528,7 +607,7 @@ export const StoresSecretsEditResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.String,
     name: S.String,
     status: StoresSecretsEditResponseStatus,
-    store_id: S.String,
+    storeId: S.String.pipe(T.Body("store_id")),
     comment: S.optional(S.String),
     scopes: S.optional(StoresSecretsEditResponseScopesList),
   }),
@@ -537,15 +616,18 @@ export const StoresSecretsEditResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoresSecretsEditResponse>;
 
 export interface StoresSecretsGetRequest {
-  account_id: string;
-  store_id: string;
-  secret_id: string;
+  /** Account Identifier */
+  accountId: string;
+  /** Store Identifier */
+  storeId: string;
+  /** Secret identifier tag. */
+  secretId: string;
 }
 export const StoresSecretsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    store_id: S.String.pipe(T.Label()),
-    secret_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    storeId: S.String.pipe(T.Label("store_id")),
+    secretId: S.String.pipe(T.Label("secret_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -571,13 +653,20 @@ export const StoresSecretsGetResponseScopesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StoresSecretsGetResponse {
+  /** Secret identifier tag. */
   id: string;
+  /** Whenthe secret was created. */
   created: string;
+  /** When the secret was modified. */
   modified: string;
+  /** The name of the secret */
   name: string;
   status: StoresSecretsGetResponseStatus;
-  store_id: string;
+  /** Store Identifier */
+  storeId: string;
+  /** Freeform text describing the secret */
   comment?: string;
+  /** The list of services that can use this secret. */
   scopes?: StoresSecretsGetResponseScopesList;
 }
 export const StoresSecretsGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -587,7 +676,7 @@ export const StoresSecretsGetResponse = /*@__PURE__*/ S.suspend(() =>
     modified: S.String,
     name: S.String,
     status: StoresSecretsGetResponseStatus,
-    store_id: S.String,
+    storeId: S.String.pipe(T.Body("store_id")),
     comment: S.optional(S.String),
     scopes: S.optional(StoresSecretsGetResponseScopesList),
   }),
@@ -611,23 +700,31 @@ export const StoresSecretsListRequestScopesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StoresSecretsListRequestScopesList>;
 
 export interface StoresSecretsListRequest {
-  account_id: string;
-  store_id: string;
+  /** Account Identifier */
+  accountId: string;
+  /** Store Identifier */
+  storeId: string;
+  /** Direction to sort objects */
   direction?: StoresSecretsListRequestDirection;
+  /** Order secrets by values in the given field */
   order?: StoresSecretsListRequestOrder;
+  /** Page number */
   page?: number;
-  per_page?: number;
+  /** Number of objects to return per page */
+  perPage?: number;
+  /** Only secrets with the given scopes will be returned */
   scopes?: StoresSecretsListRequestScopesList;
+  /** Search secrets using a filter string, filtering across name and comment */
   search?: string;
 }
 export const StoresSecretsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    store_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    storeId: S.String.pipe(T.Label("store_id")),
     direction: S.optional(StoresSecretsListRequestDirection.pipe(T.Query())),
     order: S.optional(StoresSecretsListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     scopes: S.optional(StoresSecretsListRequestScopesList.pipe(T.Query())),
     search: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -654,13 +751,20 @@ export const StoresSecretsListResultItemScopesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StoresSecretsListResultItemScopesList>;
 
 export interface StoresSecretsListResultItem {
+  /** Secret identifier tag. */
   id: string;
+  /** Whenthe secret was created. */
   created: string;
+  /** When the secret was modified. */
   modified: string;
+  /** The name of the secret */
   name: string;
   status: StoresSecretsListResultItemStatus;
-  store_id: string;
+  /** Store Identifier */
+  storeId: string;
+  /** Freeform text describing the secret */
   comment?: string;
+  /** The list of services that can use this secret. */
   scopes?: StoresSecretsListResultItemScopesList;
 }
 export const StoresSecretsListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -670,7 +774,7 @@ export const StoresSecretsListResultItem = /*@__PURE__*/ S.suspend(() =>
     modified: S.String,
     name: S.String,
     status: StoresSecretsListResultItemStatus,
-    store_id: S.String,
+    storeId: S.String.pipe(T.Body("store_id")),
     comment: S.optional(S.String),
     scopes: S.optional(StoresSecretsListResultItemScopesList),
   }),
@@ -684,6 +788,7 @@ export const StoresSecretsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StoresSecretsListResultList>;
 
 export interface StoresSecretsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: StoresSecretsListResultList;
 }
 export const StoresSecretsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -694,11 +799,12 @@ export const StoresSecretsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StoresSecretsListResponse",
 }) as any as S.Schema<StoresSecretsListResponse>;
 
+export type QuotaGetError = CloudflareOpError;
 /** Lists the number of secrets used in the account. */
-export const QuotaGet: API.OperationMethod<
+export const quotaGet: API.OperationMethod<
   QuotaGetRequest,
   QuotaGetResponse,
-  CloudflareOpError,
+  QuotaGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: QuotaGetRequest,
@@ -707,11 +813,12 @@ export const QuotaGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type StoresCreateError = CloudflareOpError;
 /** Creates a store in the account */
-export const StoresCreate: API.OperationMethod<
+export const storesCreate: API.OperationMethod<
   StoresCreateRequest,
   StoresCreateResponse,
-  CloudflareOpError,
+  StoresCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: StoresCreateRequest,
@@ -720,11 +827,12 @@ export const StoresCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type StoresDeleteError = CloudflareOpError;
 /** Deletes a single store. By default, a store that still contains secrets cannot be deleted and returns HTTP 409 (Conflict) with the "store_not_empty" error. Pass `force=true` to cascade-delete all secrets in the store. Empty stores are always deleted regardless of the force parameter. */
-export const StoresDelete: API.OperationMethod<
+export const storesDelete: API.OperationMethod<
   StoresDeleteRequest,
   StoresDeleteResponse,
-  CloudflareOpError,
+  StoresDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: StoresDeleteRequest,
@@ -733,11 +841,12 @@ export const StoresDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type StoresGetError = CloudflareOpError;
 /** Returns details of a single store */
-export const StoresGet: API.OperationMethod<
+export const storesGet: API.OperationMethod<
   StoresGetRequest,
   StoresGetResponse,
-  CloudflareOpError,
+  StoresGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: StoresGetRequest,
@@ -746,11 +855,12 @@ export const StoresGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type StoresListError = CloudflareOpError;
 /** Lists all the stores in an account */
-export const StoresList: API.OperationMethod<
+export const storesList: API.OperationMethod<
   StoresListRequest,
   StoresListResponse,
-  CloudflareOpError,
+  StoresListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: StoresListRequest,
@@ -759,11 +869,12 @@ export const StoresList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type StoresSecretsBulkDeleteError = CloudflareOpError;
 /** Deletes one or more secrets */
-export const StoresSecretsBulkDelete: API.OperationMethod<
+export const storesSecretsBulkDelete: API.OperationMethod<
   StoresSecretsBulkDeleteRequest,
   StoresSecretsBulkDeleteResponse,
-  CloudflareOpError,
+  StoresSecretsBulkDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: StoresSecretsBulkDeleteRequest,
@@ -772,11 +883,12 @@ export const StoresSecretsBulkDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type StoresSecretsCreateError = CloudflareOpError;
 /** Creates a secret in the account */
-export const StoresSecretsCreate: API.OperationMethod<
+export const storesSecretsCreate: API.OperationMethod<
   StoresSecretsCreateRequest,
   StoresSecretsCreateResponse,
-  CloudflareOpError,
+  StoresSecretsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: StoresSecretsCreateRequest,
@@ -785,11 +897,12 @@ export const StoresSecretsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type StoresSecretsDeleteError = CloudflareOpError;
 /** Deletes a single secret */
-export const StoresSecretsDelete: API.OperationMethod<
+export const storesSecretsDelete: API.OperationMethod<
   StoresSecretsDeleteRequest,
   StoresSecretsDeleteResponse,
-  CloudflareOpError,
+  StoresSecretsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: StoresSecretsDeleteRequest,
@@ -798,11 +911,12 @@ export const StoresSecretsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type StoresSecretsDuplicateError = CloudflareOpError;
 /** Duplicates the secret, keeping the value */
-export const StoresSecretsDuplicate: API.OperationMethod<
+export const storesSecretsDuplicate: API.OperationMethod<
   StoresSecretsDuplicateRequest,
   StoresSecretsDuplicateResponse,
-  CloudflareOpError,
+  StoresSecretsDuplicateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: StoresSecretsDuplicateRequest,
@@ -811,11 +925,12 @@ export const StoresSecretsDuplicate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type StoresSecretsEditError = CloudflareOpError;
 /** Updates a single secret */
-export const StoresSecretsEdit: API.OperationMethod<
+export const storesSecretsEdit: API.OperationMethod<
   StoresSecretsEditRequest,
   StoresSecretsEditResponse,
-  CloudflareOpError,
+  StoresSecretsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: StoresSecretsEditRequest,
@@ -824,11 +939,12 @@ export const StoresSecretsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type StoresSecretsGetError = CloudflareOpError;
 /** Returns details of a single secret */
-export const StoresSecretsGet: API.OperationMethod<
+export const storesSecretsGet: API.OperationMethod<
   StoresSecretsGetRequest,
   StoresSecretsGetResponse,
-  CloudflareOpError,
+  StoresSecretsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: StoresSecretsGetRequest,
@@ -837,11 +953,12 @@ export const StoresSecretsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type StoresSecretsListError = CloudflareOpError;
 /** Lists all store secrets */
-export const StoresSecretsList: API.OperationMethod<
+export const storesSecretsList: API.OperationMethod<
   StoresSecretsListRequest,
   StoresSecretsListResponse,
-  CloudflareOpError,
+  StoresSecretsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: StoresSecretsListRequest,

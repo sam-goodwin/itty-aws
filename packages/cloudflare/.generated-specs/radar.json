@@ -74388,6 +74388,32 @@
         }
       }
     },
+    "com.cloudflare.radar#EmailRoutingSummaryArcResponseSummary0": {
+      "type": "structure",
+      "members": {
+        "FAIL": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        },
+        "PASS": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.radar#EmailRoutingSummaryArcResponse": {
       "type": "structure",
       "members": {
@@ -74399,7 +74425,7 @@
           }
         },
         "summary_0": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.radar#EmailRoutingSummaryArcResponseSummary0",
           "traits": {
             "smithy.api#required": {}
           }
@@ -74918,6 +74944,32 @@
         }
       }
     },
+    "com.cloudflare.radar#EmailRoutingSummaryDkimResponseSummary0": {
+      "type": "structure",
+      "members": {
+        "FAIL": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        },
+        "PASS": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.radar#EmailRoutingSummaryDkimResponse": {
       "type": "structure",
       "members": {
@@ -74929,7 +74981,7 @@
           }
         },
         "summary_0": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.radar#EmailRoutingSummaryDkimResponseSummary0",
           "traits": {
             "smithy.api#required": {}
           }
@@ -75448,6 +75500,32 @@
         }
       }
     },
+    "com.cloudflare.radar#EmailRoutingSummaryDmarcResponseSummary0": {
+      "type": "structure",
+      "members": {
+        "FAIL": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        },
+        "PASS": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.radar#EmailRoutingSummaryDmarcResponse": {
       "type": "structure",
       "members": {
@@ -75459,7 +75537,7 @@
           }
         },
         "summary_0": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.radar#EmailRoutingSummaryDmarcResponseSummary0",
           "traits": {
             "smithy.api#required": {}
           }
@@ -77088,6 +77166,32 @@
         }
       }
     },
+    "com.cloudflare.radar#EmailRoutingSummarySpfResponseSummary0": {
+      "type": "structure",
+      "members": {
+        "FAIL": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        },
+        "PASS": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.radar#EmailRoutingSummarySpfResponse": {
       "type": "structure",
       "members": {
@@ -77099,7 +77203,7 @@
           }
         },
         "summary_0": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.radar#EmailRoutingSummarySpfResponseSummary0",
           "traits": {
             "smithy.api#required": {}
           }
@@ -77684,6 +77788,47 @@
         }
       }
     },
+    "com.cloudflare.radar#EmailRoutingTimeseriesGroupsArcResponseSerie0FAILList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailRoutingTimeseriesGroupsArcResponseSerie0NONEList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailRoutingTimeseriesGroupsArcResponseSerie0PASSList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailRoutingTimeseriesGroupsArcResponseSerie0": {
+      "type": "structure",
+      "members": {
+        "FAIL": {
+          "target": "com.cloudflare.radar#EmailRoutingTimeseriesGroupsArcResponseSerie0FAILList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "NONE": {
+          "target": "com.cloudflare.radar#EmailRoutingTimeseriesGroupsArcResponseSerie0NONEList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "PASS": {
+          "target": "com.cloudflare.radar#EmailRoutingTimeseriesGroupsArcResponseSerie0PASSList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.radar#EmailRoutingTimeseriesGroupsArcResponse": {
       "type": "structure",
       "members": {
@@ -77695,7 +77840,7 @@
           }
         },
         "serie_0": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.radar#EmailRoutingTimeseriesGroupsArcResponseSerie0",
           "traits": {
             "smithy.api#required": {}
           }
@@ -78280,6 +78425,47 @@
         }
       }
     },
+    "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDkimResponseSerie0FAILList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDkimResponseSerie0NONEList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDkimResponseSerie0PASSList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDkimResponseSerie0": {
+      "type": "structure",
+      "members": {
+        "FAIL": {
+          "target": "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDkimResponseSerie0FAILList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "NONE": {
+          "target": "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDkimResponseSerie0NONEList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "PASS": {
+          "target": "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDkimResponseSerie0PASSList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDkimResponse": {
       "type": "structure",
       "members": {
@@ -78291,7 +78477,7 @@
           }
         },
         "serie_0": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDkimResponseSerie0",
           "traits": {
             "smithy.api#required": {}
           }
@@ -78876,6 +79062,47 @@
         }
       }
     },
+    "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDmarcResponseSerie0FAILList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDmarcResponseSerie0NONEList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDmarcResponseSerie0PASSList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDmarcResponseSerie0": {
+      "type": "structure",
+      "members": {
+        "FAIL": {
+          "target": "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDmarcResponseSerie0FAILList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "NONE": {
+          "target": "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDmarcResponseSerie0NONEList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "PASS": {
+          "target": "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDmarcResponseSerie0PASSList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDmarcResponse": {
       "type": "structure",
       "members": {
@@ -78887,7 +79114,7 @@
           }
         },
         "serie_0": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.radar#EmailRoutingTimeseriesGroupsDmarcResponseSerie0",
           "traits": {
             "smithy.api#required": {}
           }
@@ -80734,6 +80961,47 @@
         }
       }
     },
+    "com.cloudflare.radar#EmailRoutingTimeseriesGroupsSpfResponseSerie0FAILList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailRoutingTimeseriesGroupsSpfResponseSerie0NONEList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailRoutingTimeseriesGroupsSpfResponseSerie0PASSList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailRoutingTimeseriesGroupsSpfResponseSerie0": {
+      "type": "structure",
+      "members": {
+        "FAIL": {
+          "target": "com.cloudflare.radar#EmailRoutingTimeseriesGroupsSpfResponseSerie0FAILList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "NONE": {
+          "target": "com.cloudflare.radar#EmailRoutingTimeseriesGroupsSpfResponseSerie0NONEList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "PASS": {
+          "target": "com.cloudflare.radar#EmailRoutingTimeseriesGroupsSpfResponseSerie0PASSList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.radar#EmailRoutingTimeseriesGroupsSpfResponse": {
       "type": "structure",
       "members": {
@@ -80745,7 +81013,7 @@
           }
         },
         "serie_0": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.radar#EmailRoutingTimeseriesGroupsSpfResponseSerie0",
           "traits": {
             "smithy.api#required": {}
           }
@@ -82510,6 +82778,32 @@
         }
       }
     },
+    "com.cloudflare.radar#EmailSecuritySummaryArcResponseSummary0": {
+      "type": "structure",
+      "members": {
+        "FAIL": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        },
+        "PASS": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.radar#EmailSecuritySummaryArcResponse": {
       "type": "structure",
       "members": {
@@ -82521,7 +82815,7 @@
           }
         },
         "summary_0": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.radar#EmailSecuritySummaryArcResponseSummary0",
           "traits": {
             "smithy.api#required": {}
           }
@@ -83022,6 +83316,32 @@
         }
       }
     },
+    "com.cloudflare.radar#EmailSecuritySummaryDkimResponseSummary0": {
+      "type": "structure",
+      "members": {
+        "FAIL": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        },
+        "PASS": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.radar#EmailSecuritySummaryDkimResponse": {
       "type": "structure",
       "members": {
@@ -83033,7 +83353,7 @@
           }
         },
         "summary_0": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.radar#EmailSecuritySummaryDkimResponseSummary0",
           "traits": {
             "smithy.api#required": {}
           }
@@ -83534,6 +83854,32 @@
         }
       }
     },
+    "com.cloudflare.radar#EmailSecuritySummaryDmarcResponseSummary0": {
+      "type": "structure",
+      "members": {
+        "FAIL": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        },
+        "PASS": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.radar#EmailSecuritySummaryDmarcResponse": {
       "type": "structure",
       "members": {
@@ -83545,7 +83891,7 @@
           }
         },
         "summary_0": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.radar#EmailSecuritySummaryDmarcResponseSummary0",
           "traits": {
             "smithy.api#required": {}
           }
@@ -85180,6 +85526,32 @@
         }
       }
     },
+    "com.cloudflare.radar#EmailSecuritySummarySpfResponseSummary0": {
+      "type": "structure",
+      "members": {
+        "FAIL": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        },
+        "PASS": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A numeric string.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.radar#EmailSecuritySummarySpfResponse": {
       "type": "structure",
       "members": {
@@ -85191,7 +85563,7 @@
           }
         },
         "summary_0": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.radar#EmailSecuritySummarySpfResponseSummary0",
           "traits": {
             "smithy.api#required": {}
           }
@@ -87449,6 +87821,47 @@
         }
       }
     },
+    "com.cloudflare.radar#EmailSecurityTimeseriesGroupsArcResponseSerie0FAILList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailSecurityTimeseriesGroupsArcResponseSerie0NONEList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailSecurityTimeseriesGroupsArcResponseSerie0PASSList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailSecurityTimeseriesGroupsArcResponseSerie0": {
+      "type": "structure",
+      "members": {
+        "FAIL": {
+          "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsArcResponseSerie0FAILList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "NONE": {
+          "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsArcResponseSerie0NONEList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "PASS": {
+          "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsArcResponseSerie0PASSList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.radar#EmailSecurityTimeseriesGroupsArcResponse": {
       "type": "structure",
       "members": {
@@ -87460,7 +87873,7 @@
           }
         },
         "serie_0": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsArcResponseSerie0",
           "traits": {
             "smithy.api#required": {}
           }
@@ -88027,6 +88440,47 @@
         }
       }
     },
+    "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDkimResponseSerie0FAILList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDkimResponseSerie0NONEList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDkimResponseSerie0PASSList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDkimResponseSerie0": {
+      "type": "structure",
+      "members": {
+        "FAIL": {
+          "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDkimResponseSerie0FAILList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "NONE": {
+          "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDkimResponseSerie0NONEList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "PASS": {
+          "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDkimResponseSerie0PASSList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDkimResponse": {
       "type": "structure",
       "members": {
@@ -88038,7 +88492,7 @@
           }
         },
         "serie_0": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDkimResponseSerie0",
           "traits": {
             "smithy.api#required": {}
           }
@@ -88605,6 +89059,47 @@
         }
       }
     },
+    "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDmarcResponseSerie0FAILList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDmarcResponseSerie0NONEList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDmarcResponseSerie0PASSList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDmarcResponseSerie0": {
+      "type": "structure",
+      "members": {
+        "FAIL": {
+          "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDmarcResponseSerie0FAILList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "NONE": {
+          "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDmarcResponseSerie0NONEList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "PASS": {
+          "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDmarcResponseSerie0PASSList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDmarcResponse": {
       "type": "structure",
       "members": {
@@ -88616,7 +89111,7 @@
           }
         },
         "serie_0": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsDmarcResponseSerie0",
           "traits": {
             "smithy.api#required": {}
           }
@@ -90469,6 +90964,47 @@
         }
       }
     },
+    "com.cloudflare.radar#EmailSecurityTimeseriesGroupsSpfResponseSerie0FAILList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailSecurityTimeseriesGroupsSpfResponseSerie0NONEList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailSecurityTimeseriesGroupsSpfResponseSerie0PASSList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.radar#EmailSecurityTimeseriesGroupsSpfResponseSerie0": {
+      "type": "structure",
+      "members": {
+        "FAIL": {
+          "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsSpfResponseSerie0FAILList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "NONE": {
+          "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsSpfResponseSerie0NONEList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "PASS": {
+          "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsSpfResponseSerie0PASSList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.radar#EmailSecurityTimeseriesGroupsSpfResponse": {
       "type": "structure",
       "members": {
@@ -90480,7 +91016,7 @@
           }
         },
         "serie_0": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.radar#EmailSecurityTimeseriesGroupsSpfResponseSerie0",
           "traits": {
             "smithy.api#required": {}
           }

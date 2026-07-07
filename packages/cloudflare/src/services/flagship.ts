@@ -10,12 +10,13 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface AppsCreateRequest {
-  account_id: string;
+  /** Cloudflare account ID. */
+  accountId: string;
   name: string;
 }
 export const AppsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
   }).pipe(
     T.Http({
@@ -31,31 +32,34 @@ export const AppsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AppsCreateResponse {
   id: string;
-  created_at: string;
+  createdAt: string;
   name: string;
-  updated_at: string;
-  updated_by: string;
+  updatedAt: string;
+  /** Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes. */
+  updatedBy: string;
 }
 export const AppsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     name: S.String,
-    updated_at: S.String,
-    updated_by: S.String,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    updatedBy: S.String.pipe(T.Body("updated_by")),
   }),
 ).annotate({
   identifier: "AppsCreateResponse",
 }) as any as S.Schema<AppsCreateResponse>;
 
 export interface AppsDeleteRequest {
-  account_id: string;
-  app_id: string;
+  /** Cloudflare account ID. */
+  accountId: string;
+  /** App identifier. */
+  appId: string;
 }
 export const AppsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    app_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -80,15 +84,19 @@ export const AppsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsDeleteResponse>;
 
 export interface AppsEvaluateGetRequest {
-  account_id: string;
-  app_id: string;
+  /** Cloudflare account ID. */
+  accountId: string;
+  /** App identifier. */
+  appId: string;
+  /** The flag key to evaluate. */
   flagKey: string;
+  /** Context targeting key (per OpenFeature spec); used for percentage rollout bucketing. */
   targetingKey?: string;
 }
 export const AppsEvaluateGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    app_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
     flagKey: S.String.pipe(T.Query()),
     targetingKey: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -110,36 +118,60 @@ export type AppsEvaluateGetResponseReason =
   | (string & {});
 export const AppsEvaluateGetResponseReason = /*@__PURE__*/ S.String;
 
+export interface AppsEvaluateGetResponseValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+  mapUnknown_: unknown;
+  arrayOfUnknown: unknown;
+}
+export const AppsEvaluateGetResponseValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    string: S.Unknown,
+    number: S.Unknown,
+    boolean: S.Unknown,
+    mapUnknown_: S.Unknown.pipe(T.Body("map[unknown]")),
+    arrayOfUnknown: S.Unknown.pipe(T.Body("array of unknown")),
+  }),
+).annotate({
+  identifier: "AppsEvaluateGetResponseValue",
+}) as any as S.Schema<AppsEvaluateGetResponseValue>;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface AppsEvaluateGetResponse {
   flagKey: string;
   reason: AppsEvaluateGetResponseReason;
   variant: string;
-  value?: unknown;
+  value?: AppsEvaluateGetResponseValue;
 }
 export const AppsEvaluateGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flagKey: S.String,
     reason: AppsEvaluateGetResponseReason,
     variant: S.String,
-    value: S.optional(S.Unknown),
+    value: S.optional(AppsEvaluateGetResponseValue),
   }),
 ).annotate({
   identifier: "AppsEvaluateGetResponse",
 }) as any as S.Schema<AppsEvaluateGetResponse>;
 
 export interface AppsFlagsChangelogListRequest {
-  account_id: string;
-  app_id: string;
-  flag_key: string;
+  /** Cloudflare account ID. */
+  accountId: string;
+  /** App identifier. */
+  appId: string;
+  /** Flag key (slug). */
+  flagKey: string;
+  /** Pagination cursor from a previous response. */
   cursor?: string;
+  /** Max items to return (1–200). */
   limit?: string;
 }
 export const AppsFlagsChangelogListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    app_id: S.String.pipe(T.Label()),
-    flag_key: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    flagKey: S.String.pipe(T.Label("flag_key")),
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -154,19 +186,19 @@ export const AppsFlagsChangelogListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsFlagsChangelogListRequest>;
 
 export interface AppsFlagsChangelogListResultItem {
-  object___after__event__flag_key__: unknown;
-  object___after__event__flag_key___2: unknown;
-  object___after__diff__event__flag_key__: unknown;
+  objectAfterEventFlagKey__: unknown;
+  objectAfterEventFlagKey2: unknown;
+  objectAfterDiffEventFlagKey__: unknown;
 }
 export const AppsFlagsChangelogListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    object___after__event__flag_key__: S.Unknown.pipe(
+    objectAfterEventFlagKey__: S.Unknown.pipe(
       T.Body("object { after, event, flag_key }"),
     ),
-    object___after__event__flag_key___2: S.Unknown.pipe(
+    objectAfterEventFlagKey2: S.Unknown.pipe(
       T.Body("object { after, event, flag_key }"),
     ),
-    object___after__diff__event__flag_key__: S.Unknown.pipe(
+    objectAfterDiffEventFlagKey__: S.Unknown.pipe(
       T.Body("object { after, diff, event, flag_key }"),
     ),
   }),
@@ -181,6 +213,7 @@ export const AppsFlagsChangelogListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AppsFlagsChangelogListResultList>;
 
 export interface AppsFlagsChangelogListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AppsFlagsChangelogListResultList;
 }
 export const AppsFlagsChangelogListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -194,16 +227,16 @@ export const AppsFlagsChangelogListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsFlagsChangelogListResponse>;
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItem {
-  object___attribute__operator__value__: unknown;
-  object___clauses__logical_operator__: unknown;
+  objectAttributeOperatorValue__: unknown;
+  objectClausesLogicalOperator__: unknown;
 }
 export const AppsFlagsCreateRequestRulesItemConditionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___attribute__operator__value__: S.Unknown.pipe(
+      objectAttributeOperatorValue__: S.Unknown.pipe(
         T.Body("object { attribute, operator, value }"),
       ),
-      object___clauses__logical_operator__: S.Unknown.pipe(
+      objectClausesLogicalOperator__: S.Unknown.pipe(
         T.Body("object { clauses, logical_operator }"),
       ),
     }),
@@ -219,7 +252,9 @@ export const AppsFlagsCreateRequestRulesItemConditionsList =
   ) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsList>;
 
 export interface AppsFlagsCreateRequestRulesItemRollout {
+  /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
+  /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
   attribute?: string;
 }
 export const AppsFlagsCreateRequestRulesItemRollout = /*@__PURE__*/ S.suspend(
@@ -233,16 +268,19 @@ export const AppsFlagsCreateRequestRulesItemRollout = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AppsFlagsCreateRequestRulesItemRollout>;
 
 export interface AppsFlagsCreateRequestRulesItem {
+  /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
   conditions: AppsFlagsCreateRequestRulesItemConditionsList;
+  /** Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules. */
   priority: number;
-  serve_variation: string;
+  /** Variation served when this rule matches. Must be a key in `variations`. */
+  serveVariation: string;
   rollout?: AppsFlagsCreateRequestRulesItemRollout;
 }
 export const AppsFlagsCreateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: AppsFlagsCreateRequestRulesItemConditionsList,
     priority: S.Number,
-    serve_variation: S.String,
+    serveVariation: S.String.pipe(T.Body("serve_variation")),
     rollout: S.optional(AppsFlagsCreateRequestRulesItemRollout),
   }),
 ).annotate({
@@ -271,21 +309,29 @@ export type AppsFlagsCreateRequestType =
 export const AppsFlagsCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface AppsFlagsCreateRequest {
-  account_id: string;
-  app_id: string;
-  default_variation: string;
+  /** Cloudflare account ID. */
+  accountId: string;
+  /** App identifier. */
+  appId: string;
+  /** Variation served when no rule matches or the flag is disabled. Must be a key in `variations`. */
+  defaultVariation: string;
+  /** When false, the flag bypasses all rules and always serves `default_variation`. */
   enabled: boolean;
+  /** Unique identifier for the flag within an app. Used in all evaluation and SDK calls. */
   key: string;
+  /** Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`. */
   rules: AppsFlagsCreateRequestRulesList;
+  /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
   variations: AppsFlagsCreateRequestVariationsMap;
   description?: string;
+  /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
   type?: AppsFlagsCreateRequestType;
 }
 export const AppsFlagsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    app_id: S.String.pipe(T.Label()),
-    default_variation: S.String,
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    defaultVariation: S.String.pipe(T.Body("default_variation")),
     enabled: S.Boolean,
     key: S.String,
     rules: AppsFlagsCreateRequestRulesList,
@@ -304,16 +350,16 @@ export const AppsFlagsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsFlagsCreateRequest>;
 
 export interface AppsFlagsCreateResponseRulesItemConditionsItem {
-  object___attribute__operator__value__: unknown;
-  object___clauses__logical_operator__: unknown;
+  objectAttributeOperatorValue__: unknown;
+  objectClausesLogicalOperator__: unknown;
 }
 export const AppsFlagsCreateResponseRulesItemConditionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___attribute__operator__value__: S.Unknown.pipe(
+      objectAttributeOperatorValue__: S.Unknown.pipe(
         T.Body("object { attribute, operator, value }"),
       ),
-      object___clauses__logical_operator__: S.Unknown.pipe(
+      objectClausesLogicalOperator__: S.Unknown.pipe(
         T.Body("object { clauses, logical_operator }"),
       ),
     }),
@@ -329,7 +375,9 @@ export const AppsFlagsCreateResponseRulesItemConditionsList =
   ) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsList>;
 
 export interface AppsFlagsCreateResponseRulesItemRollout {
+  /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
+  /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
   attribute?: string;
 }
 export const AppsFlagsCreateResponseRulesItemRollout = /*@__PURE__*/ S.suspend(
@@ -343,16 +391,19 @@ export const AppsFlagsCreateResponseRulesItemRollout = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AppsFlagsCreateResponseRulesItemRollout>;
 
 export interface AppsFlagsCreateResponseRulesItem {
+  /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
   conditions: AppsFlagsCreateResponseRulesItemConditionsList;
+  /** Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules. */
   priority: number;
-  serve_variation: string;
+  /** Variation served when this rule matches. Must be a key in `variations`. */
+  serveVariation: string;
   rollout?: AppsFlagsCreateResponseRulesItemRollout;
 }
 export const AppsFlagsCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: AppsFlagsCreateResponseRulesItemConditionsList,
     priority: S.Number,
-    serve_variation: S.String,
+    serveVariation: S.String.pipe(T.Body("serve_variation")),
     rollout: S.optional(AppsFlagsCreateResponseRulesItemRollout),
   }),
 ).annotate({
@@ -383,42 +434,51 @@ export const AppsFlagsCreateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AppsFlagsCreateResponse {
-  default_variation: string;
+  /** Variation served when no rule matches or the flag is disabled. Must be a key in `variations`. */
+  defaultVariation: string;
+  /** When false, the flag bypasses all rules and always serves `default_variation`. */
   enabled: boolean;
+  /** Unique identifier for the flag within an app. Used in all evaluation and SDK calls. */
   key: string;
+  /** Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`. */
   rules: AppsFlagsCreateResponseRulesList;
+  /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
   variations: AppsFlagsCreateResponseVariationsMap;
   description?: string;
+  /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
   type?: AppsFlagsCreateResponseType;
-  updated_at?: string;
-  updated_by?: string;
+  updatedAt?: string;
+  updatedBy?: string;
 }
 export const AppsFlagsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    default_variation: S.String,
+    defaultVariation: S.String.pipe(T.Body("default_variation")),
     enabled: S.Boolean,
     key: S.String,
     rules: AppsFlagsCreateResponseRulesList,
     variations: AppsFlagsCreateResponseVariationsMap,
     description: S.optional(S.String),
     type: S.optional(AppsFlagsCreateResponseType),
-    updated_at: S.optional(S.String),
-    updated_by: S.optional(S.String),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
   }),
 ).annotate({
   identifier: "AppsFlagsCreateResponse",
 }) as any as S.Schema<AppsFlagsCreateResponse>;
 
 export interface AppsFlagsDeleteRequest {
-  account_id: string;
-  app_id: string;
-  flag_key: string;
+  /** Cloudflare account ID. */
+  accountId: string;
+  /** App identifier. */
+  appId: string;
+  /** Flag key (slug). */
+  flagKey: string;
 }
 export const AppsFlagsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    app_id: S.String.pipe(T.Label()),
-    flag_key: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    flagKey: S.String.pipe(T.Label("flag_key")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -443,15 +503,18 @@ export const AppsFlagsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsFlagsDeleteResponse>;
 
 export interface AppsFlagsGetRequest {
-  account_id: string;
-  app_id: string;
-  flag_key: string;
+  /** Cloudflare account ID. */
+  accountId: string;
+  /** App identifier. */
+  appId: string;
+  /** Flag key (slug). */
+  flagKey: string;
 }
 export const AppsFlagsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    app_id: S.String.pipe(T.Label()),
-    flag_key: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    flagKey: S.String.pipe(T.Label("flag_key")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -464,16 +527,16 @@ export const AppsFlagsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsFlagsGetRequest>;
 
 export interface AppsFlagsGetResponseRulesItemConditionsItem {
-  object___attribute__operator__value__: unknown;
-  object___clauses__logical_operator__: unknown;
+  objectAttributeOperatorValue__: unknown;
+  objectClausesLogicalOperator__: unknown;
 }
 export const AppsFlagsGetResponseRulesItemConditionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___attribute__operator__value__: S.Unknown.pipe(
+      objectAttributeOperatorValue__: S.Unknown.pipe(
         T.Body("object { attribute, operator, value }"),
       ),
-      object___clauses__logical_operator__: S.Unknown.pipe(
+      objectClausesLogicalOperator__: S.Unknown.pipe(
         T.Body("object { clauses, logical_operator }"),
       ),
     }),
@@ -489,7 +552,9 @@ export const AppsFlagsGetResponseRulesItemConditionsList =
   ) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsList>;
 
 export interface AppsFlagsGetResponseRulesItemRollout {
+  /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
+  /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
   attribute?: string;
 }
 export const AppsFlagsGetResponseRulesItemRollout = /*@__PURE__*/ S.suspend(
@@ -503,16 +568,19 @@ export const AppsFlagsGetResponseRulesItemRollout = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AppsFlagsGetResponseRulesItemRollout>;
 
 export interface AppsFlagsGetResponseRulesItem {
+  /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
   conditions: AppsFlagsGetResponseRulesItemConditionsList;
+  /** Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules. */
   priority: number;
-  serve_variation: string;
+  /** Variation served when this rule matches. Must be a key in `variations`. */
+  serveVariation: string;
   rollout?: AppsFlagsGetResponseRulesItemRollout;
 }
 export const AppsFlagsGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: AppsFlagsGetResponseRulesItemConditionsList,
     priority: S.Number,
-    serve_variation: S.String,
+    serveVariation: S.String.pipe(T.Body("serve_variation")),
     rollout: S.optional(AppsFlagsGetResponseRulesItemRollout),
   }),
 ).annotate({
@@ -542,42 +610,52 @@ export const AppsFlagsGetResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AppsFlagsGetResponse {
-  default_variation: string;
+  /** Variation served when no rule matches or the flag is disabled. Must be a key in `variations`. */
+  defaultVariation: string;
+  /** When false, the flag bypasses all rules and always serves `default_variation`. */
   enabled: boolean;
+  /** Unique identifier for the flag within an app. Used in all evaluation and SDK calls. */
   key: string;
+  /** Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`. */
   rules: AppsFlagsGetResponseRulesList;
+  /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
   variations: AppsFlagsGetResponseVariationsMap;
   description?: string;
+  /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
   type?: AppsFlagsGetResponseType;
-  updated_at?: string;
-  updated_by?: string;
+  updatedAt?: string;
+  updatedBy?: string;
 }
 export const AppsFlagsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    default_variation: S.String,
+    defaultVariation: S.String.pipe(T.Body("default_variation")),
     enabled: S.Boolean,
     key: S.String,
     rules: AppsFlagsGetResponseRulesList,
     variations: AppsFlagsGetResponseVariationsMap,
     description: S.optional(S.String),
     type: S.optional(AppsFlagsGetResponseType),
-    updated_at: S.optional(S.String),
-    updated_by: S.optional(S.String),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
   }),
 ).annotate({
   identifier: "AppsFlagsGetResponse",
 }) as any as S.Schema<AppsFlagsGetResponse>;
 
 export interface AppsFlagsListRequest {
-  account_id: string;
-  app_id: string;
+  /** Cloudflare account ID. */
+  accountId: string;
+  /** App identifier. */
+  appId: string;
+  /** Pagination cursor from a previous response. */
   cursor?: string;
+  /** Max items to return (1–200). */
   limit?: string;
 }
 export const AppsFlagsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    app_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -592,16 +670,16 @@ export const AppsFlagsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsFlagsListRequest>;
 
 export interface AppsFlagsListResultItemRulesItemConditionsItem {
-  object___attribute__operator__value__: unknown;
-  object___clauses__logical_operator__: unknown;
+  objectAttributeOperatorValue__: unknown;
+  objectClausesLogicalOperator__: unknown;
 }
 export const AppsFlagsListResultItemRulesItemConditionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___attribute__operator__value__: S.Unknown.pipe(
+      objectAttributeOperatorValue__: S.Unknown.pipe(
         T.Body("object { attribute, operator, value }"),
       ),
-      object___clauses__logical_operator__: S.Unknown.pipe(
+      objectClausesLogicalOperator__: S.Unknown.pipe(
         T.Body("object { clauses, logical_operator }"),
       ),
     }),
@@ -617,7 +695,9 @@ export const AppsFlagsListResultItemRulesItemConditionsList =
   ) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsList>;
 
 export interface AppsFlagsListResultItemRulesItemRollout {
+  /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
+  /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
   attribute?: string;
 }
 export const AppsFlagsListResultItemRulesItemRollout = /*@__PURE__*/ S.suspend(
@@ -631,16 +711,19 @@ export const AppsFlagsListResultItemRulesItemRollout = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AppsFlagsListResultItemRulesItemRollout>;
 
 export interface AppsFlagsListResultItemRulesItem {
+  /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
   conditions: AppsFlagsListResultItemRulesItemConditionsList;
+  /** Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules. */
   priority: number;
-  serve_variation: string;
+  /** Variation served when this rule matches. Must be a key in `variations`. */
+  serveVariation: string;
   rollout?: AppsFlagsListResultItemRulesItemRollout;
 }
 export const AppsFlagsListResultItemRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: AppsFlagsListResultItemRulesItemConditionsList,
     priority: S.Number,
-    serve_variation: S.String,
+    serveVariation: S.String.pipe(T.Body("serve_variation")),
     rollout: S.optional(AppsFlagsListResultItemRulesItemRollout),
   }),
 ).annotate({
@@ -670,27 +753,33 @@ export type AppsFlagsListResultItemType =
 export const AppsFlagsListResultItemType = /*@__PURE__*/ S.String;
 
 export interface AppsFlagsListResultItem {
-  default_variation: string;
+  /** Variation served when no rule matches or the flag is disabled. Must be a key in `variations`. */
+  defaultVariation: string;
+  /** When false, the flag bypasses all rules and always serves `default_variation`. */
   enabled: boolean;
+  /** Unique identifier for the flag within an app. Used in all evaluation and SDK calls. */
   key: string;
+  /** Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`. */
   rules: AppsFlagsListResultItemRulesList;
+  /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
   variations: AppsFlagsListResultItemVariationsMap;
   description?: string;
+  /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
   type?: AppsFlagsListResultItemType;
-  updated_at?: string;
-  updated_by?: string;
+  updatedAt?: string;
+  updatedBy?: string;
 }
 export const AppsFlagsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    default_variation: S.String,
+    defaultVariation: S.String.pipe(T.Body("default_variation")),
     enabled: S.Boolean,
     key: S.String,
     rules: AppsFlagsListResultItemRulesList,
     variations: AppsFlagsListResultItemVariationsMap,
     description: S.optional(S.String),
     type: S.optional(AppsFlagsListResultItemType),
-    updated_at: S.optional(S.String),
-    updated_by: S.optional(S.String),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
   }),
 ).annotate({
   identifier: "AppsFlagsListResultItem",
@@ -702,6 +791,7 @@ export const AppsFlagsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AppsFlagsListResultList>;
 
 export interface AppsFlagsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AppsFlagsListResultList;
 }
 export const AppsFlagsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -713,16 +803,16 @@ export const AppsFlagsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsFlagsListResponse>;
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItem {
-  object___attribute__operator__value__: unknown;
-  object___clauses__logical_operator__: unknown;
+  objectAttributeOperatorValue__: unknown;
+  objectClausesLogicalOperator__: unknown;
 }
 export const AppsFlagsUpdateRequestRulesItemConditionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___attribute__operator__value__: S.Unknown.pipe(
+      objectAttributeOperatorValue__: S.Unknown.pipe(
         T.Body("object { attribute, operator, value }"),
       ),
-      object___clauses__logical_operator__: S.Unknown.pipe(
+      objectClausesLogicalOperator__: S.Unknown.pipe(
         T.Body("object { clauses, logical_operator }"),
       ),
     }),
@@ -738,7 +828,9 @@ export const AppsFlagsUpdateRequestRulesItemConditionsList =
   ) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsList>;
 
 export interface AppsFlagsUpdateRequestRulesItemRollout {
+  /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
+  /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
   attribute?: string;
 }
 export const AppsFlagsUpdateRequestRulesItemRollout = /*@__PURE__*/ S.suspend(
@@ -752,16 +844,19 @@ export const AppsFlagsUpdateRequestRulesItemRollout = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AppsFlagsUpdateRequestRulesItemRollout>;
 
 export interface AppsFlagsUpdateRequestRulesItem {
+  /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
   conditions: AppsFlagsUpdateRequestRulesItemConditionsList;
+  /** Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules. */
   priority: number;
-  serve_variation: string;
+  /** Variation served when this rule matches. Must be a key in `variations`. */
+  serveVariation: string;
   rollout?: AppsFlagsUpdateRequestRulesItemRollout;
 }
 export const AppsFlagsUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: AppsFlagsUpdateRequestRulesItemConditionsList,
     priority: S.Number,
-    serve_variation: S.String,
+    serveVariation: S.String.pipe(T.Body("serve_variation")),
     rollout: S.optional(AppsFlagsUpdateRequestRulesItemRollout),
   }),
 ).annotate({
@@ -790,23 +885,32 @@ export type AppsFlagsUpdateRequestType =
 export const AppsFlagsUpdateRequestType = /*@__PURE__*/ S.String;
 
 export interface AppsFlagsUpdateRequest {
-  account_id: string;
-  app_id: string;
-  flag_key: string;
-  default_variation: string;
+  /** Cloudflare account ID. */
+  accountId: string;
+  /** App identifier. */
+  appId: string;
+  /** Flag key (slug). */
+  flagKey: string;
+  /** Variation served when no rule matches or the flag is disabled. Must be a key in `variations`. */
+  defaultVariation: string;
+  /** When false, the flag bypasses all rules and always serves `default_variation`. */
   enabled: boolean;
+  /** Unique identifier for the flag within an app. Used in all evaluation and SDK calls. */
   key: string;
+  /** Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`. */
   rules: AppsFlagsUpdateRequestRulesList;
+  /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
   variations: AppsFlagsUpdateRequestVariationsMap;
   description?: string;
+  /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
   type?: AppsFlagsUpdateRequestType;
 }
 export const AppsFlagsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    app_id: S.String.pipe(T.Label()),
-    flag_key: S.String.pipe(T.Label()),
-    default_variation: S.String,
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    flagKey: S.String.pipe(T.Label("flag_key")),
+    defaultVariation: S.String.pipe(T.Body("default_variation")),
     enabled: S.Boolean,
     key: S.String,
     rules: AppsFlagsUpdateRequestRulesList,
@@ -825,16 +929,16 @@ export const AppsFlagsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsFlagsUpdateRequest>;
 
 export interface AppsFlagsUpdateResponseRulesItemConditionsItem {
-  object___attribute__operator__value__: unknown;
-  object___clauses__logical_operator__: unknown;
+  objectAttributeOperatorValue__: unknown;
+  objectClausesLogicalOperator__: unknown;
 }
 export const AppsFlagsUpdateResponseRulesItemConditionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___attribute__operator__value__: S.Unknown.pipe(
+      objectAttributeOperatorValue__: S.Unknown.pipe(
         T.Body("object { attribute, operator, value }"),
       ),
-      object___clauses__logical_operator__: S.Unknown.pipe(
+      objectClausesLogicalOperator__: S.Unknown.pipe(
         T.Body("object { clauses, logical_operator }"),
       ),
     }),
@@ -850,7 +954,9 @@ export const AppsFlagsUpdateResponseRulesItemConditionsList =
   ) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsList>;
 
 export interface AppsFlagsUpdateResponseRulesItemRollout {
+  /** Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
+  /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
   attribute?: string;
 }
 export const AppsFlagsUpdateResponseRulesItemRollout = /*@__PURE__*/ S.suspend(
@@ -864,16 +970,19 @@ export const AppsFlagsUpdateResponseRulesItemRollout = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AppsFlagsUpdateResponseRulesItemRollout>;
 
 export interface AppsFlagsUpdateResponseRulesItem {
+  /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
   conditions: AppsFlagsUpdateResponseRulesItemConditionsList;
+  /** Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules. */
   priority: number;
-  serve_variation: string;
+  /** Variation served when this rule matches. Must be a key in `variations`. */
+  serveVariation: string;
   rollout?: AppsFlagsUpdateResponseRulesItemRollout;
 }
 export const AppsFlagsUpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: AppsFlagsUpdateResponseRulesItemConditionsList,
     priority: S.Number,
-    serve_variation: S.String,
+    serveVariation: S.String.pipe(T.Body("serve_variation")),
     rollout: S.optional(AppsFlagsUpdateResponseRulesItemRollout),
   }),
 ).annotate({
@@ -904,40 +1013,48 @@ export const AppsFlagsUpdateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AppsFlagsUpdateResponse {
-  default_variation: string;
+  /** Variation served when no rule matches or the flag is disabled. Must be a key in `variations`. */
+  defaultVariation: string;
+  /** When false, the flag bypasses all rules and always serves `default_variation`. */
   enabled: boolean;
+  /** Unique identifier for the flag within an app. Used in all evaluation and SDK calls. */
   key: string;
+  /** Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`. */
   rules: AppsFlagsUpdateResponseRulesList;
+  /** Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller. */
   variations: AppsFlagsUpdateResponseVariationsMap;
   description?: string;
+  /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
   type?: AppsFlagsUpdateResponseType;
-  updated_at?: string;
-  updated_by?: string;
+  updatedAt?: string;
+  updatedBy?: string;
 }
 export const AppsFlagsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    default_variation: S.String,
+    defaultVariation: S.String.pipe(T.Body("default_variation")),
     enabled: S.Boolean,
     key: S.String,
     rules: AppsFlagsUpdateResponseRulesList,
     variations: AppsFlagsUpdateResponseVariationsMap,
     description: S.optional(S.String),
     type: S.optional(AppsFlagsUpdateResponseType),
-    updated_at: S.optional(S.String),
-    updated_by: S.optional(S.String),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
   }),
 ).annotate({
   identifier: "AppsFlagsUpdateResponse",
 }) as any as S.Schema<AppsFlagsUpdateResponse>;
 
 export interface AppsGetRequest {
-  account_id: string;
-  app_id: string;
+  /** Cloudflare account ID. */
+  accountId: string;
+  /** App identifier. */
+  appId: string;
 }
 export const AppsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    app_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -950,29 +1067,31 @@ export const AppsGetRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AppsGetResponse {
   id: string;
-  created_at: string;
+  createdAt: string;
   name: string;
-  updated_at: string;
-  updated_by: string;
+  updatedAt: string;
+  /** Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes. */
+  updatedBy: string;
 }
 export const AppsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     name: S.String,
-    updated_at: S.String,
-    updated_by: S.String,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    updatedBy: S.String.pipe(T.Body("updated_by")),
   }),
 ).annotate({
   identifier: "AppsGetResponse",
 }) as any as S.Schema<AppsGetResponse>;
 
 export interface AppsListRequest {
-  account_id: string;
+  /** Cloudflare account ID. */
+  accountId: string;
 }
 export const AppsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -986,18 +1105,19 @@ export const AppsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface AppsListResultItem {
   id: string;
-  created_at: string;
+  createdAt: string;
   name: string;
-  updated_at: string;
-  updated_by: string;
+  updatedAt: string;
+  /** Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes. */
+  updatedBy: string;
 }
 export const AppsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     name: S.String,
-    updated_at: S.String,
-    updated_by: S.String,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    updatedBy: S.String.pipe(T.Body("updated_by")),
   }),
 ).annotate({
   identifier: "AppsListResultItem",
@@ -1009,6 +1129,7 @@ export const AppsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AppsListResultList>;
 
 export interface AppsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AppsListResultList;
 }
 export const AppsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1020,14 +1141,16 @@ export const AppsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsListResponse>;
 
 export interface AppsUpdateRequest {
-  account_id: string;
-  app_id: string;
+  /** Cloudflare account ID. */
+  accountId: string;
+  /** App identifier. */
+  appId: string;
   name?: string;
 }
 export const AppsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    app_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
     name: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -1043,28 +1166,30 @@ export const AppsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AppsUpdateResponse {
   id: string;
-  created_at: string;
+  createdAt: string;
   name: string;
-  updated_at: string;
-  updated_by: string;
+  updatedAt: string;
+  /** Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes. */
+  updatedBy: string;
 }
 export const AppsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     name: S.String,
-    updated_at: S.String,
-    updated_by: S.String,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    updatedBy: S.String.pipe(T.Body("updated_by")),
   }),
 ).annotate({
   identifier: "AppsUpdateResponse",
 }) as any as S.Schema<AppsUpdateResponse>;
 
+export type AppsCreateError = CloudflareOpError;
 /** Creates an app. The returned `id` is used in all subsequent flag, changelog, and evaluation requests. */
-export const AppsCreate: API.OperationMethod<
+export const appsCreate: API.OperationMethod<
   AppsCreateRequest,
   AppsCreateResponse,
-  CloudflareOpError,
+  AppsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsCreateRequest,
@@ -1073,11 +1198,12 @@ export const AppsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AppsDeleteError = CloudflareOpError;
 /** Deletes an app and all its flags and changelog history. Returns 409 if any Worker still references this app via a Flagship binding. */
-export const AppsDelete: API.OperationMethod<
+export const appsDelete: API.OperationMethod<
   AppsDeleteRequest,
   AppsDeleteResponse,
-  CloudflareOpError,
+  AppsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsDeleteRequest,
@@ -1086,11 +1212,12 @@ export const AppsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AppsEvaluateGetError = CloudflareOpError;
 /** Evaluates a flag against the provided context. Pass context attributes as query parameters; boolean and numeric strings are coerced automatically. For low-latency in-Worker evaluation, prefer the Flagship binding over this endpoint. */
-export const AppsEvaluateGet: API.OperationMethod<
+export const appsEvaluateGet: API.OperationMethod<
   AppsEvaluateGetRequest,
   AppsEvaluateGetResponse,
-  CloudflareOpError,
+  AppsEvaluateGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsEvaluateGetRequest,
@@ -1099,11 +1226,12 @@ export const AppsEvaluateGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AppsFlagsChangelogListError = CloudflareOpError;
 /** Returns the audit history for a flag, newest first. Each entry includes the event type and full flag state after the change; `update` entries include a field-level diff. Capped at 200 entries per flag. */
-export const AppsFlagsChangelogList: API.OperationMethod<
+export const appsFlagsChangelogList: API.OperationMethod<
   AppsFlagsChangelogListRequest,
   AppsFlagsChangelogListResponse,
-  CloudflareOpError,
+  AppsFlagsChangelogListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsFlagsChangelogListRequest,
@@ -1112,11 +1240,12 @@ export const AppsFlagsChangelogList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AppsFlagsCreateError = CloudflareOpError;
 /** Creates a flag. Returns 409 if the key already exists. `type` is inferred from variation values and may be omitted. */
-export const AppsFlagsCreate: API.OperationMethod<
+export const appsFlagsCreate: API.OperationMethod<
   AppsFlagsCreateRequest,
   AppsFlagsCreateResponse,
-  CloudflareOpError,
+  AppsFlagsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsFlagsCreateRequest,
@@ -1125,11 +1254,12 @@ export const AppsFlagsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AppsFlagsDeleteError = CloudflareOpError;
 /** Permanently deletes a flag. Subsequent evaluations fall back to the caller-supplied default. Cannot be undone. */
-export const AppsFlagsDelete: API.OperationMethod<
+export const appsFlagsDelete: API.OperationMethod<
   AppsFlagsDeleteRequest,
   AppsFlagsDeleteResponse,
-  CloudflareOpError,
+  AppsFlagsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsFlagsDeleteRequest,
@@ -1138,11 +1268,12 @@ export const AppsFlagsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AppsFlagsGetError = CloudflareOpError;
 /** Returns the full flag definition including rules, variations, and audit fields. */
-export const AppsFlagsGet: API.OperationMethod<
+export const appsFlagsGet: API.OperationMethod<
   AppsFlagsGetRequest,
   AppsFlagsGetResponse,
-  CloudflareOpError,
+  AppsFlagsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsFlagsGetRequest,
@@ -1151,11 +1282,12 @@ export const AppsFlagsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AppsFlagsListError = CloudflareOpError;
 /** Lists an app's flags ordered by key. Pass `cursor` from `result_info` to page forward; a null cursor indicates the last page. */
-export const AppsFlagsList: API.OperationMethod<
+export const appsFlagsList: API.OperationMethod<
   AppsFlagsListRequest,
   AppsFlagsListResponse,
-  CloudflareOpError,
+  AppsFlagsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsFlagsListRequest,
@@ -1164,11 +1296,12 @@ export const AppsFlagsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AppsFlagsUpdateError = CloudflareOpError;
 /** Replaces the entire flag definition. Omitted fields are dropped, not preserved — read before writing. Each update appends a changelog entry. */
-export const AppsFlagsUpdate: API.OperationMethod<
+export const appsFlagsUpdate: API.OperationMethod<
   AppsFlagsUpdateRequest,
   AppsFlagsUpdateResponse,
-  CloudflareOpError,
+  AppsFlagsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsFlagsUpdateRequest,
@@ -1177,11 +1310,12 @@ export const AppsFlagsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AppsGetError = CloudflareOpError;
 /** Returns an app's name and audit fields. Flag definitions are not included. */
-export const AppsGet: API.OperationMethod<
+export const appsGet: API.OperationMethod<
   AppsGetRequest,
   AppsGetResponse,
-  CloudflareOpError,
+  AppsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsGetRequest,
@@ -1190,11 +1324,12 @@ export const AppsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AppsListError = CloudflareOpError;
 /** Lists all apps in the account. Returns identity and audit fields only — flag definitions are not included. */
-export const AppsList: API.OperationMethod<
+export const appsList: API.OperationMethod<
   AppsListRequest,
   AppsListResponse,
-  CloudflareOpError,
+  AppsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsListRequest,
@@ -1203,11 +1338,12 @@ export const AppsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AppsUpdateError = CloudflareOpError;
 /** Updates an app. Only `name` is mutable. */
-export const AppsUpdate: API.OperationMethod<
+export const appsUpdate: API.OperationMethod<
   AppsUpdateRequest,
   AppsUpdateResponse,
-  CloudflareOpError,
+  AppsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsUpdateRequest,

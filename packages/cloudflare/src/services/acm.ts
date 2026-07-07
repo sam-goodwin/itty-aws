@@ -10,12 +10,14 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface CustomTrustStoreCreateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported. */
   certificate: string;
 }
 export const CustomTrustStoreCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     certificate: S.String,
   }).pipe(
     T.Http({
@@ -28,25 +30,59 @@ export const CustomTrustStoreCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomTrustStoreCreateRequest",
 }) as any as S.Schema<CustomTrustStoreCreateRequest>;
 
+export type CustomTrustStoreCreateResponseStatus =
+  | "initializing"
+  | "pending_deployment"
+  | "active"
+  | (string & {});
+export const CustomTrustStoreCreateResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CustomTrustStoreCreateResponse {
-  result?: unknown;
+  /** Identifier. */
+  id: string;
+  /** The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported. */
+  certificate: string;
+  /** When the certificate expires. */
+  expiresOn: string;
+  /** The certificate authority that issued the certificate. */
+  issuer: string;
+  /** The type of hash used for the certificate. */
+  signature: string;
+  /** Status of the zone's custom SSL. */
+  status: CustomTrustStoreCreateResponseStatus;
+  /** When the certificate was last modified. */
+  updatedAt: string;
+  /** When the certificate was uploaded to Cloudflare. */
+  uploadedOn: string;
 }
 export const CustomTrustStoreCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    certificate: S.String,
+    expiresOn: S.String.pipe(T.Body("expires_on")),
+    issuer: S.String,
+    signature: S.String,
+    status: CustomTrustStoreCreateResponseStatus,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    uploadedOn: S.String.pipe(T.Body("uploaded_on")),
   }),
 ).annotate({
   identifier: "CustomTrustStoreCreateResponse",
 }) as any as S.Schema<CustomTrustStoreCreateResponse>;
 
 export interface CustomTrustStoreDeleteRequest {
-  zone_id: string;
-  custom_origin_trust_store_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  customOriginTrustStoreId: string;
 }
 export const CustomTrustStoreDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    custom_origin_trust_store_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    customOriginTrustStoreId: S.String.pipe(
+      T.Label("custom_origin_trust_store_id"),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -60,6 +96,7 @@ export const CustomTrustStoreDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CustomTrustStoreDeleteResponse {
+  /** Identifier. */
   id?: string;
 }
 export const CustomTrustStoreDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -71,13 +108,17 @@ export const CustomTrustStoreDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomTrustStoreDeleteResponse>;
 
 export interface CustomTrustStoreGetRequest {
-  zone_id: string;
-  custom_origin_trust_store_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  customOriginTrustStoreId: string;
 }
 export const CustomTrustStoreGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    custom_origin_trust_store_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    customOriginTrustStoreId: S.String.pipe(
+      T.Label("custom_origin_trust_store_id"),
+    ),
   }).pipe(
     T.Http({
       method: "GET",
@@ -89,31 +130,66 @@ export const CustomTrustStoreGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomTrustStoreGetRequest",
 }) as any as S.Schema<CustomTrustStoreGetRequest>;
 
+export type CustomTrustStoreGetResponseStatus =
+  | "initializing"
+  | "pending_deployment"
+  | "active"
+  | (string & {});
+export const CustomTrustStoreGetResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CustomTrustStoreGetResponse {
-  result?: unknown;
+  /** Identifier. */
+  id: string;
+  /** The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported. */
+  certificate: string;
+  /** When the certificate expires. */
+  expiresOn: string;
+  /** The certificate authority that issued the certificate. */
+  issuer: string;
+  /** The type of hash used for the certificate. */
+  signature: string;
+  /** Status of the zone's custom SSL. */
+  status: CustomTrustStoreGetResponseStatus;
+  /** When the certificate was last modified. */
+  updatedAt: string;
+  /** When the certificate was uploaded to Cloudflare. */
+  uploadedOn: string;
 }
 export const CustomTrustStoreGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    certificate: S.String,
+    expiresOn: S.String.pipe(T.Body("expires_on")),
+    issuer: S.String,
+    signature: S.String,
+    status: CustomTrustStoreGetResponseStatus,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    uploadedOn: S.String.pipe(T.Body("uploaded_on")),
   }),
 ).annotate({
   identifier: "CustomTrustStoreGetResponse",
 }) as any as S.Schema<CustomTrustStoreGetResponse>;
 
 export interface CustomTrustStoreListRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Limit to the number of records returned. */
   limit?: number;
+  /** Offset the results. */
   offset?: number;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
+  /** Number of records per page. */
+  perPage?: number;
 }
 export const CustomTrustStoreListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -125,12 +201,53 @@ export const CustomTrustStoreListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomTrustStoreListRequest",
 }) as any as S.Schema<CustomTrustStoreListRequest>;
 
-export type CustomTrustStoreListResultList = unknown[];
+export type CustomTrustStoreListResultItemStatus =
+  | "initializing"
+  | "pending_deployment"
+  | "active"
+  | (string & {});
+export const CustomTrustStoreListResultItemStatus = /*@__PURE__*/ S.String;
+
+export interface CustomTrustStoreListResultItem {
+  /** Identifier. */
+  id: string;
+  /** The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported. */
+  certificate: string;
+  /** When the certificate expires. */
+  expiresOn: string;
+  /** The certificate authority that issued the certificate. */
+  issuer: string;
+  /** The type of hash used for the certificate. */
+  signature: string;
+  /** Status of the zone's custom SSL. */
+  status: CustomTrustStoreListResultItemStatus;
+  /** When the certificate was last modified. */
+  updatedAt: string;
+  /** When the certificate was uploaded to Cloudflare. */
+  uploadedOn: string;
+}
+export const CustomTrustStoreListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    certificate: S.String,
+    expiresOn: S.String.pipe(T.Body("expires_on")),
+    issuer: S.String,
+    signature: S.String,
+    status: CustomTrustStoreListResultItemStatus,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    uploadedOn: S.String.pipe(T.Body("uploaded_on")),
+  }),
+).annotate({
+  identifier: "CustomTrustStoreListResultItem",
+}) as any as S.Schema<CustomTrustStoreListResultItem>;
+
+export type CustomTrustStoreListResultList = CustomTrustStoreListResultItem[];
 export const CustomTrustStoreListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  CustomTrustStoreListResultItem,
 ) as any as S.Schema<CustomTrustStoreListResultList>;
 
 export interface CustomTrustStoreListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: CustomTrustStoreListResultList;
 }
 export const CustomTrustStoreListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -144,15 +261,20 @@ export const CustomTrustStoreListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomTrustStoreListResponse>;
 
 export interface TotalTlsEditRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone. */
   enabled: boolean;
-  certificate_authority?: unknown;
+  /** The Certificate Authority that Total TLS certificates will be issued through. */
+  certificateAuthority?: unknown;
 }
 export const TotalTlsEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.Boolean,
-    certificate_authority: S.optional(S.Unknown),
+    certificateAuthority: S.optional(
+      S.Unknown.pipe(T.Body("certificate_authority")),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -164,28 +286,47 @@ export const TotalTlsEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TotalTlsEditRequest",
 }) as any as S.Schema<TotalTlsEditRequest>;
 
+export interface TotalTlsEditResponseValidityPeriod {
+  "90": unknown;
+}
+export const TotalTlsEditResponseValidityPeriod = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "90": S.Unknown,
+  }),
+).annotate({
+  identifier: "TotalTlsEditResponseValidityPeriod",
+}) as any as S.Schema<TotalTlsEditResponseValidityPeriod>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TotalTlsEditResponse {
-  certificate_authority?: unknown;
+  /** The Certificate Authority that Total TLS certificates will be issued through. */
+  certificateAuthority?: unknown;
+  /** If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone. */
   enabled?: boolean;
-  validity_period?: unknown;
+  /** The validity period in days for the certificates ordered via Total TLS. */
+  validityPeriod?: TotalTlsEditResponseValidityPeriod;
 }
 export const TotalTlsEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    certificate_authority: S.optional(S.Unknown),
+    certificateAuthority: S.optional(
+      S.Unknown.pipe(T.Body("certificate_authority")),
+    ),
     enabled: S.optional(S.Boolean),
-    validity_period: S.optional(S.Unknown),
+    validityPeriod: S.optional(
+      TotalTlsEditResponseValidityPeriod.pipe(T.Body("validity_period")),
+    ),
   }),
 ).annotate({
   identifier: "TotalTlsEditResponse",
 }) as any as S.Schema<TotalTlsEditResponse>;
 
 export interface TotalTlsGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const TotalTlsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({ method: "GET", uri: "/zones/{zone_id}/acm/total_tls", code: 200 }),
   ),
@@ -193,32 +334,55 @@ export const TotalTlsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TotalTlsGetRequest",
 }) as any as S.Schema<TotalTlsGetRequest>;
 
+export interface TotalTlsGetResponseValidityPeriod {
+  "90": unknown;
+}
+export const TotalTlsGetResponseValidityPeriod = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "90": S.Unknown,
+  }),
+).annotate({
+  identifier: "TotalTlsGetResponseValidityPeriod",
+}) as any as S.Schema<TotalTlsGetResponseValidityPeriod>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TotalTlsGetResponse {
-  certificate_authority?: unknown;
+  /** The Certificate Authority that Total TLS certificates will be issued through. */
+  certificateAuthority?: unknown;
+  /** If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone. */
   enabled?: boolean;
-  validity_period?: unknown;
+  /** The validity period in days for the certificates ordered via Total TLS. */
+  validityPeriod?: TotalTlsGetResponseValidityPeriod;
 }
 export const TotalTlsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    certificate_authority: S.optional(S.Unknown),
+    certificateAuthority: S.optional(
+      S.Unknown.pipe(T.Body("certificate_authority")),
+    ),
     enabled: S.optional(S.Boolean),
-    validity_period: S.optional(S.Unknown),
+    validityPeriod: S.optional(
+      TotalTlsGetResponseValidityPeriod.pipe(T.Body("validity_period")),
+    ),
   }),
 ).annotate({
   identifier: "TotalTlsGetResponse",
 }) as any as S.Schema<TotalTlsGetResponse>;
 
 export interface TotalTlsUpdateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone. */
   enabled: boolean;
-  certificate_authority?: unknown;
+  /** The Certificate Authority that Total TLS certificates will be issued through. */
+  certificateAuthority?: unknown;
 }
 export const TotalTlsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.Boolean,
-    certificate_authority: S.optional(S.Unknown),
+    certificateAuthority: S.optional(
+      S.Unknown.pipe(T.Body("certificate_authority")),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -230,27 +394,47 @@ export const TotalTlsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TotalTlsUpdateRequest",
 }) as any as S.Schema<TotalTlsUpdateRequest>;
 
+export interface TotalTlsUpdateResponseValidityPeriod {
+  "90": unknown;
+}
+export const TotalTlsUpdateResponseValidityPeriod = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      "90": S.Unknown,
+    }),
+).annotate({
+  identifier: "TotalTlsUpdateResponseValidityPeriod",
+}) as any as S.Schema<TotalTlsUpdateResponseValidityPeriod>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TotalTlsUpdateResponse {
-  certificate_authority?: unknown;
+  /** The Certificate Authority that Total TLS certificates will be issued through. */
+  certificateAuthority?: unknown;
+  /** If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone. */
   enabled?: boolean;
-  validity_period?: unknown;
+  /** The validity period in days for the certificates ordered via Total TLS. */
+  validityPeriod?: TotalTlsUpdateResponseValidityPeriod;
 }
 export const TotalTlsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    certificate_authority: S.optional(S.Unknown),
+    certificateAuthority: S.optional(
+      S.Unknown.pipe(T.Body("certificate_authority")),
+    ),
     enabled: S.optional(S.Boolean),
-    validity_period: S.optional(S.Unknown),
+    validityPeriod: S.optional(
+      TotalTlsUpdateResponseValidityPeriod.pipe(T.Body("validity_period")),
+    ),
   }),
 ).annotate({
   identifier: "TotalTlsUpdateResponse",
 }) as any as S.Schema<TotalTlsUpdateResponse>;
 
+export type CustomTrustStoreCreateError = CloudflareOpError;
 /** Upload a root CA certificate to the Custom Origin Trust Store for a Zone. Only root CA certificates are accepted. */
-export const CustomTrustStoreCreate: API.OperationMethod<
+export const customTrustStoreCreate: API.OperationMethod<
   CustomTrustStoreCreateRequest,
   CustomTrustStoreCreateResponse,
-  CloudflareOpError,
+  CustomTrustStoreCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CustomTrustStoreCreateRequest,
@@ -259,11 +443,12 @@ export const CustomTrustStoreCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CustomTrustStoreDeleteError = CloudflareOpError;
 /** Removes a root CA certificate from the custom origin trust store. Origins using certificates signed by this CA will no longer be trusted. */
-export const CustomTrustStoreDelete: API.OperationMethod<
+export const customTrustStoreDelete: API.OperationMethod<
   CustomTrustStoreDeleteRequest,
   CustomTrustStoreDeleteResponse,
-  CloudflareOpError,
+  CustomTrustStoreDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CustomTrustStoreDeleteRequest,
@@ -272,11 +457,12 @@ export const CustomTrustStoreDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CustomTrustStoreGetError = CloudflareOpError;
 /** Retrieves details about a specific root CA certificate in the custom origin trust store, including expiration and subject information. */
-export const CustomTrustStoreGet: API.OperationMethod<
+export const customTrustStoreGet: API.OperationMethod<
   CustomTrustStoreGetRequest,
   CustomTrustStoreGetResponse,
-  CloudflareOpError,
+  CustomTrustStoreGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CustomTrustStoreGetRequest,
@@ -285,11 +471,12 @@ export const CustomTrustStoreGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CustomTrustStoreListError = CloudflareOpError;
 /** Get Custom Origin Trust Store for a Zone. */
-export const CustomTrustStoreList: API.OperationMethod<
+export const customTrustStoreList: API.OperationMethod<
   CustomTrustStoreListRequest,
   CustomTrustStoreListResponse,
-  CloudflareOpError,
+  CustomTrustStoreListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CustomTrustStoreListRequest,
@@ -298,11 +485,12 @@ export const CustomTrustStoreList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type TotalTlsEditError = CloudflareOpError;
 /** Set Total TLS Settings or disable the feature for a Zone. */
-export const TotalTlsEdit: API.OperationMethod<
+export const totalTlsEdit: API.OperationMethod<
   TotalTlsEditRequest,
   TotalTlsEditResponse,
-  CloudflareOpError,
+  TotalTlsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: TotalTlsEditRequest,
@@ -311,11 +499,12 @@ export const TotalTlsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type TotalTlsGetError = CloudflareOpError;
 /** Get Total TLS Settings for a Zone. */
-export const TotalTlsGet: API.OperationMethod<
+export const totalTlsGet: API.OperationMethod<
   TotalTlsGetRequest,
   TotalTlsGetResponse,
-  CloudflareOpError,
+  TotalTlsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: TotalTlsGetRequest,
@@ -324,11 +513,12 @@ export const TotalTlsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type TotalTlsUpdateError = CloudflareOpError;
 /** Set Total TLS Settings or disable the feature for a Zone. */
-export const TotalTlsUpdate: API.OperationMethod<
+export const totalTlsUpdate: API.OperationMethod<
   TotalTlsUpdateRequest,
   TotalTlsUpdateResponse,
-  CloudflareOpError,
+  TotalTlsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: TotalTlsUpdateRequest,

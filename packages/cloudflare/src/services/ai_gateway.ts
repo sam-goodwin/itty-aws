@@ -10,11 +10,11 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface BillingCreditBalanceRequest {
-  account_id: string;
+  accountId: string;
 }
 export const BillingCreditBalanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -63,18 +63,26 @@ export const BillingCreditBalanceResponseTopupConfig = /*@__PURE__*/ S.suspend(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BillingCreditBalanceResponse {
   balance: number;
-  has_default_payment_method: boolean;
-  payment_method: BillingCreditBalanceResponsePaymentMethod;
-  topup_config: BillingCreditBalanceResponseTopupConfig;
-  first_topup_success?: boolean;
+  hasDefaultPaymentMethod: boolean;
+  paymentMethod: BillingCreditBalanceResponsePaymentMethod;
+  topupConfig: BillingCreditBalanceResponseTopupConfig;
+  firstTopupSuccess?: boolean;
 }
 export const BillingCreditBalanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balance: S.Number,
-    has_default_payment_method: S.Boolean,
-    payment_method: BillingCreditBalanceResponsePaymentMethod,
-    topup_config: BillingCreditBalanceResponseTopupConfig,
-    first_topup_success: S.optional(S.Boolean),
+    hasDefaultPaymentMethod: S.Boolean.pipe(
+      T.Body("has_default_payment_method"),
+    ),
+    paymentMethod: BillingCreditBalanceResponsePaymentMethod.pipe(
+      T.Body("payment_method"),
+    ),
+    topupConfig: BillingCreditBalanceResponseTopupConfig.pipe(
+      T.Body("topup_config"),
+    ),
+    firstTopupSuccess: S.optional(
+      S.Boolean.pipe(T.Body("first_topup_success")),
+    ),
   }),
 ).annotate({
   identifier: "BillingCreditBalanceResponse",
@@ -88,12 +96,13 @@ export type BillingInvoiceHistoryRequestType =
 export const BillingInvoiceHistoryRequestType = /*@__PURE__*/ S.String;
 
 export interface BillingInvoiceHistoryRequest {
-  account_id: string;
+  accountId: string;
+  /** Filter invoice type: auto, manual, or all. */
   type?: BillingInvoiceHistoryRequestType;
 }
 export const BillingInvoiceHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     type: S.optional(BillingInvoiceHistoryRequestType.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -107,37 +116,37 @@ export const BillingInvoiceHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingInvoiceHistoryRequest>;
 
 export interface BillingInvoiceHistoryResponseInvoicesItem {
-  amount_due: number;
-  amount_paid: number;
-  amount_remaining: number;
+  amountDue: number;
+  amountPaid: number;
+  amountRemaining: number;
   currency: string;
   id?: string;
-  attempt_count?: number;
+  attemptCount?: number;
   attempted?: boolean;
-  auto_advance?: boolean;
+  autoAdvance?: boolean;
   created?: number;
-  created_by?: string;
+  createdBy?: string;
   description?: string;
-  invoice_origin?: string;
-  invoice_pdf?: string;
+  invoiceOrigin?: string;
+  invoicePdf?: string;
   status?: string;
 }
 export const BillingInvoiceHistoryResponseInvoicesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      amount_due: S.Number,
-      amount_paid: S.Number,
-      amount_remaining: S.Number,
+      amountDue: S.Number.pipe(T.Body("amount_due")),
+      amountPaid: S.Number.pipe(T.Body("amount_paid")),
+      amountRemaining: S.Number.pipe(T.Body("amount_remaining")),
       currency: S.String,
       id: S.optional(S.String),
-      attempt_count: S.optional(S.Number),
+      attemptCount: S.optional(S.Number.pipe(T.Body("attempt_count"))),
       attempted: S.optional(S.Boolean),
-      auto_advance: S.optional(S.Boolean),
+      autoAdvance: S.optional(S.Boolean.pipe(T.Body("auto_advance"))),
       created: S.optional(S.Number),
-      created_by: S.optional(S.String),
+      createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
       description: S.optional(S.String),
-      invoice_origin: S.optional(S.String),
-      invoice_pdf: S.optional(S.String),
+      invoiceOrigin: S.optional(S.String.pipe(T.Body("invoice_origin"))),
+      invoicePdf: S.optional(S.String.pipe(T.Body("invoice_pdf"))),
       status: S.optional(S.String),
     }),
   ).annotate({
@@ -151,18 +160,18 @@ export const BillingInvoiceHistoryResponseInvoicesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BillingInvoiceHistoryResponseInvoicesList>;
 
 export interface BillingInvoiceHistoryResponsePagination {
-  has_more: boolean;
+  hasMore: boolean;
   page: number;
-  per_page: number;
-  total_count: number;
+  perPage: number;
+  totalCount: number;
 }
 export const BillingInvoiceHistoryResponsePagination = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      has_more: S.Boolean,
+      hasMore: S.Boolean.pipe(T.Body("has_more")),
       page: S.Number,
-      per_page: S.Number,
-      total_count: S.Number,
+      perPage: S.Number.pipe(T.Body("per_page")),
+      totalCount: S.Number.pipe(T.Body("total_count")),
     }),
 ).annotate({
   identifier: "BillingInvoiceHistoryResponsePagination",
@@ -183,11 +192,11 @@ export const BillingInvoiceHistoryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingInvoiceHistoryResponse>;
 
 export interface BillingInvoicePreviewRequest {
-  account_id: string;
+  accountId: string;
 }
 export const BillingInvoicePreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -214,12 +223,12 @@ export const BillingInvoicePreviewResponseInvoiceLinesItemPeriod =
   }) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItemPeriod>;
 
 export interface BillingInvoicePreviewResponseInvoiceLinesItemPricing {
-  unit_amount_decimal: string;
+  unitAmountDecimal: string;
 }
 export const BillingInvoicePreviewResponseInvoiceLinesItemPricing =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      unit_amount_decimal: S.String,
+      unitAmountDecimal: S.String.pipe(T.Body("unit_amount_decimal")),
     }),
   ).annotate({
     identifier: "BillingInvoicePreviewResponseInvoiceLinesItemPricing",
@@ -228,7 +237,7 @@ export const BillingInvoicePreviewResponseInvoiceLinesItemPricing =
 export interface BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem {
   amount: number;
   type: string;
-  credit_balance_transaction?: string;
+  creditBalanceTransaction?: string;
   discount?: string;
 }
 export const BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem =
@@ -236,7 +245,9 @@ export const BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsIte
     S.Struct({
       amount: S.Number,
       type: S.String,
-      credit_balance_transaction: S.optional(S.String),
+      creditBalanceTransaction: S.optional(
+        S.String.pipe(T.Body("credit_balance_transaction")),
+      ),
       discount: S.optional(S.String),
     }),
   ).annotate({
@@ -258,7 +269,7 @@ export interface BillingInvoicePreviewResponseInvoiceLinesItem {
   period: BillingInvoicePreviewResponseInvoiceLinesItemPeriod;
   pricing: BillingInvoicePreviewResponseInvoiceLinesItemPricing;
   quantity: number;
-  pretax_credit_amounts?: BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList;
+  pretaxCreditAmounts?: BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList;
 }
 export const BillingInvoicePreviewResponseInvoiceLinesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -269,8 +280,10 @@ export const BillingInvoicePreviewResponseInvoiceLinesItem =
       period: BillingInvoicePreviewResponseInvoiceLinesItemPeriod,
       pricing: BillingInvoicePreviewResponseInvoiceLinesItemPricing,
       quantity: S.Number,
-      pretax_credit_amounts: S.optional(
-        BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList,
+      pretaxCreditAmounts: S.optional(
+        BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList.pipe(
+          T.Body("pretax_credit_amounts"),
+        ),
       ),
     }),
   ).annotate({
@@ -294,25 +307,27 @@ export const BillingInvoicePreviewResponseStatus = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BillingInvoicePreviewResponse {
   id: string;
-  amount_due: number;
-  amount_paid: number;
-  amount_remaining: number;
+  amountDue: number;
+  amountPaid: number;
+  amountRemaining: number;
   currency: string;
-  invoice_lines: BillingInvoicePreviewResponseInvoiceLinesList;
-  period_end: number;
-  period_start: number;
+  invoiceLines: BillingInvoicePreviewResponseInvoiceLinesList;
+  periodEnd: number;
+  periodStart: number;
   status: BillingInvoicePreviewResponseStatus;
 }
 export const BillingInvoicePreviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    amount_due: S.Number,
-    amount_paid: S.Number,
-    amount_remaining: S.Number,
+    amountDue: S.Number.pipe(T.Body("amount_due")),
+    amountPaid: S.Number.pipe(T.Body("amount_paid")),
+    amountRemaining: S.Number.pipe(T.Body("amount_remaining")),
     currency: S.String,
-    invoice_lines: BillingInvoicePreviewResponseInvoiceLinesList,
-    period_end: S.Number,
-    period_start: S.Number,
+    invoiceLines: BillingInvoicePreviewResponseInvoiceLinesList.pipe(
+      T.Body("invoice_lines"),
+    ),
+    periodEnd: S.Number.pipe(T.Body("period_end")),
+    periodStart: S.Number.pipe(T.Body("period_start")),
     status: BillingInvoicePreviewResponseStatus,
   }),
 ).annotate({
@@ -333,14 +348,17 @@ export type BillingSpendingLimitCreateRequestStrategy =
 export const BillingSpendingLimitCreateRequestStrategy = /*@__PURE__*/ S.String;
 
 export interface BillingSpendingLimitCreateRequest {
-  account_id: string;
+  accountId: string;
+  /** Spending limit amount in cents (min 100). */
   amount: number;
+  /** Spending limit duration. */
   duration: BillingSpendingLimitCreateRequestDuration;
+  /** Spending limit strategy. */
   strategy: BillingSpendingLimitCreateRequestStrategy;
 }
 export const BillingSpendingLimitCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     amount: S.Number,
     duration: BillingSpendingLimitCreateRequestDuration,
     strategy: BillingSpendingLimitCreateRequestStrategy,
@@ -356,6 +374,7 @@ export const BillingSpendingLimitCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingSpendingLimitCreateRequest>;
 
 export interface BillingSpendingLimitCreateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const BillingSpendingLimitCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -367,11 +386,11 @@ export const BillingSpendingLimitCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingSpendingLimitCreateResponse>;
 
 export interface BillingSpendingLimitDeleteRequest {
-  account_id: string;
+  accountId: string;
 }
 export const BillingSpendingLimitDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -384,6 +403,7 @@ export const BillingSpendingLimitDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingSpendingLimitDeleteRequest>;
 
 export interface BillingSpendingLimitDeleteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const BillingSpendingLimitDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -395,11 +415,11 @@ export const BillingSpendingLimitDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingSpendingLimitDeleteResponse>;
 
 export interface BillingSpendingLimitGetRequest {
-  account_id: string;
+  accountId: string;
 }
 export const BillingSpendingLimitGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -442,13 +462,15 @@ export const BillingSpendingLimitGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingSpendingLimitGetResponse>;
 
 export interface BillingTopupConfigCreateRequest {
-  account_id: string;
+  accountId: string;
+  /** Auto top-up amount in cents (min 1000). */
   amount: number;
+  /** Balance threshold in cents that triggers auto top-up (min 500). */
   threshold: number;
 }
 export const BillingTopupConfigCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     amount: S.Number,
     threshold: S.Number,
   }).pipe(
@@ -477,11 +499,11 @@ export const BillingTopupConfigCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingTopupConfigCreateResponse>;
 
 export interface BillingTopupConfigDeleteRequest {
-  account_id: string;
+  accountId: string;
 }
 export const BillingTopupConfigDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -494,6 +516,7 @@ export const BillingTopupConfigDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingTopupConfigDeleteRequest>;
 
 export interface BillingTopupConfigDeleteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const BillingTopupConfigDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -505,11 +528,11 @@ export const BillingTopupConfigDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingTopupConfigDeleteResponse>;
 
 export interface BillingTopupConfigGetRequest {
-  account_id: string;
+  accountId: string;
 }
 export const BillingTopupConfigGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -542,12 +565,13 @@ export const BillingTopupConfigGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingTopupConfigGetResponse>;
 
 export interface BillingTopupCreateRequest {
-  account_id: string;
+  accountId: string;
+  /** Top-up amount in cents (min 1000). */
   amount: number;
 }
 export const BillingTopupCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     amount: S.Number,
   }).pipe(
     T.Http({
@@ -562,17 +586,22 @@ export const BillingTopupCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BillingTopupCreateResponse {
-  client_secret: string;
+  /** Stripe PaymentIntent client secret. */
+  clientSecret: string;
+  /** Whether the user was already onboarded. */
   onboarding: boolean;
-  payment_intent_id: string;
+  /** Stripe invoice ID. */
+  paymentIntentId: string;
+  /** Card brand (visa, mastercard, etc.). */
   brand?: string;
+  /** Last 4 digits of card. */
   last4?: string;
 }
 export const BillingTopupCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    client_secret: S.String,
+    clientSecret: S.String.pipe(T.Body("client_secret")),
     onboarding: S.Boolean,
-    payment_intent_id: S.String,
+    paymentIntentId: S.String.pipe(T.Body("payment_intent_id")),
     brand: S.optional(S.String),
     last4: S.optional(S.String),
   }),
@@ -581,13 +610,14 @@ export const BillingTopupCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingTopupCreateResponse>;
 
 export interface BillingTopupStatusRequest {
-  account_id: string;
-  payment_intent_id: string;
+  accountId: string;
+  /** Stripe invoice ID to check status for. */
+  paymentIntentId: string;
 }
 export const BillingTopupStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    payment_intent_id: S.String,
+    accountId: S.String.pipe(T.Label("account_id")),
+    paymentIntentId: S.String.pipe(T.Body("payment_intent_id")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -607,12 +637,12 @@ export const BillingTopupStatusResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BillingTopupStatusResponse {
-  payment_intent_id: string;
+  paymentIntentId: string;
   status: BillingTopupStatusResponseStatus;
 }
 export const BillingTopupStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    payment_intent_id: S.String,
+    paymentIntentId: S.String.pipe(T.Body("payment_intent_id")),
     status: BillingTopupStatusResponseStatus,
   }),
 ).annotate({
@@ -627,19 +657,22 @@ export const BillingUsageHistoryRequestValueGroupingWindow =
   /*@__PURE__*/ S.String;
 
 export interface BillingUsageHistoryRequest {
-  account_id: string;
-  value_grouping_window: BillingUsageHistoryRequestValueGroupingWindow;
-  end_time?: number;
-  start_time?: number;
+  accountId: string;
+  /** Grouping window for usage data. */
+  valueGroupingWindow: BillingUsageHistoryRequestValueGroupingWindow;
+  /** End time as Unix timestamp in milliseconds. */
+  endTime?: number;
+  /** Start time as Unix timestamp in milliseconds. */
+  startTime?: number;
 }
 export const BillingUsageHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    value_grouping_window: BillingUsageHistoryRequestValueGroupingWindow.pipe(
-      T.Query(),
+    accountId: S.String.pipe(T.Label("account_id")),
+    valueGroupingWindow: BillingUsageHistoryRequestValueGroupingWindow.pipe(
+      T.Query("value_grouping_window"),
     ),
-    end_time: S.optional(S.Number.pipe(T.Query())),
-    start_time: S.optional(S.Number.pipe(T.Query())),
+    endTime: S.optional(S.Number.pipe(T.Query("end_time"))),
+    startTime: S.optional(S.Number.pipe(T.Query("start_time"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -653,17 +686,17 @@ export const BillingUsageHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface BillingUsageHistoryResponseHistoryItem {
   id: string;
-  aggregated_value: number;
-  end_time: number;
-  start_time: number;
+  aggregatedValue: number;
+  endTime: number;
+  startTime: number;
 }
 export const BillingUsageHistoryResponseHistoryItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
-      aggregated_value: S.Number,
-      end_time: S.Number,
-      start_time: S.Number,
+      aggregatedValue: S.Number.pipe(T.Body("aggregated_value")),
+      endTime: S.Number.pipe(T.Body("end_time")),
+      startTime: S.Number.pipe(T.Body("start_time")),
     }),
 ).annotate({
   identifier: "BillingUsageHistoryResponseHistoryItem",
@@ -710,44 +743,63 @@ export type CreateRequestWorkersAiBillingMode = "postpaid" | (string & {});
 export const CreateRequestWorkersAiBillingMode = /*@__PURE__*/ S.String;
 
 export interface CreateRequest {
-  account_id: string;
+  accountId: string;
+  /** gateway id */
   id: string;
-  cache_invalidate_on_update: boolean;
-  cache_ttl: number;
-  collect_logs: boolean;
-  rate_limiting_interval: number;
-  rate_limiting_limit: number;
+  cacheInvalidateOnUpdate: boolean;
+  cacheTtl: number;
+  collectLogs: boolean;
+  rateLimitingInterval: number;
+  rateLimitingLimit: number;
   authentication?: boolean;
-  log_management?: number;
-  log_management_strategy?: CreateRequestLogManagementStrategy;
+  logManagement?: number;
+  logManagementStrategy?: CreateRequestLogManagementStrategy;
   logpush?: boolean;
-  logpush_public_key?: string;
-  rate_limiting_technique?: CreateRequestRateLimitingTechnique;
-  retry_backoff?: CreateRequestRetryBackoff;
-  retry_delay?: number;
-  retry_max_attempts?: number;
-  workers_ai_billing_mode?: CreateRequestWorkersAiBillingMode;
+  logpushPublicKey?: string;
+  rateLimitingTechnique?: CreateRequestRateLimitingTechnique;
+  /** Backoff strategy for retry delays */
+  retryBackoff?: CreateRequestRetryBackoff;
+  /** Delay between retry attempts in milliseconds (0-5000) */
+  retryDelay?: number;
+  /** Maximum number of retry attempts for failed requests (1-5) */
+  retryMaxAttempts?: number;
+  /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
+  workersAiBillingMode?: CreateRequestWorkersAiBillingMode;
   zdr?: boolean;
 }
 export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.String,
-    cache_invalidate_on_update: S.Boolean,
-    cache_ttl: S.Number,
-    collect_logs: S.Boolean,
-    rate_limiting_interval: S.Number,
-    rate_limiting_limit: S.Number,
+    cacheInvalidateOnUpdate: S.Boolean.pipe(
+      T.Body("cache_invalidate_on_update"),
+    ),
+    cacheTtl: S.Number.pipe(T.Body("cache_ttl")),
+    collectLogs: S.Boolean.pipe(T.Body("collect_logs")),
+    rateLimitingInterval: S.Number.pipe(T.Body("rate_limiting_interval")),
+    rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
     authentication: S.optional(S.Boolean),
-    log_management: S.optional(S.Number),
-    log_management_strategy: S.optional(CreateRequestLogManagementStrategy),
+    logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
+    logManagementStrategy: S.optional(
+      CreateRequestLogManagementStrategy.pipe(
+        T.Body("log_management_strategy"),
+      ),
+    ),
     logpush: S.optional(S.Boolean),
-    logpush_public_key: S.optional(S.String),
-    rate_limiting_technique: S.optional(CreateRequestRateLimitingTechnique),
-    retry_backoff: S.optional(CreateRequestRetryBackoff),
-    retry_delay: S.optional(S.Number),
-    retry_max_attempts: S.optional(S.Number),
-    workers_ai_billing_mode: S.optional(CreateRequestWorkersAiBillingMode),
+    logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
+    rateLimitingTechnique: S.optional(
+      CreateRequestRateLimitingTechnique.pipe(
+        T.Body("rate_limiting_technique"),
+      ),
+    ),
+    retryBackoff: S.optional(
+      CreateRequestRetryBackoff.pipe(T.Body("retry_backoff")),
+    ),
+    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+    retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
+    workersAiBillingMode: S.optional(
+      CreateRequestWorkersAiBillingMode.pipe(T.Body("workers_ai_billing_mode")),
+    ),
     zdr: S.optional(S.Boolean),
   }).pipe(
     T.Http({
@@ -759,15 +811,15 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
 
 export interface CreateResponseDlp {
-  object___action__enabled__profiles__: unknown;
-  object___enabled__policies__: unknown;
+  objectActionEnabledProfiles__: unknown;
+  objectEnabledPolicies__: unknown;
 }
 export const CreateResponseDlp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    object___action__enabled__profiles__: S.Unknown.pipe(
+    objectActionEnabledProfiles__: S.Unknown.pipe(
       T.Body("object { action, enabled, profiles }"),
     ),
-    object___enabled__policies__: S.Unknown.pipe(
+    objectEnabledPolicies__: S.Unknown.pipe(
       T.Body("object { enabled, policies }"),
     ),
   }),
@@ -1024,14 +1076,16 @@ export interface CreateResponseOtelItem {
   headers: CreateResponseOtelItemHeadersMap;
   url: string;
   authorization?: string;
-  content_type?: CreateResponseOtelItemContentType;
+  contentType?: CreateResponseOtelItemContentType;
 }
 export const CreateResponseOtelItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: CreateResponseOtelItemHeadersMap,
     url: S.String,
     authorization: S.optional(S.String),
-    content_type: S.optional(CreateResponseOtelItemContentType),
+    contentType: S.optional(
+      CreateResponseOtelItemContentType.pipe(T.Body("content_type")),
+    ),
   }),
 ).annotate({
   identifier: "CreateResponseOtelItem",
@@ -1194,12 +1248,14 @@ export const CreateResponseStripeUsageEventsList = /*@__PURE__*/ S.Array(
 
 export interface CreateResponseStripe {
   authorization: string;
-  usage_events: CreateResponseStripeUsageEventsList;
+  usageEvents: CreateResponseStripeUsageEventsList;
 }
 export const CreateResponseStripe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorization: S.String,
-    usage_events: CreateResponseStripeUsageEventsList,
+    usageEvents: CreateResponseStripeUsageEventsList.pipe(
+      T.Body("usage_events"),
+    ),
   }),
 ).annotate({
   identifier: "CreateResponseStripe",
@@ -1210,90 +1266,113 @@ export const CreateResponseWorkersAiBillingMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateResponse {
+  /** gateway id */
   id: string;
-  cache_invalidate_on_update: boolean;
-  cache_ttl: number;
-  collect_logs: boolean;
-  created_at: string;
-  modified_at: string;
-  rate_limiting_interval: number;
-  rate_limiting_limit: number;
+  cacheInvalidateOnUpdate: boolean;
+  cacheTtl: number;
+  collectLogs: boolean;
+  createdAt: string;
+  modifiedAt: string;
+  rateLimitingInterval: number;
+  rateLimitingLimit: number;
   authentication?: boolean;
   dlp?: CreateResponseDlp;
   guardrails?: CreateResponseGuardrails;
-  is_default?: boolean;
-  log_management?: number;
-  log_management_strategy?: CreateResponseLogManagementStrategy;
+  isDefault?: boolean;
+  logManagement?: number;
+  logManagementStrategy?: CreateResponseLogManagementStrategy;
   logpush?: boolean;
-  logpush_public_key?: string;
+  logpushPublicKey?: string;
   otel?: CreateResponseOtelList;
-  rate_limiting_technique?: CreateResponseRateLimitingTechnique;
-  retry_backoff?: CreateResponseRetryBackoff;
-  retry_delay?: number;
-  retry_max_attempts?: number;
-  spend_limits?: CreateResponseSpendLimits;
-  store_id?: string;
+  rateLimitingTechnique?: CreateResponseRateLimitingTechnique;
+  /** Backoff strategy for retry delays */
+  retryBackoff?: CreateResponseRetryBackoff;
+  /** Delay between retry attempts in milliseconds (0-5000) */
+  retryDelay?: number;
+  /** Maximum number of retry attempts for failed requests (1-5) */
+  retryMaxAttempts?: number;
+  spendLimits?: CreateResponseSpendLimits;
+  storeId?: string;
   stripe?: CreateResponseStripe;
-  workers_ai_billing_mode?: CreateResponseWorkersAiBillingMode;
+  /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
+  workersAiBillingMode?: CreateResponseWorkersAiBillingMode;
   zdr?: boolean;
 }
 export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    cache_invalidate_on_update: S.Boolean,
-    cache_ttl: S.Number,
-    collect_logs: S.Boolean,
-    created_at: S.String,
-    modified_at: S.String,
-    rate_limiting_interval: S.Number,
-    rate_limiting_limit: S.Number,
+    cacheInvalidateOnUpdate: S.Boolean.pipe(
+      T.Body("cache_invalidate_on_update"),
+    ),
+    cacheTtl: S.Number.pipe(T.Body("cache_ttl")),
+    collectLogs: S.Boolean.pipe(T.Body("collect_logs")),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    rateLimitingInterval: S.Number.pipe(T.Body("rate_limiting_interval")),
+    rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
     authentication: S.optional(S.Boolean),
     dlp: S.optional(CreateResponseDlp),
     guardrails: S.optional(CreateResponseGuardrails),
-    is_default: S.optional(S.Boolean),
-    log_management: S.optional(S.Number),
-    log_management_strategy: S.optional(CreateResponseLogManagementStrategy),
+    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
+    logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
+    logManagementStrategy: S.optional(
+      CreateResponseLogManagementStrategy.pipe(
+        T.Body("log_management_strategy"),
+      ),
+    ),
     logpush: S.optional(S.Boolean),
-    logpush_public_key: S.optional(S.String),
+    logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
     otel: S.optional(CreateResponseOtelList),
-    rate_limiting_technique: S.optional(CreateResponseRateLimitingTechnique),
-    retry_backoff: S.optional(CreateResponseRetryBackoff),
-    retry_delay: S.optional(S.Number),
-    retry_max_attempts: S.optional(S.Number),
-    spend_limits: S.optional(CreateResponseSpendLimits),
-    store_id: S.optional(S.String),
+    rateLimitingTechnique: S.optional(
+      CreateResponseRateLimitingTechnique.pipe(
+        T.Body("rate_limiting_technique"),
+      ),
+    ),
+    retryBackoff: S.optional(
+      CreateResponseRetryBackoff.pipe(T.Body("retry_backoff")),
+    ),
+    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+    retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
+    spendLimits: S.optional(
+      CreateResponseSpendLimits.pipe(T.Body("spend_limits")),
+    ),
+    storeId: S.optional(S.String.pipe(T.Body("store_id"))),
     stripe: S.optional(CreateResponseStripe),
-    workers_ai_billing_mode: S.optional(CreateResponseWorkersAiBillingMode),
+    workersAiBillingMode: S.optional(
+      CreateResponseWorkersAiBillingMode.pipe(
+        T.Body("workers_ai_billing_mode"),
+      ),
+    ),
     zdr: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
 
 export interface CustomProvidersCreateRequest {
-  account_id: string;
-  base_url: string;
+  accountId: string;
+  baseUrl: string;
   name: string;
   slug: string;
   beta?: boolean;
-  curl_example?: string;
+  curlExample?: string;
   description?: string;
   enable?: boolean;
   headers?: string;
-  js_example?: string;
+  jsExample?: string;
   link?: string;
   position?: number;
 }
 export const CustomProvidersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    base_url: S.String,
+    accountId: S.String.pipe(T.Label("account_id")),
+    baseUrl: S.String.pipe(T.Body("base_url")),
     name: S.String,
     slug: S.String,
     beta: S.optional(S.Boolean),
-    curl_example: S.optional(S.String),
+    curlExample: S.optional(S.String.pipe(T.Body("curl_example"))),
     description: S.optional(S.String),
     enable: S.optional(S.Boolean),
     headers: S.optional(S.String),
-    js_example: S.optional(S.String),
+    jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
     link: S.optional(S.String),
     position: S.optional(S.Number),
   }).pipe(
@@ -1310,17 +1389,17 @@ export const CustomProvidersCreateRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CustomProvidersCreateResponse {
   id: string;
-  base_url: string;
-  created_at: string;
-  modified_at: string;
+  baseUrl: string;
+  createdAt: string;
+  modifiedAt: string;
   name: string;
   slug: string;
   beta?: boolean;
-  curl_example?: string;
+  curlExample?: string;
   description?: string;
   enable?: boolean;
   headers?: string;
-  js_example?: string;
+  jsExample?: string;
   link?: string;
   logo?: string;
   position?: number;
@@ -1328,17 +1407,17 @@ export interface CustomProvidersCreateResponse {
 export const CustomProvidersCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    base_url: S.String,
-    created_at: S.String,
-    modified_at: S.String,
+    baseUrl: S.String.pipe(T.Body("base_url")),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     slug: S.String,
     beta: S.optional(S.Boolean),
-    curl_example: S.optional(S.String),
+    curlExample: S.optional(S.String.pipe(T.Body("curl_example"))),
     description: S.optional(S.String),
     enable: S.optional(S.Boolean),
     headers: S.optional(S.String),
-    js_example: S.optional(S.String),
+    jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
     link: S.optional(S.String),
     logo: S.optional(S.String),
     position: S.optional(S.Number),
@@ -1348,12 +1427,12 @@ export const CustomProvidersCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomProvidersCreateResponse>;
 
 export interface CustomProvidersDeleteRequest {
-  account_id: string;
+  accountId: string;
   id: string;
 }
 export const CustomProvidersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -1369,17 +1448,17 @@ export const CustomProvidersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CustomProvidersDeleteResponse {
   id: string;
-  base_url: string;
-  created_at: string;
-  modified_at: string;
+  baseUrl: string;
+  createdAt: string;
+  modifiedAt: string;
   name: string;
   slug: string;
   beta?: boolean;
-  curl_example?: string;
+  curlExample?: string;
   description?: string;
   enable?: boolean;
   headers?: string;
-  js_example?: string;
+  jsExample?: string;
   link?: string;
   logo?: string;
   position?: number;
@@ -1387,17 +1466,17 @@ export interface CustomProvidersDeleteResponse {
 export const CustomProvidersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    base_url: S.String,
-    created_at: S.String,
-    modified_at: S.String,
+    baseUrl: S.String.pipe(T.Body("base_url")),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     slug: S.String,
     beta: S.optional(S.Boolean),
-    curl_example: S.optional(S.String),
+    curlExample: S.optional(S.String.pipe(T.Body("curl_example"))),
     description: S.optional(S.String),
     enable: S.optional(S.Boolean),
     headers: S.optional(S.String),
-    js_example: S.optional(S.String),
+    jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
     link: S.optional(S.String),
     logo: S.optional(S.String),
     position: S.optional(S.Number),
@@ -1407,12 +1486,12 @@ export const CustomProvidersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomProvidersDeleteResponse>;
 
 export interface CustomProvidersGetRequest {
-  account_id: string;
+  accountId: string;
   id: string;
 }
 export const CustomProvidersGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -1428,17 +1507,17 @@ export const CustomProvidersGetRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CustomProvidersGetResponse {
   id: string;
-  base_url: string;
-  created_at: string;
-  modified_at: string;
+  baseUrl: string;
+  createdAt: string;
+  modifiedAt: string;
   name: string;
   slug: string;
   beta?: boolean;
-  curl_example?: string;
+  curlExample?: string;
   description?: string;
   enable?: boolean;
   headers?: string;
-  js_example?: string;
+  jsExample?: string;
   link?: string;
   logo?: string;
   position?: number;
@@ -1446,17 +1525,17 @@ export interface CustomProvidersGetResponse {
 export const CustomProvidersGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    base_url: S.String,
-    created_at: S.String,
-    modified_at: S.String,
+    baseUrl: S.String.pipe(T.Body("base_url")),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     slug: S.String,
     beta: S.optional(S.Boolean),
-    curl_example: S.optional(S.String),
+    curlExample: S.optional(S.String.pipe(T.Body("curl_example"))),
     description: S.optional(S.String),
     enable: S.optional(S.Boolean),
     headers: S.optional(S.String),
-    js_example: S.optional(S.String),
+    jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
     link: S.optional(S.String),
     logo: S.optional(S.String),
     position: S.optional(S.Number),
@@ -1466,20 +1545,21 @@ export const CustomProvidersGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomProvidersGetResponse>;
 
 export interface CustomProvidersListRequest {
-  account_id: string;
+  accountId: string;
   beta?: boolean;
   enable?: boolean;
   page?: number;
-  per_page?: number;
+  perPage?: number;
+  /** Search by id, name, slug */
   search?: string;
 }
 export const CustomProvidersListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     beta: S.optional(S.Boolean.pipe(T.Query())),
     enable: S.optional(S.Boolean.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -1494,17 +1574,17 @@ export const CustomProvidersListRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface CustomProvidersListResultItem {
   id: string;
-  base_url: string;
-  created_at: string;
-  modified_at: string;
+  baseUrl: string;
+  createdAt: string;
+  modifiedAt: string;
   name: string;
   slug: string;
   beta?: boolean;
-  curl_example?: string;
+  curlExample?: string;
   description?: string;
   enable?: boolean;
   headers?: string;
-  js_example?: string;
+  jsExample?: string;
   link?: string;
   logo?: string;
   position?: number;
@@ -1512,17 +1592,17 @@ export interface CustomProvidersListResultItem {
 export const CustomProvidersListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    base_url: S.String,
-    created_at: S.String,
-    modified_at: S.String,
+    baseUrl: S.String.pipe(T.Body("base_url")),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     slug: S.String,
     beta: S.optional(S.Boolean),
-    curl_example: S.optional(S.String),
+    curlExample: S.optional(S.String.pipe(T.Body("curl_example"))),
     description: S.optional(S.String),
     enable: S.optional(S.Boolean),
     headers: S.optional(S.String),
-    js_example: S.optional(S.String),
+    jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
     link: S.optional(S.String),
     logo: S.optional(S.String),
     position: S.optional(S.Number),
@@ -1537,6 +1617,7 @@ export const CustomProvidersListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CustomProvidersListResultList>;
 
 export interface CustomProvidersListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: CustomProvidersListResultList;
 }
 export const CustomProvidersListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1562,9 +1643,26 @@ export type DatasetsCreateRequestFiltersItemOperator =
   | (string & {});
 export const DatasetsCreateRequestFiltersItemOperator = /*@__PURE__*/ S.String;
 
-export type DatasetsCreateRequestFiltersItemValueList = unknown[];
+export interface DatasetsCreateRequestFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const DatasetsCreateRequestFiltersItemValueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "DatasetsCreateRequestFiltersItemValueItem",
+  }) as any as S.Schema<DatasetsCreateRequestFiltersItemValueItem>;
+
+export type DatasetsCreateRequestFiltersItemValueList =
+  DatasetsCreateRequestFiltersItemValueItem[];
 export const DatasetsCreateRequestFiltersItemValueList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  DatasetsCreateRequestFiltersItemValueItem,
 ) as any as S.Schema<DatasetsCreateRequestFiltersItemValueList>;
 
 export interface DatasetsCreateRequestFiltersItem {
@@ -1589,16 +1687,17 @@ export const DatasetsCreateRequestFiltersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DatasetsCreateRequestFiltersList>;
 
 export interface DatasetsCreateRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
   enable: boolean;
   filters: DatasetsCreateRequestFiltersList;
   name: string;
 }
 export const DatasetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     enable: S.Boolean,
     filters: DatasetsCreateRequestFiltersList,
     name: S.String,
@@ -1628,9 +1727,26 @@ export type DatasetsCreateResponseFiltersItemOperator =
   | (string & {});
 export const DatasetsCreateResponseFiltersItemOperator = /*@__PURE__*/ S.String;
 
-export type DatasetsCreateResponseFiltersItemValueList = unknown[];
+export interface DatasetsCreateResponseFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const DatasetsCreateResponseFiltersItemValueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "DatasetsCreateResponseFiltersItemValueItem",
+  }) as any as S.Schema<DatasetsCreateResponseFiltersItemValueItem>;
+
+export type DatasetsCreateResponseFiltersItemValueList =
+  DatasetsCreateResponseFiltersItemValueItem[];
 export const DatasetsCreateResponseFiltersItemValueList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  DatasetsCreateResponseFiltersItemValueItem,
 ) as any as S.Schema<DatasetsCreateResponseFiltersItemValueList>;
 
 export interface DatasetsCreateResponseFiltersItem {
@@ -1657,21 +1773,22 @@ export const DatasetsCreateResponseFiltersList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DatasetsCreateResponse {
   id: string;
-  created_at: string;
+  createdAt: string;
   enable: boolean;
   filters: DatasetsCreateResponseFiltersList;
-  gateway_id: string;
-  modified_at: string;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
 }
 export const DatasetsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     enable: S.Boolean,
     filters: DatasetsCreateResponseFiltersList,
-    gateway_id: S.String,
-    modified_at: S.String,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
   }),
 ).annotate({
@@ -1679,14 +1796,15 @@ export const DatasetsCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetsCreateResponse>;
 
 export interface DatasetsDeleteRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
   id: string;
 }
 export const DatasetsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -1714,9 +1832,26 @@ export type DatasetsDeleteResponseFiltersItemOperator =
   | (string & {});
 export const DatasetsDeleteResponseFiltersItemOperator = /*@__PURE__*/ S.String;
 
-export type DatasetsDeleteResponseFiltersItemValueList = unknown[];
+export interface DatasetsDeleteResponseFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const DatasetsDeleteResponseFiltersItemValueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "DatasetsDeleteResponseFiltersItemValueItem",
+  }) as any as S.Schema<DatasetsDeleteResponseFiltersItemValueItem>;
+
+export type DatasetsDeleteResponseFiltersItemValueList =
+  DatasetsDeleteResponseFiltersItemValueItem[];
 export const DatasetsDeleteResponseFiltersItemValueList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  DatasetsDeleteResponseFiltersItemValueItem,
 ) as any as S.Schema<DatasetsDeleteResponseFiltersItemValueList>;
 
 export interface DatasetsDeleteResponseFiltersItem {
@@ -1743,21 +1878,22 @@ export const DatasetsDeleteResponseFiltersList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DatasetsDeleteResponse {
   id: string;
-  created_at: string;
+  createdAt: string;
   enable: boolean;
   filters: DatasetsDeleteResponseFiltersList;
-  gateway_id: string;
-  modified_at: string;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
 }
 export const DatasetsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     enable: S.Boolean,
     filters: DatasetsDeleteResponseFiltersList,
-    gateway_id: S.String,
-    modified_at: S.String,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
   }),
 ).annotate({
@@ -1765,14 +1901,15 @@ export const DatasetsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetsDeleteResponse>;
 
 export interface DatasetsGetRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
   id: string;
 }
 export const DatasetsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -1800,9 +1937,26 @@ export type DatasetsGetResponseFiltersItemOperator =
   | (string & {});
 export const DatasetsGetResponseFiltersItemOperator = /*@__PURE__*/ S.String;
 
-export type DatasetsGetResponseFiltersItemValueList = unknown[];
+export interface DatasetsGetResponseFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const DatasetsGetResponseFiltersItemValueItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+).annotate({
+  identifier: "DatasetsGetResponseFiltersItemValueItem",
+}) as any as S.Schema<DatasetsGetResponseFiltersItemValueItem>;
+
+export type DatasetsGetResponseFiltersItemValueList =
+  DatasetsGetResponseFiltersItemValueItem[];
 export const DatasetsGetResponseFiltersItemValueList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  DatasetsGetResponseFiltersItemValueItem,
 ) as any as S.Schema<DatasetsGetResponseFiltersItemValueList>;
 
 export interface DatasetsGetResponseFiltersItem {
@@ -1828,21 +1982,22 @@ export const DatasetsGetResponseFiltersList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DatasetsGetResponse {
   id: string;
-  created_at: string;
+  createdAt: string;
   enable: boolean;
   filters: DatasetsGetResponseFiltersList;
-  gateway_id: string;
-  modified_at: string;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
 }
 export const DatasetsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     enable: S.Boolean,
     filters: DatasetsGetResponseFiltersList,
-    gateway_id: S.String,
-    modified_at: S.String,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
   }),
 ).annotate({
@@ -1850,22 +2005,24 @@ export const DatasetsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetsGetResponse>;
 
 export interface DatasetsListRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
   enable?: boolean;
   name?: string;
   page?: number;
-  per_page?: number;
+  perPage?: number;
+  /** Search by id, name, filters */
   search?: string;
 }
 export const DatasetsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     enable: S.optional(S.Boolean.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -1893,9 +2050,26 @@ export type DatasetsListResultItemFiltersItemOperator =
   | (string & {});
 export const DatasetsListResultItemFiltersItemOperator = /*@__PURE__*/ S.String;
 
-export type DatasetsListResultItemFiltersItemValueList = unknown[];
+export interface DatasetsListResultItemFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const DatasetsListResultItemFiltersItemValueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "DatasetsListResultItemFiltersItemValueItem",
+  }) as any as S.Schema<DatasetsListResultItemFiltersItemValueItem>;
+
+export type DatasetsListResultItemFiltersItemValueList =
+  DatasetsListResultItemFiltersItemValueItem[];
 export const DatasetsListResultItemFiltersItemValueList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  DatasetsListResultItemFiltersItemValueItem,
 ) as any as S.Schema<DatasetsListResultItemFiltersItemValueList>;
 
 export interface DatasetsListResultItemFiltersItem {
@@ -1921,21 +2095,22 @@ export const DatasetsListResultItemFiltersList = /*@__PURE__*/ S.Array(
 
 export interface DatasetsListResultItem {
   id: string;
-  created_at: string;
+  createdAt: string;
   enable: boolean;
   filters: DatasetsListResultItemFiltersList;
-  gateway_id: string;
-  modified_at: string;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
 }
 export const DatasetsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     enable: S.Boolean,
     filters: DatasetsListResultItemFiltersList,
-    gateway_id: S.String,
-    modified_at: S.String,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
   }),
 ).annotate({
@@ -1948,6 +2123,7 @@ export const DatasetsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DatasetsListResultList>;
 
 export interface DatasetsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DatasetsListResultList;
 }
 export const DatasetsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1973,9 +2149,26 @@ export type DatasetsUpdateRequestFiltersItemOperator =
   | (string & {});
 export const DatasetsUpdateRequestFiltersItemOperator = /*@__PURE__*/ S.String;
 
-export type DatasetsUpdateRequestFiltersItemValueList = unknown[];
+export interface DatasetsUpdateRequestFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const DatasetsUpdateRequestFiltersItemValueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "DatasetsUpdateRequestFiltersItemValueItem",
+  }) as any as S.Schema<DatasetsUpdateRequestFiltersItemValueItem>;
+
+export type DatasetsUpdateRequestFiltersItemValueList =
+  DatasetsUpdateRequestFiltersItemValueItem[];
 export const DatasetsUpdateRequestFiltersItemValueList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  DatasetsUpdateRequestFiltersItemValueItem,
 ) as any as S.Schema<DatasetsUpdateRequestFiltersItemValueList>;
 
 export interface DatasetsUpdateRequestFiltersItem {
@@ -2000,8 +2193,9 @@ export const DatasetsUpdateRequestFiltersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DatasetsUpdateRequestFiltersList>;
 
 export interface DatasetsUpdateRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
   id: string;
   enable: boolean;
   filters: DatasetsUpdateRequestFiltersList;
@@ -2009,8 +2203,8 @@ export interface DatasetsUpdateRequest {
 }
 export const DatasetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
     enable: S.Boolean,
     filters: DatasetsUpdateRequestFiltersList,
@@ -2041,9 +2235,26 @@ export type DatasetsUpdateResponseFiltersItemOperator =
   | (string & {});
 export const DatasetsUpdateResponseFiltersItemOperator = /*@__PURE__*/ S.String;
 
-export type DatasetsUpdateResponseFiltersItemValueList = unknown[];
+export interface DatasetsUpdateResponseFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const DatasetsUpdateResponseFiltersItemValueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "DatasetsUpdateResponseFiltersItemValueItem",
+  }) as any as S.Schema<DatasetsUpdateResponseFiltersItemValueItem>;
+
+export type DatasetsUpdateResponseFiltersItemValueList =
+  DatasetsUpdateResponseFiltersItemValueItem[];
 export const DatasetsUpdateResponseFiltersItemValueList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  DatasetsUpdateResponseFiltersItemValueItem,
 ) as any as S.Schema<DatasetsUpdateResponseFiltersItemValueList>;
 
 export interface DatasetsUpdateResponseFiltersItem {
@@ -2070,21 +2281,22 @@ export const DatasetsUpdateResponseFiltersList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DatasetsUpdateResponse {
   id: string;
-  created_at: string;
+  createdAt: string;
   enable: boolean;
   filters: DatasetsUpdateResponseFiltersList;
-  gateway_id: string;
-  modified_at: string;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
 }
 export const DatasetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     enable: S.Boolean,
     filters: DatasetsUpdateResponseFiltersList,
-    gateway_id: S.String,
-    modified_at: S.String,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
   }),
 ).annotate({
@@ -2092,12 +2304,13 @@ export const DatasetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetsUpdateResponse>;
 
 export interface DeleteRequest {
-  account_id: string;
+  accountId: string;
+  /** gateway id */
   id: string;
 }
 export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -2109,15 +2322,15 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
 
 export interface DeleteResponseDlp {
-  object___action__enabled__profiles__: unknown;
-  object___enabled__policies__: unknown;
+  objectActionEnabledProfiles__: unknown;
+  objectEnabledPolicies__: unknown;
 }
 export const DeleteResponseDlp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    object___action__enabled__profiles__: S.Unknown.pipe(
+    objectActionEnabledProfiles__: S.Unknown.pipe(
       T.Body("object { action, enabled, profiles }"),
     ),
-    object___enabled__policies__: S.Unknown.pipe(
+    objectEnabledPolicies__: S.Unknown.pipe(
       T.Body("object { enabled, policies }"),
     ),
   }),
@@ -2374,14 +2587,16 @@ export interface DeleteResponseOtelItem {
   headers: DeleteResponseOtelItemHeadersMap;
   url: string;
   authorization?: string;
-  content_type?: DeleteResponseOtelItemContentType;
+  contentType?: DeleteResponseOtelItemContentType;
 }
 export const DeleteResponseOtelItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: DeleteResponseOtelItemHeadersMap,
     url: S.String,
     authorization: S.optional(S.String),
-    content_type: S.optional(DeleteResponseOtelItemContentType),
+    contentType: S.optional(
+      DeleteResponseOtelItemContentType.pipe(T.Body("content_type")),
+    ),
   }),
 ).annotate({
   identifier: "DeleteResponseOtelItem",
@@ -2544,12 +2759,14 @@ export const DeleteResponseStripeUsageEventsList = /*@__PURE__*/ S.Array(
 
 export interface DeleteResponseStripe {
   authorization: string;
-  usage_events: DeleteResponseStripeUsageEventsList;
+  usageEvents: DeleteResponseStripeUsageEventsList;
 }
 export const DeleteResponseStripe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorization: S.String,
-    usage_events: DeleteResponseStripeUsageEventsList,
+    usageEvents: DeleteResponseStripeUsageEventsList.pipe(
+      T.Body("usage_events"),
+    ),
   }),
 ).annotate({
   identifier: "DeleteResponseStripe",
@@ -2560,91 +2777,114 @@ export const DeleteResponseWorkersAiBillingMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteResponse {
+  /** gateway id */
   id: string;
-  cache_invalidate_on_update: boolean;
-  cache_ttl: number;
-  collect_logs: boolean;
-  created_at: string;
-  modified_at: string;
-  rate_limiting_interval: number;
-  rate_limiting_limit: number;
+  cacheInvalidateOnUpdate: boolean;
+  cacheTtl: number;
+  collectLogs: boolean;
+  createdAt: string;
+  modifiedAt: string;
+  rateLimitingInterval: number;
+  rateLimitingLimit: number;
   authentication?: boolean;
   dlp?: DeleteResponseDlp;
   guardrails?: DeleteResponseGuardrails;
-  is_default?: boolean;
-  log_management?: number;
-  log_management_strategy?: DeleteResponseLogManagementStrategy;
+  isDefault?: boolean;
+  logManagement?: number;
+  logManagementStrategy?: DeleteResponseLogManagementStrategy;
   logpush?: boolean;
-  logpush_public_key?: string;
+  logpushPublicKey?: string;
   otel?: DeleteResponseOtelList;
-  rate_limiting_technique?: DeleteResponseRateLimitingTechnique;
-  retry_backoff?: DeleteResponseRetryBackoff;
-  retry_delay?: number;
-  retry_max_attempts?: number;
-  spend_limits?: DeleteResponseSpendLimits;
-  store_id?: string;
+  rateLimitingTechnique?: DeleteResponseRateLimitingTechnique;
+  /** Backoff strategy for retry delays */
+  retryBackoff?: DeleteResponseRetryBackoff;
+  /** Delay between retry attempts in milliseconds (0-5000) */
+  retryDelay?: number;
+  /** Maximum number of retry attempts for failed requests (1-5) */
+  retryMaxAttempts?: number;
+  spendLimits?: DeleteResponseSpendLimits;
+  storeId?: string;
   stripe?: DeleteResponseStripe;
-  workers_ai_billing_mode?: DeleteResponseWorkersAiBillingMode;
+  /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
+  workersAiBillingMode?: DeleteResponseWorkersAiBillingMode;
   zdr?: boolean;
 }
 export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    cache_invalidate_on_update: S.Boolean,
-    cache_ttl: S.Number,
-    collect_logs: S.Boolean,
-    created_at: S.String,
-    modified_at: S.String,
-    rate_limiting_interval: S.Number,
-    rate_limiting_limit: S.Number,
+    cacheInvalidateOnUpdate: S.Boolean.pipe(
+      T.Body("cache_invalidate_on_update"),
+    ),
+    cacheTtl: S.Number.pipe(T.Body("cache_ttl")),
+    collectLogs: S.Boolean.pipe(T.Body("collect_logs")),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    rateLimitingInterval: S.Number.pipe(T.Body("rate_limiting_interval")),
+    rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
     authentication: S.optional(S.Boolean),
     dlp: S.optional(DeleteResponseDlp),
     guardrails: S.optional(DeleteResponseGuardrails),
-    is_default: S.optional(S.Boolean),
-    log_management: S.optional(S.Number),
-    log_management_strategy: S.optional(DeleteResponseLogManagementStrategy),
+    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
+    logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
+    logManagementStrategy: S.optional(
+      DeleteResponseLogManagementStrategy.pipe(
+        T.Body("log_management_strategy"),
+      ),
+    ),
     logpush: S.optional(S.Boolean),
-    logpush_public_key: S.optional(S.String),
+    logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
     otel: S.optional(DeleteResponseOtelList),
-    rate_limiting_technique: S.optional(DeleteResponseRateLimitingTechnique),
-    retry_backoff: S.optional(DeleteResponseRetryBackoff),
-    retry_delay: S.optional(S.Number),
-    retry_max_attempts: S.optional(S.Number),
-    spend_limits: S.optional(DeleteResponseSpendLimits),
-    store_id: S.optional(S.String),
+    rateLimitingTechnique: S.optional(
+      DeleteResponseRateLimitingTechnique.pipe(
+        T.Body("rate_limiting_technique"),
+      ),
+    ),
+    retryBackoff: S.optional(
+      DeleteResponseRetryBackoff.pipe(T.Body("retry_backoff")),
+    ),
+    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+    retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
+    spendLimits: S.optional(
+      DeleteResponseSpendLimits.pipe(T.Body("spend_limits")),
+    ),
+    storeId: S.optional(S.String.pipe(T.Body("store_id"))),
     stripe: S.optional(DeleteResponseStripe),
-    workers_ai_billing_mode: S.optional(DeleteResponseWorkersAiBillingMode),
+    workersAiBillingMode: S.optional(
+      DeleteResponseWorkersAiBillingMode.pipe(
+        T.Body("workers_ai_billing_mode"),
+      ),
+    ),
     zdr: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
 
 export interface DynamicRoutingCreateRequestElementsItem {
-  object___id__outputs__type__: unknown;
-  object___id__outputs__properties__type__: unknown;
-  object___id__outputs__type___2: unknown;
-  object___id__outputs__properties__type___2: unknown;
-  object___id__outputs__properties__type___3: unknown;
-  object___id__outputs__type___3: unknown;
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
 }
 export const DynamicRoutingCreateRequestElementsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      object___id__outputs__type__: S.Unknown.pipe(
+      objectIdOutputsType__: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type__: S.Unknown.pipe(
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___2: S.Unknown.pipe(
+      objectIdOutputsType2: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type___2: S.Unknown.pipe(
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__properties__type___3: S.Unknown.pipe(
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___3: S.Unknown.pipe(
+      objectIdOutputsType3: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
     }),
@@ -2659,15 +2899,15 @@ export const DynamicRoutingCreateRequestElementsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DynamicRoutingCreateRequestElementsList>;
 
 export interface DynamicRoutingCreateRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  gatewayId: string;
   elements: DynamicRoutingCreateRequestElementsList;
   name: string;
 }
 export const DynamicRoutingCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     elements: DynamicRoutingCreateRequestElementsList,
     name: S.String,
   }).pipe(
@@ -2682,48 +2922,48 @@ export const DynamicRoutingCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamicRoutingCreateRequest>;
 
 export interface DynamicRoutingCreateResponseDeployment {
-  created_at: string;
-  deployment_id: string;
-  version_id: string;
+  createdAt: string;
+  deploymentId: string;
+  versionId: string;
 }
 export const DynamicRoutingCreateResponseDeployment = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      created_at: S.String,
-      deployment_id: S.String,
-      version_id: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      deploymentId: S.String.pipe(T.Body("deployment_id")),
+      versionId: S.String.pipe(T.Body("version_id")),
     }),
 ).annotate({
   identifier: "DynamicRoutingCreateResponseDeployment",
 }) as any as S.Schema<DynamicRoutingCreateResponseDeployment>;
 
 export interface DynamicRoutingCreateResponseElementsItem {
-  object___id__outputs__type__: unknown;
-  object___id__outputs__properties__type__: unknown;
-  object___id__outputs__type___2: unknown;
-  object___id__outputs__properties__type___2: unknown;
-  object___id__outputs__properties__type___3: unknown;
-  object___id__outputs__type___3: unknown;
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
 }
 export const DynamicRoutingCreateResponseElementsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      object___id__outputs__type__: S.Unknown.pipe(
+      objectIdOutputsType__: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type__: S.Unknown.pipe(
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___2: S.Unknown.pipe(
+      objectIdOutputsType2: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type___2: S.Unknown.pipe(
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__properties__type___3: S.Unknown.pipe(
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___3: S.Unknown.pipe(
+      objectIdOutputsType3: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
     }),
@@ -2745,18 +2985,18 @@ export const DynamicRoutingCreateResponseVersionActive = /*@__PURE__*/ S.String;
 
 export interface DynamicRoutingCreateResponseVersion {
   active: DynamicRoutingCreateResponseVersionActive;
-  created_at: string;
+  createdAt: string;
   data: string;
-  version_id: string;
-  is_valid?: boolean;
+  versionId: string;
+  isValid?: boolean;
 }
 export const DynamicRoutingCreateResponseVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: DynamicRoutingCreateResponseVersionActive,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     data: S.String,
-    version_id: S.String,
-    is_valid: S.optional(S.Boolean),
+    versionId: S.String.pipe(T.Body("version_id")),
+    isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
   }),
 ).annotate({
   identifier: "DynamicRoutingCreateResponseVersion",
@@ -2765,22 +3005,22 @@ export const DynamicRoutingCreateResponseVersion = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DynamicRoutingCreateResponse {
   id: string;
-  created_at: string;
+  createdAt: string;
   deployment: DynamicRoutingCreateResponseDeployment;
   elements: DynamicRoutingCreateResponseElementsList;
-  gateway_id: string;
-  modified_at: string;
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
   version: DynamicRoutingCreateResponseVersion;
 }
 export const DynamicRoutingCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     deployment: DynamicRoutingCreateResponseDeployment,
     elements: DynamicRoutingCreateResponseElementsList,
-    gateway_id: S.String,
-    modified_at: S.String,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     version: DynamicRoutingCreateResponseVersion,
   }),
@@ -2789,18 +3029,18 @@ export const DynamicRoutingCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamicRoutingCreateResponse>;
 
 export interface DynamicRoutingCreateDeploymentRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  gatewayId: string;
   id: string;
-  version_id: string;
+  versionId: string;
 }
 export const DynamicRoutingCreateDeploymentRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      gateway_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      gatewayId: S.String.pipe(T.Label("gateway_id")),
       id: S.String.pipe(T.Label()),
-      version_id: S.String,
+      versionId: S.String.pipe(T.Body("version_id")),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2813,32 +3053,32 @@ export const DynamicRoutingCreateDeploymentRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DynamicRoutingCreateDeploymentRequest>;
 
 export interface DynamicRoutingCreateDeploymentResponseElementsItem {
-  object___id__outputs__type__: unknown;
-  object___id__outputs__properties__type__: unknown;
-  object___id__outputs__type___2: unknown;
-  object___id__outputs__properties__type___2: unknown;
-  object___id__outputs__properties__type___3: unknown;
-  object___id__outputs__type___3: unknown;
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
 }
 export const DynamicRoutingCreateDeploymentResponseElementsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___id__outputs__type__: S.Unknown.pipe(
+      objectIdOutputsType__: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type__: S.Unknown.pipe(
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___2: S.Unknown.pipe(
+      objectIdOutputsType2: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type___2: S.Unknown.pipe(
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__properties__type___3: S.Unknown.pipe(
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___3: S.Unknown.pipe(
+      objectIdOutputsType3: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
     }),
@@ -2856,20 +3096,20 @@ export const DynamicRoutingCreateDeploymentResponseElementsList =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DynamicRoutingCreateDeploymentResponse {
   id: string;
-  created_at: string;
+  createdAt: string;
   elements: DynamicRoutingCreateDeploymentResponseElementsList;
-  gateway_id: string;
-  modified_at: string;
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
 }
 export const DynamicRoutingCreateDeploymentResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
-      created_at: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
       elements: DynamicRoutingCreateDeploymentResponseElementsList,
-      gateway_id: S.String,
-      modified_at: S.String,
+      gatewayId: S.String.pipe(T.Body("gateway_id")),
+      modifiedAt: S.String.pipe(T.Body("modified_at")),
       name: S.String,
     }),
 ).annotate({
@@ -2877,32 +3117,32 @@ export const DynamicRoutingCreateDeploymentResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DynamicRoutingCreateDeploymentResponse>;
 
 export interface DynamicRoutingCreateVersionRequestElementsItem {
-  object___id__outputs__type__: unknown;
-  object___id__outputs__properties__type__: unknown;
-  object___id__outputs__type___2: unknown;
-  object___id__outputs__properties__type___2: unknown;
-  object___id__outputs__properties__type___3: unknown;
-  object___id__outputs__type___3: unknown;
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
 }
 export const DynamicRoutingCreateVersionRequestElementsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___id__outputs__type__: S.Unknown.pipe(
+      objectIdOutputsType__: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type__: S.Unknown.pipe(
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___2: S.Unknown.pipe(
+      objectIdOutputsType2: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type___2: S.Unknown.pipe(
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__properties__type___3: S.Unknown.pipe(
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___3: S.Unknown.pipe(
+      objectIdOutputsType3: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
     }),
@@ -2918,15 +3158,15 @@ export const DynamicRoutingCreateVersionRequestElementsList =
   ) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsList>;
 
 export interface DynamicRoutingCreateVersionRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  gatewayId: string;
   id: string;
   elements: DynamicRoutingCreateVersionRequestElementsList;
 }
 export const DynamicRoutingCreateVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
     elements: DynamicRoutingCreateVersionRequestElementsList,
   }).pipe(
@@ -2941,32 +3181,32 @@ export const DynamicRoutingCreateVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamicRoutingCreateVersionRequest>;
 
 export interface DynamicRoutingCreateVersionResponseElementsItem {
-  object___id__outputs__type__: unknown;
-  object___id__outputs__properties__type__: unknown;
-  object___id__outputs__type___2: unknown;
-  object___id__outputs__properties__type___2: unknown;
-  object___id__outputs__properties__type___3: unknown;
-  object___id__outputs__type___3: unknown;
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
 }
 export const DynamicRoutingCreateVersionResponseElementsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___id__outputs__type__: S.Unknown.pipe(
+      objectIdOutputsType__: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type__: S.Unknown.pipe(
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___2: S.Unknown.pipe(
+      objectIdOutputsType2: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type___2: S.Unknown.pipe(
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__properties__type___3: S.Unknown.pipe(
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___3: S.Unknown.pipe(
+      objectIdOutputsType3: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
     }),
@@ -2984,19 +3224,19 @@ export const DynamicRoutingCreateVersionResponseElementsList =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DynamicRoutingCreateVersionResponse {
   id: string;
-  created_at: string;
+  createdAt: string;
   elements: DynamicRoutingCreateVersionResponseElementsList;
-  gateway_id: string;
-  modified_at: string;
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
 }
 export const DynamicRoutingCreateVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     elements: DynamicRoutingCreateVersionResponseElementsList,
-    gateway_id: S.String,
-    modified_at: S.String,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
   }),
 ).annotate({
@@ -3004,14 +3244,14 @@ export const DynamicRoutingCreateVersionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamicRoutingCreateVersionResponse>;
 
 export interface DynamicRoutingDeleteRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  gatewayId: string;
   id: string;
 }
 export const DynamicRoutingDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -3025,32 +3265,32 @@ export const DynamicRoutingDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamicRoutingDeleteRequest>;
 
 export interface DynamicRoutingDeleteResponseElementsItem {
-  object___id__outputs__type__: unknown;
-  object___id__outputs__properties__type__: unknown;
-  object___id__outputs__type___2: unknown;
-  object___id__outputs__properties__type___2: unknown;
-  object___id__outputs__properties__type___3: unknown;
-  object___id__outputs__type___3: unknown;
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
 }
 export const DynamicRoutingDeleteResponseElementsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      object___id__outputs__type__: S.Unknown.pipe(
+      objectIdOutputsType__: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type__: S.Unknown.pipe(
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___2: S.Unknown.pipe(
+      objectIdOutputsType2: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type___2: S.Unknown.pipe(
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__properties__type___3: S.Unknown.pipe(
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___3: S.Unknown.pipe(
+      objectIdOutputsType3: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
     }),
@@ -3067,19 +3307,19 @@ export const DynamicRoutingDeleteResponseElementsList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DynamicRoutingDeleteResponse {
   id: string;
-  created_at: string;
+  createdAt: string;
   elements: DynamicRoutingDeleteResponseElementsList;
-  gateway_id: string;
-  modified_at: string;
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
 }
 export const DynamicRoutingDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     elements: DynamicRoutingDeleteResponseElementsList,
-    gateway_id: S.String,
-    modified_at: S.String,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
   }),
 ).annotate({
@@ -3087,14 +3327,14 @@ export const DynamicRoutingDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamicRoutingDeleteResponse>;
 
 export interface DynamicRoutingGetRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  gatewayId: string;
   id: string;
 }
 export const DynamicRoutingGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -3108,47 +3348,47 @@ export const DynamicRoutingGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamicRoutingGetRequest>;
 
 export interface DynamicRoutingGetResponseDeployment {
-  created_at: string;
-  deployment_id: string;
-  version_id: string;
+  createdAt: string;
+  deploymentId: string;
+  versionId: string;
 }
 export const DynamicRoutingGetResponseDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created_at: S.String,
-    deployment_id: S.String,
-    version_id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    deploymentId: S.String.pipe(T.Body("deployment_id")),
+    versionId: S.String.pipe(T.Body("version_id")),
   }),
 ).annotate({
   identifier: "DynamicRoutingGetResponseDeployment",
 }) as any as S.Schema<DynamicRoutingGetResponseDeployment>;
 
 export interface DynamicRoutingGetResponseElementsItem {
-  object___id__outputs__type__: unknown;
-  object___id__outputs__properties__type__: unknown;
-  object___id__outputs__type___2: unknown;
-  object___id__outputs__properties__type___2: unknown;
-  object___id__outputs__properties__type___3: unknown;
-  object___id__outputs__type___3: unknown;
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
 }
 export const DynamicRoutingGetResponseElementsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      object___id__outputs__type__: S.Unknown.pipe(
+      objectIdOutputsType__: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type__: S.Unknown.pipe(
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___2: S.Unknown.pipe(
+      objectIdOutputsType2: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type___2: S.Unknown.pipe(
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__properties__type___3: S.Unknown.pipe(
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___3: S.Unknown.pipe(
+      objectIdOutputsType3: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
     }),
@@ -3170,18 +3410,18 @@ export const DynamicRoutingGetResponseVersionActive = /*@__PURE__*/ S.String;
 
 export interface DynamicRoutingGetResponseVersion {
   active: DynamicRoutingGetResponseVersionActive;
-  created_at: string;
+  createdAt: string;
   data: string;
-  version_id: string;
-  is_valid?: boolean;
+  versionId: string;
+  isValid?: boolean;
 }
 export const DynamicRoutingGetResponseVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: DynamicRoutingGetResponseVersionActive,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     data: S.String,
-    version_id: S.String,
-    is_valid: S.optional(S.Boolean),
+    versionId: S.String.pipe(T.Body("version_id")),
+    isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
   }),
 ).annotate({
   identifier: "DynamicRoutingGetResponseVersion",
@@ -3190,22 +3430,22 @@ export const DynamicRoutingGetResponseVersion = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DynamicRoutingGetResponse {
   id: string;
-  created_at: string;
+  createdAt: string;
   deployment: DynamicRoutingGetResponseDeployment;
   elements: DynamicRoutingGetResponseElementsList;
-  gateway_id: string;
-  modified_at: string;
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
   version: DynamicRoutingGetResponseVersion;
 }
 export const DynamicRoutingGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     deployment: DynamicRoutingGetResponseDeployment,
     elements: DynamicRoutingGetResponseElementsList,
-    gateway_id: S.String,
-    modified_at: S.String,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     version: DynamicRoutingGetResponseVersion,
   }),
@@ -3214,17 +3454,17 @@ export const DynamicRoutingGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamicRoutingGetResponse>;
 
 export interface DynamicRoutingGetVersionRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  gatewayId: string;
   id: string;
-  version_id: string;
+  versionId: string;
 }
 export const DynamicRoutingGetVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
-    version_id: S.String.pipe(T.Label()),
+    versionId: S.String.pipe(T.Label("version_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3243,32 +3483,32 @@ export type DynamicRoutingGetVersionResponseActive =
 export const DynamicRoutingGetVersionResponseActive = /*@__PURE__*/ S.String;
 
 export interface DynamicRoutingGetVersionResponseElementsItem {
-  object___id__outputs__type__: unknown;
-  object___id__outputs__properties__type__: unknown;
-  object___id__outputs__type___2: unknown;
-  object___id__outputs__properties__type___2: unknown;
-  object___id__outputs__properties__type___3: unknown;
-  object___id__outputs__type___3: unknown;
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
 }
 export const DynamicRoutingGetVersionResponseElementsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___id__outputs__type__: S.Unknown.pipe(
+      objectIdOutputsType__: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type__: S.Unknown.pipe(
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___2: S.Unknown.pipe(
+      objectIdOutputsType2: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type___2: S.Unknown.pipe(
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__properties__type___3: S.Unknown.pipe(
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___3: S.Unknown.pipe(
+      objectIdOutputsType3: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
     }),
@@ -3287,44 +3527,46 @@ export const DynamicRoutingGetVersionResponseElementsList =
 export interface DynamicRoutingGetVersionResponse {
   id: string;
   active: DynamicRoutingGetVersionResponseActive;
-  created_at: string;
+  createdAt: string;
   data: string;
   elements: DynamicRoutingGetVersionResponseElementsList;
-  gateway_id: string;
-  modified_at: string;
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
-  version_id: string;
-  is_valid?: boolean;
+  versionId: string;
+  isValid?: boolean;
 }
 export const DynamicRoutingGetVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     active: DynamicRoutingGetVersionResponseActive,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     data: S.String,
     elements: DynamicRoutingGetVersionResponseElementsList,
-    gateway_id: S.String,
-    modified_at: S.String,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
-    version_id: S.String,
-    is_valid: S.optional(S.Boolean),
+    versionId: S.String.pipe(T.Body("version_id")),
+    isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
   }),
 ).annotate({
   identifier: "DynamicRoutingGetVersionResponse",
 }) as any as S.Schema<DynamicRoutingGetVersionResponse>;
 
 export interface DynamicRoutingListRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  gatewayId: string;
+  /** Page number */
   page?: number;
-  per_page?: number;
+  /** Number of routes per page */
+  perPage?: number;
 }
 export const DynamicRoutingListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3337,48 +3579,48 @@ export const DynamicRoutingListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamicRoutingListRequest>;
 
 export interface DynamicRoutingListResponseDataRoutesItemDeployment {
-  created_at: string;
-  deployment_id: string;
-  version_id: string;
+  createdAt: string;
+  deploymentId: string;
+  versionId: string;
 }
 export const DynamicRoutingListResponseDataRoutesItemDeployment =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      created_at: S.String,
-      deployment_id: S.String,
-      version_id: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      deploymentId: S.String.pipe(T.Body("deployment_id")),
+      versionId: S.String.pipe(T.Body("version_id")),
     }),
   ).annotate({
     identifier: "DynamicRoutingListResponseDataRoutesItemDeployment",
   }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemDeployment>;
 
 export interface DynamicRoutingListResponseDataRoutesItemElementsItem {
-  object___id__outputs__type__: unknown;
-  object___id__outputs__properties__type__: unknown;
-  object___id__outputs__type___2: unknown;
-  object___id__outputs__properties__type___2: unknown;
-  object___id__outputs__properties__type___3: unknown;
-  object___id__outputs__type___3: unknown;
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
 }
 export const DynamicRoutingListResponseDataRoutesItemElementsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___id__outputs__type__: S.Unknown.pipe(
+      objectIdOutputsType__: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type__: S.Unknown.pipe(
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___2: S.Unknown.pipe(
+      objectIdOutputsType2: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type___2: S.Unknown.pipe(
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__properties__type___3: S.Unknown.pipe(
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___3: S.Unknown.pipe(
+      objectIdOutputsType3: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
     }),
@@ -3402,19 +3644,19 @@ export const DynamicRoutingListResponseDataRoutesItemVersionActive =
 
 export interface DynamicRoutingListResponseDataRoutesItemVersion {
   active: DynamicRoutingListResponseDataRoutesItemVersionActive;
-  created_at: string;
+  createdAt: string;
   data: string;
-  version_id: string;
-  is_valid?: boolean;
+  versionId: string;
+  isValid?: boolean;
 }
 export const DynamicRoutingListResponseDataRoutesItemVersion =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       active: DynamicRoutingListResponseDataRoutesItemVersionActive,
-      created_at: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
       data: S.String,
-      version_id: S.String,
-      is_valid: S.optional(S.Boolean),
+      versionId: S.String.pipe(T.Body("version_id")),
+      isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
     }),
   ).annotate({
     identifier: "DynamicRoutingListResponseDataRoutesItemVersion",
@@ -3422,12 +3664,12 @@ export const DynamicRoutingListResponseDataRoutesItemVersion =
 
 export interface DynamicRoutingListResponseDataRoutesItem {
   id: string;
-  account_tag: string;
-  created_at: string;
+  accountTag: string;
+  createdAt: string;
   deployment: DynamicRoutingListResponseDataRoutesItemDeployment;
   elements: DynamicRoutingListResponseDataRoutesItemElementsList;
-  gateway_id: string;
-  modified_at: string;
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
   version: DynamicRoutingListResponseDataRoutesItemVersion;
 }
@@ -3435,12 +3677,12 @@ export const DynamicRoutingListResponseDataRoutesItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
-      account_tag: S.String,
-      created_at: S.String,
+      accountTag: S.String.pipe(T.Body("account_tag")),
+      createdAt: S.String.pipe(T.Body("created_at")),
       deployment: DynamicRoutingListResponseDataRoutesItemDeployment,
       elements: DynamicRoutingListResponseDataRoutesItemElementsList,
-      gateway_id: S.String,
-      modified_at: S.String,
+      gatewayId: S.String.pipe(T.Body("gateway_id")),
+      modifiedAt: S.String.pipe(T.Body("modified_at")),
       name: S.String,
       version: DynamicRoutingListResponseDataRoutesItemVersion,
     }),
@@ -3455,18 +3697,18 @@ export const DynamicRoutingListResponseDataRoutesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DynamicRoutingListResponseDataRoutesList>;
 
 export interface DynamicRoutingListResponseData {
-  order_by: string;
-  order_by_direction: string;
+  orderBy: string;
+  orderByDirection: string;
   page: number;
-  per_page: number;
+  perPage: number;
   routes: DynamicRoutingListResponseDataRoutesList;
 }
 export const DynamicRoutingListResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    order_by: S.String,
-    order_by_direction: S.String,
+    orderBy: S.String.pipe(T.Body("order_by")),
+    orderByDirection: S.String.pipe(T.Body("order_by_direction")),
     page: S.Number,
-    per_page: S.Number,
+    perPage: S.Number.pipe(T.Body("per_page")),
     routes: DynamicRoutingListResponseDataRoutesList,
   }),
 ).annotate({
@@ -3486,15 +3728,15 @@ export const DynamicRoutingListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamicRoutingListResponse>;
 
 export interface DynamicRoutingListDeploymentsRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  gatewayId: string;
   id: string;
 }
 export const DynamicRoutingListDeploymentsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      gateway_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      gatewayId: S.String.pipe(T.Label("gateway_id")),
       id: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
@@ -3508,16 +3750,16 @@ export const DynamicRoutingListDeploymentsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DynamicRoutingListDeploymentsRequest>;
 
 export interface DynamicRoutingListDeploymentsResponseDataDeploymentsItem {
-  created_at: string;
-  deployment_id: string;
-  version_id: string;
+  createdAt: string;
+  deploymentId: string;
+  versionId: string;
 }
 export const DynamicRoutingListDeploymentsResponseDataDeploymentsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      created_at: S.String,
-      deployment_id: S.String,
-      version_id: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      deploymentId: S.String.pipe(T.Body("deployment_id")),
+      versionId: S.String.pipe(T.Body("version_id")),
     }),
   ).annotate({
     identifier: "DynamicRoutingListDeploymentsResponseDataDeploymentsItem",
@@ -3532,19 +3774,19 @@ export const DynamicRoutingListDeploymentsResponseDataDeploymentsList =
 
 export interface DynamicRoutingListDeploymentsResponseData {
   deployments: DynamicRoutingListDeploymentsResponseDataDeploymentsList;
-  order_by: string;
-  order_by_direction: string;
+  orderBy: string;
+  orderByDirection: string;
   page: number;
-  per_page: number;
+  perPage: number;
 }
 export const DynamicRoutingListDeploymentsResponseData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       deployments: DynamicRoutingListDeploymentsResponseDataDeploymentsList,
-      order_by: S.String,
-      order_by_direction: S.String,
+      orderBy: S.String.pipe(T.Body("order_by")),
+      orderByDirection: S.String.pipe(T.Body("order_by_direction")),
       page: S.Number,
-      per_page: S.Number,
+      perPage: S.Number.pipe(T.Body("per_page")),
     }),
   ).annotate({
     identifier: "DynamicRoutingListDeploymentsResponseData",
@@ -3564,14 +3806,14 @@ export const DynamicRoutingListDeploymentsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DynamicRoutingListDeploymentsResponse>;
 
 export interface DynamicRoutingListVersionsRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  gatewayId: string;
   id: string;
 }
 export const DynamicRoutingListVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -3593,19 +3835,19 @@ export const DynamicRoutingListVersionsResponseDataVersionsItemActive =
 
 export interface DynamicRoutingListVersionsResponseDataVersionsItem {
   active: DynamicRoutingListVersionsResponseDataVersionsItemActive;
-  created_at: string;
+  createdAt: string;
   data: string;
-  version_id: string;
-  is_valid?: boolean;
+  versionId: string;
+  isValid?: boolean;
 }
 export const DynamicRoutingListVersionsResponseDataVersionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       active: DynamicRoutingListVersionsResponseDataVersionsItemActive,
-      created_at: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
       data: S.String,
-      version_id: S.String,
-      is_valid: S.optional(S.Boolean),
+      versionId: S.String.pipe(T.Body("version_id")),
+      isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
     }),
   ).annotate({
     identifier: "DynamicRoutingListVersionsResponseDataVersionsItem",
@@ -3619,19 +3861,19 @@ export const DynamicRoutingListVersionsResponseDataVersionsList =
   ) as any as S.Schema<DynamicRoutingListVersionsResponseDataVersionsList>;
 
 export interface DynamicRoutingListVersionsResponseData {
-  order_by: string;
-  order_by_direction: string;
+  orderBy: string;
+  orderByDirection: string;
   page: number;
-  per_page: number;
+  perPage: number;
   versions: DynamicRoutingListVersionsResponseDataVersionsList;
 }
 export const DynamicRoutingListVersionsResponseData = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      order_by: S.String,
-      order_by_direction: S.String,
+      orderBy: S.String.pipe(T.Body("order_by")),
+      orderByDirection: S.String.pipe(T.Body("order_by_direction")),
       page: S.Number,
-      per_page: S.Number,
+      perPage: S.Number.pipe(T.Body("per_page")),
       versions: DynamicRoutingListVersionsResponseDataVersionsList,
     }),
 ).annotate({
@@ -3651,15 +3893,15 @@ export const DynamicRoutingListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamicRoutingListVersionsResponse>;
 
 export interface DynamicRoutingUpdateRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  gatewayId: string;
   id: string;
   name: string;
 }
 export const DynamicRoutingUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
     name: S.String,
   }).pipe(
@@ -3674,48 +3916,48 @@ export const DynamicRoutingUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamicRoutingUpdateRequest>;
 
 export interface DynamicRoutingUpdateResponseRouteDeployment {
-  created_at: string;
-  deployment_id: string;
-  version_id: string;
+  createdAt: string;
+  deploymentId: string;
+  versionId: string;
 }
 export const DynamicRoutingUpdateResponseRouteDeployment =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      created_at: S.String,
-      deployment_id: S.String,
-      version_id: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      deploymentId: S.String.pipe(T.Body("deployment_id")),
+      versionId: S.String.pipe(T.Body("version_id")),
     }),
   ).annotate({
     identifier: "DynamicRoutingUpdateResponseRouteDeployment",
   }) as any as S.Schema<DynamicRoutingUpdateResponseRouteDeployment>;
 
 export interface DynamicRoutingUpdateResponseRouteElementsItem {
-  object___id__outputs__type__: unknown;
-  object___id__outputs__properties__type__: unknown;
-  object___id__outputs__type___2: unknown;
-  object___id__outputs__properties__type___2: unknown;
-  object___id__outputs__properties__type___3: unknown;
-  object___id__outputs__type___3: unknown;
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
 }
 export const DynamicRoutingUpdateResponseRouteElementsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___id__outputs__type__: S.Unknown.pipe(
+      objectIdOutputsType__: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type__: S.Unknown.pipe(
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___2: S.Unknown.pipe(
+      objectIdOutputsType2: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
-      object___id__outputs__properties__type___2: S.Unknown.pipe(
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__properties__type___3: S.Unknown.pipe(
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
         T.Body("object { id, outputs, properties, type }"),
       ),
-      object___id__outputs__type___3: S.Unknown.pipe(
+      objectIdOutputsType3: S.Unknown.pipe(
         T.Body("object { id, outputs, type }"),
       ),
     }),
@@ -3739,19 +3981,19 @@ export const DynamicRoutingUpdateResponseRouteVersionActive =
 
 export interface DynamicRoutingUpdateResponseRouteVersion {
   active: DynamicRoutingUpdateResponseRouteVersionActive;
-  created_at: string;
+  createdAt: string;
   data: string;
-  version_id: string;
-  is_valid?: boolean;
+  versionId: string;
+  isValid?: boolean;
 }
 export const DynamicRoutingUpdateResponseRouteVersion = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       active: DynamicRoutingUpdateResponseRouteVersionActive,
-      created_at: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
       data: S.String,
-      version_id: S.String,
-      is_valid: S.optional(S.Boolean),
+      versionId: S.String.pipe(T.Body("version_id")),
+      isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
     }),
 ).annotate({
   identifier: "DynamicRoutingUpdateResponseRouteVersion",
@@ -3759,24 +4001,24 @@ export const DynamicRoutingUpdateResponseRouteVersion = /*@__PURE__*/ S.suspend(
 
 export interface DynamicRoutingUpdateResponseRoute {
   id: string;
-  account_tag: string;
-  created_at: string;
+  accountTag: string;
+  createdAt: string;
   deployment: DynamicRoutingUpdateResponseRouteDeployment;
   elements: DynamicRoutingUpdateResponseRouteElementsList;
-  gateway_id: string;
-  modified_at: string;
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
   version: DynamicRoutingUpdateResponseRouteVersion;
 }
 export const DynamicRoutingUpdateResponseRoute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    account_tag: S.String,
-    created_at: S.String,
+    accountTag: S.String.pipe(T.Body("account_tag")),
+    createdAt: S.String.pipe(T.Body("created_at")),
     deployment: DynamicRoutingUpdateResponseRouteDeployment,
     elements: DynamicRoutingUpdateResponseRouteElementsList,
-    gateway_id: S.String,
-    modified_at: S.String,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     version: DynamicRoutingUpdateResponseRouteVersion,
   }),
@@ -3808,18 +4050,23 @@ export const EvaluationsCreateRequestEvaluationTypeIdsList =
   ) as any as S.Schema<EvaluationsCreateRequestEvaluationTypeIdsList>;
 
 export interface EvaluationsCreateRequest {
-  account_id: string;
-  gateway_id: string;
-  dataset_ids: EvaluationsCreateRequestDatasetIdsList;
-  evaluation_type_ids: EvaluationsCreateRequestEvaluationTypeIdsList;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
+  datasetIds: EvaluationsCreateRequestDatasetIdsList;
+  evaluationTypeIds: EvaluationsCreateRequestEvaluationTypeIdsList;
   name: string;
 }
 export const EvaluationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
-    dataset_ids: EvaluationsCreateRequestDatasetIdsList,
-    evaluation_type_ids: EvaluationsCreateRequestEvaluationTypeIdsList,
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    datasetIds: EvaluationsCreateRequestDatasetIdsList.pipe(
+      T.Body("dataset_ids"),
+    ),
+    evaluationTypeIds: EvaluationsCreateRequestEvaluationTypeIdsList.pipe(
+      T.Body("evaluation_type_ids"),
+    ),
     name: S.String,
   }).pipe(
     T.Http({
@@ -3849,11 +4096,27 @@ export type EvaluationsCreateResponseDatasetsItemFiltersItemOperator =
 export const EvaluationsCreateResponseDatasetsItemFiltersItemOperator =
   /*@__PURE__*/ S.String;
 
+export interface EvaluationsCreateResponseDatasetsItemFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const EvaluationsCreateResponseDatasetsItemFiltersItemValueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "EvaluationsCreateResponseDatasetsItemFiltersItemValueItem",
+  }) as any as S.Schema<EvaluationsCreateResponseDatasetsItemFiltersItemValueItem>;
+
 export type EvaluationsCreateResponseDatasetsItemFiltersItemValueList =
-  unknown[];
+  EvaluationsCreateResponseDatasetsItemFiltersItemValueItem[];
 export const EvaluationsCreateResponseDatasetsItemFiltersItemValueList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    EvaluationsCreateResponseDatasetsItemFiltersItemValueItem,
   ) as any as S.Schema<EvaluationsCreateResponseDatasetsItemFiltersItemValueList>;
 
 export interface EvaluationsCreateResponseDatasetsItemFiltersItem {
@@ -3881,26 +4144,27 @@ export const EvaluationsCreateResponseDatasetsItemFiltersList =
 
 export interface EvaluationsCreateResponseDatasetsItem {
   id: string;
-  account_id: string;
-  account_tag: string;
-  created_at: string;
+  accountId: string;
+  accountTag: string;
+  createdAt: string;
   enable: boolean;
   filters: EvaluationsCreateResponseDatasetsItemFiltersList;
-  gateway_id: string;
-  modified_at: string;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
 }
 export const EvaluationsCreateResponseDatasetsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
-      account_id: S.String,
-      account_tag: S.String,
-      created_at: S.String,
+      accountId: S.String.pipe(T.Body("account_id")),
+      accountTag: S.String.pipe(T.Body("account_tag")),
+      createdAt: S.String.pipe(T.Body("created_at")),
       enable: S.Boolean,
       filters: EvaluationsCreateResponseDatasetsItemFiltersList,
-      gateway_id: S.String,
-      modified_at: S.String,
+      gatewayId: S.String.pipe(T.Body("gateway_id")),
+      modifiedAt: S.String.pipe(T.Body("modified_at")),
       name: S.String,
     }),
 ).annotate({
@@ -3915,27 +4179,27 @@ export const EvaluationsCreateResponseDatasetsList = /*@__PURE__*/ S.Array(
 
 export interface EvaluationsCreateResponseResultsItem {
   id: string;
-  created_at: string;
-  evaluation_id: string;
-  evaluation_type_id: string;
-  modified_at: string;
+  createdAt: string;
+  evaluationId: string;
+  evaluationTypeId: string;
+  modifiedAt: string;
   result: string;
   status: number;
-  status_description: string;
-  total_logs: number;
+  statusDescription: string;
+  totalLogs: number;
 }
 export const EvaluationsCreateResponseResultsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
-      created_at: S.String,
-      evaluation_id: S.String,
-      evaluation_type_id: S.String,
-      modified_at: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      evaluationId: S.String.pipe(T.Body("evaluation_id")),
+      evaluationTypeId: S.String.pipe(T.Body("evaluation_type_id")),
+      modifiedAt: S.String.pipe(T.Body("modified_at")),
       result: S.String,
       status: S.Number,
-      status_description: S.String,
-      total_logs: S.Number,
+      statusDescription: S.String.pipe(T.Body("status_description")),
+      totalLogs: S.Number.pipe(T.Body("total_logs")),
     }),
 ).annotate({
   identifier: "EvaluationsCreateResponseResultsItem",
@@ -3950,40 +4214,42 @@ export const EvaluationsCreateResponseResultsList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EvaluationsCreateResponse {
   id: string;
-  created_at: string;
+  createdAt: string;
   datasets: EvaluationsCreateResponseDatasetsList;
-  gateway_id: string;
-  modified_at: string;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
   processed: boolean;
   results: EvaluationsCreateResponseResultsList;
-  total_logs: number;
+  totalLogs: number;
 }
 export const EvaluationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     datasets: EvaluationsCreateResponseDatasetsList,
-    gateway_id: S.String,
-    modified_at: S.String,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     processed: S.Boolean,
     results: EvaluationsCreateResponseResultsList,
-    total_logs: S.Number,
+    totalLogs: S.Number.pipe(T.Body("total_logs")),
   }),
 ).annotate({
   identifier: "EvaluationsCreateResponse",
 }) as any as S.Schema<EvaluationsCreateResponse>;
 
 export interface EvaluationsDeleteRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
   id: string;
 }
 export const EvaluationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -4013,11 +4279,27 @@ export type EvaluationsDeleteResponseDatasetsItemFiltersItemOperator =
 export const EvaluationsDeleteResponseDatasetsItemFiltersItemOperator =
   /*@__PURE__*/ S.String;
 
+export interface EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem",
+  }) as any as S.Schema<EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem>;
+
 export type EvaluationsDeleteResponseDatasetsItemFiltersItemValueList =
-  unknown[];
+  EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem[];
 export const EvaluationsDeleteResponseDatasetsItemFiltersItemValueList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem,
   ) as any as S.Schema<EvaluationsDeleteResponseDatasetsItemFiltersItemValueList>;
 
 export interface EvaluationsDeleteResponseDatasetsItemFiltersItem {
@@ -4045,26 +4327,27 @@ export const EvaluationsDeleteResponseDatasetsItemFiltersList =
 
 export interface EvaluationsDeleteResponseDatasetsItem {
   id: string;
-  account_id: string;
-  account_tag: string;
-  created_at: string;
+  accountId: string;
+  accountTag: string;
+  createdAt: string;
   enable: boolean;
   filters: EvaluationsDeleteResponseDatasetsItemFiltersList;
-  gateway_id: string;
-  modified_at: string;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
 }
 export const EvaluationsDeleteResponseDatasetsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
-      account_id: S.String,
-      account_tag: S.String,
-      created_at: S.String,
+      accountId: S.String.pipe(T.Body("account_id")),
+      accountTag: S.String.pipe(T.Body("account_tag")),
+      createdAt: S.String.pipe(T.Body("created_at")),
       enable: S.Boolean,
       filters: EvaluationsDeleteResponseDatasetsItemFiltersList,
-      gateway_id: S.String,
-      modified_at: S.String,
+      gatewayId: S.String.pipe(T.Body("gateway_id")),
+      modifiedAt: S.String.pipe(T.Body("modified_at")),
       name: S.String,
     }),
 ).annotate({
@@ -4079,27 +4362,27 @@ export const EvaluationsDeleteResponseDatasetsList = /*@__PURE__*/ S.Array(
 
 export interface EvaluationsDeleteResponseResultsItem {
   id: string;
-  created_at: string;
-  evaluation_id: string;
-  evaluation_type_id: string;
-  modified_at: string;
+  createdAt: string;
+  evaluationId: string;
+  evaluationTypeId: string;
+  modifiedAt: string;
   result: string;
   status: number;
-  status_description: string;
-  total_logs: number;
+  statusDescription: string;
+  totalLogs: number;
 }
 export const EvaluationsDeleteResponseResultsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
-      created_at: S.String,
-      evaluation_id: S.String,
-      evaluation_type_id: S.String,
-      modified_at: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      evaluationId: S.String.pipe(T.Body("evaluation_id")),
+      evaluationTypeId: S.String.pipe(T.Body("evaluation_type_id")),
+      modifiedAt: S.String.pipe(T.Body("modified_at")),
       result: S.String,
       status: S.Number,
-      status_description: S.String,
-      total_logs: S.Number,
+      statusDescription: S.String.pipe(T.Body("status_description")),
+      totalLogs: S.Number.pipe(T.Body("total_logs")),
     }),
 ).annotate({
   identifier: "EvaluationsDeleteResponseResultsItem",
@@ -4114,40 +4397,42 @@ export const EvaluationsDeleteResponseResultsList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EvaluationsDeleteResponse {
   id: string;
-  created_at: string;
+  createdAt: string;
   datasets: EvaluationsDeleteResponseDatasetsList;
-  gateway_id: string;
-  modified_at: string;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
   processed: boolean;
   results: EvaluationsDeleteResponseResultsList;
-  total_logs: number;
+  totalLogs: number;
 }
 export const EvaluationsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     datasets: EvaluationsDeleteResponseDatasetsList,
-    gateway_id: S.String,
-    modified_at: S.String,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     processed: S.Boolean,
     results: EvaluationsDeleteResponseResultsList,
-    total_logs: S.Number,
+    totalLogs: S.Number.pipe(T.Body("total_logs")),
   }),
 ).annotate({
   identifier: "EvaluationsDeleteResponse",
 }) as any as S.Schema<EvaluationsDeleteResponse>;
 
 export interface EvaluationsGetRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
   id: string;
 }
 export const EvaluationsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -4177,10 +4462,27 @@ export type EvaluationsGetResponseDatasetsItemFiltersItemOperator =
 export const EvaluationsGetResponseDatasetsItemFiltersItemOperator =
   /*@__PURE__*/ S.String;
 
-export type EvaluationsGetResponseDatasetsItemFiltersItemValueList = unknown[];
+export interface EvaluationsGetResponseDatasetsItemFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const EvaluationsGetResponseDatasetsItemFiltersItemValueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "EvaluationsGetResponseDatasetsItemFiltersItemValueItem",
+  }) as any as S.Schema<EvaluationsGetResponseDatasetsItemFiltersItemValueItem>;
+
+export type EvaluationsGetResponseDatasetsItemFiltersItemValueList =
+  EvaluationsGetResponseDatasetsItemFiltersItemValueItem[];
 export const EvaluationsGetResponseDatasetsItemFiltersItemValueList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    EvaluationsGetResponseDatasetsItemFiltersItemValueItem,
   ) as any as S.Schema<EvaluationsGetResponseDatasetsItemFiltersItemValueList>;
 
 export interface EvaluationsGetResponseDatasetsItemFiltersItem {
@@ -4208,25 +4510,26 @@ export const EvaluationsGetResponseDatasetsItemFiltersList =
 
 export interface EvaluationsGetResponseDatasetsItem {
   id: string;
-  account_id: string;
-  account_tag: string;
-  created_at: string;
+  accountId: string;
+  accountTag: string;
+  createdAt: string;
   enable: boolean;
   filters: EvaluationsGetResponseDatasetsItemFiltersList;
-  gateway_id: string;
-  modified_at: string;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
 }
 export const EvaluationsGetResponseDatasetsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    account_id: S.String,
-    account_tag: S.String,
-    created_at: S.String,
+    accountId: S.String.pipe(T.Body("account_id")),
+    accountTag: S.String.pipe(T.Body("account_tag")),
+    createdAt: S.String.pipe(T.Body("created_at")),
     enable: S.Boolean,
     filters: EvaluationsGetResponseDatasetsItemFiltersList,
-    gateway_id: S.String,
-    modified_at: S.String,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
   }),
 ).annotate({
@@ -4241,26 +4544,26 @@ export const EvaluationsGetResponseDatasetsList = /*@__PURE__*/ S.Array(
 
 export interface EvaluationsGetResponseResultsItem {
   id: string;
-  created_at: string;
-  evaluation_id: string;
-  evaluation_type_id: string;
-  modified_at: string;
+  createdAt: string;
+  evaluationId: string;
+  evaluationTypeId: string;
+  modifiedAt: string;
   result: string;
   status: number;
-  status_description: string;
-  total_logs: number;
+  statusDescription: string;
+  totalLogs: number;
 }
 export const EvaluationsGetResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
-    evaluation_id: S.String,
-    evaluation_type_id: S.String,
-    modified_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    evaluationId: S.String.pipe(T.Body("evaluation_id")),
+    evaluationTypeId: S.String.pipe(T.Body("evaluation_type_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     result: S.String,
     status: S.Number,
-    status_description: S.String,
-    total_logs: S.Number,
+    statusDescription: S.String.pipe(T.Body("status_description")),
+    totalLogs: S.Number.pipe(T.Body("total_logs")),
   }),
 ).annotate({
   identifier: "EvaluationsGetResponseResultsItem",
@@ -4275,47 +4578,50 @@ export const EvaluationsGetResponseResultsList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EvaluationsGetResponse {
   id: string;
-  created_at: string;
+  createdAt: string;
   datasets: EvaluationsGetResponseDatasetsList;
-  gateway_id: string;
-  modified_at: string;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
   processed: boolean;
   results: EvaluationsGetResponseResultsList;
-  total_logs: number;
+  totalLogs: number;
 }
 export const EvaluationsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     datasets: EvaluationsGetResponseDatasetsList,
-    gateway_id: S.String,
-    modified_at: S.String,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     processed: S.Boolean,
     results: EvaluationsGetResponseResultsList,
-    total_logs: S.Number,
+    totalLogs: S.Number.pipe(T.Body("total_logs")),
   }),
 ).annotate({
   identifier: "EvaluationsGetResponse",
 }) as any as S.Schema<EvaluationsGetResponse>;
 
 export interface EvaluationsListRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
   name?: string;
   page?: number;
-  per_page?: number;
+  perPage?: number;
   processed?: boolean;
+  /** Search by id, name */
   search?: string;
 }
 export const EvaluationsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     name: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     processed: S.optional(S.Boolean.pipe(T.Query())),
     search: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -4346,11 +4652,27 @@ export type EvaluationsListResultItemDatasetsItemFiltersItemOperator =
 export const EvaluationsListResultItemDatasetsItemFiltersItemOperator =
   /*@__PURE__*/ S.String;
 
+export interface EvaluationsListResultItemDatasetsItemFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const EvaluationsListResultItemDatasetsItemFiltersItemValueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "EvaluationsListResultItemDatasetsItemFiltersItemValueItem",
+  }) as any as S.Schema<EvaluationsListResultItemDatasetsItemFiltersItemValueItem>;
+
 export type EvaluationsListResultItemDatasetsItemFiltersItemValueList =
-  unknown[];
+  EvaluationsListResultItemDatasetsItemFiltersItemValueItem[];
 export const EvaluationsListResultItemDatasetsItemFiltersItemValueList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    EvaluationsListResultItemDatasetsItemFiltersItemValueItem,
   ) as any as S.Schema<EvaluationsListResultItemDatasetsItemFiltersItemValueList>;
 
 export interface EvaluationsListResultItemDatasetsItemFiltersItem {
@@ -4378,26 +4700,27 @@ export const EvaluationsListResultItemDatasetsItemFiltersList =
 
 export interface EvaluationsListResultItemDatasetsItem {
   id: string;
-  account_id: string;
-  account_tag: string;
-  created_at: string;
+  accountId: string;
+  accountTag: string;
+  createdAt: string;
   enable: boolean;
   filters: EvaluationsListResultItemDatasetsItemFiltersList;
-  gateway_id: string;
-  modified_at: string;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
 }
 export const EvaluationsListResultItemDatasetsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
-      account_id: S.String,
-      account_tag: S.String,
-      created_at: S.String,
+      accountId: S.String.pipe(T.Body("account_id")),
+      accountTag: S.String.pipe(T.Body("account_tag")),
+      createdAt: S.String.pipe(T.Body("created_at")),
       enable: S.Boolean,
       filters: EvaluationsListResultItemDatasetsItemFiltersList,
-      gateway_id: S.String,
-      modified_at: S.String,
+      gatewayId: S.String.pipe(T.Body("gateway_id")),
+      modifiedAt: S.String.pipe(T.Body("modified_at")),
       name: S.String,
     }),
 ).annotate({
@@ -4412,27 +4735,27 @@ export const EvaluationsListResultItemDatasetsList = /*@__PURE__*/ S.Array(
 
 export interface EvaluationsListResultItemResultsItem {
   id: string;
-  created_at: string;
-  evaluation_id: string;
-  evaluation_type_id: string;
-  modified_at: string;
+  createdAt: string;
+  evaluationId: string;
+  evaluationTypeId: string;
+  modifiedAt: string;
   result: string;
   status: number;
-  status_description: string;
-  total_logs: number;
+  statusDescription: string;
+  totalLogs: number;
 }
 export const EvaluationsListResultItemResultsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
-      created_at: S.String,
-      evaluation_id: S.String,
-      evaluation_type_id: S.String,
-      modified_at: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      evaluationId: S.String.pipe(T.Body("evaluation_id")),
+      evaluationTypeId: S.String.pipe(T.Body("evaluation_type_id")),
+      modifiedAt: S.String.pipe(T.Body("modified_at")),
       result: S.String,
       status: S.Number,
-      status_description: S.String,
-      total_logs: S.Number,
+      statusDescription: S.String.pipe(T.Body("status_description")),
+      totalLogs: S.Number.pipe(T.Body("total_logs")),
     }),
 ).annotate({
   identifier: "EvaluationsListResultItemResultsItem",
@@ -4446,26 +4769,27 @@ export const EvaluationsListResultItemResultsList = /*@__PURE__*/ S.Array(
 
 export interface EvaluationsListResultItem {
   id: string;
-  created_at: string;
+  createdAt: string;
   datasets: EvaluationsListResultItemDatasetsList;
-  gateway_id: string;
-  modified_at: string;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
   name: string;
   processed: boolean;
   results: EvaluationsListResultItemResultsList;
-  total_logs: number;
+  totalLogs: number;
 }
 export const EvaluationsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     datasets: EvaluationsListResultItemDatasetsList,
-    gateway_id: S.String,
-    modified_at: S.String,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     processed: S.Boolean,
     results: EvaluationsListResultItemResultsList,
-    total_logs: S.Number,
+    totalLogs: S.Number.pipe(T.Body("total_logs")),
   }),
 ).annotate({
   identifier: "EvaluationsListResultItem",
@@ -4477,6 +4801,7 @@ export const EvaluationsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EvaluationsListResultList>;
 
 export interface EvaluationsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: EvaluationsListResultList;
 }
 export const EvaluationsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -4495,21 +4820,23 @@ export const EvaluationTypesListRequestOrderByDirection =
   /*@__PURE__*/ S.String;
 
 export interface EvaluationTypesListRequest {
-  account_id: string;
-  order_by?: string;
-  order_by_direction?: EvaluationTypesListRequestOrderByDirection;
+  accountId: string;
+  orderBy?: string;
+  orderByDirection?: EvaluationTypesListRequestOrderByDirection;
   page?: number;
-  per_page?: number;
+  perPage?: number;
 }
 export const EvaluationTypesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    order_by: S.optional(S.String.pipe(T.Query())),
-    order_by_direction: S.optional(
-      EvaluationTypesListRequestOrderByDirection.pipe(T.Query()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
+    orderByDirection: S.optional(
+      EvaluationTypesListRequestOrderByDirection.pipe(
+        T.Query("order_by_direction"),
+      ),
     ),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4523,22 +4850,22 @@ export const EvaluationTypesListRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface EvaluationTypesListResultItem {
   id: string;
-  created_at: string;
+  createdAt: string;
   description: string;
   enable: boolean;
   mandatory: boolean;
-  modified_at: string;
+  modifiedAt: string;
   name: string;
   type: string;
 }
 export const EvaluationTypesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     description: S.String,
     enable: S.Boolean,
     mandatory: S.Boolean,
-    modified_at: S.String,
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
     type: S.String,
   }),
@@ -4552,6 +4879,7 @@ export const EvaluationTypesListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EvaluationTypesListResultList>;
 
 export interface EvaluationTypesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: EvaluationTypesListResultList;
 }
 export const EvaluationTypesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -4563,12 +4891,13 @@ export const EvaluationTypesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationTypesListResponse>;
 
 export interface GetRequest {
-  account_id: string;
+  accountId: string;
+  /** gateway id */
   id: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -4580,15 +4909,15 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
 export interface GetResponseDlp {
-  object___action__enabled__profiles__: unknown;
-  object___enabled__policies__: unknown;
+  objectActionEnabledProfiles__: unknown;
+  objectEnabledPolicies__: unknown;
 }
 export const GetResponseDlp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    object___action__enabled__profiles__: S.Unknown.pipe(
+    objectActionEnabledProfiles__: S.Unknown.pipe(
       T.Body("object { action, enabled, profiles }"),
     ),
-    object___enabled__policies__: S.Unknown.pipe(
+    objectEnabledPolicies__: S.Unknown.pipe(
       T.Body("object { enabled, policies }"),
     ),
   }),
@@ -4789,14 +5118,16 @@ export interface GetResponseOtelItem {
   headers: GetResponseOtelItemHeadersMap;
   url: string;
   authorization?: string;
-  content_type?: GetResponseOtelItemContentType;
+  contentType?: GetResponseOtelItemContentType;
 }
 export const GetResponseOtelItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: GetResponseOtelItemHeadersMap,
     url: S.String,
     authorization: S.optional(S.String),
-    content_type: S.optional(GetResponseOtelItemContentType),
+    contentType: S.optional(
+      GetResponseOtelItemContentType.pipe(T.Body("content_type")),
+    ),
   }),
 ).annotate({
   identifier: "GetResponseOtelItem",
@@ -4951,12 +5282,12 @@ export const GetResponseStripeUsageEventsList = /*@__PURE__*/ S.Array(
 
 export interface GetResponseStripe {
   authorization: string;
-  usage_events: GetResponseStripeUsageEventsList;
+  usageEvents: GetResponseStripeUsageEventsList;
 }
 export const GetResponseStripe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorization: S.String,
-    usage_events: GetResponseStripeUsageEventsList,
+    usageEvents: GetResponseStripeUsageEventsList.pipe(T.Body("usage_events")),
   }),
 ).annotate({
   identifier: "GetResponseStripe",
@@ -4967,75 +5298,93 @@ export const GetResponseWorkersAiBillingMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
+  /** gateway id */
   id: string;
-  cache_invalidate_on_update: boolean;
-  cache_ttl: number;
-  collect_logs: boolean;
-  created_at: string;
-  modified_at: string;
-  rate_limiting_interval: number;
-  rate_limiting_limit: number;
+  cacheInvalidateOnUpdate: boolean;
+  cacheTtl: number;
+  collectLogs: boolean;
+  createdAt: string;
+  modifiedAt: string;
+  rateLimitingInterval: number;
+  rateLimitingLimit: number;
   authentication?: boolean;
   dlp?: GetResponseDlp;
   guardrails?: GetResponseGuardrails;
-  is_default?: boolean;
-  log_management?: number;
-  log_management_strategy?: GetResponseLogManagementStrategy;
+  isDefault?: boolean;
+  logManagement?: number;
+  logManagementStrategy?: GetResponseLogManagementStrategy;
   logpush?: boolean;
-  logpush_public_key?: string;
+  logpushPublicKey?: string;
   otel?: GetResponseOtelList;
-  rate_limiting_technique?: GetResponseRateLimitingTechnique;
-  retry_backoff?: GetResponseRetryBackoff;
-  retry_delay?: number;
-  retry_max_attempts?: number;
-  spend_limits?: GetResponseSpendLimits;
-  store_id?: string;
+  rateLimitingTechnique?: GetResponseRateLimitingTechnique;
+  /** Backoff strategy for retry delays */
+  retryBackoff?: GetResponseRetryBackoff;
+  /** Delay between retry attempts in milliseconds (0-5000) */
+  retryDelay?: number;
+  /** Maximum number of retry attempts for failed requests (1-5) */
+  retryMaxAttempts?: number;
+  spendLimits?: GetResponseSpendLimits;
+  storeId?: string;
   stripe?: GetResponseStripe;
-  workers_ai_billing_mode?: GetResponseWorkersAiBillingMode;
+  /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
+  workersAiBillingMode?: GetResponseWorkersAiBillingMode;
   zdr?: boolean;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    cache_invalidate_on_update: S.Boolean,
-    cache_ttl: S.Number,
-    collect_logs: S.Boolean,
-    created_at: S.String,
-    modified_at: S.String,
-    rate_limiting_interval: S.Number,
-    rate_limiting_limit: S.Number,
+    cacheInvalidateOnUpdate: S.Boolean.pipe(
+      T.Body("cache_invalidate_on_update"),
+    ),
+    cacheTtl: S.Number.pipe(T.Body("cache_ttl")),
+    collectLogs: S.Boolean.pipe(T.Body("collect_logs")),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    rateLimitingInterval: S.Number.pipe(T.Body("rate_limiting_interval")),
+    rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
     authentication: S.optional(S.Boolean),
     dlp: S.optional(GetResponseDlp),
     guardrails: S.optional(GetResponseGuardrails),
-    is_default: S.optional(S.Boolean),
-    log_management: S.optional(S.Number),
-    log_management_strategy: S.optional(GetResponseLogManagementStrategy),
+    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
+    logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
+    logManagementStrategy: S.optional(
+      GetResponseLogManagementStrategy.pipe(T.Body("log_management_strategy")),
+    ),
     logpush: S.optional(S.Boolean),
-    logpush_public_key: S.optional(S.String),
+    logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
     otel: S.optional(GetResponseOtelList),
-    rate_limiting_technique: S.optional(GetResponseRateLimitingTechnique),
-    retry_backoff: S.optional(GetResponseRetryBackoff),
-    retry_delay: S.optional(S.Number),
-    retry_max_attempts: S.optional(S.Number),
-    spend_limits: S.optional(GetResponseSpendLimits),
-    store_id: S.optional(S.String),
+    rateLimitingTechnique: S.optional(
+      GetResponseRateLimitingTechnique.pipe(T.Body("rate_limiting_technique")),
+    ),
+    retryBackoff: S.optional(
+      GetResponseRetryBackoff.pipe(T.Body("retry_backoff")),
+    ),
+    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+    retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
+    spendLimits: S.optional(
+      GetResponseSpendLimits.pipe(T.Body("spend_limits")),
+    ),
+    storeId: S.optional(S.String.pipe(T.Body("store_id"))),
     stripe: S.optional(GetResponseStripe),
-    workers_ai_billing_mode: S.optional(GetResponseWorkersAiBillingMode),
+    workersAiBillingMode: S.optional(
+      GetResponseWorkersAiBillingMode.pipe(T.Body("workers_ai_billing_mode")),
+    ),
     zdr: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
 export interface ListRequest {
-  account_id: string;
+  accountId: string;
   page?: number;
-  per_page?: number;
+  perPage?: number;
+  /** Search by id */
   search?: string;
 }
 export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -5047,15 +5396,15 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
 
 export interface ListResultItemDlp {
-  object___action__enabled__profiles__: unknown;
-  object___enabled__policies__: unknown;
+  objectActionEnabledProfiles__: unknown;
+  objectEnabledPolicies__: unknown;
 }
 export const ListResultItemDlp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    object___action__enabled__profiles__: S.Unknown.pipe(
+    objectActionEnabledProfiles__: S.Unknown.pipe(
       T.Body("object { action, enabled, profiles }"),
     ),
-    object___enabled__policies__: S.Unknown.pipe(
+    objectEnabledPolicies__: S.Unknown.pipe(
       T.Body("object { enabled, policies }"),
     ),
   }),
@@ -5312,14 +5661,16 @@ export interface ListResultItemOtelItem {
   headers: ListResultItemOtelItemHeadersMap;
   url: string;
   authorization?: string;
-  content_type?: ListResultItemOtelItemContentType;
+  contentType?: ListResultItemOtelItemContentType;
 }
 export const ListResultItemOtelItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: ListResultItemOtelItemHeadersMap,
     url: S.String,
     authorization: S.optional(S.String),
-    content_type: S.optional(ListResultItemOtelItemContentType),
+    contentType: S.optional(
+      ListResultItemOtelItemContentType.pipe(T.Body("content_type")),
+    ),
   }),
 ).annotate({
   identifier: "ListResultItemOtelItem",
@@ -5482,12 +5833,14 @@ export const ListResultItemStripeUsageEventsList = /*@__PURE__*/ S.Array(
 
 export interface ListResultItemStripe {
   authorization: string;
-  usage_events: ListResultItemStripeUsageEventsList;
+  usageEvents: ListResultItemStripeUsageEventsList;
 }
 export const ListResultItemStripe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorization: S.String,
-    usage_events: ListResultItemStripeUsageEventsList,
+    usageEvents: ListResultItemStripeUsageEventsList.pipe(
+      T.Body("usage_events"),
+    ),
   }),
 ).annotate({
   identifier: "ListResultItemStripe",
@@ -5497,60 +5850,83 @@ export type ListResultItemWorkersAiBillingMode = "postpaid" | (string & {});
 export const ListResultItemWorkersAiBillingMode = /*@__PURE__*/ S.String;
 
 export interface ListResultItem {
+  /** gateway id */
   id: string;
-  cache_invalidate_on_update: boolean;
-  cache_ttl: number;
-  collect_logs: boolean;
-  created_at: string;
-  modified_at: string;
-  rate_limiting_interval: number;
-  rate_limiting_limit: number;
+  cacheInvalidateOnUpdate: boolean;
+  cacheTtl: number;
+  collectLogs: boolean;
+  createdAt: string;
+  modifiedAt: string;
+  rateLimitingInterval: number;
+  rateLimitingLimit: number;
   authentication?: boolean;
   dlp?: ListResultItemDlp;
   guardrails?: ListResultItemGuardrails;
-  is_default?: boolean;
-  log_management?: number;
-  log_management_strategy?: ListResultItemLogManagementStrategy;
+  isDefault?: boolean;
+  logManagement?: number;
+  logManagementStrategy?: ListResultItemLogManagementStrategy;
   logpush?: boolean;
-  logpush_public_key?: string;
+  logpushPublicKey?: string;
   otel?: ListResultItemOtelList;
-  rate_limiting_technique?: ListResultItemRateLimitingTechnique;
-  retry_backoff?: ListResultItemRetryBackoff;
-  retry_delay?: number;
-  retry_max_attempts?: number;
-  spend_limits?: ListResultItemSpendLimits;
-  store_id?: string;
+  rateLimitingTechnique?: ListResultItemRateLimitingTechnique;
+  /** Backoff strategy for retry delays */
+  retryBackoff?: ListResultItemRetryBackoff;
+  /** Delay between retry attempts in milliseconds (0-5000) */
+  retryDelay?: number;
+  /** Maximum number of retry attempts for failed requests (1-5) */
+  retryMaxAttempts?: number;
+  spendLimits?: ListResultItemSpendLimits;
+  storeId?: string;
   stripe?: ListResultItemStripe;
-  workers_ai_billing_mode?: ListResultItemWorkersAiBillingMode;
+  /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
+  workersAiBillingMode?: ListResultItemWorkersAiBillingMode;
   zdr?: boolean;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    cache_invalidate_on_update: S.Boolean,
-    cache_ttl: S.Number,
-    collect_logs: S.Boolean,
-    created_at: S.String,
-    modified_at: S.String,
-    rate_limiting_interval: S.Number,
-    rate_limiting_limit: S.Number,
+    cacheInvalidateOnUpdate: S.Boolean.pipe(
+      T.Body("cache_invalidate_on_update"),
+    ),
+    cacheTtl: S.Number.pipe(T.Body("cache_ttl")),
+    collectLogs: S.Boolean.pipe(T.Body("collect_logs")),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    rateLimitingInterval: S.Number.pipe(T.Body("rate_limiting_interval")),
+    rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
     authentication: S.optional(S.Boolean),
     dlp: S.optional(ListResultItemDlp),
     guardrails: S.optional(ListResultItemGuardrails),
-    is_default: S.optional(S.Boolean),
-    log_management: S.optional(S.Number),
-    log_management_strategy: S.optional(ListResultItemLogManagementStrategy),
+    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
+    logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
+    logManagementStrategy: S.optional(
+      ListResultItemLogManagementStrategy.pipe(
+        T.Body("log_management_strategy"),
+      ),
+    ),
     logpush: S.optional(S.Boolean),
-    logpush_public_key: S.optional(S.String),
+    logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
     otel: S.optional(ListResultItemOtelList),
-    rate_limiting_technique: S.optional(ListResultItemRateLimitingTechnique),
-    retry_backoff: S.optional(ListResultItemRetryBackoff),
-    retry_delay: S.optional(S.Number),
-    retry_max_attempts: S.optional(S.Number),
-    spend_limits: S.optional(ListResultItemSpendLimits),
-    store_id: S.optional(S.String),
+    rateLimitingTechnique: S.optional(
+      ListResultItemRateLimitingTechnique.pipe(
+        T.Body("rate_limiting_technique"),
+      ),
+    ),
+    retryBackoff: S.optional(
+      ListResultItemRetryBackoff.pipe(T.Body("retry_backoff")),
+    ),
+    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+    retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
+    spendLimits: S.optional(
+      ListResultItemSpendLimits.pipe(T.Body("spend_limits")),
+    ),
+    storeId: S.optional(S.String.pipe(T.Body("store_id"))),
     stripe: S.optional(ListResultItemStripe),
-    workers_ai_billing_mode: S.optional(ListResultItemWorkersAiBillingMode),
+    workersAiBillingMode: S.optional(
+      ListResultItemWorkersAiBillingMode.pipe(
+        T.Body("workers_ai_billing_mode"),
+      ),
+    ),
     zdr: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
@@ -5561,6 +5937,7 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResultList>;
 
 export interface ListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
 export const ListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5585,22 +5962,23 @@ export type LogsDeleteRequestOrderByDirection = "asc" | "desc" | (string & {});
 export const LogsDeleteRequestOrderByDirection = /*@__PURE__*/ S.String;
 
 export interface LogsDeleteRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
   filters?: LogsDeleteRequestFiltersList;
   limit?: number;
-  order_by?: LogsDeleteRequestOrderBy;
-  order_by_direction?: LogsDeleteRequestOrderByDirection;
+  orderBy?: LogsDeleteRequestOrderBy;
+  orderByDirection?: LogsDeleteRequestOrderByDirection;
 }
 export const LogsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     filters: S.optional(LogsDeleteRequestFiltersList.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
-    order_by: S.optional(LogsDeleteRequestOrderBy.pipe(T.Query())),
-    order_by_direction: S.optional(
-      LogsDeleteRequestOrderByDirection.pipe(T.Query()),
+    orderBy: S.optional(LogsDeleteRequestOrderBy.pipe(T.Query("order_by"))),
+    orderByDirection: S.optional(
+      LogsDeleteRequestOrderByDirection.pipe(T.Query("order_by_direction")),
     ),
   }).pipe(
     T.Http({
@@ -5627,8 +6005,9 @@ export const LogsEditRequestMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LogsEditRequestMetadataMap>;
 
 export interface LogsEditRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
   id: string;
   feedback?: number;
   metadata?: LogsEditRequestMetadataMap;
@@ -5636,8 +6015,8 @@ export interface LogsEditRequest {
 }
 export const LogsEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
     feedback: S.optional(S.Number),
     metadata: S.optional(LogsEditRequestMetadataMap),
@@ -5654,6 +6033,7 @@ export const LogsEditRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsEditRequest>;
 
 export interface LogsEditResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const LogsEditResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5665,14 +6045,15 @@ export const LogsEditResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsEditResponse>;
 
 export interface LogsGetRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
   id: string;
 }
 export const LogsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -5687,56 +6068,64 @@ export const LogsGetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface LogsGetResponse {
   id: string;
   cached: boolean;
-  created_at: string;
+  createdAt: string;
   duration: number;
   model: string;
   path: string;
   provider: string;
   success: boolean;
-  tokens_in: number;
-  tokens_out: number;
+  tokensIn: number;
+  tokensOut: number;
   cost?: number;
-  custom_cost?: boolean;
+  customCost?: boolean;
   metadata?: string;
-  model_type?: string;
-  request_content_type?: string;
-  request_head?: string;
-  request_head_complete?: boolean;
-  request_size?: number;
-  request_type?: string;
-  response_content_type?: string;
-  response_head?: string;
-  response_head_complete?: boolean;
-  response_size?: number;
-  status_code?: number;
+  modelType?: string;
+  requestContentType?: string;
+  requestHead?: string;
+  requestHeadComplete?: boolean;
+  requestSize?: number;
+  requestType?: string;
+  responseContentType?: string;
+  responseHead?: string;
+  responseHeadComplete?: boolean;
+  responseSize?: number;
+  statusCode?: number;
   step?: number;
 }
 export const LogsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cached: S.Boolean,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     duration: S.Number,
     model: S.String,
     path: S.String,
     provider: S.String,
     success: S.Boolean,
-    tokens_in: S.Number,
-    tokens_out: S.Number,
+    tokensIn: S.Number.pipe(T.Body("tokens_in")),
+    tokensOut: S.Number.pipe(T.Body("tokens_out")),
     cost: S.optional(S.Number),
-    custom_cost: S.optional(S.Boolean),
+    customCost: S.optional(S.Boolean.pipe(T.Body("custom_cost"))),
     metadata: S.optional(S.String),
-    model_type: S.optional(S.String),
-    request_content_type: S.optional(S.String),
-    request_head: S.optional(S.String),
-    request_head_complete: S.optional(S.Boolean),
-    request_size: S.optional(S.Number),
-    request_type: S.optional(S.String),
-    response_content_type: S.optional(S.String),
-    response_head: S.optional(S.String),
-    response_head_complete: S.optional(S.Boolean),
-    response_size: S.optional(S.Number),
-    status_code: S.optional(S.Number),
+    modelType: S.optional(S.String.pipe(T.Body("model_type"))),
+    requestContentType: S.optional(
+      S.String.pipe(T.Body("request_content_type")),
+    ),
+    requestHead: S.optional(S.String.pipe(T.Body("request_head"))),
+    requestHeadComplete: S.optional(
+      S.Boolean.pipe(T.Body("request_head_complete")),
+    ),
+    requestSize: S.optional(S.Number.pipe(T.Body("request_size"))),
+    requestType: S.optional(S.String.pipe(T.Body("request_type"))),
+    responseContentType: S.optional(
+      S.String.pipe(T.Body("response_content_type")),
+    ),
+    responseHead: S.optional(S.String.pipe(T.Body("response_head"))),
+    responseHeadComplete: S.optional(
+      S.Boolean.pipe(T.Body("response_head_complete")),
+    ),
+    responseSize: S.optional(S.Number.pipe(T.Body("response_size"))),
+    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
     step: S.optional(S.Number),
   }),
 ).annotate({
@@ -5762,70 +6151,75 @@ export type LogsListRequestOrderByDirection = "asc" | "desc" | (string & {});
 export const LogsListRequestOrderByDirection = /*@__PURE__*/ S.String;
 
 export interface LogsListRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
   cached?: boolean;
   direction?: LogsListRequestDirection;
-  end_date?: string;
+  endDate?: string;
   feedback?: string;
   filters?: LogsListRequestFiltersList;
-  max_cost?: number;
-  max_duration?: number;
-  max_tokens_in?: number;
-  max_tokens_out?: number;
-  max_total_tokens?: number;
-  meta_info?: boolean;
-  min_cost?: number;
-  min_duration?: number;
-  min_tokens_in?: number;
-  min_tokens_out?: number;
-  min_total_tokens?: number;
+  maxCost?: number;
+  maxDuration?: number;
+  maxTokensIn?: number;
+  maxTokensOut?: number;
+  maxTotalTokens?: number;
+  metaInfo?: boolean;
+  minCost?: number;
+  minDuration?: number;
+  minTokensIn?: number;
+  minTokensOut?: number;
+  minTotalTokens?: number;
   model?: string;
-  model_type?: string;
-  order_by?: LogsListRequestOrderBy;
-  order_by_direction?: LogsListRequestOrderByDirection;
+  modelType?: string;
+  orderBy?: LogsListRequestOrderBy;
+  orderByDirection?: LogsListRequestOrderByDirection;
   page?: number;
-  per_page?: number;
+  perPage?: number;
   provider?: string;
-  request_content_type?: string;
-  response_content_type?: string;
+  requestContentType?: string;
+  responseContentType?: string;
   search?: string;
-  start_date?: string;
+  startDate?: string;
   success?: boolean;
 }
 export const LogsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     cached: S.optional(S.Boolean.pipe(T.Query())),
     direction: S.optional(LogsListRequestDirection.pipe(T.Query())),
-    end_date: S.optional(S.String.pipe(T.Query())),
+    endDate: S.optional(S.String.pipe(T.Query("end_date"))),
     feedback: S.optional(S.String.pipe(T.Query())),
     filters: S.optional(LogsListRequestFiltersList.pipe(T.Query())),
-    max_cost: S.optional(S.Number.pipe(T.Query())),
-    max_duration: S.optional(S.Number.pipe(T.Query())),
-    max_tokens_in: S.optional(S.Number.pipe(T.Query())),
-    max_tokens_out: S.optional(S.Number.pipe(T.Query())),
-    max_total_tokens: S.optional(S.Number.pipe(T.Query())),
-    meta_info: S.optional(S.Boolean.pipe(T.Query())),
-    min_cost: S.optional(S.Number.pipe(T.Query())),
-    min_duration: S.optional(S.Number.pipe(T.Query())),
-    min_tokens_in: S.optional(S.Number.pipe(T.Query())),
-    min_tokens_out: S.optional(S.Number.pipe(T.Query())),
-    min_total_tokens: S.optional(S.Number.pipe(T.Query())),
+    maxCost: S.optional(S.Number.pipe(T.Query("max_cost"))),
+    maxDuration: S.optional(S.Number.pipe(T.Query("max_duration"))),
+    maxTokensIn: S.optional(S.Number.pipe(T.Query("max_tokens_in"))),
+    maxTokensOut: S.optional(S.Number.pipe(T.Query("max_tokens_out"))),
+    maxTotalTokens: S.optional(S.Number.pipe(T.Query("max_total_tokens"))),
+    metaInfo: S.optional(S.Boolean.pipe(T.Query("meta_info"))),
+    minCost: S.optional(S.Number.pipe(T.Query("min_cost"))),
+    minDuration: S.optional(S.Number.pipe(T.Query("min_duration"))),
+    minTokensIn: S.optional(S.Number.pipe(T.Query("min_tokens_in"))),
+    minTokensOut: S.optional(S.Number.pipe(T.Query("min_tokens_out"))),
+    minTotalTokens: S.optional(S.Number.pipe(T.Query("min_total_tokens"))),
     model: S.optional(S.String.pipe(T.Query())),
-    model_type: S.optional(S.String.pipe(T.Query())),
-    order_by: S.optional(LogsListRequestOrderBy.pipe(T.Query())),
-    order_by_direction: S.optional(
-      LogsListRequestOrderByDirection.pipe(T.Query()),
+    modelType: S.optional(S.String.pipe(T.Query("model_type"))),
+    orderBy: S.optional(LogsListRequestOrderBy.pipe(T.Query("order_by"))),
+    orderByDirection: S.optional(
+      LogsListRequestOrderByDirection.pipe(T.Query("order_by_direction")),
     ),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     provider: S.optional(S.String.pipe(T.Query())),
-    request_content_type: S.optional(S.String.pipe(T.Query())),
-    response_content_type: S.optional(S.String.pipe(T.Query())),
+    requestContentType: S.optional(
+      S.String.pipe(T.Query("request_content_type")),
+    ),
+    responseContentType: S.optional(
+      S.String.pipe(T.Query("response_content_type")),
+    ),
     search: S.optional(S.String.pipe(T.Query())),
-    start_date: S.optional(S.String.pipe(T.Query())),
+    startDate: S.optional(S.String.pipe(T.Query("start_date"))),
     success: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -5841,44 +6235,48 @@ export const LogsListRequest = /*@__PURE__*/ S.suspend(() =>
 export interface LogsListResultItem {
   id: string;
   cached: boolean;
-  created_at: string;
+  createdAt: string;
   duration: number;
   model: string;
   path: string;
   provider: string;
   success: boolean;
-  tokens_in: number;
-  tokens_out: number;
+  tokensIn: number;
+  tokensOut: number;
   cost?: number;
-  custom_cost?: boolean;
+  customCost?: boolean;
   metadata?: string;
-  model_type?: string;
-  request_content_type?: string;
-  request_type?: string;
-  response_content_type?: string;
-  status_code?: number;
+  modelType?: string;
+  requestContentType?: string;
+  requestType?: string;
+  responseContentType?: string;
+  statusCode?: number;
   step?: number;
 }
 export const LogsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cached: S.Boolean,
-    created_at: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
     duration: S.Number,
     model: S.String,
     path: S.String,
     provider: S.String,
     success: S.Boolean,
-    tokens_in: S.Number,
-    tokens_out: S.Number,
+    tokensIn: S.Number.pipe(T.Body("tokens_in")),
+    tokensOut: S.Number.pipe(T.Body("tokens_out")),
     cost: S.optional(S.Number),
-    custom_cost: S.optional(S.Boolean),
+    customCost: S.optional(S.Boolean.pipe(T.Body("custom_cost"))),
     metadata: S.optional(S.String),
-    model_type: S.optional(S.String),
-    request_content_type: S.optional(S.String),
-    request_type: S.optional(S.String),
-    response_content_type: S.optional(S.String),
-    status_code: S.optional(S.Number),
+    modelType: S.optional(S.String.pipe(T.Body("model_type"))),
+    requestContentType: S.optional(
+      S.String.pipe(T.Body("request_content_type")),
+    ),
+    requestType: S.optional(S.String.pipe(T.Body("request_type"))),
+    responseContentType: S.optional(
+      S.String.pipe(T.Body("response_content_type")),
+    ),
+    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
     step: S.optional(S.Number),
   }),
 ).annotate({
@@ -5891,6 +6289,7 @@ export const LogsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LogsListResultList>;
 
 export interface LogsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: LogsListResultList;
 }
 export const LogsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5902,14 +6301,15 @@ export const LogsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsListResponse>;
 
 export interface LogsRequestRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
   id: string;
 }
 export const LogsRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -5930,14 +6330,15 @@ export const LogsRequestResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsRequestResponse>;
 
 export interface LogsResponseRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
   id: string;
 }
 export const LogsResponseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -5958,27 +6359,28 @@ export const LogsResponseResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsResponseResponse>;
 
 export interface ProviderConfigsCreateRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
   alias: string;
-  default_config: boolean;
-  provider_slug: string;
-  rate_limit?: number;
-  rate_limit_period?: number;
+  defaultConfig: boolean;
+  providerSlug: string;
+  rateLimit?: number;
+  rateLimitPeriod?: number;
   secret?: string;
-  secret_id?: string;
+  secretId?: string;
 }
 export const ProviderConfigsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     alias: S.String,
-    default_config: S.Boolean,
-    provider_slug: S.String,
-    rate_limit: S.optional(S.Number),
-    rate_limit_period: S.optional(S.Number),
+    defaultConfig: S.Boolean.pipe(T.Body("default_config")),
+    providerSlug: S.String.pipe(T.Body("provider_slug")),
+    rateLimit: S.optional(S.Number.pipe(T.Body("rate_limit"))),
+    rateLimitPeriod: S.optional(S.Number.pipe(T.Body("rate_limit_period"))),
     secret: S.optional(S.String),
-    secret_id: S.optional(S.String),
+    secretId: S.optional(S.String.pipe(T.Body("secret_id"))),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5994,44 +6396,46 @@ export const ProviderConfigsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ProviderConfigsCreateResponse {
   id: string;
   alias: string;
-  default_config: boolean;
-  gateway_id: string;
-  modified_at: string;
-  provider_slug: string;
-  secret_id: string;
-  secret_preview: string;
-  rate_limit?: number;
-  rate_limit_period?: number;
+  defaultConfig: boolean;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
+  providerSlug: string;
+  secretId: string;
+  secretPreview: string;
+  rateLimit?: number;
+  rateLimitPeriod?: number;
 }
 export const ProviderConfigsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     alias: S.String,
-    default_config: S.Boolean,
-    gateway_id: S.String,
-    modified_at: S.String,
-    provider_slug: S.String,
-    secret_id: S.String,
-    secret_preview: S.String,
-    rate_limit: S.optional(S.Number),
-    rate_limit_period: S.optional(S.Number),
+    defaultConfig: S.Boolean.pipe(T.Body("default_config")),
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    providerSlug: S.String.pipe(T.Body("provider_slug")),
+    secretId: S.String.pipe(T.Body("secret_id")),
+    secretPreview: S.String.pipe(T.Body("secret_preview")),
+    rateLimit: S.optional(S.Number.pipe(T.Body("rate_limit"))),
+    rateLimitPeriod: S.optional(S.Number.pipe(T.Body("rate_limit_period"))),
   }),
 ).annotate({
   identifier: "ProviderConfigsCreateResponse",
 }) as any as S.Schema<ProviderConfigsCreateResponse>;
 
 export interface ProviderConfigsListRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
   page?: number;
-  per_page?: number;
+  perPage?: number;
 }
 export const ProviderConfigsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -6046,27 +6450,28 @@ export const ProviderConfigsListRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ProviderConfigsListResultItem {
   id: string;
   alias: string;
-  default_config: boolean;
-  gateway_id: string;
-  modified_at: string;
-  provider_slug: string;
-  secret_id: string;
-  secret_preview: string;
-  rate_limit?: number;
-  rate_limit_period?: number;
+  defaultConfig: boolean;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
+  providerSlug: string;
+  secretId: string;
+  secretPreview: string;
+  rateLimit?: number;
+  rateLimitPeriod?: number;
 }
 export const ProviderConfigsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     alias: S.String,
-    default_config: S.Boolean,
-    gateway_id: S.String,
-    modified_at: S.String,
-    provider_slug: S.String,
-    secret_id: S.String,
-    secret_preview: S.String,
-    rate_limit: S.optional(S.Number),
-    rate_limit_period: S.optional(S.Number),
+    defaultConfig: S.Boolean.pipe(T.Body("default_config")),
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    providerSlug: S.String.pipe(T.Body("provider_slug")),
+    secretId: S.String.pipe(T.Body("secret_id")),
+    secretPreview: S.String.pipe(T.Body("secret_preview")),
+    rateLimit: S.optional(S.Number.pipe(T.Body("rate_limit"))),
+    rateLimitPeriod: S.optional(S.Number.pipe(T.Body("rate_limit_period"))),
   }),
 ).annotate({
   identifier: "ProviderConfigsListResultItem",
@@ -6078,6 +6483,7 @@ export const ProviderConfigsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ProviderConfigsListResultList>;
 
 export interface ProviderConfigsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ProviderConfigsListResultList;
 }
 export const ProviderConfigsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -6089,15 +6495,15 @@ export const ProviderConfigsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProviderConfigsListResponse>;
 
 export interface UpdateRequestDlp {
-  object___action__enabled__profiles__: unknown;
-  object___enabled__policies__: unknown;
+  objectActionEnabledProfiles__: unknown;
+  objectEnabledPolicies__: unknown;
 }
 export const UpdateRequestDlp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    object___action__enabled__profiles__: S.Unknown.pipe(
+    objectActionEnabledProfiles__: S.Unknown.pipe(
       T.Body("object { action, enabled, profiles }"),
     ),
-    object___enabled__policies__: S.Unknown.pipe(
+    objectEnabledPolicies__: S.Unknown.pipe(
       T.Body("object { enabled, policies }"),
     ),
   }),
@@ -6342,14 +6748,16 @@ export interface UpdateRequestOtelItem {
   headers: UpdateRequestOtelItemHeadersMap;
   url: string;
   authorization?: string;
-  content_type?: UpdateRequestOtelItemContentType;
+  contentType?: UpdateRequestOtelItemContentType;
 }
 export const UpdateRequestOtelItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: UpdateRequestOtelItemHeadersMap,
     url: S.String,
     authorization: S.optional(S.String),
-    content_type: S.optional(UpdateRequestOtelItemContentType),
+    contentType: S.optional(
+      UpdateRequestOtelItemContentType.pipe(T.Body("content_type")),
+    ),
   }),
 ).annotate({
   identifier: "UpdateRequestOtelItem",
@@ -6510,12 +6918,14 @@ export const UpdateRequestStripeUsageEventsList = /*@__PURE__*/ S.Array(
 
 export interface UpdateRequestStripe {
   authorization: string;
-  usage_events: UpdateRequestStripeUsageEventsList;
+  usageEvents: UpdateRequestStripeUsageEventsList;
 }
 export const UpdateRequestStripe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorization: S.String,
-    usage_events: UpdateRequestStripeUsageEventsList,
+    usageEvents: UpdateRequestStripeUsageEventsList.pipe(
+      T.Body("usage_events"),
+    ),
   }),
 ).annotate({
   identifier: "UpdateRequestStripe",
@@ -6525,56 +6935,77 @@ export type UpdateRequestWorkersAiBillingMode = "postpaid" | (string & {});
 export const UpdateRequestWorkersAiBillingMode = /*@__PURE__*/ S.String;
 
 export interface UpdateRequest {
-  account_id: string;
+  accountId: string;
+  /** gateway id */
   id: string;
-  cache_invalidate_on_update: boolean;
-  cache_ttl: number;
-  collect_logs: boolean;
-  rate_limiting_interval: number;
-  rate_limiting_limit: number;
+  cacheInvalidateOnUpdate: boolean;
+  cacheTtl: number;
+  collectLogs: boolean;
+  rateLimitingInterval: number;
+  rateLimitingLimit: number;
   authentication?: boolean;
   dlp?: UpdateRequestDlp;
   guardrails?: UpdateRequestGuardrails;
-  log_management?: number;
-  log_management_strategy?: UpdateRequestLogManagementStrategy;
+  logManagement?: number;
+  logManagementStrategy?: UpdateRequestLogManagementStrategy;
   logpush?: boolean;
-  logpush_public_key?: string;
+  logpushPublicKey?: string;
   otel?: UpdateRequestOtelList;
-  rate_limiting_technique?: UpdateRequestRateLimitingTechnique;
-  retry_backoff?: UpdateRequestRetryBackoff;
-  retry_delay?: number;
-  retry_max_attempts?: number;
-  spend_limits?: UpdateRequestSpendLimits;
-  store_id?: string;
+  rateLimitingTechnique?: UpdateRequestRateLimitingTechnique;
+  /** Backoff strategy for retry delays */
+  retryBackoff?: UpdateRequestRetryBackoff;
+  /** Delay between retry attempts in milliseconds (0-5000) */
+  retryDelay?: number;
+  /** Maximum number of retry attempts for failed requests (1-5) */
+  retryMaxAttempts?: number;
+  spendLimits?: UpdateRequestSpendLimits;
+  storeId?: string;
   stripe?: UpdateRequestStripe;
-  workers_ai_billing_mode?: UpdateRequestWorkersAiBillingMode;
+  /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
+  workersAiBillingMode?: UpdateRequestWorkersAiBillingMode;
   zdr?: boolean;
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-    cache_invalidate_on_update: S.Boolean,
-    cache_ttl: S.Number,
-    collect_logs: S.Boolean,
-    rate_limiting_interval: S.Number,
-    rate_limiting_limit: S.Number,
+    cacheInvalidateOnUpdate: S.Boolean.pipe(
+      T.Body("cache_invalidate_on_update"),
+    ),
+    cacheTtl: S.Number.pipe(T.Body("cache_ttl")),
+    collectLogs: S.Boolean.pipe(T.Body("collect_logs")),
+    rateLimitingInterval: S.Number.pipe(T.Body("rate_limiting_interval")),
+    rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
     authentication: S.optional(S.Boolean),
     dlp: S.optional(UpdateRequestDlp),
     guardrails: S.optional(UpdateRequestGuardrails),
-    log_management: S.optional(S.Number),
-    log_management_strategy: S.optional(UpdateRequestLogManagementStrategy),
+    logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
+    logManagementStrategy: S.optional(
+      UpdateRequestLogManagementStrategy.pipe(
+        T.Body("log_management_strategy"),
+      ),
+    ),
     logpush: S.optional(S.Boolean),
-    logpush_public_key: S.optional(S.String),
+    logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
     otel: S.optional(UpdateRequestOtelList),
-    rate_limiting_technique: S.optional(UpdateRequestRateLimitingTechnique),
-    retry_backoff: S.optional(UpdateRequestRetryBackoff),
-    retry_delay: S.optional(S.Number),
-    retry_max_attempts: S.optional(S.Number),
-    spend_limits: S.optional(UpdateRequestSpendLimits),
-    store_id: S.optional(S.String),
+    rateLimitingTechnique: S.optional(
+      UpdateRequestRateLimitingTechnique.pipe(
+        T.Body("rate_limiting_technique"),
+      ),
+    ),
+    retryBackoff: S.optional(
+      UpdateRequestRetryBackoff.pipe(T.Body("retry_backoff")),
+    ),
+    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+    retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
+    spendLimits: S.optional(
+      UpdateRequestSpendLimits.pipe(T.Body("spend_limits")),
+    ),
+    storeId: S.optional(S.String.pipe(T.Body("store_id"))),
     stripe: S.optional(UpdateRequestStripe),
-    workers_ai_billing_mode: S.optional(UpdateRequestWorkersAiBillingMode),
+    workersAiBillingMode: S.optional(
+      UpdateRequestWorkersAiBillingMode.pipe(T.Body("workers_ai_billing_mode")),
+    ),
     zdr: S.optional(S.Boolean),
   }).pipe(
     T.Http({
@@ -6586,15 +7017,15 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
 
 export interface UpdateResponseDlp {
-  object___action__enabled__profiles__: unknown;
-  object___enabled__policies__: unknown;
+  objectActionEnabledProfiles__: unknown;
+  objectEnabledPolicies__: unknown;
 }
 export const UpdateResponseDlp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    object___action__enabled__profiles__: S.Unknown.pipe(
+    objectActionEnabledProfiles__: S.Unknown.pipe(
       T.Body("object { action, enabled, profiles }"),
     ),
-    object___enabled__policies__: S.Unknown.pipe(
+    objectEnabledPolicies__: S.Unknown.pipe(
       T.Body("object { enabled, policies }"),
     ),
   }),
@@ -6851,14 +7282,16 @@ export interface UpdateResponseOtelItem {
   headers: UpdateResponseOtelItemHeadersMap;
   url: string;
   authorization?: string;
-  content_type?: UpdateResponseOtelItemContentType;
+  contentType?: UpdateResponseOtelItemContentType;
 }
 export const UpdateResponseOtelItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: UpdateResponseOtelItemHeadersMap,
     url: S.String,
     authorization: S.optional(S.String),
-    content_type: S.optional(UpdateResponseOtelItemContentType),
+    contentType: S.optional(
+      UpdateResponseOtelItemContentType.pipe(T.Body("content_type")),
+    ),
   }),
 ).annotate({
   identifier: "UpdateResponseOtelItem",
@@ -7021,12 +7454,14 @@ export const UpdateResponseStripeUsageEventsList = /*@__PURE__*/ S.Array(
 
 export interface UpdateResponseStripe {
   authorization: string;
-  usage_events: UpdateResponseStripeUsageEventsList;
+  usageEvents: UpdateResponseStripeUsageEventsList;
 }
 export const UpdateResponseStripe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorization: S.String,
-    usage_events: UpdateResponseStripeUsageEventsList,
+    usageEvents: UpdateResponseStripeUsageEventsList.pipe(
+      T.Body("usage_events"),
+    ),
   }),
 ).annotate({
   identifier: "UpdateResponseStripe",
@@ -7037,73 +7472,97 @@ export const UpdateResponseWorkersAiBillingMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
+  /** gateway id */
   id: string;
-  cache_invalidate_on_update: boolean;
-  cache_ttl: number;
-  collect_logs: boolean;
-  created_at: string;
-  modified_at: string;
-  rate_limiting_interval: number;
-  rate_limiting_limit: number;
+  cacheInvalidateOnUpdate: boolean;
+  cacheTtl: number;
+  collectLogs: boolean;
+  createdAt: string;
+  modifiedAt: string;
+  rateLimitingInterval: number;
+  rateLimitingLimit: number;
   authentication?: boolean;
   dlp?: UpdateResponseDlp;
   guardrails?: UpdateResponseGuardrails;
-  is_default?: boolean;
-  log_management?: number;
-  log_management_strategy?: UpdateResponseLogManagementStrategy;
+  isDefault?: boolean;
+  logManagement?: number;
+  logManagementStrategy?: UpdateResponseLogManagementStrategy;
   logpush?: boolean;
-  logpush_public_key?: string;
+  logpushPublicKey?: string;
   otel?: UpdateResponseOtelList;
-  rate_limiting_technique?: UpdateResponseRateLimitingTechnique;
-  retry_backoff?: UpdateResponseRetryBackoff;
-  retry_delay?: number;
-  retry_max_attempts?: number;
-  spend_limits?: UpdateResponseSpendLimits;
-  store_id?: string;
+  rateLimitingTechnique?: UpdateResponseRateLimitingTechnique;
+  /** Backoff strategy for retry delays */
+  retryBackoff?: UpdateResponseRetryBackoff;
+  /** Delay between retry attempts in milliseconds (0-5000) */
+  retryDelay?: number;
+  /** Maximum number of retry attempts for failed requests (1-5) */
+  retryMaxAttempts?: number;
+  spendLimits?: UpdateResponseSpendLimits;
+  storeId?: string;
   stripe?: UpdateResponseStripe;
-  workers_ai_billing_mode?: UpdateResponseWorkersAiBillingMode;
+  /** Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported. */
+  workersAiBillingMode?: UpdateResponseWorkersAiBillingMode;
   zdr?: boolean;
 }
 export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    cache_invalidate_on_update: S.Boolean,
-    cache_ttl: S.Number,
-    collect_logs: S.Boolean,
-    created_at: S.String,
-    modified_at: S.String,
-    rate_limiting_interval: S.Number,
-    rate_limiting_limit: S.Number,
+    cacheInvalidateOnUpdate: S.Boolean.pipe(
+      T.Body("cache_invalidate_on_update"),
+    ),
+    cacheTtl: S.Number.pipe(T.Body("cache_ttl")),
+    collectLogs: S.Boolean.pipe(T.Body("collect_logs")),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    rateLimitingInterval: S.Number.pipe(T.Body("rate_limiting_interval")),
+    rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
     authentication: S.optional(S.Boolean),
     dlp: S.optional(UpdateResponseDlp),
     guardrails: S.optional(UpdateResponseGuardrails),
-    is_default: S.optional(S.Boolean),
-    log_management: S.optional(S.Number),
-    log_management_strategy: S.optional(UpdateResponseLogManagementStrategy),
+    isDefault: S.optional(S.Boolean.pipe(T.Body("is_default"))),
+    logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
+    logManagementStrategy: S.optional(
+      UpdateResponseLogManagementStrategy.pipe(
+        T.Body("log_management_strategy"),
+      ),
+    ),
     logpush: S.optional(S.Boolean),
-    logpush_public_key: S.optional(S.String),
+    logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
     otel: S.optional(UpdateResponseOtelList),
-    rate_limiting_technique: S.optional(UpdateResponseRateLimitingTechnique),
-    retry_backoff: S.optional(UpdateResponseRetryBackoff),
-    retry_delay: S.optional(S.Number),
-    retry_max_attempts: S.optional(S.Number),
-    spend_limits: S.optional(UpdateResponseSpendLimits),
-    store_id: S.optional(S.String),
+    rateLimitingTechnique: S.optional(
+      UpdateResponseRateLimitingTechnique.pipe(
+        T.Body("rate_limiting_technique"),
+      ),
+    ),
+    retryBackoff: S.optional(
+      UpdateResponseRetryBackoff.pipe(T.Body("retry_backoff")),
+    ),
+    retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
+    retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
+    spendLimits: S.optional(
+      UpdateResponseSpendLimits.pipe(T.Body("spend_limits")),
+    ),
+    storeId: S.optional(S.String.pipe(T.Body("store_id"))),
     stripe: S.optional(UpdateResponseStripe),
-    workers_ai_billing_mode: S.optional(UpdateResponseWorkersAiBillingMode),
+    workersAiBillingMode: S.optional(
+      UpdateResponseWorkersAiBillingMode.pipe(
+        T.Body("workers_ai_billing_mode"),
+      ),
+    ),
     zdr: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
 export interface UrlsGetRequest {
-  account_id: string;
-  gateway_id: string;
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
   provider: string;
 }
 export const UrlsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    gateway_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
     provider: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -7115,6 +7574,7 @@ export const UrlsGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UrlsGetRequest" }) as any as S.Schema<UrlsGetRequest>;
 
 export interface UrlsGetResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: string;
 }
 export const UrlsGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -7125,11 +7585,12 @@ export const UrlsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UrlsGetResponse",
 }) as any as S.Schema<UrlsGetResponse>;
 
+export type BillingCreditBalanceError = CloudflareOpError;
 /** Retrieve the current credit balance, payment method info, and top-up configuration. */
-export const BillingCreditBalance: API.OperationMethod<
+export const billingCreditBalance: API.OperationMethod<
   BillingCreditBalanceRequest,
   BillingCreditBalanceResponse,
-  CloudflareOpError,
+  BillingCreditBalanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BillingCreditBalanceRequest,
@@ -7138,11 +7599,12 @@ export const BillingCreditBalance: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BillingInvoiceHistoryError = CloudflareOpError;
 /** Retrieve a list of past invoices with pagination, optionally filtered by type. */
-export const BillingInvoiceHistory: API.OperationMethod<
+export const billingInvoiceHistory: API.OperationMethod<
   BillingInvoiceHistoryRequest,
   BillingInvoiceHistoryResponse,
-  CloudflareOpError,
+  BillingInvoiceHistoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BillingInvoiceHistoryRequest,
@@ -7151,11 +7613,12 @@ export const BillingInvoiceHistory: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BillingInvoicePreviewError = CloudflareOpError;
 /** Retrieve a preview of the upcoming invoice including line items and tax. */
-export const BillingInvoicePreview: API.OperationMethod<
+export const billingInvoicePreview: API.OperationMethod<
   BillingInvoicePreviewRequest,
   BillingInvoicePreviewResponse,
-  CloudflareOpError,
+  BillingInvoicePreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BillingInvoicePreviewRequest,
@@ -7164,11 +7627,12 @@ export const BillingInvoicePreview: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BillingSpendingLimitCreateError = CloudflareOpError;
 /** Deprecated: spending limits can no longer be created, enabled, or modified and this endpoint always responds 403. Use the new AI Gateway spend limits instead: https://developers.cloudflare.com/ai-gateway/features/spend-limits/. Existing limits can be removed via DELETE /spending-limit. */
-export const BillingSpendingLimitCreate: API.OperationMethod<
+export const billingSpendingLimitCreate: API.OperationMethod<
   BillingSpendingLimitCreateRequest,
   BillingSpendingLimitCreateResponse,
-  CloudflareOpError,
+  BillingSpendingLimitCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BillingSpendingLimitCreateRequest,
@@ -7177,11 +7641,12 @@ export const BillingSpendingLimitCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BillingSpendingLimitDeleteError = CloudflareOpError;
 /** Remove the spending limit for the account. */
-export const BillingSpendingLimitDelete: API.OperationMethod<
+export const billingSpendingLimitDelete: API.OperationMethod<
   BillingSpendingLimitDeleteRequest,
   BillingSpendingLimitDeleteResponse,
-  CloudflareOpError,
+  BillingSpendingLimitDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BillingSpendingLimitDeleteRequest,
@@ -7190,11 +7655,12 @@ export const BillingSpendingLimitDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BillingSpendingLimitGetError = CloudflareOpError;
 /** Retrieve the current spending limit configuration for the account. */
-export const BillingSpendingLimitGet: API.OperationMethod<
+export const billingSpendingLimitGet: API.OperationMethod<
   BillingSpendingLimitGetRequest,
   BillingSpendingLimitGetResponse,
-  CloudflareOpError,
+  BillingSpendingLimitGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BillingSpendingLimitGetRequest,
@@ -7203,11 +7669,12 @@ export const BillingSpendingLimitGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BillingTopupConfigCreateError = CloudflareOpError;
 /** Configure auto top-up with a balance threshold and top-up amount. */
-export const BillingTopupConfigCreate: API.OperationMethod<
+export const billingTopupConfigCreate: API.OperationMethod<
   BillingTopupConfigCreateRequest,
   BillingTopupConfigCreateResponse,
-  CloudflareOpError,
+  BillingTopupConfigCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BillingTopupConfigCreateRequest,
@@ -7216,11 +7683,12 @@ export const BillingTopupConfigCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BillingTopupConfigDeleteError = CloudflareOpError;
 /** Remove the auto top-up configuration for the account. */
-export const BillingTopupConfigDelete: API.OperationMethod<
+export const billingTopupConfigDelete: API.OperationMethod<
   BillingTopupConfigDeleteRequest,
   BillingTopupConfigDeleteResponse,
-  CloudflareOpError,
+  BillingTopupConfigDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BillingTopupConfigDeleteRequest,
@@ -7229,11 +7697,12 @@ export const BillingTopupConfigDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BillingTopupConfigGetError = CloudflareOpError;
 /** Retrieve the current auto top-up threshold, amount, and any error state. */
-export const BillingTopupConfigGet: API.OperationMethod<
+export const billingTopupConfigGet: API.OperationMethod<
   BillingTopupConfigGetRequest,
   BillingTopupConfigGetResponse,
-  CloudflareOpError,
+  BillingTopupConfigGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BillingTopupConfigGetRequest,
@@ -7242,11 +7711,12 @@ export const BillingTopupConfigGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BillingTopupCreateError = CloudflareOpError;
 /** Create a credit top-up via Stripe PaymentIntent for the given account. */
-export const BillingTopupCreate: API.OperationMethod<
+export const billingTopupCreate: API.OperationMethod<
   BillingTopupCreateRequest,
   BillingTopupCreateResponse,
-  CloudflareOpError,
+  BillingTopupCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BillingTopupCreateRequest,
@@ -7255,11 +7725,12 @@ export const BillingTopupCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BillingTopupStatusError = CloudflareOpError;
 /** Get the payment processing status of a top-up by its invoice ID. */
-export const BillingTopupStatus: API.OperationMethod<
+export const billingTopupStatus: API.OperationMethod<
   BillingTopupStatusRequest,
   BillingTopupStatusResponse,
-  CloudflareOpError,
+  BillingTopupStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BillingTopupStatusRequest,
@@ -7268,11 +7739,12 @@ export const BillingTopupStatus: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BillingUsageHistoryError = CloudflareOpError;
 /** Retrieve aggregated usage meter event summaries for the given time range. */
-export const BillingUsageHistory: API.OperationMethod<
+export const billingUsageHistory: API.OperationMethod<
   BillingUsageHistoryRequest,
   BillingUsageHistoryResponse,
-  CloudflareOpError,
+  BillingUsageHistoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BillingUsageHistoryRequest,
@@ -7281,11 +7753,12 @@ export const BillingUsageHistory: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CreateError = CloudflareOpError;
 /** Creates a new AI Gateway. */
-export const Create: API.OperationMethod<
+export const create: API.OperationMethod<
   CreateRequest,
   CreateResponse,
-  CloudflareOpError,
+  CreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRequest,
@@ -7294,11 +7767,12 @@ export const Create: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CustomProvidersCreateError = CloudflareOpError;
 /** Creates a new AI Gateway. */
-export const CustomProvidersCreate: API.OperationMethod<
+export const customProvidersCreate: API.OperationMethod<
   CustomProvidersCreateRequest,
   CustomProvidersCreateResponse,
-  CloudflareOpError,
+  CustomProvidersCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CustomProvidersCreateRequest,
@@ -7307,11 +7781,12 @@ export const CustomProvidersCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CustomProvidersDeleteError = CloudflareOpError;
 /** Deletes an AI Gateway dataset. */
-export const CustomProvidersDelete: API.OperationMethod<
+export const customProvidersDelete: API.OperationMethod<
   CustomProvidersDeleteRequest,
   CustomProvidersDeleteResponse,
-  CloudflareOpError,
+  CustomProvidersDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CustomProvidersDeleteRequest,
@@ -7320,11 +7795,12 @@ export const CustomProvidersDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CustomProvidersGetError = CloudflareOpError;
 /** Retrieves details for a specific AI Gateway dataset. */
-export const CustomProvidersGet: API.OperationMethod<
+export const customProvidersGet: API.OperationMethod<
   CustomProvidersGetRequest,
   CustomProvidersGetResponse,
-  CloudflareOpError,
+  CustomProvidersGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CustomProvidersGetRequest,
@@ -7333,11 +7809,12 @@ export const CustomProvidersGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CustomProvidersListError = CloudflareOpError;
 /** Lists all AI Gateway evaluator types configured for the account. */
-export const CustomProvidersList: API.OperationMethod<
+export const customProvidersList: API.OperationMethod<
   CustomProvidersListRequest,
   CustomProvidersListResponse,
-  CloudflareOpError,
+  CustomProvidersListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CustomProvidersListRequest,
@@ -7346,11 +7823,12 @@ export const CustomProvidersList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DatasetsCreateError = CloudflareOpError;
 /** Creates a new AI Gateway. */
-export const DatasetsCreate: API.OperationMethod<
+export const datasetsCreate: API.OperationMethod<
   DatasetsCreateRequest,
   DatasetsCreateResponse,
-  CloudflareOpError,
+  DatasetsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DatasetsCreateRequest,
@@ -7359,11 +7837,12 @@ export const DatasetsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DatasetsDeleteError = CloudflareOpError;
 /** Deletes an AI Gateway dataset. */
-export const DatasetsDelete: API.OperationMethod<
+export const datasetsDelete: API.OperationMethod<
   DatasetsDeleteRequest,
   DatasetsDeleteResponse,
-  CloudflareOpError,
+  DatasetsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DatasetsDeleteRequest,
@@ -7372,11 +7851,12 @@ export const DatasetsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DatasetsGetError = CloudflareOpError;
 /** Retrieves details for a specific AI Gateway dataset. */
-export const DatasetsGet: API.OperationMethod<
+export const datasetsGet: API.OperationMethod<
   DatasetsGetRequest,
   DatasetsGetResponse,
-  CloudflareOpError,
+  DatasetsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DatasetsGetRequest,
@@ -7385,11 +7865,12 @@ export const DatasetsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DatasetsListError = CloudflareOpError;
 /** Lists all AI Gateway evaluator types configured for the account. */
-export const DatasetsList: API.OperationMethod<
+export const datasetsList: API.OperationMethod<
   DatasetsListRequest,
   DatasetsListResponse,
-  CloudflareOpError,
+  DatasetsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DatasetsListRequest,
@@ -7398,11 +7879,12 @@ export const DatasetsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DatasetsUpdateError = CloudflareOpError;
 /** Updates an existing AI Gateway dataset. */
-export const DatasetsUpdate: API.OperationMethod<
+export const datasetsUpdate: API.OperationMethod<
   DatasetsUpdateRequest,
   DatasetsUpdateResponse,
-  CloudflareOpError,
+  DatasetsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DatasetsUpdateRequest,
@@ -7411,11 +7893,12 @@ export const DatasetsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DeleteError = CloudflareOpError;
 /** Deletes an AI Gateway dataset. */
 export const Delete: API.OperationMethod<
   DeleteRequest,
   DeleteResponse,
-  CloudflareOpError,
+  DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequest,
@@ -7424,11 +7907,12 @@ export const Delete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DynamicRoutingCreateError = CloudflareOpError;
 /** Create a new AI Gateway Dynamic Route. */
-export const DynamicRoutingCreate: API.OperationMethod<
+export const dynamicRoutingCreate: API.OperationMethod<
   DynamicRoutingCreateRequest,
   DynamicRoutingCreateResponse,
-  CloudflareOpError,
+  DynamicRoutingCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DynamicRoutingCreateRequest,
@@ -7437,11 +7921,12 @@ export const DynamicRoutingCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DynamicRoutingCreateDeploymentError = CloudflareOpError;
 /** Create a new AI Gateway Dynamic Route Deployment. */
-export const DynamicRoutingCreateDeployment: API.OperationMethod<
+export const dynamicRoutingCreateDeployment: API.OperationMethod<
   DynamicRoutingCreateDeploymentRequest,
   DynamicRoutingCreateDeploymentResponse,
-  CloudflareOpError,
+  DynamicRoutingCreateDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DynamicRoutingCreateDeploymentRequest,
@@ -7450,11 +7935,12 @@ export const DynamicRoutingCreateDeployment: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DynamicRoutingCreateVersionError = CloudflareOpError;
 /** Create a new AI Gateway Dynamic Route Version. */
-export const DynamicRoutingCreateVersion: API.OperationMethod<
+export const dynamicRoutingCreateVersion: API.OperationMethod<
   DynamicRoutingCreateVersionRequest,
   DynamicRoutingCreateVersionResponse,
-  CloudflareOpError,
+  DynamicRoutingCreateVersionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DynamicRoutingCreateVersionRequest,
@@ -7463,11 +7949,12 @@ export const DynamicRoutingCreateVersion: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DynamicRoutingDeleteError = CloudflareOpError;
 /** Delete an AI Gateway Dynamic Route. */
-export const DynamicRoutingDelete: API.OperationMethod<
+export const dynamicRoutingDelete: API.OperationMethod<
   DynamicRoutingDeleteRequest,
   DynamicRoutingDeleteResponse,
-  CloudflareOpError,
+  DynamicRoutingDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DynamicRoutingDeleteRequest,
@@ -7476,11 +7963,12 @@ export const DynamicRoutingDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DynamicRoutingGetError = CloudflareOpError;
 /** Get an AI Gateway Dynamic Route. */
-export const DynamicRoutingGet: API.OperationMethod<
+export const dynamicRoutingGet: API.OperationMethod<
   DynamicRoutingGetRequest,
   DynamicRoutingGetResponse,
-  CloudflareOpError,
+  DynamicRoutingGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DynamicRoutingGetRequest,
@@ -7489,11 +7977,12 @@ export const DynamicRoutingGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DynamicRoutingGetVersionError = CloudflareOpError;
 /** Get an AI Gateway Dynamic Route Version. */
-export const DynamicRoutingGetVersion: API.OperationMethod<
+export const dynamicRoutingGetVersion: API.OperationMethod<
   DynamicRoutingGetVersionRequest,
   DynamicRoutingGetVersionResponse,
-  CloudflareOpError,
+  DynamicRoutingGetVersionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DynamicRoutingGetVersionRequest,
@@ -7502,11 +7991,12 @@ export const DynamicRoutingGetVersion: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DynamicRoutingListError = CloudflareOpError;
 /** List all AI Gateway Dynamic Routes. */
-export const DynamicRoutingList: API.OperationMethod<
+export const dynamicRoutingList: API.OperationMethod<
   DynamicRoutingListRequest,
   DynamicRoutingListResponse,
-  CloudflareOpError,
+  DynamicRoutingListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DynamicRoutingListRequest,
@@ -7515,11 +8005,12 @@ export const DynamicRoutingList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DynamicRoutingListDeploymentsError = CloudflareOpError;
 /** List all AI Gateway Dynamic Route Deployments. */
-export const DynamicRoutingListDeployments: API.OperationMethod<
+export const dynamicRoutingListDeployments: API.OperationMethod<
   DynamicRoutingListDeploymentsRequest,
   DynamicRoutingListDeploymentsResponse,
-  CloudflareOpError,
+  DynamicRoutingListDeploymentsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DynamicRoutingListDeploymentsRequest,
@@ -7528,11 +8019,12 @@ export const DynamicRoutingListDeployments: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DynamicRoutingListVersionsError = CloudflareOpError;
 /** List all AI Gateway Dynamic Route Versions. */
-export const DynamicRoutingListVersions: API.OperationMethod<
+export const dynamicRoutingListVersions: API.OperationMethod<
   DynamicRoutingListVersionsRequest,
   DynamicRoutingListVersionsResponse,
-  CloudflareOpError,
+  DynamicRoutingListVersionsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DynamicRoutingListVersionsRequest,
@@ -7541,11 +8033,12 @@ export const DynamicRoutingListVersions: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DynamicRoutingUpdateError = CloudflareOpError;
 /** Update an AI Gateway Dynamic Route. */
-export const DynamicRoutingUpdate: API.OperationMethod<
+export const dynamicRoutingUpdate: API.OperationMethod<
   DynamicRoutingUpdateRequest,
   DynamicRoutingUpdateResponse,
-  CloudflareOpError,
+  DynamicRoutingUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DynamicRoutingUpdateRequest,
@@ -7554,11 +8047,12 @@ export const DynamicRoutingUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type EvaluationsCreateError = CloudflareOpError;
 /** Creates a new AI Gateway. */
-export const EvaluationsCreate: API.OperationMethod<
+export const evaluationsCreate: API.OperationMethod<
   EvaluationsCreateRequest,
   EvaluationsCreateResponse,
-  CloudflareOpError,
+  EvaluationsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EvaluationsCreateRequest,
@@ -7567,11 +8061,12 @@ export const EvaluationsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type EvaluationsDeleteError = CloudflareOpError;
 /** Deletes an AI Gateway dataset. */
-export const EvaluationsDelete: API.OperationMethod<
+export const evaluationsDelete: API.OperationMethod<
   EvaluationsDeleteRequest,
   EvaluationsDeleteResponse,
-  CloudflareOpError,
+  EvaluationsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EvaluationsDeleteRequest,
@@ -7580,11 +8075,12 @@ export const EvaluationsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type EvaluationsGetError = CloudflareOpError;
 /** Retrieves details for a specific AI Gateway dataset. */
-export const EvaluationsGet: API.OperationMethod<
+export const evaluationsGet: API.OperationMethod<
   EvaluationsGetRequest,
   EvaluationsGetResponse,
-  CloudflareOpError,
+  EvaluationsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EvaluationsGetRequest,
@@ -7593,11 +8089,12 @@ export const EvaluationsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type EvaluationsListError = CloudflareOpError;
 /** Lists all AI Gateway evaluator types configured for the account. */
-export const EvaluationsList: API.OperationMethod<
+export const evaluationsList: API.OperationMethod<
   EvaluationsListRequest,
   EvaluationsListResponse,
-  CloudflareOpError,
+  EvaluationsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EvaluationsListRequest,
@@ -7606,11 +8103,12 @@ export const EvaluationsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type EvaluationTypesListError = CloudflareOpError;
 /** List Evaluators */
-export const EvaluationTypesList: API.OperationMethod<
+export const evaluationTypesList: API.OperationMethod<
   EvaluationTypesListRequest,
   EvaluationTypesListResponse,
-  CloudflareOpError,
+  EvaluationTypesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EvaluationTypesListRequest,
@@ -7619,11 +8117,12 @@ export const EvaluationTypesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Retrieves details for a specific AI Gateway dataset. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -7632,11 +8131,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ListError = CloudflareOpError;
 /** Lists all AI Gateway evaluator types configured for the account. */
-export const List: API.OperationMethod<
+export const list: API.OperationMethod<
   ListRequest,
   ListResponse,
-  CloudflareOpError,
+  ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRequest,
@@ -7645,11 +8145,12 @@ export const List: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type LogsDeleteError = CloudflareOpError;
 /** Delete Gateway Logs */
-export const LogsDelete: API.OperationMethod<
+export const logsDelete: API.OperationMethod<
   LogsDeleteRequest,
   LogsDeleteResponse,
-  CloudflareOpError,
+  LogsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LogsDeleteRequest,
@@ -7658,11 +8159,12 @@ export const LogsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type LogsEditError = CloudflareOpError;
 /** Updates metadata for an AI Gateway log entry. */
-export const LogsEdit: API.OperationMethod<
+export const logsEdit: API.OperationMethod<
   LogsEditRequest,
   LogsEditResponse,
-  CloudflareOpError,
+  LogsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LogsEditRequest,
@@ -7671,11 +8173,12 @@ export const LogsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type LogsGetError = CloudflareOpError;
 /** Retrieves detailed information for a specific AI Gateway log entry. */
-export const LogsGet: API.OperationMethod<
+export const logsGet: API.OperationMethod<
   LogsGetRequest,
   LogsGetResponse,
-  CloudflareOpError,
+  LogsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LogsGetRequest,
@@ -7684,11 +8187,12 @@ export const LogsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type LogsListError = CloudflareOpError;
 /** List Gateway Logs */
-export const LogsList: API.OperationMethod<
+export const logsList: API.OperationMethod<
   LogsListRequest,
   LogsListResponse,
-  CloudflareOpError,
+  LogsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LogsListRequest,
@@ -7697,11 +8201,12 @@ export const LogsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type LogsRequestError = CloudflareOpError;
 /** Retrieves the original request payload for an AI Gateway log entry. */
-export const LogsRequest: API.OperationMethod<
+export const logsRequest: API.OperationMethod<
   LogsRequestRequest,
   LogsRequestResponse,
-  CloudflareOpError,
+  LogsRequestError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LogsRequestRequest,
@@ -7710,11 +8215,12 @@ export const LogsRequest: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type LogsResponseError = CloudflareOpError;
 /** Retrieves the response payload for an AI Gateway log entry. */
-export const LogsResponse: API.OperationMethod<
+export const logsResponse: API.OperationMethod<
   LogsResponseRequest,
   LogsResponseResponse,
-  CloudflareOpError,
+  LogsResponseError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LogsResponseRequest,
@@ -7723,11 +8229,12 @@ export const LogsResponse: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ProviderConfigsCreateError = CloudflareOpError;
 /** Creates a new AI Gateway. */
-export const ProviderConfigsCreate: API.OperationMethod<
+export const providerConfigsCreate: API.OperationMethod<
   ProviderConfigsCreateRequest,
   ProviderConfigsCreateResponse,
-  CloudflareOpError,
+  ProviderConfigsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ProviderConfigsCreateRequest,
@@ -7736,11 +8243,12 @@ export const ProviderConfigsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ProviderConfigsListError = CloudflareOpError;
 /** Lists all AI Gateway evaluator types configured for the account. */
-export const ProviderConfigsList: API.OperationMethod<
+export const providerConfigsList: API.OperationMethod<
   ProviderConfigsListRequest,
   ProviderConfigsListResponse,
-  CloudflareOpError,
+  ProviderConfigsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ProviderConfigsListRequest,
@@ -7749,11 +8257,12 @@ export const ProviderConfigsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UpdateError = CloudflareOpError;
 /** Updates an existing AI Gateway dataset. */
-export const Update: API.OperationMethod<
+export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,
-  CloudflareOpError,
+  UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,
@@ -7762,11 +8271,12 @@ export const Update: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UrlsGetError = CloudflareOpError;
 /** Retrieves the endpoint URL for an AI Gateway. */
-export const UrlsGet: API.OperationMethod<
+export const urlsGet: API.OperationMethod<
   UrlsGetRequest,
   UrlsGetResponse,
-  CloudflareOpError,
+  UrlsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UrlsGetRequest,

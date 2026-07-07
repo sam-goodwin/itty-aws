@@ -43,35 +43,50 @@ export type WidgetsCreateRequestRegion = "world" | "china" | (string & {});
 export const WidgetsCreateRequestRegion = /*@__PURE__*/ S.String;
 
 export interface WidgetsCreateRequest {
-  account_id: string;
+  /** Identifier */
+  accountId: string;
+  /** Direction to order widgets. */
   direction?: WidgetsCreateRequestDirection;
+  /** Filter widgets by field using case-insensitive substring matching. */
   filter?: string;
+  /** Field to order widgets by. */
   order?: WidgetsCreateRequestOrder;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
+  /** Number of items per page. */
+  perPage?: number;
   domains: WidgetsCreateRequestDomainsList;
+  /** Widget Mode */
   mode: WidgetsCreateRequestMode;
+  /** Human readable widget name. Not unique. Cloudflare suggests that you */
   name: string;
-  bot_fight_mode?: boolean;
-  clearance_level?: WidgetsCreateRequestClearanceLevel;
-  ephemeral_id?: boolean;
+  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
+  botFightMode?: boolean;
+  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
+  clearanceLevel?: WidgetsCreateRequestClearanceLevel;
+  /** Return the Ephemeral ID in /siteverify (ENT only). */
+  ephemeralId?: boolean;
+  /** Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel?: boolean;
+  /** Region where this widget can be used. This cannot be changed after creation. */
   region?: WidgetsCreateRequestRegion;
 }
 export const WidgetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     direction: S.optional(WidgetsCreateRequestDirection.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
     order: S.optional(WidgetsCreateRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     domains: WidgetsCreateRequestDomainsList,
     mode: WidgetsCreateRequestMode,
     name: S.String,
-    bot_fight_mode: S.optional(S.Boolean),
-    clearance_level: S.optional(WidgetsCreateRequestClearanceLevel),
-    ephemeral_id: S.optional(S.Boolean),
+    botFightMode: S.optional(S.Boolean.pipe(T.Body("bot_fight_mode"))),
+    clearanceLevel: S.optional(
+      WidgetsCreateRequestClearanceLevel.pipe(T.Body("clearance_level")),
+    ),
+    ephemeralId: S.optional(S.Boolean.pipe(T.Body("ephemeral_id"))),
     offlabel: S.optional(S.Boolean),
     region: S.optional(WidgetsCreateRequestRegion),
   }).pipe(
@@ -85,24 +100,85 @@ export const WidgetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WidgetsCreateRequest",
 }) as any as S.Schema<WidgetsCreateRequest>;
 
+export type WidgetsCreateResponseClearanceLevel =
+  | "no_clearance"
+  | "jschallenge"
+  | "managed"
+  | "interactive"
+  | (string & {});
+export const WidgetsCreateResponseClearanceLevel = /*@__PURE__*/ S.String;
+
+export type WidgetsCreateResponseDomainsList = unknown[];
+export const WidgetsCreateResponseDomainsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<WidgetsCreateResponseDomainsList>;
+
+export type WidgetsCreateResponseMode =
+  | "non-interactive"
+  | "invisible"
+  | "managed"
+  | (string & {});
+export const WidgetsCreateResponseMode = /*@__PURE__*/ S.String;
+
+export type WidgetsCreateResponseRegion = "world" | "china" | (string & {});
+export const WidgetsCreateResponseRegion = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface WidgetsCreateResponse {
-  result?: unknown;
+  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
+  botFightMode: boolean;
+  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
+  clearanceLevel: WidgetsCreateResponseClearanceLevel;
+  /** When the widget was created. */
+  createdOn: string;
+  domains: WidgetsCreateResponseDomainsList;
+  /** Return the Ephemeral ID in /siteverify (ENT only). */
+  ephemeralId: boolean;
+  /** Widget Mode */
+  mode: WidgetsCreateResponseMode;
+  /** When the widget was modified. */
+  modifiedOn: string;
+  /** Human readable widget name. Not unique. Cloudflare suggests that you */
+  name: string;
+  /** Do not show any Cloudflare branding on the widget (ENT only). */
+  offlabel: boolean;
+  /** Region where this widget can be used. This cannot be changed after creation. */
+  region: WidgetsCreateResponseRegion;
+  /** Secret key for this widget. */
+  secret: string;
+  /** Widget item identifier tag. */
+  sitekey: string;
 }
 export const WidgetsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
+    clearanceLevel: WidgetsCreateResponseClearanceLevel.pipe(
+      T.Body("clearance_level"),
+    ),
+    createdOn: S.String.pipe(T.Body("created_on")),
+    domains: WidgetsCreateResponseDomainsList,
+    ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
+    mode: WidgetsCreateResponseMode,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    offlabel: S.Boolean,
+    region: WidgetsCreateResponseRegion,
+    secret: S.String,
+    sitekey: S.String,
   }),
 ).annotate({
   identifier: "WidgetsCreateResponse",
 }) as any as S.Schema<WidgetsCreateResponse>;
 
 export interface WidgetsDeleteRequest {
-  account_id: string;
+  /** Identifier */
+  accountId: string;
+  /** Widget item identifier tag. */
   sitekey: string;
 }
 export const WidgetsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     sitekey: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -115,24 +191,85 @@ export const WidgetsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WidgetsDeleteRequest",
 }) as any as S.Schema<WidgetsDeleteRequest>;
 
+export type WidgetsDeleteResponseClearanceLevel =
+  | "no_clearance"
+  | "jschallenge"
+  | "managed"
+  | "interactive"
+  | (string & {});
+export const WidgetsDeleteResponseClearanceLevel = /*@__PURE__*/ S.String;
+
+export type WidgetsDeleteResponseDomainsList = unknown[];
+export const WidgetsDeleteResponseDomainsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<WidgetsDeleteResponseDomainsList>;
+
+export type WidgetsDeleteResponseMode =
+  | "non-interactive"
+  | "invisible"
+  | "managed"
+  | (string & {});
+export const WidgetsDeleteResponseMode = /*@__PURE__*/ S.String;
+
+export type WidgetsDeleteResponseRegion = "world" | "china" | (string & {});
+export const WidgetsDeleteResponseRegion = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface WidgetsDeleteResponse {
-  result?: unknown;
+  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
+  botFightMode: boolean;
+  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
+  clearanceLevel: WidgetsDeleteResponseClearanceLevel;
+  /** When the widget was created. */
+  createdOn: string;
+  domains: WidgetsDeleteResponseDomainsList;
+  /** Return the Ephemeral ID in /siteverify (ENT only). */
+  ephemeralId: boolean;
+  /** Widget Mode */
+  mode: WidgetsDeleteResponseMode;
+  /** When the widget was modified. */
+  modifiedOn: string;
+  /** Human readable widget name. Not unique. Cloudflare suggests that you */
+  name: string;
+  /** Do not show any Cloudflare branding on the widget (ENT only). */
+  offlabel: boolean;
+  /** Region where this widget can be used. This cannot be changed after creation. */
+  region: WidgetsDeleteResponseRegion;
+  /** Secret key for this widget. */
+  secret: string;
+  /** Widget item identifier tag. */
+  sitekey: string;
 }
 export const WidgetsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
+    clearanceLevel: WidgetsDeleteResponseClearanceLevel.pipe(
+      T.Body("clearance_level"),
+    ),
+    createdOn: S.String.pipe(T.Body("created_on")),
+    domains: WidgetsDeleteResponseDomainsList,
+    ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
+    mode: WidgetsDeleteResponseMode,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    offlabel: S.Boolean,
+    region: WidgetsDeleteResponseRegion,
+    secret: S.String,
+    sitekey: S.String,
   }),
 ).annotate({
   identifier: "WidgetsDeleteResponse",
 }) as any as S.Schema<WidgetsDeleteResponse>;
 
 export interface WidgetsGetRequest {
-  account_id: string;
+  /** Identifier */
+  accountId: string;
+  /** Widget item identifier tag. */
   sitekey: string;
 }
 export const WidgetsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     sitekey: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -145,12 +282,71 @@ export const WidgetsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WidgetsGetRequest",
 }) as any as S.Schema<WidgetsGetRequest>;
 
+export type WidgetsGetResponseClearanceLevel =
+  | "no_clearance"
+  | "jschallenge"
+  | "managed"
+  | "interactive"
+  | (string & {});
+export const WidgetsGetResponseClearanceLevel = /*@__PURE__*/ S.String;
+
+export type WidgetsGetResponseDomainsList = unknown[];
+export const WidgetsGetResponseDomainsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<WidgetsGetResponseDomainsList>;
+
+export type WidgetsGetResponseMode =
+  | "non-interactive"
+  | "invisible"
+  | "managed"
+  | (string & {});
+export const WidgetsGetResponseMode = /*@__PURE__*/ S.String;
+
+export type WidgetsGetResponseRegion = "world" | "china" | (string & {});
+export const WidgetsGetResponseRegion = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface WidgetsGetResponse {
-  result?: unknown;
+  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
+  botFightMode: boolean;
+  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
+  clearanceLevel: WidgetsGetResponseClearanceLevel;
+  /** When the widget was created. */
+  createdOn: string;
+  domains: WidgetsGetResponseDomainsList;
+  /** Return the Ephemeral ID in /siteverify (ENT only). */
+  ephemeralId: boolean;
+  /** Widget Mode */
+  mode: WidgetsGetResponseMode;
+  /** When the widget was modified. */
+  modifiedOn: string;
+  /** Human readable widget name. Not unique. Cloudflare suggests that you */
+  name: string;
+  /** Do not show any Cloudflare branding on the widget (ENT only). */
+  offlabel: boolean;
+  /** Region where this widget can be used. This cannot be changed after creation. */
+  region: WidgetsGetResponseRegion;
+  /** Secret key for this widget. */
+  secret: string;
+  /** Widget item identifier tag. */
+  sitekey: string;
 }
 export const WidgetsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
+    clearanceLevel: WidgetsGetResponseClearanceLevel.pipe(
+      T.Body("clearance_level"),
+    ),
+    createdOn: S.String.pipe(T.Body("created_on")),
+    domains: WidgetsGetResponseDomainsList,
+    ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
+    mode: WidgetsGetResponseMode,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    offlabel: S.Boolean,
+    region: WidgetsGetResponseRegion,
+    secret: S.String,
+    sitekey: S.String,
   }),
 ).annotate({
   identifier: "WidgetsGetResponse",
@@ -163,21 +359,27 @@ export type WidgetsListRequestOrder = "id" | "sitekey" | "name" | (string & {});
 export const WidgetsListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface WidgetsListRequest {
-  account_id: string;
+  /** Identifier */
+  accountId: string;
+  /** Direction to order widgets. */
   direction?: WidgetsListRequestDirection;
+  /** Filter widgets by field using case-insensitive substring matching. */
   filter?: string;
+  /** Field to order widgets by. */
   order?: WidgetsListRequestOrder;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
+  /** Number of items per page. */
+  perPage?: number;
 }
 export const WidgetsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     direction: S.optional(WidgetsListRequestDirection.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
     order: S.optional(WidgetsListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -213,27 +415,39 @@ export type WidgetsListResultItemRegion = "world" | "china" | (string & {});
 export const WidgetsListResultItemRegion = /*@__PURE__*/ S.String;
 
 export interface WidgetsListResultItem {
-  bot_fight_mode: boolean;
-  clearance_level: WidgetsListResultItemClearanceLevel;
-  created_on: string;
+  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
+  botFightMode: boolean;
+  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
+  clearanceLevel: WidgetsListResultItemClearanceLevel;
+  /** When the widget was created. */
+  createdOn: string;
   domains: WidgetsListResultItemDomainsList;
-  ephemeral_id: boolean;
+  /** Return the Ephemeral ID in /siteverify (ENT only). */
+  ephemeralId: boolean;
+  /** Widget Mode */
   mode: WidgetsListResultItemMode;
-  modified_on: string;
+  /** When the widget was modified. */
+  modifiedOn: string;
+  /** Human readable widget name. Not unique. Cloudflare suggests that you */
   name: string;
+  /** Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel: boolean;
+  /** Region where this widget can be used. This cannot be changed after creation. */
   region: WidgetsListResultItemRegion;
+  /** Widget item identifier tag. */
   sitekey: string;
 }
 export const WidgetsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    bot_fight_mode: S.Boolean,
-    clearance_level: WidgetsListResultItemClearanceLevel,
-    created_on: S.String,
+    botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
+    clearanceLevel: WidgetsListResultItemClearanceLevel.pipe(
+      T.Body("clearance_level"),
+    ),
+    createdOn: S.String.pipe(T.Body("created_on")),
     domains: WidgetsListResultItemDomainsList,
-    ephemeral_id: S.Boolean,
+    ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
     mode: WidgetsListResultItemMode,
-    modified_on: S.String,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
     name: S.String,
     offlabel: S.Boolean,
     region: WidgetsListResultItemRegion,
@@ -249,6 +463,7 @@ export const WidgetsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<WidgetsListResultList>;
 
 export interface WidgetsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: WidgetsListResultList;
 }
 export const WidgetsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -260,15 +475,20 @@ export const WidgetsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WidgetsListResponse>;
 
 export interface WidgetsRotateSecretRequest {
-  account_id: string;
+  /** Identifier */
+  accountId: string;
+  /** Widget item identifier tag. */
   sitekey: string;
-  invalidate_immediately?: boolean;
+  /** If `invalidate_immediately` is set to `false`, the previous secret will */
+  invalidateImmediately?: boolean;
 }
 export const WidgetsRotateSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     sitekey: S.String.pipe(T.Label()),
-    invalidate_immediately: S.optional(S.Boolean),
+    invalidateImmediately: S.optional(
+      S.Boolean.pipe(T.Body("invalidate_immediately")),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -280,12 +500,74 @@ export const WidgetsRotateSecretRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WidgetsRotateSecretRequest",
 }) as any as S.Schema<WidgetsRotateSecretRequest>;
 
+export type WidgetsRotateSecretResponseClearanceLevel =
+  | "no_clearance"
+  | "jschallenge"
+  | "managed"
+  | "interactive"
+  | (string & {});
+export const WidgetsRotateSecretResponseClearanceLevel = /*@__PURE__*/ S.String;
+
+export type WidgetsRotateSecretResponseDomainsList = unknown[];
+export const WidgetsRotateSecretResponseDomainsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<WidgetsRotateSecretResponseDomainsList>;
+
+export type WidgetsRotateSecretResponseMode =
+  | "non-interactive"
+  | "invisible"
+  | "managed"
+  | (string & {});
+export const WidgetsRotateSecretResponseMode = /*@__PURE__*/ S.String;
+
+export type WidgetsRotateSecretResponseRegion =
+  | "world"
+  | "china"
+  | (string & {});
+export const WidgetsRotateSecretResponseRegion = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface WidgetsRotateSecretResponse {
-  result?: unknown;
+  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
+  botFightMode: boolean;
+  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
+  clearanceLevel: WidgetsRotateSecretResponseClearanceLevel;
+  /** When the widget was created. */
+  createdOn: string;
+  domains: WidgetsRotateSecretResponseDomainsList;
+  /** Return the Ephemeral ID in /siteverify (ENT only). */
+  ephemeralId: boolean;
+  /** Widget Mode */
+  mode: WidgetsRotateSecretResponseMode;
+  /** When the widget was modified. */
+  modifiedOn: string;
+  /** Human readable widget name. Not unique. Cloudflare suggests that you */
+  name: string;
+  /** Do not show any Cloudflare branding on the widget (ENT only). */
+  offlabel: boolean;
+  /** Region where this widget can be used. This cannot be changed after creation. */
+  region: WidgetsRotateSecretResponseRegion;
+  /** Secret key for this widget. */
+  secret: string;
+  /** Widget item identifier tag. */
+  sitekey: string;
 }
 export const WidgetsRotateSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
+    clearanceLevel: WidgetsRotateSecretResponseClearanceLevel.pipe(
+      T.Body("clearance_level"),
+    ),
+    createdOn: S.String.pipe(T.Body("created_on")),
+    domains: WidgetsRotateSecretResponseDomainsList,
+    ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
+    mode: WidgetsRotateSecretResponseMode,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    offlabel: S.Boolean,
+    region: WidgetsRotateSecretResponseRegion,
+    secret: S.String,
+    sitekey: S.String,
   }),
 ).annotate({
   identifier: "WidgetsRotateSecretResponse",
@@ -315,27 +597,38 @@ export type WidgetsUpdateRequestRegion = "world" | "china" | (string & {});
 export const WidgetsUpdateRequestRegion = /*@__PURE__*/ S.String;
 
 export interface WidgetsUpdateRequest {
-  account_id: string;
+  /** Identifier */
+  accountId: string;
+  /** Widget item identifier tag. */
   sitekey: string;
   domains: WidgetsUpdateRequestDomainsList;
+  /** Widget Mode */
   mode: WidgetsUpdateRequestMode;
+  /** Human readable widget name. Not unique. Cloudflare suggests that you */
   name: string;
-  bot_fight_mode?: boolean;
-  clearance_level?: WidgetsUpdateRequestClearanceLevel;
-  ephemeral_id?: boolean;
+  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
+  botFightMode?: boolean;
+  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
+  clearanceLevel?: WidgetsUpdateRequestClearanceLevel;
+  /** Return the Ephemeral ID in /siteverify (ENT only). */
+  ephemeralId?: boolean;
+  /** Do not show any Cloudflare branding on the widget (ENT only). */
   offlabel?: boolean;
+  /** Region where this widget can be used. This cannot be changed after creation. */
   region?: WidgetsUpdateRequestRegion;
 }
 export const WidgetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     sitekey: S.String.pipe(T.Label()),
     domains: WidgetsUpdateRequestDomainsList,
     mode: WidgetsUpdateRequestMode,
     name: S.String,
-    bot_fight_mode: S.optional(S.Boolean),
-    clearance_level: S.optional(WidgetsUpdateRequestClearanceLevel),
-    ephemeral_id: S.optional(S.Boolean),
+    botFightMode: S.optional(S.Boolean.pipe(T.Body("bot_fight_mode"))),
+    clearanceLevel: S.optional(
+      WidgetsUpdateRequestClearanceLevel.pipe(T.Body("clearance_level")),
+    ),
+    ephemeralId: S.optional(S.Boolean.pipe(T.Body("ephemeral_id"))),
     offlabel: S.optional(S.Boolean),
     region: S.optional(WidgetsUpdateRequestRegion),
   }).pipe(
@@ -349,22 +642,82 @@ export const WidgetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WidgetsUpdateRequest",
 }) as any as S.Schema<WidgetsUpdateRequest>;
 
+export type WidgetsUpdateResponseClearanceLevel =
+  | "no_clearance"
+  | "jschallenge"
+  | "managed"
+  | "interactive"
+  | (string & {});
+export const WidgetsUpdateResponseClearanceLevel = /*@__PURE__*/ S.String;
+
+export type WidgetsUpdateResponseDomainsList = unknown[];
+export const WidgetsUpdateResponseDomainsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<WidgetsUpdateResponseDomainsList>;
+
+export type WidgetsUpdateResponseMode =
+  | "non-interactive"
+  | "invisible"
+  | "managed"
+  | (string & {});
+export const WidgetsUpdateResponseMode = /*@__PURE__*/ S.String;
+
+export type WidgetsUpdateResponseRegion = "world" | "china" | (string & {});
+export const WidgetsUpdateResponseRegion = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface WidgetsUpdateResponse {
-  result?: unknown;
+  /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
+  botFightMode: boolean;
+  /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
+  clearanceLevel: WidgetsUpdateResponseClearanceLevel;
+  /** When the widget was created. */
+  createdOn: string;
+  domains: WidgetsUpdateResponseDomainsList;
+  /** Return the Ephemeral ID in /siteverify (ENT only). */
+  ephemeralId: boolean;
+  /** Widget Mode */
+  mode: WidgetsUpdateResponseMode;
+  /** When the widget was modified. */
+  modifiedOn: string;
+  /** Human readable widget name. Not unique. Cloudflare suggests that you */
+  name: string;
+  /** Do not show any Cloudflare branding on the widget (ENT only). */
+  offlabel: boolean;
+  /** Region where this widget can be used. This cannot be changed after creation. */
+  region: WidgetsUpdateResponseRegion;
+  /** Secret key for this widget. */
+  secret: string;
+  /** Widget item identifier tag. */
+  sitekey: string;
 }
 export const WidgetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
+    clearanceLevel: WidgetsUpdateResponseClearanceLevel.pipe(
+      T.Body("clearance_level"),
+    ),
+    createdOn: S.String.pipe(T.Body("created_on")),
+    domains: WidgetsUpdateResponseDomainsList,
+    ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
+    mode: WidgetsUpdateResponseMode,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    offlabel: S.Boolean,
+    region: WidgetsUpdateResponseRegion,
+    secret: S.String,
+    sitekey: S.String,
   }),
 ).annotate({
   identifier: "WidgetsUpdateResponse",
 }) as any as S.Schema<WidgetsUpdateResponse>;
 
+export type WidgetsCreateError = CloudflareOpError;
 /** Lists challenge widgets. */
-export const WidgetsCreate: API.OperationMethod<
+export const widgetsCreate: API.OperationMethod<
   WidgetsCreateRequest,
   WidgetsCreateResponse,
-  CloudflareOpError,
+  WidgetsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: WidgetsCreateRequest,
@@ -373,11 +726,12 @@ export const WidgetsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type WidgetsDeleteError = CloudflareOpError;
 /** Destroy a Turnstile Widget. */
-export const WidgetsDelete: API.OperationMethod<
+export const widgetsDelete: API.OperationMethod<
   WidgetsDeleteRequest,
   WidgetsDeleteResponse,
-  CloudflareOpError,
+  WidgetsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: WidgetsDeleteRequest,
@@ -386,11 +740,12 @@ export const WidgetsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type WidgetsGetError = CloudflareOpError;
 /** Show a single challenge widget configuration. */
-export const WidgetsGet: API.OperationMethod<
+export const widgetsGet: API.OperationMethod<
   WidgetsGetRequest,
   WidgetsGetResponse,
-  CloudflareOpError,
+  WidgetsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: WidgetsGetRequest,
@@ -399,11 +754,12 @@ export const WidgetsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type WidgetsListError = CloudflareOpError;
 /** Lists all turnstile widgets of an account. */
-export const WidgetsList: API.OperationMethod<
+export const widgetsList: API.OperationMethod<
   WidgetsListRequest,
   WidgetsListResponse,
-  CloudflareOpError,
+  WidgetsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: WidgetsListRequest,
@@ -412,11 +768,12 @@ export const WidgetsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type WidgetsRotateSecretError = CloudflareOpError;
 /** Generate a new secret key for this widget. If `invalidate_immediately` is set to `false`, the previous secret remains valid for 2 hours. Note that secrets cannot be rotated again during the grace period. */
-export const WidgetsRotateSecret: API.OperationMethod<
+export const widgetsRotateSecret: API.OperationMethod<
   WidgetsRotateSecretRequest,
   WidgetsRotateSecretResponse,
-  CloudflareOpError,
+  WidgetsRotateSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: WidgetsRotateSecretRequest,
@@ -425,11 +782,12 @@ export const WidgetsRotateSecret: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type WidgetsUpdateError = CloudflareOpError;
 /** Update the configuration of a widget. */
-export const WidgetsUpdate: API.OperationMethod<
+export const widgetsUpdate: API.OperationMethod<
   WidgetsUpdateRequest,
   WidgetsUpdateResponse,
-  CloudflareOpError,
+  WidgetsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: WidgetsUpdateRequest,

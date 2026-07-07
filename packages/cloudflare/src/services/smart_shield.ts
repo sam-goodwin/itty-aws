@@ -10,12 +10,13 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface CacheReserveClearClearRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
   body: unknown;
 }
 export const CacheReserveClearClearRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Unknown,
   }).pipe(
     T.Http({
@@ -36,30 +37,36 @@ export const CacheReserveClearClearResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CacheReserveClearClearResponse {
+  /** ID of the zone setting. */
   id: unknown;
-  start_ts: string;
+  /** The time that the latest Cache Reserve Clear operation started. */
+  startTs: string;
+  /** The current state of the Cache Reserve Clear operation. */
   state: CacheReserveClearClearResponseState;
-  end_ts?: string;
-  modified_on?: string;
+  /** The time that the latest Cache Reserve Clear operation completed. */
+  endTs?: string;
+  /** Last time this setting was modified. */
+  modifiedOn?: string;
 }
 export const CacheReserveClearClearResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Unknown,
-    start_ts: S.String,
+    startTs: S.String.pipe(T.Body("start_ts")),
     state: CacheReserveClearClearResponseState,
-    end_ts: S.optional(S.String),
-    modified_on: S.optional(S.String),
+    endTs: S.optional(S.String.pipe(T.Body("end_ts"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
   }),
 ).annotate({
   identifier: "CacheReserveClearClearResponse",
 }) as any as S.Schema<CacheReserveClearClearResponse>;
 
 export interface CacheReserveClearStatusRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const CacheReserveClearStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -79,30 +86,36 @@ export const CacheReserveClearStatusResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CacheReserveClearStatusResponse {
+  /** ID of the zone setting. */
   id: unknown;
-  start_ts: string;
+  /** The time that the latest Cache Reserve Clear operation started. */
+  startTs: string;
+  /** The current state of the Cache Reserve Clear operation. */
   state: CacheReserveClearStatusResponseState;
-  end_ts?: string;
-  modified_on?: string;
+  /** The time that the latest Cache Reserve Clear operation completed. */
+  endTs?: string;
+  /** Last time this setting was modified. */
+  modifiedOn?: string;
 }
 export const CacheReserveClearStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Unknown,
-    start_ts: S.String,
+    startTs: S.String.pipe(T.Body("start_ts")),
     state: CacheReserveClearStatusResponseState,
-    end_ts: S.optional(S.String),
-    modified_on: S.optional(S.String),
+    endTs: S.optional(S.String.pipe(T.Body("end_ts"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
   }),
 ).annotate({
   identifier: "CacheReserveClearStatusResponse",
 }) as any as S.Schema<CacheReserveClearStatusResponse>;
 
 export interface GetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({ method: "GET", uri: "/zones/{zone_id}/smart_shield", code: 200 }),
   ),
@@ -112,8 +125,11 @@ export type GetResponseCacheReserveValue = "on" | "off" | (string & {});
 export const GetResponseCacheReserveValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseCacheReserve {
+  /** The id of the Cache Reserve setting. */
   id?: string;
+  /** Whether the setting is editable. */
   editable?: boolean;
+  /** Specifies the enablement value of Cache Reserve. */
   value?: GetResponseCacheReserveValue;
 }
 export const GetResponseCacheReserve = /*@__PURE__*/ S.suspend(() =>
@@ -130,8 +146,11 @@ export type GetResponseRegionalTieredCacheValue = "on" | "off" | (string & {});
 export const GetResponseRegionalTieredCacheValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseRegionalTieredCache {
+  /** The id of the Regional Tiered Cache setting. */
   id?: string;
+  /** Whether the setting is editable. */
   editable?: boolean;
+  /** Specifies the enablement value of Cache Reserve. */
   value?: GetResponseRegionalTieredCacheValue;
 }
 export const GetResponseRegionalTieredCache = /*@__PURE__*/ S.suspend(() =>
@@ -148,8 +167,11 @@ export type GetResponseSmartRoutingValue = "on" | "off" | (string & {});
 export const GetResponseSmartRoutingValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseSmartRouting {
+  /** The id of the Smart Routing setting. */
   id?: string;
+  /** Whether the setting is editable. */
   editable?: boolean;
+  /** Specifies the enablement value of Argo Smart Routing. */
   value?: GetResponseSmartRoutingValue;
 }
 export const GetResponseSmartRouting = /*@__PURE__*/ S.suspend(() =>
@@ -166,16 +188,20 @@ export type GetResponseSmartTieredCacheValue = "on" | "off" | (string & {});
 export const GetResponseSmartTieredCacheValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseSmartTieredCache {
+  /** The id of the Smart Tiered Cache setting. */
   id?: string;
+  /** Whether the setting is editable. */
   editable?: boolean;
-  modified_on?: string;
+  /** The last time the setting was modified. */
+  modifiedOn?: string;
+  /** Specifies the enablement value of Tiered Cache. */
   value?: GetResponseSmartTieredCacheValue;
 }
 export const GetResponseSmartTieredCache = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     editable: S.optional(S.Boolean),
-    modified_on: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     value: S.optional(GetResponseSmartTieredCacheValue),
   }),
 ).annotate({
@@ -184,19 +210,24 @@ export const GetResponseSmartTieredCache = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
-  cache_reserve: GetResponseCacheReserve;
-  healthchecks_count: number;
-  regional_tiered_cache: GetResponseRegionalTieredCache;
-  smart_routing: GetResponseSmartRouting;
-  smart_tiered_cache: GetResponseSmartTieredCache;
+  cacheReserve: GetResponseCacheReserve;
+  /** The total number of health checks associated with the zone. */
+  healthchecksCount: number;
+  regionalTieredCache: GetResponseRegionalTieredCache;
+  smartRouting: GetResponseSmartRouting;
+  smartTieredCache: GetResponseSmartTieredCache;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    cache_reserve: GetResponseCacheReserve,
-    healthchecks_count: S.Number,
-    regional_tiered_cache: GetResponseRegionalTieredCache,
-    smart_routing: GetResponseSmartRouting,
-    smart_tiered_cache: GetResponseSmartTieredCache,
+    cacheReserve: GetResponseCacheReserve.pipe(T.Body("cache_reserve")),
+    healthchecksCount: S.Number.pipe(T.Body("healthchecks_count")),
+    regionalTieredCache: GetResponseRegionalTieredCache.pipe(
+      T.Body("regional_tiered_cache"),
+    ),
+    smartRouting: GetResponseSmartRouting.pipe(T.Body("smart_routing")),
+    smartTieredCache: GetResponseSmartTieredCache.pipe(
+      T.Body("smart_tiered_cache"),
+    ),
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
@@ -235,23 +266,33 @@ export type HealthChecksCreateRequestHttpConfigMethod =
 export const HealthChecksCreateRequestHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksCreateRequestHttpConfig {
-  allow_insecure?: boolean;
-  expected_body?: string;
-  expected_codes?: HealthChecksCreateRequestHttpConfigExpectedCodesList;
-  follow_redirects?: boolean;
+  /** Do not validate the certificate when the health check uses HTTPS. */
+  allowInsecure?: boolean;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
+  expectedBody?: string;
+  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  expectedCodes?: HealthChecksCreateRequestHttpConfigExpectedCodesList;
+  /** Follow redirects if the origin returns a 3xx status code. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
   header?: HealthChecksCreateRequestHttpConfigHeaderMap;
+  /** The HTTP method to use for the health check. */
   method?: HealthChecksCreateRequestHttpConfigMethod;
+  /** The endpoint path to health check against. */
   path?: string;
+  /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
 export const HealthChecksCreateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    allow_insecure: S.optional(S.Boolean),
-    expected_body: S.optional(S.String),
-    expected_codes: S.optional(
-      HealthChecksCreateRequestHttpConfigExpectedCodesList,
+    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(
+      HealthChecksCreateRequestHttpConfigExpectedCodesList.pipe(
+        T.Body("expected_codes"),
+      ),
     ),
-    follow_redirects: S.optional(S.Boolean),
+    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
     header: S.optional(HealthChecksCreateRequestHttpConfigHeaderMap),
     method: S.optional(HealthChecksCreateRequestHttpConfigMethod),
     path: S.optional(S.String),
@@ -267,7 +308,9 @@ export type HealthChecksCreateRequestTcpConfigMethod =
 export const HealthChecksCreateRequestTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksCreateRequestTcpConfig {
+  /** The TCP connection method to use for the health check. */
   method?: HealthChecksCreateRequestTcpConfigMethod;
+  /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
 export const HealthChecksCreateRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
@@ -280,35 +323,57 @@ export const HealthChecksCreateRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthChecksCreateRequestTcpConfig>;
 
 export interface HealthChecksCreateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** The hostname or IP address of the origin server to run health checks on. */
   address: string;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
   name: string;
-  check_regions?: HealthChecksCreateRequestCheckRegionsList;
-  consecutive_fails?: number;
-  consecutive_successes?: number;
+  /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
+  checkRegions?: HealthChecksCreateRequestCheckRegionsList;
+  /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
+  consecutiveFails?: number;
+  /** The number of consecutive successes required from a health check before changing the health to healthy. */
+  consecutiveSuccesses?: number;
+  /** A human-readable description of the health check. */
   description?: string;
-  http_config?: HealthChecksCreateRequestHttpConfig;
+  /** Parameters specific to an HTTP or HTTPS health check. */
+  httpConfig?: HealthChecksCreateRequestHttpConfig;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
   interval?: number;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
   retries?: number;
+  /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean;
-  tcp_config?: HealthChecksCreateRequestTcpConfig;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: HealthChecksCreateRequestTcpConfig;
+  /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
 export const HealthChecksCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     address: S.String,
     name: S.String,
-    check_regions: S.optional(HealthChecksCreateRequestCheckRegionsList),
-    consecutive_fails: S.optional(S.Number),
-    consecutive_successes: S.optional(S.Number),
+    checkRegions: S.optional(
+      HealthChecksCreateRequestCheckRegionsList.pipe(T.Body("check_regions")),
+    ),
+    consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
+    consecutiveSuccesses: S.optional(
+      S.Number.pipe(T.Body("consecutive_successes")),
+    ),
     description: S.optional(S.String),
-    http_config: S.optional(HealthChecksCreateRequestHttpConfig),
+    httpConfig: S.optional(
+      HealthChecksCreateRequestHttpConfig.pipe(T.Body("http_config")),
+    ),
     interval: S.optional(S.Number),
     retries: S.optional(S.Number),
     suspended: S.optional(S.Boolean),
-    tcp_config: S.optional(HealthChecksCreateRequestTcpConfig),
+    tcpConfig: S.optional(
+      HealthChecksCreateRequestTcpConfig.pipe(T.Body("tcp_config")),
+    ),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
   }).pipe(
@@ -359,24 +424,34 @@ export const HealthChecksCreateResponseHttpConfigMethod =
   /*@__PURE__*/ S.String;
 
 export interface HealthChecksCreateResponseHttpConfig {
-  allow_insecure?: boolean;
-  expected_body?: string;
-  expected_codes?: HealthChecksCreateResponseHttpConfigExpectedCodesList;
-  follow_redirects?: boolean;
+  /** Do not validate the certificate when the health check uses HTTPS. */
+  allowInsecure?: boolean;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
+  expectedBody?: string;
+  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  expectedCodes?: HealthChecksCreateResponseHttpConfigExpectedCodesList;
+  /** Follow redirects if the origin returns a 3xx status code. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
   header?: HealthChecksCreateResponseHttpConfigHeaderMap;
+  /** The HTTP method to use for the health check. */
   method?: HealthChecksCreateResponseHttpConfigMethod;
+  /** The endpoint path to health check against. */
   path?: string;
+  /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
 export const HealthChecksCreateResponseHttpConfig = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      allow_insecure: S.optional(S.Boolean),
-      expected_body: S.optional(S.String),
-      expected_codes: S.optional(
-        HealthChecksCreateResponseHttpConfigExpectedCodesList,
+      allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+      expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+      expectedCodes: S.optional(
+        HealthChecksCreateResponseHttpConfigExpectedCodesList.pipe(
+          T.Body("expected_codes"),
+        ),
       ),
-      follow_redirects: S.optional(S.Boolean),
+      followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
       header: S.optional(HealthChecksCreateResponseHttpConfigHeaderMap),
       method: S.optional(HealthChecksCreateResponseHttpConfigMethod),
       path: S.optional(S.String),
@@ -400,7 +475,9 @@ export type HealthChecksCreateResponseTcpConfigMethod =
 export const HealthChecksCreateResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksCreateResponseTcpConfig {
+  /** The TCP connection method to use for the health check. */
   method?: HealthChecksCreateResponseTcpConfigMethod;
+  /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
 export const HealthChecksCreateResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
@@ -414,43 +491,67 @@ export const HealthChecksCreateResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface HealthChecksCreateResponse {
+  /** Identifier. */
   id?: string;
+  /** The hostname or IP address of the origin server to run health checks on. */
   address?: string;
-  check_regions?: HealthChecksCreateResponseCheckRegionsList;
-  consecutive_fails?: number;
-  consecutive_successes?: number;
-  created_on?: string;
+  /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
+  checkRegions?: HealthChecksCreateResponseCheckRegionsList;
+  /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
+  consecutiveFails?: number;
+  /** The number of consecutive successes required from a health check before changing the health to healthy. */
+  consecutiveSuccesses?: number;
+  createdOn?: string;
+  /** A human-readable description of the health check. */
   description?: string;
-  failure_reason?: string;
-  http_config?: HealthChecksCreateResponseHttpConfig;
+  /** The current failure reason if status is unhealthy. */
+  failureReason?: string;
+  /** Parameters specific to an HTTP or HTTPS health check. */
+  httpConfig?: HealthChecksCreateResponseHttpConfig;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
   interval?: number;
-  modified_on?: string;
+  modifiedOn?: string;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
   name?: string;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
   retries?: number;
+  /** The current status of the origin server according to the health check. */
   status?: HealthChecksCreateResponseStatus;
+  /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean;
-  tcp_config?: HealthChecksCreateResponseTcpConfig;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: HealthChecksCreateResponseTcpConfig;
+  /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
 export const HealthChecksCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     address: S.optional(S.String),
-    check_regions: S.optional(HealthChecksCreateResponseCheckRegionsList),
-    consecutive_fails: S.optional(S.Number),
-    consecutive_successes: S.optional(S.Number),
-    created_on: S.optional(S.String),
+    checkRegions: S.optional(
+      HealthChecksCreateResponseCheckRegionsList.pipe(T.Body("check_regions")),
+    ),
+    consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
+    consecutiveSuccesses: S.optional(
+      S.Number.pipe(T.Body("consecutive_successes")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     description: S.optional(S.String),
-    failure_reason: S.optional(S.String),
-    http_config: S.optional(HealthChecksCreateResponseHttpConfig),
+    failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
+    httpConfig: S.optional(
+      HealthChecksCreateResponseHttpConfig.pipe(T.Body("http_config")),
+    ),
     interval: S.optional(S.Number),
-    modified_on: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     name: S.optional(S.String),
     retries: S.optional(S.Number),
     status: S.optional(HealthChecksCreateResponseStatus),
     suspended: S.optional(S.Boolean),
-    tcp_config: S.optional(HealthChecksCreateResponseTcpConfig),
+    tcpConfig: S.optional(
+      HealthChecksCreateResponseTcpConfig.pipe(T.Body("tcp_config")),
+    ),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
   }),
@@ -459,13 +560,15 @@ export const HealthChecksCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthChecksCreateResponse>;
 
 export interface HealthChecksDeleteRequest {
-  zone_id: string;
-  healthcheck_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  healthcheckId: string;
 }
 export const HealthChecksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    healthcheck_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -479,6 +582,7 @@ export const HealthChecksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface HealthChecksDeleteResponse {
+  /** Identifier. */
   id?: string;
 }
 export const HealthChecksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -524,23 +628,33 @@ export type HealthChecksEditRequestHttpConfigMethod =
 export const HealthChecksEditRequestHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksEditRequestHttpConfig {
-  allow_insecure?: boolean;
-  expected_body?: string;
-  expected_codes?: HealthChecksEditRequestHttpConfigExpectedCodesList;
-  follow_redirects?: boolean;
+  /** Do not validate the certificate when the health check uses HTTPS. */
+  allowInsecure?: boolean;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
+  expectedBody?: string;
+  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  expectedCodes?: HealthChecksEditRequestHttpConfigExpectedCodesList;
+  /** Follow redirects if the origin returns a 3xx status code. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
   header?: HealthChecksEditRequestHttpConfigHeaderMap;
+  /** The HTTP method to use for the health check. */
   method?: HealthChecksEditRequestHttpConfigMethod;
+  /** The endpoint path to health check against. */
   path?: string;
+  /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
 export const HealthChecksEditRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    allow_insecure: S.optional(S.Boolean),
-    expected_body: S.optional(S.String),
-    expected_codes: S.optional(
-      HealthChecksEditRequestHttpConfigExpectedCodesList,
+    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(
+      HealthChecksEditRequestHttpConfigExpectedCodesList.pipe(
+        T.Body("expected_codes"),
+      ),
     ),
-    follow_redirects: S.optional(S.Boolean),
+    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
     header: S.optional(HealthChecksEditRequestHttpConfigHeaderMap),
     method: S.optional(HealthChecksEditRequestHttpConfigMethod),
     path: S.optional(S.String),
@@ -556,7 +670,9 @@ export type HealthChecksEditRequestTcpConfigMethod =
 export const HealthChecksEditRequestTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksEditRequestTcpConfig {
+  /** The TCP connection method to use for the health check. */
   method?: HealthChecksEditRequestTcpConfigMethod;
+  /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
 export const HealthChecksEditRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
@@ -569,37 +685,60 @@ export const HealthChecksEditRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthChecksEditRequestTcpConfig>;
 
 export interface HealthChecksEditRequest {
-  zone_id: string;
-  healthcheck_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  healthcheckId: string;
+  /** The hostname or IP address of the origin server to run health checks on. */
   address: string;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
   name: string;
-  check_regions?: HealthChecksEditRequestCheckRegionsList;
-  consecutive_fails?: number;
-  consecutive_successes?: number;
+  /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
+  checkRegions?: HealthChecksEditRequestCheckRegionsList;
+  /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
+  consecutiveFails?: number;
+  /** The number of consecutive successes required from a health check before changing the health to healthy. */
+  consecutiveSuccesses?: number;
+  /** A human-readable description of the health check. */
   description?: string;
-  http_config?: HealthChecksEditRequestHttpConfig;
+  /** Parameters specific to an HTTP or HTTPS health check. */
+  httpConfig?: HealthChecksEditRequestHttpConfig;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
   interval?: number;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
   retries?: number;
+  /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean;
-  tcp_config?: HealthChecksEditRequestTcpConfig;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: HealthChecksEditRequestTcpConfig;
+  /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
 export const HealthChecksEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    healthcheck_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
     address: S.String,
     name: S.String,
-    check_regions: S.optional(HealthChecksEditRequestCheckRegionsList),
-    consecutive_fails: S.optional(S.Number),
-    consecutive_successes: S.optional(S.Number),
+    checkRegions: S.optional(
+      HealthChecksEditRequestCheckRegionsList.pipe(T.Body("check_regions")),
+    ),
+    consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
+    consecutiveSuccesses: S.optional(
+      S.Number.pipe(T.Body("consecutive_successes")),
+    ),
     description: S.optional(S.String),
-    http_config: S.optional(HealthChecksEditRequestHttpConfig),
+    httpConfig: S.optional(
+      HealthChecksEditRequestHttpConfig.pipe(T.Body("http_config")),
+    ),
     interval: S.optional(S.Number),
     retries: S.optional(S.Number),
     suspended: S.optional(S.Boolean),
-    tcp_config: S.optional(HealthChecksEditRequestTcpConfig),
+    tcpConfig: S.optional(
+      HealthChecksEditRequestTcpConfig.pipe(T.Body("tcp_config")),
+    ),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
   }).pipe(
@@ -648,23 +787,33 @@ export type HealthChecksEditResponseHttpConfigMethod =
 export const HealthChecksEditResponseHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksEditResponseHttpConfig {
-  allow_insecure?: boolean;
-  expected_body?: string;
-  expected_codes?: HealthChecksEditResponseHttpConfigExpectedCodesList;
-  follow_redirects?: boolean;
+  /** Do not validate the certificate when the health check uses HTTPS. */
+  allowInsecure?: boolean;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
+  expectedBody?: string;
+  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  expectedCodes?: HealthChecksEditResponseHttpConfigExpectedCodesList;
+  /** Follow redirects if the origin returns a 3xx status code. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
   header?: HealthChecksEditResponseHttpConfigHeaderMap;
+  /** The HTTP method to use for the health check. */
   method?: HealthChecksEditResponseHttpConfigMethod;
+  /** The endpoint path to health check against. */
   path?: string;
+  /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
 export const HealthChecksEditResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    allow_insecure: S.optional(S.Boolean),
-    expected_body: S.optional(S.String),
-    expected_codes: S.optional(
-      HealthChecksEditResponseHttpConfigExpectedCodesList,
+    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(
+      HealthChecksEditResponseHttpConfigExpectedCodesList.pipe(
+        T.Body("expected_codes"),
+      ),
     ),
-    follow_redirects: S.optional(S.Boolean),
+    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
     header: S.optional(HealthChecksEditResponseHttpConfigHeaderMap),
     method: S.optional(HealthChecksEditResponseHttpConfigMethod),
     path: S.optional(S.String),
@@ -688,7 +837,9 @@ export type HealthChecksEditResponseTcpConfigMethod =
 export const HealthChecksEditResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksEditResponseTcpConfig {
+  /** The TCP connection method to use for the health check. */
   method?: HealthChecksEditResponseTcpConfigMethod;
+  /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
 export const HealthChecksEditResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
@@ -702,43 +853,67 @@ export const HealthChecksEditResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface HealthChecksEditResponse {
+  /** Identifier. */
   id?: string;
+  /** The hostname or IP address of the origin server to run health checks on. */
   address?: string;
-  check_regions?: HealthChecksEditResponseCheckRegionsList;
-  consecutive_fails?: number;
-  consecutive_successes?: number;
-  created_on?: string;
+  /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
+  checkRegions?: HealthChecksEditResponseCheckRegionsList;
+  /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
+  consecutiveFails?: number;
+  /** The number of consecutive successes required from a health check before changing the health to healthy. */
+  consecutiveSuccesses?: number;
+  createdOn?: string;
+  /** A human-readable description of the health check. */
   description?: string;
-  failure_reason?: string;
-  http_config?: HealthChecksEditResponseHttpConfig;
+  /** The current failure reason if status is unhealthy. */
+  failureReason?: string;
+  /** Parameters specific to an HTTP or HTTPS health check. */
+  httpConfig?: HealthChecksEditResponseHttpConfig;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
   interval?: number;
-  modified_on?: string;
+  modifiedOn?: string;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
   name?: string;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
   retries?: number;
+  /** The current status of the origin server according to the health check. */
   status?: HealthChecksEditResponseStatus;
+  /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean;
-  tcp_config?: HealthChecksEditResponseTcpConfig;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: HealthChecksEditResponseTcpConfig;
+  /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
 export const HealthChecksEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     address: S.optional(S.String),
-    check_regions: S.optional(HealthChecksEditResponseCheckRegionsList),
-    consecutive_fails: S.optional(S.Number),
-    consecutive_successes: S.optional(S.Number),
-    created_on: S.optional(S.String),
+    checkRegions: S.optional(
+      HealthChecksEditResponseCheckRegionsList.pipe(T.Body("check_regions")),
+    ),
+    consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
+    consecutiveSuccesses: S.optional(
+      S.Number.pipe(T.Body("consecutive_successes")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     description: S.optional(S.String),
-    failure_reason: S.optional(S.String),
-    http_config: S.optional(HealthChecksEditResponseHttpConfig),
+    failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
+    httpConfig: S.optional(
+      HealthChecksEditResponseHttpConfig.pipe(T.Body("http_config")),
+    ),
     interval: S.optional(S.Number),
-    modified_on: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     name: S.optional(S.String),
     retries: S.optional(S.Number),
     status: S.optional(HealthChecksEditResponseStatus),
     suspended: S.optional(S.Boolean),
-    tcp_config: S.optional(HealthChecksEditResponseTcpConfig),
+    tcpConfig: S.optional(
+      HealthChecksEditResponseTcpConfig.pipe(T.Body("tcp_config")),
+    ),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
   }),
@@ -747,13 +922,15 @@ export const HealthChecksEditResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthChecksEditResponse>;
 
 export interface HealthChecksGetRequest {
-  zone_id: string;
-  healthcheck_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  healthcheckId: string;
 }
 export const HealthChecksGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    healthcheck_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -800,23 +977,33 @@ export type HealthChecksGetResponseHttpConfigMethod =
 export const HealthChecksGetResponseHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksGetResponseHttpConfig {
-  allow_insecure?: boolean;
-  expected_body?: string;
-  expected_codes?: HealthChecksGetResponseHttpConfigExpectedCodesList;
-  follow_redirects?: boolean;
+  /** Do not validate the certificate when the health check uses HTTPS. */
+  allowInsecure?: boolean;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
+  expectedBody?: string;
+  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  expectedCodes?: HealthChecksGetResponseHttpConfigExpectedCodesList;
+  /** Follow redirects if the origin returns a 3xx status code. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
   header?: HealthChecksGetResponseHttpConfigHeaderMap;
+  /** The HTTP method to use for the health check. */
   method?: HealthChecksGetResponseHttpConfigMethod;
+  /** The endpoint path to health check against. */
   path?: string;
+  /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
 export const HealthChecksGetResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    allow_insecure: S.optional(S.Boolean),
-    expected_body: S.optional(S.String),
-    expected_codes: S.optional(
-      HealthChecksGetResponseHttpConfigExpectedCodesList,
+    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(
+      HealthChecksGetResponseHttpConfigExpectedCodesList.pipe(
+        T.Body("expected_codes"),
+      ),
     ),
-    follow_redirects: S.optional(S.Boolean),
+    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
     header: S.optional(HealthChecksGetResponseHttpConfigHeaderMap),
     method: S.optional(HealthChecksGetResponseHttpConfigMethod),
     path: S.optional(S.String),
@@ -840,7 +1027,9 @@ export type HealthChecksGetResponseTcpConfigMethod =
 export const HealthChecksGetResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksGetResponseTcpConfig {
+  /** The TCP connection method to use for the health check. */
   method?: HealthChecksGetResponseTcpConfigMethod;
+  /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
 export const HealthChecksGetResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
@@ -854,43 +1043,67 @@ export const HealthChecksGetResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface HealthChecksGetResponse {
+  /** Identifier. */
   id?: string;
+  /** The hostname or IP address of the origin server to run health checks on. */
   address?: string;
-  check_regions?: HealthChecksGetResponseCheckRegionsList;
-  consecutive_fails?: number;
-  consecutive_successes?: number;
-  created_on?: string;
+  /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
+  checkRegions?: HealthChecksGetResponseCheckRegionsList;
+  /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
+  consecutiveFails?: number;
+  /** The number of consecutive successes required from a health check before changing the health to healthy. */
+  consecutiveSuccesses?: number;
+  createdOn?: string;
+  /** A human-readable description of the health check. */
   description?: string;
-  failure_reason?: string;
-  http_config?: HealthChecksGetResponseHttpConfig;
+  /** The current failure reason if status is unhealthy. */
+  failureReason?: string;
+  /** Parameters specific to an HTTP or HTTPS health check. */
+  httpConfig?: HealthChecksGetResponseHttpConfig;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
   interval?: number;
-  modified_on?: string;
+  modifiedOn?: string;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
   name?: string;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
   retries?: number;
+  /** The current status of the origin server according to the health check. */
   status?: HealthChecksGetResponseStatus;
+  /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean;
-  tcp_config?: HealthChecksGetResponseTcpConfig;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: HealthChecksGetResponseTcpConfig;
+  /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
 export const HealthChecksGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     address: S.optional(S.String),
-    check_regions: S.optional(HealthChecksGetResponseCheckRegionsList),
-    consecutive_fails: S.optional(S.Number),
-    consecutive_successes: S.optional(S.Number),
-    created_on: S.optional(S.String),
+    checkRegions: S.optional(
+      HealthChecksGetResponseCheckRegionsList.pipe(T.Body("check_regions")),
+    ),
+    consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
+    consecutiveSuccesses: S.optional(
+      S.Number.pipe(T.Body("consecutive_successes")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     description: S.optional(S.String),
-    failure_reason: S.optional(S.String),
-    http_config: S.optional(HealthChecksGetResponseHttpConfig),
+    failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
+    httpConfig: S.optional(
+      HealthChecksGetResponseHttpConfig.pipe(T.Body("http_config")),
+    ),
     interval: S.optional(S.Number),
-    modified_on: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     name: S.optional(S.String),
     retries: S.optional(S.Number),
     status: S.optional(HealthChecksGetResponseStatus),
     suspended: S.optional(S.Boolean),
-    tcp_config: S.optional(HealthChecksGetResponseTcpConfig),
+    tcpConfig: S.optional(
+      HealthChecksGetResponseTcpConfig.pipe(T.Body("tcp_config")),
+    ),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
   }),
@@ -899,15 +1112,18 @@ export const HealthChecksGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthChecksGetResponse>;
 
 export interface HealthChecksListRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
+  /** Maximum number of results per page. Must be a multiple of 5. */
+  perPage?: number;
 }
 export const HealthChecksListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -956,24 +1172,34 @@ export const HealthChecksListResultItemHttpConfigMethod =
   /*@__PURE__*/ S.String;
 
 export interface HealthChecksListResultItemHttpConfig {
-  allow_insecure?: boolean;
-  expected_body?: string;
-  expected_codes?: HealthChecksListResultItemHttpConfigExpectedCodesList;
-  follow_redirects?: boolean;
+  /** Do not validate the certificate when the health check uses HTTPS. */
+  allowInsecure?: boolean;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
+  expectedBody?: string;
+  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  expectedCodes?: HealthChecksListResultItemHttpConfigExpectedCodesList;
+  /** Follow redirects if the origin returns a 3xx status code. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
   header?: HealthChecksListResultItemHttpConfigHeaderMap;
+  /** The HTTP method to use for the health check. */
   method?: HealthChecksListResultItemHttpConfigMethod;
+  /** The endpoint path to health check against. */
   path?: string;
+  /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
 export const HealthChecksListResultItemHttpConfig = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      allow_insecure: S.optional(S.Boolean),
-      expected_body: S.optional(S.String),
-      expected_codes: S.optional(
-        HealthChecksListResultItemHttpConfigExpectedCodesList,
+      allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+      expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+      expectedCodes: S.optional(
+        HealthChecksListResultItemHttpConfigExpectedCodesList.pipe(
+          T.Body("expected_codes"),
+        ),
       ),
-      follow_redirects: S.optional(S.Boolean),
+      followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
       header: S.optional(HealthChecksListResultItemHttpConfigHeaderMap),
       method: S.optional(HealthChecksListResultItemHttpConfigMethod),
       path: S.optional(S.String),
@@ -997,7 +1223,9 @@ export type HealthChecksListResultItemTcpConfigMethod =
 export const HealthChecksListResultItemTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksListResultItemTcpConfig {
+  /** The TCP connection method to use for the health check. */
   method?: HealthChecksListResultItemTcpConfigMethod;
+  /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
 export const HealthChecksListResultItemTcpConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1010,43 +1238,67 @@ export const HealthChecksListResultItemTcpConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthChecksListResultItemTcpConfig>;
 
 export interface HealthChecksListResultItem {
+  /** Identifier. */
   id?: string;
+  /** The hostname or IP address of the origin server to run health checks on. */
   address?: string;
-  check_regions?: HealthChecksListResultItemCheckRegionsList;
-  consecutive_fails?: number;
-  consecutive_successes?: number;
-  created_on?: string;
+  /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
+  checkRegions?: HealthChecksListResultItemCheckRegionsList;
+  /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
+  consecutiveFails?: number;
+  /** The number of consecutive successes required from a health check before changing the health to healthy. */
+  consecutiveSuccesses?: number;
+  createdOn?: string;
+  /** A human-readable description of the health check. */
   description?: string;
-  failure_reason?: string;
-  http_config?: HealthChecksListResultItemHttpConfig;
+  /** The current failure reason if status is unhealthy. */
+  failureReason?: string;
+  /** Parameters specific to an HTTP or HTTPS health check. */
+  httpConfig?: HealthChecksListResultItemHttpConfig;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
   interval?: number;
-  modified_on?: string;
+  modifiedOn?: string;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
   name?: string;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
   retries?: number;
+  /** The current status of the origin server according to the health check. */
   status?: HealthChecksListResultItemStatus;
+  /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean;
-  tcp_config?: HealthChecksListResultItemTcpConfig;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: HealthChecksListResultItemTcpConfig;
+  /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
 export const HealthChecksListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     address: S.optional(S.String),
-    check_regions: S.optional(HealthChecksListResultItemCheckRegionsList),
-    consecutive_fails: S.optional(S.Number),
-    consecutive_successes: S.optional(S.Number),
-    created_on: S.optional(S.String),
+    checkRegions: S.optional(
+      HealthChecksListResultItemCheckRegionsList.pipe(T.Body("check_regions")),
+    ),
+    consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
+    consecutiveSuccesses: S.optional(
+      S.Number.pipe(T.Body("consecutive_successes")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     description: S.optional(S.String),
-    failure_reason: S.optional(S.String),
-    http_config: S.optional(HealthChecksListResultItemHttpConfig),
+    failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
+    httpConfig: S.optional(
+      HealthChecksListResultItemHttpConfig.pipe(T.Body("http_config")),
+    ),
     interval: S.optional(S.Number),
-    modified_on: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     name: S.optional(S.String),
     retries: S.optional(S.Number),
     status: S.optional(HealthChecksListResultItemStatus),
     suspended: S.optional(S.Boolean),
-    tcp_config: S.optional(HealthChecksListResultItemTcpConfig),
+    tcpConfig: S.optional(
+      HealthChecksListResultItemTcpConfig.pipe(T.Body("tcp_config")),
+    ),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
   }),
@@ -1060,6 +1312,7 @@ export const HealthChecksListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<HealthChecksListResultList>;
 
 export interface HealthChecksListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: HealthChecksListResultList;
 }
 export const HealthChecksListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1070,14 +1323,63 @@ export const HealthChecksListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthChecksListResponse",
 }) as any as S.Schema<HealthChecksListResponse>;
 
-export type HealthChecksUpdateRequestErrorsList = unknown[];
+export interface HealthChecksUpdateRequestErrorsItemSource {
+  pointer?: string;
+}
+export const HealthChecksUpdateRequestErrorsItemSource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pointer: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "HealthChecksUpdateRequestErrorsItemSource",
+  }) as any as S.Schema<HealthChecksUpdateRequestErrorsItemSource>;
+
+export interface HealthChecksUpdateRequestErrorsItem {
+  code: number;
+  message: string;
+  documentationUrl?: string;
+  source?: HealthChecksUpdateRequestErrorsItemSource;
+}
+export const HealthChecksUpdateRequestErrorsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.Number,
+    message: S.String,
+    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
+    source: S.optional(HealthChecksUpdateRequestErrorsItemSource),
+  }),
+).annotate({
+  identifier: "HealthChecksUpdateRequestErrorsItem",
+}) as any as S.Schema<HealthChecksUpdateRequestErrorsItem>;
+
+export type HealthChecksUpdateRequestErrorsList =
+  HealthChecksUpdateRequestErrorsItem[];
 export const HealthChecksUpdateRequestErrorsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  HealthChecksUpdateRequestErrorsItem,
 ) as any as S.Schema<HealthChecksUpdateRequestErrorsList>;
 
-export type HealthChecksUpdateRequestMessagesList = unknown[];
+export interface HealthChecksUpdateRequestMessagesItem {
+  code: number;
+  message: string;
+  documentationUrl?: string;
+  source?: unknown;
+}
+export const HealthChecksUpdateRequestMessagesItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      code: S.Number,
+      message: S.String,
+      documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
+      source: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "HealthChecksUpdateRequestMessagesItem",
+}) as any as S.Schema<HealthChecksUpdateRequestMessagesItem>;
+
+export type HealthChecksUpdateRequestMessagesList =
+  HealthChecksUpdateRequestMessagesItem[];
 export const HealthChecksUpdateRequestMessagesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  HealthChecksUpdateRequestMessagesItem,
 ) as any as S.Schema<HealthChecksUpdateRequestMessagesList>;
 
 export type HealthChecksUpdateRequestResultCheckRegionsItem =
@@ -1119,24 +1421,34 @@ export const HealthChecksUpdateRequestResultHttpConfigMethod =
   /*@__PURE__*/ S.String;
 
 export interface HealthChecksUpdateRequestResultHttpConfig {
-  allow_insecure?: boolean;
-  expected_body?: string;
-  expected_codes?: HealthChecksUpdateRequestResultHttpConfigExpectedCodesList;
-  follow_redirects?: boolean;
+  /** Do not validate the certificate when the health check uses HTTPS. */
+  allowInsecure?: boolean;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
+  expectedBody?: string;
+  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  expectedCodes?: HealthChecksUpdateRequestResultHttpConfigExpectedCodesList;
+  /** Follow redirects if the origin returns a 3xx status code. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
   header?: HealthChecksUpdateRequestResultHttpConfigHeaderMap;
+  /** The HTTP method to use for the health check. */
   method?: HealthChecksUpdateRequestResultHttpConfigMethod;
+  /** The endpoint path to health check against. */
   path?: string;
+  /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
 export const HealthChecksUpdateRequestResultHttpConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      allow_insecure: S.optional(S.Boolean),
-      expected_body: S.optional(S.String),
-      expected_codes: S.optional(
-        HealthChecksUpdateRequestResultHttpConfigExpectedCodesList,
+      allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+      expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+      expectedCodes: S.optional(
+        HealthChecksUpdateRequestResultHttpConfigExpectedCodesList.pipe(
+          T.Body("expected_codes"),
+        ),
       ),
-      follow_redirects: S.optional(S.Boolean),
+      followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
       header: S.optional(HealthChecksUpdateRequestResultHttpConfigHeaderMap),
       method: S.optional(HealthChecksUpdateRequestResultHttpConfigMethod),
       path: S.optional(S.String),
@@ -1161,7 +1473,9 @@ export const HealthChecksUpdateRequestResultTcpConfigMethod =
   /*@__PURE__*/ S.String;
 
 export interface HealthChecksUpdateRequestResultTcpConfig {
+  /** The TCP connection method to use for the health check. */
   method?: HealthChecksUpdateRequestResultTcpConfigMethod;
+  /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
 export const HealthChecksUpdateRequestResultTcpConfig = /*@__PURE__*/ S.suspend(
@@ -1175,43 +1489,69 @@ export const HealthChecksUpdateRequestResultTcpConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HealthChecksUpdateRequestResultTcpConfig>;
 
 export interface HealthChecksUpdateRequestResult {
+  /** Identifier. */
   id?: string;
+  /** The hostname or IP address of the origin server to run health checks on. */
   address?: string;
-  check_regions?: HealthChecksUpdateRequestResultCheckRegionsList;
-  consecutive_fails?: number;
-  consecutive_successes?: number;
-  created_on?: string;
+  /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
+  checkRegions?: HealthChecksUpdateRequestResultCheckRegionsList;
+  /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
+  consecutiveFails?: number;
+  /** The number of consecutive successes required from a health check before changing the health to healthy. */
+  consecutiveSuccesses?: number;
+  createdOn?: string;
+  /** A human-readable description of the health check. */
   description?: string;
-  failure_reason?: string;
-  http_config?: HealthChecksUpdateRequestResultHttpConfig;
+  /** The current failure reason if status is unhealthy. */
+  failureReason?: string;
+  /** Parameters specific to an HTTP or HTTPS health check. */
+  httpConfig?: HealthChecksUpdateRequestResultHttpConfig;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
   interval?: number;
-  modified_on?: string;
+  modifiedOn?: string;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
   name?: string;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
   retries?: number;
+  /** The current status of the origin server according to the health check. */
   status?: HealthChecksUpdateRequestResultStatus;
+  /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean;
-  tcp_config?: HealthChecksUpdateRequestResultTcpConfig;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: HealthChecksUpdateRequestResultTcpConfig;
+  /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
 export const HealthChecksUpdateRequestResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     address: S.optional(S.String),
-    check_regions: S.optional(HealthChecksUpdateRequestResultCheckRegionsList),
-    consecutive_fails: S.optional(S.Number),
-    consecutive_successes: S.optional(S.Number),
-    created_on: S.optional(S.String),
+    checkRegions: S.optional(
+      HealthChecksUpdateRequestResultCheckRegionsList.pipe(
+        T.Body("check_regions"),
+      ),
+    ),
+    consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
+    consecutiveSuccesses: S.optional(
+      S.Number.pipe(T.Body("consecutive_successes")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     description: S.optional(S.String),
-    failure_reason: S.optional(S.String),
-    http_config: S.optional(HealthChecksUpdateRequestResultHttpConfig),
+    failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
+    httpConfig: S.optional(
+      HealthChecksUpdateRequestResultHttpConfig.pipe(T.Body("http_config")),
+    ),
     interval: S.optional(S.Number),
-    modified_on: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     name: S.optional(S.String),
     retries: S.optional(S.Number),
     status: S.optional(HealthChecksUpdateRequestResultStatus),
     suspended: S.optional(S.Boolean),
-    tcp_config: S.optional(HealthChecksUpdateRequestResultTcpConfig),
+    tcpConfig: S.optional(
+      HealthChecksUpdateRequestResultTcpConfig.pipe(T.Body("tcp_config")),
+    ),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
   }),
@@ -1220,17 +1560,20 @@ export const HealthChecksUpdateRequestResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthChecksUpdateRequestResult>;
 
 export interface HealthChecksUpdateRequest {
-  zone_id: string;
-  healthcheck_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  healthcheckId: string;
   errors: HealthChecksUpdateRequestErrorsList;
   messages: HealthChecksUpdateRequestMessagesList;
   result: HealthChecksUpdateRequestResult;
+  /** Whether the API call was successful. */
   success: boolean;
 }
 export const HealthChecksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    healthcheck_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
     errors: HealthChecksUpdateRequestErrorsList,
     messages: HealthChecksUpdateRequestMessagesList,
     result: HealthChecksUpdateRequestResult,
@@ -1283,24 +1626,34 @@ export const HealthChecksUpdateResponseHttpConfigMethod =
   /*@__PURE__*/ S.String;
 
 export interface HealthChecksUpdateResponseHttpConfig {
-  allow_insecure?: boolean;
-  expected_body?: string;
-  expected_codes?: HealthChecksUpdateResponseHttpConfigExpectedCodesList;
-  follow_redirects?: boolean;
+  /** Do not validate the certificate when the health check uses HTTPS. */
+  allowInsecure?: boolean;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
+  expectedBody?: string;
+  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  expectedCodes?: HealthChecksUpdateResponseHttpConfigExpectedCodesList;
+  /** Follow redirects if the origin returns a 3xx status code. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
   header?: HealthChecksUpdateResponseHttpConfigHeaderMap;
+  /** The HTTP method to use for the health check. */
   method?: HealthChecksUpdateResponseHttpConfigMethod;
+  /** The endpoint path to health check against. */
   path?: string;
+  /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
 export const HealthChecksUpdateResponseHttpConfig = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      allow_insecure: S.optional(S.Boolean),
-      expected_body: S.optional(S.String),
-      expected_codes: S.optional(
-        HealthChecksUpdateResponseHttpConfigExpectedCodesList,
+      allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+      expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+      expectedCodes: S.optional(
+        HealthChecksUpdateResponseHttpConfigExpectedCodesList.pipe(
+          T.Body("expected_codes"),
+        ),
       ),
-      follow_redirects: S.optional(S.Boolean),
+      followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
       header: S.optional(HealthChecksUpdateResponseHttpConfigHeaderMap),
       method: S.optional(HealthChecksUpdateResponseHttpConfigMethod),
       path: S.optional(S.String),
@@ -1324,7 +1677,9 @@ export type HealthChecksUpdateResponseTcpConfigMethod =
 export const HealthChecksUpdateResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksUpdateResponseTcpConfig {
+  /** The TCP connection method to use for the health check. */
   method?: HealthChecksUpdateResponseTcpConfigMethod;
+  /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
 export const HealthChecksUpdateResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
@@ -1338,43 +1693,67 @@ export const HealthChecksUpdateResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface HealthChecksUpdateResponse {
+  /** Identifier. */
   id?: string;
+  /** The hostname or IP address of the origin server to run health checks on. */
   address?: string;
-  check_regions?: HealthChecksUpdateResponseCheckRegionsList;
-  consecutive_fails?: number;
-  consecutive_successes?: number;
-  created_on?: string;
+  /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
+  checkRegions?: HealthChecksUpdateResponseCheckRegionsList;
+  /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
+  consecutiveFails?: number;
+  /** The number of consecutive successes required from a health check before changing the health to healthy. */
+  consecutiveSuccesses?: number;
+  createdOn?: string;
+  /** A human-readable description of the health check. */
   description?: string;
-  failure_reason?: string;
-  http_config?: HealthChecksUpdateResponseHttpConfig;
+  /** The current failure reason if status is unhealthy. */
+  failureReason?: string;
+  /** Parameters specific to an HTTP or HTTPS health check. */
+  httpConfig?: HealthChecksUpdateResponseHttpConfig;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
   interval?: number;
-  modified_on?: string;
+  modifiedOn?: string;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
   name?: string;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
   retries?: number;
+  /** The current status of the origin server according to the health check. */
   status?: HealthChecksUpdateResponseStatus;
+  /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean;
-  tcp_config?: HealthChecksUpdateResponseTcpConfig;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: HealthChecksUpdateResponseTcpConfig;
+  /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
 export const HealthChecksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     address: S.optional(S.String),
-    check_regions: S.optional(HealthChecksUpdateResponseCheckRegionsList),
-    consecutive_fails: S.optional(S.Number),
-    consecutive_successes: S.optional(S.Number),
-    created_on: S.optional(S.String),
+    checkRegions: S.optional(
+      HealthChecksUpdateResponseCheckRegionsList.pipe(T.Body("check_regions")),
+    ),
+    consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
+    consecutiveSuccesses: S.optional(
+      S.Number.pipe(T.Body("consecutive_successes")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     description: S.optional(S.String),
-    failure_reason: S.optional(S.String),
-    http_config: S.optional(HealthChecksUpdateResponseHttpConfig),
+    failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
+    httpConfig: S.optional(
+      HealthChecksUpdateResponseHttpConfig.pipe(T.Body("http_config")),
+    ),
     interval: S.optional(S.Number),
-    modified_on: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     name: S.optional(S.String),
     retries: S.optional(S.Number),
     status: S.optional(HealthChecksUpdateResponseStatus),
     suspended: S.optional(S.Boolean),
-    tcp_config: S.optional(HealthChecksUpdateResponseTcpConfig),
+    tcpConfig: S.optional(
+      HealthChecksUpdateResponseTcpConfig.pipe(T.Body("tcp_config")),
+    ),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
   }),
@@ -1386,6 +1765,7 @@ export type UpdateRequestCacheReserveValue = "on" | "off" | (string & {});
 export const UpdateRequestCacheReserveValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestCacheReserve {
+  /** Specifies the enablement value of Cache Reserve. */
   value?: UpdateRequestCacheReserveValue;
 }
 export const UpdateRequestCacheReserve = /*@__PURE__*/ S.suspend(() =>
@@ -1403,6 +1783,7 @@ export type UpdateRequestRegionalTieredCacheValue =
 export const UpdateRequestRegionalTieredCacheValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestRegionalTieredCache {
+  /** Specifies the enablement value of Regional Tiered Cache. */
   value?: UpdateRequestRegionalTieredCacheValue;
 }
 export const UpdateRequestRegionalTieredCache = /*@__PURE__*/ S.suspend(() =>
@@ -1417,6 +1798,7 @@ export type UpdateRequestSmartRoutingValue = "on" | "off" | (string & {});
 export const UpdateRequestSmartRoutingValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestSmartRouting {
+  /** Specifies the enablement value of Smart Routing. */
   value?: UpdateRequestSmartRoutingValue;
 }
 export const UpdateRequestSmartRouting = /*@__PURE__*/ S.suspend(() =>
@@ -1431,6 +1813,7 @@ export type UpdateRequestSmartTieredCacheValue = "on" | "off" | (string & {});
 export const UpdateRequestSmartTieredCacheValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestSmartTieredCache {
+  /** Specifies the enablement value of Smart Tiered Cache. */
   value?: UpdateRequestSmartTieredCacheValue;
 }
 export const UpdateRequestSmartTieredCache = /*@__PURE__*/ S.suspend(() =>
@@ -1442,19 +1825,28 @@ export const UpdateRequestSmartTieredCache = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRequestSmartTieredCache>;
 
 export interface UpdateRequest {
-  zone_id: string;
-  cache_reserve?: UpdateRequestCacheReserve;
-  regional_tiered_cache?: UpdateRequestRegionalTieredCache;
-  smart_routing?: UpdateRequestSmartRouting;
-  smart_tiered_cache?: UpdateRequestSmartTieredCache;
+  /** Identifier. */
+  zoneId: string;
+  cacheReserve?: UpdateRequestCacheReserve;
+  regionalTieredCache?: UpdateRequestRegionalTieredCache;
+  smartRouting?: UpdateRequestSmartRouting;
+  smartTieredCache?: UpdateRequestSmartTieredCache;
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    cache_reserve: S.optional(UpdateRequestCacheReserve),
-    regional_tiered_cache: S.optional(UpdateRequestRegionalTieredCache),
-    smart_routing: S.optional(UpdateRequestSmartRouting),
-    smart_tiered_cache: S.optional(UpdateRequestSmartTieredCache),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    cacheReserve: S.optional(
+      UpdateRequestCacheReserve.pipe(T.Body("cache_reserve")),
+    ),
+    regionalTieredCache: S.optional(
+      UpdateRequestRegionalTieredCache.pipe(T.Body("regional_tiered_cache")),
+    ),
+    smartRouting: S.optional(
+      UpdateRequestSmartRouting.pipe(T.Body("smart_routing")),
+    ),
+    smartTieredCache: S.optional(
+      UpdateRequestSmartTieredCache.pipe(T.Body("smart_tiered_cache")),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1468,16 +1860,20 @@ export type UpdateResponseSmartTieredCacheValue = "on" | "off" | (string & {});
 export const UpdateResponseSmartTieredCacheValue = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseSmartTieredCache {
+  /** The id of the Smart Tiered Cache setting. */
   id?: string;
+  /** Whether the setting is editable. */
   editable?: boolean;
-  modified_on?: string;
+  /** The last time the setting was modified. */
+  modifiedOn?: string;
+  /** Specifies the enablement value of Tiered Cache. */
   value?: UpdateResponseSmartTieredCacheValue;
 }
 export const UpdateResponseSmartTieredCache = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     editable: S.optional(S.Boolean),
-    modified_on: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     value: S.optional(UpdateResponseSmartTieredCacheValue),
   }),
 ).annotate({
@@ -1486,19 +1882,22 @@ export const UpdateResponseSmartTieredCache = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
-  smart_tiered_cache: UpdateResponseSmartTieredCache;
+  smartTieredCache: UpdateResponseSmartTieredCache;
 }
 export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    smart_tiered_cache: UpdateResponseSmartTieredCache,
+    smartTieredCache: UpdateResponseSmartTieredCache.pipe(
+      T.Body("smart_tiered_cache"),
+    ),
   }),
 ).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
+export type CacheReserveClearClearError = CloudflareOpError;
 /** You can use Cache Reserve Clear to clear your Cache Reserve, but you must first disable Cache Reserve. In most cases, this will be accomplished within 24 hours. You cannot re-enable Cache Reserve while this process is ongoing. Keep in mind that you cannot undo or cancel this operation. */
-export const CacheReserveClearClear: API.OperationMethod<
+export const cacheReserveClearClear: API.OperationMethod<
   CacheReserveClearClearRequest,
   CacheReserveClearClearResponse,
-  CloudflareOpError,
+  CacheReserveClearClearError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CacheReserveClearClearRequest,
@@ -1507,11 +1906,12 @@ export const CacheReserveClearClear: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CacheReserveClearStatusError = CloudflareOpError;
 /** You can use Cache Reserve Clear to clear your Cache Reserve, but you must first disable Cache Reserve. In most cases, this will be accomplished within 24 hours. You cannot re-enable Cache Reserve while this process is ongoing. Keep in mind that you cannot undo or cancel this operation. */
-export const CacheReserveClearStatus: API.OperationMethod<
+export const cacheReserveClearStatus: API.OperationMethod<
   CacheReserveClearStatusRequest,
   CacheReserveClearStatusResponse,
-  CloudflareOpError,
+  CacheReserveClearStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CacheReserveClearStatusRequest,
@@ -1520,11 +1920,12 @@ export const CacheReserveClearStatus: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Retrieve Smart Shield Settings. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -1533,11 +1934,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type HealthChecksCreateError = CloudflareOpError;
 /** Create a new health check. */
-export const HealthChecksCreate: API.OperationMethod<
+export const healthChecksCreate: API.OperationMethod<
   HealthChecksCreateRequest,
   HealthChecksCreateResponse,
-  CloudflareOpError,
+  HealthChecksCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HealthChecksCreateRequest,
@@ -1546,11 +1948,12 @@ export const HealthChecksCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type HealthChecksDeleteError = CloudflareOpError;
 /** Delete a health check. */
-export const HealthChecksDelete: API.OperationMethod<
+export const healthChecksDelete: API.OperationMethod<
   HealthChecksDeleteRequest,
   HealthChecksDeleteResponse,
-  CloudflareOpError,
+  HealthChecksDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HealthChecksDeleteRequest,
@@ -1559,11 +1962,12 @@ export const HealthChecksDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type HealthChecksEditError = CloudflareOpError;
 /** Patch a configured health check. */
-export const HealthChecksEdit: API.OperationMethod<
+export const healthChecksEdit: API.OperationMethod<
   HealthChecksEditRequest,
   HealthChecksEditResponse,
-  CloudflareOpError,
+  HealthChecksEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HealthChecksEditRequest,
@@ -1572,11 +1976,12 @@ export const HealthChecksEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type HealthChecksGetError = CloudflareOpError;
 /** Fetch a single configured health check. */
-export const HealthChecksGet: API.OperationMethod<
+export const healthChecksGet: API.OperationMethod<
   HealthChecksGetRequest,
   HealthChecksGetResponse,
-  CloudflareOpError,
+  HealthChecksGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HealthChecksGetRequest,
@@ -1585,11 +1990,12 @@ export const HealthChecksGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type HealthChecksListError = CloudflareOpError;
 /** List configured health checks. */
-export const HealthChecksList: API.OperationMethod<
+export const healthChecksList: API.OperationMethod<
   HealthChecksListRequest,
   HealthChecksListResponse,
-  CloudflareOpError,
+  HealthChecksListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HealthChecksListRequest,
@@ -1598,11 +2004,12 @@ export const HealthChecksList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type HealthChecksUpdateError = CloudflareOpError;
 /** Update a configured health check. */
-export const HealthChecksUpdate: API.OperationMethod<
+export const healthChecksUpdate: API.OperationMethod<
   HealthChecksUpdateRequest,
   HealthChecksUpdateResponse,
-  CloudflareOpError,
+  HealthChecksUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HealthChecksUpdateRequest,
@@ -1611,11 +2018,12 @@ export const HealthChecksUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UpdateError = CloudflareOpError;
 /** Set Smart Shield Settings. */
-export const Update: API.OperationMethod<
+export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,
-  CloudflareOpError,
+  UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,

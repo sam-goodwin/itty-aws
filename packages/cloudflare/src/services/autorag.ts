@@ -10,17 +10,13 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface AiSearchRequestFilters {
-  object___key__type__value__: unknown;
-  object___filters__type__: unknown;
+  objectKeyTypeValue__: unknown;
+  objectFiltersType__: unknown;
 }
 export const AiSearchRequestFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    object___key__type__value__: S.Unknown.pipe(
-      T.Body("object { key, type, value }"),
-    ),
-    object___filters__type__: S.Unknown.pipe(
-      T.Body("object { filters, type }"),
-    ),
+    objectKeyTypeValue__: S.Unknown.pipe(T.Body("object { key, type, value }")),
+    objectFiltersType__: S.Unknown.pipe(T.Body("object { filters, type }")),
   }),
 ).annotate({
   identifier: "AiSearchRequestFilters",
@@ -35,12 +31,12 @@ export const AiSearchRequestModel = /*@__PURE__*/ S.String;
 
 export interface AiSearchRequestRankingOptions {
   ranker?: string;
-  score_threshold?: number;
+  scoreThreshold?: number;
 }
 export const AiSearchRequestRankingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ranker: S.optional(S.String),
-    score_threshold: S.optional(S.Number),
+    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
   }),
 ).annotate({
   identifier: "AiSearchRequestRankingOptions",
@@ -66,31 +62,34 @@ export const AiSearchRequestReranking = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AiSearchRequestReranking>;
 
 export interface AiSearchRequest {
-  account_id: string;
+  accountId: string;
+  /** rag id */
   id: string;
   query: string;
   filters?: AiSearchRequestFilters;
-  max_num_results?: number;
+  maxNumResults?: number;
   model?: AiSearchRequestModel;
-  ranking_options?: AiSearchRequestRankingOptions;
+  rankingOptions?: AiSearchRequestRankingOptions;
   reranking?: AiSearchRequestReranking;
-  rewrite_query?: boolean;
+  rewriteQuery?: boolean;
   stream?: boolean;
-  system_prompt?: string;
+  systemPrompt?: string;
 }
 export const AiSearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
     query: S.String,
     filters: S.optional(AiSearchRequestFilters),
-    max_num_results: S.optional(S.Number),
+    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
     model: S.optional(AiSearchRequestModel),
-    ranking_options: S.optional(AiSearchRequestRankingOptions),
+    rankingOptions: S.optional(
+      AiSearchRequestRankingOptions.pipe(T.Body("ranking_options")),
+    ),
     reranking: S.optional(AiSearchRequestReranking),
-    rewrite_query: S.optional(S.Boolean),
+    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
     stream: S.optional(S.Boolean),
-    system_prompt: S.optional(S.String),
+    systemPrompt: S.optional(S.String.pipe(T.Body("system_prompt"))),
   }).pipe(
     T.Http({
       method: "POST",
@@ -125,7 +124,7 @@ export interface AiSearchResponseDataItem {
   score: number;
   attributes?: unknown;
   content?: AiSearchResponseDataItemContentList;
-  file_id?: string;
+  fileId?: string;
   filename?: string;
 }
 export const AiSearchResponseDataItem = /*@__PURE__*/ S.suspend(() =>
@@ -133,7 +132,7 @@ export const AiSearchResponseDataItem = /*@__PURE__*/ S.suspend(() =>
     score: S.Number,
     attributes: S.optional(S.Unknown),
     content: S.optional(AiSearchResponseDataItemContentList),
-    file_id: S.optional(S.String),
+    fileId: S.optional(S.String.pipe(T.Body("file_id"))),
     filename: S.optional(S.String),
   }),
 ).annotate({
@@ -148,19 +147,19 @@ export const AiSearchResponseDataList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AiSearchResponse {
   response: string;
-  search_query: string;
+  searchQuery: string;
   data?: AiSearchResponseDataList;
-  has_more?: boolean;
-  next_page?: string;
+  hasMore?: boolean;
+  nextPage?: string;
   object?: string;
 }
 export const AiSearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.String,
-    search_query: S.String,
+    searchQuery: S.String.pipe(T.Body("search_query")),
     data: S.optional(AiSearchResponseDataList),
-    has_more: S.optional(S.Boolean),
-    next_page: S.optional(S.String),
+    hasMore: S.optional(S.Boolean.pipe(T.Body("has_more"))),
+    nextPage: S.optional(S.String.pipe(T.Body("next_page"))),
     object: S.optional(S.String),
   }),
 ).annotate({
@@ -176,19 +175,20 @@ export type FilesRequestStatus =
 export const FilesRequestStatus = /*@__PURE__*/ S.String;
 
 export interface FilesRequest {
-  account_id: string;
+  accountId: string;
+  /** rag id */
   id: string;
   page?: number;
-  per_page?: number;
+  perPage?: number;
   search?: string;
   status?: FilesRequestStatus;
 }
 export const FilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
     status: S.optional(FilesRequestStatus.pipe(T.Query())),
   }).pipe(
@@ -219,6 +219,7 @@ export const FilesResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FilesResultList>;
 
 export interface FilesResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: FilesResultList;
 }
 export const FilesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -228,15 +229,16 @@ export const FilesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilesResponse" }) as any as S.Schema<FilesResponse>;
 
 export interface JobsGetRequest {
-  account_id: string;
+  accountId: string;
+  /** rag id */
   id: string;
-  job_id: string;
+  jobId: string;
 }
 export const JobsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-    job_id: S.String.pipe(T.Label()),
+    jobId: S.String.pipe(T.Label("job_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -253,36 +255,37 @@ export const JobsGetResponseSource = /*@__PURE__*/ S.String;
 export interface JobsGetResponse {
   id: string;
   source: JobsGetResponseSource;
-  end_reason?: string;
-  ended_at?: string;
-  last_seen_at?: string;
-  started_at?: string;
+  endReason?: string;
+  endedAt?: string;
+  lastSeenAt?: string;
+  startedAt?: string;
 }
 export const JobsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     source: JobsGetResponseSource,
-    end_reason: S.optional(S.String),
-    ended_at: S.optional(S.String),
-    last_seen_at: S.optional(S.String),
-    started_at: S.optional(S.String),
+    endReason: S.optional(S.String.pipe(T.Body("end_reason"))),
+    endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
+    lastSeenAt: S.optional(S.String.pipe(T.Body("last_seen_at"))),
+    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
   }),
 ).annotate({
   identifier: "JobsGetResponse",
 }) as any as S.Schema<JobsGetResponse>;
 
 export interface JobsListRequest {
-  account_id: string;
+  accountId: string;
+  /** rag id */
   id: string;
   page?: number;
-  per_page?: number;
+  perPage?: number;
 }
 export const JobsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -300,19 +303,19 @@ export const JobsListResultItemSource = /*@__PURE__*/ S.String;
 export interface JobsListResultItem {
   id: string;
   source: JobsListResultItemSource;
-  end_reason?: string;
-  ended_at?: string;
-  last_seen_at?: string;
-  started_at?: string;
+  endReason?: string;
+  endedAt?: string;
+  lastSeenAt?: string;
+  startedAt?: string;
 }
 export const JobsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     source: JobsListResultItemSource,
-    end_reason: S.optional(S.String),
-    ended_at: S.optional(S.String),
-    last_seen_at: S.optional(S.String),
-    started_at: S.optional(S.String),
+    endReason: S.optional(S.String.pipe(T.Body("end_reason"))),
+    endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
+    lastSeenAt: S.optional(S.String.pipe(T.Body("last_seen_at"))),
+    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
   }),
 ).annotate({
   identifier: "JobsListResultItem",
@@ -324,6 +327,7 @@ export const JobsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<JobsListResultList>;
 
 export interface JobsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: JobsListResultList;
 }
 export const JobsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -335,19 +339,20 @@ export const JobsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobsListResponse>;
 
 export interface JobsLogsRequest {
-  account_id: string;
+  accountId: string;
+  /** rag id */
   id: string;
-  job_id: string;
+  jobId: string;
   page?: number;
-  per_page?: number;
+  perPage?: number;
 }
 export const JobsLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
-    job_id: S.String.pipe(T.Label()),
+    jobId: S.String.pipe(T.Label("job_id")),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -361,16 +366,16 @@ export const JobsLogsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface JobsLogsResultItem {
   id: number;
-  created_at: number;
+  createdAt: number;
   message: string;
-  message_type: number;
+  messageType: number;
 }
 export const JobsLogsResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
-    created_at: S.Number,
+    createdAt: S.Number.pipe(T.Body("created_at")),
     message: S.String,
-    message_type: S.Number,
+    messageType: S.Number.pipe(T.Body("message_type")),
   }),
 ).annotate({
   identifier: "JobsLogsResultItem",
@@ -382,6 +387,7 @@ export const JobsLogsResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<JobsLogsResultList>;
 
 export interface JobsLogsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: JobsLogsResultList;
 }
 export const JobsLogsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -393,17 +399,13 @@ export const JobsLogsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobsLogsResponse>;
 
 export interface SearchRequestFilters {
-  object___key__type__value__: unknown;
-  object___filters__type__: unknown;
+  objectKeyTypeValue__: unknown;
+  objectFiltersType__: unknown;
 }
 export const SearchRequestFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    object___key__type__value__: S.Unknown.pipe(
-      T.Body("object { key, type, value }"),
-    ),
-    object___filters__type__: S.Unknown.pipe(
-      T.Body("object { filters, type }"),
-    ),
+    objectKeyTypeValue__: S.Unknown.pipe(T.Body("object { key, type, value }")),
+    objectFiltersType__: S.Unknown.pipe(T.Body("object { filters, type }")),
   }),
 ).annotate({
   identifier: "SearchRequestFilters",
@@ -411,12 +413,12 @@ export const SearchRequestFilters = /*@__PURE__*/ S.suspend(() =>
 
 export interface SearchRequestRankingOptions {
   ranker?: string;
-  score_threshold?: number;
+  scoreThreshold?: number;
 }
 export const SearchRequestRankingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ranker: S.optional(S.String),
-    score_threshold: S.optional(S.Number),
+    scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
   }),
 ).annotate({
   identifier: "SearchRequestRankingOptions",
@@ -442,25 +444,28 @@ export const SearchRequestReranking = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchRequestReranking>;
 
 export interface SearchRequest {
-  account_id: string;
+  accountId: string;
+  /** rag id */
   id: string;
   query: string;
   filters?: SearchRequestFilters;
-  max_num_results?: number;
-  ranking_options?: SearchRequestRankingOptions;
+  maxNumResults?: number;
+  rankingOptions?: SearchRequestRankingOptions;
   reranking?: SearchRequestReranking;
-  rewrite_query?: boolean;
+  rewriteQuery?: boolean;
 }
 export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
     query: S.String,
     filters: S.optional(SearchRequestFilters),
-    max_num_results: S.optional(S.Number),
-    ranking_options: S.optional(SearchRequestRankingOptions),
+    maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
+    rankingOptions: S.optional(
+      SearchRequestRankingOptions.pipe(T.Body("ranking_options")),
+    ),
     reranking: S.optional(SearchRequestReranking),
-    rewrite_query: S.optional(S.Boolean),
+    rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
   }).pipe(
     T.Http({
       method: "POST",
@@ -493,7 +498,7 @@ export interface SearchResponseDataItem {
   score: number;
   attributes?: unknown;
   content?: SearchResponseDataItemContentList;
-  file_id?: string;
+  fileId?: string;
   filename?: string;
 }
 export const SearchResponseDataItem = /*@__PURE__*/ S.suspend(() =>
@@ -501,7 +506,7 @@ export const SearchResponseDataItem = /*@__PURE__*/ S.suspend(() =>
     score: S.Number,
     attributes: S.optional(S.Unknown),
     content: S.optional(SearchResponseDataItemContentList),
-    file_id: S.optional(S.String),
+    fileId: S.optional(S.String.pipe(T.Body("file_id"))),
     filename: S.optional(S.String),
   }),
 ).annotate({
@@ -515,29 +520,30 @@ export const SearchResponseDataList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SearchResponse {
-  search_query: string;
+  searchQuery: string;
   data?: SearchResponseDataList;
-  has_more?: boolean;
-  next_page?: string;
+  hasMore?: boolean;
+  nextPage?: string;
   object?: string;
 }
 export const SearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    search_query: S.String,
+    searchQuery: S.String.pipe(T.Body("search_query")),
     data: S.optional(SearchResponseDataList),
-    has_more: S.optional(S.Boolean),
-    next_page: S.optional(S.String),
+    hasMore: S.optional(S.Boolean.pipe(T.Body("has_more"))),
+    nextPage: S.optional(S.String.pipe(T.Body("next_page"))),
     object: S.optional(S.String),
   }),
 ).annotate({ identifier: "SearchResponse" }) as any as S.Schema<SearchResponse>;
 
 export interface SyncRequest {
-  account_id: string;
+  accountId: string;
+  /** rag id */
   id: string;
 }
 export const SyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -550,19 +556,20 @@ export const SyncRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SyncResponse {
-  job_id: string;
+  jobId: string;
 }
 export const SyncResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    job_id: S.String,
+    jobId: S.String.pipe(T.Body("job_id")),
   }),
 ).annotate({ identifier: "SyncResponse" }) as any as S.Schema<SyncResponse>;
 
+export type AiSearchError = CloudflareOpError;
 /** AI Search */
-export const AiSearch: API.OperationMethod<
+export const aiSearch: API.OperationMethod<
   AiSearchRequest,
   AiSearchResponse,
-  CloudflareOpError,
+  AiSearchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AiSearchRequest,
@@ -571,11 +578,12 @@ export const AiSearch: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type FilesError = CloudflareOpError;
 /** Files */
-export const Files: API.OperationMethod<
+export const files: API.OperationMethod<
   FilesRequest,
   FilesResponse,
-  CloudflareOpError,
+  FilesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: FilesRequest,
@@ -584,11 +592,12 @@ export const Files: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type JobsGetError = CloudflareOpError;
 /** Get a Job Details */
-export const JobsGet: API.OperationMethod<
+export const jobsGet: API.OperationMethod<
   JobsGetRequest,
   JobsGetResponse,
-  CloudflareOpError,
+  JobsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: JobsGetRequest,
@@ -597,11 +606,12 @@ export const JobsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type JobsListError = CloudflareOpError;
 /** List Jobs */
-export const JobsList: API.OperationMethod<
+export const jobsList: API.OperationMethod<
   JobsListRequest,
   JobsListResponse,
-  CloudflareOpError,
+  JobsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: JobsListRequest,
@@ -610,11 +620,12 @@ export const JobsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type JobsLogsError = CloudflareOpError;
 /** List Job Logs */
-export const JobsLogs: API.OperationMethod<
+export const jobsLogs: API.OperationMethod<
   JobsLogsRequest,
   JobsLogsResponse,
-  CloudflareOpError,
+  JobsLogsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: JobsLogsRequest,
@@ -623,11 +634,12 @@ export const JobsLogs: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SearchError = CloudflareOpError;
 /** Search */
-export const Search: API.OperationMethod<
+export const search: API.OperationMethod<
   SearchRequest,
   SearchResponse,
-  CloudflareOpError,
+  SearchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SearchRequest,
@@ -636,11 +648,12 @@ export const Search: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SyncError = CloudflareOpError;
 /** Sync */
-export const Sync: API.OperationMethod<
+export const sync: API.OperationMethod<
   SyncRequest,
   SyncResponse,
-  CloudflareOpError,
+  SyncError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SyncRequest,

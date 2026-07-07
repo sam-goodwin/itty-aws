@@ -262,10 +262,29 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.spectrum#AnalyticsEventsBytimesGetResponseDataItemMetricsItem": {
+      "type": "structure",
+      "members": {
+        "array_of_number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of number"
+          }
+        },
+        "array_of_array_of_number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of array of number"
+          }
+        }
+      }
+    },
     "com.cloudflare.spectrum#AnalyticsEventsBytimesGetResponseDataItemMetricsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.spectrum#AnalyticsEventsBytimesGetResponseDataItemMetricsItem"
       }
     },
     "com.cloudflare.spectrum#AnalyticsEventsBytimesGetResponseDataItem": {
@@ -592,10 +611,29 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.spectrum#AnalyticsEventsSummariesGetResponseDataItemMetricsItem": {
+      "type": "structure",
+      "members": {
+        "array_of_number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of number"
+          }
+        },
+        "array_of_array_of_number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of array of number"
+          }
+        }
+      }
+    },
     "com.cloudflare.spectrum#AnalyticsEventsSummariesGetResponseDataItemMetricsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.spectrum#AnalyticsEventsSummariesGetResponseDataItemMetricsItem"
       }
     },
     "com.cloudflare.spectrum#AnalyticsEventsSummariesGetResponseDataItem": {

@@ -10,12 +10,13 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface AdvancedTcpProtectionAllowlistBulkDeleteRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
 }
 export const AdvancedTcpProtectionAllowlistBulkDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -34,15 +35,19 @@ export const AdvancedTcpProtectionAllowlistBulkDeleteResponse =
   }) as any as S.Schema<AdvancedTcpProtectionAllowlistBulkDeleteResponse>;
 
 export interface AdvancedTcpProtectionAllowlistCreateRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** An comment describing the allowlist prefix. */
   comment: string;
+  /** Whether to enable the allowlist prefix into effect. */
   enabled: boolean;
+  /** The allowlist prefix to add in CIDR format. */
   prefix: string;
 }
 export const AdvancedTcpProtectionAllowlistCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       comment: S.String,
       enabled: S.Boolean,
       prefix: S.String,
@@ -59,11 +64,17 @@ export const AdvancedTcpProtectionAllowlistCreateRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionAllowlistCreateResponse {
+  /** The unique ID of the allowlist prefix. */
   id: string;
+  /** An optional comment describing the allowlist prefix. */
   comment: string;
-  created_on: string;
+  /** The creation timestamp of the allowlist prefix. */
+  createdOn: string;
+  /** Whether to enable the allowlist prefix into effect. Defaults to false. */
   enabled: boolean;
-  modified_on: string;
+  /** The last modification timestamp of the allowlist prefix. */
+  modifiedOn: string;
+  /** The allowlist prefix in CIDR format. */
   prefix: string;
 }
 export const AdvancedTcpProtectionAllowlistCreateResponse =
@@ -71,9 +82,9 @@ export const AdvancedTcpProtectionAllowlistCreateResponse =
     S.Struct({
       id: S.String,
       comment: S.String,
-      created_on: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
       enabled: S.Boolean,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
       prefix: S.String,
     }),
   ).annotate({
@@ -81,14 +92,16 @@ export const AdvancedTcpProtectionAllowlistCreateResponse =
   }) as any as S.Schema<AdvancedTcpProtectionAllowlistCreateResponse>;
 
 export interface AdvancedTcpProtectionAllowlistItemsDeleteRequest {
-  account_id: string;
-  prefix_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  prefixId: string;
 }
 export const AdvancedTcpProtectionAllowlistItemsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      prefix_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      prefixId: S.String.pipe(T.Label("prefix_id")),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -107,16 +120,20 @@ export const AdvancedTcpProtectionAllowlistItemsDeleteResponse =
   }) as any as S.Schema<AdvancedTcpProtectionAllowlistItemsDeleteResponse>;
 
 export interface AdvancedTcpProtectionAllowlistItemsEditRequest {
-  account_id: string;
-  prefix_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  prefixId: string;
+  /** A comment describing the allowlist prefix. Optional. */
   comment?: string;
+  /** Whether to enable the allowlist prefix into effect. Optional. */
   enabled?: boolean;
 }
 export const AdvancedTcpProtectionAllowlistItemsEditRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      prefix_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      prefixId: S.String.pipe(T.Label("prefix_id")),
       comment: S.optional(S.String),
       enabled: S.optional(S.Boolean),
     }).pipe(
@@ -132,11 +149,17 @@ export const AdvancedTcpProtectionAllowlistItemsEditRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionAllowlistItemsEditResponse {
+  /** The unique ID of the allowlist prefix. */
   id: string;
+  /** An optional comment describing the allowlist prefix. */
   comment: string;
-  created_on: string;
+  /** The creation timestamp of the allowlist prefix. */
+  createdOn: string;
+  /** Whether to enable the allowlist prefix into effect. Defaults to false. */
   enabled: boolean;
-  modified_on: string;
+  /** The last modification timestamp of the allowlist prefix. */
+  modifiedOn: string;
+  /** The allowlist prefix in CIDR format. */
   prefix: string;
 }
 export const AdvancedTcpProtectionAllowlistItemsEditResponse =
@@ -144,9 +167,9 @@ export const AdvancedTcpProtectionAllowlistItemsEditResponse =
     S.Struct({
       id: S.String,
       comment: S.String,
-      created_on: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
       enabled: S.Boolean,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
       prefix: S.String,
     }),
   ).annotate({
@@ -154,14 +177,16 @@ export const AdvancedTcpProtectionAllowlistItemsEditResponse =
   }) as any as S.Schema<AdvancedTcpProtectionAllowlistItemsEditResponse>;
 
 export interface AdvancedTcpProtectionAllowlistItemsGetRequest {
-  account_id: string;
-  prefix_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  prefixId: string;
 }
 export const AdvancedTcpProtectionAllowlistItemsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      prefix_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      prefixId: S.String.pipe(T.Label("prefix_id")),
     }).pipe(
       T.Http({
         method: "GET",
@@ -175,11 +200,17 @@ export const AdvancedTcpProtectionAllowlistItemsGetRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionAllowlistItemsGetResponse {
+  /** The unique ID of the allowlist prefix. */
   id: string;
+  /** An optional comment describing the allowlist prefix. */
   comment: string;
-  created_on: string;
+  /** The creation timestamp of the allowlist prefix. */
+  createdOn: string;
+  /** Whether to enable the allowlist prefix into effect. Defaults to false. */
   enabled: boolean;
-  modified_on: string;
+  /** The last modification timestamp of the allowlist prefix. */
+  modifiedOn: string;
+  /** The allowlist prefix in CIDR format. */
   prefix: string;
 }
 export const AdvancedTcpProtectionAllowlistItemsGetResponse =
@@ -187,9 +218,9 @@ export const AdvancedTcpProtectionAllowlistItemsGetResponse =
     S.Struct({
       id: S.String,
       comment: S.String,
-      created_on: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
       enabled: S.Boolean,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
       prefix: S.String,
     }),
   ).annotate({
@@ -197,20 +228,25 @@ export const AdvancedTcpProtectionAllowlistItemsGetResponse =
   }) as any as S.Schema<AdvancedTcpProtectionAllowlistItemsGetResponse>;
 
 export interface AdvancedTcpProtectionAllowlistListRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** The direction of ordering (ASC or DESC). Defaults to 'ASC'. */
   direction?: string;
+  /** The field to order by. Defaults to 'prefix'. */
   order?: string;
+  /** The page number for pagination. Defaults to 1. */
   page?: number;
-  per_page?: number;
+  /** The number of items per page. Must be between 10 and 1000. Defaults to 25. */
+  perPage?: number;
 }
 export const AdvancedTcpProtectionAllowlistListRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       direction: S.optional(S.String.pipe(T.Query())),
       order: S.optional(S.String.pipe(T.Query())),
       page: S.optional(S.Number.pipe(T.Query())),
-      per_page: S.optional(S.Number.pipe(T.Query())),
+      perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     }).pipe(
       T.Http({
         method: "GET",
@@ -223,11 +259,17 @@ export const AdvancedTcpProtectionAllowlistListRequest =
   }) as any as S.Schema<AdvancedTcpProtectionAllowlistListRequest>;
 
 export interface AdvancedTcpProtectionAllowlistListResultItem {
+  /** The unique ID of the allowlist prefix. */
   id: string;
+  /** An optional comment describing the allowlist prefix. */
   comment: string;
-  created_on: string;
+  /** The creation timestamp of the allowlist prefix. */
+  createdOn: string;
+  /** Whether to enable the allowlist prefix into effect. Defaults to false. */
   enabled: boolean;
-  modified_on: string;
+  /** The last modification timestamp of the allowlist prefix. */
+  modifiedOn: string;
+  /** The allowlist prefix in CIDR format. */
   prefix: string;
 }
 export const AdvancedTcpProtectionAllowlistListResultItem =
@@ -235,9 +277,9 @@ export const AdvancedTcpProtectionAllowlistListResultItem =
     S.Struct({
       id: S.String,
       comment: S.String,
-      created_on: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
       enabled: S.Boolean,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
       prefix: S.String,
     }),
   ).annotate({
@@ -252,6 +294,7 @@ export const AdvancedTcpProtectionAllowlistListResultList =
   ) as any as S.Schema<AdvancedTcpProtectionAllowlistListResultList>;
 
 export interface AdvancedTcpProtectionAllowlistListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AdvancedTcpProtectionAllowlistListResultList;
 }
 export const AdvancedTcpProtectionAllowlistListResponse =
@@ -266,8 +309,11 @@ export const AdvancedTcpProtectionAllowlistListResponse =
   }) as any as S.Schema<AdvancedTcpProtectionAllowlistListResponse>;
 
 export interface AdvancedTcpProtectionPrefixesBulkCreateRequestBodyItem {
+  /** A comment describing the prefix. */
   comment: string;
+  /** Whether to exclude the prefix from protection. */
   excluded: boolean;
+  /** The prefix to add in CIDR format. */
   prefix: string;
 }
 export const AdvancedTcpProtectionPrefixesBulkCreateRequestBodyItem =
@@ -289,13 +335,14 @@ export const AdvancedTcpProtectionPrefixesBulkCreateRequestBodyList =
   ) as any as S.Schema<AdvancedTcpProtectionPrefixesBulkCreateRequestBodyList>;
 
 export interface AdvancedTcpProtectionPrefixesBulkCreateRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
   body: AdvancedTcpProtectionPrefixesBulkCreateRequestBodyList;
 }
 export const AdvancedTcpProtectionPrefixesBulkCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       body: AdvancedTcpProtectionPrefixesBulkCreateRequestBodyList,
     }).pipe(
       T.Http({
@@ -309,11 +356,17 @@ export const AdvancedTcpProtectionPrefixesBulkCreateRequest =
   }) as any as S.Schema<AdvancedTcpProtectionPrefixesBulkCreateRequest>;
 
 export interface AdvancedTcpProtectionPrefixesBulkCreateResultItem {
+  /** The unique ID of the prefix. */
   id: string;
+  /** A comment describing the prefix. */
   comment: string;
-  created_on: string;
+  /** The creation timestamp of the prefix. */
+  createdOn: string;
+  /** Whether to exclude the prefix from protection. */
   excluded: boolean;
-  modified_on: string;
+  /** The last modification timestamp of the prefix. */
+  modifiedOn: string;
+  /** The prefix in CIDR format. */
   prefix: string;
 }
 export const AdvancedTcpProtectionPrefixesBulkCreateResultItem =
@@ -321,9 +374,9 @@ export const AdvancedTcpProtectionPrefixesBulkCreateResultItem =
     S.Struct({
       id: S.String,
       comment: S.String,
-      created_on: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
       excluded: S.Boolean,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
       prefix: S.String,
     }),
   ).annotate({
@@ -338,6 +391,7 @@ export const AdvancedTcpProtectionPrefixesBulkCreateResultList =
   ) as any as S.Schema<AdvancedTcpProtectionPrefixesBulkCreateResultList>;
 
 export interface AdvancedTcpProtectionPrefixesBulkCreateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AdvancedTcpProtectionPrefixesBulkCreateResultList;
 }
 export const AdvancedTcpProtectionPrefixesBulkCreateResponse =
@@ -354,12 +408,13 @@ export const AdvancedTcpProtectionPrefixesBulkCreateResponse =
   }) as any as S.Schema<AdvancedTcpProtectionPrefixesBulkCreateResponse>;
 
 export interface AdvancedTcpProtectionPrefixesBulkDeleteRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
 }
 export const AdvancedTcpProtectionPrefixesBulkDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -378,15 +433,19 @@ export const AdvancedTcpProtectionPrefixesBulkDeleteResponse =
   }) as any as S.Schema<AdvancedTcpProtectionPrefixesBulkDeleteResponse>;
 
 export interface AdvancedTcpProtectionPrefixesCreateRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** A comment describing the prefix. */
   comment: string;
+  /** Whether to exclude the prefix from protection. */
   excluded: boolean;
+  /** The prefix to add in CIDR format. */
   prefix: string;
 }
 export const AdvancedTcpProtectionPrefixesCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       comment: S.String,
       excluded: S.Boolean,
       prefix: S.String,
@@ -403,11 +462,17 @@ export const AdvancedTcpProtectionPrefixesCreateRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionPrefixesCreateResponse {
+  /** The unique ID of the prefix. */
   id: string;
+  /** A comment describing the prefix. */
   comment: string;
-  created_on: string;
+  /** The creation timestamp of the prefix. */
+  createdOn: string;
+  /** Whether to exclude the prefix from protection. */
   excluded: boolean;
-  modified_on: string;
+  /** The last modification timestamp of the prefix. */
+  modifiedOn: string;
+  /** The prefix in CIDR format. */
   prefix: string;
 }
 export const AdvancedTcpProtectionPrefixesCreateResponse =
@@ -415,9 +480,9 @@ export const AdvancedTcpProtectionPrefixesCreateResponse =
     S.Struct({
       id: S.String,
       comment: S.String,
-      created_on: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
       excluded: S.Boolean,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
       prefix: S.String,
     }),
   ).annotate({
@@ -425,14 +490,16 @@ export const AdvancedTcpProtectionPrefixesCreateResponse =
   }) as any as S.Schema<AdvancedTcpProtectionPrefixesCreateResponse>;
 
 export interface AdvancedTcpProtectionPrefixesItemsDeleteRequest {
-  account_id: string;
-  prefix_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  prefixId: string;
 }
 export const AdvancedTcpProtectionPrefixesItemsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      prefix_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      prefixId: S.String.pipe(T.Label("prefix_id")),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -451,16 +518,20 @@ export const AdvancedTcpProtectionPrefixesItemsDeleteResponse =
   }) as any as S.Schema<AdvancedTcpProtectionPrefixesItemsDeleteResponse>;
 
 export interface AdvancedTcpProtectionPrefixesItemsEditRequest {
-  account_id: string;
-  prefix_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  prefixId: string;
+  /** A new comment for the prefix. Optional. */
   comment?: string;
+  /** Whether to exclude the prefix from protection. Optional. */
   excluded?: boolean;
 }
 export const AdvancedTcpProtectionPrefixesItemsEditRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      prefix_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      prefixId: S.String.pipe(T.Label("prefix_id")),
       comment: S.optional(S.String),
       excluded: S.optional(S.Boolean),
     }).pipe(
@@ -476,11 +547,17 @@ export const AdvancedTcpProtectionPrefixesItemsEditRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionPrefixesItemsEditResponse {
+  /** The unique ID of the prefix. */
   id: string;
+  /** A comment describing the prefix. */
   comment: string;
-  created_on: string;
+  /** The creation timestamp of the prefix. */
+  createdOn: string;
+  /** Whether to exclude the prefix from protection. */
   excluded: boolean;
-  modified_on: string;
+  /** The last modification timestamp of the prefix. */
+  modifiedOn: string;
+  /** The prefix in CIDR format. */
   prefix: string;
 }
 export const AdvancedTcpProtectionPrefixesItemsEditResponse =
@@ -488,9 +565,9 @@ export const AdvancedTcpProtectionPrefixesItemsEditResponse =
     S.Struct({
       id: S.String,
       comment: S.String,
-      created_on: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
       excluded: S.Boolean,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
       prefix: S.String,
     }),
   ).annotate({
@@ -498,14 +575,16 @@ export const AdvancedTcpProtectionPrefixesItemsEditResponse =
   }) as any as S.Schema<AdvancedTcpProtectionPrefixesItemsEditResponse>;
 
 export interface AdvancedTcpProtectionPrefixesItemsGetRequest {
-  account_id: string;
-  prefix_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  prefixId: string;
 }
 export const AdvancedTcpProtectionPrefixesItemsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      prefix_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      prefixId: S.String.pipe(T.Label("prefix_id")),
     }).pipe(
       T.Http({
         method: "GET",
@@ -519,11 +598,17 @@ export const AdvancedTcpProtectionPrefixesItemsGetRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionPrefixesItemsGetResponse {
+  /** The unique ID of the prefix. */
   id: string;
+  /** A comment describing the prefix. */
   comment: string;
-  created_on: string;
+  /** The creation timestamp of the prefix. */
+  createdOn: string;
+  /** Whether to exclude the prefix from protection. */
   excluded: boolean;
-  modified_on: string;
+  /** The last modification timestamp of the prefix. */
+  modifiedOn: string;
+  /** The prefix in CIDR format. */
   prefix: string;
 }
 export const AdvancedTcpProtectionPrefixesItemsGetResponse =
@@ -531,9 +616,9 @@ export const AdvancedTcpProtectionPrefixesItemsGetResponse =
     S.Struct({
       id: S.String,
       comment: S.String,
-      created_on: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
       excluded: S.Boolean,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
       prefix: S.String,
     }),
   ).annotate({
@@ -541,20 +626,25 @@ export const AdvancedTcpProtectionPrefixesItemsGetResponse =
   }) as any as S.Schema<AdvancedTcpProtectionPrefixesItemsGetResponse>;
 
 export interface AdvancedTcpProtectionPrefixesListRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** The direction of ordering (ASC or DESC). Defaults to 'ASC'. */
   direction?: string;
+  /** The field to order by. Defaults to 'prefix'. */
   order?: string;
+  /** The page number for pagination. Defaults to 1. */
   page?: number;
-  per_page?: number;
+  /** The number of items per page. Must be between 10 and 1000. Defaults to 25. */
+  perPage?: number;
 }
 export const AdvancedTcpProtectionPrefixesListRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       direction: S.optional(S.String.pipe(T.Query())),
       order: S.optional(S.String.pipe(T.Query())),
       page: S.optional(S.Number.pipe(T.Query())),
-      per_page: S.optional(S.Number.pipe(T.Query())),
+      perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     }).pipe(
       T.Http({
         method: "GET",
@@ -567,11 +657,17 @@ export const AdvancedTcpProtectionPrefixesListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AdvancedTcpProtectionPrefixesListRequest>;
 
 export interface AdvancedTcpProtectionPrefixesListResultItem {
+  /** The unique ID of the prefix. */
   id: string;
+  /** A comment describing the prefix. */
   comment: string;
-  created_on: string;
+  /** The creation timestamp of the prefix. */
+  createdOn: string;
+  /** Whether to exclude the prefix from protection. */
   excluded: boolean;
-  modified_on: string;
+  /** The last modification timestamp of the prefix. */
+  modifiedOn: string;
+  /** The prefix in CIDR format. */
   prefix: string;
 }
 export const AdvancedTcpProtectionPrefixesListResultItem =
@@ -579,9 +675,9 @@ export const AdvancedTcpProtectionPrefixesListResultItem =
     S.Struct({
       id: S.String,
       comment: S.String,
-      created_on: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
       excluded: S.Boolean,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
       prefix: S.String,
     }),
   ).annotate({
@@ -596,6 +692,7 @@ export const AdvancedTcpProtectionPrefixesListResultList =
   ) as any as S.Schema<AdvancedTcpProtectionPrefixesListResultList>;
 
 export interface AdvancedTcpProtectionPrefixesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AdvancedTcpProtectionPrefixesListResultList;
 }
 export const AdvancedTcpProtectionPrefixesListResponse =
@@ -610,13 +707,15 @@ export const AdvancedTcpProtectionPrefixesListResponse =
   }) as any as S.Schema<AdvancedTcpProtectionPrefixesListResponse>;
 
 export interface AdvancedTcpProtectionStatusEditRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Enables or disables protection. */
   enabled: boolean;
 }
 export const AdvancedTcpProtectionStatusEditRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       enabled: S.Boolean,
     }).pipe(
       T.Http({
@@ -643,12 +742,13 @@ export const AdvancedTcpProtectionStatusEditResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AdvancedTcpProtectionStatusEditResponse>;
 
 export interface AdvancedTcpProtectionStatusGetRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
 }
 export const AdvancedTcpProtectionStatusGetRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
     }).pipe(
       T.Http({
         method: "GET",
@@ -674,12 +774,13 @@ export const AdvancedTcpProtectionStatusGetResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AdvancedTcpProtectionStatusGetResponse>;
 
 export interface AdvancedTcpProtectionSynProtectionFiltersBulkDeleteRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
 }
 export const AdvancedTcpProtectionSynProtectionFiltersBulkDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -698,14 +799,17 @@ export const AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponse =
   }) as any as S.Schema<AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponse>;
 
 export interface AdvancedTcpProtectionSynProtectionFiltersCreateRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** The filter expression. */
   expression: string;
+  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
 }
 export const AdvancedTcpProtectionSynProtectionFiltersCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       expression: S.String,
       mode: S.String,
     }).pipe(
@@ -721,34 +825,41 @@ export const AdvancedTcpProtectionSynProtectionFiltersCreateRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionSynProtectionFiltersCreateResponse {
+  /** The unique ID of the expression filter. */
   id: string;
-  created_on: string;
+  /** The creation timestamp of the expression filter. */
+  createdOn: string;
+  /** The filter expression. */
   expression: string;
+  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
-  modified_on: string;
+  /** The last modification timestamp of the expression filter. */
+  modifiedOn: string;
 }
 export const AdvancedTcpProtectionSynProtectionFiltersCreateResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      created_on: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
       expression: S.String,
       mode: S.String,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
     }),
   ).annotate({
     identifier: "AdvancedTcpProtectionSynProtectionFiltersCreateResponse",
   }) as any as S.Schema<AdvancedTcpProtectionSynProtectionFiltersCreateResponse>;
 
 export interface AdvancedTcpProtectionSynProtectionFiltersItemsDeleteRequest {
-  account_id: string;
-  filter_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  filterId: string;
 }
 export const AdvancedTcpProtectionSynProtectionFiltersItemsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      filter_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      filterId: S.String.pipe(T.Label("filter_id")),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -767,16 +878,20 @@ export const AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponse =
   }) as any as S.Schema<AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponse>;
 
 export interface AdvancedTcpProtectionSynProtectionFiltersItemsEditRequest {
-  account_id: string;
-  filter_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  filterId: string;
+  /** The new filter expression. Optional. */
   expression?: string;
+  /** The new mode for the filter. Optional. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode?: string;
 }
 export const AdvancedTcpProtectionSynProtectionFiltersItemsEditRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      filter_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      filterId: S.String.pipe(T.Label("filter_id")),
       expression: S.optional(S.String),
       mode: S.optional(S.String),
     }).pipe(
@@ -792,34 +907,41 @@ export const AdvancedTcpProtectionSynProtectionFiltersItemsEditRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionSynProtectionFiltersItemsEditResponse {
+  /** The unique ID of the expression filter. */
   id: string;
-  created_on: string;
+  /** The creation timestamp of the expression filter. */
+  createdOn: string;
+  /** The filter expression. */
   expression: string;
+  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
-  modified_on: string;
+  /** The last modification timestamp of the expression filter. */
+  modifiedOn: string;
 }
 export const AdvancedTcpProtectionSynProtectionFiltersItemsEditResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      created_on: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
       expression: S.String,
       mode: S.String,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
     }),
   ).annotate({
     identifier: "AdvancedTcpProtectionSynProtectionFiltersItemsEditResponse",
   }) as any as S.Schema<AdvancedTcpProtectionSynProtectionFiltersItemsEditResponse>;
 
 export interface AdvancedTcpProtectionSynProtectionFiltersItemsGetRequest {
-  account_id: string;
-  filter_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  filterId: string;
 }
 export const AdvancedTcpProtectionSynProtectionFiltersItemsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      filter_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      filterId: S.String.pipe(T.Label("filter_id")),
     }).pipe(
       T.Http({
         method: "GET",
@@ -833,42 +955,53 @@ export const AdvancedTcpProtectionSynProtectionFiltersItemsGetRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionSynProtectionFiltersItemsGetResponse {
+  /** The unique ID of the expression filter. */
   id: string;
-  created_on: string;
+  /** The creation timestamp of the expression filter. */
+  createdOn: string;
+  /** The filter expression. */
   expression: string;
+  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
-  modified_on: string;
+  /** The last modification timestamp of the expression filter. */
+  modifiedOn: string;
 }
 export const AdvancedTcpProtectionSynProtectionFiltersItemsGetResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      created_on: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
       expression: S.String,
       mode: S.String,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
     }),
   ).annotate({
     identifier: "AdvancedTcpProtectionSynProtectionFiltersItemsGetResponse",
   }) as any as S.Schema<AdvancedTcpProtectionSynProtectionFiltersItemsGetResponse>;
 
 export interface AdvancedTcpProtectionSynProtectionFiltersListRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** The direction of ordering (ASC or DESC). Defaults to 'ASC'. */
   direction?: string;
+  /** The mode of the filters to get. Optional. Valid values: 'enabled', 'disabled', 'monitoring'. */
   mode?: string;
+  /** The field to order by. Defaults to 'prefix'. */
   order?: string;
+  /** The page number for pagination. Defaults to 1. */
   page?: number;
-  per_page?: number;
+  /** The number of items per page. Must be between 10 and 1000. Defaults to 25. */
+  perPage?: number;
 }
 export const AdvancedTcpProtectionSynProtectionFiltersListRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       direction: S.optional(S.String.pipe(T.Query())),
       mode: S.optional(S.String.pipe(T.Query())),
       order: S.optional(S.String.pipe(T.Query())),
       page: S.optional(S.Number.pipe(T.Query())),
-      per_page: S.optional(S.Number.pipe(T.Query())),
+      perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     }).pipe(
       T.Http({
         method: "GET",
@@ -881,20 +1014,25 @@ export const AdvancedTcpProtectionSynProtectionFiltersListRequest =
   }) as any as S.Schema<AdvancedTcpProtectionSynProtectionFiltersListRequest>;
 
 export interface AdvancedTcpProtectionSynProtectionFiltersListResultItem {
+  /** The unique ID of the expression filter. */
   id: string;
-  created_on: string;
+  /** The creation timestamp of the expression filter. */
+  createdOn: string;
+  /** The filter expression. */
   expression: string;
+  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
-  modified_on: string;
+  /** The last modification timestamp of the expression filter. */
+  modifiedOn: string;
 }
 export const AdvancedTcpProtectionSynProtectionFiltersListResultItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      created_on: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
       expression: S.String,
       mode: S.String,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
     }),
   ).annotate({
     identifier: "AdvancedTcpProtectionSynProtectionFiltersListResultItem",
@@ -908,6 +1046,7 @@ export const AdvancedTcpProtectionSynProtectionFiltersListResultList =
   ) as any as S.Schema<AdvancedTcpProtectionSynProtectionFiltersListResultList>;
 
 export interface AdvancedTcpProtectionSynProtectionFiltersListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AdvancedTcpProtectionSynProtectionFiltersListResultList;
 }
 export const AdvancedTcpProtectionSynProtectionFiltersListResponse =
@@ -924,12 +1063,13 @@ export const AdvancedTcpProtectionSynProtectionFiltersListResponse =
   }) as any as S.Schema<AdvancedTcpProtectionSynProtectionFiltersListResponse>;
 
 export interface AdvancedTcpProtectionSynProtectionRulesBulkDeleteRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
 }
 export const AdvancedTcpProtectionSynProtectionRulesBulkDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -948,24 +1088,31 @@ export const AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponse =
   }) as any as S.Schema<AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponse>;
 
 export interface AdvancedTcpProtectionSynProtectionRulesCreateRequest {
-  account_id: string;
-  burst_sensitivity: string;
+  /** Identifier. */
+  accountId: string;
+  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  burstSensitivity: string;
+  /** The mode for SYN Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
+  /** The name of the SYN Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
   name: string;
-  rate_sensitivity: string;
+  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  rateSensitivity: string;
+  /** The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
   scope: string;
-  mitigation_type?: string;
+  /** The type of mitigation. Must be one of 'challenge' or 'retransmit'. Optional. Defaults to 'challenge'. */
+  mitigationType?: string;
 }
 export const AdvancedTcpProtectionSynProtectionRulesCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      burst_sensitivity: S.String,
+      accountId: S.String.pipe(T.Label("account_id")),
+      burstSensitivity: S.String.pipe(T.Body("burst_sensitivity")),
       mode: S.String,
       name: S.String,
-      rate_sensitivity: S.String,
+      rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
-      mitigation_type: S.optional(S.String),
+      mitigationType: S.optional(S.String.pipe(T.Body("mitigation_type"))),
     }).pipe(
       T.Http({
         method: "POST",
@@ -979,27 +1126,36 @@ export const AdvancedTcpProtectionSynProtectionRulesCreateRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionSynProtectionRulesCreateResponse {
+  /** The unique ID of the SYN Protection rule. */
   id: string;
-  burst_sensitivity: string;
-  created_on: string;
-  mitigation_type: string;
+  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  burstSensitivity: string;
+  /** The creation timestamp of the SYN Protection rule. */
+  createdOn: string;
+  /** The type of mitigation for SYN Protection. Must be one of 'challenge' or 'retransmit'. */
+  mitigationType: string;
+  /** The mode for SYN Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
-  modified_on: string;
+  /** The last modification timestamp of the SYN Protection rule. */
+  modifiedOn: string;
+  /** The name of the SYN Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
   name: string;
-  rate_sensitivity: string;
+  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  rateSensitivity: string;
+  /** The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
   scope: string;
 }
 export const AdvancedTcpProtectionSynProtectionRulesCreateResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      burst_sensitivity: S.String,
-      created_on: S.String,
-      mitigation_type: S.String,
+      burstSensitivity: S.String.pipe(T.Body("burst_sensitivity")),
+      createdOn: S.String.pipe(T.Body("created_on")),
+      mitigationType: S.String.pipe(T.Body("mitigation_type")),
       mode: S.String,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
       name: S.String,
-      rate_sensitivity: S.String,
+      rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
     }),
   ).annotate({
@@ -1007,14 +1163,16 @@ export const AdvancedTcpProtectionSynProtectionRulesCreateResponse =
   }) as any as S.Schema<AdvancedTcpProtectionSynProtectionRulesCreateResponse>;
 
 export interface AdvancedTcpProtectionSynProtectionRulesItemsDeleteRequest {
-  account_id: string;
-  rule_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  ruleId: string;
 }
 export const AdvancedTcpProtectionSynProtectionRulesItemsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      rule_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      ruleId: S.String.pipe(T.Label("rule_id")),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -1033,22 +1191,28 @@ export const AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponse =
   }) as any as S.Schema<AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponse>;
 
 export interface AdvancedTcpProtectionSynProtectionRulesItemsEditRequest {
-  account_id: string;
-  rule_id: string;
-  burst_sensitivity?: string;
-  mitigation_type?: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  ruleId: string;
+  /** The new burst sensitivity. Optional. Must be one of 'low', 'medium', 'high'. */
+  burstSensitivity?: string;
+  /** The new mitigation type. Optional. Must be one of 'challenge' or 'retransmit'. */
+  mitigationType?: string;
+  /** The new mode for SYN Protection. Optional. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode?: string;
-  rate_sensitivity?: string;
+  /** The new rate sensitivity. Optional. Must be one of 'low', 'medium', 'high'. */
+  rateSensitivity?: string;
 }
 export const AdvancedTcpProtectionSynProtectionRulesItemsEditRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      rule_id: S.String.pipe(T.Label()),
-      burst_sensitivity: S.optional(S.String),
-      mitigation_type: S.optional(S.String),
+      accountId: S.String.pipe(T.Label("account_id")),
+      ruleId: S.String.pipe(T.Label("rule_id")),
+      burstSensitivity: S.optional(S.String.pipe(T.Body("burst_sensitivity"))),
+      mitigationType: S.optional(S.String.pipe(T.Body("mitigation_type"))),
       mode: S.optional(S.String),
-      rate_sensitivity: S.optional(S.String),
+      rateSensitivity: S.optional(S.String.pipe(T.Body("rate_sensitivity"))),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1062,27 +1226,36 @@ export const AdvancedTcpProtectionSynProtectionRulesItemsEditRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionSynProtectionRulesItemsEditResponse {
+  /** The unique ID of the SYN Protection rule. */
   id: string;
-  burst_sensitivity: string;
-  created_on: string;
-  mitigation_type: string;
+  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  burstSensitivity: string;
+  /** The creation timestamp of the SYN Protection rule. */
+  createdOn: string;
+  /** The type of mitigation for SYN Protection. Must be one of 'challenge' or 'retransmit'. */
+  mitigationType: string;
+  /** The mode for SYN Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
-  modified_on: string;
+  /** The last modification timestamp of the SYN Protection rule. */
+  modifiedOn: string;
+  /** The name of the SYN Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
   name: string;
-  rate_sensitivity: string;
+  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  rateSensitivity: string;
+  /** The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
   scope: string;
 }
 export const AdvancedTcpProtectionSynProtectionRulesItemsEditResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      burst_sensitivity: S.String,
-      created_on: S.String,
-      mitigation_type: S.String,
+      burstSensitivity: S.String.pipe(T.Body("burst_sensitivity")),
+      createdOn: S.String.pipe(T.Body("created_on")),
+      mitigationType: S.String.pipe(T.Body("mitigation_type")),
       mode: S.String,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
       name: S.String,
-      rate_sensitivity: S.String,
+      rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
     }),
   ).annotate({
@@ -1090,14 +1263,16 @@ export const AdvancedTcpProtectionSynProtectionRulesItemsEditResponse =
   }) as any as S.Schema<AdvancedTcpProtectionSynProtectionRulesItemsEditResponse>;
 
 export interface AdvancedTcpProtectionSynProtectionRulesItemsGetRequest {
-  account_id: string;
-  rule_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  ruleId: string;
 }
 export const AdvancedTcpProtectionSynProtectionRulesItemsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      rule_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      ruleId: S.String.pipe(T.Label("rule_id")),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1111,27 +1286,36 @@ export const AdvancedTcpProtectionSynProtectionRulesItemsGetRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionSynProtectionRulesItemsGetResponse {
+  /** The unique ID of the SYN Protection rule. */
   id: string;
-  burst_sensitivity: string;
-  created_on: string;
-  mitigation_type: string;
+  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  burstSensitivity: string;
+  /** The creation timestamp of the SYN Protection rule. */
+  createdOn: string;
+  /** The type of mitigation for SYN Protection. Must be one of 'challenge' or 'retransmit'. */
+  mitigationType: string;
+  /** The mode for SYN Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
-  modified_on: string;
+  /** The last modification timestamp of the SYN Protection rule. */
+  modifiedOn: string;
+  /** The name of the SYN Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
   name: string;
-  rate_sensitivity: string;
+  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  rateSensitivity: string;
+  /** The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
   scope: string;
 }
 export const AdvancedTcpProtectionSynProtectionRulesItemsGetResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      burst_sensitivity: S.String,
-      created_on: S.String,
-      mitigation_type: S.String,
+      burstSensitivity: S.String.pipe(T.Body("burst_sensitivity")),
+      createdOn: S.String.pipe(T.Body("created_on")),
+      mitigationType: S.String.pipe(T.Body("mitigation_type")),
       mode: S.String,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
       name: S.String,
-      rate_sensitivity: S.String,
+      rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
     }),
   ).annotate({
@@ -1139,20 +1323,25 @@ export const AdvancedTcpProtectionSynProtectionRulesItemsGetResponse =
   }) as any as S.Schema<AdvancedTcpProtectionSynProtectionRulesItemsGetResponse>;
 
 export interface AdvancedTcpProtectionSynProtectionRulesListRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** The direction of ordering (ASC or DESC). Defaults to 'ASC'. */
   direction?: string;
+  /** The field to order by. Defaults to 'prefix'. */
   order?: string;
+  /** The page number for pagination. Defaults to 1. */
   page?: number;
-  per_page?: number;
+  /** The number of items per page. Must be between 10 and 1000. Defaults to 25. */
+  perPage?: number;
 }
 export const AdvancedTcpProtectionSynProtectionRulesListRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       direction: S.optional(S.String.pipe(T.Query())),
       order: S.optional(S.String.pipe(T.Query())),
       page: S.optional(S.Number.pipe(T.Query())),
-      per_page: S.optional(S.Number.pipe(T.Query())),
+      perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1165,27 +1354,36 @@ export const AdvancedTcpProtectionSynProtectionRulesListRequest =
   }) as any as S.Schema<AdvancedTcpProtectionSynProtectionRulesListRequest>;
 
 export interface AdvancedTcpProtectionSynProtectionRulesListResultItem {
+  /** The unique ID of the SYN Protection rule. */
   id: string;
-  burst_sensitivity: string;
-  created_on: string;
-  mitigation_type: string;
+  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  burstSensitivity: string;
+  /** The creation timestamp of the SYN Protection rule. */
+  createdOn: string;
+  /** The type of mitigation for SYN Protection. Must be one of 'challenge' or 'retransmit'. */
+  mitigationType: string;
+  /** The mode for SYN Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
-  modified_on: string;
+  /** The last modification timestamp of the SYN Protection rule. */
+  modifiedOn: string;
+  /** The name of the SYN Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
   name: string;
-  rate_sensitivity: string;
+  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  rateSensitivity: string;
+  /** The scope for the SYN Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
   scope: string;
 }
 export const AdvancedTcpProtectionSynProtectionRulesListResultItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      burst_sensitivity: S.String,
-      created_on: S.String,
-      mitigation_type: S.String,
+      burstSensitivity: S.String.pipe(T.Body("burst_sensitivity")),
+      createdOn: S.String.pipe(T.Body("created_on")),
+      mitigationType: S.String.pipe(T.Body("mitigation_type")),
       mode: S.String,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
       name: S.String,
-      rate_sensitivity: S.String,
+      rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
     }),
   ).annotate({
@@ -1200,6 +1398,7 @@ export const AdvancedTcpProtectionSynProtectionRulesListResultList =
   ) as any as S.Schema<AdvancedTcpProtectionSynProtectionRulesListResultList>;
 
 export interface AdvancedTcpProtectionSynProtectionRulesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AdvancedTcpProtectionSynProtectionRulesListResultList;
 }
 export const AdvancedTcpProtectionSynProtectionRulesListResponse =
@@ -1216,12 +1415,13 @@ export const AdvancedTcpProtectionSynProtectionRulesListResponse =
   }) as any as S.Schema<AdvancedTcpProtectionSynProtectionRulesListResponse>;
 
 export interface AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -1242,14 +1442,17 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponse =
   }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponse>;
 
 export interface AdvancedTcpProtectionTcpFlowProtectionFiltersCreateRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** The filter expression. */
   expression: string;
+  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionFiltersCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       expression: S.String,
       mode: S.String,
     }).pipe(
@@ -1265,34 +1468,41 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersCreateRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionTcpFlowProtectionFiltersCreateResponse {
+  /** The unique ID of the expression filter. */
   id: string;
-  created_on: string;
+  /** The creation timestamp of the expression filter. */
+  createdOn: string;
+  /** The filter expression. */
   expression: string;
+  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
-  modified_on: string;
+  /** The last modification timestamp of the expression filter. */
+  modifiedOn: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionFiltersCreateResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      created_on: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
       expression: S.String,
       mode: S.String,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
     }),
   ).annotate({
     identifier: "AdvancedTcpProtectionTcpFlowProtectionFiltersCreateResponse",
   }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionFiltersCreateResponse>;
 
 export interface AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteRequest {
-  account_id: string;
-  filter_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  filterId: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      filter_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      filterId: S.String.pipe(T.Label("filter_id")),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -1313,16 +1523,20 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponse =
   }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponse>;
 
 export interface AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditRequest {
-  account_id: string;
-  filter_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  filterId: string;
+  /** The new filter expression. Optional. */
   expression?: string;
+  /** The new mode for the filter. Optional. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode?: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      filter_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      filterId: S.String.pipe(T.Label("filter_id")),
       expression: S.optional(S.String),
       mode: S.optional(S.String),
     }).pipe(
@@ -1338,20 +1552,25 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditResponse {
+  /** The unique ID of the expression filter. */
   id: string;
-  created_on: string;
+  /** The creation timestamp of the expression filter. */
+  createdOn: string;
+  /** The filter expression. */
   expression: string;
+  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
-  modified_on: string;
+  /** The last modification timestamp of the expression filter. */
+  modifiedOn: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      created_on: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
       expression: S.String,
       mode: S.String,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
     }),
   ).annotate({
     identifier:
@@ -1359,14 +1578,16 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditResponse =
   }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditResponse>;
 
 export interface AdvancedTcpProtectionTcpFlowProtectionFiltersItemsGetRequest {
-  account_id: string;
-  filter_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  filterId: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      filter_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      filterId: S.String.pipe(T.Label("filter_id")),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1380,42 +1601,53 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsGetRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionTcpFlowProtectionFiltersItemsGetResponse {
+  /** The unique ID of the expression filter. */
   id: string;
-  created_on: string;
+  /** The creation timestamp of the expression filter. */
+  createdOn: string;
+  /** The filter expression. */
   expression: string;
+  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
-  modified_on: string;
+  /** The last modification timestamp of the expression filter. */
+  modifiedOn: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsGetResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      created_on: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
       expression: S.String,
       mode: S.String,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
     }),
   ).annotate({
     identifier: "AdvancedTcpProtectionTcpFlowProtectionFiltersItemsGetResponse",
   }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionFiltersItemsGetResponse>;
 
 export interface AdvancedTcpProtectionTcpFlowProtectionFiltersListRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** The direction of ordering (ASC or DESC). Defaults to 'ASC'. */
   direction?: string;
+  /** The mode of the filters to get. Optional. Valid values: 'enabled', 'disabled', 'monitoring'. */
   mode?: string;
+  /** The field to order by. Defaults to 'prefix'. */
   order?: string;
+  /** The page number for pagination. Defaults to 1. */
   page?: number;
-  per_page?: number;
+  /** The number of items per page. Must be between 10 and 1000. Defaults to 25. */
+  perPage?: number;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionFiltersListRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       direction: S.optional(S.String.pipe(T.Query())),
       mode: S.optional(S.String.pipe(T.Query())),
       order: S.optional(S.String.pipe(T.Query())),
       page: S.optional(S.Number.pipe(T.Query())),
-      per_page: S.optional(S.Number.pipe(T.Query())),
+      perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1428,20 +1660,25 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersListRequest =
   }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionFiltersListRequest>;
 
 export interface AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem {
+  /** The unique ID of the expression filter. */
   id: string;
-  created_on: string;
+  /** The creation timestamp of the expression filter. */
+  createdOn: string;
+  /** The filter expression. */
   expression: string;
+  /** The filter's mode. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
-  modified_on: string;
+  /** The last modification timestamp of the expression filter. */
+  modifiedOn: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      created_on: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
       expression: S.String,
       mode: S.String,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
     }),
   ).annotate({
     identifier: "AdvancedTcpProtectionTcpFlowProtectionFiltersListResultItem",
@@ -1455,6 +1692,7 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList =
   ) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList>;
 
 export interface AdvancedTcpProtectionTcpFlowProtectionFiltersListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionFiltersListResponse =
@@ -1471,12 +1709,13 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersListResponse =
   }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionFiltersListResponse>;
 
 export interface AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -1495,21 +1734,27 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponse =
   }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponse>;
 
 export interface AdvancedTcpProtectionTcpFlowProtectionRulesCreateRequest {
-  account_id: string;
-  burst_sensitivity: string;
+  /** Identifier. */
+  accountId: string;
+  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  burstSensitivity: string;
+  /** The mode for the TCP Flow Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
+  /** The name of the TCP Flow Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
   name: string;
-  rate_sensitivity: string;
+  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  rateSensitivity: string;
+  /** The scope for the TCP Flow Protection rule. */
   scope: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionRulesCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      burst_sensitivity: S.String,
+      accountId: S.String.pipe(T.Label("account_id")),
+      burstSensitivity: S.String.pipe(T.Body("burst_sensitivity")),
       mode: S.String,
       name: S.String,
-      rate_sensitivity: S.String,
+      rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
     }).pipe(
       T.Http({
@@ -1524,25 +1769,33 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesCreateRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionTcpFlowProtectionRulesCreateResponse {
+  /** The unique ID of the TCP Flow Protection rule. */
   id: string;
-  burst_sensitivity: string;
-  created_on: string;
+  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  burstSensitivity: string;
+  /** The creation timestamp of the TCP Flow Protection rule. */
+  createdOn: string;
+  /** The mode for TCP Flow Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
-  modified_on: string;
+  /** The last modification timestamp of the TCP Flow Protection rule. */
+  modifiedOn: string;
+  /** The name of the TCP Flow Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
   name: string;
-  rate_sensitivity: string;
+  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  rateSensitivity: string;
+  /** The scope for the TCP Flow Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
   scope: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionRulesCreateResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      burst_sensitivity: S.String,
-      created_on: S.String,
+      burstSensitivity: S.String.pipe(T.Body("burst_sensitivity")),
+      createdOn: S.String.pipe(T.Body("created_on")),
       mode: S.String,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
       name: S.String,
-      rate_sensitivity: S.String,
+      rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
     }),
   ).annotate({
@@ -1550,14 +1803,16 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesCreateResponse =
   }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionRulesCreateResponse>;
 
 export interface AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteRequest {
-  account_id: string;
-  rule_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  ruleId: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      rule_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      ruleId: S.String.pipe(T.Label("rule_id")),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -1577,20 +1832,25 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponse =
   }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponse>;
 
 export interface AdvancedTcpProtectionTcpFlowProtectionRulesItemsEditRequest {
-  account_id: string;
-  rule_id: string;
-  burst_sensitivity?: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  ruleId: string;
+  /** The new burst sensitivity. Optional. Must be one of 'low', 'medium', 'high'. */
+  burstSensitivity?: string;
+  /** The new mode for TCP Flow Protection. Optional. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode?: string;
-  rate_sensitivity?: string;
+  /** The new rate sensitivity. Optional. Must be one of 'low', 'medium', 'high'. */
+  rateSensitivity?: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsEditRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      rule_id: S.String.pipe(T.Label()),
-      burst_sensitivity: S.optional(S.String),
+      accountId: S.String.pipe(T.Label("account_id")),
+      ruleId: S.String.pipe(T.Label("rule_id")),
+      burstSensitivity: S.optional(S.String.pipe(T.Body("burst_sensitivity"))),
       mode: S.optional(S.String),
-      rate_sensitivity: S.optional(S.String),
+      rateSensitivity: S.optional(S.String.pipe(T.Body("rate_sensitivity"))),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1604,25 +1864,33 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsEditRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionTcpFlowProtectionRulesItemsEditResponse {
+  /** The unique ID of the TCP Flow Protection rule. */
   id: string;
-  burst_sensitivity: string;
-  created_on: string;
+  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  burstSensitivity: string;
+  /** The creation timestamp of the TCP Flow Protection rule. */
+  createdOn: string;
+  /** The mode for TCP Flow Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
-  modified_on: string;
+  /** The last modification timestamp of the TCP Flow Protection rule. */
+  modifiedOn: string;
+  /** The name of the TCP Flow Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
   name: string;
-  rate_sensitivity: string;
+  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  rateSensitivity: string;
+  /** The scope for the TCP Flow Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
   scope: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsEditResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      burst_sensitivity: S.String,
-      created_on: S.String,
+      burstSensitivity: S.String.pipe(T.Body("burst_sensitivity")),
+      createdOn: S.String.pipe(T.Body("created_on")),
       mode: S.String,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
       name: S.String,
-      rate_sensitivity: S.String,
+      rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
     }),
   ).annotate({
@@ -1630,14 +1898,16 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsEditResponse =
   }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionRulesItemsEditResponse>;
 
 export interface AdvancedTcpProtectionTcpFlowProtectionRulesItemsGetRequest {
-  account_id: string;
-  rule_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** UUID. */
+  ruleId: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      rule_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      ruleId: S.String.pipe(T.Label("rule_id")),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1651,25 +1921,33 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsGetRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AdvancedTcpProtectionTcpFlowProtectionRulesItemsGetResponse {
+  /** The unique ID of the TCP Flow Protection rule. */
   id: string;
-  burst_sensitivity: string;
-  created_on: string;
+  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  burstSensitivity: string;
+  /** The creation timestamp of the TCP Flow Protection rule. */
+  createdOn: string;
+  /** The mode for TCP Flow Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
-  modified_on: string;
+  /** The last modification timestamp of the TCP Flow Protection rule. */
+  modifiedOn: string;
+  /** The name of the TCP Flow Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
   name: string;
-  rate_sensitivity: string;
+  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  rateSensitivity: string;
+  /** The scope for the TCP Flow Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
   scope: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsGetResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      burst_sensitivity: S.String,
-      created_on: S.String,
+      burstSensitivity: S.String.pipe(T.Body("burst_sensitivity")),
+      createdOn: S.String.pipe(T.Body("created_on")),
       mode: S.String,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
       name: S.String,
-      rate_sensitivity: S.String,
+      rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
     }),
   ).annotate({
@@ -1677,20 +1955,25 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsGetResponse =
   }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionRulesItemsGetResponse>;
 
 export interface AdvancedTcpProtectionTcpFlowProtectionRulesListRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** The direction of ordering (ASC or DESC). Defaults to 'ASC'. */
   direction?: string;
+  /** The field to order by. Defaults to 'prefix'. */
   order?: string;
+  /** The page number for pagination. Defaults to 1. */
   page?: number;
-  per_page?: number;
+  /** The number of items per page. Must be between 10 and 1000. Defaults to 25. */
+  perPage?: number;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionRulesListRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       direction: S.optional(S.String.pipe(T.Query())),
       order: S.optional(S.String.pipe(T.Query())),
       page: S.optional(S.Number.pipe(T.Query())),
-      per_page: S.optional(S.Number.pipe(T.Query())),
+      perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1703,25 +1986,33 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesListRequest =
   }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionRulesListRequest>;
 
 export interface AdvancedTcpProtectionTcpFlowProtectionRulesListResultItem {
+  /** The unique ID of the TCP Flow Protection rule. */
   id: string;
-  burst_sensitivity: string;
-  created_on: string;
+  /** The burst sensitivity. Must be one of 'low', 'medium', 'high'. */
+  burstSensitivity: string;
+  /** The creation timestamp of the TCP Flow Protection rule. */
+  createdOn: string;
+  /** The mode for TCP Flow Protection. Must be one of 'enabled', 'disabled', 'monitoring'. */
   mode: string;
-  modified_on: string;
+  /** The last modification timestamp of the TCP Flow Protection rule. */
+  modifiedOn: string;
+  /** The name of the TCP Flow Protection rule. Value is relative to the 'scope' setting. For 'global' scope, name should be 'global'. For either the 'region' or 'datacenter' scope, name should be the actual name of the region or datacenter, e.g., 'wnam' or 'lax'. */
   name: string;
-  rate_sensitivity: string;
+  /** The rate sensitivity. Must be one of 'low', 'medium', 'high'. */
+  rateSensitivity: string;
+  /** The scope for the TCP Flow Protection rule. Must be one of 'global', 'region', or 'datacenter'. */
   scope: string;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionRulesListResultItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      burst_sensitivity: S.String,
-      created_on: S.String,
+      burstSensitivity: S.String.pipe(T.Body("burst_sensitivity")),
+      createdOn: S.String.pipe(T.Body("created_on")),
       mode: S.String,
-      modified_on: S.String,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
       name: S.String,
-      rate_sensitivity: S.String,
+      rateSensitivity: S.String.pipe(T.Body("rate_sensitivity")),
       scope: S.String,
     }),
   ).annotate({
@@ -1736,6 +2027,7 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesListResultList =
   ) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionRulesListResultList>;
 
 export interface AdvancedTcpProtectionTcpFlowProtectionRulesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AdvancedTcpProtectionTcpFlowProtectionRulesListResultList;
 }
 export const AdvancedTcpProtectionTcpFlowProtectionRulesListResponse =
@@ -1751,11 +2043,12 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesListResponse =
     identifier: "AdvancedTcpProtectionTcpFlowProtectionRulesListResponse",
   }) as any as S.Schema<AdvancedTcpProtectionTcpFlowProtectionRulesListResponse>;
 
+export type AdvancedTcpProtectionAllowlistBulkDeleteError = CloudflareOpError;
 /** Delete all allowlist prefixes for an account. */
-export const AdvancedTcpProtectionAllowlistBulkDelete: API.OperationMethod<
+export const advancedTcpProtectionAllowlistBulkDelete: API.OperationMethod<
   AdvancedTcpProtectionAllowlistBulkDeleteRequest,
   AdvancedTcpProtectionAllowlistBulkDeleteResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionAllowlistBulkDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionAllowlistBulkDeleteRequest,
@@ -1764,11 +2057,12 @@ export const AdvancedTcpProtectionAllowlistBulkDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionAllowlistCreateError = CloudflareOpError;
 /** Create an allowlist prefix for an account. */
-export const AdvancedTcpProtectionAllowlistCreate: API.OperationMethod<
+export const advancedTcpProtectionAllowlistCreate: API.OperationMethod<
   AdvancedTcpProtectionAllowlistCreateRequest,
   AdvancedTcpProtectionAllowlistCreateResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionAllowlistCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionAllowlistCreateRequest,
@@ -1777,11 +2071,12 @@ export const AdvancedTcpProtectionAllowlistCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionAllowlistItemsDeleteError = CloudflareOpError;
 /** Delete the allowlist prefix for an account given a UUID. */
-export const AdvancedTcpProtectionAllowlistItemsDelete: API.OperationMethod<
+export const advancedTcpProtectionAllowlistItemsDelete: API.OperationMethod<
   AdvancedTcpProtectionAllowlistItemsDeleteRequest,
   AdvancedTcpProtectionAllowlistItemsDeleteResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionAllowlistItemsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionAllowlistItemsDeleteRequest,
@@ -1790,11 +2085,12 @@ export const AdvancedTcpProtectionAllowlistItemsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionAllowlistItemsEditError = CloudflareOpError;
 /** Update an allowlist prefix specified by the given UUID. */
-export const AdvancedTcpProtectionAllowlistItemsEdit: API.OperationMethod<
+export const advancedTcpProtectionAllowlistItemsEdit: API.OperationMethod<
   AdvancedTcpProtectionAllowlistItemsEditRequest,
   AdvancedTcpProtectionAllowlistItemsEditResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionAllowlistItemsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionAllowlistItemsEditRequest,
@@ -1803,11 +2099,12 @@ export const AdvancedTcpProtectionAllowlistItemsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionAllowlistItemsGetError = CloudflareOpError;
 /** Get an allowlist prefix specified by the given UUID. */
-export const AdvancedTcpProtectionAllowlistItemsGet: API.OperationMethod<
+export const advancedTcpProtectionAllowlistItemsGet: API.OperationMethod<
   AdvancedTcpProtectionAllowlistItemsGetRequest,
   AdvancedTcpProtectionAllowlistItemsGetResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionAllowlistItemsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionAllowlistItemsGetRequest,
@@ -1816,11 +2113,12 @@ export const AdvancedTcpProtectionAllowlistItemsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionAllowlistListError = CloudflareOpError;
 /** List all allowlist prefixes for an account. */
-export const AdvancedTcpProtectionAllowlistList: API.OperationMethod<
+export const advancedTcpProtectionAllowlistList: API.OperationMethod<
   AdvancedTcpProtectionAllowlistListRequest,
   AdvancedTcpProtectionAllowlistListResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionAllowlistListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionAllowlistListRequest,
@@ -1829,11 +2127,12 @@ export const AdvancedTcpProtectionAllowlistList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionPrefixesBulkCreateError = CloudflareOpError;
 /** Create multiple prefixes for an account. */
-export const AdvancedTcpProtectionPrefixesBulkCreate: API.OperationMethod<
+export const advancedTcpProtectionPrefixesBulkCreate: API.OperationMethod<
   AdvancedTcpProtectionPrefixesBulkCreateRequest,
   AdvancedTcpProtectionPrefixesBulkCreateResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionPrefixesBulkCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionPrefixesBulkCreateRequest,
@@ -1842,11 +2141,12 @@ export const AdvancedTcpProtectionPrefixesBulkCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionPrefixesBulkDeleteError = CloudflareOpError;
 /** Delete all prefixes for an account. */
-export const AdvancedTcpProtectionPrefixesBulkDelete: API.OperationMethod<
+export const advancedTcpProtectionPrefixesBulkDelete: API.OperationMethod<
   AdvancedTcpProtectionPrefixesBulkDeleteRequest,
   AdvancedTcpProtectionPrefixesBulkDeleteResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionPrefixesBulkDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionPrefixesBulkDeleteRequest,
@@ -1855,11 +2155,12 @@ export const AdvancedTcpProtectionPrefixesBulkDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionPrefixesCreateError = CloudflareOpError;
 /** Create a prefix for an account. */
-export const AdvancedTcpProtectionPrefixesCreate: API.OperationMethod<
+export const advancedTcpProtectionPrefixesCreate: API.OperationMethod<
   AdvancedTcpProtectionPrefixesCreateRequest,
   AdvancedTcpProtectionPrefixesCreateResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionPrefixesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionPrefixesCreateRequest,
@@ -1868,11 +2169,12 @@ export const AdvancedTcpProtectionPrefixesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionPrefixesItemsDeleteError = CloudflareOpError;
 /** Delete the prefix for an account given a UUID. */
-export const AdvancedTcpProtectionPrefixesItemsDelete: API.OperationMethod<
+export const advancedTcpProtectionPrefixesItemsDelete: API.OperationMethod<
   AdvancedTcpProtectionPrefixesItemsDeleteRequest,
   AdvancedTcpProtectionPrefixesItemsDeleteResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionPrefixesItemsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionPrefixesItemsDeleteRequest,
@@ -1881,11 +2183,12 @@ export const AdvancedTcpProtectionPrefixesItemsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionPrefixesItemsEditError = CloudflareOpError;
 /** Update a prefix specified by the given UUID. */
-export const AdvancedTcpProtectionPrefixesItemsEdit: API.OperationMethod<
+export const advancedTcpProtectionPrefixesItemsEdit: API.OperationMethod<
   AdvancedTcpProtectionPrefixesItemsEditRequest,
   AdvancedTcpProtectionPrefixesItemsEditResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionPrefixesItemsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionPrefixesItemsEditRequest,
@@ -1894,11 +2197,12 @@ export const AdvancedTcpProtectionPrefixesItemsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionPrefixesItemsGetError = CloudflareOpError;
 /** Get a prefix specified by the given UUID. */
-export const AdvancedTcpProtectionPrefixesItemsGet: API.OperationMethod<
+export const advancedTcpProtectionPrefixesItemsGet: API.OperationMethod<
   AdvancedTcpProtectionPrefixesItemsGetRequest,
   AdvancedTcpProtectionPrefixesItemsGetResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionPrefixesItemsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionPrefixesItemsGetRequest,
@@ -1907,11 +2211,12 @@ export const AdvancedTcpProtectionPrefixesItemsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionPrefixesListError = CloudflareOpError;
 /** List all prefixes for an account. */
-export const AdvancedTcpProtectionPrefixesList: API.OperationMethod<
+export const advancedTcpProtectionPrefixesList: API.OperationMethod<
   AdvancedTcpProtectionPrefixesListRequest,
   AdvancedTcpProtectionPrefixesListResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionPrefixesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionPrefixesListRequest,
@@ -1920,11 +2225,12 @@ export const AdvancedTcpProtectionPrefixesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionStatusEditError = CloudflareOpError;
 /** Update the protection status of the account. */
-export const AdvancedTcpProtectionStatusEdit: API.OperationMethod<
+export const advancedTcpProtectionStatusEdit: API.OperationMethod<
   AdvancedTcpProtectionStatusEditRequest,
   AdvancedTcpProtectionStatusEditResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionStatusEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionStatusEditRequest,
@@ -1933,11 +2239,12 @@ export const AdvancedTcpProtectionStatusEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionStatusGetError = CloudflareOpError;
 /** Get the protection status of the account. */
-export const AdvancedTcpProtectionStatusGet: API.OperationMethod<
+export const advancedTcpProtectionStatusGet: API.OperationMethod<
   AdvancedTcpProtectionStatusGetRequest,
   AdvancedTcpProtectionStatusGetResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionStatusGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionStatusGetRequest,
@@ -1946,11 +2253,13 @@ export const AdvancedTcpProtectionStatusGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionSynProtectionFiltersBulkDeleteError =
+  CloudflareOpError;
 /** Delete all SYN Protection filters for an account. */
-export const AdvancedTcpProtectionSynProtectionFiltersBulkDelete: API.OperationMethod<
+export const advancedTcpProtectionSynProtectionFiltersBulkDelete: API.OperationMethod<
   AdvancedTcpProtectionSynProtectionFiltersBulkDeleteRequest,
   AdvancedTcpProtectionSynProtectionFiltersBulkDeleteResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionSynProtectionFiltersBulkDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionSynProtectionFiltersBulkDeleteRequest,
@@ -1959,11 +2268,13 @@ export const AdvancedTcpProtectionSynProtectionFiltersBulkDelete: API.OperationM
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionSynProtectionFiltersCreateError =
+  CloudflareOpError;
 /** Create a SYN Protection filter for an account. */
-export const AdvancedTcpProtectionSynProtectionFiltersCreate: API.OperationMethod<
+export const advancedTcpProtectionSynProtectionFiltersCreate: API.OperationMethod<
   AdvancedTcpProtectionSynProtectionFiltersCreateRequest,
   AdvancedTcpProtectionSynProtectionFiltersCreateResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionSynProtectionFiltersCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionSynProtectionFiltersCreateRequest,
@@ -1972,11 +2283,13 @@ export const AdvancedTcpProtectionSynProtectionFiltersCreate: API.OperationMetho
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionSynProtectionFiltersItemsDeleteError =
+  CloudflareOpError;
 /** Delete a SYN Protection filter specified by the given UUID. */
-export const AdvancedTcpProtectionSynProtectionFiltersItemsDelete: API.OperationMethod<
+export const advancedTcpProtectionSynProtectionFiltersItemsDelete: API.OperationMethod<
   AdvancedTcpProtectionSynProtectionFiltersItemsDeleteRequest,
   AdvancedTcpProtectionSynProtectionFiltersItemsDeleteResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionSynProtectionFiltersItemsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionSynProtectionFiltersItemsDeleteRequest,
@@ -1985,11 +2298,13 @@ export const AdvancedTcpProtectionSynProtectionFiltersItemsDelete: API.Operation
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionSynProtectionFiltersItemsEditError =
+  CloudflareOpError;
 /** Update a SYN Protection filter specified by the given UUID. */
-export const AdvancedTcpProtectionSynProtectionFiltersItemsEdit: API.OperationMethod<
+export const advancedTcpProtectionSynProtectionFiltersItemsEdit: API.OperationMethod<
   AdvancedTcpProtectionSynProtectionFiltersItemsEditRequest,
   AdvancedTcpProtectionSynProtectionFiltersItemsEditResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionSynProtectionFiltersItemsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionSynProtectionFiltersItemsEditRequest,
@@ -1998,11 +2313,13 @@ export const AdvancedTcpProtectionSynProtectionFiltersItemsEdit: API.OperationMe
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionSynProtectionFiltersItemsGetError =
+  CloudflareOpError;
 /** Get a SYN Protection filter specified by the given UUID. */
-export const AdvancedTcpProtectionSynProtectionFiltersItemsGet: API.OperationMethod<
+export const advancedTcpProtectionSynProtectionFiltersItemsGet: API.OperationMethod<
   AdvancedTcpProtectionSynProtectionFiltersItemsGetRequest,
   AdvancedTcpProtectionSynProtectionFiltersItemsGetResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionSynProtectionFiltersItemsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionSynProtectionFiltersItemsGetRequest,
@@ -2011,11 +2328,13 @@ export const AdvancedTcpProtectionSynProtectionFiltersItemsGet: API.OperationMet
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionSynProtectionFiltersListError =
+  CloudflareOpError;
 /** List all SYN Protection filters for an account. */
-export const AdvancedTcpProtectionSynProtectionFiltersList: API.OperationMethod<
+export const advancedTcpProtectionSynProtectionFiltersList: API.OperationMethod<
   AdvancedTcpProtectionSynProtectionFiltersListRequest,
   AdvancedTcpProtectionSynProtectionFiltersListResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionSynProtectionFiltersListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionSynProtectionFiltersListRequest,
@@ -2024,11 +2343,13 @@ export const AdvancedTcpProtectionSynProtectionFiltersList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionSynProtectionRulesBulkDeleteError =
+  CloudflareOpError;
 /** Delete all SYN Protection rules for an account. */
-export const AdvancedTcpProtectionSynProtectionRulesBulkDelete: API.OperationMethod<
+export const advancedTcpProtectionSynProtectionRulesBulkDelete: API.OperationMethod<
   AdvancedTcpProtectionSynProtectionRulesBulkDeleteRequest,
   AdvancedTcpProtectionSynProtectionRulesBulkDeleteResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionSynProtectionRulesBulkDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionSynProtectionRulesBulkDeleteRequest,
@@ -2037,11 +2358,13 @@ export const AdvancedTcpProtectionSynProtectionRulesBulkDelete: API.OperationMet
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionSynProtectionRulesCreateError =
+  CloudflareOpError;
 /** Create a SYN Protection rule for an account. */
-export const AdvancedTcpProtectionSynProtectionRulesCreate: API.OperationMethod<
+export const advancedTcpProtectionSynProtectionRulesCreate: API.OperationMethod<
   AdvancedTcpProtectionSynProtectionRulesCreateRequest,
   AdvancedTcpProtectionSynProtectionRulesCreateResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionSynProtectionRulesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionSynProtectionRulesCreateRequest,
@@ -2050,11 +2373,13 @@ export const AdvancedTcpProtectionSynProtectionRulesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionSynProtectionRulesItemsDeleteError =
+  CloudflareOpError;
 /** Delete a SYN Protection rule specified by the given UUID. */
-export const AdvancedTcpProtectionSynProtectionRulesItemsDelete: API.OperationMethod<
+export const advancedTcpProtectionSynProtectionRulesItemsDelete: API.OperationMethod<
   AdvancedTcpProtectionSynProtectionRulesItemsDeleteRequest,
   AdvancedTcpProtectionSynProtectionRulesItemsDeleteResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionSynProtectionRulesItemsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionSynProtectionRulesItemsDeleteRequest,
@@ -2063,11 +2388,13 @@ export const AdvancedTcpProtectionSynProtectionRulesItemsDelete: API.OperationMe
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionSynProtectionRulesItemsEditError =
+  CloudflareOpError;
 /** Update a SYN Protection rule specified by the given UUID. */
-export const AdvancedTcpProtectionSynProtectionRulesItemsEdit: API.OperationMethod<
+export const advancedTcpProtectionSynProtectionRulesItemsEdit: API.OperationMethod<
   AdvancedTcpProtectionSynProtectionRulesItemsEditRequest,
   AdvancedTcpProtectionSynProtectionRulesItemsEditResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionSynProtectionRulesItemsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionSynProtectionRulesItemsEditRequest,
@@ -2076,11 +2403,13 @@ export const AdvancedTcpProtectionSynProtectionRulesItemsEdit: API.OperationMeth
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionSynProtectionRulesItemsGetError =
+  CloudflareOpError;
 /** Get a SYN Protection rule specified by the given UUID. */
-export const AdvancedTcpProtectionSynProtectionRulesItemsGet: API.OperationMethod<
+export const advancedTcpProtectionSynProtectionRulesItemsGet: API.OperationMethod<
   AdvancedTcpProtectionSynProtectionRulesItemsGetRequest,
   AdvancedTcpProtectionSynProtectionRulesItemsGetResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionSynProtectionRulesItemsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionSynProtectionRulesItemsGetRequest,
@@ -2089,11 +2418,13 @@ export const AdvancedTcpProtectionSynProtectionRulesItemsGet: API.OperationMetho
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionSynProtectionRulesListError =
+  CloudflareOpError;
 /** List all SYN Protection rules for an account. */
-export const AdvancedTcpProtectionSynProtectionRulesList: API.OperationMethod<
+export const advancedTcpProtectionSynProtectionRulesList: API.OperationMethod<
   AdvancedTcpProtectionSynProtectionRulesListRequest,
   AdvancedTcpProtectionSynProtectionRulesListResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionSynProtectionRulesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionSynProtectionRulesListRequest,
@@ -2102,11 +2433,13 @@ export const AdvancedTcpProtectionSynProtectionRulesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteError =
+  CloudflareOpError;
 /** Delete all TCP Flow Protection filters for an account. */
-export const AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDelete: API.OperationMethod<
+export const advancedTcpProtectionTcpFlowProtectionFiltersBulkDelete: API.OperationMethod<
   AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteRequest,
   AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDeleteRequest,
@@ -2115,11 +2448,13 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersBulkDelete: API.Operat
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionTcpFlowProtectionFiltersCreateError =
+  CloudflareOpError;
 /** Create a TCP Flow Protection filter for an account. */
-export const AdvancedTcpProtectionTcpFlowProtectionFiltersCreate: API.OperationMethod<
+export const advancedTcpProtectionTcpFlowProtectionFiltersCreate: API.OperationMethod<
   AdvancedTcpProtectionTcpFlowProtectionFiltersCreateRequest,
   AdvancedTcpProtectionTcpFlowProtectionFiltersCreateResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionTcpFlowProtectionFiltersCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionTcpFlowProtectionFiltersCreateRequest,
@@ -2128,11 +2463,13 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersCreate: API.OperationM
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteError =
+  CloudflareOpError;
 /** Delete a TCP Flow Protection filter specified by the given UUID. */
-export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDelete: API.OperationMethod<
+export const advancedTcpProtectionTcpFlowProtectionFiltersItemsDelete: API.OperationMethod<
   AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteRequest,
   AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDeleteRequest,
@@ -2141,11 +2478,13 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsDelete: API.Opera
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditError =
+  CloudflareOpError;
 /** Update a TCP Flow Protection filter specified by the given UUID. */
-export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEdit: API.OperationMethod<
+export const advancedTcpProtectionTcpFlowProtectionFiltersItemsEdit: API.OperationMethod<
   AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditRequest,
   AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEditRequest,
@@ -2154,11 +2493,13 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsEdit: API.Operati
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionTcpFlowProtectionFiltersItemsGetError =
+  CloudflareOpError;
 /** Get a TCP Flow Protection filter specified by the given UUID. */
-export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsGet: API.OperationMethod<
+export const advancedTcpProtectionTcpFlowProtectionFiltersItemsGet: API.OperationMethod<
   AdvancedTcpProtectionTcpFlowProtectionFiltersItemsGetRequest,
   AdvancedTcpProtectionTcpFlowProtectionFiltersItemsGetResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionTcpFlowProtectionFiltersItemsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionTcpFlowProtectionFiltersItemsGetRequest,
@@ -2167,11 +2508,13 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersItemsGet: API.Operatio
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionTcpFlowProtectionFiltersListError =
+  CloudflareOpError;
 /** List all TCP Flow Protection filters for an account. */
-export const AdvancedTcpProtectionTcpFlowProtectionFiltersList: API.OperationMethod<
+export const advancedTcpProtectionTcpFlowProtectionFiltersList: API.OperationMethod<
   AdvancedTcpProtectionTcpFlowProtectionFiltersListRequest,
   AdvancedTcpProtectionTcpFlowProtectionFiltersListResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionTcpFlowProtectionFiltersListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionTcpFlowProtectionFiltersListRequest,
@@ -2180,11 +2523,13 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersList: API.OperationMet
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteError =
+  CloudflareOpError;
 /** Delete all TCP Flow Protection rules for an account. */
-export const AdvancedTcpProtectionTcpFlowProtectionRulesBulkDelete: API.OperationMethod<
+export const advancedTcpProtectionTcpFlowProtectionRulesBulkDelete: API.OperationMethod<
   AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteRequest,
   AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionTcpFlowProtectionRulesBulkDeleteRequest,
@@ -2193,11 +2538,13 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesBulkDelete: API.Operatio
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionTcpFlowProtectionRulesCreateError =
+  CloudflareOpError;
 /** Create a TCP Flow Protection rule for an account. */
-export const AdvancedTcpProtectionTcpFlowProtectionRulesCreate: API.OperationMethod<
+export const advancedTcpProtectionTcpFlowProtectionRulesCreate: API.OperationMethod<
   AdvancedTcpProtectionTcpFlowProtectionRulesCreateRequest,
   AdvancedTcpProtectionTcpFlowProtectionRulesCreateResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionTcpFlowProtectionRulesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionTcpFlowProtectionRulesCreateRequest,
@@ -2206,11 +2553,13 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesCreate: API.OperationMet
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteError =
+  CloudflareOpError;
 /** Delete a TCP Flow Protection rule specified by the given UUID. */
-export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsDelete: API.OperationMethod<
+export const advancedTcpProtectionTcpFlowProtectionRulesItemsDelete: API.OperationMethod<
   AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteRequest,
   AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionTcpFlowProtectionRulesItemsDeleteRequest,
@@ -2219,11 +2568,13 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsDelete: API.Operati
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionTcpFlowProtectionRulesItemsEditError =
+  CloudflareOpError;
 /** Update a TCP Flow Protection rule specified by the given UUID. */
-export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsEdit: API.OperationMethod<
+export const advancedTcpProtectionTcpFlowProtectionRulesItemsEdit: API.OperationMethod<
   AdvancedTcpProtectionTcpFlowProtectionRulesItemsEditRequest,
   AdvancedTcpProtectionTcpFlowProtectionRulesItemsEditResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionTcpFlowProtectionRulesItemsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionTcpFlowProtectionRulesItemsEditRequest,
@@ -2232,11 +2583,13 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsEdit: API.Operation
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionTcpFlowProtectionRulesItemsGetError =
+  CloudflareOpError;
 /** Get a TCP Flow Protection rule specified by the given UUID. */
-export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsGet: API.OperationMethod<
+export const advancedTcpProtectionTcpFlowProtectionRulesItemsGet: API.OperationMethod<
   AdvancedTcpProtectionTcpFlowProtectionRulesItemsGetRequest,
   AdvancedTcpProtectionTcpFlowProtectionRulesItemsGetResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionTcpFlowProtectionRulesItemsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionTcpFlowProtectionRulesItemsGetRequest,
@@ -2245,11 +2598,13 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesItemsGet: API.OperationM
   protocol: CloudflareProtocol,
 }));
 
+export type AdvancedTcpProtectionTcpFlowProtectionRulesListError =
+  CloudflareOpError;
 /** List all TCP Flow Protection rules for an account. */
-export const AdvancedTcpProtectionTcpFlowProtectionRulesList: API.OperationMethod<
+export const advancedTcpProtectionTcpFlowProtectionRulesList: API.OperationMethod<
   AdvancedTcpProtectionTcpFlowProtectionRulesListRequest,
   AdvancedTcpProtectionTcpFlowProtectionRulesListResponse,
-  CloudflareOpError,
+  AdvancedTcpProtectionTcpFlowProtectionRulesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvancedTcpProtectionTcpFlowProtectionRulesListRequest,

@@ -8454,10 +8454,33 @@
         }
       }
     },
+    "com.cloudflare.ai_gateway#DatasetsCreateRequestFiltersItemValueItem": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_gateway#DatasetsCreateRequestFiltersItemValueList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.ai_gateway#DatasetsCreateRequestFiltersItemValueItem"
       }
     },
     "com.cloudflare.ai_gateway#DatasetsCreateRequestFiltersItem": {
@@ -8582,10 +8605,33 @@
         }
       }
     },
+    "com.cloudflare.ai_gateway#DatasetsCreateResponseFiltersItemValueItem": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_gateway#DatasetsCreateResponseFiltersItemValueList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.ai_gateway#DatasetsCreateResponseFiltersItemValueItem"
       }
     },
     "com.cloudflare.ai_gateway#DatasetsCreateResponseFiltersItem": {
@@ -8768,10 +8814,33 @@
         }
       }
     },
+    "com.cloudflare.ai_gateway#DatasetsDeleteResponseFiltersItemValueItem": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_gateway#DatasetsDeleteResponseFiltersItemValueList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.ai_gateway#DatasetsDeleteResponseFiltersItemValueItem"
       }
     },
     "com.cloudflare.ai_gateway#DatasetsDeleteResponseFiltersItem": {
@@ -8955,10 +9024,33 @@
         }
       }
     },
+    "com.cloudflare.ai_gateway#DatasetsGetResponseFiltersItemValueItem": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_gateway#DatasetsGetResponseFiltersItemValueList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.ai_gateway#DatasetsGetResponseFiltersItemValueItem"
       }
     },
     "com.cloudflare.ai_gateway#DatasetsGetResponseFiltersItem": {
@@ -9166,10 +9258,33 @@
         }
       }
     },
+    "com.cloudflare.ai_gateway#DatasetsListResultItemFiltersItemValueItem": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_gateway#DatasetsListResultItemFiltersItemValueList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.ai_gateway#DatasetsListResultItemFiltersItemValueItem"
       }
     },
     "com.cloudflare.ai_gateway#DatasetsListResultItemFiltersItem": {
@@ -9340,10 +9455,33 @@
         }
       }
     },
+    "com.cloudflare.ai_gateway#DatasetsUpdateRequestFiltersItemValueItem": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_gateway#DatasetsUpdateRequestFiltersItemValueList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.ai_gateway#DatasetsUpdateRequestFiltersItemValueItem"
       }
     },
     "com.cloudflare.ai_gateway#DatasetsUpdateRequestFiltersItem": {
@@ -9475,10 +9613,33 @@
         }
       }
     },
+    "com.cloudflare.ai_gateway#DatasetsUpdateResponseFiltersItemValueItem": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_gateway#DatasetsUpdateResponseFiltersItemValueList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.ai_gateway#DatasetsUpdateResponseFiltersItemValueItem"
       }
     },
     "com.cloudflare.ai_gateway#DatasetsUpdateResponseFiltersItem": {
@@ -11859,10 +12020,33 @@
         }
       }
     },
+    "com.cloudflare.ai_gateway#EvaluationsCreateResponseDatasetsItemFiltersItemValueItem": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_gateway#EvaluationsCreateResponseDatasetsItemFiltersItemValueList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.ai_gateway#EvaluationsCreateResponseDatasetsItemFiltersItemValueItem"
       }
     },
     "com.cloudflare.ai_gateway#EvaluationsCreateResponseDatasetsItemFiltersItem": {
@@ -12188,10 +12372,33 @@
         }
       }
     },
+    "com.cloudflare.ai_gateway#EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_gateway#EvaluationsDeleteResponseDatasetsItemFiltersItemValueList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.ai_gateway#EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem"
       }
     },
     "com.cloudflare.ai_gateway#EvaluationsDeleteResponseDatasetsItemFiltersItem": {
@@ -12518,10 +12725,33 @@
         }
       }
     },
+    "com.cloudflare.ai_gateway#EvaluationsGetResponseDatasetsItemFiltersItemValueItem": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_gateway#EvaluationsGetResponseDatasetsItemFiltersItemValueList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.ai_gateway#EvaluationsGetResponseDatasetsItemFiltersItemValueItem"
       }
     },
     "com.cloudflare.ai_gateway#EvaluationsGetResponseDatasetsItemFiltersItem": {
@@ -12872,10 +13102,33 @@
         }
       }
     },
+    "com.cloudflare.ai_gateway#EvaluationsListResultItemDatasetsItemFiltersItemValueItem": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_gateway#EvaluationsListResultItemDatasetsItemFiltersItemValueList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.ai_gateway#EvaluationsListResultItemDatasetsItemFiltersItemValueItem"
       }
     },
     "com.cloudflare.ai_gateway#EvaluationsListResultItemDatasetsItemFiltersItem": {

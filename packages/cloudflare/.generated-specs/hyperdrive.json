@@ -129,19 +129,128 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.hyperdrive#ConfigsCreateResponseOrigin": {
+      "type": "structure",
+      "members": {
+        "PublicDatabase_object___database__host__password__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "PublicDatabase object { database, host, password, 3 more }"
+          }
+        },
+        "AccessProtectedDatabaseBehindCloudflareTunnel_object___access_client_id__access_client_secret__database__4_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AccessProtectedDatabaseBehindCloudflareTunnel object { access_client_id, access_client_secret, database, 4 more }"
+          }
+        },
+        "DatabaseReachableThroughAWorkersVPC_object___database__password__scheme__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DatabaseReachableThroughAWorkersVPC object { database, password, scheme, 2 more }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.hyperdrive#ConfigsCreateResponseCaching": {
+      "type": "structure",
+      "members": {
+        "HyperdriveHyperdriveCachingCommon_object___disabled__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "HyperdriveHyperdriveCachingCommon object { disabled }"
+          }
+        },
+        "HyperdriveHyperdriveCachingEnabled_object___disabled__max_age__stale_while_revalidate__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "HyperdriveHyperdriveCachingEnabled object { disabled, max_age, stale_while_revalidate }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.hyperdrive#ConfigsCreateResponseMtls": {
+      "type": "structure",
+      "members": {
+        "ca_certificate_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Define CA certificate ID obtained after uploading CA cert."
+          }
+        },
+        "mtls_certificate_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Define mTLS certificate ID obtained after uploading client cert."
+          }
+        },
+        "sslmode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA."
+          }
+        }
+      }
+    },
     "com.cloudflare.hyperdrive#ConfigsCreateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Define configurations using a unique string identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.",
+            "smithy.api#required": {}
+          }
+        },
+        "origin": {
+          "target": "com.cloudflare.hyperdrive#ConfigsCreateResponseOrigin",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "caching": {
+          "target": "com.cloudflare.hyperdrive#ConfigsCreateResponseCaching"
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the creation time of the Hyperdrive configuration."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the last modified time of the Hyperdrive configuration."
+          }
+        },
+        "mtls": {
+          "target": "com.cloudflare.hyperdrive#ConfigsCreateResponseMtls",
+          "traits": {
+            "smithy.api#documentation": "mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service."
+          }
+        },
+        "origin_connection_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.hyperdrive#ConfigsCreate": {
@@ -345,19 +454,128 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.hyperdrive#ConfigsEditResponseOrigin": {
+      "type": "structure",
+      "members": {
+        "PublicDatabase_object___database__host__password__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "PublicDatabase object { database, host, password, 3 more }"
+          }
+        },
+        "AccessProtectedDatabaseBehindCloudflareTunnel_object___access_client_id__access_client_secret__database__4_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AccessProtectedDatabaseBehindCloudflareTunnel object { access_client_id, access_client_secret, database, 4 more }"
+          }
+        },
+        "DatabaseReachableThroughAWorkersVPC_object___database__password__scheme__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DatabaseReachableThroughAWorkersVPC object { database, password, scheme, 2 more }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.hyperdrive#ConfigsEditResponseCaching": {
+      "type": "structure",
+      "members": {
+        "HyperdriveHyperdriveCachingCommon_object___disabled__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "HyperdriveHyperdriveCachingCommon object { disabled }"
+          }
+        },
+        "HyperdriveHyperdriveCachingEnabled_object___disabled__max_age__stale_while_revalidate__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "HyperdriveHyperdriveCachingEnabled object { disabled, max_age, stale_while_revalidate }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.hyperdrive#ConfigsEditResponseMtls": {
+      "type": "structure",
+      "members": {
+        "ca_certificate_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Define CA certificate ID obtained after uploading CA cert."
+          }
+        },
+        "mtls_certificate_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Define mTLS certificate ID obtained after uploading client cert."
+          }
+        },
+        "sslmode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA."
+          }
+        }
+      }
+    },
     "com.cloudflare.hyperdrive#ConfigsEditResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Define configurations using a unique string identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.",
+            "smithy.api#required": {}
+          }
+        },
+        "origin": {
+          "target": "com.cloudflare.hyperdrive#ConfigsEditResponseOrigin",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "caching": {
+          "target": "com.cloudflare.hyperdrive#ConfigsEditResponseCaching"
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the creation time of the Hyperdrive configuration."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the last modified time of the Hyperdrive configuration."
+          }
+        },
+        "mtls": {
+          "target": "com.cloudflare.hyperdrive#ConfigsEditResponseMtls",
+          "traits": {
+            "smithy.api#documentation": "mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service."
+          }
+        },
+        "origin_connection_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.hyperdrive#ConfigsEdit": {
@@ -401,19 +619,128 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.hyperdrive#ConfigsGetResponseOrigin": {
+      "type": "structure",
+      "members": {
+        "PublicDatabase_object___database__host__password__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "PublicDatabase object { database, host, password, 3 more }"
+          }
+        },
+        "AccessProtectedDatabaseBehindCloudflareTunnel_object___access_client_id__access_client_secret__database__4_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AccessProtectedDatabaseBehindCloudflareTunnel object { access_client_id, access_client_secret, database, 4 more }"
+          }
+        },
+        "DatabaseReachableThroughAWorkersVPC_object___database__password__scheme__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DatabaseReachableThroughAWorkersVPC object { database, password, scheme, 2 more }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.hyperdrive#ConfigsGetResponseCaching": {
+      "type": "structure",
+      "members": {
+        "HyperdriveHyperdriveCachingCommon_object___disabled__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "HyperdriveHyperdriveCachingCommon object { disabled }"
+          }
+        },
+        "HyperdriveHyperdriveCachingEnabled_object___disabled__max_age__stale_while_revalidate__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "HyperdriveHyperdriveCachingEnabled object { disabled, max_age, stale_while_revalidate }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.hyperdrive#ConfigsGetResponseMtls": {
+      "type": "structure",
+      "members": {
+        "ca_certificate_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Define CA certificate ID obtained after uploading CA cert."
+          }
+        },
+        "mtls_certificate_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Define mTLS certificate ID obtained after uploading client cert."
+          }
+        },
+        "sslmode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA."
+          }
+        }
+      }
+    },
     "com.cloudflare.hyperdrive#ConfigsGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Define configurations using a unique string identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.",
+            "smithy.api#required": {}
+          }
+        },
+        "origin": {
+          "target": "com.cloudflare.hyperdrive#ConfigsGetResponseOrigin",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "caching": {
+          "target": "com.cloudflare.hyperdrive#ConfigsGetResponseCaching"
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the creation time of the Hyperdrive configuration."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the last modified time of the Hyperdrive configuration."
+          }
+        },
+        "mtls": {
+          "target": "com.cloudflare.hyperdrive#ConfigsGetResponseMtls",
+          "traits": {
+            "smithy.api#documentation": "mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service."
+          }
+        },
+        "origin_connection_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.hyperdrive#ConfigsGet": {
@@ -450,10 +777,130 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.hyperdrive#ConfigsListResultItemOrigin": {
+      "type": "structure",
+      "members": {
+        "PublicDatabase_object___database__host__password__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "PublicDatabase object { database, host, password, 3 more }"
+          }
+        },
+        "AccessProtectedDatabaseBehindCloudflareTunnel_object___access_client_id__access_client_secret__database__4_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AccessProtectedDatabaseBehindCloudflareTunnel object { access_client_id, access_client_secret, database, 4 more }"
+          }
+        },
+        "DatabaseReachableThroughAWorkersVPC_object___database__password__scheme__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DatabaseReachableThroughAWorkersVPC object { database, password, scheme, 2 more }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.hyperdrive#ConfigsListResultItemCaching": {
+      "type": "structure",
+      "members": {
+        "HyperdriveHyperdriveCachingCommon_object___disabled__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "HyperdriveHyperdriveCachingCommon object { disabled }"
+          }
+        },
+        "HyperdriveHyperdriveCachingEnabled_object___disabled__max_age__stale_while_revalidate__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "HyperdriveHyperdriveCachingEnabled object { disabled, max_age, stale_while_revalidate }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.hyperdrive#ConfigsListResultItemMtls": {
+      "type": "structure",
+      "members": {
+        "ca_certificate_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Define CA certificate ID obtained after uploading CA cert."
+          }
+        },
+        "mtls_certificate_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Define mTLS certificate ID obtained after uploading client cert."
+          }
+        },
+        "sslmode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA."
+          }
+        }
+      }
+    },
+    "com.cloudflare.hyperdrive#ConfigsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Define configurations using a unique string identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.",
+            "smithy.api#required": {}
+          }
+        },
+        "origin": {
+          "target": "com.cloudflare.hyperdrive#ConfigsListResultItemOrigin",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "caching": {
+          "target": "com.cloudflare.hyperdrive#ConfigsListResultItemCaching"
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the creation time of the Hyperdrive configuration."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the last modified time of the Hyperdrive configuration."
+          }
+        },
+        "mtls": {
+          "target": "com.cloudflare.hyperdrive#ConfigsListResultItemMtls",
+          "traits": {
+            "smithy.api#documentation": "mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service."
+          }
+        },
+        "origin_connection_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database."
+          }
+        }
+      }
+    },
     "com.cloudflare.hyperdrive#ConfigsListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.hyperdrive#ConfigsListResultItem"
       }
     },
     "com.cloudflare.hyperdrive#ConfigsListResponse": {
@@ -609,19 +1056,128 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.hyperdrive#ConfigsUpdateResponseOrigin": {
+      "type": "structure",
+      "members": {
+        "PublicDatabase_object___database__host__password__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "PublicDatabase object { database, host, password, 3 more }"
+          }
+        },
+        "AccessProtectedDatabaseBehindCloudflareTunnel_object___access_client_id__access_client_secret__database__4_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AccessProtectedDatabaseBehindCloudflareTunnel object { access_client_id, access_client_secret, database, 4 more }"
+          }
+        },
+        "DatabaseReachableThroughAWorkersVPC_object___database__password__scheme__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DatabaseReachableThroughAWorkersVPC object { database, password, scheme, 2 more }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.hyperdrive#ConfigsUpdateResponseCaching": {
+      "type": "structure",
+      "members": {
+        "HyperdriveHyperdriveCachingCommon_object___disabled__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "HyperdriveHyperdriveCachingCommon object { disabled }"
+          }
+        },
+        "HyperdriveHyperdriveCachingEnabled_object___disabled__max_age__stale_while_revalidate__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "HyperdriveHyperdriveCachingEnabled object { disabled, max_age, stale_while_revalidate }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.hyperdrive#ConfigsUpdateResponseMtls": {
+      "type": "structure",
+      "members": {
+        "ca_certificate_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Define CA certificate ID obtained after uploading CA cert."
+          }
+        },
+        "mtls_certificate_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Define mTLS certificate ID obtained after uploading client cert."
+          }
+        },
+        "sslmode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA."
+          }
+        }
+      }
+    },
     "com.cloudflare.hyperdrive#ConfigsUpdateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Define configurations using a unique string identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.",
+            "smithy.api#required": {}
+          }
+        },
+        "origin": {
+          "target": "com.cloudflare.hyperdrive#ConfigsUpdateResponseOrigin",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "caching": {
+          "target": "com.cloudflare.hyperdrive#ConfigsUpdateResponseCaching"
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the creation time of the Hyperdrive configuration."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the last modified time of the Hyperdrive configuration."
+          }
+        },
+        "mtls": {
+          "target": "com.cloudflare.hyperdrive#ConfigsUpdateResponseMtls",
+          "traits": {
+            "smithy.api#documentation": "mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service."
+          }
+        },
+        "origin_connection_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.hyperdrive#ConfigsUpdate": {

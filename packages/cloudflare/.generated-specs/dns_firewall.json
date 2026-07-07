@@ -23,6 +23,23 @@
         "target": "smithy.api#Document"
       }
     },
+    "com.cloudflare.dns_firewall#CreateRequestAttackMitigation": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers"
+          }
+        },
+        "only_when_upstream_unhealthy": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Only mitigate attacks when upstream servers seem unhealthy"
+          }
+        }
+      }
+    },
     "com.cloudflare.dns_firewall#CreateRequest": {
       "type": "structure",
       "members": {
@@ -48,7 +65,7 @@
           }
         },
         "attack_mitigation": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.dns_firewall#CreateRequestAttackMitigation",
           "traits": {
             "smithy.api#documentation": "Attack mitigation settings"
           }
@@ -116,6 +133,23 @@
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns_firewall#CreateResponseAttackMitigation": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers"
+          }
+        },
+        "only_when_upstream_unhealthy": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Only mitigate attacks when upstream servers seem unhealthy"
+          }
+        }
       }
     },
     "com.cloudflare.dns_firewall#CreateResponse": {
@@ -204,7 +238,7 @@
           }
         },
         "attack_mitigation": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.dns_firewall#CreateResponseAttackMitigation",
           "traits": {
             "smithy.api#documentation": "Attack mitigation settings"
           }
@@ -289,6 +323,23 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.dns_firewall#EditRequestAttackMitigation": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers"
+          }
+        },
+        "only_when_upstream_unhealthy": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Only mitigate attacks when upstream servers seem unhealthy"
+          }
+        }
+      }
+    },
     "com.cloudflare.dns_firewall#EditRequestUpstreamIpsList": {
       "type": "list",
       "member": {
@@ -315,7 +366,7 @@
           }
         },
         "attack_mitigation": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.dns_firewall#EditRequestAttackMitigation",
           "traits": {
             "smithy.api#documentation": "Attack mitigation settings"
           }
@@ -386,6 +437,23 @@
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns_firewall#EditResponseAttackMitigation": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers"
+          }
+        },
+        "only_when_upstream_unhealthy": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Only mitigate attacks when upstream servers seem unhealthy"
+          }
+        }
       }
     },
     "com.cloudflare.dns_firewall#EditResponse": {
@@ -474,7 +542,7 @@
           }
         },
         "attack_mitigation": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.dns_firewall#EditResponseAttackMitigation",
           "traits": {
             "smithy.api#documentation": "Attack mitigation settings"
           }
@@ -536,6 +604,23 @@
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns_firewall#GetResponseAttackMitigation": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers"
+          }
+        },
+        "only_when_upstream_unhealthy": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Only mitigate attacks when upstream servers seem unhealthy"
+          }
+        }
       }
     },
     "com.cloudflare.dns_firewall#GetResponse": {
@@ -624,7 +709,7 @@
           }
         },
         "attack_mitigation": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.dns_firewall#GetResponseAttackMitigation",
           "traits": {
             "smithy.api#documentation": "Attack mitigation settings"
           }
@@ -693,6 +778,23 @@
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns_firewall#ListResultItemAttackMitigation": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers"
+          }
+        },
+        "only_when_upstream_unhealthy": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Only mitigate attacks when upstream servers seem unhealthy"
+          }
+        }
       }
     },
     "com.cloudflare.dns_firewall#ListResultItem": {
@@ -781,7 +883,7 @@
           }
         },
         "attack_mitigation": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.dns_firewall#ListResultItemAttackMitigation",
           "traits": {
             "smithy.api#documentation": "Attack mitigation settings"
           }
@@ -900,19 +1002,168 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseDataItemDimensionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseDataItemMetricsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      }
+    },
+    "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseDataItem": {
+      "type": "structure",
+      "members": {
+        "dimensions": {
+          "target": "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseDataItemDimensionsList",
+          "traits": {
+            "smithy.api#documentation": "Array of dimension values, representing the combination of dimension values corresponding to this row.",
+            "smithy.api#required": {}
+          }
+        },
+        "metrics": {
+          "target": "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseDataItemMetricsList",
+          "traits": {
+            "smithy.api#documentation": "Array with one item per requested metric. Each item is a single value.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseDataItem"
+      }
+    },
+    "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseQueryDimensionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseQueryMetricsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseQuerySortList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseQuery": {
+      "type": "structure",
+      "members": {
+        "dimensions": {
+          "target": "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseQueryDimensionsList",
+          "traits": {
+            "smithy.api#documentation": "Array of dimension names.",
+            "smithy.api#required": {}
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Limit number of returned metrics.",
+            "smithy.api#required": {}
+          }
+        },
+        "metrics": {
+          "target": "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseQueryMetricsList",
+          "traits": {
+            "smithy.api#documentation": "Array of metric names.",
+            "smithy.api#required": {}
+          }
+        },
+        "since": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start date and time of requesting data period in ISO 8601 format.",
+            "smithy.api#required": {}
+          }
+        },
+        "until": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End date and time of requesting data period in ISO 8601 format.",
+            "smithy.api#required": {}
+          }
+        },
+        "filters": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Segmentation filter in 'attribute operator value' format."
+          }
+        },
+        "sort": {
+          "target": "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseQuerySortList",
+          "traits": {
+            "smithy.api#documentation": "Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending)."
+          }
+        }
+      }
+    },
     "com.cloudflare.dns_firewall#AnalyticsReportsGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
+        "data": {
+          "target": "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseDataList",
+          "traits": {
+            "smithy.api#documentation": "Array with one row per combination of dimension values.",
+            "smithy.api#required": {}
+          }
+        },
+        "data_lag": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of seconds between current time and last processed event, in another words how many seconds of data could be missing.",
+            "smithy.api#required": {}
+          }
+        },
+        "max": {
           "target": "smithy.api#Document",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Maximum results for each metric (object mapping metric names to values). Currently always an empty object.",
+            "smithy.api#required": {}
+          }
+        },
+        "min": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Minimum results for each metric (object mapping metric names to values). Currently always an empty object.",
+            "smithy.api#required": {}
+          }
+        },
+        "query": {
+          "target": "com.cloudflare.dns_firewall#AnalyticsReportsGetResponseQuery",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rows": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Total number of rows in the result.",
+            "smithy.api#required": {}
+          }
+        },
+        "totals": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Total results for metrics across all data (object mapping metric names to values).",
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.dns_firewall#AnalyticsReportsGet": {
@@ -1036,19 +1287,211 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseDataItemDimensionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseDataItemMetricsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseDataItem": {
+      "type": "structure",
+      "members": {
+        "dimensions": {
+          "target": "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseDataItemDimensionsList",
+          "traits": {
+            "smithy.api#documentation": "Array of dimension values, representing the combination of dimension values corresponding to this row.",
+            "smithy.api#required": {}
+          }
+        },
+        "metrics": {
+          "target": "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseDataItemMetricsList",
+          "traits": {
+            "smithy.api#documentation": "Array with one item per requested metric. Each item is an array of values, broken down by time interval.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseDataItem"
+      }
+    },
+    "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseQueryDimensionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseQueryMetricsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseQueryTimeDelta": {
+      "type": "enum",
+      "members": {
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        },
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "YEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "year"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseQuerySortList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseQuery": {
+      "type": "structure",
+      "members": {
+        "dimensions": {
+          "target": "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseQueryDimensionsList",
+          "traits": {
+            "smithy.api#documentation": "Array of dimension names.",
+            "smithy.api#required": {}
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Limit number of returned metrics.",
+            "smithy.api#required": {}
+          }
+        },
+        "metrics": {
+          "target": "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseQueryMetricsList",
+          "traits": {
+            "smithy.api#documentation": "Array of metric names.",
+            "smithy.api#required": {}
+          }
+        },
+        "since": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start date and time of requesting data period in ISO 8601 format.",
+            "smithy.api#required": {}
+          }
+        },
+        "time_delta": {
+          "target": "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseQueryTimeDelta",
+          "traits": {
+            "smithy.api#documentation": "Unit of time to group data by.",
+            "smithy.api#required": {}
+          }
+        },
+        "until": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End date and time of requesting data period in ISO 8601 format.",
+            "smithy.api#required": {}
+          }
+        },
+        "filters": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Segmentation filter in 'attribute operator value' format."
+          }
+        },
+        "sort": {
+          "target": "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseQuerySortList",
+          "traits": {
+            "smithy.api#documentation": "Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseTimeIntervalsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
     "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
+        "data": {
+          "target": "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseDataList",
+          "traits": {
+            "smithy.api#documentation": "Array with one row per combination of dimension values.",
+            "smithy.api#required": {}
+          }
+        },
+        "data_lag": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of seconds between current time and last processed event, in another words how many seconds of data could be missing.",
+            "smithy.api#required": {}
+          }
+        },
+        "max": {
           "target": "smithy.api#Document",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Maximum results for each metric (object mapping metric names to values). Currently always an empty object.",
+            "smithy.api#required": {}
+          }
+        },
+        "min": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Minimum results for each metric (object mapping metric names to values). Currently always an empty object.",
+            "smithy.api#required": {}
+          }
+        },
+        "query": {
+          "target": "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseQuery",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rows": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Total number of rows in the result.",
+            "smithy.api#required": {}
+          }
+        },
+        "time_intervals": {
+          "target": "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseTimeIntervalsList",
+          "traits": {
+            "smithy.api#documentation": "Array of time intervals in the response data. Each interval is represented as an array containing two values: the start time, and the end time.",
+            "smithy.api#required": {}
+          }
+        },
+        "totals": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Total results for metrics across all data (object mapping metric names to values).",
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGet": {

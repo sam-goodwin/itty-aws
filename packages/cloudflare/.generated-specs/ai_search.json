@@ -17,6 +17,24 @@
     ]
   },
   "shapes": {
+    "com.cloudflare.ai_search#InstancesChatCompletionsRequestMessagesItemContent": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "array_of_object___text__type____or_object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#InstancesChatCompletionsRequestMessagesItemRole": {
       "type": "enum",
       "members": {
@@ -44,7 +62,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#InstancesChatCompletionsRequestMessagesItemContent",
           "traits": {
             "smithy.api#required": {}
           }
@@ -406,6 +424,24 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ai_search#InstancesChatCompletionsResponseChoicesItemMessageContent": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "array_of_object___text__type____or_object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#InstancesChatCompletionsResponseChoicesItemMessageRole": {
       "type": "enum",
       "members": {
@@ -433,7 +469,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#InstancesChatCompletionsResponseChoicesItemMessageContent",
           "traits": {
             "smithy.api#required": {}
           }
@@ -668,6 +704,81 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "anything_goes"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_search#InstancesCreateRequestCacheTtl": {
+      "type": "structure",
+      "members": {
+        "_600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "600"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        },
+        "_172800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "172800"
+          }
+        },
+        "_259200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "259200"
+          }
+        },
+        "_518400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "518400"
           }
         }
       }
@@ -1192,6 +1303,67 @@
         }
       }
     },
+    "com.cloudflare.ai_search#InstancesCreateRequestSyncInterval": {
+      "type": "structure",
+      "members": {
+        "_900": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "900"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_14400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "14400"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#InstancesCreateRequestType": {
       "type": "enum",
       "members": {
@@ -1239,7 +1411,7 @@
           "target": "com.cloudflare.ai_search#InstancesCreateRequestCacheThreshold"
         },
         "cache_ttl": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#InstancesCreateRequestCacheTtl",
           "traits": {
             "smithy.api#documentation": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
           }
@@ -1311,7 +1483,7 @@
           "target": "com.cloudflare.ai_search#InstancesCreateRequestSourceParams"
         },
         "sync_interval": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#InstancesCreateRequestSyncInterval",
           "traits": {
             "smithy.api#documentation": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h)."
           }
@@ -1375,6 +1547,81 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "anything_goes"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_search#InstancesCreateResponseCacheTtl": {
+      "type": "structure",
+      "members": {
+        "_600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "600"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        },
+        "_172800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "172800"
+          }
+        },
+        "_259200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "259200"
+          }
+        },
+        "_518400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "518400"
           }
         }
       }
@@ -1899,6 +2146,67 @@
         }
       }
     },
+    "com.cloudflare.ai_search#InstancesCreateResponseSyncInterval": {
+      "type": "structure",
+      "members": {
+        "_900": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "900"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_14400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "14400"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#InstancesCreateResponseType": {
       "type": "enum",
       "members": {
@@ -1951,7 +2259,7 @@
           "target": "com.cloudflare.ai_search#InstancesCreateResponseCacheThreshold"
         },
         "cache_ttl": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#InstancesCreateResponseCacheTtl",
           "traits": {
             "smithy.api#documentation": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
           }
@@ -2047,7 +2355,7 @@
           "target": "smithy.api#String"
         },
         "sync_interval": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#InstancesCreateResponseSyncInterval",
           "traits": {
             "smithy.api#documentation": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h)."
           }
@@ -2151,6 +2459,81 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "anything_goes"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_search#InstancesDeleteResponseCacheTtl": {
+      "type": "structure",
+      "members": {
+        "_600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "600"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        },
+        "_172800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "172800"
+          }
+        },
+        "_259200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "259200"
+          }
+        },
+        "_518400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "518400"
           }
         }
       }
@@ -2675,6 +3058,67 @@
         }
       }
     },
+    "com.cloudflare.ai_search#InstancesDeleteResponseSyncInterval": {
+      "type": "structure",
+      "members": {
+        "_900": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "900"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_14400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "14400"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#InstancesDeleteResponseType": {
       "type": "enum",
       "members": {
@@ -2727,7 +3171,7 @@
           "target": "com.cloudflare.ai_search#InstancesDeleteResponseCacheThreshold"
         },
         "cache_ttl": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#InstancesDeleteResponseCacheTtl",
           "traits": {
             "smithy.api#documentation": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
           }
@@ -2823,7 +3267,7 @@
           "target": "smithy.api#String"
         },
         "sync_interval": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#InstancesDeleteResponseSyncInterval",
           "traits": {
             "smithy.api#documentation": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h)."
           }
@@ -2991,6 +3435,81 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "anything_goes"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_search#InstancesListResultItemCacheTtl": {
+      "type": "structure",
+      "members": {
+        "_600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "600"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        },
+        "_172800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "172800"
+          }
+        },
+        "_259200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "259200"
+          }
+        },
+        "_518400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "518400"
           }
         }
       }
@@ -3515,6 +4034,67 @@
         }
       }
     },
+    "com.cloudflare.ai_search#InstancesListResultItemSyncInterval": {
+      "type": "structure",
+      "members": {
+        "_900": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "900"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_14400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "14400"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#InstancesListResultItemType": {
       "type": "enum",
       "members": {
@@ -3567,7 +4147,7 @@
           "target": "com.cloudflare.ai_search#InstancesListResultItemCacheThreshold"
         },
         "cache_ttl": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#InstancesListResultItemCacheTtl",
           "traits": {
             "smithy.api#documentation": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
           }
@@ -3663,7 +4243,7 @@
           "target": "smithy.api#String"
         },
         "sync_interval": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#InstancesListResultItemSyncInterval",
           "traits": {
             "smithy.api#documentation": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h)."
           }
@@ -3785,6 +4365,81 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "anything_goes"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_search#InstancesReadResponseCacheTtl": {
+      "type": "structure",
+      "members": {
+        "_600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "600"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        },
+        "_172800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "172800"
+          }
+        },
+        "_259200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "259200"
+          }
+        },
+        "_518400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "518400"
           }
         }
       }
@@ -4309,6 +4964,67 @@
         }
       }
     },
+    "com.cloudflare.ai_search#InstancesReadResponseSyncInterval": {
+      "type": "structure",
+      "members": {
+        "_900": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "900"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_14400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "14400"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#InstancesReadResponseType": {
       "type": "enum",
       "members": {
@@ -4361,7 +5077,7 @@
           "target": "com.cloudflare.ai_search#InstancesReadResponseCacheThreshold"
         },
         "cache_ttl": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#InstancesReadResponseCacheTtl",
           "traits": {
             "smithy.api#documentation": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
           }
@@ -4457,7 +5173,7 @@
           "target": "smithy.api#String"
         },
         "sync_interval": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#InstancesReadResponseSyncInterval",
           "traits": {
             "smithy.api#documentation": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h)."
           }
@@ -4774,6 +5490,24 @@
         }
       }
     },
+    "com.cloudflare.ai_search#InstancesSearchRequestMessagesItemContent": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "array_of_object___text__type____or_object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#InstancesSearchRequestMessagesItemRole": {
       "type": "enum",
       "members": {
@@ -4801,7 +5535,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#InstancesSearchRequestMessagesItemContent",
           "traits": {
             "smithy.api#required": {}
           }
@@ -5241,6 +5975,81 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "anything_goes"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_search#InstancesUpdateRequestCacheTtl": {
+      "type": "structure",
+      "members": {
+        "_600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "600"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        },
+        "_172800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "172800"
+          }
+        },
+        "_259200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "259200"
+          }
+        },
+        "_518400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "518400"
           }
         }
       }
@@ -5788,6 +6597,67 @@
         }
       }
     },
+    "com.cloudflare.ai_search#InstancesUpdateRequestSyncInterval": {
+      "type": "structure",
+      "members": {
+        "_900": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "900"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_14400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "14400"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#InstancesUpdateRequest": {
       "type": "structure",
       "members": {
@@ -5818,7 +6688,7 @@
           "target": "com.cloudflare.ai_search#InstancesUpdateRequestCacheThreshold"
         },
         "cache_ttl": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#InstancesUpdateRequestCacheTtl",
           "traits": {
             "smithy.api#documentation": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
           }
@@ -5893,7 +6763,7 @@
           "target": "com.cloudflare.ai_search#InstancesUpdateRequestSummarizationModel"
         },
         "sync_interval": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#InstancesUpdateRequestSyncInterval",
           "traits": {
             "smithy.api#documentation": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h)."
           }
@@ -5963,6 +6833,81 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "anything_goes"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_search#InstancesUpdateResponseCacheTtl": {
+      "type": "structure",
+      "members": {
+        "_600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "600"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        },
+        "_172800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "172800"
+          }
+        },
+        "_259200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "259200"
+          }
+        },
+        "_518400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "518400"
           }
         }
       }
@@ -6487,6 +7432,67 @@
         }
       }
     },
+    "com.cloudflare.ai_search#InstancesUpdateResponseSyncInterval": {
+      "type": "structure",
+      "members": {
+        "_900": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "900"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_14400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "14400"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#InstancesUpdateResponseType": {
       "type": "enum",
       "members": {
@@ -6539,7 +7545,7 @@
           "target": "com.cloudflare.ai_search#InstancesUpdateResponseCacheThreshold"
         },
         "cache_ttl": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#InstancesUpdateResponseCacheTtl",
           "traits": {
             "smithy.api#documentation": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
           }
@@ -6635,7 +7641,7 @@
           "target": "smithy.api#String"
         },
         "sync_interval": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#InstancesUpdateResponseSyncInterval",
           "traits": {
             "smithy.api#documentation": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h)."
           }
@@ -7394,6 +8400,24 @@
         }
       }
     },
+    "com.cloudflare.ai_search#NamespacesChatCompletionsRequestMessagesItemContent": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "array_of_object___text__type____or_object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#NamespacesChatCompletionsRequestMessagesItemRole": {
       "type": "enum",
       "members": {
@@ -7421,7 +8445,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesChatCompletionsRequestMessagesItemContent",
           "traits": {
             "smithy.api#required": {}
           }
@@ -7503,6 +8527,24 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ai_search#NamespacesChatCompletionsResponseChoicesItemMessageContent": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "array_of_object___text__type____or_object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#NamespacesChatCompletionsResponseChoicesItemMessageRole": {
       "type": "enum",
       "members": {
@@ -7530,7 +8572,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesChatCompletionsResponseChoicesItemMessageContent",
           "traits": {
             "smithy.api#required": {}
           }
@@ -8308,6 +9350,24 @@
         }
       }
     },
+    "com.cloudflare.ai_search#NamespacesSearchRequestMessagesItemContent": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "array_of_object___text__type____or_object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#NamespacesSearchRequestMessagesItemRole": {
       "type": "enum",
       "members": {
@@ -8335,7 +9395,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesSearchRequestMessagesItemContent",
           "traits": {
             "smithy.api#required": {}
           }
@@ -8670,6 +9730,24 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesChatCompletionsRequestMessagesItemContent": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "array_of_object___text__type____or_object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesChatCompletionsRequestMessagesItemRole": {
       "type": "enum",
       "members": {
@@ -8697,7 +9775,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesInstancesChatCompletionsRequestMessagesItemContent",
           "traits": {
             "smithy.api#required": {}
           }
@@ -9066,6 +10144,24 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesChatCompletionsResponseChoicesItemMessageContent": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "array_of_object___text__type____or_object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesChatCompletionsResponseChoicesItemMessageRole": {
       "type": "enum",
       "members": {
@@ -9093,7 +10189,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesInstancesChatCompletionsResponseChoicesItemMessageContent",
           "traits": {
             "smithy.api#required": {}
           }
@@ -9328,6 +10424,81 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "anything_goes"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_search#NamespacesInstancesCreateRequestCacheTtl": {
+      "type": "structure",
+      "members": {
+        "_600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "600"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        },
+        "_172800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "172800"
+          }
+        },
+        "_259200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "259200"
+          }
+        },
+        "_518400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "518400"
           }
         }
       }
@@ -9852,6 +11023,67 @@
         }
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesCreateRequestSyncInterval": {
+      "type": "structure",
+      "members": {
+        "_900": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "900"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_14400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "14400"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesCreateRequestType": {
       "type": "enum",
       "members": {
@@ -9906,7 +11138,7 @@
           "target": "com.cloudflare.ai_search#NamespacesInstancesCreateRequestCacheThreshold"
         },
         "cache_ttl": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesInstancesCreateRequestCacheTtl",
           "traits": {
             "smithy.api#documentation": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
           }
@@ -9978,7 +11210,7 @@
           "target": "com.cloudflare.ai_search#NamespacesInstancesCreateRequestSourceParams"
         },
         "sync_interval": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesInstancesCreateRequestSyncInterval",
           "traits": {
             "smithy.api#documentation": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h)."
           }
@@ -10042,6 +11274,81 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "anything_goes"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_search#NamespacesInstancesCreateResponseCacheTtl": {
+      "type": "structure",
+      "members": {
+        "_600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "600"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        },
+        "_172800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "172800"
+          }
+        },
+        "_259200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "259200"
+          }
+        },
+        "_518400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "518400"
           }
         }
       }
@@ -10566,6 +11873,67 @@
         }
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesCreateResponseSyncInterval": {
+      "type": "structure",
+      "members": {
+        "_900": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "900"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_14400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "14400"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesCreateResponseType": {
       "type": "enum",
       "members": {
@@ -10618,7 +11986,7 @@
           "target": "com.cloudflare.ai_search#NamespacesInstancesCreateResponseCacheThreshold"
         },
         "cache_ttl": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesInstancesCreateResponseCacheTtl",
           "traits": {
             "smithy.api#documentation": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
           }
@@ -10714,7 +12082,7 @@
           "target": "smithy.api#String"
         },
         "sync_interval": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesInstancesCreateResponseSyncInterval",
           "traits": {
             "smithy.api#documentation": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h)."
           }
@@ -10825,6 +12193,81 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "anything_goes"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_search#NamespacesInstancesDeleteResponseCacheTtl": {
+      "type": "structure",
+      "members": {
+        "_600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "600"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        },
+        "_172800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "172800"
+          }
+        },
+        "_259200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "259200"
+          }
+        },
+        "_518400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "518400"
           }
         }
       }
@@ -11349,6 +12792,67 @@
         }
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesDeleteResponseSyncInterval": {
+      "type": "structure",
+      "members": {
+        "_900": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "900"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_14400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "14400"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesDeleteResponseType": {
       "type": "enum",
       "members": {
@@ -11401,7 +12905,7 @@
           "target": "com.cloudflare.ai_search#NamespacesInstancesDeleteResponseCacheThreshold"
         },
         "cache_ttl": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesInstancesDeleteResponseCacheTtl",
           "traits": {
             "smithy.api#documentation": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
           }
@@ -11497,7 +13001,7 @@
           "target": "smithy.api#String"
         },
         "sync_interval": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesInstancesDeleteResponseSyncInterval",
           "traits": {
             "smithy.api#documentation": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h)."
           }
@@ -11672,6 +13176,81 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "anything_goes"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_search#NamespacesInstancesListResultItemCacheTtl": {
+      "type": "structure",
+      "members": {
+        "_600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "600"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        },
+        "_172800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "172800"
+          }
+        },
+        "_259200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "259200"
+          }
+        },
+        "_518400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "518400"
           }
         }
       }
@@ -12196,6 +13775,67 @@
         }
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesListResultItemSyncInterval": {
+      "type": "structure",
+      "members": {
+        "_900": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "900"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_14400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "14400"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesListResultItemType": {
       "type": "enum",
       "members": {
@@ -12248,7 +13888,7 @@
           "target": "com.cloudflare.ai_search#NamespacesInstancesListResultItemCacheThreshold"
         },
         "cache_ttl": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesInstancesListResultItemCacheTtl",
           "traits": {
             "smithy.api#documentation": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
           }
@@ -12344,7 +13984,7 @@
           "target": "smithy.api#String"
         },
         "sync_interval": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesInstancesListResultItemSyncInterval",
           "traits": {
             "smithy.api#documentation": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h)."
           }
@@ -12473,6 +14113,81 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "anything_goes"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_search#NamespacesInstancesReadResponseCacheTtl": {
+      "type": "structure",
+      "members": {
+        "_600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "600"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        },
+        "_172800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "172800"
+          }
+        },
+        "_259200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "259200"
+          }
+        },
+        "_518400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "518400"
           }
         }
       }
@@ -12997,6 +14712,67 @@
         }
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesReadResponseSyncInterval": {
+      "type": "structure",
+      "members": {
+        "_900": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "900"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_14400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "14400"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesReadResponseType": {
       "type": "enum",
       "members": {
@@ -13049,7 +14825,7 @@
           "target": "com.cloudflare.ai_search#NamespacesInstancesReadResponseCacheThreshold"
         },
         "cache_ttl": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesInstancesReadResponseCacheTtl",
           "traits": {
             "smithy.api#documentation": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
           }
@@ -13145,7 +14921,7 @@
           "target": "smithy.api#String"
         },
         "sync_interval": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesInstancesReadResponseSyncInterval",
           "traits": {
             "smithy.api#documentation": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h)."
           }
@@ -13462,6 +15238,24 @@
         }
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesSearchRequestMessagesItemContent": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "array_of_object___text__type____or_object___image_url__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of object { text, type }  or object { image_url, type }"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesSearchRequestMessagesItemRole": {
       "type": "enum",
       "members": {
@@ -13489,7 +15283,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesInstancesSearchRequestMessagesItemContent",
           "traits": {
             "smithy.api#required": {}
           }
@@ -13943,6 +15737,81 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "anything_goes"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestCacheTtl": {
+      "type": "structure",
+      "members": {
+        "_600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "600"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        },
+        "_172800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "172800"
+          }
+        },
+        "_259200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "259200"
+          }
+        },
+        "_518400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "518400"
           }
         }
       }
@@ -14490,6 +16359,67 @@
         }
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestSyncInterval": {
+      "type": "structure",
+      "members": {
+        "_900": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "900"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_14400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "14400"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesUpdateRequest": {
       "type": "structure",
       "members": {
@@ -14527,7 +16457,7 @@
           "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestCacheThreshold"
         },
         "cache_ttl": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestCacheTtl",
           "traits": {
             "smithy.api#documentation": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
           }
@@ -14602,7 +16532,7 @@
           "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestSummarizationModel"
         },
         "sync_interval": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestSyncInterval",
           "traits": {
             "smithy.api#documentation": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h)."
           }
@@ -14672,6 +16602,81 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "anything_goes"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ai_search#NamespacesInstancesUpdateResponseCacheTtl": {
+      "type": "structure",
+      "members": {
+        "_600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "600"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        },
+        "_172800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "172800"
+          }
+        },
+        "_259200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "259200"
+          }
+        },
+        "_518400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "518400"
           }
         }
       }
@@ -15196,6 +17201,67 @@
         }
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesUpdateResponseSyncInterval": {
+      "type": "structure",
+      "members": {
+        "_900": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "900"
+          }
+        },
+        "_1800": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1800"
+          }
+        },
+        "_3600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "3600"
+          }
+        },
+        "_7200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "7200"
+          }
+        },
+        "_14400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "14400"
+          }
+        },
+        "_21600": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "21600"
+          }
+        },
+        "_43200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "43200"
+          }
+        },
+        "_86400": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "86400"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesUpdateResponseType": {
       "type": "enum",
       "members": {
@@ -15248,7 +17314,7 @@
           "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateResponseCacheThreshold"
         },
         "cache_ttl": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateResponseCacheTtl",
           "traits": {
             "smithy.api#documentation": "Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d)."
           }
@@ -15344,7 +17410,7 @@
           "target": "smithy.api#String"
         },
         "sync_interval": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateResponseSyncInterval",
           "traits": {
             "smithy.api#documentation": "Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h)."
           }

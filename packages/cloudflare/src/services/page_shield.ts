@@ -10,13 +10,15 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface ConnectionsGetRequest {
-  zone_id: string;
-  connection_id: string;
+  /** Identifier */
+  zoneId: string;
+  /** Identifier */
+  connectionId: string;
 }
 export const ConnectionsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    connection_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    connectionId: S.String.pipe(T.Label("connection_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -28,12 +30,69 @@ export const ConnectionsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectionsGetRequest",
 }) as any as S.Schema<ConnectionsGetRequest>;
 
+export type ConnectionsGetResponseMaliciousDomainCategoriesList = string[];
+export const ConnectionsGetResponseMaliciousDomainCategoriesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConnectionsGetResponseMaliciousDomainCategoriesList>;
+
+export type ConnectionsGetResponseMaliciousUrlCategoriesList = string[];
+export const ConnectionsGetResponseMaliciousUrlCategoriesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConnectionsGetResponseMaliciousUrlCategoriesList>;
+
+export type ConnectionsGetResponsePageUrlsList = string[];
+export const ConnectionsGetResponsePageUrlsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ConnectionsGetResponsePageUrlsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ConnectionsGetResponse {
-  result?: unknown;
+  /** Identifier */
+  id: string;
+  addedAt: string;
+  firstSeenAt: string;
+  host: string;
+  lastSeenAt: string;
+  url: string;
+  urlContainsCdnCgiPath: boolean;
+  domainReportedMalicious?: boolean;
+  firstPageUrl?: string;
+  maliciousDomainCategories?: ConnectionsGetResponseMaliciousDomainCategoriesList;
+  maliciousUrlCategories?: ConnectionsGetResponseMaliciousUrlCategoriesList;
+  pageUrls?: ConnectionsGetResponsePageUrlsList;
+  urlReportedMalicious?: boolean;
 }
 export const ConnectionsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    addedAt: S.String.pipe(T.Body("added_at")),
+    firstSeenAt: S.String.pipe(T.Body("first_seen_at")),
+    host: S.String,
+    lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
+    url: S.String,
+    urlContainsCdnCgiPath: S.Boolean.pipe(T.Body("url_contains_cdn_cgi_path")),
+    domainReportedMalicious: S.optional(
+      S.Boolean.pipe(T.Body("domain_reported_malicious")),
+    ),
+    firstPageUrl: S.optional(S.String.pipe(T.Body("first_page_url"))),
+    maliciousDomainCategories: S.optional(
+      ConnectionsGetResponseMaliciousDomainCategoriesList.pipe(
+        T.Body("malicious_domain_categories"),
+      ),
+    ),
+    maliciousUrlCategories: S.optional(
+      ConnectionsGetResponseMaliciousUrlCategoriesList.pipe(
+        T.Body("malicious_url_categories"),
+      ),
+    ),
+    pageUrls: S.optional(
+      ConnectionsGetResponsePageUrlsList.pipe(T.Body("page_urls")),
+    ),
+    urlReportedMalicious: S.optional(
+      S.Boolean.pipe(T.Body("url_reported_malicious")),
+    ),
   }),
 ).annotate({
   identifier: "ConnectionsGetResponse",
@@ -52,33 +111,50 @@ export type ConnectionsListRequestOrderBy =
 export const ConnectionsListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface ConnectionsListRequest {
-  zone_id: string;
+  /** Identifier */
+  zoneId: string;
+  /** The direction used to sort returned connections. */
   direction?: ConnectionsListRequestDirection;
-  exclude_cdn_cgi?: boolean;
-  exclude_urls?: string;
+  /** When true, excludes connections seen in a `/cdn-cgi` path from the returned connections. The default value is true. */
+  excludeCdnCgi?: boolean;
+  /** Excludes connections whose URL contains one of the URL-encoded URLs separated by commas. */
+  excludeUrls?: string;
+  /** Export the list of connections as a file, limited to 50000 entries. */
   export?: ConnectionsListRequestExport;
+  /** Includes connections that match one or more URL-encoded hostnames separated by commas. */
   hosts?: string;
-  order_by?: ConnectionsListRequestOrderBy;
+  /** The field used to sort returned connections. */
+  orderBy?: ConnectionsListRequestOrderBy;
+  /** The current page number of the paginated results. */
   page?: string;
-  page_url?: string;
-  per_page?: number;
-  prioritize_malicious?: boolean;
+  /** Includes connections that match one or more page URLs (separated by commas) where they were last seen */
+  pageUrl?: string;
+  /** The number of results per page. */
+  perPage?: number;
+  /** When true, malicious connections appear first in the returned connections. */
+  prioritizeMalicious?: boolean;
+  /** Filters the returned connections using a comma-separated list of connection statuses. Accepted values: `active`, `infrequent`, and `inactive`. The default value is `active`. */
   status?: string;
+  /** Includes connections whose URL contain one or more URL-encoded URLs separated by commas. */
   urls?: string;
 }
 export const ConnectionsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     direction: S.optional(ConnectionsListRequestDirection.pipe(T.Query())),
-    exclude_cdn_cgi: S.optional(S.Boolean.pipe(T.Query())),
-    exclude_urls: S.optional(S.String.pipe(T.Query())),
+    excludeCdnCgi: S.optional(S.Boolean.pipe(T.Query("exclude_cdn_cgi"))),
+    excludeUrls: S.optional(S.String.pipe(T.Query("exclude_urls"))),
     export: S.optional(ConnectionsListRequestExport.pipe(T.Query())),
     hosts: S.optional(S.String.pipe(T.Query())),
-    order_by: S.optional(ConnectionsListRequestOrderBy.pipe(T.Query())),
+    orderBy: S.optional(
+      ConnectionsListRequestOrderBy.pipe(T.Query("order_by")),
+    ),
     page: S.optional(S.String.pipe(T.Query())),
-    page_url: S.optional(S.String.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
-    prioritize_malicious: S.optional(S.Boolean.pipe(T.Query())),
+    pageUrl: S.optional(S.String.pipe(T.Query("page_url"))),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    prioritizeMalicious: S.optional(
+      S.Boolean.pipe(T.Query("prioritize_malicious")),
+    ),
     status: S.optional(S.String.pipe(T.Query())),
     urls: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -92,12 +168,80 @@ export const ConnectionsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectionsListRequest",
 }) as any as S.Schema<ConnectionsListRequest>;
 
-export type ConnectionsListResultList = unknown[];
+export type ConnectionsListResultItemMaliciousDomainCategoriesList = string[];
+export const ConnectionsListResultItemMaliciousDomainCategoriesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConnectionsListResultItemMaliciousDomainCategoriesList>;
+
+export type ConnectionsListResultItemMaliciousUrlCategoriesList = string[];
+export const ConnectionsListResultItemMaliciousUrlCategoriesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConnectionsListResultItemMaliciousUrlCategoriesList>;
+
+export type ConnectionsListResultItemPageUrlsList = string[];
+export const ConnectionsListResultItemPageUrlsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ConnectionsListResultItemPageUrlsList>;
+
+export interface ConnectionsListResultItem {
+  /** Identifier */
+  id: string;
+  addedAt: string;
+  firstSeenAt: string;
+  host: string;
+  lastSeenAt: string;
+  url: string;
+  urlContainsCdnCgiPath: boolean;
+  domainReportedMalicious?: boolean;
+  firstPageUrl?: string;
+  maliciousDomainCategories?: ConnectionsListResultItemMaliciousDomainCategoriesList;
+  maliciousUrlCategories?: ConnectionsListResultItemMaliciousUrlCategoriesList;
+  pageUrls?: ConnectionsListResultItemPageUrlsList;
+  urlReportedMalicious?: boolean;
+}
+export const ConnectionsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    addedAt: S.String.pipe(T.Body("added_at")),
+    firstSeenAt: S.String.pipe(T.Body("first_seen_at")),
+    host: S.String,
+    lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
+    url: S.String,
+    urlContainsCdnCgiPath: S.Boolean.pipe(T.Body("url_contains_cdn_cgi_path")),
+    domainReportedMalicious: S.optional(
+      S.Boolean.pipe(T.Body("domain_reported_malicious")),
+    ),
+    firstPageUrl: S.optional(S.String.pipe(T.Body("first_page_url"))),
+    maliciousDomainCategories: S.optional(
+      ConnectionsListResultItemMaliciousDomainCategoriesList.pipe(
+        T.Body("malicious_domain_categories"),
+      ),
+    ),
+    maliciousUrlCategories: S.optional(
+      ConnectionsListResultItemMaliciousUrlCategoriesList.pipe(
+        T.Body("malicious_url_categories"),
+      ),
+    ),
+    pageUrls: S.optional(
+      ConnectionsListResultItemPageUrlsList.pipe(T.Body("page_urls")),
+    ),
+    urlReportedMalicious: S.optional(
+      S.Boolean.pipe(T.Body("url_reported_malicious")),
+    ),
+  }),
+).annotate({
+  identifier: "ConnectionsListResultItem",
+}) as any as S.Schema<ConnectionsListResultItem>;
+
+export type ConnectionsListResultList = ConnectionsListResultItem[];
 export const ConnectionsListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  ConnectionsListResultItem,
 ) as any as S.Schema<ConnectionsListResultList>;
 
 export interface ConnectionsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ConnectionsListResultList;
 }
 export const ConnectionsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -109,13 +253,15 @@ export const ConnectionsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionsListResponse>;
 
 export interface CookiesGetRequest {
-  zone_id: string;
-  cookie_id: string;
+  /** Identifier */
+  zoneId: string;
+  /** Identifier */
+  cookieId: string;
 }
 export const CookiesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    cookie_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    cookieId: S.String.pipe(T.Label("cookie_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -144,37 +290,44 @@ export const CookiesGetResponseSameSiteAttribute = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CookiesGetResponse {
+  /** Identifier */
   id: string;
-  first_seen_at: string;
+  firstSeenAt: string;
   host: string;
-  last_seen_at: string;
+  lastSeenAt: string;
   name: string;
   type: CookiesGetResponseType;
-  domain_attribute?: string;
-  expires_attribute?: string;
-  http_only_attribute?: boolean;
-  max_age_attribute?: number;
-  page_urls?: CookiesGetResponsePageUrlsList;
-  path_attribute?: string;
-  same_site_attribute?: CookiesGetResponseSameSiteAttribute;
-  secure_attribute?: boolean;
+  domainAttribute?: string;
+  expiresAttribute?: string;
+  httpOnlyAttribute?: boolean;
+  maxAgeAttribute?: number;
+  pageUrls?: CookiesGetResponsePageUrlsList;
+  pathAttribute?: string;
+  sameSiteAttribute?: CookiesGetResponseSameSiteAttribute;
+  secureAttribute?: boolean;
 }
 export const CookiesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    first_seen_at: S.String,
+    firstSeenAt: S.String.pipe(T.Body("first_seen_at")),
     host: S.String,
-    last_seen_at: S.String,
+    lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
     name: S.String,
     type: CookiesGetResponseType,
-    domain_attribute: S.optional(S.String),
-    expires_attribute: S.optional(S.String),
-    http_only_attribute: S.optional(S.Boolean),
-    max_age_attribute: S.optional(S.Number),
-    page_urls: S.optional(CookiesGetResponsePageUrlsList),
-    path_attribute: S.optional(S.String),
-    same_site_attribute: S.optional(CookiesGetResponseSameSiteAttribute),
-    secure_attribute: S.optional(S.Boolean),
+    domainAttribute: S.optional(S.String.pipe(T.Body("domain_attribute"))),
+    expiresAttribute: S.optional(S.String.pipe(T.Body("expires_attribute"))),
+    httpOnlyAttribute: S.optional(
+      S.Boolean.pipe(T.Body("http_only_attribute")),
+    ),
+    maxAgeAttribute: S.optional(S.Number.pipe(T.Body("max_age_attribute"))),
+    pageUrls: S.optional(
+      CookiesGetResponsePageUrlsList.pipe(T.Body("page_urls")),
+    ),
+    pathAttribute: S.optional(S.String.pipe(T.Body("path_attribute"))),
+    sameSiteAttribute: S.optional(
+      CookiesGetResponseSameSiteAttribute.pipe(T.Body("same_site_attribute")),
+    ),
+    secureAttribute: S.optional(S.Boolean.pipe(T.Body("secure_attribute"))),
   }),
 ).annotate({
   identifier: "CookiesGetResponse",
@@ -203,37 +356,52 @@ export type CookiesListRequestType = "first_party" | "unknown" | (string & {});
 export const CookiesListRequestType = /*@__PURE__*/ S.String;
 
 export interface CookiesListRequest {
-  zone_id: string;
+  /** Identifier */
+  zoneId: string;
+  /** The direction used to sort returned cookies.' */
   direction?: CookiesListRequestDirection;
+  /** Filters the returned cookies that match the specified domain attribute */
   domain?: string;
+  /** Export the list of cookies as a file, limited to 50000 entries. */
   export?: CookiesListRequestExport;
+  /** Includes cookies that match one or more URL-encoded hostnames separated by commas. */
   hosts?: string;
-  http_only?: boolean;
+  /** Filters the returned cookies that are set with HttpOnly */
+  httpOnly?: boolean;
+  /** Filters the returned cookies that match the specified name. */
   name?: string;
-  order_by?: CookiesListRequestOrderBy;
+  /** The field used to sort returned cookies. */
+  orderBy?: CookiesListRequestOrderBy;
+  /** The current page number of the paginated results. */
   page?: string;
-  page_url?: string;
+  /** Includes connections that match one or more page URLs (separated by commas) where they were last seen */
+  pageUrl?: string;
+  /** Filters the returned cookies that match the specified path attribute */
   path?: string;
-  per_page?: number;
-  same_site?: CookiesListRequestSameSite;
+  /** The number of results per page. */
+  perPage?: number;
+  /** Filters the returned cookies that match the specified same_site attribute */
+  sameSite?: CookiesListRequestSameSite;
+  /** Filters the returned cookies that are set with Secure */
   secure?: boolean;
+  /** Filters the returned cookies that match the specified type attribute */
   type?: CookiesListRequestType;
 }
 export const CookiesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     direction: S.optional(CookiesListRequestDirection.pipe(T.Query())),
     domain: S.optional(S.String.pipe(T.Query())),
     export: S.optional(CookiesListRequestExport.pipe(T.Query())),
     hosts: S.optional(S.String.pipe(T.Query())),
-    http_only: S.optional(S.Boolean.pipe(T.Query())),
+    httpOnly: S.optional(S.Boolean.pipe(T.Query("http_only"))),
     name: S.optional(S.String.pipe(T.Query())),
-    order_by: S.optional(CookiesListRequestOrderBy.pipe(T.Query())),
+    orderBy: S.optional(CookiesListRequestOrderBy.pipe(T.Query("order_by"))),
     page: S.optional(S.String.pipe(T.Query())),
-    page_url: S.optional(S.String.pipe(T.Query())),
+    pageUrl: S.optional(S.String.pipe(T.Query("page_url"))),
     path: S.optional(S.String.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
-    same_site: S.optional(CookiesListRequestSameSite.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    sameSite: S.optional(CookiesListRequestSameSite.pipe(T.Query("same_site"))),
     secure: S.optional(S.Boolean.pipe(T.Query())),
     type: S.optional(CookiesListRequestType.pipe(T.Query())),
   }).pipe(
@@ -266,37 +434,46 @@ export type CookiesListResultItemSameSiteAttribute =
 export const CookiesListResultItemSameSiteAttribute = /*@__PURE__*/ S.String;
 
 export interface CookiesListResultItem {
+  /** Identifier */
   id: string;
-  first_seen_at: string;
+  firstSeenAt: string;
   host: string;
-  last_seen_at: string;
+  lastSeenAt: string;
   name: string;
   type: CookiesListResultItemType;
-  domain_attribute?: string;
-  expires_attribute?: string;
-  http_only_attribute?: boolean;
-  max_age_attribute?: number;
-  page_urls?: CookiesListResultItemPageUrlsList;
-  path_attribute?: string;
-  same_site_attribute?: CookiesListResultItemSameSiteAttribute;
-  secure_attribute?: boolean;
+  domainAttribute?: string;
+  expiresAttribute?: string;
+  httpOnlyAttribute?: boolean;
+  maxAgeAttribute?: number;
+  pageUrls?: CookiesListResultItemPageUrlsList;
+  pathAttribute?: string;
+  sameSiteAttribute?: CookiesListResultItemSameSiteAttribute;
+  secureAttribute?: boolean;
 }
 export const CookiesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    first_seen_at: S.String,
+    firstSeenAt: S.String.pipe(T.Body("first_seen_at")),
     host: S.String,
-    last_seen_at: S.String,
+    lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
     name: S.String,
     type: CookiesListResultItemType,
-    domain_attribute: S.optional(S.String),
-    expires_attribute: S.optional(S.String),
-    http_only_attribute: S.optional(S.Boolean),
-    max_age_attribute: S.optional(S.Number),
-    page_urls: S.optional(CookiesListResultItemPageUrlsList),
-    path_attribute: S.optional(S.String),
-    same_site_attribute: S.optional(CookiesListResultItemSameSiteAttribute),
-    secure_attribute: S.optional(S.Boolean),
+    domainAttribute: S.optional(S.String.pipe(T.Body("domain_attribute"))),
+    expiresAttribute: S.optional(S.String.pipe(T.Body("expires_attribute"))),
+    httpOnlyAttribute: S.optional(
+      S.Boolean.pipe(T.Body("http_only_attribute")),
+    ),
+    maxAgeAttribute: S.optional(S.Number.pipe(T.Body("max_age_attribute"))),
+    pageUrls: S.optional(
+      CookiesListResultItemPageUrlsList.pipe(T.Body("page_urls")),
+    ),
+    pathAttribute: S.optional(S.String.pipe(T.Body("path_attribute"))),
+    sameSiteAttribute: S.optional(
+      CookiesListResultItemSameSiteAttribute.pipe(
+        T.Body("same_site_attribute"),
+      ),
+    ),
+    secureAttribute: S.optional(S.Boolean.pipe(T.Body("secure_attribute"))),
   }),
 ).annotate({
   identifier: "CookiesListResultItem",
@@ -308,6 +485,7 @@ export const CookiesListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CookiesListResultList>;
 
 export interface CookiesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: CookiesListResultList;
 }
 export const CookiesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -319,22 +497,36 @@ export const CookiesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CookiesListResponse>;
 
 export interface GetRequest {
-  zone_id: string;
+  /** Identifier */
+  zoneId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({ method: "GET", uri: "/zones/{zone_id}/page_shield", code: 200 }),
   ),
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
-  result?: unknown;
+  /** When true, indicates that Page Shield is enabled. */
+  enabled: boolean;
+  /** The timestamp of when Page Shield was last updated. */
+  updatedAt: string;
+  /** When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report */
+  useCloudflareReportingEndpoint: boolean;
+  /** When true, the paths associated with connections URLs will also be analyzed. */
+  useConnectionUrlPath: boolean;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    enabled: S.Boolean,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    useCloudflareReportingEndpoint: S.Boolean.pipe(
+      T.Body("use_cloudflare_reporting_endpoint"),
+    ),
+    useConnectionUrlPath: S.Boolean.pipe(T.Body("use_connection_url_path")),
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
@@ -346,16 +538,22 @@ export type PoliciesCreateRequestAction =
 export const PoliciesCreateRequestAction = /*@__PURE__*/ S.String;
 
 export interface PoliciesCreateRequest {
-  zone_id: string;
+  /** Identifier */
+  zoneId: string;
+  /** The action to take if the expression matches */
   action: PoliciesCreateRequestAction;
+  /** A description for the policy */
   description: string;
+  /** Whether the policy is enabled */
   enabled: boolean;
+  /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
   expression: string;
+  /** The policy which will be applied */
   value: string;
 }
 export const PoliciesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     action: PoliciesCreateRequestAction,
     description: S.String,
     enabled: S.Boolean,
@@ -381,11 +579,17 @@ export const PoliciesCreateResponseAction = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PoliciesCreateResponse {
+  /** Identifier */
   id: string;
+  /** The action to take if the expression matches */
   action: PoliciesCreateResponseAction;
+  /** A description for the policy */
   description: string;
+  /** Whether the policy is enabled */
   enabled: boolean;
+  /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
   expression: string;
+  /** The policy which will be applied */
   value: string;
 }
 export const PoliciesCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -402,13 +606,15 @@ export const PoliciesCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoliciesCreateResponse>;
 
 export interface PoliciesDeleteRequest {
-  zone_id: string;
-  policy_id: string;
+  /** Identifier */
+  zoneId: string;
+  /** Identifier */
+  policyId: string;
 }
 export const PoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    policy_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    policyId: S.String.pipe(T.Label("policy_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -428,13 +634,15 @@ export const PoliciesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoliciesDeleteResponse>;
 
 export interface PoliciesGetRequest {
-  zone_id: string;
-  policy_id: string;
+  /** Identifier */
+  zoneId: string;
+  /** Identifier */
+  policyId: string;
 }
 export const PoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    policy_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    policyId: S.String.pipe(T.Label("policy_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -455,11 +663,17 @@ export const PoliciesGetResponseAction = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PoliciesGetResponse {
+  /** Identifier */
   id: string;
+  /** The action to take if the expression matches */
   action: PoliciesGetResponseAction;
+  /** A description for the policy */
   description: string;
+  /** Whether the policy is enabled */
   enabled: boolean;
+  /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
   expression: string;
+  /** The policy which will be applied */
   value: string;
 }
 export const PoliciesGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -476,11 +690,12 @@ export const PoliciesGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoliciesGetResponse>;
 
 export interface PoliciesListRequest {
-  zone_id: string;
+  /** Identifier */
+  zoneId: string;
 }
 export const PoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -500,11 +715,17 @@ export type PoliciesListResultItemAction =
 export const PoliciesListResultItemAction = /*@__PURE__*/ S.String;
 
 export interface PoliciesListResultItem {
+  /** Identifier */
   id: string;
+  /** The action to take if the expression matches */
   action: PoliciesListResultItemAction;
+  /** A description for the policy */
   description: string;
+  /** Whether the policy is enabled */
   enabled: boolean;
+  /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
   expression: string;
+  /** The policy which will be applied */
   value: string;
 }
 export const PoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -526,6 +747,7 @@ export const PoliciesListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PoliciesListResultList>;
 
 export interface PoliciesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PoliciesListResultList;
 }
 export const PoliciesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -544,18 +766,25 @@ export type PoliciesUpdateRequestAction =
 export const PoliciesUpdateRequestAction = /*@__PURE__*/ S.String;
 
 export interface PoliciesUpdateRequest {
-  zone_id: string;
-  policy_id: string;
+  /** Identifier */
+  zoneId: string;
+  /** Identifier */
+  policyId: string;
+  /** The action to take if the expression matches */
   action?: PoliciesUpdateRequestAction;
+  /** A description for the policy */
   description?: string;
+  /** Whether the policy is enabled */
   enabled?: boolean;
+  /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
   expression?: string;
+  /** The policy which will be applied */
   value?: string;
 }
 export const PoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    policy_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    policyId: S.String.pipe(T.Label("policy_id")),
     action: S.optional(PoliciesUpdateRequestAction),
     description: S.optional(S.String),
     enabled: S.optional(S.Boolean),
@@ -581,11 +810,17 @@ export const PoliciesUpdateResponseAction = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PoliciesUpdateResponse {
+  /** Identifier */
   id: string;
+  /** The action to take if the expression matches */
   action: PoliciesUpdateResponseAction;
+  /** A description for the policy */
   description: string;
+  /** Whether the policy is enabled */
   enabled: boolean;
+  /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
   expression: string;
+  /** The policy which will be applied */
   value: string;
 }
 export const PoliciesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -602,13 +837,15 @@ export const PoliciesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoliciesUpdateResponse>;
 
 export interface ScriptsGetRequest {
-  zone_id: string;
-  script_id: string;
+  /** Identifier */
+  zoneId: string;
+  /** Identifier */
+  scriptId: string;
 }
 export const ScriptsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    script_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    scriptId: S.String.pipe(T.Label("script_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -638,25 +875,33 @@ export const ScriptsGetResponsePageUrlsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ScriptsGetResponsePageUrlsList>;
 
 export interface ScriptsGetResponseVersionsItem {
-  cryptomining_score?: number;
-  dataflow_score?: number;
-  fetched_at?: string;
+  /** The cryptomining score of the JavaScript content. */
+  cryptominingScore?: number;
+  /** The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
+  dataflowScore?: number;
+  /** The timestamp of when the script was last fetched. */
+  fetchedAt?: string;
+  /** The computed hash of the analyzed script. */
   hash?: string;
-  js_integrity_score?: number;
-  magecart_score?: number;
-  malware_score?: number;
-  obfuscation_score?: number;
+  /** The integrity score of the JavaScript content. */
+  jsIntegrityScore?: number;
+  /** The magecart score of the JavaScript content. */
+  magecartScore?: number;
+  /** The malware score of the JavaScript content. */
+  malwareScore?: number;
+  /** The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
+  obfuscationScore?: number;
 }
 export const ScriptsGetResponseVersionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    cryptomining_score: S.optional(S.Number),
-    dataflow_score: S.optional(S.Number),
-    fetched_at: S.optional(S.String),
+    cryptominingScore: S.optional(S.Number.pipe(T.Body("cryptomining_score"))),
+    dataflowScore: S.optional(S.Number.pipe(T.Body("dataflow_score"))),
+    fetchedAt: S.optional(S.String.pipe(T.Body("fetched_at"))),
     hash: S.optional(S.String),
-    js_integrity_score: S.optional(S.Number),
-    magecart_score: S.optional(S.Number),
-    malware_score: S.optional(S.Number),
-    obfuscation_score: S.optional(S.Number),
+    jsIntegrityScore: S.optional(S.Number.pipe(T.Body("js_integrity_score"))),
+    magecartScore: S.optional(S.Number.pipe(T.Body("magecart_score"))),
+    malwareScore: S.optional(S.Number.pipe(T.Body("malware_score"))),
+    obfuscationScore: S.optional(S.Number.pipe(T.Body("obfuscation_score"))),
   }),
 ).annotate({
   identifier: "ScriptsGetResponseVersionsItem",
@@ -669,56 +914,75 @@ export const ScriptsGetResponseVersionsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsGetResponse {
+  /** Identifier */
   id: string;
-  added_at: string;
-  first_seen_at: string;
+  addedAt: string;
+  firstSeenAt: string;
   host: string;
-  last_seen_at: string;
+  lastSeenAt: string;
   url: string;
-  url_contains_cdn_cgi_path: boolean;
-  cryptomining_score?: number;
-  dataflow_score?: number;
-  domain_reported_malicious?: boolean;
-  fetched_at?: string;
-  first_page_url?: string;
+  urlContainsCdnCgiPath: boolean;
+  /** The cryptomining score of the JavaScript content. */
+  cryptominingScore?: number;
+  /** The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
+  dataflowScore?: number;
+  domainReportedMalicious?: boolean;
+  /** The timestamp of when the script was last fetched. */
+  fetchedAt?: string;
+  firstPageUrl?: string;
+  /** The computed hash of the analyzed script. */
   hash?: string;
-  js_integrity_score?: number;
-  magecart_score?: number;
-  malicious_domain_categories?: ScriptsGetResponseMaliciousDomainCategoriesList;
-  malicious_url_categories?: ScriptsGetResponseMaliciousUrlCategoriesList;
-  malware_score?: number;
-  obfuscation_score?: number;
-  page_urls?: ScriptsGetResponsePageUrlsList;
-  url_reported_malicious?: boolean;
+  /** The integrity score of the JavaScript content. */
+  jsIntegrityScore?: number;
+  /** The magecart score of the JavaScript content. */
+  magecartScore?: number;
+  maliciousDomainCategories?: ScriptsGetResponseMaliciousDomainCategoriesList;
+  maliciousUrlCategories?: ScriptsGetResponseMaliciousUrlCategoriesList;
+  /** The malware score of the JavaScript content. */
+  malwareScore?: number;
+  /** The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
+  obfuscationScore?: number;
+  pageUrls?: ScriptsGetResponsePageUrlsList;
+  urlReportedMalicious?: boolean;
   versions?: ScriptsGetResponseVersionsList;
 }
 export const ScriptsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    added_at: S.String,
-    first_seen_at: S.String,
+    addedAt: S.String.pipe(T.Body("added_at")),
+    firstSeenAt: S.String.pipe(T.Body("first_seen_at")),
     host: S.String,
-    last_seen_at: S.String,
+    lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
     url: S.String,
-    url_contains_cdn_cgi_path: S.Boolean,
-    cryptomining_score: S.optional(S.Number),
-    dataflow_score: S.optional(S.Number),
-    domain_reported_malicious: S.optional(S.Boolean),
-    fetched_at: S.optional(S.String),
-    first_page_url: S.optional(S.String),
+    urlContainsCdnCgiPath: S.Boolean.pipe(T.Body("url_contains_cdn_cgi_path")),
+    cryptominingScore: S.optional(S.Number.pipe(T.Body("cryptomining_score"))),
+    dataflowScore: S.optional(S.Number.pipe(T.Body("dataflow_score"))),
+    domainReportedMalicious: S.optional(
+      S.Boolean.pipe(T.Body("domain_reported_malicious")),
+    ),
+    fetchedAt: S.optional(S.String.pipe(T.Body("fetched_at"))),
+    firstPageUrl: S.optional(S.String.pipe(T.Body("first_page_url"))),
     hash: S.optional(S.String),
-    js_integrity_score: S.optional(S.Number),
-    magecart_score: S.optional(S.Number),
-    malicious_domain_categories: S.optional(
-      ScriptsGetResponseMaliciousDomainCategoriesList,
+    jsIntegrityScore: S.optional(S.Number.pipe(T.Body("js_integrity_score"))),
+    magecartScore: S.optional(S.Number.pipe(T.Body("magecart_score"))),
+    maliciousDomainCategories: S.optional(
+      ScriptsGetResponseMaliciousDomainCategoriesList.pipe(
+        T.Body("malicious_domain_categories"),
+      ),
     ),
-    malicious_url_categories: S.optional(
-      ScriptsGetResponseMaliciousUrlCategoriesList,
+    maliciousUrlCategories: S.optional(
+      ScriptsGetResponseMaliciousUrlCategoriesList.pipe(
+        T.Body("malicious_url_categories"),
+      ),
     ),
-    malware_score: S.optional(S.Number),
-    obfuscation_score: S.optional(S.Number),
-    page_urls: S.optional(ScriptsGetResponsePageUrlsList),
-    url_reported_malicious: S.optional(S.Boolean),
+    malwareScore: S.optional(S.Number.pipe(T.Body("malware_score"))),
+    obfuscationScore: S.optional(S.Number.pipe(T.Body("obfuscation_score"))),
+    pageUrls: S.optional(
+      ScriptsGetResponsePageUrlsList.pipe(T.Body("page_urls")),
+    ),
+    urlReportedMalicious: S.optional(
+      S.Boolean.pipe(T.Body("url_reported_malicious")),
+    ),
     versions: S.optional(ScriptsGetResponseVersionsList),
   }),
 ).annotate({
@@ -738,35 +1002,53 @@ export type ScriptsListRequestOrderBy =
 export const ScriptsListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface ScriptsListRequest {
-  zone_id: string;
+  /** Identifier */
+  zoneId: string;
+  /** The direction used to sort returned scripts. */
   direction?: ScriptsListRequestDirection;
-  exclude_cdn_cgi?: boolean;
-  exclude_duplicates?: boolean;
-  exclude_urls?: string;
+  /** When true, excludes scripts seen in a `/cdn-cgi` path from the returned scripts. The default value is true. */
+  excludeCdnCgi?: boolean;
+  /** When true, excludes duplicate scripts. We consider a script duplicate of another if their javascript */
+  excludeDuplicates?: boolean;
+  /** Excludes scripts whose URL contains one of the URL-encoded URLs separated by commas. */
+  excludeUrls?: string;
+  /** Export the list of scripts as a file, limited to 50000 entries. */
   export?: ScriptsListRequestExport;
+  /** Includes scripts that match one or more URL-encoded hostnames separated by commas. */
   hosts?: string;
-  order_by?: ScriptsListRequestOrderBy;
+  /** The field used to sort returned scripts. */
+  orderBy?: ScriptsListRequestOrderBy;
+  /** The current page number of the paginated results. */
   page?: string;
-  page_url?: string;
-  per_page?: number;
-  prioritize_malicious?: boolean;
+  /** Includes scripts that match one or more page URLs (separated by commas) where they were last seen */
+  pageUrl?: string;
+  /** The number of results per page. */
+  perPage?: number;
+  /** When true, malicious scripts appear first in the returned scripts. */
+  prioritizeMalicious?: boolean;
+  /** Filters the returned scripts using a comma-separated list of scripts statuses. Accepted values: `active`, `infrequent`, and `inactive`. The default value is `active`. */
   status?: string;
+  /** Includes scripts whose URL contain one or more URL-encoded URLs separated by commas. */
   urls?: string;
 }
 export const ScriptsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     direction: S.optional(ScriptsListRequestDirection.pipe(T.Query())),
-    exclude_cdn_cgi: S.optional(S.Boolean.pipe(T.Query())),
-    exclude_duplicates: S.optional(S.Boolean.pipe(T.Query())),
-    exclude_urls: S.optional(S.String.pipe(T.Query())),
+    excludeCdnCgi: S.optional(S.Boolean.pipe(T.Query("exclude_cdn_cgi"))),
+    excludeDuplicates: S.optional(
+      S.Boolean.pipe(T.Query("exclude_duplicates")),
+    ),
+    excludeUrls: S.optional(S.String.pipe(T.Query("exclude_urls"))),
     export: S.optional(ScriptsListRequestExport.pipe(T.Query())),
     hosts: S.optional(S.String.pipe(T.Query())),
-    order_by: S.optional(ScriptsListRequestOrderBy.pipe(T.Query())),
+    orderBy: S.optional(ScriptsListRequestOrderBy.pipe(T.Query("order_by"))),
     page: S.optional(S.String.pipe(T.Query())),
-    page_url: S.optional(S.String.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
-    prioritize_malicious: S.optional(S.Boolean.pipe(T.Query())),
+    pageUrl: S.optional(S.String.pipe(T.Query("page_url"))),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    prioritizeMalicious: S.optional(
+      S.Boolean.pipe(T.Query("prioritize_malicious")),
+    ),
     status: S.optional(S.String.pipe(T.Query())),
     urls: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -780,12 +1062,104 @@ export const ScriptsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsListRequest",
 }) as any as S.Schema<ScriptsListRequest>;
 
-export type ScriptsListResultList = unknown[];
+export type ScriptsListResultItemMaliciousDomainCategoriesList = string[];
+export const ScriptsListResultItemMaliciousDomainCategoriesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ScriptsListResultItemMaliciousDomainCategoriesList>;
+
+export type ScriptsListResultItemMaliciousUrlCategoriesList = string[];
+export const ScriptsListResultItemMaliciousUrlCategoriesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ScriptsListResultItemMaliciousUrlCategoriesList>;
+
+export type ScriptsListResultItemPageUrlsList = string[];
+export const ScriptsListResultItemPageUrlsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ScriptsListResultItemPageUrlsList>;
+
+export interface ScriptsListResultItem {
+  /** Identifier */
+  id: string;
+  addedAt: string;
+  firstSeenAt: string;
+  host: string;
+  lastSeenAt: string;
+  url: string;
+  urlContainsCdnCgiPath: boolean;
+  /** The cryptomining score of the JavaScript content. */
+  cryptominingScore?: number;
+  /** The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
+  dataflowScore?: number;
+  domainReportedMalicious?: boolean;
+  /** The timestamp of when the script was last fetched. */
+  fetchedAt?: string;
+  firstPageUrl?: string;
+  /** The computed hash of the analyzed script. */
+  hash?: string;
+  /** The integrity score of the JavaScript content. */
+  jsIntegrityScore?: number;
+  /** The magecart score of the JavaScript content. */
+  magecartScore?: number;
+  maliciousDomainCategories?: ScriptsListResultItemMaliciousDomainCategoriesList;
+  maliciousUrlCategories?: ScriptsListResultItemMaliciousUrlCategoriesList;
+  /** The malware score of the JavaScript content. */
+  malwareScore?: number;
+  /** The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
+  obfuscationScore?: number;
+  pageUrls?: ScriptsListResultItemPageUrlsList;
+  urlReportedMalicious?: boolean;
+}
+export const ScriptsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    addedAt: S.String.pipe(T.Body("added_at")),
+    firstSeenAt: S.String.pipe(T.Body("first_seen_at")),
+    host: S.String,
+    lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
+    url: S.String,
+    urlContainsCdnCgiPath: S.Boolean.pipe(T.Body("url_contains_cdn_cgi_path")),
+    cryptominingScore: S.optional(S.Number.pipe(T.Body("cryptomining_score"))),
+    dataflowScore: S.optional(S.Number.pipe(T.Body("dataflow_score"))),
+    domainReportedMalicious: S.optional(
+      S.Boolean.pipe(T.Body("domain_reported_malicious")),
+    ),
+    fetchedAt: S.optional(S.String.pipe(T.Body("fetched_at"))),
+    firstPageUrl: S.optional(S.String.pipe(T.Body("first_page_url"))),
+    hash: S.optional(S.String),
+    jsIntegrityScore: S.optional(S.Number.pipe(T.Body("js_integrity_score"))),
+    magecartScore: S.optional(S.Number.pipe(T.Body("magecart_score"))),
+    maliciousDomainCategories: S.optional(
+      ScriptsListResultItemMaliciousDomainCategoriesList.pipe(
+        T.Body("malicious_domain_categories"),
+      ),
+    ),
+    maliciousUrlCategories: S.optional(
+      ScriptsListResultItemMaliciousUrlCategoriesList.pipe(
+        T.Body("malicious_url_categories"),
+      ),
+    ),
+    malwareScore: S.optional(S.Number.pipe(T.Body("malware_score"))),
+    obfuscationScore: S.optional(S.Number.pipe(T.Body("obfuscation_score"))),
+    pageUrls: S.optional(
+      ScriptsListResultItemPageUrlsList.pipe(T.Body("page_urls")),
+    ),
+    urlReportedMalicious: S.optional(
+      S.Boolean.pipe(T.Body("url_reported_malicious")),
+    ),
+  }),
+).annotate({
+  identifier: "ScriptsListResultItem",
+}) as any as S.Schema<ScriptsListResultItem>;
+
+export type ScriptsListResultList = ScriptsListResultItem[];
 export const ScriptsListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  ScriptsListResultItem,
 ) as any as S.Schema<ScriptsListResultList>;
 
 export interface ScriptsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ScriptsListResultList;
 }
 export const ScriptsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -797,17 +1171,25 @@ export const ScriptsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsListResponse>;
 
 export interface UpdateRequest {
-  zone_id: string;
+  /** Identifier */
+  zoneId: string;
+  /** When true, indicates that Page Shield is enabled. */
   enabled?: boolean;
-  use_cloudflare_reporting_endpoint?: boolean;
-  use_connection_url_path?: boolean;
+  /** When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report */
+  useCloudflareReportingEndpoint?: boolean;
+  /** When true, the paths associated with connections URLs will also be analyzed. */
+  useConnectionUrlPath?: boolean;
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.optional(S.Boolean),
-    use_cloudflare_reporting_endpoint: S.optional(S.Boolean),
-    use_connection_url_path: S.optional(S.Boolean),
+    useCloudflareReportingEndpoint: S.optional(
+      S.Boolean.pipe(T.Body("use_cloudflare_reporting_endpoint")),
+    ),
+    useConnectionUrlPath: S.optional(
+      S.Boolean.pipe(T.Body("use_connection_url_path")),
+    ),
   }).pipe(
     T.Http({ method: "PUT", uri: "/zones/{zone_id}/page_shield", code: 200 }),
   ),
@@ -815,25 +1197,32 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
+  /** When true, indicates that Page Shield is enabled. */
   enabled: boolean;
-  updated_at: string;
-  use_cloudflare_reporting_endpoint: boolean;
-  use_connection_url_path: boolean;
+  /** The timestamp of when Page Shield was last updated. */
+  updatedAt: string;
+  /** When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report */
+  useCloudflareReportingEndpoint: boolean;
+  /** When true, the paths associated with connections URLs will also be analyzed. */
+  useConnectionUrlPath: boolean;
 }
 export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
-    updated_at: S.String,
-    use_cloudflare_reporting_endpoint: S.Boolean,
-    use_connection_url_path: S.Boolean,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    useCloudflareReportingEndpoint: S.Boolean.pipe(
+      T.Body("use_cloudflare_reporting_endpoint"),
+    ),
+    useConnectionUrlPath: S.Boolean.pipe(T.Body("use_connection_url_path")),
   }),
 ).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
+export type ConnectionsGetError = CloudflareOpError;
 /** Fetches a connection detected by Page Shield by connection ID. */
-export const ConnectionsGet: API.OperationMethod<
+export const connectionsGet: API.OperationMethod<
   ConnectionsGetRequest,
   ConnectionsGetResponse,
-  CloudflareOpError,
+  ConnectionsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConnectionsGetRequest,
@@ -842,11 +1231,12 @@ export const ConnectionsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConnectionsListError = CloudflareOpError;
 /** Lists all connections detected by Page Shield. */
-export const ConnectionsList: API.OperationMethod<
+export const connectionsList: API.OperationMethod<
   ConnectionsListRequest,
   ConnectionsListResponse,
-  CloudflareOpError,
+  ConnectionsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConnectionsListRequest,
@@ -855,11 +1245,12 @@ export const ConnectionsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CookiesGetError = CloudflareOpError;
 /** Fetches a cookie collected by Page Shield by cookie ID. */
-export const CookiesGet: API.OperationMethod<
+export const cookiesGet: API.OperationMethod<
   CookiesGetRequest,
   CookiesGetResponse,
-  CloudflareOpError,
+  CookiesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CookiesGetRequest,
@@ -868,11 +1259,12 @@ export const CookiesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CookiesListError = CloudflareOpError;
 /** Lists all cookies collected by Page Shield. */
-export const CookiesList: API.OperationMethod<
+export const cookiesList: API.OperationMethod<
   CookiesListRequest,
   CookiesListResponse,
-  CloudflareOpError,
+  CookiesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CookiesListRequest,
@@ -881,11 +1273,12 @@ export const CookiesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Fetches the Page Shield settings. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -894,11 +1287,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PoliciesCreateError = CloudflareOpError;
 /** Create a Page Shield policy. */
-export const PoliciesCreate: API.OperationMethod<
+export const policiesCreate: API.OperationMethod<
   PoliciesCreateRequest,
   PoliciesCreateResponse,
-  CloudflareOpError,
+  PoliciesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PoliciesCreateRequest,
@@ -907,11 +1301,12 @@ export const PoliciesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PoliciesDeleteError = CloudflareOpError;
 /** Delete a Page Shield policy by ID. */
-export const PoliciesDelete: API.OperationMethod<
+export const policiesDelete: API.OperationMethod<
   PoliciesDeleteRequest,
   PoliciesDeleteResponse,
-  CloudflareOpError,
+  PoliciesDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PoliciesDeleteRequest,
@@ -920,11 +1315,12 @@ export const PoliciesDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PoliciesGetError = CloudflareOpError;
 /** Fetches a Page Shield policy by ID. */
-export const PoliciesGet: API.OperationMethod<
+export const policiesGet: API.OperationMethod<
   PoliciesGetRequest,
   PoliciesGetResponse,
-  CloudflareOpError,
+  PoliciesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PoliciesGetRequest,
@@ -933,11 +1329,12 @@ export const PoliciesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PoliciesListError = CloudflareOpError;
 /** Lists all Page Shield policies. */
-export const PoliciesList: API.OperationMethod<
+export const policiesList: API.OperationMethod<
   PoliciesListRequest,
   PoliciesListResponse,
-  CloudflareOpError,
+  PoliciesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PoliciesListRequest,
@@ -946,11 +1343,12 @@ export const PoliciesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PoliciesUpdateError = CloudflareOpError;
 /** Update a Page Shield policy by ID. */
-export const PoliciesUpdate: API.OperationMethod<
+export const policiesUpdate: API.OperationMethod<
   PoliciesUpdateRequest,
   PoliciesUpdateResponse,
-  CloudflareOpError,
+  PoliciesUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PoliciesUpdateRequest,
@@ -959,11 +1357,12 @@ export const PoliciesUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsGetError = CloudflareOpError;
 /** Fetches a script detected by Page Shield by script ID. */
-export const ScriptsGet: API.OperationMethod<
+export const scriptsGet: API.OperationMethod<
   ScriptsGetRequest,
   ScriptsGetResponse,
-  CloudflareOpError,
+  ScriptsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsGetRequest,
@@ -972,11 +1371,12 @@ export const ScriptsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsListError = CloudflareOpError;
 /** Lists all scripts detected by Page Shield. */
-export const ScriptsList: API.OperationMethod<
+export const scriptsList: API.OperationMethod<
   ScriptsListRequest,
   ScriptsListResponse,
-  CloudflareOpError,
+  ScriptsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsListRequest,
@@ -985,11 +1385,12 @@ export const ScriptsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UpdateError = CloudflareOpError;
 /** Updates Page Shield settings. */
-export const Update: API.OperationMethod<
+export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,
-  CloudflareOpError,
+  UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,

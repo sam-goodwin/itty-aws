@@ -127,19 +127,101 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.d1#DatabaseCreateResponseJurisdiction": {
+      "type": "enum",
+      "members": {
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        },
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.d1#DatabaseCreateResponseReadReplicationMode": {
+      "type": "enum",
+      "members": {
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.d1#DatabaseCreateResponseReadReplication": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.d1#DatabaseCreateResponseReadReplicationMode",
+          "traits": {
+            "smithy.api#documentation": "The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.d1#DatabaseCreateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "created_at": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Specifies the timestamp the resource was created as an ISO8601 string."
           }
+        },
+        "file_size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The D1 database's size, in bytes."
+          }
+        },
+        "jurisdiction": {
+          "target": "com.cloudflare.d1#DatabaseCreateResponseJurisdiction",
+          "traits": {
+            "smithy.api#documentation": "Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "D1 database name."
+          }
+        },
+        "num_tables": {
+          "target": "smithy.api#Double"
+        },
+        "read_replication": {
+          "target": "com.cloudflare.d1#DatabaseCreateResponseReadReplication",
+          "traits": {
+            "smithy.api#documentation": "Configuration for D1 read replication."
+          }
+        },
+        "uuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "D1 database identifier (UUID)."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.d1#DatabaseCreate": {
@@ -275,19 +357,101 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.d1#DatabaseEditResponseJurisdiction": {
+      "type": "enum",
+      "members": {
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        },
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.d1#DatabaseEditResponseReadReplicationMode": {
+      "type": "enum",
+      "members": {
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.d1#DatabaseEditResponseReadReplication": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.d1#DatabaseEditResponseReadReplicationMode",
+          "traits": {
+            "smithy.api#documentation": "The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.d1#DatabaseEditResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "created_at": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Specifies the timestamp the resource was created as an ISO8601 string."
           }
+        },
+        "file_size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The D1 database's size, in bytes."
+          }
+        },
+        "jurisdiction": {
+          "target": "com.cloudflare.d1#DatabaseEditResponseJurisdiction",
+          "traits": {
+            "smithy.api#documentation": "Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "D1 database name."
+          }
+        },
+        "num_tables": {
+          "target": "smithy.api#Double"
+        },
+        "read_replication": {
+          "target": "com.cloudflare.d1#DatabaseEditResponseReadReplication",
+          "traits": {
+            "smithy.api#documentation": "Configuration for D1 read replication."
+          }
+        },
+        "uuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "D1 database identifier (UUID)."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.d1#DatabaseEdit": {
@@ -557,19 +721,101 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.d1#DatabaseGetResponseJurisdiction": {
+      "type": "enum",
+      "members": {
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        },
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.d1#DatabaseGetResponseReadReplicationMode": {
+      "type": "enum",
+      "members": {
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.d1#DatabaseGetResponseReadReplication": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.d1#DatabaseGetResponseReadReplicationMode",
+          "traits": {
+            "smithy.api#documentation": "The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.d1#DatabaseGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "created_at": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Specifies the timestamp the resource was created as an ISO8601 string."
           }
+        },
+        "file_size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The D1 database's size, in bytes."
+          }
+        },
+        "jurisdiction": {
+          "target": "com.cloudflare.d1#DatabaseGetResponseJurisdiction",
+          "traits": {
+            "smithy.api#documentation": "Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "D1 database name."
+          }
+        },
+        "num_tables": {
+          "target": "smithy.api#Double"
+        },
+        "read_replication": {
+          "target": "com.cloudflare.d1#DatabaseGetResponseReadReplication",
+          "traits": {
+            "smithy.api#documentation": "Configuration for D1 read replication."
+          }
+        },
+        "uuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "D1 database identifier (UUID)."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.d1#DatabaseGet": {
@@ -1052,10 +1298,135 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.d1#DatabaseQueryResultList": {
+    "com.cloudflare.d1#DatabaseQueryResultItemMetaServedByRegion": {
+      "type": "enum",
+      "members": {
+        "WNAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WNAM"
+          }
+        },
+        "ENAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENAM"
+          }
+        },
+        "WEUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WEUR"
+          }
+        }
+      }
+    },
+    "com.cloudflare.d1#DatabaseQueryResultItemMetaTimings": {
+      "type": "structure",
+      "members": {
+        "sql_duration_ms": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The duration of the SQL query execution inside the database. Does not include any network communication."
+          }
+        }
+      }
+    },
+    "com.cloudflare.d1#DatabaseQueryResultItemMeta": {
+      "type": "structure",
+      "members": {
+        "changed_db": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Denotes if the database has been altered in some way, like deleting rows."
+          }
+        },
+        "changes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Rough indication of how many rows were modified by the query, as provided by SQLite's `sqlite3_total_changes()`."
+          }
+        },
+        "duration": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The duration of the SQL query execution inside the database. Does not include any network communication."
+          }
+        },
+        "last_row_id": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The row ID of the last inserted row in a table with an `INTEGER PRIMARY KEY` as provided by SQLite. Tables created with `WITHOUT ROWID` do not populate this."
+          }
+        },
+        "rows_read": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of rows read during the SQL query execution, including indices (not all rows are necessarily returned)."
+          }
+        },
+        "rows_written": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of rows written during the SQL query execution, including indices."
+          }
+        },
+        "served_by_colo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The three letters airport code of the colo that handled the query."
+          }
+        },
+        "served_by_primary": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Denotes if the query has been handled by the database primary instance."
+          }
+        },
+        "served_by_region": {
+          "target": "com.cloudflare.d1#DatabaseQueryResultItemMetaServedByRegion",
+          "traits": {
+            "smithy.api#documentation": "Region location hint of the database instance that handled the query."
+          }
+        },
+        "size_after": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Size of the database after the query committed, in bytes."
+          }
+        },
+        "timings": {
+          "target": "com.cloudflare.d1#DatabaseQueryResultItemMetaTimings",
+          "traits": {
+            "smithy.api#documentation": "Various durations for the query."
+          }
+        }
+      }
+    },
+    "com.cloudflare.d1#DatabaseQueryResultItemResultsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.d1#DatabaseQueryResultItem": {
+      "type": "structure",
+      "members": {
+        "meta": {
+          "target": "com.cloudflare.d1#DatabaseQueryResultItemMeta"
+        },
+        "results": {
+          "target": "com.cloudflare.d1#DatabaseQueryResultItemResultsList"
+        },
+        "success": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.d1#DatabaseQueryResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.d1#DatabaseQueryResultItem"
       }
     },
     "com.cloudflare.d1#DatabaseQueryResponse": {
@@ -1252,10 +1623,33 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.d1#DatabaseRawResultItemResultsRowsItem": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "unknown": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.d1#DatabaseRawResultItemResultsRowsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.d1#DatabaseRawResultItemResultsRowsItem"
       }
     },
     "com.cloudflare.d1#DatabaseRawResultItemResults": {
@@ -1381,19 +1775,101 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.d1#DatabaseUpdateResponseJurisdiction": {
+      "type": "enum",
+      "members": {
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu"
+          }
+        },
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.d1#DatabaseUpdateResponseReadReplicationMode": {
+      "type": "enum",
+      "members": {
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.d1#DatabaseUpdateResponseReadReplication": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.d1#DatabaseUpdateResponseReadReplicationMode",
+          "traits": {
+            "smithy.api#documentation": "The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.d1#DatabaseUpdateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "created_at": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Specifies the timestamp the resource was created as an ISO8601 string."
           }
+        },
+        "file_size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The D1 database's size, in bytes."
+          }
+        },
+        "jurisdiction": {
+          "target": "com.cloudflare.d1#DatabaseUpdateResponseJurisdiction",
+          "traits": {
+            "smithy.api#documentation": "Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "D1 database name."
+          }
+        },
+        "num_tables": {
+          "target": "smithy.api#Double"
+        },
+        "read_replication": {
+          "target": "com.cloudflare.d1#DatabaseUpdateResponseReadReplication",
+          "traits": {
+            "smithy.api#documentation": "Configuration for D1 read replication."
+          }
+        },
+        "uuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "D1 database identifier (UUID)."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.d1#DatabaseUpdate": {

@@ -401,10 +401,99 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.rules#ListsListResultItemKind": {
+      "type": "enum",
+      "members": {
+        "IP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip"
+          }
+        },
+        "REDIRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "redirect"
+          }
+        },
+        "HOSTNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hostname"
+          }
+        },
+        "ASN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asn"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rules#ListsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the list.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The RFC 3339 timestamp of when the list was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.cloudflare.rules#ListsListResultItemKind",
+          "traits": {
+            "smithy.api#documentation": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The RFC 3339 timestamp of when the list was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative name for the list. Use this name in filter and rule expressions.",
+            "smithy.api#required": {}
+          }
+        },
+        "num_items": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of items in the list.",
+            "smithy.api#required": {}
+          }
+        },
+        "num_referencing_filters": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of [filters](/api/resources/filters/) referencing the list.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative summary of the list."
+          }
+        }
+      }
+    },
     "com.cloudflare.rules#ListsListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.rules#ListsListResultItem"
       }
     },
     "com.cloudflare.rules#ListsListResponse": {

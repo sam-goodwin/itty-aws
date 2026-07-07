@@ -72,6 +72,26 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.hostnames#SettingsTlsDeleteResponseValue": {
+      "type": "structure",
+      "members": {
+        "_1_0__or__1_1__or__1_2__or_3_more": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "\"1.0\" or \"1.1\" or \"1.2\" or 3 more"
+          }
+        },
+        "array_of_string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of string"
+          }
+        }
+      }
+    },
     "com.cloudflare.hostnames#SettingsTlsDeleteResponse": {
       "type": "structure",
       "members": {
@@ -100,7 +120,7 @@
           }
         },
         "value": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.hostnames#SettingsTlsDeleteResponseValue",
           "traits": {
             "smithy.api#documentation": "The TLS setting value."
           }
@@ -176,6 +196,26 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.hostnames#SettingsTlsGetResultItemValue": {
+      "type": "structure",
+      "members": {
+        "_1_0__or__1_1__or__1_2__or_3_more": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "\"1.0\" or \"1.1\" or \"1.2\" or 3 more"
+          }
+        },
+        "array_of_string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of string"
+          }
+        }
+      }
+    },
     "com.cloudflare.hostnames#SettingsTlsGetResultItem": {
       "type": "structure",
       "members": {
@@ -204,7 +244,7 @@
           }
         },
         "value": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.hostnames#SettingsTlsGetResultItemValue",
           "traits": {
             "smithy.api#documentation": "The TLS setting value."
           }
@@ -273,6 +313,26 @@
         }
       }
     },
+    "com.cloudflare.hostnames#SettingsTlsUpdateRequestValue": {
+      "type": "structure",
+      "members": {
+        "_1_0__or__1_1__or__1_2__or_3_more": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "\"1.0\" or \"1.1\" or \"1.2\" or 3 more"
+          }
+        },
+        "array_of_string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of string"
+          }
+        }
+      }
+    },
     "com.cloudflare.hostnames#SettingsTlsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -301,7 +361,7 @@
           }
         },
         "value": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.hostnames#SettingsTlsUpdateRequestValue",
           "traits": {
             "smithy.api#documentation": "The TLS setting value.",
             "smithy.api#required": {}
@@ -312,19 +372,63 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.hostnames#SettingsTlsUpdateResponseValue": {
+      "type": "structure",
+      "members": {
+        "_1_0__or__1_1__or__1_2__or_3_more": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "\"1.0\" or \"1.1\" or \"1.2\" or 3 more"
+          }
+        },
+        "array_of_string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of string"
+          }
+        }
+      }
+    },
     "com.cloudflare.hostnames#SettingsTlsUpdateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "created_at": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "This is the time the tls setting was originally created for this hostname."
+          }
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hostname for which the tls settings are set."
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deployment status for the given tls setting."
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the time the tls setting was updated."
+          }
+        },
+        "value": {
+          "target": "com.cloudflare.hostnames#SettingsTlsUpdateResponseValue",
+          "traits": {
+            "smithy.api#documentation": "The TLS setting value."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.hostnames#SettingsTlsUpdate": {

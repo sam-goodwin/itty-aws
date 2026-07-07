@@ -479,6 +479,43 @@
         }
       }
     },
+    "com.cloudflare.flagship#AppsEvaluateGetResponseValue": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "boolean": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "map_unknown_": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "map[unknown]"
+          }
+        },
+        "array_of_unknown": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of unknown"
+          }
+        }
+      }
+    },
     "com.cloudflare.flagship#AppsEvaluateGetResponse": {
       "type": "structure",
       "members": {
@@ -501,7 +538,7 @@
           }
         },
         "value": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.flagship#AppsEvaluateGetResponseValue"
         }
       },
       "traits": {

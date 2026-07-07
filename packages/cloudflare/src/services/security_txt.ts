@@ -10,11 +10,12 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface DeleteRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -30,11 +31,12 @@ export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
 
 export interface GetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -84,7 +86,7 @@ export interface GetResponse {
   expires?: string;
   hiring?: GetResponseHiringList;
   policy?: GetResponsePolicyList;
-  preferred_languages?: string;
+  preferredLanguages?: string;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -96,7 +98,9 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     expires: S.optional(S.String),
     hiring: S.optional(GetResponseHiringList),
     policy: S.optional(GetResponsePolicyList),
-    preferred_languages: S.optional(S.String),
+    preferredLanguages: S.optional(
+      S.String.pipe(T.Body("preferred_languages")),
+    ),
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
@@ -131,7 +135,8 @@ export const UpdateRequestPolicyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateRequestPolicyList>;
 
 export interface UpdateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
   acknowledgments?: UpdateRequestAcknowledgmentsList;
   canonical?: UpdateRequestCanonicalList;
   contact?: UpdateRequestContactList;
@@ -140,11 +145,11 @@ export interface UpdateRequest {
   expires?: string;
   hiring?: UpdateRequestHiringList;
   policy?: UpdateRequestPolicyList;
-  preferred_languages?: string;
+  preferredLanguages?: string;
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     acknowledgments: S.optional(UpdateRequestAcknowledgmentsList),
     canonical: S.optional(UpdateRequestCanonicalList),
     contact: S.optional(UpdateRequestContactList),
@@ -153,7 +158,9 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
     expires: S.optional(S.String),
     hiring: S.optional(UpdateRequestHiringList),
     policy: S.optional(UpdateRequestPolicyList),
-    preferred_languages: S.optional(S.String),
+    preferredLanguages: S.optional(
+      S.String.pipe(T.Body("preferred_languages")),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -168,11 +175,12 @@ export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
+export type DeleteError = CloudflareOpError;
 /** Removes the security.txt file configuration for a zone. The /.well-known/security.txt endpoint will no longer be served. */
 export const Delete: API.OperationMethod<
   DeleteRequest,
   DeleteResponse,
-  CloudflareOpError,
+  DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequest,
@@ -181,11 +189,12 @@ export const Delete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Retrieves the current security.txt file configuration for a zone, used for security vulnerability reporting. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -194,11 +203,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UpdateError = CloudflareOpError;
 /** Updates the security.txt file configuration for a zone, which provides security researchers with vulnerability reporting information. */
-export const Update: API.OperationMethod<
+export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,
-  CloudflareOpError,
+  UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,

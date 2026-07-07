@@ -36,16 +36,38 @@
     "com.cloudflare.bot_management#GetResponse": {
       "type": "structure",
       "members": {
-        "result": {
+        "BotFightModeConfiguration_object___ai_bots_protection__cf_robots_variant__content_bots_protection__6_more__": {
           "target": "smithy.api#Document",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BotFightModeConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 6 more }"
+          }
+        },
+        "SuperBotFightModeDefinitelyConfiguration_object___ai_bots_protection__cf_robots_variant__content_bots_protection__9_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SuperBotFightModeDefinitelyConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 9 more }"
+          }
+        },
+        "SuperBotFightModeLikelyConfiguration_object___ai_bots_protection__cf_robots_variant__content_bots_protection__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SuperBotFightModeLikelyConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 10 more }"
+          }
+        },
+        "SubscriptionConfiguration_object___ai_bots_protection__auto_update_model__bm_cookie_enabled__8_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SubscriptionConfiguration object { ai_bots_protection, auto_update_model, bm_cookie_enabled, 8 more }"
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.bot_management#Get": {
@@ -66,6 +88,39 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.bot_management#UpdateRequestBody": {
+      "type": "structure",
+      "members": {
+        "BotFightModeConfiguration_object___ai_bots_protection__cf_robots_variant__content_bots_protection__6_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BotFightModeConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 6 more }"
+          }
+        },
+        "SuperBotFightModeDefinitelyConfiguration_object___ai_bots_protection__cf_robots_variant__content_bots_protection__9_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SuperBotFightModeDefinitelyConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 9 more }"
+          }
+        },
+        "SuperBotFightModeLikelyConfiguration_object___ai_bots_protection__cf_robots_variant__content_bots_protection__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SuperBotFightModeLikelyConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 10 more }"
+          }
+        },
+        "SubscriptionConfiguration_object___ai_bots_protection__auto_update_model__bm_cookie_enabled__8_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SubscriptionConfiguration object { ai_bots_protection, auto_update_model, bm_cookie_enabled, 8 more }"
+          }
+        }
+      }
+    },
     "com.cloudflare.bot_management#UpdateRequest": {
       "type": "structure",
       "members": {
@@ -78,7 +133,7 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.bot_management#UpdateRequestBody",
           "traits": {
             "smithy.api#required": {}
           }
@@ -91,16 +146,38 @@
     "com.cloudflare.bot_management#UpdateResponse": {
       "type": "structure",
       "members": {
-        "result": {
+        "BotFightModeConfiguration_object___ai_bots_protection__cf_robots_variant__content_bots_protection__6_more__": {
           "target": "smithy.api#Document",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BotFightModeConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 6 more }"
+          }
+        },
+        "SuperBotFightModeDefinitelyConfiguration_object___ai_bots_protection__cf_robots_variant__content_bots_protection__9_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SuperBotFightModeDefinitelyConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 9 more }"
+          }
+        },
+        "SuperBotFightModeLikelyConfiguration_object___ai_bots_protection__cf_robots_variant__content_bots_protection__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SuperBotFightModeLikelyConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 10 more }"
+          }
+        },
+        "SubscriptionConfiguration_object___ai_bots_protection__auto_update_model__bm_cookie_enabled__8_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SubscriptionConfiguration object { ai_bots_protection, auto_update_model, bm_cookie_enabled, 8 more }"
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.bot_management#Update": {
@@ -119,6 +196,23 @@
         },
         "smithy.api#documentation": "Updates the Bot Management configuration for a zone. This API is used to update: - **Bot Fight Mode** - **Super Bot Fight Mode** - **Bot Management for Enterprise** See [Bot Plans](https://developers.cloudflare.com/bots/plans/) for more information on the different plans \\ If you recently upgraded or downgraded your plan, refer to the following examples to clean up old configurations. Copy and paste the example body to remove old zone configurations based on your current plan. #### Clean up configuration for Bot Fight Mode plan ```json { \"sbfm_likely_automated\": \"allow\", \"sbfm_definitely_automated\": \"allow\", \"sbfm_verified_bots\": \"allow\", \"sbfm_static_resource_protection\": false, \"optimize_wordpress\": false, \"suppress_session_score\": false } ``` #### Clean up configuration for SBFM Pro plan ```json { \"sbfm_likely_automated\": \"allow\", \"fight_mode\": false } ``` #### Clean up configuration for SBFM Biz plan ```json { \"fight_mode\": false } ``` #### Clean up configuration for BM Enterprise Subscription plan It is strongly recommended that you ensure you have [custom rules](https://developers.cloudflare.com/waf/custom-rules/) in place to protect your zone before disabling the SBFM rules. Without these protections, your zone is vulnerable to attacks. ```json { \"sbfm_likely_automated\": \"allow\", \"sbfm_definitely_automated\": \"allow\", \"sbfm_verified_bots\": \"allow\", \"sbfm_static_resource_protection\": false, \"optimize_wordpress\": false, \"fight_mode\": false } ```",
         "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.bot_management#FeedbackCreateRequestRequestsByAttribute": {
+      "type": "structure",
+      "members": {
+        "metric": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "requests": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
       }
     },
     "com.cloudflare.bot_management#FeedbackCreateRequest": {
@@ -164,7 +258,7 @@
           }
         },
         "requests_by_attribute": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.bot_management#FeedbackCreateRequestRequestsByAttribute",
           "traits": {
             "smithy.api#documentation": "Top attributes contributing to the feedback sample. Keys include topASNs, topCountries, topHosts, topIPs, topJA3Hashes, topJA4s, topPaths, topUserAgents.",
             "smithy.api#required": {}
@@ -232,6 +326,23 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.bot_management#FeedbackListResponseRequestsByAttribute": {
+      "type": "structure",
+      "members": {
+        "metric": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "requests": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.bot_management#FeedbackListResponse": {
       "type": "structure",
       "members": {
@@ -267,7 +378,7 @@
           }
         },
         "requests_by_attribute": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.bot_management#FeedbackListResponseRequestsByAttribute",
           "traits": {
             "smithy.api#documentation": "Top attributes contributing to the feedback sample. Keys include topASNs, topCountries, topHosts, topIPs, topJA3Hashes, topJA4s, topPaths, topUserAgents.",
             "smithy.api#required": {}

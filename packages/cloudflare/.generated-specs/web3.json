@@ -82,19 +82,107 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.web3#HostnamesCreateResponseStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "DELETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleting"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        }
+      }
+    },
+    "com.cloudflare.web3#HostnamesCreateResponseTarget": {
+      "type": "enum",
+      "members": {
+        "ETHEREUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ethereum"
+          }
+        },
+        "IPFS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipfs"
+          }
+        },
+        "IPFS_UNIVERSAL_PATH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipfs_universal_path"
+          }
+        }
+      }
+    },
     "com.cloudflare.web3#HostnamesCreateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Specify the identifier of the hostname."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String"
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specify an optional description of the hostname."
+          }
+        },
+        "dnslink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specify the DNSLink value used if the target is ipfs."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specify the hostname that points to the target gateway via CNAME."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.web3#HostnamesCreateResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "Specifies the status of the hostname's activation."
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.web3#HostnamesCreateResponseTarget",
+          "traits": {
+            "smithy.api#documentation": "Specify the target gateway of the hostname."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.web3#HostnamesCreate": {
@@ -208,19 +296,107 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.web3#HostnamesEditResponseStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "DELETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleting"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        }
+      }
+    },
+    "com.cloudflare.web3#HostnamesEditResponseTarget": {
+      "type": "enum",
+      "members": {
+        "ETHEREUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ethereum"
+          }
+        },
+        "IPFS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipfs"
+          }
+        },
+        "IPFS_UNIVERSAL_PATH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipfs_universal_path"
+          }
+        }
+      }
+    },
     "com.cloudflare.web3#HostnamesEditResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Specify the identifier of the hostname."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String"
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specify an optional description of the hostname."
+          }
+        },
+        "dnslink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specify the DNSLink value used if the target is ipfs."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specify the hostname that points to the target gateway via CNAME."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.web3#HostnamesEditResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "Specifies the status of the hostname's activation."
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.web3#HostnamesEditResponseTarget",
+          "traits": {
+            "smithy.api#documentation": "Specify the target gateway of the hostname."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.web3#HostnamesEdit": {
@@ -264,19 +440,107 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.web3#HostnamesGetResponseStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "DELETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleting"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        }
+      }
+    },
+    "com.cloudflare.web3#HostnamesGetResponseTarget": {
+      "type": "enum",
+      "members": {
+        "ETHEREUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ethereum"
+          }
+        },
+        "IPFS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipfs"
+          }
+        },
+        "IPFS_UNIVERSAL_PATH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipfs_universal_path"
+          }
+        }
+      }
+    },
     "com.cloudflare.web3#HostnamesGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Specify the identifier of the hostname."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String"
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specify an optional description of the hostname."
+          }
+        },
+        "dnslink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specify the DNSLink value used if the target is ipfs."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specify the hostname that points to the target gateway via CNAME."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.web3#HostnamesGetResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "Specifies the status of the hostname's activation."
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.web3#HostnamesGetResponseTarget",
+          "traits": {
+            "smithy.api#documentation": "Specify the target gateway of the hostname."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.web3#HostnamesGet": {
@@ -313,10 +577,109 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.web3#HostnamesListResultItemStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "DELETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleting"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        }
+      }
+    },
+    "com.cloudflare.web3#HostnamesListResultItemTarget": {
+      "type": "enum",
+      "members": {
+        "ETHEREUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ethereum"
+          }
+        },
+        "IPFS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipfs"
+          }
+        },
+        "IPFS_UNIVERSAL_PATH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ipfs_universal_path"
+          }
+        }
+      }
+    },
+    "com.cloudflare.web3#HostnamesListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specify the identifier of the hostname."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String"
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specify an optional description of the hostname."
+          }
+        },
+        "dnslink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specify the DNSLink value used if the target is ipfs."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specify the hostname that points to the target gateway via CNAME."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.web3#HostnamesListResultItemStatus",
+          "traits": {
+            "smithy.api#documentation": "Specifies the status of the hostname's activation."
+          }
+        },
+        "target": {
+          "target": "com.cloudflare.web3#HostnamesListResultItemTarget",
+          "traits": {
+            "smithy.api#documentation": "Specify the target gateway of the hostname."
+          }
+        }
+      }
+    },
     "com.cloudflare.web3#HostnamesListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.web3#HostnamesListResultItem"
       }
     },
     "com.cloudflare.web3#HostnamesListResponse": {
@@ -376,19 +739,30 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.web3#HostnamesIpfsUniversalPathsContentListsGetResponseAction": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        }
+      }
+    },
     "com.cloudflare.web3#HostnamesIpfsUniversalPathsContentListsGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "action": {
+          "target": "com.cloudflare.web3#HostnamesIpfsUniversalPathsContentListsGetResponseAction",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Behavior of the content list."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.web3#HostnamesIpfsUniversalPathsContentListsGet": {
@@ -516,19 +890,30 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.web3#HostnamesIpfsUniversalPathsContentListsUpdateResponseAction": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        }
+      }
+    },
     "com.cloudflare.web3#HostnamesIpfsUniversalPathsContentListsUpdateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "action": {
+          "target": "com.cloudflare.web3#HostnamesIpfsUniversalPathsContentListsUpdateResponseAction",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Behavior of the content list."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.web3#HostnamesIpfsUniversalPathsContentListsUpdate": {

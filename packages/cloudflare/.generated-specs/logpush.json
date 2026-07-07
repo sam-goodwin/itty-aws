@@ -156,10 +156,349 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.logpush#DatasetsJobsGetResultItemDataset": {
+      "type": "enum",
+      "members": {
+        "ACCESS_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_requests"
+          }
+        },
+        "AUDIT_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audit_logs"
+          }
+        },
+        "AUDIT_LOGS_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audit_logs_v2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#DatasetsJobsGetResultItemFrequency": {
+      "type": "enum",
+      "members": {
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        },
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#DatasetsJobsGetResultItemKind": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        },
+        "EDGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "edge"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#DatasetsJobsGetResultItemMaxUploadBytes": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#DatasetsJobsGetResultItemMaxUploadIntervalSeconds": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#DatasetsJobsGetResultItemMaxUploadRecords": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#DatasetsJobsGetResultItemOutputOptionsFieldNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.logpush#DatasetsJobsGetResultItemOutputOptionsOutputType": {
+      "type": "enum",
+      "members": {
+        "NDJSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ndjson"
+          }
+        },
+        "CSV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "csv"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#DatasetsJobsGetResultItemOutputOptionsTimestampFormat": {
+      "type": "enum",
+      "members": {
+        "UNIXNANO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unixnano"
+          }
+        },
+        "UNIX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unix"
+          }
+        },
+        "RFC3339": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#DatasetsJobsGetResultItemOutputOptions": {
+      "type": "structure",
+      "members": {
+        "batch_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be prepended before each batch."
+          }
+        },
+        "batch_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be appended after each batch."
+          }
+        },
+        "_CVE_2021_44228_": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+            "smithy.api#jsonName": "\"CVE-2021-44228\""
+          }
+        },
+        "field_delimiter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to join fields. This field be ignored when `record_template` is set."
+          }
+        },
+        "field_names": {
+          "target": "com.cloudflare.logpush#DatasetsJobsGetResultItemOutputOptionsFieldNamesList",
+          "traits": {
+            "smithy.api#documentation": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in."
+          }
+        },
+        "merge_subrequests": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset."
+          }
+        },
+        "output_type": {
+          "target": "com.cloudflare.logpush#DatasetsJobsGetResultItemOutputOptionsOutputType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types."
+          }
+        },
+        "record_delimiter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be inserted in-between the records as separator."
+          }
+        },
+        "record_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be prepended before each record."
+          }
+        },
+        "record_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be appended after each record."
+          }
+        },
+        "record_template": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc."
+          }
+        },
+        "sample_rate": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data."
+          }
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.logpush#DatasetsJobsGetResultItemOutputOptionsTimestampFormat",
+          "traits": {
+            "smithy.api#documentation": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`."
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#DatasetsJobsGetResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Unique id of the job."
+          }
+        },
+        "dataset": {
+          "target": "com.cloudflare.logpush#DatasetsJobsGetResultItemDataset",
+          "traits": {
+            "smithy.api#documentation": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/)."
+          }
+        },
+        "destination_conf": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag that indicates if the job is enabled."
+          }
+        },
+        "error_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null."
+          }
+        },
+        "frequency": {
+          "target": "com.cloudflare.logpush#DatasetsJobsGetResultItemFrequency",
+          "traits": {
+            "smithy.api#documentation": "This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files."
+          }
+        },
+        "kind": {
+          "target": "com.cloudflare.logpush#DatasetsJobsGetResultItemKind",
+          "traits": {
+            "smithy.api#documentation": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset)."
+          }
+        },
+        "last_complete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty."
+          }
+        },
+        "last_error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field."
+          }
+        },
+        "logpull_options": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately."
+          }
+        },
+        "max_upload_bytes": {
+          "target": "com.cloudflare.logpush#DatasetsJobsGetResultItemMaxUploadBytes",
+          "traits": {
+            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
+          }
+        },
+        "max_upload_interval_seconds": {
+          "target": "com.cloudflare.logpush#DatasetsJobsGetResultItemMaxUploadIntervalSeconds",
+          "traits": {
+            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
+          }
+        },
+        "max_upload_records": {
+          "target": "com.cloudflare.logpush#DatasetsJobsGetResultItemMaxUploadRecords",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job."
+          }
+        },
+        "output_options": {
+          "target": "com.cloudflare.logpush#DatasetsJobsGetResultItemOutputOptions",
+          "traits": {
+            "smithy.api#documentation": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored."
+          }
+        }
+      }
+    },
     "com.cloudflare.logpush#DatasetsJobsGetResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.logpush#DatasetsJobsGetResultItem"
       }
     },
     "com.cloudflare.logpush#DatasetsJobsGetResponse": {
@@ -232,16 +571,40 @@
     "com.cloudflare.logpush#EdgeCreateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "destination_conf": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Unique WebSocket address that will receive messages from Cloudflare’s edge."
+          }
+        },
+        "fields": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Comma-separated list of fields."
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filters to drill down into specific events."
+          }
+        },
+        "sample": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The sample parameter is the sample rate of the records set by the client: \"sample\": 1 is 100% of records \"sample\": 10 is 10% and so on."
+          }
+        },
+        "session_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique session id of the job."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.logpush#EdgeCreate": {
@@ -277,10 +640,45 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.logpush#EdgeGetResultItem": {
+      "type": "structure",
+      "members": {
+        "destination_conf": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique WebSocket address that will receive messages from Cloudflare’s edge."
+          }
+        },
+        "fields": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Comma-separated list of fields."
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filters to drill down into specific events."
+          }
+        },
+        "sample": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The sample parameter is the sample rate of the records set by the client: \"sample\": 1 is 100% of records \"sample\": 10 is 10% and so on."
+          }
+        },
+        "session_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique session id of the job."
+          }
+        }
+      }
+    },
     "com.cloudflare.logpush#EdgeGetResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.logpush#EdgeGetResultItem"
       }
     },
     "com.cloudflare.logpush#EdgeGetResponse": {
@@ -373,6 +771,193 @@
         }
       }
     },
+    "com.cloudflare.logpush#JobsCreateRequestMaxUploadBytes": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsCreateRequestMaxUploadIntervalSeconds": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsCreateRequestMaxUploadRecords": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsCreateRequestOutputOptionsFieldNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.logpush#JobsCreateRequestOutputOptionsOutputType": {
+      "type": "enum",
+      "members": {
+        "NDJSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ndjson"
+          }
+        },
+        "CSV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "csv"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsCreateRequestOutputOptionsTimestampFormat": {
+      "type": "enum",
+      "members": {
+        "UNIXNANO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unixnano"
+          }
+        },
+        "UNIX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unix"
+          }
+        },
+        "RFC3339": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsCreateRequestOutputOptions": {
+      "type": "structure",
+      "members": {
+        "batch_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be prepended before each batch."
+          }
+        },
+        "batch_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be appended after each batch."
+          }
+        },
+        "_CVE_2021_44228_": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+            "smithy.api#jsonName": "\"CVE-2021-44228\""
+          }
+        },
+        "field_delimiter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to join fields. This field be ignored when `record_template` is set."
+          }
+        },
+        "field_names": {
+          "target": "com.cloudflare.logpush#JobsCreateRequestOutputOptionsFieldNamesList",
+          "traits": {
+            "smithy.api#documentation": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in."
+          }
+        },
+        "merge_subrequests": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset."
+          }
+        },
+        "output_type": {
+          "target": "com.cloudflare.logpush#JobsCreateRequestOutputOptionsOutputType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types."
+          }
+        },
+        "record_delimiter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be inserted in-between the records as separator."
+          }
+        },
+        "record_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be prepended before each record."
+          }
+        },
+        "record_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be appended after each record."
+          }
+        },
+        "record_template": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc."
+          }
+        },
+        "sample_rate": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data."
+          }
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.logpush#JobsCreateRequestOutputOptionsTimestampFormat",
+          "traits": {
+            "smithy.api#documentation": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`."
+          }
+        }
+      }
+    },
     "com.cloudflare.logpush#JobsCreateRequest": {
       "type": "structure",
       "members": {
@@ -434,19 +1019,19 @@
           }
         },
         "max_upload_bytes": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.logpush#JobsCreateRequestMaxUploadBytes",
           "traits": {
             "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
           }
         },
         "max_upload_interval_seconds": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.logpush#JobsCreateRequestMaxUploadIntervalSeconds",
           "traits": {
             "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
           }
         },
         "max_upload_records": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.logpush#JobsCreateRequestMaxUploadRecords",
           "traits": {
             "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
           }
@@ -458,7 +1043,7 @@
           }
         },
         "output_options": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.logpush#JobsCreateRequestOutputOptions",
           "traits": {
             "smithy.api#documentation": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored."
           }
@@ -474,19 +1059,347 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.logpush#JobsCreateResponseDataset": {
+      "type": "enum",
+      "members": {
+        "ACCESS_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_requests"
+          }
+        },
+        "AUDIT_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audit_logs"
+          }
+        },
+        "AUDIT_LOGS_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audit_logs_v2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsCreateResponseFrequency": {
+      "type": "enum",
+      "members": {
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        },
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsCreateResponseKind": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        },
+        "EDGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "edge"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsCreateResponseMaxUploadBytes": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsCreateResponseMaxUploadIntervalSeconds": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsCreateResponseMaxUploadRecords": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsCreateResponseOutputOptionsFieldNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.logpush#JobsCreateResponseOutputOptionsOutputType": {
+      "type": "enum",
+      "members": {
+        "NDJSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ndjson"
+          }
+        },
+        "CSV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "csv"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsCreateResponseOutputOptionsTimestampFormat": {
+      "type": "enum",
+      "members": {
+        "UNIXNANO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unixnano"
+          }
+        },
+        "UNIX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unix"
+          }
+        },
+        "RFC3339": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsCreateResponseOutputOptions": {
+      "type": "structure",
+      "members": {
+        "batch_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be prepended before each batch."
+          }
+        },
+        "batch_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be appended after each batch."
+          }
+        },
+        "_CVE_2021_44228_": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+            "smithy.api#jsonName": "\"CVE-2021-44228\""
+          }
+        },
+        "field_delimiter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to join fields. This field be ignored when `record_template` is set."
+          }
+        },
+        "field_names": {
+          "target": "com.cloudflare.logpush#JobsCreateResponseOutputOptionsFieldNamesList",
+          "traits": {
+            "smithy.api#documentation": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in."
+          }
+        },
+        "merge_subrequests": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset."
+          }
+        },
+        "output_type": {
+          "target": "com.cloudflare.logpush#JobsCreateResponseOutputOptionsOutputType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types."
+          }
+        },
+        "record_delimiter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be inserted in-between the records as separator."
+          }
+        },
+        "record_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be prepended before each record."
+          }
+        },
+        "record_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be appended after each record."
+          }
+        },
+        "record_template": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc."
+          }
+        },
+        "sample_rate": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data."
+          }
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.logpush#JobsCreateResponseOutputOptionsTimestampFormat",
+          "traits": {
+            "smithy.api#documentation": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`."
+          }
+        }
+      }
+    },
     "com.cloudflare.logpush#JobsCreateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#Double",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Unique id of the job."
+          }
+        },
+        "dataset": {
+          "target": "com.cloudflare.logpush#JobsCreateResponseDataset",
+          "traits": {
+            "smithy.api#documentation": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/)."
+          }
+        },
+        "destination_conf": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag that indicates if the job is enabled."
+          }
+        },
+        "error_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null."
+          }
+        },
+        "frequency": {
+          "target": "com.cloudflare.logpush#JobsCreateResponseFrequency",
+          "traits": {
+            "smithy.api#documentation": "This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files."
+          }
+        },
+        "kind": {
+          "target": "com.cloudflare.logpush#JobsCreateResponseKind",
+          "traits": {
+            "smithy.api#documentation": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset)."
+          }
+        },
+        "last_complete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty."
+          }
+        },
+        "last_error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field."
+          }
+        },
+        "logpull_options": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately."
+          }
+        },
+        "max_upload_bytes": {
+          "target": "com.cloudflare.logpush#JobsCreateResponseMaxUploadBytes",
+          "traits": {
+            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
+          }
+        },
+        "max_upload_interval_seconds": {
+          "target": "com.cloudflare.logpush#JobsCreateResponseMaxUploadIntervalSeconds",
+          "traits": {
+            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
+          }
+        },
+        "max_upload_records": {
+          "target": "com.cloudflare.logpush#JobsCreateResponseMaxUploadRecords",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job."
+          }
+        },
+        "output_options": {
+          "target": "com.cloudflare.logpush#JobsCreateResponseOutputOptions",
+          "traits": {
+            "smithy.api#documentation": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.logpush#JobsCreate": {
@@ -599,19 +1512,347 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.logpush#JobsGetResponseDataset": {
+      "type": "enum",
+      "members": {
+        "ACCESS_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_requests"
+          }
+        },
+        "AUDIT_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audit_logs"
+          }
+        },
+        "AUDIT_LOGS_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audit_logs_v2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsGetResponseFrequency": {
+      "type": "enum",
+      "members": {
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        },
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsGetResponseKind": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        },
+        "EDGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "edge"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsGetResponseMaxUploadBytes": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsGetResponseMaxUploadIntervalSeconds": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsGetResponseMaxUploadRecords": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsGetResponseOutputOptionsFieldNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.logpush#JobsGetResponseOutputOptionsOutputType": {
+      "type": "enum",
+      "members": {
+        "NDJSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ndjson"
+          }
+        },
+        "CSV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "csv"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsGetResponseOutputOptionsTimestampFormat": {
+      "type": "enum",
+      "members": {
+        "UNIXNANO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unixnano"
+          }
+        },
+        "UNIX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unix"
+          }
+        },
+        "RFC3339": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsGetResponseOutputOptions": {
+      "type": "structure",
+      "members": {
+        "batch_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be prepended before each batch."
+          }
+        },
+        "batch_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be appended after each batch."
+          }
+        },
+        "_CVE_2021_44228_": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+            "smithy.api#jsonName": "\"CVE-2021-44228\""
+          }
+        },
+        "field_delimiter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to join fields. This field be ignored when `record_template` is set."
+          }
+        },
+        "field_names": {
+          "target": "com.cloudflare.logpush#JobsGetResponseOutputOptionsFieldNamesList",
+          "traits": {
+            "smithy.api#documentation": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in."
+          }
+        },
+        "merge_subrequests": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset."
+          }
+        },
+        "output_type": {
+          "target": "com.cloudflare.logpush#JobsGetResponseOutputOptionsOutputType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types."
+          }
+        },
+        "record_delimiter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be inserted in-between the records as separator."
+          }
+        },
+        "record_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be prepended before each record."
+          }
+        },
+        "record_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be appended after each record."
+          }
+        },
+        "record_template": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc."
+          }
+        },
+        "sample_rate": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data."
+          }
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.logpush#JobsGetResponseOutputOptionsTimestampFormat",
+          "traits": {
+            "smithy.api#documentation": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`."
+          }
+        }
+      }
+    },
     "com.cloudflare.logpush#JobsGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#Double",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Unique id of the job."
+          }
+        },
+        "dataset": {
+          "target": "com.cloudflare.logpush#JobsGetResponseDataset",
+          "traits": {
+            "smithy.api#documentation": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/)."
+          }
+        },
+        "destination_conf": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag that indicates if the job is enabled."
+          }
+        },
+        "error_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null."
+          }
+        },
+        "frequency": {
+          "target": "com.cloudflare.logpush#JobsGetResponseFrequency",
+          "traits": {
+            "smithy.api#documentation": "This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files."
+          }
+        },
+        "kind": {
+          "target": "com.cloudflare.logpush#JobsGetResponseKind",
+          "traits": {
+            "smithy.api#documentation": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset)."
+          }
+        },
+        "last_complete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty."
+          }
+        },
+        "last_error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field."
+          }
+        },
+        "logpull_options": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately."
+          }
+        },
+        "max_upload_bytes": {
+          "target": "com.cloudflare.logpush#JobsGetResponseMaxUploadBytes",
+          "traits": {
+            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
+          }
+        },
+        "max_upload_interval_seconds": {
+          "target": "com.cloudflare.logpush#JobsGetResponseMaxUploadIntervalSeconds",
+          "traits": {
+            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
+          }
+        },
+        "max_upload_records": {
+          "target": "com.cloudflare.logpush#JobsGetResponseMaxUploadRecords",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job."
+          }
+        },
+        "output_options": {
+          "target": "com.cloudflare.logpush#JobsGetResponseOutputOptions",
+          "traits": {
+            "smithy.api#documentation": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.logpush#JobsGet": {
@@ -654,10 +1895,349 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.logpush#JobsListResultItemDataset": {
+      "type": "enum",
+      "members": {
+        "ACCESS_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_requests"
+          }
+        },
+        "AUDIT_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audit_logs"
+          }
+        },
+        "AUDIT_LOGS_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audit_logs_v2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsListResultItemFrequency": {
+      "type": "enum",
+      "members": {
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        },
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsListResultItemKind": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        },
+        "EDGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "edge"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsListResultItemMaxUploadBytes": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsListResultItemMaxUploadIntervalSeconds": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsListResultItemMaxUploadRecords": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsListResultItemOutputOptionsFieldNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.logpush#JobsListResultItemOutputOptionsOutputType": {
+      "type": "enum",
+      "members": {
+        "NDJSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ndjson"
+          }
+        },
+        "CSV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "csv"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsListResultItemOutputOptionsTimestampFormat": {
+      "type": "enum",
+      "members": {
+        "UNIXNANO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unixnano"
+          }
+        },
+        "UNIX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unix"
+          }
+        },
+        "RFC3339": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsListResultItemOutputOptions": {
+      "type": "structure",
+      "members": {
+        "batch_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be prepended before each batch."
+          }
+        },
+        "batch_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be appended after each batch."
+          }
+        },
+        "_CVE_2021_44228_": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+            "smithy.api#jsonName": "\"CVE-2021-44228\""
+          }
+        },
+        "field_delimiter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to join fields. This field be ignored when `record_template` is set."
+          }
+        },
+        "field_names": {
+          "target": "com.cloudflare.logpush#JobsListResultItemOutputOptionsFieldNamesList",
+          "traits": {
+            "smithy.api#documentation": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in."
+          }
+        },
+        "merge_subrequests": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset."
+          }
+        },
+        "output_type": {
+          "target": "com.cloudflare.logpush#JobsListResultItemOutputOptionsOutputType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types."
+          }
+        },
+        "record_delimiter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be inserted in-between the records as separator."
+          }
+        },
+        "record_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be prepended before each record."
+          }
+        },
+        "record_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be appended after each record."
+          }
+        },
+        "record_template": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc."
+          }
+        },
+        "sample_rate": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data."
+          }
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.logpush#JobsListResultItemOutputOptionsTimestampFormat",
+          "traits": {
+            "smithy.api#documentation": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`."
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Unique id of the job."
+          }
+        },
+        "dataset": {
+          "target": "com.cloudflare.logpush#JobsListResultItemDataset",
+          "traits": {
+            "smithy.api#documentation": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/)."
+          }
+        },
+        "destination_conf": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag that indicates if the job is enabled."
+          }
+        },
+        "error_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null."
+          }
+        },
+        "frequency": {
+          "target": "com.cloudflare.logpush#JobsListResultItemFrequency",
+          "traits": {
+            "smithy.api#documentation": "This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files."
+          }
+        },
+        "kind": {
+          "target": "com.cloudflare.logpush#JobsListResultItemKind",
+          "traits": {
+            "smithy.api#documentation": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset)."
+          }
+        },
+        "last_complete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty."
+          }
+        },
+        "last_error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field."
+          }
+        },
+        "logpull_options": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately."
+          }
+        },
+        "max_upload_bytes": {
+          "target": "com.cloudflare.logpush#JobsListResultItemMaxUploadBytes",
+          "traits": {
+            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
+          }
+        },
+        "max_upload_interval_seconds": {
+          "target": "com.cloudflare.logpush#JobsListResultItemMaxUploadIntervalSeconds",
+          "traits": {
+            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
+          }
+        },
+        "max_upload_records": {
+          "target": "com.cloudflare.logpush#JobsListResultItemMaxUploadRecords",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job."
+          }
+        },
+        "output_options": {
+          "target": "com.cloudflare.logpush#JobsListResultItemOutputOptions",
+          "traits": {
+            "smithy.api#documentation": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored."
+          }
+        }
+      }
+    },
     "com.cloudflare.logpush#JobsListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.logpush#JobsListResultItem"
       }
     },
     "com.cloudflare.logpush#JobsListResponse": {
@@ -727,6 +2307,193 @@
         }
       }
     },
+    "com.cloudflare.logpush#JobsUpdateRequestMaxUploadBytes": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsUpdateRequestMaxUploadIntervalSeconds": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsUpdateRequestMaxUploadRecords": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsUpdateRequestOutputOptionsFieldNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.logpush#JobsUpdateRequestOutputOptionsOutputType": {
+      "type": "enum",
+      "members": {
+        "NDJSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ndjson"
+          }
+        },
+        "CSV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "csv"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsUpdateRequestOutputOptionsTimestampFormat": {
+      "type": "enum",
+      "members": {
+        "UNIXNANO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unixnano"
+          }
+        },
+        "UNIX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unix"
+          }
+        },
+        "RFC3339": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsUpdateRequestOutputOptions": {
+      "type": "structure",
+      "members": {
+        "batch_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be prepended before each batch."
+          }
+        },
+        "batch_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be appended after each batch."
+          }
+        },
+        "_CVE_2021_44228_": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+            "smithy.api#jsonName": "\"CVE-2021-44228\""
+          }
+        },
+        "field_delimiter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to join fields. This field be ignored when `record_template` is set."
+          }
+        },
+        "field_names": {
+          "target": "com.cloudflare.logpush#JobsUpdateRequestOutputOptionsFieldNamesList",
+          "traits": {
+            "smithy.api#documentation": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in."
+          }
+        },
+        "merge_subrequests": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset."
+          }
+        },
+        "output_type": {
+          "target": "com.cloudflare.logpush#JobsUpdateRequestOutputOptionsOutputType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types."
+          }
+        },
+        "record_delimiter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be inserted in-between the records as separator."
+          }
+        },
+        "record_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be prepended before each record."
+          }
+        },
+        "record_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be appended after each record."
+          }
+        },
+        "record_template": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc."
+          }
+        },
+        "sample_rate": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data."
+          }
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.logpush#JobsUpdateRequestOutputOptionsTimestampFormat",
+          "traits": {
+            "smithy.api#documentation": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`."
+          }
+        }
+      }
+    },
     "com.cloudflare.logpush#JobsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -789,19 +2556,19 @@
           }
         },
         "max_upload_bytes": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.logpush#JobsUpdateRequestMaxUploadBytes",
           "traits": {
             "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
           }
         },
         "max_upload_interval_seconds": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.logpush#JobsUpdateRequestMaxUploadIntervalSeconds",
           "traits": {
             "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
           }
         },
         "max_upload_records": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.logpush#JobsUpdateRequestMaxUploadRecords",
           "traits": {
             "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
           }
@@ -813,7 +2580,7 @@
           }
         },
         "output_options": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.logpush#JobsUpdateRequestOutputOptions",
           "traits": {
             "smithy.api#documentation": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored."
           }
@@ -829,19 +2596,347 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.logpush#JobsUpdateResponseDataset": {
+      "type": "enum",
+      "members": {
+        "ACCESS_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_requests"
+          }
+        },
+        "AUDIT_LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audit_logs"
+          }
+        },
+        "AUDIT_LOGS_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audit_logs_v2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsUpdateResponseFrequency": {
+      "type": "enum",
+      "members": {
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        },
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsUpdateResponseKind": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        },
+        "EDGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "edge"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsUpdateResponseMaxUploadBytes": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsUpdateResponseMaxUploadIntervalSeconds": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsUpdateResponseMaxUploadRecords": {
+      "type": "structure",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "0"
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsUpdateResponseOutputOptionsFieldNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.logpush#JobsUpdateResponseOutputOptionsOutputType": {
+      "type": "enum",
+      "members": {
+        "NDJSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ndjson"
+          }
+        },
+        "CSV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "csv"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsUpdateResponseOutputOptionsTimestampFormat": {
+      "type": "enum",
+      "members": {
+        "UNIXNANO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unixnano"
+          }
+        },
+        "UNIX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unix"
+          }
+        },
+        "RFC3339": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rfc3339"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logpush#JobsUpdateResponseOutputOptions": {
+      "type": "structure",
+      "members": {
+        "batch_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be prepended before each batch."
+          }
+        },
+        "batch_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be appended after each batch."
+          }
+        },
+        "_CVE_2021_44228_": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+            "smithy.api#jsonName": "\"CVE-2021-44228\""
+          }
+        },
+        "field_delimiter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to join fields. This field be ignored when `record_template` is set."
+          }
+        },
+        "field_names": {
+          "target": "com.cloudflare.logpush#JobsUpdateResponseOutputOptionsFieldNamesList",
+          "traits": {
+            "smithy.api#documentation": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in."
+          }
+        },
+        "merge_subrequests": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset."
+          }
+        },
+        "output_type": {
+          "target": "com.cloudflare.logpush#JobsUpdateResponseOutputOptionsOutputType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types."
+          }
+        },
+        "record_delimiter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be inserted in-between the records as separator."
+          }
+        },
+        "record_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be prepended before each record."
+          }
+        },
+        "record_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to be appended after each record."
+          }
+        },
+        "record_template": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc."
+          }
+        },
+        "sample_rate": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data."
+          }
+        },
+        "timestamp_format": {
+          "target": "com.cloudflare.logpush#JobsUpdateResponseOutputOptionsTimestampFormat",
+          "traits": {
+            "smithy.api#documentation": "String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`."
+          }
+        }
+      }
+    },
     "com.cloudflare.logpush#JobsUpdateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#Double",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Unique id of the job."
+          }
+        },
+        "dataset": {
+          "target": "com.cloudflare.logpush#JobsUpdateResponseDataset",
+          "traits": {
+            "smithy.api#documentation": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/)."
+          }
+        },
+        "destination_conf": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag that indicates if the job is enabled."
+          }
+        },
+        "error_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null."
+          }
+        },
+        "frequency": {
+          "target": "com.cloudflare.logpush#JobsUpdateResponseFrequency",
+          "traits": {
+            "smithy.api#documentation": "This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files."
+          }
+        },
+        "kind": {
+          "target": "com.cloudflare.logpush#JobsUpdateResponseKind",
+          "traits": {
+            "smithy.api#documentation": "The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset)."
+          }
+        },
+        "last_complete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty."
+          }
+        },
+        "last_error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field."
+          }
+        },
+        "logpull_options": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately."
+          }
+        },
+        "max_upload_bytes": {
+          "target": "com.cloudflare.logpush#JobsUpdateResponseMaxUploadBytes",
+          "traits": {
+            "smithy.api#documentation": "The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size."
+          }
+        },
+        "max_upload_interval_seconds": {
+          "target": "com.cloudflare.logpush#JobsUpdateResponseMaxUploadIntervalSeconds",
+          "traits": {
+            "smithy.api#documentation": "The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this."
+          }
+        },
+        "max_upload_records": {
+          "target": "com.cloudflare.logpush#JobsUpdateResponseMaxUploadRecords",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job."
+          }
+        },
+        "output_options": {
+          "target": "com.cloudflare.logpush#JobsUpdateResponseOutputOptions",
+          "traits": {
+            "smithy.api#documentation": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.logpush#JobsUpdate": {
@@ -965,16 +3060,13 @@
     "com.cloudflare.logpush#OwnershipValidateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
-          }
+        "valid": {
+          "target": "smithy.api#Boolean"
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.logpush#OwnershipValidate": {

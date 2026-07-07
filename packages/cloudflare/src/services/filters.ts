@@ -15,12 +15,13 @@ export const BulkDeleteRequestIdList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BulkDeleteRequestIdList>;
 
 export interface BulkDeleteRequest {
-  zone_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
   id: BulkDeleteRequestIdList;
 }
 export const BulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     id: BulkDeleteRequestIdList.pipe(T.Query()),
   }).pipe(
     T.Http({ method: "DELETE", uri: "/zones/{zone_id}/filters", code: 200 }),
@@ -30,6 +31,7 @@ export const BulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkDeleteRequest>;
 
 export interface BulkDeleteResultItem {
+  /** The unique identifier of the filter. */
   id?: string;
 }
 export const BulkDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -46,6 +48,7 @@ export const BulkDeleteResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BulkDeleteResultList>;
 
 export interface BulkDeleteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: BulkDeleteResultList;
 }
 export const BulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -57,10 +60,15 @@ export const BulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkDeleteResponse>;
 
 export interface BulkUpdateRequestBodyItem {
+  /** The unique identifier of the filter. */
   id?: string;
+  /** An informative summary of the filter. */
   description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
   expression?: string;
+  /** When true, indicates that the filter is currently paused. */
   paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
   ref?: string;
 }
 export const BulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
@@ -81,12 +89,13 @@ export const BulkUpdateRequestBodyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BulkUpdateRequestBodyList>;
 
 export interface BulkUpdateRequest {
-  zone_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
   body: BulkUpdateRequestBodyList;
 }
 export const BulkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     body: BulkUpdateRequestBodyList,
   }).pipe(
     T.Http({ method: "PUT", uri: "/zones/{zone_id}/filters", code: 200 }),
@@ -95,12 +104,37 @@ export const BulkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateRequest",
 }) as any as S.Schema<BulkUpdateRequest>;
 
-export type BulkUpdateResultList = unknown[];
+export interface BulkUpdateResultItem {
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+}
+export const BulkUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BulkUpdateResultItem",
+}) as any as S.Schema<BulkUpdateResultItem>;
+
+export type BulkUpdateResultList = BulkUpdateResultItem[];
 export const BulkUpdateResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  BulkUpdateResultItem,
 ) as any as S.Schema<BulkUpdateResultList>;
 
 export interface BulkUpdateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: BulkUpdateResultList;
 }
 export const BulkUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -111,30 +145,80 @@ export const BulkUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateResponse",
 }) as any as S.Schema<BulkUpdateResponse>;
 
-export type CreateRequestBodyList = unknown[];
+export interface CreateRequestBodyItem {
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+}
+export const CreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateRequestBodyItem",
+}) as any as S.Schema<CreateRequestBodyItem>;
+
+export type CreateRequestBodyList = CreateRequestBodyItem[];
 export const CreateRequestBodyList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  CreateRequestBodyItem,
 ) as any as S.Schema<CreateRequestBodyList>;
 
 export interface CreateRequest {
-  zone_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
   body: CreateRequestBodyList;
 }
 export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     body: CreateRequestBodyList,
   }).pipe(
     T.Http({ method: "POST", uri: "/zones/{zone_id}/filters", code: 200 }),
   ),
 ).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
 
-export type CreateResultList = unknown[];
+export interface CreateResultItem {
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+}
+export const CreateResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateResultItem",
+}) as any as S.Schema<CreateResultItem>;
+
+export type CreateResultList = CreateResultItem[];
 export const CreateResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  CreateResultItem,
 ) as any as S.Schema<CreateResultList>;
 
 export interface CreateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: CreateResultList;
 }
 export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -144,13 +228,15 @@ export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
 
 export interface DeleteRequest {
-  zone_id: string;
-  filter_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The unique identifier of the filter. */
+  filterId: string;
 }
 export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    filter_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    filterId: S.String.pipe(T.Label("filter_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -162,6 +248,7 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteResponse {
+  /** The unique identifier of the filter. */
   id: string;
 }
 export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -171,13 +258,15 @@ export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
 
 export interface GetRequest {
-  zone_id: string;
-  filter_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The unique identifier of the filter. */
+  filterId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    filter_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    filterId: S.String.pipe(T.Label("filter_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -187,46 +276,91 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
-  result?: unknown;
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
 export interface ListRequest {
-  zone_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The unique identifier of the filter. */
   id?: string;
+  /** A case-insensitive string to find in the description. */
   description?: string;
+  /** A case-insensitive string to find in the expression. */
   expression?: string;
+  /** Page number of paginated results. */
   page?: number;
+  /** When true, indicates that the filter is currently paused. */
   paused?: boolean;
-  per_page?: number;
+  /** Number of filters per page. */
+  perPage?: number;
+  /** The filter ref (a short reference tag) to search for. Must be an exact match. */
   ref?: string;
 }
 export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     id: S.optional(S.String.pipe(T.Query())),
     description: S.optional(S.String.pipe(T.Query())),
     expression: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     paused: S.optional(S.Boolean.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     ref: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({ method: "GET", uri: "/zones/{zone_id}/filters", code: 200 }),
   ),
 ).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
 
-export type ListResultList = unknown[];
+export interface ListResultItem {
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+}
+export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+  }),
+).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
+
+export type ListResultList = ListResultItem[];
 export const ListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
 export interface ListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
 export const ListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -236,17 +370,23 @@ export const ListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
 
 export interface UpdateRequest {
-  zone_id: string;
-  filter_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The unique identifier of the filter. */
+  filterId: string;
+  /** An informative summary of the filter. */
   description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
   expression?: string;
+  /** When true, indicates that the filter is currently paused. */
   paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
   ref?: string;
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    filter_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    filterId: S.String.pipe(T.Label("filter_id")),
     description: S.optional(S.String),
     expression: S.optional(S.String),
     paused: S.optional(S.Boolean),
@@ -260,20 +400,35 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
-  result?: unknown;
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
 }
 export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
   }),
 ).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
+export type BulkDeleteError = CloudflareOpError;
 /** Deletes one or more existing filters. */
-export const BulkDelete: API.OperationMethod<
+export const bulkDelete: API.OperationMethod<
   BulkDeleteRequest,
   BulkDeleteResponse,
-  CloudflareOpError,
+  BulkDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteRequest,
@@ -282,11 +437,12 @@ export const BulkDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BulkUpdateError = CloudflareOpError;
 /** Updates one or more existing filters. */
-export const BulkUpdate: API.OperationMethod<
+export const bulkUpdate: API.OperationMethod<
   BulkUpdateRequest,
   BulkUpdateResponse,
-  CloudflareOpError,
+  BulkUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BulkUpdateRequest,
@@ -295,11 +451,12 @@ export const BulkUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CreateError = CloudflareOpError;
 /** Creates one or more filters. */
-export const Create: API.OperationMethod<
+export const create: API.OperationMethod<
   CreateRequest,
   CreateResponse,
-  CloudflareOpError,
+  CreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRequest,
@@ -308,11 +465,12 @@ export const Create: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DeleteError = CloudflareOpError;
 /** Deletes an existing filter. */
 export const Delete: API.OperationMethod<
   DeleteRequest,
   DeleteResponse,
-  CloudflareOpError,
+  DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequest,
@@ -321,11 +479,12 @@ export const Delete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Fetches the details of a filter. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -334,11 +493,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ListError = CloudflareOpError;
 /** Fetches filters in a zone. You can filter the results using several optional parameters. */
-export const List: API.OperationMethod<
+export const list: API.OperationMethod<
   ListRequest,
   ListResponse,
-  CloudflareOpError,
+  ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRequest,
@@ -347,11 +507,12 @@ export const List: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UpdateError = CloudflareOpError;
 /** Updates an existing filter. */
-export const Update: API.OperationMethod<
+export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,
-  CloudflareOpError,
+  UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,

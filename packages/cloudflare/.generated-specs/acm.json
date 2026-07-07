@@ -40,19 +40,92 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.acm#CustomTrustStoreCreateResponseStatus": {
+      "type": "enum",
+      "members": {
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        },
+        "PENDING_DEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_deployment"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        }
+      }
+    },
     "com.cloudflare.acm#CustomTrustStoreCreateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "certificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.",
+            "smithy.api#required": {}
+          }
+        },
+        "expires_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the certificate expires.",
+            "smithy.api#required": {}
+          }
+        },
+        "issuer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The certificate authority that issued the certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "signature": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of hash used for the certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.acm#CustomTrustStoreCreateResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of the zone's custom SSL.",
+            "smithy.api#required": {}
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the certificate was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "uploaded_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the certificate was uploaded to Cloudflare.",
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.acm#CustomTrustStoreCreate": {
@@ -153,19 +226,92 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.acm#CustomTrustStoreGetResponseStatus": {
+      "type": "enum",
+      "members": {
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        },
+        "PENDING_DEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_deployment"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        }
+      }
+    },
     "com.cloudflare.acm#CustomTrustStoreGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "certificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.",
+            "smithy.api#required": {}
+          }
+        },
+        "expires_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the certificate expires.",
+            "smithy.api#required": {}
+          }
+        },
+        "issuer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The certificate authority that issued the certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "signature": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of hash used for the certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.acm#CustomTrustStoreGetResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of the zone's custom SSL.",
+            "smithy.api#required": {}
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the certificate was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "uploaded_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the certificate was uploaded to Cloudflare.",
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.acm#CustomTrustStoreGet": {
@@ -230,10 +376,94 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.acm#CustomTrustStoreListResultItemStatus": {
+      "type": "enum",
+      "members": {
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        },
+        "PENDING_DEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_deployment"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        }
+      }
+    },
+    "com.cloudflare.acm#CustomTrustStoreListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "certificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.",
+            "smithy.api#required": {}
+          }
+        },
+        "expires_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the certificate expires.",
+            "smithy.api#required": {}
+          }
+        },
+        "issuer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The certificate authority that issued the certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "signature": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of hash used for the certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.acm#CustomTrustStoreListResultItemStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of the zone's custom SSL.",
+            "smithy.api#required": {}
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the certificate was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "uploaded_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the certificate was uploaded to Cloudflare.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.acm#CustomTrustStoreListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.acm#CustomTrustStoreListResultItem"
       }
     },
     "com.cloudflare.acm#CustomTrustStoreListResponse": {
@@ -298,6 +528,18 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.acm#TotalTlsEditResponseValidityPeriod": {
+      "type": "structure",
+      "members": {
+        "_90": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "90"
+          }
+        }
+      }
+    },
     "com.cloudflare.acm#TotalTlsEditResponse": {
       "type": "structure",
       "members": {
@@ -314,7 +556,7 @@
           }
         },
         "validity_period": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.acm#TotalTlsEditResponseValidityPeriod",
           "traits": {
             "smithy.api#documentation": "The validity period in days for the certificates ordered via Total TLS."
           }
@@ -358,6 +600,18 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.acm#TotalTlsGetResponseValidityPeriod": {
+      "type": "structure",
+      "members": {
+        "_90": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "90"
+          }
+        }
+      }
+    },
     "com.cloudflare.acm#TotalTlsGetResponse": {
       "type": "structure",
       "members": {
@@ -374,7 +628,7 @@
           }
         },
         "validity_period": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.acm#TotalTlsGetResponseValidityPeriod",
           "traits": {
             "smithy.api#documentation": "The validity period in days for the certificates ordered via Total TLS."
           }
@@ -432,6 +686,18 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.acm#TotalTlsUpdateResponseValidityPeriod": {
+      "type": "structure",
+      "members": {
+        "_90": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "90"
+          }
+        }
+      }
+    },
     "com.cloudflare.acm#TotalTlsUpdateResponse": {
       "type": "structure",
       "members": {
@@ -448,7 +714,7 @@
           }
         },
         "validity_period": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.acm#TotalTlsUpdateResponseValidityPeriod",
           "traits": {
             "smithy.api#documentation": "The validity period in days for the certificates ordered via Total TLS."
           }

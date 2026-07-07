@@ -10,11 +10,12 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface AccountSettingsGetRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
 }
 export const AccountSettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -28,28 +29,29 @@ export const AccountSettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AccountSettingsGetResponse {
-  default_usage_model?: string;
-  green_compute?: boolean;
+  defaultUsageModel?: string;
+  greenCompute?: boolean;
 }
 export const AccountSettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    default_usage_model: S.optional(S.String),
-    green_compute: S.optional(S.Boolean),
+    defaultUsageModel: S.optional(S.String.pipe(T.Body("default_usage_model"))),
+    greenCompute: S.optional(S.Boolean.pipe(T.Body("green_compute"))),
   }),
 ).annotate({
   identifier: "AccountSettingsGetResponse",
 }) as any as S.Schema<AccountSettingsGetResponse>;
 
 export interface AccountSettingsUpdateRequest {
-  account_id: string;
-  default_usage_model?: string;
-  green_compute?: boolean;
+  /** Identifier. */
+  accountId: string;
+  defaultUsageModel?: string;
+  greenCompute?: boolean;
 }
 export const AccountSettingsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    default_usage_model: S.optional(S.String),
-    green_compute: S.optional(S.Boolean),
+    accountId: S.String.pipe(T.Label("account_id")),
+    defaultUsageModel: S.optional(S.String.pipe(T.Body("default_usage_model"))),
+    greenCompute: S.optional(S.Boolean.pipe(T.Body("green_compute"))),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -63,25 +65,27 @@ export const AccountSettingsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AccountSettingsUpdateResponse {
-  default_usage_model?: string;
-  green_compute?: boolean;
+  defaultUsageModel?: string;
+  greenCompute?: boolean;
 }
 export const AccountSettingsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    default_usage_model: S.optional(S.String),
-    green_compute: S.optional(S.Boolean),
+    defaultUsageModel: S.optional(S.String.pipe(T.Body("default_usage_model"))),
+    greenCompute: S.optional(S.Boolean.pipe(T.Body("green_compute"))),
   }),
 ).annotate({
   identifier: "AccountSettingsUpdateResponse",
 }) as any as S.Schema<AccountSettingsUpdateResponse>;
 
 export interface AssetsUploadCreateRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Whether the file contents are base64-encoded. Must be `true`. */
   base64: boolean;
 }
 export const AssetsUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     base64: S.Boolean.pipe(T.Query()),
   }).pipe(
     T.Http({
@@ -96,6 +100,7 @@ export const AssetsUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AssetsUploadCreateResponse {
+  /** A "completion" JWT which can be redeemed when creating a Worker version. */
   jwt?: string;
 }
 export const AssetsUploadCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -114,10 +119,15 @@ export const BetaWorkersCreateRequestObservabilityLogsDestinationsList =
   ) as any as S.Schema<BetaWorkersCreateRequestObservabilityLogsDestinationsList>;
 
 export interface BetaWorkersCreateRequestObservabilityLogs {
+  /** A list of destinations where logs will be exported to. */
   destinations?: BetaWorkersCreateRequestObservabilityLogsDestinationsList;
+  /** Whether logs are enabled for the Worker. */
   enabled?: boolean;
-  head_sampling_rate?: number;
-  invocation_logs?: boolean;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs?: boolean;
+  /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
 export const BetaWorkersCreateRequestObservabilityLogs =
@@ -127,8 +137,8 @@ export const BetaWorkersCreateRequestObservabilityLogs =
         BetaWorkersCreateRequestObservabilityLogsDestinationsList,
       ),
       enabled: S.optional(S.Boolean),
-      head_sampling_rate: S.optional(S.Number),
-      invocation_logs: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
       persist: S.optional(S.Boolean),
     }),
   ).annotate({
@@ -150,11 +160,16 @@ export const BetaWorkersCreateRequestObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
 export interface BetaWorkersCreateRequestObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersCreateRequestObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
   enabled?: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
   persist?: boolean;
-  propagation_policy?: BetaWorkersCreateRequestObservabilityTracesPropagationPolicy;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: BetaWorkersCreateRequestObservabilityTracesPropagationPolicy;
 }
 export const BetaWorkersCreateRequestObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
@@ -163,10 +178,12 @@ export const BetaWorkersCreateRequestObservabilityTraces =
         BetaWorkersCreateRequestObservabilityTracesDestinationsList,
       ),
       enabled: S.optional(S.Boolean),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
-      propagation_policy: S.optional(
-        BetaWorkersCreateRequestObservabilityTracesPropagationPolicy,
+      propagationPolicy: S.optional(
+        BetaWorkersCreateRequestObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
       ),
     }),
   ).annotate({
@@ -174,16 +191,20 @@ export const BetaWorkersCreateRequestObservabilityTraces =
   }) as any as S.Schema<BetaWorkersCreateRequestObservabilityTraces>;
 
 export interface BetaWorkersCreateRequestObservability {
+  /** Whether observability is enabled for the Worker. */
   enabled?: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
   logs?: BetaWorkersCreateRequestObservabilityLogs;
+  /** Trace settings for the Worker. */
   traces?: BetaWorkersCreateRequestObservabilityTraces;
 }
 export const BetaWorkersCreateRequestObservability = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       enabled: S.optional(S.Boolean),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       logs: S.optional(BetaWorkersCreateRequestObservabilityLogs),
       traces: S.optional(BetaWorkersCreateRequestObservabilityTraces),
     }),
@@ -192,13 +213,15 @@ export const BetaWorkersCreateRequestObservability = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BetaWorkersCreateRequestObservability>;
 
 export interface BetaWorkersCreateRequestSubdomain {
+  /** Whether the *.workers.dev subdomain is enabled for the Worker. */
   enabled?: boolean;
-  previews_enabled?: boolean;
+  /** Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker. */
+  previewsEnabled?: boolean;
 }
 export const BetaWorkersCreateRequestSubdomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
-    previews_enabled: S.optional(S.Boolean),
+    previewsEnabled: S.optional(S.Boolean.pipe(T.Body("previews_enabled"))),
   }),
 ).annotate({
   identifier: "BetaWorkersCreateRequestSubdomain",
@@ -210,6 +233,7 @@ export const BetaWorkersCreateRequestTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BetaWorkersCreateRequestTagsList>;
 
 export interface BetaWorkersCreateRequestTailConsumersItem {
+  /** Name of the consumer Worker. */
   name: string;
 }
 export const BetaWorkersCreateRequestTailConsumersItem =
@@ -228,23 +252,32 @@ export const BetaWorkersCreateRequestTailConsumersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BetaWorkersCreateRequestTailConsumersList>;
 
 export interface BetaWorkersCreateRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Worker. */
   name: string;
+  /** Whether logpush is enabled for the Worker. */
   logpush?: boolean;
+  /** Observability settings for the Worker. */
   observability?: BetaWorkersCreateRequestObservability;
+  /** Subdomain settings for the Worker. */
   subdomain?: BetaWorkersCreateRequestSubdomain;
+  /** Tags associated with the Worker. */
   tags?: BetaWorkersCreateRequestTagsList;
-  tail_consumers?: BetaWorkersCreateRequestTailConsumersList;
+  /** Other Workers that should consume logs from the Worker. */
+  tailConsumers?: BetaWorkersCreateRequestTailConsumersList;
 }
 export const BetaWorkersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     logpush: S.optional(S.Boolean),
     observability: S.optional(BetaWorkersCreateRequestObservability),
     subdomain: S.optional(BetaWorkersCreateRequestSubdomain),
     tags: S.optional(BetaWorkersCreateRequestTagsList),
-    tail_consumers: S.optional(BetaWorkersCreateRequestTailConsumersList),
+    tailConsumers: S.optional(
+      BetaWorkersCreateRequestTailConsumersList.pipe(T.Body("tail_consumers")),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -256,25 +289,370 @@ export const BetaWorkersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BetaWorkersCreateRequest",
 }) as any as S.Schema<BetaWorkersCreateRequest>;
 
+export type BetaWorkersCreateResponseObservabilityLogsDestinationsList =
+  string[];
+export const BetaWorkersCreateResponseObservabilityLogsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BetaWorkersCreateResponseObservabilityLogsDestinationsList>;
+
+export interface BetaWorkersCreateResponseObservabilityLogs {
+  /** A list of destinations where logs will be exported to. */
+  destinations?: BetaWorkersCreateResponseObservabilityLogsDestinationsList;
+  /** Whether logs are enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs?: boolean;
+  /** Whether log persistence is enabled for the Worker. */
+  persist?: boolean;
+}
+export const BetaWorkersCreateResponseObservabilityLogs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      destinations: S.optional(
+        BetaWorkersCreateResponseObservabilityLogsDestinationsList,
+      ),
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
+      persist: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersCreateResponseObservabilityLogs",
+  }) as any as S.Schema<BetaWorkersCreateResponseObservabilityLogs>;
+
+export type BetaWorkersCreateResponseObservabilityTracesDestinationsList =
+  string[];
+export const BetaWorkersCreateResponseObservabilityTracesDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BetaWorkersCreateResponseObservabilityTracesDestinationsList>;
+
+export type BetaWorkersCreateResponseObservabilityTracesPropagationPolicy =
+  | "authenticated"
+  | "accept"
+  | (string & {});
+export const BetaWorkersCreateResponseObservabilityTracesPropagationPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface BetaWorkersCreateResponseObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
+  destinations?: BetaWorkersCreateResponseObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
+  persist?: boolean;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: BetaWorkersCreateResponseObservabilityTracesPropagationPolicy;
+}
+export const BetaWorkersCreateResponseObservabilityTraces =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      destinations: S.optional(
+        BetaWorkersCreateResponseObservabilityTracesDestinationsList,
+      ),
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      persist: S.optional(S.Boolean),
+      propagationPolicy: S.optional(
+        BetaWorkersCreateResponseObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersCreateResponseObservabilityTraces",
+  }) as any as S.Schema<BetaWorkersCreateResponseObservabilityTraces>;
+
+export interface BetaWorkersCreateResponseObservability {
+  /** Whether observability is enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
+  logs?: BetaWorkersCreateResponseObservabilityLogs;
+  /** Trace settings for the Worker. */
+  traces?: BetaWorkersCreateResponseObservabilityTraces;
+}
+export const BetaWorkersCreateResponseObservability = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      logs: S.optional(BetaWorkersCreateResponseObservabilityLogs),
+      traces: S.optional(BetaWorkersCreateResponseObservabilityTraces),
+    }),
+).annotate({
+  identifier: "BetaWorkersCreateResponseObservability",
+}) as any as S.Schema<BetaWorkersCreateResponseObservability>;
+
+export interface BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem {
+  /** ID of the dispatch namespace. */
+  namespaceId: string;
+  /** Name of the dispatch namespace. */
+  namespaceName: string;
+  /** ID of the Worker using the dispatch namespace. */
+  workerId: string;
+  /** Name of the Worker using the dispatch namespace. */
+  workerName: string;
+}
+export const BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      namespaceId: S.String.pipe(T.Body("namespace_id")),
+      namespaceName: S.String.pipe(T.Body("namespace_name")),
+      workerId: S.String.pipe(T.Body("worker_id")),
+      workerName: S.String.pipe(T.Body("worker_name")),
+    }),
+  ).annotate({
+    identifier:
+      "BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem",
+  }) as any as S.Schema<BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem>;
+
+export type BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsList =
+  BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem[];
+export const BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem,
+  ) as any as S.Schema<BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsList>;
+
+export interface BetaWorkersCreateResponseReferencesDomainsItem {
+  /** ID of the custom domain. */
+  id: string;
+  /** ID of the TLS certificate issued for the custom domain. */
+  certificateId: string;
+  /** Full hostname of the custom domain, including the zone name. */
+  hostname: string;
+  /** ID of the zone. */
+  zoneId: string;
+  /** Name of the zone. */
+  zoneName: string;
+}
+export const BetaWorkersCreateResponseReferencesDomainsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      certificateId: S.String.pipe(T.Body("certificate_id")),
+      hostname: S.String,
+      zoneId: S.String.pipe(T.Body("zone_id")),
+      zoneName: S.String.pipe(T.Body("zone_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersCreateResponseReferencesDomainsItem",
+  }) as any as S.Schema<BetaWorkersCreateResponseReferencesDomainsItem>;
+
+export type BetaWorkersCreateResponseReferencesDomainsList =
+  BetaWorkersCreateResponseReferencesDomainsItem[];
+export const BetaWorkersCreateResponseReferencesDomainsList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersCreateResponseReferencesDomainsItem,
+  ) as any as S.Schema<BetaWorkersCreateResponseReferencesDomainsList>;
+
+export interface BetaWorkersCreateResponseReferencesDurableObjectsItem {
+  /** ID of the Durable Object namespace being used. */
+  namespaceId: string;
+  /** Name of the Durable Object namespace being used. */
+  namespaceName: string;
+  /** ID of the Worker using the Durable Object implementation. */
+  workerId: string;
+  /** Name of the Worker using the Durable Object implementation. */
+  workerName: string;
+}
+export const BetaWorkersCreateResponseReferencesDurableObjectsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      namespaceId: S.String.pipe(T.Body("namespace_id")),
+      namespaceName: S.String.pipe(T.Body("namespace_name")),
+      workerId: S.String.pipe(T.Body("worker_id")),
+      workerName: S.String.pipe(T.Body("worker_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersCreateResponseReferencesDurableObjectsItem",
+  }) as any as S.Schema<BetaWorkersCreateResponseReferencesDurableObjectsItem>;
+
+export type BetaWorkersCreateResponseReferencesDurableObjectsList =
+  BetaWorkersCreateResponseReferencesDurableObjectsItem[];
+export const BetaWorkersCreateResponseReferencesDurableObjectsList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersCreateResponseReferencesDurableObjectsItem,
+  ) as any as S.Schema<BetaWorkersCreateResponseReferencesDurableObjectsList>;
+
+export interface BetaWorkersCreateResponseReferencesQueuesItem {
+  /** ID of the queue consumer configuration. */
+  queueConsumerId: string;
+  /** ID of the queue. */
+  queueId: string;
+  /** Name of the queue. */
+  queueName: string;
+}
+export const BetaWorkersCreateResponseReferencesQueuesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      queueConsumerId: S.String.pipe(T.Body("queue_consumer_id")),
+      queueId: S.String.pipe(T.Body("queue_id")),
+      queueName: S.String.pipe(T.Body("queue_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersCreateResponseReferencesQueuesItem",
+  }) as any as S.Schema<BetaWorkersCreateResponseReferencesQueuesItem>;
+
+export type BetaWorkersCreateResponseReferencesQueuesList =
+  BetaWorkersCreateResponseReferencesQueuesItem[];
+export const BetaWorkersCreateResponseReferencesQueuesList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersCreateResponseReferencesQueuesItem,
+  ) as any as S.Schema<BetaWorkersCreateResponseReferencesQueuesList>;
+
+export interface BetaWorkersCreateResponseReferencesWorkersItem {
+  /** ID of the referencing Worker. */
+  id: string;
+  /** Name of the referencing Worker. */
+  name: string;
+}
+export const BetaWorkersCreateResponseReferencesWorkersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "BetaWorkersCreateResponseReferencesWorkersItem",
+  }) as any as S.Schema<BetaWorkersCreateResponseReferencesWorkersItem>;
+
+export type BetaWorkersCreateResponseReferencesWorkersList =
+  BetaWorkersCreateResponseReferencesWorkersItem[];
+export const BetaWorkersCreateResponseReferencesWorkersList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersCreateResponseReferencesWorkersItem,
+  ) as any as S.Schema<BetaWorkersCreateResponseReferencesWorkersList>;
+
+export interface BetaWorkersCreateResponseReferences {
+  /** Other Workers that reference the Worker as an outbound for a dispatch namespace. */
+  dispatchNamespaceOutbounds: BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsList;
+  /** Custom domains connected to the Worker. */
+  domains: BetaWorkersCreateResponseReferencesDomainsList;
+  /** Other Workers that reference Durable Object classes implemented by the Worker. */
+  durableObjects: BetaWorkersCreateResponseReferencesDurableObjectsList;
+  /** Queues that send messages to the Worker. */
+  queues: BetaWorkersCreateResponseReferencesQueuesList;
+  /** Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/). */
+  workers: BetaWorkersCreateResponseReferencesWorkersList;
+}
+export const BetaWorkersCreateResponseReferences = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dispatchNamespaceOutbounds:
+      BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsList.pipe(
+        T.Body("dispatch_namespace_outbounds"),
+      ),
+    domains: BetaWorkersCreateResponseReferencesDomainsList,
+    durableObjects: BetaWorkersCreateResponseReferencesDurableObjectsList.pipe(
+      T.Body("durable_objects"),
+    ),
+    queues: BetaWorkersCreateResponseReferencesQueuesList,
+    workers: BetaWorkersCreateResponseReferencesWorkersList,
+  }),
+).annotate({
+  identifier: "BetaWorkersCreateResponseReferences",
+}) as any as S.Schema<BetaWorkersCreateResponseReferences>;
+
+export interface BetaWorkersCreateResponseSubdomain {
+  /** Whether the *.workers.dev subdomain is enabled for the Worker. */
+  enabled?: boolean;
+  /** Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker. */
+  previewsEnabled?: boolean;
+}
+export const BetaWorkersCreateResponseSubdomain = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    previewsEnabled: S.optional(S.Boolean.pipe(T.Body("previews_enabled"))),
+  }),
+).annotate({
+  identifier: "BetaWorkersCreateResponseSubdomain",
+}) as any as S.Schema<BetaWorkersCreateResponseSubdomain>;
+
+export type BetaWorkersCreateResponseTagsList = string[];
+export const BetaWorkersCreateResponseTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BetaWorkersCreateResponseTagsList>;
+
+export interface BetaWorkersCreateResponseTailConsumersItem {
+  /** Name of the consumer Worker. */
+  name: string;
+}
+export const BetaWorkersCreateResponseTailConsumersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "BetaWorkersCreateResponseTailConsumersItem",
+  }) as any as S.Schema<BetaWorkersCreateResponseTailConsumersItem>;
+
+export type BetaWorkersCreateResponseTailConsumersList =
+  BetaWorkersCreateResponseTailConsumersItem[];
+export const BetaWorkersCreateResponseTailConsumersList = /*@__PURE__*/ S.Array(
+  BetaWorkersCreateResponseTailConsumersItem,
+) as any as S.Schema<BetaWorkersCreateResponseTailConsumersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BetaWorkersCreateResponse {
-  result?: unknown;
+  /** Immutable ID of the Worker. */
+  id: string;
+  /** When the Worker was created. */
+  createdOn: string;
+  /** Whether logpush is enabled for the Worker. */
+  logpush: boolean;
+  /** Name of the Worker. */
+  name: string;
+  /** Observability settings for the Worker. */
+  observability: BetaWorkersCreateResponseObservability;
+  /** Other resources that reference the Worker and depend on it existing. */
+  references: BetaWorkersCreateResponseReferences;
+  /** Subdomain settings for the Worker. */
+  subdomain: BetaWorkersCreateResponseSubdomain;
+  /** Tags associated with the Worker. */
+  tags: BetaWorkersCreateResponseTagsList;
+  /** Other Workers that should consume logs from the Worker. */
+  tailConsumers: BetaWorkersCreateResponseTailConsumersList;
+  /** When the Worker was most recently updated. */
+  updatedOn: string;
+  /** When the Worker's most recent deployment was created. `null` if the Worker has never been deployed. */
+  deployedOn?: string;
 }
 export const BetaWorkersCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    logpush: S.Boolean,
+    name: S.String,
+    observability: BetaWorkersCreateResponseObservability,
+    references: BetaWorkersCreateResponseReferences,
+    subdomain: BetaWorkersCreateResponseSubdomain,
+    tags: BetaWorkersCreateResponseTagsList,
+    tailConsumers: BetaWorkersCreateResponseTailConsumersList.pipe(
+      T.Body("tail_consumers"),
+    ),
+    updatedOn: S.String.pipe(T.Body("updated_on")),
+    deployedOn: S.optional(S.String.pipe(T.Body("deployed_on"))),
   }),
 ).annotate({
   identifier: "BetaWorkersCreateResponse",
 }) as any as S.Schema<BetaWorkersCreateResponse>;
 
 export interface BetaWorkersDeleteRequest {
-  account_id: string;
-  worker_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Identifier for the Worker, which can be ID or name. */
+  workerId: string;
 }
 export const BetaWorkersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    worker_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workerId: S.String.pipe(T.Label("worker_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -300,10 +678,15 @@ export const BetaWorkersEditRequestObservabilityLogsDestinationsList =
   ) as any as S.Schema<BetaWorkersEditRequestObservabilityLogsDestinationsList>;
 
 export interface BetaWorkersEditRequestObservabilityLogs {
+  /** A list of destinations where logs will be exported to. */
   destinations?: BetaWorkersEditRequestObservabilityLogsDestinationsList;
+  /** Whether logs are enabled for the Worker. */
   enabled?: boolean;
-  head_sampling_rate?: number;
-  invocation_logs?: boolean;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs?: boolean;
+  /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
 export const BetaWorkersEditRequestObservabilityLogs = /*@__PURE__*/ S.suspend(
@@ -313,8 +696,8 @@ export const BetaWorkersEditRequestObservabilityLogs = /*@__PURE__*/ S.suspend(
         BetaWorkersEditRequestObservabilityLogsDestinationsList,
       ),
       enabled: S.optional(S.Boolean),
-      head_sampling_rate: S.optional(S.Number),
-      invocation_logs: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
       persist: S.optional(S.Boolean),
     }),
 ).annotate({
@@ -336,11 +719,16 @@ export const BetaWorkersEditRequestObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
 export interface BetaWorkersEditRequestObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersEditRequestObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
   enabled?: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
   persist?: boolean;
-  propagation_policy?: BetaWorkersEditRequestObservabilityTracesPropagationPolicy;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: BetaWorkersEditRequestObservabilityTracesPropagationPolicy;
 }
 export const BetaWorkersEditRequestObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
@@ -349,10 +737,12 @@ export const BetaWorkersEditRequestObservabilityTraces =
         BetaWorkersEditRequestObservabilityTracesDestinationsList,
       ),
       enabled: S.optional(S.Boolean),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
-      propagation_policy: S.optional(
-        BetaWorkersEditRequestObservabilityTracesPropagationPolicy,
+      propagationPolicy: S.optional(
+        BetaWorkersEditRequestObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
       ),
     }),
   ).annotate({
@@ -360,15 +750,19 @@ export const BetaWorkersEditRequestObservabilityTraces =
   }) as any as S.Schema<BetaWorkersEditRequestObservabilityTraces>;
 
 export interface BetaWorkersEditRequestObservability {
+  /** Whether observability is enabled for the Worker. */
   enabled?: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
   logs?: BetaWorkersEditRequestObservabilityLogs;
+  /** Trace settings for the Worker. */
   traces?: BetaWorkersEditRequestObservabilityTraces;
 }
 export const BetaWorkersEditRequestObservability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
-    head_sampling_rate: S.optional(S.Number),
+    headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
     logs: S.optional(BetaWorkersEditRequestObservabilityLogs),
     traces: S.optional(BetaWorkersEditRequestObservabilityTraces),
   }),
@@ -377,13 +771,15 @@ export const BetaWorkersEditRequestObservability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BetaWorkersEditRequestObservability>;
 
 export interface BetaWorkersEditRequestSubdomain {
+  /** Whether the *.workers.dev subdomain is enabled for the Worker. */
   enabled?: boolean;
-  previews_enabled?: boolean;
+  /** Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker. */
+  previewsEnabled?: boolean;
 }
 export const BetaWorkersEditRequestSubdomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
-    previews_enabled: S.optional(S.Boolean),
+    previewsEnabled: S.optional(S.Boolean.pipe(T.Body("previews_enabled"))),
   }),
 ).annotate({
   identifier: "BetaWorkersEditRequestSubdomain",
@@ -395,6 +791,7 @@ export const BetaWorkersEditRequestTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BetaWorkersEditRequestTagsList>;
 
 export interface BetaWorkersEditRequestTailConsumersItem {
+  /** Name of the consumer Worker. */
   name: string;
 }
 export const BetaWorkersEditRequestTailConsumersItem = /*@__PURE__*/ S.suspend(
@@ -413,25 +810,35 @@ export const BetaWorkersEditRequestTailConsumersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BetaWorkersEditRequestTailConsumersList>;
 
 export interface BetaWorkersEditRequest {
-  account_id: string;
-  worker_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Identifier for the Worker, which can be ID or name. */
+  workerId: string;
+  /** Whether logpush is enabled for the Worker. */
   logpush: boolean;
+  /** Name of the Worker. */
   name: string;
+  /** Observability settings for the Worker. */
   observability: BetaWorkersEditRequestObservability;
+  /** Subdomain settings for the Worker. */
   subdomain: BetaWorkersEditRequestSubdomain;
+  /** Tags associated with the Worker. */
   tags: BetaWorkersEditRequestTagsList;
-  tail_consumers: BetaWorkersEditRequestTailConsumersList;
+  /** Other Workers that should consume logs from the Worker. */
+  tailConsumers: BetaWorkersEditRequestTailConsumersList;
 }
 export const BetaWorkersEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    worker_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workerId: S.String.pipe(T.Label("worker_id")),
     logpush: S.Boolean,
     name: S.String,
     observability: BetaWorkersEditRequestObservability,
     subdomain: BetaWorkersEditRequestSubdomain,
     tags: BetaWorkersEditRequestTagsList,
-    tail_consumers: BetaWorkersEditRequestTailConsumersList,
+    tailConsumers: BetaWorkersEditRequestTailConsumersList.pipe(
+      T.Body("tail_consumers"),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -443,25 +850,369 @@ export const BetaWorkersEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BetaWorkersEditRequest",
 }) as any as S.Schema<BetaWorkersEditRequest>;
 
+export type BetaWorkersEditResponseObservabilityLogsDestinationsList = string[];
+export const BetaWorkersEditResponseObservabilityLogsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BetaWorkersEditResponseObservabilityLogsDestinationsList>;
+
+export interface BetaWorkersEditResponseObservabilityLogs {
+  /** A list of destinations where logs will be exported to. */
+  destinations?: BetaWorkersEditResponseObservabilityLogsDestinationsList;
+  /** Whether logs are enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs?: boolean;
+  /** Whether log persistence is enabled for the Worker. */
+  persist?: boolean;
+}
+export const BetaWorkersEditResponseObservabilityLogs = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      destinations: S.optional(
+        BetaWorkersEditResponseObservabilityLogsDestinationsList,
+      ),
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
+      persist: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "BetaWorkersEditResponseObservabilityLogs",
+}) as any as S.Schema<BetaWorkersEditResponseObservabilityLogs>;
+
+export type BetaWorkersEditResponseObservabilityTracesDestinationsList =
+  string[];
+export const BetaWorkersEditResponseObservabilityTracesDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BetaWorkersEditResponseObservabilityTracesDestinationsList>;
+
+export type BetaWorkersEditResponseObservabilityTracesPropagationPolicy =
+  | "authenticated"
+  | "accept"
+  | (string & {});
+export const BetaWorkersEditResponseObservabilityTracesPropagationPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface BetaWorkersEditResponseObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
+  destinations?: BetaWorkersEditResponseObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
+  persist?: boolean;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: BetaWorkersEditResponseObservabilityTracesPropagationPolicy;
+}
+export const BetaWorkersEditResponseObservabilityTraces =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      destinations: S.optional(
+        BetaWorkersEditResponseObservabilityTracesDestinationsList,
+      ),
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      persist: S.optional(S.Boolean),
+      propagationPolicy: S.optional(
+        BetaWorkersEditResponseObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersEditResponseObservabilityTraces",
+  }) as any as S.Schema<BetaWorkersEditResponseObservabilityTraces>;
+
+export interface BetaWorkersEditResponseObservability {
+  /** Whether observability is enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
+  logs?: BetaWorkersEditResponseObservabilityLogs;
+  /** Trace settings for the Worker. */
+  traces?: BetaWorkersEditResponseObservabilityTraces;
+}
+export const BetaWorkersEditResponseObservability = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      logs: S.optional(BetaWorkersEditResponseObservabilityLogs),
+      traces: S.optional(BetaWorkersEditResponseObservabilityTraces),
+    }),
+).annotate({
+  identifier: "BetaWorkersEditResponseObservability",
+}) as any as S.Schema<BetaWorkersEditResponseObservability>;
+
+export interface BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsItem {
+  /** ID of the dispatch namespace. */
+  namespaceId: string;
+  /** Name of the dispatch namespace. */
+  namespaceName: string;
+  /** ID of the Worker using the dispatch namespace. */
+  workerId: string;
+  /** Name of the Worker using the dispatch namespace. */
+  workerName: string;
+}
+export const BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      namespaceId: S.String.pipe(T.Body("namespace_id")),
+      namespaceName: S.String.pipe(T.Body("namespace_name")),
+      workerId: S.String.pipe(T.Body("worker_id")),
+      workerName: S.String.pipe(T.Body("worker_name")),
+    }),
+  ).annotate({
+    identifier:
+      "BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsItem",
+  }) as any as S.Schema<BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsItem>;
+
+export type BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsList =
+  BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsItem[];
+export const BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsItem,
+  ) as any as S.Schema<BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsList>;
+
+export interface BetaWorkersEditResponseReferencesDomainsItem {
+  /** ID of the custom domain. */
+  id: string;
+  /** ID of the TLS certificate issued for the custom domain. */
+  certificateId: string;
+  /** Full hostname of the custom domain, including the zone name. */
+  hostname: string;
+  /** ID of the zone. */
+  zoneId: string;
+  /** Name of the zone. */
+  zoneName: string;
+}
+export const BetaWorkersEditResponseReferencesDomainsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      certificateId: S.String.pipe(T.Body("certificate_id")),
+      hostname: S.String,
+      zoneId: S.String.pipe(T.Body("zone_id")),
+      zoneName: S.String.pipe(T.Body("zone_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersEditResponseReferencesDomainsItem",
+  }) as any as S.Schema<BetaWorkersEditResponseReferencesDomainsItem>;
+
+export type BetaWorkersEditResponseReferencesDomainsList =
+  BetaWorkersEditResponseReferencesDomainsItem[];
+export const BetaWorkersEditResponseReferencesDomainsList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersEditResponseReferencesDomainsItem,
+  ) as any as S.Schema<BetaWorkersEditResponseReferencesDomainsList>;
+
+export interface BetaWorkersEditResponseReferencesDurableObjectsItem {
+  /** ID of the Durable Object namespace being used. */
+  namespaceId: string;
+  /** Name of the Durable Object namespace being used. */
+  namespaceName: string;
+  /** ID of the Worker using the Durable Object implementation. */
+  workerId: string;
+  /** Name of the Worker using the Durable Object implementation. */
+  workerName: string;
+}
+export const BetaWorkersEditResponseReferencesDurableObjectsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      namespaceId: S.String.pipe(T.Body("namespace_id")),
+      namespaceName: S.String.pipe(T.Body("namespace_name")),
+      workerId: S.String.pipe(T.Body("worker_id")),
+      workerName: S.String.pipe(T.Body("worker_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersEditResponseReferencesDurableObjectsItem",
+  }) as any as S.Schema<BetaWorkersEditResponseReferencesDurableObjectsItem>;
+
+export type BetaWorkersEditResponseReferencesDurableObjectsList =
+  BetaWorkersEditResponseReferencesDurableObjectsItem[];
+export const BetaWorkersEditResponseReferencesDurableObjectsList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersEditResponseReferencesDurableObjectsItem,
+  ) as any as S.Schema<BetaWorkersEditResponseReferencesDurableObjectsList>;
+
+export interface BetaWorkersEditResponseReferencesQueuesItem {
+  /** ID of the queue consumer configuration. */
+  queueConsumerId: string;
+  /** ID of the queue. */
+  queueId: string;
+  /** Name of the queue. */
+  queueName: string;
+}
+export const BetaWorkersEditResponseReferencesQueuesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      queueConsumerId: S.String.pipe(T.Body("queue_consumer_id")),
+      queueId: S.String.pipe(T.Body("queue_id")),
+      queueName: S.String.pipe(T.Body("queue_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersEditResponseReferencesQueuesItem",
+  }) as any as S.Schema<BetaWorkersEditResponseReferencesQueuesItem>;
+
+export type BetaWorkersEditResponseReferencesQueuesList =
+  BetaWorkersEditResponseReferencesQueuesItem[];
+export const BetaWorkersEditResponseReferencesQueuesList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersEditResponseReferencesQueuesItem,
+  ) as any as S.Schema<BetaWorkersEditResponseReferencesQueuesList>;
+
+export interface BetaWorkersEditResponseReferencesWorkersItem {
+  /** ID of the referencing Worker. */
+  id: string;
+  /** Name of the referencing Worker. */
+  name: string;
+}
+export const BetaWorkersEditResponseReferencesWorkersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "BetaWorkersEditResponseReferencesWorkersItem",
+  }) as any as S.Schema<BetaWorkersEditResponseReferencesWorkersItem>;
+
+export type BetaWorkersEditResponseReferencesWorkersList =
+  BetaWorkersEditResponseReferencesWorkersItem[];
+export const BetaWorkersEditResponseReferencesWorkersList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersEditResponseReferencesWorkersItem,
+  ) as any as S.Schema<BetaWorkersEditResponseReferencesWorkersList>;
+
+export interface BetaWorkersEditResponseReferences {
+  /** Other Workers that reference the Worker as an outbound for a dispatch namespace. */
+  dispatchNamespaceOutbounds: BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsList;
+  /** Custom domains connected to the Worker. */
+  domains: BetaWorkersEditResponseReferencesDomainsList;
+  /** Other Workers that reference Durable Object classes implemented by the Worker. */
+  durableObjects: BetaWorkersEditResponseReferencesDurableObjectsList;
+  /** Queues that send messages to the Worker. */
+  queues: BetaWorkersEditResponseReferencesQueuesList;
+  /** Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/). */
+  workers: BetaWorkersEditResponseReferencesWorkersList;
+}
+export const BetaWorkersEditResponseReferences = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dispatchNamespaceOutbounds:
+      BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsList.pipe(
+        T.Body("dispatch_namespace_outbounds"),
+      ),
+    domains: BetaWorkersEditResponseReferencesDomainsList,
+    durableObjects: BetaWorkersEditResponseReferencesDurableObjectsList.pipe(
+      T.Body("durable_objects"),
+    ),
+    queues: BetaWorkersEditResponseReferencesQueuesList,
+    workers: BetaWorkersEditResponseReferencesWorkersList,
+  }),
+).annotate({
+  identifier: "BetaWorkersEditResponseReferences",
+}) as any as S.Schema<BetaWorkersEditResponseReferences>;
+
+export interface BetaWorkersEditResponseSubdomain {
+  /** Whether the *.workers.dev subdomain is enabled for the Worker. */
+  enabled?: boolean;
+  /** Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker. */
+  previewsEnabled?: boolean;
+}
+export const BetaWorkersEditResponseSubdomain = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    previewsEnabled: S.optional(S.Boolean.pipe(T.Body("previews_enabled"))),
+  }),
+).annotate({
+  identifier: "BetaWorkersEditResponseSubdomain",
+}) as any as S.Schema<BetaWorkersEditResponseSubdomain>;
+
+export type BetaWorkersEditResponseTagsList = string[];
+export const BetaWorkersEditResponseTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BetaWorkersEditResponseTagsList>;
+
+export interface BetaWorkersEditResponseTailConsumersItem {
+  /** Name of the consumer Worker. */
+  name: string;
+}
+export const BetaWorkersEditResponseTailConsumersItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+    }),
+).annotate({
+  identifier: "BetaWorkersEditResponseTailConsumersItem",
+}) as any as S.Schema<BetaWorkersEditResponseTailConsumersItem>;
+
+export type BetaWorkersEditResponseTailConsumersList =
+  BetaWorkersEditResponseTailConsumersItem[];
+export const BetaWorkersEditResponseTailConsumersList = /*@__PURE__*/ S.Array(
+  BetaWorkersEditResponseTailConsumersItem,
+) as any as S.Schema<BetaWorkersEditResponseTailConsumersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BetaWorkersEditResponse {
-  result?: unknown;
+  /** Immutable ID of the Worker. */
+  id: string;
+  /** When the Worker was created. */
+  createdOn: string;
+  /** Whether logpush is enabled for the Worker. */
+  logpush: boolean;
+  /** Name of the Worker. */
+  name: string;
+  /** Observability settings for the Worker. */
+  observability: BetaWorkersEditResponseObservability;
+  /** Other resources that reference the Worker and depend on it existing. */
+  references: BetaWorkersEditResponseReferences;
+  /** Subdomain settings for the Worker. */
+  subdomain: BetaWorkersEditResponseSubdomain;
+  /** Tags associated with the Worker. */
+  tags: BetaWorkersEditResponseTagsList;
+  /** Other Workers that should consume logs from the Worker. */
+  tailConsumers: BetaWorkersEditResponseTailConsumersList;
+  /** When the Worker was most recently updated. */
+  updatedOn: string;
+  /** When the Worker's most recent deployment was created. `null` if the Worker has never been deployed. */
+  deployedOn?: string;
 }
 export const BetaWorkersEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    logpush: S.Boolean,
+    name: S.String,
+    observability: BetaWorkersEditResponseObservability,
+    references: BetaWorkersEditResponseReferences,
+    subdomain: BetaWorkersEditResponseSubdomain,
+    tags: BetaWorkersEditResponseTagsList,
+    tailConsumers: BetaWorkersEditResponseTailConsumersList.pipe(
+      T.Body("tail_consumers"),
+    ),
+    updatedOn: S.String.pipe(T.Body("updated_on")),
+    deployedOn: S.optional(S.String.pipe(T.Body("deployed_on"))),
   }),
 ).annotate({
   identifier: "BetaWorkersEditResponse",
 }) as any as S.Schema<BetaWorkersEditResponse>;
 
 export interface BetaWorkersGetRequest {
-  account_id: string;
-  worker_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Identifier for the Worker, which can be ID or name. */
+  workerId: string;
 }
 export const BetaWorkersGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    worker_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workerId: S.String.pipe(T.Label("worker_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -473,12 +1224,352 @@ export const BetaWorkersGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BetaWorkersGetRequest",
 }) as any as S.Schema<BetaWorkersGetRequest>;
 
+export type BetaWorkersGetResponseObservabilityLogsDestinationsList = string[];
+export const BetaWorkersGetResponseObservabilityLogsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BetaWorkersGetResponseObservabilityLogsDestinationsList>;
+
+export interface BetaWorkersGetResponseObservabilityLogs {
+  /** A list of destinations where logs will be exported to. */
+  destinations?: BetaWorkersGetResponseObservabilityLogsDestinationsList;
+  /** Whether logs are enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs?: boolean;
+  /** Whether log persistence is enabled for the Worker. */
+  persist?: boolean;
+}
+export const BetaWorkersGetResponseObservabilityLogs = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      destinations: S.optional(
+        BetaWorkersGetResponseObservabilityLogsDestinationsList,
+      ),
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
+      persist: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "BetaWorkersGetResponseObservabilityLogs",
+}) as any as S.Schema<BetaWorkersGetResponseObservabilityLogs>;
+
+export type BetaWorkersGetResponseObservabilityTracesDestinationsList =
+  string[];
+export const BetaWorkersGetResponseObservabilityTracesDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BetaWorkersGetResponseObservabilityTracesDestinationsList>;
+
+export type BetaWorkersGetResponseObservabilityTracesPropagationPolicy =
+  | "authenticated"
+  | "accept"
+  | (string & {});
+export const BetaWorkersGetResponseObservabilityTracesPropagationPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface BetaWorkersGetResponseObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
+  destinations?: BetaWorkersGetResponseObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
+  persist?: boolean;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: BetaWorkersGetResponseObservabilityTracesPropagationPolicy;
+}
+export const BetaWorkersGetResponseObservabilityTraces =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      destinations: S.optional(
+        BetaWorkersGetResponseObservabilityTracesDestinationsList,
+      ),
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      persist: S.optional(S.Boolean),
+      propagationPolicy: S.optional(
+        BetaWorkersGetResponseObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersGetResponseObservabilityTraces",
+  }) as any as S.Schema<BetaWorkersGetResponseObservabilityTraces>;
+
+export interface BetaWorkersGetResponseObservability {
+  /** Whether observability is enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
+  logs?: BetaWorkersGetResponseObservabilityLogs;
+  /** Trace settings for the Worker. */
+  traces?: BetaWorkersGetResponseObservabilityTraces;
+}
+export const BetaWorkersGetResponseObservability = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+    logs: S.optional(BetaWorkersGetResponseObservabilityLogs),
+    traces: S.optional(BetaWorkersGetResponseObservabilityTraces),
+  }),
+).annotate({
+  identifier: "BetaWorkersGetResponseObservability",
+}) as any as S.Schema<BetaWorkersGetResponseObservability>;
+
+export interface BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsItem {
+  /** ID of the dispatch namespace. */
+  namespaceId: string;
+  /** Name of the dispatch namespace. */
+  namespaceName: string;
+  /** ID of the Worker using the dispatch namespace. */
+  workerId: string;
+  /** Name of the Worker using the dispatch namespace. */
+  workerName: string;
+}
+export const BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      namespaceId: S.String.pipe(T.Body("namespace_id")),
+      namespaceName: S.String.pipe(T.Body("namespace_name")),
+      workerId: S.String.pipe(T.Body("worker_id")),
+      workerName: S.String.pipe(T.Body("worker_name")),
+    }),
+  ).annotate({
+    identifier:
+      "BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsItem",
+  }) as any as S.Schema<BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsItem>;
+
+export type BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsList =
+  BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsItem[];
+export const BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsItem,
+  ) as any as S.Schema<BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsList>;
+
+export interface BetaWorkersGetResponseReferencesDomainsItem {
+  /** ID of the custom domain. */
+  id: string;
+  /** ID of the TLS certificate issued for the custom domain. */
+  certificateId: string;
+  /** Full hostname of the custom domain, including the zone name. */
+  hostname: string;
+  /** ID of the zone. */
+  zoneId: string;
+  /** Name of the zone. */
+  zoneName: string;
+}
+export const BetaWorkersGetResponseReferencesDomainsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      certificateId: S.String.pipe(T.Body("certificate_id")),
+      hostname: S.String,
+      zoneId: S.String.pipe(T.Body("zone_id")),
+      zoneName: S.String.pipe(T.Body("zone_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersGetResponseReferencesDomainsItem",
+  }) as any as S.Schema<BetaWorkersGetResponseReferencesDomainsItem>;
+
+export type BetaWorkersGetResponseReferencesDomainsList =
+  BetaWorkersGetResponseReferencesDomainsItem[];
+export const BetaWorkersGetResponseReferencesDomainsList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersGetResponseReferencesDomainsItem,
+  ) as any as S.Schema<BetaWorkersGetResponseReferencesDomainsList>;
+
+export interface BetaWorkersGetResponseReferencesDurableObjectsItem {
+  /** ID of the Durable Object namespace being used. */
+  namespaceId: string;
+  /** Name of the Durable Object namespace being used. */
+  namespaceName: string;
+  /** ID of the Worker using the Durable Object implementation. */
+  workerId: string;
+  /** Name of the Worker using the Durable Object implementation. */
+  workerName: string;
+}
+export const BetaWorkersGetResponseReferencesDurableObjectsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      namespaceId: S.String.pipe(T.Body("namespace_id")),
+      namespaceName: S.String.pipe(T.Body("namespace_name")),
+      workerId: S.String.pipe(T.Body("worker_id")),
+      workerName: S.String.pipe(T.Body("worker_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersGetResponseReferencesDurableObjectsItem",
+  }) as any as S.Schema<BetaWorkersGetResponseReferencesDurableObjectsItem>;
+
+export type BetaWorkersGetResponseReferencesDurableObjectsList =
+  BetaWorkersGetResponseReferencesDurableObjectsItem[];
+export const BetaWorkersGetResponseReferencesDurableObjectsList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersGetResponseReferencesDurableObjectsItem,
+  ) as any as S.Schema<BetaWorkersGetResponseReferencesDurableObjectsList>;
+
+export interface BetaWorkersGetResponseReferencesQueuesItem {
+  /** ID of the queue consumer configuration. */
+  queueConsumerId: string;
+  /** ID of the queue. */
+  queueId: string;
+  /** Name of the queue. */
+  queueName: string;
+}
+export const BetaWorkersGetResponseReferencesQueuesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      queueConsumerId: S.String.pipe(T.Body("queue_consumer_id")),
+      queueId: S.String.pipe(T.Body("queue_id")),
+      queueName: S.String.pipe(T.Body("queue_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersGetResponseReferencesQueuesItem",
+  }) as any as S.Schema<BetaWorkersGetResponseReferencesQueuesItem>;
+
+export type BetaWorkersGetResponseReferencesQueuesList =
+  BetaWorkersGetResponseReferencesQueuesItem[];
+export const BetaWorkersGetResponseReferencesQueuesList = /*@__PURE__*/ S.Array(
+  BetaWorkersGetResponseReferencesQueuesItem,
+) as any as S.Schema<BetaWorkersGetResponseReferencesQueuesList>;
+
+export interface BetaWorkersGetResponseReferencesWorkersItem {
+  /** ID of the referencing Worker. */
+  id: string;
+  /** Name of the referencing Worker. */
+  name: string;
+}
+export const BetaWorkersGetResponseReferencesWorkersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "BetaWorkersGetResponseReferencesWorkersItem",
+  }) as any as S.Schema<BetaWorkersGetResponseReferencesWorkersItem>;
+
+export type BetaWorkersGetResponseReferencesWorkersList =
+  BetaWorkersGetResponseReferencesWorkersItem[];
+export const BetaWorkersGetResponseReferencesWorkersList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersGetResponseReferencesWorkersItem,
+  ) as any as S.Schema<BetaWorkersGetResponseReferencesWorkersList>;
+
+export interface BetaWorkersGetResponseReferences {
+  /** Other Workers that reference the Worker as an outbound for a dispatch namespace. */
+  dispatchNamespaceOutbounds: BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsList;
+  /** Custom domains connected to the Worker. */
+  domains: BetaWorkersGetResponseReferencesDomainsList;
+  /** Other Workers that reference Durable Object classes implemented by the Worker. */
+  durableObjects: BetaWorkersGetResponseReferencesDurableObjectsList;
+  /** Queues that send messages to the Worker. */
+  queues: BetaWorkersGetResponseReferencesQueuesList;
+  /** Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/). */
+  workers: BetaWorkersGetResponseReferencesWorkersList;
+}
+export const BetaWorkersGetResponseReferences = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dispatchNamespaceOutbounds:
+      BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsList.pipe(
+        T.Body("dispatch_namespace_outbounds"),
+      ),
+    domains: BetaWorkersGetResponseReferencesDomainsList,
+    durableObjects: BetaWorkersGetResponseReferencesDurableObjectsList.pipe(
+      T.Body("durable_objects"),
+    ),
+    queues: BetaWorkersGetResponseReferencesQueuesList,
+    workers: BetaWorkersGetResponseReferencesWorkersList,
+  }),
+).annotate({
+  identifier: "BetaWorkersGetResponseReferences",
+}) as any as S.Schema<BetaWorkersGetResponseReferences>;
+
+export interface BetaWorkersGetResponseSubdomain {
+  /** Whether the *.workers.dev subdomain is enabled for the Worker. */
+  enabled?: boolean;
+  /** Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker. */
+  previewsEnabled?: boolean;
+}
+export const BetaWorkersGetResponseSubdomain = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    previewsEnabled: S.optional(S.Boolean.pipe(T.Body("previews_enabled"))),
+  }),
+).annotate({
+  identifier: "BetaWorkersGetResponseSubdomain",
+}) as any as S.Schema<BetaWorkersGetResponseSubdomain>;
+
+export type BetaWorkersGetResponseTagsList = string[];
+export const BetaWorkersGetResponseTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BetaWorkersGetResponseTagsList>;
+
+export interface BetaWorkersGetResponseTailConsumersItem {
+  /** Name of the consumer Worker. */
+  name: string;
+}
+export const BetaWorkersGetResponseTailConsumersItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+    }),
+).annotate({
+  identifier: "BetaWorkersGetResponseTailConsumersItem",
+}) as any as S.Schema<BetaWorkersGetResponseTailConsumersItem>;
+
+export type BetaWorkersGetResponseTailConsumersList =
+  BetaWorkersGetResponseTailConsumersItem[];
+export const BetaWorkersGetResponseTailConsumersList = /*@__PURE__*/ S.Array(
+  BetaWorkersGetResponseTailConsumersItem,
+) as any as S.Schema<BetaWorkersGetResponseTailConsumersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BetaWorkersGetResponse {
-  result?: unknown;
+  /** Immutable ID of the Worker. */
+  id: string;
+  /** When the Worker was created. */
+  createdOn: string;
+  /** Whether logpush is enabled for the Worker. */
+  logpush: boolean;
+  /** Name of the Worker. */
+  name: string;
+  /** Observability settings for the Worker. */
+  observability: BetaWorkersGetResponseObservability;
+  /** Other resources that reference the Worker and depend on it existing. */
+  references: BetaWorkersGetResponseReferences;
+  /** Subdomain settings for the Worker. */
+  subdomain: BetaWorkersGetResponseSubdomain;
+  /** Tags associated with the Worker. */
+  tags: BetaWorkersGetResponseTagsList;
+  /** Other Workers that should consume logs from the Worker. */
+  tailConsumers: BetaWorkersGetResponseTailConsumersList;
+  /** When the Worker was most recently updated. */
+  updatedOn: string;
+  /** When the Worker's most recent deployment was created. `null` if the Worker has never been deployed. */
+  deployedOn?: string;
 }
 export const BetaWorkersGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    logpush: S.Boolean,
+    name: S.String,
+    observability: BetaWorkersGetResponseObservability,
+    references: BetaWorkersGetResponseReferences,
+    subdomain: BetaWorkersGetResponseSubdomain,
+    tags: BetaWorkersGetResponseTagsList,
+    tailConsumers: BetaWorkersGetResponseTailConsumersList.pipe(
+      T.Body("tail_consumers"),
+    ),
+    updatedOn: S.String.pipe(T.Body("updated_on")),
+    deployedOn: S.optional(S.String.pipe(T.Body("deployed_on"))),
   }),
 ).annotate({
   identifier: "BetaWorkersGetResponse",
@@ -496,19 +1587,26 @@ export type BetaWorkersListRequestOrderBy =
 export const BetaWorkersListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface BetaWorkersListRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Sort direction. */
   order?: BetaWorkersListRequestOrder;
-  order_by?: BetaWorkersListRequestOrderBy;
+  /** Property to sort results by. */
+  orderBy?: BetaWorkersListRequestOrderBy;
+  /** Current page. */
   page?: number;
-  per_page?: number;
+  /** Items per-page. */
+  perPage?: number;
 }
 export const BetaWorkersListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     order: S.optional(BetaWorkersListRequestOrder.pipe(T.Query())),
-    order_by: S.optional(BetaWorkersListRequestOrderBy.pipe(T.Query())),
+    orderBy: S.optional(
+      BetaWorkersListRequestOrderBy.pipe(T.Query("order_by")),
+    ),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -520,12 +1618,366 @@ export const BetaWorkersListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BetaWorkersListRequest",
 }) as any as S.Schema<BetaWorkersListRequest>;
 
-export type BetaWorkersListResultList = unknown[];
+export type BetaWorkersListResultItemObservabilityLogsDestinationsList =
+  string[];
+export const BetaWorkersListResultItemObservabilityLogsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BetaWorkersListResultItemObservabilityLogsDestinationsList>;
+
+export interface BetaWorkersListResultItemObservabilityLogs {
+  /** A list of destinations where logs will be exported to. */
+  destinations?: BetaWorkersListResultItemObservabilityLogsDestinationsList;
+  /** Whether logs are enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs?: boolean;
+  /** Whether log persistence is enabled for the Worker. */
+  persist?: boolean;
+}
+export const BetaWorkersListResultItemObservabilityLogs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      destinations: S.optional(
+        BetaWorkersListResultItemObservabilityLogsDestinationsList,
+      ),
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
+      persist: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersListResultItemObservabilityLogs",
+  }) as any as S.Schema<BetaWorkersListResultItemObservabilityLogs>;
+
+export type BetaWorkersListResultItemObservabilityTracesDestinationsList =
+  string[];
+export const BetaWorkersListResultItemObservabilityTracesDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BetaWorkersListResultItemObservabilityTracesDestinationsList>;
+
+export type BetaWorkersListResultItemObservabilityTracesPropagationPolicy =
+  | "authenticated"
+  | "accept"
+  | (string & {});
+export const BetaWorkersListResultItemObservabilityTracesPropagationPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface BetaWorkersListResultItemObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
+  destinations?: BetaWorkersListResultItemObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
+  persist?: boolean;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: BetaWorkersListResultItemObservabilityTracesPropagationPolicy;
+}
+export const BetaWorkersListResultItemObservabilityTraces =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      destinations: S.optional(
+        BetaWorkersListResultItemObservabilityTracesDestinationsList,
+      ),
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      persist: S.optional(S.Boolean),
+      propagationPolicy: S.optional(
+        BetaWorkersListResultItemObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersListResultItemObservabilityTraces",
+  }) as any as S.Schema<BetaWorkersListResultItemObservabilityTraces>;
+
+export interface BetaWorkersListResultItemObservability {
+  /** Whether observability is enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
+  logs?: BetaWorkersListResultItemObservabilityLogs;
+  /** Trace settings for the Worker. */
+  traces?: BetaWorkersListResultItemObservabilityTraces;
+}
+export const BetaWorkersListResultItemObservability = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      logs: S.optional(BetaWorkersListResultItemObservabilityLogs),
+      traces: S.optional(BetaWorkersListResultItemObservabilityTraces),
+    }),
+).annotate({
+  identifier: "BetaWorkersListResultItemObservability",
+}) as any as S.Schema<BetaWorkersListResultItemObservability>;
+
+export interface BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsItem {
+  /** ID of the dispatch namespace. */
+  namespaceId: string;
+  /** Name of the dispatch namespace. */
+  namespaceName: string;
+  /** ID of the Worker using the dispatch namespace. */
+  workerId: string;
+  /** Name of the Worker using the dispatch namespace. */
+  workerName: string;
+}
+export const BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      namespaceId: S.String.pipe(T.Body("namespace_id")),
+      namespaceName: S.String.pipe(T.Body("namespace_name")),
+      workerId: S.String.pipe(T.Body("worker_id")),
+      workerName: S.String.pipe(T.Body("worker_name")),
+    }),
+  ).annotate({
+    identifier:
+      "BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsItem",
+  }) as any as S.Schema<BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsItem>;
+
+export type BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsList =
+  BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsItem[];
+export const BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsItem,
+  ) as any as S.Schema<BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsList>;
+
+export interface BetaWorkersListResultItemReferencesDomainsItem {
+  /** ID of the custom domain. */
+  id: string;
+  /** ID of the TLS certificate issued for the custom domain. */
+  certificateId: string;
+  /** Full hostname of the custom domain, including the zone name. */
+  hostname: string;
+  /** ID of the zone. */
+  zoneId: string;
+  /** Name of the zone. */
+  zoneName: string;
+}
+export const BetaWorkersListResultItemReferencesDomainsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      certificateId: S.String.pipe(T.Body("certificate_id")),
+      hostname: S.String,
+      zoneId: S.String.pipe(T.Body("zone_id")),
+      zoneName: S.String.pipe(T.Body("zone_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersListResultItemReferencesDomainsItem",
+  }) as any as S.Schema<BetaWorkersListResultItemReferencesDomainsItem>;
+
+export type BetaWorkersListResultItemReferencesDomainsList =
+  BetaWorkersListResultItemReferencesDomainsItem[];
+export const BetaWorkersListResultItemReferencesDomainsList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersListResultItemReferencesDomainsItem,
+  ) as any as S.Schema<BetaWorkersListResultItemReferencesDomainsList>;
+
+export interface BetaWorkersListResultItemReferencesDurableObjectsItem {
+  /** ID of the Durable Object namespace being used. */
+  namespaceId: string;
+  /** Name of the Durable Object namespace being used. */
+  namespaceName: string;
+  /** ID of the Worker using the Durable Object implementation. */
+  workerId: string;
+  /** Name of the Worker using the Durable Object implementation. */
+  workerName: string;
+}
+export const BetaWorkersListResultItemReferencesDurableObjectsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      namespaceId: S.String.pipe(T.Body("namespace_id")),
+      namespaceName: S.String.pipe(T.Body("namespace_name")),
+      workerId: S.String.pipe(T.Body("worker_id")),
+      workerName: S.String.pipe(T.Body("worker_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersListResultItemReferencesDurableObjectsItem",
+  }) as any as S.Schema<BetaWorkersListResultItemReferencesDurableObjectsItem>;
+
+export type BetaWorkersListResultItemReferencesDurableObjectsList =
+  BetaWorkersListResultItemReferencesDurableObjectsItem[];
+export const BetaWorkersListResultItemReferencesDurableObjectsList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersListResultItemReferencesDurableObjectsItem,
+  ) as any as S.Schema<BetaWorkersListResultItemReferencesDurableObjectsList>;
+
+export interface BetaWorkersListResultItemReferencesQueuesItem {
+  /** ID of the queue consumer configuration. */
+  queueConsumerId: string;
+  /** ID of the queue. */
+  queueId: string;
+  /** Name of the queue. */
+  queueName: string;
+}
+export const BetaWorkersListResultItemReferencesQueuesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      queueConsumerId: S.String.pipe(T.Body("queue_consumer_id")),
+      queueId: S.String.pipe(T.Body("queue_id")),
+      queueName: S.String.pipe(T.Body("queue_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersListResultItemReferencesQueuesItem",
+  }) as any as S.Schema<BetaWorkersListResultItemReferencesQueuesItem>;
+
+export type BetaWorkersListResultItemReferencesQueuesList =
+  BetaWorkersListResultItemReferencesQueuesItem[];
+export const BetaWorkersListResultItemReferencesQueuesList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersListResultItemReferencesQueuesItem,
+  ) as any as S.Schema<BetaWorkersListResultItemReferencesQueuesList>;
+
+export interface BetaWorkersListResultItemReferencesWorkersItem {
+  /** ID of the referencing Worker. */
+  id: string;
+  /** Name of the referencing Worker. */
+  name: string;
+}
+export const BetaWorkersListResultItemReferencesWorkersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "BetaWorkersListResultItemReferencesWorkersItem",
+  }) as any as S.Schema<BetaWorkersListResultItemReferencesWorkersItem>;
+
+export type BetaWorkersListResultItemReferencesWorkersList =
+  BetaWorkersListResultItemReferencesWorkersItem[];
+export const BetaWorkersListResultItemReferencesWorkersList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersListResultItemReferencesWorkersItem,
+  ) as any as S.Schema<BetaWorkersListResultItemReferencesWorkersList>;
+
+export interface BetaWorkersListResultItemReferences {
+  /** Other Workers that reference the Worker as an outbound for a dispatch namespace. */
+  dispatchNamespaceOutbounds: BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsList;
+  /** Custom domains connected to the Worker. */
+  domains: BetaWorkersListResultItemReferencesDomainsList;
+  /** Other Workers that reference Durable Object classes implemented by the Worker. */
+  durableObjects: BetaWorkersListResultItemReferencesDurableObjectsList;
+  /** Queues that send messages to the Worker. */
+  queues: BetaWorkersListResultItemReferencesQueuesList;
+  /** Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/). */
+  workers: BetaWorkersListResultItemReferencesWorkersList;
+}
+export const BetaWorkersListResultItemReferences = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dispatchNamespaceOutbounds:
+      BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsList.pipe(
+        T.Body("dispatch_namespace_outbounds"),
+      ),
+    domains: BetaWorkersListResultItemReferencesDomainsList,
+    durableObjects: BetaWorkersListResultItemReferencesDurableObjectsList.pipe(
+      T.Body("durable_objects"),
+    ),
+    queues: BetaWorkersListResultItemReferencesQueuesList,
+    workers: BetaWorkersListResultItemReferencesWorkersList,
+  }),
+).annotate({
+  identifier: "BetaWorkersListResultItemReferences",
+}) as any as S.Schema<BetaWorkersListResultItemReferences>;
+
+export interface BetaWorkersListResultItemSubdomain {
+  /** Whether the *.workers.dev subdomain is enabled for the Worker. */
+  enabled?: boolean;
+  /** Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker. */
+  previewsEnabled?: boolean;
+}
+export const BetaWorkersListResultItemSubdomain = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    previewsEnabled: S.optional(S.Boolean.pipe(T.Body("previews_enabled"))),
+  }),
+).annotate({
+  identifier: "BetaWorkersListResultItemSubdomain",
+}) as any as S.Schema<BetaWorkersListResultItemSubdomain>;
+
+export type BetaWorkersListResultItemTagsList = string[];
+export const BetaWorkersListResultItemTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BetaWorkersListResultItemTagsList>;
+
+export interface BetaWorkersListResultItemTailConsumersItem {
+  /** Name of the consumer Worker. */
+  name: string;
+}
+export const BetaWorkersListResultItemTailConsumersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "BetaWorkersListResultItemTailConsumersItem",
+  }) as any as S.Schema<BetaWorkersListResultItemTailConsumersItem>;
+
+export type BetaWorkersListResultItemTailConsumersList =
+  BetaWorkersListResultItemTailConsumersItem[];
+export const BetaWorkersListResultItemTailConsumersList = /*@__PURE__*/ S.Array(
+  BetaWorkersListResultItemTailConsumersItem,
+) as any as S.Schema<BetaWorkersListResultItemTailConsumersList>;
+
+export interface BetaWorkersListResultItem {
+  /** Immutable ID of the Worker. */
+  id: string;
+  /** When the Worker was created. */
+  createdOn: string;
+  /** Whether logpush is enabled for the Worker. */
+  logpush: boolean;
+  /** Name of the Worker. */
+  name: string;
+  /** Observability settings for the Worker. */
+  observability: BetaWorkersListResultItemObservability;
+  /** Other resources that reference the Worker and depend on it existing. */
+  references: BetaWorkersListResultItemReferences;
+  /** Subdomain settings for the Worker. */
+  subdomain: BetaWorkersListResultItemSubdomain;
+  /** Tags associated with the Worker. */
+  tags: BetaWorkersListResultItemTagsList;
+  /** Other Workers that should consume logs from the Worker. */
+  tailConsumers: BetaWorkersListResultItemTailConsumersList;
+  /** When the Worker was most recently updated. */
+  updatedOn: string;
+  /** When the Worker's most recent deployment was created. `null` if the Worker has never been deployed. */
+  deployedOn?: string;
+}
+export const BetaWorkersListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    logpush: S.Boolean,
+    name: S.String,
+    observability: BetaWorkersListResultItemObservability,
+    references: BetaWorkersListResultItemReferences,
+    subdomain: BetaWorkersListResultItemSubdomain,
+    tags: BetaWorkersListResultItemTagsList,
+    tailConsumers: BetaWorkersListResultItemTailConsumersList.pipe(
+      T.Body("tail_consumers"),
+    ),
+    updatedOn: S.String.pipe(T.Body("updated_on")),
+    deployedOn: S.optional(S.String.pipe(T.Body("deployed_on"))),
+  }),
+).annotate({
+  identifier: "BetaWorkersListResultItem",
+}) as any as S.Schema<BetaWorkersListResultItem>;
+
+export type BetaWorkersListResultList = BetaWorkersListResultItem[];
 export const BetaWorkersListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  BetaWorkersListResultItem,
 ) as any as S.Schema<BetaWorkersListResultList>;
 
 export interface BetaWorkersListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: BetaWorkersListResultList;
 }
 export const BetaWorkersListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -544,10 +1996,15 @@ export const BetaWorkersUpdateRequestObservabilityLogsDestinationsList =
   ) as any as S.Schema<BetaWorkersUpdateRequestObservabilityLogsDestinationsList>;
 
 export interface BetaWorkersUpdateRequestObservabilityLogs {
+  /** A list of destinations where logs will be exported to. */
   destinations?: BetaWorkersUpdateRequestObservabilityLogsDestinationsList;
+  /** Whether logs are enabled for the Worker. */
   enabled?: boolean;
-  head_sampling_rate?: number;
-  invocation_logs?: boolean;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs?: boolean;
+  /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
 export const BetaWorkersUpdateRequestObservabilityLogs =
@@ -557,8 +2014,8 @@ export const BetaWorkersUpdateRequestObservabilityLogs =
         BetaWorkersUpdateRequestObservabilityLogsDestinationsList,
       ),
       enabled: S.optional(S.Boolean),
-      head_sampling_rate: S.optional(S.Number),
-      invocation_logs: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
       persist: S.optional(S.Boolean),
     }),
   ).annotate({
@@ -580,11 +2037,16 @@ export const BetaWorkersUpdateRequestObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
 export interface BetaWorkersUpdateRequestObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersUpdateRequestObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
   enabled?: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
   persist?: boolean;
-  propagation_policy?: BetaWorkersUpdateRequestObservabilityTracesPropagationPolicy;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: BetaWorkersUpdateRequestObservabilityTracesPropagationPolicy;
 }
 export const BetaWorkersUpdateRequestObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
@@ -593,10 +2055,12 @@ export const BetaWorkersUpdateRequestObservabilityTraces =
         BetaWorkersUpdateRequestObservabilityTracesDestinationsList,
       ),
       enabled: S.optional(S.Boolean),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
-      propagation_policy: S.optional(
-        BetaWorkersUpdateRequestObservabilityTracesPropagationPolicy,
+      propagationPolicy: S.optional(
+        BetaWorkersUpdateRequestObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
       ),
     }),
   ).annotate({
@@ -604,16 +2068,20 @@ export const BetaWorkersUpdateRequestObservabilityTraces =
   }) as any as S.Schema<BetaWorkersUpdateRequestObservabilityTraces>;
 
 export interface BetaWorkersUpdateRequestObservability {
+  /** Whether observability is enabled for the Worker. */
   enabled?: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
   logs?: BetaWorkersUpdateRequestObservabilityLogs;
+  /** Trace settings for the Worker. */
   traces?: BetaWorkersUpdateRequestObservabilityTraces;
 }
 export const BetaWorkersUpdateRequestObservability = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       enabled: S.optional(S.Boolean),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       logs: S.optional(BetaWorkersUpdateRequestObservabilityLogs),
       traces: S.optional(BetaWorkersUpdateRequestObservabilityTraces),
     }),
@@ -622,13 +2090,15 @@ export const BetaWorkersUpdateRequestObservability = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BetaWorkersUpdateRequestObservability>;
 
 export interface BetaWorkersUpdateRequestSubdomain {
+  /** Whether the *.workers.dev subdomain is enabled for the Worker. */
   enabled?: boolean;
-  previews_enabled?: boolean;
+  /** Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker. */
+  previewsEnabled?: boolean;
 }
 export const BetaWorkersUpdateRequestSubdomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
-    previews_enabled: S.optional(S.Boolean),
+    previewsEnabled: S.optional(S.Boolean.pipe(T.Body("previews_enabled"))),
   }),
 ).annotate({
   identifier: "BetaWorkersUpdateRequestSubdomain",
@@ -640,6 +2110,7 @@ export const BetaWorkersUpdateRequestTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BetaWorkersUpdateRequestTagsList>;
 
 export interface BetaWorkersUpdateRequestTailConsumersItem {
+  /** Name of the consumer Worker. */
   name: string;
 }
 export const BetaWorkersUpdateRequestTailConsumersItem =
@@ -658,25 +2129,35 @@ export const BetaWorkersUpdateRequestTailConsumersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BetaWorkersUpdateRequestTailConsumersList>;
 
 export interface BetaWorkersUpdateRequest {
-  account_id: string;
-  worker_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Identifier for the Worker, which can be ID or name. */
+  workerId: string;
+  /** Name of the Worker. */
   name: string;
+  /** Whether logpush is enabled for the Worker. */
   logpush?: boolean;
+  /** Observability settings for the Worker. */
   observability?: BetaWorkersUpdateRequestObservability;
+  /** Subdomain settings for the Worker. */
   subdomain?: BetaWorkersUpdateRequestSubdomain;
+  /** Tags associated with the Worker. */
   tags?: BetaWorkersUpdateRequestTagsList;
-  tail_consumers?: BetaWorkersUpdateRequestTailConsumersList;
+  /** Other Workers that should consume logs from the Worker. */
+  tailConsumers?: BetaWorkersUpdateRequestTailConsumersList;
 }
 export const BetaWorkersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    worker_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workerId: S.String.pipe(T.Label("worker_id")),
     name: S.String,
     logpush: S.optional(S.Boolean),
     observability: S.optional(BetaWorkersUpdateRequestObservability),
     subdomain: S.optional(BetaWorkersUpdateRequestSubdomain),
     tags: S.optional(BetaWorkersUpdateRequestTagsList),
-    tail_consumers: S.optional(BetaWorkersUpdateRequestTailConsumersList),
+    tailConsumers: S.optional(
+      BetaWorkersUpdateRequestTailConsumersList.pipe(T.Body("tail_consumers")),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -688,28 +2169,374 @@ export const BetaWorkersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BetaWorkersUpdateRequest",
 }) as any as S.Schema<BetaWorkersUpdateRequest>;
 
+export type BetaWorkersUpdateResponseObservabilityLogsDestinationsList =
+  string[];
+export const BetaWorkersUpdateResponseObservabilityLogsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BetaWorkersUpdateResponseObservabilityLogsDestinationsList>;
+
+export interface BetaWorkersUpdateResponseObservabilityLogs {
+  /** A list of destinations where logs will be exported to. */
+  destinations?: BetaWorkersUpdateResponseObservabilityLogsDestinationsList;
+  /** Whether logs are enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs?: boolean;
+  /** Whether log persistence is enabled for the Worker. */
+  persist?: boolean;
+}
+export const BetaWorkersUpdateResponseObservabilityLogs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      destinations: S.optional(
+        BetaWorkersUpdateResponseObservabilityLogsDestinationsList,
+      ),
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
+      persist: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersUpdateResponseObservabilityLogs",
+  }) as any as S.Schema<BetaWorkersUpdateResponseObservabilityLogs>;
+
+export type BetaWorkersUpdateResponseObservabilityTracesDestinationsList =
+  string[];
+export const BetaWorkersUpdateResponseObservabilityTracesDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BetaWorkersUpdateResponseObservabilityTracesDestinationsList>;
+
+export type BetaWorkersUpdateResponseObservabilityTracesPropagationPolicy =
+  | "authenticated"
+  | "accept"
+  | (string & {});
+export const BetaWorkersUpdateResponseObservabilityTracesPropagationPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface BetaWorkersUpdateResponseObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
+  destinations?: BetaWorkersUpdateResponseObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
+  persist?: boolean;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: BetaWorkersUpdateResponseObservabilityTracesPropagationPolicy;
+}
+export const BetaWorkersUpdateResponseObservabilityTraces =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      destinations: S.optional(
+        BetaWorkersUpdateResponseObservabilityTracesDestinationsList,
+      ),
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      persist: S.optional(S.Boolean),
+      propagationPolicy: S.optional(
+        BetaWorkersUpdateResponseObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersUpdateResponseObservabilityTraces",
+  }) as any as S.Schema<BetaWorkersUpdateResponseObservabilityTraces>;
+
+export interface BetaWorkersUpdateResponseObservability {
+  /** Whether observability is enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%). */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
+  logs?: BetaWorkersUpdateResponseObservabilityLogs;
+  /** Trace settings for the Worker. */
+  traces?: BetaWorkersUpdateResponseObservabilityTraces;
+}
+export const BetaWorkersUpdateResponseObservability = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      logs: S.optional(BetaWorkersUpdateResponseObservabilityLogs),
+      traces: S.optional(BetaWorkersUpdateResponseObservabilityTraces),
+    }),
+).annotate({
+  identifier: "BetaWorkersUpdateResponseObservability",
+}) as any as S.Schema<BetaWorkersUpdateResponseObservability>;
+
+export interface BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsItem {
+  /** ID of the dispatch namespace. */
+  namespaceId: string;
+  /** Name of the dispatch namespace. */
+  namespaceName: string;
+  /** ID of the Worker using the dispatch namespace. */
+  workerId: string;
+  /** Name of the Worker using the dispatch namespace. */
+  workerName: string;
+}
+export const BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      namespaceId: S.String.pipe(T.Body("namespace_id")),
+      namespaceName: S.String.pipe(T.Body("namespace_name")),
+      workerId: S.String.pipe(T.Body("worker_id")),
+      workerName: S.String.pipe(T.Body("worker_name")),
+    }),
+  ).annotate({
+    identifier:
+      "BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsItem",
+  }) as any as S.Schema<BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsItem>;
+
+export type BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsList =
+  BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsItem[];
+export const BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsItem,
+  ) as any as S.Schema<BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsList>;
+
+export interface BetaWorkersUpdateResponseReferencesDomainsItem {
+  /** ID of the custom domain. */
+  id: string;
+  /** ID of the TLS certificate issued for the custom domain. */
+  certificateId: string;
+  /** Full hostname of the custom domain, including the zone name. */
+  hostname: string;
+  /** ID of the zone. */
+  zoneId: string;
+  /** Name of the zone. */
+  zoneName: string;
+}
+export const BetaWorkersUpdateResponseReferencesDomainsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      certificateId: S.String.pipe(T.Body("certificate_id")),
+      hostname: S.String,
+      zoneId: S.String.pipe(T.Body("zone_id")),
+      zoneName: S.String.pipe(T.Body("zone_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersUpdateResponseReferencesDomainsItem",
+  }) as any as S.Schema<BetaWorkersUpdateResponseReferencesDomainsItem>;
+
+export type BetaWorkersUpdateResponseReferencesDomainsList =
+  BetaWorkersUpdateResponseReferencesDomainsItem[];
+export const BetaWorkersUpdateResponseReferencesDomainsList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersUpdateResponseReferencesDomainsItem,
+  ) as any as S.Schema<BetaWorkersUpdateResponseReferencesDomainsList>;
+
+export interface BetaWorkersUpdateResponseReferencesDurableObjectsItem {
+  /** ID of the Durable Object namespace being used. */
+  namespaceId: string;
+  /** Name of the Durable Object namespace being used. */
+  namespaceName: string;
+  /** ID of the Worker using the Durable Object implementation. */
+  workerId: string;
+  /** Name of the Worker using the Durable Object implementation. */
+  workerName: string;
+}
+export const BetaWorkersUpdateResponseReferencesDurableObjectsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      namespaceId: S.String.pipe(T.Body("namespace_id")),
+      namespaceName: S.String.pipe(T.Body("namespace_name")),
+      workerId: S.String.pipe(T.Body("worker_id")),
+      workerName: S.String.pipe(T.Body("worker_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersUpdateResponseReferencesDurableObjectsItem",
+  }) as any as S.Schema<BetaWorkersUpdateResponseReferencesDurableObjectsItem>;
+
+export type BetaWorkersUpdateResponseReferencesDurableObjectsList =
+  BetaWorkersUpdateResponseReferencesDurableObjectsItem[];
+export const BetaWorkersUpdateResponseReferencesDurableObjectsList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersUpdateResponseReferencesDurableObjectsItem,
+  ) as any as S.Schema<BetaWorkersUpdateResponseReferencesDurableObjectsList>;
+
+export interface BetaWorkersUpdateResponseReferencesQueuesItem {
+  /** ID of the queue consumer configuration. */
+  queueConsumerId: string;
+  /** ID of the queue. */
+  queueId: string;
+  /** Name of the queue. */
+  queueName: string;
+}
+export const BetaWorkersUpdateResponseReferencesQueuesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      queueConsumerId: S.String.pipe(T.Body("queue_consumer_id")),
+      queueId: S.String.pipe(T.Body("queue_id")),
+      queueName: S.String.pipe(T.Body("queue_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersUpdateResponseReferencesQueuesItem",
+  }) as any as S.Schema<BetaWorkersUpdateResponseReferencesQueuesItem>;
+
+export type BetaWorkersUpdateResponseReferencesQueuesList =
+  BetaWorkersUpdateResponseReferencesQueuesItem[];
+export const BetaWorkersUpdateResponseReferencesQueuesList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersUpdateResponseReferencesQueuesItem,
+  ) as any as S.Schema<BetaWorkersUpdateResponseReferencesQueuesList>;
+
+export interface BetaWorkersUpdateResponseReferencesWorkersItem {
+  /** ID of the referencing Worker. */
+  id: string;
+  /** Name of the referencing Worker. */
+  name: string;
+}
+export const BetaWorkersUpdateResponseReferencesWorkersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "BetaWorkersUpdateResponseReferencesWorkersItem",
+  }) as any as S.Schema<BetaWorkersUpdateResponseReferencesWorkersItem>;
+
+export type BetaWorkersUpdateResponseReferencesWorkersList =
+  BetaWorkersUpdateResponseReferencesWorkersItem[];
+export const BetaWorkersUpdateResponseReferencesWorkersList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersUpdateResponseReferencesWorkersItem,
+  ) as any as S.Schema<BetaWorkersUpdateResponseReferencesWorkersList>;
+
+export interface BetaWorkersUpdateResponseReferences {
+  /** Other Workers that reference the Worker as an outbound for a dispatch namespace. */
+  dispatchNamespaceOutbounds: BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsList;
+  /** Custom domains connected to the Worker. */
+  domains: BetaWorkersUpdateResponseReferencesDomainsList;
+  /** Other Workers that reference Durable Object classes implemented by the Worker. */
+  durableObjects: BetaWorkersUpdateResponseReferencesDurableObjectsList;
+  /** Queues that send messages to the Worker. */
+  queues: BetaWorkersUpdateResponseReferencesQueuesList;
+  /** Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/). */
+  workers: BetaWorkersUpdateResponseReferencesWorkersList;
+}
+export const BetaWorkersUpdateResponseReferences = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dispatchNamespaceOutbounds:
+      BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsList.pipe(
+        T.Body("dispatch_namespace_outbounds"),
+      ),
+    domains: BetaWorkersUpdateResponseReferencesDomainsList,
+    durableObjects: BetaWorkersUpdateResponseReferencesDurableObjectsList.pipe(
+      T.Body("durable_objects"),
+    ),
+    queues: BetaWorkersUpdateResponseReferencesQueuesList,
+    workers: BetaWorkersUpdateResponseReferencesWorkersList,
+  }),
+).annotate({
+  identifier: "BetaWorkersUpdateResponseReferences",
+}) as any as S.Schema<BetaWorkersUpdateResponseReferences>;
+
+export interface BetaWorkersUpdateResponseSubdomain {
+  /** Whether the *.workers.dev subdomain is enabled for the Worker. */
+  enabled?: boolean;
+  /** Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker. */
+  previewsEnabled?: boolean;
+}
+export const BetaWorkersUpdateResponseSubdomain = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    previewsEnabled: S.optional(S.Boolean.pipe(T.Body("previews_enabled"))),
+  }),
+).annotate({
+  identifier: "BetaWorkersUpdateResponseSubdomain",
+}) as any as S.Schema<BetaWorkersUpdateResponseSubdomain>;
+
+export type BetaWorkersUpdateResponseTagsList = string[];
+export const BetaWorkersUpdateResponseTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BetaWorkersUpdateResponseTagsList>;
+
+export interface BetaWorkersUpdateResponseTailConsumersItem {
+  /** Name of the consumer Worker. */
+  name: string;
+}
+export const BetaWorkersUpdateResponseTailConsumersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "BetaWorkersUpdateResponseTailConsumersItem",
+  }) as any as S.Schema<BetaWorkersUpdateResponseTailConsumersItem>;
+
+export type BetaWorkersUpdateResponseTailConsumersList =
+  BetaWorkersUpdateResponseTailConsumersItem[];
+export const BetaWorkersUpdateResponseTailConsumersList = /*@__PURE__*/ S.Array(
+  BetaWorkersUpdateResponseTailConsumersItem,
+) as any as S.Schema<BetaWorkersUpdateResponseTailConsumersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BetaWorkersUpdateResponse {
-  result?: unknown;
+  /** Immutable ID of the Worker. */
+  id: string;
+  /** When the Worker was created. */
+  createdOn: string;
+  /** Whether logpush is enabled for the Worker. */
+  logpush: boolean;
+  /** Name of the Worker. */
+  name: string;
+  /** Observability settings for the Worker. */
+  observability: BetaWorkersUpdateResponseObservability;
+  /** Other resources that reference the Worker and depend on it existing. */
+  references: BetaWorkersUpdateResponseReferences;
+  /** Subdomain settings for the Worker. */
+  subdomain: BetaWorkersUpdateResponseSubdomain;
+  /** Tags associated with the Worker. */
+  tags: BetaWorkersUpdateResponseTagsList;
+  /** Other Workers that should consume logs from the Worker. */
+  tailConsumers: BetaWorkersUpdateResponseTailConsumersList;
+  /** When the Worker was most recently updated. */
+  updatedOn: string;
+  /** When the Worker's most recent deployment was created. `null` if the Worker has never been deployed. */
+  deployedOn?: string;
 }
 export const BetaWorkersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    logpush: S.Boolean,
+    name: S.String,
+    observability: BetaWorkersUpdateResponseObservability,
+    references: BetaWorkersUpdateResponseReferences,
+    subdomain: BetaWorkersUpdateResponseSubdomain,
+    tags: BetaWorkersUpdateResponseTagsList,
+    tailConsumers: BetaWorkersUpdateResponseTailConsumersList.pipe(
+      T.Body("tail_consumers"),
+    ),
+    updatedOn: S.String.pipe(T.Body("updated_on")),
+    deployedOn: S.optional(S.String.pipe(T.Body("deployed_on"))),
   }),
 ).annotate({
   identifier: "BetaWorkersUpdateResponse",
 }) as any as S.Schema<BetaWorkersUpdateResponse>;
 
 export interface BetaWorkersVersionsCreateRequestAnnotations {
-  _workers_message_?: string;
-  _workers_tag_?: string;
-  _workers_triggered_by_?: string;
+  /** Human-readable message about the version. Truncated to 1000 bytes if longer. */
+  WorkersMessage_?: string;
+  /** User-provided identifier for the version. Maximum 100 bytes. */
+  WorkersTag_?: string;
+  /** Operation that triggered the creation of the version. */
+  WorkersTriggeredBy_?: string;
 }
 export const BetaWorkersVersionsCreateRequestAnnotations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      _workers_message_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
-      _workers_tag_: S.optional(S.String.pipe(T.Body('"workers/tag"'))),
-      _workers_triggered_by_: S.optional(
+      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
+      WorkersTag_: S.optional(S.String.pipe(T.Body('"workers/tag"'))),
+      WorkersTriggeredBy_: S.optional(
         S.String.pipe(T.Body('"workers/triggered_by"')),
       ),
     }),
@@ -734,29 +2561,55 @@ export type BetaWorkersVersionsCreateRequestAssetsConfigNotFoundHandling =
 export const BetaWorkersVersionsCreateRequestAssetsConfigNotFoundHandling =
   /*@__PURE__*/ S.String;
 
+export interface BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstItem {
+  /** Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules. */
+  arrayOfString: unknown;
+  /** Enables routing to always invoke the Worker script ahead of all requests. When true, this is equivalent to `["/*"]` in the string array version of this field. */
+  boolean: unknown;
+}
+export const BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      arrayOfString: S.Unknown.pipe(T.Body("array of string")),
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier:
+      "BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstItem",
+  }) as any as S.Schema<BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstItem>;
+
 export type BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstList =
-  unknown[];
+  BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstItem[];
 export const BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstItem,
   ) as any as S.Schema<BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstList>;
 
 export interface BetaWorkersVersionsCreateRequestAssetsConfig {
-  html_handling?: BetaWorkersVersionsCreateRequestAssetsConfigHtmlHandling;
-  not_found_handling?: BetaWorkersVersionsCreateRequestAssetsConfigNotFoundHandling;
-  run_worker_first?: BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstList;
+  /** Determines the redirects and rewrites of requests for HTML content. */
+  htmlHandling?: BetaWorkersVersionsCreateRequestAssetsConfigHtmlHandling;
+  /** Determines the response when a request does not match a static asset, and there is no Worker script. */
+  notFoundHandling?: BetaWorkersVersionsCreateRequestAssetsConfigNotFoundHandling;
+  /** Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules. */
+  runWorkerFirst?: BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstList;
 }
 export const BetaWorkersVersionsCreateRequestAssetsConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      html_handling: S.optional(
-        BetaWorkersVersionsCreateRequestAssetsConfigHtmlHandling,
+      htmlHandling: S.optional(
+        BetaWorkersVersionsCreateRequestAssetsConfigHtmlHandling.pipe(
+          T.Body("html_handling"),
+        ),
       ),
-      not_found_handling: S.optional(
-        BetaWorkersVersionsCreateRequestAssetsConfigNotFoundHandling,
+      notFoundHandling: S.optional(
+        BetaWorkersVersionsCreateRequestAssetsConfigNotFoundHandling.pipe(
+          T.Body("not_found_handling"),
+        ),
       ),
-      run_worker_first: S.optional(
-        BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstList,
+      runWorkerFirst: S.optional(
+        BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstList.pipe(
+          T.Body("run_worker_first"),
+        ),
       ),
     }),
   ).annotate({
@@ -764,7 +2617,9 @@ export const BetaWorkersVersionsCreateRequestAssetsConfig =
   }) as any as S.Schema<BetaWorkersVersionsCreateRequestAssetsConfig>;
 
 export interface BetaWorkersVersionsCreateRequestAssets {
+  /** Configuration for assets within a Worker. */
   config?: BetaWorkersVersionsCreateRequestAssetsConfig;
+  /** Token provided upon successful upload of all files from a registered manifest. */
   jwt?: string;
 }
 export const BetaWorkersVersionsCreateRequestAssets = /*@__PURE__*/ S.suspend(
@@ -778,160 +2633,152 @@ export const BetaWorkersVersionsCreateRequestAssets = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BetaWorkersVersionsCreateRequestAssets>;
 
 export interface BetaWorkersVersionsCreateRequestBindingsItem {
-  AI_object___name__type__: unknown;
-  AISearch_object___instance_name__name__type__namespace__: unknown;
-  AISearchNamespace_object___name__namespace__type__: unknown;
-  AnalyticsEngine_object___dataset__name__type__: unknown;
-  Assets_object___name__type__: unknown;
-  Browser_object___name__type__: unknown;
-  D1_object___database_id__name__type__id__: unknown;
-  DataBlob_object___name__part__type__: unknown;
-  DispatchNamespace_object___name__namespace__type__outbound__: unknown;
-  DurableObjectNamespace_object___name__type__class_name__4_more__: unknown;
-  Hyperdrive_object___id__name__type__: unknown;
-  Inherit_object___name__type__old_name__version_id__: unknown;
-  Images_object___name__type__: unknown;
-  Json_object___json__name__type__: unknown;
-  KVNamespace_object___name__namespace_id__type__: unknown;
-  Media_object___name__type__: unknown;
-  MTLSCertificate_object___certificate_id__name__type__: unknown;
-  PlainText_object___name__text__type__: unknown;
-  Pipelines_object___name__pipeline__type__: unknown;
-  Queue_object___name__queue_name__type__: unknown;
-  Ratelimit_object___name__namespace_id__simple__type__: unknown;
-  R2Bucket_object___bucket_name__name__type__jurisdiction__: unknown;
-  SecretText_object___name__text__type__: unknown;
-  SendEmail_object___name__type__allowed_destination_addresses__2_more__: unknown;
-  Service_object___name__service__type__2_more__: unknown;
-  TextBlob_object___name__part__type__: unknown;
-  Vectorize_object___index_name__name__type__: unknown;
-  VersionMetadata_object___name__type__: unknown;
-  SecretsStoreSecret_object___name__secret_name__store_id__type__: unknown;
-  Flagship_object___app_id__name__type__: unknown;
-  SecretKey_object___algorithm__format__name__4_more__: unknown;
-  Workflow_object___name__type__workflow_name__2_more__: unknown;
-  WasmModule_object___name__part__type__: unknown;
-  VPCService_object___name__service_id__type__: unknown;
-  VPCNetwork_object___name__type__network_id__tunnel_id__: unknown;
+  AIObjectNameType__: unknown;
+  AISearchObjectInstanceNameNameTypeNamespace__: unknown;
+  AISearchNamespaceObjectNameNamespaceType__: unknown;
+  AnalyticsEngineObjectDatasetNameType__: unknown;
+  AssetsObjectNameType__: unknown;
+  BrowserObjectNameType__: unknown;
+  D1ObjectDatabaseIdNameTypeId__: unknown;
+  DataBlobObjectNamePartType__: unknown;
+  DispatchNamespaceObjectNameNamespaceTypeOutbound__: unknown;
+  DurableObjectNamespaceObjectNameTypeClassName4More__: unknown;
+  HyperdriveObjectIdNameType__: unknown;
+  InheritObjectNameTypeOldNameVersionId__: unknown;
+  ImagesObjectNameType__: unknown;
+  JsonObjectJsonNameType__: unknown;
+  KVNamespaceObjectNameNamespaceIdType__: unknown;
+  MediaObjectNameType__: unknown;
+  MTLSCertificateObjectCertificateIdNameType__: unknown;
+  PlainTextObjectNameTextType__: unknown;
+  PipelinesObjectNamePipelineType__: unknown;
+  QueueObjectNameQueueNameType__: unknown;
+  RatelimitObjectNameNamespaceIdSimpleType__: unknown;
+  R2BucketObjectBucketNameNameTypeJurisdiction__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SendEmailObjectNameTypeAllowedDestinationAddresses2More__: unknown;
+  ServiceObjectNameServiceType2More__: unknown;
+  TextBlobObjectNamePartType__: unknown;
+  VectorizeObjectIndexNameNameType__: unknown;
+  VersionMetadataObjectNameType__: unknown;
+  SecretsStoreSecretObjectNameSecretNameStoreIdType__: unknown;
+  FlagshipObjectAppIdNameType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
+  WorkflowObjectNameTypeWorkflowName2More__: unknown;
+  WasmModuleObjectNamePartType__: unknown;
+  VPCServiceObjectNameServiceIdType__: unknown;
+  VPCNetworkObjectNameTypeNetworkIdTunnelId__: unknown;
 }
 export const BetaWorkersVersionsCreateRequestBindingsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AI_object___name__type__: S.Unknown.pipe(
-        T.Body("AI object { name, type }"),
-      ),
-      AISearch_object___instance_name__name__type__namespace__: S.Unknown.pipe(
+      AIObjectNameType__: S.Unknown.pipe(T.Body("AI object { name, type }")),
+      AISearchObjectInstanceNameNameTypeNamespace__: S.Unknown.pipe(
         T.Body("AISearch object { instance_name, name, type, namespace }"),
       ),
-      AISearchNamespace_object___name__namespace__type__: S.Unknown.pipe(
+      AISearchNamespaceObjectNameNamespaceType__: S.Unknown.pipe(
         T.Body("AISearchNamespace object { name, namespace, type }"),
       ),
-      AnalyticsEngine_object___dataset__name__type__: S.Unknown.pipe(
+      AnalyticsEngineObjectDatasetNameType__: S.Unknown.pipe(
         T.Body("AnalyticsEngine object { dataset, name, type }"),
       ),
-      Assets_object___name__type__: S.Unknown.pipe(
+      AssetsObjectNameType__: S.Unknown.pipe(
         T.Body("Assets object { name, type }"),
       ),
-      Browser_object___name__type__: S.Unknown.pipe(
+      BrowserObjectNameType__: S.Unknown.pipe(
         T.Body("Browser object { name, type }"),
       ),
-      D1_object___database_id__name__type__id__: S.Unknown.pipe(
+      D1ObjectDatabaseIdNameTypeId__: S.Unknown.pipe(
         T.Body("D1 object { database_id, name, type, id }"),
       ),
-      DataBlob_object___name__part__type__: S.Unknown.pipe(
+      DataBlobObjectNamePartType__: S.Unknown.pipe(
         T.Body("DataBlob object { name, part, type }"),
       ),
-      DispatchNamespace_object___name__namespace__type__outbound__:
-        S.Unknown.pipe(
-          T.Body(
-            "DispatchNamespace object { name, namespace, type, outbound }",
-          ),
+      DispatchNamespaceObjectNameNamespaceTypeOutbound__: S.Unknown.pipe(
+        T.Body("DispatchNamespace object { name, namespace, type, outbound }"),
+      ),
+      DurableObjectNamespaceObjectNameTypeClassName4More__: S.Unknown.pipe(
+        T.Body(
+          "DurableObjectNamespace object { name, type, class_name, 4 more }",
         ),
-      DurableObjectNamespace_object___name__type__class_name__4_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "DurableObjectNamespace object { name, type, class_name, 4 more }",
-          ),
-        ),
-      Hyperdrive_object___id__name__type__: S.Unknown.pipe(
+      ),
+      HyperdriveObjectIdNameType__: S.Unknown.pipe(
         T.Body("Hyperdrive object { id, name, type }"),
       ),
-      Inherit_object___name__type__old_name__version_id__: S.Unknown.pipe(
+      InheritObjectNameTypeOldNameVersionId__: S.Unknown.pipe(
         T.Body("Inherit object { name, type, old_name, version_id }"),
       ),
-      Images_object___name__type__: S.Unknown.pipe(
+      ImagesObjectNameType__: S.Unknown.pipe(
         T.Body("Images object { name, type }"),
       ),
-      Json_object___json__name__type__: S.Unknown.pipe(
+      JsonObjectJsonNameType__: S.Unknown.pipe(
         T.Body("Json object { json, name, type }"),
       ),
-      KVNamespace_object___name__namespace_id__type__: S.Unknown.pipe(
+      KVNamespaceObjectNameNamespaceIdType__: S.Unknown.pipe(
         T.Body("KVNamespace object { name, namespace_id, type }"),
       ),
-      Media_object___name__type__: S.Unknown.pipe(
+      MediaObjectNameType__: S.Unknown.pipe(
         T.Body("Media object { name, type }"),
       ),
-      MTLSCertificate_object___certificate_id__name__type__: S.Unknown.pipe(
+      MTLSCertificateObjectCertificateIdNameType__: S.Unknown.pipe(
         T.Body("MTLSCertificate object { certificate_id, name, type }"),
       ),
-      PlainText_object___name__text__type__: S.Unknown.pipe(
+      PlainTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("PlainText object { name, text, type }"),
       ),
-      Pipelines_object___name__pipeline__type__: S.Unknown.pipe(
+      PipelinesObjectNamePipelineType__: S.Unknown.pipe(
         T.Body("Pipelines object { name, pipeline, type }"),
       ),
-      Queue_object___name__queue_name__type__: S.Unknown.pipe(
+      QueueObjectNameQueueNameType__: S.Unknown.pipe(
         T.Body("Queue object { name, queue_name, type }"),
       ),
-      Ratelimit_object___name__namespace_id__simple__type__: S.Unknown.pipe(
+      RatelimitObjectNameNamespaceIdSimpleType__: S.Unknown.pipe(
         T.Body("Ratelimit object { name, namespace_id, simple, type }"),
       ),
-      R2Bucket_object___bucket_name__name__type__jurisdiction__: S.Unknown.pipe(
+      R2BucketObjectBucketNameNameTypeJurisdiction__: S.Unknown.pipe(
         T.Body("R2Bucket object { bucket_name, name, type, jurisdiction }"),
       ),
-      SecretText_object___name__text__type__: S.Unknown.pipe(
+      SecretTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("SecretText object { name, text, type }"),
       ),
-      SendEmail_object___name__type__allowed_destination_addresses__2_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
-          ),
+      SendEmailObjectNameTypeAllowedDestinationAddresses2More__: S.Unknown.pipe(
+        T.Body(
+          "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
         ),
-      Service_object___name__service__type__2_more__: S.Unknown.pipe(
+      ),
+      ServiceObjectNameServiceType2More__: S.Unknown.pipe(
         T.Body("Service object { name, service, type, 2 more }"),
       ),
-      TextBlob_object___name__part__type__: S.Unknown.pipe(
+      TextBlobObjectNamePartType__: S.Unknown.pipe(
         T.Body("TextBlob object { name, part, type }"),
       ),
-      Vectorize_object___index_name__name__type__: S.Unknown.pipe(
+      VectorizeObjectIndexNameNameType__: S.Unknown.pipe(
         T.Body("Vectorize object { index_name, name, type }"),
       ),
-      VersionMetadata_object___name__type__: S.Unknown.pipe(
+      VersionMetadataObjectNameType__: S.Unknown.pipe(
         T.Body("VersionMetadata object { name, type }"),
       ),
-      SecretsStoreSecret_object___name__secret_name__store_id__type__:
-        S.Unknown.pipe(
-          T.Body(
-            "SecretsStoreSecret object { name, secret_name, store_id, type }",
-          ),
+      SecretsStoreSecretObjectNameSecretNameStoreIdType__: S.Unknown.pipe(
+        T.Body(
+          "SecretsStoreSecret object { name, secret_name, store_id, type }",
         ),
-      Flagship_object___app_id__name__type__: S.Unknown.pipe(
+      ),
+      FlagshipObjectAppIdNameType__: S.Unknown.pipe(
         T.Body("Flagship object { app_id, name, type }"),
       ),
-      SecretKey_object___algorithm__format__name__4_more__: S.Unknown.pipe(
+      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
         T.Body("SecretKey object { algorithm, format, name, 4 more }"),
       ),
-      Workflow_object___name__type__workflow_name__2_more__: S.Unknown.pipe(
+      WorkflowObjectNameTypeWorkflowName2More__: S.Unknown.pipe(
         T.Body("Workflow object { name, type, workflow_name, 2 more }"),
       ),
-      WasmModule_object___name__part__type__: S.Unknown.pipe(
+      WasmModuleObjectNamePartType__: S.Unknown.pipe(
         T.Body("WasmModule object { name, part, type }"),
       ),
-      VPCService_object___name__service_id__type__: S.Unknown.pipe(
+      VPCServiceObjectNameServiceIdType__: S.Unknown.pipe(
         T.Body("VPCService object { name, service_id, type }"),
       ),
-      VPCNetwork_object___name__type__network_id__tunnel_id__: S.Unknown.pipe(
+      VPCNetworkObjectNameTypeNetworkIdTunnelId__: S.Unknown.pipe(
         T.Body("VPCNetwork object { name, type, network_id, tunnel_id }"),
       ),
     }),
@@ -947,14 +2794,18 @@ export const BetaWorkersVersionsCreateRequestBindingsList =
   ) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsList>;
 
 export interface BetaWorkersVersionsCreateRequestCacheOptions {
+  /** Whether caching is enabled for this Worker. */
   enabled: boolean;
-  cross_version_cache?: boolean;
+  /** Whether cached responses are shared across Worker version */
+  crossVersionCache?: boolean;
 }
 export const BetaWorkersVersionsCreateRequestCacheOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      cross_version_cache: S.optional(S.Boolean),
+      crossVersionCache: S.optional(
+        S.Boolean.pipe(T.Body("cross_version_cache")),
+      ),
     }),
   ).annotate({
     identifier: "BetaWorkersVersionsCreateRequestCacheOptions",
@@ -967,12 +2818,13 @@ export const BetaWorkersVersionsCreateRequestCompatibilityFlagsList =
   ) as any as S.Schema<BetaWorkersVersionsCreateRequestCompatibilityFlagsList>;
 
 export interface BetaWorkersVersionsCreateRequestContainersItem {
-  class_name: string;
+  /** Select which Durable Object class should get this container attached. */
+  className: string;
 }
 export const BetaWorkersVersionsCreateRequestContainersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      class_name: S.String,
+      className: S.String.pipe(T.Body("class_name")),
     }),
   ).annotate({
     identifier: "BetaWorkersVersionsCreateRequestContainersItem",
@@ -986,29 +2838,58 @@ export const BetaWorkersVersionsCreateRequestContainersList =
   ) as any as S.Schema<BetaWorkersVersionsCreateRequestContainersList>;
 
 export interface BetaWorkersVersionsCreateRequestLimits {
-  cpu_ms?: number;
+  /** CPU time limit in milliseconds. */
+  cpuMs?: number;
+  /** Subrequest limit per request. */
   subrequests?: number;
 }
 export const BetaWorkersVersionsCreateRequestLimits = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      cpu_ms: S.optional(S.Number),
+      cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
       subrequests: S.optional(S.Number),
     }),
 ).annotate({
   identifier: "BetaWorkersVersionsCreateRequestLimits",
 }) as any as S.Schema<BetaWorkersVersionsCreateRequestLimits>;
 
+export interface BetaWorkersVersionsCreateRequestMigrations {
+  /** A single set of migrations to apply. */
+  SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__: unknown;
+  WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: unknown;
+}
+export const BetaWorkersVersionsCreateRequestMigrations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__:
+        S.Unknown.pipe(
+          T.Body(
+            "SingleStepMigration object { deleted_classes, new_classes, new_sqlite_classes, 4 more }",
+          ),
+        ),
+      WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: S.Unknown.pipe(
+        T.Body(
+          "WorkersMultipleStepMigrations object { new_tag, old_tag, steps }",
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsCreateRequestMigrations",
+  }) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrations>;
+
 export interface BetaWorkersVersionsCreateRequestModulesItem {
-  content_base64: string;
-  content_type: string;
+  /** The base64-encoded module content. */
+  contentBase64: string;
+  /** The content type of the module. */
+  contentType: string;
+  /** The name of the module. */
   name: string;
 }
 export const BetaWorkersVersionsCreateRequestModulesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      content_base64: S.String,
-      content_type: S.String,
+      contentBase64: S.String.pipe(T.Body("content_base64")),
+      contentType: S.String.pipe(T.Body("content_type")),
       name: S.String,
     }),
   ).annotate({
@@ -1023,8 +2904,11 @@ export const BetaWorkersVersionsCreateRequestModulesList =
   ) as any as S.Schema<BetaWorkersVersionsCreateRequestModulesList>;
 
 export interface BetaWorkersVersionsCreateRequestPackageDependenciesItem {
+  /** The exact version that was resolved and installed by the package manager. */
   installedVersion: string;
+  /** The npm package name. */
   name: string;
+  /** The version constraint as written in package.json. */
   packageJsonVersion: string;
 }
 export const BetaWorkersVersionsCreateRequestPackageDependenciesItem =
@@ -1046,36 +2930,28 @@ export const BetaWorkersVersionsCreateRequestPackageDependenciesList =
   ) as any as S.Schema<BetaWorkersVersionsCreateRequestPackageDependenciesList>;
 
 export interface BetaWorkersVersionsCreateRequestPlacement {
-  Mode_object___mode__: unknown;
-  Region_object___region__: unknown;
-  Hostname_object___hostname__: unknown;
-  Host_object___host__: unknown;
-  object___mode__region__: unknown;
-  object___hostname__mode__: unknown;
-  object___host__mode__: unknown;
-  object___mode__target__: unknown;
+  ModeObjectMode__: unknown;
+  RegionObjectRegion__: unknown;
+  HostnameObjectHostname__: unknown;
+  HostObjectHost__: unknown;
+  objectModeRegion__: unknown;
+  objectHostnameMode__: unknown;
+  objectHostMode__: unknown;
+  objectModeTarget__: unknown;
 }
 export const BetaWorkersVersionsCreateRequestPlacement =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      Mode_object___mode__: S.Unknown.pipe(T.Body("Mode object { mode }")),
-      Region_object___region__: S.Unknown.pipe(
-        T.Body("Region object { region }"),
-      ),
-      Hostname_object___hostname__: S.Unknown.pipe(
+      ModeObjectMode__: S.Unknown.pipe(T.Body("Mode object { mode }")),
+      RegionObjectRegion__: S.Unknown.pipe(T.Body("Region object { region }")),
+      HostnameObjectHostname__: S.Unknown.pipe(
         T.Body("Hostname object { hostname }"),
       ),
-      Host_object___host__: S.Unknown.pipe(T.Body("Host object { host }")),
-      object___mode__region__: S.Unknown.pipe(
-        T.Body("object { mode, region }"),
-      ),
-      object___hostname__mode__: S.Unknown.pipe(
-        T.Body("object { hostname, mode }"),
-      ),
-      object___host__mode__: S.Unknown.pipe(T.Body("object { host, mode }")),
-      object___mode__target__: S.Unknown.pipe(
-        T.Body("object { mode, target }"),
-      ),
+      HostObjectHost__: S.Unknown.pipe(T.Body("Host object { host }")),
+      objectModeRegion__: S.Unknown.pipe(T.Body("object { mode, region }")),
+      objectHostnameMode__: S.Unknown.pipe(T.Body("object { hostname, mode }")),
+      objectHostMode__: S.Unknown.pipe(T.Body("object { host, mode }")),
+      objectModeTarget__: S.Unknown.pipe(T.Body("object { mode, target }")),
     }),
   ).annotate({
     identifier: "BetaWorkersVersionsCreateRequestPlacement",
@@ -1090,47 +2966,74 @@ export const BetaWorkersVersionsCreateRequestUsageModel =
   /*@__PURE__*/ S.String;
 
 export interface BetaWorkersVersionsCreateRequest {
-  account_id: string;
-  worker_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Identifier for the Worker, which can be ID or name. */
+  workerId: string;
+  /** If true, a deployment will be created that sends 100% of traffic to the new version. */
   deploy?: boolean;
+  /** Metadata about the version. */
   annotations?: BetaWorkersVersionsCreateRequestAnnotations;
+  /** Configuration for assets within a Worker. */
   assets?: BetaWorkersVersionsCreateRequestAssets;
+  /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
   bindings?: BetaWorkersVersionsCreateRequestBindingsList;
-  cache_options?: BetaWorkersVersionsCreateRequestCacheOptions;
-  compatibility_date?: string;
-  compatibility_flags?: BetaWorkersVersionsCreateRequestCompatibilityFlagsList;
+  /** Global CacheW configuration for the Worker. When caching is on, */
+  cacheOptions?: BetaWorkersVersionsCreateRequestCacheOptions;
+  /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
+  compatibilityDate?: string;
+  /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
+  compatibilityFlags?: BetaWorkersVersionsCreateRequestCompatibilityFlagsList;
+  /** List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script. */
   containers?: BetaWorkersVersionsCreateRequestContainersList;
+  /** Resource limits enforced at runtime. */
   limits?: BetaWorkersVersionsCreateRequestLimits;
-  main_module?: string;
-  migrations?: unknown;
+  /** The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler). */
+  mainModule?: string;
+  /** Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed. */
+  migrations?: BetaWorkersVersionsCreateRequestMigrations;
+  /** Code, sourcemaps, and other content used at runtime. */
   modules?: BetaWorkersVersionsCreateRequestModulesList;
-  package_dependencies?: BetaWorkersVersionsCreateRequestPackageDependenciesList;
+  /** The list of npm packages that were installed and used when this Worker */
+  packageDependencies?: BetaWorkersVersionsCreateRequestPackageDependenciesList;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?: BetaWorkersVersionsCreateRequestPlacement;
-  usage_model?: BetaWorkersVersionsCreateRequestUsageModel;
+  /** Usage model for the version. */
+  usageModel?: BetaWorkersVersionsCreateRequestUsageModel;
 }
 export const BetaWorkersVersionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    worker_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workerId: S.String.pipe(T.Label("worker_id")),
     deploy: S.optional(S.Boolean.pipe(T.Query())),
     annotations: S.optional(BetaWorkersVersionsCreateRequestAnnotations),
     assets: S.optional(BetaWorkersVersionsCreateRequestAssets),
     bindings: S.optional(BetaWorkersVersionsCreateRequestBindingsList),
-    cache_options: S.optional(BetaWorkersVersionsCreateRequestCacheOptions),
-    compatibility_date: S.optional(S.String),
-    compatibility_flags: S.optional(
-      BetaWorkersVersionsCreateRequestCompatibilityFlagsList,
+    cacheOptions: S.optional(
+      BetaWorkersVersionsCreateRequestCacheOptions.pipe(
+        T.Body("cache_options"),
+      ),
+    ),
+    compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
+    compatibilityFlags: S.optional(
+      BetaWorkersVersionsCreateRequestCompatibilityFlagsList.pipe(
+        T.Body("compatibility_flags"),
+      ),
     ),
     containers: S.optional(BetaWorkersVersionsCreateRequestContainersList),
     limits: S.optional(BetaWorkersVersionsCreateRequestLimits),
-    main_module: S.optional(S.String),
-    migrations: S.optional(S.Unknown),
+    mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
+    migrations: S.optional(BetaWorkersVersionsCreateRequestMigrations),
     modules: S.optional(BetaWorkersVersionsCreateRequestModulesList),
-    package_dependencies: S.optional(
-      BetaWorkersVersionsCreateRequestPackageDependenciesList,
+    packageDependencies: S.optional(
+      BetaWorkersVersionsCreateRequestPackageDependenciesList.pipe(
+        T.Body("package_dependencies"),
+      ),
     ),
     placement: S.optional(BetaWorkersVersionsCreateRequestPlacement),
-    usage_model: S.optional(BetaWorkersVersionsCreateRequestUsageModel),
+    usageModel: S.optional(
+      BetaWorkersVersionsCreateRequestUsageModel.pipe(T.Body("usage_model")),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1142,27 +3045,553 @@ export const BetaWorkersVersionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BetaWorkersVersionsCreateRequest",
 }) as any as S.Schema<BetaWorkersVersionsCreateRequest>;
 
+export type BetaWorkersVersionsCreateResponseUrlsList = string[];
+export const BetaWorkersVersionsCreateResponseUrlsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BetaWorkersVersionsCreateResponseUrlsList>;
+
+export interface BetaWorkersVersionsCreateResponseAnnotations {
+  /** Human-readable message about the version. Truncated to 1000 bytes if longer. */
+  WorkersMessage_?: string;
+  /** User-provided identifier for the version. Maximum 100 bytes. */
+  WorkersTag_?: string;
+  /** Operation that triggered the creation of the version. */
+  WorkersTriggeredBy_?: string;
+}
+export const BetaWorkersVersionsCreateResponseAnnotations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
+      WorkersTag_: S.optional(S.String.pipe(T.Body('"workers/tag"'))),
+      WorkersTriggeredBy_: S.optional(
+        S.String.pipe(T.Body('"workers/triggered_by"')),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsCreateResponseAnnotations",
+  }) as any as S.Schema<BetaWorkersVersionsCreateResponseAnnotations>;
+
+export type BetaWorkersVersionsCreateResponseAssetsConfigHtmlHandling =
+  | "auto-trailing-slash"
+  | "force-trailing-slash"
+  | "drop-trailing-slash"
+  | "none"
+  | (string & {});
+export const BetaWorkersVersionsCreateResponseAssetsConfigHtmlHandling =
+  /*@__PURE__*/ S.String;
+
+export type BetaWorkersVersionsCreateResponseAssetsConfigNotFoundHandling =
+  | "none"
+  | "404-page"
+  | "single-page-application"
+  | (string & {});
+export const BetaWorkersVersionsCreateResponseAssetsConfigNotFoundHandling =
+  /*@__PURE__*/ S.String;
+
+export interface BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstItem {
+  /** Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules. */
+  arrayOfString: unknown;
+  /** Enables routing to always invoke the Worker script ahead of all requests. When true, this is equivalent to `["/*"]` in the string array version of this field. */
+  boolean: unknown;
+}
+export const BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      arrayOfString: S.Unknown.pipe(T.Body("array of string")),
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier:
+      "BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstItem",
+  }) as any as S.Schema<BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstItem>;
+
+export type BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstList =
+  BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstItem[];
+export const BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstItem,
+  ) as any as S.Schema<BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstList>;
+
+export interface BetaWorkersVersionsCreateResponseAssetsConfig {
+  /** Determines the redirects and rewrites of requests for HTML content. */
+  htmlHandling?: BetaWorkersVersionsCreateResponseAssetsConfigHtmlHandling;
+  /** Determines the response when a request does not match a static asset, and there is no Worker script. */
+  notFoundHandling?: BetaWorkersVersionsCreateResponseAssetsConfigNotFoundHandling;
+  /** Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules. */
+  runWorkerFirst?: BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstList;
+}
+export const BetaWorkersVersionsCreateResponseAssetsConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      htmlHandling: S.optional(
+        BetaWorkersVersionsCreateResponseAssetsConfigHtmlHandling.pipe(
+          T.Body("html_handling"),
+        ),
+      ),
+      notFoundHandling: S.optional(
+        BetaWorkersVersionsCreateResponseAssetsConfigNotFoundHandling.pipe(
+          T.Body("not_found_handling"),
+        ),
+      ),
+      runWorkerFirst: S.optional(
+        BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstList.pipe(
+          T.Body("run_worker_first"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsCreateResponseAssetsConfig",
+  }) as any as S.Schema<BetaWorkersVersionsCreateResponseAssetsConfig>;
+
+export interface BetaWorkersVersionsCreateResponseAssets {
+  /** Configuration for assets within a Worker. */
+  config?: BetaWorkersVersionsCreateResponseAssetsConfig;
+  /** Token provided upon successful upload of all files from a registered manifest. */
+  jwt?: string;
+}
+export const BetaWorkersVersionsCreateResponseAssets = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      config: S.optional(BetaWorkersVersionsCreateResponseAssetsConfig),
+      jwt: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "BetaWorkersVersionsCreateResponseAssets",
+}) as any as S.Schema<BetaWorkersVersionsCreateResponseAssets>;
+
+export interface BetaWorkersVersionsCreateResponseBindingsItem {
+  AIObjectNameType__: unknown;
+  AISearchObjectInstanceNameNameTypeNamespace__: unknown;
+  AISearchNamespaceObjectNameNamespaceType__: unknown;
+  AnalyticsEngineObjectDatasetNameType__: unknown;
+  AssetsObjectNameType__: unknown;
+  BrowserObjectNameType__: unknown;
+  D1ObjectDatabaseIdNameTypeId__: unknown;
+  DataBlobObjectNamePartType__: unknown;
+  DispatchNamespaceObjectNameNamespaceTypeOutbound__: unknown;
+  DurableObjectNamespaceObjectNameTypeClassName4More__: unknown;
+  HyperdriveObjectIdNameType__: unknown;
+  InheritObjectNameTypeOldNameVersionId__: unknown;
+  ImagesObjectNameType__: unknown;
+  JsonObjectJsonNameType__: unknown;
+  KVNamespaceObjectNameNamespaceIdType__: unknown;
+  MediaObjectNameType__: unknown;
+  MTLSCertificateObjectCertificateIdNameType__: unknown;
+  PlainTextObjectNameTextType__: unknown;
+  PipelinesObjectNamePipelineType__: unknown;
+  QueueObjectNameQueueNameType__: unknown;
+  RatelimitObjectNameNamespaceIdSimpleType__: unknown;
+  R2BucketObjectBucketNameNameTypeJurisdiction__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SendEmailObjectNameTypeAllowedDestinationAddresses2More__: unknown;
+  ServiceObjectNameServiceType2More__: unknown;
+  TextBlobObjectNamePartType__: unknown;
+  VectorizeObjectIndexNameNameType__: unknown;
+  VersionMetadataObjectNameType__: unknown;
+  SecretsStoreSecretObjectNameSecretNameStoreIdType__: unknown;
+  FlagshipObjectAppIdNameType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
+  WorkflowObjectNameTypeWorkflowName2More__: unknown;
+  WasmModuleObjectNamePartType__: unknown;
+  VPCServiceObjectNameServiceIdType__: unknown;
+  VPCNetworkObjectNameTypeNetworkIdTunnelId__: unknown;
+}
+export const BetaWorkersVersionsCreateResponseBindingsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AIObjectNameType__: S.Unknown.pipe(T.Body("AI object { name, type }")),
+      AISearchObjectInstanceNameNameTypeNamespace__: S.Unknown.pipe(
+        T.Body("AISearch object { instance_name, name, type, namespace }"),
+      ),
+      AISearchNamespaceObjectNameNamespaceType__: S.Unknown.pipe(
+        T.Body("AISearchNamespace object { name, namespace, type }"),
+      ),
+      AnalyticsEngineObjectDatasetNameType__: S.Unknown.pipe(
+        T.Body("AnalyticsEngine object { dataset, name, type }"),
+      ),
+      AssetsObjectNameType__: S.Unknown.pipe(
+        T.Body("Assets object { name, type }"),
+      ),
+      BrowserObjectNameType__: S.Unknown.pipe(
+        T.Body("Browser object { name, type }"),
+      ),
+      D1ObjectDatabaseIdNameTypeId__: S.Unknown.pipe(
+        T.Body("D1 object { database_id, name, type, id }"),
+      ),
+      DataBlobObjectNamePartType__: S.Unknown.pipe(
+        T.Body("DataBlob object { name, part, type }"),
+      ),
+      DispatchNamespaceObjectNameNamespaceTypeOutbound__: S.Unknown.pipe(
+        T.Body("DispatchNamespace object { name, namespace, type, outbound }"),
+      ),
+      DurableObjectNamespaceObjectNameTypeClassName4More__: S.Unknown.pipe(
+        T.Body(
+          "DurableObjectNamespace object { name, type, class_name, 4 more }",
+        ),
+      ),
+      HyperdriveObjectIdNameType__: S.Unknown.pipe(
+        T.Body("Hyperdrive object { id, name, type }"),
+      ),
+      InheritObjectNameTypeOldNameVersionId__: S.Unknown.pipe(
+        T.Body("Inherit object { name, type, old_name, version_id }"),
+      ),
+      ImagesObjectNameType__: S.Unknown.pipe(
+        T.Body("Images object { name, type }"),
+      ),
+      JsonObjectJsonNameType__: S.Unknown.pipe(
+        T.Body("Json object { json, name, type }"),
+      ),
+      KVNamespaceObjectNameNamespaceIdType__: S.Unknown.pipe(
+        T.Body("KVNamespace object { name, namespace_id, type }"),
+      ),
+      MediaObjectNameType__: S.Unknown.pipe(
+        T.Body("Media object { name, type }"),
+      ),
+      MTLSCertificateObjectCertificateIdNameType__: S.Unknown.pipe(
+        T.Body("MTLSCertificate object { certificate_id, name, type }"),
+      ),
+      PlainTextObjectNameTextType__: S.Unknown.pipe(
+        T.Body("PlainText object { name, text, type }"),
+      ),
+      PipelinesObjectNamePipelineType__: S.Unknown.pipe(
+        T.Body("Pipelines object { name, pipeline, type }"),
+      ),
+      QueueObjectNameQueueNameType__: S.Unknown.pipe(
+        T.Body("Queue object { name, queue_name, type }"),
+      ),
+      RatelimitObjectNameNamespaceIdSimpleType__: S.Unknown.pipe(
+        T.Body("Ratelimit object { name, namespace_id, simple, type }"),
+      ),
+      R2BucketObjectBucketNameNameTypeJurisdiction__: S.Unknown.pipe(
+        T.Body("R2Bucket object { bucket_name, name, type, jurisdiction }"),
+      ),
+      SecretTextObjectNameTextType__: S.Unknown.pipe(
+        T.Body("SecretText object { name, text, type }"),
+      ),
+      SendEmailObjectNameTypeAllowedDestinationAddresses2More__: S.Unknown.pipe(
+        T.Body(
+          "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
+        ),
+      ),
+      ServiceObjectNameServiceType2More__: S.Unknown.pipe(
+        T.Body("Service object { name, service, type, 2 more }"),
+      ),
+      TextBlobObjectNamePartType__: S.Unknown.pipe(
+        T.Body("TextBlob object { name, part, type }"),
+      ),
+      VectorizeObjectIndexNameNameType__: S.Unknown.pipe(
+        T.Body("Vectorize object { index_name, name, type }"),
+      ),
+      VersionMetadataObjectNameType__: S.Unknown.pipe(
+        T.Body("VersionMetadata object { name, type }"),
+      ),
+      SecretsStoreSecretObjectNameSecretNameStoreIdType__: S.Unknown.pipe(
+        T.Body(
+          "SecretsStoreSecret object { name, secret_name, store_id, type }",
+        ),
+      ),
+      FlagshipObjectAppIdNameType__: S.Unknown.pipe(
+        T.Body("Flagship object { app_id, name, type }"),
+      ),
+      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
+        T.Body("SecretKey object { algorithm, format, name, 4 more }"),
+      ),
+      WorkflowObjectNameTypeWorkflowName2More__: S.Unknown.pipe(
+        T.Body("Workflow object { name, type, workflow_name, 2 more }"),
+      ),
+      WasmModuleObjectNamePartType__: S.Unknown.pipe(
+        T.Body("WasmModule object { name, part, type }"),
+      ),
+      VPCServiceObjectNameServiceIdType__: S.Unknown.pipe(
+        T.Body("VPCService object { name, service_id, type }"),
+      ),
+      VPCNetworkObjectNameTypeNetworkIdTunnelId__: S.Unknown.pipe(
+        T.Body("VPCNetwork object { name, type, network_id, tunnel_id }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsCreateResponseBindingsItem",
+  }) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItem>;
+
+export type BetaWorkersVersionsCreateResponseBindingsList =
+  BetaWorkersVersionsCreateResponseBindingsItem[];
+export const BetaWorkersVersionsCreateResponseBindingsList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersVersionsCreateResponseBindingsItem,
+  ) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsList>;
+
+export interface BetaWorkersVersionsCreateResponseCacheOptions {
+  /** Whether caching is enabled for this Worker. */
+  enabled: boolean;
+  /** Whether cached responses are shared across Worker version */
+  crossVersionCache?: boolean;
+}
+export const BetaWorkersVersionsCreateResponseCacheOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      crossVersionCache: S.optional(
+        S.Boolean.pipe(T.Body("cross_version_cache")),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsCreateResponseCacheOptions",
+  }) as any as S.Schema<BetaWorkersVersionsCreateResponseCacheOptions>;
+
+export type BetaWorkersVersionsCreateResponseCompatibilityFlagsList = string[];
+export const BetaWorkersVersionsCreateResponseCompatibilityFlagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BetaWorkersVersionsCreateResponseCompatibilityFlagsList>;
+
+export interface BetaWorkersVersionsCreateResponseContainersItem {
+  /** Select which Durable Object class should get this container attached. */
+  className: string;
+}
+export const BetaWorkersVersionsCreateResponseContainersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      className: S.String.pipe(T.Body("class_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsCreateResponseContainersItem",
+  }) as any as S.Schema<BetaWorkersVersionsCreateResponseContainersItem>;
+
+export type BetaWorkersVersionsCreateResponseContainersList =
+  BetaWorkersVersionsCreateResponseContainersItem[];
+export const BetaWorkersVersionsCreateResponseContainersList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersVersionsCreateResponseContainersItem,
+  ) as any as S.Schema<BetaWorkersVersionsCreateResponseContainersList>;
+
+export interface BetaWorkersVersionsCreateResponseLimits {
+  /** CPU time limit in milliseconds. */
+  cpuMs?: number;
+  /** Subrequest limit per request. */
+  subrequests?: number;
+}
+export const BetaWorkersVersionsCreateResponseLimits = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
+      subrequests: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "BetaWorkersVersionsCreateResponseLimits",
+}) as any as S.Schema<BetaWorkersVersionsCreateResponseLimits>;
+
+export interface BetaWorkersVersionsCreateResponseMigrations {
+  /** A single set of migrations to apply. */
+  SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__: unknown;
+  WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: unknown;
+}
+export const BetaWorkersVersionsCreateResponseMigrations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__:
+        S.Unknown.pipe(
+          T.Body(
+            "SingleStepMigration object { deleted_classes, new_classes, new_sqlite_classes, 4 more }",
+          ),
+        ),
+      WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: S.Unknown.pipe(
+        T.Body(
+          "WorkersMultipleStepMigrations object { new_tag, old_tag, steps }",
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsCreateResponseMigrations",
+  }) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrations>;
+
+export interface BetaWorkersVersionsCreateResponseModulesItem {
+  /** The base64-encoded module content. */
+  contentBase64: string;
+  /** The content type of the module. */
+  contentType: string;
+  /** The name of the module. */
+  name: string;
+}
+export const BetaWorkersVersionsCreateResponseModulesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      contentBase64: S.String.pipe(T.Body("content_base64")),
+      contentType: S.String.pipe(T.Body("content_type")),
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsCreateResponseModulesItem",
+  }) as any as S.Schema<BetaWorkersVersionsCreateResponseModulesItem>;
+
+export type BetaWorkersVersionsCreateResponseModulesList =
+  BetaWorkersVersionsCreateResponseModulesItem[];
+export const BetaWorkersVersionsCreateResponseModulesList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersVersionsCreateResponseModulesItem,
+  ) as any as S.Schema<BetaWorkersVersionsCreateResponseModulesList>;
+
+export interface BetaWorkersVersionsCreateResponsePackageDependenciesItem {
+  /** The exact version that was resolved and installed by the package manager. */
+  installedVersion: string;
+  /** The npm package name. */
+  name: string;
+  /** The version constraint as written in package.json. */
+  packageJsonVersion: string;
+}
+export const BetaWorkersVersionsCreateResponsePackageDependenciesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      installedVersion: S.String,
+      name: S.String,
+      packageJsonVersion: S.String,
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsCreateResponsePackageDependenciesItem",
+  }) as any as S.Schema<BetaWorkersVersionsCreateResponsePackageDependenciesItem>;
+
+export type BetaWorkersVersionsCreateResponsePackageDependenciesList =
+  BetaWorkersVersionsCreateResponsePackageDependenciesItem[];
+export const BetaWorkersVersionsCreateResponsePackageDependenciesList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersVersionsCreateResponsePackageDependenciesItem,
+  ) as any as S.Schema<BetaWorkersVersionsCreateResponsePackageDependenciesList>;
+
+export interface BetaWorkersVersionsCreateResponsePlacement {
+  ModeObjectMode__: unknown;
+  RegionObjectRegion__: unknown;
+  HostnameObjectHostname__: unknown;
+  HostObjectHost__: unknown;
+  objectModeRegion__: unknown;
+  objectHostnameMode__: unknown;
+  objectHostMode__: unknown;
+  objectModeTarget__: unknown;
+}
+export const BetaWorkersVersionsCreateResponsePlacement =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ModeObjectMode__: S.Unknown.pipe(T.Body("Mode object { mode }")),
+      RegionObjectRegion__: S.Unknown.pipe(T.Body("Region object { region }")),
+      HostnameObjectHostname__: S.Unknown.pipe(
+        T.Body("Hostname object { hostname }"),
+      ),
+      HostObjectHost__: S.Unknown.pipe(T.Body("Host object { host }")),
+      objectModeRegion__: S.Unknown.pipe(T.Body("object { mode, region }")),
+      objectHostnameMode__: S.Unknown.pipe(T.Body("object { hostname, mode }")),
+      objectHostMode__: S.Unknown.pipe(T.Body("object { host, mode }")),
+      objectModeTarget__: S.Unknown.pipe(T.Body("object { mode, target }")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsCreateResponsePlacement",
+  }) as any as S.Schema<BetaWorkersVersionsCreateResponsePlacement>;
+
+export type BetaWorkersVersionsCreateResponseUsageModel =
+  | "standard"
+  | "bundled"
+  | "unbound"
+  | (string & {});
+export const BetaWorkersVersionsCreateResponseUsageModel =
+  /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BetaWorkersVersionsCreateResponse {
-  result?: unknown;
+  /** Version identifier. */
+  id: string;
+  /** When the version was created. */
+  createdOn: string;
+  /** The integer version number, starting from one. */
+  number: number;
+  /** All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version. */
+  urls: BetaWorkersVersionsCreateResponseUrlsList;
+  /** Metadata about the version. */
+  annotations?: BetaWorkersVersionsCreateResponseAnnotations;
+  /** Configuration for assets within a Worker. */
+  assets?: BetaWorkersVersionsCreateResponseAssets;
+  /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
+  bindings?: BetaWorkersVersionsCreateResponseBindingsList;
+  /** Global CacheW configuration for the Worker. When caching is on, */
+  cacheOptions?: BetaWorkersVersionsCreateResponseCacheOptions;
+  /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
+  compatibilityDate?: string;
+  /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
+  compatibilityFlags?: BetaWorkersVersionsCreateResponseCompatibilityFlagsList;
+  /** List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script. */
+  containers?: BetaWorkersVersionsCreateResponseContainersList;
+  /** Resource limits enforced at runtime. */
+  limits?: BetaWorkersVersionsCreateResponseLimits;
+  /** The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler). */
+  mainModule?: string;
+  /** Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects. */
+  migrationTag?: string;
+  /** Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed. */
+  migrations?: BetaWorkersVersionsCreateResponseMigrations;
+  /** Code, sourcemaps, and other content used at runtime. */
+  modules?: BetaWorkersVersionsCreateResponseModulesList;
+  /** The list of npm packages that were installed and used when this Worker */
+  packageDependencies?: BetaWorkersVersionsCreateResponsePackageDependenciesList;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
+  placement?: BetaWorkersVersionsCreateResponsePlacement;
+  /** The client used to create the version. */
+  source?: string;
+  /** Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time). */
+  startupTimeMs?: number;
+  /** Usage model for the version. */
+  usageModel?: BetaWorkersVersionsCreateResponseUsageModel;
 }
 export const BetaWorkersVersionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    number: S.Number,
+    urls: BetaWorkersVersionsCreateResponseUrlsList,
+    annotations: S.optional(BetaWorkersVersionsCreateResponseAnnotations),
+    assets: S.optional(BetaWorkersVersionsCreateResponseAssets),
+    bindings: S.optional(BetaWorkersVersionsCreateResponseBindingsList),
+    cacheOptions: S.optional(
+      BetaWorkersVersionsCreateResponseCacheOptions.pipe(
+        T.Body("cache_options"),
+      ),
+    ),
+    compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
+    compatibilityFlags: S.optional(
+      BetaWorkersVersionsCreateResponseCompatibilityFlagsList.pipe(
+        T.Body("compatibility_flags"),
+      ),
+    ),
+    containers: S.optional(BetaWorkersVersionsCreateResponseContainersList),
+    limits: S.optional(BetaWorkersVersionsCreateResponseLimits),
+    mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
+    migrationTag: S.optional(S.String.pipe(T.Body("migration_tag"))),
+    migrations: S.optional(BetaWorkersVersionsCreateResponseMigrations),
+    modules: S.optional(BetaWorkersVersionsCreateResponseModulesList),
+    packageDependencies: S.optional(
+      BetaWorkersVersionsCreateResponsePackageDependenciesList.pipe(
+        T.Body("package_dependencies"),
+      ),
+    ),
+    placement: S.optional(BetaWorkersVersionsCreateResponsePlacement),
+    source: S.optional(S.String),
+    startupTimeMs: S.optional(S.Number.pipe(T.Body("startup_time_ms"))),
+    usageModel: S.optional(
+      BetaWorkersVersionsCreateResponseUsageModel.pipe(T.Body("usage_model")),
+    ),
   }),
 ).annotate({
   identifier: "BetaWorkersVersionsCreateResponse",
 }) as any as S.Schema<BetaWorkersVersionsCreateResponse>;
 
 export interface BetaWorkersVersionsDeleteRequest {
-  account_id: string;
-  worker_id: string;
-  version_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Identifier for the Worker, which can be ID or name. */
+  workerId: string;
+  /** Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal "latest" to operate on the most recently created version. */
+  versionId: string;
 }
 export const BetaWorkersVersionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    worker_id: S.String.pipe(T.Label()),
-    version_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workerId: S.String.pipe(T.Label("worker_id")),
+    versionId: S.String.pipe(T.Label("version_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1185,16 +3614,20 @@ export type BetaWorkersVersionsGetRequestInclude = "modules" | (string & {});
 export const BetaWorkersVersionsGetRequestInclude = /*@__PURE__*/ S.String;
 
 export interface BetaWorkersVersionsGetRequest {
-  account_id: string;
-  worker_id: string;
-  version_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Identifier for the Worker, which can be ID or name. */
+  workerId: string;
+  /** Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal "latest" to operate on the most recently created version. */
+  versionId: string;
+  /** Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size. */
   include?: BetaWorkersVersionsGetRequestInclude;
 }
 export const BetaWorkersVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    worker_id: S.String.pipe(T.Label()),
-    version_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workerId: S.String.pipe(T.Label("worker_id")),
+    versionId: S.String.pipe(T.Label("version_id")),
     include: S.optional(BetaWorkersVersionsGetRequestInclude.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -1207,29 +3640,550 @@ export const BetaWorkersVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BetaWorkersVersionsGetRequest",
 }) as any as S.Schema<BetaWorkersVersionsGetRequest>;
 
+export type BetaWorkersVersionsGetResponseUrlsList = string[];
+export const BetaWorkersVersionsGetResponseUrlsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BetaWorkersVersionsGetResponseUrlsList>;
+
+export interface BetaWorkersVersionsGetResponseAnnotations {
+  /** Human-readable message about the version. Truncated to 1000 bytes if longer. */
+  WorkersMessage_?: string;
+  /** User-provided identifier for the version. Maximum 100 bytes. */
+  WorkersTag_?: string;
+  /** Operation that triggered the creation of the version. */
+  WorkersTriggeredBy_?: string;
+}
+export const BetaWorkersVersionsGetResponseAnnotations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
+      WorkersTag_: S.optional(S.String.pipe(T.Body('"workers/tag"'))),
+      WorkersTriggeredBy_: S.optional(
+        S.String.pipe(T.Body('"workers/triggered_by"')),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsGetResponseAnnotations",
+  }) as any as S.Schema<BetaWorkersVersionsGetResponseAnnotations>;
+
+export type BetaWorkersVersionsGetResponseAssetsConfigHtmlHandling =
+  | "auto-trailing-slash"
+  | "force-trailing-slash"
+  | "drop-trailing-slash"
+  | "none"
+  | (string & {});
+export const BetaWorkersVersionsGetResponseAssetsConfigHtmlHandling =
+  /*@__PURE__*/ S.String;
+
+export type BetaWorkersVersionsGetResponseAssetsConfigNotFoundHandling =
+  | "none"
+  | "404-page"
+  | "single-page-application"
+  | (string & {});
+export const BetaWorkersVersionsGetResponseAssetsConfigNotFoundHandling =
+  /*@__PURE__*/ S.String;
+
+export interface BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstItem {
+  /** Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules. */
+  arrayOfString: unknown;
+  /** Enables routing to always invoke the Worker script ahead of all requests. When true, this is equivalent to `["/*"]` in the string array version of this field. */
+  boolean: unknown;
+}
+export const BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      arrayOfString: S.Unknown.pipe(T.Body("array of string")),
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstItem",
+  }) as any as S.Schema<BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstItem>;
+
+export type BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstList =
+  BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstItem[];
+export const BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstItem,
+  ) as any as S.Schema<BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstList>;
+
+export interface BetaWorkersVersionsGetResponseAssetsConfig {
+  /** Determines the redirects and rewrites of requests for HTML content. */
+  htmlHandling?: BetaWorkersVersionsGetResponseAssetsConfigHtmlHandling;
+  /** Determines the response when a request does not match a static asset, and there is no Worker script. */
+  notFoundHandling?: BetaWorkersVersionsGetResponseAssetsConfigNotFoundHandling;
+  /** Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules. */
+  runWorkerFirst?: BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstList;
+}
+export const BetaWorkersVersionsGetResponseAssetsConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      htmlHandling: S.optional(
+        BetaWorkersVersionsGetResponseAssetsConfigHtmlHandling.pipe(
+          T.Body("html_handling"),
+        ),
+      ),
+      notFoundHandling: S.optional(
+        BetaWorkersVersionsGetResponseAssetsConfigNotFoundHandling.pipe(
+          T.Body("not_found_handling"),
+        ),
+      ),
+      runWorkerFirst: S.optional(
+        BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstList.pipe(
+          T.Body("run_worker_first"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsGetResponseAssetsConfig",
+  }) as any as S.Schema<BetaWorkersVersionsGetResponseAssetsConfig>;
+
+export interface BetaWorkersVersionsGetResponseAssets {
+  /** Configuration for assets within a Worker. */
+  config?: BetaWorkersVersionsGetResponseAssetsConfig;
+  /** Token provided upon successful upload of all files from a registered manifest. */
+  jwt?: string;
+}
+export const BetaWorkersVersionsGetResponseAssets = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      config: S.optional(BetaWorkersVersionsGetResponseAssetsConfig),
+      jwt: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "BetaWorkersVersionsGetResponseAssets",
+}) as any as S.Schema<BetaWorkersVersionsGetResponseAssets>;
+
+export interface BetaWorkersVersionsGetResponseBindingsItem {
+  AIObjectNameType__: unknown;
+  AISearchObjectInstanceNameNameTypeNamespace__: unknown;
+  AISearchNamespaceObjectNameNamespaceType__: unknown;
+  AnalyticsEngineObjectDatasetNameType__: unknown;
+  AssetsObjectNameType__: unknown;
+  BrowserObjectNameType__: unknown;
+  D1ObjectDatabaseIdNameTypeId__: unknown;
+  DataBlobObjectNamePartType__: unknown;
+  DispatchNamespaceObjectNameNamespaceTypeOutbound__: unknown;
+  DurableObjectNamespaceObjectNameTypeClassName4More__: unknown;
+  HyperdriveObjectIdNameType__: unknown;
+  InheritObjectNameTypeOldNameVersionId__: unknown;
+  ImagesObjectNameType__: unknown;
+  JsonObjectJsonNameType__: unknown;
+  KVNamespaceObjectNameNamespaceIdType__: unknown;
+  MediaObjectNameType__: unknown;
+  MTLSCertificateObjectCertificateIdNameType__: unknown;
+  PlainTextObjectNameTextType__: unknown;
+  PipelinesObjectNamePipelineType__: unknown;
+  QueueObjectNameQueueNameType__: unknown;
+  RatelimitObjectNameNamespaceIdSimpleType__: unknown;
+  R2BucketObjectBucketNameNameTypeJurisdiction__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SendEmailObjectNameTypeAllowedDestinationAddresses2More__: unknown;
+  ServiceObjectNameServiceType2More__: unknown;
+  TextBlobObjectNamePartType__: unknown;
+  VectorizeObjectIndexNameNameType__: unknown;
+  VersionMetadataObjectNameType__: unknown;
+  SecretsStoreSecretObjectNameSecretNameStoreIdType__: unknown;
+  FlagshipObjectAppIdNameType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
+  WorkflowObjectNameTypeWorkflowName2More__: unknown;
+  WasmModuleObjectNamePartType__: unknown;
+  VPCServiceObjectNameServiceIdType__: unknown;
+  VPCNetworkObjectNameTypeNetworkIdTunnelId__: unknown;
+}
+export const BetaWorkersVersionsGetResponseBindingsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AIObjectNameType__: S.Unknown.pipe(T.Body("AI object { name, type }")),
+      AISearchObjectInstanceNameNameTypeNamespace__: S.Unknown.pipe(
+        T.Body("AISearch object { instance_name, name, type, namespace }"),
+      ),
+      AISearchNamespaceObjectNameNamespaceType__: S.Unknown.pipe(
+        T.Body("AISearchNamespace object { name, namespace, type }"),
+      ),
+      AnalyticsEngineObjectDatasetNameType__: S.Unknown.pipe(
+        T.Body("AnalyticsEngine object { dataset, name, type }"),
+      ),
+      AssetsObjectNameType__: S.Unknown.pipe(
+        T.Body("Assets object { name, type }"),
+      ),
+      BrowserObjectNameType__: S.Unknown.pipe(
+        T.Body("Browser object { name, type }"),
+      ),
+      D1ObjectDatabaseIdNameTypeId__: S.Unknown.pipe(
+        T.Body("D1 object { database_id, name, type, id }"),
+      ),
+      DataBlobObjectNamePartType__: S.Unknown.pipe(
+        T.Body("DataBlob object { name, part, type }"),
+      ),
+      DispatchNamespaceObjectNameNamespaceTypeOutbound__: S.Unknown.pipe(
+        T.Body("DispatchNamespace object { name, namespace, type, outbound }"),
+      ),
+      DurableObjectNamespaceObjectNameTypeClassName4More__: S.Unknown.pipe(
+        T.Body(
+          "DurableObjectNamespace object { name, type, class_name, 4 more }",
+        ),
+      ),
+      HyperdriveObjectIdNameType__: S.Unknown.pipe(
+        T.Body("Hyperdrive object { id, name, type }"),
+      ),
+      InheritObjectNameTypeOldNameVersionId__: S.Unknown.pipe(
+        T.Body("Inherit object { name, type, old_name, version_id }"),
+      ),
+      ImagesObjectNameType__: S.Unknown.pipe(
+        T.Body("Images object { name, type }"),
+      ),
+      JsonObjectJsonNameType__: S.Unknown.pipe(
+        T.Body("Json object { json, name, type }"),
+      ),
+      KVNamespaceObjectNameNamespaceIdType__: S.Unknown.pipe(
+        T.Body("KVNamespace object { name, namespace_id, type }"),
+      ),
+      MediaObjectNameType__: S.Unknown.pipe(
+        T.Body("Media object { name, type }"),
+      ),
+      MTLSCertificateObjectCertificateIdNameType__: S.Unknown.pipe(
+        T.Body("MTLSCertificate object { certificate_id, name, type }"),
+      ),
+      PlainTextObjectNameTextType__: S.Unknown.pipe(
+        T.Body("PlainText object { name, text, type }"),
+      ),
+      PipelinesObjectNamePipelineType__: S.Unknown.pipe(
+        T.Body("Pipelines object { name, pipeline, type }"),
+      ),
+      QueueObjectNameQueueNameType__: S.Unknown.pipe(
+        T.Body("Queue object { name, queue_name, type }"),
+      ),
+      RatelimitObjectNameNamespaceIdSimpleType__: S.Unknown.pipe(
+        T.Body("Ratelimit object { name, namespace_id, simple, type }"),
+      ),
+      R2BucketObjectBucketNameNameTypeJurisdiction__: S.Unknown.pipe(
+        T.Body("R2Bucket object { bucket_name, name, type, jurisdiction }"),
+      ),
+      SecretTextObjectNameTextType__: S.Unknown.pipe(
+        T.Body("SecretText object { name, text, type }"),
+      ),
+      SendEmailObjectNameTypeAllowedDestinationAddresses2More__: S.Unknown.pipe(
+        T.Body(
+          "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
+        ),
+      ),
+      ServiceObjectNameServiceType2More__: S.Unknown.pipe(
+        T.Body("Service object { name, service, type, 2 more }"),
+      ),
+      TextBlobObjectNamePartType__: S.Unknown.pipe(
+        T.Body("TextBlob object { name, part, type }"),
+      ),
+      VectorizeObjectIndexNameNameType__: S.Unknown.pipe(
+        T.Body("Vectorize object { index_name, name, type }"),
+      ),
+      VersionMetadataObjectNameType__: S.Unknown.pipe(
+        T.Body("VersionMetadata object { name, type }"),
+      ),
+      SecretsStoreSecretObjectNameSecretNameStoreIdType__: S.Unknown.pipe(
+        T.Body(
+          "SecretsStoreSecret object { name, secret_name, store_id, type }",
+        ),
+      ),
+      FlagshipObjectAppIdNameType__: S.Unknown.pipe(
+        T.Body("Flagship object { app_id, name, type }"),
+      ),
+      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
+        T.Body("SecretKey object { algorithm, format, name, 4 more }"),
+      ),
+      WorkflowObjectNameTypeWorkflowName2More__: S.Unknown.pipe(
+        T.Body("Workflow object { name, type, workflow_name, 2 more }"),
+      ),
+      WasmModuleObjectNamePartType__: S.Unknown.pipe(
+        T.Body("WasmModule object { name, part, type }"),
+      ),
+      VPCServiceObjectNameServiceIdType__: S.Unknown.pipe(
+        T.Body("VPCService object { name, service_id, type }"),
+      ),
+      VPCNetworkObjectNameTypeNetworkIdTunnelId__: S.Unknown.pipe(
+        T.Body("VPCNetwork object { name, type, network_id, tunnel_id }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsGetResponseBindingsItem",
+  }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItem>;
+
+export type BetaWorkersVersionsGetResponseBindingsList =
+  BetaWorkersVersionsGetResponseBindingsItem[];
+export const BetaWorkersVersionsGetResponseBindingsList = /*@__PURE__*/ S.Array(
+  BetaWorkersVersionsGetResponseBindingsItem,
+) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsList>;
+
+export interface BetaWorkersVersionsGetResponseCacheOptions {
+  /** Whether caching is enabled for this Worker. */
+  enabled: boolean;
+  /** Whether cached responses are shared across Worker version */
+  crossVersionCache?: boolean;
+}
+export const BetaWorkersVersionsGetResponseCacheOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      crossVersionCache: S.optional(
+        S.Boolean.pipe(T.Body("cross_version_cache")),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsGetResponseCacheOptions",
+  }) as any as S.Schema<BetaWorkersVersionsGetResponseCacheOptions>;
+
+export type BetaWorkersVersionsGetResponseCompatibilityFlagsList = string[];
+export const BetaWorkersVersionsGetResponseCompatibilityFlagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BetaWorkersVersionsGetResponseCompatibilityFlagsList>;
+
+export interface BetaWorkersVersionsGetResponseContainersItem {
+  /** Select which Durable Object class should get this container attached. */
+  className: string;
+}
+export const BetaWorkersVersionsGetResponseContainersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      className: S.String.pipe(T.Body("class_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsGetResponseContainersItem",
+  }) as any as S.Schema<BetaWorkersVersionsGetResponseContainersItem>;
+
+export type BetaWorkersVersionsGetResponseContainersList =
+  BetaWorkersVersionsGetResponseContainersItem[];
+export const BetaWorkersVersionsGetResponseContainersList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersVersionsGetResponseContainersItem,
+  ) as any as S.Schema<BetaWorkersVersionsGetResponseContainersList>;
+
+export interface BetaWorkersVersionsGetResponseLimits {
+  /** CPU time limit in milliseconds. */
+  cpuMs?: number;
+  /** Subrequest limit per request. */
+  subrequests?: number;
+}
+export const BetaWorkersVersionsGetResponseLimits = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
+      subrequests: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "BetaWorkersVersionsGetResponseLimits",
+}) as any as S.Schema<BetaWorkersVersionsGetResponseLimits>;
+
+export interface BetaWorkersVersionsGetResponseMigrations {
+  /** A single set of migrations to apply. */
+  SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__: unknown;
+  WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: unknown;
+}
+export const BetaWorkersVersionsGetResponseMigrations = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__:
+        S.Unknown.pipe(
+          T.Body(
+            "SingleStepMigration object { deleted_classes, new_classes, new_sqlite_classes, 4 more }",
+          ),
+        ),
+      WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: S.Unknown.pipe(
+        T.Body(
+          "WorkersMultipleStepMigrations object { new_tag, old_tag, steps }",
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "BetaWorkersVersionsGetResponseMigrations",
+}) as any as S.Schema<BetaWorkersVersionsGetResponseMigrations>;
+
+export interface BetaWorkersVersionsGetResponseModulesItem {
+  /** The base64-encoded module content. */
+  contentBase64: string;
+  /** The content type of the module. */
+  contentType: string;
+  /** The name of the module. */
+  name: string;
+}
+export const BetaWorkersVersionsGetResponseModulesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      contentBase64: S.String.pipe(T.Body("content_base64")),
+      contentType: S.String.pipe(T.Body("content_type")),
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsGetResponseModulesItem",
+  }) as any as S.Schema<BetaWorkersVersionsGetResponseModulesItem>;
+
+export type BetaWorkersVersionsGetResponseModulesList =
+  BetaWorkersVersionsGetResponseModulesItem[];
+export const BetaWorkersVersionsGetResponseModulesList = /*@__PURE__*/ S.Array(
+  BetaWorkersVersionsGetResponseModulesItem,
+) as any as S.Schema<BetaWorkersVersionsGetResponseModulesList>;
+
+export interface BetaWorkersVersionsGetResponsePackageDependenciesItem {
+  /** The exact version that was resolved and installed by the package manager. */
+  installedVersion: string;
+  /** The npm package name. */
+  name: string;
+  /** The version constraint as written in package.json. */
+  packageJsonVersion: string;
+}
+export const BetaWorkersVersionsGetResponsePackageDependenciesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      installedVersion: S.String,
+      name: S.String,
+      packageJsonVersion: S.String,
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsGetResponsePackageDependenciesItem",
+  }) as any as S.Schema<BetaWorkersVersionsGetResponsePackageDependenciesItem>;
+
+export type BetaWorkersVersionsGetResponsePackageDependenciesList =
+  BetaWorkersVersionsGetResponsePackageDependenciesItem[];
+export const BetaWorkersVersionsGetResponsePackageDependenciesList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersVersionsGetResponsePackageDependenciesItem,
+  ) as any as S.Schema<BetaWorkersVersionsGetResponsePackageDependenciesList>;
+
+export interface BetaWorkersVersionsGetResponsePlacement {
+  ModeObjectMode__: unknown;
+  RegionObjectRegion__: unknown;
+  HostnameObjectHostname__: unknown;
+  HostObjectHost__: unknown;
+  objectModeRegion__: unknown;
+  objectHostnameMode__: unknown;
+  objectHostMode__: unknown;
+  objectModeTarget__: unknown;
+}
+export const BetaWorkersVersionsGetResponsePlacement = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ModeObjectMode__: S.Unknown.pipe(T.Body("Mode object { mode }")),
+      RegionObjectRegion__: S.Unknown.pipe(T.Body("Region object { region }")),
+      HostnameObjectHostname__: S.Unknown.pipe(
+        T.Body("Hostname object { hostname }"),
+      ),
+      HostObjectHost__: S.Unknown.pipe(T.Body("Host object { host }")),
+      objectModeRegion__: S.Unknown.pipe(T.Body("object { mode, region }")),
+      objectHostnameMode__: S.Unknown.pipe(T.Body("object { hostname, mode }")),
+      objectHostMode__: S.Unknown.pipe(T.Body("object { host, mode }")),
+      objectModeTarget__: S.Unknown.pipe(T.Body("object { mode, target }")),
+    }),
+).annotate({
+  identifier: "BetaWorkersVersionsGetResponsePlacement",
+}) as any as S.Schema<BetaWorkersVersionsGetResponsePlacement>;
+
+export type BetaWorkersVersionsGetResponseUsageModel =
+  | "standard"
+  | "bundled"
+  | "unbound"
+  | (string & {});
+export const BetaWorkersVersionsGetResponseUsageModel = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BetaWorkersVersionsGetResponse {
-  result?: unknown;
+  /** Version identifier. */
+  id: string;
+  /** When the version was created. */
+  createdOn: string;
+  /** The integer version number, starting from one. */
+  number: number;
+  /** All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version. */
+  urls: BetaWorkersVersionsGetResponseUrlsList;
+  /** Metadata about the version. */
+  annotations?: BetaWorkersVersionsGetResponseAnnotations;
+  /** Configuration for assets within a Worker. */
+  assets?: BetaWorkersVersionsGetResponseAssets;
+  /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
+  bindings?: BetaWorkersVersionsGetResponseBindingsList;
+  /** Global CacheW configuration for the Worker. When caching is on, */
+  cacheOptions?: BetaWorkersVersionsGetResponseCacheOptions;
+  /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
+  compatibilityDate?: string;
+  /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
+  compatibilityFlags?: BetaWorkersVersionsGetResponseCompatibilityFlagsList;
+  /** List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script. */
+  containers?: BetaWorkersVersionsGetResponseContainersList;
+  /** Resource limits enforced at runtime. */
+  limits?: BetaWorkersVersionsGetResponseLimits;
+  /** The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler). */
+  mainModule?: string;
+  /** Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects. */
+  migrationTag?: string;
+  /** Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed. */
+  migrations?: BetaWorkersVersionsGetResponseMigrations;
+  /** Code, sourcemaps, and other content used at runtime. */
+  modules?: BetaWorkersVersionsGetResponseModulesList;
+  /** The list of npm packages that were installed and used when this Worker */
+  packageDependencies?: BetaWorkersVersionsGetResponsePackageDependenciesList;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
+  placement?: BetaWorkersVersionsGetResponsePlacement;
+  /** The client used to create the version. */
+  source?: string;
+  /** Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time). */
+  startupTimeMs?: number;
+  /** Usage model for the version. */
+  usageModel?: BetaWorkersVersionsGetResponseUsageModel;
 }
 export const BetaWorkersVersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    number: S.Number,
+    urls: BetaWorkersVersionsGetResponseUrlsList,
+    annotations: S.optional(BetaWorkersVersionsGetResponseAnnotations),
+    assets: S.optional(BetaWorkersVersionsGetResponseAssets),
+    bindings: S.optional(BetaWorkersVersionsGetResponseBindingsList),
+    cacheOptions: S.optional(
+      BetaWorkersVersionsGetResponseCacheOptions.pipe(T.Body("cache_options")),
+    ),
+    compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
+    compatibilityFlags: S.optional(
+      BetaWorkersVersionsGetResponseCompatibilityFlagsList.pipe(
+        T.Body("compatibility_flags"),
+      ),
+    ),
+    containers: S.optional(BetaWorkersVersionsGetResponseContainersList),
+    limits: S.optional(BetaWorkersVersionsGetResponseLimits),
+    mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
+    migrationTag: S.optional(S.String.pipe(T.Body("migration_tag"))),
+    migrations: S.optional(BetaWorkersVersionsGetResponseMigrations),
+    modules: S.optional(BetaWorkersVersionsGetResponseModulesList),
+    packageDependencies: S.optional(
+      BetaWorkersVersionsGetResponsePackageDependenciesList.pipe(
+        T.Body("package_dependencies"),
+      ),
+    ),
+    placement: S.optional(BetaWorkersVersionsGetResponsePlacement),
+    source: S.optional(S.String),
+    startupTimeMs: S.optional(S.Number.pipe(T.Body("startup_time_ms"))),
+    usageModel: S.optional(
+      BetaWorkersVersionsGetResponseUsageModel.pipe(T.Body("usage_model")),
+    ),
   }),
 ).annotate({
   identifier: "BetaWorkersVersionsGetResponse",
 }) as any as S.Schema<BetaWorkersVersionsGetResponse>;
 
 export interface BetaWorkersVersionsListRequest {
-  account_id: string;
-  worker_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Identifier for the Worker, which can be ID or name. */
+  workerId: string;
+  /** Current page. */
   page?: number;
-  per_page?: number;
+  /** Items per-page. */
+  perPage?: number;
 }
 export const BetaWorkersVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    worker_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workerId: S.String.pipe(T.Label("worker_id")),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1241,12 +4195,547 @@ export const BetaWorkersVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BetaWorkersVersionsListRequest",
 }) as any as S.Schema<BetaWorkersVersionsListRequest>;
 
-export type BetaWorkersVersionsListResultList = unknown[];
+export type BetaWorkersVersionsListResultItemUrlsList = string[];
+export const BetaWorkersVersionsListResultItemUrlsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BetaWorkersVersionsListResultItemUrlsList>;
+
+export interface BetaWorkersVersionsListResultItemAnnotations {
+  /** Human-readable message about the version. Truncated to 1000 bytes if longer. */
+  WorkersMessage_?: string;
+  /** User-provided identifier for the version. Maximum 100 bytes. */
+  WorkersTag_?: string;
+  /** Operation that triggered the creation of the version. */
+  WorkersTriggeredBy_?: string;
+}
+export const BetaWorkersVersionsListResultItemAnnotations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
+      WorkersTag_: S.optional(S.String.pipe(T.Body('"workers/tag"'))),
+      WorkersTriggeredBy_: S.optional(
+        S.String.pipe(T.Body('"workers/triggered_by"')),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsListResultItemAnnotations",
+  }) as any as S.Schema<BetaWorkersVersionsListResultItemAnnotations>;
+
+export type BetaWorkersVersionsListResultItemAssetsConfigHtmlHandling =
+  | "auto-trailing-slash"
+  | "force-trailing-slash"
+  | "drop-trailing-slash"
+  | "none"
+  | (string & {});
+export const BetaWorkersVersionsListResultItemAssetsConfigHtmlHandling =
+  /*@__PURE__*/ S.String;
+
+export type BetaWorkersVersionsListResultItemAssetsConfigNotFoundHandling =
+  | "none"
+  | "404-page"
+  | "single-page-application"
+  | (string & {});
+export const BetaWorkersVersionsListResultItemAssetsConfigNotFoundHandling =
+  /*@__PURE__*/ S.String;
+
+export interface BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstItem {
+  /** Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules. */
+  arrayOfString: unknown;
+  /** Enables routing to always invoke the Worker script ahead of all requests. When true, this is equivalent to `["/*"]` in the string array version of this field. */
+  boolean: unknown;
+}
+export const BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      arrayOfString: S.Unknown.pipe(T.Body("array of string")),
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier:
+      "BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstItem",
+  }) as any as S.Schema<BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstItem>;
+
+export type BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstList =
+  BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstItem[];
+export const BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstItem,
+  ) as any as S.Schema<BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstList>;
+
+export interface BetaWorkersVersionsListResultItemAssetsConfig {
+  /** Determines the redirects and rewrites of requests for HTML content. */
+  htmlHandling?: BetaWorkersVersionsListResultItemAssetsConfigHtmlHandling;
+  /** Determines the response when a request does not match a static asset, and there is no Worker script. */
+  notFoundHandling?: BetaWorkersVersionsListResultItemAssetsConfigNotFoundHandling;
+  /** Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules. */
+  runWorkerFirst?: BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstList;
+}
+export const BetaWorkersVersionsListResultItemAssetsConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      htmlHandling: S.optional(
+        BetaWorkersVersionsListResultItemAssetsConfigHtmlHandling.pipe(
+          T.Body("html_handling"),
+        ),
+      ),
+      notFoundHandling: S.optional(
+        BetaWorkersVersionsListResultItemAssetsConfigNotFoundHandling.pipe(
+          T.Body("not_found_handling"),
+        ),
+      ),
+      runWorkerFirst: S.optional(
+        BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstList.pipe(
+          T.Body("run_worker_first"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsListResultItemAssetsConfig",
+  }) as any as S.Schema<BetaWorkersVersionsListResultItemAssetsConfig>;
+
+export interface BetaWorkersVersionsListResultItemAssets {
+  /** Configuration for assets within a Worker. */
+  config?: BetaWorkersVersionsListResultItemAssetsConfig;
+  /** Token provided upon successful upload of all files from a registered manifest. */
+  jwt?: string;
+}
+export const BetaWorkersVersionsListResultItemAssets = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      config: S.optional(BetaWorkersVersionsListResultItemAssetsConfig),
+      jwt: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "BetaWorkersVersionsListResultItemAssets",
+}) as any as S.Schema<BetaWorkersVersionsListResultItemAssets>;
+
+export interface BetaWorkersVersionsListResultItemBindingsItem {
+  AIObjectNameType__: unknown;
+  AISearchObjectInstanceNameNameTypeNamespace__: unknown;
+  AISearchNamespaceObjectNameNamespaceType__: unknown;
+  AnalyticsEngineObjectDatasetNameType__: unknown;
+  AssetsObjectNameType__: unknown;
+  BrowserObjectNameType__: unknown;
+  D1ObjectDatabaseIdNameTypeId__: unknown;
+  DataBlobObjectNamePartType__: unknown;
+  DispatchNamespaceObjectNameNamespaceTypeOutbound__: unknown;
+  DurableObjectNamespaceObjectNameTypeClassName4More__: unknown;
+  HyperdriveObjectIdNameType__: unknown;
+  InheritObjectNameTypeOldNameVersionId__: unknown;
+  ImagesObjectNameType__: unknown;
+  JsonObjectJsonNameType__: unknown;
+  KVNamespaceObjectNameNamespaceIdType__: unknown;
+  MediaObjectNameType__: unknown;
+  MTLSCertificateObjectCertificateIdNameType__: unknown;
+  PlainTextObjectNameTextType__: unknown;
+  PipelinesObjectNamePipelineType__: unknown;
+  QueueObjectNameQueueNameType__: unknown;
+  RatelimitObjectNameNamespaceIdSimpleType__: unknown;
+  R2BucketObjectBucketNameNameTypeJurisdiction__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SendEmailObjectNameTypeAllowedDestinationAddresses2More__: unknown;
+  ServiceObjectNameServiceType2More__: unknown;
+  TextBlobObjectNamePartType__: unknown;
+  VectorizeObjectIndexNameNameType__: unknown;
+  VersionMetadataObjectNameType__: unknown;
+  SecretsStoreSecretObjectNameSecretNameStoreIdType__: unknown;
+  FlagshipObjectAppIdNameType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
+  WorkflowObjectNameTypeWorkflowName2More__: unknown;
+  WasmModuleObjectNamePartType__: unknown;
+  VPCServiceObjectNameServiceIdType__: unknown;
+  VPCNetworkObjectNameTypeNetworkIdTunnelId__: unknown;
+}
+export const BetaWorkersVersionsListResultItemBindingsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AIObjectNameType__: S.Unknown.pipe(T.Body("AI object { name, type }")),
+      AISearchObjectInstanceNameNameTypeNamespace__: S.Unknown.pipe(
+        T.Body("AISearch object { instance_name, name, type, namespace }"),
+      ),
+      AISearchNamespaceObjectNameNamespaceType__: S.Unknown.pipe(
+        T.Body("AISearchNamespace object { name, namespace, type }"),
+      ),
+      AnalyticsEngineObjectDatasetNameType__: S.Unknown.pipe(
+        T.Body("AnalyticsEngine object { dataset, name, type }"),
+      ),
+      AssetsObjectNameType__: S.Unknown.pipe(
+        T.Body("Assets object { name, type }"),
+      ),
+      BrowserObjectNameType__: S.Unknown.pipe(
+        T.Body("Browser object { name, type }"),
+      ),
+      D1ObjectDatabaseIdNameTypeId__: S.Unknown.pipe(
+        T.Body("D1 object { database_id, name, type, id }"),
+      ),
+      DataBlobObjectNamePartType__: S.Unknown.pipe(
+        T.Body("DataBlob object { name, part, type }"),
+      ),
+      DispatchNamespaceObjectNameNamespaceTypeOutbound__: S.Unknown.pipe(
+        T.Body("DispatchNamespace object { name, namespace, type, outbound }"),
+      ),
+      DurableObjectNamespaceObjectNameTypeClassName4More__: S.Unknown.pipe(
+        T.Body(
+          "DurableObjectNamespace object { name, type, class_name, 4 more }",
+        ),
+      ),
+      HyperdriveObjectIdNameType__: S.Unknown.pipe(
+        T.Body("Hyperdrive object { id, name, type }"),
+      ),
+      InheritObjectNameTypeOldNameVersionId__: S.Unknown.pipe(
+        T.Body("Inherit object { name, type, old_name, version_id }"),
+      ),
+      ImagesObjectNameType__: S.Unknown.pipe(
+        T.Body("Images object { name, type }"),
+      ),
+      JsonObjectJsonNameType__: S.Unknown.pipe(
+        T.Body("Json object { json, name, type }"),
+      ),
+      KVNamespaceObjectNameNamespaceIdType__: S.Unknown.pipe(
+        T.Body("KVNamespace object { name, namespace_id, type }"),
+      ),
+      MediaObjectNameType__: S.Unknown.pipe(
+        T.Body("Media object { name, type }"),
+      ),
+      MTLSCertificateObjectCertificateIdNameType__: S.Unknown.pipe(
+        T.Body("MTLSCertificate object { certificate_id, name, type }"),
+      ),
+      PlainTextObjectNameTextType__: S.Unknown.pipe(
+        T.Body("PlainText object { name, text, type }"),
+      ),
+      PipelinesObjectNamePipelineType__: S.Unknown.pipe(
+        T.Body("Pipelines object { name, pipeline, type }"),
+      ),
+      QueueObjectNameQueueNameType__: S.Unknown.pipe(
+        T.Body("Queue object { name, queue_name, type }"),
+      ),
+      RatelimitObjectNameNamespaceIdSimpleType__: S.Unknown.pipe(
+        T.Body("Ratelimit object { name, namespace_id, simple, type }"),
+      ),
+      R2BucketObjectBucketNameNameTypeJurisdiction__: S.Unknown.pipe(
+        T.Body("R2Bucket object { bucket_name, name, type, jurisdiction }"),
+      ),
+      SecretTextObjectNameTextType__: S.Unknown.pipe(
+        T.Body("SecretText object { name, text, type }"),
+      ),
+      SendEmailObjectNameTypeAllowedDestinationAddresses2More__: S.Unknown.pipe(
+        T.Body(
+          "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
+        ),
+      ),
+      ServiceObjectNameServiceType2More__: S.Unknown.pipe(
+        T.Body("Service object { name, service, type, 2 more }"),
+      ),
+      TextBlobObjectNamePartType__: S.Unknown.pipe(
+        T.Body("TextBlob object { name, part, type }"),
+      ),
+      VectorizeObjectIndexNameNameType__: S.Unknown.pipe(
+        T.Body("Vectorize object { index_name, name, type }"),
+      ),
+      VersionMetadataObjectNameType__: S.Unknown.pipe(
+        T.Body("VersionMetadata object { name, type }"),
+      ),
+      SecretsStoreSecretObjectNameSecretNameStoreIdType__: S.Unknown.pipe(
+        T.Body(
+          "SecretsStoreSecret object { name, secret_name, store_id, type }",
+        ),
+      ),
+      FlagshipObjectAppIdNameType__: S.Unknown.pipe(
+        T.Body("Flagship object { app_id, name, type }"),
+      ),
+      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
+        T.Body("SecretKey object { algorithm, format, name, 4 more }"),
+      ),
+      WorkflowObjectNameTypeWorkflowName2More__: S.Unknown.pipe(
+        T.Body("Workflow object { name, type, workflow_name, 2 more }"),
+      ),
+      WasmModuleObjectNamePartType__: S.Unknown.pipe(
+        T.Body("WasmModule object { name, part, type }"),
+      ),
+      VPCServiceObjectNameServiceIdType__: S.Unknown.pipe(
+        T.Body("VPCService object { name, service_id, type }"),
+      ),
+      VPCNetworkObjectNameTypeNetworkIdTunnelId__: S.Unknown.pipe(
+        T.Body("VPCNetwork object { name, type, network_id, tunnel_id }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsListResultItemBindingsItem",
+  }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItem>;
+
+export type BetaWorkersVersionsListResultItemBindingsList =
+  BetaWorkersVersionsListResultItemBindingsItem[];
+export const BetaWorkersVersionsListResultItemBindingsList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersVersionsListResultItemBindingsItem,
+  ) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsList>;
+
+export interface BetaWorkersVersionsListResultItemCacheOptions {
+  /** Whether caching is enabled for this Worker. */
+  enabled: boolean;
+  /** Whether cached responses are shared across Worker version */
+  crossVersionCache?: boolean;
+}
+export const BetaWorkersVersionsListResultItemCacheOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      crossVersionCache: S.optional(
+        S.Boolean.pipe(T.Body("cross_version_cache")),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsListResultItemCacheOptions",
+  }) as any as S.Schema<BetaWorkersVersionsListResultItemCacheOptions>;
+
+export type BetaWorkersVersionsListResultItemCompatibilityFlagsList = string[];
+export const BetaWorkersVersionsListResultItemCompatibilityFlagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BetaWorkersVersionsListResultItemCompatibilityFlagsList>;
+
+export interface BetaWorkersVersionsListResultItemContainersItem {
+  /** Select which Durable Object class should get this container attached. */
+  className: string;
+}
+export const BetaWorkersVersionsListResultItemContainersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      className: S.String.pipe(T.Body("class_name")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsListResultItemContainersItem",
+  }) as any as S.Schema<BetaWorkersVersionsListResultItemContainersItem>;
+
+export type BetaWorkersVersionsListResultItemContainersList =
+  BetaWorkersVersionsListResultItemContainersItem[];
+export const BetaWorkersVersionsListResultItemContainersList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersVersionsListResultItemContainersItem,
+  ) as any as S.Schema<BetaWorkersVersionsListResultItemContainersList>;
+
+export interface BetaWorkersVersionsListResultItemLimits {
+  /** CPU time limit in milliseconds. */
+  cpuMs?: number;
+  /** Subrequest limit per request. */
+  subrequests?: number;
+}
+export const BetaWorkersVersionsListResultItemLimits = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
+      subrequests: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "BetaWorkersVersionsListResultItemLimits",
+}) as any as S.Schema<BetaWorkersVersionsListResultItemLimits>;
+
+export interface BetaWorkersVersionsListResultItemMigrations {
+  /** A single set of migrations to apply. */
+  SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__: unknown;
+  WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: unknown;
+}
+export const BetaWorkersVersionsListResultItemMigrations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__:
+        S.Unknown.pipe(
+          T.Body(
+            "SingleStepMigration object { deleted_classes, new_classes, new_sqlite_classes, 4 more }",
+          ),
+        ),
+      WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: S.Unknown.pipe(
+        T.Body(
+          "WorkersMultipleStepMigrations object { new_tag, old_tag, steps }",
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsListResultItemMigrations",
+  }) as any as S.Schema<BetaWorkersVersionsListResultItemMigrations>;
+
+export interface BetaWorkersVersionsListResultItemModulesItem {
+  /** The base64-encoded module content. */
+  contentBase64: string;
+  /** The content type of the module. */
+  contentType: string;
+  /** The name of the module. */
+  name: string;
+}
+export const BetaWorkersVersionsListResultItemModulesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      contentBase64: S.String.pipe(T.Body("content_base64")),
+      contentType: S.String.pipe(T.Body("content_type")),
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsListResultItemModulesItem",
+  }) as any as S.Schema<BetaWorkersVersionsListResultItemModulesItem>;
+
+export type BetaWorkersVersionsListResultItemModulesList =
+  BetaWorkersVersionsListResultItemModulesItem[];
+export const BetaWorkersVersionsListResultItemModulesList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersVersionsListResultItemModulesItem,
+  ) as any as S.Schema<BetaWorkersVersionsListResultItemModulesList>;
+
+export interface BetaWorkersVersionsListResultItemPackageDependenciesItem {
+  /** The exact version that was resolved and installed by the package manager. */
+  installedVersion: string;
+  /** The npm package name. */
+  name: string;
+  /** The version constraint as written in package.json. */
+  packageJsonVersion: string;
+}
+export const BetaWorkersVersionsListResultItemPackageDependenciesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      installedVersion: S.String,
+      name: S.String,
+      packageJsonVersion: S.String,
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsListResultItemPackageDependenciesItem",
+  }) as any as S.Schema<BetaWorkersVersionsListResultItemPackageDependenciesItem>;
+
+export type BetaWorkersVersionsListResultItemPackageDependenciesList =
+  BetaWorkersVersionsListResultItemPackageDependenciesItem[];
+export const BetaWorkersVersionsListResultItemPackageDependenciesList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersVersionsListResultItemPackageDependenciesItem,
+  ) as any as S.Schema<BetaWorkersVersionsListResultItemPackageDependenciesList>;
+
+export interface BetaWorkersVersionsListResultItemPlacement {
+  ModeObjectMode__: unknown;
+  RegionObjectRegion__: unknown;
+  HostnameObjectHostname__: unknown;
+  HostObjectHost__: unknown;
+  objectModeRegion__: unknown;
+  objectHostnameMode__: unknown;
+  objectHostMode__: unknown;
+  objectModeTarget__: unknown;
+}
+export const BetaWorkersVersionsListResultItemPlacement =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ModeObjectMode__: S.Unknown.pipe(T.Body("Mode object { mode }")),
+      RegionObjectRegion__: S.Unknown.pipe(T.Body("Region object { region }")),
+      HostnameObjectHostname__: S.Unknown.pipe(
+        T.Body("Hostname object { hostname }"),
+      ),
+      HostObjectHost__: S.Unknown.pipe(T.Body("Host object { host }")),
+      objectModeRegion__: S.Unknown.pipe(T.Body("object { mode, region }")),
+      objectHostnameMode__: S.Unknown.pipe(T.Body("object { hostname, mode }")),
+      objectHostMode__: S.Unknown.pipe(T.Body("object { host, mode }")),
+      objectModeTarget__: S.Unknown.pipe(T.Body("object { mode, target }")),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsListResultItemPlacement",
+  }) as any as S.Schema<BetaWorkersVersionsListResultItemPlacement>;
+
+export type BetaWorkersVersionsListResultItemUsageModel =
+  | "standard"
+  | "bundled"
+  | "unbound"
+  | (string & {});
+export const BetaWorkersVersionsListResultItemUsageModel =
+  /*@__PURE__*/ S.String;
+
+export interface BetaWorkersVersionsListResultItem {
+  /** Version identifier. */
+  id: string;
+  /** When the version was created. */
+  createdOn: string;
+  /** The integer version number, starting from one. */
+  number: number;
+  /** All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version. */
+  urls: BetaWorkersVersionsListResultItemUrlsList;
+  /** Metadata about the version. */
+  annotations?: BetaWorkersVersionsListResultItemAnnotations;
+  /** Configuration for assets within a Worker. */
+  assets?: BetaWorkersVersionsListResultItemAssets;
+  /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
+  bindings?: BetaWorkersVersionsListResultItemBindingsList;
+  /** Global CacheW configuration for the Worker. When caching is on, */
+  cacheOptions?: BetaWorkersVersionsListResultItemCacheOptions;
+  /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
+  compatibilityDate?: string;
+  /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
+  compatibilityFlags?: BetaWorkersVersionsListResultItemCompatibilityFlagsList;
+  /** List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script. */
+  containers?: BetaWorkersVersionsListResultItemContainersList;
+  /** Resource limits enforced at runtime. */
+  limits?: BetaWorkersVersionsListResultItemLimits;
+  /** The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler). */
+  mainModule?: string;
+  /** Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects. */
+  migrationTag?: string;
+  /** Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed. */
+  migrations?: BetaWorkersVersionsListResultItemMigrations;
+  /** Code, sourcemaps, and other content used at runtime. */
+  modules?: BetaWorkersVersionsListResultItemModulesList;
+  /** The list of npm packages that were installed and used when this Worker */
+  packageDependencies?: BetaWorkersVersionsListResultItemPackageDependenciesList;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
+  placement?: BetaWorkersVersionsListResultItemPlacement;
+  /** The client used to create the version. */
+  source?: string;
+  /** Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time). */
+  startupTimeMs?: number;
+  /** Usage model for the version. */
+  usageModel?: BetaWorkersVersionsListResultItemUsageModel;
+}
+export const BetaWorkersVersionsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    number: S.Number,
+    urls: BetaWorkersVersionsListResultItemUrlsList,
+    annotations: S.optional(BetaWorkersVersionsListResultItemAnnotations),
+    assets: S.optional(BetaWorkersVersionsListResultItemAssets),
+    bindings: S.optional(BetaWorkersVersionsListResultItemBindingsList),
+    cacheOptions: S.optional(
+      BetaWorkersVersionsListResultItemCacheOptions.pipe(
+        T.Body("cache_options"),
+      ),
+    ),
+    compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
+    compatibilityFlags: S.optional(
+      BetaWorkersVersionsListResultItemCompatibilityFlagsList.pipe(
+        T.Body("compatibility_flags"),
+      ),
+    ),
+    containers: S.optional(BetaWorkersVersionsListResultItemContainersList),
+    limits: S.optional(BetaWorkersVersionsListResultItemLimits),
+    mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
+    migrationTag: S.optional(S.String.pipe(T.Body("migration_tag"))),
+    migrations: S.optional(BetaWorkersVersionsListResultItemMigrations),
+    modules: S.optional(BetaWorkersVersionsListResultItemModulesList),
+    packageDependencies: S.optional(
+      BetaWorkersVersionsListResultItemPackageDependenciesList.pipe(
+        T.Body("package_dependencies"),
+      ),
+    ),
+    placement: S.optional(BetaWorkersVersionsListResultItemPlacement),
+    source: S.optional(S.String),
+    startupTimeMs: S.optional(S.Number.pipe(T.Body("startup_time_ms"))),
+    usageModel: S.optional(
+      BetaWorkersVersionsListResultItemUsageModel.pipe(T.Body("usage_model")),
+    ),
+  }),
+).annotate({
+  identifier: "BetaWorkersVersionsListResultItem",
+}) as any as S.Schema<BetaWorkersVersionsListResultItem>;
+
+export type BetaWorkersVersionsListResultList =
+  BetaWorkersVersionsListResultItem[];
 export const BetaWorkersVersionsListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  BetaWorkersVersionsListResultItem,
 ) as any as S.Schema<BetaWorkersVersionsListResultList>;
 
 export interface BetaWorkersVersionsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: BetaWorkersVersionsListResultList;
 }
 export const BetaWorkersVersionsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1260,13 +4749,15 @@ export const BetaWorkersVersionsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BetaWorkersVersionsListResponse>;
 
 export interface DomainsDeleteRequest {
-  account_id: string;
-  domain_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** ID of the domain. */
+  domainId: string;
 }
 export const DomainsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    domain_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    domainId: S.String.pipe(T.Label("domain_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1286,13 +4777,15 @@ export const DomainsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainsDeleteResponse>;
 
 export interface DomainsGetRequest {
-  account_id: string;
-  domain_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** ID of the domain. */
+  domainId: string;
 }
 export const DomainsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    domain_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    domainId: S.String.pipe(T.Label("domain_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1306,44 +4799,57 @@ export const DomainsGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DomainsGetResponse {
+  /** Immutable ID of the domain. */
   id: string;
-  cert_id: string;
+  /** ID of the TLS certificate issued for the domain. */
+  certId: string;
+  /** Worker environment associated with the domain. */
   environment: string;
+  /** Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker. */
   hostname: string;
+  /** Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker. */
   service: string;
-  zone_id: string;
-  zone_name: string;
+  /** ID of the zone containing the domain hostname. */
+  zoneId: string;
+  /** Name of the zone containing the domain hostname. */
+  zoneName: string;
 }
 export const DomainsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    cert_id: S.String,
+    certId: S.String.pipe(T.Body("cert_id")),
     environment: S.String,
     hostname: S.String,
     service: S.String,
-    zone_id: S.String,
-    zone_name: S.String,
+    zoneId: S.String.pipe(T.Body("zone_id")),
+    zoneName: S.String.pipe(T.Body("zone_name")),
   }),
 ).annotate({
   identifier: "DomainsGetResponse",
 }) as any as S.Schema<DomainsGetResponse>;
 
 export interface DomainsListRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Worker environment associated with the domain. */
   environment?: string;
+  /** Hostname of the domain. */
   hostname?: string;
+  /** Name of the Worker associated with the domain. */
   service?: string;
-  zone_id?: string;
-  zone_name?: string;
+  /** ID of the zone containing the domain hostname. */
+  zoneId?: string;
+  /** Name of the zone containing the domain hostname. */
+  zoneName?: string;
 }
 export const DomainsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     environment: S.optional(S.String.pipe(T.Query())),
     hostname: S.optional(S.String.pipe(T.Query())),
     service: S.optional(S.String.pipe(T.Query())),
-    zone_id: S.optional(S.String.pipe(T.Query())),
-    zone_name: S.optional(S.String.pipe(T.Query())),
+    zoneId: S.optional(S.String.pipe(T.Query("zone_id"))),
+    zoneName: S.optional(S.String.pipe(T.Query("zone_name"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1356,23 +4862,30 @@ export const DomainsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainsListRequest>;
 
 export interface DomainsListResultItem {
+  /** Immutable ID of the domain. */
   id: string;
-  cert_id: string;
+  /** ID of the TLS certificate issued for the domain. */
+  certId: string;
+  /** Worker environment associated with the domain. */
   environment: string;
+  /** Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker. */
   hostname: string;
+  /** Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker. */
   service: string;
-  zone_id: string;
-  zone_name: string;
+  /** ID of the zone containing the domain hostname. */
+  zoneId: string;
+  /** Name of the zone containing the domain hostname. */
+  zoneName: string;
 }
 export const DomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    cert_id: S.String,
+    certId: S.String.pipe(T.Body("cert_id")),
     environment: S.String,
     hostname: S.String,
     service: S.String,
-    zone_id: S.String,
-    zone_name: S.String,
+    zoneId: S.String.pipe(T.Body("zone_id")),
+    zoneName: S.String.pipe(T.Body("zone_name")),
   }),
 ).annotate({
   identifier: "DomainsListResultItem",
@@ -1384,6 +4897,7 @@ export const DomainsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DomainsListResultList>;
 
 export interface DomainsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DomainsListResultList;
 }
 export const DomainsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1395,21 +4909,27 @@ export const DomainsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainsListResponse>;
 
 export interface DomainsUpdateRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker. */
   hostname: string;
+  /** Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker. */
   service: string;
+  /** Worker environment associated with the domain. */
   environment?: string;
-  zone_id?: string;
-  zone_name?: string;
+  /** ID of the zone containing the domain hostname. */
+  zoneId?: string;
+  /** Name of the zone containing the domain hostname. */
+  zoneName?: string;
 }
 export const DomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     hostname: S.String,
     service: S.String,
     environment: S.optional(S.String),
-    zone_id: S.optional(S.String),
-    zone_name: S.optional(S.String),
+    zoneId: S.optional(S.String.pipe(T.Body("zone_id"))),
+    zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1423,23 +4943,30 @@ export const DomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DomainsUpdateResponse {
+  /** Immutable ID of the domain. */
   id: string;
-  cert_id: string;
+  /** ID of the TLS certificate issued for the domain. */
+  certId: string;
+  /** Worker environment associated with the domain. */
   environment: string;
+  /** Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker. */
   hostname: string;
+  /** Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker. */
   service: string;
-  zone_id: string;
-  zone_name: string;
+  /** ID of the zone containing the domain hostname. */
+  zoneId: string;
+  /** Name of the zone containing the domain hostname. */
+  zoneName: string;
 }
 export const DomainsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    cert_id: S.String,
+    certId: S.String.pipe(T.Body("cert_id")),
     environment: S.String,
     hostname: S.String,
     service: S.String,
-    zone_id: S.String,
-    zone_name: S.String,
+    zoneId: S.String.pipe(T.Body("zone_id")),
+    zoneName: S.String.pipe(T.Body("zone_name")),
   }),
 ).annotate({
   identifier: "DomainsUpdateResponse",
@@ -1488,7 +5015,7 @@ export const ObservabilityDestinationsCreateRequestConfiguration =
   }) as any as S.Schema<ObservabilityDestinationsCreateRequestConfiguration>;
 
 export interface ObservabilityDestinationsCreateRequest {
-  account_id: string;
+  accountId: string;
   configuration: ObservabilityDestinationsCreateRequestConfiguration;
   enabled: boolean;
   name: string;
@@ -1497,7 +5024,7 @@ export interface ObservabilityDestinationsCreateRequest {
 export const ObservabilityDestinationsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       configuration: ObservabilityDestinationsCreateRequestConfiguration,
       enabled: S.Boolean,
       name: S.String,
@@ -1528,7 +5055,7 @@ export const ObservabilityDestinationsCreateResponseConfigurationType =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityDestinationsCreateResponseConfiguration {
-  destination_conf: string;
+  destinationConf: string;
   logpushDataset: ObservabilityDestinationsCreateResponseConfigurationLogpushDataset;
   logpushJob: number;
   type: ObservabilityDestinationsCreateResponseConfigurationType;
@@ -1537,7 +5064,7 @@ export interface ObservabilityDestinationsCreateResponseConfiguration {
 export const ObservabilityDestinationsCreateResponseConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      destination_conf: S.String,
+      destinationConf: S.String.pipe(T.Body("destination_conf")),
       logpushDataset:
         ObservabilityDestinationsCreateResponseConfigurationLogpushDataset,
       logpushJob: S.Number,
@@ -1576,13 +5103,13 @@ export const ObservabilityDestinationsCreateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ObservabilityDestinationsCreateResponse>;
 
 export interface ObservabilityDestinationsDeleteRequest {
-  account_id: string;
+  accountId: string;
   slug: string;
 }
 export const ObservabilityDestinationsDeleteRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       slug: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
@@ -1610,7 +5137,7 @@ export const ObservabilityDestinationsDeleteResponseConfigurationType =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityDestinationsDeleteResponseConfiguration {
-  destination_conf: string;
+  destinationConf: string;
   logpushDataset: ObservabilityDestinationsDeleteResponseConfigurationLogpushDataset;
   logpushJob: number;
   type: ObservabilityDestinationsDeleteResponseConfigurationType;
@@ -1619,7 +5146,7 @@ export interface ObservabilityDestinationsDeleteResponseConfiguration {
 export const ObservabilityDestinationsDeleteResponseConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      destination_conf: S.String,
+      destinationConf: S.String.pipe(T.Body("destination_conf")),
       logpushDataset:
         ObservabilityDestinationsDeleteResponseConfigurationLogpushDataset,
       logpushJob: S.Number,
@@ -1671,7 +5198,7 @@ export const ObservabilityDestinationsListRequestOrderBy =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityDestinationsListRequest {
-  account_id: string;
+  accountId: string;
   order?: ObservabilityDestinationsListRequestOrder;
   orderBy?: ObservabilityDestinationsListRequestOrderBy;
   page?: number;
@@ -1680,7 +5207,7 @@ export interface ObservabilityDestinationsListRequest {
 export const ObservabilityDestinationsListRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       order: S.optional(
         ObservabilityDestinationsListRequestOrder.pipe(T.Query()),
       ),
@@ -1710,16 +5237,16 @@ export const ObservabilityDestinationsListResultItemConfigurationHeadersMap =
   ) as any as S.Schema<ObservabilityDestinationsListResultItemConfigurationHeadersMap>;
 
 export interface ObservabilityDestinationsListResultItemConfigurationJobStatus {
-  error_message: string;
-  last_complete: string;
-  last_error: string;
+  errorMessage: string;
+  lastComplete: string;
+  lastError: string;
 }
 export const ObservabilityDestinationsListResultItemConfigurationJobStatus =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      error_message: S.String,
-      last_complete: S.String,
-      last_error: S.String,
+      errorMessage: S.String.pipe(T.Body("error_message")),
+      lastComplete: S.String.pipe(T.Body("last_complete")),
+      lastError: S.String.pipe(T.Body("last_error")),
     }),
   ).annotate({
     identifier: "ObservabilityDestinationsListResultItemConfigurationJobStatus",
@@ -1740,7 +5267,7 @@ export const ObservabilityDestinationsListResultItemConfigurationType =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityDestinationsListResultItemConfiguration {
-  destination_conf: string;
+  destinationConf: string;
   headers: ObservabilityDestinationsListResultItemConfigurationHeadersMap;
   jobStatus: ObservabilityDestinationsListResultItemConfigurationJobStatus;
   logpushDataset: ObservabilityDestinationsListResultItemConfigurationLogpushDataset;
@@ -1750,7 +5277,7 @@ export interface ObservabilityDestinationsListResultItemConfiguration {
 export const ObservabilityDestinationsListResultItemConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      destination_conf: S.String,
+      destinationConf: S.String.pipe(T.Body("destination_conf")),
       headers: ObservabilityDestinationsListResultItemConfigurationHeadersMap,
       jobStatus: ObservabilityDestinationsListResultItemConfigurationJobStatus,
       logpushDataset:
@@ -1795,6 +5322,7 @@ export const ObservabilityDestinationsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ObservabilityDestinationsListResultList>;
 
 export interface ObservabilityDestinationsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ObservabilityDestinationsListResultList;
 }
 export const ObservabilityDestinationsListResponse = /*@__PURE__*/ S.suspend(
@@ -1840,7 +5368,7 @@ export const ObservabilityDestinationsUpdateRequestConfiguration =
   }) as any as S.Schema<ObservabilityDestinationsUpdateRequestConfiguration>;
 
 export interface ObservabilityDestinationsUpdateRequest {
-  account_id: string;
+  accountId: string;
   slug: string;
   configuration: ObservabilityDestinationsUpdateRequestConfiguration;
   enabled: boolean;
@@ -1848,7 +5376,7 @@ export interface ObservabilityDestinationsUpdateRequest {
 export const ObservabilityDestinationsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       slug: S.String.pipe(T.Label()),
       configuration: ObservabilityDestinationsUpdateRequestConfiguration,
       enabled: S.Boolean,
@@ -1878,7 +5406,7 @@ export const ObservabilityDestinationsUpdateResponseConfigurationType =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityDestinationsUpdateResponseConfiguration {
-  destination_conf: string;
+  destinationConf: string;
   logpushDataset: ObservabilityDestinationsUpdateResponseConfigurationLogpushDataset;
   logpushJob: number;
   type: ObservabilityDestinationsUpdateResponseConfigurationType;
@@ -1887,7 +5415,7 @@ export interface ObservabilityDestinationsUpdateResponseConfiguration {
 export const ObservabilityDestinationsUpdateResponseConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      destination_conf: S.String,
+      destinationConf: S.String.pipe(T.Body("destination_conf")),
       logpushDataset:
         ObservabilityDestinationsUpdateResponseConfigurationLogpushDataset,
       logpushJob: S.Number,
@@ -1979,16 +5507,17 @@ export const ObservabilityQueriesCreateRequestParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityQueriesCreateRequestParametersFiltersItem {
-  object___filterCombination__filters__kind__: unknown;
-  WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__: unknown;
+  objectFilterCombinationFiltersKind__: unknown;
+  /** A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters. */
+  WorkersObservabilityFilterLeafObjectKeyOperationType2More__: unknown;
 }
 export const ObservabilityQueriesCreateRequestParametersFiltersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___filterCombination__filters__kind__: S.Unknown.pipe(
+      objectFilterCombinationFiltersKind__: S.Unknown.pipe(
         T.Body("object { filterCombination, filters, kind }"),
       ),
-      WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__:
+      WorkersObservabilityFilterLeafObjectKeyOperationType2More__:
         S.Unknown.pipe(
           T.Body(
             "WorkersObservabilityFilterLeaf object { key, operation, type, 2 more }",
@@ -2067,15 +5596,31 @@ export const ObservabilityQueriesCreateRequestParametersHavingsList =
     ObservabilityQueriesCreateRequestParametersHavingsItem,
   ) as any as S.Schema<ObservabilityQueriesCreateRequestParametersHavingsList>;
 
+export interface ObservabilityQueriesCreateRequestParametersNeedleValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const ObservabilityQueriesCreateRequestParametersNeedleValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "ObservabilityQueriesCreateRequestParametersNeedleValue",
+  }) as any as S.Schema<ObservabilityQueriesCreateRequestParametersNeedleValue>;
+
 export interface ObservabilityQueriesCreateRequestParametersNeedle {
-  value: unknown;
+  value: ObservabilityQueriesCreateRequestParametersNeedleValue;
   isRegex?: boolean;
   matchCase?: boolean;
 }
 export const ObservabilityQueriesCreateRequestParametersNeedle =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      value: S.Unknown,
+      value: ObservabilityQueriesCreateRequestParametersNeedleValue,
       isRegex: S.optional(S.Boolean),
       matchCase: S.optional(S.Boolean),
     }),
@@ -2091,7 +5636,9 @@ export const ObservabilityQueriesCreateRequestParametersOrderByOrder =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityQueriesCreateRequestParametersOrderBy {
+  /** Configure which Calculation to order the results by. */
   value: string;
+  /** Set the order of the results */
   order?: ObservabilityQueriesCreateRequestParametersOrderByOrder;
 }
 export const ObservabilityQueriesCreateRequestParametersOrderBy =
@@ -2107,14 +5654,23 @@ export const ObservabilityQueriesCreateRequestParametersOrderBy =
   }) as any as S.Schema<ObservabilityQueriesCreateRequestParametersOrderBy>;
 
 export interface ObservabilityQueriesCreateRequestParameters {
+  /** Create Calculations to compute as part of the query. */
   calculations?: ObservabilityQueriesCreateRequestParametersCalculationsList;
+  /** Set the Datasets to query. Leave it empty to query all the datasets. */
   datasets?: ObservabilityQueriesCreateRequestParametersDatasetsList;
+  /** Set a Flag to describe how to combine the filters on the query. */
   filterCombination?: ObservabilityQueriesCreateRequestParametersFilterCombination;
+  /** Configure the Filters to apply to the query. Supports nested groups via kind: 'group'. */
   filters?: ObservabilityQueriesCreateRequestParametersFiltersList;
+  /** Define how to group the results of the query. */
   groupBys?: ObservabilityQueriesCreateRequestParametersGroupBysList;
+  /** Configure the Having clauses that filter on calculations in the query result. */
   havings?: ObservabilityQueriesCreateRequestParametersHavingsList;
+  /** Set a limit on the number of results / records returned by the query */
   limit?: number;
+  /** Define an expression to search using full-text search. */
   needle?: ObservabilityQueriesCreateRequestParametersNeedle;
+  /** Configure the order of the results returned by the query. */
   orderBy?: ObservabilityQueriesCreateRequestParametersOrderBy;
 }
 export const ObservabilityQueriesCreateRequestParameters =
@@ -2147,14 +5703,15 @@ export const ObservabilityQueriesCreateRequestParameters =
   }) as any as S.Schema<ObservabilityQueriesCreateRequestParameters>;
 
 export interface ObservabilityQueriesCreateRequest {
-  account_id: string;
+  accountId: string;
   description: string;
+  /** Query name */
   name: string;
   parameters: ObservabilityQueriesCreateRequestParameters;
 }
 export const ObservabilityQueriesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     description: S.String,
     name: S.String,
     parameters: ObservabilityQueriesCreateRequestParameters,
@@ -2223,16 +5780,17 @@ export const ObservabilityQueriesCreateResponseParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityQueriesCreateResponseParametersFiltersItem {
-  object___filterCombination__filters__kind__: unknown;
-  WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__: unknown;
+  objectFilterCombinationFiltersKind__: unknown;
+  /** A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters. */
+  WorkersObservabilityFilterLeafObjectKeyOperationType2More__: unknown;
 }
 export const ObservabilityQueriesCreateResponseParametersFiltersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___filterCombination__filters__kind__: S.Unknown.pipe(
+      objectFilterCombinationFiltersKind__: S.Unknown.pipe(
         T.Body("object { filterCombination, filters, kind }"),
       ),
-      WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__:
+      WorkersObservabilityFilterLeafObjectKeyOperationType2More__:
         S.Unknown.pipe(
           T.Body(
             "WorkersObservabilityFilterLeaf object { key, operation, type, 2 more }",
@@ -2311,15 +5869,31 @@ export const ObservabilityQueriesCreateResponseParametersHavingsList =
     ObservabilityQueriesCreateResponseParametersHavingsItem,
   ) as any as S.Schema<ObservabilityQueriesCreateResponseParametersHavingsList>;
 
+export interface ObservabilityQueriesCreateResponseParametersNeedleValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const ObservabilityQueriesCreateResponseParametersNeedleValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "ObservabilityQueriesCreateResponseParametersNeedleValue",
+  }) as any as S.Schema<ObservabilityQueriesCreateResponseParametersNeedleValue>;
+
 export interface ObservabilityQueriesCreateResponseParametersNeedle {
-  value: unknown;
+  value: ObservabilityQueriesCreateResponseParametersNeedleValue;
   isRegex?: boolean;
   matchCase?: boolean;
 }
 export const ObservabilityQueriesCreateResponseParametersNeedle =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      value: S.Unknown,
+      value: ObservabilityQueriesCreateResponseParametersNeedleValue,
       isRegex: S.optional(S.Boolean),
       matchCase: S.optional(S.Boolean),
     }),
@@ -2335,7 +5909,9 @@ export const ObservabilityQueriesCreateResponseParametersOrderByOrder =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityQueriesCreateResponseParametersOrderBy {
+  /** Configure which Calculation to order the results by. */
   value: string;
+  /** Set the order of the results */
   order?: ObservabilityQueriesCreateResponseParametersOrderByOrder;
 }
 export const ObservabilityQueriesCreateResponseParametersOrderBy =
@@ -2351,14 +5927,23 @@ export const ObservabilityQueriesCreateResponseParametersOrderBy =
   }) as any as S.Schema<ObservabilityQueriesCreateResponseParametersOrderBy>;
 
 export interface ObservabilityQueriesCreateResponseParameters {
+  /** Create Calculations to compute as part of the query. */
   calculations?: ObservabilityQueriesCreateResponseParametersCalculationsList;
+  /** Set the Datasets to query. Leave it empty to query all the datasets. */
   datasets?: ObservabilityQueriesCreateResponseParametersDatasetsList;
+  /** Set a Flag to describe how to combine the filters on the query. */
   filterCombination?: ObservabilityQueriesCreateResponseParametersFilterCombination;
+  /** Configure the Filters to apply to the query. Supports nested groups via kind: 'group'. */
   filters?: ObservabilityQueriesCreateResponseParametersFiltersList;
+  /** Define how to group the results of the query. */
   groupBys?: ObservabilityQueriesCreateResponseParametersGroupBysList;
+  /** Configure the Having clauses that filter on calculations in the query result. */
   havings?: ObservabilityQueriesCreateResponseParametersHavingsList;
+  /** Set a limit on the number of results / records returned by the query */
   limit?: number;
+  /** Define an expression to search using full-text search. */
   needle?: ObservabilityQueriesCreateResponseParametersNeedle;
+  /** Configure the order of the results returned by the query. */
   orderBy?: ObservabilityQueriesCreateResponseParametersOrderBy;
 }
 export const ObservabilityQueriesCreateResponseParameters =
@@ -2393,10 +5978,12 @@ export const ObservabilityQueriesCreateResponseParameters =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ObservabilityQueriesCreateResponse {
   id: string;
+  /** If the query wasn't explcitly saved */
   adhoc: boolean;
   created: string;
   createdBy: string;
   description: string;
+  /** Query name */
   name: string;
   parameters: ObservabilityQueriesCreateResponseParameters;
   updated: string;
@@ -2431,7 +6018,7 @@ export type ObservabilityQueriesListRequestOrderBy =
 export const ObservabilityQueriesListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface ObservabilityQueriesListRequest {
-  account_id: string;
+  accountId: string;
   order?: ObservabilityQueriesListRequestOrder;
   orderBy?: ObservabilityQueriesListRequestOrderBy;
   page?: number;
@@ -2439,7 +6026,7 @@ export interface ObservabilityQueriesListRequest {
 }
 export const ObservabilityQueriesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     order: S.optional(ObservabilityQueriesListRequestOrder.pipe(T.Query())),
     orderBy: S.optional(ObservabilityQueriesListRequestOrderBy.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2509,16 +6096,17 @@ export const ObservabilityQueriesListResultItemParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityQueriesListResultItemParametersFiltersItem {
-  object___filterCombination__filters__kind__: unknown;
-  WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__: unknown;
+  objectFilterCombinationFiltersKind__: unknown;
+  /** A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters. */
+  WorkersObservabilityFilterLeafObjectKeyOperationType2More__: unknown;
 }
 export const ObservabilityQueriesListResultItemParametersFiltersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___filterCombination__filters__kind__: S.Unknown.pipe(
+      objectFilterCombinationFiltersKind__: S.Unknown.pipe(
         T.Body("object { filterCombination, filters, kind }"),
       ),
-      WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__:
+      WorkersObservabilityFilterLeafObjectKeyOperationType2More__:
         S.Unknown.pipe(
           T.Body(
             "WorkersObservabilityFilterLeaf object { key, operation, type, 2 more }",
@@ -2597,15 +6185,31 @@ export const ObservabilityQueriesListResultItemParametersHavingsList =
     ObservabilityQueriesListResultItemParametersHavingsItem,
   ) as any as S.Schema<ObservabilityQueriesListResultItemParametersHavingsList>;
 
+export interface ObservabilityQueriesListResultItemParametersNeedleValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const ObservabilityQueriesListResultItemParametersNeedleValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "ObservabilityQueriesListResultItemParametersNeedleValue",
+  }) as any as S.Schema<ObservabilityQueriesListResultItemParametersNeedleValue>;
+
 export interface ObservabilityQueriesListResultItemParametersNeedle {
-  value: unknown;
+  value: ObservabilityQueriesListResultItemParametersNeedleValue;
   isRegex?: boolean;
   matchCase?: boolean;
 }
 export const ObservabilityQueriesListResultItemParametersNeedle =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      value: S.Unknown,
+      value: ObservabilityQueriesListResultItemParametersNeedleValue,
       isRegex: S.optional(S.Boolean),
       matchCase: S.optional(S.Boolean),
     }),
@@ -2621,7 +6225,9 @@ export const ObservabilityQueriesListResultItemParametersOrderByOrder =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityQueriesListResultItemParametersOrderBy {
+  /** Configure which Calculation to order the results by. */
   value: string;
+  /** Set the order of the results */
   order?: ObservabilityQueriesListResultItemParametersOrderByOrder;
 }
 export const ObservabilityQueriesListResultItemParametersOrderBy =
@@ -2637,14 +6243,23 @@ export const ObservabilityQueriesListResultItemParametersOrderBy =
   }) as any as S.Schema<ObservabilityQueriesListResultItemParametersOrderBy>;
 
 export interface ObservabilityQueriesListResultItemParameters {
+  /** Create Calculations to compute as part of the query. */
   calculations?: ObservabilityQueriesListResultItemParametersCalculationsList;
+  /** Set the Datasets to query. Leave it empty to query all the datasets. */
   datasets?: ObservabilityQueriesListResultItemParametersDatasetsList;
+  /** Set a Flag to describe how to combine the filters on the query. */
   filterCombination?: ObservabilityQueriesListResultItemParametersFilterCombination;
+  /** Configure the Filters to apply to the query. Supports nested groups via kind: 'group'. */
   filters?: ObservabilityQueriesListResultItemParametersFiltersList;
+  /** Define how to group the results of the query. */
   groupBys?: ObservabilityQueriesListResultItemParametersGroupBysList;
+  /** Configure the Having clauses that filter on calculations in the query result. */
   havings?: ObservabilityQueriesListResultItemParametersHavingsList;
+  /** Set a limit on the number of results / records returned by the query */
   limit?: number;
+  /** Define an expression to search using full-text search. */
   needle?: ObservabilityQueriesListResultItemParametersNeedle;
+  /** Configure the order of the results returned by the query. */
   orderBy?: ObservabilityQueriesListResultItemParametersOrderBy;
 }
 export const ObservabilityQueriesListResultItemParameters =
@@ -2678,10 +6293,12 @@ export const ObservabilityQueriesListResultItemParameters =
 
 export interface ObservabilityQueriesListResultItem {
   id: string;
+  /** If the query wasn't explcitly saved */
   adhoc: boolean;
   created: string;
   createdBy: string;
   description: string;
+  /** Query name */
   name: string;
   parameters: ObservabilityQueriesListResultItemParameters;
   updated: string;
@@ -2710,6 +6327,7 @@ export const ObservabilityQueriesListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ObservabilityQueriesListResultList>;
 
 export interface ObservabilityQueriesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ObservabilityQueriesListResultList;
 }
 export const ObservabilityQueriesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2723,7 +6341,9 @@ export const ObservabilityQueriesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ObservabilityQueriesListResponse>;
 
 export interface ObservabilitySharedQueriesCreateRequestTimeframe {
+  /** Start timestamp for the query timeframe (Unix timestamp in milliseconds) */
   from: number;
+  /** End timestamp for the query timeframe (Unix timestamp in milliseconds) */
   to: number;
 }
 export const ObservabilitySharedQueriesCreateRequestTimeframe =
@@ -2747,9 +6367,13 @@ export const ObservabilitySharedQueriesCreateRequestParametersCalculationsItemKe
   /*@__PURE__*/ S.String;
 
 export interface ObservabilitySharedQueriesCreateRequestParametersCalculationsItem {
+  /** Aggregation operator to apply. Examples: count, avg, sum, min, max, median, p90, p95, p99, uniq, stddev, variance. */
   operator: ObservabilitySharedQueriesCreateRequestParametersCalculationsItemOperator;
+  /** Custom label for this calculation in the results. Useful for distinguishing multiple calculations. */
   alias?: string;
+  /** Field name to calculate over. Must exist in the data — verify with the keys endpoint. Omit for operators that don't require a key (e.g. count). */
   key?: string;
+  /** Data type of the key. Required when key is provided to ensure correct aggregation. */
   keyType?: ObservabilitySharedQueriesCreateRequestParametersCalculationsItemKeyType;
 }
 export const ObservabilitySharedQueriesCreateRequestParametersCalculationsItem =
@@ -2788,16 +6412,17 @@ export const ObservabilitySharedQueriesCreateRequestParametersFilterCombination 
   /*@__PURE__*/ S.String;
 
 export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItem {
-  object___filterCombination__filters__kind__: unknown;
-  WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__: unknown;
+  objectFilterCombinationFiltersKind__: unknown;
+  /** A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters. */
+  WorkersObservabilityFilterLeafObjectKeyOperationType2More__: unknown;
 }
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___filterCombination__filters__kind__: S.Unknown.pipe(
+      objectFilterCombinationFiltersKind__: S.Unknown.pipe(
         T.Body("object { filterCombination, filters, kind }"),
       ),
-      WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__:
+      WorkersObservabilityFilterLeafObjectKeyOperationType2More__:
         S.Unknown.pipe(
           T.Body(
             "WorkersObservabilityFilterLeaf object { key, operation, type, 2 more }",
@@ -2824,7 +6449,9 @@ export const ObservabilitySharedQueriesCreateRequestParametersGroupBysItemType =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilitySharedQueriesCreateRequestParametersGroupBysItem {
+  /** Data type of the group-by field. */
   type: ObservabilitySharedQueriesCreateRequestParametersGroupBysItemType;
+  /** Field name to group results by (e.g. $metadata.service, $metadata.statusCode). */
   value: string;
 }
 export const ObservabilitySharedQueriesCreateRequestParametersGroupBysItem =
@@ -2850,8 +6477,11 @@ export const ObservabilitySharedQueriesCreateRequestParametersHavingsItemOperati
   /*@__PURE__*/ S.String;
 
 export interface ObservabilitySharedQueriesCreateRequestParametersHavingsItem {
+  /** Calculation alias or operator to filter on after aggregation. */
   key: string;
+  /** Numeric comparison operator: eq, neq, gt, gte, lt, lte. */
   operation: ObservabilitySharedQueriesCreateRequestParametersHavingsItemOperation;
+  /** Threshold value to compare the calculation result against. */
   value: number;
 }
 export const ObservabilitySharedQueriesCreateRequestParametersHavingsItem =
@@ -2873,15 +6503,34 @@ export const ObservabilitySharedQueriesCreateRequestParametersHavingsList =
     ObservabilitySharedQueriesCreateRequestParametersHavingsItem,
   ) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersHavingsList>;
 
+export interface ObservabilitySharedQueriesCreateRequestParametersNeedleValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const ObservabilitySharedQueriesCreateRequestParametersNeedleValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "ObservabilitySharedQueriesCreateRequestParametersNeedleValue",
+  }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersNeedleValue>;
+
 export interface ObservabilitySharedQueriesCreateRequestParametersNeedle {
-  value: unknown;
+  /** The text or pattern to search for. */
+  value: ObservabilitySharedQueriesCreateRequestParametersNeedleValue;
+  /** When true, treats the value as a regular expression (RE2 syntax). */
   isRegex?: boolean;
+  /** When true, performs a case-sensitive search. Defaults to case-insensitive. */
   matchCase?: boolean;
 }
 export const ObservabilitySharedQueriesCreateRequestParametersNeedle =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      value: S.Unknown,
+      value: ObservabilitySharedQueriesCreateRequestParametersNeedleValue,
       isRegex: S.optional(S.Boolean),
       matchCase: S.optional(S.Boolean),
     }),
@@ -2897,7 +6546,9 @@ export const ObservabilitySharedQueriesCreateRequestParametersOrderByOrder =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilitySharedQueriesCreateRequestParametersOrderBy {
+  /** Alias of the calculation to order results by. Must match the alias (or operator) of a calculation in the query. */
   value: string;
+  /** Sort direction: 'asc' for ascending, 'desc' for descending. */
   order?: ObservabilitySharedQueriesCreateRequestParametersOrderByOrder;
 }
 export const ObservabilitySharedQueriesCreateRequestParametersOrderBy =
@@ -2913,14 +6564,23 @@ export const ObservabilitySharedQueriesCreateRequestParametersOrderBy =
   }) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersOrderBy>;
 
 export interface ObservabilitySharedQueriesCreateRequestParameters {
+  /** Aggregation calculations to compute (e.g. count, avg, p99). Each calculation produces aggregate values and optional time-series data. */
   calculations?: ObservabilitySharedQueriesCreateRequestParametersCalculationsList;
+  /** Datasets to query. Leave empty to query all available datasets. */
   datasets?: ObservabilitySharedQueriesCreateRequestParametersDatasetsList;
+  /** Logical operator for combining top-level filters: 'and' (all must match) or 'or' (any must match). Defaults to 'and'. */
   filterCombination?: ObservabilitySharedQueriesCreateRequestParametersFilterCombination;
+  /** Filters to narrow query results. Use the keys and values endpoints to discover available fields before building filters. Supports nested groups via kind: 'group'. Maximum nesting depth is 4. */
   filters?: ObservabilitySharedQueriesCreateRequestParametersFiltersList;
+  /** Fields to group calculation results by. Only applicable when the query view is 'calculations'. Produces per-group aggregate values. */
   groupBys?: ObservabilitySharedQueriesCreateRequestParametersGroupBysList;
+  /** Post-aggregation filters applied to calculation results. Use to filter groups after aggregation (e.g. only groups where count > 100). */
   havings?: ObservabilitySharedQueriesCreateRequestParametersHavingsList;
+  /** Maximum number of group-by rows to return in calculation results. A value of 10 is a sensible default for most use cases. */
   limit?: number;
+  /** Full-text search expression applied across all event fields. Matches events containing the specified text. */
   needle?: ObservabilitySharedQueriesCreateRequestParametersNeedle;
+  /** Ordering for grouped calculation results. Only effective when a group-by is present. */
   orderBy?: ObservabilitySharedQueriesCreateRequestParametersOrderBy;
 }
 export const ObservabilitySharedQueriesCreateRequestParameters =
@@ -2965,25 +6625,38 @@ export const ObservabilitySharedQueriesCreateRequestView =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilitySharedQueriesCreateRequest {
-  account_id: string;
+  accountId: string;
+  /** Identifier for the query. When parameters are omitted, this ID is used to load a previously saved query's parameters. When providing parameters inline, pass any identifier (e.g. an ad-hoc ID). */
   queryId: string;
+  /** Timeframe for the query using Unix timestamps in milliseconds. Narrower timeframes produce faster responses and more specific results. */
   timeframe: ObservabilitySharedQueriesCreateRequestTimeframe;
+  /** When true, includes time-series data in the response. */
   chart?: boolean;
+  /** When true, includes a comparison dataset from the previous time period of equal length. */
   compare?: boolean;
+  /** When true, executes the query without persisting the results. Useful for validation or previewing. */
   dry?: boolean;
+  /** Number of time-series buckets. Only used when view is 'calculations'. Omit to let the system auto-detect an appropriate granularity. */
   granularity?: number;
+  /** When true, omits time-series data from the response and returns only aggregated values. Reduces response size when series are not needed. */
   ignoreSeries?: boolean;
+  /** Maximum number of events to return when view is 'events'. Also controls the number of group-by rows when view is 'calculations'. */
   limit?: number;
+  /** Cursor for pagination in event, trace, and invocation views. Pass the $metadata.id of the last returned item to fetch the next page. */
   offset?: string;
+  /** Numeric offset for paginating grouped/pattern results (top-N lists). Use together with limit. Not used by cursor-based pagination. */
   offsetBy?: number;
+  /** Pagination direction: 'next' for forward, 'prev' for backward. */
   offsetDirection?: string;
+  /** Query parameters defining what data to retrieve — filters, calculations, group-bys, and ordering. In practice this should always be provided for ad-hoc queries. Only omit when executing a previously saved query by queryId. Use the keys and values endpoints to discover available fields before building filters. */
   parameters?: ObservabilitySharedQueriesCreateRequestParameters;
+  /** Controls the shape of the response. 'events': individual log lines matching the query. 'calculations': aggregated metrics (count, avg, p99, etc.) with optional group-by breakdowns and time-series. 'invocations': events grouped by request ID. 'traces': distributed trace summaries. 'agents': Durable Object agent summaries. */
   view?: ObservabilitySharedQueriesCreateRequestView;
 }
 export const ObservabilitySharedQueriesCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       queryId: S.String,
       timeframe: ObservabilitySharedQueriesCreateRequestTimeframe,
       chart: S.optional(S.Boolean),
@@ -3010,6 +6683,7 @@ export const ObservabilitySharedQueriesCreateRequest = /*@__PURE__*/ S.suspend(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ObservabilitySharedQueriesCreateResponse {
+  /** Specify the ID of the shared query. */
   id: string;
 }
 export const ObservabilitySharedQueriesCreateResponse = /*@__PURE__*/ S.suspend(
@@ -3029,14 +6703,16 @@ export type ObservabilitySharedQueriesGetRequestView =
 export const ObservabilitySharedQueriesGetRequestView = /*@__PURE__*/ S.String;
 
 export interface ObservabilitySharedQueriesGetRequest {
-  account_id: string;
+  accountId: string;
+  /** Specify the ID of the shared query. */
   id: string;
+  /** Select the view of the query result to return, defaults to events. */
   view?: ObservabilitySharedQueriesGetRequestView;
 }
 export const ObservabilitySharedQueriesGetRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       id: S.String.pipe(T.Label()),
       view: S.optional(
         ObservabilitySharedQueriesGetRequestView.pipe(T.Query()),
@@ -3104,16 +6780,17 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersFilterCombin
   /*@__PURE__*/ S.String;
 
 export interface ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem {
-  object___filterCombination__filters__kind__: unknown;
-  WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__: unknown;
+  objectFilterCombinationFiltersKind__: unknown;
+  /** A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters. */
+  WorkersObservabilityFilterLeafObjectKeyOperationType2More__: unknown;
 }
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___filterCombination__filters__kind__: S.Unknown.pipe(
+      objectFilterCombinationFiltersKind__: S.Unknown.pipe(
         T.Body("object { filterCombination, filters, kind }"),
       ),
-      WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__:
+      WorkersObservabilityFilterLeafObjectKeyOperationType2More__:
         S.Unknown.pipe(
           T.Body(
             "WorkersObservabilityFilterLeaf object { key, operation, type, 2 more }",
@@ -3211,7 +6888,9 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersOrderByOrder
   /*@__PURE__*/ S.String;
 
 export interface ObservabilitySharedQueriesGetResponseRunQueryParametersOrderBy {
+  /** Configure which Calculation to order the results by. */
   value: string;
+  /** Set the order of the results */
   order?: ObservabilitySharedQueriesGetResponseRunQueryParametersOrderByOrder;
 }
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersOrderBy =
@@ -3228,14 +6907,23 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersOrderBy =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersOrderBy>;
 
 export interface ObservabilitySharedQueriesGetResponseRunQueryParameters {
+  /** Create Calculations to compute as part of the query. */
   calculations?: ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsList;
+  /** Set the Datasets to query. Leave it empty to query all the datasets. */
   datasets?: ObservabilitySharedQueriesGetResponseRunQueryParametersDatasetsList;
+  /** Set a Flag to describe how to combine the filters on the query. */
   filterCombination?: ObservabilitySharedQueriesGetResponseRunQueryParametersFilterCombination;
+  /** Configure the Filters to apply to the query. Supports nested groups via kind: 'group'. */
   filters?: ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersList;
+  /** Define how to group the results of the query. */
   groupBys?: ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysList;
+  /** Configure the Having clauses that filter on calculations in the query result. */
   havings?: ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsList;
+  /** Set a limit on the number of results / records returned by the query */
   limit?: number;
+  /** Define an expression to search using full-text search. */
   needle?: ObservabilitySharedQueriesGetResponseRunQueryParametersNeedle;
+  /** Configure the order of the results returned by the query. */
   orderBy?: ObservabilitySharedQueriesGetResponseRunQueryParametersOrderBy;
 }
 export const ObservabilitySharedQueriesGetResponseRunQueryParameters =
@@ -3273,10 +6961,12 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParameters =
 
 export interface ObservabilitySharedQueriesGetResponseRunQuery {
   id: string;
+  /** If the query wasn't explcitly saved */
   adhoc: boolean;
   created: string;
   createdBy: string;
   description: string;
+  /** Query name */
   name: string;
   parameters: ObservabilitySharedQueriesGetResponseRunQueryParameters;
   updated: string;
@@ -3307,7 +6997,9 @@ export const ObservabilitySharedQueriesGetResponseRunStatus =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilitySharedQueriesGetResponseRunTimeframe {
+  /** Start timestamp for the query timeframe (Unix timestamp in milliseconds) */
   from: number;
+  /** End timestamp for the query timeframe (Unix timestamp in milliseconds) */
   to: number;
 }
 export const ObservabilitySharedQueriesGetResponseRunTimeframe =
@@ -3321,34 +7013,49 @@ export const ObservabilitySharedQueriesGetResponseRunTimeframe =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunTimeframe>;
 
 export interface ObservabilitySharedQueriesGetResponseRunStatistics {
-  bytes_read: number;
+  /** Number of uncompressed bytes read from the table. */
+  bytesRead: number;
+  /** Time in seconds for the query to run. */
   elapsed: number;
-  rows_read: number;
-  abr_level?: number;
+  /** Number of rows scanned from the table. */
+  rowsRead: number;
+  /** The level of Adaptive Bit Rate (ABR) sampling used for the query. If empty the ABR level is 1 */
+  abrLevel?: number;
 }
 export const ObservabilitySharedQueriesGetResponseRunStatistics =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bytes_read: S.Number,
+      bytesRead: S.Number.pipe(T.Body("bytes_read")),
       elapsed: S.Number,
-      rows_read: S.Number,
-      abr_level: S.optional(S.Number),
+      rowsRead: S.Number.pipe(T.Body("rows_read")),
+      abrLevel: S.optional(S.Number.pipe(T.Body("abr_level"))),
     }),
   ).annotate({
     identifier: "ObservabilitySharedQueriesGetResponseRunStatistics",
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunStatistics>;
 
 export interface ObservabilitySharedQueriesGetResponseRun {
+  /** Unique identifier for this query run. */
   id: string;
+  /** Cloudflare account ID that owns this query run. */
   accountId: string;
+  /** Whether this was a dry run (results not persisted). */
   dry: boolean;
+  /** Number of time-series buckets used for the query. Higher values produce more detailed series data. */
   granularity: number;
+  /** A saved query definition with its parameters, metadata, and ownership information. */
   query: ObservabilitySharedQueriesGetResponseRunQuery;
+  /** Current execution status of the query run. */
   status: ObservabilitySharedQueriesGetResponseRunStatus;
+  /** Time range for the query execution */
   timeframe: ObservabilitySharedQueriesGetResponseRunTimeframe;
+  /** ID of the user who initiated the query run. */
   userId: string;
+  /** ISO-8601 timestamp when the query run was created. */
   created?: string;
+  /** Query performance statistics from the database (does not include network latency). */
   statistics?: ObservabilitySharedQueriesGetResponseRunStatistics;
+  /** ISO-8601 timestamp when the query run was last updated. */
   updated?: string;
 }
 export const ObservabilitySharedQueriesGetResponseRun = /*@__PURE__*/ S.suspend(
@@ -3373,18 +7080,22 @@ export const ObservabilitySharedQueriesGetResponseRun = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ObservabilitySharedQueriesGetResponseRun>;
 
 export interface ObservabilitySharedQueriesGetResponseStatistics {
-  bytes_read: number;
+  /** Number of uncompressed bytes read from the table. */
+  bytesRead: number;
+  /** Time in seconds for the query to run. */
   elapsed: number;
-  rows_read: number;
-  abr_level?: number;
+  /** Number of rows scanned from the table. */
+  rowsRead: number;
+  /** The level of Adaptive Bit Rate (ABR) sampling used for the query. If empty the ABR level is 1 */
+  abrLevel?: number;
 }
 export const ObservabilitySharedQueriesGetResponseStatistics =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bytes_read: S.Number,
+      bytesRead: S.Number.pipe(T.Body("bytes_read")),
       elapsed: S.Number,
-      rows_read: S.Number,
-      abr_level: S.optional(S.Number),
+      rowsRead: S.Number.pipe(T.Body("rows_read")),
+      abrLevel: S.optional(S.Number.pipe(T.Body("abr_level"))),
     }),
   ).annotate({
     identifier: "ObservabilitySharedQueriesGetResponseStatistics",
@@ -3399,13 +7110,21 @@ export const ObservabilitySharedQueriesGetResponseAgentsItemEventTypeCountsMap =
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsItemEventTypeCountsMap>;
 
 export interface ObservabilitySharedQueriesGetResponseAgentsItem {
+  /** Class name of the Durable Object agent. */
   agentClass: string;
+  /** Breakdown of event counts by event type. */
   eventTypeCounts: ObservabilitySharedQueriesGetResponseAgentsItemEventTypeCountsMap;
+  /** Timestamp of the earliest event from this agent in the queried window (Unix epoch ms). */
   firstEventMs: number;
+  /** Whether the agent emitted any error events in the queried window. */
   hasErrors: boolean;
+  /** Timestamp of the most recent event from this agent (Unix epoch ms). */
   lastEventMs: number;
+  /** Durable Object namespace the agent belongs to. */
   namespace: string;
+  /** Worker service name that hosts this agent. */
   service: string;
+  /** Total number of events emitted by this agent in the queried window. */
   totalEvents: number;
 }
 export const ObservabilitySharedQueriesGetResponseAgentsItem =
@@ -3432,15 +7151,33 @@ export const ObservabilitySharedQueriesGetResponseAgentsList =
     ObservabilitySharedQueriesGetResponseAgentsItem,
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsList>;
 
+export interface ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItemValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItemValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier:
+      "ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItemValue",
+  }) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItemValue>;
+
 export interface ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItem {
   key: string;
-  value: unknown;
+  value: ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItemValue;
 }
 export const ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       key: S.String,
-      value: S.Unknown,
+      value:
+        ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItemValue,
     }),
   ).annotate({
     identifier:
@@ -3484,15 +7221,33 @@ export const ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesList
     ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItem,
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesList>;
 
+export interface ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItemValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItemValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier:
+      "ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItemValue",
+  }) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItemValue>;
+
 export interface ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItem {
   key: string;
-  value: unknown;
+  value: ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItemValue;
 }
 export const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       key: S.String,
-      value: S.Unknown,
+      value:
+        ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItemValue,
     }),
   ).annotate({
     identifier:
@@ -3588,15 +7343,33 @@ export const ObservabilitySharedQueriesGetResponseCalculationsList =
     ObservabilitySharedQueriesGetResponseCalculationsItem,
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsList>;
 
+export interface ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItemValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItemValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier:
+      "ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItemValue",
+  }) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItemValue>;
+
 export interface ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItem {
   key: string;
-  value: unknown;
+  value: ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItemValue;
 }
 export const ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       key: S.String,
-      value: S.Unknown,
+      value:
+        ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItemValue,
     }),
   ).annotate({
     identifier:
@@ -3640,15 +7413,33 @@ export const ObservabilitySharedQueriesGetResponseCompareItemAggregatesList =
     ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem,
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemAggregatesList>;
 
+export interface ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItemValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItemValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier:
+      "ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItemValue",
+  }) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItemValue>;
+
 export interface ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItem {
   key: string;
-  value: unknown;
+  value: ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItemValue;
 }
 export const ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       key: S.String,
-      value: S.Unknown,
+      value:
+        ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItemValue,
     }),
   ).annotate({
     identifier:
@@ -3744,36 +7535,66 @@ export const ObservabilitySharedQueriesGetResponseCompareList =
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareList>;
 
 export interface ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata {
+  /** Unique event ID. Use as the cursor value for offset-based pagination. */
   id: string;
+  /** Cloudflare account identifier. */
   account?: string;
+  /** Cloudflare product that generated this event (e.g. workers, pages). */
   cloudService?: string;
   coldStart?: number;
+  /** Estimated cost units for this invocation. */
   cost?: number;
+  /** Span duration in milliseconds. */
   duration?: number;
+  /** Span end time as a Unix epoch in milliseconds. */
   endTime?: number;
+  /** Error message, present when the log represents an error. */
   error?: string;
+  /** Templatized version of the error message used for grouping similar errors. */
   errorTemplate?: string;
+  /** Content-based fingerprint used to group similar events. */
   fingerprint?: string;
+  /** Log level (e.g. log, debug, info, warn, error). */
   level?: string;
+  /** Log message text. */
   message?: string;
+  /** Templatized version of the log message used for grouping similar messages. */
   messageTemplate?: string;
+  /** Metric name when the event represents a metric data point. */
   metricName?: string;
+  /** Origin of the event (e.g. fetch, scheduled, queue). */
   origin?: string;
+  /** Span ID of the parent span in the trace hierarchy. */
   parentSpanId?: string;
+  /** Infrastructure provider identifier. */
   provider?: string;
+  /** Cloudflare data center / region that handled the request. */
   region?: string;
+  /** Cloudflare request ID that ties all logs from a single invocation together. */
   requestId?: string;
+  /** Worker script name that produced this event. */
   service?: string;
+  /** Span ID for this individual unit of work within a trace. */
   spanId?: string;
+  /** Human-readable name for this span. */
   spanName?: string;
+  /** Stack / deployment identifier. */
   stackId?: string;
+  /** Span start time as a Unix epoch in milliseconds. */
   startTime?: number;
+  /** HTTP response status code returned by the Worker. */
   statusCode?: number;
+  /** Total duration of the entire trace in milliseconds. */
   traceDuration?: number;
+  /** Distributed trace ID linking spans across services. */
   traceId?: string;
+  /** Logical transaction name for this request. */
   transactionName?: string;
+  /** What triggered the invocation (e.g. GET /users, POST /orders, queue message). */
   trigger?: string;
+  /** Event type classifier (e.g. cf-worker-event, cf-worker-log). */
   type?: string;
+  /** Request URL that triggered the Worker invocation. */
   url?: string;
 }
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata =
@@ -3815,6 +7636,20 @@ export const ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata =
     identifier: "ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata",
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata>;
 
+export interface ObservabilitySharedQueriesGetResponseEventsEventsItemSource {
+  string: unknown;
+  mapUnknown_: unknown;
+}
+export const ObservabilitySharedQueriesGetResponseEventsEventsItemSource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      mapUnknown_: S.Unknown.pipe(T.Body("map[unknown]")),
+    }),
+  ).annotate({
+    identifier: "ObservabilitySharedQueriesGetResponseEventsEventsItemSource",
+  }) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemSource>;
+
 export type ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap =
   { [key: string]: unknown | undefined };
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap =
@@ -3824,16 +7659,16 @@ export const ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap 
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap>;
 
 export interface ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers {
-  object___eventType__requestId__scriptName__10_more__: unknown;
-  object___cpuTimeMs__eventType__outcome__14_more__: unknown;
+  objectEventTypeRequestIdScriptName10More__: unknown;
+  objectCpuTimeMsEventTypeOutcome14More__: unknown;
 }
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___eventType__requestId__scriptName__10_more__: S.Unknown.pipe(
+      objectEventTypeRequestIdScriptName10More__: S.Unknown.pipe(
         T.Body("object { eventType, requestId, scriptName, 10 more }"),
       ),
-      object___cpuTimeMs__eventType__outcome__14_more__: S.Unknown.pipe(
+      objectCpuTimeMsEventTypeOutcome14More__: S.Unknown.pipe(
         T.Body("object { cpuTimeMs, eventType, outcome, 14 more }"),
       ),
     }),
@@ -3842,29 +7677,35 @@ export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers =
   }) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers>;
 
 export interface ObservabilitySharedQueriesGetResponseEventsEventsItem {
-  __metadata_: ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata;
+  /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */
+  Metadata_: ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata;
+  /** The dataset this event belongs to (e.g. cloudflare-workers). */
   dataset: string;
-  source: unknown;
+  /** Raw log payload. May be a string or a structured object depending on how the log was emitted. */
+  source: ObservabilitySharedQueriesGetResponseEventsEventsItemSource;
+  /** Event timestamp as a Unix epoch in milliseconds. */
   timestamp: number;
-  __containers_?: ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap;
-  __workers_?: ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers;
+  /** Cloudflare Containers event information that enriches your logs for identifying and debugging issues. */
+  Containers_?: ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap;
+  /** Cloudflare Workers event information that enriches your logs for identifying and debugging issues. */
+  Workers_?: ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers;
 }
 export const ObservabilitySharedQueriesGetResponseEventsEventsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      __metadata_:
+      Metadata_:
         ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata.pipe(
           T.Body('"$metadata"'),
         ),
       dataset: S.String,
-      source: S.Unknown,
+      source: ObservabilitySharedQueriesGetResponseEventsEventsItemSource,
       timestamp: S.Number,
-      __containers_: S.optional(
+      Containers_: S.optional(
         ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap.pipe(
           T.Body('"$containers"'),
         ),
       ),
-      __workers_: S.optional(
+      Workers_: S.optional(
         ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers.pipe(
           T.Body('"$workers"'),
         ),
@@ -3882,7 +7723,9 @@ export const ObservabilitySharedQueriesGetResponseEventsEventsList =
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsList>;
 
 export interface ObservabilitySharedQueriesGetResponseEventsFieldsItem {
+  /** Field name present in the matched events. */
   key: string;
+  /** Data type of the field (string, number, or boolean). */
   type: string;
 }
 export const ObservabilitySharedQueriesGetResponseEventsFieldsItem =
@@ -3903,19 +7746,19 @@ export const ObservabilitySharedQueriesGetResponseEventsFieldsList =
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsFieldsList>;
 
 export interface ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggregates {
-  _count: number;
-  _interval: number;
-  _firstSeen?: string;
-  _lastSeen?: string;
+  Count: number;
+  Interval: number;
+  FirstSeen?: string;
+  LastSeen?: string;
   bin?: unknown;
 }
 export const ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggregates =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      _count: S.Number,
-      _interval: S.Number,
-      _firstSeen: S.optional(S.String),
-      _lastSeen: S.optional(S.String),
+      Count: S.Number.pipe(T.Body("_count")),
+      Interval: S.Number.pipe(T.Body("_interval")),
+      FirstSeen: S.optional(S.String.pipe(T.Body("_firstSeen"))),
+      LastSeen: S.optional(S.String.pipe(T.Body("_lastSeen"))),
       bin: S.optional(S.Unknown),
     }),
   ).annotate({
@@ -3937,6 +7780,7 @@ export interface ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem {
   interval: number;
   sampleInterval: number;
   errors?: number;
+  /** Groups in the query results. */
   groups?: ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemGroupsMap;
 }
 export const ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem =
@@ -3985,9 +7829,13 @@ export const ObservabilitySharedQueriesGetResponseEventsSeriesList =
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsSeriesList>;
 
 export interface ObservabilitySharedQueriesGetResponseEvents {
+  /** Total number of events matching the query (may exceed the number returned due to limits). */
   count?: number;
+  /** List of individual telemetry events matching the query. */
   events?: ObservabilitySharedQueriesGetResponseEventsEventsList;
+  /** List of fields discovered in the matched events. Useful for building dynamic UIs. */
   fields?: ObservabilitySharedQueriesGetResponseEventsFieldsList;
+  /** Time-series data for the matched events, bucketed by the query granularity. */
   series?: ObservabilitySharedQueriesGetResponseEventsSeriesList;
 }
 export const ObservabilitySharedQueriesGetResponseEvents =
@@ -4026,14 +7874,23 @@ export const ObservabilitySharedQueriesGetResponseTracesItemErrorsList =
   ) as any as S.Schema<ObservabilitySharedQueriesGetResponseTracesItemErrorsList>;
 
 export interface ObservabilitySharedQueriesGetResponseTracesItem {
+  /** Name of the root span that initiated the trace. */
   rootSpanName: string;
+  /** Logical transaction name for the root span. */
   rootTransactionName: string;
+  /** List of Worker services involved in the trace. */
   service: ObservabilitySharedQueriesGetResponseTracesItemServiceList;
+  /** Total number of spans in the trace. */
   spans: number;
+  /** Total duration of the trace in milliseconds. */
   traceDurationMs: number;
+  /** Trace end time as a Unix epoch in milliseconds. */
   traceEndMs: number;
+  /** Unique identifier for the distributed trace. */
   traceId: string;
+  /** Trace start time as a Unix epoch in milliseconds. */
   traceStartMs: number;
+  /** Error messages encountered during the trace, if any. */
   errors?: ObservabilitySharedQueriesGetResponseTracesItemErrorsList;
 }
 export const ObservabilitySharedQueriesGetResponseTracesItem =
@@ -4064,13 +7921,21 @@ export const ObservabilitySharedQueriesGetResponseTracesList =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ObservabilitySharedQueriesGetResponse {
+  /** Represents a single execution of a query against Workers Observability data, including the query definition, execution status, and performance statistics. */
   run: ObservabilitySharedQueriesGetResponseRun;
+  /** Query performance statistics from the database. Includes execution time, rows scanned, and bytes read. Does not include network latency. */
   statistics: ObservabilitySharedQueriesGetResponseStatistics;
+  /** Durable Object agent summaries. Present when the query view is 'agents'. Each entry represents an agent with its event counts and status. */
   agents?: ObservabilitySharedQueriesGetResponseAgentsList;
+  /** Aggregated calculation results. Present when the query view is 'calculations'. Contains computed metrics (count, avg, p99, etc.) with optional group-by breakdowns and time-series data. */
   calculations?: ObservabilitySharedQueriesGetResponseCalculationsList;
+  /** Comparison calculation results from the previous time period. Present when the compare option is enabled. Same structure as calculations. */
   compare?: ObservabilitySharedQueriesGetResponseCompareList;
+  /** Individual event results. Present when the query view is 'events'. Contains the matching log lines and their metadata. */
   events?: ObservabilitySharedQueriesGetResponseEvents;
+  /** Events grouped by invocation (request ID). Present when the query view is 'invocations'. Each key is a request ID mapping to all events from that invocation. */
   invocations?: ObservabilitySharedQueriesGetResponseInvocationsMap;
+  /** Trace summaries matching the query. Present when the query view is 'traces'. Each entry represents a distributed trace with its spans, duration, and services involved. */
   traces?: ObservabilitySharedQueriesGetResponseTracesList;
 }
 export const ObservabilitySharedQueriesGetResponse = /*@__PURE__*/ S.suspend(
@@ -4100,16 +7965,17 @@ export const ObservabilityTelemetryKeysRequestDatasetsList =
   ) as any as S.Schema<ObservabilityTelemetryKeysRequestDatasetsList>;
 
 export interface ObservabilityTelemetryKeysRequestFiltersItem {
-  object___filterCombination__filters__kind__: unknown;
-  WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__: unknown;
+  objectFilterCombinationFiltersKind__: unknown;
+  /** A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters. */
+  WorkersObservabilityFilterLeafObjectKeyOperationType2More__: unknown;
 }
 export const ObservabilityTelemetryKeysRequestFiltersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___filterCombination__filters__kind__: S.Unknown.pipe(
+      objectFilterCombinationFiltersKind__: S.Unknown.pipe(
         T.Body("object { filterCombination, filters, kind }"),
       ),
-      WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__:
+      WorkersObservabilityFilterLeafObjectKeyOperationType2More__:
         S.Unknown.pipe(
           T.Body(
             "WorkersObservabilityFilterLeaf object { key, operation, type, 2 more }",
@@ -4127,15 +7993,34 @@ export const ObservabilityTelemetryKeysRequestFiltersList =
     ObservabilityTelemetryKeysRequestFiltersItem,
   ) as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersList>;
 
+export interface ObservabilityTelemetryKeysRequestKeyNeedleValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const ObservabilityTelemetryKeysRequestKeyNeedleValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "ObservabilityTelemetryKeysRequestKeyNeedleValue",
+  }) as any as S.Schema<ObservabilityTelemetryKeysRequestKeyNeedleValue>;
+
 export interface ObservabilityTelemetryKeysRequestKeyNeedle {
-  value: unknown;
+  /** The text or pattern to search for. */
+  value: ObservabilityTelemetryKeysRequestKeyNeedleValue;
+  /** When true, treats the value as a regular expression (RE2 syntax). */
   isRegex?: boolean;
+  /** When true, performs a case-sensitive search. Defaults to case-insensitive. */
   matchCase?: boolean;
 }
 export const ObservabilityTelemetryKeysRequestKeyNeedle =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      value: S.Unknown,
+      value: ObservabilityTelemetryKeysRequestKeyNeedleValue,
       isRegex: S.optional(S.Boolean),
       matchCase: S.optional(S.Boolean),
     }),
@@ -4143,15 +8028,34 @@ export const ObservabilityTelemetryKeysRequestKeyNeedle =
     identifier: "ObservabilityTelemetryKeysRequestKeyNeedle",
   }) as any as S.Schema<ObservabilityTelemetryKeysRequestKeyNeedle>;
 
+export interface ObservabilityTelemetryKeysRequestNeedleValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const ObservabilityTelemetryKeysRequestNeedleValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "ObservabilityTelemetryKeysRequestNeedleValue",
+  }) as any as S.Schema<ObservabilityTelemetryKeysRequestNeedleValue>;
+
 export interface ObservabilityTelemetryKeysRequestNeedle {
-  value: unknown;
+  /** The text or pattern to search for. */
+  value: ObservabilityTelemetryKeysRequestNeedleValue;
+  /** When true, treats the value as a regular expression (RE2 syntax). */
   isRegex?: boolean;
+  /** When true, performs a case-sensitive search. Defaults to case-insensitive. */
   matchCase?: boolean;
 }
 export const ObservabilityTelemetryKeysRequestNeedle = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      value: S.Unknown,
+      value: ObservabilityTelemetryKeysRequestNeedleValue,
       isRegex: S.optional(S.Boolean),
       matchCase: S.optional(S.Boolean),
     }),
@@ -4160,18 +8064,23 @@ export const ObservabilityTelemetryKeysRequestNeedle = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ObservabilityTelemetryKeysRequestNeedle>;
 
 export interface ObservabilityTelemetryKeysRequest {
-  account_id: string;
+  accountId: string;
+  /** Leave this empty to use the default datasets */
   datasets?: ObservabilityTelemetryKeysRequestDatasetsList;
+  /** Apply filters to narrow key discovery. Supports nested groups via kind: 'group'. Maximum nesting depth is 4. */
   filters?: ObservabilityTelemetryKeysRequestFiltersList;
   from?: number;
+  /** If the user suggests a key, use this to narrow down the list of keys returned. Make sure matchCase is false to avoid case sensitivity issues. */
   keyNeedle?: ObservabilityTelemetryKeysRequestKeyNeedle;
+  /** Advanced usage: set limit=1000+ to retrieve comprehensive key options without needing additional filtering. */
   limit?: number;
+  /** Search for a specific substring in any of the events */
   needle?: ObservabilityTelemetryKeysRequestNeedle;
   to?: number;
 }
 export const ObservabilityTelemetryKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     datasets: S.optional(ObservabilityTelemetryKeysRequestDatasetsList),
     filters: S.optional(ObservabilityTelemetryKeysRequestFiltersList),
     from: S.optional(S.Number),
@@ -4220,6 +8129,7 @@ export const ObservabilityTelemetryKeysResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ObservabilityTelemetryKeysResultList>;
 
 export interface ObservabilityTelemetryKeysResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ObservabilityTelemetryKeysResultList;
 }
 export const ObservabilityTelemetryKeysResponse = /*@__PURE__*/ S.suspend(() =>
@@ -4242,16 +8152,17 @@ export const ObservabilityTelemetryLiveTailRequestFilterCombination =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryLiveTailRequestFiltersItem {
-  object___filterCombination__filters__kind__: unknown;
-  WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__: unknown;
+  objectFilterCombinationFiltersKind__: unknown;
+  /** A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters. */
+  WorkersObservabilityFilterLeafObjectKeyOperationType2More__: unknown;
 }
 export const ObservabilityTelemetryLiveTailRequestFiltersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___filterCombination__filters__kind__: S.Unknown.pipe(
+      objectFilterCombinationFiltersKind__: S.Unknown.pipe(
         T.Body("object { filterCombination, filters, kind }"),
       ),
-      WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__:
+      WorkersObservabilityFilterLeafObjectKeyOperationType2More__:
         S.Unknown.pipe(
           T.Body(
             "WorkersObservabilityFilterLeaf object { key, operation, type, 2 more }",
@@ -4270,15 +8181,17 @@ export const ObservabilityTelemetryLiveTailRequestFiltersList =
   ) as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersList>;
 
 export interface ObservabilityTelemetryLiveTailRequest {
-  account_id: string;
+  accountId: string;
+  /** Set a flag to describe how to combine the filters on the query. */
   filterCombination?: ObservabilityTelemetryLiveTailRequestFilterCombination;
+  /** Apply filters to the query. Supports nested groups via kind: 'group'. */
   filters?: ObservabilityTelemetryLiveTailRequestFiltersList;
   scriptId?: string;
 }
 export const ObservabilityTelemetryLiveTailRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       filterCombination: S.optional(
         ObservabilityTelemetryLiveTailRequestFilterCombination,
       ),
@@ -4297,6 +8210,7 @@ export const ObservabilityTelemetryLiveTailRequest = /*@__PURE__*/ S.suspend(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ObservabilityTelemetryLiveTailResponse {
+  /** WebSocket URL clients connect to in order to stream live tail events. */
   wsUrl: string;
 }
 export const ObservabilityTelemetryLiveTailResponse = /*@__PURE__*/ S.suspend(
@@ -4309,13 +8223,13 @@ export const ObservabilityTelemetryLiveTailResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ObservabilityTelemetryLiveTailResponse>;
 
 export interface ObservabilityTelemetryLiveTailHeartbeatRequest {
-  account_id: string;
+  accountId: string;
   scriptId?: string;
 }
 export const ObservabilityTelemetryLiveTailHeartbeatRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
       scriptId: S.optional(S.String),
     }).pipe(
       T.Http({
@@ -4329,6 +8243,7 @@ export const ObservabilityTelemetryLiveTailHeartbeatRequest =
   }) as any as S.Schema<ObservabilityTelemetryLiveTailHeartbeatRequest>;
 
 export interface ObservabilityTelemetryLiveTailHeartbeatResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const ObservabilityTelemetryLiveTailHeartbeatResponse =
@@ -4341,7 +8256,9 @@ export const ObservabilityTelemetryLiveTailHeartbeatResponse =
   }) as any as S.Schema<ObservabilityTelemetryLiveTailHeartbeatResponse>;
 
 export interface ObservabilityTelemetryQueryRequestTimeframe {
+  /** Start timestamp for the query timeframe (Unix timestamp in milliseconds) */
   from: number;
+  /** End timestamp for the query timeframe (Unix timestamp in milliseconds) */
   to: number;
 }
 export const ObservabilityTelemetryQueryRequestTimeframe =
@@ -4365,9 +8282,13 @@ export const ObservabilityTelemetryQueryRequestParametersCalculationsItemKeyType
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryQueryRequestParametersCalculationsItem {
+  /** Aggregation operator to apply. Examples: count, avg, sum, min, max, median, p90, p95, p99, uniq, stddev, variance. */
   operator: ObservabilityTelemetryQueryRequestParametersCalculationsItemOperator;
+  /** Custom label for this calculation in the results. Useful for distinguishing multiple calculations. */
   alias?: string;
+  /** Field name to calculate over. Must exist in the data — verify with the keys endpoint. Omit for operators that don't require a key (e.g. count). */
   key?: string;
+  /** Data type of the key. Required when key is provided to ensure correct aggregation. */
   keyType?: ObservabilityTelemetryQueryRequestParametersCalculationsItemKeyType;
 }
 export const ObservabilityTelemetryQueryRequestParametersCalculationsItem =
@@ -4408,16 +8329,17 @@ export const ObservabilityTelemetryQueryRequestParametersFilterCombination =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryQueryRequestParametersFiltersItem {
-  object___filterCombination__filters__kind__: unknown;
-  WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__: unknown;
+  objectFilterCombinationFiltersKind__: unknown;
+  /** A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters. */
+  WorkersObservabilityFilterLeafObjectKeyOperationType2More__: unknown;
 }
 export const ObservabilityTelemetryQueryRequestParametersFiltersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___filterCombination__filters__kind__: S.Unknown.pipe(
+      objectFilterCombinationFiltersKind__: S.Unknown.pipe(
         T.Body("object { filterCombination, filters, kind }"),
       ),
-      WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__:
+      WorkersObservabilityFilterLeafObjectKeyOperationType2More__:
         S.Unknown.pipe(
           T.Body(
             "WorkersObservabilityFilterLeaf object { key, operation, type, 2 more }",
@@ -4444,7 +8366,9 @@ export const ObservabilityTelemetryQueryRequestParametersGroupBysItemType =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryQueryRequestParametersGroupBysItem {
+  /** Data type of the group-by field. */
   type: ObservabilityTelemetryQueryRequestParametersGroupBysItemType;
+  /** Field name to group results by (e.g. $metadata.service, $metadata.statusCode). */
   value: string;
 }
 export const ObservabilityTelemetryQueryRequestParametersGroupBysItem =
@@ -4473,8 +8397,11 @@ export const ObservabilityTelemetryQueryRequestParametersHavingsItemOperation =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryQueryRequestParametersHavingsItem {
+  /** Calculation alias or operator to filter on after aggregation. */
   key: string;
+  /** Numeric comparison operator: eq, neq, gt, gte, lt, lte. */
   operation: ObservabilityTelemetryQueryRequestParametersHavingsItemOperation;
+  /** Threshold value to compare the calculation result against. */
   value: number;
 }
 export const ObservabilityTelemetryQueryRequestParametersHavingsItem =
@@ -4496,15 +8423,34 @@ export const ObservabilityTelemetryQueryRequestParametersHavingsList =
     ObservabilityTelemetryQueryRequestParametersHavingsItem,
   ) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersHavingsList>;
 
+export interface ObservabilityTelemetryQueryRequestParametersNeedleValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const ObservabilityTelemetryQueryRequestParametersNeedleValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "ObservabilityTelemetryQueryRequestParametersNeedleValue",
+  }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersNeedleValue>;
+
 export interface ObservabilityTelemetryQueryRequestParametersNeedle {
-  value: unknown;
+  /** The text or pattern to search for. */
+  value: ObservabilityTelemetryQueryRequestParametersNeedleValue;
+  /** When true, treats the value as a regular expression (RE2 syntax). */
   isRegex?: boolean;
+  /** When true, performs a case-sensitive search. Defaults to case-insensitive. */
   matchCase?: boolean;
 }
 export const ObservabilityTelemetryQueryRequestParametersNeedle =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      value: S.Unknown,
+      value: ObservabilityTelemetryQueryRequestParametersNeedleValue,
       isRegex: S.optional(S.Boolean),
       matchCase: S.optional(S.Boolean),
     }),
@@ -4520,7 +8466,9 @@ export const ObservabilityTelemetryQueryRequestParametersOrderByOrder =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryQueryRequestParametersOrderBy {
+  /** Alias of the calculation to order results by. Must match the alias (or operator) of a calculation in the query. */
   value: string;
+  /** Sort direction: 'asc' for ascending, 'desc' for descending. */
   order?: ObservabilityTelemetryQueryRequestParametersOrderByOrder;
 }
 export const ObservabilityTelemetryQueryRequestParametersOrderBy =
@@ -4536,14 +8484,23 @@ export const ObservabilityTelemetryQueryRequestParametersOrderBy =
   }) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersOrderBy>;
 
 export interface ObservabilityTelemetryQueryRequestParameters {
+  /** Aggregation calculations to compute (e.g. count, avg, p99). Each calculation produces aggregate values and optional time-series data. */
   calculations?: ObservabilityTelemetryQueryRequestParametersCalculationsList;
+  /** Datasets to query. Leave empty to query all available datasets. */
   datasets?: ObservabilityTelemetryQueryRequestParametersDatasetsList;
+  /** Logical operator for combining top-level filters: 'and' (all must match) or 'or' (any must match). Defaults to 'and'. */
   filterCombination?: ObservabilityTelemetryQueryRequestParametersFilterCombination;
+  /** Filters to narrow query results. Use the keys and values endpoints to discover available fields before building filters. Supports nested groups via kind: 'group'. Maximum nesting depth is 4. */
   filters?: ObservabilityTelemetryQueryRequestParametersFiltersList;
+  /** Fields to group calculation results by. Only applicable when the query view is 'calculations'. Produces per-group aggregate values. */
   groupBys?: ObservabilityTelemetryQueryRequestParametersGroupBysList;
+  /** Post-aggregation filters applied to calculation results. Use to filter groups after aggregation (e.g. only groups where count > 100). */
   havings?: ObservabilityTelemetryQueryRequestParametersHavingsList;
+  /** Maximum number of group-by rows to return in calculation results. A value of 10 is a sensible default for most use cases. */
   limit?: number;
+  /** Full-text search expression applied across all event fields. Matches events containing the specified text. */
   needle?: ObservabilityTelemetryQueryRequestParametersNeedle;
+  /** Ordering for grouped calculation results. Only effective when a group-by is present. */
   orderBy?: ObservabilityTelemetryQueryRequestParametersOrderBy;
 }
 export const ObservabilityTelemetryQueryRequestParameters =
@@ -4583,24 +8540,37 @@ export type ObservabilityTelemetryQueryRequestView =
 export const ObservabilityTelemetryQueryRequestView = /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryQueryRequest {
-  account_id: string;
+  accountId: string;
+  /** Identifier for the query. When parameters are omitted, this ID is used to load a previously saved query's parameters. When providing parameters inline, pass any identifier (e.g. an ad-hoc ID). */
   queryId: string;
+  /** Timeframe for the query using Unix timestamps in milliseconds. Narrower timeframes produce faster responses and more specific results. */
   timeframe: ObservabilityTelemetryQueryRequestTimeframe;
+  /** When true, includes time-series data in the response. */
   chart?: boolean;
+  /** When true, includes a comparison dataset from the previous time period of equal length. */
   compare?: boolean;
+  /** When true, executes the query without persisting the results. Useful for validation or previewing. */
   dry?: boolean;
+  /** Number of time-series buckets. Only used when view is 'calculations'. Omit to let the system auto-detect an appropriate granularity. */
   granularity?: number;
+  /** When true, omits time-series data from the response and returns only aggregated values. Reduces response size when series are not needed. */
   ignoreSeries?: boolean;
+  /** Maximum number of events to return when view is 'events'. Also controls the number of group-by rows when view is 'calculations'. */
   limit?: number;
+  /** Cursor for pagination in event, trace, and invocation views. Pass the $metadata.id of the last returned item to fetch the next page. */
   offset?: string;
+  /** Numeric offset for paginating grouped/pattern results (top-N lists). Use together with limit. Not used by cursor-based pagination. */
   offsetBy?: number;
+  /** Pagination direction: 'next' for forward, 'prev' for backward. */
   offsetDirection?: string;
+  /** Query parameters defining what data to retrieve — filters, calculations, group-bys, and ordering. In practice this should always be provided for ad-hoc queries. Only omit when executing a previously saved query by queryId. Use the keys and values endpoints to discover available fields before building filters. */
   parameters?: ObservabilityTelemetryQueryRequestParameters;
+  /** Controls the shape of the response. 'events': individual log lines matching the query. 'calculations': aggregated metrics (count, avg, p99, etc.) with optional group-by breakdowns and time-series. 'invocations': events grouped by request ID. 'traces': distributed trace summaries. 'agents': Durable Object agent summaries. */
   view?: ObservabilityTelemetryQueryRequestView;
 }
 export const ObservabilityTelemetryQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     queryId: S.String,
     timeframe: ObservabilityTelemetryQueryRequestTimeframe,
     chart: S.optional(S.Boolean),
@@ -4677,16 +8647,17 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersFilterCombinat
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem {
-  object___filterCombination__filters__kind__: unknown;
-  WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__: unknown;
+  objectFilterCombinationFiltersKind__: unknown;
+  /** A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters. */
+  WorkersObservabilityFilterLeafObjectKeyOperationType2More__: unknown;
 }
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___filterCombination__filters__kind__: S.Unknown.pipe(
+      objectFilterCombinationFiltersKind__: S.Unknown.pipe(
         T.Body("object { filterCombination, filters, kind }"),
       ),
-      WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__:
+      WorkersObservabilityFilterLeafObjectKeyOperationType2More__:
         S.Unknown.pipe(
           T.Body(
             "WorkersObservabilityFilterLeaf object { key, operation, type, 2 more }",
@@ -4786,7 +8757,9 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersOrderByOrder =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryQueryResponseRunQueryParametersOrderBy {
+  /** Configure which Calculation to order the results by. */
   value: string;
+  /** Set the order of the results */
   order?: ObservabilityTelemetryQueryResponseRunQueryParametersOrderByOrder;
 }
 export const ObservabilityTelemetryQueryResponseRunQueryParametersOrderBy =
@@ -4802,14 +8775,23 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersOrderBy =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersOrderBy>;
 
 export interface ObservabilityTelemetryQueryResponseRunQueryParameters {
+  /** Create Calculations to compute as part of the query. */
   calculations?: ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsList;
+  /** Set the Datasets to query. Leave it empty to query all the datasets. */
   datasets?: ObservabilityTelemetryQueryResponseRunQueryParametersDatasetsList;
+  /** Set a Flag to describe how to combine the filters on the query. */
   filterCombination?: ObservabilityTelemetryQueryResponseRunQueryParametersFilterCombination;
+  /** Configure the Filters to apply to the query. Supports nested groups via kind: 'group'. */
   filters?: ObservabilityTelemetryQueryResponseRunQueryParametersFiltersList;
+  /** Define how to group the results of the query. */
   groupBys?: ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysList;
+  /** Configure the Having clauses that filter on calculations in the query result. */
   havings?: ObservabilityTelemetryQueryResponseRunQueryParametersHavingsList;
+  /** Set a limit on the number of results / records returned by the query */
   limit?: number;
+  /** Define an expression to search using full-text search. */
   needle?: ObservabilityTelemetryQueryResponseRunQueryParametersNeedle;
+  /** Configure the order of the results returned by the query. */
   orderBy?: ObservabilityTelemetryQueryResponseRunQueryParametersOrderBy;
 }
 export const ObservabilityTelemetryQueryResponseRunQueryParameters =
@@ -4847,10 +8829,12 @@ export const ObservabilityTelemetryQueryResponseRunQueryParameters =
 
 export interface ObservabilityTelemetryQueryResponseRunQuery {
   id: string;
+  /** If the query wasn't explcitly saved */
   adhoc: boolean;
   created: string;
   createdBy: string;
   description: string;
+  /** Query name */
   name: string;
   parameters: ObservabilityTelemetryQueryResponseRunQueryParameters;
   updated: string;
@@ -4881,7 +8865,9 @@ export const ObservabilityTelemetryQueryResponseRunStatus =
   /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryQueryResponseRunTimeframe {
+  /** Start timestamp for the query timeframe (Unix timestamp in milliseconds) */
   from: number;
+  /** End timestamp for the query timeframe (Unix timestamp in milliseconds) */
   to: number;
 }
 export const ObservabilityTelemetryQueryResponseRunTimeframe =
@@ -4895,34 +8881,49 @@ export const ObservabilityTelemetryQueryResponseRunTimeframe =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseRunTimeframe>;
 
 export interface ObservabilityTelemetryQueryResponseRunStatistics {
-  bytes_read: number;
+  /** Number of uncompressed bytes read from the table. */
+  bytesRead: number;
+  /** Time in seconds for the query to run. */
   elapsed: number;
-  rows_read: number;
-  abr_level?: number;
+  /** Number of rows scanned from the table. */
+  rowsRead: number;
+  /** The level of Adaptive Bit Rate (ABR) sampling used for the query. If empty the ABR level is 1 */
+  abrLevel?: number;
 }
 export const ObservabilityTelemetryQueryResponseRunStatistics =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bytes_read: S.Number,
+      bytesRead: S.Number.pipe(T.Body("bytes_read")),
       elapsed: S.Number,
-      rows_read: S.Number,
-      abr_level: S.optional(S.Number),
+      rowsRead: S.Number.pipe(T.Body("rows_read")),
+      abrLevel: S.optional(S.Number.pipe(T.Body("abr_level"))),
     }),
   ).annotate({
     identifier: "ObservabilityTelemetryQueryResponseRunStatistics",
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseRunStatistics>;
 
 export interface ObservabilityTelemetryQueryResponseRun {
+  /** Unique identifier for this query run. */
   id: string;
+  /** Cloudflare account ID that owns this query run. */
   accountId: string;
+  /** Whether this was a dry run (results not persisted). */
   dry: boolean;
+  /** Number of time-series buckets used for the query. Higher values produce more detailed series data. */
   granularity: number;
+  /** A saved query definition with its parameters, metadata, and ownership information. */
   query: ObservabilityTelemetryQueryResponseRunQuery;
+  /** Current execution status of the query run. */
   status: ObservabilityTelemetryQueryResponseRunStatus;
+  /** Time range for the query execution */
   timeframe: ObservabilityTelemetryQueryResponseRunTimeframe;
+  /** ID of the user who initiated the query run. */
   userId: string;
+  /** ISO-8601 timestamp when the query run was created. */
   created?: string;
+  /** Query performance statistics from the database (does not include network latency). */
   statistics?: ObservabilityTelemetryQueryResponseRunStatistics;
+  /** ISO-8601 timestamp when the query run was last updated. */
   updated?: string;
 }
 export const ObservabilityTelemetryQueryResponseRun = /*@__PURE__*/ S.suspend(
@@ -4945,18 +8946,22 @@ export const ObservabilityTelemetryQueryResponseRun = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ObservabilityTelemetryQueryResponseRun>;
 
 export interface ObservabilityTelemetryQueryResponseStatistics {
-  bytes_read: number;
+  /** Number of uncompressed bytes read from the table. */
+  bytesRead: number;
+  /** Time in seconds for the query to run. */
   elapsed: number;
-  rows_read: number;
-  abr_level?: number;
+  /** Number of rows scanned from the table. */
+  rowsRead: number;
+  /** The level of Adaptive Bit Rate (ABR) sampling used for the query. If empty the ABR level is 1 */
+  abrLevel?: number;
 }
 export const ObservabilityTelemetryQueryResponseStatistics =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bytes_read: S.Number,
+      bytesRead: S.Number.pipe(T.Body("bytes_read")),
       elapsed: S.Number,
-      rows_read: S.Number,
-      abr_level: S.optional(S.Number),
+      rowsRead: S.Number.pipe(T.Body("rows_read")),
+      abrLevel: S.optional(S.Number.pipe(T.Body("abr_level"))),
     }),
   ).annotate({
     identifier: "ObservabilityTelemetryQueryResponseStatistics",
@@ -4972,13 +8977,21 @@ export const ObservabilityTelemetryQueryResponseAgentsItemEventTypeCountsMap =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsItemEventTypeCountsMap>;
 
 export interface ObservabilityTelemetryQueryResponseAgentsItem {
+  /** Class name of the Durable Object agent. */
   agentClass: string;
+  /** Breakdown of event counts by event type. */
   eventTypeCounts: ObservabilityTelemetryQueryResponseAgentsItemEventTypeCountsMap;
+  /** Timestamp of the earliest event from this agent in the queried window (Unix epoch ms). */
   firstEventMs: number;
+  /** Whether the agent emitted any error events in the queried window. */
   hasErrors: boolean;
+  /** Timestamp of the most recent event from this agent (Unix epoch ms). */
   lastEventMs: number;
+  /** Durable Object namespace the agent belongs to. */
   namespace: string;
+  /** Worker service name that hosts this agent. */
   service: string;
+  /** Total number of events emitted by this agent in the queried window. */
   totalEvents: number;
 }
 export const ObservabilityTelemetryQueryResponseAgentsItem =
@@ -5005,15 +9018,33 @@ export const ObservabilityTelemetryQueryResponseAgentsList =
     ObservabilityTelemetryQueryResponseAgentsItem,
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsList>;
 
+export interface ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItemValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItemValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier:
+      "ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItemValue",
+  }) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItemValue>;
+
 export interface ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItem {
   key: string;
-  value: unknown;
+  value: ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItemValue;
 }
 export const ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       key: S.String,
-      value: S.Unknown,
+      value:
+        ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItemValue,
     }),
   ).annotate({
     identifier:
@@ -5057,15 +9088,33 @@ export const ObservabilityTelemetryQueryResponseCalculationsItemAggregatesList =
     ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItem,
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemAggregatesList>;
 
+export interface ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItemValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItemValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier:
+      "ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItemValue",
+  }) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItemValue>;
+
 export interface ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItem {
   key: string;
-  value: unknown;
+  value: ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItemValue;
 }
 export const ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       key: S.String,
-      value: S.Unknown,
+      value:
+        ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItemValue,
     }),
   ).annotate({
     identifier:
@@ -5160,15 +9209,33 @@ export const ObservabilityTelemetryQueryResponseCalculationsList =
     ObservabilityTelemetryQueryResponseCalculationsItem,
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsList>;
 
+export interface ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItemValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItemValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier:
+      "ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItemValue",
+  }) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItemValue>;
+
 export interface ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItem {
   key: string;
-  value: unknown;
+  value: ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItemValue;
 }
 export const ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       key: S.String,
-      value: S.Unknown,
+      value:
+        ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItemValue,
     }),
   ).annotate({
     identifier:
@@ -5211,15 +9278,33 @@ export const ObservabilityTelemetryQueryResponseCompareItemAggregatesList =
     ObservabilityTelemetryQueryResponseCompareItemAggregatesItem,
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemAggregatesList>;
 
+export interface ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItemValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItemValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier:
+      "ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItemValue",
+  }) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItemValue>;
+
 export interface ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItem {
   key: string;
-  value: unknown;
+  value: ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItemValue;
 }
 export const ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       key: S.String,
-      value: S.Unknown,
+      value:
+        ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItemValue,
     }),
   ).annotate({
     identifier:
@@ -5314,36 +9399,66 @@ export const ObservabilityTelemetryQueryResponseCompareList =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareList>;
 
 export interface ObservabilityTelemetryQueryResponseEventsEventsItemMetadata {
+  /** Unique event ID. Use as the cursor value for offset-based pagination. */
   id: string;
+  /** Cloudflare account identifier. */
   account?: string;
+  /** Cloudflare product that generated this event (e.g. workers, pages). */
   cloudService?: string;
   coldStart?: number;
+  /** Estimated cost units for this invocation. */
   cost?: number;
+  /** Span duration in milliseconds. */
   duration?: number;
+  /** Span end time as a Unix epoch in milliseconds. */
   endTime?: number;
+  /** Error message, present when the log represents an error. */
   error?: string;
+  /** Templatized version of the error message used for grouping similar errors. */
   errorTemplate?: string;
+  /** Content-based fingerprint used to group similar events. */
   fingerprint?: string;
+  /** Log level (e.g. log, debug, info, warn, error). */
   level?: string;
+  /** Log message text. */
   message?: string;
+  /** Templatized version of the log message used for grouping similar messages. */
   messageTemplate?: string;
+  /** Metric name when the event represents a metric data point. */
   metricName?: string;
+  /** Origin of the event (e.g. fetch, scheduled, queue). */
   origin?: string;
+  /** Span ID of the parent span in the trace hierarchy. */
   parentSpanId?: string;
+  /** Infrastructure provider identifier. */
   provider?: string;
+  /** Cloudflare data center / region that handled the request. */
   region?: string;
+  /** Cloudflare request ID that ties all logs from a single invocation together. */
   requestId?: string;
+  /** Worker script name that produced this event. */
   service?: string;
+  /** Span ID for this individual unit of work within a trace. */
   spanId?: string;
+  /** Human-readable name for this span. */
   spanName?: string;
+  /** Stack / deployment identifier. */
   stackId?: string;
+  /** Span start time as a Unix epoch in milliseconds. */
   startTime?: number;
+  /** HTTP response status code returned by the Worker. */
   statusCode?: number;
+  /** Total duration of the entire trace in milliseconds. */
   traceDuration?: number;
+  /** Distributed trace ID linking spans across services. */
   traceId?: string;
+  /** Logical transaction name for this request. */
   transactionName?: string;
+  /** What triggered the invocation (e.g. GET /users, POST /orders, queue message). */
   trigger?: string;
+  /** Event type classifier (e.g. cf-worker-event, cf-worker-log). */
   type?: string;
+  /** Request URL that triggered the Worker invocation. */
   url?: string;
 }
 export const ObservabilityTelemetryQueryResponseEventsEventsItemMetadata =
@@ -5385,6 +9500,20 @@ export const ObservabilityTelemetryQueryResponseEventsEventsItemMetadata =
     identifier: "ObservabilityTelemetryQueryResponseEventsEventsItemMetadata",
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemMetadata>;
 
+export interface ObservabilityTelemetryQueryResponseEventsEventsItemSource {
+  string: unknown;
+  mapUnknown_: unknown;
+}
+export const ObservabilityTelemetryQueryResponseEventsEventsItemSource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      mapUnknown_: S.Unknown.pipe(T.Body("map[unknown]")),
+    }),
+  ).annotate({
+    identifier: "ObservabilityTelemetryQueryResponseEventsEventsItemSource",
+  }) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemSource>;
+
 export type ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap = {
   [key: string]: unknown | undefined;
 };
@@ -5395,16 +9524,16 @@ export const ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap>;
 
 export interface ObservabilityTelemetryQueryResponseEventsEventsItemWorkers {
-  object___eventType__requestId__scriptName__10_more__: unknown;
-  object___cpuTimeMs__eventType__outcome__14_more__: unknown;
+  objectEventTypeRequestIdScriptName10More__: unknown;
+  objectCpuTimeMsEventTypeOutcome14More__: unknown;
 }
 export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkers =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___eventType__requestId__scriptName__10_more__: S.Unknown.pipe(
+      objectEventTypeRequestIdScriptName10More__: S.Unknown.pipe(
         T.Body("object { eventType, requestId, scriptName, 10 more }"),
       ),
-      object___cpuTimeMs__eventType__outcome__14_more__: S.Unknown.pipe(
+      objectCpuTimeMsEventTypeOutcome14More__: S.Unknown.pipe(
         T.Body("object { cpuTimeMs, eventType, outcome, 14 more }"),
       ),
     }),
@@ -5413,29 +9542,35 @@ export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkers =
   }) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemWorkers>;
 
 export interface ObservabilityTelemetryQueryResponseEventsEventsItem {
-  __metadata_: ObservabilityTelemetryQueryResponseEventsEventsItemMetadata;
+  /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */
+  Metadata_: ObservabilityTelemetryQueryResponseEventsEventsItemMetadata;
+  /** The dataset this event belongs to (e.g. cloudflare-workers). */
   dataset: string;
-  source: unknown;
+  /** Raw log payload. May be a string or a structured object depending on how the log was emitted. */
+  source: ObservabilityTelemetryQueryResponseEventsEventsItemSource;
+  /** Event timestamp as a Unix epoch in milliseconds. */
   timestamp: number;
-  __containers_?: ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap;
-  __workers_?: ObservabilityTelemetryQueryResponseEventsEventsItemWorkers;
+  /** Cloudflare Containers event information that enriches your logs for identifying and debugging issues. */
+  Containers_?: ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap;
+  /** Cloudflare Workers event information that enriches your logs for identifying and debugging issues. */
+  Workers_?: ObservabilityTelemetryQueryResponseEventsEventsItemWorkers;
 }
 export const ObservabilityTelemetryQueryResponseEventsEventsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      __metadata_:
+      Metadata_:
         ObservabilityTelemetryQueryResponseEventsEventsItemMetadata.pipe(
           T.Body('"$metadata"'),
         ),
       dataset: S.String,
-      source: S.Unknown,
+      source: ObservabilityTelemetryQueryResponseEventsEventsItemSource,
       timestamp: S.Number,
-      __containers_: S.optional(
+      Containers_: S.optional(
         ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap.pipe(
           T.Body('"$containers"'),
         ),
       ),
-      __workers_: S.optional(
+      Workers_: S.optional(
         ObservabilityTelemetryQueryResponseEventsEventsItemWorkers.pipe(
           T.Body('"$workers"'),
         ),
@@ -5453,7 +9588,9 @@ export const ObservabilityTelemetryQueryResponseEventsEventsList =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsList>;
 
 export interface ObservabilityTelemetryQueryResponseEventsFieldsItem {
+  /** Field name present in the matched events. */
   key: string;
+  /** Data type of the field (string, number, or boolean). */
   type: string;
 }
 export const ObservabilityTelemetryQueryResponseEventsFieldsItem =
@@ -5474,19 +9611,19 @@ export const ObservabilityTelemetryQueryResponseEventsFieldsList =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsFieldsList>;
 
 export interface ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemAggregates {
-  _count: number;
-  _interval: number;
-  _firstSeen?: string;
-  _lastSeen?: string;
+  Count: number;
+  Interval: number;
+  FirstSeen?: string;
+  LastSeen?: string;
   bin?: unknown;
 }
 export const ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemAggregates =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      _count: S.Number,
-      _interval: S.Number,
-      _firstSeen: S.optional(S.String),
-      _lastSeen: S.optional(S.String),
+      Count: S.Number.pipe(T.Body("_count")),
+      Interval: S.Number.pipe(T.Body("_interval")),
+      FirstSeen: S.optional(S.String.pipe(T.Body("_firstSeen"))),
+      LastSeen: S.optional(S.String.pipe(T.Body("_lastSeen"))),
       bin: S.optional(S.Unknown),
     }),
   ).annotate({
@@ -5508,6 +9645,7 @@ export interface ObservabilityTelemetryQueryResponseEventsSeriesItemDataItem {
   interval: number;
   sampleInterval: number;
   errors?: number;
+  /** Groups in the query results. */
   groups?: ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemGroupsMap;
 }
 export const ObservabilityTelemetryQueryResponseEventsSeriesItemDataItem =
@@ -5556,9 +9694,13 @@ export const ObservabilityTelemetryQueryResponseEventsSeriesList =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsSeriesList>;
 
 export interface ObservabilityTelemetryQueryResponseEvents {
+  /** Total number of events matching the query (may exceed the number returned due to limits). */
   count?: number;
+  /** List of individual telemetry events matching the query. */
   events?: ObservabilityTelemetryQueryResponseEventsEventsList;
+  /** List of fields discovered in the matched events. Useful for building dynamic UIs. */
   fields?: ObservabilityTelemetryQueryResponseEventsFieldsList;
+  /** Time-series data for the matched events, bucketed by the query granularity. */
   series?: ObservabilityTelemetryQueryResponseEventsSeriesList;
 }
 export const ObservabilityTelemetryQueryResponseEvents =
@@ -5595,14 +9737,23 @@ export const ObservabilityTelemetryQueryResponseTracesItemErrorsList =
   ) as any as S.Schema<ObservabilityTelemetryQueryResponseTracesItemErrorsList>;
 
 export interface ObservabilityTelemetryQueryResponseTracesItem {
+  /** Name of the root span that initiated the trace. */
   rootSpanName: string;
+  /** Logical transaction name for the root span. */
   rootTransactionName: string;
+  /** List of Worker services involved in the trace. */
   service: ObservabilityTelemetryQueryResponseTracesItemServiceList;
+  /** Total number of spans in the trace. */
   spans: number;
+  /** Total duration of the trace in milliseconds. */
   traceDurationMs: number;
+  /** Trace end time as a Unix epoch in milliseconds. */
   traceEndMs: number;
+  /** Unique identifier for the distributed trace. */
   traceId: string;
+  /** Trace start time as a Unix epoch in milliseconds. */
   traceStartMs: number;
+  /** Error messages encountered during the trace, if any. */
   errors?: ObservabilityTelemetryQueryResponseTracesItemErrorsList;
 }
 export const ObservabilityTelemetryQueryResponseTracesItem =
@@ -5633,13 +9784,21 @@ export const ObservabilityTelemetryQueryResponseTracesList =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ObservabilityTelemetryQueryResponse {
+  /** Represents a single execution of a query against Workers Observability data, including the query definition, execution status, and performance statistics. */
   run: ObservabilityTelemetryQueryResponseRun;
+  /** Query performance statistics from the database. Includes execution time, rows scanned, and bytes read. Does not include network latency. */
   statistics: ObservabilityTelemetryQueryResponseStatistics;
+  /** Durable Object agent summaries. Present when the query view is 'agents'. Each entry represents an agent with its event counts and status. */
   agents?: ObservabilityTelemetryQueryResponseAgentsList;
+  /** Aggregated calculation results. Present when the query view is 'calculations'. Contains computed metrics (count, avg, p99, etc.) with optional group-by breakdowns and time-series data. */
   calculations?: ObservabilityTelemetryQueryResponseCalculationsList;
+  /** Comparison calculation results from the previous time period. Present when the compare option is enabled. Same structure as calculations. */
   compare?: ObservabilityTelemetryQueryResponseCompareList;
+  /** Individual event results. Present when the query view is 'events'. Contains the matching log lines and their metadata. */
   events?: ObservabilityTelemetryQueryResponseEvents;
+  /** Events grouped by invocation (request ID). Present when the query view is 'invocations'. Each key is a request ID mapping to all events from that invocation. */
   invocations?: ObservabilityTelemetryQueryResponseInvocationsMap;
+  /** Trace summaries matching the query. Present when the query view is 'traces'. Each entry represents a distributed trace with its spans, duration, and services involved. */
   traces?: ObservabilityTelemetryQueryResponseTracesList;
 }
 export const ObservabilityTelemetryQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5687,16 +9846,17 @@ export type ObservabilityTelemetryValuesRequestType =
 export const ObservabilityTelemetryValuesRequestType = /*@__PURE__*/ S.String;
 
 export interface ObservabilityTelemetryValuesRequestFiltersItem {
-  object___filterCombination__filters__kind__: unknown;
-  WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__: unknown;
+  objectFilterCombinationFiltersKind__: unknown;
+  /** A filter condition applied to query results. Use the keys and values endpoints to discover available fields and their values before constructing filters. */
+  WorkersObservabilityFilterLeafObjectKeyOperationType2More__: unknown;
 }
 export const ObservabilityTelemetryValuesRequestFiltersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___filterCombination__filters__kind__: S.Unknown.pipe(
+      objectFilterCombinationFiltersKind__: S.Unknown.pipe(
         T.Body("object { filterCombination, filters, kind }"),
       ),
-      WorkersObservabilityFilterLeaf_object___key__operation__type__2_more__:
+      WorkersObservabilityFilterLeafObjectKeyOperationType2More__:
         S.Unknown.pipe(
           T.Body(
             "WorkersObservabilityFilterLeaf object { key, operation, type, 2 more }",
@@ -5714,15 +9874,34 @@ export const ObservabilityTelemetryValuesRequestFiltersList =
     ObservabilityTelemetryValuesRequestFiltersItem,
   ) as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersList>;
 
+export interface ObservabilityTelemetryValuesRequestNeedleValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const ObservabilityTelemetryValuesRequestNeedleValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "ObservabilityTelemetryValuesRequestNeedleValue",
+  }) as any as S.Schema<ObservabilityTelemetryValuesRequestNeedleValue>;
+
 export interface ObservabilityTelemetryValuesRequestNeedle {
-  value: unknown;
+  /** The text or pattern to search for. */
+  value: ObservabilityTelemetryValuesRequestNeedleValue;
+  /** When true, treats the value as a regular expression (RE2 syntax). */
   isRegex?: boolean;
+  /** When true, performs a case-sensitive search. Defaults to case-insensitive. */
   matchCase?: boolean;
 }
 export const ObservabilityTelemetryValuesRequestNeedle =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      value: S.Unknown,
+      value: ObservabilityTelemetryValuesRequestNeedleValue,
       isRegex: S.optional(S.Boolean),
       matchCase: S.optional(S.Boolean),
     }),
@@ -5731,18 +9910,21 @@ export const ObservabilityTelemetryValuesRequestNeedle =
   }) as any as S.Schema<ObservabilityTelemetryValuesRequestNeedle>;
 
 export interface ObservabilityTelemetryValuesRequest {
-  account_id: string;
+  accountId: string;
+  /** Leave this empty to use the default datasets */
   datasets: ObservabilityTelemetryValuesRequestDatasetsList;
   key: string;
   timeframe: ObservabilityTelemetryValuesRequestTimeframe;
   type: ObservabilityTelemetryValuesRequestType;
+  /** Apply filters before listing values. Supports nested groups via kind: 'group'. Maximum nesting depth is 4. */
   filters?: ObservabilityTelemetryValuesRequestFiltersList;
   limit?: number;
+  /** Full-text search expression to match events containing the specified text or pattern. */
   needle?: ObservabilityTelemetryValuesRequestNeedle;
 }
 export const ObservabilityTelemetryValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     datasets: ObservabilityTelemetryValuesRequestDatasetsList,
     key: S.String,
     timeframe: ObservabilityTelemetryValuesRequestTimeframe,
@@ -5769,11 +9951,27 @@ export type ObservabilityTelemetryValuesResultItemType =
 export const ObservabilityTelemetryValuesResultItemType =
   /*@__PURE__*/ S.String;
 
+export interface ObservabilityTelemetryValuesResultItemValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const ObservabilityTelemetryValuesResultItemValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "ObservabilityTelemetryValuesResultItemValue",
+  }) as any as S.Schema<ObservabilityTelemetryValuesResultItemValue>;
+
 export interface ObservabilityTelemetryValuesResultItem {
   dataset: string;
   key: string;
   type: ObservabilityTelemetryValuesResultItemType;
-  value: unknown;
+  value: ObservabilityTelemetryValuesResultItemValue;
 }
 export const ObservabilityTelemetryValuesResultItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -5781,7 +9979,7 @@ export const ObservabilityTelemetryValuesResultItem = /*@__PURE__*/ S.suspend(
       dataset: S.String,
       key: S.String,
       type: ObservabilityTelemetryValuesResultItemType,
-      value: S.Unknown,
+      value: ObservabilityTelemetryValuesResultItemValue,
     }),
 ).annotate({
   identifier: "ObservabilityTelemetryValuesResultItem",
@@ -5794,6 +9992,7 @@ export const ObservabilityTelemetryValuesResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ObservabilityTelemetryValuesResultList>;
 
 export interface ObservabilityTelemetryValuesResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ObservabilityTelemetryValuesResultList;
 }
 export const ObservabilityTelemetryValuesResponse = /*@__PURE__*/ S.suspend(
@@ -5808,13 +10007,16 @@ export const ObservabilityTelemetryValuesResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ObservabilityTelemetryValuesResponse>;
 
 export interface RoutesCreateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior). */
   pattern: string;
+  /** Name of the script to run if the route matches. */
   script?: string;
 }
 export const RoutesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     pattern: S.String,
     script: S.optional(S.String),
   }).pipe(
@@ -5830,8 +10032,11 @@ export const RoutesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RoutesCreateResponse {
+  /** Identifier. */
   id: string;
+  /** Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior). */
   pattern: string;
+  /** Name of the script to run if the route matches. */
   script?: string;
 }
 export const RoutesCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5845,13 +10050,15 @@ export const RoutesCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutesCreateResponse>;
 
 export interface RoutesDeleteRequest {
-  zone_id: string;
-  route_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  routeId: string;
 }
 export const RoutesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    route_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    routeId: S.String.pipe(T.Label("route_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -5865,6 +10072,7 @@ export const RoutesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RoutesDeleteResponse {
+  /** Identifier. */
   id?: string;
 }
 export const RoutesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5876,13 +10084,15 @@ export const RoutesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutesDeleteResponse>;
 
 export interface RoutesGetRequest {
-  zone_id: string;
-  route_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  routeId: string;
 }
 export const RoutesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    route_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    routeId: S.String.pipe(T.Label("route_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -5896,8 +10106,11 @@ export const RoutesGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RoutesGetResponse {
+  /** Identifier. */
   id: string;
+  /** Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior). */
   pattern: string;
+  /** Name of the script to run if the route matches. */
   script?: string;
 }
 export const RoutesGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5911,11 +10124,12 @@ export const RoutesGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutesGetResponse>;
 
 export interface RoutesListRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const RoutesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -5928,8 +10142,11 @@ export const RoutesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutesListRequest>;
 
 export interface RoutesListResultItem {
+  /** Identifier. */
   id: string;
+  /** Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior). */
   pattern: string;
+  /** Name of the script to run if the route matches. */
   script?: string;
 }
 export const RoutesListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -5948,6 +10165,7 @@ export const RoutesListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RoutesListResultList>;
 
 export interface RoutesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RoutesListResultList;
 }
 export const RoutesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5959,15 +10177,19 @@ export const RoutesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutesListResponse>;
 
 export interface RoutesUpdateRequest {
-  zone_id: string;
-  route_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  routeId: string;
+  /** Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior). */
   pattern: string;
+  /** Name of the script to run if the route matches. */
   script?: string;
 }
 export const RoutesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    route_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    routeId: S.String.pipe(T.Label("route_id")),
     pattern: S.String,
     script: S.optional(S.String),
   }).pipe(
@@ -5983,8 +10205,11 @@ export const RoutesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RoutesUpdateResponse {
+  /** Identifier. */
   id: string;
+  /** Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior). */
   pattern: string;
+  /** Name of the script to run if the route matches. */
   script?: string;
 }
 export const RoutesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -6007,14 +10232,17 @@ export const ScriptsAssetsUploadCreateRequestManifestMap =
   ) as any as S.Schema<ScriptsAssetsUploadCreateRequestManifestMap>;
 
 export interface ScriptsAssetsUploadCreateRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** A manifest ([path]: {hash, size}) map of files to upload. As an example, `/blog/hello-world.html` would be a valid path key. */
   manifest: ScriptsAssetsUploadCreateRequestManifestMap;
 }
 export const ScriptsAssetsUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
     manifest: ScriptsAssetsUploadCreateRequestManifestMap,
   }).pipe(
     T.Http({
@@ -6035,7 +10263,9 @@ export const ScriptsAssetsUploadCreateResponseBucketsList =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsAssetsUploadCreateResponse {
+  /** The requests to make to upload assets. */
   buckets?: ScriptsAssetsUploadCreateResponseBucketsList;
+  /** A JWT to use as authentication for uploading assets. */
   jwt?: string;
 }
 export const ScriptsAssetsUploadCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -6048,13 +10278,15 @@ export const ScriptsAssetsUploadCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsAssetsUploadCreateResponse>;
 
 export interface ScriptsContentGetRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const ScriptsContentGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -6074,19 +10306,21 @@ export const ScriptsContentGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsContentGetResponse>;
 
 export interface ScriptsContentUpdateRequest {
-  account_id: string;
-  script_name: string;
-  _CF_WORKER_BODY_PART_?: string;
-  _CF_WORKER_MAIN_MODULE_PART_?: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  CFWORKERBODYPART_?: string;
+  CFWORKERMAINMODULEPART_?: string;
 }
 export const ScriptsContentUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
-    _CF_WORKER_BODY_PART_: S.optional(
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
+    CFWORKERBODYPART_: S.optional(
       S.String.pipe(T.Header('"CF-WORKER-BODY-PART"')),
     ),
-    _CF_WORKER_MAIN_MODULE_PART_: S.optional(
+    CFWORKERMAINMODULEPART_: S.optional(
       S.String.pipe(T.Header('"CF-WORKER-MAIN-MODULE-PART"')),
     ),
   }).pipe(
@@ -6100,26 +10334,372 @@ export const ScriptsContentUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsContentUpdateRequest",
 }) as any as S.Schema<ScriptsContentUpdateRequest>;
 
+export interface ScriptsContentUpdateResponseCacheOptions {
+  /** Whether caching is enabled for this Worker. */
+  enabled: boolean;
+  /** Whether cached responses are shared across Worker version */
+  crossVersionCache?: boolean;
+}
+export const ScriptsContentUpdateResponseCacheOptions = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.Boolean,
+      crossVersionCache: S.optional(
+        S.Boolean.pipe(T.Body("cross_version_cache")),
+      ),
+    }),
+).annotate({
+  identifier: "ScriptsContentUpdateResponseCacheOptions",
+}) as any as S.Schema<ScriptsContentUpdateResponseCacheOptions>;
+
+export type ScriptsContentUpdateResponseCompatibilityFlagsList = string[];
+export const ScriptsContentUpdateResponseCompatibilityFlagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ScriptsContentUpdateResponseCompatibilityFlagsList>;
+
+export type ScriptsContentUpdateResponseHandlersList = string[];
+export const ScriptsContentUpdateResponseHandlersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ScriptsContentUpdateResponseHandlersList>;
+
+export type ScriptsContentUpdateResponseNamedHandlersItemHandlersList =
+  string[];
+export const ScriptsContentUpdateResponseNamedHandlersItemHandlersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ScriptsContentUpdateResponseNamedHandlersItemHandlersList>;
+
+export interface ScriptsContentUpdateResponseNamedHandlersItem {
+  /** The names of handlers exported as part of the named export. */
+  handlers?: ScriptsContentUpdateResponseNamedHandlersItemHandlersList;
+  /** The name of the export. */
+  name?: string;
+}
+export const ScriptsContentUpdateResponseNamedHandlersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      handlers: S.optional(
+        ScriptsContentUpdateResponseNamedHandlersItemHandlersList,
+      ),
+      name: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ScriptsContentUpdateResponseNamedHandlersItem",
+  }) as any as S.Schema<ScriptsContentUpdateResponseNamedHandlersItem>;
+
+export type ScriptsContentUpdateResponseNamedHandlersList =
+  ScriptsContentUpdateResponseNamedHandlersItem[];
+export const ScriptsContentUpdateResponseNamedHandlersList =
+  /*@__PURE__*/ S.Array(
+    ScriptsContentUpdateResponseNamedHandlersItem,
+  ) as any as S.Schema<ScriptsContentUpdateResponseNamedHandlersList>;
+
+export type ScriptsContentUpdateResponseObservabilityLogsDestinationsList =
+  string[];
+export const ScriptsContentUpdateResponseObservabilityLogsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ScriptsContentUpdateResponseObservabilityLogsDestinationsList>;
+
+export interface ScriptsContentUpdateResponseObservabilityLogs {
+  /** Whether logs are enabled for the Worker. */
+  enabled: boolean;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs: boolean;
+  /** A list of destinations where logs will be exported to. */
+  destinations?: ScriptsContentUpdateResponseObservabilityLogsDestinationsList;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether log persistence is enabled for the Worker. */
+  persist?: boolean;
+}
+export const ScriptsContentUpdateResponseObservabilityLogs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
+      destinations: S.optional(
+        ScriptsContentUpdateResponseObservabilityLogsDestinationsList,
+      ),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      persist: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "ScriptsContentUpdateResponseObservabilityLogs",
+  }) as any as S.Schema<ScriptsContentUpdateResponseObservabilityLogs>;
+
+export type ScriptsContentUpdateResponseObservabilityTracesDestinationsList =
+  string[];
+export const ScriptsContentUpdateResponseObservabilityTracesDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ScriptsContentUpdateResponseObservabilityTracesDestinationsList>;
+
+export type ScriptsContentUpdateResponseObservabilityTracesPropagationPolicy =
+  | "authenticated"
+  | "accept"
+  | (string & {});
+export const ScriptsContentUpdateResponseObservabilityTracesPropagationPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface ScriptsContentUpdateResponseObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
+  destinations?: ScriptsContentUpdateResponseObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
+  persist?: boolean;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: ScriptsContentUpdateResponseObservabilityTracesPropagationPolicy;
+}
+export const ScriptsContentUpdateResponseObservabilityTraces =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      destinations: S.optional(
+        ScriptsContentUpdateResponseObservabilityTracesDestinationsList,
+      ),
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      persist: S.optional(S.Boolean),
+      propagationPolicy: S.optional(
+        ScriptsContentUpdateResponseObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "ScriptsContentUpdateResponseObservabilityTraces",
+  }) as any as S.Schema<ScriptsContentUpdateResponseObservabilityTraces>;
+
+export interface ScriptsContentUpdateResponseObservability {
+  /** Whether observability is enabled for the Worker. */
+  enabled: boolean;
+  /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
+  logs?: ScriptsContentUpdateResponseObservabilityLogs;
+  /** Trace settings for the Worker. */
+  traces?: ScriptsContentUpdateResponseObservabilityTraces;
+}
+export const ScriptsContentUpdateResponseObservability =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      logs: S.optional(ScriptsContentUpdateResponseObservabilityLogs),
+      traces: S.optional(ScriptsContentUpdateResponseObservabilityTraces),
+    }),
+  ).annotate({
+    identifier: "ScriptsContentUpdateResponseObservability",
+  }) as any as S.Schema<ScriptsContentUpdateResponseObservability>;
+
+export interface ScriptsContentUpdateResponsePlacement {
+  objectModeLastAnalyzedAtStatus__: unknown;
+  objectRegionLastAnalyzedAtStatus__: unknown;
+  objectHostnameLastAnalyzedAtStatus__: unknown;
+  objectHostLastAnalyzedAtStatus__: unknown;
+  objectModeRegionLastAnalyzedAtStatus__: unknown;
+  objectHostnameModeLastAnalyzedAtStatus__: unknown;
+  objectHostModeLastAnalyzedAtStatus__: unknown;
+  objectModeTargetLastAnalyzedAtStatus__: unknown;
+}
+export const ScriptsContentUpdateResponsePlacement = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      objectModeLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { mode, last_analyzed_at, status }"),
+      ),
+      objectRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { region, last_analyzed_at, status }"),
+      ),
+      objectHostnameLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { hostname, last_analyzed_at, status }"),
+      ),
+      objectHostLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { host, last_analyzed_at, status }"),
+      ),
+      objectModeRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { mode, region, last_analyzed_at, status }"),
+      ),
+      objectHostnameModeLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { hostname, mode, last_analyzed_at, status }"),
+      ),
+      objectHostModeLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { host, mode, last_analyzed_at, status }"),
+      ),
+      objectModeTargetLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { mode, target, last_analyzed_at, status }"),
+      ),
+    }),
+).annotate({
+  identifier: "ScriptsContentUpdateResponsePlacement",
+}) as any as S.Schema<ScriptsContentUpdateResponsePlacement>;
+
+export type ScriptsContentUpdateResponsePlacementMode =
+  | "smart"
+  | "targeted"
+  | (string & {});
+export const ScriptsContentUpdateResponsePlacementMode = /*@__PURE__*/ S.String;
+
+export type ScriptsContentUpdateResponsePlacementStatus =
+  | "SUCCESS"
+  | "UNSUPPORTED_APPLICATION"
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
+export const ScriptsContentUpdateResponsePlacementStatus =
+  /*@__PURE__*/ S.String;
+
+export type ScriptsContentUpdateResponseTagsList = string[];
+export const ScriptsContentUpdateResponseTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ScriptsContentUpdateResponseTagsList>;
+
+export interface ScriptsContentUpdateResponseTailConsumersItem {
+  /** Name of Worker that is to be the consumer. */
+  service: string;
+  /** Optional environment if the Worker utilizes one. */
+  environment?: string;
+  /** Optional dispatch namespace the script belongs to. */
+  namespace?: string;
+}
+export const ScriptsContentUpdateResponseTailConsumersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      service: S.String,
+      environment: S.optional(S.String),
+      namespace: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ScriptsContentUpdateResponseTailConsumersItem",
+  }) as any as S.Schema<ScriptsContentUpdateResponseTailConsumersItem>;
+
+export type ScriptsContentUpdateResponseTailConsumersList =
+  ScriptsContentUpdateResponseTailConsumersItem[];
+export const ScriptsContentUpdateResponseTailConsumersList =
+  /*@__PURE__*/ S.Array(
+    ScriptsContentUpdateResponseTailConsumersItem,
+  ) as any as S.Schema<ScriptsContentUpdateResponseTailConsumersList>;
+
+export type ScriptsContentUpdateResponseUsageModel =
+  | "standard"
+  | "bundled"
+  | "unbound"
+  | (string & {});
+export const ScriptsContentUpdateResponseUsageModel = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsContentUpdateResponse {
-  result?: unknown;
+  /** The name used to identify the script. */
+  id?: string;
+  /** Global CacheW configuration for the Worker. When caching is on, */
+  cacheOptions?: ScriptsContentUpdateResponseCacheOptions;
+  /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
+  compatibilityDate?: string;
+  /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
+  compatibilityFlags?: ScriptsContentUpdateResponseCompatibilityFlagsList;
+  /** When the script was created. */
+  createdOn?: string;
+  /** Hashed script content, can be used in a If-None-Match header when updating. */
+  etag?: string;
+  /** The names of handlers exported as part of the default export. */
+  handlers?: ScriptsContentUpdateResponseHandlersList;
+  /** Whether a Worker contains assets. */
+  hasAssets?: boolean;
+  /** Whether a Worker contains modules. */
+  hasModules?: boolean;
+  /** The client most recently used to deploy this Worker. */
+  lastDeployedFrom?: string;
+  /** Whether Logpush is turned on for the Worker. */
+  logpush?: boolean;
+  /** The tag of the Durable Object migration that was most recently applied for this Worker. */
+  migrationTag?: string;
+  /** When the script was last modified. */
+  modifiedOn?: string;
+  /** Named exports, such as Durable Object class implementations and named entrypoints. */
+  namedHandlers?: ScriptsContentUpdateResponseNamedHandlersList;
+  /** Observability settings for the Worker. */
+  observability?: ScriptsContentUpdateResponseObservability;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
+  placement?: ScriptsContentUpdateResponsePlacement;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
+  placementMode?: ScriptsContentUpdateResponsePlacementMode;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  placementStatus?: ScriptsContentUpdateResponsePlacementStatus;
+  /** The immutable ID of the script. */
+  tag?: string;
+  /** Tags associated with the Worker. */
+  tags?: ScriptsContentUpdateResponseTagsList;
+  /** List of Workers that will consume logs from the attached Worker. */
+  tailConsumers?: ScriptsContentUpdateResponseTailConsumersList;
+  /** Usage model for the Worker invocations. */
+  usageModel?: ScriptsContentUpdateResponseUsageModel;
 }
 export const ScriptsContentUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    cacheOptions: S.optional(
+      ScriptsContentUpdateResponseCacheOptions.pipe(T.Body("cache_options")),
+    ),
+    compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
+    compatibilityFlags: S.optional(
+      ScriptsContentUpdateResponseCompatibilityFlagsList.pipe(
+        T.Body("compatibility_flags"),
+      ),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    etag: S.optional(S.String),
+    handlers: S.optional(ScriptsContentUpdateResponseHandlersList),
+    hasAssets: S.optional(S.Boolean.pipe(T.Body("has_assets"))),
+    hasModules: S.optional(S.Boolean.pipe(T.Body("has_modules"))),
+    lastDeployedFrom: S.optional(S.String.pipe(T.Body("last_deployed_from"))),
+    logpush: S.optional(S.Boolean),
+    migrationTag: S.optional(S.String.pipe(T.Body("migration_tag"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    namedHandlers: S.optional(
+      ScriptsContentUpdateResponseNamedHandlersList.pipe(
+        T.Body("named_handlers"),
+      ),
+    ),
+    observability: S.optional(ScriptsContentUpdateResponseObservability),
+    placement: S.optional(ScriptsContentUpdateResponsePlacement),
+    placementMode: S.optional(
+      ScriptsContentUpdateResponsePlacementMode.pipe(T.Body("placement_mode")),
+    ),
+    placementStatus: S.optional(
+      ScriptsContentUpdateResponsePlacementStatus.pipe(
+        T.Body("placement_status"),
+      ),
+    ),
+    tag: S.optional(S.String),
+    tags: S.optional(ScriptsContentUpdateResponseTagsList),
+    tailConsumers: S.optional(
+      ScriptsContentUpdateResponseTailConsumersList.pipe(
+        T.Body("tail_consumers"),
+      ),
+    ),
+    usageModel: S.optional(
+      ScriptsContentUpdateResponseUsageModel.pipe(T.Body("usage_model")),
+    ),
   }),
 ).annotate({
   identifier: "ScriptsContentUpdateResponse",
 }) as any as S.Schema<ScriptsContentUpdateResponse>;
 
 export interface ScriptsDeleteRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** If set to true, delete will not be stopped by associated service binding, durable object, or other binding. Any of these associated bindings/durable objects will be deleted along with the script. */
   force?: boolean;
 }
 export const ScriptsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
     force: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -6133,6 +10713,7 @@ export const ScriptsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsDeleteRequest>;
 
 export interface ScriptsDeleteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const ScriptsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -6150,13 +10731,13 @@ export const ScriptsDeploymentsCreateRequestStrategy = /*@__PURE__*/ S.String;
 
 export interface ScriptsDeploymentsCreateRequestVersionsItem {
   percentage: number;
-  version_id: string;
+  versionId: string;
 }
 export const ScriptsDeploymentsCreateRequestVersionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       percentage: S.Number,
-      version_id: S.String,
+      versionId: S.String.pipe(T.Body("version_id")),
     }),
   ).annotate({
     identifier: "ScriptsDeploymentsCreateRequestVersionsItem",
@@ -6170,14 +10751,16 @@ export const ScriptsDeploymentsCreateRequestVersionsList =
   ) as any as S.Schema<ScriptsDeploymentsCreateRequestVersionsList>;
 
 export interface ScriptsDeploymentsCreateRequestAnnotations {
-  _workers_message_?: string;
-  _workers_triggered_by_?: string;
+  /** Human-readable message about the deployment. Truncated to 1000 bytes if longer. */
+  WorkersMessage_?: string;
+  /** Operation that triggered the creation of the deployment. */
+  WorkersTriggeredBy_?: string;
 }
 export const ScriptsDeploymentsCreateRequestAnnotations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      _workers_message_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
-      _workers_triggered_by_: S.optional(
+      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
+      WorkersTriggeredBy_: S.optional(
         S.String.pipe(T.Body('"workers/triggered_by"')),
       ),
     }),
@@ -6186,8 +10769,11 @@ export const ScriptsDeploymentsCreateRequestAnnotations =
   }) as any as S.Schema<ScriptsDeploymentsCreateRequestAnnotations>;
 
 export interface ScriptsDeploymentsCreateRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed. */
   force?: boolean;
   strategy: ScriptsDeploymentsCreateRequestStrategy;
   versions: ScriptsDeploymentsCreateRequestVersionsList;
@@ -6195,8 +10781,8 @@ export interface ScriptsDeploymentsCreateRequest {
 }
 export const ScriptsDeploymentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
     force: S.optional(S.Boolean.pipe(T.Query())),
     strategy: ScriptsDeploymentsCreateRequestStrategy,
     versions: ScriptsDeploymentsCreateRequestVersionsList,
@@ -6212,27 +10798,86 @@ export const ScriptsDeploymentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsDeploymentsCreateRequest",
 }) as any as S.Schema<ScriptsDeploymentsCreateRequest>;
 
+export type ScriptsDeploymentsCreateResponseStrategy =
+  | "percentage"
+  | (string & {});
+export const ScriptsDeploymentsCreateResponseStrategy = /*@__PURE__*/ S.String;
+
+export interface ScriptsDeploymentsCreateResponseVersionsItem {
+  percentage: number;
+  versionId: string;
+}
+export const ScriptsDeploymentsCreateResponseVersionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      percentage: S.Number,
+      versionId: S.String.pipe(T.Body("version_id")),
+    }),
+  ).annotate({
+    identifier: "ScriptsDeploymentsCreateResponseVersionsItem",
+  }) as any as S.Schema<ScriptsDeploymentsCreateResponseVersionsItem>;
+
+export type ScriptsDeploymentsCreateResponseVersionsList =
+  ScriptsDeploymentsCreateResponseVersionsItem[];
+export const ScriptsDeploymentsCreateResponseVersionsList =
+  /*@__PURE__*/ S.Array(
+    ScriptsDeploymentsCreateResponseVersionsItem,
+  ) as any as S.Schema<ScriptsDeploymentsCreateResponseVersionsList>;
+
+export interface ScriptsDeploymentsCreateResponseAnnotations {
+  /** Human-readable message about the deployment. Truncated to 1000 bytes if longer. */
+  WorkersMessage_?: string;
+  /** Operation that triggered the creation of the deployment. */
+  WorkersTriggeredBy_?: string;
+}
+export const ScriptsDeploymentsCreateResponseAnnotations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
+      WorkersTriggeredBy_: S.optional(
+        S.String.pipe(T.Body('"workers/triggered_by"')),
+      ),
+    }),
+  ).annotate({
+    identifier: "ScriptsDeploymentsCreateResponseAnnotations",
+  }) as any as S.Schema<ScriptsDeploymentsCreateResponseAnnotations>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsDeploymentsCreateResponse {
-  result?: unknown;
+  id: string;
+  createdOn: string;
+  source: string;
+  strategy: ScriptsDeploymentsCreateResponseStrategy;
+  versions: ScriptsDeploymentsCreateResponseVersionsList;
+  annotations?: ScriptsDeploymentsCreateResponseAnnotations;
+  authorEmail?: string;
 }
 export const ScriptsDeploymentsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    source: S.String,
+    strategy: ScriptsDeploymentsCreateResponseStrategy,
+    versions: ScriptsDeploymentsCreateResponseVersionsList,
+    annotations: S.optional(ScriptsDeploymentsCreateResponseAnnotations),
+    authorEmail: S.optional(S.String.pipe(T.Body("author_email"))),
   }),
 ).annotate({
   identifier: "ScriptsDeploymentsCreateResponse",
 }) as any as S.Schema<ScriptsDeploymentsCreateResponse>;
 
 export interface ScriptsDeploymentsDeleteRequest {
-  account_id: string;
-  script_name: string;
-  deployment_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  deploymentId: string;
 }
 export const ScriptsDeploymentsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
-    deployment_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
+    deploymentId: S.String.pipe(T.Label("deployment_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -6252,15 +10897,17 @@ export const ScriptsDeploymentsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsDeploymentsDeleteResponse>;
 
 export interface ScriptsDeploymentsGetRequest {
-  account_id: string;
-  script_name: string;
-  deployment_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  deploymentId: string;
 }
 export const ScriptsDeploymentsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
-    deployment_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
+    deploymentId: S.String.pipe(T.Label("deployment_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -6272,25 +10919,83 @@ export const ScriptsDeploymentsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsDeploymentsGetRequest",
 }) as any as S.Schema<ScriptsDeploymentsGetRequest>;
 
+export type ScriptsDeploymentsGetResponseStrategy =
+  | "percentage"
+  | (string & {});
+export const ScriptsDeploymentsGetResponseStrategy = /*@__PURE__*/ S.String;
+
+export interface ScriptsDeploymentsGetResponseVersionsItem {
+  percentage: number;
+  versionId: string;
+}
+export const ScriptsDeploymentsGetResponseVersionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      percentage: S.Number,
+      versionId: S.String.pipe(T.Body("version_id")),
+    }),
+  ).annotate({
+    identifier: "ScriptsDeploymentsGetResponseVersionsItem",
+  }) as any as S.Schema<ScriptsDeploymentsGetResponseVersionsItem>;
+
+export type ScriptsDeploymentsGetResponseVersionsList =
+  ScriptsDeploymentsGetResponseVersionsItem[];
+export const ScriptsDeploymentsGetResponseVersionsList = /*@__PURE__*/ S.Array(
+  ScriptsDeploymentsGetResponseVersionsItem,
+) as any as S.Schema<ScriptsDeploymentsGetResponseVersionsList>;
+
+export interface ScriptsDeploymentsGetResponseAnnotations {
+  /** Human-readable message about the deployment. Truncated to 1000 bytes if longer. */
+  WorkersMessage_?: string;
+  /** Operation that triggered the creation of the deployment. */
+  WorkersTriggeredBy_?: string;
+}
+export const ScriptsDeploymentsGetResponseAnnotations = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
+      WorkersTriggeredBy_: S.optional(
+        S.String.pipe(T.Body('"workers/triggered_by"')),
+      ),
+    }),
+).annotate({
+  identifier: "ScriptsDeploymentsGetResponseAnnotations",
+}) as any as S.Schema<ScriptsDeploymentsGetResponseAnnotations>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsDeploymentsGetResponse {
-  result?: unknown;
+  id: string;
+  createdOn: string;
+  source: string;
+  strategy: ScriptsDeploymentsGetResponseStrategy;
+  versions: ScriptsDeploymentsGetResponseVersionsList;
+  annotations?: ScriptsDeploymentsGetResponseAnnotations;
+  authorEmail?: string;
 }
 export const ScriptsDeploymentsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    source: S.String,
+    strategy: ScriptsDeploymentsGetResponseStrategy,
+    versions: ScriptsDeploymentsGetResponseVersionsList,
+    annotations: S.optional(ScriptsDeploymentsGetResponseAnnotations),
+    authorEmail: S.optional(S.String.pipe(T.Body("author_email"))),
   }),
 ).annotate({
   identifier: "ScriptsDeploymentsGetResponse",
 }) as any as S.Schema<ScriptsDeploymentsGetResponse>;
 
 export interface ScriptsDeploymentsListRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const ScriptsDeploymentsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -6302,10 +11007,82 @@ export const ScriptsDeploymentsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsDeploymentsListRequest",
 }) as any as S.Schema<ScriptsDeploymentsListRequest>;
 
-export type ScriptsDeploymentsListResponseDeploymentsList = unknown[];
+export type ScriptsDeploymentsListResponseDeploymentsItemStrategy =
+  | "percentage"
+  | (string & {});
+export const ScriptsDeploymentsListResponseDeploymentsItemStrategy =
+  /*@__PURE__*/ S.String;
+
+export interface ScriptsDeploymentsListResponseDeploymentsItemVersionsItem {
+  percentage: number;
+  versionId: string;
+}
+export const ScriptsDeploymentsListResponseDeploymentsItemVersionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      percentage: S.Number,
+      versionId: S.String.pipe(T.Body("version_id")),
+    }),
+  ).annotate({
+    identifier: "ScriptsDeploymentsListResponseDeploymentsItemVersionsItem",
+  }) as any as S.Schema<ScriptsDeploymentsListResponseDeploymentsItemVersionsItem>;
+
+export type ScriptsDeploymentsListResponseDeploymentsItemVersionsList =
+  ScriptsDeploymentsListResponseDeploymentsItemVersionsItem[];
+export const ScriptsDeploymentsListResponseDeploymentsItemVersionsList =
+  /*@__PURE__*/ S.Array(
+    ScriptsDeploymentsListResponseDeploymentsItemVersionsItem,
+  ) as any as S.Schema<ScriptsDeploymentsListResponseDeploymentsItemVersionsList>;
+
+export interface ScriptsDeploymentsListResponseDeploymentsItemAnnotations {
+  /** Human-readable message about the deployment. Truncated to 1000 bytes if longer. */
+  WorkersMessage_?: string;
+  /** Operation that triggered the creation of the deployment. */
+  WorkersTriggeredBy_?: string;
+}
+export const ScriptsDeploymentsListResponseDeploymentsItemAnnotations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
+      WorkersTriggeredBy_: S.optional(
+        S.String.pipe(T.Body('"workers/triggered_by"')),
+      ),
+    }),
+  ).annotate({
+    identifier: "ScriptsDeploymentsListResponseDeploymentsItemAnnotations",
+  }) as any as S.Schema<ScriptsDeploymentsListResponseDeploymentsItemAnnotations>;
+
+export interface ScriptsDeploymentsListResponseDeploymentsItem {
+  id: string;
+  createdOn: string;
+  source: string;
+  strategy: ScriptsDeploymentsListResponseDeploymentsItemStrategy;
+  versions: ScriptsDeploymentsListResponseDeploymentsItemVersionsList;
+  annotations?: ScriptsDeploymentsListResponseDeploymentsItemAnnotations;
+  authorEmail?: string;
+}
+export const ScriptsDeploymentsListResponseDeploymentsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      source: S.String,
+      strategy: ScriptsDeploymentsListResponseDeploymentsItemStrategy,
+      versions: ScriptsDeploymentsListResponseDeploymentsItemVersionsList,
+      annotations: S.optional(
+        ScriptsDeploymentsListResponseDeploymentsItemAnnotations,
+      ),
+      authorEmail: S.optional(S.String.pipe(T.Body("author_email"))),
+    }),
+  ).annotate({
+    identifier: "ScriptsDeploymentsListResponseDeploymentsItem",
+  }) as any as S.Schema<ScriptsDeploymentsListResponseDeploymentsItem>;
+
+export type ScriptsDeploymentsListResponseDeploymentsList =
+  ScriptsDeploymentsListResponseDeploymentsItem[];
 export const ScriptsDeploymentsListResponseDeploymentsList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    ScriptsDeploymentsListResponseDeploymentsItem,
   ) as any as S.Schema<ScriptsDeploymentsListResponseDeploymentsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -6321,13 +11098,15 @@ export const ScriptsDeploymentsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsDeploymentsListResponse>;
 
 export interface ScriptsGetRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const ScriptsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -6347,12 +11126,14 @@ export const ScriptsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsGetResponse>;
 
 export interface ScriptsListRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'. */
   tags?: string;
 }
 export const ScriptsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     tags: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -6366,13 +11147,17 @@ export const ScriptsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsListRequest>;
 
 export interface ScriptsListResultItemCacheOptions {
+  /** Whether caching is enabled for this Worker. */
   enabled: boolean;
-  cross_version_cache?: boolean;
+  /** Whether cached responses are shared across Worker version */
+  crossVersionCache?: boolean;
 }
 export const ScriptsListResultItemCacheOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
-    cross_version_cache: S.optional(S.Boolean),
+    crossVersionCache: S.optional(
+      S.Boolean.pipe(T.Body("cross_version_cache")),
+    ),
   }),
 ).annotate({
   identifier: "ScriptsListResultItemCacheOptions",
@@ -6396,7 +11181,9 @@ export const ScriptsListResultItemNamedHandlersItemHandlersList =
   ) as any as S.Schema<ScriptsListResultItemNamedHandlersItemHandlersList>;
 
 export interface ScriptsListResultItemNamedHandlersItem {
+  /** The names of handlers exported as part of the named export. */
   handlers?: ScriptsListResultItemNamedHandlersItemHandlersList;
+  /** The name of the export. */
   name?: string;
 }
 export const ScriptsListResultItemNamedHandlersItem = /*@__PURE__*/ S.suspend(
@@ -6422,21 +11209,26 @@ export const ScriptsListResultItemObservabilityLogsDestinationsList =
   ) as any as S.Schema<ScriptsListResultItemObservabilityLogsDestinationsList>;
 
 export interface ScriptsListResultItemObservabilityLogs {
+  /** Whether logs are enabled for the Worker. */
   enabled: boolean;
-  invocation_logs: boolean;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs: boolean;
+  /** A list of destinations where logs will be exported to. */
   destinations?: ScriptsListResultItemObservabilityLogsDestinationsList;
-  head_sampling_rate?: number;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
 export const ScriptsListResultItemObservabilityLogs = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       enabled: S.Boolean,
-      invocation_logs: S.Boolean,
+      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
       destinations: S.optional(
         ScriptsListResultItemObservabilityLogsDestinationsList,
       ),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
     }),
 ).annotate({
@@ -6457,11 +11249,16 @@ export const ScriptsListResultItemObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
 export interface ScriptsListResultItemObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
   destinations?: ScriptsListResultItemObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
   enabled?: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
   persist?: boolean;
-  propagation_policy?: ScriptsListResultItemObservabilityTracesPropagationPolicy;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: ScriptsListResultItemObservabilityTracesPropagationPolicy;
 }
 export const ScriptsListResultItemObservabilityTraces = /*@__PURE__*/ S.suspend(
   () =>
@@ -6470,10 +11267,12 @@ export const ScriptsListResultItemObservabilityTraces = /*@__PURE__*/ S.suspend(
         ScriptsListResultItemObservabilityTracesDestinationsList,
       ),
       enabled: S.optional(S.Boolean),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
-      propagation_policy: S.optional(
-        ScriptsListResultItemObservabilityTracesPropagationPolicy,
+      propagationPolicy: S.optional(
+        ScriptsListResultItemObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
       ),
     }),
 ).annotate({
@@ -6481,15 +11280,19 @@ export const ScriptsListResultItemObservabilityTraces = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScriptsListResultItemObservabilityTraces>;
 
 export interface ScriptsListResultItemObservability {
+  /** Whether observability is enabled for the Worker. */
   enabled: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
   logs?: ScriptsListResultItemObservabilityLogs;
+  /** Trace settings for the Worker. */
   traces?: ScriptsListResultItemObservabilityTraces;
 }
 export const ScriptsListResultItemObservability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
-    head_sampling_rate: S.optional(S.Number),
+    headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
     logs: S.optional(ScriptsListResultItemObservabilityLogs),
     traces: S.optional(ScriptsListResultItemObservabilityTraces),
   }),
@@ -6498,39 +11301,39 @@ export const ScriptsListResultItemObservability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsListResultItemObservability>;
 
 export interface ScriptsListResultItemPlacement {
-  object___mode__last_analyzed_at__status__: unknown;
-  object___region__last_analyzed_at__status__: unknown;
-  object___hostname__last_analyzed_at__status__: unknown;
-  object___host__last_analyzed_at__status__: unknown;
-  object___mode__region__last_analyzed_at__status__: unknown;
-  object___hostname__mode__last_analyzed_at__status__: unknown;
-  object___host__mode__last_analyzed_at__status__: unknown;
-  object___mode__target__last_analyzed_at__status__: unknown;
+  objectModeLastAnalyzedAtStatus__: unknown;
+  objectRegionLastAnalyzedAtStatus__: unknown;
+  objectHostnameLastAnalyzedAtStatus__: unknown;
+  objectHostLastAnalyzedAtStatus__: unknown;
+  objectModeRegionLastAnalyzedAtStatus__: unknown;
+  objectHostnameModeLastAnalyzedAtStatus__: unknown;
+  objectHostModeLastAnalyzedAtStatus__: unknown;
+  objectModeTargetLastAnalyzedAtStatus__: unknown;
 }
 export const ScriptsListResultItemPlacement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    object___mode__last_analyzed_at__status__: S.Unknown.pipe(
+    objectModeLastAnalyzedAtStatus__: S.Unknown.pipe(
       T.Body("object { mode, last_analyzed_at, status }"),
     ),
-    object___region__last_analyzed_at__status__: S.Unknown.pipe(
+    objectRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
       T.Body("object { region, last_analyzed_at, status }"),
     ),
-    object___hostname__last_analyzed_at__status__: S.Unknown.pipe(
+    objectHostnameLastAnalyzedAtStatus__: S.Unknown.pipe(
       T.Body("object { hostname, last_analyzed_at, status }"),
     ),
-    object___host__last_analyzed_at__status__: S.Unknown.pipe(
+    objectHostLastAnalyzedAtStatus__: S.Unknown.pipe(
       T.Body("object { host, last_analyzed_at, status }"),
     ),
-    object___mode__region__last_analyzed_at__status__: S.Unknown.pipe(
+    objectModeRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
       T.Body("object { mode, region, last_analyzed_at, status }"),
     ),
-    object___hostname__mode__last_analyzed_at__status__: S.Unknown.pipe(
+    objectHostnameModeLastAnalyzedAtStatus__: S.Unknown.pipe(
       T.Body("object { hostname, mode, last_analyzed_at, status }"),
     ),
-    object___host__mode__last_analyzed_at__status__: S.Unknown.pipe(
+    objectHostModeLastAnalyzedAtStatus__: S.Unknown.pipe(
       T.Body("object { host, mode, last_analyzed_at, status }"),
     ),
-    object___mode__target__last_analyzed_at__status__: S.Unknown.pipe(
+    objectModeTargetLastAnalyzedAtStatus__: S.Unknown.pipe(
       T.Body("object { mode, target, last_analyzed_at, status }"),
     ),
   }),
@@ -6552,8 +11355,11 @@ export type ScriptsListResultItemPlacementStatus =
 export const ScriptsListResultItemPlacementStatus = /*@__PURE__*/ S.String;
 
 export interface ScriptsListResultItemRoutesItem {
+  /** Identifier. */
   id: string;
+  /** Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior). */
   pattern: string;
+  /** Name of the script to run if the route matches. */
   script?: string;
 }
 export const ScriptsListResultItemRoutesItem = /*@__PURE__*/ S.suspend(() =>
@@ -6576,9 +11382,29 @@ export const ScriptsListResultItemTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptsListResultItemTagsList>;
 
-export type ScriptsListResultItemTailConsumersList = unknown[];
+export interface ScriptsListResultItemTailConsumersItem {
+  /** Name of Worker that is to be the consumer. */
+  service: string;
+  /** Optional environment if the Worker utilizes one. */
+  environment?: string;
+  /** Optional dispatch namespace the script belongs to. */
+  namespace?: string;
+}
+export const ScriptsListResultItemTailConsumersItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      service: S.String,
+      environment: S.optional(S.String),
+      namespace: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ScriptsListResultItemTailConsumersItem",
+}) as any as S.Schema<ScriptsListResultItemTailConsumersItem>;
+
+export type ScriptsListResultItemTailConsumersList =
+  ScriptsListResultItemTailConsumersItem[];
 export const ScriptsListResultItemTailConsumersList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  ScriptsListResultItemTailConsumersItem,
 ) as any as S.Schema<ScriptsListResultItemTailConsumersList>;
 
 export type ScriptsListResultItemUsageModel =
@@ -6589,57 +11415,92 @@ export type ScriptsListResultItemUsageModel =
 export const ScriptsListResultItemUsageModel = /*@__PURE__*/ S.String;
 
 export interface ScriptsListResultItem {
+  /** The name used to identify the script. */
   id?: string;
-  cache_options?: ScriptsListResultItemCacheOptions;
-  compatibility_date?: string;
-  compatibility_flags?: ScriptsListResultItemCompatibilityFlagsList;
-  created_on?: string;
+  /** Global CacheW configuration for the Worker. When caching is on, */
+  cacheOptions?: ScriptsListResultItemCacheOptions;
+  /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
+  compatibilityDate?: string;
+  /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
+  compatibilityFlags?: ScriptsListResultItemCompatibilityFlagsList;
+  /** When the script was created. */
+  createdOn?: string;
+  /** Hashed script content, can be used in a If-None-Match header when updating. */
   etag?: string;
+  /** The names of handlers exported as part of the default export. */
   handlers?: ScriptsListResultItemHandlersList;
-  has_assets?: boolean;
-  has_modules?: boolean;
-  last_deployed_from?: string;
+  /** Whether a Worker contains assets. */
+  hasAssets?: boolean;
+  /** Whether a Worker contains modules. */
+  hasModules?: boolean;
+  /** The client most recently used to deploy this Worker. */
+  lastDeployedFrom?: string;
+  /** Whether Logpush is turned on for the Worker. */
   logpush?: boolean;
-  migration_tag?: string;
-  modified_on?: string;
-  named_handlers?: ScriptsListResultItemNamedHandlersList;
+  /** The tag of the Durable Object migration that was most recently applied for this Worker. */
+  migrationTag?: string;
+  /** When the script was last modified. */
+  modifiedOn?: string;
+  /** Named exports, such as Durable Object class implementations and named entrypoints. */
+  namedHandlers?: ScriptsListResultItemNamedHandlersList;
+  /** Observability settings for the Worker. */
   observability?: ScriptsListResultItemObservability;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?: ScriptsListResultItemPlacement;
-  placement_mode?: ScriptsListResultItemPlacementMode;
-  placement_status?: ScriptsListResultItemPlacementStatus;
+  placementMode?: ScriptsListResultItemPlacementMode;
+  placementStatus?: ScriptsListResultItemPlacementStatus;
+  /** Routes associated with the Worker. */
   routes?: ScriptsListResultItemRoutesList;
+  /** The immutable ID of the script. */
   tag?: string;
+  /** Tags associated with the Worker. */
   tags?: ScriptsListResultItemTagsList;
-  tail_consumers?: ScriptsListResultItemTailConsumersList;
-  usage_model?: ScriptsListResultItemUsageModel;
+  /** List of Workers that will consume logs from the attached Worker. */
+  tailConsumers?: ScriptsListResultItemTailConsumersList;
+  /** Usage model for the Worker invocations. */
+  usageModel?: ScriptsListResultItemUsageModel;
 }
 export const ScriptsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    cache_options: S.optional(ScriptsListResultItemCacheOptions),
-    compatibility_date: S.optional(S.String),
-    compatibility_flags: S.optional(
-      ScriptsListResultItemCompatibilityFlagsList,
+    cacheOptions: S.optional(
+      ScriptsListResultItemCacheOptions.pipe(T.Body("cache_options")),
     ),
-    created_on: S.optional(S.String),
+    compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
+    compatibilityFlags: S.optional(
+      ScriptsListResultItemCompatibilityFlagsList.pipe(
+        T.Body("compatibility_flags"),
+      ),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     etag: S.optional(S.String),
     handlers: S.optional(ScriptsListResultItemHandlersList),
-    has_assets: S.optional(S.Boolean),
-    has_modules: S.optional(S.Boolean),
-    last_deployed_from: S.optional(S.String),
+    hasAssets: S.optional(S.Boolean.pipe(T.Body("has_assets"))),
+    hasModules: S.optional(S.Boolean.pipe(T.Body("has_modules"))),
+    lastDeployedFrom: S.optional(S.String.pipe(T.Body("last_deployed_from"))),
     logpush: S.optional(S.Boolean),
-    migration_tag: S.optional(S.String),
-    modified_on: S.optional(S.String),
-    named_handlers: S.optional(ScriptsListResultItemNamedHandlersList),
+    migrationTag: S.optional(S.String.pipe(T.Body("migration_tag"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    namedHandlers: S.optional(
+      ScriptsListResultItemNamedHandlersList.pipe(T.Body("named_handlers")),
+    ),
     observability: S.optional(ScriptsListResultItemObservability),
     placement: S.optional(ScriptsListResultItemPlacement),
-    placement_mode: S.optional(ScriptsListResultItemPlacementMode),
-    placement_status: S.optional(ScriptsListResultItemPlacementStatus),
+    placementMode: S.optional(
+      ScriptsListResultItemPlacementMode.pipe(T.Body("placement_mode")),
+    ),
+    placementStatus: S.optional(
+      ScriptsListResultItemPlacementStatus.pipe(T.Body("placement_status")),
+    ),
     routes: S.optional(ScriptsListResultItemRoutesList),
     tag: S.optional(S.String),
     tags: S.optional(ScriptsListResultItemTagsList),
-    tail_consumers: S.optional(ScriptsListResultItemTailConsumersList),
-    usage_model: S.optional(ScriptsListResultItemUsageModel),
+    tailConsumers: S.optional(
+      ScriptsListResultItemTailConsumersList.pipe(T.Body("tail_consumers")),
+    ),
+    usageModel: S.optional(
+      ScriptsListResultItemUsageModel.pipe(T.Body("usage_model")),
+    ),
   }),
 ).annotate({
   identifier: "ScriptsListResultItem",
@@ -6651,6 +11512,7 @@ export const ScriptsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ScriptsListResultList>;
 
 export interface ScriptsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ScriptsListResultList;
 }
 export const ScriptsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -6662,13 +11524,15 @@ export const ScriptsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsListResponse>;
 
 export interface ScriptsSchedulesGetRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const ScriptsSchedulesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -6682,15 +11546,15 @@ export const ScriptsSchedulesGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface ScriptsSchedulesGetResponseSchedulesItem {
   cron: string;
-  created_on?: string;
-  modified_on?: string;
+  createdOn?: string;
+  modifiedOn?: string;
 }
 export const ScriptsSchedulesGetResponseSchedulesItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       cron: S.String,
-      created_on: S.optional(S.String),
-      modified_on: S.optional(S.String),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     }),
 ).annotate({
   identifier: "ScriptsSchedulesGetResponseSchedulesItem",
@@ -6716,15 +11580,15 @@ export const ScriptsSchedulesGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface ScriptsSchedulesUpdateRequestBodyItem {
   cron: string;
-  created_on?: string;
-  modified_on?: string;
+  createdOn?: string;
+  modifiedOn?: string;
 }
 export const ScriptsSchedulesUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       cron: S.String,
-      created_on: S.optional(S.String),
-      modified_on: S.optional(S.String),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     }),
 ).annotate({
   identifier: "ScriptsSchedulesUpdateRequestBodyItem",
@@ -6737,14 +11601,16 @@ export const ScriptsSchedulesUpdateRequestBodyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ScriptsSchedulesUpdateRequestBodyList>;
 
 export interface ScriptsSchedulesUpdateRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
   body: ScriptsSchedulesUpdateRequestBodyList;
 }
 export const ScriptsSchedulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
     body: ScriptsSchedulesUpdateRequestBodyList,
   }).pipe(
     T.Http({
@@ -6759,15 +11625,15 @@ export const ScriptsSchedulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface ScriptsSchedulesUpdateResponseSchedulesItem {
   cron: string;
-  created_on?: string;
-  modified_on?: string;
+  createdOn?: string;
+  modifiedOn?: string;
 }
 export const ScriptsSchedulesUpdateResponseSchedulesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cron: S.String,
-      created_on: S.optional(S.String),
-      modified_on: S.optional(S.String),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     }),
   ).annotate({
     identifier: "ScriptsSchedulesUpdateResponseSchedulesItem",
@@ -6793,14 +11659,16 @@ export const ScriptsSchedulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsSchedulesUpdateResponse>;
 
 export interface ScriptsScriptAndVersionSettingsEditRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const ScriptsScriptAndVersionSettingsEditRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      scriptName: S.String.pipe(T.Label("script_name")),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -6813,16 +11681,19 @@ export const ScriptsScriptAndVersionSettingsEditRequest =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditRequest>;
 
 export interface ScriptsScriptAndVersionSettingsEditResponseAnnotations {
-  _workers_message_?: string;
-  _workers_tag_?: string;
-  _workers_triggered_by_?: string;
+  /** Human-readable message about the version. Truncated to 1000 bytes if longer. */
+  WorkersMessage_?: string;
+  /** User-provided identifier for the version. Maximum 100 bytes. */
+  WorkersTag_?: string;
+  /** Operation that triggered the creation of the version. This is read-only and set by the server. */
+  WorkersTriggeredBy_?: string;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseAnnotations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      _workers_message_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
-      _workers_tag_: S.optional(S.String.pipe(T.Body('"workers/tag"'))),
-      _workers_triggered_by_: S.optional(
+      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
+      WorkersTag_: S.optional(S.String.pipe(T.Body('"workers/tag"'))),
+      WorkersTriggeredBy_: S.optional(
         S.String.pipe(T.Body('"workers/triggered_by"')),
       ),
     }),
@@ -6831,160 +11702,152 @@ export const ScriptsScriptAndVersionSettingsEditResponseAnnotations =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseAnnotations>;
 
 export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItem {
-  AI_object___name__type__: unknown;
-  AISearch_object___instance_name__name__type__namespace__: unknown;
-  AISearchNamespace_object___name__namespace__type__: unknown;
-  AnalyticsEngine_object___dataset__name__type__: unknown;
-  Assets_object___name__type__: unknown;
-  Browser_object___name__type__: unknown;
-  D1_object___database_id__name__type__id__: unknown;
-  DataBlob_object___name__part__type__: unknown;
-  DispatchNamespace_object___name__namespace__type__outbound__: unknown;
-  DurableObjectNamespace_object___name__type__class_name__4_more__: unknown;
-  Hyperdrive_object___id__name__type__: unknown;
-  Inherit_object___name__type__old_name__version_id__: unknown;
-  Images_object___name__type__: unknown;
-  Json_object___json__name__type__: unknown;
-  KVNamespace_object___name__namespace_id__type__: unknown;
-  Media_object___name__type__: unknown;
-  MTLSCertificate_object___certificate_id__name__type__: unknown;
-  PlainText_object___name__text__type__: unknown;
-  Pipelines_object___name__pipeline__type__: unknown;
-  Queue_object___name__queue_name__type__: unknown;
-  Ratelimit_object___name__namespace_id__simple__type__: unknown;
-  R2Bucket_object___bucket_name__name__type__jurisdiction__: unknown;
-  SecretText_object___name__text__type__: unknown;
-  SendEmail_object___name__type__allowed_destination_addresses__2_more__: unknown;
-  Service_object___name__service__type__2_more__: unknown;
-  TextBlob_object___name__part__type__: unknown;
-  Vectorize_object___index_name__name__type__: unknown;
-  VersionMetadata_object___name__type__: unknown;
-  SecretsStoreSecret_object___name__secret_name__store_id__type__: unknown;
-  Flagship_object___app_id__name__type__: unknown;
-  SecretKey_object___algorithm__format__name__4_more__: unknown;
-  Workflow_object___name__type__workflow_name__2_more__: unknown;
-  WasmModule_object___name__part__type__: unknown;
-  VPCService_object___name__service_id__type__: unknown;
-  VPCNetwork_object___name__type__network_id__tunnel_id__: unknown;
+  AIObjectNameType__: unknown;
+  AISearchObjectInstanceNameNameTypeNamespace__: unknown;
+  AISearchNamespaceObjectNameNamespaceType__: unknown;
+  AnalyticsEngineObjectDatasetNameType__: unknown;
+  AssetsObjectNameType__: unknown;
+  BrowserObjectNameType__: unknown;
+  D1ObjectDatabaseIdNameTypeId__: unknown;
+  DataBlobObjectNamePartType__: unknown;
+  DispatchNamespaceObjectNameNamespaceTypeOutbound__: unknown;
+  DurableObjectNamespaceObjectNameTypeClassName4More__: unknown;
+  HyperdriveObjectIdNameType__: unknown;
+  InheritObjectNameTypeOldNameVersionId__: unknown;
+  ImagesObjectNameType__: unknown;
+  JsonObjectJsonNameType__: unknown;
+  KVNamespaceObjectNameNamespaceIdType__: unknown;
+  MediaObjectNameType__: unknown;
+  MTLSCertificateObjectCertificateIdNameType__: unknown;
+  PlainTextObjectNameTextType__: unknown;
+  PipelinesObjectNamePipelineType__: unknown;
+  QueueObjectNameQueueNameType__: unknown;
+  RatelimitObjectNameNamespaceIdSimpleType__: unknown;
+  R2BucketObjectBucketNameNameTypeJurisdiction__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SendEmailObjectNameTypeAllowedDestinationAddresses2More__: unknown;
+  ServiceObjectNameServiceType2More__: unknown;
+  TextBlobObjectNamePartType__: unknown;
+  VectorizeObjectIndexNameNameType__: unknown;
+  VersionMetadataObjectNameType__: unknown;
+  SecretsStoreSecretObjectNameSecretNameStoreIdType__: unknown;
+  FlagshipObjectAppIdNameType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
+  WorkflowObjectNameTypeWorkflowName2More__: unknown;
+  WasmModuleObjectNamePartType__: unknown;
+  VPCServiceObjectNameServiceIdType__: unknown;
+  VPCNetworkObjectNameTypeNetworkIdTunnelId__: unknown;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AI_object___name__type__: S.Unknown.pipe(
-        T.Body("AI object { name, type }"),
-      ),
-      AISearch_object___instance_name__name__type__namespace__: S.Unknown.pipe(
+      AIObjectNameType__: S.Unknown.pipe(T.Body("AI object { name, type }")),
+      AISearchObjectInstanceNameNameTypeNamespace__: S.Unknown.pipe(
         T.Body("AISearch object { instance_name, name, type, namespace }"),
       ),
-      AISearchNamespace_object___name__namespace__type__: S.Unknown.pipe(
+      AISearchNamespaceObjectNameNamespaceType__: S.Unknown.pipe(
         T.Body("AISearchNamespace object { name, namespace, type }"),
       ),
-      AnalyticsEngine_object___dataset__name__type__: S.Unknown.pipe(
+      AnalyticsEngineObjectDatasetNameType__: S.Unknown.pipe(
         T.Body("AnalyticsEngine object { dataset, name, type }"),
       ),
-      Assets_object___name__type__: S.Unknown.pipe(
+      AssetsObjectNameType__: S.Unknown.pipe(
         T.Body("Assets object { name, type }"),
       ),
-      Browser_object___name__type__: S.Unknown.pipe(
+      BrowserObjectNameType__: S.Unknown.pipe(
         T.Body("Browser object { name, type }"),
       ),
-      D1_object___database_id__name__type__id__: S.Unknown.pipe(
+      D1ObjectDatabaseIdNameTypeId__: S.Unknown.pipe(
         T.Body("D1 object { database_id, name, type, id }"),
       ),
-      DataBlob_object___name__part__type__: S.Unknown.pipe(
+      DataBlobObjectNamePartType__: S.Unknown.pipe(
         T.Body("DataBlob object { name, part, type }"),
       ),
-      DispatchNamespace_object___name__namespace__type__outbound__:
-        S.Unknown.pipe(
-          T.Body(
-            "DispatchNamespace object { name, namespace, type, outbound }",
-          ),
+      DispatchNamespaceObjectNameNamespaceTypeOutbound__: S.Unknown.pipe(
+        T.Body("DispatchNamespace object { name, namespace, type, outbound }"),
+      ),
+      DurableObjectNamespaceObjectNameTypeClassName4More__: S.Unknown.pipe(
+        T.Body(
+          "DurableObjectNamespace object { name, type, class_name, 4 more }",
         ),
-      DurableObjectNamespace_object___name__type__class_name__4_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "DurableObjectNamespace object { name, type, class_name, 4 more }",
-          ),
-        ),
-      Hyperdrive_object___id__name__type__: S.Unknown.pipe(
+      ),
+      HyperdriveObjectIdNameType__: S.Unknown.pipe(
         T.Body("Hyperdrive object { id, name, type }"),
       ),
-      Inherit_object___name__type__old_name__version_id__: S.Unknown.pipe(
+      InheritObjectNameTypeOldNameVersionId__: S.Unknown.pipe(
         T.Body("Inherit object { name, type, old_name, version_id }"),
       ),
-      Images_object___name__type__: S.Unknown.pipe(
+      ImagesObjectNameType__: S.Unknown.pipe(
         T.Body("Images object { name, type }"),
       ),
-      Json_object___json__name__type__: S.Unknown.pipe(
+      JsonObjectJsonNameType__: S.Unknown.pipe(
         T.Body("Json object { json, name, type }"),
       ),
-      KVNamespace_object___name__namespace_id__type__: S.Unknown.pipe(
+      KVNamespaceObjectNameNamespaceIdType__: S.Unknown.pipe(
         T.Body("KVNamespace object { name, namespace_id, type }"),
       ),
-      Media_object___name__type__: S.Unknown.pipe(
+      MediaObjectNameType__: S.Unknown.pipe(
         T.Body("Media object { name, type }"),
       ),
-      MTLSCertificate_object___certificate_id__name__type__: S.Unknown.pipe(
+      MTLSCertificateObjectCertificateIdNameType__: S.Unknown.pipe(
         T.Body("MTLSCertificate object { certificate_id, name, type }"),
       ),
-      PlainText_object___name__text__type__: S.Unknown.pipe(
+      PlainTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("PlainText object { name, text, type }"),
       ),
-      Pipelines_object___name__pipeline__type__: S.Unknown.pipe(
+      PipelinesObjectNamePipelineType__: S.Unknown.pipe(
         T.Body("Pipelines object { name, pipeline, type }"),
       ),
-      Queue_object___name__queue_name__type__: S.Unknown.pipe(
+      QueueObjectNameQueueNameType__: S.Unknown.pipe(
         T.Body("Queue object { name, queue_name, type }"),
       ),
-      Ratelimit_object___name__namespace_id__simple__type__: S.Unknown.pipe(
+      RatelimitObjectNameNamespaceIdSimpleType__: S.Unknown.pipe(
         T.Body("Ratelimit object { name, namespace_id, simple, type }"),
       ),
-      R2Bucket_object___bucket_name__name__type__jurisdiction__: S.Unknown.pipe(
+      R2BucketObjectBucketNameNameTypeJurisdiction__: S.Unknown.pipe(
         T.Body("R2Bucket object { bucket_name, name, type, jurisdiction }"),
       ),
-      SecretText_object___name__text__type__: S.Unknown.pipe(
+      SecretTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("SecretText object { name, text, type }"),
       ),
-      SendEmail_object___name__type__allowed_destination_addresses__2_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
-          ),
+      SendEmailObjectNameTypeAllowedDestinationAddresses2More__: S.Unknown.pipe(
+        T.Body(
+          "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
         ),
-      Service_object___name__service__type__2_more__: S.Unknown.pipe(
+      ),
+      ServiceObjectNameServiceType2More__: S.Unknown.pipe(
         T.Body("Service object { name, service, type, 2 more }"),
       ),
-      TextBlob_object___name__part__type__: S.Unknown.pipe(
+      TextBlobObjectNamePartType__: S.Unknown.pipe(
         T.Body("TextBlob object { name, part, type }"),
       ),
-      Vectorize_object___index_name__name__type__: S.Unknown.pipe(
+      VectorizeObjectIndexNameNameType__: S.Unknown.pipe(
         T.Body("Vectorize object { index_name, name, type }"),
       ),
-      VersionMetadata_object___name__type__: S.Unknown.pipe(
+      VersionMetadataObjectNameType__: S.Unknown.pipe(
         T.Body("VersionMetadata object { name, type }"),
       ),
-      SecretsStoreSecret_object___name__secret_name__store_id__type__:
-        S.Unknown.pipe(
-          T.Body(
-            "SecretsStoreSecret object { name, secret_name, store_id, type }",
-          ),
+      SecretsStoreSecretObjectNameSecretNameStoreIdType__: S.Unknown.pipe(
+        T.Body(
+          "SecretsStoreSecret object { name, secret_name, store_id, type }",
         ),
-      Flagship_object___app_id__name__type__: S.Unknown.pipe(
+      ),
+      FlagshipObjectAppIdNameType__: S.Unknown.pipe(
         T.Body("Flagship object { app_id, name, type }"),
       ),
-      SecretKey_object___algorithm__format__name__4_more__: S.Unknown.pipe(
+      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
         T.Body("SecretKey object { algorithm, format, name, 4 more }"),
       ),
-      Workflow_object___name__type__workflow_name__2_more__: S.Unknown.pipe(
+      WorkflowObjectNameTypeWorkflowName2More__: S.Unknown.pipe(
         T.Body("Workflow object { name, type, workflow_name, 2 more }"),
       ),
-      WasmModule_object___name__part__type__: S.Unknown.pipe(
+      WasmModuleObjectNamePartType__: S.Unknown.pipe(
         T.Body("WasmModule object { name, part, type }"),
       ),
-      VPCService_object___name__service_id__type__: S.Unknown.pipe(
+      VPCServiceObjectNameServiceIdType__: S.Unknown.pipe(
         T.Body("VPCService object { name, service_id, type }"),
       ),
-      VPCNetwork_object___name__type__network_id__tunnel_id__: S.Unknown.pipe(
+      VPCNetworkObjectNameTypeNetworkIdTunnelId__: S.Unknown.pipe(
         T.Body("VPCNetwork object { name, type, network_id, tunnel_id }"),
       ),
     }),
@@ -7000,14 +11863,18 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsList =
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsList>;
 
 export interface ScriptsScriptAndVersionSettingsEditResponseCacheOptions {
+  /** Whether caching is enabled for this Worker. */
   enabled: boolean;
-  cross_version_cache?: boolean;
+  /** Whether cached responses are shared across Worker version */
+  crossVersionCache?: boolean;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseCacheOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      cross_version_cache: S.optional(S.Boolean),
+      crossVersionCache: S.optional(
+        S.Boolean.pipe(T.Body("cross_version_cache")),
+      ),
     }),
   ).annotate({
     identifier: "ScriptsScriptAndVersionSettingsEditResponseCacheOptions",
@@ -7030,18 +11897,44 @@ export const ScriptsScriptAndVersionSettingsEditResponseExportsMap =
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsMap>;
 
 export interface ScriptsScriptAndVersionSettingsEditResponseLimits {
-  cpu_ms?: number;
+  /** The amount of CPU time this Worker can use in milliseconds. */
+  cpuMs?: number;
+  /** The number of subrequests this Worker can make per request. */
   subrequests?: number;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseLimits =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      cpu_ms: S.optional(S.Number),
+      cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
       subrequests: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "ScriptsScriptAndVersionSettingsEditResponseLimits",
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseLimits>;
+
+export interface ScriptsScriptAndVersionSettingsEditResponseMigrations {
+  /** A single set of migrations to apply. */
+  SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__: unknown;
+  WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: unknown;
+}
+export const ScriptsScriptAndVersionSettingsEditResponseMigrations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__:
+        S.Unknown.pipe(
+          T.Body(
+            "SingleStepMigration object { deleted_classes, new_classes, new_sqlite_classes, 4 more }",
+          ),
+        ),
+      WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: S.Unknown.pipe(
+        T.Body(
+          "WorkersMultipleStepMigrations object { new_tag, old_tag, steps }",
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "ScriptsScriptAndVersionSettingsEditResponseMigrations",
+  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrations>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseObservabilityLogsDestinationsList =
   string[];
@@ -7051,21 +11944,26 @@ export const ScriptsScriptAndVersionSettingsEditResponseObservabilityLogsDestina
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseObservabilityLogsDestinationsList>;
 
 export interface ScriptsScriptAndVersionSettingsEditResponseObservabilityLogs {
+  /** Whether logs are enabled for the Worker. */
   enabled: boolean;
-  invocation_logs: boolean;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs: boolean;
+  /** A list of destinations where logs will be exported to. */
   destinations?: ScriptsScriptAndVersionSettingsEditResponseObservabilityLogsDestinationsList;
-  head_sampling_rate?: number;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseObservabilityLogs =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      invocation_logs: S.Boolean,
+      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
       destinations: S.optional(
         ScriptsScriptAndVersionSettingsEditResponseObservabilityLogsDestinationsList,
       ),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
     }),
   ).annotate({
@@ -7085,11 +11983,16 @@ export const ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesPropa
   /*@__PURE__*/ S.String;
 
 export interface ScriptsScriptAndVersionSettingsEditResponseObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
   destinations?: ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
   enabled?: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
   persist?: boolean;
-  propagation_policy?: ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesPropagationPolicy;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesPropagationPolicy;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
@@ -7098,10 +12001,12 @@ export const ScriptsScriptAndVersionSettingsEditResponseObservabilityTraces =
         ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesDestinationsList,
       ),
       enabled: S.optional(S.Boolean),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
-      propagation_policy: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesPropagationPolicy,
+      propagationPolicy: S.optional(
+        ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
       ),
     }),
   ).annotate({
@@ -7110,16 +12015,20 @@ export const ScriptsScriptAndVersionSettingsEditResponseObservabilityTraces =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseObservabilityTraces>;
 
 export interface ScriptsScriptAndVersionSettingsEditResponseObservability {
+  /** Whether observability is enabled for the Worker. */
   enabled: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
   logs?: ScriptsScriptAndVersionSettingsEditResponseObservabilityLogs;
+  /** Trace settings for the Worker. */
   traces?: ScriptsScriptAndVersionSettingsEditResponseObservabilityTraces;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseObservability =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       logs: S.optional(
         ScriptsScriptAndVersionSettingsEditResponseObservabilityLogs,
       ),
@@ -7132,36 +12041,28 @@ export const ScriptsScriptAndVersionSettingsEditResponseObservability =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseObservability>;
 
 export interface ScriptsScriptAndVersionSettingsEditResponsePlacement {
-  Mode_object___mode__: unknown;
-  Region_object___region__: unknown;
-  Hostname_object___hostname__: unknown;
-  Host_object___host__: unknown;
-  object___mode__region__: unknown;
-  object___hostname__mode__: unknown;
-  object___host__mode__: unknown;
-  object___mode__target__: unknown;
+  ModeObjectMode__: unknown;
+  RegionObjectRegion__: unknown;
+  HostnameObjectHostname__: unknown;
+  HostObjectHost__: unknown;
+  objectModeRegion__: unknown;
+  objectHostnameMode__: unknown;
+  objectHostMode__: unknown;
+  objectModeTarget__: unknown;
 }
 export const ScriptsScriptAndVersionSettingsEditResponsePlacement =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      Mode_object___mode__: S.Unknown.pipe(T.Body("Mode object { mode }")),
-      Region_object___region__: S.Unknown.pipe(
-        T.Body("Region object { region }"),
-      ),
-      Hostname_object___hostname__: S.Unknown.pipe(
+      ModeObjectMode__: S.Unknown.pipe(T.Body("Mode object { mode }")),
+      RegionObjectRegion__: S.Unknown.pipe(T.Body("Region object { region }")),
+      HostnameObjectHostname__: S.Unknown.pipe(
         T.Body("Hostname object { hostname }"),
       ),
-      Host_object___host__: S.Unknown.pipe(T.Body("Host object { host }")),
-      object___mode__region__: S.Unknown.pipe(
-        T.Body("object { mode, region }"),
-      ),
-      object___hostname__mode__: S.Unknown.pipe(
-        T.Body("object { hostname, mode }"),
-      ),
-      object___host__mode__: S.Unknown.pipe(T.Body("object { host, mode }")),
-      object___mode__target__: S.Unknown.pipe(
-        T.Body("object { mode, target }"),
-      ),
+      HostObjectHost__: S.Unknown.pipe(T.Body("Host object { host }")),
+      objectModeRegion__: S.Unknown.pipe(T.Body("object { mode, region }")),
+      objectHostnameMode__: S.Unknown.pipe(T.Body("object { hostname, mode }")),
+      objectHostMode__: S.Unknown.pipe(T.Body("object { host, mode }")),
+      objectModeTarget__: S.Unknown.pipe(T.Body("object { mode, target }")),
     }),
   ).annotate({
     identifier: "ScriptsScriptAndVersionSettingsEditResponsePlacement",
@@ -7173,11 +12074,30 @@ export const ScriptsScriptAndVersionSettingsEditResponseTagsList =
     S.String,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseTagsList>;
 
+export interface ScriptsScriptAndVersionSettingsEditResponseTailConsumersItem {
+  /** Name of Worker that is to be the consumer. */
+  service: string;
+  /** Optional environment if the Worker utilizes one. */
+  environment?: string;
+  /** Optional dispatch namespace the script belongs to. */
+  namespace?: string;
+}
+export const ScriptsScriptAndVersionSettingsEditResponseTailConsumersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      service: S.String,
+      environment: S.optional(S.String),
+      namespace: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ScriptsScriptAndVersionSettingsEditResponseTailConsumersItem",
+  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseTailConsumersItem>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseTailConsumersList =
-  unknown[];
+  ScriptsScriptAndVersionSettingsEditResponseTailConsumersItem[];
 export const ScriptsScriptAndVersionSettingsEditResponseTailConsumersList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    ScriptsScriptAndVersionSettingsEditResponseTailConsumersItem,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseTailConsumersList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseUsageModel =
@@ -7190,20 +12110,34 @@ export const ScriptsScriptAndVersionSettingsEditResponseUsageModel =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsScriptAndVersionSettingsEditResponse {
+  /** Annotations for the Worker version. Annotations are not inherited across settings updates; omitting this field means the new version will have no annotations. */
   annotations?: ScriptsScriptAndVersionSettingsEditResponseAnnotations;
+  /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
   bindings?: ScriptsScriptAndVersionSettingsEditResponseBindingsList;
-  cache_options?: ScriptsScriptAndVersionSettingsEditResponseCacheOptions;
-  compatibility_date?: string;
-  compatibility_flags?: ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList;
+  /** Global CacheW configuration for the Worker. When caching is on, */
+  cacheOptions?: ScriptsScriptAndVersionSettingsEditResponseCacheOptions;
+  /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
+  compatibilityDate?: string;
+  /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
+  compatibilityFlags?: ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList;
+  /** Declarative exports for the Worker. Worker entrypoint entries */
   exports?: ScriptsScriptAndVersionSettingsEditResponseExportsMap;
+  /** Limits to apply for this Worker. */
   limits?: ScriptsScriptAndVersionSettingsEditResponseLimits;
+  /** Whether Logpush is turned on for the Worker. */
   logpush?: boolean;
-  migrations?: unknown;
+  /** Migrations to apply for Durable Objects associated with this Worker. */
+  migrations?: ScriptsScriptAndVersionSettingsEditResponseMigrations;
+  /** Observability settings for the Worker. */
   observability?: ScriptsScriptAndVersionSettingsEditResponseObservability;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?: ScriptsScriptAndVersionSettingsEditResponsePlacement;
+  /** Tags associated with the Worker. */
   tags?: ScriptsScriptAndVersionSettingsEditResponseTagsList;
-  tail_consumers?: ScriptsScriptAndVersionSettingsEditResponseTailConsumersList;
-  usage_model?: ScriptsScriptAndVersionSettingsEditResponseUsageModel;
+  /** List of Workers that will consume logs from the attached Worker. */
+  tailConsumers?: ScriptsScriptAndVersionSettingsEditResponseTailConsumersList;
+  /** Usage model for the Worker invocations. */
+  usageModel?: ScriptsScriptAndVersionSettingsEditResponseUsageModel;
 }
 export const ScriptsScriptAndVersionSettingsEditResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -7214,19 +12148,27 @@ export const ScriptsScriptAndVersionSettingsEditResponse =
       bindings: S.optional(
         ScriptsScriptAndVersionSettingsEditResponseBindingsList,
       ),
-      cache_options: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseCacheOptions,
+      cacheOptions: S.optional(
+        ScriptsScriptAndVersionSettingsEditResponseCacheOptions.pipe(
+          T.Body("cache_options"),
+        ),
       ),
-      compatibility_date: S.optional(S.String),
-      compatibility_flags: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList,
+      compatibilityDate: S.optional(
+        S.String.pipe(T.Body("compatibility_date")),
+      ),
+      compatibilityFlags: S.optional(
+        ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList.pipe(
+          T.Body("compatibility_flags"),
+        ),
       ),
       exports: S.optional(
         ScriptsScriptAndVersionSettingsEditResponseExportsMap,
       ),
       limits: S.optional(ScriptsScriptAndVersionSettingsEditResponseLimits),
       logpush: S.optional(S.Boolean),
-      migrations: S.optional(S.Unknown),
+      migrations: S.optional(
+        ScriptsScriptAndVersionSettingsEditResponseMigrations,
+      ),
       observability: S.optional(
         ScriptsScriptAndVersionSettingsEditResponseObservability,
       ),
@@ -7234,11 +12176,15 @@ export const ScriptsScriptAndVersionSettingsEditResponse =
         ScriptsScriptAndVersionSettingsEditResponsePlacement,
       ),
       tags: S.optional(ScriptsScriptAndVersionSettingsEditResponseTagsList),
-      tail_consumers: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseTailConsumersList,
+      tailConsumers: S.optional(
+        ScriptsScriptAndVersionSettingsEditResponseTailConsumersList.pipe(
+          T.Body("tail_consumers"),
+        ),
       ),
-      usage_model: S.optional(
-        ScriptsScriptAndVersionSettingsEditResponseUsageModel,
+      usageModel: S.optional(
+        ScriptsScriptAndVersionSettingsEditResponseUsageModel.pipe(
+          T.Body("usage_model"),
+        ),
       ),
     }),
   ).annotate({
@@ -7246,14 +12192,16 @@ export const ScriptsScriptAndVersionSettingsEditResponse =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponse>;
 
 export interface ScriptsScriptAndVersionSettingsGetRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const ScriptsScriptAndVersionSettingsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      scriptName: S.String.pipe(T.Label("script_name")),
     }).pipe(
       T.Http({
         method: "GET",
@@ -7266,16 +12214,19 @@ export const ScriptsScriptAndVersionSettingsGetRequest =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetRequest>;
 
 export interface ScriptsScriptAndVersionSettingsGetResponseAnnotations {
-  _workers_message_?: string;
-  _workers_tag_?: string;
-  _workers_triggered_by_?: string;
+  /** Human-readable message about the version. Truncated to 1000 bytes if longer. */
+  WorkersMessage_?: string;
+  /** User-provided identifier for the version. Maximum 100 bytes. */
+  WorkersTag_?: string;
+  /** Operation that triggered the creation of the version. This is read-only and set by the server. */
+  WorkersTriggeredBy_?: string;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseAnnotations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      _workers_message_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
-      _workers_tag_: S.optional(S.String.pipe(T.Body('"workers/tag"'))),
-      _workers_triggered_by_: S.optional(
+      WorkersMessage_: S.optional(S.String.pipe(T.Body('"workers/message"'))),
+      WorkersTag_: S.optional(S.String.pipe(T.Body('"workers/tag"'))),
+      WorkersTriggeredBy_: S.optional(
         S.String.pipe(T.Body('"workers/triggered_by"')),
       ),
     }),
@@ -7284,160 +12235,152 @@ export const ScriptsScriptAndVersionSettingsGetResponseAnnotations =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseAnnotations>;
 
 export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItem {
-  AI_object___name__type__: unknown;
-  AISearch_object___instance_name__name__type__namespace__: unknown;
-  AISearchNamespace_object___name__namespace__type__: unknown;
-  AnalyticsEngine_object___dataset__name__type__: unknown;
-  Assets_object___name__type__: unknown;
-  Browser_object___name__type__: unknown;
-  D1_object___database_id__name__type__id__: unknown;
-  DataBlob_object___name__part__type__: unknown;
-  DispatchNamespace_object___name__namespace__type__outbound__: unknown;
-  DurableObjectNamespace_object___name__type__class_name__4_more__: unknown;
-  Hyperdrive_object___id__name__type__: unknown;
-  Inherit_object___name__type__old_name__version_id__: unknown;
-  Images_object___name__type__: unknown;
-  Json_object___json__name__type__: unknown;
-  KVNamespace_object___name__namespace_id__type__: unknown;
-  Media_object___name__type__: unknown;
-  MTLSCertificate_object___certificate_id__name__type__: unknown;
-  PlainText_object___name__text__type__: unknown;
-  Pipelines_object___name__pipeline__type__: unknown;
-  Queue_object___name__queue_name__type__: unknown;
-  Ratelimit_object___name__namespace_id__simple__type__: unknown;
-  R2Bucket_object___bucket_name__name__type__jurisdiction__: unknown;
-  SecretText_object___name__text__type__: unknown;
-  SendEmail_object___name__type__allowed_destination_addresses__2_more__: unknown;
-  Service_object___name__service__type__2_more__: unknown;
-  TextBlob_object___name__part__type__: unknown;
-  Vectorize_object___index_name__name__type__: unknown;
-  VersionMetadata_object___name__type__: unknown;
-  SecretsStoreSecret_object___name__secret_name__store_id__type__: unknown;
-  Flagship_object___app_id__name__type__: unknown;
-  SecretKey_object___algorithm__format__name__4_more__: unknown;
-  Workflow_object___name__type__workflow_name__2_more__: unknown;
-  WasmModule_object___name__part__type__: unknown;
-  VPCService_object___name__service_id__type__: unknown;
-  VPCNetwork_object___name__type__network_id__tunnel_id__: unknown;
+  AIObjectNameType__: unknown;
+  AISearchObjectInstanceNameNameTypeNamespace__: unknown;
+  AISearchNamespaceObjectNameNamespaceType__: unknown;
+  AnalyticsEngineObjectDatasetNameType__: unknown;
+  AssetsObjectNameType__: unknown;
+  BrowserObjectNameType__: unknown;
+  D1ObjectDatabaseIdNameTypeId__: unknown;
+  DataBlobObjectNamePartType__: unknown;
+  DispatchNamespaceObjectNameNamespaceTypeOutbound__: unknown;
+  DurableObjectNamespaceObjectNameTypeClassName4More__: unknown;
+  HyperdriveObjectIdNameType__: unknown;
+  InheritObjectNameTypeOldNameVersionId__: unknown;
+  ImagesObjectNameType__: unknown;
+  JsonObjectJsonNameType__: unknown;
+  KVNamespaceObjectNameNamespaceIdType__: unknown;
+  MediaObjectNameType__: unknown;
+  MTLSCertificateObjectCertificateIdNameType__: unknown;
+  PlainTextObjectNameTextType__: unknown;
+  PipelinesObjectNamePipelineType__: unknown;
+  QueueObjectNameQueueNameType__: unknown;
+  RatelimitObjectNameNamespaceIdSimpleType__: unknown;
+  R2BucketObjectBucketNameNameTypeJurisdiction__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SendEmailObjectNameTypeAllowedDestinationAddresses2More__: unknown;
+  ServiceObjectNameServiceType2More__: unknown;
+  TextBlobObjectNamePartType__: unknown;
+  VectorizeObjectIndexNameNameType__: unknown;
+  VersionMetadataObjectNameType__: unknown;
+  SecretsStoreSecretObjectNameSecretNameStoreIdType__: unknown;
+  FlagshipObjectAppIdNameType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
+  WorkflowObjectNameTypeWorkflowName2More__: unknown;
+  WasmModuleObjectNamePartType__: unknown;
+  VPCServiceObjectNameServiceIdType__: unknown;
+  VPCNetworkObjectNameTypeNetworkIdTunnelId__: unknown;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AI_object___name__type__: S.Unknown.pipe(
-        T.Body("AI object { name, type }"),
-      ),
-      AISearch_object___instance_name__name__type__namespace__: S.Unknown.pipe(
+      AIObjectNameType__: S.Unknown.pipe(T.Body("AI object { name, type }")),
+      AISearchObjectInstanceNameNameTypeNamespace__: S.Unknown.pipe(
         T.Body("AISearch object { instance_name, name, type, namespace }"),
       ),
-      AISearchNamespace_object___name__namespace__type__: S.Unknown.pipe(
+      AISearchNamespaceObjectNameNamespaceType__: S.Unknown.pipe(
         T.Body("AISearchNamespace object { name, namespace, type }"),
       ),
-      AnalyticsEngine_object___dataset__name__type__: S.Unknown.pipe(
+      AnalyticsEngineObjectDatasetNameType__: S.Unknown.pipe(
         T.Body("AnalyticsEngine object { dataset, name, type }"),
       ),
-      Assets_object___name__type__: S.Unknown.pipe(
+      AssetsObjectNameType__: S.Unknown.pipe(
         T.Body("Assets object { name, type }"),
       ),
-      Browser_object___name__type__: S.Unknown.pipe(
+      BrowserObjectNameType__: S.Unknown.pipe(
         T.Body("Browser object { name, type }"),
       ),
-      D1_object___database_id__name__type__id__: S.Unknown.pipe(
+      D1ObjectDatabaseIdNameTypeId__: S.Unknown.pipe(
         T.Body("D1 object { database_id, name, type, id }"),
       ),
-      DataBlob_object___name__part__type__: S.Unknown.pipe(
+      DataBlobObjectNamePartType__: S.Unknown.pipe(
         T.Body("DataBlob object { name, part, type }"),
       ),
-      DispatchNamespace_object___name__namespace__type__outbound__:
-        S.Unknown.pipe(
-          T.Body(
-            "DispatchNamespace object { name, namespace, type, outbound }",
-          ),
+      DispatchNamespaceObjectNameNamespaceTypeOutbound__: S.Unknown.pipe(
+        T.Body("DispatchNamespace object { name, namespace, type, outbound }"),
+      ),
+      DurableObjectNamespaceObjectNameTypeClassName4More__: S.Unknown.pipe(
+        T.Body(
+          "DurableObjectNamespace object { name, type, class_name, 4 more }",
         ),
-      DurableObjectNamespace_object___name__type__class_name__4_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "DurableObjectNamespace object { name, type, class_name, 4 more }",
-          ),
-        ),
-      Hyperdrive_object___id__name__type__: S.Unknown.pipe(
+      ),
+      HyperdriveObjectIdNameType__: S.Unknown.pipe(
         T.Body("Hyperdrive object { id, name, type }"),
       ),
-      Inherit_object___name__type__old_name__version_id__: S.Unknown.pipe(
+      InheritObjectNameTypeOldNameVersionId__: S.Unknown.pipe(
         T.Body("Inherit object { name, type, old_name, version_id }"),
       ),
-      Images_object___name__type__: S.Unknown.pipe(
+      ImagesObjectNameType__: S.Unknown.pipe(
         T.Body("Images object { name, type }"),
       ),
-      Json_object___json__name__type__: S.Unknown.pipe(
+      JsonObjectJsonNameType__: S.Unknown.pipe(
         T.Body("Json object { json, name, type }"),
       ),
-      KVNamespace_object___name__namespace_id__type__: S.Unknown.pipe(
+      KVNamespaceObjectNameNamespaceIdType__: S.Unknown.pipe(
         T.Body("KVNamespace object { name, namespace_id, type }"),
       ),
-      Media_object___name__type__: S.Unknown.pipe(
+      MediaObjectNameType__: S.Unknown.pipe(
         T.Body("Media object { name, type }"),
       ),
-      MTLSCertificate_object___certificate_id__name__type__: S.Unknown.pipe(
+      MTLSCertificateObjectCertificateIdNameType__: S.Unknown.pipe(
         T.Body("MTLSCertificate object { certificate_id, name, type }"),
       ),
-      PlainText_object___name__text__type__: S.Unknown.pipe(
+      PlainTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("PlainText object { name, text, type }"),
       ),
-      Pipelines_object___name__pipeline__type__: S.Unknown.pipe(
+      PipelinesObjectNamePipelineType__: S.Unknown.pipe(
         T.Body("Pipelines object { name, pipeline, type }"),
       ),
-      Queue_object___name__queue_name__type__: S.Unknown.pipe(
+      QueueObjectNameQueueNameType__: S.Unknown.pipe(
         T.Body("Queue object { name, queue_name, type }"),
       ),
-      Ratelimit_object___name__namespace_id__simple__type__: S.Unknown.pipe(
+      RatelimitObjectNameNamespaceIdSimpleType__: S.Unknown.pipe(
         T.Body("Ratelimit object { name, namespace_id, simple, type }"),
       ),
-      R2Bucket_object___bucket_name__name__type__jurisdiction__: S.Unknown.pipe(
+      R2BucketObjectBucketNameNameTypeJurisdiction__: S.Unknown.pipe(
         T.Body("R2Bucket object { bucket_name, name, type, jurisdiction }"),
       ),
-      SecretText_object___name__text__type__: S.Unknown.pipe(
+      SecretTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("SecretText object { name, text, type }"),
       ),
-      SendEmail_object___name__type__allowed_destination_addresses__2_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
-          ),
+      SendEmailObjectNameTypeAllowedDestinationAddresses2More__: S.Unknown.pipe(
+        T.Body(
+          "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
         ),
-      Service_object___name__service__type__2_more__: S.Unknown.pipe(
+      ),
+      ServiceObjectNameServiceType2More__: S.Unknown.pipe(
         T.Body("Service object { name, service, type, 2 more }"),
       ),
-      TextBlob_object___name__part__type__: S.Unknown.pipe(
+      TextBlobObjectNamePartType__: S.Unknown.pipe(
         T.Body("TextBlob object { name, part, type }"),
       ),
-      Vectorize_object___index_name__name__type__: S.Unknown.pipe(
+      VectorizeObjectIndexNameNameType__: S.Unknown.pipe(
         T.Body("Vectorize object { index_name, name, type }"),
       ),
-      VersionMetadata_object___name__type__: S.Unknown.pipe(
+      VersionMetadataObjectNameType__: S.Unknown.pipe(
         T.Body("VersionMetadata object { name, type }"),
       ),
-      SecretsStoreSecret_object___name__secret_name__store_id__type__:
-        S.Unknown.pipe(
-          T.Body(
-            "SecretsStoreSecret object { name, secret_name, store_id, type }",
-          ),
+      SecretsStoreSecretObjectNameSecretNameStoreIdType__: S.Unknown.pipe(
+        T.Body(
+          "SecretsStoreSecret object { name, secret_name, store_id, type }",
         ),
-      Flagship_object___app_id__name__type__: S.Unknown.pipe(
+      ),
+      FlagshipObjectAppIdNameType__: S.Unknown.pipe(
         T.Body("Flagship object { app_id, name, type }"),
       ),
-      SecretKey_object___algorithm__format__name__4_more__: S.Unknown.pipe(
+      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
         T.Body("SecretKey object { algorithm, format, name, 4 more }"),
       ),
-      Workflow_object___name__type__workflow_name__2_more__: S.Unknown.pipe(
+      WorkflowObjectNameTypeWorkflowName2More__: S.Unknown.pipe(
         T.Body("Workflow object { name, type, workflow_name, 2 more }"),
       ),
-      WasmModule_object___name__part__type__: S.Unknown.pipe(
+      WasmModuleObjectNamePartType__: S.Unknown.pipe(
         T.Body("WasmModule object { name, part, type }"),
       ),
-      VPCService_object___name__service_id__type__: S.Unknown.pipe(
+      VPCServiceObjectNameServiceIdType__: S.Unknown.pipe(
         T.Body("VPCService object { name, service_id, type }"),
       ),
-      VPCNetwork_object___name__type__network_id__tunnel_id__: S.Unknown.pipe(
+      VPCNetworkObjectNameTypeNetworkIdTunnelId__: S.Unknown.pipe(
         T.Body("VPCNetwork object { name, type, network_id, tunnel_id }"),
       ),
     }),
@@ -7453,14 +12396,18 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsList =
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsList>;
 
 export interface ScriptsScriptAndVersionSettingsGetResponseCacheOptions {
+  /** Whether caching is enabled for this Worker. */
   enabled: boolean;
-  cross_version_cache?: boolean;
+  /** Whether cached responses are shared across Worker version */
+  crossVersionCache?: boolean;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseCacheOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      cross_version_cache: S.optional(S.Boolean),
+      crossVersionCache: S.optional(
+        S.Boolean.pipe(T.Body("cross_version_cache")),
+      ),
     }),
   ).annotate({
     identifier: "ScriptsScriptAndVersionSettingsGetResponseCacheOptions",
@@ -7483,18 +12430,44 @@ export const ScriptsScriptAndVersionSettingsGetResponseExportsMap =
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsMap>;
 
 export interface ScriptsScriptAndVersionSettingsGetResponseLimits {
-  cpu_ms?: number;
+  /** The amount of CPU time this Worker can use in milliseconds. */
+  cpuMs?: number;
+  /** The number of subrequests this Worker can make per request. */
   subrequests?: number;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseLimits =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      cpu_ms: S.optional(S.Number),
+      cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
       subrequests: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "ScriptsScriptAndVersionSettingsGetResponseLimits",
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseLimits>;
+
+export interface ScriptsScriptAndVersionSettingsGetResponseMigrations {
+  /** A single set of migrations to apply. */
+  SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__: unknown;
+  WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: unknown;
+}
+export const ScriptsScriptAndVersionSettingsGetResponseMigrations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__:
+        S.Unknown.pipe(
+          T.Body(
+            "SingleStepMigration object { deleted_classes, new_classes, new_sqlite_classes, 4 more }",
+          ),
+        ),
+      WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: S.Unknown.pipe(
+        T.Body(
+          "WorkersMultipleStepMigrations object { new_tag, old_tag, steps }",
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "ScriptsScriptAndVersionSettingsGetResponseMigrations",
+  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrations>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseObservabilityLogsDestinationsList =
   string[];
@@ -7504,21 +12477,26 @@ export const ScriptsScriptAndVersionSettingsGetResponseObservabilityLogsDestinat
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseObservabilityLogsDestinationsList>;
 
 export interface ScriptsScriptAndVersionSettingsGetResponseObservabilityLogs {
+  /** Whether logs are enabled for the Worker. */
   enabled: boolean;
-  invocation_logs: boolean;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs: boolean;
+  /** A list of destinations where logs will be exported to. */
   destinations?: ScriptsScriptAndVersionSettingsGetResponseObservabilityLogsDestinationsList;
-  head_sampling_rate?: number;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseObservabilityLogs =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      invocation_logs: S.Boolean,
+      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
       destinations: S.optional(
         ScriptsScriptAndVersionSettingsGetResponseObservabilityLogsDestinationsList,
       ),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
     }),
   ).annotate({
@@ -7538,11 +12516,16 @@ export const ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesPropag
   /*@__PURE__*/ S.String;
 
 export interface ScriptsScriptAndVersionSettingsGetResponseObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
   destinations?: ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
   enabled?: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
   persist?: boolean;
-  propagation_policy?: ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesPropagationPolicy;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesPropagationPolicy;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
@@ -7551,10 +12534,12 @@ export const ScriptsScriptAndVersionSettingsGetResponseObservabilityTraces =
         ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesDestinationsList,
       ),
       enabled: S.optional(S.Boolean),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
-      propagation_policy: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesPropagationPolicy,
+      propagationPolicy: S.optional(
+        ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
       ),
     }),
   ).annotate({
@@ -7562,16 +12547,20 @@ export const ScriptsScriptAndVersionSettingsGetResponseObservabilityTraces =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseObservabilityTraces>;
 
 export interface ScriptsScriptAndVersionSettingsGetResponseObservability {
+  /** Whether observability is enabled for the Worker. */
   enabled: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
   logs?: ScriptsScriptAndVersionSettingsGetResponseObservabilityLogs;
+  /** Trace settings for the Worker. */
   traces?: ScriptsScriptAndVersionSettingsGetResponseObservabilityTraces;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseObservability =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       logs: S.optional(
         ScriptsScriptAndVersionSettingsGetResponseObservabilityLogs,
       ),
@@ -7584,36 +12573,28 @@ export const ScriptsScriptAndVersionSettingsGetResponseObservability =
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseObservability>;
 
 export interface ScriptsScriptAndVersionSettingsGetResponsePlacement {
-  Mode_object___mode__: unknown;
-  Region_object___region__: unknown;
-  Hostname_object___hostname__: unknown;
-  Host_object___host__: unknown;
-  object___mode__region__: unknown;
-  object___hostname__mode__: unknown;
-  object___host__mode__: unknown;
-  object___mode__target__: unknown;
+  ModeObjectMode__: unknown;
+  RegionObjectRegion__: unknown;
+  HostnameObjectHostname__: unknown;
+  HostObjectHost__: unknown;
+  objectModeRegion__: unknown;
+  objectHostnameMode__: unknown;
+  objectHostMode__: unknown;
+  objectModeTarget__: unknown;
 }
 export const ScriptsScriptAndVersionSettingsGetResponsePlacement =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      Mode_object___mode__: S.Unknown.pipe(T.Body("Mode object { mode }")),
-      Region_object___region__: S.Unknown.pipe(
-        T.Body("Region object { region }"),
-      ),
-      Hostname_object___hostname__: S.Unknown.pipe(
+      ModeObjectMode__: S.Unknown.pipe(T.Body("Mode object { mode }")),
+      RegionObjectRegion__: S.Unknown.pipe(T.Body("Region object { region }")),
+      HostnameObjectHostname__: S.Unknown.pipe(
         T.Body("Hostname object { hostname }"),
       ),
-      Host_object___host__: S.Unknown.pipe(T.Body("Host object { host }")),
-      object___mode__region__: S.Unknown.pipe(
-        T.Body("object { mode, region }"),
-      ),
-      object___hostname__mode__: S.Unknown.pipe(
-        T.Body("object { hostname, mode }"),
-      ),
-      object___host__mode__: S.Unknown.pipe(T.Body("object { host, mode }")),
-      object___mode__target__: S.Unknown.pipe(
-        T.Body("object { mode, target }"),
-      ),
+      HostObjectHost__: S.Unknown.pipe(T.Body("Host object { host }")),
+      objectModeRegion__: S.Unknown.pipe(T.Body("object { mode, region }")),
+      objectHostnameMode__: S.Unknown.pipe(T.Body("object { hostname, mode }")),
+      objectHostMode__: S.Unknown.pipe(T.Body("object { host, mode }")),
+      objectModeTarget__: S.Unknown.pipe(T.Body("object { mode, target }")),
     }),
   ).annotate({
     identifier: "ScriptsScriptAndVersionSettingsGetResponsePlacement",
@@ -7625,11 +12606,30 @@ export const ScriptsScriptAndVersionSettingsGetResponseTagsList =
     S.String,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseTagsList>;
 
+export interface ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem {
+  /** Name of Worker that is to be the consumer. */
+  service: string;
+  /** Optional environment if the Worker utilizes one. */
+  environment?: string;
+  /** Optional dispatch namespace the script belongs to. */
+  namespace?: string;
+}
+export const ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      service: S.String,
+      environment: S.optional(S.String),
+      namespace: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem",
+  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseTailConsumersList =
-  unknown[];
+  ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem[];
 export const ScriptsScriptAndVersionSettingsGetResponseTailConsumersList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseTailConsumersList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseUsageModel =
@@ -7642,20 +12642,34 @@ export const ScriptsScriptAndVersionSettingsGetResponseUsageModel =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsScriptAndVersionSettingsGetResponse {
+  /** Annotations for the Worker version. Annotations are not inherited across settings updates; omitting this field means the new version will have no annotations. */
   annotations?: ScriptsScriptAndVersionSettingsGetResponseAnnotations;
+  /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
   bindings?: ScriptsScriptAndVersionSettingsGetResponseBindingsList;
-  cache_options?: ScriptsScriptAndVersionSettingsGetResponseCacheOptions;
-  compatibility_date?: string;
-  compatibility_flags?: ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList;
+  /** Global CacheW configuration for the Worker. When caching is on, */
+  cacheOptions?: ScriptsScriptAndVersionSettingsGetResponseCacheOptions;
+  /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
+  compatibilityDate?: string;
+  /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
+  compatibilityFlags?: ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList;
+  /** Declarative exports for the Worker. Worker entrypoint entries */
   exports?: ScriptsScriptAndVersionSettingsGetResponseExportsMap;
+  /** Limits to apply for this Worker. */
   limits?: ScriptsScriptAndVersionSettingsGetResponseLimits;
+  /** Whether Logpush is turned on for the Worker. */
   logpush?: boolean;
-  migrations?: unknown;
+  /** Migrations to apply for Durable Objects associated with this Worker. */
+  migrations?: ScriptsScriptAndVersionSettingsGetResponseMigrations;
+  /** Observability settings for the Worker. */
   observability?: ScriptsScriptAndVersionSettingsGetResponseObservability;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?: ScriptsScriptAndVersionSettingsGetResponsePlacement;
+  /** Tags associated with the Worker. */
   tags?: ScriptsScriptAndVersionSettingsGetResponseTagsList;
-  tail_consumers?: ScriptsScriptAndVersionSettingsGetResponseTailConsumersList;
-  usage_model?: ScriptsScriptAndVersionSettingsGetResponseUsageModel;
+  /** List of Workers that will consume logs from the attached Worker. */
+  tailConsumers?: ScriptsScriptAndVersionSettingsGetResponseTailConsumersList;
+  /** Usage model for the Worker invocations. */
+  usageModel?: ScriptsScriptAndVersionSettingsGetResponseUsageModel;
 }
 export const ScriptsScriptAndVersionSettingsGetResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -7666,17 +12680,25 @@ export const ScriptsScriptAndVersionSettingsGetResponse =
       bindings: S.optional(
         ScriptsScriptAndVersionSettingsGetResponseBindingsList,
       ),
-      cache_options: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseCacheOptions,
+      cacheOptions: S.optional(
+        ScriptsScriptAndVersionSettingsGetResponseCacheOptions.pipe(
+          T.Body("cache_options"),
+        ),
       ),
-      compatibility_date: S.optional(S.String),
-      compatibility_flags: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList,
+      compatibilityDate: S.optional(
+        S.String.pipe(T.Body("compatibility_date")),
+      ),
+      compatibilityFlags: S.optional(
+        ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList.pipe(
+          T.Body("compatibility_flags"),
+        ),
       ),
       exports: S.optional(ScriptsScriptAndVersionSettingsGetResponseExportsMap),
       limits: S.optional(ScriptsScriptAndVersionSettingsGetResponseLimits),
       logpush: S.optional(S.Boolean),
-      migrations: S.optional(S.Unknown),
+      migrations: S.optional(
+        ScriptsScriptAndVersionSettingsGetResponseMigrations,
+      ),
       observability: S.optional(
         ScriptsScriptAndVersionSettingsGetResponseObservability,
       ),
@@ -7684,11 +12706,15 @@ export const ScriptsScriptAndVersionSettingsGetResponse =
         ScriptsScriptAndVersionSettingsGetResponsePlacement,
       ),
       tags: S.optional(ScriptsScriptAndVersionSettingsGetResponseTagsList),
-      tail_consumers: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseTailConsumersList,
+      tailConsumers: S.optional(
+        ScriptsScriptAndVersionSettingsGetResponseTailConsumersList.pipe(
+          T.Body("tail_consumers"),
+        ),
       ),
-      usage_model: S.optional(
-        ScriptsScriptAndVersionSettingsGetResponseUsageModel,
+      usageModel: S.optional(
+        ScriptsScriptAndVersionSettingsGetResponseUsageModel.pipe(
+          T.Body("usage_model"),
+        ),
       ),
     }),
   ).annotate({
@@ -7703,21 +12729,27 @@ export type ScriptsSearchRequestOrderBy =
 export const ScriptsSearchRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface ScriptsSearchRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Worker ID (also called tag) to search for. Only exact matches are returned. */
   id?: string;
+  /** Worker name to search for. Both exact and partial matches are returned. */
   name?: string;
-  order_by?: ScriptsSearchRequestOrderBy;
+  /** Property to sort results by. Results are sorted in ascending order. */
+  orderBy?: ScriptsSearchRequestOrderBy;
+  /** Current page. */
   page?: number;
-  per_page?: number;
+  /** Items per page. */
+  perPage?: number;
 }
 export const ScriptsSearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
-    order_by: S.optional(ScriptsSearchRequestOrderBy.pipe(T.Query())),
+    orderBy: S.optional(ScriptsSearchRequestOrderBy.pipe(T.Query("order_by"))),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -7730,23 +12762,32 @@ export const ScriptsSearchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsSearchRequest>;
 
 export interface ScriptsSearchResultItem {
+  /** Identifier. */
   id: string;
-  created_on: string;
-  modified_on: string;
-  script_name: string;
-  environment_is_default?: boolean;
-  environment_name?: string;
-  service_name?: string;
+  /** When the script was created. */
+  createdOn: string;
+  /** When the script was last modified. */
+  modifiedOn: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** Whether the environment is the default environment. */
+  environmentIsDefault?: boolean;
+  /** Name of the environment. */
+  environmentName?: string;
+  /** Name of the service. */
+  serviceName?: string;
 }
 export const ScriptsSearchResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_on: S.String,
-    modified_on: S.String,
-    script_name: S.String,
-    environment_is_default: S.optional(S.Boolean),
-    environment_name: S.optional(S.String),
-    service_name: S.optional(S.String),
+    createdOn: S.String.pipe(T.Body("created_on")),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    scriptName: S.String.pipe(T.Body("script_name")),
+    environmentIsDefault: S.optional(
+      S.Boolean.pipe(T.Body("environment_is_default")),
+    ),
+    environmentName: S.optional(S.String.pipe(T.Body("environment_name"))),
+    serviceName: S.optional(S.String.pipe(T.Body("service_name"))),
   }),
 ).annotate({
   identifier: "ScriptsSearchResultItem",
@@ -7758,6 +12799,7 @@ export const ScriptsSearchResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ScriptsSearchResultList>;
 
 export interface ScriptsSearchResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ScriptsSearchResultList;
 }
 export const ScriptsSearchResponse = /*@__PURE__*/ S.suspend(() =>
@@ -7786,17 +12828,25 @@ export const ScriptsSecretsBulkUpdateRequestVersionTagsMap =
   ) as any as S.Schema<ScriptsSecretsBulkUpdateRequestVersionTagsMap>;
 
 export interface ScriptsSecretsBulkUpdateRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** Map of secret names to secret values: */
   secrets?: ScriptsSecretsBulkUpdateRequestSecretsMap;
-  version_tags?: ScriptsSecretsBulkUpdateRequestVersionTagsMap;
+  /** Optional version tags to apply to the new script version. */
+  versionTags?: ScriptsSecretsBulkUpdateRequestVersionTagsMap;
 }
 export const ScriptsSecretsBulkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
     secrets: S.optional(ScriptsSecretsBulkUpdateRequestSecretsMap),
-    version_tags: S.optional(ScriptsSecretsBulkUpdateRequestVersionTagsMap),
+    versionTags: S.optional(
+      ScriptsSecretsBulkUpdateRequestVersionTagsMap.pipe(
+        T.Body("version_tags"),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -7817,6 +12867,7 @@ export const ScriptsSecretsBulkUpdateResultMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ScriptsSecretsBulkUpdateResultMap>;
 
 export interface ScriptsSecretsBulkUpdateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ScriptsSecretsBulkUpdateResultMap;
 }
 export const ScriptsSecretsBulkUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -7830,17 +12881,21 @@ export const ScriptsSecretsBulkUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsSecretsBulkUpdateResponse>;
 
 export interface ScriptsSecretsDeleteRequest {
-  account_id: string;
-  script_name: string;
-  secret_name: string;
-  url_encoded?: boolean;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** A JavaScript variable name for the secret binding. */
+  secretName: string;
+  /** Flag that indicates whether the secret name is URL encoded. */
+  urlEncoded?: boolean;
 }
 export const ScriptsSecretsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
-    secret_name: S.String.pipe(T.Label()),
-    url_encoded: S.optional(S.Boolean.pipe(T.Query())),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
+    secretName: S.String.pipe(T.Label("secret_name")),
+    urlEncoded: S.optional(S.Boolean.pipe(T.Query("url_encoded"))),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -7853,6 +12908,7 @@ export const ScriptsSecretsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsSecretsDeleteRequest>;
 
 export interface ScriptsSecretsDeleteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const ScriptsSecretsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -7864,17 +12920,21 @@ export const ScriptsSecretsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsSecretsDeleteResponse>;
 
 export interface ScriptsSecretsGetRequest {
-  account_id: string;
-  script_name: string;
-  secret_name: string;
-  url_encoded?: boolean;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** A JavaScript variable name for the secret binding. */
+  secretName: string;
+  /** Flag that indicates whether the secret name is URL encoded. */
+  urlEncoded?: boolean;
 }
 export const ScriptsSecretsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
-    secret_name: S.String.pipe(T.Label()),
-    url_encoded: S.optional(S.Boolean.pipe(T.Query())),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
+    secretName: S.String.pipe(T.Label("secret_name")),
+    urlEncoded: S.optional(S.Boolean.pipe(T.Query("url_encoded"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -7888,15 +12948,15 @@ export const ScriptsSecretsGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsSecretsGetResponse {
-  SecretText_object___name__text__type__: unknown;
-  SecretKey_object___algorithm__format__name__4_more__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
 }
 export const ScriptsSecretsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SecretText_object___name__text__type__: S.Unknown.pipe(
+    SecretTextObjectNameTextType__: S.Unknown.pipe(
       T.Body("SecretText object { name, text, type }"),
     ),
-    SecretKey_object___algorithm__format__name__4_more__: S.Unknown.pipe(
+    SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
       T.Body("SecretKey object { algorithm, format, name, 4 more }"),
     ),
   }),
@@ -7905,13 +12965,15 @@ export const ScriptsSecretsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsSecretsGetResponse>;
 
 export interface ScriptsSecretsListRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const ScriptsSecretsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -7924,15 +12986,15 @@ export const ScriptsSecretsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsSecretsListRequest>;
 
 export interface ScriptsSecretsListResultItem {
-  SecretText_object___name__text__type__: unknown;
-  SecretKey_object___algorithm__format__name__4_more__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
 }
 export const ScriptsSecretsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SecretText_object___name__text__type__: S.Unknown.pipe(
+    SecretTextObjectNameTextType__: S.Unknown.pipe(
       T.Body("SecretText object { name, text, type }"),
     ),
-    SecretKey_object___algorithm__format__name__4_more__: S.Unknown.pipe(
+    SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
       T.Body("SecretKey object { algorithm, format, name, 4 more }"),
     ),
   }),
@@ -7946,6 +13008,7 @@ export const ScriptsSecretsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ScriptsSecretsListResultList>;
 
 export interface ScriptsSecretsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ScriptsSecretsListResultList;
 }
 export const ScriptsSecretsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -7957,15 +13020,15 @@ export const ScriptsSecretsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsSecretsListResponse>;
 
 export interface ScriptsSecretsUpdateRequestBody {
-  SecretText_object___name__text__type__: unknown;
-  SecretKey_object___algorithm__format__name__4_more__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
 }
 export const ScriptsSecretsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SecretText_object___name__text__type__: S.Unknown.pipe(
+    SecretTextObjectNameTextType__: S.Unknown.pipe(
       T.Body("SecretText object { name, text, type }"),
     ),
-    SecretKey_object___algorithm__format__name__4_more__: S.Unknown.pipe(
+    SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
       T.Body("SecretKey object { algorithm, format, name, 4 more }"),
     ),
   }),
@@ -7974,14 +13037,17 @@ export const ScriptsSecretsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsSecretsUpdateRequestBody>;
 
 export interface ScriptsSecretsUpdateRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** A secret value accessible through a binding. */
   body: ScriptsSecretsUpdateRequestBody;
 }
 export const ScriptsSecretsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
     body: ScriptsSecretsUpdateRequestBody,
   }).pipe(
     T.Http({
@@ -7996,15 +13062,15 @@ export const ScriptsSecretsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsSecretsUpdateResponse {
-  SecretText_object___name__text__type__: unknown;
-  SecretKey_object___algorithm__format__name__4_more__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
 }
 export const ScriptsSecretsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SecretText_object___name__text__type__: S.Unknown.pipe(
+    SecretTextObjectNameTextType__: S.Unknown.pipe(
       T.Body("SecretText object { name, text, type }"),
     ),
-    SecretKey_object___algorithm__format__name__4_more__: S.Unknown.pipe(
+    SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
       T.Body("SecretKey object { algorithm, format, name, 4 more }"),
     ),
   }),
@@ -8020,21 +13086,26 @@ export const ScriptsSettingsEditRequestObservabilityLogsDestinationsList =
   ) as any as S.Schema<ScriptsSettingsEditRequestObservabilityLogsDestinationsList>;
 
 export interface ScriptsSettingsEditRequestObservabilityLogs {
+  /** Whether logs are enabled for the Worker. */
   enabled: boolean;
-  invocation_logs: boolean;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs: boolean;
+  /** A list of destinations where logs will be exported to. */
   destinations?: ScriptsSettingsEditRequestObservabilityLogsDestinationsList;
-  head_sampling_rate?: number;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
 export const ScriptsSettingsEditRequestObservabilityLogs =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      invocation_logs: S.Boolean,
+      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
       destinations: S.optional(
         ScriptsSettingsEditRequestObservabilityLogsDestinationsList,
       ),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
     }),
   ).annotate({
@@ -8056,11 +13127,16 @@ export const ScriptsSettingsEditRequestObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
 export interface ScriptsSettingsEditRequestObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
   destinations?: ScriptsSettingsEditRequestObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
   enabled?: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
   persist?: boolean;
-  propagation_policy?: ScriptsSettingsEditRequestObservabilityTracesPropagationPolicy;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: ScriptsSettingsEditRequestObservabilityTracesPropagationPolicy;
 }
 export const ScriptsSettingsEditRequestObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
@@ -8069,10 +13145,12 @@ export const ScriptsSettingsEditRequestObservabilityTraces =
         ScriptsSettingsEditRequestObservabilityTracesDestinationsList,
       ),
       enabled: S.optional(S.Boolean),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
-      propagation_policy: S.optional(
-        ScriptsSettingsEditRequestObservabilityTracesPropagationPolicy,
+      propagationPolicy: S.optional(
+        ScriptsSettingsEditRequestObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
       ),
     }),
   ).annotate({
@@ -8080,16 +13158,20 @@ export const ScriptsSettingsEditRequestObservabilityTraces =
   }) as any as S.Schema<ScriptsSettingsEditRequestObservabilityTraces>;
 
 export interface ScriptsSettingsEditRequestObservability {
+  /** Whether observability is enabled for the Worker. */
   enabled: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
   logs?: ScriptsSettingsEditRequestObservabilityLogs;
+  /** Trace settings for the Worker. */
   traces?: ScriptsSettingsEditRequestObservabilityTraces;
 }
 export const ScriptsSettingsEditRequestObservability = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       enabled: S.Boolean,
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       logs: S.optional(ScriptsSettingsEditRequestObservabilityLogs),
       traces: S.optional(ScriptsSettingsEditRequestObservabilityTraces),
     }),
@@ -8102,28 +13184,58 @@ export const ScriptsSettingsEditRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptsSettingsEditRequestTagsList>;
 
-export type ScriptsSettingsEditRequestTailConsumersList = unknown[];
+export interface ScriptsSettingsEditRequestTailConsumersItem {
+  /** Name of Worker that is to be the consumer. */
+  service: string;
+  /** Optional environment if the Worker utilizes one. */
+  environment?: string;
+  /** Optional dispatch namespace the script belongs to. */
+  namespace?: string;
+}
+export const ScriptsSettingsEditRequestTailConsumersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      service: S.String,
+      environment: S.optional(S.String),
+      namespace: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ScriptsSettingsEditRequestTailConsumersItem",
+  }) as any as S.Schema<ScriptsSettingsEditRequestTailConsumersItem>;
+
+export type ScriptsSettingsEditRequestTailConsumersList =
+  ScriptsSettingsEditRequestTailConsumersItem[];
 export const ScriptsSettingsEditRequestTailConsumersList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    ScriptsSettingsEditRequestTailConsumersItem,
   ) as any as S.Schema<ScriptsSettingsEditRequestTailConsumersList>;
 
 export interface ScriptsSettingsEditRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** Whether Logpush is turned on for the Worker. */
   logpush?: boolean;
+  /** Observability settings for the Worker. */
   observability?: ScriptsSettingsEditRequestObservability;
+  /** Tags associated with the Worker. */
   tags?: ScriptsSettingsEditRequestTagsList;
-  tail_consumers?: ScriptsSettingsEditRequestTailConsumersList;
+  /** List of Workers that will consume logs from the attached Worker. */
+  tailConsumers?: ScriptsSettingsEditRequestTailConsumersList;
 }
 export const ScriptsSettingsEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
     logpush: S.optional(S.Boolean),
     observability: S.optional(ScriptsSettingsEditRequestObservability),
     tags: S.optional(ScriptsSettingsEditRequestTagsList),
-    tail_consumers: S.optional(ScriptsSettingsEditRequestTailConsumersList),
+    tailConsumers: S.optional(
+      ScriptsSettingsEditRequestTailConsumersList.pipe(
+        T.Body("tail_consumers"),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -8135,25 +13247,174 @@ export const ScriptsSettingsEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsSettingsEditRequest",
 }) as any as S.Schema<ScriptsSettingsEditRequest>;
 
+export type ScriptsSettingsEditResponseObservabilityLogsDestinationsList =
+  string[];
+export const ScriptsSettingsEditResponseObservabilityLogsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ScriptsSettingsEditResponseObservabilityLogsDestinationsList>;
+
+export interface ScriptsSettingsEditResponseObservabilityLogs {
+  /** Whether logs are enabled for the Worker. */
+  enabled: boolean;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs: boolean;
+  /** A list of destinations where logs will be exported to. */
+  destinations?: ScriptsSettingsEditResponseObservabilityLogsDestinationsList;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether log persistence is enabled for the Worker. */
+  persist?: boolean;
+}
+export const ScriptsSettingsEditResponseObservabilityLogs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
+      destinations: S.optional(
+        ScriptsSettingsEditResponseObservabilityLogsDestinationsList,
+      ),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      persist: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "ScriptsSettingsEditResponseObservabilityLogs",
+  }) as any as S.Schema<ScriptsSettingsEditResponseObservabilityLogs>;
+
+export type ScriptsSettingsEditResponseObservabilityTracesDestinationsList =
+  string[];
+export const ScriptsSettingsEditResponseObservabilityTracesDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ScriptsSettingsEditResponseObservabilityTracesDestinationsList>;
+
+export type ScriptsSettingsEditResponseObservabilityTracesPropagationPolicy =
+  | "authenticated"
+  | "accept"
+  | (string & {});
+export const ScriptsSettingsEditResponseObservabilityTracesPropagationPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface ScriptsSettingsEditResponseObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
+  destinations?: ScriptsSettingsEditResponseObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
+  persist?: boolean;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: ScriptsSettingsEditResponseObservabilityTracesPropagationPolicy;
+}
+export const ScriptsSettingsEditResponseObservabilityTraces =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      destinations: S.optional(
+        ScriptsSettingsEditResponseObservabilityTracesDestinationsList,
+      ),
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      persist: S.optional(S.Boolean),
+      propagationPolicy: S.optional(
+        ScriptsSettingsEditResponseObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "ScriptsSettingsEditResponseObservabilityTraces",
+  }) as any as S.Schema<ScriptsSettingsEditResponseObservabilityTraces>;
+
+export interface ScriptsSettingsEditResponseObservability {
+  /** Whether observability is enabled for the Worker. */
+  enabled: boolean;
+  /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
+  logs?: ScriptsSettingsEditResponseObservabilityLogs;
+  /** Trace settings for the Worker. */
+  traces?: ScriptsSettingsEditResponseObservabilityTraces;
+}
+export const ScriptsSettingsEditResponseObservability = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.Boolean,
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      logs: S.optional(ScriptsSettingsEditResponseObservabilityLogs),
+      traces: S.optional(ScriptsSettingsEditResponseObservabilityTraces),
+    }),
+).annotate({
+  identifier: "ScriptsSettingsEditResponseObservability",
+}) as any as S.Schema<ScriptsSettingsEditResponseObservability>;
+
+export type ScriptsSettingsEditResponseTagsList = string[];
+export const ScriptsSettingsEditResponseTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ScriptsSettingsEditResponseTagsList>;
+
+export interface ScriptsSettingsEditResponseTailConsumersItem {
+  /** Name of Worker that is to be the consumer. */
+  service: string;
+  /** Optional environment if the Worker utilizes one. */
+  environment?: string;
+  /** Optional dispatch namespace the script belongs to. */
+  namespace?: string;
+}
+export const ScriptsSettingsEditResponseTailConsumersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      service: S.String,
+      environment: S.optional(S.String),
+      namespace: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ScriptsSettingsEditResponseTailConsumersItem",
+  }) as any as S.Schema<ScriptsSettingsEditResponseTailConsumersItem>;
+
+export type ScriptsSettingsEditResponseTailConsumersList =
+  ScriptsSettingsEditResponseTailConsumersItem[];
+export const ScriptsSettingsEditResponseTailConsumersList =
+  /*@__PURE__*/ S.Array(
+    ScriptsSettingsEditResponseTailConsumersItem,
+  ) as any as S.Schema<ScriptsSettingsEditResponseTailConsumersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsSettingsEditResponse {
-  result?: unknown;
+  /** Whether Logpush is turned on for the Worker. */
+  logpush?: boolean;
+  /** Observability settings for the Worker. */
+  observability?: ScriptsSettingsEditResponseObservability;
+  /** Tags associated with the Worker. */
+  tags?: ScriptsSettingsEditResponseTagsList;
+  /** List of Workers that will consume logs from the attached Worker. */
+  tailConsumers?: ScriptsSettingsEditResponseTailConsumersList;
 }
 export const ScriptsSettingsEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    logpush: S.optional(S.Boolean),
+    observability: S.optional(ScriptsSettingsEditResponseObservability),
+    tags: S.optional(ScriptsSettingsEditResponseTagsList),
+    tailConsumers: S.optional(
+      ScriptsSettingsEditResponseTailConsumersList.pipe(
+        T.Body("tail_consumers"),
+      ),
+    ),
   }),
 ).annotate({
   identifier: "ScriptsSettingsEditResponse",
 }) as any as S.Schema<ScriptsSettingsEditResponse>;
 
 export interface ScriptsSettingsGetRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const ScriptsSettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -8165,29 +13426,180 @@ export const ScriptsSettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsSettingsGetRequest",
 }) as any as S.Schema<ScriptsSettingsGetRequest>;
 
+export type ScriptsSettingsGetResponseObservabilityLogsDestinationsList =
+  string[];
+export const ScriptsSettingsGetResponseObservabilityLogsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ScriptsSettingsGetResponseObservabilityLogsDestinationsList>;
+
+export interface ScriptsSettingsGetResponseObservabilityLogs {
+  /** Whether logs are enabled for the Worker. */
+  enabled: boolean;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs: boolean;
+  /** A list of destinations where logs will be exported to. */
+  destinations?: ScriptsSettingsGetResponseObservabilityLogsDestinationsList;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether log persistence is enabled for the Worker. */
+  persist?: boolean;
+}
+export const ScriptsSettingsGetResponseObservabilityLogs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
+      destinations: S.optional(
+        ScriptsSettingsGetResponseObservabilityLogsDestinationsList,
+      ),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      persist: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "ScriptsSettingsGetResponseObservabilityLogs",
+  }) as any as S.Schema<ScriptsSettingsGetResponseObservabilityLogs>;
+
+export type ScriptsSettingsGetResponseObservabilityTracesDestinationsList =
+  string[];
+export const ScriptsSettingsGetResponseObservabilityTracesDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ScriptsSettingsGetResponseObservabilityTracesDestinationsList>;
+
+export type ScriptsSettingsGetResponseObservabilityTracesPropagationPolicy =
+  | "authenticated"
+  | "accept"
+  | (string & {});
+export const ScriptsSettingsGetResponseObservabilityTracesPropagationPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface ScriptsSettingsGetResponseObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
+  destinations?: ScriptsSettingsGetResponseObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
+  persist?: boolean;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: ScriptsSettingsGetResponseObservabilityTracesPropagationPolicy;
+}
+export const ScriptsSettingsGetResponseObservabilityTraces =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      destinations: S.optional(
+        ScriptsSettingsGetResponseObservabilityTracesDestinationsList,
+      ),
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      persist: S.optional(S.Boolean),
+      propagationPolicy: S.optional(
+        ScriptsSettingsGetResponseObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "ScriptsSettingsGetResponseObservabilityTraces",
+  }) as any as S.Schema<ScriptsSettingsGetResponseObservabilityTraces>;
+
+export interface ScriptsSettingsGetResponseObservability {
+  /** Whether observability is enabled for the Worker. */
+  enabled: boolean;
+  /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
+  logs?: ScriptsSettingsGetResponseObservabilityLogs;
+  /** Trace settings for the Worker. */
+  traces?: ScriptsSettingsGetResponseObservabilityTraces;
+}
+export const ScriptsSettingsGetResponseObservability = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.Boolean,
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      logs: S.optional(ScriptsSettingsGetResponseObservabilityLogs),
+      traces: S.optional(ScriptsSettingsGetResponseObservabilityTraces),
+    }),
+).annotate({
+  identifier: "ScriptsSettingsGetResponseObservability",
+}) as any as S.Schema<ScriptsSettingsGetResponseObservability>;
+
+export type ScriptsSettingsGetResponseTagsList = string[];
+export const ScriptsSettingsGetResponseTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ScriptsSettingsGetResponseTagsList>;
+
+export interface ScriptsSettingsGetResponseTailConsumersItem {
+  /** Name of Worker that is to be the consumer. */
+  service: string;
+  /** Optional environment if the Worker utilizes one. */
+  environment?: string;
+  /** Optional dispatch namespace the script belongs to. */
+  namespace?: string;
+}
+export const ScriptsSettingsGetResponseTailConsumersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      service: S.String,
+      environment: S.optional(S.String),
+      namespace: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ScriptsSettingsGetResponseTailConsumersItem",
+  }) as any as S.Schema<ScriptsSettingsGetResponseTailConsumersItem>;
+
+export type ScriptsSettingsGetResponseTailConsumersList =
+  ScriptsSettingsGetResponseTailConsumersItem[];
+export const ScriptsSettingsGetResponseTailConsumersList =
+  /*@__PURE__*/ S.Array(
+    ScriptsSettingsGetResponseTailConsumersItem,
+  ) as any as S.Schema<ScriptsSettingsGetResponseTailConsumersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsSettingsGetResponse {
-  result?: unknown;
+  /** Whether Logpush is turned on for the Worker. */
+  logpush?: boolean;
+  /** Observability settings for the Worker. */
+  observability?: ScriptsSettingsGetResponseObservability;
+  /** Tags associated with the Worker. */
+  tags?: ScriptsSettingsGetResponseTagsList;
+  /** List of Workers that will consume logs from the attached Worker. */
+  tailConsumers?: ScriptsSettingsGetResponseTailConsumersList;
 }
 export const ScriptsSettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    logpush: S.optional(S.Boolean),
+    observability: S.optional(ScriptsSettingsGetResponseObservability),
+    tags: S.optional(ScriptsSettingsGetResponseTagsList),
+    tailConsumers: S.optional(
+      ScriptsSettingsGetResponseTailConsumersList.pipe(
+        T.Body("tail_consumers"),
+      ),
+    ),
   }),
 ).annotate({
   identifier: "ScriptsSettingsGetResponse",
 }) as any as S.Schema<ScriptsSettingsGetResponse>;
 
 export interface ScriptsSubdomainCreateRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** Whether the Worker should be available on the workers.dev subdomain. */
   enabled: boolean;
-  previews_enabled?: boolean;
+  /** Whether the Worker's Preview URLs should be available on the workers.dev subdomain. */
+  previewsEnabled?: boolean;
 }
 export const ScriptsSubdomainCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
     enabled: S.Boolean,
-    previews_enabled: S.optional(S.Boolean),
+    previewsEnabled: S.optional(S.Boolean.pipe(T.Body("previews_enabled"))),
   }).pipe(
     T.Http({
       method: "POST",
@@ -8201,26 +13613,30 @@ export const ScriptsSubdomainCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsSubdomainCreateResponse {
+  /** Whether the Worker is available on the workers.dev subdomain. */
   enabled: boolean;
-  previews_enabled: boolean;
+  /** Whether the Worker's Preview URLs are available on the workers.dev subdomain. */
+  previewsEnabled: boolean;
 }
 export const ScriptsSubdomainCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
-    previews_enabled: S.Boolean,
+    previewsEnabled: S.Boolean.pipe(T.Body("previews_enabled")),
   }),
 ).annotate({
   identifier: "ScriptsSubdomainCreateResponse",
 }) as any as S.Schema<ScriptsSubdomainCreateResponse>;
 
 export interface ScriptsSubdomainDeleteRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const ScriptsSubdomainDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -8234,26 +13650,30 @@ export const ScriptsSubdomainDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsSubdomainDeleteResponse {
+  /** Whether the Worker is available on the workers.dev subdomain. */
   enabled: boolean;
-  previews_enabled: boolean;
+  /** Whether the Worker's Preview URLs are available on the workers.dev subdomain. */
+  previewsEnabled: boolean;
 }
 export const ScriptsSubdomainDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
-    previews_enabled: S.Boolean,
+    previewsEnabled: S.Boolean.pipe(T.Body("previews_enabled")),
   }),
 ).annotate({
   identifier: "ScriptsSubdomainDeleteResponse",
 }) as any as S.Schema<ScriptsSubdomainDeleteResponse>;
 
 export interface ScriptsSubdomainGetRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const ScriptsSubdomainGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -8267,27 +13687,31 @@ export const ScriptsSubdomainGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsSubdomainGetResponse {
+  /** Whether the Worker is available on the workers.dev subdomain. */
   enabled: boolean;
-  previews_enabled: boolean;
+  /** Whether the Worker's Preview URLs are available on the workers.dev subdomain. */
+  previewsEnabled: boolean;
 }
 export const ScriptsSubdomainGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
-    previews_enabled: S.Boolean,
+    previewsEnabled: S.Boolean.pipe(T.Body("previews_enabled")),
   }),
 ).annotate({
   identifier: "ScriptsSubdomainGetResponse",
 }) as any as S.Schema<ScriptsSubdomainGetResponse>;
 
 export interface ScriptsTailCreateRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
   body: unknown;
 }
 export const ScriptsTailCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
     body: S.Unknown,
   }).pipe(
     T.Http({
@@ -8302,14 +13726,15 @@ export const ScriptsTailCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsTailCreateResponse {
+  /** Identifier. */
   id: string;
-  expires_at: string;
+  expiresAt: string;
   url: string;
 }
 export const ScriptsTailCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    expires_at: S.String,
+    expiresAt: S.String.pipe(T.Body("expires_at")),
     url: S.String,
   }),
 ).annotate({
@@ -8317,14 +13742,17 @@ export const ScriptsTailCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsTailCreateResponse>;
 
 export interface ScriptsTailDeleteRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** Identifier. */
   id: string;
 }
 export const ScriptsTailDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
     id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -8345,13 +13773,15 @@ export const ScriptsTailDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsTailDeleteResponse>;
 
 export interface ScriptsTailGetRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const ScriptsTailGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -8365,14 +13795,15 @@ export const ScriptsTailGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsTailGetResponse {
+  /** Identifier. */
   id: string;
-  expires_at: string;
+  expiresAt: string;
   url: string;
 }
 export const ScriptsTailGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    expires_at: S.String,
+    expiresAt: S.String.pipe(T.Body("expires_at")),
     url: S.String,
   }),
 ).annotate({
@@ -8383,16 +13814,19 @@ export type ScriptsUpdateRequestBindingsInherit = "strict" | (string & {});
 export const ScriptsUpdateRequestBindingsInherit = /*@__PURE__*/ S.String;
 
 export interface ScriptsUpdateRequest {
-  account_id: string;
-  script_name: string;
-  bindings_inherit?: ScriptsUpdateRequestBindingsInherit;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped. */
+  bindingsInherit?: ScriptsUpdateRequestBindingsInherit;
 }
 export const ScriptsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
-    bindings_inherit: S.optional(
-      ScriptsUpdateRequestBindingsInherit.pipe(T.Query()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
+    bindingsInherit: S.optional(
+      ScriptsUpdateRequestBindingsInherit.pipe(T.Query("bindings_inherit")),
     ),
   }).pipe(
     T.Http({
@@ -8406,13 +13840,17 @@ export const ScriptsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsUpdateRequest>;
 
 export interface ScriptsUpdateResponseCacheOptions {
+  /** Whether caching is enabled for this Worker. */
   enabled: boolean;
-  cross_version_cache?: boolean;
+  /** Whether cached responses are shared across Worker version */
+  crossVersionCache?: boolean;
 }
 export const ScriptsUpdateResponseCacheOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
-    cross_version_cache: S.optional(S.Boolean),
+    crossVersionCache: S.optional(
+      S.Boolean.pipe(T.Body("cross_version_cache")),
+    ),
   }),
 ).annotate({
   identifier: "ScriptsUpdateResponseCacheOptions",
@@ -8436,7 +13874,9 @@ export const ScriptsUpdateResponseNamedHandlersItemHandlersList =
   ) as any as S.Schema<ScriptsUpdateResponseNamedHandlersItemHandlersList>;
 
 export interface ScriptsUpdateResponseNamedHandlersItem {
+  /** The names of handlers exported as part of the named export. */
   handlers?: ScriptsUpdateResponseNamedHandlersItemHandlersList;
+  /** The name of the export. */
   name?: string;
 }
 export const ScriptsUpdateResponseNamedHandlersItem = /*@__PURE__*/ S.suspend(
@@ -8462,21 +13902,26 @@ export const ScriptsUpdateResponseObservabilityLogsDestinationsList =
   ) as any as S.Schema<ScriptsUpdateResponseObservabilityLogsDestinationsList>;
 
 export interface ScriptsUpdateResponseObservabilityLogs {
+  /** Whether logs are enabled for the Worker. */
   enabled: boolean;
-  invocation_logs: boolean;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs: boolean;
+  /** A list of destinations where logs will be exported to. */
   destinations?: ScriptsUpdateResponseObservabilityLogsDestinationsList;
-  head_sampling_rate?: number;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
 export const ScriptsUpdateResponseObservabilityLogs = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       enabled: S.Boolean,
-      invocation_logs: S.Boolean,
+      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
       destinations: S.optional(
         ScriptsUpdateResponseObservabilityLogsDestinationsList,
       ),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
     }),
 ).annotate({
@@ -8497,11 +13942,16 @@ export const ScriptsUpdateResponseObservabilityTracesPropagationPolicy =
   /*@__PURE__*/ S.String;
 
 export interface ScriptsUpdateResponseObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
   destinations?: ScriptsUpdateResponseObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
   enabled?: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
   persist?: boolean;
-  propagation_policy?: ScriptsUpdateResponseObservabilityTracesPropagationPolicy;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: ScriptsUpdateResponseObservabilityTracesPropagationPolicy;
 }
 export const ScriptsUpdateResponseObservabilityTraces = /*@__PURE__*/ S.suspend(
   () =>
@@ -8510,10 +13960,12 @@ export const ScriptsUpdateResponseObservabilityTraces = /*@__PURE__*/ S.suspend(
         ScriptsUpdateResponseObservabilityTracesDestinationsList,
       ),
       enabled: S.optional(S.Boolean),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
-      propagation_policy: S.optional(
-        ScriptsUpdateResponseObservabilityTracesPropagationPolicy,
+      propagationPolicy: S.optional(
+        ScriptsUpdateResponseObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
       ),
     }),
 ).annotate({
@@ -8521,15 +13973,19 @@ export const ScriptsUpdateResponseObservabilityTraces = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScriptsUpdateResponseObservabilityTraces>;
 
 export interface ScriptsUpdateResponseObservability {
+  /** Whether observability is enabled for the Worker. */
   enabled: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
   logs?: ScriptsUpdateResponseObservabilityLogs;
+  /** Trace settings for the Worker. */
   traces?: ScriptsUpdateResponseObservabilityTraces;
 }
 export const ScriptsUpdateResponseObservability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
-    head_sampling_rate: S.optional(S.Number),
+    headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
     logs: S.optional(ScriptsUpdateResponseObservabilityLogs),
     traces: S.optional(ScriptsUpdateResponseObservabilityTraces),
   }),
@@ -8538,39 +13994,39 @@ export const ScriptsUpdateResponseObservability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsUpdateResponseObservability>;
 
 export interface ScriptsUpdateResponsePlacement {
-  object___mode__last_analyzed_at__status__: unknown;
-  object___region__last_analyzed_at__status__: unknown;
-  object___hostname__last_analyzed_at__status__: unknown;
-  object___host__last_analyzed_at__status__: unknown;
-  object___mode__region__last_analyzed_at__status__: unknown;
-  object___hostname__mode__last_analyzed_at__status__: unknown;
-  object___host__mode__last_analyzed_at__status__: unknown;
-  object___mode__target__last_analyzed_at__status__: unknown;
+  objectModeLastAnalyzedAtStatus__: unknown;
+  objectRegionLastAnalyzedAtStatus__: unknown;
+  objectHostnameLastAnalyzedAtStatus__: unknown;
+  objectHostLastAnalyzedAtStatus__: unknown;
+  objectModeRegionLastAnalyzedAtStatus__: unknown;
+  objectHostnameModeLastAnalyzedAtStatus__: unknown;
+  objectHostModeLastAnalyzedAtStatus__: unknown;
+  objectModeTargetLastAnalyzedAtStatus__: unknown;
 }
 export const ScriptsUpdateResponsePlacement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    object___mode__last_analyzed_at__status__: S.Unknown.pipe(
+    objectModeLastAnalyzedAtStatus__: S.Unknown.pipe(
       T.Body("object { mode, last_analyzed_at, status }"),
     ),
-    object___region__last_analyzed_at__status__: S.Unknown.pipe(
+    objectRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
       T.Body("object { region, last_analyzed_at, status }"),
     ),
-    object___hostname__last_analyzed_at__status__: S.Unknown.pipe(
+    objectHostnameLastAnalyzedAtStatus__: S.Unknown.pipe(
       T.Body("object { hostname, last_analyzed_at, status }"),
     ),
-    object___host__last_analyzed_at__status__: S.Unknown.pipe(
+    objectHostLastAnalyzedAtStatus__: S.Unknown.pipe(
       T.Body("object { host, last_analyzed_at, status }"),
     ),
-    object___mode__region__last_analyzed_at__status__: S.Unknown.pipe(
+    objectModeRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
       T.Body("object { mode, region, last_analyzed_at, status }"),
     ),
-    object___hostname__mode__last_analyzed_at__status__: S.Unknown.pipe(
+    objectHostnameModeLastAnalyzedAtStatus__: S.Unknown.pipe(
       T.Body("object { hostname, mode, last_analyzed_at, status }"),
     ),
-    object___host__mode__last_analyzed_at__status__: S.Unknown.pipe(
+    objectHostModeLastAnalyzedAtStatus__: S.Unknown.pipe(
       T.Body("object { host, mode, last_analyzed_at, status }"),
     ),
-    object___mode__target__last_analyzed_at__status__: S.Unknown.pipe(
+    objectModeTargetLastAnalyzedAtStatus__: S.Unknown.pipe(
       T.Body("object { mode, target, last_analyzed_at, status }"),
     ),
   }),
@@ -8596,9 +14052,29 @@ export const ScriptsUpdateResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptsUpdateResponseTagsList>;
 
-export type ScriptsUpdateResponseTailConsumersList = unknown[];
+export interface ScriptsUpdateResponseTailConsumersItem {
+  /** Name of Worker that is to be the consumer. */
+  service: string;
+  /** Optional environment if the Worker utilizes one. */
+  environment?: string;
+  /** Optional dispatch namespace the script belongs to. */
+  namespace?: string;
+}
+export const ScriptsUpdateResponseTailConsumersItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      service: S.String,
+      environment: S.optional(S.String),
+      namespace: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ScriptsUpdateResponseTailConsumersItem",
+}) as any as S.Schema<ScriptsUpdateResponseTailConsumersItem>;
+
+export type ScriptsUpdateResponseTailConsumersList =
+  ScriptsUpdateResponseTailConsumersItem[];
 export const ScriptsUpdateResponseTailConsumersList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  ScriptsUpdateResponseTailConsumersItem,
 ) as any as S.Schema<ScriptsUpdateResponseTailConsumersList>;
 
 export type ScriptsUpdateResponseUsageModel =
@@ -8610,59 +14086,94 @@ export const ScriptsUpdateResponseUsageModel = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsUpdateResponse {
-  startup_time_ms: number;
+  startupTimeMs: number;
+  /** The name used to identify the script. */
   id?: string;
-  cache_options?: ScriptsUpdateResponseCacheOptions;
-  compatibility_date?: string;
-  compatibility_flags?: ScriptsUpdateResponseCompatibilityFlagsList;
-  created_on?: string;
-  entry_point?: string;
+  /** Global CacheW configuration for the Worker. When caching is on, */
+  cacheOptions?: ScriptsUpdateResponseCacheOptions;
+  /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
+  compatibilityDate?: string;
+  /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
+  compatibilityFlags?: ScriptsUpdateResponseCompatibilityFlagsList;
+  /** When the script was created. */
+  createdOn?: string;
+  /** The entry point for the script. */
+  entryPoint?: string;
+  /** Hashed script content, can be used in a If-None-Match header when updating. */
   etag?: string;
+  /** The names of handlers exported as part of the default export. */
   handlers?: ScriptsUpdateResponseHandlersList;
-  has_assets?: boolean;
-  has_modules?: boolean;
-  last_deployed_from?: string;
+  /** Whether a Worker contains assets. */
+  hasAssets?: boolean;
+  /** Whether a Worker contains modules. */
+  hasModules?: boolean;
+  /** The client most recently used to deploy this Worker. */
+  lastDeployedFrom?: string;
+  /** Whether Logpush is turned on for the Worker. */
   logpush?: boolean;
-  migration_tag?: string;
-  modified_on?: string;
-  named_handlers?: ScriptsUpdateResponseNamedHandlersList;
+  /** The tag of the Durable Object migration that was most recently applied for this Worker. */
+  migrationTag?: string;
+  /** When the script was last modified. */
+  modifiedOn?: string;
+  /** Named exports, such as Durable Object class implementations and named entrypoints. */
+  namedHandlers?: ScriptsUpdateResponseNamedHandlersList;
+  /** Observability settings for the Worker. */
   observability?: ScriptsUpdateResponseObservability;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?: ScriptsUpdateResponsePlacement;
-  placement_mode?: ScriptsUpdateResponsePlacementMode;
-  placement_status?: ScriptsUpdateResponsePlacementStatus;
+  placementMode?: ScriptsUpdateResponsePlacementMode;
+  placementStatus?: ScriptsUpdateResponsePlacementStatus;
+  /** The immutable ID of the script. */
   tag?: string;
+  /** Tags associated with the Worker. */
   tags?: ScriptsUpdateResponseTagsList;
-  tail_consumers?: ScriptsUpdateResponseTailConsumersList;
-  usage_model?: ScriptsUpdateResponseUsageModel;
+  /** List of Workers that will consume logs from the attached Worker. */
+  tailConsumers?: ScriptsUpdateResponseTailConsumersList;
+  /** Usage model for the Worker invocations. */
+  usageModel?: ScriptsUpdateResponseUsageModel;
 }
 export const ScriptsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    startup_time_ms: S.Number,
+    startupTimeMs: S.Number.pipe(T.Body("startup_time_ms")),
     id: S.optional(S.String),
-    cache_options: S.optional(ScriptsUpdateResponseCacheOptions),
-    compatibility_date: S.optional(S.String),
-    compatibility_flags: S.optional(
-      ScriptsUpdateResponseCompatibilityFlagsList,
+    cacheOptions: S.optional(
+      ScriptsUpdateResponseCacheOptions.pipe(T.Body("cache_options")),
     ),
-    created_on: S.optional(S.String),
-    entry_point: S.optional(S.String),
+    compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
+    compatibilityFlags: S.optional(
+      ScriptsUpdateResponseCompatibilityFlagsList.pipe(
+        T.Body("compatibility_flags"),
+      ),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    entryPoint: S.optional(S.String.pipe(T.Body("entry_point"))),
     etag: S.optional(S.String),
     handlers: S.optional(ScriptsUpdateResponseHandlersList),
-    has_assets: S.optional(S.Boolean),
-    has_modules: S.optional(S.Boolean),
-    last_deployed_from: S.optional(S.String),
+    hasAssets: S.optional(S.Boolean.pipe(T.Body("has_assets"))),
+    hasModules: S.optional(S.Boolean.pipe(T.Body("has_modules"))),
+    lastDeployedFrom: S.optional(S.String.pipe(T.Body("last_deployed_from"))),
     logpush: S.optional(S.Boolean),
-    migration_tag: S.optional(S.String),
-    modified_on: S.optional(S.String),
-    named_handlers: S.optional(ScriptsUpdateResponseNamedHandlersList),
+    migrationTag: S.optional(S.String.pipe(T.Body("migration_tag"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    namedHandlers: S.optional(
+      ScriptsUpdateResponseNamedHandlersList.pipe(T.Body("named_handlers")),
+    ),
     observability: S.optional(ScriptsUpdateResponseObservability),
     placement: S.optional(ScriptsUpdateResponsePlacement),
-    placement_mode: S.optional(ScriptsUpdateResponsePlacementMode),
-    placement_status: S.optional(ScriptsUpdateResponsePlacementStatus),
+    placementMode: S.optional(
+      ScriptsUpdateResponsePlacementMode.pipe(T.Body("placement_mode")),
+    ),
+    placementStatus: S.optional(
+      ScriptsUpdateResponsePlacementStatus.pipe(T.Body("placement_status")),
+    ),
     tag: S.optional(S.String),
     tags: S.optional(ScriptsUpdateResponseTagsList),
-    tail_consumers: S.optional(ScriptsUpdateResponseTailConsumersList),
-    usage_model: S.optional(ScriptsUpdateResponseUsageModel),
+    tailConsumers: S.optional(
+      ScriptsUpdateResponseTailConsumersList.pipe(T.Body("tail_consumers")),
+    ),
+    usageModel: S.optional(
+      ScriptsUpdateResponseUsageModel.pipe(T.Body("usage_model")),
+    ),
   }),
 ).annotate({
   identifier: "ScriptsUpdateResponse",
@@ -8675,16 +14186,21 @@ export const ScriptsVersionsCreateRequestBindingsInherit =
   /*@__PURE__*/ S.String;
 
 export interface ScriptsVersionsCreateRequest {
-  account_id: string;
-  script_name: string;
-  bindings_inherit?: ScriptsVersionsCreateRequestBindingsInherit;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script. */
+  scriptName: string;
+  /** When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped. */
+  bindingsInherit?: ScriptsVersionsCreateRequestBindingsInherit;
 }
 export const ScriptsVersionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
-    bindings_inherit: S.optional(
-      ScriptsVersionsCreateRequestBindingsInherit.pipe(T.Query()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
+    bindingsInherit: S.optional(
+      ScriptsVersionsCreateRequestBindingsInherit.pipe(
+        T.Query("bindings_inherit"),
+      ),
     ),
   }).pipe(
     T.Http({
@@ -8698,160 +14214,152 @@ export const ScriptsVersionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsVersionsCreateRequest>;
 
 export interface ScriptsVersionsCreateResponseResourcesBindingsItem {
-  AI_object___name__type__: unknown;
-  AISearch_object___instance_name__name__type__namespace__: unknown;
-  AISearchNamespace_object___name__namespace__type__: unknown;
-  AnalyticsEngine_object___dataset__name__type__: unknown;
-  Assets_object___name__type__: unknown;
-  Browser_object___name__type__: unknown;
-  D1_object___database_id__name__type__id__: unknown;
-  DataBlob_object___name__part__type__: unknown;
-  DispatchNamespace_object___name__namespace__type__outbound__: unknown;
-  DurableObjectNamespace_object___name__type__class_name__4_more__: unknown;
-  Hyperdrive_object___id__name__type__: unknown;
-  Inherit_object___name__type__old_name__version_id__: unknown;
-  Images_object___name__type__: unknown;
-  Json_object___json__name__type__: unknown;
-  KVNamespace_object___name__namespace_id__type__: unknown;
-  Media_object___name__type__: unknown;
-  MTLSCertificate_object___certificate_id__name__type__: unknown;
-  PlainText_object___name__text__type__: unknown;
-  Pipelines_object___name__pipeline__type__: unknown;
-  Queue_object___name__queue_name__type__: unknown;
-  Ratelimit_object___name__namespace_id__simple__type__: unknown;
-  R2Bucket_object___bucket_name__name__type__jurisdiction__: unknown;
-  SecretText_object___name__text__type__: unknown;
-  SendEmail_object___name__type__allowed_destination_addresses__2_more__: unknown;
-  Service_object___name__service__type__2_more__: unknown;
-  TextBlob_object___name__part__type__: unknown;
-  Vectorize_object___index_name__name__type__: unknown;
-  VersionMetadata_object___name__type__: unknown;
-  SecretsStoreSecret_object___name__secret_name__store_id__type__: unknown;
-  Flagship_object___app_id__name__type__: unknown;
-  SecretKey_object___algorithm__format__name__4_more__: unknown;
-  Workflow_object___name__type__workflow_name__2_more__: unknown;
-  WasmModule_object___name__part__type__: unknown;
-  VPCService_object___name__service_id__type__: unknown;
-  VPCNetwork_object___name__type__network_id__tunnel_id__: unknown;
+  AIObjectNameType__: unknown;
+  AISearchObjectInstanceNameNameTypeNamespace__: unknown;
+  AISearchNamespaceObjectNameNamespaceType__: unknown;
+  AnalyticsEngineObjectDatasetNameType__: unknown;
+  AssetsObjectNameType__: unknown;
+  BrowserObjectNameType__: unknown;
+  D1ObjectDatabaseIdNameTypeId__: unknown;
+  DataBlobObjectNamePartType__: unknown;
+  DispatchNamespaceObjectNameNamespaceTypeOutbound__: unknown;
+  DurableObjectNamespaceObjectNameTypeClassName4More__: unknown;
+  HyperdriveObjectIdNameType__: unknown;
+  InheritObjectNameTypeOldNameVersionId__: unknown;
+  ImagesObjectNameType__: unknown;
+  JsonObjectJsonNameType__: unknown;
+  KVNamespaceObjectNameNamespaceIdType__: unknown;
+  MediaObjectNameType__: unknown;
+  MTLSCertificateObjectCertificateIdNameType__: unknown;
+  PlainTextObjectNameTextType__: unknown;
+  PipelinesObjectNamePipelineType__: unknown;
+  QueueObjectNameQueueNameType__: unknown;
+  RatelimitObjectNameNamespaceIdSimpleType__: unknown;
+  R2BucketObjectBucketNameNameTypeJurisdiction__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SendEmailObjectNameTypeAllowedDestinationAddresses2More__: unknown;
+  ServiceObjectNameServiceType2More__: unknown;
+  TextBlobObjectNamePartType__: unknown;
+  VectorizeObjectIndexNameNameType__: unknown;
+  VersionMetadataObjectNameType__: unknown;
+  SecretsStoreSecretObjectNameSecretNameStoreIdType__: unknown;
+  FlagshipObjectAppIdNameType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
+  WorkflowObjectNameTypeWorkflowName2More__: unknown;
+  WasmModuleObjectNamePartType__: unknown;
+  VPCServiceObjectNameServiceIdType__: unknown;
+  VPCNetworkObjectNameTypeNetworkIdTunnelId__: unknown;
 }
 export const ScriptsVersionsCreateResponseResourcesBindingsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AI_object___name__type__: S.Unknown.pipe(
-        T.Body("AI object { name, type }"),
-      ),
-      AISearch_object___instance_name__name__type__namespace__: S.Unknown.pipe(
+      AIObjectNameType__: S.Unknown.pipe(T.Body("AI object { name, type }")),
+      AISearchObjectInstanceNameNameTypeNamespace__: S.Unknown.pipe(
         T.Body("AISearch object { instance_name, name, type, namespace }"),
       ),
-      AISearchNamespace_object___name__namespace__type__: S.Unknown.pipe(
+      AISearchNamespaceObjectNameNamespaceType__: S.Unknown.pipe(
         T.Body("AISearchNamespace object { name, namespace, type }"),
       ),
-      AnalyticsEngine_object___dataset__name__type__: S.Unknown.pipe(
+      AnalyticsEngineObjectDatasetNameType__: S.Unknown.pipe(
         T.Body("AnalyticsEngine object { dataset, name, type }"),
       ),
-      Assets_object___name__type__: S.Unknown.pipe(
+      AssetsObjectNameType__: S.Unknown.pipe(
         T.Body("Assets object { name, type }"),
       ),
-      Browser_object___name__type__: S.Unknown.pipe(
+      BrowserObjectNameType__: S.Unknown.pipe(
         T.Body("Browser object { name, type }"),
       ),
-      D1_object___database_id__name__type__id__: S.Unknown.pipe(
+      D1ObjectDatabaseIdNameTypeId__: S.Unknown.pipe(
         T.Body("D1 object { database_id, name, type, id }"),
       ),
-      DataBlob_object___name__part__type__: S.Unknown.pipe(
+      DataBlobObjectNamePartType__: S.Unknown.pipe(
         T.Body("DataBlob object { name, part, type }"),
       ),
-      DispatchNamespace_object___name__namespace__type__outbound__:
-        S.Unknown.pipe(
-          T.Body(
-            "DispatchNamespace object { name, namespace, type, outbound }",
-          ),
+      DispatchNamespaceObjectNameNamespaceTypeOutbound__: S.Unknown.pipe(
+        T.Body("DispatchNamespace object { name, namespace, type, outbound }"),
+      ),
+      DurableObjectNamespaceObjectNameTypeClassName4More__: S.Unknown.pipe(
+        T.Body(
+          "DurableObjectNamespace object { name, type, class_name, 4 more }",
         ),
-      DurableObjectNamespace_object___name__type__class_name__4_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "DurableObjectNamespace object { name, type, class_name, 4 more }",
-          ),
-        ),
-      Hyperdrive_object___id__name__type__: S.Unknown.pipe(
+      ),
+      HyperdriveObjectIdNameType__: S.Unknown.pipe(
         T.Body("Hyperdrive object { id, name, type }"),
       ),
-      Inherit_object___name__type__old_name__version_id__: S.Unknown.pipe(
+      InheritObjectNameTypeOldNameVersionId__: S.Unknown.pipe(
         T.Body("Inherit object { name, type, old_name, version_id }"),
       ),
-      Images_object___name__type__: S.Unknown.pipe(
+      ImagesObjectNameType__: S.Unknown.pipe(
         T.Body("Images object { name, type }"),
       ),
-      Json_object___json__name__type__: S.Unknown.pipe(
+      JsonObjectJsonNameType__: S.Unknown.pipe(
         T.Body("Json object { json, name, type }"),
       ),
-      KVNamespace_object___name__namespace_id__type__: S.Unknown.pipe(
+      KVNamespaceObjectNameNamespaceIdType__: S.Unknown.pipe(
         T.Body("KVNamespace object { name, namespace_id, type }"),
       ),
-      Media_object___name__type__: S.Unknown.pipe(
+      MediaObjectNameType__: S.Unknown.pipe(
         T.Body("Media object { name, type }"),
       ),
-      MTLSCertificate_object___certificate_id__name__type__: S.Unknown.pipe(
+      MTLSCertificateObjectCertificateIdNameType__: S.Unknown.pipe(
         T.Body("MTLSCertificate object { certificate_id, name, type }"),
       ),
-      PlainText_object___name__text__type__: S.Unknown.pipe(
+      PlainTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("PlainText object { name, text, type }"),
       ),
-      Pipelines_object___name__pipeline__type__: S.Unknown.pipe(
+      PipelinesObjectNamePipelineType__: S.Unknown.pipe(
         T.Body("Pipelines object { name, pipeline, type }"),
       ),
-      Queue_object___name__queue_name__type__: S.Unknown.pipe(
+      QueueObjectNameQueueNameType__: S.Unknown.pipe(
         T.Body("Queue object { name, queue_name, type }"),
       ),
-      Ratelimit_object___name__namespace_id__simple__type__: S.Unknown.pipe(
+      RatelimitObjectNameNamespaceIdSimpleType__: S.Unknown.pipe(
         T.Body("Ratelimit object { name, namespace_id, simple, type }"),
       ),
-      R2Bucket_object___bucket_name__name__type__jurisdiction__: S.Unknown.pipe(
+      R2BucketObjectBucketNameNameTypeJurisdiction__: S.Unknown.pipe(
         T.Body("R2Bucket object { bucket_name, name, type, jurisdiction }"),
       ),
-      SecretText_object___name__text__type__: S.Unknown.pipe(
+      SecretTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("SecretText object { name, text, type }"),
       ),
-      SendEmail_object___name__type__allowed_destination_addresses__2_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
-          ),
+      SendEmailObjectNameTypeAllowedDestinationAddresses2More__: S.Unknown.pipe(
+        T.Body(
+          "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
         ),
-      Service_object___name__service__type__2_more__: S.Unknown.pipe(
+      ),
+      ServiceObjectNameServiceType2More__: S.Unknown.pipe(
         T.Body("Service object { name, service, type, 2 more }"),
       ),
-      TextBlob_object___name__part__type__: S.Unknown.pipe(
+      TextBlobObjectNamePartType__: S.Unknown.pipe(
         T.Body("TextBlob object { name, part, type }"),
       ),
-      Vectorize_object___index_name__name__type__: S.Unknown.pipe(
+      VectorizeObjectIndexNameNameType__: S.Unknown.pipe(
         T.Body("Vectorize object { index_name, name, type }"),
       ),
-      VersionMetadata_object___name__type__: S.Unknown.pipe(
+      VersionMetadataObjectNameType__: S.Unknown.pipe(
         T.Body("VersionMetadata object { name, type }"),
       ),
-      SecretsStoreSecret_object___name__secret_name__store_id__type__:
-        S.Unknown.pipe(
-          T.Body(
-            "SecretsStoreSecret object { name, secret_name, store_id, type }",
-          ),
+      SecretsStoreSecretObjectNameSecretNameStoreIdType__: S.Unknown.pipe(
+        T.Body(
+          "SecretsStoreSecret object { name, secret_name, store_id, type }",
         ),
-      Flagship_object___app_id__name__type__: S.Unknown.pipe(
+      ),
+      FlagshipObjectAppIdNameType__: S.Unknown.pipe(
         T.Body("Flagship object { app_id, name, type }"),
       ),
-      SecretKey_object___algorithm__format__name__4_more__: S.Unknown.pipe(
+      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
         T.Body("SecretKey object { algorithm, format, name, 4 more }"),
       ),
-      Workflow_object___name__type__workflow_name__2_more__: S.Unknown.pipe(
+      WorkflowObjectNameTypeWorkflowName2More__: S.Unknown.pipe(
         T.Body("Workflow object { name, type, workflow_name, 2 more }"),
       ),
-      WasmModule_object___name__part__type__: S.Unknown.pipe(
+      WasmModuleObjectNamePartType__: S.Unknown.pipe(
         T.Body("WasmModule object { name, part, type }"),
       ),
-      VPCService_object___name__service_id__type__: S.Unknown.pipe(
+      VPCServiceObjectNameServiceIdType__: S.Unknown.pipe(
         T.Body("VPCService object { name, service_id, type }"),
       ),
-      VPCNetwork_object___name__type__network_id__tunnel_id__: S.Unknown.pipe(
+      VPCNetworkObjectNameTypeNetworkIdTunnelId__: S.Unknown.pipe(
         T.Body("VPCNetwork object { name, type, network_id, tunnel_id }"),
       ),
     }),
@@ -8880,7 +14388,9 @@ export const ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItemHandle
   ) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItemHandlersList>;
 
 export interface ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItem {
+  /** The names of handlers exported as part of the named export. */
   handlers?: ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItemHandlersList;
+  /** The name of the exported class or entrypoint. */
   name?: string;
 }
 export const ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItem =
@@ -8903,10 +14413,14 @@ export const ScriptsVersionsCreateResponseResourcesScriptNamedHandlersList =
   ) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptNamedHandlersList>;
 
 export interface ScriptsVersionsCreateResponseResourcesScript {
+  /** Hashed script content */
   etag?: string;
+  /** The names of handlers exported as part of the default export. */
   handlers?: ScriptsVersionsCreateResponseResourcesScriptHandlersList;
-  last_deployed_from?: string;
-  named_handlers?: ScriptsVersionsCreateResponseResourcesScriptNamedHandlersList;
+  /** The client most recently used to deploy this Worker. */
+  lastDeployedFrom?: string;
+  /** Named exports, such as Durable Object class implementations and named entrypoints. */
+  namedHandlers?: ScriptsVersionsCreateResponseResourcesScriptNamedHandlersList;
 }
 export const ScriptsVersionsCreateResponseResourcesScript =
   /*@__PURE__*/ S.suspend(() =>
@@ -8915,9 +14429,11 @@ export const ScriptsVersionsCreateResponseResourcesScript =
       handlers: S.optional(
         ScriptsVersionsCreateResponseResourcesScriptHandlersList,
       ),
-      last_deployed_from: S.optional(S.String),
-      named_handlers: S.optional(
-        ScriptsVersionsCreateResponseResourcesScriptNamedHandlersList,
+      lastDeployedFrom: S.optional(S.String.pipe(T.Body("last_deployed_from"))),
+      namedHandlers: S.optional(
+        ScriptsVersionsCreateResponseResourcesScriptNamedHandlersList.pipe(
+          T.Body("named_handlers"),
+        ),
       ),
     }),
   ).annotate({
@@ -8932,12 +14448,13 @@ export const ScriptsVersionsCreateResponseResourcesScriptRuntimeCompatibilityFla
   ) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptRuntimeCompatibilityFlagsList>;
 
 export interface ScriptsVersionsCreateResponseResourcesScriptRuntimeLimits {
-  cpu_ms?: number;
+  /** The amount of CPU time this Worker can use in milliseconds. */
+  cpuMs?: number;
 }
 export const ScriptsVersionsCreateResponseResourcesScriptRuntimeLimits =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      cpu_ms: S.optional(S.Number),
+      cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
     }),
   ).annotate({
     identifier: "ScriptsVersionsCreateResponseResourcesScriptRuntimeLimits",
@@ -8952,25 +14469,36 @@ export const ScriptsVersionsCreateResponseResourcesScriptRuntimeUsageModel =
   /*@__PURE__*/ S.String;
 
 export interface ScriptsVersionsCreateResponseResourcesScriptRuntime {
-  compatibility_date?: string;
-  compatibility_flags?: ScriptsVersionsCreateResponseResourcesScriptRuntimeCompatibilityFlagsList;
+  /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
+  compatibilityDate?: string;
+  /** Flags that enable or disable certain features in the Workers runtime. */
+  compatibilityFlags?: ScriptsVersionsCreateResponseResourcesScriptRuntimeCompatibilityFlagsList;
+  /** Resource limits for the Worker. */
   limits?: ScriptsVersionsCreateResponseResourcesScriptRuntimeLimits;
-  migration_tag?: string;
-  usage_model?: ScriptsVersionsCreateResponseResourcesScriptRuntimeUsageModel;
+  /** The tag of the Durable Object migration that was most recently applied for this Worker. */
+  migrationTag?: string;
+  /** Usage model for the Worker invocations. */
+  usageModel?: ScriptsVersionsCreateResponseResourcesScriptRuntimeUsageModel;
 }
 export const ScriptsVersionsCreateResponseResourcesScriptRuntime =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      compatibility_date: S.optional(S.String),
-      compatibility_flags: S.optional(
-        ScriptsVersionsCreateResponseResourcesScriptRuntimeCompatibilityFlagsList,
+      compatibilityDate: S.optional(
+        S.String.pipe(T.Body("compatibility_date")),
+      ),
+      compatibilityFlags: S.optional(
+        ScriptsVersionsCreateResponseResourcesScriptRuntimeCompatibilityFlagsList.pipe(
+          T.Body("compatibility_flags"),
+        ),
       ),
       limits: S.optional(
         ScriptsVersionsCreateResponseResourcesScriptRuntimeLimits,
       ),
-      migration_tag: S.optional(S.String),
-      usage_model: S.optional(
-        ScriptsVersionsCreateResponseResourcesScriptRuntimeUsageModel,
+      migrationTag: S.optional(S.String.pipe(T.Body("migration_tag"))),
+      usageModel: S.optional(
+        ScriptsVersionsCreateResponseResourcesScriptRuntimeUsageModel.pipe(
+          T.Body("usage_model"),
+        ),
       ),
     }),
   ).annotate({
@@ -8978,17 +14506,21 @@ export const ScriptsVersionsCreateResponseResourcesScriptRuntime =
   }) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptRuntime>;
 
 export interface ScriptsVersionsCreateResponseResources {
+  /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
   bindings?: ScriptsVersionsCreateResponseResourcesBindingsList;
   script?: ScriptsVersionsCreateResponseResourcesScript;
-  script_runtime?: ScriptsVersionsCreateResponseResourcesScriptRuntime;
+  /** Runtime configuration for the Worker. */
+  scriptRuntime?: ScriptsVersionsCreateResponseResourcesScriptRuntime;
 }
 export const ScriptsVersionsCreateResponseResources = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       bindings: S.optional(ScriptsVersionsCreateResponseResourcesBindingsList),
       script: S.optional(ScriptsVersionsCreateResponseResourcesScript),
-      script_runtime: S.optional(
-        ScriptsVersionsCreateResponseResourcesScriptRuntime,
+      scriptRuntime: S.optional(
+        ScriptsVersionsCreateResponseResourcesScriptRuntime.pipe(
+          T.Body("script_runtime"),
+        ),
       ),
     }),
 ).annotate({
@@ -9004,21 +14536,27 @@ export const ScriptsVersionsCreateResponseMetadataSource =
   /*@__PURE__*/ S.String;
 
 export interface ScriptsVersionsCreateResponseMetadata {
-  author_email?: string;
-  author_id?: string;
-  created_on?: string;
+  /** Email of the user who created the version. */
+  authorEmail?: string;
+  /** Identifier of the user who created the version. */
+  authorId?: string;
+  /** When the version was created. */
+  createdOn?: string;
+  /** Whether the version can be previewed. */
   hasPreview?: boolean;
-  modified_on?: string;
+  /** When the version was last modified. */
+  modifiedOn?: string;
+  /** The source of the version upload. */
   source?: ScriptsVersionsCreateResponseMetadataSource;
 }
 export const ScriptsVersionsCreateResponseMetadata = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      author_email: S.optional(S.String),
-      author_id: S.optional(S.String),
-      created_on: S.optional(S.String),
+      authorEmail: S.optional(S.String.pipe(T.Body("author_email"))),
+      authorId: S.optional(S.String.pipe(T.Body("author_id"))),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
       hasPreview: S.optional(S.Boolean),
-      modified_on: S.optional(S.String),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
       source: S.optional(ScriptsVersionsCreateResponseMetadataSource),
     }),
 ).annotate({
@@ -9028,10 +14566,13 @@ export const ScriptsVersionsCreateResponseMetadata = /*@__PURE__*/ S.suspend(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsVersionsCreateResponse {
   resources: ScriptsVersionsCreateResponseResources;
+  /** Unique identifier for the version. */
   id?: string;
   metadata?: ScriptsVersionsCreateResponseMetadata;
+  /** Sequential version number. */
   number?: number;
-  startup_time_ms?: number;
+  /** Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time). */
+  startupTimeMs?: number;
 }
 export const ScriptsVersionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9039,22 +14580,24 @@ export const ScriptsVersionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     metadata: S.optional(ScriptsVersionsCreateResponseMetadata),
     number: S.optional(S.Number),
-    startup_time_ms: S.optional(S.Number),
+    startupTimeMs: S.optional(S.Number.pipe(T.Body("startup_time_ms"))),
   }),
 ).annotate({
   identifier: "ScriptsVersionsCreateResponse",
 }) as any as S.Schema<ScriptsVersionsCreateResponse>;
 
 export interface ScriptsVersionsGetRequest {
-  account_id: string;
-  script_name: string;
-  version_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script. */
+  scriptName: string;
+  versionId: string;
 }
 export const ScriptsVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
-    version_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
+    versionId: S.String.pipe(T.Label("version_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -9067,160 +14610,152 @@ export const ScriptsVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsVersionsGetRequest>;
 
 export interface ScriptsVersionsGetResponseResourcesBindingsItem {
-  AI_object___name__type__: unknown;
-  AISearch_object___instance_name__name__type__namespace__: unknown;
-  AISearchNamespace_object___name__namespace__type__: unknown;
-  AnalyticsEngine_object___dataset__name__type__: unknown;
-  Assets_object___name__type__: unknown;
-  Browser_object___name__type__: unknown;
-  D1_object___database_id__name__type__id__: unknown;
-  DataBlob_object___name__part__type__: unknown;
-  DispatchNamespace_object___name__namespace__type__outbound__: unknown;
-  DurableObjectNamespace_object___name__type__class_name__4_more__: unknown;
-  Hyperdrive_object___id__name__type__: unknown;
-  Inherit_object___name__type__old_name__version_id__: unknown;
-  Images_object___name__type__: unknown;
-  Json_object___json__name__type__: unknown;
-  KVNamespace_object___name__namespace_id__type__: unknown;
-  Media_object___name__type__: unknown;
-  MTLSCertificate_object___certificate_id__name__type__: unknown;
-  PlainText_object___name__text__type__: unknown;
-  Pipelines_object___name__pipeline__type__: unknown;
-  Queue_object___name__queue_name__type__: unknown;
-  Ratelimit_object___name__namespace_id__simple__type__: unknown;
-  R2Bucket_object___bucket_name__name__type__jurisdiction__: unknown;
-  SecretText_object___name__text__type__: unknown;
-  SendEmail_object___name__type__allowed_destination_addresses__2_more__: unknown;
-  Service_object___name__service__type__2_more__: unknown;
-  TextBlob_object___name__part__type__: unknown;
-  Vectorize_object___index_name__name__type__: unknown;
-  VersionMetadata_object___name__type__: unknown;
-  SecretsStoreSecret_object___name__secret_name__store_id__type__: unknown;
-  Flagship_object___app_id__name__type__: unknown;
-  SecretKey_object___algorithm__format__name__4_more__: unknown;
-  Workflow_object___name__type__workflow_name__2_more__: unknown;
-  WasmModule_object___name__part__type__: unknown;
-  VPCService_object___name__service_id__type__: unknown;
-  VPCNetwork_object___name__type__network_id__tunnel_id__: unknown;
+  AIObjectNameType__: unknown;
+  AISearchObjectInstanceNameNameTypeNamespace__: unknown;
+  AISearchNamespaceObjectNameNamespaceType__: unknown;
+  AnalyticsEngineObjectDatasetNameType__: unknown;
+  AssetsObjectNameType__: unknown;
+  BrowserObjectNameType__: unknown;
+  D1ObjectDatabaseIdNameTypeId__: unknown;
+  DataBlobObjectNamePartType__: unknown;
+  DispatchNamespaceObjectNameNamespaceTypeOutbound__: unknown;
+  DurableObjectNamespaceObjectNameTypeClassName4More__: unknown;
+  HyperdriveObjectIdNameType__: unknown;
+  InheritObjectNameTypeOldNameVersionId__: unknown;
+  ImagesObjectNameType__: unknown;
+  JsonObjectJsonNameType__: unknown;
+  KVNamespaceObjectNameNamespaceIdType__: unknown;
+  MediaObjectNameType__: unknown;
+  MTLSCertificateObjectCertificateIdNameType__: unknown;
+  PlainTextObjectNameTextType__: unknown;
+  PipelinesObjectNamePipelineType__: unknown;
+  QueueObjectNameQueueNameType__: unknown;
+  RatelimitObjectNameNamespaceIdSimpleType__: unknown;
+  R2BucketObjectBucketNameNameTypeJurisdiction__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SendEmailObjectNameTypeAllowedDestinationAddresses2More__: unknown;
+  ServiceObjectNameServiceType2More__: unknown;
+  TextBlobObjectNamePartType__: unknown;
+  VectorizeObjectIndexNameNameType__: unknown;
+  VersionMetadataObjectNameType__: unknown;
+  SecretsStoreSecretObjectNameSecretNameStoreIdType__: unknown;
+  FlagshipObjectAppIdNameType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
+  WorkflowObjectNameTypeWorkflowName2More__: unknown;
+  WasmModuleObjectNamePartType__: unknown;
+  VPCServiceObjectNameServiceIdType__: unknown;
+  VPCNetworkObjectNameTypeNetworkIdTunnelId__: unknown;
 }
 export const ScriptsVersionsGetResponseResourcesBindingsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AI_object___name__type__: S.Unknown.pipe(
-        T.Body("AI object { name, type }"),
-      ),
-      AISearch_object___instance_name__name__type__namespace__: S.Unknown.pipe(
+      AIObjectNameType__: S.Unknown.pipe(T.Body("AI object { name, type }")),
+      AISearchObjectInstanceNameNameTypeNamespace__: S.Unknown.pipe(
         T.Body("AISearch object { instance_name, name, type, namespace }"),
       ),
-      AISearchNamespace_object___name__namespace__type__: S.Unknown.pipe(
+      AISearchNamespaceObjectNameNamespaceType__: S.Unknown.pipe(
         T.Body("AISearchNamespace object { name, namespace, type }"),
       ),
-      AnalyticsEngine_object___dataset__name__type__: S.Unknown.pipe(
+      AnalyticsEngineObjectDatasetNameType__: S.Unknown.pipe(
         T.Body("AnalyticsEngine object { dataset, name, type }"),
       ),
-      Assets_object___name__type__: S.Unknown.pipe(
+      AssetsObjectNameType__: S.Unknown.pipe(
         T.Body("Assets object { name, type }"),
       ),
-      Browser_object___name__type__: S.Unknown.pipe(
+      BrowserObjectNameType__: S.Unknown.pipe(
         T.Body("Browser object { name, type }"),
       ),
-      D1_object___database_id__name__type__id__: S.Unknown.pipe(
+      D1ObjectDatabaseIdNameTypeId__: S.Unknown.pipe(
         T.Body("D1 object { database_id, name, type, id }"),
       ),
-      DataBlob_object___name__part__type__: S.Unknown.pipe(
+      DataBlobObjectNamePartType__: S.Unknown.pipe(
         T.Body("DataBlob object { name, part, type }"),
       ),
-      DispatchNamespace_object___name__namespace__type__outbound__:
-        S.Unknown.pipe(
-          T.Body(
-            "DispatchNamespace object { name, namespace, type, outbound }",
-          ),
+      DispatchNamespaceObjectNameNamespaceTypeOutbound__: S.Unknown.pipe(
+        T.Body("DispatchNamespace object { name, namespace, type, outbound }"),
+      ),
+      DurableObjectNamespaceObjectNameTypeClassName4More__: S.Unknown.pipe(
+        T.Body(
+          "DurableObjectNamespace object { name, type, class_name, 4 more }",
         ),
-      DurableObjectNamespace_object___name__type__class_name__4_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "DurableObjectNamespace object { name, type, class_name, 4 more }",
-          ),
-        ),
-      Hyperdrive_object___id__name__type__: S.Unknown.pipe(
+      ),
+      HyperdriveObjectIdNameType__: S.Unknown.pipe(
         T.Body("Hyperdrive object { id, name, type }"),
       ),
-      Inherit_object___name__type__old_name__version_id__: S.Unknown.pipe(
+      InheritObjectNameTypeOldNameVersionId__: S.Unknown.pipe(
         T.Body("Inherit object { name, type, old_name, version_id }"),
       ),
-      Images_object___name__type__: S.Unknown.pipe(
+      ImagesObjectNameType__: S.Unknown.pipe(
         T.Body("Images object { name, type }"),
       ),
-      Json_object___json__name__type__: S.Unknown.pipe(
+      JsonObjectJsonNameType__: S.Unknown.pipe(
         T.Body("Json object { json, name, type }"),
       ),
-      KVNamespace_object___name__namespace_id__type__: S.Unknown.pipe(
+      KVNamespaceObjectNameNamespaceIdType__: S.Unknown.pipe(
         T.Body("KVNamespace object { name, namespace_id, type }"),
       ),
-      Media_object___name__type__: S.Unknown.pipe(
+      MediaObjectNameType__: S.Unknown.pipe(
         T.Body("Media object { name, type }"),
       ),
-      MTLSCertificate_object___certificate_id__name__type__: S.Unknown.pipe(
+      MTLSCertificateObjectCertificateIdNameType__: S.Unknown.pipe(
         T.Body("MTLSCertificate object { certificate_id, name, type }"),
       ),
-      PlainText_object___name__text__type__: S.Unknown.pipe(
+      PlainTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("PlainText object { name, text, type }"),
       ),
-      Pipelines_object___name__pipeline__type__: S.Unknown.pipe(
+      PipelinesObjectNamePipelineType__: S.Unknown.pipe(
         T.Body("Pipelines object { name, pipeline, type }"),
       ),
-      Queue_object___name__queue_name__type__: S.Unknown.pipe(
+      QueueObjectNameQueueNameType__: S.Unknown.pipe(
         T.Body("Queue object { name, queue_name, type }"),
       ),
-      Ratelimit_object___name__namespace_id__simple__type__: S.Unknown.pipe(
+      RatelimitObjectNameNamespaceIdSimpleType__: S.Unknown.pipe(
         T.Body("Ratelimit object { name, namespace_id, simple, type }"),
       ),
-      R2Bucket_object___bucket_name__name__type__jurisdiction__: S.Unknown.pipe(
+      R2BucketObjectBucketNameNameTypeJurisdiction__: S.Unknown.pipe(
         T.Body("R2Bucket object { bucket_name, name, type, jurisdiction }"),
       ),
-      SecretText_object___name__text__type__: S.Unknown.pipe(
+      SecretTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("SecretText object { name, text, type }"),
       ),
-      SendEmail_object___name__type__allowed_destination_addresses__2_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
-          ),
+      SendEmailObjectNameTypeAllowedDestinationAddresses2More__: S.Unknown.pipe(
+        T.Body(
+          "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
         ),
-      Service_object___name__service__type__2_more__: S.Unknown.pipe(
+      ),
+      ServiceObjectNameServiceType2More__: S.Unknown.pipe(
         T.Body("Service object { name, service, type, 2 more }"),
       ),
-      TextBlob_object___name__part__type__: S.Unknown.pipe(
+      TextBlobObjectNamePartType__: S.Unknown.pipe(
         T.Body("TextBlob object { name, part, type }"),
       ),
-      Vectorize_object___index_name__name__type__: S.Unknown.pipe(
+      VectorizeObjectIndexNameNameType__: S.Unknown.pipe(
         T.Body("Vectorize object { index_name, name, type }"),
       ),
-      VersionMetadata_object___name__type__: S.Unknown.pipe(
+      VersionMetadataObjectNameType__: S.Unknown.pipe(
         T.Body("VersionMetadata object { name, type }"),
       ),
-      SecretsStoreSecret_object___name__secret_name__store_id__type__:
-        S.Unknown.pipe(
-          T.Body(
-            "SecretsStoreSecret object { name, secret_name, store_id, type }",
-          ),
+      SecretsStoreSecretObjectNameSecretNameStoreIdType__: S.Unknown.pipe(
+        T.Body(
+          "SecretsStoreSecret object { name, secret_name, store_id, type }",
         ),
-      Flagship_object___app_id__name__type__: S.Unknown.pipe(
+      ),
+      FlagshipObjectAppIdNameType__: S.Unknown.pipe(
         T.Body("Flagship object { app_id, name, type }"),
       ),
-      SecretKey_object___algorithm__format__name__4_more__: S.Unknown.pipe(
+      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
         T.Body("SecretKey object { algorithm, format, name, 4 more }"),
       ),
-      Workflow_object___name__type__workflow_name__2_more__: S.Unknown.pipe(
+      WorkflowObjectNameTypeWorkflowName2More__: S.Unknown.pipe(
         T.Body("Workflow object { name, type, workflow_name, 2 more }"),
       ),
-      WasmModule_object___name__part__type__: S.Unknown.pipe(
+      WasmModuleObjectNamePartType__: S.Unknown.pipe(
         T.Body("WasmModule object { name, part, type }"),
       ),
-      VPCService_object___name__service_id__type__: S.Unknown.pipe(
+      VPCServiceObjectNameServiceIdType__: S.Unknown.pipe(
         T.Body("VPCService object { name, service_id, type }"),
       ),
-      VPCNetwork_object___name__type__network_id__tunnel_id__: S.Unknown.pipe(
+      VPCNetworkObjectNameTypeNetworkIdTunnelId__: S.Unknown.pipe(
         T.Body("VPCNetwork object { name, type, network_id, tunnel_id }"),
       ),
     }),
@@ -9249,7 +14784,9 @@ export const ScriptsVersionsGetResponseResourcesScriptNamedHandlersItemHandlersL
   ) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptNamedHandlersItemHandlersList>;
 
 export interface ScriptsVersionsGetResponseResourcesScriptNamedHandlersItem {
+  /** The names of handlers exported as part of the named export. */
   handlers?: ScriptsVersionsGetResponseResourcesScriptNamedHandlersItemHandlersList;
+  /** The name of the exported class or entrypoint. */
   name?: string;
 }
 export const ScriptsVersionsGetResponseResourcesScriptNamedHandlersItem =
@@ -9272,10 +14809,14 @@ export const ScriptsVersionsGetResponseResourcesScriptNamedHandlersList =
   ) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptNamedHandlersList>;
 
 export interface ScriptsVersionsGetResponseResourcesScript {
+  /** Hashed script content */
   etag?: string;
+  /** The names of handlers exported as part of the default export. */
   handlers?: ScriptsVersionsGetResponseResourcesScriptHandlersList;
-  last_deployed_from?: string;
-  named_handlers?: ScriptsVersionsGetResponseResourcesScriptNamedHandlersList;
+  /** The client most recently used to deploy this Worker. */
+  lastDeployedFrom?: string;
+  /** Named exports, such as Durable Object class implementations and named entrypoints. */
+  namedHandlers?: ScriptsVersionsGetResponseResourcesScriptNamedHandlersList;
 }
 export const ScriptsVersionsGetResponseResourcesScript =
   /*@__PURE__*/ S.suspend(() =>
@@ -9284,9 +14825,11 @@ export const ScriptsVersionsGetResponseResourcesScript =
       handlers: S.optional(
         ScriptsVersionsGetResponseResourcesScriptHandlersList,
       ),
-      last_deployed_from: S.optional(S.String),
-      named_handlers: S.optional(
-        ScriptsVersionsGetResponseResourcesScriptNamedHandlersList,
+      lastDeployedFrom: S.optional(S.String.pipe(T.Body("last_deployed_from"))),
+      namedHandlers: S.optional(
+        ScriptsVersionsGetResponseResourcesScriptNamedHandlersList.pipe(
+          T.Body("named_handlers"),
+        ),
       ),
     }),
   ).annotate({
@@ -9301,12 +14844,13 @@ export const ScriptsVersionsGetResponseResourcesScriptRuntimeCompatibilityFlagsL
   ) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntimeCompatibilityFlagsList>;
 
 export interface ScriptsVersionsGetResponseResourcesScriptRuntimeLimits {
-  cpu_ms?: number;
+  /** The amount of CPU time this Worker can use in milliseconds. */
+  cpuMs?: number;
 }
 export const ScriptsVersionsGetResponseResourcesScriptRuntimeLimits =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      cpu_ms: S.optional(S.Number),
+      cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
     }),
   ).annotate({
     identifier: "ScriptsVersionsGetResponseResourcesScriptRuntimeLimits",
@@ -9321,25 +14865,36 @@ export const ScriptsVersionsGetResponseResourcesScriptRuntimeUsageModel =
   /*@__PURE__*/ S.String;
 
 export interface ScriptsVersionsGetResponseResourcesScriptRuntime {
-  compatibility_date?: string;
-  compatibility_flags?: ScriptsVersionsGetResponseResourcesScriptRuntimeCompatibilityFlagsList;
+  /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
+  compatibilityDate?: string;
+  /** Flags that enable or disable certain features in the Workers runtime. */
+  compatibilityFlags?: ScriptsVersionsGetResponseResourcesScriptRuntimeCompatibilityFlagsList;
+  /** Resource limits for the Worker. */
   limits?: ScriptsVersionsGetResponseResourcesScriptRuntimeLimits;
-  migration_tag?: string;
-  usage_model?: ScriptsVersionsGetResponseResourcesScriptRuntimeUsageModel;
+  /** The tag of the Durable Object migration that was most recently applied for this Worker. */
+  migrationTag?: string;
+  /** Usage model for the Worker invocations. */
+  usageModel?: ScriptsVersionsGetResponseResourcesScriptRuntimeUsageModel;
 }
 export const ScriptsVersionsGetResponseResourcesScriptRuntime =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      compatibility_date: S.optional(S.String),
-      compatibility_flags: S.optional(
-        ScriptsVersionsGetResponseResourcesScriptRuntimeCompatibilityFlagsList,
+      compatibilityDate: S.optional(
+        S.String.pipe(T.Body("compatibility_date")),
+      ),
+      compatibilityFlags: S.optional(
+        ScriptsVersionsGetResponseResourcesScriptRuntimeCompatibilityFlagsList.pipe(
+          T.Body("compatibility_flags"),
+        ),
       ),
       limits: S.optional(
         ScriptsVersionsGetResponseResourcesScriptRuntimeLimits,
       ),
-      migration_tag: S.optional(S.String),
-      usage_model: S.optional(
-        ScriptsVersionsGetResponseResourcesScriptRuntimeUsageModel,
+      migrationTag: S.optional(S.String.pipe(T.Body("migration_tag"))),
+      usageModel: S.optional(
+        ScriptsVersionsGetResponseResourcesScriptRuntimeUsageModel.pipe(
+          T.Body("usage_model"),
+        ),
       ),
     }),
   ).annotate({
@@ -9347,16 +14902,20 @@ export const ScriptsVersionsGetResponseResourcesScriptRuntime =
   }) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntime>;
 
 export interface ScriptsVersionsGetResponseResources {
+  /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
   bindings?: ScriptsVersionsGetResponseResourcesBindingsList;
   script?: ScriptsVersionsGetResponseResourcesScript;
-  script_runtime?: ScriptsVersionsGetResponseResourcesScriptRuntime;
+  /** Runtime configuration for the Worker. */
+  scriptRuntime?: ScriptsVersionsGetResponseResourcesScriptRuntime;
 }
 export const ScriptsVersionsGetResponseResources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(ScriptsVersionsGetResponseResourcesBindingsList),
     script: S.optional(ScriptsVersionsGetResponseResourcesScript),
-    script_runtime: S.optional(
-      ScriptsVersionsGetResponseResourcesScriptRuntime,
+    scriptRuntime: S.optional(
+      ScriptsVersionsGetResponseResourcesScriptRuntime.pipe(
+        T.Body("script_runtime"),
+      ),
     ),
   }),
 ).annotate({
@@ -9371,20 +14930,26 @@ export type ScriptsVersionsGetResponseMetadataSource =
 export const ScriptsVersionsGetResponseMetadataSource = /*@__PURE__*/ S.String;
 
 export interface ScriptsVersionsGetResponseMetadata {
-  author_email?: string;
-  author_id?: string;
-  created_on?: string;
+  /** Email of the user who created the version. */
+  authorEmail?: string;
+  /** Identifier of the user who created the version. */
+  authorId?: string;
+  /** When the version was created. */
+  createdOn?: string;
+  /** Whether the version can be previewed. */
   hasPreview?: boolean;
-  modified_on?: string;
+  /** When the version was last modified. */
+  modifiedOn?: string;
+  /** The source of the version upload. */
   source?: ScriptsVersionsGetResponseMetadataSource;
 }
 export const ScriptsVersionsGetResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    author_email: S.optional(S.String),
-    author_id: S.optional(S.String),
-    created_on: S.optional(S.String),
+    authorEmail: S.optional(S.String.pipe(T.Body("author_email"))),
+    authorId: S.optional(S.String.pipe(T.Body("author_id"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     hasPreview: S.optional(S.Boolean),
-    modified_on: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     source: S.optional(ScriptsVersionsGetResponseMetadataSource),
   }),
 ).annotate({
@@ -9394,8 +14959,10 @@ export const ScriptsVersionsGetResponseMetadata = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScriptsVersionsGetResponse {
   resources: ScriptsVersionsGetResponseResources;
+  /** Unique identifier for the version. */
   id?: string;
   metadata?: ScriptsVersionsGetResponseMetadata;
+  /** Sequential version number. */
   number?: number;
 }
 export const ScriptsVersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -9410,19 +14977,24 @@ export const ScriptsVersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsVersionsGetResponse>;
 
 export interface ScriptsVersionsListRequest {
-  account_id: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script. */
+  scriptName: string;
+  /** Only return versions that can be used in a deployment. Ignores pagination. */
   deployable?: boolean;
+  /** Current page. */
   page?: number;
-  per_page?: number;
+  /** Items per-page. */
+  perPage?: number;
 }
 export const ScriptsVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
     deployable: S.optional(S.Boolean.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -9443,21 +15015,27 @@ export const ScriptsVersionsListResponseItemsItemMetadataSource =
   /*@__PURE__*/ S.String;
 
 export interface ScriptsVersionsListResponseItemsItemMetadata {
-  author_email?: string;
-  author_id?: string;
-  created_on?: string;
+  /** Email of the user who created the version. */
+  authorEmail?: string;
+  /** Identifier of the user who created the version. */
+  authorId?: string;
+  /** When the version was created. */
+  createdOn?: string;
+  /** Whether the version can be previewed. */
   hasPreview?: boolean;
-  modified_on?: string;
+  /** When the version was last modified. */
+  modifiedOn?: string;
+  /** The source of the version upload. */
   source?: ScriptsVersionsListResponseItemsItemMetadataSource;
 }
 export const ScriptsVersionsListResponseItemsItemMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      author_email: S.optional(S.String),
-      author_id: S.optional(S.String),
-      created_on: S.optional(S.String),
+      authorEmail: S.optional(S.String.pipe(T.Body("author_email"))),
+      authorId: S.optional(S.String.pipe(T.Body("author_id"))),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
       hasPreview: S.optional(S.Boolean),
-      modified_on: S.optional(S.String),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
       source: S.optional(ScriptsVersionsListResponseItemsItemMetadataSource),
     }),
   ).annotate({
@@ -9465,8 +15043,10 @@ export const ScriptsVersionsListResponseItemsItemMetadata =
   }) as any as S.Schema<ScriptsVersionsListResponseItemsItemMetadata>;
 
 export interface ScriptsVersionsListResponseItemsItem {
+  /** Unique identifier for the version. */
   id?: string;
   metadata?: ScriptsVersionsListResponseItemsItemMetadata;
+  /** Sequential version number. */
   number?: number;
 }
 export const ScriptsVersionsListResponseItemsItem = /*@__PURE__*/ S.suspend(
@@ -9499,11 +15079,12 @@ export const ScriptsVersionsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsVersionsListResponse>;
 
 export interface SubdomainsDeleteRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
 }
 export const SubdomainsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -9523,11 +15104,12 @@ export const SubdomainsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubdomainsDeleteResponse>;
 
 export interface SubdomainsGetRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
 }
 export const SubdomainsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -9552,12 +15134,13 @@ export const SubdomainsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubdomainsGetResponse>;
 
 export interface SubdomainsUpdateRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
   subdomain: string;
 }
 export const SubdomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     subdomain: S.String,
   }).pipe(
     T.Http({
@@ -9582,11 +15165,12 @@ export const SubdomainsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubdomainsUpdateResponse",
 }) as any as S.Schema<SubdomainsUpdateResponse>;
 
+export type AccountSettingsGetError = CloudflareOpError;
 /** Fetches Worker account settings for an account. */
-export const AccountSettingsGet: API.OperationMethod<
+export const accountSettingsGet: API.OperationMethod<
   AccountSettingsGetRequest,
   AccountSettingsGetResponse,
-  CloudflareOpError,
+  AccountSettingsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AccountSettingsGetRequest,
@@ -9595,11 +15179,12 @@ export const AccountSettingsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AccountSettingsUpdateError = CloudflareOpError;
 /** Creates Worker account settings for an account. */
-export const AccountSettingsUpdate: API.OperationMethod<
+export const accountSettingsUpdate: API.OperationMethod<
   AccountSettingsUpdateRequest,
   AccountSettingsUpdateResponse,
-  CloudflareOpError,
+  AccountSettingsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AccountSettingsUpdateRequest,
@@ -9608,11 +15193,12 @@ export const AccountSettingsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AssetsUploadCreateError = CloudflareOpError;
 /** Upload assets ahead of creating a Worker version. To learn more about the direct uploads of assets, see https://developers.cloudflare.com/workers/static-assets/direct-upload/. */
-export const AssetsUploadCreate: API.OperationMethod<
+export const assetsUploadCreate: API.OperationMethod<
   AssetsUploadCreateRequest,
   AssetsUploadCreateResponse,
-  CloudflareOpError,
+  AssetsUploadCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AssetsUploadCreateRequest,
@@ -9621,11 +15207,12 @@ export const AssetsUploadCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BetaWorkersCreateError = CloudflareOpError;
 /** Create a new Worker. */
-export const BetaWorkersCreate: API.OperationMethod<
+export const betaWorkersCreate: API.OperationMethod<
   BetaWorkersCreateRequest,
   BetaWorkersCreateResponse,
-  CloudflareOpError,
+  BetaWorkersCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BetaWorkersCreateRequest,
@@ -9634,11 +15221,12 @@ export const BetaWorkersCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BetaWorkersDeleteError = CloudflareOpError;
 /** Delete a Worker and all its associated resources (versions, deployments, etc.). */
-export const BetaWorkersDelete: API.OperationMethod<
+export const betaWorkersDelete: API.OperationMethod<
   BetaWorkersDeleteRequest,
   BetaWorkersDeleteResponse,
-  CloudflareOpError,
+  BetaWorkersDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BetaWorkersDeleteRequest,
@@ -9647,11 +15235,12 @@ export const BetaWorkersDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BetaWorkersEditError = CloudflareOpError;
 /** Perform a partial update on a Worker, where omitted properties are left unchanged from their current values. */
-export const BetaWorkersEdit: API.OperationMethod<
+export const betaWorkersEdit: API.OperationMethod<
   BetaWorkersEditRequest,
   BetaWorkersEditResponse,
-  CloudflareOpError,
+  BetaWorkersEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BetaWorkersEditRequest,
@@ -9660,11 +15249,12 @@ export const BetaWorkersEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BetaWorkersGetError = CloudflareOpError;
 /** Get details about a specific Worker. */
-export const BetaWorkersGet: API.OperationMethod<
+export const betaWorkersGet: API.OperationMethod<
   BetaWorkersGetRequest,
   BetaWorkersGetResponse,
-  CloudflareOpError,
+  BetaWorkersGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BetaWorkersGetRequest,
@@ -9673,11 +15263,12 @@ export const BetaWorkersGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BetaWorkersListError = CloudflareOpError;
 /** List all Workers for an account. */
-export const BetaWorkersList: API.OperationMethod<
+export const betaWorkersList: API.OperationMethod<
   BetaWorkersListRequest,
   BetaWorkersListResponse,
-  CloudflareOpError,
+  BetaWorkersListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BetaWorkersListRequest,
@@ -9686,11 +15277,12 @@ export const BetaWorkersList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BetaWorkersUpdateError = CloudflareOpError;
 /** Perform a complete replacement of a Worker, where omitted properties are set to their default values. This is the exact same as the Create Worker endpoint, but operates on an existing Worker. To perform a partial update instead, use the Edit Worker endpoint. */
-export const BetaWorkersUpdate: API.OperationMethod<
+export const betaWorkersUpdate: API.OperationMethod<
   BetaWorkersUpdateRequest,
   BetaWorkersUpdateResponse,
-  CloudflareOpError,
+  BetaWorkersUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BetaWorkersUpdateRequest,
@@ -9699,11 +15291,12 @@ export const BetaWorkersUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BetaWorkersVersionsCreateError = CloudflareOpError;
 /** Create a new version. */
-export const BetaWorkersVersionsCreate: API.OperationMethod<
+export const betaWorkersVersionsCreate: API.OperationMethod<
   BetaWorkersVersionsCreateRequest,
   BetaWorkersVersionsCreateResponse,
-  CloudflareOpError,
+  BetaWorkersVersionsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BetaWorkersVersionsCreateRequest,
@@ -9712,11 +15305,12 @@ export const BetaWorkersVersionsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BetaWorkersVersionsDeleteError = CloudflareOpError;
 /** Delete a version. */
-export const BetaWorkersVersionsDelete: API.OperationMethod<
+export const betaWorkersVersionsDelete: API.OperationMethod<
   BetaWorkersVersionsDeleteRequest,
   BetaWorkersVersionsDeleteResponse,
-  CloudflareOpError,
+  BetaWorkersVersionsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BetaWorkersVersionsDeleteRequest,
@@ -9725,11 +15319,12 @@ export const BetaWorkersVersionsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BetaWorkersVersionsGetError = CloudflareOpError;
 /** Get details about a specific version. */
-export const BetaWorkersVersionsGet: API.OperationMethod<
+export const betaWorkersVersionsGet: API.OperationMethod<
   BetaWorkersVersionsGetRequest,
   BetaWorkersVersionsGetResponse,
-  CloudflareOpError,
+  BetaWorkersVersionsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BetaWorkersVersionsGetRequest,
@@ -9738,11 +15333,12 @@ export const BetaWorkersVersionsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type BetaWorkersVersionsListError = CloudflareOpError;
 /** List all versions for a Worker. */
-export const BetaWorkersVersionsList: API.OperationMethod<
+export const betaWorkersVersionsList: API.OperationMethod<
   BetaWorkersVersionsListRequest,
   BetaWorkersVersionsListResponse,
-  CloudflareOpError,
+  BetaWorkersVersionsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BetaWorkersVersionsListRequest,
@@ -9751,11 +15347,12 @@ export const BetaWorkersVersionsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DomainsDeleteError = CloudflareOpError;
 /** Detaches a domain from a Worker. Both the Worker and all of its previews are no longer routable using this domain. */
-export const DomainsDelete: API.OperationMethod<
+export const domainsDelete: API.OperationMethod<
   DomainsDeleteRequest,
   DomainsDeleteResponse,
-  CloudflareOpError,
+  DomainsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DomainsDeleteRequest,
@@ -9764,11 +15361,12 @@ export const DomainsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DomainsGetError = CloudflareOpError;
 /** Gets information about a domain. */
-export const DomainsGet: API.OperationMethod<
+export const domainsGet: API.OperationMethod<
   DomainsGetRequest,
   DomainsGetResponse,
-  CloudflareOpError,
+  DomainsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DomainsGetRequest,
@@ -9777,11 +15375,12 @@ export const DomainsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DomainsListError = CloudflareOpError;
 /** Lists all domains for an account. */
-export const DomainsList: API.OperationMethod<
+export const domainsList: API.OperationMethod<
   DomainsListRequest,
   DomainsListResponse,
-  CloudflareOpError,
+  DomainsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DomainsListRequest,
@@ -9790,11 +15389,12 @@ export const DomainsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DomainsUpdateError = CloudflareOpError;
 /** Attaches a domain that routes traffic to a Worker. */
-export const DomainsUpdate: API.OperationMethod<
+export const domainsUpdate: API.OperationMethod<
   DomainsUpdateRequest,
   DomainsUpdateResponse,
-  CloudflareOpError,
+  DomainsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DomainsUpdateRequest,
@@ -9803,11 +15403,12 @@ export const DomainsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ObservabilityDestinationsCreateError = CloudflareOpError;
 /** Create a new Workers Observability Telemetry Destination. */
-export const ObservabilityDestinationsCreate: API.OperationMethod<
+export const observabilityDestinationsCreate: API.OperationMethod<
   ObservabilityDestinationsCreateRequest,
   ObservabilityDestinationsCreateResponse,
-  CloudflareOpError,
+  ObservabilityDestinationsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObservabilityDestinationsCreateRequest,
@@ -9816,11 +15417,12 @@ export const ObservabilityDestinationsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ObservabilityDestinationsDeleteError = CloudflareOpError;
 /** Delete a Workers Observability Telemetry Destination. */
-export const ObservabilityDestinationsDelete: API.OperationMethod<
+export const observabilityDestinationsDelete: API.OperationMethod<
   ObservabilityDestinationsDeleteRequest,
   ObservabilityDestinationsDeleteResponse,
-  CloudflareOpError,
+  ObservabilityDestinationsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObservabilityDestinationsDeleteRequest,
@@ -9829,11 +15431,12 @@ export const ObservabilityDestinationsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ObservabilityDestinationsListError = CloudflareOpError;
 /** List your Workers Observability Telemetry Destinations. */
-export const ObservabilityDestinationsList: API.OperationMethod<
+export const observabilityDestinationsList: API.OperationMethod<
   ObservabilityDestinationsListRequest,
   ObservabilityDestinationsListResponse,
-  CloudflareOpError,
+  ObservabilityDestinationsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObservabilityDestinationsListRequest,
@@ -9842,11 +15445,12 @@ export const ObservabilityDestinationsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ObservabilityDestinationsUpdateError = CloudflareOpError;
 /** Update an existing Workers Observability Telemetry Destination. */
-export const ObservabilityDestinationsUpdate: API.OperationMethod<
+export const observabilityDestinationsUpdate: API.OperationMethod<
   ObservabilityDestinationsUpdateRequest,
   ObservabilityDestinationsUpdateResponse,
-  CloudflareOpError,
+  ObservabilityDestinationsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObservabilityDestinationsUpdateRequest,
@@ -9855,11 +15459,12 @@ export const ObservabilityDestinationsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ObservabilityQueriesCreateError = CloudflareOpError;
 /** Persist query for later use. */
-export const ObservabilityQueriesCreate: API.OperationMethod<
+export const observabilityQueriesCreate: API.OperationMethod<
   ObservabilityQueriesCreateRequest,
   ObservabilityQueriesCreateResponse,
-  CloudflareOpError,
+  ObservabilityQueriesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObservabilityQueriesCreateRequest,
@@ -9868,11 +15473,12 @@ export const ObservabilityQueriesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ObservabilityQueriesListError = CloudflareOpError;
 /** List saved queries. */
-export const ObservabilityQueriesList: API.OperationMethod<
+export const observabilityQueriesList: API.OperationMethod<
   ObservabilityQueriesListRequest,
   ObservabilityQueriesListResponse,
-  CloudflareOpError,
+  ObservabilityQueriesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObservabilityQueriesListRequest,
@@ -9881,11 +15487,12 @@ export const ObservabilityQueriesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ObservabilitySharedQueriesCreateError = CloudflareOpError;
 /** Shared queries store the results of a previously run query, allowing you to share the results with others. */
-export const ObservabilitySharedQueriesCreate: API.OperationMethod<
+export const observabilitySharedQueriesCreate: API.OperationMethod<
   ObservabilitySharedQueriesCreateRequest,
   ObservabilitySharedQueriesCreateResponse,
-  CloudflareOpError,
+  ObservabilitySharedQueriesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObservabilitySharedQueriesCreateRequest,
@@ -9894,11 +15501,12 @@ export const ObservabilitySharedQueriesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ObservabilitySharedQueriesGetError = CloudflareOpError;
 /** Shared queries store the results of a previously run query, allowing you to share the results with others. */
-export const ObservabilitySharedQueriesGet: API.OperationMethod<
+export const observabilitySharedQueriesGet: API.OperationMethod<
   ObservabilitySharedQueriesGetRequest,
   ObservabilitySharedQueriesGetResponse,
-  CloudflareOpError,
+  ObservabilitySharedQueriesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObservabilitySharedQueriesGetRequest,
@@ -9907,11 +15515,12 @@ export const ObservabilitySharedQueriesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ObservabilityTelemetryKeysError = CloudflareOpError;
 /** List all the keys in your telemetry events. */
-export const ObservabilityTelemetryKeys: API.OperationMethod<
+export const observabilityTelemetryKeys: API.OperationMethod<
   ObservabilityTelemetryKeysRequest,
   ObservabilityTelemetryKeysResponse,
-  CloudflareOpError,
+  ObservabilityTelemetryKeysError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObservabilityTelemetryKeysRequest,
@@ -9920,11 +15529,12 @@ export const ObservabilityTelemetryKeys: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ObservabilityTelemetryLiveTailError = CloudflareOpError;
 /** Prepare websocket server for live tail. */
-export const ObservabilityTelemetryLiveTail: API.OperationMethod<
+export const observabilityTelemetryLiveTail: API.OperationMethod<
   ObservabilityTelemetryLiveTailRequest,
   ObservabilityTelemetryLiveTailResponse,
-  CloudflareOpError,
+  ObservabilityTelemetryLiveTailError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObservabilityTelemetryLiveTailRequest,
@@ -9933,11 +15543,12 @@ export const ObservabilityTelemetryLiveTail: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ObservabilityTelemetryLiveTailHeartbeatError = CloudflareOpError;
 /** Notify live tail that user is still eligible to receive live events. */
-export const ObservabilityTelemetryLiveTailHeartbeat: API.OperationMethod<
+export const observabilityTelemetryLiveTailHeartbeat: API.OperationMethod<
   ObservabilityTelemetryLiveTailHeartbeatRequest,
   ObservabilityTelemetryLiveTailHeartbeatResponse,
-  CloudflareOpError,
+  ObservabilityTelemetryLiveTailHeartbeatError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObservabilityTelemetryLiveTailHeartbeatRequest,
@@ -9946,11 +15557,12 @@ export const ObservabilityTelemetryLiveTailHeartbeat: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ObservabilityTelemetryQueryError = CloudflareOpError;
 /** Run a temporary or saved query. */
-export const ObservabilityTelemetryQuery: API.OperationMethod<
+export const observabilityTelemetryQuery: API.OperationMethod<
   ObservabilityTelemetryQueryRequest,
   ObservabilityTelemetryQueryResponse,
-  CloudflareOpError,
+  ObservabilityTelemetryQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObservabilityTelemetryQueryRequest,
@@ -9959,11 +15571,12 @@ export const ObservabilityTelemetryQuery: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ObservabilityTelemetryValuesError = CloudflareOpError;
 /** List unique values found in your events. */
-export const ObservabilityTelemetryValues: API.OperationMethod<
+export const observabilityTelemetryValues: API.OperationMethod<
   ObservabilityTelemetryValuesRequest,
   ObservabilityTelemetryValuesResponse,
-  CloudflareOpError,
+  ObservabilityTelemetryValuesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObservabilityTelemetryValuesRequest,
@@ -9972,11 +15585,12 @@ export const ObservabilityTelemetryValues: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RoutesCreateError = CloudflareOpError;
 /** Creates a route that maps a URL pattern to a Worker. */
-export const RoutesCreate: API.OperationMethod<
+export const routesCreate: API.OperationMethod<
   RoutesCreateRequest,
   RoutesCreateResponse,
-  CloudflareOpError,
+  RoutesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RoutesCreateRequest,
@@ -9985,11 +15599,12 @@ export const RoutesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RoutesDeleteError = CloudflareOpError;
 /** Deletes a route. */
-export const RoutesDelete: API.OperationMethod<
+export const routesDelete: API.OperationMethod<
   RoutesDeleteRequest,
   RoutesDeleteResponse,
-  CloudflareOpError,
+  RoutesDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RoutesDeleteRequest,
@@ -9998,11 +15613,12 @@ export const RoutesDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RoutesGetError = CloudflareOpError;
 /** Returns information about a route, including URL pattern and Worker. */
-export const RoutesGet: API.OperationMethod<
+export const routesGet: API.OperationMethod<
   RoutesGetRequest,
   RoutesGetResponse,
-  CloudflareOpError,
+  RoutesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RoutesGetRequest,
@@ -10011,11 +15627,12 @@ export const RoutesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RoutesListError = CloudflareOpError;
 /** Returns routes for a zone. */
-export const RoutesList: API.OperationMethod<
+export const routesList: API.OperationMethod<
   RoutesListRequest,
   RoutesListResponse,
-  CloudflareOpError,
+  RoutesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RoutesListRequest,
@@ -10024,11 +15641,12 @@ export const RoutesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RoutesUpdateError = CloudflareOpError;
 /** Updates the URL pattern or Worker associated with a route. */
-export const RoutesUpdate: API.OperationMethod<
+export const routesUpdate: API.OperationMethod<
   RoutesUpdateRequest,
   RoutesUpdateResponse,
-  CloudflareOpError,
+  RoutesUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RoutesUpdateRequest,
@@ -10037,11 +15655,12 @@ export const RoutesUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsAssetsUploadCreateError = CloudflareOpError;
 /** Start uploading a collection of assets for use in a Worker version. To learn more about the direct uploads of assets, see https://developers.cloudflare.com/workers/static-assets/direct-upload/. */
-export const ScriptsAssetsUploadCreate: API.OperationMethod<
+export const scriptsAssetsUploadCreate: API.OperationMethod<
   ScriptsAssetsUploadCreateRequest,
   ScriptsAssetsUploadCreateResponse,
-  CloudflareOpError,
+  ScriptsAssetsUploadCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsAssetsUploadCreateRequest,
@@ -10050,11 +15669,12 @@ export const ScriptsAssetsUploadCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsContentGetError = CloudflareOpError;
 /** Fetch script content only. */
-export const ScriptsContentGet: API.OperationMethod<
+export const scriptsContentGet: API.OperationMethod<
   ScriptsContentGetRequest,
   ScriptsContentGetResponse,
-  CloudflareOpError,
+  ScriptsContentGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsContentGetRequest,
@@ -10063,11 +15683,12 @@ export const ScriptsContentGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsContentUpdateError = CloudflareOpError;
 /** Put script content without touching config or metadata. */
-export const ScriptsContentUpdate: API.OperationMethod<
+export const scriptsContentUpdate: API.OperationMethod<
   ScriptsContentUpdateRequest,
   ScriptsContentUpdateResponse,
-  CloudflareOpError,
+  ScriptsContentUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsContentUpdateRequest,
@@ -10076,11 +15697,12 @@ export const ScriptsContentUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsDeleteError = CloudflareOpError;
 /** Delete your worker. This call has no response body on a successful delete. */
-export const ScriptsDelete: API.OperationMethod<
+export const scriptsDelete: API.OperationMethod<
   ScriptsDeleteRequest,
   ScriptsDeleteResponse,
-  CloudflareOpError,
+  ScriptsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsDeleteRequest,
@@ -10089,11 +15711,12 @@ export const ScriptsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsDeploymentsCreateError = CloudflareOpError;
 /** Deployments configure how [Worker Versions](https://developers.cloudflare.com/api/operations/worker-versions-list-versions) are deployed to traffic. A deployment can consist of one or two versions of a Worker. */
-export const ScriptsDeploymentsCreate: API.OperationMethod<
+export const scriptsDeploymentsCreate: API.OperationMethod<
   ScriptsDeploymentsCreateRequest,
   ScriptsDeploymentsCreateResponse,
-  CloudflareOpError,
+  ScriptsDeploymentsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsDeploymentsCreateRequest,
@@ -10102,11 +15725,12 @@ export const ScriptsDeploymentsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsDeploymentsDeleteError = CloudflareOpError;
 /** Delete a Worker Deployment. The latest deployment, which is actively serving traffic, cannot be deleted. All other deployments can be deleted. */
-export const ScriptsDeploymentsDelete: API.OperationMethod<
+export const scriptsDeploymentsDelete: API.OperationMethod<
   ScriptsDeploymentsDeleteRequest,
   ScriptsDeploymentsDeleteResponse,
-  CloudflareOpError,
+  ScriptsDeploymentsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsDeploymentsDeleteRequest,
@@ -10115,11 +15739,12 @@ export const ScriptsDeploymentsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsDeploymentsGetError = CloudflareOpError;
 /** Get information about a Worker Deployment. */
-export const ScriptsDeploymentsGet: API.OperationMethod<
+export const scriptsDeploymentsGet: API.OperationMethod<
   ScriptsDeploymentsGetRequest,
   ScriptsDeploymentsGetResponse,
-  CloudflareOpError,
+  ScriptsDeploymentsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsDeploymentsGetRequest,
@@ -10128,11 +15753,12 @@ export const ScriptsDeploymentsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsDeploymentsListError = CloudflareOpError;
 /** List of Worker Deployments. The first deployment in the list is the latest deployment actively serving traffic. */
-export const ScriptsDeploymentsList: API.OperationMethod<
+export const scriptsDeploymentsList: API.OperationMethod<
   ScriptsDeploymentsListRequest,
   ScriptsDeploymentsListResponse,
-  CloudflareOpError,
+  ScriptsDeploymentsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsDeploymentsListRequest,
@@ -10141,11 +15767,12 @@ export const ScriptsDeploymentsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsGetError = CloudflareOpError;
 /** Fetch raw script content for your worker. Note this is the original script content, not JSON encoded. */
-export const ScriptsGet: API.OperationMethod<
+export const scriptsGet: API.OperationMethod<
   ScriptsGetRequest,
   ScriptsGetResponse,
-  CloudflareOpError,
+  ScriptsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsGetRequest,
@@ -10154,11 +15781,12 @@ export const ScriptsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsListError = CloudflareOpError;
 /** Fetch a list of uploaded workers. */
-export const ScriptsList: API.OperationMethod<
+export const scriptsList: API.OperationMethod<
   ScriptsListRequest,
   ScriptsListResponse,
-  CloudflareOpError,
+  ScriptsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsListRequest,
@@ -10167,11 +15795,12 @@ export const ScriptsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsSchedulesGetError = CloudflareOpError;
 /** Fetches Cron Triggers for a Worker. */
-export const ScriptsSchedulesGet: API.OperationMethod<
+export const scriptsSchedulesGet: API.OperationMethod<
   ScriptsSchedulesGetRequest,
   ScriptsSchedulesGetResponse,
-  CloudflareOpError,
+  ScriptsSchedulesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsSchedulesGetRequest,
@@ -10180,11 +15809,12 @@ export const ScriptsSchedulesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsSchedulesUpdateError = CloudflareOpError;
 /** Updates Cron Triggers for a Worker. */
-export const ScriptsSchedulesUpdate: API.OperationMethod<
+export const scriptsSchedulesUpdate: API.OperationMethod<
   ScriptsSchedulesUpdateRequest,
   ScriptsSchedulesUpdateResponse,
-  CloudflareOpError,
+  ScriptsSchedulesUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsSchedulesUpdateRequest,
@@ -10193,11 +15823,12 @@ export const ScriptsSchedulesUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsScriptAndVersionSettingsEditError = CloudflareOpError;
 /** Patch metadata or config, such as bindings or usage model. */
-export const ScriptsScriptAndVersionSettingsEdit: API.OperationMethod<
+export const scriptsScriptAndVersionSettingsEdit: API.OperationMethod<
   ScriptsScriptAndVersionSettingsEditRequest,
   ScriptsScriptAndVersionSettingsEditResponse,
-  CloudflareOpError,
+  ScriptsScriptAndVersionSettingsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsScriptAndVersionSettingsEditRequest,
@@ -10206,11 +15837,12 @@ export const ScriptsScriptAndVersionSettingsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsScriptAndVersionSettingsGetError = CloudflareOpError;
 /** Get metadata and config, such as bindings or usage model. */
-export const ScriptsScriptAndVersionSettingsGet: API.OperationMethod<
+export const scriptsScriptAndVersionSettingsGet: API.OperationMethod<
   ScriptsScriptAndVersionSettingsGetRequest,
   ScriptsScriptAndVersionSettingsGetResponse,
-  CloudflareOpError,
+  ScriptsScriptAndVersionSettingsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsScriptAndVersionSettingsGetRequest,
@@ -10219,11 +15851,12 @@ export const ScriptsScriptAndVersionSettingsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsSearchError = CloudflareOpError;
 /** Search for Workers in an account. */
-export const ScriptsSearch: API.OperationMethod<
+export const scriptsSearch: API.OperationMethod<
   ScriptsSearchRequest,
   ScriptsSearchResponse,
-  CloudflareOpError,
+  ScriptsSearchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsSearchRequest,
@@ -10232,11 +15865,12 @@ export const ScriptsSearch: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsSecretsBulkUpdateError = CloudflareOpError;
 /** Create, update, or delete multiple secrets on a script in a single operation using JSON Merge Patch (RFC 7396). Usage: - To create or update a secret, set its value to a secret object. - To delete a secret, set its value to `null`. - Secrets not included in the request are left unchanged. */
-export const ScriptsSecretsBulkUpdate: API.OperationMethod<
+export const scriptsSecretsBulkUpdate: API.OperationMethod<
   ScriptsSecretsBulkUpdateRequest,
   ScriptsSecretsBulkUpdateResponse,
-  CloudflareOpError,
+  ScriptsSecretsBulkUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsSecretsBulkUpdateRequest,
@@ -10245,11 +15879,12 @@ export const ScriptsSecretsBulkUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsSecretsDeleteError = CloudflareOpError;
 /** Remove a secret from a script. */
-export const ScriptsSecretsDelete: API.OperationMethod<
+export const scriptsSecretsDelete: API.OperationMethod<
   ScriptsSecretsDeleteRequest,
   ScriptsSecretsDeleteResponse,
-  CloudflareOpError,
+  ScriptsSecretsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsSecretsDeleteRequest,
@@ -10258,11 +15893,12 @@ export const ScriptsSecretsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsSecretsGetError = CloudflareOpError;
 /** Get a given secret binding (value omitted) on a script. */
-export const ScriptsSecretsGet: API.OperationMethod<
+export const scriptsSecretsGet: API.OperationMethod<
   ScriptsSecretsGetRequest,
   ScriptsSecretsGetResponse,
-  CloudflareOpError,
+  ScriptsSecretsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsSecretsGetRequest,
@@ -10271,11 +15907,12 @@ export const ScriptsSecretsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsSecretsListError = CloudflareOpError;
 /** List secrets bound to a script. */
-export const ScriptsSecretsList: API.OperationMethod<
+export const scriptsSecretsList: API.OperationMethod<
   ScriptsSecretsListRequest,
   ScriptsSecretsListResponse,
-  CloudflareOpError,
+  ScriptsSecretsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsSecretsListRequest,
@@ -10284,11 +15921,12 @@ export const ScriptsSecretsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsSecretsUpdateError = CloudflareOpError;
 /** Add a secret to a script. */
-export const ScriptsSecretsUpdate: API.OperationMethod<
+export const scriptsSecretsUpdate: API.OperationMethod<
   ScriptsSecretsUpdateRequest,
   ScriptsSecretsUpdateResponse,
-  CloudflareOpError,
+  ScriptsSecretsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsSecretsUpdateRequest,
@@ -10297,11 +15935,12 @@ export const ScriptsSecretsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsSettingsEditError = CloudflareOpError;
 /** Patch script-level settings when using [Worker Versions](https://developers.cloudflare.com/api/operations/worker-versions-list-versions). Including but not limited to Logpush and Tail Consumers. */
-export const ScriptsSettingsEdit: API.OperationMethod<
+export const scriptsSettingsEdit: API.OperationMethod<
   ScriptsSettingsEditRequest,
   ScriptsSettingsEditResponse,
-  CloudflareOpError,
+  ScriptsSettingsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsSettingsEditRequest,
@@ -10310,11 +15949,12 @@ export const ScriptsSettingsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsSettingsGetError = CloudflareOpError;
 /** Get script-level settings when using [Worker Versions](https://developers.cloudflare.com/api/operations/worker-versions-list-versions). Includes Logpush and Tail Consumers. */
-export const ScriptsSettingsGet: API.OperationMethod<
+export const scriptsSettingsGet: API.OperationMethod<
   ScriptsSettingsGetRequest,
   ScriptsSettingsGetResponse,
-  CloudflareOpError,
+  ScriptsSettingsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsSettingsGetRequest,
@@ -10323,11 +15963,12 @@ export const ScriptsSettingsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsSubdomainCreateError = CloudflareOpError;
 /** Enable or disable the Worker on the workers.dev subdomain. */
-export const ScriptsSubdomainCreate: API.OperationMethod<
+export const scriptsSubdomainCreate: API.OperationMethod<
   ScriptsSubdomainCreateRequest,
   ScriptsSubdomainCreateResponse,
-  CloudflareOpError,
+  ScriptsSubdomainCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsSubdomainCreateRequest,
@@ -10336,11 +15977,12 @@ export const ScriptsSubdomainCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsSubdomainDeleteError = CloudflareOpError;
 /** Disable all workers.dev subdomains for a Worker. */
-export const ScriptsSubdomainDelete: API.OperationMethod<
+export const scriptsSubdomainDelete: API.OperationMethod<
   ScriptsSubdomainDeleteRequest,
   ScriptsSubdomainDeleteResponse,
-  CloudflareOpError,
+  ScriptsSubdomainDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsSubdomainDeleteRequest,
@@ -10349,11 +15991,12 @@ export const ScriptsSubdomainDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsSubdomainGetError = CloudflareOpError;
 /** Get if the Worker is available on the workers.dev subdomain. */
-export const ScriptsSubdomainGet: API.OperationMethod<
+export const scriptsSubdomainGet: API.OperationMethod<
   ScriptsSubdomainGetRequest,
   ScriptsSubdomainGetResponse,
-  CloudflareOpError,
+  ScriptsSubdomainGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsSubdomainGetRequest,
@@ -10362,11 +16005,12 @@ export const ScriptsSubdomainGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsTailCreateError = CloudflareOpError;
 /** Starts a tail that receives logs and exception from a Worker. */
-export const ScriptsTailCreate: API.OperationMethod<
+export const scriptsTailCreate: API.OperationMethod<
   ScriptsTailCreateRequest,
   ScriptsTailCreateResponse,
-  CloudflareOpError,
+  ScriptsTailCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsTailCreateRequest,
@@ -10375,11 +16019,12 @@ export const ScriptsTailCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsTailDeleteError = CloudflareOpError;
 /** Deletes a tail from a Worker. */
-export const ScriptsTailDelete: API.OperationMethod<
+export const scriptsTailDelete: API.OperationMethod<
   ScriptsTailDeleteRequest,
   ScriptsTailDeleteResponse,
-  CloudflareOpError,
+  ScriptsTailDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsTailDeleteRequest,
@@ -10388,11 +16033,12 @@ export const ScriptsTailDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsTailGetError = CloudflareOpError;
 /** Get list of tails currently deployed on a Worker. */
-export const ScriptsTailGet: API.OperationMethod<
+export const scriptsTailGet: API.OperationMethod<
   ScriptsTailGetRequest,
   ScriptsTailGetResponse,
-  CloudflareOpError,
+  ScriptsTailGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsTailGetRequest,
@@ -10401,11 +16047,12 @@ export const ScriptsTailGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsUpdateError = CloudflareOpError;
 /** Upload a worker module. You can find more about the multipart metadata on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/. */
-export const ScriptsUpdate: API.OperationMethod<
+export const scriptsUpdate: API.OperationMethod<
   ScriptsUpdateRequest,
   ScriptsUpdateResponse,
-  CloudflareOpError,
+  ScriptsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsUpdateRequest,
@@ -10414,11 +16061,12 @@ export const ScriptsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsVersionsCreateError = CloudflareOpError;
 /** Upload a Worker Version without deploying to Cloudflare's network. You can find more about the multipart metadata on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/. */
-export const ScriptsVersionsCreate: API.OperationMethod<
+export const scriptsVersionsCreate: API.OperationMethod<
   ScriptsVersionsCreateRequest,
   ScriptsVersionsCreateResponse,
-  CloudflareOpError,
+  ScriptsVersionsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsVersionsCreateRequest,
@@ -10427,11 +16075,12 @@ export const ScriptsVersionsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsVersionsGetError = CloudflareOpError;
 /** Retrieves detailed information about a specific version of a Workers script. */
-export const ScriptsVersionsGet: API.OperationMethod<
+export const scriptsVersionsGet: API.OperationMethod<
   ScriptsVersionsGetRequest,
   ScriptsVersionsGetResponse,
-  CloudflareOpError,
+  ScriptsVersionsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsVersionsGetRequest,
@@ -10440,11 +16089,12 @@ export const ScriptsVersionsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ScriptsVersionsListError = CloudflareOpError;
 /** List of Worker Versions. The first version in the list is the latest version. */
-export const ScriptsVersionsList: API.OperationMethod<
+export const scriptsVersionsList: API.OperationMethod<
   ScriptsVersionsListRequest,
   ScriptsVersionsListResponse,
-  CloudflareOpError,
+  ScriptsVersionsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ScriptsVersionsListRequest,
@@ -10453,11 +16103,12 @@ export const ScriptsVersionsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SubdomainsDeleteError = CloudflareOpError;
 /** Deletes a Workers subdomain for an account. */
-export const SubdomainsDelete: API.OperationMethod<
+export const subdomainsDelete: API.OperationMethod<
   SubdomainsDeleteRequest,
   SubdomainsDeleteResponse,
-  CloudflareOpError,
+  SubdomainsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SubdomainsDeleteRequest,
@@ -10466,11 +16117,12 @@ export const SubdomainsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SubdomainsGetError = CloudflareOpError;
 /** Returns a Workers subdomain for an account. */
-export const SubdomainsGet: API.OperationMethod<
+export const subdomainsGet: API.OperationMethod<
   SubdomainsGetRequest,
   SubdomainsGetResponse,
-  CloudflareOpError,
+  SubdomainsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SubdomainsGetRequest,
@@ -10479,11 +16131,12 @@ export const SubdomainsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SubdomainsUpdateError = CloudflareOpError;
 /** Creates a Workers subdomain for an account. */
-export const SubdomainsUpdate: API.OperationMethod<
+export const subdomainsUpdate: API.OperationMethod<
   SubdomainsUpdateRequest,
   SubdomainsUpdateResponse,
-  CloudflareOpError,
+  SubdomainsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SubdomainsUpdateRequest,

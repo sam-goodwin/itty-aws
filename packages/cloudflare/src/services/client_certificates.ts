@@ -10,15 +10,18 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface CreateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** The Certificate Signing Request (CSR). Must be newline-encoded. */
   csr: string;
-  validity_days: number;
+  /** The number of days the Client Certificate will be valid after the issued_on date. */
+  validityDays: number;
 }
 export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     csr: S.String,
-    validity_days: S.Number,
+    validityDays: S.Number.pipe(T.Body("validity_days")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -28,23 +31,95 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
 
+export interface CreateResponseCertificateAuthority {
+  id?: string;
+  name?: string;
+}
+export const CreateResponseCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateResponseCertificateAuthority",
+}) as any as S.Schema<CreateResponseCertificateAuthority>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateResponse {
-  result?: unknown;
+  /** Identifier. */
+  id?: string;
+  /** The Client Certificate PEM. */
+  certificate?: string;
+  /** Certificate Authority used to issue the Client Certificate. */
+  certificateAuthority?: CreateResponseCertificateAuthority;
+  /** Common Name of the Client Certificate. */
+  commonName?: string;
+  /** Country, provided by the CSR. */
+  country?: string;
+  /** The Certificate Signing Request (CSR). Must be newline-encoded. */
+  csr?: string;
+  /** Date that the Client Certificate expires. */
+  expiresOn?: string;
+  /** Unique identifier of the Client Certificate. */
+  fingerprintSha256?: string;
+  /** Date that the Client Certificate was issued by the Certificate Authority. */
+  issuedOn?: string;
+  /** Location, provided by the CSR. */
+  location?: string;
+  /** Organization, provided by the CSR. */
+  organization?: string;
+  /** Organizational Unit, provided by the CSR. */
+  organizationalUnit?: string;
+  /** The serial number on the created Client Certificate. */
+  serialNumber?: string;
+  /** The type of hash used for the Client Certificate.. */
+  signature?: string;
+  /** Subject Key Identifier. */
+  ski?: string;
+  /** State, provided by the CSR. */
+  state?: string;
+  /** Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions. */
+  status?: unknown;
+  /** The number of days the Client Certificate will be valid after the issued_on date. */
+  validityDays?: number;
 }
 export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    certificate: S.optional(S.String),
+    certificateAuthority: S.optional(
+      CreateResponseCertificateAuthority.pipe(T.Body("certificate_authority")),
+    ),
+    commonName: S.optional(S.String.pipe(T.Body("common_name"))),
+    country: S.optional(S.String),
+    csr: S.optional(S.String),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    fingerprintSha256: S.optional(S.String.pipe(T.Body("fingerprint_sha256"))),
+    issuedOn: S.optional(S.String.pipe(T.Body("issued_on"))),
+    location: S.optional(S.String),
+    organization: S.optional(S.String),
+    organizationalUnit: S.optional(
+      S.String.pipe(T.Body("organizational_unit")),
+    ),
+    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
+    signature: S.optional(S.String),
+    ski: S.optional(S.String),
+    state: S.optional(S.String),
+    status: S.optional(S.Unknown),
+    validityDays: S.optional(S.Number.pipe(T.Body("validity_days"))),
   }),
 ).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
 
 export interface DeleteRequest {
-  zone_id: string;
-  client_certificate_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  clientCertificateId: string;
 }
 export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    client_certificate_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    clientCertificateId: S.String.pipe(T.Label("client_certificate_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -54,24 +129,96 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
 
+export interface DeleteResponseCertificateAuthority {
+  id?: string;
+  name?: string;
+}
+export const DeleteResponseCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteResponseCertificateAuthority",
+}) as any as S.Schema<DeleteResponseCertificateAuthority>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteResponse {
-  result?: unknown;
+  /** Identifier. */
+  id?: string;
+  /** The Client Certificate PEM. */
+  certificate?: string;
+  /** Certificate Authority used to issue the Client Certificate. */
+  certificateAuthority?: DeleteResponseCertificateAuthority;
+  /** Common Name of the Client Certificate. */
+  commonName?: string;
+  /** Country, provided by the CSR. */
+  country?: string;
+  /** The Certificate Signing Request (CSR). Must be newline-encoded. */
+  csr?: string;
+  /** Date that the Client Certificate expires. */
+  expiresOn?: string;
+  /** Unique identifier of the Client Certificate. */
+  fingerprintSha256?: string;
+  /** Date that the Client Certificate was issued by the Certificate Authority. */
+  issuedOn?: string;
+  /** Location, provided by the CSR. */
+  location?: string;
+  /** Organization, provided by the CSR. */
+  organization?: string;
+  /** Organizational Unit, provided by the CSR. */
+  organizationalUnit?: string;
+  /** The serial number on the created Client Certificate. */
+  serialNumber?: string;
+  /** The type of hash used for the Client Certificate.. */
+  signature?: string;
+  /** Subject Key Identifier. */
+  ski?: string;
+  /** State, provided by the CSR. */
+  state?: string;
+  /** Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions. */
+  status?: unknown;
+  /** The number of days the Client Certificate will be valid after the issued_on date. */
+  validityDays?: number;
 }
 export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    certificate: S.optional(S.String),
+    certificateAuthority: S.optional(
+      DeleteResponseCertificateAuthority.pipe(T.Body("certificate_authority")),
+    ),
+    commonName: S.optional(S.String.pipe(T.Body("common_name"))),
+    country: S.optional(S.String),
+    csr: S.optional(S.String),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    fingerprintSha256: S.optional(S.String.pipe(T.Body("fingerprint_sha256"))),
+    issuedOn: S.optional(S.String.pipe(T.Body("issued_on"))),
+    location: S.optional(S.String),
+    organization: S.optional(S.String),
+    organizationalUnit: S.optional(
+      S.String.pipe(T.Body("organizational_unit")),
+    ),
+    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
+    signature: S.optional(S.String),
+    ski: S.optional(S.String),
+    state: S.optional(S.String),
+    status: S.optional(S.Unknown),
+    validityDays: S.optional(S.Number.pipe(T.Body("validity_days"))),
   }),
 ).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
 
 export interface EditRequest {
-  zone_id: string;
-  client_certificate_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  clientCertificateId: string;
   reactivate?: boolean;
 }
 export const EditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    client_certificate_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    clientCertificateId: S.String.pipe(T.Label("client_certificate_id")),
     reactivate: S.optional(S.Boolean),
   }).pipe(
     T.Http({
@@ -82,23 +229,95 @@ export const EditRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "EditRequest" }) as any as S.Schema<EditRequest>;
 
+export interface EditResponseCertificateAuthority {
+  id?: string;
+  name?: string;
+}
+export const EditResponseCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EditResponseCertificateAuthority",
+}) as any as S.Schema<EditResponseCertificateAuthority>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditResponse {
-  result?: unknown;
+  /** Identifier. */
+  id?: string;
+  /** The Client Certificate PEM. */
+  certificate?: string;
+  /** Certificate Authority used to issue the Client Certificate. */
+  certificateAuthority?: EditResponseCertificateAuthority;
+  /** Common Name of the Client Certificate. */
+  commonName?: string;
+  /** Country, provided by the CSR. */
+  country?: string;
+  /** The Certificate Signing Request (CSR). Must be newline-encoded. */
+  csr?: string;
+  /** Date that the Client Certificate expires. */
+  expiresOn?: string;
+  /** Unique identifier of the Client Certificate. */
+  fingerprintSha256?: string;
+  /** Date that the Client Certificate was issued by the Certificate Authority. */
+  issuedOn?: string;
+  /** Location, provided by the CSR. */
+  location?: string;
+  /** Organization, provided by the CSR. */
+  organization?: string;
+  /** Organizational Unit, provided by the CSR. */
+  organizationalUnit?: string;
+  /** The serial number on the created Client Certificate. */
+  serialNumber?: string;
+  /** The type of hash used for the Client Certificate.. */
+  signature?: string;
+  /** Subject Key Identifier. */
+  ski?: string;
+  /** State, provided by the CSR. */
+  state?: string;
+  /** Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions. */
+  status?: unknown;
+  /** The number of days the Client Certificate will be valid after the issued_on date. */
+  validityDays?: number;
 }
 export const EditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    certificate: S.optional(S.String),
+    certificateAuthority: S.optional(
+      EditResponseCertificateAuthority.pipe(T.Body("certificate_authority")),
+    ),
+    commonName: S.optional(S.String.pipe(T.Body("common_name"))),
+    country: S.optional(S.String),
+    csr: S.optional(S.String),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    fingerprintSha256: S.optional(S.String.pipe(T.Body("fingerprint_sha256"))),
+    issuedOn: S.optional(S.String.pipe(T.Body("issued_on"))),
+    location: S.optional(S.String),
+    organization: S.optional(S.String),
+    organizationalUnit: S.optional(
+      S.String.pipe(T.Body("organizational_unit")),
+    ),
+    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
+    signature: S.optional(S.String),
+    ski: S.optional(S.String),
+    state: S.optional(S.String),
+    status: S.optional(S.Unknown),
+    validityDays: S.optional(S.Number.pipe(T.Body("validity_days"))),
   }),
 ).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
 
 export interface GetRequest {
-  zone_id: string;
-  client_certificate_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  clientCertificateId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    client_certificate_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    clientCertificateId: S.String.pipe(T.Label("client_certificate_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -108,12 +327,82 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
+export interface GetResponseCertificateAuthority {
+  id?: string;
+  name?: string;
+}
+export const GetResponseCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetResponseCertificateAuthority",
+}) as any as S.Schema<GetResponseCertificateAuthority>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
-  result?: unknown;
+  /** Identifier. */
+  id?: string;
+  /** The Client Certificate PEM. */
+  certificate?: string;
+  /** Certificate Authority used to issue the Client Certificate. */
+  certificateAuthority?: GetResponseCertificateAuthority;
+  /** Common Name of the Client Certificate. */
+  commonName?: string;
+  /** Country, provided by the CSR. */
+  country?: string;
+  /** The Certificate Signing Request (CSR). Must be newline-encoded. */
+  csr?: string;
+  /** Date that the Client Certificate expires. */
+  expiresOn?: string;
+  /** Unique identifier of the Client Certificate. */
+  fingerprintSha256?: string;
+  /** Date that the Client Certificate was issued by the Certificate Authority. */
+  issuedOn?: string;
+  /** Location, provided by the CSR. */
+  location?: string;
+  /** Organization, provided by the CSR. */
+  organization?: string;
+  /** Organizational Unit, provided by the CSR. */
+  organizationalUnit?: string;
+  /** The serial number on the created Client Certificate. */
+  serialNumber?: string;
+  /** The type of hash used for the Client Certificate.. */
+  signature?: string;
+  /** Subject Key Identifier. */
+  ski?: string;
+  /** State, provided by the CSR. */
+  state?: string;
+  /** Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions. */
+  status?: unknown;
+  /** The number of days the Client Certificate will be valid after the issued_on date. */
+  validityDays?: number;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    certificate: S.optional(S.String),
+    certificateAuthority: S.optional(
+      GetResponseCertificateAuthority.pipe(T.Body("certificate_authority")),
+    ),
+    commonName: S.optional(S.String.pipe(T.Body("common_name"))),
+    country: S.optional(S.String),
+    csr: S.optional(S.String),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    fingerprintSha256: S.optional(S.String.pipe(T.Body("fingerprint_sha256"))),
+    issuedOn: S.optional(S.String.pipe(T.Body("issued_on"))),
+    location: S.optional(S.String),
+    organization: S.optional(S.String),
+    organizationalUnit: S.optional(
+      S.String.pipe(T.Body("organizational_unit")),
+    ),
+    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
+    signature: S.optional(S.String),
+    ski: S.optional(S.String),
+    state: S.optional(S.String),
+    status: S.optional(S.Unknown),
+    validityDays: S.optional(S.Number.pipe(T.Body("validity_days"))),
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
@@ -125,20 +414,26 @@ export type ListRequestStatus =
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Limit to the number of records returned. */
   limit?: number;
+  /** Offset the results. */
   offset?: number;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
+  /** Number of records per page. */
+  perPage?: number;
+  /** Client Certitifcate Status to filter results by. */
   status?: ListRequestStatus;
 }
 export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     status: S.optional(ListRequestStatus.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -149,12 +444,91 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
 
-export type ListResultList = unknown[];
+export interface ListResultItemCertificateAuthority {
+  id?: string;
+  name?: string;
+}
+export const ListResultItemCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListResultItemCertificateAuthority",
+}) as any as S.Schema<ListResultItemCertificateAuthority>;
+
+export interface ListResultItem {
+  /** Identifier. */
+  id?: string;
+  /** The Client Certificate PEM. */
+  certificate?: string;
+  /** Certificate Authority used to issue the Client Certificate. */
+  certificateAuthority?: ListResultItemCertificateAuthority;
+  /** Common Name of the Client Certificate. */
+  commonName?: string;
+  /** Country, provided by the CSR. */
+  country?: string;
+  /** The Certificate Signing Request (CSR). Must be newline-encoded. */
+  csr?: string;
+  /** Date that the Client Certificate expires. */
+  expiresOn?: string;
+  /** Unique identifier of the Client Certificate. */
+  fingerprintSha256?: string;
+  /** Date that the Client Certificate was issued by the Certificate Authority. */
+  issuedOn?: string;
+  /** Location, provided by the CSR. */
+  location?: string;
+  /** Organization, provided by the CSR. */
+  organization?: string;
+  /** Organizational Unit, provided by the CSR. */
+  organizationalUnit?: string;
+  /** The serial number on the created Client Certificate. */
+  serialNumber?: string;
+  /** The type of hash used for the Client Certificate.. */
+  signature?: string;
+  /** Subject Key Identifier. */
+  ski?: string;
+  /** State, provided by the CSR. */
+  state?: string;
+  /** Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions. */
+  status?: unknown;
+  /** The number of days the Client Certificate will be valid after the issued_on date. */
+  validityDays?: number;
+}
+export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    certificate: S.optional(S.String),
+    certificateAuthority: S.optional(
+      ListResultItemCertificateAuthority.pipe(T.Body("certificate_authority")),
+    ),
+    commonName: S.optional(S.String.pipe(T.Body("common_name"))),
+    country: S.optional(S.String),
+    csr: S.optional(S.String),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    fingerprintSha256: S.optional(S.String.pipe(T.Body("fingerprint_sha256"))),
+    issuedOn: S.optional(S.String.pipe(T.Body("issued_on"))),
+    location: S.optional(S.String),
+    organization: S.optional(S.String),
+    organizationalUnit: S.optional(
+      S.String.pipe(T.Body("organizational_unit")),
+    ),
+    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
+    signature: S.optional(S.String),
+    ski: S.optional(S.String),
+    state: S.optional(S.String),
+    status: S.optional(S.Unknown),
+    validityDays: S.optional(S.Number.pipe(T.Body("validity_days"))),
+  }),
+).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
+
+export type ListResultList = ListResultItem[];
 export const ListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
 export interface ListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
 export const ListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -163,11 +537,12 @@ export const ListResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
 
+export type CreateError = CloudflareOpError;
 /** Create a new API Shield mTLS Client Certificate. */
-export const Create: API.OperationMethod<
+export const create: API.OperationMethod<
   CreateRequest,
   CreateResponse,
-  CloudflareOpError,
+  CreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRequest,
@@ -176,11 +551,12 @@ export const Create: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DeleteError = CloudflareOpError;
 /** Set a API Shield mTLS Client Certificate to pending_revocation status for processing to revoked status. */
 export const Delete: API.OperationMethod<
   DeleteRequest,
   DeleteResponse,
-  CloudflareOpError,
+  DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequest,
@@ -189,11 +565,12 @@ export const Delete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type EditError = CloudflareOpError;
 /** If a API Shield mTLS Client Certificate is in a pending_revocation state, you may reactivate it with this endpoint. */
-export const Edit: API.OperationMethod<
+export const edit: API.OperationMethod<
   EditRequest,
   EditResponse,
-  CloudflareOpError,
+  EditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EditRequest,
@@ -202,11 +579,12 @@ export const Edit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Get Details for a single mTLS API Shield Client Certificate. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -215,11 +593,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ListError = CloudflareOpError;
 /** List all of your Zone's API Shield mTLS Client Certificates by Status and/or using Pagination. */
-export const List: API.OperationMethod<
+export const list: API.OperationMethod<
   ListRequest,
   ListResponse,
-  CloudflareOpError,
+  ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRequest,

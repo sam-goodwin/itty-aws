@@ -17,10 +17,162 @@
     ]
   },
   "shapes": {
+    "com.cloudflare.rulesets#CreateRequestRulesItem": {
+      "type": "structure",
+      "members": {
+        "BlockRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BlockRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "Challenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Challenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "CompressResponseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CompressResponseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "DDoSDynamicRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DDoSDynamicRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ExecuteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ExecuteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ForceConnectionCloseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ForceConnectionCloseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "JSChallenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "JSChallenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogCustomFieldRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogCustomFieldRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ManagedChallengeRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ManagedChallengeRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RedirectRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RedirectRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RewriteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RewriteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RouteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RouteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ScoreRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ScoreRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ServeErrorRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ServeErrorRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheControl_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheControl object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheSettingsRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheSettingsRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheTags_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheTags object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetConfigRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetConfigRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SkipRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SkipRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "TransformResponseHTML_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "TransformResponseHTML object { last_updated, version, id, 10 more }"
+          }
+        }
+      }
+    },
     "com.cloudflare.rulesets#CreateRequestRulesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.rulesets#CreateRequestRulesItem"
       }
     },
     "com.cloudflare.rulesets#CreateRequest": {
@@ -78,10 +230,162 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.rulesets#CreateResponseRulesItem": {
+      "type": "structure",
+      "members": {
+        "BlockRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BlockRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "Challenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Challenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "CompressResponseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CompressResponseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "DDoSDynamicRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DDoSDynamicRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ExecuteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ExecuteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ForceConnectionCloseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ForceConnectionCloseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "JSChallenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "JSChallenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogCustomFieldRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogCustomFieldRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ManagedChallengeRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ManagedChallengeRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RedirectRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RedirectRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RewriteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RewriteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RouteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RouteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ScoreRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ScoreRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ServeErrorRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ServeErrorRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheControl_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheControl object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheSettingsRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheSettingsRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheTags_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheTags object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetConfigRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetConfigRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SkipRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SkipRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "TransformResponseHTML_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "TransformResponseHTML object { last_updated, version, id, 10 more }"
+          }
+        }
+      }
+    },
     "com.cloudflare.rulesets#CreateResponseRulesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.rulesets#CreateResponseRulesItem"
       }
     },
     "com.cloudflare.rulesets#CreateResponse": {
@@ -243,10 +547,162 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.rulesets#GetResponseRulesItem": {
+      "type": "structure",
+      "members": {
+        "BlockRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BlockRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "Challenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Challenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "CompressResponseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CompressResponseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "DDoSDynamicRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DDoSDynamicRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ExecuteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ExecuteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ForceConnectionCloseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ForceConnectionCloseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "JSChallenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "JSChallenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogCustomFieldRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogCustomFieldRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ManagedChallengeRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ManagedChallengeRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RedirectRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RedirectRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RewriteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RewriteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RouteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RouteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ScoreRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ScoreRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ServeErrorRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ServeErrorRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheControl_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheControl object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheSettingsRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheSettingsRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheTags_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheTags object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetConfigRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetConfigRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SkipRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SkipRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "TransformResponseHTML_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "TransformResponseHTML object { last_updated, version, id, 10 more }"
+          }
+        }
+      }
+    },
     "com.cloudflare.rulesets#GetResponseRulesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.rulesets#GetResponseRulesItem"
       }
     },
     "com.cloudflare.rulesets#GetResponse": {
@@ -459,10 +915,162 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.rulesets#UpdateRequestRulesItem": {
+      "type": "structure",
+      "members": {
+        "BlockRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BlockRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "Challenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Challenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "CompressResponseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CompressResponseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "DDoSDynamicRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DDoSDynamicRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ExecuteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ExecuteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ForceConnectionCloseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ForceConnectionCloseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "JSChallenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "JSChallenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogCustomFieldRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogCustomFieldRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ManagedChallengeRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ManagedChallengeRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RedirectRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RedirectRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RewriteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RewriteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RouteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RouteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ScoreRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ScoreRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ServeErrorRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ServeErrorRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheControl_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheControl object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheSettingsRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheSettingsRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheTags_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheTags object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetConfigRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetConfigRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SkipRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SkipRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "TransformResponseHTML_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "TransformResponseHTML object { last_updated, version, id, 10 more }"
+          }
+        }
+      }
+    },
     "com.cloudflare.rulesets#UpdateRequestRulesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.rulesets#UpdateRequestRulesItem"
       }
     },
     "com.cloudflare.rulesets#UpdateRequest": {
@@ -525,10 +1133,162 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.rulesets#UpdateResponseRulesItem": {
+      "type": "structure",
+      "members": {
+        "BlockRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BlockRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "Challenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Challenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "CompressResponseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CompressResponseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "DDoSDynamicRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DDoSDynamicRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ExecuteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ExecuteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ForceConnectionCloseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ForceConnectionCloseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "JSChallenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "JSChallenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogCustomFieldRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogCustomFieldRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ManagedChallengeRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ManagedChallengeRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RedirectRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RedirectRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RewriteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RewriteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RouteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RouteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ScoreRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ScoreRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ServeErrorRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ServeErrorRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheControl_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheControl object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheSettingsRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheSettingsRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheTags_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheTags object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetConfigRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetConfigRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SkipRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SkipRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "TransformResponseHTML_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "TransformResponseHTML object { last_updated, version, id, 10 more }"
+          }
+        }
+      }
+    },
     "com.cloudflare.rulesets#UpdateResponseRulesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.rulesets#UpdateResponseRulesItem"
       }
     },
     "com.cloudflare.rulesets#UpdateResponse": {
@@ -643,10 +1403,162 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.rulesets#PhasesGetResponseRulesItem": {
+      "type": "structure",
+      "members": {
+        "BlockRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BlockRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "Challenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Challenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "CompressResponseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CompressResponseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "DDoSDynamicRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DDoSDynamicRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ExecuteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ExecuteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ForceConnectionCloseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ForceConnectionCloseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "JSChallenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "JSChallenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogCustomFieldRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogCustomFieldRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ManagedChallengeRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ManagedChallengeRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RedirectRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RedirectRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RewriteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RewriteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RouteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RouteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ScoreRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ScoreRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ServeErrorRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ServeErrorRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheControl_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheControl object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheSettingsRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheSettingsRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheTags_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheTags object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetConfigRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetConfigRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SkipRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SkipRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "TransformResponseHTML_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "TransformResponseHTML object { last_updated, version, id, 10 more }"
+          }
+        }
+      }
+    },
     "com.cloudflare.rulesets#PhasesGetResponseRulesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.rulesets#PhasesGetResponseRulesItem"
       }
     },
     "com.cloudflare.rulesets#PhasesGetResponse": {
@@ -731,10 +1643,162 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.rulesets#PhasesUpdateRequestRulesItem": {
+      "type": "structure",
+      "members": {
+        "BlockRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BlockRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "Challenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Challenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "CompressResponseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CompressResponseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "DDoSDynamicRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DDoSDynamicRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ExecuteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ExecuteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ForceConnectionCloseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ForceConnectionCloseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "JSChallenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "JSChallenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogCustomFieldRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogCustomFieldRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ManagedChallengeRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ManagedChallengeRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RedirectRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RedirectRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RewriteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RewriteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RouteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RouteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ScoreRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ScoreRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ServeErrorRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ServeErrorRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheControl_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheControl object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheSettingsRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheSettingsRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheTags_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheTags object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetConfigRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetConfigRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SkipRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SkipRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "TransformResponseHTML_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "TransformResponseHTML object { last_updated, version, id, 10 more }"
+          }
+        }
+      }
+    },
     "com.cloudflare.rulesets#PhasesUpdateRequestRulesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.rulesets#PhasesUpdateRequestRulesItem"
       }
     },
     "com.cloudflare.rulesets#PhasesUpdateRequest": {
@@ -785,10 +1849,162 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.rulesets#PhasesUpdateResponseRulesItem": {
+      "type": "structure",
+      "members": {
+        "BlockRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BlockRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "Challenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Challenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "CompressResponseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CompressResponseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "DDoSDynamicRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DDoSDynamicRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ExecuteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ExecuteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ForceConnectionCloseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ForceConnectionCloseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "JSChallenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "JSChallenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogCustomFieldRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogCustomFieldRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ManagedChallengeRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ManagedChallengeRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RedirectRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RedirectRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RewriteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RewriteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RouteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RouteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ScoreRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ScoreRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ServeErrorRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ServeErrorRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheControl_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheControl object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheSettingsRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheSettingsRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheTags_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheTags object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetConfigRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetConfigRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SkipRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SkipRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "TransformResponseHTML_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "TransformResponseHTML object { last_updated, version, id, 10 more }"
+          }
+        }
+      }
+    },
     "com.cloudflare.rulesets#PhasesUpdateResponseRulesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.rulesets#PhasesUpdateResponseRulesItem"
       }
     },
     "com.cloudflare.rulesets#PhasesUpdateResponse": {
@@ -911,10 +2127,162 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.rulesets#PhasesVersionsGetResponseRulesItem": {
+      "type": "structure",
+      "members": {
+        "BlockRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BlockRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "Challenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Challenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "CompressResponseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CompressResponseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "DDoSDynamicRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DDoSDynamicRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ExecuteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ExecuteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ForceConnectionCloseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ForceConnectionCloseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "JSChallenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "JSChallenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogCustomFieldRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogCustomFieldRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ManagedChallengeRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ManagedChallengeRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RedirectRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RedirectRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RewriteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RewriteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RouteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RouteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ScoreRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ScoreRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ServeErrorRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ServeErrorRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheControl_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheControl object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheSettingsRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheSettingsRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheTags_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheTags object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetConfigRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetConfigRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SkipRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SkipRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "TransformResponseHTML_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "TransformResponseHTML object { last_updated, version, id, 10 more }"
+          }
+        }
+      }
+    },
     "com.cloudflare.rulesets#PhasesVersionsGetResponseRulesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.rulesets#PhasesVersionsGetResponseRulesItem"
       }
     },
     "com.cloudflare.rulesets#PhasesVersionsGetResponse": {
@@ -1121,6 +2489,782 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyBlockRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyBlockRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyBlockRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyResponseCompressionRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyResponseCompressionRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyResponseCompressionRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyDDoSDynamicRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyDDoSDynamicRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyDDoSDynamicRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyExecuteRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyExecuteRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyExecuteRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyForceConnectionCloseRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyForceConnectionCloseRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyForceConnectionCloseRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyLogRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyLogRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyLogRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyLogCustomFieldRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyLogCustomFieldRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyLogCustomFieldRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyManagedChallengeRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyManagedChallengeRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyManagedChallengeRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyRedirectRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyRedirectRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyRedirectRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyRewriteRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyRewriteRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyRewriteRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyRouteRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyRouteRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyRouteRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyScoreRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyScoreRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyScoreRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyServeErrorRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodyServeErrorRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyServeErrorRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodySetCacheSettingsRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodySetCacheSettingsRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodySetCacheSettingsRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodySetConfigurationRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodySetConfigurationRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodySetConfigurationRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodySkipRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBodySkipRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodySkipRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequestBody": {
+      "type": "structure",
+      "members": {
+        "BlockRule": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyBlockRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ChallengeRule_object___last_updated__version__id__11_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ChallengeRule object { last_updated, version, id, 11 more }"
+          }
+        },
+        "ResponseCompressionRule": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyResponseCompressionRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "DDoSDynamicRule": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyDDoSDynamicRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ExecuteRule": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyExecuteRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ForceConnectionCloseRule": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyForceConnectionCloseRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "JavaScriptChallengeRule_object___last_updated__version__id__11_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "JavaScriptChallengeRule object { last_updated, version, id, 11 more }"
+          }
+        },
+        "LogRule": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyLogRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "LogCustomFieldRule": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyLogCustomFieldRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ManagedChallengeRule": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyManagedChallengeRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "RedirectRule": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyRedirectRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "RewriteRule": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyRewriteRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "RouteRule": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyRouteRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ScoreRule": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyScoreRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ServeErrorRule": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodyServeErrorRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "SetCacheControlRule_object___last_updated__version__id__11_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheControlRule object { last_updated, version, id, 11 more }"
+          }
+        },
+        "SetCacheSettingsRule": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodySetCacheSettingsRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "SetCacheTagsRule_object___last_updated__version__id__11_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheTagsRule object { last_updated, version, id, 11 more }"
+          }
+        },
+        "SetConfigurationRule": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodySetConfigurationRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "SkipRule": {
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBodySkipRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "TransformResponseHTMLRule_object___last_updated__version__id__11_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "TransformResponseHTMLRule object { last_updated, version, id, 11 more }"
+          }
+        }
+      }
+    },
     "com.cloudflare.rulesets#RulesCreateRequest": {
       "type": "structure",
       "members": {
@@ -1147,7 +3291,7 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.rulesets#RulesCreateRequestBody",
           "traits": {
             "smithy.api#required": {}
           }
@@ -1157,10 +3301,162 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.rulesets#RulesCreateResponseRulesItem": {
+      "type": "structure",
+      "members": {
+        "BlockRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BlockRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "Challenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Challenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "CompressResponseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CompressResponseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "DDoSDynamicRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DDoSDynamicRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ExecuteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ExecuteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ForceConnectionCloseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ForceConnectionCloseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "JSChallenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "JSChallenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogCustomFieldRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogCustomFieldRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ManagedChallengeRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ManagedChallengeRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RedirectRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RedirectRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RewriteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RewriteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RouteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RouteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ScoreRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ScoreRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ServeErrorRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ServeErrorRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheControl_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheControl object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheSettingsRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheSettingsRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheTags_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheTags object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetConfigRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetConfigRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SkipRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SkipRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "TransformResponseHTML_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "TransformResponseHTML object { last_updated, version, id, 10 more }"
+          }
+        }
+      }
+    },
     "com.cloudflare.rulesets#RulesCreateResponseRulesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.rulesets#RulesCreateResponseRulesItem"
       }
     },
     "com.cloudflare.rulesets#RulesCreateResponse": {
@@ -1282,10 +3578,162 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.rulesets#RulesDeleteResponseRulesItem": {
+      "type": "structure",
+      "members": {
+        "BlockRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BlockRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "Challenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Challenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "CompressResponseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CompressResponseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "DDoSDynamicRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DDoSDynamicRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ExecuteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ExecuteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ForceConnectionCloseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ForceConnectionCloseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "JSChallenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "JSChallenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogCustomFieldRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogCustomFieldRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ManagedChallengeRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ManagedChallengeRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RedirectRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RedirectRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RewriteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RewriteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RouteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RouteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ScoreRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ScoreRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ServeErrorRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ServeErrorRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheControl_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheControl object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheSettingsRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheSettingsRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheTags_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheTags object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetConfigRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetConfigRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SkipRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SkipRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "TransformResponseHTML_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "TransformResponseHTML object { last_updated, version, id, 10 more }"
+          }
+        }
+      }
+    },
     "com.cloudflare.rulesets#RulesDeleteResponseRulesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.rulesets#RulesDeleteResponseRulesItem"
       }
     },
     "com.cloudflare.rulesets#RulesDeleteResponse": {
@@ -1370,6 +3818,782 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.rulesets#RulesEditRequestBodyBlockRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyBlockRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyBlockRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyResponseCompressionRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyResponseCompressionRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyResponseCompressionRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyDDoSDynamicRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyDDoSDynamicRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyDDoSDynamicRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyExecuteRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyExecuteRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyExecuteRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyForceConnectionCloseRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyForceConnectionCloseRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyForceConnectionCloseRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyLogRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyLogRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyLogRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyLogCustomFieldRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyLogCustomFieldRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyLogCustomFieldRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyManagedChallengeRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyManagedChallengeRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyManagedChallengeRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyRedirectRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyRedirectRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyRedirectRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyRewriteRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyRewriteRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyRewriteRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyRouteRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyRouteRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyRouteRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyScoreRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyScoreRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyScoreRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyServeErrorRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodyServeErrorRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyServeErrorRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodySetCacheSettingsRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodySetCacheSettingsRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodySetCacheSettingsRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodySetConfigurationRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodySetConfigurationRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodySetConfigurationRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodySkipRulePosition": {
+      "type": "structure",
+      "members": {
+        "BeforePosition_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BeforePosition object { before }"
+          }
+        },
+        "AfterPosition_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "AfterPosition object { after }"
+          }
+        },
+        "IndexPosition_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "IndexPosition object { index }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBodySkipRule": {
+      "type": "structure",
+      "members": {
+        "position": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodySkipRulePosition",
+          "traits": {
+            "smithy.api#documentation": "An object configuring where the rule will be placed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequestBody": {
+      "type": "structure",
+      "members": {
+        "BlockRule": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyBlockRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ChallengeRule_object___last_updated__version__id__11_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ChallengeRule object { last_updated, version, id, 11 more }"
+          }
+        },
+        "ResponseCompressionRule": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyResponseCompressionRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "DDoSDynamicRule": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyDDoSDynamicRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ExecuteRule": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyExecuteRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ForceConnectionCloseRule": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyForceConnectionCloseRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "JavaScriptChallengeRule_object___last_updated__version__id__11_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "JavaScriptChallengeRule object { last_updated, version, id, 11 more }"
+          }
+        },
+        "LogRule": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyLogRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "LogCustomFieldRule": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyLogCustomFieldRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ManagedChallengeRule": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyManagedChallengeRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "RedirectRule": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyRedirectRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "RewriteRule": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyRewriteRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "RouteRule": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyRouteRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ScoreRule": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyScoreRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ServeErrorRule": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodyServeErrorRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "SetCacheControlRule_object___last_updated__version__id__11_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheControlRule object { last_updated, version, id, 11 more }"
+          }
+        },
+        "SetCacheSettingsRule": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodySetCacheSettingsRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "SetCacheTagsRule_object___last_updated__version__id__11_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheTagsRule object { last_updated, version, id, 11 more }"
+          }
+        },
+        "SetConfigurationRule": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodySetConfigurationRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "SkipRule": {
+          "target": "com.cloudflare.rulesets#RulesEditRequestBodySkipRule",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "TransformResponseHTMLRule_object___last_updated__version__id__11_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "TransformResponseHTMLRule object { last_updated, version, id, 11 more }"
+          }
+        }
+      }
+    },
     "com.cloudflare.rulesets#RulesEditRequest": {
       "type": "structure",
       "members": {
@@ -1404,7 +4628,7 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.rulesets#RulesEditRequestBody",
           "traits": {
             "smithy.api#required": {}
           }
@@ -1414,10 +4638,162 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.rulesets#RulesEditResponseRulesItem": {
+      "type": "structure",
+      "members": {
+        "BlockRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BlockRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "Challenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Challenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "CompressResponseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CompressResponseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "DDoSDynamicRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DDoSDynamicRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ExecuteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ExecuteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ForceConnectionCloseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ForceConnectionCloseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "JSChallenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "JSChallenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogCustomFieldRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogCustomFieldRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ManagedChallengeRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ManagedChallengeRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RedirectRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RedirectRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RewriteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RewriteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RouteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RouteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ScoreRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ScoreRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ServeErrorRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ServeErrorRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheControl_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheControl object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheSettingsRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheSettingsRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheTags_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheTags object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetConfigRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetConfigRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SkipRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SkipRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "TransformResponseHTML_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "TransformResponseHTML object { last_updated, version, id, 10 more }"
+          }
+        }
+      }
+    },
     "com.cloudflare.rulesets#RulesEditResponseRulesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.rulesets#RulesEditResponseRulesItem"
       }
     },
     "com.cloudflare.rulesets#RulesEditResponse": {
@@ -1595,10 +4971,162 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.rulesets#VersionsGetResponseRulesItem": {
+      "type": "structure",
+      "members": {
+        "BlockRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "BlockRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "Challenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Challenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "CompressResponseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CompressResponseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "DDoSDynamicRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "DDoSDynamicRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ExecuteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ExecuteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ForceConnectionCloseRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ForceConnectionCloseRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "JSChallenge_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "JSChallenge object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "LogCustomFieldRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "LogCustomFieldRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ManagedChallengeRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ManagedChallengeRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RedirectRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RedirectRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RewriteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RewriteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "RouteRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "RouteRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ScoreRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ScoreRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "ServeErrorRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "ServeErrorRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheControl_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheControl object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheSettingsRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheSettingsRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetCacheTags_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetCacheTags object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SetConfigRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SetConfigRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "SkipRule_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "SkipRule object { last_updated, version, id, 10 more }"
+          }
+        },
+        "TransformResponseHTML_object___last_updated__version__id__10_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "TransformResponseHTML object { last_updated, version, id, 10 more }"
+          }
+        }
+      }
+    },
     "com.cloudflare.rulesets#VersionsGetResponseRulesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.rulesets#VersionsGetResponseRulesItem"
       }
     },
     "com.cloudflare.rulesets#VersionsGetResponse": {

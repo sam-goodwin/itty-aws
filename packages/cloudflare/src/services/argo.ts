@@ -13,12 +13,14 @@ export type SmartRoutingEditRequestValue = "on" | "off" | (string & {});
 export const SmartRoutingEditRequestValue = /*@__PURE__*/ S.String;
 
 export interface SmartRoutingEditRequest {
-  zone_id: string;
+  /** Specifies the zone associated with the API call. */
+  zoneId: string;
+  /** Specifies the enablement value of Argo Smart Routing. */
   value: SmartRoutingEditRequestValue;
 }
 export const SmartRoutingEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     value: SmartRoutingEditRequestValue,
   }).pipe(
     T.Http({
@@ -36,28 +38,33 @@ export const SmartRoutingEditResponseValue = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SmartRoutingEditResponse {
+  /** Specifies the identifier of the Argo Smart Routing setting. */
   id: string;
+  /** Specifies if the setting is editable. */
   editable: boolean;
+  /** Specifies the enablement value of Argo Smart Routing. */
   value: SmartRoutingEditResponseValue;
-  modified_on?: string;
+  /** Specifies the time when the setting was last modified. */
+  modifiedOn?: string;
 }
 export const SmartRoutingEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     editable: S.Boolean,
     value: SmartRoutingEditResponseValue,
-    modified_on: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
   }),
 ).annotate({
   identifier: "SmartRoutingEditResponse",
 }) as any as S.Schema<SmartRoutingEditResponse>;
 
 export interface SmartRoutingGetRequest {
-  zone_id: string;
+  /** Specifies the zone associated with the API call. */
+  zoneId: string;
 }
 export const SmartRoutingGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -74,17 +81,21 @@ export const SmartRoutingGetResponseValue = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SmartRoutingGetResponse {
+  /** Specifies the identifier of the Argo Smart Routing setting. */
   id: string;
+  /** Specifies if the setting is editable. */
   editable: boolean;
+  /** Specifies the enablement value of Argo Smart Routing. */
   value: SmartRoutingGetResponseValue;
-  modified_on?: string;
+  /** Specifies the time when the setting was last modified. */
+  modifiedOn?: string;
 }
 export const SmartRoutingGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     editable: S.Boolean,
     value: SmartRoutingGetResponseValue,
-    modified_on: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
   }),
 ).annotate({
   identifier: "SmartRoutingGetResponse",
@@ -94,12 +105,14 @@ export type TieredCachingEditRequestValue = "on" | "off" | (string & {});
 export const TieredCachingEditRequestValue = /*@__PURE__*/ S.String;
 
 export interface TieredCachingEditRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Enables Tiered Caching. */
   value: TieredCachingEditRequestValue;
 }
 export const TieredCachingEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     value: TieredCachingEditRequestValue,
   }).pipe(
     T.Http({
@@ -120,28 +133,33 @@ export const TieredCachingEditResponseValue = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TieredCachingEditResponse {
+  /** The identifier of the caching setting. */
   id: TieredCachingEditResponseId;
+  /** Whether the setting is editable. */
   editable: boolean;
+  /** Value of the Tiered Cache zone setting. */
   value: TieredCachingEditResponseValue;
-  modified_on?: string;
+  /** Last time this setting was modified. */
+  modifiedOn?: string;
 }
 export const TieredCachingEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: TieredCachingEditResponseId,
     editable: S.Boolean,
     value: TieredCachingEditResponseValue,
-    modified_on: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
   }),
 ).annotate({
   identifier: "TieredCachingEditResponse",
 }) as any as S.Schema<TieredCachingEditResponse>;
 
 export interface TieredCachingGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const TieredCachingGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -161,27 +179,32 @@ export const TieredCachingGetResponseValue = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TieredCachingGetResponse {
+  /** The identifier of the caching setting. */
   id: TieredCachingGetResponseId;
+  /** Whether the setting is editable. */
   editable: boolean;
+  /** Value of the Tiered Cache zone setting. */
   value: TieredCachingGetResponseValue;
-  modified_on?: string;
+  /** Last time this setting was modified. */
+  modifiedOn?: string;
 }
 export const TieredCachingGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: TieredCachingGetResponseId,
     editable: S.Boolean,
     value: TieredCachingGetResponseValue,
-    modified_on: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
   }),
 ).annotate({
   identifier: "TieredCachingGetResponse",
 }) as any as S.Schema<TieredCachingGetResponse>;
 
+export type SmartRoutingEditError = CloudflareOpError;
 /** Configures the value of the Argo Smart Routing enablement setting. */
-export const SmartRoutingEdit: API.OperationMethod<
+export const smartRoutingEdit: API.OperationMethod<
   SmartRoutingEditRequest,
   SmartRoutingEditResponse,
-  CloudflareOpError,
+  SmartRoutingEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SmartRoutingEditRequest,
@@ -190,11 +213,12 @@ export const SmartRoutingEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SmartRoutingGetError = CloudflareOpError;
 /** Retrieves the value of Argo Smart Routing enablement setting. */
-export const SmartRoutingGet: API.OperationMethod<
+export const smartRoutingGet: API.OperationMethod<
   SmartRoutingGetRequest,
   SmartRoutingGetResponse,
-  CloudflareOpError,
+  SmartRoutingGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SmartRoutingGetRequest,
@@ -203,11 +227,12 @@ export const SmartRoutingGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type TieredCachingEditError = CloudflareOpError;
 /** Tiered Cache works by dividing Cloudflare's data centers into a hierarchy of lower-tiers and upper-tiers. If content is not cached in lower-tier data centers (generally the ones closest to a visitor), the lower-tier must ask an upper-tier to see if it has the content. If the upper-tier does not have the content, only the upper-tier can ask the origin for content. This practice improves bandwidth efficiency by limiting the number of data centers that can ask the origin for content, which reduces origin load and makes websites more cost-effective to operate. Additionally, Tiered Cache concentrates connections to origin servers so they come from a small number of data centers rather than the full set of network locations. This results in fewer open connections using server resources. */
-export const TieredCachingEdit: API.OperationMethod<
+export const tieredCachingEdit: API.OperationMethod<
   TieredCachingEditRequest,
   TieredCachingEditResponse,
-  CloudflareOpError,
+  TieredCachingEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: TieredCachingEditRequest,
@@ -216,11 +241,12 @@ export const TieredCachingEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type TieredCachingGetError = CloudflareOpError;
 /** Tiered Cache works by dividing Cloudflare's data centers into a hierarchy of lower-tiers and upper-tiers. If content is not cached in lower-tier data centers (generally the ones closest to a visitor), the lower-tier must ask an upper-tier to see if it has the content. If the upper-tier does not have the content, only the upper-tier can ask the origin for content. This practice improves bandwidth efficiency by limiting the number of data centers that can ask the origin for content, which reduces origin load and makes websites more cost-effective to operate. Additionally, Tiered Cache concentrates connections to origin servers so they come from a small number of data centers rather than the full set of network locations. This results in fewer open connections using server resources. */
-export const TieredCachingGet: API.OperationMethod<
+export const tieredCachingGet: API.OperationMethod<
   TieredCachingGetRequest,
   TieredCachingGetResponse,
-  CloudflareOpError,
+  TieredCachingGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: TieredCachingGetRequest,

@@ -17,14 +17,17 @@ export type SettingsTlsDeleteRequestSettingId =
 export const SettingsTlsDeleteRequestSettingId = /*@__PURE__*/ S.String;
 
 export interface SettingsTlsDeleteRequest {
-  zone_id: string;
-  setting_id: SettingsTlsDeleteRequestSettingId;
+  /** Identifier. */
+  zoneId: string;
+  /** The TLS Setting name. */
+  settingId: SettingsTlsDeleteRequestSettingId;
+  /** The hostname for which the tls settings are set. */
   hostname: string;
 }
 export const SettingsTlsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    setting_id: SettingsTlsDeleteRequestSettingId.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    settingId: SettingsTlsDeleteRequestSettingId.pipe(T.Label("setting_id")),
     hostname: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -37,21 +40,42 @@ export const SettingsTlsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsTlsDeleteRequest",
 }) as any as S.Schema<SettingsTlsDeleteRequest>;
 
+export interface SettingsTlsDeleteResponseValue {
+  "10Or11Or12Or3More": unknown;
+  /** Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings. */
+  arrayOfString: unknown;
+}
+export const SettingsTlsDeleteResponseValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "10Or11Or12Or3More": S.Unknown.pipe(
+      T.Body('"1.0" or "1.1" or "1.2" or 3 more'),
+    ),
+    arrayOfString: S.Unknown.pipe(T.Body("array of string")),
+  }),
+).annotate({
+  identifier: "SettingsTlsDeleteResponseValue",
+}) as any as S.Schema<SettingsTlsDeleteResponseValue>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SettingsTlsDeleteResponse {
-  created_at?: string;
+  /** This is the time the tls setting was originally created for this hostname. */
+  createdAt?: string;
+  /** The hostname for which the tls settings are set. */
   hostname?: string;
+  /** Deployment status for the given tls setting. */
   status?: string;
-  updated_at?: string;
-  value?: unknown;
+  /** This is the time the tls setting was updated. */
+  updatedAt?: string;
+  /** The TLS setting value. */
+  value?: SettingsTlsDeleteResponseValue;
 }
 export const SettingsTlsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created_at: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     hostname: S.optional(S.String),
     status: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    value: S.optional(S.Unknown),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    value: S.optional(SettingsTlsDeleteResponseValue),
   }),
 ).annotate({
   identifier: "SettingsTlsDeleteResponse",
@@ -65,13 +89,15 @@ export type SettingsTlsGetRequestSettingId =
 export const SettingsTlsGetRequestSettingId = /*@__PURE__*/ S.String;
 
 export interface SettingsTlsGetRequest {
-  zone_id: string;
-  setting_id: SettingsTlsGetRequestSettingId;
+  /** Identifier. */
+  zoneId: string;
+  /** The TLS Setting name. */
+  settingId: SettingsTlsGetRequestSettingId;
 }
 export const SettingsTlsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    setting_id: SettingsTlsGetRequestSettingId.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    settingId: SettingsTlsGetRequestSettingId.pipe(T.Label("setting_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -83,20 +109,41 @@ export const SettingsTlsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsTlsGetRequest",
 }) as any as S.Schema<SettingsTlsGetRequest>;
 
+export interface SettingsTlsGetResultItemValue {
+  "10Or11Or12Or3More": unknown;
+  /** Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings. */
+  arrayOfString: unknown;
+}
+export const SettingsTlsGetResultItemValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "10Or11Or12Or3More": S.Unknown.pipe(
+      T.Body('"1.0" or "1.1" or "1.2" or 3 more'),
+    ),
+    arrayOfString: S.Unknown.pipe(T.Body("array of string")),
+  }),
+).annotate({
+  identifier: "SettingsTlsGetResultItemValue",
+}) as any as S.Schema<SettingsTlsGetResultItemValue>;
+
 export interface SettingsTlsGetResultItem {
-  created_at?: string;
+  /** This is the time the tls setting was originally created for this hostname. */
+  createdAt?: string;
+  /** The hostname for which the tls settings are set. */
   hostname?: string;
+  /** Deployment status for the given tls setting. */
   status?: string;
-  updated_at?: string;
-  value?: unknown;
+  /** This is the time the tls setting was updated. */
+  updatedAt?: string;
+  /** The TLS setting value. */
+  value?: SettingsTlsGetResultItemValue;
 }
 export const SettingsTlsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created_at: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     hostname: S.optional(S.String),
     status: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    value: S.optional(S.Unknown),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    value: S.optional(SettingsTlsGetResultItemValue),
   }),
 ).annotate({
   identifier: "SettingsTlsGetResultItem",
@@ -108,6 +155,7 @@ export const SettingsTlsGetResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SettingsTlsGetResultList>;
 
 export interface SettingsTlsGetResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SettingsTlsGetResultList;
 }
 export const SettingsTlsGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -125,18 +173,38 @@ export type SettingsTlsUpdateRequestSettingId =
   | (string & {});
 export const SettingsTlsUpdateRequestSettingId = /*@__PURE__*/ S.String;
 
+export interface SettingsTlsUpdateRequestValue {
+  "10Or11Or12Or3More": unknown;
+  /** Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings. */
+  arrayOfString: unknown;
+}
+export const SettingsTlsUpdateRequestValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "10Or11Or12Or3More": S.Unknown.pipe(
+      T.Body('"1.0" or "1.1" or "1.2" or 3 more'),
+    ),
+    arrayOfString: S.Unknown.pipe(T.Body("array of string")),
+  }),
+).annotate({
+  identifier: "SettingsTlsUpdateRequestValue",
+}) as any as S.Schema<SettingsTlsUpdateRequestValue>;
+
 export interface SettingsTlsUpdateRequest {
-  zone_id: string;
-  setting_id: SettingsTlsUpdateRequestSettingId;
+  /** Identifier. */
+  zoneId: string;
+  /** The TLS Setting name. */
+  settingId: SettingsTlsUpdateRequestSettingId;
+  /** The hostname for which the tls settings are set. */
   hostname: string;
-  value: unknown;
+  /** The TLS setting value. */
+  value: SettingsTlsUpdateRequestValue;
 }
 export const SettingsTlsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    setting_id: SettingsTlsUpdateRequestSettingId.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    settingId: SettingsTlsUpdateRequestSettingId.pipe(T.Label("setting_id")),
     hostname: S.String.pipe(T.Label()),
-    value: S.Unknown,
+    value: SettingsTlsUpdateRequestValue,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -148,22 +216,53 @@ export const SettingsTlsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsTlsUpdateRequest",
 }) as any as S.Schema<SettingsTlsUpdateRequest>;
 
+export interface SettingsTlsUpdateResponseValue {
+  "10Or11Or12Or3More": unknown;
+  /** Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings. */
+  arrayOfString: unknown;
+}
+export const SettingsTlsUpdateResponseValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "10Or11Or12Or3More": S.Unknown.pipe(
+      T.Body('"1.0" or "1.1" or "1.2" or 3 more'),
+    ),
+    arrayOfString: S.Unknown.pipe(T.Body("array of string")),
+  }),
+).annotate({
+  identifier: "SettingsTlsUpdateResponseValue",
+}) as any as S.Schema<SettingsTlsUpdateResponseValue>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SettingsTlsUpdateResponse {
-  result?: unknown;
+  /** This is the time the tls setting was originally created for this hostname. */
+  createdAt?: string;
+  /** The hostname for which the tls settings are set. */
+  hostname?: string;
+  /** Deployment status for the given tls setting. */
+  status?: string;
+  /** This is the time the tls setting was updated. */
+  updatedAt?: string;
+  /** The TLS setting value. */
+  value?: SettingsTlsUpdateResponseValue;
 }
 export const SettingsTlsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    hostname: S.optional(S.String),
+    status: S.optional(S.String),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    value: S.optional(SettingsTlsUpdateResponseValue),
   }),
 ).annotate({
   identifier: "SettingsTlsUpdateResponse",
 }) as any as S.Schema<SettingsTlsUpdateResponse>;
 
+export type SettingsTlsDeleteError = CloudflareOpError;
 /** Delete the tls setting value for the hostname. */
-export const SettingsTlsDelete: API.OperationMethod<
+export const settingsTlsDelete: API.OperationMethod<
   SettingsTlsDeleteRequest,
   SettingsTlsDeleteResponse,
-  CloudflareOpError,
+  SettingsTlsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsTlsDeleteRequest,
@@ -172,11 +271,12 @@ export const SettingsTlsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsTlsGetError = CloudflareOpError;
 /** List the requested TLS setting for the hostnames under this zone. */
-export const SettingsTlsGet: API.OperationMethod<
+export const settingsTlsGet: API.OperationMethod<
   SettingsTlsGetRequest,
   SettingsTlsGetResponse,
-  CloudflareOpError,
+  SettingsTlsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsTlsGetRequest,
@@ -185,11 +285,12 @@ export const SettingsTlsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsTlsUpdateError = CloudflareOpError;
 /** Update the tls setting value for the hostname. */
-export const SettingsTlsUpdate: API.OperationMethod<
+export const settingsTlsUpdate: API.OperationMethod<
   SettingsTlsUpdateRequest,
   SettingsTlsUpdateResponse,
-  CloudflareOpError,
+  SettingsTlsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsTlsUpdateRequest,

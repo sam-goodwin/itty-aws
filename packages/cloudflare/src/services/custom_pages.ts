@@ -10,16 +10,19 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface AssetsCreateRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** A short description of the custom asset. */
   description: string;
+  /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   name: string;
+  /** The URL where the asset content is fetched from. */
   url: string;
 }
 export const AssetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
     description: S.String,
     name: S.String,
     url: S.String,
@@ -36,18 +39,22 @@ export const AssetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AssetsCreateResponse {
+  /** A short description of the custom asset. */
   description?: string;
-  last_updated?: string;
+  lastUpdated?: string;
+  /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   name?: string;
-  size_bytes?: number;
+  /** The size of the asset content in bytes. */
+  sizeBytes?: number;
+  /** The URL where the asset content is fetched from. */
   url?: string;
 }
 export const AssetsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
-    last_updated: S.optional(S.String),
+    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
     name: S.optional(S.String),
-    size_bytes: S.optional(S.Number),
+    sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
     url: S.optional(S.String),
   }),
 ).annotate({
@@ -55,15 +62,16 @@ export const AssetsCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetsCreateResponse>;
 
 export interface AssetsDeleteRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  asset_name: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
+  assetName: string;
 }
 export const AssetsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    asset_name: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    assetName: S.String.pipe(T.Label("asset_name")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -83,15 +91,16 @@ export const AssetsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetsDeleteResponse>;
 
 export interface AssetsGetRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  asset_name: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
+  assetName: string;
 }
 export const AssetsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    asset_name: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    assetName: S.String.pipe(T.Label("asset_name")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -105,18 +114,22 @@ export const AssetsGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AssetsGetResponse {
+  /** A short description of the custom asset. */
   description?: string;
-  last_updated?: string;
+  lastUpdated?: string;
+  /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   name?: string;
-  size_bytes?: number;
+  /** The size of the asset content in bytes. */
+  sizeBytes?: number;
+  /** The URL where the asset content is fetched from. */
   url?: string;
 }
 export const AssetsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
-    last_updated: S.optional(S.String),
+    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
     name: S.optional(S.String),
-    size_bytes: S.optional(S.Number),
+    sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
     url: S.optional(S.String),
   }),
 ).annotate({
@@ -124,17 +137,17 @@ export const AssetsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetsGetResponse>;
 
 export interface AssetsListRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
   page?: number;
-  per_page?: number;
+  perPage?: number;
 }
 export const AssetsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -147,18 +160,22 @@ export const AssetsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetsListRequest>;
 
 export interface AssetsListResultItem {
+  /** A short description of the custom asset. */
   description?: string;
-  last_updated?: string;
+  lastUpdated?: string;
+  /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   name?: string;
-  size_bytes?: number;
+  /** The size of the asset content in bytes. */
+  sizeBytes?: number;
+  /** The URL where the asset content is fetched from. */
   url?: string;
 }
 export const AssetsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
-    last_updated: S.optional(S.String),
+    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
     name: S.optional(S.String),
-    size_bytes: S.optional(S.Number),
+    sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
     url: S.optional(S.String),
   }),
 ).annotate({
@@ -171,6 +188,7 @@ export const AssetsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AssetsListResultList>;
 
 export interface AssetsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AssetsListResultList;
 }
 export const AssetsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -182,17 +200,20 @@ export const AssetsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetsListResponse>;
 
 export interface AssetsUpdateRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  asset_name: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
+  assetName: string;
+  /** A short description of the custom asset. */
   description: string;
+  /** The URL where the asset content is fetched from. */
   url: string;
 }
 export const AssetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    asset_name: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    assetName: S.String.pipe(T.Label("asset_name")),
     description: S.String,
     url: S.String,
   }).pipe(
@@ -208,18 +229,22 @@ export const AssetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AssetsUpdateResponse {
+  /** A short description of the custom asset. */
   description?: string;
-  last_updated?: string;
+  lastUpdated?: string;
+  /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   name?: string;
-  size_bytes?: number;
+  /** The size of the asset content in bytes. */
+  sizeBytes?: number;
+  /** The URL where the asset content is fetched from. */
   url?: string;
 }
 export const AssetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
-    last_updated: S.optional(S.String),
+    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
     name: S.optional(S.String),
-    size_bytes: S.optional(S.Number),
+    sizeBytes: S.optional(S.Number.pipe(T.Body("size_bytes"))),
     url: S.optional(S.String),
   }),
 ).annotate({
@@ -234,14 +259,15 @@ export type GetRequestIdentifier =
 export const GetRequestIdentifier = /*@__PURE__*/ S.String;
 
 export interface GetRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** Error Page Types */
   identifier: GetRequestIdentifier;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
     identifier: GetRequestIdentifier.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -263,35 +289,39 @@ export const GetResponseState = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
   id?: string;
-  created_on?: string;
+  createdOn?: string;
   description?: string;
-  modified_on?: string;
-  preview_target?: string;
-  required_tokens?: GetResponseRequiredTokensList;
+  modifiedOn?: string;
+  previewTarget?: string;
+  requiredTokens?: GetResponseRequiredTokensList;
+  /** The custom page state. */
   state?: GetResponseState;
+  /** The URL associated with the custom page. */
   url?: string;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    created_on: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     description: S.optional(S.String),
-    modified_on: S.optional(S.String),
-    preview_target: S.optional(S.String),
-    required_tokens: S.optional(GetResponseRequiredTokensList),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    previewTarget: S.optional(S.String.pipe(T.Body("preview_target"))),
+    requiredTokens: S.optional(
+      GetResponseRequiredTokensList.pipe(T.Body("required_tokens")),
+    ),
     state: S.optional(GetResponseState),
     url: S.optional(S.String),
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
 export interface ListRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
 }
 export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -311,22 +341,26 @@ export const ListResultItemState = /*@__PURE__*/ S.String;
 
 export interface ListResultItem {
   id?: string;
-  created_on?: string;
+  createdOn?: string;
   description?: string;
-  modified_on?: string;
-  preview_target?: string;
-  required_tokens?: ListResultItemRequiredTokensList;
+  modifiedOn?: string;
+  previewTarget?: string;
+  requiredTokens?: ListResultItemRequiredTokensList;
+  /** The custom page state. */
   state?: ListResultItemState;
+  /** The URL associated with the custom page. */
   url?: string;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    created_on: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     description: S.optional(S.String),
-    modified_on: S.optional(S.String),
-    preview_target: S.optional(S.String),
-    required_tokens: S.optional(ListResultItemRequiredTokensList),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    previewTarget: S.optional(S.String.pipe(T.Body("preview_target"))),
+    requiredTokens: S.optional(
+      ListResultItemRequiredTokensList.pipe(T.Body("required_tokens")),
+    ),
     state: S.optional(ListResultItemState),
     url: S.optional(S.String),
   }),
@@ -338,6 +372,7 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResultList>;
 
 export interface ListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
 export const ListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -357,16 +392,19 @@ export type UpdateRequestState = "default" | "customized" | (string & {});
 export const UpdateRequestState = /*@__PURE__*/ S.String;
 
 export interface UpdateRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** Error Page Types */
   identifier: UpdateRequestIdentifier;
+  /** The custom page state. */
   state: UpdateRequestState;
+  /** The URL associated with the custom page. */
   url: string;
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
     identifier: UpdateRequestIdentifier.pipe(T.Label()),
     state: UpdateRequestState,
     url: S.String,
@@ -390,32 +428,37 @@ export const UpdateResponseState = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
   id?: string;
-  created_on?: string;
+  createdOn?: string;
   description?: string;
-  modified_on?: string;
-  preview_target?: string;
-  required_tokens?: UpdateResponseRequiredTokensList;
+  modifiedOn?: string;
+  previewTarget?: string;
+  requiredTokens?: UpdateResponseRequiredTokensList;
+  /** The custom page state. */
   state?: UpdateResponseState;
+  /** The URL associated with the custom page. */
   url?: string;
 }
 export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    created_on: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     description: S.optional(S.String),
-    modified_on: S.optional(S.String),
-    preview_target: S.optional(S.String),
-    required_tokens: S.optional(UpdateResponseRequiredTokensList),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    previewTarget: S.optional(S.String.pipe(T.Body("preview_target"))),
+    requiredTokens: S.optional(
+      UpdateResponseRequiredTokensList.pipe(T.Body("required_tokens")),
+    ),
     state: S.optional(UpdateResponseState),
     url: S.optional(S.String),
   }),
 ).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
+export type AssetsCreateError = CloudflareOpError;
 /** Creates a new custom asset. */
-export const AssetsCreate: API.OperationMethod<
+export const assetsCreate: API.OperationMethod<
   AssetsCreateRequest,
   AssetsCreateResponse,
-  CloudflareOpError,
+  AssetsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AssetsCreateRequest,
@@ -424,11 +467,12 @@ export const AssetsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AssetsDeleteError = CloudflareOpError;
 /** Deletes an existing custom asset. */
-export const AssetsDelete: API.OperationMethod<
+export const assetsDelete: API.OperationMethod<
   AssetsDeleteRequest,
   AssetsDeleteResponse,
-  CloudflareOpError,
+  AssetsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AssetsDeleteRequest,
@@ -437,11 +481,12 @@ export const AssetsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AssetsGetError = CloudflareOpError;
 /** Fetches the details of a custom asset. */
-export const AssetsGet: API.OperationMethod<
+export const assetsGet: API.OperationMethod<
   AssetsGetRequest,
   AssetsGetResponse,
-  CloudflareOpError,
+  AssetsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AssetsGetRequest,
@@ -450,11 +495,12 @@ export const AssetsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AssetsListError = CloudflareOpError;
 /** Fetches all the custom assets. */
-export const AssetsList: API.OperationMethod<
+export const assetsList: API.OperationMethod<
   AssetsListRequest,
   AssetsListResponse,
-  CloudflareOpError,
+  AssetsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AssetsListRequest,
@@ -463,11 +509,12 @@ export const AssetsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AssetsUpdateError = CloudflareOpError;
 /** Updates the configuration of an existing custom asset. */
-export const AssetsUpdate: API.OperationMethod<
+export const assetsUpdate: API.OperationMethod<
   AssetsUpdateRequest,
   AssetsUpdateResponse,
-  CloudflareOpError,
+  AssetsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AssetsUpdateRequest,
@@ -476,11 +523,12 @@ export const AssetsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Fetches the details of a custom page. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -489,11 +537,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ListError = CloudflareOpError;
 /** Fetches all the custom pages. */
-export const List: API.OperationMethod<
+export const list: API.OperationMethod<
   ListRequest,
   ListResponse,
-  CloudflareOpError,
+  ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRequest,
@@ -502,11 +551,12 @@ export const List: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UpdateError = CloudflareOpError;
 /** Updates the configuration of an existing custom page. */
-export const Update: API.OperationMethod<
+export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,
-  CloudflareOpError,
+  UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,

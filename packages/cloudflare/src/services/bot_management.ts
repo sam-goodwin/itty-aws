@@ -9,30 +9,52 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface FeedbackCreateRequest {
-  zone_id: string;
-  description: string;
-  expression: string;
-  first_request_seen_at: string;
-  last_request_seen_at: string;
+export interface FeedbackCreateRequestRequestsByAttribute {
+  metric: string;
   requests: number;
-  requests_by_attribute: unknown;
-  requests_by_score: unknown;
-  requests_by_score_src: unknown;
+}
+export const FeedbackCreateRequestRequestsByAttribute = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      metric: S.String,
+      requests: S.Number,
+    }),
+).annotate({
+  identifier: "FeedbackCreateRequestRequestsByAttribute",
+}) as any as S.Schema<FeedbackCreateRequestRequestsByAttribute>;
+
+export interface FeedbackCreateRequest {
+  /** Identifier. */
+  zoneId: string;
+  description: string;
+  /** Wirefilter expression describing the traffic being reported. */
+  expression: string;
+  firstRequestSeenAt: string;
+  lastRequestSeenAt: string;
+  requests: number;
+  /** Top attributes contributing to the feedback sample. Keys include topASNs, topCountries, topHosts, topIPs, topJA3Hashes, topJA4s, topPaths, topUserAgents. */
+  requestsByAttribute: FeedbackCreateRequestRequestsByAttribute;
+  /** Map of bot scores (1-99) to request counts. Sum must equal `requests`. */
+  requestsByScore: unknown;
+  /** Map of score source to request counts. Sum must equal `requests`. */
+  requestsByScoreSrc: unknown;
+  /** Type of feedback report. */
   type: unknown;
   subtype?: string;
 }
 export const FeedbackCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     description: S.String,
     expression: S.String,
-    first_request_seen_at: S.String,
-    last_request_seen_at: S.String,
+    firstRequestSeenAt: S.String.pipe(T.Body("first_request_seen_at")),
+    lastRequestSeenAt: S.String.pipe(T.Body("last_request_seen_at")),
     requests: S.Number,
-    requests_by_attribute: S.Unknown,
-    requests_by_score: S.Unknown,
-    requests_by_score_src: S.Unknown,
+    requestsByAttribute: FeedbackCreateRequestRequestsByAttribute.pipe(
+      T.Body("requests_by_attribute"),
+    ),
+    requestsByScore: S.Unknown.pipe(T.Body("requests_by_score")),
+    requestsByScoreSrc: S.Unknown.pipe(T.Body("requests_by_score_src")),
     type: S.Unknown,
     subtype: S.optional(S.String),
   }).pipe(
@@ -54,11 +76,12 @@ export const FeedbackCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeedbackCreateResponse>;
 
 export interface FeedbackListRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const FeedbackListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -70,32 +93,53 @@ export const FeedbackListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FeedbackListRequest",
 }) as any as S.Schema<FeedbackListRequest>;
 
+export interface FeedbackListResponseRequestsByAttribute {
+  metric: string;
+  requests: number;
+}
+export const FeedbackListResponseRequestsByAttribute = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      metric: S.String,
+      requests: S.Number,
+    }),
+).annotate({
+  identifier: "FeedbackListResponseRequestsByAttribute",
+}) as any as S.Schema<FeedbackListResponseRequestsByAttribute>;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface FeedbackListResponse {
   description: string;
+  /** Wirefilter expression describing the traffic being reported. */
   expression: string;
-  first_request_seen_at: string;
-  last_request_seen_at: string;
+  firstRequestSeenAt: string;
+  lastRequestSeenAt: string;
   requests: number;
-  requests_by_attribute: unknown;
-  requests_by_score: unknown;
-  requests_by_score_src: unknown;
+  /** Top attributes contributing to the feedback sample. Keys include topASNs, topCountries, topHosts, topIPs, topJA3Hashes, topJA4s, topPaths, topUserAgents. */
+  requestsByAttribute: FeedbackListResponseRequestsByAttribute;
+  /** Map of bot scores (1-99) to request counts. Sum must equal `requests`. */
+  requestsByScore: unknown;
+  /** Map of score source to request counts. Sum must equal `requests`. */
+  requestsByScoreSrc: unknown;
+  /** Type of feedback report. */
   type: unknown;
-  created_at?: string;
+  createdAt?: string;
   subtype?: string;
 }
 export const FeedbackListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     expression: S.String,
-    first_request_seen_at: S.String,
-    last_request_seen_at: S.String,
+    firstRequestSeenAt: S.String.pipe(T.Body("first_request_seen_at")),
+    lastRequestSeenAt: S.String.pipe(T.Body("last_request_seen_at")),
     requests: S.Number,
-    requests_by_attribute: S.Unknown,
-    requests_by_score: S.Unknown,
-    requests_by_score_src: S.Unknown,
+    requestsByAttribute: FeedbackListResponseRequestsByAttribute.pipe(
+      T.Body("requests_by_attribute"),
+    ),
+    requestsByScore: S.Unknown.pipe(T.Body("requests_by_score")),
+    requestsByScoreSrc: S.Unknown.pipe(T.Body("requests_by_score_src")),
     type: S.Unknown,
-    created_at: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     subtype: S.optional(S.String),
   }),
 ).annotate({
@@ -103,11 +147,12 @@ export const FeedbackListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeedbackListResponse>;
 
 export interface GetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -117,23 +162,88 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
-  result?: unknown;
+  BotFightModeConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection6More__: unknown;
+  SuperBotFightModeDefinitelyConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection9More__: unknown;
+  SuperBotFightModeLikelyConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection10More__: unknown;
+  SubscriptionConfigurationObjectAiBotsProtectionAutoUpdateModelBmCookieEnabled8More__: unknown;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    BotFightModeConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection6More__:
+      S.Unknown.pipe(
+        T.Body(
+          "BotFightModeConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 6 more }",
+        ),
+      ),
+    SuperBotFightModeDefinitelyConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection9More__:
+      S.Unknown.pipe(
+        T.Body(
+          "SuperBotFightModeDefinitelyConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 9 more }",
+        ),
+      ),
+    SuperBotFightModeLikelyConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection10More__:
+      S.Unknown.pipe(
+        T.Body(
+          "SuperBotFightModeLikelyConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 10 more }",
+        ),
+      ),
+    SubscriptionConfigurationObjectAiBotsProtectionAutoUpdateModelBmCookieEnabled8More__:
+      S.Unknown.pipe(
+        T.Body(
+          "SubscriptionConfiguration object { ai_bots_protection, auto_update_model, bm_cookie_enabled, 8 more }",
+        ),
+      ),
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
+export interface UpdateRequestBody {
+  BotFightModeConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection6More__: unknown;
+  SuperBotFightModeDefinitelyConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection9More__: unknown;
+  SuperBotFightModeLikelyConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection10More__: unknown;
+  SubscriptionConfigurationObjectAiBotsProtectionAutoUpdateModelBmCookieEnabled8More__: unknown;
+}
+export const UpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BotFightModeConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection6More__:
+      S.Unknown.pipe(
+        T.Body(
+          "BotFightModeConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 6 more }",
+        ),
+      ),
+    SuperBotFightModeDefinitelyConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection9More__:
+      S.Unknown.pipe(
+        T.Body(
+          "SuperBotFightModeDefinitelyConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 9 more }",
+        ),
+      ),
+    SuperBotFightModeLikelyConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection10More__:
+      S.Unknown.pipe(
+        T.Body(
+          "SuperBotFightModeLikelyConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 10 more }",
+        ),
+      ),
+    SubscriptionConfigurationObjectAiBotsProtectionAutoUpdateModelBmCookieEnabled8More__:
+      S.Unknown.pipe(
+        T.Body(
+          "SubscriptionConfiguration object { ai_bots_protection, auto_update_model, bm_cookie_enabled, 8 more }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "UpdateRequestBody",
+}) as any as S.Schema<UpdateRequestBody>;
+
 export interface UpdateRequest {
-  zone_id: string;
-  body: unknown;
+  /** Identifier. */
+  zoneId: string;
+  body: UpdateRequestBody;
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    body: S.Unknown,
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    body: UpdateRequestBody,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -143,20 +253,48 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
-  result?: unknown;
+  BotFightModeConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection6More__: unknown;
+  SuperBotFightModeDefinitelyConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection9More__: unknown;
+  SuperBotFightModeLikelyConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection10More__: unknown;
+  SubscriptionConfigurationObjectAiBotsProtectionAutoUpdateModelBmCookieEnabled8More__: unknown;
 }
 export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    BotFightModeConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection6More__:
+      S.Unknown.pipe(
+        T.Body(
+          "BotFightModeConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 6 more }",
+        ),
+      ),
+    SuperBotFightModeDefinitelyConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection9More__:
+      S.Unknown.pipe(
+        T.Body(
+          "SuperBotFightModeDefinitelyConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 9 more }",
+        ),
+      ),
+    SuperBotFightModeLikelyConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection10More__:
+      S.Unknown.pipe(
+        T.Body(
+          "SuperBotFightModeLikelyConfiguration object { ai_bots_protection, cf_robots_variant, content_bots_protection, 10 more }",
+        ),
+      ),
+    SubscriptionConfigurationObjectAiBotsProtectionAutoUpdateModelBmCookieEnabled8More__:
+      S.Unknown.pipe(
+        T.Body(
+          "SubscriptionConfiguration object { ai_bots_protection, auto_update_model, bm_cookie_enabled, 8 more }",
+        ),
+      ),
   }),
 ).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
+export type FeedbackCreateError = CloudflareOpError;
 /** Submit a feedback report for the specified zone. Use `type` to indicate whether the report is a false positive (good traffic flagged as bot) or a false negative (bot traffic missed). Furthermore, you can also use `expression` as a wirefilter to identify the affected traffic sample. See more accepted API fields and expression types at https://developers.cloudflare.com/bots/concepts/feedback-loop/#api-fields and https://developers.cloudflare.com/bots/concepts/feedback-loop/#expression-fields, respectively. */
-export const FeedbackCreate: API.OperationMethod<
+export const feedbackCreate: API.OperationMethod<
   FeedbackCreateRequest,
   FeedbackCreateResponse,
-  CloudflareOpError,
+  FeedbackCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: FeedbackCreateRequest,
@@ -165,11 +303,12 @@ export const FeedbackCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type FeedbackListError = CloudflareOpError;
 /** Returns all feedback reports previously submitted for the specified zone. Feedback reports help improve detection by sharing samples of traffic that were misclassified as bots or humans. */
-export const FeedbackList: API.OperationMethod<
+export const feedbackList: API.OperationMethod<
   FeedbackListRequest,
   FeedbackListResponse,
-  CloudflareOpError,
+  FeedbackListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: FeedbackListRequest,
@@ -178,11 +317,12 @@ export const FeedbackList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Retrieve a zone's Bot Management Config */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -191,11 +331,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UpdateError = CloudflareOpError;
 /** Updates the Bot Management configuration for a zone. This API is used to update: - **Bot Fight Mode** - **Super Bot Fight Mode** - **Bot Management for Enterprise** See [Bot Plans](https://developers.cloudflare.com/bots/plans/) for more information on the different plans \ If you recently upgraded or downgraded your plan, refer to the following examples to clean up old configurations. Copy and paste the example body to remove old zone configurations based on your current plan. #### Clean up configuration for Bot Fight Mode plan ```json { "sbfm_likely_automated": "allow", "sbfm_definitely_automated": "allow", "sbfm_verified_bots": "allow", "sbfm_static_resource_protection": false, "optimize_wordpress": false, "suppress_session_score": false } ``` #### Clean up configuration for SBFM Pro plan ```json { "sbfm_likely_automated": "allow", "fight_mode": false } ``` #### Clean up configuration for SBFM Biz plan ```json { "fight_mode": false } ``` #### Clean up configuration for BM Enterprise Subscription plan It is strongly recommended that you ensure you have [custom rules](https://developers.cloudflare.com/waf/custom-rules/) in place to protect your zone before disabling the SBFM rules. Without these protections, your zone is vulnerable to attacks. ```json { "sbfm_likely_automated": "allow", "sbfm_definitely_automated": "allow", "sbfm_verified_bots": "allow", "sbfm_static_resource_protection": false, "optimize_wordpress": false, "fight_mode": false } ``` */
-export const Update: API.OperationMethod<
+export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,
-  CloudflareOpError,
+  UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,

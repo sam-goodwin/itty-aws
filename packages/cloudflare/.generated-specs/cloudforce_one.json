@@ -141,19 +141,109 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cloudforce_one#RequestsConstantsResponsePriorityItem": {
+      "type": "enum",
+      "members": {
+        "ROUTINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "routine"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        },
+        "URGENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "urgent"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#RequestsConstantsResponsePriorityList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.cloudforce_one#RequestsConstantsResponsePriorityItem"
+      }
+    },
+    "com.cloudflare.cloudforce_one#RequestsConstantsResponseStatusItem": {
+      "type": "enum",
+      "members": {
+        "OPEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "open"
+          }
+        },
+        "ACCEPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "accepted"
+          }
+        },
+        "REPORTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reported"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#RequestsConstantsResponseStatusList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.cloudforce_one#RequestsConstantsResponseStatusItem"
+      }
+    },
+    "com.cloudflare.cloudforce_one#RequestsConstantsResponseTlpItem": {
+      "type": "enum",
+      "members": {
+        "CLEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "clear"
+          }
+        },
+        "AMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber"
+          }
+        },
+        "AMBER_STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber-strict"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#RequestsConstantsResponseTlpList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.cloudforce_one#RequestsConstantsResponseTlpItem"
+      }
+    },
     "com.cloudflare.cloudforce_one#RequestsConstantsResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
-          }
+        "priority": {
+          "target": "com.cloudflare.cloudforce_one#RequestsConstantsResponsePriorityList"
+        },
+        "status": {
+          "target": "com.cloudflare.cloudforce_one#RequestsConstantsResponseStatusList"
+        },
+        "tlp": {
+          "target": "com.cloudflare.cloudforce_one#RequestsConstantsResponseTlpList"
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.cloudforce_one#RequestsConstants": {
@@ -243,19 +333,139 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cloudforce_one#RequestsCreateResponseTlp": {
+      "type": "enum",
+      "members": {
+        "CLEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "clear"
+          }
+        },
+        "AMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber"
+          }
+        },
+        "AMBER_STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber-strict"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#RequestsCreateResponseStatus": {
+      "type": "enum",
+      "members": {
+        "OPEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "open"
+          }
+        },
+        "ACCEPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "accepted"
+          }
+        },
+        "REPORTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reported"
+          }
+        }
+      }
+    },
     "com.cloudflare.cloudforce_one#RequestsCreateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#required": {}
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Request content.",
+            "smithy.api#required": {}
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "request": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Requested information from request.",
+            "smithy.api#required": {}
+          }
+        },
+        "summary": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Brief description of the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "tlp": {
+          "target": "com.cloudflare.cloudforce_one#RequestsCreateResponseTlp",
+          "traits": {
+            "smithy.api#documentation": "The CISA defined Traffic Light Protocol (TLP).",
+            "smithy.api#required": {}
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "completed": {
+          "target": "smithy.api#String"
+        },
+        "message_tokens": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Tokens for the request messages."
+          }
+        },
+        "readable_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Readable Request ID."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.cloudforce_one#RequestsCreateResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "Request Status."
+          }
+        },
+        "tokens": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Tokens for the request."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.cloudforce_one#RequestsCreate": {
@@ -341,19 +551,139 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cloudforce_one#RequestsGetResponseTlp": {
+      "type": "enum",
+      "members": {
+        "CLEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "clear"
+          }
+        },
+        "AMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber"
+          }
+        },
+        "AMBER_STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber-strict"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#RequestsGetResponseStatus": {
+      "type": "enum",
+      "members": {
+        "OPEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "open"
+          }
+        },
+        "ACCEPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "accepted"
+          }
+        },
+        "REPORTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reported"
+          }
+        }
+      }
+    },
     "com.cloudflare.cloudforce_one#RequestsGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#required": {}
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Request content.",
+            "smithy.api#required": {}
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "request": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Requested information from request.",
+            "smithy.api#required": {}
+          }
+        },
+        "summary": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Brief description of the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "tlp": {
+          "target": "com.cloudflare.cloudforce_one#RequestsGetResponseTlp",
+          "traits": {
+            "smithy.api#documentation": "The CISA defined Traffic Light Protocol (TLP).",
+            "smithy.api#required": {}
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "completed": {
+          "target": "smithy.api#String"
+        },
+        "message_tokens": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Tokens for the request messages."
+          }
+        },
+        "readable_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Readable Request ID."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.cloudforce_one#RequestsGetResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "Request Status."
+          }
+        },
+        "tokens": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Tokens for the request."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.cloudforce_one#RequestsGet": {
@@ -492,10 +822,162 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cloudforce_one#RequestsListResultItemPriority": {
+      "type": "enum",
+      "members": {
+        "ROUTINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "routine"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        },
+        "URGENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "urgent"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#RequestsListResultItemTlp": {
+      "type": "enum",
+      "members": {
+        "CLEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "clear"
+          }
+        },
+        "AMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber"
+          }
+        },
+        "AMBER_STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber-strict"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#RequestsListResultItemStatus": {
+      "type": "enum",
+      "members": {
+        "OPEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "open"
+          }
+        },
+        "ACCEPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "accepted"
+          }
+        },
+        "REPORTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reported"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#RequestsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#required": {}
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Request creation time.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "com.cloudflare.cloudforce_one#RequestsListResultItemPriority",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "request": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Requested information from request.",
+            "smithy.api#required": {}
+          }
+        },
+        "summary": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Brief description of the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "tlp": {
+          "target": "com.cloudflare.cloudforce_one#RequestsListResultItemTlp",
+          "traits": {
+            "smithy.api#documentation": "The CISA defined Traffic Light Protocol (TLP).",
+            "smithy.api#required": {}
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Request last updated time.",
+            "smithy.api#required": {}
+          }
+        },
+        "completed": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Request completion time."
+          }
+        },
+        "message_tokens": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Tokens for the request messages."
+          }
+        },
+        "readable_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Readable Request ID."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.cloudforce_one#RequestsListResultItemStatus",
+          "traits": {
+            "smithy.api#documentation": "Request Status."
+          }
+        },
+        "tokens": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Tokens for the request."
+          }
+        }
+      }
+    },
     "com.cloudflare.cloudforce_one#RequestsListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.cloudforce_one#RequestsListResultItem"
       }
     },
     "com.cloudflare.cloudforce_one#RequestsListResponse": {
@@ -549,16 +1031,34 @@
     "com.cloudflare.cloudforce_one#RequestsQuotaResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "anniversary_date": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Anniversary date is when annual quota limit is refreshed."
+          }
+        },
+        "quarter_anniversary_date": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Quarter anniversary date is when quota limit is refreshed each quarter."
+          }
+        },
+        "quota": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Tokens for the quarter."
+          }
+        },
+        "remaining": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Tokens remaining for the quarter."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.cloudforce_one#RequestsQuota": {
@@ -705,19 +1205,139 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cloudforce_one#RequestsUpdateResponseTlp": {
+      "type": "enum",
+      "members": {
+        "CLEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "clear"
+          }
+        },
+        "AMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber"
+          }
+        },
+        "AMBER_STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber-strict"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#RequestsUpdateResponseStatus": {
+      "type": "enum",
+      "members": {
+        "OPEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "open"
+          }
+        },
+        "ACCEPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "accepted"
+          }
+        },
+        "REPORTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reported"
+          }
+        }
+      }
+    },
     "com.cloudflare.cloudforce_one#RequestsUpdateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#required": {}
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Request content.",
+            "smithy.api#required": {}
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "request": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Requested information from request.",
+            "smithy.api#required": {}
+          }
+        },
+        "summary": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Brief description of the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "tlp": {
+          "target": "com.cloudflare.cloudforce_one#RequestsUpdateResponseTlp",
+          "traits": {
+            "smithy.api#documentation": "The CISA defined Traffic Light Protocol (TLP).",
+            "smithy.api#required": {}
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "completed": {
+          "target": "smithy.api#String"
+        },
+        "message_tokens": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Tokens for the request messages."
+          }
+        },
+        "readable_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Readable Request ID."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.cloudforce_one#RequestsUpdateResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "Request Status."
+          }
+        },
+        "tokens": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Tokens for the request."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.cloudforce_one#RequestsUpdate": {
@@ -1139,16 +1759,51 @@
     "com.cloudflare.cloudforce_one#RequestsMessageCreateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#Double",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Message ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "author": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Author of message.",
+            "smithy.api#required": {}
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Content of message.",
+            "smithy.api#required": {}
+          }
+        },
+        "is_follow_on_request": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the message is a follow-on request.",
+            "smithy.api#required": {}
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the message last updated time.",
+            "smithy.api#required": {}
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the message creation time."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.cloudforce_one#RequestsMessageCreate": {
@@ -1296,10 +1951,56 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cloudforce_one#RequestsMessageGetResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Message ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "author": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Author of message.",
+            "smithy.api#required": {}
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Content of message.",
+            "smithy.api#required": {}
+          }
+        },
+        "is_follow_on_request": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the message is a follow-on request.",
+            "smithy.api#required": {}
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the message last updated time.",
+            "smithy.api#required": {}
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the message creation time."
+          }
+        }
+      }
+    },
     "com.cloudflare.cloudforce_one#RequestsMessageGetResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.cloudforce_one#RequestsMessageGetResultItem"
       }
     },
     "com.cloudflare.cloudforce_one#RequestsMessageGetResponse": {
@@ -1374,16 +2075,51 @@
     "com.cloudflare.cloudforce_one#RequestsMessageUpdateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#Double",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Message ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "author": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Author of message.",
+            "smithy.api#required": {}
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Content of message.",
+            "smithy.api#required": {}
+          }
+        },
+        "is_follow_on_request": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the message is a follow-on request.",
+            "smithy.api#required": {}
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the message last updated time.",
+            "smithy.api#required": {}
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the message creation time."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.cloudforce_one#RequestsMessageUpdate": {
@@ -1477,19 +2213,91 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cloudforce_one#RequestsPriorityCreateResponseLabelsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.cloudforce_one#RequestsPriorityCreateResponseTlp": {
+      "type": "enum",
+      "members": {
+        "CLEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "clear"
+          }
+        },
+        "AMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber"
+          }
+        },
+        "AMBER_STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber-strict"
+          }
+        }
+      }
+    },
     "com.cloudflare.cloudforce_one#RequestsPriorityCreateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#required": {}
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Priority creation time.",
+            "smithy.api#required": {}
+          }
+        },
+        "labels": {
+          "target": "com.cloudflare.cloudforce_one#RequestsPriorityCreateResponseLabelsList",
+          "traits": {
+            "smithy.api#documentation": "List of labels.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Priority.",
+            "smithy.api#required": {}
+          }
+        },
+        "requirement": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Requirement.",
+            "smithy.api#required": {}
+          }
+        },
+        "tlp": {
+          "target": "com.cloudflare.cloudforce_one#RequestsPriorityCreateResponseTlp",
+          "traits": {
+            "smithy.api#documentation": "The CISA defined Traffic Light Protocol (TLP).",
+            "smithy.api#required": {}
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Priority last updated time.",
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.cloudforce_one#RequestsPriorityCreate": {
@@ -1575,19 +2383,139 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cloudforce_one#RequestsPriorityGetResponseTlp": {
+      "type": "enum",
+      "members": {
+        "CLEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "clear"
+          }
+        },
+        "AMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber"
+          }
+        },
+        "AMBER_STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber-strict"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#RequestsPriorityGetResponseStatus": {
+      "type": "enum",
+      "members": {
+        "OPEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "open"
+          }
+        },
+        "ACCEPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "accepted"
+          }
+        },
+        "REPORTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reported"
+          }
+        }
+      }
+    },
     "com.cloudflare.cloudforce_one#RequestsPriorityGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#required": {}
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Request content.",
+            "smithy.api#required": {}
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "request": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Requested information from request.",
+            "smithy.api#required": {}
+          }
+        },
+        "summary": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Brief description of the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "tlp": {
+          "target": "com.cloudflare.cloudforce_one#RequestsPriorityGetResponseTlp",
+          "traits": {
+            "smithy.api#documentation": "The CISA defined Traffic Light Protocol (TLP).",
+            "smithy.api#required": {}
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "completed": {
+          "target": "smithy.api#String"
+        },
+        "message_tokens": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Tokens for the request messages."
+          }
+        },
+        "readable_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Readable Request ID."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.cloudforce_one#RequestsPriorityGetResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "Request Status."
+          }
+        },
+        "tokens": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Tokens for the request."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.cloudforce_one#RequestsPriorityGet": {
@@ -1627,16 +2555,34 @@
     "com.cloudflare.cloudforce_one#RequestsPriorityQuotaResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "anniversary_date": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Anniversary date is when annual quota limit is refreshed."
+          }
+        },
+        "quarter_anniversary_date": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Quarter anniversary date is when quota limit is refreshed each quarter."
+          }
+        },
+        "quota": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Tokens for the quarter."
+          }
+        },
+        "remaining": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Tokens remaining for the quarter."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.cloudforce_one#RequestsPriorityQuota": {
@@ -1738,19 +2684,139 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cloudforce_one#RequestsPriorityUpdateResponseTlp": {
+      "type": "enum",
+      "members": {
+        "CLEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "clear"
+          }
+        },
+        "AMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber"
+          }
+        },
+        "AMBER_STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber-strict"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#RequestsPriorityUpdateResponseStatus": {
+      "type": "enum",
+      "members": {
+        "OPEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "open"
+          }
+        },
+        "ACCEPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "accepted"
+          }
+        },
+        "REPORTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reported"
+          }
+        }
+      }
+    },
     "com.cloudflare.cloudforce_one#RequestsPriorityUpdateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#required": {}
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Request content.",
+            "smithy.api#required": {}
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "request": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Requested information from request.",
+            "smithy.api#required": {}
+          }
+        },
+        "summary": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Brief description of the request.",
+            "smithy.api#required": {}
+          }
+        },
+        "tlp": {
+          "target": "com.cloudflare.cloudforce_one#RequestsPriorityUpdateResponseTlp",
+          "traits": {
+            "smithy.api#documentation": "The CISA defined Traffic Light Protocol (TLP).",
+            "smithy.api#required": {}
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "completed": {
+          "target": "smithy.api#String"
+        },
+        "message_tokens": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Tokens for the request messages."
+          }
+        },
+        "readable_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Readable Request ID."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.cloudforce_one#RequestsPriorityUpdateResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "Request Status."
+          }
+        },
+        "tokens": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Tokens for the request."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.cloudforce_one#RequestsPriorityUpdate": {
@@ -2203,10 +3269,24 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cloudforce_one#ScansResultsGetResponse1111Item": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Double"
+        },
+        "proto": {
+          "target": "smithy.api#String"
+        },
+        "status": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
     "com.cloudflare.cloudforce_one#ScansResultsGetResponse1111List": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.cloudforce_one#ScansResultsGetResponse1111Item"
       }
     },
     "com.cloudflare.cloudforce_one#ScansResultsGetResponse": {

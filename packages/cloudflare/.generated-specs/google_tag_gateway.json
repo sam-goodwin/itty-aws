@@ -36,16 +36,44 @@
     "com.cloudflare.google_tag_gateway#ConfigGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "enabled": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Enables or disables Google Tag Gateway for this zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with '/', with no nested paths and alphanumeric characters only (e.g. /metrics).",
+            "smithy.api#required": {}
+          }
+        },
+        "hideOriginalIp": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Hides the original client IP address from Google when enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "measurementId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specify the Google Tag Manager container or measurement ID (e.g. GTM-XXXXXXX or G-XXXXXXXXXX).",
+            "smithy.api#required": {}
+          }
+        },
+        "setUpTag": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set up the associated Google Tag on the zone automatically when enabled."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.google_tag_gateway#ConfigGet": {
@@ -119,16 +147,44 @@
     "com.cloudflare.google_tag_gateway#ConfigUpdateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "enabled": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Enables or disables Google Tag Gateway for this zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with '/', with no nested paths and alphanumeric characters only (e.g. /metrics).",
+            "smithy.api#required": {}
+          }
+        },
+        "hideOriginalIp": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Hides the original client IP address from Google when enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "measurementId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specify the Google Tag Manager container or measurement ID (e.g. GTM-XXXXXXX or G-XXXXXXXXXX).",
+            "smithy.api#required": {}
+          }
+        },
+        "setUpTag": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set up the associated Google Tag on the zone automatically when enabled."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.google_tag_gateway#ConfigUpdate": {

@@ -10,11 +10,12 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface CustomTopicsGetRequest {
-  zone_id: string;
+  /** Defines the zone. */
+  zoneId: string;
 }
 export const CustomTopicsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -27,7 +28,9 @@ export const CustomTopicsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomTopicsGetRequest>;
 
 export interface CustomTopicsGetResponseTopicsItem {
+  /** Unique label identifier. Must contain only lowercase letters (a–z), digits (0–9), and hyphens. */
   label: string;
+  /** Description of the topic category. Must contain only printable ASCII characters. */
   topic: string;
 }
 export const CustomTopicsGetResponseTopicsItem = /*@__PURE__*/ S.suspend(() =>
@@ -47,6 +50,7 @@ export const CustomTopicsGetResponseTopicsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CustomTopicsGetResponse {
+  /** Custom topic categories for AI Security for Apps content detection. */
   topics?: CustomTopicsGetResponseTopicsList;
 }
 export const CustomTopicsGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -58,7 +62,9 @@ export const CustomTopicsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomTopicsGetResponse>;
 
 export interface CustomTopicsUpdateRequestTopicsItem {
+  /** Unique label identifier. Must contain only lowercase letters (a–z), digits (0–9), and hyphens. */
   label: string;
+  /** Description of the topic category. Must contain only printable ASCII characters. */
   topic: string;
 }
 export const CustomTopicsUpdateRequestTopicsItem = /*@__PURE__*/ S.suspend(() =>
@@ -77,12 +83,14 @@ export const CustomTopicsUpdateRequestTopicsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CustomTopicsUpdateRequestTopicsList>;
 
 export interface CustomTopicsUpdateRequest {
-  zone_id: string;
+  /** Defines the zone. */
+  zoneId: string;
+  /** Custom topic categories for AI Security for Apps content detection. */
   topics?: CustomTopicsUpdateRequestTopicsList;
 }
 export const CustomTopicsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     topics: S.optional(CustomTopicsUpdateRequestTopicsList),
   }).pipe(
     T.Http({
@@ -96,7 +104,9 @@ export const CustomTopicsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomTopicsUpdateRequest>;
 
 export interface CustomTopicsUpdateResponseTopicsItem {
+  /** Unique label identifier. Must contain only lowercase letters (a–z), digits (0–9), and hyphens. */
   label: string;
+  /** Description of the topic category. Must contain only printable ASCII characters. */
   topic: string;
 }
 export const CustomTopicsUpdateResponseTopicsItem = /*@__PURE__*/ S.suspend(
@@ -117,6 +127,7 @@ export const CustomTopicsUpdateResponseTopicsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CustomTopicsUpdateResponse {
+  /** Custom topic categories for AI Security for Apps content detection. */
   topics?: CustomTopicsUpdateResponseTopicsList;
 }
 export const CustomTopicsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -128,11 +139,12 @@ export const CustomTopicsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomTopicsUpdateResponse>;
 
 export interface GetRequest {
-  zone_id: string;
+  /** Defines the zone. */
+  zoneId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -144,6 +156,7 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
+  /** Whether AI Security for Apps is enabled on the zone. */
   enabled?: boolean;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -153,12 +166,14 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
 export interface UpdateRequest {
-  zone_id: string;
+  /** Defines the zone. */
+  zoneId: string;
+  /** Whether AI Security for Apps is enabled on the zone. */
   enabled?: boolean;
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.optional(S.Boolean),
   }).pipe(
     T.Http({
@@ -171,6 +186,7 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
+  /** Whether AI Security for Apps is enabled on the zone. */
   enabled?: boolean;
 }
 export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -179,11 +195,12 @@ export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
+export type CustomTopicsGetError = CloudflareOpError;
 /** Get the AI Security for Apps custom topic categories for a zone. */
-export const CustomTopicsGet: API.OperationMethod<
+export const customTopicsGet: API.OperationMethod<
   CustomTopicsGetRequest,
   CustomTopicsGetResponse,
-  CloudflareOpError,
+  CustomTopicsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CustomTopicsGetRequest,
@@ -192,11 +209,12 @@ export const CustomTopicsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CustomTopicsUpdateError = CloudflareOpError;
 /** Set the AI Security for Apps custom topic categories for a zone. A maximum of 20 custom topics can be configured per zone. Each topic label must be 2–20 characters using only lowercase letters (a–z), digits (0–9), and hyphens. Each topic description must be 2–50 printable ASCII characters. Changes can take up to a minute to propagate to the zone. */
-export const CustomTopicsUpdate: API.OperationMethod<
+export const customTopicsUpdate: API.OperationMethod<
   CustomTopicsUpdateRequest,
   CustomTopicsUpdateResponse,
-  CloudflareOpError,
+  CustomTopicsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CustomTopicsUpdateRequest,
@@ -205,11 +223,12 @@ export const CustomTopicsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Get whether AI Security for Apps is enabled or disabled for a zone. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -218,11 +237,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UpdateError = CloudflareOpError;
 /** Enable or disable AI Security for Apps for a zone. Changes can take up to a minute to propagate to the zone. */
-export const Update: API.OperationMethod<
+export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,
-  CloudflareOpError,
+  UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,

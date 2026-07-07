@@ -10,6 +10,7 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface ListRequest {
+  /** Specified as `jdcloud` to list IPs used by JD Cloud data centers. */
   networks?: string;
 }
 export const ListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -20,15 +21,15 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListResponse {
-  PublicIPIPs_object___etag__ipv4_cidrs__ipv6_cidrs__: unknown;
-  PublicIPIPsJDCloud_object___etag__ipv4_cidrs__ipv6_cidrs__jdcloud_cidrs__: unknown;
+  PublicIPIPsObjectEtagIpv4CidrsIpv6Cidrs__: unknown;
+  PublicIPIPsJDCloudObjectEtagIpv4CidrsIpv6CidrsJdcloudCidrs__: unknown;
 }
 export const ListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    PublicIPIPs_object___etag__ipv4_cidrs__ipv6_cidrs__: S.Unknown.pipe(
+    PublicIPIPsObjectEtagIpv4CidrsIpv6Cidrs__: S.Unknown.pipe(
       T.Body("PublicIPIPs object { etag, ipv4_cidrs, ipv6_cidrs }"),
     ),
-    PublicIPIPsJDCloud_object___etag__ipv4_cidrs__ipv6_cidrs__jdcloud_cidrs__:
+    PublicIPIPsJDCloudObjectEtagIpv4CidrsIpv6CidrsJdcloudCidrs__:
       S.Unknown.pipe(
         T.Body(
           "PublicIPIPsJDCloud object { etag, ipv4_cidrs, ipv6_cidrs, jdcloud_cidrs }",
@@ -37,11 +38,12 @@ export const ListResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
 
+export type ListError = CloudflareOpError;
 /** Get IPs used on the Cloudflare/JD Cloud network, see https://www.cloudflare.com/ips for Cloudflare IPs or https://developers.cloudflare.com/china-network/reference/infrastructure/ for JD Cloud IPs. */
-export const List: API.OperationMethod<
+export const list: API.OperationMethod<
   ListRequest,
   ListResponse,
-  CloudflareOpError,
+  ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRequest,

@@ -10,12 +10,14 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface DispatchNamespacesCreateRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** The name of the dispatch namespace. */
   name?: string;
 }
 export const DispatchNamespacesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     name: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -30,38 +32,48 @@ export const DispatchNamespacesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DispatchNamespacesCreateResponse {
-  created_by?: string;
-  created_on?: string;
-  modified_by?: string;
-  modified_on?: string;
-  namespace_id?: string;
-  namespace_name?: string;
-  script_count?: number;
-  trusted_workers?: boolean;
+  /** Identifier. */
+  createdBy?: string;
+  /** When the script was created. */
+  createdOn?: string;
+  /** Identifier. */
+  modifiedBy?: string;
+  /** When the script was last modified. */
+  modifiedOn?: string;
+  /** API Resource UUID tag. */
+  namespaceId?: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  namespaceName?: string;
+  /** The current number of scripts in this Dispatch Namespace. */
+  scriptCount?: number;
+  /** Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted". */
+  trustedWorkers?: boolean;
 }
 export const DispatchNamespacesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created_by: S.optional(S.String),
-    created_on: S.optional(S.String),
-    modified_by: S.optional(S.String),
-    modified_on: S.optional(S.String),
-    namespace_id: S.optional(S.String),
-    namespace_name: S.optional(S.String),
-    script_count: S.optional(S.Number),
-    trusted_workers: S.optional(S.Boolean),
+    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
+    namespaceName: S.optional(S.String.pipe(T.Body("namespace_name"))),
+    scriptCount: S.optional(S.Number.pipe(T.Body("script_count"))),
+    trustedWorkers: S.optional(S.Boolean.pipe(T.Body("trusted_workers"))),
   }),
 ).annotate({
   identifier: "DispatchNamespacesCreateResponse",
 }) as any as S.Schema<DispatchNamespacesCreateResponse>;
 
 export interface DispatchNamespacesDeleteRequest {
-  account_id: string;
-  dispatch_namespace: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
 }
 export const DispatchNamespacesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    dispatch_namespace: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -74,6 +86,7 @@ export const DispatchNamespacesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DispatchNamespacesDeleteRequest>;
 
 export interface DispatchNamespacesDeleteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const DispatchNamespacesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -85,13 +98,15 @@ export const DispatchNamespacesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DispatchNamespacesDeleteResponse>;
 
 export interface DispatchNamespacesGetRequest {
-  account_id: string;
-  dispatch_namespace: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
 }
 export const DispatchNamespacesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    dispatch_namespace: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -105,36 +120,45 @@ export const DispatchNamespacesGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DispatchNamespacesGetResponse {
-  created_by?: string;
-  created_on?: string;
-  modified_by?: string;
-  modified_on?: string;
-  namespace_id?: string;
-  namespace_name?: string;
-  script_count?: number;
-  trusted_workers?: boolean;
+  /** Identifier. */
+  createdBy?: string;
+  /** When the script was created. */
+  createdOn?: string;
+  /** Identifier. */
+  modifiedBy?: string;
+  /** When the script was last modified. */
+  modifiedOn?: string;
+  /** API Resource UUID tag. */
+  namespaceId?: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  namespaceName?: string;
+  /** The current number of scripts in this Dispatch Namespace. */
+  scriptCount?: number;
+  /** Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted". */
+  trustedWorkers?: boolean;
 }
 export const DispatchNamespacesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created_by: S.optional(S.String),
-    created_on: S.optional(S.String),
-    modified_by: S.optional(S.String),
-    modified_on: S.optional(S.String),
-    namespace_id: S.optional(S.String),
-    namespace_name: S.optional(S.String),
-    script_count: S.optional(S.Number),
-    trusted_workers: S.optional(S.Boolean),
+    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
+    namespaceName: S.optional(S.String.pipe(T.Body("namespace_name"))),
+    scriptCount: S.optional(S.Number.pipe(T.Body("script_count"))),
+    trustedWorkers: S.optional(S.Boolean.pipe(T.Body("trusted_workers"))),
   }),
 ).annotate({
   identifier: "DispatchNamespacesGetResponse",
 }) as any as S.Schema<DispatchNamespacesGetResponse>;
 
 export interface DispatchNamespacesListRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
 }
 export const DispatchNamespacesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -147,25 +171,33 @@ export const DispatchNamespacesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DispatchNamespacesListRequest>;
 
 export interface DispatchNamespacesListResultItem {
-  created_by?: string;
-  created_on?: string;
-  modified_by?: string;
-  modified_on?: string;
-  namespace_id?: string;
-  namespace_name?: string;
-  script_count?: number;
-  trusted_workers?: boolean;
+  /** Identifier. */
+  createdBy?: string;
+  /** When the script was created. */
+  createdOn?: string;
+  /** Identifier. */
+  modifiedBy?: string;
+  /** When the script was last modified. */
+  modifiedOn?: string;
+  /** API Resource UUID tag. */
+  namespaceId?: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  namespaceName?: string;
+  /** The current number of scripts in this Dispatch Namespace. */
+  scriptCount?: number;
+  /** Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted". */
+  trustedWorkers?: boolean;
 }
 export const DispatchNamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created_by: S.optional(S.String),
-    created_on: S.optional(S.String),
-    modified_by: S.optional(S.String),
-    modified_on: S.optional(S.String),
-    namespace_id: S.optional(S.String),
-    namespace_name: S.optional(S.String),
-    script_count: S.optional(S.Number),
-    trusted_workers: S.optional(S.Boolean),
+    createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedBy: S.optional(S.String.pipe(T.Body("modified_by"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
+    namespaceName: S.optional(S.String.pipe(T.Body("namespace_name"))),
+    scriptCount: S.optional(S.Number.pipe(T.Body("script_count"))),
+    trustedWorkers: S.optional(S.Boolean.pipe(T.Body("trusted_workers"))),
   }),
 ).annotate({
   identifier: "DispatchNamespacesListResultItem",
@@ -178,6 +210,7 @@ export const DispatchNamespacesListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DispatchNamespacesListResultList>;
 
 export interface DispatchNamespacesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DispatchNamespacesListResultList;
 }
 export const DispatchNamespacesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -200,17 +233,21 @@ export const DispatchNamespacesScriptsAssetUploadCreateRequestManifestMap =
   ) as any as S.Schema<DispatchNamespacesScriptsAssetUploadCreateRequestManifestMap>;
 
 export interface DispatchNamespacesScriptsAssetUploadCreateRequest {
-  account_id: string;
-  dispatch_namespace: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** A manifest ([path]: {hash, size}) map of files to upload. As an example, `/blog/hello-world.html` would be a valid path key. */
   manifest: DispatchNamespacesScriptsAssetUploadCreateRequestManifestMap;
 }
 export const DispatchNamespacesScriptsAssetUploadCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      dispatch_namespace: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
+      scriptName: S.String.pipe(T.Label("script_name")),
       manifest: DispatchNamespacesScriptsAssetUploadCreateRequestManifestMap,
     }).pipe(
       T.Http({
@@ -232,7 +269,9 @@ export const DispatchNamespacesScriptsAssetUploadCreateResponseBucketsList =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DispatchNamespacesScriptsAssetUploadCreateResponse {
+  /** The requests to make to upload assets. */
   buckets?: DispatchNamespacesScriptsAssetUploadCreateResponseBucketsList;
+  /** A JWT to use as authentication for uploading assets. */
   jwt?: string;
 }
 export const DispatchNamespacesScriptsAssetUploadCreateResponse =
@@ -248,16 +287,19 @@ export const DispatchNamespacesScriptsAssetUploadCreateResponse =
   }) as any as S.Schema<DispatchNamespacesScriptsAssetUploadCreateResponse>;
 
 export interface DispatchNamespacesScriptsBindingsGetRequest {
-  account_id: string;
-  dispatch_namespace: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const DispatchNamespacesScriptsBindingsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      dispatch_namespace: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
+      scriptName: S.String.pipe(T.Label("script_name")),
     }).pipe(
       T.Http({
         method: "GET",
@@ -270,160 +312,152 @@ export const DispatchNamespacesScriptsBindingsGetRequest =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetRequest>;
 
 export interface DispatchNamespacesScriptsBindingsGetResultItem {
-  AI_object___name__type__: unknown;
-  AISearch_object___instance_name__name__type__namespace__: unknown;
-  AISearchNamespace_object___name__namespace__type__: unknown;
-  AnalyticsEngine_object___dataset__name__type__: unknown;
-  Assets_object___name__type__: unknown;
-  Browser_object___name__type__: unknown;
-  D1_object___database_id__name__type__id__: unknown;
-  DataBlob_object___name__part__type__: unknown;
-  DispatchNamespace_object___name__namespace__type__outbound__: unknown;
-  DurableObjectNamespace_object___name__type__class_name__4_more__: unknown;
-  Hyperdrive_object___id__name__type__: unknown;
-  Inherit_object___name__type__old_name__version_id__: unknown;
-  Images_object___name__type__: unknown;
-  Json_object___json__name__type__: unknown;
-  KVNamespace_object___name__namespace_id__type__: unknown;
-  Media_object___name__type__: unknown;
-  MTLSCertificate_object___certificate_id__name__type__: unknown;
-  PlainText_object___name__text__type__: unknown;
-  Pipelines_object___name__pipeline__type__: unknown;
-  Queue_object___name__queue_name__type__: unknown;
-  Ratelimit_object___name__namespace_id__simple__type__: unknown;
-  R2Bucket_object___bucket_name__name__type__jurisdiction__: unknown;
-  SecretText_object___name__text__type__: unknown;
-  SendEmail_object___name__type__allowed_destination_addresses__2_more__: unknown;
-  Service_object___name__service__type__2_more__: unknown;
-  TextBlob_object___name__part__type__: unknown;
-  Vectorize_object___index_name__name__type__: unknown;
-  VersionMetadata_object___name__type__: unknown;
-  SecretsStoreSecret_object___name__secret_name__store_id__type__: unknown;
-  Flagship_object___app_id__name__type__: unknown;
-  SecretKey_object___algorithm__format__name__4_more__: unknown;
-  Workflow_object___name__type__workflow_name__2_more__: unknown;
-  WasmModule_object___name__part__type__: unknown;
-  VPCService_object___name__service_id__type__: unknown;
-  VPCNetwork_object___name__type__network_id__tunnel_id__: unknown;
+  AIObjectNameType__: unknown;
+  AISearchObjectInstanceNameNameTypeNamespace__: unknown;
+  AISearchNamespaceObjectNameNamespaceType__: unknown;
+  AnalyticsEngineObjectDatasetNameType__: unknown;
+  AssetsObjectNameType__: unknown;
+  BrowserObjectNameType__: unknown;
+  D1ObjectDatabaseIdNameTypeId__: unknown;
+  DataBlobObjectNamePartType__: unknown;
+  DispatchNamespaceObjectNameNamespaceTypeOutbound__: unknown;
+  DurableObjectNamespaceObjectNameTypeClassName4More__: unknown;
+  HyperdriveObjectIdNameType__: unknown;
+  InheritObjectNameTypeOldNameVersionId__: unknown;
+  ImagesObjectNameType__: unknown;
+  JsonObjectJsonNameType__: unknown;
+  KVNamespaceObjectNameNamespaceIdType__: unknown;
+  MediaObjectNameType__: unknown;
+  MTLSCertificateObjectCertificateIdNameType__: unknown;
+  PlainTextObjectNameTextType__: unknown;
+  PipelinesObjectNamePipelineType__: unknown;
+  QueueObjectNameQueueNameType__: unknown;
+  RatelimitObjectNameNamespaceIdSimpleType__: unknown;
+  R2BucketObjectBucketNameNameTypeJurisdiction__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SendEmailObjectNameTypeAllowedDestinationAddresses2More__: unknown;
+  ServiceObjectNameServiceType2More__: unknown;
+  TextBlobObjectNamePartType__: unknown;
+  VectorizeObjectIndexNameNameType__: unknown;
+  VersionMetadataObjectNameType__: unknown;
+  SecretsStoreSecretObjectNameSecretNameStoreIdType__: unknown;
+  FlagshipObjectAppIdNameType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
+  WorkflowObjectNameTypeWorkflowName2More__: unknown;
+  WasmModuleObjectNamePartType__: unknown;
+  VPCServiceObjectNameServiceIdType__: unknown;
+  VPCNetworkObjectNameTypeNetworkIdTunnelId__: unknown;
 }
 export const DispatchNamespacesScriptsBindingsGetResultItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AI_object___name__type__: S.Unknown.pipe(
-        T.Body("AI object { name, type }"),
-      ),
-      AISearch_object___instance_name__name__type__namespace__: S.Unknown.pipe(
+      AIObjectNameType__: S.Unknown.pipe(T.Body("AI object { name, type }")),
+      AISearchObjectInstanceNameNameTypeNamespace__: S.Unknown.pipe(
         T.Body("AISearch object { instance_name, name, type, namespace }"),
       ),
-      AISearchNamespace_object___name__namespace__type__: S.Unknown.pipe(
+      AISearchNamespaceObjectNameNamespaceType__: S.Unknown.pipe(
         T.Body("AISearchNamespace object { name, namespace, type }"),
       ),
-      AnalyticsEngine_object___dataset__name__type__: S.Unknown.pipe(
+      AnalyticsEngineObjectDatasetNameType__: S.Unknown.pipe(
         T.Body("AnalyticsEngine object { dataset, name, type }"),
       ),
-      Assets_object___name__type__: S.Unknown.pipe(
+      AssetsObjectNameType__: S.Unknown.pipe(
         T.Body("Assets object { name, type }"),
       ),
-      Browser_object___name__type__: S.Unknown.pipe(
+      BrowserObjectNameType__: S.Unknown.pipe(
         T.Body("Browser object { name, type }"),
       ),
-      D1_object___database_id__name__type__id__: S.Unknown.pipe(
+      D1ObjectDatabaseIdNameTypeId__: S.Unknown.pipe(
         T.Body("D1 object { database_id, name, type, id }"),
       ),
-      DataBlob_object___name__part__type__: S.Unknown.pipe(
+      DataBlobObjectNamePartType__: S.Unknown.pipe(
         T.Body("DataBlob object { name, part, type }"),
       ),
-      DispatchNamespace_object___name__namespace__type__outbound__:
-        S.Unknown.pipe(
-          T.Body(
-            "DispatchNamespace object { name, namespace, type, outbound }",
-          ),
+      DispatchNamespaceObjectNameNamespaceTypeOutbound__: S.Unknown.pipe(
+        T.Body("DispatchNamespace object { name, namespace, type, outbound }"),
+      ),
+      DurableObjectNamespaceObjectNameTypeClassName4More__: S.Unknown.pipe(
+        T.Body(
+          "DurableObjectNamespace object { name, type, class_name, 4 more }",
         ),
-      DurableObjectNamespace_object___name__type__class_name__4_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "DurableObjectNamespace object { name, type, class_name, 4 more }",
-          ),
-        ),
-      Hyperdrive_object___id__name__type__: S.Unknown.pipe(
+      ),
+      HyperdriveObjectIdNameType__: S.Unknown.pipe(
         T.Body("Hyperdrive object { id, name, type }"),
       ),
-      Inherit_object___name__type__old_name__version_id__: S.Unknown.pipe(
+      InheritObjectNameTypeOldNameVersionId__: S.Unknown.pipe(
         T.Body("Inherit object { name, type, old_name, version_id }"),
       ),
-      Images_object___name__type__: S.Unknown.pipe(
+      ImagesObjectNameType__: S.Unknown.pipe(
         T.Body("Images object { name, type }"),
       ),
-      Json_object___json__name__type__: S.Unknown.pipe(
+      JsonObjectJsonNameType__: S.Unknown.pipe(
         T.Body("Json object { json, name, type }"),
       ),
-      KVNamespace_object___name__namespace_id__type__: S.Unknown.pipe(
+      KVNamespaceObjectNameNamespaceIdType__: S.Unknown.pipe(
         T.Body("KVNamespace object { name, namespace_id, type }"),
       ),
-      Media_object___name__type__: S.Unknown.pipe(
+      MediaObjectNameType__: S.Unknown.pipe(
         T.Body("Media object { name, type }"),
       ),
-      MTLSCertificate_object___certificate_id__name__type__: S.Unknown.pipe(
+      MTLSCertificateObjectCertificateIdNameType__: S.Unknown.pipe(
         T.Body("MTLSCertificate object { certificate_id, name, type }"),
       ),
-      PlainText_object___name__text__type__: S.Unknown.pipe(
+      PlainTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("PlainText object { name, text, type }"),
       ),
-      Pipelines_object___name__pipeline__type__: S.Unknown.pipe(
+      PipelinesObjectNamePipelineType__: S.Unknown.pipe(
         T.Body("Pipelines object { name, pipeline, type }"),
       ),
-      Queue_object___name__queue_name__type__: S.Unknown.pipe(
+      QueueObjectNameQueueNameType__: S.Unknown.pipe(
         T.Body("Queue object { name, queue_name, type }"),
       ),
-      Ratelimit_object___name__namespace_id__simple__type__: S.Unknown.pipe(
+      RatelimitObjectNameNamespaceIdSimpleType__: S.Unknown.pipe(
         T.Body("Ratelimit object { name, namespace_id, simple, type }"),
       ),
-      R2Bucket_object___bucket_name__name__type__jurisdiction__: S.Unknown.pipe(
+      R2BucketObjectBucketNameNameTypeJurisdiction__: S.Unknown.pipe(
         T.Body("R2Bucket object { bucket_name, name, type, jurisdiction }"),
       ),
-      SecretText_object___name__text__type__: S.Unknown.pipe(
+      SecretTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("SecretText object { name, text, type }"),
       ),
-      SendEmail_object___name__type__allowed_destination_addresses__2_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
-          ),
+      SendEmailObjectNameTypeAllowedDestinationAddresses2More__: S.Unknown.pipe(
+        T.Body(
+          "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
         ),
-      Service_object___name__service__type__2_more__: S.Unknown.pipe(
+      ),
+      ServiceObjectNameServiceType2More__: S.Unknown.pipe(
         T.Body("Service object { name, service, type, 2 more }"),
       ),
-      TextBlob_object___name__part__type__: S.Unknown.pipe(
+      TextBlobObjectNamePartType__: S.Unknown.pipe(
         T.Body("TextBlob object { name, part, type }"),
       ),
-      Vectorize_object___index_name__name__type__: S.Unknown.pipe(
+      VectorizeObjectIndexNameNameType__: S.Unknown.pipe(
         T.Body("Vectorize object { index_name, name, type }"),
       ),
-      VersionMetadata_object___name__type__: S.Unknown.pipe(
+      VersionMetadataObjectNameType__: S.Unknown.pipe(
         T.Body("VersionMetadata object { name, type }"),
       ),
-      SecretsStoreSecret_object___name__secret_name__store_id__type__:
-        S.Unknown.pipe(
-          T.Body(
-            "SecretsStoreSecret object { name, secret_name, store_id, type }",
-          ),
+      SecretsStoreSecretObjectNameSecretNameStoreIdType__: S.Unknown.pipe(
+        T.Body(
+          "SecretsStoreSecret object { name, secret_name, store_id, type }",
         ),
-      Flagship_object___app_id__name__type__: S.Unknown.pipe(
+      ),
+      FlagshipObjectAppIdNameType__: S.Unknown.pipe(
         T.Body("Flagship object { app_id, name, type }"),
       ),
-      SecretKey_object___algorithm__format__name__4_more__: S.Unknown.pipe(
+      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
         T.Body("SecretKey object { algorithm, format, name, 4 more }"),
       ),
-      Workflow_object___name__type__workflow_name__2_more__: S.Unknown.pipe(
+      WorkflowObjectNameTypeWorkflowName2More__: S.Unknown.pipe(
         T.Body("Workflow object { name, type, workflow_name, 2 more }"),
       ),
-      WasmModule_object___name__part__type__: S.Unknown.pipe(
+      WasmModuleObjectNamePartType__: S.Unknown.pipe(
         T.Body("WasmModule object { name, part, type }"),
       ),
-      VPCService_object___name__service_id__type__: S.Unknown.pipe(
+      VPCServiceObjectNameServiceIdType__: S.Unknown.pipe(
         T.Body("VPCService object { name, service_id, type }"),
       ),
-      VPCNetwork_object___name__type__network_id__tunnel_id__: S.Unknown.pipe(
+      VPCNetworkObjectNameTypeNetworkIdTunnelId__: S.Unknown.pipe(
         T.Body("VPCNetwork object { name, type, network_id, tunnel_id }"),
       ),
     }),
@@ -439,6 +473,7 @@ export const DispatchNamespacesScriptsBindingsGetResultList =
   ) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultList>;
 
 export interface DispatchNamespacesScriptsBindingsGetResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DispatchNamespacesScriptsBindingsGetResultList;
 }
 export const DispatchNamespacesScriptsBindingsGetResponse =
@@ -455,16 +490,19 @@ export const DispatchNamespacesScriptsBindingsGetResponse =
   }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResponse>;
 
 export interface DispatchNamespacesScriptsContentGetRequest {
-  account_id: string;
-  dispatch_namespace: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const DispatchNamespacesScriptsContentGetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      dispatch_namespace: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
+      scriptName: S.String.pipe(T.Label("script_name")),
     }).pipe(
       T.Http({
         method: "GET",
@@ -483,22 +521,25 @@ export const DispatchNamespacesScriptsContentGetResponse =
   }) as any as S.Schema<DispatchNamespacesScriptsContentGetResponse>;
 
 export interface DispatchNamespacesScriptsContentUpdateRequest {
-  account_id: string;
-  dispatch_namespace: string;
-  script_name: string;
-  _CF_WORKER_BODY_PART_?: string;
-  _CF_WORKER_MAIN_MODULE_PART_?: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  CFWORKERBODYPART_?: string;
+  CFWORKERMAINMODULEPART_?: string;
 }
 export const DispatchNamespacesScriptsContentUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      dispatch_namespace: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
-      _CF_WORKER_BODY_PART_: S.optional(
+      accountId: S.String.pipe(T.Label("account_id")),
+      dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
+      scriptName: S.String.pipe(T.Label("script_name")),
+      CFWORKERBODYPART_: S.optional(
         S.String.pipe(T.Header('"CF-WORKER-BODY-PART"')),
       ),
-      _CF_WORKER_MAIN_MODULE_PART_: S.optional(
+      CFWORKERMAINMODULEPART_: S.optional(
         S.String.pipe(T.Header('"CF-WORKER-MAIN-MODULE-PART"')),
       ),
     }).pipe(
@@ -512,30 +553,403 @@ export const DispatchNamespacesScriptsContentUpdateRequest =
     identifier: "DispatchNamespacesScriptsContentUpdateRequest",
   }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateRequest>;
 
+export interface DispatchNamespacesScriptsContentUpdateResponseCacheOptions {
+  /** Whether caching is enabled for this Worker. */
+  enabled: boolean;
+  /** Whether cached responses are shared across Worker version */
+  crossVersionCache?: boolean;
+}
+export const DispatchNamespacesScriptsContentUpdateResponseCacheOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      crossVersionCache: S.optional(
+        S.Boolean.pipe(T.Body("cross_version_cache")),
+      ),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsContentUpdateResponseCacheOptions",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseCacheOptions>;
+
+export type DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList =
+  string[];
+export const DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList>;
+
+export type DispatchNamespacesScriptsContentUpdateResponseHandlersList =
+  string[];
+export const DispatchNamespacesScriptsContentUpdateResponseHandlersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseHandlersList>;
+
+export type DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList =
+  string[];
+export const DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList>;
+
+export interface DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem {
+  /** The names of handlers exported as part of the named export. */
+  handlers?: DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList;
+  /** The name of the export. */
+  name?: string;
+}
+export const DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      handlers: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList,
+      ),
+      name: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem>;
+
+export type DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList =
+  DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem[];
+export const DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList>;
+
+export type DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList =
+  string[];
+export const DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList>;
+
+export interface DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs {
+  /** Whether logs are enabled for the Worker. */
+  enabled: boolean;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs: boolean;
+  /** A list of destinations where logs will be exported to. */
+  destinations?: DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether log persistence is enabled for the Worker. */
+  persist?: boolean;
+}
+export const DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
+      destinations: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList,
+      ),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      persist: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs>;
+
+export type DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList =
+  string[];
+export const DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList>;
+
+export type DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy =
+  "authenticated" | "accept" | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
+  destinations?: DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
+  persist?: boolean;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy;
+}
+export const DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      destinations: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList,
+      ),
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      persist: S.optional(S.Boolean),
+      propagationPolicy: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces>;
+
+export interface DispatchNamespacesScriptsContentUpdateResponseObservability {
+  /** Whether observability is enabled for the Worker. */
+  enabled: boolean;
+  /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
+  logs?: DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs;
+  /** Trace settings for the Worker. */
+  traces?: DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces;
+}
+export const DispatchNamespacesScriptsContentUpdateResponseObservability =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      logs: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs,
+      ),
+      traces: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces,
+      ),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsContentUpdateResponseObservability",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservability>;
+
+export interface DispatchNamespacesScriptsContentUpdateResponsePlacement {
+  objectModeLastAnalyzedAtStatus__: unknown;
+  objectRegionLastAnalyzedAtStatus__: unknown;
+  objectHostnameLastAnalyzedAtStatus__: unknown;
+  objectHostLastAnalyzedAtStatus__: unknown;
+  objectModeRegionLastAnalyzedAtStatus__: unknown;
+  objectHostnameModeLastAnalyzedAtStatus__: unknown;
+  objectHostModeLastAnalyzedAtStatus__: unknown;
+  objectModeTargetLastAnalyzedAtStatus__: unknown;
+}
+export const DispatchNamespacesScriptsContentUpdateResponsePlacement =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      objectModeLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { mode, last_analyzed_at, status }"),
+      ),
+      objectRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { region, last_analyzed_at, status }"),
+      ),
+      objectHostnameLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { hostname, last_analyzed_at, status }"),
+      ),
+      objectHostLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { host, last_analyzed_at, status }"),
+      ),
+      objectModeRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { mode, region, last_analyzed_at, status }"),
+      ),
+      objectHostnameModeLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { hostname, mode, last_analyzed_at, status }"),
+      ),
+      objectHostModeLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { host, mode, last_analyzed_at, status }"),
+      ),
+      objectModeTargetLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { mode, target, last_analyzed_at, status }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsContentUpdateResponsePlacement",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacement>;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementMode =
+  | "smart"
+  | "targeted"
+  | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementMode =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsContentUpdateResponsePlacementStatus =
+  | "SUCCESS"
+  | "UNSUPPORTED_APPLICATION"
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponsePlacementStatus =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsContentUpdateResponseTagsList = string[];
+export const DispatchNamespacesScriptsContentUpdateResponseTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseTagsList>;
+
+export interface DispatchNamespacesScriptsContentUpdateResponseTailConsumersItem {
+  /** Name of Worker that is to be the consumer. */
+  service: string;
+  /** Optional environment if the Worker utilizes one. */
+  environment?: string;
+  /** Optional dispatch namespace the script belongs to. */
+  namespace?: string;
+}
+export const DispatchNamespacesScriptsContentUpdateResponseTailConsumersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      service: S.String,
+      environment: S.optional(S.String),
+      namespace: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsContentUpdateResponseTailConsumersItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseTailConsumersItem>;
+
+export type DispatchNamespacesScriptsContentUpdateResponseTailConsumersList =
+  DispatchNamespacesScriptsContentUpdateResponseTailConsumersItem[];
+export const DispatchNamespacesScriptsContentUpdateResponseTailConsumersList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsContentUpdateResponseTailConsumersItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseTailConsumersList>;
+
+export type DispatchNamespacesScriptsContentUpdateResponseUsageModel =
+  | "standard"
+  | "bundled"
+  | "unbound"
+  | (string & {});
+export const DispatchNamespacesScriptsContentUpdateResponseUsageModel =
+  /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DispatchNamespacesScriptsContentUpdateResponse {
-  result?: unknown;
+  /** The name used to identify the script. */
+  id?: string;
+  /** Global CacheW configuration for the Worker. When caching is on, */
+  cacheOptions?: DispatchNamespacesScriptsContentUpdateResponseCacheOptions;
+  /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
+  compatibilityDate?: string;
+  /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
+  compatibilityFlags?: DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList;
+  /** When the script was created. */
+  createdOn?: string;
+  /** Hashed script content, can be used in a If-None-Match header when updating. */
+  etag?: string;
+  /** The names of handlers exported as part of the default export. */
+  handlers?: DispatchNamespacesScriptsContentUpdateResponseHandlersList;
+  /** Whether a Worker contains assets. */
+  hasAssets?: boolean;
+  /** Whether a Worker contains modules. */
+  hasModules?: boolean;
+  /** The client most recently used to deploy this Worker. */
+  lastDeployedFrom?: string;
+  /** Whether Logpush is turned on for the Worker. */
+  logpush?: boolean;
+  /** The tag of the Durable Object migration that was most recently applied for this Worker. */
+  migrationTag?: string;
+  /** When the script was last modified. */
+  modifiedOn?: string;
+  /** Named exports, such as Durable Object class implementations and named entrypoints. */
+  namedHandlers?: DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList;
+  /** Observability settings for the Worker. */
+  observability?: DispatchNamespacesScriptsContentUpdateResponseObservability;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
+  placement?: DispatchNamespacesScriptsContentUpdateResponsePlacement;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
+  placementMode?: DispatchNamespacesScriptsContentUpdateResponsePlacementMode;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  placementStatus?: DispatchNamespacesScriptsContentUpdateResponsePlacementStatus;
+  /** The immutable ID of the script. */
+  tag?: string;
+  /** Tags associated with the Worker. */
+  tags?: DispatchNamespacesScriptsContentUpdateResponseTagsList;
+  /** List of Workers that will consume logs from the attached Worker. */
+  tailConsumers?: DispatchNamespacesScriptsContentUpdateResponseTailConsumersList;
+  /** Usage model for the Worker invocations. */
+  usageModel?: DispatchNamespacesScriptsContentUpdateResponseUsageModel;
 }
 export const DispatchNamespacesScriptsContentUpdateResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+      id: S.optional(S.String),
+      cacheOptions: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponseCacheOptions.pipe(
+          T.Body("cache_options"),
+        ),
+      ),
+      compatibilityDate: S.optional(
+        S.String.pipe(T.Body("compatibility_date")),
+      ),
+      compatibilityFlags: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList.pipe(
+          T.Body("compatibility_flags"),
+        ),
+      ),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      etag: S.optional(S.String),
+      handlers: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponseHandlersList,
+      ),
+      hasAssets: S.optional(S.Boolean.pipe(T.Body("has_assets"))),
+      hasModules: S.optional(S.Boolean.pipe(T.Body("has_modules"))),
+      lastDeployedFrom: S.optional(S.String.pipe(T.Body("last_deployed_from"))),
+      logpush: S.optional(S.Boolean),
+      migrationTag: S.optional(S.String.pipe(T.Body("migration_tag"))),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      namedHandlers: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList.pipe(
+          T.Body("named_handlers"),
+        ),
+      ),
+      observability: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponseObservability,
+      ),
+      placement: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponsePlacement,
+      ),
+      placementMode: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponsePlacementMode.pipe(
+          T.Body("placement_mode"),
+        ),
+      ),
+      placementStatus: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponsePlacementStatus.pipe(
+          T.Body("placement_status"),
+        ),
+      ),
+      tag: S.optional(S.String),
+      tags: S.optional(DispatchNamespacesScriptsContentUpdateResponseTagsList),
+      tailConsumers: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponseTailConsumersList.pipe(
+          T.Body("tail_consumers"),
+        ),
+      ),
+      usageModel: S.optional(
+        DispatchNamespacesScriptsContentUpdateResponseUsageModel.pipe(
+          T.Body("usage_model"),
+        ),
+      ),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsContentUpdateResponse",
   }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponse>;
 
 export interface DispatchNamespacesScriptsDeleteRequest {
-  account_id: string;
-  dispatch_namespace: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** If set to true, delete will not be stopped by associated service binding, durable object, or other binding. Any of these associated bindings/durable objects will be deleted along with the script. */
   force?: boolean;
 }
 export const DispatchNamespacesScriptsDeleteRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      dispatch_namespace: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
+      scriptName: S.String.pipe(T.Label("script_name")),
       force: S.optional(S.Boolean.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -549,6 +963,7 @@ export const DispatchNamespacesScriptsDeleteRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DispatchNamespacesScriptsDeleteRequest>;
 
 export interface DispatchNamespacesScriptsDeleteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const DispatchNamespacesScriptsDeleteResponse = /*@__PURE__*/ S.suspend(
@@ -561,15 +976,18 @@ export const DispatchNamespacesScriptsDeleteResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DispatchNamespacesScriptsDeleteResponse>;
 
 export interface DispatchNamespacesScriptsGetRequest {
-  account_id: string;
-  dispatch_namespace: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const DispatchNamespacesScriptsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    dispatch_namespace: S.String.pipe(T.Label()),
-    script_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
+    scriptName: S.String.pipe(T.Label("script_name")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -581,13 +999,400 @@ export const DispatchNamespacesScriptsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DispatchNamespacesScriptsGetRequest",
 }) as any as S.Schema<DispatchNamespacesScriptsGetRequest>;
 
+export interface DispatchNamespacesScriptsGetResponseScriptCacheOptions {
+  /** Whether caching is enabled for this Worker. */
+  enabled: boolean;
+  /** Whether cached responses are shared across Worker version */
+  crossVersionCache?: boolean;
+}
+export const DispatchNamespacesScriptsGetResponseScriptCacheOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      crossVersionCache: S.optional(
+        S.Boolean.pipe(T.Body("cross_version_cache")),
+      ),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsGetResponseScriptCacheOptions",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptCacheOptions>;
+
+export type DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList =
+  string[];
+export const DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList>;
+
+export type DispatchNamespacesScriptsGetResponseScriptHandlersList = string[];
+export const DispatchNamespacesScriptsGetResponseScriptHandlersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptHandlersList>;
+
+export type DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList =
+  string[];
+export const DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList>;
+
+export interface DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem {
+  /** The names of handlers exported as part of the named export. */
+  handlers?: DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList;
+  /** The name of the export. */
+  name?: string;
+}
+export const DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      handlers: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList,
+      ),
+      name: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem>;
+
+export type DispatchNamespacesScriptsGetResponseScriptNamedHandlersList =
+  DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem[];
+export const DispatchNamespacesScriptsGetResponseScriptNamedHandlersList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptNamedHandlersList>;
+
+export type DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList =
+  string[];
+export const DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList>;
+
+export interface DispatchNamespacesScriptsGetResponseScriptObservabilityLogs {
+  /** Whether logs are enabled for the Worker. */
+  enabled: boolean;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs: boolean;
+  /** A list of destinations where logs will be exported to. */
+  destinations?: DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether log persistence is enabled for the Worker. */
+  persist?: boolean;
+}
+export const DispatchNamespacesScriptsGetResponseScriptObservabilityLogs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
+      destinations: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList,
+      ),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      persist: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsGetResponseScriptObservabilityLogs",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityLogs>;
+
+export type DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList =
+  string[];
+export const DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList>;
+
+export type DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy =
+  "authenticated" | "accept" | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsGetResponseScriptObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
+  destinations?: DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
+  enabled?: boolean;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
+  persist?: boolean;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy;
+}
+export const DispatchNamespacesScriptsGetResponseScriptObservabilityTraces =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      destinations: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList,
+      ),
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      persist: S.optional(S.Boolean),
+      propagationPolicy: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsGetResponseScriptObservabilityTraces",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityTraces>;
+
+export interface DispatchNamespacesScriptsGetResponseScriptObservability {
+  /** Whether observability is enabled for the Worker. */
+  enabled: boolean;
+  /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
+  logs?: DispatchNamespacesScriptsGetResponseScriptObservabilityLogs;
+  /** Trace settings for the Worker. */
+  traces?: DispatchNamespacesScriptsGetResponseScriptObservabilityTraces;
+}
+export const DispatchNamespacesScriptsGetResponseScriptObservability =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      logs: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptObservabilityLogs,
+      ),
+      traces: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptObservabilityTraces,
+      ),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsGetResponseScriptObservability",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservability>;
+
+export interface DispatchNamespacesScriptsGetResponseScriptPlacement {
+  objectModeLastAnalyzedAtStatus__: unknown;
+  objectRegionLastAnalyzedAtStatus__: unknown;
+  objectHostnameLastAnalyzedAtStatus__: unknown;
+  objectHostLastAnalyzedAtStatus__: unknown;
+  objectModeRegionLastAnalyzedAtStatus__: unknown;
+  objectHostnameModeLastAnalyzedAtStatus__: unknown;
+  objectHostModeLastAnalyzedAtStatus__: unknown;
+  objectModeTargetLastAnalyzedAtStatus__: unknown;
+}
+export const DispatchNamespacesScriptsGetResponseScriptPlacement =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      objectModeLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { mode, last_analyzed_at, status }"),
+      ),
+      objectRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { region, last_analyzed_at, status }"),
+      ),
+      objectHostnameLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { hostname, last_analyzed_at, status }"),
+      ),
+      objectHostLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { host, last_analyzed_at, status }"),
+      ),
+      objectModeRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { mode, region, last_analyzed_at, status }"),
+      ),
+      objectHostnameModeLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { hostname, mode, last_analyzed_at, status }"),
+      ),
+      objectHostModeLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { host, mode, last_analyzed_at, status }"),
+      ),
+      objectModeTargetLastAnalyzedAtStatus__: S.Unknown.pipe(
+        T.Body("object { mode, target, last_analyzed_at, status }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsGetResponseScriptPlacement",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacement>;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementMode =
+  | "smart"
+  | "targeted"
+  | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptPlacementMode =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsGetResponseScriptPlacementStatus =
+  | "SUCCESS"
+  | "UNSUPPORTED_APPLICATION"
+  | "INSUFFICIENT_INVOCATIONS"
+  | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptPlacementStatus =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsGetResponseScriptTagsList = string[];
+export const DispatchNamespacesScriptsGetResponseScriptTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptTagsList>;
+
+export interface DispatchNamespacesScriptsGetResponseScriptTailConsumersItem {
+  /** Name of Worker that is to be the consumer. */
+  service: string;
+  /** Optional environment if the Worker utilizes one. */
+  environment?: string;
+  /** Optional dispatch namespace the script belongs to. */
+  namespace?: string;
+}
+export const DispatchNamespacesScriptsGetResponseScriptTailConsumersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      service: S.String,
+      environment: S.optional(S.String),
+      namespace: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsGetResponseScriptTailConsumersItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptTailConsumersItem>;
+
+export type DispatchNamespacesScriptsGetResponseScriptTailConsumersList =
+  DispatchNamespacesScriptsGetResponseScriptTailConsumersItem[];
+export const DispatchNamespacesScriptsGetResponseScriptTailConsumersList =
+  /*@__PURE__*/ S.Array(
+    DispatchNamespacesScriptsGetResponseScriptTailConsumersItem,
+  ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptTailConsumersList>;
+
+export type DispatchNamespacesScriptsGetResponseScriptUsageModel =
+  | "standard"
+  | "bundled"
+  | "unbound"
+  | (string & {});
+export const DispatchNamespacesScriptsGetResponseScriptUsageModel =
+  /*@__PURE__*/ S.String;
+
+export interface DispatchNamespacesScriptsGetResponseScript {
+  /** The name used to identify the script. */
+  id?: string;
+  /** Global CacheW configuration for the Worker. When caching is on, */
+  cacheOptions?: DispatchNamespacesScriptsGetResponseScriptCacheOptions;
+  /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
+  compatibilityDate?: string;
+  /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
+  compatibilityFlags?: DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList;
+  /** When the script was created. */
+  createdOn?: string;
+  /** Hashed script content, can be used in a If-None-Match header when updating. */
+  etag?: string;
+  /** The names of handlers exported as part of the default export. */
+  handlers?: DispatchNamespacesScriptsGetResponseScriptHandlersList;
+  /** Whether a Worker contains assets. */
+  hasAssets?: boolean;
+  /** Whether a Worker contains modules. */
+  hasModules?: boolean;
+  /** The client most recently used to deploy this Worker. */
+  lastDeployedFrom?: string;
+  /** Whether Logpush is turned on for the Worker. */
+  logpush?: boolean;
+  /** The tag of the Durable Object migration that was most recently applied for this Worker. */
+  migrationTag?: string;
+  /** When the script was last modified. */
+  modifiedOn?: string;
+  /** Named exports, such as Durable Object class implementations and named entrypoints. */
+  namedHandlers?: DispatchNamespacesScriptsGetResponseScriptNamedHandlersList;
+  /** Observability settings for the Worker. */
+  observability?: DispatchNamespacesScriptsGetResponseScriptObservability;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
+  placement?: DispatchNamespacesScriptsGetResponseScriptPlacement;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
+  placementMode?: DispatchNamespacesScriptsGetResponseScriptPlacementMode;
+  /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  placementStatus?: DispatchNamespacesScriptsGetResponseScriptPlacementStatus;
+  /** The immutable ID of the script. */
+  tag?: string;
+  /** Tags associated with the Worker. */
+  tags?: DispatchNamespacesScriptsGetResponseScriptTagsList;
+  /** List of Workers that will consume logs from the attached Worker. */
+  tailConsumers?: DispatchNamespacesScriptsGetResponseScriptTailConsumersList;
+  /** Usage model for the Worker invocations. */
+  usageModel?: DispatchNamespacesScriptsGetResponseScriptUsageModel;
+}
+export const DispatchNamespacesScriptsGetResponseScript =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      cacheOptions: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptCacheOptions.pipe(
+          T.Body("cache_options"),
+        ),
+      ),
+      compatibilityDate: S.optional(
+        S.String.pipe(T.Body("compatibility_date")),
+      ),
+      compatibilityFlags: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList.pipe(
+          T.Body("compatibility_flags"),
+        ),
+      ),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      etag: S.optional(S.String),
+      handlers: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptHandlersList,
+      ),
+      hasAssets: S.optional(S.Boolean.pipe(T.Body("has_assets"))),
+      hasModules: S.optional(S.Boolean.pipe(T.Body("has_modules"))),
+      lastDeployedFrom: S.optional(S.String.pipe(T.Body("last_deployed_from"))),
+      logpush: S.optional(S.Boolean),
+      migrationTag: S.optional(S.String.pipe(T.Body("migration_tag"))),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      namedHandlers: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptNamedHandlersList.pipe(
+          T.Body("named_handlers"),
+        ),
+      ),
+      observability: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptObservability,
+      ),
+      placement: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptPlacement,
+      ),
+      placementMode: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptPlacementMode.pipe(
+          T.Body("placement_mode"),
+        ),
+      ),
+      placementStatus: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptPlacementStatus.pipe(
+          T.Body("placement_status"),
+        ),
+      ),
+      tag: S.optional(S.String),
+      tags: S.optional(DispatchNamespacesScriptsGetResponseScriptTagsList),
+      tailConsumers: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptTailConsumersList.pipe(
+          T.Body("tail_consumers"),
+        ),
+      ),
+      usageModel: S.optional(
+        DispatchNamespacesScriptsGetResponseScriptUsageModel.pipe(
+          T.Body("usage_model"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsGetResponseScript",
+  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScript>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DispatchNamespacesScriptsGetResponse {
-  result?: unknown;
+  /** When the script was created. */
+  createdOn?: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace?: string;
+  /** When the script was last modified. */
+  modifiedOn?: string;
+  script?: DispatchNamespacesScriptsGetResponseScript;
 }
 export const DispatchNamespacesScriptsGetResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      dispatchNamespace: S.optional(
+        S.String.pipe(T.Body("dispatch_namespace")),
+      ),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      script: S.optional(DispatchNamespacesScriptsGetResponseScript),
     }),
 ).annotate({
   identifier: "DispatchNamespacesScriptsGetResponse",
@@ -612,23 +1417,30 @@ export const DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap =
   ) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap>;
 
 export interface DispatchNamespacesScriptsSecretsBulkUpdateRequest {
-  account_id: string;
-  dispatch_namespace: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** Map of secret names to secret values: */
   secrets?: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsMap;
-  version_tags?: DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap;
+  /** Optional version tags to apply to the new script version. */
+  versionTags?: DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap;
 }
 export const DispatchNamespacesScriptsSecretsBulkUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      dispatch_namespace: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
+      scriptName: S.String.pipe(T.Label("script_name")),
       secrets: S.optional(
         DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsMap,
       ),
-      version_tags: S.optional(
-        DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap,
+      versionTags: S.optional(
+        DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap.pipe(
+          T.Body("version_tags"),
+        ),
       ),
     }).pipe(
       T.Http({
@@ -651,6 +1463,7 @@ export const DispatchNamespacesScriptsSecretsBulkUpdateResultMap =
   ) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateResultMap>;
 
 export interface DispatchNamespacesScriptsSecretsBulkUpdateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DispatchNamespacesScriptsSecretsBulkUpdateResultMap;
 }
 export const DispatchNamespacesScriptsSecretsBulkUpdateResponse =
@@ -667,20 +1480,25 @@ export const DispatchNamespacesScriptsSecretsBulkUpdateResponse =
   }) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateResponse>;
 
 export interface DispatchNamespacesScriptsSecretsDeleteRequest {
-  account_id: string;
-  dispatch_namespace: string;
-  script_name: string;
-  secret_name: string;
-  url_encoded?: boolean;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** A JavaScript variable name for the secret binding. */
+  secretName: string;
+  /** Flag that indicates whether the secret name is URL encoded. */
+  urlEncoded?: boolean;
 }
 export const DispatchNamespacesScriptsSecretsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      dispatch_namespace: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
-      secret_name: S.String.pipe(T.Label()),
-      url_encoded: S.optional(S.Boolean.pipe(T.Query())),
+      accountId: S.String.pipe(T.Label("account_id")),
+      dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
+      scriptName: S.String.pipe(T.Label("script_name")),
+      secretName: S.String.pipe(T.Label("secret_name")),
+      urlEncoded: S.optional(S.Boolean.pipe(T.Query("url_encoded"))),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -693,6 +1511,7 @@ export const DispatchNamespacesScriptsSecretsDeleteRequest =
   }) as any as S.Schema<DispatchNamespacesScriptsSecretsDeleteRequest>;
 
 export interface DispatchNamespacesScriptsSecretsDeleteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const DispatchNamespacesScriptsSecretsDeleteResponse =
@@ -705,20 +1524,25 @@ export const DispatchNamespacesScriptsSecretsDeleteResponse =
   }) as any as S.Schema<DispatchNamespacesScriptsSecretsDeleteResponse>;
 
 export interface DispatchNamespacesScriptsSecretsGetRequest {
-  account_id: string;
-  dispatch_namespace: string;
-  script_name: string;
-  secret_name: string;
-  url_encoded?: boolean;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** A JavaScript variable name for the secret binding. */
+  secretName: string;
+  /** Flag that indicates whether the secret name is URL encoded. */
+  urlEncoded?: boolean;
 }
 export const DispatchNamespacesScriptsSecretsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      dispatch_namespace: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
-      secret_name: S.String.pipe(T.Label()),
-      url_encoded: S.optional(S.Boolean.pipe(T.Query())),
+      accountId: S.String.pipe(T.Label("account_id")),
+      dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
+      scriptName: S.String.pipe(T.Label("script_name")),
+      secretName: S.String.pipe(T.Label("secret_name")),
+      urlEncoded: S.optional(S.Boolean.pipe(T.Query("url_encoded"))),
     }).pipe(
       T.Http({
         method: "GET",
@@ -732,16 +1556,16 @@ export const DispatchNamespacesScriptsSecretsGetRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DispatchNamespacesScriptsSecretsGetResponse {
-  SecretText_object___name__text__type__: unknown;
-  SecretKey_object___algorithm__format__name__4_more__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
 }
 export const DispatchNamespacesScriptsSecretsGetResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      SecretText_object___name__text__type__: S.Unknown.pipe(
+      SecretTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("SecretText object { name, text, type }"),
       ),
-      SecretKey_object___algorithm__format__name__4_more__: S.Unknown.pipe(
+      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
         T.Body("SecretKey object { algorithm, format, name, 4 more }"),
       ),
     }),
@@ -750,16 +1574,19 @@ export const DispatchNamespacesScriptsSecretsGetResponse =
   }) as any as S.Schema<DispatchNamespacesScriptsSecretsGetResponse>;
 
 export interface DispatchNamespacesScriptsSecretsListRequest {
-  account_id: string;
-  dispatch_namespace: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const DispatchNamespacesScriptsSecretsListRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      dispatch_namespace: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
+      scriptName: S.String.pipe(T.Label("script_name")),
     }).pipe(
       T.Http({
         method: "GET",
@@ -772,16 +1599,16 @@ export const DispatchNamespacesScriptsSecretsListRequest =
   }) as any as S.Schema<DispatchNamespacesScriptsSecretsListRequest>;
 
 export interface DispatchNamespacesScriptsSecretsListResultItem {
-  SecretText_object___name__text__type__: unknown;
-  SecretKey_object___algorithm__format__name__4_more__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
 }
 export const DispatchNamespacesScriptsSecretsListResultItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      SecretText_object___name__text__type__: S.Unknown.pipe(
+      SecretTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("SecretText object { name, text, type }"),
       ),
-      SecretKey_object___algorithm__format__name__4_more__: S.Unknown.pipe(
+      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
         T.Body("SecretKey object { algorithm, format, name, 4 more }"),
       ),
     }),
@@ -797,6 +1624,7 @@ export const DispatchNamespacesScriptsSecretsListResultList =
   ) as any as S.Schema<DispatchNamespacesScriptsSecretsListResultList>;
 
 export interface DispatchNamespacesScriptsSecretsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DispatchNamespacesScriptsSecretsListResultList;
 }
 export const DispatchNamespacesScriptsSecretsListResponse =
@@ -813,16 +1641,16 @@ export const DispatchNamespacesScriptsSecretsListResponse =
   }) as any as S.Schema<DispatchNamespacesScriptsSecretsListResponse>;
 
 export interface DispatchNamespacesScriptsSecretsUpdateRequestBody {
-  SecretText_object___name__text__type__: unknown;
-  SecretKey_object___algorithm__format__name__4_more__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
 }
 export const DispatchNamespacesScriptsSecretsUpdateRequestBody =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      SecretText_object___name__text__type__: S.Unknown.pipe(
+      SecretTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("SecretText object { name, text, type }"),
       ),
-      SecretKey_object___algorithm__format__name__4_more__: S.Unknown.pipe(
+      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
         T.Body("SecretKey object { algorithm, format, name, 4 more }"),
       ),
     }),
@@ -831,17 +1659,21 @@ export const DispatchNamespacesScriptsSecretsUpdateRequestBody =
   }) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateRequestBody>;
 
 export interface DispatchNamespacesScriptsSecretsUpdateRequest {
-  account_id: string;
-  dispatch_namespace: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** A secret value accessible through a binding. */
   body: DispatchNamespacesScriptsSecretsUpdateRequestBody;
 }
 export const DispatchNamespacesScriptsSecretsUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      dispatch_namespace: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
+      scriptName: S.String.pipe(T.Label("script_name")),
       body: DispatchNamespacesScriptsSecretsUpdateRequestBody,
     }).pipe(
       T.Http({
@@ -856,16 +1688,16 @@ export const DispatchNamespacesScriptsSecretsUpdateRequest =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DispatchNamespacesScriptsSecretsUpdateResponse {
-  SecretText_object___name__text__type__: unknown;
-  SecretKey_object___algorithm__format__name__4_more__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
 }
 export const DispatchNamespacesScriptsSecretsUpdateResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      SecretText_object___name__text__type__: S.Unknown.pipe(
+      SecretTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("SecretText object { name, text, type }"),
       ),
-      SecretKey_object___algorithm__format__name__4_more__: S.Unknown.pipe(
+      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
         T.Body("SecretKey object { algorithm, format, name, 4 more }"),
       ),
     }),
@@ -874,16 +1706,19 @@ export const DispatchNamespacesScriptsSecretsUpdateResponse =
   }) as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateResponse>;
 
 export interface DispatchNamespacesScriptsSettingsEditRequest {
-  account_id: string;
-  dispatch_namespace: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const DispatchNamespacesScriptsSettingsEditRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      dispatch_namespace: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
+      scriptName: S.String.pipe(T.Label("script_name")),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -896,160 +1731,152 @@ export const DispatchNamespacesScriptsSettingsEditRequest =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequest>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItem {
-  AI_object___name__type__: unknown;
-  AISearch_object___instance_name__name__type__namespace__: unknown;
-  AISearchNamespace_object___name__namespace__type__: unknown;
-  AnalyticsEngine_object___dataset__name__type__: unknown;
-  Assets_object___name__type__: unknown;
-  Browser_object___name__type__: unknown;
-  D1_object___database_id__name__type__id__: unknown;
-  DataBlob_object___name__part__type__: unknown;
-  DispatchNamespace_object___name__namespace__type__outbound__: unknown;
-  DurableObjectNamespace_object___name__type__class_name__4_more__: unknown;
-  Hyperdrive_object___id__name__type__: unknown;
-  Inherit_object___name__type__old_name__version_id__: unknown;
-  Images_object___name__type__: unknown;
-  Json_object___json__name__type__: unknown;
-  KVNamespace_object___name__namespace_id__type__: unknown;
-  Media_object___name__type__: unknown;
-  MTLSCertificate_object___certificate_id__name__type__: unknown;
-  PlainText_object___name__text__type__: unknown;
-  Pipelines_object___name__pipeline__type__: unknown;
-  Queue_object___name__queue_name__type__: unknown;
-  Ratelimit_object___name__namespace_id__simple__type__: unknown;
-  R2Bucket_object___bucket_name__name__type__jurisdiction__: unknown;
-  SecretText_object___name__text__type__: unknown;
-  SendEmail_object___name__type__allowed_destination_addresses__2_more__: unknown;
-  Service_object___name__service__type__2_more__: unknown;
-  TextBlob_object___name__part__type__: unknown;
-  Vectorize_object___index_name__name__type__: unknown;
-  VersionMetadata_object___name__type__: unknown;
-  SecretsStoreSecret_object___name__secret_name__store_id__type__: unknown;
-  Flagship_object___app_id__name__type__: unknown;
-  SecretKey_object___algorithm__format__name__4_more__: unknown;
-  Workflow_object___name__type__workflow_name__2_more__: unknown;
-  WasmModule_object___name__part__type__: unknown;
-  VPCService_object___name__service_id__type__: unknown;
-  VPCNetwork_object___name__type__network_id__tunnel_id__: unknown;
+  AIObjectNameType__: unknown;
+  AISearchObjectInstanceNameNameTypeNamespace__: unknown;
+  AISearchNamespaceObjectNameNamespaceType__: unknown;
+  AnalyticsEngineObjectDatasetNameType__: unknown;
+  AssetsObjectNameType__: unknown;
+  BrowserObjectNameType__: unknown;
+  D1ObjectDatabaseIdNameTypeId__: unknown;
+  DataBlobObjectNamePartType__: unknown;
+  DispatchNamespaceObjectNameNamespaceTypeOutbound__: unknown;
+  DurableObjectNamespaceObjectNameTypeClassName4More__: unknown;
+  HyperdriveObjectIdNameType__: unknown;
+  InheritObjectNameTypeOldNameVersionId__: unknown;
+  ImagesObjectNameType__: unknown;
+  JsonObjectJsonNameType__: unknown;
+  KVNamespaceObjectNameNamespaceIdType__: unknown;
+  MediaObjectNameType__: unknown;
+  MTLSCertificateObjectCertificateIdNameType__: unknown;
+  PlainTextObjectNameTextType__: unknown;
+  PipelinesObjectNamePipelineType__: unknown;
+  QueueObjectNameQueueNameType__: unknown;
+  RatelimitObjectNameNamespaceIdSimpleType__: unknown;
+  R2BucketObjectBucketNameNameTypeJurisdiction__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SendEmailObjectNameTypeAllowedDestinationAddresses2More__: unknown;
+  ServiceObjectNameServiceType2More__: unknown;
+  TextBlobObjectNamePartType__: unknown;
+  VectorizeObjectIndexNameNameType__: unknown;
+  VersionMetadataObjectNameType__: unknown;
+  SecretsStoreSecretObjectNameSecretNameStoreIdType__: unknown;
+  FlagshipObjectAppIdNameType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
+  WorkflowObjectNameTypeWorkflowName2More__: unknown;
+  WasmModuleObjectNamePartType__: unknown;
+  VPCServiceObjectNameServiceIdType__: unknown;
+  VPCNetworkObjectNameTypeNetworkIdTunnelId__: unknown;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseBindingsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AI_object___name__type__: S.Unknown.pipe(
-        T.Body("AI object { name, type }"),
-      ),
-      AISearch_object___instance_name__name__type__namespace__: S.Unknown.pipe(
+      AIObjectNameType__: S.Unknown.pipe(T.Body("AI object { name, type }")),
+      AISearchObjectInstanceNameNameTypeNamespace__: S.Unknown.pipe(
         T.Body("AISearch object { instance_name, name, type, namespace }"),
       ),
-      AISearchNamespace_object___name__namespace__type__: S.Unknown.pipe(
+      AISearchNamespaceObjectNameNamespaceType__: S.Unknown.pipe(
         T.Body("AISearchNamespace object { name, namespace, type }"),
       ),
-      AnalyticsEngine_object___dataset__name__type__: S.Unknown.pipe(
+      AnalyticsEngineObjectDatasetNameType__: S.Unknown.pipe(
         T.Body("AnalyticsEngine object { dataset, name, type }"),
       ),
-      Assets_object___name__type__: S.Unknown.pipe(
+      AssetsObjectNameType__: S.Unknown.pipe(
         T.Body("Assets object { name, type }"),
       ),
-      Browser_object___name__type__: S.Unknown.pipe(
+      BrowserObjectNameType__: S.Unknown.pipe(
         T.Body("Browser object { name, type }"),
       ),
-      D1_object___database_id__name__type__id__: S.Unknown.pipe(
+      D1ObjectDatabaseIdNameTypeId__: S.Unknown.pipe(
         T.Body("D1 object { database_id, name, type, id }"),
       ),
-      DataBlob_object___name__part__type__: S.Unknown.pipe(
+      DataBlobObjectNamePartType__: S.Unknown.pipe(
         T.Body("DataBlob object { name, part, type }"),
       ),
-      DispatchNamespace_object___name__namespace__type__outbound__:
-        S.Unknown.pipe(
-          T.Body(
-            "DispatchNamespace object { name, namespace, type, outbound }",
-          ),
+      DispatchNamespaceObjectNameNamespaceTypeOutbound__: S.Unknown.pipe(
+        T.Body("DispatchNamespace object { name, namespace, type, outbound }"),
+      ),
+      DurableObjectNamespaceObjectNameTypeClassName4More__: S.Unknown.pipe(
+        T.Body(
+          "DurableObjectNamespace object { name, type, class_name, 4 more }",
         ),
-      DurableObjectNamespace_object___name__type__class_name__4_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "DurableObjectNamespace object { name, type, class_name, 4 more }",
-          ),
-        ),
-      Hyperdrive_object___id__name__type__: S.Unknown.pipe(
+      ),
+      HyperdriveObjectIdNameType__: S.Unknown.pipe(
         T.Body("Hyperdrive object { id, name, type }"),
       ),
-      Inherit_object___name__type__old_name__version_id__: S.Unknown.pipe(
+      InheritObjectNameTypeOldNameVersionId__: S.Unknown.pipe(
         T.Body("Inherit object { name, type, old_name, version_id }"),
       ),
-      Images_object___name__type__: S.Unknown.pipe(
+      ImagesObjectNameType__: S.Unknown.pipe(
         T.Body("Images object { name, type }"),
       ),
-      Json_object___json__name__type__: S.Unknown.pipe(
+      JsonObjectJsonNameType__: S.Unknown.pipe(
         T.Body("Json object { json, name, type }"),
       ),
-      KVNamespace_object___name__namespace_id__type__: S.Unknown.pipe(
+      KVNamespaceObjectNameNamespaceIdType__: S.Unknown.pipe(
         T.Body("KVNamespace object { name, namespace_id, type }"),
       ),
-      Media_object___name__type__: S.Unknown.pipe(
+      MediaObjectNameType__: S.Unknown.pipe(
         T.Body("Media object { name, type }"),
       ),
-      MTLSCertificate_object___certificate_id__name__type__: S.Unknown.pipe(
+      MTLSCertificateObjectCertificateIdNameType__: S.Unknown.pipe(
         T.Body("MTLSCertificate object { certificate_id, name, type }"),
       ),
-      PlainText_object___name__text__type__: S.Unknown.pipe(
+      PlainTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("PlainText object { name, text, type }"),
       ),
-      Pipelines_object___name__pipeline__type__: S.Unknown.pipe(
+      PipelinesObjectNamePipelineType__: S.Unknown.pipe(
         T.Body("Pipelines object { name, pipeline, type }"),
       ),
-      Queue_object___name__queue_name__type__: S.Unknown.pipe(
+      QueueObjectNameQueueNameType__: S.Unknown.pipe(
         T.Body("Queue object { name, queue_name, type }"),
       ),
-      Ratelimit_object___name__namespace_id__simple__type__: S.Unknown.pipe(
+      RatelimitObjectNameNamespaceIdSimpleType__: S.Unknown.pipe(
         T.Body("Ratelimit object { name, namespace_id, simple, type }"),
       ),
-      R2Bucket_object___bucket_name__name__type__jurisdiction__: S.Unknown.pipe(
+      R2BucketObjectBucketNameNameTypeJurisdiction__: S.Unknown.pipe(
         T.Body("R2Bucket object { bucket_name, name, type, jurisdiction }"),
       ),
-      SecretText_object___name__text__type__: S.Unknown.pipe(
+      SecretTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("SecretText object { name, text, type }"),
       ),
-      SendEmail_object___name__type__allowed_destination_addresses__2_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
-          ),
+      SendEmailObjectNameTypeAllowedDestinationAddresses2More__: S.Unknown.pipe(
+        T.Body(
+          "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
         ),
-      Service_object___name__service__type__2_more__: S.Unknown.pipe(
+      ),
+      ServiceObjectNameServiceType2More__: S.Unknown.pipe(
         T.Body("Service object { name, service, type, 2 more }"),
       ),
-      TextBlob_object___name__part__type__: S.Unknown.pipe(
+      TextBlobObjectNamePartType__: S.Unknown.pipe(
         T.Body("TextBlob object { name, part, type }"),
       ),
-      Vectorize_object___index_name__name__type__: S.Unknown.pipe(
+      VectorizeObjectIndexNameNameType__: S.Unknown.pipe(
         T.Body("Vectorize object { index_name, name, type }"),
       ),
-      VersionMetadata_object___name__type__: S.Unknown.pipe(
+      VersionMetadataObjectNameType__: S.Unknown.pipe(
         T.Body("VersionMetadata object { name, type }"),
       ),
-      SecretsStoreSecret_object___name__secret_name__store_id__type__:
-        S.Unknown.pipe(
-          T.Body(
-            "SecretsStoreSecret object { name, secret_name, store_id, type }",
-          ),
+      SecretsStoreSecretObjectNameSecretNameStoreIdType__: S.Unknown.pipe(
+        T.Body(
+          "SecretsStoreSecret object { name, secret_name, store_id, type }",
         ),
-      Flagship_object___app_id__name__type__: S.Unknown.pipe(
+      ),
+      FlagshipObjectAppIdNameType__: S.Unknown.pipe(
         T.Body("Flagship object { app_id, name, type }"),
       ),
-      SecretKey_object___algorithm__format__name__4_more__: S.Unknown.pipe(
+      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
         T.Body("SecretKey object { algorithm, format, name, 4 more }"),
       ),
-      Workflow_object___name__type__workflow_name__2_more__: S.Unknown.pipe(
+      WorkflowObjectNameTypeWorkflowName2More__: S.Unknown.pipe(
         T.Body("Workflow object { name, type, workflow_name, 2 more }"),
       ),
-      WasmModule_object___name__part__type__: S.Unknown.pipe(
+      WasmModuleObjectNamePartType__: S.Unknown.pipe(
         T.Body("WasmModule object { name, part, type }"),
       ),
-      VPCService_object___name__service_id__type__: S.Unknown.pipe(
+      VPCServiceObjectNameServiceIdType__: S.Unknown.pipe(
         T.Body("VPCService object { name, service_id, type }"),
       ),
-      VPCNetwork_object___name__type__network_id__tunnel_id__: S.Unknown.pipe(
+      VPCNetworkObjectNameTypeNetworkIdTunnelId__: S.Unknown.pipe(
         T.Body("VPCNetwork object { name, type, network_id, tunnel_id }"),
       ),
     }),
@@ -1065,14 +1892,18 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsList =
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsList>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseCacheOptions {
+  /** Whether caching is enabled for this Worker. */
   enabled: boolean;
-  cross_version_cache?: boolean;
+  /** Whether cached responses are shared across Worker version */
+  crossVersionCache?: boolean;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseCacheOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      cross_version_cache: S.optional(S.Boolean),
+      crossVersionCache: S.optional(
+        S.Boolean.pipe(T.Body("cross_version_cache")),
+      ),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSettingsEditResponseCacheOptions",
@@ -1095,18 +1926,44 @@ export const DispatchNamespacesScriptsSettingsEditResponseExportsMap =
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsMap>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseLimits {
-  cpu_ms?: number;
+  /** The amount of CPU time this Worker can use in milliseconds. */
+  cpuMs?: number;
+  /** The number of subrequests this Worker can make per request. */
   subrequests?: number;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseLimits =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      cpu_ms: S.optional(S.Number),
+      cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
       subrequests: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSettingsEditResponseLimits",
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseLimits>;
+
+export interface DispatchNamespacesScriptsSettingsEditResponseMigrations {
+  /** A single set of migrations to apply. */
+  SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__: unknown;
+  WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: unknown;
+}
+export const DispatchNamespacesScriptsSettingsEditResponseMigrations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__:
+        S.Unknown.pipe(
+          T.Body(
+            "SingleStepMigration object { deleted_classes, new_classes, new_sqlite_classes, 4 more }",
+          ),
+        ),
+      WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: S.Unknown.pipe(
+        T.Body(
+          "WorkersMultipleStepMigrations object { new_tag, old_tag, steps }",
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsSettingsEditResponseMigrations",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrations>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList =
   string[];
@@ -1116,21 +1973,26 @@ export const DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDesti
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs {
+  /** Whether logs are enabled for the Worker. */
   enabled: boolean;
-  invocation_logs: boolean;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs: boolean;
+  /** A list of destinations where logs will be exported to. */
   destinations?: DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList;
-  head_sampling_rate?: number;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      invocation_logs: S.Boolean,
+      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
       destinations: S.optional(
         DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList,
       ),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
     }),
   ).annotate({
@@ -1151,11 +2013,16 @@ export const DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPro
   /*@__PURE__*/ S.String;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
   destinations?: DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
   enabled?: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
   persist?: boolean;
-  propagation_policy?: DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
@@ -1164,10 +2031,12 @@ export const DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces =
         DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList,
       ),
       enabled: S.optional(S.Boolean),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
-      propagation_policy: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy,
+      propagationPolicy: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
       ),
     }),
   ).annotate({
@@ -1176,16 +2045,20 @@ export const DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseObservability {
+  /** Whether observability is enabled for the Worker. */
   enabled: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
   logs?: DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs;
+  /** Trace settings for the Worker. */
   traces?: DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces;
 }
 export const DispatchNamespacesScriptsSettingsEditResponseObservability =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       logs: S.optional(
         DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs,
       ),
@@ -1198,36 +2071,28 @@ export const DispatchNamespacesScriptsSettingsEditResponseObservability =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservability>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponsePlacement {
-  Mode_object___mode__: unknown;
-  Region_object___region__: unknown;
-  Hostname_object___hostname__: unknown;
-  Host_object___host__: unknown;
-  object___mode__region__: unknown;
-  object___hostname__mode__: unknown;
-  object___host__mode__: unknown;
-  object___mode__target__: unknown;
+  ModeObjectMode__: unknown;
+  RegionObjectRegion__: unknown;
+  HostnameObjectHostname__: unknown;
+  HostObjectHost__: unknown;
+  objectModeRegion__: unknown;
+  objectHostnameMode__: unknown;
+  objectHostMode__: unknown;
+  objectModeTarget__: unknown;
 }
 export const DispatchNamespacesScriptsSettingsEditResponsePlacement =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      Mode_object___mode__: S.Unknown.pipe(T.Body("Mode object { mode }")),
-      Region_object___region__: S.Unknown.pipe(
-        T.Body("Region object { region }"),
-      ),
-      Hostname_object___hostname__: S.Unknown.pipe(
+      ModeObjectMode__: S.Unknown.pipe(T.Body("Mode object { mode }")),
+      RegionObjectRegion__: S.Unknown.pipe(T.Body("Region object { region }")),
+      HostnameObjectHostname__: S.Unknown.pipe(
         T.Body("Hostname object { hostname }"),
       ),
-      Host_object___host__: S.Unknown.pipe(T.Body("Host object { host }")),
-      object___mode__region__: S.Unknown.pipe(
-        T.Body("object { mode, region }"),
-      ),
-      object___hostname__mode__: S.Unknown.pipe(
-        T.Body("object { hostname, mode }"),
-      ),
-      object___host__mode__: S.Unknown.pipe(T.Body("object { host, mode }")),
-      object___mode__target__: S.Unknown.pipe(
-        T.Body("object { mode, target }"),
-      ),
+      HostObjectHost__: S.Unknown.pipe(T.Body("Host object { host }")),
+      objectModeRegion__: S.Unknown.pipe(T.Body("object { mode, region }")),
+      objectHostnameMode__: S.Unknown.pipe(T.Body("object { hostname, mode }")),
+      objectHostMode__: S.Unknown.pipe(T.Body("object { host, mode }")),
+      objectModeTarget__: S.Unknown.pipe(T.Body("object { mode, target }")),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSettingsEditResponsePlacement",
@@ -1239,11 +2104,31 @@ export const DispatchNamespacesScriptsSettingsEditResponseTagsList =
     S.String,
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseTagsList>;
 
+export interface DispatchNamespacesScriptsSettingsEditResponseTailConsumersItem {
+  /** Name of Worker that is to be the consumer. */
+  service: string;
+  /** Optional environment if the Worker utilizes one. */
+  environment?: string;
+  /** Optional dispatch namespace the script belongs to. */
+  namespace?: string;
+}
+export const DispatchNamespacesScriptsSettingsEditResponseTailConsumersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      service: S.String,
+      environment: S.optional(S.String),
+      namespace: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DispatchNamespacesScriptsSettingsEditResponseTailConsumersItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseTailConsumersItem>;
+
 export type DispatchNamespacesScriptsSettingsEditResponseTailConsumersList =
-  unknown[];
+  DispatchNamespacesScriptsSettingsEditResponseTailConsumersItem[];
 export const DispatchNamespacesScriptsSettingsEditResponseTailConsumersList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    DispatchNamespacesScriptsSettingsEditResponseTailConsumersItem,
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseTailConsumersList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseUsageModel =
@@ -1256,19 +2141,32 @@ export const DispatchNamespacesScriptsSettingsEditResponseUsageModel =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DispatchNamespacesScriptsSettingsEditResponse {
+  /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
   bindings?: DispatchNamespacesScriptsSettingsEditResponseBindingsList;
-  cache_options?: DispatchNamespacesScriptsSettingsEditResponseCacheOptions;
-  compatibility_date?: string;
-  compatibility_flags?: DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList;
+  /** Global CacheW configuration for the Worker. When caching is on, */
+  cacheOptions?: DispatchNamespacesScriptsSettingsEditResponseCacheOptions;
+  /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
+  compatibilityDate?: string;
+  /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
+  compatibilityFlags?: DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList;
+  /** Declarative exports for the Worker. Worker entrypoint entries */
   exports?: DispatchNamespacesScriptsSettingsEditResponseExportsMap;
+  /** Limits to apply for this Worker. */
   limits?: DispatchNamespacesScriptsSettingsEditResponseLimits;
+  /** Whether Logpush is turned on for the Worker. */
   logpush?: boolean;
-  migrations?: unknown;
+  /** Migrations to apply for Durable Objects associated with this Worker. */
+  migrations?: DispatchNamespacesScriptsSettingsEditResponseMigrations;
+  /** Observability settings for the Worker. */
   observability?: DispatchNamespacesScriptsSettingsEditResponseObservability;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?: DispatchNamespacesScriptsSettingsEditResponsePlacement;
+  /** Tags associated with the Worker. */
   tags?: DispatchNamespacesScriptsSettingsEditResponseTagsList;
-  tail_consumers?: DispatchNamespacesScriptsSettingsEditResponseTailConsumersList;
-  usage_model?: DispatchNamespacesScriptsSettingsEditResponseUsageModel;
+  /** List of Workers that will consume logs from the attached Worker. */
+  tailConsumers?: DispatchNamespacesScriptsSettingsEditResponseTailConsumersList;
+  /** Usage model for the Worker invocations. */
+  usageModel?: DispatchNamespacesScriptsSettingsEditResponseUsageModel;
 }
 export const DispatchNamespacesScriptsSettingsEditResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -1276,19 +2174,27 @@ export const DispatchNamespacesScriptsSettingsEditResponse =
       bindings: S.optional(
         DispatchNamespacesScriptsSettingsEditResponseBindingsList,
       ),
-      cache_options: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseCacheOptions,
+      cacheOptions: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseCacheOptions.pipe(
+          T.Body("cache_options"),
+        ),
       ),
-      compatibility_date: S.optional(S.String),
-      compatibility_flags: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList,
+      compatibilityDate: S.optional(
+        S.String.pipe(T.Body("compatibility_date")),
+      ),
+      compatibilityFlags: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList.pipe(
+          T.Body("compatibility_flags"),
+        ),
       ),
       exports: S.optional(
         DispatchNamespacesScriptsSettingsEditResponseExportsMap,
       ),
       limits: S.optional(DispatchNamespacesScriptsSettingsEditResponseLimits),
       logpush: S.optional(S.Boolean),
-      migrations: S.optional(S.Unknown),
+      migrations: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseMigrations,
+      ),
       observability: S.optional(
         DispatchNamespacesScriptsSettingsEditResponseObservability,
       ),
@@ -1296,11 +2202,15 @@ export const DispatchNamespacesScriptsSettingsEditResponse =
         DispatchNamespacesScriptsSettingsEditResponsePlacement,
       ),
       tags: S.optional(DispatchNamespacesScriptsSettingsEditResponseTagsList),
-      tail_consumers: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseTailConsumersList,
+      tailConsumers: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseTailConsumersList.pipe(
+          T.Body("tail_consumers"),
+        ),
       ),
-      usage_model: S.optional(
-        DispatchNamespacesScriptsSettingsEditResponseUsageModel,
+      usageModel: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseUsageModel.pipe(
+          T.Body("usage_model"),
+        ),
       ),
     }),
   ).annotate({
@@ -1308,16 +2218,19 @@ export const DispatchNamespacesScriptsSettingsEditResponse =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponse>;
 
 export interface DispatchNamespacesScriptsSettingsGetRequest {
-  account_id: string;
-  dispatch_namespace: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const DispatchNamespacesScriptsSettingsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      dispatch_namespace: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
+      scriptName: S.String.pipe(T.Label("script_name")),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1330,160 +2243,152 @@ export const DispatchNamespacesScriptsSettingsGetRequest =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetRequest>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItem {
-  AI_object___name__type__: unknown;
-  AISearch_object___instance_name__name__type__namespace__: unknown;
-  AISearchNamespace_object___name__namespace__type__: unknown;
-  AnalyticsEngine_object___dataset__name__type__: unknown;
-  Assets_object___name__type__: unknown;
-  Browser_object___name__type__: unknown;
-  D1_object___database_id__name__type__id__: unknown;
-  DataBlob_object___name__part__type__: unknown;
-  DispatchNamespace_object___name__namespace__type__outbound__: unknown;
-  DurableObjectNamespace_object___name__type__class_name__4_more__: unknown;
-  Hyperdrive_object___id__name__type__: unknown;
-  Inherit_object___name__type__old_name__version_id__: unknown;
-  Images_object___name__type__: unknown;
-  Json_object___json__name__type__: unknown;
-  KVNamespace_object___name__namespace_id__type__: unknown;
-  Media_object___name__type__: unknown;
-  MTLSCertificate_object___certificate_id__name__type__: unknown;
-  PlainText_object___name__text__type__: unknown;
-  Pipelines_object___name__pipeline__type__: unknown;
-  Queue_object___name__queue_name__type__: unknown;
-  Ratelimit_object___name__namespace_id__simple__type__: unknown;
-  R2Bucket_object___bucket_name__name__type__jurisdiction__: unknown;
-  SecretText_object___name__text__type__: unknown;
-  SendEmail_object___name__type__allowed_destination_addresses__2_more__: unknown;
-  Service_object___name__service__type__2_more__: unknown;
-  TextBlob_object___name__part__type__: unknown;
-  Vectorize_object___index_name__name__type__: unknown;
-  VersionMetadata_object___name__type__: unknown;
-  SecretsStoreSecret_object___name__secret_name__store_id__type__: unknown;
-  Flagship_object___app_id__name__type__: unknown;
-  SecretKey_object___algorithm__format__name__4_more__: unknown;
-  Workflow_object___name__type__workflow_name__2_more__: unknown;
-  WasmModule_object___name__part__type__: unknown;
-  VPCService_object___name__service_id__type__: unknown;
-  VPCNetwork_object___name__type__network_id__tunnel_id__: unknown;
+  AIObjectNameType__: unknown;
+  AISearchObjectInstanceNameNameTypeNamespace__: unknown;
+  AISearchNamespaceObjectNameNamespaceType__: unknown;
+  AnalyticsEngineObjectDatasetNameType__: unknown;
+  AssetsObjectNameType__: unknown;
+  BrowserObjectNameType__: unknown;
+  D1ObjectDatabaseIdNameTypeId__: unknown;
+  DataBlobObjectNamePartType__: unknown;
+  DispatchNamespaceObjectNameNamespaceTypeOutbound__: unknown;
+  DurableObjectNamespaceObjectNameTypeClassName4More__: unknown;
+  HyperdriveObjectIdNameType__: unknown;
+  InheritObjectNameTypeOldNameVersionId__: unknown;
+  ImagesObjectNameType__: unknown;
+  JsonObjectJsonNameType__: unknown;
+  KVNamespaceObjectNameNamespaceIdType__: unknown;
+  MediaObjectNameType__: unknown;
+  MTLSCertificateObjectCertificateIdNameType__: unknown;
+  PlainTextObjectNameTextType__: unknown;
+  PipelinesObjectNamePipelineType__: unknown;
+  QueueObjectNameQueueNameType__: unknown;
+  RatelimitObjectNameNamespaceIdSimpleType__: unknown;
+  R2BucketObjectBucketNameNameTypeJurisdiction__: unknown;
+  SecretTextObjectNameTextType__: unknown;
+  SendEmailObjectNameTypeAllowedDestinationAddresses2More__: unknown;
+  ServiceObjectNameServiceType2More__: unknown;
+  TextBlobObjectNamePartType__: unknown;
+  VectorizeObjectIndexNameNameType__: unknown;
+  VersionMetadataObjectNameType__: unknown;
+  SecretsStoreSecretObjectNameSecretNameStoreIdType__: unknown;
+  FlagshipObjectAppIdNameType__: unknown;
+  SecretKeyObjectAlgorithmFormatName4More__: unknown;
+  WorkflowObjectNameTypeWorkflowName2More__: unknown;
+  WasmModuleObjectNamePartType__: unknown;
+  VPCServiceObjectNameServiceIdType__: unknown;
+  VPCNetworkObjectNameTypeNetworkIdTunnelId__: unknown;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseBindingsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      AI_object___name__type__: S.Unknown.pipe(
-        T.Body("AI object { name, type }"),
-      ),
-      AISearch_object___instance_name__name__type__namespace__: S.Unknown.pipe(
+      AIObjectNameType__: S.Unknown.pipe(T.Body("AI object { name, type }")),
+      AISearchObjectInstanceNameNameTypeNamespace__: S.Unknown.pipe(
         T.Body("AISearch object { instance_name, name, type, namespace }"),
       ),
-      AISearchNamespace_object___name__namespace__type__: S.Unknown.pipe(
+      AISearchNamespaceObjectNameNamespaceType__: S.Unknown.pipe(
         T.Body("AISearchNamespace object { name, namespace, type }"),
       ),
-      AnalyticsEngine_object___dataset__name__type__: S.Unknown.pipe(
+      AnalyticsEngineObjectDatasetNameType__: S.Unknown.pipe(
         T.Body("AnalyticsEngine object { dataset, name, type }"),
       ),
-      Assets_object___name__type__: S.Unknown.pipe(
+      AssetsObjectNameType__: S.Unknown.pipe(
         T.Body("Assets object { name, type }"),
       ),
-      Browser_object___name__type__: S.Unknown.pipe(
+      BrowserObjectNameType__: S.Unknown.pipe(
         T.Body("Browser object { name, type }"),
       ),
-      D1_object___database_id__name__type__id__: S.Unknown.pipe(
+      D1ObjectDatabaseIdNameTypeId__: S.Unknown.pipe(
         T.Body("D1 object { database_id, name, type, id }"),
       ),
-      DataBlob_object___name__part__type__: S.Unknown.pipe(
+      DataBlobObjectNamePartType__: S.Unknown.pipe(
         T.Body("DataBlob object { name, part, type }"),
       ),
-      DispatchNamespace_object___name__namespace__type__outbound__:
-        S.Unknown.pipe(
-          T.Body(
-            "DispatchNamespace object { name, namespace, type, outbound }",
-          ),
+      DispatchNamespaceObjectNameNamespaceTypeOutbound__: S.Unknown.pipe(
+        T.Body("DispatchNamespace object { name, namespace, type, outbound }"),
+      ),
+      DurableObjectNamespaceObjectNameTypeClassName4More__: S.Unknown.pipe(
+        T.Body(
+          "DurableObjectNamespace object { name, type, class_name, 4 more }",
         ),
-      DurableObjectNamespace_object___name__type__class_name__4_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "DurableObjectNamespace object { name, type, class_name, 4 more }",
-          ),
-        ),
-      Hyperdrive_object___id__name__type__: S.Unknown.pipe(
+      ),
+      HyperdriveObjectIdNameType__: S.Unknown.pipe(
         T.Body("Hyperdrive object { id, name, type }"),
       ),
-      Inherit_object___name__type__old_name__version_id__: S.Unknown.pipe(
+      InheritObjectNameTypeOldNameVersionId__: S.Unknown.pipe(
         T.Body("Inherit object { name, type, old_name, version_id }"),
       ),
-      Images_object___name__type__: S.Unknown.pipe(
+      ImagesObjectNameType__: S.Unknown.pipe(
         T.Body("Images object { name, type }"),
       ),
-      Json_object___json__name__type__: S.Unknown.pipe(
+      JsonObjectJsonNameType__: S.Unknown.pipe(
         T.Body("Json object { json, name, type }"),
       ),
-      KVNamespace_object___name__namespace_id__type__: S.Unknown.pipe(
+      KVNamespaceObjectNameNamespaceIdType__: S.Unknown.pipe(
         T.Body("KVNamespace object { name, namespace_id, type }"),
       ),
-      Media_object___name__type__: S.Unknown.pipe(
+      MediaObjectNameType__: S.Unknown.pipe(
         T.Body("Media object { name, type }"),
       ),
-      MTLSCertificate_object___certificate_id__name__type__: S.Unknown.pipe(
+      MTLSCertificateObjectCertificateIdNameType__: S.Unknown.pipe(
         T.Body("MTLSCertificate object { certificate_id, name, type }"),
       ),
-      PlainText_object___name__text__type__: S.Unknown.pipe(
+      PlainTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("PlainText object { name, text, type }"),
       ),
-      Pipelines_object___name__pipeline__type__: S.Unknown.pipe(
+      PipelinesObjectNamePipelineType__: S.Unknown.pipe(
         T.Body("Pipelines object { name, pipeline, type }"),
       ),
-      Queue_object___name__queue_name__type__: S.Unknown.pipe(
+      QueueObjectNameQueueNameType__: S.Unknown.pipe(
         T.Body("Queue object { name, queue_name, type }"),
       ),
-      Ratelimit_object___name__namespace_id__simple__type__: S.Unknown.pipe(
+      RatelimitObjectNameNamespaceIdSimpleType__: S.Unknown.pipe(
         T.Body("Ratelimit object { name, namespace_id, simple, type }"),
       ),
-      R2Bucket_object___bucket_name__name__type__jurisdiction__: S.Unknown.pipe(
+      R2BucketObjectBucketNameNameTypeJurisdiction__: S.Unknown.pipe(
         T.Body("R2Bucket object { bucket_name, name, type, jurisdiction }"),
       ),
-      SecretText_object___name__text__type__: S.Unknown.pipe(
+      SecretTextObjectNameTextType__: S.Unknown.pipe(
         T.Body("SecretText object { name, text, type }"),
       ),
-      SendEmail_object___name__type__allowed_destination_addresses__2_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
-          ),
+      SendEmailObjectNameTypeAllowedDestinationAddresses2More__: S.Unknown.pipe(
+        T.Body(
+          "SendEmail object { name, type, allowed_destination_addresses, 2 more }",
         ),
-      Service_object___name__service__type__2_more__: S.Unknown.pipe(
+      ),
+      ServiceObjectNameServiceType2More__: S.Unknown.pipe(
         T.Body("Service object { name, service, type, 2 more }"),
       ),
-      TextBlob_object___name__part__type__: S.Unknown.pipe(
+      TextBlobObjectNamePartType__: S.Unknown.pipe(
         T.Body("TextBlob object { name, part, type }"),
       ),
-      Vectorize_object___index_name__name__type__: S.Unknown.pipe(
+      VectorizeObjectIndexNameNameType__: S.Unknown.pipe(
         T.Body("Vectorize object { index_name, name, type }"),
       ),
-      VersionMetadata_object___name__type__: S.Unknown.pipe(
+      VersionMetadataObjectNameType__: S.Unknown.pipe(
         T.Body("VersionMetadata object { name, type }"),
       ),
-      SecretsStoreSecret_object___name__secret_name__store_id__type__:
-        S.Unknown.pipe(
-          T.Body(
-            "SecretsStoreSecret object { name, secret_name, store_id, type }",
-          ),
+      SecretsStoreSecretObjectNameSecretNameStoreIdType__: S.Unknown.pipe(
+        T.Body(
+          "SecretsStoreSecret object { name, secret_name, store_id, type }",
         ),
-      Flagship_object___app_id__name__type__: S.Unknown.pipe(
+      ),
+      FlagshipObjectAppIdNameType__: S.Unknown.pipe(
         T.Body("Flagship object { app_id, name, type }"),
       ),
-      SecretKey_object___algorithm__format__name__4_more__: S.Unknown.pipe(
+      SecretKeyObjectAlgorithmFormatName4More__: S.Unknown.pipe(
         T.Body("SecretKey object { algorithm, format, name, 4 more }"),
       ),
-      Workflow_object___name__type__workflow_name__2_more__: S.Unknown.pipe(
+      WorkflowObjectNameTypeWorkflowName2More__: S.Unknown.pipe(
         T.Body("Workflow object { name, type, workflow_name, 2 more }"),
       ),
-      WasmModule_object___name__part__type__: S.Unknown.pipe(
+      WasmModuleObjectNamePartType__: S.Unknown.pipe(
         T.Body("WasmModule object { name, part, type }"),
       ),
-      VPCService_object___name__service_id__type__: S.Unknown.pipe(
+      VPCServiceObjectNameServiceIdType__: S.Unknown.pipe(
         T.Body("VPCService object { name, service_id, type }"),
       ),
-      VPCNetwork_object___name__type__network_id__tunnel_id__: S.Unknown.pipe(
+      VPCNetworkObjectNameTypeNetworkIdTunnelId__: S.Unknown.pipe(
         T.Body("VPCNetwork object { name, type, network_id, tunnel_id }"),
       ),
     }),
@@ -1499,14 +2404,18 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsList =
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsList>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseCacheOptions {
+  /** Whether caching is enabled for this Worker. */
   enabled: boolean;
-  cross_version_cache?: boolean;
+  /** Whether cached responses are shared across Worker version */
+  crossVersionCache?: boolean;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseCacheOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      cross_version_cache: S.optional(S.Boolean),
+      crossVersionCache: S.optional(
+        S.Boolean.pipe(T.Body("cross_version_cache")),
+      ),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSettingsGetResponseCacheOptions",
@@ -1529,18 +2438,44 @@ export const DispatchNamespacesScriptsSettingsGetResponseExportsMap =
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsMap>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseLimits {
-  cpu_ms?: number;
+  /** The amount of CPU time this Worker can use in milliseconds. */
+  cpuMs?: number;
+  /** The number of subrequests this Worker can make per request. */
   subrequests?: number;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseLimits =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      cpu_ms: S.optional(S.Number),
+      cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
       subrequests: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSettingsGetResponseLimits",
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseLimits>;
+
+export interface DispatchNamespacesScriptsSettingsGetResponseMigrations {
+  /** A single set of migrations to apply. */
+  SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__: unknown;
+  WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: unknown;
+}
+export const DispatchNamespacesScriptsSettingsGetResponseMigrations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      SingleStepMigrationObjectDeletedClassesNewClassesNewSqliteClasses4More__:
+        S.Unknown.pipe(
+          T.Body(
+            "SingleStepMigration object { deleted_classes, new_classes, new_sqlite_classes, 4 more }",
+          ),
+        ),
+      WorkersMultipleStepMigrationsObjectNewTagOldTagSteps__: S.Unknown.pipe(
+        T.Body(
+          "WorkersMultipleStepMigrations object { new_tag, old_tag, steps }",
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsSettingsGetResponseMigrations",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrations>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList =
   string[];
@@ -1550,21 +2485,26 @@ export const DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestin
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs {
+  /** Whether logs are enabled for the Worker. */
   enabled: boolean;
-  invocation_logs: boolean;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs: boolean;
+  /** A list of destinations where logs will be exported to. */
   destinations?: DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList;
-  head_sampling_rate?: number;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      invocation_logs: S.Boolean,
+      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
       destinations: S.optional(
         DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList,
       ),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
     }),
   ).annotate({
@@ -1584,11 +2524,16 @@ export const DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesProp
   /*@__PURE__*/ S.String;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
   destinations?: DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
   enabled?: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
   persist?: boolean;
-  propagation_policy?: DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
@@ -1597,10 +2542,12 @@ export const DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces =
         DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList,
       ),
       enabled: S.optional(S.Boolean),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
-      propagation_policy: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy,
+      propagationPolicy: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
       ),
     }),
   ).annotate({
@@ -1609,16 +2556,20 @@ export const DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseObservability {
+  /** Whether observability is enabled for the Worker. */
   enabled: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
   logs?: DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs;
+  /** Trace settings for the Worker. */
   traces?: DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseObservability =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       logs: S.optional(
         DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs,
       ),
@@ -1631,36 +2582,28 @@ export const DispatchNamespacesScriptsSettingsGetResponseObservability =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservability>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponsePlacement {
-  Mode_object___mode__: unknown;
-  Region_object___region__: unknown;
-  Hostname_object___hostname__: unknown;
-  Host_object___host__: unknown;
-  object___mode__region__: unknown;
-  object___hostname__mode__: unknown;
-  object___host__mode__: unknown;
-  object___mode__target__: unknown;
+  ModeObjectMode__: unknown;
+  RegionObjectRegion__: unknown;
+  HostnameObjectHostname__: unknown;
+  HostObjectHost__: unknown;
+  objectModeRegion__: unknown;
+  objectHostnameMode__: unknown;
+  objectHostMode__: unknown;
+  objectModeTarget__: unknown;
 }
 export const DispatchNamespacesScriptsSettingsGetResponsePlacement =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      Mode_object___mode__: S.Unknown.pipe(T.Body("Mode object { mode }")),
-      Region_object___region__: S.Unknown.pipe(
-        T.Body("Region object { region }"),
-      ),
-      Hostname_object___hostname__: S.Unknown.pipe(
+      ModeObjectMode__: S.Unknown.pipe(T.Body("Mode object { mode }")),
+      RegionObjectRegion__: S.Unknown.pipe(T.Body("Region object { region }")),
+      HostnameObjectHostname__: S.Unknown.pipe(
         T.Body("Hostname object { hostname }"),
       ),
-      Host_object___host__: S.Unknown.pipe(T.Body("Host object { host }")),
-      object___mode__region__: S.Unknown.pipe(
-        T.Body("object { mode, region }"),
-      ),
-      object___hostname__mode__: S.Unknown.pipe(
-        T.Body("object { hostname, mode }"),
-      ),
-      object___host__mode__: S.Unknown.pipe(T.Body("object { host, mode }")),
-      object___mode__target__: S.Unknown.pipe(
-        T.Body("object { mode, target }"),
-      ),
+      HostObjectHost__: S.Unknown.pipe(T.Body("Host object { host }")),
+      objectModeRegion__: S.Unknown.pipe(T.Body("object { mode, region }")),
+      objectHostnameMode__: S.Unknown.pipe(T.Body("object { hostname, mode }")),
+      objectHostMode__: S.Unknown.pipe(T.Body("object { host, mode }")),
+      objectModeTarget__: S.Unknown.pipe(T.Body("object { mode, target }")),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSettingsGetResponsePlacement",
@@ -1672,11 +2615,30 @@ export const DispatchNamespacesScriptsSettingsGetResponseTagsList =
     S.String,
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseTagsList>;
 
+export interface DispatchNamespacesScriptsSettingsGetResponseTailConsumersItem {
+  /** Name of Worker that is to be the consumer. */
+  service: string;
+  /** Optional environment if the Worker utilizes one. */
+  environment?: string;
+  /** Optional dispatch namespace the script belongs to. */
+  namespace?: string;
+}
+export const DispatchNamespacesScriptsSettingsGetResponseTailConsumersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      service: S.String,
+      environment: S.optional(S.String),
+      namespace: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsSettingsGetResponseTailConsumersItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseTailConsumersItem>;
+
 export type DispatchNamespacesScriptsSettingsGetResponseTailConsumersList =
-  unknown[];
+  DispatchNamespacesScriptsSettingsGetResponseTailConsumersItem[];
 export const DispatchNamespacesScriptsSettingsGetResponseTailConsumersList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    DispatchNamespacesScriptsSettingsGetResponseTailConsumersItem,
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseTailConsumersList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseUsageModel =
@@ -1689,19 +2651,32 @@ export const DispatchNamespacesScriptsSettingsGetResponseUsageModel =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DispatchNamespacesScriptsSettingsGetResponse {
+  /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
   bindings?: DispatchNamespacesScriptsSettingsGetResponseBindingsList;
-  cache_options?: DispatchNamespacesScriptsSettingsGetResponseCacheOptions;
-  compatibility_date?: string;
-  compatibility_flags?: DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList;
+  /** Global CacheW configuration for the Worker. When caching is on, */
+  cacheOptions?: DispatchNamespacesScriptsSettingsGetResponseCacheOptions;
+  /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
+  compatibilityDate?: string;
+  /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
+  compatibilityFlags?: DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList;
+  /** Declarative exports for the Worker. Worker entrypoint entries */
   exports?: DispatchNamespacesScriptsSettingsGetResponseExportsMap;
+  /** Limits to apply for this Worker. */
   limits?: DispatchNamespacesScriptsSettingsGetResponseLimits;
+  /** Whether Logpush is turned on for the Worker. */
   logpush?: boolean;
-  migrations?: unknown;
+  /** Migrations to apply for Durable Objects associated with this Worker. */
+  migrations?: DispatchNamespacesScriptsSettingsGetResponseMigrations;
+  /** Observability settings for the Worker. */
   observability?: DispatchNamespacesScriptsSettingsGetResponseObservability;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?: DispatchNamespacesScriptsSettingsGetResponsePlacement;
+  /** Tags associated with the Worker. */
   tags?: DispatchNamespacesScriptsSettingsGetResponseTagsList;
-  tail_consumers?: DispatchNamespacesScriptsSettingsGetResponseTailConsumersList;
-  usage_model?: DispatchNamespacesScriptsSettingsGetResponseUsageModel;
+  /** List of Workers that will consume logs from the attached Worker. */
+  tailConsumers?: DispatchNamespacesScriptsSettingsGetResponseTailConsumersList;
+  /** Usage model for the Worker invocations. */
+  usageModel?: DispatchNamespacesScriptsSettingsGetResponseUsageModel;
 }
 export const DispatchNamespacesScriptsSettingsGetResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -1709,19 +2684,27 @@ export const DispatchNamespacesScriptsSettingsGetResponse =
       bindings: S.optional(
         DispatchNamespacesScriptsSettingsGetResponseBindingsList,
       ),
-      cache_options: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseCacheOptions,
+      cacheOptions: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseCacheOptions.pipe(
+          T.Body("cache_options"),
+        ),
       ),
-      compatibility_date: S.optional(S.String),
-      compatibility_flags: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList,
+      compatibilityDate: S.optional(
+        S.String.pipe(T.Body("compatibility_date")),
+      ),
+      compatibilityFlags: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList.pipe(
+          T.Body("compatibility_flags"),
+        ),
       ),
       exports: S.optional(
         DispatchNamespacesScriptsSettingsGetResponseExportsMap,
       ),
       limits: S.optional(DispatchNamespacesScriptsSettingsGetResponseLimits),
       logpush: S.optional(S.Boolean),
-      migrations: S.optional(S.Unknown),
+      migrations: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseMigrations,
+      ),
       observability: S.optional(
         DispatchNamespacesScriptsSettingsGetResponseObservability,
       ),
@@ -1729,11 +2712,15 @@ export const DispatchNamespacesScriptsSettingsGetResponse =
         DispatchNamespacesScriptsSettingsGetResponsePlacement,
       ),
       tags: S.optional(DispatchNamespacesScriptsSettingsGetResponseTagsList),
-      tail_consumers: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseTailConsumersList,
+      tailConsumers: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseTailConsumersList.pipe(
+          T.Body("tail_consumers"),
+        ),
       ),
-      usage_model: S.optional(
-        DispatchNamespacesScriptsSettingsGetResponseUsageModel,
+      usageModel: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseUsageModel.pipe(
+          T.Body("usage_model"),
+        ),
       ),
     }),
   ).annotate({
@@ -1741,17 +2728,20 @@ export const DispatchNamespacesScriptsSettingsGetResponse =
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponse>;
 
 export interface DispatchNamespacesScriptsTagsDeleteRequest {
-  account_id: string;
-  dispatch_namespace: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
   tag: string;
 }
 export const DispatchNamespacesScriptsTagsDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      dispatch_namespace: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
+      scriptName: S.String.pipe(T.Label("script_name")),
       tag: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
@@ -1765,6 +2755,7 @@ export const DispatchNamespacesScriptsTagsDeleteRequest =
   }) as any as S.Schema<DispatchNamespacesScriptsTagsDeleteRequest>;
 
 export interface DispatchNamespacesScriptsTagsDeleteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const DispatchNamespacesScriptsTagsDeleteResponse =
@@ -1777,16 +2768,19 @@ export const DispatchNamespacesScriptsTagsDeleteResponse =
   }) as any as S.Schema<DispatchNamespacesScriptsTagsDeleteResponse>;
 
 export interface DispatchNamespacesScriptsTagsListRequest {
-  account_id: string;
-  dispatch_namespace: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
 }
 export const DispatchNamespacesScriptsTagsListRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      dispatch_namespace: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
+      scriptName: S.String.pipe(T.Label("script_name")),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1805,6 +2799,7 @@ export const DispatchNamespacesScriptsTagsListResultList =
   ) as any as S.Schema<DispatchNamespacesScriptsTagsListResultList>;
 
 export interface DispatchNamespacesScriptsTagsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DispatchNamespacesScriptsTagsListResultList;
 }
 export const DispatchNamespacesScriptsTagsListResponse =
@@ -1825,17 +2820,21 @@ export const DispatchNamespacesScriptsTagsUpdateRequestBodyList =
   ) as any as S.Schema<DispatchNamespacesScriptsTagsUpdateRequestBodyList>;
 
 export interface DispatchNamespacesScriptsTagsUpdateRequest {
-  account_id: string;
-  dispatch_namespace: string;
-  script_name: string;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** Tags associated with the Worker. */
   body: DispatchNamespacesScriptsTagsUpdateRequestBodyList;
 }
 export const DispatchNamespacesScriptsTagsUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      dispatch_namespace: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
+      scriptName: S.String.pipe(T.Label("script_name")),
       body: DispatchNamespacesScriptsTagsUpdateRequestBodyList,
     }).pipe(
       T.Http({
@@ -1855,6 +2854,7 @@ export const DispatchNamespacesScriptsTagsUpdateResultList =
   ) as any as S.Schema<DispatchNamespacesScriptsTagsUpdateResultList>;
 
 export interface DispatchNamespacesScriptsTagsUpdateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DispatchNamespacesScriptsTagsUpdateResultList;
 }
 export const DispatchNamespacesScriptsTagsUpdateResponse =
@@ -1875,19 +2875,25 @@ export const DispatchNamespacesScriptsUpdateRequestBindingsInherit =
   /*@__PURE__*/ S.String;
 
 export interface DispatchNamespacesScriptsUpdateRequest {
-  account_id: string;
-  dispatch_namespace: string;
-  script_name: string;
-  bindings_inherit?: DispatchNamespacesScriptsUpdateRequestBindingsInherit;
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Workers for Platforms dispatch namespace. */
+  dispatchNamespace: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the script. Without this, unresolvable inherit bindings are silently dropped. */
+  bindingsInherit?: DispatchNamespacesScriptsUpdateRequestBindingsInherit;
 }
 export const DispatchNamespacesScriptsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      account_id: S.String.pipe(T.Label()),
-      dispatch_namespace: S.String.pipe(T.Label()),
-      script_name: S.String.pipe(T.Label()),
-      bindings_inherit: S.optional(
-        DispatchNamespacesScriptsUpdateRequestBindingsInherit.pipe(T.Query()),
+      accountId: S.String.pipe(T.Label("account_id")),
+      dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
+      scriptName: S.String.pipe(T.Label("script_name")),
+      bindingsInherit: S.optional(
+        DispatchNamespacesScriptsUpdateRequestBindingsInherit.pipe(
+          T.Query("bindings_inherit"),
+        ),
       ),
     }).pipe(
       T.Http({
@@ -1901,14 +2907,18 @@ export const DispatchNamespacesScriptsUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DispatchNamespacesScriptsUpdateRequest>;
 
 export interface DispatchNamespacesScriptsUpdateResponseCacheOptions {
+  /** Whether caching is enabled for this Worker. */
   enabled: boolean;
-  cross_version_cache?: boolean;
+  /** Whether cached responses are shared across Worker version */
+  crossVersionCache?: boolean;
 }
 export const DispatchNamespacesScriptsUpdateResponseCacheOptions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      cross_version_cache: S.optional(S.Boolean),
+      crossVersionCache: S.optional(
+        S.Boolean.pipe(T.Body("cross_version_cache")),
+      ),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsUpdateResponseCacheOptions",
@@ -1935,7 +2945,9 @@ export const DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersLis
   ) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersList>;
 
 export interface DispatchNamespacesScriptsUpdateResponseNamedHandlersItem {
+  /** The names of handlers exported as part of the named export. */
   handlers?: DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersList;
+  /** The name of the export. */
   name?: string;
 }
 export const DispatchNamespacesScriptsUpdateResponseNamedHandlersItem =
@@ -1965,21 +2977,26 @@ export const DispatchNamespacesScriptsUpdateResponseObservabilityLogsDestination
   ) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservabilityLogsDestinationsList>;
 
 export interface DispatchNamespacesScriptsUpdateResponseObservabilityLogs {
+  /** Whether logs are enabled for the Worker. */
   enabled: boolean;
-  invocation_logs: boolean;
+  /** Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker. */
+  invocationLogs: boolean;
+  /** A list of destinations where logs will be exported to. */
   destinations?: DispatchNamespacesScriptsUpdateResponseObservabilityLogsDestinationsList;
-  head_sampling_rate?: number;
+  /** The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
 export const DispatchNamespacesScriptsUpdateResponseObservabilityLogs =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      invocation_logs: S.Boolean,
+      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
       destinations: S.optional(
         DispatchNamespacesScriptsUpdateResponseObservabilityLogsDestinationsList,
       ),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
     }),
   ).annotate({
@@ -1999,11 +3016,16 @@ export const DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagati
   /*@__PURE__*/ S.String;
 
 export interface DispatchNamespacesScriptsUpdateResponseObservabilityTraces {
+  /** A list of destinations where traces will be exported to. */
   destinations?: DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList;
+  /** Whether traces are enabled for the Worker. */
   enabled?: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Whether trace persistence is enabled for the Worker. */
   persist?: boolean;
-  propagation_policy?: DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy;
+  /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. */
+  propagationPolicy?: DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy;
 }
 export const DispatchNamespacesScriptsUpdateResponseObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
@@ -2012,10 +3034,12 @@ export const DispatchNamespacesScriptsUpdateResponseObservabilityTraces =
         DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList,
       ),
       enabled: S.optional(S.Boolean),
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       persist: S.optional(S.Boolean),
-      propagation_policy: S.optional(
-        DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy,
+      propagationPolicy: S.optional(
+        DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy.pipe(
+          T.Body("propagation_policy"),
+        ),
       ),
     }),
   ).annotate({
@@ -2023,16 +3047,20 @@ export const DispatchNamespacesScriptsUpdateResponseObservabilityTraces =
   }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservabilityTraces>;
 
 export interface DispatchNamespacesScriptsUpdateResponseObservability {
+  /** Whether observability is enabled for the Worker. */
   enabled: boolean;
-  head_sampling_rate?: number;
+  /** The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1. */
+  headSamplingRate?: number;
+  /** Log settings for the Worker. */
   logs?: DispatchNamespacesScriptsUpdateResponseObservabilityLogs;
+  /** Trace settings for the Worker. */
   traces?: DispatchNamespacesScriptsUpdateResponseObservabilityTraces;
 }
 export const DispatchNamespacesScriptsUpdateResponseObservability =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
-      head_sampling_rate: S.optional(S.Number),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
       logs: S.optional(
         DispatchNamespacesScriptsUpdateResponseObservabilityLogs,
       ),
@@ -2045,40 +3073,40 @@ export const DispatchNamespacesScriptsUpdateResponseObservability =
   }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservability>;
 
 export interface DispatchNamespacesScriptsUpdateResponsePlacement {
-  object___mode__last_analyzed_at__status__: unknown;
-  object___region__last_analyzed_at__status__: unknown;
-  object___hostname__last_analyzed_at__status__: unknown;
-  object___host__last_analyzed_at__status__: unknown;
-  object___mode__region__last_analyzed_at__status__: unknown;
-  object___hostname__mode__last_analyzed_at__status__: unknown;
-  object___host__mode__last_analyzed_at__status__: unknown;
-  object___mode__target__last_analyzed_at__status__: unknown;
+  objectModeLastAnalyzedAtStatus__: unknown;
+  objectRegionLastAnalyzedAtStatus__: unknown;
+  objectHostnameLastAnalyzedAtStatus__: unknown;
+  objectHostLastAnalyzedAtStatus__: unknown;
+  objectModeRegionLastAnalyzedAtStatus__: unknown;
+  objectHostnameModeLastAnalyzedAtStatus__: unknown;
+  objectHostModeLastAnalyzedAtStatus__: unknown;
+  objectModeTargetLastAnalyzedAtStatus__: unknown;
 }
 export const DispatchNamespacesScriptsUpdateResponsePlacement =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___mode__last_analyzed_at__status__: S.Unknown.pipe(
+      objectModeLastAnalyzedAtStatus__: S.Unknown.pipe(
         T.Body("object { mode, last_analyzed_at, status }"),
       ),
-      object___region__last_analyzed_at__status__: S.Unknown.pipe(
+      objectRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
         T.Body("object { region, last_analyzed_at, status }"),
       ),
-      object___hostname__last_analyzed_at__status__: S.Unknown.pipe(
+      objectHostnameLastAnalyzedAtStatus__: S.Unknown.pipe(
         T.Body("object { hostname, last_analyzed_at, status }"),
       ),
-      object___host__last_analyzed_at__status__: S.Unknown.pipe(
+      objectHostLastAnalyzedAtStatus__: S.Unknown.pipe(
         T.Body("object { host, last_analyzed_at, status }"),
       ),
-      object___mode__region__last_analyzed_at__status__: S.Unknown.pipe(
+      objectModeRegionLastAnalyzedAtStatus__: S.Unknown.pipe(
         T.Body("object { mode, region, last_analyzed_at, status }"),
       ),
-      object___hostname__mode__last_analyzed_at__status__: S.Unknown.pipe(
+      objectHostnameModeLastAnalyzedAtStatus__: S.Unknown.pipe(
         T.Body("object { hostname, mode, last_analyzed_at, status }"),
       ),
-      object___host__mode__last_analyzed_at__status__: S.Unknown.pipe(
+      objectHostModeLastAnalyzedAtStatus__: S.Unknown.pipe(
         T.Body("object { host, mode, last_analyzed_at, status }"),
       ),
-      object___mode__target__last_analyzed_at__status__: S.Unknown.pipe(
+      objectModeTargetLastAnalyzedAtStatus__: S.Unknown.pipe(
         T.Body("object { mode, target, last_analyzed_at, status }"),
       ),
     }),
@@ -2107,11 +3135,30 @@ export const DispatchNamespacesScriptsUpdateResponseTagsList =
     S.String,
   ) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseTagsList>;
 
+export interface DispatchNamespacesScriptsUpdateResponseTailConsumersItem {
+  /** Name of Worker that is to be the consumer. */
+  service: string;
+  /** Optional environment if the Worker utilizes one. */
+  environment?: string;
+  /** Optional dispatch namespace the script belongs to. */
+  namespace?: string;
+}
+export const DispatchNamespacesScriptsUpdateResponseTailConsumersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      service: S.String,
+      environment: S.optional(S.String),
+      namespace: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsUpdateResponseTailConsumersItem",
+  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseTailConsumersItem>;
+
 export type DispatchNamespacesScriptsUpdateResponseTailConsumersList =
-  unknown[];
+  DispatchNamespacesScriptsUpdateResponseTailConsumersItem[];
 export const DispatchNamespacesScriptsUpdateResponseTailConsumersList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    DispatchNamespacesScriptsUpdateResponseTailConsumersItem,
   ) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseTailConsumersList>;
 
 export type DispatchNamespacesScriptsUpdateResponseUsageModel =
@@ -2124,84 +3171,122 @@ export const DispatchNamespacesScriptsUpdateResponseUsageModel =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DispatchNamespacesScriptsUpdateResponse {
-  startup_time_ms: number;
+  startupTimeMs: number;
+  /** The name used to identify the script. */
   id?: string;
-  cache_options?: DispatchNamespacesScriptsUpdateResponseCacheOptions;
-  compatibility_date?: string;
-  compatibility_flags?: DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList;
-  created_on?: string;
-  entry_point?: string;
+  /** Global CacheW configuration for the Worker. When caching is on, */
+  cacheOptions?: DispatchNamespacesScriptsUpdateResponseCacheOptions;
+  /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
+  compatibilityDate?: string;
+  /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
+  compatibilityFlags?: DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList;
+  /** When the script was created. */
+  createdOn?: string;
+  /** The entry point for the script. */
+  entryPoint?: string;
+  /** Hashed script content, can be used in a If-None-Match header when updating. */
   etag?: string;
+  /** The names of handlers exported as part of the default export. */
   handlers?: DispatchNamespacesScriptsUpdateResponseHandlersList;
-  has_assets?: boolean;
-  has_modules?: boolean;
-  last_deployed_from?: string;
+  /** Whether a Worker contains assets. */
+  hasAssets?: boolean;
+  /** Whether a Worker contains modules. */
+  hasModules?: boolean;
+  /** The client most recently used to deploy this Worker. */
+  lastDeployedFrom?: string;
+  /** Whether Logpush is turned on for the Worker. */
   logpush?: boolean;
-  migration_tag?: string;
-  modified_on?: string;
-  named_handlers?: DispatchNamespacesScriptsUpdateResponseNamedHandlersList;
+  /** The tag of the Durable Object migration that was most recently applied for this Worker. */
+  migrationTag?: string;
+  /** When the script was last modified. */
+  modifiedOn?: string;
+  /** Named exports, such as Durable Object class implementations and named entrypoints. */
+  namedHandlers?: DispatchNamespacesScriptsUpdateResponseNamedHandlersList;
+  /** Observability settings for the Worker. */
   observability?: DispatchNamespacesScriptsUpdateResponseObservability;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
   placement?: DispatchNamespacesScriptsUpdateResponsePlacement;
-  placement_mode?: DispatchNamespacesScriptsUpdateResponsePlacementMode;
-  placement_status?: DispatchNamespacesScriptsUpdateResponsePlacementStatus;
+  placementMode?: DispatchNamespacesScriptsUpdateResponsePlacementMode;
+  placementStatus?: DispatchNamespacesScriptsUpdateResponsePlacementStatus;
+  /** The immutable ID of the script. */
   tag?: string;
+  /** Tags associated with the Worker. */
   tags?: DispatchNamespacesScriptsUpdateResponseTagsList;
-  tail_consumers?: DispatchNamespacesScriptsUpdateResponseTailConsumersList;
-  usage_model?: DispatchNamespacesScriptsUpdateResponseUsageModel;
+  /** List of Workers that will consume logs from the attached Worker. */
+  tailConsumers?: DispatchNamespacesScriptsUpdateResponseTailConsumersList;
+  /** Usage model for the Worker invocations. */
+  usageModel?: DispatchNamespacesScriptsUpdateResponseUsageModel;
 }
 export const DispatchNamespacesScriptsUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      startup_time_ms: S.Number,
+      startupTimeMs: S.Number.pipe(T.Body("startup_time_ms")),
       id: S.optional(S.String),
-      cache_options: S.optional(
-        DispatchNamespacesScriptsUpdateResponseCacheOptions,
+      cacheOptions: S.optional(
+        DispatchNamespacesScriptsUpdateResponseCacheOptions.pipe(
+          T.Body("cache_options"),
+        ),
       ),
-      compatibility_date: S.optional(S.String),
-      compatibility_flags: S.optional(
-        DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList,
+      compatibilityDate: S.optional(
+        S.String.pipe(T.Body("compatibility_date")),
       ),
-      created_on: S.optional(S.String),
-      entry_point: S.optional(S.String),
+      compatibilityFlags: S.optional(
+        DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList.pipe(
+          T.Body("compatibility_flags"),
+        ),
+      ),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      entryPoint: S.optional(S.String.pipe(T.Body("entry_point"))),
       etag: S.optional(S.String),
       handlers: S.optional(DispatchNamespacesScriptsUpdateResponseHandlersList),
-      has_assets: S.optional(S.Boolean),
-      has_modules: S.optional(S.Boolean),
-      last_deployed_from: S.optional(S.String),
+      hasAssets: S.optional(S.Boolean.pipe(T.Body("has_assets"))),
+      hasModules: S.optional(S.Boolean.pipe(T.Body("has_modules"))),
+      lastDeployedFrom: S.optional(S.String.pipe(T.Body("last_deployed_from"))),
       logpush: S.optional(S.Boolean),
-      migration_tag: S.optional(S.String),
-      modified_on: S.optional(S.String),
-      named_handlers: S.optional(
-        DispatchNamespacesScriptsUpdateResponseNamedHandlersList,
+      migrationTag: S.optional(S.String.pipe(T.Body("migration_tag"))),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      namedHandlers: S.optional(
+        DispatchNamespacesScriptsUpdateResponseNamedHandlersList.pipe(
+          T.Body("named_handlers"),
+        ),
       ),
       observability: S.optional(
         DispatchNamespacesScriptsUpdateResponseObservability,
       ),
       placement: S.optional(DispatchNamespacesScriptsUpdateResponsePlacement),
-      placement_mode: S.optional(
-        DispatchNamespacesScriptsUpdateResponsePlacementMode,
+      placementMode: S.optional(
+        DispatchNamespacesScriptsUpdateResponsePlacementMode.pipe(
+          T.Body("placement_mode"),
+        ),
       ),
-      placement_status: S.optional(
-        DispatchNamespacesScriptsUpdateResponsePlacementStatus,
+      placementStatus: S.optional(
+        DispatchNamespacesScriptsUpdateResponsePlacementStatus.pipe(
+          T.Body("placement_status"),
+        ),
       ),
       tag: S.optional(S.String),
       tags: S.optional(DispatchNamespacesScriptsUpdateResponseTagsList),
-      tail_consumers: S.optional(
-        DispatchNamespacesScriptsUpdateResponseTailConsumersList,
+      tailConsumers: S.optional(
+        DispatchNamespacesScriptsUpdateResponseTailConsumersList.pipe(
+          T.Body("tail_consumers"),
+        ),
       ),
-      usage_model: S.optional(
-        DispatchNamespacesScriptsUpdateResponseUsageModel,
+      usageModel: S.optional(
+        DispatchNamespacesScriptsUpdateResponseUsageModel.pipe(
+          T.Body("usage_model"),
+        ),
       ),
     }),
 ).annotate({
   identifier: "DispatchNamespacesScriptsUpdateResponse",
 }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponse>;
 
+export type DispatchNamespacesCreateError = CloudflareOpError;
 /** Create a new Workers for Platforms namespace. */
-export const DispatchNamespacesCreate: API.OperationMethod<
+export const dispatchNamespacesCreate: API.OperationMethod<
   DispatchNamespacesCreateRequest,
   DispatchNamespacesCreateResponse,
-  CloudflareOpError,
+  DispatchNamespacesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesCreateRequest,
@@ -2210,11 +3295,12 @@ export const DispatchNamespacesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesDeleteError = CloudflareOpError;
 /** Delete a Workers for Platforms namespace. */
-export const DispatchNamespacesDelete: API.OperationMethod<
+export const dispatchNamespacesDelete: API.OperationMethod<
   DispatchNamespacesDeleteRequest,
   DispatchNamespacesDeleteResponse,
-  CloudflareOpError,
+  DispatchNamespacesDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesDeleteRequest,
@@ -2223,11 +3309,12 @@ export const DispatchNamespacesDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesGetError = CloudflareOpError;
 /** Get a Workers for Platforms namespace. */
-export const DispatchNamespacesGet: API.OperationMethod<
+export const dispatchNamespacesGet: API.OperationMethod<
   DispatchNamespacesGetRequest,
   DispatchNamespacesGetResponse,
-  CloudflareOpError,
+  DispatchNamespacesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesGetRequest,
@@ -2236,11 +3323,12 @@ export const DispatchNamespacesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesListError = CloudflareOpError;
 /** Fetch a list of Workers for Platforms namespaces. */
-export const DispatchNamespacesList: API.OperationMethod<
+export const dispatchNamespacesList: API.OperationMethod<
   DispatchNamespacesListRequest,
   DispatchNamespacesListResponse,
-  CloudflareOpError,
+  DispatchNamespacesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesListRequest,
@@ -2249,11 +3337,12 @@ export const DispatchNamespacesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesScriptsAssetUploadCreateError = CloudflareOpError;
 /** Start uploading a collection of assets for use in a Worker version. To learn more about the direct uploads of assets, see https://developers.cloudflare.com/workers/static-assets/direct-upload/. */
-export const DispatchNamespacesScriptsAssetUploadCreate: API.OperationMethod<
+export const dispatchNamespacesScriptsAssetUploadCreate: API.OperationMethod<
   DispatchNamespacesScriptsAssetUploadCreateRequest,
   DispatchNamespacesScriptsAssetUploadCreateResponse,
-  CloudflareOpError,
+  DispatchNamespacesScriptsAssetUploadCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesScriptsAssetUploadCreateRequest,
@@ -2262,11 +3351,12 @@ export const DispatchNamespacesScriptsAssetUploadCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesScriptsBindingsGetError = CloudflareOpError;
 /** Fetch script bindings from a script uploaded to a Workers for Platforms namespace. */
-export const DispatchNamespacesScriptsBindingsGet: API.OperationMethod<
+export const dispatchNamespacesScriptsBindingsGet: API.OperationMethod<
   DispatchNamespacesScriptsBindingsGetRequest,
   DispatchNamespacesScriptsBindingsGetResponse,
-  CloudflareOpError,
+  DispatchNamespacesScriptsBindingsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesScriptsBindingsGetRequest,
@@ -2275,11 +3365,12 @@ export const DispatchNamespacesScriptsBindingsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesScriptsContentGetError = CloudflareOpError;
 /** Fetch script content from a script uploaded to a Workers for Platforms namespace. */
-export const DispatchNamespacesScriptsContentGet: API.OperationMethod<
+export const dispatchNamespacesScriptsContentGet: API.OperationMethod<
   DispatchNamespacesScriptsContentGetRequest,
   DispatchNamespacesScriptsContentGetResponse,
-  CloudflareOpError,
+  DispatchNamespacesScriptsContentGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesScriptsContentGetRequest,
@@ -2288,11 +3379,12 @@ export const DispatchNamespacesScriptsContentGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesScriptsContentUpdateError = CloudflareOpError;
 /** Put script content for a script uploaded to a Workers for Platforms namespace. */
-export const DispatchNamespacesScriptsContentUpdate: API.OperationMethod<
+export const dispatchNamespacesScriptsContentUpdate: API.OperationMethod<
   DispatchNamespacesScriptsContentUpdateRequest,
   DispatchNamespacesScriptsContentUpdateResponse,
-  CloudflareOpError,
+  DispatchNamespacesScriptsContentUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesScriptsContentUpdateRequest,
@@ -2301,11 +3393,12 @@ export const DispatchNamespacesScriptsContentUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesScriptsDeleteError = CloudflareOpError;
 /** Delete a worker from a Workers for Platforms namespace. This call has no response body on a successful delete. */
-export const DispatchNamespacesScriptsDelete: API.OperationMethod<
+export const dispatchNamespacesScriptsDelete: API.OperationMethod<
   DispatchNamespacesScriptsDeleteRequest,
   DispatchNamespacesScriptsDeleteResponse,
-  CloudflareOpError,
+  DispatchNamespacesScriptsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesScriptsDeleteRequest,
@@ -2314,11 +3407,12 @@ export const DispatchNamespacesScriptsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesScriptsGetError = CloudflareOpError;
 /** Fetch information about a script uploaded to a Workers for Platforms namespace. */
-export const DispatchNamespacesScriptsGet: API.OperationMethod<
+export const dispatchNamespacesScriptsGet: API.OperationMethod<
   DispatchNamespacesScriptsGetRequest,
   DispatchNamespacesScriptsGetResponse,
-  CloudflareOpError,
+  DispatchNamespacesScriptsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesScriptsGetRequest,
@@ -2327,11 +3421,12 @@ export const DispatchNamespacesScriptsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesScriptsSecretsBulkUpdateError = CloudflareOpError;
 /** Create, update, or delete multiple secrets on a script in a single operation using JSON Merge Patch (RFC 7396). Usage: - To create or update a secret, set its value to a secret object. - To delete a secret, set its value to `null`. - Secrets not included in the request are left unchanged. */
-export const DispatchNamespacesScriptsSecretsBulkUpdate: API.OperationMethod<
+export const dispatchNamespacesScriptsSecretsBulkUpdate: API.OperationMethod<
   DispatchNamespacesScriptsSecretsBulkUpdateRequest,
   DispatchNamespacesScriptsSecretsBulkUpdateResponse,
-  CloudflareOpError,
+  DispatchNamespacesScriptsSecretsBulkUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesScriptsSecretsBulkUpdateRequest,
@@ -2340,11 +3435,12 @@ export const DispatchNamespacesScriptsSecretsBulkUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesScriptsSecretsDeleteError = CloudflareOpError;
 /** Remove a secret from a script uploaded to a Workers for Platforms namespace. */
-export const DispatchNamespacesScriptsSecretsDelete: API.OperationMethod<
+export const dispatchNamespacesScriptsSecretsDelete: API.OperationMethod<
   DispatchNamespacesScriptsSecretsDeleteRequest,
   DispatchNamespacesScriptsSecretsDeleteResponse,
-  CloudflareOpError,
+  DispatchNamespacesScriptsSecretsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesScriptsSecretsDeleteRequest,
@@ -2353,11 +3449,12 @@ export const DispatchNamespacesScriptsSecretsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesScriptsSecretsGetError = CloudflareOpError;
 /** Get a given secret binding (value omitted) on a script uploaded to a Workers for Platforms namespace. */
-export const DispatchNamespacesScriptsSecretsGet: API.OperationMethod<
+export const dispatchNamespacesScriptsSecretsGet: API.OperationMethod<
   DispatchNamespacesScriptsSecretsGetRequest,
   DispatchNamespacesScriptsSecretsGetResponse,
-  CloudflareOpError,
+  DispatchNamespacesScriptsSecretsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesScriptsSecretsGetRequest,
@@ -2366,11 +3463,12 @@ export const DispatchNamespacesScriptsSecretsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesScriptsSecretsListError = CloudflareOpError;
 /** List secrets bound to a script uploaded to a Workers for Platforms namespace. */
-export const DispatchNamespacesScriptsSecretsList: API.OperationMethod<
+export const dispatchNamespacesScriptsSecretsList: API.OperationMethod<
   DispatchNamespacesScriptsSecretsListRequest,
   DispatchNamespacesScriptsSecretsListResponse,
-  CloudflareOpError,
+  DispatchNamespacesScriptsSecretsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesScriptsSecretsListRequest,
@@ -2379,11 +3477,12 @@ export const DispatchNamespacesScriptsSecretsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesScriptsSecretsUpdateError = CloudflareOpError;
 /** Add a secret to a script uploaded to a Workers for Platforms namespace. */
-export const DispatchNamespacesScriptsSecretsUpdate: API.OperationMethod<
+export const dispatchNamespacesScriptsSecretsUpdate: API.OperationMethod<
   DispatchNamespacesScriptsSecretsUpdateRequest,
   DispatchNamespacesScriptsSecretsUpdateResponse,
-  CloudflareOpError,
+  DispatchNamespacesScriptsSecretsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesScriptsSecretsUpdateRequest,
@@ -2392,11 +3491,12 @@ export const DispatchNamespacesScriptsSecretsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesScriptsSettingsEditError = CloudflareOpError;
 /** Patch script metadata, such as bindings. */
-export const DispatchNamespacesScriptsSettingsEdit: API.OperationMethod<
+export const dispatchNamespacesScriptsSettingsEdit: API.OperationMethod<
   DispatchNamespacesScriptsSettingsEditRequest,
   DispatchNamespacesScriptsSettingsEditResponse,
-  CloudflareOpError,
+  DispatchNamespacesScriptsSettingsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesScriptsSettingsEditRequest,
@@ -2405,11 +3505,12 @@ export const DispatchNamespacesScriptsSettingsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesScriptsSettingsGetError = CloudflareOpError;
 /** Get script settings from a script uploaded to a Workers for Platforms namespace. */
-export const DispatchNamespacesScriptsSettingsGet: API.OperationMethod<
+export const dispatchNamespacesScriptsSettingsGet: API.OperationMethod<
   DispatchNamespacesScriptsSettingsGetRequest,
   DispatchNamespacesScriptsSettingsGetResponse,
-  CloudflareOpError,
+  DispatchNamespacesScriptsSettingsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesScriptsSettingsGetRequest,
@@ -2418,11 +3519,12 @@ export const DispatchNamespacesScriptsSettingsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesScriptsTagsDeleteError = CloudflareOpError;
 /** Delete script tag for a script uploaded to a Workers for Platforms namespace. */
-export const DispatchNamespacesScriptsTagsDelete: API.OperationMethod<
+export const dispatchNamespacesScriptsTagsDelete: API.OperationMethod<
   DispatchNamespacesScriptsTagsDeleteRequest,
   DispatchNamespacesScriptsTagsDeleteResponse,
-  CloudflareOpError,
+  DispatchNamespacesScriptsTagsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesScriptsTagsDeleteRequest,
@@ -2431,11 +3533,12 @@ export const DispatchNamespacesScriptsTagsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesScriptsTagsListError = CloudflareOpError;
 /** Fetch tags from a script uploaded to a Workers for Platforms namespace. */
-export const DispatchNamespacesScriptsTagsList: API.OperationMethod<
+export const dispatchNamespacesScriptsTagsList: API.OperationMethod<
   DispatchNamespacesScriptsTagsListRequest,
   DispatchNamespacesScriptsTagsListResponse,
-  CloudflareOpError,
+  DispatchNamespacesScriptsTagsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesScriptsTagsListRequest,
@@ -2444,11 +3547,12 @@ export const DispatchNamespacesScriptsTagsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesScriptsTagsUpdateError = CloudflareOpError;
 /** Put script tags for a script uploaded to a Workers for Platforms namespace. */
-export const DispatchNamespacesScriptsTagsUpdate: API.OperationMethod<
+export const dispatchNamespacesScriptsTagsUpdate: API.OperationMethod<
   DispatchNamespacesScriptsTagsUpdateRequest,
   DispatchNamespacesScriptsTagsUpdateResponse,
-  CloudflareOpError,
+  DispatchNamespacesScriptsTagsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesScriptsTagsUpdateRequest,
@@ -2457,11 +3561,12 @@ export const DispatchNamespacesScriptsTagsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DispatchNamespacesScriptsUpdateError = CloudflareOpError;
 /** Upload a worker module to a Workers for Platforms namespace. You can find more about the multipart metadata on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/. */
-export const DispatchNamespacesScriptsUpdate: API.OperationMethod<
+export const dispatchNamespacesScriptsUpdate: API.OperationMethod<
   DispatchNamespacesScriptsUpdateRequest,
   DispatchNamespacesScriptsUpdateResponse,
-  CloudflareOpError,
+  DispatchNamespacesScriptsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DispatchNamespacesScriptsUpdateRequest,

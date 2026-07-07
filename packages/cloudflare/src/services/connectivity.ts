@@ -10,15 +10,15 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface DirectoryServicesCreateRequestBody {
-  InfraHTTPServiceConfig_object___host__name__type__6_more__: unknown;
-  InfraTCPServiceConfig_object___host__name__type__6_more__: unknown;
+  InfraHTTPServiceConfigObjectHostNameType6More__: unknown;
+  InfraTCPServiceConfigObjectHostNameType6More__: unknown;
 }
 export const DirectoryServicesCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    InfraHTTPServiceConfig_object___host__name__type__6_more__: S.Unknown.pipe(
+    InfraHTTPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
       T.Body("InfraHTTPServiceConfig object { host, name, type, 6 more }"),
     ),
-    InfraTCPServiceConfig_object___host__name__type__6_more__: S.Unknown.pipe(
+    InfraTCPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
       T.Body("InfraTCPServiceConfig object { host, name, type, 6 more }"),
     ),
   }),
@@ -27,12 +27,13 @@ export const DirectoryServicesCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DirectoryServicesCreateRequestBody>;
 
 export interface DirectoryServicesCreateRequest {
-  account_id: string;
+  /** Account identifier */
+  accountId: string;
   body: DirectoryServicesCreateRequestBody;
 }
 export const DirectoryServicesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     body: DirectoryServicesCreateRequestBody,
   }).pipe(
     T.Http({
@@ -47,15 +48,15 @@ export const DirectoryServicesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DirectoryServicesCreateResponse {
-  InfraHTTPServiceConfig_object___host__name__type__6_more__: unknown;
-  InfraTCPServiceConfig_object___host__name__type__6_more__: unknown;
+  InfraHTTPServiceConfigObjectHostNameType6More__: unknown;
+  InfraTCPServiceConfigObjectHostNameType6More__: unknown;
 }
 export const DirectoryServicesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    InfraHTTPServiceConfig_object___host__name__type__6_more__: S.Unknown.pipe(
+    InfraHTTPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
       T.Body("InfraHTTPServiceConfig object { host, name, type, 6 more }"),
     ),
-    InfraTCPServiceConfig_object___host__name__type__6_more__: S.Unknown.pipe(
+    InfraTCPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
       T.Body("InfraTCPServiceConfig object { host, name, type, 6 more }"),
     ),
   }),
@@ -64,13 +65,13 @@ export const DirectoryServicesCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DirectoryServicesCreateResponse>;
 
 export interface DirectoryServicesDeleteRequest {
-  account_id: string;
-  service_id: string;
+  accountId: string;
+  serviceId: string;
 }
 export const DirectoryServicesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    service_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    serviceId: S.String.pipe(T.Label("service_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -90,13 +91,13 @@ export const DirectoryServicesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DirectoryServicesDeleteResponse>;
 
 export interface DirectoryServicesGetRequest {
-  account_id: string;
-  service_id: string;
+  accountId: string;
+  serviceId: string;
 }
 export const DirectoryServicesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    service_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    serviceId: S.String.pipe(T.Label("service_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -110,15 +111,15 @@ export const DirectoryServicesGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DirectoryServicesGetResponse {
-  InfraHTTPServiceConfig_object___host__name__type__6_more__: unknown;
-  InfraTCPServiceConfig_object___host__name__type__6_more__: unknown;
+  InfraHTTPServiceConfigObjectHostNameType6More__: unknown;
+  InfraTCPServiceConfigObjectHostNameType6More__: unknown;
 }
 export const DirectoryServicesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    InfraHTTPServiceConfig_object___host__name__type__6_more__: S.Unknown.pipe(
+    InfraHTTPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
       T.Body("InfraHTTPServiceConfig object { host, name, type, 6 more }"),
     ),
-    InfraTCPServiceConfig_object___host__name__type__6_more__: S.Unknown.pipe(
+    InfraTCPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
       T.Body("InfraTCPServiceConfig object { host, name, type, 6 more }"),
     ),
   }),
@@ -130,16 +131,19 @@ export type DirectoryServicesListRequestType = "tcp" | "http" | (string & {});
 export const DirectoryServicesListRequestType = /*@__PURE__*/ S.String;
 
 export interface DirectoryServicesListRequest {
-  account_id: string;
+  /** Account identifier */
+  accountId: string;
+  /** Current page in the response */
   page?: number;
-  per_page?: number;
+  /** Max amount of entries returned per page */
+  perPage?: number;
   type?: DirectoryServicesListRequestType;
 }
 export const DirectoryServicesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     type: S.optional(DirectoryServicesListRequestType.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -153,15 +157,15 @@ export const DirectoryServicesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DirectoryServicesListRequest>;
 
 export interface DirectoryServicesListResultItem {
-  InfraHTTPServiceConfig_object___host__name__type__6_more__: unknown;
-  InfraTCPServiceConfig_object___host__name__type__6_more__: unknown;
+  InfraHTTPServiceConfigObjectHostNameType6More__: unknown;
+  InfraTCPServiceConfigObjectHostNameType6More__: unknown;
 }
 export const DirectoryServicesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    InfraHTTPServiceConfig_object___host__name__type__6_more__: S.Unknown.pipe(
+    InfraHTTPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
       T.Body("InfraHTTPServiceConfig object { host, name, type, 6 more }"),
     ),
-    InfraTCPServiceConfig_object___host__name__type__6_more__: S.Unknown.pipe(
+    InfraTCPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
       T.Body("InfraTCPServiceConfig object { host, name, type, 6 more }"),
     ),
   }),
@@ -175,6 +179,7 @@ export const DirectoryServicesListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DirectoryServicesListResultList>;
 
 export interface DirectoryServicesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DirectoryServicesListResultList;
 }
 export const DirectoryServicesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -188,15 +193,15 @@ export const DirectoryServicesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DirectoryServicesListResponse>;
 
 export interface DirectoryServicesUpdateRequestBody {
-  InfraHTTPServiceConfig_object___host__name__type__6_more__: unknown;
-  InfraTCPServiceConfig_object___host__name__type__6_more__: unknown;
+  InfraHTTPServiceConfigObjectHostNameType6More__: unknown;
+  InfraTCPServiceConfigObjectHostNameType6More__: unknown;
 }
 export const DirectoryServicesUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    InfraHTTPServiceConfig_object___host__name__type__6_more__: S.Unknown.pipe(
+    InfraHTTPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
       T.Body("InfraHTTPServiceConfig object { host, name, type, 6 more }"),
     ),
-    InfraTCPServiceConfig_object___host__name__type__6_more__: S.Unknown.pipe(
+    InfraTCPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
       T.Body("InfraTCPServiceConfig object { host, name, type, 6 more }"),
     ),
   }),
@@ -205,14 +210,14 @@ export const DirectoryServicesUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DirectoryServicesUpdateRequestBody>;
 
 export interface DirectoryServicesUpdateRequest {
-  account_id: string;
-  service_id: string;
+  accountId: string;
+  serviceId: string;
   body: DirectoryServicesUpdateRequestBody;
 }
 export const DirectoryServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    service_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    serviceId: S.String.pipe(T.Label("service_id")),
     body: DirectoryServicesUpdateRequestBody,
   }).pipe(
     T.Http({
@@ -227,15 +232,15 @@ export const DirectoryServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DirectoryServicesUpdateResponse {
-  InfraHTTPServiceConfig_object___host__name__type__6_more__: unknown;
-  InfraTCPServiceConfig_object___host__name__type__6_more__: unknown;
+  InfraHTTPServiceConfigObjectHostNameType6More__: unknown;
+  InfraTCPServiceConfigObjectHostNameType6More__: unknown;
 }
 export const DirectoryServicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    InfraHTTPServiceConfig_object___host__name__type__6_more__: S.Unknown.pipe(
+    InfraHTTPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
       T.Body("InfraHTTPServiceConfig object { host, name, type, 6 more }"),
     ),
-    InfraTCPServiceConfig_object___host__name__type__6_more__: S.Unknown.pipe(
+    InfraTCPServiceConfigObjectHostNameType6More__: S.Unknown.pipe(
       T.Body("InfraTCPServiceConfig object { host, name, type, 6 more }"),
     ),
   }),
@@ -243,11 +248,12 @@ export const DirectoryServicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DirectoryServicesUpdateResponse",
 }) as any as S.Schema<DirectoryServicesUpdateResponse>;
 
+export type DirectoryServicesCreateError = CloudflareOpError;
 /** Create Workers VPC connectivity service */
-export const DirectoryServicesCreate: API.OperationMethod<
+export const directoryServicesCreate: API.OperationMethod<
   DirectoryServicesCreateRequest,
   DirectoryServicesCreateResponse,
-  CloudflareOpError,
+  DirectoryServicesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DirectoryServicesCreateRequest,
@@ -256,11 +262,12 @@ export const DirectoryServicesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DirectoryServicesDeleteError = CloudflareOpError;
 /** Delete Workers VPC connectivity service */
-export const DirectoryServicesDelete: API.OperationMethod<
+export const directoryServicesDelete: API.OperationMethod<
   DirectoryServicesDeleteRequest,
   DirectoryServicesDeleteResponse,
-  CloudflareOpError,
+  DirectoryServicesDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DirectoryServicesDeleteRequest,
@@ -269,11 +276,12 @@ export const DirectoryServicesDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DirectoryServicesGetError = CloudflareOpError;
 /** Get Workers VPC connectivity service */
-export const DirectoryServicesGet: API.OperationMethod<
+export const directoryServicesGet: API.OperationMethod<
   DirectoryServicesGetRequest,
   DirectoryServicesGetResponse,
-  CloudflareOpError,
+  DirectoryServicesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DirectoryServicesGetRequest,
@@ -282,11 +290,12 @@ export const DirectoryServicesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DirectoryServicesListError = CloudflareOpError;
 /** List Workers VPC connectivity services */
-export const DirectoryServicesList: API.OperationMethod<
+export const directoryServicesList: API.OperationMethod<
   DirectoryServicesListRequest,
   DirectoryServicesListResponse,
-  CloudflareOpError,
+  DirectoryServicesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DirectoryServicesListRequest,
@@ -295,11 +304,12 @@ export const DirectoryServicesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DirectoryServicesUpdateError = CloudflareOpError;
 /** Update Workers VPC connectivity service */
-export const DirectoryServicesUpdate: API.OperationMethod<
+export const directoryServicesUpdate: API.OperationMethod<
   DirectoryServicesUpdateRequest,
   DirectoryServicesUpdateResponse,
-  CloudflareOpError,
+  DirectoryServicesUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DirectoryServicesUpdateRequest,

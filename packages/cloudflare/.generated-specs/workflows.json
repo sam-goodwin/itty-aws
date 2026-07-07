@@ -580,17 +580,53 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.workflows#InstancesBulkRequestBodyItemInstanceRetentionErrorRetention": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Specifies the duration in milliseconds.",
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Specifies the duration in milliseconds.",
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.workflows#InstancesBulkRequestBodyItemInstanceRetention": {
       "type": "structure",
       "members": {
         "error_retention": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.workflows#InstancesBulkRequestBodyItemInstanceRetentionErrorRetention",
           "traits": {
             "smithy.api#documentation": "Specifies the duration in milliseconds or as a string like '5 minutes'."
           }
         },
         "success_retention": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.workflows#InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention",
           "traits": {
             "smithy.api#documentation": "Specifies the duration in milliseconds or as a string like '5 minutes'."
           }
@@ -758,17 +794,53 @@
         "smithy.api#documentation": "Creates multiple workflow instances in a single batch operation."
       }
     },
+    "com.cloudflare.workflows#InstancesCreateRequestInstanceRetentionErrorRetention": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Specifies the duration in milliseconds.",
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesCreateRequestInstanceRetentionSuccessRetention": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Specifies the duration in milliseconds.",
+            "smithy.api#required": {}
+          }
+        },
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.workflows#InstancesCreateRequestInstanceRetention": {
       "type": "structure",
       "members": {
         "error_retention": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.workflows#InstancesCreateRequestInstanceRetentionErrorRetention",
           "traits": {
             "smithy.api#documentation": "Specifies the duration in milliseconds or as a string like '5 minutes'."
           }
         },
         "success_retention": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.workflows#InstancesCreateRequestInstanceRetentionSuccessRetention",
           "traits": {
             "smithy.api#documentation": "Specifies the duration in milliseconds or as a string like '5 minutes'."
           }
@@ -1000,6 +1072,23 @@
         }
       }
     },
+    "com.cloudflare.workflows#InstancesGetResponseOutput": {
+      "type": "structure",
+      "members": {
+        "string": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.workflows#InstancesGetResponseRollbackError": {
       "type": "structure",
       "members": {
@@ -1180,7 +1269,7 @@
           }
         },
         "output": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.workflows#InstancesGetResponseOutput",
           "traits": {
             "smithy.api#required": {}
           }

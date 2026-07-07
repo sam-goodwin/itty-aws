@@ -10,11 +10,12 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface GetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -24,12 +25,123 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
+export type GetResponseAuthenticationSettingsFailureCriteriaKind =
+  | "status_code"
+  | (string & {});
+export const GetResponseAuthenticationSettingsFailureCriteriaKind =
+  /*@__PURE__*/ S.String;
+
+export type GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList =
+  number[];
+export const GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList>;
+
+export interface GetResponseAuthenticationSettingsFailureCriteria {
+  /** The type of criterion. Currently only `status_code` is supported. */
+  kind: GetResponseAuthenticationSettingsFailureCriteriaKind;
+  /** HTTP status codes to match against the origin response. */
+  statusCodes?: GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList;
+}
+export const GetResponseAuthenticationSettingsFailureCriteria =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: GetResponseAuthenticationSettingsFailureCriteriaKind,
+      statusCodes: S.optional(
+        GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList.pipe(
+          T.Body("status_codes"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "GetResponseAuthenticationSettingsFailureCriteria",
+  }) as any as S.Schema<GetResponseAuthenticationSettingsFailureCriteria>;
+
+export type GetResponseAuthenticationSettingsSuccessCriteriaKind =
+  | "status_code"
+  | (string & {});
+export const GetResponseAuthenticationSettingsSuccessCriteriaKind =
+  /*@__PURE__*/ S.String;
+
+export type GetResponseAuthenticationSettingsSuccessCriteriaStatusCodesList =
+  number[];
+export const GetResponseAuthenticationSettingsSuccessCriteriaStatusCodesList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<GetResponseAuthenticationSettingsSuccessCriteriaStatusCodesList>;
+
+export interface GetResponseAuthenticationSettingsSuccessCriteria {
+  /** The type of criterion. Currently only `status_code` is supported. */
+  kind: GetResponseAuthenticationSettingsSuccessCriteriaKind;
+  /** HTTP status codes to match against the origin response. */
+  statusCodes?: GetResponseAuthenticationSettingsSuccessCriteriaStatusCodesList;
+}
+export const GetResponseAuthenticationSettingsSuccessCriteria =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: GetResponseAuthenticationSettingsSuccessCriteriaKind,
+      statusCodes: S.optional(
+        GetResponseAuthenticationSettingsSuccessCriteriaStatusCodesList.pipe(
+          T.Body("status_codes"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "GetResponseAuthenticationSettingsSuccessCriteria",
+  }) as any as S.Schema<GetResponseAuthenticationSettingsSuccessCriteria>;
+
+export interface GetResponseAuthenticationSettings {
+  /** Criterion for identifying failed login responses. */
+  failureCriteria?: GetResponseAuthenticationSettingsFailureCriteria;
+  /** Criterion for identifying successful login responses. */
+  successCriteria?: GetResponseAuthenticationSettingsSuccessCriteria;
+}
+export const GetResponseAuthenticationSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    failureCriteria: S.optional(
+      GetResponseAuthenticationSettingsFailureCriteria.pipe(
+        T.Body("failure_criteria"),
+      ),
+    ),
+    successCriteria: S.optional(
+      GetResponseAuthenticationSettingsSuccessCriteria.pipe(
+        T.Body("success_criteria"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "GetResponseAuthenticationSettings",
+}) as any as S.Schema<GetResponseAuthenticationSettings>;
+
+export type GetResponseUserProfiles = "enabled" | "disabled" | (string & {});
+export const GetResponseUserProfiles = /*@__PURE__*/ S.String;
+
+export type GetResponseUsernameExpressionsList = string[];
+export const GetResponseUsernameExpressionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetResponseUsernameExpressionsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
-  result?: unknown;
+  /** Configuration for classifying login authentication outcomes based on the origin response. */
+  authenticationSettings?: GetResponseAuthenticationSettings;
+  /** Whether Fraud User Profiles is enabled for the zone. */
+  userProfiles?: GetResponseUserProfiles;
+  /** List of expressions to detect usernames in write HTTP requests. */
+  usernameExpressions?: GetResponseUsernameExpressionsList;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    authenticationSettings: S.optional(
+      GetResponseAuthenticationSettings.pipe(T.Body("authentication_settings")),
+    ),
+    userProfiles: S.optional(
+      GetResponseUserProfiles.pipe(T.Body("user_profiles")),
+    ),
+    usernameExpressions: S.optional(
+      GetResponseUsernameExpressionsList.pipe(T.Body("username_expressions")),
+    ),
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
@@ -47,15 +159,19 @@ export const UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList =
   ) as any as S.Schema<UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList>;
 
 export interface UpdateRequestAuthenticationSettingsFailureCriteria {
+  /** The type of criterion. Currently only `status_code` is supported. */
   kind: UpdateRequestAuthenticationSettingsFailureCriteriaKind;
-  status_codes?: UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList;
+  /** HTTP status codes to match against the origin response. */
+  statusCodes?: UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList;
 }
 export const UpdateRequestAuthenticationSettingsFailureCriteria =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       kind: UpdateRequestAuthenticationSettingsFailureCriteriaKind,
-      status_codes: S.optional(
-        UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList,
+      statusCodes: S.optional(
+        UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList.pipe(
+          T.Body("status_codes"),
+        ),
       ),
     }),
   ).annotate({
@@ -76,15 +192,19 @@ export const UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList =
   ) as any as S.Schema<UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList>;
 
 export interface UpdateRequestAuthenticationSettingsSuccessCriteria {
+  /** The type of criterion. Currently only `status_code` is supported. */
   kind: UpdateRequestAuthenticationSettingsSuccessCriteriaKind;
-  status_codes?: UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList;
+  /** HTTP status codes to match against the origin response. */
+  statusCodes?: UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList;
 }
 export const UpdateRequestAuthenticationSettingsSuccessCriteria =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       kind: UpdateRequestAuthenticationSettingsSuccessCriteriaKind,
-      status_codes: S.optional(
-        UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList,
+      statusCodes: S.optional(
+        UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList.pipe(
+          T.Body("status_codes"),
+        ),
       ),
     }),
   ).annotate({
@@ -92,16 +212,22 @@ export const UpdateRequestAuthenticationSettingsSuccessCriteria =
   }) as any as S.Schema<UpdateRequestAuthenticationSettingsSuccessCriteria>;
 
 export interface UpdateRequestAuthenticationSettings {
-  failure_criteria?: UpdateRequestAuthenticationSettingsFailureCriteria;
-  success_criteria?: UpdateRequestAuthenticationSettingsSuccessCriteria;
+  /** Criterion for identifying failed login responses. */
+  failureCriteria?: UpdateRequestAuthenticationSettingsFailureCriteria;
+  /** Criterion for identifying successful login responses. */
+  successCriteria?: UpdateRequestAuthenticationSettingsSuccessCriteria;
 }
 export const UpdateRequestAuthenticationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    failure_criteria: S.optional(
-      UpdateRequestAuthenticationSettingsFailureCriteria,
+    failureCriteria: S.optional(
+      UpdateRequestAuthenticationSettingsFailureCriteria.pipe(
+        T.Body("failure_criteria"),
+      ),
     ),
-    success_criteria: S.optional(
-      UpdateRequestAuthenticationSettingsSuccessCriteria,
+    successCriteria: S.optional(
+      UpdateRequestAuthenticationSettingsSuccessCriteria.pipe(
+        T.Body("success_criteria"),
+      ),
     ),
   }),
 ).annotate({
@@ -117,17 +243,29 @@ export const UpdateRequestUsernameExpressionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateRequestUsernameExpressionsList>;
 
 export interface UpdateRequest {
-  zone_id: string;
-  authentication_settings?: UpdateRequestAuthenticationSettings;
-  user_profiles?: UpdateRequestUserProfiles;
-  username_expressions?: UpdateRequestUsernameExpressionsList;
+  /** Identifier. */
+  zoneId: string;
+  /** Configuration for classifying login authentication outcomes based on the origin response. */
+  authenticationSettings?: UpdateRequestAuthenticationSettings;
+  /** Whether Fraud User Profiles is enabled for the zone. */
+  userProfiles?: UpdateRequestUserProfiles;
+  /** List of expressions to detect usernames in write HTTP requests. */
+  usernameExpressions?: UpdateRequestUsernameExpressionsList;
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    authentication_settings: S.optional(UpdateRequestAuthenticationSettings),
-    user_profiles: S.optional(UpdateRequestUserProfiles),
-    username_expressions: S.optional(UpdateRequestUsernameExpressionsList),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    authenticationSettings: S.optional(
+      UpdateRequestAuthenticationSettings.pipe(
+        T.Body("authentication_settings"),
+      ),
+    ),
+    userProfiles: S.optional(
+      UpdateRequestUserProfiles.pipe(T.Body("user_profiles")),
+    ),
+    usernameExpressions: S.optional(
+      UpdateRequestUsernameExpressionsList.pipe(T.Body("username_expressions")),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -137,20 +275,137 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
 
+export type UpdateResponseAuthenticationSettingsFailureCriteriaKind =
+  | "status_code"
+  | (string & {});
+export const UpdateResponseAuthenticationSettingsFailureCriteriaKind =
+  /*@__PURE__*/ S.String;
+
+export type UpdateResponseAuthenticationSettingsFailureCriteriaStatusCodesList =
+  number[];
+export const UpdateResponseAuthenticationSettingsFailureCriteriaStatusCodesList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<UpdateResponseAuthenticationSettingsFailureCriteriaStatusCodesList>;
+
+export interface UpdateResponseAuthenticationSettingsFailureCriteria {
+  /** The type of criterion. Currently only `status_code` is supported. */
+  kind: UpdateResponseAuthenticationSettingsFailureCriteriaKind;
+  /** HTTP status codes to match against the origin response. */
+  statusCodes?: UpdateResponseAuthenticationSettingsFailureCriteriaStatusCodesList;
+}
+export const UpdateResponseAuthenticationSettingsFailureCriteria =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: UpdateResponseAuthenticationSettingsFailureCriteriaKind,
+      statusCodes: S.optional(
+        UpdateResponseAuthenticationSettingsFailureCriteriaStatusCodesList.pipe(
+          T.Body("status_codes"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "UpdateResponseAuthenticationSettingsFailureCriteria",
+  }) as any as S.Schema<UpdateResponseAuthenticationSettingsFailureCriteria>;
+
+export type UpdateResponseAuthenticationSettingsSuccessCriteriaKind =
+  | "status_code"
+  | (string & {});
+export const UpdateResponseAuthenticationSettingsSuccessCriteriaKind =
+  /*@__PURE__*/ S.String;
+
+export type UpdateResponseAuthenticationSettingsSuccessCriteriaStatusCodesList =
+  number[];
+export const UpdateResponseAuthenticationSettingsSuccessCriteriaStatusCodesList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<UpdateResponseAuthenticationSettingsSuccessCriteriaStatusCodesList>;
+
+export interface UpdateResponseAuthenticationSettingsSuccessCriteria {
+  /** The type of criterion. Currently only `status_code` is supported. */
+  kind: UpdateResponseAuthenticationSettingsSuccessCriteriaKind;
+  /** HTTP status codes to match against the origin response. */
+  statusCodes?: UpdateResponseAuthenticationSettingsSuccessCriteriaStatusCodesList;
+}
+export const UpdateResponseAuthenticationSettingsSuccessCriteria =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: UpdateResponseAuthenticationSettingsSuccessCriteriaKind,
+      statusCodes: S.optional(
+        UpdateResponseAuthenticationSettingsSuccessCriteriaStatusCodesList.pipe(
+          T.Body("status_codes"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "UpdateResponseAuthenticationSettingsSuccessCriteria",
+  }) as any as S.Schema<UpdateResponseAuthenticationSettingsSuccessCriteria>;
+
+export interface UpdateResponseAuthenticationSettings {
+  /** Criterion for identifying failed login responses. */
+  failureCriteria?: UpdateResponseAuthenticationSettingsFailureCriteria;
+  /** Criterion for identifying successful login responses. */
+  successCriteria?: UpdateResponseAuthenticationSettingsSuccessCriteria;
+}
+export const UpdateResponseAuthenticationSettings = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      failureCriteria: S.optional(
+        UpdateResponseAuthenticationSettingsFailureCriteria.pipe(
+          T.Body("failure_criteria"),
+        ),
+      ),
+      successCriteria: S.optional(
+        UpdateResponseAuthenticationSettingsSuccessCriteria.pipe(
+          T.Body("success_criteria"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "UpdateResponseAuthenticationSettings",
+}) as any as S.Schema<UpdateResponseAuthenticationSettings>;
+
+export type UpdateResponseUserProfiles = "enabled" | "disabled" | (string & {});
+export const UpdateResponseUserProfiles = /*@__PURE__*/ S.String;
+
+export type UpdateResponseUsernameExpressionsList = string[];
+export const UpdateResponseUsernameExpressionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateResponseUsernameExpressionsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
-  result?: unknown;
+  /** Configuration for classifying login authentication outcomes based on the origin response. */
+  authenticationSettings?: UpdateResponseAuthenticationSettings;
+  /** Whether Fraud User Profiles is enabled for the zone. */
+  userProfiles?: UpdateResponseUserProfiles;
+  /** List of expressions to detect usernames in write HTTP requests. */
+  usernameExpressions?: UpdateResponseUsernameExpressionsList;
 }
 export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    authenticationSettings: S.optional(
+      UpdateResponseAuthenticationSettings.pipe(
+        T.Body("authentication_settings"),
+      ),
+    ),
+    userProfiles: S.optional(
+      UpdateResponseUserProfiles.pipe(T.Body("user_profiles")),
+    ),
+    usernameExpressions: S.optional(
+      UpdateResponseUsernameExpressionsList.pipe(
+        T.Body("username_expressions"),
+      ),
+    ),
   }),
 ).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
+export type GetError = CloudflareOpError;
 /** Retrieve Fraud Detection settings for a zone. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -159,11 +414,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UpdateError = CloudflareOpError;
 /** Update Fraud Detection settings for a zone. Notes on `username_expressions` behavior: - If omitted or set to null, expressions are not modified. - If provided as an empty array `[]`, all expressions will be cleared. */
-export const Update: API.OperationMethod<
+export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,
-  CloudflareOpError,
+  UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,

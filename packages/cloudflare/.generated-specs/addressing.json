@@ -83,6 +83,20 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#AddressMapsCreateResponseIps": {
+      "type": "structure",
+      "members": {
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An IPv4 or IPv6 address."
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#AddressMapsCreateResponseMembershipsItem": {
       "type": "structure",
       "members": {
@@ -158,7 +172,7 @@
           }
         },
         "ips": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.addressing#AddressMapsCreateResponseIps",
           "traits": {
             "smithy.api#documentation": "The set of IPs on the Address Map."
           }
@@ -282,16 +296,52 @@
     "com.cloudflare.addressing#AddressMapsEditResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Identifier of an Address Map."
           }
+        },
+        "can_delete": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps."
+          }
+        },
+        "can_modify_ips": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "default_sni": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An optional description field which may be used to describe the types of IPs or zones on the map."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled."
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.addressing#AddressMapsEdit": {
@@ -333,6 +383,20 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.addressing#AddressMapsGetResponseIps": {
+      "type": "structure",
+      "members": {
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An IPv4 or IPv6 address."
+          }
+        }
       }
     },
     "com.cloudflare.addressing#AddressMapsGetResponseMembershipsItem": {
@@ -410,7 +474,7 @@
           }
         },
         "ips": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.addressing#AddressMapsGetResponseIps",
           "traits": {
             "smithy.api#documentation": "The set of IPs on the Address Map."
           }
@@ -464,10 +528,57 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#AddressMapsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of an Address Map."
+          }
+        },
+        "can_delete": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps."
+          }
+        },
+        "can_modify_ips": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "default_sni": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An optional description field which may be used to describe the types of IPs or zones on the map."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled."
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
     "com.cloudflare.addressing#AddressMapsListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.addressing#AddressMapsListResultItem"
       }
     },
     "com.cloudflare.addressing#AddressMapsListResponse": {
@@ -1001,16 +1112,112 @@
     "com.cloudflare.addressing#PrefixesCreateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Identifier of an IP Prefix."
+          }
+        },
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of a Cloudflare account."
+          }
+        },
+        "advertised": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled."
+          }
+        },
+        "advertised_modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+          }
+        },
+        "approved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Approval state of the prefix (P = pending, V = active)."
+          }
+        },
+        "asn": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Autonomous System Number (ASN) the prefix will be advertised under."
+          }
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP Prefix in Classless Inter-Domain Routing format."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "delegate_loa_creation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the prefix."
+          }
+        },
+        "irr_validation_state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State of one kind of validation for an IP prefix."
+          }
+        },
+        "loa_document_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for the uploaded LOA document."
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String"
+        },
+        "on_demand_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled."
+          }
+        },
+        "on_demand_locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether advertisement status of the prefix is locked, meaning it cannot be changed."
+          }
+        },
+        "ownership_validation_state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State of one kind of validation for an IP prefix."
+          }
+        },
+        "ownership_validation_token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Token provided to demonstrate ownership of the prefix."
+          }
+        },
+        "rpki_validation_state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State of one kind of validation for an IP prefix."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.addressing#PrefixesCreate": {
@@ -1106,16 +1313,112 @@
     "com.cloudflare.addressing#PrefixesEditResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Identifier of an IP Prefix."
+          }
+        },
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of a Cloudflare account."
+          }
+        },
+        "advertised": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled."
+          }
+        },
+        "advertised_modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+          }
+        },
+        "approved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Approval state of the prefix (P = pending, V = active)."
+          }
+        },
+        "asn": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Autonomous System Number (ASN) the prefix will be advertised under."
+          }
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP Prefix in Classless Inter-Domain Routing format."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "delegate_loa_creation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the prefix."
+          }
+        },
+        "irr_validation_state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State of one kind of validation for an IP prefix."
+          }
+        },
+        "loa_document_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for the uploaded LOA document."
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String"
+        },
+        "on_demand_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled."
+          }
+        },
+        "on_demand_locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether advertisement status of the prefix is locked, meaning it cannot be changed."
+          }
+        },
+        "ownership_validation_state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State of one kind of validation for an IP prefix."
+          }
+        },
+        "ownership_validation_token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Token provided to demonstrate ownership of the prefix."
+          }
+        },
+        "rpki_validation_state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State of one kind of validation for an IP prefix."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.addressing#PrefixesEdit": {
@@ -1162,16 +1465,112 @@
     "com.cloudflare.addressing#PrefixesGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Identifier of an IP Prefix."
+          }
+        },
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of a Cloudflare account."
+          }
+        },
+        "advertised": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled."
+          }
+        },
+        "advertised_modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+          }
+        },
+        "approved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Approval state of the prefix (P = pending, V = active)."
+          }
+        },
+        "asn": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Autonomous System Number (ASN) the prefix will be advertised under."
+          }
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP Prefix in Classless Inter-Domain Routing format."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "delegate_loa_creation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the prefix."
+          }
+        },
+        "irr_validation_state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State of one kind of validation for an IP prefix."
+          }
+        },
+        "loa_document_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for the uploaded LOA document."
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String"
+        },
+        "on_demand_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled."
+          }
+        },
+        "on_demand_locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether advertisement status of the prefix is locked, meaning it cannot be changed."
+          }
+        },
+        "ownership_validation_state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State of one kind of validation for an IP prefix."
+          }
+        },
+        "ownership_validation_token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Token provided to demonstrate ownership of the prefix."
+          }
+        },
+        "rpki_validation_state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State of one kind of validation for an IP prefix."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.addressing#PrefixesGet": {
@@ -1208,10 +1607,117 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#PrefixesListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of an IP Prefix."
+          }
+        },
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of a Cloudflare account."
+          }
+        },
+        "advertised": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled."
+          }
+        },
+        "advertised_modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+          }
+        },
+        "approved": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Approval state of the prefix (P = pending, V = active)."
+          }
+        },
+        "asn": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Autonomous System Number (ASN) the prefix will be advertised under."
+          }
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP Prefix in Classless Inter-Domain Routing format."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "delegate_loa_creation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the prefix."
+          }
+        },
+        "irr_validation_state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State of one kind of validation for an IP prefix."
+          }
+        },
+        "loa_document_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for the uploaded LOA document."
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String"
+        },
+        "on_demand_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled."
+          }
+        },
+        "on_demand_locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether advertisement status of the prefix is locked, meaning it cannot be changed."
+          }
+        },
+        "ownership_validation_state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State of one kind of validation for an IP prefix."
+          }
+        },
+        "ownership_validation_token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Token provided to demonstrate ownership of the prefix."
+          }
+        },
+        "rpki_validation_state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State of one kind of validation for an IP prefix."
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#PrefixesListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.addressing#PrefixesListResultItem"
       }
     },
     "com.cloudflare.addressing#PrefixesListResponse": {
@@ -1410,19 +1916,101 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#PrefixesBgpPrefixesCreateResponseBgpSignalOpts": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal"
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled."
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#PrefixesBgpPrefixesCreateResponseOnDemand": {
+      "type": "structure",
+      "members": {
+        "advertised": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled."
+          }
+        },
+        "advertised_modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+          }
+        },
+        "on_demand_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled."
+          }
+        },
+        "on_demand_locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed."
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#PrefixesBgpPrefixesCreateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Identifier of BGP Prefix."
           }
+        },
+        "asn": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Autonomous System Number (ASN) the prefix will be advertised under."
+          }
+        },
+        "asn_prepend_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute"
+          }
+        },
+        "auto_advertise_withdraw": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route."
+          }
+        },
+        "bgp_signal_opts": {
+          "target": "com.cloudflare.addressing#PrefixesBgpPrefixesCreateResponseBgpSignalOpts"
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP Prefix in Classless Inter-Domain Routing format."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "modified_at": {
+          "target": "smithy.api#String"
+        },
+        "on_demand": {
+          "target": "com.cloudflare.addressing#PrefixesBgpPrefixesCreateResponseOnDemand"
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.addressing#PrefixesBgpPrefixesCreate": {
@@ -1497,19 +2085,101 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#PrefixesBgpPrefixesEditResponseBgpSignalOpts": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal"
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled."
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#PrefixesBgpPrefixesEditResponseOnDemand": {
+      "type": "structure",
+      "members": {
+        "advertised": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled."
+          }
+        },
+        "advertised_modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+          }
+        },
+        "on_demand_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled."
+          }
+        },
+        "on_demand_locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed."
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#PrefixesBgpPrefixesEditResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Identifier of BGP Prefix."
           }
+        },
+        "asn": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Autonomous System Number (ASN) the prefix will be advertised under."
+          }
+        },
+        "asn_prepend_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute"
+          }
+        },
+        "auto_advertise_withdraw": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route."
+          }
+        },
+        "bgp_signal_opts": {
+          "target": "com.cloudflare.addressing#PrefixesBgpPrefixesEditResponseBgpSignalOpts"
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP Prefix in Classless Inter-Domain Routing format."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "modified_at": {
+          "target": "smithy.api#String"
+        },
+        "on_demand": {
+          "target": "com.cloudflare.addressing#PrefixesBgpPrefixesEditResponseOnDemand"
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.addressing#PrefixesBgpPrefixesEdit": {
@@ -1561,19 +2231,101 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#PrefixesBgpPrefixesGetResponseBgpSignalOpts": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal"
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled."
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#PrefixesBgpPrefixesGetResponseOnDemand": {
+      "type": "structure",
+      "members": {
+        "advertised": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled."
+          }
+        },
+        "advertised_modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+          }
+        },
+        "on_demand_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled."
+          }
+        },
+        "on_demand_locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed."
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#PrefixesBgpPrefixesGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Identifier of BGP Prefix."
           }
+        },
+        "asn": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Autonomous System Number (ASN) the prefix will be advertised under."
+          }
+        },
+        "asn_prepend_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute"
+          }
+        },
+        "auto_advertise_withdraw": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route."
+          }
+        },
+        "bgp_signal_opts": {
+          "target": "com.cloudflare.addressing#PrefixesBgpPrefixesGetResponseBgpSignalOpts"
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP Prefix in Classless Inter-Domain Routing format."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "modified_at": {
+          "target": "smithy.api#String"
+        },
+        "on_demand": {
+          "target": "com.cloudflare.addressing#PrefixesBgpPrefixesGetResponseOnDemand"
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.addressing#PrefixesBgpPrefixesGet": {
@@ -1618,10 +2370,103 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#PrefixesBgpPrefixesListResultItemBgpSignalOpts": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether control of advertisement of the prefix to the Internet is enabled to be performed via BGP signal"
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled."
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#PrefixesBgpPrefixesListResultItemOnDemand": {
+      "type": "structure",
+      "members": {
+        "advertised": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled."
+          }
+        },
+        "advertised_modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled."
+          }
+        },
+        "on_demand_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled."
+          }
+        },
+        "on_demand_locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#PrefixesBgpPrefixesListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of BGP Prefix."
+          }
+        },
+        "asn": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Autonomous System Number (ASN) the prefix will be advertised under."
+          }
+        },
+        "asn_prepend_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of times to prepend the Cloudflare ASN to the BGP AS-Path attribute"
+          }
+        },
+        "auto_advertise_withdraw": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there are no matching BGP routes, and will resume advertising when there is at least one matching BGP route."
+          }
+        },
+        "bgp_signal_opts": {
+          "target": "com.cloudflare.addressing#PrefixesBgpPrefixesListResultItemBgpSignalOpts"
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP Prefix in Classless Inter-Domain Routing format."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "modified_at": {
+          "target": "smithy.api#String"
+        },
+        "on_demand": {
+          "target": "com.cloudflare.addressing#PrefixesBgpPrefixesListResultItemOnDemand"
+        }
+      }
+    },
     "com.cloudflare.addressing#PrefixesBgpPrefixesListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.addressing#PrefixesBgpPrefixesListResultItem"
       }
     },
     "com.cloudflare.addressing#PrefixesBgpPrefixesListResponse": {
@@ -1698,16 +2543,40 @@
     "com.cloudflare.addressing#PrefixesDelegationsCreateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Identifier of a Delegation."
+          }
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP Prefix in Classless Inter-Domain Routing format."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "delegated_account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Account identifier for the account to which prefix is being delegated."
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String"
+        },
+        "parent_prefix_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of an IP Prefix."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.addressing#PrefixesDelegationsCreate": {
@@ -1816,10 +2685,45 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#PrefixesDelegationsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of a Delegation."
+          }
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP Prefix in Classless Inter-Domain Routing format."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "delegated_account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Account identifier for the account to which prefix is being delegated."
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String"
+        },
+        "parent_prefix_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of an IP Prefix."
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#PrefixesDelegationsListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.addressing#PrefixesDelegationsListResultItem"
       }
     },
     "com.cloudflare.addressing#PrefixesDelegationsListResponse": {
@@ -1893,19 +2797,71 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#PrefixesServiceBindingsCreateResponseProvisioningState": {
+      "type": "enum",
+      "members": {
+        "PROVISIONING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "provisioning"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#PrefixesServiceBindingsCreateResponseProvisioning": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.cloudflare.addressing#PrefixesServiceBindingsCreateResponseProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active and can be used with its associated service."
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#PrefixesServiceBindingsCreateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Identifier of a Service Binding."
+          }
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP Prefix in Classless Inter-Domain Routing format."
+          }
+        },
+        "provisioning": {
+          "target": "com.cloudflare.addressing#PrefixesServiceBindingsCreateResponseProvisioning",
+          "traits": {
+            "smithy.api#documentation": "Status of a Service Binding's deployment to the Cloudflare network"
+          }
+        },
+        "service_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the"
+          }
+        },
+        "service_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of a service running on the Cloudflare network"
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.addressing#PrefixesServiceBindingsCreate": {
@@ -2007,19 +2963,71 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#PrefixesServiceBindingsGetResponseProvisioningState": {
+      "type": "enum",
+      "members": {
+        "PROVISIONING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "provisioning"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#PrefixesServiceBindingsGetResponseProvisioning": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.cloudflare.addressing#PrefixesServiceBindingsGetResponseProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active and can be used with its associated service."
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#PrefixesServiceBindingsGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Identifier of a Service Binding."
+          }
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP Prefix in Classless Inter-Domain Routing format."
+          }
+        },
+        "provisioning": {
+          "target": "com.cloudflare.addressing#PrefixesServiceBindingsGetResponseProvisioning",
+          "traits": {
+            "smithy.api#documentation": "Status of a Service Binding's deployment to the Cloudflare network"
+          }
+        },
+        "service_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the"
+          }
+        },
+        "service_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of a service running on the Cloudflare network"
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.addressing#PrefixesServiceBindingsGet": {
@@ -2064,10 +3072,73 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.addressing#PrefixesServiceBindingsListResultItemProvisioningState": {
+      "type": "enum",
+      "members": {
+        "PROVISIONING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "provisioning"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#PrefixesServiceBindingsListResultItemProvisioning": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.cloudflare.addressing#PrefixesServiceBindingsListResultItemProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active and can be used with its associated service."
+          }
+        }
+      }
+    },
+    "com.cloudflare.addressing#PrefixesServiceBindingsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of a Service Binding."
+          }
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP Prefix in Classless Inter-Domain Routing format."
+          }
+        },
+        "provisioning": {
+          "target": "com.cloudflare.addressing#PrefixesServiceBindingsListResultItemProvisioning",
+          "traits": {
+            "smithy.api#documentation": "Status of a Service Binding's deployment to the Cloudflare network"
+          }
+        },
+        "service_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the"
+          }
+        },
+        "service_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of a service running on the Cloudflare network"
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#PrefixesServiceBindingsListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.addressing#PrefixesServiceBindingsListResultItem"
       }
     },
     "com.cloudflare.addressing#PrefixesServiceBindingsListResponse": {

@@ -10,13 +10,14 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface AccountTagsDeleteRequest {
-  account_id: string;
-  _If_Match_?: string;
+  /** Identifier. */
+  accountId: string;
+  IfMatch_?: string;
 }
 export const AccountTagsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    _If_Match_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
+    accountId: S.String.pipe(T.Label("account_id")),
+    IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
   }).pipe(
     T.Http({ method: "DELETE", uri: "/accounts/{account_id}/tags", code: 200 }),
   ),
@@ -39,17 +40,23 @@ export type AccountTagsGetRequestResourceType =
 export const AccountTagsGetRequestResourceType = /*@__PURE__*/ S.String;
 
 export interface AccountTagsGetRequest {
-  account_id: string;
-  resource_id: string;
-  resource_type: AccountTagsGetRequestResourceType;
-  worker_id?: string;
+  /** Identifier. */
+  accountId: string;
+  /** The ID of the resource to retrieve tags for. */
+  resourceId: string;
+  /** The type of the resource. */
+  resourceType: AccountTagsGetRequestResourceType;
+  /** Worker identifier. Required for worker_version resources. */
+  workerId?: string;
 }
 export const AccountTagsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    resource_id: S.String.pipe(T.Query()),
-    resource_type: AccountTagsGetRequestResourceType.pipe(T.Query()),
-    worker_id: S.optional(S.String.pipe(T.Query())),
+    accountId: S.String.pipe(T.Label("account_id")),
+    resourceId: S.String.pipe(T.Query("resource_id")),
+    resourceType: AccountTagsGetRequestResourceType.pipe(
+      T.Query("resource_type"),
+    ),
+    workerId: S.optional(S.String.pipe(T.Query("worker_id"))),
   }).pipe(
     T.Http({ method: "GET", uri: "/accounts/{account_id}/tags", code: 200 }),
   ),
@@ -59,118 +66,145 @@ export const AccountTagsGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AccountTagsGetResponse {
-  AccessApplication_object___id__etag__name__2_more__: unknown;
-  AccessApplicationPolicy_object___id__access_application_id__etag__4_more__: unknown;
-  AccessGroup_object___id__etag__name__2_more__: unknown;
-  Account_object___id__etag__name__2_more__: unknown;
-  AIGateway_object___id__etag__name__2_more__: unknown;
-  AlertingPolicy_object___id__etag__name__2_more__: unknown;
-  AlertingWebhook_object___id__etag__name__2_more__: unknown;
-  APIGatewayOperation_object___id__etag__name__3_more__: unknown;
-  CloudflaredTunnel_object___id__etag__name__2_more__: unknown;
-  CustomCertificate_object___id__etag__name__3_more__: unknown;
-  CustomHostname_object___id__etag__name__3_more__: unknown;
-  D1Database_object___id__etag__name__2_more__: unknown;
-  DNSRecord_object___id__etag__name__3_more__: unknown;
-  DurableObjectNamespace_object___id__etag__name__2_more__: unknown;
-  GatewayList_object___id__etag__name__2_more__: unknown;
-  GatewayRule_object___id__etag__name__2_more__: unknown;
-  Image_object___id__etag__name__2_more__: unknown;
-  KVNamespace_object___id__etag__name__2_more__: unknown;
-  ManagedClientCertificate_object___id__etag__name__3_more__: unknown;
-  Queue_object___id__etag__name__2_more__: unknown;
-  R2Bucket_object___id__etag__name__2_more__: unknown;
-  ResourceShare_object___id__etag__name__2_more__: unknown;
-  StreamLiveInput_object___id__etag__name__2_more__: unknown;
-  StreamVideo_object___id__etag__name__2_more__: unknown;
-  Worker_object___id__etag__name__2_more__: unknown;
-  WorkerVersion_object___id__etag__name__3_more__: unknown;
-  Zone_object___id__etag__name__3_more__: unknown;
+  /** Response for access_application resources */
+  AccessApplicationObjectIdEtagName2More__: unknown;
+  /** Response for access_application_policy resources */
+  AccessApplicationPolicyObjectIdAccessApplicationIdEtag4More__: unknown;
+  /** Response for access_group resources */
+  AccessGroupObjectIdEtagName2More__: unknown;
+  /** Response for account resources */
+  AccountObjectIdEtagName2More__: unknown;
+  /** Response for ai_gateway resources */
+  AIGatewayObjectIdEtagName2More__: unknown;
+  /** Response for alerting_policy resources */
+  AlertingPolicyObjectIdEtagName2More__: unknown;
+  /** Response for alerting_webhook resources */
+  AlertingWebhookObjectIdEtagName2More__: unknown;
+  /** Response for api_gateway_operation resources */
+  APIGatewayOperationObjectIdEtagName3More__: unknown;
+  /** Response for cloudflared_tunnel resources */
+  CloudflaredTunnelObjectIdEtagName2More__: unknown;
+  /** Response for custom_certificate resources */
+  CustomCertificateObjectIdEtagName3More__: unknown;
+  /** Response for custom_hostname resources */
+  CustomHostnameObjectIdEtagName3More__: unknown;
+  /** Response for d1_database resources */
+  D1DatabaseObjectIdEtagName2More__: unknown;
+  /** Response for dns_record resources */
+  DNSRecordObjectIdEtagName3More__: unknown;
+  /** Response for durable_object_namespace resources */
+  DurableObjectNamespaceObjectIdEtagName2More__: unknown;
+  /** Response for gateway_list resources */
+  GatewayListObjectIdEtagName2More__: unknown;
+  /** Response for gateway_rule resources */
+  GatewayRuleObjectIdEtagName2More__: unknown;
+  /** Response for image resources */
+  ImageObjectIdEtagName2More__: unknown;
+  /** Response for kv_namespace resources */
+  KVNamespaceObjectIdEtagName2More__: unknown;
+  /** Response for managed_client_certificate resources */
+  ManagedClientCertificateObjectIdEtagName3More__: unknown;
+  /** Response for queue resources */
+  QueueObjectIdEtagName2More__: unknown;
+  /** Response for r2_bucket resources */
+  R2BucketObjectIdEtagName2More__: unknown;
+  /** Response for resource_share resources */
+  ResourceShareObjectIdEtagName2More__: unknown;
+  /** Response for stream_live_input resources */
+  StreamLiveInputObjectIdEtagName2More__: unknown;
+  /** Response for stream_video resources */
+  StreamVideoObjectIdEtagName2More__: unknown;
+  /** Response for worker resources */
+  WorkerObjectIdEtagName2More__: unknown;
+  /** Response for worker_version resources */
+  WorkerVersionObjectIdEtagName3More__: unknown;
+  /** Response for zone resources */
+  ZoneObjectIdEtagName3More__: unknown;
 }
 export const AccountTagsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AccessApplication_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AccessApplicationObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AccessApplication object { id, etag, name, 2 more }"),
     ),
-    AccessApplicationPolicy_object___id__access_application_id__etag__4_more__:
+    AccessApplicationPolicyObjectIdAccessApplicationIdEtag4More__:
       S.Unknown.pipe(
         T.Body(
           "AccessApplicationPolicy object { id, access_application_id, etag, 4 more }",
         ),
       ),
-    AccessGroup_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AccessGroupObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AccessGroup object { id, etag, name, 2 more }"),
     ),
-    Account_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AccountObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Account object { id, etag, name, 2 more }"),
     ),
-    AIGateway_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AIGatewayObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AIGateway object { id, etag, name, 2 more }"),
     ),
-    AlertingPolicy_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AlertingPolicyObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AlertingPolicy object { id, etag, name, 2 more }"),
     ),
-    AlertingWebhook_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AlertingWebhookObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AlertingWebhook object { id, etag, name, 2 more }"),
     ),
-    APIGatewayOperation_object___id__etag__name__3_more__: S.Unknown.pipe(
+    APIGatewayOperationObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("APIGatewayOperation object { id, etag, name, 3 more }"),
     ),
-    CloudflaredTunnel_object___id__etag__name__2_more__: S.Unknown.pipe(
+    CloudflaredTunnelObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("CloudflaredTunnel object { id, etag, name, 2 more }"),
     ),
-    CustomCertificate_object___id__etag__name__3_more__: S.Unknown.pipe(
+    CustomCertificateObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("CustomCertificate object { id, etag, name, 3 more }"),
     ),
-    CustomHostname_object___id__etag__name__3_more__: S.Unknown.pipe(
+    CustomHostnameObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("CustomHostname object { id, etag, name, 3 more }"),
     ),
-    D1Database_object___id__etag__name__2_more__: S.Unknown.pipe(
+    D1DatabaseObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("D1Database object { id, etag, name, 2 more }"),
     ),
-    DNSRecord_object___id__etag__name__3_more__: S.Unknown.pipe(
+    DNSRecordObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("DNSRecord object { id, etag, name, 3 more }"),
     ),
-    DurableObjectNamespace_object___id__etag__name__2_more__: S.Unknown.pipe(
+    DurableObjectNamespaceObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("DurableObjectNamespace object { id, etag, name, 2 more }"),
     ),
-    GatewayList_object___id__etag__name__2_more__: S.Unknown.pipe(
+    GatewayListObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("GatewayList object { id, etag, name, 2 more }"),
     ),
-    GatewayRule_object___id__etag__name__2_more__: S.Unknown.pipe(
+    GatewayRuleObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("GatewayRule object { id, etag, name, 2 more }"),
     ),
-    Image_object___id__etag__name__2_more__: S.Unknown.pipe(
+    ImageObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Image object { id, etag, name, 2 more }"),
     ),
-    KVNamespace_object___id__etag__name__2_more__: S.Unknown.pipe(
+    KVNamespaceObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("KVNamespace object { id, etag, name, 2 more }"),
     ),
-    ManagedClientCertificate_object___id__etag__name__3_more__: S.Unknown.pipe(
+    ManagedClientCertificateObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("ManagedClientCertificate object { id, etag, name, 3 more }"),
     ),
-    Queue_object___id__etag__name__2_more__: S.Unknown.pipe(
+    QueueObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Queue object { id, etag, name, 2 more }"),
     ),
-    R2Bucket_object___id__etag__name__2_more__: S.Unknown.pipe(
+    R2BucketObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("R2Bucket object { id, etag, name, 2 more }"),
     ),
-    ResourceShare_object___id__etag__name__2_more__: S.Unknown.pipe(
+    ResourceShareObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("ResourceShare object { id, etag, name, 2 more }"),
     ),
-    StreamLiveInput_object___id__etag__name__2_more__: S.Unknown.pipe(
+    StreamLiveInputObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("StreamLiveInput object { id, etag, name, 2 more }"),
     ),
-    StreamVideo_object___id__etag__name__2_more__: S.Unknown.pipe(
+    StreamVideoObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("StreamVideo object { id, etag, name, 2 more }"),
     ),
-    Worker_object___id__etag__name__2_more__: S.Unknown.pipe(
+    WorkerObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Worker object { id, etag, name, 2 more }"),
     ),
-    WorkerVersion_object___id__etag__name__3_more__: S.Unknown.pipe(
+    WorkerVersionObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("WorkerVersion object { id, etag, name, 3 more }"),
     ),
-    Zone_object___id__etag__name__3_more__: S.Unknown.pipe(
+    ZoneObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("Zone object { id, etag, name, 3 more }"),
     ),
   }),
@@ -179,18 +213,20 @@ export const AccountTagsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResponse>;
 
 export interface AccountTagsUpdateRequestBody {
-  ResourceTaggingSetTagsRequestAccountLevelWorkerVersion_object___resource_id__resource_type__worker_id__tags__: unknown;
-  ResourceTaggingSetTagsRequestAccountLevelBase_object___resource_id__resource_type__tags__: unknown;
+  /** Request body schema for deleting tags from account-level resources. */
+  ResourceTaggingSetTagsRequestAccountLevelWorkerVersionObjectResourceIdResourceTypeWorkerIdTags__: unknown;
+  /** Request body schema for deleting tags from account-level resources. */
+  ResourceTaggingSetTagsRequestAccountLevelBaseObjectResourceIdResourceTypeTags__: unknown;
 }
 export const AccountTagsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ResourceTaggingSetTagsRequestAccountLevelWorkerVersion_object___resource_id__resource_type__worker_id__tags__:
+    ResourceTaggingSetTagsRequestAccountLevelWorkerVersionObjectResourceIdResourceTypeWorkerIdTags__:
       S.Unknown.pipe(
         T.Body(
           "ResourceTaggingSetTagsRequestAccountLevelWorkerVersion object { resource_id, resource_type, worker_id, tags }",
         ),
       ),
-    ResourceTaggingSetTagsRequestAccountLevelBase_object___resource_id__resource_type__tags__:
+    ResourceTaggingSetTagsRequestAccountLevelBaseObjectResourceIdResourceTypeTags__:
       S.Unknown.pipe(
         T.Body(
           "ResourceTaggingSetTagsRequestAccountLevelBase object { resource_id, resource_type, tags }",
@@ -202,14 +238,16 @@ export const AccountTagsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateRequestBody>;
 
 export interface AccountTagsUpdateRequest {
-  account_id: string;
-  _If_Match_?: string;
+  /** Identifier. */
+  accountId: string;
+  IfMatch_?: string;
+  /** Request body schema for setting tags on account-level resources. */
   body: AccountTagsUpdateRequestBody;
 }
 export const AccountTagsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    _If_Match_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
+    accountId: S.String.pipe(T.Label("account_id")),
+    IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
     body: AccountTagsUpdateRequestBody,
   }).pipe(
     T.Http({ method: "PUT", uri: "/accounts/{account_id}/tags", code: 200 }),
@@ -220,118 +258,145 @@ export const AccountTagsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AccountTagsUpdateResponse {
-  AccessApplication_object___id__etag__name__2_more__: unknown;
-  AccessApplicationPolicy_object___id__access_application_id__etag__4_more__: unknown;
-  AccessGroup_object___id__etag__name__2_more__: unknown;
-  Account_object___id__etag__name__2_more__: unknown;
-  AIGateway_object___id__etag__name__2_more__: unknown;
-  AlertingPolicy_object___id__etag__name__2_more__: unknown;
-  AlertingWebhook_object___id__etag__name__2_more__: unknown;
-  APIGatewayOperation_object___id__etag__name__3_more__: unknown;
-  CloudflaredTunnel_object___id__etag__name__2_more__: unknown;
-  CustomCertificate_object___id__etag__name__3_more__: unknown;
-  CustomHostname_object___id__etag__name__3_more__: unknown;
-  D1Database_object___id__etag__name__2_more__: unknown;
-  DNSRecord_object___id__etag__name__3_more__: unknown;
-  DurableObjectNamespace_object___id__etag__name__2_more__: unknown;
-  GatewayList_object___id__etag__name__2_more__: unknown;
-  GatewayRule_object___id__etag__name__2_more__: unknown;
-  Image_object___id__etag__name__2_more__: unknown;
-  KVNamespace_object___id__etag__name__2_more__: unknown;
-  ManagedClientCertificate_object___id__etag__name__3_more__: unknown;
-  Queue_object___id__etag__name__2_more__: unknown;
-  R2Bucket_object___id__etag__name__2_more__: unknown;
-  ResourceShare_object___id__etag__name__2_more__: unknown;
-  StreamLiveInput_object___id__etag__name__2_more__: unknown;
-  StreamVideo_object___id__etag__name__2_more__: unknown;
-  Worker_object___id__etag__name__2_more__: unknown;
-  WorkerVersion_object___id__etag__name__3_more__: unknown;
-  Zone_object___id__etag__name__3_more__: unknown;
+  /** Response for access_application resources */
+  AccessApplicationObjectIdEtagName2More__: unknown;
+  /** Response for access_application_policy resources */
+  AccessApplicationPolicyObjectIdAccessApplicationIdEtag4More__: unknown;
+  /** Response for access_group resources */
+  AccessGroupObjectIdEtagName2More__: unknown;
+  /** Response for account resources */
+  AccountObjectIdEtagName2More__: unknown;
+  /** Response for ai_gateway resources */
+  AIGatewayObjectIdEtagName2More__: unknown;
+  /** Response for alerting_policy resources */
+  AlertingPolicyObjectIdEtagName2More__: unknown;
+  /** Response for alerting_webhook resources */
+  AlertingWebhookObjectIdEtagName2More__: unknown;
+  /** Response for api_gateway_operation resources */
+  APIGatewayOperationObjectIdEtagName3More__: unknown;
+  /** Response for cloudflared_tunnel resources */
+  CloudflaredTunnelObjectIdEtagName2More__: unknown;
+  /** Response for custom_certificate resources */
+  CustomCertificateObjectIdEtagName3More__: unknown;
+  /** Response for custom_hostname resources */
+  CustomHostnameObjectIdEtagName3More__: unknown;
+  /** Response for d1_database resources */
+  D1DatabaseObjectIdEtagName2More__: unknown;
+  /** Response for dns_record resources */
+  DNSRecordObjectIdEtagName3More__: unknown;
+  /** Response for durable_object_namespace resources */
+  DurableObjectNamespaceObjectIdEtagName2More__: unknown;
+  /** Response for gateway_list resources */
+  GatewayListObjectIdEtagName2More__: unknown;
+  /** Response for gateway_rule resources */
+  GatewayRuleObjectIdEtagName2More__: unknown;
+  /** Response for image resources */
+  ImageObjectIdEtagName2More__: unknown;
+  /** Response for kv_namespace resources */
+  KVNamespaceObjectIdEtagName2More__: unknown;
+  /** Response for managed_client_certificate resources */
+  ManagedClientCertificateObjectIdEtagName3More__: unknown;
+  /** Response for queue resources */
+  QueueObjectIdEtagName2More__: unknown;
+  /** Response for r2_bucket resources */
+  R2BucketObjectIdEtagName2More__: unknown;
+  /** Response for resource_share resources */
+  ResourceShareObjectIdEtagName2More__: unknown;
+  /** Response for stream_live_input resources */
+  StreamLiveInputObjectIdEtagName2More__: unknown;
+  /** Response for stream_video resources */
+  StreamVideoObjectIdEtagName2More__: unknown;
+  /** Response for worker resources */
+  WorkerObjectIdEtagName2More__: unknown;
+  /** Response for worker_version resources */
+  WorkerVersionObjectIdEtagName3More__: unknown;
+  /** Response for zone resources */
+  ZoneObjectIdEtagName3More__: unknown;
 }
 export const AccountTagsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AccessApplication_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AccessApplicationObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AccessApplication object { id, etag, name, 2 more }"),
     ),
-    AccessApplicationPolicy_object___id__access_application_id__etag__4_more__:
+    AccessApplicationPolicyObjectIdAccessApplicationIdEtag4More__:
       S.Unknown.pipe(
         T.Body(
           "AccessApplicationPolicy object { id, access_application_id, etag, 4 more }",
         ),
       ),
-    AccessGroup_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AccessGroupObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AccessGroup object { id, etag, name, 2 more }"),
     ),
-    Account_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AccountObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Account object { id, etag, name, 2 more }"),
     ),
-    AIGateway_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AIGatewayObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AIGateway object { id, etag, name, 2 more }"),
     ),
-    AlertingPolicy_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AlertingPolicyObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AlertingPolicy object { id, etag, name, 2 more }"),
     ),
-    AlertingWebhook_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AlertingWebhookObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AlertingWebhook object { id, etag, name, 2 more }"),
     ),
-    APIGatewayOperation_object___id__etag__name__3_more__: S.Unknown.pipe(
+    APIGatewayOperationObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("APIGatewayOperation object { id, etag, name, 3 more }"),
     ),
-    CloudflaredTunnel_object___id__etag__name__2_more__: S.Unknown.pipe(
+    CloudflaredTunnelObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("CloudflaredTunnel object { id, etag, name, 2 more }"),
     ),
-    CustomCertificate_object___id__etag__name__3_more__: S.Unknown.pipe(
+    CustomCertificateObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("CustomCertificate object { id, etag, name, 3 more }"),
     ),
-    CustomHostname_object___id__etag__name__3_more__: S.Unknown.pipe(
+    CustomHostnameObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("CustomHostname object { id, etag, name, 3 more }"),
     ),
-    D1Database_object___id__etag__name__2_more__: S.Unknown.pipe(
+    D1DatabaseObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("D1Database object { id, etag, name, 2 more }"),
     ),
-    DNSRecord_object___id__etag__name__3_more__: S.Unknown.pipe(
+    DNSRecordObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("DNSRecord object { id, etag, name, 3 more }"),
     ),
-    DurableObjectNamespace_object___id__etag__name__2_more__: S.Unknown.pipe(
+    DurableObjectNamespaceObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("DurableObjectNamespace object { id, etag, name, 2 more }"),
     ),
-    GatewayList_object___id__etag__name__2_more__: S.Unknown.pipe(
+    GatewayListObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("GatewayList object { id, etag, name, 2 more }"),
     ),
-    GatewayRule_object___id__etag__name__2_more__: S.Unknown.pipe(
+    GatewayRuleObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("GatewayRule object { id, etag, name, 2 more }"),
     ),
-    Image_object___id__etag__name__2_more__: S.Unknown.pipe(
+    ImageObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Image object { id, etag, name, 2 more }"),
     ),
-    KVNamespace_object___id__etag__name__2_more__: S.Unknown.pipe(
+    KVNamespaceObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("KVNamespace object { id, etag, name, 2 more }"),
     ),
-    ManagedClientCertificate_object___id__etag__name__3_more__: S.Unknown.pipe(
+    ManagedClientCertificateObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("ManagedClientCertificate object { id, etag, name, 3 more }"),
     ),
-    Queue_object___id__etag__name__2_more__: S.Unknown.pipe(
+    QueueObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Queue object { id, etag, name, 2 more }"),
     ),
-    R2Bucket_object___id__etag__name__2_more__: S.Unknown.pipe(
+    R2BucketObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("R2Bucket object { id, etag, name, 2 more }"),
     ),
-    ResourceShare_object___id__etag__name__2_more__: S.Unknown.pipe(
+    ResourceShareObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("ResourceShare object { id, etag, name, 2 more }"),
     ),
-    StreamLiveInput_object___id__etag__name__2_more__: S.Unknown.pipe(
+    StreamLiveInputObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("StreamLiveInput object { id, etag, name, 2 more }"),
     ),
-    StreamVideo_object___id__etag__name__2_more__: S.Unknown.pipe(
+    StreamVideoObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("StreamVideo object { id, etag, name, 2 more }"),
     ),
-    Worker_object___id__etag__name__2_more__: S.Unknown.pipe(
+    WorkerObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Worker object { id, etag, name, 2 more }"),
     ),
-    WorkerVersion_object___id__etag__name__3_more__: S.Unknown.pipe(
+    WorkerVersionObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("WorkerVersion object { id, etag, name, 3 more }"),
     ),
-    Zone_object___id__etag__name__3_more__: S.Unknown.pipe(
+    ZoneObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("Zone object { id, etag, name, 3 more }"),
     ),
   }),
@@ -340,12 +405,14 @@ export const AccountTagsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResponse>;
 
 export interface KeysListRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Cursor for pagination. */
   cursor?: string;
 }
 export const KeysListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -364,6 +431,7 @@ export const KeysListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<KeysListResultList>;
 
 export interface KeysListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: KeysListResultList;
 }
 export const KeysListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -392,14 +460,18 @@ export const ListRequestTypeList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListRequestTypeList>;
 
 export interface ListRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Cursor for pagination. */
   cursor?: string;
+  /** Filter resources by tag criteria. This parameter can be repeated multiple times, with AND logic between parameters. */
   tag?: ListRequestTagList;
+  /** Filter by resource type. Can be repeated to filter by multiple types (OR logic). Example: ?type=zone&type=worker */
   type?: ListRequestTypeList;
 }
 export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
     tag: S.optional(ListRequestTagList.pipe(T.Query())),
     type: S.optional(ListRequestTypeList.pipe(T.Query())),
@@ -413,118 +485,145 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
 
 export interface ListResultItem {
-  AccessApplication_object___id__etag__name__2_more__: unknown;
-  AccessApplicationPolicy_object___id__access_application_id__etag__4_more__: unknown;
-  AccessGroup_object___id__etag__name__2_more__: unknown;
-  Account_object___id__etag__name__2_more__: unknown;
-  AIGateway_object___id__etag__name__2_more__: unknown;
-  AlertingPolicy_object___id__etag__name__2_more__: unknown;
-  AlertingWebhook_object___id__etag__name__2_more__: unknown;
-  APIGatewayOperation_object___id__etag__name__3_more__: unknown;
-  CloudflaredTunnel_object___id__etag__name__2_more__: unknown;
-  CustomCertificate_object___id__etag__name__3_more__: unknown;
-  CustomHostname_object___id__etag__name__3_more__: unknown;
-  D1Database_object___id__etag__name__2_more__: unknown;
-  DNSRecord_object___id__etag__name__3_more__: unknown;
-  DurableObjectNamespace_object___id__etag__name__2_more__: unknown;
-  GatewayList_object___id__etag__name__2_more__: unknown;
-  GatewayRule_object___id__etag__name__2_more__: unknown;
-  Image_object___id__etag__name__2_more__: unknown;
-  KVNamespace_object___id__etag__name__2_more__: unknown;
-  ManagedClientCertificate_object___id__etag__name__3_more__: unknown;
-  Queue_object___id__etag__name__2_more__: unknown;
-  R2Bucket_object___id__etag__name__2_more__: unknown;
-  ResourceShare_object___id__etag__name__2_more__: unknown;
-  StreamLiveInput_object___id__etag__name__2_more__: unknown;
-  StreamVideo_object___id__etag__name__2_more__: unknown;
-  Worker_object___id__etag__name__2_more__: unknown;
-  WorkerVersion_object___id__etag__name__3_more__: unknown;
-  Zone_object___id__etag__name__3_more__: unknown;
+  /** Response for access_application resources */
+  AccessApplicationObjectIdEtagName2More__: unknown;
+  /** Response for access_application_policy resources */
+  AccessApplicationPolicyObjectIdAccessApplicationIdEtag4More__: unknown;
+  /** Response for access_group resources */
+  AccessGroupObjectIdEtagName2More__: unknown;
+  /** Response for account resources */
+  AccountObjectIdEtagName2More__: unknown;
+  /** Response for ai_gateway resources */
+  AIGatewayObjectIdEtagName2More__: unknown;
+  /** Response for alerting_policy resources */
+  AlertingPolicyObjectIdEtagName2More__: unknown;
+  /** Response for alerting_webhook resources */
+  AlertingWebhookObjectIdEtagName2More__: unknown;
+  /** Response for api_gateway_operation resources */
+  APIGatewayOperationObjectIdEtagName3More__: unknown;
+  /** Response for cloudflared_tunnel resources */
+  CloudflaredTunnelObjectIdEtagName2More__: unknown;
+  /** Response for custom_certificate resources */
+  CustomCertificateObjectIdEtagName3More__: unknown;
+  /** Response for custom_hostname resources */
+  CustomHostnameObjectIdEtagName3More__: unknown;
+  /** Response for d1_database resources */
+  D1DatabaseObjectIdEtagName2More__: unknown;
+  /** Response for dns_record resources */
+  DNSRecordObjectIdEtagName3More__: unknown;
+  /** Response for durable_object_namespace resources */
+  DurableObjectNamespaceObjectIdEtagName2More__: unknown;
+  /** Response for gateway_list resources */
+  GatewayListObjectIdEtagName2More__: unknown;
+  /** Response for gateway_rule resources */
+  GatewayRuleObjectIdEtagName2More__: unknown;
+  /** Response for image resources */
+  ImageObjectIdEtagName2More__: unknown;
+  /** Response for kv_namespace resources */
+  KVNamespaceObjectIdEtagName2More__: unknown;
+  /** Response for managed_client_certificate resources */
+  ManagedClientCertificateObjectIdEtagName3More__: unknown;
+  /** Response for queue resources */
+  QueueObjectIdEtagName2More__: unknown;
+  /** Response for r2_bucket resources */
+  R2BucketObjectIdEtagName2More__: unknown;
+  /** Response for resource_share resources */
+  ResourceShareObjectIdEtagName2More__: unknown;
+  /** Response for stream_live_input resources */
+  StreamLiveInputObjectIdEtagName2More__: unknown;
+  /** Response for stream_video resources */
+  StreamVideoObjectIdEtagName2More__: unknown;
+  /** Response for worker resources */
+  WorkerObjectIdEtagName2More__: unknown;
+  /** Response for worker_version resources */
+  WorkerVersionObjectIdEtagName3More__: unknown;
+  /** Response for zone resources */
+  ZoneObjectIdEtagName3More__: unknown;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AccessApplication_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AccessApplicationObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AccessApplication object { id, etag, name, 2 more }"),
     ),
-    AccessApplicationPolicy_object___id__access_application_id__etag__4_more__:
+    AccessApplicationPolicyObjectIdAccessApplicationIdEtag4More__:
       S.Unknown.pipe(
         T.Body(
           "AccessApplicationPolicy object { id, access_application_id, etag, 4 more }",
         ),
       ),
-    AccessGroup_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AccessGroupObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AccessGroup object { id, etag, name, 2 more }"),
     ),
-    Account_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AccountObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Account object { id, etag, name, 2 more }"),
     ),
-    AIGateway_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AIGatewayObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AIGateway object { id, etag, name, 2 more }"),
     ),
-    AlertingPolicy_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AlertingPolicyObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AlertingPolicy object { id, etag, name, 2 more }"),
     ),
-    AlertingWebhook_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AlertingWebhookObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AlertingWebhook object { id, etag, name, 2 more }"),
     ),
-    APIGatewayOperation_object___id__etag__name__3_more__: S.Unknown.pipe(
+    APIGatewayOperationObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("APIGatewayOperation object { id, etag, name, 3 more }"),
     ),
-    CloudflaredTunnel_object___id__etag__name__2_more__: S.Unknown.pipe(
+    CloudflaredTunnelObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("CloudflaredTunnel object { id, etag, name, 2 more }"),
     ),
-    CustomCertificate_object___id__etag__name__3_more__: S.Unknown.pipe(
+    CustomCertificateObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("CustomCertificate object { id, etag, name, 3 more }"),
     ),
-    CustomHostname_object___id__etag__name__3_more__: S.Unknown.pipe(
+    CustomHostnameObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("CustomHostname object { id, etag, name, 3 more }"),
     ),
-    D1Database_object___id__etag__name__2_more__: S.Unknown.pipe(
+    D1DatabaseObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("D1Database object { id, etag, name, 2 more }"),
     ),
-    DNSRecord_object___id__etag__name__3_more__: S.Unknown.pipe(
+    DNSRecordObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("DNSRecord object { id, etag, name, 3 more }"),
     ),
-    DurableObjectNamespace_object___id__etag__name__2_more__: S.Unknown.pipe(
+    DurableObjectNamespaceObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("DurableObjectNamespace object { id, etag, name, 2 more }"),
     ),
-    GatewayList_object___id__etag__name__2_more__: S.Unknown.pipe(
+    GatewayListObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("GatewayList object { id, etag, name, 2 more }"),
     ),
-    GatewayRule_object___id__etag__name__2_more__: S.Unknown.pipe(
+    GatewayRuleObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("GatewayRule object { id, etag, name, 2 more }"),
     ),
-    Image_object___id__etag__name__2_more__: S.Unknown.pipe(
+    ImageObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Image object { id, etag, name, 2 more }"),
     ),
-    KVNamespace_object___id__etag__name__2_more__: S.Unknown.pipe(
+    KVNamespaceObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("KVNamespace object { id, etag, name, 2 more }"),
     ),
-    ManagedClientCertificate_object___id__etag__name__3_more__: S.Unknown.pipe(
+    ManagedClientCertificateObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("ManagedClientCertificate object { id, etag, name, 3 more }"),
     ),
-    Queue_object___id__etag__name__2_more__: S.Unknown.pipe(
+    QueueObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Queue object { id, etag, name, 2 more }"),
     ),
-    R2Bucket_object___id__etag__name__2_more__: S.Unknown.pipe(
+    R2BucketObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("R2Bucket object { id, etag, name, 2 more }"),
     ),
-    ResourceShare_object___id__etag__name__2_more__: S.Unknown.pipe(
+    ResourceShareObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("ResourceShare object { id, etag, name, 2 more }"),
     ),
-    StreamLiveInput_object___id__etag__name__2_more__: S.Unknown.pipe(
+    StreamLiveInputObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("StreamLiveInput object { id, etag, name, 2 more }"),
     ),
-    StreamVideo_object___id__etag__name__2_more__: S.Unknown.pipe(
+    StreamVideoObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("StreamVideo object { id, etag, name, 2 more }"),
     ),
-    Worker_object___id__etag__name__2_more__: S.Unknown.pipe(
+    WorkerObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Worker object { id, etag, name, 2 more }"),
     ),
-    WorkerVersion_object___id__etag__name__3_more__: S.Unknown.pipe(
+    WorkerVersionObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("WorkerVersion object { id, etag, name, 3 more }"),
     ),
-    Zone_object___id__etag__name__3_more__: S.Unknown.pipe(
+    ZoneObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("Zone object { id, etag, name, 3 more }"),
     ),
   }),
@@ -536,6 +635,7 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResultList>;
 
 export interface ListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
 export const ListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -552,15 +652,18 @@ export type ValuesListRequestType =
 export const ValuesListRequestType = /*@__PURE__*/ S.String;
 
 export interface ValuesListRequest {
-  account_id: string;
-  tag_key: string;
+  /** Identifier. */
+  accountId: string;
+  tagKey: string;
+  /** Cursor for pagination. */
   cursor?: string;
+  /** Filter by resource type. */
   type?: ValuesListRequestType;
 }
 export const ValuesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    tag_key: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    tagKey: S.String.pipe(T.Label("tag_key")),
     cursor: S.optional(S.String.pipe(T.Query())),
     type: S.optional(ValuesListRequestType.pipe(T.Query())),
   }).pipe(
@@ -580,6 +683,7 @@ export const ValuesListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ValuesListResultList>;
 
 export interface ValuesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ValuesListResultList;
 }
 export const ValuesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -591,13 +695,14 @@ export const ValuesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ValuesListResponse>;
 
 export interface ZoneTagsDeleteRequest {
-  zone_id: string;
-  _If_Match_?: string;
+  /** Zone ID is required only for zone-level resources */
+  zoneId: string;
+  IfMatch_?: string;
 }
 export const ZoneTagsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    _If_Match_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
   }).pipe(
     T.Http({ method: "DELETE", uri: "/zones/{zone_id}/tags", code: 200 }),
   ),
@@ -620,17 +725,23 @@ export type ZoneTagsGetRequestResourceType =
 export const ZoneTagsGetRequestResourceType = /*@__PURE__*/ S.String;
 
 export interface ZoneTagsGetRequest {
-  zone_id: string;
-  resource_id: string;
-  resource_type: ZoneTagsGetRequestResourceType;
-  access_application_id?: string;
+  /** Zone ID is required only for zone-level resources */
+  zoneId: string;
+  /** The ID of the resource to retrieve tags for. */
+  resourceId: string;
+  /** The type of the resource. */
+  resourceType: ZoneTagsGetRequestResourceType;
+  /** Access application ID identifier. Required for access_application_policy resources. */
+  accessApplicationId?: string;
 }
 export const ZoneTagsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    resource_id: S.String.pipe(T.Query()),
-    resource_type: ZoneTagsGetRequestResourceType.pipe(T.Query()),
-    access_application_id: S.optional(S.String.pipe(T.Query())),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    resourceId: S.String.pipe(T.Query("resource_id")),
+    resourceType: ZoneTagsGetRequestResourceType.pipe(T.Query("resource_type")),
+    accessApplicationId: S.optional(
+      S.String.pipe(T.Query("access_application_id")),
+    ),
   }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/tags", code: 200 })),
 ).annotate({
   identifier: "ZoneTagsGetRequest",
@@ -638,118 +749,145 @@ export const ZoneTagsGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneTagsGetResponse {
-  AccessApplication_object___id__etag__name__2_more__: unknown;
-  AccessApplicationPolicy_object___id__access_application_id__etag__4_more__: unknown;
-  AccessGroup_object___id__etag__name__2_more__: unknown;
-  Account_object___id__etag__name__2_more__: unknown;
-  AIGateway_object___id__etag__name__2_more__: unknown;
-  AlertingPolicy_object___id__etag__name__2_more__: unknown;
-  AlertingWebhook_object___id__etag__name__2_more__: unknown;
-  APIGatewayOperation_object___id__etag__name__3_more__: unknown;
-  CloudflaredTunnel_object___id__etag__name__2_more__: unknown;
-  CustomCertificate_object___id__etag__name__3_more__: unknown;
-  CustomHostname_object___id__etag__name__3_more__: unknown;
-  D1Database_object___id__etag__name__2_more__: unknown;
-  DNSRecord_object___id__etag__name__3_more__: unknown;
-  DurableObjectNamespace_object___id__etag__name__2_more__: unknown;
-  GatewayList_object___id__etag__name__2_more__: unknown;
-  GatewayRule_object___id__etag__name__2_more__: unknown;
-  Image_object___id__etag__name__2_more__: unknown;
-  KVNamespace_object___id__etag__name__2_more__: unknown;
-  ManagedClientCertificate_object___id__etag__name__3_more__: unknown;
-  Queue_object___id__etag__name__2_more__: unknown;
-  R2Bucket_object___id__etag__name__2_more__: unknown;
-  ResourceShare_object___id__etag__name__2_more__: unknown;
-  StreamLiveInput_object___id__etag__name__2_more__: unknown;
-  StreamVideo_object___id__etag__name__2_more__: unknown;
-  Worker_object___id__etag__name__2_more__: unknown;
-  WorkerVersion_object___id__etag__name__3_more__: unknown;
-  Zone_object___id__etag__name__3_more__: unknown;
+  /** Response for access_application resources */
+  AccessApplicationObjectIdEtagName2More__: unknown;
+  /** Response for access_application_policy resources */
+  AccessApplicationPolicyObjectIdAccessApplicationIdEtag4More__: unknown;
+  /** Response for access_group resources */
+  AccessGroupObjectIdEtagName2More__: unknown;
+  /** Response for account resources */
+  AccountObjectIdEtagName2More__: unknown;
+  /** Response for ai_gateway resources */
+  AIGatewayObjectIdEtagName2More__: unknown;
+  /** Response for alerting_policy resources */
+  AlertingPolicyObjectIdEtagName2More__: unknown;
+  /** Response for alerting_webhook resources */
+  AlertingWebhookObjectIdEtagName2More__: unknown;
+  /** Response for api_gateway_operation resources */
+  APIGatewayOperationObjectIdEtagName3More__: unknown;
+  /** Response for cloudflared_tunnel resources */
+  CloudflaredTunnelObjectIdEtagName2More__: unknown;
+  /** Response for custom_certificate resources */
+  CustomCertificateObjectIdEtagName3More__: unknown;
+  /** Response for custom_hostname resources */
+  CustomHostnameObjectIdEtagName3More__: unknown;
+  /** Response for d1_database resources */
+  D1DatabaseObjectIdEtagName2More__: unknown;
+  /** Response for dns_record resources */
+  DNSRecordObjectIdEtagName3More__: unknown;
+  /** Response for durable_object_namespace resources */
+  DurableObjectNamespaceObjectIdEtagName2More__: unknown;
+  /** Response for gateway_list resources */
+  GatewayListObjectIdEtagName2More__: unknown;
+  /** Response for gateway_rule resources */
+  GatewayRuleObjectIdEtagName2More__: unknown;
+  /** Response for image resources */
+  ImageObjectIdEtagName2More__: unknown;
+  /** Response for kv_namespace resources */
+  KVNamespaceObjectIdEtagName2More__: unknown;
+  /** Response for managed_client_certificate resources */
+  ManagedClientCertificateObjectIdEtagName3More__: unknown;
+  /** Response for queue resources */
+  QueueObjectIdEtagName2More__: unknown;
+  /** Response for r2_bucket resources */
+  R2BucketObjectIdEtagName2More__: unknown;
+  /** Response for resource_share resources */
+  ResourceShareObjectIdEtagName2More__: unknown;
+  /** Response for stream_live_input resources */
+  StreamLiveInputObjectIdEtagName2More__: unknown;
+  /** Response for stream_video resources */
+  StreamVideoObjectIdEtagName2More__: unknown;
+  /** Response for worker resources */
+  WorkerObjectIdEtagName2More__: unknown;
+  /** Response for worker_version resources */
+  WorkerVersionObjectIdEtagName3More__: unknown;
+  /** Response for zone resources */
+  ZoneObjectIdEtagName3More__: unknown;
 }
 export const ZoneTagsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AccessApplication_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AccessApplicationObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AccessApplication object { id, etag, name, 2 more }"),
     ),
-    AccessApplicationPolicy_object___id__access_application_id__etag__4_more__:
+    AccessApplicationPolicyObjectIdAccessApplicationIdEtag4More__:
       S.Unknown.pipe(
         T.Body(
           "AccessApplicationPolicy object { id, access_application_id, etag, 4 more }",
         ),
       ),
-    AccessGroup_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AccessGroupObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AccessGroup object { id, etag, name, 2 more }"),
     ),
-    Account_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AccountObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Account object { id, etag, name, 2 more }"),
     ),
-    AIGateway_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AIGatewayObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AIGateway object { id, etag, name, 2 more }"),
     ),
-    AlertingPolicy_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AlertingPolicyObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AlertingPolicy object { id, etag, name, 2 more }"),
     ),
-    AlertingWebhook_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AlertingWebhookObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AlertingWebhook object { id, etag, name, 2 more }"),
     ),
-    APIGatewayOperation_object___id__etag__name__3_more__: S.Unknown.pipe(
+    APIGatewayOperationObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("APIGatewayOperation object { id, etag, name, 3 more }"),
     ),
-    CloudflaredTunnel_object___id__etag__name__2_more__: S.Unknown.pipe(
+    CloudflaredTunnelObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("CloudflaredTunnel object { id, etag, name, 2 more }"),
     ),
-    CustomCertificate_object___id__etag__name__3_more__: S.Unknown.pipe(
+    CustomCertificateObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("CustomCertificate object { id, etag, name, 3 more }"),
     ),
-    CustomHostname_object___id__etag__name__3_more__: S.Unknown.pipe(
+    CustomHostnameObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("CustomHostname object { id, etag, name, 3 more }"),
     ),
-    D1Database_object___id__etag__name__2_more__: S.Unknown.pipe(
+    D1DatabaseObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("D1Database object { id, etag, name, 2 more }"),
     ),
-    DNSRecord_object___id__etag__name__3_more__: S.Unknown.pipe(
+    DNSRecordObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("DNSRecord object { id, etag, name, 3 more }"),
     ),
-    DurableObjectNamespace_object___id__etag__name__2_more__: S.Unknown.pipe(
+    DurableObjectNamespaceObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("DurableObjectNamespace object { id, etag, name, 2 more }"),
     ),
-    GatewayList_object___id__etag__name__2_more__: S.Unknown.pipe(
+    GatewayListObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("GatewayList object { id, etag, name, 2 more }"),
     ),
-    GatewayRule_object___id__etag__name__2_more__: S.Unknown.pipe(
+    GatewayRuleObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("GatewayRule object { id, etag, name, 2 more }"),
     ),
-    Image_object___id__etag__name__2_more__: S.Unknown.pipe(
+    ImageObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Image object { id, etag, name, 2 more }"),
     ),
-    KVNamespace_object___id__etag__name__2_more__: S.Unknown.pipe(
+    KVNamespaceObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("KVNamespace object { id, etag, name, 2 more }"),
     ),
-    ManagedClientCertificate_object___id__etag__name__3_more__: S.Unknown.pipe(
+    ManagedClientCertificateObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("ManagedClientCertificate object { id, etag, name, 3 more }"),
     ),
-    Queue_object___id__etag__name__2_more__: S.Unknown.pipe(
+    QueueObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Queue object { id, etag, name, 2 more }"),
     ),
-    R2Bucket_object___id__etag__name__2_more__: S.Unknown.pipe(
+    R2BucketObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("R2Bucket object { id, etag, name, 2 more }"),
     ),
-    ResourceShare_object___id__etag__name__2_more__: S.Unknown.pipe(
+    ResourceShareObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("ResourceShare object { id, etag, name, 2 more }"),
     ),
-    StreamLiveInput_object___id__etag__name__2_more__: S.Unknown.pipe(
+    StreamLiveInputObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("StreamLiveInput object { id, etag, name, 2 more }"),
     ),
-    StreamVideo_object___id__etag__name__2_more__: S.Unknown.pipe(
+    StreamVideoObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("StreamVideo object { id, etag, name, 2 more }"),
     ),
-    Worker_object___id__etag__name__2_more__: S.Unknown.pipe(
+    WorkerObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Worker object { id, etag, name, 2 more }"),
     ),
-    WorkerVersion_object___id__etag__name__3_more__: S.Unknown.pipe(
+    WorkerVersionObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("WorkerVersion object { id, etag, name, 3 more }"),
     ),
-    Zone_object___id__etag__name__3_more__: S.Unknown.pipe(
+    ZoneObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("Zone object { id, etag, name, 3 more }"),
     ),
   }),
@@ -758,18 +896,20 @@ export const ZoneTagsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResponse>;
 
 export interface ZoneTagsUpdateRequestBody {
-  ResourceTaggingSetTagsRequestZoneLevelBase_object___resource_id__resource_type__tags__: unknown;
-  ResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicy_object___access_application_id__resource_id__resource_type__tags__: unknown;
+  /** Request body schema for deleting tags from zone-level resources. Zone ID comes from URL path. */
+  ResourceTaggingSetTagsRequestZoneLevelBaseObjectResourceIdResourceTypeTags__: unknown;
+  /** Request body schema for deleting tags from zone-level resources. Zone ID comes from URL path. */
+  ResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicyObjectAccessApplicationIdResourceIdResourceTypeTags__: unknown;
 }
 export const ZoneTagsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ResourceTaggingSetTagsRequestZoneLevelBase_object___resource_id__resource_type__tags__:
+    ResourceTaggingSetTagsRequestZoneLevelBaseObjectResourceIdResourceTypeTags__:
       S.Unknown.pipe(
         T.Body(
           "ResourceTaggingSetTagsRequestZoneLevelBase object { resource_id, resource_type, tags }",
         ),
       ),
-    ResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicy_object___access_application_id__resource_id__resource_type__tags__:
+    ResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicyObjectAccessApplicationIdResourceIdResourceTypeTags__:
       S.Unknown.pipe(
         T.Body(
           "ResourceTaggingSetTagsRequestZoneLevelAccessApplicationPolicy object { access_application_id, resource_id, resource_type, tags }",
@@ -781,14 +921,16 @@ export const ZoneTagsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateRequestBody>;
 
 export interface ZoneTagsUpdateRequest {
-  zone_id: string;
-  _If_Match_?: string;
+  /** Zone ID is required only for zone-level resources */
+  zoneId: string;
+  IfMatch_?: string;
+  /** Request body schema for setting tags on zone-level resources. */
   body: ZoneTagsUpdateRequestBody;
 }
 export const ZoneTagsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    _If_Match_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
     body: ZoneTagsUpdateRequestBody,
   }).pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/tags", code: 200 })),
 ).annotate({
@@ -797,118 +939,145 @@ export const ZoneTagsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneTagsUpdateResponse {
-  AccessApplication_object___id__etag__name__2_more__: unknown;
-  AccessApplicationPolicy_object___id__access_application_id__etag__4_more__: unknown;
-  AccessGroup_object___id__etag__name__2_more__: unknown;
-  Account_object___id__etag__name__2_more__: unknown;
-  AIGateway_object___id__etag__name__2_more__: unknown;
-  AlertingPolicy_object___id__etag__name__2_more__: unknown;
-  AlertingWebhook_object___id__etag__name__2_more__: unknown;
-  APIGatewayOperation_object___id__etag__name__3_more__: unknown;
-  CloudflaredTunnel_object___id__etag__name__2_more__: unknown;
-  CustomCertificate_object___id__etag__name__3_more__: unknown;
-  CustomHostname_object___id__etag__name__3_more__: unknown;
-  D1Database_object___id__etag__name__2_more__: unknown;
-  DNSRecord_object___id__etag__name__3_more__: unknown;
-  DurableObjectNamespace_object___id__etag__name__2_more__: unknown;
-  GatewayList_object___id__etag__name__2_more__: unknown;
-  GatewayRule_object___id__etag__name__2_more__: unknown;
-  Image_object___id__etag__name__2_more__: unknown;
-  KVNamespace_object___id__etag__name__2_more__: unknown;
-  ManagedClientCertificate_object___id__etag__name__3_more__: unknown;
-  Queue_object___id__etag__name__2_more__: unknown;
-  R2Bucket_object___id__etag__name__2_more__: unknown;
-  ResourceShare_object___id__etag__name__2_more__: unknown;
-  StreamLiveInput_object___id__etag__name__2_more__: unknown;
-  StreamVideo_object___id__etag__name__2_more__: unknown;
-  Worker_object___id__etag__name__2_more__: unknown;
-  WorkerVersion_object___id__etag__name__3_more__: unknown;
-  Zone_object___id__etag__name__3_more__: unknown;
+  /** Response for access_application resources */
+  AccessApplicationObjectIdEtagName2More__: unknown;
+  /** Response for access_application_policy resources */
+  AccessApplicationPolicyObjectIdAccessApplicationIdEtag4More__: unknown;
+  /** Response for access_group resources */
+  AccessGroupObjectIdEtagName2More__: unknown;
+  /** Response for account resources */
+  AccountObjectIdEtagName2More__: unknown;
+  /** Response for ai_gateway resources */
+  AIGatewayObjectIdEtagName2More__: unknown;
+  /** Response for alerting_policy resources */
+  AlertingPolicyObjectIdEtagName2More__: unknown;
+  /** Response for alerting_webhook resources */
+  AlertingWebhookObjectIdEtagName2More__: unknown;
+  /** Response for api_gateway_operation resources */
+  APIGatewayOperationObjectIdEtagName3More__: unknown;
+  /** Response for cloudflared_tunnel resources */
+  CloudflaredTunnelObjectIdEtagName2More__: unknown;
+  /** Response for custom_certificate resources */
+  CustomCertificateObjectIdEtagName3More__: unknown;
+  /** Response for custom_hostname resources */
+  CustomHostnameObjectIdEtagName3More__: unknown;
+  /** Response for d1_database resources */
+  D1DatabaseObjectIdEtagName2More__: unknown;
+  /** Response for dns_record resources */
+  DNSRecordObjectIdEtagName3More__: unknown;
+  /** Response for durable_object_namespace resources */
+  DurableObjectNamespaceObjectIdEtagName2More__: unknown;
+  /** Response for gateway_list resources */
+  GatewayListObjectIdEtagName2More__: unknown;
+  /** Response for gateway_rule resources */
+  GatewayRuleObjectIdEtagName2More__: unknown;
+  /** Response for image resources */
+  ImageObjectIdEtagName2More__: unknown;
+  /** Response for kv_namespace resources */
+  KVNamespaceObjectIdEtagName2More__: unknown;
+  /** Response for managed_client_certificate resources */
+  ManagedClientCertificateObjectIdEtagName3More__: unknown;
+  /** Response for queue resources */
+  QueueObjectIdEtagName2More__: unknown;
+  /** Response for r2_bucket resources */
+  R2BucketObjectIdEtagName2More__: unknown;
+  /** Response for resource_share resources */
+  ResourceShareObjectIdEtagName2More__: unknown;
+  /** Response for stream_live_input resources */
+  StreamLiveInputObjectIdEtagName2More__: unknown;
+  /** Response for stream_video resources */
+  StreamVideoObjectIdEtagName2More__: unknown;
+  /** Response for worker resources */
+  WorkerObjectIdEtagName2More__: unknown;
+  /** Response for worker_version resources */
+  WorkerVersionObjectIdEtagName3More__: unknown;
+  /** Response for zone resources */
+  ZoneObjectIdEtagName3More__: unknown;
 }
 export const ZoneTagsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    AccessApplication_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AccessApplicationObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AccessApplication object { id, etag, name, 2 more }"),
     ),
-    AccessApplicationPolicy_object___id__access_application_id__etag__4_more__:
+    AccessApplicationPolicyObjectIdAccessApplicationIdEtag4More__:
       S.Unknown.pipe(
         T.Body(
           "AccessApplicationPolicy object { id, access_application_id, etag, 4 more }",
         ),
       ),
-    AccessGroup_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AccessGroupObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AccessGroup object { id, etag, name, 2 more }"),
     ),
-    Account_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AccountObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Account object { id, etag, name, 2 more }"),
     ),
-    AIGateway_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AIGatewayObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AIGateway object { id, etag, name, 2 more }"),
     ),
-    AlertingPolicy_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AlertingPolicyObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AlertingPolicy object { id, etag, name, 2 more }"),
     ),
-    AlertingWebhook_object___id__etag__name__2_more__: S.Unknown.pipe(
+    AlertingWebhookObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AlertingWebhook object { id, etag, name, 2 more }"),
     ),
-    APIGatewayOperation_object___id__etag__name__3_more__: S.Unknown.pipe(
+    APIGatewayOperationObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("APIGatewayOperation object { id, etag, name, 3 more }"),
     ),
-    CloudflaredTunnel_object___id__etag__name__2_more__: S.Unknown.pipe(
+    CloudflaredTunnelObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("CloudflaredTunnel object { id, etag, name, 2 more }"),
     ),
-    CustomCertificate_object___id__etag__name__3_more__: S.Unknown.pipe(
+    CustomCertificateObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("CustomCertificate object { id, etag, name, 3 more }"),
     ),
-    CustomHostname_object___id__etag__name__3_more__: S.Unknown.pipe(
+    CustomHostnameObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("CustomHostname object { id, etag, name, 3 more }"),
     ),
-    D1Database_object___id__etag__name__2_more__: S.Unknown.pipe(
+    D1DatabaseObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("D1Database object { id, etag, name, 2 more }"),
     ),
-    DNSRecord_object___id__etag__name__3_more__: S.Unknown.pipe(
+    DNSRecordObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("DNSRecord object { id, etag, name, 3 more }"),
     ),
-    DurableObjectNamespace_object___id__etag__name__2_more__: S.Unknown.pipe(
+    DurableObjectNamespaceObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("DurableObjectNamespace object { id, etag, name, 2 more }"),
     ),
-    GatewayList_object___id__etag__name__2_more__: S.Unknown.pipe(
+    GatewayListObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("GatewayList object { id, etag, name, 2 more }"),
     ),
-    GatewayRule_object___id__etag__name__2_more__: S.Unknown.pipe(
+    GatewayRuleObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("GatewayRule object { id, etag, name, 2 more }"),
     ),
-    Image_object___id__etag__name__2_more__: S.Unknown.pipe(
+    ImageObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Image object { id, etag, name, 2 more }"),
     ),
-    KVNamespace_object___id__etag__name__2_more__: S.Unknown.pipe(
+    KVNamespaceObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("KVNamespace object { id, etag, name, 2 more }"),
     ),
-    ManagedClientCertificate_object___id__etag__name__3_more__: S.Unknown.pipe(
+    ManagedClientCertificateObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("ManagedClientCertificate object { id, etag, name, 3 more }"),
     ),
-    Queue_object___id__etag__name__2_more__: S.Unknown.pipe(
+    QueueObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Queue object { id, etag, name, 2 more }"),
     ),
-    R2Bucket_object___id__etag__name__2_more__: S.Unknown.pipe(
+    R2BucketObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("R2Bucket object { id, etag, name, 2 more }"),
     ),
-    ResourceShare_object___id__etag__name__2_more__: S.Unknown.pipe(
+    ResourceShareObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("ResourceShare object { id, etag, name, 2 more }"),
     ),
-    StreamLiveInput_object___id__etag__name__2_more__: S.Unknown.pipe(
+    StreamLiveInputObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("StreamLiveInput object { id, etag, name, 2 more }"),
     ),
-    StreamVideo_object___id__etag__name__2_more__: S.Unknown.pipe(
+    StreamVideoObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("StreamVideo object { id, etag, name, 2 more }"),
     ),
-    Worker_object___id__etag__name__2_more__: S.Unknown.pipe(
+    WorkerObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("Worker object { id, etag, name, 2 more }"),
     ),
-    WorkerVersion_object___id__etag__name__3_more__: S.Unknown.pipe(
+    WorkerVersionObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("WorkerVersion object { id, etag, name, 3 more }"),
     ),
-    Zone_object___id__etag__name__3_more__: S.Unknown.pipe(
+    ZoneObjectIdEtagName3More__: S.Unknown.pipe(
       T.Body("Zone object { id, etag, name, 3 more }"),
     ),
   }),
@@ -916,11 +1085,12 @@ export const ZoneTagsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneTagsUpdateResponse",
 }) as any as S.Schema<ZoneTagsUpdateResponse>;
 
+export type AccountTagsDeleteError = CloudflareOpError;
 /** Removes all tags from a specific account-level resource. */
-export const AccountTagsDelete: API.OperationMethod<
+export const accountTagsDelete: API.OperationMethod<
   AccountTagsDeleteRequest,
   AccountTagsDeleteResponse,
-  CloudflareOpError,
+  AccountTagsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AccountTagsDeleteRequest,
@@ -929,11 +1099,12 @@ export const AccountTagsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AccountTagsGetError = CloudflareOpError;
 /** Retrieves tags for a specific account-level resource. */
-export const AccountTagsGet: API.OperationMethod<
+export const accountTagsGet: API.OperationMethod<
   AccountTagsGetRequest,
   AccountTagsGetResponse,
-  CloudflareOpError,
+  AccountTagsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AccountTagsGetRequest,
@@ -942,11 +1113,12 @@ export const AccountTagsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AccountTagsUpdateError = CloudflareOpError;
 /** Creates or updates tags for a specific account-level resource. */
-export const AccountTagsUpdate: API.OperationMethod<
+export const accountTagsUpdate: API.OperationMethod<
   AccountTagsUpdateRequest,
   AccountTagsUpdateResponse,
-  CloudflareOpError,
+  AccountTagsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AccountTagsUpdateRequest,
@@ -955,11 +1127,12 @@ export const AccountTagsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type KeysListError = CloudflareOpError;
 /** Lists all distinct tag keys used across resources in an account. */
-export const KeysList: API.OperationMethod<
+export const keysList: API.OperationMethod<
   KeysListRequest,
   KeysListResponse,
-  CloudflareOpError,
+  KeysListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: KeysListRequest,
@@ -968,11 +1141,12 @@ export const KeysList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ListError = CloudflareOpError;
 /** Lists all tagged resources for an account. */
-export const List: API.OperationMethod<
+export const list: API.OperationMethod<
   ListRequest,
   ListResponse,
-  CloudflareOpError,
+  ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRequest,
@@ -981,11 +1155,12 @@ export const List: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ValuesListError = CloudflareOpError;
 /** Lists all distinct values for a given tag key, optionally filtered by resource type. */
-export const ValuesList: API.OperationMethod<
+export const valuesList: API.OperationMethod<
   ValuesListRequest,
   ValuesListResponse,
-  CloudflareOpError,
+  ValuesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ValuesListRequest,
@@ -994,11 +1169,12 @@ export const ValuesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTagsDeleteError = CloudflareOpError;
 /** Removes all tags from a specific zone-level resource. */
-export const ZoneTagsDelete: API.OperationMethod<
+export const zoneTagsDelete: API.OperationMethod<
   ZoneTagsDeleteRequest,
   ZoneTagsDeleteResponse,
-  CloudflareOpError,
+  ZoneTagsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTagsDeleteRequest,
@@ -1007,11 +1183,12 @@ export const ZoneTagsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTagsGetError = CloudflareOpError;
 /** Retrieves tags for a specific zone-level resource. */
-export const ZoneTagsGet: API.OperationMethod<
+export const zoneTagsGet: API.OperationMethod<
   ZoneTagsGetRequest,
   ZoneTagsGetResponse,
-  CloudflareOpError,
+  ZoneTagsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTagsGetRequest,
@@ -1020,11 +1197,12 @@ export const ZoneTagsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTagsUpdateError = CloudflareOpError;
 /** Creates or updates tags for a specific zone-level resource. Replaces all existing tags for the resource. */
-export const ZoneTagsUpdate: API.OperationMethod<
+export const zoneTagsUpdate: API.OperationMethod<
   ZoneTagsUpdateRequest,
   ZoneTagsUpdateResponse,
-  CloudflareOpError,
+  ZoneTagsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTagsUpdateRequest,

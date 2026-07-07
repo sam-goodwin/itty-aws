@@ -399,6 +399,13 @@ const parseTypeCore = (
     case "any":
       return PRELUDE.Document;
     default:
+      // Named shared type (e.g. `Namespace`, `ResponseInfo`). The docs inline
+      // the full field tree as indented children, so build a structure from
+      // them; only a bare name with no children is truly opaque.
+      if (node.children.length) {
+        const members = buildMembers(bag, node.children, hint, "nested");
+        return addShape(bag, hint, { type: "structure", members });
+      }
       return PRELUDE.Document;
   }
 };
@@ -560,7 +567,18 @@ const buildOperation = (bag: Bag, opName: string, parsed: ParsedOp): string => {
   const resultNode = parsed.returns.find((n) => n.name === "result");
   if (resultNode) {
     const { core } = stripOptional(resultNode.typeStr);
-    if (core.startsWith("object") && resultNode.children.length) {
+    // A named shared type (e.g. `Namespace`) inlines its field tree as
+    // children, exactly like `object` — treat both as an object result.
+    const objectLike =
+      core.startsWith("object") ||
+      (resultNode.children.length > 0 &&
+        !core.startsWith("array") &&
+        !core.startsWith("map[") &&
+        !core.startsWith('"') &&
+        !/^(string|boolean|true|false|number|integer|int|unknown|any)$/.test(
+          core.trim(),
+        ));
+    if (objectLike && resultNode.children.length) {
       const members = buildMembers(
         bag,
         resultNode.children,
@@ -576,7 +594,7 @@ const buildOperation = (bag: Bag, opName: string, parsed: ParsedOp): string => {
             "Unwrapped `result` payload of the Cloudflare v4 response envelope.",
         },
       });
-    } else if (!core.startsWith("object")) {
+    } else if (!objectLike) {
       // Non-object result (array/scalar): one member carries the payload,
       // tagged so it's clear this IS the envelope's `result`.
       const payloadTarget = parseTypeCore(

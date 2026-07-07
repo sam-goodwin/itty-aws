@@ -40,6 +40,11 @@ import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
 import { Flag } from "effect/unstable/cli";
 import { Command } from "effect/unstable/cli";
+import {
+  applyOperation,
+  isStaleTargetError,
+  type PatchFile,
+} from "@distilled.cloud/core/json-patch";
 
 const ENVELOPE_PAYLOAD_TRAIT = "com.cloudflare.protocols#envelopePayload";
 
@@ -80,6 +85,62 @@ const isPrelude = (id: string): boolean => id.startsWith("smithy.api#");
 
 const IDENT = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
 const tsKey = (s: string): string => (IDENT.test(s) ? s : q(s));
+
+/** snake_case / kebab-case wire name → camelCase TS-facing name. */
+const camel = (s: string): string =>
+  s.replace(/[_-]+([A-Za-z0-9])/g, (_, c: string) => c.toUpperCase());
+
+/** Reserved words that can't be `const` names — keep PascalCase for those. */
+const RESERVED = new Set([
+  "break",
+  "case",
+  "catch",
+  "class",
+  "const",
+  "continue",
+  "debugger",
+  "default",
+  "delete",
+  "do",
+  "else",
+  "enum",
+  "export",
+  "extends",
+  "false",
+  "finally",
+  "for",
+  "function",
+  "if",
+  "import",
+  "in",
+  "instanceof",
+  "let",
+  "new",
+  "null",
+  "package",
+  "return",
+  "static",
+  "super",
+  "switch",
+  "this",
+  "throw",
+  "true",
+  "try",
+  "typeof",
+  "var",
+  "void",
+  "while",
+  "with",
+  "yield",
+]);
+
+const lowerFirst = (s: string): string => {
+  const lowered = s.charAt(0).toLowerCase() + s.slice(1);
+  return RESERVED.has(lowered) ? s : lowered;
+};
+
+const NULLABLE_TRAIT = "com.cloudflare.protocols#nullable";
+const ERROR_MATCHERS_TRAIT = "com.cloudflare.protocols#errorMatchers";
 
 const oneLine = (s: string | undefined): string | undefined =>
   s ? s.replace(/\s+/g, " ").replace(/\*\//g, "*\\/").trim() : undefined;
@@ -193,58 +254,174 @@ const generateModel = (
       ? (TS_PRELUDE[local(target)] ?? "unknown")
       : local(target);
 
-  const emitMember = (memberName: string, m: any, selfIdx: number): string => {
-    const traits = m.traits ?? {};
-    let expr = ref(m.target, selfIdx);
+  /**
+   * Per-member emission metadata: the camelCase TS-facing name, the wire name
+   * it maps to, and its binding. The TS interface and the schema struct are
+   * emitted from the same computation so they can never drift.
+   */
+  interface MemberInfo {
+    tsName: string;
+    wire: string;
+    target: string;
+    binding: "label" | "query" | "header" | "payload" | "body";
+    required: boolean;
+    nullable: boolean;
+    doc: string | undefined;
+  }
+
+  const memberInfos = (d: any): MemberInfo[] => {
+    const used = new Set<string>();
+    return Object.entries(d.members ?? {}).map(([mn, m]: [string, any]) => {
+      const traits = m.traits ?? {};
+      let tsName = camel(mn);
+      if (used.has(tsName)) tsName = mn;
+      let k = 2;
+      while (used.has(tsName)) tsName = `${camel(mn)}${k++}`;
+      used.add(tsName);
+
+      const binding: MemberInfo["binding"] =
+        "smithy.api#httpLabel" in traits
+          ? "label"
+          : "smithy.api#httpQuery" in traits
+            ? "query"
+            : "smithy.api#httpHeader" in traits
+              ? "header"
+              : ENVELOPE_PAYLOAD_TRAIT in traits
+                ? "payload"
+                : "body";
+      const wire =
+        binding === "label"
+          ? mn // URI placeholders use the smithy member name
+          : binding === "query"
+            ? typeof traits["smithy.api#httpQuery"] === "string" &&
+              traits["smithy.api#httpQuery"]
+              ? traits["smithy.api#httpQuery"]
+              : mn
+            : binding === "header"
+              ? typeof traits["smithy.api#httpHeader"] === "string" &&
+                traits["smithy.api#httpHeader"]
+                ? traits["smithy.api#httpHeader"]
+                : mn
+              : (traits["smithy.api#jsonName"] ?? mn);
+
+      return {
+        tsName,
+        wire,
+        target: m.target,
+        binding,
+        required: "smithy.api#required" in traits,
+        nullable: NULLABLE_TRAIT in traits,
+        doc: oneLine(traits["smithy.api#documentation"]),
+      };
+    });
+  };
+
+  const emitMember = (info: MemberInfo, selfIdx: number): string => {
+    let expr = ref(info.target, selfIdx);
+    if (info.nullable) expr = `S.NullOr(${expr})`;
     const pipes: string[] = [];
 
-    if ("smithy.api#httpLabel" in traits) {
-      pipes.push("T.Label()");
-    } else if ("smithy.api#httpQuery" in traits) {
-      const wire = traits["smithy.api#httpQuery"];
-      pipes.push(
-        wire && wire !== memberName ? `T.Query(${q(wire)})` : "T.Query()",
-      );
-    } else if ("smithy.api#httpHeader" in traits) {
-      const wire = traits["smithy.api#httpHeader"];
-      pipes.push(
-        wire && wire !== memberName ? `T.Header(${q(wire)})` : "T.Header()",
-      );
-    } else if (ENVELOPE_PAYLOAD_TRAIT in traits) {
-      pipes.push("T.EnvelopePayload()");
-    } else {
-      const jn = traits["smithy.api#jsonName"];
-      if (jn && jn !== memberName) pipes.push(`T.Body(${q(jn)})`);
+    switch (info.binding) {
+      case "label":
+        pipes.push(
+          info.wire === info.tsName ? "T.Label()" : `T.Label(${q(info.wire)})`,
+        );
+        break;
+      case "query":
+        pipes.push(
+          info.wire === info.tsName ? "T.Query()" : `T.Query(${q(info.wire)})`,
+        );
+        break;
+      case "header":
+        pipes.push(
+          info.wire === info.tsName
+            ? "T.Header()"
+            : `T.Header(${q(info.wire)})`,
+        );
+        break;
+      case "payload":
+        pipes.push("T.EnvelopePayload()");
+        break;
+      case "body":
+        if (info.wire !== info.tsName) pipes.push(`T.Body(${q(info.wire)})`);
+        break;
     }
 
     if (pipes.length) expr = `${expr}.pipe(${pipes.join(", ")})`;
-    if (!("smithy.api#required" in traits)) expr = `S.optional(${expr})`;
-    return `  ${q(memberName)}: ${expr},`;
+    if (!info.required) expr = `S.optional(${expr})`;
+    return `  ${q(info.tsName)}: ${expr},`;
   };
 
-  // 5. Emit shape declarations in dependency order. Every shape gets an
+  // 5. Emit typed error classes referenced by the operations' `errors` lists
+  //    (added to the smithy models via patches/<service>/<operation>.json).
+  const out: string[] = [];
+  const errorIds: string[] = [];
+  const errorIdSet = new Set<string>();
+  for (const op of selected) {
+    for (const e of op.def.errors ?? []) {
+      if (!errorIdSet.has(e.target) && shapes[e.target]) {
+        errorIdSet.add(e.target);
+        errorIds.push(e.target);
+      }
+    }
+  }
+  errorIds.sort((a, b) => local(a).localeCompare(local(b)));
+  const errorNames = new Set(errorIds.map(local));
+
+  for (const id of errorIds) {
+    const d = shapes[id];
+    const name = local(id);
+    const doc = oneLine(d.traits?.["smithy.api#documentation"]);
+    if (doc) out.push(`/** ${doc} */`);
+    const memberEntries =
+      d.members && Object.keys(d.members).length
+        ? Object.entries(d.members)
+        : Object.entries({
+            code: { target: "smithy.api#Integer" },
+            message: { target: "smithy.api#String" },
+          });
+    const fields = memberEntries
+      .map(
+        ([mn, m]: [string, any]) =>
+          `  ${tsKey(mn)}: ${PRELUDE[local(m.target)] ?? "S.Unknown"},`,
+      )
+      .join("\n");
+    const cls = `S.TaggedErrorClass<${name}>()(${q(name)}, {\n${fields}\n})`;
+    const matchers = d.traits?.[ERROR_MATCHERS_TRAIT];
+    out.push(
+      matchers
+        ? `export class ${name} extends T.applyErrorMatchers(\n${cls},\n${JSON.stringify(matchers)},\n) {}\n`
+        : `export class ${name} extends ${cls} {}\n`,
+    );
+  }
+
+  //    Then every reachable shape in dependency order. Every shape gets an
   //    explicit TypeScript type (interface / type alias) next to its schema
   //    const; the const is cast to `S.Schema<T>` so the compiler never infers
   //    types out of the schema generics (see the header comment).
-  const out: string[] = [];
   order.forEach((id, i) => {
+    if (errorIdSet.has(id)) return; // emitted as an error class above
     const d = shapes[id];
     const name = local(id);
     const doc = oneLine(d.traits?.["smithy.api#documentation"]);
     if (doc) out.push(`/** ${doc} */`);
 
     if (d.type === "structure") {
-      const entries = Object.entries(d.members ?? {});
-      const fields = entries.map(([mn, m]: [string, any]) => {
-        const opt = "smithy.api#required" in (m.traits ?? {}) ? "" : "?";
-        return `  ${tsKey(mn)}${opt}: ${tsRef(m.target)};`;
+      const infos = memberInfos(d);
+      const fields = infos.flatMap((info) => {
+        const opt = info.required ? "" : "?";
+        const type = `${tsRef(info.target)}${info.nullable ? " | null" : ""}`;
+        return [
+          ...(info.doc ? [`  /** ${info.doc} */`] : []),
+          `  ${tsKey(info.tsName)}${opt}: ${type};`,
+        ];
       });
       out.push(
         fields.length
           ? `export interface ${name} {\n${fields.join("\n")}\n}`
           : `export interface ${name} {}`,
       );
-      const members = entries.map(([mn, m]) => emitMember(mn, m, i));
+      const members = infos.map((info) => emitMember(info, i));
       const struct = members.length
         ? `S.Struct({\n${members.join("\n")}\n})`
         : `S.Struct({})`;
@@ -283,21 +460,28 @@ const generateModel = (
   });
 
   // 6. Emit operations with explicit OperationMethod annotations so the
-  //    call signature comes from the emitted interfaces, not inference.
+  //    call signature comes from the emitted interfaces, not inference. The
+  //    export is lowerFirst (`getNamespace`) while the shapes stay PascalCase.
   for (const op of selected) {
     const opName = local(op.id);
+    const errNames = ((op.def.errors ?? []) as Array<{ target: string }>)
+      .map((e) => local(e.target))
+      .filter((n) => errorNames.has(n));
     const doc = oneLine(op.def.traits?.["smithy.api#documentation"]);
+    out.push(
+      `export type ${opName}Error = ${[...errNames, "CloudflareOpError"].join(" | ")};`,
+    );
     if (doc) out.push(`/** ${doc} */`);
     out.push(
-      `export const ${opName}: API.OperationMethod<\n` +
+      `export const ${lowerFirst(opName)}: API.OperationMethod<\n` +
         `  ${local(op.def.__input)},\n` +
         `  ${local(op.def.__output)},\n` +
-        `  CloudflareOpError,\n` +
+        `  ${opName}Error,\n` +
         `  CloudflareOpContext\n` +
         `> = /*@__PURE__*/ API.make(() => ({\n` +
         `  input: ${local(op.def.__input)},\n` +
         `  output: ${local(op.def.__output)},\n` +
-        `  errors: [CloudflareRateLimited, CloudflareError],\n` +
+        `  errors: [${[...errNames, "CloudflareRateLimited", "CloudflareError"].join(", ")}],\n` +
         `  protocol: CloudflareProtocol,\n` +
         `}));\n`,
     );
@@ -365,6 +549,23 @@ const command = Command.make(
       };
       const written: string[] = [];
       let totalOps = 0;
+      let totalPatches = 0;
+      let staleOps = 0;
+      const badPatches: string[] = [];
+
+      // Orphan check: a patch directory that matches no smithy model would be
+      // silently dropped — flag it instead.
+      const patchRoot = path.join(root, "patches");
+      if (yield* fs.exists(patchRoot)) {
+        const resources = new Set(entries.map((f) => f.replace(/\.json$/, "")));
+        for (const dir of yield* fs.readDirectory(patchRoot)) {
+          if (!resources.has(dir)) {
+            yield* Console.warn(
+              `⚠️  patches/${dir}/ matches no smithy model — orphaned?`,
+            );
+          }
+        }
+      }
 
       for (const file of entries) {
         const resource = file.replace(/\.json$/, "");
@@ -374,12 +575,54 @@ const command = Command.make(
         const model = JSON.parse(
           yield* fs.readFileString(path.join(smithyDir, file)),
         );
+
+        // Apply patches/<resource>/*.json (RFC 6902, one file per operation)
+        // to the smithy model before generating. Operations whose target no
+        // longer exists (spec drift) are skipped with a warning; malformed
+        // patches fail the run.
+        const patchDir = path.join(patchRoot, resource);
+        if (yield* fs.exists(patchDir)) {
+          const patchFiles = (yield* fs.readDirectory(patchDir))
+            .filter((f) => f.endsWith(".json"))
+            .sort();
+          for (const pf of patchFiles) {
+            const parsed = JSON.parse(
+              yield* fs.readFileString(path.join(patchDir, pf)),
+            ) as PatchFile;
+            for (const patchOp of parsed.patches ?? []) {
+              try {
+                applyOperation(model, patchOp);
+              } catch (e) {
+                const msg = e instanceof Error ? e.message : String(e);
+                if (isStaleTargetError(msg)) {
+                  staleOps++;
+                  yield* Console.warn(
+                    `   ⚠️  stale: ${resource}/${pf} [${patchOp.op} ${patchOp.path}]`,
+                  );
+                } else {
+                  badPatches.push(
+                    `${resource}/${pf} [${patchOp.op} ${patchOp.path}]: ${msg}`,
+                  );
+                }
+              }
+            }
+            totalPatches++;
+          }
+        }
+
         const { code, operations } = generateModel(model, limitRef);
         if (operations === 0) continue;
 
         yield* fs.writeFileString(path.join(outDir, `${resource}.ts`), code);
         written.push(resource);
         totalOps += operations;
+      }
+
+      if (badPatches.length) {
+        for (const b of badPatches) yield* Console.error(`❌ bad patch: ${b}`);
+        return yield* Effect.dieMessage(
+          `${badPatches.length} malformed patch operation(s) — fix or remove them`,
+        );
       }
 
       // Barrel — namespace per resource to avoid op-name collisions.
@@ -390,7 +633,10 @@ const command = Command.make(
       yield* fs.writeFileString(path.join(outDir, "index.ts"), barrel);
 
       yield* Console.log(
-        `\n✅ Generated ${totalOps} operations across ${written.length} resource modules.`,
+        `\n✅ Generated ${totalOps} operations across ${written.length} resource modules` +
+          (totalPatches
+            ? ` (${totalPatches} patch files applied${staleOps ? `, ${staleOps} stale op(s) skipped` : ""}).`
+            : "."),
       );
       yield* Console.log(`   ${path.join(outDir, "index.ts")}`);
     }),

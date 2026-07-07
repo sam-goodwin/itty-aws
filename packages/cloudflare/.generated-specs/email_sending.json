@@ -17,6 +17,25 @@
     ]
   },
   "shapes": {
+    "com.cloudflare.email_sending#SendRequestFrom": {
+      "type": "structure",
+      "members": {
+        "EmailSendingEmailAddressString": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An email address as a plain string.",
+            "smithy.api#required": {}
+          }
+        },
+        "EmailSendingEmailAddressObject_object___address__name__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "EmailSendingEmailAddressObject object { address, name }"
+          }
+        }
+      }
+    },
     "com.cloudflare.email_sending#SendRequestAttachmentsItem": {
       "type": "structure",
       "members": {
@@ -42,6 +61,58 @@
         "target": "com.cloudflare.email_sending#SendRequestAttachmentsItem"
       }
     },
+    "com.cloudflare.email_sending#SendRequestBcc": {
+      "type": "structure",
+      "members": {
+        "EmailSendingEmailAddressString": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An email address as a plain string.",
+            "smithy.api#required": {}
+          }
+        },
+        "EmailSendingEmailAddressObject_object___address__name__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "EmailSendingEmailAddressObject object { address, name }"
+          }
+        },
+        "array_of_string_or_object___address__name__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of string or object { address, name }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_sending#SendRequestCc": {
+      "type": "structure",
+      "members": {
+        "EmailSendingEmailAddressString": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An email address as a plain string.",
+            "smithy.api#required": {}
+          }
+        },
+        "EmailSendingEmailAddressObject_object___address__name__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "EmailSendingEmailAddressObject object { address, name }"
+          }
+        },
+        "array_of_string_or_object___address__name__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of string or object { address, name }"
+          }
+        }
+      }
+    },
     "com.cloudflare.email_sending#SendRequestHeadersMap": {
       "type": "map",
       "key": {
@@ -49,6 +120,51 @@
       },
       "value": {
         "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.email_sending#SendRequestReplyTo": {
+      "type": "structure",
+      "members": {
+        "EmailSendingEmailAddressString": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An email address as a plain string.",
+            "smithy.api#required": {}
+          }
+        },
+        "EmailSendingEmailAddressObject_object___address__name__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "EmailSendingEmailAddressObject object { address, name }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_sending#SendRequestTo": {
+      "type": "structure",
+      "members": {
+        "EmailSendingEmailAddressString": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An email address as a plain string.",
+            "smithy.api#required": {}
+          }
+        },
+        "EmailSendingEmailAddressObject_object___address__name__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "EmailSendingEmailAddressObject object { address, name }"
+          }
+        },
+        "array_of_string_or_object___address__name__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "array of string or object { address, name }"
+          }
+        }
       }
     },
     "com.cloudflare.email_sending#SendRequest": {
@@ -63,7 +179,7 @@
           }
         },
         "from": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.email_sending#SendRequestFrom",
           "traits": {
             "smithy.api#documentation": "Sender email address. Either a plain string or an object with address and name.",
             "smithy.api#required": {}
@@ -83,13 +199,13 @@
           }
         },
         "bcc": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.email_sending#SendRequestBcc",
           "traits": {
             "smithy.api#documentation": "BCC recipient(s). A single email string, a named address object, or an array of either."
           }
         },
         "cc": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.email_sending#SendRequestCc",
           "traits": {
             "smithy.api#documentation": "CC recipient(s). A single email string, a named address object, or an array of either."
           }
@@ -107,7 +223,7 @@
           }
         },
         "reply_to": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.email_sending#SendRequestReplyTo",
           "traits": {
             "smithy.api#documentation": "Reply-to address. Either a plain string or an object with address and name."
           }
@@ -119,7 +235,7 @@
           }
         },
         "to": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.email_sending#SendRequestTo",
           "traits": {
             "smithy.api#documentation": "Recipient(s). Optional if cc or bcc is provided. A single email string, a named address object, or an array of either."
           }
@@ -695,10 +811,87 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.email_sending#SubdomainsDnsGetResultItemTtl": {
+      "type": "structure",
+      "members": {
+        "number": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_sending#SubdomainsDnsGetResultItemType": {
+      "type": "enum",
+      "members": {
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        },
+        "AAAA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AAAA"
+          }
+        },
+        "CNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CNAME"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_sending#SubdomainsDnsGetResultItem": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS record content."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS record name (or @ for the zone apex)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred."
+          }
+        },
+        "ttl": {
+          "target": "com.cloudflare.email_sending#SubdomainsDnsGetResultItemTtl",
+          "traits": {
+            "smithy.api#documentation": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.email_sending#SubdomainsDnsGetResultItemType",
+          "traits": {
+            "smithy.api#documentation": "DNS record type."
+          }
+        }
+      }
+    },
     "com.cloudflare.email_sending#SubdomainsDnsGetResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.email_sending#SubdomainsDnsGetResultItem"
       }
     },
     "com.cloudflare.email_sending#SubdomainsDnsGetResponse": {

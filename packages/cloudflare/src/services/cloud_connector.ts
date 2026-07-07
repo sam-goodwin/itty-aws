@@ -10,11 +10,12 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface RulesListRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const RulesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -27,6 +28,7 @@ export const RulesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesListRequest>;
 
 export interface RulesListResultItemParameters {
+  /** Host to perform Cloud Connection to */
   host?: string;
 }
 export const RulesListResultItemParameters = /*@__PURE__*/ S.suspend(() =>
@@ -50,7 +52,9 @@ export interface RulesListResultItem {
   description?: string;
   enabled?: boolean;
   expression?: string;
+  /** Parameters of Cloud Connector Rule */
   parameters?: RulesListResultItemParameters;
+  /** Cloud Provider type */
   provider?: RulesListResultItemProvider;
 }
 export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -72,6 +76,7 @@ export const RulesListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RulesListResultList>;
 
 export interface RulesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesListResultList;
 }
 export const RulesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -83,6 +88,7 @@ export const RulesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesListResponse>;
 
 export interface RulesUpdateRequestRulesItemParameters {
+  /** Host to perform Cloud Connection to */
   host?: string;
 }
 export const RulesUpdateRequestRulesItemParameters = /*@__PURE__*/ S.suspend(
@@ -107,7 +113,9 @@ export interface RulesUpdateRequestRulesItem {
   description?: string;
   enabled?: boolean;
   expression?: string;
+  /** Parameters of Cloud Connector Rule */
   parameters?: RulesUpdateRequestRulesItemParameters;
+  /** Cloud Provider type */
   provider?: RulesUpdateRequestRulesItemProvider;
 }
 export const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
@@ -129,12 +137,13 @@ export const RulesUpdateRequestRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RulesUpdateRequestRulesList>;
 
 export interface RulesUpdateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
   rules?: RulesUpdateRequestRulesList;
 }
 export const RulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     rules: S.optional(RulesUpdateRequestRulesList),
   }).pipe(
     T.Http({
@@ -148,6 +157,7 @@ export const RulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesUpdateRequest>;
 
 export interface RulesUpdateResultItemParameters {
+  /** Host to perform Cloud Connection to */
   host?: string;
 }
 export const RulesUpdateResultItemParameters = /*@__PURE__*/ S.suspend(() =>
@@ -171,7 +181,9 @@ export interface RulesUpdateResultItem {
   description?: string;
   enabled?: boolean;
   expression?: string;
+  /** Parameters of Cloud Connector Rule */
   parameters?: RulesUpdateResultItemParameters;
+  /** Cloud Provider type */
   provider?: RulesUpdateResultItemProvider;
 }
 export const RulesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -193,6 +205,7 @@ export const RulesUpdateResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RulesUpdateResultList>;
 
 export interface RulesUpdateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesUpdateResultList;
 }
 export const RulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -203,11 +216,12 @@ export const RulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesUpdateResponse",
 }) as any as S.Schema<RulesUpdateResponse>;
 
+export type RulesListError = CloudflareOpError;
 /** Retrieves the Cloud Connector rules configured for a zone. Rules define how traffic is routed to cloud services. */
-export const RulesList: API.OperationMethod<
+export const rulesList: API.OperationMethod<
   RulesListRequest,
   RulesListResponse,
-  CloudflareOpError,
+  RulesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RulesListRequest,
@@ -216,11 +230,12 @@ export const RulesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RulesUpdateError = CloudflareOpError;
 /** Updates Cloud Connector rules for a zone, replacing the existing rule configuration. */
-export const RulesUpdate: API.OperationMethod<
+export const rulesUpdate: API.OperationMethod<
   RulesUpdateRequest,
   RulesUpdateResponse,
-  CloudflareOpError,
+  RulesUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RulesUpdateRequest,

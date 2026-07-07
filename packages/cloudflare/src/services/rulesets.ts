@@ -9,24 +9,134 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export type CreateRequestRulesList = unknown[];
+export interface CreateRequestRulesItem {
+  BlockRuleObjectLastUpdatedVersionId10More__: unknown;
+  ChallengeObjectLastUpdatedVersionId10More__: unknown;
+  CompressResponseRuleObjectLastUpdatedVersionId10More__: unknown;
+  DDoSDynamicRuleObjectLastUpdatedVersionId10More__: unknown;
+  ExecuteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: unknown;
+  JSChallengeObjectLastUpdatedVersionId10More__: unknown;
+  LogRuleObjectLastUpdatedVersionId10More__: unknown;
+  LogCustomFieldRuleObjectLastUpdatedVersionId10More__: unknown;
+  ManagedChallengeRuleObjectLastUpdatedVersionId10More__: unknown;
+  RedirectRuleObjectLastUpdatedVersionId10More__: unknown;
+  RewriteRuleObjectLastUpdatedVersionId10More__: unknown;
+  RouteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ScoreRuleObjectLastUpdatedVersionId10More__: unknown;
+  ServeErrorRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheControlObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheTagsObjectLastUpdatedVersionId10More__: unknown;
+  SetConfigRuleObjectLastUpdatedVersionId10More__: unknown;
+  SkipRuleObjectLastUpdatedVersionId10More__: unknown;
+  TransformResponseHTMLObjectLastUpdatedVersionId10More__: unknown;
+}
+export const CreateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BlockRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("BlockRule object { last_updated, version, id, 10 more }"),
+    ),
+    ChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("Challenge object { last_updated, version, id, 10 more }"),
+    ),
+    CompressResponseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "CompressResponseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    DDoSDynamicRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("DDoSDynamicRule object { last_updated, version, id, 10 more }"),
+    ),
+    ExecuteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ExecuteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ForceConnectionCloseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    JSChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("JSChallenge object { last_updated, version, id, 10 more }"),
+    ),
+    LogRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("LogRule object { last_updated, version, id, 10 more }"),
+    ),
+    LogCustomFieldRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "LogCustomFieldRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    ManagedChallengeRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ManagedChallengeRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    RedirectRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RedirectRule object { last_updated, version, id, 10 more }"),
+    ),
+    RewriteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RewriteRule object { last_updated, version, id, 10 more }"),
+    ),
+    RouteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RouteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ScoreRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ScoreRule object { last_updated, version, id, 10 more }"),
+    ),
+    ServeErrorRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ServeErrorRule object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheControlObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheControl object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "SetCacheSettingsRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    SetCacheTagsObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheTags object { last_updated, version, id, 10 more }"),
+    ),
+    SetConfigRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetConfigRule object { last_updated, version, id, 10 more }"),
+    ),
+    SkipRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SkipRule object { last_updated, version, id, 10 more }"),
+    ),
+    TransformResponseHTMLObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "TransformResponseHTML object { last_updated, version, id, 10 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "CreateRequestRulesItem",
+}) as any as S.Schema<CreateRequestRulesItem>;
+
+export type CreateRequestRulesList = CreateRequestRulesItem[];
 export const CreateRequestRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  CreateRequestRulesItem,
 ) as any as S.Schema<CreateRequestRulesList>;
 
 export interface CreateRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The kind of the ruleset. */
   kind: unknown;
+  /** The human-readable name of the ruleset. */
   name: string;
+  /** The phase of the ruleset. */
   phase: unknown;
+  /** An informative description of the ruleset. */
   description?: string;
+  /** The list of rules in the ruleset. */
   rules?: CreateRequestRulesList;
 }
 export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
     kind: S.Unknown,
     name: S.String,
     phase: S.Unknown,
@@ -41,27 +151,140 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
 
-export type CreateResponseRulesList = unknown[];
+export interface CreateResponseRulesItem {
+  BlockRuleObjectLastUpdatedVersionId10More__: unknown;
+  ChallengeObjectLastUpdatedVersionId10More__: unknown;
+  CompressResponseRuleObjectLastUpdatedVersionId10More__: unknown;
+  DDoSDynamicRuleObjectLastUpdatedVersionId10More__: unknown;
+  ExecuteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: unknown;
+  JSChallengeObjectLastUpdatedVersionId10More__: unknown;
+  LogRuleObjectLastUpdatedVersionId10More__: unknown;
+  LogCustomFieldRuleObjectLastUpdatedVersionId10More__: unknown;
+  ManagedChallengeRuleObjectLastUpdatedVersionId10More__: unknown;
+  RedirectRuleObjectLastUpdatedVersionId10More__: unknown;
+  RewriteRuleObjectLastUpdatedVersionId10More__: unknown;
+  RouteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ScoreRuleObjectLastUpdatedVersionId10More__: unknown;
+  ServeErrorRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheControlObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheTagsObjectLastUpdatedVersionId10More__: unknown;
+  SetConfigRuleObjectLastUpdatedVersionId10More__: unknown;
+  SkipRuleObjectLastUpdatedVersionId10More__: unknown;
+  TransformResponseHTMLObjectLastUpdatedVersionId10More__: unknown;
+}
+export const CreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BlockRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("BlockRule object { last_updated, version, id, 10 more }"),
+    ),
+    ChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("Challenge object { last_updated, version, id, 10 more }"),
+    ),
+    CompressResponseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "CompressResponseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    DDoSDynamicRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("DDoSDynamicRule object { last_updated, version, id, 10 more }"),
+    ),
+    ExecuteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ExecuteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ForceConnectionCloseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    JSChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("JSChallenge object { last_updated, version, id, 10 more }"),
+    ),
+    LogRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("LogRule object { last_updated, version, id, 10 more }"),
+    ),
+    LogCustomFieldRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "LogCustomFieldRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    ManagedChallengeRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ManagedChallengeRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    RedirectRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RedirectRule object { last_updated, version, id, 10 more }"),
+    ),
+    RewriteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RewriteRule object { last_updated, version, id, 10 more }"),
+    ),
+    RouteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RouteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ScoreRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ScoreRule object { last_updated, version, id, 10 more }"),
+    ),
+    ServeErrorRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ServeErrorRule object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheControlObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheControl object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "SetCacheSettingsRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    SetCacheTagsObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheTags object { last_updated, version, id, 10 more }"),
+    ),
+    SetConfigRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetConfigRule object { last_updated, version, id, 10 more }"),
+    ),
+    SkipRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SkipRule object { last_updated, version, id, 10 more }"),
+    ),
+    TransformResponseHTMLObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "TransformResponseHTML object { last_updated, version, id, 10 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "CreateResponseRulesItem",
+}) as any as S.Schema<CreateResponseRulesItem>;
+
+export type CreateResponseRulesList = CreateResponseRulesItem[];
 export const CreateResponseRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  CreateResponseRulesItem,
 ) as any as S.Schema<CreateResponseRulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateResponse {
+  /** The unique ID of the ruleset. */
   id: string;
+  /** The kind of the ruleset. */
   kind: unknown;
-  last_updated: string;
+  /** The timestamp of when the ruleset was last modified. */
+  lastUpdated: string;
+  /** The human-readable name of the ruleset. */
   name: string;
+  /** The phase of the ruleset. */
   phase: unknown;
+  /** The list of rules in the ruleset. */
   rules: CreateResponseRulesList;
+  /** The version of the ruleset. */
   version: string;
+  /** An informative description of the ruleset. */
   description?: string;
 }
 export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: S.Unknown,
-    last_updated: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
     name: S.String,
     phase: S.Unknown,
     rules: CreateResponseRulesList,
@@ -71,15 +294,16 @@ export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
 
 export interface DeleteRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  ruleset_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The unique ID of the ruleset. */
+  rulesetId: string;
 }
 export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    ruleset_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    rulesetId: S.String.pipe(T.Label("ruleset_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -95,15 +319,16 @@ export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
 
 export interface GetRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  ruleset_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The unique ID of the ruleset. */
+  rulesetId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    ruleset_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    rulesetId: S.String.pipe(T.Label("ruleset_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -113,27 +338,140 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
-export type GetResponseRulesList = unknown[];
+export interface GetResponseRulesItem {
+  BlockRuleObjectLastUpdatedVersionId10More__: unknown;
+  ChallengeObjectLastUpdatedVersionId10More__: unknown;
+  CompressResponseRuleObjectLastUpdatedVersionId10More__: unknown;
+  DDoSDynamicRuleObjectLastUpdatedVersionId10More__: unknown;
+  ExecuteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: unknown;
+  JSChallengeObjectLastUpdatedVersionId10More__: unknown;
+  LogRuleObjectLastUpdatedVersionId10More__: unknown;
+  LogCustomFieldRuleObjectLastUpdatedVersionId10More__: unknown;
+  ManagedChallengeRuleObjectLastUpdatedVersionId10More__: unknown;
+  RedirectRuleObjectLastUpdatedVersionId10More__: unknown;
+  RewriteRuleObjectLastUpdatedVersionId10More__: unknown;
+  RouteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ScoreRuleObjectLastUpdatedVersionId10More__: unknown;
+  ServeErrorRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheControlObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheTagsObjectLastUpdatedVersionId10More__: unknown;
+  SetConfigRuleObjectLastUpdatedVersionId10More__: unknown;
+  SkipRuleObjectLastUpdatedVersionId10More__: unknown;
+  TransformResponseHTMLObjectLastUpdatedVersionId10More__: unknown;
+}
+export const GetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BlockRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("BlockRule object { last_updated, version, id, 10 more }"),
+    ),
+    ChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("Challenge object { last_updated, version, id, 10 more }"),
+    ),
+    CompressResponseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "CompressResponseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    DDoSDynamicRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("DDoSDynamicRule object { last_updated, version, id, 10 more }"),
+    ),
+    ExecuteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ExecuteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ForceConnectionCloseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    JSChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("JSChallenge object { last_updated, version, id, 10 more }"),
+    ),
+    LogRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("LogRule object { last_updated, version, id, 10 more }"),
+    ),
+    LogCustomFieldRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "LogCustomFieldRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    ManagedChallengeRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ManagedChallengeRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    RedirectRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RedirectRule object { last_updated, version, id, 10 more }"),
+    ),
+    RewriteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RewriteRule object { last_updated, version, id, 10 more }"),
+    ),
+    RouteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RouteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ScoreRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ScoreRule object { last_updated, version, id, 10 more }"),
+    ),
+    ServeErrorRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ServeErrorRule object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheControlObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheControl object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "SetCacheSettingsRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    SetCacheTagsObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheTags object { last_updated, version, id, 10 more }"),
+    ),
+    SetConfigRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetConfigRule object { last_updated, version, id, 10 more }"),
+    ),
+    SkipRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SkipRule object { last_updated, version, id, 10 more }"),
+    ),
+    TransformResponseHTMLObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "TransformResponseHTML object { last_updated, version, id, 10 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "GetResponseRulesItem",
+}) as any as S.Schema<GetResponseRulesItem>;
+
+export type GetResponseRulesList = GetResponseRulesItem[];
 export const GetResponseRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  GetResponseRulesItem,
 ) as any as S.Schema<GetResponseRulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
+  /** The unique ID of the ruleset. */
   id: string;
+  /** The kind of the ruleset. */
   kind: unknown;
-  last_updated: string;
+  /** The timestamp of when the ruleset was last modified. */
+  lastUpdated: string;
+  /** The human-readable name of the ruleset. */
   name: string;
+  /** The phase of the ruleset. */
   phase: unknown;
+  /** The list of rules in the ruleset. */
   rules: GetResponseRulesList;
+  /** The version of the ruleset. */
   version: string;
+  /** An informative description of the ruleset. */
   description?: string;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: S.Unknown,
-    last_updated: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
     name: S.String,
     phase: S.Unknown,
     rules: GetResponseRulesList,
@@ -143,17 +481,19 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
 export interface ListRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The cursor to use for the next page. */
   cursor?: string;
-  per_page?: number;
+  /** The number of rulesets to return per page. */
+  perPage?: number;
 }
 export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -164,19 +504,26 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
 
 export interface ListResultItem {
+  /** The unique ID of the ruleset. */
   id: string;
+  /** The kind of the ruleset. */
   kind: unknown;
-  last_updated: string;
+  /** The timestamp of when the ruleset was last modified. */
+  lastUpdated: string;
+  /** The human-readable name of the ruleset. */
   name: string;
+  /** The phase of the ruleset. */
   phase: unknown;
+  /** The version of the ruleset. */
   version: string;
+  /** An informative description of the ruleset. */
   description?: string;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: S.Unknown,
-    last_updated: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
     name: S.String,
     phase: S.Unknown,
     version: S.String,
@@ -190,6 +537,7 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResultList>;
 
 export interface ListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
 export const ListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -199,15 +547,16 @@ export const ListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
 
 export interface PhasesGetRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  ruleset_phase: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The phase of the ruleset. */
+  rulesetPhase: string;
 }
 export const PhasesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    ruleset_phase: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    rulesetPhase: S.String.pipe(T.Label("ruleset_phase")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -219,27 +568,140 @@ export const PhasesGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PhasesGetRequest",
 }) as any as S.Schema<PhasesGetRequest>;
 
-export type PhasesGetResponseRulesList = unknown[];
+export interface PhasesGetResponseRulesItem {
+  BlockRuleObjectLastUpdatedVersionId10More__: unknown;
+  ChallengeObjectLastUpdatedVersionId10More__: unknown;
+  CompressResponseRuleObjectLastUpdatedVersionId10More__: unknown;
+  DDoSDynamicRuleObjectLastUpdatedVersionId10More__: unknown;
+  ExecuteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: unknown;
+  JSChallengeObjectLastUpdatedVersionId10More__: unknown;
+  LogRuleObjectLastUpdatedVersionId10More__: unknown;
+  LogCustomFieldRuleObjectLastUpdatedVersionId10More__: unknown;
+  ManagedChallengeRuleObjectLastUpdatedVersionId10More__: unknown;
+  RedirectRuleObjectLastUpdatedVersionId10More__: unknown;
+  RewriteRuleObjectLastUpdatedVersionId10More__: unknown;
+  RouteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ScoreRuleObjectLastUpdatedVersionId10More__: unknown;
+  ServeErrorRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheControlObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheTagsObjectLastUpdatedVersionId10More__: unknown;
+  SetConfigRuleObjectLastUpdatedVersionId10More__: unknown;
+  SkipRuleObjectLastUpdatedVersionId10More__: unknown;
+  TransformResponseHTMLObjectLastUpdatedVersionId10More__: unknown;
+}
+export const PhasesGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BlockRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("BlockRule object { last_updated, version, id, 10 more }"),
+    ),
+    ChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("Challenge object { last_updated, version, id, 10 more }"),
+    ),
+    CompressResponseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "CompressResponseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    DDoSDynamicRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("DDoSDynamicRule object { last_updated, version, id, 10 more }"),
+    ),
+    ExecuteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ExecuteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ForceConnectionCloseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    JSChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("JSChallenge object { last_updated, version, id, 10 more }"),
+    ),
+    LogRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("LogRule object { last_updated, version, id, 10 more }"),
+    ),
+    LogCustomFieldRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "LogCustomFieldRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    ManagedChallengeRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ManagedChallengeRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    RedirectRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RedirectRule object { last_updated, version, id, 10 more }"),
+    ),
+    RewriteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RewriteRule object { last_updated, version, id, 10 more }"),
+    ),
+    RouteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RouteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ScoreRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ScoreRule object { last_updated, version, id, 10 more }"),
+    ),
+    ServeErrorRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ServeErrorRule object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheControlObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheControl object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "SetCacheSettingsRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    SetCacheTagsObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheTags object { last_updated, version, id, 10 more }"),
+    ),
+    SetConfigRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetConfigRule object { last_updated, version, id, 10 more }"),
+    ),
+    SkipRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SkipRule object { last_updated, version, id, 10 more }"),
+    ),
+    TransformResponseHTMLObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "TransformResponseHTML object { last_updated, version, id, 10 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "PhasesGetResponseRulesItem",
+}) as any as S.Schema<PhasesGetResponseRulesItem>;
+
+export type PhasesGetResponseRulesList = PhasesGetResponseRulesItem[];
 export const PhasesGetResponseRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PhasesGetResponseRulesItem,
 ) as any as S.Schema<PhasesGetResponseRulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PhasesGetResponse {
+  /** The unique ID of the ruleset. */
   id: string;
+  /** The kind of the ruleset. */
   kind: unknown;
-  last_updated: string;
+  /** The timestamp of when the ruleset was last modified. */
+  lastUpdated: string;
+  /** The human-readable name of the ruleset. */
   name: string;
+  /** The phase of the ruleset. */
   phase: unknown;
+  /** The list of rules in the ruleset. */
   rules: PhasesGetResponseRulesList;
+  /** The version of the ruleset. */
   version: string;
+  /** An informative description of the ruleset. */
   description?: string;
 }
 export const PhasesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: S.Unknown,
-    last_updated: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
     name: S.String,
     phase: S.Unknown,
     rules: PhasesGetResponseRulesList,
@@ -250,24 +712,133 @@ export const PhasesGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PhasesGetResponse",
 }) as any as S.Schema<PhasesGetResponse>;
 
-export type PhasesUpdateRequestRulesList = unknown[];
+export interface PhasesUpdateRequestRulesItem {
+  BlockRuleObjectLastUpdatedVersionId10More__: unknown;
+  ChallengeObjectLastUpdatedVersionId10More__: unknown;
+  CompressResponseRuleObjectLastUpdatedVersionId10More__: unknown;
+  DDoSDynamicRuleObjectLastUpdatedVersionId10More__: unknown;
+  ExecuteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: unknown;
+  JSChallengeObjectLastUpdatedVersionId10More__: unknown;
+  LogRuleObjectLastUpdatedVersionId10More__: unknown;
+  LogCustomFieldRuleObjectLastUpdatedVersionId10More__: unknown;
+  ManagedChallengeRuleObjectLastUpdatedVersionId10More__: unknown;
+  RedirectRuleObjectLastUpdatedVersionId10More__: unknown;
+  RewriteRuleObjectLastUpdatedVersionId10More__: unknown;
+  RouteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ScoreRuleObjectLastUpdatedVersionId10More__: unknown;
+  ServeErrorRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheControlObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheTagsObjectLastUpdatedVersionId10More__: unknown;
+  SetConfigRuleObjectLastUpdatedVersionId10More__: unknown;
+  SkipRuleObjectLastUpdatedVersionId10More__: unknown;
+  TransformResponseHTMLObjectLastUpdatedVersionId10More__: unknown;
+}
+export const PhasesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BlockRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("BlockRule object { last_updated, version, id, 10 more }"),
+    ),
+    ChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("Challenge object { last_updated, version, id, 10 more }"),
+    ),
+    CompressResponseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "CompressResponseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    DDoSDynamicRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("DDoSDynamicRule object { last_updated, version, id, 10 more }"),
+    ),
+    ExecuteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ExecuteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ForceConnectionCloseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    JSChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("JSChallenge object { last_updated, version, id, 10 more }"),
+    ),
+    LogRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("LogRule object { last_updated, version, id, 10 more }"),
+    ),
+    LogCustomFieldRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "LogCustomFieldRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    ManagedChallengeRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ManagedChallengeRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    RedirectRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RedirectRule object { last_updated, version, id, 10 more }"),
+    ),
+    RewriteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RewriteRule object { last_updated, version, id, 10 more }"),
+    ),
+    RouteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RouteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ScoreRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ScoreRule object { last_updated, version, id, 10 more }"),
+    ),
+    ServeErrorRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ServeErrorRule object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheControlObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheControl object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "SetCacheSettingsRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    SetCacheTagsObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheTags object { last_updated, version, id, 10 more }"),
+    ),
+    SetConfigRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetConfigRule object { last_updated, version, id, 10 more }"),
+    ),
+    SkipRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SkipRule object { last_updated, version, id, 10 more }"),
+    ),
+    TransformResponseHTMLObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "TransformResponseHTML object { last_updated, version, id, 10 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "PhasesUpdateRequestRulesItem",
+}) as any as S.Schema<PhasesUpdateRequestRulesItem>;
+
+export type PhasesUpdateRequestRulesList = PhasesUpdateRequestRulesItem[];
 export const PhasesUpdateRequestRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PhasesUpdateRequestRulesItem,
 ) as any as S.Schema<PhasesUpdateRequestRulesList>;
 
 export interface PhasesUpdateRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  ruleset_phase: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The phase of the ruleset. */
+  rulesetPhase: string;
+  /** An informative description of the ruleset. */
   description?: string;
+  /** The human-readable name of the ruleset. */
   name?: string;
+  /** The list of rules in the ruleset. */
   rules?: PhasesUpdateRequestRulesList;
 }
 export const PhasesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    ruleset_phase: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    rulesetPhase: S.String.pipe(T.Label("ruleset_phase")),
     description: S.optional(S.String),
     name: S.optional(S.String),
     rules: S.optional(PhasesUpdateRequestRulesList),
@@ -282,27 +853,140 @@ export const PhasesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PhasesUpdateRequest",
 }) as any as S.Schema<PhasesUpdateRequest>;
 
-export type PhasesUpdateResponseRulesList = unknown[];
+export interface PhasesUpdateResponseRulesItem {
+  BlockRuleObjectLastUpdatedVersionId10More__: unknown;
+  ChallengeObjectLastUpdatedVersionId10More__: unknown;
+  CompressResponseRuleObjectLastUpdatedVersionId10More__: unknown;
+  DDoSDynamicRuleObjectLastUpdatedVersionId10More__: unknown;
+  ExecuteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: unknown;
+  JSChallengeObjectLastUpdatedVersionId10More__: unknown;
+  LogRuleObjectLastUpdatedVersionId10More__: unknown;
+  LogCustomFieldRuleObjectLastUpdatedVersionId10More__: unknown;
+  ManagedChallengeRuleObjectLastUpdatedVersionId10More__: unknown;
+  RedirectRuleObjectLastUpdatedVersionId10More__: unknown;
+  RewriteRuleObjectLastUpdatedVersionId10More__: unknown;
+  RouteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ScoreRuleObjectLastUpdatedVersionId10More__: unknown;
+  ServeErrorRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheControlObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheTagsObjectLastUpdatedVersionId10More__: unknown;
+  SetConfigRuleObjectLastUpdatedVersionId10More__: unknown;
+  SkipRuleObjectLastUpdatedVersionId10More__: unknown;
+  TransformResponseHTMLObjectLastUpdatedVersionId10More__: unknown;
+}
+export const PhasesUpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BlockRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("BlockRule object { last_updated, version, id, 10 more }"),
+    ),
+    ChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("Challenge object { last_updated, version, id, 10 more }"),
+    ),
+    CompressResponseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "CompressResponseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    DDoSDynamicRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("DDoSDynamicRule object { last_updated, version, id, 10 more }"),
+    ),
+    ExecuteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ExecuteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ForceConnectionCloseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    JSChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("JSChallenge object { last_updated, version, id, 10 more }"),
+    ),
+    LogRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("LogRule object { last_updated, version, id, 10 more }"),
+    ),
+    LogCustomFieldRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "LogCustomFieldRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    ManagedChallengeRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ManagedChallengeRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    RedirectRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RedirectRule object { last_updated, version, id, 10 more }"),
+    ),
+    RewriteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RewriteRule object { last_updated, version, id, 10 more }"),
+    ),
+    RouteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RouteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ScoreRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ScoreRule object { last_updated, version, id, 10 more }"),
+    ),
+    ServeErrorRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ServeErrorRule object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheControlObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheControl object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "SetCacheSettingsRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    SetCacheTagsObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheTags object { last_updated, version, id, 10 more }"),
+    ),
+    SetConfigRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetConfigRule object { last_updated, version, id, 10 more }"),
+    ),
+    SkipRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SkipRule object { last_updated, version, id, 10 more }"),
+    ),
+    TransformResponseHTMLObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "TransformResponseHTML object { last_updated, version, id, 10 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "PhasesUpdateResponseRulesItem",
+}) as any as S.Schema<PhasesUpdateResponseRulesItem>;
+
+export type PhasesUpdateResponseRulesList = PhasesUpdateResponseRulesItem[];
 export const PhasesUpdateResponseRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PhasesUpdateResponseRulesItem,
 ) as any as S.Schema<PhasesUpdateResponseRulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PhasesUpdateResponse {
+  /** The unique ID of the ruleset. */
   id: string;
+  /** The kind of the ruleset. */
   kind: unknown;
-  last_updated: string;
+  /** The timestamp of when the ruleset was last modified. */
+  lastUpdated: string;
+  /** The human-readable name of the ruleset. */
   name: string;
+  /** The phase of the ruleset. */
   phase: unknown;
+  /** The list of rules in the ruleset. */
   rules: PhasesUpdateResponseRulesList;
+  /** The version of the ruleset. */
   version: string;
+  /** An informative description of the ruleset. */
   description?: string;
 }
 export const PhasesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: S.Unknown,
-    last_updated: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
     name: S.String,
     phase: S.Unknown,
     rules: PhasesUpdateResponseRulesList,
@@ -314,17 +998,19 @@ export const PhasesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PhasesUpdateResponse>;
 
 export interface PhasesVersionsGetRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  ruleset_phase: string;
-  ruleset_version: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The phase of the ruleset. */
+  rulesetPhase: string;
+  /** The version of the ruleset. */
+  rulesetVersion: string;
 }
 export const PhasesVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    ruleset_phase: S.String.pipe(T.Label()),
-    ruleset_version: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    rulesetPhase: S.String.pipe(T.Label("ruleset_phase")),
+    rulesetVersion: S.String.pipe(T.Label("ruleset_version")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -336,27 +1022,141 @@ export const PhasesVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PhasesVersionsGetRequest",
 }) as any as S.Schema<PhasesVersionsGetRequest>;
 
-export type PhasesVersionsGetResponseRulesList = unknown[];
+export interface PhasesVersionsGetResponseRulesItem {
+  BlockRuleObjectLastUpdatedVersionId10More__: unknown;
+  ChallengeObjectLastUpdatedVersionId10More__: unknown;
+  CompressResponseRuleObjectLastUpdatedVersionId10More__: unknown;
+  DDoSDynamicRuleObjectLastUpdatedVersionId10More__: unknown;
+  ExecuteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: unknown;
+  JSChallengeObjectLastUpdatedVersionId10More__: unknown;
+  LogRuleObjectLastUpdatedVersionId10More__: unknown;
+  LogCustomFieldRuleObjectLastUpdatedVersionId10More__: unknown;
+  ManagedChallengeRuleObjectLastUpdatedVersionId10More__: unknown;
+  RedirectRuleObjectLastUpdatedVersionId10More__: unknown;
+  RewriteRuleObjectLastUpdatedVersionId10More__: unknown;
+  RouteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ScoreRuleObjectLastUpdatedVersionId10More__: unknown;
+  ServeErrorRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheControlObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheTagsObjectLastUpdatedVersionId10More__: unknown;
+  SetConfigRuleObjectLastUpdatedVersionId10More__: unknown;
+  SkipRuleObjectLastUpdatedVersionId10More__: unknown;
+  TransformResponseHTMLObjectLastUpdatedVersionId10More__: unknown;
+}
+export const PhasesVersionsGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BlockRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("BlockRule object { last_updated, version, id, 10 more }"),
+    ),
+    ChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("Challenge object { last_updated, version, id, 10 more }"),
+    ),
+    CompressResponseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "CompressResponseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    DDoSDynamicRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("DDoSDynamicRule object { last_updated, version, id, 10 more }"),
+    ),
+    ExecuteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ExecuteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ForceConnectionCloseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    JSChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("JSChallenge object { last_updated, version, id, 10 more }"),
+    ),
+    LogRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("LogRule object { last_updated, version, id, 10 more }"),
+    ),
+    LogCustomFieldRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "LogCustomFieldRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    ManagedChallengeRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ManagedChallengeRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    RedirectRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RedirectRule object { last_updated, version, id, 10 more }"),
+    ),
+    RewriteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RewriteRule object { last_updated, version, id, 10 more }"),
+    ),
+    RouteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RouteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ScoreRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ScoreRule object { last_updated, version, id, 10 more }"),
+    ),
+    ServeErrorRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ServeErrorRule object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheControlObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheControl object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "SetCacheSettingsRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    SetCacheTagsObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheTags object { last_updated, version, id, 10 more }"),
+    ),
+    SetConfigRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetConfigRule object { last_updated, version, id, 10 more }"),
+    ),
+    SkipRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SkipRule object { last_updated, version, id, 10 more }"),
+    ),
+    TransformResponseHTMLObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "TransformResponseHTML object { last_updated, version, id, 10 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "PhasesVersionsGetResponseRulesItem",
+}) as any as S.Schema<PhasesVersionsGetResponseRulesItem>;
+
+export type PhasesVersionsGetResponseRulesList =
+  PhasesVersionsGetResponseRulesItem[];
 export const PhasesVersionsGetResponseRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PhasesVersionsGetResponseRulesItem,
 ) as any as S.Schema<PhasesVersionsGetResponseRulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PhasesVersionsGetResponse {
+  /** The unique ID of the ruleset. */
   id: string;
+  /** The kind of the ruleset. */
   kind: unknown;
-  last_updated: string;
+  /** The timestamp of when the ruleset was last modified. */
+  lastUpdated: string;
+  /** The human-readable name of the ruleset. */
   name: string;
+  /** The phase of the ruleset. */
   phase: unknown;
+  /** The list of rules in the ruleset. */
   rules: PhasesVersionsGetResponseRulesList;
+  /** The version of the ruleset. */
   version: string;
+  /** An informative description of the ruleset. */
   description?: string;
 }
 export const PhasesVersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: S.Unknown,
-    last_updated: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
     name: S.String,
     phase: S.Unknown,
     rules: PhasesVersionsGetResponseRulesList,
@@ -368,15 +1168,16 @@ export const PhasesVersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PhasesVersionsGetResponse>;
 
 export interface PhasesVersionsListRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  ruleset_phase: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The phase of the ruleset. */
+  rulesetPhase: string;
 }
 export const PhasesVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    ruleset_phase: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    rulesetPhase: S.String.pipe(T.Label("ruleset_phase")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -389,19 +1190,26 @@ export const PhasesVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PhasesVersionsListRequest>;
 
 export interface PhasesVersionsListResultItem {
+  /** The unique ID of the ruleset. */
   id: string;
+  /** The kind of the ruleset. */
   kind: unknown;
-  last_updated: string;
+  /** The timestamp of when the ruleset was last modified. */
+  lastUpdated: string;
+  /** The human-readable name of the ruleset. */
   name: string;
+  /** The phase of the ruleset. */
   phase: unknown;
+  /** The version of the ruleset. */
   version: string;
+  /** An informative description of the ruleset. */
   description?: string;
 }
 export const PhasesVersionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: S.Unknown,
-    last_updated: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
     name: S.String,
     phase: S.Unknown,
     version: S.String,
@@ -417,6 +1225,7 @@ export const PhasesVersionsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PhasesVersionsListResultList>;
 
 export interface PhasesVersionsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PhasesVersionsListResultList;
 }
 export const PhasesVersionsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -427,18 +1236,690 @@ export const PhasesVersionsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PhasesVersionsListResponse",
 }) as any as S.Schema<PhasesVersionsListResponse>;
 
+export interface RulesCreateRequestBodyBlockRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesCreateRequestBodyBlockRulePosition = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+).annotate({
+  identifier: "RulesCreateRequestBodyBlockRulePosition",
+}) as any as S.Schema<RulesCreateRequestBodyBlockRulePosition>;
+
+export interface RulesCreateRequestBodyBlockRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesCreateRequestBodyBlockRulePosition;
+}
+export const RulesCreateRequestBodyBlockRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesCreateRequestBodyBlockRulePosition),
+  }),
+).annotate({
+  identifier: "RulesCreateRequestBodyBlockRule",
+}) as any as S.Schema<RulesCreateRequestBodyBlockRule>;
+
+export interface RulesCreateRequestBodyResponseCompressionRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesCreateRequestBodyResponseCompressionRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesCreateRequestBodyResponseCompressionRulePosition",
+  }) as any as S.Schema<RulesCreateRequestBodyResponseCompressionRulePosition>;
+
+export interface RulesCreateRequestBodyResponseCompressionRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesCreateRequestBodyResponseCompressionRulePosition;
+}
+export const RulesCreateRequestBodyResponseCompressionRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      position: S.optional(
+        RulesCreateRequestBodyResponseCompressionRulePosition,
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesCreateRequestBodyResponseCompressionRule",
+  }) as any as S.Schema<RulesCreateRequestBodyResponseCompressionRule>;
+
+export interface RulesCreateRequestBodyDDoSDynamicRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesCreateRequestBodyDDoSDynamicRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesCreateRequestBodyDDoSDynamicRulePosition",
+  }) as any as S.Schema<RulesCreateRequestBodyDDoSDynamicRulePosition>;
+
+export interface RulesCreateRequestBodyDDoSDynamicRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesCreateRequestBodyDDoSDynamicRulePosition;
+}
+export const RulesCreateRequestBodyDDoSDynamicRule = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      position: S.optional(RulesCreateRequestBodyDDoSDynamicRulePosition),
+    }),
+).annotate({
+  identifier: "RulesCreateRequestBodyDDoSDynamicRule",
+}) as any as S.Schema<RulesCreateRequestBodyDDoSDynamicRule>;
+
+export interface RulesCreateRequestBodyExecuteRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesCreateRequestBodyExecuteRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesCreateRequestBodyExecuteRulePosition",
+  }) as any as S.Schema<RulesCreateRequestBodyExecuteRulePosition>;
+
+export interface RulesCreateRequestBodyExecuteRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesCreateRequestBodyExecuteRulePosition;
+}
+export const RulesCreateRequestBodyExecuteRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesCreateRequestBodyExecuteRulePosition),
+  }),
+).annotate({
+  identifier: "RulesCreateRequestBodyExecuteRule",
+}) as any as S.Schema<RulesCreateRequestBodyExecuteRule>;
+
+export interface RulesCreateRequestBodyForceConnectionCloseRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesCreateRequestBodyForceConnectionCloseRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesCreateRequestBodyForceConnectionCloseRulePosition",
+  }) as any as S.Schema<RulesCreateRequestBodyForceConnectionCloseRulePosition>;
+
+export interface RulesCreateRequestBodyForceConnectionCloseRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesCreateRequestBodyForceConnectionCloseRulePosition;
+}
+export const RulesCreateRequestBodyForceConnectionCloseRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      position: S.optional(
+        RulesCreateRequestBodyForceConnectionCloseRulePosition,
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesCreateRequestBodyForceConnectionCloseRule",
+  }) as any as S.Schema<RulesCreateRequestBodyForceConnectionCloseRule>;
+
+export interface RulesCreateRequestBodyLogRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesCreateRequestBodyLogRulePosition = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+).annotate({
+  identifier: "RulesCreateRequestBodyLogRulePosition",
+}) as any as S.Schema<RulesCreateRequestBodyLogRulePosition>;
+
+export interface RulesCreateRequestBodyLogRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesCreateRequestBodyLogRulePosition;
+}
+export const RulesCreateRequestBodyLogRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesCreateRequestBodyLogRulePosition),
+  }),
+).annotate({
+  identifier: "RulesCreateRequestBodyLogRule",
+}) as any as S.Schema<RulesCreateRequestBodyLogRule>;
+
+export interface RulesCreateRequestBodyLogCustomFieldRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesCreateRequestBodyLogCustomFieldRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesCreateRequestBodyLogCustomFieldRulePosition",
+  }) as any as S.Schema<RulesCreateRequestBodyLogCustomFieldRulePosition>;
+
+export interface RulesCreateRequestBodyLogCustomFieldRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesCreateRequestBodyLogCustomFieldRulePosition;
+}
+export const RulesCreateRequestBodyLogCustomFieldRule = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      position: S.optional(RulesCreateRequestBodyLogCustomFieldRulePosition),
+    }),
+).annotate({
+  identifier: "RulesCreateRequestBodyLogCustomFieldRule",
+}) as any as S.Schema<RulesCreateRequestBodyLogCustomFieldRule>;
+
+export interface RulesCreateRequestBodyManagedChallengeRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesCreateRequestBodyManagedChallengeRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesCreateRequestBodyManagedChallengeRulePosition",
+  }) as any as S.Schema<RulesCreateRequestBodyManagedChallengeRulePosition>;
+
+export interface RulesCreateRequestBodyManagedChallengeRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesCreateRequestBodyManagedChallengeRulePosition;
+}
+export const RulesCreateRequestBodyManagedChallengeRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      position: S.optional(RulesCreateRequestBodyManagedChallengeRulePosition),
+    }),
+  ).annotate({
+    identifier: "RulesCreateRequestBodyManagedChallengeRule",
+  }) as any as S.Schema<RulesCreateRequestBodyManagedChallengeRule>;
+
+export interface RulesCreateRequestBodyRedirectRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesCreateRequestBodyRedirectRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesCreateRequestBodyRedirectRulePosition",
+  }) as any as S.Schema<RulesCreateRequestBodyRedirectRulePosition>;
+
+export interface RulesCreateRequestBodyRedirectRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesCreateRequestBodyRedirectRulePosition;
+}
+export const RulesCreateRequestBodyRedirectRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesCreateRequestBodyRedirectRulePosition),
+  }),
+).annotate({
+  identifier: "RulesCreateRequestBodyRedirectRule",
+}) as any as S.Schema<RulesCreateRequestBodyRedirectRule>;
+
+export interface RulesCreateRequestBodyRewriteRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesCreateRequestBodyRewriteRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesCreateRequestBodyRewriteRulePosition",
+  }) as any as S.Schema<RulesCreateRequestBodyRewriteRulePosition>;
+
+export interface RulesCreateRequestBodyRewriteRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesCreateRequestBodyRewriteRulePosition;
+}
+export const RulesCreateRequestBodyRewriteRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesCreateRequestBodyRewriteRulePosition),
+  }),
+).annotate({
+  identifier: "RulesCreateRequestBodyRewriteRule",
+}) as any as S.Schema<RulesCreateRequestBodyRewriteRule>;
+
+export interface RulesCreateRequestBodyRouteRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesCreateRequestBodyRouteRulePosition = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+).annotate({
+  identifier: "RulesCreateRequestBodyRouteRulePosition",
+}) as any as S.Schema<RulesCreateRequestBodyRouteRulePosition>;
+
+export interface RulesCreateRequestBodyRouteRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesCreateRequestBodyRouteRulePosition;
+}
+export const RulesCreateRequestBodyRouteRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesCreateRequestBodyRouteRulePosition),
+  }),
+).annotate({
+  identifier: "RulesCreateRequestBodyRouteRule",
+}) as any as S.Schema<RulesCreateRequestBodyRouteRule>;
+
+export interface RulesCreateRequestBodyScoreRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesCreateRequestBodyScoreRulePosition = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+).annotate({
+  identifier: "RulesCreateRequestBodyScoreRulePosition",
+}) as any as S.Schema<RulesCreateRequestBodyScoreRulePosition>;
+
+export interface RulesCreateRequestBodyScoreRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesCreateRequestBodyScoreRulePosition;
+}
+export const RulesCreateRequestBodyScoreRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesCreateRequestBodyScoreRulePosition),
+  }),
+).annotate({
+  identifier: "RulesCreateRequestBodyScoreRule",
+}) as any as S.Schema<RulesCreateRequestBodyScoreRule>;
+
+export interface RulesCreateRequestBodyServeErrorRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesCreateRequestBodyServeErrorRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesCreateRequestBodyServeErrorRulePosition",
+  }) as any as S.Schema<RulesCreateRequestBodyServeErrorRulePosition>;
+
+export interface RulesCreateRequestBodyServeErrorRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesCreateRequestBodyServeErrorRulePosition;
+}
+export const RulesCreateRequestBodyServeErrorRule = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      position: S.optional(RulesCreateRequestBodyServeErrorRulePosition),
+    }),
+).annotate({
+  identifier: "RulesCreateRequestBodyServeErrorRule",
+}) as any as S.Schema<RulesCreateRequestBodyServeErrorRule>;
+
+export interface RulesCreateRequestBodySetCacheSettingsRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesCreateRequestBodySetCacheSettingsRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesCreateRequestBodySetCacheSettingsRulePosition",
+  }) as any as S.Schema<RulesCreateRequestBodySetCacheSettingsRulePosition>;
+
+export interface RulesCreateRequestBodySetCacheSettingsRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesCreateRequestBodySetCacheSettingsRulePosition;
+}
+export const RulesCreateRequestBodySetCacheSettingsRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      position: S.optional(RulesCreateRequestBodySetCacheSettingsRulePosition),
+    }),
+  ).annotate({
+    identifier: "RulesCreateRequestBodySetCacheSettingsRule",
+  }) as any as S.Schema<RulesCreateRequestBodySetCacheSettingsRule>;
+
+export interface RulesCreateRequestBodySetConfigurationRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesCreateRequestBodySetConfigurationRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesCreateRequestBodySetConfigurationRulePosition",
+  }) as any as S.Schema<RulesCreateRequestBodySetConfigurationRulePosition>;
+
+export interface RulesCreateRequestBodySetConfigurationRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesCreateRequestBodySetConfigurationRulePosition;
+}
+export const RulesCreateRequestBodySetConfigurationRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      position: S.optional(RulesCreateRequestBodySetConfigurationRulePosition),
+    }),
+  ).annotate({
+    identifier: "RulesCreateRequestBodySetConfigurationRule",
+  }) as any as S.Schema<RulesCreateRequestBodySetConfigurationRule>;
+
+export interface RulesCreateRequestBodySkipRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesCreateRequestBodySkipRulePosition = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+).annotate({
+  identifier: "RulesCreateRequestBodySkipRulePosition",
+}) as any as S.Schema<RulesCreateRequestBodySkipRulePosition>;
+
+export interface RulesCreateRequestBodySkipRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesCreateRequestBodySkipRulePosition;
+}
+export const RulesCreateRequestBodySkipRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesCreateRequestBodySkipRulePosition),
+  }),
+).annotate({
+  identifier: "RulesCreateRequestBodySkipRule",
+}) as any as S.Schema<RulesCreateRequestBodySkipRule>;
+
+export interface RulesCreateRequestBody {
+  BlockRule: RulesCreateRequestBodyBlockRule;
+  ChallengeRuleObjectLastUpdatedVersionId11More__: unknown;
+  ResponseCompressionRule: RulesCreateRequestBodyResponseCompressionRule;
+  DDoSDynamicRule: RulesCreateRequestBodyDDoSDynamicRule;
+  ExecuteRule: RulesCreateRequestBodyExecuteRule;
+  ForceConnectionCloseRule: RulesCreateRequestBodyForceConnectionCloseRule;
+  JavaScriptChallengeRuleObjectLastUpdatedVersionId11More__: unknown;
+  LogRule: RulesCreateRequestBodyLogRule;
+  LogCustomFieldRule: RulesCreateRequestBodyLogCustomFieldRule;
+  ManagedChallengeRule: RulesCreateRequestBodyManagedChallengeRule;
+  RedirectRule: RulesCreateRequestBodyRedirectRule;
+  RewriteRule: RulesCreateRequestBodyRewriteRule;
+  RouteRule: RulesCreateRequestBodyRouteRule;
+  ScoreRule: RulesCreateRequestBodyScoreRule;
+  ServeErrorRule: RulesCreateRequestBodyServeErrorRule;
+  SetCacheControlRuleObjectLastUpdatedVersionId11More__: unknown;
+  SetCacheSettingsRule: RulesCreateRequestBodySetCacheSettingsRule;
+  SetCacheTagsRuleObjectLastUpdatedVersionId11More__: unknown;
+  SetConfigurationRule: RulesCreateRequestBodySetConfigurationRule;
+  SkipRule: RulesCreateRequestBodySkipRule;
+  TransformResponseHTMLRuleObjectLastUpdatedVersionId11More__: unknown;
+}
+export const RulesCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BlockRule: RulesCreateRequestBodyBlockRule,
+    ChallengeRuleObjectLastUpdatedVersionId11More__: S.Unknown.pipe(
+      T.Body("ChallengeRule object { last_updated, version, id, 11 more }"),
+    ),
+    ResponseCompressionRule: RulesCreateRequestBodyResponseCompressionRule,
+    DDoSDynamicRule: RulesCreateRequestBodyDDoSDynamicRule,
+    ExecuteRule: RulesCreateRequestBodyExecuteRule,
+    ForceConnectionCloseRule: RulesCreateRequestBodyForceConnectionCloseRule,
+    JavaScriptChallengeRuleObjectLastUpdatedVersionId11More__: S.Unknown.pipe(
+      T.Body(
+        "JavaScriptChallengeRule object { last_updated, version, id, 11 more }",
+      ),
+    ),
+    LogRule: RulesCreateRequestBodyLogRule,
+    LogCustomFieldRule: RulesCreateRequestBodyLogCustomFieldRule,
+    ManagedChallengeRule: RulesCreateRequestBodyManagedChallengeRule,
+    RedirectRule: RulesCreateRequestBodyRedirectRule,
+    RewriteRule: RulesCreateRequestBodyRewriteRule,
+    RouteRule: RulesCreateRequestBodyRouteRule,
+    ScoreRule: RulesCreateRequestBodyScoreRule,
+    ServeErrorRule: RulesCreateRequestBodyServeErrorRule,
+    SetCacheControlRuleObjectLastUpdatedVersionId11More__: S.Unknown.pipe(
+      T.Body(
+        "SetCacheControlRule object { last_updated, version, id, 11 more }",
+      ),
+    ),
+    SetCacheSettingsRule: RulesCreateRequestBodySetCacheSettingsRule,
+    SetCacheTagsRuleObjectLastUpdatedVersionId11More__: S.Unknown.pipe(
+      T.Body("SetCacheTagsRule object { last_updated, version, id, 11 more }"),
+    ),
+    SetConfigurationRule: RulesCreateRequestBodySetConfigurationRule,
+    SkipRule: RulesCreateRequestBodySkipRule,
+    TransformResponseHTMLRuleObjectLastUpdatedVersionId11More__: S.Unknown.pipe(
+      T.Body(
+        "TransformResponseHTMLRule object { last_updated, version, id, 11 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "RulesCreateRequestBody",
+}) as any as S.Schema<RulesCreateRequestBody>;
+
 export interface RulesCreateRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  ruleset_id: string;
-  body: unknown;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The unique ID of the ruleset. */
+  rulesetId: string;
+  body: RulesCreateRequestBody;
 }
 export const RulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    ruleset_id: S.String.pipe(T.Label()),
-    body: S.Unknown,
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    rulesetId: S.String.pipe(T.Label("ruleset_id")),
+    body: RulesCreateRequestBody,
   }).pipe(
     T.Http({
       method: "POST",
@@ -450,27 +1931,140 @@ export const RulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesCreateRequest",
 }) as any as S.Schema<RulesCreateRequest>;
 
-export type RulesCreateResponseRulesList = unknown[];
+export interface RulesCreateResponseRulesItem {
+  BlockRuleObjectLastUpdatedVersionId10More__: unknown;
+  ChallengeObjectLastUpdatedVersionId10More__: unknown;
+  CompressResponseRuleObjectLastUpdatedVersionId10More__: unknown;
+  DDoSDynamicRuleObjectLastUpdatedVersionId10More__: unknown;
+  ExecuteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: unknown;
+  JSChallengeObjectLastUpdatedVersionId10More__: unknown;
+  LogRuleObjectLastUpdatedVersionId10More__: unknown;
+  LogCustomFieldRuleObjectLastUpdatedVersionId10More__: unknown;
+  ManagedChallengeRuleObjectLastUpdatedVersionId10More__: unknown;
+  RedirectRuleObjectLastUpdatedVersionId10More__: unknown;
+  RewriteRuleObjectLastUpdatedVersionId10More__: unknown;
+  RouteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ScoreRuleObjectLastUpdatedVersionId10More__: unknown;
+  ServeErrorRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheControlObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheTagsObjectLastUpdatedVersionId10More__: unknown;
+  SetConfigRuleObjectLastUpdatedVersionId10More__: unknown;
+  SkipRuleObjectLastUpdatedVersionId10More__: unknown;
+  TransformResponseHTMLObjectLastUpdatedVersionId10More__: unknown;
+}
+export const RulesCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BlockRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("BlockRule object { last_updated, version, id, 10 more }"),
+    ),
+    ChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("Challenge object { last_updated, version, id, 10 more }"),
+    ),
+    CompressResponseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "CompressResponseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    DDoSDynamicRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("DDoSDynamicRule object { last_updated, version, id, 10 more }"),
+    ),
+    ExecuteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ExecuteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ForceConnectionCloseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    JSChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("JSChallenge object { last_updated, version, id, 10 more }"),
+    ),
+    LogRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("LogRule object { last_updated, version, id, 10 more }"),
+    ),
+    LogCustomFieldRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "LogCustomFieldRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    ManagedChallengeRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ManagedChallengeRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    RedirectRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RedirectRule object { last_updated, version, id, 10 more }"),
+    ),
+    RewriteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RewriteRule object { last_updated, version, id, 10 more }"),
+    ),
+    RouteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RouteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ScoreRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ScoreRule object { last_updated, version, id, 10 more }"),
+    ),
+    ServeErrorRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ServeErrorRule object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheControlObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheControl object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "SetCacheSettingsRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    SetCacheTagsObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheTags object { last_updated, version, id, 10 more }"),
+    ),
+    SetConfigRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetConfigRule object { last_updated, version, id, 10 more }"),
+    ),
+    SkipRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SkipRule object { last_updated, version, id, 10 more }"),
+    ),
+    TransformResponseHTMLObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "TransformResponseHTML object { last_updated, version, id, 10 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "RulesCreateResponseRulesItem",
+}) as any as S.Schema<RulesCreateResponseRulesItem>;
+
+export type RulesCreateResponseRulesList = RulesCreateResponseRulesItem[];
 export const RulesCreateResponseRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  RulesCreateResponseRulesItem,
 ) as any as S.Schema<RulesCreateResponseRulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RulesCreateResponse {
+  /** The unique ID of the ruleset. */
   id: string;
+  /** The kind of the ruleset. */
   kind: unknown;
-  last_updated: string;
+  /** The timestamp of when the ruleset was last modified. */
+  lastUpdated: string;
+  /** The human-readable name of the ruleset. */
   name: string;
+  /** The phase of the ruleset. */
   phase: unknown;
+  /** The list of rules in the ruleset. */
   rules: RulesCreateResponseRulesList;
+  /** The version of the ruleset. */
   version: string;
+  /** An informative description of the ruleset. */
   description?: string;
 }
 export const RulesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: S.Unknown,
-    last_updated: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
     name: S.String,
     phase: S.Unknown,
     rules: RulesCreateResponseRulesList,
@@ -482,17 +2076,19 @@ export const RulesCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesCreateResponse>;
 
 export interface RulesDeleteRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  ruleset_id: string;
-  rule_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The unique ID of the ruleset. */
+  rulesetId: string;
+  /** The unique ID of the rule. */
+  ruleId: string;
 }
 export const RulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    ruleset_id: S.String.pipe(T.Label()),
-    rule_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    rulesetId: S.String.pipe(T.Label("ruleset_id")),
+    ruleId: S.String.pipe(T.Label("rule_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -504,27 +2100,140 @@ export const RulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesDeleteRequest",
 }) as any as S.Schema<RulesDeleteRequest>;
 
-export type RulesDeleteResponseRulesList = unknown[];
+export interface RulesDeleteResponseRulesItem {
+  BlockRuleObjectLastUpdatedVersionId10More__: unknown;
+  ChallengeObjectLastUpdatedVersionId10More__: unknown;
+  CompressResponseRuleObjectLastUpdatedVersionId10More__: unknown;
+  DDoSDynamicRuleObjectLastUpdatedVersionId10More__: unknown;
+  ExecuteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: unknown;
+  JSChallengeObjectLastUpdatedVersionId10More__: unknown;
+  LogRuleObjectLastUpdatedVersionId10More__: unknown;
+  LogCustomFieldRuleObjectLastUpdatedVersionId10More__: unknown;
+  ManagedChallengeRuleObjectLastUpdatedVersionId10More__: unknown;
+  RedirectRuleObjectLastUpdatedVersionId10More__: unknown;
+  RewriteRuleObjectLastUpdatedVersionId10More__: unknown;
+  RouteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ScoreRuleObjectLastUpdatedVersionId10More__: unknown;
+  ServeErrorRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheControlObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheTagsObjectLastUpdatedVersionId10More__: unknown;
+  SetConfigRuleObjectLastUpdatedVersionId10More__: unknown;
+  SkipRuleObjectLastUpdatedVersionId10More__: unknown;
+  TransformResponseHTMLObjectLastUpdatedVersionId10More__: unknown;
+}
+export const RulesDeleteResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BlockRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("BlockRule object { last_updated, version, id, 10 more }"),
+    ),
+    ChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("Challenge object { last_updated, version, id, 10 more }"),
+    ),
+    CompressResponseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "CompressResponseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    DDoSDynamicRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("DDoSDynamicRule object { last_updated, version, id, 10 more }"),
+    ),
+    ExecuteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ExecuteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ForceConnectionCloseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    JSChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("JSChallenge object { last_updated, version, id, 10 more }"),
+    ),
+    LogRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("LogRule object { last_updated, version, id, 10 more }"),
+    ),
+    LogCustomFieldRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "LogCustomFieldRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    ManagedChallengeRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ManagedChallengeRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    RedirectRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RedirectRule object { last_updated, version, id, 10 more }"),
+    ),
+    RewriteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RewriteRule object { last_updated, version, id, 10 more }"),
+    ),
+    RouteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RouteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ScoreRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ScoreRule object { last_updated, version, id, 10 more }"),
+    ),
+    ServeErrorRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ServeErrorRule object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheControlObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheControl object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "SetCacheSettingsRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    SetCacheTagsObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheTags object { last_updated, version, id, 10 more }"),
+    ),
+    SetConfigRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetConfigRule object { last_updated, version, id, 10 more }"),
+    ),
+    SkipRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SkipRule object { last_updated, version, id, 10 more }"),
+    ),
+    TransformResponseHTMLObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "TransformResponseHTML object { last_updated, version, id, 10 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "RulesDeleteResponseRulesItem",
+}) as any as S.Schema<RulesDeleteResponseRulesItem>;
+
+export type RulesDeleteResponseRulesList = RulesDeleteResponseRulesItem[];
 export const RulesDeleteResponseRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  RulesDeleteResponseRulesItem,
 ) as any as S.Schema<RulesDeleteResponseRulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RulesDeleteResponse {
+  /** The unique ID of the ruleset. */
   id: string;
+  /** The kind of the ruleset. */
   kind: unknown;
-  last_updated: string;
+  /** The timestamp of when the ruleset was last modified. */
+  lastUpdated: string;
+  /** The human-readable name of the ruleset. */
   name: string;
+  /** The phase of the ruleset. */
   phase: unknown;
+  /** The list of rules in the ruleset. */
   rules: RulesDeleteResponseRulesList;
+  /** The version of the ruleset. */
   version: string;
+  /** An informative description of the ruleset. */
   description?: string;
 }
 export const RulesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: S.Unknown,
-    last_updated: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
     name: S.String,
     phase: S.Unknown,
     rules: RulesDeleteResponseRulesList,
@@ -535,20 +2244,688 @@ export const RulesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesDeleteResponse",
 }) as any as S.Schema<RulesDeleteResponse>;
 
+export interface RulesEditRequestBodyBlockRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesEditRequestBodyBlockRulePosition = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+).annotate({
+  identifier: "RulesEditRequestBodyBlockRulePosition",
+}) as any as S.Schema<RulesEditRequestBodyBlockRulePosition>;
+
+export interface RulesEditRequestBodyBlockRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesEditRequestBodyBlockRulePosition;
+}
+export const RulesEditRequestBodyBlockRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesEditRequestBodyBlockRulePosition),
+  }),
+).annotate({
+  identifier: "RulesEditRequestBodyBlockRule",
+}) as any as S.Schema<RulesEditRequestBodyBlockRule>;
+
+export interface RulesEditRequestBodyResponseCompressionRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesEditRequestBodyResponseCompressionRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesEditRequestBodyResponseCompressionRulePosition",
+  }) as any as S.Schema<RulesEditRequestBodyResponseCompressionRulePosition>;
+
+export interface RulesEditRequestBodyResponseCompressionRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesEditRequestBodyResponseCompressionRulePosition;
+}
+export const RulesEditRequestBodyResponseCompressionRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      position: S.optional(RulesEditRequestBodyResponseCompressionRulePosition),
+    }),
+  ).annotate({
+    identifier: "RulesEditRequestBodyResponseCompressionRule",
+  }) as any as S.Schema<RulesEditRequestBodyResponseCompressionRule>;
+
+export interface RulesEditRequestBodyDDoSDynamicRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesEditRequestBodyDDoSDynamicRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesEditRequestBodyDDoSDynamicRulePosition",
+  }) as any as S.Schema<RulesEditRequestBodyDDoSDynamicRulePosition>;
+
+export interface RulesEditRequestBodyDDoSDynamicRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesEditRequestBodyDDoSDynamicRulePosition;
+}
+export const RulesEditRequestBodyDDoSDynamicRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesEditRequestBodyDDoSDynamicRulePosition),
+  }),
+).annotate({
+  identifier: "RulesEditRequestBodyDDoSDynamicRule",
+}) as any as S.Schema<RulesEditRequestBodyDDoSDynamicRule>;
+
+export interface RulesEditRequestBodyExecuteRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesEditRequestBodyExecuteRulePosition = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+).annotate({
+  identifier: "RulesEditRequestBodyExecuteRulePosition",
+}) as any as S.Schema<RulesEditRequestBodyExecuteRulePosition>;
+
+export interface RulesEditRequestBodyExecuteRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesEditRequestBodyExecuteRulePosition;
+}
+export const RulesEditRequestBodyExecuteRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesEditRequestBodyExecuteRulePosition),
+  }),
+).annotate({
+  identifier: "RulesEditRequestBodyExecuteRule",
+}) as any as S.Schema<RulesEditRequestBodyExecuteRule>;
+
+export interface RulesEditRequestBodyForceConnectionCloseRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesEditRequestBodyForceConnectionCloseRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesEditRequestBodyForceConnectionCloseRulePosition",
+  }) as any as S.Schema<RulesEditRequestBodyForceConnectionCloseRulePosition>;
+
+export interface RulesEditRequestBodyForceConnectionCloseRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesEditRequestBodyForceConnectionCloseRulePosition;
+}
+export const RulesEditRequestBodyForceConnectionCloseRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      position: S.optional(
+        RulesEditRequestBodyForceConnectionCloseRulePosition,
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesEditRequestBodyForceConnectionCloseRule",
+  }) as any as S.Schema<RulesEditRequestBodyForceConnectionCloseRule>;
+
+export interface RulesEditRequestBodyLogRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesEditRequestBodyLogRulePosition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BeforePositionObjectBefore__: S.Unknown.pipe(
+      T.Body("BeforePosition object { before }"),
+    ),
+    AfterPositionObjectAfter__: S.Unknown.pipe(
+      T.Body("AfterPosition object { after }"),
+    ),
+    IndexPositionObjectIndex__: S.Unknown.pipe(
+      T.Body("IndexPosition object { index }"),
+    ),
+  }),
+).annotate({
+  identifier: "RulesEditRequestBodyLogRulePosition",
+}) as any as S.Schema<RulesEditRequestBodyLogRulePosition>;
+
+export interface RulesEditRequestBodyLogRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesEditRequestBodyLogRulePosition;
+}
+export const RulesEditRequestBodyLogRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesEditRequestBodyLogRulePosition),
+  }),
+).annotate({
+  identifier: "RulesEditRequestBodyLogRule",
+}) as any as S.Schema<RulesEditRequestBodyLogRule>;
+
+export interface RulesEditRequestBodyLogCustomFieldRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesEditRequestBodyLogCustomFieldRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesEditRequestBodyLogCustomFieldRulePosition",
+  }) as any as S.Schema<RulesEditRequestBodyLogCustomFieldRulePosition>;
+
+export interface RulesEditRequestBodyLogCustomFieldRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesEditRequestBodyLogCustomFieldRulePosition;
+}
+export const RulesEditRequestBodyLogCustomFieldRule = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      position: S.optional(RulesEditRequestBodyLogCustomFieldRulePosition),
+    }),
+).annotate({
+  identifier: "RulesEditRequestBodyLogCustomFieldRule",
+}) as any as S.Schema<RulesEditRequestBodyLogCustomFieldRule>;
+
+export interface RulesEditRequestBodyManagedChallengeRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesEditRequestBodyManagedChallengeRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesEditRequestBodyManagedChallengeRulePosition",
+  }) as any as S.Schema<RulesEditRequestBodyManagedChallengeRulePosition>;
+
+export interface RulesEditRequestBodyManagedChallengeRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesEditRequestBodyManagedChallengeRulePosition;
+}
+export const RulesEditRequestBodyManagedChallengeRule = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      position: S.optional(RulesEditRequestBodyManagedChallengeRulePosition),
+    }),
+).annotate({
+  identifier: "RulesEditRequestBodyManagedChallengeRule",
+}) as any as S.Schema<RulesEditRequestBodyManagedChallengeRule>;
+
+export interface RulesEditRequestBodyRedirectRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesEditRequestBodyRedirectRulePosition = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+).annotate({
+  identifier: "RulesEditRequestBodyRedirectRulePosition",
+}) as any as S.Schema<RulesEditRequestBodyRedirectRulePosition>;
+
+export interface RulesEditRequestBodyRedirectRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesEditRequestBodyRedirectRulePosition;
+}
+export const RulesEditRequestBodyRedirectRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesEditRequestBodyRedirectRulePosition),
+  }),
+).annotate({
+  identifier: "RulesEditRequestBodyRedirectRule",
+}) as any as S.Schema<RulesEditRequestBodyRedirectRule>;
+
+export interface RulesEditRequestBodyRewriteRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesEditRequestBodyRewriteRulePosition = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+).annotate({
+  identifier: "RulesEditRequestBodyRewriteRulePosition",
+}) as any as S.Schema<RulesEditRequestBodyRewriteRulePosition>;
+
+export interface RulesEditRequestBodyRewriteRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesEditRequestBodyRewriteRulePosition;
+}
+export const RulesEditRequestBodyRewriteRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesEditRequestBodyRewriteRulePosition),
+  }),
+).annotate({
+  identifier: "RulesEditRequestBodyRewriteRule",
+}) as any as S.Schema<RulesEditRequestBodyRewriteRule>;
+
+export interface RulesEditRequestBodyRouteRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesEditRequestBodyRouteRulePosition = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+).annotate({
+  identifier: "RulesEditRequestBodyRouteRulePosition",
+}) as any as S.Schema<RulesEditRequestBodyRouteRulePosition>;
+
+export interface RulesEditRequestBodyRouteRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesEditRequestBodyRouteRulePosition;
+}
+export const RulesEditRequestBodyRouteRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesEditRequestBodyRouteRulePosition),
+  }),
+).annotate({
+  identifier: "RulesEditRequestBodyRouteRule",
+}) as any as S.Schema<RulesEditRequestBodyRouteRule>;
+
+export interface RulesEditRequestBodyScoreRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesEditRequestBodyScoreRulePosition = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+).annotate({
+  identifier: "RulesEditRequestBodyScoreRulePosition",
+}) as any as S.Schema<RulesEditRequestBodyScoreRulePosition>;
+
+export interface RulesEditRequestBodyScoreRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesEditRequestBodyScoreRulePosition;
+}
+export const RulesEditRequestBodyScoreRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesEditRequestBodyScoreRulePosition),
+  }),
+).annotate({
+  identifier: "RulesEditRequestBodyScoreRule",
+}) as any as S.Schema<RulesEditRequestBodyScoreRule>;
+
+export interface RulesEditRequestBodyServeErrorRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesEditRequestBodyServeErrorRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesEditRequestBodyServeErrorRulePosition",
+  }) as any as S.Schema<RulesEditRequestBodyServeErrorRulePosition>;
+
+export interface RulesEditRequestBodyServeErrorRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesEditRequestBodyServeErrorRulePosition;
+}
+export const RulesEditRequestBodyServeErrorRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesEditRequestBodyServeErrorRulePosition),
+  }),
+).annotate({
+  identifier: "RulesEditRequestBodyServeErrorRule",
+}) as any as S.Schema<RulesEditRequestBodyServeErrorRule>;
+
+export interface RulesEditRequestBodySetCacheSettingsRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesEditRequestBodySetCacheSettingsRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesEditRequestBodySetCacheSettingsRulePosition",
+  }) as any as S.Schema<RulesEditRequestBodySetCacheSettingsRulePosition>;
+
+export interface RulesEditRequestBodySetCacheSettingsRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesEditRequestBodySetCacheSettingsRulePosition;
+}
+export const RulesEditRequestBodySetCacheSettingsRule = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      position: S.optional(RulesEditRequestBodySetCacheSettingsRulePosition),
+    }),
+).annotate({
+  identifier: "RulesEditRequestBodySetCacheSettingsRule",
+}) as any as S.Schema<RulesEditRequestBodySetCacheSettingsRule>;
+
+export interface RulesEditRequestBodySetConfigurationRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesEditRequestBodySetConfigurationRulePosition =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesEditRequestBodySetConfigurationRulePosition",
+  }) as any as S.Schema<RulesEditRequestBodySetConfigurationRulePosition>;
+
+export interface RulesEditRequestBodySetConfigurationRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesEditRequestBodySetConfigurationRulePosition;
+}
+export const RulesEditRequestBodySetConfigurationRule = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      position: S.optional(RulesEditRequestBodySetConfigurationRulePosition),
+    }),
+).annotate({
+  identifier: "RulesEditRequestBodySetConfigurationRule",
+}) as any as S.Schema<RulesEditRequestBodySetConfigurationRule>;
+
+export interface RulesEditRequestBodySkipRulePosition {
+  /** An object configuring where the rule will be placed. */
+  BeforePositionObjectBefore__: unknown;
+  /** An object configuring where the rule will be placed. */
+  AfterPositionObjectAfter__: unknown;
+  /** An object configuring where the rule will be placed. */
+  IndexPositionObjectIndex__: unknown;
+}
+export const RulesEditRequestBodySkipRulePosition = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      BeforePositionObjectBefore__: S.Unknown.pipe(
+        T.Body("BeforePosition object { before }"),
+      ),
+      AfterPositionObjectAfter__: S.Unknown.pipe(
+        T.Body("AfterPosition object { after }"),
+      ),
+      IndexPositionObjectIndex__: S.Unknown.pipe(
+        T.Body("IndexPosition object { index }"),
+      ),
+    }),
+).annotate({
+  identifier: "RulesEditRequestBodySkipRulePosition",
+}) as any as S.Schema<RulesEditRequestBodySkipRulePosition>;
+
+export interface RulesEditRequestBodySkipRule {
+  /** An object configuring where the rule will be placed. */
+  position?: RulesEditRequestBodySkipRulePosition;
+}
+export const RulesEditRequestBodySkipRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    position: S.optional(RulesEditRequestBodySkipRulePosition),
+  }),
+).annotate({
+  identifier: "RulesEditRequestBodySkipRule",
+}) as any as S.Schema<RulesEditRequestBodySkipRule>;
+
+export interface RulesEditRequestBody {
+  BlockRule: RulesEditRequestBodyBlockRule;
+  ChallengeRuleObjectLastUpdatedVersionId11More__: unknown;
+  ResponseCompressionRule: RulesEditRequestBodyResponseCompressionRule;
+  DDoSDynamicRule: RulesEditRequestBodyDDoSDynamicRule;
+  ExecuteRule: RulesEditRequestBodyExecuteRule;
+  ForceConnectionCloseRule: RulesEditRequestBodyForceConnectionCloseRule;
+  JavaScriptChallengeRuleObjectLastUpdatedVersionId11More__: unknown;
+  LogRule: RulesEditRequestBodyLogRule;
+  LogCustomFieldRule: RulesEditRequestBodyLogCustomFieldRule;
+  ManagedChallengeRule: RulesEditRequestBodyManagedChallengeRule;
+  RedirectRule: RulesEditRequestBodyRedirectRule;
+  RewriteRule: RulesEditRequestBodyRewriteRule;
+  RouteRule: RulesEditRequestBodyRouteRule;
+  ScoreRule: RulesEditRequestBodyScoreRule;
+  ServeErrorRule: RulesEditRequestBodyServeErrorRule;
+  SetCacheControlRuleObjectLastUpdatedVersionId11More__: unknown;
+  SetCacheSettingsRule: RulesEditRequestBodySetCacheSettingsRule;
+  SetCacheTagsRuleObjectLastUpdatedVersionId11More__: unknown;
+  SetConfigurationRule: RulesEditRequestBodySetConfigurationRule;
+  SkipRule: RulesEditRequestBodySkipRule;
+  TransformResponseHTMLRuleObjectLastUpdatedVersionId11More__: unknown;
+}
+export const RulesEditRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BlockRule: RulesEditRequestBodyBlockRule,
+    ChallengeRuleObjectLastUpdatedVersionId11More__: S.Unknown.pipe(
+      T.Body("ChallengeRule object { last_updated, version, id, 11 more }"),
+    ),
+    ResponseCompressionRule: RulesEditRequestBodyResponseCompressionRule,
+    DDoSDynamicRule: RulesEditRequestBodyDDoSDynamicRule,
+    ExecuteRule: RulesEditRequestBodyExecuteRule,
+    ForceConnectionCloseRule: RulesEditRequestBodyForceConnectionCloseRule,
+    JavaScriptChallengeRuleObjectLastUpdatedVersionId11More__: S.Unknown.pipe(
+      T.Body(
+        "JavaScriptChallengeRule object { last_updated, version, id, 11 more }",
+      ),
+    ),
+    LogRule: RulesEditRequestBodyLogRule,
+    LogCustomFieldRule: RulesEditRequestBodyLogCustomFieldRule,
+    ManagedChallengeRule: RulesEditRequestBodyManagedChallengeRule,
+    RedirectRule: RulesEditRequestBodyRedirectRule,
+    RewriteRule: RulesEditRequestBodyRewriteRule,
+    RouteRule: RulesEditRequestBodyRouteRule,
+    ScoreRule: RulesEditRequestBodyScoreRule,
+    ServeErrorRule: RulesEditRequestBodyServeErrorRule,
+    SetCacheControlRuleObjectLastUpdatedVersionId11More__: S.Unknown.pipe(
+      T.Body(
+        "SetCacheControlRule object { last_updated, version, id, 11 more }",
+      ),
+    ),
+    SetCacheSettingsRule: RulesEditRequestBodySetCacheSettingsRule,
+    SetCacheTagsRuleObjectLastUpdatedVersionId11More__: S.Unknown.pipe(
+      T.Body("SetCacheTagsRule object { last_updated, version, id, 11 more }"),
+    ),
+    SetConfigurationRule: RulesEditRequestBodySetConfigurationRule,
+    SkipRule: RulesEditRequestBodySkipRule,
+    TransformResponseHTMLRuleObjectLastUpdatedVersionId11More__: S.Unknown.pipe(
+      T.Body(
+        "TransformResponseHTMLRule object { last_updated, version, id, 11 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "RulesEditRequestBody",
+}) as any as S.Schema<RulesEditRequestBody>;
+
 export interface RulesEditRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  ruleset_id: string;
-  rule_id: string;
-  body: unknown;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The unique ID of the ruleset. */
+  rulesetId: string;
+  /** The unique ID of the rule. */
+  ruleId: string;
+  body: RulesEditRequestBody;
 }
 export const RulesEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    ruleset_id: S.String.pipe(T.Label()),
-    rule_id: S.String.pipe(T.Label()),
-    body: S.Unknown,
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    rulesetId: S.String.pipe(T.Label("ruleset_id")),
+    ruleId: S.String.pipe(T.Label("rule_id")),
+    body: RulesEditRequestBody,
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -560,27 +2937,140 @@ export const RulesEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesEditRequest",
 }) as any as S.Schema<RulesEditRequest>;
 
-export type RulesEditResponseRulesList = unknown[];
+export interface RulesEditResponseRulesItem {
+  BlockRuleObjectLastUpdatedVersionId10More__: unknown;
+  ChallengeObjectLastUpdatedVersionId10More__: unknown;
+  CompressResponseRuleObjectLastUpdatedVersionId10More__: unknown;
+  DDoSDynamicRuleObjectLastUpdatedVersionId10More__: unknown;
+  ExecuteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: unknown;
+  JSChallengeObjectLastUpdatedVersionId10More__: unknown;
+  LogRuleObjectLastUpdatedVersionId10More__: unknown;
+  LogCustomFieldRuleObjectLastUpdatedVersionId10More__: unknown;
+  ManagedChallengeRuleObjectLastUpdatedVersionId10More__: unknown;
+  RedirectRuleObjectLastUpdatedVersionId10More__: unknown;
+  RewriteRuleObjectLastUpdatedVersionId10More__: unknown;
+  RouteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ScoreRuleObjectLastUpdatedVersionId10More__: unknown;
+  ServeErrorRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheControlObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheTagsObjectLastUpdatedVersionId10More__: unknown;
+  SetConfigRuleObjectLastUpdatedVersionId10More__: unknown;
+  SkipRuleObjectLastUpdatedVersionId10More__: unknown;
+  TransformResponseHTMLObjectLastUpdatedVersionId10More__: unknown;
+}
+export const RulesEditResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BlockRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("BlockRule object { last_updated, version, id, 10 more }"),
+    ),
+    ChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("Challenge object { last_updated, version, id, 10 more }"),
+    ),
+    CompressResponseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "CompressResponseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    DDoSDynamicRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("DDoSDynamicRule object { last_updated, version, id, 10 more }"),
+    ),
+    ExecuteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ExecuteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ForceConnectionCloseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    JSChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("JSChallenge object { last_updated, version, id, 10 more }"),
+    ),
+    LogRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("LogRule object { last_updated, version, id, 10 more }"),
+    ),
+    LogCustomFieldRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "LogCustomFieldRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    ManagedChallengeRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ManagedChallengeRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    RedirectRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RedirectRule object { last_updated, version, id, 10 more }"),
+    ),
+    RewriteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RewriteRule object { last_updated, version, id, 10 more }"),
+    ),
+    RouteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RouteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ScoreRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ScoreRule object { last_updated, version, id, 10 more }"),
+    ),
+    ServeErrorRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ServeErrorRule object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheControlObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheControl object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "SetCacheSettingsRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    SetCacheTagsObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheTags object { last_updated, version, id, 10 more }"),
+    ),
+    SetConfigRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetConfigRule object { last_updated, version, id, 10 more }"),
+    ),
+    SkipRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SkipRule object { last_updated, version, id, 10 more }"),
+    ),
+    TransformResponseHTMLObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "TransformResponseHTML object { last_updated, version, id, 10 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "RulesEditResponseRulesItem",
+}) as any as S.Schema<RulesEditResponseRulesItem>;
+
+export type RulesEditResponseRulesList = RulesEditResponseRulesItem[];
 export const RulesEditResponseRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  RulesEditResponseRulesItem,
 ) as any as S.Schema<RulesEditResponseRulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RulesEditResponse {
+  /** The unique ID of the ruleset. */
   id: string;
+  /** The kind of the ruleset. */
   kind: unknown;
-  last_updated: string;
+  /** The timestamp of when the ruleset was last modified. */
+  lastUpdated: string;
+  /** The human-readable name of the ruleset. */
   name: string;
+  /** The phase of the ruleset. */
   phase: unknown;
+  /** The list of rules in the ruleset. */
   rules: RulesEditResponseRulesList;
+  /** The version of the ruleset. */
   version: string;
+  /** An informative description of the ruleset. */
   description?: string;
 }
 export const RulesEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: S.Unknown,
-    last_updated: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
     name: S.String,
     phase: S.Unknown,
     rules: RulesEditResponseRulesList,
@@ -591,26 +3081,137 @@ export const RulesEditResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesEditResponse",
 }) as any as S.Schema<RulesEditResponse>;
 
-export type UpdateRequestRulesList = unknown[];
+export interface UpdateRequestRulesItem {
+  BlockRuleObjectLastUpdatedVersionId10More__: unknown;
+  ChallengeObjectLastUpdatedVersionId10More__: unknown;
+  CompressResponseRuleObjectLastUpdatedVersionId10More__: unknown;
+  DDoSDynamicRuleObjectLastUpdatedVersionId10More__: unknown;
+  ExecuteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: unknown;
+  JSChallengeObjectLastUpdatedVersionId10More__: unknown;
+  LogRuleObjectLastUpdatedVersionId10More__: unknown;
+  LogCustomFieldRuleObjectLastUpdatedVersionId10More__: unknown;
+  ManagedChallengeRuleObjectLastUpdatedVersionId10More__: unknown;
+  RedirectRuleObjectLastUpdatedVersionId10More__: unknown;
+  RewriteRuleObjectLastUpdatedVersionId10More__: unknown;
+  RouteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ScoreRuleObjectLastUpdatedVersionId10More__: unknown;
+  ServeErrorRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheControlObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheTagsObjectLastUpdatedVersionId10More__: unknown;
+  SetConfigRuleObjectLastUpdatedVersionId10More__: unknown;
+  SkipRuleObjectLastUpdatedVersionId10More__: unknown;
+  TransformResponseHTMLObjectLastUpdatedVersionId10More__: unknown;
+}
+export const UpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BlockRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("BlockRule object { last_updated, version, id, 10 more }"),
+    ),
+    ChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("Challenge object { last_updated, version, id, 10 more }"),
+    ),
+    CompressResponseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "CompressResponseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    DDoSDynamicRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("DDoSDynamicRule object { last_updated, version, id, 10 more }"),
+    ),
+    ExecuteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ExecuteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ForceConnectionCloseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    JSChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("JSChallenge object { last_updated, version, id, 10 more }"),
+    ),
+    LogRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("LogRule object { last_updated, version, id, 10 more }"),
+    ),
+    LogCustomFieldRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "LogCustomFieldRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    ManagedChallengeRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ManagedChallengeRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    RedirectRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RedirectRule object { last_updated, version, id, 10 more }"),
+    ),
+    RewriteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RewriteRule object { last_updated, version, id, 10 more }"),
+    ),
+    RouteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RouteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ScoreRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ScoreRule object { last_updated, version, id, 10 more }"),
+    ),
+    ServeErrorRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ServeErrorRule object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheControlObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheControl object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "SetCacheSettingsRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    SetCacheTagsObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheTags object { last_updated, version, id, 10 more }"),
+    ),
+    SetConfigRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetConfigRule object { last_updated, version, id, 10 more }"),
+    ),
+    SkipRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SkipRule object { last_updated, version, id, 10 more }"),
+    ),
+    TransformResponseHTMLObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "TransformResponseHTML object { last_updated, version, id, 10 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "UpdateRequestRulesItem",
+}) as any as S.Schema<UpdateRequestRulesItem>;
+
+export type UpdateRequestRulesList = UpdateRequestRulesItem[];
 export const UpdateRequestRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  UpdateRequestRulesItem,
 ) as any as S.Schema<UpdateRequestRulesList>;
 
 export interface UpdateRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  ruleset_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The unique ID of the ruleset. */
+  rulesetId: string;
+  /** An informative description of the ruleset. */
   description?: string;
+  /** The kind of the ruleset. */
   kind?: unknown;
+  /** The human-readable name of the ruleset. */
   name?: string;
+  /** The phase of the ruleset. */
   phase?: unknown;
+  /** The list of rules in the ruleset. */
   rules?: UpdateRequestRulesList;
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    ruleset_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    rulesetId: S.String.pipe(T.Label("ruleset_id")),
     description: S.optional(S.String),
     kind: S.optional(S.Unknown),
     name: S.optional(S.String),
@@ -625,27 +3226,140 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
 
-export type UpdateResponseRulesList = unknown[];
+export interface UpdateResponseRulesItem {
+  BlockRuleObjectLastUpdatedVersionId10More__: unknown;
+  ChallengeObjectLastUpdatedVersionId10More__: unknown;
+  CompressResponseRuleObjectLastUpdatedVersionId10More__: unknown;
+  DDoSDynamicRuleObjectLastUpdatedVersionId10More__: unknown;
+  ExecuteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: unknown;
+  JSChallengeObjectLastUpdatedVersionId10More__: unknown;
+  LogRuleObjectLastUpdatedVersionId10More__: unknown;
+  LogCustomFieldRuleObjectLastUpdatedVersionId10More__: unknown;
+  ManagedChallengeRuleObjectLastUpdatedVersionId10More__: unknown;
+  RedirectRuleObjectLastUpdatedVersionId10More__: unknown;
+  RewriteRuleObjectLastUpdatedVersionId10More__: unknown;
+  RouteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ScoreRuleObjectLastUpdatedVersionId10More__: unknown;
+  ServeErrorRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheControlObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheTagsObjectLastUpdatedVersionId10More__: unknown;
+  SetConfigRuleObjectLastUpdatedVersionId10More__: unknown;
+  SkipRuleObjectLastUpdatedVersionId10More__: unknown;
+  TransformResponseHTMLObjectLastUpdatedVersionId10More__: unknown;
+}
+export const UpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BlockRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("BlockRule object { last_updated, version, id, 10 more }"),
+    ),
+    ChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("Challenge object { last_updated, version, id, 10 more }"),
+    ),
+    CompressResponseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "CompressResponseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    DDoSDynamicRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("DDoSDynamicRule object { last_updated, version, id, 10 more }"),
+    ),
+    ExecuteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ExecuteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ForceConnectionCloseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    JSChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("JSChallenge object { last_updated, version, id, 10 more }"),
+    ),
+    LogRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("LogRule object { last_updated, version, id, 10 more }"),
+    ),
+    LogCustomFieldRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "LogCustomFieldRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    ManagedChallengeRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ManagedChallengeRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    RedirectRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RedirectRule object { last_updated, version, id, 10 more }"),
+    ),
+    RewriteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RewriteRule object { last_updated, version, id, 10 more }"),
+    ),
+    RouteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RouteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ScoreRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ScoreRule object { last_updated, version, id, 10 more }"),
+    ),
+    ServeErrorRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ServeErrorRule object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheControlObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheControl object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "SetCacheSettingsRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    SetCacheTagsObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheTags object { last_updated, version, id, 10 more }"),
+    ),
+    SetConfigRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetConfigRule object { last_updated, version, id, 10 more }"),
+    ),
+    SkipRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SkipRule object { last_updated, version, id, 10 more }"),
+    ),
+    TransformResponseHTMLObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "TransformResponseHTML object { last_updated, version, id, 10 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "UpdateResponseRulesItem",
+}) as any as S.Schema<UpdateResponseRulesItem>;
+
+export type UpdateResponseRulesList = UpdateResponseRulesItem[];
 export const UpdateResponseRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  UpdateResponseRulesItem,
 ) as any as S.Schema<UpdateResponseRulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
+  /** The unique ID of the ruleset. */
   id: string;
+  /** The kind of the ruleset. */
   kind: unknown;
-  last_updated: string;
+  /** The timestamp of when the ruleset was last modified. */
+  lastUpdated: string;
+  /** The human-readable name of the ruleset. */
   name: string;
+  /** The phase of the ruleset. */
   phase: unknown;
+  /** The list of rules in the ruleset. */
   rules: UpdateResponseRulesList;
+  /** The version of the ruleset. */
   version: string;
+  /** An informative description of the ruleset. */
   description?: string;
 }
 export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: S.Unknown,
-    last_updated: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
     name: S.String,
     phase: S.Unknown,
     rules: UpdateResponseRulesList,
@@ -655,17 +3369,19 @@ export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
 export interface VersionsDeleteRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  ruleset_id: string;
-  ruleset_version: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The unique ID of the ruleset. */
+  rulesetId: string;
+  /** The version of the ruleset. */
+  rulesetVersion: string;
 }
 export const VersionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    ruleset_id: S.String.pipe(T.Label()),
-    ruleset_version: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    rulesetId: S.String.pipe(T.Label("ruleset_id")),
+    rulesetVersion: S.String.pipe(T.Label("ruleset_version")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -685,17 +3401,19 @@ export const VersionsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VersionsDeleteResponse>;
 
 export interface VersionsGetRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  ruleset_id: string;
-  ruleset_version: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The unique ID of the ruleset. */
+  rulesetId: string;
+  /** The version of the ruleset. */
+  rulesetVersion: string;
 }
 export const VersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    ruleset_id: S.String.pipe(T.Label()),
-    ruleset_version: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    rulesetId: S.String.pipe(T.Label("ruleset_id")),
+    rulesetVersion: S.String.pipe(T.Label("ruleset_version")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -707,27 +3425,140 @@ export const VersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VersionsGetRequest",
 }) as any as S.Schema<VersionsGetRequest>;
 
-export type VersionsGetResponseRulesList = unknown[];
+export interface VersionsGetResponseRulesItem {
+  BlockRuleObjectLastUpdatedVersionId10More__: unknown;
+  ChallengeObjectLastUpdatedVersionId10More__: unknown;
+  CompressResponseRuleObjectLastUpdatedVersionId10More__: unknown;
+  DDoSDynamicRuleObjectLastUpdatedVersionId10More__: unknown;
+  ExecuteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: unknown;
+  JSChallengeObjectLastUpdatedVersionId10More__: unknown;
+  LogRuleObjectLastUpdatedVersionId10More__: unknown;
+  LogCustomFieldRuleObjectLastUpdatedVersionId10More__: unknown;
+  ManagedChallengeRuleObjectLastUpdatedVersionId10More__: unknown;
+  RedirectRuleObjectLastUpdatedVersionId10More__: unknown;
+  RewriteRuleObjectLastUpdatedVersionId10More__: unknown;
+  RouteRuleObjectLastUpdatedVersionId10More__: unknown;
+  ScoreRuleObjectLastUpdatedVersionId10More__: unknown;
+  ServeErrorRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheControlObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: unknown;
+  SetCacheTagsObjectLastUpdatedVersionId10More__: unknown;
+  SetConfigRuleObjectLastUpdatedVersionId10More__: unknown;
+  SkipRuleObjectLastUpdatedVersionId10More__: unknown;
+  TransformResponseHTMLObjectLastUpdatedVersionId10More__: unknown;
+}
+export const VersionsGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BlockRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("BlockRule object { last_updated, version, id, 10 more }"),
+    ),
+    ChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("Challenge object { last_updated, version, id, 10 more }"),
+    ),
+    CompressResponseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "CompressResponseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    DDoSDynamicRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("DDoSDynamicRule object { last_updated, version, id, 10 more }"),
+    ),
+    ExecuteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ExecuteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ForceConnectionCloseRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ForceConnectionCloseRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    JSChallengeObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("JSChallenge object { last_updated, version, id, 10 more }"),
+    ),
+    LogRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("LogRule object { last_updated, version, id, 10 more }"),
+    ),
+    LogCustomFieldRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "LogCustomFieldRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    ManagedChallengeRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "ManagedChallengeRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    RedirectRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RedirectRule object { last_updated, version, id, 10 more }"),
+    ),
+    RewriteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RewriteRule object { last_updated, version, id, 10 more }"),
+    ),
+    RouteRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("RouteRule object { last_updated, version, id, 10 more }"),
+    ),
+    ScoreRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ScoreRule object { last_updated, version, id, 10 more }"),
+    ),
+    ServeErrorRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("ServeErrorRule object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheControlObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheControl object { last_updated, version, id, 10 more }"),
+    ),
+    SetCacheSettingsRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "SetCacheSettingsRule object { last_updated, version, id, 10 more }",
+      ),
+    ),
+    SetCacheTagsObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetCacheTags object { last_updated, version, id, 10 more }"),
+    ),
+    SetConfigRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SetConfigRule object { last_updated, version, id, 10 more }"),
+    ),
+    SkipRuleObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body("SkipRule object { last_updated, version, id, 10 more }"),
+    ),
+    TransformResponseHTMLObjectLastUpdatedVersionId10More__: S.Unknown.pipe(
+      T.Body(
+        "TransformResponseHTML object { last_updated, version, id, 10 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "VersionsGetResponseRulesItem",
+}) as any as S.Schema<VersionsGetResponseRulesItem>;
+
+export type VersionsGetResponseRulesList = VersionsGetResponseRulesItem[];
 export const VersionsGetResponseRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  VersionsGetResponseRulesItem,
 ) as any as S.Schema<VersionsGetResponseRulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface VersionsGetResponse {
+  /** The unique ID of the ruleset. */
   id: string;
+  /** The kind of the ruleset. */
   kind: unknown;
-  last_updated: string;
+  /** The timestamp of when the ruleset was last modified. */
+  lastUpdated: string;
+  /** The human-readable name of the ruleset. */
   name: string;
+  /** The phase of the ruleset. */
   phase: unknown;
+  /** The list of rules in the ruleset. */
   rules: VersionsGetResponseRulesList;
+  /** The version of the ruleset. */
   version: string;
+  /** An informative description of the ruleset. */
   description?: string;
 }
 export const VersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: S.Unknown,
-    last_updated: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
     name: S.String,
     phase: S.Unknown,
     rules: VersionsGetResponseRulesList,
@@ -739,15 +3570,16 @@ export const VersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VersionsGetResponse>;
 
 export interface VersionsListRequest {
-  accounts_or_zones: string;
-  account_or_zone_id: string;
-  ruleset_id: string;
+  accountsOrZones: string;
+  accountOrZoneId: string;
+  /** The unique ID of the ruleset. */
+  rulesetId: string;
 }
 export const VersionsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accounts_or_zones: S.String.pipe(T.Label()),
-    account_or_zone_id: S.String.pipe(T.Label()),
-    ruleset_id: S.String.pipe(T.Label()),
+    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
+    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+    rulesetId: S.String.pipe(T.Label("ruleset_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -760,19 +3592,26 @@ export const VersionsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VersionsListRequest>;
 
 export interface VersionsListResultItem {
+  /** The unique ID of the ruleset. */
   id: string;
+  /** The kind of the ruleset. */
   kind: unknown;
-  last_updated: string;
+  /** The timestamp of when the ruleset was last modified. */
+  lastUpdated: string;
+  /** The human-readable name of the ruleset. */
   name: string;
+  /** The phase of the ruleset. */
   phase: unknown;
+  /** The version of the ruleset. */
   version: string;
+  /** An informative description of the ruleset. */
   description?: string;
 }
 export const VersionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: S.Unknown,
-    last_updated: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
     name: S.String,
     phase: S.Unknown,
     version: S.String,
@@ -788,6 +3627,7 @@ export const VersionsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<VersionsListResultList>;
 
 export interface VersionsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: VersionsListResultList;
 }
 export const VersionsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -798,11 +3638,12 @@ export const VersionsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "VersionsListResponse",
 }) as any as S.Schema<VersionsListResponse>;
 
+export type CreateError = CloudflareOpError;
 /** Creates a ruleset. */
-export const Create: API.OperationMethod<
+export const create: API.OperationMethod<
   CreateRequest,
   CreateResponse,
-  CloudflareOpError,
+  CreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRequest,
@@ -811,11 +3652,12 @@ export const Create: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DeleteError = CloudflareOpError;
 /** Deletes all versions of an existing account or zone ruleset. */
 export const Delete: API.OperationMethod<
   DeleteRequest,
   DeleteResponse,
-  CloudflareOpError,
+  DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequest,
@@ -824,11 +3666,12 @@ export const Delete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Fetches the latest version of an account or zone ruleset. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -837,11 +3680,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ListError = CloudflareOpError;
 /** Fetches all rulesets. */
-export const List: API.OperationMethod<
+export const list: API.OperationMethod<
   ListRequest,
   ListResponse,
-  CloudflareOpError,
+  ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRequest,
@@ -850,11 +3694,12 @@ export const List: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PhasesGetError = CloudflareOpError;
 /** Fetches the latest version of the account or zone entry point ruleset for a given phase. */
-export const PhasesGet: API.OperationMethod<
+export const phasesGet: API.OperationMethod<
   PhasesGetRequest,
   PhasesGetResponse,
-  CloudflareOpError,
+  PhasesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PhasesGetRequest,
@@ -863,11 +3708,12 @@ export const PhasesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PhasesUpdateError = CloudflareOpError;
 /** Updates an account or zone entry point ruleset, creating a new version. */
-export const PhasesUpdate: API.OperationMethod<
+export const phasesUpdate: API.OperationMethod<
   PhasesUpdateRequest,
   PhasesUpdateResponse,
-  CloudflareOpError,
+  PhasesUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PhasesUpdateRequest,
@@ -876,11 +3722,12 @@ export const PhasesUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PhasesVersionsGetError = CloudflareOpError;
 /** Fetches a specific version of an account or zone entry point ruleset. */
-export const PhasesVersionsGet: API.OperationMethod<
+export const phasesVersionsGet: API.OperationMethod<
   PhasesVersionsGetRequest,
   PhasesVersionsGetResponse,
-  CloudflareOpError,
+  PhasesVersionsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PhasesVersionsGetRequest,
@@ -889,11 +3736,12 @@ export const PhasesVersionsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PhasesVersionsListError = CloudflareOpError;
 /** Fetches the versions of an account or zone entry point ruleset. */
-export const PhasesVersionsList: API.OperationMethod<
+export const phasesVersionsList: API.OperationMethod<
   PhasesVersionsListRequest,
   PhasesVersionsListResponse,
-  CloudflareOpError,
+  PhasesVersionsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PhasesVersionsListRequest,
@@ -902,11 +3750,12 @@ export const PhasesVersionsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RulesCreateError = CloudflareOpError;
 /** Adds a new rule to an account or zone ruleset. The rule will be added to the end of the existing list of rules in the ruleset by default. */
-export const RulesCreate: API.OperationMethod<
+export const rulesCreate: API.OperationMethod<
   RulesCreateRequest,
   RulesCreateResponse,
-  CloudflareOpError,
+  RulesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RulesCreateRequest,
@@ -915,11 +3764,12 @@ export const RulesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RulesDeleteError = CloudflareOpError;
 /** Deletes an existing rule from an account or zone ruleset. */
-export const RulesDelete: API.OperationMethod<
+export const rulesDelete: API.OperationMethod<
   RulesDeleteRequest,
   RulesDeleteResponse,
-  CloudflareOpError,
+  RulesDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RulesDeleteRequest,
@@ -928,11 +3778,12 @@ export const RulesDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RulesEditError = CloudflareOpError;
 /** Updates an existing rule in an account or zone ruleset. */
-export const RulesEdit: API.OperationMethod<
+export const rulesEdit: API.OperationMethod<
   RulesEditRequest,
   RulesEditResponse,
-  CloudflareOpError,
+  RulesEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RulesEditRequest,
@@ -941,11 +3792,12 @@ export const RulesEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UpdateError = CloudflareOpError;
 /** Updates an account or zone ruleset, creating a new version. */
-export const Update: API.OperationMethod<
+export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,
-  CloudflareOpError,
+  UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,
@@ -954,11 +3806,12 @@ export const Update: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type VersionsDeleteError = CloudflareOpError;
 /** Deletes an existing version of an account or zone ruleset. */
-export const VersionsDelete: API.OperationMethod<
+export const versionsDelete: API.OperationMethod<
   VersionsDeleteRequest,
   VersionsDeleteResponse,
-  CloudflareOpError,
+  VersionsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: VersionsDeleteRequest,
@@ -967,11 +3820,12 @@ export const VersionsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type VersionsGetError = CloudflareOpError;
 /** Fetches a specific version of an account or zone ruleset. */
-export const VersionsGet: API.OperationMethod<
+export const versionsGet: API.OperationMethod<
   VersionsGetRequest,
   VersionsGetResponse,
-  CloudflareOpError,
+  VersionsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: VersionsGetRequest,
@@ -980,11 +3834,12 @@ export const VersionsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type VersionsListError = CloudflareOpError;
 /** Fetches the versions of an account or zone ruleset. */
-export const VersionsList: API.OperationMethod<
+export const versionsList: API.OperationMethod<
   VersionsListRequest,
   VersionsListResponse,
-  CloudflareOpError,
+  VersionsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: VersionsListRequest,

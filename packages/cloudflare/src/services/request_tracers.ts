@@ -10,15 +10,18 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface TracesCreateRequestBody {
+  /** Base64 encoded request body */
   base64?: string;
+  /** Arbitrary json as request body */
   json?: unknown;
-  plain_text?: string;
+  /** Request body as plain text */
+  plainText?: string;
 }
 export const TracesCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     base64: S.optional(S.String),
     json: S.optional(S.Unknown),
-    plain_text: S.optional(S.String),
+    plainText: S.optional(S.String.pipe(T.Body("plain_text"))),
   }),
 ).annotate({
   identifier: "TracesCreateRequestBody",
@@ -27,26 +30,28 @@ export const TracesCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
 export interface TracesCreateRequestContextGeoloc {
   city?: string;
   continent?: string;
-  is_eu_country?: boolean;
-  iso_code?: string;
+  isEuCountry?: boolean;
+  isoCode?: string;
   latitude?: number;
   longitude?: number;
-  postal_code?: string;
-  region_code?: string;
-  subdivision_2_iso_code?: string;
+  postalCode?: string;
+  regionCode?: string;
+  subdivision2IsoCode?: string;
   timezone?: string;
 }
 export const TracesCreateRequestContextGeoloc = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.optional(S.String),
     continent: S.optional(S.String),
-    is_eu_country: S.optional(S.Boolean),
-    iso_code: S.optional(S.String),
+    isEuCountry: S.optional(S.Boolean.pipe(T.Body("is_eu_country"))),
+    isoCode: S.optional(S.String.pipe(T.Body("iso_code"))),
     latitude: S.optional(S.Number),
     longitude: S.optional(S.Number),
-    postal_code: S.optional(S.String),
-    region_code: S.optional(S.String),
-    subdivision_2_iso_code: S.optional(S.String),
+    postalCode: S.optional(S.String.pipe(T.Body("postal_code"))),
+    regionCode: S.optional(S.String.pipe(T.Body("region_code"))),
+    subdivision2IsoCode: S.optional(
+      S.String.pipe(T.Body("subdivision_2_iso_code")),
+    ),
     timezone: S.optional(S.String),
   }),
 ).annotate({
@@ -54,17 +59,21 @@ export const TracesCreateRequestContextGeoloc = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TracesCreateRequestContextGeoloc>;
 
 export interface TracesCreateRequestContext {
-  bot_score?: number;
+  /** Bot score used for evaluating tracing request processing */
+  botScore?: number;
+  /** Geodata for tracing request */
   geoloc?: TracesCreateRequestContextGeoloc;
-  skip_challenge?: boolean;
-  threat_score?: number;
+  /** Whether to skip any challenges for tracing request (e.g.: captcha) */
+  skipChallenge?: boolean;
+  /** Threat score used for evaluating tracing request processing */
+  threatScore?: number;
 }
 export const TracesCreateRequestContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    bot_score: S.optional(S.Number),
+    botScore: S.optional(S.Number.pipe(T.Body("bot_score"))),
     geoloc: S.optional(TracesCreateRequestContextGeoloc),
-    skip_challenge: S.optional(S.Boolean),
-    threat_score: S.optional(S.Number),
+    skipChallenge: S.optional(S.Boolean.pipe(T.Body("skip_challenge"))),
+    threatScore: S.optional(S.Number.pipe(T.Body("threat_score"))),
   }),
 ).annotate({
   identifier: "TracesCreateRequestContext",
@@ -87,19 +96,27 @@ export const TracesCreateRequestHeadersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<TracesCreateRequestHeadersMap>;
 
 export interface TracesCreateRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** HTTP Method of tracing request */
   method: string;
+  /** URL to which perform tracing request */
   url: string;
   body?: TracesCreateRequestBody;
+  /** Additional request parameters */
   context?: TracesCreateRequestContext;
+  /** Cookies added to tracing request */
   cookies?: TracesCreateRequestCookiesMap;
+  /** Headers added to tracing request */
   headers?: TracesCreateRequestHeadersMap;
+  /** HTTP Protocol of tracing request */
   protocol?: string;
-  skip_response?: boolean;
+  /** Skip sending the request to the Origin server after all rules evaluation */
+  skipResponse?: boolean;
 }
 export const TracesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     method: S.String,
     url: S.String,
     body: S.optional(TracesCreateRequestBody),
@@ -107,7 +124,7 @@ export const TracesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     cookies: S.optional(TracesCreateRequestCookiesMap),
     headers: S.optional(TracesCreateRequestHeadersMap),
     protocol: S.optional(S.String),
-    skip_response: S.optional(S.Boolean),
+    skipResponse: S.optional(S.Boolean.pipe(T.Body("skip_response"))),
   }).pipe(
     T.Http({
       method: "POST",
@@ -121,23 +138,25 @@ export const TracesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TracesCreateResponse {
-  status_code?: number;
+  /** HTTP Status code of zone response */
+  statusCode?: number;
   trace?: unknown;
 }
 export const TracesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    status_code: S.optional(S.Number),
+    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
     trace: S.optional(S.Unknown),
   }),
 ).annotate({
   identifier: "TracesCreateResponse",
 }) as any as S.Schema<TracesCreateResponse>;
 
+export type TracesCreateError = CloudflareOpError;
 /** Request Trace */
-export const TracesCreate: API.OperationMethod<
+export const tracesCreate: API.OperationMethod<
   TracesCreateRequest,
   TracesCreateResponse,
-  CloudflareOpError,
+  TracesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: TracesCreateRequest,

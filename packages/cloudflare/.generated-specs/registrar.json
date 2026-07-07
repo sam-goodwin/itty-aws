@@ -448,10 +448,329 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.registrar#DomainsListResultItemRegistrantContact": {
+      "type": "structure",
+      "members": {
+        "address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Address.",
+            "smithy.api#required": {}
+          }
+        },
+        "city": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "City.",
+            "smithy.api#required": {}
+          }
+        },
+        "country": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The country in which the user lives.",
+            "smithy.api#required": {}
+          }
+        },
+        "first_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User's first name",
+            "smithy.api#required": {}
+          }
+        },
+        "last_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User's last name",
+            "smithy.api#required": {}
+          }
+        },
+        "organization": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of organization.",
+            "smithy.api#required": {}
+          }
+        },
+        "phone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User's telephone number",
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State.",
+            "smithy.api#required": {}
+          }
+        },
+        "zip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The zipcode or postal code where the user lives.",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Contact Identifier."
+          }
+        },
+        "address2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional address line for unit, floor, suite, etc."
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The contact email address of the user."
+          }
+        },
+        "fax": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Contact fax number."
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#DomainsListResultItemTransferInAcceptFoa": {
+      "type": "enum",
+      "members": {
+        "NEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "needed"
+          }
+        },
+        "OK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ok"
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#DomainsListResultItemTransferInApproveTransfer": {
+      "type": "enum",
+      "members": {
+        "NEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "needed"
+          }
+        },
+        "OK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ok"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#DomainsListResultItemTransferInDisablePrivacy": {
+      "type": "enum",
+      "members": {
+        "NEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "needed"
+          }
+        },
+        "OK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ok"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#DomainsListResultItemTransferInEnterAuthCode": {
+      "type": "enum",
+      "members": {
+        "NEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "needed"
+          }
+        },
+        "OK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ok"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#DomainsListResultItemTransferInUnlockDomain": {
+      "type": "enum",
+      "members": {
+        "NEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "needed"
+          }
+        },
+        "OK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ok"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#DomainsListResultItemTransferIn": {
+      "type": "structure",
+      "members": {
+        "accept_foa": {
+          "target": "com.cloudflare.registrar#DomainsListResultItemTransferInAcceptFoa",
+          "traits": {
+            "smithy.api#documentation": "Form of authorization has been accepted by the registrant."
+          }
+        },
+        "approve_transfer": {
+          "target": "com.cloudflare.registrar#DomainsListResultItemTransferInApproveTransfer",
+          "traits": {
+            "smithy.api#documentation": "Shows transfer status with the registry."
+          }
+        },
+        "can_cancel_transfer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if cancellation is still possible."
+          }
+        },
+        "disable_privacy": {
+          "target": "com.cloudflare.registrar#DomainsListResultItemTransferInDisablePrivacy",
+          "traits": {
+            "smithy.api#documentation": "Privacy guards are disabled at the foreign registrar."
+          }
+        },
+        "enter_auth_code": {
+          "target": "com.cloudflare.registrar#DomainsListResultItemTransferInEnterAuthCode",
+          "traits": {
+            "smithy.api#documentation": "Auth code has been entered and verified."
+          }
+        },
+        "unlock_domain": {
+          "target": "com.cloudflare.registrar#DomainsListResultItemTransferInUnlockDomain",
+          "traits": {
+            "smithy.api#documentation": "Domain is unlocked at the foreign registrar."
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#DomainsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Domain identifier."
+          }
+        },
+        "available": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Shows if a domain is available for transferring into Cloudflare Registrar."
+          }
+        },
+        "can_register": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the domain can be registered as a new domain."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Shows time of creation."
+          }
+        },
+        "current_registrar": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Shows name of current registrar."
+          }
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Shows when domain name registration expires."
+          }
+        },
+        "locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Shows whether a registrar lock is in place for a domain."
+          }
+        },
+        "registrant_contact": {
+          "target": "com.cloudflare.registrar#DomainsListResultItemRegistrantContact",
+          "traits": {
+            "smithy.api#documentation": "Shows contact information for domain registrant."
+          }
+        },
+        "registry_statuses": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en)."
+          }
+        },
+        "supported_tld": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs."
+          }
+        },
+        "transfer_in": {
+          "target": "com.cloudflare.registrar#DomainsListResultItemTransferIn",
+          "traits": {
+            "smithy.api#documentation": "Statuses for domain transfers into Cloudflare Registrar."
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last updated."
+          }
+        }
+      }
+    },
     "com.cloudflare.registrar#DomainsListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.registrar#DomainsListResultItem"
       }
     },
     "com.cloudflare.registrar#DomainsListResponse": {
@@ -586,19 +905,126 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.registrar#RegistrationStatusGetResponseLinks": {
+      "type": "structure",
+      "members": {
+        "self": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to this status resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "resource": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to the domain resource."
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#RegistrationStatusGetResponseState": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "in_progress"
+          }
+        },
+        "ACTION_REQUIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "action_required"
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#RegistrationStatusGetResponseContextMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.registrar#RegistrationStatusGetResponseError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Machine-readable error code identifying the failure reason.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable explanation of the failure. May include registry-specific details.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.registrar#RegistrationStatusGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "completed": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Whether the workflow has reached a terminal state. `true` when",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "links": {
+          "target": "com.cloudflare.registrar#RegistrationStatusGetResponseLinks",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.cloudflare.registrar#RegistrationStatusGetResponseState",
+          "traits": {
+            "smithy.api#documentation": "Workflow lifecycle state.",
+            "smithy.api#required": {}
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "context": {
+          "target": "com.cloudflare.registrar#RegistrationStatusGetResponseContextMap",
+          "traits": {
+            "smithy.api#documentation": "Workflow-specific data for this workflow."
+          }
+        },
+        "error": {
+          "target": "com.cloudflare.registrar#RegistrationStatusGetResponseError",
+          "traits": {
+            "smithy.api#documentation": "Error details when a workflow reaches the `failed` state. The specific"
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.registrar#RegistrationStatusGet": {
@@ -791,19 +1217,126 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.registrar#RegistrationsCreateResponseLinks": {
+      "type": "structure",
+      "members": {
+        "self": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to this status resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "resource": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to the domain resource."
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#RegistrationsCreateResponseState": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "in_progress"
+          }
+        },
+        "ACTION_REQUIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "action_required"
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#RegistrationsCreateResponseContextMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.registrar#RegistrationsCreateResponseError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Machine-readable error code identifying the failure reason.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable explanation of the failure. May include registry-specific details.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.registrar#RegistrationsCreateResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "completed": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Whether the workflow has reached a terminal state. `true` when",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "links": {
+          "target": "com.cloudflare.registrar#RegistrationsCreateResponseLinks",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.cloudflare.registrar#RegistrationsCreateResponseState",
+          "traits": {
+            "smithy.api#documentation": "Workflow lifecycle state.",
+            "smithy.api#required": {}
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "context": {
+          "target": "com.cloudflare.registrar#RegistrationsCreateResponseContextMap",
+          "traits": {
+            "smithy.api#documentation": "Workflow-specific data for this workflow."
+          }
+        },
+        "error": {
+          "target": "com.cloudflare.registrar#RegistrationsCreateResponseError",
+          "traits": {
+            "smithy.api#documentation": "Error details when a workflow reaches the `failed` state. The specific"
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.registrar#RegistrationsCreate": {
@@ -870,19 +1403,126 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.registrar#RegistrationsEditResponseLinks": {
+      "type": "structure",
+      "members": {
+        "self": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to this status resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "resource": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to the domain resource."
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#RegistrationsEditResponseState": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "in_progress"
+          }
+        },
+        "ACTION_REQUIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "action_required"
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#RegistrationsEditResponseContextMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.registrar#RegistrationsEditResponseError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Machine-readable error code identifying the failure reason.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable explanation of the failure. May include registry-specific details.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.registrar#RegistrationsEditResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "completed": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Whether the workflow has reached a terminal state. `true` when",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "links": {
+          "target": "com.cloudflare.registrar#RegistrationsEditResponseLinks",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.cloudflare.registrar#RegistrationsEditResponseState",
+          "traits": {
+            "smithy.api#documentation": "Workflow lifecycle state.",
+            "smithy.api#required": {}
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "context": {
+          "target": "com.cloudflare.registrar#RegistrationsEditResponseContextMap",
+          "traits": {
+            "smithy.api#documentation": "Workflow-specific data for this workflow."
+          }
+        },
+        "error": {
+          "target": "com.cloudflare.registrar#RegistrationsEditResponseError",
+          "traits": {
+            "smithy.api#documentation": "Error details when a workflow reaches the `failed` state. The specific"
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.registrar#RegistrationsEdit": {
@@ -926,19 +1566,96 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.registrar#RegistrationsGetResponsePrivacyMode": {
+      "type": "enum",
+      "members": {
+        "REDACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "redaction"
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#RegistrationsGetResponseStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "REGISTRATION_PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "registration_pending"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        }
+      }
+    },
     "com.cloudflare.registrar#RegistrationsGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "auto_renew": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Whether the domain will be automatically renewed before expiration.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the domain was registered. Present when the registration resource exists.",
+            "smithy.api#required": {}
+          }
+        },
+        "domain_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified domain name (FQDN) including the extension",
+            "smithy.api#required": {}
+          }
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the domain registration expires. Present when the registration is ready; may be null only while `status` is `registration_pending`.",
+            "smithy.api#required": {}
+          }
+        },
+        "locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the domain is locked for transfer.",
+            "smithy.api#required": {}
+          }
+        },
+        "privacy_mode": {
+          "target": "com.cloudflare.registrar#RegistrationsGetResponsePrivacyMode",
+          "traits": {
+            "smithy.api#documentation": "Current WHOIS privacy mode for the registration.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.registrar#RegistrationsGetResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "Current registration status.",
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.registrar#RegistrationsGet": {
@@ -1043,10 +1760,98 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.registrar#RegistrationsListResultItemPrivacyMode": {
+      "type": "enum",
+      "members": {
+        "REDACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "redaction"
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#RegistrationsListResultItemStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "REGISTRATION_PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "registration_pending"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#RegistrationsListResultItem": {
+      "type": "structure",
+      "members": {
+        "auto_renew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the domain will be automatically renewed before expiration.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the domain was registered. Present when the registration resource exists.",
+            "smithy.api#required": {}
+          }
+        },
+        "domain_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified domain name (FQDN) including the extension",
+            "smithy.api#required": {}
+          }
+        },
+        "expires_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the domain registration expires. Present when the registration is ready; may be null only while `status` is `registration_pending`.",
+            "smithy.api#required": {}
+          }
+        },
+        "locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the domain is locked for transfer.",
+            "smithy.api#required": {}
+          }
+        },
+        "privacy_mode": {
+          "target": "com.cloudflare.registrar#RegistrationsListResultItemPrivacyMode",
+          "traits": {
+            "smithy.api#documentation": "Current WHOIS privacy mode for the registration.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.registrar#RegistrationsListResultItemStatus",
+          "traits": {
+            "smithy.api#documentation": "Current registration status.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.registrar#RegistrationsListResultList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.registrar#RegistrationsListResultItem"
       }
     },
     "com.cloudflare.registrar#RegistrationsListResponse": {
@@ -1106,19 +1911,126 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.registrar#UpdateStatusGetResponseLinks": {
+      "type": "structure",
+      "members": {
+        "self": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to this status resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "resource": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to the domain resource."
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#UpdateStatusGetResponseState": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "in_progress"
+          }
+        },
+        "ACTION_REQUIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "action_required"
+          }
+        }
+      }
+    },
+    "com.cloudflare.registrar#UpdateStatusGetResponseContextMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.registrar#UpdateStatusGetResponseError": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Machine-readable error code identifying the failure reason.",
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable explanation of the failure. May include registry-specific details.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.registrar#UpdateStatusGetResponse": {
       "type": "structure",
       "members": {
-        "result": {
-          "target": "smithy.api#Document",
+        "completed": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+            "smithy.api#documentation": "Whether the workflow has reached a terminal state. `true` when",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "links": {
+          "target": "com.cloudflare.registrar#UpdateStatusGetResponseLinks",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.cloudflare.registrar#UpdateStatusGetResponseState",
+          "traits": {
+            "smithy.api#documentation": "Workflow lifecycle state.",
+            "smithy.api#required": {}
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "context": {
+          "target": "com.cloudflare.registrar#UpdateStatusGetResponseContextMap",
+          "traits": {
+            "smithy.api#documentation": "Workflow-specific data for this workflow."
+          }
+        },
+        "error": {
+          "target": "com.cloudflare.registrar#UpdateStatusGetResponseError",
+          "traits": {
+            "smithy.api#documentation": "Error details when a workflow reaches the `failed` state. The specific"
           }
         }
       },
       "traits": {
-        "smithy.api#output": {}
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.registrar#UpdateStatusGet": {

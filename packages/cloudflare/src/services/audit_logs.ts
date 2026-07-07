@@ -13,31 +13,40 @@ export type ListRequestDirection = "desc" | "asc" | (string & {});
 export const ListRequestDirection = /*@__PURE__*/ S.String;
 
 export interface ListRequest {
-  account_id: string;
+  /** Identifier */
+  accountId: string;
+  /** Finds a specific log by its ID. */
   id?: string;
   action?: string;
   actor?: string;
+  /** Limits the returned results to logs older than the specified date. A `full-date` that conforms to RFC3339. */
   before?: string;
+  /** Changes the direction of the chronological sorting. */
   direction?: ListRequestDirection;
+  /** Indicates that this request is an export of logs in CSV format. */
   export?: boolean;
-  hide_user_logs?: boolean;
+  /** Indicates whether or not to hide user level audit logs. */
+  hideUserLogs?: boolean;
+  /** Defines which page of results to return. */
   page?: number;
-  per_page?: number;
+  /** Sets the number of results to return per page. */
+  perPage?: number;
+  /** Limits the returned results to logs newer than the specified date. A `full-date` that conforms to RFC3339. */
   since?: string;
   zone?: string;
 }
 export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
     action: S.optional(S.String.pipe(T.Query())),
     actor: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
     direction: S.optional(ListRequestDirection.pipe(T.Query())),
     export: S.optional(S.Boolean.pipe(T.Query())),
-    hide_user_logs: S.optional(S.Boolean.pipe(T.Query())),
+    hideUserLogs: S.optional(S.Boolean.pipe(T.Query("hide_user_logs"))),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     since: S.optional(S.String.pipe(T.Query())),
     zone: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -51,25 +60,26 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListResponse {
-  object___errors__messages__result__success__: unknown;
-  AaaAPIResponseCommon_object___errors__messages__success__: unknown;
+  objectErrorsMessagesResultSuccess__: unknown;
+  AaaAPIResponseCommonObjectErrorsMessagesSuccess__: unknown;
 }
 export const ListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    object___errors__messages__result__success__: S.Unknown.pipe(
+    objectErrorsMessagesResultSuccess__: S.Unknown.pipe(
       T.Body("object { errors, messages, result, success }"),
     ),
-    AaaAPIResponseCommon_object___errors__messages__success__: S.Unknown.pipe(
+    AaaAPIResponseCommonObjectErrorsMessagesSuccess__: S.Unknown.pipe(
       T.Body("AaaAPIResponseCommon object { errors, messages, success }"),
     ),
   }),
 ).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
 
+export type ListError = CloudflareOpError;
 /** Gets a list of audit logs for an account. Can be filtered by who made the change, on which zone, and the timeframe of the change. */
-export const List: API.OperationMethod<
+export const list: API.OperationMethod<
   ListRequest,
   ListResponse,
-  CloudflareOpError,
+  ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRequest,

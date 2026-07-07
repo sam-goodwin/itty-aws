@@ -13,12 +13,14 @@ export type CreateRequestValue = "enabled" | "disabled" | (string & {});
 export const CreateRequestValue = /*@__PURE__*/ S.String;
 
 export interface CreateRequest {
-  zone_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The status value for Content Scanning. */
   value: CreateRequestValue;
 }
 export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     value: CreateRequestValue,
   }).pipe(
     T.Http({
@@ -31,7 +33,9 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateResponse {
+  /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
   modified?: string;
+  /** Defines the status of Content Scanning. */
   value?: string;
 }
 export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -42,11 +46,12 @@ export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
 
 export interface DisableRequest {
-  zone_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
 }
 export const DisableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -57,6 +62,7 @@ export const DisableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisableRequest" }) as any as S.Schema<DisableRequest>;
 
 export interface DisableResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const DisableResponse = /*@__PURE__*/ S.suspend(() =>
@@ -68,11 +74,12 @@ export const DisableResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableResponse>;
 
 export interface EnableRequest {
-  zone_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
 }
 export const EnableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -83,6 +90,7 @@ export const EnableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnableRequest" }) as any as S.Schema<EnableRequest>;
 
 export interface EnableResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const EnableResponse = /*@__PURE__*/ S.suspend(() =>
@@ -92,11 +100,12 @@ export const EnableResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnableResponse" }) as any as S.Schema<EnableResponse>;
 
 export interface GetRequest {
-  zone_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -108,7 +117,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
+  /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
   modified?: string;
+  /** Defines the status of Content Scanning. */
   value?: string;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -119,6 +130,7 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
 export interface PayloadsCreateRequestBodyItem {
+  /** Defines the ruleset expression to use in matching content objects. */
   payload: string;
 }
 export const PayloadsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
@@ -135,12 +147,13 @@ export const PayloadsCreateRequestBodyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PayloadsCreateRequestBodyList>;
 
 export interface PayloadsCreateRequest {
-  zone_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
   body: PayloadsCreateRequestBodyList;
 }
 export const PayloadsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     body: PayloadsCreateRequestBodyList,
   }).pipe(
     T.Http({
@@ -154,7 +167,9 @@ export const PayloadsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PayloadsCreateRequest>;
 
 export interface PayloadsCreateResultItem {
+  /** defines the unique ID for this custom scan expression. */
   id?: string;
+  /** Defines the ruleset expression to use in matching content objects. */
   payload?: string;
 }
 export const PayloadsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -172,6 +187,7 @@ export const PayloadsCreateResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PayloadsCreateResultList>;
 
 export interface PayloadsCreateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PayloadsCreateResultList;
 }
 export const PayloadsCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -183,13 +199,15 @@ export const PayloadsCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PayloadsCreateResponse>;
 
 export interface PayloadsDeleteRequest {
-  zone_id: string;
-  expression_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
+  /** defines the unique ID for this custom scan expression. */
+  expressionId: string;
 }
 export const PayloadsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    expression_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    expressionId: S.String.pipe(T.Label("expression_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -202,7 +220,9 @@ export const PayloadsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PayloadsDeleteRequest>;
 
 export interface PayloadsDeleteResultItem {
+  /** defines the unique ID for this custom scan expression. */
   id?: string;
+  /** Defines the ruleset expression to use in matching content objects. */
   payload?: string;
 }
 export const PayloadsDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -220,6 +240,7 @@ export const PayloadsDeleteResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PayloadsDeleteResultList>;
 
 export interface PayloadsDeleteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PayloadsDeleteResultList;
 }
 export const PayloadsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -231,11 +252,12 @@ export const PayloadsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PayloadsDeleteResponse>;
 
 export interface PayloadsListRequest {
-  zone_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
 }
 export const PayloadsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -248,7 +270,9 @@ export const PayloadsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PayloadsListRequest>;
 
 export interface PayloadsListResultItem {
+  /** defines the unique ID for this custom scan expression. */
   id?: string;
+  /** Defines the ruleset expression to use in matching content objects. */
   payload?: string;
 }
 export const PayloadsListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -266,6 +290,7 @@ export const PayloadsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PayloadsListResultList>;
 
 export interface PayloadsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PayloadsListResultList;
 }
 export const PayloadsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -277,11 +302,12 @@ export const PayloadsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PayloadsListResponse>;
 
 export interface SettingsGetRequest {
-  zone_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
 }
 export const SettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -295,7 +321,9 @@ export const SettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SettingsGetResponse {
+  /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
   modified?: string;
+  /** Defines the status of Content Scanning. */
   value?: string;
 }
 export const SettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -311,12 +339,14 @@ export type UpdateRequestValue = "enabled" | "disabled" | (string & {});
 export const UpdateRequestValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequest {
-  zone_id: string;
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The status value for Content Scanning. */
   value: UpdateRequestValue;
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     value: UpdateRequestValue,
   }).pipe(
     T.Http({
@@ -329,7 +359,9 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
+  /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
   modified?: string;
+  /** Defines the status of Content Scanning. */
   value?: string;
 }
 export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -339,11 +371,12 @@ export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
+export type CreateError = CloudflareOpError;
 /** Update the Content Scanning status. */
-export const Create: API.OperationMethod<
+export const create: API.OperationMethod<
   CreateRequest,
   CreateResponse,
-  CloudflareOpError,
+  CreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRequest,
@@ -352,11 +385,12 @@ export const Create: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DisableError = CloudflareOpError;
 /** Disable Content Scanning. */
-export const Disable: API.OperationMethod<
+export const disable: API.OperationMethod<
   DisableRequest,
   DisableResponse,
-  CloudflareOpError,
+  DisableError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableRequest,
@@ -365,11 +399,12 @@ export const Disable: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type EnableError = CloudflareOpError;
 /** Enable Content Scanning. */
-export const Enable: API.OperationMethod<
+export const enable: API.OperationMethod<
   EnableRequest,
   EnableResponse,
-  CloudflareOpError,
+  EnableError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableRequest,
@@ -378,11 +413,12 @@ export const Enable: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Retrieve the current status of Content Scanning. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -391,11 +427,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PayloadsCreateError = CloudflareOpError;
 /** Add custom scan expressions for Content Scanning. */
-export const PayloadsCreate: API.OperationMethod<
+export const payloadsCreate: API.OperationMethod<
   PayloadsCreateRequest,
   PayloadsCreateResponse,
-  CloudflareOpError,
+  PayloadsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PayloadsCreateRequest,
@@ -404,11 +441,12 @@ export const PayloadsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PayloadsDeleteError = CloudflareOpError;
 /** Delete a Content Scan Custom Expression. */
-export const PayloadsDelete: API.OperationMethod<
+export const payloadsDelete: API.OperationMethod<
   PayloadsDeleteRequest,
   PayloadsDeleteResponse,
-  CloudflareOpError,
+  PayloadsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PayloadsDeleteRequest,
@@ -417,11 +455,12 @@ export const PayloadsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PayloadsListError = CloudflareOpError;
 /** Get a list of existing custom scan expressions for Content Scanning. */
-export const PayloadsList: API.OperationMethod<
+export const payloadsList: API.OperationMethod<
   PayloadsListRequest,
   PayloadsListResponse,
-  CloudflareOpError,
+  PayloadsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PayloadsListRequest,
@@ -430,11 +469,12 @@ export const PayloadsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsGetError = CloudflareOpError;
 /** Retrieve the current status of Content Scanning. */
-export const SettingsGet: API.OperationMethod<
+export const settingsGet: API.OperationMethod<
   SettingsGetRequest,
   SettingsGetResponse,
-  CloudflareOpError,
+  SettingsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsGetRequest,
@@ -443,11 +483,12 @@ export const SettingsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UpdateError = CloudflareOpError;
 /** Update the Content Scanning status. */
-export const Update: API.OperationMethod<
+export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,
-  CloudflareOpError,
+  UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,

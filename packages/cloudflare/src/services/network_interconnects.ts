@@ -10,13 +10,13 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface CnisCreateRequestMagic {
-  conduit_name: string;
+  conduitName: string;
   description: string;
   mtu: number;
 }
 export const CnisCreateRequestMagic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    conduit_name: S.String,
+    conduitName: S.String.pipe(T.Body("conduit_name")),
     description: S.String,
     mtu: S.Number,
   }),
@@ -30,22 +30,29 @@ export const CnisCreateRequestBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CnisCreateRequestBgpExtraPrefixesList>;
 
 export interface CnisCreateRequestBgp {
-  customer_asn: number;
-  extra_prefixes: CnisCreateRequestBgpExtraPrefixesList;
-  md5_key?: string;
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** Extra set of static prefixes to advertise to the customer's end of the session */
+  extraPrefixes: CnisCreateRequestBgpExtraPrefixesList;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
 }
 export const CnisCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    customer_asn: S.Number,
-    extra_prefixes: CnisCreateRequestBgpExtraPrefixesList,
-    md5_key: S.optional(S.String),
+    customerAsn: S.Number.pipe(T.Body("customer_asn")),
+    extraPrefixes: CnisCreateRequestBgpExtraPrefixesList.pipe(
+      T.Body("extra_prefixes"),
+    ),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
   }),
 ).annotate({
   identifier: "CnisCreateRequestBgp",
 }) as any as S.Schema<CnisCreateRequestBgp>;
 
 export interface CnisCreateRequest {
-  account_id: string;
+  /** Customer account tag */
+  accountId: string;
+  /** Customer account tag */
   account: string;
   interconnect: string;
   magic: CnisCreateRequestMagic;
@@ -53,7 +60,7 @@ export interface CnisCreateRequest {
 }
 export const CnisCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     account: S.String,
     interconnect: S.String,
     magic: CnisCreateRequestMagic,
@@ -70,13 +77,13 @@ export const CnisCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CnisCreateRequest>;
 
 export interface CnisCreateResponseMagic {
-  conduit_name: string;
+  conduitName: string;
   description: string;
   mtu: number;
 }
 export const CnisCreateResponseMagic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    conduit_name: S.String,
+    conduitName: S.String.pipe(T.Body("conduit_name")),
     description: S.String,
     mtu: S.Number,
   }),
@@ -90,15 +97,20 @@ export const CnisCreateResponseBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CnisCreateResponseBgpExtraPrefixesList>;
 
 export interface CnisCreateResponseBgp {
-  customer_asn: number;
-  extra_prefixes: CnisCreateResponseBgpExtraPrefixesList;
-  md5_key?: string;
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** Extra set of static prefixes to advertise to the customer's end of the session */
+  extraPrefixes: CnisCreateResponseBgpExtraPrefixesList;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
 }
 export const CnisCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    customer_asn: S.Number,
-    extra_prefixes: CnisCreateResponseBgpExtraPrefixesList,
-    md5_key: S.optional(S.String),
+    customerAsn: S.Number.pipe(T.Body("customer_asn")),
+    extraPrefixes: CnisCreateResponseBgpExtraPrefixesList.pipe(
+      T.Body("extra_prefixes"),
+    ),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
   }),
 ).annotate({
   identifier: "CnisCreateResponseBgp",
@@ -107,21 +119,25 @@ export const CnisCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CnisCreateResponse {
   id: string;
+  /** Customer account tag */
   account: string;
-  cust_ip: string;
+  /** Customer end of the point-to-point link */
+  custIp: string;
+  /** Interconnect identifier hosting this CNI */
   interconnect: string;
   magic: CnisCreateResponseMagic;
-  p2p_ip: string;
+  /** Cloudflare end of the point-to-point link */
+  p2pIp: string;
   bgp?: CnisCreateResponseBgp;
 }
 export const CnisCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     account: S.String,
-    cust_ip: S.String,
+    custIp: S.String.pipe(T.Body("cust_ip")),
     interconnect: S.String,
     magic: CnisCreateResponseMagic,
-    p2p_ip: S.String,
+    p2pIp: S.String.pipe(T.Body("p2p_ip")),
     bgp: S.optional(CnisCreateResponseBgp),
   }),
 ).annotate({
@@ -129,12 +145,13 @@ export const CnisCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CnisCreateResponse>;
 
 export interface CnisDeleteRequest {
-  account_id: string;
+  /** Customer account tag */
+  accountId: string;
   cni: string;
 }
 export const CnisDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     cni: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -155,12 +172,13 @@ export const CnisDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CnisDeleteResponse>;
 
 export interface CnisGetRequest {
-  account_id: string;
+  /** Customer account tag */
+  accountId: string;
   cni: string;
 }
 export const CnisGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     cni: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -172,13 +190,13 @@ export const CnisGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CnisGetRequest" }) as any as S.Schema<CnisGetRequest>;
 
 export interface CnisGetResponseMagic {
-  conduit_name: string;
+  conduitName: string;
   description: string;
   mtu: number;
 }
 export const CnisGetResponseMagic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    conduit_name: S.String,
+    conduitName: S.String.pipe(T.Body("conduit_name")),
     description: S.String,
     mtu: S.Number,
   }),
@@ -192,15 +210,20 @@ export const CnisGetResponseBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CnisGetResponseBgpExtraPrefixesList>;
 
 export interface CnisGetResponseBgp {
-  customer_asn: number;
-  extra_prefixes: CnisGetResponseBgpExtraPrefixesList;
-  md5_key?: string;
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** Extra set of static prefixes to advertise to the customer's end of the session */
+  extraPrefixes: CnisGetResponseBgpExtraPrefixesList;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
 }
 export const CnisGetResponseBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    customer_asn: S.Number,
-    extra_prefixes: CnisGetResponseBgpExtraPrefixesList,
-    md5_key: S.optional(S.String),
+    customerAsn: S.Number.pipe(T.Body("customer_asn")),
+    extraPrefixes: CnisGetResponseBgpExtraPrefixesList.pipe(
+      T.Body("extra_prefixes"),
+    ),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
   }),
 ).annotate({
   identifier: "CnisGetResponseBgp",
@@ -209,21 +232,25 @@ export const CnisGetResponseBgp = /*@__PURE__*/ S.suspend(() =>
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CnisGetResponse {
   id: string;
+  /** Customer account tag */
   account: string;
-  cust_ip: string;
+  /** Customer end of the point-to-point link */
+  custIp: string;
+  /** Interconnect identifier hosting this CNI */
   interconnect: string;
   magic: CnisGetResponseMagic;
-  p2p_ip: string;
+  /** Cloudflare end of the point-to-point link */
+  p2pIp: string;
   bgp?: CnisGetResponseBgp;
 }
 export const CnisGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     account: S.String,
-    cust_ip: S.String,
+    custIp: S.String.pipe(T.Body("cust_ip")),
     interconnect: S.String,
     magic: CnisGetResponseMagic,
-    p2p_ip: S.String,
+    p2pIp: S.String.pipe(T.Body("p2p_ip")),
     bgp: S.optional(CnisGetResponseBgp),
   }),
 ).annotate({
@@ -231,19 +258,22 @@ export const CnisGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CnisGetResponse>;
 
 export interface CnisListRequest {
-  account_id: string;
+  /** Customer account tag */
+  accountId: string;
   cursor?: number;
   limit?: number;
+  /** If specified, only show CNIs associated with the specified slot */
   slot?: string;
-  tunnel_id?: string;
+  /** If specified, only show cnis associated with the specified tunnel id */
+  tunnelId?: string;
 }
 export const CnisListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     slot: S.optional(S.String.pipe(T.Query())),
-    tunnel_id: S.optional(S.String.pipe(T.Query())),
+    tunnelId: S.optional(S.String.pipe(T.Query("tunnel_id"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -256,13 +286,13 @@ export const CnisListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CnisListRequest>;
 
 export interface CnisListResponseItemsItemMagic {
-  conduit_name: string;
+  conduitName: string;
   description: string;
   mtu: number;
 }
 export const CnisListResponseItemsItemMagic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    conduit_name: S.String,
+    conduitName: S.String.pipe(T.Body("conduit_name")),
     description: S.String,
     mtu: S.Number,
   }),
@@ -277,15 +307,20 @@ export const CnisListResponseItemsItemBgpExtraPrefixesList =
   ) as any as S.Schema<CnisListResponseItemsItemBgpExtraPrefixesList>;
 
 export interface CnisListResponseItemsItemBgp {
-  customer_asn: number;
-  extra_prefixes: CnisListResponseItemsItemBgpExtraPrefixesList;
-  md5_key?: string;
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** Extra set of static prefixes to advertise to the customer's end of the session */
+  extraPrefixes: CnisListResponseItemsItemBgpExtraPrefixesList;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
 }
 export const CnisListResponseItemsItemBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    customer_asn: S.Number,
-    extra_prefixes: CnisListResponseItemsItemBgpExtraPrefixesList,
-    md5_key: S.optional(S.String),
+    customerAsn: S.Number.pipe(T.Body("customer_asn")),
+    extraPrefixes: CnisListResponseItemsItemBgpExtraPrefixesList.pipe(
+      T.Body("extra_prefixes"),
+    ),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
   }),
 ).annotate({
   identifier: "CnisListResponseItemsItemBgp",
@@ -293,21 +328,25 @@ export const CnisListResponseItemsItemBgp = /*@__PURE__*/ S.suspend(() =>
 
 export interface CnisListResponseItemsItem {
   id: string;
+  /** Customer account tag */
   account: string;
-  cust_ip: string;
+  /** Customer end of the point-to-point link */
+  custIp: string;
+  /** Interconnect identifier hosting this CNI */
   interconnect: string;
   magic: CnisListResponseItemsItemMagic;
-  p2p_ip: string;
+  /** Cloudflare end of the point-to-point link */
+  p2pIp: string;
   bgp?: CnisListResponseItemsItemBgp;
 }
 export const CnisListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     account: S.String,
-    cust_ip: S.String,
+    custIp: S.String.pipe(T.Body("cust_ip")),
     interconnect: S.String,
     magic: CnisListResponseItemsItemMagic,
-    p2p_ip: S.String,
+    p2pIp: S.String.pipe(T.Body("p2p_ip")),
     bgp: S.optional(CnisListResponseItemsItemBgp),
   }),
 ).annotate({
@@ -334,13 +373,13 @@ export const CnisListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CnisListResponse>;
 
 export interface CnisUpdateRequestMagic {
-  conduit_name: string;
+  conduitName: string;
   description: string;
   mtu: number;
 }
 export const CnisUpdateRequestMagic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    conduit_name: S.String,
+    conduitName: S.String.pipe(T.Body("conduit_name")),
     description: S.String,
     mtu: S.Number,
   }),
@@ -354,41 +393,51 @@ export const CnisUpdateRequestBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CnisUpdateRequestBgpExtraPrefixesList>;
 
 export interface CnisUpdateRequestBgp {
-  customer_asn: number;
-  extra_prefixes: CnisUpdateRequestBgpExtraPrefixesList;
-  md5_key?: string;
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** Extra set of static prefixes to advertise to the customer's end of the session */
+  extraPrefixes: CnisUpdateRequestBgpExtraPrefixesList;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
 }
 export const CnisUpdateRequestBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    customer_asn: S.Number,
-    extra_prefixes: CnisUpdateRequestBgpExtraPrefixesList,
-    md5_key: S.optional(S.String),
+    customerAsn: S.Number.pipe(T.Body("customer_asn")),
+    extraPrefixes: CnisUpdateRequestBgpExtraPrefixesList.pipe(
+      T.Body("extra_prefixes"),
+    ),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
   }),
 ).annotate({
   identifier: "CnisUpdateRequestBgp",
 }) as any as S.Schema<CnisUpdateRequestBgp>;
 
 export interface CnisUpdateRequest {
-  account_id: string;
+  /** Customer account tag */
+  accountId: string;
   cni: string;
   id: string;
+  /** Customer account tag */
   account: string;
-  cust_ip: string;
+  /** Customer end of the point-to-point link */
+  custIp: string;
+  /** Interconnect identifier hosting this CNI */
   interconnect: string;
   magic: CnisUpdateRequestMagic;
-  p2p_ip: string;
+  /** Cloudflare end of the point-to-point link */
+  p2pIp: string;
   bgp?: CnisUpdateRequestBgp;
 }
 export const CnisUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     cni: S.String.pipe(T.Label()),
     id: S.String,
     account: S.String,
-    cust_ip: S.String,
+    custIp: S.String.pipe(T.Body("cust_ip")),
     interconnect: S.String,
     magic: CnisUpdateRequestMagic,
-    p2p_ip: S.String,
+    p2pIp: S.String.pipe(T.Body("p2p_ip")),
     bgp: S.optional(CnisUpdateRequestBgp),
   }).pipe(
     T.Http({
@@ -402,13 +451,13 @@ export const CnisUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CnisUpdateRequest>;
 
 export interface CnisUpdateResponseMagic {
-  conduit_name: string;
+  conduitName: string;
   description: string;
   mtu: number;
 }
 export const CnisUpdateResponseMagic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    conduit_name: S.String,
+    conduitName: S.String.pipe(T.Body("conduit_name")),
     description: S.String,
     mtu: S.Number,
   }),
@@ -422,15 +471,20 @@ export const CnisUpdateResponseBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CnisUpdateResponseBgpExtraPrefixesList>;
 
 export interface CnisUpdateResponseBgp {
-  customer_asn: number;
-  extra_prefixes: CnisUpdateResponseBgpExtraPrefixesList;
-  md5_key?: string;
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** Extra set of static prefixes to advertise to the customer's end of the session */
+  extraPrefixes: CnisUpdateResponseBgpExtraPrefixesList;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
 }
 export const CnisUpdateResponseBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    customer_asn: S.Number,
-    extra_prefixes: CnisUpdateResponseBgpExtraPrefixesList,
-    md5_key: S.optional(S.String),
+    customerAsn: S.Number.pipe(T.Body("customer_asn")),
+    extraPrefixes: CnisUpdateResponseBgpExtraPrefixesList.pipe(
+      T.Body("extra_prefixes"),
+    ),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
   }),
 ).annotate({
   identifier: "CnisUpdateResponseBgp",
@@ -439,21 +493,25 @@ export const CnisUpdateResponseBgp = /*@__PURE__*/ S.suspend(() =>
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CnisUpdateResponse {
   id: string;
+  /** Customer account tag */
   account: string;
-  cust_ip: string;
+  /** Customer end of the point-to-point link */
+  custIp: string;
+  /** Interconnect identifier hosting this CNI */
   interconnect: string;
   magic: CnisUpdateResponseMagic;
-  p2p_ip: string;
+  /** Cloudflare end of the point-to-point link */
+  p2pIp: string;
   bgp?: CnisUpdateResponseBgp;
 }
 export const CnisUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     account: S.String,
-    cust_ip: S.String,
+    custIp: S.String.pipe(T.Body("cust_ip")),
     interconnect: S.String,
     magic: CnisUpdateResponseMagic,
-    p2p_ip: S.String,
+    p2pIp: S.String.pipe(T.Body("p2p_ip")),
     bgp: S.optional(CnisUpdateResponseBgp),
   }),
 ).annotate({
@@ -461,18 +519,18 @@ export const CnisUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CnisUpdateResponse>;
 
 export interface InterconnectsCreateRequestBody {
-  NscInterconnectCreatePhysicalBody_object___account__slot_id__type__speed__: unknown;
-  NscInterconnectCreateGcpPartnerBody_object___account__bandwidth__pairing_key__type__: unknown;
+  NscInterconnectCreatePhysicalBodyObjectAccountSlotIdTypeSpeed__: unknown;
+  NscInterconnectCreateGcpPartnerBodyObjectAccountBandwidthPairingKeyType__: unknown;
 }
 export const InterconnectsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    NscInterconnectCreatePhysicalBody_object___account__slot_id__type__speed__:
+    NscInterconnectCreatePhysicalBodyObjectAccountSlotIdTypeSpeed__:
       S.Unknown.pipe(
         T.Body(
           "NscInterconnectCreatePhysicalBody object { account, slot_id, type, speed }",
         ),
       ),
-    NscInterconnectCreateGcpPartnerBody_object___account__bandwidth__pairing_key__type__:
+    NscInterconnectCreateGcpPartnerBodyObjectAccountBandwidthPairingKeyType__:
       S.Unknown.pipe(
         T.Body(
           "NscInterconnectCreateGcpPartnerBody object { account, bandwidth, pairing_key, type }",
@@ -484,12 +542,13 @@ export const InterconnectsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectsCreateRequestBody>;
 
 export interface InterconnectsCreateRequest {
-  account_id: string;
+  /** Customer account tag */
+  accountId: string;
   body: InterconnectsCreateRequestBody;
 }
 export const InterconnectsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     body: InterconnectsCreateRequestBody,
   }).pipe(
     T.Http({
@@ -504,35 +563,34 @@ export const InterconnectsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface InterconnectsCreateResponse {
-  NscInterconnectPhysicalBody_object___account__facility__name__5_more__: unknown;
-  NscInterconnectGcpPartnerBody_object___account__name__region__3_more__: unknown;
+  NscInterconnectPhysicalBodyObjectAccountFacilityName5More__: unknown;
+  NscInterconnectGcpPartnerBodyObjectAccountNameRegion3More__: unknown;
 }
 export const InterconnectsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    NscInterconnectPhysicalBody_object___account__facility__name__5_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "NscInterconnectPhysicalBody object { account, facility, name, 5 more }",
-        ),
+    NscInterconnectPhysicalBodyObjectAccountFacilityName5More__: S.Unknown.pipe(
+      T.Body(
+        "NscInterconnectPhysicalBody object { account, facility, name, 5 more }",
       ),
-    NscInterconnectGcpPartnerBody_object___account__name__region__3_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "NscInterconnectGcpPartnerBody object { account, name, region, 3 more }",
-        ),
+    ),
+    NscInterconnectGcpPartnerBodyObjectAccountNameRegion3More__: S.Unknown.pipe(
+      T.Body(
+        "NscInterconnectGcpPartnerBody object { account, name, region, 3 more }",
       ),
+    ),
   }),
 ).annotate({
   identifier: "InterconnectsCreateResponse",
 }) as any as S.Schema<InterconnectsCreateResponse>;
 
 export interface InterconnectsDeleteRequest {
-  account_id: string;
+  /** Customer account tag */
+  accountId: string;
   icon: string;
 }
 export const InterconnectsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     icon: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -553,12 +611,13 @@ export const InterconnectsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectsDeleteResponse>;
 
 export interface InterconnectsGetRequest {
-  account_id: string;
+  /** Customer account tag */
+  accountId: string;
   icon: string;
 }
 export const InterconnectsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     icon: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -573,38 +632,39 @@ export const InterconnectsGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface InterconnectsGetResponse {
-  NscInterconnectPhysicalBody_object___account__facility__name__5_more__: unknown;
-  NscInterconnectGcpPartnerBody_object___account__name__region__3_more__: unknown;
+  NscInterconnectPhysicalBodyObjectAccountFacilityName5More__: unknown;
+  NscInterconnectGcpPartnerBodyObjectAccountNameRegion3More__: unknown;
 }
 export const InterconnectsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    NscInterconnectPhysicalBody_object___account__facility__name__5_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "NscInterconnectPhysicalBody object { account, facility, name, 5 more }",
-        ),
+    NscInterconnectPhysicalBodyObjectAccountFacilityName5More__: S.Unknown.pipe(
+      T.Body(
+        "NscInterconnectPhysicalBody object { account, facility, name, 5 more }",
       ),
-    NscInterconnectGcpPartnerBody_object___account__name__region__3_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "NscInterconnectGcpPartnerBody object { account, name, region, 3 more }",
-        ),
+    ),
+    NscInterconnectGcpPartnerBodyObjectAccountNameRegion3More__: S.Unknown.pipe(
+      T.Body(
+        "NscInterconnectGcpPartnerBody object { account, name, region, 3 more }",
       ),
+    ),
   }),
 ).annotate({
   identifier: "InterconnectsGetResponse",
 }) as any as S.Schema<InterconnectsGetResponse>;
 
 export interface InterconnectsListRequest {
-  account_id: string;
+  /** Customer account tag */
+  accountId: string;
   cursor?: number;
   limit?: number;
+  /** If specified, only show interconnects located at the given site */
   site?: string;
+  /** If specified, only show interconnects of the given type */
   type?: string;
 }
 export const InterconnectsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     site: S.optional(S.String.pipe(T.Query())),
@@ -621,23 +681,21 @@ export const InterconnectsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectsListRequest>;
 
 export interface InterconnectsListResponseItemsItem {
-  NscInterconnectPhysicalBody_object___account__facility__name__5_more__: unknown;
-  NscInterconnectGcpPartnerBody_object___account__name__region__3_more__: unknown;
+  NscInterconnectPhysicalBodyObjectAccountFacilityName5More__: unknown;
+  NscInterconnectGcpPartnerBodyObjectAccountNameRegion3More__: unknown;
 }
 export const InterconnectsListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    NscInterconnectPhysicalBody_object___account__facility__name__5_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "NscInterconnectPhysicalBody object { account, facility, name, 5 more }",
-        ),
+    NscInterconnectPhysicalBodyObjectAccountFacilityName5More__: S.Unknown.pipe(
+      T.Body(
+        "NscInterconnectPhysicalBody object { account, facility, name, 5 more }",
       ),
-    NscInterconnectGcpPartnerBody_object___account__name__region__3_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "NscInterconnectGcpPartnerBody object { account, name, region, 3 more }",
-        ),
+    ),
+    NscInterconnectGcpPartnerBodyObjectAccountNameRegion3More__: S.Unknown.pipe(
+      T.Body(
+        "NscInterconnectGcpPartnerBody object { account, name, region, 3 more }",
       ),
+    ),
   }),
 ).annotate({
   identifier: "InterconnectsListResponseItemsItem",
@@ -664,12 +722,13 @@ export const InterconnectsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectsListResponse>;
 
 export interface InterconnectsLoaRequest {
-  account_id: string;
+  /** Customer account tag */
+  accountId: string;
   icon: string;
 }
 export const InterconnectsLoaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     icon: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -690,12 +749,13 @@ export const InterconnectsLoaResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectsLoaResponse>;
 
 export interface InterconnectsStatusRequest {
-  account_id: string;
+  /** Customer account tag */
+  accountId: string;
   icon: string;
 }
 export const InterconnectsStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     icon: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -710,36 +770,32 @@ export const InterconnectsStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface InterconnectsStatusResponse {
-  Pending_object___state__: unknown;
-  Down_object___state__reason__: unknown;
-  Unhealthy_object___state__reason__: unknown;
-  Healthy_object___state__: unknown;
+  PendingObjectState__: unknown;
+  DownObjectStateReason__: unknown;
+  UnhealthyObjectStateReason__: unknown;
+  HealthyObjectState__: unknown;
 }
 export const InterconnectsStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Pending_object___state__: S.Unknown.pipe(
-      T.Body("Pending object { state }"),
-    ),
-    Down_object___state__reason__: S.Unknown.pipe(
+    PendingObjectState__: S.Unknown.pipe(T.Body("Pending object { state }")),
+    DownObjectStateReason__: S.Unknown.pipe(
       T.Body("Down object { state, reason }"),
     ),
-    Unhealthy_object___state__reason__: S.Unknown.pipe(
+    UnhealthyObjectStateReason__: S.Unknown.pipe(
       T.Body("Unhealthy object { state, reason }"),
     ),
-    Healthy_object___state__: S.Unknown.pipe(
-      T.Body("Healthy object { state }"),
-    ),
+    HealthyObjectState__: S.Unknown.pipe(T.Body("Healthy object { state }")),
   }),
 ).annotate({
   identifier: "InterconnectsStatusResponse",
 }) as any as S.Schema<InterconnectsStatusResponse>;
 
 export interface SettingsGetRequest {
-  account_id: string;
+  accountId: string;
 }
 export const SettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -753,24 +809,24 @@ export const SettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface SettingsGetResponse {
-  default_asn: number;
+  defaultAsn: number;
 }
 export const SettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    default_asn: S.Number,
+    defaultAsn: S.Number.pipe(T.Body("default_asn")),
   }),
 ).annotate({
   identifier: "SettingsGetResponse",
 }) as any as S.Schema<SettingsGetResponse>;
 
 export interface SettingsUpdateRequest {
-  account_id: string;
-  default_asn?: number;
+  accountId: string;
+  defaultAsn?: number;
 }
 export const SettingsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    default_asn: S.optional(S.Number),
+    accountId: S.String.pipe(T.Label("account_id")),
+    defaultAsn: S.optional(S.Number.pipe(T.Body("default_asn"))),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -784,23 +840,24 @@ export const SettingsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface SettingsUpdateResponse {
-  default_asn: number;
+  defaultAsn: number;
 }
 export const SettingsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    default_asn: S.Number,
+    defaultAsn: S.Number.pipe(T.Body("default_asn")),
   }),
 ).annotate({
   identifier: "SettingsUpdateResponse",
 }) as any as S.Schema<SettingsUpdateResponse>;
 
 export interface SlotsGetRequest {
-  account_id: string;
+  /** Customer account tag */
+  accountId: string;
   slot: string;
 }
 export const SlotsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     slot: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
@@ -833,11 +890,14 @@ export const SlotsGetResponseFacility = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface SlotsGetResponse {
+  /** Slot ID */
   id: string;
   facility: SlotsGetResponseFacility;
+  /** Whether the slot is occupied or not */
   occupied: boolean;
   site: string;
   speed: string;
+  /** Customer account tag */
   account?: string;
 }
 export const SlotsGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -854,18 +914,23 @@ export const SlotsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SlotsGetResponse>;
 
 export interface SlotsListRequest {
-  account_id: string;
-  address_contains?: string;
+  /** Customer account tag */
+  accountId: string;
+  /** If specified, only show slots with the given text in their address field */
+  addressContains?: string;
   cursor?: number;
   limit?: number;
+  /** If specified, only show slots with a specific occupied/unoccupied state */
   occupied?: boolean;
+  /** If specified, only show slots located at the given site */
   site?: string;
+  /** If specified, only show slots that support the given speed */
   speed?: string;
 }
 export const SlotsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    address_contains: S.optional(S.String.pipe(T.Query())),
+    accountId: S.String.pipe(T.Label("account_id")),
+    addressContains: S.optional(S.String.pipe(T.Query("address_contains"))),
     cursor: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     occupied: S.optional(S.Boolean.pipe(T.Query())),
@@ -902,11 +967,14 @@ export const SlotsListResponseItemsItemFacility = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SlotsListResponseItemsItemFacility>;
 
 export interface SlotsListResponseItemsItem {
+  /** Slot ID */
   id: string;
   facility: SlotsListResponseItemsItemFacility;
+  /** Whether the slot is occupied or not */
   occupied: boolean;
   site: string;
   speed: string;
+  /** Customer account tag */
   account?: string;
 }
 export const SlotsListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
@@ -941,11 +1009,12 @@ export const SlotsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SlotsListResponse",
 }) as any as S.Schema<SlotsListResponse>;
 
+export type CnisCreateError = CloudflareOpError;
 /** Create a new CNI object */
-export const CnisCreate: API.OperationMethod<
+export const cnisCreate: API.OperationMethod<
   CnisCreateRequest,
   CnisCreateResponse,
-  CloudflareOpError,
+  CnisCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CnisCreateRequest,
@@ -954,11 +1023,12 @@ export const CnisCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CnisDeleteError = CloudflareOpError;
 /** Delete a specified CNI object */
-export const CnisDelete: API.OperationMethod<
+export const cnisDelete: API.OperationMethod<
   CnisDeleteRequest,
   CnisDeleteResponse,
-  CloudflareOpError,
+  CnisDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CnisDeleteRequest,
@@ -967,11 +1037,12 @@ export const CnisDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CnisGetError = CloudflareOpError;
 /** Get information about a CNI object */
-export const CnisGet: API.OperationMethod<
+export const cnisGet: API.OperationMethod<
   CnisGetRequest,
   CnisGetResponse,
-  CloudflareOpError,
+  CnisGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CnisGetRequest,
@@ -980,11 +1051,12 @@ export const CnisGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CnisListError = CloudflareOpError;
 /** List existing CNI objects */
-export const CnisList: API.OperationMethod<
+export const cnisList: API.OperationMethod<
   CnisListRequest,
   CnisListResponse,
-  CloudflareOpError,
+  CnisListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CnisListRequest,
@@ -993,11 +1065,12 @@ export const CnisList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CnisUpdateError = CloudflareOpError;
 /** Modify stored information about a CNI object */
-export const CnisUpdate: API.OperationMethod<
+export const cnisUpdate: API.OperationMethod<
   CnisUpdateRequest,
   CnisUpdateResponse,
-  CloudflareOpError,
+  CnisUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CnisUpdateRequest,
@@ -1006,11 +1079,12 @@ export const CnisUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InterconnectsCreateError = CloudflareOpError;
 /** Create a new interconnect */
-export const InterconnectsCreate: API.OperationMethod<
+export const interconnectsCreate: API.OperationMethod<
   InterconnectsCreateRequest,
   InterconnectsCreateResponse,
-  CloudflareOpError,
+  InterconnectsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InterconnectsCreateRequest,
@@ -1019,11 +1093,12 @@ export const InterconnectsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InterconnectsDeleteError = CloudflareOpError;
 /** Delete an interconnect object */
-export const InterconnectsDelete: API.OperationMethod<
+export const interconnectsDelete: API.OperationMethod<
   InterconnectsDeleteRequest,
   InterconnectsDeleteResponse,
-  CloudflareOpError,
+  InterconnectsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InterconnectsDeleteRequest,
@@ -1032,11 +1107,12 @@ export const InterconnectsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InterconnectsGetError = CloudflareOpError;
 /** Get information about an interconnect object */
-export const InterconnectsGet: API.OperationMethod<
+export const interconnectsGet: API.OperationMethod<
   InterconnectsGetRequest,
   InterconnectsGetResponse,
-  CloudflareOpError,
+  InterconnectsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InterconnectsGetRequest,
@@ -1045,11 +1121,12 @@ export const InterconnectsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InterconnectsListError = CloudflareOpError;
 /** List existing interconnects */
-export const InterconnectsList: API.OperationMethod<
+export const interconnectsList: API.OperationMethod<
   InterconnectsListRequest,
   InterconnectsListResponse,
-  CloudflareOpError,
+  InterconnectsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InterconnectsListRequest,
@@ -1058,11 +1135,12 @@ export const InterconnectsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InterconnectsLoaError = CloudflareOpError;
 /** Generate the Letter of Authorization (LOA) for a given interconnect */
-export const InterconnectsLoa: API.OperationMethod<
+export const interconnectsLoa: API.OperationMethod<
   InterconnectsLoaRequest,
   InterconnectsLoaResponse,
-  CloudflareOpError,
+  InterconnectsLoaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InterconnectsLoaRequest,
@@ -1071,11 +1149,12 @@ export const InterconnectsLoa: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InterconnectsStatusError = CloudflareOpError;
 /** Get the current status of an interconnect object */
-export const InterconnectsStatus: API.OperationMethod<
+export const interconnectsStatus: API.OperationMethod<
   InterconnectsStatusRequest,
   InterconnectsStatusResponse,
-  CloudflareOpError,
+  InterconnectsStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InterconnectsStatusRequest,
@@ -1084,11 +1163,12 @@ export const InterconnectsStatus: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsGetError = CloudflareOpError;
 /** Get the current settings for the active account */
-export const SettingsGet: API.OperationMethod<
+export const settingsGet: API.OperationMethod<
   SettingsGetRequest,
   SettingsGetResponse,
-  CloudflareOpError,
+  SettingsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsGetRequest,
@@ -1097,11 +1177,12 @@ export const SettingsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsUpdateError = CloudflareOpError;
 /** Update the current settings for the active account */
-export const SettingsUpdate: API.OperationMethod<
+export const settingsUpdate: API.OperationMethod<
   SettingsUpdateRequest,
   SettingsUpdateResponse,
-  CloudflareOpError,
+  SettingsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsUpdateRequest,
@@ -1110,11 +1191,12 @@ export const SettingsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SlotsGetError = CloudflareOpError;
 /** Get information about the specified slot */
-export const SlotsGet: API.OperationMethod<
+export const slotsGet: API.OperationMethod<
   SlotsGetRequest,
   SlotsGetResponse,
-  CloudflareOpError,
+  SlotsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SlotsGetRequest,
@@ -1123,11 +1205,12 @@ export const SlotsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SlotsListError = CloudflareOpError;
 /** Retrieve a list of all slots matching the specified parameters */
-export const SlotsList: API.OperationMethod<
+export const slotsList: API.OperationMethod<
   SlotsListRequest,
   SlotsListResponse,
-  CloudflareOpError,
+  SlotsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SlotsListRequest,

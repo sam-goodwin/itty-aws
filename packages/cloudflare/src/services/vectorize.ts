@@ -9,16 +9,36 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export interface IndexesCreateRequestConfig {
+  IndexDimensionConfigurationObjectDimensionsMetric__: unknown;
+  VectorizeIndexPresetConfigurationObjectPreset__: unknown;
+}
+export const IndexesCreateRequestConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IndexDimensionConfigurationObjectDimensionsMetric__: S.Unknown.pipe(
+      T.Body("IndexDimensionConfiguration object { dimensions, metric }"),
+    ),
+    VectorizeIndexPresetConfigurationObjectPreset__: S.Unknown.pipe(
+      T.Body("VectorizeIndexPresetConfiguration object { preset }"),
+    ),
+  }),
+).annotate({
+  identifier: "IndexesCreateRequestConfig",
+}) as any as S.Schema<IndexesCreateRequestConfig>;
+
 export interface IndexesCreateRequest {
-  account_id: string;
-  config: unknown;
+  /** Identifier */
+  accountId: string;
+  /** Specifies the type of configuration to use for the index. */
+  config: IndexesCreateRequestConfig;
   name: string;
+  /** Specifies the description of the index. */
   description?: string;
 }
 export const IndexesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    config: S.Unknown,
+    accountId: S.String.pipe(T.Label("account_id")),
+    config: IndexesCreateRequestConfig,
     name: S.String,
     description: S.optional(S.String),
   }).pipe(
@@ -32,25 +52,60 @@ export const IndexesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "IndexesCreateRequest",
 }) as any as S.Schema<IndexesCreateRequest>;
 
+export type IndexesCreateResponseConfigMetric =
+  | "cosine"
+  | "euclidean"
+  | "dot-product"
+  | (string & {});
+export const IndexesCreateResponseConfigMetric = /*@__PURE__*/ S.String;
+
+export interface IndexesCreateResponseConfig {
+  /** Specifies the number of dimensions for the index */
+  dimensions: number;
+  /** Specifies the type of metric to use calculating distance. */
+  metric: IndexesCreateResponseConfigMetric;
+}
+export const IndexesCreateResponseConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dimensions: S.Number,
+    metric: IndexesCreateResponseConfigMetric,
+  }),
+).annotate({
+  identifier: "IndexesCreateResponseConfig",
+}) as any as S.Schema<IndexesCreateResponseConfig>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface IndexesCreateResponse {
-  result?: unknown;
+  config?: IndexesCreateResponseConfig;
+  /** Specifies the timestamp the resource was created as an ISO8601 string. */
+  createdOn?: string;
+  /** Specifies the description of the index. */
+  description?: string;
+  /** Specifies the timestamp the resource was modified as an ISO8601 string. */
+  modifiedOn?: string;
+  name?: string;
 }
 export const IndexesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    config: S.optional(IndexesCreateResponseConfig),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "IndexesCreateResponse",
 }) as any as S.Schema<IndexesCreateResponse>;
 
 export interface IndexesDeleteRequest {
-  account_id: string;
-  index_name: string;
+  /** Identifier */
+  accountId: string;
+  indexName: string;
 }
 export const IndexesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    index_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    indexName: S.String.pipe(T.Label("index_name")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -62,12 +117,15 @@ export const IndexesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "IndexesDeleteRequest",
 }) as any as S.Schema<IndexesDeleteRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface IndexesDeleteResponse {
-  result?: unknown;
+  unknown: unknown;
+  string: unknown;
 }
 export const IndexesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    unknown: S.Unknown,
+    string: S.Unknown,
   }),
 ).annotate({
   identifier: "IndexesDeleteResponse",
@@ -79,14 +137,16 @@ export const IndexesDeleteByIdsRequestIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<IndexesDeleteByIdsRequestIdsList>;
 
 export interface IndexesDeleteByIdsRequest {
-  account_id: string;
-  index_name: string;
+  /** Identifier */
+  accountId: string;
+  indexName: string;
+  /** A list of vector identifiers to delete from the index indicated by the path. */
   ids?: IndexesDeleteByIdsRequestIdsList;
 }
 export const IndexesDeleteByIdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    index_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    indexName: S.String.pipe(T.Label("index_name")),
     ids: S.optional(IndexesDeleteByIdsRequestIdsList),
   }).pipe(
     T.Http({
@@ -101,6 +161,7 @@ export const IndexesDeleteByIdsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface IndexesDeleteByIdsResponse {
+  /** The unique identifier for the async mutation operation containing the changeset. */
   mutationId?: string;
 }
 export const IndexesDeleteByIdsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -112,13 +173,14 @@ export const IndexesDeleteByIdsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IndexesDeleteByIdsResponse>;
 
 export interface IndexesGetRequest {
-  account_id: string;
-  index_name: string;
+  /** Identifier */
+  accountId: string;
+  indexName: string;
 }
 export const IndexesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    index_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    indexName: S.String.pipe(T.Label("index_name")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -130,12 +192,46 @@ export const IndexesGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "IndexesGetRequest",
 }) as any as S.Schema<IndexesGetRequest>;
 
+export type IndexesGetResponseConfigMetric =
+  | "cosine"
+  | "euclidean"
+  | "dot-product"
+  | (string & {});
+export const IndexesGetResponseConfigMetric = /*@__PURE__*/ S.String;
+
+export interface IndexesGetResponseConfig {
+  /** Specifies the number of dimensions for the index */
+  dimensions: number;
+  /** Specifies the type of metric to use calculating distance. */
+  metric: IndexesGetResponseConfigMetric;
+}
+export const IndexesGetResponseConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dimensions: S.Number,
+    metric: IndexesGetResponseConfigMetric,
+  }),
+).annotate({
+  identifier: "IndexesGetResponseConfig",
+}) as any as S.Schema<IndexesGetResponseConfig>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface IndexesGetResponse {
-  result?: unknown;
+  config?: IndexesGetResponseConfig;
+  /** Specifies the timestamp the resource was created as an ISO8601 string. */
+  createdOn?: string;
+  /** Specifies the description of the index. */
+  description?: string;
+  /** Specifies the timestamp the resource was modified as an ISO8601 string. */
+  modifiedOn?: string;
+  name?: string;
 }
 export const IndexesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    config: S.optional(IndexesGetResponseConfig),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "IndexesGetResponse",
@@ -147,14 +243,16 @@ export const IndexesGetByIdsRequestIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<IndexesGetByIdsRequestIdsList>;
 
 export interface IndexesGetByIdsRequest {
-  account_id: string;
-  index_name: string;
+  /** Identifier */
+  accountId: string;
+  indexName: string;
+  /** A list of vector identifiers to retrieve from the index indicated by the path. */
   ids?: IndexesGetByIdsRequestIdsList;
 }
 export const IndexesGetByIdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    index_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    indexName: S.String.pipe(T.Label("index_name")),
     ids: S.optional(IndexesGetByIdsRequestIdsList),
   }).pipe(
     T.Http({
@@ -168,6 +266,7 @@ export const IndexesGetByIdsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IndexesGetByIdsRequest>;
 
 export interface IndexesGetByIdsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const IndexesGetByIdsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -179,13 +278,14 @@ export const IndexesGetByIdsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IndexesGetByIdsResponse>;
 
 export interface IndexesInfoRequest {
-  account_id: string;
-  index_name: string;
+  /** Identifier */
+  accountId: string;
+  indexName: string;
 }
 export const IndexesInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    index_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    indexName: S.String.pipe(T.Label("index_name")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -199,9 +299,13 @@ export const IndexesInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface IndexesInfoResponse {
+  /** Specifies the number of dimensions for the index */
   dimensions?: number;
+  /** Specifies the timestamp the last mutation batch was processed as an ISO8601 string. */
   processedUpToDatetime?: string;
+  /** The unique identifier for the async mutation operation containing the changeset. */
   processedUpToMutation?: string;
+  /** Specifies the number of vectors present in the index */
   vectorCount?: number;
 }
 export const IndexesInfoResponse = /*@__PURE__*/ S.suspend(() =>
@@ -222,15 +326,17 @@ export type IndexesInsertRequestUnparsableBehavior =
 export const IndexesInsertRequestUnparsableBehavior = /*@__PURE__*/ S.String;
 
 export interface IndexesInsertRequest {
-  account_id: string;
-  index_name: string;
-  _unparsable_behavior_?: IndexesInsertRequestUnparsableBehavior;
+  /** Identifier */
+  accountId: string;
+  indexName: string;
+  /** Behavior for ndjson parse failures. */
+  UnparsableBehavior_?: IndexesInsertRequestUnparsableBehavior;
 }
 export const IndexesInsertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    index_name: S.String.pipe(T.Label()),
-    _unparsable_behavior_: S.optional(
+    accountId: S.String.pipe(T.Label("account_id")),
+    indexName: S.String.pipe(T.Label("index_name")),
+    UnparsableBehavior_: S.optional(
       IndexesInsertRequestUnparsableBehavior.pipe(
         T.Query('"unparsable-behavior"'),
       ),
@@ -248,6 +354,7 @@ export const IndexesInsertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface IndexesInsertResponse {
+  /** The unique identifier for the async mutation operation containing the changeset. */
   mutationId?: string;
 }
 export const IndexesInsertResponse = /*@__PURE__*/ S.suspend(() =>
@@ -259,11 +366,12 @@ export const IndexesInsertResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IndexesInsertResponse>;
 
 export interface IndexesListRequest {
-  account_id: string;
+  /** Identifier */
+  accountId: string;
 }
 export const IndexesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -275,12 +383,57 @@ export const IndexesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "IndexesListRequest",
 }) as any as S.Schema<IndexesListRequest>;
 
-export type IndexesListResultList = unknown[];
+export type IndexesListResultItemConfigMetric =
+  | "cosine"
+  | "euclidean"
+  | "dot-product"
+  | (string & {});
+export const IndexesListResultItemConfigMetric = /*@__PURE__*/ S.String;
+
+export interface IndexesListResultItemConfig {
+  /** Specifies the number of dimensions for the index */
+  dimensions: number;
+  /** Specifies the type of metric to use calculating distance. */
+  metric: IndexesListResultItemConfigMetric;
+}
+export const IndexesListResultItemConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dimensions: S.Number,
+    metric: IndexesListResultItemConfigMetric,
+  }),
+).annotate({
+  identifier: "IndexesListResultItemConfig",
+}) as any as S.Schema<IndexesListResultItemConfig>;
+
+export interface IndexesListResultItem {
+  config?: IndexesListResultItemConfig;
+  /** Specifies the timestamp the resource was created as an ISO8601 string. */
+  createdOn?: string;
+  /** Specifies the description of the index. */
+  description?: string;
+  /** Specifies the timestamp the resource was modified as an ISO8601 string. */
+  modifiedOn?: string;
+  name?: string;
+}
+export const IndexesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    config: S.optional(IndexesListResultItemConfig),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IndexesListResultItem",
+}) as any as S.Schema<IndexesListResultItem>;
+
+export type IndexesListResultList = IndexesListResultItem[];
 export const IndexesListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  IndexesListResultItem,
 ) as any as S.Schema<IndexesListResultList>;
 
 export interface IndexesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: IndexesListResultList;
 }
 export const IndexesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -292,15 +445,18 @@ export const IndexesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IndexesListResponse>;
 
 export interface IndexesListVectorsRequest {
-  account_id: string;
-  index_name: string;
+  /** Identifier */
+  accountId: string;
+  indexName: string;
+  /** Maximum number of vectors to return */
   count?: number;
+  /** Cursor for pagination to get the next page of results */
   cursor?: string;
 }
 export const IndexesListVectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    index_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    indexName: S.String.pipe(T.Label("index_name")),
     count: S.optional(S.Number.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -315,6 +471,7 @@ export const IndexesListVectorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IndexesListVectorsRequest>;
 
 export interface IndexesListVectorsResponseVectorsItem {
+  /** Identifier for a Vector */
   id: string;
 }
 export const IndexesListVectorsResponseVectorsItem = /*@__PURE__*/ S.suspend(
@@ -334,11 +491,17 @@ export const IndexesListVectorsResponseVectorsList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface IndexesListVectorsResponse {
+  /** Number of vectors returned in this response */
   count: number;
+  /** Whether there are more vectors available beyond this response */
   isTruncated: boolean;
+  /** Total number of vectors in the index */
   totalCount: number;
+  /** Array of vector items */
   vectors: IndexesListVectorsResponseVectorsList;
+  /** When the cursor expires as an ISO8601 string */
   cursorExpirationTimestamp?: string;
+  /** Cursor for the next page of results */
   nextCursor?: string;
 }
 export const IndexesListVectorsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -363,15 +526,18 @@ export const IndexesMetadataIndexCreateRequestIndexType =
   /*@__PURE__*/ S.String;
 
 export interface IndexesMetadataIndexCreateRequest {
-  account_id: string;
-  index_name: string;
+  /** Identifier */
+  accountId: string;
+  indexName: string;
+  /** Specifies the type of metadata property to index. */
   indexType: IndexesMetadataIndexCreateRequestIndexType;
+  /** Specifies the metadata property to index. */
   propertyName: string;
 }
 export const IndexesMetadataIndexCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    index_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    indexName: S.String.pipe(T.Label("index_name")),
     indexType: IndexesMetadataIndexCreateRequestIndexType,
     propertyName: S.String,
   }).pipe(
@@ -387,6 +553,7 @@ export const IndexesMetadataIndexCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface IndexesMetadataIndexCreateResponse {
+  /** The unique identifier for the async mutation operation containing the changeset. */
   mutationId?: string;
 }
 export const IndexesMetadataIndexCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -398,14 +565,16 @@ export const IndexesMetadataIndexCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IndexesMetadataIndexCreateResponse>;
 
 export interface IndexesMetadataIndexDeleteRequest {
-  account_id: string;
-  index_name: string;
+  /** Identifier */
+  accountId: string;
+  indexName: string;
+  /** Specifies the metadata property for which the index must be deleted. */
   propertyName: string;
 }
 export const IndexesMetadataIndexDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    index_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    indexName: S.String.pipe(T.Label("index_name")),
     propertyName: S.String,
   }).pipe(
     T.Http({
@@ -420,6 +589,7 @@ export const IndexesMetadataIndexDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface IndexesMetadataIndexDeleteResponse {
+  /** The unique identifier for the async mutation operation containing the changeset. */
   mutationId?: string;
 }
 export const IndexesMetadataIndexDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -431,13 +601,14 @@ export const IndexesMetadataIndexDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IndexesMetadataIndexDeleteResponse>;
 
 export interface IndexesMetadataIndexListRequest {
-  account_id: string;
-  index_name: string;
+  /** Identifier */
+  accountId: string;
+  indexName: string;
 }
 export const IndexesMetadataIndexListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    index_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    indexName: S.String.pipe(T.Label("index_name")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -458,7 +629,9 @@ export const IndexesMetadataIndexListResponseMetadataIndexesItemIndexType =
   /*@__PURE__*/ S.String;
 
 export interface IndexesMetadataIndexListResponseMetadataIndexesItem {
+  /** Specifies the type of indexed metadata property. */
   indexType?: IndexesMetadataIndexListResponseMetadataIndexesItemIndexType;
+  /** Specifies the indexed metadata property. */
   propertyName?: string;
 }
 export const IndexesMetadataIndexListResponseMetadataIndexesItem =
@@ -482,6 +655,7 @@ export const IndexesMetadataIndexListResponseMetadataIndexesList =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface IndexesMetadataIndexListResponse {
+  /** Array of indexed metadata properties. */
   metadataIndexes?: IndexesMetadataIndexListResponseMetadataIndexesList;
 }
 export const IndexesMetadataIndexListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -507,18 +681,24 @@ export type IndexesQueryRequestReturnMetadata =
 export const IndexesQueryRequestReturnMetadata = /*@__PURE__*/ S.String;
 
 export interface IndexesQueryRequest {
-  account_id: string;
-  index_name: string;
+  /** Identifier */
+  accountId: string;
+  indexName: string;
+  /** The search vector that will be used to find the nearest neighbors. */
   vector: IndexesQueryRequestVectorList;
+  /** A metadata filter expression used to limit nearest neighbor results. */
   filter?: unknown;
+  /** Whether to return no metadata, indexed metadata or all metadata associated with the closest vectors. */
   returnMetadata?: IndexesQueryRequestReturnMetadata;
+  /** Whether to return the values associated with the closest vectors. */
   returnValues?: boolean;
+  /** The number of nearest neighbors to find. */
   topK?: number;
 }
 export const IndexesQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    index_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    indexName: S.String.pipe(T.Label("index_name")),
     vector: IndexesQueryRequestVectorList,
     filter: S.optional(S.Unknown),
     returnMetadata: S.optional(IndexesQueryRequestReturnMetadata),
@@ -541,9 +721,11 @@ export const IndexesQueryResponseMatchesItemValuesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<IndexesQueryResponseMatchesItemValuesList>;
 
 export interface IndexesQueryResponseMatchesItem {
+  /** Identifier for a Vector */
   id?: string;
   metadata?: unknown;
   namespace?: string;
+  /** The score of the vector according to the index's distance metric */
   score?: number;
   values?: IndexesQueryResponseMatchesItemValuesList;
 }
@@ -566,7 +748,9 @@ export const IndexesQueryResponseMatchesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface IndexesQueryResponse {
+  /** Specifies the count of vectors returned by the search */
   count?: number;
+  /** Array of vectors matched by the search */
   matches?: IndexesQueryResponseMatchesList;
 }
 export const IndexesQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -585,15 +769,17 @@ export type IndexesUpsertRequestUnparsableBehavior =
 export const IndexesUpsertRequestUnparsableBehavior = /*@__PURE__*/ S.String;
 
 export interface IndexesUpsertRequest {
-  account_id: string;
-  index_name: string;
-  _unparsable_behavior_?: IndexesUpsertRequestUnparsableBehavior;
+  /** Identifier */
+  accountId: string;
+  indexName: string;
+  /** Behavior for ndjson parse failures. */
+  UnparsableBehavior_?: IndexesUpsertRequestUnparsableBehavior;
 }
 export const IndexesUpsertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    index_name: S.String.pipe(T.Label()),
-    _unparsable_behavior_: S.optional(
+    accountId: S.String.pipe(T.Label("account_id")),
+    indexName: S.String.pipe(T.Label("index_name")),
+    UnparsableBehavior_: S.optional(
       IndexesUpsertRequestUnparsableBehavior.pipe(
         T.Query('"unparsable-behavior"'),
       ),
@@ -611,6 +797,7 @@ export const IndexesUpsertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface IndexesUpsertResponse {
+  /** The unique identifier for the async mutation operation containing the changeset. */
   mutationId?: string;
 }
 export const IndexesUpsertResponse = /*@__PURE__*/ S.suspend(() =>
@@ -621,11 +808,12 @@ export const IndexesUpsertResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "IndexesUpsertResponse",
 }) as any as S.Schema<IndexesUpsertResponse>;
 
+export type IndexesCreateError = CloudflareOpError;
 /** Creates and returns a new Vectorize Index. */
-export const IndexesCreate: API.OperationMethod<
+export const indexesCreate: API.OperationMethod<
   IndexesCreateRequest,
   IndexesCreateResponse,
-  CloudflareOpError,
+  IndexesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: IndexesCreateRequest,
@@ -634,11 +822,12 @@ export const IndexesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type IndexesDeleteError = CloudflareOpError;
 /** Deletes the specified Vectorize Index. */
-export const IndexesDelete: API.OperationMethod<
+export const indexesDelete: API.OperationMethod<
   IndexesDeleteRequest,
   IndexesDeleteResponse,
-  CloudflareOpError,
+  IndexesDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: IndexesDeleteRequest,
@@ -647,11 +836,12 @@ export const IndexesDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type IndexesDeleteByIdsError = CloudflareOpError;
 /** Delete a set of vectors from an index by their vector identifiers. */
-export const IndexesDeleteByIds: API.OperationMethod<
+export const indexesDeleteByIds: API.OperationMethod<
   IndexesDeleteByIdsRequest,
   IndexesDeleteByIdsResponse,
-  CloudflareOpError,
+  IndexesDeleteByIdsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: IndexesDeleteByIdsRequest,
@@ -660,11 +850,12 @@ export const IndexesDeleteByIds: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type IndexesGetError = CloudflareOpError;
 /** Returns the specified Vectorize Index. */
-export const IndexesGet: API.OperationMethod<
+export const indexesGet: API.OperationMethod<
   IndexesGetRequest,
   IndexesGetResponse,
-  CloudflareOpError,
+  IndexesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: IndexesGetRequest,
@@ -673,11 +864,12 @@ export const IndexesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type IndexesGetByIdsError = CloudflareOpError;
 /** Get a set of vectors from an index by their vector identifiers. */
-export const IndexesGetByIds: API.OperationMethod<
+export const indexesGetByIds: API.OperationMethod<
   IndexesGetByIdsRequest,
   IndexesGetByIdsResponse,
-  CloudflareOpError,
+  IndexesGetByIdsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: IndexesGetByIdsRequest,
@@ -686,11 +878,12 @@ export const IndexesGetByIds: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type IndexesInfoError = CloudflareOpError;
 /** Get information about a vectorize index. */
-export const IndexesInfo: API.OperationMethod<
+export const indexesInfo: API.OperationMethod<
   IndexesInfoRequest,
   IndexesInfoResponse,
-  CloudflareOpError,
+  IndexesInfoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: IndexesInfoRequest,
@@ -699,11 +892,12 @@ export const IndexesInfo: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type IndexesInsertError = CloudflareOpError;
 /** Inserts vectors into the specified index and returns a mutation id corresponding to the vectors enqueued for insertion. */
-export const IndexesInsert: API.OperationMethod<
+export const indexesInsert: API.OperationMethod<
   IndexesInsertRequest,
   IndexesInsertResponse,
-  CloudflareOpError,
+  IndexesInsertError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: IndexesInsertRequest,
@@ -712,11 +906,12 @@ export const IndexesInsert: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type IndexesListError = CloudflareOpError;
 /** Returns a list of Vectorize Indexes */
-export const IndexesList: API.OperationMethod<
+export const indexesList: API.OperationMethod<
   IndexesListRequest,
   IndexesListResponse,
-  CloudflareOpError,
+  IndexesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: IndexesListRequest,
@@ -725,11 +920,12 @@ export const IndexesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type IndexesListVectorsError = CloudflareOpError;
 /** Returns a paginated list of vector identifiers from the specified index. */
-export const IndexesListVectors: API.OperationMethod<
+export const indexesListVectors: API.OperationMethod<
   IndexesListVectorsRequest,
   IndexesListVectorsResponse,
-  CloudflareOpError,
+  IndexesListVectorsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: IndexesListVectorsRequest,
@@ -738,11 +934,12 @@ export const IndexesListVectors: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type IndexesMetadataIndexCreateError = CloudflareOpError;
 /** Enable metadata filtering based on metadata property. Limited to 10 properties. */
-export const IndexesMetadataIndexCreate: API.OperationMethod<
+export const indexesMetadataIndexCreate: API.OperationMethod<
   IndexesMetadataIndexCreateRequest,
   IndexesMetadataIndexCreateResponse,
-  CloudflareOpError,
+  IndexesMetadataIndexCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: IndexesMetadataIndexCreateRequest,
@@ -751,11 +948,12 @@ export const IndexesMetadataIndexCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type IndexesMetadataIndexDeleteError = CloudflareOpError;
 /** Allow Vectorize to delete the specified metadata index. */
-export const IndexesMetadataIndexDelete: API.OperationMethod<
+export const indexesMetadataIndexDelete: API.OperationMethod<
   IndexesMetadataIndexDeleteRequest,
   IndexesMetadataIndexDeleteResponse,
-  CloudflareOpError,
+  IndexesMetadataIndexDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: IndexesMetadataIndexDeleteRequest,
@@ -764,11 +962,12 @@ export const IndexesMetadataIndexDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type IndexesMetadataIndexListError = CloudflareOpError;
 /** List Metadata Indexes for the specified Vectorize Index. */
-export const IndexesMetadataIndexList: API.OperationMethod<
+export const indexesMetadataIndexList: API.OperationMethod<
   IndexesMetadataIndexListRequest,
   IndexesMetadataIndexListResponse,
-  CloudflareOpError,
+  IndexesMetadataIndexListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: IndexesMetadataIndexListRequest,
@@ -777,11 +976,12 @@ export const IndexesMetadataIndexList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type IndexesQueryError = CloudflareOpError;
 /** Finds vectors closest to a given vector in an index. */
-export const IndexesQuery: API.OperationMethod<
+export const indexesQuery: API.OperationMethod<
   IndexesQueryRequest,
   IndexesQueryResponse,
-  CloudflareOpError,
+  IndexesQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: IndexesQueryRequest,
@@ -790,11 +990,12 @@ export const IndexesQuery: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type IndexesUpsertError = CloudflareOpError;
 /** Upserts vectors into the specified index, creating them if they do not exist and returns a mutation id corresponding to the vectors enqueued for upsertion. */
-export const IndexesUpsert: API.OperationMethod<
+export const indexesUpsert: API.OperationMethod<
   IndexesUpsertRequest,
   IndexesUpsertResponse,
-  CloudflareOpError,
+  IndexesUpsertError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: IndexesUpsertRequest,

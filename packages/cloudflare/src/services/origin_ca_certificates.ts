@@ -14,36 +14,116 @@ export const CreateRequestHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestHostnamesList>;
 
+export interface CreateRequestRequestedValidity {
+  "7": unknown;
+  "30": unknown;
+  "90": unknown;
+  "365": unknown;
+  "730": unknown;
+  "1095": unknown;
+  "5475": unknown;
+}
+export const CreateRequestRequestedValidity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "7": S.Unknown,
+    "30": S.Unknown,
+    "90": S.Unknown,
+    "365": S.Unknown,
+    "730": S.Unknown,
+    "1095": S.Unknown,
+    "5475": S.Unknown,
+  }),
+).annotate({
+  identifier: "CreateRequestRequestedValidity",
+}) as any as S.Schema<CreateRequestRequestedValidity>;
+
 export interface CreateRequest {
+  /** The Certificate Signing Request (CSR). Must be newline-encoded. */
   csr: string;
+  /** Array of hostnames or wildcard names bound to the certificate. */
   hostnames: CreateRequestHostnamesList;
-  request_type: unknown;
-  requested_validity?: unknown;
+  /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
+  requestType: unknown;
+  /** The number of days for which the certificate should be valid. */
+  requestedValidity?: CreateRequestRequestedValidity;
 }
 export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csr: S.String,
     hostnames: CreateRequestHostnamesList,
-    request_type: S.Unknown,
-    requested_validity: S.optional(S.Unknown),
+    requestType: S.Unknown.pipe(T.Body("request_type")),
+    requestedValidity: S.optional(
+      CreateRequestRequestedValidity.pipe(T.Body("requested_validity")),
+    ),
   }).pipe(T.Http({ method: "POST", uri: "/certificates", code: 200 })),
 ).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
 
+export type CreateResponseHostnamesList = string[];
+export const CreateResponseHostnamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateResponseHostnamesList>;
+
+export interface CreateResponseRequestedValidity {
+  "7": unknown;
+  "30": unknown;
+  "90": unknown;
+  "365": unknown;
+  "730": unknown;
+  "1095": unknown;
+  "5475": unknown;
+}
+export const CreateResponseRequestedValidity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "7": S.Unknown,
+    "30": S.Unknown,
+    "90": S.Unknown,
+    "365": S.Unknown,
+    "730": S.Unknown,
+    "1095": S.Unknown,
+    "5475": S.Unknown,
+  }),
+).annotate({
+  identifier: "CreateResponseRequestedValidity",
+}) as any as S.Schema<CreateResponseRequestedValidity>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateResponse {
-  result?: unknown;
+  /** The Certificate Signing Request (CSR). Must be newline-encoded. */
+  csr: string;
+  /** Array of hostnames or wildcard names bound to the certificate. */
+  hostnames: CreateResponseHostnamesList;
+  /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
+  requestType: unknown;
+  /** The number of days for which the certificate should be valid. */
+  requestedValidity: CreateResponseRequestedValidity;
+  /** Identifier. */
+  id?: string;
+  /** The Origin CA certificate. Will be newline-encoded. */
+  certificate?: string;
+  /** When the certificate will expire. */
+  expiresOn?: string;
 }
 export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    csr: S.String,
+    hostnames: CreateResponseHostnamesList,
+    requestType: S.Unknown.pipe(T.Body("request_type")),
+    requestedValidity: CreateResponseRequestedValidity.pipe(
+      T.Body("requested_validity"),
+    ),
+    id: S.optional(S.String),
+    certificate: S.optional(S.String),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
   }),
 ).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
 
 export interface DeleteRequest {
-  certificate_id: string;
+  /** Identifier. */
+  certificateId: string;
 }
 export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    certificate_id: S.String.pipe(T.Label()),
+    certificateId: S.String.pipe(T.Label("certificate_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -55,59 +135,176 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteResponse {
+  /** Identifier. */
   id?: string;
-  revoked_at?: string;
+  /** When the certificate was revoked. */
+  revokedAt?: string;
 }
 export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    revoked_at: S.optional(S.String),
+    revokedAt: S.optional(S.String.pipe(T.Body("revoked_at"))),
   }),
 ).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
 
 export interface GetRequest {
-  certificate_id: string;
+  /** Identifier. */
+  certificateId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    certificate_id: S.String.pipe(T.Label()),
+    certificateId: S.String.pipe(T.Label("certificate_id")),
   }).pipe(
     T.Http({ method: "GET", uri: "/certificates/{certificate_id}", code: 200 }),
   ),
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
+export type GetResponseHostnamesList = string[];
+export const GetResponseHostnamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetResponseHostnamesList>;
+
+export interface GetResponseRequestedValidity {
+  "7": unknown;
+  "30": unknown;
+  "90": unknown;
+  "365": unknown;
+  "730": unknown;
+  "1095": unknown;
+  "5475": unknown;
+}
+export const GetResponseRequestedValidity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "7": S.Unknown,
+    "30": S.Unknown,
+    "90": S.Unknown,
+    "365": S.Unknown,
+    "730": S.Unknown,
+    "1095": S.Unknown,
+    "5475": S.Unknown,
+  }),
+).annotate({
+  identifier: "GetResponseRequestedValidity",
+}) as any as S.Schema<GetResponseRequestedValidity>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
-  result?: unknown;
+  /** The Certificate Signing Request (CSR). Must be newline-encoded. */
+  csr: string;
+  /** Array of hostnames or wildcard names bound to the certificate. */
+  hostnames: GetResponseHostnamesList;
+  /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
+  requestType: unknown;
+  /** The number of days for which the certificate should be valid. */
+  requestedValidity: GetResponseRequestedValidity;
+  /** Identifier. */
+  id?: string;
+  /** The Origin CA certificate. Will be newline-encoded. */
+  certificate?: string;
+  /** When the certificate will expire. */
+  expiresOn?: string;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    csr: S.String,
+    hostnames: GetResponseHostnamesList,
+    requestType: S.Unknown.pipe(T.Body("request_type")),
+    requestedValidity: GetResponseRequestedValidity.pipe(
+      T.Body("requested_validity"),
+    ),
+    id: S.optional(S.String),
+    certificate: S.optional(S.String),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
 export interface ListRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Limit to the number of records returned. */
   limit?: number;
+  /** Offset the results. */
   offset?: number;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
+  /** Number of records per page. */
+  perPage?: number;
 }
 export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Query()),
+    zoneId: S.String.pipe(T.Query("zone_id")),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(T.Http({ method: "GET", uri: "/certificates", code: 200 })),
 ).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
 
-export type ListResultList = unknown[];
+export type ListResultItemHostnamesList = string[];
+export const ListResultItemHostnamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultItemHostnamesList>;
+
+export interface ListResultItemRequestedValidity {
+  "7": unknown;
+  "30": unknown;
+  "90": unknown;
+  "365": unknown;
+  "730": unknown;
+  "1095": unknown;
+  "5475": unknown;
+}
+export const ListResultItemRequestedValidity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "7": S.Unknown,
+    "30": S.Unknown,
+    "90": S.Unknown,
+    "365": S.Unknown,
+    "730": S.Unknown,
+    "1095": S.Unknown,
+    "5475": S.Unknown,
+  }),
+).annotate({
+  identifier: "ListResultItemRequestedValidity",
+}) as any as S.Schema<ListResultItemRequestedValidity>;
+
+export interface ListResultItem {
+  /** The Certificate Signing Request (CSR). Must be newline-encoded. */
+  csr: string;
+  /** Array of hostnames or wildcard names bound to the certificate. */
+  hostnames: ListResultItemHostnamesList;
+  /** Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers). */
+  requestType: unknown;
+  /** The number of days for which the certificate should be valid. */
+  requestedValidity: ListResultItemRequestedValidity;
+  /** Identifier. */
+  id?: string;
+  /** The Origin CA certificate. Will be newline-encoded. */
+  certificate?: string;
+  /** When the certificate will expire. */
+  expiresOn?: string;
+}
+export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    csr: S.String,
+    hostnames: ListResultItemHostnamesList,
+    requestType: S.Unknown.pipe(T.Body("request_type")),
+    requestedValidity: ListResultItemRequestedValidity.pipe(
+      T.Body("requested_validity"),
+    ),
+    id: S.optional(S.String),
+    certificate: S.optional(S.String),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+  }),
+).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
+
+export type ListResultList = ListResultItem[];
 export const ListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
 export interface ListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
 export const ListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -116,11 +313,12 @@ export const ListResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
 
+export type CreateError = CloudflareOpError;
 /** Create an Origin CA certificate. You can use an Origin CA Key as your User Service Key or an API token when calling this endpoint ([see above](#requests)). */
-export const Create: API.OperationMethod<
+export const create: API.OperationMethod<
   CreateRequest,
   CreateResponse,
-  CloudflareOpError,
+  CreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRequest,
@@ -129,11 +327,12 @@ export const Create: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DeleteError = CloudflareOpError;
 /** Revoke an existing Origin CA certificate by its serial number. You can use an Origin CA Key as your User Service Key or an API token when calling this endpoint ([see above](#requests)). */
 export const Delete: API.OperationMethod<
   DeleteRequest,
   DeleteResponse,
-  CloudflareOpError,
+  DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequest,
@@ -142,11 +341,12 @@ export const Delete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Get an existing Origin CA certificate by its serial number. You can use an Origin CA Key as your User Service Key or an API token when calling this endpoint ([see above](#requests)). */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -155,11 +355,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ListError = CloudflareOpError;
 /** List all existing Origin CA certificates for a given zone. You can use an Origin CA Key as your User Service Key or an API token when calling this endpoint ([see above](#requests)). */
-export const List: API.OperationMethod<
+export const list: API.OperationMethod<
   ListRequest,
   ListResponse,
-  CloudflareOpError,
+  ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRequest,

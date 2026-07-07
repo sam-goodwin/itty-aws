@@ -10,14 +10,17 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface AnalyzeCreateRequest {
-  zone_id: string;
-  bundle_method?: unknown;
+  /** Identifier. */
+  zoneId: string;
+  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
+  bundleMethod?: unknown;
+  /** The zone's SSL certificate or certificate and the intermediate(s). */
   certificate?: string;
 }
 export const AnalyzeCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    bundle_method: S.optional(S.Unknown),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
     certificate: S.optional(S.String),
   }).pipe(
     T.Http({ method: "POST", uri: "/zones/{zone_id}/ssl/analyze", code: 200 }),
@@ -27,6 +30,7 @@ export const AnalyzeCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalyzeCreateRequest>;
 
 export interface AnalyzeCreateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const AnalyzeCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -38,11 +42,11 @@ export const AnalyzeCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalyzeCreateResponse>;
 
 export interface AutomaticUpgraderGetRequest {
-  zone_id: string;
+  zoneId: string;
 }
 export const AutomaticUpgraderGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -63,18 +67,22 @@ export const AutomaticUpgraderGetResponseValue = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AutomaticUpgraderGetResponse {
   id: string;
+  /** Whether this setting can be updated or not. */
   editable: boolean;
-  modified_on: string;
+  /** Last time this setting was modified. */
+  modifiedOn: string;
+  /** Current setting of the automatic SSL/TLS. */
   value: AutomaticUpgraderGetResponseValue;
-  next_scheduled_scan?: string;
+  /** Next time this zone will be scanned by the Automatic SSL/TLS. */
+  nextScheduledScan?: string;
 }
 export const AutomaticUpgraderGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     editable: S.Boolean,
-    modified_on: S.String,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
     value: AutomaticUpgraderGetResponseValue,
-    next_scheduled_scan: S.optional(S.String),
+    nextScheduledScan: S.optional(S.String.pipe(T.Body("next_scheduled_scan"))),
   }),
 ).annotate({
   identifier: "AutomaticUpgraderGetResponse",
@@ -87,12 +95,13 @@ export type AutomaticUpgraderPatchRequestValue =
 export const AutomaticUpgraderPatchRequestValue = /*@__PURE__*/ S.String;
 
 export interface AutomaticUpgraderPatchRequest {
-  zone_id: string;
+  zoneId: string;
+  /** Controls enablement of Automatic SSL/TLS. */
   value: AutomaticUpgraderPatchRequestValue;
 }
 export const AutomaticUpgraderPatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     value: AutomaticUpgraderPatchRequestValue,
   }).pipe(
     T.Http({
@@ -114,30 +123,35 @@ export const AutomaticUpgraderPatchResponseValue = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AutomaticUpgraderPatchResponse {
   id: string;
+  /** Whether this setting can be updated or not. */
   editable: boolean;
-  modified_on: string;
+  /** Last time this setting was modified. */
+  modifiedOn: string;
+  /** Current setting of the automatic SSL/TLS. */
   value: AutomaticUpgraderPatchResponseValue;
-  next_scheduled_scan?: string;
+  /** Next time this zone will be scanned by the Automatic SSL/TLS. */
+  nextScheduledScan?: string;
 }
 export const AutomaticUpgraderPatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     editable: S.Boolean,
-    modified_on: S.String,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
     value: AutomaticUpgraderPatchResponseValue,
-    next_scheduled_scan: S.optional(S.String),
+    nextScheduledScan: S.optional(S.String.pipe(T.Body("next_scheduled_scan"))),
   }),
 ).annotate({
   identifier: "AutomaticUpgraderPatchResponse",
 }) as any as S.Schema<AutomaticUpgraderPatchResponse>;
 
 export interface AutoOriginTlsKexEditRequest {
-  zone_id: string;
+  zoneId: string;
+  /** Controls enablement of Auto-Origin TLS KEX selection for the zone. */
   enabled: boolean;
 }
 export const AutoOriginTlsKexEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.Boolean,
   }).pipe(
     T.Http({
@@ -153,25 +167,27 @@ export const AutoOriginTlsKexEditRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AutoOriginTlsKexEditResponse {
   id: string;
+  /** Whether Auto-Origin TLS KEX selection is enabled for the zone. */
   enabled: boolean;
-  modified_on: string;
+  /** Last time this setting was modified. */
+  modifiedOn: string;
 }
 export const AutoOriginTlsKexEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     enabled: S.Boolean,
-    modified_on: S.String,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
   }),
 ).annotate({
   identifier: "AutoOriginTlsKexEditResponse",
 }) as any as S.Schema<AutoOriginTlsKexEditResponse>;
 
 export interface AutoOriginTlsKexGetRequest {
-  zone_id: string;
+  zoneId: string;
 }
 export const AutoOriginTlsKexGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -186,14 +202,16 @@ export const AutoOriginTlsKexGetRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AutoOriginTlsKexGetResponse {
   id: string;
+  /** Whether Auto-Origin TLS KEX selection is enabled for the zone. */
   enabled: boolean;
-  modified_on: string;
+  /** Last time this setting was modified. */
+  modifiedOn: string;
 }
 export const AutoOriginTlsKexGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     enabled: S.Boolean,
-    modified_on: S.String,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
   }),
 ).annotate({
   identifier: "AutoOriginTlsKexGetResponse",
@@ -223,24 +241,58 @@ export type CertificatePacksCreateRequestValidationMethod =
 export const CertificatePacksCreateRequestValidationMethod =
   /*@__PURE__*/ S.String;
 
+export interface CertificatePacksCreateRequestValidityDays {
+  "14": unknown;
+  "30": unknown;
+  "90": unknown;
+  "365": unknown;
+}
+export const CertificatePacksCreateRequestValidityDays =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "14": S.Unknown,
+      "30": S.Unknown,
+      "90": S.Unknown,
+      "365": S.Unknown,
+    }),
+  ).annotate({
+    identifier: "CertificatePacksCreateRequestValidityDays",
+  }) as any as S.Schema<CertificatePacksCreateRequestValidityDays>;
+
 export interface CertificatePacksCreateRequest {
-  zone_id: string;
-  certificate_authority: CertificatePacksCreateRequestCertificateAuthority;
+  /** Identifier. */
+  zoneId: string;
+  /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities). */
+  certificateAuthority: CertificatePacksCreateRequestCertificateAuthority;
+  /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
   hosts: CertificatePacksCreateRequestHostsList;
+  /** Type of certificate pack. */
   type: CertificatePacksCreateRequestType;
-  validation_method: CertificatePacksCreateRequestValidationMethod;
-  validity_days: unknown;
-  cloudflare_branding?: boolean;
+  /** Validation Method selected for the order. */
+  validationMethod: CertificatePacksCreateRequestValidationMethod;
+  /** Validity Days selected for the order. */
+  validityDays: CertificatePacksCreateRequestValidityDays;
+  /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
+  cloudflareBranding?: boolean;
 }
 export const CertificatePacksCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    certificate_authority: CertificatePacksCreateRequestCertificateAuthority,
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    certificateAuthority:
+      CertificatePacksCreateRequestCertificateAuthority.pipe(
+        T.Body("certificate_authority"),
+      ),
     hosts: CertificatePacksCreateRequestHostsList,
     type: CertificatePacksCreateRequestType,
-    validation_method: CertificatePacksCreateRequestValidationMethod,
-    validity_days: S.Unknown,
-    cloudflare_branding: S.optional(S.Boolean),
+    validationMethod: CertificatePacksCreateRequestValidationMethod.pipe(
+      T.Body("validation_method"),
+    ),
+    validityDays: CertificatePacksCreateRequestValidityDays.pipe(
+      T.Body("validity_days"),
+    ),
+    cloudflareBranding: S.optional(
+      S.Boolean.pipe(T.Body("cloudflare_branding")),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -278,18 +330,30 @@ export const CertificatePacksCreateResponseCertificatesItemGeoRestrictions =
   }) as any as S.Schema<CertificatePacksCreateResponseCertificatesItemGeoRestrictions>;
 
 export interface CertificatePacksCreateResponseCertificatesItem {
+  /** Certificate identifier. */
   id: string;
+  /** Hostnames covered by this certificate. */
   hosts: CertificatePacksCreateResponseCertificatesItemHostsList;
+  /** Certificate status. */
   status: string;
-  bundle_method?: string;
-  expires_on?: string;
-  geo_restrictions?: CertificatePacksCreateResponseCertificatesItemGeoRestrictions;
+  /** Certificate bundle method. */
+  bundleMethod?: string;
+  /** When the certificate from the authority expires. */
+  expiresOn?: string;
+  /** Specify the region where your private key can be held locally. */
+  geoRestrictions?: CertificatePacksCreateResponseCertificatesItemGeoRestrictions;
+  /** The certificate authority that issued the certificate. */
   issuer?: string;
-  modified_on?: string;
+  /** When the certificate was last modified. */
+  modifiedOn?: string;
+  /** The order/priority in which the certificate will be used. */
   priority?: number;
+  /** The type of hash used for the certificate. */
   signature?: string;
-  uploaded_on?: string;
-  zone_id?: string;
+  /** When the certificate was uploaded to Cloudflare. */
+  uploadedOn?: string;
+  /** Identifier. */
+  zoneId?: string;
 }
 export const CertificatePacksCreateResponseCertificatesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -297,17 +361,19 @@ export const CertificatePacksCreateResponseCertificatesItem =
       id: S.String,
       hosts: CertificatePacksCreateResponseCertificatesItemHostsList,
       status: S.String,
-      bundle_method: S.optional(S.String),
-      expires_on: S.optional(S.String),
-      geo_restrictions: S.optional(
-        CertificatePacksCreateResponseCertificatesItemGeoRestrictions,
+      bundleMethod: S.optional(S.String.pipe(T.Body("bundle_method"))),
+      expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+      geoRestrictions: S.optional(
+        CertificatePacksCreateResponseCertificatesItemGeoRestrictions.pipe(
+          T.Body("geo_restrictions"),
+        ),
       ),
       issuer: S.optional(S.String),
-      modified_on: S.optional(S.String),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
       priority: S.optional(S.Number),
       signature: S.optional(S.String),
-      uploaded_on: S.optional(S.String),
-      zone_id: S.optional(S.String),
+      uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+      zoneId: S.optional(S.String.pipe(T.Body("zone_id"))),
     }),
   ).annotate({
     identifier: "CertificatePacksCreateResponseCertificatesItem",
@@ -348,28 +414,36 @@ export const CertificatePacksCreateResponseDcvDelegationRecordsItemEmailsList =
   ) as any as S.Schema<CertificatePacksCreateResponseDcvDelegationRecordsItemEmailsList>;
 
 export interface CertificatePacksCreateResponseDcvDelegationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: CertificatePacksCreateResponseDcvDelegationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const CertificatePacksCreateResponseDcvDelegationRecordsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cname: S.optional(S.String),
-      cname_target: S.optional(S.String),
+      cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
       emails: S.optional(
         CertificatePacksCreateResponseDcvDelegationRecordsItemEmailsList,
       ),
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
       status: S.optional(S.String),
-      txt_name: S.optional(S.String),
-      txt_value: S.optional(S.String),
+      txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
     }),
   ).annotate({
     identifier: "CertificatePacksCreateResponseDcvDelegationRecordsItem",
@@ -383,6 +457,7 @@ export const CertificatePacksCreateResponseDcvDelegationRecordsList =
   ) as any as S.Schema<CertificatePacksCreateResponseDcvDelegationRecordsList>;
 
 export interface CertificatePacksCreateResponseValidationErrorsItem {
+  /** A domain validation error. */
   message?: string;
 }
 export const CertificatePacksCreateResponseValidationErrorsItem =
@@ -417,28 +492,36 @@ export const CertificatePacksCreateResponseValidationRecordsItemEmailsList =
   ) as any as S.Schema<CertificatePacksCreateResponseValidationRecordsItemEmailsList>;
 
 export interface CertificatePacksCreateResponseValidationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: CertificatePacksCreateResponseValidationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const CertificatePacksCreateResponseValidationRecordsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cname: S.optional(S.String),
-      cname_target: S.optional(S.String),
+      cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
       emails: S.optional(
         CertificatePacksCreateResponseValidationRecordsItemEmailsList,
       ),
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
       status: S.optional(S.String),
-      txt_name: S.optional(S.String),
-      txt_value: S.optional(S.String),
+      txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
     }),
   ).annotate({
     identifier: "CertificatePacksCreateResponseValidationRecordsItem",
@@ -451,21 +534,52 @@ export const CertificatePacksCreateResponseValidationRecordsList =
     CertificatePacksCreateResponseValidationRecordsItem,
   ) as any as S.Schema<CertificatePacksCreateResponseValidationRecordsList>;
 
+export interface CertificatePacksCreateResponseValidityDays {
+  "14": unknown;
+  "30": unknown;
+  "90": unknown;
+  "365": unknown;
+}
+export const CertificatePacksCreateResponseValidityDays =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "14": S.Unknown,
+      "30": S.Unknown,
+      "90": S.Unknown,
+      "365": S.Unknown,
+    }),
+  ).annotate({
+    identifier: "CertificatePacksCreateResponseValidityDays",
+  }) as any as S.Schema<CertificatePacksCreateResponseValidityDays>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CertificatePacksCreateResponse {
+  /** Identifier. */
   id: string;
+  /** Array of certificates in this pack. */
   certificates: CertificatePacksCreateResponseCertificatesList;
+  /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
   hosts: CertificatePacksCreateResponseHostsList;
+  /** Status of certificate pack. */
   status: unknown;
+  /** Type of certificate pack. */
   type: CertificatePacksCreateResponseType;
-  certificate_authority?: CertificatePacksCreateResponseCertificateAuthority;
-  cloudflare_branding?: boolean;
-  dcv_delegation_records?: CertificatePacksCreateResponseDcvDelegationRecordsList;
-  primary_certificate?: string;
-  validation_errors?: CertificatePacksCreateResponseValidationErrorsList;
-  validation_method?: CertificatePacksCreateResponseValidationMethod;
-  validation_records?: CertificatePacksCreateResponseValidationRecordsList;
-  validity_days?: unknown;
+  /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities). */
+  certificateAuthority?: CertificatePacksCreateResponseCertificateAuthority;
+  /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
+  cloudflareBranding?: boolean;
+  /** DCV Delegation records for domain validation. */
+  dcvDelegationRecords?: CertificatePacksCreateResponseDcvDelegationRecordsList;
+  /** Identifier of the primary certificate in a pack. */
+  primaryCertificate?: string;
+  /** Domain validation errors that have been received by the certificate authority (CA). */
+  validationErrors?: CertificatePacksCreateResponseValidationErrorsList;
+  /** Validation Method selected for the order. */
+  validationMethod?: CertificatePacksCreateResponseValidationMethod;
+  /** Certificates' validation records. */
+  validationRecords?: CertificatePacksCreateResponseValidationRecordsList;
+  /** Validity Days selected for the order. */
+  validityDays?: CertificatePacksCreateResponseValidityDays;
 }
 export const CertificatePacksCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -474,37 +588,55 @@ export const CertificatePacksCreateResponse = /*@__PURE__*/ S.suspend(() =>
     hosts: CertificatePacksCreateResponseHostsList,
     status: S.Unknown,
     type: CertificatePacksCreateResponseType,
-    certificate_authority: S.optional(
-      CertificatePacksCreateResponseCertificateAuthority,
+    certificateAuthority: S.optional(
+      CertificatePacksCreateResponseCertificateAuthority.pipe(
+        T.Body("certificate_authority"),
+      ),
     ),
-    cloudflare_branding: S.optional(S.Boolean),
-    dcv_delegation_records: S.optional(
-      CertificatePacksCreateResponseDcvDelegationRecordsList,
+    cloudflareBranding: S.optional(
+      S.Boolean.pipe(T.Body("cloudflare_branding")),
     ),
-    primary_certificate: S.optional(S.String),
-    validation_errors: S.optional(
-      CertificatePacksCreateResponseValidationErrorsList,
+    dcvDelegationRecords: S.optional(
+      CertificatePacksCreateResponseDcvDelegationRecordsList.pipe(
+        T.Body("dcv_delegation_records"),
+      ),
     ),
-    validation_method: S.optional(
-      CertificatePacksCreateResponseValidationMethod,
+    primaryCertificate: S.optional(
+      S.String.pipe(T.Body("primary_certificate")),
     ),
-    validation_records: S.optional(
-      CertificatePacksCreateResponseValidationRecordsList,
+    validationErrors: S.optional(
+      CertificatePacksCreateResponseValidationErrorsList.pipe(
+        T.Body("validation_errors"),
+      ),
     ),
-    validity_days: S.optional(S.Unknown),
+    validationMethod: S.optional(
+      CertificatePacksCreateResponseValidationMethod.pipe(
+        T.Body("validation_method"),
+      ),
+    ),
+    validationRecords: S.optional(
+      CertificatePacksCreateResponseValidationRecordsList.pipe(
+        T.Body("validation_records"),
+      ),
+    ),
+    validityDays: S.optional(
+      CertificatePacksCreateResponseValidityDays.pipe(T.Body("validity_days")),
+    ),
   }),
 ).annotate({
   identifier: "CertificatePacksCreateResponse",
 }) as any as S.Schema<CertificatePacksCreateResponse>;
 
 export interface CertificatePacksDeleteRequest {
-  zone_id: string;
-  certificate_pack_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  certificatePackId: string;
 }
 export const CertificatePacksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    certificate_pack_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    certificatePackId: S.String.pipe(T.Label("certificate_pack_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -518,6 +650,7 @@ export const CertificatePacksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CertificatePacksDeleteResponse {
+  /** Identifier. */
   id?: string;
 }
 export const CertificatePacksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -529,15 +662,20 @@ export const CertificatePacksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificatePacksDeleteResponse>;
 
 export interface CertificatePacksEditRequest {
-  zone_id: string;
-  certificate_pack_id: string;
-  cloudflare_branding?: boolean;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  certificatePackId: string;
+  /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
+  cloudflareBranding?: boolean;
 }
 export const CertificatePacksEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    certificate_pack_id: S.String.pipe(T.Label()),
-    cloudflare_branding: S.optional(S.Boolean),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    certificatePackId: S.String.pipe(T.Label("certificate_pack_id")),
+    cloudflareBranding: S.optional(
+      S.Boolean.pipe(T.Body("cloudflare_branding")),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -578,18 +716,30 @@ export const CertificatePacksEditResponseCertificatesItemGeoRestrictions =
   }) as any as S.Schema<CertificatePacksEditResponseCertificatesItemGeoRestrictions>;
 
 export interface CertificatePacksEditResponseCertificatesItem {
+  /** Certificate identifier. */
   id: string;
+  /** Hostnames covered by this certificate. */
   hosts: CertificatePacksEditResponseCertificatesItemHostsList;
+  /** Certificate status. */
   status: string;
-  bundle_method?: string;
-  expires_on?: string;
-  geo_restrictions?: CertificatePacksEditResponseCertificatesItemGeoRestrictions;
+  /** Certificate bundle method. */
+  bundleMethod?: string;
+  /** When the certificate from the authority expires. */
+  expiresOn?: string;
+  /** Specify the region where your private key can be held locally. */
+  geoRestrictions?: CertificatePacksEditResponseCertificatesItemGeoRestrictions;
+  /** The certificate authority that issued the certificate. */
   issuer?: string;
-  modified_on?: string;
+  /** When the certificate was last modified. */
+  modifiedOn?: string;
+  /** The order/priority in which the certificate will be used. */
   priority?: number;
+  /** The type of hash used for the certificate. */
   signature?: string;
-  uploaded_on?: string;
-  zone_id?: string;
+  /** When the certificate was uploaded to Cloudflare. */
+  uploadedOn?: string;
+  /** Identifier. */
+  zoneId?: string;
 }
 export const CertificatePacksEditResponseCertificatesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -597,17 +747,19 @@ export const CertificatePacksEditResponseCertificatesItem =
       id: S.String,
       hosts: CertificatePacksEditResponseCertificatesItemHostsList,
       status: S.String,
-      bundle_method: S.optional(S.String),
-      expires_on: S.optional(S.String),
-      geo_restrictions: S.optional(
-        CertificatePacksEditResponseCertificatesItemGeoRestrictions,
+      bundleMethod: S.optional(S.String.pipe(T.Body("bundle_method"))),
+      expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+      geoRestrictions: S.optional(
+        CertificatePacksEditResponseCertificatesItemGeoRestrictions.pipe(
+          T.Body("geo_restrictions"),
+        ),
       ),
       issuer: S.optional(S.String),
-      modified_on: S.optional(S.String),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
       priority: S.optional(S.Number),
       signature: S.optional(S.String),
-      uploaded_on: S.optional(S.String),
-      zone_id: S.optional(S.String),
+      uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+      zoneId: S.optional(S.String.pipe(T.Body("zone_id"))),
     }),
   ).annotate({
     identifier: "CertificatePacksEditResponseCertificatesItem",
@@ -648,28 +800,36 @@ export const CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList =
   ) as any as S.Schema<CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList>;
 
 export interface CertificatePacksEditResponseDcvDelegationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const CertificatePacksEditResponseDcvDelegationRecordsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cname: S.optional(S.String),
-      cname_target: S.optional(S.String),
+      cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
       emails: S.optional(
         CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList,
       ),
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
       status: S.optional(S.String),
-      txt_name: S.optional(S.String),
-      txt_value: S.optional(S.String),
+      txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
     }),
   ).annotate({
     identifier: "CertificatePacksEditResponseDcvDelegationRecordsItem",
@@ -683,6 +843,7 @@ export const CertificatePacksEditResponseDcvDelegationRecordsList =
   ) as any as S.Schema<CertificatePacksEditResponseDcvDelegationRecordsList>;
 
 export interface CertificatePacksEditResponseValidationErrorsItem {
+  /** A domain validation error. */
   message?: string;
 }
 export const CertificatePacksEditResponseValidationErrorsItem =
@@ -717,28 +878,36 @@ export const CertificatePacksEditResponseValidationRecordsItemEmailsList =
   ) as any as S.Schema<CertificatePacksEditResponseValidationRecordsItemEmailsList>;
 
 export interface CertificatePacksEditResponseValidationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: CertificatePacksEditResponseValidationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const CertificatePacksEditResponseValidationRecordsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cname: S.optional(S.String),
-      cname_target: S.optional(S.String),
+      cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
       emails: S.optional(
         CertificatePacksEditResponseValidationRecordsItemEmailsList,
       ),
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
       status: S.optional(S.String),
-      txt_name: S.optional(S.String),
-      txt_value: S.optional(S.String),
+      txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
     }),
   ).annotate({
     identifier: "CertificatePacksEditResponseValidationRecordsItem",
@@ -751,21 +920,52 @@ export const CertificatePacksEditResponseValidationRecordsList =
     CertificatePacksEditResponseValidationRecordsItem,
   ) as any as S.Schema<CertificatePacksEditResponseValidationRecordsList>;
 
+export interface CertificatePacksEditResponseValidityDays {
+  "14": unknown;
+  "30": unknown;
+  "90": unknown;
+  "365": unknown;
+}
+export const CertificatePacksEditResponseValidityDays = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      "14": S.Unknown,
+      "30": S.Unknown,
+      "90": S.Unknown,
+      "365": S.Unknown,
+    }),
+).annotate({
+  identifier: "CertificatePacksEditResponseValidityDays",
+}) as any as S.Schema<CertificatePacksEditResponseValidityDays>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CertificatePacksEditResponse {
+  /** Identifier. */
   id: string;
+  /** Array of certificates in this pack. */
   certificates: CertificatePacksEditResponseCertificatesList;
+  /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
   hosts: CertificatePacksEditResponseHostsList;
+  /** Status of certificate pack. */
   status: unknown;
+  /** Type of certificate pack. */
   type: CertificatePacksEditResponseType;
-  certificate_authority?: CertificatePacksEditResponseCertificateAuthority;
-  cloudflare_branding?: boolean;
-  dcv_delegation_records?: CertificatePacksEditResponseDcvDelegationRecordsList;
-  primary_certificate?: string;
-  validation_errors?: CertificatePacksEditResponseValidationErrorsList;
-  validation_method?: CertificatePacksEditResponseValidationMethod;
-  validation_records?: CertificatePacksEditResponseValidationRecordsList;
-  validity_days?: unknown;
+  /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities). */
+  certificateAuthority?: CertificatePacksEditResponseCertificateAuthority;
+  /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
+  cloudflareBranding?: boolean;
+  /** DCV Delegation records for domain validation. */
+  dcvDelegationRecords?: CertificatePacksEditResponseDcvDelegationRecordsList;
+  /** Identifier of the primary certificate in a pack. */
+  primaryCertificate?: string;
+  /** Domain validation errors that have been received by the certificate authority (CA). */
+  validationErrors?: CertificatePacksEditResponseValidationErrorsList;
+  /** Validation Method selected for the order. */
+  validationMethod?: CertificatePacksEditResponseValidationMethod;
+  /** Certificates' validation records. */
+  validationRecords?: CertificatePacksEditResponseValidationRecordsList;
+  /** Validity Days selected for the order. */
+  validityDays?: CertificatePacksEditResponseValidityDays;
 }
 export const CertificatePacksEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -774,35 +974,55 @@ export const CertificatePacksEditResponse = /*@__PURE__*/ S.suspend(() =>
     hosts: CertificatePacksEditResponseHostsList,
     status: S.Unknown,
     type: CertificatePacksEditResponseType,
-    certificate_authority: S.optional(
-      CertificatePacksEditResponseCertificateAuthority,
+    certificateAuthority: S.optional(
+      CertificatePacksEditResponseCertificateAuthority.pipe(
+        T.Body("certificate_authority"),
+      ),
     ),
-    cloudflare_branding: S.optional(S.Boolean),
-    dcv_delegation_records: S.optional(
-      CertificatePacksEditResponseDcvDelegationRecordsList,
+    cloudflareBranding: S.optional(
+      S.Boolean.pipe(T.Body("cloudflare_branding")),
     ),
-    primary_certificate: S.optional(S.String),
-    validation_errors: S.optional(
-      CertificatePacksEditResponseValidationErrorsList,
+    dcvDelegationRecords: S.optional(
+      CertificatePacksEditResponseDcvDelegationRecordsList.pipe(
+        T.Body("dcv_delegation_records"),
+      ),
     ),
-    validation_method: S.optional(CertificatePacksEditResponseValidationMethod),
-    validation_records: S.optional(
-      CertificatePacksEditResponseValidationRecordsList,
+    primaryCertificate: S.optional(
+      S.String.pipe(T.Body("primary_certificate")),
     ),
-    validity_days: S.optional(S.Unknown),
+    validationErrors: S.optional(
+      CertificatePacksEditResponseValidationErrorsList.pipe(
+        T.Body("validation_errors"),
+      ),
+    ),
+    validationMethod: S.optional(
+      CertificatePacksEditResponseValidationMethod.pipe(
+        T.Body("validation_method"),
+      ),
+    ),
+    validationRecords: S.optional(
+      CertificatePacksEditResponseValidationRecordsList.pipe(
+        T.Body("validation_records"),
+      ),
+    ),
+    validityDays: S.optional(
+      CertificatePacksEditResponseValidityDays.pipe(T.Body("validity_days")),
+    ),
   }),
 ).annotate({
   identifier: "CertificatePacksEditResponse",
 }) as any as S.Schema<CertificatePacksEditResponse>;
 
 export interface CertificatePacksGetRequest {
-  zone_id: string;
-  certificate_pack_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  certificatePackId: string;
 }
 export const CertificatePacksGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    certificate_pack_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    certificatePackId: S.String.pipe(T.Label("certificate_pack_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -843,18 +1063,30 @@ export const CertificatePacksGetResponseCertificatesItemGeoRestrictions =
   }) as any as S.Schema<CertificatePacksGetResponseCertificatesItemGeoRestrictions>;
 
 export interface CertificatePacksGetResponseCertificatesItem {
+  /** Certificate identifier. */
   id: string;
+  /** Hostnames covered by this certificate. */
   hosts: CertificatePacksGetResponseCertificatesItemHostsList;
+  /** Certificate status. */
   status: string;
-  bundle_method?: string;
-  expires_on?: string;
-  geo_restrictions?: CertificatePacksGetResponseCertificatesItemGeoRestrictions;
+  /** Certificate bundle method. */
+  bundleMethod?: string;
+  /** When the certificate from the authority expires. */
+  expiresOn?: string;
+  /** Specify the region where your private key can be held locally. */
+  geoRestrictions?: CertificatePacksGetResponseCertificatesItemGeoRestrictions;
+  /** The certificate authority that issued the certificate. */
   issuer?: string;
-  modified_on?: string;
+  /** When the certificate was last modified. */
+  modifiedOn?: string;
+  /** The order/priority in which the certificate will be used. */
   priority?: number;
+  /** The type of hash used for the certificate. */
   signature?: string;
-  uploaded_on?: string;
-  zone_id?: string;
+  /** When the certificate was uploaded to Cloudflare. */
+  uploadedOn?: string;
+  /** Identifier. */
+  zoneId?: string;
 }
 export const CertificatePacksGetResponseCertificatesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -862,17 +1094,19 @@ export const CertificatePacksGetResponseCertificatesItem =
       id: S.String,
       hosts: CertificatePacksGetResponseCertificatesItemHostsList,
       status: S.String,
-      bundle_method: S.optional(S.String),
-      expires_on: S.optional(S.String),
-      geo_restrictions: S.optional(
-        CertificatePacksGetResponseCertificatesItemGeoRestrictions,
+      bundleMethod: S.optional(S.String.pipe(T.Body("bundle_method"))),
+      expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+      geoRestrictions: S.optional(
+        CertificatePacksGetResponseCertificatesItemGeoRestrictions.pipe(
+          T.Body("geo_restrictions"),
+        ),
       ),
       issuer: S.optional(S.String),
-      modified_on: S.optional(S.String),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
       priority: S.optional(S.Number),
       signature: S.optional(S.String),
-      uploaded_on: S.optional(S.String),
-      zone_id: S.optional(S.String),
+      uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+      zoneId: S.optional(S.String.pipe(T.Body("zone_id"))),
     }),
   ).annotate({
     identifier: "CertificatePacksGetResponseCertificatesItem",
@@ -913,28 +1147,36 @@ export const CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList =
   ) as any as S.Schema<CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList>;
 
 export interface CertificatePacksGetResponseDcvDelegationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const CertificatePacksGetResponseDcvDelegationRecordsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cname: S.optional(S.String),
-      cname_target: S.optional(S.String),
+      cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
       emails: S.optional(
         CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList,
       ),
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
       status: S.optional(S.String),
-      txt_name: S.optional(S.String),
-      txt_value: S.optional(S.String),
+      txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
     }),
   ).annotate({
     identifier: "CertificatePacksGetResponseDcvDelegationRecordsItem",
@@ -948,6 +1190,7 @@ export const CertificatePacksGetResponseDcvDelegationRecordsList =
   ) as any as S.Schema<CertificatePacksGetResponseDcvDelegationRecordsList>;
 
 export interface CertificatePacksGetResponseValidationErrorsItem {
+  /** A domain validation error. */
   message?: string;
 }
 export const CertificatePacksGetResponseValidationErrorsItem =
@@ -982,28 +1225,36 @@ export const CertificatePacksGetResponseValidationRecordsItemEmailsList =
   ) as any as S.Schema<CertificatePacksGetResponseValidationRecordsItemEmailsList>;
 
 export interface CertificatePacksGetResponseValidationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: CertificatePacksGetResponseValidationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const CertificatePacksGetResponseValidationRecordsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cname: S.optional(S.String),
-      cname_target: S.optional(S.String),
+      cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
       emails: S.optional(
         CertificatePacksGetResponseValidationRecordsItemEmailsList,
       ),
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
       status: S.optional(S.String),
-      txt_name: S.optional(S.String),
-      txt_value: S.optional(S.String),
+      txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
     }),
   ).annotate({
     identifier: "CertificatePacksGetResponseValidationRecordsItem",
@@ -1016,21 +1267,52 @@ export const CertificatePacksGetResponseValidationRecordsList =
     CertificatePacksGetResponseValidationRecordsItem,
   ) as any as S.Schema<CertificatePacksGetResponseValidationRecordsList>;
 
+export interface CertificatePacksGetResponseValidityDays {
+  "14": unknown;
+  "30": unknown;
+  "90": unknown;
+  "365": unknown;
+}
+export const CertificatePacksGetResponseValidityDays = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      "14": S.Unknown,
+      "30": S.Unknown,
+      "90": S.Unknown,
+      "365": S.Unknown,
+    }),
+).annotate({
+  identifier: "CertificatePacksGetResponseValidityDays",
+}) as any as S.Schema<CertificatePacksGetResponseValidityDays>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CertificatePacksGetResponse {
+  /** Identifier. */
   id: string;
+  /** Array of certificates in this pack. */
   certificates: CertificatePacksGetResponseCertificatesList;
+  /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
   hosts: CertificatePacksGetResponseHostsList;
+  /** Status of certificate pack. */
   status: unknown;
+  /** Type of certificate pack. */
   type: CertificatePacksGetResponseType;
-  certificate_authority?: CertificatePacksGetResponseCertificateAuthority;
-  cloudflare_branding?: boolean;
-  dcv_delegation_records?: CertificatePacksGetResponseDcvDelegationRecordsList;
-  primary_certificate?: string;
-  validation_errors?: CertificatePacksGetResponseValidationErrorsList;
-  validation_method?: CertificatePacksGetResponseValidationMethod;
-  validation_records?: CertificatePacksGetResponseValidationRecordsList;
-  validity_days?: unknown;
+  /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities). */
+  certificateAuthority?: CertificatePacksGetResponseCertificateAuthority;
+  /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
+  cloudflareBranding?: boolean;
+  /** DCV Delegation records for domain validation. */
+  dcvDelegationRecords?: CertificatePacksGetResponseDcvDelegationRecordsList;
+  /** Identifier of the primary certificate in a pack. */
+  primaryCertificate?: string;
+  /** Domain validation errors that have been received by the certificate authority (CA). */
+  validationErrors?: CertificatePacksGetResponseValidationErrorsList;
+  /** Validation Method selected for the order. */
+  validationMethod?: CertificatePacksGetResponseValidationMethod;
+  /** Certificates' validation records. */
+  validationRecords?: CertificatePacksGetResponseValidationRecordsList;
+  /** Validity Days selected for the order. */
+  validityDays?: CertificatePacksGetResponseValidityDays;
 }
 export const CertificatePacksGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1039,22 +1321,40 @@ export const CertificatePacksGetResponse = /*@__PURE__*/ S.suspend(() =>
     hosts: CertificatePacksGetResponseHostsList,
     status: S.Unknown,
     type: CertificatePacksGetResponseType,
-    certificate_authority: S.optional(
-      CertificatePacksGetResponseCertificateAuthority,
+    certificateAuthority: S.optional(
+      CertificatePacksGetResponseCertificateAuthority.pipe(
+        T.Body("certificate_authority"),
+      ),
     ),
-    cloudflare_branding: S.optional(S.Boolean),
-    dcv_delegation_records: S.optional(
-      CertificatePacksGetResponseDcvDelegationRecordsList,
+    cloudflareBranding: S.optional(
+      S.Boolean.pipe(T.Body("cloudflare_branding")),
     ),
-    primary_certificate: S.optional(S.String),
-    validation_errors: S.optional(
-      CertificatePacksGetResponseValidationErrorsList,
+    dcvDelegationRecords: S.optional(
+      CertificatePacksGetResponseDcvDelegationRecordsList.pipe(
+        T.Body("dcv_delegation_records"),
+      ),
     ),
-    validation_method: S.optional(CertificatePacksGetResponseValidationMethod),
-    validation_records: S.optional(
-      CertificatePacksGetResponseValidationRecordsList,
+    primaryCertificate: S.optional(
+      S.String.pipe(T.Body("primary_certificate")),
     ),
-    validity_days: S.optional(S.Unknown),
+    validationErrors: S.optional(
+      CertificatePacksGetResponseValidationErrorsList.pipe(
+        T.Body("validation_errors"),
+      ),
+    ),
+    validationMethod: S.optional(
+      CertificatePacksGetResponseValidationMethod.pipe(
+        T.Body("validation_method"),
+      ),
+    ),
+    validationRecords: S.optional(
+      CertificatePacksGetResponseValidationRecordsList.pipe(
+        T.Body("validation_records"),
+      ),
+    ),
+    validityDays: S.optional(
+      CertificatePacksGetResponseValidityDays.pipe(T.Body("validity_days")),
+    ),
   }),
 ).annotate({
   identifier: "CertificatePacksGetResponse",
@@ -1070,18 +1370,23 @@ export type CertificatePacksListRequestStatus = "all" | (string & {});
 export const CertificatePacksListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface CertificatePacksListRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Specify the deployment environment for the certificate packs. */
   deploy?: CertificatePacksListRequestDeploy;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
+  /** Number of certificate packs per page. */
+  perPage?: number;
+  /** Include Certificate Packs of all statuses, not just active ones. */
   status?: CertificatePacksListRequestStatus;
 }
 export const CertificatePacksListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     deploy: S.optional(CertificatePacksListRequestDeploy.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     status: S.optional(CertificatePacksListRequestStatus.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -1120,18 +1425,30 @@ export const CertificatePacksListResultItemCertificatesItemGeoRestrictions =
   }) as any as S.Schema<CertificatePacksListResultItemCertificatesItemGeoRestrictions>;
 
 export interface CertificatePacksListResultItemCertificatesItem {
+  /** Certificate identifier. */
   id: string;
+  /** Hostnames covered by this certificate. */
   hosts: CertificatePacksListResultItemCertificatesItemHostsList;
+  /** Certificate status. */
   status: string;
-  bundle_method?: string;
-  expires_on?: string;
-  geo_restrictions?: CertificatePacksListResultItemCertificatesItemGeoRestrictions;
+  /** Certificate bundle method. */
+  bundleMethod?: string;
+  /** When the certificate from the authority expires. */
+  expiresOn?: string;
+  /** Specify the region where your private key can be held locally. */
+  geoRestrictions?: CertificatePacksListResultItemCertificatesItemGeoRestrictions;
+  /** The certificate authority that issued the certificate. */
   issuer?: string;
-  modified_on?: string;
+  /** When the certificate was last modified. */
+  modifiedOn?: string;
+  /** The order/priority in which the certificate will be used. */
   priority?: number;
+  /** The type of hash used for the certificate. */
   signature?: string;
-  uploaded_on?: string;
-  zone_id?: string;
+  /** When the certificate was uploaded to Cloudflare. */
+  uploadedOn?: string;
+  /** Identifier. */
+  zoneId?: string;
 }
 export const CertificatePacksListResultItemCertificatesItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -1139,17 +1456,19 @@ export const CertificatePacksListResultItemCertificatesItem =
       id: S.String,
       hosts: CertificatePacksListResultItemCertificatesItemHostsList,
       status: S.String,
-      bundle_method: S.optional(S.String),
-      expires_on: S.optional(S.String),
-      geo_restrictions: S.optional(
-        CertificatePacksListResultItemCertificatesItemGeoRestrictions,
+      bundleMethod: S.optional(S.String.pipe(T.Body("bundle_method"))),
+      expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+      geoRestrictions: S.optional(
+        CertificatePacksListResultItemCertificatesItemGeoRestrictions.pipe(
+          T.Body("geo_restrictions"),
+        ),
       ),
       issuer: S.optional(S.String),
-      modified_on: S.optional(S.String),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
       priority: S.optional(S.Number),
       signature: S.optional(S.String),
-      uploaded_on: S.optional(S.String),
-      zone_id: S.optional(S.String),
+      uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+      zoneId: S.optional(S.String.pipe(T.Body("zone_id"))),
     }),
   ).annotate({
     identifier: "CertificatePacksListResultItemCertificatesItem",
@@ -1190,28 +1509,36 @@ export const CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList =
   ) as any as S.Schema<CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList>;
 
 export interface CertificatePacksListResultItemDcvDelegationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const CertificatePacksListResultItemDcvDelegationRecordsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cname: S.optional(S.String),
-      cname_target: S.optional(S.String),
+      cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
       emails: S.optional(
         CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList,
       ),
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
       status: S.optional(S.String),
-      txt_name: S.optional(S.String),
-      txt_value: S.optional(S.String),
+      txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
     }),
   ).annotate({
     identifier: "CertificatePacksListResultItemDcvDelegationRecordsItem",
@@ -1225,6 +1552,7 @@ export const CertificatePacksListResultItemDcvDelegationRecordsList =
   ) as any as S.Schema<CertificatePacksListResultItemDcvDelegationRecordsList>;
 
 export interface CertificatePacksListResultItemValidationErrorsItem {
+  /** A domain validation error. */
   message?: string;
 }
 export const CertificatePacksListResultItemValidationErrorsItem =
@@ -1259,28 +1587,36 @@ export const CertificatePacksListResultItemValidationRecordsItemEmailsList =
   ) as any as S.Schema<CertificatePacksListResultItemValidationRecordsItemEmailsList>;
 
 export interface CertificatePacksListResultItemValidationRecordsItem {
+  /** The CNAME record hostname for DCV delegation. */
   cname?: string;
-  cname_target?: string;
+  /** The CNAME record target value for DCV delegation. */
+  cnameTarget?: string;
+  /** The set of email addresses that the certificate authority (CA) will use to complete domain validation. */
   emails?: CertificatePacksListResultItemValidationRecordsItemEmailsList;
-  http_body?: string;
-  http_url?: string;
+  /** The content that the certificate authority (CA) will expect to find at the http_url during the domain validation. */
+  httpBody?: string;
+  /** The url that will be checked during domain validation. */
+  httpUrl?: string;
+  /** Status of the validation record. */
   status?: string;
-  txt_name?: string;
-  txt_value?: string;
+  /** The hostname that the certificate authority (CA) will check for a TXT record during domain validation . */
+  txtName?: string;
+  /** The TXT record that the certificate authority (CA) will check during domain validation. */
+  txtValue?: string;
 }
 export const CertificatePacksListResultItemValidationRecordsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cname: S.optional(S.String),
-      cname_target: S.optional(S.String),
+      cnameTarget: S.optional(S.String.pipe(T.Body("cname_target"))),
       emails: S.optional(
         CertificatePacksListResultItemValidationRecordsItemEmailsList,
       ),
-      http_body: S.optional(S.String),
-      http_url: S.optional(S.String),
+      httpBody: S.optional(S.String.pipe(T.Body("http_body"))),
+      httpUrl: S.optional(S.String.pipe(T.Body("http_url"))),
       status: S.optional(S.String),
-      txt_name: S.optional(S.String),
-      txt_value: S.optional(S.String),
+      txtName: S.optional(S.String.pipe(T.Body("txt_name"))),
+      txtValue: S.optional(S.String.pipe(T.Body("txt_value"))),
     }),
   ).annotate({
     identifier: "CertificatePacksListResultItemValidationRecordsItem",
@@ -1293,20 +1629,51 @@ export const CertificatePacksListResultItemValidationRecordsList =
     CertificatePacksListResultItemValidationRecordsItem,
   ) as any as S.Schema<CertificatePacksListResultItemValidationRecordsList>;
 
+export interface CertificatePacksListResultItemValidityDays {
+  "14": unknown;
+  "30": unknown;
+  "90": unknown;
+  "365": unknown;
+}
+export const CertificatePacksListResultItemValidityDays =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "14": S.Unknown,
+      "30": S.Unknown,
+      "90": S.Unknown,
+      "365": S.Unknown,
+    }),
+  ).annotate({
+    identifier: "CertificatePacksListResultItemValidityDays",
+  }) as any as S.Schema<CertificatePacksListResultItemValidityDays>;
+
 export interface CertificatePacksListResultItem {
+  /** Identifier. */
   id: string;
+  /** Array of certificates in this pack. */
   certificates: CertificatePacksListResultItemCertificatesList;
+  /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
   hosts: CertificatePacksListResultItemHostsList;
+  /** Status of certificate pack. */
   status: unknown;
+  /** Type of certificate pack. */
   type: CertificatePacksListResultItemType;
-  certificate_authority?: CertificatePacksListResultItemCertificateAuthority;
-  cloudflare_branding?: boolean;
-  dcv_delegation_records?: CertificatePacksListResultItemDcvDelegationRecordsList;
-  primary_certificate?: string;
-  validation_errors?: CertificatePacksListResultItemValidationErrorsList;
-  validation_method?: CertificatePacksListResultItemValidationMethod;
-  validation_records?: CertificatePacksListResultItemValidationRecordsList;
-  validity_days?: unknown;
+  /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities). */
+  certificateAuthority?: CertificatePacksListResultItemCertificateAuthority;
+  /** Whether or not to add Cloudflare Branding for the order. This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true. */
+  cloudflareBranding?: boolean;
+  /** DCV Delegation records for domain validation. */
+  dcvDelegationRecords?: CertificatePacksListResultItemDcvDelegationRecordsList;
+  /** Identifier of the primary certificate in a pack. */
+  primaryCertificate?: string;
+  /** Domain validation errors that have been received by the certificate authority (CA). */
+  validationErrors?: CertificatePacksListResultItemValidationErrorsList;
+  /** Validation Method selected for the order. */
+  validationMethod?: CertificatePacksListResultItemValidationMethod;
+  /** Certificates' validation records. */
+  validationRecords?: CertificatePacksListResultItemValidationRecordsList;
+  /** Validity Days selected for the order. */
+  validityDays?: CertificatePacksListResultItemValidityDays;
 }
 export const CertificatePacksListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1315,24 +1682,40 @@ export const CertificatePacksListResultItem = /*@__PURE__*/ S.suspend(() =>
     hosts: CertificatePacksListResultItemHostsList,
     status: S.Unknown,
     type: CertificatePacksListResultItemType,
-    certificate_authority: S.optional(
-      CertificatePacksListResultItemCertificateAuthority,
+    certificateAuthority: S.optional(
+      CertificatePacksListResultItemCertificateAuthority.pipe(
+        T.Body("certificate_authority"),
+      ),
     ),
-    cloudflare_branding: S.optional(S.Boolean),
-    dcv_delegation_records: S.optional(
-      CertificatePacksListResultItemDcvDelegationRecordsList,
+    cloudflareBranding: S.optional(
+      S.Boolean.pipe(T.Body("cloudflare_branding")),
     ),
-    primary_certificate: S.optional(S.String),
-    validation_errors: S.optional(
-      CertificatePacksListResultItemValidationErrorsList,
+    dcvDelegationRecords: S.optional(
+      CertificatePacksListResultItemDcvDelegationRecordsList.pipe(
+        T.Body("dcv_delegation_records"),
+      ),
     ),
-    validation_method: S.optional(
-      CertificatePacksListResultItemValidationMethod,
+    primaryCertificate: S.optional(
+      S.String.pipe(T.Body("primary_certificate")),
     ),
-    validation_records: S.optional(
-      CertificatePacksListResultItemValidationRecordsList,
+    validationErrors: S.optional(
+      CertificatePacksListResultItemValidationErrorsList.pipe(
+        T.Body("validation_errors"),
+      ),
     ),
-    validity_days: S.optional(S.Unknown),
+    validationMethod: S.optional(
+      CertificatePacksListResultItemValidationMethod.pipe(
+        T.Body("validation_method"),
+      ),
+    ),
+    validationRecords: S.optional(
+      CertificatePacksListResultItemValidationRecordsList.pipe(
+        T.Body("validation_records"),
+      ),
+    ),
+    validityDays: S.optional(
+      CertificatePacksListResultItemValidityDays.pipe(T.Body("validity_days")),
+    ),
   }),
 ).annotate({
   identifier: "CertificatePacksListResultItem",
@@ -1344,6 +1727,7 @@ export const CertificatePacksListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CertificatePacksListResultList>;
 
 export interface CertificatePacksListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: CertificatePacksListResultList;
 }
 export const CertificatePacksListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1357,11 +1741,12 @@ export const CertificatePacksListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificatePacksListResponse>;
 
 export interface CertificatePacksQuotaGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const CertificatePacksQuotaGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1374,7 +1759,9 @@ export const CertificatePacksQuotaGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificatePacksQuotaGetRequest>;
 
 export interface CertificatePacksQuotaGetResponseAdvanced {
+  /** Quantity Allocated. */
   allocated?: number;
+  /** Quantity Used. */
   used?: number;
 }
 export const CertificatePacksQuotaGetResponseAdvanced = /*@__PURE__*/ S.suspend(
@@ -1400,12 +1787,14 @@ export const CertificatePacksQuotaGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificatePacksQuotaGetResponse>;
 
 export interface UniversalSettingsEditRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Disabling Universal SSL removes any currently active Universal SSL certificates for your zone from the edge and prevents any future Universal SSL certificates from being ordered. If there are no advanced certificates or custom certificates uploaded for the domain, visitors will be unable to access the domain over HTTPS. */
   enabled?: boolean;
 }
 export const UniversalSettingsEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.optional(S.Boolean),
   }).pipe(
     T.Http({
@@ -1418,23 +1807,26 @@ export const UniversalSettingsEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UniversalSettingsEditRequest",
 }) as any as S.Schema<UniversalSettingsEditRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UniversalSettingsEditResponse {
-  result?: unknown;
+  /** Disabling Universal SSL removes any currently active Universal SSL certificates for your zone from the edge and prevents any future Universal SSL certificates from being ordered. If there are no advanced certificates or custom certificates uploaded for the domain, visitors will be unable to access the domain over HTTPS. */
+  enabled?: boolean;
 }
 export const UniversalSettingsEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    enabled: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "UniversalSettingsEditResponse",
 }) as any as S.Schema<UniversalSettingsEditResponse>;
 
 export interface UniversalSettingsGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const UniversalSettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1446,12 +1838,14 @@ export const UniversalSettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UniversalSettingsGetRequest",
 }) as any as S.Schema<UniversalSettingsGetRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UniversalSettingsGetResponse {
-  result?: unknown;
+  /** Disabling Universal SSL removes any currently active Universal SSL certificates for your zone from the edge and prevents any future Universal SSL certificates from being ordered. If there are no advanced certificates or custom certificates uploaded for the domain, visitors will be unable to access the domain over HTTPS. */
+  enabled?: boolean;
 }
 export const UniversalSettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    enabled: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "UniversalSettingsGetResponse",
@@ -1466,15 +1860,20 @@ export type VerificationEditRequestValidationMethod =
 export const VerificationEditRequestValidationMethod = /*@__PURE__*/ S.String;
 
 export interface VerificationEditRequest {
-  zone_id: string;
-  certificate_pack_id: string;
-  validation_method: VerificationEditRequestValidationMethod;
+  /** Identifier. */
+  zoneId: string;
+  /** Certificate Pack UUID. */
+  certificatePackId: string;
+  /** Desired validation method. */
+  validationMethod: VerificationEditRequestValidationMethod;
 }
 export const VerificationEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    certificate_pack_id: S.String.pipe(T.Label()),
-    validation_method: VerificationEditRequestValidationMethod,
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    certificatePackId: S.String.pipe(T.Label("certificate_pack_id")),
+    validationMethod: VerificationEditRequestValidationMethod.pipe(
+      T.Body("validation_method"),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1496,25 +1895,33 @@ export const VerificationEditResponseValidationMethod = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface VerificationEditResponse {
+  /** Result status. */
   status?: string;
-  validation_method?: VerificationEditResponseValidationMethod;
+  /** Desired validation method. */
+  validationMethod?: VerificationEditResponseValidationMethod;
 }
 export const VerificationEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
-    validation_method: S.optional(VerificationEditResponseValidationMethod),
+    validationMethod: S.optional(
+      VerificationEditResponseValidationMethod.pipe(
+        T.Body("validation_method"),
+      ),
+    ),
   }),
 ).annotate({
   identifier: "VerificationEditResponse",
 }) as any as S.Schema<VerificationEditResponse>;
 
 export interface VerificationGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Immediately retry SSL Verification. */
   retry?: boolean;
 }
 export const VerificationGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     retry: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -1527,12 +1934,121 @@ export const VerificationGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VerificationGetRequest",
 }) as any as S.Schema<VerificationGetRequest>;
 
-export type VerificationGetResultList = unknown[];
+export type VerificationGetResultItemCertificateStatus =
+  | "initializing"
+  | "authorizing"
+  | "active"
+  | (string & {});
+export const VerificationGetResultItemCertificateStatus =
+  /*@__PURE__*/ S.String;
+
+export type VerificationGetResultItemSignature =
+  | "ECDSAWithSHA256"
+  | "SHA1WithRSA"
+  | "SHA256WithRSA"
+  | (string & {});
+export const VerificationGetResultItemSignature = /*@__PURE__*/ S.String;
+
+export type VerificationGetResultItemVerificationInfoRecordName =
+  | "record_name"
+  | "http_url"
+  | "cname"
+  | "txt_name"
+  | (string & {});
+export const VerificationGetResultItemVerificationInfoRecordName =
+  /*@__PURE__*/ S.String;
+
+export type VerificationGetResultItemVerificationInfoRecordTarget =
+  | "record_value"
+  | "http_body"
+  | "cname_target"
+  | "txt_value"
+  | (string & {});
+export const VerificationGetResultItemVerificationInfoRecordTarget =
+  /*@__PURE__*/ S.String;
+
+export interface VerificationGetResultItemVerificationInfo {
+  /** Name of CNAME record. */
+  recordName?: VerificationGetResultItemVerificationInfoRecordName;
+  /** Target of CNAME record. */
+  recordTarget?: VerificationGetResultItemVerificationInfoRecordTarget;
+}
+export const VerificationGetResultItemVerificationInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      recordName: S.optional(
+        VerificationGetResultItemVerificationInfoRecordName.pipe(
+          T.Body("record_name"),
+        ),
+      ),
+      recordTarget: S.optional(
+        VerificationGetResultItemVerificationInfoRecordTarget.pipe(
+          T.Body("record_target"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "VerificationGetResultItemVerificationInfo",
+  }) as any as S.Schema<VerificationGetResultItemVerificationInfo>;
+
+export type VerificationGetResultItemVerificationType =
+  | "cname"
+  | "meta tag"
+  | (string & {});
+export const VerificationGetResultItemVerificationType = /*@__PURE__*/ S.String;
+
+export interface VerificationGetResultItem {
+  /** Current status of certificate. */
+  certificateStatus: VerificationGetResultItemCertificateStatus;
+  /** Certificate Authority is manually reviewing the order. */
+  brandCheck?: boolean;
+  /** Certificate Pack UUID. */
+  certPackUuid?: string;
+  /** Certificate's signature algorithm. */
+  signature?: VerificationGetResultItemSignature;
+  /** Validation method in use for a certificate pack order. */
+  validationMethod?: unknown;
+  /** Certificate's required verification information. */
+  verificationInfo?: VerificationGetResultItemVerificationInfo;
+  /** Status of the required verification information, omitted if verification status is unknown. */
+  verificationStatus?: boolean;
+  /** Method of verification. */
+  verificationType?: VerificationGetResultItemVerificationType;
+}
+export const VerificationGetResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    certificateStatus: VerificationGetResultItemCertificateStatus.pipe(
+      T.Body("certificate_status"),
+    ),
+    brandCheck: S.optional(S.Boolean.pipe(T.Body("brand_check"))),
+    certPackUuid: S.optional(S.String.pipe(T.Body("cert_pack_uuid"))),
+    signature: S.optional(VerificationGetResultItemSignature),
+    validationMethod: S.optional(S.Unknown.pipe(T.Body("validation_method"))),
+    verificationInfo: S.optional(
+      VerificationGetResultItemVerificationInfo.pipe(
+        T.Body("verification_info"),
+      ),
+    ),
+    verificationStatus: S.optional(
+      S.Boolean.pipe(T.Body("verification_status")),
+    ),
+    verificationType: S.optional(
+      VerificationGetResultItemVerificationType.pipe(
+        T.Body("verification_type"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "VerificationGetResultItem",
+}) as any as S.Schema<VerificationGetResultItem>;
+
+export type VerificationGetResultList = VerificationGetResultItem[];
 export const VerificationGetResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  VerificationGetResultItem,
 ) as any as S.Schema<VerificationGetResultList>;
 
 export interface VerificationGetResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: VerificationGetResultList;
 }
 export const VerificationGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1543,11 +2059,12 @@ export const VerificationGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "VerificationGetResponse",
 }) as any as S.Schema<VerificationGetResponse>;
 
+export type AnalyzeCreateError = CloudflareOpError;
 /** Returns the set of hostnames, the signature algorithm, and the expiration date of the certificate. */
-export const AnalyzeCreate: API.OperationMethod<
+export const analyzeCreate: API.OperationMethod<
   AnalyzeCreateRequest,
   AnalyzeCreateResponse,
-  CloudflareOpError,
+  AnalyzeCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AnalyzeCreateRequest,
@@ -1556,11 +2073,12 @@ export const AnalyzeCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AutomaticUpgraderGetError = CloudflareOpError;
 /** If the system is enabled, the response will include next_scheduled_scan, representing the next time this zone will be scanned and the zone's ssl/tls encryption mode is potentially upgraded by the system. If the system is disabled, next_scheduled_scan will not be present in the response body. */
-export const AutomaticUpgraderGet: API.OperationMethod<
+export const automaticUpgraderGet: API.OperationMethod<
   AutomaticUpgraderGetRequest,
   AutomaticUpgraderGetResponse,
-  CloudflareOpError,
+  AutomaticUpgraderGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AutomaticUpgraderGetRequest,
@@ -1569,11 +2087,12 @@ export const AutomaticUpgraderGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AutomaticUpgraderPatchError = CloudflareOpError;
 /** The automatic system is enabled when this endpoint is hit with value in the request body is set to "auto", and disabled when the request body value is set to "custom". */
-export const AutomaticUpgraderPatch: API.OperationMethod<
+export const automaticUpgraderPatch: API.OperationMethod<
   AutomaticUpgraderPatchRequest,
   AutomaticUpgraderPatchResponse,
-  CloudflareOpError,
+  AutomaticUpgraderPatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AutomaticUpgraderPatchRequest,
@@ -1582,11 +2101,12 @@ export const AutomaticUpgraderPatch: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AutoOriginTlsKexEditError = CloudflareOpError;
 /** Enable or disable Auto-Origin TLS KEX selection for the zone by sending `{"enabled": true}` or `{"enabled": false}`. When enabled, Cloudflare runs a periodic scan of the zone's origins to determine the preferred key-exchange algorithm and writes that preference to the edge so it is sent first in the TLS ClientHello to the origin. */
-export const AutoOriginTlsKexEdit: API.OperationMethod<
+export const autoOriginTlsKexEdit: API.OperationMethod<
   AutoOriginTlsKexEditRequest,
   AutoOriginTlsKexEditResponse,
-  CloudflareOpError,
+  AutoOriginTlsKexEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AutoOriginTlsKexEditRequest,
@@ -1595,11 +2115,12 @@ export const AutoOriginTlsKexEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AutoOriginTlsKexGetError = CloudflareOpError;
 /** When enabled, Cloudflare automatically selects the preferred TLS key-exchange algorithm to use when establishing the TLS connection to the zone's origin, picking from the algorithms permitted by the zone's `origin_tls_compliance_modes` setting. When disabled, the default key-exchange ordering is used. */
-export const AutoOriginTlsKexGet: API.OperationMethod<
+export const autoOriginTlsKexGet: API.OperationMethod<
   AutoOriginTlsKexGetRequest,
   AutoOriginTlsKexGetResponse,
-  CloudflareOpError,
+  AutoOriginTlsKexGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AutoOriginTlsKexGetRequest,
@@ -1608,11 +2129,12 @@ export const AutoOriginTlsKexGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CertificatePacksCreateError = CloudflareOpError;
 /** For a given zone, order an advanced certificate pack. */
-export const CertificatePacksCreate: API.OperationMethod<
+export const certificatePacksCreate: API.OperationMethod<
   CertificatePacksCreateRequest,
   CertificatePacksCreateResponse,
-  CloudflareOpError,
+  CertificatePacksCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CertificatePacksCreateRequest,
@@ -1621,11 +2143,12 @@ export const CertificatePacksCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CertificatePacksDeleteError = CloudflareOpError;
 /** For a given zone, delete an advanced certificate pack. */
-export const CertificatePacksDelete: API.OperationMethod<
+export const certificatePacksDelete: API.OperationMethod<
   CertificatePacksDeleteRequest,
   CertificatePacksDeleteResponse,
-  CloudflareOpError,
+  CertificatePacksDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CertificatePacksDeleteRequest,
@@ -1634,11 +2157,12 @@ export const CertificatePacksDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CertificatePacksEditError = CloudflareOpError;
 /** For a given zone, restart validation or add cloudflare branding for an advanced certificate pack. The former is only a validation operation for a Certificate Pack in a validation_timed_out status. */
-export const CertificatePacksEdit: API.OperationMethod<
+export const certificatePacksEdit: API.OperationMethod<
   CertificatePacksEditRequest,
   CertificatePacksEditResponse,
-  CloudflareOpError,
+  CertificatePacksEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CertificatePacksEditRequest,
@@ -1647,11 +2171,12 @@ export const CertificatePacksEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CertificatePacksGetError = CloudflareOpError;
 /** For a given zone, get a certificate pack. */
-export const CertificatePacksGet: API.OperationMethod<
+export const certificatePacksGet: API.OperationMethod<
   CertificatePacksGetRequest,
   CertificatePacksGetResponse,
-  CloudflareOpError,
+  CertificatePacksGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CertificatePacksGetRequest,
@@ -1660,11 +2185,12 @@ export const CertificatePacksGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CertificatePacksListError = CloudflareOpError;
 /** For a given zone, list all active certificate packs. */
-export const CertificatePacksList: API.OperationMethod<
+export const certificatePacksList: API.OperationMethod<
   CertificatePacksListRequest,
   CertificatePacksListResponse,
-  CloudflareOpError,
+  CertificatePacksListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CertificatePacksListRequest,
@@ -1673,11 +2199,12 @@ export const CertificatePacksList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type CertificatePacksQuotaGetError = CloudflareOpError;
 /** For a given zone, list certificate pack quotas. */
-export const CertificatePacksQuotaGet: API.OperationMethod<
+export const certificatePacksQuotaGet: API.OperationMethod<
   CertificatePacksQuotaGetRequest,
   CertificatePacksQuotaGetResponse,
-  CloudflareOpError,
+  CertificatePacksQuotaGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CertificatePacksQuotaGetRequest,
@@ -1686,11 +2213,12 @@ export const CertificatePacksQuotaGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UniversalSettingsEditError = CloudflareOpError;
 /** Patch Universal SSL Settings for a Zone. */
-export const UniversalSettingsEdit: API.OperationMethod<
+export const universalSettingsEdit: API.OperationMethod<
   UniversalSettingsEditRequest,
   UniversalSettingsEditResponse,
-  CloudflareOpError,
+  UniversalSettingsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UniversalSettingsEditRequest,
@@ -1699,11 +2227,12 @@ export const UniversalSettingsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UniversalSettingsGetError = CloudflareOpError;
 /** Get Universal SSL Settings for a Zone. */
-export const UniversalSettingsGet: API.OperationMethod<
+export const universalSettingsGet: API.OperationMethod<
   UniversalSettingsGetRequest,
   UniversalSettingsGetResponse,
-  CloudflareOpError,
+  UniversalSettingsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UniversalSettingsGetRequest,
@@ -1712,11 +2241,12 @@ export const UniversalSettingsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type VerificationEditError = CloudflareOpError;
 /** Edit SSL validation method for a certificate pack. A PATCH request will request an immediate validation check on any certificate, and return the updated status. If a validation method is provided, the validation will be immediately attempted using that method. */
-export const VerificationEdit: API.OperationMethod<
+export const verificationEdit: API.OperationMethod<
   VerificationEditRequest,
   VerificationEditResponse,
-  CloudflareOpError,
+  VerificationEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: VerificationEditRequest,
@@ -1725,11 +2255,12 @@ export const VerificationEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type VerificationGetError = CloudflareOpError;
 /** Get SSL Verification Info for a Zone. */
-export const VerificationGet: API.OperationMethod<
+export const verificationGet: API.OperationMethod<
   VerificationGetRequest,
   VerificationGetResponse,
-  CloudflareOpError,
+  VerificationGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: VerificationGetRequest,

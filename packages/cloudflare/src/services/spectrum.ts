@@ -10,16 +10,19 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface AnalyticsAggregatesCurrentsGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Comma-delimited list of Spectrum Application Id(s). If provided, the response will be limited to Spectrum Application Id(s) that match. */
   appID?: string;
-  colo_name?: string;
+  /** Co-location identifier. */
+  coloName?: string;
 }
 export const AnalyticsAggregatesCurrentsGetRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      zone_id: S.String.pipe(T.Label()),
+      zoneId: S.String.pipe(T.Label("zone_id")),
       appID: S.optional(S.String.pipe(T.Query())),
-      colo_name: S.optional(S.String.pipe(T.Query())),
+      coloName: S.optional(S.String.pipe(T.Query("colo_name"))),
     }).pipe(
       T.Http({
         method: "GET",
@@ -32,10 +35,15 @@ export const AnalyticsAggregatesCurrentsGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AnalyticsAggregatesCurrentsGetRequest>;
 
 export interface AnalyticsAggregatesCurrentsGetResultItem {
+  /** Application identifier. */
   appID: string;
+  /** Number of bytes sent. */
   bytesEgress: number;
+  /** Number of bytes received. */
   bytesIngress: number;
+  /** Number of connections. */
   connections: number;
+  /** Average duration of connections. */
   durationAvg: number;
 }
 export const AnalyticsAggregatesCurrentsGetResultItem = /*@__PURE__*/ S.suspend(
@@ -58,6 +66,7 @@ export const AnalyticsAggregatesCurrentsGetResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AnalyticsAggregatesCurrentsGetResultList>;
 
 export interface AnalyticsAggregatesCurrentsGetResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AnalyticsAggregatesCurrentsGetResultList;
 }
 export const AnalyticsAggregatesCurrentsGetResponse = /*@__PURE__*/ S.suspend(
@@ -104,19 +113,29 @@ export const AnalyticsEventsBytimesGetRequestSortList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AnalyticsEventsBytimesGetRequestSortList>;
 
 export interface AnalyticsEventsBytimesGetRequest {
-  zone_id: string;
-  time_delta: AnalyticsEventsBytimesGetRequestTimeDelta;
+  /** Identifier. */
+  zoneId: string;
+  /** Used to select time series resolution. */
+  timeDelta: AnalyticsEventsBytimesGetRequestTimeDelta;
+  /** Can be used to break down the data by given attributes. Options are: */
   dimensions?: AnalyticsEventsBytimesGetRequestDimensionsList;
+  /** Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are: */
   filters?: string;
+  /** One or more metrics to compute. Options are: */
   metrics?: AnalyticsEventsBytimesGetRequestMetricsList;
+  /** Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   since?: string;
+  /** The sort order for the result set; sort fields must be included in `metrics` or `dimensions`. */
   sort?: AnalyticsEventsBytimesGetRequestSortList;
+  /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   until?: string;
 }
 export const AnalyticsEventsBytimesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    time_delta: AnalyticsEventsBytimesGetRequestTimeDelta.pipe(T.Query()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    timeDelta: AnalyticsEventsBytimesGetRequestTimeDelta.pipe(
+      T.Query("time_delta"),
+    ),
     dimensions: S.optional(
       AnalyticsEventsBytimesGetRequestDimensionsList.pipe(T.Query()),
     ),
@@ -144,10 +163,25 @@ export const AnalyticsEventsBytimesGetResponseDataItemDimensionsList =
     S.String,
   ) as any as S.Schema<AnalyticsEventsBytimesGetResponseDataItemDimensionsList>;
 
-export type AnalyticsEventsBytimesGetResponseDataItemMetricsList = unknown[];
+export interface AnalyticsEventsBytimesGetResponseDataItemMetricsItem {
+  arrayOfNumber: unknown;
+  arrayOfArrayOfNumber: unknown;
+}
+export const AnalyticsEventsBytimesGetResponseDataItemMetricsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      arrayOfNumber: S.Unknown.pipe(T.Body("array of number")),
+      arrayOfArrayOfNumber: S.Unknown.pipe(T.Body("array of array of number")),
+    }),
+  ).annotate({
+    identifier: "AnalyticsEventsBytimesGetResponseDataItemMetricsItem",
+  }) as any as S.Schema<AnalyticsEventsBytimesGetResponseDataItemMetricsItem>;
+
+export type AnalyticsEventsBytimesGetResponseDataItemMetricsList =
+  AnalyticsEventsBytimesGetResponseDataItemMetricsItem[];
 export const AnalyticsEventsBytimesGetResponseDataItemMetricsList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    AnalyticsEventsBytimesGetResponseDataItemMetricsItem,
   ) as any as S.Schema<AnalyticsEventsBytimesGetResponseDataItemMetricsList>;
 
 export interface AnalyticsEventsBytimesGetResponseDataItem {
@@ -216,12 +250,19 @@ export const AnalyticsEventsBytimesGetResponseQuerySortList =
   ) as any as S.Schema<AnalyticsEventsBytimesGetResponseQuerySortList>;
 
 export interface AnalyticsEventsBytimesGetResponseQuery {
+  /** Can be used to break down the data by given attributes. Options are: */
   dimensions?: AnalyticsEventsBytimesGetResponseQueryDimensionsList;
+  /** Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are: */
   filters?: string;
+  /** Limit number of returned metrics. */
   limit?: number;
+  /** One or more metrics to compute. Options are: */
   metrics?: AnalyticsEventsBytimesGetResponseQueryMetricsList;
+  /** Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   since?: string;
+  /** The sort order for the result set; sort fields must be included in `metrics` or `dimensions`. */
   sort?: AnalyticsEventsBytimesGetResponseQuerySortList;
+  /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   until?: string;
 }
 export const AnalyticsEventsBytimesGetResponseQuery = /*@__PURE__*/ S.suspend(
@@ -258,26 +299,35 @@ export const AnalyticsEventsBytimesGetResponseTimeIntervalsList =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AnalyticsEventsBytimesGetResponse {
+  /** List of columns returned by the analytics query. */
   data: AnalyticsEventsBytimesGetResponseDataList;
-  data_lag: number;
+  /** Number of seconds between current time and last processed event, i.e. how many seconds of data could be missing. */
+  dataLag: number;
+  /** Maximum result for each selected metrics across all data. */
   max: AnalyticsEventsBytimesGetResponseMaxMap;
+  /** Minimum result for each selected metrics across all data. */
   min: AnalyticsEventsBytimesGetResponseMinMap;
   query: AnalyticsEventsBytimesGetResponseQuery;
+  /** Total number of rows in the result. */
   rows: number;
+  /** Total result for each selected metrics across all data. */
   totals: AnalyticsEventsBytimesGetResponseTotalsMap;
-  time_intervals?: AnalyticsEventsBytimesGetResponseTimeIntervalsList;
+  /** List of time interval buckets: [start, end]. */
+  timeIntervals?: AnalyticsEventsBytimesGetResponseTimeIntervalsList;
 }
 export const AnalyticsEventsBytimesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: AnalyticsEventsBytimesGetResponseDataList,
-    data_lag: S.Number,
+    dataLag: S.Number.pipe(T.Body("data_lag")),
     max: AnalyticsEventsBytimesGetResponseMaxMap,
     min: AnalyticsEventsBytimesGetResponseMinMap,
     query: AnalyticsEventsBytimesGetResponseQuery,
     rows: S.Number,
     totals: AnalyticsEventsBytimesGetResponseTotalsMap,
-    time_intervals: S.optional(
-      AnalyticsEventsBytimesGetResponseTimeIntervalsList,
+    timeIntervals: S.optional(
+      AnalyticsEventsBytimesGetResponseTimeIntervalsList.pipe(
+        T.Body("time_intervals"),
+      ),
     ),
   }),
 ).annotate({
@@ -310,17 +360,24 @@ export const AnalyticsEventsSummariesGetRequestSortList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AnalyticsEventsSummariesGetRequestSortList>;
 
 export interface AnalyticsEventsSummariesGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Can be used to break down the data by given attributes. Options are: */
   dimensions?: AnalyticsEventsSummariesGetRequestDimensionsList;
+  /** Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are: */
   filters?: string;
+  /** One or more metrics to compute. Options are: */
   metrics?: AnalyticsEventsSummariesGetRequestMetricsList;
+  /** Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   since?: string;
+  /** The sort order for the result set; sort fields must be included in `metrics` or `dimensions`. */
   sort?: AnalyticsEventsSummariesGetRequestSortList;
+  /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   until?: string;
 }
 export const AnalyticsEventsSummariesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     dimensions: S.optional(
       AnalyticsEventsSummariesGetRequestDimensionsList.pipe(T.Query()),
     ),
@@ -351,10 +408,25 @@ export const AnalyticsEventsSummariesGetResponseDataItemDimensionsList =
     S.String,
   ) as any as S.Schema<AnalyticsEventsSummariesGetResponseDataItemDimensionsList>;
 
-export type AnalyticsEventsSummariesGetResponseDataItemMetricsList = unknown[];
+export interface AnalyticsEventsSummariesGetResponseDataItemMetricsItem {
+  arrayOfNumber: unknown;
+  arrayOfArrayOfNumber: unknown;
+}
+export const AnalyticsEventsSummariesGetResponseDataItemMetricsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      arrayOfNumber: S.Unknown.pipe(T.Body("array of number")),
+      arrayOfArrayOfNumber: S.Unknown.pipe(T.Body("array of array of number")),
+    }),
+  ).annotate({
+    identifier: "AnalyticsEventsSummariesGetResponseDataItemMetricsItem",
+  }) as any as S.Schema<AnalyticsEventsSummariesGetResponseDataItemMetricsItem>;
+
+export type AnalyticsEventsSummariesGetResponseDataItemMetricsList =
+  AnalyticsEventsSummariesGetResponseDataItemMetricsItem[];
 export const AnalyticsEventsSummariesGetResponseDataItemMetricsList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    AnalyticsEventsSummariesGetResponseDataItemMetricsItem,
   ) as any as S.Schema<AnalyticsEventsSummariesGetResponseDataItemMetricsList>;
 
 export interface AnalyticsEventsSummariesGetResponseDataItem {
@@ -426,12 +498,19 @@ export const AnalyticsEventsSummariesGetResponseQuerySortList =
   ) as any as S.Schema<AnalyticsEventsSummariesGetResponseQuerySortList>;
 
 export interface AnalyticsEventsSummariesGetResponseQuery {
+  /** Can be used to break down the data by given attributes. Options are: */
   dimensions?: AnalyticsEventsSummariesGetResponseQueryDimensionsList;
+  /** Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are: */
   filters?: string;
+  /** Limit number of returned metrics. */
   limit?: number;
+  /** One or more metrics to compute. Options are: */
   metrics?: AnalyticsEventsSummariesGetResponseQueryMetricsList;
+  /** Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   since?: string;
+  /** The sort order for the result set; sort fields must be included in `metrics` or `dimensions`. */
   sort?: AnalyticsEventsSummariesGetResponseQuerySortList;
+  /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   until?: string;
 }
 export const AnalyticsEventsSummariesGetResponseQuery = /*@__PURE__*/ S.suspend(
@@ -468,26 +547,35 @@ export const AnalyticsEventsSummariesGetResponseTimeIntervalsList =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AnalyticsEventsSummariesGetResponse {
+  /** List of columns returned by the analytics query. */
   data: AnalyticsEventsSummariesGetResponseDataList;
-  data_lag: number;
+  /** Number of seconds between current time and last processed event, i.e. how many seconds of data could be missing. */
+  dataLag: number;
+  /** Maximum result for each selected metrics across all data. */
   max: AnalyticsEventsSummariesGetResponseMaxMap;
+  /** Minimum result for each selected metrics across all data. */
   min: AnalyticsEventsSummariesGetResponseMinMap;
   query: AnalyticsEventsSummariesGetResponseQuery;
+  /** Total number of rows in the result. */
   rows: number;
+  /** Total result for each selected metrics across all data. */
   totals: AnalyticsEventsSummariesGetResponseTotalsMap;
-  time_intervals?: AnalyticsEventsSummariesGetResponseTimeIntervalsList;
+  /** List of time interval buckets: [start, end]. */
+  timeIntervals?: AnalyticsEventsSummariesGetResponseTimeIntervalsList;
 }
 export const AnalyticsEventsSummariesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: AnalyticsEventsSummariesGetResponseDataList,
-    data_lag: S.Number,
+    dataLag: S.Number.pipe(T.Body("data_lag")),
     max: AnalyticsEventsSummariesGetResponseMaxMap,
     min: AnalyticsEventsSummariesGetResponseMinMap,
     query: AnalyticsEventsSummariesGetResponseQuery,
     rows: S.Number,
     totals: AnalyticsEventsSummariesGetResponseTotalsMap,
-    time_intervals: S.optional(
-      AnalyticsEventsSummariesGetResponseTimeIntervalsList,
+    timeIntervals: S.optional(
+      AnalyticsEventsSummariesGetResponseTimeIntervalsList.pipe(
+        T.Body("time_intervals"),
+      ),
     ),
   }),
 ).annotate({
@@ -495,35 +583,32 @@ export const AnalyticsEventsSummariesGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalyticsEventsSummariesGetResponse>;
 
 export interface AppsCreateRequestBody {
-  SpectrumConfigAppConfig_object___id__created_on__dns__12_more__: unknown;
-  SpectrumConfigPaygoAppConfig_object___id__created_on__dns__3_more__: unknown;
+  SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: unknown;
+  SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: unknown;
 }
 export const AppsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SpectrumConfigAppConfig_object___id__created_on__dns__12_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "SpectrumConfigAppConfig object { id, created_on, dns, 12 more }",
-        ),
+    SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: S.Unknown.pipe(
+      T.Body("SpectrumConfigAppConfig object { id, created_on, dns, 12 more }"),
+    ),
+    SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: S.Unknown.pipe(
+      T.Body(
+        "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }",
       ),
-    SpectrumConfigPaygoAppConfig_object___id__created_on__dns__3_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }",
-        ),
-      ),
+    ),
   }),
 ).annotate({
   identifier: "AppsCreateRequestBody",
 }) as any as S.Schema<AppsCreateRequestBody>;
 
 export interface AppsCreateRequest {
-  zone_id: string;
+  /** Zone identifier. */
+  zoneId: string;
   body: AppsCreateRequestBody;
 }
 export const AppsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     body: AppsCreateRequestBody,
   }).pipe(
     T.Http({
@@ -538,36 +623,34 @@ export const AppsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AppsCreateResponse {
-  SpectrumConfigAppConfig_object___id__created_on__dns__12_more__: unknown;
-  SpectrumConfigPaygoAppConfig_object___id__created_on__dns__3_more__: unknown;
+  SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: unknown;
+  SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: unknown;
 }
 export const AppsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SpectrumConfigAppConfig_object___id__created_on__dns__12_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "SpectrumConfigAppConfig object { id, created_on, dns, 12 more }",
-        ),
+    SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: S.Unknown.pipe(
+      T.Body("SpectrumConfigAppConfig object { id, created_on, dns, 12 more }"),
+    ),
+    SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: S.Unknown.pipe(
+      T.Body(
+        "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }",
       ),
-    SpectrumConfigPaygoAppConfig_object___id__created_on__dns__3_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }",
-        ),
-      ),
+    ),
   }),
 ).annotate({
   identifier: "AppsCreateResponse",
 }) as any as S.Schema<AppsCreateResponse>;
 
 export interface AppsDeleteRequest {
-  zone_id: string;
-  app_id: string;
+  /** Zone identifier. */
+  zoneId: string;
+  /** App identifier. */
+  appId: string;
 }
 export const AppsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    app_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    appId: S.String.pipe(T.Label("app_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -581,6 +664,7 @@ export const AppsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AppsDeleteResponse {
+  /** Identifier. */
   id: string;
 }
 export const AppsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -592,13 +676,15 @@ export const AppsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsDeleteResponse>;
 
 export interface AppsGetRequest {
-  zone_id: string;
-  app_id: string;
+  /** Zone identifier. */
+  zoneId: string;
+  /** App identifier. */
+  appId: string;
 }
 export const AppsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    app_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    appId: S.String.pipe(T.Label("app_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -610,23 +696,19 @@ export const AppsGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AppsGetResponse {
-  SpectrumConfigAppConfig_object___id__created_on__dns__12_more__: unknown;
-  SpectrumConfigPaygoAppConfig_object___id__created_on__dns__3_more__: unknown;
+  SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: unknown;
+  SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: unknown;
 }
 export const AppsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SpectrumConfigAppConfig_object___id__created_on__dns__12_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "SpectrumConfigAppConfig object { id, created_on, dns, 12 more }",
-        ),
+    SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: S.Unknown.pipe(
+      T.Body("SpectrumConfigAppConfig object { id, created_on, dns, 12 more }"),
+    ),
+    SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: S.Unknown.pipe(
+      T.Body(
+        "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }",
       ),
-    SpectrumConfigPaygoAppConfig_object___id__created_on__dns__3_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }",
-        ),
-      ),
+    ),
   }),
 ).annotate({
   identifier: "AppsGetResponse",
@@ -643,19 +725,24 @@ export type AppsListRequestOrder =
 export const AppsListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface AppsListRequest {
-  zone_id: string;
+  /** Zone identifier. */
+  zoneId: string;
+  /** Sets the direction by which results are ordered. */
   direction?: AppsListRequestDirection;
+  /** Application field by which results are ordered. */
   order?: AppsListRequestOrder;
+  /** Page number of paginated results. This parameter is required in order to use other pagination parameters. If included in the query, `result_info` will be present in the response. */
   page?: number;
-  per_page?: number;
+  /** Sets the maximum number of results per page. */
+  perPage?: number;
 }
 export const AppsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     direction: S.optional(AppsListRequestDirection.pipe(T.Query())),
     order: S.optional(AppsListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({ method: "GET", uri: "/zones/{zone_id}/spectrum/apps", code: 200 }),
   ),
@@ -664,15 +751,15 @@ export const AppsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsListRequest>;
 
 export interface AppsListResultItem {
-  array_of_object___id__created_on__dns__12_more__: unknown;
-  array_of_object___id__created_on__dns__3_more__: unknown;
+  arrayOfObjectIdCreatedOnDns12More__: unknown;
+  arrayOfObjectIdCreatedOnDns3More__: unknown;
 }
 export const AppsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    array_of_object___id__created_on__dns__12_more__: S.Unknown.pipe(
+    arrayOfObjectIdCreatedOnDns12More__: S.Unknown.pipe(
       T.Body("array of object { id, created_on, dns, 12 more }"),
     ),
-    array_of_object___id__created_on__dns__3_more__: S.Unknown.pipe(
+    arrayOfObjectIdCreatedOnDns3More__: S.Unknown.pipe(
       T.Body("array of object { id, created_on, dns, 3 more }"),
     ),
   }),
@@ -686,6 +773,7 @@ export const AppsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AppsListResultList>;
 
 export interface AppsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AppsListResultList;
 }
 export const AppsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -697,37 +785,35 @@ export const AppsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsListResponse>;
 
 export interface AppsUpdateRequestBody {
-  SpectrumConfigAppConfig_object___id__created_on__dns__12_more__: unknown;
-  SpectrumConfigPaygoAppConfig_object___id__created_on__dns__3_more__: unknown;
+  SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: unknown;
+  SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: unknown;
 }
 export const AppsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SpectrumConfigAppConfig_object___id__created_on__dns__12_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "SpectrumConfigAppConfig object { id, created_on, dns, 12 more }",
-        ),
+    SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: S.Unknown.pipe(
+      T.Body("SpectrumConfigAppConfig object { id, created_on, dns, 12 more }"),
+    ),
+    SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: S.Unknown.pipe(
+      T.Body(
+        "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }",
       ),
-    SpectrumConfigPaygoAppConfig_object___id__created_on__dns__3_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }",
-        ),
-      ),
+    ),
   }),
 ).annotate({
   identifier: "AppsUpdateRequestBody",
 }) as any as S.Schema<AppsUpdateRequestBody>;
 
 export interface AppsUpdateRequest {
-  zone_id: string;
-  app_id: string;
+  /** Zone identifier. */
+  zoneId: string;
+  /** App identifier. */
+  appId: string;
   body: AppsUpdateRequestBody;
 }
 export const AppsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    app_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    appId: S.String.pipe(T.Label("app_id")),
     body: AppsUpdateRequestBody,
   }).pipe(
     T.Http({
@@ -742,33 +828,30 @@ export const AppsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AppsUpdateResponse {
-  SpectrumConfigAppConfig_object___id__created_on__dns__12_more__: unknown;
-  SpectrumConfigPaygoAppConfig_object___id__created_on__dns__3_more__: unknown;
+  SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: unknown;
+  SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: unknown;
 }
 export const AppsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SpectrumConfigAppConfig_object___id__created_on__dns__12_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "SpectrumConfigAppConfig object { id, created_on, dns, 12 more }",
-        ),
+    SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: S.Unknown.pipe(
+      T.Body("SpectrumConfigAppConfig object { id, created_on, dns, 12 more }"),
+    ),
+    SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: S.Unknown.pipe(
+      T.Body(
+        "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }",
       ),
-    SpectrumConfigPaygoAppConfig_object___id__created_on__dns__3_more__:
-      S.Unknown.pipe(
-        T.Body(
-          "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }",
-        ),
-      ),
+    ),
   }),
 ).annotate({
   identifier: "AppsUpdateResponse",
 }) as any as S.Schema<AppsUpdateResponse>;
 
+export type AnalyticsAggregatesCurrentsGetError = CloudflareOpError;
 /** Retrieves analytics aggregated from the last minute of usage on Spectrum applications underneath a given zone. */
-export const AnalyticsAggregatesCurrentsGet: API.OperationMethod<
+export const analyticsAggregatesCurrentsGet: API.OperationMethod<
   AnalyticsAggregatesCurrentsGetRequest,
   AnalyticsAggregatesCurrentsGetResponse,
-  CloudflareOpError,
+  AnalyticsAggregatesCurrentsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AnalyticsAggregatesCurrentsGetRequest,
@@ -777,11 +860,12 @@ export const AnalyticsAggregatesCurrentsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AnalyticsEventsBytimesGetError = CloudflareOpError;
 /** Retrieves a list of aggregate metrics grouped by time interval. */
-export const AnalyticsEventsBytimesGet: API.OperationMethod<
+export const analyticsEventsBytimesGet: API.OperationMethod<
   AnalyticsEventsBytimesGetRequest,
   AnalyticsEventsBytimesGetResponse,
-  CloudflareOpError,
+  AnalyticsEventsBytimesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AnalyticsEventsBytimesGetRequest,
@@ -790,11 +874,12 @@ export const AnalyticsEventsBytimesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AnalyticsEventsSummariesGetError = CloudflareOpError;
 /** Retrieves a list of summarised aggregate metrics over a given time period. */
-export const AnalyticsEventsSummariesGet: API.OperationMethod<
+export const analyticsEventsSummariesGet: API.OperationMethod<
   AnalyticsEventsSummariesGetRequest,
   AnalyticsEventsSummariesGetResponse,
-  CloudflareOpError,
+  AnalyticsEventsSummariesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AnalyticsEventsSummariesGetRequest,
@@ -803,11 +888,12 @@ export const AnalyticsEventsSummariesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AppsCreateError = CloudflareOpError;
 /** Creates a new Spectrum application from a configuration using a name for the origin. */
-export const AppsCreate: API.OperationMethod<
+export const appsCreate: API.OperationMethod<
   AppsCreateRequest,
   AppsCreateResponse,
-  CloudflareOpError,
+  AppsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsCreateRequest,
@@ -816,11 +902,12 @@ export const AppsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AppsDeleteError = CloudflareOpError;
 /** Deletes a previously existing application. */
-export const AppsDelete: API.OperationMethod<
+export const appsDelete: API.OperationMethod<
   AppsDeleteRequest,
   AppsDeleteResponse,
-  CloudflareOpError,
+  AppsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsDeleteRequest,
@@ -829,11 +916,12 @@ export const AppsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AppsGetError = CloudflareOpError;
 /** Gets the application configuration of a specific application inside a zone. */
-export const AppsGet: API.OperationMethod<
+export const appsGet: API.OperationMethod<
   AppsGetRequest,
   AppsGetResponse,
-  CloudflareOpError,
+  AppsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsGetRequest,
@@ -842,11 +930,12 @@ export const AppsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AppsListError = CloudflareOpError;
 /** Retrieves a list of currently existing Spectrum applications inside a zone. */
-export const AppsList: API.OperationMethod<
+export const appsList: API.OperationMethod<
   AppsListRequest,
   AppsListResponse,
-  CloudflareOpError,
+  AppsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsListRequest,
@@ -855,11 +944,12 @@ export const AppsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AppsUpdateError = CloudflareOpError;
 /** Updates a previously existing application's configuration that uses a name for the origin. */
-export const AppsUpdate: API.OperationMethod<
+export const appsUpdate: API.OperationMethod<
   AppsUpdateRequest,
   AppsUpdateResponse,
-  CloudflareOpError,
+  AppsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsUpdateRequest,

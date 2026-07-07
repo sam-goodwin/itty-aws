@@ -10,31 +10,29 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface ConfigurationCreateRequestCredentialsKeysItem {
-  APIShieldCredentialsJWTKeyRSA_object___alg__e__kid__2_more__: unknown;
-  APIShieldCredentialsJWTKeyEcEs256_object___alg__crv__kid__3_more__: unknown;
-  APIShieldCredentialsJWTKeyEcEs384_object___alg__crv__kid__3_more__: unknown;
+  /** JSON representation of an RSA key. */
+  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
+  /** JSON representation of an ES256 key */
+  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
+  /** JSON representation of an ES384 key */
+  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
 }
 export const ConfigurationCreateRequestCredentialsKeysItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      APIShieldCredentialsJWTKeyRSA_object___alg__e__kid__2_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }",
-          ),
+      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
+        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
+      ),
+      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
         ),
-      APIShieldCredentialsJWTKeyEcEs256_object___alg__crv__kid__3_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
-          ),
+      ),
+      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
         ),
-      APIShieldCredentialsJWTKeyEcEs384_object___alg__crv__kid__3_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
-          ),
-        ),
+      ),
     }),
   ).annotate({
     identifier: "ConfigurationCreateRequestCredentialsKeysItem",
@@ -68,21 +66,24 @@ export type ConfigurationCreateRequestTokenType = "JWT" | (string & {});
 export const ConfigurationCreateRequestTokenType = /*@__PURE__*/ S.String;
 
 export interface ConfigurationCreateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
   credentials: ConfigurationCreateRequestCredentials;
   description: string;
   title: string;
-  token_sources: ConfigurationCreateRequestTokenSourcesList;
-  token_type: ConfigurationCreateRequestTokenType;
+  tokenSources: ConfigurationCreateRequestTokenSourcesList;
+  tokenType: ConfigurationCreateRequestTokenType;
 }
 export const ConfigurationCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     credentials: ConfigurationCreateRequestCredentials,
     description: S.String,
     title: S.String,
-    token_sources: ConfigurationCreateRequestTokenSourcesList,
-    token_type: ConfigurationCreateRequestTokenType,
+    tokenSources: ConfigurationCreateRequestTokenSourcesList.pipe(
+      T.Body("token_sources"),
+    ),
+    tokenType: ConfigurationCreateRequestTokenType.pipe(T.Body("token_type")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -94,43 +95,116 @@ export const ConfigurationCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationCreateRequest",
 }) as any as S.Schema<ConfigurationCreateRequest>;
 
+export interface ConfigurationCreateResponseCredentialsKeysItem {
+  /** JSON representation of an RSA key. */
+  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
+  /** JSON representation of an ES256 key */
+  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
+  /** JSON representation of an ES384 key */
+  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
+}
+export const ConfigurationCreateResponseCredentialsKeysItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
+        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
+      ),
+      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
+        ),
+      ),
+      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "ConfigurationCreateResponseCredentialsKeysItem",
+  }) as any as S.Schema<ConfigurationCreateResponseCredentialsKeysItem>;
+
+export type ConfigurationCreateResponseCredentialsKeysList =
+  ConfigurationCreateResponseCredentialsKeysItem[];
+export const ConfigurationCreateResponseCredentialsKeysList =
+  /*@__PURE__*/ S.Array(
+    ConfigurationCreateResponseCredentialsKeysItem,
+  ) as any as S.Schema<ConfigurationCreateResponseCredentialsKeysList>;
+
+export interface ConfigurationCreateResponseCredentials {
+  keys: ConfigurationCreateResponseCredentialsKeysList;
+}
+export const ConfigurationCreateResponseCredentials = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      keys: ConfigurationCreateResponseCredentialsKeysList,
+    }),
+).annotate({
+  identifier: "ConfigurationCreateResponseCredentials",
+}) as any as S.Schema<ConfigurationCreateResponseCredentials>;
+
+export type ConfigurationCreateResponseTokenSourcesList = string[];
+export const ConfigurationCreateResponseTokenSourcesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConfigurationCreateResponseTokenSourcesList>;
+
+export type ConfigurationCreateResponseTokenType = "JWT" | (string & {});
+export const ConfigurationCreateResponseTokenType = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ConfigurationCreateResponse {
-  result?: unknown;
+  /** UUID. */
+  id: string;
+  createdAt: string;
+  credentials: ConfigurationCreateResponseCredentials;
+  description: string;
+  lastUpdated: string;
+  title: string;
+  tokenSources: ConfigurationCreateResponseTokenSourcesList;
+  tokenType: ConfigurationCreateResponseTokenType;
 }
 export const ConfigurationCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    credentials: ConfigurationCreateResponseCredentials,
+    description: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    title: S.String,
+    tokenSources: ConfigurationCreateResponseTokenSourcesList.pipe(
+      T.Body("token_sources"),
+    ),
+    tokenType: ConfigurationCreateResponseTokenType.pipe(T.Body("token_type")),
   }),
 ).annotate({
   identifier: "ConfigurationCreateResponse",
 }) as any as S.Schema<ConfigurationCreateResponse>;
 
 export interface ConfigurationCredentialsUpdateRequestKeysItem {
-  APIShieldCredentialsJWTKeyRSA_object___alg__e__kid__2_more__: unknown;
-  APIShieldCredentialsJWTKeyEcEs256_object___alg__crv__kid__3_more__: unknown;
-  APIShieldCredentialsJWTKeyEcEs384_object___alg__crv__kid__3_more__: unknown;
+  /** JSON representation of an RSA key. */
+  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
+  /** JSON representation of an ES256 key */
+  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
+  /** JSON representation of an ES384 key */
+  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
 }
 export const ConfigurationCredentialsUpdateRequestKeysItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      APIShieldCredentialsJWTKeyRSA_object___alg__e__kid__2_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }",
-          ),
+      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
+        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
+      ),
+      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
         ),
-      APIShieldCredentialsJWTKeyEcEs256_object___alg__crv__kid__3_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
-          ),
+      ),
+      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
         ),
-      APIShieldCredentialsJWTKeyEcEs384_object___alg__crv__kid__3_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
-          ),
-        ),
+      ),
     }),
   ).annotate({
     identifier: "ConfigurationCredentialsUpdateRequestKeysItem",
@@ -144,15 +218,17 @@ export const ConfigurationCredentialsUpdateRequestKeysList =
   ) as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysList>;
 
 export interface ConfigurationCredentialsUpdateRequest {
-  zone_id: string;
-  config_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** UUID. */
+  configId: string;
   keys: ConfigurationCredentialsUpdateRequestKeysList;
 }
 export const ConfigurationCredentialsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      zone_id: S.String.pipe(T.Label()),
-      config_id: S.String.pipe(T.Label()),
+      zoneId: S.String.pipe(T.Label("zone_id")),
+      configId: S.String.pipe(T.Label("config_id")),
       keys: ConfigurationCredentialsUpdateRequestKeysList,
     }).pipe(
       T.Http({
@@ -166,31 +242,29 @@ export const ConfigurationCredentialsUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigurationCredentialsUpdateRequest>;
 
 export interface ConfigurationCredentialsUpdateResponseKeysItem {
-  APIShieldCredentialsJWTKeyRSA_object___alg__e__kid__2_more__: unknown;
-  APIShieldCredentialsJWTKeyEcEs256_object___alg__crv__kid__3_more__: unknown;
-  APIShieldCredentialsJWTKeyEcEs384_object___alg__crv__kid__3_more__: unknown;
+  /** JSON representation of an RSA key. */
+  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
+  /** JSON representation of an ES256 key */
+  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
+  /** JSON representation of an ES384 key */
+  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
 }
 export const ConfigurationCredentialsUpdateResponseKeysItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      APIShieldCredentialsJWTKeyRSA_object___alg__e__kid__2_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }",
-          ),
+      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
+        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
+      ),
+      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
         ),
-      APIShieldCredentialsJWTKeyEcEs256_object___alg__crv__kid__3_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
-          ),
+      ),
+      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
         ),
-      APIShieldCredentialsJWTKeyEcEs384_object___alg__crv__kid__3_more__:
-        S.Unknown.pipe(
-          T.Body(
-            "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
-          ),
-        ),
+      ),
     }),
   ).annotate({
     identifier: "ConfigurationCredentialsUpdateResponseKeysItem",
@@ -217,13 +291,15 @@ export const ConfigurationCredentialsUpdateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigurationCredentialsUpdateResponse>;
 
 export interface ConfigurationDeleteRequest {
-  zone_id: string;
-  config_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** UUID. */
+  configId: string;
 }
 export const ConfigurationDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    config_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    configId: S.String.pipe(T.Label("config_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -237,6 +313,7 @@ export const ConfigurationDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ConfigurationDeleteResponse {
+  /** UUID. */
   id?: string;
 }
 export const ConfigurationDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -253,19 +330,23 @@ export const ConfigurationEditRequestTokenSourcesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ConfigurationEditRequestTokenSourcesList>;
 
 export interface ConfigurationEditRequest {
-  zone_id: string;
-  config_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** UUID. */
+  configId: string;
   description?: string;
   title?: string;
-  token_sources?: ConfigurationEditRequestTokenSourcesList;
+  tokenSources?: ConfigurationEditRequestTokenSourcesList;
 }
 export const ConfigurationEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    config_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    configId: S.String.pipe(T.Label("config_id")),
     description: S.optional(S.String),
     title: S.optional(S.String),
-    token_sources: S.optional(ConfigurationEditRequestTokenSourcesList),
+    tokenSources: S.optional(
+      ConfigurationEditRequestTokenSourcesList.pipe(T.Body("token_sources")),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -284,30 +365,35 @@ export const ConfigurationEditResponseTokenSourcesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ConfigurationEditResponse {
+  /** UUID. */
   id?: string;
   description?: string;
   title?: string;
-  token_sources?: ConfigurationEditResponseTokenSourcesList;
+  tokenSources?: ConfigurationEditResponseTokenSourcesList;
 }
 export const ConfigurationEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     description: S.optional(S.String),
     title: S.optional(S.String),
-    token_sources: S.optional(ConfigurationEditResponseTokenSourcesList),
+    tokenSources: S.optional(
+      ConfigurationEditResponseTokenSourcesList.pipe(T.Body("token_sources")),
+    ),
   }),
 ).annotate({
   identifier: "ConfigurationEditResponse",
 }) as any as S.Schema<ConfigurationEditResponse>;
 
 export interface ConfigurationGetRequest {
-  zone_id: string;
-  config_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** UUID. */
+  configId: string;
 }
 export const ConfigurationGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    config_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    configId: S.String.pipe(T.Label("config_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -319,27 +405,103 @@ export const ConfigurationGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationGetRequest",
 }) as any as S.Schema<ConfigurationGetRequest>;
 
+export interface ConfigurationGetResponseCredentialsKeysItem {
+  /** JSON representation of an RSA key. */
+  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
+  /** JSON representation of an ES256 key */
+  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
+  /** JSON representation of an ES384 key */
+  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
+}
+export const ConfigurationGetResponseCredentialsKeysItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
+        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
+      ),
+      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
+        ),
+      ),
+      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "ConfigurationGetResponseCredentialsKeysItem",
+  }) as any as S.Schema<ConfigurationGetResponseCredentialsKeysItem>;
+
+export type ConfigurationGetResponseCredentialsKeysList =
+  ConfigurationGetResponseCredentialsKeysItem[];
+export const ConfigurationGetResponseCredentialsKeysList =
+  /*@__PURE__*/ S.Array(
+    ConfigurationGetResponseCredentialsKeysItem,
+  ) as any as S.Schema<ConfigurationGetResponseCredentialsKeysList>;
+
+export interface ConfigurationGetResponseCredentials {
+  keys: ConfigurationGetResponseCredentialsKeysList;
+}
+export const ConfigurationGetResponseCredentials = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keys: ConfigurationGetResponseCredentialsKeysList,
+  }),
+).annotate({
+  identifier: "ConfigurationGetResponseCredentials",
+}) as any as S.Schema<ConfigurationGetResponseCredentials>;
+
+export type ConfigurationGetResponseTokenSourcesList = string[];
+export const ConfigurationGetResponseTokenSourcesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ConfigurationGetResponseTokenSourcesList>;
+
+export type ConfigurationGetResponseTokenType = "JWT" | (string & {});
+export const ConfigurationGetResponseTokenType = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ConfigurationGetResponse {
-  result?: unknown;
+  /** UUID. */
+  id: string;
+  createdAt: string;
+  credentials: ConfigurationGetResponseCredentials;
+  description: string;
+  lastUpdated: string;
+  title: string;
+  tokenSources: ConfigurationGetResponseTokenSourcesList;
+  tokenType: ConfigurationGetResponseTokenType;
 }
 export const ConfigurationGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    credentials: ConfigurationGetResponseCredentials,
+    description: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    title: S.String,
+    tokenSources: ConfigurationGetResponseTokenSourcesList.pipe(
+      T.Body("token_sources"),
+    ),
+    tokenType: ConfigurationGetResponseTokenType.pipe(T.Body("token_type")),
   }),
 ).annotate({
   identifier: "ConfigurationGetResponse",
 }) as any as S.Schema<ConfigurationGetResponse>;
 
 export interface ConfigurationListRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
+  /** Maximum number of results per page. */
+  perPage?: number;
 }
 export const ConfigurationListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -351,12 +513,98 @@ export const ConfigurationListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationListRequest",
 }) as any as S.Schema<ConfigurationListRequest>;
 
-export type ConfigurationListResultList = unknown[];
+export interface ConfigurationListResultItemCredentialsKeysItem {
+  /** JSON representation of an RSA key. */
+  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
+  /** JSON representation of an ES256 key */
+  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
+  /** JSON representation of an ES384 key */
+  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
+}
+export const ConfigurationListResultItemCredentialsKeysItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
+        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
+      ),
+      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
+        ),
+      ),
+      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "ConfigurationListResultItemCredentialsKeysItem",
+  }) as any as S.Schema<ConfigurationListResultItemCredentialsKeysItem>;
+
+export type ConfigurationListResultItemCredentialsKeysList =
+  ConfigurationListResultItemCredentialsKeysItem[];
+export const ConfigurationListResultItemCredentialsKeysList =
+  /*@__PURE__*/ S.Array(
+    ConfigurationListResultItemCredentialsKeysItem,
+  ) as any as S.Schema<ConfigurationListResultItemCredentialsKeysList>;
+
+export interface ConfigurationListResultItemCredentials {
+  keys: ConfigurationListResultItemCredentialsKeysList;
+}
+export const ConfigurationListResultItemCredentials = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      keys: ConfigurationListResultItemCredentialsKeysList,
+    }),
+).annotate({
+  identifier: "ConfigurationListResultItemCredentials",
+}) as any as S.Schema<ConfigurationListResultItemCredentials>;
+
+export type ConfigurationListResultItemTokenSourcesList = string[];
+export const ConfigurationListResultItemTokenSourcesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConfigurationListResultItemTokenSourcesList>;
+
+export type ConfigurationListResultItemTokenType = "JWT" | (string & {});
+export const ConfigurationListResultItemTokenType = /*@__PURE__*/ S.String;
+
+export interface ConfigurationListResultItem {
+  /** UUID. */
+  id: string;
+  createdAt: string;
+  credentials: ConfigurationListResultItemCredentials;
+  description: string;
+  lastUpdated: string;
+  title: string;
+  tokenSources: ConfigurationListResultItemTokenSourcesList;
+  tokenType: ConfigurationListResultItemTokenType;
+}
+export const ConfigurationListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    credentials: ConfigurationListResultItemCredentials,
+    description: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    title: S.String,
+    tokenSources: ConfigurationListResultItemTokenSourcesList.pipe(
+      T.Body("token_sources"),
+    ),
+    tokenType: ConfigurationListResultItemTokenType.pipe(T.Body("token_type")),
+  }),
+).annotate({
+  identifier: "ConfigurationListResultItem",
+}) as any as S.Schema<ConfigurationListResultItem>;
+
+export type ConfigurationListResultList = ConfigurationListResultItem[];
 export const ConfigurationListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  ConfigurationListResultItem,
 ) as any as S.Schema<ConfigurationListResultList>;
 
 export interface ConfigurationListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ConfigurationListResultList;
 }
 export const ConfigurationListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -381,13 +629,16 @@ export const RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList =
   ) as any as S.Schema<RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList>;
 
 export interface RulesBulkCreateRequestBodyItemSelectorExcludeItem {
-  operation_ids?: RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList;
+  /** Excluded operation IDs. */
+  operationIds?: RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList;
 }
 export const RulesBulkCreateRequestBodyItemSelectorExcludeItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      operation_ids: S.optional(
-        RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList,
+      operationIds: S.optional(
+        RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList.pipe(
+          T.Body("operation_ids"),
+        ),
       ),
     }),
   ).annotate({
@@ -409,6 +660,7 @@ export const RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList =
   ) as any as S.Schema<RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList>;
 
 export interface RulesBulkCreateRequestBodyItemSelectorIncludeItem {
+  /** Included hostnames. */
   host?: RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList;
 }
 export const RulesBulkCreateRequestBodyItemSelectorIncludeItem =
@@ -430,7 +682,9 @@ export const RulesBulkCreateRequestBodyItemSelectorIncludeList =
   ) as any as S.Schema<RulesBulkCreateRequestBodyItemSelectorIncludeList>;
 
 export interface RulesBulkCreateRequestBodyItemSelector {
+  /** Ignore operations that were otherwise included by `include`. */
   exclude?: RulesBulkCreateRequestBodyItemSelectorExcludeList;
+  /** Select all matching operations. */
   include?: RulesBulkCreateRequestBodyItemSelectorIncludeList;
 }
 export const RulesBulkCreateRequestBodyItemSelector = /*@__PURE__*/ S.suspend(
@@ -444,11 +698,17 @@ export const RulesBulkCreateRequestBodyItemSelector = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesBulkCreateRequestBodyItemSelector>;
 
 export interface RulesBulkCreateRequestBodyItem {
+  /** Action to take on requests that match operations included in `selector` and fail `expression`. */
   action: RulesBulkCreateRequestBodyItemAction;
+  /** A human-readable description that gives more details than `title`. */
   description: string;
+  /** Toggle rule on or off. */
   enabled: boolean;
+  /** Rule expression. Requests that fail to match this expression will be subject to `action`. */
   expression: string;
+  /** Select operations covered by this rule. */
   selector: RulesBulkCreateRequestBodyItemSelector;
+  /** A human-readable name for the rule. */
   title: string;
 }
 export const RulesBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
@@ -470,12 +730,13 @@ export const RulesBulkCreateRequestBodyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RulesBulkCreateRequestBodyList>;
 
 export interface RulesBulkCreateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
   body: RulesBulkCreateRequestBodyList;
 }
 export const RulesBulkCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     body: RulesBulkCreateRequestBodyList,
   }).pipe(
     T.Http({
@@ -488,12 +749,122 @@ export const RulesBulkCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesBulkCreateRequest",
 }) as any as S.Schema<RulesBulkCreateRequest>;
 
-export type RulesBulkCreateResultList = unknown[];
+export type RulesBulkCreateResultItemAction = "log" | "block" | (string & {});
+export const RulesBulkCreateResultItemAction = /*@__PURE__*/ S.String;
+
+export type RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList =
+  string[];
+export const RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList>;
+
+export interface RulesBulkCreateResultItemSelectorExcludeItem {
+  /** Excluded operation IDs. */
+  operationIds?: RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList;
+}
+export const RulesBulkCreateResultItemSelectorExcludeItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operationIds: S.optional(
+        RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList.pipe(
+          T.Body("operation_ids"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesBulkCreateResultItemSelectorExcludeItem",
+  }) as any as S.Schema<RulesBulkCreateResultItemSelectorExcludeItem>;
+
+export type RulesBulkCreateResultItemSelectorExcludeList =
+  RulesBulkCreateResultItemSelectorExcludeItem[];
+export const RulesBulkCreateResultItemSelectorExcludeList =
+  /*@__PURE__*/ S.Array(
+    RulesBulkCreateResultItemSelectorExcludeItem,
+  ) as any as S.Schema<RulesBulkCreateResultItemSelectorExcludeList>;
+
+export type RulesBulkCreateResultItemSelectorIncludeItemHostList = string[];
+export const RulesBulkCreateResultItemSelectorIncludeItemHostList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RulesBulkCreateResultItemSelectorIncludeItemHostList>;
+
+export interface RulesBulkCreateResultItemSelectorIncludeItem {
+  /** Included hostnames. */
+  host?: RulesBulkCreateResultItemSelectorIncludeItemHostList;
+}
+export const RulesBulkCreateResultItemSelectorIncludeItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      host: S.optional(RulesBulkCreateResultItemSelectorIncludeItemHostList),
+    }),
+  ).annotate({
+    identifier: "RulesBulkCreateResultItemSelectorIncludeItem",
+  }) as any as S.Schema<RulesBulkCreateResultItemSelectorIncludeItem>;
+
+export type RulesBulkCreateResultItemSelectorIncludeList =
+  RulesBulkCreateResultItemSelectorIncludeItem[];
+export const RulesBulkCreateResultItemSelectorIncludeList =
+  /*@__PURE__*/ S.Array(
+    RulesBulkCreateResultItemSelectorIncludeItem,
+  ) as any as S.Schema<RulesBulkCreateResultItemSelectorIncludeList>;
+
+export interface RulesBulkCreateResultItemSelector {
+  /** Ignore operations that were otherwise included by `include`. */
+  exclude?: RulesBulkCreateResultItemSelectorExcludeList;
+  /** Select all matching operations. */
+  include?: RulesBulkCreateResultItemSelectorIncludeList;
+}
+export const RulesBulkCreateResultItemSelector = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exclude: S.optional(RulesBulkCreateResultItemSelectorExcludeList),
+    include: S.optional(RulesBulkCreateResultItemSelectorIncludeList),
+  }),
+).annotate({
+  identifier: "RulesBulkCreateResultItemSelector",
+}) as any as S.Schema<RulesBulkCreateResultItemSelector>;
+
+export interface RulesBulkCreateResultItem {
+  /** Action to take on requests that match operations included in `selector` and fail `expression`. */
+  action: RulesBulkCreateResultItemAction;
+  /** A human-readable description that gives more details than `title`. */
+  description: string;
+  /** Toggle rule on or off. */
+  enabled: boolean;
+  /** Rule expression. Requests that fail to match this expression will be subject to `action`. */
+  expression: string;
+  /** Select operations covered by this rule. */
+  selector: RulesBulkCreateResultItemSelector;
+  /** A human-readable name for the rule. */
+  title: string;
+  /** UUID. */
+  id?: string;
+  createdAt?: string;
+  lastUpdated?: string;
+}
+export const RulesBulkCreateResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: RulesBulkCreateResultItemAction,
+    description: S.String,
+    enabled: S.Boolean,
+    expression: S.String,
+    selector: RulesBulkCreateResultItemSelector,
+    title: S.String,
+    id: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+  }),
+).annotate({
+  identifier: "RulesBulkCreateResultItem",
+}) as any as S.Schema<RulesBulkCreateResultItem>;
+
+export type RulesBulkCreateResultList = RulesBulkCreateResultItem[];
 export const RulesBulkCreateResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  RulesBulkCreateResultItem,
 ) as any as S.Schema<RulesBulkCreateResultList>;
 
 export interface RulesBulkCreateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesBulkCreateResultList;
 }
 export const RulesBulkCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -511,20 +882,22 @@ export type RulesBulkEditRequestBodyItemAction =
 export const RulesBulkEditRequestBodyItemAction = /*@__PURE__*/ S.String;
 
 export interface RulesBulkEditRequestBodyItemPosition {
-  APIShieldIndex_object___index__: unknown;
-  APIShieldBefore_object___before__: unknown;
-  APIShieldAfter_object___after__: unknown;
+  APIShieldIndexObjectIndex__: unknown;
+  /** Move rule to after rule with ID. */
+  APIShieldBeforeObjectBefore__: unknown;
+  /** Move rule to before rule with ID. */
+  APIShieldAfterObjectAfter__: unknown;
 }
 export const RulesBulkEditRequestBodyItemPosition = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      APIShieldIndex_object___index__: S.Unknown.pipe(
+      APIShieldIndexObjectIndex__: S.Unknown.pipe(
         T.Body("APIShieldIndex object { index }"),
       ),
-      APIShieldBefore_object___before__: S.Unknown.pipe(
+      APIShieldBeforeObjectBefore__: S.Unknown.pipe(
         T.Body("APIShieldBefore object { before }"),
       ),
-      APIShieldAfter_object___after__: S.Unknown.pipe(
+      APIShieldAfterObjectAfter__: S.Unknown.pipe(
         T.Body("APIShieldAfter object { after }"),
       ),
     }),
@@ -540,13 +913,16 @@ export const RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList =
   ) as any as S.Schema<RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList>;
 
 export interface RulesBulkEditRequestBodyItemSelectorExcludeItem {
-  operation_ids?: RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList;
+  /** Excluded operation IDs. */
+  operationIds?: RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList;
 }
 export const RulesBulkEditRequestBodyItemSelectorExcludeItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      operation_ids: S.optional(
-        RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList,
+      operationIds: S.optional(
+        RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList.pipe(
+          T.Body("operation_ids"),
+        ),
       ),
     }),
   ).annotate({
@@ -567,6 +943,7 @@ export const RulesBulkEditRequestBodyItemSelectorIncludeItemHostList =
   ) as any as S.Schema<RulesBulkEditRequestBodyItemSelectorIncludeItemHostList>;
 
 export interface RulesBulkEditRequestBodyItemSelectorIncludeItem {
+  /** Included hostnames. */
   host?: RulesBulkEditRequestBodyItemSelectorIncludeItemHostList;
 }
 export const RulesBulkEditRequestBodyItemSelectorIncludeItem =
@@ -586,7 +963,9 @@ export const RulesBulkEditRequestBodyItemSelectorIncludeList =
   ) as any as S.Schema<RulesBulkEditRequestBodyItemSelectorIncludeList>;
 
 export interface RulesBulkEditRequestBodyItemSelector {
+  /** Ignore operations that were otherwise included by `include`. */
   exclude?: RulesBulkEditRequestBodyItemSelectorExcludeList;
+  /** Select all matching operations. */
   include?: RulesBulkEditRequestBodyItemSelectorIncludeList;
 }
 export const RulesBulkEditRequestBodyItemSelector = /*@__PURE__*/ S.suspend(
@@ -600,13 +979,21 @@ export const RulesBulkEditRequestBodyItemSelector = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesBulkEditRequestBodyItemSelector>;
 
 export interface RulesBulkEditRequestBodyItem {
+  /** Rule ID this patch applies to */
   id: string;
+  /** Action to take on requests that match operations included in `selector` and fail `expression`. */
   action?: RulesBulkEditRequestBodyItemAction;
+  /** A human-readable description that gives more details than `title`. */
   description?: string;
+  /** Toggle rule on or off. */
   enabled?: boolean;
+  /** Rule expression. Requests that fail to match this expression will be subject to `action`. */
   expression?: string;
+  /** Update rule order among zone rules. */
   position?: RulesBulkEditRequestBodyItemPosition;
+  /** Select operations covered by this rule. */
   selector?: RulesBulkEditRequestBodyItemSelector;
+  /** A human-readable name for the rule. */
   title?: string;
 }
 export const RulesBulkEditRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
@@ -630,12 +1017,13 @@ export const RulesBulkEditRequestBodyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RulesBulkEditRequestBodyList>;
 
 export interface RulesBulkEditRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
   body: RulesBulkEditRequestBodyList;
 }
 export const RulesBulkEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     body: RulesBulkEditRequestBodyList,
   }).pipe(
     T.Http({
@@ -648,12 +1036,120 @@ export const RulesBulkEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesBulkEditRequest",
 }) as any as S.Schema<RulesBulkEditRequest>;
 
-export type RulesBulkEditResultList = unknown[];
+export type RulesBulkEditResultItemAction = "log" | "block" | (string & {});
+export const RulesBulkEditResultItemAction = /*@__PURE__*/ S.String;
+
+export type RulesBulkEditResultItemSelectorExcludeItemOperationIdsList =
+  string[];
+export const RulesBulkEditResultItemSelectorExcludeItemOperationIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RulesBulkEditResultItemSelectorExcludeItemOperationIdsList>;
+
+export interface RulesBulkEditResultItemSelectorExcludeItem {
+  /** Excluded operation IDs. */
+  operationIds?: RulesBulkEditResultItemSelectorExcludeItemOperationIdsList;
+}
+export const RulesBulkEditResultItemSelectorExcludeItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operationIds: S.optional(
+        RulesBulkEditResultItemSelectorExcludeItemOperationIdsList.pipe(
+          T.Body("operation_ids"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesBulkEditResultItemSelectorExcludeItem",
+  }) as any as S.Schema<RulesBulkEditResultItemSelectorExcludeItem>;
+
+export type RulesBulkEditResultItemSelectorExcludeList =
+  RulesBulkEditResultItemSelectorExcludeItem[];
+export const RulesBulkEditResultItemSelectorExcludeList = /*@__PURE__*/ S.Array(
+  RulesBulkEditResultItemSelectorExcludeItem,
+) as any as S.Schema<RulesBulkEditResultItemSelectorExcludeList>;
+
+export type RulesBulkEditResultItemSelectorIncludeItemHostList = string[];
+export const RulesBulkEditResultItemSelectorIncludeItemHostList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RulesBulkEditResultItemSelectorIncludeItemHostList>;
+
+export interface RulesBulkEditResultItemSelectorIncludeItem {
+  /** Included hostnames. */
+  host?: RulesBulkEditResultItemSelectorIncludeItemHostList;
+}
+export const RulesBulkEditResultItemSelectorIncludeItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      host: S.optional(RulesBulkEditResultItemSelectorIncludeItemHostList),
+    }),
+  ).annotate({
+    identifier: "RulesBulkEditResultItemSelectorIncludeItem",
+  }) as any as S.Schema<RulesBulkEditResultItemSelectorIncludeItem>;
+
+export type RulesBulkEditResultItemSelectorIncludeList =
+  RulesBulkEditResultItemSelectorIncludeItem[];
+export const RulesBulkEditResultItemSelectorIncludeList = /*@__PURE__*/ S.Array(
+  RulesBulkEditResultItemSelectorIncludeItem,
+) as any as S.Schema<RulesBulkEditResultItemSelectorIncludeList>;
+
+export interface RulesBulkEditResultItemSelector {
+  /** Ignore operations that were otherwise included by `include`. */
+  exclude?: RulesBulkEditResultItemSelectorExcludeList;
+  /** Select all matching operations. */
+  include?: RulesBulkEditResultItemSelectorIncludeList;
+}
+export const RulesBulkEditResultItemSelector = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exclude: S.optional(RulesBulkEditResultItemSelectorExcludeList),
+    include: S.optional(RulesBulkEditResultItemSelectorIncludeList),
+  }),
+).annotate({
+  identifier: "RulesBulkEditResultItemSelector",
+}) as any as S.Schema<RulesBulkEditResultItemSelector>;
+
+export interface RulesBulkEditResultItem {
+  /** Action to take on requests that match operations included in `selector` and fail `expression`. */
+  action: RulesBulkEditResultItemAction;
+  /** A human-readable description that gives more details than `title`. */
+  description: string;
+  /** Toggle rule on or off. */
+  enabled: boolean;
+  /** Rule expression. Requests that fail to match this expression will be subject to `action`. */
+  expression: string;
+  /** Select operations covered by this rule. */
+  selector: RulesBulkEditResultItemSelector;
+  /** A human-readable name for the rule. */
+  title: string;
+  /** UUID. */
+  id?: string;
+  createdAt?: string;
+  lastUpdated?: string;
+}
+export const RulesBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: RulesBulkEditResultItemAction,
+    description: S.String,
+    enabled: S.Boolean,
+    expression: S.String,
+    selector: RulesBulkEditResultItemSelector,
+    title: S.String,
+    id: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+  }),
+).annotate({
+  identifier: "RulesBulkEditResultItem",
+}) as any as S.Schema<RulesBulkEditResultItem>;
+
+export type RulesBulkEditResultList = RulesBulkEditResultItem[];
 export const RulesBulkEditResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  RulesBulkEditResultItem,
 ) as any as S.Schema<RulesBulkEditResultList>;
 
 export interface RulesBulkEditResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesBulkEditResultList;
 }
 export const RulesBulkEditResponse = /*@__PURE__*/ S.suspend(() =>
@@ -674,13 +1170,16 @@ export const RulesCreateRequestSelectorExcludeItemOperationIdsList =
   ) as any as S.Schema<RulesCreateRequestSelectorExcludeItemOperationIdsList>;
 
 export interface RulesCreateRequestSelectorExcludeItem {
-  operation_ids?: RulesCreateRequestSelectorExcludeItemOperationIdsList;
+  /** Excluded operation IDs. */
+  operationIds?: RulesCreateRequestSelectorExcludeItemOperationIdsList;
 }
 export const RulesCreateRequestSelectorExcludeItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      operation_ids: S.optional(
-        RulesCreateRequestSelectorExcludeItemOperationIdsList,
+      operationIds: S.optional(
+        RulesCreateRequestSelectorExcludeItemOperationIdsList.pipe(
+          T.Body("operation_ids"),
+        ),
       ),
     }),
 ).annotate({
@@ -700,6 +1199,7 @@ export const RulesCreateRequestSelectorIncludeItemHostList =
   ) as any as S.Schema<RulesCreateRequestSelectorIncludeItemHostList>;
 
 export interface RulesCreateRequestSelectorIncludeItem {
+  /** Included hostnames. */
   host?: RulesCreateRequestSelectorIncludeItemHostList;
 }
 export const RulesCreateRequestSelectorIncludeItem = /*@__PURE__*/ S.suspend(
@@ -718,7 +1218,9 @@ export const RulesCreateRequestSelectorIncludeList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RulesCreateRequestSelectorIncludeList>;
 
 export interface RulesCreateRequestSelector {
+  /** Ignore operations that were otherwise included by `include`. */
   exclude?: RulesCreateRequestSelectorExcludeList;
+  /** Select all matching operations. */
   include?: RulesCreateRequestSelectorIncludeList;
 }
 export const RulesCreateRequestSelector = /*@__PURE__*/ S.suspend(() =>
@@ -731,17 +1233,24 @@ export const RulesCreateRequestSelector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesCreateRequestSelector>;
 
 export interface RulesCreateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Action to take on requests that match operations included in `selector` and fail `expression`. */
   action: RulesCreateRequestAction;
+  /** A human-readable description that gives more details than `title`. */
   description: string;
+  /** Toggle rule on or off. */
   enabled: boolean;
+  /** Rule expression. Requests that fail to match this expression will be subject to `action`. */
   expression: string;
+  /** Select operations covered by this rule. */
   selector: RulesCreateRequestSelector;
+  /** A human-readable name for the rule. */
   title: string;
 }
 export const RulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     action: RulesCreateRequestAction,
     description: S.String,
     enabled: S.Boolean,
@@ -759,25 +1268,123 @@ export const RulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesCreateRequest",
 }) as any as S.Schema<RulesCreateRequest>;
 
+export type RulesCreateResponseAction = "log" | "block" | (string & {});
+export const RulesCreateResponseAction = /*@__PURE__*/ S.String;
+
+export type RulesCreateResponseSelectorExcludeItemOperationIdsList = string[];
+export const RulesCreateResponseSelectorExcludeItemOperationIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RulesCreateResponseSelectorExcludeItemOperationIdsList>;
+
+export interface RulesCreateResponseSelectorExcludeItem {
+  /** Excluded operation IDs. */
+  operationIds?: RulesCreateResponseSelectorExcludeItemOperationIdsList;
+}
+export const RulesCreateResponseSelectorExcludeItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      operationIds: S.optional(
+        RulesCreateResponseSelectorExcludeItemOperationIdsList.pipe(
+          T.Body("operation_ids"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "RulesCreateResponseSelectorExcludeItem",
+}) as any as S.Schema<RulesCreateResponseSelectorExcludeItem>;
+
+export type RulesCreateResponseSelectorExcludeList =
+  RulesCreateResponseSelectorExcludeItem[];
+export const RulesCreateResponseSelectorExcludeList = /*@__PURE__*/ S.Array(
+  RulesCreateResponseSelectorExcludeItem,
+) as any as S.Schema<RulesCreateResponseSelectorExcludeList>;
+
+export type RulesCreateResponseSelectorIncludeItemHostList = string[];
+export const RulesCreateResponseSelectorIncludeItemHostList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RulesCreateResponseSelectorIncludeItemHostList>;
+
+export interface RulesCreateResponseSelectorIncludeItem {
+  /** Included hostnames. */
+  host?: RulesCreateResponseSelectorIncludeItemHostList;
+}
+export const RulesCreateResponseSelectorIncludeItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      host: S.optional(RulesCreateResponseSelectorIncludeItemHostList),
+    }),
+).annotate({
+  identifier: "RulesCreateResponseSelectorIncludeItem",
+}) as any as S.Schema<RulesCreateResponseSelectorIncludeItem>;
+
+export type RulesCreateResponseSelectorIncludeList =
+  RulesCreateResponseSelectorIncludeItem[];
+export const RulesCreateResponseSelectorIncludeList = /*@__PURE__*/ S.Array(
+  RulesCreateResponseSelectorIncludeItem,
+) as any as S.Schema<RulesCreateResponseSelectorIncludeList>;
+
+export interface RulesCreateResponseSelector {
+  /** Ignore operations that were otherwise included by `include`. */
+  exclude?: RulesCreateResponseSelectorExcludeList;
+  /** Select all matching operations. */
+  include?: RulesCreateResponseSelectorIncludeList;
+}
+export const RulesCreateResponseSelector = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exclude: S.optional(RulesCreateResponseSelectorExcludeList),
+    include: S.optional(RulesCreateResponseSelectorIncludeList),
+  }),
+).annotate({
+  identifier: "RulesCreateResponseSelector",
+}) as any as S.Schema<RulesCreateResponseSelector>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RulesCreateResponse {
-  result?: unknown;
+  /** Action to take on requests that match operations included in `selector` and fail `expression`. */
+  action: RulesCreateResponseAction;
+  /** A human-readable description that gives more details than `title`. */
+  description: string;
+  /** Toggle rule on or off. */
+  enabled: boolean;
+  /** Rule expression. Requests that fail to match this expression will be subject to `action`. */
+  expression: string;
+  /** Select operations covered by this rule. */
+  selector: RulesCreateResponseSelector;
+  /** A human-readable name for the rule. */
+  title: string;
+  /** UUID. */
+  id?: string;
+  createdAt?: string;
+  lastUpdated?: string;
 }
 export const RulesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    action: RulesCreateResponseAction,
+    description: S.String,
+    enabled: S.Boolean,
+    expression: S.String,
+    selector: RulesCreateResponseSelector,
+    title: S.String,
+    id: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
   }),
 ).annotate({
   identifier: "RulesCreateResponse",
 }) as any as S.Schema<RulesCreateResponse>;
 
 export interface RulesDeleteRequest {
-  zone_id: string;
-  rule_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** UUID. */
+  ruleId: string;
 }
 export const RulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    rule_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    ruleId: S.String.pipe(T.Label("rule_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -790,6 +1397,7 @@ export const RulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesDeleteRequest>;
 
 export interface RulesDeleteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const RulesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -804,19 +1412,21 @@ export type RulesEditRequestAction = "log" | "block" | (string & {});
 export const RulesEditRequestAction = /*@__PURE__*/ S.String;
 
 export interface RulesEditRequestPosition {
-  APIShieldIndex_object___index__: unknown;
-  APIShieldBefore_object___before__: unknown;
-  APIShieldAfter_object___after__: unknown;
+  APIShieldIndexObjectIndex__: unknown;
+  /** Move rule to after rule with ID. */
+  APIShieldBeforeObjectBefore__: unknown;
+  /** Move rule to before rule with ID. */
+  APIShieldAfterObjectAfter__: unknown;
 }
 export const RulesEditRequestPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    APIShieldIndex_object___index__: S.Unknown.pipe(
+    APIShieldIndexObjectIndex__: S.Unknown.pipe(
       T.Body("APIShieldIndex object { index }"),
     ),
-    APIShieldBefore_object___before__: S.Unknown.pipe(
+    APIShieldBeforeObjectBefore__: S.Unknown.pipe(
       T.Body("APIShieldBefore object { before }"),
     ),
-    APIShieldAfter_object___after__: S.Unknown.pipe(
+    APIShieldAfterObjectAfter__: S.Unknown.pipe(
       T.Body("APIShieldAfter object { after }"),
     ),
   }),
@@ -831,12 +1441,15 @@ export const RulesEditRequestSelectorExcludeItemOperationIdsList =
   ) as any as S.Schema<RulesEditRequestSelectorExcludeItemOperationIdsList>;
 
 export interface RulesEditRequestSelectorExcludeItem {
-  operation_ids?: RulesEditRequestSelectorExcludeItemOperationIdsList;
+  /** Excluded operation IDs. */
+  operationIds?: RulesEditRequestSelectorExcludeItemOperationIdsList;
 }
 export const RulesEditRequestSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    operation_ids: S.optional(
-      RulesEditRequestSelectorExcludeItemOperationIdsList,
+    operationIds: S.optional(
+      RulesEditRequestSelectorExcludeItemOperationIdsList.pipe(
+        T.Body("operation_ids"),
+      ),
     ),
   }),
 ).annotate({
@@ -856,6 +1469,7 @@ export const RulesEditRequestSelectorIncludeItemHostList =
   ) as any as S.Schema<RulesEditRequestSelectorIncludeItemHostList>;
 
 export interface RulesEditRequestSelectorIncludeItem {
+  /** Included hostnames. */
   host?: RulesEditRequestSelectorIncludeItemHostList;
 }
 export const RulesEditRequestSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
@@ -873,7 +1487,9 @@ export const RulesEditRequestSelectorIncludeList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RulesEditRequestSelectorIncludeList>;
 
 export interface RulesEditRequestSelector {
+  /** Ignore operations that were otherwise included by `include`. */
   exclude?: RulesEditRequestSelectorExcludeList;
+  /** Select all matching operations. */
   include?: RulesEditRequestSelectorIncludeList;
 }
 export const RulesEditRequestSelector = /*@__PURE__*/ S.suspend(() =>
@@ -886,20 +1502,29 @@ export const RulesEditRequestSelector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesEditRequestSelector>;
 
 export interface RulesEditRequest {
-  zone_id: string;
-  rule_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** UUID. */
+  ruleId: string;
+  /** Action to take on requests that match operations included in `selector` and fail `expression`. */
   action?: RulesEditRequestAction;
+  /** A human-readable description that gives more details than `title`. */
   description?: string;
+  /** Toggle rule on or off. */
   enabled?: boolean;
+  /** Rule expression. Requests that fail to match this expression will be subject to `action`. */
   expression?: string;
+  /** Update rule order among zone rules. */
   position?: RulesEditRequestPosition;
+  /** Select operations covered by this rule. */
   selector?: RulesEditRequestSelector;
+  /** A human-readable name for the rule. */
   title?: string;
 }
 export const RulesEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    rule_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    ruleId: S.String.pipe(T.Label("rule_id")),
     action: S.optional(RulesEditRequestAction),
     description: S.optional(S.String),
     enabled: S.optional(S.Boolean),
@@ -918,25 +1543,123 @@ export const RulesEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesEditRequest",
 }) as any as S.Schema<RulesEditRequest>;
 
+export type RulesEditResponseAction = "log" | "block" | (string & {});
+export const RulesEditResponseAction = /*@__PURE__*/ S.String;
+
+export type RulesEditResponseSelectorExcludeItemOperationIdsList = string[];
+export const RulesEditResponseSelectorExcludeItemOperationIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RulesEditResponseSelectorExcludeItemOperationIdsList>;
+
+export interface RulesEditResponseSelectorExcludeItem {
+  /** Excluded operation IDs. */
+  operationIds?: RulesEditResponseSelectorExcludeItemOperationIdsList;
+}
+export const RulesEditResponseSelectorExcludeItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      operationIds: S.optional(
+        RulesEditResponseSelectorExcludeItemOperationIdsList.pipe(
+          T.Body("operation_ids"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "RulesEditResponseSelectorExcludeItem",
+}) as any as S.Schema<RulesEditResponseSelectorExcludeItem>;
+
+export type RulesEditResponseSelectorExcludeList =
+  RulesEditResponseSelectorExcludeItem[];
+export const RulesEditResponseSelectorExcludeList = /*@__PURE__*/ S.Array(
+  RulesEditResponseSelectorExcludeItem,
+) as any as S.Schema<RulesEditResponseSelectorExcludeList>;
+
+export type RulesEditResponseSelectorIncludeItemHostList = string[];
+export const RulesEditResponseSelectorIncludeItemHostList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RulesEditResponseSelectorIncludeItemHostList>;
+
+export interface RulesEditResponseSelectorIncludeItem {
+  /** Included hostnames. */
+  host?: RulesEditResponseSelectorIncludeItemHostList;
+}
+export const RulesEditResponseSelectorIncludeItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      host: S.optional(RulesEditResponseSelectorIncludeItemHostList),
+    }),
+).annotate({
+  identifier: "RulesEditResponseSelectorIncludeItem",
+}) as any as S.Schema<RulesEditResponseSelectorIncludeItem>;
+
+export type RulesEditResponseSelectorIncludeList =
+  RulesEditResponseSelectorIncludeItem[];
+export const RulesEditResponseSelectorIncludeList = /*@__PURE__*/ S.Array(
+  RulesEditResponseSelectorIncludeItem,
+) as any as S.Schema<RulesEditResponseSelectorIncludeList>;
+
+export interface RulesEditResponseSelector {
+  /** Ignore operations that were otherwise included by `include`. */
+  exclude?: RulesEditResponseSelectorExcludeList;
+  /** Select all matching operations. */
+  include?: RulesEditResponseSelectorIncludeList;
+}
+export const RulesEditResponseSelector = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exclude: S.optional(RulesEditResponseSelectorExcludeList),
+    include: S.optional(RulesEditResponseSelectorIncludeList),
+  }),
+).annotate({
+  identifier: "RulesEditResponseSelector",
+}) as any as S.Schema<RulesEditResponseSelector>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RulesEditResponse {
-  result?: unknown;
+  /** Action to take on requests that match operations included in `selector` and fail `expression`. */
+  action: RulesEditResponseAction;
+  /** A human-readable description that gives more details than `title`. */
+  description: string;
+  /** Toggle rule on or off. */
+  enabled: boolean;
+  /** Rule expression. Requests that fail to match this expression will be subject to `action`. */
+  expression: string;
+  /** Select operations covered by this rule. */
+  selector: RulesEditResponseSelector;
+  /** A human-readable name for the rule. */
+  title: string;
+  /** UUID. */
+  id?: string;
+  createdAt?: string;
+  lastUpdated?: string;
 }
 export const RulesEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    action: RulesEditResponseAction,
+    description: S.String,
+    enabled: S.Boolean,
+    expression: S.String,
+    selector: RulesEditResponseSelector,
+    title: S.String,
+    id: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
   }),
 ).annotate({
   identifier: "RulesEditResponse",
 }) as any as S.Schema<RulesEditResponse>;
 
 export interface RulesGetRequest {
-  zone_id: string;
-  rule_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** UUID. */
+  ruleId: string;
 }
 export const RulesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    rule_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    ruleId: S.String.pipe(T.Label("rule_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -948,12 +1671,106 @@ export const RulesGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesGetRequest",
 }) as any as S.Schema<RulesGetRequest>;
 
+export type RulesGetResponseAction = "log" | "block" | (string & {});
+export const RulesGetResponseAction = /*@__PURE__*/ S.String;
+
+export type RulesGetResponseSelectorExcludeItemOperationIdsList = string[];
+export const RulesGetResponseSelectorExcludeItemOperationIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RulesGetResponseSelectorExcludeItemOperationIdsList>;
+
+export interface RulesGetResponseSelectorExcludeItem {
+  /** Excluded operation IDs. */
+  operationIds?: RulesGetResponseSelectorExcludeItemOperationIdsList;
+}
+export const RulesGetResponseSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    operationIds: S.optional(
+      RulesGetResponseSelectorExcludeItemOperationIdsList.pipe(
+        T.Body("operation_ids"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "RulesGetResponseSelectorExcludeItem",
+}) as any as S.Schema<RulesGetResponseSelectorExcludeItem>;
+
+export type RulesGetResponseSelectorExcludeList =
+  RulesGetResponseSelectorExcludeItem[];
+export const RulesGetResponseSelectorExcludeList = /*@__PURE__*/ S.Array(
+  RulesGetResponseSelectorExcludeItem,
+) as any as S.Schema<RulesGetResponseSelectorExcludeList>;
+
+export type RulesGetResponseSelectorIncludeItemHostList = string[];
+export const RulesGetResponseSelectorIncludeItemHostList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RulesGetResponseSelectorIncludeItemHostList>;
+
+export interface RulesGetResponseSelectorIncludeItem {
+  /** Included hostnames. */
+  host?: RulesGetResponseSelectorIncludeItemHostList;
+}
+export const RulesGetResponseSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    host: S.optional(RulesGetResponseSelectorIncludeItemHostList),
+  }),
+).annotate({
+  identifier: "RulesGetResponseSelectorIncludeItem",
+}) as any as S.Schema<RulesGetResponseSelectorIncludeItem>;
+
+export type RulesGetResponseSelectorIncludeList =
+  RulesGetResponseSelectorIncludeItem[];
+export const RulesGetResponseSelectorIncludeList = /*@__PURE__*/ S.Array(
+  RulesGetResponseSelectorIncludeItem,
+) as any as S.Schema<RulesGetResponseSelectorIncludeList>;
+
+export interface RulesGetResponseSelector {
+  /** Ignore operations that were otherwise included by `include`. */
+  exclude?: RulesGetResponseSelectorExcludeList;
+  /** Select all matching operations. */
+  include?: RulesGetResponseSelectorIncludeList;
+}
+export const RulesGetResponseSelector = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exclude: S.optional(RulesGetResponseSelectorExcludeList),
+    include: S.optional(RulesGetResponseSelectorIncludeList),
+  }),
+).annotate({
+  identifier: "RulesGetResponseSelector",
+}) as any as S.Schema<RulesGetResponseSelector>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RulesGetResponse {
-  result?: unknown;
+  /** Action to take on requests that match operations included in `selector` and fail `expression`. */
+  action: RulesGetResponseAction;
+  /** A human-readable description that gives more details than `title`. */
+  description: string;
+  /** Toggle rule on or off. */
+  enabled: boolean;
+  /** Rule expression. Requests that fail to match this expression will be subject to `action`. */
+  expression: string;
+  /** Select operations covered by this rule. */
+  selector: RulesGetResponseSelector;
+  /** A human-readable name for the rule. */
+  title: string;
+  /** UUID. */
+  id?: string;
+  createdAt?: string;
+  lastUpdated?: string;
 }
 export const RulesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    action: RulesGetResponseAction,
+    description: S.String,
+    enabled: S.Boolean,
+    expression: S.String,
+    selector: RulesGetResponseSelector,
+    title: S.String,
+    id: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
   }),
 ).annotate({
   identifier: "RulesGetResponse",
@@ -968,30 +1785,42 @@ export const RulesListRequestTokenConfigurationList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RulesListRequestTokenConfigurationList>;
 
 export interface RulesListRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Select rules with these IDs. */
   id?: string;
+  /** Action to take on requests that match operations included in `selector` and fail `expression`. */
   action?: RulesListRequestAction;
+  /** Toggle rule on or off. */
   enabled?: boolean;
+  /** Select rules with this host in `include`. */
   host?: string;
+  /** Select rules with this host in `include`. */
   hostname?: string;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
-  rule_id?: string;
-  token_configuration?: RulesListRequestTokenConfigurationList;
+  /** Maximum number of results per page. */
+  perPage?: number;
+  /** Select rules with these IDs. */
+  ruleId?: string;
+  /** Select rules using any of these token configurations. */
+  tokenConfiguration?: RulesListRequestTokenConfigurationList;
 }
 export const RulesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     id: S.optional(S.String.pipe(T.Query())),
     action: S.optional(RulesListRequestAction.pipe(T.Query())),
     enabled: S.optional(S.Boolean.pipe(T.Query())),
     host: S.optional(S.String.pipe(T.Query())),
     hostname: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
-    rule_id: S.optional(S.String.pipe(T.Query())),
-    token_configuration: S.optional(
-      RulesListRequestTokenConfigurationList.pipe(T.Query()),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    ruleId: S.optional(S.String.pipe(T.Query("rule_id"))),
+    tokenConfiguration: S.optional(
+      RulesListRequestTokenConfigurationList.pipe(
+        T.Query("token_configuration"),
+      ),
     ),
   }).pipe(
     T.Http({
@@ -1004,12 +1833,119 @@ export const RulesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesListRequest",
 }) as any as S.Schema<RulesListRequest>;
 
-export type RulesListResultList = unknown[];
+export type RulesListResultItemAction = "log" | "block" | (string & {});
+export const RulesListResultItemAction = /*@__PURE__*/ S.String;
+
+export type RulesListResultItemSelectorExcludeItemOperationIdsList = string[];
+export const RulesListResultItemSelectorExcludeItemOperationIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RulesListResultItemSelectorExcludeItemOperationIdsList>;
+
+export interface RulesListResultItemSelectorExcludeItem {
+  /** Excluded operation IDs. */
+  operationIds?: RulesListResultItemSelectorExcludeItemOperationIdsList;
+}
+export const RulesListResultItemSelectorExcludeItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      operationIds: S.optional(
+        RulesListResultItemSelectorExcludeItemOperationIdsList.pipe(
+          T.Body("operation_ids"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "RulesListResultItemSelectorExcludeItem",
+}) as any as S.Schema<RulesListResultItemSelectorExcludeItem>;
+
+export type RulesListResultItemSelectorExcludeList =
+  RulesListResultItemSelectorExcludeItem[];
+export const RulesListResultItemSelectorExcludeList = /*@__PURE__*/ S.Array(
+  RulesListResultItemSelectorExcludeItem,
+) as any as S.Schema<RulesListResultItemSelectorExcludeList>;
+
+export type RulesListResultItemSelectorIncludeItemHostList = string[];
+export const RulesListResultItemSelectorIncludeItemHostList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RulesListResultItemSelectorIncludeItemHostList>;
+
+export interface RulesListResultItemSelectorIncludeItem {
+  /** Included hostnames. */
+  host?: RulesListResultItemSelectorIncludeItemHostList;
+}
+export const RulesListResultItemSelectorIncludeItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      host: S.optional(RulesListResultItemSelectorIncludeItemHostList),
+    }),
+).annotate({
+  identifier: "RulesListResultItemSelectorIncludeItem",
+}) as any as S.Schema<RulesListResultItemSelectorIncludeItem>;
+
+export type RulesListResultItemSelectorIncludeList =
+  RulesListResultItemSelectorIncludeItem[];
+export const RulesListResultItemSelectorIncludeList = /*@__PURE__*/ S.Array(
+  RulesListResultItemSelectorIncludeItem,
+) as any as S.Schema<RulesListResultItemSelectorIncludeList>;
+
+export interface RulesListResultItemSelector {
+  /** Ignore operations that were otherwise included by `include`. */
+  exclude?: RulesListResultItemSelectorExcludeList;
+  /** Select all matching operations. */
+  include?: RulesListResultItemSelectorIncludeList;
+}
+export const RulesListResultItemSelector = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exclude: S.optional(RulesListResultItemSelectorExcludeList),
+    include: S.optional(RulesListResultItemSelectorIncludeList),
+  }),
+).annotate({
+  identifier: "RulesListResultItemSelector",
+}) as any as S.Schema<RulesListResultItemSelector>;
+
+export interface RulesListResultItem {
+  /** Action to take on requests that match operations included in `selector` and fail `expression`. */
+  action: RulesListResultItemAction;
+  /** A human-readable description that gives more details than `title`. */
+  description: string;
+  /** Toggle rule on or off. */
+  enabled: boolean;
+  /** Rule expression. Requests that fail to match this expression will be subject to `action`. */
+  expression: string;
+  /** Select operations covered by this rule. */
+  selector: RulesListResultItemSelector;
+  /** A human-readable name for the rule. */
+  title: string;
+  /** UUID. */
+  id?: string;
+  createdAt?: string;
+  lastUpdated?: string;
+}
+export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: RulesListResultItemAction,
+    description: S.String,
+    enabled: S.Boolean,
+    expression: S.String,
+    selector: RulesListResultItemSelector,
+    title: S.String,
+    id: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+  }),
+).annotate({
+  identifier: "RulesListResultItem",
+}) as any as S.Schema<RulesListResultItem>;
+
+export type RulesListResultList = RulesListResultItem[];
 export const RulesListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  RulesListResultItem,
 ) as any as S.Schema<RulesListResultList>;
 
 export interface RulesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesListResultList;
 }
 export const RulesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1020,11 +1956,12 @@ export const RulesListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesListResponse",
 }) as any as S.Schema<RulesListResponse>;
 
+export type ConfigurationCreateError = CloudflareOpError;
 /** Create a new Token Validation configuration */
-export const ConfigurationCreate: API.OperationMethod<
+export const configurationCreate: API.OperationMethod<
   ConfigurationCreateRequest,
   ConfigurationCreateResponse,
-  CloudflareOpError,
+  ConfigurationCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigurationCreateRequest,
@@ -1033,11 +1970,12 @@ export const ConfigurationCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConfigurationCredentialsUpdateError = CloudflareOpError;
 /** Update Token Configuration credentials */
-export const ConfigurationCredentialsUpdate: API.OperationMethod<
+export const configurationCredentialsUpdate: API.OperationMethod<
   ConfigurationCredentialsUpdateRequest,
   ConfigurationCredentialsUpdateResponse,
-  CloudflareOpError,
+  ConfigurationCredentialsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigurationCredentialsUpdateRequest,
@@ -1046,11 +1984,12 @@ export const ConfigurationCredentialsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConfigurationDeleteError = CloudflareOpError;
 /** Delete Token Configuration */
-export const ConfigurationDelete: API.OperationMethod<
+export const configurationDelete: API.OperationMethod<
   ConfigurationDeleteRequest,
   ConfigurationDeleteResponse,
-  CloudflareOpError,
+  ConfigurationDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigurationDeleteRequest,
@@ -1059,11 +1998,12 @@ export const ConfigurationDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConfigurationEditError = CloudflareOpError;
 /** Edit fields of an existing Token Configuration */
-export const ConfigurationEdit: API.OperationMethod<
+export const configurationEdit: API.OperationMethod<
   ConfigurationEditRequest,
   ConfigurationEditResponse,
-  CloudflareOpError,
+  ConfigurationEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigurationEditRequest,
@@ -1072,11 +2012,12 @@ export const ConfigurationEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConfigurationGetError = CloudflareOpError;
 /** Get a single Token Configuration */
-export const ConfigurationGet: API.OperationMethod<
+export const configurationGet: API.OperationMethod<
   ConfigurationGetRequest,
   ConfigurationGetResponse,
-  CloudflareOpError,
+  ConfigurationGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigurationGetRequest,
@@ -1085,11 +2026,12 @@ export const ConfigurationGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ConfigurationListError = CloudflareOpError;
 /** Lists all token validation configurations for this zone */
-export const ConfigurationList: API.OperationMethod<
+export const configurationList: API.OperationMethod<
   ConfigurationListRequest,
   ConfigurationListResponse,
-  CloudflareOpError,
+  ConfigurationListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfigurationListRequest,
@@ -1098,11 +2040,12 @@ export const ConfigurationList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RulesBulkCreateError = CloudflareOpError;
 /** Create zone token validation rules. A request can create multiple Token Validation Rules. */
-export const RulesBulkCreate: API.OperationMethod<
+export const rulesBulkCreate: API.OperationMethod<
   RulesBulkCreateRequest,
   RulesBulkCreateResponse,
-  CloudflareOpError,
+  RulesBulkCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RulesBulkCreateRequest,
@@ -1111,11 +2054,12 @@ export const RulesBulkCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RulesBulkEditError = CloudflareOpError;
 /** Edit token validation rules. A request can update multiple Token Validation Rules. Rules can be re-ordered using the `position` field. Returns all updated rules. */
-export const RulesBulkEdit: API.OperationMethod<
+export const rulesBulkEdit: API.OperationMethod<
   RulesBulkEditRequest,
   RulesBulkEditResponse,
-  CloudflareOpError,
+  RulesBulkEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RulesBulkEditRequest,
@@ -1124,11 +2068,12 @@ export const RulesBulkEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RulesCreateError = CloudflareOpError;
 /** Create a token validation rule. */
-export const RulesCreate: API.OperationMethod<
+export const rulesCreate: API.OperationMethod<
   RulesCreateRequest,
   RulesCreateResponse,
-  CloudflareOpError,
+  RulesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RulesCreateRequest,
@@ -1137,11 +2082,12 @@ export const RulesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RulesDeleteError = CloudflareOpError;
 /** Delete a zone token validation rule. */
-export const RulesDelete: API.OperationMethod<
+export const rulesDelete: API.OperationMethod<
   RulesDeleteRequest,
   RulesDeleteResponse,
-  CloudflareOpError,
+  RulesDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RulesDeleteRequest,
@@ -1150,11 +2096,12 @@ export const RulesDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RulesEditError = CloudflareOpError;
 /** Edit a zone token validation rule. */
-export const RulesEdit: API.OperationMethod<
+export const rulesEdit: API.OperationMethod<
   RulesEditRequest,
   RulesEditResponse,
-  CloudflareOpError,
+  RulesEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RulesEditRequest,
@@ -1163,11 +2110,12 @@ export const RulesEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RulesGetError = CloudflareOpError;
 /** Get a zone token validation rule. */
-export const RulesGet: API.OperationMethod<
+export const rulesGet: API.OperationMethod<
   RulesGetRequest,
   RulesGetResponse,
-  CloudflareOpError,
+  RulesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RulesGetRequest,
@@ -1176,11 +2124,12 @@ export const RulesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RulesListError = CloudflareOpError;
 /** List token validation rules */
-export const RulesList: API.OperationMethod<
+export const rulesList: API.OperationMethod<
   RulesListRequest,
   RulesListResponse,
-  CloudflareOpError,
+  RulesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RulesListRequest,

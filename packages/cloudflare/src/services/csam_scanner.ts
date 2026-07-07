@@ -19,16 +19,20 @@ export const EditRequestValueSourcesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EditRequestValueSourcesMap>;
 
 export interface EditRequestValue {
+  /** Notification email address for CSAM scan results. When changed, */
   email?: string;
+  /** Whether CSAM scanning is enabled for this zone. */
   enabled?: boolean;
-  resend_email?: boolean;
+  /** Set to true to trigger re-sending the email verification. */
+  resendEmail?: boolean;
+  /** Map of scanning sources and their enabled state. */
   sources?: EditRequestValueSourcesMap;
 }
 export const EditRequestValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    resend_email: S.optional(S.Boolean),
+    resendEmail: S.optional(S.Boolean.pipe(T.Body("resend_email"))),
     sources: S.optional(EditRequestValueSourcesMap),
   }),
 ).annotate({
@@ -36,13 +40,16 @@ export const EditRequestValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditRequestValue>;
 
 export interface EditRequest {
-  zone_id: string;
+  /** Identifier for the zone. */
+  zoneId: string;
+  /** The feature identifier. */
   id?: EditRequestId;
+  /** Writable CSAM Scanner feature configuration values. */
   value?: EditRequestValue;
 }
 export const EditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     id: S.optional(EditRequestId),
     value: S.optional(EditRequestValue),
   }).pipe(
@@ -73,19 +80,26 @@ export const EditResponseValueSourcesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EditResponseValueSourcesMap>;
 
 export interface EditResponseValue {
+  /** Notification email address for CSAM scan results. Masked in */
   email?: string;
-  email_state?: EditResponseValueEmailState;
+  /** Current verification state of the notification email. */
+  emailState?: EditResponseValueEmailState;
+  /** Whether CSAM scanning is enabled for this zone. */
   enabled?: boolean;
+  /** Map of scanning sources and their enabled state. */
   sources?: EditResponseValueSourcesMap;
-  zone_plan?: string;
+  /** The zone's plan level. */
+  zonePlan?: string;
 }
 export const EditResponseValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
-    email_state: S.optional(EditResponseValueEmailState),
+    emailState: S.optional(
+      EditResponseValueEmailState.pipe(T.Body("email_state")),
+    ),
     enabled: S.optional(S.Boolean),
     sources: S.optional(EditResponseValueSourcesMap),
-    zone_plan: S.optional(S.String),
+    zonePlan: S.optional(S.String.pipe(T.Body("zone_plan"))),
   }),
 ).annotate({
   identifier: "EditResponseValue",
@@ -93,26 +107,31 @@ export const EditResponseValue = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditResponse {
+  /** The feature identifier. */
   id?: EditResponseId;
+  /** Whether the feature state can be changed. When false, the zone */
   editable?: boolean;
-  modified_on?: string;
+  /** When the setting was last modified. Currently always null as the */
+  modifiedOn?: string;
+  /** The CSAM Scanner feature configuration values. Contains the */
   value?: EditResponseValue;
 }
 export const EditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(EditResponseId),
     editable: S.optional(S.Boolean),
-    modified_on: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     value: S.optional(EditResponseValue),
   }),
 ).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
 
 export interface GetRequest {
-  zone_id: string;
+  /** Identifier for the zone. */
+  zoneId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -139,19 +158,26 @@ export const GetResponseValueSourcesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GetResponseValueSourcesMap>;
 
 export interface GetResponseValue {
+  /** Notification email address for CSAM scan results. Masked in */
   email?: string;
-  email_state?: GetResponseValueEmailState;
+  /** Current verification state of the notification email. */
+  emailState?: GetResponseValueEmailState;
+  /** Whether CSAM scanning is enabled for this zone. */
   enabled?: boolean;
+  /** Map of scanning sources and their enabled state. */
   sources?: GetResponseValueSourcesMap;
-  zone_plan?: string;
+  /** The zone's plan level. */
+  zonePlan?: string;
 }
 export const GetResponseValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
-    email_state: S.optional(GetResponseValueEmailState),
+    emailState: S.optional(
+      GetResponseValueEmailState.pipe(T.Body("email_state")),
+    ),
     enabled: S.optional(S.Boolean),
     sources: S.optional(GetResponseValueSourcesMap),
-    zone_plan: S.optional(S.String),
+    zonePlan: S.optional(S.String.pipe(T.Body("zone_plan"))),
   }),
 ).annotate({
   identifier: "GetResponseValue",
@@ -159,25 +185,30 @@ export const GetResponseValue = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
+  /** The feature identifier. */
   id?: GetResponseId;
+  /** Whether the feature state can be changed. When false, the zone */
   editable?: boolean;
-  modified_on?: string;
+  /** When the setting was last modified. Currently always null as the */
+  modifiedOn?: string;
+  /** The CSAM Scanner feature configuration values. Contains the */
   value?: GetResponseValue;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(GetResponseId),
     editable: S.optional(S.Boolean),
-    modified_on: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     value: S.optional(GetResponseValue),
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
+export type EditError = CloudflareOpError;
 /** Update the CSAM Scanner configuration for a zone. Allows enabling or disabling CSAM scanning, updating the notification email, and configuring scanning sources. When a new email is provided, email verification is triggered automatically. The `enabled` field is a toggle; the server may adjust it based on whether the notification email is verified. Returns 403 if the zone or account is locked by Trust & Safety. */
-export const Edit: API.OperationMethod<
+export const edit: API.OperationMethod<
   EditRequest,
   EditResponse,
-  CloudflareOpError,
+  EditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EditRequest,
@@ -186,11 +217,12 @@ export const Edit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Retrieve the current CSAM Scanner configuration for a zone. The notification email is masked by default in responses. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,

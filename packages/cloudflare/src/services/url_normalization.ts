@@ -10,11 +10,12 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface DeleteRequest {
-  zone_id: string;
+  /** The unique ID of the zone. */
+  zoneId: string;
 }
 export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -30,11 +31,12 @@ export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
 
 export interface GetRequest {
-  zone_id: string;
+  /** The unique ID of the zone. */
+  zoneId: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -52,7 +54,9 @@ export const GetResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
+  /** The scope of the URL normalization. */
   scope: GetResponseScope;
+  /** The type of URL normalization performed by Cloudflare. */
   type: GetResponseType;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -69,13 +73,16 @@ export type UpdateRequestType = "cloudflare" | "rfc3986" | (string & {});
 export const UpdateRequestType = /*@__PURE__*/ S.String;
 
 export interface UpdateRequest {
-  zone_id: string;
+  /** The unique ID of the zone. */
+  zoneId: string;
+  /** The scope of the URL normalization. */
   scope: UpdateRequestScope;
+  /** The type of URL normalization performed by Cloudflare. */
   type: UpdateRequestType;
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     scope: UpdateRequestScope,
     type: UpdateRequestType,
   }).pipe(
@@ -95,7 +102,9 @@ export const UpdateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
+  /** The scope of the URL normalization. */
   scope: UpdateResponseScope;
+  /** The type of URL normalization performed by Cloudflare. */
   type: UpdateResponseType;
 }
 export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -105,11 +114,12 @@ export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
+export type DeleteError = CloudflareOpError;
 /** Deletes the URL Normalization settings. */
 export const Delete: API.OperationMethod<
   DeleteRequest,
   DeleteResponse,
-  CloudflareOpError,
+  DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequest,
@@ -118,11 +128,12 @@ export const Delete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Fetches the current URL Normalization settings. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -131,11 +142,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UpdateError = CloudflareOpError;
 /** Updates the URL Normalization settings. */
-export const Update: API.OperationMethod<
+export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,
-  CloudflareOpError,
+  UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,

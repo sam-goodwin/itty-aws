@@ -10,15 +10,20 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface CreateRequestRecipientsItem {
-  account_id?: string;
-  organization_id?: string;
-  recipient_account_id?: string;
+  /** Deprecated alias for `recipient_account_id`. Use `recipient_account_id` instead. */
+  accountId?: string;
+  /** Organization identifier. */
+  organizationId?: string;
+  /** The account that will receive the share. */
+  recipientAccountId?: string;
 }
 export const CreateRequestRecipientsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.optional(S.String),
-    organization_id: S.optional(S.String),
-    recipient_account_id: S.optional(S.String),
+    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
+    organizationId: S.optional(S.String.pipe(T.Body("organization_id"))),
+    recipientAccountId: S.optional(
+      S.String.pipe(T.Body("recipient_account_id")),
+    ),
   }),
 ).annotate({
   identifier: "CreateRequestRecipientsItem",
@@ -37,17 +42,23 @@ export type CreateRequestResourcesItemResourceType =
 export const CreateRequestResourcesItemResourceType = /*@__PURE__*/ S.String;
 
 export interface CreateRequestResourcesItem {
+  /** Resource Metadata. */
   meta: unknown;
-  resource_account_id: string;
-  resource_id: string;
-  resource_type: CreateRequestResourcesItemResourceType;
+  /** Account identifier. */
+  resourceAccountId: string;
+  /** Share Resource identifier. */
+  resourceId: string;
+  /** Resource Type. */
+  resourceType: CreateRequestResourcesItemResourceType;
 }
 export const CreateRequestResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: S.Unknown,
-    resource_account_id: S.String,
-    resource_id: S.String,
-    resource_type: CreateRequestResourcesItemResourceType,
+    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
+    resourceId: S.String.pipe(T.Body("resource_id")),
+    resourceType: CreateRequestResourcesItemResourceType.pipe(
+      T.Body("resource_type"),
+    ),
   }),
 ).annotate({
   identifier: "CreateRequestResourcesItem",
@@ -59,14 +70,16 @@ export const CreateRequestResourcesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateRequestResourcesList>;
 
 export interface CreateRequest {
-  account_id: string;
+  /** Account identifier. */
+  accountId: string;
+  /** The name of the share. */
   name: string;
   recipients: CreateRequestRecipientsList;
   resources: CreateRequestResourcesList;
 }
 export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     recipients: CreateRequestRecipientsList,
     resources: CreateRequestResourcesList,
@@ -106,14 +119,23 @@ export type CreateResponseResourcesItemStatus =
 export const CreateResponseResourcesItemStatus = /*@__PURE__*/ S.String;
 
 export interface CreateResponseResourcesItem {
+  /** Share Resource identifier. */
   id: string;
+  /** When the share was created. */
   created: string;
+  /** Resource Metadata. */
   meta: unknown;
+  /** When the share was modified. */
   modified: string;
-  resource_account_id: string;
-  resource_id: string;
-  resource_type: CreateResponseResourcesItemResourceType;
-  resource_version: number;
+  /** Account identifier. */
+  resourceAccountId: string;
+  /** Share Resource identifier. */
+  resourceId: string;
+  /** Resource Type. */
+  resourceType: CreateResponseResourcesItemResourceType;
+  /** Resource Version. */
+  resourceVersion: number;
+  /** Resource Status. */
   status: CreateResponseResourcesItemStatus;
 }
 export const CreateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
@@ -122,10 +144,12 @@ export const CreateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     meta: S.Unknown,
     modified: S.String,
-    resource_account_id: S.String,
-    resource_id: S.String,
-    resource_type: CreateResponseResourcesItemResourceType,
-    resource_version: S.Number,
+    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
+    resourceId: S.String.pipe(T.Body("resource_id")),
+    resourceType: CreateResponseResourcesItemResourceType.pipe(
+      T.Body("resource_type"),
+    ),
+    resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: CreateResponseResourcesItemStatus,
   }),
 ).annotate({
@@ -139,50 +163,72 @@ export const CreateResponseResourcesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateResponse {
+  /** Share identifier tag. */
   id: string;
-  account_id: string;
-  account_name: string;
+  /** Account identifier. */
+  accountId: string;
+  /** The display name of an account. */
+  accountName: string;
+  /** When the share was created. */
   created: string;
+  /** When the share was modified. */
   modified: string;
+  /** The name of the share. */
   name: string;
-  organization_id: string;
+  /** Organization identifier. */
+  organizationId: string;
   status: CreateResponseStatus;
-  target_type: CreateResponseTargetType;
-  associated_recipient_count?: number;
-  associating_recipient_count?: number;
-  disassociated_recipient_count?: number;
-  disassociating_recipient_count?: number;
+  targetType: CreateResponseTargetType;
+  /** The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  associatedRecipientCount?: number;
+  /** The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  associatingRecipientCount?: number;
+  /** The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  disassociatedRecipientCount?: number;
+  /** The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  disassociatingRecipientCount?: number;
   kind?: CreateResponseKind;
+  /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
   resources?: CreateResponseResourcesList;
 }
 export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    account_id: S.String,
-    account_name: S.String,
+    accountId: S.String.pipe(T.Body("account_id")),
+    accountName: S.String.pipe(T.Body("account_name")),
     created: S.String,
     modified: S.String,
     name: S.String,
-    organization_id: S.String,
+    organizationId: S.String.pipe(T.Body("organization_id")),
     status: CreateResponseStatus,
-    target_type: CreateResponseTargetType,
-    associated_recipient_count: S.optional(S.Number),
-    associating_recipient_count: S.optional(S.Number),
-    disassociated_recipient_count: S.optional(S.Number),
-    disassociating_recipient_count: S.optional(S.Number),
+    targetType: CreateResponseTargetType.pipe(T.Body("target_type")),
+    associatedRecipientCount: S.optional(
+      S.Number.pipe(T.Body("associated_recipient_count")),
+    ),
+    associatingRecipientCount: S.optional(
+      S.Number.pipe(T.Body("associating_recipient_count")),
+    ),
+    disassociatedRecipientCount: S.optional(
+      S.Number.pipe(T.Body("disassociated_recipient_count")),
+    ),
+    disassociatingRecipientCount: S.optional(
+      S.Number.pipe(T.Body("disassociating_recipient_count")),
+    ),
     kind: S.optional(CreateResponseKind),
     resources: S.optional(CreateResponseResourcesList),
   }),
 ).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
 
 export interface DeleteRequest {
-  account_id: string;
-  share_id: string;
+  /** Account identifier. */
+  accountId: string;
+  /** Share identifier tag. */
+  shareId: string;
 }
 export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    share_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    shareId: S.String.pipe(T.Label("share_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -223,14 +269,23 @@ export type DeleteResponseResourcesItemStatus =
 export const DeleteResponseResourcesItemStatus = /*@__PURE__*/ S.String;
 
 export interface DeleteResponseResourcesItem {
+  /** Share Resource identifier. */
   id: string;
+  /** When the share was created. */
   created: string;
+  /** Resource Metadata. */
   meta: unknown;
+  /** When the share was modified. */
   modified: string;
-  resource_account_id: string;
-  resource_id: string;
-  resource_type: DeleteResponseResourcesItemResourceType;
-  resource_version: number;
+  /** Account identifier. */
+  resourceAccountId: string;
+  /** Share Resource identifier. */
+  resourceId: string;
+  /** Resource Type. */
+  resourceType: DeleteResponseResourcesItemResourceType;
+  /** Resource Version. */
+  resourceVersion: number;
+  /** Resource Status. */
   status: DeleteResponseResourcesItemStatus;
 }
 export const DeleteResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
@@ -239,10 +294,12 @@ export const DeleteResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     meta: S.Unknown,
     modified: S.String,
-    resource_account_id: S.String,
-    resource_id: S.String,
-    resource_type: DeleteResponseResourcesItemResourceType,
-    resource_version: S.Number,
+    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
+    resourceId: S.String.pipe(T.Body("resource_id")),
+    resourceType: DeleteResponseResourcesItemResourceType.pipe(
+      T.Body("resource_type"),
+    ),
+    resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: DeleteResponseResourcesItemStatus,
   }),
 ).annotate({
@@ -256,54 +313,80 @@ export const DeleteResponseResourcesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteResponse {
+  /** Share identifier tag. */
   id: string;
-  account_id: string;
-  account_name: string;
+  /** Account identifier. */
+  accountId: string;
+  /** The display name of an account. */
+  accountName: string;
+  /** When the share was created. */
   created: string;
+  /** When the share was modified. */
   modified: string;
+  /** The name of the share. */
   name: string;
-  organization_id: string;
+  /** Organization identifier. */
+  organizationId: string;
   status: DeleteResponseStatus;
-  target_type: DeleteResponseTargetType;
-  associated_recipient_count?: number;
-  associating_recipient_count?: number;
-  disassociated_recipient_count?: number;
-  disassociating_recipient_count?: number;
+  targetType: DeleteResponseTargetType;
+  /** The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  associatedRecipientCount?: number;
+  /** The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  associatingRecipientCount?: number;
+  /** The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  disassociatedRecipientCount?: number;
+  /** The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  disassociatingRecipientCount?: number;
   kind?: DeleteResponseKind;
+  /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
   resources?: DeleteResponseResourcesList;
 }
 export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    account_id: S.String,
-    account_name: S.String,
+    accountId: S.String.pipe(T.Body("account_id")),
+    accountName: S.String.pipe(T.Body("account_name")),
     created: S.String,
     modified: S.String,
     name: S.String,
-    organization_id: S.String,
+    organizationId: S.String.pipe(T.Body("organization_id")),
     status: DeleteResponseStatus,
-    target_type: DeleteResponseTargetType,
-    associated_recipient_count: S.optional(S.Number),
-    associating_recipient_count: S.optional(S.Number),
-    disassociated_recipient_count: S.optional(S.Number),
-    disassociating_recipient_count: S.optional(S.Number),
+    targetType: DeleteResponseTargetType.pipe(T.Body("target_type")),
+    associatedRecipientCount: S.optional(
+      S.Number.pipe(T.Body("associated_recipient_count")),
+    ),
+    associatingRecipientCount: S.optional(
+      S.Number.pipe(T.Body("associating_recipient_count")),
+    ),
+    disassociatedRecipientCount: S.optional(
+      S.Number.pipe(T.Body("disassociated_recipient_count")),
+    ),
+    disassociatingRecipientCount: S.optional(
+      S.Number.pipe(T.Body("disassociating_recipient_count")),
+    ),
     kind: S.optional(DeleteResponseKind),
     resources: S.optional(DeleteResponseResourcesList),
   }),
 ).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
 
 export interface GetRequest {
-  account_id: string;
-  share_id: string;
-  include_recipient_counts?: boolean;
-  include_resources?: boolean;
+  /** Account identifier. */
+  accountId: string;
+  /** Share identifier tag. */
+  shareId: string;
+  /** Include recipient counts in the response. */
+  includeRecipientCounts?: boolean;
+  /** Include resources in the response. */
+  includeResources?: boolean;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    share_id: S.String.pipe(T.Label()),
-    include_recipient_counts: S.optional(S.Boolean.pipe(T.Query())),
-    include_resources: S.optional(S.Boolean.pipe(T.Query())),
+    accountId: S.String.pipe(T.Label("account_id")),
+    shareId: S.String.pipe(T.Label("share_id")),
+    includeRecipientCounts: S.optional(
+      S.Boolean.pipe(T.Query("include_recipient_counts")),
+    ),
+    includeResources: S.optional(S.Boolean.pipe(T.Query("include_resources"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -341,14 +424,23 @@ export type GetResponseResourcesItemStatus =
 export const GetResponseResourcesItemStatus = /*@__PURE__*/ S.String;
 
 export interface GetResponseResourcesItem {
+  /** Share Resource identifier. */
   id: string;
+  /** When the share was created. */
   created: string;
+  /** Resource Metadata. */
   meta: unknown;
+  /** When the share was modified. */
   modified: string;
-  resource_account_id: string;
-  resource_id: string;
-  resource_type: GetResponseResourcesItemResourceType;
-  resource_version: number;
+  /** Account identifier. */
+  resourceAccountId: string;
+  /** Share Resource identifier. */
+  resourceId: string;
+  /** Resource Type. */
+  resourceType: GetResponseResourcesItemResourceType;
+  /** Resource Version. */
+  resourceVersion: number;
+  /** Resource Status. */
   status: GetResponseResourcesItemStatus;
 }
 export const GetResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
@@ -357,10 +449,12 @@ export const GetResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     meta: S.Unknown,
     modified: S.String,
-    resource_account_id: S.String,
-    resource_id: S.String,
-    resource_type: GetResponseResourcesItemResourceType,
-    resource_version: S.Number,
+    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
+    resourceId: S.String.pipe(T.Body("resource_id")),
+    resourceType: GetResponseResourcesItemResourceType.pipe(
+      T.Body("resource_type"),
+    ),
+    resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: GetResponseResourcesItemStatus,
   }),
 ).annotate({
@@ -374,37 +468,57 @@ export const GetResponseResourcesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
+  /** Share identifier tag. */
   id: string;
-  account_id: string;
-  account_name: string;
+  /** Account identifier. */
+  accountId: string;
+  /** The display name of an account. */
+  accountName: string;
+  /** When the share was created. */
   created: string;
+  /** When the share was modified. */
   modified: string;
+  /** The name of the share. */
   name: string;
-  organization_id: string;
+  /** Organization identifier. */
+  organizationId: string;
   status: GetResponseStatus;
-  target_type: GetResponseTargetType;
-  associated_recipient_count?: number;
-  associating_recipient_count?: number;
-  disassociated_recipient_count?: number;
-  disassociating_recipient_count?: number;
+  targetType: GetResponseTargetType;
+  /** The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  associatedRecipientCount?: number;
+  /** The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  associatingRecipientCount?: number;
+  /** The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  disassociatedRecipientCount?: number;
+  /** The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  disassociatingRecipientCount?: number;
   kind?: GetResponseKind;
+  /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
   resources?: GetResponseResourcesList;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    account_id: S.String,
-    account_name: S.String,
+    accountId: S.String.pipe(T.Body("account_id")),
+    accountName: S.String.pipe(T.Body("account_name")),
     created: S.String,
     modified: S.String,
     name: S.String,
-    organization_id: S.String,
+    organizationId: S.String.pipe(T.Body("organization_id")),
     status: GetResponseStatus,
-    target_type: GetResponseTargetType,
-    associated_recipient_count: S.optional(S.Number),
-    associating_recipient_count: S.optional(S.Number),
-    disassociated_recipient_count: S.optional(S.Number),
-    disassociating_recipient_count: S.optional(S.Number),
+    targetType: GetResponseTargetType.pipe(T.Body("target_type")),
+    associatedRecipientCount: S.optional(
+      S.Number.pipe(T.Body("associated_recipient_count")),
+    ),
+    associatingRecipientCount: S.optional(
+      S.Number.pipe(T.Body("associating_recipient_count")),
+    ),
+    disassociatedRecipientCount: S.optional(
+      S.Number.pipe(T.Body("disassociated_recipient_count")),
+    ),
+    disassociatingRecipientCount: S.optional(
+      S.Number.pipe(T.Body("disassociating_recipient_count")),
+    ),
     kind: S.optional(GetResponseKind),
     resources: S.optional(GetResponseResourcesList),
   }),
@@ -447,33 +561,49 @@ export type ListRequestTargetType = "account" | "organization" | (string & {});
 export const ListRequestTargetType = /*@__PURE__*/ S.String;
 
 export interface ListRequest {
-  account_id: string;
+  /** Account identifier. */
+  accountId: string;
+  /** Direction to sort objects. */
   direction?: ListRequestDirection;
-  include_recipient_counts?: boolean;
-  include_resources?: boolean;
+  /** Include recipient counts in the response. */
+  includeRecipientCounts?: boolean;
+  /** Include resources in the response. */
+  includeResources?: boolean;
+  /** Filter shares by kind. */
   kind?: ListRequestKind;
+  /** Order shares by values in the given field. */
   order?: ListRequestOrder;
+  /** Page number. Defaults to `1` when `per_page` is supplied without */
   page?: number;
-  per_page?: number;
-  resource_types?: ListRequestResourceTypesList;
+  /** Number of objects to return per page. Defaults to `20` when `page` */
+  perPage?: number;
+  /** Filter share resources by resource_types. */
+  resourceTypes?: ListRequestResourceTypesList;
+  /** Filter shares by status. */
   status?: ListRequestStatus;
+  /** Filter shares by tag. Each value is either `key=value` (matches shares whose tags contain that key/value pair) or `key` alone (matches shares that have any value for that key). May be repeated; multiple `tag` parameters are ANDed together. Maximum 20 `tag` parameters per request. */
   tag?: ListRequestTagList;
-  target_type?: ListRequestTargetType;
+  /** Filter shares by target_type. */
+  targetType?: ListRequestTargetType;
 }
 export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     direction: S.optional(ListRequestDirection.pipe(T.Query())),
-    include_recipient_counts: S.optional(S.Boolean.pipe(T.Query())),
-    include_resources: S.optional(S.Boolean.pipe(T.Query())),
+    includeRecipientCounts: S.optional(
+      S.Boolean.pipe(T.Query("include_recipient_counts")),
+    ),
+    includeResources: S.optional(S.Boolean.pipe(T.Query("include_resources"))),
     kind: S.optional(ListRequestKind.pipe(T.Query())),
     order: S.optional(ListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
-    resource_types: S.optional(ListRequestResourceTypesList.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    resourceTypes: S.optional(
+      ListRequestResourceTypesList.pipe(T.Query("resource_types")),
+    ),
     status: S.optional(ListRequestStatus.pipe(T.Query())),
     tag: S.optional(ListRequestTagList.pipe(T.Query())),
-    target_type: S.optional(ListRequestTargetType.pipe(T.Query())),
+    targetType: S.optional(ListRequestTargetType.pipe(T.Query("target_type"))),
   }).pipe(
     T.Http({ method: "GET", uri: "/accounts/{account_id}/shares", code: 200 }),
   ),
@@ -510,14 +640,23 @@ export type ListResultItemResourcesItemStatus =
 export const ListResultItemResourcesItemStatus = /*@__PURE__*/ S.String;
 
 export interface ListResultItemResourcesItem {
+  /** Share Resource identifier. */
   id: string;
+  /** When the share was created. */
   created: string;
+  /** Resource Metadata. */
   meta: unknown;
+  /** When the share was modified. */
   modified: string;
-  resource_account_id: string;
-  resource_id: string;
-  resource_type: ListResultItemResourcesItemResourceType;
-  resource_version: number;
+  /** Account identifier. */
+  resourceAccountId: string;
+  /** Share Resource identifier. */
+  resourceId: string;
+  /** Resource Type. */
+  resourceType: ListResultItemResourcesItemResourceType;
+  /** Resource Version. */
+  resourceVersion: number;
+  /** Resource Status. */
   status: ListResultItemResourcesItemStatus;
 }
 export const ListResultItemResourcesItem = /*@__PURE__*/ S.suspend(() =>
@@ -526,10 +665,12 @@ export const ListResultItemResourcesItem = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     meta: S.Unknown,
     modified: S.String,
-    resource_account_id: S.String,
-    resource_id: S.String,
-    resource_type: ListResultItemResourcesItemResourceType,
-    resource_version: S.Number,
+    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
+    resourceId: S.String.pipe(T.Body("resource_id")),
+    resourceType: ListResultItemResourcesItemResourceType.pipe(
+      T.Body("resource_type"),
+    ),
+    resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: ListResultItemResourcesItemStatus,
   }),
 ).annotate({
@@ -542,37 +683,57 @@ export const ListResultItemResourcesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResultItemResourcesList>;
 
 export interface ListResultItem {
+  /** Share identifier tag. */
   id: string;
-  account_id: string;
-  account_name: string;
+  /** Account identifier. */
+  accountId: string;
+  /** The display name of an account. */
+  accountName: string;
+  /** When the share was created. */
   created: string;
+  /** When the share was modified. */
   modified: string;
+  /** The name of the share. */
   name: string;
-  organization_id: string;
+  /** Organization identifier. */
+  organizationId: string;
   status: ListResultItemStatus;
-  target_type: ListResultItemTargetType;
-  associated_recipient_count?: number;
-  associating_recipient_count?: number;
-  disassociated_recipient_count?: number;
-  disassociating_recipient_count?: number;
+  targetType: ListResultItemTargetType;
+  /** The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  associatedRecipientCount?: number;
+  /** The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  associatingRecipientCount?: number;
+  /** The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  disassociatedRecipientCount?: number;
+  /** The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  disassociatingRecipientCount?: number;
   kind?: ListResultItemKind;
+  /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
   resources?: ListResultItemResourcesList;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    account_id: S.String,
-    account_name: S.String,
+    accountId: S.String.pipe(T.Body("account_id")),
+    accountName: S.String.pipe(T.Body("account_name")),
     created: S.String,
     modified: S.String,
     name: S.String,
-    organization_id: S.String,
+    organizationId: S.String.pipe(T.Body("organization_id")),
     status: ListResultItemStatus,
-    target_type: ListResultItemTargetType,
-    associated_recipient_count: S.optional(S.Number),
-    associating_recipient_count: S.optional(S.Number),
-    disassociated_recipient_count: S.optional(S.Number),
-    disassociating_recipient_count: S.optional(S.Number),
+    targetType: ListResultItemTargetType.pipe(T.Body("target_type")),
+    associatedRecipientCount: S.optional(
+      S.Number.pipe(T.Body("associated_recipient_count")),
+    ),
+    associatingRecipientCount: S.optional(
+      S.Number.pipe(T.Body("associating_recipient_count")),
+    ),
+    disassociatedRecipientCount: S.optional(
+      S.Number.pipe(T.Body("disassociated_recipient_count")),
+    ),
+    disassociatingRecipientCount: S.optional(
+      S.Number.pipe(T.Body("disassociating_recipient_count")),
+    ),
     kind: S.optional(ListResultItemKind),
     resources: S.optional(ListResultItemResourcesList),
   }),
@@ -584,6 +745,7 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResultList>;
 
 export interface ListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
 export const ListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -593,19 +755,26 @@ export const ListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
 
 export interface RecipientsCreateRequest {
-  account_id: string;
-  share_id: string;
-  account_id_2?: string;
-  organization_id?: string;
-  recipient_account_id?: string;
+  /** Account identifier. */
+  accountId: string;
+  /** Share identifier tag. */
+  shareId: string;
+  /** Deprecated alias for `recipient_account_id`. Use `recipient_account_id` instead. */
+  accountId2?: string;
+  /** Organization identifier. */
+  organizationId?: string;
+  /** The account that will receive the share. */
+  recipientAccountId?: string;
 }
 export const RecipientsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    share_id: S.String.pipe(T.Label()),
-    account_id_2: S.optional(S.String.pipe(T.Body("account_id"))),
-    organization_id: S.optional(S.String),
-    recipient_account_id: S.optional(S.String),
+    accountId: S.String.pipe(T.Label("account_id")),
+    shareId: S.String.pipe(T.Label("share_id")),
+    accountId2: S.optional(S.String.pipe(T.Body("account_id"))),
+    organizationId: S.optional(S.String.pipe(T.Body("organization_id"))),
+    recipientAccountId: S.optional(
+      S.String.pipe(T.Body("recipient_account_id")),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -626,17 +795,21 @@ export type RecipientsCreateResponseAssociationStatus =
 export const RecipientsCreateResponseAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface RecipientsCreateResponseResourcesItem {
+  /** Share Recipient error message. */
   error: string;
-  resource_id: string;
-  resource_version: number;
+  /** Share Resource identifier. */
+  resourceId: string;
+  /** Resource Version. */
+  resourceVersion: number;
+  /** Whether the error is terminal or will be continually retried. */
   terminal: boolean;
 }
 export const RecipientsCreateResponseResourcesItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       error: S.String,
-      resource_id: S.String,
-      resource_version: S.Number,
+      resourceId: S.String.pipe(T.Body("resource_id")),
+      resourceVersion: S.Number.pipe(T.Body("resource_version")),
       terminal: S.Boolean,
     }),
 ).annotate({
@@ -651,18 +824,25 @@ export const RecipientsCreateResponseResourcesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RecipientsCreateResponse {
+  /** Share Recipient identifier tag. */
   id: string;
-  account_id: string;
-  association_status: RecipientsCreateResponseAssociationStatus;
+  /** Account identifier. */
+  accountId: string;
+  /** Share Recipient association status. */
+  associationStatus: RecipientsCreateResponseAssociationStatus;
+  /** When the share was created. */
   created: string;
+  /** When the share was modified. */
   modified: string;
   resources?: RecipientsCreateResponseResourcesList;
 }
 export const RecipientsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    account_id: S.String,
-    association_status: RecipientsCreateResponseAssociationStatus,
+    accountId: S.String.pipe(T.Body("account_id")),
+    associationStatus: RecipientsCreateResponseAssociationStatus.pipe(
+      T.Body("association_status"),
+    ),
     created: S.String,
     modified: S.String,
     resources: S.optional(RecipientsCreateResponseResourcesList),
@@ -672,15 +852,18 @@ export const RecipientsCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecipientsCreateResponse>;
 
 export interface RecipientsDeleteRequest {
-  account_id: string;
-  share_id: string;
-  recipient_id: string;
+  /** Account identifier. */
+  accountId: string;
+  /** Share identifier tag. */
+  shareId: string;
+  /** Share Recipient identifier tag. */
+  recipientId: string;
 }
 export const RecipientsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    share_id: S.String.pipe(T.Label()),
-    recipient_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    shareId: S.String.pipe(T.Label("share_id")),
+    recipientId: S.String.pipe(T.Label("recipient_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -701,17 +884,21 @@ export type RecipientsDeleteResponseAssociationStatus =
 export const RecipientsDeleteResponseAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface RecipientsDeleteResponseResourcesItem {
+  /** Share Recipient error message. */
   error: string;
-  resource_id: string;
-  resource_version: number;
+  /** Share Resource identifier. */
+  resourceId: string;
+  /** Resource Version. */
+  resourceVersion: number;
+  /** Whether the error is terminal or will be continually retried. */
   terminal: boolean;
 }
 export const RecipientsDeleteResponseResourcesItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       error: S.String,
-      resource_id: S.String,
-      resource_version: S.Number,
+      resourceId: S.String.pipe(T.Body("resource_id")),
+      resourceVersion: S.Number.pipe(T.Body("resource_version")),
       terminal: S.Boolean,
     }),
 ).annotate({
@@ -726,18 +913,25 @@ export const RecipientsDeleteResponseResourcesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RecipientsDeleteResponse {
+  /** Share Recipient identifier tag. */
   id: string;
-  account_id: string;
-  association_status: RecipientsDeleteResponseAssociationStatus;
+  /** Account identifier. */
+  accountId: string;
+  /** Share Recipient association status. */
+  associationStatus: RecipientsDeleteResponseAssociationStatus;
+  /** When the share was created. */
   created: string;
+  /** When the share was modified. */
   modified: string;
   resources?: RecipientsDeleteResponseResourcesList;
 }
 export const RecipientsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    account_id: S.String,
-    association_status: RecipientsDeleteResponseAssociationStatus,
+    accountId: S.String.pipe(T.Body("account_id")),
+    associationStatus: RecipientsDeleteResponseAssociationStatus.pipe(
+      T.Body("association_status"),
+    ),
     created: S.String,
     modified: S.String,
     resources: S.optional(RecipientsDeleteResponseResourcesList),
@@ -747,17 +941,21 @@ export const RecipientsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecipientsDeleteResponse>;
 
 export interface RecipientsGetRequest {
-  account_id: string;
-  share_id: string;
-  recipient_id: string;
-  include_resources?: boolean;
+  /** Account identifier. */
+  accountId: string;
+  /** Share identifier tag. */
+  shareId: string;
+  /** Share Recipient identifier tag. */
+  recipientId: string;
+  /** Include resources in the response. */
+  includeResources?: boolean;
 }
 export const RecipientsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    share_id: S.String.pipe(T.Label()),
-    recipient_id: S.String.pipe(T.Label()),
-    include_resources: S.optional(S.Boolean.pipe(T.Query())),
+    accountId: S.String.pipe(T.Label("account_id")),
+    shareId: S.String.pipe(T.Label("share_id")),
+    recipientId: S.String.pipe(T.Label("recipient_id")),
+    includeResources: S.optional(S.Boolean.pipe(T.Query("include_resources"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -778,16 +976,20 @@ export type RecipientsGetResponseAssociationStatus =
 export const RecipientsGetResponseAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface RecipientsGetResponseResourcesItem {
+  /** Share Recipient error message. */
   error: string;
-  resource_id: string;
-  resource_version: number;
+  /** Share Resource identifier. */
+  resourceId: string;
+  /** Resource Version. */
+  resourceVersion: number;
+  /** Whether the error is terminal or will be continually retried. */
   terminal: boolean;
 }
 export const RecipientsGetResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.String,
-    resource_id: S.String,
-    resource_version: S.Number,
+    resourceId: S.String.pipe(T.Body("resource_id")),
+    resourceVersion: S.Number.pipe(T.Body("resource_version")),
     terminal: S.Boolean,
   }),
 ).annotate({
@@ -802,18 +1004,25 @@ export const RecipientsGetResponseResourcesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RecipientsGetResponse {
+  /** Share Recipient identifier tag. */
   id: string;
-  account_id: string;
-  association_status: RecipientsGetResponseAssociationStatus;
+  /** Account identifier. */
+  accountId: string;
+  /** Share Recipient association status. */
+  associationStatus: RecipientsGetResponseAssociationStatus;
+  /** When the share was created. */
   created: string;
+  /** When the share was modified. */
   modified: string;
   resources?: RecipientsGetResponseResourcesList;
 }
 export const RecipientsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    account_id: S.String,
-    association_status: RecipientsGetResponseAssociationStatus,
+    accountId: S.String.pipe(T.Body("account_id")),
+    associationStatus: RecipientsGetResponseAssociationStatus.pipe(
+      T.Body("association_status"),
+    ),
     created: S.String,
     modified: S.String,
     resources: S.optional(RecipientsGetResponseResourcesList),
@@ -823,19 +1032,24 @@ export const RecipientsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecipientsGetResponse>;
 
 export interface RecipientsListRequest {
-  account_id: string;
-  share_id: string;
-  include_resources?: boolean;
+  /** Account identifier. */
+  accountId: string;
+  /** Share identifier tag. */
+  shareId: string;
+  /** Include resources in the response. */
+  includeResources?: boolean;
+  /** Page number. Defaults to `1` when `per_page` is supplied without */
   page?: number;
-  per_page?: number;
+  /** Number of objects to return per page. Defaults to `20` when `page` */
+  perPage?: number;
 }
 export const RecipientsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    share_id: S.String.pipe(T.Label()),
-    include_resources: S.optional(S.Boolean.pipe(T.Query())),
+    accountId: S.String.pipe(T.Label("account_id")),
+    shareId: S.String.pipe(T.Label("share_id")),
+    includeResources: S.optional(S.Boolean.pipe(T.Query("include_resources"))),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -856,17 +1070,21 @@ export type RecipientsListResultItemAssociationStatus =
 export const RecipientsListResultItemAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface RecipientsListResultItemResourcesItem {
+  /** Share Recipient error message. */
   error: string;
-  resource_id: string;
-  resource_version: number;
+  /** Share Resource identifier. */
+  resourceId: string;
+  /** Resource Version. */
+  resourceVersion: number;
+  /** Whether the error is terminal or will be continually retried. */
   terminal: boolean;
 }
 export const RecipientsListResultItemResourcesItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       error: S.String,
-      resource_id: S.String,
-      resource_version: S.Number,
+      resourceId: S.String.pipe(T.Body("resource_id")),
+      resourceVersion: S.Number.pipe(T.Body("resource_version")),
       terminal: S.Boolean,
     }),
 ).annotate({
@@ -880,18 +1098,25 @@ export const RecipientsListResultItemResourcesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RecipientsListResultItemResourcesList>;
 
 export interface RecipientsListResultItem {
+  /** Share Recipient identifier tag. */
   id: string;
-  account_id: string;
-  association_status: RecipientsListResultItemAssociationStatus;
+  /** Account identifier. */
+  accountId: string;
+  /** Share Recipient association status. */
+  associationStatus: RecipientsListResultItemAssociationStatus;
+  /** When the share was created. */
   created: string;
+  /** When the share was modified. */
   modified: string;
   resources?: RecipientsListResultItemResourcesList;
 }
 export const RecipientsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    account_id: S.String,
-    association_status: RecipientsListResultItemAssociationStatus,
+    accountId: S.String.pipe(T.Body("account_id")),
+    associationStatus: RecipientsListResultItemAssociationStatus.pipe(
+      T.Body("association_status"),
+    ),
     created: S.String,
     modified: S.String,
     resources: S.optional(RecipientsListResultItemResourcesList),
@@ -906,6 +1131,7 @@ export const RecipientsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RecipientsListResultList>;
 
 export interface RecipientsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RecipientsListResultList;
 }
 export const RecipientsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -924,21 +1150,29 @@ export type ResourcesCreateRequestResourceType =
 export const ResourcesCreateRequestResourceType = /*@__PURE__*/ S.String;
 
 export interface ResourcesCreateRequest {
-  account_id: string;
-  share_id: string;
+  /** Account identifier. */
+  accountId: string;
+  /** Share identifier tag. */
+  shareId: string;
+  /** Resource Metadata. */
   meta: unknown;
-  resource_account_id: string;
-  resource_id: string;
-  resource_type: ResourcesCreateRequestResourceType;
+  /** Account identifier. */
+  resourceAccountId: string;
+  /** Share Resource identifier. */
+  resourceId: string;
+  /** Resource Type. */
+  resourceType: ResourcesCreateRequestResourceType;
 }
 export const ResourcesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    share_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    shareId: S.String.pipe(T.Label("share_id")),
     meta: S.Unknown,
-    resource_account_id: S.String,
-    resource_id: S.String,
-    resource_type: ResourcesCreateRequestResourceType,
+    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
+    resourceId: S.String.pipe(T.Body("resource_id")),
+    resourceType: ResourcesCreateRequestResourceType.pipe(
+      T.Body("resource_type"),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -966,14 +1200,23 @@ export const ResourcesCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ResourcesCreateResponse {
+  /** Share Resource identifier. */
   id: string;
+  /** When the share was created. */
   created: string;
+  /** Resource Metadata. */
   meta: unknown;
+  /** When the share was modified. */
   modified: string;
-  resource_account_id: string;
-  resource_id: string;
-  resource_type: ResourcesCreateResponseResourceType;
-  resource_version: number;
+  /** Account identifier. */
+  resourceAccountId: string;
+  /** Share Resource identifier. */
+  resourceId: string;
+  /** Resource Type. */
+  resourceType: ResourcesCreateResponseResourceType;
+  /** Resource Version. */
+  resourceVersion: number;
+  /** Resource Status. */
   status: ResourcesCreateResponseStatus;
 }
 export const ResourcesCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -982,10 +1225,12 @@ export const ResourcesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     meta: S.Unknown,
     modified: S.String,
-    resource_account_id: S.String,
-    resource_id: S.String,
-    resource_type: ResourcesCreateResponseResourceType,
-    resource_version: S.Number,
+    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
+    resourceId: S.String.pipe(T.Body("resource_id")),
+    resourceType: ResourcesCreateResponseResourceType.pipe(
+      T.Body("resource_type"),
+    ),
+    resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: ResourcesCreateResponseStatus,
   }),
 ).annotate({
@@ -993,15 +1238,18 @@ export const ResourcesCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcesCreateResponse>;
 
 export interface ResourcesDeleteRequest {
-  account_id: string;
-  share_id: string;
-  share_resource_id: string;
+  /** Account identifier. */
+  accountId: string;
+  /** Share identifier tag. */
+  shareId: string;
+  /** Share Resource identifier. */
+  shareResourceId: string;
 }
 export const ResourcesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    share_id: S.String.pipe(T.Label()),
-    share_resource_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    shareId: S.String.pipe(T.Label("share_id")),
+    shareResourceId: S.String.pipe(T.Label("share_resource_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1029,14 +1277,23 @@ export const ResourcesDeleteResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ResourcesDeleteResponse {
+  /** Share Resource identifier. */
   id: string;
+  /** When the share was created. */
   created: string;
+  /** Resource Metadata. */
   meta: unknown;
+  /** When the share was modified. */
   modified: string;
-  resource_account_id: string;
-  resource_id: string;
-  resource_type: ResourcesDeleteResponseResourceType;
-  resource_version: number;
+  /** Account identifier. */
+  resourceAccountId: string;
+  /** Share Resource identifier. */
+  resourceId: string;
+  /** Resource Type. */
+  resourceType: ResourcesDeleteResponseResourceType;
+  /** Resource Version. */
+  resourceVersion: number;
+  /** Resource Status. */
   status: ResourcesDeleteResponseStatus;
 }
 export const ResourcesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1045,10 +1302,12 @@ export const ResourcesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     meta: S.Unknown,
     modified: S.String,
-    resource_account_id: S.String,
-    resource_id: S.String,
-    resource_type: ResourcesDeleteResponseResourceType,
-    resource_version: S.Number,
+    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
+    resourceId: S.String.pipe(T.Body("resource_id")),
+    resourceType: ResourcesDeleteResponseResourceType.pipe(
+      T.Body("resource_type"),
+    ),
+    resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: ResourcesDeleteResponseStatus,
   }),
 ).annotate({
@@ -1056,15 +1315,18 @@ export const ResourcesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcesDeleteResponse>;
 
 export interface ResourcesGetRequest {
-  account_id: string;
-  share_id: string;
-  share_resource_id: string;
+  /** Account identifier. */
+  accountId: string;
+  /** Share identifier tag. */
+  shareId: string;
+  /** Share Resource identifier. */
+  shareResourceId: string;
 }
 export const ResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    share_id: S.String.pipe(T.Label()),
-    share_resource_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    shareId: S.String.pipe(T.Label("share_id")),
+    shareResourceId: S.String.pipe(T.Label("share_resource_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1092,14 +1354,23 @@ export const ResourcesGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ResourcesGetResponse {
+  /** Share Resource identifier. */
   id: string;
+  /** When the share was created. */
   created: string;
+  /** Resource Metadata. */
   meta: unknown;
+  /** When the share was modified. */
   modified: string;
-  resource_account_id: string;
-  resource_id: string;
-  resource_type: ResourcesGetResponseResourceType;
-  resource_version: number;
+  /** Account identifier. */
+  resourceAccountId: string;
+  /** Share Resource identifier. */
+  resourceId: string;
+  /** Resource Type. */
+  resourceType: ResourcesGetResponseResourceType;
+  /** Resource Version. */
+  resourceVersion: number;
+  /** Resource Status. */
   status: ResourcesGetResponseStatus;
 }
 export const ResourcesGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1108,10 +1379,12 @@ export const ResourcesGetResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     meta: S.Unknown,
     modified: S.String,
-    resource_account_id: S.String,
-    resource_id: S.String,
-    resource_type: ResourcesGetResponseResourceType,
-    resource_version: S.Number,
+    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
+    resourceId: S.String.pipe(T.Body("resource_id")),
+    resourceType: ResourcesGetResponseResourceType.pipe(
+      T.Body("resource_type"),
+    ),
+    resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: ResourcesGetResponseStatus,
   }),
 ).annotate({
@@ -1133,20 +1406,28 @@ export type ResourcesListRequestStatus =
 export const ResourcesListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ResourcesListRequest {
-  account_id: string;
-  share_id: string;
+  /** Account identifier. */
+  accountId: string;
+  /** Share identifier tag. */
+  shareId: string;
+  /** Page number. Defaults to `1` when `per_page` is supplied without */
   page?: number;
-  per_page?: number;
-  resource_type?: ResourcesListRequestResourceType;
+  /** Number of objects to return per page. Defaults to `20` when `page` */
+  perPage?: number;
+  /** Filter share resources by resource_type. */
+  resourceType?: ResourcesListRequestResourceType;
+  /** Filter share resources by status. */
   status?: ResourcesListRequestStatus;
 }
 export const ResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    share_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    shareId: S.String.pipe(T.Label("share_id")),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
-    resource_type: S.optional(ResourcesListRequestResourceType.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    resourceType: S.optional(
+      ResourcesListRequestResourceType.pipe(T.Query("resource_type")),
+    ),
     status: S.optional(ResourcesListRequestStatus.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -1174,14 +1455,23 @@ export type ResourcesListResultItemStatus =
 export const ResourcesListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface ResourcesListResultItem {
+  /** Share Resource identifier. */
   id: string;
+  /** When the share was created. */
   created: string;
+  /** Resource Metadata. */
   meta: unknown;
+  /** When the share was modified. */
   modified: string;
-  resource_account_id: string;
-  resource_id: string;
-  resource_type: ResourcesListResultItemResourceType;
-  resource_version: number;
+  /** Account identifier. */
+  resourceAccountId: string;
+  /** Share Resource identifier. */
+  resourceId: string;
+  /** Resource Type. */
+  resourceType: ResourcesListResultItemResourceType;
+  /** Resource Version. */
+  resourceVersion: number;
+  /** Resource Status. */
   status: ResourcesListResultItemStatus;
 }
 export const ResourcesListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -1190,10 +1480,12 @@ export const ResourcesListResultItem = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     meta: S.Unknown,
     modified: S.String,
-    resource_account_id: S.String,
-    resource_id: S.String,
-    resource_type: ResourcesListResultItemResourceType,
-    resource_version: S.Number,
+    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
+    resourceId: S.String.pipe(T.Body("resource_id")),
+    resourceType: ResourcesListResultItemResourceType.pipe(
+      T.Body("resource_type"),
+    ),
+    resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: ResourcesListResultItemStatus,
   }),
 ).annotate({
@@ -1206,6 +1498,7 @@ export const ResourcesListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ResourcesListResultList>;
 
 export interface ResourcesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ResourcesListResultList;
 }
 export const ResourcesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1217,16 +1510,20 @@ export const ResourcesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcesListResponse>;
 
 export interface ResourcesUpdateRequest {
-  account_id: string;
-  share_id: string;
-  share_resource_id: string;
+  /** Account identifier. */
+  accountId: string;
+  /** Share identifier tag. */
+  shareId: string;
+  /** Share Resource identifier. */
+  shareResourceId: string;
+  /** Resource Metadata. */
   meta: unknown;
 }
 export const ResourcesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    share_id: S.String.pipe(T.Label()),
-    share_resource_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    shareId: S.String.pipe(T.Label("share_id")),
+    shareResourceId: S.String.pipe(T.Label("share_resource_id")),
     meta: S.Unknown,
   }).pipe(
     T.Http({
@@ -1255,14 +1552,23 @@ export const ResourcesUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ResourcesUpdateResponse {
+  /** Share Resource identifier. */
   id: string;
+  /** When the share was created. */
   created: string;
+  /** Resource Metadata. */
   meta: unknown;
+  /** When the share was modified. */
   modified: string;
-  resource_account_id: string;
-  resource_id: string;
-  resource_type: ResourcesUpdateResponseResourceType;
-  resource_version: number;
+  /** Account identifier. */
+  resourceAccountId: string;
+  /** Share Resource identifier. */
+  resourceId: string;
+  /** Resource Type. */
+  resourceType: ResourcesUpdateResponseResourceType;
+  /** Resource Version. */
+  resourceVersion: number;
+  /** Resource Status. */
   status: ResourcesUpdateResponseStatus;
 }
 export const ResourcesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1271,10 +1577,12 @@ export const ResourcesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     meta: S.Unknown,
     modified: S.String,
-    resource_account_id: S.String,
-    resource_id: S.String,
-    resource_type: ResourcesUpdateResponseResourceType,
-    resource_version: S.Number,
+    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
+    resourceId: S.String.pipe(T.Body("resource_id")),
+    resourceType: ResourcesUpdateResponseResourceType.pipe(
+      T.Body("resource_type"),
+    ),
+    resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: ResourcesUpdateResponseStatus,
   }),
 ).annotate({
@@ -1282,14 +1590,17 @@ export const ResourcesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcesUpdateResponse>;
 
 export interface UpdateRequest {
-  account_id: string;
-  share_id: string;
+  /** Account identifier. */
+  accountId: string;
+  /** Share identifier tag. */
+  shareId: string;
+  /** The name of the share. */
   name: string;
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    share_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    shareId: S.String.pipe(T.Label("share_id")),
     name: S.String,
   }).pipe(
     T.Http({
@@ -1331,14 +1642,23 @@ export type UpdateResponseResourcesItemStatus =
 export const UpdateResponseResourcesItemStatus = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseResourcesItem {
+  /** Share Resource identifier. */
   id: string;
+  /** When the share was created. */
   created: string;
+  /** Resource Metadata. */
   meta: unknown;
+  /** When the share was modified. */
   modified: string;
-  resource_account_id: string;
-  resource_id: string;
-  resource_type: UpdateResponseResourcesItemResourceType;
-  resource_version: number;
+  /** Account identifier. */
+  resourceAccountId: string;
+  /** Share Resource identifier. */
+  resourceId: string;
+  /** Resource Type. */
+  resourceType: UpdateResponseResourcesItemResourceType;
+  /** Resource Version. */
+  resourceVersion: number;
+  /** Resource Status. */
   status: UpdateResponseResourcesItemStatus;
 }
 export const UpdateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
@@ -1347,10 +1667,12 @@ export const UpdateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
     created: S.String,
     meta: S.Unknown,
     modified: S.String,
-    resource_account_id: S.String,
-    resource_id: S.String,
-    resource_type: UpdateResponseResourcesItemResourceType,
-    resource_version: S.Number,
+    resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
+    resourceId: S.String.pipe(T.Body("resource_id")),
+    resourceType: UpdateResponseResourcesItemResourceType.pipe(
+      T.Body("resource_type"),
+    ),
+    resourceVersion: S.Number.pipe(T.Body("resource_version")),
     status: UpdateResponseResourcesItemStatus,
   }),
 ).annotate({
@@ -1364,47 +1686,68 @@ export const UpdateResponseResourcesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
+  /** Share identifier tag. */
   id: string;
-  account_id: string;
-  account_name: string;
+  /** Account identifier. */
+  accountId: string;
+  /** The display name of an account. */
+  accountName: string;
+  /** When the share was created. */
   created: string;
+  /** When the share was modified. */
   modified: string;
+  /** The name of the share. */
   name: string;
-  organization_id: string;
+  /** Organization identifier. */
+  organizationId: string;
   status: UpdateResponseStatus;
-  target_type: UpdateResponseTargetType;
-  associated_recipient_count?: number;
-  associating_recipient_count?: number;
-  disassociated_recipient_count?: number;
-  disassociating_recipient_count?: number;
+  targetType: UpdateResponseTargetType;
+  /** The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  associatedRecipientCount?: number;
+  /** The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  associatingRecipientCount?: number;
+  /** The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  disassociatedRecipientCount?: number;
+  /** The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter. */
+  disassociatingRecipientCount?: number;
   kind?: UpdateResponseKind;
+  /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
   resources?: UpdateResponseResourcesList;
 }
 export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    account_id: S.String,
-    account_name: S.String,
+    accountId: S.String.pipe(T.Body("account_id")),
+    accountName: S.String.pipe(T.Body("account_name")),
     created: S.String,
     modified: S.String,
     name: S.String,
-    organization_id: S.String,
+    organizationId: S.String.pipe(T.Body("organization_id")),
     status: UpdateResponseStatus,
-    target_type: UpdateResponseTargetType,
-    associated_recipient_count: S.optional(S.Number),
-    associating_recipient_count: S.optional(S.Number),
-    disassociated_recipient_count: S.optional(S.Number),
-    disassociating_recipient_count: S.optional(S.Number),
+    targetType: UpdateResponseTargetType.pipe(T.Body("target_type")),
+    associatedRecipientCount: S.optional(
+      S.Number.pipe(T.Body("associated_recipient_count")),
+    ),
+    associatingRecipientCount: S.optional(
+      S.Number.pipe(T.Body("associating_recipient_count")),
+    ),
+    disassociatedRecipientCount: S.optional(
+      S.Number.pipe(T.Body("disassociated_recipient_count")),
+    ),
+    disassociatingRecipientCount: S.optional(
+      S.Number.pipe(T.Body("disassociating_recipient_count")),
+    ),
     kind: S.optional(UpdateResponseKind),
     resources: S.optional(UpdateResponseResourcesList),
   }),
 ).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
+export type CreateError = CloudflareOpError;
 /** Creates a new resource share for sharing Cloudflare resources with other accounts or organizations. */
-export const Create: API.OperationMethod<
+export const create: API.OperationMethod<
   CreateRequest,
   CreateResponse,
-  CloudflareOpError,
+  CreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRequest,
@@ -1413,11 +1756,12 @@ export const Create: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DeleteError = CloudflareOpError;
 /** Deletion is not immediate, an updated share object with a new status will be returned. */
 export const Delete: API.OperationMethod<
   DeleteRequest,
   DeleteResponse,
-  CloudflareOpError,
+  DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequest,
@@ -1426,11 +1770,12 @@ export const Delete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Fetches share by ID. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -1439,11 +1784,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ListError = CloudflareOpError;
 /** Lists all account shares. */
-export const List: API.OperationMethod<
+export const list: API.OperationMethod<
   ListRequest,
   ListResponse,
-  CloudflareOpError,
+  ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRequest,
@@ -1452,11 +1798,12 @@ export const List: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RecipientsCreateError = CloudflareOpError;
 /** Adds a recipient to a resource share, granting them access to the shared resources. */
-export const RecipientsCreate: API.OperationMethod<
+export const recipientsCreate: API.OperationMethod<
   RecipientsCreateRequest,
   RecipientsCreateResponse,
-  CloudflareOpError,
+  RecipientsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RecipientsCreateRequest,
@@ -1465,11 +1812,12 @@ export const RecipientsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RecipientsDeleteError = CloudflareOpError;
 /** Deletion is not immediate, an updated share recipient object with a new status will be returned. */
-export const RecipientsDelete: API.OperationMethod<
+export const recipientsDelete: API.OperationMethod<
   RecipientsDeleteRequest,
   RecipientsDeleteResponse,
-  CloudflareOpError,
+  RecipientsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RecipientsDeleteRequest,
@@ -1478,11 +1826,12 @@ export const RecipientsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RecipientsGetError = CloudflareOpError;
 /** Get share recipient by ID. */
-export const RecipientsGet: API.OperationMethod<
+export const recipientsGet: API.OperationMethod<
   RecipientsGetRequest,
   RecipientsGetResponse,
-  CloudflareOpError,
+  RecipientsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RecipientsGetRequest,
@@ -1491,11 +1840,12 @@ export const RecipientsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RecipientsListError = CloudflareOpError;
 /** List share recipients by share ID. */
-export const RecipientsList: API.OperationMethod<
+export const recipientsList: API.OperationMethod<
   RecipientsListRequest,
   RecipientsListResponse,
-  CloudflareOpError,
+  RecipientsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RecipientsListRequest,
@@ -1504,11 +1854,12 @@ export const RecipientsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ResourcesCreateError = CloudflareOpError;
 /** Adds a resource to an existing share, making it available to share recipients. */
-export const ResourcesCreate: API.OperationMethod<
+export const resourcesCreate: API.OperationMethod<
   ResourcesCreateRequest,
   ResourcesCreateResponse,
-  CloudflareOpError,
+  ResourcesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ResourcesCreateRequest,
@@ -1517,11 +1868,12 @@ export const ResourcesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ResourcesDeleteError = CloudflareOpError;
 /** Deletion is not immediate, an updated share resource object with a new status will be returned. */
-export const ResourcesDelete: API.OperationMethod<
+export const resourcesDelete: API.OperationMethod<
   ResourcesDeleteRequest,
   ResourcesDeleteResponse,
-  CloudflareOpError,
+  ResourcesDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ResourcesDeleteRequest,
@@ -1530,11 +1882,12 @@ export const ResourcesDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ResourcesGetError = CloudflareOpError;
 /** Get share resource by ID. */
-export const ResourcesGet: API.OperationMethod<
+export const resourcesGet: API.OperationMethod<
   ResourcesGetRequest,
   ResourcesGetResponse,
-  CloudflareOpError,
+  ResourcesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ResourcesGetRequest,
@@ -1543,11 +1896,12 @@ export const ResourcesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ResourcesListError = CloudflareOpError;
 /** List share resources by share ID. */
-export const ResourcesList: API.OperationMethod<
+export const resourcesList: API.OperationMethod<
   ResourcesListRequest,
   ResourcesListResponse,
-  CloudflareOpError,
+  ResourcesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ResourcesListRequest,
@@ -1556,11 +1910,12 @@ export const ResourcesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ResourcesUpdateError = CloudflareOpError;
 /** Update is not immediate, an updated share resource object with a new status will be returned. */
-export const ResourcesUpdate: API.OperationMethod<
+export const resourcesUpdate: API.OperationMethod<
   ResourcesUpdateRequest,
   ResourcesUpdateResponse,
-  CloudflareOpError,
+  ResourcesUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ResourcesUpdateRequest,
@@ -1569,11 +1924,12 @@ export const ResourcesUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UpdateError = CloudflareOpError;
 /** Updating is not immediate, an updated share object with a new status will be returned. */
-export const Update: API.OperationMethod<
+export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,
-  CloudflareOpError,
+  UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,

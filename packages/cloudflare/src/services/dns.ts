@@ -18,27 +18,36 @@ export const AnalyticsReportsBytimesGetRequestTimeDelta =
   /*@__PURE__*/ S.String;
 
 export interface AnalyticsReportsBytimesGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** A comma-separated list of dimensions to group results by. */
   dimensions?: string;
+  /** Segmentation filter in 'attribute operator value' format. */
   filters?: string;
+  /** Limit number of returned metrics. */
   limit?: number;
+  /** A comma-separated list of metrics to query. */
   metrics?: string;
+  /** Start date and time of requesting data period in ISO 8601 format. */
   since?: string;
+  /** A comma-separated list of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
   sort?: string;
-  time_delta?: AnalyticsReportsBytimesGetRequestTimeDelta;
+  /** Unit of time to group data by. */
+  timeDelta?: AnalyticsReportsBytimesGetRequestTimeDelta;
+  /** End date and time of requesting data period in ISO 8601 format. */
   until?: string;
 }
 export const AnalyticsReportsBytimesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     dimensions: S.optional(S.String.pipe(T.Query())),
     filters: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     metrics: S.optional(S.String.pipe(T.Query())),
     since: S.optional(S.String.pipe(T.Query())),
     sort: S.optional(S.String.pipe(T.Query())),
-    time_delta: S.optional(
-      AnalyticsReportsBytimesGetRequestTimeDelta.pipe(T.Query()),
+    timeDelta: S.optional(
+      AnalyticsReportsBytimesGetRequestTimeDelta.pipe(T.Query("time_delta")),
     ),
     until: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -52,30 +61,164 @@ export const AnalyticsReportsBytimesGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnalyticsReportsBytimesGetRequest",
 }) as any as S.Schema<AnalyticsReportsBytimesGetRequest>;
 
+export type AnalyticsReportsBytimesGetResponseDataItemDimensionsList = string[];
+export const AnalyticsReportsBytimesGetResponseDataItemDimensionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemDimensionsList>;
+
+export type AnalyticsReportsBytimesGetResponseDataItemMetricsList = unknown[];
+export const AnalyticsReportsBytimesGetResponseDataItemMetricsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemMetricsList>;
+
+export interface AnalyticsReportsBytimesGetResponseDataItem {
+  /** Array of dimension values, representing the combination of dimension values corresponding to this row. */
+  dimensions: AnalyticsReportsBytimesGetResponseDataItemDimensionsList;
+  /** Array with one item per requested metric. Each item is an array of values, broken down by time interval. */
+  metrics: AnalyticsReportsBytimesGetResponseDataItemMetricsList;
+}
+export const AnalyticsReportsBytimesGetResponseDataItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dimensions: AnalyticsReportsBytimesGetResponseDataItemDimensionsList,
+      metrics: AnalyticsReportsBytimesGetResponseDataItemMetricsList,
+    }),
+  ).annotate({
+    identifier: "AnalyticsReportsBytimesGetResponseDataItem",
+  }) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItem>;
+
+export type AnalyticsReportsBytimesGetResponseDataList =
+  AnalyticsReportsBytimesGetResponseDataItem[];
+export const AnalyticsReportsBytimesGetResponseDataList = /*@__PURE__*/ S.Array(
+  AnalyticsReportsBytimesGetResponseDataItem,
+) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataList>;
+
+export type AnalyticsReportsBytimesGetResponseQueryDimensionsList = string[];
+export const AnalyticsReportsBytimesGetResponseQueryDimensionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseQueryDimensionsList>;
+
+export type AnalyticsReportsBytimesGetResponseQueryMetricsList = string[];
+export const AnalyticsReportsBytimesGetResponseQueryMetricsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseQueryMetricsList>;
+
+export type AnalyticsReportsBytimesGetResponseQueryTimeDelta =
+  | "all"
+  | "auto"
+  | "year"
+  | (string & {});
+export const AnalyticsReportsBytimesGetResponseQueryTimeDelta =
+  /*@__PURE__*/ S.String;
+
+export type AnalyticsReportsBytimesGetResponseQuerySortList = string[];
+export const AnalyticsReportsBytimesGetResponseQuerySortList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseQuerySortList>;
+
+export interface AnalyticsReportsBytimesGetResponseQuery {
+  /** Array of dimension names. */
+  dimensions: AnalyticsReportsBytimesGetResponseQueryDimensionsList;
+  /** Limit number of returned metrics. */
+  limit: number;
+  /** Array of metric names. */
+  metrics: AnalyticsReportsBytimesGetResponseQueryMetricsList;
+  /** Start date and time of requesting data period in ISO 8601 format. */
+  since: string;
+  /** Unit of time to group data by. */
+  timeDelta: AnalyticsReportsBytimesGetResponseQueryTimeDelta;
+  /** End date and time of requesting data period in ISO 8601 format. */
+  until: string;
+  /** Segmentation filter in 'attribute operator value' format. */
+  filters?: string;
+  /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
+  sort?: AnalyticsReportsBytimesGetResponseQuerySortList;
+}
+export const AnalyticsReportsBytimesGetResponseQuery = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      dimensions: AnalyticsReportsBytimesGetResponseQueryDimensionsList,
+      limit: S.Number,
+      metrics: AnalyticsReportsBytimesGetResponseQueryMetricsList,
+      since: S.String,
+      timeDelta: AnalyticsReportsBytimesGetResponseQueryTimeDelta.pipe(
+        T.Body("time_delta"),
+      ),
+      until: S.String,
+      filters: S.optional(S.String),
+      sort: S.optional(AnalyticsReportsBytimesGetResponseQuerySortList),
+    }),
+).annotate({
+  identifier: "AnalyticsReportsBytimesGetResponseQuery",
+}) as any as S.Schema<AnalyticsReportsBytimesGetResponseQuery>;
+
+export type AnalyticsReportsBytimesGetResponseTimeIntervalsList = unknown[];
+export const AnalyticsReportsBytimesGetResponseTimeIntervalsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseTimeIntervalsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AnalyticsReportsBytimesGetResponse {
-  result?: unknown;
+  /** Array with one row per combination of dimension values. */
+  data: AnalyticsReportsBytimesGetResponseDataList;
+  /** Number of seconds between current time and last processed event, in another words how many seconds of data could be missing. */
+  dataLag: number;
+  /** Maximum results for each metric (object mapping metric names to values). Currently always an empty object. */
+  max: unknown;
+  /** Minimum results for each metric (object mapping metric names to values). Currently always an empty object. */
+  min: unknown;
+  query: AnalyticsReportsBytimesGetResponseQuery;
+  /** Total number of rows in the result. */
+  rows: number;
+  /** Array of time intervals in the response data. Each interval is represented as an array containing two values: the start time, and the end time. */
+  timeIntervals: AnalyticsReportsBytimesGetResponseTimeIntervalsList;
+  /** Total results for metrics across all data (object mapping metric names to values). */
+  totals: unknown;
 }
 export const AnalyticsReportsBytimesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    data: AnalyticsReportsBytimesGetResponseDataList,
+    dataLag: S.Number.pipe(T.Body("data_lag")),
+    max: S.Unknown,
+    min: S.Unknown,
+    query: AnalyticsReportsBytimesGetResponseQuery,
+    rows: S.Number,
+    timeIntervals: AnalyticsReportsBytimesGetResponseTimeIntervalsList.pipe(
+      T.Body("time_intervals"),
+    ),
+    totals: S.Unknown,
   }),
 ).annotate({
   identifier: "AnalyticsReportsBytimesGetResponse",
 }) as any as S.Schema<AnalyticsReportsBytimesGetResponse>;
 
 export interface AnalyticsReportsGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** A comma-separated list of dimensions to group results by. */
   dimensions?: string;
+  /** Segmentation filter in 'attribute operator value' format. */
   filters?: string;
+  /** Limit number of returned metrics. */
   limit?: number;
+  /** A comma-separated list of metrics to query. */
   metrics?: string;
+  /** Start date and time of requesting data period in ISO 8601 format. */
   since?: string;
+  /** A comma-separated list of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
   sort?: string;
+  /** End date and time of requesting data period in ISO 8601 format. */
   until?: string;
 }
 export const AnalyticsReportsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     dimensions: S.optional(S.String.pipe(T.Query())),
     filters: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -94,23 +237,123 @@ export const AnalyticsReportsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnalyticsReportsGetRequest",
 }) as any as S.Schema<AnalyticsReportsGetRequest>;
 
+export type AnalyticsReportsGetResponseDataItemDimensionsList = string[];
+export const AnalyticsReportsGetResponseDataItemDimensionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsGetResponseDataItemDimensionsList>;
+
+export type AnalyticsReportsGetResponseDataItemMetricsList = number[];
+export const AnalyticsReportsGetResponseDataItemMetricsList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<AnalyticsReportsGetResponseDataItemMetricsList>;
+
+export interface AnalyticsReportsGetResponseDataItem {
+  /** Array of dimension values, representing the combination of dimension values corresponding to this row. */
+  dimensions: AnalyticsReportsGetResponseDataItemDimensionsList;
+  /** Array with one item per requested metric. Each item is a single value. */
+  metrics: AnalyticsReportsGetResponseDataItemMetricsList;
+}
+export const AnalyticsReportsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dimensions: AnalyticsReportsGetResponseDataItemDimensionsList,
+    metrics: AnalyticsReportsGetResponseDataItemMetricsList,
+  }),
+).annotate({
+  identifier: "AnalyticsReportsGetResponseDataItem",
+}) as any as S.Schema<AnalyticsReportsGetResponseDataItem>;
+
+export type AnalyticsReportsGetResponseDataList =
+  AnalyticsReportsGetResponseDataItem[];
+export const AnalyticsReportsGetResponseDataList = /*@__PURE__*/ S.Array(
+  AnalyticsReportsGetResponseDataItem,
+) as any as S.Schema<AnalyticsReportsGetResponseDataList>;
+
+export type AnalyticsReportsGetResponseQueryDimensionsList = string[];
+export const AnalyticsReportsGetResponseQueryDimensionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsGetResponseQueryDimensionsList>;
+
+export type AnalyticsReportsGetResponseQueryMetricsList = string[];
+export const AnalyticsReportsGetResponseQueryMetricsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsGetResponseQueryMetricsList>;
+
+export type AnalyticsReportsGetResponseQuerySortList = string[];
+export const AnalyticsReportsGetResponseQuerySortList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AnalyticsReportsGetResponseQuerySortList>;
+
+export interface AnalyticsReportsGetResponseQuery {
+  /** Array of dimension names. */
+  dimensions: AnalyticsReportsGetResponseQueryDimensionsList;
+  /** Limit number of returned metrics. */
+  limit: number;
+  /** Array of metric names. */
+  metrics: AnalyticsReportsGetResponseQueryMetricsList;
+  /** Start date and time of requesting data period in ISO 8601 format. */
+  since: string;
+  /** End date and time of requesting data period in ISO 8601 format. */
+  until: string;
+  /** Segmentation filter in 'attribute operator value' format. */
+  filters?: string;
+  /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
+  sort?: AnalyticsReportsGetResponseQuerySortList;
+}
+export const AnalyticsReportsGetResponseQuery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dimensions: AnalyticsReportsGetResponseQueryDimensionsList,
+    limit: S.Number,
+    metrics: AnalyticsReportsGetResponseQueryMetricsList,
+    since: S.String,
+    until: S.String,
+    filters: S.optional(S.String),
+    sort: S.optional(AnalyticsReportsGetResponseQuerySortList),
+  }),
+).annotate({
+  identifier: "AnalyticsReportsGetResponseQuery",
+}) as any as S.Schema<AnalyticsReportsGetResponseQuery>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AnalyticsReportsGetResponse {
-  result?: unknown;
+  /** Array with one row per combination of dimension values. */
+  data: AnalyticsReportsGetResponseDataList;
+  /** Number of seconds between current time and last processed event, in another words how many seconds of data could be missing. */
+  dataLag: number;
+  /** Maximum results for each metric (object mapping metric names to values). Currently always an empty object. */
+  max: unknown;
+  /** Minimum results for each metric (object mapping metric names to values). Currently always an empty object. */
+  min: unknown;
+  query: AnalyticsReportsGetResponseQuery;
+  /** Total number of rows in the result. */
+  rows: number;
+  /** Total results for metrics across all data (object mapping metric names to values). */
+  totals: unknown;
 }
 export const AnalyticsReportsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    data: AnalyticsReportsGetResponseDataList,
+    dataLag: S.Number.pipe(T.Body("data_lag")),
+    max: S.Unknown,
+    min: S.Unknown,
+    query: AnalyticsReportsGetResponseQuery,
+    rows: S.Number,
+    totals: S.Unknown,
   }),
 ).annotate({
   identifier: "AnalyticsReportsGetResponse",
 }) as any as S.Schema<AnalyticsReportsGetResponse>;
 
 export interface DnssecDeleteRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const DnssecDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({ method: "DELETE", uri: "/zones/{zone_id}/dnssec", code: 200 }),
   ),
@@ -119,6 +362,7 @@ export const DnssecDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DnssecDeleteRequest>;
 
 export interface DnssecDeleteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: string;
 }
 export const DnssecDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -133,18 +377,25 @@ export type DnssecEditRequestStatus = "active" | "disabled" | (string & {});
 export const DnssecEditRequestStatus = /*@__PURE__*/ S.String;
 
 export interface DnssecEditRequest {
-  zone_id: string;
-  dnssec_multi_signer?: boolean;
-  dnssec_presigned?: boolean;
-  dnssec_use_nsec3?: boolean;
+  /** Identifier. */
+  zoneId: string;
+  /** If true, multi-signer DNSSEC is enabled on the zone, allowing multiple */
+  dnssecMultiSigner?: boolean;
+  /** If true, allows Cloudflare to transfer in a DNSSEC-signed zone */
+  dnssecPresigned?: boolean;
+  /** If true, enables the use of NSEC3 together with DNSSEC on the zone. */
+  dnssecUseNsec3?: boolean;
+  /** Status of DNSSEC, based on user-desired state and presence of necessary records. */
   status?: DnssecEditRequestStatus;
 }
 export const DnssecEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    dnssec_multi_signer: S.optional(S.Boolean),
-    dnssec_presigned: S.optional(S.Boolean),
-    dnssec_use_nsec3: S.optional(S.Boolean),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    dnssecMultiSigner: S.optional(
+      S.Boolean.pipe(T.Body("dnssec_multi_signer")),
+    ),
+    dnssecPresigned: S.optional(S.Boolean.pipe(T.Body("dnssec_presigned"))),
+    dnssecUseNsec3: S.optional(S.Boolean.pipe(T.Body("dnssec_use_nsec3"))),
     status: S.optional(DnssecEditRequestStatus),
   }).pipe(
     T.Http({ method: "PATCH", uri: "/zones/{zone_id}/dnssec", code: 200 }),
@@ -153,40 +404,142 @@ export const DnssecEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DnssecEditRequest",
 }) as any as S.Schema<DnssecEditRequest>;
 
+export type DnssecEditResponseStatus =
+  | "active"
+  | "pending"
+  | "disabled"
+  | (string & {});
+export const DnssecEditResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DnssecEditResponse {
-  result?: unknown;
+  /** Algorithm key code. */
+  algorithm?: string;
+  /** Digest hash. */
+  digest?: string;
+  /** Type of digest algorithm. */
+  digestAlgorithm?: string;
+  /** Coded type for digest algorithm. */
+  digestType?: string;
+  /** If true, multi-signer DNSSEC is enabled on the zone, allowing multiple */
+  dnssecMultiSigner?: boolean;
+  /** If true, allows Cloudflare to transfer in a DNSSEC-signed zone */
+  dnssecPresigned?: boolean;
+  /** If true, enables the use of NSEC3 together with DNSSEC on the zone. */
+  dnssecUseNsec3?: boolean;
+  /** Full DS record. */
+  ds?: string;
+  /** Flag for DNSSEC record. */
+  flags?: number;
+  /** Code for key tag. */
+  keyTag?: number;
+  /** Algorithm key type. */
+  keyType?: string;
+  /** When DNSSEC was last modified. */
+  modifiedOn?: string;
+  /** Public key for DS record. */
+  publicKey?: string;
+  /** Status of DNSSEC, based on user-desired state and presence of necessary records. */
+  status?: DnssecEditResponseStatus;
 }
 export const DnssecEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    algorithm: S.optional(S.String),
+    digest: S.optional(S.String),
+    digestAlgorithm: S.optional(S.String.pipe(T.Body("digest_algorithm"))),
+    digestType: S.optional(S.String.pipe(T.Body("digest_type"))),
+    dnssecMultiSigner: S.optional(
+      S.Boolean.pipe(T.Body("dnssec_multi_signer")),
+    ),
+    dnssecPresigned: S.optional(S.Boolean.pipe(T.Body("dnssec_presigned"))),
+    dnssecUseNsec3: S.optional(S.Boolean.pipe(T.Body("dnssec_use_nsec3"))),
+    ds: S.optional(S.String),
+    flags: S.optional(S.Number),
+    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
+    keyType: S.optional(S.String.pipe(T.Body("key_type"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
+    status: S.optional(DnssecEditResponseStatus),
   }),
 ).annotate({
   identifier: "DnssecEditResponse",
 }) as any as S.Schema<DnssecEditResponse>;
 
 export interface DnssecGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const DnssecGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/dnssec", code: 200 })),
 ).annotate({
   identifier: "DnssecGetRequest",
 }) as any as S.Schema<DnssecGetRequest>;
 
+export type DnssecGetResponseStatus =
+  | "active"
+  | "pending"
+  | "disabled"
+  | (string & {});
+export const DnssecGetResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DnssecGetResponse {
-  result?: unknown;
+  /** Algorithm key code. */
+  algorithm?: string;
+  /** Digest hash. */
+  digest?: string;
+  /** Type of digest algorithm. */
+  digestAlgorithm?: string;
+  /** Coded type for digest algorithm. */
+  digestType?: string;
+  /** If true, multi-signer DNSSEC is enabled on the zone, allowing multiple */
+  dnssecMultiSigner?: boolean;
+  /** If true, allows Cloudflare to transfer in a DNSSEC-signed zone */
+  dnssecPresigned?: boolean;
+  /** If true, enables the use of NSEC3 together with DNSSEC on the zone. */
+  dnssecUseNsec3?: boolean;
+  /** Full DS record. */
+  ds?: string;
+  /** Flag for DNSSEC record. */
+  flags?: number;
+  /** Code for key tag. */
+  keyTag?: number;
+  /** Algorithm key type. */
+  keyType?: string;
+  /** When DNSSEC was last modified. */
+  modifiedOn?: string;
+  /** Public key for DS record. */
+  publicKey?: string;
+  /** Status of DNSSEC, based on user-desired state and presence of necessary records. */
+  status?: DnssecGetResponseStatus;
 }
 export const DnssecGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    algorithm: S.optional(S.String),
+    digest: S.optional(S.String),
+    digestAlgorithm: S.optional(S.String.pipe(T.Body("digest_algorithm"))),
+    digestType: S.optional(S.String.pipe(T.Body("digest_type"))),
+    dnssecMultiSigner: S.optional(
+      S.Boolean.pipe(T.Body("dnssec_multi_signer")),
+    ),
+    dnssecPresigned: S.optional(S.Boolean.pipe(T.Body("dnssec_presigned"))),
+    dnssecUseNsec3: S.optional(S.Boolean.pipe(T.Body("dnssec_use_nsec3"))),
+    ds: S.optional(S.String),
+    flags: S.optional(S.Number),
+    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
+    keyType: S.optional(S.String.pipe(T.Body("key_type"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
+    status: S.optional(DnssecGetResponseStatus),
   }),
 ).annotate({
   identifier: "DnssecGetResponse",
 }) as any as S.Schema<DnssecGetResponse>;
 
 export interface RecordsBatchRequestDeletesItem {
+  /** Identifier. */
   id: string;
 }
 export const RecordsBatchRequestDeletesItem = /*@__PURE__*/ S.suspend(() =>
@@ -202,24 +555,741 @@ export const RecordsBatchRequestDeletesList = /*@__PURE__*/ S.Array(
   RecordsBatchRequestDeletesItem,
 ) as any as S.Schema<RecordsBatchRequestDeletesList>;
 
-export type RecordsBatchRequestPatchesList = unknown[];
+export interface RecordsBatchRequestPatchesItemARecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemARecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItemARecord",
+}) as any as S.Schema<RecordsBatchRequestPatchesItemARecord>;
+
+export interface RecordsBatchRequestPatchesItemAAAARecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemAAAARecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItemAAAARecord",
+}) as any as S.Schema<RecordsBatchRequestPatchesItemAAAARecord>;
+
+export interface RecordsBatchRequestPatchesItemCNAMERecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemCNAMERecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "RecordsBatchRequestPatchesItemCNAMERecord",
+  }) as any as S.Schema<RecordsBatchRequestPatchesItemCNAMERecord>;
+
+export interface RecordsBatchRequestPatchesItemMXRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemMXRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItemMXRecord",
+}) as any as S.Schema<RecordsBatchRequestPatchesItemMXRecord>;
+
+export interface RecordsBatchRequestPatchesItemNSRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemNSRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItemNSRecord",
+}) as any as S.Schema<RecordsBatchRequestPatchesItemNSRecord>;
+
+export interface RecordsBatchRequestPatchesItemPTRRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemPTRRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItemPTRRecord",
+}) as any as S.Schema<RecordsBatchRequestPatchesItemPTRRecord>;
+
+export interface RecordsBatchRequestPatchesItemTXTRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemTXTRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItemTXTRecord",
+}) as any as S.Schema<RecordsBatchRequestPatchesItemTXTRecord>;
+
+export interface RecordsBatchRequestPatchesItemCAARecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemCAARecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItemCAARecord",
+}) as any as S.Schema<RecordsBatchRequestPatchesItemCAARecord>;
+
+export interface RecordsBatchRequestPatchesItemCERTRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemCERTRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItemCERTRecord",
+}) as any as S.Schema<RecordsBatchRequestPatchesItemCERTRecord>;
+
+export interface RecordsBatchRequestPatchesItemDNSKEYRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemDNSKEYRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "RecordsBatchRequestPatchesItemDNSKEYRecord",
+  }) as any as S.Schema<RecordsBatchRequestPatchesItemDNSKEYRecord>;
+
+export interface RecordsBatchRequestPatchesItemDSRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemDSRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItemDSRecord",
+}) as any as S.Schema<RecordsBatchRequestPatchesItemDSRecord>;
+
+export interface RecordsBatchRequestPatchesItemHTTPSRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemHTTPSRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "RecordsBatchRequestPatchesItemHTTPSRecord",
+  }) as any as S.Schema<RecordsBatchRequestPatchesItemHTTPSRecord>;
+
+export interface RecordsBatchRequestPatchesItemLOCRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemLOCRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItemLOCRecord",
+}) as any as S.Schema<RecordsBatchRequestPatchesItemLOCRecord>;
+
+export interface RecordsBatchRequestPatchesItemNAPTRRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemNAPTRRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "RecordsBatchRequestPatchesItemNAPTRRecord",
+  }) as any as S.Schema<RecordsBatchRequestPatchesItemNAPTRRecord>;
+
+export interface RecordsBatchRequestPatchesItemSMIMEARecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemSMIMEARecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "RecordsBatchRequestPatchesItemSMIMEARecord",
+  }) as any as S.Schema<RecordsBatchRequestPatchesItemSMIMEARecord>;
+
+export interface RecordsBatchRequestPatchesItemSRVRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemSRVRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItemSRVRecord",
+}) as any as S.Schema<RecordsBatchRequestPatchesItemSRVRecord>;
+
+export interface RecordsBatchRequestPatchesItemSSHFPRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemSSHFPRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "RecordsBatchRequestPatchesItemSSHFPRecord",
+  }) as any as S.Schema<RecordsBatchRequestPatchesItemSSHFPRecord>;
+
+export interface RecordsBatchRequestPatchesItemSVCBRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemSVCBRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItemSVCBRecord",
+}) as any as S.Schema<RecordsBatchRequestPatchesItemSVCBRecord>;
+
+export interface RecordsBatchRequestPatchesItemTLSARecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemTLSARecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItemTLSARecord",
+}) as any as S.Schema<RecordsBatchRequestPatchesItemTLSARecord>;
+
+export interface RecordsBatchRequestPatchesItemURIRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPatchesItemURIRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItemURIRecord",
+}) as any as S.Schema<RecordsBatchRequestPatchesItemURIRecord>;
+
+export interface RecordsBatchRequestPatchesItem {
+  ARecord: RecordsBatchRequestPatchesItemARecord;
+  AAAARecord: RecordsBatchRequestPatchesItemAAAARecord;
+  CNAMERecord: RecordsBatchRequestPatchesItemCNAMERecord;
+  MXRecord: RecordsBatchRequestPatchesItemMXRecord;
+  NSRecord: RecordsBatchRequestPatchesItemNSRecord;
+  OpenpgpkeyRecordObjectIdNameTtl6More__: unknown;
+  PTRRecord: RecordsBatchRequestPatchesItemPTRRecord;
+  TXTRecord: RecordsBatchRequestPatchesItemTXTRecord;
+  CAARecord: RecordsBatchRequestPatchesItemCAARecord;
+  CERTRecord: RecordsBatchRequestPatchesItemCERTRecord;
+  DNSKEYRecord: RecordsBatchRequestPatchesItemDNSKEYRecord;
+  DSRecord: RecordsBatchRequestPatchesItemDSRecord;
+  HTTPSRecord: RecordsBatchRequestPatchesItemHTTPSRecord;
+  LOCRecord: RecordsBatchRequestPatchesItemLOCRecord;
+  NAPTRRecord: RecordsBatchRequestPatchesItemNAPTRRecord;
+  SMIMEARecord: RecordsBatchRequestPatchesItemSMIMEARecord;
+  SRVRecord: RecordsBatchRequestPatchesItemSRVRecord;
+  SSHFPRecord: RecordsBatchRequestPatchesItemSSHFPRecord;
+  SVCBRecord: RecordsBatchRequestPatchesItemSVCBRecord;
+  TLSARecord: RecordsBatchRequestPatchesItemTLSARecord;
+  URIRecord: RecordsBatchRequestPatchesItemURIRecord;
+}
+export const RecordsBatchRequestPatchesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ARecord: RecordsBatchRequestPatchesItemARecord,
+    AAAARecord: RecordsBatchRequestPatchesItemAAAARecord,
+    CNAMERecord: RecordsBatchRequestPatchesItemCNAMERecord,
+    MXRecord: RecordsBatchRequestPatchesItemMXRecord,
+    NSRecord: RecordsBatchRequestPatchesItemNSRecord,
+    OpenpgpkeyRecordObjectIdNameTtl6More__: S.Unknown.pipe(
+      T.Body("OpenpgpkeyRecord object { id, name, ttl, 6 more }"),
+    ),
+    PTRRecord: RecordsBatchRequestPatchesItemPTRRecord,
+    TXTRecord: RecordsBatchRequestPatchesItemTXTRecord,
+    CAARecord: RecordsBatchRequestPatchesItemCAARecord,
+    CERTRecord: RecordsBatchRequestPatchesItemCERTRecord,
+    DNSKEYRecord: RecordsBatchRequestPatchesItemDNSKEYRecord,
+    DSRecord: RecordsBatchRequestPatchesItemDSRecord,
+    HTTPSRecord: RecordsBatchRequestPatchesItemHTTPSRecord,
+    LOCRecord: RecordsBatchRequestPatchesItemLOCRecord,
+    NAPTRRecord: RecordsBatchRequestPatchesItemNAPTRRecord,
+    SMIMEARecord: RecordsBatchRequestPatchesItemSMIMEARecord,
+    SRVRecord: RecordsBatchRequestPatchesItemSRVRecord,
+    SSHFPRecord: RecordsBatchRequestPatchesItemSSHFPRecord,
+    SVCBRecord: RecordsBatchRequestPatchesItemSVCBRecord,
+    TLSARecord: RecordsBatchRequestPatchesItemTLSARecord,
+    URIRecord: RecordsBatchRequestPatchesItemURIRecord,
+  }),
+).annotate({
+  identifier: "RecordsBatchRequestPatchesItem",
+}) as any as S.Schema<RecordsBatchRequestPatchesItem>;
+
+export type RecordsBatchRequestPatchesList = RecordsBatchRequestPatchesItem[];
 export const RecordsBatchRequestPatchesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  RecordsBatchRequestPatchesItem,
 ) as any as S.Schema<RecordsBatchRequestPatchesList>;
 
-export type RecordsBatchRequestPostsList = unknown[];
+export interface RecordsBatchRequestPostsItem {
+  ARecordObjectNameTtlType6More__: unknown;
+  AAAARecordObjectNameTtlType6More__: unknown;
+  CNAMERecordObjectNameTtlType5More__: unknown;
+  MXRecordObjectNameTtlType6More__: unknown;
+  NSRecordObjectNameTtlType5More__: unknown;
+  DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: unknown;
+  PTRRecordObjectNameTtlType5More__: unknown;
+  TXTRecordObjectNameTtlType5More__: unknown;
+  CAARecordObjectNameTtlType6More__: unknown;
+  CERTRecordObjectNameTtlType6More__: unknown;
+  DNSKEYRecordObjectNameTtlType6More__: unknown;
+  DSRecordObjectNameTtlType6More__: unknown;
+  HTTPSRecordObjectNameTtlType6More__: unknown;
+  LOCRecordObjectNameTtlType6More__: unknown;
+  NAPTRRecordObjectNameTtlType6More__: unknown;
+  SMIMEARecordObjectNameTtlType6More__: unknown;
+  SRVRecordObjectNameTtlType6More__: unknown;
+  SSHFPRecordObjectNameTtlType6More__: unknown;
+  SVCBRecordObjectNameTtlType6More__: unknown;
+  TLSARecordObjectNameTtlType6More__: unknown;
+  URIRecordObjectNameTtlType7More__: unknown;
+}
+export const RecordsBatchRequestPostsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("ARecord object { name, ttl, type, 6 more }"),
+    ),
+    AAAARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("AAAARecord object { name, ttl, type, 6 more }"),
+    ),
+    CNAMERecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("CNAMERecord object { name, ttl, type, 5 more }"),
+    ),
+    MXRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("MXRecord object { name, ttl, type, 6 more }"),
+    ),
+    NSRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("NSRecord object { name, ttl, type, 5 more }"),
+    ),
+    DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("DNSRecordsOpenpgpkeyRecord object { name, ttl, type, 5 more }"),
+    ),
+    PTRRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("PTRRecord object { name, ttl, type, 5 more }"),
+    ),
+    TXTRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("TXTRecord object { name, ttl, type, 5 more }"),
+    ),
+    CAARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("CAARecord object { name, ttl, type, 6 more }"),
+    ),
+    CERTRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("CERTRecord object { name, ttl, type, 6 more }"),
+    ),
+    DNSKEYRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("DNSKEYRecord object { name, ttl, type, 6 more }"),
+    ),
+    DSRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("DSRecord object { name, ttl, type, 6 more }"),
+    ),
+    HTTPSRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("HTTPSRecord object { name, ttl, type, 6 more }"),
+    ),
+    LOCRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("LOCRecord object { name, ttl, type, 6 more }"),
+    ),
+    NAPTRRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("NAPTRRecord object { name, ttl, type, 6 more }"),
+    ),
+    SMIMEARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SMIMEARecord object { name, ttl, type, 6 more }"),
+    ),
+    SRVRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SRVRecord object { name, ttl, type, 6 more }"),
+    ),
+    SSHFPRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SSHFPRecord object { name, ttl, type, 6 more }"),
+    ),
+    SVCBRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SVCBRecord object { name, ttl, type, 6 more }"),
+    ),
+    TLSARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("TLSARecord object { name, ttl, type, 6 more }"),
+    ),
+    URIRecordObjectNameTtlType7More__: S.Unknown.pipe(
+      T.Body("URIRecord object { name, ttl, type, 7 more }"),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsBatchRequestPostsItem",
+}) as any as S.Schema<RecordsBatchRequestPostsItem>;
+
+export type RecordsBatchRequestPostsList = RecordsBatchRequestPostsItem[];
 export const RecordsBatchRequestPostsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  RecordsBatchRequestPostsItem,
 ) as any as S.Schema<RecordsBatchRequestPostsList>;
 
-export type RecordsBatchRequestPutsList = unknown[];
+export interface RecordsBatchRequestPutsItemARecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemARecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemARecord>;
+
+export interface RecordsBatchRequestPutsItemAAAARecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemAAAARecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemAAAARecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemAAAARecord>;
+
+export interface RecordsBatchRequestPutsItemCNAMERecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemCNAMERecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemCNAMERecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemCNAMERecord>;
+
+export interface RecordsBatchRequestPutsItemMXRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemMXRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemMXRecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemMXRecord>;
+
+export interface RecordsBatchRequestPutsItemNSRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemNSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemNSRecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemNSRecord>;
+
+export interface RecordsBatchRequestPutsItemPTRRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemPTRRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemPTRRecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemPTRRecord>;
+
+export interface RecordsBatchRequestPutsItemTXTRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemTXTRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemTXTRecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemTXTRecord>;
+
+export interface RecordsBatchRequestPutsItemCAARecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemCAARecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemCAARecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemCAARecord>;
+
+export interface RecordsBatchRequestPutsItemCERTRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemCERTRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemCERTRecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemCERTRecord>;
+
+export interface RecordsBatchRequestPutsItemDNSKEYRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemDNSKEYRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemDNSKEYRecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemDNSKEYRecord>;
+
+export interface RecordsBatchRequestPutsItemDSRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemDSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemDSRecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemDSRecord>;
+
+export interface RecordsBatchRequestPutsItemHTTPSRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemHTTPSRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemHTTPSRecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemHTTPSRecord>;
+
+export interface RecordsBatchRequestPutsItemLOCRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemLOCRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemLOCRecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemLOCRecord>;
+
+export interface RecordsBatchRequestPutsItemNAPTRRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemNAPTRRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemNAPTRRecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemNAPTRRecord>;
+
+export interface RecordsBatchRequestPutsItemSMIMEARecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemSMIMEARecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemSMIMEARecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemSMIMEARecord>;
+
+export interface RecordsBatchRequestPutsItemSRVRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemSRVRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemSRVRecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemSRVRecord>;
+
+export interface RecordsBatchRequestPutsItemSSHFPRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemSSHFPRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemSSHFPRecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemSSHFPRecord>;
+
+export interface RecordsBatchRequestPutsItemSVCBRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemSVCBRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemSVCBRecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemSVCBRecord>;
+
+export interface RecordsBatchRequestPutsItemTLSARecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemTLSARecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemTLSARecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemTLSARecord>;
+
+export interface RecordsBatchRequestPutsItemURIRecord {
+  /** Identifier. */
+  id: string;
+}
+export const RecordsBatchRequestPutsItemURIRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItemURIRecord",
+}) as any as S.Schema<RecordsBatchRequestPutsItemURIRecord>;
+
+export interface RecordsBatchRequestPutsItem {
+  ARecord: RecordsBatchRequestPutsItemARecord;
+  AAAARecord: RecordsBatchRequestPutsItemAAAARecord;
+  CNAMERecord: RecordsBatchRequestPutsItemCNAMERecord;
+  MXRecord: RecordsBatchRequestPutsItemMXRecord;
+  NSRecord: RecordsBatchRequestPutsItemNSRecord;
+  OpenpgpkeyRecordObjectIdNameTtl6More__: unknown;
+  PTRRecord: RecordsBatchRequestPutsItemPTRRecord;
+  TXTRecord: RecordsBatchRequestPutsItemTXTRecord;
+  CAARecord: RecordsBatchRequestPutsItemCAARecord;
+  CERTRecord: RecordsBatchRequestPutsItemCERTRecord;
+  DNSKEYRecord: RecordsBatchRequestPutsItemDNSKEYRecord;
+  DSRecord: RecordsBatchRequestPutsItemDSRecord;
+  HTTPSRecord: RecordsBatchRequestPutsItemHTTPSRecord;
+  LOCRecord: RecordsBatchRequestPutsItemLOCRecord;
+  NAPTRRecord: RecordsBatchRequestPutsItemNAPTRRecord;
+  SMIMEARecord: RecordsBatchRequestPutsItemSMIMEARecord;
+  SRVRecord: RecordsBatchRequestPutsItemSRVRecord;
+  SSHFPRecord: RecordsBatchRequestPutsItemSSHFPRecord;
+  SVCBRecord: RecordsBatchRequestPutsItemSVCBRecord;
+  TLSARecord: RecordsBatchRequestPutsItemTLSARecord;
+  URIRecord: RecordsBatchRequestPutsItemURIRecord;
+}
+export const RecordsBatchRequestPutsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ARecord: RecordsBatchRequestPutsItemARecord,
+    AAAARecord: RecordsBatchRequestPutsItemAAAARecord,
+    CNAMERecord: RecordsBatchRequestPutsItemCNAMERecord,
+    MXRecord: RecordsBatchRequestPutsItemMXRecord,
+    NSRecord: RecordsBatchRequestPutsItemNSRecord,
+    OpenpgpkeyRecordObjectIdNameTtl6More__: S.Unknown.pipe(
+      T.Body("OpenpgpkeyRecord object { id, name, ttl, 6 more }"),
+    ),
+    PTRRecord: RecordsBatchRequestPutsItemPTRRecord,
+    TXTRecord: RecordsBatchRequestPutsItemTXTRecord,
+    CAARecord: RecordsBatchRequestPutsItemCAARecord,
+    CERTRecord: RecordsBatchRequestPutsItemCERTRecord,
+    DNSKEYRecord: RecordsBatchRequestPutsItemDNSKEYRecord,
+    DSRecord: RecordsBatchRequestPutsItemDSRecord,
+    HTTPSRecord: RecordsBatchRequestPutsItemHTTPSRecord,
+    LOCRecord: RecordsBatchRequestPutsItemLOCRecord,
+    NAPTRRecord: RecordsBatchRequestPutsItemNAPTRRecord,
+    SMIMEARecord: RecordsBatchRequestPutsItemSMIMEARecord,
+    SRVRecord: RecordsBatchRequestPutsItemSRVRecord,
+    SSHFPRecord: RecordsBatchRequestPutsItemSSHFPRecord,
+    SVCBRecord: RecordsBatchRequestPutsItemSVCBRecord,
+    TLSARecord: RecordsBatchRequestPutsItemTLSARecord,
+    URIRecord: RecordsBatchRequestPutsItemURIRecord,
+  }),
+).annotate({
+  identifier: "RecordsBatchRequestPutsItem",
+}) as any as S.Schema<RecordsBatchRequestPutsItem>;
+
+export type RecordsBatchRequestPutsList = RecordsBatchRequestPutsItem[];
 export const RecordsBatchRequestPutsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  RecordsBatchRequestPutsItem,
 ) as any as S.Schema<RecordsBatchRequestPutsList>;
 
 export interface RecordsBatchRequest {
-  zone_id: string;
-  include_shadow_metadata?: boolean;
+  /** Identifier. */
+  zoneId: string;
+  /** Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  includeShadowMetadata?: boolean;
   deletes?: RecordsBatchRequestDeletesList;
   patches?: RecordsBatchRequestPatchesList;
   posts?: RecordsBatchRequestPostsList;
@@ -227,8 +1297,10 @@ export interface RecordsBatchRequest {
 }
 export const RecordsBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    include_shadow_metadata: S.optional(S.Boolean.pipe(T.Query())),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    includeShadowMetadata: S.optional(
+      S.Boolean.pipe(T.Query("include_shadow_metadata")),
+    ),
     deletes: S.optional(RecordsBatchRequestDeletesList),
     patches: S.optional(RecordsBatchRequestPatchesList),
     posts: S.optional(RecordsBatchRequestPostsList),
@@ -244,24 +1316,1595 @@ export const RecordsBatchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsBatchRequest",
 }) as any as S.Schema<RecordsBatchRequest>;
 
-export type RecordsBatchResponseDeletesList = unknown[];
+export type RecordsBatchResponseDeletesItemARecordMetaShadowedByList = string[];
+export const RecordsBatchResponseDeletesItemARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemARecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemARecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemARecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemARecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemARecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemARecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+).annotate({
+  identifier: "RecordsBatchResponseDeletesItemARecord",
+}) as any as S.Schema<RecordsBatchResponseDeletesItemARecord>;
+
+export type RecordsBatchResponseDeletesItemAAAARecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemAAAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemAAAARecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemAAAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemAAAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemAAAARecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemAAAARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemAAAARecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemAAAARecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemAAAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemAAAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemAAAARecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemAAAARecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemAAAARecord",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemAAAARecord>;
+
+export type RecordsBatchResponseDeletesItemCNAMERecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemCNAMERecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemCNAMERecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemCNAMERecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemCNAMERecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemCNAMERecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemCNAMERecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemCNAMERecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemCNAMERecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemCNAMERecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemCNAMERecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemCNAMERecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemCNAMERecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemCNAMERecord",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemCNAMERecord>;
+
+export type RecordsBatchResponseDeletesItemMXRecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemMXRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemMXRecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemMXRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemMXRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemMXRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemMXRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemMXRecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemMXRecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemMXRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemMXRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemMXRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemMXRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+).annotate({
+  identifier: "RecordsBatchResponseDeletesItemMXRecord",
+}) as any as S.Schema<RecordsBatchResponseDeletesItemMXRecord>;
+
+export type RecordsBatchResponseDeletesItemNSRecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemNSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemNSRecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemNSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemNSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemNSRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemNSRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemNSRecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemNSRecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemNSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemNSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemNSRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemNSRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+).annotate({
+  identifier: "RecordsBatchResponseDeletesItemNSRecord",
+}) as any as S.Schema<RecordsBatchResponseDeletesItemNSRecord>;
+
+export type RecordsBatchResponseDeletesItemPTRRecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemPTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemPTRRecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemPTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemPTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemPTRRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemPTRRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemPTRRecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemPTRRecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemPTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemPTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemPTRRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemPTRRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+).annotate({
+  identifier: "RecordsBatchResponseDeletesItemPTRRecord",
+}) as any as S.Schema<RecordsBatchResponseDeletesItemPTRRecord>;
+
+export type RecordsBatchResponseDeletesItemTXTRecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemTXTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemTXTRecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemTXTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemTXTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemTXTRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemTXTRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemTXTRecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemTXTRecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemTXTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemTXTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemTXTRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemTXTRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+).annotate({
+  identifier: "RecordsBatchResponseDeletesItemTXTRecord",
+}) as any as S.Schema<RecordsBatchResponseDeletesItemTXTRecord>;
+
+export type RecordsBatchResponseDeletesItemCAARecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemCAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemCAARecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemCAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemCAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemCAARecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemCAARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemCAARecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemCAARecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemCAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemCAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemCAARecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemCAARecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+).annotate({
+  identifier: "RecordsBatchResponseDeletesItemCAARecord",
+}) as any as S.Schema<RecordsBatchResponseDeletesItemCAARecord>;
+
+export type RecordsBatchResponseDeletesItemCERTRecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemCERTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemCERTRecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemCERTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemCERTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemCERTRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemCERTRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemCERTRecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemCERTRecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemCERTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemCERTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemCERTRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemCERTRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemCERTRecord",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemCERTRecord>;
+
+export type RecordsBatchResponseDeletesItemDNSKEYRecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemDNSKEYRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemDNSKEYRecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemDNSKEYRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemDNSKEYRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemDNSKEYRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemDNSKEYRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemDNSKEYRecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemDNSKEYRecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemDNSKEYRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemDNSKEYRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemDNSKEYRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemDNSKEYRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemDNSKEYRecord",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemDNSKEYRecord>;
+
+export type RecordsBatchResponseDeletesItemDSRecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemDSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemDSRecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemDSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemDSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemDSRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemDSRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemDSRecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemDSRecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemDSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemDSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemDSRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemDSRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+).annotate({
+  identifier: "RecordsBatchResponseDeletesItemDSRecord",
+}) as any as S.Schema<RecordsBatchResponseDeletesItemDSRecord>;
+
+export type RecordsBatchResponseDeletesItemHTTPSRecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemHTTPSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemHTTPSRecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemHTTPSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemHTTPSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemHTTPSRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemHTTPSRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemHTTPSRecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemHTTPSRecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemHTTPSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemHTTPSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemHTTPSRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemHTTPSRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemHTTPSRecord",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemHTTPSRecord>;
+
+export type RecordsBatchResponseDeletesItemLOCRecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemLOCRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemLOCRecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemLOCRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemLOCRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemLOCRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemLOCRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemLOCRecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemLOCRecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemLOCRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemLOCRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemLOCRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemLOCRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+).annotate({
+  identifier: "RecordsBatchResponseDeletesItemLOCRecord",
+}) as any as S.Schema<RecordsBatchResponseDeletesItemLOCRecord>;
+
+export type RecordsBatchResponseDeletesItemNAPTRRecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemNAPTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemNAPTRRecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemNAPTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemNAPTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemNAPTRRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemNAPTRRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemNAPTRRecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemNAPTRRecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemNAPTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemNAPTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemNAPTRRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemNAPTRRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemNAPTRRecord",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemNAPTRRecord>;
+
+export type RecordsBatchResponseDeletesItemSMIMEARecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemSMIMEARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemSMIMEARecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemSMIMEARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemSMIMEARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemSMIMEARecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemSMIMEARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemSMIMEARecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemSMIMEARecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemSMIMEARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemSMIMEARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemSMIMEARecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemSMIMEARecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemSMIMEARecord",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemSMIMEARecord>;
+
+export type RecordsBatchResponseDeletesItemSRVRecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemSRVRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemSRVRecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemSRVRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemSRVRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemSRVRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemSRVRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemSRVRecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemSRVRecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemSRVRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemSRVRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemSRVRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemSRVRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+).annotate({
+  identifier: "RecordsBatchResponseDeletesItemSRVRecord",
+}) as any as S.Schema<RecordsBatchResponseDeletesItemSRVRecord>;
+
+export type RecordsBatchResponseDeletesItemSSHFPRecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemSSHFPRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemSSHFPRecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemSSHFPRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemSSHFPRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemSSHFPRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemSSHFPRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemSSHFPRecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemSSHFPRecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemSSHFPRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemSSHFPRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemSSHFPRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemSSHFPRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemSSHFPRecord",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemSSHFPRecord>;
+
+export type RecordsBatchResponseDeletesItemSVCBRecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemSVCBRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemSVCBRecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemSVCBRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemSVCBRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemSVCBRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemSVCBRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemSVCBRecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemSVCBRecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemSVCBRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemSVCBRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemSVCBRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemSVCBRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemSVCBRecord",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemSVCBRecord>;
+
+export type RecordsBatchResponseDeletesItemTLSARecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemTLSARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemTLSARecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemTLSARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemTLSARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemTLSARecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemTLSARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemTLSARecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemTLSARecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemTLSARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemTLSARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemTLSARecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemTLSARecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemTLSARecord",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemTLSARecord>;
+
+export type RecordsBatchResponseDeletesItemURIRecordMetaShadowedByList =
+  string[];
+export const RecordsBatchResponseDeletesItemURIRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsBatchResponseDeletesItemURIRecordMetaShadowedByList>;
+
+export interface RecordsBatchResponseDeletesItemURIRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsBatchResponseDeletesItemURIRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsBatchResponseDeletesItemURIRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsBatchResponseDeletesItemURIRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsBatchResponseDeletesItemURIRecordMeta",
+  }) as any as S.Schema<RecordsBatchResponseDeletesItemURIRecordMeta>;
+
+export interface RecordsBatchResponseDeletesItemURIRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsBatchResponseDeletesItemURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponseDeletesItemURIRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsBatchResponseDeletesItemURIRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+).annotate({
+  identifier: "RecordsBatchResponseDeletesItemURIRecord",
+}) as any as S.Schema<RecordsBatchResponseDeletesItemURIRecord>;
+
+export interface RecordsBatchResponseDeletesItem {
+  ARecord: RecordsBatchResponseDeletesItemARecord;
+  AAAARecord: RecordsBatchResponseDeletesItemAAAARecord;
+  CNAMERecord: RecordsBatchResponseDeletesItemCNAMERecord;
+  MXRecord: RecordsBatchResponseDeletesItemMXRecord;
+  NSRecord: RecordsBatchResponseDeletesItemNSRecord;
+  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  PTRRecord: RecordsBatchResponseDeletesItemPTRRecord;
+  TXTRecord: RecordsBatchResponseDeletesItemTXTRecord;
+  CAARecord: RecordsBatchResponseDeletesItemCAARecord;
+  CERTRecord: RecordsBatchResponseDeletesItemCERTRecord;
+  DNSKEYRecord: RecordsBatchResponseDeletesItemDNSKEYRecord;
+  DSRecord: RecordsBatchResponseDeletesItemDSRecord;
+  HTTPSRecord: RecordsBatchResponseDeletesItemHTTPSRecord;
+  LOCRecord: RecordsBatchResponseDeletesItemLOCRecord;
+  NAPTRRecord: RecordsBatchResponseDeletesItemNAPTRRecord;
+  SMIMEARecord: RecordsBatchResponseDeletesItemSMIMEARecord;
+  SRVRecord: RecordsBatchResponseDeletesItemSRVRecord;
+  SSHFPRecord: RecordsBatchResponseDeletesItemSSHFPRecord;
+  SVCBRecord: RecordsBatchResponseDeletesItemSVCBRecord;
+  TLSARecord: RecordsBatchResponseDeletesItemTLSARecord;
+  URIRecord: RecordsBatchResponseDeletesItemURIRecord;
+}
+export const RecordsBatchResponseDeletesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ARecord: RecordsBatchResponseDeletesItemARecord,
+    AAAARecord: RecordsBatchResponseDeletesItemAAAARecord,
+    CNAMERecord: RecordsBatchResponseDeletesItemCNAMERecord,
+    MXRecord: RecordsBatchResponseDeletesItemMXRecord,
+    NSRecord: RecordsBatchResponseDeletesItemNSRecord,
+    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
+      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
+    ),
+    PTRRecord: RecordsBatchResponseDeletesItemPTRRecord,
+    TXTRecord: RecordsBatchResponseDeletesItemTXTRecord,
+    CAARecord: RecordsBatchResponseDeletesItemCAARecord,
+    CERTRecord: RecordsBatchResponseDeletesItemCERTRecord,
+    DNSKEYRecord: RecordsBatchResponseDeletesItemDNSKEYRecord,
+    DSRecord: RecordsBatchResponseDeletesItemDSRecord,
+    HTTPSRecord: RecordsBatchResponseDeletesItemHTTPSRecord,
+    LOCRecord: RecordsBatchResponseDeletesItemLOCRecord,
+    NAPTRRecord: RecordsBatchResponseDeletesItemNAPTRRecord,
+    SMIMEARecord: RecordsBatchResponseDeletesItemSMIMEARecord,
+    SRVRecord: RecordsBatchResponseDeletesItemSRVRecord,
+    SSHFPRecord: RecordsBatchResponseDeletesItemSSHFPRecord,
+    SVCBRecord: RecordsBatchResponseDeletesItemSVCBRecord,
+    TLSARecord: RecordsBatchResponseDeletesItemTLSARecord,
+    URIRecord: RecordsBatchResponseDeletesItemURIRecord,
+  }),
+).annotate({
+  identifier: "RecordsBatchResponseDeletesItem",
+}) as any as S.Schema<RecordsBatchResponseDeletesItem>;
+
+export type RecordsBatchResponseDeletesList = RecordsBatchResponseDeletesItem[];
 export const RecordsBatchResponseDeletesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  RecordsBatchResponseDeletesItem,
 ) as any as S.Schema<RecordsBatchResponseDeletesList>;
 
-export type RecordsBatchResponsePatchesList = unknown[];
+export interface RecordsBatchResponsePatchesItem {
+  ARecord: unknown;
+  AAAARecord: unknown;
+  CNAMERecord: unknown;
+  MXRecord: unknown;
+  NSRecord: unknown;
+  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  PTRRecord: unknown;
+  TXTRecord: unknown;
+  CAARecord: unknown;
+  CERTRecord: unknown;
+  DNSKEYRecord: unknown;
+  DSRecord: unknown;
+  HTTPSRecord: unknown;
+  LOCRecord: unknown;
+  NAPTRRecord: unknown;
+  SMIMEARecord: unknown;
+  SRVRecord: unknown;
+  SSHFPRecord: unknown;
+  SVCBRecord: unknown;
+  TLSARecord: unknown;
+  URIRecord: unknown;
+}
+export const RecordsBatchResponsePatchesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ARecord: S.Unknown,
+    AAAARecord: S.Unknown,
+    CNAMERecord: S.Unknown,
+    MXRecord: S.Unknown,
+    NSRecord: S.Unknown,
+    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
+      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
+    ),
+    PTRRecord: S.Unknown,
+    TXTRecord: S.Unknown,
+    CAARecord: S.Unknown,
+    CERTRecord: S.Unknown,
+    DNSKEYRecord: S.Unknown,
+    DSRecord: S.Unknown,
+    HTTPSRecord: S.Unknown,
+    LOCRecord: S.Unknown,
+    NAPTRRecord: S.Unknown,
+    SMIMEARecord: S.Unknown,
+    SRVRecord: S.Unknown,
+    SSHFPRecord: S.Unknown,
+    SVCBRecord: S.Unknown,
+    TLSARecord: S.Unknown,
+    URIRecord: S.Unknown,
+  }),
+).annotate({
+  identifier: "RecordsBatchResponsePatchesItem",
+}) as any as S.Schema<RecordsBatchResponsePatchesItem>;
+
+export type RecordsBatchResponsePatchesList = RecordsBatchResponsePatchesItem[];
 export const RecordsBatchResponsePatchesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  RecordsBatchResponsePatchesItem,
 ) as any as S.Schema<RecordsBatchResponsePatchesList>;
 
-export type RecordsBatchResponsePostsList = unknown[];
+export interface RecordsBatchResponsePostsItem {
+  ARecord: unknown;
+  AAAARecord: unknown;
+  CNAMERecord: unknown;
+  MXRecord: unknown;
+  NSRecord: unknown;
+  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  PTRRecord: unknown;
+  TXTRecord: unknown;
+  CAARecord: unknown;
+  CERTRecord: unknown;
+  DNSKEYRecord: unknown;
+  DSRecord: unknown;
+  HTTPSRecord: unknown;
+  LOCRecord: unknown;
+  NAPTRRecord: unknown;
+  SMIMEARecord: unknown;
+  SRVRecord: unknown;
+  SSHFPRecord: unknown;
+  SVCBRecord: unknown;
+  TLSARecord: unknown;
+  URIRecord: unknown;
+}
+export const RecordsBatchResponsePostsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ARecord: S.Unknown,
+    AAAARecord: S.Unknown,
+    CNAMERecord: S.Unknown,
+    MXRecord: S.Unknown,
+    NSRecord: S.Unknown,
+    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
+      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
+    ),
+    PTRRecord: S.Unknown,
+    TXTRecord: S.Unknown,
+    CAARecord: S.Unknown,
+    CERTRecord: S.Unknown,
+    DNSKEYRecord: S.Unknown,
+    DSRecord: S.Unknown,
+    HTTPSRecord: S.Unknown,
+    LOCRecord: S.Unknown,
+    NAPTRRecord: S.Unknown,
+    SMIMEARecord: S.Unknown,
+    SRVRecord: S.Unknown,
+    SSHFPRecord: S.Unknown,
+    SVCBRecord: S.Unknown,
+    TLSARecord: S.Unknown,
+    URIRecord: S.Unknown,
+  }),
+).annotate({
+  identifier: "RecordsBatchResponsePostsItem",
+}) as any as S.Schema<RecordsBatchResponsePostsItem>;
+
+export type RecordsBatchResponsePostsList = RecordsBatchResponsePostsItem[];
 export const RecordsBatchResponsePostsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  RecordsBatchResponsePostsItem,
 ) as any as S.Schema<RecordsBatchResponsePostsList>;
 
-export type RecordsBatchResponsePutsList = unknown[];
+export interface RecordsBatchResponsePutsItem {
+  ARecord: unknown;
+  AAAARecord: unknown;
+  CNAMERecord: unknown;
+  MXRecord: unknown;
+  NSRecord: unknown;
+  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  PTRRecord: unknown;
+  TXTRecord: unknown;
+  CAARecord: unknown;
+  CERTRecord: unknown;
+  DNSKEYRecord: unknown;
+  DSRecord: unknown;
+  HTTPSRecord: unknown;
+  LOCRecord: unknown;
+  NAPTRRecord: unknown;
+  SMIMEARecord: unknown;
+  SRVRecord: unknown;
+  SSHFPRecord: unknown;
+  SVCBRecord: unknown;
+  TLSARecord: unknown;
+  URIRecord: unknown;
+}
+export const RecordsBatchResponsePutsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ARecord: S.Unknown,
+    AAAARecord: S.Unknown,
+    CNAMERecord: S.Unknown,
+    MXRecord: S.Unknown,
+    NSRecord: S.Unknown,
+    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
+      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
+    ),
+    PTRRecord: S.Unknown,
+    TXTRecord: S.Unknown,
+    CAARecord: S.Unknown,
+    CERTRecord: S.Unknown,
+    DNSKEYRecord: S.Unknown,
+    DSRecord: S.Unknown,
+    HTTPSRecord: S.Unknown,
+    LOCRecord: S.Unknown,
+    NAPTRRecord: S.Unknown,
+    SMIMEARecord: S.Unknown,
+    SRVRecord: S.Unknown,
+    SSHFPRecord: S.Unknown,
+    SVCBRecord: S.Unknown,
+    TLSARecord: S.Unknown,
+    URIRecord: S.Unknown,
+  }),
+).annotate({
+  identifier: "RecordsBatchResponsePutsItem",
+}) as any as S.Schema<RecordsBatchResponsePutsItem>;
+
+export type RecordsBatchResponsePutsList = RecordsBatchResponsePutsItem[];
 export const RecordsBatchResponsePutsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  RecordsBatchResponsePutsItem,
 ) as any as S.Schema<RecordsBatchResponsePutsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -282,16 +2925,113 @@ export const RecordsBatchResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsBatchResponse",
 }) as any as S.Schema<RecordsBatchResponse>;
 
+export interface RecordsCreateRequestBody {
+  ARecordObjectNameTtlType6More__: unknown;
+  AAAARecordObjectNameTtlType6More__: unknown;
+  CNAMERecordObjectNameTtlType5More__: unknown;
+  MXRecordObjectNameTtlType6More__: unknown;
+  NSRecordObjectNameTtlType5More__: unknown;
+  DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: unknown;
+  PTRRecordObjectNameTtlType5More__: unknown;
+  TXTRecordObjectNameTtlType5More__: unknown;
+  CAARecordObjectNameTtlType6More__: unknown;
+  CERTRecordObjectNameTtlType6More__: unknown;
+  DNSKEYRecordObjectNameTtlType6More__: unknown;
+  DSRecordObjectNameTtlType6More__: unknown;
+  HTTPSRecordObjectNameTtlType6More__: unknown;
+  LOCRecordObjectNameTtlType6More__: unknown;
+  NAPTRRecordObjectNameTtlType6More__: unknown;
+  SMIMEARecordObjectNameTtlType6More__: unknown;
+  SRVRecordObjectNameTtlType6More__: unknown;
+  SSHFPRecordObjectNameTtlType6More__: unknown;
+  SVCBRecordObjectNameTtlType6More__: unknown;
+  TLSARecordObjectNameTtlType6More__: unknown;
+  URIRecordObjectNameTtlType7More__: unknown;
+}
+export const RecordsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("ARecord object { name, ttl, type, 6 more }"),
+    ),
+    AAAARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("AAAARecord object { name, ttl, type, 6 more }"),
+    ),
+    CNAMERecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("CNAMERecord object { name, ttl, type, 5 more }"),
+    ),
+    MXRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("MXRecord object { name, ttl, type, 6 more }"),
+    ),
+    NSRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("NSRecord object { name, ttl, type, 5 more }"),
+    ),
+    DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("DNSRecordsOpenpgpkeyRecord object { name, ttl, type, 5 more }"),
+    ),
+    PTRRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("PTRRecord object { name, ttl, type, 5 more }"),
+    ),
+    TXTRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("TXTRecord object { name, ttl, type, 5 more }"),
+    ),
+    CAARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("CAARecord object { name, ttl, type, 6 more }"),
+    ),
+    CERTRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("CERTRecord object { name, ttl, type, 6 more }"),
+    ),
+    DNSKEYRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("DNSKEYRecord object { name, ttl, type, 6 more }"),
+    ),
+    DSRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("DSRecord object { name, ttl, type, 6 more }"),
+    ),
+    HTTPSRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("HTTPSRecord object { name, ttl, type, 6 more }"),
+    ),
+    LOCRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("LOCRecord object { name, ttl, type, 6 more }"),
+    ),
+    NAPTRRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("NAPTRRecord object { name, ttl, type, 6 more }"),
+    ),
+    SMIMEARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SMIMEARecord object { name, ttl, type, 6 more }"),
+    ),
+    SRVRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SRVRecord object { name, ttl, type, 6 more }"),
+    ),
+    SSHFPRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SSHFPRecord object { name, ttl, type, 6 more }"),
+    ),
+    SVCBRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SVCBRecord object { name, ttl, type, 6 more }"),
+    ),
+    TLSARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("TLSARecord object { name, ttl, type, 6 more }"),
+    ),
+    URIRecordObjectNameTtlType7More__: S.Unknown.pipe(
+      T.Body("URIRecord object { name, ttl, type, 7 more }"),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsCreateRequestBody",
+}) as any as S.Schema<RecordsCreateRequestBody>;
+
 export interface RecordsCreateRequest {
-  zone_id: string;
-  include_shadow_metadata?: boolean;
-  body: unknown;
+  /** Identifier. */
+  zoneId: string;
+  /** Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  includeShadowMetadata?: boolean;
+  body: RecordsCreateRequestBody;
 }
 export const RecordsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    include_shadow_metadata: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.Unknown,
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    includeShadowMetadata: S.optional(
+      S.Boolean.pipe(T.Query("include_shadow_metadata")),
+    ),
+    body: RecordsCreateRequestBody,
   }).pipe(
     T.Http({ method: "POST", uri: "/zones/{zone_id}/dns_records", code: 200 }),
   ),
@@ -299,25 +3039,1336 @@ export const RecordsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateRequest",
 }) as any as S.Schema<RecordsCreateRequest>;
 
+export type RecordsCreateResponseARecordMetaShadowedByList = string[];
+export const RecordsCreateResponseARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseARecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsCreateResponseARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseARecordMeta",
+}) as any as S.Schema<RecordsCreateResponseARecordMeta>;
+
+export interface RecordsCreateResponseARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseARecord",
+}) as any as S.Schema<RecordsCreateResponseARecord>;
+
+export type RecordsCreateResponseAAAARecordMetaShadowedByList = string[];
+export const RecordsCreateResponseAAAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseAAAARecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseAAAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseAAAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseAAAARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsCreateResponseAAAARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseAAAARecordMeta",
+}) as any as S.Schema<RecordsCreateResponseAAAARecordMeta>;
+
+export interface RecordsCreateResponseAAAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseAAAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseAAAARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseAAAARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseAAAARecord",
+}) as any as S.Schema<RecordsCreateResponseAAAARecord>;
+
+export type RecordsCreateResponseCNAMERecordMetaShadowedByList = string[];
+export const RecordsCreateResponseCNAMERecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseCNAMERecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseCNAMERecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseCNAMERecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseCNAMERecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsCreateResponseCNAMERecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsCreateResponseCNAMERecordMeta",
+}) as any as S.Schema<RecordsCreateResponseCNAMERecordMeta>;
+
+export interface RecordsCreateResponseCNAMERecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseCNAMERecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseCNAMERecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseCNAMERecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseCNAMERecord",
+}) as any as S.Schema<RecordsCreateResponseCNAMERecord>;
+
+export type RecordsCreateResponseMXRecordMetaShadowedByList = string[];
+export const RecordsCreateResponseMXRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseMXRecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseMXRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseMXRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseMXRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsCreateResponseMXRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseMXRecordMeta",
+}) as any as S.Schema<RecordsCreateResponseMXRecordMeta>;
+
+export interface RecordsCreateResponseMXRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseMXRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseMXRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseMXRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseMXRecord",
+}) as any as S.Schema<RecordsCreateResponseMXRecord>;
+
+export type RecordsCreateResponseNSRecordMetaShadowedByList = string[];
+export const RecordsCreateResponseNSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseNSRecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseNSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseNSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseNSRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsCreateResponseNSRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseNSRecordMeta",
+}) as any as S.Schema<RecordsCreateResponseNSRecordMeta>;
+
+export interface RecordsCreateResponseNSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseNSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseNSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseNSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseNSRecord",
+}) as any as S.Schema<RecordsCreateResponseNSRecord>;
+
+export type RecordsCreateResponsePTRRecordMetaShadowedByList = string[];
+export const RecordsCreateResponsePTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponsePTRRecordMetaShadowedByList>;
+
+export interface RecordsCreateResponsePTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponsePTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponsePTRRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsCreateResponsePTRRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponsePTRRecordMeta",
+}) as any as S.Schema<RecordsCreateResponsePTRRecordMeta>;
+
+export interface RecordsCreateResponsePTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponsePTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponsePTRRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponsePTRRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponsePTRRecord",
+}) as any as S.Schema<RecordsCreateResponsePTRRecord>;
+
+export type RecordsCreateResponseTXTRecordMetaShadowedByList = string[];
+export const RecordsCreateResponseTXTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseTXTRecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseTXTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseTXTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseTXTRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsCreateResponseTXTRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseTXTRecordMeta",
+}) as any as S.Schema<RecordsCreateResponseTXTRecordMeta>;
+
+export interface RecordsCreateResponseTXTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseTXTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseTXTRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseTXTRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseTXTRecord",
+}) as any as S.Schema<RecordsCreateResponseTXTRecord>;
+
+export type RecordsCreateResponseCAARecordMetaShadowedByList = string[];
+export const RecordsCreateResponseCAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseCAARecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseCAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseCAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseCAARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsCreateResponseCAARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseCAARecordMeta",
+}) as any as S.Schema<RecordsCreateResponseCAARecordMeta>;
+
+export interface RecordsCreateResponseCAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseCAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseCAARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseCAARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseCAARecord",
+}) as any as S.Schema<RecordsCreateResponseCAARecord>;
+
+export type RecordsCreateResponseCERTRecordMetaShadowedByList = string[];
+export const RecordsCreateResponseCERTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseCERTRecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseCERTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseCERTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseCERTRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsCreateResponseCERTRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseCERTRecordMeta",
+}) as any as S.Schema<RecordsCreateResponseCERTRecordMeta>;
+
+export interface RecordsCreateResponseCERTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseCERTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseCERTRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseCERTRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseCERTRecord",
+}) as any as S.Schema<RecordsCreateResponseCERTRecord>;
+
+export type RecordsCreateResponseDNSKEYRecordMetaShadowedByList = string[];
+export const RecordsCreateResponseDNSKEYRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseDNSKEYRecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseDNSKEYRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseDNSKEYRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseDNSKEYRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsCreateResponseDNSKEYRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsCreateResponseDNSKEYRecordMeta",
+}) as any as S.Schema<RecordsCreateResponseDNSKEYRecordMeta>;
+
+export interface RecordsCreateResponseDNSKEYRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseDNSKEYRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseDNSKEYRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseDNSKEYRecord",
+}) as any as S.Schema<RecordsCreateResponseDNSKEYRecord>;
+
+export type RecordsCreateResponseDSRecordMetaShadowedByList = string[];
+export const RecordsCreateResponseDSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseDSRecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseDSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseDSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseDSRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsCreateResponseDSRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseDSRecordMeta",
+}) as any as S.Schema<RecordsCreateResponseDSRecordMeta>;
+
+export interface RecordsCreateResponseDSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseDSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseDSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseDSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseDSRecord",
+}) as any as S.Schema<RecordsCreateResponseDSRecord>;
+
+export type RecordsCreateResponseHTTPSRecordMetaShadowedByList = string[];
+export const RecordsCreateResponseHTTPSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseHTTPSRecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseHTTPSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseHTTPSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseHTTPSRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsCreateResponseHTTPSRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsCreateResponseHTTPSRecordMeta",
+}) as any as S.Schema<RecordsCreateResponseHTTPSRecordMeta>;
+
+export interface RecordsCreateResponseHTTPSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseHTTPSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseHTTPSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseHTTPSRecord",
+}) as any as S.Schema<RecordsCreateResponseHTTPSRecord>;
+
+export type RecordsCreateResponseLOCRecordMetaShadowedByList = string[];
+export const RecordsCreateResponseLOCRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseLOCRecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseLOCRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseLOCRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseLOCRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsCreateResponseLOCRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseLOCRecordMeta",
+}) as any as S.Schema<RecordsCreateResponseLOCRecordMeta>;
+
+export interface RecordsCreateResponseLOCRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseLOCRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseLOCRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseLOCRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseLOCRecord",
+}) as any as S.Schema<RecordsCreateResponseLOCRecord>;
+
+export type RecordsCreateResponseNAPTRRecordMetaShadowedByList = string[];
+export const RecordsCreateResponseNAPTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseNAPTRRecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseNAPTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseNAPTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseNAPTRRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsCreateResponseNAPTRRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsCreateResponseNAPTRRecordMeta",
+}) as any as S.Schema<RecordsCreateResponseNAPTRRecordMeta>;
+
+export interface RecordsCreateResponseNAPTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseNAPTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseNAPTRRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseNAPTRRecord",
+}) as any as S.Schema<RecordsCreateResponseNAPTRRecord>;
+
+export type RecordsCreateResponseSMIMEARecordMetaShadowedByList = string[];
+export const RecordsCreateResponseSMIMEARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseSMIMEARecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseSMIMEARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseSMIMEARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseSMIMEARecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsCreateResponseSMIMEARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsCreateResponseSMIMEARecordMeta",
+}) as any as S.Schema<RecordsCreateResponseSMIMEARecordMeta>;
+
+export interface RecordsCreateResponseSMIMEARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseSMIMEARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseSMIMEARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseSMIMEARecord",
+}) as any as S.Schema<RecordsCreateResponseSMIMEARecord>;
+
+export type RecordsCreateResponseSRVRecordMetaShadowedByList = string[];
+export const RecordsCreateResponseSRVRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseSRVRecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseSRVRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseSRVRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseSRVRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsCreateResponseSRVRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseSRVRecordMeta",
+}) as any as S.Schema<RecordsCreateResponseSRVRecordMeta>;
+
+export interface RecordsCreateResponseSRVRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseSRVRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseSRVRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseSRVRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseSRVRecord",
+}) as any as S.Schema<RecordsCreateResponseSRVRecord>;
+
+export type RecordsCreateResponseSSHFPRecordMetaShadowedByList = string[];
+export const RecordsCreateResponseSSHFPRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseSSHFPRecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseSSHFPRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseSSHFPRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseSSHFPRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsCreateResponseSSHFPRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsCreateResponseSSHFPRecordMeta",
+}) as any as S.Schema<RecordsCreateResponseSSHFPRecordMeta>;
+
+export interface RecordsCreateResponseSSHFPRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseSSHFPRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseSSHFPRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseSSHFPRecord",
+}) as any as S.Schema<RecordsCreateResponseSSHFPRecord>;
+
+export type RecordsCreateResponseSVCBRecordMetaShadowedByList = string[];
+export const RecordsCreateResponseSVCBRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseSVCBRecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseSVCBRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseSVCBRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseSVCBRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsCreateResponseSVCBRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseSVCBRecordMeta",
+}) as any as S.Schema<RecordsCreateResponseSVCBRecordMeta>;
+
+export interface RecordsCreateResponseSVCBRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseSVCBRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseSVCBRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseSVCBRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseSVCBRecord",
+}) as any as S.Schema<RecordsCreateResponseSVCBRecord>;
+
+export type RecordsCreateResponseTLSARecordMetaShadowedByList = string[];
+export const RecordsCreateResponseTLSARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseTLSARecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseTLSARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseTLSARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseTLSARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsCreateResponseTLSARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseTLSARecordMeta",
+}) as any as S.Schema<RecordsCreateResponseTLSARecordMeta>;
+
+export interface RecordsCreateResponseTLSARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseTLSARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseTLSARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseTLSARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseTLSARecord",
+}) as any as S.Schema<RecordsCreateResponseTLSARecord>;
+
+export type RecordsCreateResponseURIRecordMetaShadowedByList = string[];
+export const RecordsCreateResponseURIRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsCreateResponseURIRecordMetaShadowedByList>;
+
+export interface RecordsCreateResponseURIRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsCreateResponseURIRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsCreateResponseURIRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsCreateResponseURIRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseURIRecordMeta",
+}) as any as S.Schema<RecordsCreateResponseURIRecordMeta>;
+
+export interface RecordsCreateResponseURIRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsCreateResponseURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsCreateResponseURIRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsCreateResponseURIRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsCreateResponseURIRecord",
+}) as any as S.Schema<RecordsCreateResponseURIRecord>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RecordsCreateResponse {
-  result?: unknown;
+  ARecord: RecordsCreateResponseARecord;
+  AAAARecord: RecordsCreateResponseAAAARecord;
+  CNAMERecord: RecordsCreateResponseCNAMERecord;
+  MXRecord: RecordsCreateResponseMXRecord;
+  NSRecord: RecordsCreateResponseNSRecord;
+  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  PTRRecord: RecordsCreateResponsePTRRecord;
+  TXTRecord: RecordsCreateResponseTXTRecord;
+  CAARecord: RecordsCreateResponseCAARecord;
+  CERTRecord: RecordsCreateResponseCERTRecord;
+  DNSKEYRecord: RecordsCreateResponseDNSKEYRecord;
+  DSRecord: RecordsCreateResponseDSRecord;
+  HTTPSRecord: RecordsCreateResponseHTTPSRecord;
+  LOCRecord: RecordsCreateResponseLOCRecord;
+  NAPTRRecord: RecordsCreateResponseNAPTRRecord;
+  SMIMEARecord: RecordsCreateResponseSMIMEARecord;
+  SRVRecord: RecordsCreateResponseSRVRecord;
+  SSHFPRecord: RecordsCreateResponseSSHFPRecord;
+  SVCBRecord: RecordsCreateResponseSVCBRecord;
+  TLSARecord: RecordsCreateResponseTLSARecord;
+  URIRecord: RecordsCreateResponseURIRecord;
 }
 export const RecordsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    ARecord: RecordsCreateResponseARecord,
+    AAAARecord: RecordsCreateResponseAAAARecord,
+    CNAMERecord: RecordsCreateResponseCNAMERecord,
+    MXRecord: RecordsCreateResponseMXRecord,
+    NSRecord: RecordsCreateResponseNSRecord,
+    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
+      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
+    ),
+    PTRRecord: RecordsCreateResponsePTRRecord,
+    TXTRecord: RecordsCreateResponseTXTRecord,
+    CAARecord: RecordsCreateResponseCAARecord,
+    CERTRecord: RecordsCreateResponseCERTRecord,
+    DNSKEYRecord: RecordsCreateResponseDNSKEYRecord,
+    DSRecord: RecordsCreateResponseDSRecord,
+    HTTPSRecord: RecordsCreateResponseHTTPSRecord,
+    LOCRecord: RecordsCreateResponseLOCRecord,
+    NAPTRRecord: RecordsCreateResponseNAPTRRecord,
+    SMIMEARecord: RecordsCreateResponseSMIMEARecord,
+    SRVRecord: RecordsCreateResponseSRVRecord,
+    SSHFPRecord: RecordsCreateResponseSSHFPRecord,
+    SVCBRecord: RecordsCreateResponseSVCBRecord,
+    TLSARecord: RecordsCreateResponseTLSARecord,
+    URIRecord: RecordsCreateResponseURIRecord,
   }),
 ).annotate({
   identifier: "RecordsCreateResponse",
 }) as any as S.Schema<RecordsCreateResponse>;
 
 export interface RecordsDeleteRequest {
-  zone_id: string;
-  dns_record_id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  dnsRecordId: string;
 }
 export const RecordsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    dns_record_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    dnsRecordId: S.String.pipe(T.Label("dns_record_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -331,6 +4382,7 @@ export const RecordsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RecordsDeleteResponse {
+  /** Identifier. */
   id?: string;
 }
 export const RecordsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -341,18 +4393,116 @@ export const RecordsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsDeleteResponse",
 }) as any as S.Schema<RecordsDeleteResponse>;
 
+export interface RecordsEditRequestBody {
+  ARecordObjectNameTtlType6More__: unknown;
+  AAAARecordObjectNameTtlType6More__: unknown;
+  CNAMERecordObjectNameTtlType5More__: unknown;
+  MXRecordObjectNameTtlType6More__: unknown;
+  NSRecordObjectNameTtlType5More__: unknown;
+  DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: unknown;
+  PTRRecordObjectNameTtlType5More__: unknown;
+  TXTRecordObjectNameTtlType5More__: unknown;
+  CAARecordObjectNameTtlType6More__: unknown;
+  CERTRecordObjectNameTtlType6More__: unknown;
+  DNSKEYRecordObjectNameTtlType6More__: unknown;
+  DSRecordObjectNameTtlType6More__: unknown;
+  HTTPSRecordObjectNameTtlType6More__: unknown;
+  LOCRecordObjectNameTtlType6More__: unknown;
+  NAPTRRecordObjectNameTtlType6More__: unknown;
+  SMIMEARecordObjectNameTtlType6More__: unknown;
+  SRVRecordObjectNameTtlType6More__: unknown;
+  SSHFPRecordObjectNameTtlType6More__: unknown;
+  SVCBRecordObjectNameTtlType6More__: unknown;
+  TLSARecordObjectNameTtlType6More__: unknown;
+  URIRecordObjectNameTtlType7More__: unknown;
+}
+export const RecordsEditRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("ARecord object { name, ttl, type, 6 more }"),
+    ),
+    AAAARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("AAAARecord object { name, ttl, type, 6 more }"),
+    ),
+    CNAMERecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("CNAMERecord object { name, ttl, type, 5 more }"),
+    ),
+    MXRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("MXRecord object { name, ttl, type, 6 more }"),
+    ),
+    NSRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("NSRecord object { name, ttl, type, 5 more }"),
+    ),
+    DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("DNSRecordsOpenpgpkeyRecord object { name, ttl, type, 5 more }"),
+    ),
+    PTRRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("PTRRecord object { name, ttl, type, 5 more }"),
+    ),
+    TXTRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("TXTRecord object { name, ttl, type, 5 more }"),
+    ),
+    CAARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("CAARecord object { name, ttl, type, 6 more }"),
+    ),
+    CERTRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("CERTRecord object { name, ttl, type, 6 more }"),
+    ),
+    DNSKEYRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("DNSKEYRecord object { name, ttl, type, 6 more }"),
+    ),
+    DSRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("DSRecord object { name, ttl, type, 6 more }"),
+    ),
+    HTTPSRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("HTTPSRecord object { name, ttl, type, 6 more }"),
+    ),
+    LOCRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("LOCRecord object { name, ttl, type, 6 more }"),
+    ),
+    NAPTRRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("NAPTRRecord object { name, ttl, type, 6 more }"),
+    ),
+    SMIMEARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SMIMEARecord object { name, ttl, type, 6 more }"),
+    ),
+    SRVRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SRVRecord object { name, ttl, type, 6 more }"),
+    ),
+    SSHFPRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SSHFPRecord object { name, ttl, type, 6 more }"),
+    ),
+    SVCBRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SVCBRecord object { name, ttl, type, 6 more }"),
+    ),
+    TLSARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("TLSARecord object { name, ttl, type, 6 more }"),
+    ),
+    URIRecordObjectNameTtlType7More__: S.Unknown.pipe(
+      T.Body("URIRecord object { name, ttl, type, 7 more }"),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditRequestBody",
+}) as any as S.Schema<RecordsEditRequestBody>;
+
 export interface RecordsEditRequest {
-  zone_id: string;
-  dns_record_id: string;
-  include_shadow_metadata?: boolean;
-  body: unknown;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  dnsRecordId: string;
+  /** Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  includeShadowMetadata?: boolean;
+  body: RecordsEditRequestBody;
 }
 export const RecordsEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    dns_record_id: S.String.pipe(T.Label()),
-    include_shadow_metadata: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.Unknown,
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    dnsRecordId: S.String.pipe(T.Label("dns_record_id")),
+    includeShadowMetadata: S.optional(
+      S.Boolean.pipe(T.Query("include_shadow_metadata")),
+    ),
+    body: RecordsEditRequestBody,
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -364,23 +4514,1319 @@ export const RecordsEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditRequest",
 }) as any as S.Schema<RecordsEditRequest>;
 
+export type RecordsEditResponseARecordMetaShadowedByList = string[];
+export const RecordsEditResponseARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseARecordMetaShadowedByList>;
+
+export interface RecordsEditResponseARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseARecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseARecordMeta",
+}) as any as S.Schema<RecordsEditResponseARecordMeta>;
+
+export interface RecordsEditResponseARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseARecord",
+}) as any as S.Schema<RecordsEditResponseARecord>;
+
+export type RecordsEditResponseAAAARecordMetaShadowedByList = string[];
+export const RecordsEditResponseAAAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseAAAARecordMetaShadowedByList>;
+
+export interface RecordsEditResponseAAAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseAAAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseAAAARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseAAAARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseAAAARecordMeta",
+}) as any as S.Schema<RecordsEditResponseAAAARecordMeta>;
+
+export interface RecordsEditResponseAAAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseAAAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseAAAARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseAAAARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseAAAARecord",
+}) as any as S.Schema<RecordsEditResponseAAAARecord>;
+
+export type RecordsEditResponseCNAMERecordMetaShadowedByList = string[];
+export const RecordsEditResponseCNAMERecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseCNAMERecordMetaShadowedByList>;
+
+export interface RecordsEditResponseCNAMERecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseCNAMERecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseCNAMERecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseCNAMERecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseCNAMERecordMeta",
+}) as any as S.Schema<RecordsEditResponseCNAMERecordMeta>;
+
+export interface RecordsEditResponseCNAMERecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseCNAMERecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseCNAMERecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseCNAMERecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseCNAMERecord",
+}) as any as S.Schema<RecordsEditResponseCNAMERecord>;
+
+export type RecordsEditResponseMXRecordMetaShadowedByList = string[];
+export const RecordsEditResponseMXRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseMXRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseMXRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseMXRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseMXRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseMXRecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseMXRecordMeta",
+}) as any as S.Schema<RecordsEditResponseMXRecordMeta>;
+
+export interface RecordsEditResponseMXRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseMXRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseMXRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseMXRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseMXRecord",
+}) as any as S.Schema<RecordsEditResponseMXRecord>;
+
+export type RecordsEditResponseNSRecordMetaShadowedByList = string[];
+export const RecordsEditResponseNSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseNSRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseNSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseNSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseNSRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseNSRecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseNSRecordMeta",
+}) as any as S.Schema<RecordsEditResponseNSRecordMeta>;
+
+export interface RecordsEditResponseNSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseNSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseNSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseNSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseNSRecord",
+}) as any as S.Schema<RecordsEditResponseNSRecord>;
+
+export type RecordsEditResponsePTRRecordMetaShadowedByList = string[];
+export const RecordsEditResponsePTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponsePTRRecordMetaShadowedByList>;
+
+export interface RecordsEditResponsePTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponsePTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponsePTRRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponsePTRRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponsePTRRecordMeta",
+}) as any as S.Schema<RecordsEditResponsePTRRecordMeta>;
+
+export interface RecordsEditResponsePTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponsePTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponsePTRRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponsePTRRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponsePTRRecord",
+}) as any as S.Schema<RecordsEditResponsePTRRecord>;
+
+export type RecordsEditResponseTXTRecordMetaShadowedByList = string[];
+export const RecordsEditResponseTXTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseTXTRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseTXTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseTXTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseTXTRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseTXTRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseTXTRecordMeta",
+}) as any as S.Schema<RecordsEditResponseTXTRecordMeta>;
+
+export interface RecordsEditResponseTXTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseTXTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseTXTRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseTXTRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseTXTRecord",
+}) as any as S.Schema<RecordsEditResponseTXTRecord>;
+
+export type RecordsEditResponseCAARecordMetaShadowedByList = string[];
+export const RecordsEditResponseCAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseCAARecordMetaShadowedByList>;
+
+export interface RecordsEditResponseCAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseCAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseCAARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseCAARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseCAARecordMeta",
+}) as any as S.Schema<RecordsEditResponseCAARecordMeta>;
+
+export interface RecordsEditResponseCAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseCAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseCAARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseCAARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseCAARecord",
+}) as any as S.Schema<RecordsEditResponseCAARecord>;
+
+export type RecordsEditResponseCERTRecordMetaShadowedByList = string[];
+export const RecordsEditResponseCERTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseCERTRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseCERTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseCERTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseCERTRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseCERTRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseCERTRecordMeta",
+}) as any as S.Schema<RecordsEditResponseCERTRecordMeta>;
+
+export interface RecordsEditResponseCERTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseCERTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseCERTRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseCERTRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseCERTRecord",
+}) as any as S.Schema<RecordsEditResponseCERTRecord>;
+
+export type RecordsEditResponseDNSKEYRecordMetaShadowedByList = string[];
+export const RecordsEditResponseDNSKEYRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseDNSKEYRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseDNSKEYRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseDNSKEYRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseDNSKEYRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseDNSKEYRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseDNSKEYRecordMeta",
+}) as any as S.Schema<RecordsEditResponseDNSKEYRecordMeta>;
+
+export interface RecordsEditResponseDNSKEYRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseDNSKEYRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseDNSKEYRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseDNSKEYRecord",
+}) as any as S.Schema<RecordsEditResponseDNSKEYRecord>;
+
+export type RecordsEditResponseDSRecordMetaShadowedByList = string[];
+export const RecordsEditResponseDSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseDSRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseDSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseDSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseDSRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseDSRecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseDSRecordMeta",
+}) as any as S.Schema<RecordsEditResponseDSRecordMeta>;
+
+export interface RecordsEditResponseDSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseDSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseDSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseDSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseDSRecord",
+}) as any as S.Schema<RecordsEditResponseDSRecord>;
+
+export type RecordsEditResponseHTTPSRecordMetaShadowedByList = string[];
+export const RecordsEditResponseHTTPSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseHTTPSRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseHTTPSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseHTTPSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseHTTPSRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseHTTPSRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseHTTPSRecordMeta",
+}) as any as S.Schema<RecordsEditResponseHTTPSRecordMeta>;
+
+export interface RecordsEditResponseHTTPSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseHTTPSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseHTTPSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseHTTPSRecord",
+}) as any as S.Schema<RecordsEditResponseHTTPSRecord>;
+
+export type RecordsEditResponseLOCRecordMetaShadowedByList = string[];
+export const RecordsEditResponseLOCRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseLOCRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseLOCRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseLOCRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseLOCRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseLOCRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseLOCRecordMeta",
+}) as any as S.Schema<RecordsEditResponseLOCRecordMeta>;
+
+export interface RecordsEditResponseLOCRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseLOCRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseLOCRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseLOCRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseLOCRecord",
+}) as any as S.Schema<RecordsEditResponseLOCRecord>;
+
+export type RecordsEditResponseNAPTRRecordMetaShadowedByList = string[];
+export const RecordsEditResponseNAPTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseNAPTRRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseNAPTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseNAPTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseNAPTRRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseNAPTRRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseNAPTRRecordMeta",
+}) as any as S.Schema<RecordsEditResponseNAPTRRecordMeta>;
+
+export interface RecordsEditResponseNAPTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseNAPTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseNAPTRRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseNAPTRRecord",
+}) as any as S.Schema<RecordsEditResponseNAPTRRecord>;
+
+export type RecordsEditResponseSMIMEARecordMetaShadowedByList = string[];
+export const RecordsEditResponseSMIMEARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseSMIMEARecordMetaShadowedByList>;
+
+export interface RecordsEditResponseSMIMEARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseSMIMEARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseSMIMEARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseSMIMEARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseSMIMEARecordMeta",
+}) as any as S.Schema<RecordsEditResponseSMIMEARecordMeta>;
+
+export interface RecordsEditResponseSMIMEARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseSMIMEARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseSMIMEARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseSMIMEARecord",
+}) as any as S.Schema<RecordsEditResponseSMIMEARecord>;
+
+export type RecordsEditResponseSRVRecordMetaShadowedByList = string[];
+export const RecordsEditResponseSRVRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseSRVRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseSRVRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseSRVRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseSRVRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseSRVRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseSRVRecordMeta",
+}) as any as S.Schema<RecordsEditResponseSRVRecordMeta>;
+
+export interface RecordsEditResponseSRVRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseSRVRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseSRVRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseSRVRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseSRVRecord",
+}) as any as S.Schema<RecordsEditResponseSRVRecord>;
+
+export type RecordsEditResponseSSHFPRecordMetaShadowedByList = string[];
+export const RecordsEditResponseSSHFPRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseSSHFPRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseSSHFPRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseSSHFPRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseSSHFPRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseSSHFPRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseSSHFPRecordMeta",
+}) as any as S.Schema<RecordsEditResponseSSHFPRecordMeta>;
+
+export interface RecordsEditResponseSSHFPRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseSSHFPRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseSSHFPRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseSSHFPRecord",
+}) as any as S.Schema<RecordsEditResponseSSHFPRecord>;
+
+export type RecordsEditResponseSVCBRecordMetaShadowedByList = string[];
+export const RecordsEditResponseSVCBRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseSVCBRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseSVCBRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseSVCBRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseSVCBRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseSVCBRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseSVCBRecordMeta",
+}) as any as S.Schema<RecordsEditResponseSVCBRecordMeta>;
+
+export interface RecordsEditResponseSVCBRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseSVCBRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseSVCBRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseSVCBRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseSVCBRecord",
+}) as any as S.Schema<RecordsEditResponseSVCBRecord>;
+
+export type RecordsEditResponseTLSARecordMetaShadowedByList = string[];
+export const RecordsEditResponseTLSARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseTLSARecordMetaShadowedByList>;
+
+export interface RecordsEditResponseTLSARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseTLSARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseTLSARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseTLSARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseTLSARecordMeta",
+}) as any as S.Schema<RecordsEditResponseTLSARecordMeta>;
+
+export interface RecordsEditResponseTLSARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseTLSARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseTLSARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseTLSARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseTLSARecord",
+}) as any as S.Schema<RecordsEditResponseTLSARecord>;
+
+export type RecordsEditResponseURIRecordMetaShadowedByList = string[];
+export const RecordsEditResponseURIRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseURIRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseURIRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseURIRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseURIRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseURIRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseURIRecordMeta",
+}) as any as S.Schema<RecordsEditResponseURIRecordMeta>;
+
+export interface RecordsEditResponseURIRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseURIRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseURIRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseURIRecord",
+}) as any as S.Schema<RecordsEditResponseURIRecord>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RecordsEditResponse {
-  result?: unknown;
+  ARecord: RecordsEditResponseARecord;
+  AAAARecord: RecordsEditResponseAAAARecord;
+  CNAMERecord: RecordsEditResponseCNAMERecord;
+  MXRecord: RecordsEditResponseMXRecord;
+  NSRecord: RecordsEditResponseNSRecord;
+  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  PTRRecord: RecordsEditResponsePTRRecord;
+  TXTRecord: RecordsEditResponseTXTRecord;
+  CAARecord: RecordsEditResponseCAARecord;
+  CERTRecord: RecordsEditResponseCERTRecord;
+  DNSKEYRecord: RecordsEditResponseDNSKEYRecord;
+  DSRecord: RecordsEditResponseDSRecord;
+  HTTPSRecord: RecordsEditResponseHTTPSRecord;
+  LOCRecord: RecordsEditResponseLOCRecord;
+  NAPTRRecord: RecordsEditResponseNAPTRRecord;
+  SMIMEARecord: RecordsEditResponseSMIMEARecord;
+  SRVRecord: RecordsEditResponseSRVRecord;
+  SSHFPRecord: RecordsEditResponseSSHFPRecord;
+  SVCBRecord: RecordsEditResponseSVCBRecord;
+  TLSARecord: RecordsEditResponseTLSARecord;
+  URIRecord: RecordsEditResponseURIRecord;
 }
 export const RecordsEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    ARecord: RecordsEditResponseARecord,
+    AAAARecord: RecordsEditResponseAAAARecord,
+    CNAMERecord: RecordsEditResponseCNAMERecord,
+    MXRecord: RecordsEditResponseMXRecord,
+    NSRecord: RecordsEditResponseNSRecord,
+    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
+      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
+    ),
+    PTRRecord: RecordsEditResponsePTRRecord,
+    TXTRecord: RecordsEditResponseTXTRecord,
+    CAARecord: RecordsEditResponseCAARecord,
+    CERTRecord: RecordsEditResponseCERTRecord,
+    DNSKEYRecord: RecordsEditResponseDNSKEYRecord,
+    DSRecord: RecordsEditResponseDSRecord,
+    HTTPSRecord: RecordsEditResponseHTTPSRecord,
+    LOCRecord: RecordsEditResponseLOCRecord,
+    NAPTRRecord: RecordsEditResponseNAPTRRecord,
+    SMIMEARecord: RecordsEditResponseSMIMEARecord,
+    SRVRecord: RecordsEditResponseSRVRecord,
+    SSHFPRecord: RecordsEditResponseSSHFPRecord,
+    SVCBRecord: RecordsEditResponseSVCBRecord,
+    TLSARecord: RecordsEditResponseTLSARecord,
+    URIRecord: RecordsEditResponseURIRecord,
   }),
 ).annotate({
   identifier: "RecordsEditResponse",
 }) as any as S.Schema<RecordsEditResponse>;
 
 export interface RecordsExportRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const RecordsExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -400,15 +5846,20 @@ export const RecordsExportResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsExportResponse>;
 
 export interface RecordsGetRequest {
-  zone_id: string;
-  dns_record_id: string;
-  include_shadow_metadata?: boolean;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  dnsRecordId: string;
+  /** Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  includeShadowMetadata?: boolean;
 }
 export const RecordsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    dns_record_id: S.String.pipe(T.Label()),
-    include_shadow_metadata: S.optional(S.Boolean.pipe(T.Query())),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    dnsRecordId: S.String.pipe(T.Label("dns_record_id")),
+    includeShadowMetadata: S.optional(
+      S.Boolean.pipe(T.Query("include_shadow_metadata")),
+    ),
   }).pipe(
     T.Http({
       method: "GET",
@@ -420,23 +5871,1307 @@ export const RecordsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetRequest",
 }) as any as S.Schema<RecordsGetRequest>;
 
+export type RecordsGetResponseARecordMetaShadowedByList = string[];
+export const RecordsGetResponseARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseARecordMetaShadowedByList>;
+
+export interface RecordsGetResponseARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseARecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseARecordMeta",
+}) as any as S.Schema<RecordsGetResponseARecordMeta>;
+
+export interface RecordsGetResponseARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseARecord",
+}) as any as S.Schema<RecordsGetResponseARecord>;
+
+export type RecordsGetResponseAAAARecordMetaShadowedByList = string[];
+export const RecordsGetResponseAAAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseAAAARecordMetaShadowedByList>;
+
+export interface RecordsGetResponseAAAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseAAAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseAAAARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseAAAARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseAAAARecordMeta",
+}) as any as S.Schema<RecordsGetResponseAAAARecordMeta>;
+
+export interface RecordsGetResponseAAAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseAAAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseAAAARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseAAAARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseAAAARecord",
+}) as any as S.Schema<RecordsGetResponseAAAARecord>;
+
+export type RecordsGetResponseCNAMERecordMetaShadowedByList = string[];
+export const RecordsGetResponseCNAMERecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseCNAMERecordMetaShadowedByList>;
+
+export interface RecordsGetResponseCNAMERecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseCNAMERecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseCNAMERecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseCNAMERecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseCNAMERecordMeta",
+}) as any as S.Schema<RecordsGetResponseCNAMERecordMeta>;
+
+export interface RecordsGetResponseCNAMERecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseCNAMERecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseCNAMERecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseCNAMERecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseCNAMERecord",
+}) as any as S.Schema<RecordsGetResponseCNAMERecord>;
+
+export type RecordsGetResponseMXRecordMetaShadowedByList = string[];
+export const RecordsGetResponseMXRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseMXRecordMetaShadowedByList>;
+
+export interface RecordsGetResponseMXRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseMXRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseMXRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseMXRecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseMXRecordMeta",
+}) as any as S.Schema<RecordsGetResponseMXRecordMeta>;
+
+export interface RecordsGetResponseMXRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseMXRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseMXRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseMXRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseMXRecord",
+}) as any as S.Schema<RecordsGetResponseMXRecord>;
+
+export type RecordsGetResponseNSRecordMetaShadowedByList = string[];
+export const RecordsGetResponseNSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseNSRecordMetaShadowedByList>;
+
+export interface RecordsGetResponseNSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseNSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseNSRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseNSRecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseNSRecordMeta",
+}) as any as S.Schema<RecordsGetResponseNSRecordMeta>;
+
+export interface RecordsGetResponseNSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseNSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseNSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseNSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseNSRecord",
+}) as any as S.Schema<RecordsGetResponseNSRecord>;
+
+export type RecordsGetResponsePTRRecordMetaShadowedByList = string[];
+export const RecordsGetResponsePTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponsePTRRecordMetaShadowedByList>;
+
+export interface RecordsGetResponsePTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponsePTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponsePTRRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponsePTRRecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponsePTRRecordMeta",
+}) as any as S.Schema<RecordsGetResponsePTRRecordMeta>;
+
+export interface RecordsGetResponsePTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponsePTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponsePTRRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponsePTRRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponsePTRRecord",
+}) as any as S.Schema<RecordsGetResponsePTRRecord>;
+
+export type RecordsGetResponseTXTRecordMetaShadowedByList = string[];
+export const RecordsGetResponseTXTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseTXTRecordMetaShadowedByList>;
+
+export interface RecordsGetResponseTXTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseTXTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseTXTRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseTXTRecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseTXTRecordMeta",
+}) as any as S.Schema<RecordsGetResponseTXTRecordMeta>;
+
+export interface RecordsGetResponseTXTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseTXTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseTXTRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseTXTRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseTXTRecord",
+}) as any as S.Schema<RecordsGetResponseTXTRecord>;
+
+export type RecordsGetResponseCAARecordMetaShadowedByList = string[];
+export const RecordsGetResponseCAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseCAARecordMetaShadowedByList>;
+
+export interface RecordsGetResponseCAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseCAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseCAARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseCAARecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseCAARecordMeta",
+}) as any as S.Schema<RecordsGetResponseCAARecordMeta>;
+
+export interface RecordsGetResponseCAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseCAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseCAARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseCAARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseCAARecord",
+}) as any as S.Schema<RecordsGetResponseCAARecord>;
+
+export type RecordsGetResponseCERTRecordMetaShadowedByList = string[];
+export const RecordsGetResponseCERTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseCERTRecordMetaShadowedByList>;
+
+export interface RecordsGetResponseCERTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseCERTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseCERTRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseCERTRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseCERTRecordMeta",
+}) as any as S.Schema<RecordsGetResponseCERTRecordMeta>;
+
+export interface RecordsGetResponseCERTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseCERTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseCERTRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseCERTRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseCERTRecord",
+}) as any as S.Schema<RecordsGetResponseCERTRecord>;
+
+export type RecordsGetResponseDNSKEYRecordMetaShadowedByList = string[];
+export const RecordsGetResponseDNSKEYRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseDNSKEYRecordMetaShadowedByList>;
+
+export interface RecordsGetResponseDNSKEYRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseDNSKEYRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseDNSKEYRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseDNSKEYRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseDNSKEYRecordMeta",
+}) as any as S.Schema<RecordsGetResponseDNSKEYRecordMeta>;
+
+export interface RecordsGetResponseDNSKEYRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseDNSKEYRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseDNSKEYRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseDNSKEYRecord",
+}) as any as S.Schema<RecordsGetResponseDNSKEYRecord>;
+
+export type RecordsGetResponseDSRecordMetaShadowedByList = string[];
+export const RecordsGetResponseDSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseDSRecordMetaShadowedByList>;
+
+export interface RecordsGetResponseDSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseDSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseDSRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseDSRecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseDSRecordMeta",
+}) as any as S.Schema<RecordsGetResponseDSRecordMeta>;
+
+export interface RecordsGetResponseDSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseDSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseDSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseDSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseDSRecord",
+}) as any as S.Schema<RecordsGetResponseDSRecord>;
+
+export type RecordsGetResponseHTTPSRecordMetaShadowedByList = string[];
+export const RecordsGetResponseHTTPSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseHTTPSRecordMetaShadowedByList>;
+
+export interface RecordsGetResponseHTTPSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseHTTPSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseHTTPSRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseHTTPSRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseHTTPSRecordMeta",
+}) as any as S.Schema<RecordsGetResponseHTTPSRecordMeta>;
+
+export interface RecordsGetResponseHTTPSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseHTTPSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseHTTPSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseHTTPSRecord",
+}) as any as S.Schema<RecordsGetResponseHTTPSRecord>;
+
+export type RecordsGetResponseLOCRecordMetaShadowedByList = string[];
+export const RecordsGetResponseLOCRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseLOCRecordMetaShadowedByList>;
+
+export interface RecordsGetResponseLOCRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseLOCRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseLOCRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseLOCRecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseLOCRecordMeta",
+}) as any as S.Schema<RecordsGetResponseLOCRecordMeta>;
+
+export interface RecordsGetResponseLOCRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseLOCRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseLOCRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseLOCRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseLOCRecord",
+}) as any as S.Schema<RecordsGetResponseLOCRecord>;
+
+export type RecordsGetResponseNAPTRRecordMetaShadowedByList = string[];
+export const RecordsGetResponseNAPTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseNAPTRRecordMetaShadowedByList>;
+
+export interface RecordsGetResponseNAPTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseNAPTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseNAPTRRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseNAPTRRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseNAPTRRecordMeta",
+}) as any as S.Schema<RecordsGetResponseNAPTRRecordMeta>;
+
+export interface RecordsGetResponseNAPTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseNAPTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseNAPTRRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseNAPTRRecord",
+}) as any as S.Schema<RecordsGetResponseNAPTRRecord>;
+
+export type RecordsGetResponseSMIMEARecordMetaShadowedByList = string[];
+export const RecordsGetResponseSMIMEARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseSMIMEARecordMetaShadowedByList>;
+
+export interface RecordsGetResponseSMIMEARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseSMIMEARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseSMIMEARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseSMIMEARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseSMIMEARecordMeta",
+}) as any as S.Schema<RecordsGetResponseSMIMEARecordMeta>;
+
+export interface RecordsGetResponseSMIMEARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseSMIMEARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseSMIMEARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseSMIMEARecord",
+}) as any as S.Schema<RecordsGetResponseSMIMEARecord>;
+
+export type RecordsGetResponseSRVRecordMetaShadowedByList = string[];
+export const RecordsGetResponseSRVRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseSRVRecordMetaShadowedByList>;
+
+export interface RecordsGetResponseSRVRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseSRVRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseSRVRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseSRVRecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseSRVRecordMeta",
+}) as any as S.Schema<RecordsGetResponseSRVRecordMeta>;
+
+export interface RecordsGetResponseSRVRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseSRVRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseSRVRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseSRVRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseSRVRecord",
+}) as any as S.Schema<RecordsGetResponseSRVRecord>;
+
+export type RecordsGetResponseSSHFPRecordMetaShadowedByList = string[];
+export const RecordsGetResponseSSHFPRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseSSHFPRecordMetaShadowedByList>;
+
+export interface RecordsGetResponseSSHFPRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseSSHFPRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseSSHFPRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseSSHFPRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseSSHFPRecordMeta",
+}) as any as S.Schema<RecordsGetResponseSSHFPRecordMeta>;
+
+export interface RecordsGetResponseSSHFPRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseSSHFPRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseSSHFPRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseSSHFPRecord",
+}) as any as S.Schema<RecordsGetResponseSSHFPRecord>;
+
+export type RecordsGetResponseSVCBRecordMetaShadowedByList = string[];
+export const RecordsGetResponseSVCBRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseSVCBRecordMetaShadowedByList>;
+
+export interface RecordsGetResponseSVCBRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseSVCBRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseSVCBRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseSVCBRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseSVCBRecordMeta",
+}) as any as S.Schema<RecordsGetResponseSVCBRecordMeta>;
+
+export interface RecordsGetResponseSVCBRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseSVCBRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseSVCBRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseSVCBRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseSVCBRecord",
+}) as any as S.Schema<RecordsGetResponseSVCBRecord>;
+
+export type RecordsGetResponseTLSARecordMetaShadowedByList = string[];
+export const RecordsGetResponseTLSARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseTLSARecordMetaShadowedByList>;
+
+export interface RecordsGetResponseTLSARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseTLSARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseTLSARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseTLSARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseTLSARecordMeta",
+}) as any as S.Schema<RecordsGetResponseTLSARecordMeta>;
+
+export interface RecordsGetResponseTLSARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseTLSARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseTLSARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseTLSARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseTLSARecord",
+}) as any as S.Schema<RecordsGetResponseTLSARecord>;
+
+export type RecordsGetResponseURIRecordMetaShadowedByList = string[];
+export const RecordsGetResponseURIRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsGetResponseURIRecordMetaShadowedByList>;
+
+export interface RecordsGetResponseURIRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsGetResponseURIRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsGetResponseURIRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsGetResponseURIRecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseURIRecordMeta",
+}) as any as S.Schema<RecordsGetResponseURIRecordMeta>;
+
+export interface RecordsGetResponseURIRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsGetResponseURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsGetResponseURIRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsGetResponseURIRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsGetResponseURIRecord",
+}) as any as S.Schema<RecordsGetResponseURIRecord>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RecordsGetResponse {
-  result?: unknown;
+  ARecord: RecordsGetResponseARecord;
+  AAAARecord: RecordsGetResponseAAAARecord;
+  CNAMERecord: RecordsGetResponseCNAMERecord;
+  MXRecord: RecordsGetResponseMXRecord;
+  NSRecord: RecordsGetResponseNSRecord;
+  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  PTRRecord: RecordsGetResponsePTRRecord;
+  TXTRecord: RecordsGetResponseTXTRecord;
+  CAARecord: RecordsGetResponseCAARecord;
+  CERTRecord: RecordsGetResponseCERTRecord;
+  DNSKEYRecord: RecordsGetResponseDNSKEYRecord;
+  DSRecord: RecordsGetResponseDSRecord;
+  HTTPSRecord: RecordsGetResponseHTTPSRecord;
+  LOCRecord: RecordsGetResponseLOCRecord;
+  NAPTRRecord: RecordsGetResponseNAPTRRecord;
+  SMIMEARecord: RecordsGetResponseSMIMEARecord;
+  SRVRecord: RecordsGetResponseSRVRecord;
+  SSHFPRecord: RecordsGetResponseSSHFPRecord;
+  SVCBRecord: RecordsGetResponseSVCBRecord;
+  TLSARecord: RecordsGetResponseTLSARecord;
+  URIRecord: RecordsGetResponseURIRecord;
 }
 export const RecordsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    ARecord: RecordsGetResponseARecord,
+    AAAARecord: RecordsGetResponseAAAARecord,
+    CNAMERecord: RecordsGetResponseCNAMERecord,
+    MXRecord: RecordsGetResponseMXRecord,
+    NSRecord: RecordsGetResponseNSRecord,
+    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
+      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
+    ),
+    PTRRecord: RecordsGetResponsePTRRecord,
+    TXTRecord: RecordsGetResponseTXTRecord,
+    CAARecord: RecordsGetResponseCAARecord,
+    CERTRecord: RecordsGetResponseCERTRecord,
+    DNSKEYRecord: RecordsGetResponseDNSKEYRecord,
+    DSRecord: RecordsGetResponseDSRecord,
+    HTTPSRecord: RecordsGetResponseHTTPSRecord,
+    LOCRecord: RecordsGetResponseLOCRecord,
+    NAPTRRecord: RecordsGetResponseNAPTRRecord,
+    SMIMEARecord: RecordsGetResponseSMIMEARecord,
+    SRVRecord: RecordsGetResponseSRVRecord,
+    SSHFPRecord: RecordsGetResponseSSHFPRecord,
+    SVCBRecord: RecordsGetResponseSVCBRecord,
+    TLSARecord: RecordsGetResponseTLSARecord,
+    URIRecord: RecordsGetResponseURIRecord,
   }),
 ).annotate({
   identifier: "RecordsGetResponse",
 }) as any as S.Schema<RecordsGetResponse>;
 
 export interface RecordsImportRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const RecordsImportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -450,13 +7185,17 @@ export const RecordsImportRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RecordsImportResponse {
-  recs_added?: number;
-  total_records_parsed?: number;
+  /** Number of DNS records added. */
+  recsAdded?: number;
+  /** Total number of DNS records parsed. */
+  totalRecordsParsed?: number;
 }
 export const RecordsImportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    recs_added: S.optional(S.Number),
-    total_records_parsed: S.optional(S.Number),
+    recsAdded: S.optional(S.Number.pipe(T.Body("recs_added"))),
+    totalRecordsParsed: S.optional(
+      S.Number.pipe(T.Body("total_records_parsed")),
+    ),
   }),
 ).annotate({
   identifier: "RecordsImportResponse",
@@ -479,42 +7218,57 @@ export type RecordsListRequestType = "A" | "AAAA" | "CAA" | (string & {});
 export const RecordsListRequestType = /*@__PURE__*/ S.String;
 
 export interface RecordsListRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
   comment?: string;
   content?: string;
+  /** Direction to order DNS records in. */
   direction?: string;
-  include_shadow_metadata?: boolean;
+  /** Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  includeShadowMetadata?: boolean;
+  /** Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead. */
   match?: RecordsListRequestMatch;
   name?: string;
+  /** Field to order DNS records by. */
   order?: RecordsListRequestOrder;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
+  /** Number of DNS records per page. */
+  perPage?: number;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
   proxied?: boolean;
+  /** Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters. */
   search?: string;
-  shadowed_by_name?: string;
-  shadowing_name?: string;
+  /** Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedByName?: string;
+  /** Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowingName?: string;
   tag?: string;
-  tag_match?: RecordsListRequestTagMatch;
+  /** Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags. */
+  tagMatch?: RecordsListRequestTagMatch;
+  /** Record type. */
   type?: RecordsListRequestType;
 }
 export const RecordsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     comment: S.optional(S.String.pipe(T.Query())),
     content: S.optional(S.String.pipe(T.Query())),
     direction: S.optional(S.String.pipe(T.Query())),
-    include_shadow_metadata: S.optional(S.Boolean.pipe(T.Query())),
+    includeShadowMetadata: S.optional(
+      S.Boolean.pipe(T.Query("include_shadow_metadata")),
+    ),
     match: S.optional(RecordsListRequestMatch.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
     order: S.optional(RecordsListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     proxied: S.optional(S.Boolean.pipe(T.Query())),
     search: S.optional(S.String.pipe(T.Query())),
-    shadowed_by_name: S.optional(S.String.pipe(T.Query())),
-    shadowing_name: S.optional(S.String.pipe(T.Query())),
+    shadowedByName: S.optional(S.String.pipe(T.Query("shadowed_by_name"))),
+    shadowingName: S.optional(S.String.pipe(T.Query("shadowing_name"))),
     tag: S.optional(S.String.pipe(T.Query())),
-    tag_match: S.optional(RecordsListRequestTagMatch.pipe(T.Query())),
+    tagMatch: S.optional(RecordsListRequestTagMatch.pipe(T.Query("tag_match"))),
     type: S.optional(RecordsListRequestType.pipe(T.Query())),
   }).pipe(
     T.Http({ method: "GET", uri: "/zones/{zone_id}/dns_records", code: 200 }),
@@ -523,12 +7277,1332 @@ export const RecordsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListRequest",
 }) as any as S.Schema<RecordsListRequest>;
 
-export type RecordsListResultList = unknown[];
+export type RecordsListResultItemARecordMetaShadowedByList = string[];
+export const RecordsListResultItemARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemARecordMetaShadowedByList>;
+
+export interface RecordsListResultItemARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsListResultItemARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemARecordMeta",
+}) as any as S.Schema<RecordsListResultItemARecordMeta>;
+
+export interface RecordsListResultItemARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemARecord",
+}) as any as S.Schema<RecordsListResultItemARecord>;
+
+export type RecordsListResultItemAAAARecordMetaShadowedByList = string[];
+export const RecordsListResultItemAAAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemAAAARecordMetaShadowedByList>;
+
+export interface RecordsListResultItemAAAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemAAAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemAAAARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsListResultItemAAAARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemAAAARecordMeta",
+}) as any as S.Schema<RecordsListResultItemAAAARecordMeta>;
+
+export interface RecordsListResultItemAAAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemAAAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemAAAARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemAAAARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemAAAARecord",
+}) as any as S.Schema<RecordsListResultItemAAAARecord>;
+
+export type RecordsListResultItemCNAMERecordMetaShadowedByList = string[];
+export const RecordsListResultItemCNAMERecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemCNAMERecordMetaShadowedByList>;
+
+export interface RecordsListResultItemCNAMERecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemCNAMERecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemCNAMERecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsListResultItemCNAMERecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsListResultItemCNAMERecordMeta",
+}) as any as S.Schema<RecordsListResultItemCNAMERecordMeta>;
+
+export interface RecordsListResultItemCNAMERecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemCNAMERecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemCNAMERecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemCNAMERecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemCNAMERecord",
+}) as any as S.Schema<RecordsListResultItemCNAMERecord>;
+
+export type RecordsListResultItemMXRecordMetaShadowedByList = string[];
+export const RecordsListResultItemMXRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemMXRecordMetaShadowedByList>;
+
+export interface RecordsListResultItemMXRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemMXRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemMXRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsListResultItemMXRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemMXRecordMeta",
+}) as any as S.Schema<RecordsListResultItemMXRecordMeta>;
+
+export interface RecordsListResultItemMXRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemMXRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemMXRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemMXRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemMXRecord",
+}) as any as S.Schema<RecordsListResultItemMXRecord>;
+
+export type RecordsListResultItemNSRecordMetaShadowedByList = string[];
+export const RecordsListResultItemNSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemNSRecordMetaShadowedByList>;
+
+export interface RecordsListResultItemNSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemNSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemNSRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsListResultItemNSRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemNSRecordMeta",
+}) as any as S.Schema<RecordsListResultItemNSRecordMeta>;
+
+export interface RecordsListResultItemNSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemNSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemNSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemNSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemNSRecord",
+}) as any as S.Schema<RecordsListResultItemNSRecord>;
+
+export type RecordsListResultItemPTRRecordMetaShadowedByList = string[];
+export const RecordsListResultItemPTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemPTRRecordMetaShadowedByList>;
+
+export interface RecordsListResultItemPTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemPTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemPTRRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsListResultItemPTRRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemPTRRecordMeta",
+}) as any as S.Schema<RecordsListResultItemPTRRecordMeta>;
+
+export interface RecordsListResultItemPTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemPTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemPTRRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemPTRRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemPTRRecord",
+}) as any as S.Schema<RecordsListResultItemPTRRecord>;
+
+export type RecordsListResultItemTXTRecordMetaShadowedByList = string[];
+export const RecordsListResultItemTXTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemTXTRecordMetaShadowedByList>;
+
+export interface RecordsListResultItemTXTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemTXTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemTXTRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsListResultItemTXTRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemTXTRecordMeta",
+}) as any as S.Schema<RecordsListResultItemTXTRecordMeta>;
+
+export interface RecordsListResultItemTXTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemTXTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemTXTRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemTXTRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemTXTRecord",
+}) as any as S.Schema<RecordsListResultItemTXTRecord>;
+
+export type RecordsListResultItemCAARecordMetaShadowedByList = string[];
+export const RecordsListResultItemCAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemCAARecordMetaShadowedByList>;
+
+export interface RecordsListResultItemCAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemCAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemCAARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsListResultItemCAARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemCAARecordMeta",
+}) as any as S.Schema<RecordsListResultItemCAARecordMeta>;
+
+export interface RecordsListResultItemCAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemCAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemCAARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemCAARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemCAARecord",
+}) as any as S.Schema<RecordsListResultItemCAARecord>;
+
+export type RecordsListResultItemCERTRecordMetaShadowedByList = string[];
+export const RecordsListResultItemCERTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemCERTRecordMetaShadowedByList>;
+
+export interface RecordsListResultItemCERTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemCERTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemCERTRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsListResultItemCERTRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemCERTRecordMeta",
+}) as any as S.Schema<RecordsListResultItemCERTRecordMeta>;
+
+export interface RecordsListResultItemCERTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemCERTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemCERTRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemCERTRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemCERTRecord",
+}) as any as S.Schema<RecordsListResultItemCERTRecord>;
+
+export type RecordsListResultItemDNSKEYRecordMetaShadowedByList = string[];
+export const RecordsListResultItemDNSKEYRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemDNSKEYRecordMetaShadowedByList>;
+
+export interface RecordsListResultItemDNSKEYRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemDNSKEYRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemDNSKEYRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsListResultItemDNSKEYRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsListResultItemDNSKEYRecordMeta",
+}) as any as S.Schema<RecordsListResultItemDNSKEYRecordMeta>;
+
+export interface RecordsListResultItemDNSKEYRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemDNSKEYRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemDNSKEYRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemDNSKEYRecord",
+}) as any as S.Schema<RecordsListResultItemDNSKEYRecord>;
+
+export type RecordsListResultItemDSRecordMetaShadowedByList = string[];
+export const RecordsListResultItemDSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemDSRecordMetaShadowedByList>;
+
+export interface RecordsListResultItemDSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemDSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemDSRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsListResultItemDSRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemDSRecordMeta",
+}) as any as S.Schema<RecordsListResultItemDSRecordMeta>;
+
+export interface RecordsListResultItemDSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemDSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemDSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemDSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemDSRecord",
+}) as any as S.Schema<RecordsListResultItemDSRecord>;
+
+export type RecordsListResultItemHTTPSRecordMetaShadowedByList = string[];
+export const RecordsListResultItemHTTPSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemHTTPSRecordMetaShadowedByList>;
+
+export interface RecordsListResultItemHTTPSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemHTTPSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemHTTPSRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsListResultItemHTTPSRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsListResultItemHTTPSRecordMeta",
+}) as any as S.Schema<RecordsListResultItemHTTPSRecordMeta>;
+
+export interface RecordsListResultItemHTTPSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemHTTPSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemHTTPSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemHTTPSRecord",
+}) as any as S.Schema<RecordsListResultItemHTTPSRecord>;
+
+export type RecordsListResultItemLOCRecordMetaShadowedByList = string[];
+export const RecordsListResultItemLOCRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemLOCRecordMetaShadowedByList>;
+
+export interface RecordsListResultItemLOCRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemLOCRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemLOCRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsListResultItemLOCRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemLOCRecordMeta",
+}) as any as S.Schema<RecordsListResultItemLOCRecordMeta>;
+
+export interface RecordsListResultItemLOCRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemLOCRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemLOCRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemLOCRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemLOCRecord",
+}) as any as S.Schema<RecordsListResultItemLOCRecord>;
+
+export type RecordsListResultItemNAPTRRecordMetaShadowedByList = string[];
+export const RecordsListResultItemNAPTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemNAPTRRecordMetaShadowedByList>;
+
+export interface RecordsListResultItemNAPTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemNAPTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemNAPTRRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsListResultItemNAPTRRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsListResultItemNAPTRRecordMeta",
+}) as any as S.Schema<RecordsListResultItemNAPTRRecordMeta>;
+
+export interface RecordsListResultItemNAPTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemNAPTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemNAPTRRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemNAPTRRecord",
+}) as any as S.Schema<RecordsListResultItemNAPTRRecord>;
+
+export type RecordsListResultItemSMIMEARecordMetaShadowedByList = string[];
+export const RecordsListResultItemSMIMEARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemSMIMEARecordMetaShadowedByList>;
+
+export interface RecordsListResultItemSMIMEARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemSMIMEARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemSMIMEARecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsListResultItemSMIMEARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsListResultItemSMIMEARecordMeta",
+}) as any as S.Schema<RecordsListResultItemSMIMEARecordMeta>;
+
+export interface RecordsListResultItemSMIMEARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemSMIMEARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemSMIMEARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemSMIMEARecord",
+}) as any as S.Schema<RecordsListResultItemSMIMEARecord>;
+
+export type RecordsListResultItemSRVRecordMetaShadowedByList = string[];
+export const RecordsListResultItemSRVRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemSRVRecordMetaShadowedByList>;
+
+export interface RecordsListResultItemSRVRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemSRVRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemSRVRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsListResultItemSRVRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemSRVRecordMeta",
+}) as any as S.Schema<RecordsListResultItemSRVRecordMeta>;
+
+export interface RecordsListResultItemSRVRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemSRVRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemSRVRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemSRVRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemSRVRecord",
+}) as any as S.Schema<RecordsListResultItemSRVRecord>;
+
+export type RecordsListResultItemSSHFPRecordMetaShadowedByList = string[];
+export const RecordsListResultItemSSHFPRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemSSHFPRecordMetaShadowedByList>;
+
+export interface RecordsListResultItemSSHFPRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemSSHFPRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemSSHFPRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsListResultItemSSHFPRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsListResultItemSSHFPRecordMeta",
+}) as any as S.Schema<RecordsListResultItemSSHFPRecordMeta>;
+
+export interface RecordsListResultItemSSHFPRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemSSHFPRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemSSHFPRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemSSHFPRecord",
+}) as any as S.Schema<RecordsListResultItemSSHFPRecord>;
+
+export type RecordsListResultItemSVCBRecordMetaShadowedByList = string[];
+export const RecordsListResultItemSVCBRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemSVCBRecordMetaShadowedByList>;
+
+export interface RecordsListResultItemSVCBRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemSVCBRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemSVCBRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsListResultItemSVCBRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemSVCBRecordMeta",
+}) as any as S.Schema<RecordsListResultItemSVCBRecordMeta>;
+
+export interface RecordsListResultItemSVCBRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemSVCBRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemSVCBRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemSVCBRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemSVCBRecord",
+}) as any as S.Schema<RecordsListResultItemSVCBRecord>;
+
+export type RecordsListResultItemTLSARecordMetaShadowedByList = string[];
+export const RecordsListResultItemTLSARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemTLSARecordMetaShadowedByList>;
+
+export interface RecordsListResultItemTLSARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemTLSARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemTLSARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsListResultItemTLSARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemTLSARecordMeta",
+}) as any as S.Schema<RecordsListResultItemTLSARecordMeta>;
+
+export interface RecordsListResultItemTLSARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemTLSARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemTLSARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemTLSARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemTLSARecord",
+}) as any as S.Schema<RecordsListResultItemTLSARecord>;
+
+export type RecordsListResultItemURIRecordMetaShadowedByList = string[];
+export const RecordsListResultItemURIRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsListResultItemURIRecordMetaShadowedByList>;
+
+export interface RecordsListResultItemURIRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsListResultItemURIRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsListResultItemURIRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsListResultItemURIRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemURIRecordMeta",
+}) as any as S.Schema<RecordsListResultItemURIRecordMeta>;
+
+export interface RecordsListResultItemURIRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsListResultItemURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsListResultItemURIRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsListResultItemURIRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsListResultItemURIRecord",
+}) as any as S.Schema<RecordsListResultItemURIRecord>;
+
+export interface RecordsListResultItem {
+  ARecord: RecordsListResultItemARecord;
+  AAAARecord: RecordsListResultItemAAAARecord;
+  CNAMERecord: RecordsListResultItemCNAMERecord;
+  MXRecord: RecordsListResultItemMXRecord;
+  NSRecord: RecordsListResultItemNSRecord;
+  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  PTRRecord: RecordsListResultItemPTRRecord;
+  TXTRecord: RecordsListResultItemTXTRecord;
+  CAARecord: RecordsListResultItemCAARecord;
+  CERTRecord: RecordsListResultItemCERTRecord;
+  DNSKEYRecord: RecordsListResultItemDNSKEYRecord;
+  DSRecord: RecordsListResultItemDSRecord;
+  HTTPSRecord: RecordsListResultItemHTTPSRecord;
+  LOCRecord: RecordsListResultItemLOCRecord;
+  NAPTRRecord: RecordsListResultItemNAPTRRecord;
+  SMIMEARecord: RecordsListResultItemSMIMEARecord;
+  SRVRecord: RecordsListResultItemSRVRecord;
+  SSHFPRecord: RecordsListResultItemSSHFPRecord;
+  SVCBRecord: RecordsListResultItemSVCBRecord;
+  TLSARecord: RecordsListResultItemTLSARecord;
+  URIRecord: RecordsListResultItemURIRecord;
+}
+export const RecordsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ARecord: RecordsListResultItemARecord,
+    AAAARecord: RecordsListResultItemAAAARecord,
+    CNAMERecord: RecordsListResultItemCNAMERecord,
+    MXRecord: RecordsListResultItemMXRecord,
+    NSRecord: RecordsListResultItemNSRecord,
+    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
+      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
+    ),
+    PTRRecord: RecordsListResultItemPTRRecord,
+    TXTRecord: RecordsListResultItemTXTRecord,
+    CAARecord: RecordsListResultItemCAARecord,
+    CERTRecord: RecordsListResultItemCERTRecord,
+    DNSKEYRecord: RecordsListResultItemDNSKEYRecord,
+    DSRecord: RecordsListResultItemDSRecord,
+    HTTPSRecord: RecordsListResultItemHTTPSRecord,
+    LOCRecord: RecordsListResultItemLOCRecord,
+    NAPTRRecord: RecordsListResultItemNAPTRRecord,
+    SMIMEARecord: RecordsListResultItemSMIMEARecord,
+    SRVRecord: RecordsListResultItemSRVRecord,
+    SSHFPRecord: RecordsListResultItemSSHFPRecord,
+    SVCBRecord: RecordsListResultItemSVCBRecord,
+    TLSARecord: RecordsListResultItemTLSARecord,
+    URIRecord: RecordsListResultItemURIRecord,
+  }),
+).annotate({
+  identifier: "RecordsListResultItem",
+}) as any as S.Schema<RecordsListResultItem>;
+
+export type RecordsListResultList = RecordsListResultItem[];
 export const RecordsListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  RecordsListResultItem,
 ) as any as S.Schema<RecordsListResultList>;
 
 export interface RecordsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RecordsListResultList;
 }
 export const RecordsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -540,12 +8614,13 @@ export const RecordsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsListResponse>;
 
 export interface RecordsScanRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
   body: unknown;
 }
 export const RecordsScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Unknown,
   }).pipe(
     T.Http({
@@ -560,24 +8635,29 @@ export const RecordsScanRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RecordsScanResponse {
-  recs_added?: number;
-  total_records_parsed?: number;
+  /** Number of DNS records added. */
+  recsAdded?: number;
+  /** Total number of DNS records parsed. */
+  totalRecordsParsed?: number;
 }
 export const RecordsScanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    recs_added: S.optional(S.Number),
-    total_records_parsed: S.optional(S.Number),
+    recsAdded: S.optional(S.Number.pipe(T.Body("recs_added"))),
+    totalRecordsParsed: S.optional(
+      S.Number.pipe(T.Body("total_records_parsed")),
+    ),
   }),
 ).annotate({
   identifier: "RecordsScanResponse",
 }) as any as S.Schema<RecordsScanResponse>;
 
 export interface RecordsScanListRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const RecordsScanListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -589,12 +8669,1364 @@ export const RecordsScanListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsScanListRequest",
 }) as any as S.Schema<RecordsScanListRequest>;
 
-export type RecordsScanListResultList = unknown[];
+export type RecordsScanListResultItemARecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemARecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemARecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemARecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemARecordMeta>;
+
+export interface RecordsScanListResultItemARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsScanListResultItemARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItemARecord",
+}) as any as S.Schema<RecordsScanListResultItemARecord>;
+
+export type RecordsScanListResultItemAAAARecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemAAAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemAAAARecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemAAAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemAAAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemAAAARecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemAAAARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemAAAARecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemAAAARecordMeta>;
+
+export interface RecordsScanListResultItemAAAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemAAAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemAAAARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsScanListResultItemAAAARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItemAAAARecord",
+}) as any as S.Schema<RecordsScanListResultItemAAAARecord>;
+
+export type RecordsScanListResultItemCNAMERecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemCNAMERecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemCNAMERecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemCNAMERecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemCNAMERecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemCNAMERecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemCNAMERecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemCNAMERecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemCNAMERecordMeta>;
+
+export interface RecordsScanListResultItemCNAMERecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemCNAMERecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemCNAMERecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanListResultItemCNAMERecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemCNAMERecord",
+}) as any as S.Schema<RecordsScanListResultItemCNAMERecord>;
+
+export type RecordsScanListResultItemMXRecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemMXRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemMXRecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemMXRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemMXRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemMXRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemMXRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemMXRecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemMXRecordMeta>;
+
+export interface RecordsScanListResultItemMXRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemMXRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemMXRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsScanListResultItemMXRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItemMXRecord",
+}) as any as S.Schema<RecordsScanListResultItemMXRecord>;
+
+export type RecordsScanListResultItemNSRecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemNSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemNSRecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemNSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemNSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemNSRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemNSRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemNSRecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemNSRecordMeta>;
+
+export interface RecordsScanListResultItemNSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemNSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemNSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsScanListResultItemNSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItemNSRecord",
+}) as any as S.Schema<RecordsScanListResultItemNSRecord>;
+
+export type RecordsScanListResultItemPTRRecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemPTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemPTRRecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemPTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemPTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemPTRRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemPTRRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemPTRRecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemPTRRecordMeta>;
+
+export interface RecordsScanListResultItemPTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemPTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemPTRRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsScanListResultItemPTRRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItemPTRRecord",
+}) as any as S.Schema<RecordsScanListResultItemPTRRecord>;
+
+export type RecordsScanListResultItemTXTRecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemTXTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemTXTRecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemTXTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemTXTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemTXTRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemTXTRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemTXTRecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemTXTRecordMeta>;
+
+export interface RecordsScanListResultItemTXTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemTXTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemTXTRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsScanListResultItemTXTRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItemTXTRecord",
+}) as any as S.Schema<RecordsScanListResultItemTXTRecord>;
+
+export type RecordsScanListResultItemCAARecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemCAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemCAARecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemCAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemCAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemCAARecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemCAARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemCAARecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemCAARecordMeta>;
+
+export interface RecordsScanListResultItemCAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemCAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemCAARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsScanListResultItemCAARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItemCAARecord",
+}) as any as S.Schema<RecordsScanListResultItemCAARecord>;
+
+export type RecordsScanListResultItemCERTRecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemCERTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemCERTRecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemCERTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemCERTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemCERTRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemCERTRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemCERTRecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemCERTRecordMeta>;
+
+export interface RecordsScanListResultItemCERTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemCERTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemCERTRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsScanListResultItemCERTRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItemCERTRecord",
+}) as any as S.Schema<RecordsScanListResultItemCERTRecord>;
+
+export type RecordsScanListResultItemDNSKEYRecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemDNSKEYRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemDNSKEYRecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemDNSKEYRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemDNSKEYRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemDNSKEYRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemDNSKEYRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanListResultItemDNSKEYRecordMeta",
+  }) as any as S.Schema<RecordsScanListResultItemDNSKEYRecordMeta>;
+
+export interface RecordsScanListResultItemDNSKEYRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemDNSKEYRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemDNSKEYRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanListResultItemDNSKEYRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemDNSKEYRecord",
+}) as any as S.Schema<RecordsScanListResultItemDNSKEYRecord>;
+
+export type RecordsScanListResultItemDSRecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemDSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemDSRecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemDSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemDSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemDSRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemDSRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemDSRecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemDSRecordMeta>;
+
+export interface RecordsScanListResultItemDSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemDSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemDSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsScanListResultItemDSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItemDSRecord",
+}) as any as S.Schema<RecordsScanListResultItemDSRecord>;
+
+export type RecordsScanListResultItemHTTPSRecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemHTTPSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemHTTPSRecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemHTTPSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemHTTPSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemHTTPSRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemHTTPSRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemHTTPSRecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemHTTPSRecordMeta>;
+
+export interface RecordsScanListResultItemHTTPSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemHTTPSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemHTTPSRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanListResultItemHTTPSRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemHTTPSRecord",
+}) as any as S.Schema<RecordsScanListResultItemHTTPSRecord>;
+
+export type RecordsScanListResultItemLOCRecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemLOCRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemLOCRecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemLOCRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemLOCRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemLOCRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemLOCRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemLOCRecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemLOCRecordMeta>;
+
+export interface RecordsScanListResultItemLOCRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemLOCRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemLOCRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsScanListResultItemLOCRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItemLOCRecord",
+}) as any as S.Schema<RecordsScanListResultItemLOCRecord>;
+
+export type RecordsScanListResultItemNAPTRRecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemNAPTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemNAPTRRecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemNAPTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemNAPTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemNAPTRRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemNAPTRRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemNAPTRRecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemNAPTRRecordMeta>;
+
+export interface RecordsScanListResultItemNAPTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemNAPTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemNAPTRRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanListResultItemNAPTRRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemNAPTRRecord",
+}) as any as S.Schema<RecordsScanListResultItemNAPTRRecord>;
+
+export type RecordsScanListResultItemSMIMEARecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemSMIMEARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemSMIMEARecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemSMIMEARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemSMIMEARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemSMIMEARecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemSMIMEARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanListResultItemSMIMEARecordMeta",
+  }) as any as S.Schema<RecordsScanListResultItemSMIMEARecordMeta>;
+
+export interface RecordsScanListResultItemSMIMEARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemSMIMEARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemSMIMEARecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanListResultItemSMIMEARecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemSMIMEARecord",
+}) as any as S.Schema<RecordsScanListResultItemSMIMEARecord>;
+
+export type RecordsScanListResultItemSRVRecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemSRVRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemSRVRecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemSRVRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemSRVRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemSRVRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemSRVRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemSRVRecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemSRVRecordMeta>;
+
+export interface RecordsScanListResultItemSRVRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemSRVRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemSRVRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsScanListResultItemSRVRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItemSRVRecord",
+}) as any as S.Schema<RecordsScanListResultItemSRVRecord>;
+
+export type RecordsScanListResultItemSSHFPRecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemSSHFPRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemSSHFPRecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemSSHFPRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemSSHFPRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemSSHFPRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemSSHFPRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemSSHFPRecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemSSHFPRecordMeta>;
+
+export interface RecordsScanListResultItemSSHFPRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemSSHFPRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemSSHFPRecord = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanListResultItemSSHFPRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemSSHFPRecord",
+}) as any as S.Schema<RecordsScanListResultItemSSHFPRecord>;
+
+export type RecordsScanListResultItemSVCBRecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemSVCBRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemSVCBRecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemSVCBRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemSVCBRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemSVCBRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemSVCBRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemSVCBRecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemSVCBRecordMeta>;
+
+export interface RecordsScanListResultItemSVCBRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemSVCBRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemSVCBRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsScanListResultItemSVCBRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItemSVCBRecord",
+}) as any as S.Schema<RecordsScanListResultItemSVCBRecord>;
+
+export type RecordsScanListResultItemTLSARecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemTLSARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemTLSARecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemTLSARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemTLSARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemTLSARecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemTLSARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemTLSARecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemTLSARecordMeta>;
+
+export interface RecordsScanListResultItemTLSARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemTLSARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemTLSARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsScanListResultItemTLSARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItemTLSARecord",
+}) as any as S.Schema<RecordsScanListResultItemTLSARecord>;
+
+export type RecordsScanListResultItemURIRecordMetaShadowedByList = string[];
+export const RecordsScanListResultItemURIRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanListResultItemURIRecordMetaShadowedByList>;
+
+export interface RecordsScanListResultItemURIRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanListResultItemURIRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanListResultItemURIRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanListResultItemURIRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanListResultItemURIRecordMeta",
+}) as any as S.Schema<RecordsScanListResultItemURIRecordMeta>;
+
+export interface RecordsScanListResultItemURIRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanListResultItemURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanListResultItemURIRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsScanListResultItemURIRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItemURIRecord",
+}) as any as S.Schema<RecordsScanListResultItemURIRecord>;
+
+export interface RecordsScanListResultItem {
+  ARecord: RecordsScanListResultItemARecord;
+  AAAARecord: RecordsScanListResultItemAAAARecord;
+  CNAMERecord: RecordsScanListResultItemCNAMERecord;
+  MXRecord: RecordsScanListResultItemMXRecord;
+  NSRecord: RecordsScanListResultItemNSRecord;
+  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  PTRRecord: RecordsScanListResultItemPTRRecord;
+  TXTRecord: RecordsScanListResultItemTXTRecord;
+  CAARecord: RecordsScanListResultItemCAARecord;
+  CERTRecord: RecordsScanListResultItemCERTRecord;
+  DNSKEYRecord: RecordsScanListResultItemDNSKEYRecord;
+  DSRecord: RecordsScanListResultItemDSRecord;
+  HTTPSRecord: RecordsScanListResultItemHTTPSRecord;
+  LOCRecord: RecordsScanListResultItemLOCRecord;
+  NAPTRRecord: RecordsScanListResultItemNAPTRRecord;
+  SMIMEARecord: RecordsScanListResultItemSMIMEARecord;
+  SRVRecord: RecordsScanListResultItemSRVRecord;
+  SSHFPRecord: RecordsScanListResultItemSSHFPRecord;
+  SVCBRecord: RecordsScanListResultItemSVCBRecord;
+  TLSARecord: RecordsScanListResultItemTLSARecord;
+  URIRecord: RecordsScanListResultItemURIRecord;
+}
+export const RecordsScanListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ARecord: RecordsScanListResultItemARecord,
+    AAAARecord: RecordsScanListResultItemAAAARecord,
+    CNAMERecord: RecordsScanListResultItemCNAMERecord,
+    MXRecord: RecordsScanListResultItemMXRecord,
+    NSRecord: RecordsScanListResultItemNSRecord,
+    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
+      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
+    ),
+    PTRRecord: RecordsScanListResultItemPTRRecord,
+    TXTRecord: RecordsScanListResultItemTXTRecord,
+    CAARecord: RecordsScanListResultItemCAARecord,
+    CERTRecord: RecordsScanListResultItemCERTRecord,
+    DNSKEYRecord: RecordsScanListResultItemDNSKEYRecord,
+    DSRecord: RecordsScanListResultItemDSRecord,
+    HTTPSRecord: RecordsScanListResultItemHTTPSRecord,
+    LOCRecord: RecordsScanListResultItemLOCRecord,
+    NAPTRRecord: RecordsScanListResultItemNAPTRRecord,
+    SMIMEARecord: RecordsScanListResultItemSMIMEARecord,
+    SRVRecord: RecordsScanListResultItemSRVRecord,
+    SSHFPRecord: RecordsScanListResultItemSSHFPRecord,
+    SVCBRecord: RecordsScanListResultItemSVCBRecord,
+    TLSARecord: RecordsScanListResultItemTLSARecord,
+    URIRecord: RecordsScanListResultItemURIRecord,
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItem",
+}) as any as S.Schema<RecordsScanListResultItem>;
+
+export type RecordsScanListResultList = RecordsScanListResultItem[];
 export const RecordsScanListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  RecordsScanListResultItem,
 ) as any as S.Schema<RecordsScanListResultList>;
 
 export interface RecordsScanListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RecordsScanListResultList;
 }
 export const RecordsScanListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -605,12 +10037,107 @@ export const RecordsScanListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsScanListResponse",
 }) as any as S.Schema<RecordsScanListResponse>;
 
-export type RecordsScanReviewRequestAcceptsList = unknown[];
+export interface RecordsScanReviewRequestAcceptsItem {
+  ARecordObjectNameTtlType6More__: unknown;
+  AAAARecordObjectNameTtlType6More__: unknown;
+  CNAMERecordObjectNameTtlType5More__: unknown;
+  MXRecordObjectNameTtlType6More__: unknown;
+  NSRecordObjectNameTtlType5More__: unknown;
+  DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: unknown;
+  PTRRecordObjectNameTtlType5More__: unknown;
+  TXTRecordObjectNameTtlType5More__: unknown;
+  CAARecordObjectNameTtlType6More__: unknown;
+  CERTRecordObjectNameTtlType6More__: unknown;
+  DNSKEYRecordObjectNameTtlType6More__: unknown;
+  DSRecordObjectNameTtlType6More__: unknown;
+  HTTPSRecordObjectNameTtlType6More__: unknown;
+  LOCRecordObjectNameTtlType6More__: unknown;
+  NAPTRRecordObjectNameTtlType6More__: unknown;
+  SMIMEARecordObjectNameTtlType6More__: unknown;
+  SRVRecordObjectNameTtlType6More__: unknown;
+  SSHFPRecordObjectNameTtlType6More__: unknown;
+  SVCBRecordObjectNameTtlType6More__: unknown;
+  TLSARecordObjectNameTtlType6More__: unknown;
+  URIRecordObjectNameTtlType7More__: unknown;
+}
+export const RecordsScanReviewRequestAcceptsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("ARecord object { name, ttl, type, 6 more }"),
+    ),
+    AAAARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("AAAARecord object { name, ttl, type, 6 more }"),
+    ),
+    CNAMERecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("CNAMERecord object { name, ttl, type, 5 more }"),
+    ),
+    MXRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("MXRecord object { name, ttl, type, 6 more }"),
+    ),
+    NSRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("NSRecord object { name, ttl, type, 5 more }"),
+    ),
+    DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("DNSRecordsOpenpgpkeyRecord object { name, ttl, type, 5 more }"),
+    ),
+    PTRRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("PTRRecord object { name, ttl, type, 5 more }"),
+    ),
+    TXTRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("TXTRecord object { name, ttl, type, 5 more }"),
+    ),
+    CAARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("CAARecord object { name, ttl, type, 6 more }"),
+    ),
+    CERTRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("CERTRecord object { name, ttl, type, 6 more }"),
+    ),
+    DNSKEYRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("DNSKEYRecord object { name, ttl, type, 6 more }"),
+    ),
+    DSRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("DSRecord object { name, ttl, type, 6 more }"),
+    ),
+    HTTPSRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("HTTPSRecord object { name, ttl, type, 6 more }"),
+    ),
+    LOCRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("LOCRecord object { name, ttl, type, 6 more }"),
+    ),
+    NAPTRRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("NAPTRRecord object { name, ttl, type, 6 more }"),
+    ),
+    SMIMEARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SMIMEARecord object { name, ttl, type, 6 more }"),
+    ),
+    SRVRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SRVRecord object { name, ttl, type, 6 more }"),
+    ),
+    SSHFPRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SSHFPRecord object { name, ttl, type, 6 more }"),
+    ),
+    SVCBRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SVCBRecord object { name, ttl, type, 6 more }"),
+    ),
+    TLSARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("TLSARecord object { name, ttl, type, 6 more }"),
+    ),
+    URIRecordObjectNameTtlType7More__: S.Unknown.pipe(
+      T.Body("URIRecord object { name, ttl, type, 7 more }"),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsScanReviewRequestAcceptsItem",
+}) as any as S.Schema<RecordsScanReviewRequestAcceptsItem>;
+
+export type RecordsScanReviewRequestAcceptsList =
+  RecordsScanReviewRequestAcceptsItem[];
 export const RecordsScanReviewRequestAcceptsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  RecordsScanReviewRequestAcceptsItem,
 ) as any as S.Schema<RecordsScanReviewRequestAcceptsList>;
 
 export interface RecordsScanReviewRequestRejectsItem {
+  /** Identifier. */
   id: string;
 }
 export const RecordsScanReviewRequestRejectsItem = /*@__PURE__*/ S.suspend(() =>
@@ -628,13 +10155,14 @@ export const RecordsScanReviewRequestRejectsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RecordsScanReviewRequestRejectsList>;
 
 export interface RecordsScanReviewRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
   accepts?: RecordsScanReviewRequestAcceptsList;
   rejects?: RecordsScanReviewRequestRejectsList;
 }
 export const RecordsScanReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     accepts: S.optional(RecordsScanReviewRequestAcceptsList),
     rejects: S.optional(RecordsScanReviewRequestRejectsList),
   }).pipe(
@@ -648,9 +10176,1424 @@ export const RecordsScanReviewRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsScanReviewRequest",
 }) as any as S.Schema<RecordsScanReviewRequest>;
 
-export type RecordsScanReviewResponseAcceptsList = unknown[];
+export type RecordsScanReviewResponseAcceptsItemARecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemARecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemARecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemARecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemARecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemARecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemARecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemARecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemARecord>;
+
+export type RecordsScanReviewResponseAcceptsItemAAAARecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemAAAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemAAAARecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemAAAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemAAAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemAAAARecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemAAAARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemAAAARecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemAAAARecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemAAAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemAAAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemAAAARecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemAAAARecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemAAAARecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemAAAARecord>;
+
+export type RecordsScanReviewResponseAcceptsItemCNAMERecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemCNAMERecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemCNAMERecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemCNAMERecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemCNAMERecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemCNAMERecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemCNAMERecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemCNAMERecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemCNAMERecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemCNAMERecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemCNAMERecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemCNAMERecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemCNAMERecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemCNAMERecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemCNAMERecord>;
+
+export type RecordsScanReviewResponseAcceptsItemMXRecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemMXRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemMXRecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemMXRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemMXRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemMXRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemMXRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemMXRecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemMXRecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemMXRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemMXRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemMXRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemMXRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemMXRecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemMXRecord>;
+
+export type RecordsScanReviewResponseAcceptsItemNSRecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemNSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemNSRecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemNSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemNSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemNSRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemNSRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemNSRecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemNSRecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemNSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemNSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemNSRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemNSRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemNSRecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemNSRecord>;
+
+export type RecordsScanReviewResponseAcceptsItemPTRRecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemPTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemPTRRecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemPTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemPTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemPTRRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemPTRRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemPTRRecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemPTRRecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemPTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemPTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemPTRRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemPTRRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemPTRRecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemPTRRecord>;
+
+export type RecordsScanReviewResponseAcceptsItemTXTRecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemTXTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemTXTRecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemTXTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemTXTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemTXTRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemTXTRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemTXTRecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemTXTRecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemTXTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemTXTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemTXTRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemTXTRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemTXTRecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemTXTRecord>;
+
+export type RecordsScanReviewResponseAcceptsItemCAARecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemCAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemCAARecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemCAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemCAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemCAARecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemCAARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemCAARecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemCAARecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemCAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemCAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemCAARecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemCAARecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemCAARecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemCAARecord>;
+
+export type RecordsScanReviewResponseAcceptsItemCERTRecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemCERTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemCERTRecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemCERTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemCERTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemCERTRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemCERTRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemCERTRecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemCERTRecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemCERTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemCERTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemCERTRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemCERTRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemCERTRecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemCERTRecord>;
+
+export type RecordsScanReviewResponseAcceptsItemDNSKEYRecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemDNSKEYRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemDNSKEYRecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemDNSKEYRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemDNSKEYRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemDNSKEYRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemDNSKEYRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemDNSKEYRecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemDNSKEYRecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemDNSKEYRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemDNSKEYRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemDNSKEYRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemDNSKEYRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemDNSKEYRecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemDNSKEYRecord>;
+
+export type RecordsScanReviewResponseAcceptsItemDSRecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemDSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemDSRecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemDSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemDSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemDSRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemDSRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemDSRecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemDSRecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemDSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemDSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemDSRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemDSRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemDSRecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemDSRecord>;
+
+export type RecordsScanReviewResponseAcceptsItemHTTPSRecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemHTTPSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemHTTPSRecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemHTTPSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemHTTPSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemHTTPSRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemHTTPSRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemHTTPSRecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemHTTPSRecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemHTTPSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemHTTPSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemHTTPSRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemHTTPSRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemHTTPSRecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemHTTPSRecord>;
+
+export type RecordsScanReviewResponseAcceptsItemLOCRecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemLOCRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemLOCRecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemLOCRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemLOCRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemLOCRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemLOCRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemLOCRecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemLOCRecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemLOCRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemLOCRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemLOCRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemLOCRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemLOCRecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemLOCRecord>;
+
+export type RecordsScanReviewResponseAcceptsItemNAPTRRecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemNAPTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemNAPTRRecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemNAPTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemNAPTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemNAPTRRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemNAPTRRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemNAPTRRecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemNAPTRRecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemNAPTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemNAPTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemNAPTRRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemNAPTRRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemNAPTRRecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemNAPTRRecord>;
+
+export type RecordsScanReviewResponseAcceptsItemSMIMEARecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemSMIMEARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemSMIMEARecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemSMIMEARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemSMIMEARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemSMIMEARecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemSMIMEARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemSMIMEARecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemSMIMEARecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemSMIMEARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemSMIMEARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemSMIMEARecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemSMIMEARecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemSMIMEARecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemSMIMEARecord>;
+
+export type RecordsScanReviewResponseAcceptsItemSRVRecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemSRVRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemSRVRecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemSRVRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemSRVRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemSRVRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemSRVRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemSRVRecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemSRVRecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemSRVRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemSRVRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemSRVRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemSRVRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemSRVRecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemSRVRecord>;
+
+export type RecordsScanReviewResponseAcceptsItemSSHFPRecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemSSHFPRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemSSHFPRecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemSSHFPRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemSSHFPRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemSSHFPRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemSSHFPRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemSSHFPRecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemSSHFPRecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemSSHFPRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemSSHFPRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemSSHFPRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemSSHFPRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemSSHFPRecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemSSHFPRecord>;
+
+export type RecordsScanReviewResponseAcceptsItemSVCBRecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemSVCBRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemSVCBRecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemSVCBRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemSVCBRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemSVCBRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemSVCBRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemSVCBRecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemSVCBRecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemSVCBRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemSVCBRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemSVCBRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemSVCBRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemSVCBRecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemSVCBRecord>;
+
+export type RecordsScanReviewResponseAcceptsItemTLSARecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemTLSARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemTLSARecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemTLSARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemTLSARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemTLSARecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemTLSARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemTLSARecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemTLSARecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemTLSARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemTLSARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemTLSARecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemTLSARecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemTLSARecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemTLSARecord>;
+
+export type RecordsScanReviewResponseAcceptsItemURIRecordMetaShadowedByList =
+  string[];
+export const RecordsScanReviewResponseAcceptsItemURIRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsScanReviewResponseAcceptsItemURIRecordMetaShadowedByList>;
+
+export interface RecordsScanReviewResponseAcceptsItemURIRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsScanReviewResponseAcceptsItemURIRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsScanReviewResponseAcceptsItemURIRecordMeta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsScanReviewResponseAcceptsItemURIRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemURIRecordMeta",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemURIRecordMeta>;
+
+export interface RecordsScanReviewResponseAcceptsItemURIRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsScanReviewResponseAcceptsItemURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsScanReviewResponseAcceptsItemURIRecord =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: RecordsScanReviewResponseAcceptsItemURIRecordMeta,
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    }),
+  ).annotate({
+    identifier: "RecordsScanReviewResponseAcceptsItemURIRecord",
+  }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemURIRecord>;
+
+export interface RecordsScanReviewResponseAcceptsItem {
+  ARecord: RecordsScanReviewResponseAcceptsItemARecord;
+  AAAARecord: RecordsScanReviewResponseAcceptsItemAAAARecord;
+  CNAMERecord: RecordsScanReviewResponseAcceptsItemCNAMERecord;
+  MXRecord: RecordsScanReviewResponseAcceptsItemMXRecord;
+  NSRecord: RecordsScanReviewResponseAcceptsItemNSRecord;
+  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  PTRRecord: RecordsScanReviewResponseAcceptsItemPTRRecord;
+  TXTRecord: RecordsScanReviewResponseAcceptsItemTXTRecord;
+  CAARecord: RecordsScanReviewResponseAcceptsItemCAARecord;
+  CERTRecord: RecordsScanReviewResponseAcceptsItemCERTRecord;
+  DNSKEYRecord: RecordsScanReviewResponseAcceptsItemDNSKEYRecord;
+  DSRecord: RecordsScanReviewResponseAcceptsItemDSRecord;
+  HTTPSRecord: RecordsScanReviewResponseAcceptsItemHTTPSRecord;
+  LOCRecord: RecordsScanReviewResponseAcceptsItemLOCRecord;
+  NAPTRRecord: RecordsScanReviewResponseAcceptsItemNAPTRRecord;
+  SMIMEARecord: RecordsScanReviewResponseAcceptsItemSMIMEARecord;
+  SRVRecord: RecordsScanReviewResponseAcceptsItemSRVRecord;
+  SSHFPRecord: RecordsScanReviewResponseAcceptsItemSSHFPRecord;
+  SVCBRecord: RecordsScanReviewResponseAcceptsItemSVCBRecord;
+  TLSARecord: RecordsScanReviewResponseAcceptsItemTLSARecord;
+  URIRecord: RecordsScanReviewResponseAcceptsItemURIRecord;
+}
+export const RecordsScanReviewResponseAcceptsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ARecord: RecordsScanReviewResponseAcceptsItemARecord,
+      AAAARecord: RecordsScanReviewResponseAcceptsItemAAAARecord,
+      CNAMERecord: RecordsScanReviewResponseAcceptsItemCNAMERecord,
+      MXRecord: RecordsScanReviewResponseAcceptsItemMXRecord,
+      NSRecord: RecordsScanReviewResponseAcceptsItemNSRecord,
+      OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
+        T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
+      ),
+      PTRRecord: RecordsScanReviewResponseAcceptsItemPTRRecord,
+      TXTRecord: RecordsScanReviewResponseAcceptsItemTXTRecord,
+      CAARecord: RecordsScanReviewResponseAcceptsItemCAARecord,
+      CERTRecord: RecordsScanReviewResponseAcceptsItemCERTRecord,
+      DNSKEYRecord: RecordsScanReviewResponseAcceptsItemDNSKEYRecord,
+      DSRecord: RecordsScanReviewResponseAcceptsItemDSRecord,
+      HTTPSRecord: RecordsScanReviewResponseAcceptsItemHTTPSRecord,
+      LOCRecord: RecordsScanReviewResponseAcceptsItemLOCRecord,
+      NAPTRRecord: RecordsScanReviewResponseAcceptsItemNAPTRRecord,
+      SMIMEARecord: RecordsScanReviewResponseAcceptsItemSMIMEARecord,
+      SRVRecord: RecordsScanReviewResponseAcceptsItemSRVRecord,
+      SSHFPRecord: RecordsScanReviewResponseAcceptsItemSSHFPRecord,
+      SVCBRecord: RecordsScanReviewResponseAcceptsItemSVCBRecord,
+      TLSARecord: RecordsScanReviewResponseAcceptsItemTLSARecord,
+      URIRecord: RecordsScanReviewResponseAcceptsItemURIRecord,
+    }),
+).annotate({
+  identifier: "RecordsScanReviewResponseAcceptsItem",
+}) as any as S.Schema<RecordsScanReviewResponseAcceptsItem>;
+
+export type RecordsScanReviewResponseAcceptsList =
+  RecordsScanReviewResponseAcceptsItem[];
 export const RecordsScanReviewResponseAcceptsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  RecordsScanReviewResponseAcceptsItem,
 ) as any as S.Schema<RecordsScanReviewResponseAcceptsList>;
 
 export type RecordsScanReviewResponseRejectsList = string[];
@@ -673,11 +11616,12 @@ export const RecordsScanReviewResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsScanReviewResponse>;
 
 export interface RecordsScanTriggerRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const RecordsScanTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -696,18 +11640,116 @@ export const RecordsScanTriggerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsScanTriggerResponse",
 }) as any as S.Schema<RecordsScanTriggerResponse>;
 
+export interface RecordsUpdateRequestBody {
+  ARecordObjectNameTtlType6More__: unknown;
+  AAAARecordObjectNameTtlType6More__: unknown;
+  CNAMERecordObjectNameTtlType5More__: unknown;
+  MXRecordObjectNameTtlType6More__: unknown;
+  NSRecordObjectNameTtlType5More__: unknown;
+  DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: unknown;
+  PTRRecordObjectNameTtlType5More__: unknown;
+  TXTRecordObjectNameTtlType5More__: unknown;
+  CAARecordObjectNameTtlType6More__: unknown;
+  CERTRecordObjectNameTtlType6More__: unknown;
+  DNSKEYRecordObjectNameTtlType6More__: unknown;
+  DSRecordObjectNameTtlType6More__: unknown;
+  HTTPSRecordObjectNameTtlType6More__: unknown;
+  LOCRecordObjectNameTtlType6More__: unknown;
+  NAPTRRecordObjectNameTtlType6More__: unknown;
+  SMIMEARecordObjectNameTtlType6More__: unknown;
+  SRVRecordObjectNameTtlType6More__: unknown;
+  SSHFPRecordObjectNameTtlType6More__: unknown;
+  SVCBRecordObjectNameTtlType6More__: unknown;
+  TLSARecordObjectNameTtlType6More__: unknown;
+  URIRecordObjectNameTtlType7More__: unknown;
+}
+export const RecordsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("ARecord object { name, ttl, type, 6 more }"),
+    ),
+    AAAARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("AAAARecord object { name, ttl, type, 6 more }"),
+    ),
+    CNAMERecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("CNAMERecord object { name, ttl, type, 5 more }"),
+    ),
+    MXRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("MXRecord object { name, ttl, type, 6 more }"),
+    ),
+    NSRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("NSRecord object { name, ttl, type, 5 more }"),
+    ),
+    DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("DNSRecordsOpenpgpkeyRecord object { name, ttl, type, 5 more }"),
+    ),
+    PTRRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("PTRRecord object { name, ttl, type, 5 more }"),
+    ),
+    TXTRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("TXTRecord object { name, ttl, type, 5 more }"),
+    ),
+    CAARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("CAARecord object { name, ttl, type, 6 more }"),
+    ),
+    CERTRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("CERTRecord object { name, ttl, type, 6 more }"),
+    ),
+    DNSKEYRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("DNSKEYRecord object { name, ttl, type, 6 more }"),
+    ),
+    DSRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("DSRecord object { name, ttl, type, 6 more }"),
+    ),
+    HTTPSRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("HTTPSRecord object { name, ttl, type, 6 more }"),
+    ),
+    LOCRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("LOCRecord object { name, ttl, type, 6 more }"),
+    ),
+    NAPTRRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("NAPTRRecord object { name, ttl, type, 6 more }"),
+    ),
+    SMIMEARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SMIMEARecord object { name, ttl, type, 6 more }"),
+    ),
+    SRVRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SRVRecord object { name, ttl, type, 6 more }"),
+    ),
+    SSHFPRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SSHFPRecord object { name, ttl, type, 6 more }"),
+    ),
+    SVCBRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SVCBRecord object { name, ttl, type, 6 more }"),
+    ),
+    TLSARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("TLSARecord object { name, ttl, type, 6 more }"),
+    ),
+    URIRecordObjectNameTtlType7More__: S.Unknown.pipe(
+      T.Body("URIRecord object { name, ttl, type, 7 more }"),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsUpdateRequestBody",
+}) as any as S.Schema<RecordsUpdateRequestBody>;
+
 export interface RecordsUpdateRequest {
-  zone_id: string;
-  dns_record_id: string;
-  include_shadow_metadata?: boolean;
-  body: unknown;
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  dnsRecordId: string;
+  /** Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  includeShadowMetadata?: boolean;
+  body: RecordsUpdateRequestBody;
 }
 export const RecordsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    dns_record_id: S.String.pipe(T.Label()),
-    include_shadow_metadata: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.Unknown,
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    dnsRecordId: S.String.pipe(T.Label("dns_record_id")),
+    includeShadowMetadata: S.optional(
+      S.Boolean.pipe(T.Query("include_shadow_metadata")),
+    ),
+    body: RecordsUpdateRequestBody,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -719,24 +11761,1334 @@ export const RecordsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateRequest",
 }) as any as S.Schema<RecordsUpdateRequest>;
 
+export type RecordsUpdateResponseARecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseARecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsUpdateResponseARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseARecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseARecordMeta>;
+
+export interface RecordsUpdateResponseARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseARecord",
+}) as any as S.Schema<RecordsUpdateResponseARecord>;
+
+export type RecordsUpdateResponseAAAARecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseAAAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseAAAARecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseAAAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseAAAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseAAAARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsUpdateResponseAAAARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseAAAARecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseAAAARecordMeta>;
+
+export interface RecordsUpdateResponseAAAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseAAAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseAAAARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseAAAARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseAAAARecord",
+}) as any as S.Schema<RecordsUpdateResponseAAAARecord>;
+
+export type RecordsUpdateResponseCNAMERecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseCNAMERecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseCNAMERecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseCNAMERecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseCNAMERecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseCNAMERecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsUpdateResponseCNAMERecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsUpdateResponseCNAMERecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseCNAMERecordMeta>;
+
+export interface RecordsUpdateResponseCNAMERecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseCNAMERecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseCNAMERecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseCNAMERecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseCNAMERecord",
+}) as any as S.Schema<RecordsUpdateResponseCNAMERecord>;
+
+export type RecordsUpdateResponseMXRecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseMXRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseMXRecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseMXRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseMXRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseMXRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsUpdateResponseMXRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseMXRecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseMXRecordMeta>;
+
+export interface RecordsUpdateResponseMXRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseMXRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseMXRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseMXRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseMXRecord",
+}) as any as S.Schema<RecordsUpdateResponseMXRecord>;
+
+export type RecordsUpdateResponseNSRecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseNSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseNSRecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseNSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseNSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseNSRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsUpdateResponseNSRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseNSRecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseNSRecordMeta>;
+
+export interface RecordsUpdateResponseNSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseNSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseNSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseNSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseNSRecord",
+}) as any as S.Schema<RecordsUpdateResponseNSRecord>;
+
+export type RecordsUpdateResponsePTRRecordMetaShadowedByList = string[];
+export const RecordsUpdateResponsePTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponsePTRRecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponsePTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponsePTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponsePTRRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsUpdateResponsePTRRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponsePTRRecordMeta",
+}) as any as S.Schema<RecordsUpdateResponsePTRRecordMeta>;
+
+export interface RecordsUpdateResponsePTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponsePTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponsePTRRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponsePTRRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponsePTRRecord",
+}) as any as S.Schema<RecordsUpdateResponsePTRRecord>;
+
+export type RecordsUpdateResponseTXTRecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseTXTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseTXTRecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseTXTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseTXTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseTXTRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsUpdateResponseTXTRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseTXTRecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseTXTRecordMeta>;
+
+export interface RecordsUpdateResponseTXTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseTXTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseTXTRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseTXTRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseTXTRecord",
+}) as any as S.Schema<RecordsUpdateResponseTXTRecord>;
+
+export type RecordsUpdateResponseCAARecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseCAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseCAARecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseCAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseCAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseCAARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsUpdateResponseCAARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseCAARecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseCAARecordMeta>;
+
+export interface RecordsUpdateResponseCAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseCAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseCAARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseCAARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseCAARecord",
+}) as any as S.Schema<RecordsUpdateResponseCAARecord>;
+
+export type RecordsUpdateResponseCERTRecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseCERTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseCERTRecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseCERTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseCERTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseCERTRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsUpdateResponseCERTRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseCERTRecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseCERTRecordMeta>;
+
+export interface RecordsUpdateResponseCERTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseCERTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseCERTRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseCERTRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseCERTRecord",
+}) as any as S.Schema<RecordsUpdateResponseCERTRecord>;
+
+export type RecordsUpdateResponseDNSKEYRecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseDNSKEYRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseDNSKEYRecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseDNSKEYRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseDNSKEYRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseDNSKEYRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsUpdateResponseDNSKEYRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsUpdateResponseDNSKEYRecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseDNSKEYRecordMeta>;
+
+export interface RecordsUpdateResponseDNSKEYRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseDNSKEYRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseDNSKEYRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseDNSKEYRecord",
+}) as any as S.Schema<RecordsUpdateResponseDNSKEYRecord>;
+
+export type RecordsUpdateResponseDSRecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseDSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseDSRecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseDSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseDSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseDSRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsUpdateResponseDSRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseDSRecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseDSRecordMeta>;
+
+export interface RecordsUpdateResponseDSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseDSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseDSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseDSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseDSRecord",
+}) as any as S.Schema<RecordsUpdateResponseDSRecord>;
+
+export type RecordsUpdateResponseHTTPSRecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseHTTPSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseHTTPSRecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseHTTPSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseHTTPSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseHTTPSRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsUpdateResponseHTTPSRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsUpdateResponseHTTPSRecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseHTTPSRecordMeta>;
+
+export interface RecordsUpdateResponseHTTPSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseHTTPSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseHTTPSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseHTTPSRecord",
+}) as any as S.Schema<RecordsUpdateResponseHTTPSRecord>;
+
+export type RecordsUpdateResponseLOCRecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseLOCRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseLOCRecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseLOCRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseLOCRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseLOCRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsUpdateResponseLOCRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseLOCRecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseLOCRecordMeta>;
+
+export interface RecordsUpdateResponseLOCRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseLOCRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseLOCRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseLOCRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseLOCRecord",
+}) as any as S.Schema<RecordsUpdateResponseLOCRecord>;
+
+export type RecordsUpdateResponseNAPTRRecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseNAPTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseNAPTRRecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseNAPTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseNAPTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseNAPTRRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsUpdateResponseNAPTRRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsUpdateResponseNAPTRRecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseNAPTRRecordMeta>;
+
+export interface RecordsUpdateResponseNAPTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseNAPTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseNAPTRRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseNAPTRRecord",
+}) as any as S.Schema<RecordsUpdateResponseNAPTRRecord>;
+
+export type RecordsUpdateResponseSMIMEARecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseSMIMEARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseSMIMEARecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseSMIMEARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseSMIMEARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseSMIMEARecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsUpdateResponseSMIMEARecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsUpdateResponseSMIMEARecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseSMIMEARecordMeta>;
+
+export interface RecordsUpdateResponseSMIMEARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseSMIMEARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseSMIMEARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseSMIMEARecord",
+}) as any as S.Schema<RecordsUpdateResponseSMIMEARecord>;
+
+export type RecordsUpdateResponseSRVRecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseSRVRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseSRVRecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseSRVRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseSRVRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseSRVRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsUpdateResponseSRVRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseSRVRecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseSRVRecordMeta>;
+
+export interface RecordsUpdateResponseSRVRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseSRVRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseSRVRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseSRVRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseSRVRecord",
+}) as any as S.Schema<RecordsUpdateResponseSRVRecord>;
+
+export type RecordsUpdateResponseSSHFPRecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseSSHFPRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseSSHFPRecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseSSHFPRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseSSHFPRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseSSHFPRecordMeta = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+      isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+      shadowedBy: S.optional(
+        RecordsUpdateResponseSSHFPRecordMetaShadowedByList.pipe(
+          T.Body("shadowed_by"),
+        ),
+      ),
+      shadowedRecordsCount: S.optional(
+        S.Number.pipe(T.Body("shadowed_records_count")),
+      ),
+    }),
+).annotate({
+  identifier: "RecordsUpdateResponseSSHFPRecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseSSHFPRecordMeta>;
+
+export interface RecordsUpdateResponseSSHFPRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseSSHFPRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseSSHFPRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseSSHFPRecord",
+}) as any as S.Schema<RecordsUpdateResponseSSHFPRecord>;
+
+export type RecordsUpdateResponseSVCBRecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseSVCBRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseSVCBRecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseSVCBRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseSVCBRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseSVCBRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsUpdateResponseSVCBRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseSVCBRecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseSVCBRecordMeta>;
+
+export interface RecordsUpdateResponseSVCBRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseSVCBRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseSVCBRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseSVCBRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseSVCBRecord",
+}) as any as S.Schema<RecordsUpdateResponseSVCBRecord>;
+
+export type RecordsUpdateResponseTLSARecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseTLSARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseTLSARecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseTLSARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseTLSARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseTLSARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsUpdateResponseTLSARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseTLSARecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseTLSARecordMeta>;
+
+export interface RecordsUpdateResponseTLSARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseTLSARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseTLSARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseTLSARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseTLSARecord",
+}) as any as S.Schema<RecordsUpdateResponseTLSARecord>;
+
+export type RecordsUpdateResponseURIRecordMetaShadowedByList = string[];
+export const RecordsUpdateResponseURIRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsUpdateResponseURIRecordMetaShadowedByList>;
+
+export interface RecordsUpdateResponseURIRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsUpdateResponseURIRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsUpdateResponseURIRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsUpdateResponseURIRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseURIRecordMeta",
+}) as any as S.Schema<RecordsUpdateResponseURIRecordMeta>;
+
+export interface RecordsUpdateResponseURIRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsUpdateResponseURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsUpdateResponseURIRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsUpdateResponseURIRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResponseURIRecord",
+}) as any as S.Schema<RecordsUpdateResponseURIRecord>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RecordsUpdateResponse {
-  result?: unknown;
+  ARecord: RecordsUpdateResponseARecord;
+  AAAARecord: RecordsUpdateResponseAAAARecord;
+  CNAMERecord: RecordsUpdateResponseCNAMERecord;
+  MXRecord: RecordsUpdateResponseMXRecord;
+  NSRecord: RecordsUpdateResponseNSRecord;
+  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  PTRRecord: RecordsUpdateResponsePTRRecord;
+  TXTRecord: RecordsUpdateResponseTXTRecord;
+  CAARecord: RecordsUpdateResponseCAARecord;
+  CERTRecord: RecordsUpdateResponseCERTRecord;
+  DNSKEYRecord: RecordsUpdateResponseDNSKEYRecord;
+  DSRecord: RecordsUpdateResponseDSRecord;
+  HTTPSRecord: RecordsUpdateResponseHTTPSRecord;
+  LOCRecord: RecordsUpdateResponseLOCRecord;
+  NAPTRRecord: RecordsUpdateResponseNAPTRRecord;
+  SMIMEARecord: RecordsUpdateResponseSMIMEARecord;
+  SRVRecord: RecordsUpdateResponseSRVRecord;
+  SSHFPRecord: RecordsUpdateResponseSSHFPRecord;
+  SVCBRecord: RecordsUpdateResponseSVCBRecord;
+  TLSARecord: RecordsUpdateResponseTLSARecord;
+  URIRecord: RecordsUpdateResponseURIRecord;
 }
 export const RecordsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    ARecord: RecordsUpdateResponseARecord,
+    AAAARecord: RecordsUpdateResponseAAAARecord,
+    CNAMERecord: RecordsUpdateResponseCNAMERecord,
+    MXRecord: RecordsUpdateResponseMXRecord,
+    NSRecord: RecordsUpdateResponseNSRecord,
+    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
+      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
+    ),
+    PTRRecord: RecordsUpdateResponsePTRRecord,
+    TXTRecord: RecordsUpdateResponseTXTRecord,
+    CAARecord: RecordsUpdateResponseCAARecord,
+    CERTRecord: RecordsUpdateResponseCERTRecord,
+    DNSKEYRecord: RecordsUpdateResponseDNSKEYRecord,
+    DSRecord: RecordsUpdateResponseDSRecord,
+    HTTPSRecord: RecordsUpdateResponseHTTPSRecord,
+    LOCRecord: RecordsUpdateResponseLOCRecord,
+    NAPTRRecord: RecordsUpdateResponseNAPTRRecord,
+    SMIMEARecord: RecordsUpdateResponseSMIMEARecord,
+    SRVRecord: RecordsUpdateResponseSRVRecord,
+    SSHFPRecord: RecordsUpdateResponseSSHFPRecord,
+    SVCBRecord: RecordsUpdateResponseSVCBRecord,
+    TLSARecord: RecordsUpdateResponseTLSARecord,
+    URIRecord: RecordsUpdateResponseURIRecord,
   }),
 ).annotate({
   identifier: "RecordsUpdateResponse",
 }) as any as S.Schema<RecordsUpdateResponse>;
 
 export interface SettingsAccountEditRequestZoneDefaultsInternalDns {
-  reference_zone_id?: string;
+  /** The ID of the zone to fallback to. */
+  referenceZoneId?: string;
 }
 export const SettingsAccountEditRequestZoneDefaultsInternalDns =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      reference_zone_id: S.optional(S.String),
+      referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
     }),
   ).annotate({
     identifier: "SettingsAccountEditRequestZoneDefaultsInternalDns",
@@ -752,6 +13104,7 @@ export const SettingsAccountEditRequestZoneDefaultsNameserversType =
   /*@__PURE__*/ S.String;
 
 export interface SettingsAccountEditRequestZoneDefaultsNameservers {
+  /** Nameserver type */
   type?: SettingsAccountEditRequestZoneDefaultsNameserversType;
 }
 export const SettingsAccountEditRequestZoneDefaultsNameservers =
@@ -764,19 +13117,26 @@ export const SettingsAccountEditRequestZoneDefaultsNameservers =
   }) as any as S.Schema<SettingsAccountEditRequestZoneDefaultsNameservers>;
 
 export interface SettingsAccountEditRequestZoneDefaultsSoa {
+  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
   expire?: number;
-  min_ttl?: number;
+  /** The time to live (TTL) for negative caching of records within the zone. */
+  minTtl?: number;
+  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
   mname?: string;
+  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
   refresh?: number;
+  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
   retry?: number;
+  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
   rname?: string;
+  /** The time to live (TTL) of the SOA record itself. */
   ttl?: number;
 }
 export const SettingsAccountEditRequestZoneDefaultsSoa =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       expire: S.optional(S.Number),
-      min_ttl: S.optional(S.Number),
+      minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
       mname: S.optional(S.String),
       refresh: S.optional(S.Number),
       retry: S.optional(S.Number),
@@ -796,47 +13156,70 @@ export const SettingsAccountEditRequestZoneDefaultsZoneMode =
   /*@__PURE__*/ S.String;
 
 export interface SettingsAccountEditRequestZoneDefaults {
-  flatten_all_cnames?: boolean;
-  foundation_dns?: boolean;
-  internal_dns?: SettingsAccountEditRequestZoneDefaultsInternalDns;
-  multi_provider?: boolean;
+  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
+  flattenAllCnames?: boolean;
+  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
+  foundationDns?: boolean;
+  /** Settings for this internal zone. */
+  internalDns?: SettingsAccountEditRequestZoneDefaultsInternalDns;
+  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
+  multiProvider?: boolean;
+  /** Settings determining the nameservers through which the zone should be available. */
   nameservers?: SettingsAccountEditRequestZoneDefaultsNameservers;
-  ns_ttl?: number;
-  secondary_overrides?: boolean;
+  /** The time to live (TTL) of the zone's nameserver (NS) records. */
+  nsTtl?: number;
+  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
+  secondaryOverrides?: boolean;
+  /** Components of the zone's SOA record. */
   soa?: SettingsAccountEditRequestZoneDefaultsSoa;
-  zone_mode?: SettingsAccountEditRequestZoneDefaultsZoneMode;
+  /** Whether the zone mode is a regular or CDN/DNS only zone. */
+  zoneMode?: SettingsAccountEditRequestZoneDefaultsZoneMode;
 }
 export const SettingsAccountEditRequestZoneDefaults = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      flatten_all_cnames: S.optional(S.Boolean),
-      foundation_dns: S.optional(S.Boolean),
-      internal_dns: S.optional(
-        SettingsAccountEditRequestZoneDefaultsInternalDns,
+      flattenAllCnames: S.optional(
+        S.Boolean.pipe(T.Body("flatten_all_cnames")),
       ),
-      multi_provider: S.optional(S.Boolean),
+      foundationDns: S.optional(S.Boolean.pipe(T.Body("foundation_dns"))),
+      internalDns: S.optional(
+        SettingsAccountEditRequestZoneDefaultsInternalDns.pipe(
+          T.Body("internal_dns"),
+        ),
+      ),
+      multiProvider: S.optional(S.Boolean.pipe(T.Body("multi_provider"))),
       nameservers: S.optional(
         SettingsAccountEditRequestZoneDefaultsNameservers,
       ),
-      ns_ttl: S.optional(S.Number),
-      secondary_overrides: S.optional(S.Boolean),
+      nsTtl: S.optional(S.Number.pipe(T.Body("ns_ttl"))),
+      secondaryOverrides: S.optional(
+        S.Boolean.pipe(T.Body("secondary_overrides")),
+      ),
       soa: S.optional(SettingsAccountEditRequestZoneDefaultsSoa),
-      zone_mode: S.optional(SettingsAccountEditRequestZoneDefaultsZoneMode),
+      zoneMode: S.optional(
+        SettingsAccountEditRequestZoneDefaultsZoneMode.pipe(
+          T.Body("zone_mode"),
+        ),
+      ),
     }),
 ).annotate({
   identifier: "SettingsAccountEditRequestZoneDefaults",
 }) as any as S.Schema<SettingsAccountEditRequestZoneDefaults>;
 
 export interface SettingsAccountEditRequest {
-  account_id: string;
-  enforce_dns_only?: boolean;
-  zone_defaults?: SettingsAccountEditRequestZoneDefaults;
+  /** Identifier. */
+  accountId: string;
+  /** When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only). */
+  enforceDnsOnly?: boolean;
+  zoneDefaults?: SettingsAccountEditRequestZoneDefaults;
 }
 export const SettingsAccountEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    enforce_dns_only: S.optional(S.Boolean),
-    zone_defaults: S.optional(SettingsAccountEditRequestZoneDefaults),
+    accountId: S.String.pipe(T.Label("account_id")),
+    enforceDnsOnly: S.optional(S.Boolean.pipe(T.Body("enforce_dns_only"))),
+    zoneDefaults: S.optional(
+      SettingsAccountEditRequestZoneDefaults.pipe(T.Body("zone_defaults")),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -849,12 +13232,13 @@ export const SettingsAccountEditRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsAccountEditRequest>;
 
 export interface SettingsAccountEditResponseZoneDefaultsInternalDns {
-  reference_zone_id?: string;
+  /** The ID of the zone to fallback to. */
+  referenceZoneId?: string;
 }
 export const SettingsAccountEditResponseZoneDefaultsInternalDns =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      reference_zone_id: S.optional(S.String),
+      referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
     }),
   ).annotate({
     identifier: "SettingsAccountEditResponseZoneDefaultsInternalDns",
@@ -870,6 +13254,7 @@ export const SettingsAccountEditResponseZoneDefaultsNameserversType =
   /*@__PURE__*/ S.String;
 
 export interface SettingsAccountEditResponseZoneDefaultsNameservers {
+  /** Nameserver type */
   type: SettingsAccountEditResponseZoneDefaultsNameserversType;
 }
 export const SettingsAccountEditResponseZoneDefaultsNameservers =
@@ -882,19 +13267,26 @@ export const SettingsAccountEditResponseZoneDefaultsNameservers =
   }) as any as S.Schema<SettingsAccountEditResponseZoneDefaultsNameservers>;
 
 export interface SettingsAccountEditResponseZoneDefaultsSoa {
+  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
   expire?: number;
-  min_ttl?: number;
+  /** The time to live (TTL) for negative caching of records within the zone. */
+  minTtl?: number;
+  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
   mname?: string;
+  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
   refresh?: number;
+  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
   retry?: number;
+  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
   rname?: string;
+  /** The time to live (TTL) of the SOA record itself. */
   ttl?: number;
 }
 export const SettingsAccountEditResponseZoneDefaultsSoa =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       expire: S.optional(S.Number),
-      min_ttl: S.optional(S.Number),
+      minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
       mname: S.optional(S.String),
       refresh: S.optional(S.Number),
       retry: S.optional(S.Number),
@@ -914,28 +13306,41 @@ export const SettingsAccountEditResponseZoneDefaultsZoneMode =
   /*@__PURE__*/ S.String;
 
 export interface SettingsAccountEditResponseZoneDefaults {
-  flatten_all_cnames: boolean;
-  foundation_dns: boolean;
-  internal_dns: SettingsAccountEditResponseZoneDefaultsInternalDns;
-  multi_provider: boolean;
+  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
+  flattenAllCnames: boolean;
+  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
+  foundationDns: boolean;
+  /** Settings for this internal zone. */
+  internalDns: SettingsAccountEditResponseZoneDefaultsInternalDns;
+  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
+  multiProvider: boolean;
+  /** Settings determining the nameservers through which the zone should be available. */
   nameservers: SettingsAccountEditResponseZoneDefaultsNameservers;
-  ns_ttl: number;
-  secondary_overrides: boolean;
+  /** The time to live (TTL) of the zone's nameserver (NS) records. */
+  nsTtl: number;
+  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
+  secondaryOverrides: boolean;
+  /** Components of the zone's SOA record. */
   soa: SettingsAccountEditResponseZoneDefaultsSoa;
-  zone_mode: SettingsAccountEditResponseZoneDefaultsZoneMode;
+  /** Whether the zone mode is a regular or CDN/DNS only zone. */
+  zoneMode: SettingsAccountEditResponseZoneDefaultsZoneMode;
 }
 export const SettingsAccountEditResponseZoneDefaults = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      flatten_all_cnames: S.Boolean,
-      foundation_dns: S.Boolean,
-      internal_dns: SettingsAccountEditResponseZoneDefaultsInternalDns,
-      multi_provider: S.Boolean,
+      flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
+      foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
+      internalDns: SettingsAccountEditResponseZoneDefaultsInternalDns.pipe(
+        T.Body("internal_dns"),
+      ),
+      multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
       nameservers: SettingsAccountEditResponseZoneDefaultsNameservers,
-      ns_ttl: S.Number,
-      secondary_overrides: S.Boolean,
+      nsTtl: S.Number.pipe(T.Body("ns_ttl")),
+      secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
       soa: SettingsAccountEditResponseZoneDefaultsSoa,
-      zone_mode: SettingsAccountEditResponseZoneDefaultsZoneMode,
+      zoneMode: SettingsAccountEditResponseZoneDefaultsZoneMode.pipe(
+        T.Body("zone_mode"),
+      ),
     }),
 ).annotate({
   identifier: "SettingsAccountEditResponseZoneDefaults",
@@ -943,24 +13348,28 @@ export const SettingsAccountEditResponseZoneDefaults = /*@__PURE__*/ S.suspend(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SettingsAccountEditResponse {
-  zone_defaults: SettingsAccountEditResponseZoneDefaults;
-  enforce_dns_only?: boolean;
+  zoneDefaults: SettingsAccountEditResponseZoneDefaults;
+  /** When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only). */
+  enforceDnsOnly?: boolean;
 }
 export const SettingsAccountEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_defaults: SettingsAccountEditResponseZoneDefaults,
-    enforce_dns_only: S.optional(S.Boolean),
+    zoneDefaults: SettingsAccountEditResponseZoneDefaults.pipe(
+      T.Body("zone_defaults"),
+    ),
+    enforceDnsOnly: S.optional(S.Boolean.pipe(T.Body("enforce_dns_only"))),
   }),
 ).annotate({
   identifier: "SettingsAccountEditResponse",
 }) as any as S.Schema<SettingsAccountEditResponse>;
 
 export interface SettingsAccountGetRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
 }
 export const SettingsAccountGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -973,12 +13382,13 @@ export const SettingsAccountGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsAccountGetRequest>;
 
 export interface SettingsAccountGetResponseZoneDefaultsInternalDns {
-  reference_zone_id?: string;
+  /** The ID of the zone to fallback to. */
+  referenceZoneId?: string;
 }
 export const SettingsAccountGetResponseZoneDefaultsInternalDns =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      reference_zone_id: S.optional(S.String),
+      referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
     }),
   ).annotate({
     identifier: "SettingsAccountGetResponseZoneDefaultsInternalDns",
@@ -994,6 +13404,7 @@ export const SettingsAccountGetResponseZoneDefaultsNameserversType =
   /*@__PURE__*/ S.String;
 
 export interface SettingsAccountGetResponseZoneDefaultsNameservers {
+  /** Nameserver type */
   type: SettingsAccountGetResponseZoneDefaultsNameserversType;
 }
 export const SettingsAccountGetResponseZoneDefaultsNameservers =
@@ -1006,19 +13417,26 @@ export const SettingsAccountGetResponseZoneDefaultsNameservers =
   }) as any as S.Schema<SettingsAccountGetResponseZoneDefaultsNameservers>;
 
 export interface SettingsAccountGetResponseZoneDefaultsSoa {
+  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
   expire?: number;
-  min_ttl?: number;
+  /** The time to live (TTL) for negative caching of records within the zone. */
+  minTtl?: number;
+  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
   mname?: string;
+  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
   refresh?: number;
+  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
   retry?: number;
+  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
   rname?: string;
+  /** The time to live (TTL) of the SOA record itself. */
   ttl?: number;
 }
 export const SettingsAccountGetResponseZoneDefaultsSoa =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       expire: S.optional(S.Number),
-      min_ttl: S.optional(S.Number),
+      minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
       mname: S.optional(S.String),
       refresh: S.optional(S.Number),
       retry: S.optional(S.Number),
@@ -1038,28 +13456,41 @@ export const SettingsAccountGetResponseZoneDefaultsZoneMode =
   /*@__PURE__*/ S.String;
 
 export interface SettingsAccountGetResponseZoneDefaults {
-  flatten_all_cnames: boolean;
-  foundation_dns: boolean;
-  internal_dns: SettingsAccountGetResponseZoneDefaultsInternalDns;
-  multi_provider: boolean;
+  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
+  flattenAllCnames: boolean;
+  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
+  foundationDns: boolean;
+  /** Settings for this internal zone. */
+  internalDns: SettingsAccountGetResponseZoneDefaultsInternalDns;
+  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
+  multiProvider: boolean;
+  /** Settings determining the nameservers through which the zone should be available. */
   nameservers: SettingsAccountGetResponseZoneDefaultsNameservers;
-  ns_ttl: number;
-  secondary_overrides: boolean;
+  /** The time to live (TTL) of the zone's nameserver (NS) records. */
+  nsTtl: number;
+  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
+  secondaryOverrides: boolean;
+  /** Components of the zone's SOA record. */
   soa: SettingsAccountGetResponseZoneDefaultsSoa;
-  zone_mode: SettingsAccountGetResponseZoneDefaultsZoneMode;
+  /** Whether the zone mode is a regular or CDN/DNS only zone. */
+  zoneMode: SettingsAccountGetResponseZoneDefaultsZoneMode;
 }
 export const SettingsAccountGetResponseZoneDefaults = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      flatten_all_cnames: S.Boolean,
-      foundation_dns: S.Boolean,
-      internal_dns: SettingsAccountGetResponseZoneDefaultsInternalDns,
-      multi_provider: S.Boolean,
+      flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
+      foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
+      internalDns: SettingsAccountGetResponseZoneDefaultsInternalDns.pipe(
+        T.Body("internal_dns"),
+      ),
+      multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
       nameservers: SettingsAccountGetResponseZoneDefaultsNameservers,
-      ns_ttl: S.Number,
-      secondary_overrides: S.Boolean,
+      nsTtl: S.Number.pipe(T.Body("ns_ttl")),
+      secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
       soa: SettingsAccountGetResponseZoneDefaultsSoa,
-      zone_mode: SettingsAccountGetResponseZoneDefaultsZoneMode,
+      zoneMode: SettingsAccountGetResponseZoneDefaultsZoneMode.pipe(
+        T.Body("zone_mode"),
+      ),
     }),
 ).annotate({
   identifier: "SettingsAccountGetResponseZoneDefaults",
@@ -1067,13 +13498,16 @@ export const SettingsAccountGetResponseZoneDefaults = /*@__PURE__*/ S.suspend(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SettingsAccountGetResponse {
-  zone_defaults: SettingsAccountGetResponseZoneDefaults;
-  enforce_dns_only?: boolean;
+  zoneDefaults: SettingsAccountGetResponseZoneDefaults;
+  /** When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only). */
+  enforceDnsOnly?: boolean;
 }
 export const SettingsAccountGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_defaults: SettingsAccountGetResponseZoneDefaults,
-    enforce_dns_only: S.optional(S.Boolean),
+    zoneDefaults: SettingsAccountGetResponseZoneDefaults.pipe(
+      T.Body("zone_defaults"),
+    ),
+    enforceDnsOnly: S.optional(S.Boolean.pipe(T.Body("enforce_dns_only"))),
   }),
 ).annotate({
   identifier: "SettingsAccountGetResponse",
@@ -1085,13 +13519,16 @@ export const SettingsAccountViewsCreateRequestZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SettingsAccountViewsCreateRequestZonesList>;
 
 export interface SettingsAccountViewsCreateRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** The name of the view. */
   name: string;
+  /** The list of zones linked to this view. */
   zones: SettingsAccountViewsCreateRequestZonesList;
 }
 export const SettingsAccountViewsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     zones: SettingsAccountViewsCreateRequestZonesList,
   }).pipe(
@@ -1113,17 +13550,22 @@ export const SettingsAccountViewsCreateResponseZonesList =
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SettingsAccountViewsCreateResponse {
+  /** Identifier. */
   id: string;
-  created_time: string;
-  modified_time: string;
+  /** When the view was created. */
+  createdTime: string;
+  /** When the view was last modified. */
+  modifiedTime: string;
+  /** The name of the view. */
   name: string;
+  /** The list of zones linked to this view. */
   zones: SettingsAccountViewsCreateResponseZonesList;
 }
 export const SettingsAccountViewsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_time: S.String,
-    modified_time: S.String,
+    createdTime: S.String.pipe(T.Body("created_time")),
+    modifiedTime: S.String.pipe(T.Body("modified_time")),
     name: S.String,
     zones: SettingsAccountViewsCreateResponseZonesList,
   }),
@@ -1132,13 +13574,15 @@ export const SettingsAccountViewsCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsAccountViewsCreateResponse>;
 
 export interface SettingsAccountViewsDeleteRequest {
-  account_id: string;
-  view_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Identifier. */
+  viewId: string;
 }
 export const SettingsAccountViewsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    view_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    viewId: S.String.pipe(T.Label("view_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1152,6 +13596,7 @@ export const SettingsAccountViewsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SettingsAccountViewsDeleteResponse {
+  /** Identifier. */
   id?: string;
 }
 export const SettingsAccountViewsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1168,15 +13613,19 @@ export const SettingsAccountViewsEditRequestZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SettingsAccountViewsEditRequestZonesList>;
 
 export interface SettingsAccountViewsEditRequest {
-  account_id: string;
-  view_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Identifier. */
+  viewId: string;
+  /** The name of the view. */
   name?: string;
+  /** The list of zones linked to this view. */
   zones?: SettingsAccountViewsEditRequestZonesList;
 }
 export const SettingsAccountViewsEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    view_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    viewId: S.String.pipe(T.Label("view_id")),
     name: S.optional(S.String),
     zones: S.optional(SettingsAccountViewsEditRequestZonesList),
   }).pipe(
@@ -1197,17 +13646,22 @@ export const SettingsAccountViewsEditResponseZonesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SettingsAccountViewsEditResponse {
+  /** Identifier. */
   id: string;
-  created_time: string;
-  modified_time: string;
+  /** When the view was created. */
+  createdTime: string;
+  /** When the view was last modified. */
+  modifiedTime: string;
+  /** The name of the view. */
   name: string;
+  /** The list of zones linked to this view. */
   zones: SettingsAccountViewsEditResponseZonesList;
 }
 export const SettingsAccountViewsEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_time: S.String,
-    modified_time: S.String,
+    createdTime: S.String.pipe(T.Body("created_time")),
+    modifiedTime: S.String.pipe(T.Body("modified_time")),
     name: S.String,
     zones: SettingsAccountViewsEditResponseZonesList,
   }),
@@ -1216,13 +13670,15 @@ export const SettingsAccountViewsEditResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsAccountViewsEditResponse>;
 
 export interface SettingsAccountViewsGetRequest {
-  account_id: string;
-  view_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Identifier. */
+  viewId: string;
 }
 export const SettingsAccountViewsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    view_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    viewId: S.String.pipe(T.Label("view_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1241,17 +13697,22 @@ export const SettingsAccountViewsGetResponseZonesList = /*@__PURE__*/ S.Array(
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SettingsAccountViewsGetResponse {
+  /** Identifier. */
   id: string;
-  created_time: string;
-  modified_time: string;
+  /** When the view was created. */
+  createdTime: string;
+  /** When the view was last modified. */
+  modifiedTime: string;
+  /** The name of the view. */
   name: string;
+  /** The list of zones linked to this view. */
   zones: SettingsAccountViewsGetResponseZonesList;
 }
 export const SettingsAccountViewsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_time: S.String,
-    modified_time: S.String,
+    createdTime: S.String.pipe(T.Body("created_time")),
+    modifiedTime: S.String.pipe(T.Body("modified_time")),
     name: S.String,
     zones: SettingsAccountViewsGetResponseZonesList,
   }),
@@ -1279,19 +13740,27 @@ export type SettingsAccountViewsListRequestOrder =
 export const SettingsAccountViewsListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface SettingsAccountViewsListRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
+  /** Direction to order DNS views in. */
   direction?: SettingsAccountViewsListRequestDirection;
+  /** Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. */
   match?: SettingsAccountViewsListRequestMatch;
   name?: string;
+  /** Field to order DNS views by. */
   order?: SettingsAccountViewsListRequestOrder;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
-  zone_id?: string;
-  zone_name?: string;
+  /** Number of DNS views per page. */
+  perPage?: number;
+  /** A zone ID that exists in the zones list for the view. */
+  zoneId?: string;
+  /** A zone name that exists in the zones list for the view. */
+  zoneName?: string;
 }
 export const SettingsAccountViewsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     direction: S.optional(
       SettingsAccountViewsListRequestDirection.pipe(T.Query()),
     ),
@@ -1299,9 +13768,9 @@ export const SettingsAccountViewsListRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String.pipe(T.Query())),
     order: S.optional(SettingsAccountViewsListRequestOrder.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
-    zone_id: S.optional(S.String.pipe(T.Query())),
-    zone_name: S.optional(S.String.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    zoneId: S.optional(S.String.pipe(T.Query("zone_id"))),
+    zoneName: S.optional(S.String.pipe(T.Query("zone_name"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1320,17 +13789,22 @@ export const SettingsAccountViewsListResultItemZonesList =
   ) as any as S.Schema<SettingsAccountViewsListResultItemZonesList>;
 
 export interface SettingsAccountViewsListResultItem {
+  /** Identifier. */
   id: string;
-  created_time: string;
-  modified_time: string;
+  /** When the view was created. */
+  createdTime: string;
+  /** When the view was last modified. */
+  modifiedTime: string;
+  /** The name of the view. */
   name: string;
+  /** The list of zones linked to this view. */
   zones: SettingsAccountViewsListResultItemZonesList;
 }
 export const SettingsAccountViewsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_time: S.String,
-    modified_time: S.String,
+    createdTime: S.String.pipe(T.Body("created_time")),
+    modifiedTime: S.String.pipe(T.Body("modified_time")),
     name: S.String,
     zones: SettingsAccountViewsListResultItemZonesList,
   }),
@@ -1345,6 +13819,7 @@ export const SettingsAccountViewsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SettingsAccountViewsListResultList>;
 
 export interface SettingsAccountViewsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SettingsAccountViewsListResultList;
 }
 export const SettingsAccountViewsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1358,11 +13833,12 @@ export const SettingsAccountViewsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsAccountViewsListResponse>;
 
 export interface SettingsZoneEditRequestInternalDns {
-  reference_zone_id?: string;
+  /** The ID of the zone to fallback to. */
+  referenceZoneId?: string;
 }
 export const SettingsZoneEditRequestInternalDns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    reference_zone_id: S.optional(S.String),
+    referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
   }),
 ).annotate({
   identifier: "SettingsZoneEditRequestInternalDns",
@@ -1377,12 +13853,14 @@ export type SettingsZoneEditRequestNameserversType =
 export const SettingsZoneEditRequestNameserversType = /*@__PURE__*/ S.String;
 
 export interface SettingsZoneEditRequestNameservers {
-  ns_set?: number;
+  /** Configured nameserver set to be used for this zone */
+  nsSet?: number;
+  /** Nameserver type */
   type?: SettingsZoneEditRequestNameserversType;
 }
 export const SettingsZoneEditRequestNameservers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ns_set: S.optional(S.Number),
+    nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
     type: S.optional(SettingsZoneEditRequestNameserversType),
   }),
 ).annotate({
@@ -1390,18 +13868,25 @@ export const SettingsZoneEditRequestNameservers = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsZoneEditRequestNameservers>;
 
 export interface SettingsZoneEditRequestSoa {
+  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
   expire?: number;
-  min_ttl?: number;
+  /** The time to live (TTL) for negative caching of records within the zone. */
+  minTtl?: number;
+  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
   mname?: string;
+  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
   refresh?: number;
+  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
   retry?: number;
+  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
   rname?: string;
+  /** The time to live (TTL) of the SOA record itself. */
   ttl?: number;
 }
 export const SettingsZoneEditRequestSoa = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expire: S.optional(S.Number),
-    min_ttl: S.optional(S.Number),
+    minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
     mname: S.optional(S.String),
     refresh: S.optional(S.Number),
     retry: S.optional(S.Number),
@@ -1420,29 +13905,45 @@ export type SettingsZoneEditRequestZoneMode =
 export const SettingsZoneEditRequestZoneMode = /*@__PURE__*/ S.String;
 
 export interface SettingsZoneEditRequest {
-  zone_id: string;
-  flatten_all_cnames?: boolean;
-  foundation_dns?: boolean;
-  internal_dns?: SettingsZoneEditRequestInternalDns;
-  multi_provider?: boolean;
+  /** Identifier. */
+  zoneId: string;
+  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
+  flattenAllCnames?: boolean;
+  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
+  foundationDns?: boolean;
+  /** Settings for this internal zone. */
+  internalDns?: SettingsZoneEditRequestInternalDns;
+  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
+  multiProvider?: boolean;
+  /** Settings determining the nameservers through which the zone should be available. */
   nameservers?: SettingsZoneEditRequestNameservers;
-  ns_ttl?: number;
-  secondary_overrides?: boolean;
+  /** The time to live (TTL) of the zone's nameserver (NS) records. */
+  nsTtl?: number;
+  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
+  secondaryOverrides?: boolean;
+  /** Components of the zone's SOA record. */
   soa?: SettingsZoneEditRequestSoa;
-  zone_mode?: SettingsZoneEditRequestZoneMode;
+  /** Whether the zone mode is a regular or CDN/DNS only zone. */
+  zoneMode?: SettingsZoneEditRequestZoneMode;
 }
 export const SettingsZoneEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    flatten_all_cnames: S.optional(S.Boolean),
-    foundation_dns: S.optional(S.Boolean),
-    internal_dns: S.optional(SettingsZoneEditRequestInternalDns),
-    multi_provider: S.optional(S.Boolean),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    flattenAllCnames: S.optional(S.Boolean.pipe(T.Body("flatten_all_cnames"))),
+    foundationDns: S.optional(S.Boolean.pipe(T.Body("foundation_dns"))),
+    internalDns: S.optional(
+      SettingsZoneEditRequestInternalDns.pipe(T.Body("internal_dns")),
+    ),
+    multiProvider: S.optional(S.Boolean.pipe(T.Body("multi_provider"))),
     nameservers: S.optional(SettingsZoneEditRequestNameservers),
-    ns_ttl: S.optional(S.Number),
-    secondary_overrides: S.optional(S.Boolean),
+    nsTtl: S.optional(S.Number.pipe(T.Body("ns_ttl"))),
+    secondaryOverrides: S.optional(
+      S.Boolean.pipe(T.Body("secondary_overrides")),
+    ),
     soa: S.optional(SettingsZoneEditRequestSoa),
-    zone_mode: S.optional(SettingsZoneEditRequestZoneMode),
+    zoneMode: S.optional(
+      SettingsZoneEditRequestZoneMode.pipe(T.Body("zone_mode")),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1455,11 +13956,12 @@ export const SettingsZoneEditRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsZoneEditRequest>;
 
 export interface SettingsZoneEditResponseInternalDns {
-  reference_zone_id?: string;
+  /** The ID of the zone to fallback to. */
+  referenceZoneId?: string;
 }
 export const SettingsZoneEditResponseInternalDns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    reference_zone_id: S.optional(S.String),
+    referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
   }),
 ).annotate({
   identifier: "SettingsZoneEditResponseInternalDns",
@@ -1474,31 +13976,40 @@ export type SettingsZoneEditResponseNameserversType =
 export const SettingsZoneEditResponseNameserversType = /*@__PURE__*/ S.String;
 
 export interface SettingsZoneEditResponseNameservers {
+  /** Nameserver type */
   type: SettingsZoneEditResponseNameserversType;
-  ns_set?: number;
+  /** Configured nameserver set to be used for this zone */
+  nsSet?: number;
 }
 export const SettingsZoneEditResponseNameservers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: SettingsZoneEditResponseNameserversType,
-    ns_set: S.optional(S.Number),
+    nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
   }),
 ).annotate({
   identifier: "SettingsZoneEditResponseNameservers",
 }) as any as S.Schema<SettingsZoneEditResponseNameservers>;
 
 export interface SettingsZoneEditResponseSoa {
+  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
   expire?: number;
-  min_ttl?: number;
+  /** The time to live (TTL) for negative caching of records within the zone. */
+  minTtl?: number;
+  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
   mname?: string;
+  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
   refresh?: number;
+  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
   retry?: number;
+  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
   rname?: string;
+  /** The time to live (TTL) of the SOA record itself. */
   ttl?: number;
 }
 export const SettingsZoneEditResponseSoa = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expire: S.optional(S.Number),
-    min_ttl: S.optional(S.Number),
+    minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
     mname: S.optional(S.String),
     refresh: S.optional(S.Number),
     retry: S.optional(S.Number),
@@ -1518,38 +14029,50 @@ export const SettingsZoneEditResponseZoneMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SettingsZoneEditResponse {
-  flatten_all_cnames: boolean;
-  foundation_dns: boolean;
-  internal_dns: SettingsZoneEditResponseInternalDns;
-  multi_provider: boolean;
+  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
+  flattenAllCnames: boolean;
+  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
+  foundationDns: boolean;
+  /** Settings for this internal zone. */
+  internalDns: SettingsZoneEditResponseInternalDns;
+  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
+  multiProvider: boolean;
+  /** Settings determining the nameservers through which the zone should be available. */
   nameservers: SettingsZoneEditResponseNameservers;
-  ns_ttl: number;
-  secondary_overrides: boolean;
+  /** The time to live (TTL) of the zone's nameserver (NS) records. */
+  nsTtl: number;
+  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
+  secondaryOverrides: boolean;
+  /** Components of the zone's SOA record. */
   soa: SettingsZoneEditResponseSoa;
-  zone_mode: SettingsZoneEditResponseZoneMode;
+  /** Whether the zone mode is a regular or CDN/DNS only zone. */
+  zoneMode: SettingsZoneEditResponseZoneMode;
 }
 export const SettingsZoneEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    flatten_all_cnames: S.Boolean,
-    foundation_dns: S.Boolean,
-    internal_dns: SettingsZoneEditResponseInternalDns,
-    multi_provider: S.Boolean,
+    flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
+    foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
+    internalDns: SettingsZoneEditResponseInternalDns.pipe(
+      T.Body("internal_dns"),
+    ),
+    multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
     nameservers: SettingsZoneEditResponseNameservers,
-    ns_ttl: S.Number,
-    secondary_overrides: S.Boolean,
+    nsTtl: S.Number.pipe(T.Body("ns_ttl")),
+    secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
     soa: SettingsZoneEditResponseSoa,
-    zone_mode: SettingsZoneEditResponseZoneMode,
+    zoneMode: SettingsZoneEditResponseZoneMode.pipe(T.Body("zone_mode")),
   }),
 ).annotate({
   identifier: "SettingsZoneEditResponse",
 }) as any as S.Schema<SettingsZoneEditResponse>;
 
 export interface SettingsZoneGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const SettingsZoneGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({ method: "GET", uri: "/zones/{zone_id}/dns_settings", code: 200 }),
   ),
@@ -1558,11 +14081,12 @@ export const SettingsZoneGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsZoneGetRequest>;
 
 export interface SettingsZoneGetResponseInternalDns {
-  reference_zone_id?: string;
+  /** The ID of the zone to fallback to. */
+  referenceZoneId?: string;
 }
 export const SettingsZoneGetResponseInternalDns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    reference_zone_id: S.optional(S.String),
+    referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
   }),
 ).annotate({
   identifier: "SettingsZoneGetResponseInternalDns",
@@ -1577,31 +14101,40 @@ export type SettingsZoneGetResponseNameserversType =
 export const SettingsZoneGetResponseNameserversType = /*@__PURE__*/ S.String;
 
 export interface SettingsZoneGetResponseNameservers {
+  /** Nameserver type */
   type: SettingsZoneGetResponseNameserversType;
-  ns_set?: number;
+  /** Configured nameserver set to be used for this zone */
+  nsSet?: number;
 }
 export const SettingsZoneGetResponseNameservers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: SettingsZoneGetResponseNameserversType,
-    ns_set: S.optional(S.Number),
+    nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
   }),
 ).annotate({
   identifier: "SettingsZoneGetResponseNameservers",
 }) as any as S.Schema<SettingsZoneGetResponseNameservers>;
 
 export interface SettingsZoneGetResponseSoa {
+  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
   expire?: number;
-  min_ttl?: number;
+  /** The time to live (TTL) for negative caching of records within the zone. */
+  minTtl?: number;
+  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
   mname?: string;
+  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
   refresh?: number;
+  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
   retry?: number;
+  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
   rname?: string;
+  /** The time to live (TTL) of the SOA record itself. */
   ttl?: number;
 }
 export const SettingsZoneGetResponseSoa = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expire: S.optional(S.Number),
-    min_ttl: S.optional(S.Number),
+    minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
     mname: S.optional(S.String),
     refresh: S.optional(S.Number),
     retry: S.optional(S.Number),
@@ -1621,38 +14154,50 @@ export const SettingsZoneGetResponseZoneMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SettingsZoneGetResponse {
-  flatten_all_cnames: boolean;
-  foundation_dns: boolean;
-  internal_dns: SettingsZoneGetResponseInternalDns;
-  multi_provider: boolean;
+  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
+  flattenAllCnames: boolean;
+  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
+  foundationDns: boolean;
+  /** Settings for this internal zone. */
+  internalDns: SettingsZoneGetResponseInternalDns;
+  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
+  multiProvider: boolean;
+  /** Settings determining the nameservers through which the zone should be available. */
   nameservers: SettingsZoneGetResponseNameservers;
-  ns_ttl: number;
-  secondary_overrides: boolean;
+  /** The time to live (TTL) of the zone's nameserver (NS) records. */
+  nsTtl: number;
+  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
+  secondaryOverrides: boolean;
+  /** Components of the zone's SOA record. */
   soa: SettingsZoneGetResponseSoa;
-  zone_mode: SettingsZoneGetResponseZoneMode;
+  /** Whether the zone mode is a regular or CDN/DNS only zone. */
+  zoneMode: SettingsZoneGetResponseZoneMode;
 }
 export const SettingsZoneGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    flatten_all_cnames: S.Boolean,
-    foundation_dns: S.Boolean,
-    internal_dns: SettingsZoneGetResponseInternalDns,
-    multi_provider: S.Boolean,
+    flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
+    foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
+    internalDns: SettingsZoneGetResponseInternalDns.pipe(
+      T.Body("internal_dns"),
+    ),
+    multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
     nameservers: SettingsZoneGetResponseNameservers,
-    ns_ttl: S.Number,
-    secondary_overrides: S.Boolean,
+    nsTtl: S.Number.pipe(T.Body("ns_ttl")),
+    secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
     soa: SettingsZoneGetResponseSoa,
-    zone_mode: SettingsZoneGetResponseZoneMode,
+    zoneMode: SettingsZoneGetResponseZoneMode.pipe(T.Body("zone_mode")),
   }),
 ).annotate({
   identifier: "SettingsZoneGetResponse",
 }) as any as S.Schema<SettingsZoneGetResponse>;
 
 export interface UsageAccountGetRequest {
-  account_id: string;
+  /** Identifier. */
+  accountId: string;
 }
 export const UsageAccountGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1666,28 +14211,37 @@ export const UsageAccountGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UsageAccountGetResponse {
-  record_quota: number;
-  record_usage: number;
-  internal_record_quota?: number;
-  internal_record_usage?: number;
+  /** Maximum number of DNS records allowed across all public zones in the account. Null if using zone-level quota. */
+  recordQuota: number;
+  /** Current number of DNS records across all public zones in the account. */
+  recordUsage: number;
+  /** Maximum number of DNS records allowed across all internal zones in the account. Only present if internal DNS is enabled. */
+  internalRecordQuota?: number;
+  /** Current number of DNS records across all internal zones in the account. Only present if internal DNS is enabled. */
+  internalRecordUsage?: number;
 }
 export const UsageAccountGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    record_quota: S.Number,
-    record_usage: S.Number,
-    internal_record_quota: S.optional(S.Number),
-    internal_record_usage: S.optional(S.Number),
+    recordQuota: S.Number.pipe(T.Body("record_quota")),
+    recordUsage: S.Number.pipe(T.Body("record_usage")),
+    internalRecordQuota: S.optional(
+      S.Number.pipe(T.Body("internal_record_quota")),
+    ),
+    internalRecordUsage: S.optional(
+      S.Number.pipe(T.Body("internal_record_usage")),
+    ),
   }),
 ).annotate({
   identifier: "UsageAccountGetResponse",
 }) as any as S.Schema<UsageAccountGetResponse>;
 
 export interface UsageZoneGetRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
 }
 export const UsageZoneGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1701,27 +14255,31 @@ export const UsageZoneGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UsageZoneGetResponse {
-  record_quota: number;
-  record_usage: number;
+  /** Maximum number of DNS records allowed for the zone. Null if using account-level quota. */
+  recordQuota: number;
+  /** Current number of DNS records in the zone. */
+  recordUsage: number;
 }
 export const UsageZoneGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    record_quota: S.Number,
-    record_usage: S.Number,
+    recordQuota: S.Number.pipe(T.Body("record_quota")),
+    recordUsage: S.Number.pipe(T.Body("record_usage")),
   }),
 ).annotate({
   identifier: "UsageZoneGetResponse",
 }) as any as S.Schema<UsageZoneGetResponse>;
 
 export interface ZoneTransfersAclsCreateRequest {
-  account_id: string;
-  ip_range: string;
+  accountId: string;
+  /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
+  ipRange: string;
+  /** The name of the acl. */
   name: string;
 }
 export const ZoneTransfersAclsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    ip_range: S.String,
+    accountId: S.String.pipe(T.Label("account_id")),
+    ipRange: S.String.pipe(T.Body("ip_range")),
     name: S.String,
   }).pipe(
     T.Http({
@@ -1734,25 +14292,32 @@ export const ZoneTransfersAclsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneTransfersAclsCreateRequest",
 }) as any as S.Schema<ZoneTransfersAclsCreateRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneTransfersAclsCreateResponse {
-  result?: unknown;
+  id: string;
+  /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
+  ipRange: string;
+  /** The name of the acl. */
+  name: string;
 }
 export const ZoneTransfersAclsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    ipRange: S.String.pipe(T.Body("ip_range")),
+    name: S.String,
   }),
 ).annotate({
   identifier: "ZoneTransfersAclsCreateResponse",
 }) as any as S.Schema<ZoneTransfersAclsCreateResponse>;
 
 export interface ZoneTransfersAclsDeleteRequest {
-  account_id: string;
-  acl_id: string;
+  accountId: string;
+  aclId: string;
 }
 export const ZoneTransfersAclsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    acl_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    aclId: S.String.pipe(T.Label("acl_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1777,13 +14342,13 @@ export const ZoneTransfersAclsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTransfersAclsDeleteResponse>;
 
 export interface ZoneTransfersAclsGetRequest {
-  account_id: string;
-  acl_id: string;
+  accountId: string;
+  aclId: string;
 }
 export const ZoneTransfersAclsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    acl_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    aclId: S.String.pipe(T.Label("acl_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1795,23 +14360,30 @@ export const ZoneTransfersAclsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneTransfersAclsGetRequest",
 }) as any as S.Schema<ZoneTransfersAclsGetRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneTransfersAclsGetResponse {
-  result?: unknown;
+  id: string;
+  /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
+  ipRange: string;
+  /** The name of the acl. */
+  name: string;
 }
 export const ZoneTransfersAclsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    ipRange: S.String.pipe(T.Body("ip_range")),
+    name: S.String,
   }),
 ).annotate({
   identifier: "ZoneTransfersAclsGetResponse",
 }) as any as S.Schema<ZoneTransfersAclsGetResponse>;
 
 export interface ZoneTransfersAclsListRequest {
-  account_id: string;
+  accountId: string;
 }
 export const ZoneTransfersAclsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1823,12 +14395,30 @@ export const ZoneTransfersAclsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneTransfersAclsListRequest",
 }) as any as S.Schema<ZoneTransfersAclsListRequest>;
 
-export type ZoneTransfersAclsListResultList = unknown[];
+export interface ZoneTransfersAclsListResultItem {
+  id: string;
+  /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
+  ipRange: string;
+  /** The name of the acl. */
+  name: string;
+}
+export const ZoneTransfersAclsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    ipRange: S.String.pipe(T.Body("ip_range")),
+    name: S.String,
+  }),
+).annotate({
+  identifier: "ZoneTransfersAclsListResultItem",
+}) as any as S.Schema<ZoneTransfersAclsListResultItem>;
+
+export type ZoneTransfersAclsListResultList = ZoneTransfersAclsListResultItem[];
 export const ZoneTransfersAclsListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  ZoneTransfersAclsListResultItem,
 ) as any as S.Schema<ZoneTransfersAclsListResultList>;
 
 export interface ZoneTransfersAclsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ZoneTransfersAclsListResultList;
 }
 export const ZoneTransfersAclsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1842,16 +14432,18 @@ export const ZoneTransfersAclsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTransfersAclsListResponse>;
 
 export interface ZoneTransfersAclsUpdateRequest {
-  account_id: string;
-  acl_id: string;
-  ip_range: string;
+  accountId: string;
+  aclId: string;
+  /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
+  ipRange: string;
+  /** The name of the acl. */
   name: string;
 }
 export const ZoneTransfersAclsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    acl_id: S.String.pipe(T.Label()),
-    ip_range: S.String,
+    accountId: S.String.pipe(T.Label("account_id")),
+    aclId: S.String.pipe(T.Label("acl_id")),
+    ipRange: S.String.pipe(T.Body("ip_range")),
     name: S.String,
   }).pipe(
     T.Http({
@@ -1864,24 +14456,31 @@ export const ZoneTransfersAclsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneTransfersAclsUpdateRequest",
 }) as any as S.Schema<ZoneTransfersAclsUpdateRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneTransfersAclsUpdateResponse {
-  result?: unknown;
+  id: string;
+  /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
+  ipRange: string;
+  /** The name of the acl. */
+  name: string;
 }
 export const ZoneTransfersAclsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    ipRange: S.String.pipe(T.Body("ip_range")),
+    name: S.String,
   }),
 ).annotate({
   identifier: "ZoneTransfersAclsUpdateResponse",
 }) as any as S.Schema<ZoneTransfersAclsUpdateResponse>;
 
 export interface ZoneTransfersForceAxfrCreateRequest {
-  zone_id: string;
+  zoneId: string;
   body: unknown;
 }
 export const ZoneTransfersForceAxfrCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Unknown,
   }).pipe(
     T.Http({
@@ -1895,6 +14494,7 @@ export const ZoneTransfersForceAxfrCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTransfersForceAxfrCreateRequest>;
 
 export interface ZoneTransfersForceAxfrCreateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const ZoneTransfersForceAxfrCreateResponse = /*@__PURE__*/ S.suspend(
@@ -1913,15 +14513,18 @@ export const ZoneTransfersIncomingCreateRequestPeersList =
   ) as any as S.Schema<ZoneTransfersIncomingCreateRequestPeersList>;
 
 export interface ZoneTransfersIncomingCreateRequest {
-  zone_id: string;
-  auto_refresh_seconds: number;
+  zoneId: string;
+  /** How often should a secondary zone auto refresh regardless of DNS NOTIFY. */
+  autoRefreshSeconds: number;
+  /** Zone name. */
   name: string;
+  /** A list of peer tags. */
   peers: ZoneTransfersIncomingCreateRequestPeersList;
 }
 export const ZoneTransfersIncomingCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    auto_refresh_seconds: S.Number,
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    autoRefreshSeconds: S.Number.pipe(T.Body("auto_refresh_seconds")),
     name: S.String,
     peers: ZoneTransfersIncomingCreateRequestPeersList,
   }).pipe(
@@ -1944,35 +14547,44 @@ export const ZoneTransfersIncomingCreateResponsePeersList =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneTransfersIncomingCreateResponse {
   id?: string;
-  auto_refresh_seconds?: number;
-  checked_time?: string;
-  created_time?: string;
-  modified_time?: string;
+  /** How often should a secondary zone auto refresh regardless of DNS NOTIFY. */
+  autoRefreshSeconds?: number;
+  /** The time for a specific event. */
+  checkedTime?: string;
+  /** The time for a specific event. */
+  createdTime?: string;
+  /** The time for a specific event. */
+  modifiedTime?: string;
+  /** Zone name. */
   name?: string;
+  /** A list of peer tags. */
   peers?: ZoneTransfersIncomingCreateResponsePeersList;
-  soa_serial?: number;
+  /** The serial number of the SOA for the given zone. */
+  soaSerial?: number;
 }
 export const ZoneTransfersIncomingCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    auto_refresh_seconds: S.optional(S.Number),
-    checked_time: S.optional(S.String),
-    created_time: S.optional(S.String),
-    modified_time: S.optional(S.String),
+    autoRefreshSeconds: S.optional(
+      S.Number.pipe(T.Body("auto_refresh_seconds")),
+    ),
+    checkedTime: S.optional(S.String.pipe(T.Body("checked_time"))),
+    createdTime: S.optional(S.String.pipe(T.Body("created_time"))),
+    modifiedTime: S.optional(S.String.pipe(T.Body("modified_time"))),
     name: S.optional(S.String),
     peers: S.optional(ZoneTransfersIncomingCreateResponsePeersList),
-    soa_serial: S.optional(S.Number),
+    soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
   }),
 ).annotate({
   identifier: "ZoneTransfersIncomingCreateResponse",
 }) as any as S.Schema<ZoneTransfersIncomingCreateResponse>;
 
 export interface ZoneTransfersIncomingDeleteRequest {
-  zone_id: string;
+  zoneId: string;
 }
 export const ZoneTransfersIncomingDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1997,11 +14609,11 @@ export const ZoneTransfersIncomingDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTransfersIncomingDeleteResponse>;
 
 export interface ZoneTransfersIncomingGetRequest {
-  zone_id: string;
+  zoneId: string;
 }
 export const ZoneTransfersIncomingGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2021,24 +14633,33 @@ export const ZoneTransfersIncomingGetResponsePeersList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneTransfersIncomingGetResponse {
   id?: string;
-  auto_refresh_seconds?: number;
-  checked_time?: string;
-  created_time?: string;
-  modified_time?: string;
+  /** How often should a secondary zone auto refresh regardless of DNS NOTIFY. */
+  autoRefreshSeconds?: number;
+  /** The time for a specific event. */
+  checkedTime?: string;
+  /** The time for a specific event. */
+  createdTime?: string;
+  /** The time for a specific event. */
+  modifiedTime?: string;
+  /** Zone name. */
   name?: string;
+  /** A list of peer tags. */
   peers?: ZoneTransfersIncomingGetResponsePeersList;
-  soa_serial?: number;
+  /** The serial number of the SOA for the given zone. */
+  soaSerial?: number;
 }
 export const ZoneTransfersIncomingGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    auto_refresh_seconds: S.optional(S.Number),
-    checked_time: S.optional(S.String),
-    created_time: S.optional(S.String),
-    modified_time: S.optional(S.String),
+    autoRefreshSeconds: S.optional(
+      S.Number.pipe(T.Body("auto_refresh_seconds")),
+    ),
+    checkedTime: S.optional(S.String.pipe(T.Body("checked_time"))),
+    createdTime: S.optional(S.String.pipe(T.Body("created_time"))),
+    modifiedTime: S.optional(S.String.pipe(T.Body("modified_time"))),
     name: S.optional(S.String),
     peers: S.optional(ZoneTransfersIncomingGetResponsePeersList),
-    soa_serial: S.optional(S.Number),
+    soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
   }),
 ).annotate({
   identifier: "ZoneTransfersIncomingGetResponse",
@@ -2051,15 +14672,18 @@ export const ZoneTransfersIncomingUpdateRequestPeersList =
   ) as any as S.Schema<ZoneTransfersIncomingUpdateRequestPeersList>;
 
 export interface ZoneTransfersIncomingUpdateRequest {
-  zone_id: string;
-  auto_refresh_seconds: number;
+  zoneId: string;
+  /** How often should a secondary zone auto refresh regardless of DNS NOTIFY. */
+  autoRefreshSeconds: number;
+  /** Zone name. */
   name: string;
+  /** A list of peer tags. */
   peers: ZoneTransfersIncomingUpdateRequestPeersList;
 }
 export const ZoneTransfersIncomingUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    auto_refresh_seconds: S.Number,
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    autoRefreshSeconds: S.Number.pipe(T.Body("auto_refresh_seconds")),
     name: S.String,
     peers: ZoneTransfersIncomingUpdateRequestPeersList,
   }).pipe(
@@ -2082,24 +14706,33 @@ export const ZoneTransfersIncomingUpdateResponsePeersList =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneTransfersIncomingUpdateResponse {
   id?: string;
-  auto_refresh_seconds?: number;
-  checked_time?: string;
-  created_time?: string;
-  modified_time?: string;
+  /** How often should a secondary zone auto refresh regardless of DNS NOTIFY. */
+  autoRefreshSeconds?: number;
+  /** The time for a specific event. */
+  checkedTime?: string;
+  /** The time for a specific event. */
+  createdTime?: string;
+  /** The time for a specific event. */
+  modifiedTime?: string;
+  /** Zone name. */
   name?: string;
+  /** A list of peer tags. */
   peers?: ZoneTransfersIncomingUpdateResponsePeersList;
-  soa_serial?: number;
+  /** The serial number of the SOA for the given zone. */
+  soaSerial?: number;
 }
 export const ZoneTransfersIncomingUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    auto_refresh_seconds: S.optional(S.Number),
-    checked_time: S.optional(S.String),
-    created_time: S.optional(S.String),
-    modified_time: S.optional(S.String),
+    autoRefreshSeconds: S.optional(
+      S.Number.pipe(T.Body("auto_refresh_seconds")),
+    ),
+    checkedTime: S.optional(S.String.pipe(T.Body("checked_time"))),
+    createdTime: S.optional(S.String.pipe(T.Body("created_time"))),
+    modifiedTime: S.optional(S.String.pipe(T.Body("modified_time"))),
     name: S.optional(S.String),
     peers: S.optional(ZoneTransfersIncomingUpdateResponsePeersList),
-    soa_serial: S.optional(S.Number),
+    soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
   }),
 ).annotate({
   identifier: "ZoneTransfersIncomingUpdateResponse",
@@ -2112,13 +14745,15 @@ export const ZoneTransfersOutgoingCreateRequestPeersList =
   ) as any as S.Schema<ZoneTransfersOutgoingCreateRequestPeersList>;
 
 export interface ZoneTransfersOutgoingCreateRequest {
-  zone_id: string;
+  zoneId: string;
+  /** Zone name. */
   name: string;
+  /** A list of peer tags. */
   peers: ZoneTransfersOutgoingCreateRequestPeersList;
 }
 export const ZoneTransfersOutgoingCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.String,
     peers: ZoneTransfersOutgoingCreateRequestPeersList,
   }).pipe(
@@ -2141,33 +14776,41 @@ export const ZoneTransfersOutgoingCreateResponsePeersList =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneTransfersOutgoingCreateResponse {
   id?: string;
-  checked_time?: string;
-  created_time?: string;
-  last_transferred_time?: string;
+  /** The time for a specific event. */
+  checkedTime?: string;
+  /** The time for a specific event. */
+  createdTime?: string;
+  /** The time for a specific event. */
+  lastTransferredTime?: string;
+  /** Zone name. */
   name?: string;
+  /** A list of peer tags. */
   peers?: ZoneTransfersOutgoingCreateResponsePeersList;
-  soa_serial?: number;
+  /** The serial number of the SOA for the given zone. */
+  soaSerial?: number;
 }
 export const ZoneTransfersOutgoingCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    checked_time: S.optional(S.String),
-    created_time: S.optional(S.String),
-    last_transferred_time: S.optional(S.String),
+    checkedTime: S.optional(S.String.pipe(T.Body("checked_time"))),
+    createdTime: S.optional(S.String.pipe(T.Body("created_time"))),
+    lastTransferredTime: S.optional(
+      S.String.pipe(T.Body("last_transferred_time")),
+    ),
     name: S.optional(S.String),
     peers: S.optional(ZoneTransfersOutgoingCreateResponsePeersList),
-    soa_serial: S.optional(S.Number),
+    soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
   }),
 ).annotate({
   identifier: "ZoneTransfersOutgoingCreateResponse",
 }) as any as S.Schema<ZoneTransfersOutgoingCreateResponse>;
 
 export interface ZoneTransfersOutgoingDeleteRequest {
-  zone_id: string;
+  zoneId: string;
 }
 export const ZoneTransfersOutgoingDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2192,12 +14835,12 @@ export const ZoneTransfersOutgoingDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTransfersOutgoingDeleteResponse>;
 
 export interface ZoneTransfersOutgoingDisableRequest {
-  zone_id: string;
+  zoneId: string;
   body: unknown;
 }
 export const ZoneTransfersOutgoingDisableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Unknown,
   }).pipe(
     T.Http({
@@ -2211,6 +14854,7 @@ export const ZoneTransfersOutgoingDisableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTransfersOutgoingDisableRequest>;
 
 export interface ZoneTransfersOutgoingDisableResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const ZoneTransfersOutgoingDisableResponse = /*@__PURE__*/ S.suspend(
@@ -2223,12 +14867,12 @@ export const ZoneTransfersOutgoingDisableResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ZoneTransfersOutgoingDisableResponse>;
 
 export interface ZoneTransfersOutgoingEnableRequest {
-  zone_id: string;
+  zoneId: string;
   body: unknown;
 }
 export const ZoneTransfersOutgoingEnableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Unknown,
   }).pipe(
     T.Http({
@@ -2242,6 +14886,7 @@ export const ZoneTransfersOutgoingEnableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTransfersOutgoingEnableRequest>;
 
 export interface ZoneTransfersOutgoingEnableResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const ZoneTransfersOutgoingEnableResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2253,13 +14898,13 @@ export const ZoneTransfersOutgoingEnableResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTransfersOutgoingEnableResponse>;
 
 export interface ZoneTransfersOutgoingForceNotifyRequest {
-  zone_id: string;
+  zoneId: string;
   body: unknown;
 }
 export const ZoneTransfersOutgoingForceNotifyRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      zone_id: S.String.pipe(T.Label()),
+      zoneId: S.String.pipe(T.Label("zone_id")),
       body: S.Unknown,
     }).pipe(
       T.Http({
@@ -2273,6 +14918,7 @@ export const ZoneTransfersOutgoingForceNotifyRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ZoneTransfersOutgoingForceNotifyRequest>;
 
 export interface ZoneTransfersOutgoingForceNotifyResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: string;
 }
 export const ZoneTransfersOutgoingForceNotifyResponse = /*@__PURE__*/ S.suspend(
@@ -2285,11 +14931,11 @@ export const ZoneTransfersOutgoingForceNotifyResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ZoneTransfersOutgoingForceNotifyResponse>;
 
 export interface ZoneTransfersOutgoingGetRequest {
-  zone_id: string;
+  zoneId: string;
 }
 export const ZoneTransfersOutgoingGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2309,34 +14955,42 @@ export const ZoneTransfersOutgoingGetResponsePeersList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneTransfersOutgoingGetResponse {
   id?: string;
-  checked_time?: string;
-  created_time?: string;
-  last_transferred_time?: string;
+  /** The time for a specific event. */
+  checkedTime?: string;
+  /** The time for a specific event. */
+  createdTime?: string;
+  /** The time for a specific event. */
+  lastTransferredTime?: string;
+  /** Zone name. */
   name?: string;
+  /** A list of peer tags. */
   peers?: ZoneTransfersOutgoingGetResponsePeersList;
-  soa_serial?: number;
+  /** The serial number of the SOA for the given zone. */
+  soaSerial?: number;
 }
 export const ZoneTransfersOutgoingGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    checked_time: S.optional(S.String),
-    created_time: S.optional(S.String),
-    last_transferred_time: S.optional(S.String),
+    checkedTime: S.optional(S.String.pipe(T.Body("checked_time"))),
+    createdTime: S.optional(S.String.pipe(T.Body("created_time"))),
+    lastTransferredTime: S.optional(
+      S.String.pipe(T.Body("last_transferred_time")),
+    ),
     name: S.optional(S.String),
     peers: S.optional(ZoneTransfersOutgoingGetResponsePeersList),
-    soa_serial: S.optional(S.Number),
+    soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
   }),
 ).annotate({
   identifier: "ZoneTransfersOutgoingGetResponse",
 }) as any as S.Schema<ZoneTransfersOutgoingGetResponse>;
 
 export interface ZoneTransfersOutgoingStatusGetRequest {
-  zone_id: string;
+  zoneId: string;
 }
 export const ZoneTransfersOutgoingStatusGetRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      zone_id: S.String.pipe(T.Label()),
+      zoneId: S.String.pipe(T.Label("zone_id")),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2349,6 +15003,7 @@ export const ZoneTransfersOutgoingStatusGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ZoneTransfersOutgoingStatusGetRequest>;
 
 export interface ZoneTransfersOutgoingStatusGetResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const ZoneTransfersOutgoingStatusGetResponse = /*@__PURE__*/ S.suspend(
@@ -2367,13 +15022,15 @@ export const ZoneTransfersOutgoingUpdateRequestPeersList =
   ) as any as S.Schema<ZoneTransfersOutgoingUpdateRequestPeersList>;
 
 export interface ZoneTransfersOutgoingUpdateRequest {
-  zone_id: string;
+  zoneId: string;
+  /** Zone name. */
   name: string;
+  /** A list of peer tags. */
   peers: ZoneTransfersOutgoingUpdateRequestPeersList;
 }
 export const ZoneTransfersOutgoingUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.String,
     peers: ZoneTransfersOutgoingUpdateRequestPeersList,
   }).pipe(
@@ -2396,34 +15053,43 @@ export const ZoneTransfersOutgoingUpdateResponsePeersList =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneTransfersOutgoingUpdateResponse {
   id?: string;
-  checked_time?: string;
-  created_time?: string;
-  last_transferred_time?: string;
+  /** The time for a specific event. */
+  checkedTime?: string;
+  /** The time for a specific event. */
+  createdTime?: string;
+  /** The time for a specific event. */
+  lastTransferredTime?: string;
+  /** Zone name. */
   name?: string;
+  /** A list of peer tags. */
   peers?: ZoneTransfersOutgoingUpdateResponsePeersList;
-  soa_serial?: number;
+  /** The serial number of the SOA for the given zone. */
+  soaSerial?: number;
 }
 export const ZoneTransfersOutgoingUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    checked_time: S.optional(S.String),
-    created_time: S.optional(S.String),
-    last_transferred_time: S.optional(S.String),
+    checkedTime: S.optional(S.String.pipe(T.Body("checked_time"))),
+    createdTime: S.optional(S.String.pipe(T.Body("created_time"))),
+    lastTransferredTime: S.optional(
+      S.String.pipe(T.Body("last_transferred_time")),
+    ),
     name: S.optional(S.String),
     peers: S.optional(ZoneTransfersOutgoingUpdateResponsePeersList),
-    soa_serial: S.optional(S.Number),
+    soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
   }),
 ).annotate({
   identifier: "ZoneTransfersOutgoingUpdateResponse",
 }) as any as S.Schema<ZoneTransfersOutgoingUpdateResponse>;
 
 export interface ZoneTransfersPeersCreateRequest {
-  account_id: string;
+  accountId: string;
+  /** The name of the peer. */
   name: string;
 }
 export const ZoneTransfersPeersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
   }).pipe(
     T.Http({
@@ -2436,25 +15102,41 @@ export const ZoneTransfersPeersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneTransfersPeersCreateRequest",
 }) as any as S.Schema<ZoneTransfersPeersCreateRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneTransfersPeersCreateResponse {
-  result?: unknown;
+  id: string;
+  /** The name of the peer. */
+  name: string;
+  /** IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to. */
+  ip?: string;
+  /** Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones. */
+  ixfrEnable?: boolean;
+  /** DNS port of primary or secondary nameserver, depending on what zone this peer is linked to. */
+  port?: number;
+  /** TSIG authentication will be used for zone transfer if configured. */
+  tsigId?: string;
 }
 export const ZoneTransfersPeersCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    name: S.String,
+    ip: S.optional(S.String),
+    ixfrEnable: S.optional(S.Boolean.pipe(T.Body("ixfr_enable"))),
+    port: S.optional(S.Number),
+    tsigId: S.optional(S.String.pipe(T.Body("tsig_id"))),
   }),
 ).annotate({
   identifier: "ZoneTransfersPeersCreateResponse",
 }) as any as S.Schema<ZoneTransfersPeersCreateResponse>;
 
 export interface ZoneTransfersPeersDeleteRequest {
-  account_id: string;
-  peer_id: string;
+  accountId: string;
+  peerId: string;
 }
 export const ZoneTransfersPeersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    peer_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    peerId: S.String.pipe(T.Label("peer_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2479,13 +15161,13 @@ export const ZoneTransfersPeersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTransfersPeersDeleteResponse>;
 
 export interface ZoneTransfersPeersGetRequest {
-  account_id: string;
-  peer_id: string;
+  accountId: string;
+  peerId: string;
 }
 export const ZoneTransfersPeersGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    peer_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    peerId: S.String.pipe(T.Label("peer_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2497,23 +15179,39 @@ export const ZoneTransfersPeersGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneTransfersPeersGetRequest",
 }) as any as S.Schema<ZoneTransfersPeersGetRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneTransfersPeersGetResponse {
-  result?: unknown;
+  id: string;
+  /** The name of the peer. */
+  name: string;
+  /** IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to. */
+  ip?: string;
+  /** Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones. */
+  ixfrEnable?: boolean;
+  /** DNS port of primary or secondary nameserver, depending on what zone this peer is linked to. */
+  port?: number;
+  /** TSIG authentication will be used for zone transfer if configured. */
+  tsigId?: string;
 }
 export const ZoneTransfersPeersGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    name: S.String,
+    ip: S.optional(S.String),
+    ixfrEnable: S.optional(S.Boolean.pipe(T.Body("ixfr_enable"))),
+    port: S.optional(S.Number),
+    tsigId: S.optional(S.String.pipe(T.Body("tsig_id"))),
   }),
 ).annotate({
   identifier: "ZoneTransfersPeersGetResponse",
 }) as any as S.Schema<ZoneTransfersPeersGetResponse>;
 
 export interface ZoneTransfersPeersListRequest {
-  account_id: string;
+  accountId: string;
 }
 export const ZoneTransfersPeersListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2525,12 +15223,40 @@ export const ZoneTransfersPeersListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneTransfersPeersListRequest",
 }) as any as S.Schema<ZoneTransfersPeersListRequest>;
 
-export type ZoneTransfersPeersListResultList = unknown[];
+export interface ZoneTransfersPeersListResultItem {
+  id: string;
+  /** The name of the peer. */
+  name: string;
+  /** IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to. */
+  ip?: string;
+  /** Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones. */
+  ixfrEnable?: boolean;
+  /** DNS port of primary or secondary nameserver, depending on what zone this peer is linked to. */
+  port?: number;
+  /** TSIG authentication will be used for zone transfer if configured. */
+  tsigId?: string;
+}
+export const ZoneTransfersPeersListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    ip: S.optional(S.String),
+    ixfrEnable: S.optional(S.Boolean.pipe(T.Body("ixfr_enable"))),
+    port: S.optional(S.Number),
+    tsigId: S.optional(S.String.pipe(T.Body("tsig_id"))),
+  }),
+).annotate({
+  identifier: "ZoneTransfersPeersListResultItem",
+}) as any as S.Schema<ZoneTransfersPeersListResultItem>;
+
+export type ZoneTransfersPeersListResultList =
+  ZoneTransfersPeersListResultItem[];
 export const ZoneTransfersPeersListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  ZoneTransfersPeersListResultItem,
 ) as any as S.Schema<ZoneTransfersPeersListResultList>;
 
 export interface ZoneTransfersPeersListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ZoneTransfersPeersListResultList;
 }
 export const ZoneTransfersPeersListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2544,23 +15270,28 @@ export const ZoneTransfersPeersListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTransfersPeersListResponse>;
 
 export interface ZoneTransfersPeersUpdateRequest {
-  account_id: string;
-  peer_id: string;
+  accountId: string;
+  peerId: string;
+  /** The name of the peer. */
   name: string;
+  /** IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to. */
   ip?: string;
-  ixfr_enable?: boolean;
+  /** Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones. */
+  ixfrEnable?: boolean;
+  /** DNS port of primary or secondary nameserver, depending on what zone this peer is linked to. */
   port?: number;
-  tsig_id?: string;
+  /** TSIG authentication will be used for zone transfer if configured. */
+  tsigId?: string;
 }
 export const ZoneTransfersPeersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    peer_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    peerId: S.String.pipe(T.Label("peer_id")),
     name: S.String,
     ip: S.optional(S.String),
-    ixfr_enable: S.optional(S.Boolean),
+    ixfrEnable: S.optional(S.Boolean.pipe(T.Body("ixfr_enable"))),
     port: S.optional(S.Number),
-    tsig_id: S.optional(S.String),
+    tsigId: S.optional(S.String.pipe(T.Body("tsig_id"))),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2572,26 +15303,45 @@ export const ZoneTransfersPeersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneTransfersPeersUpdateRequest",
 }) as any as S.Schema<ZoneTransfersPeersUpdateRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneTransfersPeersUpdateResponse {
-  result?: unknown;
+  id: string;
+  /** The name of the peer. */
+  name: string;
+  /** IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to. */
+  ip?: string;
+  /** Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones. */
+  ixfrEnable?: boolean;
+  /** DNS port of primary or secondary nameserver, depending on what zone this peer is linked to. */
+  port?: number;
+  /** TSIG authentication will be used for zone transfer if configured. */
+  tsigId?: string;
 }
 export const ZoneTransfersPeersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    name: S.String,
+    ip: S.optional(S.String),
+    ixfrEnable: S.optional(S.Boolean.pipe(T.Body("ixfr_enable"))),
+    port: S.optional(S.Number),
+    tsigId: S.optional(S.String.pipe(T.Body("tsig_id"))),
   }),
 ).annotate({
   identifier: "ZoneTransfersPeersUpdateResponse",
 }) as any as S.Schema<ZoneTransfersPeersUpdateResponse>;
 
 export interface ZoneTransfersTsigsCreateRequest {
-  account_id: string;
+  accountId: string;
+  /** TSIG algorithm. */
   algo: string;
+  /** TSIG key name. */
   name: string;
+  /** TSIG secret. */
   secret: string;
 }
 export const ZoneTransfersTsigsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     algo: S.String,
     name: S.String,
     secret: S.String,
@@ -2606,25 +15356,35 @@ export const ZoneTransfersTsigsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneTransfersTsigsCreateRequest",
 }) as any as S.Schema<ZoneTransfersTsigsCreateRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneTransfersTsigsCreateResponse {
-  result?: unknown;
+  id: string;
+  /** TSIG algorithm. */
+  algo: string;
+  /** TSIG key name. */
+  name: string;
+  /** TSIG secret. */
+  secret: string;
 }
 export const ZoneTransfersTsigsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    algo: S.String,
+    name: S.String,
+    secret: S.String,
   }),
 ).annotate({
   identifier: "ZoneTransfersTsigsCreateResponse",
 }) as any as S.Schema<ZoneTransfersTsigsCreateResponse>;
 
 export interface ZoneTransfersTsigsDeleteRequest {
-  account_id: string;
-  tsig_id: string;
+  accountId: string;
+  tsigId: string;
 }
 export const ZoneTransfersTsigsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    tsig_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    tsigId: S.String.pipe(T.Label("tsig_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -2649,13 +15409,13 @@ export const ZoneTransfersTsigsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTransfersTsigsDeleteResponse>;
 
 export interface ZoneTransfersTsigsGetRequest {
-  account_id: string;
-  tsig_id: string;
+  accountId: string;
+  tsigId: string;
 }
 export const ZoneTransfersTsigsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    tsig_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    tsigId: S.String.pipe(T.Label("tsig_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2667,23 +15427,33 @@ export const ZoneTransfersTsigsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneTransfersTsigsGetRequest",
 }) as any as S.Schema<ZoneTransfersTsigsGetRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneTransfersTsigsGetResponse {
-  result?: unknown;
+  id: string;
+  /** TSIG algorithm. */
+  algo: string;
+  /** TSIG key name. */
+  name: string;
+  /** TSIG secret. */
+  secret: string;
 }
 export const ZoneTransfersTsigsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    algo: S.String,
+    name: S.String,
+    secret: S.String,
   }),
 ).annotate({
   identifier: "ZoneTransfersTsigsGetResponse",
 }) as any as S.Schema<ZoneTransfersTsigsGetResponse>;
 
 export interface ZoneTransfersTsigsListRequest {
-  account_id: string;
+  accountId: string;
 }
 export const ZoneTransfersTsigsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2695,12 +15465,34 @@ export const ZoneTransfersTsigsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneTransfersTsigsListRequest",
 }) as any as S.Schema<ZoneTransfersTsigsListRequest>;
 
-export type ZoneTransfersTsigsListResultList = unknown[];
+export interface ZoneTransfersTsigsListResultItem {
+  id: string;
+  /** TSIG algorithm. */
+  algo: string;
+  /** TSIG key name. */
+  name: string;
+  /** TSIG secret. */
+  secret: string;
+}
+export const ZoneTransfersTsigsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    algo: S.String,
+    name: S.String,
+    secret: S.String,
+  }),
+).annotate({
+  identifier: "ZoneTransfersTsigsListResultItem",
+}) as any as S.Schema<ZoneTransfersTsigsListResultItem>;
+
+export type ZoneTransfersTsigsListResultList =
+  ZoneTransfersTsigsListResultItem[];
 export const ZoneTransfersTsigsListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  ZoneTransfersTsigsListResultItem,
 ) as any as S.Schema<ZoneTransfersTsigsListResultList>;
 
 export interface ZoneTransfersTsigsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ZoneTransfersTsigsListResultList;
 }
 export const ZoneTransfersTsigsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2714,16 +15506,19 @@ export const ZoneTransfersTsigsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTransfersTsigsListResponse>;
 
 export interface ZoneTransfersTsigsUpdateRequest {
-  account_id: string;
-  tsig_id: string;
+  accountId: string;
+  tsigId: string;
+  /** TSIG algorithm. */
   algo: string;
+  /** TSIG key name. */
   name: string;
+  /** TSIG secret. */
   secret: string;
 }
 export const ZoneTransfersTsigsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    tsig_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    tsigId: S.String.pipe(T.Label("tsig_id")),
     algo: S.String,
     name: S.String,
     secret: S.String,
@@ -2738,22 +15533,33 @@ export const ZoneTransfersTsigsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneTransfersTsigsUpdateRequest",
 }) as any as S.Schema<ZoneTransfersTsigsUpdateRequest>;
 
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ZoneTransfersTsigsUpdateResponse {
-  result?: unknown;
+  id: string;
+  /** TSIG algorithm. */
+  algo: string;
+  /** TSIG key name. */
+  name: string;
+  /** TSIG secret. */
+  secret: string;
 }
 export const ZoneTransfersTsigsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.String,
+    algo: S.String,
+    name: S.String,
+    secret: S.String,
   }),
 ).annotate({
   identifier: "ZoneTransfersTsigsUpdateResponse",
 }) as any as S.Schema<ZoneTransfersTsigsUpdateResponse>;
 
+export type AnalyticsReportsBytimesGetError = CloudflareOpError;
 /** Retrieves a list of aggregate metrics grouped by time interval. See [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters. */
-export const AnalyticsReportsBytimesGet: API.OperationMethod<
+export const analyticsReportsBytimesGet: API.OperationMethod<
   AnalyticsReportsBytimesGetRequest,
   AnalyticsReportsBytimesGetResponse,
-  CloudflareOpError,
+  AnalyticsReportsBytimesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AnalyticsReportsBytimesGetRequest,
@@ -2762,11 +15568,12 @@ export const AnalyticsReportsBytimesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type AnalyticsReportsGetError = CloudflareOpError;
 /** Retrieves a list of summarised aggregate metrics over a given time period. See [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters. */
-export const AnalyticsReportsGet: API.OperationMethod<
+export const analyticsReportsGet: API.OperationMethod<
   AnalyticsReportsGetRequest,
   AnalyticsReportsGetResponse,
-  CloudflareOpError,
+  AnalyticsReportsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AnalyticsReportsGetRequest,
@@ -2775,11 +15582,12 @@ export const AnalyticsReportsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DnssecDeleteError = CloudflareOpError;
 /** Delete DNSSEC. */
-export const DnssecDelete: API.OperationMethod<
+export const dnssecDelete: API.OperationMethod<
   DnssecDeleteRequest,
   DnssecDeleteResponse,
-  CloudflareOpError,
+  DnssecDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DnssecDeleteRequest,
@@ -2788,11 +15596,12 @@ export const DnssecDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DnssecEditError = CloudflareOpError;
 /** Enable or disable DNSSEC. */
-export const DnssecEdit: API.OperationMethod<
+export const dnssecEdit: API.OperationMethod<
   DnssecEditRequest,
   DnssecEditResponse,
-  CloudflareOpError,
+  DnssecEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DnssecEditRequest,
@@ -2801,11 +15610,12 @@ export const DnssecEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DnssecGetError = CloudflareOpError;
 /** Details about DNSSEC status and configuration. */
-export const DnssecGet: API.OperationMethod<
+export const dnssecGet: API.OperationMethod<
   DnssecGetRequest,
   DnssecGetResponse,
-  CloudflareOpError,
+  DnssecGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DnssecGetRequest,
@@ -2814,11 +15624,12 @@ export const DnssecGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RecordsBatchError = CloudflareOpError;
 /** Send a Batch of DNS Record API calls to be executed together. Notes: - Although Cloudflare will execute the batched operations in a single database transaction, Cloudflare's distributed KV store must treat each record change as a single key-value pair. This means that the propagation of changes is not atomic. See [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/ "Batch DNS records") for more information. - The operations you specify within the /batch request body are always executed in the following order: - Deletes - Patches - Puts - Posts */
-export const RecordsBatch: API.OperationMethod<
+export const recordsBatch: API.OperationMethod<
   RecordsBatchRequest,
   RecordsBatchResponse,
-  CloudflareOpError,
+  RecordsBatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RecordsBatchRequest,
@@ -2827,11 +15638,12 @@ export const RecordsBatch: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RecordsCreateError = CloudflareOpError;
 /** Create a new DNS record for a zone. Notes: - A/AAAA records cannot exist on the same name as CNAME records. - NS records cannot exist on the same name as any other record type. - Domain names are always represented in Punycode, even if Unicode characters were used when creating the record. */
-export const RecordsCreate: API.OperationMethod<
+export const recordsCreate: API.OperationMethod<
   RecordsCreateRequest,
   RecordsCreateResponse,
-  CloudflareOpError,
+  RecordsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RecordsCreateRequest,
@@ -2840,11 +15652,12 @@ export const RecordsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RecordsDeleteError = CloudflareOpError;
 /** Permanently removes a DNS record from the zone. */
-export const RecordsDelete: API.OperationMethod<
+export const recordsDelete: API.OperationMethod<
   RecordsDeleteRequest,
   RecordsDeleteResponse,
-  CloudflareOpError,
+  RecordsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RecordsDeleteRequest,
@@ -2853,11 +15666,12 @@ export const RecordsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RecordsEditError = CloudflareOpError;
 /** Update an existing DNS record. Notes: - A/AAAA records cannot exist on the same name as CNAME records. - NS records cannot exist on the same name as any other record type. - Domain names are always represented in Punycode, even if Unicode characters were used when creating the record. */
-export const RecordsEdit: API.OperationMethod<
+export const recordsEdit: API.OperationMethod<
   RecordsEditRequest,
   RecordsEditResponse,
-  CloudflareOpError,
+  RecordsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RecordsEditRequest,
@@ -2866,11 +15680,12 @@ export const RecordsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RecordsExportError = CloudflareOpError;
 /** You can export your [BIND config](https://en.wikipedia.org/wiki/Zone_file "Zone file") through this endpoint. See [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ "Import and export records") for more information. */
-export const RecordsExport: API.OperationMethod<
+export const recordsExport: API.OperationMethod<
   RecordsExportRequest,
   RecordsExportResponse,
-  CloudflareOpError,
+  RecordsExportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RecordsExportRequest,
@@ -2879,11 +15694,12 @@ export const RecordsExport: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RecordsGetError = CloudflareOpError;
 /** Retrieves details for a specific DNS record in the zone. */
-export const RecordsGet: API.OperationMethod<
+export const recordsGet: API.OperationMethod<
   RecordsGetRequest,
   RecordsGetResponse,
-  CloudflareOpError,
+  RecordsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RecordsGetRequest,
@@ -2892,11 +15708,12 @@ export const RecordsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RecordsImportError = CloudflareOpError;
 /** You can upload your [BIND config](https://en.wikipedia.org/wiki/Zone_file "Zone file") through this endpoint. It assumes that cURL is called from a location with bind_config.txt (valid BIND config) present. See [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ "Import and export records") for more information. */
-export const RecordsImport: API.OperationMethod<
+export const recordsImport: API.OperationMethod<
   RecordsImportRequest,
   RecordsImportResponse,
-  CloudflareOpError,
+  RecordsImportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RecordsImportRequest,
@@ -2905,11 +15722,12 @@ export const RecordsImport: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RecordsListError = CloudflareOpError;
 /** List, search, sort, and filter a zones' DNS records. */
-export const RecordsList: API.OperationMethod<
+export const recordsList: API.OperationMethod<
   RecordsListRequest,
   RecordsListResponse,
-  CloudflareOpError,
+  RecordsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RecordsListRequest,
@@ -2918,11 +15736,12 @@ export const RecordsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RecordsScanError = CloudflareOpError;
 /** Scan for common DNS records on your domain and automatically add them to your zone. Useful if you haven't updated your nameservers yet. */
-export const RecordsScan: API.OperationMethod<
+export const recordsScan: API.OperationMethod<
   RecordsScanRequest,
   RecordsScanResponse,
-  CloudflareOpError,
+  RecordsScanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RecordsScanRequest,
@@ -2931,11 +15750,12 @@ export const RecordsScan: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RecordsScanListError = CloudflareOpError;
 /** Retrieves the list of DNS records discovered up to this point by the asynchronous scan. These records are temporary until explicitly accepted or rejected via `POST /scan/review`. Additional records may be discovered by the scan later. */
-export const RecordsScanList: API.OperationMethod<
+export const recordsScanList: API.OperationMethod<
   RecordsScanListRequest,
   RecordsScanListResponse,
-  CloudflareOpError,
+  RecordsScanListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RecordsScanListRequest,
@@ -2944,11 +15764,12 @@ export const RecordsScanList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RecordsScanReviewError = CloudflareOpError;
 /** Accept or reject DNS records found by the DNS records scan. Accepted records will be permanently added to the zone, while rejected records will be permanently deleted. */
-export const RecordsScanReview: API.OperationMethod<
+export const recordsScanReview: API.OperationMethod<
   RecordsScanReviewRequest,
   RecordsScanReviewResponse,
-  CloudflareOpError,
+  RecordsScanReviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RecordsScanReviewRequest,
@@ -2957,11 +15778,12 @@ export const RecordsScanReview: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RecordsScanTriggerError = CloudflareOpError;
 /** Initiates an asynchronous scan for common DNS records on your domain. Note that this **does not** automatically add records to your zone. The scan runs in the background, and results can be reviewed later using the `/scan/review` endpoints. Useful if you haven't updated your nameservers yet. */
-export const RecordsScanTrigger: API.OperationMethod<
+export const recordsScanTrigger: API.OperationMethod<
   RecordsScanTriggerRequest,
   RecordsScanTriggerResponse,
-  CloudflareOpError,
+  RecordsScanTriggerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RecordsScanTriggerRequest,
@@ -2970,11 +15792,12 @@ export const RecordsScanTrigger: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type RecordsUpdateError = CloudflareOpError;
 /** Overwrite an existing DNS record. Notes: - A/AAAA records cannot exist on the same name as CNAME records. - NS records cannot exist on the same name as any other record type. - Domain names are always represented in Punycode, even if Unicode characters were used when creating the record. */
-export const RecordsUpdate: API.OperationMethod<
+export const recordsUpdate: API.OperationMethod<
   RecordsUpdateRequest,
   RecordsUpdateResponse,
-  CloudflareOpError,
+  RecordsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RecordsUpdateRequest,
@@ -2983,11 +15806,12 @@ export const RecordsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsAccountEditError = CloudflareOpError;
 /** Update DNS settings for an account */
-export const SettingsAccountEdit: API.OperationMethod<
+export const settingsAccountEdit: API.OperationMethod<
   SettingsAccountEditRequest,
   SettingsAccountEditResponse,
-  CloudflareOpError,
+  SettingsAccountEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsAccountEditRequest,
@@ -2996,11 +15820,12 @@ export const SettingsAccountEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsAccountGetError = CloudflareOpError;
 /** Show DNS settings for an account */
-export const SettingsAccountGet: API.OperationMethod<
+export const settingsAccountGet: API.OperationMethod<
   SettingsAccountGetRequest,
   SettingsAccountGetResponse,
-  CloudflareOpError,
+  SettingsAccountGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsAccountGetRequest,
@@ -3009,11 +15834,12 @@ export const SettingsAccountGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsAccountViewsCreateError = CloudflareOpError;
 /** Create Internal DNS View for an account */
-export const SettingsAccountViewsCreate: API.OperationMethod<
+export const settingsAccountViewsCreate: API.OperationMethod<
   SettingsAccountViewsCreateRequest,
   SettingsAccountViewsCreateResponse,
-  CloudflareOpError,
+  SettingsAccountViewsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsAccountViewsCreateRequest,
@@ -3022,11 +15848,12 @@ export const SettingsAccountViewsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsAccountViewsDeleteError = CloudflareOpError;
 /** Delete an existing Internal DNS View */
-export const SettingsAccountViewsDelete: API.OperationMethod<
+export const settingsAccountViewsDelete: API.OperationMethod<
   SettingsAccountViewsDeleteRequest,
   SettingsAccountViewsDeleteResponse,
-  CloudflareOpError,
+  SettingsAccountViewsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsAccountViewsDeleteRequest,
@@ -3035,11 +15862,12 @@ export const SettingsAccountViewsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsAccountViewsEditError = CloudflareOpError;
 /** Update an existing Internal DNS View */
-export const SettingsAccountViewsEdit: API.OperationMethod<
+export const settingsAccountViewsEdit: API.OperationMethod<
   SettingsAccountViewsEditRequest,
   SettingsAccountViewsEditResponse,
-  CloudflareOpError,
+  SettingsAccountViewsEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsAccountViewsEditRequest,
@@ -3048,11 +15876,12 @@ export const SettingsAccountViewsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsAccountViewsGetError = CloudflareOpError;
 /** Get DNS Internal View */
-export const SettingsAccountViewsGet: API.OperationMethod<
+export const settingsAccountViewsGet: API.OperationMethod<
   SettingsAccountViewsGetRequest,
   SettingsAccountViewsGetResponse,
-  CloudflareOpError,
+  SettingsAccountViewsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsAccountViewsGetRequest,
@@ -3061,11 +15890,12 @@ export const SettingsAccountViewsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsAccountViewsListError = CloudflareOpError;
 /** List DNS Internal Views for an Account */
-export const SettingsAccountViewsList: API.OperationMethod<
+export const settingsAccountViewsList: API.OperationMethod<
   SettingsAccountViewsListRequest,
   SettingsAccountViewsListResponse,
-  CloudflareOpError,
+  SettingsAccountViewsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsAccountViewsListRequest,
@@ -3074,11 +15904,12 @@ export const SettingsAccountViewsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsZoneEditError = CloudflareOpError;
 /** Update DNS settings for a zone */
-export const SettingsZoneEdit: API.OperationMethod<
+export const settingsZoneEdit: API.OperationMethod<
   SettingsZoneEditRequest,
   SettingsZoneEditResponse,
-  CloudflareOpError,
+  SettingsZoneEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsZoneEditRequest,
@@ -3087,11 +15918,12 @@ export const SettingsZoneEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SettingsZoneGetError = CloudflareOpError;
 /** Show DNS settings for a zone */
-export const SettingsZoneGet: API.OperationMethod<
+export const settingsZoneGet: API.OperationMethod<
   SettingsZoneGetRequest,
   SettingsZoneGetResponse,
-  CloudflareOpError,
+  SettingsZoneGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsZoneGetRequest,
@@ -3100,11 +15932,12 @@ export const SettingsZoneGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UsageAccountGetError = CloudflareOpError;
 /** Get the current DNS record usage and quota for an account. May include internal DNS usage and quota. */
-export const UsageAccountGet: API.OperationMethod<
+export const usageAccountGet: API.OperationMethod<
   UsageAccountGetRequest,
   UsageAccountGetResponse,
-  CloudflareOpError,
+  UsageAccountGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UsageAccountGetRequest,
@@ -3113,11 +15946,12 @@ export const UsageAccountGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UsageZoneGetError = CloudflareOpError;
 /** Get the current DNS record usage for a zone, including the number of records and the quota limit. */
-export const UsageZoneGet: API.OperationMethod<
+export const usageZoneGet: API.OperationMethod<
   UsageZoneGetRequest,
   UsageZoneGetResponse,
-  CloudflareOpError,
+  UsageZoneGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UsageZoneGetRequest,
@@ -3126,11 +15960,12 @@ export const UsageZoneGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersAclsCreateError = CloudflareOpError;
 /** Create ACL. */
-export const ZoneTransfersAclsCreate: API.OperationMethod<
+export const zoneTransfersAclsCreate: API.OperationMethod<
   ZoneTransfersAclsCreateRequest,
   ZoneTransfersAclsCreateResponse,
-  CloudflareOpError,
+  ZoneTransfersAclsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersAclsCreateRequest,
@@ -3139,11 +15974,12 @@ export const ZoneTransfersAclsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersAclsDeleteError = CloudflareOpError;
 /** Delete ACL. */
-export const ZoneTransfersAclsDelete: API.OperationMethod<
+export const zoneTransfersAclsDelete: API.OperationMethod<
   ZoneTransfersAclsDeleteRequest,
   ZoneTransfersAclsDeleteResponse,
-  CloudflareOpError,
+  ZoneTransfersAclsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersAclsDeleteRequest,
@@ -3152,11 +15988,12 @@ export const ZoneTransfersAclsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersAclsGetError = CloudflareOpError;
 /** Get ACL. */
-export const ZoneTransfersAclsGet: API.OperationMethod<
+export const zoneTransfersAclsGet: API.OperationMethod<
   ZoneTransfersAclsGetRequest,
   ZoneTransfersAclsGetResponse,
-  CloudflareOpError,
+  ZoneTransfersAclsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersAclsGetRequest,
@@ -3165,11 +16002,12 @@ export const ZoneTransfersAclsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersAclsListError = CloudflareOpError;
 /** List ACLs. */
-export const ZoneTransfersAclsList: API.OperationMethod<
+export const zoneTransfersAclsList: API.OperationMethod<
   ZoneTransfersAclsListRequest,
   ZoneTransfersAclsListResponse,
-  CloudflareOpError,
+  ZoneTransfersAclsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersAclsListRequest,
@@ -3178,11 +16016,12 @@ export const ZoneTransfersAclsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersAclsUpdateError = CloudflareOpError;
 /** Modify ACL. */
-export const ZoneTransfersAclsUpdate: API.OperationMethod<
+export const zoneTransfersAclsUpdate: API.OperationMethod<
   ZoneTransfersAclsUpdateRequest,
   ZoneTransfersAclsUpdateResponse,
-  CloudflareOpError,
+  ZoneTransfersAclsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersAclsUpdateRequest,
@@ -3191,11 +16030,12 @@ export const ZoneTransfersAclsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersForceAxfrCreateError = CloudflareOpError;
 /** Sends AXFR zone transfer request to primary nameserver(s). */
-export const ZoneTransfersForceAxfrCreate: API.OperationMethod<
+export const zoneTransfersForceAxfrCreate: API.OperationMethod<
   ZoneTransfersForceAxfrCreateRequest,
   ZoneTransfersForceAxfrCreateResponse,
-  CloudflareOpError,
+  ZoneTransfersForceAxfrCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersForceAxfrCreateRequest,
@@ -3204,11 +16044,12 @@ export const ZoneTransfersForceAxfrCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersIncomingCreateError = CloudflareOpError;
 /** Create secondary zone configuration for incoming zone transfers. */
-export const ZoneTransfersIncomingCreate: API.OperationMethod<
+export const zoneTransfersIncomingCreate: API.OperationMethod<
   ZoneTransfersIncomingCreateRequest,
   ZoneTransfersIncomingCreateResponse,
-  CloudflareOpError,
+  ZoneTransfersIncomingCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersIncomingCreateRequest,
@@ -3217,11 +16058,12 @@ export const ZoneTransfersIncomingCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersIncomingDeleteError = CloudflareOpError;
 /** Delete secondary zone configuration for incoming zone transfers. */
-export const ZoneTransfersIncomingDelete: API.OperationMethod<
+export const zoneTransfersIncomingDelete: API.OperationMethod<
   ZoneTransfersIncomingDeleteRequest,
   ZoneTransfersIncomingDeleteResponse,
-  CloudflareOpError,
+  ZoneTransfersIncomingDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersIncomingDeleteRequest,
@@ -3230,11 +16072,12 @@ export const ZoneTransfersIncomingDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersIncomingGetError = CloudflareOpError;
 /** Get secondary zone configuration for incoming zone transfers. */
-export const ZoneTransfersIncomingGet: API.OperationMethod<
+export const zoneTransfersIncomingGet: API.OperationMethod<
   ZoneTransfersIncomingGetRequest,
   ZoneTransfersIncomingGetResponse,
-  CloudflareOpError,
+  ZoneTransfersIncomingGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersIncomingGetRequest,
@@ -3243,11 +16086,12 @@ export const ZoneTransfersIncomingGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersIncomingUpdateError = CloudflareOpError;
 /** Update secondary zone configuration for incoming zone transfers. */
-export const ZoneTransfersIncomingUpdate: API.OperationMethod<
+export const zoneTransfersIncomingUpdate: API.OperationMethod<
   ZoneTransfersIncomingUpdateRequest,
   ZoneTransfersIncomingUpdateResponse,
-  CloudflareOpError,
+  ZoneTransfersIncomingUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersIncomingUpdateRequest,
@@ -3256,11 +16100,12 @@ export const ZoneTransfersIncomingUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersOutgoingCreateError = CloudflareOpError;
 /** Create primary zone configuration for outgoing zone transfers. */
-export const ZoneTransfersOutgoingCreate: API.OperationMethod<
+export const zoneTransfersOutgoingCreate: API.OperationMethod<
   ZoneTransfersOutgoingCreateRequest,
   ZoneTransfersOutgoingCreateResponse,
-  CloudflareOpError,
+  ZoneTransfersOutgoingCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersOutgoingCreateRequest,
@@ -3269,11 +16114,12 @@ export const ZoneTransfersOutgoingCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersOutgoingDeleteError = CloudflareOpError;
 /** Delete primary zone configuration for outgoing zone transfers. */
-export const ZoneTransfersOutgoingDelete: API.OperationMethod<
+export const zoneTransfersOutgoingDelete: API.OperationMethod<
   ZoneTransfersOutgoingDeleteRequest,
   ZoneTransfersOutgoingDeleteResponse,
-  CloudflareOpError,
+  ZoneTransfersOutgoingDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersOutgoingDeleteRequest,
@@ -3282,11 +16128,12 @@ export const ZoneTransfersOutgoingDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersOutgoingDisableError = CloudflareOpError;
 /** Disable outgoing zone transfers for primary zone and clears IXFR backlog of primary zone. */
-export const ZoneTransfersOutgoingDisable: API.OperationMethod<
+export const zoneTransfersOutgoingDisable: API.OperationMethod<
   ZoneTransfersOutgoingDisableRequest,
   ZoneTransfersOutgoingDisableResponse,
-  CloudflareOpError,
+  ZoneTransfersOutgoingDisableError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersOutgoingDisableRequest,
@@ -3295,11 +16142,12 @@ export const ZoneTransfersOutgoingDisable: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersOutgoingEnableError = CloudflareOpError;
 /** Enable outgoing zone transfers for primary zone. */
-export const ZoneTransfersOutgoingEnable: API.OperationMethod<
+export const zoneTransfersOutgoingEnable: API.OperationMethod<
   ZoneTransfersOutgoingEnableRequest,
   ZoneTransfersOutgoingEnableResponse,
-  CloudflareOpError,
+  ZoneTransfersOutgoingEnableError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersOutgoingEnableRequest,
@@ -3308,11 +16156,12 @@ export const ZoneTransfersOutgoingEnable: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersOutgoingForceNotifyError = CloudflareOpError;
 /** Notifies the secondary nameserver(s) and clears IXFR backlog of primary zone. */
-export const ZoneTransfersOutgoingForceNotify: API.OperationMethod<
+export const zoneTransfersOutgoingForceNotify: API.OperationMethod<
   ZoneTransfersOutgoingForceNotifyRequest,
   ZoneTransfersOutgoingForceNotifyResponse,
-  CloudflareOpError,
+  ZoneTransfersOutgoingForceNotifyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersOutgoingForceNotifyRequest,
@@ -3321,11 +16170,12 @@ export const ZoneTransfersOutgoingForceNotify: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersOutgoingGetError = CloudflareOpError;
 /** Get primary zone configuration for outgoing zone transfers. */
-export const ZoneTransfersOutgoingGet: API.OperationMethod<
+export const zoneTransfersOutgoingGet: API.OperationMethod<
   ZoneTransfersOutgoingGetRequest,
   ZoneTransfersOutgoingGetResponse,
-  CloudflareOpError,
+  ZoneTransfersOutgoingGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersOutgoingGetRequest,
@@ -3334,11 +16184,12 @@ export const ZoneTransfersOutgoingGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersOutgoingStatusGetError = CloudflareOpError;
 /** Get primary zone transfer status. */
-export const ZoneTransfersOutgoingStatusGet: API.OperationMethod<
+export const zoneTransfersOutgoingStatusGet: API.OperationMethod<
   ZoneTransfersOutgoingStatusGetRequest,
   ZoneTransfersOutgoingStatusGetResponse,
-  CloudflareOpError,
+  ZoneTransfersOutgoingStatusGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersOutgoingStatusGetRequest,
@@ -3347,11 +16198,12 @@ export const ZoneTransfersOutgoingStatusGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersOutgoingUpdateError = CloudflareOpError;
 /** Update primary zone configuration for outgoing zone transfers. */
-export const ZoneTransfersOutgoingUpdate: API.OperationMethod<
+export const zoneTransfersOutgoingUpdate: API.OperationMethod<
   ZoneTransfersOutgoingUpdateRequest,
   ZoneTransfersOutgoingUpdateResponse,
-  CloudflareOpError,
+  ZoneTransfersOutgoingUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersOutgoingUpdateRequest,
@@ -3360,11 +16212,12 @@ export const ZoneTransfersOutgoingUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersPeersCreateError = CloudflareOpError;
 /** Create Peer. */
-export const ZoneTransfersPeersCreate: API.OperationMethod<
+export const zoneTransfersPeersCreate: API.OperationMethod<
   ZoneTransfersPeersCreateRequest,
   ZoneTransfersPeersCreateResponse,
-  CloudflareOpError,
+  ZoneTransfersPeersCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersPeersCreateRequest,
@@ -3373,11 +16226,12 @@ export const ZoneTransfersPeersCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersPeersDeleteError = CloudflareOpError;
 /** Delete Peer. */
-export const ZoneTransfersPeersDelete: API.OperationMethod<
+export const zoneTransfersPeersDelete: API.OperationMethod<
   ZoneTransfersPeersDeleteRequest,
   ZoneTransfersPeersDeleteResponse,
-  CloudflareOpError,
+  ZoneTransfersPeersDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersPeersDeleteRequest,
@@ -3386,11 +16240,12 @@ export const ZoneTransfersPeersDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersPeersGetError = CloudflareOpError;
 /** Get Peer. */
-export const ZoneTransfersPeersGet: API.OperationMethod<
+export const zoneTransfersPeersGet: API.OperationMethod<
   ZoneTransfersPeersGetRequest,
   ZoneTransfersPeersGetResponse,
-  CloudflareOpError,
+  ZoneTransfersPeersGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersPeersGetRequest,
@@ -3399,11 +16254,12 @@ export const ZoneTransfersPeersGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersPeersListError = CloudflareOpError;
 /** List Peers. */
-export const ZoneTransfersPeersList: API.OperationMethod<
+export const zoneTransfersPeersList: API.OperationMethod<
   ZoneTransfersPeersListRequest,
   ZoneTransfersPeersListResponse,
-  CloudflareOpError,
+  ZoneTransfersPeersListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersPeersListRequest,
@@ -3412,11 +16268,12 @@ export const ZoneTransfersPeersList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersPeersUpdateError = CloudflareOpError;
 /** Modify Peer. */
-export const ZoneTransfersPeersUpdate: API.OperationMethod<
+export const zoneTransfersPeersUpdate: API.OperationMethod<
   ZoneTransfersPeersUpdateRequest,
   ZoneTransfersPeersUpdateResponse,
-  CloudflareOpError,
+  ZoneTransfersPeersUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersPeersUpdateRequest,
@@ -3425,11 +16282,12 @@ export const ZoneTransfersPeersUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersTsigsCreateError = CloudflareOpError;
 /** Create TSIG. */
-export const ZoneTransfersTsigsCreate: API.OperationMethod<
+export const zoneTransfersTsigsCreate: API.OperationMethod<
   ZoneTransfersTsigsCreateRequest,
   ZoneTransfersTsigsCreateResponse,
-  CloudflareOpError,
+  ZoneTransfersTsigsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersTsigsCreateRequest,
@@ -3438,11 +16296,12 @@ export const ZoneTransfersTsigsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersTsigsDeleteError = CloudflareOpError;
 /** Delete TSIG. */
-export const ZoneTransfersTsigsDelete: API.OperationMethod<
+export const zoneTransfersTsigsDelete: API.OperationMethod<
   ZoneTransfersTsigsDeleteRequest,
   ZoneTransfersTsigsDeleteResponse,
-  CloudflareOpError,
+  ZoneTransfersTsigsDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersTsigsDeleteRequest,
@@ -3451,11 +16310,12 @@ export const ZoneTransfersTsigsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersTsigsGetError = CloudflareOpError;
 /** Get TSIG. */
-export const ZoneTransfersTsigsGet: API.OperationMethod<
+export const zoneTransfersTsigsGet: API.OperationMethod<
   ZoneTransfersTsigsGetRequest,
   ZoneTransfersTsigsGetResponse,
-  CloudflareOpError,
+  ZoneTransfersTsigsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersTsigsGetRequest,
@@ -3464,11 +16324,12 @@ export const ZoneTransfersTsigsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersTsigsListError = CloudflareOpError;
 /** List TSIGs. */
-export const ZoneTransfersTsigsList: API.OperationMethod<
+export const zoneTransfersTsigsList: API.OperationMethod<
   ZoneTransfersTsigsListRequest,
   ZoneTransfersTsigsListResponse,
-  CloudflareOpError,
+  ZoneTransfersTsigsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersTsigsListRequest,
@@ -3477,11 +16338,12 @@ export const ZoneTransfersTsigsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ZoneTransfersTsigsUpdateError = CloudflareOpError;
 /** Modify TSIG. */
-export const ZoneTransfersTsigsUpdate: API.OperationMethod<
+export const zoneTransfersTsigsUpdate: API.OperationMethod<
   ZoneTransfersTsigsUpdateRequest,
   ZoneTransfersTsigsUpdateResponse,
-  CloudflareOpError,
+  ZoneTransfersTsigsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneTransfersTsigsUpdateRequest,

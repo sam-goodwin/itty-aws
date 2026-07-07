@@ -10,11 +10,12 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface AvailableAlertsListRequest {
-  account_id: string;
+  /** The account id */
+  accountId: string;
 }
 export const AvailableAlertsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -35,6 +36,7 @@ export const AvailableAlertsListResultMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AvailableAlertsListResultMap>;
 
 export interface AvailableAlertsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AvailableAlertsListResultMap;
 }
 export const AvailableAlertsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -46,11 +48,12 @@ export const AvailableAlertsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailableAlertsListResponse>;
 
 export interface DestinationsEligibleGetRequest {
-  account_id: string;
+  /** The account id */
+  accountId: string;
 }
 export const DestinationsEligibleGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -71,6 +74,7 @@ export const DestinationsEligibleGetResultMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DestinationsEligibleGetResultMap>;
 
 export interface DestinationsEligibleGetResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DestinationsEligibleGetResultMap;
 }
 export const DestinationsEligibleGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -84,11 +88,12 @@ export const DestinationsEligibleGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationsEligibleGetResponse>;
 
 export interface DestinationsPagerdutyCreateRequest {
-  account_id: string;
+  /** The account id */
+  accountId: string;
 }
 export const DestinationsPagerdutyCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -102,6 +107,7 @@ export const DestinationsPagerdutyCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DestinationsPagerdutyCreateResponse {
+  /** token in form of UUID */
   id?: string;
 }
 export const DestinationsPagerdutyCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -113,11 +119,12 @@ export const DestinationsPagerdutyCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationsPagerdutyCreateResponse>;
 
 export interface DestinationsPagerdutyDeleteRequest {
-  account_id: string;
+  /** The account id */
+  accountId: string;
 }
 export const DestinationsPagerdutyDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -137,11 +144,12 @@ export const DestinationsPagerdutyDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationsPagerdutyDeleteResponse>;
 
 export interface DestinationsPagerdutyGetRequest {
-  account_id: string;
+  /** The account id */
+  accountId: string;
 }
 export const DestinationsPagerdutyGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -153,12 +161,29 @@ export const DestinationsPagerdutyGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DestinationsPagerdutyGetRequest",
 }) as any as S.Schema<DestinationsPagerdutyGetRequest>;
 
-export type DestinationsPagerdutyGetResultList = unknown[];
+export interface DestinationsPagerdutyGetResultItem {
+  /** UUID */
+  id?: string;
+  /** The name of the pagerduty service. */
+  name?: string;
+}
+export const DestinationsPagerdutyGetResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DestinationsPagerdutyGetResultItem",
+}) as any as S.Schema<DestinationsPagerdutyGetResultItem>;
+
+export type DestinationsPagerdutyGetResultList =
+  DestinationsPagerdutyGetResultItem[];
 export const DestinationsPagerdutyGetResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  DestinationsPagerdutyGetResultItem,
 ) as any as S.Schema<DestinationsPagerdutyGetResultList>;
 
 export interface DestinationsPagerdutyGetResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DestinationsPagerdutyGetResultList;
 }
 export const DestinationsPagerdutyGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -172,13 +197,15 @@ export const DestinationsPagerdutyGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationsPagerdutyGetResponse>;
 
 export interface DestinationsPagerdutyLinkRequest {
-  account_id: string;
-  token_id: string;
+  /** The account id */
+  accountId: string;
+  /** The token integration key */
+  tokenId: string;
 }
 export const DestinationsPagerdutyLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    token_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    tokenId: S.String.pipe(T.Label("token_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -192,6 +219,7 @@ export const DestinationsPagerdutyLinkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DestinationsPagerdutyLinkResponse {
+  /** UUID */
   id?: string;
 }
 export const DestinationsPagerdutyLinkResponse = /*@__PURE__*/ S.suspend(() =>
@@ -203,14 +231,18 @@ export const DestinationsPagerdutyLinkResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationsPagerdutyLinkResponse>;
 
 export interface DestinationsWebhooksCreateRequest {
-  account_id: string;
+  /** The account id */
+  accountId: string;
+  /** The name of the webhook destination. This will be included in the request body when you receive a webhook notification. */
   name: string;
+  /** The POST endpoint to call when dispatching a notification. */
   url: string;
+  /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
   secret?: string;
 }
 export const DestinationsWebhooksCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
     url: S.String,
     secret: S.optional(S.String),
@@ -227,6 +259,7 @@ export const DestinationsWebhooksCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DestinationsWebhooksCreateResponse {
+  /** UUID */
   id?: string;
 }
 export const DestinationsWebhooksCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -238,13 +271,15 @@ export const DestinationsWebhooksCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationsWebhooksCreateResponse>;
 
 export interface DestinationsWebhooksDeleteRequest {
-  account_id: string;
-  webhook_id: string;
+  /** The account id */
+  accountId: string;
+  /** The unique identifier of a webhook */
+  webhookId: string;
 }
 export const DestinationsWebhooksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    webhook_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    webhookId: S.String.pipe(T.Label("webhook_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -264,13 +299,15 @@ export const DestinationsWebhooksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationsWebhooksDeleteResponse>;
 
 export interface DestinationsWebhooksGetRequest {
-  account_id: string;
-  webhook_id: string;
+  /** The account id */
+  accountId: string;
+  /** The unique identifier of a webhook */
+  webhookId: string;
 }
 export const DestinationsWebhooksGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    webhook_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    webhookId: S.String.pipe(T.Label("webhook_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -282,23 +319,54 @@ export const DestinationsWebhooksGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DestinationsWebhooksGetRequest",
 }) as any as S.Schema<DestinationsWebhooksGetRequest>;
 
+export type DestinationsWebhooksGetResponseType =
+  | "datadog"
+  | "discord"
+  | "feishu"
+  | (string & {});
+export const DestinationsWebhooksGetResponseType = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DestinationsWebhooksGetResponse {
-  result?: unknown;
+  /** The unique identifier of a webhook */
+  id?: string;
+  /** Timestamp of when the webhook destination was created. */
+  createdAt?: string;
+  /** Timestamp of the last time an attempt to dispatch a notification to this webhook failed. */
+  lastFailure?: string;
+  /** Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook. */
+  lastSuccess?: string;
+  /** The name of the webhook destination. This will be included in the request body when you receive a webhook notification. */
+  name?: string;
+  /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
+  secret?: string;
+  /** Type of webhook endpoint. */
+  type?: DestinationsWebhooksGetResponseType;
+  /** The POST endpoint to call when dispatching a notification. */
+  url?: string;
 }
 export const DestinationsWebhooksGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    lastFailure: S.optional(S.String.pipe(T.Body("last_failure"))),
+    lastSuccess: S.optional(S.String.pipe(T.Body("last_success"))),
+    name: S.optional(S.String),
+    secret: S.optional(S.String),
+    type: S.optional(DestinationsWebhooksGetResponseType),
+    url: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DestinationsWebhooksGetResponse",
 }) as any as S.Schema<DestinationsWebhooksGetResponse>;
 
 export interface DestinationsWebhooksListRequest {
-  account_id: string;
+  /** The account id */
+  accountId: string;
 }
 export const DestinationsWebhooksListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -310,12 +378,54 @@ export const DestinationsWebhooksListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DestinationsWebhooksListRequest",
 }) as any as S.Schema<DestinationsWebhooksListRequest>;
 
-export type DestinationsWebhooksListResultList = unknown[];
+export type DestinationsWebhooksListResultItemType =
+  | "datadog"
+  | "discord"
+  | "feishu"
+  | (string & {});
+export const DestinationsWebhooksListResultItemType = /*@__PURE__*/ S.String;
+
+export interface DestinationsWebhooksListResultItem {
+  /** The unique identifier of a webhook */
+  id?: string;
+  /** Timestamp of when the webhook destination was created. */
+  createdAt?: string;
+  /** Timestamp of the last time an attempt to dispatch a notification to this webhook failed. */
+  lastFailure?: string;
+  /** Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook. */
+  lastSuccess?: string;
+  /** The name of the webhook destination. This will be included in the request body when you receive a webhook notification. */
+  name?: string;
+  /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
+  secret?: string;
+  /** Type of webhook endpoint. */
+  type?: DestinationsWebhooksListResultItemType;
+  /** The POST endpoint to call when dispatching a notification. */
+  url?: string;
+}
+export const DestinationsWebhooksListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    lastFailure: S.optional(S.String.pipe(T.Body("last_failure"))),
+    lastSuccess: S.optional(S.String.pipe(T.Body("last_success"))),
+    name: S.optional(S.String),
+    secret: S.optional(S.String),
+    type: S.optional(DestinationsWebhooksListResultItemType),
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DestinationsWebhooksListResultItem",
+}) as any as S.Schema<DestinationsWebhooksListResultItem>;
+
+export type DestinationsWebhooksListResultList =
+  DestinationsWebhooksListResultItem[];
 export const DestinationsWebhooksListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  DestinationsWebhooksListResultItem,
 ) as any as S.Schema<DestinationsWebhooksListResultList>;
 
 export interface DestinationsWebhooksListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DestinationsWebhooksListResultList;
 }
 export const DestinationsWebhooksListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -329,16 +439,21 @@ export const DestinationsWebhooksListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationsWebhooksListResponse>;
 
 export interface DestinationsWebhooksUpdateRequest {
-  account_id: string;
-  webhook_id: string;
+  /** The account id */
+  accountId: string;
+  /** The unique identifier of a webhook */
+  webhookId: string;
+  /** The name of the webhook destination. This will be included in the request body when you receive a webhook notification. */
   name: string;
+  /** The POST endpoint to call when dispatching a notification. */
   url: string;
+  /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
   secret?: string;
 }
 export const DestinationsWebhooksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    webhook_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    webhookId: S.String.pipe(T.Label("webhook_id")),
     name: S.String,
     url: S.String,
     secret: S.optional(S.String),
@@ -355,6 +470,7 @@ export const DestinationsWebhooksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DestinationsWebhooksUpdateResponse {
+  /** UUID */
   id?: string;
 }
 export const DestinationsWebhooksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -366,18 +482,23 @@ export const DestinationsWebhooksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationsWebhooksUpdateResponse>;
 
 export interface HistoryListRequest {
-  account_id: string;
+  /** The account id */
+  accountId: string;
+  /** Limit the returned results to history records older than the specified date. This must be a timestamp that conforms to RFC3339. */
   before?: string;
+  /** Page number of paginated results. */
   page?: number;
-  per_page?: number;
+  /** Number of items per page. */
+  perPage?: number;
+  /** Limit the returned results to history records newer than the specified date. This must be a timestamp that conforms to RFC3339. */
   since?: string;
 }
 export const HistoryListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     before: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     since: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -390,12 +511,58 @@ export const HistoryListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "HistoryListRequest",
 }) as any as S.Schema<HistoryListRequest>;
 
-export type HistoryListResultList = unknown[];
+export type HistoryListResultItemMechanismType =
+  | "email"
+  | "pagerduty"
+  | "webhook"
+  | (string & {});
+export const HistoryListResultItemMechanismType = /*@__PURE__*/ S.String;
+
+export interface HistoryListResultItem {
+  /** UUID */
+  id?: string;
+  /** Message body included in the notification sent. */
+  alertBody?: string;
+  /** Type of notification that has been dispatched. */
+  alertType?: string;
+  /** Description of the notification policy (if present). */
+  description?: string;
+  /** The mechanism to which the notification has been dispatched. */
+  mechanism?: string;
+  /** The type of mechanism to which the notification has been dispatched. This can be email/pagerduty/webhook based on the mechanism configured. */
+  mechanismType?: HistoryListResultItemMechanismType;
+  /** Name of the policy. */
+  name?: string;
+  /** The unique identifier of a notification policy */
+  policyId?: string;
+  /** Timestamp of when the notification was dispatched in ISO 8601 format. */
+  sent?: string;
+}
+export const HistoryListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    alertBody: S.optional(S.String.pipe(T.Body("alert_body"))),
+    alertType: S.optional(S.String.pipe(T.Body("alert_type"))),
+    description: S.optional(S.String),
+    mechanism: S.optional(S.String),
+    mechanismType: S.optional(
+      HistoryListResultItemMechanismType.pipe(T.Body("mechanism_type")),
+    ),
+    name: S.optional(S.String),
+    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
+    sent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HistoryListResultItem",
+}) as any as S.Schema<HistoryListResultItem>;
+
+export type HistoryListResultList = HistoryListResultItem[];
 export const HistoryListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  HistoryListResultItem,
 ) as any as S.Schema<HistoryListResultList>;
 
 export interface HistoryListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: HistoryListResultList;
 }
 export const HistoryListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -413,26 +580,582 @@ export type PoliciesCreateRequestAlertType =
   | (string & {});
 export const PoliciesCreateRequestAlertType = /*@__PURE__*/ S.String;
 
+export interface PoliciesCreateRequestMechanismsEmailItem {
+  /** The email address */
+  id?: string;
+}
+export const PoliciesCreateRequestMechanismsEmailItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "PoliciesCreateRequestMechanismsEmailItem",
+}) as any as S.Schema<PoliciesCreateRequestMechanismsEmailItem>;
+
+export type PoliciesCreateRequestMechanismsEmailList =
+  PoliciesCreateRequestMechanismsEmailItem[];
+export const PoliciesCreateRequestMechanismsEmailList = /*@__PURE__*/ S.Array(
+  PoliciesCreateRequestMechanismsEmailItem,
+) as any as S.Schema<PoliciesCreateRequestMechanismsEmailList>;
+
+export interface PoliciesCreateRequestMechanismsPagerdutyItem {
+  /** UUID */
+  id?: string;
+}
+export const PoliciesCreateRequestMechanismsPagerdutyItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PoliciesCreateRequestMechanismsPagerdutyItem",
+  }) as any as S.Schema<PoliciesCreateRequestMechanismsPagerdutyItem>;
+
+export type PoliciesCreateRequestMechanismsPagerdutyList =
+  PoliciesCreateRequestMechanismsPagerdutyItem[];
+export const PoliciesCreateRequestMechanismsPagerdutyList =
+  /*@__PURE__*/ S.Array(
+    PoliciesCreateRequestMechanismsPagerdutyItem,
+  ) as any as S.Schema<PoliciesCreateRequestMechanismsPagerdutyList>;
+
+export interface PoliciesCreateRequestMechanismsWebhooksItem {
+  /** UUID */
+  id?: string;
+}
+export const PoliciesCreateRequestMechanismsWebhooksItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PoliciesCreateRequestMechanismsWebhooksItem",
+  }) as any as S.Schema<PoliciesCreateRequestMechanismsWebhooksItem>;
+
+export type PoliciesCreateRequestMechanismsWebhooksList =
+  PoliciesCreateRequestMechanismsWebhooksItem[];
+export const PoliciesCreateRequestMechanismsWebhooksList =
+  /*@__PURE__*/ S.Array(
+    PoliciesCreateRequestMechanismsWebhooksItem,
+  ) as any as S.Schema<PoliciesCreateRequestMechanismsWebhooksList>;
+
+export interface PoliciesCreateRequestMechanisms {
+  email?: PoliciesCreateRequestMechanismsEmailList;
+  pagerduty?: PoliciesCreateRequestMechanismsPagerdutyList;
+  webhooks?: PoliciesCreateRequestMechanismsWebhooksList;
+}
+export const PoliciesCreateRequestMechanisms = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(PoliciesCreateRequestMechanismsEmailList),
+    pagerduty: S.optional(PoliciesCreateRequestMechanismsPagerdutyList),
+    webhooks: S.optional(PoliciesCreateRequestMechanismsWebhooksList),
+  }),
+).annotate({
+  identifier: "PoliciesCreateRequestMechanisms",
+}) as any as S.Schema<PoliciesCreateRequestMechanisms>;
+
+export type PoliciesCreateRequestFiltersActionsList = string[];
+export const PoliciesCreateRequestFiltersActionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersActionsList>;
+
+export type PoliciesCreateRequestFiltersAffectedAsnsList = string[];
+export const PoliciesCreateRequestFiltersAffectedAsnsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesCreateRequestFiltersAffectedAsnsList>;
+
+export type PoliciesCreateRequestFiltersAffectedComponentsList = string[];
+export const PoliciesCreateRequestFiltersAffectedComponentsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesCreateRequestFiltersAffectedComponentsList>;
+
+export type PoliciesCreateRequestFiltersAffectedLocationsList = string[];
+export const PoliciesCreateRequestFiltersAffectedLocationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesCreateRequestFiltersAffectedLocationsList>;
+
+export type PoliciesCreateRequestFiltersAirportCodeList = string[];
+export const PoliciesCreateRequestFiltersAirportCodeList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesCreateRequestFiltersAirportCodeList>;
+
+export type PoliciesCreateRequestFiltersAlertTriggerPreferencesList = string[];
+export const PoliciesCreateRequestFiltersAlertTriggerPreferencesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesCreateRequestFiltersAlertTriggerPreferencesList>;
+
+export type PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList =
+  string[];
+export const PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList>;
+
+export type PoliciesCreateRequestFiltersEnabledList = string[];
+export const PoliciesCreateRequestFiltersEnabledList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersEnabledList>;
+
+export type PoliciesCreateRequestFiltersEnvironmentList = string[];
+export const PoliciesCreateRequestFiltersEnvironmentList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesCreateRequestFiltersEnvironmentList>;
+
+export type PoliciesCreateRequestFiltersEventList = string[];
+export const PoliciesCreateRequestFiltersEventList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersEventList>;
+
+export type PoliciesCreateRequestFiltersEventSourceList = string[];
+export const PoliciesCreateRequestFiltersEventSourceList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesCreateRequestFiltersEventSourceList>;
+
+export type PoliciesCreateRequestFiltersEventTypeList = string[];
+export const PoliciesCreateRequestFiltersEventTypeList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersEventTypeList>;
+
+export type PoliciesCreateRequestFiltersGroupByList = string[];
+export const PoliciesCreateRequestFiltersGroupByList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersGroupByList>;
+
+export type PoliciesCreateRequestFiltersHealthCheckIdList = string[];
+export const PoliciesCreateRequestFiltersHealthCheckIdList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesCreateRequestFiltersHealthCheckIdList>;
+
+export type PoliciesCreateRequestFiltersIncidentImpactItem =
+  | "INCIDENT_IMPACT_NONE"
+  | "INCIDENT_IMPACT_MINOR"
+  | "INCIDENT_IMPACT_MAJOR"
+  | "INCIDENT_IMPACT_CRITICAL"
+  | (string & {});
+export const PoliciesCreateRequestFiltersIncidentImpactItem =
+  /*@__PURE__*/ S.String;
+
+export type PoliciesCreateRequestFiltersIncidentImpactList =
+  PoliciesCreateRequestFiltersIncidentImpactItem[];
+export const PoliciesCreateRequestFiltersIncidentImpactList =
+  /*@__PURE__*/ S.Array(
+    PoliciesCreateRequestFiltersIncidentImpactItem,
+  ) as any as S.Schema<PoliciesCreateRequestFiltersIncidentImpactList>;
+
+export type PoliciesCreateRequestFiltersInputIdList = string[];
+export const PoliciesCreateRequestFiltersInputIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersInputIdList>;
+
+export type PoliciesCreateRequestFiltersInsightClassList = string[];
+export const PoliciesCreateRequestFiltersInsightClassList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesCreateRequestFiltersInsightClassList>;
+
+export type PoliciesCreateRequestFiltersLimitList = string[];
+export const PoliciesCreateRequestFiltersLimitList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersLimitList>;
+
+export type PoliciesCreateRequestFiltersLogoTagList = string[];
+export const PoliciesCreateRequestFiltersLogoTagList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersLogoTagList>;
+
+export type PoliciesCreateRequestFiltersMegabitsPerSecondList = string[];
+export const PoliciesCreateRequestFiltersMegabitsPerSecondList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesCreateRequestFiltersMegabitsPerSecondList>;
+
+export type PoliciesCreateRequestFiltersNewHealthList = string[];
+export const PoliciesCreateRequestFiltersNewHealthList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersNewHealthList>;
+
+export type PoliciesCreateRequestFiltersNewStatusList = string[];
+export const PoliciesCreateRequestFiltersNewStatusList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersNewStatusList>;
+
+export type PoliciesCreateRequestFiltersPacketsPerSecondList = string[];
+export const PoliciesCreateRequestFiltersPacketsPerSecondList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesCreateRequestFiltersPacketsPerSecondList>;
+
+export type PoliciesCreateRequestFiltersPoolIdList = string[];
+export const PoliciesCreateRequestFiltersPoolIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersPoolIdList>;
+
+export type PoliciesCreateRequestFiltersPopNamesList = string[];
+export const PoliciesCreateRequestFiltersPopNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersPopNamesList>;
+
+export type PoliciesCreateRequestFiltersProductList = string[];
+export const PoliciesCreateRequestFiltersProductList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersProductList>;
+
+export type PoliciesCreateRequestFiltersProjectIdList = string[];
+export const PoliciesCreateRequestFiltersProjectIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersProjectIdList>;
+
+export type PoliciesCreateRequestFiltersProtocolList = string[];
+export const PoliciesCreateRequestFiltersProtocolList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersProtocolList>;
+
+export type PoliciesCreateRequestFiltersQueryTagList = string[];
+export const PoliciesCreateRequestFiltersQueryTagList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersQueryTagList>;
+
+export type PoliciesCreateRequestFiltersRequestsPerSecondList = string[];
+export const PoliciesCreateRequestFiltersRequestsPerSecondList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesCreateRequestFiltersRequestsPerSecondList>;
+
+export type PoliciesCreateRequestFiltersSelectorsList = string[];
+export const PoliciesCreateRequestFiltersSelectorsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersSelectorsList>;
+
+export type PoliciesCreateRequestFiltersServicesList = string[];
+export const PoliciesCreateRequestFiltersServicesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersServicesList>;
+
+export type PoliciesCreateRequestFiltersSloList = string[];
+export const PoliciesCreateRequestFiltersSloList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersSloList>;
+
+export type PoliciesCreateRequestFiltersStatusList = string[];
+export const PoliciesCreateRequestFiltersStatusList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersStatusList>;
+
+export type PoliciesCreateRequestFiltersTargetHostnameList = string[];
+export const PoliciesCreateRequestFiltersTargetHostnameList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesCreateRequestFiltersTargetHostnameList>;
+
+export type PoliciesCreateRequestFiltersTargetIpList = string[];
+export const PoliciesCreateRequestFiltersTargetIpList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersTargetIpList>;
+
+export type PoliciesCreateRequestFiltersTargetZoneNameList = string[];
+export const PoliciesCreateRequestFiltersTargetZoneNameList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesCreateRequestFiltersTargetZoneNameList>;
+
+export type PoliciesCreateRequestFiltersTrafficExclusionsItem =
+  | "security_events"
+  | (string & {});
+export const PoliciesCreateRequestFiltersTrafficExclusionsItem =
+  /*@__PURE__*/ S.String;
+
+export type PoliciesCreateRequestFiltersTrafficExclusionsList =
+  PoliciesCreateRequestFiltersTrafficExclusionsItem[];
+export const PoliciesCreateRequestFiltersTrafficExclusionsList =
+  /*@__PURE__*/ S.Array(
+    PoliciesCreateRequestFiltersTrafficExclusionsItem,
+  ) as any as S.Schema<PoliciesCreateRequestFiltersTrafficExclusionsList>;
+
+export type PoliciesCreateRequestFiltersTunnelIdList = string[];
+export const PoliciesCreateRequestFiltersTunnelIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersTunnelIdList>;
+
+export type PoliciesCreateRequestFiltersTunnelNameList = string[];
+export const PoliciesCreateRequestFiltersTunnelNameList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersTunnelNameList>;
+
+export type PoliciesCreateRequestFiltersTypeList = string[];
+export const PoliciesCreateRequestFiltersTypeList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersTypeList>;
+
+export type PoliciesCreateRequestFiltersWhereList = string[];
+export const PoliciesCreateRequestFiltersWhereList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersWhereList>;
+
+export type PoliciesCreateRequestFiltersZonesList = string[];
+export const PoliciesCreateRequestFiltersZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesCreateRequestFiltersZonesList>;
+
+export interface PoliciesCreateRequestFilters {
+  /** Usage depends on specific alert type */
+  actions?: PoliciesCreateRequestFiltersActionsList;
+  /** Used for configuring radar_notification */
+  affectedAsns?: PoliciesCreateRequestFiltersAffectedAsnsList;
+  /** Used for configuring incident_alert */
+  affectedComponents?: PoliciesCreateRequestFiltersAffectedComponentsList;
+  /** Used for configuring radar_notification */
+  affectedLocations?: PoliciesCreateRequestFiltersAffectedLocationsList;
+  /** Used for configuring maintenance_event_notification */
+  airportCode?: PoliciesCreateRequestFiltersAirportCodeList;
+  /** Usage depends on specific alert type */
+  alertTriggerPreferences?: PoliciesCreateRequestFiltersAlertTriggerPreferencesList;
+  /** Usage depends on specific alert type */
+  alertTriggerPreferencesValue?: PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList;
+  /** Used for configuring load_balancing_pool_enablement_alert */
+  enabled?: PoliciesCreateRequestFiltersEnabledList;
+  /** Used for configuring pages_event_alert */
+  environment?: PoliciesCreateRequestFiltersEnvironmentList;
+  /** Used for configuring pages_event_alert */
+  event?: PoliciesCreateRequestFiltersEventList;
+  /** Used for configuring load_balancing_health_alert */
+  eventSource?: PoliciesCreateRequestFiltersEventSourceList;
+  /** Usage depends on specific alert type */
+  eventType?: PoliciesCreateRequestFiltersEventTypeList;
+  /** Usage depends on specific alert type */
+  groupBy?: PoliciesCreateRequestFiltersGroupByList;
+  /** Used for configuring health_check_status_notification */
+  healthCheckId?: PoliciesCreateRequestFiltersHealthCheckIdList;
+  /** Used for configuring incident_alert */
+  incidentImpact?: PoliciesCreateRequestFiltersIncidentImpactList;
+  /** Used for configuring stream_live_notifications */
+  inputId?: PoliciesCreateRequestFiltersInputIdList;
+  /** Used for configuring security_insights_alert */
+  insightClass?: PoliciesCreateRequestFiltersInsightClassList;
+  /** Used for configuring billing_usage_alert */
+  limit?: PoliciesCreateRequestFiltersLimitList;
+  /** Used for configuring logo_match_alert */
+  logoTag?: PoliciesCreateRequestFiltersLogoTagList;
+  /** Used for configuring advanced_ddos_attack_l4_alert */
+  megabitsPerSecond?: PoliciesCreateRequestFiltersMegabitsPerSecondList;
+  /** Used for configuring load_balancing_health_alert */
+  newHealth?: PoliciesCreateRequestFiltersNewHealthList;
+  /** Used for configuring tunnel_health_event */
+  newStatus?: PoliciesCreateRequestFiltersNewStatusList;
+  /** Used for configuring advanced_ddos_attack_l4_alert */
+  packetsPerSecond?: PoliciesCreateRequestFiltersPacketsPerSecondList;
+  /** Usage depends on specific alert type */
+  poolId?: PoliciesCreateRequestFiltersPoolIdList;
+  /** Usage depends on specific alert type */
+  popNames?: PoliciesCreateRequestFiltersPopNamesList;
+  /** Used for configuring billing_usage_alert */
+  product?: PoliciesCreateRequestFiltersProductList;
+  /** Used for configuring pages_event_alert */
+  projectId?: PoliciesCreateRequestFiltersProjectIdList;
+  /** Used for configuring advanced_ddos_attack_l4_alert */
+  protocol?: PoliciesCreateRequestFiltersProtocolList;
+  /** Usage depends on specific alert type */
+  queryTag?: PoliciesCreateRequestFiltersQueryTagList;
+  /** Used for configuring advanced_ddos_attack_l7_alert */
+  requestsPerSecond?: PoliciesCreateRequestFiltersRequestsPerSecondList;
+  /** Usage depends on specific alert type */
+  selectors?: PoliciesCreateRequestFiltersSelectorsList;
+  /** Used for configuring clickhouse_alert_fw_ent_anomaly */
+  services?: PoliciesCreateRequestFiltersServicesList;
+  /** Usage depends on specific alert type */
+  slo?: PoliciesCreateRequestFiltersSloList;
+  /** Used for configuring health_check_status_notification */
+  status?: PoliciesCreateRequestFiltersStatusList;
+  /** Used for configuring advanced_ddos_attack_l7_alert */
+  targetHostname?: PoliciesCreateRequestFiltersTargetHostnameList;
+  /** Used for configuring advanced_ddos_attack_l4_alert */
+  targetIp?: PoliciesCreateRequestFiltersTargetIpList;
+  /** Used for configuring advanced_ddos_attack_l7_alert */
+  targetZoneName?: PoliciesCreateRequestFiltersTargetZoneNameList;
+  /** Used for configuring traffic_anomalies_alert */
+  trafficExclusions?: PoliciesCreateRequestFiltersTrafficExclusionsList;
+  /** Used for configuring tunnel_health_event */
+  tunnelId?: PoliciesCreateRequestFiltersTunnelIdList;
+  /** Usage depends on specific alert type */
+  tunnelName?: PoliciesCreateRequestFiltersTunnelNameList;
+  /** Usage depends on specific alert type */
+  type?: PoliciesCreateRequestFiltersTypeList;
+  /** Usage depends on specific alert type */
+  where?: PoliciesCreateRequestFiltersWhereList;
+  /** Usage depends on specific alert type */
+  zones?: PoliciesCreateRequestFiltersZonesList;
+}
+export const PoliciesCreateRequestFilters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actions: S.optional(PoliciesCreateRequestFiltersActionsList),
+    affectedAsns: S.optional(
+      PoliciesCreateRequestFiltersAffectedAsnsList.pipe(
+        T.Body("affected_asns"),
+      ),
+    ),
+    affectedComponents: S.optional(
+      PoliciesCreateRequestFiltersAffectedComponentsList.pipe(
+        T.Body("affected_components"),
+      ),
+    ),
+    affectedLocations: S.optional(
+      PoliciesCreateRequestFiltersAffectedLocationsList.pipe(
+        T.Body("affected_locations"),
+      ),
+    ),
+    airportCode: S.optional(
+      PoliciesCreateRequestFiltersAirportCodeList.pipe(T.Body("airport_code")),
+    ),
+    alertTriggerPreferences: S.optional(
+      PoliciesCreateRequestFiltersAlertTriggerPreferencesList.pipe(
+        T.Body("alert_trigger_preferences"),
+      ),
+    ),
+    alertTriggerPreferencesValue: S.optional(
+      PoliciesCreateRequestFiltersAlertTriggerPreferencesValueList.pipe(
+        T.Body("alert_trigger_preferences_value"),
+      ),
+    ),
+    enabled: S.optional(PoliciesCreateRequestFiltersEnabledList),
+    environment: S.optional(PoliciesCreateRequestFiltersEnvironmentList),
+    event: S.optional(PoliciesCreateRequestFiltersEventList),
+    eventSource: S.optional(
+      PoliciesCreateRequestFiltersEventSourceList.pipe(T.Body("event_source")),
+    ),
+    eventType: S.optional(
+      PoliciesCreateRequestFiltersEventTypeList.pipe(T.Body("event_type")),
+    ),
+    groupBy: S.optional(
+      PoliciesCreateRequestFiltersGroupByList.pipe(T.Body("group_by")),
+    ),
+    healthCheckId: S.optional(
+      PoliciesCreateRequestFiltersHealthCheckIdList.pipe(
+        T.Body("health_check_id"),
+      ),
+    ),
+    incidentImpact: S.optional(
+      PoliciesCreateRequestFiltersIncidentImpactList.pipe(
+        T.Body("incident_impact"),
+      ),
+    ),
+    inputId: S.optional(
+      PoliciesCreateRequestFiltersInputIdList.pipe(T.Body("input_id")),
+    ),
+    insightClass: S.optional(
+      PoliciesCreateRequestFiltersInsightClassList.pipe(
+        T.Body("insight_class"),
+      ),
+    ),
+    limit: S.optional(PoliciesCreateRequestFiltersLimitList),
+    logoTag: S.optional(
+      PoliciesCreateRequestFiltersLogoTagList.pipe(T.Body("logo_tag")),
+    ),
+    megabitsPerSecond: S.optional(
+      PoliciesCreateRequestFiltersMegabitsPerSecondList.pipe(
+        T.Body("megabits_per_second"),
+      ),
+    ),
+    newHealth: S.optional(
+      PoliciesCreateRequestFiltersNewHealthList.pipe(T.Body("new_health")),
+    ),
+    newStatus: S.optional(
+      PoliciesCreateRequestFiltersNewStatusList.pipe(T.Body("new_status")),
+    ),
+    packetsPerSecond: S.optional(
+      PoliciesCreateRequestFiltersPacketsPerSecondList.pipe(
+        T.Body("packets_per_second"),
+      ),
+    ),
+    poolId: S.optional(
+      PoliciesCreateRequestFiltersPoolIdList.pipe(T.Body("pool_id")),
+    ),
+    popNames: S.optional(
+      PoliciesCreateRequestFiltersPopNamesList.pipe(T.Body("pop_names")),
+    ),
+    product: S.optional(PoliciesCreateRequestFiltersProductList),
+    projectId: S.optional(
+      PoliciesCreateRequestFiltersProjectIdList.pipe(T.Body("project_id")),
+    ),
+    protocol: S.optional(PoliciesCreateRequestFiltersProtocolList),
+    queryTag: S.optional(
+      PoliciesCreateRequestFiltersQueryTagList.pipe(T.Body("query_tag")),
+    ),
+    requestsPerSecond: S.optional(
+      PoliciesCreateRequestFiltersRequestsPerSecondList.pipe(
+        T.Body("requests_per_second"),
+      ),
+    ),
+    selectors: S.optional(PoliciesCreateRequestFiltersSelectorsList),
+    services: S.optional(PoliciesCreateRequestFiltersServicesList),
+    slo: S.optional(PoliciesCreateRequestFiltersSloList),
+    status: S.optional(PoliciesCreateRequestFiltersStatusList),
+    targetHostname: S.optional(
+      PoliciesCreateRequestFiltersTargetHostnameList.pipe(
+        T.Body("target_hostname"),
+      ),
+    ),
+    targetIp: S.optional(
+      PoliciesCreateRequestFiltersTargetIpList.pipe(T.Body("target_ip")),
+    ),
+    targetZoneName: S.optional(
+      PoliciesCreateRequestFiltersTargetZoneNameList.pipe(
+        T.Body("target_zone_name"),
+      ),
+    ),
+    trafficExclusions: S.optional(
+      PoliciesCreateRequestFiltersTrafficExclusionsList.pipe(
+        T.Body("traffic_exclusions"),
+      ),
+    ),
+    tunnelId: S.optional(
+      PoliciesCreateRequestFiltersTunnelIdList.pipe(T.Body("tunnel_id")),
+    ),
+    tunnelName: S.optional(
+      PoliciesCreateRequestFiltersTunnelNameList.pipe(T.Body("tunnel_name")),
+    ),
+    type: S.optional(PoliciesCreateRequestFiltersTypeList),
+    where: S.optional(PoliciesCreateRequestFiltersWhereList),
+    zones: S.optional(PoliciesCreateRequestFiltersZonesList),
+  }),
+).annotate({
+  identifier: "PoliciesCreateRequestFilters",
+}) as any as S.Schema<PoliciesCreateRequestFilters>;
+
 export interface PoliciesCreateRequest {
-  account_id: string;
-  alert_type: PoliciesCreateRequestAlertType;
+  /** The account id */
+  accountId: string;
+  /** Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. */
+  alertType: PoliciesCreateRequestAlertType;
+  /** Whether or not the Notification policy is enabled. */
   enabled: boolean;
-  mechanisms: unknown;
+  /** List of IDs that will be used when dispatching a notification. IDs for email type will be the email address. */
+  mechanisms: PoliciesCreateRequestMechanisms;
+  /** Name of the policy. */
   name: string;
-  alert_interval?: string;
+  /** Optional specification of how often to re-alert from the same incident, not support on all alert types. */
+  alertInterval?: string;
+  /** Optional description for the Notification policy. */
   description?: string;
-  filters?: unknown;
+  /** Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details. */
+  filters?: PoliciesCreateRequestFilters;
 }
 export const PoliciesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    alert_type: PoliciesCreateRequestAlertType,
+    accountId: S.String.pipe(T.Label("account_id")),
+    alertType: PoliciesCreateRequestAlertType.pipe(T.Body("alert_type")),
     enabled: S.Boolean,
-    mechanisms: S.Unknown,
+    mechanisms: PoliciesCreateRequestMechanisms,
     name: S.String,
-    alert_interval: S.optional(S.String),
+    alertInterval: S.optional(S.String.pipe(T.Body("alert_interval"))),
     description: S.optional(S.String),
-    filters: S.optional(S.Unknown),
+    filters: S.optional(PoliciesCreateRequestFilters),
   }).pipe(
     T.Http({
       method: "POST",
@@ -446,6 +1169,7 @@ export const PoliciesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PoliciesCreateResponse {
+  /** UUID */
   id?: string;
 }
 export const PoliciesCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -457,13 +1181,15 @@ export const PoliciesCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoliciesCreateResponse>;
 
 export interface PoliciesDeleteRequest {
-  account_id: string;
-  policy_id: string;
+  /** The account id */
+  accountId: string;
+  /** The unique identifier of a notification policy */
+  policyId: string;
 }
 export const PoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    policy_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    policyId: S.String.pipe(T.Label("policy_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -483,13 +1209,15 @@ export const PoliciesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoliciesDeleteResponse>;
 
 export interface PoliciesGetRequest {
-  account_id: string;
-  policy_id: string;
+  /** The account id */
+  accountId: string;
+  /** The unique identifier of a notification policy */
+  policyId: string;
 }
 export const PoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    policy_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    policyId: S.String.pipe(T.Label("policy_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -501,23 +1229,597 @@ export const PoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoliciesGetRequest",
 }) as any as S.Schema<PoliciesGetRequest>;
 
+export type PoliciesGetResponseAlertType =
+  | "abuse_report_alert"
+  | "access_custom_certificate_expiration_type"
+  | "advanced_ddos_attack_l4_alert"
+  | (string & {});
+export const PoliciesGetResponseAlertType = /*@__PURE__*/ S.String;
+
+export type PoliciesGetResponseFiltersActionsList = string[];
+export const PoliciesGetResponseFiltersActionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersActionsList>;
+
+export type PoliciesGetResponseFiltersAffectedAsnsList = string[];
+export const PoliciesGetResponseFiltersAffectedAsnsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersAffectedAsnsList>;
+
+export type PoliciesGetResponseFiltersAffectedComponentsList = string[];
+export const PoliciesGetResponseFiltersAffectedComponentsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesGetResponseFiltersAffectedComponentsList>;
+
+export type PoliciesGetResponseFiltersAffectedLocationsList = string[];
+export const PoliciesGetResponseFiltersAffectedLocationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesGetResponseFiltersAffectedLocationsList>;
+
+export type PoliciesGetResponseFiltersAirportCodeList = string[];
+export const PoliciesGetResponseFiltersAirportCodeList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersAirportCodeList>;
+
+export type PoliciesGetResponseFiltersAlertTriggerPreferencesList = string[];
+export const PoliciesGetResponseFiltersAlertTriggerPreferencesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesGetResponseFiltersAlertTriggerPreferencesList>;
+
+export type PoliciesGetResponseFiltersAlertTriggerPreferencesValueList =
+  string[];
+export const PoliciesGetResponseFiltersAlertTriggerPreferencesValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesGetResponseFiltersAlertTriggerPreferencesValueList>;
+
+export type PoliciesGetResponseFiltersEnabledList = string[];
+export const PoliciesGetResponseFiltersEnabledList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersEnabledList>;
+
+export type PoliciesGetResponseFiltersEnvironmentList = string[];
+export const PoliciesGetResponseFiltersEnvironmentList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersEnvironmentList>;
+
+export type PoliciesGetResponseFiltersEventList = string[];
+export const PoliciesGetResponseFiltersEventList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersEventList>;
+
+export type PoliciesGetResponseFiltersEventSourceList = string[];
+export const PoliciesGetResponseFiltersEventSourceList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersEventSourceList>;
+
+export type PoliciesGetResponseFiltersEventTypeList = string[];
+export const PoliciesGetResponseFiltersEventTypeList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersEventTypeList>;
+
+export type PoliciesGetResponseFiltersGroupByList = string[];
+export const PoliciesGetResponseFiltersGroupByList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersGroupByList>;
+
+export type PoliciesGetResponseFiltersHealthCheckIdList = string[];
+export const PoliciesGetResponseFiltersHealthCheckIdList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesGetResponseFiltersHealthCheckIdList>;
+
+export type PoliciesGetResponseFiltersIncidentImpactItem =
+  | "INCIDENT_IMPACT_NONE"
+  | "INCIDENT_IMPACT_MINOR"
+  | "INCIDENT_IMPACT_MAJOR"
+  | "INCIDENT_IMPACT_CRITICAL"
+  | (string & {});
+export const PoliciesGetResponseFiltersIncidentImpactItem =
+  /*@__PURE__*/ S.String;
+
+export type PoliciesGetResponseFiltersIncidentImpactList =
+  PoliciesGetResponseFiltersIncidentImpactItem[];
+export const PoliciesGetResponseFiltersIncidentImpactList =
+  /*@__PURE__*/ S.Array(
+    PoliciesGetResponseFiltersIncidentImpactItem,
+  ) as any as S.Schema<PoliciesGetResponseFiltersIncidentImpactList>;
+
+export type PoliciesGetResponseFiltersInputIdList = string[];
+export const PoliciesGetResponseFiltersInputIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersInputIdList>;
+
+export type PoliciesGetResponseFiltersInsightClassList = string[];
+export const PoliciesGetResponseFiltersInsightClassList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersInsightClassList>;
+
+export type PoliciesGetResponseFiltersLimitList = string[];
+export const PoliciesGetResponseFiltersLimitList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersLimitList>;
+
+export type PoliciesGetResponseFiltersLogoTagList = string[];
+export const PoliciesGetResponseFiltersLogoTagList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersLogoTagList>;
+
+export type PoliciesGetResponseFiltersMegabitsPerSecondList = string[];
+export const PoliciesGetResponseFiltersMegabitsPerSecondList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesGetResponseFiltersMegabitsPerSecondList>;
+
+export type PoliciesGetResponseFiltersNewHealthList = string[];
+export const PoliciesGetResponseFiltersNewHealthList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersNewHealthList>;
+
+export type PoliciesGetResponseFiltersNewStatusList = string[];
+export const PoliciesGetResponseFiltersNewStatusList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersNewStatusList>;
+
+export type PoliciesGetResponseFiltersPacketsPerSecondList = string[];
+export const PoliciesGetResponseFiltersPacketsPerSecondList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesGetResponseFiltersPacketsPerSecondList>;
+
+export type PoliciesGetResponseFiltersPoolIdList = string[];
+export const PoliciesGetResponseFiltersPoolIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersPoolIdList>;
+
+export type PoliciesGetResponseFiltersPopNamesList = string[];
+export const PoliciesGetResponseFiltersPopNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersPopNamesList>;
+
+export type PoliciesGetResponseFiltersProductList = string[];
+export const PoliciesGetResponseFiltersProductList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersProductList>;
+
+export type PoliciesGetResponseFiltersProjectIdList = string[];
+export const PoliciesGetResponseFiltersProjectIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersProjectIdList>;
+
+export type PoliciesGetResponseFiltersProtocolList = string[];
+export const PoliciesGetResponseFiltersProtocolList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersProtocolList>;
+
+export type PoliciesGetResponseFiltersQueryTagList = string[];
+export const PoliciesGetResponseFiltersQueryTagList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersQueryTagList>;
+
+export type PoliciesGetResponseFiltersRequestsPerSecondList = string[];
+export const PoliciesGetResponseFiltersRequestsPerSecondList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesGetResponseFiltersRequestsPerSecondList>;
+
+export type PoliciesGetResponseFiltersSelectorsList = string[];
+export const PoliciesGetResponseFiltersSelectorsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersSelectorsList>;
+
+export type PoliciesGetResponseFiltersServicesList = string[];
+export const PoliciesGetResponseFiltersServicesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersServicesList>;
+
+export type PoliciesGetResponseFiltersSloList = string[];
+export const PoliciesGetResponseFiltersSloList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersSloList>;
+
+export type PoliciesGetResponseFiltersStatusList = string[];
+export const PoliciesGetResponseFiltersStatusList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersStatusList>;
+
+export type PoliciesGetResponseFiltersTargetHostnameList = string[];
+export const PoliciesGetResponseFiltersTargetHostnameList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesGetResponseFiltersTargetHostnameList>;
+
+export type PoliciesGetResponseFiltersTargetIpList = string[];
+export const PoliciesGetResponseFiltersTargetIpList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersTargetIpList>;
+
+export type PoliciesGetResponseFiltersTargetZoneNameList = string[];
+export const PoliciesGetResponseFiltersTargetZoneNameList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesGetResponseFiltersTargetZoneNameList>;
+
+export type PoliciesGetResponseFiltersTrafficExclusionsItem =
+  | "security_events"
+  | (string & {});
+export const PoliciesGetResponseFiltersTrafficExclusionsItem =
+  /*@__PURE__*/ S.String;
+
+export type PoliciesGetResponseFiltersTrafficExclusionsList =
+  PoliciesGetResponseFiltersTrafficExclusionsItem[];
+export const PoliciesGetResponseFiltersTrafficExclusionsList =
+  /*@__PURE__*/ S.Array(
+    PoliciesGetResponseFiltersTrafficExclusionsItem,
+  ) as any as S.Schema<PoliciesGetResponseFiltersTrafficExclusionsList>;
+
+export type PoliciesGetResponseFiltersTunnelIdList = string[];
+export const PoliciesGetResponseFiltersTunnelIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersTunnelIdList>;
+
+export type PoliciesGetResponseFiltersTunnelNameList = string[];
+export const PoliciesGetResponseFiltersTunnelNameList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersTunnelNameList>;
+
+export type PoliciesGetResponseFiltersTypeList = string[];
+export const PoliciesGetResponseFiltersTypeList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersTypeList>;
+
+export type PoliciesGetResponseFiltersWhereList = string[];
+export const PoliciesGetResponseFiltersWhereList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersWhereList>;
+
+export type PoliciesGetResponseFiltersZonesList = string[];
+export const PoliciesGetResponseFiltersZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesGetResponseFiltersZonesList>;
+
+export interface PoliciesGetResponseFilters {
+  /** Usage depends on specific alert type */
+  actions?: PoliciesGetResponseFiltersActionsList;
+  /** Used for configuring radar_notification */
+  affectedAsns?: PoliciesGetResponseFiltersAffectedAsnsList;
+  /** Used for configuring incident_alert */
+  affectedComponents?: PoliciesGetResponseFiltersAffectedComponentsList;
+  /** Used for configuring radar_notification */
+  affectedLocations?: PoliciesGetResponseFiltersAffectedLocationsList;
+  /** Used for configuring maintenance_event_notification */
+  airportCode?: PoliciesGetResponseFiltersAirportCodeList;
+  /** Usage depends on specific alert type */
+  alertTriggerPreferences?: PoliciesGetResponseFiltersAlertTriggerPreferencesList;
+  /** Usage depends on specific alert type */
+  alertTriggerPreferencesValue?: PoliciesGetResponseFiltersAlertTriggerPreferencesValueList;
+  /** Used for configuring load_balancing_pool_enablement_alert */
+  enabled?: PoliciesGetResponseFiltersEnabledList;
+  /** Used for configuring pages_event_alert */
+  environment?: PoliciesGetResponseFiltersEnvironmentList;
+  /** Used for configuring pages_event_alert */
+  event?: PoliciesGetResponseFiltersEventList;
+  /** Used for configuring load_balancing_health_alert */
+  eventSource?: PoliciesGetResponseFiltersEventSourceList;
+  /** Usage depends on specific alert type */
+  eventType?: PoliciesGetResponseFiltersEventTypeList;
+  /** Usage depends on specific alert type */
+  groupBy?: PoliciesGetResponseFiltersGroupByList;
+  /** Used for configuring health_check_status_notification */
+  healthCheckId?: PoliciesGetResponseFiltersHealthCheckIdList;
+  /** Used for configuring incident_alert */
+  incidentImpact?: PoliciesGetResponseFiltersIncidentImpactList;
+  /** Used for configuring stream_live_notifications */
+  inputId?: PoliciesGetResponseFiltersInputIdList;
+  /** Used for configuring security_insights_alert */
+  insightClass?: PoliciesGetResponseFiltersInsightClassList;
+  /** Used for configuring billing_usage_alert */
+  limit?: PoliciesGetResponseFiltersLimitList;
+  /** Used for configuring logo_match_alert */
+  logoTag?: PoliciesGetResponseFiltersLogoTagList;
+  /** Used for configuring advanced_ddos_attack_l4_alert */
+  megabitsPerSecond?: PoliciesGetResponseFiltersMegabitsPerSecondList;
+  /** Used for configuring load_balancing_health_alert */
+  newHealth?: PoliciesGetResponseFiltersNewHealthList;
+  /** Used for configuring tunnel_health_event */
+  newStatus?: PoliciesGetResponseFiltersNewStatusList;
+  /** Used for configuring advanced_ddos_attack_l4_alert */
+  packetsPerSecond?: PoliciesGetResponseFiltersPacketsPerSecondList;
+  /** Usage depends on specific alert type */
+  poolId?: PoliciesGetResponseFiltersPoolIdList;
+  /** Usage depends on specific alert type */
+  popNames?: PoliciesGetResponseFiltersPopNamesList;
+  /** Used for configuring billing_usage_alert */
+  product?: PoliciesGetResponseFiltersProductList;
+  /** Used for configuring pages_event_alert */
+  projectId?: PoliciesGetResponseFiltersProjectIdList;
+  /** Used for configuring advanced_ddos_attack_l4_alert */
+  protocol?: PoliciesGetResponseFiltersProtocolList;
+  /** Usage depends on specific alert type */
+  queryTag?: PoliciesGetResponseFiltersQueryTagList;
+  /** Used for configuring advanced_ddos_attack_l7_alert */
+  requestsPerSecond?: PoliciesGetResponseFiltersRequestsPerSecondList;
+  /** Usage depends on specific alert type */
+  selectors?: PoliciesGetResponseFiltersSelectorsList;
+  /** Used for configuring clickhouse_alert_fw_ent_anomaly */
+  services?: PoliciesGetResponseFiltersServicesList;
+  /** Usage depends on specific alert type */
+  slo?: PoliciesGetResponseFiltersSloList;
+  /** Used for configuring health_check_status_notification */
+  status?: PoliciesGetResponseFiltersStatusList;
+  /** Used for configuring advanced_ddos_attack_l7_alert */
+  targetHostname?: PoliciesGetResponseFiltersTargetHostnameList;
+  /** Used for configuring advanced_ddos_attack_l4_alert */
+  targetIp?: PoliciesGetResponseFiltersTargetIpList;
+  /** Used for configuring advanced_ddos_attack_l7_alert */
+  targetZoneName?: PoliciesGetResponseFiltersTargetZoneNameList;
+  /** Used for configuring traffic_anomalies_alert */
+  trafficExclusions?: PoliciesGetResponseFiltersTrafficExclusionsList;
+  /** Used for configuring tunnel_health_event */
+  tunnelId?: PoliciesGetResponseFiltersTunnelIdList;
+  /** Usage depends on specific alert type */
+  tunnelName?: PoliciesGetResponseFiltersTunnelNameList;
+  /** Usage depends on specific alert type */
+  type?: PoliciesGetResponseFiltersTypeList;
+  /** Usage depends on specific alert type */
+  where?: PoliciesGetResponseFiltersWhereList;
+  /** Usage depends on specific alert type */
+  zones?: PoliciesGetResponseFiltersZonesList;
+}
+export const PoliciesGetResponseFilters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actions: S.optional(PoliciesGetResponseFiltersActionsList),
+    affectedAsns: S.optional(
+      PoliciesGetResponseFiltersAffectedAsnsList.pipe(T.Body("affected_asns")),
+    ),
+    affectedComponents: S.optional(
+      PoliciesGetResponseFiltersAffectedComponentsList.pipe(
+        T.Body("affected_components"),
+      ),
+    ),
+    affectedLocations: S.optional(
+      PoliciesGetResponseFiltersAffectedLocationsList.pipe(
+        T.Body("affected_locations"),
+      ),
+    ),
+    airportCode: S.optional(
+      PoliciesGetResponseFiltersAirportCodeList.pipe(T.Body("airport_code")),
+    ),
+    alertTriggerPreferences: S.optional(
+      PoliciesGetResponseFiltersAlertTriggerPreferencesList.pipe(
+        T.Body("alert_trigger_preferences"),
+      ),
+    ),
+    alertTriggerPreferencesValue: S.optional(
+      PoliciesGetResponseFiltersAlertTriggerPreferencesValueList.pipe(
+        T.Body("alert_trigger_preferences_value"),
+      ),
+    ),
+    enabled: S.optional(PoliciesGetResponseFiltersEnabledList),
+    environment: S.optional(PoliciesGetResponseFiltersEnvironmentList),
+    event: S.optional(PoliciesGetResponseFiltersEventList),
+    eventSource: S.optional(
+      PoliciesGetResponseFiltersEventSourceList.pipe(T.Body("event_source")),
+    ),
+    eventType: S.optional(
+      PoliciesGetResponseFiltersEventTypeList.pipe(T.Body("event_type")),
+    ),
+    groupBy: S.optional(
+      PoliciesGetResponseFiltersGroupByList.pipe(T.Body("group_by")),
+    ),
+    healthCheckId: S.optional(
+      PoliciesGetResponseFiltersHealthCheckIdList.pipe(
+        T.Body("health_check_id"),
+      ),
+    ),
+    incidentImpact: S.optional(
+      PoliciesGetResponseFiltersIncidentImpactList.pipe(
+        T.Body("incident_impact"),
+      ),
+    ),
+    inputId: S.optional(
+      PoliciesGetResponseFiltersInputIdList.pipe(T.Body("input_id")),
+    ),
+    insightClass: S.optional(
+      PoliciesGetResponseFiltersInsightClassList.pipe(T.Body("insight_class")),
+    ),
+    limit: S.optional(PoliciesGetResponseFiltersLimitList),
+    logoTag: S.optional(
+      PoliciesGetResponseFiltersLogoTagList.pipe(T.Body("logo_tag")),
+    ),
+    megabitsPerSecond: S.optional(
+      PoliciesGetResponseFiltersMegabitsPerSecondList.pipe(
+        T.Body("megabits_per_second"),
+      ),
+    ),
+    newHealth: S.optional(
+      PoliciesGetResponseFiltersNewHealthList.pipe(T.Body("new_health")),
+    ),
+    newStatus: S.optional(
+      PoliciesGetResponseFiltersNewStatusList.pipe(T.Body("new_status")),
+    ),
+    packetsPerSecond: S.optional(
+      PoliciesGetResponseFiltersPacketsPerSecondList.pipe(
+        T.Body("packets_per_second"),
+      ),
+    ),
+    poolId: S.optional(
+      PoliciesGetResponseFiltersPoolIdList.pipe(T.Body("pool_id")),
+    ),
+    popNames: S.optional(
+      PoliciesGetResponseFiltersPopNamesList.pipe(T.Body("pop_names")),
+    ),
+    product: S.optional(PoliciesGetResponseFiltersProductList),
+    projectId: S.optional(
+      PoliciesGetResponseFiltersProjectIdList.pipe(T.Body("project_id")),
+    ),
+    protocol: S.optional(PoliciesGetResponseFiltersProtocolList),
+    queryTag: S.optional(
+      PoliciesGetResponseFiltersQueryTagList.pipe(T.Body("query_tag")),
+    ),
+    requestsPerSecond: S.optional(
+      PoliciesGetResponseFiltersRequestsPerSecondList.pipe(
+        T.Body("requests_per_second"),
+      ),
+    ),
+    selectors: S.optional(PoliciesGetResponseFiltersSelectorsList),
+    services: S.optional(PoliciesGetResponseFiltersServicesList),
+    slo: S.optional(PoliciesGetResponseFiltersSloList),
+    status: S.optional(PoliciesGetResponseFiltersStatusList),
+    targetHostname: S.optional(
+      PoliciesGetResponseFiltersTargetHostnameList.pipe(
+        T.Body("target_hostname"),
+      ),
+    ),
+    targetIp: S.optional(
+      PoliciesGetResponseFiltersTargetIpList.pipe(T.Body("target_ip")),
+    ),
+    targetZoneName: S.optional(
+      PoliciesGetResponseFiltersTargetZoneNameList.pipe(
+        T.Body("target_zone_name"),
+      ),
+    ),
+    trafficExclusions: S.optional(
+      PoliciesGetResponseFiltersTrafficExclusionsList.pipe(
+        T.Body("traffic_exclusions"),
+      ),
+    ),
+    tunnelId: S.optional(
+      PoliciesGetResponseFiltersTunnelIdList.pipe(T.Body("tunnel_id")),
+    ),
+    tunnelName: S.optional(
+      PoliciesGetResponseFiltersTunnelNameList.pipe(T.Body("tunnel_name")),
+    ),
+    type: S.optional(PoliciesGetResponseFiltersTypeList),
+    where: S.optional(PoliciesGetResponseFiltersWhereList),
+    zones: S.optional(PoliciesGetResponseFiltersZonesList),
+  }),
+).annotate({
+  identifier: "PoliciesGetResponseFilters",
+}) as any as S.Schema<PoliciesGetResponseFilters>;
+
+export interface PoliciesGetResponseMechanismsEmailItem {
+  /** The email address */
+  id?: string;
+}
+export const PoliciesGetResponseMechanismsEmailItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "PoliciesGetResponseMechanismsEmailItem",
+}) as any as S.Schema<PoliciesGetResponseMechanismsEmailItem>;
+
+export type PoliciesGetResponseMechanismsEmailList =
+  PoliciesGetResponseMechanismsEmailItem[];
+export const PoliciesGetResponseMechanismsEmailList = /*@__PURE__*/ S.Array(
+  PoliciesGetResponseMechanismsEmailItem,
+) as any as S.Schema<PoliciesGetResponseMechanismsEmailList>;
+
+export interface PoliciesGetResponseMechanismsPagerdutyItem {
+  /** UUID */
+  id?: string;
+}
+export const PoliciesGetResponseMechanismsPagerdutyItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PoliciesGetResponseMechanismsPagerdutyItem",
+  }) as any as S.Schema<PoliciesGetResponseMechanismsPagerdutyItem>;
+
+export type PoliciesGetResponseMechanismsPagerdutyList =
+  PoliciesGetResponseMechanismsPagerdutyItem[];
+export const PoliciesGetResponseMechanismsPagerdutyList = /*@__PURE__*/ S.Array(
+  PoliciesGetResponseMechanismsPagerdutyItem,
+) as any as S.Schema<PoliciesGetResponseMechanismsPagerdutyList>;
+
+export interface PoliciesGetResponseMechanismsWebhooksItem {
+  /** UUID */
+  id?: string;
+}
+export const PoliciesGetResponseMechanismsWebhooksItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PoliciesGetResponseMechanismsWebhooksItem",
+  }) as any as S.Schema<PoliciesGetResponseMechanismsWebhooksItem>;
+
+export type PoliciesGetResponseMechanismsWebhooksList =
+  PoliciesGetResponseMechanismsWebhooksItem[];
+export const PoliciesGetResponseMechanismsWebhooksList = /*@__PURE__*/ S.Array(
+  PoliciesGetResponseMechanismsWebhooksItem,
+) as any as S.Schema<PoliciesGetResponseMechanismsWebhooksList>;
+
+export interface PoliciesGetResponseMechanisms {
+  email?: PoliciesGetResponseMechanismsEmailList;
+  pagerduty?: PoliciesGetResponseMechanismsPagerdutyList;
+  webhooks?: PoliciesGetResponseMechanismsWebhooksList;
+}
+export const PoliciesGetResponseMechanisms = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(PoliciesGetResponseMechanismsEmailList),
+    pagerduty: S.optional(PoliciesGetResponseMechanismsPagerdutyList),
+    webhooks: S.optional(PoliciesGetResponseMechanismsWebhooksList),
+  }),
+).annotate({
+  identifier: "PoliciesGetResponseMechanisms",
+}) as any as S.Schema<PoliciesGetResponseMechanisms>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PoliciesGetResponse {
-  result?: unknown;
+  /** The unique identifier of a notification policy */
+  id?: string;
+  /** Optional specification of how often to re-alert from the same incident, not support on all alert types. */
+  alertInterval?: string;
+  /** Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. */
+  alertType?: PoliciesGetResponseAlertType;
+  created?: string;
+  /** Optional description for the Notification policy. */
+  description?: string;
+  /** Whether or not the Notification policy is enabled. */
+  enabled?: boolean;
+  /** Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details. */
+  filters?: PoliciesGetResponseFilters;
+  /** List of IDs that will be used when dispatching a notification. IDs for email type will be the email address. */
+  mechanisms?: PoliciesGetResponseMechanisms;
+  modified?: string;
+  /** Name of the policy. */
+  name?: string;
 }
 export const PoliciesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    id: S.optional(S.String),
+    alertInterval: S.optional(S.String.pipe(T.Body("alert_interval"))),
+    alertType: S.optional(
+      PoliciesGetResponseAlertType.pipe(T.Body("alert_type")),
+    ),
+    created: S.optional(S.String),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    filters: S.optional(PoliciesGetResponseFilters),
+    mechanisms: S.optional(PoliciesGetResponseMechanisms),
+    modified: S.optional(S.String),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "PoliciesGetResponse",
 }) as any as S.Schema<PoliciesGetResponse>;
 
 export interface PoliciesListRequest {
-  account_id: string;
+  /** The account id */
+  accountId: string;
 }
 export const PoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -529,12 +1831,608 @@ export const PoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoliciesListRequest",
 }) as any as S.Schema<PoliciesListRequest>;
 
-export type PoliciesListResultList = unknown[];
+export type PoliciesListResultItemAlertType =
+  | "abuse_report_alert"
+  | "access_custom_certificate_expiration_type"
+  | "advanced_ddos_attack_l4_alert"
+  | (string & {});
+export const PoliciesListResultItemAlertType = /*@__PURE__*/ S.String;
+
+export type PoliciesListResultItemFiltersActionsList = string[];
+export const PoliciesListResultItemFiltersActionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersActionsList>;
+
+export type PoliciesListResultItemFiltersAffectedAsnsList = string[];
+export const PoliciesListResultItemFiltersAffectedAsnsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesListResultItemFiltersAffectedAsnsList>;
+
+export type PoliciesListResultItemFiltersAffectedComponentsList = string[];
+export const PoliciesListResultItemFiltersAffectedComponentsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesListResultItemFiltersAffectedComponentsList>;
+
+export type PoliciesListResultItemFiltersAffectedLocationsList = string[];
+export const PoliciesListResultItemFiltersAffectedLocationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesListResultItemFiltersAffectedLocationsList>;
+
+export type PoliciesListResultItemFiltersAirportCodeList = string[];
+export const PoliciesListResultItemFiltersAirportCodeList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesListResultItemFiltersAirportCodeList>;
+
+export type PoliciesListResultItemFiltersAlertTriggerPreferencesList = string[];
+export const PoliciesListResultItemFiltersAlertTriggerPreferencesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesListResultItemFiltersAlertTriggerPreferencesList>;
+
+export type PoliciesListResultItemFiltersAlertTriggerPreferencesValueList =
+  string[];
+export const PoliciesListResultItemFiltersAlertTriggerPreferencesValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesListResultItemFiltersAlertTriggerPreferencesValueList>;
+
+export type PoliciesListResultItemFiltersEnabledList = string[];
+export const PoliciesListResultItemFiltersEnabledList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersEnabledList>;
+
+export type PoliciesListResultItemFiltersEnvironmentList = string[];
+export const PoliciesListResultItemFiltersEnvironmentList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesListResultItemFiltersEnvironmentList>;
+
+export type PoliciesListResultItemFiltersEventList = string[];
+export const PoliciesListResultItemFiltersEventList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersEventList>;
+
+export type PoliciesListResultItemFiltersEventSourceList = string[];
+export const PoliciesListResultItemFiltersEventSourceList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesListResultItemFiltersEventSourceList>;
+
+export type PoliciesListResultItemFiltersEventTypeList = string[];
+export const PoliciesListResultItemFiltersEventTypeList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersEventTypeList>;
+
+export type PoliciesListResultItemFiltersGroupByList = string[];
+export const PoliciesListResultItemFiltersGroupByList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersGroupByList>;
+
+export type PoliciesListResultItemFiltersHealthCheckIdList = string[];
+export const PoliciesListResultItemFiltersHealthCheckIdList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesListResultItemFiltersHealthCheckIdList>;
+
+export type PoliciesListResultItemFiltersIncidentImpactItem =
+  | "INCIDENT_IMPACT_NONE"
+  | "INCIDENT_IMPACT_MINOR"
+  | "INCIDENT_IMPACT_MAJOR"
+  | "INCIDENT_IMPACT_CRITICAL"
+  | (string & {});
+export const PoliciesListResultItemFiltersIncidentImpactItem =
+  /*@__PURE__*/ S.String;
+
+export type PoliciesListResultItemFiltersIncidentImpactList =
+  PoliciesListResultItemFiltersIncidentImpactItem[];
+export const PoliciesListResultItemFiltersIncidentImpactList =
+  /*@__PURE__*/ S.Array(
+    PoliciesListResultItemFiltersIncidentImpactItem,
+  ) as any as S.Schema<PoliciesListResultItemFiltersIncidentImpactList>;
+
+export type PoliciesListResultItemFiltersInputIdList = string[];
+export const PoliciesListResultItemFiltersInputIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersInputIdList>;
+
+export type PoliciesListResultItemFiltersInsightClassList = string[];
+export const PoliciesListResultItemFiltersInsightClassList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesListResultItemFiltersInsightClassList>;
+
+export type PoliciesListResultItemFiltersLimitList = string[];
+export const PoliciesListResultItemFiltersLimitList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersLimitList>;
+
+export type PoliciesListResultItemFiltersLogoTagList = string[];
+export const PoliciesListResultItemFiltersLogoTagList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersLogoTagList>;
+
+export type PoliciesListResultItemFiltersMegabitsPerSecondList = string[];
+export const PoliciesListResultItemFiltersMegabitsPerSecondList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesListResultItemFiltersMegabitsPerSecondList>;
+
+export type PoliciesListResultItemFiltersNewHealthList = string[];
+export const PoliciesListResultItemFiltersNewHealthList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersNewHealthList>;
+
+export type PoliciesListResultItemFiltersNewStatusList = string[];
+export const PoliciesListResultItemFiltersNewStatusList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersNewStatusList>;
+
+export type PoliciesListResultItemFiltersPacketsPerSecondList = string[];
+export const PoliciesListResultItemFiltersPacketsPerSecondList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesListResultItemFiltersPacketsPerSecondList>;
+
+export type PoliciesListResultItemFiltersPoolIdList = string[];
+export const PoliciesListResultItemFiltersPoolIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersPoolIdList>;
+
+export type PoliciesListResultItemFiltersPopNamesList = string[];
+export const PoliciesListResultItemFiltersPopNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersPopNamesList>;
+
+export type PoliciesListResultItemFiltersProductList = string[];
+export const PoliciesListResultItemFiltersProductList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersProductList>;
+
+export type PoliciesListResultItemFiltersProjectIdList = string[];
+export const PoliciesListResultItemFiltersProjectIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersProjectIdList>;
+
+export type PoliciesListResultItemFiltersProtocolList = string[];
+export const PoliciesListResultItemFiltersProtocolList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersProtocolList>;
+
+export type PoliciesListResultItemFiltersQueryTagList = string[];
+export const PoliciesListResultItemFiltersQueryTagList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersQueryTagList>;
+
+export type PoliciesListResultItemFiltersRequestsPerSecondList = string[];
+export const PoliciesListResultItemFiltersRequestsPerSecondList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesListResultItemFiltersRequestsPerSecondList>;
+
+export type PoliciesListResultItemFiltersSelectorsList = string[];
+export const PoliciesListResultItemFiltersSelectorsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersSelectorsList>;
+
+export type PoliciesListResultItemFiltersServicesList = string[];
+export const PoliciesListResultItemFiltersServicesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersServicesList>;
+
+export type PoliciesListResultItemFiltersSloList = string[];
+export const PoliciesListResultItemFiltersSloList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersSloList>;
+
+export type PoliciesListResultItemFiltersStatusList = string[];
+export const PoliciesListResultItemFiltersStatusList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersStatusList>;
+
+export type PoliciesListResultItemFiltersTargetHostnameList = string[];
+export const PoliciesListResultItemFiltersTargetHostnameList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesListResultItemFiltersTargetHostnameList>;
+
+export type PoliciesListResultItemFiltersTargetIpList = string[];
+export const PoliciesListResultItemFiltersTargetIpList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersTargetIpList>;
+
+export type PoliciesListResultItemFiltersTargetZoneNameList = string[];
+export const PoliciesListResultItemFiltersTargetZoneNameList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesListResultItemFiltersTargetZoneNameList>;
+
+export type PoliciesListResultItemFiltersTrafficExclusionsItem =
+  | "security_events"
+  | (string & {});
+export const PoliciesListResultItemFiltersTrafficExclusionsItem =
+  /*@__PURE__*/ S.String;
+
+export type PoliciesListResultItemFiltersTrafficExclusionsList =
+  PoliciesListResultItemFiltersTrafficExclusionsItem[];
+export const PoliciesListResultItemFiltersTrafficExclusionsList =
+  /*@__PURE__*/ S.Array(
+    PoliciesListResultItemFiltersTrafficExclusionsItem,
+  ) as any as S.Schema<PoliciesListResultItemFiltersTrafficExclusionsList>;
+
+export type PoliciesListResultItemFiltersTunnelIdList = string[];
+export const PoliciesListResultItemFiltersTunnelIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersTunnelIdList>;
+
+export type PoliciesListResultItemFiltersTunnelNameList = string[];
+export const PoliciesListResultItemFiltersTunnelNameList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesListResultItemFiltersTunnelNameList>;
+
+export type PoliciesListResultItemFiltersTypeList = string[];
+export const PoliciesListResultItemFiltersTypeList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersTypeList>;
+
+export type PoliciesListResultItemFiltersWhereList = string[];
+export const PoliciesListResultItemFiltersWhereList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersWhereList>;
+
+export type PoliciesListResultItemFiltersZonesList = string[];
+export const PoliciesListResultItemFiltersZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesListResultItemFiltersZonesList>;
+
+export interface PoliciesListResultItemFilters {
+  /** Usage depends on specific alert type */
+  actions?: PoliciesListResultItemFiltersActionsList;
+  /** Used for configuring radar_notification */
+  affectedAsns?: PoliciesListResultItemFiltersAffectedAsnsList;
+  /** Used for configuring incident_alert */
+  affectedComponents?: PoliciesListResultItemFiltersAffectedComponentsList;
+  /** Used for configuring radar_notification */
+  affectedLocations?: PoliciesListResultItemFiltersAffectedLocationsList;
+  /** Used for configuring maintenance_event_notification */
+  airportCode?: PoliciesListResultItemFiltersAirportCodeList;
+  /** Usage depends on specific alert type */
+  alertTriggerPreferences?: PoliciesListResultItemFiltersAlertTriggerPreferencesList;
+  /** Usage depends on specific alert type */
+  alertTriggerPreferencesValue?: PoliciesListResultItemFiltersAlertTriggerPreferencesValueList;
+  /** Used for configuring load_balancing_pool_enablement_alert */
+  enabled?: PoliciesListResultItemFiltersEnabledList;
+  /** Used for configuring pages_event_alert */
+  environment?: PoliciesListResultItemFiltersEnvironmentList;
+  /** Used for configuring pages_event_alert */
+  event?: PoliciesListResultItemFiltersEventList;
+  /** Used for configuring load_balancing_health_alert */
+  eventSource?: PoliciesListResultItemFiltersEventSourceList;
+  /** Usage depends on specific alert type */
+  eventType?: PoliciesListResultItemFiltersEventTypeList;
+  /** Usage depends on specific alert type */
+  groupBy?: PoliciesListResultItemFiltersGroupByList;
+  /** Used for configuring health_check_status_notification */
+  healthCheckId?: PoliciesListResultItemFiltersHealthCheckIdList;
+  /** Used for configuring incident_alert */
+  incidentImpact?: PoliciesListResultItemFiltersIncidentImpactList;
+  /** Used for configuring stream_live_notifications */
+  inputId?: PoliciesListResultItemFiltersInputIdList;
+  /** Used for configuring security_insights_alert */
+  insightClass?: PoliciesListResultItemFiltersInsightClassList;
+  /** Used for configuring billing_usage_alert */
+  limit?: PoliciesListResultItemFiltersLimitList;
+  /** Used for configuring logo_match_alert */
+  logoTag?: PoliciesListResultItemFiltersLogoTagList;
+  /** Used for configuring advanced_ddos_attack_l4_alert */
+  megabitsPerSecond?: PoliciesListResultItemFiltersMegabitsPerSecondList;
+  /** Used for configuring load_balancing_health_alert */
+  newHealth?: PoliciesListResultItemFiltersNewHealthList;
+  /** Used for configuring tunnel_health_event */
+  newStatus?: PoliciesListResultItemFiltersNewStatusList;
+  /** Used for configuring advanced_ddos_attack_l4_alert */
+  packetsPerSecond?: PoliciesListResultItemFiltersPacketsPerSecondList;
+  /** Usage depends on specific alert type */
+  poolId?: PoliciesListResultItemFiltersPoolIdList;
+  /** Usage depends on specific alert type */
+  popNames?: PoliciesListResultItemFiltersPopNamesList;
+  /** Used for configuring billing_usage_alert */
+  product?: PoliciesListResultItemFiltersProductList;
+  /** Used for configuring pages_event_alert */
+  projectId?: PoliciesListResultItemFiltersProjectIdList;
+  /** Used for configuring advanced_ddos_attack_l4_alert */
+  protocol?: PoliciesListResultItemFiltersProtocolList;
+  /** Usage depends on specific alert type */
+  queryTag?: PoliciesListResultItemFiltersQueryTagList;
+  /** Used for configuring advanced_ddos_attack_l7_alert */
+  requestsPerSecond?: PoliciesListResultItemFiltersRequestsPerSecondList;
+  /** Usage depends on specific alert type */
+  selectors?: PoliciesListResultItemFiltersSelectorsList;
+  /** Used for configuring clickhouse_alert_fw_ent_anomaly */
+  services?: PoliciesListResultItemFiltersServicesList;
+  /** Usage depends on specific alert type */
+  slo?: PoliciesListResultItemFiltersSloList;
+  /** Used for configuring health_check_status_notification */
+  status?: PoliciesListResultItemFiltersStatusList;
+  /** Used for configuring advanced_ddos_attack_l7_alert */
+  targetHostname?: PoliciesListResultItemFiltersTargetHostnameList;
+  /** Used for configuring advanced_ddos_attack_l4_alert */
+  targetIp?: PoliciesListResultItemFiltersTargetIpList;
+  /** Used for configuring advanced_ddos_attack_l7_alert */
+  targetZoneName?: PoliciesListResultItemFiltersTargetZoneNameList;
+  /** Used for configuring traffic_anomalies_alert */
+  trafficExclusions?: PoliciesListResultItemFiltersTrafficExclusionsList;
+  /** Used for configuring tunnel_health_event */
+  tunnelId?: PoliciesListResultItemFiltersTunnelIdList;
+  /** Usage depends on specific alert type */
+  tunnelName?: PoliciesListResultItemFiltersTunnelNameList;
+  /** Usage depends on specific alert type */
+  type?: PoliciesListResultItemFiltersTypeList;
+  /** Usage depends on specific alert type */
+  where?: PoliciesListResultItemFiltersWhereList;
+  /** Usage depends on specific alert type */
+  zones?: PoliciesListResultItemFiltersZonesList;
+}
+export const PoliciesListResultItemFilters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actions: S.optional(PoliciesListResultItemFiltersActionsList),
+    affectedAsns: S.optional(
+      PoliciesListResultItemFiltersAffectedAsnsList.pipe(
+        T.Body("affected_asns"),
+      ),
+    ),
+    affectedComponents: S.optional(
+      PoliciesListResultItemFiltersAffectedComponentsList.pipe(
+        T.Body("affected_components"),
+      ),
+    ),
+    affectedLocations: S.optional(
+      PoliciesListResultItemFiltersAffectedLocationsList.pipe(
+        T.Body("affected_locations"),
+      ),
+    ),
+    airportCode: S.optional(
+      PoliciesListResultItemFiltersAirportCodeList.pipe(T.Body("airport_code")),
+    ),
+    alertTriggerPreferences: S.optional(
+      PoliciesListResultItemFiltersAlertTriggerPreferencesList.pipe(
+        T.Body("alert_trigger_preferences"),
+      ),
+    ),
+    alertTriggerPreferencesValue: S.optional(
+      PoliciesListResultItemFiltersAlertTriggerPreferencesValueList.pipe(
+        T.Body("alert_trigger_preferences_value"),
+      ),
+    ),
+    enabled: S.optional(PoliciesListResultItemFiltersEnabledList),
+    environment: S.optional(PoliciesListResultItemFiltersEnvironmentList),
+    event: S.optional(PoliciesListResultItemFiltersEventList),
+    eventSource: S.optional(
+      PoliciesListResultItemFiltersEventSourceList.pipe(T.Body("event_source")),
+    ),
+    eventType: S.optional(
+      PoliciesListResultItemFiltersEventTypeList.pipe(T.Body("event_type")),
+    ),
+    groupBy: S.optional(
+      PoliciesListResultItemFiltersGroupByList.pipe(T.Body("group_by")),
+    ),
+    healthCheckId: S.optional(
+      PoliciesListResultItemFiltersHealthCheckIdList.pipe(
+        T.Body("health_check_id"),
+      ),
+    ),
+    incidentImpact: S.optional(
+      PoliciesListResultItemFiltersIncidentImpactList.pipe(
+        T.Body("incident_impact"),
+      ),
+    ),
+    inputId: S.optional(
+      PoliciesListResultItemFiltersInputIdList.pipe(T.Body("input_id")),
+    ),
+    insightClass: S.optional(
+      PoliciesListResultItemFiltersInsightClassList.pipe(
+        T.Body("insight_class"),
+      ),
+    ),
+    limit: S.optional(PoliciesListResultItemFiltersLimitList),
+    logoTag: S.optional(
+      PoliciesListResultItemFiltersLogoTagList.pipe(T.Body("logo_tag")),
+    ),
+    megabitsPerSecond: S.optional(
+      PoliciesListResultItemFiltersMegabitsPerSecondList.pipe(
+        T.Body("megabits_per_second"),
+      ),
+    ),
+    newHealth: S.optional(
+      PoliciesListResultItemFiltersNewHealthList.pipe(T.Body("new_health")),
+    ),
+    newStatus: S.optional(
+      PoliciesListResultItemFiltersNewStatusList.pipe(T.Body("new_status")),
+    ),
+    packetsPerSecond: S.optional(
+      PoliciesListResultItemFiltersPacketsPerSecondList.pipe(
+        T.Body("packets_per_second"),
+      ),
+    ),
+    poolId: S.optional(
+      PoliciesListResultItemFiltersPoolIdList.pipe(T.Body("pool_id")),
+    ),
+    popNames: S.optional(
+      PoliciesListResultItemFiltersPopNamesList.pipe(T.Body("pop_names")),
+    ),
+    product: S.optional(PoliciesListResultItemFiltersProductList),
+    projectId: S.optional(
+      PoliciesListResultItemFiltersProjectIdList.pipe(T.Body("project_id")),
+    ),
+    protocol: S.optional(PoliciesListResultItemFiltersProtocolList),
+    queryTag: S.optional(
+      PoliciesListResultItemFiltersQueryTagList.pipe(T.Body("query_tag")),
+    ),
+    requestsPerSecond: S.optional(
+      PoliciesListResultItemFiltersRequestsPerSecondList.pipe(
+        T.Body("requests_per_second"),
+      ),
+    ),
+    selectors: S.optional(PoliciesListResultItemFiltersSelectorsList),
+    services: S.optional(PoliciesListResultItemFiltersServicesList),
+    slo: S.optional(PoliciesListResultItemFiltersSloList),
+    status: S.optional(PoliciesListResultItemFiltersStatusList),
+    targetHostname: S.optional(
+      PoliciesListResultItemFiltersTargetHostnameList.pipe(
+        T.Body("target_hostname"),
+      ),
+    ),
+    targetIp: S.optional(
+      PoliciesListResultItemFiltersTargetIpList.pipe(T.Body("target_ip")),
+    ),
+    targetZoneName: S.optional(
+      PoliciesListResultItemFiltersTargetZoneNameList.pipe(
+        T.Body("target_zone_name"),
+      ),
+    ),
+    trafficExclusions: S.optional(
+      PoliciesListResultItemFiltersTrafficExclusionsList.pipe(
+        T.Body("traffic_exclusions"),
+      ),
+    ),
+    tunnelId: S.optional(
+      PoliciesListResultItemFiltersTunnelIdList.pipe(T.Body("tunnel_id")),
+    ),
+    tunnelName: S.optional(
+      PoliciesListResultItemFiltersTunnelNameList.pipe(T.Body("tunnel_name")),
+    ),
+    type: S.optional(PoliciesListResultItemFiltersTypeList),
+    where: S.optional(PoliciesListResultItemFiltersWhereList),
+    zones: S.optional(PoliciesListResultItemFiltersZonesList),
+  }),
+).annotate({
+  identifier: "PoliciesListResultItemFilters",
+}) as any as S.Schema<PoliciesListResultItemFilters>;
+
+export interface PoliciesListResultItemMechanismsEmailItem {
+  /** The email address */
+  id?: string;
+}
+export const PoliciesListResultItemMechanismsEmailItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PoliciesListResultItemMechanismsEmailItem",
+  }) as any as S.Schema<PoliciesListResultItemMechanismsEmailItem>;
+
+export type PoliciesListResultItemMechanismsEmailList =
+  PoliciesListResultItemMechanismsEmailItem[];
+export const PoliciesListResultItemMechanismsEmailList = /*@__PURE__*/ S.Array(
+  PoliciesListResultItemMechanismsEmailItem,
+) as any as S.Schema<PoliciesListResultItemMechanismsEmailList>;
+
+export interface PoliciesListResultItemMechanismsPagerdutyItem {
+  /** UUID */
+  id?: string;
+}
+export const PoliciesListResultItemMechanismsPagerdutyItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PoliciesListResultItemMechanismsPagerdutyItem",
+  }) as any as S.Schema<PoliciesListResultItemMechanismsPagerdutyItem>;
+
+export type PoliciesListResultItemMechanismsPagerdutyList =
+  PoliciesListResultItemMechanismsPagerdutyItem[];
+export const PoliciesListResultItemMechanismsPagerdutyList =
+  /*@__PURE__*/ S.Array(
+    PoliciesListResultItemMechanismsPagerdutyItem,
+  ) as any as S.Schema<PoliciesListResultItemMechanismsPagerdutyList>;
+
+export interface PoliciesListResultItemMechanismsWebhooksItem {
+  /** UUID */
+  id?: string;
+}
+export const PoliciesListResultItemMechanismsWebhooksItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PoliciesListResultItemMechanismsWebhooksItem",
+  }) as any as S.Schema<PoliciesListResultItemMechanismsWebhooksItem>;
+
+export type PoliciesListResultItemMechanismsWebhooksList =
+  PoliciesListResultItemMechanismsWebhooksItem[];
+export const PoliciesListResultItemMechanismsWebhooksList =
+  /*@__PURE__*/ S.Array(
+    PoliciesListResultItemMechanismsWebhooksItem,
+  ) as any as S.Schema<PoliciesListResultItemMechanismsWebhooksList>;
+
+export interface PoliciesListResultItemMechanisms {
+  email?: PoliciesListResultItemMechanismsEmailList;
+  pagerduty?: PoliciesListResultItemMechanismsPagerdutyList;
+  webhooks?: PoliciesListResultItemMechanismsWebhooksList;
+}
+export const PoliciesListResultItemMechanisms = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(PoliciesListResultItemMechanismsEmailList),
+    pagerduty: S.optional(PoliciesListResultItemMechanismsPagerdutyList),
+    webhooks: S.optional(PoliciesListResultItemMechanismsWebhooksList),
+  }),
+).annotate({
+  identifier: "PoliciesListResultItemMechanisms",
+}) as any as S.Schema<PoliciesListResultItemMechanisms>;
+
+export interface PoliciesListResultItem {
+  /** The unique identifier of a notification policy */
+  id?: string;
+  /** Optional specification of how often to re-alert from the same incident, not support on all alert types. */
+  alertInterval?: string;
+  /** Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. */
+  alertType?: PoliciesListResultItemAlertType;
+  created?: string;
+  /** Optional description for the Notification policy. */
+  description?: string;
+  /** Whether or not the Notification policy is enabled. */
+  enabled?: boolean;
+  /** Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details. */
+  filters?: PoliciesListResultItemFilters;
+  /** List of IDs that will be used when dispatching a notification. IDs for email type will be the email address. */
+  mechanisms?: PoliciesListResultItemMechanisms;
+  modified?: string;
+  /** Name of the policy. */
+  name?: string;
+}
+export const PoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    alertInterval: S.optional(S.String.pipe(T.Body("alert_interval"))),
+    alertType: S.optional(
+      PoliciesListResultItemAlertType.pipe(T.Body("alert_type")),
+    ),
+    created: S.optional(S.String),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    filters: S.optional(PoliciesListResultItemFilters),
+    mechanisms: S.optional(PoliciesListResultItemMechanisms),
+    modified: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PoliciesListResultItem",
+}) as any as S.Schema<PoliciesListResultItem>;
+
+export type PoliciesListResultList = PoliciesListResultItem[];
 export const PoliciesListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PoliciesListResultItem,
 ) as any as S.Schema<PoliciesListResultList>;
 
 export interface PoliciesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PoliciesListResultList;
 }
 export const PoliciesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -552,27 +2450,586 @@ export type PoliciesUpdateRequestAlertType =
   | (string & {});
 export const PoliciesUpdateRequestAlertType = /*@__PURE__*/ S.String;
 
+export type PoliciesUpdateRequestFiltersActionsList = string[];
+export const PoliciesUpdateRequestFiltersActionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersActionsList>;
+
+export type PoliciesUpdateRequestFiltersAffectedAsnsList = string[];
+export const PoliciesUpdateRequestFiltersAffectedAsnsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersAffectedAsnsList>;
+
+export type PoliciesUpdateRequestFiltersAffectedComponentsList = string[];
+export const PoliciesUpdateRequestFiltersAffectedComponentsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersAffectedComponentsList>;
+
+export type PoliciesUpdateRequestFiltersAffectedLocationsList = string[];
+export const PoliciesUpdateRequestFiltersAffectedLocationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersAffectedLocationsList>;
+
+export type PoliciesUpdateRequestFiltersAirportCodeList = string[];
+export const PoliciesUpdateRequestFiltersAirportCodeList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersAirportCodeList>;
+
+export type PoliciesUpdateRequestFiltersAlertTriggerPreferencesList = string[];
+export const PoliciesUpdateRequestFiltersAlertTriggerPreferencesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersAlertTriggerPreferencesList>;
+
+export type PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList =
+  string[];
+export const PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList>;
+
+export type PoliciesUpdateRequestFiltersEnabledList = string[];
+export const PoliciesUpdateRequestFiltersEnabledList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersEnabledList>;
+
+export type PoliciesUpdateRequestFiltersEnvironmentList = string[];
+export const PoliciesUpdateRequestFiltersEnvironmentList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersEnvironmentList>;
+
+export type PoliciesUpdateRequestFiltersEventList = string[];
+export const PoliciesUpdateRequestFiltersEventList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersEventList>;
+
+export type PoliciesUpdateRequestFiltersEventSourceList = string[];
+export const PoliciesUpdateRequestFiltersEventSourceList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersEventSourceList>;
+
+export type PoliciesUpdateRequestFiltersEventTypeList = string[];
+export const PoliciesUpdateRequestFiltersEventTypeList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersEventTypeList>;
+
+export type PoliciesUpdateRequestFiltersGroupByList = string[];
+export const PoliciesUpdateRequestFiltersGroupByList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersGroupByList>;
+
+export type PoliciesUpdateRequestFiltersHealthCheckIdList = string[];
+export const PoliciesUpdateRequestFiltersHealthCheckIdList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersHealthCheckIdList>;
+
+export type PoliciesUpdateRequestFiltersIncidentImpactItem =
+  | "INCIDENT_IMPACT_NONE"
+  | "INCIDENT_IMPACT_MINOR"
+  | "INCIDENT_IMPACT_MAJOR"
+  | "INCIDENT_IMPACT_CRITICAL"
+  | (string & {});
+export const PoliciesUpdateRequestFiltersIncidentImpactItem =
+  /*@__PURE__*/ S.String;
+
+export type PoliciesUpdateRequestFiltersIncidentImpactList =
+  PoliciesUpdateRequestFiltersIncidentImpactItem[];
+export const PoliciesUpdateRequestFiltersIncidentImpactList =
+  /*@__PURE__*/ S.Array(
+    PoliciesUpdateRequestFiltersIncidentImpactItem,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersIncidentImpactList>;
+
+export type PoliciesUpdateRequestFiltersInputIdList = string[];
+export const PoliciesUpdateRequestFiltersInputIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersInputIdList>;
+
+export type PoliciesUpdateRequestFiltersInsightClassList = string[];
+export const PoliciesUpdateRequestFiltersInsightClassList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersInsightClassList>;
+
+export type PoliciesUpdateRequestFiltersLimitList = string[];
+export const PoliciesUpdateRequestFiltersLimitList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersLimitList>;
+
+export type PoliciesUpdateRequestFiltersLogoTagList = string[];
+export const PoliciesUpdateRequestFiltersLogoTagList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersLogoTagList>;
+
+export type PoliciesUpdateRequestFiltersMegabitsPerSecondList = string[];
+export const PoliciesUpdateRequestFiltersMegabitsPerSecondList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersMegabitsPerSecondList>;
+
+export type PoliciesUpdateRequestFiltersNewHealthList = string[];
+export const PoliciesUpdateRequestFiltersNewHealthList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersNewHealthList>;
+
+export type PoliciesUpdateRequestFiltersNewStatusList = string[];
+export const PoliciesUpdateRequestFiltersNewStatusList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersNewStatusList>;
+
+export type PoliciesUpdateRequestFiltersPacketsPerSecondList = string[];
+export const PoliciesUpdateRequestFiltersPacketsPerSecondList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersPacketsPerSecondList>;
+
+export type PoliciesUpdateRequestFiltersPoolIdList = string[];
+export const PoliciesUpdateRequestFiltersPoolIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersPoolIdList>;
+
+export type PoliciesUpdateRequestFiltersPopNamesList = string[];
+export const PoliciesUpdateRequestFiltersPopNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersPopNamesList>;
+
+export type PoliciesUpdateRequestFiltersProductList = string[];
+export const PoliciesUpdateRequestFiltersProductList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersProductList>;
+
+export type PoliciesUpdateRequestFiltersProjectIdList = string[];
+export const PoliciesUpdateRequestFiltersProjectIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersProjectIdList>;
+
+export type PoliciesUpdateRequestFiltersProtocolList = string[];
+export const PoliciesUpdateRequestFiltersProtocolList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersProtocolList>;
+
+export type PoliciesUpdateRequestFiltersQueryTagList = string[];
+export const PoliciesUpdateRequestFiltersQueryTagList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersQueryTagList>;
+
+export type PoliciesUpdateRequestFiltersRequestsPerSecondList = string[];
+export const PoliciesUpdateRequestFiltersRequestsPerSecondList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersRequestsPerSecondList>;
+
+export type PoliciesUpdateRequestFiltersSelectorsList = string[];
+export const PoliciesUpdateRequestFiltersSelectorsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersSelectorsList>;
+
+export type PoliciesUpdateRequestFiltersServicesList = string[];
+export const PoliciesUpdateRequestFiltersServicesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersServicesList>;
+
+export type PoliciesUpdateRequestFiltersSloList = string[];
+export const PoliciesUpdateRequestFiltersSloList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersSloList>;
+
+export type PoliciesUpdateRequestFiltersStatusList = string[];
+export const PoliciesUpdateRequestFiltersStatusList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersStatusList>;
+
+export type PoliciesUpdateRequestFiltersTargetHostnameList = string[];
+export const PoliciesUpdateRequestFiltersTargetHostnameList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersTargetHostnameList>;
+
+export type PoliciesUpdateRequestFiltersTargetIpList = string[];
+export const PoliciesUpdateRequestFiltersTargetIpList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersTargetIpList>;
+
+export type PoliciesUpdateRequestFiltersTargetZoneNameList = string[];
+export const PoliciesUpdateRequestFiltersTargetZoneNameList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersTargetZoneNameList>;
+
+export type PoliciesUpdateRequestFiltersTrafficExclusionsItem =
+  | "security_events"
+  | (string & {});
+export const PoliciesUpdateRequestFiltersTrafficExclusionsItem =
+  /*@__PURE__*/ S.String;
+
+export type PoliciesUpdateRequestFiltersTrafficExclusionsList =
+  PoliciesUpdateRequestFiltersTrafficExclusionsItem[];
+export const PoliciesUpdateRequestFiltersTrafficExclusionsList =
+  /*@__PURE__*/ S.Array(
+    PoliciesUpdateRequestFiltersTrafficExclusionsItem,
+  ) as any as S.Schema<PoliciesUpdateRequestFiltersTrafficExclusionsList>;
+
+export type PoliciesUpdateRequestFiltersTunnelIdList = string[];
+export const PoliciesUpdateRequestFiltersTunnelIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersTunnelIdList>;
+
+export type PoliciesUpdateRequestFiltersTunnelNameList = string[];
+export const PoliciesUpdateRequestFiltersTunnelNameList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersTunnelNameList>;
+
+export type PoliciesUpdateRequestFiltersTypeList = string[];
+export const PoliciesUpdateRequestFiltersTypeList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersTypeList>;
+
+export type PoliciesUpdateRequestFiltersWhereList = string[];
+export const PoliciesUpdateRequestFiltersWhereList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersWhereList>;
+
+export type PoliciesUpdateRequestFiltersZonesList = string[];
+export const PoliciesUpdateRequestFiltersZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestFiltersZonesList>;
+
+export interface PoliciesUpdateRequestFilters {
+  /** Usage depends on specific alert type */
+  actions?: PoliciesUpdateRequestFiltersActionsList;
+  /** Used for configuring radar_notification */
+  affectedAsns?: PoliciesUpdateRequestFiltersAffectedAsnsList;
+  /** Used for configuring incident_alert */
+  affectedComponents?: PoliciesUpdateRequestFiltersAffectedComponentsList;
+  /** Used for configuring radar_notification */
+  affectedLocations?: PoliciesUpdateRequestFiltersAffectedLocationsList;
+  /** Used for configuring maintenance_event_notification */
+  airportCode?: PoliciesUpdateRequestFiltersAirportCodeList;
+  /** Usage depends on specific alert type */
+  alertTriggerPreferences?: PoliciesUpdateRequestFiltersAlertTriggerPreferencesList;
+  /** Usage depends on specific alert type */
+  alertTriggerPreferencesValue?: PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList;
+  /** Used for configuring load_balancing_pool_enablement_alert */
+  enabled?: PoliciesUpdateRequestFiltersEnabledList;
+  /** Used for configuring pages_event_alert */
+  environment?: PoliciesUpdateRequestFiltersEnvironmentList;
+  /** Used for configuring pages_event_alert */
+  event?: PoliciesUpdateRequestFiltersEventList;
+  /** Used for configuring load_balancing_health_alert */
+  eventSource?: PoliciesUpdateRequestFiltersEventSourceList;
+  /** Usage depends on specific alert type */
+  eventType?: PoliciesUpdateRequestFiltersEventTypeList;
+  /** Usage depends on specific alert type */
+  groupBy?: PoliciesUpdateRequestFiltersGroupByList;
+  /** Used for configuring health_check_status_notification */
+  healthCheckId?: PoliciesUpdateRequestFiltersHealthCheckIdList;
+  /** Used for configuring incident_alert */
+  incidentImpact?: PoliciesUpdateRequestFiltersIncidentImpactList;
+  /** Used for configuring stream_live_notifications */
+  inputId?: PoliciesUpdateRequestFiltersInputIdList;
+  /** Used for configuring security_insights_alert */
+  insightClass?: PoliciesUpdateRequestFiltersInsightClassList;
+  /** Used for configuring billing_usage_alert */
+  limit?: PoliciesUpdateRequestFiltersLimitList;
+  /** Used for configuring logo_match_alert */
+  logoTag?: PoliciesUpdateRequestFiltersLogoTagList;
+  /** Used for configuring advanced_ddos_attack_l4_alert */
+  megabitsPerSecond?: PoliciesUpdateRequestFiltersMegabitsPerSecondList;
+  /** Used for configuring load_balancing_health_alert */
+  newHealth?: PoliciesUpdateRequestFiltersNewHealthList;
+  /** Used for configuring tunnel_health_event */
+  newStatus?: PoliciesUpdateRequestFiltersNewStatusList;
+  /** Used for configuring advanced_ddos_attack_l4_alert */
+  packetsPerSecond?: PoliciesUpdateRequestFiltersPacketsPerSecondList;
+  /** Usage depends on specific alert type */
+  poolId?: PoliciesUpdateRequestFiltersPoolIdList;
+  /** Usage depends on specific alert type */
+  popNames?: PoliciesUpdateRequestFiltersPopNamesList;
+  /** Used for configuring billing_usage_alert */
+  product?: PoliciesUpdateRequestFiltersProductList;
+  /** Used for configuring pages_event_alert */
+  projectId?: PoliciesUpdateRequestFiltersProjectIdList;
+  /** Used for configuring advanced_ddos_attack_l4_alert */
+  protocol?: PoliciesUpdateRequestFiltersProtocolList;
+  /** Usage depends on specific alert type */
+  queryTag?: PoliciesUpdateRequestFiltersQueryTagList;
+  /** Used for configuring advanced_ddos_attack_l7_alert */
+  requestsPerSecond?: PoliciesUpdateRequestFiltersRequestsPerSecondList;
+  /** Usage depends on specific alert type */
+  selectors?: PoliciesUpdateRequestFiltersSelectorsList;
+  /** Used for configuring clickhouse_alert_fw_ent_anomaly */
+  services?: PoliciesUpdateRequestFiltersServicesList;
+  /** Usage depends on specific alert type */
+  slo?: PoliciesUpdateRequestFiltersSloList;
+  /** Used for configuring health_check_status_notification */
+  status?: PoliciesUpdateRequestFiltersStatusList;
+  /** Used for configuring advanced_ddos_attack_l7_alert */
+  targetHostname?: PoliciesUpdateRequestFiltersTargetHostnameList;
+  /** Used for configuring advanced_ddos_attack_l4_alert */
+  targetIp?: PoliciesUpdateRequestFiltersTargetIpList;
+  /** Used for configuring advanced_ddos_attack_l7_alert */
+  targetZoneName?: PoliciesUpdateRequestFiltersTargetZoneNameList;
+  /** Used for configuring traffic_anomalies_alert */
+  trafficExclusions?: PoliciesUpdateRequestFiltersTrafficExclusionsList;
+  /** Used for configuring tunnel_health_event */
+  tunnelId?: PoliciesUpdateRequestFiltersTunnelIdList;
+  /** Usage depends on specific alert type */
+  tunnelName?: PoliciesUpdateRequestFiltersTunnelNameList;
+  /** Usage depends on specific alert type */
+  type?: PoliciesUpdateRequestFiltersTypeList;
+  /** Usage depends on specific alert type */
+  where?: PoliciesUpdateRequestFiltersWhereList;
+  /** Usage depends on specific alert type */
+  zones?: PoliciesUpdateRequestFiltersZonesList;
+}
+export const PoliciesUpdateRequestFilters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actions: S.optional(PoliciesUpdateRequestFiltersActionsList),
+    affectedAsns: S.optional(
+      PoliciesUpdateRequestFiltersAffectedAsnsList.pipe(
+        T.Body("affected_asns"),
+      ),
+    ),
+    affectedComponents: S.optional(
+      PoliciesUpdateRequestFiltersAffectedComponentsList.pipe(
+        T.Body("affected_components"),
+      ),
+    ),
+    affectedLocations: S.optional(
+      PoliciesUpdateRequestFiltersAffectedLocationsList.pipe(
+        T.Body("affected_locations"),
+      ),
+    ),
+    airportCode: S.optional(
+      PoliciesUpdateRequestFiltersAirportCodeList.pipe(T.Body("airport_code")),
+    ),
+    alertTriggerPreferences: S.optional(
+      PoliciesUpdateRequestFiltersAlertTriggerPreferencesList.pipe(
+        T.Body("alert_trigger_preferences"),
+      ),
+    ),
+    alertTriggerPreferencesValue: S.optional(
+      PoliciesUpdateRequestFiltersAlertTriggerPreferencesValueList.pipe(
+        T.Body("alert_trigger_preferences_value"),
+      ),
+    ),
+    enabled: S.optional(PoliciesUpdateRequestFiltersEnabledList),
+    environment: S.optional(PoliciesUpdateRequestFiltersEnvironmentList),
+    event: S.optional(PoliciesUpdateRequestFiltersEventList),
+    eventSource: S.optional(
+      PoliciesUpdateRequestFiltersEventSourceList.pipe(T.Body("event_source")),
+    ),
+    eventType: S.optional(
+      PoliciesUpdateRequestFiltersEventTypeList.pipe(T.Body("event_type")),
+    ),
+    groupBy: S.optional(
+      PoliciesUpdateRequestFiltersGroupByList.pipe(T.Body("group_by")),
+    ),
+    healthCheckId: S.optional(
+      PoliciesUpdateRequestFiltersHealthCheckIdList.pipe(
+        T.Body("health_check_id"),
+      ),
+    ),
+    incidentImpact: S.optional(
+      PoliciesUpdateRequestFiltersIncidentImpactList.pipe(
+        T.Body("incident_impact"),
+      ),
+    ),
+    inputId: S.optional(
+      PoliciesUpdateRequestFiltersInputIdList.pipe(T.Body("input_id")),
+    ),
+    insightClass: S.optional(
+      PoliciesUpdateRequestFiltersInsightClassList.pipe(
+        T.Body("insight_class"),
+      ),
+    ),
+    limit: S.optional(PoliciesUpdateRequestFiltersLimitList),
+    logoTag: S.optional(
+      PoliciesUpdateRequestFiltersLogoTagList.pipe(T.Body("logo_tag")),
+    ),
+    megabitsPerSecond: S.optional(
+      PoliciesUpdateRequestFiltersMegabitsPerSecondList.pipe(
+        T.Body("megabits_per_second"),
+      ),
+    ),
+    newHealth: S.optional(
+      PoliciesUpdateRequestFiltersNewHealthList.pipe(T.Body("new_health")),
+    ),
+    newStatus: S.optional(
+      PoliciesUpdateRequestFiltersNewStatusList.pipe(T.Body("new_status")),
+    ),
+    packetsPerSecond: S.optional(
+      PoliciesUpdateRequestFiltersPacketsPerSecondList.pipe(
+        T.Body("packets_per_second"),
+      ),
+    ),
+    poolId: S.optional(
+      PoliciesUpdateRequestFiltersPoolIdList.pipe(T.Body("pool_id")),
+    ),
+    popNames: S.optional(
+      PoliciesUpdateRequestFiltersPopNamesList.pipe(T.Body("pop_names")),
+    ),
+    product: S.optional(PoliciesUpdateRequestFiltersProductList),
+    projectId: S.optional(
+      PoliciesUpdateRequestFiltersProjectIdList.pipe(T.Body("project_id")),
+    ),
+    protocol: S.optional(PoliciesUpdateRequestFiltersProtocolList),
+    queryTag: S.optional(
+      PoliciesUpdateRequestFiltersQueryTagList.pipe(T.Body("query_tag")),
+    ),
+    requestsPerSecond: S.optional(
+      PoliciesUpdateRequestFiltersRequestsPerSecondList.pipe(
+        T.Body("requests_per_second"),
+      ),
+    ),
+    selectors: S.optional(PoliciesUpdateRequestFiltersSelectorsList),
+    services: S.optional(PoliciesUpdateRequestFiltersServicesList),
+    slo: S.optional(PoliciesUpdateRequestFiltersSloList),
+    status: S.optional(PoliciesUpdateRequestFiltersStatusList),
+    targetHostname: S.optional(
+      PoliciesUpdateRequestFiltersTargetHostnameList.pipe(
+        T.Body("target_hostname"),
+      ),
+    ),
+    targetIp: S.optional(
+      PoliciesUpdateRequestFiltersTargetIpList.pipe(T.Body("target_ip")),
+    ),
+    targetZoneName: S.optional(
+      PoliciesUpdateRequestFiltersTargetZoneNameList.pipe(
+        T.Body("target_zone_name"),
+      ),
+    ),
+    trafficExclusions: S.optional(
+      PoliciesUpdateRequestFiltersTrafficExclusionsList.pipe(
+        T.Body("traffic_exclusions"),
+      ),
+    ),
+    tunnelId: S.optional(
+      PoliciesUpdateRequestFiltersTunnelIdList.pipe(T.Body("tunnel_id")),
+    ),
+    tunnelName: S.optional(
+      PoliciesUpdateRequestFiltersTunnelNameList.pipe(T.Body("tunnel_name")),
+    ),
+    type: S.optional(PoliciesUpdateRequestFiltersTypeList),
+    where: S.optional(PoliciesUpdateRequestFiltersWhereList),
+    zones: S.optional(PoliciesUpdateRequestFiltersZonesList),
+  }),
+).annotate({
+  identifier: "PoliciesUpdateRequestFilters",
+}) as any as S.Schema<PoliciesUpdateRequestFilters>;
+
+export interface PoliciesUpdateRequestMechanismsEmailItem {
+  /** The email address */
+  id?: string;
+}
+export const PoliciesUpdateRequestMechanismsEmailItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "PoliciesUpdateRequestMechanismsEmailItem",
+}) as any as S.Schema<PoliciesUpdateRequestMechanismsEmailItem>;
+
+export type PoliciesUpdateRequestMechanismsEmailList =
+  PoliciesUpdateRequestMechanismsEmailItem[];
+export const PoliciesUpdateRequestMechanismsEmailList = /*@__PURE__*/ S.Array(
+  PoliciesUpdateRequestMechanismsEmailItem,
+) as any as S.Schema<PoliciesUpdateRequestMechanismsEmailList>;
+
+export interface PoliciesUpdateRequestMechanismsPagerdutyItem {
+  /** UUID */
+  id?: string;
+}
+export const PoliciesUpdateRequestMechanismsPagerdutyItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PoliciesUpdateRequestMechanismsPagerdutyItem",
+  }) as any as S.Schema<PoliciesUpdateRequestMechanismsPagerdutyItem>;
+
+export type PoliciesUpdateRequestMechanismsPagerdutyList =
+  PoliciesUpdateRequestMechanismsPagerdutyItem[];
+export const PoliciesUpdateRequestMechanismsPagerdutyList =
+  /*@__PURE__*/ S.Array(
+    PoliciesUpdateRequestMechanismsPagerdutyItem,
+  ) as any as S.Schema<PoliciesUpdateRequestMechanismsPagerdutyList>;
+
+export interface PoliciesUpdateRequestMechanismsWebhooksItem {
+  /** UUID */
+  id?: string;
+}
+export const PoliciesUpdateRequestMechanismsWebhooksItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PoliciesUpdateRequestMechanismsWebhooksItem",
+  }) as any as S.Schema<PoliciesUpdateRequestMechanismsWebhooksItem>;
+
+export type PoliciesUpdateRequestMechanismsWebhooksList =
+  PoliciesUpdateRequestMechanismsWebhooksItem[];
+export const PoliciesUpdateRequestMechanismsWebhooksList =
+  /*@__PURE__*/ S.Array(
+    PoliciesUpdateRequestMechanismsWebhooksItem,
+  ) as any as S.Schema<PoliciesUpdateRequestMechanismsWebhooksList>;
+
+export interface PoliciesUpdateRequestMechanisms {
+  email?: PoliciesUpdateRequestMechanismsEmailList;
+  pagerduty?: PoliciesUpdateRequestMechanismsPagerdutyList;
+  webhooks?: PoliciesUpdateRequestMechanismsWebhooksList;
+}
+export const PoliciesUpdateRequestMechanisms = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(PoliciesUpdateRequestMechanismsEmailList),
+    pagerduty: S.optional(PoliciesUpdateRequestMechanismsPagerdutyList),
+    webhooks: S.optional(PoliciesUpdateRequestMechanismsWebhooksList),
+  }),
+).annotate({
+  identifier: "PoliciesUpdateRequestMechanisms",
+}) as any as S.Schema<PoliciesUpdateRequestMechanisms>;
+
 export interface PoliciesUpdateRequest {
-  account_id: string;
-  policy_id: string;
-  alert_interval?: string;
-  alert_type?: PoliciesUpdateRequestAlertType;
+  /** The account id */
+  accountId: string;
+  /** The unique identifier of a notification policy */
+  policyId: string;
+  /** Optional specification of how often to re-alert from the same incident, not support on all alert types. */
+  alertInterval?: string;
+  /** Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. */
+  alertType?: PoliciesUpdateRequestAlertType;
+  /** Optional description for the Notification policy. */
   description?: string;
+  /** Whether or not the Notification policy is enabled. */
   enabled?: boolean;
-  filters?: unknown;
-  mechanisms?: unknown;
+  /** Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details. */
+  filters?: PoliciesUpdateRequestFilters;
+  /** List of IDs that will be used when dispatching a notification. IDs for email type will be the email address. */
+  mechanisms?: PoliciesUpdateRequestMechanisms;
+  /** Name of the policy. */
   name?: string;
 }
 export const PoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    policy_id: S.String.pipe(T.Label()),
-    alert_interval: S.optional(S.String),
-    alert_type: S.optional(PoliciesUpdateRequestAlertType),
+    accountId: S.String.pipe(T.Label("account_id")),
+    policyId: S.String.pipe(T.Label("policy_id")),
+    alertInterval: S.optional(S.String.pipe(T.Body("alert_interval"))),
+    alertType: S.optional(
+      PoliciesUpdateRequestAlertType.pipe(T.Body("alert_type")),
+    ),
     description: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    filters: S.optional(S.Unknown),
-    mechanisms: S.optional(S.Unknown),
+    filters: S.optional(PoliciesUpdateRequestFilters),
+    mechanisms: S.optional(PoliciesUpdateRequestMechanisms),
     name: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -587,6 +3044,7 @@ export const PoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PoliciesUpdateResponse {
+  /** UUID */
   id?: string;
 }
 export const PoliciesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -598,15 +3056,18 @@ export const PoliciesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoliciesUpdateResponse>;
 
 export interface SilencesCreateRequestBodyItem {
-  end_time?: string;
-  policy_id?: string;
-  start_time?: string;
+  /** When the silence ends. */
+  endTime?: string;
+  /** The unique identifier of a notification policy */
+  policyId?: string;
+  /** When the silence starts. */
+  startTime?: string;
 }
 export const SilencesCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    end_time: S.optional(S.String),
-    policy_id: S.optional(S.String),
-    start_time: S.optional(S.String),
+    endTime: S.optional(S.String.pipe(T.Body("end_time"))),
+    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
+    startTime: S.optional(S.String.pipe(T.Body("start_time"))),
   }),
 ).annotate({
   identifier: "SilencesCreateRequestBodyItem",
@@ -618,12 +3079,13 @@ export const SilencesCreateRequestBodyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SilencesCreateRequestBodyList>;
 
 export interface SilencesCreateRequest {
-  account_id: string;
+  /** The account id */
+  accountId: string;
   body: SilencesCreateRequestBodyList;
 }
 export const SilencesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     body: SilencesCreateRequestBodyList,
   }).pipe(
     T.Http({
@@ -644,13 +3106,15 @@ export const SilencesCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SilencesCreateResponse>;
 
 export interface SilencesDeleteRequest {
-  account_id: string;
-  silence_id: string;
+  /** The account id */
+  accountId: string;
+  /** Silence ID */
+  silenceId: string;
 }
 export const SilencesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    silence_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    silenceId: S.String.pipe(T.Label("silence_id")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -670,13 +3134,15 @@ export const SilencesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SilencesDeleteResponse>;
 
 export interface SilencesGetRequest {
-  account_id: string;
-  silence_id: string;
+  /** The account id */
+  accountId: string;
+  /** Silence ID */
+  silenceId: string;
 }
 export const SilencesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    silence_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    silenceId: S.String.pipe(T.Label("silence_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -690,32 +3156,39 @@ export const SilencesGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SilencesGetResponse {
+  /** Silence ID */
   id?: string;
-  created_at?: string;
-  end_time?: string;
-  policy_id?: string;
-  start_time?: string;
-  updated_at?: string;
+  /** When the silence was created. */
+  createdAt?: string;
+  /** When the silence ends. */
+  endTime?: string;
+  /** The unique identifier of a notification policy */
+  policyId?: string;
+  /** When the silence starts. */
+  startTime?: string;
+  /** When the silence was modified. */
+  updatedAt?: string;
 }
 export const SilencesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    created_at: S.optional(S.String),
-    end_time: S.optional(S.String),
-    policy_id: S.optional(S.String),
-    start_time: S.optional(S.String),
-    updated_at: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    endTime: S.optional(S.String.pipe(T.Body("end_time"))),
+    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
+    startTime: S.optional(S.String.pipe(T.Body("start_time"))),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
   }),
 ).annotate({
   identifier: "SilencesGetResponse",
 }) as any as S.Schema<SilencesGetResponse>;
 
 export interface SilencesListRequest {
-  account_id: string;
+  /** The account id */
+  accountId: string;
 }
 export const SilencesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -728,21 +3201,27 @@ export const SilencesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SilencesListRequest>;
 
 export interface SilencesListResultItem {
+  /** Silence ID */
   id?: string;
-  created_at?: string;
-  end_time?: string;
-  policy_id?: string;
-  start_time?: string;
-  updated_at?: string;
+  /** When the silence was created. */
+  createdAt?: string;
+  /** When the silence ends. */
+  endTime?: string;
+  /** The unique identifier of a notification policy */
+  policyId?: string;
+  /** When the silence starts. */
+  startTime?: string;
+  /** When the silence was modified. */
+  updatedAt?: string;
 }
 export const SilencesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    created_at: S.optional(S.String),
-    end_time: S.optional(S.String),
-    policy_id: S.optional(S.String),
-    start_time: S.optional(S.String),
-    updated_at: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    endTime: S.optional(S.String.pipe(T.Body("end_time"))),
+    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
+    startTime: S.optional(S.String.pipe(T.Body("start_time"))),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
   }),
 ).annotate({
   identifier: "SilencesListResultItem",
@@ -754,6 +3233,7 @@ export const SilencesListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SilencesListResultList>;
 
 export interface SilencesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SilencesListResultList;
 }
 export const SilencesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -765,15 +3245,18 @@ export const SilencesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SilencesListResponse>;
 
 export interface SilencesUpdateRequestBodyItem {
+  /** Silence ID */
   id?: string;
-  end_time?: string;
-  start_time?: string;
+  /** When the silence ends. */
+  endTime?: string;
+  /** When the silence starts. */
+  startTime?: string;
 }
 export const SilencesUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    end_time: S.optional(S.String),
-    start_time: S.optional(S.String),
+    endTime: S.optional(S.String.pipe(T.Body("end_time"))),
+    startTime: S.optional(S.String.pipe(T.Body("start_time"))),
   }),
 ).annotate({
   identifier: "SilencesUpdateRequestBodyItem",
@@ -785,12 +3268,13 @@ export const SilencesUpdateRequestBodyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SilencesUpdateRequestBodyList>;
 
 export interface SilencesUpdateRequest {
-  account_id: string;
+  /** The account id */
+  accountId: string;
   body: SilencesUpdateRequestBodyList;
 }
 export const SilencesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     body: SilencesUpdateRequestBodyList,
   }).pipe(
     T.Http({
@@ -804,21 +3288,27 @@ export const SilencesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SilencesUpdateRequest>;
 
 export interface SilencesUpdateResultItem {
+  /** Silence ID */
   id?: string;
-  created_at?: string;
-  end_time?: string;
-  policy_id?: string;
-  start_time?: string;
-  updated_at?: string;
+  /** When the silence was created. */
+  createdAt?: string;
+  /** When the silence ends. */
+  endTime?: string;
+  /** The unique identifier of a notification policy */
+  policyId?: string;
+  /** When the silence starts. */
+  startTime?: string;
+  /** When the silence was modified. */
+  updatedAt?: string;
 }
 export const SilencesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    created_at: S.optional(S.String),
-    end_time: S.optional(S.String),
-    policy_id: S.optional(S.String),
-    start_time: S.optional(S.String),
-    updated_at: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    endTime: S.optional(S.String.pipe(T.Body("end_time"))),
+    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
+    startTime: S.optional(S.String.pipe(T.Body("start_time"))),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
   }),
 ).annotate({
   identifier: "SilencesUpdateResultItem",
@@ -830,6 +3320,7 @@ export const SilencesUpdateResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SilencesUpdateResultList>;
 
 export interface SilencesUpdateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SilencesUpdateResultList;
 }
 export const SilencesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -840,11 +3331,12 @@ export const SilencesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SilencesUpdateResponse",
 }) as any as S.Schema<SilencesUpdateResponse>;
 
+export type AvailableAlertsListError = CloudflareOpError;
 /** Gets a list of all alert types for which an account is eligible. */
-export const AvailableAlertsList: API.OperationMethod<
+export const availableAlertsList: API.OperationMethod<
   AvailableAlertsListRequest,
   AvailableAlertsListResponse,
-  CloudflareOpError,
+  AvailableAlertsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: AvailableAlertsListRequest,
@@ -853,11 +3345,12 @@ export const AvailableAlertsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DestinationsEligibleGetError = CloudflareOpError;
 /** Get a list of all delivery mechanism types for which an account is eligible. */
-export const DestinationsEligibleGet: API.OperationMethod<
+export const destinationsEligibleGet: API.OperationMethod<
   DestinationsEligibleGetRequest,
   DestinationsEligibleGetResponse,
-  CloudflareOpError,
+  DestinationsEligibleGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DestinationsEligibleGetRequest,
@@ -866,11 +3359,12 @@ export const DestinationsEligibleGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DestinationsPagerdutyCreateError = CloudflareOpError;
 /** Creates a new token for integrating with PagerDuty. */
-export const DestinationsPagerdutyCreate: API.OperationMethod<
+export const destinationsPagerdutyCreate: API.OperationMethod<
   DestinationsPagerdutyCreateRequest,
   DestinationsPagerdutyCreateResponse,
-  CloudflareOpError,
+  DestinationsPagerdutyCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DestinationsPagerdutyCreateRequest,
@@ -879,11 +3373,12 @@ export const DestinationsPagerdutyCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DestinationsPagerdutyDeleteError = CloudflareOpError;
 /** Deletes all the PagerDuty Services connected to the account. */
-export const DestinationsPagerdutyDelete: API.OperationMethod<
+export const destinationsPagerdutyDelete: API.OperationMethod<
   DestinationsPagerdutyDeleteRequest,
   DestinationsPagerdutyDeleteResponse,
-  CloudflareOpError,
+  DestinationsPagerdutyDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DestinationsPagerdutyDeleteRequest,
@@ -892,11 +3387,12 @@ export const DestinationsPagerdutyDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DestinationsPagerdutyGetError = CloudflareOpError;
 /** Get a list of all configured PagerDuty services. */
-export const DestinationsPagerdutyGet: API.OperationMethod<
+export const destinationsPagerdutyGet: API.OperationMethod<
   DestinationsPagerdutyGetRequest,
   DestinationsPagerdutyGetResponse,
-  CloudflareOpError,
+  DestinationsPagerdutyGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DestinationsPagerdutyGetRequest,
@@ -905,11 +3401,12 @@ export const DestinationsPagerdutyGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DestinationsPagerdutyLinkError = CloudflareOpError;
 /** Links PagerDuty with the account using the integration token. */
-export const DestinationsPagerdutyLink: API.OperationMethod<
+export const destinationsPagerdutyLink: API.OperationMethod<
   DestinationsPagerdutyLinkRequest,
   DestinationsPagerdutyLinkResponse,
-  CloudflareOpError,
+  DestinationsPagerdutyLinkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DestinationsPagerdutyLinkRequest,
@@ -918,11 +3415,12 @@ export const DestinationsPagerdutyLink: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DestinationsWebhooksCreateError = CloudflareOpError;
 /** Creates a new webhook destination. */
-export const DestinationsWebhooksCreate: API.OperationMethod<
+export const destinationsWebhooksCreate: API.OperationMethod<
   DestinationsWebhooksCreateRequest,
   DestinationsWebhooksCreateResponse,
-  CloudflareOpError,
+  DestinationsWebhooksCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DestinationsWebhooksCreateRequest,
@@ -931,11 +3429,12 @@ export const DestinationsWebhooksCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DestinationsWebhooksDeleteError = CloudflareOpError;
 /** Delete a configured webhook destination. */
-export const DestinationsWebhooksDelete: API.OperationMethod<
+export const destinationsWebhooksDelete: API.OperationMethod<
   DestinationsWebhooksDeleteRequest,
   DestinationsWebhooksDeleteResponse,
-  CloudflareOpError,
+  DestinationsWebhooksDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DestinationsWebhooksDeleteRequest,
@@ -944,11 +3443,12 @@ export const DestinationsWebhooksDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DestinationsWebhooksGetError = CloudflareOpError;
 /** Get details for a single webhooks destination. */
-export const DestinationsWebhooksGet: API.OperationMethod<
+export const destinationsWebhooksGet: API.OperationMethod<
   DestinationsWebhooksGetRequest,
   DestinationsWebhooksGetResponse,
-  CloudflareOpError,
+  DestinationsWebhooksGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DestinationsWebhooksGetRequest,
@@ -957,11 +3457,12 @@ export const DestinationsWebhooksGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DestinationsWebhooksListError = CloudflareOpError;
 /** Gets a list of all configured webhook destinations. */
-export const DestinationsWebhooksList: API.OperationMethod<
+export const destinationsWebhooksList: API.OperationMethod<
   DestinationsWebhooksListRequest,
   DestinationsWebhooksListResponse,
-  CloudflareOpError,
+  DestinationsWebhooksListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DestinationsWebhooksListRequest,
@@ -970,11 +3471,12 @@ export const DestinationsWebhooksList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type DestinationsWebhooksUpdateError = CloudflareOpError;
 /** Update a webhook destination. */
-export const DestinationsWebhooksUpdate: API.OperationMethod<
+export const destinationsWebhooksUpdate: API.OperationMethod<
   DestinationsWebhooksUpdateRequest,
   DestinationsWebhooksUpdateResponse,
-  CloudflareOpError,
+  DestinationsWebhooksUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DestinationsWebhooksUpdateRequest,
@@ -983,11 +3485,12 @@ export const DestinationsWebhooksUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type HistoryListError = CloudflareOpError;
 /** Gets a list of history records for notifications sent to an account. The records are displayed for last `x` number of days based on the zone plan (free = 30, pro = 30, biz = 30, ent = 90). */
-export const HistoryList: API.OperationMethod<
+export const historyList: API.OperationMethod<
   HistoryListRequest,
   HistoryListResponse,
-  CloudflareOpError,
+  HistoryListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HistoryListRequest,
@@ -996,11 +3499,12 @@ export const HistoryList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PoliciesCreateError = CloudflareOpError;
 /** Creates a new Notification policy. */
-export const PoliciesCreate: API.OperationMethod<
+export const policiesCreate: API.OperationMethod<
   PoliciesCreateRequest,
   PoliciesCreateResponse,
-  CloudflareOpError,
+  PoliciesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PoliciesCreateRequest,
@@ -1009,11 +3513,12 @@ export const PoliciesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PoliciesDeleteError = CloudflareOpError;
 /** Delete a Notification policy. */
-export const PoliciesDelete: API.OperationMethod<
+export const policiesDelete: API.OperationMethod<
   PoliciesDeleteRequest,
   PoliciesDeleteResponse,
-  CloudflareOpError,
+  PoliciesDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PoliciesDeleteRequest,
@@ -1022,11 +3527,12 @@ export const PoliciesDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PoliciesGetError = CloudflareOpError;
 /** Get details for a single policy. */
-export const PoliciesGet: API.OperationMethod<
+export const policiesGet: API.OperationMethod<
   PoliciesGetRequest,
   PoliciesGetResponse,
-  CloudflareOpError,
+  PoliciesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PoliciesGetRequest,
@@ -1035,11 +3541,12 @@ export const PoliciesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PoliciesListError = CloudflareOpError;
 /** Get a list of all Notification policies. */
-export const PoliciesList: API.OperationMethod<
+export const policiesList: API.OperationMethod<
   PoliciesListRequest,
   PoliciesListResponse,
-  CloudflareOpError,
+  PoliciesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PoliciesListRequest,
@@ -1048,11 +3555,12 @@ export const PoliciesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type PoliciesUpdateError = CloudflareOpError;
 /** Update a Notification policy. */
-export const PoliciesUpdate: API.OperationMethod<
+export const policiesUpdate: API.OperationMethod<
   PoliciesUpdateRequest,
   PoliciesUpdateResponse,
-  CloudflareOpError,
+  PoliciesUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PoliciesUpdateRequest,
@@ -1061,11 +3569,12 @@ export const PoliciesUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SilencesCreateError = CloudflareOpError;
 /** Creates a new silence for an account. */
-export const SilencesCreate: API.OperationMethod<
+export const silencesCreate: API.OperationMethod<
   SilencesCreateRequest,
   SilencesCreateResponse,
-  CloudflareOpError,
+  SilencesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SilencesCreateRequest,
@@ -1074,11 +3583,12 @@ export const SilencesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SilencesDeleteError = CloudflareOpError;
 /** Deletes an existing silence for an account. */
-export const SilencesDelete: API.OperationMethod<
+export const silencesDelete: API.OperationMethod<
   SilencesDeleteRequest,
   SilencesDeleteResponse,
-  CloudflareOpError,
+  SilencesDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SilencesDeleteRequest,
@@ -1087,11 +3597,12 @@ export const SilencesDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SilencesGetError = CloudflareOpError;
 /** Gets a specific silence for an account. */
-export const SilencesGet: API.OperationMethod<
+export const silencesGet: API.OperationMethod<
   SilencesGetRequest,
   SilencesGetResponse,
-  CloudflareOpError,
+  SilencesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SilencesGetRequest,
@@ -1100,11 +3611,12 @@ export const SilencesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SilencesListError = CloudflareOpError;
 /** Gets a list of silences for an account. */
-export const SilencesList: API.OperationMethod<
+export const silencesList: API.OperationMethod<
   SilencesListRequest,
   SilencesListResponse,
-  CloudflareOpError,
+  SilencesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SilencesListRequest,
@@ -1113,11 +3625,12 @@ export const SilencesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type SilencesUpdateError = CloudflareOpError;
 /** Updates existing silences for an account. */
-export const SilencesUpdate: API.OperationMethod<
+export const silencesUpdate: API.OperationMethod<
   SilencesUpdateRequest,
   SilencesUpdateResponse,
-  CloudflareOpError,
+  SilencesUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: SilencesUpdateRequest,

@@ -10,13 +10,13 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface DeleteRequest {
-  account_id: string;
-  workflow_name: string;
+  accountId: string;
+  workflowName: string;
 }
 export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    workflow_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -42,13 +42,13 @@ export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
 
 export interface GetRequest {
-  account_id: string;
-  workflow_name: string;
+  accountId: string;
+  workflowName: string;
 }
 export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    workflow_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -87,12 +87,12 @@ export const GetResponseInstances = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetResponseSchedulesItem {
   cron: string;
-  next_instance: string;
+  nextInstance: string;
 }
 export const GetResponseSchedulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cron: S.String,
-    next_instance: S.String,
+    nextInstance: S.String.pipe(T.Body("next_instance")),
   }),
 ).annotate({
   identifier: "GetResponseSchedulesItem",
@@ -106,53 +106,95 @@ export const GetResponseSchedulesList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
   id: string;
-  class_name: string;
-  created_on: string;
+  className: string;
+  createdOn: string;
   instances: GetResponseInstances;
-  modified_on: string;
+  modifiedOn: string;
   name: string;
-  script_name: string;
-  triggered_on: string;
+  scriptName: string;
+  triggeredOn: string;
   schedules?: GetResponseSchedulesList;
 }
 export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    class_name: S.String,
-    created_on: S.String,
+    className: S.String.pipe(T.Body("class_name")),
+    createdOn: S.String.pipe(T.Body("created_on")),
     instances: GetResponseInstances,
-    modified_on: S.String,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
     name: S.String,
-    script_name: S.String,
-    triggered_on: S.String,
+    scriptName: S.String.pipe(T.Body("script_name")),
+    triggeredOn: S.String.pipe(T.Body("triggered_on")),
     schedules: S.optional(GetResponseSchedulesList),
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
+export interface InstancesBulkRequestBodyItemInstanceRetentionErrorRetention {
+  /** Specifies the duration in milliseconds. */
+  number: unknown;
+  string: unknown;
+}
+export const InstancesBulkRequestBodyItemInstanceRetentionErrorRetention =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      number: S.Unknown,
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "InstancesBulkRequestBodyItemInstanceRetentionErrorRetention",
+  }) as any as S.Schema<InstancesBulkRequestBodyItemInstanceRetentionErrorRetention>;
+
+export interface InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention {
+  /** Specifies the duration in milliseconds. */
+  number: unknown;
+  string: unknown;
+}
+export const InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      number: S.Unknown,
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention",
+  }) as any as S.Schema<InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention>;
+
 export interface InstancesBulkRequestBodyItemInstanceRetention {
-  error_retention?: unknown;
-  success_retention?: unknown;
+  /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
+  errorRetention?: InstancesBulkRequestBodyItemInstanceRetentionErrorRetention;
+  /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
+  successRetention?: InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention;
 }
 export const InstancesBulkRequestBodyItemInstanceRetention =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      error_retention: S.optional(S.Unknown),
-      success_retention: S.optional(S.Unknown),
+      errorRetention: S.optional(
+        InstancesBulkRequestBodyItemInstanceRetentionErrorRetention.pipe(
+          T.Body("error_retention"),
+        ),
+      ),
+      successRetention: S.optional(
+        InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention.pipe(
+          T.Body("success_retention"),
+        ),
+      ),
     }),
   ).annotate({
     identifier: "InstancesBulkRequestBodyItemInstanceRetention",
   }) as any as S.Schema<InstancesBulkRequestBodyItemInstanceRetention>;
 
 export interface InstancesBulkRequestBodyItem {
-  instance_id?: string;
-  instance_retention?: InstancesBulkRequestBodyItemInstanceRetention;
+  instanceId?: string;
+  instanceRetention?: InstancesBulkRequestBodyItemInstanceRetention;
   params?: unknown;
 }
 export const InstancesBulkRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    instance_id: S.optional(S.String),
-    instance_retention: S.optional(
-      InstancesBulkRequestBodyItemInstanceRetention,
+    instanceId: S.optional(S.String.pipe(T.Body("instance_id"))),
+    instanceRetention: S.optional(
+      InstancesBulkRequestBodyItemInstanceRetention.pipe(
+        T.Body("instance_retention"),
+      ),
     ),
     params: S.optional(S.Unknown),
   }),
@@ -166,14 +208,14 @@ export const InstancesBulkRequestBodyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InstancesBulkRequestBodyList>;
 
 export interface InstancesBulkRequest {
-  account_id: string;
-  workflow_name: string;
+  accountId: string;
+  workflowName: string;
   body?: InstancesBulkRequestBodyList;
 }
 export const InstancesBulkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    workflow_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
     body: S.optional(InstancesBulkRequestBodyList),
   }).pipe(
     T.Http({
@@ -203,17 +245,19 @@ export const InstancesBulkResultItemTriggerSource = /*@__PURE__*/ S.String;
 export interface InstancesBulkResultItem {
   id: string;
   status: InstancesBulkResultItemStatus;
-  version_id: string;
-  workflow_id: string;
-  trigger_source?: InstancesBulkResultItemTriggerSource;
+  versionId: string;
+  workflowId: string;
+  triggerSource?: InstancesBulkResultItemTriggerSource;
 }
 export const InstancesBulkResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: InstancesBulkResultItemStatus,
-    version_id: S.String,
-    workflow_id: S.String,
-    trigger_source: S.optional(InstancesBulkResultItemTriggerSource),
+    versionId: S.String.pipe(T.Body("version_id")),
+    workflowId: S.String.pipe(T.Body("workflow_id")),
+    triggerSource: S.optional(
+      InstancesBulkResultItemTriggerSource.pipe(T.Body("trigger_source")),
+    ),
   }),
 ).annotate({
   identifier: "InstancesBulkResultItem",
@@ -225,6 +269,7 @@ export const InstancesBulkResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InstancesBulkResultList>;
 
 export interface InstancesBulkResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: InstancesBulkResultList;
 }
 export const InstancesBulkResponse = /*@__PURE__*/ S.suspend(() =>
@@ -235,33 +280,77 @@ export const InstancesBulkResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstancesBulkResponse",
 }) as any as S.Schema<InstancesBulkResponse>;
 
+export interface InstancesCreateRequestInstanceRetentionErrorRetention {
+  /** Specifies the duration in milliseconds. */
+  number: unknown;
+  string: unknown;
+}
+export const InstancesCreateRequestInstanceRetentionErrorRetention =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      number: S.Unknown,
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "InstancesCreateRequestInstanceRetentionErrorRetention",
+  }) as any as S.Schema<InstancesCreateRequestInstanceRetentionErrorRetention>;
+
+export interface InstancesCreateRequestInstanceRetentionSuccessRetention {
+  /** Specifies the duration in milliseconds. */
+  number: unknown;
+  string: unknown;
+}
+export const InstancesCreateRequestInstanceRetentionSuccessRetention =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      number: S.Unknown,
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "InstancesCreateRequestInstanceRetentionSuccessRetention",
+  }) as any as S.Schema<InstancesCreateRequestInstanceRetentionSuccessRetention>;
+
 export interface InstancesCreateRequestInstanceRetention {
-  error_retention?: unknown;
-  success_retention?: unknown;
+  /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
+  errorRetention?: InstancesCreateRequestInstanceRetentionErrorRetention;
+  /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
+  successRetention?: InstancesCreateRequestInstanceRetentionSuccessRetention;
 }
 export const InstancesCreateRequestInstanceRetention = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      error_retention: S.optional(S.Unknown),
-      success_retention: S.optional(S.Unknown),
+      errorRetention: S.optional(
+        InstancesCreateRequestInstanceRetentionErrorRetention.pipe(
+          T.Body("error_retention"),
+        ),
+      ),
+      successRetention: S.optional(
+        InstancesCreateRequestInstanceRetentionSuccessRetention.pipe(
+          T.Body("success_retention"),
+        ),
+      ),
     }),
 ).annotate({
   identifier: "InstancesCreateRequestInstanceRetention",
 }) as any as S.Schema<InstancesCreateRequestInstanceRetention>;
 
 export interface InstancesCreateRequest {
-  account_id: string;
-  workflow_name: string;
-  instance_id?: string;
-  instance_retention?: InstancesCreateRequestInstanceRetention;
+  accountId: string;
+  workflowName: string;
+  instanceId?: string;
+  instanceRetention?: InstancesCreateRequestInstanceRetention;
   params?: unknown;
 }
 export const InstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    workflow_name: S.String.pipe(T.Label()),
-    instance_id: S.optional(S.String),
-    instance_retention: S.optional(InstancesCreateRequestInstanceRetention),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
+    instanceId: S.optional(S.String.pipe(T.Body("instance_id"))),
+    instanceRetention: S.optional(
+      InstancesCreateRequestInstanceRetention.pipe(
+        T.Body("instance_retention"),
+      ),
+    ),
     params: S.optional(S.Unknown),
   }).pipe(
     T.Http({
@@ -292,35 +381,38 @@ export const InstancesCreateResponseTriggerSource = /*@__PURE__*/ S.String;
 export interface InstancesCreateResponse {
   id: string;
   status: InstancesCreateResponseStatus;
-  version_id: string;
-  workflow_id: string;
-  trigger_source?: InstancesCreateResponseTriggerSource;
+  versionId: string;
+  workflowId: string;
+  triggerSource?: InstancesCreateResponseTriggerSource;
 }
 export const InstancesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: InstancesCreateResponseStatus,
-    version_id: S.String,
-    workflow_id: S.String,
-    trigger_source: S.optional(InstancesCreateResponseTriggerSource),
+    versionId: S.String.pipe(T.Body("version_id")),
+    workflowId: S.String.pipe(T.Body("workflow_id")),
+    triggerSource: S.optional(
+      InstancesCreateResponseTriggerSource.pipe(T.Body("trigger_source")),
+    ),
   }),
 ).annotate({
   identifier: "InstancesCreateResponse",
 }) as any as S.Schema<InstancesCreateResponse>;
 
 export interface InstancesEventsCreateRequest {
-  account_id: string;
-  workflow_name: string;
-  instance_id: string;
-  event_type: string;
+  accountId: string;
+  workflowName: string;
+  /** Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression. */
+  instanceId: string;
+  eventType: string;
   body?: unknown;
 }
 export const InstancesEventsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    workflow_name: S.String.pipe(T.Label()),
-    instance_id: S.String.pipe(T.Label()),
-    event_type: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
+    instanceId: S.String.pipe(T.Label("instance_id")),
+    eventType: S.String.pipe(T.Label("event_type")),
     body: S.optional(S.Unknown),
   }).pipe(
     T.Http({
@@ -334,6 +426,7 @@ export const InstancesEventsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesEventsCreateRequest>;
 
 export interface InstancesEventsCreateResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
 export const InstancesEventsCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -351,17 +444,20 @@ export type InstancesGetRequestSimple = "true" | "false" | (string & {});
 export const InstancesGetRequestSimple = /*@__PURE__*/ S.String;
 
 export interface InstancesGetRequest {
-  account_id: string;
-  workflow_name: string;
-  instance_id: string;
+  accountId: string;
+  workflowName: string;
+  /** Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression. */
+  instanceId: string;
+  /** Step ordering: "asc" (default, oldest first) or "desc" (newest first). */
   order?: InstancesGetRequestOrder;
+  /** When true, omits step details and returns only metadata with step_count. */
   simple?: InstancesGetRequestSimple;
 }
 export const InstancesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    workflow_name: S.String.pipe(T.Label()),
-    instance_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
+    instanceId: S.String.pipe(T.Label("instance_id")),
     order: S.optional(InstancesGetRequestOrder.pipe(T.Query())),
     simple: S.optional(InstancesGetRequestSimple.pipe(T.Query())),
   }).pipe(
@@ -387,6 +483,19 @@ export const InstancesGetResponseError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstancesGetResponseError",
 }) as any as S.Schema<InstancesGetResponseError>;
+
+export interface InstancesGetResponseOutput {
+  string: unknown;
+  number: unknown;
+}
+export const InstancesGetResponseOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    string: S.Unknown,
+    number: S.Unknown,
+  }),
+).annotate({
+  identifier: "InstancesGetResponseOutput",
+}) as any as S.Schema<InstancesGetResponseOutput>;
 
 export interface InstancesGetResponseRollbackError {
   message: string;
@@ -428,23 +537,21 @@ export type InstancesGetResponseStatus =
 export const InstancesGetResponseStatus = /*@__PURE__*/ S.String;
 
 export interface InstancesGetResponseStepsItem {
-  object___attempts__config__end__5_more__: unknown;
-  object___end__error__finished__3_more__: unknown;
-  object___trigger__type__: unknown;
-  object___end__error__finished__4_more__: unknown;
+  objectAttemptsConfigEnd5More__: unknown;
+  objectEndErrorFinished3More__: unknown;
+  objectTriggerType__: unknown;
+  objectEndErrorFinished4More__: unknown;
 }
 export const InstancesGetResponseStepsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    object___attempts__config__end__5_more__: S.Unknown.pipe(
+    objectAttemptsConfigEnd5More__: S.Unknown.pipe(
       T.Body("object { attempts, config, end, 5 more }"),
     ),
-    object___end__error__finished__3_more__: S.Unknown.pipe(
+    objectEndErrorFinished3More__: S.Unknown.pipe(
       T.Body("object { end, error, finished, 3 more }"),
     ),
-    object___trigger__type__: S.Unknown.pipe(
-      T.Body("object { trigger, type }"),
-    ),
-    object___end__error__finished__4_more__: S.Unknown.pipe(
+    objectTriggerType__: S.Unknown.pipe(T.Body("object { trigger, type }")),
+    objectEndErrorFinished4More__: S.Unknown.pipe(
       T.Body("object { end, error, finished, 4 more }"),
     ),
   }),
@@ -492,13 +599,13 @@ export const InstancesGetResponseSchedule = /*@__PURE__*/ S.suspend(() =>
 export interface InstancesGetResponse {
   end: string;
   error: InstancesGetResponseError;
-  output: unknown;
+  output: InstancesGetResponseOutput;
   params: unknown;
   queued: string;
   rollback: InstancesGetResponseRollback;
   start: string;
   status: InstancesGetResponseStatus;
-  step_count: number;
+  stepCount: number;
   steps: InstancesGetResponseStepsList;
   success: boolean;
   trigger: InstancesGetResponseTrigger;
@@ -509,13 +616,13 @@ export const InstancesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end: S.String,
     error: InstancesGetResponseError,
-    output: S.Unknown,
+    output: InstancesGetResponseOutput,
     params: S.Unknown,
     queued: S.String,
     rollback: InstancesGetResponseRollback,
     start: S.String,
     status: InstancesGetResponseStatus,
-    step_count: S.Number,
+    stepCount: S.Number.pipe(T.Body("step_count")),
     steps: InstancesGetResponseStepsList,
     success: S.Boolean,
     trigger: InstancesGetResponseTrigger,
@@ -537,26 +644,31 @@ export type InstancesListRequestStatus =
 export const InstancesListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface InstancesListRequest {
-  account_id: string;
-  workflow_name: string;
+  accountId: string;
+  workflowName: string;
+  /** Opaque token for cursor-based pagination. Mutually exclusive with `page`. */
   cursor?: string;
-  date_end?: string;
-  date_start?: string;
+  /** Accepts ISO 8601 with no timezone offsets and in UTC. */
+  dateEnd?: string;
+  /** Accepts ISO 8601 with no timezone offsets and in UTC. */
+  dateStart?: string;
+  /** Defines the direction for cursor-based pagination. */
   direction?: InstancesListRequestDirection;
+  /** Deprecated: use `cursor` for pagination instead. */
   page?: number;
-  per_page?: number;
+  perPage?: number;
   status?: InstancesListRequestStatus;
 }
 export const InstancesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    workflow_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
     cursor: S.optional(S.String.pipe(T.Query())),
-    date_end: S.optional(S.String.pipe(T.Query())),
-    date_start: S.optional(S.String.pipe(T.Query())),
+    dateEnd: S.optional(S.String.pipe(T.Query("date_end"))),
+    dateStart: S.optional(S.String.pipe(T.Query("date_start"))),
     direction: S.optional(InstancesListRequestDirection.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     status: S.optional(InstancesListRequestStatus.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -585,26 +697,28 @@ export const InstancesListResultItemTriggerSource = /*@__PURE__*/ S.String;
 
 export interface InstancesListResultItem {
   id: string;
-  created_on: string;
-  ended_on: string;
-  modified_on: string;
-  started_on: string;
+  createdOn: string;
+  endedOn: string;
+  modifiedOn: string;
+  startedOn: string;
   status: InstancesListResultItemStatus;
-  version_id: string;
-  workflow_id: string;
-  trigger_source?: InstancesListResultItemTriggerSource;
+  versionId: string;
+  workflowId: string;
+  triggerSource?: InstancesListResultItemTriggerSource;
 }
 export const InstancesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    created_on: S.String,
-    ended_on: S.String,
-    modified_on: S.String,
-    started_on: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    endedOn: S.String.pipe(T.Body("ended_on")),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    startedOn: S.String.pipe(T.Body("started_on")),
     status: InstancesListResultItemStatus,
-    version_id: S.String,
-    workflow_id: S.String,
-    trigger_source: S.optional(InstancesListResultItemTriggerSource),
+    versionId: S.String.pipe(T.Body("version_id")),
+    workflowId: S.String.pipe(T.Body("workflow_id")),
+    triggerSource: S.optional(
+      InstancesListResultItemTriggerSource.pipe(T.Body("trigger_source")),
+    ),
   }),
 ).annotate({
   identifier: "InstancesListResultItem",
@@ -616,6 +730,7 @@ export const InstancesListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InstancesListResultList>;
 
 export interface InstancesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: InstancesListResultList;
 }
 export const InstancesListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -627,39 +742,36 @@ export const InstancesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesListResponse>;
 
 export interface InstancesStatusEditRequestBody {
-  Status_object___status__: unknown;
-  Status_object___status___2: unknown;
-  object___status__rollback__: unknown;
-  object___status__from__: unknown;
+  StatusObjectStatus__: unknown;
+  StatusObjectStatus2: unknown;
+  objectStatusRollback__: unknown;
+  objectStatusFrom__: unknown;
 }
 export const InstancesStatusEditRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Status_object___status__: S.Unknown.pipe(
-      T.Body("Status object { status }"),
-    ),
-    Status_object___status___2: S.Unknown.pipe(
-      T.Body("Status object { status }"),
-    ),
-    object___status__rollback__: S.Unknown.pipe(
+    StatusObjectStatus__: S.Unknown.pipe(T.Body("Status object { status }")),
+    StatusObjectStatus2: S.Unknown.pipe(T.Body("Status object { status }")),
+    objectStatusRollback__: S.Unknown.pipe(
       T.Body("object { status, rollback }"),
     ),
-    object___status__from__: S.Unknown.pipe(T.Body("object { status, from }")),
+    objectStatusFrom__: S.Unknown.pipe(T.Body("object { status, from }")),
   }),
 ).annotate({
   identifier: "InstancesStatusEditRequestBody",
 }) as any as S.Schema<InstancesStatusEditRequestBody>;
 
 export interface InstancesStatusEditRequest {
-  account_id: string;
-  workflow_name: string;
-  instance_id: string;
+  accountId: string;
+  workflowName: string;
+  /** Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression. */
+  instanceId: string;
   body?: InstancesStatusEditRequestBody;
 }
 export const InstancesStatusEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    workflow_name: S.String.pipe(T.Label()),
-    instance_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
+    instanceId: S.String.pipe(T.Label("instance_id")),
     body: S.optional(InstancesStatusEditRequestBody),
   }).pipe(
     T.Http({
@@ -682,6 +794,7 @@ export const InstancesStatusEditResponseStatus = /*@__PURE__*/ S.String;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface InstancesStatusEditResponse {
   status: InstancesStatusEditResponseStatus;
+  /** Accepts ISO 8601 with no timezone offsets and in UTC. */
   timestamp: string;
 }
 export const InstancesStatusEditResponse = /*@__PURE__*/ S.suspend(() =>
@@ -697,18 +810,22 @@ export type InstancesStepRequestType = "step" | "waitForEvent" | (string & {});
 export const InstancesStepRequestType = /*@__PURE__*/ S.String;
 
 export interface InstancesStepRequest {
-  account_id: string;
-  workflow_name: string;
-  instance_id: string;
+  accountId: string;
+  workflowName: string;
+  /** Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression. */
+  instanceId: string;
+  /** Exact step name from the instance logs response, including the generated counter suffix. */
   name: string;
+  /** Step type to disambiguate step.do and waitForEvent entries that share the same name. */
   type: InstancesStepRequestType;
+  /** Specific attempt number to retrieve output or error for. */
   attempt?: number;
 }
 export const InstancesStepRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    workflow_name: S.String.pipe(T.Label()),
-    instance_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
+    instanceId: S.String.pipe(T.Label("instance_id")),
     name: S.String.pipe(T.Query()),
     type: InstancesStepRequestType.pipe(T.Query()),
     attempt: S.optional(S.Number.pipe(T.Query())),
@@ -745,8 +862,10 @@ export const InstancesStepResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface InstancesStepResponse {
+  /** Error details when status='errored'; null otherwise. */
   error: InstancesStepResponseError;
   status: InstancesStepResponseStatus;
+  /** Full step output or waitForEvent payload without truncation. Sensitive outputs are returned as '[REDACTED]'. Populated when status='complete'. May be a ReadableStream when the step returned one from step.do; stream outputs are served as application/octet-stream rather than JSON. */
   output?: unknown;
 }
 export const InstancesStepResponse = /*@__PURE__*/ S.suspend(() =>
@@ -760,16 +879,17 @@ export const InstancesStepResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesStepResponse>;
 
 export interface ListRequest {
-  account_id: string;
+  accountId: string;
   page?: number;
-  per_page?: number;
+  perPage?: number;
+  /** Allows filtering workflows` name. */
   search?: string;
 }
 export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     search: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -809,12 +929,12 @@ export const ListResultItemInstances = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListResultItemSchedulesItem {
   cron: string;
-  next_instance: string;
+  nextInstance: string;
 }
 export const ListResultItemSchedulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cron: S.String,
-    next_instance: S.String,
+    nextInstance: S.String.pipe(T.Body("next_instance")),
   }),
 ).annotate({
   identifier: "ListResultItemSchedulesItem",
@@ -827,25 +947,25 @@ export const ListResultItemSchedulesList = /*@__PURE__*/ S.Array(
 
 export interface ListResultItem {
   id: string;
-  class_name: string;
-  created_on: string;
+  className: string;
+  createdOn: string;
   instances: ListResultItemInstances;
-  modified_on: string;
+  modifiedOn: string;
   name: string;
-  script_name: string;
-  triggered_on: string;
+  scriptName: string;
+  triggeredOn: string;
   schedules?: ListResultItemSchedulesList;
 }
 export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    class_name: S.String,
-    created_on: S.String,
+    className: S.String.pipe(T.Body("class_name")),
+    createdOn: S.String.pipe(T.Body("created_on")),
     instances: ListResultItemInstances,
-    modified_on: S.String,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
     name: S.String,
-    script_name: S.String,
-    triggered_on: S.String,
+    scriptName: S.String.pipe(T.Body("script_name")),
+    triggeredOn: S.String.pipe(T.Body("triggered_on")),
     schedules: S.optional(ListResultItemSchedulesList),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
@@ -856,6 +976,7 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResultList>;
 
 export interface ListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
 export const ListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -892,19 +1013,19 @@ export const UpdateRequestSchedulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateRequestSchedulesList>;
 
 export interface UpdateRequest {
-  account_id: string;
-  workflow_name: string;
-  class_name: string;
-  script_name: string;
+  accountId: string;
+  workflowName: string;
+  className: string;
+  scriptName: string;
   limits?: UpdateRequestLimits;
   schedules?: UpdateRequestSchedulesList;
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    workflow_name: S.String.pipe(T.Label()),
-    class_name: S.String,
-    script_name: S.String,
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
+    className: S.String.pipe(T.Body("class_name")),
+    scriptName: S.String.pipe(T.Body("script_name")),
     limits: S.optional(UpdateRequestLimits),
     schedules: S.optional(UpdateRequestSchedulesList),
   }).pipe(
@@ -919,41 +1040,41 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
   id: string;
-  class_name: string;
-  created_on: string;
-  is_deleted: number;
-  modified_on: string;
+  className: string;
+  createdOn: string;
+  isDeleted: number;
+  modifiedOn: string;
   name: string;
-  script_name: string;
-  terminator_running: number;
-  triggered_on: string;
-  version_id: string;
+  scriptName: string;
+  terminatorRunning: number;
+  triggeredOn: string;
+  versionId: string;
 }
 export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    class_name: S.String,
-    created_on: S.String,
-    is_deleted: S.Number,
-    modified_on: S.String,
+    className: S.String.pipe(T.Body("class_name")),
+    createdOn: S.String.pipe(T.Body("created_on")),
+    isDeleted: S.Number.pipe(T.Body("is_deleted")),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
     name: S.String,
-    script_name: S.String,
-    terminator_running: S.Number,
-    triggered_on: S.String,
-    version_id: S.String,
+    scriptName: S.String.pipe(T.Body("script_name")),
+    terminatorRunning: S.Number.pipe(T.Body("terminator_running")),
+    triggeredOn: S.String.pipe(T.Body("triggered_on")),
+    versionId: S.String.pipe(T.Body("version_id")),
   }),
 ).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
 export interface VersionsGetRequest {
-  account_id: string;
-  workflow_name: string;
-  version_id: string;
+  accountId: string;
+  workflowName: string;
+  versionId: string;
 }
 export const VersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    workflow_name: S.String.pipe(T.Label()),
-    version_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
+    versionId: S.String.pipe(T.Label("version_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -985,23 +1106,24 @@ export const VersionsGetResponseLimits = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface VersionsGetResponse {
   id: string;
-  class_name: string;
-  created_on: string;
-  has_dag: boolean;
+  className: string;
+  createdOn: string;
+  hasDag: boolean;
+  /** The programming language of the workflow implementation */
   language: VersionsGetResponseLanguage;
-  modified_on: string;
-  workflow_id: string;
+  modifiedOn: string;
+  workflowId: string;
   limits?: VersionsGetResponseLimits;
 }
 export const VersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    class_name: S.String,
-    created_on: S.String,
-    has_dag: S.Boolean,
+    className: S.String.pipe(T.Body("class_name")),
+    createdOn: S.String.pipe(T.Body("created_on")),
+    hasDag: S.Boolean.pipe(T.Body("has_dag")),
     language: VersionsGetResponseLanguage,
-    modified_on: S.String,
-    workflow_id: S.String,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    workflowId: S.String.pipe(T.Body("workflow_id")),
     limits: S.optional(VersionsGetResponseLimits),
   }),
 ).annotate({
@@ -1009,15 +1131,15 @@ export const VersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VersionsGetResponse>;
 
 export interface VersionsGraphRequest {
-  account_id: string;
-  workflow_name: string;
-  version_id: string;
+  accountId: string;
+  workflowName: string;
+  versionId: string;
 }
 export const VersionsGraphRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    workflow_name: S.String.pipe(T.Label()),
-    version_id: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
+    versionId: S.String.pipe(T.Label("version_id")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1039,62 +1161,58 @@ export const VersionsGraphResponseGraphWorkflowFunctionsMap =
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowFunctionsMap>;
 
 export interface VersionsGraphResponseGraphWorkflowNodesItem {
-  object___duration__name__type__2_more__: unknown;
-  object___config__name__nodes__3_more__: unknown;
-  object___name__options__type__3_more__: unknown;
-  object___name__timestamp__type__2_more__: unknown;
-  object___nodes__type__: unknown;
-  object___kind__nodes__type__: unknown;
-  object___catch_block__finally_block__try_block__type__: unknown;
-  object___nodes__type___2: unknown;
-  object___branches__type__: unknown;
-  object___branches__discriminant__type__: unknown;
-  object___class_name__functions__nodes__2_more__: unknown;
-  object___name__type__resolves__starts__: unknown;
-  object___name__nodes__type__: unknown;
-  object___kind__type__: unknown;
+  objectDurationNameType2More__: unknown;
+  objectConfigNameNodes3More__: unknown;
+  objectNameOptionsType3More__: unknown;
+  objectNameTimestampType2More__: unknown;
+  objectNodesType__: unknown;
+  objectKindNodesType__: unknown;
+  objectCatchBlockFinallyBlockTryBlockType__: unknown;
+  objectNodesType2: unknown;
+  objectBranchesType__: unknown;
+  objectBranchesDiscriminantType__: unknown;
+  objectClassNameFunctionsNodes2More__: unknown;
+  objectNameTypeResolvesStarts__: unknown;
+  objectNameNodesType__: unknown;
+  objectKindType__: unknown;
 }
 export const VersionsGraphResponseGraphWorkflowNodesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      object___duration__name__type__2_more__: S.Unknown.pipe(
+      objectDurationNameType2More__: S.Unknown.pipe(
         T.Body("object { duration, name, type, 2 more }"),
       ),
-      object___config__name__nodes__3_more__: S.Unknown.pipe(
+      objectConfigNameNodes3More__: S.Unknown.pipe(
         T.Body("object { config, name, nodes, 3 more }"),
       ),
-      object___name__options__type__3_more__: S.Unknown.pipe(
+      objectNameOptionsType3More__: S.Unknown.pipe(
         T.Body("object { name, options, type, 3 more }"),
       ),
-      object___name__timestamp__type__2_more__: S.Unknown.pipe(
+      objectNameTimestampType2More__: S.Unknown.pipe(
         T.Body("object { name, timestamp, type, 2 more }"),
       ),
-      object___nodes__type__: S.Unknown.pipe(T.Body("object { nodes, type }")),
-      object___kind__nodes__type__: S.Unknown.pipe(
+      objectNodesType__: S.Unknown.pipe(T.Body("object { nodes, type }")),
+      objectKindNodesType__: S.Unknown.pipe(
         T.Body("object { kind, nodes, type }"),
       ),
-      object___catch_block__finally_block__try_block__type__: S.Unknown.pipe(
+      objectCatchBlockFinallyBlockTryBlockType__: S.Unknown.pipe(
         T.Body("object { catch_block, finally_block, try_block, type }"),
       ),
-      object___nodes__type___2: S.Unknown.pipe(
-        T.Body("object { nodes, type }"),
-      ),
-      object___branches__type__: S.Unknown.pipe(
-        T.Body("object { branches, type }"),
-      ),
-      object___branches__discriminant__type__: S.Unknown.pipe(
+      objectNodesType2: S.Unknown.pipe(T.Body("object { nodes, type }")),
+      objectBranchesType__: S.Unknown.pipe(T.Body("object { branches, type }")),
+      objectBranchesDiscriminantType__: S.Unknown.pipe(
         T.Body("object { branches, discriminant, type }"),
       ),
-      object___class_name__functions__nodes__2_more__: S.Unknown.pipe(
+      objectClassNameFunctionsNodes2More__: S.Unknown.pipe(
         T.Body("object { class_name, functions, nodes, 2 more }"),
       ),
-      object___name__type__resolves__starts__: S.Unknown.pipe(
+      objectNameTypeResolvesStarts__: S.Unknown.pipe(
         T.Body("object { name, type, resolves, starts }"),
       ),
-      object___name__nodes__type__: S.Unknown.pipe(
+      objectNameNodesType__: S.Unknown.pipe(
         T.Body("object { name, nodes, type }"),
       ),
-      object___kind__type__: S.Unknown.pipe(T.Body("object { kind, type }")),
+      objectKindType__: S.Unknown.pipe(T.Body("object { kind, type }")),
     }),
   ).annotate({
     identifier: "VersionsGraphResponseGraphWorkflowNodesItem",
@@ -1108,30 +1226,29 @@ export const VersionsGraphResponseGraphWorkflowNodesList =
   ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesList>;
 
 export interface VersionsGraphResponseGraphWorkflowPayload {
-  Type_object___type__: unknown;
-  object___fields__type__: unknown;
+  TypeObjectType__: unknown;
+  objectFieldsType__: unknown;
 }
 export const VersionsGraphResponseGraphWorkflowPayload =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      Type_object___type__: S.Unknown.pipe(T.Body("Type object { type }")),
-      object___fields__type__: S.Unknown.pipe(
-        T.Body("object { fields, type }"),
-      ),
+      TypeObjectType__: S.Unknown.pipe(T.Body("Type object { type }")),
+      objectFieldsType__: S.Unknown.pipe(T.Body("object { fields, type }")),
     }),
   ).annotate({
     identifier: "VersionsGraphResponseGraphWorkflowPayload",
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowPayload>;
 
 export interface VersionsGraphResponseGraphWorkflow {
-  class_name: string;
+  className: string;
   functions: VersionsGraphResponseGraphWorkflowFunctionsMap;
   nodes: VersionsGraphResponseGraphWorkflowNodesList;
+  /** Shape descriptor for JSON payloads. */
   payload?: VersionsGraphResponseGraphWorkflowPayload;
 }
 export const VersionsGraphResponseGraphWorkflow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    class_name: S.String,
+    className: S.String.pipe(T.Body("class_name")),
     functions: VersionsGraphResponseGraphWorkflowFunctionsMap,
     nodes: VersionsGraphResponseGraphWorkflowNodesList,
     payload: S.optional(VersionsGraphResponseGraphWorkflowPayload),
@@ -1142,6 +1259,7 @@ export const VersionsGraphResponseGraphWorkflow = /*@__PURE__*/ S.suspend(() =>
 
 export interface VersionsGraphResponseGraph {
   version: number;
+  /** A parsed workflow entrypoint with its step graph. */
   workflow: VersionsGraphResponseGraphWorkflow;
 }
 export const VersionsGraphResponseGraph = /*@__PURE__*/ S.suspend(() =>
@@ -1156,37 +1274,38 @@ export const VersionsGraphResponseGraph = /*@__PURE__*/ S.suspend(() =>
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface VersionsGraphResponse {
   id: string;
-  class_name: string;
-  created_on: string;
+  className: string;
+  createdOn: string;
+  /** Versioned workflow graph payload. */
   graph: VersionsGraphResponseGraph;
-  modified_on: string;
-  workflow_id: string;
+  modifiedOn: string;
+  workflowId: string;
 }
 export const VersionsGraphResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    class_name: S.String,
-    created_on: S.String,
+    className: S.String.pipe(T.Body("class_name")),
+    createdOn: S.String.pipe(T.Body("created_on")),
     graph: VersionsGraphResponseGraph,
-    modified_on: S.String,
-    workflow_id: S.String,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    workflowId: S.String.pipe(T.Body("workflow_id")),
   }),
 ).annotate({
   identifier: "VersionsGraphResponse",
 }) as any as S.Schema<VersionsGraphResponse>;
 
 export interface VersionsListRequest {
-  account_id: string;
-  workflow_name: string;
+  accountId: string;
+  workflowName: string;
   page?: number;
-  per_page?: number;
+  perPage?: number;
 }
 export const VersionsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    account_id: S.String.pipe(T.Label()),
-    workflow_name: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
     page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1217,23 +1336,24 @@ export const VersionsListResultItemLimits = /*@__PURE__*/ S.suspend(() =>
 
 export interface VersionsListResultItem {
   id: string;
-  class_name: string;
-  created_on: string;
-  has_dag: boolean;
+  className: string;
+  createdOn: string;
+  hasDag: boolean;
+  /** The programming language of the workflow implementation */
   language: VersionsListResultItemLanguage;
-  modified_on: string;
-  workflow_id: string;
+  modifiedOn: string;
+  workflowId: string;
   limits?: VersionsListResultItemLimits;
 }
 export const VersionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    class_name: S.String,
-    created_on: S.String,
-    has_dag: S.Boolean,
+    className: S.String.pipe(T.Body("class_name")),
+    createdOn: S.String.pipe(T.Body("created_on")),
+    hasDag: S.Boolean.pipe(T.Body("has_dag")),
     language: VersionsListResultItemLanguage,
-    modified_on: S.String,
-    workflow_id: S.String,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    workflowId: S.String.pipe(T.Body("workflow_id")),
     limits: S.optional(VersionsListResultItemLimits),
   }),
 ).annotate({
@@ -1246,6 +1366,7 @@ export const VersionsListResultList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<VersionsListResultList>;
 
 export interface VersionsListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
   result?: VersionsListResultList;
 }
 export const VersionsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1256,11 +1377,12 @@ export const VersionsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "VersionsListResponse",
 }) as any as S.Schema<VersionsListResponse>;
 
+export type DeleteError = CloudflareOpError;
 /** Deletes a Workflow. This only deletes the Workflow and does not delete or modify any Worker associated to this Workflow or bounded to it. */
 export const Delete: API.OperationMethod<
   DeleteRequest,
   DeleteResponse,
-  CloudflareOpError,
+  DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRequest,
@@ -1269,11 +1391,12 @@ export const Delete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type GetError = CloudflareOpError;
 /** Retrieves configuration and metadata for a specific workflow. */
-export const Get: API.OperationMethod<
+export const get: API.OperationMethod<
   GetRequest,
   GetResponse,
-  CloudflareOpError,
+  GetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRequest,
@@ -1282,11 +1405,12 @@ export const Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InstancesBulkError = CloudflareOpError;
 /** Creates multiple workflow instances in a single batch operation. */
-export const InstancesBulk: API.OperationMethod<
+export const instancesBulk: API.OperationMethod<
   InstancesBulkRequest,
   InstancesBulkResponse,
-  CloudflareOpError,
+  InstancesBulkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InstancesBulkRequest,
@@ -1295,11 +1419,12 @@ export const InstancesBulk: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InstancesCreateError = CloudflareOpError;
 /** Creates a new instance of a workflow, starting its execution. */
-export const InstancesCreate: API.OperationMethod<
+export const instancesCreate: API.OperationMethod<
   InstancesCreateRequest,
   InstancesCreateResponse,
-  CloudflareOpError,
+  InstancesCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InstancesCreateRequest,
@@ -1308,11 +1433,12 @@ export const InstancesCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InstancesEventsCreateError = CloudflareOpError;
 /** Sends an event to a running workflow instance to trigger state transitions. */
-export const InstancesEventsCreate: API.OperationMethod<
+export const instancesEventsCreate: API.OperationMethod<
   InstancesEventsCreateRequest,
   InstancesEventsCreateResponse,
-  CloudflareOpError,
+  InstancesEventsCreateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InstancesEventsCreateRequest,
@@ -1321,11 +1447,12 @@ export const InstancesEventsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InstancesGetError = CloudflareOpError;
 /** Retrieves logs and execution status for a specific workflow instance. */
-export const InstancesGet: API.OperationMethod<
+export const instancesGet: API.OperationMethod<
   InstancesGetRequest,
   InstancesGetResponse,
-  CloudflareOpError,
+  InstancesGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InstancesGetRequest,
@@ -1334,11 +1461,12 @@ export const InstancesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InstancesListError = CloudflareOpError;
 /** Lists all instances of a workflow with their execution status. */
-export const InstancesList: API.OperationMethod<
+export const instancesList: API.OperationMethod<
   InstancesListRequest,
   InstancesListResponse,
-  CloudflareOpError,
+  InstancesListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InstancesListRequest,
@@ -1347,11 +1475,12 @@ export const InstancesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InstancesStatusEditError = CloudflareOpError;
 /** Changes the execution status of a workflow instance (e.g., pause, resume, terminate). */
-export const InstancesStatusEdit: API.OperationMethod<
+export const instancesStatusEdit: API.OperationMethod<
   InstancesStatusEditRequest,
   InstancesStatusEditResponse,
-  CloudflareOpError,
+  InstancesStatusEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InstancesStatusEditRequest,
@@ -1360,11 +1489,12 @@ export const InstancesStatusEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type InstancesStepError = CloudflareOpError;
 /** Retrieves the full, untruncated output for a specific step on a workflow instance. Returns a flat status-shaped JSON body with step `status` ('running' | 'waiting' | 'complete' | 'errored'), `error` (nullable), and `output` (the step value, or null while running/waiting/errored). When the step returned a ReadableStream from step.do, the response is served as 'application/octet-stream' with the raw bytes as the body instead of JSON. A `status='running'` response with non-null `error` indicates the step is currently retrying after a prior attempt failed. */
-export const InstancesStep: API.OperationMethod<
+export const instancesStep: API.OperationMethod<
   InstancesStepRequest,
   InstancesStepResponse,
-  CloudflareOpError,
+  InstancesStepError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InstancesStepRequest,
@@ -1373,11 +1503,12 @@ export const InstancesStep: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type ListError = CloudflareOpError;
 /** Lists all workflows configured for the account. */
-export const List: API.OperationMethod<
+export const list: API.OperationMethod<
   ListRequest,
   ListResponse,
-  CloudflareOpError,
+  ListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ListRequest,
@@ -1386,11 +1517,12 @@ export const List: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type UpdateError = CloudflareOpError;
 /** Creates a new workflow or updates an existing workflow definition. */
-export const Update: API.OperationMethod<
+export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,
-  CloudflareOpError,
+  UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,
@@ -1399,11 +1531,12 @@ export const Update: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type VersionsGetError = CloudflareOpError;
 /** Retrieves details for a specific deployed workflow version. */
-export const VersionsGet: API.OperationMethod<
+export const versionsGet: API.OperationMethod<
   VersionsGetRequest,
   VersionsGetResponse,
-  CloudflareOpError,
+  VersionsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: VersionsGetRequest,
@@ -1412,11 +1545,12 @@ export const VersionsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type VersionsGraphError = CloudflareOpError;
 /** Retrieves the graph visualization of a workflow version. */
-export const VersionsGraph: API.OperationMethod<
+export const versionsGraph: API.OperationMethod<
   VersionsGraphRequest,
   VersionsGraphResponse,
-  CloudflareOpError,
+  VersionsGraphError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: VersionsGraphRequest,
@@ -1425,11 +1559,12 @@ export const VersionsGraph: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type VersionsListError = CloudflareOpError;
 /** Lists all deployed versions of a workflow. */
-export const VersionsList: API.OperationMethod<
+export const versionsList: API.OperationMethod<
   VersionsListRequest,
   VersionsListResponse,
-  CloudflareOpError,
+  VersionsListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: VersionsListRequest,

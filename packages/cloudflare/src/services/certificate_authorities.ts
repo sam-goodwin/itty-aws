@@ -10,13 +10,17 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
 export interface HostnameAssociationsGetRequest {
-  zone_id: string;
-  mtls_certificate_id?: string;
+  /** Identifier. */
+  zoneId: string;
+  /** The UUID to match against for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls_certificate_id is given, the results will be the hostnames associated to your active Cloudflare Managed CA. */
+  mtlsCertificateId?: string;
 }
 export const HostnameAssociationsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    mtls_certificate_id: S.optional(S.String.pipe(T.Query())),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    mtlsCertificateId: S.optional(
+      S.String.pipe(T.Query("mtls_certificate_id")),
+    ),
   }).pipe(
     T.Http({
       method: "GET",
@@ -53,15 +57,17 @@ export const HostnameAssociationsUpdateRequestHostnamesList =
   ) as any as S.Schema<HostnameAssociationsUpdateRequestHostnamesList>;
 
 export interface HostnameAssociationsUpdateRequest {
-  zone_id: string;
+  /** Identifier. */
+  zoneId: string;
   hostnames?: HostnameAssociationsUpdateRequestHostnamesList;
-  mtls_certificate_id?: string;
+  /** The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls_certificate_id is given, the hostnames will be associated to your active Cloudflare Managed CA. */
+  mtlsCertificateId?: string;
 }
 export const HostnameAssociationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone_id: S.String.pipe(T.Label()),
+    zoneId: S.String.pipe(T.Label("zone_id")),
     hostnames: S.optional(HostnameAssociationsUpdateRequestHostnamesList),
-    mtls_certificate_id: S.optional(S.String),
+    mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -91,11 +97,12 @@ export const HostnameAssociationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HostnameAssociationsUpdateResponse",
 }) as any as S.Schema<HostnameAssociationsUpdateResponse>;
 
+export type HostnameAssociationsGetError = CloudflareOpError;
 /** List Hostname Associations. */
-export const HostnameAssociationsGet: API.OperationMethod<
+export const hostnameAssociationsGet: API.OperationMethod<
   HostnameAssociationsGetRequest,
   HostnameAssociationsGetResponse,
-  CloudflareOpError,
+  HostnameAssociationsGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HostnameAssociationsGetRequest,
@@ -104,11 +111,12 @@ export const HostnameAssociationsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+export type HostnameAssociationsUpdateError = CloudflareOpError;
 /** Replace Hostname Associations. */
-export const HostnameAssociationsUpdate: API.OperationMethod<
+export const hostnameAssociationsUpdate: API.OperationMethod<
   HostnameAssociationsUpdateRequest,
   HostnameAssociationsUpdateResponse,
-  CloudflareOpError,
+  HostnameAssociationsUpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HostnameAssociationsUpdateRequest,
