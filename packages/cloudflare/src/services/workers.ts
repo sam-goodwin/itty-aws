@@ -6479,6 +6479,25 @@ const PutScriptRequestMetadataBinding37 =
     ),
   ) as unknown as Schema.Codec<PutScriptRequestMetadataBinding37>;
 
+interface PutScriptRequestMetadataCacheOptions {
+  enabled: boolean;
+  crossVersionCache?: boolean | null;
+}
+const PutScriptRequestMetadataCacheOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      enabled: Schema.Boolean,
+      crossVersionCache: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        enabled: "enabled",
+        crossVersionCache: "cross_version_cache",
+      }),
+    ),
+  ) as unknown as Schema.Codec<PutScriptRequestMetadataCacheOptions>;
+
 interface Metadata2 {
   /** Annotations for the version created by this upload. */
   annotations?: {
@@ -6756,6 +6775,10 @@ interface Metadata2 {
   /** Usage model for the Worker invocations. */
   usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
   containers?: { className: string }[] | null;
+  cacheOptions?: {
+    enabled: boolean;
+    crossVersionCache?: boolean | null;
+  } | null;
 }
 const Metadata2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
@@ -6862,6 +6885,9 @@ const Metadata2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     containers: Schema.optional(
       Schema.Union([Schema.Array(Container), Schema.Null]),
     ),
+    cacheOptions: Schema.optional(
+      Schema.Union([PutScriptRequestMetadataCacheOptions, Schema.Null]),
+    ),
   }).pipe(
     Schema.encodeKeys({
       annotations: "annotations",
@@ -6882,6 +6908,7 @@ const Metadata2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       tailConsumers: "tail_consumers",
       usageModel: "usage_model",
       containers: "containers",
+      cacheOptions: "cache_options",
     }),
   ),
 ) as unknown as Schema.Codec<Metadata2>;
@@ -14814,6 +14841,7 @@ export interface PutScriptRequest {
       | null;
     usageModel?: "standard" | "bundled" | "unbound" | (string & {});
     containers?: { className: string }[];
+    cacheOptions?: { enabled: boolean; crossVersionCache?: boolean };
   };
   /** Body param: An array of modules (often JavaScript files) comprising a Worker script. At least one module must be present and referenced in the metadata as `main_module` or `body_part` by filename.<br/ */
   files?: (File | Blob)[];

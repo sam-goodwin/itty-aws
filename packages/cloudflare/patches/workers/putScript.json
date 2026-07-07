@@ -163,6 +163,24 @@
             }
           ]
         }
+      },
+      "metadata.cache_options": {
+        "optional": true,
+        "definition": {
+          "kind": "object",
+          "properties": [
+            {
+              "name": "enabled",
+              "required": true,
+              "type": { "kind": "primitive", "value": "boolean" }
+            },
+            {
+              "name": "cross_version_cache",
+              "required": false,
+              "type": { "kind": "primitive", "value": "boolean" }
+            }
+          ]
+        }
       }
     }
   },

@@ -12319,6 +12319,15 @@ paths:
                             type: string
                         required:
                           - class_name
+                    cache_options:
+                      type: object
+                      properties:
+                        enabled:
+                          type: boolean
+                        cross_version_cache:
+                          type: boolean
+                      required:
+                        - enabled
                   description: "Body param: JSON-encoded metadata about the uploaded parts and
                     Worker configuration."
                 files:
