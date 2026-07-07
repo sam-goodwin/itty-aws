@@ -18,7 +18,7 @@ export const errorMatchersSymbol = Symbol.for(
 export interface ErrorMatcher {
   code?: number;
   status?: number;
-  message?: string | { includes: string };
+  message?: string | { includes?: string; matches?: string };
 }
 
 /**
